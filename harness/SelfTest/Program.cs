@@ -42,6 +42,7 @@ internal static class Program
         Run("inline navigation policy", InlinePolicy);
         Run("inline-hosts.json matches the built RRT's entry lists", () => InlineHostsFresh(rrtDll));
         Run("derived keys force through their leaves", DerivedForcingChecks);
+        Run("forced runs satisfy DelayHours by backdating hour.* times", DelayForcingChecks);
         Run("residence spike: plan, verdicts, report shape", ResidenceSpikeChecks);
         Run("residence spike: presence engine reflection vs built RRT DLL", () => ResidenceSpikeReflection(rrtDll));
         Console.WriteLine(failures == 0 ? "SELF-TEST PASSED" : "SELF-TEST FAILED: " + failures + " check(s)");
@@ -238,6 +239,63 @@ internal static class Program
         var real = DerivedForcing.Leaves("household.any_eligible", derived, authored.Contains, none.Contains);
         Check(real != null && real.Count > 0 && real.All(authored.Contains), "household.any_eligible resolves to authored flags: " + (real == null ? "null" : string.Join(",", real)));
         if (real != null) Console.WriteLine("    household.any_eligible forces via [" + string.Join(", ", real) + "]");
+    }
+
+    // Mirrors Rules.Available's delay test: the latest recorded time of the held keys, untimed keys ignored.
+    static bool DelayPasses(int delay, int hour, IDictionary<string, int> times, IEnumerable<string> keys)
+    {
+        var timed = keys.Where(times.ContainsKey).Select(k => times[k]).ToList();
+        return hour - (timed.Count == 0 ? hour - delay : timed.Max()) >= delay;
+    }
+
+    static void DelayForcingChecks()
+    {
+        // Live case (chadali.trickster.council.orange, 24 h): the latch trickster.ever is stamped "now" at load and the
+        // forced flag chadali.trickster.primed has no time yet. Both get backdated to hour - 24 - margin.
+        int hour = 1500;
+        var keys = new[] { "trickster.ever", "chadali.trickster.primed" };
+        var times = new Dictionary<string, int> { ["trickster.ever"] = hour };
+        Check(!DelayPasses(24, hour, times, keys), "precondition: a latch stamped now blocks a 24 h page");
+        var r = DelayForcing.Plan(24, hour, times, keys, _ => true);
+        Check(r.Unmet == null && r.TargetHour == hour - 24 - DelayForcing.MarginHours, "target is hour - delay - margin: " + r.TargetHour);
+        Check(r.Backdate.SequenceEqual(keys), "both the stamped latch and the untimed forced flag are backdated: " + string.Join(",", r.Backdate));
+        foreach (var k in r.Backdate) times[k] = r.TargetHour;
+        Check(DelayPasses(24, hour, times, keys), "after backdating, the Rules delay test passes");
+        // Later stamping of the untimed key would still be old enough: it now carries the backdated time.
+        Check(DelayPasses(24, hour + 1, times, keys), "the margin survives an hour boundary");
+
+        // A key already old enough is left alone; no delay needs nothing.
+        var old = new Dictionary<string, int> { ["a"] = hour - 200 };
+        Check(DelayForcing.Plan(96, hour, old, new[] { "a" }, _ => true).Backdate.Count == 0, "a time already past delay + margin is not touched");
+        Check(DelayForcing.Plan(0, hour, times, keys, _ => true).Backdate.Count == 0, "DelayHours 0 backdates nothing");
+
+        // Cannot be satisfied: the save is younger than the delay, or a blocking time has no hour.* flag.
+        var young = DelayForcing.Plan(96, 50, new Dictionary<string, int> { ["x"] = 49 }, new[] { "x" }, _ => true);
+        Check(young.Unmet != null && young.Backdate.Count == 0, "a save younger than the delay is unmet (skipped-delay): " + young.Unmet);
+        var noFlag = DelayForcing.Plan(48, hour, new Dictionary<string, int> { ["native"] = hour - 1 }, new[] { "native" }, _ => false);
+        Check(noFlag.Unmet != null, "a blocking time with no settable hour.* flag is unmet");
+        var untimedNoFlag = DelayForcing.Plan(48, hour, new Dictionary<string, int>(), new[] { "native" }, _ => false);
+        Check(untimedNoFlag.Unmet == null && untimedNoFlag.Backdate.Count == 0, "an untimed key with no hour.* flag does not block");
+
+        // The built Story.json: the scenes seen live as false entry-hidden carry DelayHours and the latch trickster.ever.
+        string root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\..\.."));
+        string storyPath = Path.Combine(root, "development", "Story.json");
+        if (!File.Exists(storyPath)) { Fail("Story.json missing at " + storyPath); return; }
+        var story = JObject.Parse(File.ReadAllText(storyPath));
+        var latches = new HashSet<string>(((JObject?)story["Latches"] ?? new JObject()).Properties().Select(p => p.Name));
+        foreach (var id in new[] { "anevia.trickster.gone.gate", "chadali.trickster.council.orange", "delamere.trickster.woods.second_hunt" })
+        {
+            var s = story["Scenes"]!.FirstOrDefault(x => (string?)x["Id"] == id);
+            if (s == null) { Fail(id + " missing from Story.json"); continue; }
+            var req = s["Requires"]!.Select(x => (string)x!).ToArray();
+            int delay = (int)s["DelayHours"]!;
+            Check(delay > 0 && req.Any(latches.Contains), id + " has DelayHours and a latched Requires");
+            var t = new Dictionary<string, int>();
+            foreach (var k in req.Where(latches.Contains)) t[k] = hour;
+            var plan = DelayForcing.Plan(delay, hour, t, req, _ => true);
+            foreach (var k in plan.Backdate) t[k] = plan.TargetHour;
+            Check(plan.Unmet == null && DelayPasses(delay, hour, t, req), id + " delay is satisfied after backdating");
+        }
     }
 
     static void Activation()

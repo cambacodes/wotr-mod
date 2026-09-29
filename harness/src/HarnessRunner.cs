@@ -427,8 +427,10 @@ namespace RRT.TestHarness
                 if (!ok.Value)
                 {
                     bool nativeGated = run.Forced && unforceable.Count > 0;
-                    run.Result = nativeGated ? "skipped-native" : "not-started";
+                    bool delayGated = !nativeGated && run.Forced && run.DelayUnmet != null;
+                    run.Result = nativeGated ? "skipped-native" : delayGated ? "skipped-delay" : "not-started";
                     run.Detail = nativeGated ? "forced run cannot hold native/derived requires: " + string.Join(", ", unforceable)
+                        : delayGated ? run.DelayUnmet
                         : "dialog did not start within 10 s (mode " + Mode() + ", dialog " + (dc.Dialog?.name ?? "null") + ")";
                     yield break;
                 }
@@ -445,7 +447,7 @@ namespace RRT.TestHarness
         }
 
         static bool RunPassed(SceneRun run) =>
-            (run.Result == "completed" || run.Result == "skipped-native" || run.Result == "skipped-inline")
+            (run.Result == "completed" || run.Result == "skipped-native" || run.Result == "skipped-inline" || run.Result == "skipped-delay")
             && run.OracleFailures.Count == 0 && !run.Exceptions.Any(e => e.Relevant);
 
         /// <summary>Forces a Story.Derived key by setting the persistent leaves of one satisfiable group (DerivedForcing),
@@ -491,6 +493,8 @@ namespace RRT.TestHarness
                     if (derived != null && group.Any(k => derived.ContainsKey(k) && ForceDerived(k, derived, flagsBefore, run))) continue;
                     unforceable.Add("any-of [" + string.Join(", ", group) + "]");
                 }
+                // DelayHours: the forced flags (and latches recorded at load) carry "now" times, so backdate them.
+                if (plan.ForceSetRequires) SatisfyDelay(scene, run);
                 // Nor can the chapter: a page gated on a later chapter cannot open from an earlier save.
                 int chapter = RrtBridge.ToData(before).Chapter;
                 if (chapter < RrtBridge.SceneMinChapter(scene) || chapter > RrtBridge.SceneMaxChapter(scene))
@@ -498,6 +502,35 @@ namespace RRT.TestHarness
             }
             if (plan.MarkStarted && bridge.StartedFlag(run.Relationship) is string started && persistentFlagKeys.Contains(started)) bridge.Set(started);
             return unforceable;
+        }
+
+        /// <summary>
+        /// Satisfies the scene's DelayHours honestly for a forced run: backdates the hour.* times of its held Requires (and
+        /// held RequiresAnyGroups members) to DelayHours + margin ago (DelayForcing), and persists a held latch so
+        /// Main.RecordLatches does not stamp it "now" afterwards. Game time is not advanced. An unmet delay is recorded in
+        /// run.DelayUnmet, and a page that then stays hidden is "skipped-delay".
+        /// </summary>
+        void SatisfyDelay(object scene, SceneRun run)
+        {
+            int delay = RrtBridge.SceneDelayHours(scene);
+            if (delay <= 0) return;
+            var bridge = rrt!;
+            var now = bridge.State();
+            var data = RrtBridge.ToData(now);
+            var held = RrtBridge.FlagSet(now);
+            var keys = RrtBridge.SceneRequires(scene)
+                .Concat((RrtBridge.SceneRequiresAnyGroups(scene) ?? new string[0][]).SelectMany(g => g).Where(held.Contains));
+            var r = DelayForcing.Plan(delay, data.Hour, data.Times, keys, k => persistentFlagKeys.Contains("hour." + k));
+            foreach (var key in r.Backdate)
+            {
+                bridge.Set("hour." + key, r.TargetHour + 1);
+                if (held.Contains(key) && persistentFlagKeys.Contains(key)) bridge.Set(key);
+                run.DelayBackdated.Add(key + "@" + r.TargetHour);
+            }
+            run.DelayUnmet = r.Unmet;
+            if (r.Backdate.Count > 0 || r.Unmet != null)
+                Entry.Mod.Logger.Log("Delay " + delay + " h for " + run.Scene + " at hour " + data.Hour + ": backdated ["
+                    + string.Join(", ", run.DelayBackdated) + "]" + (r.Unmet != null ? "; " + r.Unmet : ""));
         }
 
         // Let the dialog UI bind the current cue before answering: selecting within the bind frame races
@@ -713,9 +746,12 @@ namespace RRT.TestHarness
                     {
                         bool listShown = listBp == null || listBp.Answers.Any(r => { try { return r.Get() is BlueprintAnswer x && shown.Contains(x); } catch { return false; } });
                         if (!listShown) { run.Result = "skipped-inline"; run.Detail = "at " + at + " the list's native answers are hidden (list conditions)" + gateNote; break; }
-                        run.Result = gated ? "skipped-inline" : "entry-hidden";
+                        bool delayGated = !gated && run.Forced && run.DelayUnmet != null;
+                        run.Result = gated ? "skipped-inline" : delayGated ? "skipped-delay" : "entry-hidden";
                         run.Detail = "list " + list + " shown at " + at + " without " + entryName
-                            + (gated ? gateNote : run.AvailableAtStart ? " although the scene is available" : " although its Requires were forced");
+                            + (gated ? gateNote : delayGated ? "; " + run.DelayUnmet
+                                : run.AvailableAtStart ? " although the scene is available"
+                                : " although its Requires were forced" + (run.DelayBackdated.Count > 0 ? " and its delay backdated" : ""));
                         break;
                     }
                     if (pick < 0) { run.Result = "skipped-inline"; run.Detail = "at " + at + ": " + why + "; path " + string.Join(" > ", inl.NavPath) + gateNote; break; }
@@ -740,8 +776,10 @@ namespace RRT.TestHarness
                     yield return WaitFor(() => dc.Dialog != null && !IsCuePlayScheduled(dc) && ShotBelongs(dc.CurrentCue?.name, run.Scene), 10, ok);
                     if (!ok.Value)
                     {
-                        run.Result = gated ? "skipped-inline" : "entry-not-started";
-                        run.Detail = "after " + entryName + " the current cue is " + (dc.CurrentCue?.name ?? "null") + " of " + (dc.Dialog?.name ?? "no dialog") + gateNote;
+                        bool delayGated = !gated && run.Forced && run.DelayUnmet != null;
+                        run.Result = gated ? "skipped-inline" : delayGated ? "skipped-delay" : "entry-not-started";
+                        run.Detail = "after " + entryName + " the current cue is " + (dc.CurrentCue?.name ?? "null") + " of " + (dc.Dialog?.name ?? "no dialog") + gateNote
+                            + (delayGated ? "; " + run.DelayUnmet : "");
                     }
                     else
                     {

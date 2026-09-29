@@ -44,6 +44,7 @@ namespace RRT.TestHarness
             ("Tirabade.Scene", "RequiresAnyGroups", "field", "String[][]"),
             ("Tirabade.Scene", "MinChapter", "field", "Int32"),
             ("Tirabade.Scene", "MaxChapter", "field", "Int32"),
+            ("Tirabade.Scene", "DelayHours", "field", "Int32"),
             ("Tirabade.Scene", "Nodes", "field", "List<Node>"),
             ("Tirabade.Scene", "ContactUnit", "field", "String"),
             ("Tirabade.Scene", "NativeReturnCue", "field", "String"),
@@ -251,6 +252,7 @@ namespace RRT.TestHarness
         public static string[][] SceneRequiresAnyGroups(object scene) => GetAs<string[][]>(scene, "RequiresAnyGroups");
         public static int SceneMinChapter(object scene) => GetAs<int>(scene, "MinChapter");
         public static int SceneMaxChapter(object scene) => GetAs<int>(scene, "MaxChapter");
+        public static int SceneDelayHours(object scene) => GetAs<int>(scene, "DelayHours");
         public static string? SceneContactUnit(object scene) => (string?)Get(scene, "ContactUnit");
         public static bool SceneReturnToList(object scene) => GetAs<bool>(scene, "ReturnToList");
         public static IList SceneNodes(object scene) => GetAs<IList>(scene, "Nodes");
