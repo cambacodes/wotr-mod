@@ -33445,7 +33445,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and a letter of apology in the Commander's hand. Somewhere in Mendev it hangs on a wall. Kiana put it in her play, word for word, and audiences wept at it without knowing why.",
+              "Text": "The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and an apology said aloud in the Commander's hand. Somewhere in Mendev it hangs on a wall. Kiana put it in her play, word for word, and audiences wept at it without knowing why.",
               "Requires": [
                 "kiana.trickster.met",
                 "kiana.trickster.guests_bought_back"
@@ -33465,7 +33465,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "Somewhere in Mendev a dwarf kept a slip of paper with the Commander's signature on it and three words above it: One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched the Commander's face while they answered.",
+              "Text": "Somewhere in Mendev a dwarf remembered the cold of the Commander's palm on his, and three words that went with it: One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched the Commander's face while they answered.",
               "Requires": [
                 "kiana.trickster.met",
                 "kiana.trickster.cost.sunhammer_favour"
@@ -33581,7 +33581,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and a letter of apology in the Commander's hand. Somewhere in Mendev it hangs on a wall. Kiana put it in her play, word for word, and audiences wept at it without knowing why.",
+              "Text": "The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and an apology said aloud in the Commander's hand. Somewhere in Mendev it hangs on a wall. Kiana put it in her play, word for word, and audiences wept at it without knowing why.",
               "Requires": [
                 "kiana.trickster.met",
                 "kiana.trickster.guests_bought_back"
@@ -33601,7 +33601,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "Somewhere in Mendev a dwarf kept a slip of paper with the Commander's signature on it and three words above it: One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched the Commander's face while they answered.",
+              "Text": "Somewhere in Mendev a dwarf remembered the cold of the Commander's palm on his, and three words that went with it: One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched the Commander's face while they answered.",
               "Requires": [
                 "kiana.trickster.met",
                 "kiana.trickster.cost.sunhammer_favour"
@@ -33717,7 +33717,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and a letter of apology in the Commander's hand. Somewhere in Mendev it hangs on a wall. Kiana put it in her play, word for word, and audiences wept at it without knowing why.",
+              "Text": "The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and an apology said aloud in the Commander's hand. Somewhere in Mendev it hangs on a wall. Kiana put it in her play, word for word, and audiences wept at it without knowing why.",
               "Requires": [
                 "kiana.trickster.met",
                 "kiana.trickster.guests_bought_back"
@@ -33737,7 +33737,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "Somewhere in Mendev a dwarf kept a slip of paper with the Commander's signature on it and three words above it: One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched the Commander's face while they answered.",
+              "Text": "Somewhere in Mendev a dwarf remembered the cold of the Commander's palm on his, and three words that went with it: One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched the Commander's face while they answered.",
               "Requires": [
                 "kiana.trickster.met",
                 "kiana.trickster.cost.sunhammer_favour"
@@ -35427,7 +35427,7 @@
         {
           "Id": "box_former_grief",
           "Speaker": "Kiana",
-          "Text": "\"I kept things when we separated. Now he is dead, I keep being tempted to treat every object as though I must either bury it or worship it.\"\n{n}She turns the cracked comb in her hand.{/n}\n\"Some of it is simply mine. He knew that too. He would have been very impatient with this comb.\"\n{n}She laughs once, then puts it back.{/n}\n\"The picture can stay where it is. You needn't admire it on entering. I would like you to look at me, preferably before I lose my nerve about this shawl.\"\n{n}She closes the box and draws the blue cloth toward her.{/n}",
+          "Text": "\"I kept things when we separated. Now he is dead, I keep being tempted to treat every object as though I must either bury it or worship it.\"\n{n}She turns the cracked comb in her hand.{/n}\n\"Some of it is simply mine. He knew that too. He would have been very impatient with this comb.\"\n{n}A laugh escapes her, and she puts it back.{/n}\n\"The picture can stay where it is. You needn't admire it on entering. I would like you to look at me, preferably before I lose my nerve about this shawl.\"\n{n}She closes the box and draws the blue cloth toward her.{/n}",
           "Choices": [
             {
               "Text": "[Continue with her.]",
@@ -36339,7 +36339,7 @@
         {
           "Id": "speech",
           "Speaker": "Narrator",
-          "Text": "{n}The cook goes to fetch supper. For the first time, the princess is alone with the person she invited. Kiana lowers the page enough to let the room see her face.{/n}",
+          "Text": "{n}The cook goes to fetch supper. At last the princess is alone with the person she invited. Kiana lowers the page enough to let the room see her face.{/n}",
           "Choices": [
             {
               "Text": "[Follow the pauses in the longer speech.]",
@@ -37144,7 +37144,7 @@
         {
           "Id": "stop",
           "Speaker": "Kiana",
-          "Text": "\"All right.\"\n{n}She writes three words on a scrap, puts it across the page and covers the ink. The movement is reluctant, but she gets up without adding another line.{/n}\n\"I have left myself the end. If tomorrow's Kiana cannot understand it, she will have only tonight's Kiana to blame.\"\n{n}She comes to you, rests her hands against your arms and looks at your face properly for the first time.{/n}\n\"Hello. I am pleased you came. That should have been the first thing I said.\"\n{n}The food she has bought waits in a covered bowl. She brings it to the table, tastes a little and decides it will do without reheating.{/n}\n\"Cold supper. Warm company. I can work with that.\"",
+          "Text": "\"All right.\"\n{n}She writes three words on a scrap, puts it across the page and covers the ink. The movement is reluctant, but she gets up without adding another line.{/n}\n\"I have left myself the end. If tomorrow's Kiana cannot understand it, she will have only tonight's Kiana to blame.\"\n{n}She comes to you, rests her hands against your arms and looks at your face properly, as though she has only now been allowed to.{/n}\n\"Hello. I am pleased you came. That should have been the first thing I said.\"\n{n}The food she has bought waits in a covered bowl. She brings it to the table, tastes a little and decides it will do without reheating.{/n}\n\"Cold supper. Warm company. I can work with that.\"",
           "Choices": [
             {
               "Text": "[Help her set the table.]",
@@ -46718,7 +46718,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and a letter of apology in the Commander's hand. Somewhere in Mendev it hangs on a wall. Kiana put it in her play, word for word, and audiences wept at it without knowing why.",
+              "Text": "The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and an apology said aloud in the Commander's hand. Somewhere in Mendev it hangs on a wall. Kiana put it in her play, word for word, and audiences wept at it without knowing why.",
               "Requires": [
                 "kiana.trickster.met",
                 "kiana.trickster.guests_bought_back"
@@ -46738,7 +46738,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "Somewhere in Mendev a dwarf kept a slip of paper with the Commander's signature on it and three words above it: One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched the Commander's face while they answered.",
+              "Text": "Somewhere in Mendev a dwarf remembered the cold of the Commander's palm on his, and three words that went with it: One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched the Commander's face while they answered.",
               "Requires": [
                 "kiana.trickster.met",
                 "kiana.trickster.cost.sunhammer_favour"
@@ -61507,7 +61507,7 @@
         {
           "Id": "result",
           "Speaker": "Vellexia",
-          "Text": "\"We discovered that he had suppressed the answers he thought I would dislike. That explains the disappointment rather neatly. You may have the question.\"\n\"Even if you helped find the answer?\"\n\"Especially then. I prefer my wagers to produce something worth having. I have had your company and an unusually competent disagreement.\"\n{n}She leans back, apparently at ease.{/n}\n\"Ask. I retain the right to refuse and admit defeat, as you so courageously insisted. I am beginning to appreciate that clause.\"\n\"What do you want from me that I could actually choose to give?\"\n{n}Her ease changes. She does not look away.{/n}\n\"That is a much better question than whether I have ever loved someone. I had prepared a beautiful lie for that one.\"",
+          "Text": "\"We discovered that he had suppressed the answers he thought I would dislike. That explains the disappointment rather neatly. You may have the question.\"\n\"Even if you helped find the answer?\"\n\"Especially then. I prefer my wagers to produce something worth having. I have had your company and an unusually competent disagreement.\"\n{n}She leans back, apparently at ease.{/n}\n\"Ask. I retain the right to refuse and admit defeat, as you so courageously insisted. I am beginning to appreciate that clause.\"\n\"What do you want from me that I could actually choose to give?\"\n{n}Her ease changes. Her eyes stay on you, and something behind them has started to count.{/n}\n\"That is a much better question than whether I have ever loved someone. I had prepared a beautiful lie for that one.\"",
           "Choices": [
             {
               "Text": "[Wait for the answer she owes.]",
@@ -111142,7 +111142,7 @@
         {
           "Id": "read",
           "Speaker": "Nocticula",
-          "Text": "{n}You stop following the weights and compare the owners. Each repeated case changes hands after the ship returns, never before it leaves. The devotional goods are being sold retrospectively. Whatever enters the harbor can acquire a new owner while it is already inside.\nYou draw a line through the six names. Then you put the missing passengers beneath them.{/n}\n\"He does not transport the same cargo three times. He sells a claim to what has already arrived. The weights are an excuse for the payments.\"\n{n}Nocticula looks at your arrangement, then at the lamps. For the first time she moves away from your shoulder.{/n}\n\"That would explain why the fifth lamp changed without another passenger boarding. Someone purchased an old arrival.\"\n\"And why a stolen navigational instrument matters. It might identify what he is actually selling.\"\n\"Or allow the buyer to collect it.\"\n{n}She turns the balance. Its beam cuts across the floating columns, separating the supposed cargo from the names.{/n}\n\"You have made this considerably less amusing.\"\n\"Because it may be worse than smuggling?\"\n\"Because I should have seen it first.\"\n{n}She kisses you without warning, brief and exact, then steps away before you can mistake it for a distraction from the answer.{/n}\n\"There. I can be generous about a defeat when it is useful.\"",
+          "Text": "{n}You stop following the weights and compare the owners. Each repeated case changes hands after the ship returns, never before it leaves. The devotional goods are being sold retrospectively. Whatever enters the harbor can acquire a new owner while it is already inside.\nYou draw a line through the six names. Then you put the missing passengers beneath them.{/n}\n\"He does not transport the same cargo three times. He sells a claim to what has already arrived. The weights are an excuse for the payments.\"\n{n}Nocticula looks at your arrangement, then at the lamps. Only now does she move away from your shoulder.{/n}\n\"That would explain why the fifth lamp changed without another passenger boarding. Someone purchased an old arrival.\"\n\"And why a stolen navigational instrument matters. It might identify what he is actually selling.\"\n\"Or allow the buyer to collect it.\"\n{n}She turns the balance. Its beam cuts across the floating columns, separating the supposed cargo from the names.{/n}\n\"You have made this considerably less amusing.\"\n\"Because it may be worse than smuggling?\"\n\"Because I should have seen it first.\"\n{n}She kisses you without warning, brief and exact, then steps away before you can mistake it for a distraction from the answer.{/n}\n\"There. I can be generous about a defeat when it is useful.\"",
           "Choices": [
             {
               "Text": "\"We follow the ownership transfers. Keep the captain unaware.\"",
@@ -113833,7 +113833,7 @@
         {
           "Id": "temper",
           "Speaker": "Nocticula",
-          "Text": "\"You think I am angry.\"\n\"You have furnished a room in which to overturn one chair.\"\n{n}She looks down at it, then laughs once. There is no warmth in the sound, but some of the deliberation leaves her face.{/n}\n\"You may be useful this evening.\"\n\"An encouraging beginning.\"\n\"Do not become encouraged too quickly. Istrava wants the city to see me punish a joke because its subject embarrassed me. Several patrons would happily purchase that story with her life.\"\n{n}Nocticula brings a strip of yellow cloth from beneath the mask. A former attendant named Edris sent it with a drawing of the lower gallery. Three servants have been assigned to portray the rescued passengers. The guests will enact a hunt. Edris does not believe the servants will be allowed to stop acting when they become afraid.\nRhez is already away from the meeting place named in the invitation. The real passengers have not been called to a new gathering or asked to prove that the performance concerns them.{/n}\n\"Then arrive with something she did not prepare to answer,\" you say.\n\"Her own servants would be persuasive.\"\n\"Provided they are still alive to speak.\"\n\"Yes. A tiresome limitation of the best witnesses.\"\n{n}She rights the chair. Its legs scrape the floor loudly enough to end the joke.{/n}",
+          "Text": "\"You think I am angry.\"\n\"You have furnished a room in which to overturn one chair.\"\n{n}She looks down at it, and a short sound escapes her that might be a laugh. There is no warmth in it, but some of the deliberation leaves her face.{/n}\n\"You may be useful this evening.\"\n\"An encouraging beginning.\"\n\"Do not become encouraged too quickly. Istrava wants the city to see me punish a joke because its subject embarrassed me. Several patrons would happily purchase that story with her life.\"\n{n}Nocticula brings a strip of yellow cloth from beneath the mask. A former attendant named Edris sent it with a drawing of the lower gallery. Three servants have been assigned to portray the rescued passengers. The guests will enact a hunt. Edris does not believe the servants will be allowed to stop acting when they become afraid.\nRhez is already away from the meeting place named in the invitation. The real passengers have not been called to a new gathering or asked to prove that the performance concerns them.{/n}\n\"Then arrive with something she did not prepare to answer,\" you say.\n\"Her own servants would be persuasive.\"\n\"Provided they are still alive to speak.\"\n\"Yes. A tiresome limitation of the best witnesses.\"\n{n}She rights the chair. Its legs scrape the floor loudly enough to end the joke.{/n}",
           "Choices": [
             {
               "Text": "\"Tell me what Edris can actually show us.\"",
@@ -113879,7 +113879,7 @@
         {
           "Id": "purpose",
           "Speaker": "Nocticula",
-          "Text": "\"Then we have an object. We still need a way into a house whose owner expects my temper to arrive ahead of me.\"\n{n}She removes the mask from the chair and offers it to you by its unbroken edge. The paint is cool against your thumb. Nothing behind its eyeholes resembles a face.\nYou turn it over. On the reverse, a little hook has been sewn into the ribbon. It is meant to catch when the wearer tries to pull the mask away.{/n}\n\"An economical hostess,\" you say.\n\"And an unimaginative one. She has mistaken difficulty in leaving for a reason to stay.\"\n\"You sound personally offended.\"\n\"I have spent a great deal of effort learning the difference.\"\n{n}She holds out her hand. You return the mask; she places it on the table, facedown. For the first time tonight she sits beside you rather than behind the arrangement.\nTogether you examine Edris's sketch until you can describe both stairways without looking. Nocticula corrects the width of a landing, then admits the correction is her guess and removes it. The missing measurement remains missing.\nBefore she lets you wake, she asks you to name the one thing she should not promise on your behalf. You answer that she must not put a living person at risk under the claim that you have already agreed to it.\nShe considers that longer than you expected.{/n}\n\"Then return with a plan before I grow fond of my own. I have had a head start.\"\n\"I noticed the furniture.\"\n{n}This time her laugh is real.{/n}",
+          "Text": "\"Then we have an object. We still need a way into a house whose owner expects my temper to arrive ahead of me.\"\n{n}She removes the mask from the chair and offers it to you by its unbroken edge. The paint is cool against your thumb. Nothing behind its eyeholes resembles a face.\nYou turn it over. On the reverse, a little hook has been sewn into the ribbon. It is meant to catch when the wearer tries to pull the mask away.{/n}\n\"An economical hostess,\" you say.\n\"And an unimaginative one. She has mistaken difficulty in leaving for a reason to stay.\"\n\"You sound personally offended.\"\n\"I have spent a great deal of effort learning the difference.\"\n{n}She holds out her hand. You return the mask; she places it on the table, facedown. Tonight, at last, she sits beside you rather than behind the arrangement.\nTogether you examine Edris's sketch until you can describe both stairways without looking. Nocticula corrects the width of a landing, then admits the correction is her guess and removes it. The missing measurement remains missing.\nBefore she lets you wake, she asks you to name the one thing she should not promise on your behalf. You answer that she must not put a living person at risk under the claim that you have already agreed to it.\nShe considers that longer than you expected.{/n}\n\"Then return with a plan before I grow fond of my own. I have had a head start.\"\n\"I noticed the furniture.\"\n{n}This time her laugh is real.{/n}",
           "Choices": [
             {
               "Text": "[Prepare a plan for the lodge from the information actually available.]",
@@ -114044,7 +114044,7 @@
         {
           "Id": "guest",
           "Speaker": "Nocticula",
-          "Text": "\"She would enjoy that. She would also spend the evening wondering whether enjoyment was the mistake.\"\n{n}Nocticula asks what you propose she wear. When you answer that it should give Istrava a reason to leave her chair, she looks at you for a long moment.{/n}\n\"That is a remarkably indirect compliment.\"\n\"I was trying to keep it useful.\"\n\"Try less hard.\"\n{n}The plan is simple enough to survive a frightened messenger. Nocticula will enter through the front. Istrava must either receive her or publicly refuse a guest she has spent days pretending to invite. Vhal will take the baton when his mistress rises. Rhez will approach him from the service stair while the room is watching somebody else.\nNocticula will use her own form. No double will hold a room full of demons through the first unexpected question. You will not be transported there by wanting to attend.\nThere is no promise that the bell remains silent. The attendants will be warned to run at its first sound, and Rhez will know that taking the baton matters more than keeping her cover.{/n}\n\"I shall have to trust someone else to enjoy the clever part,\" Nocticula says.\n\"You can enjoy being impossible to ignore.\"\n\"I generally do. It is the occasions on which I need to be ignored that require better company.\"",
+          "Text": "\"She would enjoy that. She would also spend the evening wondering whether enjoyment was the mistake.\"\n{n}Nocticula asks what you propose she wear. When you answer that it should give Istrava a reason to leave her chair, she looks at you as if you had moved a piece she had not seen.{/n}\n\"That is a remarkably indirect compliment.\"\n\"I was trying to keep it useful.\"\n\"Try less hard.\"\n{n}The plan is simple enough to survive a frightened messenger. Nocticula will enter through the front. Istrava must either receive her or publicly refuse a guest she has spent days pretending to invite. Vhal will take the baton when his mistress rises. Rhez will approach him from the service stair while the room is watching somebody else.\nNocticula will use her own form. No double will hold a room full of demons through the first unexpected question. You will not be transported there by wanting to attend.\nThere is no promise that the bell remains silent. The attendants will be warned to run at its first sound, and Rhez will know that taking the baton matters more than keeping her cover.{/n}\n\"I shall have to trust someone else to enjoy the clever part,\" Nocticula says.\n\"You can enjoy being impossible to ignore.\"\n\"I generally do. It is the occasions on which I need to be ignored that require better company.\"",
           "Choices": [
             {
               "Text": "[Draw the audience toward Nocticula while Rhez follows the baton.]",
@@ -116248,7 +116248,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}At the end of the harbor undertaking, Nocticula asked for more. The Commander kept the earlier arrangement and declined to enlarge it.\nFor a long moment she aligned the scratch in a glass lens with the grain of the table. Then she set it down and began speaking of a merchant whose foolish venture had amused her. The conversation became easier. Her disappointment remained in the care with which she chose its subject.\nThey had found missing passengers, broken a stolen claim, and decided what to do with the woman who had sold it. Their disagreement about the next invitation did not appear in those records. It belonged to the room beside the quay, along with two empty glasses and the doorway through which the Commander left.\nNocticula had disliked several answers during the investigation. This was the one she had needed the longest silence to receive.{/n}",
+          "Text": "{n}At the end of the harbor undertaking, Nocticula asked for more. The Commander kept the earlier arrangement and declined to enlarge it.\nShe spent a while aligning the scratch in a glass lens with the grain of the table. Then she set it down and began speaking of a merchant whose foolish venture had amused her. The conversation became easier. Her disappointment remained in the care with which she chose its subject.\nThey had found missing passengers, broken a stolen claim, and decided what to do with the woman who had sold it. Their disagreement about the next invitation did not appear in those records. It belonged to the room beside the quay, along with two empty glasses and the doorway through which the Commander left.\nNocticula had disliked several answers during the investigation. This was the one she had needed the longest silence to receive.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -117820,7 +117820,7 @@
         {
           "Id": "read",
           "Speaker": "Nocticula",
-          "Text": "{n}You stop following the weights and compare the owners. Each repeated case changes hands after the ship returns, never before it leaves. The devotional goods are being sold retrospectively. Whatever enters the harbor can acquire a new owner while it is already inside.\nYou draw a line through the six names. Then you put the missing passengers beneath them.{/n}\n\"He does not transport the same cargo three times. He sells a claim to what has already arrived. The weights are an excuse for the payments.\"\n{n}Nocticula looks at your arrangement, then at the lamps. For the first time she moves away from your shoulder.{/n}\n\"That would explain why the fifth lamp changed without another passenger boarding. Someone purchased an old arrival.\"\n\"And why a stolen navigational instrument matters. It might identify what he is actually selling.\"\n\"Or allow the buyer to collect it.\"\n{n}She turns the balance. Its beam cuts across the floating columns, separating the supposed cargo from the names.{/n}\n\"You have made this considerably less amusing.\"\n\"Because it may be worse than smuggling?\"\n\"Because I should have seen it first.\"\n{n}She kisses you without warning, brief and exact, then steps away before you can mistake it for a distraction from the answer.{/n}\n\"There. I can be generous about a defeat when it is useful.\"",
+          "Text": "{n}You stop following the weights and compare the owners. Each repeated case changes hands after the ship returns, never before it leaves. The devotional goods are being sold retrospectively. Whatever enters the harbor can acquire a new owner while it is already inside.\nYou draw a line through the six names. Then you put the missing passengers beneath them.{/n}\n\"He does not transport the same cargo three times. He sells a claim to what has already arrived. The weights are an excuse for the payments.\"\n{n}Nocticula looks at your arrangement, then at the lamps. Only now does she move away from your shoulder.{/n}\n\"That would explain why the fifth lamp changed without another passenger boarding. Someone purchased an old arrival.\"\n\"And why a stolen navigational instrument matters. It might identify what he is actually selling.\"\n\"Or allow the buyer to collect it.\"\n{n}She turns the balance. Its beam cuts across the floating columns, separating the supposed cargo from the names.{/n}\n\"You have made this considerably less amusing.\"\n\"Because it may be worse than smuggling?\"\n\"Because I should have seen it first.\"\n{n}She kisses you without warning, brief and exact, then steps away before you can mistake it for a distraction from the answer.{/n}\n\"There. I can be generous about a defeat when it is useful.\"",
           "Choices": [
             {
               "Text": "\"We follow the ownership transfers. Keep the captain unaware.\"",
@@ -118016,7 +118016,7 @@
         {
           "Id": "read",
           "Speaker": "Nocticula",
-          "Text": "{n}You stop following the weights and compare the owners. Each repeated case changes hands after the ship returns, never before it leaves. The devotional goods are being sold retrospectively. Whatever enters the harbor can acquire a new owner while it is already inside.\nYou draw a line through the six names. Then you put the missing passengers beneath them.{/n}\n\"He does not transport the same cargo three times. He sells a claim to what has already arrived. The weights are an excuse for the payments.\"\n{n}Nocticula looks at your arrangement, then at the lamps. For the first time she moves away from your shoulder.{/n}\n\"That would explain why the fifth lamp changed without another passenger boarding. Someone purchased an old arrival.\"\n\"And why a stolen navigational instrument matters. It might identify what he is actually selling.\"\n\"Or allow the buyer to collect it.\"\n{n}She turns the balance. Its beam cuts across the floating columns, separating the supposed cargo from the names.{/n}\n\"You have made this considerably less amusing.\"\n\"Because it may be worse than smuggling?\"\n\"Because I should have seen it first.\"\n{n}She kisses you without warning, brief and exact, then steps away before you can mistake it for a distraction from the answer.{/n}\n\"There. I can be generous about a defeat when it is useful.\"",
+          "Text": "{n}You stop following the weights and compare the owners. Each repeated case changes hands after the ship returns, never before it leaves. The devotional goods are being sold retrospectively. Whatever enters the harbor can acquire a new owner while it is already inside.\nYou draw a line through the six names. Then you put the missing passengers beneath them.{/n}\n\"He does not transport the same cargo three times. He sells a claim to what has already arrived. The weights are an excuse for the payments.\"\n{n}Nocticula looks at your arrangement, then at the lamps. Only now does she move away from your shoulder.{/n}\n\"That would explain why the fifth lamp changed without another passenger boarding. Someone purchased an old arrival.\"\n\"And why a stolen navigational instrument matters. It might identify what he is actually selling.\"\n\"Or allow the buyer to collect it.\"\n{n}She turns the balance. Its beam cuts across the floating columns, separating the supposed cargo from the names.{/n}\n\"You have made this considerably less amusing.\"\n\"Because it may be worse than smuggling?\"\n\"Because I should have seen it first.\"\n{n}She kisses you without warning, brief and exact, then steps away before you can mistake it for a distraction from the answer.{/n}\n\"There. I can be generous about a defeat when it is useful.\"",
           "Choices": [
             {
               "Text": "\"We follow the ownership transfers. Keep the captain unaware.\"",
@@ -118212,7 +118212,7 @@
         {
           "Id": "read",
           "Speaker": "Nocticula",
-          "Text": "{n}You stop following the weights and compare the owners. Each repeated case changes hands after the ship returns, never before it leaves. The devotional goods are being sold retrospectively. Whatever enters the harbor can acquire a new owner while it is already inside.\nYou draw a line through the six names. Then you put the missing passengers beneath them.{/n}\n\"He does not transport the same cargo three times. He sells a claim to what has already arrived. The weights are an excuse for the payments.\"\n{n}Nocticula looks at your arrangement, then at the lamps. For the first time she moves away from your shoulder.{/n}\n\"That would explain why the fifth lamp changed without another passenger boarding. Someone purchased an old arrival.\"\n\"And why a stolen navigational instrument matters. It might identify what he is actually selling.\"\n\"Or allow the buyer to collect it.\"\n{n}She turns the balance. Its beam cuts across the floating columns, separating the supposed cargo from the names.{/n}\n\"You have made this considerably less amusing.\"\n\"Because it may be worse than smuggling?\"\n\"Because I should have seen it first.\"\n{n}She kisses you without warning, brief and exact, then steps away before you can mistake it for a distraction from the answer.{/n}\n\"There. I can be generous about a defeat when it is useful.\"",
+          "Text": "{n}You stop following the weights and compare the owners. Each repeated case changes hands after the ship returns, never before it leaves. The devotional goods are being sold retrospectively. Whatever enters the harbor can acquire a new owner while it is already inside.\nYou draw a line through the six names. Then you put the missing passengers beneath them.{/n}\n\"He does not transport the same cargo three times. He sells a claim to what has already arrived. The weights are an excuse for the payments.\"\n{n}Nocticula looks at your arrangement, then at the lamps. Only now does she move away from your shoulder.{/n}\n\"That would explain why the fifth lamp changed without another passenger boarding. Someone purchased an old arrival.\"\n\"And why a stolen navigational instrument matters. It might identify what he is actually selling.\"\n\"Or allow the buyer to collect it.\"\n{n}She turns the balance. Its beam cuts across the floating columns, separating the supposed cargo from the names.{/n}\n\"You have made this considerably less amusing.\"\n\"Because it may be worse than smuggling?\"\n\"Because I should have seen it first.\"\n{n}She kisses you without warning, brief and exact, then steps away before you can mistake it for a distraction from the answer.{/n}\n\"There. I can be generous about a defeat when it is useful.\"",
           "Choices": [
             {
               "Text": "\"We follow the ownership transfers. Keep the captain unaware.\"",
@@ -127475,7 +127475,7 @@
         {
           "Id": "temper",
           "Speaker": "Nocticula",
-          "Text": "\"You think I am angry.\"\n\"You have furnished a room in which to overturn one chair.\"\n{n}She looks down at it, then laughs once. There is no warmth in the sound, but some of the deliberation leaves her face.{/n}\n\"You may be useful this evening.\"\n\"An encouraging beginning.\"\n\"Do not become encouraged too quickly. Istrava wants the city to see me punish a joke because its subject embarrassed me. Several patrons would happily purchase that story with her life.\"\n{n}Nocticula brings a strip of yellow cloth from beneath the mask. A former attendant named Edris sent it with a drawing of the lower gallery. Three servants have been assigned to portray the rescued passengers. The guests will enact a hunt. Edris does not believe the servants will be allowed to stop acting when they become afraid.\nRhez is already away from the meeting place named in the invitation. The real passengers have not been called to a new gathering or asked to prove that the performance concerns them.{/n}\n\"Then arrive with something she did not prepare to answer,\" you say.\n\"Her own servants would be persuasive.\"\n\"Provided they are still alive to speak.\"\n\"Yes. A tiresome limitation of the best witnesses.\"\n{n}She rights the chair. Its legs scrape the floor loudly enough to end the joke.{/n}",
+          "Text": "\"You think I am angry.\"\n\"You have furnished a room in which to overturn one chair.\"\n{n}She looks down at it, and a short sound escapes her that might be a laugh. There is no warmth in it, but some of the deliberation leaves her face.{/n}\n\"You may be useful this evening.\"\n\"An encouraging beginning.\"\n\"Do not become encouraged too quickly. Istrava wants the city to see me punish a joke because its subject embarrassed me. Several patrons would happily purchase that story with her life.\"\n{n}Nocticula brings a strip of yellow cloth from beneath the mask. A former attendant named Edris sent it with a drawing of the lower gallery. Three servants have been assigned to portray the rescued passengers. The guests will enact a hunt. Edris does not believe the servants will be allowed to stop acting when they become afraid.\nRhez is already away from the meeting place named in the invitation. The real passengers have not been called to a new gathering or asked to prove that the performance concerns them.{/n}\n\"Then arrive with something she did not prepare to answer,\" you say.\n\"Her own servants would be persuasive.\"\n\"Provided they are still alive to speak.\"\n\"Yes. A tiresome limitation of the best witnesses.\"\n{n}She rights the chair. Its legs scrape the floor loudly enough to end the joke.{/n}",
           "Choices": [
             {
               "Text": "\"Tell me what Edris can actually show us.\"",
@@ -127521,7 +127521,7 @@
         {
           "Id": "purpose",
           "Speaker": "Nocticula",
-          "Text": "\"Then we have an object. We still need a way into a house whose owner expects my temper to arrive ahead of me.\"\n{n}She removes the mask from the chair and offers it to you by its unbroken edge. The paint is cool against your thumb. Nothing behind its eyeholes resembles a face.\nYou turn it over. On the reverse, a little hook has been sewn into the ribbon. It is meant to catch when the wearer tries to pull the mask away.{/n}\n\"An economical hostess,\" you say.\n\"And an unimaginative one. She has mistaken difficulty in leaving for a reason to stay.\"\n\"You sound personally offended.\"\n\"I have spent a great deal of effort learning the difference.\"\n{n}She holds out her hand. You return the mask; she places it on the table, facedown. For the first time tonight she sits beside you rather than behind the arrangement.\nTogether you examine Edris's sketch until you can describe both stairways without looking. Nocticula corrects the width of a landing, then admits the correction is her guess and removes it. The missing measurement remains missing.\nBefore she lets you wake, she asks you to name the one thing she should not promise on your behalf. You answer that she must not put a living person at risk under the claim that you have already agreed to it.\nShe considers that longer than you expected.{/n}\n\"Then return with a plan before I grow fond of my own. I have had a head start.\"\n\"I noticed the furniture.\"\n{n}This time her laugh is real.{/n}",
+          "Text": "\"Then we have an object. We still need a way into a house whose owner expects my temper to arrive ahead of me.\"\n{n}She removes the mask from the chair and offers it to you by its unbroken edge. The paint is cool against your thumb. Nothing behind its eyeholes resembles a face.\nYou turn it over. On the reverse, a little hook has been sewn into the ribbon. It is meant to catch when the wearer tries to pull the mask away.{/n}\n\"An economical hostess,\" you say.\n\"And an unimaginative one. She has mistaken difficulty in leaving for a reason to stay.\"\n\"You sound personally offended.\"\n\"I have spent a great deal of effort learning the difference.\"\n{n}She holds out her hand. You return the mask; she places it on the table, facedown. Tonight, at last, she sits beside you rather than behind the arrangement.\nTogether you examine Edris's sketch until you can describe both stairways without looking. Nocticula corrects the width of a landing, then admits the correction is her guess and removes it. The missing measurement remains missing.\nBefore she lets you wake, she asks you to name the one thing she should not promise on your behalf. You answer that she must not put a living person at risk under the claim that you have already agreed to it.\nShe considers that longer than you expected.{/n}\n\"Then return with a plan before I grow fond of my own. I have had a head start.\"\n\"I noticed the furniture.\"\n{n}This time her laugh is real.{/n}",
           "Choices": [
             {
               "Text": "[Prepare a plan for the lodge from the information actually available.]",
@@ -127659,7 +127659,7 @@
         {
           "Id": "temper",
           "Speaker": "Nocticula",
-          "Text": "\"You think I am angry.\"\n\"You have furnished a room in which to overturn one chair.\"\n{n}She looks down at it, then laughs once. There is no warmth in the sound, but some of the deliberation leaves her face.{/n}\n\"You may be useful this evening.\"\n\"An encouraging beginning.\"\n\"Do not become encouraged too quickly. Istrava wants the city to see me punish a joke because its subject embarrassed me. Several patrons would happily purchase that story with her life.\"\n{n}Nocticula brings a strip of yellow cloth from beneath the mask. A former attendant named Edris sent it with a drawing of the lower gallery. Three servants have been assigned to portray the rescued passengers. The guests will enact a hunt. Edris does not believe the servants will be allowed to stop acting when they become afraid.\nRhez is already away from the meeting place named in the invitation. The real passengers have not been called to a new gathering or asked to prove that the performance concerns them.{/n}\n\"Then arrive with something she did not prepare to answer,\" you say.\n\"Her own servants would be persuasive.\"\n\"Provided they are still alive to speak.\"\n\"Yes. A tiresome limitation of the best witnesses.\"\n{n}She rights the chair. Its legs scrape the floor loudly enough to end the joke.{/n}",
+          "Text": "\"You think I am angry.\"\n\"You have furnished a room in which to overturn one chair.\"\n{n}She looks down at it, and a short sound escapes her that might be a laugh. There is no warmth in it, but some of the deliberation leaves her face.{/n}\n\"You may be useful this evening.\"\n\"An encouraging beginning.\"\n\"Do not become encouraged too quickly. Istrava wants the city to see me punish a joke because its subject embarrassed me. Several patrons would happily purchase that story with her life.\"\n{n}Nocticula brings a strip of yellow cloth from beneath the mask. A former attendant named Edris sent it with a drawing of the lower gallery. Three servants have been assigned to portray the rescued passengers. The guests will enact a hunt. Edris does not believe the servants will be allowed to stop acting when they become afraid.\nRhez is already away from the meeting place named in the invitation. The real passengers have not been called to a new gathering or asked to prove that the performance concerns them.{/n}\n\"Then arrive with something she did not prepare to answer,\" you say.\n\"Her own servants would be persuasive.\"\n\"Provided they are still alive to speak.\"\n\"Yes. A tiresome limitation of the best witnesses.\"\n{n}She rights the chair. Its legs scrape the floor loudly enough to end the joke.{/n}",
           "Choices": [
             {
               "Text": "\"Tell me what Edris can actually show us.\"",
@@ -127705,7 +127705,7 @@
         {
           "Id": "purpose",
           "Speaker": "Nocticula",
-          "Text": "\"Then we have an object. We still need a way into a house whose owner expects my temper to arrive ahead of me.\"\n{n}She removes the mask from the chair and offers it to you by its unbroken edge. The paint is cool against your thumb. Nothing behind its eyeholes resembles a face.\nYou turn it over. On the reverse, a little hook has been sewn into the ribbon. It is meant to catch when the wearer tries to pull the mask away.{/n}\n\"An economical hostess,\" you say.\n\"And an unimaginative one. She has mistaken difficulty in leaving for a reason to stay.\"\n\"You sound personally offended.\"\n\"I have spent a great deal of effort learning the difference.\"\n{n}She holds out her hand. You return the mask; she places it on the table, facedown. For the first time tonight she sits beside you rather than behind the arrangement.\nTogether you examine Edris's sketch until you can describe both stairways without looking. Nocticula corrects the width of a landing, then admits the correction is her guess and removes it. The missing measurement remains missing.\nBefore she lets you wake, she asks you to name the one thing she should not promise on your behalf. You answer that she must not put a living person at risk under the claim that you have already agreed to it.\nShe considers that longer than you expected.{/n}\n\"Then return with a plan before I grow fond of my own. I have had a head start.\"\n\"I noticed the furniture.\"\n{n}This time her laugh is real.{/n}",
+          "Text": "\"Then we have an object. We still need a way into a house whose owner expects my temper to arrive ahead of me.\"\n{n}She removes the mask from the chair and offers it to you by its unbroken edge. The paint is cool against your thumb. Nothing behind its eyeholes resembles a face.\nYou turn it over. On the reverse, a little hook has been sewn into the ribbon. It is meant to catch when the wearer tries to pull the mask away.{/n}\n\"An economical hostess,\" you say.\n\"And an unimaginative one. She has mistaken difficulty in leaving for a reason to stay.\"\n\"You sound personally offended.\"\n\"I have spent a great deal of effort learning the difference.\"\n{n}She holds out her hand. You return the mask; she places it on the table, facedown. Tonight, at last, she sits beside you rather than behind the arrangement.\nTogether you examine Edris's sketch until you can describe both stairways without looking. Nocticula corrects the width of a landing, then admits the correction is her guess and removes it. The missing measurement remains missing.\nBefore she lets you wake, she asks you to name the one thing she should not promise on your behalf. You answer that she must not put a living person at risk under the claim that you have already agreed to it.\nShe considers that longer than you expected.{/n}\n\"Then return with a plan before I grow fond of my own. I have had a head start.\"\n\"I noticed the furniture.\"\n{n}This time her laugh is real.{/n}",
           "Choices": [
             {
               "Text": "[Prepare a plan for the lodge from the information actually available.]",
@@ -127843,7 +127843,7 @@
         {
           "Id": "temper",
           "Speaker": "Nocticula",
-          "Text": "\"You think I am angry.\"\n\"You have furnished a room in which to overturn one chair.\"\n{n}She looks down at it, then laughs once. There is no warmth in the sound, but some of the deliberation leaves her face.{/n}\n\"You may be useful this evening.\"\n\"An encouraging beginning.\"\n\"Do not become encouraged too quickly. Istrava wants the city to see me punish a joke because its subject embarrassed me. Several patrons would happily purchase that story with her life.\"\n{n}Nocticula brings a strip of yellow cloth from beneath the mask. A former attendant named Edris sent it with a drawing of the lower gallery. Three servants have been assigned to portray the rescued passengers. The guests will enact a hunt. Edris does not believe the servants will be allowed to stop acting when they become afraid.\nRhez is already away from the meeting place named in the invitation. The real passengers have not been called to a new gathering or asked to prove that the performance concerns them.{/n}\n\"Then arrive with something she did not prepare to answer,\" you say.\n\"Her own servants would be persuasive.\"\n\"Provided they are still alive to speak.\"\n\"Yes. A tiresome limitation of the best witnesses.\"\n{n}She rights the chair. Its legs scrape the floor loudly enough to end the joke.{/n}",
+          "Text": "\"You think I am angry.\"\n\"You have furnished a room in which to overturn one chair.\"\n{n}She looks down at it, and a short sound escapes her that might be a laugh. There is no warmth in it, but some of the deliberation leaves her face.{/n}\n\"You may be useful this evening.\"\n\"An encouraging beginning.\"\n\"Do not become encouraged too quickly. Istrava wants the city to see me punish a joke because its subject embarrassed me. Several patrons would happily purchase that story with her life.\"\n{n}Nocticula brings a strip of yellow cloth from beneath the mask. A former attendant named Edris sent it with a drawing of the lower gallery. Three servants have been assigned to portray the rescued passengers. The guests will enact a hunt. Edris does not believe the servants will be allowed to stop acting when they become afraid.\nRhez is already away from the meeting place named in the invitation. The real passengers have not been called to a new gathering or asked to prove that the performance concerns them.{/n}\n\"Then arrive with something she did not prepare to answer,\" you say.\n\"Her own servants would be persuasive.\"\n\"Provided they are still alive to speak.\"\n\"Yes. A tiresome limitation of the best witnesses.\"\n{n}She rights the chair. Its legs scrape the floor loudly enough to end the joke.{/n}",
           "Choices": [
             {
               "Text": "\"Tell me what Edris can actually show us.\"",
@@ -127889,7 +127889,7 @@
         {
           "Id": "purpose",
           "Speaker": "Nocticula",
-          "Text": "\"Then we have an object. We still need a way into a house whose owner expects my temper to arrive ahead of me.\"\n{n}She removes the mask from the chair and offers it to you by its unbroken edge. The paint is cool against your thumb. Nothing behind its eyeholes resembles a face.\nYou turn it over. On the reverse, a little hook has been sewn into the ribbon. It is meant to catch when the wearer tries to pull the mask away.{/n}\n\"An economical hostess,\" you say.\n\"And an unimaginative one. She has mistaken difficulty in leaving for a reason to stay.\"\n\"You sound personally offended.\"\n\"I have spent a great deal of effort learning the difference.\"\n{n}She holds out her hand. You return the mask; she places it on the table, facedown. For the first time tonight she sits beside you rather than behind the arrangement.\nTogether you examine Edris's sketch until you can describe both stairways without looking. Nocticula corrects the width of a landing, then admits the correction is her guess and removes it. The missing measurement remains missing.\nBefore she lets you wake, she asks you to name the one thing she should not promise on your behalf. You answer that she must not put a living person at risk under the claim that you have already agreed to it.\nShe considers that longer than you expected.{/n}\n\"Then return with a plan before I grow fond of my own. I have had a head start.\"\n\"I noticed the furniture.\"\n{n}This time her laugh is real.{/n}",
+          "Text": "\"Then we have an object. We still need a way into a house whose owner expects my temper to arrive ahead of me.\"\n{n}She removes the mask from the chair and offers it to you by its unbroken edge. The paint is cool against your thumb. Nothing behind its eyeholes resembles a face.\nYou turn it over. On the reverse, a little hook has been sewn into the ribbon. It is meant to catch when the wearer tries to pull the mask away.{/n}\n\"An economical hostess,\" you say.\n\"And an unimaginative one. She has mistaken difficulty in leaving for a reason to stay.\"\n\"You sound personally offended.\"\n\"I have spent a great deal of effort learning the difference.\"\n{n}She holds out her hand. You return the mask; she places it on the table, facedown. Tonight, at last, she sits beside you rather than behind the arrangement.\nTogether you examine Edris's sketch until you can describe both stairways without looking. Nocticula corrects the width of a landing, then admits the correction is her guess and removes it. The missing measurement remains missing.\nBefore she lets you wake, she asks you to name the one thing she should not promise on your behalf. You answer that she must not put a living person at risk under the claim that you have already agreed to it.\nShe considers that longer than you expected.{/n}\n\"Then return with a plan before I grow fond of my own. I have had a head start.\"\n\"I noticed the furniture.\"\n{n}This time her laugh is real.{/n}",
           "Choices": [
             {
               "Text": "[Prepare a plan for the lodge from the information actually available.]",
@@ -128063,7 +128063,7 @@
         {
           "Id": "guest",
           "Speaker": "Nocticula",
-          "Text": "\"She would enjoy that. She would also spend the evening wondering whether enjoyment was the mistake.\"\n{n}Nocticula asks what you propose she wear. When you answer that it should give Istrava a reason to leave her chair, she looks at you for a long moment.{/n}\n\"That is a remarkably indirect compliment.\"\n\"I was trying to keep it useful.\"\n\"Try less hard.\"\n{n}The plan is simple enough to survive a frightened messenger. Nocticula will enter through the front. Istrava must either receive her or publicly refuse a guest she has spent days pretending to invite. Vhal will take the baton when his mistress rises. Rhez will approach him from the service stair while the room is watching somebody else.\nNocticula will use her own form. No double will hold a room full of demons through the first unexpected question. You will not be transported there by wanting to attend.\nThere is no promise that the bell remains silent. The attendants will be warned to run at its first sound, and Rhez will know that taking the baton matters more than keeping her cover.{/n}\n\"I shall have to trust someone else to enjoy the clever part,\" Nocticula says.\n\"You can enjoy being impossible to ignore.\"\n\"I generally do. It is the occasions on which I need to be ignored that require better company.\"",
+          "Text": "\"She would enjoy that. She would also spend the evening wondering whether enjoyment was the mistake.\"\n{n}Nocticula asks what you propose she wear. When you answer that it should give Istrava a reason to leave her chair, she looks at you as if you had moved a piece she had not seen.{/n}\n\"That is a remarkably indirect compliment.\"\n\"I was trying to keep it useful.\"\n\"Try less hard.\"\n{n}The plan is simple enough to survive a frightened messenger. Nocticula will enter through the front. Istrava must either receive her or publicly refuse a guest she has spent days pretending to invite. Vhal will take the baton when his mistress rises. Rhez will approach him from the service stair while the room is watching somebody else.\nNocticula will use her own form. No double will hold a room full of demons through the first unexpected question. You will not be transported there by wanting to attend.\nThere is no promise that the bell remains silent. The attendants will be warned to run at its first sound, and Rhez will know that taking the baton matters more than keeping her cover.{/n}\n\"I shall have to trust someone else to enjoy the clever part,\" Nocticula says.\n\"You can enjoy being impossible to ignore.\"\n\"I generally do. It is the occasions on which I need to be ignored that require better company.\"",
           "Choices": [
             {
               "Text": "[Draw the audience toward Nocticula while Rhez follows the baton.]",
@@ -128273,7 +128273,7 @@
         {
           "Id": "guest",
           "Speaker": "Nocticula",
-          "Text": "\"She would enjoy that. She would also spend the evening wondering whether enjoyment was the mistake.\"\n{n}Nocticula asks what you propose she wear. When you answer that it should give Istrava a reason to leave her chair, she looks at you for a long moment.{/n}\n\"That is a remarkably indirect compliment.\"\n\"I was trying to keep it useful.\"\n\"Try less hard.\"\n{n}The plan is simple enough to survive a frightened messenger. Nocticula will enter through the front. Istrava must either receive her or publicly refuse a guest she has spent days pretending to invite. Vhal will take the baton when his mistress rises. Rhez will approach him from the service stair while the room is watching somebody else.\nNocticula will use her own form. No double will hold a room full of demons through the first unexpected question. You will not be transported there by wanting to attend.\nThere is no promise that the bell remains silent. The attendants will be warned to run at its first sound, and Rhez will know that taking the baton matters more than keeping her cover.{/n}\n\"I shall have to trust someone else to enjoy the clever part,\" Nocticula says.\n\"You can enjoy being impossible to ignore.\"\n\"I generally do. It is the occasions on which I need to be ignored that require better company.\"",
+          "Text": "\"She would enjoy that. She would also spend the evening wondering whether enjoyment was the mistake.\"\n{n}Nocticula asks what you propose she wear. When you answer that it should give Istrava a reason to leave her chair, she looks at you as if you had moved a piece she had not seen.{/n}\n\"That is a remarkably indirect compliment.\"\n\"I was trying to keep it useful.\"\n\"Try less hard.\"\n{n}The plan is simple enough to survive a frightened messenger. Nocticula will enter through the front. Istrava must either receive her or publicly refuse a guest she has spent days pretending to invite. Vhal will take the baton when his mistress rises. Rhez will approach him from the service stair while the room is watching somebody else.\nNocticula will use her own form. No double will hold a room full of demons through the first unexpected question. You will not be transported there by wanting to attend.\nThere is no promise that the bell remains silent. The attendants will be warned to run at its first sound, and Rhez will know that taking the baton matters more than keeping her cover.{/n}\n\"I shall have to trust someone else to enjoy the clever part,\" Nocticula says.\n\"You can enjoy being impossible to ignore.\"\n\"I generally do. It is the occasions on which I need to be ignored that require better company.\"",
           "Choices": [
             {
               "Text": "[Draw the audience toward Nocticula while Rhez follows the baton.]",
@@ -128483,7 +128483,7 @@
         {
           "Id": "guest",
           "Speaker": "Nocticula",
-          "Text": "\"She would enjoy that. She would also spend the evening wondering whether enjoyment was the mistake.\"\n{n}Nocticula asks what you propose she wear. When you answer that it should give Istrava a reason to leave her chair, she looks at you for a long moment.{/n}\n\"That is a remarkably indirect compliment.\"\n\"I was trying to keep it useful.\"\n\"Try less hard.\"\n{n}The plan is simple enough to survive a frightened messenger. Nocticula will enter through the front. Istrava must either receive her or publicly refuse a guest she has spent days pretending to invite. Vhal will take the baton when his mistress rises. Rhez will approach him from the service stair while the room is watching somebody else.\nNocticula will use her own form. No double will hold a room full of demons through the first unexpected question. You will not be transported there by wanting to attend.\nThere is no promise that the bell remains silent. The attendants will be warned to run at its first sound, and Rhez will know that taking the baton matters more than keeping her cover.{/n}\n\"I shall have to trust someone else to enjoy the clever part,\" Nocticula says.\n\"You can enjoy being impossible to ignore.\"\n\"I generally do. It is the occasions on which I need to be ignored that require better company.\"",
+          "Text": "\"She would enjoy that. She would also spend the evening wondering whether enjoyment was the mistake.\"\n{n}Nocticula asks what you propose she wear. When you answer that it should give Istrava a reason to leave her chair, she looks at you as if you had moved a piece she had not seen.{/n}\n\"That is a remarkably indirect compliment.\"\n\"I was trying to keep it useful.\"\n\"Try less hard.\"\n{n}The plan is simple enough to survive a frightened messenger. Nocticula will enter through the front. Istrava must either receive her or publicly refuse a guest she has spent days pretending to invite. Vhal will take the baton when his mistress rises. Rhez will approach him from the service stair while the room is watching somebody else.\nNocticula will use her own form. No double will hold a room full of demons through the first unexpected question. You will not be transported there by wanting to attend.\nThere is no promise that the bell remains silent. The attendants will be warned to run at its first sound, and Rhez will know that taking the baton matters more than keeping her cover.{/n}\n\"I shall have to trust someone else to enjoy the clever part,\" Nocticula says.\n\"You can enjoy being impossible to ignore.\"\n\"I generally do. It is the occasions on which I need to be ignored that require better company.\"",
           "Choices": [
             {
               "Text": "[Draw the audience toward Nocticula while Rhez follows the baton.]",
@@ -135155,7 +135155,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}At the end of the harbor undertaking, Nocticula asked for more. The Commander kept their personal correspondence and declined further private rooms or a larger alliance.\nFor a long moment she aligned the scratch in a glass lens with the grain of the table. Then she set it down and began speaking of a merchant whose foolish venture had amused her. The conversation became easier. Her disappointment remained in the care with which she chose its subject.\nThey had found missing passengers, broken a stolen claim, and decided what to do with the woman who had sold it. Their disagreement about the next invitation did not appear in those records. It belonged to the room beside the quay, along with two empty glasses and the doorway through which the Commander left.\nNocticula had disliked several answers during the investigation. This was the one she had needed the longest silence to receive.{/n}",
+          "Text": "{n}At the end of the harbor undertaking, Nocticula asked for more. The Commander kept their personal correspondence and declined further private rooms or a larger alliance.\nShe spent a while aligning the scratch in a glass lens with the grain of the table. Then she set it down and began speaking of a merchant whose foolish venture had amused her. The conversation became easier. Her disappointment remained in the care with which she chose its subject.\nThey had found missing passengers, broken a stolen claim, and decided what to do with the woman who had sold it. Their disagreement about the next invitation did not appear in those records. It belonged to the room beside the quay, along with two empty glasses and the doorway through which the Commander left.\nNocticula had disliked several answers during the investigation. This was the one she had needed the longest silence to receive.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -135208,7 +135208,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}At the end of the harbor undertaking, Nocticula asked for more. The Commander kept their personal correspondence and declined further private rooms or a larger alliance.\nFor a long moment she aligned the scratch in a glass lens with the grain of the table. Then she set it down and began speaking of a merchant whose foolish venture had amused her. The conversation became easier. Her disappointment remained in the care with which she chose its subject.\nThey had found missing passengers, broken a stolen claim, and decided what to do with the woman who had sold it. Their disagreement about the next invitation did not appear in those records. It belonged to the room beside the quay, along with two empty glasses and the doorway through which the Commander left.\nNocticula had disliked several answers during the investigation. This was the one she had needed the longest silence to receive.{/n}",
+          "Text": "{n}At the end of the harbor undertaking, Nocticula asked for more. The Commander kept their personal correspondence and declined further private rooms or a larger alliance.\nShe spent a while aligning the scratch in a glass lens with the grain of the table. Then she set it down and began speaking of a merchant whose foolish venture had amused her. The conversation became easier. Her disappointment remained in the care with which she chose its subject.\nThey had found missing passengers, broken a stolen claim, and decided what to do with the woman who had sold it. Their disagreement about the next invitation did not appear in those records. It belonged to the room beside the quay, along with two empty glasses and the doorway through which the Commander left.\nNocticula had disliked several answers during the investigation. This was the one she had needed the longest silence to receive.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -135261,7 +135261,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}At the end of the harbor undertaking, Nocticula asked for more. The Commander kept the earlier arrangement and declined to enlarge it.\nFor a long moment she aligned the scratch in a glass lens with the grain of the table. Then she set it down and began speaking of a merchant whose foolish venture had amused her. The conversation became easier. Her disappointment remained in the care with which she chose its subject.\nThey had found missing passengers, broken a stolen claim, and decided what to do with the woman who had sold it. Their disagreement about the next invitation did not appear in those records. It belonged to the room beside the quay, along with two empty glasses and the doorway through which the Commander left.\nNocticula had disliked several answers during the investigation. This was the one she had needed the longest silence to receive.{/n}",
+          "Text": "{n}At the end of the harbor undertaking, Nocticula asked for more. The Commander kept the earlier arrangement and declined to enlarge it.\nShe spent a while aligning the scratch in a glass lens with the grain of the table. Then she set it down and began speaking of a merchant whose foolish venture had amused her. The conversation became easier. Her disappointment remained in the care with which she chose its subject.\nThey had found missing passengers, broken a stolen claim, and decided what to do with the woman who had sold it. Their disagreement about the next invitation did not appear in those records. It belonged to the room beside the quay, along with two empty glasses and the doorway through which the Commander left.\nNocticula had disliked several answers during the investigation. This was the one she had needed the longest silence to receive.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -140847,7 +140847,7 @@
         {
           "Id": "near",
           "Speaker": "Nurah",
-          "Text": "{n}Nurah sets the pen down. When you move the old letter away from the lamp, she catches your wrist.{/n}\n\"Leave it. I know where it is.\"\n{n}She rises onto the chair to reach you without pulling you down. Her hands settle on your shoulders, then slide beneath the edge of your collar. The touch is slow now, with none of the performance she used in front of Carrow.\nYou kiss the corner of her mouth. She turns toward you and makes you begin again properly. One knee presses against your hip as she steadies herself. The chair protests.{/n}\n\"This furniture has no discretion,\" she murmurs.\n\"We could move.\"\n\"I was hoping you would think of that.\"\n{n}You lift her from the chair. She laughs once, sharply, and wraps an arm around your neck. On the way past the table she reaches down to extinguish the lamp. The old letter disappears into darkness with everything else.\nLater, when she retrieves it, she does so without hurrying. She folds it into her sleeve and steals the warmer side of the cover before you can object.{/n}",
+          "Text": "{n}Nurah sets the pen down. When you move the old letter away from the lamp, she catches your wrist.{/n}\n\"Leave it. I know where it is.\"\n{n}She rises onto the chair to reach you without pulling you down. Her hands settle on your shoulders, then slide beneath the edge of your collar. The touch is slow now, with none of the performance she used in front of Carrow.\nYou kiss the corner of her mouth. She turns toward you and makes you begin again properly. One knee presses against your hip as she steadies herself. The chair protests.{/n}\n\"This furniture has no discretion,\" she murmurs.\n\"We could move.\"\n\"I was hoping you would think of that.\"\n{n}You lift her from the chair. She makes a small, affronted sound that turns into a laugh halfway through, and wraps an arm around your neck. On the way past the table she reaches down to extinguish the lamp. The old letter disappears into darkness with everything else.\nLater, when she retrieves it, she does so without hurrying. She folds it into her sleeve and steals the warmer side of the cover before you can object.{/n}",
           "Choices": [
             {
               "Text": "[Let the work wait until the next appointment.]",
@@ -141416,7 +141416,7 @@
         {
           "Id": "letter",
           "Speaker": "Narrator",
-          "Text": "{n}Vhal takes a folded page from inside her sleeve. Nurah recognizes the gesture before the paper opens.\n\"Since we are discussing authentic writing,\" the collector says, \"perhaps the author will explain this expression of affection for the household she now finds so convenient to condemn.\"\nShe begins reading Nurah's old praise of Trezbot. The room falls quiet. Nurah leaves the stand and walks toward her, slowly enough that nobody mistakes it for an attempt to snatch the letter.\nVhal finishes the first paragraph. Nurah holds out her hand.\n\"The next line,\" she says. \"You have skipped it.\"\nThe collector looks down. Whatever Nurah expected to find, it is there. For the first time that evening Vhal seems uncertain whether she has chosen the right page.{/n}",
+          "Text": "{n}Vhal takes a folded page from inside her sleeve. Nurah recognizes the gesture before the paper opens.\n\"Since we are discussing authentic writing,\" the collector says, \"perhaps the author will explain this expression of affection for the household she now finds so convenient to condemn.\"\nShe begins reading Nurah's old praise of Trezbot. The room falls quiet. Nurah leaves the stand and walks toward her, slowly enough that nobody mistakes it for an attempt to snatch the letter.\nVhal finishes the first paragraph. Nurah holds out her hand.\n\"The next line,\" she says. \"You have skipped it.\"\nThe collector looks down. Whatever Nurah expected to find, it is there. Vhal's certainty, which has lasted all evening, develops a small visible crack: she is no longer sure she has chosen the right page.{/n}",
           "Choices": [
             {
               "Text": "[Watch her compare the original against the variants Nurah circulated.]",
@@ -142037,7 +142037,7 @@
         {
           "Id": "bargain_collection",
           "Speaker": "Nurah",
-          "Text": "\"Those sources are my livelihood.\"\n\"The volumes are your livelihood,\" Nurah says. \"The sources are why your clients sometimes pay twice.\"\n{n}She turns the list toward Vhal. A second payment, entered privately, suppressed an earlier account. Vhal calls it additional research. Nurah asks whether the family would like to compare the invoices.{/n}\n\"You would destroy the value by publishing them.\"\n\"Yes. I would prefer you to sell me the value instead.\"\n{n}For the first time they look like competitors who understand the same business.\nVhal demands that existing contracts remain hers and that Nurah approach no current client for a new commission until those contracts are delivered. Nurah resists the delay. You point to the suppliers and former clients outside that list. She checks the names, calculates, and agrees.\nVhal keeps a public trade to rebuild. The proposed transfer gives Nurah the private purchase records, supplier correspondence, and coercive material. Her first offers must go to former clients and people outside the protected list, rather than the easiest buyers she wanted.\nThe collector adds a prohibition on publishing evidence of the offer she made concerning Bressa. Nurah places her pen beside the sentence rather than signing it.{/n}",
+          "Text": "\"Those sources are my livelihood.\"\n\"The volumes are your livelihood,\" Nurah says. \"The sources are why your clients sometimes pay twice.\"\n{n}She turns the list toward Vhal. A second payment, entered privately, suppressed an earlier account. Vhal calls it additional research. Nurah asks whether the family would like to compare the invoices.{/n}\n\"You would destroy the value by publishing them.\"\n\"Yes. I would prefer you to sell me the value instead.\"\n{n}Now they look like competitors who understand the same business.\nVhal demands that existing contracts remain hers and that Nurah approach no current client for a new commission until those contracts are delivered. Nurah resists the delay. You point to the suppliers and former clients outside that list. She checks the names, calculates, and agrees.\nVhal keeps a public trade to rebuild. The proposed transfer gives Nurah the private purchase records, supplier correspondence, and coercive material. Her first offers must go to former clients and people outside the protected list, rather than the easiest buyers she wanted.\nThe collector adds a prohibition on publishing evidence of the offer she made concerning Bressa. Nurah places her pen beside the sentence rather than signing it.{/n}",
           "Choices": [
             {
               "Text": "[Reserve the secretary's promised statement before accepting the publication restriction.]",
@@ -151982,7 +151982,7 @@
         {
           "Id": "verdict_joke",
           "Speaker": "Nocticula",
-          "Text": "\"I did not laugh.\"\n{n}The projection's mouth has not moved. Somewhere far below, something does, and the floor of Threshold remembers it for a long moment afterwards.{/n}",
+          "Text": "\"I did not laugh.\"\n{n}The projection's mouth has not moved. Somewhere far below, something does, and the floor of Threshold goes on remembering it afterwards, the way a bell remembers being struck.{/n}",
           "Choices": [
             {
               "Text": "\"Then say yes.\"",
@@ -152694,7 +152694,7 @@
         {
           "Id": "crossed",
           "Speaker": "Narrator",
-          "Text": "{n}She did not rise. She let the Commander come to her, all the way across a room built to make petitioners feel the distance, and watched every step of it the way she watched the Abyss: as something that would one day belong to her.{/n}\n{n}At the chair she hooked a finger in the Commander's collar and held it there, not pulling, her mouth a breath away. \"Well? Kneel, or kiss me. Choose quickly. I bore easily.\"{/n}",
+          "Text": "{n}She did not rise. She let the Commander come to her, all the way across a room built to make petitioners feel the distance, and watched every step of it the way she watched the Abyss: as something that would one day belong to her.{/n}\n{n}At the chair she laid one fingertip on the Commander's breastbone and held it there, not pressing, her mouth a breath away. \"Kneel, or kiss me. Choose quickly. I bore easily.\"{/n}",
           "Choices": [
             {
               "Text": "[Kiss her.]",
@@ -153055,7 +153055,7 @@
         {
           "Id": "kept",
           "Speaker": "Nocticula",
-          "Text": "\"Heard? Alushinyrra wore black for her this season. The highest seat in my city stood empty, and every little aristocrat beneath it began measuring it for their own backside. I sent flowers. Her doormen still tell callers that Lady Vellexia has temporarily left Alushinyrra, which is almost witty, for doormen.\"\n{n}Her voice drops.{/n} \"Then a little bird told me where she went. She is a looking-glass in your quarters, clown, and she is awake behind it. You kept her.\"\n{n}She considers you for a long moment.{/n} \"I could make you give her back. I will not. A succubus who lets herself be made into furniture has learned something I could never have taught her. Dust her. And cover her, on the nights you would rather she did not watch; she will be taking notes for me.\"",
+          "Text": "\"Heard? Alushinyrra wore black for her this season. The highest seat in my city stood empty, and every little aristocrat beneath it began measuring it for their own backside. I sent flowers. Her doormen still tell callers that Lady Vellexia has temporarily left Alushinyrra, which is almost witty, for doormen.\"\n{n}Her voice drops.{/n} \"Then a little bird told me where she went. She is a looking-glass in your quarters, clown, and she is awake behind it. You kept her.\"\n{n}She considers you the way she considers a wager she has already won.{/n} \"I could make you give her back. I will not. A succubus who lets herself be made into furniture has learned something I could never have taught her. Dust her. And cover her, on the nights you would rather she did not watch; she will be taking notes for me.\"",
           "Choices": [
             {
               "Text": "\"Ask her yourself. Carefully.\"",
@@ -153336,7 +153336,7 @@
           "Text": "{n}Vask's crate comes up the rift road on the ninth day, packed in straw that is warm to the touch. He will not unload it himself. His porters set it down in the corner of your stores and back away from it as if it had spoken.{/n}\n{n}Perhaps it had. None of them will say.{/n}",
           "Choices": [
             {
-              "Text": "\"Sign for it. I'll deal with her.\"",
+              "Text": "\"Put it in the stores. I'll deal with her.\"",
               "Next": null,
               "Set": [
                 "vellexia.trickster.primed",
@@ -153407,7 +153407,7 @@
         {
           "Id": "start",
           "Speaker": "conversant",
-          "Text": "{n}The old elf has the porters stand the crate against his shelves. He lifts the sheet himself and looks into the haze for a long time.{/n}\n\"Mahogany that remembers being skin. She was bored, Commander. Then she was surprised. Then she was this.\" {n}He lets the sheet fall back halfway.{/n} \"I read the story forwards. I cannot read it any other way. You, I think, can.\"",
+          "Text": "{n}The old elf has the porters stand the crate against his shelves. He lifts the sheet himself and looks into the haze until the lamp beside it starts to gutter.{/n}\n\"Mahogany that remembers being skin. She was bored, Commander. Then she was surprised. Then she was this.\" {n}He lets the sheet fall back halfway.{/n} \"I read the story forwards. I cannot read it any other way. You, I think, can.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -153426,7 +153426,7 @@
           "Text": "{n}A face forms in the haze, pale and furious and very interested.{/n}\n\"Oh, do go on. Tell {mf|him|her} the part where I was magnificent.\"",
           "Choices": [
             {
-              "Text": "[Play a nice trick on Vellexia] \"Hold still. I'm going to tell it backwards.\"",
+              "Text": "[Play a nice trick on Vellexia] \"Stay just so. I'm going to tell it backwards.\"",
               "Next": "nice",
               "Set": [],
               "Requires": [],
@@ -153456,7 +153456,7 @@
               }
             },
             {
-              "Text": "[Tell it backwards, without the sparks] \"Hold still. I'm going to tell it backwards.\"",
+              "Text": "[Tell it backwards, without the sparks] \"Stay just so. I'm going to tell it backwards.\"",
               "Next": "no_sparks",
               "Set": [],
               "Requires": [
@@ -153636,7 +153636,7 @@
     },
     {
       "Id": "vellexia.trickster.mirrored.unmirror_stores",
-      "Title": "Signed for",
+      "Title": "Behind the lamp oil",
       "Owner": "Vellexia",
       "MinChapter": 5,
       "MaxChapter": 5,
@@ -153664,7 +153664,7 @@
           "Text": "{n}A face forms in the haze, pale and furious and very interested.{/n}\n\"Oh, do go on. Tell {mf|him|her} the part where I was magnificent.\"",
           "Choices": [
             {
-              "Text": "[Play a nice trick on Vellexia] \"Hold still. I'm going to tell it backwards.\"",
+              "Text": "[Play a nice trick on Vellexia] \"Stay just so. I'm going to tell it backwards.\"",
               "Next": "nice",
               "Set": [],
               "Requires": [],
@@ -153694,7 +153694,7 @@
               }
             },
             {
-              "Text": "[Tell it backwards, without the sparks] \"Hold still. I'm going to tell it backwards.\"",
+              "Text": "[Tell it backwards, without the sparks] \"Stay just so. I'm going to tell it backwards.\"",
               "Next": "no_sparks",
               "Set": [],
               "Requires": [
@@ -154160,7 +154160,7 @@
         {
           "Id": "paid",
           "Speaker": "Narrator",
-          "Text": "{n}The canvas comes up the rift road rolled in oilcloth, and Vask's porter will not hand it over until you have signed twice. It is heavier than a canvas should be.{/n}",
+          "Text": "{n}The canvas comes up the rift road rolled in oilcloth, and Vask's porter will not hand it over until you have counted his master's second fee into his palm. It is heavier than a canvas should be.{/n}",
           "Choices": [
             {
               "Text": "\"Keep it dry.\"",
@@ -154252,7 +154252,7 @@
               }
             },
             {
-              "Text": "[Cast her spell from memory] \"I watched you do this to a juggler. Hold still.\"",
+              "Text": "[Cast her spell from memory] \"I watched you do this to a juggler. Stay where you are.\"",
               "Next": "no_sparks",
               "Set": [],
               "Requires": [
@@ -154307,7 +154307,7 @@
               }
             },
             {
-              "Text": "[Cast her spell from memory] \"I watched you do this to a juggler. Hold still.\"",
+              "Text": "[Cast her spell from memory] \"I watched you do this to a juggler. Stay where you are.\"",
               "Next": "no_sparks",
               "Set": [],
               "Requires": [
@@ -154442,7 +154442,7 @@
               }
             },
             {
-              "Text": "[Cast her spell from memory] \"I watched you do this to a juggler. Hold still.\"",
+              "Text": "[Cast her spell from memory] \"I watched you do this to a juggler. Stay where you are.\"",
               "Next": "no_sparks",
               "Set": [],
               "Requires": [
@@ -154779,7 +154779,7 @@
         {
           "Id": "gave",
           "Speaker": "Narrator",
-          "Text": "{n}She watches as you explain it, and not your face. When you finish she is quiet for a long moment, which is the most frightening thing you have seen her do.{/n}",
+          "Text": "{n}She watches as you explain it, and not your face. When you finish she says nothing at all, which is the most frightening thing you have seen her do.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -155079,7 +155079,7 @@
         {
           "Id": "gave",
           "Speaker": "Narrator",
-          "Text": "{n}She watches as you explain it, and not your face. When you finish she is quiet for a long moment, which is the most frightening thing you have seen her do.{/n}",
+          "Text": "{n}She watches as you explain it, and not your face. When you finish she says nothing at all, which is the most frightening thing you have seen her do.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -155706,7 +155706,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}She is warm the way a banked fire is warm. When she kisses you it is slow and thorough and completely without mercy, and her teeth close on your lower lip just hard enough to make you understand they are not a human woman's.{/n}\n{n}The dress goes to the floor in one whisper of silk. She stands in the lamplight in nothing but her skin and lets you look, and watches you look, with the open, greedy pleasure of a collector who has finally been given the piece she wanted. Then she pushes you back onto your own bed, climbs over you with her knees either side of your hips, and settles astride you, and bends down until her hair falls around both your faces like a curtain.{/n}\n\"Bare your throat, sweetheart,\" she breathes against it. \"Let us see which of us bites.\"",
+          "Text": "{n}She is warm the way a banked fire is warm. When she kisses you it is slow and thorough and completely without mercy, and her teeth find the corner of your mouth, sharp enough to make you understand they are not a human woman's.{/n}\n{n}The dress goes to the floor in one whisper of silk. She stands in the lamplight in nothing but her skin and lets you look, and watches you look, with the open, greedy pleasure of a collector who has finally been given the piece she wanted. Then she pushes you back onto your own bed, climbs over you with her knees either side of your hips, and settles astride you, and bends down until her hair falls around both your faces like a curtain.{/n}\n\"Bare your throat, sweetheart,\" she breathes against it. \"Let us see which of us bites.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -155725,7 +155725,7 @@
           "Text": "{n}Morning. The bed is empty and the shutters are open. There is a bruise on your throat the exact shape of her mouth, and a note on your maps of the Worldwound in handwriting that slopes like a laugh.{/n}\n{n}\"Come back alive. I have not finished with you, and I refuse to be bored by a monument.\"{/n}",
           "Choices": [
             {
-              "Text": "[Button the collar over the bruise.]",
+              "Text": "[Wind a scarf over the bruise.]",
               "Next": null,
               "Set": [
                 "vellexia.trickster.night_kept"
@@ -155773,7 +155773,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Lady Vellexia finished the conversation after the war, in her own time and at her own party. She sent for the Commander the way she sent for everyone, and was, for the first time anyone could remember, kept waiting. She found this so novel that she did not have the Commander upholstered.{/n}\n{n}The terms she named that night were hers. The Commander agreed to them, which she found almost as surprising.{/n}",
+          "Text": "{n}Lady Vellexia finished the conversation after the war, in her own time and at her own party. She sent for the Commander the way she sent for everyone, and was kept waiting, which nobody could remember happening to her before. She found this so novel that she did not have the Commander upholstered.{/n}\n{n}The terms she named that night were hers. The Commander agreed to them, which she found almost as surprising.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -156397,7 +156397,7 @@
     },
     {
       "Id": "nurah.trickster.prison.night_out",
-      "Title": "The ink that moved in the night",
+      "Title": "Professional disgust",
       "Owner": "Nurah",
       "MinChapter": 3,
       "MaxChapter": 5,
@@ -156406,7 +156406,7 @@
         {
           "Id": "start",
           "Speaker": "Nurah",
-          "Text": "{n}Nurah is sitting on the bunk exactly where you left her. There is rampart grit on her shoes, and the pardon lies across her knee, face up.{/n} \"I didn't sleep. I watched the paper. Around the second bell the 'Q' lost its tail. Then the seal turned the right way up. Then the date changed to today. The ink moved in the night. I watched it. It was very polite about it.\"\n{n}She taps the gaol ledger's copy of her sentence, which still says: imprisoned.{/n} \"So I went for a walk. The door opens for a pardoned woman, it turns out, and nobody in Drezen looks at a halfling after dark. I read your casualty lists in the archive and came back before the guard changed, because I wanted to ask you one thing to your face.\n\"You could have just opened the door. I'd have run to the nearest demon with a library. You'd rather keep me. Why?\"",
+          "Text": "{n}Nurah is sitting on the bunk exactly where you left her. There is rampart grit on her shoes, and the pardon lies across her knee, face up.{/n} \"I didn't sleep. I couldn't, with that thing in the room. Around the second bell I scraped the tail off your 'Q' with a bent nail. Then I lifted your seal with lamp-heat and set it back the right way up. Then I changed the date to today, because a pardon dated tomorrow is an insult to the profession.\"\n{n}She holds up her hands. The ink is under every nail.{/n} \"I forged my own pardon, Commander. Out of professional disgust. I suspect that was your whole plan.\"\n{n}She taps the gaol ledger's copy of her sentence, which still says: imprisoned.{/n} \"So I went for a walk. The door opens for a pardoned woman, it turns out, and nobody in Drezen looks at a halfling after dark. I read your casualty lists in the archive and came back before the guard changed, because I wanted to ask you one thing to your face.\n\"You could have just opened the door. I'd have run to the nearest demon with a library. You'd rather keep me. Why?\"",
           "Choices": [
             {
               "Text": "\"Because you can still write this war properly.\"",
@@ -156557,7 +156557,7 @@
         {
           "Id": "trusted",
           "Speaker": "Nurah",
-          "Text": "{n}She reads the blank for a long time.{/n} \"Trezbot never once left me a blank. Every line of his book had him in it before I'd picked up the pen. I don't know what to do with one.\"\n\"That is a compliment. Don't get used to it.\"",
+          "Text": "{n}She reads the blank twice, then turns the page over as if the name might be hiding on the back.{/n} \"Trezbot never once left me a blank. Every line of his book had him in it before I'd picked up the pen. I don't know what to do with one.\"\n\"That is a compliment. Don't get used to it.\"",
           "Choices": [
             {
               "Text": "[Leave her the proofs.]",
@@ -156689,7 +156689,7 @@
         {
           "Id": "terms",
           "Speaker": "Nurah",
-          "Text": "\"Well?\"",
+          "Text": "\"Take them or leave them. Nobody has ever let me say that to anyone before, so do me the courtesy of pretending to think about it.\"",
           "Choices": [
             {
               "Text": "\"Done.\"",
@@ -156763,7 +156763,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}She sets the manuscript on the plank desk and squares its edges with both hands. Then she climbs onto the bunk, so that for once she is the taller of you.{/n}\n\"Author's terms cover the rest of the evening too. I lead. If you're very good, I'll let you think it was your idea.\"\n{n}Her fingers are black to the second knuckle with ink. She uses them to undo your collar one hook at a time, as carefully as breaking the seal on someone else's letter, and she watches your face the whole while, the way she watches anything she means to describe later. She does not kiss carefully. She bites your lip, laughs into your mouth, and pulls you down onto a straw mattress built for one small prisoner. When the candle gutters, she pinches it out herself.{/n}",
+          "Text": "{n}She sets the manuscript on the plank desk and squares its edges with both hands. Then she climbs onto the bunk, so that for once she is the taller of you.{/n}\n\"Author's terms cover the rest of the evening too. I lead. If you're very good, I'll let you think it was your idea.\"\n{n}Her fingers are black to the second knuckle with ink. She uses them to undo the hooks of your coat one at a time, as carefully as breaking the seal on someone else's letter, and she watches your face the whole while, the way she watches anything she means to describe later. She does not kiss carefully. She bites your lip, laughs into your mouth, and pulls you down onto a straw mattress built for one small prisoner. When the candle gutters, she pinches it out herself.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -157321,10 +157321,10 @@
         {
           "Id": "sent",
           "Speaker": "Narrator",
-          "Text": "{n}The projection winks out, and the cage with it. By the next courier from Drezen, the chaplains of the citadel write that a soul has been delivered to their altar with a bill of sale pinned to it, in a hand none of them can read without feeling watched.{/n}\n{n}The rite has terms of its own. The Chaplain-General will not raise a traitor on a marilith's paper alone: the crusade must pay for the diamond the rite consumes, and the Commander must sign a writ that the woman raised stays dead on the crusade's rolls. She may live. She may not be Nurah Dendiwhar again, anywhere the crusade's writ runs.{/n}",
+          "Text": "{n}The projection winks out, and the cage with it. By the next courier from Drezen, the chaplains of the citadel write that a soul has been delivered to their altar with a bill of sale pinned to it, in a hand none of them can read without feeling watched.{/n}\n{n}The rite has a price of its own. The Chaplain-General will not raise a traitor on a marilith's paper alone: the crusade must buy the diamond the rite consumes, and the woman raised will not be Nurah Dendiwhar. The chaplains strike that name from the living before the rite begins, on the Commander's word, and she wakes under no name at all. She may live. She may not be herself again, anywhere the crusade's priests are heard.{/n}",
           "Choices": [
             {
-              "Text": "[Pay for the diamond and sign the writ.]",
+              "Text": "[Buy the diamond, and give the word that strikes her name.]",
               "Next": null,
               "Set": [
                 "nurah.trickster.cost.chaplains_writ"
@@ -157568,10 +157568,10 @@
         {
           "Id": "freed",
           "Speaker": "Narrator",
-          "Text": "{n}Ramisa's quill writes \"the author herself\" and refuses to be put down until the chaplain's form is filled in too. The crate goes to the chapel that afternoon.{/n}\n{n}The rite has terms of its own. The Chaplain-General will not raise a traitor on a marilith's paper alone: the crusade must pay for the diamond the rite consumes, and the Commander must sign a writ that the woman raised stays dead on the crusade's rolls. She may live. She may not be Nurah Dendiwhar again, anywhere the crusade's writ runs.{/n}",
+          "Text": "{n}Ramisa's quill writes \"the author herself\" and refuses to be put down until the chaplain's form is filled in too. The crate goes to the chapel that afternoon.{/n}\n{n}The rite has a price of its own. The Chaplain-General will not raise a traitor on a marilith's paper alone: the crusade must buy the diamond the rite consumes, and the woman raised will not be Nurah Dendiwhar. The chaplains strike that name from the living before the rite begins, on the Commander's word, and she wakes under no name at all. She may live. She may not be herself again, anywhere the crusade's priests are heard.{/n}",
           "Choices": [
             {
-              "Text": "[Pay for the diamond and sign the writ.]",
+              "Text": "[Buy the diamond, and give the word that strikes her name.]",
               "Next": null,
               "Set": [
                 "nurah.trickster.cost.chaplains_writ"
@@ -157716,7 +157716,7 @@
           "Text": "{n}A pedlar bound south stops at the Drezen gate with a crate of fresh pamphlets: \"The Pawn Who Left the Board\", by N. D. The dedication page is blank.{/n}",
           "Choices": [
             {
-              "Text": "[Buy the whole run, and write the dedication into every copy.]",
+              "Text": "[Buy the whole run, pay the printer, and write the dedication into every copy.]",
               "Next": "forged",
               "Set": [
                 "nurah.trickster.primed",
@@ -157747,7 +157747,7 @@
         {
           "Id": "forged",
           "Speaker": "Narrator",
-          "Text": "{n}Two hundred copies, one night, one candle. By the fortieth you are forging her hand better than she does: \"To the Commander, who kept me because I had stopped being funny. N. D.\" The pedlar leaves at dawn with the crate and no idea.{/n}",
+          "Text": "{n}Two hundred copies, one night, one candle. By the fortieth you are forging her hand better than she does: \"To the Commander, who kept me because I had stopped being funny. N. D.\" The pedlar leaves at dawn with the crate and no idea. The printer in the lower city keeps the line locked in his forme for the next edition, and a quartermaster's purse keeps him from remembering who asked.{/n}",
           "Choices": [
             {
               "Text": "[Go to bed.]",
@@ -157839,7 +157839,7 @@
         {
           "Id": "letter",
           "Speaker": "Nurah",
-          "Text": "\"I did not write that. I checked every copy. I wrote it in every copy. HOW. I burned an edition, and the next one came off the press with the same line in my hand, set in a type the printer swears he never cast. It is an insult in my own handwriting, Commander, and it will outlive us both.\n\"And I am funny. I am extremely funny. So why would you even want to keep a woman you think isn't?\"",
+          "Text": "\"I did not write that. I checked every copy. I wrote it in every copy, apparently, in my own hand, better than I write it. I burned an edition, and the next one came off the press with the same line, because somebody had paid my printer to keep it locked in the forme. He is a very bad liar. The purse had a crusade quartermaster's knot on it. It is an insult in my own handwriting, Commander, and you paid good money to make it outlive us both.\n\"And I am funny. I am extremely funny. So why would you even want to keep a woman you think isn't?\"",
           "Choices": [
             {
               "Text": "\"Because you can still write this war properly.\"",
@@ -158047,7 +158047,7 @@
         {
           "Id": "trusted",
           "Speaker": "Nurah",
-          "Text": "{n}She reads the blank for a long time.{/n} \"Trezbot never once left me a blank. Every line of his book had him in it before I'd picked up the pen. I don't know what to do with one.\"\n\"That is a compliment. Don't get used to it.\"",
+          "Text": "{n}She reads the blank twice, then turns the page over as if the name might be hiding on the back.{/n} \"Trezbot never once left me a blank. Every line of his book had him in it before I'd picked up the pen. I don't know what to do with one.\"\n\"That is a compliment. Don't get used to it.\"",
           "Choices": [
             {
               "Text": "[Leave her the proofs.]",
@@ -158112,7 +158112,7 @@
         {
           "Id": "start",
           "Speaker": "Nurah",
-          "Text": "{n}She does not get up. She finishes the apple, core and all, and wipes her fingers on the chaplains' shift.{/n} \"I've had a mouth again since the chaplains stopped arguing with me about my own name. I'm catching up.\n\"The chaplains wanted me to stay in the chapel and be grateful. I told them I'd been property of the crusade, property of a marilith, and property of nobody, in that order, and that I preferred the last one. Then I walked out. You signed a writ that I stay dead on the crusade's rolls, Commander. It's the best disguise I've ever had, and I didn't even have to forge it.\"\n{n}She holds up the parcel: the whole manuscript, tied with chapel string.{/n}\n\"Terms. Author's terms, which nobody in my life has ever let me set. My name on the cover. Yours nowhere unless I put it there, and I decide how. You don't touch a word, and you don't read it until it's bound.\"",
+          "Text": "{n}She does not get up. She finishes the apple, core and all, and wipes her fingers on the chaplains' shift.{/n} \"I've had a mouth again since the chaplains stopped arguing with me about my own name. I'm catching up.\n\"The chaplains wanted me to stay in the chapel and be grateful. I told them I'd been property of the crusade, property of a marilith, and property of nobody, in that order, and that I preferred the last one. Then I walked out. You had them strike my name from the living, Commander. I woke up as nobody. It's the best disguise I've ever had, and I didn't even have to forge it.\"\n{n}She holds up the parcel: the whole manuscript, tied with chapel string.{/n}\n\"Terms. Author's terms, which nobody in my life has ever let me set. My name on the cover. Yours nowhere unless I put it there, and I decide how. You don't touch a word, and you don't read it until it's bound.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -158182,7 +158182,7 @@
         {
           "Id": "terms",
           "Speaker": "Nurah",
-          "Text": "\"Well?\"",
+          "Text": "\"Take them or leave them. Nobody has ever let me say that to anyone before, so do me the courtesy of pretending to think about it.\"",
           "Choices": [
             {
               "Text": "\"Done.\"",
@@ -158272,7 +158272,7 @@
         {
           "Id": "morning",
           "Speaker": "Narrator",
-          "Text": "{n}Dawn finds her at your desk in your shirt, which comes to her knees, writing fast with your best pen.{/n} \"Chapter nine,\" she says without looking up. \"I'm taking out the hunchback. I'm putting in something much worse. You'll love it.\"\n{n}Two days later the chaplains send the rest of their account: one grey shift, not returned. It has been paid already, in a small, stitched hand, with money you are fairly sure used to be yours, and signed with a name that is not hers.{/n}",
+          "Text": "{n}Dawn finds her at your desk in your shirt, which comes to her knees, writing fast with your best pen.{/n} \"Chapter nine,\" she says without looking up. \"I'm taking out the hunchback. I'm putting in something much worse. You'll love it.\"\n{n}Two days later the chaplains send the rest of their account: one grey shift, not returned. It has been paid already, in a small, stitched hand, with money you are fairly sure used to be yours, and made out in a name that is not hers.{/n}",
           "Choices": [
             {
               "Text": "[Let her write.]",
@@ -158402,7 +158402,7 @@
         {
           "Id": "terms",
           "Speaker": "Nurah",
-          "Text": "\"Well?\"",
+          "Text": "\"Take them or leave them. Nobody has ever let me say that to anyone before, so do me the courtesy of pretending to think about it.\"",
           "Choices": [
             {
               "Text": "\"Done.\"",
@@ -158599,7 +158599,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The crusade's rolls list Nurah Dendiwhar among the dead of Drezen, under the Commander's own writ. The author of 'To the Abyss and Back' signed every copy with another name, and the inquisitors who hunted her never once thought to look for a dead woman.",
+              "Text": "The crusade's rolls list Nurah Dendiwhar among the dead of Drezen, struck off on the Commander's word. The author of 'To the Abyss and Back' put another name on every copy, and the inquisitors who hunted her never once thought to look for a dead woman.",
               "Requires": [
                 "nurah.trickster.cost.chaplains_writ"
               ],
@@ -158607,7 +158607,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She never managed to remove it. After a while she stopped trying, and began adding a footnote to it instead, a different one in every edition.",
+              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She never managed to remove it: every printer she went to had already been paid to keep it. After a while she stopped trying, and began adding a footnote to it instead, a different one in every edition.",
               "Requires": [
                 "nurah.trickster.cost.ghostwritten"
               ],
@@ -158615,7 +158615,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Drezen gaol kept her cell exactly as she left it, plank desk and all. The turnkeys still tell new recruits that the prisoner in it was pardoned by a forgery, and that nobody has ever been able to prove which.",
+              "Text": "The Drezen gaol kept her cell exactly as she left it, plank desk and all. The turnkeys still tell new recruits that the prisoner in it forged her own pardon out of professional disgust, and that the Commander had counted on it.",
               "Requires": [
                 "nurah.trickster.cost.ledger_lie",
                 "nurah.trickster.released"
@@ -158654,7 +158654,7 @@
         {
           "Id": "went",
           "Speaker": "Narrator",
-          "Text": "{n}She opened her door with the book's twin in her other hand and looked at the Commander's empty hands for a long moment.{/n} \"You haven't read it.\" {n}She pulled the Commander inside by the collar.{/n} \"Good. I'll read you the best parts myself. Slowly. With demonstrations.\"",
+          "Text": "{n}She opened her door with the book's twin in her other hand and looked at the Commander's empty hands.{/n} \"You haven't read it.\" {n}She pulled the Commander inside by the sleeve.{/n} \"Good. I'll read you the best parts myself. Slowly. With demonstrations.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -158676,7 +158676,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The crusade's rolls list Nurah Dendiwhar among the dead of Drezen, under the Commander's own writ. The author of 'To the Abyss and Back' signed every copy with another name, and the inquisitors who hunted her never once thought to look for a dead woman.",
+              "Text": "The crusade's rolls list Nurah Dendiwhar among the dead of Drezen, struck off on the Commander's word. The author of 'To the Abyss and Back' put another name on every copy, and the inquisitors who hunted her never once thought to look for a dead woman.",
               "Requires": [
                 "nurah.trickster.cost.chaplains_writ"
               ],
@@ -158684,7 +158684,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She never managed to remove it. After a while she stopped trying, and began adding a footnote to it instead, a different one in every edition.",
+              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She never managed to remove it: every printer she went to had already been paid to keep it. After a while she stopped trying, and began adding a footnote to it instead, a different one in every edition.",
               "Requires": [
                 "nurah.trickster.cost.ghostwritten"
               ],
@@ -158692,7 +158692,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Drezen gaol kept her cell exactly as she left it, plank desk and all. The turnkeys still tell new recruits that the prisoner in it was pardoned by a forgery, and that nobody has ever been able to prove which.",
+              "Text": "The Drezen gaol kept her cell exactly as she left it, plank desk and all. The turnkeys still tell new recruits that the prisoner in it forged her own pardon out of professional disgust, and that the Commander had counted on it.",
               "Requires": [
                 "nurah.trickster.cost.ledger_lie",
                 "nurah.trickster.released"
@@ -158774,7 +158774,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The crusade's rolls list Nurah Dendiwhar among the dead of Drezen, under the Commander's own writ. The author of 'To the Abyss and Back' signed every copy with another name, and the inquisitors who hunted her never once thought to look for a dead woman.",
+              "Text": "The crusade's rolls list Nurah Dendiwhar among the dead of Drezen, struck off on the Commander's word. The author of 'To the Abyss and Back' put another name on every copy, and the inquisitors who hunted her never once thought to look for a dead woman.",
               "Requires": [
                 "nurah.trickster.cost.chaplains_writ"
               ],
@@ -158782,7 +158782,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She never managed to remove it. After a while she stopped trying, and began adding a footnote to it instead, a different one in every edition.",
+              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She never managed to remove it: every printer she went to had already been paid to keep it. After a while she stopped trying, and began adding a footnote to it instead, a different one in every edition.",
               "Requires": [
                 "nurah.trickster.cost.ghostwritten"
               ],
@@ -158790,7 +158790,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Drezen gaol kept her cell exactly as she left it, plank desk and all. The turnkeys still tell new recruits that the prisoner in it was pardoned by a forgery, and that nobody has ever been able to prove which.",
+              "Text": "The Drezen gaol kept her cell exactly as she left it, plank desk and all. The turnkeys still tell new recruits that the prisoner in it forged her own pardon out of professional disgust, and that the Commander had counted on it.",
               "Requires": [
                 "nurah.trickster.cost.ledger_lie",
                 "nurah.trickster.released"
@@ -158850,7 +158850,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "Nurah Dendiwhar published her account of the Fifth Crusade two years after Threshold, under her own name, which surprised everyone who knew her. It sold out in Nerosyan in a week and was banned in Mendev in two. The chapter on the Commander was the longest in the book, and the only one in which she admitted to liking anyone.",
+          "Text": "Nurah Dendiwhar published her account of the Fifth Crusade two years after Threshold. It sold out in Nerosyan in a week and was banned in Mendev in two. The chapter on the Commander was the longest in the book, and the only one in which she admitted to liking anyone.",
           "Choices": [
             {
               "Text": "Continue",
@@ -159260,7 +159260,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Arsinoe's clerk brings it with the morning dispatches, apologising before he has set it down. The hospital's lost-letters box was emptied yesterday for the first time since the siege; this was at the bottom, under a requisition for bandages and a love letter to a Houndheart that nobody has claimed.{/n}\n{n}The seal is a smear of candle wax with a thumbprint in it. The date is the day the stolen souls came home.{/n}\n\"Commander. I owe you a wedding night's worth of thanks and I can't possibly afford it, so you'll have to take a play instead. There is a vampire princess in it. She is very mysterious and very badly housed. I have written all of it except the last line, which is blank, and which I am enclosing, because I would like you to fill it in and I would like you not to be sensible about it. Bring no speeches. K.\"\n{n}The enclosed page is folded small. Its last line is empty.{/n}",
+          "Text": "{n}Arsinoe's clerk brings it with the morning dispatches, apologising before he has set it down. The hospital's lost-letters box was emptied yesterday, which nobody had done since the siege; this was at the bottom, under a requisition for bandages and a love letter to a Houndheart that nobody has claimed.{/n}\n{n}The seal is a smear of candle wax with a thumbprint in it. The date is the day the stolen souls came home.{/n}\n\"Commander. I owe you a wedding night's worth of thanks and I can't possibly afford it, so you'll have to take a play instead. There is a vampire princess in it. She is very mysterious and very badly housed. I have written all of it except the last line, which is blank, and which I am enclosing, because I would like you to fill it in and I would like you not to be sensible about it. Bring no speeches. K.\"\n{n}The enclosed page is folded small. Its last line is empty.{/n}",
           "Choices": [
             {
               "Text": "[Read it again] \"She wrote the day she woke.\"",
@@ -159515,7 +159515,7 @@
         {
           "Id": "swapped",
           "Speaker": "Narrator",
-          "Text": "{n}He hands it over. Of course he does: a craftsman likes his work admired. You turn it to the lamp, and turn it back, and hand him the other one, the counterfeit of Sunhammer's work you have been carrying, cut by some honest forger to pass for his master's. He never feels the difference.{/n}\n{n}Then you appraise the stone in your fist out loud, the way you would at any pawnbroker's counter: a bubble just off centre, a crack no wider than a hair from the girdle clean through to the heart. When you open your hand the crack is there, and the pale light that lived in the stone has already run out along it, into the warm air above the cot.{/n}\n{n}The apprentice squints at the counterfeit between his own fingers. For the first time since he walked in, he looks unsure of his trade.{/n}",
+          "Text": "{n}He hands it over. Of course he does: a craftsman likes his work admired. You turn it to the lamp, and turn it back, and hand him the other one, the counterfeit of Sunhammer's work you have been carrying, cut by some honest forger to pass for his master's. He never feels the difference.{/n}\n{n}Then you appraise the stone in your fist out loud, the way you would at any pawnbroker's counter: a bubble just off centre, a crack no wider than a hair from the girdle clean through to the heart. When you open your hand the crack is there, and the pale light that lived in the stone has already run out along it, into the warm air above the cot.{/n}\n{n}The apprentice squints at the counterfeit between his own fingers. Now, and not before, he looks unsure of his trade.{/n}",
           "Choices": [
             {
               "Text": "[Send him back to his master] \"Take your stone back to Sunhammer. Tell him the Commander said it was flawed.\"",
@@ -159539,7 +159539,7 @@
         {
           "Id": "paid",
           "Speaker": "Narrator",
-          "Text": "{n}He counts it twice, the whole thousand, coin by coin, with the patience of a man paid by the piece. Then he takes a slip of paper from his apron, writes *One favour, owed* on it in a neat guild hand, and holds it out for your signature.{/n}\n{n}You sign it. Arsinoe watches you do it and says nothing, and her silence is worse than the price.{/n}\n{n}He empties the pouch onto the blanket, stones in a row, like rings laid out on a jeweller's velvet, and sets the pale one over Kiana's heart. They warm one by one. Down the ward, the sleepers breathe in. A boy sits up and asks, very loudly, where his ring went. Somewhere a dog barks, and somebody laughs, and somebody else starts to cry.{/n}",
+          "Text": "{n}He counts it twice, the whole thousand, coin by coin, with the patience of a man paid by the piece. Then he holds out his right hand, palm up, the way a guild master seals a commission with no price named. \"One favour, owed.\" You lay your palm on his. It is cold, and he does not let go until you look him in the eye.{/n}\n{n}Arsinoe watches you do it and says nothing, and her silence is worse than the price.{/n}\n{n}He empties the pouch onto the blanket, stones in a row, like rings laid out on a jeweller's velvet, and sets the pale one over Kiana's heart. They warm one by one. Down the ward, the sleepers breathe in. A boy sits up and asks, very loudly, where his ring went. Somewhere a dog barks, and somebody laughs, and somebody else starts to cry.{/n}",
           "Choices": [
             {
               "Text": "[Watch her wake] \"Kiana?\"",
@@ -159620,7 +159620,7 @@
         {
           "Id": "woke_paid",
           "Speaker": "Kiana",
-          "Text": "{n}She sits up last, and too fast, and grabs the edge of the cot, and looks down the ward at everyone else doing the same.{/n}\n\"You paid him.\" {n}It isn't a question. She laughs, a little too high.{/n} \"The Commander of the crusade bought a whole wedding back from a jeweller. Like a ring out of pawn. I'm going to put that in a play, and nobody is going to believe it.\"\n{n}Then she sees the slip of paper going into the apprentice's apron, with your name on it, and she stops laughing.{/n}\n\"What did you promise him?\"",
+          "Text": "{n}She sits up last, and too fast, and grabs the edge of the cot, and looks down the ward at everyone else doing the same.{/n}\n\"You paid him.\" {n}It isn't a question. She laughs, a little too high.{/n} \"The Commander of the crusade bought a whole wedding back from a jeweller. Like a ring out of pawn. I'm going to put that in a play, and nobody is going to believe it.\"\n{n}Then she sees your palm flat on the apprentice's, the guild way, and she stops laughing.{/n}\n\"What did you promise him?\"",
           "Choices": [
             {
               "Text": "[Tell her it is your debt, not hers.]",
@@ -159738,7 +159738,7 @@
         {
           "Id": "paid",
           "Speaker": "Kiana",
-          "Text": "{n}He counts it twice. Then he writes *One favour, owed* on a slip of paper in a neat guild hand, and you sign it, and he empties the pouch onto the nearest blanket: stones in a row, like rings laid out on a jeweller's velvet. They warm one by one. Down the ward, the sleepers breathe in. The dog sneezes.{/n}\n\"Every one of them.\" {n}Kiana does not laugh. She takes your hand instead and holds it hard enough to hurt.{/n} \"You paid for every one of them. Do you know what you've promised him?\"",
+          "Text": "{n}He counts it twice. Then he holds out his palm, the guild way, \"One favour, owed,\" and you strike it, and he empties the pouch onto the nearest blanket: stones in a row, like rings laid out on a jeweller's velvet. They warm one by one. Down the ward, the sleepers breathe in. The dog sneezes.{/n}\n\"Every one of them.\" {n}Kiana does not laugh. She takes your hand instead and holds it hard enough to hurt.{/n} \"You paid for every one of them. Do you know what you've promised him?\"",
           "Choices": [
             {
               "Text": "[Count the stones with her] \"No. I'll find out when he asks.\"",
@@ -159897,7 +159897,7 @@
         {
           "Id": "order",
           "Speaker": "Narrator",
-          "Text": "{n}You read it into the minutes of the war council, in front of every officer at the table: *Standing order. No marriage leave for anyone under arms until the siege lines hold.* The quartermaster, who has been losing a sentry a week to wedding nights, nods before you have finished. For weeks the officers have been complaining that they are sick of fighting and doing nothing else; you have answered their prayer the wrong way round, and a few of them laugh, and then stop, because it is an order.{/n}\n{n}By evening there are fourteen couples outside the chancery, some still in their good clothes. A baker and a crossbowman ask you to your face how long the lines will take to hold. You have no answer for them that isn't the order.{/n}\n{n}The clerk stamps the licence POSTPONED and sands it. The word dries, and stays.{/n}",
+          "Text": "{n}You read it into the minutes of the war council, in front of every officer at the table: *Standing order. No marriage leave for anyone under arms until the siege lines hold.* The quartermaster, who has been losing a sentry a week to wedding nights, nods before you have finished. For weeks the officers have been complaining that they are sick of fighting and doing nothing else; you have answered their prayer the wrong way round, and a few of them laugh, and then stop, because it is an order.{/n}\n{n}By evening there are fourteen couples outside the chancery, some still in their good clothes. A baker and a crossbowman ask you to your face how long the lines will take to hold. You have no answer for them that isn't the order.{/n}\n{n}The clerk stamps the licence POSTPONED and sands it. Nobody in Drezen argues with a stamp that has the war council behind it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -160086,7 +160086,7 @@
         {
           "Id": "ransomed_woke",
           "Speaker": "Kiana",
-          "Text": "{n}Kiana is sitting on the edge of a temple cot in a borrowed robe. Out in the ward, people are complaining about the soup, which Arsinoe says is the surest sign of recovery she knows.{/n}\n\"They're all awake. Every one. The dog bit a Houndheart this morning; he says it was an honour.\" {n}She stops smiling.{/n} \"And you owe a man who put our souls in a cup. Arsinoe won't tell me what you signed. She says it's between you and your conscience. I told her you might not have one. She said that was what worried her.\"",
+          "Text": "{n}Kiana is sitting on the edge of a temple cot in a borrowed robe. Out in the ward, people are complaining about the soup, which Arsinoe says is the surest sign of recovery she knows.{/n}\n\"They're all awake. Every one. The dog bit a Houndheart this morning; he says it was an honour.\" {n}She stops smiling.{/n} \"And you owe a man who put our souls in a cup. Arsinoe won't tell me what you promised. She says it's between you and your conscience. I told her you might not have one. She said that was what worried her.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -160118,7 +160118,7 @@
         {
           "Id": "ransomed_awake",
           "Speaker": "Kiana",
-          "Text": "{n}The ward behind the curtain is loud. People who have been empty for months are demanding their shoes, their families and their jewellery back, and then, remembering, not their jewellery. Kiana is going from cot to cot with a jug of water and a list, and the dog is following her.{/n}\n\"Every one of them, Commander. I keep counting in case one of them is a mistake.\" {n}She puts the jug down.{/n} \"And you owe him. The man who did this. Arsinoe won't say what you signed.\"",
+          "Text": "{n}The ward behind the curtain is loud. People who have been empty for months are demanding their shoes, their families and their jewellery back, and then, remembering, not their jewellery. Kiana is going from cot to cot with a jug of water and a list, and the dog is following her.{/n}\n\"Every one of them, Commander. I keep counting in case one of them is a mistake.\" {n}She puts the jug down.{/n} \"And you owe him. The man who did this. Arsinoe won't say what you promised.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -160317,7 +160317,7 @@
         {
           "Id": "spared",
           "Speaker": "Kiana",
-          "Text": "{n}She looks at you for a long moment.{/n}\n\"That's kind.\" {n}A small, crooked smile.{/n} \"It's also a speech, and I said no speeches. I'll let you off, once. It's been a very long month, and I've decided I'm owed a few things going my way.\"",
+          "Text": "{n}She looks at you, and keeps looking.{/n}\n\"That's kind.\" {n}A small, crooked smile.{/n} \"It's also a speech, and I said no speeches. I'll let you off, once. It's been a very long month, and I've decided I'm owed a few things going my way.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -160469,10 +160469,10 @@
         {
           "Id": "start",
           "Speaker": "Arsinoe",
-          "Text": "{n}He is at Arsinoe's counter, the same young man in the same leather apron, with the same pouch at his belt, lighter by one stone. Arsinoe has not offered him a chair.{/n}\n\"Commander.\" {n}He bows exactly as low as before.{/n} \"Master Sunhammer received my report of the flaw, and of what his stone was called at the lamp. He was displeased, and when my master is displeased he revises his terms. The rest of the wedding party: a thousand crowns and the favour, as before.\" {n}He lays a sheet of paper on the counter, already written, with a space at the foot.{/n} \"And an apology, in your hand, for the insult to his craft. He intends to frame it.\"\n{n}Behind the curtain somebody has stopped moving. Kiana is standing in the gap in her borrowed robe, listening.{/n}\n\"Don't you dare,\" {n}she says.{/n} \"Don't you *dare* apologise to him.\" {n}Then, much more quietly, looking at the pouch:{/n} \"...Unless that's what it costs.\"",
+          "Text": "{n}He is at Arsinoe's counter, the same young man in the same leather apron, with the same pouch at his belt, lighter by one stone. Arsinoe has not offered him a chair.{/n}\n\"Commander.\" {n}He bows exactly as low as before.{/n} \"Master Sunhammer received my report of the flaw, and of what his stone was called at the lamp. He was displeased, and when my master is displeased he revises his terms. The rest of the wedding party: a thousand crowns and the favour, as before.\" {n}He clears his throat.{/n} \"And an apology, in your own voice, for the insult to his craft. He has written the words himself. I am to carry them back exactly as you say them, and he intends to have them read out at the guild's feast, every year, for as long as there is a guild.\"\n{n}Behind the curtain somebody has stopped moving. Kiana is standing in the gap in her borrowed robe, listening.{/n}\n\"Don't you dare,\" {n}she says.{/n} \"Don't you *dare* apologise to him.\" {n}Then, much more quietly, looking at the pouch:{/n} \"...Unless that's what it costs.\"",
           "Choices": [
             {
-              "Text": "[Pay, and sign the apology] \"A thousand crowns. The favour. And my name under his words.\"",
+              "Text": "[Pay, and say the apology] \"A thousand crowns. The favour. And his words, in my mouth.\"",
               "Next": "paid",
               "Set": [],
               "Requires": [],
@@ -160505,7 +160505,7 @@
         {
           "Id": "paid",
           "Speaker": "Kiana",
-          "Text": "{n}You sign it. The apprentice sands the ink, folds the apology into his apron as carefully as a gem, counts the coin twice, and empties the pouch onto the counter: stones in a row, like rings on a jeweller's velvet. Down the ward, one after another, the sleepers breathe in. A boy asks, very loudly, where his ring went.{/n}\n{n}Kiana does not look at the stones. She looks at you.{/n}\n\"He's going to hang that on a wall.\" {n}Her voice shakes, and she lets it.{/n} \"Somewhere in Mendev there's going to be a wall with your apology on it, and people are going to walk past it and laugh. For us.\" {n}She takes your hand in both of hers.{/n} \"I'm putting it in the play. Word for word. The audience is going to cry, and he'll never know why.\"",
+          "Text": "{n}You say it, every word he wrote, in front of Arsinoe and the whole ward. The apprentice repeats it back twice to be sure he has it, stores it away behind his eyes as carefully as a gem, counts the coin twice, and empties the pouch onto the counter: stones in a row, like rings on a jeweller's velvet. Down the ward, one after another, the sleepers breathe in. A boy asks, very loudly, where his ring went.{/n}\n{n}Kiana does not look at the stones. She looks at you.{/n}\n\"He's going to have that read out at his feasts.\" {n}Her voice shakes, and she lets it.{/n} \"Somewhere in Mendev, every year, a room full of jewellers is going to drink to your apology and laugh. For us.\" {n}She takes your hand in both of hers.{/n} \"I'm putting it in the play. Word for word. The audience is going to cry, and he'll never know why.\"",
           "Choices": [
             {
               "Text": "[Let her keep your hand.]",
@@ -160525,7 +160525,7 @@
         {
           "Id": "refused",
           "Speaker": "Kiana",
-          "Text": "{n}The apprentice takes the paper back, folds it along its old creases, and goes without another word. The pouch goes with him, and the stones in it.{/n}\n{n}Arsinoe opens her ledger and writes in red ink, under the column headed *Sunhammer. Outstanding*, your promise, word for word, and the date.{/n}\n\"You'll come for them yourself.\" {n}Kiana says it back to you slowly, trying the words for weight, the way she tries a line.{/n} \"Good. Then I'm holding you to it. Every one of them. I'll keep the list.\" {n}She does not smile.{/n} \"And if you don't, Commander, that goes in the play too.\"",
+          "Text": "{n}The apprentice bows, exactly as low as before, and goes without another word. The pouch goes with him, and the stones in it.{/n}\n{n}Arsinoe opens her ledger and writes in red ink, under the column headed *Sunhammer. Outstanding*, your promise, word for word, and the date.{/n}\n\"You'll come for them yourself.\" {n}Kiana says it back to you slowly, trying the words for weight, the way she tries a line.{/n} \"Good. Then I'm holding you to it. Every one of them. I'll keep the list.\" {n}She does not smile.{/n} \"And if you don't, Commander, that goes in the play too.\"",
           "Choices": [
             {
               "Text": "[Give her your word.]",
@@ -160599,7 +160599,7 @@
         {
           "Id": "marry",
           "Speaker": "Kiana",
-          "Text": "{n}She looks at you for a long time. Then she folds the licence in half, and in half again, and tucks it into her bodice over her heart, where a soldier keeps a letter from home.{/n}\n\"All right. When the war lets us.\" {n}Her smile is real, and a little sad, and entirely for Elan.{/n} \"You'll come, won't you? Somebody has to stand at the back and look guilty.\"",
+          "Text": "{n}She studies you as if you were a line she cannot decide to cut. Then she folds the licence in half, and in half again, and tucks it into her bodice over her heart, where a soldier keeps a letter from home.{/n}\n\"All right. When the war lets us.\" {n}Her smile is real, and a little sad, and entirely for Elan.{/n} \"You'll come, won't you? Somebody has to stand at the back and look guilty.\"",
           "Choices": [
             {
               "Text": "[Promise to stand at the back.]",
@@ -160734,7 +160734,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and a letter of apology in the Commander's hand. Somewhere in Mendev it hangs on a wall. Kiana put it in her play, word for word, and audiences wept at it without knowing why.",
+              "Text": "The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and an apology said aloud in the Commander's hand. Somewhere in Mendev it hangs on a wall. Kiana put it in her play, word for word, and audiences wept at it without knowing why.",
               "Requires": [
                 "kiana.trickster.met",
                 "kiana.trickster.guests_bought_back"
@@ -160754,7 +160754,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "Somewhere in Mendev a dwarf kept a slip of paper with the Commander's signature on it and three words above it: One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched the Commander's face while they answered.",
+              "Text": "Somewhere in Mendev a dwarf remembered the cold of the Commander's palm on his, and three words that went with it: One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched the Commander's face while they answered.",
               "Requires": [
                 "kiana.trickster.met",
                 "kiana.trickster.cost.sunhammer_favour"
@@ -160848,7 +160848,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and a letter of apology in the Commander's hand. Somewhere in Mendev it hangs on a wall. Kiana put it in her play, word for word, and audiences wept at it without knowing why.",
+              "Text": "The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and an apology said aloud in the Commander's hand. Somewhere in Mendev it hangs on a wall. Kiana put it in her play, word for word, and audiences wept at it without knowing why.",
               "Requires": [
                 "kiana.trickster.met",
                 "kiana.trickster.guests_bought_back"
@@ -160868,7 +160868,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "Somewhere in Mendev a dwarf kept a slip of paper with the Commander's signature on it and three words above it: One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched the Commander's face while they answered.",
+              "Text": "Somewhere in Mendev a dwarf remembered the cold of the Commander's palm on his, and three words that went with it: One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched the Commander's face while they answered.",
               "Requires": [
                 "kiana.trickster.met",
                 "kiana.trickster.cost.sunhammer_favour"
@@ -161107,7 +161107,7 @@
         {
           "Id": "start",
           "Speaker": "Arsinoe",
-          "Text": "\"The hospital's lost-letters box, Commander. I emptied it this week, for the first time since the siege. One of the letters in it was addressed to you, in Kiana's hand, and dated the day she woke.\"\n{n}She closes the ledger on her finger to keep the place.{/n}\n\"I have reprimanded the orderly. I have also reprimanded myself, which was more unpleasant, because I know exactly where I keep the key.\"",
+          "Text": "\"The hospital's lost-letters box, Commander. I emptied it this week. Nobody had touched it since the siege. One of the letters in it was addressed to you, in Kiana's hand, and dated the day she woke.\"\n{n}She closes the ledger on her finger to keep the place.{/n}\n\"I have reprimanded the orderly. I have also reprimanded myself, which was more unpleasant, because I know exactly where I keep the key.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -161245,7 +161245,7 @@
         {
           "Id": "start",
           "Speaker": "Arsinoe",
-          "Text": "\"A thousand crowns and a favour, to the man who put souls in wedding rings.\"\n{n}Arsinoe sets her pen down very precisely.{/n}\n\"The crowns I can bear. They are a number. The favour is a blank line on a page you signed, and blank lines are how temples go bankrupt, Commander. And crusades.\"",
+          "Text": "\"A thousand crowns and a favour, to the man who put souls in wedding rings.\"\n{n}Arsinoe sets her pen down very precisely.{/n}\n\"The crowns I can bear. They are a number. The favour is a promise with no price written into it, and unpriced promises are how temples go bankrupt, Commander. And crusades.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -255927,8 +255927,8 @@
       "Mode": "spawn-copy",
       "At": {
         "NearUnit": "0f12118177d102f428a3b30b15b132eb",
-        "Side": "left",
-        "Distance": 1.5
+        "Side": "front",
+        "Distance": 2.0
       },
       "Requires": [
         "trickster.ever",
