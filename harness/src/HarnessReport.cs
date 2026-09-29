@@ -136,6 +136,8 @@ namespace RRT.TestHarness
         public int ChoicesTaken;
         public List<SceneRun> Runs = new List<SceneRun>();
         public RoundTripResult RoundTrip = new RoundTripResult();
+        /// <summary>-Spike Residence only (omitted otherwise): the P2 residence feasibility spike for this save.</summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public ResidenceSpikeResult? Residence;
         public List<CapturedLog> Exceptions = new List<CapturedLog>();
         public double TotalMs;
         public bool Passed;
@@ -221,8 +223,12 @@ namespace RRT.TestHarness
                             + (save.RoundTrip.SkipReason != null ? "; " + save.RoundTrip.SkipReason : ""));
                     }
                 }
+                // -Spike Residence: a failed check is a feasibility finding (P3' fallback), reported like a test failure.
+                if (save.Residence != null && !save.Residence.Passed)
+                    s.Failures.Add(save.Save + ": residence spike: " + (save.Residence.Findings.Count > 0 ? string.Join("; ", save.Residence.Findings) : "not evaluated"));
                 save.Passed = save.LoadOk && save.StateError == null && save.NotIdle == null && save.Runs.All(r => r.Passed)
-                    && !save.Exceptions.Any(e => e.Relevant) && (!save.RoundTrip.Attempted || save.RoundTrip.Passed);
+                    && !save.Exceptions.Any(e => e.Relevant) && (!save.RoundTrip.Attempted || save.RoundTrip.Passed)
+                    && (save.Residence == null || save.Residence.Passed);
             }
             s.RelevantExceptions += GlobalExceptions.Count(e => e.Relevant);
             if (GlobalExceptions.Any(e => e.Relevant)) s.Failures.Add("Relevant errors outside any save: " + GlobalExceptions.First(e => e.Relevant).Message);

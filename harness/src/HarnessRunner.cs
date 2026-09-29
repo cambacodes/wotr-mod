@@ -24,7 +24,7 @@ namespace RRT.TestHarness
     /// Drives the whole test run as a resumable step machine from MonoBehaviour.Update.
     /// Every game API used here is cited in harness/README.md with its decompiled signature.
     /// </summary>
-    internal sealed class HarnessRunner : MonoBehaviour
+    internal sealed partial class HarnessRunner : MonoBehaviour
     {
         sealed class Box<T> { public T Value = default!; }
         sealed class Wait { public float Seconds; public Wait(float s) { Seconds = s; } }
@@ -286,6 +286,22 @@ namespace RRT.TestHarness
             object snapshot;
             try { snapshot = rrt.State(); sr.State = RrtBridge.ToData(snapshot); }
             catch (Exception ex) { sr.StateError = ex.GetType().Name + ": " + ex.Message; capture.Add("harness", "Exception", "State() threw", ex.ToString()); yield break; }
+
+            // -Spike Residence (opt-in): the P2 residence feasibility spike replaces scene driving for this save.
+            if (plan.ResidenceSpike)
+            {
+                capture.Context = prefix + "spike";
+                var spike = sr.Residence = new ResidenceSpikeResult();
+                yield return new Guarded(ResidenceSpike(spike), ex =>
+                {
+                    spike.Presence.Error ??= "harness: " + ex.Message;
+                    sr.Exceptions.Add(new CapturedLog { Source = "harness", Severity = "Exception", Message = ex.Message, StackTrace = ex.ToString(), Relevant = true, Context = capture.Context });
+                    TryStopDialog();
+                });
+                spike.Evaluate(plan.Screenshots, plan.Residence!.PathMinMetres);
+                TryWrite();
+                yield break;
+            }
 
             var dialogs = rrt.Dialogs;
             var targets = new List<(object Scene, string Id, bool Available, string[] Lists)>();
@@ -757,28 +773,30 @@ namespace RRT.TestHarness
         internal static bool ShotBelongs(string? cueName, string sceneId) =>
             cueName != null && cueName.StartsWith("RRT_cue." + sceneId + ".", StringComparison.Ordinal);
 
-        IEnumerator Screenshot(SceneRun run, string tag)
+        IEnumerator Screenshot(SceneRun run, string tag) => Shot(Safe(run.Scene) + "__" + tag, run.Screenshots, message => ShotFailed(run, message));
+
+        /// <summary>Captures <paramref name="stem"/>.png into the screenshot folder and adds its path to <paramref name="into"/>.</summary>
+        IEnumerator Shot(string stem, List<string> into, Action<string> failed)
         {
             // UnityModManager opens its window over the game in a normal-window run; close it so it is not captured.
             bool closed = false;
             try { var ui = UnityModManager.UI.Instance; if (ui != null && ui.Opened) { ui.ToggleWindow(false); closed = true; } }
-            catch (Exception ex) { ShotFailed(run, "could not close the UnityModManager window: " + ex.Message); }
+            catch (Exception ex) { failed("could not close the UnityModManager window: " + ex.Message); }
             if (closed) { yield return null; yield return null; }
             string? path = null;
             try
             {
                 string dir = plan.ScreenshotDir ?? Path.Combine(Application.persistentDataPath, "RRTHarnessShots");
                 Directory.CreateDirectory(dir);
-                string stem = Safe(run.Scene) + "__" + tag;
                 path = Path.Combine(dir, stem + ".png");
                 for (int n = 2; File.Exists(path); n++) path = Path.Combine(dir, stem + "_" + n + ".png");
                 ScreenCapture.CaptureScreenshot(path);
             }
-            catch (Exception ex) { ShotFailed(run, "screenshot failed: " + ex.Message); yield break; }
+            catch (Exception ex) { failed("screenshot failed: " + ex.Message); yield break; }
             float t0 = Time.realtimeSinceStartup;
             while (!File.Exists(path) && Time.realtimeSinceStartup - t0 < 2f) yield return null;
-            if (File.Exists(path)) run.Screenshots.Add(path);
-            else ShotFailed(run, "screenshot not written within 2 s: " + path);
+            if (File.Exists(path)) into.Add(path);
+            else failed("screenshot not written within 2 s: " + path);
         }
 
         static void ShotFailed(SceneRun run, string message) =>

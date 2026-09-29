@@ -70,6 +70,30 @@ namespace RRT.TestHarness
             ("Tirabade.Rules", "EntryTargets", "static-method(Scene)", "String[]"),
         };
 
+        /// <summary>
+        /// Members only the residence spike (-Spike Residence) uses: it builds one spawn-copy presence with RRT's own engine
+        /// (GuestPresence) instead of bespoke spawning. Validated by SelfTest, and at run time only in a spike run, so a
+        /// normal run's reflection checks are unchanged.
+        /// </summary>
+        public static readonly (string Type, string Member, string Kind, string Shape)[] SpikeExpectations =
+        {
+            ("Tirabade.Main", "presenceHubs", "static-field", "Dictionary<String,BlueprintDialog>"),
+            ("Tirabade.Presence", "Unit", "field", "String"),
+            ("Tirabade.Presence", "Area", "field", "String"),
+            ("Tirabade.Presence", "Mode", "field", "String"),
+            ("Tirabade.Presence", "Position", "field", "PresencePosition"),
+            ("Tirabade.PresencePosition", "X", "field", "Single"),
+            ("Tirabade.PresencePosition", "Y", "field", "Single"),
+            ("Tirabade.PresencePosition", "Z", "field", "Single"),
+            ("Tirabade.PresencePosition", "Orientation", "field", "Single"),
+            ("Tirabade.GuestPresence", ".ctor", "ctor(String,Presence,BlueprintUnit)", "*"),
+            ("Tirabade.GuestPresence", "Tick", "instance-method(Boolean)", "Void"),
+            ("Tirabade.GuestPresence", "get_Actor", "instance-method()", "UnitEntityData"),
+            ("Tirabade.GuestPresence", "get_Status", "instance-method()", "String"),
+            ("Tirabade.GuestPresence", "get_LastError", "instance-method()", "Exception"),
+            ("Tirabade.GuestPresence", "get_SaveKey", "instance-method()", "String"),
+        };
+
         public static string Shape(Type t)
         {
             if (t.IsArray) return Shape(t.GetElementType()!) + "[]";
@@ -85,16 +109,20 @@ namespace RRT.TestHarness
                 return type.GetField(member, kind.StartsWith("static") ? S : I | S);
             string paramList = kind.Substring(kind.IndexOf('(') + 1).TrimEnd(')');
             var wanted = paramList.Length == 0 ? new string[0] : paramList.Split(',');
+            if (kind.StartsWith("ctor"))
+                return type.GetConstructors(I).FirstOrDefault(c => c.GetParameters().Select(p => Shape(p.ParameterType)).SequenceEqual(wanted));
             var flags = kind.StartsWith("static") ? S : I;
             return type.GetMethods(flags | BindingFlags.DeclaredOnly)
                 .FirstOrDefault(m => m.Name == member && m.GetParameters().Select(p => Shape(p.ParameterType)).SequenceEqual(wanted));
         }
 
         /// <summary>Checks every expectation; returns human-readable problems (empty = all good).</summary>
-        public static List<string> Validate(Assembly asm)
+        public static List<string> Validate(Assembly asm) => Validate(asm, Expectations);
+
+        public static List<string> Validate(Assembly asm, IEnumerable<(string Type, string Member, string Kind, string Shape)> expectations)
         {
             var problems = new List<string>();
-            foreach (var e in Expectations)
+            foreach (var e in expectations)
             {
                 Type? type;
                 try { type = asm.GetType(e.Type, false); }
@@ -105,7 +133,7 @@ namespace RRT.TestHarness
                 catch (Exception ex) { problems.Add(e.Type + "." + e.Member + ": " + ex.Message); continue; }
                 if (m == null) { problems.Add("missing " + e.Kind + " " + e.Type + "." + e.Member); continue; }
                 string actual;
-                try { actual = m is FieldInfo f ? Shape(f.FieldType) : Shape(((MethodInfo)m).ReturnType); }
+                try { actual = m is FieldInfo f ? Shape(f.FieldType) : m is ConstructorInfo ? "ctor" : Shape(((MethodInfo)m).ReturnType); }
                 catch (Exception ex) { problems.Add(e.Type + "." + e.Member + " type unresolved: " + ex.Message); continue; }
                 if (e.Shape != "*" && actual != e.Shape)
                     problems.Add(e.Type + "." + e.Member + " has type " + actual + ", expected " + e.Shape);
@@ -170,6 +198,42 @@ namespace RRT.TestHarness
                 throw;
             }
         }
+
+        // ---- residence spike (SpikeExpectations): one spawn-copy presence through RRT's own GuestPresence -------------------
+
+        /// <summary>Builds a GuestPresence for <paramref name="unitBlueprint"/> (a BlueprintUnit) in spawn-copy mode at a Position.
+        /// Nothing is registered with Main: only the caller ticks it.</summary>
+        public object NewSpawnCopyPresence(string key, string unit, string area, float x, float y, float z, float orientation, object unitBlueprint)
+        {
+            Type T(string n) => Assembly.GetType(n, true)!;
+            var spec = Activator.CreateInstance(T("Tirabade.Presence"))!;
+            var position = Activator.CreateInstance(T("Tirabade.PresencePosition"))!;
+            void Put(object o, string field, object value) => o.GetType().GetField(field, I)!.SetValue(o, value);
+            Put(position, "X", x); Put(position, "Y", y); Put(position, "Z", z); Put(position, "Orientation", orientation);
+            Put(spec, "Unit", unit); Put(spec, "Area", area); Put(spec, "Mode", "spawn-copy"); Put(spec, "Position", position);
+            return Activator.CreateInstance(T("Tirabade.GuestPresence"), I, null, new[] { key, spec, unitBlueprint }, null)!;
+        }
+
+        static object? Call(object target, string method, params object?[] args)
+        {
+            try { return target.GetType().GetMethod(method, I)!.Invoke(target, args); }
+            catch (TargetInvocationException ex) when (ex.InnerException != null)
+            {
+                System.Runtime.ExceptionServices.ExceptionDispatchInfo.Capture(ex.InnerException).Throw();
+                throw;
+            }
+        }
+
+        /// <summary>GuestPresence.Tick(wanted): plans and executes spawn/remove exactly as Main.TickPresences does.</summary>
+        public static void PresenceTick(object presence, bool wanted) => Call(presence, "Tick", wanted);
+        /// <summary>The placed unit (a UnitEntityData), or null.</summary>
+        public static object? PresenceActor(object presence) => Call(presence, "get_Actor");
+        public static string? PresenceStatus(object presence) => (string?)Call(presence, "get_Status");
+        public static Exception? PresenceError(object presence) => (Exception?)Call(presence, "get_LastError");
+        /// <summary>The Player.SettingsList key of the presence record.</summary>
+        public static string PresenceSaveKey(object presence) => (string)Call(presence, "get_SaveKey")!;
+        /// <summary>E12c hub dialogs by presence key (BlueprintDialog values).</summary>
+        public IDictionary PresenceHubs => (IDictionary)Static("presenceHubs")!;
 
         public bool Available(object scene, object snapshot) => (bool)Invoke(available, Story, scene, snapshot);
         public bool ContactAvailable(object scene, object snapshot) => (bool)Invoke(contactAvailable, Story, scene, snapshot);
