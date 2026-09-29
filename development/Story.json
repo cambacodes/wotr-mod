@@ -312213,7 +312213,7 @@
           "Text": "{n}The word reaches her somewhere under the fear. Her chin comes up a finger's breadth, the way a fencer's does when she sees a salute begin.{/n}\n\"He taught me everything. The salute, the measure, the forms. Seven years in his salle above the dyers' yards.\" {n}Her voice cracks on the last word. You watch her hate that it cracked.{/n}\n\"Why? Nobody gives the forms to a deserter. You give a deserter a rope.\"",
           "Choices": [
             {
-              "Text": "[Knowledge (World)] \"Then hear them from me, the way he would have said them.\"",
+              "Text": "[Knowledge (World)] \"Mivon was built by Aldori who fled Rostland. Anyone who wants to stay there fights for the right, bout after bout. So tell me how a bout to the first blood ends, in his salle.\"",
               "Next": null,
               "Set": [],
               "Requires": [],
@@ -312240,7 +312240,7 @@
         {
           "Id": "named",
           "Speaker": "Narrator",
-          "Text": "{n}You give them to her whole, as a Mivon challenge is given. The salute, flat of the blade to the brow. The circle, and nobody steps out of it unbloodied. To the first blood and no further: the one who bleeds lays down her blade and lies where she falls, eyes open, until the victor has quit the circle. Whatever the victor says over her is the end of the matter. Whatever the victor leaves unsaid, she owes until it is said.{/n}",
+          "Text": "{n}You have it right: the Aldori who fled Rostland, the city they made on the river, the duels a stranger must win to stay, the Aldori way of taking a blade out of a hand rather than a life out of a body. She hears it as if you were reading her own name off a wall.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -312256,7 +312256,7 @@
         {
           "Id": "named_her",
           "Speaker": "Jannah",
-          "Text": "\"That's the old yield. The salles above the river still teach it; the new ones laugh at it. My master made us lie in the chalk for an hour at a time so we'd know how.\" {n}She says it the way a novice recites a verse she hated learning.{/n}\n\"Nobody in Mendev knows that. Nobody north of the River Kingdoms knows the last part.\" {n}Something in her face, which the vrocks spent weeks emptying out, fills back up. It isn't hope. It's older than hope, and it stands up straighter.{/n}\n\"Why would the Commander of the crusade learn the Aldori forms? For a deserter in a cage?\"",
+          "Text": "\"In his salle?\" {n}Something in her face, which the vrocks spent weeks emptying out, fills back up. It isn't hope. It's older than hope, and it stands up straighter.{/n}\n\"Not Mivon's way. His. The salute, the chalk circle, and nobody steps out of it unbloodied. To the first blood and no further. The one who bleeds lays down her blade and lies where she falls, eyes open, not moving, until the victor has left the yard. He said a fencer who can't lose properly will one day lose her life improperly. He made us practise it for an hour at a time.\" {n}She says it the way a novice recites a verse she hated learning.{/n}\n\"And whatever the victor says over you, that's the end of it. Whatever they leave unsaid, you owe until it's said. He was a hard old man.\" {n}She looks at you through the bars.{/n} \"Why does the Commander of the crusade want to know how an old man in Mivon ended his bouts?\"",
           "Choices": [
             {
               "Text": "\"So that when I decide what to do with you, I can offer them to you.\"",
@@ -312284,7 +312284,7 @@
         {
           "Id": "garbled",
           "Speaker": "Narrator",
-          "Text": "{n}You get the salute right and everything after it wrong: the circle, the count, what the one who bleeds must do and for how long. Jannah listens the way a master listens to a first-year student murder a verse.{/n}",
+          "Text": "{n}You get Mivon wrong: you make it a Brevic city, and the Aldori a school of cavalry sabres. Jannah listens the way a master listens to a first-year student murder a verse.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -312300,7 +312300,7 @@
         {
           "Id": "garbled_her",
           "Speaker": "Jannah",
-          "Text": "\"No. That's a tavern brawl with a bow in front of it.\" {n}The pride goes back wherever it was hiding, and what is left is a frightened girl in a cage.{/n}\n\"If you mean to kill me, Commander, kill me. Just don't call it the forms.\"",
+          "Text": "\"No. You've never been anywhere near Mivon.\" {n}The pride goes back wherever it was hiding, and what is left is a frightened girl in a cage.{/n}\n\"If you mean to kill me, Commander, kill me. Just don't pretend you know where I come from.\"",
           "Choices": [
             {
               "Text": "[Step back from the cage.]",
@@ -312342,7 +312342,7 @@
       "Owner": "Jannah",
       "MinChapter": 3,
       "MaxChapter": 3,
-      "Entry": "[Take her sword from the ash beyond the bars] \"You kept the forms. So will I. A Mivon challenge, Jannah Aldori: to the first blood, and the one who bleeds yields.\"",
+      "Entry": "[Take her sword from the ash beyond the bars] \"Then I challenge you by your master's forms, Jannah Aldori. To the first blood, and the one who bleeds yields.\"",
       "Nodes": [
         {
           "Id": "accept",
@@ -312350,7 +312350,7 @@
           "Text": "{n}She looks at the long Aldori blade in your hand, slightly curved, its grip wound in leather gone black with handling. She knows it better than her own face.{/n}\n\"In a cage a pace and a half across, where I can't take one step.\" {n}She laughs, short and ugly.{/n} \"They'll call it an execution with a bow in front of it.\"\n\"That's what you're counting on, isn't it? That I'd rather lose a bout than be butchered. That I'm still that proud.\" {n}She wipes her face with the back of a filthy wrist and gets up off the floor of the cage, one hand on the bars.{/n} \"You're right. Give me my blade.\"",
           "Choices": [
             {
-              "Text": "[Pass her sword through the bars, hilt first.]",
+              "Text": "[Pass her sword through the bars, hilt first, with a healing draught and a roll of linen wound under the grip where only her hand will find them.]",
               "Next": "guard",
               "Set": [],
               "Requires": [],
@@ -312371,7 +312371,7 @@
         {
           "Id": "guard",
           "Speaker": "Narrator",
-          "Text": "{n}She takes the hilt the way other women take a hand at a dance. The cage leaves her no footwork at all, so she sets her rear heel against the bars, sinks her weight, and brings the long blade up into the high Aldori guard, the only line the bars allow. Then she salutes you through the gap, flat of the blade to her brow, and her eyes above it are perfectly dry.{/n}\n\"Jannah Aldori. Of Mivon.\" {n}Her voice doesn't shake now.{/n} \"Ready.\"",
+          "Text": "{n}She takes the hilt the way other women take a hand at a dance. The cage leaves her no footwork at all, so she sets her rear heel against the bars, sinks her weight, and brings the long blade up into the high Aldori guard, the only line the bars allow. Then she salutes you through the gap, flat of the blade to her brow, and her eyes above it are perfectly dry.{/n}\n\"Jannah Aldori. Of Mivon.\" {n}Her fingers have found what is under the grip. Her face does not change at all; seven years in a salle teach you that too.{/n} \"Ready.\"",
           "Choices": [
             {
               "Text": "[Take your guard.]",
@@ -312459,7 +312459,7 @@
         {
           "Id": "fall",
           "Speaker": "Narrator",
-          "Text": "{n}She went down on her back with her face a red mask and her eyes wide open, fixed on the roof of the cage. An Aldori who has yielded does not close her eyes, does not wipe away the blood, does not move a finger until the victor has quit the circle. She breathed through her teeth, shallow as a sleeper, and the smoke of the Scar did the rest.{/n}\n{n}Your companions saw an execution, because you had shouted one. Nobody went into the cage to be sure: you were already out of it and giving the order to move, the vrocks' wings were on the wind, and nobody wanted to be the one to kneel in a deserter's blood.{/n}\n{n}It could have gone wrong a dozen ways. She could have bled out; scalp wounds seldom kill, but she was starved and half-frozen. A vrock could have wanted the body. She could have blinked. You left all of that in the cage with her, because the only other way to leave her alive was to leave her in front of witnesses who would ask why.{/n}",
+          "Text": "{n}She went down on her back with her face a red mask and her eyes wide open, fixed on the roof of the cage. An Aldori who has yielded does not close her eyes, does not wipe away the blood, does not move a finger until the victor has quit the circle. She breathed through her teeth, shallow as a sleeper, and the smoke of the Scar did the rest.{/n}\n{n}Your companions saw an execution, because you had shouted one. Nobody went into the cage to be sure: you were already out of it and giving the order to move, and nobody wanted to be the one to kneel in a deserter's blood.{/n}\n{n}Everything else she needed you had put in her hand. A sword, and the cage's lock was vrock iron gone rotten in the heat; Seelah had once broken one like it with a single blow. A healing draught and a roll of linen, wound under the grip. And the dark, which the vrocks spend over their ritual pits on the far side of the Scar. What she needed from herself was only not to blink. You chose to trust her with that, because the only other way to leave her alive was to leave her in front of witnesses who would ask why.{/n}",
           "Choices": [
             {
               "Text": "[Remember that you said nothing over her, and walked out of the circle.]",
@@ -312627,7 +312627,7 @@
         {
           "Id": "how",
           "Speaker": "Jannah",
-          "Text": "\"You'll want to know how. I lay in the ash until your boots were out of hearing. Then I counted to a thousand, because my master used to say a victor's field is exactly as big as a victor's pride, and I didn't know how proud you were.\"\n\"The vrocks came back before I'd finished. I was dead for them too. One of them turned my head with a claw and went off to argue with the others about something. Then I tied up my temple with my shirt and walked south along the lava channels, by night, with my sword and nothing else.\"",
+          "Text": "\"You'll want to know how. I lay in the ash until your boots were out of hearing. Then I counted to a thousand, because my master used to say a victor's field is exactly as big as a victor's pride, and I didn't know how proud you were.\"\n\"Then I found what you'd wound under my grip. I drank the draught and bound my head in the dark, and broke the lock with my pommel. Three blows. Seelah would have done it in one.\" {n}A dry twist of the mouth.{/n}\n\"I went down into the lava channels, where the air is too hot for wings, and walked south by night until the Scar was behind me. After that it was only walking.\"",
           "Choices": [
             {
               "Text": "\"And after that?\"",
@@ -313856,7 +313856,7 @@
         {
           "Id": "start",
           "Speaker": "Jannah",
-          "Text": "\"Muster's at the fourth bell. The whole yard: your sergeants, the Eagle Watch, the smith's boys on the smithy roof, anyone with a reason to be late for drill.\" {n}She tosses the chalk and catches it.{/n}\n\"I'm going to challenge you. There, in front of all of them. By the forms, the way it's done in Mivon, where everybody can see who asked and who answered.\"",
+          "Text": "\"Muster's at the fourth bell. The whole yard: your sergeants, the Eagle Watch, the smith's boys on the smithy roof, anyone with a reason to be late for drill.\" {n}She tosses the chalk and catches it.{/n}\n\"I'm going to challenge you. There, in front of all of them. By the old man's forms, out in the open, where everybody can see who asked and who answered.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -313999,7 +313999,7 @@
         {
           "Id": "why_cage",
           "Speaker": "Jannah",
-          "Text": "\"Because you beat me in a cage and quit the circle, and I've been owed a rematch ever since. In Mivon the loser may ask for one, and a victor who's worth anything grants it. You never gave me the chance to ask. So I'm asking where you can't pretend you didn't hear.\"\n\"And because everybody who saw the Scar thinks they watched an execution. Nobody in Drezen has seen Jannah Aldori cross blades with anyone. They've only heard about her running, and then about her dying.\"",
+          "Text": "\"Because you beat me in a cage and quit the circle, and I've been owed a rematch ever since. In the old man's salle the loser could always ask for one, and a victor worth anything granted it. You never gave me the chance to ask. So I'm asking where you can't pretend you didn't hear.\"\n\"And because everybody who saw the Scar thinks they watched an execution. Nobody in Drezen has seen Jannah Aldori cross blades with anyone. They've only heard about her running, and then about her dying.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -314015,7 +314015,7 @@
         {
           "Id": "why_cell",
           "Speaker": "Jannah",
-          "Text": "\"Because you beat me in a cell with a story, and a story isn't steel. In Mivon the loser may ask for a rematch, and a victor who's worth anything grants it. I'm asking where you can't pretend you didn't hear.\"\n\"And because nobody in Drezen has seen Jannah Aldori cross blades with anyone. They've only heard about her running.\"",
+          "Text": "\"Because you beat me in a cell with a story, and a story isn't steel. In the old man's salle the loser could always ask for a rematch, and a victor worth anything granted it. I'm asking where you can't pretend you didn't hear.\"\n\"And because nobody in Drezen has seen Jannah Aldori cross blades with anyone. They've only heard about her running.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -315283,7 +315283,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}She liked to tell people that the Commander had released her from a yield once, which in Mivon is the highest honour one fencer can pay another, and that she had stayed anyway, which in Mivon is called being a fool.{/n}",
+              "Text": "{n}She liked to tell people that the Commander had released her from a yield once, which in her old salle was the highest honour one fencer could pay another, and that she had stayed anyway, which in Mivon is called being a fool.{/n}",
               "Requires": [
                 "jannah.trickster.yield.released"
               ],
@@ -315315,7 +315315,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}Every year at the muster she challenged the Commander again, in front of whoever was watching, for no stake at all but the pleasure of it, and lost more often than she won, and enjoyed losing enormously, which in Mivon would have been a scandal.{/n}",
+              "Text": "{n}Every year at the muster she challenged the Commander again, in front of whoever was watching, for no stake at all but the pleasure of it, and lost more often than she won, and enjoyed losing enormously, which in her old salle would have been a scandal.{/n}",
               "Requires": [
                 "jannah.trickster.bout.commander_first"
               ],
@@ -316121,7 +316121,7 @@
         {
           "Id": "scar",
           "Speaker": "Jannah",
-          "Text": "\"If you're going to keep coming down here, you're going to learn them properly.\" {n}She finishes the sequence before she looks at you.{/n}\n\"You knew the words in the Scar. Knowing the words isn't knowing the forms. And nobody in Mendev knows the words. So tell me: where did you get them?\"",
+          "Text": "\"If you're going to keep coming down here, you're going to learn them properly.\" {n}She finishes the sequence before she looks at you.{/n}\n\"You knew Mivon, in the Scar. Its founding, its duels, the Aldori way. You asked me how the old man ended his bouts, and then you used his answer on me. So tell me: where did you learn Mivon?\"",
           "Choices": [
             {
               "Text": "\"From a book. A very dull one.\"",
@@ -316187,7 +316187,7 @@
         {
           "Id": "planned",
           "Speaker": "Jannah",
-          "Text": "\"Before you ever came to the cage.\" {n}She stops moving.{/n}\n\"You knew there was a deserter in the Molten Scar. You knew she was an Aldori. You went and found out what an Aldori would do with a blade in her hand and her pride in her throat, and then you walked in and did it.\"\n{n}Something moves behind her eyes, and she doesn't let it out.{/n} \"That's either the most flattering thing anybody has ever done for me, or the most frightening. I'll decide when I know you better.\"",
+          "Text": "\"Before you ever came to the cage.\" {n}She stops moving.{/n}\n\"You knew there was a deserter in the Molten Scar. You knew she was from Mivon. You went and found out what a Mivon fencer would do with a blade in her hand and her pride in her throat, and then you walked in and did it.\"\n{n}Something moves behind her eyes, and she doesn't let it out.{/n} \"That's either the most flattering thing anybody has ever done for me, or the most frightening. I'll decide when I know you better.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -316235,7 +316235,7 @@
         {
           "Id": "measure",
           "Speaker": "Jannah",
-          "Text": "\"Then measure.\" {n}She takes one long step toward you and stops with the point a finger's width from your collarbone.{/n}\n\"This. The distance at which I can touch you with one step. Outside it, you're safe. Inside it, you're mine. In Mivon they teach you never to stand inside measure unless you mean to finish something.\"\n{n}She doesn't step back.{/n}",
+          "Text": "\"Then measure.\" {n}She takes one long step toward you and stops with the point a finger's width from your collarbone.{/n}\n\"This. The distance at which I can touch you with one step. Outside it, you're safe. Inside it, you're mine. The old man taught us never to stand inside measure unless you mean to finish something.\"\n{n}She doesn't step back.{/n}",
           "Choices": [
             {
               "Text": "[Step inside her measure.]",
@@ -319814,7 +319814,7 @@
         {
           "Id": "explain",
           "Speaker": "Jannah",
-          "Text": "{n}She stops.{/n} \"Yield the circle.\" {n}She says it the way you'd say a saint's name.{/n}\n\"Nobody's done that in Mivon in forty years. You walk into the chalk and lay your blade down before the salute and lie back, in front of everyone. It isn't losing. It isn't throwing. It's saying out loud that you won't fight, because you've already decided the other one's the better blade.\"\n\"It's the most shameful thing a fencer can do in public. Or it's the other thing. Depends who's watching.\"",
+          "Text": "{n}She stops.{/n} \"Yield the circle.\" {n}She says it the way you'd say a saint's name.{/n}\n\"The old man said nobody had done it in his salle in forty years. You walk into the chalk and lay your blade down before the salute and lie back, in front of everyone. It isn't losing. It isn't throwing. It's saying out loud that you won't fight, because you've already decided the other one's the better blade.\"\n\"It's the most shameful thing a fencer can do in public. Or it's the other thing. Depends who's watching.\"",
           "Choices": [
             {
               "Text": "\"At the muster, then.\"",
@@ -320049,7 +320049,7 @@
         {
           "Id": "moved",
           "Speaker": "Jannah",
-          "Text": "{n}You reach up and pull her down into the chalk with you. She comes down laughing against your neck.{/n}\n\"You moved. You broke the forms. In Mivon they'd have thrown you out of the salle and your family would have had to leave town.\" {n}She doesn't get up.{/n} \"Luckily, I'm not in Mivon.\"",
+          "Text": "{n}You reach up and pull her down into the chalk with you. She comes down laughing against your neck.{/n}\n\"You moved. You broke the forms. The old man would have thrown you down the stairs.\" {n}She doesn't get up.{/n} \"Luckily, he isn't here.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -325461,8 +325461,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",

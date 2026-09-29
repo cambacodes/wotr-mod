@@ -87,7 +87,7 @@ meet(FORMS, "The forms", '"You\'re drawing circles again."', [
         c("Continue", "scar", requires=(SCAR,)),
         c("Continue", "story", forbids=(SCAR,))),
     jan("scar", '''"If you're going to keep coming down here, you're going to learn them properly." {n}She finishes the sequence before she looks at you.{/n}
-"You knew the words in the Scar. Knowing the words isn't knowing the forms. And nobody in Mendev knows the words. So tell me: where did you get them?"''',
+"You knew Mivon, in the Scar. Its founding, its duels, the Aldori way. You asked me how the old man ended his bouts, and then you used his answer on me. So tell me: where did you learn Mivon?"''',
         c('"From a book. A very dull one."', "book"),
         c('"I made it my business to know them before I ever came to that cage."', "planned", flags=(TOLD_PLANNED,)),
         c('[Lie] "I\'ve crossed blades with Aldori before."', "lie")),
@@ -98,7 +98,7 @@ meet(FORMS, "The forms", '"You\'re drawing circles again."', [
 "My master would have had him flogged with the binding. Well. It saved my life, so I suppose the flogging can wait."''',
         c("Continue", "salute")),
     jan("planned", '''"Before you ever came to the cage." {n}She stops moving.{/n}
-"You knew there was a deserter in the Molten Scar. You knew she was an Aldori. You went and found out what an Aldori would do with a blade in her hand and her pride in her throat, and then you walked in and did it."
+"You knew there was a deserter in the Molten Scar. You knew she was from Mivon. You went and found out what a Mivon fencer would do with a blade in her hand and her pride in her throat, and then you walked in and did it."
 {n}Something moves behind her eyes, and she doesn't let it out.{/n} "That's either the most flattering thing anybody has ever done for me, or the most frightening. I'll decide when I know you better."''',
         c("Continue", "salute")),
     jan("lie", '''"No, you haven't." {n}She doesn't even break the sequence.{/n}
@@ -109,7 +109,7 @@ meet(FORMS, "The forms", '"You\'re drawing circles again."', [
 "It means: I see you. I know what you are. I mean to hurt you anyway. You never skip it, not with a friend, not with a bandit on a river road. The day you skip it you're not fencing any more, you're just fighting."''',
         c("Continue", "measure")),
     jan("measure", '''"Then measure." {n}She takes one long step toward you and stops with the point a finger's width from your collarbone.{/n}
-"This. The distance at which I can touch you with one step. Outside it, you're safe. Inside it, you're mine. In Mivon they teach you never to stand inside measure unless you mean to finish something."
+"This. The distance at which I can touch you with one step. Outside it, you're safe. Inside it, you're mine. The old man taught us never to stand inside measure unless you mean to finish something."
 {n}She doesn't step back.{/n}''',
         c('[Step inside her measure.]', "inside", flags=(MEASURE_FLIRT,)),
         c('"And the yield?"', "yield")),
@@ -682,7 +682,7 @@ meet(YIELD_CIRCLE, "Yielding the circle", '"The muster\'s in an hour."', [
     jan("warn", '''"Don't." {n}She's on her feet.{/n} "If you're about to tell me you'll throw a bout of mine..."''',
         c('"Not throw it. Yield the circle, by the forms. Before anyone lifts a blade."', "explain")),
     jan("explain", '''{n}She stops.{/n} "Yield the circle." {n}She says it the way you'd say a saint's name.{/n}
-"Nobody's done that in Mivon in forty years. You walk into the chalk and lay your blade down before the salute and lie back, in front of everyone. It isn't losing. It isn't throwing. It's saying out loud that you won't fight, because you've already decided the other one's the better blade."
+"The old man said nobody had done it in his salle in forty years. You walk into the chalk and lay your blade down before the salute and lie back, in front of everyone. It isn't losing. It isn't throwing. It's saying out loud that you won't fight, because you've already decided the other one's the better blade."
 "It's the most shameful thing a fencer can do in public. Or it's the other thing. Depends who's watching."''',
         c('"At the muster, then."', "yielded", flags=(PUBLIC_YIELD, YIELDED_CIRCLE)),
         c('"You\'re right. I won\'t."', "not")),
@@ -723,7 +723,7 @@ visit(TAUGHT, "Eyes open", [
 "That's the yield. And that's what comes after it, if you're lucky. Nobody teaches that part."''',
         c("Continue", "future")),
     jan("moved", '''{n}You reach up and pull her down into the chalk with you. She comes down laughing against your neck.{/n}
-"You moved. You broke the forms. In Mivon they'd have thrown you out of the salle and your family would have had to leave town." {n}She doesn't get up.{/n} "Luckily, I'm not in Mivon."''',
+"You moved. You broke the forms. The old man would have thrown you down the stairs." {n}She doesn't get up.{/n} "Luckily, he isn't here."''',
         c("Continue", "future")),
     jan("future", '''{n}After a while, lying there, she says:{/n} "After the war I'm going to chalk a circle in a yard somewhere and teach the forms. Not to make anybody unbeaten. To teach them the yield. Lying still with your eyes open while everything you're afraid of walks round you."
 "You could come and lie in it sometimes. Pupils need to see it done by somebody who's done it in front of a muster."''',

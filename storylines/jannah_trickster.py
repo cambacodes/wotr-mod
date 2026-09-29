@@ -202,20 +202,20 @@ SCENES.append(scene(P + "cage.forms", "The forms", "Jannah", 3,
     [jan("start", '''{n}The word reaches her somewhere under the fear. Her chin comes up a finger's breadth, the way a fencer's does when she sees a salute begin.{/n}
 "He taught me everything. The salute, the measure, the forms. Seven years in his salle above the dyers' yards." {n}Her voice cracks on the last word. You watch her hate that it cracked.{/n}
 "Why? Nobody gives the forms to a deserter. You give a deserter a rope."''',
-         c('[Knowledge (World)] "Then hear them from me, the way he would have said them."',
+         c('[Knowledge (World)] "Mivon was built by Aldori who fled Rostland. Anyone who wants to stay there fights for the right, bout after bout. So tell me how a bout to the first blood ends, in his salle."',
            check=dict(Skill="SkillKnowledgeWorld", DC=22, Success="named", Failure="garbled")),
          c("[Let it go.]", abort=True)),
-     nar("named", '''{n}You give them to her whole, as a Mivon challenge is given. The salute, flat of the blade to the brow. The circle, and nobody steps out of it unbloodied. To the first blood and no further: the one who bleeds lays down her blade and lies where she falls, eyes open, until the victor has quit the circle. Whatever the victor says over her is the end of the matter. Whatever the victor leaves unsaid, she owes until it is said.{/n}''',
+     nar("named", '''{n}You have it right: the Aldori who fled Rostland, the city they made on the river, the duels a stranger must win to stay, the Aldori way of taking a blade out of a hand rather than a life out of a body. She hears it as if you were reading her own name off a wall.{/n}''',
          c("Continue", "named_her")),
-     jan("named_her", '''"That's the old yield. The salles above the river still teach it; the new ones laugh at it. My master made us lie in the chalk for an hour at a time so we'd know how." {n}She says it the way a novice recites a verse she hated learning.{/n}
-"Nobody in Mendev knows that. Nobody north of the River Kingdoms knows the last part." {n}Something in her face, which the vrocks spent weeks emptying out, fills back up. It isn't hope. It's older than hope, and it stands up straighter.{/n}
-"Why would the Commander of the crusade learn the Aldori forms? For a deserter in a cage?"''',
+     jan("named_her", '''"In his salle?" {n}Something in her face, which the vrocks spent weeks emptying out, fills back up. It isn't hope. It's older than hope, and it stands up straighter.{/n}
+"Not Mivon's way. His. The salute, the chalk circle, and nobody steps out of it unbloodied. To the first blood and no further. The one who bleeds lays down her blade and lies where she falls, eyes open, not moving, until the victor has left the yard. He said a fencer who can't lose properly will one day lose her life improperly. He made us practise it for an hour at a time." {n}She says it the way a novice recites a verse she hated learning.{/n}
+"And whatever the victor says over you, that's the end of it. Whatever they leave unsaid, you owe until it's said. He was a hard old man." {n}She looks at you through the bars.{/n} "Why does the Commander of the crusade want to know how an old man in Mivon ended his bouts?"''',
          c('"So that when I decide what to do with you, I can offer them to you."', flags=(NAMED,)),
          c('"Keep them close. You may need them before this cage is open."', flags=(NAMED,))),
-     nar("garbled", '''{n}You get the salute right and everything after it wrong: the circle, the count, what the one who bleeds must do and for how long. Jannah listens the way a master listens to a first-year student murder a verse.{/n}''',
+     nar("garbled", '''{n}You get Mivon wrong: you make it a Brevic city, and the Aldori a school of cavalry sabres. Jannah listens the way a master listens to a first-year student murder a verse.{/n}''',
          c("Continue", "garbled_her")),
-     jan("garbled_her", '''"No. That's a tavern brawl with a bow in front of it." {n}The pride goes back wherever it was hiding, and what is left is a frightened girl in a cage.{/n}
-"If you mean to kill me, Commander, kill me. Just don't call it the forms."''',
+     jan("garbled_her", '''"No. You've never been anywhere near Mivon." {n}The pride goes back wherever it was hiding, and what is left is a frightened girl in a cage.{/n}
+"If you mean to kill me, Commander, kill me. Just don't pretend you know where I come from."''',
          c("[Step back from the cage.]", flags=(BOTCHED,)))],
     requires=("trickster",), forbids=(NAMED, BOTCHED), last=3, Relationship=REL, Chapters=[3],
     AnswerLists=[FIRST_LIST], NativeReturnCue=FIRST_CUE, EntryMythic="PlayerIsTrickster", TricksterDevice=True))
@@ -225,14 +225,14 @@ SCENES.append(scene(P + "cage.forms", "The forms", "Jannah", 3,
 # Commander's [Attack] ("Death to deserters!") is then the cut, and first blood (see the ash for what the Commander meant by
 # shouting it).
 SCENES.append(scene(P + "cage.terms", "To the first blood", "Jannah", 3,
-    '[Take her sword from the ash beyond the bars] "You kept the forms. So will I. A Mivon challenge, Jannah Aldori: to the first blood, and the one who bleeds yields."',
+    '[Take her sword from the ash beyond the bars] "Then I challenge you by your master\'s forms, Jannah Aldori. To the first blood, and the one who bleeds yields."',
     [jan("accept", '''{n}She looks at the long Aldori blade in your hand, slightly curved, its grip wound in leather gone black with handling. She knows it better than her own face.{/n}
 "In a cage a pace and a half across, where I can't take one step." {n}She laughs, short and ugly.{/n} "They'll call it an execution with a bow in front of it."
 "That's what you're counting on, isn't it? That I'd rather lose a bout than be butchered. That I'm still that proud." {n}She wipes her face with the back of a filthy wrist and gets up off the floor of the cage, one hand on the bars.{/n} "You're right. Give me my blade."''',
-         c("[Pass her sword through the bars, hilt first.]", "guard"),
+         c("[Pass her sword through the bars, hilt first, with a healing draught and a roll of linen wound under the grip where only her hand will find them.]", "guard"),
          c('"No. Not like this."', abort=True)),
      nar("guard", '''{n}She takes the hilt the way other women take a hand at a dance. The cage leaves her no footwork at all, so she sets her rear heel against the bars, sinks her weight, and brings the long blade up into the high Aldori guard, the only line the bars allow. Then she salutes you through the gap, flat of the blade to her brow, and her eyes above it are perfectly dry.{/n}
-"Jannah Aldori. Of Mivon." {n}Her voice doesn't shake now.{/n} "Ready."''',
+"Jannah Aldori. Of Mivon." {n}Her fingers have found what is under the grip. Her face does not change at all; seven years in a salle teach you that too.{/n} "Ready."''',
          c("[Take your guard.]", flags=(PRIMED,)),
          c("[Lower your blade, and take her sword back through the bars.]", abort=True))],
     requires=("trickster", NAMED), forbids=(PRIMED,), last=3, Relationship=REL, Chapters=[3],
@@ -249,8 +249,8 @@ visit(P + "cage.ash", "Where the blade went", [
     nar("cut", '''{n}Her guard came up where the forms put it and the bars allowed it, high and forward. Your cut rode down the flat of her sword to the hilt, turned off the crossguard, and opened her right temple from the brow to above the ear. Not deep. Scalp wounds never need to be deep. They bleed as if the whole head were emptying.{/n}''',
         c("Continue", "fall")),
     nar("fall", '''{n}She went down on her back with her face a red mask and her eyes wide open, fixed on the roof of the cage. An Aldori who has yielded does not close her eyes, does not wipe away the blood, does not move a finger until the victor has quit the circle. She breathed through her teeth, shallow as a sleeper, and the smoke of the Scar did the rest.{/n}
-{n}Your companions saw an execution, because you had shouted one. Nobody went into the cage to be sure: you were already out of it and giving the order to move, the vrocks' wings were on the wind, and nobody wanted to be the one to kneel in a deserter's blood.{/n}
-{n}It could have gone wrong a dozen ways. She could have bled out; scalp wounds seldom kill, but she was starved and half-frozen. A vrock could have wanted the body. She could have blinked. You left all of that in the cage with her, because the only other way to leave her alive was to leave her in front of witnesses who would ask why.{/n}''',
+{n}Your companions saw an execution, because you had shouted one. Nobody went into the cage to be sure: you were already out of it and giving the order to move, and nobody wanted to be the one to kneel in a deserter's blood.{/n}
+{n}Everything else she needed you had put in her hand. A sword, and the cage's lock was vrock iron gone rotten in the heat; Seelah had once broken one like it with a single blow. A healing draught and a roll of linen, wound under the grip. And the dark, which the vrocks spend over their ritual pits on the far side of the Scar. What she needed from herself was only not to blink. You chose to trust her with that, because the only other way to leave her alive was to leave her in front of witnesses who would ask why.{/n}''',
         c("[Remember that you said nothing over her, and walked out of the circle.]", "silent", flags=(ASH_SILENT, COST_ASH)),
         c('[Remember what you said over her] "Sentence carried out."', "sentence", flags=(ASH_SAID, COST_ASH))),
     nar("silent", '''{n}Under the forms, a yield the victor leaves unspoken is owed until it is spoken. You left hers lying in the ash with her. Whether she ever comes to collect it is hers to decide.{/n}
@@ -280,7 +280,8 @@ meet(P + "killed.yield", "An unclaimed yield", '"The turnkey says there\'s a dea
 {n}Something dry happens at the corner of her mouth.{/n} "So I came to ask who that leaves standing in your cells."''',
         c("Continue", "how")),
     jan("how", '''"You'll want to know how. I lay in the ash until your boots were out of hearing. Then I counted to a thousand, because my master used to say a victor's field is exactly as big as a victor's pride, and I didn't know how proud you were."
-"The vrocks came back before I'd finished. I was dead for them too. One of them turned my head with a claw and went off to argue with the others about something. Then I tied up my temple with my shirt and walked south along the lava channels, by night, with my sword and nothing else."''',
+"Then I found what you'd wound under my grip. I drank the draught and bound my head in the dark, and broke the lock with my pommel. Three blows. Seelah would have done it in one." {n}A dry twist of the mouth.{/n}
+"I went down into the lava channels, where the air is too hot for wings, and walked south by night until the Scar was behind me. After that it was only walking."''',
         c('"And after that?"', "after"),
         c('"You could have kept walking."', "after")),
     jan("after", '''"I hired on with a salt caravan to Nerosyan under a name I made up and was bad at answering to. I guarded salt all winter. Nobody asked me a single thing." {n}She touches the scar, not the way people touch a wound: the way a fencer checks her guard.{/n}
@@ -473,7 +474,7 @@ meet(P + "challenge", "The rematch", '"You look like someone about to do somethi
     nar("open", '''{n}She is on the bunk with her sword across her knees, rolling a stick of fencer's chalk between her fingers. The blade has been cleaned and oiled and the grip rewound in new leather. She has done her hair, which you have never seen her bother to do.{/n}''',
         c("Continue", "start")),
     jan("start", '''"Muster's at the fourth bell. The whole yard: your sergeants, the Eagle Watch, the smith's boys on the smithy roof, anyone with a reason to be late for drill." {n}She tosses the chalk and catches it.{/n}
-"I'm going to challenge you. There, in front of all of them. By the forms, the way it's done in Mivon, where everybody can see who asked and who answered."''',
+"I'm going to challenge you. There, in front of all of them. By the old man's forms, out in the open, where everybody can see who asked and who answered."''',
         c("Continue", "lie", requires=(LIED,), forbids=(CONFESSED,)),
         c("Continue", "why", forbids=(LIED,)),
         c("Continue", "why", requires=(LIED, CONFESSED))),
@@ -493,10 +494,10 @@ meet(P + "challenge", "The rematch", '"You look like someone about to do somethi
         c("Continue", "why_cage", requires=(SCAR,)),
         c("Continue", "why_cell", requires=(FIRST_LOSS,), forbids=(SCAR,)),
         c("Continue", "why_won", forbids=(FIRST_LOSS,))),
-    jan("why_cage", '''"Because you beat me in a cage and quit the circle, and I've been owed a rematch ever since. In Mivon the loser may ask for one, and a victor who's worth anything grants it. You never gave me the chance to ask. So I'm asking where you can't pretend you didn't hear."
+    jan("why_cage", '''"Because you beat me in a cage and quit the circle, and I've been owed a rematch ever since. In the old man's salle the loser could always ask for one, and a victor worth anything granted it. You never gave me the chance to ask. So I'm asking where you can't pretend you didn't hear."
 "And because everybody who saw the Scar thinks they watched an execution. Nobody in Drezen has seen Jannah Aldori cross blades with anyone. They've only heard about her running, and then about her dying."''',
         c("Continue", "stake")),
-    jan("why_cell", '''"Because you beat me in a cell with a story, and a story isn't steel. In Mivon the loser may ask for a rematch, and a victor who's worth anything grants it. I'm asking where you can't pretend you didn't hear."
+    jan("why_cell", '''"Because you beat me in a cell with a story, and a story isn't steel. In the old man's salle the loser could always ask for a rematch, and a victor worth anything granted it. I'm asking where you can't pretend you didn't hear."
 "And because nobody in Drezen has seen Jannah Aldori cross blades with anyone. They've only heard about her running."''',
         c("Continue", "stake")),
     jan("why_won", '''"Because I beat you in a cell with a story, and the only one who saw it was a turnkey. A story isn't steel. I want the rematch you'd have asked for if you'd been raised in Mivon, and I want it where everybody can see."
@@ -709,11 +710,11 @@ KEPT_PARAS = (
     p("{n}She kept the scar on her temple where it could be seen, and let the Commander trace it exactly once a year, on the anniversary of the Molten Scar, and never on any other day.{/n}", requires=(SCAR,)),
     p("{n}The Eagle Watch never did correct its roll of the dead. Jannah Aldori, recruit, is listed there still, killed in the Molten Scar. She went to look at it sometimes, when she was in a bad mood, and came away cheerful.{/n}", requires=(SCAR,), forbids=(NAMELESS,)),
     p("{n}She fought the rest of the war under no name, as she had been told to, and after the war the Commander offered to give her own back. She said she would think about it. She was still thinking about it years later, and making the Commander ask.{/n}", requires=(NAMELESS,)),
-    p("{n}She liked to tell people that the Commander had released her from a yield once, which in Mivon is the highest honour one fencer can pay another, and that she had stayed anyway, which in Mivon is called being a fool.{/n}", requires=(RELEASED,)),
+    p("{n}She liked to tell people that the Commander had released her from a yield once, which in her old salle was the highest honour one fencer could pay another, and that she had stayed anyway, which in Mivon is called being a fool.{/n}", requires=(RELEASED,)),
     p("{n}Of the Condemned company she rode north with, half came home. She kept their names on a strip of leather wound under her sword's grip, and rewound it every spring.{/n}", requires=(POSTING,)),
     p("{n}She never let the Commander forget that she had won blood and tale in a gaol cell. When they argued, she would say, \"Drawn bouts go to the one who was challenged,\" and the argument would be over, whether or not anybody had been challenged.{/n}", requires=(STORY_LOST,)),
     p("{n}Every year at the muster she challenged the Commander again, in front of whoever was watching, for no stake at all but the pleasure of it. The Commander never drew first blood in any of them. Nobody who had seen the first bout believed that was an accident, and nobody said so to her face.{/n}", requires=(PUBLIC_YIELD,)),
-    p("{n}Every year at the muster she challenged the Commander again, in front of whoever was watching, for no stake at all but the pleasure of it, and lost more often than she won, and enjoyed losing enormously, which in Mivon would have been a scandal.{/n}", requires=(YOU_FIRST,), forbids=(PUBLIC_YIELD,)),
+    p("{n}Every year at the muster she challenged the Commander again, in front of whoever was watching, for no stake at all but the pleasure of it, and lost more often than she won, and enjoyed losing enormously, which in her old salle would have been a scandal.{/n}", requires=(YOU_FIRST,), forbids=(PUBLIC_YIELD,)),
     p("{n}The Commander said it at the next muster, out loud, to the same four hundred: that Jannah Aldori had fought like an Aldori, and that what had been said over her was a lie. She stood in the front rank and heard it with her chin up. Afterwards she said it was the second-best thing anyone had ever said to her in public.{/n}", requires=(SHAMED, LATE_YES)),
     p("{n}She wrote her father the truth about Houndheart. He wrote back that fate had brought her to Mendev, and she wrote back that fate had nothing to do with it. They kept up that argument by letter for the rest of his life, and neither of them ever gave an inch.{/n}", requires=(MIVON_TRUTH,)),
     p("{n}Her father in Mivon died believing his daughter had never lost a bout and never taken a step backwards. She never corrected him. She said some stories belong to the people who need them.{/n}", requires=(MIVON_LEGEND,)),
