@@ -39,6 +39,8 @@ internal static class Program
         Run("reflection lookups vs built RRT DLL", () => Reflection(rrtDll));
         Run("reflection validator rejects a wrong assembly", NegativeReflection);
         Run("capture and log filters", Filters);
+        Run("inline navigation policy", InlinePolicy);
+        Run("inline-hosts.json matches the built RRT's entry lists", () => InlineHostsFresh(rrtDll));
         Console.WriteLine(failures == 0 ? "SELF-TEST PASSED" : "SELF-TEST FAILED: " + failures + " check(s)");
         return failures == 0 ? 0 : 1;
     }
@@ -80,9 +82,16 @@ internal static class Program
         var shc = HarnessPlan.Parse(@"{ ""screenshots"": true, ""screenshotsPerScene"": -2, ""screenshotDir"": "" "" }");
         Check(shc.ScreenshotsPerScene == 0 && shc.ScreenshotDir == null, "screenshot cap clamped to 0 and a blank folder means the default");
 
+        // -Inline shape: the switch, an explicit hosts file and the click budget (clamped to 1).
+        var inl = HarnessPlan.Parse(@"{ ""inline"": true, ""inlineHostsPath"": ""C:\\h\\inline-hosts.json"", ""maxInlineNavSteps"": 12, ""screenshots"": true }");
+        Check(inl.Inline && inl.InlineHostsPath == @"C:\h\inline-hosts.json" && inl.MaxInlineNavSteps == 12 && inl.Screenshots, "inline plan fields parse");
+        var inlc = HarnessPlan.Parse(@"{ ""inline"": true, ""inlineHostsPath"": "" "", ""maxInlineNavSteps"": 0 }");
+        Check(inlc.InlineHostsPath == null && inlc.MaxInlineNavSteps == 1, "a blank hosts path means the default and the click budget is clamped to 1");
+
         var d = HarnessPlan.Parse("");
         Check(d.Saves.Count == 0 && !d.Force && !d.Dfs && d.ShouldReloadBetweenScenes && d.RoundTrip, "empty plan gives defaults");
         Check(!d.Screenshots && d.ScreenshotsPerScene == 3 && d.ScreenshotDir == null, "screenshots are off by default");
+        Check(!d.Inline && d.InlineHostsPath == null && d.MaxInlineNavSteps == 40, "inline is off by default");
 
         bool threw = false;
         try { HarnessPlan.Parse(@"{ ""savez"": [] }"); } catch (Exception) { threw = true; }
@@ -112,6 +121,78 @@ internal static class Program
         Check(Benign("[Audio] Failed to play sound evt_Anevia_Cue_0012 on DialogSpeaker", "Kingmaker.Sound.SoundEventsManager.PostEvent") == null,
             "an audio failure outside the AIVO shim stays relevant-eligible");
         Check(Benign("NullReferenceException in DialogController", "AiVoiceoverMod.Patches.X") == null, "a non-audio error is never benign");
+    }
+
+    // InlineHosts.Pick: the navigator's answer choice inside a host dialog.
+    static void InlinePolicy()
+    {
+        var host = new InlineHost { Reachable = true, AnswerDist = { ["aaaa"] = 3, ["bbbb"] = 1, ["cccc"] = 1 } };
+        InlineHosts.Shown A(string name, string guid, bool cont = false, bool exit = false, bool cond = false) =>
+            new InlineHosts.Shown { Name = name, Guid = guid, IsContinue = cont, IsExit = exit, Conditioned = cond };
+        var used = new Dictionary<string, int>();
+        string why;
+        var list = new List<InlineHosts.Shown> { A("Answer_1", "aaaa"), A("RRT_entry.x.y", "eeee"), A("Answer_2", "bbbb") };
+        Check(InlineHosts.Pick(list, "RRT_entry.x.y", host, used, out why) == 1 && why == "entry", "the entry answer wins as soon as it is shown");
+        Check(InlineHosts.Pick(list, "RRT_entry.x.z", host, used, out why) == 2, "otherwise the answer with the fewest clicks left");
+        list = new List<InlineHosts.Shown> { A("Answer_2", "bbbb"), A("Answer_3", "CC-CC") };
+        used["bbbb"] = 2;
+        Check(InlineHosts.Pick(list, "e", host, used, out why) == 1, "ties go to the least used answer (guids compared without dashes or case)");
+        list = new List<InlineHosts.Shown> { A("Exit", "x1", exit: true), A("Continue", "x2", cont: true) };
+        Check(InlineHosts.Pick(list, "e", host, used, out why) == 1 && why == "continue", "Continue when no answer is on the resolved path");
+        list = new List<InlineHosts.Shown> { A("Exit", "x1", exit: true), A("RRT_entry.other", "x3"), A("Answer_9", "x4", cond: true), A("Answer_8", "x5") };
+        Check(InlineHosts.Pick(list, "e", host, used, out why) == 3, "off path: an unconditioned native answer, never Exit or another RRT answer");
+        list = new List<InlineHosts.Shown> { A("Exit", "x1", exit: true), A("RRT_entry.other", "x3") };
+        Check(InlineHosts.Pick(list, "e", host, used, out why) == -1, "only Exit or RRT answers: give up (skipped-inline)");
+        Check(InlineHosts.EntryName("s.a", "0123abcd", false) == "RRT_entry.s.a" && InlineHosts.EntryName("s.a", "0123abcd", true) == "RRT_entry.s.a.0123abcd",
+            "entry answer names (Main.Build / BuildReturnToList)");
+        var hosts = InlineHosts.Parse(@"{ ""lists"": { ""l1"": { ""hosts"": [ { ""dialogName"": ""D0"", ""reachable"": false, ""reason"": ""r"" },
+            { ""dialog"": ""dd"", ""dialogName"": ""D1"", ""reachable"": true, ""clicks"": 2 } ] }, ""l2"": { ""hosts"": [], ""reason"": ""parent list"" } },
+            ""extra"": 1 }");
+        var chosen = hosts.Choose(new[] { "l2", "L1", "l3" }, out var reason);
+        Check(chosen != null && chosen.Value.List == "L1" && chosen.Value.Host.DialogName == "D1", "Choose takes the first list with a reachable host");
+        Check(hosts.Choose(new[] { "l2", "l3" }, out reason) == null && reason!.Contains("parent list") && reason.Contains("stale"), "Choose explains an unresolved scene");
+    }
+
+    // The committed inline-hosts.json must list exactly the scenes the built RRT attaches to native lists (Rules.EntryTargets),
+    // with the entry answer names the navigator looks for.
+    static void InlineHostsFresh(string rrtDll)
+    {
+        string root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\..\.."));
+        string hostsPath = Path.Combine(root, "harness", InlineHosts.FileName);
+        Check(File.Exists(hostsPath), "inline-hosts.json exists at " + hostsPath);
+        if (!File.Exists(hostsPath) || !File.Exists(rrtDll)) return;
+        var hosts = InlineHosts.Parse(File.ReadAllText(hostsPath));
+        var asm = Assembly.LoadFrom(rrtDll);
+        if (RrtBridge.Validate(asm).Count > 0) return; // reported by the reflection check
+        var bridge = new RrtBridge(asm);
+        var storyType = asm.GetType("Tirabade.Story", true)!;
+        var deserialize = Assembly.Load("Newtonsoft.Json").GetType("Newtonsoft.Json.JsonConvert", true)!
+            .GetMethod("DeserializeObject", new[] { typeof(string), typeof(Type) })!;
+        object story = deserialize.Invoke(null, new object[] { File.ReadAllText(Path.Combine(root, "development", "Story.json")), storyType })!;
+        var scenes = (System.Collections.IList)storyType.GetField("Scenes")!.GetValue(story)!;
+        int withEntry = 0, mismatched = 0;
+        foreach (var scene in scenes)
+        {
+            string id = RrtBridge.SceneId(scene!);
+            string[] live;
+            try { live = bridge.EntryTargets(scene!); } catch (InvalidOperationException) { live = new string[0]; }
+            hosts.Scenes.TryGetValue(id, out var known);
+            var offline = known?.Lists ?? new List<string>();
+            if (live.Length > 0) withEntry++;
+            if (!live.SequenceEqual(offline))
+            {
+                if (mismatched++ < 5) Fail(id + ": EntryTargets [" + string.Join(",", live) + "] but inline-hosts.json has [" + string.Join(",", offline) + "]");
+                continue;
+            }
+            if (known == null) continue;
+            bool rtl = RrtBridge.SceneReturnToList(scene!);
+            foreach (var l in known.Lists)
+                if (!known.Entry.TryGetValue(l, out var name) || name != InlineHosts.EntryName(id, l, rtl))
+                    Fail(id + ": inline-hosts.json entry answer " + name + " differs from " + InlineHosts.EntryName(id, l, rtl));
+        }
+        Check(mismatched == 0, mismatched + " scene(s) with stale entry lists: rerun python harness/resolve-inline-hosts.py");
+        Check(withEntry == hosts.Scenes.Count, "every scene in the hosts file has a live entry list (" + withEntry + " vs " + hosts.Scenes.Count + ")");
+        Console.WriteLine("    " + withEntry + " scenes with a native entry; " + hosts.Scenes.Values.Count(s => s.Resolved) + " resolve to a host dialog");
     }
 
     static void Activation()

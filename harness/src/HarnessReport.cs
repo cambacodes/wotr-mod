@@ -68,7 +68,8 @@ namespace RRT.TestHarness
         public string Strategy = "";     // random:<seed> | dfs:<prefix>
         public List<int> Path = new List<int>();
         public List<ChoiceTaken> Choices = new List<ChoiceTaken>();
-        /// <summary>completed | not-started | stuck | step-limit | exception | skipped | skipped-native (forced, gated on unforceable native keys)</summary>
+        /// <summary>completed | not-started | stuck | step-limit | exception | skipped | skipped-native (forced, gated on unforceable native keys)
+        /// | skipped-inline (-Inline: the host dialog or its list could not be reached; not a failure) | entry-hidden | entry-not-started</summary>
         public string Result = "";
         public string? Detail;
         public bool CompletedFlagSet;
@@ -80,6 +81,22 @@ namespace RRT.TestHarness
         public bool Passed;
         /// <summary>Screenshot PNG paths taken during this walk (plan.Screenshots only).</summary>
         public List<string> Screenshots = new List<string>();
+        /// <summary>-Inline runs only: how the scene was reached through its native host.</summary>
+        public InlineRun? Inline;
+    }
+
+    public sealed class InlineRun
+    {
+        public string Kind = "";          // dialog | return-cue | return-to-list (inline-hosts.json)
+        public string? List;
+        public string? Dialog;            // host BlueprintDialog name
+        public string? Initiator;         // "unit <name>" (StartDialogWithUnit) | "main character" (StartDialogWithoutTarget)
+        public string? EntryAnswer;
+        public string? ResolvedPath;      // offline shortest path, for comparison with NavPath
+        /// <summary>Each native click: "cue: answer [why]".</summary>
+        public List<string> NavPath = new List<string>();
+        public bool EntryShown;
+        public bool SceneStarted;
     }
 
     public sealed class RoundTripResult
@@ -136,6 +153,7 @@ namespace RRT.TestHarness
         public int OracleFailures;
         public int RoundTripsPassed;
         public int RoundTripsFailed;
+        public int SkippedInline;
         public List<string> Failures = new List<string>();
         // Saves that could not be exercised for reasons outside RRT (e.g. the save opens inside a native dialog).
         public List<string> Skipped = new List<string>();
@@ -178,6 +196,11 @@ namespace RRT.TestHarness
                 {
                     s.Runs++;
                     s.Choices += run.Choices.Count;
+                    if (run.Result == "skipped-inline")
+                    {
+                        s.SkippedInline++;
+                        s.Skipped.Add(save.Save + " / " + run.Scene + ": skipped-inline (" + run.Detail + ")");
+                    }
                     if (run.Passed) s.RunsPassed++;
                     else s.Failures.Add(save.Save + " / " + run.Scene + " [" + run.Strategy + "]: " + run.Result
                         + (run.Detail != null ? " (" + run.Detail + ")" : "")

@@ -46,6 +46,7 @@ namespace RRT.TestHarness
             ("Tirabade.Scene", "Nodes", "field", "List<Node>"),
             ("Tirabade.Scene", "ContactUnit", "field", "String"),
             ("Tirabade.Scene", "NativeReturnCue", "field", "String"),
+            ("Tirabade.Scene", "ReturnToList", "field", "Boolean"),
             ("Tirabade.Node", "Id", "field", "String"),
             ("Tirabade.Node", "Choices", "field", "List<Choice>"),
             ("Tirabade.Choice", "Next", "field", "String"),
@@ -65,6 +66,7 @@ namespace RRT.TestHarness
             ("Tirabade.Rules", "ContactAvailable", "static-method(Story,Scene,Snapshot)", "Boolean"),
             ("Tirabade.Rules", "Match", "static-method(IEnumerable<String>,IEnumerable<String>,Snapshot)", "Boolean"),
             ("Tirabade.Rules", "IsRemote", "static-method(Scene)", "Boolean"),
+            ("Tirabade.Rules", "EntryTargets", "static-method(Scene)", "String[]"),
         };
 
         public static string Shape(Type t)
@@ -114,7 +116,7 @@ namespace RRT.TestHarness
 
         public Assembly Assembly { get; }
         readonly Type main, rules, sceneT, nodeT, choiceT, snapshotT, storyT, relationshipT;
-        readonly MethodInfo state, set, available, contactAvailable, match, isRemote, presenceReport, presenceClick;
+        readonly MethodInfo state, set, available, contactAvailable, match, isRemote, entryTargets, presenceReport, presenceClick;
 
         public RrtBridge(Assembly asm)
         {
@@ -132,6 +134,7 @@ namespace RRT.TestHarness
             contactAvailable = M(rules, "ContactAvailable", "static-method(Story,Scene,Snapshot)");
             match = M(rules, "Match", "static-method(IEnumerable<String>,IEnumerable<String>,Snapshot)");
             isRemote = M(rules, "IsRemote", "static-method(Scene)");
+            entryTargets = M(rules, "EntryTargets", "static-method(Scene)");
         }
 
         public static Assembly? FindLoaded() =>
@@ -171,6 +174,8 @@ namespace RRT.TestHarness
         public bool ContactAvailable(object scene, object snapshot) => (bool)Invoke(contactAvailable, Story, scene, snapshot);
         public bool Match(IEnumerable<string> requires, IEnumerable<string> forbids, object snapshot) => (bool)Invoke(match, requires, forbids, snapshot);
         public bool IsRemote(object scene) => (bool)Invoke(isRemote, scene);
+        /// <summary>The native answer lists that carry the scene's entry (empty for remote, epilogue and hub scenes).</summary>
+        public string[] EntryTargets(object scene) => (string[])Invoke(entryTargets, scene);
 
         public IList Scenes => GetAs<IList>(Story!, "Scenes");
         public static string SceneId(object scene) => GetAs<string>(scene, "Id");
@@ -181,6 +186,7 @@ namespace RRT.TestHarness
         public static int SceneMinChapter(object scene) => GetAs<int>(scene, "MinChapter");
         public static int SceneMaxChapter(object scene) => GetAs<int>(scene, "MaxChapter");
         public static string? SceneContactUnit(object scene) => (string?)Get(scene, "ContactUnit");
+        public static bool SceneReturnToList(object scene) => GetAs<bool>(scene, "ReturnToList");
         public static IList SceneNodes(object scene) => GetAs<IList>(scene, "Nodes");
         public static string NodeId(object node) => GetAs<string>(node, "Id");
         public static IList NodeChoices(object node) => GetAs<IList>(node, "Choices");

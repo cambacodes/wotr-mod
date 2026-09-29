@@ -14,8 +14,11 @@ harness/
   src/LogCapture.cs           Unity, Owlcat (PFLog) and UMM log hooks, plus Harmony finalizers
   src/HarnessPlan.cs          plan model and activation rule (pure)
   src/HarnessReport.cs        report model and pass/fail summary (pure)
+  src/InlineHosts.cs          -Inline host model and navigation policy (pure)
   SelfTest/                   offline net48 console self-test (no game launch)
   run-harness.ps1             install, run, collect, restore
+  resolve-inline-hosts.py     offline resolver: native host dialog, owning cue and click path for every entry list
+  inline-hosts.json           its output (commit it after regenerating; SelfTest fails when it is stale)
 ```
 
 ## Quick start
@@ -39,6 +42,10 @@ The `run-harness.ps1` options are:
 - `-Mode random|dfs` chooses the answer strategy. Tune it with `-Seed`, `-WalksPerScene`, `-MaxPathsPerScene` and `-MaxScenesPerSave`.
 - `-SceneFilter` takes scene ids or prefixes.
 - `-NoRoundTrip` skips the save round-trip.
+- `-Inline` drives scenes through their host native dialogs instead of opening RRT dialogs directly; `-MaxInlineNavSteps`
+  (default 40) bounds the clicks inside the host. See [Inline mode](#inline-mode--inline).
+- `-Screenshots` captures each shown scene cue into `harness/.runs/<stamp>/shots` (up to `-ScreenshotsPerScene`, default 3).
+  It opens a normal, visible 1280x720 window: warn the user first and do not click in it.
 - `-Headless` opens dialogs without the UI.
 - `-Windowed` passes the standard Unity `-screen-*` arguments.
 - `-TimeoutMinutes` sets the run timeout (default 45).
@@ -108,7 +115,8 @@ Exit codes: `0` means every check passed. `1` means a test failed. `2` means an 
    - status, timings and init state;
    - per save: load result, load time, not-idle reason, the full `State()` snapshot, available scenes and scenes without a dialog;
    - per run: strategy, answer-index path, choices (answer blueprint name, text, story choice `scene/node/i`),
-     result (`completed`, `not-started`, `stuck`, `step-limit`, `path-diverged`, `exception`),
+     result (`completed`, `not-started`, `stuck`, `step-limit`, `path-diverged`, `exception`, `skipped-native`;
+     with `-Inline` also `skipped-inline`, `entry-hidden` and `entry-not-started`, plus the `Inline` host record),
      oracle failures, flags added and removed, exceptions with stack traces, and time in ms;
    - the round-trip result and a summary with a failure list.
 
@@ -160,7 +168,7 @@ Other native noise is kept in the report but does not fail the run.
 | UMM log hooks | `public static void UnityModManager.Logger.Log(string str, string prefix)` (UMM.Logger.cs:1304); `public static void LogException(string key, Exception e, string prefix)` (:1338). `ModLogger.Error`, `Critical` and `LogException` all route here. |
 
 The members read from RRT by reflection are listed with their expected type shapes in `RrtBridge.Expectations`
-(41 entries). `SelfTest` checks all of them against `src/bin/Release/net48/RanRomance.Tirabade.dll`.
+(48 entries). `SelfTest` checks all of them against `src/bin/Release/net48/RanRomance.Tirabade.dll`.
 `Main.State()` is internal and `Main.Set(string,int)` is private.
 
 ### `-batchmode` / `-nographics`: not used
@@ -184,10 +192,10 @@ The script therefore launches the normal windowed game minimized. `-Windowed` ad
 
 ## What it does not prove
 
-- **Physical entries in native dialogs.** RRT answers injected into owner answer lists (Anevia, Irabeth, Nurah hub, contact units)
-  are not clicked. Scenes are opened directly with `StartDialogWithoutTarget`. Inline scenes, those with `NativeReturnCue`,
-  have no standalone dialog; they are listed under `ScenesWithoutDialog` and not driven. A later step can use
-  `StartDialogWithUnit(ownerDialog, unit)` and assert the entry answer is in `Answers`.
+- **Physical entries in native dialogs, by default.** Without `-Inline`, RRT answers injected into owner answer lists are not
+  clicked: scenes are opened directly with `StartDialogWithoutTarget`, and inline scenes (`NativeReturnCue`, `ReturnToList`),
+  which have no standalone dialog, are only listed under `ScenesWithoutDialog`. `-Inline` covers them; its own limits are
+  listed in [Inline mode](#inline-mode--inline).
 - **Skill checks.** Checks roll normally. One walk sees one outcome, so both branches are not guaranteed.
   Plan item 3.2(e), forcing `RuleSkillCheck` outcomes, is not implemented.
 - **Rest-triggered and remote queues.** `Main.Update` and the `RestController.Stop` patch are not exercised as triggers.
@@ -213,6 +221,96 @@ The script therefore launches the normal windowed game minimized. `-Windowed` ad
 4. To reproduce a failure deterministically, rerun with the same `-Seed`, `-SceneFilter <scene id>` and `-Saves <save>`.
    For branch coverage of one scene, use `-Mode dfs -MaxPathsPerScene 32`.
 5. Nightly or pre-release, run `-Force` over a late-game save for crash-hunting across all scenes.
+
+## Inline mode (`-Inline`)
+
+`-Inline` reaches each scene the way the player does: through the native dialog that shows the scene's entry answer.
+It targets every scene with a native entry list (`Rules.EntryTargets`: explicit `AnswerLists`, or Anevia's and Irabeth's
+lists for Tirabade). That covers the inline-only scenes (`NativeReturnCue`, `ReturnToList`), which the default mode cannot
+open at all, and the native entries of scenes that also have their own RRT dialog. Remote, epilogue and hub scenes have no
+native entry and are not driven in this mode.
+
+**1. Resolve hosts offline.** After a story or game update, regenerate the hosts file and commit it.
+SelfTest fails when the file no longer matches the built RRT's `EntryTargets`.
+
+```powershell
+python harness/resolve-inline-hosts.py      # about 20 s; reads blueprints.zip and development/Story.json
+```
+
+For each entry list, the resolver finds the cues whose `Answers` show it. The list's `ParentAsset` comes first, then any other
+cue holding it directly or through a nested list. It walks each cue's `ParentAsset` chain to its `BlueprintDialog`. It then
+computes the shortest click path from the dialog's `FirstCue` to an owning cue over this graph:
+
+- cue answers, with lists expanded;
+- `Continue` (one click);
+- answer `NextCue`;
+- check success and fail, and cue-sequence cues and exit (no click).
+
+Conditions are recorded along the path but not evaluated. The resolver writes `harness/inline-hosts.json` with:
+
+- per scene: kind, lists, entry answer name, and the chosen host;
+- per list: every host dialog with its owning cues, speaker unit, reachability, path, and the click distance of every
+  native answer on the way.
+
+The current file resolves 750 of 751 entry-target scenes: 130 of 131 inline-only scenes, and 369 of the 370 scenes with
+explicit `AnswerLists` and no `ContactUnit`. The exception, `areelu.trickster.audience.notes`, uses a list that no dialog cue shows.
+
+**2. Drive at run time** (`HarnessRunner.DriveInline`). For each target:
+
+1. Choose the first live entry list with a reachable host (fewest clicks). None: `skipped-inline` with the resolver's reason.
+2. Force as in a normal run: the scene's `Requires`, one flag per unmet `RequiresAnyGroups` group, the started flag.
+3. Start the host as the `StartDialog` action does. When the host's speaker unit (first cue, else owning cue) is loaded in the
+   area, use `StartDialogWithUnit(dialog, unit, mainCharacter)`. Otherwise use `StartDialogWithoutTarget(dialog, null, mainCharacter)`.
+4. Click toward the list, at most `MaxInlineNavSteps` clicks (`InlineHosts.Pick`, covered by SelfTest). At each click, choose:
+   - the entry answer, as soon as it is shown;
+   - else the shown answer with the fewest clicks left, least used first;
+   - else Continue;
+   - else the first least-used unconditioned native answer.
+
+   It never picks Exit or another RRT answer. Each click is logged in `Inline.NavPath` beside the offline `ResolvedPath`.
+5. Select `RRT_entry.<scene>`, or `RRT_entry.<scene>.<list>` for a return-to-list scene. With `-Screenshots`, the native
+   list is captured first, with the entry on it (`<scene>__list.png`).
+6. Wait until a cue of the scene (`RRT_cue.<scene>.*`) is current:
+   - an inline scene continues inside the host;
+   - a scene with its own dialog is queued by `RouteAction` and started by `Main.Update`.
+
+   It then walks the scene like a direct run: random or DFS, the oracles, and screenshots of scene cues.
+   The walk completes when the dialog closes, or when a `native_next` or the return cue hands the conversation back to a native cue.
+
+Results that are not failures are `skipped-inline`, with the reason. The cases are:
+
+- no reachable host;
+- the host does not start, is stuck, or ends first;
+- the click budget runs out, or only Exit is left;
+- the list's own answers are hidden;
+- a forced run cannot hold the scene's native or derived keys.
+
+Failures are:
+
+- `entry-hidden`: the list is shown but the entry is not, although the scene is available, or all of its `Requires` were forced;
+- `entry-not-started`: the entry was selected but no scene cue followed;
+- any exception or oracle failure.
+
+**Known limits.**
+
+- Paths are offline lower bounds. A native cue or answer condition, `ShowOnce`, or a skill check can hide the step the
+  navigator wants. The navigator then falls back to Continue or unconditioned answers and may run out of clicks.
+- One host per scene per run: the first reachable one. Other hosts of the same list are not tried.
+- `StartDialogWithoutTarget` skips proximity and speaker presence, so a host is reachable even where its unit is absent.
+  A host whose first cue needs a present speaker may still bark only.
+- Contact-unit scenes are driven as well, but their entries also need the contact present (`ContactAvailable`). A forced
+  run away from the unit usually ends in `skipped-inline`.
+- E16 native openers (`RRT_opener.*`, the Table menu) are not clicked. Table scenes open from the menu view, not from a list.
+  `household.table.offered` (the offer itself) is an inline scene and is driven.
+- `household.any_eligible` and other derived keys cannot be forced from a save.
+
+**Recommended Table run** (the Ch3 Hiriko Trickster save). It opens a visible window, so warn the user first:
+
+```powershell
+./harness/run-harness.ps1 -Saves 'C:\Users\Z\AppData\Local\Temp\claude\C--Users-Z-Documents-Projects-Writer\7b33789b-9992-4a4a-baa6-d771af8d5b6a\scratchpad\saves\Manual_313_Hiriko_The_Trickster.zks' -Force -Inline -Screenshots -SceneFilter @('household.')
+```
+
+Add `-DryRun` to see each matching scene's host, owning cue and click count without launching anything.
 
 ## Presence hooks (E12/E12c)
 
