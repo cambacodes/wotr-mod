@@ -149,7 +149,7 @@ hour(SOCOTH, "Who brought you", '"Socothbenoth was here. I passed him on the sta
 "His sister. Of course. Everybody's somebody is never in the room." {n}Her voice is small and hard.{/n} "He wanted me to be a weapon and call it a present. And I nearly said yes, because he said 'darling' eleven times."
 "I'll tell him no. Nicely. With a cookie. He'll know exactly what the cookie means." {n}She looks at you.{/n} "Thank you for telling me. You didn't have to. Most people at this table would have let me find out afterwards." """,
       c("[Stay while she writes her no.]")),
-    ch("use", """{n}She looks at you for a long moment, and something careful comes into her face that was not there before.{/n}
+    ch("use", """{n}She looks at you, and something careful comes into her face that was not there before.{/n}
 "Let him owe us." {n}She repeats it slowly.{/n} "You're spending me. Like a coin. On a bet you won't tell me the stakes of." {n}She nods.{/n} "All right. I'll do it. I'm very good at luck, and you're very good at knowing what it's for."
 "But I noticed." {n}She picks up one of his flowers and turns it.{/n} "I'll always notice, now, when you're spending me. I just wanted you to know that I noticed." """,
       c("[Leave her with the flowers.]")),
@@ -199,7 +199,7 @@ hour(WAITING, "Not today", '"You\'re very quiet."', [
     ch("perfect", '''"I look like a sack of flour." {n}She stops kneading, though, and pushes a strand of floury hair out of her face with her wrist.{/n}
 "...You really think so?" {n}And then, before you can answer:{/n} "No, don't answer. If you answer I'll believe you, and then I'll want you to ask, and I've got dough under my nails."''',
       c('"Are you nervous?"', "nervous")),
-    ch("nervous", '''{n}She is quiet for a long moment, her floury hands still in the bowl.{/n}
+    ch("nervous", '''{n}She is quiet, her floury hands gone still in the bowl.{/n}
 "I've never been nervous before," she says at last. "I didn't know it felt like this. Like knowing the odds of everything except one thing, and that one thing is the only one that matters."
 {n}She looks up at you.{/n} "I'm chance, and I don't know what I'll say. Isn't that silly? I know what I'll say. I don't know if I'll be brave enough to say it."''',
       c('"I\'ll ask when you\'re ready. Not before."', "ready"),

@@ -133,7 +133,7 @@ hall(P + "council.second_cookie", "The second cookie", '"You said there would be
 "No. First a question, and you have to answer without flipping anything. The coin, the orange, every lucky thing that's happened since you walked in here." {n}Her bracelets are quite still.{/n} "Was it luck? Or did you make it happen?"''',
       c('[Tell her the truth] "It was me. It was always me."', "her_test"),
       c('[Flatter her] "It was luck. Yours."', "luck")),
-    ch("her_test", '''"So you've been cheating chance on my account." {n}She folds her arms. For the first time since you met her she isn't smiling, and without the dimples she looks every bit the empyreal lord: old, and patient, and not at all soft.{/n}
+    ch("her_test", '''"So you've been cheating chance on my account." {n}She folds her arms. She isn't smiling. You have never once seen her not smiling, and without the dimples she looks every bit the empyreal lord: old, and patient, and not at all soft.{/n}
 "Then do it properly. You make things happen. You don't wait for them. Tell me what happens next, and make it true."''',
       c('[Ask her] "Next, you say yes."', "yes", flags=(COMMITTED,)),
       c('[Toss the coin for it] "Let\'s let chance decide."', "refused")),
@@ -194,7 +194,7 @@ letter(P + "fought.lucky", "Lucky you", [
     nar("start", '''{n}The letter smells of honey and antiseptic. The round hand has pressed so hard that the nib has torn the paper twice.{/n}''',
         c("Continue", "coin", requires=(PRIMED,)),
         c("Continue", "hurt", forbids=(PRIMED,))),
-    nar("coin", '''{n}Your coin is in the envelope. It is lying flat, heads up, for the first time since you called it in the air.{/n}''',
+    nar("coin", '''{n}Your coin is in the envelope. It is lying flat, heads up. It has not lain flat since you called it in the air.{/n}''',
         c("Read the letter.", "hurt")),
     ch("hurt", '''"You're so mean. You knocked me down and let them stick me with that needle. It hurt so, so much. Chance doesn't always bring you honey cookies. Sometimes you get sharp needles, and sometimes the needle is your lucky charm's fault."
 "I don't want to see you." {n}Three lines further down, smaller:{/n} "...Why did you write?"''',

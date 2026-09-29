@@ -233,7 +233,7 @@ wager(OLD_FELLOW, "The old fellow", '"How is Cobblehoof?"', [
 "You said it to see what I'd do." {n}Very quietly.{/n} "And I did it. To the old fellow. Because you're our lucky charm and you said so."
 {n}She stands up, and goes across the hall, and picks up the feather, and holds it in both hands.{/n} "I'll send it back to him tomorrow, all of it, all the mornings I missed. And I'll bake him something. He'll say 'Phrr'. He'll mean thank you." {n}She does not look at you.{/n} "You're so mean. Don't do that to me again."''',
       c("Continue", "close")),
-    ch("curse", '''{n}Chadali looks at you for a long moment, and something in her face that has always been open is, for the first time, carefully closed.{/n}
+    ch("curse", '''{n}Chadali looks at you, and her face, which has always been open, is carefully closed.{/n}
 "All right," she says. "For the Council. For his own good." {n}She puts the feather in her sleeve, beside the prayers.{/n}
 "I'll keep it up. I'm very good at wishing. People forget that I can stop." {n}And then, more softly, not to you:{/n} "Poor old fellow."''',
       c("Continue", "close")),
@@ -337,7 +337,7 @@ wager(KNUCKLEBONES, "Knucklebones", '"You brought dice?"', [
 "There. Now we're both cheats. Eritrice would have a stroke." {n}She is still giggling.{/n} "That's allowed. If you do it where I can see, it's a game."''',
       c("Continue", "fair", flags=(CHEATED_OPENLY,))),
     ch("smooth", '''{n}The bones fall. Five backs. It is a perfect throw, and perfectly invisible; you are rather proud of it.{/n}
-{n}Chadali looks at the bones for a long moment without clapping.{/n} "Five," she says. "Five backs, first throw."
+{n}Chadali looks at the bones and, for once, does not clap.{/n} "Five," she says. "Five backs, first throw."
 {n}She gathers them up and throws. They come down any old way. She looks at them, and then at you, and smiles, and the smile is completely friendly and does not reach her eyes.{/n} "Lucky you."''',
       c("Continue", "seen")),
     ch("seen", '''{n}You play on. You win every throw. She does not remark on it again. At the end of the hour she pushes your whole pile of cookies across the table to you and keeps none.{/n}
@@ -439,7 +439,7 @@ wager(LOADED, "Loaded dice", '"You\'ve been quiet with me since the knucklebones
       c("[Eat the cross cookie.]")),
     ch("deny", '''{n}She looks at you for a long time. Then she nods, and smiles, and pushes the cookie into your hand.{/n}
 "All right," she says. "I'm imagining it."
-{n}She is perfectly pleasant for the rest of the audience. She talks about the weather in Elysium and the price of honey. When you leave, she says "Go on, lucky charm," exactly as she always does, and for the first time it sounds like something she has decided to keep saying.{/n}''',
+{n}She is perfectly pleasant for the rest of the audience. She talks about the weather in Elysium and the price of honey. When you leave, she says "Go on, lucky charm," exactly as she always does, and now it sounds like something she has decided to keep saying.{/n}''',
       c("[Go.]")),
 ], requires=(CHEATED_SMOOTHLY,), forbids=(LOADED,))
 
