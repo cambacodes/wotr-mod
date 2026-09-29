@@ -56,6 +56,7 @@ COURIER_KILLED = P + "cost.courier_killed"
 VIAL_FORGED = P + "cost.vial_forged"
 LANDLORD = P + "landlord"
 ALTAR = P + "cost.altar"
+SCAR = P + "cost.horned_scar"                          # the horned mark cut into the Commander's arm (deed_by_fire)
 PICK_ITEM = "3b8021631cd1b7d4eb749601047a7bda"       # DreadfulOnslaughtItem, her +5 unholy heavy pick (Colyphyr loot)
 PICK_HELD = "hepzamirah.pick_held"
 DECLINED = P + "declined"
@@ -167,7 +168,7 @@ SCENES.append(scene(P + "colyphyr.offer", "A standing offer", "Hepzamirah", 4,
        c('"He\'s already weighing you against someone. I can see it on you."', "weighed")),
     hz("weighed", '''{n}The laughter stops as if a door had closed on it.{/n}
 "Weighing." {n}She says it very softly.{/n} "You know nothing about my father, crusader. You have never met a god who counts his children like coins and keeps only the heavy ones."
-{n}Her crimson eyes are fixed on you, and for one breath there is something behind them that is not contempt; something that has been listening at a door for a long time.{/n} "I am the heavy one. I have always been the heavy one."''',
+{n}Her crimson eyes are fixed on you, and for one breath there is something behind them that is not contempt; something that has been listening at a door for years.{/n} "I am the heavy one. I have always been the heavy one."''',
        c("Continue", "shelf")),
     hz("shelf", '''{n}Something moves behind the crimson of her eyes, quick and cold, the way a spy's hand moves to a knife.{/n}
 "Offer it to the angel. He loves a promise. I will take your head instead, and keep it on a shelf, so that when my father proves you wrong you can watch."''',
@@ -228,18 +229,21 @@ SCENES.append(scene(P + "ghost.late_gather", "The wall, stolen aloud", "Hepzamir
 
 
 # --- The post-Labyrinth fallback (remote): the Commander left without stealing her corner. Everything burned on the Lord of
-# Beasts' altar goes to him, into his prison; the deed of theft goes the same way. Dearer than either setup, and priced.
+# Beasts' altar goes to him, into his prison. Paper would be ignored; the cult's own rite is a mark cut in the flesh
+# (the cellar cultists cut his horned head into their forearms), so the Commander cuts it into their own arm and speaks
+# the theft into the blood. Polish 2026-09-28: the old paper deed of theft read as the notary crutch (06 registry); the
+# main cost is now the scar the Commander carries (cost.horned_scar), with the chaplains' Favors as a secondary price.
 
 SCENES.append(scene(P + "ghost.deed_by_fire", "A deed, by fire", "Memory", 5, "", [
-    nar("cellar", '''{n}Three nights after the Labyrinth, the watch finds a cellar under the old grain exchange where a handful of your own soldiers have been cutting a horned head into their forearms. They have an altar down there: a slab of black stone, a brazier, and the old words of the Lord of Beasts' cult scratched round the rim. Everything they burned on it, the chaplains say, went to him.{/n}
+    nar("cellar", '''{n}Three nights after the Labyrinth, the watch finds a cellar under the old grain exchange where a handful of your own soldiers have been cutting a horned head into their forearms. They have an altar down there: a slab of black stone, a brazier, and the old words of the Lord of Beasts' cult scratched round the rim. The chaplains say it answered: the man they caught at it had a cut on his arm that was still bleeding and a scar beside it that had not been there an hour before, and he had been talking to someone.{/n}
 {n}Somewhere in his prison, two corridors from the lich's stolen cell, his daughter is still hiding in her corner from men with hooks. You did not steal it. You walked past.{/n}''',
         c("Continue", "deed")),
-    nar("deed", '''{n}A deed of theft is only paper. But paper burned on his altar goes where he is.{/n}''',
-        c('[Burn a deed of theft on his altar, in front of the chaplains] "I steal the corner where Hepzamirah hides, and name it Leavable. Signed, the Commander. Deliver it."',
-          "burned", mythic="Trickster", alignment=("Chaotic", 2), crusade=("Favors", -200), flags=(PRIMED, GRUDGE, LATE, ALTAR, STARTED)),
+    nar("deed", '''{n}The cultists did not burn paper. The chaplains found what they burned: nothing. The altar is black with old blood, and every arm down there carries the same cut, a horned head in a circle, because that is how the Lord of Beasts reads his mail.{/n}''',
+        c('[Cut his horned mark into your own forearm on his altar, in front of the chaplains] "I steal the corner where Hepzamirah hides. It\'s called Leavable now. Read it in my blood."',
+          "burned", mythic="Trickster", alignment=("Chaotic", 2), crusade=("Favors", -200), flags=(PRIMED, GRUDGE, LATE, ALTAR, STARTED, SCAR)),
         c('"Let her rot. Break the altar."', flags=(CLOSED,), alignment=("Lawful", 1))),
-    nar("burned", '''{n}The chaplains watch the Commander of the crusade kneel at an altar of the Lord of Beasts and set fire to a sheet of paper on it. They do not stop you. One of them begins, very quietly, to write a letter to Nerosyan.{/n}
-{n}The paper burns green. Somewhere very far down, something gives, like wet parchment. When you climb out of the cellar the candles on the stair are burning sideways.{/n}''',
+    nar("burned", '''{n}The chaplains watch the Commander of the crusade kneel at an altar of the Lord of Beasts and open their own arm on it with a cultist's knife, a horned head in a circle, the lines as neat as you can make them with your teeth set. They do not stop you. One of them begins, very quietly, to write a letter to Nerosyan.{/n}
+{n}Your blood smokes green where it touches the stone, and then the stone drinks it. The brazier goes out. In the dark something breathes on the back of your neck, rank as a byre, and a voice that is mostly teeth says one word into your ear, *thief*, and you know that it has read what you wrote, and that it will remember the hand. Somewhere very far down, something gives, like wet parchment. When you climb out of the cellar the candles on the stair are burning sideways, and the cut on your arm has already closed into a scar that looks years old.{/n}''',
         c("[Go up into the air.]")),
     ], requires=("trickster", DEAD, "baphomet.parley.latched"), forbids=(PRIMED, CLOSED), delay=72, last=5, optional=True,
     Relationship=REL, Remote=True, Chapters=[5], TricksterDevice=True, TricksterState="ghost"))
@@ -274,7 +278,7 @@ M."''',
         c("Continue", "body")),
     *lead([("body", nar, '''{n}It comes on the back of Mutasafen's Apprentice, a cambion with acid-scarred hands who sets it down at your gate and will not cross the threshold. The label says: "Some assembly required.
 M."{/n}
-{n}Inside, in brine, lies Baphomet's daughter, faithful to the last detail: the crushed side of the skull knitted into a ridge of scar, one horn a broken stump, one eye milk-white. He has grown her exactly as her father left her. It is the most spiteful thing you have ever seen done with care.{/n}''', None),
+{n}Inside, in brine, lies Baphomet's daughter, faithful to the last detail: the crushed side of the skull knitted into a ridge of scar, one horn a broken stump, one eye milk-white. He has grown her exactly as her father left her, down to the grit still in the scar.{/n}''', None),
            ("body_blood", nar, '''{n}He holds out an empty vial and a lancet. The label on the vial already says "Do not open", in his master's looping hand. He will not take the blood at a gate with the crate still sealed, he says: his master's terms are payment on delivery of a living tenant. He hangs the empty vial on your gatepost by its cord, and goes. He will be back for it full.{/n}''', BLOOD),
            ("body_coin", nar, '''{n}He counts the crusade's draft twice, slowly, moving his lips. Then he says, not quite to you, that the laboratory has paid for the flesh. The vial is another matter. His master still wants a vial of the Commander, for his silence about where the princess sleeps, and he will be back to collect it. The price, he says, has gone up. He seems to find this very natural.{/n}''', LAB),
            ("body_price", nar, '''{n}Pinned to the brine-soaked lining is a second note: "You said no price. The price went up. My Apprentice will collect it."{/n}''', MGRUDGE)],
@@ -285,10 +289,10 @@ M."{/n}
     *lead([("flesh", nar, '''{n}Somewhere, very far away, a glass vial cracks on a laboratory shelf. The cold on your shoulder is gone. The thing in the crate opens its one good eye.{/n}
 {n}She sits up in the brine and touches the scar, the stump and the dead eye, slowly, the way a moneylender counts coins that have been clipped.{/n}''', None),
            ("flesh_late", hz, '''"You struck me before you freed me. The jailers whispered your name all the way to Drezen. I counted every whisper."''', LATE),
-           ("flesh_altar", hz, '''"You walked past me in his prison. Then you knelt at his altar in your own city and burned a deed of theft on it, to reach me. I felt the corner come loose like a rotten tooth." {n}Her lip curls.{/n} "My father's altar. You used his own post. I have never been so insulted in my life."''', ALTAR),
+           ("flesh_altar", hz, '''"You walked past me in his prison. Then you knelt at his altar in your own city and cut his mark into your own arm, to reach me. I felt the corner come loose like a rotten tooth." {n}Her lip curls, and her eye goes to your sleeve and stays there.{/n} "My father's mark. On you. You used his own post, clown, and you will wear the stamp until you die. I have never been so insulted in my life."''', ALTAR),
            ("flesh_offer", hz, '''"'Look me up.' You said it in Colyphyr, over the angel's head. I have looked you up, clown. Here I am, in a crate."''', OFFER)],
           "first_rent"),
-    hz("first_rent", '''"You *mended* me." {n}It is said the way another woman would say "you spat on me".{/n} "Baphomet's daughter, grown in a jar by my own servant and unwrapped by a clown with a quill."
+    hz("first_rent", '''"You *mended* me." {n}It is said the way another woman would say "you spat on me".{/n} "Baphomet's daughter, grown in a jar by my own servant and unwrapped by a clown with a crowbar."
 "Very well. I am alive, and I owe you rent. Here is the first payment. My father's archpriestess could call him, and he had to come. One day I will find out if that is still true. When I do, you may stand where he can see you. When I kill Mutasafen, you may not. That one is mine."''',
        c('"I\'ll bring snacks."'),
        c('[Intimidate] "You\'ll pay the rent I name."', flags=(LANDLORD,), alignment=("Evil", 1))),
@@ -311,10 +315,14 @@ SCENES.append(scene(P + "body.hounds", "The Apprentice at the gate", "Memory", 5
     *lead([("throat", hz, '''"Your postman came back. I have him by the throat. He says he is owed a vial of you. He says his master will know if it is not your blood. I say his master will know nothing, because I am going to post his master the Apprentice's eyes, one at a time, in a box with a ribbon."''', None),
            *COURIER_LEADS], "joke"),
     hz("joke", '''"Unless you have a better joke. You usually do. Come down and tell it before I get bored, clown. I get bored quickly now. Flesh itches."''',
-       c('[Hand over the vial] "Let him go. A deal is a deal, even with him."', flags=(CS, VIAL_PAID)),
+       c('[Hand over the vial] "Let him go. A deal is a deal, even with him."', "vial", flags=(CS, VIAL_PAID)),
        c('[Let her have him] "He\'s yours."', flags=(CS, COURIER_KILLED), alignment=("Evil", 1)),
        c('[Send him back with a forged vial] "Here. Areelu\'s last experiment. Mind the label."', flags=(CS, VIAL_FORGED),
          mythic="Trickster")),
+    hz("vial", '''{n}By the time you reach the gate she has the Apprentice kneeling in the mud with her boot on his calf. She holds out her hand for the lancet without looking at you, and when you give her your arm instead she takes that too.{/n}
+{n}She draws it herself. She is not gentle, and she is not clumsy either: one cut inside the elbow, exactly deep enough, her thumb pressing the vein to make it run faster, and she watches the vial fill the way a moneylender watches a scale settle. It takes longer than you expect. By the end the gate is swaying slightly and your mouth is dry.{/n}
+"Understand what you have paid, clown. He does not want this to drink. He wants to grow things from it." {n}She corks the vial with her teeth, spits the wax, and drops it into the Apprentice's scarred hands.{/n} "Somewhere in his cave there will be a jar with a little of you in it, and you will never know what it is becoming. Now you have my reason to want him dead. Good. I like company."''',
+       c("[Press a rag to your arm.]")),
     ], requires=("trickster.ever", RET), forbids=(CLOSED, CS), delay=48, last=5, optional=True, Relationship=REL,
     Remote=True, Chapters=[5]))
 
@@ -339,17 +347,17 @@ TERMS_LEADS[0] = ("ember", ember_node, '''{n}Ember is sitting on an upturned buc
 yard(P + "body.terms", "Terms, in person", '"You wanted the clown."', [
     *lead([("open", nar, '''{n}She is by the far wall of the smith's yard, where the light does not reach, arms crossed over a body she did not choose. The heavy pick the smith forged for her leans against the wall beside her, head down, like a hound told to wait.{/n}''', None),
            *TERMS_LEADS], "price"),
-    hz("price", '''"Your chaplains pray outside my door as if I were a sickness. Your soldiers make the sign of the Inheritor when I pass, and one of them spat, once. Enough. Terms."
+    hz("price", '''"Your chaplains pray outside my door as if I were a sickness. Your soldiers make the sign of the Inheritor when I pass, and one of them spat, once. Enough. Listen, clown, because I will say this once."
 "I stay. My own door, my own guards, and no priest mends anything else of mine. When I go for Mutasafen, nobody follows. And my father is mine. The day I call him, you will not bargain with him over my head."
 "In return I stand beside you in every fight until then. I will not pretend to be grateful. Do not ask me to."''',
-       c('[Agree to every term] "Done. Your door, your guards, your father."', "rent"),
-       c('[Counter] "You\'ll serve as my blade. Guests don\'t get terms."', "refused", flags=(LANDLORD,),
+       c('[Agree to all of it] "Done. Your door, your guards, your father."', "rent"),
+       c('[Counter] "You\'ll serve as my blade. Guests don\'t get conditions."', "refused", flags=(LANDLORD,),
          alignment=("Evil", 1)),
        c('"Why stay at all? The door\'s Leavable. You could walk out tonight."', "why")),
     hz("why", '''"Walk out to where?" {n}She laughs, short.{/n} "My father's cult calls me apostate in your cellars. Mutasafen has his hand in half the Worldwound and wants the rest of me back on his bench. Horzalah would put a spear in me for the pleasure of it, and Vorlesh has my place and would like my soul in a jar to go with it."
-"Everything outside your door wants to own me, clown. You are the only thing in the world that has ever given me a door and meant it." {n}She looks at the forge.{/n} "That is why. It is not a sentimental reason. It is arithmetic. Now answer my terms."''',
-       c('[Agree to every term] "Done. Your door, your guards, your father."', "rent"),
-       c('[Counter] "You\'ll serve as my blade. Guests don\'t get terms."', "refused", flags=(LANDLORD,),
+"Everything outside your door wants to own me, clown. Inside it there are walls, a crusade's worth of steel between me and all four of them, and a landlord who is easier to kill than any of them if the lease sours. I can do the sums." {n}She looks at the forge.{/n} "That is why. It is not a sentimental reason. It is arithmetic. Now answer me."''',
+       c('[Agree to all of it] "Done. Your door, your guards, your father."', "rent"),
+       c('[Counter] "You\'ll serve as my blade. Guests don\'t get conditions."', "refused", flags=(LANDLORD,),
          alignment=("Evil", 1))),
     hz("rent", '''"Words. My father gave me words too. *Protection of a rare kind*, he said, and the protection was a leash."
 {n}She steps close enough that you can see where the scar pulls the corner of her mouth, and the heat of her comes off her like the heat off the forge.{/n} "Say the other thing. That if I walk out of your door, you let me."''',
@@ -364,8 +372,11 @@ yard(P + "body.terms", "Terms, in person", '"You wanted the clown."', [
        c("[Let her keep your wrist]", "threshold", flags=(COMMITTED,))),
     nar("threshold", '''{n}She does not let go. She walks backwards through the yard, out of the forge-light, towing you by the wrist like a prize led home from a raid, and the smith finds something urgent to hammer on the far side of his anvil.{/n}
 {n}At her door she stops, and shoves you back against it with her forearm across your chest, and looks at your mouth the way she looked at the Apprentice's throat. Her breath is hot and smells of iron. The stump of her horn grazes your temple as she bends her head.{/n}
-"You smell of my father's prison still." {n}Her teeth find your lip, not gently.{/n} "I will get it off you."''',
-        c("[Reach behind you for the latch.]")),
+"You smell of my father's prison still." {n}She says it into your mouth, and the kiss is a bite that forgot to finish.{/n} "I will get it off you."
+{n}She reaches past you for the latch herself, and the door gives, and you go through it together, not gracefully. She kicks it shut behind her with her heel. Her hands are a surgeon's and a butcher's at once: the buckles of your coat come open under her fingers one after another, quick and exact, as if she has taken apart harder things than you and enjoyed every one. Her own clothes she simply tears open at the shoulder and lets fall.{/n}
+{n}Her skin runs hotter than a mortal's. There is old scar tissue along her ribs, rough under your palms, and when your hand finds it she catches your wrist and presses it there, harder, as if to say *that is mine too, learn it*. She walks you back across the room until your legs meet the furs heaped by the brazier, pushes you down onto them, and follows you down, and pins both your wrists above your head with her pick-hand, easily, the way she would hold a haft.{/n}
+"Mine," {n}she says, low, and her good eye is very bright.{/n} "Tonight that is the only rule." {n}Her free hand goes lower, unhurried, taking inventory.{/n}''',
+        c("[Let her have her rule.]")),
     hz("refused", '''"I knelt once, to a father who promised me everything. I will not do it for a landlord."
 {n}She walks out of the yard without a glance at anyone. By morning her door stands open and her room is empty, except for the jar of wildflowers, unbroken, set in the middle of the floor.{/n}''',
        c('"Then go."', flags=(CLOSED,))),
