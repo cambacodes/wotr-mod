@@ -151093,7 +151093,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The war council sits. At the foot of the table there is a chair for Nerosyan's attaché, because on the day your council first sat you had one set for Nerosyan's attaché, a courtesy to the Crown that cost nothing, and the steward keeps a courtesy the way other men keep saints' days. Nobody has ever come to sit in it. Somebody has put a jug on it.{/n}\n{n}The steward sets her place anyway, every session: a cup, a pen, a sheet of the Crown's paper. He is a quiet old man who came with the Queen's household and has never once been asked to leave a room. He stands behind the empty chair through every council, and after every council, you have noticed, he climbs to the chancery dovecote with a slip of paper no clerk gave him. Nobody else has noticed. Nobody else has been watching him.{/n}",
+          "Text": "{n}The war council sits. At the foot of the table there is a chair for Nerosyan's attaché, because on the day your council first sat you had one set for Nerosyan's attaché, a courtesy to the Crown that cost nothing, and the steward keeps a courtesy the way other men keep saints' days. Nobody has ever come to sit in it. Somebody has put a jug on it.{/n}\n{n}The steward sets her place anyway, every session: a cup, a pen, a sheet of the Crown's paper. He is a quiet old man who came with the Queen's household and has never once been asked to leave a room. He stands behind the empty chair through every council, and after every council, you have noticed, he climbs to the chancery dovecote with a slip of paper no clerk gave him. A week ago one of those slips fell from his sleeve on the chancery stair, and you picked it up before he could: the day's council, in a Nerosyan court hand, down to who had coughed. You gave it back to him without a word. You have been watching him since.{/n}",
           "Choices": [
             {
               "Text": "[Bow to the empty chair, with the steward behind it] \"Lady Konomi's credentials are hereby deemed presented. Someone tell her she's late for her own audience.\"",
@@ -151237,7 +151237,7 @@
         {
           "Id": "start",
           "Speaker": "Konomi",
-          "Text": "{n}A kitsune in travelling silks is standing in the attaché's office, empty since Drezen fell, with a ledger under her arm, as if she had been there for an hour. She has.{/n}\n\"Lady Konomi, official attaché of Nerosyan. Here are my credentials.\" {n}She holds out her credentials. The ink on the date is two days old.{/n} \"Though I understand they have already been presented. By you. To a jug.\"\n\"I was halfway through a reception in Nerosyan when the Chancellor's clerk showed me his register. Column four: 'credentials presented, Drezen', entered on the strength of a report from our dovecote in your chancery. My people live everywhere, Commander. You are not supposed to be aware of it. One of them has stood behind that chair since your council first sat, and nobody in this city has ever looked at him twice. You looked. Then you used him to send me an invitation by my own post.\"\n\"He is either richer or gone. I have not yet decided which of those I shall bill you for.\"\n{n}Her smile is small, sharp and entirely pleased with itself.{/n}\n\"The journey is on your account, Commander. So is the reception I left. It was a very good reception.\"\n\"And one thing more. On the strength of that register, the Chancellor's office stopped paying my stipend in the capital three months ago and began charging it to Drezen. Arrears. They would like to know why you never reported my arrival. So, frankly, would I.\"",
+          "Text": "{n}A kitsune in travelling silks is standing in the attaché's office, kept swept for an attaché who never came, with a ledger under her arm, as if she had been there for an hour. She has.{/n}\n\"Lady Konomi, official attaché of Nerosyan. Here are my credentials.\" {n}She holds out her credentials. The ink on the date is two days old.{/n} \"Though I understand they have already been presented. By you. To a jug.\"\n\"I was halfway through a reception in Nerosyan when the Chancellor's clerk showed me his register. Column four: 'credentials presented, Drezen', entered on the strength of a report from our dovecote in your chancery. My people live everywhere, Commander. You are not supposed to be aware of it. One of them has stood behind that chair since your council first sat, and nobody in this city has ever looked at him twice. You looked. Then you used him to send me an invitation by my own post.\"\n\"He is either richer or gone. I have not yet decided which of those I shall bill you for.\"\n{n}Her smile is small, sharp and entirely pleased with itself.{/n}\n\"The journey is on your account, Commander. So is the reception I left. It was a very good reception.\"\n\"And one thing more. On the strength of that register, the Chancellor's office stopped paying my stipend in the capital three months ago and began charging it to Drezen. Arrears. They would like to know why you never reported my arrival. So, frankly, would I.\"",
           "Choices": [
             {
               "Text": "[Receive her] \"Welcome to your audience, Lady Konomi. You're late.\"",
@@ -242316,7 +242316,7 @@
         {
           "Id": "treat",
           "Speaker": "Narrator",
-          "Text": "{n}The chaplains could raise her. Any crusader who falls in the Commander's company can be raised, with a diamond and the rite; they have done it for knights and for Woljif. They will not spend a diamond on a demon, and they have said so, politely. So you do the rite's work yourself, in two halves.{/n}\n{n}First the Trickster's lore, which cannot raise anyone and does not try: you lay your palm on her breastbone and lift from her body the one condition that would destroy her again the moment she woke, the starvation, the way you have lifted plague out of the Kenabres refugees. Then the price the rite would have taken in diamond, you pay in blood. You cut your wrist on the edge of the bier and hold it to her lips.{/n}\n{n}Something under your palm goes from stone to skin. The sprig slides out of her hands. Her eyes open. They find your throat before they find your face.{/n}",
+          "Text": "{n}The chaplains could raise her. Any crusader who falls in the Commander's company can be raised, with a diamond and the rite; they have done it for knights and for Woljif. They will not spend a diamond on a demon, and they have said so, politely. So you use the rite you copied out of the shrine library the week you made yourself her doctor: the Desnan travellers' raising, which asks a life's worth of price and does not care whose. You pay it in blood. You cut your wrist on the edge of the bier and hold it to her lips while you say the words.{/n}\n{n}The Trickster's lore cannot raise anyone, and does not try. It does what it has always done, the way you did it for the Kenabres refugees: as the rite takes hold you lay your palm on her breastbone and strip from the waking body the sickness and the weakness a raising leaves behind, so that she comes back with all her strength, and with nothing between her and the hunger but your wrist.{/n}\n{n}Something under your palm goes from stone to skin. The sprig slides out of her hands. Her eyes open. They find your throat before they find your face.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -242344,7 +242344,7 @@
         {
           "Id": "wake",
           "Speaker": "Narrator",
-          "Text": "{n}The chaplains could raise her, with a diamond and the rite, as they raise any crusader who falls in your company. They will not spend a diamond on a demon. You have no lore to lift the starvation from her; you have the Desnan travellers' rite you read in the shrine library, a candle, and your own blood for the price.{/n}",
+          "Text": "{n}The chaplains could raise her, with a diamond and the rite, as they raise any crusader who falls in your company. They will not spend a diamond on a demon. You have no lore to lift a raising's weakness from her; you have the Desnan travellers' rite you copied out of the shrine library the week you made yourself her doctor, a candle, and your own blood for the price.{/n}",
           "Choices": [
             {
               "Text": "[Say the rite over her, and cut your wrist on the edge of the bier]",
@@ -242617,7 +242617,7 @@
         {
           "Id": "again",
           "Speaker": "Arueshalae",
-          "Text": "{n}She nods slowly, as if you've confirmed a diagnosis she was afraid of.{/n} \"Every time. Then I had better not die, had I? Because I don't think I could say no to you twice.\"",
+          "Text": "{n}She nods slowly, as if you've confirmed a diagnosis she was afraid of.{/n} \"Every time. Then hear my side of it, because it isn't a question. You don't do it again unless I ask. If I wake a second time with your wrist in my mouth and no say in it, I walk out of this crusade that same night, and you don't follow me.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -243441,7 +243441,7 @@
               "Abort": false
             },
             {
-              "Text": "[Leave nothing.]",
+              "Text": "[Leave nothing, and let her do what she threatened.]",
               "Next": "nothing",
               "Set": [
                 "arueshalae.trickster.reunited",
@@ -246924,7 +246924,7 @@
         {
           "Id": "ask",
           "Speaker": "Arueshalae",
-          "Text": "{n}She brings her hands out from behind her back. They are empty. She holds them out to you, palms up, not touching, an inch away.{/n}\n\"I'm not going to test you. I've tested everyone I ever met and it never once made me happy. I'm just going to ask.\" {n}Her voice goes very small and very steady.{/n} \"Will you have me? All of it. The praying and the wanting. The priests hoped those were two things; they never were. It's one knot, and it's mine, and I'm asking you to hold it.\"",
+          "Text": "{n}She brings her hands out from behind her back. They are empty. She holds them out to you, palms up, not touching, an inch away.{/n}\n\"I'm not going to test you. I've tested everyone I ever met and it never once made me happy. I'm just going to ask.\" {n}Her voice goes very small and very steady.{/n} \"Will you have me? All of it. The praying and the wanting. The priests hoped those were two things. They aren't.\"",
           "Choices": [
             {
               "Text": "\"Yes. Both of you.\"",
@@ -265276,8 +265276,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",
