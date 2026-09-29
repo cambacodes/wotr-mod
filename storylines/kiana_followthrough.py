@@ -213,7 +213,7 @@ s("first_readers", "People who have not heard it", [
     n("audience_role", "Narrator", '''{n}Edris enters the story in a voice much lower than her own. Lenna looks at her over the apron, loses her place, and has to ask Kiana where they are.{/n}
 "Still in the castle. Though I understand the desire to escape."
 {n}The room laughs with them. Edris tries her ordinary voice. It works better. From your seat you can see Kiana listening to an answer she knows by heart and finding something new in the way it is spoken.{/n}''', c('[Listen as the princess turns toward her guest.]', "speech")),
-    n("speech", "Narrator", '''{n}The cook goes to fetch supper. For the first time, the princess is alone with the person she invited. Kiana lowers the page enough to let the room see her face.{/n}''',
+    n("speech", "Narrator", '''{n}The cook goes to fetch supper. At last the princess is alone with the person she invited. Kiana lowers the page enough to let the room see her face.{/n}''',
       c('[Follow the pauses in the longer speech.]', "long", requires=("kiana.follow_long_speech",)),
       c('[Hear the shortened question and its answer.]', "short", requires=("kiana.follow_short_speech",))),
     n("long", "Narrator", '''{n}The first pause earns a laugh. The second earns a smaller one. At the third, a chair scrapes while somebody shifts an aching leg. Kiana's eyes flick toward the sound. She reaches for the next line too quickly, swallows the end of it, and stops.{/n}
@@ -424,7 +424,7 @@ s("kept_evening", "The time beside her name", [
     n("stop", "Kiana", '''"All right."
 {n}She writes three words on a scrap, puts it across the page and covers the ink. The movement is reluctant, but she gets up without adding another line.{/n}
 "I have left myself the end. If tomorrow's Kiana cannot understand it, she will have only tonight's Kiana to blame."
-{n}She comes to you, rests her hands against your arms and looks at your face properly for the first time.{/n}
+{n}She comes to you, rests her hands against your arms and looks at your face properly, as though she has only now been allowed to.{/n}
 "Hello. I am pleased you came. That should have been the first thing I said."
 {n}The food she has bought waits in a covered bowl. She brings it to the table, tastes a little and decides it will do without reheating.{/n}
 "Cold supper. Warm company. I can work with that."''', c('[Help her set the table.]', "work")),

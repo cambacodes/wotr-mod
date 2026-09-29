@@ -93,7 +93,7 @@ def page_choices(*flags):
 # --- State aftermath_missed: the letter that waited (mechanical recovery, TT-14) ---------------------------------------
 
 letter("kiana.trickster.aftermath.letter_waited", "The bottom of the box", [
-    nar("start", '''{n}Arsinoe's clerk brings it with the morning dispatches, apologising before he has set it down. The hospital's lost-letters box was emptied yesterday for the first time since the siege; this was at the bottom, under a requisition for bandages and a love letter to a Houndheart that nobody has claimed.{/n}
+    nar("start", '''{n}Arsinoe's clerk brings it with the morning dispatches, apologising before he has set it down. The hospital's lost-letters box was emptied yesterday, which nobody had done since the siege; this was at the bottom, under a requisition for bandages and a love letter to a Houndheart that nobody has claimed.{/n}
 {n}The seal is a smear of candle wax with a thumbprint in it. The date is the day the stolen souls came home.{/n}
 "Commander. I owe you a wedding night's worth of thanks and I can't possibly afford it, so you'll have to take a play instead. There is a vampire princess in it. She is very mysterious and very badly housed. I have written all of it except the last line, which is blank, and which I am enclosing, because I would like you to fill it in and I would like you not to be sensible about it. Bring no speeches. K."
 {n}The enclosed page is folded small. Its last line is empty.{/n}''',
@@ -149,12 +149,12 @@ letter("kiana.trickster.possessed.fake_gem", "Paste", [
       c('[Watch her wake] "Kiana?"', "woke_bolted"), portrait="Arsinoe"),
     nar("swapped", '''{n}He hands it over. Of course he does: a craftsman likes his work admired. You turn it to the lamp, and turn it back, and hand him the other one, the counterfeit of Sunhammer's work you have been carrying, cut by some honest forger to pass for his master's. He never feels the difference.{/n}
 {n}Then you appraise the stone in your fist out loud, the way you would at any pawnbroker's counter: a bubble just off centre, a crack no wider than a hair from the girdle clean through to the heart. When you open your hand the crack is there, and the pale light that lived in the stone has already run out along it, into the warm air above the cot.{/n}
-{n}The apprentice squints at the counterfeit between his own fingers. For the first time since he walked in, he looks unsure of his trade.{/n}''',
+{n}The apprentice squints at the counterfeit between his own fingers. Now, and not before, he looks unsure of his trade.{/n}''',
       c('[Send him back to his master] "Take your stone back to Sunhammer. Tell him the Commander said it was flawed."', "woke_swapped",
         mythic="Trickster", alignment=("Chaotic", 1), remove_item=COUNTERFEIT, requires=(HELD,)),
       portrait="Arsinoe"),
-    nar("paid", '''{n}He counts it twice, the whole thousand, coin by coin, with the patience of a man paid by the piece. Then he takes a slip of paper from his apron, writes *One favour, owed* on it in a neat guild hand, and holds it out for your signature.{/n}
-{n}You sign it. Arsinoe watches you do it and says nothing, and her silence is worse than the price.{/n}
+    nar("paid", '''{n}He counts it twice, the whole thousand, coin by coin, with the patience of a man paid by the piece. Then he holds out his right hand, palm up, the way a guild master seals a commission with no price named. "One favour, owed." You lay your palm on his. It is cold, and he does not let go until you look him in the eye.{/n}
+{n}Arsinoe watches you do it and says nothing, and her silence is worse than the price.{/n}
 {n}He empties the pouch onto the blanket, stones in a row, like rings laid out on a jeweller's velvet, and sets the pale one over Kiana's heart. They warm one by one. Down the ward, the sleepers breathe in. A boy sits up and asks, very loudly, where his ring went. Somewhere a dog barks, and somebody laughs, and somebody else starts to cry.{/n}''',
       c('[Watch her wake] "Kiana?"', "woke_paid"), portrait="Arsinoe"),
     k("woke_sold", TRICK_WAKE,
@@ -165,7 +165,7 @@ letter("kiana.trickster.possessed.fake_gem", "Paste", [
       c('[Sit with her until her hands are still.]', flags=(PRIMED, RETURNED, ROBBED, SPENT, H_MARRIED))),
     k("woke_paid", '''{n}She sits up last, and too fast, and grabs the edge of the cot, and looks down the ward at everyone else doing the same.{/n}
 "You paid him." {n}It isn't a question. She laughs, a little too high.{/n} "The Commander of the crusade bought a whole wedding back from a jeweller. Like a ring out of pawn. I'm going to put that in a play, and nobody is going to believe it."
-{n}Then she sees the slip of paper going into the apprentice's apron, with your name on it, and she stops laughing.{/n}
+{n}Then she sees your palm flat on the apprentice's, the guild way, and she stops laughing.{/n}
 "What did you promise him?"''',
       c('[Tell her it is your debt, not hers.]', flags=(RETURNED, FAVOUR, RANSOMED, H_MARRIED))),
 ], requires=("trickster", "trickster.ever", "chapter_later", SOUL_LOST), forbids=(RETURNED, Q3),
@@ -189,7 +189,7 @@ letter("kiana.trickster.awake.dog_collar", "The sample", [
 {n}She laughs until she has to sit down on the floor, and the dog climbs into her lap to help.{/n}
 "Oh, gods. Elan is going to be *furious*. I love it. I love it, and there are still..." {n}She looks along the cots, and the laugh stops.{/n}''',
       c('[Let her laugh] "Best appraisal I ever made."', flags=(PRIMED, RETURNED, ROBBED, DOG, H_MARRIED))),
-    k("paid", '''{n}He counts it twice. Then he writes *One favour, owed* on a slip of paper in a neat guild hand, and you sign it, and he empties the pouch onto the nearest blanket: stones in a row, like rings laid out on a jeweller's velvet. They warm one by one. Down the ward, the sleepers breathe in. The dog sneezes.{/n}
+    k("paid", '''{n}He counts it twice. Then he holds out his palm, the guild way, "One favour, owed," and you strike it, and he empties the pouch onto the nearest blanket: stones in a row, like rings laid out on a jeweller's velvet. They warm one by one. Down the ward, the sleepers breathe in. The dog sneezes.{/n}
 "Every one of them." {n}Kiana does not laugh. She takes your hand instead and holds it hard enough to hurt.{/n} "You paid for every one of them. Do you know what you've promised him?"''',
       c('[Count the stones with her] "No. I\'ll find out when he asks."', flags=(RETURNED, FAVOUR, RANSOMED, H_MARRIED))),
 ], requires=("trickster", "trickster.ever", "chapter_later", "kiana.q2_done"), forbids=(RETURNED, Q3, SOUL_LOST),
@@ -219,7 +219,7 @@ letter("kiana.trickster.no_wedding.postponed", "Postponed", [
       c("Continue", "complaint_king")),
     nar("order", '''{n}You read it into the minutes of the war council, in front of every officer at the table: *Standing order. No marriage leave for anyone under arms until the siege lines hold.* The quartermaster, who has been losing a sentry a week to wedding nights, nods before you have finished. For weeks the officers have been complaining that they are sick of fighting and doing nothing else; you have answered their prayer the wrong way round, and a few of them laugh, and then stop, because it is an order.{/n}
 {n}By evening there are fourteen couples outside the chancery, some still in their good clothes. A baker and a crossbowman ask you to your face how long the lines will take to hold. You have no answer for them that isn't the order.{/n}
-{n}The clerk stamps the licence POSTPONED and sands it. The word dries, and stays.{/n}''',
+{n}The clerk stamps the licence POSTPONED and sands it. Nobody in Drezen argues with a stamp that has the war council behind it.{/n}''',
       c("Continue", "complaint_order")),
     k("complaint_king", '''{n}Two days later a letter comes, written so hard that the nib has gone through the paper twice.{/n}
 "So I'm not a wife. I am a *fiancée*. Again. Because the KING has banned weddings until he is SOBER. Which, as his herald was kind enough to tell the entire square, is NEVER."
@@ -274,13 +274,13 @@ SCENES.append(scene("kiana.trickster.after.temple", "Behind the counter", "Kiana
 "Arsinoe says only one stone came back from that apprentice. Mine." {n}She turns her wedding ring round and round on her finger.{/n} "Why only me? There's a boy out there who can't find his own ring. There's a dog. Commander, I want to know why only me."''',
       c("Continue", "pivot")),
     k("ransomed_woke", '''{n}Kiana is sitting on the edge of a temple cot in a borrowed robe. Out in the ward, people are complaining about the soup, which Arsinoe says is the surest sign of recovery she knows.{/n}
-"They're all awake. Every one. The dog bit a Houndheart this morning; he says it was an honour." {n}She stops smiling.{/n} "And you owe a man who put our souls in a cup. Arsinoe won't tell me what you signed. She says it's between you and your conscience. I told her you might not have one. She said that was what worried her."''',
+"They're all awake. Every one. The dog bit a Houndheart this morning; he says it was an honour." {n}She stops smiling.{/n} "And you owe a man who put our souls in a cup. Arsinoe won't tell me what you promised. She says it's between you and your conscience. I told her you might not have one. She said that was what worried her."''',
       c("Continue", "pivot")),
     k("dog", '''{n}Kiana is on the floor of the ward between two cots, with her friend's dog asleep across her feet. He will not let her stand up. She has stopped trying.{/n}
 "He sits on me. Every time. I think he's decided I'm his now, since his own mistress is..." {n}She strokes his ears. The collar is gone, and nobody has put another on him.{/n} "I've been reading to them, Commander. All of them, every day. I think now I've been reading to them for the dog."''',
       c("Continue", "pivot")),
     k("ransomed_awake", '''{n}The ward behind the curtain is loud. People who have been empty for months are demanding their shoes, their families and their jewellery back, and then, remembering, not their jewellery. Kiana is going from cot to cot with a jug of water and a list, and the dog is following her.{/n}
-"Every one of them, Commander. I keep counting in case one of them is a mistake." {n}She puts the jug down.{/n} "And you owe him. The man who did this. Arsinoe won't say what you signed."''',
+"Every one of them, Commander. I keep counting in case one of them is a mistake." {n}She puts the jug down.{/n} "And you owe him. The man who did this. Arsinoe won't say what you promised."''',
       c("Continue", "pivot")),
     k("late", '''{n}Kiana is awake, dressed, and furious with a pile of get-well letters, most of which, she says, are addressed to a corpse and spell her name wrong. Seelah finished what she started: the stones came home, all of them, and the ward behind the curtain is emptying bed by bed.{/n}
 "So your trick got to me first, and Seelah got to everyone else." {n}She tosses a letter onto the pile.{/n} "I can't decide whether that makes me lucky or first in the queue. Arsinoe says both."''',
@@ -307,7 +307,7 @@ SCENES.append(scene("kiana.trickster.after.temple", "Behind the counter", "Kiana
       c("Continue", "page")),
     k("told_late", '''"So you tricked a jeweller's boy, and Seelah did the rest the honest way." {n}She laughs, properly this time.{/n} "Between the two of you I don't know which one to write as the hero. I'll give Seelah the sword and you the good lines. She won't want them anyway."''',
       c("Continue", "page")),
-    k("spared", '''{n}She looks at you for a long moment.{/n}
+    k("spared", '''{n}She looks at you, and keeps looking.{/n}
 "That's kind." {n}A small, crooked smile.{/n} "It's also a speech, and I said no speeches. I'll let you off, once. It's been a very long month, and I've decided I'm owed a few things going my way."''',
       c("Continue", "page")),
     k("told_licence", '''"A hunch." {n}She stares at you.{/n} "You banned every wedding in a city at war on a *hunch* about a jeweller."
@@ -334,18 +334,18 @@ SCENES.append(scene("kiana.trickster.after.temple", "Behind the counter", "Kiana
 SCENES.append(scene("kiana.trickster.pouch.second_offer", "Revised terms", "Kiana", 5,
                     '"Sunhammer\'s apprentice is back, I hear."', [
     ars("start", '''{n}He is at Arsinoe's counter, the same young man in the same leather apron, with the same pouch at his belt, lighter by one stone. Arsinoe has not offered him a chair.{/n}
-"Commander." {n}He bows exactly as low as before.{/n} "Master Sunhammer received my report of the flaw, and of what his stone was called at the lamp. He was displeased, and when my master is displeased he revises his terms. The rest of the wedding party: a thousand crowns and the favour, as before." {n}He lays a sheet of paper on the counter, already written, with a space at the foot.{/n} "And an apology, in your hand, for the insult to his craft. He intends to frame it."
+"Commander." {n}He bows exactly as low as before.{/n} "Master Sunhammer received my report of the flaw, and of what his stone was called at the lamp. He was displeased, and when my master is displeased he revises his terms. The rest of the wedding party: a thousand crowns and the favour, as before." {n}He clears his throat.{/n} "And an apology, in your own voice, for the insult to his craft. He has written the words himself. I am to carry them back exactly as you say them, and he intends to have them read out at the guild's feast, every year, for as long as there is a guild."
 {n}Behind the curtain somebody has stopped moving. Kiana is standing in the gap in her borrowed robe, listening.{/n}
 "Don't you dare," {n}she says.{/n} "Don't you *dare* apologise to him." {n}Then, much more quietly, looking at the pouch:{/n} "...Unless that's what it costs."''',
-        c('[Pay, and sign the apology] "A thousand crowns. The favour. And my name under his words."', "paid",
+        c('[Pay, and say the apology] "A thousand crowns. The favour. And his words, in my mouth."', "paid",
           crusade=("Finances", -1000)),
         c('[Refuse] "Tell your master the Commander doesn\'t buy back flawed stones. I\'ll come for them myself."', "refused"),
         c('[Not today] "Wait outside. I haven\'t decided."', abort=True)),
-    k("paid", '''{n}You sign it. The apprentice sands the ink, folds the apology into his apron as carefully as a gem, counts the coin twice, and empties the pouch onto the counter: stones in a row, like rings on a jeweller's velvet. Down the ward, one after another, the sleepers breathe in. A boy asks, very loudly, where his ring went.{/n}
+    k("paid", '''{n}You say it, every word he wrote, in front of Arsinoe and the whole ward. The apprentice repeats it back twice to be sure he has it, stores it away behind his eyes as carefully as a gem, counts the coin twice, and empties the pouch onto the counter: stones in a row, like rings on a jeweller's velvet. Down the ward, one after another, the sleepers breathe in. A boy asks, very loudly, where his ring went.{/n}
 {n}Kiana does not look at the stones. She looks at you.{/n}
-"He's going to hang that on a wall." {n}Her voice shakes, and she lets it.{/n} "Somewhere in Mendev there's going to be a wall with your apology on it, and people are going to walk past it and laugh. For us." {n}She takes your hand in both of hers.{/n} "I'm putting it in the play. Word for word. The audience is going to cry, and he'll never know why."''',
+"He's going to have that read out at his feasts." {n}Her voice shakes, and she lets it.{/n} "Somewhere in Mendev, every year, a room full of jewellers is going to drink to your apology and laugh. For us." {n}She takes your hand in both of hers.{/n} "I'm putting it in the play. Word for word. The audience is going to cry, and he'll never know why."''',
       c('[Let her keep your hand.]', flags=(BOUGHT, FAVOUR, APOLOGY))),
-    k("refused", '''{n}The apprentice takes the paper back, folds it along its old creases, and goes without another word. The pouch goes with him, and the stones in it.{/n}
+    k("refused", '''{n}The apprentice bows, exactly as low as before, and goes without another word. The pouch goes with him, and the stones in it.{/n}
 {n}Arsinoe opens her ledger and writes in red ink, under the column headed *Sunhammer. Outstanding*, your promise, word for word, and the date.{/n}
 "You'll come for them yourself." {n}Kiana says it back to you slowly, trying the words for weight, the way she tries a line.{/n} "Good. Then I'm holding you to it. Every one of them. I'll keep the list." {n}She does not smile.{/n} "And if you don't, Commander, that goes in the play too."''',
       c('[Give her your word.]', flags=(VOW,))),
@@ -360,7 +360,7 @@ SCENES.append(scene("kiana.betrothal", "What a fiancée is for", "Kiana", 5, "",
 "A fiancée can still change her mind. That's the whole point of fiancées. It's the only good thing about them." {n}She smooths the licence flat.{/n} "So tell me, Commander, and don't be charming about it. Did you stamp this to save a war, or to keep me unmarried?"''',
       c('[Tell her to marry him] "Marry him, Kiana. When the war lets you."', "marry"),
       c('[Tell her the truth] "I want you. I also want you to have your wedding. I don\'t know how both work."', "truth")),
-    k("marry", '''{n}She looks at you for a long time. Then she folds the licence in half, and in half again, and tucks it into her bodice over her heart, where a soldier keeps a letter from home.{/n}
+    k("marry", '''{n}She studies you as if you were a line she cannot decide to cut. Then she folds the licence in half, and in half again, and tucks it into her bodice over her heart, where a soldier keeps a letter from home.{/n}
 "All right. When the war lets us." {n}Her smile is real, and a little sad, and entirely for Elan.{/n} "You'll come, won't you? Somebody has to stand at the back and look guilty."''',
       c('[Promise to stand at the back.]', flags=(KEPT, "kiana.closed"))),
     k("truth", '''"You don't know how both work." {n}She laughs, and it catches.{/n} "Nobody does. That's why there are so many plays about it."
@@ -396,13 +396,13 @@ PARAGRAPHS = (
     p("Sunhammer's pouch never came back to Drezen. Kiana kept a list of the other names from her wedding, and read it "
       "aloud every year on the anniversary in a temple of Abadar. Every year, at the back of the temple, a young man in "
       "a jeweller's apron stood and listened, and left before the end.", requires=(MET, ROBBED, MARKED), forbids=(Q3, BOUGHT, VOW)),
-    p("The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and a letter of apology "
+    p("The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and an apology said aloud "
       "in the Commander's hand. Somewhere in Mendev it hangs on a wall. Kiana put it in her play, word for word, and "
       "audiences wept at it without knowing why.", requires=(MET, BOUGHT)),
     p("The Commander's promise to fetch the other stones stood in red ink in Arsinoe's ledger for the rest of the war. "
       "Kiana kept the list of names beside it and read it aloud every year on the anniversary, and each year, after the "
       "last name, she looked up.", requires=(MET, VOW), forbids=(Q3,)),
-    p("Somewhere in Mendev a dwarf kept a slip of paper with the Commander's signature on it and three words above it: "
+    p("Somewhere in Mendev a dwarf remembered the cold of the Commander's palm on his, and three words that went with it: "
       "One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched "
       "the Commander's face while they answered.", requires=(MET, FAVOUR)),
     p("Elan and Kiana stayed friends, which surprised everyone but Elan.", requires=(MET, H_MARRIED),
@@ -458,7 +458,7 @@ def anevia(id, requires, text, forbids=()):
 
 REACTIONS = [
     arsinoe("kiana.trickster.aftermath_missed.react_arsinoe", (LETTER_LATE,),
-            '''"The hospital's lost-letters box, Commander. I emptied it this week, for the first time since the siege. One of the letters in it was addressed to you, in Kiana's hand, and dated the day she woke."
+            '''"The hospital's lost-letters box, Commander. I emptied it this week. Nobody had touched it since the siege. One of the letters in it was addressed to you, in Kiana's hand, and dated the day she woke."
 {n}She closes the ledger on her finger to keep the place.{/n}
 "I have reprimanded the orderly. I have also reprimanded myself, which was more unpleasant, because I know exactly where I keep the key."'''),
     anevia("kiana.trickster.aftermath_missed.react_anevia", (LETTER_LATE,),
@@ -473,7 +473,7 @@ REACTIONS = [
     arsinoe("kiana.trickster.possessed.react_arsinoe_ransom", (SOUL_LOST, FAVOUR),
             '''"A thousand crowns and a favour, to the man who put souls in wedding rings."
 {n}Arsinoe sets her pen down very precisely.{/n}
-"The crowns I can bear. They are a number. The favour is a blank line on a page you signed, and blank lines are how temples go bankrupt, Commander. And crusades."'''),
+"The crowns I can bear. They are a number. The favour is a promise with no price written into it, and unpriced promises are how temples go bankrupt, Commander. And crusades."'''),
     reaction("Irabeth", "kiana.trickster.possessed.react_irabeth", (MARKED,),
              '''"A jeweller's boy walked into our hospital with a pouch full of souls, and out again, and nobody stopped him."
 {n}Irabeth's jaw sets.{/n}
