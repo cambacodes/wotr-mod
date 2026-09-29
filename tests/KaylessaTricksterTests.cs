@@ -1,0 +1,293 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Tirabade;
+
+// Kaylessa, Trickster (Writer/handoffs/trickster/kaylessa.md; binding plan 11-ROSTER-PLAN-2 §2): "No lamb to the slaughter".
+// One block per rules test (Trk_Kaylessa_*): Shyka's timeline trade in the dead worlds, the amulet swap in the living one,
+// the spine after her return (rules, the clock, the pivot in the cells, the dagger), her proposal with no test, the knife
+// put down on a table after the Commander's no, the pages, the three allocated reactors, Camellia's oath branch that her
+// return closes, and the courtship around it (kaylessa_wasps before the knife, kaylessa_clearing after).
+internal static class KaylessaTricksterTests
+{
+    private const string Unit = "a1569a0739314d04cb8af1d47dcffbe0";
+    private const string Drezen = "2570015799edf594daf2f076f2f975d8";
+    private const string Tailor = "253cdb8f434e5a6469b75e18428316e3";
+    private const string PleaList = "07bc8bac6a8c8074183e6abb6ce56847";
+    private const string PleaCue = "58f994154e180a147a4ab18381f9bc8c";
+    private const string Goodbye = "0585a80d0b70442409f30afad8207e9d";
+    private const string ShykaList = "e7236a1fe9273ba498b96b9616b3f379";
+    private const string ShykaBack = "cd2b35a474db55544a63f59a67ac67bf";
+    private const string P = "kaylessa.trickster.";
+    private const string W = "kaylessa.wasps.";
+    private const string N = "kaylessa.clearing.";
+    private const string Dead = "kaylessa.dead";
+    private const string Begged = "kaylessa.begged_death";
+    private const string Returned = P + "returned";
+    private const string Committed = "kaylessa.committed";
+    private const string Closed = "kaylessa.closed";
+
+    private static Snapshot World(Story story, int chapter, params string[] flags)
+    {
+        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000 };
+        state.Flags.UnionWith(flags);
+        state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
+        state.AvailableContacts.Add(Unit);
+        Rules.Complete(story, state);
+        foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 300;
+        return state;
+    }
+
+    private static Snapshot Later(Story story, Snapshot state, int hours, int? chapter = null)
+    {
+        var later = Program.Copy(state);
+        later.Hour += hours;
+        if (chapter != null) later.Chapter = chapter.Value;
+        Rules.Complete(story, later);
+        foreach (var flag in later.Flags.Where(f => !later.Times.ContainsKey(f)).ToList()) later.Times[flag] = state.Hour;
+        return later;
+    }
+
+    internal static void Run(Story story, Action<bool, string> check)
+    {
+        Scene S(string id) => story.Scenes.Single(s => s.Id == id);
+        bool Avail(Scene s, Snapshot w) => Rules.Available(story, s, w);
+        Choice Ch(Scene s, string node, int index) => s.Nodes.Single(n => n.Id == node).Choices[index];
+        List<Snapshot> Through(Scene scene, Snapshot w, string node, int index)
+        {
+            var chosen = Ch(scene, node, index);
+            var hits = new List<Snapshot>();
+            foreach (var r in Program.Walk(scene, w))
+                if (chosen.Set.All(r.Has) && (chosen.Set.Length > 0 || r.Has(scene.Id))
+                    && chosen.Forbids.All(f => !r.Has(f) || chosen.Set.Contains(f))) hits.Add(r);
+            check(hits.Count > 0, "No outcome through " + scene.Id + "/" + node + "[" + index + "]");
+            return hits;
+        }
+        Snapshot Take(Scene scene, Snapshot w, string node, int index, params string[] also)
+        {
+            var hit = Through(scene, w, node, index).FirstOrDefault(r => also.All(r.Has));
+            check(hit != null, "No outcome of " + scene.Id + " through " + node + "[" + index + "] with " + string.Join(", ", also));
+            return hit ?? w;
+        }
+        var own = story.Scenes.Where(s => s.Relationship == "kaylessa" && !s.Reaction && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToArray();
+        bool Reaches(Snapshot start, string flag, int chapter = 5, Func<Snapshot, bool>? keep = null)
+        {
+            var seen = new HashSet<string>();
+            var frontier = new List<Snapshot> { start };
+            for (int depth = 0; depth < 20 && frontier.Count > 0; depth++)
+            {
+                var next = new List<Snapshot>();
+                foreach (var from in frontier)
+                {
+                    if (from.Has(flag)) return true;
+                    var w = Later(story, from, 100, chapter);
+                    foreach (var scene in own.Where(s => Avail(s, w)))
+                        foreach (var r in Program.Walk(scene, w))
+                        {
+                            if (r.Has(flag)) return true;
+                            if (keep != null && !keep(r)) continue;
+                            if (seen.Add(string.Join(",", r.Flags.OrderBy(f => f)))) next.Add(r);
+                        }
+                }
+                frontier = next.Take(300).ToList();
+            }
+            return false;
+        }
+
+        var rel = story.Relationships["kaylessa"];
+        var promise = S(P + "reveal.promise");
+        var borrow = S(P + "dead.borrow");
+        var soldier = S(P + "dead.soldier");
+        var hunter = S(P + "alive.hunter");
+        var warning = S(P + "alive.warning");
+        var swap = S(P + "alive.amulet_swap");
+        var rules = S(P + "after.rules");
+        var clock = S(P + "after.dark_fate");
+        var beast = S(P + "after.the_beast");
+        var knife = S(P + "after.the_knife");
+        var commit = S(P + "commit");
+        var table = S(P + "after.knife_on_table");
+        var pages = story.Scenes.Where(s => s.Relationship == "kaylessa" && s.Owner == "KaylessaEpilogue").ToArray();
+        var reactions = story.Scenes.Where(s => s.Relationship == "kaylessa" && s.Reaction).ToArray();
+
+        // Shape and hooks.
+        check(rel.StartedFlag == "kaylessa.started" && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed
+              && rel.UnavailableFlags.SequenceEqual(new[] { Dead, "inhuman" })
+              && rel.UnavailableOverrides.Single().Key == Dead && rel.UnavailableOverrides.Single().Value == Returned
+              && rel.TricksterAccess.Keys.OrderBy(k => k).SequenceEqual(new[] { "alive", "dead" }),
+            "Kaylessa's relationship does not match the spec (dead/alive access, the return lifts her death).");
+        check(promise.AnswerLists.SequenceEqual(new[] { PleaList }) && promise.NativeReturnCue == PleaCue && promise.Nodes.Count == 1
+              && promise.EntryMythic == "PlayerIsTrickster" && Ch(promise, "start", 0).NativeNext == Goodbye
+              && Ch(promise, "start", 0).Set.SequenceEqual(new[] { P + "promised" }),
+            "The promise is not the one-node inline primer at her plea that continues into the native death.");
+        check(borrow.AnswerLists.SequenceEqual(new[] { ShykaList }) && borrow.NativeReturnCue == ShykaBack && borrow.ContactUnit == null
+              && borrow.Chapters.SequenceEqual(new[] { 3, 5 }) && borrow.EntryMythic == "PlayerIsTrickster"
+              && borrow.TricksterDevice && borrow.TricksterState == "dead"
+              && new[] { "shyka.gone", "council.fought", "council.fought_nocta_allied" }.All(borrow.Forbids.Contains),
+            "The borrow is not Shyka's own inline hub device, closed by every outlived Council key.");
+        check(new[] { hunter, warning, swap }.All(s => Rules.IsRemote(s) && s.MinChapter == 5 && s.TricksterDevice && s.TricksterState == "alive"),
+            "The living world's device is not a Chapter 5 chain of Trickster device visits.");
+        var presence = story.Presences["kaylessa.presence"];
+        check(presence.Unit == Unit && presence.Dialog == "hub" && presence.At?.NearUnit == Tailor && presence.At!.Side == "left"
+              && presence.At.Distance >= 2.0 && presence.MinChapter == 3 && presence.MaxChapter == 5,
+            "Her presence is not the talkable copy beside the tailor's awning.");
+        foreach (var hub in own.Where(s => !Rules.IsRemote(s) && s.InteractionHub == "kaylessa.presence"))
+            check(hub.ContactUnit == Unit && hub.Areas.SequenceEqual(new[] { Drezen }) && hub.Forbids.Contains(Closed)
+                  && hub.Requires.Contains("trickster.ever"),
+                "A presence scene is not a Trickster-path hub scene behind her closure: " + hub.Id);
+        check(!own.Any(s => s.AnswerLists.Contains("0f12118177d102f428a3b30b15b132eb") || s.AnswerLists.Contains("a380d926e92f70e429681eb9654478f9")),
+            "A Kaylessa scene hangs on a crowded hub.");
+
+        // Trk_Kaylessa_DeadEarly.
+        var early = World(story, 3, "trickster", "trickster.ever", Dead);
+        check(Avail(borrow, early) && !Avail(hunter, World(story, 5, "trickster", "trickster.ever", Dead)) && !Avail(soldier, early),
+            "Trk_Kaylessa_DeadEarly: the borrow is not the only door.");
+        check(Ch(borrow, "which", 1).Requires.Contains(Begged) && Ch(borrow, "which", 2).Forbids.Contains(Begged)
+              && Ch(borrow, "trade", 3).Requires.Contains(Begged),
+            "Trk_Kaylessa_DeadEarly: her plea's lines show without her plea.");
+        var primed = Take(borrow, early, "trade", 0, P + "primed", P + "cost.shyka_price");
+        check(Ch(borrow, "trade", 0).Alignment?.Direction == "Chaotic", "Trk_Kaylessa_DeadEarly: the trade is not a Chaotic act.");
+        check(Avail(soldier, Later(story, primed, 12)) && !Avail(soldier, Later(story, primed, 6)),
+            "Trk_Kaylessa_DeadEarly: she does not arrive a day after the trade.");
+        var back = Take(soldier, Later(story, primed, 12), "speak", 0, Returned, P + "cost.dark_fate_stalled");
+        check(Reaches(back, Committed, 5), "Trk_Kaylessa_DeadEarly: no road to the commit.");
+        check(Reaches(primed, Committed, 3), "Trk_Kaylessa_DeadEarly: no road from the trade to the commit.");
+
+        // Trk_Kaylessa_DeadEarly_Raised (the failed haggle).
+        var raised = Take(borrow, World(story, 5, "trickster", "trickster.ever", Dead), "raised", 0, P + "cost.shyka_raised");
+        check(raised.Has(P + "primed") && Ch(borrow, "raised", 1).Abort, "Trk_Kaylessa_Raised: the raised price cannot be paid or refused.");
+        check(Ch(borrow, "trade", 2).Check?.Skill == "CheckDiplomacy" && Ch(borrow, "trade", 2).Check!.Failure == "raised",
+            "Trk_Kaylessa_Raised: the haggle is not a Diplomacy check whose failure raises the price.");
+
+        // Trk_Kaylessa_Outlived: without Shyka there is no holder who can deliver; canon fate stands.
+        foreach (var key in new[] { "council.fought_nocta_allied", "council.fought", "shyka.gone" })
+            check(!Avail(borrow, World(story, 5, "trickster", "trickster.ever", Dead, key)) && !Avail(hunter, World(story, 5, "trickster", "trickster.ever", Dead, key)),
+                "Trk_Kaylessa_Outlived: a device opens after " + key);
+
+        // Trk_Kaylessa_Reveal and its pivotal decline.
+        var reveal = World(story, 3, "trickster", "trickster.ever", Dead, Begged, P + "promised", "kaylessa.camellia_killed");
+        check(Avail(borrow, reveal), "Trk_Kaylessa_Reveal: the borrow does not open after her plea.");
+        var kept = Take(borrow, reveal, "trade", 3, P + "ending_kept", Closed);
+        check(!kept.Has(P + "primed") && !Avail(borrow, Later(story, kept, 48)) && !Avail(soldier, Later(story, kept, 48)),
+            "Trk_Kaylessa_Reveal_Decline: letting her keep her ending still opens the route.");
+        var revealBack = Take(soldier, Later(story, Take(borrow, reveal, "trade", 0, P + "primed"), 12), "speak", 1, P + "lied_about_price", Returned);
+        check(Reaches(revealBack, Committed, 5), "Trk_Kaylessa_Reveal: a lie about the price shuts the road.");
+
+        // Trk_Kaylessa_Promise.
+        var plea = World(story, 3, "trickster", "trickster.ever");
+        check(Avail(promise, plea) && !Avail(promise, World(story, 3, "trickster.ever")), "Trk_Kaylessa_Promise: the promise is not a live-Trickster answer.");
+
+        // Trk_Kaylessa_PathFailed.
+        var failed = World(story, 5, "trickster.was", "trickster.ever", "trickster.failed", Dead);
+        check(!Avail(borrow, failed) && !Avail(hunter, World(story, 5, "trickster.was", "trickster.ever", "trickster.failed")),
+            "Trk_Kaylessa_PathFailed: a device opens after the path is lost.");
+
+        // Trk_Kaylessa_Alive: Forn's courtesy, the plan, the swap.
+        var alive = World(story, 5, "trickster", "trickster.ever", "kaylessa.met");
+        check(Avail(hunter, alive) && !Avail(borrow, alive) && !Avail(hunter, World(story, 3, "trickster", "trickster.ever")),
+            "Trk_Kaylessa_Alive: Forn does not come in Chapter 5 only, or the borrow opens without a death.");
+        check(Ch(hunter, "ask", 2).Abort && Ch(hunter, "ask", 1).Check?.Skill == "SkillPerception",
+            "Trk_Kaylessa_Alive: Forn cannot be refused, or his bandage cannot be studied.");
+        var played = Take(hunter, alive, "seen", 0, P + "primed", P + "alive.wound_seen");
+        check(Avail(warning, Later(story, played, 12)) && !Avail(swap, Later(story, played, 48)), "Trk_Kaylessa_Alive: the warning does not come first.");
+        var planned = Take(warning, Later(story, played, 12), "terms", 1, P + "alive.planned", P + "alive.shield_sworn");
+        var ready = Later(story, planned, 24);
+        check(Avail(swap, ready), "Trk_Kaylessa_Alive: the ambush does not come.");
+        var ridge = swap.Nodes.Single(n => n.Id == "ridge").Choices;
+        check(ridge.Count == 3 && ridge.All(c => c.Check?.Skill == "SkillThievery") && ridge[0].Requires.Contains("trickster.trickery_tier1")
+              && ridge[1].Requires.Contains(P + "alive.wound_seen") && ridge[2].Requires.Length == 0
+              && ridge[0].Check!.DC < ridge[2].Check!.DC && ridge[1].Check!.DC < ridge[2].Check!.DC,
+            "Trk_Kaylessa_Alive: the swap is not a Trickery check that the chosen trick or the spotted wound makes easier.");
+        var clean = Take(swap, ready, "end", 0, Returned, P + "cost.amulet_burnt", P + "alive.swap_clean");
+        var fumbled = Program.Walk(swap, ready).Where(r => r.Has(P + "alive.swap_fumbled")).ToList();
+        check(fumbled.Count > 0 && fumbled.All(r => r.Has(Returned) && r.Has(P + "cost.council_knows") && r.Has(P + "cost.amulet_burnt")
+                                                   && r.Has(P + "cost.arrow_taken")),
+            "Trk_Kaylessa_Alive: a failed swap does not still return her, at the cost of an arrow and a Council that knows.");
+        check(Reaches(clean, Committed) && Reaches(fumbled[0], Committed), "Trk_Kaylessa_Alive: no road from the ravine to the commit.");
+        var unshielded = Take(warning, Later(story, played, 12), "terms", 0, P + "alive.planned");
+        check(Program.Walk(swap, Later(story, unshielded, 24)).Where(r => r.Has(P + "alive.swap_fumbled")).All(r => r.Has(P + "cost.her_collarbone") && !r.Has(P + "cost.arrow_taken")),
+            "Trk_Kaylessa_Alive: without the Commander's oath, the arrow is not hers.");
+
+        // Trk_Kaylessa_Spine: rules, the clock, the pivot, the dagger.
+        var home = World(story, 5, "trickster.ever", Returned, "kaylessa.started", P + "alive.swap_clean", P + "cost.amulet_burnt");
+        check(Avail(rules, home) && !Avail(clock, home) && !Avail(commit, home), "Trk_Kaylessa_Spine: the rules are not first.");
+        var ruled = Later(story, Take(rules, home, "rules", 0), 24);
+        check(Avail(clock, ruled), "Trk_Kaylessa_Spine: the clock does not follow the rules.");
+        var clocked = Later(story, Take(clock, ruled, "what", 0, P + "clock_named"), 48);
+        check(Avail(beast, clocked), "Trk_Kaylessa_Spine: the cells do not follow the clock.");
+        var key = beast.Nodes.Single(n => n.Id == "key").Choices;
+        check(key[0].Alignment?.Direction == "Evil" && key[1].Alignment == null && key[2].Check?.Skill == "CheckDiplomacy",
+            "Trk_Kaylessa_Pivot: the cell is not the pivotal moral node (Evil to feed it, a plain no, a harder third way).");
+        var fed = Later(story, Take(beast, clocked, "key", 0, P + "cost.beast_fed"), 24);
+        var sent = Later(story, Take(beast, clocked, "witness_after", 0, P + "wasp_sent_home"), 24);
+        check(Avail(knife, fed) && Avail(knife, sent), "Trk_Kaylessa_Spine: the dagger does not follow the cells.");
+
+        // Trk_Kaylessa_Commit: she proposes; no test; two yeses; the Commander's no; the road.
+        var shown = Later(story, Take(knife, sent, "why", 0, P + "knife_shown"), 24);
+        check(Avail(commit, shown), "Trk_Kaylessa_Commit: the knife is not offered after the dagger.");
+        var ask = commit.Nodes.Single(n => n.Id == "ask").Choices;
+        check(ask[0].Set.Contains(Committed) && ask[1].Set.Contains(Committed) && ask[1].Set.Contains(P + "knife_handed_back")
+              && ask[2].Set.Contains(P + "declined") && !ask[2].Set.Contains(Closed) && ask[3].Set.Contains(Closed)
+              && ask[4].Set.Contains(Committed) && ask[4].Requires.Contains(P + "cost.beast_fed"),
+            "Trk_Kaylessa_Commit: the hilt is not two yeses, a no that keeps a yes, and the road.");
+        check(Through(commit, shown, "ask", 0).All(r => r.Has(Committed)) && Through(commit, shown, "ask", 1).All(r => r.Has(Committed)),
+            "Trk_Kaylessa_Commit: taking the knife or handing it back does not commit.");
+        var fedShown = Later(story, Take(knife, fed, "why", 0, P + "knife_shown"), 24);
+        check(Through(commit, fedShown, "ask", 4).All(r => r.Has(Committed) && r.Has(P + "knife_held")),
+            "Trk_Kaylessa_Commit: after the cells she cannot be handed her own death back.");
+        var no = Take(commit, shown, "ask", 2, P + "declined");
+        check(!Avail(commit, Later(story, no, 96)) && Avail(table, Later(story, no, 72)), "Trk_Kaylessa_Declined: the knife is not put down later.");
+        check(Through(table, Later(story, no, 72), "knife", 0).All(r => r.Has(Committed)) && Take(table, Later(story, no, 72), "knife", 2, Closed).Has(P + "left_free"),
+            "Trk_Kaylessa_Declined: the knife on the table is not a yes (picked up) or a parting (left).");
+        var liar = World(story, 5, "trickster.ever", Returned, Dead, P + "lied_about_price", P + "knife_shown", P + "beast_met");
+        check(Avail(commit, liar) && Program.Walk(commit, liar).Where(r => r.Has(Committed)).All(r => r.Has(P + "confessed_price")),
+            "Trk_Kaylessa_Lie: she hands the knife to someone still lying about her price.");
+        check(Avail(pages.Single(p => p.Id == P + "epilogue.commit"), World(story, 6, "trickster.ever", P + "clock_named")),
+            "Trk_Kaylessa_Late: the war's end has no late yes.");
+
+        // Pages: effect-free Chapter 6 pages; no exclusivity stated as fact is linted by the house rules.
+        check(pages.Length == 4 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null && c.Mythic == null))),
+            "The pages are not four effect-free Chapter 6 pages.");
+        check(Avail(pages.Single(p => p.Id == P + "epilogue.no_lamb"), World(story, 6, "trickster.ever", Committed))
+              && !Avail(pages.Single(p => p.Id == P + "epilogue.commit"), World(story, 6, "trickster.ever", Committed, P + "clock_named")),
+            "The committed page is not the committed ending.");
+
+        // Reactions: exactly the allocated reactors (Anevia, Woljif, Shyka), each behind its guard.
+        check(reactions.All(r => r.Nodes.Count == 1) && reactions.Select(r => r.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Anevia", "Shyka", "Woljif" })
+              && reactions.Where(r => r.Owner == "Anevia").All(r => r.Forbids.Contains("anevia_gone") && r.ForbidOverrides["anevia_gone"] == "anevia.trickster.returned")
+              && reactions.Where(r => r.Owner == "Woljif").All(r => r.Forbids.Contains("woljif.dead") && r.Forbids.Contains("woljif.kicked_out"))
+              && reactions.Where(r => r.Owner == "Shyka").All(r => Rules.IsRemote(r) && r.Forbids.Contains("shyka.gone")),
+            "The reactions are not exactly Anevia, Woljif and Shyka behind their guards.");
+
+        // Camellia's oath: her kill that didn't take, now that this route returns her (ledger 05 row 12).
+        var oathCamp = S("camellia.trickster.kills_answered.oath_camp");
+        var kWorld = World(story, 5, "trickster.ever", Returned, "kaylessa.camellia_killed");
+        var route = oathCamp.Nodes.Single(n => n.Id == "start").Choices.Where(c => Rules.Match(c.Requires, c.Forbids, kWorld)).ToList();
+        check(Rules.Available(story, oathCamp, kWorld) && route.Count == 1 && route[0].Next == "kaylessa",
+            "Trk_Kaylessa_CamelliaOath: Camellia's oath does not answer the Kaylessa kill that didn't take.");
+
+        // The courtship: every beat of kaylessa_wasps and kaylessa_clearing reachable in some world, the night only after the knife.
+        var courtship = own.Where(s => s.Id.StartsWith(W, StringComparison.Ordinal) || s.Id.StartsWith(N, StringComparison.Ordinal)).ToArray();
+        check(courtship.Length >= 18 && courtship.All(s => s.Optional && s.Requires.Contains("trickster.ever")),
+            "The courtship is missing beats, or a beat is not an optional Trickster-path scene.");
+        check(courtship.Where(s => s.Id.StartsWith(N, StringComparison.Ordinal)).All(s => s.Requires.Contains(Committed)),
+            "An after-the-knife beat opens before the commit.");
+        var night = S(N + "where_i_was_meant_to_die");
+        check(night.Nodes.Any(n => n.Id == "cut") && night.Nodes.Single(n => n.Id == "down").Choices.Single().Set.Contains(N + "night"),
+            "The night does not reach its threshold and cut.");
+        var worlds = new[]
+        {
+            World(story, 5, "trickster.ever", Returned, Dead, "kaylessa.started", P + "cost.dark_fate_stalled", P + "cost.shyka_price", P + "cost.shyka_raised",
+                  Begged, "kaylessa.tomb", "kaylessa.camellia_killed", "kaylessa.anevia_caught", "kaylessa.unmasked", "kaylessa.ember_met",
+                  "iz.done", "kaylessa.anemora_told", "kaylessa.met", "kaylessa.trickster.react.shyka_note"),
+            World(story, 5, "trickster.ever", Returned, Dead, "kaylessa.started", P + "cost.dark_fate_stalled", P + "cost.shyka_price", "kaylessa.note_held",
+                  "kaylessa.healed_by_force", "iz.anemora_dead", "kaylessa.trickster.react.shyka_note"),
+            World(story, 5, "trickster.ever", Returned, "kaylessa.started", "kaylessa.met", P + "alive.swap_fumbled", P + "cost.amulet_burnt",
+                  P + "cost.council_knows", P + "cost.arrow_taken", "iz.done"),
+        };
+        foreach (var beat in courtship)
+            check(worlds.Any(w => Reaches(w, beat.Id)), "Courtship beat unreachable in every test world: " + beat.Id);
+        Console.WriteLine("PASS: Kaylessa Trickster (Trk_Kaylessa_*): the promise, Shyka's trade, Forn's courtesy and the amulet swap, the rules, the clock, the cells, the dagger, the hilt, the knife on the table, the pages, the oath, and "
+                          + courtship.Length + " courtship beats.");
+    }
+}
