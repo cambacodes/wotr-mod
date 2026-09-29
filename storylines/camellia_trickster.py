@@ -356,8 +356,8 @@ SCENES.append(scene(PERFORMANCE, "The veiled mourner", "Camellia", 3,
     cam("how_late", '''"You did it the wrong way round, of course. You lifted my lid, told my corpse it wasn't convincing, and then bled on my face and haggled with my spirits over my body like a fishwife. Your sexton heard me breathe. He hasn't been the same since. I sent him a jar of lilies."''',
         c("Continue", "why")),
     cam("why", '''"You're wondering why I came back. Everyone wonders that about the dead. Nobody ever asks us."
-{n}She turns her glass a quarter turn.{/n} "I came back because it was the first time in my life that somebody lied to me better than I could lie to them. You told me to die convincingly, and I died, and afterwards, the whole time I was lying in that box, I could hear you not believing it. Do you know how rare that is? To be disbelieved by someone who's right?"
-"I couldn't possibly stay dead after that. It would have been so rude."''',
+{n}She turns her glass a quarter turn.{/n} "My spirits gave me back because you paid them. That is the bargain, and it is dull. I came to this bar instead of going somewhere nobody would ever find me because it was the first time in my life that somebody lied to me better than I could lie to them. You told me to die convincingly, and I died, and afterwards, the whole time I was lying in that box, I could hear you not believing it. Do you know how rare that is? To be disbelieved by someone who's right?"
+"I couldn't possibly stay away after that. It would have been so rude."''',
         c("Continue", "primed")),
     cam("primed", '''"You told me to die convincingly, and I did. The gravediggers complained about the weight. The chaplain wept, which I thought was a nice touch. Everyone was convinced, except you, of course."
 {n}She presses something into your palm under the lilies: a small, clean knife, still warm from her glove.{/n} "Keep it. Next time, use it properly. And do not look for me. I shall find you. A dead woman keeps very flexible hours."
@@ -515,7 +515,7 @@ met(P + "returned.test", "A knife at the right height", '"Come to your quarters 
         c("[Put out the lamp.]", "morning")),
     nar("morning", '''{n}Grey light. The knife is on the pillow between you, point towards the door, where she put it some time in the night. She is awake, lying on her side, watching your face with her chin on her folded hands, the way she watched the funeral from the parapet.{/n}
 "You slept," {n}she says, wonderingly.{/n} "With me in the bed and my knife on the pillow. You slept like a child. Nobody has ever done that. They lie awake. I can always hear them lying awake."
-{n}She reaches out and touches your eyelid with one fingertip, very lightly, as if to make sure it is real.{/n} "I'm going to have to think about this for a very long time."''',
+{n}She reaches out and touches your eyelid with one fingertip, very lightly, as if to make sure it is real, and then lets it rest there, on the thin skin over your eye, the way she rests her thumb on a blade to feel its edge.{/n} "Next time I shall stay awake and watch you do it. I want to know how long a person can sleep beside a knife before it stops being bravery and becomes a habit. Habits are so much easier to break."''',
         c("[Close your eyes again]")),
     cam("no", '''{n}Her smile does not move, which is worse than if it had.{/n}
 "Without the knife? You want the woman and not the appetite. There is no such woman. There was, once, and her name was Mireya, and I made her up."''',

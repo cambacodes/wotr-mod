@@ -198729,7 +198729,7 @@
         {
           "Id": "why",
           "Speaker": "Camellia",
-          "Text": "\"You're wondering why I came back. Everyone wonders that about the dead. Nobody ever asks us.\"\n{n}She turns her glass a quarter turn.{/n} \"I came back because it was the first time in my life that somebody lied to me better than I could lie to them. You told me to die convincingly, and I died, and afterwards, the whole time I was lying in that box, I could hear you not believing it. Do you know how rare that is? To be disbelieved by someone who's right?\"\n\"I couldn't possibly stay dead after that. It would have been so rude.\"",
+          "Text": "\"You're wondering why I came back. Everyone wonders that about the dead. Nobody ever asks us.\"\n{n}She turns her glass a quarter turn.{/n} \"My spirits gave me back because you paid them. That is the bargain, and it is dull. I came to this bar instead of going somewhere nobody would ever find me because it was the first time in my life that somebody lied to me better than I could lie to them. You told me to die convincingly, and I died, and afterwards, the whole time I was lying in that box, I could hear you not believing it. Do you know how rare that is? To be disbelieved by someone who's right?\"\n\"I couldn't possibly stay away after that. It would have been so rude.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -201734,7 +201734,7 @@
         {
           "Id": "morning",
           "Speaker": "Narrator",
-          "Text": "{n}Grey light. The knife is on the pillow between you, point towards the door, where she put it some time in the night. She is awake, lying on her side, watching your face with her chin on her folded hands, the way she watched the funeral from the parapet.{/n}\n\"You slept,\" {n}she says, wonderingly.{/n} \"With me in the bed and my knife on the pillow. You slept like a child. Nobody has ever done that. They lie awake. I can always hear them lying awake.\"\n{n}She reaches out and touches your eyelid with one fingertip, very lightly, as if to make sure it is real.{/n} \"I'm going to have to think about this for a very long time.\"",
+          "Text": "{n}Grey light. The knife is on the pillow between you, point towards the door, where she put it some time in the night. She is awake, lying on her side, watching your face with her chin on her folded hands, the way she watched the funeral from the parapet.{/n}\n\"You slept,\" {n}she says, wonderingly.{/n} \"With me in the bed and my knife on the pillow. You slept like a child. Nobody has ever done that. They lie awake. I can always hear them lying awake.\"\n{n}She reaches out and touches your eyelid with one fingertip, very lightly, as if to make sure it is real, and then lets it rest there, on the thin skin over your eye, the way she rests her thumb on a blade to feel its edge.{/n} \"Next time I shall stay awake and watch you do it. I want to know how long a person can sleep beside a knife before it stops being bravery and becomes a habit. Habits are so much easier to break.\"",
           "Choices": [
             {
               "Text": "[Close your eyes again]",
@@ -202622,7 +202622,7 @@
         {
           "Id": "morning",
           "Speaker": "Narrator",
-          "Text": "{n}Grey light. The knife is on the pillow between you, point towards the door, where she put it some time in the night. She is awake, lying on her side, watching your face with her chin on her folded hands, the way she watched the funeral from the parapet.{/n}\n\"You slept,\" {n}she says, wonderingly.{/n} \"With me in the bed and my knife on the pillow. You slept like a child. Nobody has ever done that. They lie awake. I can always hear them lying awake.\"\n{n}She reaches out and touches your eyelid with one fingertip, very lightly, as if to make sure it is real.{/n} \"I'm going to have to think about this for a very long time.\"",
+          "Text": "{n}Grey light. The knife is on the pillow between you, point towards the door, where she put it some time in the night. She is awake, lying on her side, watching your face with her chin on her folded hands, the way she watched the funeral from the parapet.{/n}\n\"You slept,\" {n}she says, wonderingly.{/n} \"With me in the bed and my knife on the pillow. You slept like a child. Nobody has ever done that. They lie awake. I can always hear them lying awake.\"\n{n}She reaches out and touches your eyelid with one fingertip, very lightly, as if to make sure it is real, and then lets it rest there, on the thin skin over your eye, the way she rests her thumb on a blade to feel its edge.{/n} \"Next time I shall stay awake and watch you do it. I want to know how long a person can sleep beside a knife before it stops being bravery and becomes a habit. Habits are so much easier to break.\"",
           "Choices": [
             {
               "Text": "[Close your eyes again]",
@@ -203505,7 +203505,7 @@
         {
           "Id": "morning",
           "Speaker": "Narrator",
-          "Text": "{n}Grey light. The knife is on the pillow between you, point towards the door, where she put it some time in the night. She is awake, lying on her side, watching your face with her chin on her folded hands, the way she watched the funeral from the parapet.{/n}\n\"You slept,\" {n}she says, wonderingly.{/n} \"With me in the bed and my knife on the pillow. You slept like a child. Nobody has ever done that. They lie awake. I can always hear them lying awake.\"\n{n}She reaches out and touches your eyelid with one fingertip, very lightly, as if to make sure it is real.{/n} \"I'm going to have to think about this for a very long time.\"",
+          "Text": "{n}Grey light. The knife is on the pillow between you, point towards the door, where she put it some time in the night. She is awake, lying on her side, watching your face with her chin on her folded hands, the way she watched the funeral from the parapet.{/n}\n\"You slept,\" {n}she says, wonderingly.{/n} \"With me in the bed and my knife on the pillow. You slept like a child. Nobody has ever done that. They lie awake. I can always hear them lying awake.\"\n{n}She reaches out and touches your eyelid with one fingertip, very lightly, as if to make sure it is real, and then lets it rest there, on the thin skin over your eye, the way she rests her thumb on a blade to feel its edge.{/n} \"Next time I shall stay awake and watch you do it. I want to know how long a person can sleep beside a knife before it stops being bravery and becomes a habit. Habits are so much easier to break.\"",
           "Choices": [
             {
               "Text": "[Close your eyes again]",
@@ -283548,7 +283548,7 @@
         {
           "Id": "doctrine",
           "Speaker": "Narrator",
-          "Text": "{n}You know a little of Zyphus. Everyone who has buried friends in the Worldwound learns a little. His priests hold that no death is written in advance; a death is an accident, and an accident is an offering. A curse from his herald would not aim. Aiming is for assassins and for fate. It would simply collect.{/n}\n{n}And every name on her list died within arm's reach of her. Bringing tea. Leaning over the same chart. On her step. Stamping her papers. Taking her copper. Not the people she cared for most, not the people who hated her: the people who happened to be standing nearest when the dice fell.{/n}",
+          "Text": "{n}You know a little of Zyphus. Everyone who has buried friends in the Worldwound learns a little. His priests hold that no death is written in advance; a death is an accident, and an accident is an offering. A curse from his herald would not aim. Aiming is for assassins and for fate. It would simply collect.{/n}\n{n}And, as far as her own list tells it, every name on it died within arm's reach of her. Bringing tea. Leaning over the same chart. On her step. Stamping her papers. Taking her copper. Not the people she cared for most, not the people who hated her: the people who happened to be standing nearest when the dice fell.{/n}",
           "Choices": [
             {
               "Text": "\"I don't think it chooses. I think it takes whoever is standing nearest you.\"",
@@ -299004,8 +299004,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",
