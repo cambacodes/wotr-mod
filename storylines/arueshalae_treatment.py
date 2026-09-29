@@ -285,12 +285,12 @@ session(KITCHEN, "A meal someone made", 5, '"Seventh bell. You said kitchens."',
 
 session(RELAPSE_TWO, "Contraindications", 5, '"You look like you haven\'t slept."', [
     a("start", '''"I haven't. I don't, mostly, but this is different. This is the other kind of not sleeping." {n}She is sitting on the edge of her bedroll with the daybook open on her knees, and she has not written anything in it.{/n}
-"I have to tell you something, doctor, and you're not going to like it, and I'm not going to be able to say it twice."''',
+"I have to tell you something, and you're not going to like it, and I'm not going to be able to say it twice."''',
         c("Continue", "want")),
     a("want", '''"Since the kitchens, since your hand... I've started to want it. Not you. It. The cold going out of you and into me. Whether it stays or whether you lift it off, I don't care, I just want the moment when it starts." {n}She is gripping the book so hard the cover bends.{/n}
 "I lie here and I count the hours until I can see you, and I don't know if I'm counting them because I love your company or because I'm hungry and you're the only food in all the world I'm allowed to have. I can't tell the difference any more. I used to be able to tell. That was the one thing I was proud of."''',
         c("Continue", "ask")),
-    a("ask", '''{n}She closes the book.{/n} "So I want to stop. The treatment. The hand. Just for a while. I want to go back to crumbs and see whether I still want to see you when there's nothing in it for the hungry part of me."
+    a("ask", '''{n}She closes the book.{/n} "So I want to stop. The treatment. The hand. Just for a while. I want to go back to crumbs and see whether I still want to see you when there's nothing in it for the hunger."
 {n}She looks at you, defiant and terrified.{/n} "Or you can tell me that's stupid, and that I'm being dramatic, and that you know what you're doing. You usually do. Even when you're joking."''',
         c('"Then we stop. A week. No hands. I\'ll still come and see you."', "fast", flags=(RELAPSE_TWO, FAST)),
         c('"No. You\'re not a danger to me. We keep going."', "no_fast", flags=(RELAPSE_TWO, NO_FAST)),
@@ -347,14 +347,14 @@ session(T + "prescription", "The patient proposes", 5, '"You asked me to meet yo
         c('"Then I\'ll have known the price every night and paid it. That\'s mine to decide, not yours."', "ask"),
         c('"Then we don\'t sleep in the same room on those nights. Ever. That\'s the rule, not the risk."', "ask")),
     a("ask", '''{n}She brings her hands out from behind her back. They are empty. She holds them out to you, palms up, not touching, an inch away.{/n}
-"I'm not going to test you. I've tested everyone I ever met and it never once made me happy. I'm just going to ask." {n}Her voice goes very small and very steady.{/n} "Will you have me? Both of me. The good one and the hungry one. For as long as you'll have either."''',
+"I'm not going to test you. I've tested everyone I ever met and it never once made me happy. I'm just going to ask." {n}Her voice goes very small and very steady.{/n} "Will you have me? All of it. The praying and the wanting. The priests hoped those were two things; they never were. It's one knot, and it's mine, and I'm asking you to hold it."''',
         c('"Yes. Both of you."', "both", flags=(COMMITTED,)),
-        c('"Yes. But keep the hungry one away from me."', "saint", flags=(COMMITTED, SAINT_ONLY)),
+        c('"Yes. But keep the hunger out of my sight."', "saint", flags=(COMMITTED, SAINT_ONLY)),
         c('"Not yet. Ask me again when we\'ve both slept."', "not_yet", flags=(DECLINED,)),
         c('"No."', "neither", flags=(CLOSED,))),
-    a("both", '''{n}She closes the inch, and then does not seem to know what to do with your hand now she has it.{/n} "Both." {n}She says it again, as if checking it for a trick.{/n} "Both. I... I had something to say after that. I had a whole... it's gone. The hungry one is going to be unbearable about this." {n}She laughs, very softly, and it shakes, and she does not let go.{/n} "Don't say anything. I'll get it wrong again. Just stay where you are."''', c()),
-    a("saint", '''"The saint, then." {n}She nods, and something shutters in her face, smoothly, the way it must have in Lady Vellexia's house when a guest said the wrong thing.{/n}
-"I'll keep the other one out of your sight. I'm very good at that. You won't thank me for it one day. But I asked, and you answered, and that's more than I ever expected to be given."''', c()),
+    a("both", '''{n}She closes the inch, and then does not seem to know what to do with your hand now she has it.{/n} "Both." {n}She says it again, as if checking it for a trick.{/n} "Both. I... I had something to say after that. I had a whole... it's gone." {n}Her grip tightens.{/n} "I want you so much right now it frightens me. And it's me wanting. There's nobody else in here to blame it on." {n}She laughs, very softly, and it shakes, and she does not let go.{/n} "Don't say anything. I'll get it wrong again. Just stay where you are."''', c()),
+    a("saint", '''"Only the parts of me that pray, then." {n}She nods, and something shutters in her face, smoothly, the way it must have in Lady Vellexia's house when a guest said the wrong thing.{/n}
+"There aren't two of me. There never were; that was the Upper City's story, so the guests could feel clean. But I'll keep the wanting out of your sight. I'm very good at that. You won't thank me for it one day. But I asked, and you answered, and that's more than I ever expected to be given."''', c()),
     a("not_yet", '''{n}She lets her hands fall. She does not look hurt; she looks like someone recalculating a route.{/n} "Not yet." {n}She nods.{/n} "All right. I've waited longer for smaller things." {n}A small, crooked smile.{/n} "But I asked first. That's done. That can't be taken back. The next one's yours."''', c()),
     nar("neither", '''{n}She puts her hands behind her back again, very carefully, as if putting something away in a drawer. Then she goes down the steps and into the city, and the lamps come on behind her one by one.{/n}''', c()),
 ], (RELAPSE_TWO, "trickster.ever"), forbids=(COMMITTED, DECLINED, AFTERTASTE, CHAPLAIN, FAILED), delay=72, chapters=(5,))
@@ -382,7 +382,7 @@ session(NIGHT, "Under the Tender of Dreams", 5, '"Where are we going?"', [
         c("Continue", "flowers", requires=(ELYSIUM,)),
         c("Continue", "stars", forbids=(ELYSIUM,))),
     a("flowers", '''{n}She has brought one of the white flowers from the study, the ones she says came from Elysium, and she tucks it into a crack in the stone.{/n}
-"Your cure hasn't got anything to cure any more. Have you noticed? Since the flowers, my touch doesn't take." {n}She laughs, a little helplessly.{/n} "You spent all that time being a quack for nothing, doctor. I'm going to hold that over you forever."''',
+"Your cure hasn't got anything to cure any more. Have you noticed? Since the flowers, my touch doesn't take." {n}She laughs, a little helplessly.{/n} "All those candles. All that reading. And there's nothing left in me to take the cold out of you." {n}She sounds almost cheated.{/n} "Desna help me. I don't know what I'm for, if I'm not dangerous."''',
         c("Continue", "undress")),
     a("stars", '''"I know every way there is. I was taught in the Upper City, by the best, on a thousand guests." {n}She is standing with her back to the stars, and her hands have found each other behind her back again.{/n} "And every one of those ways ends with me counting what I took. I'm afraid that halfway through I'll start counting. I'm afraid I'll be good at this, the way I was good at it then." {n}She swallows.{/n} "So I brought us somewhere I've never done anything at all. Nothing here remembers me being good at it."''',
         c("Continue", "cure", requires=(CURE,)),
@@ -393,7 +393,7 @@ session(NIGHT, "Under the Tender of Dreams", 5, '"Where are we going?"', [
     nar("uncured", '''{n}Her first kiss is careful, almost a question, and the cold comes with it, and there is nothing you can do about it except not pull away. She feels it take you, and stops, and you pull her back.{/n}
 "You'll be weak tomorrow," she says against your mouth. "You'll be grey and useless and the second company will talk." {n}You tell her to let them. She makes a sound you have never heard her make, and does.{/n}''',
         c("Continue", "undress")),
-    nar("undress", '''{n}She undresses you the way she used to undress her victims, perfectly, and halfway through she stops, and her hands start to shake, and she does the rest badly, fumbling your buckles like a girl who has never done this. In a way that is exactly what she is. Her wings unfold and curve round you both against the wind off the Worldwound; she apologises for them; you tell her not to.{/n}
+    nar("undress", '''{n}She knows how to undress a person. She was taught in the Upper City, and the teaching is the worst thing in her. Her hands begin that way, quick and certain, and then she hears how quietly the buckles are coming loose, the way they did for the guests who did not wake, and she stops. When she begins again she is slow, and clumsy, and has to try your belt twice, and she does not let herself get better at it. Her wings unfold and curve round you both against the wind off the Worldwound; she apologises for them; you tell her not to.{/n}
 {n}She lays you down on her cloak on the old bell-floor, under the whole wheel of the stars, and follows you down, her hair falling round both your faces, her skin cool and then not cool at all. She settles astride your hips, braces one hand on the stone beside your head, and draws one long breath that she does not need.{/n}''',
         c("[Let her.]", "morning_after")),
     a("morning_after", '''{n}Much later, she lies with her head on your chest, listening to your heart with the concentration of someone taking a pulse, while the stars turn overhead.{/n}

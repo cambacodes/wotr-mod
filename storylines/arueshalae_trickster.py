@@ -391,12 +391,12 @@ hub(P + "terms", "Both of me", 5, '"You wanted to ask me something."', [
       c("Continue", "question")),
     a("question", '''"So I have a question for you. Only one, and you can't answer it with a joke, because I'll know." {n}She lays the blade down on the step between you.{/n} "Will you still want me when I'm good? Or only when I'm hungry?"''',
       c('"Both. Always both."', "both", flags=(COMMITTED,)),
-      c('"Only the saint."', "saint", flags=(COMMITTED, SAINT_ONLY)),
+      c('"Only the good days."', "saint", flags=(COMMITTED, SAINT_ONLY)),
       c('[Let her keep her answer for now] "Then I\'ll ask again."', "not_yet", flags=(DECLINED,)),
       c('"Neither."', "neither", flags=(CLOSED,))),
-    a("both", '''"Both." {n}She closes her eyes.{/n} "That is the most frightening answer, and the only one I'd have believed. If you'd said the saint, I'd have spent the rest of my life hiding the other one from you. If you'd said the hungry one, I'd have hated you by morning."
+    a("both", '''"Both." {n}She closes her eyes.{/n} "That is the most frightening answer, and the only one I'd have believed. If you'd said only the good days, I'd have spent the rest of my life hiding the others from you. If you'd said only the hungry ones, I'd have hated you by morning."
 {n}She reaches for your hand, stops an inch short, and leaves her fingers there, in the air, where you can see them not touching you.{/n} "Both. All right. Both."''', c()),
-    a("saint", '''"The saint, then." {n}She nods, and something shutters in her face so smoothly you almost miss it.{/n} "I'll keep the other one out of your sight. I'm very good at that. I did it for centuries, the other way round. You won't thank me for it, one day. But you'll have what you asked for."''', c()),
+    a("saint", '''"Only the good days, then." {n}She nods, and something shutters in her face so smoothly you almost miss it.{/n} "I'll keep the rest out of your sight. I'm very good at that. I did it for centuries, the other way round. You won't thank me for it, one day. But you'll have what you asked for."''', c()),
     a("not_yet", '''"Don't answer yet. You've got the look of someone who's going to be clever, and I can't bear clever tonight." {n}She picks the blade back up.{/n} "Ask me when I've gone a week without wanting to eat anyone. I'll tell you then. I promise I will."''', c()),
     nar("neither", '''{n}She lays the blade down very carefully on the step between you, as if it were the answer and she were giving it back, and goes inside.{/n}''', c()),
 ], ("trickster.ever",), forbids=(EVIL_DEAD, CLOSED, DECLINED, COMMITTED), delay=72, chapters=(5,),
@@ -407,7 +407,7 @@ hub(P + "terms_again", "Seven days", 5, '"It\'s been a week."', [
 "Before I answer, I want one promise from you, and you won't like it. The next time I'm dying, you let me die. No diagnosis. No joke. No wrist held out like a bowl. You stand there and you let it be a death, because if you won't, I'll never know which of my days are mine and which are yours."''',
       c('[Promise] "No more jokes at your deathbed. I swear it."', "yes", flags=(COMMITTED, NO_SECOND_JOKE)),
       c('"I can\'t promise that."', "no", flags=(CLOSED,))),
-    a("yes", '''{n}She watches you the way she watches strangers in the market, trying to read what they are.{/n} "Then yes. Both of me. For as long as the one of me you didn't kill lasts." {n}She almost laughs.{/n} "Which is a terrible thing to say to someone you love. I'll work on it."''', c()),
+    a("yes", '''{n}She watches you the way she watches strangers in the market, trying to read what they are.{/n} "Then yes. All of it. For as long as what you didn't kill of me lasts." {n}She almost laughs.{/n} "Which is a terrible thing to say to someone you love. I'll work on it."''', c()),
     a("no", '''"Then we're done asking each other things." {n}She says it gently. That is the worst part.{/n}''', c()),
 ], ("trickster.ever", DECLINED), forbids=(EVIL_DEAD, CLOSED, COMMITTED), delay=96, chapters=(5,),
     RequiresAnyGroups=[[AFTERTASTE, CHAPLAIN]])
@@ -447,7 +447,7 @@ EP = dict(last=6, Relationship="arueshalae")
 SCENES.append(scene(P + "epilogue.commit", "", "ArueshalaeEpilogue", 6, "", [
     nar("page", '''{n}The war ended before Arueshalae answered the Commander's question, so she answered it afterwards.{/n}''',
         paragraphs=(
-            p('''{n}She answered it on the chapel steps in Drezen, with a blade across her knees and the second company's swords stacked in the vestry behind her: both of her, for as long as the good one lasted. It lasted. Nobody who knew her was surprised, except her.{/n}''',
+            p('''{n}She answered it on the chapel steps in Drezen, with a blade across her knees and the second company's swords stacked in the vestry behind her: all of her, the hunger and the prayer in one knot, for as long as she could hold it. She held it. Nobody who knew her was surprised, except her.{/n}''',
               forbids=(EVIL_DEAD,)),
             p('''{n}She came through the Commander's window the first night after Threshold, sat on the sill with one knee drawn up, and said she had decided to keep visiting. It was the closest thing to a vow she ever made, and she kept it.{/n}''',
               requires=(EVIL_DEAD,)),

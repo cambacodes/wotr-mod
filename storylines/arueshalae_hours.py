@@ -155,7 +155,7 @@ hub(HUNDRED, "One hundred", 5, '"You look like you\'ve been counting."', [
         c('"A hundred and one, tomorrow."', "tomorrow", flags=(HUNDRED,)),
         c('"Then you can ask me whatever you like. That was the deal."', "deal", flags=(HUNDRED,))),
     a("tomorrow", '''"A hundred and one." {n}She laughs.{/n} "Yes. That's the right answer. Not 'well done'. Just the next number." {n}She tucks her hands behind her back, not out of fear, now; out of habit, and pleasure in the habit.{/n} "I'll ask you my question soon. On the chapel steps. Wear something nice. I'm going to."''', c()),
-    a("deal", '''"I'll ask you on the chapel steps." {n}She says it very seriously, as if booking an appointment.{/n} "Soon. When I've decided exactly what to ask. I've waited a hundred days, doctor, I can wait for the right words." {n}A pause.{/n} "They're going to be the most frightening words I've ever said. Make sure you're there."''', c()),
+    a("deal", '''"I'll ask you on the chapel steps." {n}She says it very seriously, as if booking an appointment.{/n} "Soon. When I've decided exactly what to ask. I've waited a hundred days; I can wait for the right words." {n}A pause.{/n} "They're going to be the most frightening words I've ever said. Make sure you're there."''', c()),
 ], (COUNTING, AFTERTASTE), delay=72, chapters=(5,))
 
 

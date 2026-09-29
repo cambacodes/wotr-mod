@@ -223865,7 +223865,7 @@
               "Abort": false
             },
             {
-              "Text": "\"Only the saint.\"",
+              "Text": "\"Only the good days.\"",
               "Next": "saint",
               "Set": [
                 "arueshalae.committed",
@@ -223901,7 +223901,7 @@
         {
           "Id": "both",
           "Speaker": "Arueshalae",
-          "Text": "\"Both.\" {n}She closes her eyes.{/n} \"That is the most frightening answer, and the only one I'd have believed. If you'd said the saint, I'd have spent the rest of my life hiding the other one from you. If you'd said the hungry one, I'd have hated you by morning.\"\n{n}She reaches for your hand, stops an inch short, and leaves her fingers there, in the air, where you can see them not touching you.{/n} \"Both. All right. Both.\"",
+          "Text": "\"Both.\" {n}She closes her eyes.{/n} \"That is the most frightening answer, and the only one I'd have believed. If you'd said only the good days, I'd have spent the rest of my life hiding the others from you. If you'd said only the hungry ones, I'd have hated you by morning.\"\n{n}She reaches for your hand, stops an inch short, and leaves her fingers there, in the air, where you can see them not touching you.{/n} \"Both. All right. Both.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -223917,7 +223917,7 @@
         {
           "Id": "saint",
           "Speaker": "Arueshalae",
-          "Text": "\"The saint, then.\" {n}She nods, and something shutters in her face so smoothly you almost miss it.{/n} \"I'll keep the other one out of your sight. I'm very good at that. I did it for centuries, the other way round. You won't thank me for it, one day. But you'll have what you asked for.\"",
+          "Text": "\"Only the good days, then.\" {n}She nods, and something shutters in her face so smoothly you almost miss it.{/n} \"I'll keep the rest out of your sight. I'm very good at that. I did it for centuries, the other way round. You won't thank me for it, one day. But you'll have what you asked for.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -224029,7 +224029,7 @@
         {
           "Id": "yes",
           "Speaker": "Arueshalae",
-          "Text": "{n}She watches you the way she watches strangers in the market, trying to read what they are.{/n} \"Then yes. Both of me. For as long as the one of me you didn't kill lasts.\" {n}She almost laughs.{/n} \"Which is a terrible thing to say to someone you love. I'll work on it.\"",
+          "Text": "{n}She watches you the way she watches strangers in the market, trying to read what they are.{/n} \"Then yes. All of it. For as long as what you didn't kill of me lasts.\" {n}She almost laughs.{/n} \"Which is a terrible thing to say to someone you love. I'll work on it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -224427,7 +224427,7 @@
           "Portrait": "Arueshalae",
           "Paragraphs": [
             {
-              "Text": "{n}She answered it on the chapel steps in Drezen, with a blade across her knees and the second company's swords stacked in the vestry behind her: both of her, for as long as the good one lasted. It lasted. Nobody who knew her was surprised, except her.{/n}",
+              "Text": "{n}She answered it on the chapel steps in Drezen, with a blade across her knees and the second company's swords stacked in the vestry behind her: all of her, the hunger and the prayer in one knot, for as long as she could hold it. She held it. Nobody who knew her was surprised, except her.{/n}",
               "Requires": [],
               "Forbids": [
                 "arueshalae.evil_dead"
@@ -226034,7 +226034,7 @@
         {
           "Id": "start",
           "Speaker": "Arueshalae",
-          "Text": "\"I haven't. I don't, mostly, but this is different. This is the other kind of not sleeping.\" {n}She is sitting on the edge of her bedroll with the daybook open on her knees, and she has not written anything in it.{/n}\n\"I have to tell you something, doctor, and you're not going to like it, and I'm not going to be able to say it twice.\"",
+          "Text": "\"I haven't. I don't, mostly, but this is different. This is the other kind of not sleeping.\" {n}She is sitting on the edge of her bedroll with the daybook open on her knees, and she has not written anything in it.{/n}\n\"I have to tell you something, and you're not going to like it, and I'm not going to be able to say it twice.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -226066,7 +226066,7 @@
         {
           "Id": "ask",
           "Speaker": "Arueshalae",
-          "Text": "{n}She closes the book.{/n} \"So I want to stop. The treatment. The hand. Just for a while. I want to go back to crumbs and see whether I still want to see you when there's nothing in it for the hungry part of me.\"\n{n}She looks at you, defiant and terrified.{/n} \"Or you can tell me that's stupid, and that I'm being dramatic, and that you know what you're doing. You usually do. Even when you're joking.\"",
+          "Text": "{n}She closes the book.{/n} \"So I want to stop. The treatment. The hand. Just for a while. I want to go back to crumbs and see whether I still want to see you when there's nothing in it for the hunger.\"\n{n}She looks at you, defiant and terrified.{/n} \"Or you can tell me that's stupid, and that I'm being dramatic, and that you know what you're doing. You usually do. Even when you're joking.\"",
           "Choices": [
             {
               "Text": "\"Then we stop. A week. No hands. I'll still come and see you.\"",
@@ -226520,7 +226520,7 @@
         {
           "Id": "ask",
           "Speaker": "Arueshalae",
-          "Text": "{n}She brings her hands out from behind her back. They are empty. She holds them out to you, palms up, not touching, an inch away.{/n}\n\"I'm not going to test you. I've tested everyone I ever met and it never once made me happy. I'm just going to ask.\" {n}Her voice goes very small and very steady.{/n} \"Will you have me? Both of me. The good one and the hungry one. For as long as you'll have either.\"",
+          "Text": "{n}She brings her hands out from behind her back. They are empty. She holds them out to you, palms up, not touching, an inch away.{/n}\n\"I'm not going to test you. I've tested everyone I ever met and it never once made me happy. I'm just going to ask.\" {n}Her voice goes very small and very steady.{/n} \"Will you have me? All of it. The praying and the wanting. The priests hoped those were two things; they never were. It's one knot, and it's mine, and I'm asking you to hold it.\"",
           "Choices": [
             {
               "Text": "\"Yes. Both of you.\"",
@@ -226533,7 +226533,7 @@
               "Abort": false
             },
             {
-              "Text": "\"Yes. But keep the hungry one away from me.\"",
+              "Text": "\"Yes. But keep the hunger out of my sight.\"",
               "Next": "saint",
               "Set": [
                 "arueshalae.committed",
@@ -226569,7 +226569,7 @@
         {
           "Id": "both",
           "Speaker": "Arueshalae",
-          "Text": "{n}She closes the inch, and then does not seem to know what to do with your hand now she has it.{/n} \"Both.\" {n}She says it again, as if checking it for a trick.{/n} \"Both. I... I had something to say after that. I had a whole... it's gone. The hungry one is going to be unbearable about this.\" {n}She laughs, very softly, and it shakes, and she does not let go.{/n} \"Don't say anything. I'll get it wrong again. Just stay where you are.\"",
+          "Text": "{n}She closes the inch, and then does not seem to know what to do with your hand now she has it.{/n} \"Both.\" {n}She says it again, as if checking it for a trick.{/n} \"Both. I... I had something to say after that. I had a whole... it's gone.\" {n}Her grip tightens.{/n} \"I want you so much right now it frightens me. And it's me wanting. There's nobody else in here to blame it on.\" {n}She laughs, very softly, and it shakes, and she does not let go.{/n} \"Don't say anything. I'll get it wrong again. Just stay where you are.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -226585,7 +226585,7 @@
         {
           "Id": "saint",
           "Speaker": "Arueshalae",
-          "Text": "\"The saint, then.\" {n}She nods, and something shutters in her face, smoothly, the way it must have in Lady Vellexia's house when a guest said the wrong thing.{/n}\n\"I'll keep the other one out of your sight. I'm very good at that. You won't thank me for it one day. But I asked, and you answered, and that's more than I ever expected to be given.\"",
+          "Text": "\"Only the parts of me that pray, then.\" {n}She nods, and something shutters in her face, smoothly, the way it must have in Lady Vellexia's house when a guest said the wrong thing.{/n}\n\"There aren't two of me. There never were; that was the Upper City's story, so the guests could feel clean. But I'll keep the wanting out of your sight. I'm very good at that. You won't thank me for it one day. But I asked, and you answered, and that's more than I ever expected to be given.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -226829,7 +226829,7 @@
         {
           "Id": "flowers",
           "Speaker": "Arueshalae",
-          "Text": "{n}She has brought one of the white flowers from the study, the ones she says came from Elysium, and she tucks it into a crack in the stone.{/n}\n\"Your cure hasn't got anything to cure any more. Have you noticed? Since the flowers, my touch doesn't take.\" {n}She laughs, a little helplessly.{/n} \"You spent all that time being a quack for nothing, doctor. I'm going to hold that over you forever.\"",
+          "Text": "{n}She has brought one of the white flowers from the study, the ones she says came from Elysium, and she tucks it into a crack in the stone.{/n}\n\"Your cure hasn't got anything to cure any more. Have you noticed? Since the flowers, my touch doesn't take.\" {n}She laughs, a little helplessly.{/n} \"All those candles. All that reading. And there's nothing left in me to take the cold out of you.\" {n}She sounds almost cheated.{/n} \"Desna help me. I don't know what I'm for, if I'm not dangerous.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -226905,7 +226905,7 @@
         {
           "Id": "undress",
           "Speaker": "Narrator",
-          "Text": "{n}She undresses you the way she used to undress her victims, perfectly, and halfway through she stops, and her hands start to shake, and she does the rest badly, fumbling your buckles like a girl who has never done this. In a way that is exactly what she is. Her wings unfold and curve round you both against the wind off the Worldwound; she apologises for them; you tell her not to.{/n}\n{n}She lays you down on her cloak on the old bell-floor, under the whole wheel of the stars, and follows you down, her hair falling round both your faces, her skin cool and then not cool at all. She settles astride your hips, braces one hand on the stone beside your head, and draws one long breath that she does not need.{/n}",
+          "Text": "{n}She knows how to undress a person. She was taught in the Upper City, and the teaching is the worst thing in her. Her hands begin that way, quick and certain, and then she hears how quietly the buckles are coming loose, the way they did for the guests who did not wake, and she stops. When she begins again she is slow, and clumsy, and has to try your belt twice, and she does not let herself get better at it. Her wings unfold and curve round you both against the wind off the Worldwound; she apologises for them; you tell her not to.{/n}\n{n}She lays you down on her cloak on the old bell-floor, under the whole wheel of the stars, and follows you down, her hair falling round both your faces, her skin cool and then not cool at all. She settles astride your hips, braces one hand on the stone beside your head, and draws one long breath that she does not need.{/n}",
           "Choices": [
             {
               "Text": "[Let her.]",
@@ -227365,7 +227365,7 @@
         {
           "Id": "start",
           "Speaker": "Arueshalae",
-          "Text": "{n}She has, and she closes it when she sees you, and then, with an effort, opens it again.{/n}\n\"I want to tell you about her. The priestess. I told you once, when you asked about the goddess, but I told it like a story, the way I tell everything. I want to tell it like a patient tells a doctor. With the parts that matter.\" {n}She takes a breath she does not need.{/n} \"May I?\"",
+          "Text": "{n}She has, and she closes it when she sees you, and then, with an effort, opens it again.{/n}\n\"I want to tell you about her. The priestess. I told you once, when you asked about the goddess, but I told it like a story, the way I tell everything. I want to tell it the way you'd tell a priest, if priests didn't flinch. With the parts that matter.\" {n}She takes a breath she does not need.{/n} \"May I?\"",
           "Choices": [
             {
               "Text": "\"Tell me.\"",
@@ -227397,7 +227397,7 @@
         {
           "Id": "question",
           "Speaker": "Arueshalae",
-          "Text": "\"Everything since has been because of her. The mercy. The memories of the ones I was made from. The years as a spy. This.\" {n}She gestures at herself, at the crusade, at you.{/n}\n\"So I want to ask the doctor something. Your treatment, the watching, the list, the hand. Does any of it make up for her? Is that what it's for? Because if it is, I'll do it forever. And if it isn't, I need to know what it's for.\"",
+          "Text": "\"Everything since has been because of her. The mercy. The memories of the ones I was made from. The years as a spy. This.\" {n}She gestures at herself, at the crusade, at you.{/n}\n\"So I want to ask you something. Your treatment, the watching, the list, the hand. Does any of it make up for her? Is that what it's for? Because if it is, I'll do it forever. And if it isn't, I need to know what it's for.\"",
           "Choices": [
             {
               "Text": "\"No. Nothing makes up for her. You carry her. That's all.\"",
@@ -228526,7 +228526,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}She kept the hungry one out of the Commander's sight, as she had promised. She was very good at it. Only the cat on the smithy roof ever saw both of her, and the cat did not care.{/n}",
+              "Text": "{n}She kept the wanting out of the Commander's sight, as she had promised. She was very good at it. Only the cat on the smithy roof ever saw all of her at once, and the cat did not care.{/n}",
               "Requires": [
                 "arueshalae.trickster.cost.saint_only"
               ],
@@ -228644,7 +228644,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Commander had asked only for the saint, and the saint came to supper. The other one ate alone, at the far end of the table, where the Commander had put her, and was very polite about it for a very long time. It was a price, and she paid it at the table, apart, until the Commander finally went and sat at that end too.",
+              "Text": "The Commander had asked only for the good days, and on the good days she came to supper. On the others she ate alone, at the far end of the table, where the Commander had put her, and was very polite about it for a very long time. It was a price, and she paid it at the table, apart, until the Commander finally went and sat at that end too.",
               "Requires": [
                 "arueshalae.trickster.cost.saint_only"
               ],
@@ -230463,7 +230463,7 @@
         {
           "Id": "deal",
           "Speaker": "Arueshalae",
-          "Text": "\"I'll ask you on the chapel steps.\" {n}She says it very seriously, as if booking an appointment.{/n} \"Soon. When I've decided exactly what to ask. I've waited a hundred days, doctor, I can wait for the right words.\" {n}A pause.{/n} \"They're going to be the most frightening words I've ever said. Make sure you're there.\"",
+          "Text": "\"I'll ask you on the chapel steps.\" {n}She says it very seriously, as if booking an appointment.{/n} \"Soon. When I've decided exactly what to ask. I've waited a hundred days; I can wait for the right words.\" {n}A pause.{/n} \"They're going to be the most frightening words I've ever said. Make sure you're there.\"",
           "Choices": [
             {
               "Text": "Continue",

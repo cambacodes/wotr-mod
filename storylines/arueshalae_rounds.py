@@ -95,13 +95,13 @@ session(SONG, "The net-menders", 3, '"They stopped singing again."', [
 
 session(PRIESTESS, "The last one", 3, '"You\'ve been reading the Desnan prayer book again."', [
     a("start", '''{n}She has, and she closes it when she sees you, and then, with an effort, opens it again.{/n}
-"I want to tell you about her. The priestess. I told you once, when you asked about the goddess, but I told it like a story, the way I tell everything. I want to tell it like a patient tells a doctor. With the parts that matter." {n}She takes a breath she does not need.{/n} "May I?"''',
+"I want to tell you about her. The priestess. I told you once, when you asked about the goddess, but I told it like a story, the way I tell everything. I want to tell it the way you'd tell a priest, if priests didn't flinch. With the parts that matter." {n}She takes a breath she does not need.{/n} "May I?"''',
         c('"Tell me."', "tell")),
     a("tell", '''"She was a priestess of Desna in a little shrine above a river. I don't remember the town. I never knew her name. I spent a month in her dreams and I never once asked it; it wasn't a thing I needed." {n}Her voice is very steady.{/n}
 "I found her through her dreams. I spent a month in them before I went to her in the flesh, so she would already love me when I arrived. That was how I did it. That was how we all did it. She lay in my arms, and she died of my kiss. I remember every smallest detail. The cold sweat. Her weak whisper. And I went into her mind to see what dreaming was, and the goddess was waiting there."''',
         c("Continue", "question")),
     a("question", '''"Everything since has been because of her. The mercy. The memories of the ones I was made from. The years as a spy. This." {n}She gestures at herself, at the crusade, at you.{/n}
-"So I want to ask the doctor something. Your treatment, the watching, the list, the hand. Does any of it make up for her? Is that what it's for? Because if it is, I'll do it forever. And if it isn't, I need to know what it's for."''',
+"So I want to ask you something. Your treatment, the watching, the list, the hand. Does any of it make up for her? Is that what it's for? Because if it is, I'll do it forever. And if it isn't, I need to know what it's for."''',
         c('"No. Nothing makes up for her. You carry her. That\'s all."', "carry", flags=(PRIESTESS, CARRY)),
         c('"No. But she had a name. Somebody could write to her shrine and ask it."',
           "write", flags=(PRIESTESS, WRITE))),
@@ -257,7 +257,7 @@ SCENES.append(scene(T + "epilogue.together", "", "ArueshalaeEpilogue", 6, "", [
               requires=(SONG,)),
             p('''{n}She kept a kitchen with a window and a table too small for it, and burned things in it for the Commander, and nobody who sat at it was ever the one being eaten.{/n}''',
               requires=(AFTER_WAR,)),
-            p('''{n}She kept the hungry one out of the Commander's sight, as she had promised. She was very good at it. Only the cat on the smithy roof ever saw both of her, and the cat did not care.{/n}''',
+            p('''{n}She kept the wanting out of the Commander's sight, as she had promised. She was very good at it. Only the cat on the smithy roof ever saw all of her at once, and the cat did not care.{/n}''',
               requires=(SAINT_ONLY,)),
             p('''{n}The Commander never quite stopped being a quack, and she never quite stopped being a patient, and the treatment was never completed, because, as she told anyone who asked, the best treatments never are.{/n}''',
               forbids=(SAINT_ONLY,)),
