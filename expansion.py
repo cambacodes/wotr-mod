@@ -59,6 +59,7 @@ from storylines import chadali_trickster, chadali_wagers, chadali_fortunes, chad
 from storylines import arueshalae_trickster, arueshalae_treatment, arueshalae_rounds, arueshalae_chapel
 from storylines import arueshalae_hours, arueshalae_notes
 from storylines import devarra_trickster, devarra_tower
+from storylines import delamere_trickster, delamere_woods, delamere_fire
 from storylines import rrt_ui
 from storylines import rrt_portraits
 from storylines import scene_kinds
@@ -425,6 +426,13 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(devarra_tower.SCENES))
     devarra_trickster.integrate(payload)
     devarra_tower.integrate(payload)
+    # Delamere: a new relationship, opened only by the Trickster's stag call at her sarcophagus (delamere_trickster, 11 §2);
+    # the courtship is delamere_woods and delamere_fire. Nothing is spawned for her (her native units share the undead prefab).
+    payload["Relationships"]["delamere"] = copy.deepcopy(delamere_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(delamere_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(delamere_woods.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(delamere_fire.SCENES))
+    delamere_trickster.integrate(payload)
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
     trickster_engine(payload)
