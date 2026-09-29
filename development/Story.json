@@ -291910,7 +291910,7 @@
         {
           "Id": "nightmare",
           "Speaker": "Nidalynn",
-          "Text": "{n}She nods slowly, as if you had said something she recognised.{/n} \"I flew over the edge of the Wound once, the year it opened, looking for the Windstep. I went in a mile. I came out and I didn't speak for a month.\" {n}She reaches across and puts her hand over yours on the table, briefly.{/n} \"You went all the way down. And you came back up and asked for soup. That's a kind of courage nobody sings about.\"",
+          "Text": "{n}She nods slowly, as if you had said something she recognised.{/n} \"I've never been down. I've stood at the edge of it and smelled it, and that was enough to put me off my food, and nothing puts me off my food.\" {n}She reaches across and puts her hand over yours on the table, briefly.{/n} \"You went all the way down. And you came back up and asked for soup. That's a kind of courage nobody sings about.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -295467,8 +295467,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",
