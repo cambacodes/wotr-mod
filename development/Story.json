@@ -283633,7 +283633,7 @@
         {
           "Id": "door",
           "Speaker": "conversant",
-          "Text": "{n}She stops in the middle of you, as if she had found a window left open in a house she had thought was shut.{/n}\n\"And you let me in. That is the part I cannot get over.\" {n}She sits up.{/n} \"Understand where you are, Golarian. A demon who dies here, in the Abyss, stays dead. No priest calls us back. No judge weighs us. The Abyss is a mouth, and it swallows its own. There is exactly one kind of door out of that mouth, and it is a mind that has already been opened to us.\" {n}Her laughter is low and delighted.{/n} \"And you just opened yours to me, in front of my court, for fun.\"",
+          "Text": "{n}She stops in the middle of you, as if she had found a window left open in a house she had thought was shut.{/n}\n\"And you let me in. That is the part I cannot get over.\" {n}She sits up.{/n} \"Understand where you are, Golarian. A demon who dies here, in the Abyss, stays dead. No priest calls us back. No judge weighs us. The Abyss is a mouth, and it swallows its own.\" {n}She considers you.{/n} \"In my court they whisper that a mind already opened to one of us is a door out of that mouth. Nobody I know has lived to say whether it is true. I have always meant to find out, on someone else.\" {n}Her laughter is low and delighted.{/n} \"And you just opened yours to me, in front of my court, for fun.\"",
           "Choices": [
             {
               "Text": "\"Is that a threat?\"",
@@ -284314,7 +284314,7 @@
         {
           "Id": "market",
           "Speaker": "conversant",
-          "Text": "\"The Fleshmarkets!\" {n}He actually sways.{/n} \"Where do you think sinful silks come from, darling? I have a wardrobe in a house on the Street of Vats. The house belongs to a grower. He grows bodies, for princes who like to change their clothes, and he keeps them hanging in brine like good coats.\" {n}He studies you.{/n} \"A voice in your head is a lodger. A voice in a body is a guest. You want a guest.\"",
+          "Text": "\"The Fleshmarkets!\" {n}He actually sways.{/n} \"Where do you think sinful silks come from, darling? I keep a wardrobe by the bone-carvers' stalls, and under the last stall is Ramisa's hothouse. Ramisa Sloughed Skin, the marilith who only ever shows up as a picture of herself. She grows her custom orders down there in the dark, the way she used to grow her screaming little plants: planted in something dead, and watered, until they sit up.\" {n}He studies you.{/n} \"A voice in your head is a lodger. A voice in a body is a guest. You want a guest.\"",
           "Choices": [
             {
               "Text": "\"I want a body nobody will miss.\"",
@@ -284338,7 +284338,7 @@
         {
           "Id": "veil",
           "Speaker": "conversant",
-          "Text": "\"Then you'll have my veil for that too. The same spell. It keeps you hidden from eyes and ears. Mind the grower's nose; I never could do anything about noses.\" {n}He lays two fingers on your forehead, and they are cold and smell of violets.{/n}\n\"Go through your own wardrobe in Drezen to my Council, and through my Council to my house in the city, and down to the vats. Steal something beautiful. And bring me back the story.\"",
+          "Text": "\"Then you'll have my veil for that too. The same spell. It keeps you hidden from eyes and ears. Mind her mandragoras; I never could do anything about plants.\" {n}He lays two fingers on your forehead, and they are cold and smell of violets.{/n}\n\"Go through your own wardrobe in Drezen to my Council, and through my Council to my house in the city, the way I came to you with my closet on my back. Steal something beautiful. And bring me back the story.\"",
           "Choices": [
             {
               "Text": "\"And the closet you're lending me for tonight. How does that work, exactly?\"",
@@ -284679,7 +284679,7 @@
         {
           "Id": "market",
           "Speaker": "conversant",
-          "Text": "\"Oh! A body for her!\" {n}He sways.{/n} \"The house on the Street of Vats. A grower, darling: he grows bodies for princes who like to change their clothes, and hangs them in brine like good coats. I keep a wardrobe there. Go through your own in Drezen to my Council, through my Council to my house in the city, and down to the vats.\" {n}Two cold fingers on your forehead, smelling of violets.{/n} \"My veil, for the stealing. Mind his nose. Bring me the story.\"",
+          "Text": "\"Oh! A body for her!\" {n}He sways.{/n} \"Ramisa's hothouse, darling, under the bone-carvers' stalls. Sloughed Skin grows her custom orders down there in the dark, planted in something dead and watered until they sit up. Go through your own wardrobe to my Council, through my Council to my house in the city, and down.\" {n}Two cold fingers on your forehead, smelling of violets.{/n} \"My veil, for the stealing. Mind her mandragoras. Bring me the story.\"",
           "Choices": [
             {
               "Text": "[Say nothing.]",
@@ -285484,7 +285484,7 @@
           "Portrait": "Shamira",
           "Paragraphs": [
             {
-              "Text": "{n}She wore the stolen body with a thin white seam across the collarbone where the grower's hook had torn it on the way out of the brine. She could have shaped it away; she was a succubus, and her face was whatever she said it was. She never did.{/n}",
+              "Text": "{n}She wore the stolen body with a thin white seam across the collarbone where the last root had torn it on the way out of the earth. She could have shaped it away; she was a succubus, and her face was whatever she said it was. She never did.{/n}",
               "Requires": [
                 "shamira.trickster.cost.shell_torn"
               ],
@@ -285492,17 +285492,17 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The Fleshmarkets never learned who had killed the grower in the Street of Vats, and in the Fleshmarkets a murder nobody can sell is the only kind that frightens anyone. His vats stood empty for a year. Nobody would rent them.{/n}",
+              "Text": "{n}Ramisa Sloughed Skin told the story of the theft at every sale for a hundred years, with names, as she had promised: the clown who stole a body from her garden for the woman the clown had killed. It became her favourite. It sold a great many bodies. Shamira never forgave her for it, and never managed to find where she was hiding.{/n}",
               "Requires": [
-                "shamira.trickster.cost.grower_dead"
+                "shamira.trickster.cost.ramisa_story"
               ],
               "Forbids": [],
               "AnyGroups": []
             },
             {
-              "Text": "{n}The grower on the Street of Vats told the story of the night Socothbenoth's buyer came for a body for the rest of his long life, and never once suspected he had been robbed.{/n}",
+              "Text": "{n}Ramisa Sloughed Skin sent Socothbenoth a bill for the tall woman with the long hands every season for the rest of his existence, and he paid none of them, because he had never ordered her, and she never once believed him.{/n}",
               "Requires": [
-                "shamira.trickster.grower_fooled"
+                "shamira.trickster.ramisa_fooled"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -285518,6 +285518,14 @@
             {
               "Text": "{n}The Commander never dreamed alone again. Every night, wherever the Commander slept, she came: through the dragon and the bread and the barley, into the one warm room she knew, to keep her stolen body alive for another day. Some nights she only sat at the edge of the dream and watched. Some nights she did not. She never once asked.{/n}",
               "Requires": [],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}All that first year she kept to the edge of every dream, with her back turned, as the Commander had asked on the first night, and her hands were cold by noon, and her court whispered about it. Then, one night, the Commander asked her to turn round. She made the Commander ask twice.{/n}",
+              "Requires": [
+                "shamira.trickster.terms.edge"
+              ],
               "Forbids": [],
               "AnyGroups": []
             },
@@ -285657,7 +285665,7 @@
           "Portrait": "Shamira",
           "Paragraphs": [
             {
-              "Text": "{n}She wore the stolen body with a thin white seam across the collarbone where the grower's hook had torn it on the way out of the brine. She could have shaped it away; she was a succubus, and her face was whatever she said it was. She never did.{/n}",
+              "Text": "{n}She wore the stolen body with a thin white seam across the collarbone where the last root had torn it on the way out of the earth. She could have shaped it away; she was a succubus, and her face was whatever she said it was. She never did.{/n}",
               "Requires": [
                 "shamira.trickster.cost.shell_torn"
               ],
@@ -285665,17 +285673,17 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The Fleshmarkets never learned who had killed the grower in the Street of Vats, and in the Fleshmarkets a murder nobody can sell is the only kind that frightens anyone. His vats stood empty for a year. Nobody would rent them.{/n}",
+              "Text": "{n}Ramisa Sloughed Skin told the story of the theft at every sale for a hundred years, with names, as she had promised: the clown who stole a body from her garden for the woman the clown had killed. It became her favourite. It sold a great many bodies. Shamira never forgave her for it, and never managed to find where she was hiding.{/n}",
               "Requires": [
-                "shamira.trickster.cost.grower_dead"
+                "shamira.trickster.cost.ramisa_story"
               ],
               "Forbids": [],
               "AnyGroups": []
             },
             {
-              "Text": "{n}The grower on the Street of Vats told the story of the night Socothbenoth's buyer came for a body for the rest of his long life, and never once suspected he had been robbed.{/n}",
+              "Text": "{n}Ramisa Sloughed Skin sent Socothbenoth a bill for the tall woman with the long hands every season for the rest of his existence, and he paid none of them, because he had never ordered her, and she never once believed him.{/n}",
               "Requires": [
-                "shamira.trickster.grower_fooled"
+                "shamira.trickster.ramisa_fooled"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -285730,7 +285738,7 @@
           "Portrait": "Shamira",
           "Paragraphs": [
             {
-              "Text": "{n}She wore the stolen body with a thin white seam across the collarbone where the grower's hook had torn it on the way out of the brine. She could have shaped it away; she was a succubus, and her face was whatever she said it was. She never did.{/n}",
+              "Text": "{n}She wore the stolen body with a thin white seam across the collarbone where the last root had torn it on the way out of the earth. She could have shaped it away; she was a succubus, and her face was whatever she said it was. She never did.{/n}",
               "Requires": [
                 "shamira.trickster.cost.shell_torn"
               ],
@@ -285738,17 +285746,17 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The Fleshmarkets never learned who had killed the grower in the Street of Vats, and in the Fleshmarkets a murder nobody can sell is the only kind that frightens anyone. His vats stood empty for a year. Nobody would rent them.{/n}",
+              "Text": "{n}Ramisa Sloughed Skin told the story of the theft at every sale for a hundred years, with names, as she had promised: the clown who stole a body from her garden for the woman the clown had killed. It became her favourite. It sold a great many bodies. Shamira never forgave her for it, and never managed to find where she was hiding.{/n}",
               "Requires": [
-                "shamira.trickster.cost.grower_dead"
+                "shamira.trickster.cost.ramisa_story"
               ],
               "Forbids": [],
               "AnyGroups": []
             },
             {
-              "Text": "{n}The grower on the Street of Vats told the story of the night Socothbenoth's buyer came for a body for the rest of his long life, and never once suspected he had been robbed.{/n}",
+              "Text": "{n}Ramisa Sloughed Skin sent Socothbenoth a bill for the tall woman with the long hands every season for the rest of his existence, and he paid none of them, because he had never ordered her, and she never once believed him.{/n}",
               "Requires": [
-                "shamira.trickster.grower_fooled"
+                "shamira.trickster.ramisa_fooled"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -285801,7 +285809,7 @@
           "Portrait": "Shamira",
           "Paragraphs": [
             {
-              "Text": "{n}She wore the stolen body with a thin white seam across the collarbone where the grower's hook had torn it on the way out of the brine. She could have shaped it away; she was a succubus, and her face was whatever she said it was. She never did.{/n}",
+              "Text": "{n}She wore the stolen body with a thin white seam across the collarbone where the last root had torn it on the way out of the earth. She could have shaped it away; she was a succubus, and her face was whatever she said it was. She never did.{/n}",
               "Requires": [
                 "shamira.trickster.cost.shell_torn"
               ],
@@ -285809,17 +285817,17 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The Fleshmarkets never learned who had killed the grower in the Street of Vats, and in the Fleshmarkets a murder nobody can sell is the only kind that frightens anyone. His vats stood empty for a year. Nobody would rent them.{/n}",
+              "Text": "{n}Ramisa Sloughed Skin told the story of the theft at every sale for a hundred years, with names, as she had promised: the clown who stole a body from her garden for the woman the clown had killed. It became her favourite. It sold a great many bodies. Shamira never forgave her for it, and never managed to find where she was hiding.{/n}",
               "Requires": [
-                "shamira.trickster.cost.grower_dead"
+                "shamira.trickster.cost.ramisa_story"
               ],
               "Forbids": [],
               "AnyGroups": []
             },
             {
-              "Text": "{n}The grower on the Street of Vats told the story of the night Socothbenoth's buyer came for a body for the rest of his long life, and never once suspected he had been robbed.{/n}",
+              "Text": "{n}Ramisa Sloughed Skin sent Socothbenoth a bill for the tall woman with the long hands every season for the rest of his existence, and he paid none of them, because he had never ordered her, and she never once believed him.{/n}",
               "Requires": [
-                "shamira.trickster.grower_fooled"
+                "shamira.trickster.ramisa_fooled"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -286017,7 +286025,7 @@
           "Portrait": "Shamira",
           "Paragraphs": [
             {
-              "Text": "{n}She wore the stolen body with a thin white seam across the collarbone where the grower's hook had torn it on the way out of the brine. She could have shaped it away; she was a succubus, and her face was whatever she said it was. She never did.{/n}",
+              "Text": "{n}She wore the stolen body with a thin white seam across the collarbone where the last root had torn it on the way out of the earth. She could have shaped it away; she was a succubus, and her face was whatever she said it was. She never did.{/n}",
               "Requires": [
                 "shamira.trickster.cost.shell_torn"
               ],
@@ -286025,17 +286033,17 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The Fleshmarkets never learned who had killed the grower in the Street of Vats, and in the Fleshmarkets a murder nobody can sell is the only kind that frightens anyone. His vats stood empty for a year. Nobody would rent them.{/n}",
+              "Text": "{n}Ramisa Sloughed Skin told the story of the theft at every sale for a hundred years, with names, as she had promised: the clown who stole a body from her garden for the woman the clown had killed. It became her favourite. It sold a great many bodies. Shamira never forgave her for it, and never managed to find where she was hiding.{/n}",
               "Requires": [
-                "shamira.trickster.cost.grower_dead"
+                "shamira.trickster.cost.ramisa_story"
               ],
               "Forbids": [],
               "AnyGroups": []
             },
             {
-              "Text": "{n}The grower on the Street of Vats told the story of the night Socothbenoth's buyer came for a body for the rest of his long life, and never once suspected he had been robbed.{/n}",
+              "Text": "{n}Ramisa Sloughed Skin sent Socothbenoth a bill for the tall woman with the long hands every season for the rest of his existence, and he paid none of them, because he had never ordered her, and she never once believed him.{/n}",
               "Requires": [
-                "shamira.trickster.grower_fooled"
+                "shamira.trickster.ramisa_fooled"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -286908,7 +286916,7 @@
     },
     {
       "Id": "shamira.trickster.mind.heist",
-      "Title": "The Street of Vats",
+      "Title": "The hothouse",
       "Owner": "Shamira",
       "MinChapter": 5,
       "MaxChapter": 5,
@@ -286917,7 +286925,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She tells you the way herself, in the small hours, as if she were giving directions to a tailor.{/n} {n}Shamira's voice whispers inside your mind,{/n} \"Your wardrobe. His Council. His house. The Street of Vats. I have seen him use those doors a hundred times; I read them out of his head one night he came sniffing at my lady's bedchamber. He has never once thought to wonder what I took from him.\"",
+          "Text": "{n}She tells you the way herself, in the small hours, as if she were giving directions to a tailor.{/n} {n}Shamira's voice whispers inside your mind,{/n} \"Your wardrobe. His Council. His house. The Fleshmarkets. I have seen him use those doors a hundred times; I read them out of his head one night he came sniffing at my lady's bedchamber. He dragged a closet round my city for years and thought nobody noticed.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -286933,7 +286941,7 @@
         {
           "Id": "wardrobe",
           "Speaker": "Narrator",
-          "Text": "{n}You step into the wardrobe in your quarters in Drezen, between a coat and a spare cloak, and close the door on yourself, and open it again onto the Council chamber: the long table, the empty chairs, the smell of old wine and older schemes. Nobody is there. The candles are burning anyway.{/n}\n{n}Behind the chair where Socothbenoth sits there is a narrow door lacquered in purple, with a handle shaped like a lady's hand. You take the hand. It squeezes back.{/n}",
+          "Text": "{n}You step into the wardrobe in your quarters in Drezen, between a coat and a spare cloak, and close the door on yourself, and open it again onto the Council chamber: the long table, the empty chairs, the smell of old wine and older schemes. Nobody is there. The candles are burning anyway.{/n}\n{n}Behind the chair where Socothbenoth sits there is the other door, the one he came through from Alushinyrra with his closet on his back: lacquered in purple, with a handle shaped like a lady's hand. You take the hand. It squeezes back.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -286993,7 +287001,7 @@
         {
           "Id": "market",
           "Speaker": "Narrator",
-          "Text": "{n}The Fleshmarkets never close. At this hour the auction blocks are empty and the pens are full, and the traders sit on their stools drinking something that steams and counting coin by the light of the cages. A dretch is being sold for scrap. A pair of succubi argue over the price of a man's voice, which is apparently something you can buy here separately.{/n}\n{n}The Street of Vats is at the back, where the gutters run warm.{/n}",
+          "Text": "{n}The Fleshmarkets never close. At this hour the auction blocks are empty and the pens are full, and the traders sit on their stools drinking something that steams and counting coin by the light of the cages. A dretch is being sold for scrap. A pair of succubi argue over the price of a man's voice, which is apparently something you can buy here separately.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -287021,7 +287029,7 @@
         {
           "Id": "remembered",
           "Speaker": "Narrator",
-          "Text": "{n}The market has been rebuilt since you last came through it with your sword out. The new stalls are cleaner, the new guards more numerous, and on the post by the gate somebody has nailed a crude drawing of your face with an obscene suggestion scratched underneath. It is not a bad likeness.{/n}\n{n}You pull your hood lower. The Street of Vats is at the back, where the gutters run warm.{/n}",
+          "Text": "{n}The market has been rebuilt since you last came through it with your sword out. The new stalls are cleaner, the new guards more numerous, and on the post by the gate somebody has nailed a crude drawing of your face with an obscene suggestion scratched underneath. It is not a bad likeness.{/n}\n{n}Half the new stalls fly the same small banner: a green shoot, sprouting from a skull. The marilith who thanked you for the massacre has been busy.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -287037,7 +287045,7 @@
         {
           "Id": "street",
           "Speaker": "Shamira",
-          "Text": "\"Third house past the gibbet. The one with the green lamp.\" {n}Her voice is brisk now, almost cheerful: a woman back in her own city, even if it is only through your eyes.{/n} \"Oshkuvar. A nalfeshnee. Fat, pious and very good. He grew bodies for half my court when they got bored of their faces. He sleeps with one eye open and the other one in a jar by the bed, so mind the jar.\"",
+          "Text": "\"Ramisa's.\" {n}Her voice is brisk now, almost cheerful: a woman back in her own city, even if it is only through your eyes.{/n} \"Sloughed Skin. The marilith who sells you a projection and delivers afterwards. Everyone thinks her goods are kept somewhere far away. They're kept under the bone-carvers' stalls, in a hothouse, growing. I know, because she grew two bodies for my court when they got bored of their faces.\" {n}A pause.{/n} \"She was a gardener, once. She still is.\"",
           "Choices": [
             {
               "Text": "[Stealth: slip in under Socothbenoth's veil.]",
@@ -287099,7 +287107,7 @@
         {
           "Id": "inside",
           "Speaker": "Narrator",
-          "Text": "{n}The cellar is long and low and lit green. Down both walls, in vats of cloudy brine as tall as a man, the bodies hang on hooks through the shoulders, like coats in a good tailor's back room. Men, women, things that are neither, horned and hornless, winged and bare. Their eyes are shut. Their chests do not move. None of them has ever been anybody.{/n}\n{n}At the far end, behind a curtain, something vast snores.{/n}",
+          "Text": "{n}The hothouse is long and low and lit green. Down both walls, in beds of black earth, the orders grow: bodies, half-buried, their roots going down into the soil and into whatever is rotting under it. Men, women, things that are neither. Some are only a pale shape in the dirt. Some are finished, sitting up to the waist in the earth, eyes shut, chests still. None of them has ever been anybody. They were planted in something dead, and watered, and they grew.{/n}\n{n}Along the aisle, in pots, stand Ramisa's mandragoras, wrinkled and asleep. You do not step near them.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -287115,10 +287123,10 @@
         {
           "Id": "choose",
           "Speaker": "Shamira",
-          "Text": "\"Not that one. Not that one; look at the knees. That one's hips were grown in a hurry.\" {n}She is shopping, you realise, with the unhurried contempt of a woman who has shopped in this street before, and despite everything she is enjoying it.{/n}\n\"There. The tall one, at the end, with the long hands. The skin is good. The bones are better. It will do, until I can afford something worthy of me.\"",
+          "Text": "\"Not that one. Not that one; look at the knees. That one was pulled early.\" {n}She is shopping, you realise, with the unhurried contempt of a woman who has shopped here before, and despite everything she is enjoying it.{/n}\n\"There. The tall one, at the end, with the long hands. Somebody ordered her and never paid; you can tell by the weeds. The skin is good. The bones are better. It will do, until I can afford something worthy of me.\"",
           "Choices": [
             {
-              "Text": "[Thievery: open the vat's seal without waking the house.]",
+              "Text": "[Thievery: cut her roots without waking the house.]",
               "Next": null,
               "Set": [],
               "Requires": [],
@@ -287138,7 +287146,7 @@
         {
           "Id": "shriek",
           "Speaker": "Narrator",
-          "Text": "{n}The seal is warded. Of course the seal is warded. It gives under your fingers and, as it gives, it screams: a thin, high, furious sound like a kettle left on in hell.{/n}\n{n}Behind the curtain the snoring stops.{/n}",
+          "Text": "{n}The root is warded. Of course it is. It parts under your knife and, as it parts, every mandragora in the aisle wakes and screams: a thin, high, furious sound like a kettle left on in hell.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -287154,7 +287162,7 @@
         {
           "Id": "woken",
           "Speaker": "Narrator",
-          "Text": "{n}He comes through the curtain on all fours and then rises, and keeps rising: a nalfeshnee in a nightshirt, all tusks and belly and bristle, with one small wet eye in his face and an empty socket where the other should be. The other is in a jar in his fist. He holds it up and turns it towards you so that it can see too.{/n}\n\"Thief,\" {n}says the grower, in a voice like a cart going over gravel.{/n} \"In my vats. In my own vats. At this hour.\"",
+          "Text": "{n}Between one scream and the next the aisle is full of marilith: a translucent, towering shape, six arms and a long coiled tail, lit from inside like a lantern, with a shriveled mandragora clutched to her breast. She is not here. She never is. It makes her no less frightening.{/n}\n\"A thief,\" {n}says Ramisa Sloughed Skin, delighted.{/n} \"In my garden. Among my orders. At this hour.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -287182,7 +287190,7 @@
         {
           "Id": "recognised",
           "Speaker": "Narrator",
-          "Text": "{n}The eye in the jar blinks at you. The grower's small real eye narrows.{/n} \"I know you. You're the Golarian who put the market to the sword. They nailed your face to the gate.\" {n}He sounds, if anything, respectful.{/n} \"What does a butcher want with a bespoke body?\"",
+          "Text": "{n}The projection leans down to look at your face, and her smile widens.{/n} \"Oh. Oh, it's you. My {mf|benefactor|benefactress}. You cleared the worms out of my market with your sword and made me mistress of two-thirds of it, and now you come back at night to rob me.\" {n}She sounds moved.{/n} \"That's not theft. That's a story.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -287198,11 +287206,11 @@
         {
           "Id": "caught",
           "Speaker": "Shamira",
-          "Text": "\"Kill him.\" {n}Her voice in your head is perfectly calm.{/n} \"Or lie to him. He is stupid and devout; Socothbenoth's name will open him like a clam. Or run, and tear the body on the way out, and I will wear the tear for the rest of my life and never let you forget it. Choose, Golarian. He's working up to shouting.\"",
+          "Text": "\"You can't kill her. She isn't here.\" {n}Her voice in your head is perfectly calm.{/n} \"Lie to her. She is vain and she trades with Socothbenoth; his name will open her like a clam. Or pay her in the only coin she likes: tell her what the body is for. She collects stories. Or run, and tear the body on the way out, and I will wear the tear for the rest of my life. Choose, Golarian. She's working up to calling her hunters.\"",
           "Choices": [
             {
-              "Text": "[Kill him before he shouts.]",
-              "Next": "killed",
+              "Text": "[Tell her the truth about what the body is for.]",
+              "Next": "story",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -287223,7 +287231,7 @@
               }
             },
             {
-              "Text": "[Grab the shell off its hook and run.]",
+              "Text": "[Tear the body out of the earth and run.]",
               "Next": "run",
               "Set": [],
               "Requires": [],
@@ -287234,16 +287242,16 @@
           "Portrait": "Shamira"
         },
         {
-          "Id": "killed",
+          "Id": "story",
           "Speaker": "Narrator",
-          "Text": "{n}He is slow, and old, and he has never had to fight in his own cellar. It is ugly and quick and very nearly quiet. When it is done, the eye in the jar is still looking at you. You turn it to face the wall.{/n} {n}Shamira's voice whispers inside your mind,{/n} \"Well done. He grew my second face, you know. It was a very good face. I shall miss it more than him.\"",
+          "Text": "{n}You tell her. A dead woman behind your eyes, a demon lord's errand, a body for the rest of her. The projection listens with all six hands pressed together under her chin, and the mandragora listens too.{/n}\n\"A shell for a ghost, stolen from my garden by the one who made her a ghost.\" {n}Ramisa sighs, the way a patron of the arts sighs at a good play.{/n} \"Take her. The body is paid for. The story is mine now, and I shall tell it at every sale for a hundred years. With names.\"",
           "Choices": [
             {
-              "Text": "[Lift the shell out of the brine.]",
+              "Text": "[Lift the shell out of the earth.]",
               "Next": "home",
               "Set": [
                 "shamira.trickster.shell",
-                "shamira.trickster.cost.grower_dead"
+                "shamira.trickster.cost.ramisa_story"
               ],
               "Requires": [],
               "Forbids": [],
@@ -287255,14 +287263,14 @@
         {
           "Id": "fooled",
           "Speaker": "Narrator",
-          "Text": "{n}At the Silken Sin's name the grower's whole vast body relaxes, like a tent when the pole comes out.{/n} \"Ohhh. Him. At this hour, always at this hour.\" {n}He sets the jar with his eye in it on a shelf and, grumbling, wraps the body in oiled silk himself, with care, the way a good tailor wraps a suit.{/n} \"Tell him it's on account. Tell him I want the last one back; he never returns them.\" {n}Shamira's voice whispers inside your mind,{/n} \"I could kiss you. I will not, because you don't have a body worth it yet. But I could.\"",
+          "Text": "{n}At the Silken Sin's name the projection's whole towering length relaxes, coil by coil.{/n} \"Ohhh. Him. At this hour, always at this hour.\" {n}Two of her six hands wave, and the mandragoras fall silent, and the tall woman comes up out of the earth on her own, roots and all, and folds into your arms like washing.{/n} \"Tell him it's on account. Tell him I want the last one back; he never returns them.\" {n}Shamira's voice whispers inside your mind,{/n} \"I could kiss you. I will not, because you don't have a body worth it yet. But I could.\"",
           "Choices": [
             {
-              "Text": "[Carry it out under your arm.]",
+              "Text": "[Carry her out.]",
               "Next": "home",
               "Set": [
                 "shamira.trickster.shell",
-                "shamira.trickster.grower_fooled"
+                "shamira.trickster.ramisa_fooled"
               ],
               "Requires": [],
               "Forbids": [],
@@ -287274,7 +287282,7 @@
         {
           "Id": "run",
           "Speaker": "Narrator",
-          "Text": "{n}You rip the body off its hook. The hook does not want to let go; it tears through the white skin at the collarbone with a sound like wet canvas, and then you are out through the curtain with a naked woman's weight over your shoulder, and the grower's roar behind you shaking brine out of the vats.{/n}\n{n}The Fleshmarkets see a Golarian running with a body. The Fleshmarkets see that every night. Nobody stops you.{/n} {n}Shamira's voice whispers inside your mind,{/n} \"My collarbone. You tore my collarbone. I haven't even got it yet and you've torn it.\"",
+          "Text": "{n}You tear the body out of the earth. The roots do not want to let go; the last of them rips through the white skin at the collarbone with a sound like wet canvas, and then you are up through the trapdoor with a naked woman's weight over your shoulder, and the mandragoras' scream and Ramisa's laughter coming up behind you like smoke.{/n}\n{n}The Fleshmarkets see a Golarian running with a body. The Fleshmarkets see that every night. Nobody stops you.{/n} {n}Shamira's voice whispers inside your mind,{/n} \"My collarbone. You tore my collarbone. I haven't even got it yet and you've torn it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -287293,7 +287301,7 @@
         {
           "Id": "clean",
           "Speaker": "Narrator",
-          "Text": "{n}The seal gives with a sigh, not a scream. You lift the body out of the brine, and it is heavier than you expected, and colder, and it hangs over your shoulder as limp as wet washing. Behind the curtain the snoring does not change.{/n} {n}Shamira's voice whispers inside your mind,{/n} \"Gently. Gently! That's my hip you're holding.\"",
+          "Text": "{n}The root parts with a sigh, not a scream. You lift the body out of the black earth, and it is heavier than you expected, and colder, and it hangs over your shoulder as limp as wet washing. Along the aisle the mandragoras sleep on.{/n} {n}Shamira's voice whispers inside your mind,{/n} \"Gently. Gently! That's my hip you're holding.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -287311,7 +287319,7 @@
         {
           "Id": "home",
           "Speaker": "Narrator",
-          "Text": "{n}Back up the Street of Vats. Back through Socothbenoth's side door, past the rows of listening wardrobes. Through the purple door behind his chair, through the empty Council with its candles burning for nobody, and out of your own wardrobe in Drezen, into your own quarters, a little before morning.{/n}\n{n}You hang her in the wardrobe, between your good coat and your spare cloak, and close the door on her. She looks, in there, like the best thing you own.{/n} {n}Shamira's voice whispers inside your mind,{/n} \"Between your coats.\" {n}A long pause.{/n} \"Socothbenoth would weep with joy.\"",
+          "Text": "{n}Back up through the trapdoor. Back through Socothbenoth's side door, past the rows of listening wardrobes. Through the purple door behind his chair, through the empty Council with its candles burning for nobody, and out of your own wardrobe in Drezen, into your own quarters, a little before morning.{/n}\n{n}You hang her in the wardrobe, between your good coat and your spare cloak, and close the door on her. She looks, in there, like the best thing you own.{/n} {n}Shamira's voice whispers inside your mind,{/n} \"Between your coats.\" {n}A long pause.{/n} \"Socothbenoth would weep with joy.\"",
           "Choices": [
             {
               "Text": "[Close the wardrobe.]",
@@ -287350,7 +287358,7 @@
     },
     {
       "Id": "shamira.trickster.mind.heist_alone",
-      "Title": "The Street of Vats",
+      "Title": "The hothouse",
       "Owner": "Shamira",
       "MinChapter": 5,
       "MaxChapter": 5,
@@ -287375,7 +287383,7 @@
         {
           "Id": "wardrobe",
           "Speaker": "Narrator",
-          "Text": "{n}You step into the wardrobe in your quarters in Drezen, between a coat and a spare cloak, and close the door on yourself, and open it again onto the Council chamber: the long table, the empty chairs, the smell of old wine and older schemes. Nobody is there. The candles are burning anyway.{/n}\n{n}Behind the chair where Socothbenoth sits there is a narrow door lacquered in purple, with a handle shaped like a lady's hand. You take the hand. It squeezes back.{/n}",
+          "Text": "{n}You step into the wardrobe in your quarters in Drezen, between a coat and a spare cloak, and close the door on yourself, and open it again onto the Council chamber: the long table, the empty chairs, the smell of old wine and older schemes. Nobody is there. The candles are burning anyway.{/n}\n{n}Behind the chair where Socothbenoth sits there is the other door, the one he came through from Alushinyrra with his closet on his back: lacquered in purple, with a handle shaped like a lady's hand. You take the hand. It squeezes back.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -287435,7 +287443,7 @@
         {
           "Id": "market",
           "Speaker": "Narrator",
-          "Text": "{n}The Fleshmarkets never close. At this hour the auction blocks are empty and the pens are full, and the traders sit on their stools drinking something that steams and counting coin by the light of the cages. A dretch is being sold for scrap. A pair of succubi argue over the price of a man's voice, which is apparently something you can buy here separately.{/n}\n{n}The Street of Vats is at the back, where the gutters run warm.{/n}",
+          "Text": "{n}The Fleshmarkets never close. At this hour the auction blocks are empty and the pens are full, and the traders sit on their stools drinking something that steams and counting coin by the light of the cages. A dretch is being sold for scrap. A pair of succubi argue over the price of a man's voice, which is apparently something you can buy here separately.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -287463,7 +287471,7 @@
         {
           "Id": "remembered",
           "Speaker": "Narrator",
-          "Text": "{n}The market has been rebuilt since you last came through it with your sword out. The new stalls are cleaner, the new guards more numerous, and on the post by the gate somebody has nailed a crude drawing of your face with an obscene suggestion scratched underneath. It is not a bad likeness.{/n}\n{n}You pull your hood lower. The Street of Vats is at the back, where the gutters run warm.{/n}",
+          "Text": "{n}The market has been rebuilt since you last came through it with your sword out. The new stalls are cleaner, the new guards more numerous, and on the post by the gate somebody has nailed a crude drawing of your face with an obscene suggestion scratched underneath. It is not a bad likeness.{/n}\n{n}Half the new stalls fly the same small banner: a green shoot, sprouting from a skull. The marilith who thanked you for the massacre has been busy.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -287479,7 +287487,7 @@
         {
           "Id": "street",
           "Speaker": "Narrator",
-          "Text": "{n}The house on the Street of Vats is the one Socothbenoth described: a green lamp over the door, a gibbet two doors down with nothing on it tonight, and a smell coming out of the cellar grilles like a butcher's shop that has been rinsed in rosewater. A wooden sign over the lintel shows a naked figure with no face, and under it, in three demonic scripts, a single word: BESPOKE.{/n}",
+          "Text": "{n}Socothbenoth's directions bring you to the back of the market, where the bone-carvers work, and to a trapdoor under the last stall that smells of wet earth and something sweet gone bad. \"Ramisa's hothouse,\" he said. \"She sells you a projection and grows the goods to order, darling, in the dark, the way she used to grow her little screaming plants. I buy my silks next door.\"{/n}",
           "Choices": [
             {
               "Text": "[Stealth: slip in under Socothbenoth's veil.]",
@@ -287541,7 +287549,7 @@
         {
           "Id": "inside",
           "Speaker": "Narrator",
-          "Text": "{n}The cellar is long and low and lit green. Down both walls, in vats of cloudy brine as tall as a man, the bodies hang on hooks through the shoulders, like coats in a good tailor's back room. Men, women, things that are neither, horned and hornless, winged and bare. Their eyes are shut. Their chests do not move. None of them has ever been anybody.{/n}\n{n}At the far end, behind a curtain, something vast snores.{/n}",
+          "Text": "{n}The hothouse is long and low and lit green. Down both walls, in beds of black earth, the orders grow: bodies, half-buried, their roots going down into the soil and into whatever is rotting under it. Men, women, things that are neither. Some are only a pale shape in the dirt. Some are finished, sitting up to the waist in the earth, eyes shut, chests still. None of them has ever been anybody. They were planted in something dead, and watered, and they grew.{/n}\n{n}Along the aisle, in pots, stand Ramisa's mandragoras, wrinkled and asleep. You do not step near them.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -287557,10 +287565,10 @@
         {
           "Id": "choose",
           "Speaker": "Narrator",
-          "Text": "{n}You walk the rows like a buyer. You do not know what she would want. You know only what she was: tall, on her throne, burning, her hand long and white against the red of her hair when she waved you away.{/n}\n{n}At the end of the row hangs a tall woman with long hands, faceless as a dressmaker's dummy. You choose her.{/n}",
+          "Text": "{n}You walk the beds like a buyer. You do not know what she would want. You know only what she was: tall, on her throne, burning, her hand long and white against the red of her hair when she waved you away.{/n}\n{n}At the end of the row, up to her hips in the black earth, sits a tall woman with long hands, faceless as a dressmaker's dummy, the weeds grown high round her as if nobody has come for her in a long time. You choose her.{/n}",
           "Choices": [
             {
-              "Text": "[Thievery: open the vat's seal without waking the house.]",
+              "Text": "[Thievery: cut her roots without waking the house.]",
               "Next": null,
               "Set": [
                 "shamira.trickster.shell_chosen_alone"
@@ -287582,7 +287590,7 @@
         {
           "Id": "shriek",
           "Speaker": "Narrator",
-          "Text": "{n}The seal is warded. Of course the seal is warded. It gives under your fingers and, as it gives, it screams: a thin, high, furious sound like a kettle left on in hell.{/n}\n{n}Behind the curtain the snoring stops.{/n}",
+          "Text": "{n}The root is warded. Of course it is. It parts under your knife and, as it parts, every mandragora in the aisle wakes and screams: a thin, high, furious sound like a kettle left on in hell.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -287598,7 +287606,7 @@
         {
           "Id": "woken",
           "Speaker": "Narrator",
-          "Text": "{n}He comes through the curtain on all fours and then rises, and keeps rising: a nalfeshnee in a nightshirt, all tusks and belly and bristle, with one small wet eye in his face and an empty socket where the other should be. The other is in a jar in his fist. He holds it up and turns it towards you so that it can see too.{/n}\n\"Thief,\" {n}says the grower, in a voice like a cart going over gravel.{/n} \"In my vats. In my own vats. At this hour.\"",
+          "Text": "{n}Between one scream and the next the aisle is full of marilith: a translucent, towering shape, six arms and a long coiled tail, lit from inside like a lantern, with a shriveled mandragora clutched to her breast. She is not here. She never is. It makes her no less frightening.{/n}\n\"A thief,\" {n}says Ramisa Sloughed Skin, delighted.{/n} \"In my garden. Among my orders. At this hour.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -287626,7 +287634,7 @@
         {
           "Id": "recognised",
           "Speaker": "Narrator",
-          "Text": "{n}The eye in the jar blinks at you. The grower's small real eye narrows.{/n} \"I know you. You're the Golarian who put the market to the sword. They nailed your face to the gate.\" {n}He sounds, if anything, respectful.{/n} \"What does a butcher want with a bespoke body?\"",
+          "Text": "{n}The projection leans down to look at your face, and her smile widens.{/n} \"Oh. Oh, it's you. My {mf|benefactor|benefactress}. You cleared the worms out of my market with your sword and made me mistress of two-thirds of it, and now you come back at night to rob me.\" {n}She sounds moved.{/n} \"That's not theft. That's a story.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -287642,11 +287650,11 @@
         {
           "Id": "caught",
           "Speaker": "Narrator",
-          "Text": "{n}He is working up to shouting. You can see it in the way the bristles on his neck rise, one after another, like a field of wheat in a wind.{/n}",
+          "Text": "{n}She is working up to calling her hunters. You can see it in the way the mandragora in her arms has stopped screaming and started to smile.{/n}",
           "Choices": [
             {
-              "Text": "[Kill him before he shouts.]",
-              "Next": "killed",
+              "Text": "[Tell her the truth about what the body is for.]",
+              "Next": "story",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -287667,7 +287675,7 @@
               }
             },
             {
-              "Text": "[Grab the shell off its hook and run.]",
+              "Text": "[Tear the body out of the earth and run.]",
               "Next": "run",
               "Set": [],
               "Requires": [],
@@ -287678,16 +287686,16 @@
           "Portrait": "Shamira"
         },
         {
-          "Id": "killed",
+          "Id": "story",
           "Speaker": "Narrator",
-          "Text": "{n}He is slow, and old, and he has never had to fight in his own cellar. It is ugly and quick and very nearly quiet. When it is done, the eye in the jar is still looking at you. You turn it to face the wall.{/n}",
+          "Text": "{n}You tell her. A woman you have not yet killed, a demon lord's errand, a body for what will be left of her. The projection listens with all six hands pressed together under her chin.{/n}\n\"You've come shopping for a corpse that isn't dead yet.\" {n}Ramisa sighs, the way a patron of the arts sighs at a good play.{/n} \"Take her. The body is paid for. The story is mine now, and I shall tell it at every sale for a hundred years. With names.\"",
           "Choices": [
             {
-              "Text": "[Lift the shell out of the brine.]",
+              "Text": "[Lift the shell out of the earth.]",
               "Next": "home",
               "Set": [
                 "shamira.trickster.shell",
-                "shamira.trickster.cost.grower_dead"
+                "shamira.trickster.cost.ramisa_story"
               ],
               "Requires": [],
               "Forbids": [],
@@ -287699,14 +287707,14 @@
         {
           "Id": "fooled",
           "Speaker": "Narrator",
-          "Text": "{n}At the Silken Sin's name the grower's whole vast body relaxes, like a tent when the pole comes out.{/n} \"Ohhh. Him. At this hour, always at this hour.\" {n}He sets the jar with his eye in it on a shelf and, grumbling, wraps the body in oiled silk himself, with care, the way a good tailor wraps a suit.{/n} \"Tell him it's on account. Tell him I want the last one back; he never returns them.\"",
+          "Text": "{n}At the Silken Sin's name the projection's whole towering length relaxes, coil by coil.{/n} \"Ohhh. Him. At this hour, always at this hour.\" {n}Two of her six hands wave, and the mandragoras fall silent, and the tall woman comes up out of the earth on her own, roots and all, and folds into your arms like washing.{/n} \"Tell him it's on account. Tell him I want the last one back; he never returns them.\"",
           "Choices": [
             {
-              "Text": "[Carry it out under your arm.]",
+              "Text": "[Carry her out.]",
               "Next": "home",
               "Set": [
                 "shamira.trickster.shell",
-                "shamira.trickster.grower_fooled"
+                "shamira.trickster.ramisa_fooled"
               ],
               "Requires": [],
               "Forbids": [],
@@ -287718,7 +287726,7 @@
         {
           "Id": "run",
           "Speaker": "Narrator",
-          "Text": "{n}You rip the body off its hook. The hook does not want to let go; it tears through the white skin at the collarbone with a sound like wet canvas, and then you are out through the curtain with a naked woman's weight over your shoulder, and the grower's roar behind you shaking brine out of the vats.{/n}\n{n}The Fleshmarkets see a Golarian running with a body. The Fleshmarkets see that every night. Nobody stops you.{/n}",
+          "Text": "{n}You tear the body out of the earth. The roots do not want to let go; the last of them rips through the white skin at the collarbone with a sound like wet canvas, and then you are up through the trapdoor with a naked woman's weight over your shoulder, and the mandragoras' scream and Ramisa's laughter coming up behind you like smoke.{/n}\n{n}The Fleshmarkets see a Golarian running with a body. The Fleshmarkets see that every night. Nobody stops you.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -287737,7 +287745,7 @@
         {
           "Id": "clean",
           "Speaker": "Narrator",
-          "Text": "{n}The seal gives with a sigh, not a scream. You lift the body out of the brine, and it is heavier than you expected, and colder, and it hangs over your shoulder as limp as wet washing. Behind the curtain the snoring does not change.{/n}",
+          "Text": "{n}The root parts with a sigh, not a scream. You lift the body out of the black earth, and it is heavier than you expected, and colder, and it hangs over your shoulder as limp as wet washing. Along the aisle the mandragoras sleep on.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -287755,7 +287763,7 @@
         {
           "Id": "home",
           "Speaker": "Narrator",
-          "Text": "{n}Back up the Street of Vats. Back through Socothbenoth's side door, past the rows of listening wardrobes. Through the purple door behind his chair, through the empty Council with its candles burning for nobody, and out of your own wardrobe in Drezen, into your own quarters, a little before morning.{/n}\n{n}You hang her in the wardrobe, between your good coat and your spare cloak, and close the door on her. She looks, in there, like the best thing you own.{/n}\n{n}There is nobody in her yet. There is nobody anywhere, yet. You still have a woman to kill.{/n}",
+          "Text": "{n}Back up through the trapdoor. Back through Socothbenoth's side door, past the rows of listening wardrobes. Through the purple door behind his chair, through the empty Council with its candles burning for nobody, and out of your own wardrobe in Drezen, into your own quarters, a little before morning.{/n}\n{n}You hang her in the wardrobe, between your good coat and your spare cloak, and close the door on her. She looks, in there, like the best thing you own.{/n}\n{n}There is nobody in her yet. There is nobody anywhere, yet. You still have a woman to kill.{/n}",
           "Choices": [
             {
               "Text": "[Close the wardrobe.]",
@@ -288273,7 +288281,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}You open the wardrobe, and there she hangs between your coats: the stolen body, pale and faceless, long-handed, still smelling faintly of brine. You put your hand on its chest, where a heart would be, and for a while you both look at it: you with your eyes, and she with them too.{/n}",
+          "Text": "{n}You open the wardrobe, and there she hangs between your coats: the stolen body, pale and faceless, long-handed, still smelling faintly of black earth. You put your hand on its chest, where a heart would be, and for a while you both look at it: you with your eyes, and she with them too.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -288314,7 +288322,7 @@
         {
           "Id": "torn",
           "Speaker": "Shamira",
-          "Text": "{n}Shamira's voice whispers inside your mind,{/n} \"Look at my collarbone.\" {n}There is a long white seam there where the hook tore it, like a split in fine leather.{/n} \"I shall be able to shape the face, and the hair, and everything else a succubus can shape. That, I can already tell you, I shall not be able to shape away. You put it there. It's yours. I'll wear it for you every day, to remind you.\"",
+          "Text": "{n}Shamira's voice whispers inside your mind,{/n} \"Look at my collarbone.\" {n}There is a long white seam there where the last root tore it, like a split in fine leather.{/n} \"I shall be able to shape the face, and the hair, and everything else a succubus can shape. That, I can already tell you, I shall not be able to shape away. You put it there. It's yours. I'll wear it for you every day, to remind you.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -288330,7 +288338,7 @@
         {
           "Id": "chosen",
           "Speaker": "Shamira",
-          "Text": "{n}Shamira's voice whispers inside your mind,{/n} \"You chose this.\" {n}She is looking at it the way a woman looks at a dress somebody else has bought her.{/n} \"Alone, before you had even killed me, you went to the Street of Vats and walked the rows and picked a body for a woman you had spoken to twice. Tall. Long hands.\" {n}A strange pause.{/n} \"It's the right one. I'd have chosen it. I have not decided whether that flatters me or frightens me.\"",
+          "Text": "{n}Shamira's voice whispers inside your mind,{/n} \"You chose this.\" {n}She is looking at it the way a woman looks at a dress somebody else has bought her.{/n} \"Alone, before you had even killed me, you went down into Ramisa's garden and walked the beds and picked a body for a woman you had spoken to twice. Tall. Long hands.\" {n}A strange pause.{/n} \"It's the right one. I'd have chosen it. I have not decided whether that flatters me or frightens me.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -288346,7 +288354,7 @@
         {
           "Id": "good",
           "Speaker": "Shamira",
-          "Text": "{n}Shamira's voice whispers inside your mind,{/n} \"Good bones.\" {n}She says it the way a horse-trader says it, but her voice is not steady.{/n} \"Good skin. The hands are right. Oshkuvar always did make hands well.\" {n}A pause.{/n} \"It's empty, Golarian. It has never been anyone. When I go into it, it will be the first thing that ever happened to it.\"",
+          "Text": "{n}Shamira's voice whispers inside your mind,{/n} \"Good bones.\" {n}She says it the way a horse-trader says it, but her voice is not steady.{/n} \"Good skin. The hands are right. Ramisa always did grow hands well.\" {n}A pause.{/n} \"It's empty, Golarian. It has never been anyone. When I go into it, it will be the first thing that ever happened to it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -288738,7 +288746,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}You take the body down off its hook and lay it on the floor of the wardrobe, among your boots, with its head on a folded cloak. It is lighter than it was in the brine. It is very cold. Its face is smooth and blank, a sketch of a face, waiting.{/n}\n{n}You lie down beside it, and put your hand on its cold chest, and close your eyes.{/n}",
+          "Text": "{n}You take the body down off its hook and lay it on the floor of the wardrobe, among your boots, with its head on a folded cloak. It is lighter than it was in the earth. It is very cold. Its face is smooth and blank, a sketch of a face, waiting.{/n}\n{n}You lie down beside it, and put your hand on its cold chest, and close your eyes.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -288945,7 +288953,7 @@
         {
           "Id": "risen_torn",
           "Speaker": "Narrator",
-          "Text": "{n}Where the coat falls open at the throat, you can see the seam: a thin white line across the collarbone where the hook tore her on the way out of the brine. Everything else about her she has made perfect. That, she has left.{/n}",
+          "Text": "{n}Where the coat falls open at the throat, you can see the seam: a thin white line across the collarbone where the last root tore her on the way out of the earth. Everything else about her she has made perfect. That, she has left.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -289572,6 +289580,33 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "\"Then sit at the edge, with your back to me. Take the coal and leave my dreams to me.\"",
+              "Next": "edge",
+              "Set": [
+                "shamira.trickster.first_company",
+                "shamira.trickster.terms.edge"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Shamira"
+        },
+        {
+          "Id": "edge",
+          "Speaker": "Shamira",
+          "Text": "{n}She turns her head and looks at you for a while, and the colour that was coming back into her fingers stops coming.{/n}\n\"At the edge. With my back to you.\" {n}Very quietly.{/n} \"A coal from the edge of a fire is a poor coal, Golarian. I will be cold by noon, every day. My court will see it in my hands.\" {n}She stands, and walks to where the dream thins out at its border, and sits down on nothing, facing away.{/n} \"There. Your dreams are yours. I'm only the draught at the door.\" {n}Over her shoulder, not looking:{/n} \"Ask me to turn round, one day. I'll make you ask twice.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "coal",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": "Shamira"
@@ -289735,7 +289770,7 @@
               "Next": "grower",
               "Set": [],
               "Requires": [
-                "shamira.trickster.cost.grower_dead"
+                "shamira.trickster.cost.ramisa_story"
               ],
               "Forbids": [],
               "Abort": false
@@ -289746,7 +289781,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "shamira.trickster.cost.grower_dead"
+                "shamira.trickster.cost.ramisa_story"
               ],
               "Abort": false
             }
@@ -289756,7 +289791,7 @@
         {
           "Id": "grower",
           "Speaker": "Shamira",
-          "Text": "\"And the Street of Vats is in an uproar. Somebody killed Oshkuvar in his own cellar and nobody can find out who, and in the Fleshmarkets a murder nobody can sell is the most frightening thing there is.\" {n}She is purring.{/n} \"Sarzaksys has put a price on the killer's head. It is a very flattering price. I thought about claiming it, just to see his face.\"",
+          "Text": "\"And Ramisa is telling our story.\" {n}She is not purring.{/n} \"At every sale. With names. 'The clown who stole a body from my garden for the woman the clown had killed.' Her customers adore it. Two of my own courtiers have asked me whether I've heard it.\" {n}A pause.{/n} \"I am going to find where that marilith keeps her real body, one day, and plant something in it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -289779,7 +289814,7 @@
               "Next": "grower",
               "Set": [],
               "Requires": [
-                "shamira.trickster.cost.grower_dead"
+                "shamira.trickster.cost.ramisa_story"
               ],
               "Forbids": [],
               "Abort": false
@@ -289790,7 +289825,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "shamira.trickster.cost.grower_dead"
+                "shamira.trickster.cost.ramisa_story"
               ],
               "Abort": false
             }

@@ -14,7 +14,7 @@ her to her lady's throne. The Commander may stand where she can see, refuse her 
 Nothing here harms Nocticula; the throne is a wish, and the epilogue keeps it one.
 """
 from story_format import c
-from storylines.shamira_trickster import (ALLY, BARRACKS, CAST_OUT, CITY, CLOSED, COMMITTED, EMBODIED, GAME, GROWER_DEAD,
+from storylines.shamira_trickster import (ALLY, BARRACKS, CAST_OUT, CITY, CLOSED, COMMITTED, EMBODIED, GAME, RAMISA_STORY,
                                            KEPT, LIED_HER, LOST_GAME, NOCT_HIDING, NOT_NOCT, P, READ, SOCOTH_GONE, STAND,
                                            THREW_OUT, THRONE, TORN, VISITED, WHISPER, nar, sh)
 from storylines.shamira_trickster import page as _page
@@ -41,6 +41,7 @@ LIVE = (CLOSED, KEPT, CAST_OUT)
 # --- The first night of company: the cost, in play ---------------------------------------------------------------------
 
 FIRST_COMPANY = P + "first_company"
+EDGE = P + "terms.edge"                 # the Commander renegotiated: she sits at the edge, back turned, and is colder for it
 
 page(P + "after.first_company", "Company", [
     nar("start", '''{n}The first night after she walked out of your wardrobe, you are almost afraid to sleep. You lie a long time listening to the camp, and then, without deciding to, you are dreaming.{/n}''',
@@ -64,7 +65,11 @@ page(P + "after.first_company", "Company", [
 "This is how it will be. Every night. I will come in out of the cold, and I will sit down in whatever you are dreaming, and I will warm my hands, and I will take one coal home with me. You will not always see me. You will always know." {n}She looks at you sidelong.{/n} "Is it very terrible?"''',
         c('"Yes."', "yes", flags=(FIRST_COMPANY,)),
         c('"No."', "no", flags=(FIRST_COMPANY,)),
-        c("[Say nothing. Hold your hands out beside hers.]", "hands", flags=(FIRST_COMPANY,))),
+        c("[Say nothing. Hold your hands out beside hers.]", "hands", flags=(FIRST_COMPANY,)),
+        c('"Then sit at the edge, with your back to me. Take the coal and leave my dreams to me."', "edge", flags=(FIRST_COMPANY, EDGE))),
+    sh("edge", '''{n}She turns her head and looks at you for a while, and the colour that was coming back into her fingers stops coming.{/n}
+"At the edge. With my back to you." {n}Very quietly.{/n} "A coal from the edge of a fire is a poor coal, Golarian. I will be cold by noon, every day. My court will see it in my hands." {n}She stands, and walks to where the dream thins out at its border, and sits down on nothing, facing away.{/n} "There. Your dreams are yours. I'm only the draught at the door." {n}Over her shoulder, not looking:{/n} "Ask me to turn round, one day. I'll make you ask twice."''',
+        c("Continue", "coal")),
     sh("yes", '''"Good." {n}Without heat.{/n} "It should be. I took something from you that nobody gets back. If you told me it was nothing, I would know you were lying, and I would have to think less of you." {n}She warms her hands a while longer. Then, not looking at you:{/n} "I will try to be quiet. Some nights."''',
         c("Continue", "coal")),
     sh("no", '''"Liar." {n}But she does not sound as if she minds.{/n} "You'll tell me the truth one night when you're tired, and I will already know it, and we'll both pretend it's news." {n}She warms her hands a while longer.{/n} "Until then, say no. It's a nice sound. Nobody has said no to me in that voice before."''',
@@ -91,13 +96,13 @@ page(P + "after.city", "Who sat in my chair", [
         c('"You were meant to be dead. People will talk."', "talk"),
         c('"You\'re cruel, Shamira."', "cruel")),
     sh("talk", '''"People will talk to me. That is a different thing." {n}A soft laugh.{/n} "I have not told anyone my name. I am simply sitting in my Harem again, in a face they know, and letting them wonder. Nobody in Alushinyrra will ask a woman on that throne who she is. It's much too dangerous to know."''',
-        c("Continue", "grower", requires=(GROWER_DEAD,)),
-        c("Continue", "lady", forbids=(GROWER_DEAD,))),
-    sh("grower", '''"And the Street of Vats is in an uproar. Somebody killed Oshkuvar in his own cellar and nobody can find out who, and in the Fleshmarkets a murder nobody can sell is the most frightening thing there is." {n}She is purring.{/n} "Sarzaksys has put a price on the killer's head. It is a very flattering price. I thought about claiming it, just to see his face."''',
+        c("Continue", "grower", requires=(RAMISA_STORY,)),
+        c("Continue", "lady", forbids=(RAMISA_STORY,))),
+    sh("grower", '''"And Ramisa is telling our story." {n}She is not purring.{/n} "At every sale. With names. 'The clown who stole a body from my garden for the woman the clown had killed.' Her customers adore it. Two of my own courtiers have asked me whether I've heard it." {n}A pause.{/n} "I am going to find where that marilith keeps her real body, one day, and plant something in it."''',
         c("Continue", "lady")),
     sh("cruel", '''"Yes." {n}No shame at all, only amusement that you felt the need to say so.{/n} "I was cruel before you killed me, and I am cruel now, and in between I spent a week behind your eyes, being kind to you, because you were the only thing in there with me. Don't mistake a week for a nature, Golarian."''',
-        c("Continue", "grower", requires=(GROWER_DEAD,)),
-        c("Continue", "lady", forbids=(GROWER_DEAD,))),
+        c("Continue", "grower", requires=(RAMISA_STORY,)),
+        c("Continue", "lady", forbids=(RAMISA_STORY,))),
     sh("lady", '''"And she knows." {n}The voice changes, as it always does when she comes to this.{/n} "My lady. She has not come. She has not sent. But the glabrezu's guards stepped aside for me as if they had been told to, and on the first night a black silk pillow was on my throne that I did not put there." {n}Silence.{/n} "She is letting me. As she always did. She is letting me want her chair and sit in mine, and she is watching to see what I do."''',
         c("Continue", "hiding", requires=(NOCT_HIDING,)),
         c("Continue", "attends", requires=(NOCT_WILL_ATTEND,), forbids=(NOCT_HIDING,)),

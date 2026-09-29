@@ -219,8 +219,8 @@ internal static class ShamiraTricksterTests
         check(street[0].Requires.Contains(P + "veil") && street[1].Requires.Contains("trickster.stealth_tier1") && street[2].Forbids.Contains("trickster.stealth_tier1"),
             "The theft's easier roads are not gated on the veil and the chosen Stealth trick.");
         var stolen = Program.Walk(heist, Later(story, n1, 25)).ToList();
-        check(stolen.All(r => r.Has(P + "shell")) && stolen.Any(r => r.Has(P + "cost.shell_torn")) && stolen.Any(r => r.Has(P + "cost.grower_dead"))
-              && stolen.Any(r => r.Has(P + "grower_fooled")), "Every road through the vats does not end with a shell, or a cost is missing.");
+        check(stolen.All(r => r.Has(P + "shell")) && stolen.Any(r => r.Has(P + "cost.shell_torn")) && stolen.Any(r => r.Has(P + "cost.ramisa_story"))
+              && stolen.Any(r => r.Has(P + "ramisa_fooled")), "Every road through the vats does not end with a shell, or a cost is missing.");
         var alone = World(story, 5, "trickster", "trickster.ever", Primed, P + "veil");
         check(Avail(heistAlone, Later(story, alone, 13)) && heistAlone.Forbids.Contains(Killed) && heistAlone.Kind == "event",
             "Trk_Shamira_Prepared: the body cannot be stolen before the kill, on Socothbenoth's veil.");

@@ -28,12 +28,12 @@ fire, flees into the one mind she was ever let into: the Commander's. Earned: th
 Harem (the native answers above, or the authored open mind of ch4.read), and at the briefing leaves that door open on
 purpose; a Commander who never let her in may open it for the first time there, blind, which is a real risk. Unprimed,
 she grabs the mind of the one who killed her anyway, and is drowning in it by the first rest: the Commander makes room,
-on worse terms, or lets her go under. The shell is stolen from a Fleshmarkets grower (shamira_mind); she walks out of
+on worse terms, or lets her go under. The shell is stolen from Ramisa's hothouse in the Fleshmarkets (shamira_mind); she walks out of
 the Commander's dream into it, and it lives on the Commander's dreams. The cost: the Commander never dreams alone again.
 The commit is her game, "think of anything but me", lost on purpose (shamira_dream).
 
-Authored, and labelled as authored: a dying demon's self fleeing into a mind it has been let into; the grown shells and
-their grower; the road from the Drezen wardrobe through the Council chamber to Socothbenoth's house in Alushinyrra; the
+Authored, and labelled as authored: a dying demon's self fleeing into a mind it has been let into (Shamira calls it a
+whisper of her court, never tested); Ramisa's hothouse of grown shells (she is canon, the hothouse is not); the road from the Drezen wardrobe through the Council chamber to Socothbenoth's house in Alushinyrra; the
 fire the syphon kept; the Commander's dreams as the only fire a stolen shell will take.
 
 Delivery. No Shamira blueprint carries a dialog component (66e12264, ec9802dd and 4b7429fa checked), and on a Trickster
@@ -117,8 +117,8 @@ READ_ALL = P + "cost.read_all"        # she went through everything in the Comma
 NIGHT1 = P + "first_night"
 SHELL = P + "shell"
 TORN = P + "cost.shell_torn"
-GROWER_DEAD = P + "cost.grower_dead"
-GROWER_FOOLED = P + "grower_fooled"
+RAMISA_STORY = P + "cost.ramisa_story"     # Ramisa Sloughed Skin owns the story of the theft, with names
+RAMISA_FOOLED = P + "ramisa_fooled"
 DREAM2 = P + "dreamed"
 FUEL = P + "fuel_set"
 BARRACKS = P + "cost.barracks"        # the evil demand met: a barracks' dreams for her fire
@@ -206,7 +206,7 @@ audience(P + "ch4.read", "An open mind", '[Open your mind to her] "Everyone in t
 "The war, the war, the war." {n}Her lip curls.{/n} "Every Golarian I have ever opened is furnished entirely with the war. It is like visiting a man who owns one chair."''',
         c("Continue", "door")),
     conv("door", '''{n}She stops in the middle of you, as if she had found a window left open in a house she had thought was shut.{/n}
-"And you let me in. That is the part I cannot get over." {n}She sits up.{/n} "Understand where you are, Golarian. A demon who dies here, in the Abyss, stays dead. No priest calls us back. No judge weighs us. The Abyss is a mouth, and it swallows its own. There is exactly one kind of door out of that mouth, and it is a mind that has already been opened to us." {n}Her laughter is low and delighted.{/n} "And you just opened yours to me, in front of my court, for fun."''',
+"And you let me in. That is the part I cannot get over." {n}She sits up.{/n} "Understand where you are, Golarian. A demon who dies here, in the Abyss, stays dead. No priest calls us back. No judge weighs us. The Abyss is a mouth, and it swallows its own." {n}She considers you.{/n} "In my court they whisper that a mind already opened to one of us is a door out of that mouth. Nobody I know has lived to say whether it is true. I have always meant to find out, on someone else." {n}Her laughter is low and delighted.{/n} "And you just opened yours to me, in front of my court, for fun."''',
         c('"Is that a threat?"', "dreams"),
         c('"Then I\'ll know where to find you."', "dreams")),
     conv("dreams", '''{n}She goes deeper, idly, the way a bored woman turns the pages of a book she has already decided not to buy, and then she finds something she does like. Her breath catches, very slightly.{/n}
@@ -312,11 +312,11 @@ SCENES.append(scene(P + "killed.setup", "What's left of her", "Shamira", 5,
     conv("story", '''"And afterwards, I want to hear about it. Every detail. In the closet." {n}He is already enjoying it.{/n} "Or you'll come back with a stranger in your head and no story at all, and I will have to make one up, and mine are always filthier."''',
         c('"While you\'re lending me spells: I\'ll need one more closet. Into the Fleshmarkets."', "market"),
         c('"And the closet you\'re lending me. How does that work, exactly?"')),
-    conv("market", '''"The Fleshmarkets!" {n}He actually sways.{/n} "Where do you think sinful silks come from, darling? I have a wardrobe in a house on the Street of Vats. The house belongs to a grower. He grows bodies, for princes who like to change their clothes, and he keeps them hanging in brine like good coats." {n}He studies you.{/n} "A voice in your head is a lodger. A voice in a body is a guest. You want a guest."''',
+    conv("market", '''"The Fleshmarkets!" {n}He actually sways.{/n} "Where do you think sinful silks come from, darling? I keep a wardrobe by the bone-carvers' stalls, and under the last stall is Ramisa's hothouse. Ramisa Sloughed Skin, the marilith who only ever shows up as a picture of herself. She grows her custom orders down there in the dark, the way she used to grow her screaming little plants: planted in something dead, and watered, until they sit up." {n}He studies you.{/n} "A voice in your head is a lodger. A voice in a body is a guest. You want a guest."''',
         c('"I want a body nobody will miss."', "veil"),
         c('"I want to see what your wardrobe looks like."', "veil")),
-    conv("veil", '''"Then you'll have my veil for that too. The same spell. It keeps you hidden from eyes and ears. Mind the grower's nose; I never could do anything about noses." {n}He lays two fingers on your forehead, and they are cold and smell of violets.{/n}
-"Go through your own wardrobe in Drezen to my Council, and through my Council to my house in the city, and down to the vats. Steal something beautiful. And bring me back the story."''',
+    conv("veil", '''"Then you'll have my veil for that too. The same spell. It keeps you hidden from eyes and ears. Mind her mandragoras; I never could do anything about plants." {n}He lays two fingers on your forehead, and they are cold and smell of violets.{/n}
+"Go through your own wardrobe in Drezen to my Council, and through my Council to my house in the city, the way I came to you with my closet on my back. Steal something beautiful. And bring me back the story."''',
         c('"And the closet you\'re lending me for tonight. How does that work, exactly?"', flags=(VEIL,))),
 ], requires=("trickster", PLAN), forbids=(PRIMED, KILLED, MADE_ROOM), last=5, Relationship=REL, Chapters=[5],
     AnswerLists=[BRIEFING], NativeReturnCue=BRIEFING_RETURN, EntryMythic="PlayerIsTrickster"))
@@ -373,7 +373,7 @@ def voice_nodes(place):
 {n}Then, brightly:{/n} "Now. Do you have my cauldron?"''',
         c('"About that closet into the Fleshmarkets..."', "market", forbids=(VEIL,)),
         c("[Say nothing.]"))
-    market = conv("market", '''"Oh! A body for her!" {n}He sways.{/n} "The house on the Street of Vats. A grower, darling: he grows bodies for princes who like to change their clothes, and hangs them in brine like good coats. I keep a wardrobe there. Go through your own in Drezen to my Council, through my Council to my house in the city, and down to the vats." {n}Two cold fingers on your forehead, smelling of violets.{/n} "My veil, for the stealing. Mind his nose. Bring me the story."''',
+    market = conv("market", '''"Oh! A body for her!" {n}He sways.{/n} "Ramisa's hothouse, darling, under the bone-carvers' stalls. Sloughed Skin grows her custom orders down there in the dark, planted in something dead and watered until they sit up. Go through your own wardrobe to my Council, through my Council to my house in the city, and down." {n}Two cold fingers on your forehead, smelling of violets.{/n} "My veil, for the stealing. Mind her mandragoras. Bring me the story."''',
         c("[Say nothing.]", flags=(VEIL,)))
     after_letter = nar("after", '''{n}The second heartbeat goes on beside yours in the dark. After a while its warmth is the only warm thing in the room, and you fall asleep with it, the way you would fall asleep beside someone.{/n}''',
         c("[Sleep.]"))
@@ -489,9 +489,9 @@ def epilogue(id, text, requires, forbids=(), paragraphs=()):
 
 
 SHELL_PARAGRAPHS = (
-    p('''{n}She wore the stolen body with a thin white seam across the collarbone where the grower's hook had torn it on the way out of the brine. She could have shaped it away; she was a succubus, and her face was whatever she said it was. She never did.{/n}''', requires=(TORN,)),
-    p('''{n}The Fleshmarkets never learned who had killed the grower in the Street of Vats, and in the Fleshmarkets a murder nobody can sell is the only kind that frightens anyone. His vats stood empty for a year. Nobody would rent them.{/n}''', requires=(GROWER_DEAD,)),
-    p('''{n}The grower on the Street of Vats told the story of the night Socothbenoth's buyer came for a body for the rest of his long life, and never once suspected he had been robbed.{/n}''', requires=(GROWER_FOOLED,)),
+    p('''{n}She wore the stolen body with a thin white seam across the collarbone where the last root had torn it on the way out of the earth. She could have shaped it away; she was a succubus, and her face was whatever she said it was. She never did.{/n}''', requires=(TORN,)),
+    p('''{n}Ramisa Sloughed Skin told the story of the theft at every sale for a hundred years, with names, as she had promised: the clown who stole a body from her garden for the woman the clown had killed. It became her favourite. It sold a great many bodies. Shamira never forgave her for it, and never managed to find where she was hiding.{/n}''', requires=(RAMISA_STORY,)),
+    p('''{n}Ramisa Sloughed Skin sent Socothbenoth a bill for the tall woman with the long hands every season for the rest of his existence, and he paid none of them, because he had never ordered her, and she never once believed him.{/n}''', requires=(RAMISA_FOOLED,)),
     p('''{n}There had been less of her after the Commander's head than before. Nobody who had known her could have said what was missing: a song, perhaps, or a face she had once loved. She could not say either. It was the only thing she was ever afraid of.{/n}''', requires=(LATE,)),
 )
 
@@ -499,6 +499,7 @@ epilogue("kept", '''{n}The chroniclers of the Fifth Crusade agree that Shamira t
 {n}Nobody could say, afterwards, when a red-haired woman had first been seen in the Harem of Ardent Dream again. Only that she wore the room as if it had never been emptied, and that the light around her throne was dimmer than it had been, and did not wither anyone who looked at it.{/n}''',
     requires=(EMBODIED, COMMITTED), forbids=(CLOSED,), paragraphs=SHELL_PARAGRAPHS + (
         p('''{n}The Commander never dreamed alone again. Every night, wherever the Commander slept, she came: through the dragon and the bread and the barley, into the one warm room she knew, to keep her stolen body alive for another day. Some nights she only sat at the edge of the dream and watched. Some nights she did not. She never once asked.{/n}'''),
+        p('''{n}All that first year she kept to the edge of every dream, with her back turned, as the Commander had asked on the first night, and her hands were cold by noon, and her court whispered about it. Then, one night, the Commander asked her to turn round. She made the Commander ask twice.{/n}''', requires=(P + "terms.edge",)),
         p('''{n}The light around her throne came back brighter than anyone remembered, fed on a barracks of Mendevian soldiers who never dreamed again, and it withered whatever looked at it, as it always had. Of the men of that barracks, eleven deserted within the year, two hanged themselves, and one became a very great painter, and none of them could have said why.{/n}''', requires=(BARRACKS,)),
         p('''{n}She never stopped wanting her lady's throne. The Commander never helped her take it, and never tried to stop her, and stood where she could see, which was all she had asked.{/n}''', requires=(STAND,)),
         p('''{n}She wanted her lady's throne all her life, and the Commander told her to her face that no help would come from that quarter, not against Nocticula. She sulked for a decade. She stayed.{/n}''', requires=(NOT_NOCT,)),

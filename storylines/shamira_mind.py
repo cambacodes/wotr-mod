@@ -18,8 +18,8 @@ night, so the Commander never dreams alone again.
 from story_format import c
 from storylines import household
 from storylines.shamira_trickster import (BARRACKS, CAST_OUT, CLOSED, CRYSTALS, DREAM2, EMBODIED, FOUND, FUEL,
-                                           GROWER_DEAD, GROWER_FOOLED, HANDED, KEPT, KILLED, MASSACRE, NEVER_ALONE, NIGHT1,
-                                           NOCT_KNOWS, P, PRIMED, READ_ALL, REFUSED_BARRACKS, RETURNED, SECRET, SHELL,
+                                           HANDED, KEPT, KILLED, MASSACRE, NEVER_ALONE, NIGHT1,
+                                           NOCT_KNOWS, P, PRIMED, RAMISA_FOOLED, RAMISA_STORY, READ_ALL, REFUSED_BARRACKS, RETURNED, SECRET, SHELL,
                                            SOCOTH_GONE, STEALTH1, TASTED, TORN, VEIL, WHISPER, nar, sh)
 from storylines.shamira_trickster import page as _page
 
@@ -166,20 +166,27 @@ page(P + "mind.her_lady", "What her lady said", [
 ], requires=("trickster.ever", RETURNED, NIGHT1), forbids=(ASKED_LADY, EMBODIED) + LIVE, delay=36)
 
 
-# --- The theft of the shell: through Socothbenoth's closets to the Street of Vats -----------------------------------------
+# --- The theft of the shell: through Socothbenoth's closets to Ramisa's hothouse -----------------------------------------
 
 def heist(with_her):
-    """The theft. With her behind the Commander's eyes she guides (and chooses); alone (before the kill, on Socothbenoth's veil) the
-    Commander chooses. Every road ends with a shell hanging in the Commander's wardrobe."""
+    """The theft. With her behind the Commander's eyes she guides (and chooses); alone (before the kill, on Socothbenoth's
+    veil) the Commander chooses. Every road ends with a shell hanging in the Commander's wardrobe.
+
+    Canon: Ramisa Sloughed Skin, "a true artist of the slave trade" who takes "a custom order" (HologramSlaver/Cue_0003
+    dad3c081), trades only as a projection because "the allies, lovers, and masters of those I turned into fertilizer are
+    still searching for me", and grows mandragoras by watering a weed with demon blood "or if you plant it in a demon's
+    corpse" (Cue_0012 fe57b714, Cue_0013 11789a3f); her mandragora shrieks (Cue_0001 91c7dcb9); she thanks a Commander who
+    put the Fleshmarkets to the sword for two-thirds of the market (Cue_0002 c4eae284). Socothbenoth's closet goes from his
+    city to his Council (SocotAlush/Cue_0023 79a1910c). Authored: her hothouse, where the unclaimed custom orders grow."""
     def her(id, text, *choices):
         return sh(id, text, *choices) if with_her else nar(id, text, *choices)
 
     start = nar("start", ('''{n}She tells you the way herself, in the small hours, as if she were giving directions to a tailor.{/n} ''' + WHISPER +
-            '''"Your wardrobe. His Council. His house. The Street of Vats. I have seen him use those doors a hundred times; I read them out of his head one night he came sniffing at my lady's bedchamber. He has never once thought to wonder what I took from him."''') if with_her else
+            '''"Your wardrobe. His Council. His house. The Fleshmarkets. I have seen him use those doors a hundred times; I read them out of his head one night he came sniffing at my lady's bedchamber. He dragged a closet round my city for years and thought nobody noticed."''') if with_her else
             '''{n}Socothbenoth's veil is still on you. You can feel it when you move: a coolness at the edge of things, like walking in the shade of a building that is not there. The cauldron is not full yet. The boudoir is still ahead of you. But a body takes stealing, and stealing takes a night, and you have a night.{/n}''',
         c("Continue", "wardrobe"))
     wardrobe = nar("wardrobe", '''{n}You step into the wardrobe in your quarters in Drezen, between a coat and a spare cloak, and close the door on yourself, and open it again onto the Council chamber: the long table, the empty chairs, the smell of old wine and older schemes. Nobody is there. The candles are burning anyway.{/n}
-{n}Behind the chair where Socothbenoth sits there is a narrow door lacquered in purple, with a handle shaped like a lady's hand. You take the hand. It squeezes back.{/n}''',
+{n}Behind the chair where Socothbenoth sits there is the other door, the one he came through from Alushinyrra with his closet on his back: lacquered in purple, with a handle shaped like a lady's hand. You take the hand. It squeezes back.{/n}''',
         c("Continue", "house_gone", requires=(SOCOTH_GONE,)),
         c("Continue", "house", forbids=(SOCOTH_GONE,)))
     house = nar("house", '''{n}Socothbenoth's house in Alushinyrra is all wardrobes. They stand in every room, in rows, like soldiers, and every one of them is full of silk, and every one of them has a keyhole at exactly the height of a curious eye. Something in one of them sighs as you pass. You do not stop to find out what.{/n}
@@ -188,73 +195,73 @@ def heist(with_her):
     house_gone = nar("house_gone", '''{n}Socothbenoth's house in Alushinyrra is all wardrobes, and all of them are shut. Dust sheets over the chairs. A bowl of fruit gone to black liquor on a sideboard. Wherever the Silken Sin is tonight, and whoever he is a guest of, he has not been home, and his closets have gone on opening without him.{/n}
 {n}Out through a side door, and the city takes you: hot purple night, a sky with no stars, the smell of incense and blood and sugar.{/n}''',
         c("Continue", "market"))
-    market = nar("market", '''{n}The Fleshmarkets never close. At this hour the auction blocks are empty and the pens are full, and the traders sit on their stools drinking something that steams and counting coin by the light of the cages. A dretch is being sold for scrap. A pair of succubi argue over the price of a man's voice, which is apparently something you can buy here separately.{/n}
-{n}The Street of Vats is at the back, where the gutters run warm.{/n}''',
+    market = nar("market", '''{n}The Fleshmarkets never close. At this hour the auction blocks are empty and the pens are full, and the traders sit on their stools drinking something that steams and counting coin by the light of the cages. A dretch is being sold for scrap. A pair of succubi argue over the price of a man's voice, which is apparently something you can buy here separately.{/n}''',
         c("Continue", "remembered", requires=(MASSACRE,)),
         c("Continue", "street", forbids=(MASSACRE,)))
     remembered = nar("remembered", '''{n}The market has been rebuilt since you last came through it with your sword out. The new stalls are cleaner, the new guards more numerous, and on the post by the gate somebody has nailed a crude drawing of your face with an obscene suggestion scratched underneath. It is not a bad likeness.{/n}
-{n}You pull your hood lower. The Street of Vats is at the back, where the gutters run warm.{/n}''',
+{n}Half the new stalls fly the same small banner: a green shoot, sprouting from a skull. The marilith who thanked you for the massacre has been busy.{/n}''',
         c("Continue", "street"))
-    street = her("street", ('''"Third house past the gibbet. The one with the green lamp." {n}Her voice is brisk now, almost cheerful: a woman back in her own city, even if it is only through your eyes.{/n} "Oshkuvar. A nalfeshnee. Fat, pious and very good. He grew bodies for half my court when they got bored of their faces. He sleeps with one eye open and the other one in a jar by the bed, so mind the jar."''') if with_her else
-            '''{n}The house on the Street of Vats is the one Socothbenoth described: a green lamp over the door, a gibbet two doors down with nothing on it tonight, and a smell coming out of the cellar grilles like a butcher's shop that has been rinsed in rosewater. A wooden sign over the lintel shows a naked figure with no face, and under it, in three demonic scripts, a single word: BESPOKE.{/n}''',
+    street = her("street", ('''"Ramisa's." {n}Her voice is brisk now, almost cheerful: a woman back in her own city, even if it is only through your eyes.{/n} "Sloughed Skin. The marilith who sells you a projection and delivers afterwards. Everyone thinks her goods are kept somewhere far away. They're kept under the bone-carvers' stalls, in a hothouse, growing. I know, because she grew two bodies for my court when they got bored of their faces." {n}A pause.{/n} "She was a gardener, once. She still is."''') if with_her else
+            '''{n}Socothbenoth's directions bring you to the back of the market, where the bone-carvers work, and to a trapdoor under the last stall that smells of wet earth and something sweet gone bad. "Ramisa's hothouse," he said. "She sells you a projection and grows the goods to order, darling, in the dark, the way she used to grow her little screaming plants. I buy my silks next door."{/n}''',
         c("[Stealth: slip in under Socothbenoth's veil.]", requires=(VEIL,),
           check=dict(Skill="SkillStealth", DC=22, Success="inside", Failure="woken", CommanderOnly=True)),
         c("[Stealth: slip into shadow, the way the Trickster does.]", requires=(STEALTH1,), forbids=(VEIL,),
           check=dict(Skill="SkillStealth", DC=26, Success="inside", Failure="woken", CommanderOnly=True)),
         c("[Stealth: go in quietly.]", forbids=(VEIL, STEALTH1),
           check=dict(Skill="SkillStealth", DC=32, Success="inside", Failure="woken", CommanderOnly=True)))
-    inside = nar("inside", '''{n}The cellar is long and low and lit green. Down both walls, in vats of cloudy brine as tall as a man, the bodies hang on hooks through the shoulders, like coats in a good tailor's back room. Men, women, things that are neither, horned and hornless, winged and bare. Their eyes are shut. Their chests do not move. None of them has ever been anybody.{/n}
-{n}At the far end, behind a curtain, something vast snores.{/n}''',
+    inside = nar("inside", '''{n}The hothouse is long and low and lit green. Down both walls, in beds of black earth, the orders grow: bodies, half-buried, their roots going down into the soil and into whatever is rotting under it. Men, women, things that are neither. Some are only a pale shape in the dirt. Some are finished, sitting up to the waist in the earth, eyes shut, chests still. None of them has ever been anybody. They were planted in something dead, and watered, and they grew.{/n}
+{n}Along the aisle, in pots, stand Ramisa's mandragoras, wrinkled and asleep. You do not step near them.{/n}''',
         c("Continue", "choose"))
-    choose = her("choose", ('''"Not that one. Not that one; look at the knees. That one's hips were grown in a hurry." {n}She is shopping, you realise, with the unhurried contempt of a woman who has shopped in this street before, and despite everything she is enjoying it.{/n}
-"There. The tall one, at the end, with the long hands. The skin is good. The bones are better. It will do, until I can afford something worthy of me."''') if with_her else
-            '''{n}You walk the rows like a buyer. You do not know what she would want. You know only what she was: tall, on her throne, burning, her hand long and white against the red of her hair when she waved you away.{/n}
-{n}At the end of the row hangs a tall woman with long hands, faceless as a dressmaker's dummy. You choose her.''' + '''{/n}''',
-        c("[Thievery: open the vat's seal without waking the house.]",
+    choose = her("choose", ('''"Not that one. Not that one; look at the knees. That one was pulled early." {n}She is shopping, you realise, with the unhurried contempt of a woman who has shopped here before, and despite everything she is enjoying it.{/n}
+"There. The tall one, at the end, with the long hands. Somebody ordered her and never paid; you can tell by the weeds. The skin is good. The bones are better. It will do, until I can afford something worthy of me."''') if with_her else
+            '''{n}You walk the beds like a buyer. You do not know what she would want. You know only what she was: tall, on her throne, burning, her hand long and white against the red of her hair when she waved you away.{/n}
+{n}At the end of the row, up to her hips in the black earth, sits a tall woman with long hands, faceless as a dressmaker's dummy, the weeds grown high round her as if nobody has come for her in a long time. You choose her.{/n}''',
+        c("[Thievery: cut her roots without waking the house.]",
           check=dict(Skill="SkillThievery", DC=24 if with_her else 30, Success="clean", Failure="shriek", CommanderOnly=True),
           flags=() if with_her else (CHOSE_ALONE,)))
-    shriek = nar("shriek", '''{n}The seal is warded. Of course the seal is warded. It gives under your fingers and, as it gives, it screams: a thin, high, furious sound like a kettle left on in hell.{/n}
-{n}Behind the curtain the snoring stops.{/n}''',
+    shriek = nar("shriek", '''{n}The root is warded. Of course it is. It parts under your knife and, as it parts, every mandragora in the aisle wakes and screams: a thin, high, furious sound like a kettle left on in hell.{/n}''',
         c("Continue", "woken"))
-    woken = nar("woken", '''{n}He comes through the curtain on all fours and then rises, and keeps rising: a nalfeshnee in a nightshirt, all tusks and belly and bristle, with one small wet eye in his face and an empty socket where the other should be. The other is in a jar in his fist. He holds it up and turns it towards you so that it can see too.{/n}
-"Thief," {n}says the grower, in a voice like a cart going over gravel.{/n} "In my vats. In my own vats. At this hour."''',
+    woken = nar("woken", '''{n}Between one scream and the next the aisle is full of marilith: a translucent, towering shape, six arms and a long coiled tail, lit from inside like a lantern, with a shriveled mandragora clutched to her breast. She is not here. She never is. It makes her no less frightening.{/n}
+"A thief," {n}says Ramisa Sloughed Skin, delighted.{/n} "In my garden. Among my orders. At this hour."''',
         c("Continue", "recognised", requires=(MASSACRE,)),
         c("Continue", "caught", forbids=(MASSACRE,)))
-    recognised = nar("recognised", '''{n}The eye in the jar blinks at you. The grower's small real eye narrows.{/n} "I know you. You're the Golarian who put the market to the sword. They nailed your face to the gate." {n}He sounds, if anything, respectful.{/n} "What does a butcher want with a bespoke body?"''',
+    recognised = nar("recognised", '''{n}The projection leans down to look at your face, and her smile widens.{/n} "Oh. Oh, it's you. My {mf|benefactor|benefactress}. You cleared the worms out of my market with your sword and made me mistress of two-thirds of it, and now you come back at night to rob me." {n}She sounds moved.{/n} "That's not theft. That's a story."''',
         c("Continue", "caught"))
-    caught = her("caught", ('''"Kill him." {n}Her voice in your head is perfectly calm.{/n} "Or lie to him. He is stupid and devout; Socothbenoth's name will open him like a clam. Or run, and tear the body on the way out, and I will wear the tear for the rest of my life and never let you forget it. Choose, Golarian. He's working up to shouting."''') if with_her else
-            '''{n}He is working up to shouting. You can see it in the way the bristles on his neck rise, one after another, like a field of wheat in a wind.{/n}''',
-        c("[Kill him before he shouts.]", "killed"),
+    caught = her("caught", ('''"You can't kill her. She isn't here." {n}Her voice in your head is perfectly calm.{/n} "Lie to her. She is vain and she trades with Socothbenoth; his name will open her like a clam. Or pay her in the only coin she likes: tell her what the body is for. She collects stories. Or run, and tear the body on the way out, and I will wear the tear for the rest of my life. Choose, Golarian. She's working up to calling her hunters."''') if with_her else
+            '''{n}She is working up to calling her hunters. You can see it in the way the mandragora in her arms has stopped screaming and started to smile.{/n}''',
+        c("[Tell her the truth about what the body is for.]", "story"),
         c('[Bluff] "Easy. Socothbenoth sent me. He likes them fresh, and he doesn\'t like waiting."',
           check=dict(Skill="CheckBluff", DC=26, Success="fooled", Failure="run")),
-        c("[Grab the shell off its hook and run.]", "run"))
-    killed = nar("killed", '''{n}He is slow, and old, and he has never had to fight in his own cellar. It is ugly and quick and very nearly quiet. When it is done, the eye in the jar is still looking at you. You turn it to face the wall.{/n}''' + (
-        ''' ''' + WHISPER + '''"Well done. He grew my second face, you know. It was a very good face. I shall miss it more than him."''' if with_her else ""),
-        c("[Lift the shell out of the brine.]", "home", flags=(SHELL, GROWER_DEAD)))
-    fooled = nar("fooled", '''{n}At the Silken Sin's name the grower's whole vast body relaxes, like a tent when the pole comes out.{/n} "Ohhh. Him. At this hour, always at this hour." {n}He sets the jar with his eye in it on a shelf and, grumbling, wraps the body in oiled silk himself, with care, the way a good tailor wraps a suit.{/n} "Tell him it's on account. Tell him I want the last one back; he never returns them."''' + (
+        c("[Tear the body out of the earth and run.]", "run"))
+    story = nar("story", ('''{n}You tell her. A dead woman behind your eyes, a demon lord's errand, a body for the rest of her. The projection listens with all six hands pressed together under her chin, and the mandragora listens too.{/n}
+"A shell for a ghost, stolen from my garden by the one who made her a ghost." {n}Ramisa sighs, the way a patron of the arts sighs at a good play.{/n} "Take her. The body is paid for. The story is mine now, and I shall tell it at every sale for a hundred years. With names."''') if with_her else
+            '''{n}You tell her. A woman you have not yet killed, a demon lord's errand, a body for what will be left of her. The projection listens with all six hands pressed together under her chin.{/n}
+"You've come shopping for a corpse that isn't dead yet." {n}Ramisa sighs, the way a patron of the arts sighs at a good play.{/n} "Take her. The body is paid for. The story is mine now, and I shall tell it at every sale for a hundred years. With names."''',
+        c("[Lift the shell out of the earth.]", "home", flags=(SHELL, RAMISA_STORY)))
+    fooled = nar("fooled", '''{n}At the Silken Sin's name the projection's whole towering length relaxes, coil by coil.{/n} "Ohhh. Him. At this hour, always at this hour." {n}Two of her six hands wave, and the mandragoras fall silent, and the tall woman comes up out of the earth on her own, roots and all, and folds into your arms like washing.{/n} "Tell him it's on account. Tell him I want the last one back; he never returns them."''' + (
         ''' ''' + WHISPER + '''"I could kiss you. I will not, because you don't have a body worth it yet. But I could."''' if with_her else ""),
-        c("[Carry it out under your arm.]", "home", flags=(SHELL, GROWER_FOOLED)))
-    run = nar("run", '''{n}You rip the body off its hook. The hook does not want to let go; it tears through the white skin at the collarbone with a sound like wet canvas, and then you are out through the curtain with a naked woman's weight over your shoulder, and the grower's roar behind you shaking brine out of the vats.{/n}
+        c("[Carry her out.]", "home", flags=(SHELL, RAMISA_FOOLED)))
+    run = nar("run", '''{n}You tear the body out of the earth. The roots do not want to let go; the last of them rips through the white skin at the collarbone with a sound like wet canvas, and then you are up through the trapdoor with a naked woman's weight over your shoulder, and the mandragoras' scream and Ramisa's laughter coming up behind you like smoke.{/n}
 {n}The Fleshmarkets see a Golarian running with a body. The Fleshmarkets see that every night. Nobody stops you.{/n}''' + (
         ''' ''' + WHISPER + '''"My collarbone. You tore my collarbone. I haven't even got it yet and you've torn it."''' if with_her else ""),
         c("Continue", "home", flags=(SHELL, TORN)))
-    clean = nar("clean", '''{n}The seal gives with a sigh, not a scream. You lift the body out of the brine, and it is heavier than you expected, and colder, and it hangs over your shoulder as limp as wet washing. Behind the curtain the snoring does not change.{/n}''' + (
+    clean = nar("clean", '''{n}The root parts with a sigh, not a scream. You lift the body out of the black earth, and it is heavier than you expected, and colder, and it hangs over your shoulder as limp as wet washing. Along the aisle the mandragoras sleep on.{/n}''' + (
         ''' ''' + WHISPER + '''"Gently. Gently! That's my hip you're holding."''' if with_her else ""),
         c("Continue", "home", flags=(SHELL,)))
-    home = nar("home", '''{n}Back up the Street of Vats. Back through Socothbenoth's side door, past the rows of listening wardrobes. Through the purple door behind his chair, through the empty Council with its candles burning for nobody, and out of your own wardrobe in Drezen, into your own quarters, a little before morning.{/n}
+    home = nar("home", '''{n}Back up through the trapdoor. Back through Socothbenoth's side door, past the rows of listening wardrobes. Through the purple door behind his chair, through the empty Council with its candles burning for nobody, and out of your own wardrobe in Drezen, into your own quarters, a little before morning.{/n}
 {n}You hang her in the wardrobe, between your good coat and your spare cloak, and close the door on her. She looks, in there, like the best thing you own.{/n}''' + (
         ''' ''' + WHISPER + '''"Between your coats." {n}A long pause.{/n} "Socothbenoth would weep with joy."''' if with_her else
         '''
 {n}There is nobody in her yet. There is nobody anywhere, yet. You still have a woman to kill.{/n}'''),
         c("[Close the wardrobe.]"))
     return [start, wardrobe, house, house_gone, market, remembered, street, inside, choose, shriek, woken, recognised,
-            caught, killed, fooled, run, clean, home]
+            caught, story, fooled, run, clean, home]
 
 
-page(P + "mind.heist", "The Street of Vats", heist(True),
+page(P + "mind.heist", "The hothouse", heist(True),
      requires=("trickster.ever", RETURNED, FOUND, NIGHT1), forbids=(SHELL, EMBODIED) + LIVE, delay=24)
 
-page(P + "mind.heist_alone", "The Street of Vats", heist(False),
+page(P + "mind.heist_alone", "The hothouse", heist(False),
      requires=("trickster", "trickster.ever", PRIMED, VEIL), forbids=(SHELL, KILLED), delay=12, kind="event")
 
 
@@ -338,15 +345,15 @@ page(P + "mind.almost", "Almost", [
 # --- The fuel: what wakes a body (the pivotal choice, her evil demand) ------------------------------------------------------
 
 page(P + "mind.fuel", "What wakes a body", [
-    nar("start", '''{n}You open the wardrobe, and there she hangs between your coats: the stolen body, pale and faceless, long-handed, still smelling faintly of brine. You put your hand on its chest, where a heart would be, and for a while you both look at it: you with your eyes, and she with them too.{/n}''',
+    nar("start", '''{n}You open the wardrobe, and there she hangs between your coats: the stolen body, pale and faceless, long-handed, still smelling faintly of black earth. You put your hand on its chest, where a heart would be, and for a while you both look at it: you with your eyes, and she with them too.{/n}''',
         c("Continue", "torn", requires=(TORN,)),
         c("Continue", "chosen", requires=(CHOSE_ALONE,), forbids=(TORN,)),
         c("Continue", "good", forbids=(TORN, CHOSE_ALONE))),
-    sh("torn", WHISPER + '''"Look at my collarbone." {n}There is a long white seam there where the hook tore it, like a split in fine leather.{/n} "I shall be able to shape the face, and the hair, and everything else a succubus can shape. That, I can already tell you, I shall not be able to shape away. You put it there. It's yours. I'll wear it for you every day, to remind you."''',
+    sh("torn", WHISPER + '''"Look at my collarbone." {n}There is a long white seam there where the last root tore it, like a split in fine leather.{/n} "I shall be able to shape the face, and the hair, and everything else a succubus can shape. That, I can already tell you, I shall not be able to shape away. You put it there. It's yours. I'll wear it for you every day, to remind you."''',
         c("Continue", "fire")),
-    sh("chosen", WHISPER + '''"You chose this." {n}She is looking at it the way a woman looks at a dress somebody else has bought her.{/n} "Alone, before you had even killed me, you went to the Street of Vats and walked the rows and picked a body for a woman you had spoken to twice. Tall. Long hands." {n}A strange pause.{/n} "It's the right one. I'd have chosen it. I have not decided whether that flatters me or frightens me."''',
+    sh("chosen", WHISPER + '''"You chose this." {n}She is looking at it the way a woman looks at a dress somebody else has bought her.{/n} "Alone, before you had even killed me, you went down into Ramisa's garden and walked the beds and picked a body for a woman you had spoken to twice. Tall. Long hands." {n}A strange pause.{/n} "It's the right one. I'd have chosen it. I have not decided whether that flatters me or frightens me."''',
         c("Continue", "fire")),
-    sh("good", WHISPER + '''"Good bones." {n}She says it the way a horse-trader says it, but her voice is not steady.{/n} "Good skin. The hands are right. Oshkuvar always did make hands well." {n}A pause.{/n} "It's empty, Golarian. It has never been anyone. When I go into it, it will be the first thing that ever happened to it."''',
+    sh("good", WHISPER + '''"Good bones." {n}She says it the way a horse-trader says it, but her voice is not steady.{/n} "Good skin. The hands are right. Ramisa always did grow hands well." {n}A pause.{/n} "It's empty, Golarian. It has never been anyone. When I go into it, it will be the first thing that ever happened to it."''',
         c("Continue", "fire")),
     sh("fire", '''"Now listen, because I will say this once and I will not soften it." {n}The voice in your head is very clear, very cold.{/n} "A body that has never been anyone does not wake because a soul walks into it. It is a cold hearth. You can put all the wood you like in a cold hearth; you still need a spark. Once, I was my own spark. The cauldron has my spark now."
 "I need fire. Dreams are fire. They are the only fire I know how to carry."''',
@@ -401,7 +408,7 @@ page(P + "mind.fuel", "What wakes a body", [
 # --- The waking: dreams for a body -------------------------------------------------------------------------------------
 
 page(P + "mind.waking", "Dreams for a body", [
-    nar("start", '''{n}You take the body down off its hook and lay it on the floor of the wardrobe, among your boots, with its head on a folded cloak. It is lighter than it was in the brine. It is very cold. Its face is smooth and blank, a sketch of a face, waiting.{/n}
+    nar("start", '''{n}You take the body down off its hook and lay it on the floor of the wardrobe, among your boots, with its head on a folded cloak. It is lighter than it was in the earth. It is very cold. Its face is smooth and blank, a sketch of a face, waiting.{/n}
 {n}You lie down beside it, and put your hand on its cold chest, and close your eyes.{/n}''',
         c("Continue", "walk")),
     nar("walk", '''{n}She goes out of you like heat goes out of an oven door: you cannot see it, but the dark behind your eyes shivers, and your face goes hot, and the smell of cinders and cinnamon fills the wardrobe until your eyes water. The second heartbeat that has lived beside yours since the boudoir falls quiet, a little at a time, like a bell after it has been struck.{/n}
@@ -433,7 +440,7 @@ page(P + "mind.waking", "Dreams for a body", [
         c("Continue", "risen_small", forbids=(BARRACKS, TORN))),
     nar("risen_barracks", '''{n}There is light around her. Not the old light, not the throne-light that withered the courtiers where they knelt, but a glow, low and hot, like embers under ash. It makes the coats on either side of her steam faintly. It makes your eyes ache to look at her, and you look anyway.{/n}''',
         c("Continue", "first_words")),
-    nar("risen_torn", '''{n}Where the coat falls open at the throat, you can see the seam: a thin white line across the collarbone where the hook tore her on the way out of the brine. Everything else about her she has made perfect. That, she has left.{/n}''',
+    nar("risen_torn", '''{n}Where the coat falls open at the throat, you can see the seam: a thin white line across the collarbone where the last root tore her on the way out of the earth. Everything else about her she has made perfect. That, she has left.{/n}''',
         c("Continue", "first_words")),
     nar("risen_small", '''{n}There is no light around her. There is only a woman in a coat, a tall red-haired woman with long hands, standing in a wardrobe door in the grey of the morning. She looks, as she never has since you met her, like something that could be killed. She looks as if she knows it.{/n}''',
         c("Continue", "first_words")),
