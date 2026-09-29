@@ -212,7 +212,7 @@ physical("konomi.trickster.dismissed.private", "Off the record", '"Business conc
 {n}She considers the offer the way she considers a treaty: from the end backwards.{/n}
 "That, Commander, I will take. And I will make you regret offering it every single week, in writing, in triplicate, with the capital copied in."''',
       c('[Accept the chair\'s terms] "Envoy, then. My door stays open."', flags=(ENVOY,))),
-    k("no", '''{n}The question lands somewhere she has not armoured. For a moment she looks tired, and much younger than her office.{/n}
+    k("no", '''{n}She sets the pen down and squares it with the edge of the ledger, exactly, before she answers.{/n}
 "What I want is not to be recalled by anyone. Not by Nerosyan. Not by you, from a wall, with a joke that turns roads round." {n}She picks up the fan again. It steadies her hand.{/n} "Give me a season, Commander. Then ask me again, and do not ask as a Trickster. Ask as someone who could be told no."''',
       c('[Let her decide] "Your call."', flags=(DECLINED,))),
     nar("threshold", '''{n}She looks at your hand in hers as if it were a clause she had drafted herself and was only now reading in fair copy.{/n}
