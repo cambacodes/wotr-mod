@@ -752,6 +752,7 @@ SCENES.append(scene(P + "epilogue.committed", "", "MielarahEpilogue", 6, "", [
             p("{n}Some nights, when she could not sleep, she would take the half of a split ironwood block out of the Commander's coat pocket and turn it over in her hands, and put it back.{/n}", requires=(D + "last_night",), forbids=(OSKEL_DEAD,)),
             p("{n}Thirty-nine soldiers of the crusade came home from the Worldwound in her forward hold, and every one of them, when they could walk again, came to the hospital yard to stand under her ship and wave their hats at it. She never once came down to them. She counted the hats.{/n}", requires=(D + "wounded_carried",)),
             p("{n}She flew into the Wound for thirty-six soldiers without the Commander, and brought them home, and wrote four names in her book. It was a long time before she let the Commander read that page.{/n}", requires=(D + "wounded_left",)),
+            p("{n}At the back of the book of her dead there was a page for the living, headed in her small hand: chose to stand there. It held one name for a long time. Later it held others, and she kept every one of them as carefully as the front.{/n}", requires=(D + "named",)),
             p("{n}And somewhere far below the clouds, patient as a man with all the time in the world, a spade went on digging for the Commander. It is digging still. It has not yet been allowed to finish.{/n}", requires=(NOTICED,)),
         )),
 ], requires=("trickster.ever", COMMITTED), forbids=(CLOSED, "sacrifice"),

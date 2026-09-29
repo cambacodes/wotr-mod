@@ -753,3 +753,63 @@ deck(D + "the_place", "The Commander's place", '"Why is your carpenter cutting u
 "It's in the right place," {n}she says, very softly, so that only you can hear, and does not take her hand away.{/n} "Don't let the carpenter hear you were joking. He has a temper."''',
        c("[Keep your eyes shut a moment longer.]", flags=(THE_PLACE,))),
 ], requires=(MORNING,), forbids=(THE_PLACE,), delay=24)
+
+
+
+# --- After the market: her book of the dead, and the page at the back (optional). ---------------------------------
+
+NAMES = D + "names"
+NAMED = D + "named"
+
+deck(D + "names", "Accurate records", '"You wrote his name down. The boy under the scaffold."', [
+    nar("start", '''{n}She did. You find her in her cabin with the lamp trimmed low and a book open on the chart table: a thick ledger bound in old sailcloth, its corners worn round, its spine mended twice with sail-twine. The pen lies beside it, parallel to the edge of the page.{/n}
+{n}She does not close it when you come in. That is new. You have watched her close her bill of lading over one finger a dozen times, to keep the place and to keep you out of it.{/n}
+"Aldo Venn," {n}she says, without looking up.{/n} "Apprentice to the mason on the east side of the square. Fourteen. He wanted to carry my rope because I was foreign and he had never seen an airship close to. His mother told me that. She told me a great deal, standing on the far side of the timber, and I wrote down all of it."''',
+        c("Continue", "book")),
+    mi("book", '''"You may look. I would rather you looked than stood there wondering whether you're allowed." {n}She turns the book round on the table so that it faces you.{/n}
+{n}The hand is the one you know from her letters, small and upright and very clear. Each entry has a line to itself, ruled in pencil: a name, a date by the Absalom calendar, a place, and a few words of manner. A steward: tea, the east stair, his neck. A first mate: lightning out of a clear sky, across the binnacle. A Pathfinder: a carriage horse, on her own step. A girl: apples.{/n}
+{n}There are pages of them. Near the front the ink has gone brown and the lines are crowded, as if they were written in a hurry by someone who expected to need the room. Later they spread out, one to a line, with space between, the hand of a woman who has understood that she will be doing this for the rest of her life and has decided to do it properly.{/n}''',
+       c("Continue", "column")),
+    nar("column", '''{n}Down the right-hand edge of every page, in fresher ink than the rest, runs a column that was not there when the pages were ruled. It has been squeezed into the margin afterwards, in a hand made even smaller than usual to fit.{/n}
+{n}Half a stride, on the stair below. Across the binnacle, an arm's length. The step below mine. Across the counter. At my elbow. At my elbow. At my elbow.{/n}
+{n}She has gone back through six years of her dead and written down where each of them was standing.{/n}''',
+        c('"When did you do this?"', "when"),
+        c("[Turn the pages. Say nothing.]", "pages")),
+    mi("when", '''"The week after I learned it had a rule. I sat up three nights with a lamp and my memory and went through them one at a time. Where was the steward? On the stair below me, with the tray. Where was my mate? Across the binnacle, leaning over the chart with me. The girl with the apples?" {n}She touches the page, very lightly, not quite on the ink.{/n} "Across a counter no wider than this table. I could have reached out and taken the apple from her hand."
+"Magisters are taught to record the observation first and the theory afterwards. I had six years of observations and no theory. Then I had a theory, and I had to go back and see whether my own records agreed with it." {n}A small, dry breath.{/n} "They did. Every page. I have never in my life wanted so badly to be wrong about a result."''',
+       c("Continue", "last")),
+    nar("pages", '''{n}You turn them. She lets you. The ship leans under the table, a long slow lean and back, and the lamp swings on its chain, and the columns of names swing with it.{/n}
+{n}Some entries carry more than the manner, a few words after, in the same hand. He owed me four silver and I never asked for it. She had a son in Kerse. I did not know his name until the inquest; I have added it. One line has been written, scored through, and written again underneath more neatly, as if the first attempt had not been accurate enough.{/n}
+{n}Toward the end the lines grow crowded again. These are the Midnight Isles: sailors, mostly, and dock hands, and a harbour clerk of Alushinyrra entered as the clerk with the green seal, name not known, enquiries made. Three times over, enquiries made.{/n}''',
+        c("Continue", "last")),
+    mi("last", '''{n}The newest entry is darker than the rest, the ink not yet gone matte. Aldo Venn, mason's apprentice. Drezen, the market square. A scaffold. He asked to carry my rope. And in the margin, in the new column: three strides; he stepped in.{/n}
+"He stepped in." {n}She reads it aloud, flatly, as if checking a figure against an instrument she does not trust.{/n} "Three strides was where I was keeping everyone. I had drawn the line on the cobbles in my head, and I kept it, and a boy who wanted to be kind to a stranger walked over it."
+"That is what the column cannot hold, Commander. I can write down where they stood. I cannot write down why they came closer. The steward came closer because I had asked for tea. Aldo came closer because he was fourteen."''',
+       c("Continue", "oskel", requires=(OSKEL_DEAD,)),
+       c("Continue", "space", requires=(MEANT,), forbids=(OSKEL_DEAD,)),
+       c("Continue", "blank", forbids=(OSKEL_DEAD, MEANT))),
+    mi("oskel", '''{n}She turns back a few pages, into the Midnight Isles, and lays a finger beside one line without touching it. Oskel, bosun. And in the margin, where every other line says where somebody was standing, his says: at my elbow; posted there.{/n}
+"Every other entry in this book says where they stood. His is the only one that says who put him there." {n}She does not say your name. She does not need to.{/n} "I wrote it the night after. I thought about leaving the column empty, the way I leave it for a stranger whose name I never learned. That would not have been accurate."''',
+       c("Continue", "last_page")),
+    mi("space", '''"Oskel is not in here." {n}She turns back a few pages, into the Midnight Isles, to a place where the ruled pencil lines leave a gap a little wider than the others.{/n} "But there is room for him. I didn't mean to leave it. I noticed afterwards, when I came to rule the next line, that my hand had left a space exactly the width of one name."
+"I'm not going to rub it out. It is an accurate record of something." {n}Her mouth tightens.{/n} "I only don't know what to call it yet."''',
+       c("Continue", "last_page")),
+    mi("blank", '''"There is nobody in here you put there." {n}She says it plainly, as a finding.{/n} "I went through every page to be sure. I wanted to know, before I let you any nearer, whether there was a line in this book with your hand on it."
+"There isn't. I'm glad of that. I'm also aware that it's only because nobody ever gave you the chance."''',
+       c("Continue", "last_page")),
+    mi("last_page", '''{n}She turns to the back of the book. The last leaf has been ruled like the rest, name and date and place, but the right-hand column has a heading, written in the new, small hand: chose to stand there.{/n}
+{n}Under the heading there is nothing at all.{/n}
+"The book is for the dead. But a magister should keep her records in one place, so I have given the living a page at the back." {n}She lays the pen beside it, parallel to the edge of the paper, and does not push it toward you.{/n} "I don't know yet whether it's a record or a superstition. That depends on whether anybody ever writes in it."''',
+       c("[Take the pen and write your name.]", "wrote", flags=(NAMES, NAMED)),
+       c('"Not yet. When I write in it, I want to have earned the column."', "later", flags=(NAMES,)),
+       c('"That page is yours to fill, not mine."', "hers", flags=(NAMES,))),
+    nar("wrote", '''{n}You write it. The pen is good and the paper takes the ink cleanly, and your hand is less steady than hers.{/n}
+{n}In the right-hand column you write nothing. The heading says it already.{/n}
+{n}Mielarah looks at it for a while without speaking. Then she takes the blotter and presses it down over your name, carefully, as if it could smudge, and lifts it, and closes the book.{/n} "Accurate records," {n}she says, and her voice is not steady at all.{/n}''',
+        c("[Leave her with the book.]")),
+    mi("later", '''"Earned." {n}She turns the word over like a coin of doubtful mint.{/n} "You read the rule in a tavern and walked into my circle on the cobbles, and you want to earn a column." {n}She almost smiles.{/n} "Very well. It will keep. Paper is patient. It is the only thing on this ship that is."''',
+       c("[Leave her with the book.]")),
+    mi("hers", '''{n}She looks at the empty page, and then at you, and something in her face gives very slightly, like a line easing under a load.{/n}
+"Mine." {n}She picks up the pen and holds it and does not write.{/n} "I have spent six years writing other people into the front of this book. It had not occurred to me that I might be allowed to write anyone into the back of it." {n}She closes the book over the pen, to keep the place.{/n} "Go on up, Commander. I want to think about who."''',
+       c("[Leave her with the book.]")),
+], requires=(MARKET,), forbids=(NAMES,), delay=12)
