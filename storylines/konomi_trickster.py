@@ -285,7 +285,7 @@ physical("konomi.trickster.dead.consultation", "Triple, in advance", '"You asked
 
 letter("konomi.trickster.never_arrived.accredited", "Deemed presented", [
     nar("start", '''{n}The war council sits. At the foot of the table there is a chair for Nerosyan's attaché, because on the day your council first sat you had one set for Nerosyan's attaché, a courtesy to the Crown that cost nothing, and the steward keeps a courtesy the way other men keep saints' days. Nobody has ever come to sit in it. Somebody has put a jug on it.{/n}
-{n}The steward sets her place anyway, every session: a cup, a pen, a sheet of the Crown's paper. He is a quiet old man who came with the Queen's household and has never once been asked to leave a room. He stands behind the empty chair through every council, and after every council, you have noticed, he climbs to the chancery dovecote with a slip of paper no clerk gave him. Nobody else has noticed. Nobody else has been watching him.{/n}''',
+{n}The steward sets her place anyway, every session: a cup, a pen, a sheet of the Crown's paper. He is a quiet old man who came with the Queen's household and has never once been asked to leave a room. He stands behind the empty chair through every council, and after every council, you have noticed, he climbs to the chancery dovecote with a slip of paper no clerk gave him. A week ago one of those slips fell from his sleeve on the chancery stair, and you picked it up before he could: the day's council, in a Nerosyan court hand, down to who had coughed. You gave it back to him without a word. You have been watching him since.{/n}''',
       c('[Bow to the empty chair, with the steward behind it] "Lady Konomi\'s credentials are hereby deemed presented. Someone tell her she\'s late for her own audience."',
         "nerosyan", mythic="Trickster", alignment=("Chaotic", 1)),
       c('[Move the jug and carry on.] "..."', abort=True)),
@@ -308,7 +308,7 @@ letter("konomi.trickster.never_arrived.accredited", "Deemed presented", [
    chapters=(3, 5), TricksterDevice=True, TricksterState="konomi.missed_contact_available")
 
 physical("konomi.trickster.never_arrived.audience", "Late for her own audience", '[Greet the woman in the attaché\'s office.]', [
-    k("start", '''{n}A kitsune in travelling silks is standing in the attaché's office, empty since Drezen fell, with a ledger under her arm, as if she had been there for an hour. She has.{/n}
+    k("start", '''{n}A kitsune in travelling silks is standing in the attaché's office, kept swept for an attaché who never came, with a ledger under her arm, as if she had been there for an hour. She has.{/n}
 "Lady Konomi, official attaché of Nerosyan. Here are my credentials." {n}She holds out her credentials. The ink on the date is two days old.{/n} "Though I understand they have already been presented. By you. To a jug."
 "I was halfway through a reception in Nerosyan when the Chancellor's clerk showed me his register. Column four: 'credentials presented, Drezen', entered on the strength of a report from our dovecote in your chancery. My people live everywhere, Commander. You are not supposed to be aware of it. One of them has stood behind that chair since your council first sat, and nobody in this city has ever looked at him twice. You looked. Then you used him to send me an invitation by my own post."
 "He is either richer or gone. I have not yet decided which of those I shall bill you for."
