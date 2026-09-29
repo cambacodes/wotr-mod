@@ -91,7 +91,7 @@ session(STUDIED, "Night reading", 3, '"You were in the shrine library until the 
         c('[Work out the rite the hard way, from the chaplain\'s commentary]', forbids=(CURE,),
           check={"Skill": "SkillLoreReligion", "DC": 18, "Success": "fit", "Failure": "not_yet"})),
     a("fit", '''{n}She reads over your shoulder for a long time, her lips moving on the old Desnan words.{/n}
-"One star, one night." {n}She sounds as though she is afraid to breathe on it.{/n} "Not a cure. A lamp you have to light every evening, and it only keeps one wolf off the road." {n}She straightens.{/n} "That's the first honest thing anyone has ever offered me. Everyone else offered me salvation."''',
+"One star, one night." {n}She sounds as though she is afraid to breathe on it.{/n} "Not a cure. A lamp you have to light every evening, and it only keeps one wolf off the road." {n}She straightens, and then does not seem to know what to do with her hands.{/n} "I don't trust it. Nobody's ever offered me something that small. I keep looking for the hook."''',
         c("[Close the books.]", flags=(STUDIED,))),
     a("not_yet", '''{n}She watches you turn back three pages, then five, then the whole commentary, and lose the thread each time.{/n}
 "You'll get there," she says. "Or you won't, and you'll have wasted a lot of candles on a demon." {n}She almost smiles.{/n} "Come back to it. I'll be here. I'm always watching."''', c()),
