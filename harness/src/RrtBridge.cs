@@ -35,6 +35,7 @@ namespace RRT.TestHarness
             ("Tirabade.Main+RouteAction", "RunAction", "instance-method()", "Void"),
             ("Tirabade.Story", "Scenes", "field", "List<Scene>"),
             ("Tirabade.Story", "Relationships", "field", "Dictionary<String,Relationship>"),
+            ("Tirabade.Story", "Derived", "field", "Dictionary<String,String[][]>"),
             ("Tirabade.Relationship", "StartedFlag", "field", "String"),
             ("Tirabade.Scene", "Id", "field", "String"),
             ("Tirabade.Scene", "Relationship", "field", "String"),
@@ -178,6 +179,7 @@ namespace RRT.TestHarness
         public string[] EntryTargets(object scene) => (string[])Invoke(entryTargets, scene);
 
         public IList Scenes => GetAs<IList>(Story!, "Scenes");
+        public IDictionary<string, string[][]> Derived => GetAs<IDictionary<string, string[][]>>(Story!, "Derived");
         public static string SceneId(object scene) => GetAs<string>(scene, "Id");
         public static string SceneRelationship(object scene) => GetAs<string>(scene, "Relationship");
         public static string SceneOwner(object scene) => GetAs<string>(scene, "Owner");
