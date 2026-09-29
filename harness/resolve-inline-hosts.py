@@ -103,11 +103,14 @@ class Graph:
         return []
 
     def dialog_of(self, x):
+        # A SequenceExit has no ParentAsset; it belongs to the CueSequence whose m_Exit names it.
+        if not hasattr(self, "_exit_owner"):
+            self._exit_owner = {e: s for s, (t, _, d) in self.bps.items() if t == "BlueprintCueSequence" for e in g(d.get("m_Exit"))}
         seen = set()
         while x in self.bps and x not in seen:
             if self.t(x) == "BlueprintDialog": return x
             seen.add(x)
-            x = (self.d(x).get("ParentAsset") or "").replace("!bp_", "")
+            x = (self.d(x).get("ParentAsset") or "").replace("!bp_", "") or self._exit_owner.get(x, "")
         return None
 
     def speaker(self, cue):

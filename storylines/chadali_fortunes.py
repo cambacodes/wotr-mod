@@ -235,7 +235,7 @@ fortune(NIGHT, "Honey", '"You sent for me. After dark."', [
 "Perfectly." {n}She tries the word out.{/n} "Nobody's ever said I did anything perfectly. They say 'lucky'. They say 'what a nice surprise'." {n}She looks up at you, and her eyes in the candlelight are very dark.{/n}
 "I wanted it to be on purpose. Tonight. All of it. I wanted you to know I meant it."''',
       c("[Kiss her.]", "kiss")),
-    ch("kiss", '''{n}She tastes of honey. Of course she does. She kisses the way she laughs, all at once and with her whole body, up on her toes with her fists in your collar, and when she runs out of breath she does not stop so much as pause and begin again.{/n}
+    ch("kiss", '''{n}She tastes of honey. Of course she does. She kisses the way she laughs, all at once and with her whole body, up on her toes with both hands knotted in your sleeves, and when she runs out of breath she does not stop so much as pause and begin again.{/n}
 {n}Her bracelets are cold against the back of your neck and her mouth is hot, and she makes a small astonished sound, as if something unexpectedly wonderful had happened to her, which, you slowly understand, it has.{/n}''',
       c("Continue", "silk")),
     ch("silk", '''{n}She is soft everywhere your hands go, and warm, and nowhere near as patient as she was trying to look. The yellow silk slides off one round shoulder, and she does not catch it. She is busy with your buckles, and cursing them, sweetly and inventively, in a language that sounds like birdsong and is obviously filthy.{/n}
@@ -370,7 +370,7 @@ fortune(SHARING, "Sharing", '"Something\'s on your mind."', [
       c('"It isn\'t selfish. You won\'t be last."', "not_last", flags=(NOT_LAST,)),
       c('"Sometimes you will be. The war takes most of me."', "war")),
     ch("not_last", '''"Promise?" {n}The little finger, again.{/n}
-{n}You link it. She holds on for a long moment, and her face is very serious, and then it breaks into the brightest smile you have ever seen on it.{/n}
+{n}You link it. She holds on a while, and her face is very serious, and then it breaks into the brightest smile you have ever seen on it.{/n}
 "There. I asked for something for me, and I got it. Oh, that's frightening. That's so much more frightening than luck." {n}She flops back onto the cushions.{/n} "I'm going to do it again. Not often. Just sometimes. To see if I like it."''',
       c("[Lie down beside her.]")),
     ch("war", '''{n}She takes that, and turns it over, the way she turns her ring.{/n}

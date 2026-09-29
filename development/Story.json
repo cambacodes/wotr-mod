@@ -216886,7 +216886,7 @@
         {
           "Id": "case",
           "Speaker": "Eritrice",
-          "Text": "{n}She listens without writing, which you have never seen her do. When you finish, she is quiet for a long moment. Her claws rest on the blank line and do not tap.{/n}\n\"The truth shines through the endless lies. I said that to you the day we met. I did not expect to be the one it shone on.\"",
+          "Text": "{n}She listens without writing, which you have never seen her do. When you finish, she is quiet. Her claws rest on the blank line and do not tap.{/n}\n\"The truth shines through the endless lies. I said that to you the day we met. I did not expect to be the one it shone on.\"",
           "Choices": [
             {
               "Text": "[Call the question] \"Then call the question.\"",
@@ -216977,10 +216977,10 @@
         {
           "Id": "start",
           "Speaker": "Eritrice",
-          "Text": "\"Third reading.\"\n{n}She does not open a new scroll. She opens the crusade's own gazette, the one read out in Drezen's square, and lays it flat on the Council's table.{/n}\n\"The chair will put the question on one condition. You answer one question on the record, where your soldiers will read it: what did you fear this Council would find? Answer it truthfully and the chair votes. Refuse, and the motion is withdrawn for good.\"",
+          "Text": "\"Third reading.\"\n{n}She does not open a new scroll. She lays the old one flat, the blank line uppermost, and sets the quill down beside it, out of her own reach.{/n}\n\"At the second reading the chair heard the case for. The chair will not hear it again. At a third reading the chair hears the case against, and the rules I wrote do not say who must make it.\" {n}Her amethyst eyes settle on you and stay there.{/n}\n\"You make it. Every reason the chair should vote nay: every lie you have told at this table, every trick you would play on me tomorrow if the war needed one. Make it honestly, and make it well. Argue it badly on purpose and I will hear that too, and the motion is withdrawn for good.\"",
           "Choices": [
             {
-              "Text": "[Answer on the record] \"That it would find me out. It has.\"",
+              "Text": "[Argue the case against yourself, and hold nothing back] \"Then hear it. All of it.\"",
               "Next": "aye",
               "Set": [
                 "eritrice.committed",
@@ -216988,11 +216988,7 @@
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false,
-              "Crusade": {
-                "Resource": "Favors",
-                "Amount": -100
-              }
+              "Abort": false
             },
             {
               "Text": "[Withdraw the motion] \"No.\"",
@@ -217010,7 +217006,7 @@
         {
           "Id": "aye",
           "Speaker": "Eritrice",
-          "Text": "{n}She writes your answer into the gazette word for word, and signs it, and blots it. Tomorrow half of Drezen will be reading it over its porridge.{/n}\n\"There. That was the truth, and you paid for it where it costs.\" {n}She lifts her own hand.{/n} \"The chair votes aye. Carried.\"",
+          "Text": "{n}It takes the better part of an hour. You leave nothing out: the voices you have used, the letters you have forged, the kind lies and the other kind, and the plain fact that you would tell most of them again. She does not write a word of it down. She listens with her claws sheathed and her ears flat against her skull; twice she growls, and once she has to look at the lamp instead of at you.{/n}\n\"That was the strongest case against that has ever been made at this table. It was also true, every word, and you knew what it would cost you to say it to me, of all the creatures in the multiverse.\" {n}She lifts her own hand.{/n}\n\"The chair votes aye, against the case. Carried. The chair will remember every word of it, and will never once use one.\"",
           "Choices": [
             {
               "Text": "[Take her hand.]",
@@ -217026,7 +217022,7 @@
         {
           "Id": "withdrawn",
           "Speaker": "Eritrice",
-          "Text": "\"Then the motion is withdrawn. For good.\" {n}She rules a line across the heading, one clean stroke.{/n}\n\"The chair does not debate a question the floor will not answer.\"",
+          "Text": "\"Then the motion is withdrawn. For good.\" {n}She rules a line across the heading, one clean stroke.{/n}\n\"The chair does not hear a case the floor will not make.\"",
           "Choices": [
             {
               "Text": "[Go.]",
@@ -217090,7 +217086,7 @@
           "Text": "{n}Beneath it, in the same upright hand:{/n} \"The hall is sealed, and the Council no longer convenes. The minutes stand. I did not object in time, and I will not object now by post when I did not do it to your face; and so the chair will hold the debate by correspondence. The chair notes the delay. Your opening argument, Commander. Keep it short. Keep it true.\"",
           "Choices": [
             {
-              "Text": "[Countersign the minutes] \"Carried. Signed. Point one: you kept the minutes.\"",
+              "Text": "[Answer by the same courier] \"Carried. Point one: you kept the minutes.\"",
               "Next": "postscript",
               "Set": [
                 "eritrice.started",
@@ -217104,7 +217100,7 @@
               "Abort": false
             },
             {
-              "Text": "[Countersign the minutes] \"Carried. Signed. Point one: you kept the minutes.\"",
+              "Text": "[Answer by the same courier] \"Carried. Point one: you kept the minutes.\"",
               "Next": null,
               "Set": [
                 "eritrice.started",
@@ -217169,19 +217165,17 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The Council's last circular reaches Drezen: its hall is sealed, and \"any business still pending before this body may be filed with the chair in writing, with surety, for the record\". You have no motion pending. You write one now, and the Office of Finances writes the surety: a crusade bond, forfeit if the motion is frivolous.{/n}",
+          "Text": "{n}The Council's last circular reaches Drezen: its hall is sealed, and \"any business still pending before this body may be filed with the chair in writing, with surety, for the record\". You have no motion pending. You write one now. The Council's rules, which she wrote, say what surety a member posts: \"a thing of the mover's own, forfeit to the chair if the motion is frivolous.\" Money is not the mover's own. It is the crusade's.{/n}\n{n}So you write out the one true thing you have never told anyone, all of it, seal it under your own wax, and put it in with the motion.{/n}",
           "Choices": [
             {
-              "Text": "[File the motion and post the bond] \"I move that the chair is in dire need of a private debate. Surety enclosed.\"",
+              "Text": "[File the motion, with the sealed truth as surety] \"I move that the chair is in dire need of a private debate. Surety enclosed.\"",
               "Next": "reply",
-              "Set": [],
+              "Set": [
+                "eritrice.trickster.cost.sealed_truth"
+              ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false,
-              "Crusade": {
-                "Resource": "Favors",
-                "Amount": -100
-              }
+              "Abort": false
             },
             {
               "Text": "Let the Council lie.",
@@ -217197,7 +217191,7 @@
         {
           "Id": "reply",
           "Speaker": "Eritrice",
-          "Text": "{n}The reply comes back within the week, in an upright hand.{/n} \"A motion filed after adjournment, with money behind it. Irregular. Also, the chair notes, sincere: nobody posts a bond for a joke. The motion is admitted. The debate will be held by correspondence. The chair notes the delay, and the price.\"",
+          "Text": "{n}The reply comes back within the week, in an upright hand.{/n} \"A motion filed after adjournment, with money behind it. Irregular. Also, the chair notes, sincere: nobody stakes a secret on a joke. The motion is admitted, and the surety is held, unopened. The chair has not decided whether she will ever break the seal. The debate will be held by correspondence. The chair notes the delay.\"",
           "Choices": [
             {
               "Text": "[Begin the debate by post] \"Received. My opening argument follows.\"",
@@ -217473,6 +217467,14 @@
               "AnyGroups": []
             },
             {
+              "Text": "{n}The surety the Commander had filed with the late motion came back folded inside the forty-first letter, its wax unbroken. She had carried it through the whole war and never opened it. \"I did not need to,\" she said. \"You were willing to let me.\"{/n}",
+              "Requires": [
+                "eritrice.trickster.cost.sealed_truth"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
               "Text": "{n}Every letter opened with the grudge, read into the record in full.{/n}",
               "Requires": [
                 "eritrice.trickster.cost.grudge_on_agenda"
@@ -217665,7 +217667,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The gazette with the Commander's answer on the record hung framed in the chair's study, in Nirvana, beside a scroll she refused to lend to anyone.{/n}",
+              "Text": "{n}She never quoted a word of the case against that the Commander had made at the third reading. But in later years, whenever the Commander lied to anyone at all in her hearing, she went quiet at the table, and waited, and the Commander would remember the third reading, and correct it.{/n}",
               "Requires": [
                 "eritrice.trickster.cost.on_the_record"
               ],
@@ -218661,7 +218663,7 @@
         {
           "Id": "hand",
           "Speaker": "Eritrice",
-          "Text": "{n}She looks at your open hand for a long time, as if it were a motion she had not expected on the agenda.{/n}\n\"You are asking the chair to hand the record to the Commander. The Commander who once carried a vote by pretending to be six people, and who made the chair write 'carried' on a motion with no floor.\"\n{n}Her claws turn the quill over, once. Then she lays it across your palm, and her fingers stay on it a moment longer than the quill needs.{/n}\n\"One line. True. I will be watching.\"",
+          "Text": "{n}She looks at your open hand as if it were a motion she had not expected on the agenda.{/n}\n\"You are asking the chair to hand the record to the Commander. The Commander who once carried a vote by pretending to be six people, and who made the chair write 'carried' on a motion with no floor.\"\n{n}Her claws turn the quill over, once. Then she lays it across your palm, and her fingers stay on it a moment longer than the quill needs.{/n}\n\"One line. True. I will be watching.\"",
           "Choices": [
             {
               "Text": "[Write: \"The chair is not what I expected.\"]",
@@ -218697,7 +218699,7 @@
         {
           "Id": "wouldnt",
           "Speaker": "Eritrice",
-          "Text": "\"No. You would not.\" {n}She looks at you for a long moment, the quill very still between her claws.{/n}\n\"Alichino asked for it. Socothbenoth asked for it. Chadali asked for it. You are the first person at this table who has declined to ask for the one thing I would have refused.\" {n}Something in her face shifts, like a verdict being reconsidered.{/n}\n\"Which is precisely why I am going to offer it.\" {n}She turns the quill around and holds it out to you, feather first.{/n} \"One line. True. I will be watching.\"",
+          "Text": "\"No. You would not.\" {n}She looks at you, the quill very still between her claws.{/n}\n\"Alichino asked for it. Socothbenoth asked for it. Chadali asked for it. You are the first person at this table who has declined to ask for the one thing I would have refused.\" {n}Something in her face shifts, like a verdict being reconsidered.{/n}\n\"Which is precisely why I am going to offer it.\" {n}She turns the quill around and holds it out to you, feather first.{/n} \"One line. True. I will be watching.\"",
           "Choices": [
             {
               "Text": "[Write: \"The chair is not what I expected.\"]",
@@ -218904,7 +218906,7 @@
         {
           "Id": "defend",
           "Speaker": "Eritrice",
-          "Text": "{n}She lets out a breath she has clearly been holding since before you came in.{/n}\n\"Yes. That is the distinction. Finding and sharing are different verbs.\" {n}She writes: \"The Commander holds that a devil may find the truth. Carried.\"{/n}\n\"You have made the chair feel less foolish. That is a dangerous gift, Commander. Devils give it too, and I usually notice.\"",
+          "Text": "{n}Her shoulders come down a clear inch, as if she had been holding them up since before you came in.{/n}\n\"Yes. That is the distinction. Finding and sharing are different verbs.\" {n}She writes: \"The Commander holds that a devil may find the truth. Carried.\"{/n}\n\"You have made the chair feel less foolish. That is a dangerous gift, Commander. Devils give it too, and I usually notice.\"",
           "Choices": [
             {
               "Text": "[Leave the notebook where it is.]",
@@ -219101,7 +219103,7 @@
         {
           "Id": "expose_end",
           "Speaker": "Eritrice",
-          "Text": "{n}She comes back and sits down, and picks up the quill at last, and her hand is quite steady.{/n}\n\"Thank you. It is a horrible thing to be told, and you told it to me plainly. Nobody else at this table would have.\" {n}She writes, for a long time.{/n}\n\"I will not expel him. A Council that expels its liars is left with nobody to debate. But I will never again mistake his reasons for mine.\"",
+          "Text": "{n}She comes back and sits down, and picks up the quill at last, and her hand is quite steady.{/n}\n\"Thank you. It is a horrible thing to be told, and you told it to me plainly. Nobody else at this table would have.\" {n}She writes, and goes on writing.{/n}\n\"I will not expel him. A Council that expels its liars is left with nobody to debate. But I will never again mistake his reasons for mine.\"",
           "Choices": [
             {
               "Text": "[Leave her to her writing.]",
@@ -219119,7 +219121,7 @@
         {
           "Id": "cover",
           "Speaker": "Eritrice",
-          "Text": "{n}She looks at you for a long moment, and then, visibly, decides to believe you, the way one decides to step onto ice.{/n}\n\"Bored. Yes. That is very like him.\" {n}She writes it down: \"The Commander holds that Socothbenoth is bored.\" She underlines nothing.{/n}\n\"Thank you, Commander. I was afraid you would tell me something I would have to act on.\" {n}She rolls the scroll. She does not look at it again while you are there.{/n}",
+          "Text": "{n}She looks at you, and then, visibly, decides to believe you, the way one decides to step onto ice.{/n}\n\"Bored. Yes. That is very like him.\" {n}She writes it down: \"The Commander holds that Socothbenoth is bored.\" She underlines nothing.{/n}\n\"Thank you, Commander. I was afraid you would tell me something I would have to act on.\" {n}She rolls the scroll. She does not look at it again while you are there.{/n}",
           "Choices": [
             {
               "Text": "[Leave her with the lie.]",
@@ -219137,10 +219139,10 @@
         {
           "Id": "promise",
           "Speaker": "Eritrice",
-          "Text": "\"That is not a point. That is a promise.\" {n}But she writes it down, word for word, and signs under it, and turns the scroll so that you can sign too.{/n}\n\"If you do not keep it, it will be the first broken promise in my minutes. I have kept these minutes a very long time, Commander. I would prefer not to begin with you.\"",
+          "Text": "\"That is not a point. That is a promise.\" {n}But she writes it down, word for word, and reads it back to you in the chair's voice, and waits.{/n}\n\"If you do not keep it, it will be the first broken promise in my minutes. I have kept these minutes a very long time, Commander. I would prefer not to begin with you.\"",
           "Choices": [
             {
-              "Text": "[Sign.]",
+              "Text": "[Say it again, word for word, so that she has heard it twice.]",
               "Next": null,
               "Set": [],
               "Requires": [],
@@ -219489,7 +219491,7 @@
         {
           "Id": "gavel",
           "Speaker": "Eritrice",
-          "Text": "\"There is no gavel. This is not a tavern.\" {n}But she taps the scroll twice with her claw, deliberately, watching you.{/n}\n\"That is the sign. When I do that, and only then, you may say 'Get to work', and I will pretend to be scandalised.\" {n}She writes it down, in the smaller hand she uses for her own notes.{/n}\n\"The chair notes that she has delegated one power of the chair for the first time since the Council was convened. The chair is not sure she will survive it.\"",
+          "Text": "\"There is no gavel. This is not a tavern.\" {n}But she taps the scroll twice with her claw, deliberately, watching you.{/n}\n\"That is the sign. When I do that, and only then, you may say 'Get to work', and I will pretend to be scandalised.\" {n}She writes it down, in the smaller hand she uses for her own notes.{/n}\n\"The chair notes that she has delegated one power of the chair, which she has not done since the Council was convened. The chair is not sure she will survive it.\"",
           "Choices": [
             {
               "Text": "[Learn the sign.]",
@@ -219638,7 +219640,7 @@
         {
           "Id": "refuse",
           "Speaker": "Eritrice",
-          "Text": "\"You think so little of me.\" {n}But she does not sound angry. She sounds, for the first time, uncertain.{/n}\n\"Perhaps you are right. Perhaps the only reason I am any use at all is that I cannot do what you do.\" {n}She lays the glass back down over the pages, precisely.{/n}\n\"Keep reading ciphers for me, then. And tell me the truth about what they say. That, I can do. I will write it down.\"",
+          "Text": "\"You think so little of me.\" {n}But she does not sound angry. She sounds, of all things, uncertain.{/n}\n\"Perhaps you are right. Perhaps the only reason I am any use at all is that I cannot do what you do.\" {n}She lays the glass back down over the pages, precisely.{/n}\n\"Keep reading ciphers for me, then. And tell me the truth about what they say. That, I can do. I will write it down.\"",
           "Choices": [
             {
               "Text": "[Promise to.]",
@@ -219817,7 +219819,7 @@
         {
           "Id": "used",
           "Speaker": "Eritrice",
-          "Text": "{n}Her ears go flat. For a long moment you think she is going to reach across the table.{/n}\n\"You are trading on my guilt.\" {n}Very quietly.{/n} \"That is what Alichino would do.\"\n{n}She writes. You can read it upside down, and she lets you: \"The chair agrees to vote once as the Commander instructs. The chair records that the Commander asked it, and why.\"{/n}\n\"There. It is minuted, Commander. I will pay it. And every time anyone opens this scroll, they will see exactly what you charged me.\"",
+          "Text": "{n}Her ears go flat. For a heartbeat you think she is going to reach across the table.{/n}\n\"You are trading on my guilt.\" {n}Very quietly.{/n} \"That is what Alichino would do.\"\n{n}She writes. You can read it upside down, and she lets you: \"The chair agrees to vote once as the Commander instructs. The chair records that the Commander asked it, and why.\"{/n}\n\"There. It is minuted, Commander. I will pay it. And every time anyone opens this scroll, they will see exactly what you charged me.\"",
           "Choices": [
             {
               "Text": "[Take the vote.]",
@@ -220250,7 +220252,7 @@
         {
           "Id": "quill",
           "Speaker": "Eritrice",
-          "Text": "{n}She is holding the quill, of course. She did not notice she had picked it up. You take it from her fingers, slowly, and she lets it go, watching it leave her hand as if it were a part of her.{/n}\n\"That is the first time in my existence that I have let it go without finishing the line.\" {n}Her breath is short.{/n} \"Put it somewhere I cannot reach it. Now.\"",
+          "Text": "{n}She is holding the quill, of course. She did not notice she had picked it up. You take it from her fingers, slowly, and she lets it go, watching it leave her hand as if it were a part of her.{/n}\n\"I have never once let it go without finishing the line.\" {n}Her breath is short.{/n} \"Put it somewhere I cannot reach it. Now.\"",
           "Choices": [
             {
               "Text": "[Set it on the far end of the table, and come back.]",
@@ -220298,7 +220300,7 @@
         {
           "Id": "armour",
           "Speaker": "Eritrice",
-          "Text": "{n}She undoes the buckles herself, one by one, with the same patient attention she gives to a long agenda, and every time a strap comes free she says its name, as if entering it in the record. You have never heard anyone make the word \"vambrace\" sound like that.{/n}\n{n}When the last of it is on the floor she pushes you back until you are sitting on the edge of the Council's long table, among the inkwells, and stands between your knees, and looks at you in the lamplight for a long time.{/n}",
+          "Text": "{n}She undoes the buckles herself, one by one, with the same patient attention she gives to a long agenda, and every time a strap comes free she says its name, as if entering it in the record. You have never heard anyone make the word \"vambrace\" sound like that.{/n}\n{n}When the last of it is on the floor she pushes you back until you are sitting on the edge of the Council's long table, among the inkwells, and stands between your knees, and looks at you in the lamplight, unhurried, the way she reads a motion twice before she votes.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -220314,7 +220316,7 @@
         {
           "Id": "look",
           "Speaker": "Eritrice",
-          "Text": "{n}For once she says nothing at all. Her amethyst eyes are very dark, and her breathing is the only sound in the hall. She pulls the belt of her gown loose with one claw, and it falls open, and she does not look away from your face while it does.{/n}\n\"Well, Commander?\"",
+          "Text": "{n}For once she says nothing at all. Her amethyst eyes are very dark, and her breathing is the only sound in the hall. She pulls the belt of her gown loose with one claw, and it falls open, and she watches your face, not the gown, while it does.{/n}\n\"Well, Commander?\"",
           "Choices": [
             {
               "Text": "[Answer her.]",
@@ -220467,7 +220469,7 @@
         {
           "Id": "blank",
           "Speaker": "Eritrice",
-          "Text": "{n}The quill stops. She simply looks at the empty space under the date.{/n}\n{n}Slowly, as if arguing it with herself:{/n} \"An omission is not a lie. The record shows that a session took place. It does not claim that nothing happened.\" {n}She writes, at last, in a small tight hand: \"The chair was otherwise occupied.\"{/n}\n\"That is true. That is entirely true. It is the first time in my existence I have written something true in order to hide something.\" {n}She stares at it.{/n} \"I do not know whether I have just learned something from you, or lost something.\"",
+          "Text": "{n}The quill stops. She simply looks at the empty space under the date.{/n}\n{n}Slowly, as if arguing it with herself:{/n} \"An omission is not a lie. The record shows that a session took place. It does not claim that nothing happened.\" {n}She writes, at last, in a small tight hand: \"The chair was otherwise occupied.\"{/n}\n\"That is true. That is entirely true. I have never in my existence written something true in order to hide something.\" {n}She stares at it.{/n} \"I do not know whether I have just learned something from you, or lost something.\"",
           "Choices": [
             {
               "Text": "[Take her ink-stained hand.]",
@@ -220594,10 +220596,10 @@
         {
           "Id": "close",
           "Speaker": "Eritrice",
-          "Text": "\"The item is answered. For now.\" {n}She writes, and signs, and then does something you have never seen her do: she hands you the quill, and turns the scroll, and waits.{/n}\n\"Sign under it. Not for the chair. For the record. The Council will pretend one day that it never met, Commander. I know it will; I know them. I would like there to be one scroll somewhere that says otherwise, in two hands.\"",
+          "Text": "\"The item is answered. For now.\" {n}She writes, and then does something you have never seen her do: she reads the item back aloud, in the voice she uses for the full Council, to a hall with nobody in it but you.{/n}\n\"It wants a second. Not for the chair. For the record. The Council will pretend one day that it never met, Commander. I know it will; I know them. I would like there to be one scroll somewhere that says otherwise, and says who seconded it.\"",
           "Choices": [
             {
-              "Text": "[Sign.]",
+              "Text": "[Second it, aloud.]",
               "Next": null,
               "Set": [
                 "eritrice.minutes.after_the_war"
@@ -220697,7 +220699,7 @@
         {
           "Id": "wait",
           "Speaker": "Eritrice",
-          "Text": "\"Then it stays on the table.\" {n}She moves the dagger from the corner of the scroll back to her belt, which lets the corner curl, a little, toward her.{/n}\n\"The third reading has a price. You will not like it. I will not make it cheaper because I want you to pay it.\" {n}She meets your eyes.{/n} \"I want you to pay it. I have never before in my existence wanted anyone to pay a price at my table. I do not like what that says about me, and I am not going to stop wanting it.\"",
+          "Text": "\"Then it stays on the table.\" {n}She moves the dagger from the corner of the scroll back to her belt, which lets the corner curl, a little, toward her.{/n}\n\"At a third reading the chair hears the case against. You will not like who has to make it. I will not make it easier because I want you to win.\" {n}She meets your eyes.{/n} \"I want you to win. I have never before wanted one side of a debate to win at my table. I do not like what that says about the chair, and I am not going to stop wanting it.\"",
           "Choices": [
             {
               "Text": "[Leave the line blank a while longer.]",
@@ -221806,7 +221808,7 @@
         {
           "Id": "open",
           "Speaker": "Narrator",
-          "Text": "{n}The dagger is out of its sheath for the first time you have seen. It lies on a square of oiled cloth in front of her, and she is cleaning a blade that has no mark on it, slowly, with the absorbed care of someone who has done this a great many times and has never once needed to.{/n}",
+          "Text": "{n}The dagger is out of its sheath. You have never seen it out before. It lies on a square of oiled cloth in front of her, and she is cleaning a blade that has no mark on it, slowly, with the absorbed care of someone who has done this a great many times and has never once needed to.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -221904,7 +221906,7 @@
         {
           "Id": "hand",
           "Speaker": "Eritrice",
-          "Text": "{n}Her fingers are warm and very still under yours. For a long moment neither of you moves.{/n}\n{n}At last she speaks.{/n} \"If I ever draw it at this table, I want your hand to be there. Exactly there. Not to stop me. So that I have to feel it, and decide.\"\n{n}She lifts her hand from the hilt, and leaves yours there a moment longer, and then takes it and holds it, which she has never done.{/n}",
+          "Text": "{n}Her fingers are warm and very still under yours. Neither of you moves.{/n}\n{n}At last she speaks.{/n} \"If I ever draw it at this table, I want your hand to be there. Exactly there. Not to stop me. So that I have to feel it, and decide.\"\n{n}She lifts her hand from the hilt, and leaves yours there a moment longer, and then takes it and holds it, which she has never done.{/n}",
           "Choices": [
             {
               "Text": "[Hold on.]",
@@ -222181,7 +222183,7 @@
         {
           "Id": "truth",
           "Speaker": "Eritrice",
-          "Text": "{n}You tell her. She listens, and does not write, and when you are finished she is quiet for a long time.{/n}\n\"Thank you.\" {n}She means it; you can hear that it has cost her.{/n} \"A Council is not a household. I have never required that my allies have no other allies. I do not require it now.\" {n}Her ears go back, very slightly.{/n}\n\"I require that you do not lie to me about it. You have not. That is all the chair asks. The lion asks more, and the lion will be growled at until it stops.\"",
+          "Text": "{n}You tell her. She listens, and does not write, and when you are finished she is quiet until the lamp wants trimming.{/n}\n\"Thank you.\" {n}She means it; you can hear that it has cost her.{/n} \"A Council is not a household. I have never required that my allies have no other allies. I do not require it now.\" {n}Her ears go back, very slightly.{/n}\n\"I require that you do not lie to me about it. You have not. That is all the chair asks. The lion asks more, and the lion will be growled at until it stops.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -222213,7 +222215,7 @@
         {
           "Id": "lie",
           "Speaker": "Eritrice",
-          "Text": "{n}She does not write it down. She looks at you, and her face closes like a door in a draught, the way it did the first time you lied to her at this table.{/n}\n{n}Very quietly:{/n} \"Rule two. A point is answered honestly or not at all.\" {n}She waits.{/n}\n\"I know there are others. I did not ask so that you could protect me from it. I asked so that you would not have to. Try again.\"",
+          "Text": "{n}She does not write it down. She looks at you, and her face goes flat and formal, the chair's face, the way it did the first time you lied to her at this table.{/n}\n{n}Very quietly:{/n} \"Rule two. A point is answered honestly or not at all.\" {n}She waits.{/n}\n\"I know there are others. I did not ask so that you could protect me from it. I asked so that you would not have to. Try again.\"",
           "Choices": [
             {
               "Text": "[Tell her the truth.]",
@@ -222237,10 +222239,10 @@
         {
           "Id": "rule",
           "Speaker": "Eritrice",
-          "Text": "\"I will make one rule, and I will write it down, so that neither of us can pretend later that it was otherwise.\" {n}She dips the quill.{/n}\n\"Nobody at this table is asked to give anyone up. Not now, not later. If one day it comes to a vote, I will vote against making you choose.\" {n}She signs it.{/n} \"I have seen what happens at tables where people are made to choose. Crusades happen. Worldwounds.\"",
+          "Text": "\"I will make one rule, and I will write it down, so that neither of us can pretend later that it was otherwise.\" {n}She dips the quill.{/n}\n\"Nobody at this table is asked to give anyone up. Not now, not later. If one day it comes to a vote, I will vote against making you choose.\" {n}She writes it, and raises her own hand, and waits for yours.{/n} \"I have seen what happens at tables where people are made to choose. Crusades happen. Worldwounds.\"",
           "Choices": [
             {
-              "Text": "[Sign under it.]",
+              "Text": "[Raise your hand. Aye.]",
               "Next": null,
               "Set": [
                 "eritrice.council.no_one_given_up"
@@ -222284,7 +222286,7 @@
         {
           "Id": "start",
           "Speaker": "Eritrice",
-          "Text": "{n}She looks at the quill in your hand for a long time without taking it. It is white, and long, and very plain, cut the way she cuts her own.{/n}\n\"Where did you get this.\" {n}Not quite a question.{/n}\n\"I cut them myself. Always. From the same bird, which I will not name, because Chadali would want to visit it.\" {n}She takes it, turns it to the lamp, and her ears go forward.{/n} \"This is cut as I cut them. Exactly. You watched me do it. You never said.\"",
+          "Text": "{n}She looks at the quill in your hand and does not take it. It is white, and long, and very plain, cut the way she cuts her own.{/n}\n\"Where did you get this.\" {n}Not quite a question.{/n}\n\"I cut them myself. Always. From the same bird, which I will not name, because Chadali would want to visit it.\" {n}She takes it, turns it to the lamp, and her ears go forward.{/n} \"This is cut as I cut them. Exactly. You watched me do it. You never said.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -222408,7 +222410,7 @@
         {
           "Id": "ask",
           "Speaker": "Eritrice",
-          "Text": "\"You have been quiet about tomorrow. You are never quiet.\" {n}She comes back to the table and sits, and folds her hands on the scroll.{/n}\n\"The chair asks the floor, on the record: what will the Commander do tomorrow? Not what the Commander would like. What the Commander will do.\"",
+          "Text": "\"You have been quiet about tomorrow. You are never quiet.\" {n}She comes back to the table and sits, and folds her hands on the scroll.{/n}\n\"The chair asks the floor: what will the Commander do tomorrow? Not what the Commander would like. What the Commander will do.\"",
           "Choices": [
             {
               "Text": "[Tell her the truth: it may end in blood.] \"They'll turn on you. When they do, I won't stand between you and them. I'll stand where I have to.\"",
@@ -222444,7 +222446,7 @@
         {
           "Id": "truth",
           "Speaker": "Eritrice",
-          "Text": "{n}She does not answer for a long time. Her claws are flat on the scroll.{/n}\n\"You think it will come to a fight.\" {n}Not a question.{/n} \"And if it does, you do not know whose side you will be on. Because it may not be mine.\"\n{n}She writes it, every word, in the upright hand.{/n} \"Thank you. That is the worst thing anyone has told me since you told me what Socothbenoth wanted. I would rather hear it tonight than learn it tomorrow on the floor of my own hall.\"",
+          "Text": "{n}She does not answer at once. Her claws are flat on the scroll.{/n}\n\"You think it will come to a fight.\" {n}Not a question.{/n} \"And if it does, you do not know whose side you will be on. Because it may not be mine.\"\n{n}She writes it, every word, in the upright hand.{/n} \"Thank you. That is the worst thing anyone has told me since you told me what Socothbenoth wanted. I would rather hear it tonight than learn it tomorrow on the floor of my own hall.\"",
           "Choices": [
             {
               "Text": "[Stay with her tonight.]",
@@ -222792,7 +222794,7 @@
         {
           "Id": "close",
           "Speaker": "Eritrice",
-          "Text": "\"The point is raised. It is not a motion. There is nothing to vote on.\" {n}She writes, and her hand is not very good.{/n}\n\"When there is something to vote on, it will be put to you properly, at a reading. Not in a hurry, not in a corridor, not by a trick. That is what I can give you that no one else at this table can. Everything I feel, in order, on the record, with a vote at the end.\" {n}She blots the line.{/n} \"It is not very romantic. It is what I have.\"",
+          "Text": "\"The point is raised. It is not a motion. There is nothing to vote on.\" {n}She writes, and her hand is not very good.{/n}\n\"When there is something to vote on, it will be put to you properly, at a reading. Not in a hurry, not in a corridor, not by a trick. That is what I can give you that no one else at this table can. Everything I feel, in order, minuted, with a vote at the end.\" {n}She blots the line.{/n} \"It is not very romantic. It is what I have.\"",
           "Choices": [
             {
               "Text": "\"It's the most romantic thing anyone's ever said to me.\"",
@@ -222942,7 +222944,7 @@
         {
           "Id": "show",
           "Speaker": "Eritrice",
-          "Text": "{n}She is quiet for a long moment.{/n}\n\"Mortals do not visit Nirvana. They arrive, after, if they have lived well enough. You know this.\" {n}Her voice is careful.{/n} \"I will not tell you that I can bring you. I do not know if it is true. But I will tell you this, and it is true: the window in my study has room for two chairs, and I have only ever set one.\"\n{n}She writes nothing. She only looks at you, in the lamplight, as if memorising a record she does not intend to keep on paper.{/n}",
+          "Text": "{n}She is quiet.{/n}\n\"Mortals do not visit Nirvana. They arrive, after, if they have lived well enough. You know this.\" {n}Her voice is careful.{/n} \"I will not tell you that I can bring you. I do not know if it is true. But I will tell you this, and it is true: the window in my study has room for two chairs, and I have only ever set one.\"\n{n}She writes nothing. She only looks at you, in the lamplight, as if memorising a record she does not intend to keep on paper.{/n}",
           "Choices": [
             {
               "Text": "[Hold her gaze.]",
@@ -223182,7 +223184,7 @@
         {
           "Id": "smaller",
           "Speaker": "Eritrice",
-          "Text": "\"Yes. I included it.\" {n}Very quietly.{/n} \"I have read the Lexicon. I know what the wound does to the one who carries it. I put that in the figures too. And then I put in the crossroads, and the chance that it heals you, and the chance that it does not, and the chance that you do something no one has predicted, which with you is very high.\" {n}A breath.{/n}\n\"The figures do not agree with each other. That is the first time in my existence that my own arithmetic has refused to come to a conclusion.\"",
+          "Text": "\"Yes. I included it.\" {n}Very quietly.{/n} \"I have read the Lexicon. I know what the wound does to the one who carries it. I put that in the figures too. And then I put in the crossroads, and the chance that it heals you, and the chance that it does not, and the chance that you do something no one has predicted, which with you is very high.\" {n}A breath.{/n}\n\"The figures do not agree with each other. My own arithmetic has never before refused to come to a conclusion.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -223430,7 +223432,7 @@
         {
           "Id": "set",
           "Speaker": "Eritrice",
-          "Text": "{n}She stares at you. Then she looks down the length of the long table, at every chair, at the one turned to the wall.{/n}\n\"I did set it.\" {n}Slowly.{/n} \"He suggested. I convened. I chose the chairs and the rules and the minutes. He brought a trap. I brought a table. Only one of us is still here.\" {n}She takes up the quill.{/n}\n{n}She does not write it down at once. She sits with her hand flat over the scroll, and her shoulders, for the first time you can remember, are not squared.{/n}\n\"You comforted me. It worked. I do not know how, and I am not going to minute it. Stay until I do.\"",
+          "Text": "{n}She stares at you. Then she looks down the length of the long table, at every chair, at the one turned to the wall.{/n}\n\"I did set it.\" {n}Slowly.{/n} \"He suggested. I convened. I chose the chairs and the rules and the minutes. He brought a trap. I brought a table. Only one of us is still here.\" {n}She takes up the quill.{/n}\n{n}She does not write it down at once. She sits with her hand flat over the scroll, and her shoulders, which you have only ever seen squared, are not.{/n}\n\"You comforted me. It worked. I do not know how, and I am not going to minute it. Stay until I do.\"",
           "Choices": [
             {
               "Text": "[Stay while she writes.]",
@@ -223603,7 +223605,7 @@
         {
           "Id": "dont_know",
           "Speaker": "Eritrice",
-          "Text": "{n}She lets out a breath, slowly.{/n} \"That is the correct answer. It is the only answer that does not terrify me.\" {n}She writes it down.{/n}\n\"If you had said 'before', I would have had to believe that you found a buried truth, which is what I do. If you had said 'after', I would have had to believe that you make them, which is what I fear. 'I do not know' leaves room for both. You have taught me to leave room for both.\"",
+          "Text": "{n}Her whiskers settle, slowly.{/n} \"That is the correct answer. It is the only answer that does not terrify me.\" {n}She writes it down.{/n}\n\"If you had said 'before', I would have had to believe that you found a buried truth, which is what I do. If you had said 'after', I would have had to believe that you make them, which is what I fear. 'I do not know' leaves room for both. You have taught me to leave room for both.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -223825,7 +223827,7 @@
         {
           "Id": "close",
           "Speaker": "Eritrice",
-          "Text": "\"The chair's ruling.\" {n}She writes as she speaks.{/n} \"The Commander's dealings with the Lady in Shadow are not the Council's business. The chair notes that they exist. The chair does not object. The chair will growl.\"\n{n}She sands the line.{/n} \"There. It is true and it is fair and it is on the record. You may go and look at doors.\"",
+          "Text": "\"The chair's ruling.\" {n}She writes as she speaks.{/n} \"The Commander's dealings with the Lady in Shadow are not the Council's business. The chair notes that they exist. The chair does not object. The chair will growl.\"\n{n}She sands the line.{/n} \"There. It is true, and it is fair, and it is minuted. You may go and look at doors.\"",
           "Choices": [
             {
               "Text": "[Go.]",
@@ -223986,7 +223988,7 @@
         {
           "Id": "carried",
           "Speaker": "Eritrice",
-          "Text": "\"Carried.\" {n}She lets out a breath she seems to have been holding since she began the copy.{/n}\n\"The chair has now said it. In writing. Which counts. It is minuted in two places now, and you are holding one of them.\" {n}She reaches over and rolls the scroll closed in your hands, gently, and ties the ribbon.{/n} \"Take care of it. It is the only fair copy. I could make another. I will not.\"",
+          "Text": "\"Carried.\" {n}Her voice is not quite steady.{/n}\n\"The chair has now said it. In writing. Which counts. It is minuted in two places now, and you are holding one of them.\" {n}She reaches over and rolls the scroll closed in your hands, gently, and ties the ribbon.{/n} \"Take care of it. It is the only fair copy. I could make another. I will not.\"",
           "Choices": [
             {
               "Text": "[Keep it close.]",
@@ -224312,7 +224314,7 @@
         {
           "Id": "you",
           "Speaker": "Eritrice",
-          "Text": "{n}She looks at you for a long time.{/n}\n\"That is not kindness.\" {n}Slowly.{/n} \"That is an argument. It is a good one. The chair should be the one who will accept losing. And I have lost to you so often now that I have practised.\" {n}Her voice is not quite level.{/n}\n\"I will put it to the Crossroads. They will vote. If they vote for me, I will chair. If they do not, I will sit on the floor, next to wherever you are sitting, and move motions until they regret it.\"",
+          "Text": "{n}She looks at you, and keeps looking.{/n}\n\"That is not kindness.\" {n}Slowly.{/n} \"That is an argument. It is a good one. The chair should be the one who will accept losing. And I have lost to you so often now that I have practised.\" {n}Her voice is not quite level.{/n}\n\"I will put it to the Crossroads. They will vote. If they vote for me, I will chair. If they do not, I will sit on the floor, next to wherever you are sitting, and move motions until they regret it.\"",
           "Choices": [
             {
               "Text": "[Help her write it.]",
@@ -224391,7 +224393,7 @@
         {
           "Id": "start",
           "Speaker": "Areelu",
-          "Text": "{n}For the first time since the mirror, Areelu's face does something she has not planned. One eyebrow rises a fraction, and stays there.{/n}\n\"A copy.\" {n}She repeats it the way a physician repeats a symptom.{/n} \"Subjects do not read their files. It contaminates the results. A rat that has read its own maze is no longer a rat, and it is no longer a maze.\"",
+          "Text": "{n}Areelu's face does something it has not done since the mirror: something she did not plan. One eyebrow rises a fraction, and stays there.{/n}\n\"A copy.\" {n}She repeats it the way a physician repeats a symptom.{/n} \"Subjects do not read their files. It contaminates the results. A rat that has read its own maze is no longer a rat, and it is no longer a maze.\"",
           "Choices": [
             {
               "Text": "\"Then I'm contaminated already. I found your laboratory, your mirror and your dretch. What else is in the file?\"",
@@ -224585,7 +224587,7 @@
         {
           "Id": "silent",
           "Speaker": "Areelu",
-          "Text": "{n}The silence stretches. The Suture fidgets. Somewhere in the palace a gong is struck, and dies away.{/n}\n\"Silence.\" {n}Her eyes narrow very slightly, and for the first time you have the impression that she is looking at you instead of at a page.{/n} \"That was not in the file either. You are becoming expensive to study, Commander.\"",
+          "Text": "{n}The silence stretches. The Suture fidgets. Somewhere in the palace a gong is struck, and dies away.{/n}\n\"Silence.\" {n}Her eyes narrow very slightly, and you have the distinct impression that she has stopped reading you off a page and started looking.{/n} \"That was not in the file either. You are becoming expensive to study, Commander.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -224925,7 +224927,7 @@
         {
           "Id": "terms",
           "Speaker": "Areelu",
-          "Text": "{n}For a long moment the glass stays clear, and you think she has gone. Then:{/n}\n\"Neither. You might have said that to my face at Iz, if you had thought of it in time. Instead you say it through my own lens, which you did not steal so much as fail to return.\"\n\"Very well. When you find the place I have prepared for you, and you will, bring your wager with you. Until then, keep the lens. I prefer my specimens where I can see them.\"",
+          "Text": "{n}The glass stays clear so long that you think she has gone. Then:{/n}\n\"Neither. You might have said that to my face at Iz, if you had thought of it in time. Instead you say it through my own lens, which you did not steal so much as fail to return.\"\n\"Very well. When you find the place I have prepared for you, and you will, bring your wager with you. Until then, keep the lens. I prefer my specimens where I can see them.\"",
           "Choices": [
             {
               "Text": "[Keep the lens, and keep looking.]",
@@ -225201,7 +225203,7 @@
         {
           "Id": "third",
           "Speaker": "Areelu",
-          "Text": "{n}The frost clears for a long moment. Then:{/n}\n\"Third. When you look at me through this glass, Commander, what do you see? Be precise. I will know if you are being kind.\"",
+          "Text": "{n}The frost clears. Nothing forms in it; the lamp gutters twice. Then:{/n}\n\"Third. When you look at me through this glass, Commander, what do you see? Be precise. I will know if you are being kind.\"",
           "Choices": [
             {
               "Text": "\"A woman who hasn't slept in a hundred years.\"",
@@ -225816,7 +225818,7 @@
         {
           "Id": "third",
           "Speaker": "Areelu",
-          "Text": "{n}The frost clears for a long moment. Then:{/n}\n\"Third. When you look at me through this glass, Commander, what do you see? Be precise. I will know if you are being kind.\"",
+          "Text": "{n}The frost clears. Nothing forms in it; the lamp gutters twice. Then:{/n}\n\"Third. When you look at me through this glass, Commander, what do you see? Be precise. I will know if you are being kind.\"",
           "Choices": [
             {
               "Text": "\"A woman who hasn't slept in a hundred years.\"",
@@ -226568,7 +226570,7 @@
         {
           "Id": "into",
           "Speaker": "Areelu",
-          "Text": "{n}Your hand passes into the projection up to the wrist. There is nothing there: only a faint cold, like putting your hand into a stream in early spring, and the hum of the device in your bones.{/n}\n{n}She does not move. She looks down at your hand inside hers, and for a long moment her face is perfectly unreadable.{/n}\n\"You are the first person who has ever done that,\" she says at last. \"The others struck at it, or wept at it, or smashed the device. You shook hands with a ghost to seal a bet. I will remember it. I remember everything that is done to me.\"",
+          "Text": "{n}Your hand passes into the projection up to the wrist. There is nothing there: only a faint cold, like putting your hand into a stream in early spring, and the hum of the device in your bones.{/n}\n{n}She does not move. She looks down at your hand inside hers, and her face gives you nothing at all to read.{/n}\n\"You are the first person who has ever done that,\" she says at last. \"The others struck at it, or wept at it, or smashed the device. You shook hands with a ghost to seal a bet. I will remember it. I remember everything that is done to me.\"",
           "Choices": [
             {
               "Text": "\"Until Threshold.\"",
@@ -226718,7 +226720,7 @@
         {
           "Id": "lose",
           "Speaker": "Areelu",
-          "Text": "\"Nobody comes to Threshold to lose. Everyone who ever came here meant to win: the hunters, the jailers, the knights of every crusade, and I.\"\n{n}She glances up at the black walls, and something in her face is almost fond.{/n} \"The prison kept all of us. It will keep whichever of us burns.\"\n\"I built my door out of its stones, Commander. Every wall you pass inside was once a wall that held me. Look at them as you go. I would like somebody, once, to look.\"",
+          "Text": "\"Nobody comes to Threshold to lose. Everyone who ever came here meant to win: the hunters, the jailers, the knights of every crusade, and I.\"\n{n}She glances up at the black walls, and her mouth is very nearly fond.{/n} \"The prison kept all of us. It will keep whichever of us burns.\"\n\"I built my door out of its stones, Commander. Every wall you pass inside was once a wall that held me. Look at them as you go. I would like somebody, once, to look.\"",
           "Choices": [
             {
               "Text": "\"See you inside.\"",
@@ -226813,7 +226815,7 @@
         {
           "Id": "paperwork",
           "Speaker": "Areelu",
-          "Text": "{n}For a moment you think you have misjudged it badly. Her face goes perfectly still.{/n}\n\"The paperwork.\" {n}Then something in her mouth gives, very slightly.{/n} \"A hundred years of it. Calculations on walls, on skin, on the backs of death warrants. If you could burn only that, Commander, and leave the rest of me standing, you would be the first person in history to settle an argument with the Abyss by losing its files.\"\n\"Do not look so pleased. It was not a compliment. It was a hypothesis.\"",
+          "Text": "{n}For a moment you think you have misjudged it badly. Her face goes perfectly still.{/n}\n\"The paperwork.\" {n}Then the line of her mouth gives, very slightly.{/n} \"A hundred years of it. Calculations on walls, on skin, on the backs of death warrants. If you could burn only that, Commander, and leave the rest of me standing, you would be the first person in history to settle an argument with the Abyss by losing its files.\"\n\"Do not look so pleased. It was not a compliment. It was a hypothesis.\"",
           "Choices": [
             {
               "Text": "[Let her go on.]",
@@ -226864,7 +226866,7 @@
         {
           "Id": "wait",
           "Speaker": "Areelu",
-          "Text": "{n}She looks at you for a long moment, and something in her face that has been held shut for a century moves, very slightly, like a door in a draught.{/n}\n\"You will wait.\" \"Everyone else came through the door. The hunters, the jailers, the knights of every crusade. You are the first to offer to stand outside it.\"\n{n}She turns away before you can see what her face does next.{/n} \"Do not do that again. I do not have the time to study it.\"",
+          "Text": "{n}She looks at you. Something in her face that has been held shut for a century moves, very slightly, like a door in a draught.{/n}\n\"You will wait.\" \"Everyone else came through the door. The hunters, the jailers, the knights of every crusade. You are the first to offer to stand outside it.\"\n{n}She turns away before you can see what her face does next.{/n} \"Do not do that again. I do not have the time to study it.\"",
           "Choices": [
             {
               "Text": "[Let her go on.]",
@@ -227575,7 +227577,7 @@
         {
           "Id": "after",
           "Speaker": "Areelu",
-          "Text": "\"There.\" {n}Her voice is a woman's voice now, hoarse and very tired, and nothing moves in the shadows when she speaks.{/n}\n\"The cauldron holds a life's worth of the Abyss. If you mean to use it to open your rifts, use it. It will not need mine.\" {n}She looks at her own hands, and they are shaking, and she lets them.{/n} \"It hurts, Commander. I had forgotten that anything could.\"",
+          "Text": "\"There.\" {n}Her voice is a woman's voice now, hoarse and very tired, and nothing moves in the shadows when she speaks.{/n}\n\"The cauldron holds a life's worth of the Abyss. Whether it holds a life, we will learn at the rift, and not before.\" {n}The diamond is cracked along one face; a thread of violet light leaks from the crack and fades.{/n} \"It held. It may not hold long enough. If it does not, the rift will take me anyway, and you will have paid for a trinket with the only part of me that did not hurt.\" {n}She looks at her own hands, and they are shaking, and she lets them.{/n} \"It hurts, Commander. I had forgotten that anything could.\"",
           "Choices": [
             {
               "Text": "[Turn to the final choice.]",
@@ -227787,7 +227789,7 @@
         {
           "Id": "collect",
           "Speaker": "Areelu",
-          "Text": "\"And if I burn, Commander?\" {n}Her eyes do not leave your face.{/n} \"You have never said what you collect. 'What is left of me' is not a quantity. I will not sign a term I cannot measure.\"",
+          "Text": "\"And if I burn, Commander?\" {n}Her eyes do not leave your face.{/n} \"You have never said what you collect. 'What is left of me' is not a quantity. I will not accept a term I cannot measure.\"",
           "Choices": [
             {
               "Text": "\"Your notes. A century of them. That's what's left of you.\"",
@@ -227823,7 +227825,7 @@
         {
           "Id": "priced",
           "Speaker": "Areelu",
-          "Text": "\"My notes.\" {n}She is silent for a long moment, and you can see her test it, the way she tests everything: from the end backwards.{/n}\n\"Yes. A century of paper. That is exactly what is left of me; everything else went into the Wound.\" {n}She touches the wound above her heart.{/n} \"And the graft that holds the Abyss in me. I made myself, Commander. That was a working too, and a working is work. If you collect my work, you collect the stitch.\" \"Very well. If you collect my work in place of my life, you pay for the privilege. Your wound is mine, win or lose. For study.\"",
+          "Text": "\"My notes.\" {n}She is silent, and you can watch her test it, the way she tests everything: from the end backwards.{/n}\n\"Yes. A century of paper. That is exactly what is left of me; everything else went into the Wound.\" {n}She touches the wound above her heart.{/n} \"And the graft that holds the Abyss in me. I made myself, Commander. That was a working too, and a working is work. If you collect my work, you collect the stitch.\" \"Very well. If you collect my work in place of my life, you pay for the privilege. Your wound is mine, win or lose. For study.\"",
           "Choices": [
             {
               "Text": "\"Agreed.\"",
@@ -227850,7 +227852,7 @@
         {
           "Id": "priced_known",
           "Speaker": "Areelu",
-          "Text": "\"My notes. Yes. You said so in my cell, and I have thought of little else. The notes, and the graft with them: I made myself, and what I made is work.\" {n}Blood runs from her wound; she does not look at it.{/n}\n\"Then here is my price for letting paper burn in my place. Your wound is mine, win or lose. For study. You will not get a better term from me, and you will not get this one twice.\"",
+          "Text": "\"My notes. Yes. You said so in my cell, and I have thought of little else. The notes, and the graft with them: I made myself, and what I made is work.\" {n}Blood runs from her wound; she does not look at it.{/n}\n\"Then this is what it costs you, to let paper burn in my place. Your wound is mine, win or lose. For study. You will not get a better term from me, and you will not get this one twice.\"",
           "Choices": [
             {
               "Text": "\"Agreed.\"",
@@ -227893,7 +227895,7 @@
         {
           "Id": "her_choice",
           "Speaker": "Areelu",
-          "Text": "{n}For a moment she is silent, and you can see her calculate it, as she has calculated everything for a century.{/n}\n\"You have me beaten, and you are bargaining instead of cutting. At Iz you bet when you could have struck. In my cell you shook hands with a ghost. At the gate you asked about terms.\" {n}She wipes the blood from her mouth.{/n} \"I have stopped calling it weakness. I have no word for it yet. I would like the time to find one.\"\n\"If neither of us burns, I spend what is left of me studying you, at close range, until I understand how you did it. And you spend it being studied.\"\n\"That is not a romance, Commander. It is a longitudinal experiment.\" {n}A pause.{/n} \"Very well. I accept.\"",
+          "Text": "{n}For a moment she is silent, and you can see her calculate it, as she has calculated everything for a century.{/n}\n\"You have me beaten, and you are bargaining instead of cutting. At Iz you bet when you could have struck. In my cell you shook hands with a ghost. At the gate you asked about terms.\" {n}She wipes the blood from her mouth.{/n} \"I have stopped calling it weakness. I have no word for it yet. I would like the time to find one.\"\n\"If neither of us burns, I spend what is left of me studying you, at close range, until I understand how you did it. And you spend it being studied.\"\n\"Understand what you are asking for. I do not run an experiment at arm's length. It will want proximity, of every kind the subject permits, and I will decide where its edges are, not you.\" {n}A pause.{/n} \"The day it stops serving me, I end it, and you will be told the result. Those are the conditions. Very well. I accept.\"",
           "Choices": [
             {
               "Text": "[Shake on it] \"Then it's settled.\"",
@@ -227929,7 +227931,7 @@
         {
           "Id": "kiss",
           "Speaker": "Areelu",
-          "Text": "{n}You take her face in your hands, bloody and trembling and defiant, and kiss her.{/n}\n{n}She does not melt. She kisses back the way she argues: hard, precise, one hand fisting in your collar to hold you exactly where she wants you, her teeth catching your lip until you taste her blood and then your own. The violet light of the Wound runs over you both. When she breaks it she is breathing like someone who has run a very long way, and she does not let go of your collar.{/n}\n\"That,\" says the Architect of the Worldwound, \"is not a term of the wager.\" {n}Her eyes are on your mouth.{/n} \"Put it in the terms.\"",
+          "Text": "{n}You take her face in your hands, bloody and trembling and defiant, and kiss her.{/n}\n{n}She does not melt. She kisses back the way she argues: hard, precise, one hand at the back of your neck to hold you exactly where she wants you. There is blood on her mouth from the wound, and then there is blood on yours. The violet light of the Wound runs over you both. When she breaks it she is breathing like someone who has run a very long way, and her hand stays where it is.{/n}\n\"That,\" says the Architect of the Worldwound, \"is not a term of the wager.\" {n}Her eyes are on your mouth.{/n} \"Put it in the terms.\"",
           "Choices": [
             {
               "Text": "\"Then it's settled.\"",
@@ -228680,7 +228682,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}Neither of them burned, which was the bet the Commander had made at Iz: \"My money's on neither.\"{/n}\n{n}Areelu Vorlesh paid what she owed on the bet from Iz in person. She burned her own notes in front of the Commander, page by page, without comment, for a whole night. What was left of her she kept, as the raised terms allowed, to spend on learning how the Commander had done it: the Abyss still in her veins, and the wound still glowing above her heart. Then she moved into the rooms across the hall with a fresh notebook.{/n}",
+          "Text": "{n}Neither of them burned, which was the bet the Commander had made at Iz: \"My money's on neither.\"{/n}\n{n}Areelu Vorlesh paid what she owed on the bet from Iz in person. She burned her own notes in front of the Commander, page by page, without comment, for a whole night. What was left of her she kept, as the raised terms allowed, to spend on learning how the Commander had done it: the Abyss still in her veins, and the wound still glowing above her heart. A week later she came to the Commander's door with a proposal, set out as she would have put it to a patron funding a study: rooms across the hall, unrestricted access to the subject, and the right to leave without notice. The Commander set one condition of their own, that she knock. She took an hour to consider it, and accepted, and moved in that evening with a fresh notebook.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -228722,7 +228724,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "Some of the pages she burned the Commander recognised. The notes from Kenabres. The observations from Drezen, in Yaniel's borrowed hand. A thick bundle tied with black ribbon, labelled only with the Commander's name and a date from before the Commander was born. She burned that one last, and slowest, and did not look away from it once.",
+              "Text": "Some of the pages she burned the Commander recognised. The notes from Kenabres. The observations from Drezen, in Yaniel's borrowed hand. A thick bundle tied with black ribbon, labelled only with the Commander's name and a date from before the Commander was born. She burned that one last, and slowest, and watched it until the ribbon was ash.",
               "Requires": [],
               "Forbids": [],
               "AnyGroups": []
@@ -229001,7 +229003,7 @@
         {
           "Id": "coin",
           "Speaker": "Narrator",
-          "Text": "{n}The coin went. Where it went, neither of them could have said, and the Commander was as surprised as she was.{/n}\n{n}\"Again.\" And again. After the fortieth time she put down her pen and simply watched, and something in her face that had been clenched for a hundred years let go by the width of a hair.{/n}\n{n}\"Observation,\" she said, to nobody. \"Subject does not know how it is done either. That is either very good news or very bad news, and I am too tired tonight to decide which.\"{/n}",
+          "Text": "{n}The coin went. Where it went, neither of them could have said, and the Commander was as surprised as she was.{/n}\n{n}\"Again.\" And again. After the fortieth time she put down her pen and simply watched, and the line between her brows, which had been there for a hundred years, eased by the width of a hair.{/n}\n{n}\"Observation,\" she said, to nobody. \"Subject does not know how it is done either. That is either very good news or very bad news, and I am too tired tonight to decide which.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -229179,7 +229181,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "Areelu watched them from the window, and for the first time since the Commander had known her, she did not write anything down. The last time witch-hunters had come to her door, she had been at her desk, recording her observations, and her child had been outside.",
+              "Text": "Areelu watched them from the window, and, alone of all the days the Commander had known her, she did not write anything down. The last time witch-hunters had come to her door, she had been at her desk, recording her observations, and her child had been outside.",
               "Requires": [],
               "Forbids": [],
               "AnyGroups": []
@@ -229513,7 +229515,7 @@
         {
           "Id": "healer",
           "Speaker": "Narrator",
-          "Text": "{n}The healer the Commander found was a priest of the Lady of Graves, because that was who was awake at that hour.{/n}\n{n}Areelu opened her eyes, saw the grey robe and the spiral at his throat, and laughed so hard she started coughing and could not stop. \"Take him away,\" she managed, at last. \"Pay him. Pay him double. But if he touches me I will live another thirty years out of spite, and he can explain that to his goddess.\"{/n}\n{n}The priest, to his credit, did not leave at once. He looked at her for a long moment, and then at the Commander, and said only: \"She will live. The Lady has told me nothing about this house, and I have learned not to ask.\" He took his double fee and went, and she laughed about him for a week.{/n}",
+          "Text": "{n}The healer the Commander found was a priest of the Lady of Graves, because that was who was awake at that hour.{/n}\n{n}Areelu opened her eyes, saw the grey robe and the spiral at his throat, and laughed so hard she started coughing and could not stop. \"Take him away,\" she managed, at last. \"Pay him. Pay him double. But if he touches me I will live another thirty years out of spite, and he can explain that to his goddess.\"{/n}\n{n}The priest, to his credit, did not leave at once. He looked at her a while, and then at the Commander, and said only: \"She will live. The Lady has told me nothing about this house, and I have learned not to ask.\" He took his double fee and went, and she laughed about him for a week.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -229664,7 +229666,7 @@
         {
           "Id": "says",
           "Speaker": "Narrator",
-          "Text": "{n}\"That I was right.\" She did not look away from the north. \"That everything I did was correct, and there is more to do, and I am wasting the Abyss in me on a kitchen and a notebook and a Commander who makes jokes.\"{/n}\n{n}\"It is not wrong,\" she said. \"That is what makes it difficult. It has never once lied to me. It simply does not understand why I have stopped listening, and neither, some nights, do I.\"{/n}",
+          "Text": "{n}\"That I was right.\" Her eyes stayed on the north. \"That everything I did was correct, and there is more to do, and I am wasting the Abyss in me on a kitchen and a notebook and a Commander who makes jokes.\"{/n}\n{n}\"It is not wrong,\" she said. \"That is what makes it difficult. It has never once lied to me. It simply does not understand why I have stopped listening, and neither, some nights, do I.\"{/n}",
           "Choices": [
             {
               "Text": "[Stand beside her, and do not answer either.]",
@@ -230103,7 +230105,7 @@
         {
           "Id": "in_mortal",
           "Speaker": "Narrator",
-          "Text": "{n}She studies you the way she has studied everything: thoroughly, without hurry, and without once pretending it is anything but hunger. Your shirt she undoes one button at a time, each a separate observation, and pushes it off your shoulders with both hands.{/n}\n{n}Cold fingers. Every scar gets its question. The old wound from Kenabres she kisses once, very precisely, as if taking a sample; then again, not precisely at all, her mouth open against your skin.{/n}",
+          "Text": "{n}She studies you the way she has studied everything: thoroughly, without hurry, and without ever deciding whether what she is doing is study or want. She has never once separated the two. Your shirt she undoes one button at a time, each a separate observation, and pushes it off your shoulders with both hands.{/n}\n{n}Cold fingers. Every scar gets its question. The old wound from Kenabres she kisses once, very precisely, as if taking a sample; then again, not precisely at all, her mouth open against your skin.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -230119,7 +230121,7 @@
         {
           "Id": "in_mortal_2",
           "Speaker": "Narrator",
-          "Text": "{n}Her own body she offers the same way, as evidence. The grey dress falls. She stands in the lamplight and covers nothing: the grey at her temples, the new lines at her mouth, the plain mortal warmth come back into her skin after a century of the Abyss. \"Look,\" she says. \"Everything you did to me. I want you to see all of it.\"{/n}\n{n}You look. Then she pushes you down onto the narrow bed and climbs astride your hips, palms flat on your chest, and bends to your mouth; and for the first time in a hundred years Areelu Vorlesh stops taking notes.{/n}",
+          "Text": "{n}Her own body she offers the same way, as evidence. The grey dress falls. She stands in the lamplight and covers nothing: the grey at her temples, the new lines at her mouth, the plain mortal warmth come back into her skin after a century of the Abyss. \"Look,\" she says. \"Everything you did to me. I want you to see all of it.\"{/n}\n{n}You look. Then she pushes you down onto the bed and climbs astride your hips, palms flat on your chest, and bends to your mouth. Somewhere on the floor the notebook falls open, face down, and she does not go looking for it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -230135,7 +230137,7 @@
         {
           "Id": "in_witch",
           "Speaker": "Narrator",
-          "Text": "{n}She studies you the way she has studied everything: thoroughly, without hurry, and without once pretending it is anything but hunger. Her hands are fever-hot, not cold. The half of her that belongs to the Abyss runs close under the skin, and you feel it wherever she touches, like the heat off a forge.{/n}\n{n}She does not bother with buttons. Your shirt is simply gone, and so is her robe, and the violet light of the wound above her heart runs over bare skin like water.{/n}",
+          "Text": "{n}She studies you the way she has studied everything: thoroughly, without hurry, and as if the question of why were one she will get to afterwards. Her hands are fever-hot, not cold. The half of her that belongs to the Abyss runs close under the skin, and you feel it wherever she touches, like the heat off a forge.{/n}\n{n}She does not bother with buttons. Your shirt is simply gone, and so is her robe, and the violet light of the wound above her heart runs over bare skin like water.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -230151,7 +230153,7 @@
         {
           "Id": "in_witch_2",
           "Speaker": "Narrator",
-          "Text": "{n}The old wound from Kenabres she kisses once, very precisely. The wound above her own heart flares in answer until the room is full of its light. Crimson to the edges of her eyes. \"Yes,\" she says, against your mouth, as if confirming a result, and then she is not confirming anything.{/n}\n{n}She pulls you down on top of her, rolls you both, and comes up astride, her hair a curtain around your faces, her hands pinning your wrists to the pillow; and for the first time in a hundred years Areelu Vorlesh stops taking notes.{/n}",
+          "Text": "{n}The old wound from Kenabres she kisses once, very precisely. The wound above her own heart flares in answer until the room is full of its light. Crimson to the edges of her eyes. \"Yes,\" she says, against your mouth, as if confirming a result, and then she is not confirming anything.{/n}\n{n}She pulls you down on top of her, rolls you both, and comes up astride, her hair a curtain around your faces, her hands pinning your wrists to the pillow. The notebook is somewhere on the floor. She does not go looking for it until morning.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -230203,7 +230205,7 @@
         {
           "Id": "notebook",
           "Speaker": "Narrator",
-          "Text": "{n}She lets the notebook go. It lands on the floor, open, face down, and something in her goes very still and then very bright.{/n}\n{n}\"That,\" she says, \"was a mistake. Now you will have to be my notes.\" Both hands on your chest, a push, and you are on your back on the bed with her following, her mouth hot and exact and not at all the mouth of someone who has forgotten what she wants.{/n}\n{n}She comes down astride you. One hand pins your wrists above your head; the other begins, unhurriedly, to unfasten everything it can reach. \"Hold still,\" she says. \"I am observing.\" The lamp goes over. Neither of you reaches for it, and she is not observing anything at all.{/n}",
+          "Text": "{n}She lets the notebook go. It lands on the floor, open, face down, and something in her goes very still and then very bright.{/n}\n{n}\"You have taken my instrument,\" she says. \"Then I shall have to use the other one.\" She puts two fingers to the side of your throat, where the pulse is, and holds them there, and counts under her breath. \"There is a question I have not been able to answer from across the hall. Whether it is the Trickster who wants me, or the Commander. They have different pulses. I have a hundred years of practice at telling people apart by their pulse.\"{/n}\n{n}She walks you back to the bed with those two fingers and nothing else, and comes down astride you, and does not take them away. Her other hand begins, unhurriedly, to unfasten everything it can reach. \"Lie there. I have not finished counting.\" The lamp goes over. Neither of you reaches for it, and somewhere after that she loses count, and does not start again.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -230273,7 +230275,7 @@
         {
           "Id": "morning_after",
           "Speaker": "Narrator",
-          "Text": "{n}That afternoon she went back across the hall and moved her own desk under the one window of her room that faced the street, where she could see who came to the Commander's door before the Commander did, with its back to the wall.{/n}\n{n}\"You are the only protection I have left that the hunters respect,\" she said, when the Commander found it there. \"And the only subject I have left worth watching. It is efficient. Do not mistake it for anything else.\" Her travelling case stayed packed beside it, and she did not hide that either.{/n}",
+          "Text": "{n}That afternoon she went back across the hall and moved her own desk under the one window of her room that faced the street, where she could see who came to the Commander's door before the Commander did, with its back to the wall.{/n}\n{n}\"You are the only protection I have left that the hunters respect,\" she said, when the Commander found it there. Then, because it was not the whole of it, and she had never in her life been able to leave a sum unfinished: \"And nobody comes to your door that I have not seen first. The last time hunters came to a door of mine, I was at my desk with my back to the window.\" She looked at the desk as if it had spoken out of turn. \"Strike that. It is a sound position.\" Her travelling case stayed packed beside it, and she did not hide that either.{/n}",
           "Choices": [
             {
               "Text": "\"Stay, then. On your terms.\"",
@@ -230313,7 +230315,7 @@
         {
           "Id": "propose",
           "Speaker": "Narrator",
-          "Text": "{n}She did not answer at once. She took out her notebook and wrote the proposal down, word for word, and read it back to herself.{/n}\n{n}\"Terms,\" she said. \"The desk goes under your window, not mine, and nobody moves it. The notebook is never read, asleep or awake. I choose the nights. And the case stays packed, in plain sight, for the day I leave. Agree to all four, or none.\"{/n}",
+          "Text": "{n}She did not answer at once. She took out her notebook and wrote the proposal down, word for word, and read it back to herself.{/n}\n{n}\"Conditions,\" she said. \"The desk goes under your window, not mine, and nobody moves it. The notebook is never read, asleep or awake. I choose the nights. And the case stays packed, in plain sight, for the day I leave. Agree to all four, or none.\"{/n}",
           "Choices": [
             {
               "Text": "\"All four.\"",
@@ -230337,7 +230339,7 @@
         {
           "Id": "shared",
           "Speaker": "Narrator",
-          "Text": "{n}She moved the desk that evening, and put the case beside it, and did not unpack.{/n}\n{n}\"The hallway,\" she said, \"was a control. The control has failed. I am told that happens, in the best experiments.\" She wrote the four terms on the first page of a new notebook and pinned it over the desk, where she could see it every morning.{/n}",
+          "Text": "{n}She moved the desk that evening, and put the case beside it, and did not unpack.{/n}\n{n}\"The hallway,\" she said, \"was a control. The control has failed.\" She wrote the four conditions on the first page of a new notebook and pinned it over the desk, where she could see it every morning.{/n}\n{n}Some weeks later the Commander came in near dawn and found her asleep at that desk, the pen still in her hand, turned in her chair toward the bed rather than the door. The entry in front of her stopped in the middle of a word. She never finished it, and she never tore the page out; and when the Commander asked, she said she had been observing, and did not say what.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -230369,7 +230371,7 @@
         {
           "Id": "stay",
           "Speaker": "Narrator",
-          "Text": "{n}\"My terms.\" She looked at the Commander for a long moment, as if checking whether the words had a clause she had missed. \"Very well. My terms are that I leave the day you bore me, and that I take my notes when I go.\" The case stayed packed. It was the first thing she looked at every morning.{/n}",
+          "Text": "{n}\"On my terms.\" She read the sentence back to herself, as if checking it for a clause she had missed. \"Very well. Two conditions. I leave the day you bore me, and I take my notes when I go.\" The case stayed packed. It was the first thing she looked at every morning.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -230417,7 +230419,7 @@
         {
           "Id": "letters",
           "Speaker": "Narrator",
-          "Text": "{n}There were others in the Commander's life. She found their letters within the month, read every one, and put them back exactly as they had been. \"They are not my concern,\" she said, when the Commander asked. \"And I am not theirs. If one of them ever asks me to leave, I will decide then whether I care, and so will you.\" She did not raise it again, and she did not pretend not to have read the letters.{/n}",
+          "Text": "{n}There were others in the Commander's life. She found their letters within the month, read every one, and put them back exactly as they had been, and said so at breakfast, to the Commander's face.{/n}\n{n}\"I do not share well. I never have; ask the Wound.\" She set down her cup. \"So these are the conditions I set for the household, and you will carry them to it, since you are the one who gathered it. I will not be lied to about whose bed you are in. None of them comes into the room with my notes. And if one of them wants me gone, she tells me so herself, in words, not through you.\" She did not ask whether they would agree. She had already, the Commander learned later, told two of them in person.{/n}\n{n}She had known before the letters. The Commander came home some nights smelling of a perfume that was not hers, or of forge smoke, or of some temple's incense, and she had catalogued each one without comment, the way she catalogued weather. What she decided, in the end, she decided alone, at her desk, and told the Commander in one sentence: \"I will read no more of your letters. Not because they are private. Because I find I do not want to know the rest by reading it.\" It was the only observation she ever chose not to make, and she made a note that she had chosen it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -230433,7 +230435,7 @@
         {
           "Id": "closed",
           "Speaker": "Narrator",
-          "Text": "{n}The Commander closed the door gently between them.{/n}\n{n}Through the wood, after a long moment, came a dry sound that might have been a laugh. \"Subject declined,\" said Areelu Vorlesh. \"Noted.\" Her footsteps went back across the hall.{/n}\n{n}She did not knock again that winter, and she did not seem, in the mornings, to hold it against anyone. She only wrote more.{/n}\n{n}In the spring she knocked once more, very late, and when the Commander opened the door she only said: \"The hypothesis has been revised. I wished to inform you in person.\" Then she went back across the hall. The Commander never found out to what.{/n}",
+          "Text": "{n}The Commander closed the door gently between them.{/n}\n{n}Through the wood, after a while, came a dry sound that might have been a laugh. \"Subject declined,\" said Areelu Vorlesh. \"Noted.\" Her footsteps went back across the hall.{/n}\n{n}She did not knock again that winter, and she did not seem, in the mornings, to hold it against anyone. She only wrote more.{/n}\n{n}In the spring she knocked once more, very late, and when the Commander opened the door she only said: \"The hypothesis has been revised. I wished to inform you in person.\" Then she went back across the hall. The Commander never found out to what.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -232221,7 +232223,7 @@
         {
           "Id": "date",
           "Speaker": "Narrator",
-          "Text": "{n}The bird looked at the Commander. Then it looked at Areelu. Then, extraordinarily, it looked at the ceiling, the way a clerk looks at the ceiling when a petitioner has said something that is not in any of the forms.{/n}\n{n}\"The Lady does not negotiate dates,\" it said. \"The Lady has, on occasion, been known to lose track of a page for a while, when the page is very tedious to collect.\" It considered Areelu for a long moment. \"This page will be very tedious to collect.\" Areelu smiled, slowly, for the first time since the bird had arrived.{/n}",
+          "Text": "{n}The bird looked at the Commander. Then it looked at Areelu. Then, extraordinarily, it looked at the ceiling, the way a clerk looks at the ceiling when a petitioner has said something that is not in any of the forms.{/n}\n{n}\"The Lady does not negotiate dates,\" it said. \"The Lady has, on occasion, been known to lose track of a page for a while, when the page is very tedious to collect.\" It considered Areelu at length, one eye and then the other. \"This page will be very tedious to collect.\" Areelu smiled, slowly. It was the first smile the bird had got out of her.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -232548,7 +232550,7 @@
         {
           "Id": "knight",
           "Speaker": "Narrator",
-          "Text": "{n}He had fought at the edge of the Worldwound for forty years, he said, and he had never once seen the face of the woman who made it. He did not want to hurt her. He was too old. He only wanted to look.{/n}\n{n}Areelu let him. She sat very straight at the kitchen table and let him look for as long as he liked, and did not look away. When he had finished, he said, \"You're smaller than I thought.\" \"Everyone is,\" said Areelu Vorlesh, \"close to.\" He laughed, which surprised them all, and went.{/n}\n{n}\"Forty years,\" she said, when the door had closed. \"He was eighteen when he came to the Wound, and he is sixty now, and every year in between belongs to me. He did not even want to hit me.\" She sat very still. \"I would have preferred it if he had.\"{/n}",
+          "Text": "{n}He had fought at the edge of the Worldwound for forty years, he said, and he had never once seen the face of the woman who made it. He did not want to hurt her. He was too old. He only wanted to look.{/n}\n{n}Areelu let him. She sat very straight at the kitchen table and let him look for as long as he liked, and looked back. When he had finished, he said, \"You're smaller than I thought.\" \"Everyone is,\" said Areelu Vorlesh, \"close to.\" He laughed, which surprised them all, and went.{/n}\n{n}\"Forty years,\" she said, when the door had closed. \"He was eighteen when he came to the Wound, and he is sixty now, and every year in between belongs to me. He did not even want to hit me.\" She sat very still. \"I would have preferred it if he had.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -233777,7 +233779,7 @@
         {
           "Id": "her_test",
           "Speaker": "Chadali",
-          "Text": "\"So you've been cheating chance on my account.\" {n}She folds her arms. For the first time since you met her she isn't smiling, and without the dimples she looks every bit the empyreal lord: old, and patient, and not at all soft.{/n}\n\"Then do it properly. You make things happen. You don't wait for them. Tell me what happens next, and make it true.\"",
+          "Text": "\"So you've been cheating chance on my account.\" {n}She folds her arms. She isn't smiling. You have never once seen her not smiling, and without the dimples she looks every bit the empyreal lord: old, and patient, and not at all soft.{/n}\n\"Then do it properly. You make things happen. You don't wait for them. Tell me what happens next, and make it true.\"",
           "Choices": [
             {
               "Text": "[Ask her] \"Next, you say yes.\"",
@@ -234132,7 +234134,7 @@
         {
           "Id": "coin",
           "Speaker": "Narrator",
-          "Text": "{n}Your coin is in the envelope. It is lying flat, heads up, for the first time since you called it in the air.{/n}",
+          "Text": "{n}Your coin is in the envelope. It is lying flat, heads up. It has not lain flat since you called it in the air.{/n}",
           "Choices": [
             {
               "Text": "Read the letter.",
@@ -235899,7 +235901,7 @@
         {
           "Id": "curse",
           "Speaker": "Chadali",
-          "Text": "{n}Chadali looks at you for a long moment, and something in her face that has always been open is, for the first time, carefully closed.{/n}\n\"All right,\" she says. \"For the Council. For his own good.\" {n}She puts the feather in her sleeve, beside the prayers.{/n}\n\"I'll keep it up. I'm very good at wishing. People forget that I can stop.\" {n}And then, more softly, not to you:{/n} \"Poor old fellow.\"",
+          "Text": "{n}Chadali looks at you, and her face, which has always been open, is carefully closed.{/n}\n\"All right,\" she says. \"For the Council. For his own good.\" {n}She puts the feather in her sleeve, beside the prayers.{/n}\n\"I'll keep it up. I'm very good at wishing. People forget that I can stop.\" {n}And then, more softly, not to you:{/n} \"Poor old fellow.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -236467,7 +236469,7 @@
         {
           "Id": "smooth",
           "Speaker": "Chadali",
-          "Text": "{n}The bones fall. Five backs. It is a perfect throw, and perfectly invisible; you are rather proud of it.{/n}\n{n}Chadali looks at the bones for a long moment without clapping.{/n} \"Five,\" she says. \"Five backs, first throw.\"\n{n}She gathers them up and throws. They come down any old way. She looks at them, and then at you, and smiles, and the smile is completely friendly and does not reach her eyes.{/n} \"Lucky you.\"",
+          "Text": "{n}The bones fall. Five backs. It is a perfect throw, and perfectly invisible; you are rather proud of it.{/n}\n{n}Chadali looks at the bones and, for once, does not clap.{/n} \"Five,\" she says. \"Five backs, first throw.\"\n{n}She gathers them up and throws. They come down any old way. She looks at them, and then at you, and smiles, and the smile is completely friendly and does not reach her eyes.{/n} \"Lucky you.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -237004,7 +237006,7 @@
         {
           "Id": "deny",
           "Speaker": "Chadali",
-          "Text": "{n}She looks at you for a long time. Then she nods, and smiles, and pushes the cookie into your hand.{/n}\n\"All right,\" she says. \"I'm imagining it.\"\n{n}She is perfectly pleasant for the rest of the audience. She talks about the weather in Elysium and the price of honey. When you leave, she says \"Go on, lucky charm,\" exactly as she always does, and for the first time it sounds like something she has decided to keep saying.{/n}",
+          "Text": "{n}She looks at you for a long time. Then she nods, and smiles, and pushes the cookie into your hand.{/n}\n\"All right,\" she says. \"I'm imagining it.\"\n{n}She is perfectly pleasant for the rest of the audience. She talks about the weather in Elysium and the price of honey. When you leave, she says \"Go on, lucky charm,\" exactly as she always does, and now it sounds like something she has decided to keep saying.{/n}",
           "Choices": [
             {
               "Text": "[Go.]",
@@ -238221,7 +238223,7 @@
         {
           "Id": "kiss",
           "Speaker": "Chadali",
-          "Text": "{n}She tastes of honey. Of course she does. She kisses the way she laughs, all at once and with her whole body, up on her toes with her fists in your collar, and when she runs out of breath she does not stop so much as pause and begin again.{/n}\n{n}Her bracelets are cold against the back of your neck and her mouth is hot, and she makes a small astonished sound, as if something unexpectedly wonderful had happened to her, which, you slowly understand, it has.{/n}",
+          "Text": "{n}She tastes of honey. Of course she does. She kisses the way she laughs, all at once and with her whole body, up on her toes with both hands knotted in your sleeves, and when she runs out of breath she does not stop so much as pause and begin again.{/n}\n{n}Her bracelets are cold against the back of your neck and her mouth is hot, and she makes a small astonished sound, as if something unexpectedly wonderful had happened to her, which, you slowly understand, it has.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -238942,7 +238944,7 @@
         {
           "Id": "not_last",
           "Speaker": "Chadali",
-          "Text": "\"Promise?\" {n}The little finger, again.{/n}\n{n}You link it. She holds on for a long moment, and her face is very serious, and then it breaks into the brightest smile you have ever seen on it.{/n}\n\"There. I asked for something for me, and I got it. Oh, that's frightening. That's so much more frightening than luck.\" {n}She flops back onto the cushions.{/n} \"I'm going to do it again. Not often. Just sometimes. To see if I like it.\"",
+          "Text": "\"Promise?\" {n}The little finger, again.{/n}\n{n}You link it. She holds on a while, and her face is very serious, and then it breaks into the brightest smile you have ever seen on it.{/n}\n\"There. I asked for something for me, and I got it. Oh, that's frightening. That's so much more frightening than luck.\" {n}She flops back onto the cushions.{/n} \"I'm going to do it again. Not often. Just sometimes. To see if I like it.\"",
           "Choices": [
             {
               "Text": "[Lie down beside her.]",
@@ -241362,7 +241364,7 @@
         {
           "Id": "use",
           "Speaker": "Chadali",
-          "Text": "{n}She looks at you for a long moment, and something careful comes into her face that was not there before.{/n}\n\"Let him owe us.\" {n}She repeats it slowly.{/n} \"You're spending me. Like a coin. On a bet you won't tell me the stakes of.\" {n}She nods.{/n} \"All right. I'll do it. I'm very good at luck, and you're very good at knowing what it's for.\"\n\"But I noticed.\" {n}She picks up one of his flowers and turns it.{/n} \"I'll always notice, now, when you're spending me. I just wanted you to know that I noticed.\"",
+          "Text": "{n}She looks at you, and something careful comes into her face that was not there before.{/n}\n\"Let him owe us.\" {n}She repeats it slowly.{/n} \"You're spending me. Like a coin. On a bet you won't tell me the stakes of.\" {n}She nods.{/n} \"All right. I'll do it. I'm very good at luck, and you're very good at knowing what it's for.\"\n\"But I noticed.\" {n}She picks up one of his flowers and turns it.{/n} \"I'll always notice, now, when you're spending me. I just wanted you to know that I noticed.\"",
           "Choices": [
             {
               "Text": "[Leave her with the flowers.]",
@@ -241638,7 +241640,7 @@
         {
           "Id": "nervous",
           "Speaker": "Chadali",
-          "Text": "{n}She is quiet for a long moment, her floury hands still in the bowl.{/n}\n\"I've never been nervous before,\" she says at last. \"I didn't know it felt like this. Like knowing the odds of everything except one thing, and that one thing is the only one that matters.\"\n{n}She looks up at you.{/n} \"I'm chance, and I don't know what I'll say. Isn't that silly? I know what I'll say. I don't know if I'll be brave enough to say it.\"",
+          "Text": "{n}She is quiet, her floury hands gone still in the bowl.{/n}\n\"I've never been nervous before,\" she says at last. \"I didn't know it felt like this. Like knowing the odds of everything except one thing, and that one thing is the only one that matters.\"\n{n}She looks up at you.{/n} \"I'm chance, and I don't know what I'll say. Isn't that silly? I know what I'll say. I don't know if I'll be brave enough to say it.\"",
           "Choices": [
             {
               "Text": "\"I'll ask when you're ready. Not before.\"",
@@ -265219,8 +265221,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",

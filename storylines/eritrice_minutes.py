@@ -200,14 +200,14 @@ minutes(QUILL, "The quill", '"Can I ask about the quill?"', [
 "Alichino asked once. To 'correct a clerical error'. Socothbenoth asked, often, for reasons he made very clear. Chadali asked to draw a flower in the margin." {n}Something almost like a laugh.{/n} "I let her dictate the flower to me. I drew it myself. It was a very poor flower."''',
       c('[Hold out your hand for the quill.]', "hand"),
       c('"I wouldn\'t ask. It\'s yours."', "wouldnt")),
-    e("hand", '''{n}She looks at your open hand for a long time, as if it were a motion she had not expected on the agenda.{/n}
+    e("hand", '''{n}She looks at your open hand as if it were a motion she had not expected on the agenda.{/n}
 "You are asking the chair to hand the record to the Commander. The Commander who once carried a vote by pretending to be six people, and who made the chair write 'carried' on a motion with no floor."
 {n}Her claws turn the quill over, once. Then she lays it across your palm, and her fingers stay on it a moment longer than the quill needs.{/n}
 "One line. True. I will be watching."''',
       c("[Write: \"The chair is not what I expected.\"]", "wrote", flags=(WROTE,)),
       c("[Write: \"The Commander concedes nothing.\"]", "wrote_joke", flags=(WROTE,)),
       c("[Hand it back, unused.]", "unused")),
-    e("wouldnt", '''"No. You would not." {n}She looks at you for a long moment, the quill very still between her claws.{/n}
+    e("wouldnt", '''"No. You would not." {n}She looks at you, the quill very still between her claws.{/n}
 "Alichino asked for it. Socothbenoth asked for it. Chadali asked for it. You are the first person at this table who has declined to ask for the one thing I would have refused." {n}Something in her face shifts, like a verdict being reconsidered.{/n}
 "Which is precisely why I am going to offer it." {n}She turns the quill around and holds it out to you, feather first.{/n} "One line. True. I will be watching."''',
       c("[Write: \"The chair is not what I expected.\"]", "wrote", flags=(WROTE,)),
@@ -246,7 +246,7 @@ minutes(DEVIL, "A noble devil", '"Point of information. About Alichino."', [
       c('"It\'s still true. Even a devil can find the truth. He just won\'t share it."', "defend"),
       c('"He\'s selling you, Madam Chair. Whatever you find, he\'s already found a buyer."', "expose"),
       c('[Pick up the notebook.]', "notebook")),
-    e("defend", '''{n}She lets out a breath she has clearly been holding since before you came in.{/n}
+    e("defend", '''{n}Her shoulders come down a clear inch, as if she had been holding them up since before you came in.{/n}
 "Yes. That is the distinction. Finding and sharing are different verbs." {n}She writes: "The Commander holds that a devil may find the truth. Carried."{/n}
 "You have made the chair feel less foolish. That is a dangerous gift, Commander. Devils give it too, and I usually notice."''',
       c("[Leave the notebook where it is.]", flags=(DEVIL_DEFENDED,))),
@@ -284,16 +284,16 @@ minutes(SUGGESTED, "Who suggested it", '"Point of information. Who suggested the
 "Nocticula." {n}The name comes out of her like a growl with words in it.{/n} "He brought me the idea of a Council, and then he brought me you, and all the while he wanted something from his sister. I thought I was the chair. I was the furniture."''',
       c("Continue", "expose_end")),
     e("expose_end", '''{n}She comes back and sits down, and picks up the quill at last, and her hand is quite steady.{/n}
-"Thank you. It is a horrible thing to be told, and you told it to me plainly. Nobody else at this table would have." {n}She writes, for a long time.{/n}
+"Thank you. It is a horrible thing to be told, and you told it to me plainly. Nobody else at this table would have." {n}She writes, and goes on writing.{/n}
 "I will not expel him. A Council that expels its liars is left with nobody to debate. But I will never again mistake his reasons for mine."''',
       c("[Leave her to her writing.]", flags=(SOCOTH_EXPOSED,))),
-    e("cover", '''{n}She looks at you for a long moment, and then, visibly, decides to believe you, the way one decides to step onto ice.{/n}
+    e("cover", '''{n}She looks at you, and then, visibly, decides to believe you, the way one decides to step onto ice.{/n}
 "Bored. Yes. That is very like him." {n}She writes it down: "The Commander holds that Socothbenoth is bored." She underlines nothing.{/n}
 "Thank you, Commander. I was afraid you would tell me something I would have to act on." {n}She rolls the scroll. She does not look at it again while you are there.{/n}''',
       c("[Leave her with the lie.]", flags=(SOCOTH_COVERED,))),
-    e("promise", '''"That is not a point. That is a promise." {n}But she writes it down, word for word, and signs under it, and turns the scroll so that you can sign too.{/n}
+    e("promise", '''"That is not a point. That is a promise." {n}But she writes it down, word for word, and reads it back to you in the chair's voice, and waits.{/n}
 "If you do not keep it, it will be the first broken promise in my minutes. I have kept these minutes a very long time, Commander. I would prefer not to begin with you."''',
-      c("[Sign.]")),
+      c("[Say it again, word for word, so that she has heard it twice.]")),
 ], requires=(POINT_ONE,), forbids=(SUGGESTED,))
 
 
@@ -359,7 +359,7 @@ minutes(ORDER, "Point of order", '"You wanted to see me, Madam Chair?"', [
       c("[Learn the sign.]")),
     e("gavel", '''"There is no gavel. This is not a tavern." {n}But she taps the scroll twice with her claw, deliberately, watching you.{/n}
 "That is the sign. When I do that, and only then, you may say 'Get to work', and I will pretend to be scandalised." {n}She writes it down, in the smaller hand she uses for her own notes.{/n}
-"The chair notes that she has delegated one power of the chair for the first time since the Council was convened. The chair is not sure she will survive it."''',
+"The chair notes that she has delegated one power of the chair, which she has not done since the Council was convened. The chair is not sure she will survive it."''',
       c("[Learn the sign.]")),
 ], requires=(POINT_ONE,), forbids=(ORDER,))
 ORDER_SCENE = SCENES[-1]
@@ -389,7 +389,7 @@ minutes(CIPHERED, "What the truth could not read", '"You looked at the Lexicon p
 {n}Her eyes open, and they are wet, which you did not know they could be.{/n}
 "That was horrible. Do it again next week."''',
       c("[Promise to.]", flags=(CONCEDED,))),
-    e("refuse", '''"You think so little of me." {n}But she does not sound angry. She sounds, for the first time, uncertain.{/n}
+    e("refuse", '''"You think so little of me." {n}But she does not sound angry. She sounds, of all things, uncertain.{/n}
 "Perhaps you are right. Perhaps the only reason I am any use at all is that I cannot do what you do." {n}She lays the glass back down over the pages, precisely.{/n}
 "Keep reading ciphers for me, then. And tell me the truth about what they say. That, I can do. I will write it down."''',
       c("[Promise to.]")),
@@ -427,7 +427,7 @@ minutes(AT_WORST, "At worst", '"About the key. \'At worst, you\'ll die.\'"', [
 "Remember it every time I vote. Remember it when I am kind to you. It will make you a better judge of me than I am."
 {n}She is quiet a moment, and when she speaks again it is very low.{/n} "I would not trust anyone who forgot it. Least of all myself."''',
       c("[Let the point stand.]")),
-    e("used", '''{n}Her ears go flat. For a long moment you think she is going to reach across the table.{/n}
+    e("used", '''{n}Her ears go flat. For a heartbeat you think she is going to reach across the table.{/n}
 "You are trading on my guilt." {n}Very quietly.{/n} "That is what Alichino would do."
 {n}She writes. You can read it upside down, and she lets you: "The chair agrees to vote once as the Commander instructs. The chair records that the Commander asked it, and why."{/n}
 "There. It is minuted, Commander. I will pay it. And every time anyone opens this scroll, they will see exactly what you charged me."''',
@@ -510,7 +510,7 @@ minutes(ADJOURNED, "Adjourned", '"The chair called for an adjournment?"', [
       c('"I\'ve got no refutation. I\'ve got a counter-motion."', "counter"),
       c('[Take the quill out of her hand.]', "quill")),
     e("quill", '''{n}She is holding the quill, of course. She did not notice she had picked it up. You take it from her fingers, slowly, and she lets it go, watching it leave her hand as if it were a part of her.{/n}
-"That is the first time in my existence that I have let it go without finishing the line." {n}Her breath is short.{/n} "Put it somewhere I cannot reach it. Now."''',
+"I have never once let it go without finishing the line." {n}Her breath is short.{/n} "Put it somewhere I cannot reach it. Now."''',
       c("[Set it on the far end of the table, and come back.]", "kiss")),
     e("counter", '''"State it." {n}A growl, deep and immediate, and not at all displeased.{/n}
 {n}You state it, at some length and in some detail, and she listens with her eyes half-closed and her claws curled into her own palms, and when you have finished she lets out a long breath that is almost a purr.{/n}
@@ -520,9 +520,9 @@ minutes(ADJOURNED, "Adjourned", '"The chair called for an adjournment?"', [
 {n}Against your mouth:{/n} "Point of order. You are wearing a great deal of armour for a private session."''',
       c("Continue", "armour")),
     e("armour", '''{n}She undoes the buckles herself, one by one, with the same patient attention she gives to a long agenda, and every time a strap comes free she says its name, as if entering it in the record. You have never heard anyone make the word "vambrace" sound like that.{/n}
-{n}When the last of it is on the floor she pushes you back until you are sitting on the edge of the Council's long table, among the inkwells, and stands between your knees, and looks at you in the lamplight for a long time.{/n}''',
+{n}When the last of it is on the floor she pushes you back until you are sitting on the edge of the Council's long table, among the inkwells, and stands between your knees, and looks at you in the lamplight, unhurried, the way she reads a motion twice before she votes.{/n}''',
       c("Continue", "look")),
-    e("look", '''{n}For once she says nothing at all. Her amethyst eyes are very dark, and her breathing is the only sound in the hall. She pulls the belt of her gown loose with one claw, and it falls open, and she does not look away from your face while it does.{/n}
+    e("look", '''{n}For once she says nothing at all. Her amethyst eyes are very dark, and her breathing is the only sound in the hall. She pulls the belt of her gown loose with one claw, and it falls open, and she watches your face, not the gown, while it does.{/n}
 "Well, Commander?"''',
       c('[Answer her.]', "cut", flags=(M + "night",))),
     e("cut", '''{n}You answer her. She reaches past you, without taking her eyes from yours, and turns the lamp down to nothing; and in the last of its light you see her other hand move the second reading's scroll to safety at the far end of the table, even now, even then.{/n}''',
@@ -550,7 +550,7 @@ minutes(RECORD, "The record", '"You\'re writing already?"', [
       c("[Kiss the ink off her fingers.]", flags=(MINUTED,))),
     e("blank", '''{n}The quill stops. She simply looks at the empty space under the date.{/n}
 {n}Slowly, as if arguing it with herself:{/n} "An omission is not a lie. The record shows that a session took place. It does not claim that nothing happened." {n}She writes, at last, in a small tight hand: "The chair was otherwise occupied."{/n}
-"That is true. That is entirely true. It is the first time in my existence I have written something true in order to hide something." {n}She stares at it.{/n} "I do not know whether I have just learned something from you, or lost something."''',
+"That is true. That is entirely true. I have never in my existence written something true in order to hide something." {n}She stares at it.{/n} "I do not know whether I have just learned something from you, or lost something."''',
       c("[Take her ink-stained hand.]", flags=(OMITTED,))),
 ], requires=(ADJOURNED,), forbids=(RECORD,), delay=6)
 
@@ -574,9 +574,9 @@ minutes(STANDING, "A standing item", '"You\'ve added something to the agenda."',
     e("tease", '''"You will do no such thing." {n}And then, because it is her rule, and she keeps her rules:{/n} "...One meeting in three. On the sign."
 {n}She taps the scroll twice with a claw, watching you. Then, more quietly:{/n} "That was not an answer, Commander. That was a very charming refusal to answer. The item stands."''',
       c('"...Build your crossroads. Sit at your table. Argue with you."', "table")),
-    e("close", '''"The item is answered. For now." {n}She writes, and signs, and then does something you have never seen her do: she hands you the quill, and turns the scroll, and waits.{/n}
-"Sign under it. Not for the chair. For the record. The Council will pretend one day that it never met, Commander. I know it will; I know them. I would like there to be one scroll somewhere that says otherwise, in two hands."''',
-      c("[Sign.]", flags=(AFTER_WAR,))),
+    e("close", '''"The item is answered. For now." {n}She writes, and then does something you have never seen her do: she reads the item back aloud, in the voice she uses for the full Council, to a hall with nobody in it but you.{/n}
+"It wants a second. Not for the chair. For the record. The Council will pretend one day that it never met, Commander. I know it will; I know them. I would like there to be one scroll somewhere that says otherwise, and says who seconded it."''',
+      c("[Second it, aloud.]", flags=(AFTER_WAR,))),
 ], requires=(RECORD,), forbids=(STANDING,), delay=48)
 
 
@@ -593,7 +593,7 @@ minutes(BLANK, "The blank line", '"Is the motion still on the table?"', [
 "I have been at a table for a very long time with people who wanted me to carry their motions for them. I did not want you to be one of them. I still do not."''',
       c("Continue", "wait")),
     e("wait", '''"Then it stays on the table." {n}She moves the dagger from the corner of the scroll back to her belt, which lets the corner curl, a little, toward her.{/n}
-"The third reading has a price. You will not like it. I will not make it cheaper because I want you to pay it." {n}She meets your eyes.{/n} "I want you to pay it. I have never before in my existence wanted anyone to pay a price at my table. I do not like what that says about me, and I am not going to stop wanting it."''',
+"At a third reading the chair hears the case against. You will not like who has to make it. I will not make it easier because I want you to win." {n}She meets your eyes.{/n} "I want you to win. I have never before wanted one side of a debate to win at my table. I do not like what that says about the chair, and I am not going to stop wanting it."''',
       c("[Leave the line blank a while longer.]")),
 ], requires=(DECLINED,), forbids=(BLANK, COMMITTED))
 
