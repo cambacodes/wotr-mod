@@ -369,7 +369,9 @@ SCENES.append(scene(P + "epilogue.woken", "", "DevarraEpilogue", 6, "", [
     requires=("trickster.ever", RETURNED, COMMITTED), last=6, Relationship="devarra"))
 
 SCENES.append(scene(P + "epilogue.commit", "", "DevarraEpilogue", 6, "", [
-    nar("page", '''{n}The war ended before the woundwyrm finished her judgment. She finished it afterwards, on her own terms: a grey dragon landed on the Commander's roof one winter night and said, through the chimney, that the story would do, and that she would be taking her first bite in the spring. She did. The Commander kept the scar, and the appointment, for the rest of their life.{/n}''')],
+    nar("page", '''{n}The war ended before the woundwyrm finished her judgment. She finished it afterwards, on her own terms. One winter night a grey dragon landed on the Commander's roof, hard enough to crack the tiles, and put her head down into the yard, where the Commander came out barefoot to meet her.{/n}
+"The story will do," she said. "It is not finished, and it is not true, and it is yours. That makes it worth a life. Yours, I think, since you keep spending it on me." {n}Her eye took in the house, the lamps, the door that could be locked and would not stop her.{/n} "My tariff stands. Once a year, where I choose. I will choose the spring, and I will choose the arm, and if you are ever not here when I come, I will take the bite out of the house instead."
+{n}She took it in the spring, on the ridge, in a ring of fire. The Commander kept the scar, and the appointment, for the rest of their life, and never once locked the door.{/n}''')],
     requires=("trickster.ever", TESTED), forbids=(COMMITTED, CLOSED, DECLINED, LEFT_HUNGRY), last=6, Relationship="devarra"))
 
 SCENES.append(scene(P + "epilogue.refused", "", "DevarraEpilogue", 6, "", [
