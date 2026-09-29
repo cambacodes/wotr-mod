@@ -125,7 +125,8 @@ internal static class KaylessaTricksterTests
               && borrow.TricksterDevice && borrow.TricksterState == "dead"
               && new[] { "shyka.gone", "council.fought", "council.fought_nocta_allied" }.All(borrow.Forbids.Contains),
             "The borrow is not Shyka's own inline hub device, closed by every outlived Council key.");
-        check(new[] { hunter, warning, swap }.All(s => Rules.IsRemote(s) && s.MinChapter == 5 && s.TricksterDevice && s.TricksterState == "alive"),
+        check(new[] { hunter, warning, swap }.All(s => Rules.IsRemote(s) && s.MinChapter == 5)
+              && new[] { hunter, swap }.All(s => s.TricksterDevice && s.TricksterState == "alive"),
             "The living world's device is not a Chapter 5 chain of Trickster device visits.");
         var presence = story.Presences["kaylessa.presence"];
         check(presence.Unit == Unit && presence.Dialog == "hub" && presence.At?.NearUnit == Tailor && presence.At!.Side == "left"
@@ -160,9 +161,9 @@ internal static class KaylessaTricksterTests
             "Trk_Kaylessa_Raised: the haggle is not a Diplomacy check whose failure raises the price.");
 
         // Trk_Kaylessa_Outlived: without Shyka there is no holder who can deliver; canon fate stands.
-        foreach (var key in new[] { "council.fought_nocta_allied", "council.fought", "shyka.gone" })
-            check(!Avail(borrow, World(story, 5, "trickster", "trickster.ever", Dead, key)) && !Avail(hunter, World(story, 5, "trickster", "trickster.ever", Dead, key)),
-                "Trk_Kaylessa_Outlived: a device opens after " + key);
+        foreach (var gone in new[] { "council.fought_nocta_allied", "council.fought", "shyka.gone" })
+            check(!Avail(borrow, World(story, 5, "trickster", "trickster.ever", Dead, gone)) && !Avail(hunter, World(story, 5, "trickster", "trickster.ever", Dead, gone)),
+                "Trk_Kaylessa_Outlived: a device opens after " + gone);
 
         // Trk_Kaylessa_Reveal and its pivotal decline.
         var reveal = World(story, 3, "trickster", "trickster.ever", Dead, Begged, P + "promised", "kaylessa.camellia_killed");
@@ -240,8 +241,11 @@ internal static class KaylessaTricksterTests
         check(Through(table, Later(story, no, 72), "knife", 0).All(r => r.Has(Committed)) && Take(table, Later(story, no, 72), "knife", 2, Closed).Has(P + "left_free"),
             "Trk_Kaylessa_Declined: the knife on the table is not a yes (picked up) or a parting (left).");
         var liar = World(story, 5, "trickster.ever", Returned, Dead, P + "lied_about_price", P + "knife_shown", P + "beast_met");
-        check(Avail(commit, liar) && Program.Walk(commit, liar).Where(r => r.Has(Committed)).All(r => r.Has(P + "confessed_price")),
-            "Trk_Kaylessa_Lie: she hands the knife to someone still lying about her price.");
+        // No test: she names the unconfessed lie, but the knife is offered either way (the confession is a chance, not a toll).
+        var liarWalks = Program.Walk(commit, liar).Where(r => r.Has(Committed)).ToList();
+        check(Avail(commit, liar) && liarWalks.Any(r => r.Has(P + "confessed_price")) && liarWalks.Any(r => !r.Has(P + "confessed_price"))
+              && commit.Nodes.Single(n => n.Id == "truth_first").Choices.All(c => c.Set.All(f => f != P + "declined")),
+            "Trk_Kaylessa_Lie: the knife is priced on a confession (a test before yes).");
         check(Avail(pages.Single(p => p.Id == P + "epilogue.commit"), World(story, 6, "trickster.ever", P + "clock_named")),
             "Trk_Kaylessa_Late: the war's end has no late yes.");
 
@@ -262,6 +266,7 @@ internal static class KaylessaTricksterTests
         // Camellia's oath: her kill that didn't take, now that this route returns her (ledger 05 row 12).
         var oathCamp = S("camellia.trickster.kills_answered.oath_camp");
         var kWorld = World(story, 5, "trickster.ever", Returned, "kaylessa.camellia_killed");
+        kWorld.AvailableContacts.Add("397b090721c41044ea3220445300e1b8");   // Camellia's own unit: her oath is a physical scene at her camp
         var route = oathCamp.Nodes.Single(n => n.Id == "start").Choices.Where(c => Rules.Match(c.Requires, c.Forbids, kWorld)).ToList();
         check(Rules.Available(story, oathCamp, kWorld) && route.Count == 1 && route[0].Next == "kaylessa",
             "Trk_Kaylessa_CamelliaOath: Camellia's oath does not answer the Kaylessa kill that didn't take.");
@@ -284,6 +289,10 @@ internal static class KaylessaTricksterTests
                   "kaylessa.healed_by_force", "iz.anemora_dead", "kaylessa.trickster.react.shyka_note"),
             World(story, 5, "trickster.ever", Returned, "kaylessa.started", "kaylessa.met", P + "alive.swap_fumbled", P + "cost.amulet_burnt",
                   P + "cost.council_knows", P + "cost.arrow_taken", "iz.done"),
+            // Deep in the courtship: the spine up to the dagger and the walk in the dark already behind her.
+            World(story, 5, "trickster.ever", Returned, "kaylessa.started", P + "alive.swap_clean", P + "cost.amulet_burnt",
+                  P + "after.rules", P + "clock_named", P + "after.dark_fate", P + "beast_met", P + "after.the_beast", P + "knife_shown",
+                  P + "after.the_knife", W + "the_wasp", W + "soldier", W + "in_the_dark"),
         };
         foreach (var beat in courtship)
             check(worlds.Any(w => Reaches(w, beat.Id)), "Courtship beat unreachable in every test world: " + beat.Id);

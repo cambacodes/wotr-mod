@@ -144,8 +144,7 @@ DERIVED = {
     PRESENCE_ON: [[DEAD_L, PRIMED], [RETURNED]],
     # R2-6: the last beat before the knife; the epilogue answers a question the war left no time to ask.
     LATE_COMMITTED: [["trickster.ever", CLOCK]],
-    # 05 §2.1: the stance hooks (groundwork only; no stance is set by this route).
-    "kaylessa.harem.eligible": [[COMMITTED], [LATE_COMMITTED]],
+    # 05 §2.1: the stance hooks come from household.PARTNERS (kaylessa.harem.eligible = committed or late_committed).
 }
 
 
@@ -215,7 +214,15 @@ SCENES.append(scene(P + "dead.borrow", "A branch for a branch", "Shyka", 3,
          c('[Keep your futures] "Not at that price."', abort=True)),
      shy("cheap", '''"So do we. Thousands of them. They are all dull; you die with your mouth open in nearly every one." {n}The face yawns, and is somebody's grandmother, and yawns again.{/n}
 "No. The price does not move."''',
-         c('[Back to the price] "Fine. The branch."', "trade")),
+         c('[Back to the price] "Fine. The branch."', "trade_again")),
+     shy("trade_again", '''{n}Shyka waits with its hands folded, all eleven fingers of them.{/n} "A branch for a branch. Where you say yes to us. We are very patient. We are also, in several places at once, bored."''',
+         c('[Pay it] "Done. Somewhere, I said yes. Here, I\'m keeping the drow."', "close",
+           flags=(PRIMED, SHYKA_PRICE, STARTED), forbids=(SHYKA_RAISED,), alignment=("Chaotic", 1)),
+         c('[Try to haggle it down] "A branch where I say maybe."',
+           check=dict(Skill="CheckDiplomacy", DC=30, Success="amused", Failure="raised")),
+         c('[Let her keep the ending she chose] "No. She asked for that one."', "kept",
+           requires=(BEGGED,), flags=(ENDING_KEPT, CLOSED)),
+         c('[Keep your futures] "Not at that price."', abort=True)),
      shy("amused", '''"Maybe! Nobody offers us maybe. They offer blood and firstborns and very bad poetry." {n}Shyka claps with two hands of different sizes.{/n}
 "No. But we shall remember that you tried. Probably."''',
          c('[Pay it] "Done. Somewhere, I said yes, and maybe."', "close",
@@ -357,8 +364,7 @@ visit(P + "alive.warning", "The face she wears", [
     kay("refused", '''"Stubborn. Is that a Commander's disease, or a Trickster's?" {n}She looks at you for a while, deciding something, and doesn't tell you what she decides.{/n}
 "Fine. Just don't make me watch it happen."''',
         c("[Light the lamp.]")),
-], requires=(PRIMED,), forbids=(DEAD, RETURNED, PLANNED), delay=12, chapter=5, optional=False,
-    TricksterDevice=True, TricksterState="alive")
+], requires=(PRIMED,), forbids=(DEAD, RETURNED, PLANNED), delay=12, chapter=5, optional=False)
 
 
 visit(P + "alive.amulet_swap", "Kyonin's own arrows", [
@@ -482,7 +488,8 @@ meet(CLOCK_SCENE, "The clock", '"You\'re counting something."', [
     kay("need", '''"Nothing. That's the trouble." {n}She laughs without any sound.{/n}
 "In the Worldwound I needed a knife, and I had one, and I was too weak to use it. Here I need nothing. A roof. The shade. Somebody who doesn't lie. And every day I have them, the easier it would be to stop fighting." {n}She looks at you.{/n} "Don't make it too easy, soldier."''',
         c("[Stay a while in the shade with her.]")),
-], requires=(RULES,), forbids=(CLOCK,), delay=24, optional=False)
+], requires=(RULES,), forbids=(CLOCK,), delay=24, optional=False,
+    RequiresAnyGroups=[[STALLED, SWAP_CLEAN, SWAP_FUMBLED]])   # every return carries exactly one of these
 
 
 meet(BEAST_SCENE, "The lamp-holder", '"You look like you\'ve heard something."', [
@@ -558,7 +565,8 @@ meet(KNIFE_SCENE, "The dagger she didn't draw", '"What have you got there?"', [
     kay("alone", '''{n}Her hand stops on the sheath.{/n} "Don't say things like that to me, soldier. Not unless you've thought about what they mean."
 {n}She doesn't tell you to take it back. She sits there with her hand on the knife and her eyes on you, and she lets the words stay said.{/n}''',
         c("[Let her keep it.]")),
-], requires=(BEAST_MET,), forbids=(KNIFE_SHOWN,), delay=24, optional=False)
+], requires=(BEAST_MET,), forbids=(KNIFE_SHOWN,), delay=24, optional=False,
+    RequiresAnyGroups=[[BEAST_STOPPED, BEAST_FED, WASP_SENT]])   # every way out of the cells sets one
 
 
 # --- The commit: she proposes. The knife, hilt first, no test. ------------------------------------------------------
@@ -568,13 +576,14 @@ meet(P + "commit", "Hilt first", '"You wanted to talk to me?"', [
         c("Continue", "truth_first", requires=(LIED,), forbids=(CONFESSED,)),
         c("Continue", "speech", forbids=(LIED,)),
         c("Continue", "speech", requires=(LIED, CONFESSED))),
-    kay("truth_first", '''"No. Before I give you anything, you give me something." {n}Her grip tightens.{/n} "The price. What that thing at your Council took for me. You lied about it on the first day, and I've let it sit in my throat ever since. Say it now, or walk away."''',
+    kay("truth_first", '''"You still haven't told me what that thing at your Council took for me. You lied about it on the first day, and it's been sitting in my throat ever since." {n}Her grip on the hilt doesn't change.{/n}
+"I'm not asking it as a toll, soldier. What I'm about to do, I'll do either way. I'm telling you so you know I haven't forgotten, and so you can say it now if you want to be clean when I do it."''',
         c('[Confess] "A branch where I say yes to Shyka. Where I become one of them."', "confessed", flags=(CONFESSED,)),
-        c('"I can\'t."', "not_yet", flags=(DECLINED,))),
+        c('"Not yet."', "not_yet")),
     kay("confessed", '''{n}She lets out a breath she seems to have been holding since the market.{/n} "There. That wasn't hard. That was only the truth."''',
         c("Continue", "speech")),
-    kay("not_yet", '''"Then I can't either." {n}She puts the dagger back in her boot, and her voice is quite steady.{/n} "I'm not angry, soldier. I'm just not stupid. Come back when you can."''',
-        c("[Let her go.]")),
+    kay("not_yet", '''"Not yet." {n}She nods, slowly, the way she'd note a wind change.{/n} "Then carry it. You're good at carrying things." {n}She doesn't put the dagger away.{/n}''',
+        c("Continue", "speech")),
     kay("speech", '''"Anemora made me into this to prove a point. Kyonin wants me dead to hide the point. Forn came for me with a speech about duty." {n}She turns the dagger in her hand until the blade lies along her own wrist.{/n}
 "You're the first one in two years who wanted something from me that wasn't about the point. I don't know what it is yet. I think I want to find out."''',
         c("Continue", "fed", requires=(BEAST_FED,)),

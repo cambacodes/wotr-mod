@@ -201,7 +201,7 @@ meet(LAST_WORDS, "Her story", '"You said you wanted to ask me something."', [
     kay("alive_say", '''"That I was an elf. That I'm not. That any one of them could wake up like me, if they stopped fighting for long enough, and that the Winter Council would rather kill every witness in Mendev than let them know it."
 {n}She shrugs.{/n} "Short letter. Long list of names at the bottom."''',
         c("[Let her think.]")),
-], delay=24)
+], delay=24, RequiresAnyGroups=[[STALLED, AMULET]])   # the dead worlds stall the clock; the living one burns the amulet
 
 
 # --- 3. Her tomb: a ride out to the stone the marksmen raised (the letter world only). --------------------------------
@@ -308,7 +308,7 @@ meet(IN_THE_DARK, "After curfew", '"Walk with me. After the lamps go out."', [
         c('"I know exactly what you are."', "know", flags=(KISSED,))),
     nar("kiss", '''{n}You find her by her breath. Your mouth misses, lands on the corner of hers, and she makes a small impatient sound and fixes it. The kiss is cold at first, then not. Her fangs graze your lip and draw back, very carefully, as if she has been rehearsing how not to hurt.{/n}''',
         c("Continue", "after")),
-    nar("hers", '''{n}Nothing, and then her hand on your jaw, turning your face a fraction to the left, the way you'd aim a bow. She kisses you as if she is checking something. Then again, as if the answer surprised her. Her fangs graze your lip and draw back, very carefully.{/n}''',
+    nar("hers", '''{n}Nothing, and then her hand on your jaw, turning your face a fraction to the left, the way you'd aim a bow. She kisses you as if she is checking something. Then again, as if the answer surprised her. Her fingers stay on your jaw the whole time, light, keeping your face where she put it.{/n}''',
         c("Continue", "after")),
     kay("know", '''"Do you." {n}Her hand comes up and rests against your chest, flat, pushing nothing.{/n} "Good. Then you won't be surprised."
 {n}She kisses you. It is brief and hard and cold, and she steps back from it before you can answer it.{/n}''',
@@ -370,7 +370,7 @@ meet(THE_BOW, "Restringing", '"Is that a new string?"', [
         c("[Walk her back to the market.]")),
     kay("stay", '''{n}Eventually she does remember, and moves, and doesn't apologise for it.{/n} "Come on. The watch changes soon, and I don't want the new sergeant writing down that the Commander was on the west wall in the dark with a drow wrapped round {mf|him|her}."''',
         c("[Walk down with her.]")),
-], delay=24)
+], delay=24, RequiresAnyGroups=[[STALLED, AMULET]])
 
 
 # --- 7. The other you: what the branch that lived remembers (dead worlds only). -----------------------------------
@@ -556,7 +556,7 @@ meet(ANEMORA, "That blasted Kaylessa", '"You\'ve been to Iz."', [
         c("[Stay with her.]")),
     kay("hand", '''{n}She doesn't pull away. She turns her hand over under yours, so your palms meet, and holds on, hard, for as long as it takes the crier to finish the list.{/n}''',
         c("[Stay with her.]")),
-], chapters=(5,), delay=24, RequiresAnyGroups=[["iz.done"], ["iz.anemora_dead"], [ANEMORA_TOLD]])
+], chapters=(5,), delay=24, RequiresAnyGroups=[["iz.done", "iz.anemora_dead", ANEMORA_TOLD]])
 
 
 # --- 11. Burned from within: the child with the crow (friendship tone; Ember is not in the scene). --------------------
@@ -649,7 +649,7 @@ meet(WHAT_I_WANT, "Like what you see?", '"You\'re not wearing the shawl."', [
 "I want to be something other than Anemora's proof for one night. I want someone to look at this body she made and not flinch. I want your hands on me because you want them there, not because you're curing me or saving me or keeping me." {n}Her breath is quick.{/n} "And I want it badly. That's the part I didn't expect."''',
         c("[Kiss her.]", "kiss"),
         c('"Then have it."', "kiss")),
-    nar("kiss", '''{n}She kisses you first. It's nothing like the one in the dark: deep and hungry and not careful at all, her body hard against yours, her fingers working at the buckles of your coat as if she has been thinking about them for a week. Her fangs catch your lip and this time she doesn't draw back.{/n}
+    nar("kiss", '''{n}She kisses you first. It's nothing like the one in the dark: deep and hungry and not careful at all, her body hard against yours, her fingers working at the buckles of your coat as if she has been thinking about them for a week. This time she doesn't guard her teeth, and you taste copper, and she laughs into your mouth about it.{/n}
 {n}She pushes the coat off your shoulders. Your hands find the laces of the courier's grey at her throat. She arches into them, breathing hard, and then, all at once, catches your wrists.{/n}''',
         c("Continue", "stop")),
     kay("stop", '''"No. Not yet." {n}She's shaking, and not from cold.{/n} "Not like this, in a market, with the knife still in my boot and nobody holding it but me."

@@ -533,7 +533,10 @@ met(P + "kills_answered.oath", "The kill that didn't take", '"You look like some
         c("Continue", "soana", requires=("camellia.kill_returned.soana",), forbids=(ND,)),
         c("Continue", "soana", requires=(ND, "camellia.kill_returned.soana"), forbids=(NR,)),
         c("Continue", "kaylessa", requires=("kaylessa.trickster.returned", "kaylessa.camellia_killed"),
-          forbids=("camellia.kill_returned.earlier",))),
+          forbids=("camellia.kill_returned.earlier",)),
+        # Structural fallback, never shown in a real world (kill_returned always carries one of the pairs above): it keeps
+        # the old default (Soana) for a bare kill_returned key.
+        c("Continue", "soana", forbids=(ND, "camellia.kill_returned.soana", "kaylessa.trickster.returned"))),
     cam("nurah", '''"...that the little writer I was given is walking about Drezen, correcting people's spelling. I remember her eyes at the end, you know. They were so surprised. She had written about so many deaths and never once imagined her own." {n}Camellia sighs.{/n} "And now she's walking about with those same eyes. You did this. Of course you did."''',
         c("Continue", "ask")),
     cam("soana", '''"...that the Wintersun woman is back in her forest, scolding the crows. I bled her myself. I felt her stop. She never once looked afraid, you know. Only disappointed, as if I'd tracked mud onto her floor. I've always resented her for that." {n}She taps the glass.{/n} "You did this. Of course you did."''',

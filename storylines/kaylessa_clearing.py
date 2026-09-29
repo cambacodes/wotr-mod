@@ -36,7 +36,8 @@ RED_CLOAK = N + "red_cloak"
 
 def here(id, title, entry, nodes, requires, forbids=(), delay=24, chapters=(3, 5), any_groups=()):
     """A physical scene at her presence under the tailor's awning, after the commit."""
-    extra = dict(RequiresAnyGroups=[list(g) for g in any_groups]) if any_groups else {}
+    # Every commit leaves the knife in one pair of hands or the other (kaylessa_trickster KNIFE_HELD / KNIFE_BACK).
+    extra = dict(RequiresAnyGroups=[[KNIFE_HELD, KNIFE_BACK]] + [list(g) for g in any_groups])
     SCENES.append(scene(id, title, "Kaylessa", min(chapters), entry, nodes,
                         requires=tuple(dict.fromkeys(("trickster.ever", COMMITTED, *requires))),
                         forbids=tuple(dict.fromkeys((CLOSED, LEFT, id, *forbids))), delay=delay, last=max(chapters),
@@ -44,11 +45,12 @@ def here(id, title, entry, nodes, requires, forbids=(), delay=24, chapters=(3, 5
                         InteractionHub=PRESENCE, **extra))
 
 
-def away(id, title, nodes, requires, forbids=(), delay=24, owner="Kaylessa", kind="visit"):
+def away(id, title, nodes, requires, forbids=(), delay=24, owner="Kaylessa", kind="visit", any_groups=()):
     """A rest-delivered scene: she comes for the Commander at night, or they are out past the walls together."""
     SCENES.append(scene(id, title, owner, 3, "", nodes, requires=tuple(dict.fromkeys(("trickster.ever", COMMITTED, *requires))),
                         forbids=tuple(dict.fromkeys((CLOSED, LEFT, id, *forbids))), delay=delay, last=5, optional=True,
-                        Relationship=REL, Remote=True, Kind=kind, Chapters=[3, 5]))
+                        Relationship=REL, Remote=True, Kind=kind, Chapters=[3, 5],
+                        RequiresAnyGroups=[[KNIFE_HELD, KNIFE_BACK]] + [list(g) for g in any_groups]))
 
 
 # --- The night: where she was meant to die (heat up to the cut). ------------------------------------------------------
@@ -98,7 +100,7 @@ away(NIGHT, "Where I was meant to die", [
     kay("rest", '''"Greedy." {n}She says it with deep approval.{/n} "Good."
 {n}She unlaces her leathers herself, without hurry, watching your face the whole time the way she watches a treeline, and lets the stars do what little they can. Grey scars cross her ribs and the tops of her arms, the Worldwound's handwriting. She doesn't cover any of them.{/n}''',
         c("Continue", "kiss")),
-    nar("kiss", '''{n}Her mouth is cool and then it isn't. She kisses the way she fights, forward, all at once, one hand hard at the back of your neck and the other already working at your belt. Her fangs catch your lip and she stops, and makes a sound against your mouth that might be an apology, and doesn't mean it.{/n}''',
+    nar("kiss", '''{n}Her mouth is cool and then it isn't. She kisses the way she fights, forward, all at once, one hand hard at the back of your neck and the other already working at your belt. When the point of a fang finds the side of your neck she goes still against you, and breathes there once, and moves on, and you both know what she chose not to do.{/n}''',
         c("Continue", "knife_held", requires=(KNIFE_HELD,)),
         c("Continue", "knife_back", requires=(KNIFE_BACK,))),
     nar("knife_held", '''{n}When she finds the Kyonin dagger at your belt she draws it, looks at it in the starlight, and lays it on the grass beside the cloak, within reach of your hand and not hers. She does it without looking, the way she'd lay down a bow.{/n}''',
@@ -145,7 +147,7 @@ away(MORNING, "Grey light", [
     kay("longer", '''"It can't. That's the whole trouble with wars." {n}But she sits back down on the stone, and after a moment she leans against you, shoulder to shoulder, and lets the horns call twice more before she moves.{/n}
 "One hour, soldier. And then you go and be a Commander, and I go and sit under my awning, and nobody in Drezen knows a thing."''',
         c("[Ride back to Drezen.]")),
-], requires=(NIGHT_FLAG,), delay=1)
+], requires=(NIGHT_FLAG,), delay=1, any_groups=((STALLED, SWAP_CLEAN, SWAP_FUMBLED),))
 
 
 # --- The beast stirs: the knife's first bad night. ----------------------------------------------------------------
@@ -358,4 +360,4 @@ here(SCAR, "The arrow", '"Let me see that."', [
         c("Continue", "end")),
     nar("end", '''{n}When it's done she ties off the linen with a knot you've seen her tie on a bowstring, and then she leaves her hand where it is, flat over the bandage, a moment longer than the work needed.{/n}''',
         c("[Stay there.]")),
-], requires=(), delay=24, any_groups=((ARROW,), (HER_ARROW,)))
+], requires=(), delay=24, any_groups=((ARROW, HER_ARROW),))
