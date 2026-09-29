@@ -162,7 +162,8 @@ threshold("nocticula.trickster.defeated.chair", "Beside me", '"One more question
         c("Continue", "threshold")),
     nar("threshold", '''{n}The dark around her widens and closes over the two of you like a drawn curtain. Beyond it Threshold goes on, muffled, as though in another room.{/n}
 {n}Her fingers find the buckles of your armour before you feel them move: cold at first, then not cold at all. She strips you the way she prices things, piece by piece, watching your face to learn what each piece costs you. You reach for her and close your hands on nothing; she laughs against your throat. "Hands where I can see them. I said so."{/n}
-{n}So you keep them where she can see them. She pushes you back onto a throne that was not there a moment ago, settles astride your hips with a weight that is very real indeed, and leans down until her hair falls around you both like a second darkness. The last fire in Threshold gutters and goes out.{/n}''',
+{n}So you keep them where she can see them. She pushes you back onto a throne that was not there a moment ago, settles astride your hips with a weight that is very real indeed, and leans down until her hair falls around you both like a second darkness.{/n}
+"I have wanted to do this since the Council," she murmurs against your mouth, amused at herself for saying it. "I want you undone, and I want to watch every step of it, and I want you to remember whose shadow did it." {n}The last fire in Threshold gutters and goes out.{/n}''',
         c('"...Flawless."')),
     nt("refusal", '''"Then no." {n}She is pleased with herself; she has been waiting all evening for someone to offer her the chance.{/n} "Not tonight. Ask me again when Areelu is dead and you are not. If you are dead, I will have had my answer, and I will not have had to give one."''',
         c("[Let her keep her answer.]", flags=(DECLINED,))),
@@ -195,8 +196,8 @@ SCENES.append(scene("nocticula.trickster.palace.brothers_voice", "Is that you, b
         c("[Drop the voice.]", abort=True)),
     nt("unmasked", '''{n}She sniffs again, longer, and her lip curls.{/n}
 "No. His scent, but not his sweat. He sweats sugar. You sweat iron."
-{n}For a moment the Lady in Shadow looks almost embarrassed, which is more frightening than anything else she could do.{/n}
-"You came through his closet wrapped in his spells, reeking of his sugar, and you let me call you by his name. I did. Nobody will ever hear that I did." {n}Her voice drops to a purr.{/n} "Will they?"''',
+{n}Something in the Lady in Shadow's face files you away, very precisely, under a heading you will not enjoy.{/n}
+"You came through his closet wrapped in his spells, reeking of his sugar, and I called you by his name. That is a secret now, clown, and I keep my secrets the way I keep my pets: fed, and on a short chain." {n}Her voice drops to a purr.{/n} "If anyone ever hears of it, I will know which mouth it came out of. Will they?"''',
         c('"Nobody will hear it from me."', native_next=AUDIENCE_YOU, flags=(IMPERSONATED, KEPT)),
         c("[Laugh in his voice one more time.]", "bookmark")),
     nt("bookmark", '''{n}The room goes very cold, all at once, and the lamps lean away from her.{/n}
@@ -219,7 +220,7 @@ def page(id, title, text, requires, forbids=(), paragraphs=(), nodes=None):
 
 
 page("nocticula.trickster.defeated.epilogue", "A queen does not come back",
-    '''{n}What the Abyss buried after the Council was a shadow. Nocticula let Alushinyrra wear black, let Baphomet stop counting her armies, and walked out of her own funeral into a quiet she had never been allowed before.{/n}
+    '''{n}What the Abyss buried after the Council was a shadow. Nocticula let Alushinyrra wear black, let every lord of the Abyss believe the Midnight Isles were ripe, and walked out of her own funeral into a quiet she had never been allowed before.{/n}
 {n}When the Commander asked her, years later, whether she had ever meant to come back, she said a queen does not come back. She simply stops pretending to be gone.{/n}''',
     ("trickster.ever", RETURNED), paragraphs=(
         p("She kept the promise she had made at Threshold, and kept it the way she kept everything: jealously, "
