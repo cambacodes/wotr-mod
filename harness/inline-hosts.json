@@ -4,14 +4,14 @@
   "blueprints": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 760,
-  "resolved": 760,
-  "inlineOnlyScenes": 138,
-  "inlineOnlyResolved": 138,
-  "answerListScenesWithoutContact": 379,
-  "answerListScenesWithoutContactResolved": 379,
-  "lists": 79,
-  "listsWithReachableHost": 78
+  "entryTargetScenes": 767,
+  "resolved": 767,
+  "inlineOnlyScenes": 140,
+  "inlineOnlyResolved": 140,
+  "answerListScenesWithoutContact": 386,
+  "answerListScenesWithoutContactResolved": 386,
+  "lists": 81,
+  "listsWithReachableHost": 80
  },
  "scenes": {
   "a_crossing": {
@@ -10257,6 +10257,139 @@
     "clicks": 0
    }
   },
+  "kaylessa.trickster.dead.borrow": {
+   "kind": "return-cue",
+   "lists": [
+    "e7236a1fe9273ba498b96b9616b3f379"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "e7236a1fe9273ba498b96b9616b3f379": "RRT_entry.kaylessa.trickster.dead.borrow"
+   },
+   "resolved": true,
+   "host": {
+    "list": "e7236a1fe9273ba498b96b9616b3f379",
+    "dialog": "83bc68f21e533a74da6312ffe443252a",
+    "dialogName": "Council_Shyka_Dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "kaylessa.trickster.react.anevia_amulet": {
+   "kind": "dialog",
+   "lists": [
+    "33960c7f7af40cd43b7f801a76c87a0b"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "33960c7f7af40cd43b7f801a76c87a0b": "RRT_entry.kaylessa.trickster.react.anevia_amulet"
+   },
+   "resolved": true,
+   "host": {
+    "list": "33960c7f7af40cd43b7f801a76c87a0b",
+    "dialog": "de4cc2dd71694b842be37b75d1705b83",
+    "dialogName": "Dialogue_AneviaMain",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "kaylessa.trickster.react.anevia_awning": {
+   "kind": "dialog",
+   "lists": [
+    "33960c7f7af40cd43b7f801a76c87a0b"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "33960c7f7af40cd43b7f801a76c87a0b": "RRT_entry.kaylessa.trickster.react.anevia_awning"
+   },
+   "resolved": true,
+   "host": {
+    "list": "33960c7f7af40cd43b7f801a76c87a0b",
+    "dialog": "de4cc2dd71694b842be37b75d1705b83",
+    "dialogName": "Dialogue_AneviaMain",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "kaylessa.trickster.react.anevia_ravine": {
+   "kind": "dialog",
+   "lists": [
+    "33960c7f7af40cd43b7f801a76c87a0b"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "33960c7f7af40cd43b7f801a76c87a0b": "RRT_entry.kaylessa.trickster.react.anevia_ravine"
+   },
+   "resolved": true,
+   "host": {
+    "list": "33960c7f7af40cd43b7f801a76c87a0b",
+    "dialog": "de4cc2dd71694b842be37b75d1705b83",
+    "dialogName": "Dialogue_AneviaMain",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "kaylessa.trickster.react.woljif_goat": {
+   "kind": "dialog",
+   "lists": [
+    "e41585da330233143b34ef64d7d62d69"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "e41585da330233143b34ef64d7d62d69": "RRT_entry.kaylessa.trickster.react.woljif_goat"
+   },
+   "resolved": true,
+   "host": {
+    "list": "e41585da330233143b34ef64d7d62d69",
+    "dialog": "8a38eeddc0215a84ca441439bb96b8f4",
+    "dialogName": "DialogueWoljif_main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "kaylessa.trickster.react.woljif_haggled": {
+   "kind": "dialog",
+   "lists": [
+    "e41585da330233143b34ef64d7d62d69"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "e41585da330233143b34ef64d7d62d69": "RRT_entry.kaylessa.trickster.react.woljif_haggled"
+   },
+   "resolved": true,
+   "host": {
+    "list": "e41585da330233143b34ef64d7d62d69",
+    "dialog": "8a38eeddc0215a84ca441439bb96b8f4",
+    "dialogName": "DialogueWoljif_main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "kaylessa.trickster.reveal.promise": {
+   "kind": "return-cue",
+   "lists": [
+    "07bc8bac6a8c8074183e6abb6ce56847"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "07bc8bac6a8c8074183e6abb6ce56847": "RRT_entry.kaylessa.trickster.reveal.promise"
+   },
+   "resolved": true,
+   "host": {
+    "list": "07bc8bac6a8c8074183e6abb6ce56847",
+    "dialog": "3333522174187b44c814d7e014fc3f2e",
+    "dialogName": "Kaylessa_Reveal_dialogue",
+    "cue": "Cue_0037",
+    "clicks": 4
+   }
+  },
   "kiana.lastcall.call": {
    "kind": "return-to-list",
    "lists": [
@@ -15083,6 +15216,71 @@
       "38280a351a8b30f4cb0d2cb31908c94c": 1,
       "b9d78ba896d19b14aa6c371dda617979": 2,
       "e3385a29ec74b8c4f92deccb90e66188": 2
+     }
+    }
+   ]
+  },
+  "07bc8bac6a8c8074183e6abb6ce56847": {
+   "list": "07bc8bac6a8c8074183e6abb6ce56847",
+   "listName": "AnswersList_0029",
+   "hosts": [
+    {
+     "dialog": "3333522174187b44c814d7e014fc3f2e",
+     "dialogName": "Kaylessa_Reveal_dialogue",
+     "cues": [
+      "58f994154e180a147a4ab18381f9bc8c",
+      "8cd2a91cfe23bf545938b442a9d6549b",
+      "9a7ea53268b69b441aee39a20cbdf4b5",
+      "c8855eab284210745bb8abb94bfe71ed",
+      "ec5c800eaecbddb4bb56216922df516f",
+      "a92b215ba06ba1d4685825cbae3cd0dd",
+      "8c79b83be85eae348af4914279a8aafa"
+     ],
+     "cueNames": [
+      "Cue_0037",
+      "Cue_0038",
+      "Cue_0046",
+      "Cue_0066",
+      "SequenceExit_0048",
+      "SequenceExit_0051",
+      "SequenceExit_0056"
+     ],
+     "speaker": "dfa0d3a840181be4da6091bf0ca11806",
+     "reachable": true,
+     "clicks": 4,
+     "path": [
+      {
+       "at": "Cue_0003",
+       "take": "Answer_0010"
+      },
+      {
+       "at": "Cue_0012",
+       "take": "continue",
+       "nextConditioned": true
+      },
+      {
+       "at": "Cue_0013",
+       "take": "Answer_0027"
+      },
+      {
+       "at": "Cue_0028",
+       "take": "continue"
+      }
+     ],
+     "answerDist": {
+      "0326466f0350ff44992d2421fcc57925": 5,
+      "18485c8ed97cd90469aec21b39ffa4e4": 3,
+      "294fe28310acb9f42a1342360089e43c": 6,
+      "3b818b0e54c66e140a9c4bc0b7044d42": 5,
+      "8c739cb6962b6fe4b93e9c4d6e9d9ee6": 3,
+      "a75cce59698389f48b2533b719a1e5e1": 3,
+      "ad87e749254e0c847b08811a41a725e0": 1,
+      "b03a55fffeca9a64ea3c003724b5c71a": 5,
+      "c54377befa1508a439ed43c819e5d262": 4,
+      "d765c642dc7046f45911a3cfde484226": 2,
+      "ef3b6150052997246b4be8bb85a06366": 4,
+      "f1901db44e9496d4d95ae7d9c161d558": 2,
+      "fec77bfefc314a44a802a923348f291c": 4
      }
     }
    ]
@@ -20118,6 +20316,54 @@
       "c1ab38a3abec6fe4186e3613f5fa433d": 1,
       "ca10675e59981bd44982156e7169d52c": 1,
       "ffc9b5864fd509c4b82db4da820b0b01": 2
+     }
+    }
+   ]
+  },
+  "e7236a1fe9273ba498b96b9616b3f379": {
+   "list": "e7236a1fe9273ba498b96b9616b3f379",
+   "listName": "AnswersList_0003",
+   "hosts": [
+    {
+     "dialog": "83bc68f21e533a74da6312ffe443252a",
+     "dialogName": "Council_Shyka_Dialogue",
+     "cues": [
+      "028e74454d36d964c83ae093d8c6d3b3",
+      "cd2b35a474db55544a63f59a67ac67bf",
+      "fdc81c20c2729cf4e8c9ae03335935e5",
+      "f1ccd09c598287b47b36650fc7277628",
+      "03dfa9f531494934a9ae7292f8e1cb81",
+      "7e183baf14c79fa4096a33baa57b0e94",
+      "b3481b91236ded34192c5bf3de019678",
+      "7c1c2c83ab8c8604d8fe3eccbbfa8668",
+      "57faab7dd6fd13745a884afd7c3734ab",
+      "7fe8af086b26b2a4f807b0f85ad13c17"
+     ],
+     "cueNames": [
+      "Cue_0001",
+      "Cue_0002",
+      "Cue_0010",
+      "Cue_0011",
+      "Cue_0012",
+      "Cue_0013",
+      "Cue_0014",
+      "Cue_0021",
+      "Cue_0025",
+      "Cue_0027"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "52a38faa8f369f34ba9fd71fbe6d5cbc": 1,
+      "755334713ae6c8148927319cc4b98991": 1,
+      "a7e7001d48201594a84289ac7fdaec56": 1,
+      "a95837183c63e3943a535f63073d38e8": 1,
+      "b7d4f55d3ced48549b4cc4ef3c21af58": 2,
+      "c176cecb7c2a2da439cc3e456387936b": 1,
+      "e1a200fa47d819c4c9189180b92c3857": 1,
+      "e80f48f4d4bf348478fb8f80e52cc87b": 1
      }
     }
    ]

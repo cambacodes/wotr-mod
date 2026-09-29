@@ -474,6 +474,7 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "arueshalae.trickster.dead.starving")) ArueshalaeTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "devarra.trickster.dead.woken")) DevarraTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "delamere.trickster.crypt.stag")) DelamereTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "kaylessa.trickster.dead.borrow")) KaylessaTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "trickster.lastcall.threshold")) LastCallTests.Run(story, Check);
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "arsinoe").Select(s => s.Id));
         }

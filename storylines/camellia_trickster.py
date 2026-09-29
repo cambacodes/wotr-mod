@@ -142,10 +142,15 @@ PRESENCES = {
                             "sits within two stools of her. Nobody could say why.{/n}"),
 }
 DERIVED = {
-    # ledger 05 row 12, her own kills only. The Kaylessa pair [kaylessa.trickster.returned, kaylessa.camellia_killed] and
-    # its oath node wait for Kaylessa's route to produce her return flag (backlog; an unproduced flag is a dead gate).
+    # ledger 05 row 12, her own kills only: Nurah, Soana and (since the Kaylessa route produces her return) Kaylessa.
     "camellia.kill_returned": [["nurah.trickster.returned", "nurah.dead_camellia"],
-                               ["soana.trickster.returned", "soana.killed_by_camellia"]],
+                               ["soana.trickster.returned", "soana.killed_by_camellia"],
+                               ["kaylessa.trickster.returned", "kaylessa.camellia_killed"]],
+    # The oath routes one pair per world, in ledger order (Nurah, Soana, Kaylessa): the Kaylessa branch steps aside when an
+    # earlier pair holds. Added with the Kaylessa route (its producer), save-safe: new keys, the new choice appended.
+    "camellia.kill_returned.soana": [["soana.trickster.returned", "soana.killed_by_camellia"]],
+    "camellia.kill_returned.earlier": [["nurah.trickster.returned", "nurah.dead_camellia"],
+                                       ["soana.trickster.returned", "soana.killed_by_camellia"]],
     # R2-6: the last completed beat before the commit.
     P + "late_committed": [["trickster.ever", TERMS]],
 }
@@ -523,10 +528,15 @@ NR, ND = "nurah.trickster.returned", "nurah.dead_camellia"
 
 met(P + "kills_answered.oath", "The kill that didn't take", '"You look like someone who has been told a secret. Tell me."', [
     cam("start", '''"I remember the taste of that death. I remember it very clearly. And yet I hear..."''',
-        # Exactly one route is ever shown: Nurah first, then Soana (the pairs of Derived kill_returned).
+        # Exactly one route is ever shown: Nurah first, then Soana, then Kaylessa (the pairs of Derived kill_returned).
         c("Continue", "nurah", requires=(NR, ND)),
-        c("Continue", "soana", forbids=(ND,)),
-        c("Continue", "soana", requires=(ND,), forbids=(NR,))),
+        c("Continue", "soana", requires=("camellia.kill_returned.soana",), forbids=(ND,)),
+        c("Continue", "soana", requires=(ND, "camellia.kill_returned.soana"), forbids=(NR,)),
+        c("Continue", "kaylessa", requires=("kaylessa.trickster.returned", "kaylessa.camellia_killed"),
+          forbids=("camellia.kill_returned.earlier",)),
+        # Structural fallback, never shown in a real world (kill_returned always carries one of the pairs above): it keeps
+        # the old default (Soana) for a bare kill_returned key.
+        c("Continue", "soana", forbids=(ND, "camellia.kill_returned.soana", "kaylessa.trickster.returned"))),
     cam("nurah", '''"...that the little writer I was given is walking about Drezen, correcting people's spelling. I remember her eyes at the end, you know. They were so surprised. She had written about so many deaths and never once imagined her own." {n}Camellia sighs.{/n} "And now she's walking about with those same eyes. You did this. Of course you did."''',
         c("Continue", "ask")),
     cam("soana", '''"...that the Wintersun woman is back in her forest, scolding the crows. I bled her myself. I felt her stop. She never once looked afraid, you know. Only disappointed, as if I'd tracked mud onto her floor. I've always resented her for that." {n}She taps the glass.{/n} "You did this. Of course you did."''',
@@ -542,6 +552,8 @@ met(P + "kills_answered.oath", "The kill that didn't take", '"You look like some
         c("[Leave it there]", flags=(OATH_FED,))),
     cam("threat", '''"Oh, now you're just flirting." {n}But she takes her hand off the knife, and she does not put it back for the rest of the evening.{/n}''',
         c("[Leave it there]", flags=(THREATENED,))),
+    cam("kaylessa", '''"...that the poor elf I helped on her way is sitting under a tailor's awning in the market, wrapped to the eyes, watching everybody's hands. I gave her such privacy, you know. At the end she looked at me as though I were the first honest person she had met in years. It was very touching." {n}Camellia sighs.{/n} "And now she watches my hands, of all people's. You did this. Of course you did."''',
+        c("Continue", "ask")),
 ], requires=("trickster.ever", "camellia.kill_returned"), delay=0, optional=True, alive_ok=True)
 
 
