@@ -79225,6 +79225,14 @@
               "AnyGroups": []
             },
             {
+              "Text": "Some winters the spirits came to the Commander's door instead, wherever it was, and stood in the frost till dawn. The Commander learned to keep a knife by the threshold, and a rag, and to expect a letter from Wintersun a week later calling them stupid.",
+              "Requires": [
+                "soana.trickster.cost.portion_shared"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
               "Text": "She kept a die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
               "Requires": [
                 "soana.trickster.primed_dice"
@@ -79283,6 +79291,14 @@
               "Text": "Every winter the spirits came to the cave mouth for their portion, and every winter she cut her palm for them and cursed the Commander's name while she did it. She never missed a winter.",
               "Requires": [
                 "soana.trickster.cost.blood_given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Some winters the spirits came to the Commander's door instead, wherever it was, and stood in the frost till dawn. The Commander learned to keep a knife by the threshold, and a rag, and to expect a letter from Wintersun a week later calling them stupid.",
+              "Requires": [
+                "soana.trickster.cost.portion_shared"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -79347,6 +79363,14 @@
               "Text": "Every winter the spirits came to the cave mouth for their portion, and every winter she cut her palm for them and cursed the Commander's name while she did it. She never missed a winter.",
               "Requires": [
                 "soana.trickster.cost.blood_given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Some winters the spirits came to the Commander's door instead, wherever it was, and stood in the frost till dawn. The Commander learned to keep a knife by the threshold, and a rag, and to expect a letter from Wintersun a week later calling them stupid.",
+              "Requires": [
+                "soana.trickster.cost.portion_shared"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -79417,6 +79441,14 @@
               "AnyGroups": []
             },
             {
+              "Text": "Some winters the spirits came to the Commander's door instead, wherever it was, and stood in the frost till dawn. The Commander learned to keep a knife by the threshold, and a rag, and to expect a letter from Wintersun a week later calling them stupid.",
+              "Requires": [
+                "soana.trickster.cost.portion_shared"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
               "Text": "She kept a die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
               "Requires": [
                 "soana.trickster.primed_dice"
@@ -79475,6 +79507,14 @@
               "Text": "Every winter the spirits came to the cave mouth for their portion, and every winter she cut her palm for them and cursed the Commander's name while she did it. She never missed a winter.",
               "Requires": [
                 "soana.trickster.cost.blood_given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Some winters the spirits came to the Commander's door instead, wherever it was, and stood in the frost till dawn. The Commander learned to keep a knife by the threshold, and a rag, and to expect a letter from Wintersun a week later calling them stupid.",
+              "Requires": [
+                "soana.trickster.cost.portion_shared"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -168989,6 +169029,98 @@
       "InteractionHub": "soana.presence"
     },
     {
+      "Id": "soana.trickster.handover.winter_portion",
+      "Title": "The spirits' portion, again",
+      "Owner": "Soana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"The spirits came, didn't they?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}There is frost on the moss, and a ring of it has melted in front of the cave mouth, the size of a cart wheel, as if something warm had stood there all night. Soana sits on the stone beside it with her knife across her knees. Her left palm is a lattice of old white cuts, and one new one, not yet opened.{/n}\n\"They came at moonrise, the way I told you they would. They stood there till dawn and did not say a word. They do not need to. I know what they are owed; a fool struck the bargain for me, and a bargain is a bargain.\"\n{n}She turns the knife so the edge catches the light, and looks at you, not at the blade.{/n}\n\"You may watch. People who make bargains for other people ought to see them paid.\"",
+          "Choices": [
+            {
+              "Text": "[Hold out your own palm] \"My joke. My blood. Pay them from me this winter.\"",
+              "Next": "shared",
+              "Set": [
+                "soana.trickster.cost.portion_shared"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Watch her pay it]",
+              "Next": "watched",
+              "Set": [
+                "soana.trickster.portion_watched"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "shared",
+          "Speaker": "Soana",
+          "Text": "{n}She looks at your hand the way she looks at a snare that has caught the wrong animal. Then she takes your wrist in her root-hard fingers and draws the knife across your palm, not deep, and turns it over the melted ring. The blood goes into the moss and does not stay there. Something in the trees sighs.{/n}\n\"They know your taste now as well as mine. That was stupid, hunter. They will come to your door as well, some winter, and I will not be there to tell them no.\"\n{n}She binds your hand with the same rag she keeps for her own, without being asked, and without being gentle.{/n}\n\"Stupid,\" she says again, more quietly, and does not let go of the rag's end for a while.",
+          "Choices": [
+            {
+              "Text": "[Leave her to the frost]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "watched",
+          "Speaker": "Soana",
+          "Text": "{n}She opens her palm along the old line, without a sound, and holds it over the melted ring until the moss stops drinking. Something in the trees sighs, and the ring begins to freeze over.{/n}\n\"There. Next winter again, and the winter after. Remember it the next time you are clever on somebody else's behalf.\"\n{n}She wraps the hand the way other people tie a bootlace, and goes back into her cave.{/n}",
+          "Choices": [
+            {
+              "Text": "[Leave her to the frost]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "soana.trickster.cost.blood_given"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "soana.trickster.cost.portion_shared",
+        "soana.trickster.portion_watched"
+      ],
+      "DelayHours": 72,
+      "Optional": false,
+      "Relationship": "soana",
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "2b1776f3e398685479ff6b16290b4cc2"
+      ],
+      "NativeReturnCue": "e9feb6b2946c77641875f2bc731ede1e"
+    },
+    {
       "Id": "soana.trickster.missed.dice_bowl",
       "Title": "An offering",
       "Owner": "Soana",
@@ -173887,7 +174019,7 @@
           "Text": "{n}She sets the chisel against the log, then takes your hands one at a time and lays them flat on the wood, either side of the blade, close enough that you can feel the steel's cold through the bark.{/n}\n\"Hold it. Don't move. I cut by sound, and I cannot hear your fingers.\"",
           "Choices": [
             {
-              "Text": "[Hold still]",
+              "Text": "[Keep your hands on the wood]",
               "Next": "after",
               "Set": [
                 "gesmerha.trickster.held_still"
@@ -174100,7 +174232,7 @@
         {
           "Id": "terms",
           "Speaker": "Gesmerha",
-          "Text": "\"Then hear my terms, because my hands are mine again and that means they can refuse. I will not be paid for this. Not in coin, and not in jokes. If you ever buy me again, stranger, I will know it by your step before you open your mouth, and I will not be here when you do.\"",
+          "Text": "\"Then listen to what my hands decided in the cold water, because they are mine again, and that means they can refuse. I will not be paid for this. Not in coin, and not in jokes. If you ever buy me again, stranger, I will know it by your step before you open your mouth, and I will not be here when you do.\"",
           "Choices": [
             {
               "Text": "\"No more purses. Not for you. I swear it.\"",
@@ -174162,7 +174294,7 @@
         {
           "Id": "night",
           "Speaker": "Gesmerha",
-          "Text": "{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}\n\"Two things in this yard I have cut without eyes. The original I have not touched yet. Stand still. You are good at that now.\"\n{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. At your collar she unlaces you by feel and lays her palm flat over your heart to count it.{/n}\n\"Fast. Good. I have wanted this since your step first came through that gate, and I will not be the only one who wanted it.\"\n{n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. Her hands go on reading, lower and surer. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}",
+          "Text": "{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}\n\"Two things in this yard I have cut without eyes. The original I have not touched yet. Your hands stayed on the wood with the mallet coming down; let them stay at your sides a little longer. I am reading.\"\n{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. She finds the laces at your throat by feel, undoes them the way she strips bark, and lays her palm flat over your heart to count it.{/n}\n\"Fast. Good. I have wanted this since your step first came through that gate, and I will not be the only one who wanted it.\"\n{n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. Her hands go on reading, lower and surer. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -174178,7 +174310,7 @@
         {
           "Id": "morning",
           "Speaker": "Gesmerha",
-          "Text": "{n}Morning. There is sawdust in your hair and a curl of pine in your collar. Gesmerha is already at the trestles, bare-armed in the cold, and on a new block in front of her a face is coming out of the wood: one you have seen in mirrors.{/n}\n\"My hands remembered. Nobody paid them for last night, so what they make of it is mine. I will not sell it.\" {n}The corner of her mouth moves; she does not stop cutting.{/n} \"Go and fight your war, stranger. Walk loudly when you come back. I like to hear it from the gate.\"",
+          "Text": "{n}The forge is still banked when you wake, and there is sawdust in your hair and a curl of pine down your shirt. Gesmerha is already at the trestles, bare-armed in the cold, and on a new block in front of her a face is coming out of the wood: one you have seen in mirrors.{/n}\n\"My hands remembered. Nobody paid them for last night, so what they make of it is mine. I will not sell it.\" {n}The corner of her mouth moves; she does not stop cutting.{/n} \"Go and fight your war, stranger. Walk loudly when you come back. I like to hear it from the gate.\"",
           "Choices": [
             {
               "Text": "[Go]",
@@ -174226,7 +174358,7 @@
         {
           "Id": "start",
           "Speaker": "Gesmerha",
-          "Text": "{n}She is waiting for you this time, a fresh log on the trestles and nothing yet cut.{/n}\n\"The second asking costs more. That is fair; I learned it from you. Give me your hands. Three days, here, in the yard, while I carve them. Every hour you sit still, your war waits. Then I will have a pair that were never for sale, and you can have mine.\"",
+          "Text": "{n}She is waiting for you this time, a fresh log on the trestles and nothing yet cut.{/n}\n\"I have thought about your honesty. You cannot swear off buying things, so I will not ask you to. I will ask for something no purse reaches. Give me your hands: three days, here in the yard, while I carve them. I want one pair in this world that nobody ever paid for. When they are done, you can have mine, and nobody will have paid for those either.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -174319,7 +174451,7 @@
         {
           "Id": "night",
           "Speaker": "Gesmerha",
-          "Text": "{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}\n\"Two things in this yard I have cut without eyes. The original I have not touched yet. Stand still. You are good at that now.\"\n{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. At your collar she unlaces you by feel and lays her palm flat over your heart to count it.{/n}\n\"Fast. Good. I have wanted this since your step first came through that gate, and I will not be the only one who wanted it.\"\n{n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. Her hands go on reading, lower and surer. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}",
+          "Text": "{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}\n\"Two things in this yard I have cut without eyes. The original I have not touched yet. Your hands stayed on the wood with the mallet coming down; let them stay at your sides a little longer. I am reading.\"\n{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. She finds the laces at your throat by feel, undoes them the way she strips bark, and lays her palm flat over your heart to count it.{/n}\n\"Fast. Good. I have wanted this since your step first came through that gate, and I will not be the only one who wanted it.\"\n{n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. Her hands go on reading, lower and surer. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -174335,7 +174467,7 @@
         {
           "Id": "morning",
           "Speaker": "Gesmerha",
-          "Text": "{n}Morning. There is sawdust in your hair and a curl of pine in your collar. Gesmerha is already at the trestles, bare-armed in the cold, and on a new block in front of her a face is coming out of the wood: one you have seen in mirrors.{/n}\n\"My hands remembered. Nobody paid them for last night, so what they make of it is mine. I will not sell it.\" {n}The corner of her mouth moves; she does not stop cutting.{/n} \"Go and fight your war, stranger. Walk loudly when you come back. I like to hear it from the gate.\"",
+          "Text": "{n}The forge is still banked when you wake, and there is sawdust in your hair and a curl of pine down your shirt. Gesmerha is already at the trestles, bare-armed in the cold, and on a new block in front of her a face is coming out of the wood: one you have seen in mirrors.{/n}\n\"My hands remembered. Nobody paid them for last night, so what they make of it is mine. I will not sell it.\" {n}The corner of her mouth moves; she does not stop cutting.{/n} \"Go and fight your war, stranger. Walk loudly when you come back. I like to hear it from the gate.\"",
           "Choices": [
             {
               "Text": "[Go]",
