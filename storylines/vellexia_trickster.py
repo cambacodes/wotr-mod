@@ -19,7 +19,8 @@ SCENES = []
 DREZEN = "2570015799edf594daf2f076f2f975d8"
 NEXUS = "7847c3e3537104f4694167af0b9fcd0e"
 UNIT = "a32a07903e428d34cb0e98a804d40569"          # Vellexia_Default (no dialog component; the presence copy)
-FYE = "0f12118177d102f428a3b30b15b132eb"           # Fye_Bartender, the presence anchor
+FYE = "0f12118177d102f428a3b30b15b132eb"           # Fye_Bartender (no longer her anchor: Seelah and Camellia stand there)
+STORYTELLER = "da4c28dd01413694f82b08b728a8c6e5"   # the Storyteller's unit (the one in DrezenCapital_Default), her presence anchor
 ST_HUB = "2f5b7e0b76d3c5a42a431e1e33a8db09"        # NPC_Common/StoryTeller_MainDialogue/AnswersList_0004
 ST_RETURN = "34a0d078b4ac51547a8f5e0e1c8e1e2c"     # StoryTeller_MainDialogue/Cue_0880 "The Storyteller nods, saying nothing."
 QM_HUB = "3c58e83a970a0f643a88e15f2323c805"        # NPC_Common/Vendor_Quartermaster/AnswersList_0003 (Wilcer Garms)
@@ -64,14 +65,15 @@ RELATIONSHIP_PATCH = dict(
 # final_fight through fight_survived (VEL-02).
 FO = {DEAD: RETURNED, "vellexia.early_fight": RETURNED, "vellexia.final_fight": "vellexia.fight_survived", MIRROR: RETURNED}
 PRESENCES = {
-    # A spawned copy of her Upper City unit (CutsceneNeutrals, no dialog) beside Fye's bar; Dialog "hub" makes it
-    # talkable. If Fye has left the capital the anchor fails and vellexia.presence.failed opens the quarters twin.
-    "vellexia.presence": dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=FYE, Side="front", Distance=2.0),
+    # A spawned copy of her Upper City unit (CutsceneNeutrals, no dialog) beside the Storyteller, whose shelves already
+    # hold her story (her Trickster beats run on his hub); Dialog "hub" makes it talkable. If the Storyteller is dead or
+    # gone the anchor fails and vellexia.presence.failed opens the quarters twin.
+    "vellexia.presence": dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=STORYTELLER, Side="right", Distance=2.0),
                               Requires=["trickster.ever", "vellexia.trickster.in_person"],
                               Forbids=["vellexia.closed", KEPT, VISITED], MinChapter=5, MaxChapter=5, AnswerLists=[],
                               Dialog="hub",
-                              Greeting="{n}Vellexia is leaning on Fye's bar as if she had bought it. Judging by Fye's face, "
-                                       "she is considering it.{/n}"),
+                              Greeting="{n}Vellexia is reading the spines on the Storyteller's shelves as if she were pricing them. Judging "
+                                       "by the old elf's face, she is.{/n}"),
 }
 
 
@@ -359,16 +361,16 @@ def visit_nodes(place_text):
     ]
 
 
-SCENES.append(scene("vellexia.trickster.after.visit", "Beside the bar", "Vellexia", 5,
+SCENES.append(scene("vellexia.trickster.after.visit", "Among the shelves", "Vellexia", 5,
     '"Lady Vellexia. You look well, for a dead woman."', visit_nodes(
-        '''{n}She is sitting at Fye's bar in the middle of a siege as if it were a salon, in a borrowed cloak with the lining turned out to show the silk. Every soldier in the room is pretending not to look at her. Fye has put a clean cup in front of her and is standing as far away from it as the bar allows.{/n}'''),
+        '''{n}She is sitting among the Storyteller's shelves in the middle of a siege as if they were her salon, in a borrowed cloak with the lining turned out to show the silk, a book open face-down on her knee. Every soldier who passes the door is pretending not to look at her. The Storyteller has put a clean cup at her elbow and is standing as far from it as his shelves allow.{/n}'''),
     requires=("trickster.ever",), forbids=(*OWN, KEPT, VISITED), delay=24, last=5, optional=True, Relationship="vellexia",
     Areas=[DREZEN], Chapters=[5], ContactUnit=UNIT, InteractionHub="vellexia.presence",
     RequiresAnyGroups=[[UNMIRRORED, DIMINISHED, ENTRY]]))
 
-# The anchor failed (Fye has left the capital): she comes to the Commander's quarters instead, the same test in person.
+# The anchor failed (the Storyteller is dead or gone): she comes to the Commander's quarters instead, the same test in person.
 letter("vellexia.trickster.after.visit_quarters", "A guest who was not invited", visit_nodes(
-    '''{n}Fye's is shut and boarded, so she has come to your quarters instead. The sentry at your door let her in. He will not be able to explain why, afterwards, and he will not try very hard.{/n}
+    '''{n}The Storyteller's shelves stand empty and under dust sheets, so she has come to your quarters instead. The sentry at your door let her in. He will not be able to explain why, afterwards, and he will not try very hard.{/n}
 {n}She is sitting in your chair with her feet on your maps of the Worldwound, and she has already read them.{/n}'''),
     requires=("trickster.ever", "vellexia.presence.failed"), forbids=(KEPT, VISITED, "vellexia.trickster.after.visit"),
     delay=48, RequiresAnyGroups=[[UNMIRRORED, DIMINISHED, ENTRY]])

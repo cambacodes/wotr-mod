@@ -11,7 +11,7 @@ internal static class VellexiaTricksterTests
     private const string Drezen = "2570015799edf594daf2f076f2f975d8";
     private const string Nexus = "7847c3e3537104f4694167af0b9fcd0e";
     private const string Unit = "a32a07903e428d34cb0e98a804d40569";
-    private const string Fye = "0f12118177d102f428a3b30b15b132eb";
+    private const string Storyteller = "da4c28dd01413694f82b08b728a8c6e5";
     private const string StHub = "2f5b7e0b76d3c5a42a431e1e33a8db09";
     private const string StReturn = "34a0d078b4ac51547a8f5e0e1c8e1e2c";
     private const string QmHub = "3c58e83a970a0f643a88e15f2323c805";
@@ -126,8 +126,8 @@ internal static class VellexiaTricksterTests
               && rel.TricksterAccess["vellexia.dead"].Detect.Contains("vellexia.early_fight"), "Vellexia access map missing a detect key.");
         check(story.Derived["vellexia.fight_survived"].Length == 2, "fight_survived is not spared OR returned.");
         check(story.Presences.TryGetValue("vellexia.presence", out var presence) && presence.Unit == Unit && presence.Mode == "spawn-copy"
-              && presence.At?.NearUnit == Fye && presence.Dialog == "hub" && presence.Forbids.Contains(P + "kept_as_mirror"),
-            "Her presence beside Fye's bar is missing or talks while she is glass.");
+              && presence.At?.NearUnit == Storyteller && presence.Dialog == "hub" && presence.Forbids.Contains(P + "kept_as_mirror"),
+            "Her presence beside the Storyteller is missing or talks while she is glass.");
         check(visit.InteractionHub == "vellexia.presence" && visit.ContactUnit == Unit && Rules.IsPresenceHubScene(visit),
             "The test in person is not on her presence hub.");
         var glassNode = unmirror.Nodes.Single(n => n.Id == "glass").Choices;
