@@ -205,7 +205,7 @@ s("the_name_missing", "The name missing from the song", '"You said someone wante
 "I thought it sounded like a story people needed."
 "I needed him to come back," Neris says. "That is different."
 "Yes."
-{n}Neris looks at you for the first time.{/n}
+{n}Neris turns and looks straight at you.{/n}
 "I'm not asking you to find him. I have asked enough people who needed me to believe they could. I'm asking her to stop singing that I was rescued by a man who wasn't there."
 "Were you alone at the gate?"
 "For a while. A woman with a broken cart took me with her. I didn't learn her name. There wasn't time to ask everyone to become part of a song."

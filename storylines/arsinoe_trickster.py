@@ -35,7 +35,9 @@ physical(LEASE, "Property of the Treasury", '"I have something a priestess of Ab
 {n}She takes a jeweler's loupe from her sleeve and bends to the cradle. Under the grime of the Abyss there is a line of worn lettering, stamped, not engraved. Clerks' capitals.{/n}
 "By the First Vault. *Treasury of Abadar, Absalom.*"
 {n}She straightens, frowning, and taps the loupe against her lip.{/n}
-"A soul cauldron, Commander, if I am any judge, and I am. Marks can be forged; I have forged a few, for training purposes. But if this one is genuine, then this stone was consecrated to my god and entered in his inventory, and it belongs in a vault in Absalom, not on a counter in a war camp. I will not ask how it came to you. I suspect the answer involves demons, and I suspect you enjoyed it."''',
+"A soul cauldron, Commander, if I am any judge, and I am. Marks can be forged; I have forged a few, for training purposes. But if this one is genuine, then this stone was consecrated to my god and entered in his inventory, and it belongs in a vault in Absalom, not on a counter in a war camp. I will not ask how it came to you. I suspect the answer involves demons, and I suspect you enjoyed it."
+{n}You tell her what the lich on the Council said of it: likely from Abadar's coffers. She does not look up from the loupe.{/n}
+"Likely. A lich's guess and a worn stamp. That is not proof, Commander. It is, however, a very good start on a lawsuit."''',
       c("Continue", "shamira", requires=("shamira.killed",)),
       c("Continue", "terms", forbids=("shamira.killed",))),
     n("shamira", "Arsinoe", '''{n}She tilts the stone toward the lamp. Deep inside it something that is not light moves, slow and patient, like a fish under ice.{/n}
@@ -52,7 +54,7 @@ physical(LEASE, "Property of the Treasury", '"I have something a priestess of Ab
       c('"Another time."', abort=True)),
     n("rent", "Arsinoe", '''{n}The straw stops halfway to the crate.{/n}
 "Leased."
-{n}She looks at you for a long, pleased moment, the way she looks at a customer who has finally made an offer worth her time.{/n}
+{n}Her mouth curves, the way it does for a customer who has finally made an offer worth her time.{/n}
 "A lease is a contract. A contract is lawful. And a lawful arrangement for the use of the Treasury's property, drawn up by an ordained priestess in good standing, is... something I could defend before my superiors, if I had to. I would enjoy defending it."
 "But I am not a fool, and neither is the Treasury. I will write to Absalom tonight, with a drawing of the mark. If they deny the stone is theirs, the lease lapses and the temple keeps the rent for its trouble. If they confirm it, the lease stands, and I am the priestess who found the Treasury's lost property *and* made it pay. Either way, I do not end up explaining to a tribunal why I let a demigod walk off with a god's diamond on a handshake."
 "Rent, then. Five hundred crowns to the temple, from the crusade's chest, today. The same again every season the property is out of the vault. I do not haggle over the Treasury's property, Commander. I will, however, listen."''',
@@ -63,16 +65,16 @@ physical(LEASE, "Property of the Treasury", '"I have something a priestess of Ab
 "...Three seasons' grace. For a lessee who proposes to carry the property into the Abyss and back, and who argues like a moneylender's apprentice. Do not tell the Treasury I said so. Do not tell anyone I enjoyed that."''',
       c("Continue", "leased")),
     n("raised", "Arsinoe", '''"No."
-{n}She writes a figure on a slip of paper and turns it round to face you.{/n}
+{n}She does not even reach for the pen.{/n}
 "For wasting a priestess's time, the rate goes up. Another two hundred. Abadar rewards thrift, Commander. He does not reward charm. You will find that I am the same, most days."''',
       c("Continue", "leased", crusade=("Finances", -200), flags=("arsinoe.trickster.cost.rent_raised",))),
-    n("leased", "Arsinoe", '''{n}She draws the lease on temple vellum in a clean, fast hand and reads every line of it aloud, including the ones you would rather she had skipped. You sign twice. She signs once, with a flourish she has clearly practiced.{/n}
+    n("leased", "Arsinoe", '''{n}She draws the lease in a clean, fast hand and reads the line that matters aloud: the lessee is you, by name. Not the crusade, not the Queen, not the chest. If the stone is lost, the debt follows you, and Abadar's church has collected from widows and grandchildren before now without losing sleep.{/n}
 {n}Then she warms a stick of gold wax over the lamp, presses her seal into it, and fixes the tag to the diamond's cradle, just below the old Treasury stamp. *On lease.*{/n}
 "Leased. Returnable at the end of the world, in whatever condition the world leaves it. Rent accrues from today. Abadar is my witness, and he has a very good memory for sums."''',
       c('"Then I\'m a tenant of Abadar."', forbids=("council.fought",), flags=("arsinoe.trickster.primed", LIEN)),
       c("Continue", "grudge", requires=("council.fought",))),
     n("grudge", "Arsinoe", '''"And the gentlemen you took it from? The ones you then fought?"
-{n}She does not wait for an answer. She writes a line at the foot of the lease.{/n}
+{n}She does not wait for an answer.{/n}
 "A lessee answers for the property, Commander, not for the manners of the previous holders. I will note them as a risk. If any of them come to my counter asking for it back, I shall tell them it is leased, and show them the seal, and then I shall shout for the guard."''',
       c('"Then I\'m a tenant of Abadar."', flags=("arsinoe.trickster.primed", LIEN))),
     n("refused", "Arsinoe", '''{n}She puts the straw back under the counter. She does not argue. That is worse.{/n}
@@ -83,8 +85,8 @@ physical(LEASE, "Property of the Treasury", '"I have something a priestess of Ab
 
 
 physical(COLLECTION, "Collateral", '"You wanted to see me about the lease?"', [
-    n("start", "Arsinoe", '''{n}A ledger lies open on the counter. A stick of gold wax is softening over a candle, and beside it there is a second copy of the lease, annotated in three colors of ink.{/n}
-"Absalom has answered." {n}She lays a letter on the ledger, heavy paper, a seal in gold wax far older and larger than hers.{/n} "The mark is genuine. The Treasury confirms the loss of one soul cauldron, 'circumstances of removal unrecorded', and ratifies the lease. I have been commended. I have also been instructed to ensure the property's safe return. So.
+    n("start", "Arsinoe", '''{n}A ledger lies open on the counter, and a stick of gold wax is softening over a candle.{/n}
+"Absalom has not answered." {n}She lays a letter on the ledger: her own, come back unopened, the seal broken by a Mendevian road warden who has written ROAD CLOSED across it in charcoal.{/n} "The roads south are shut, the Treasury's clerks are three countries away, and I hold a lease on a stone that may or may not be my god's, on the word of a worn stamp and a lich's guess. So the lease stands on its own clause. Until Absalom rules, the lessee answers for the stone as if it were the Treasury's, and the temple answers for the lease. The temple, in Drezen, is me. I have put my name beside yours on a guess, Commander. I do not do that. So.
 {n}She turns the letter face down.{/n}
 "An inspection, Commander. I am told my lessee intends to carry the property to the place where the Worldwound was first opened, and then, I assume, to do something heroic with it. My ledger calls that 'unusual wear'. The temple requires collateral against total loss."''',
       c("Continue", "pledge", forbids=("konomi.trickster.cost.recalled",)),
@@ -121,13 +123,13 @@ physical(COLLECTION, "Collateral", '"You wanted to see me about the lease?"', [
       c('"Business, then. May Abadar keep you."', flags=("arsinoe.trickster.collection_closed",))),
     n("threshold", "Arsinoe", '''{n}Something in her face changes. It is the look she gives a price she has already decided to pay.{/n}
 "Late. Yes. I charge interest on late."
-{n}She comes round the counter, turns the sign in the window to CLOSED, and locks the till before she locks the door. Her gold eyes do not leave you while she does either.{/n}
+{n}She comes round the counter, turns the sign in the window to CLOSED, and locks the till. Only the till. Her gold eyes stay on you the whole time, as if the rest of the shop were collateral she has already priced.{/n}
 "The lien stands, Commander. This is outside the lease. Abadar keeps the accounts; he does not keep the curtains. Close them."
-{n}You do. When you turn back she has undone her collar with one hand, and the clasps of her robe with the other, without any hurry at all, and the robe slides from her shoulders and pools at her feet like spilled coin. She steps out of it and takes you by the lapels and pulls, and her mouth on yours is slow and very deliberate, the kiss of a woman who has read the whole contract and means to enforce every clause.{/n}
-{n}The ledger goes off the counter. Neither of you stops to pick it up. She lays you back across the place where it was and follows you down, her hair falling around both your faces like a drawn curtain, and for one long, appraising moment she only looks at you, the look of a woman about to sign.{/n}
+{n}You do. When you turn back she has undone her collar with one hand, and the clasps of her robe with the other, without any hurry at all, and the robe slides from her shoulders and pools at her feet like spilled coin. She steps out of it and draws you in by one hand, as if leading a buyer to the good stock, and her mouth on yours is slow and very deliberate, the kiss of a woman who has read the whole contract and means to enforce every clause.{/n}
+{n}The ledger goes off the counter. Neither of you stops to pick it up. She lays you back across the place where it was and follows you down, her hair falling around both your faces like a drawn curtain, and she pauses there to appraise you, thoroughly, the way she appraises a stone she has already decided to buy.{/n}
 "Interest accrues from now," {n}she says, and settles astride you, knees braced on the counter's edge, and reaches down between you with the same unhurried care she gives a seal.{/n}''',
       c("Continue", "morning")),
-    n("morning", "Arsinoe", '''{n}Morning. The sign still says CLOSED. She is at the counter in her shift with her hair unbound, a cup of tea going cold at her elbow, entering a line in the ledger in very small handwriting.{/n}
+    n("morning", "Arsinoe", '''{n}The sign still says CLOSED when you wake, and the street outside is already loud. She is at the counter in her shift with her hair unbound, a cup of tea going cold at her elbow, entering a line in the ledger in very small handwriting.{/n}
 "Interest on the property: accrued. Everything else: no charge."
 {n}She blots it and closes the book before you can read it.{/n}
 "Tell anyone I did something for free and I will deny it under oath. Before a priest of my own god, if necessary. Go and be impressive, Commander. I have a shop to open, and you owe me rent."''',

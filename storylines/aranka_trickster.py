@@ -15,7 +15,7 @@ from story_format import c, n, p, reaction, scene
 SCENES = []
 UNIT = "430cba7801b149b4e8494ace6baf4f7c"           # Azata_Aranka_DesnaPriest (no dialog component; the presence copy)
 DREZEN = "2570015799edf594daf2f076f2f975d8"
-FYE = "0f12118177d102f428a3b30b15b132eb"            # Fye_Bartender, the presence anchor ("Fye the Tavern Keeper")
+MARKET = "bad9f602b81a80047ac470b01ebe65a9"         # ExoticCapitalTrader: the spice-and-curio stall, no other route's anchor
 YARD_UNIT = "bd0c4fe722aeef94b8495ac284b96bc8"      # Azata_Aranka_RankupSpeaker: her Chapter 3 look, a second unit for the yard
 QUARTERMASTER = "a380d926e92f70e429681eb9654478f9"  # DrezenCapital_Quartermaster (Wilcer Garms), always in the capital
 KING_C3 = "1a17d8053a3be7f47a7908eb6706f2fe"        # c3/Mythic_Trickster/FoolKing_Tavern/AnswersList_0009
@@ -28,7 +28,7 @@ LANN_HUB = "66385ad77fa743e4bb1234078dbd804c"       # CompanionDialogues/Lann/An
 
 HUB = "aranka.presence"
 YARD = "aranka.presence.yard"
-FYE_GONE = "aranka.presence.failed"  # runtime: her copy is wanted but Fye is not in the capital
+FYE_GONE = "aranka.presence.failed"  # runtime: her copy is wanted but the market stall is not in the capital (id kept)
 PRIMED = "aranka.trickster.primed"
 ANSWERED = "aranka.trickster.answered"
 RETURNED = "aranka.trickster.returned"
@@ -69,20 +69,21 @@ RELATIONSHIP_PATCH = dict(
         "parent_done_non_azata": dict(detect=[], device="aranka.trickster.touring.boast", returned=ANSWERED),
     })
 PRESENCES = {
-    # A spawned copy of her Azata-island actor at the end of Fye's counter. Vellexia's copy stands on his left in
-    # Chapter 5, so Aranka takes the right.
-    HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=FYE, Side="right", Distance=2.0),
+    # A spawned copy of her Azata-island actor busking on the crates by the spice trader's stall in the market (polish
+    # 2026-09-28: off Fye's counter, where other routes already stand). A singer on the road plays where the coin is,
+    # not in the one tavern everybody else drinks in.
+    HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=MARKET, Side="front", Distance=2.5),
               Requires=["trickster.ever", "aranka.trickster.in_drezen"], Forbids=[CLOSED], MinChapter=3, MaxChapter=5,
               AnswerLists=[], Dialog="hub",
-              Greeting="{n}A woman in Desnan blue is sitting on the end of Fye's counter with a lute across her knees, "
-                       "and the tavern has gone quiet to hear her tune it.{/n}"),
-    # Fye leaves the capital when the tavern is lost (Fye_Bartender_NotInCapital 60d1237d hides his unit), which raises
-    # aranka.presence.failed. She then sings in the quartermaster's yard instead: a copy of a different unit of hers,
-    # beside Wilcer Garms, who never leaves. The same four in-person beats have yard copies (ids ending _yard).
+              Greeting="{n}A woman in Desnan blue is sitting on a stack of spice crates by the curio stall with a lute "
+                       "across her knees, and half the market has stopped haggling to hear her tune it.{/n}"),
+    # If the market stall is not in the capital, aranka.presence.failed is raised and she sings in the quartermaster's
+    # yard instead: a copy of a different unit of hers, beside Wilcer Garms, who never leaves. The same four in-person
+    # beats have yard copies (ids ending _yard).
     YARD: dict(Unit=YARD_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=QUARTERMASTER, Side="front", Distance=2.5),
                Requires=["trickster.ever", "aranka.trickster.in_drezen", FYE_GONE], Forbids=[CLOSED], MinChapter=3,
                MaxChapter=5, AnswerLists=[], Dialog="hub",
-               Greeting="{n}Fye's is boarded up. A woman in Desnan blue is sitting on the tailgate of a supply wagon in the "
+               Greeting="{n}The market is shuttered. A woman in Desnan blue is sitting on the tailgate of a supply wagon in the "
                         "quartermaster's yard, with a lute across her knees, and the carters have stopped unloading to "
                         "hear her tune it.{/n}"),
 }
@@ -115,25 +116,25 @@ def tavern(id, title, entry, nodes, requires, forbids, chapter, hub, back, **ext
 
 PLACES = {
     "fye": dict(suffix="", hub=HUB, unit=UNIT, requires=(), texts={
-        "@OPEN@": "{n}Fye leans across the counter as you come in.{/n} \"She's been tuning that thing for an hour and nobody's ordered a drink since. Do something.\"",
-        "@SEAT@": "the end of Fye's counter",
-        "@PAPER@": "the back of Fye's bill of fare",
-        "@STOVE@": "Fye's stove",
-        "@STAGE@": "Fye's bar",
-        "@ROOM@": "She has a room above Fye's, rented by the week, with a bed too narrow for two and a window onto the latrine pits.",
-        "@HOUSE@": "The whole of Fye's",
-        "@BILL@": "There is a bill under the door in Fye's hand",
-        "@CROWD@": "every man at the counter",
+        "@OPEN@": "{n}The spice trader catches your sleeve before you reach his stall.{/n} \"She's been tuning that thing on my crates for an hour and nobody's bought so much as a pinch of pepper since. Do something.\"",
+        "@SEAT@": "a stack of the spice trader's crates",
+        "@PAPER@": "the back of the spice trader's tally-slip",
+        "@STOVE@": "the spice trader's brazier",
+        "@STAGE@": "the crates",
+        "@ROOM@": "She has a room above the market, rented by the week, and she walks straight past its door. The outside stair goes on up to a flat roof, and the sky over Drezen is thick with stars for once.",
+        "@HOUSE@": "The whole market row",
+        "@BILL@": "There is a note nailed to the stair door in the watch-sergeant's hand",
+        "@CROWD@": "every stallholder putting up his awning",
     }),
     "yard": dict(suffix="_yard", hub=YARD, unit=YARD_UNIT, requires=(FYE_GONE,), texts={
-        "@OPEN@": "{n}Fye's is boarded up, so the quartermaster's yard has become a tavern without a roof. Wilcer Garms meets you at the gate.{/n} \"She's been tuning that thing for an hour and my carters haven't lifted a crate since. Do something.\"",
+        "@OPEN@": "{n}The market is shuttered, so the quartermaster's yard has become a tavern without a roof. Wilcer Garms meets you at the gate.{/n} \"She's been tuning that thing for an hour and my carters haven't lifted a crate since. Do something.\"",
         "@SEAT@": "the tailgate of a supply wagon",
         "@PAPER@": "the back of a quartermaster's requisition",
         "@STOVE@": "the carters' brazier",
         "@STAGE@": "the wagon bed",
-        "@ROOM@": "She has a room in a carters' lodging house by the south gate, rented by the week, with a bed too narrow for two and a window onto the mule lines.",
+        "@ROOM@": "She has a room in a carters' lodging house by the south gate, and she walks straight past its door. A ladder goes on up to the flat roof over the mule lines, and the sky over Drezen is thick with stars for once.",
         "@HOUSE@": "The whole lodging house",
-        "@BILL@": "There is a bill under the door in the landlady's hand",
+        "@BILL@": "There is a note nailed to the ladder in the landlady's hand",
         "@CROWD@": "every carter at the long table",
     }),
 }
@@ -150,7 +151,7 @@ def placed(nodes, place):
 
 
 def counter(id, title, entry, nodes, requires, forbids, delay, **extra):
-    """An in-person beat on her presence hub: at Fye's counter, and a yard copy for when Fye has left the capital."""
+    """An in-person beat on her presence hub: by the market stall, and a yard copy for when the stall is not in the capital."""
     for place, spec in PLACES.items():
         SCENES.append(scene(id + spec["suffix"], title, "Aranka", 3, entry, placed(nodes, place),
                             requires=(*requires, *spec["requires"]), forbids=forbids, delay=delay, last=5, optional=True,
@@ -181,10 +182,10 @@ def king_nodes(open_text, crowned_text, uncrowned_text=None):
 {n}You sing the King's ballad back at him with the words of a Desnan hymn you have no right to and a second verse of your own. The rhyme for 'Thaberdine' is 'tambourine'. It is a dreadful rhyme. A sapper learns it first, then the one-eyed carter by the door, then the girl who carries the King's mugs, who has a better voice than any of them.{/n}''',
             c("Continue", "sheet")),
         nar("sheet", '''{n}Thaberdine fishes inside his shirt and brings out the greasy, folded song-sheet his pops left him, the one thing he owns that is older than his debts, and smooths it on the table to show you how the ballad really goes.{/n}
-{n}The second verse is printed on it. It is in type that has been fading for forty years, on paper that has been folded along the same creases since before you were born, and it is your verse, 'tambourine' and all.{/n}''',
+{n}There is a gap in the second verse, a blank where the ink gave out forty years ago. The King licks a stub of charcoal and writes your verse into it himself, 'tambourine' and all, in letters that lean like drunks, and then holds the sheet up to the room and swears on his crown it was always there. Nobody at his table is sober enough to argue.{/n}''',
             c("Continue", "stone", requires=(TABLET_TRUE,)),
             c("Continue", "pilgrim", forbids=(TABLET_TRUE,))),
-        nar("stone", '''{n}You have seen this before, at this same table: moss-covered letters on a stone from Pulura's Fall, repeating his words exactly, because you told him they would.{/n}''',
+        nar("stone", '''{n}You have seen him do this before, at this same table, with the moss-covered stone from Pulura's Fall that repeated his words because you told him it would. He has decided this sheet is the same kind of miracle, and in the King's tavern that is as good as proof.{/n}''',
             c("Continue", "pilgrim")),
         nar("pilgrim", '''{n}By the fifth round they are correcting each other's words from the sheet, and every one of them swears their grandmother sang it exactly that way.{/n}
 {n}One old woman by the fire does not sing. There is a faded Desnan star stitched on her shawl. She leans over the King's shoulder, reads the sheet, and goes white.{/n} {n}"That song never had a second verse," she says, to nobody. "I sang it in Kenabres." She leaves without finishing her cup.{/n}''',
@@ -223,7 +224,7 @@ def her_letter_choices(*extra):
 
 letter("aranka.trickster.verse.any_tavern", "Every mug in the house", [
     nar("start", '''{n}There is no King left to sing to, and no tavern of his to sing in. So you climb onto a table in the worst camp tavern in Drezen instead, pay for every mug in the house, and teach a room full of sappers and quartermasters Starward Gaze with a second verse of your own. Nobody in the room has heard of Thaberdine. You rhyme him with 'tambourine' anyway.{/n}
-{n}The beer buys you the room. It takes all night and most of the camp's beer. In the grey of the morning the Desnan broadsheet the refugees nailed by the door last spring has a second verse printed on it, in faded type, that was not there when you climbed onto the table: yours, 'tambourine' and all. By the following week the song has walked out of Drezen on its own, in the packs of every courier and carter on the north road, and every copy anyone finds has the verse on it.{/n}''',
+{n}The beer buys you the room. It takes all night and most of the camp's beer. In the grey of the morning somebody has chalked your verse under the Desnan broadsheet the refugees nailed by the door last spring, 'tambourine' and all, and underlined it twice. By the following week the song has walked out of Drezen on its own, in the packs of every courier and carter on the north road, and nobody who learned it that way believes it ever went without the verse.{/n}''',
         c(JOKE, "reply", mythic="Trickster", crusade=("Finances", -150)),
         c('"...On second thought, buy them one round and let them sing what they like."', abort=True)),
     nar("reply", '''{n}Nine days later a letter arrives, in a round, flourishing hand that has pressed hard enough to tear the paper in two places.{/n}''',
@@ -243,21 +244,21 @@ letter("aranka.trickster.verse.her_letter", "Somebody changed my song", [
     nar("start", '''{n}The letter is in a round, flourishing hand that has pressed hard enough to tear the paper in two places. It smells faintly of road dust and lamp oil, and someone has used it as a coaster.{/n}''',
         c("Continue", "known", requires=(GAVE_SONG,)),
         c("Continue", "unknown", forbids=(GAVE_SONG,))),
-    a("known", '''"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in Drezen is telling the whole city his pops learned it from me. I have never met his pops. I have never met him. Old Marit heard it in his tavern and walked four days to tell me. She says he has a song-sheet forty years old with your verse printed on it, in ink older than I am. She was crying, and I could not tell whether it was the good kind."
+    a("known", '''"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in Drezen is telling the whole city his pops learned it from me. I have never met his pops. I have never met him. Old Marit heard it in his tavern and walked four days to tell me. She says he has his pops' song-sheet with your verse scrawled into it in charcoal, and swears on his crown it was always there. She was crying, and I could not tell whether it was the good kind."
 "It came to us from the true servants of Desna, Commander. I carried it out of Kenabres in one piece and I put it into your hands in one piece, and Ilkes asked you to remember it. I did not ask you to rhyme it with a tambourine. I am coming to Drezen to find the thief."''',
       *her_letter_choices()),
     a("unknown", '''"To the Knight-Commander of Drezen, from Aranka, who sings for Desna and would like a word."
-"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in your city is telling everyone his pops learned it from me. I have never met his pops. I have never met him. Old Marit, one of our pilgrims, heard it in his tavern and walked four days to tell me. She says he has a song-sheet forty years old with the new verse printed on it, and that the verse arrived the night a Knight-Commander stood on a bench and paid for the beer."
+"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in your city is telling everyone his pops learned it from me. I have never met his pops. I have never met him. Old Marit, one of our pilgrims, heard it in his tavern and walked four days to tell me. She says he has an old song-sheet with the new verse scrawled into it, and that the verse arrived the night a Knight-Commander stood on a bench and paid for the beer."
 "I am coming to Drezen to find the thief. Please have them ready."''',
       *her_letter_choices()),
 ], requires=("trickster.ever", PRIMED), forbids=(ANSWERED, ROMANCE, FAILURE), delay=72)
 
 
-# --- In person, at Fye's counter (R2-1, R2-3) ----------------------------------------------------------------------
+# --- In person, busking in the market (R2-1, R2-3) ----------------------------------------------------------------------
 
 counter("aranka.trickster.verse.duet", "Second verse, the good one", '"You wanted the thief. Here I am."', [
     nar("start", '''@OPEN@
-{n}The woman on @SEAT@ is in Desnan blue, road-dusty to the knee, with a lute across her lap and a cup of the worst wine in Drezen she has not touched. Every head in the room is turned towards her, and she knows it, and she is enjoying it more than she would ever admit.{/n}''',
+{n}The woman on @SEAT@ is in Desnan blue, road-dusty to the knee, with a lute across her lap and a cup of the worst wine in Drezen she has not touched. Every head within earshot is turned towards her, and she knows it, and she is enjoying it more than she would ever admit.{/n}''',
         c("Continue", "mocking", requires=(MOCKING,)),
         c("Continue", "posters", requires=(ANNOUNCED,), forbids=(MOCKING,)),
         c("Continue", "denied", requires=(DENIED,), forbids=(MOCKING, ANNOUNCED)),
@@ -269,24 +270,24 @@ counter("aranka.trickster.verse.duet", "Second verse, the good one", '"You wante
     a("denied", '''"The Desnans, you said." {n}She does not smile.{/n} "I am the Desnans. Three camps and a ferryman pointed me at you, Commander, and the ferryman did an impression."
 "So. You never heard it. Sing it for me, then. The second verse. If you can't, I'll know you lied once. If you can, I'll know you lied twice."''',
       c('[Sing it] "Second verse. The good one."', "duet")),
-    a("mocking", '''{n}She puts the lute down, walks the length of the counter, and slaps you. Not hard. Precisely.{/n}
+    a("mocking", '''{n}She puts the lute down, walks straight up to you through the crowd, and slaps you. Not hard. Precisely.{/n}
 "There. I decided. I have been deciding since the letter." {n}She shakes out her hand.{/n} "I wrote that song to hurt you. You stood on a bench and made a whole tavern sing it louder, and now it's the most requested song between here and the river, and every time they sing it they're laughing with you, not at you. You stole my revenge and made it scan."
 "Now sing it with me. The verse where you lose. I'll take the harmony."''',
       c('[Sing it] "The one where I lose. From the top."', "duet")),
-    a("posters", '''"You put me on a poster before you put me in a letter." {n}She lays a torn corner of one on the counter: KNIGHT-COMMANDER'S COURT POET, and half of TONIGHT.{/n}
+    a("posters", '''"You put me on a poster before you put me in a letter." {n}She presses a torn corner of one into your palm: KNIGHT-COMMANDER'S COURT POET, and half of TONIGHT.{/n}
 "You billed a song, Commander, so now you will have to earn the billing. Starward Gaze came to us from the true servants of Desna, and nobody I know has ever dared add a verse to it. You're going to. Here. In front of all of them. And then I'm going to decide how badly you did it."''',
       c('[Sing it] "A second verse. Mine."', "duet")),
     a("duet", '''"You owe me a duet for this. And an apology. Mostly the duet."
 {n}She hands you the second verse, and takes the harmony herself, and for three minutes nobody in Drezen is at war. Nobody moves. A sapper by the gate takes his helmet off without knowing he has done it.{/n}
 {n}When it ends there is the kind of silence that is worth more than applause, and then the applause, and she soaks up every bit of it with her eyes closed.{/n}
-"My name goes first on every copy. Yours goes underneath. In small letters. Very small."''',
-      c('[Sign under her name] "Small letters. Agreed."', "signed"),
+"My name goes first every time it's sung. Yours comes after. Quietly. Very quietly."''',
+      c('[Take the harmony, not the credit] "Yours first. Mine after, quietly."', "signed"),
       c('[Argue the billing] "Put mine first. It\'s my verse."', "billing")),
-    a("signed", '''"Good." {n}She writes both names on @PAPER@, hers in a round hand like a lark on a wire and yours underneath, so small it could be a flaw in the paper.{/n}
+    a("signed", '''"Good." {n}She turns to the crowd and gives them the song's name and her own, clear as a bell, and then yours, into her cup, so quietly the front row has to lean in to catch it.{/n}
 "I'm singing it in every camp between here and the river. Every night. I'll decide each morning whether to come back and tell you how it went."''',
       c('"I\'ll be here."', flags=(DUET, CREDITED))),
     a("billing", '''"Your verse." {n}She laughs, delighted and not at all moved.{/n} "Your verse is eleven words and a tambourine, Commander. My name goes first. Argue with me again and it goes first in capitals."
-{n}She writes both names on @PAPER@ anyway, yours underneath, and underlines hers twice.{/n}
+{n}She tells the crowd both names anyway, hers twice and loud, yours once and into her sleeve.{/n}
 "I'm singing it in every camp between here and the river. Every night. I'll decide each morning whether to come back and tell you how it went."''',
       c('"I\'ll be here."', flags=(DUET, VAIN))),
 ], requires=("trickster.ever", ANSWERED), forbids=(CLOSED, DUET), delay=72)
@@ -295,12 +296,12 @@ counter("aranka.trickster.verse.duet", "Second verse, the good one", '"You wante
 def night_nodes():
     """The intimate beat after the commit (Directive 12): the threshold, the cut at the start of the act, the morning."""
     return [
-        nar("threshold", '''{n}@ROOM@ She does not seem to notice either. She sets the lute against the wall with more care than she takes over anything else, and turns round, and there is nothing careful left in her at all.{/n}
+        nar("threshold", '''{n}@ROOM@ She does not seem to notice either. She sets the lute against the wall and turns round, and her breathing has gone the way it goes before a high note she is not sure of: short, high in the chest, held.{/n}
 {n}She kisses you the way she sings, all breath and no hurry, and hums against your mouth when you pull her closer, a low, rising phrase you feel in your own chest before you hear it. The Desnan blue comes off over her head. She is warm as a hearth underneath it, and she takes your hands and sets them on her where she wants them, and makes a small sound, and holds them there.{/n}
-{n}"Count me in," she whispers, and pulls you down onto the narrow bed, and climbs astride you with her hair falling round both your faces.{/n}''',
+{n}"Count me in," she whispers, and pulls you down onto her cloak spread over the sun-warm tiles, under more of Desna's stars than Drezen has shown anyone all year, and climbs onto you humming the first bar of the third verse, and loses the tune halfway, and does not go back for it.{/n}''',
             c("Continue", "morning")),
-        nar("morning", '''{n}Dawn. @HOUSE@ hears her singing through the floorboards at first light, something new and unfinished that stops and starts again, and by the time you come down @CROWD@ is very busy looking at his breakfast.{/n}
-{n}@BILL@: the room, the broken slat in the bed, "lost custom", and a line at the bottom that only says "Noise." Aranka reads it over your shoulder, laughs until she has to sit down, and pays it herself.{/n} "Don't you dare take it off the war chest. I earned every copper of that."''',
+        nar("morning", '''{n}@HOUSE@ wakes to her singing from the roof, something new and unfinished that stops and starts again, and by the time you come down the stair @CROWD@ is very busy looking at the sky.{/n}
+{n}@BILL@: a fine for "singing on a roof after the bell", and a line at the bottom that only says "Also the other noise." Aranka reads it over your shoulder, laughs until she has to sit down on the step, and pays it herself.{/n} "Don't you dare take it off the war chest. I earned every copper of that."''',
             c('[Keep the bill.]', flags=(NIGHT,))),
     ]
 
@@ -326,26 +327,26 @@ counter("aranka.trickster.verse.encore", "An offer from Nerosyan", '"You came ba
       c('[Charm her] "Stay, and I\'ll rhyme you anything."', "not_yet"),
       c('[Tell her to take the stage] "Go. A song that stays in one tavern dies."', "stage", flags=(CLOSED, NEROSYAN))),
     a("not_yet", '''"That's a pretty line." {n}She folds the Mendevian letter very small, and then smaller.{/n}
-"Too pretty. You wrote a verse for a king and a verse for a crowd. Write one for me, and mean it, and ask me again. Not tonight."''',
-      c('[Accept her terms] "Then I\'ll write it."', flags=(DECLINED,))),
-    a("stage", '''{n}She is quiet for a long time. When she speaks, her voice is steady, and it costs her.{/n}
+"Too pretty. You wrote a verse for a king and a verse for a crowd. So I'm going to write one. For you. When I sing it, you'll know what I'm asking, and I'll know what you answer. Not tonight."''',
+      c('[Let her write it] "Then I\'ll listen for it."', flags=(DECLINED,))),
+    a("stage", '''{n}She says nothing while the crowd around you orders another round and forgets to drink it. When she speaks, her voice is steady, and it costs her.{/n}
 "That's the kindest thing anyone has ever said to me, and I hate it." {n}She tucks the Mendevian letter into her bodice and stands, and settles the lute on her back.{/n}
 "I'll sing your verse every night. And every night I'll tell them who wrote it. In small letters."''',
       c('"Go on. They\'re waiting."')),
-    a("stay", '''{n}She looks at you for a long moment, the way she looked at the room before the duet, as if she were deciding how it will sound.{/n}
+    a("stay", '''{n}She studies you the way she studied the crowd before the duet, as if she were deciding how it will sound.{/n}
 "Every night we get." {n}She drops the Mendevian letter into @STOVE@ without looking at it.{/n} "That's a better line than the verse. I'm stealing it."''',
       c("Continue", "threshold")),
     *night_nodes(),
 ], requires=("trickster.ever", DUET), forbids=(CLOSED, KEPT, DECLINED), delay=72)
 
-counter("aranka.trickster.verse.third_verse", "The third verse", '"I wrote it."', [
-    a("start", '''"Well?" {n}She has cleared a space on @STAGE@, and the whole crowd is watching, and she has made sure of that.{/n}
-"The third verse. For me. You sing it alone, in front of all of them, badly, and you sign it under your own name. Big letters. Then ask."''',
-      c('[Sing it alone] "...Everybody. Quiet. This one\'s mine."', "sung", crusade=("Favors", -100), flags=(KEPT, SANG_ALONE)),
-      c('[Refuse] "I don\'t sing alone."', "refused", flags=(CLOSED,))),
-    nar("sung", '''{n}You sing it alone. Your voice cracks on the second line, and a sergeant at the back laughs out loud, and then stops laughing. By the end the room is silent in a way it has not been since the duet, and the story of the Knight-Commander singing a love song, badly, on @STAGE@, will outlive both of you in every barracks in Drezen.{/n}''',
+counter("aranka.trickster.verse.third_verse", "The third verse", '"You said you were writing something."', [
+    a("start", '''{n}She has cleared a space on @STAGE@, and the whole crowd is watching, and she has made sure of that. She sings the third verse without once looking at you: new, hers, and every line of it a question with your name folded into it. On the last line she stops short and leaves the rhyme hanging in the air, and waits.{/n}
+"That one's yours to finish. Out loud. Alone."''',
+      c('[Finish the verse alone] "...Everybody. Quiet. This line\'s mine."', "sung", flags=(KEPT, SANG_ALONE)),
+      c('[Let the rhyme hang] "...I can\'t."', "refused", flags=(CLOSED,))),
+    nar("sung", '''{n}You finish it alone. Your voice cracks on the rhyme, and a sergeant at the back laughs out loud, and then stops laughing. By the end the crowd is silent in a way it has not been since the duet, and the story of the Knight-Commander answering a love song, badly, on @STAGE@, will outlive both of you in every barracks in Drezen.{/n}''',
         c("Continue", "answer")),
-    a("answer", '''{n}She is crying, and furious about it, and laughing.{/n} "That was terrible. That was the worst verse anyone has ever written for me. Sign it. Big letters. And yes. Obviously yes."''',
+    a("answer", '''{n}She is crying, and furious about it, and laughing.{/n} "That was terrible. That was the worst line anyone has ever sung to me. Say your name before it next time, loud, so they all know whose it is. And yes. Obviously yes."''',
       c("Continue", "threshold")),
     a("refused", '''"Then you're a very good thief, Commander, and nothing else." {n}She takes her lute off @STAGE@ and does not look back.{/n}''',
       c('"Aranka..."')),
@@ -420,7 +421,7 @@ counter("aranka.trickster.touring.arrives", "Court poet", '"You came."', [
     a("shout", '''"I am. This is shouting. I'm a singer, I don't have to be loud to be shouting." {n}She smooths the poster out against her knee, and reads it again, and something in her face gives way.{/n}
 "...It's a very good poster. You spelled my name right. Nobody spells my name right."
 "Fine. One night. I sing. You listen. And after that we talk about who owns what, because I don't remember agreeing to be owned by anyone, least of all by you, and least of all in capital letters."''',
-      c('[Agree to her terms] "One night. You sing. I listen."', flags=(ANSWERED, STARTED))),
+      c('[Take her at her word] "One night. You sing. I listen."', flags=(ANSWERED, STARTED))),
 ], requires=("trickster.ever", PRIMED, ROMANCE), forbids=(ANSWERED, "azata"), delay=48)
 
 
@@ -429,7 +430,7 @@ counter("aranka.trickster.touring.arrives", "Court poet", '"You came."', [
 VERSE_PARAGRAPHS = (
     p("She sang the thief's verse herself, to the end of her days, and before it she always told the hall that the "
       "thief had said it must be the Desnans. The halls always laughed. The Commander never did.", requires=(DENIED,)),
-    p("The third verse, the one the Knight-Commander sang alone and badly on Fye's bar, is printed under the other two "
+    p("The third verse, the one Aranka wrote as a question and the Knight-Commander answered alone and badly, is printed under the other two "
       "in every copy. It has never once been sung well. Aranka would not allow it.", requires=(SANG_ALONE,)),
     p("The verse where the Knight-Commander trips over their own banner is still the most requested of the three.",
       requires=(MOCKING,)),
@@ -498,7 +499,7 @@ def integrate(payload):
     rel.setdefault("UnavailableOverrides", {}).update(RELATIONSHIP_PATCH["UnavailableOverrides"])
     rel["TricksterAccess"] = {k: dict(v) for k, v in RELATIONSHIP_PATCH["TricksterAccess"].items()}
     rel["Guidance"] += (" On the Trickster path, a Commander who gives Starward Gaze a second verse in a tavern, or leads "
-                        "the verse where they lose, or bills her as their court poet, may meet Aranka at Fye's counter "
-                        "in Drezen, in Chapter 3 or Chapter 5.")
+                        "the verse where they lose, or bills her as their court poet, may meet Aranka busking by the "
+                        "spice trader's stall in the Drezen market, in Chapter 3 or Chapter 5.")
     payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
     payload.setdefault("Derived", {})[NO_KING] = [[KING_GONE]]
