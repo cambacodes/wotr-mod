@@ -265,6 +265,27 @@ internal static class DelamereTricksterTests
         check(Rules.Available(story, village, Later(story, given, 24, 5)) && !Rules.Available(story, village, Later(story, given, 24, 3)),
             "What came of the count is not a Chapter 5 beat.");
 
+        // The beats around the fire: the god's answer over her seal, the names, the poachers, the brace.
+        var deadeye = S(P + "woken.old_deadeye");
+        var names = S(P + "woken.names");
+        var poachers = S(P + "woken.poachers");
+        var hide = S(P + "woken.hide");
+        check(deadeye.Requires.Contains(P + "white_stag_told") && Program.Walk(deadeye, Later(story, told, 48)).All(r => r.Has(P + "old_deadeye")),
+            "Old Deadeye's house does not follow the white stag, or does not close.");
+        var lieChapel = Later(story, lie, 48);
+        check(Program.Walk(deadeye, lieChapel).Any(r => r.Has(P + "old_deadeye")) && deadeye.Nodes.Single(n => n.Id == "stag").Choices[0].Requires.Contains(P + "lied_erastil"),
+            "The lie is not deepened in the chapel.");
+        check(names.Requires.Contains(P + "feasting_table") && Program.Walk(names, Later(story, spoken, 48)).All(r => r.Has(P + "names_cut")),
+            "The names on the crypt wall do not follow the feasting table.");
+        var law = poachers.Nodes.Single(n => n.Id == "law").Choices;
+        check(law[0].Set.Contains(P + "poachers.provost") && law[1].Set.Contains(P + "poachers.her_law") && law[2].Check?.Skill == "CheckBluff"
+              && Program.Walk(poachers, Later(story, fed, 48)).Any(r => r.Has(P + "poachers.tricked"))
+              && poachers.Nodes.Single(n => n.Id == "law_again").Choices.Count == 2,
+            "Doe in fawn: whose law is not the Commander's choice, or a failed bluff has no plain answer.");
+        check(hide.Requires.Contains("delamere.committed") && Rules.Available(story, hide, Later(story, caught, 48))
+              && !Rules.Available(story, hide, Later(story, offered, 48)),
+            "The brace is not an after-the-commit beat.");
+
         // Every page beat opens from its own gates.
         foreach (var s in own.Where(x => Rules.IsRemote(x) && !x.TricksterDevice))
         {

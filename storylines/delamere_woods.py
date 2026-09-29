@@ -224,7 +224,7 @@ visit(P + "woken.feasting_table", "The feasting table", [
     nar("stayed", '''{n}You sit on the bottom step. She sits on the edge of her own sarcophagus with her knees drawn up and scrubs at it, slowly, and says nothing, and so do you.{/n}
 {n}When the lantern gutters she stops scrubbing, and leans back against the wall beside you, and her shoulder rests against yours. It is warm. She does not move it away. Neither do you.{/n}''',
         c("[Leave when she falls asleep.]")),
-    dl("war", '''"Of course you do." {n}No reproach in it.{/n} "Go on, then. Mind the fourth step. It rocks." {n}She has already turned back to her scrubbing when you reach it, and it rocks.{/n}''',
+    dl("war", '''"Of course you do." {n}No reproach in it.{/n} "Go on, then. The fourth step rocks; I have not fixed it yet." {n}She has already turned back to her scrubbing when you reach it, and it rocks.{/n}''',
         c("[Go.]")),
 ], requires=("trickster.ever", FIRST_MEAT), forbids=(CLOSED, TABLE), delay=24)
 
@@ -452,7 +452,7 @@ visit(P + "woken.village", "Fifty-three, again", [
         c("Continue", "forced", requires=(VILLAGE_FORCED,)),
         c("Continue", "refused", requires=(VILLAGE_REFUSED,)),
         c("Continue", "clans", requires=(VILLAGE_CLANS,))),
-    dl("given", '''"The volunteers." {n}She walks beside you, matching her stride to your limp without seeming to.{/n} "Four families went. Nineteen souls. They built two longhouses in the clearing below the temple, and a palisade that would not stop a goat, and I made them build it again." {n}She is quiet a moment.{/n} "The Wound's things came in the first snow. Three of them, with wrong legs. I killed them in the stream. The Harrow boy was fetching water. He lost an arm."''',
+    dl("given", '''"The volunteers." {n}She walks beside you, matching her stride to your limp without seeming to.{/n} "Four families went. Nineteen souls. They built two longhouses in the clearing below the temple, and a palisade that would not stop a goat, and I made them build it again." {n}She is quiet a moment.{/n} "The Wound's things came in the first snow. Three of them, with wrong legs. I killed them in the stream. The cooper's boy was fetching water. He lost an arm."''',
         c("Continue", "given2")),
     dl("given2", '''"His mother came to me after, and I thought she would curse me. She asked me to teach him to shoot left-handed." {n}Something moves in her face.{/n} "Nineteen souls. By spring there will be twenty-two; two of the women are carrying. I know every name." {n}She opens the sack at her feet: dried venison, a string of mushrooms, a crooked carved deer.{/n} "They sent this. For the one who let them go. The deer is from the boy. It is very bad. Keep it."''',
         c("[Take the carved deer.]", "end", flags=(VILLAGE_SEEN,))),

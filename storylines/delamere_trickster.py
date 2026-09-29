@@ -425,6 +425,10 @@ LIAR = P + "kept_the_lie"
 CLAIMED = P + "claimed_her"
 PROCLAIMED = P + "proclaimed"
 KEPT_QUIET = P + "kept_quiet"
+NAMES = P + "names_cut"
+POACHERS_PROVOST = P + "poachers.provost"
+POACHERS_HERS = P + "poachers.her_law"
+POACHERS_TRICKED = P + "poachers.tricked"
 
 EPILOGUE_PARAGRAPHS = (
     p('''{n}The families she led out of Drezen's camps built their villages in the old Sarkorian clearings below her temple. None of them ever grew past fifty-three. When one did, she walked in at the next new moon and chose who would go and found the next, and the families went, and did not thank her, and did well.{/n}''', requires=(VILLAGE_GIVEN,)),
@@ -434,6 +438,10 @@ EPILOGUE_PARAGRAPHS = (
     p('''{n}Kyado stayed on as prior of her temple, and swept, and was told every day that he swept badly, and grew old and grey there in the end, as he had once said he hoped to. When he died she buried him herself, under the stag carved on the crypt wall, and she did not let anyone else touch the spade.{/n}''', requires=(KYADO_SPOKEN,)),
     p('''{n}Drezen never forgot the morning its Commander stood in the market and named her. Pilgrims came to her woods for the rest of her second life, and she hated every one of them, and fed every one of them, and sent them home with a hare and a scolding.{/n}''', requires=(PROCLAIMED,)),
     p('''{n}Drezen never learned who the tall Kellid woman at the market was. The minstrels went on singing her wrong. She preferred it.{/n}''', requires=(KEPT_QUIET,)),
+    p('''{n}The names on the crypt wall reached nine hundred before she was done. The last she cut was a farm boy's, three valleys over from her temple; she walked there the first spring after the war to ask it, and found an old woman who still remembered him, and carried the name home.{/n}''', requires=(NAMES,)),
+    p('''{n}The crusade's provost flogged three men for a doe in fawn in the spring of the war. It was the only time the crusade's law and hers agreed about anything, and she reminded the Commander of it at every quarrel after.{/n}''', requires=(POACHERS_PROVOST,)),
+    p('''{n}Three Mendevian veterans settled below her temple after the war, in the village whose ditches they had dug. The one with the bad moustache married a cooper's widow there, and named his first daughter for the doe.{/n}''', requires=(POACHERS_HERS,)),
+    p('''{n}The soldiers' story of Erastil's own doe outlived the crusade. Hunters in Mendev still let a doe in fawn pass, and some of them still look over their shoulders when they do it. She never corrected the story. She said it was the most useful lie ever told in her lord's name, and that she would answer to him for it herself, since the jester would only make him laugh.{/n}''', requires=(POACHERS_TRICKED,)),
     p('''{n}Kyado lived in the temple's stable for a year and said the prior's prayers from the doorway, as she had sentenced him to. On the first day of the second year she carried his bedroll back inside herself, and said nothing about it, then or ever.{/n}''', requires=(KYADO_JUDGED,)),
 )
 

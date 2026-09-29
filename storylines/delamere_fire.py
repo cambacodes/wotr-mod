@@ -11,12 +11,21 @@
   (Kyado_main_dialogue/Cue_0109 509eac82).
 - A demon in her woods (optional, Chapter 5): the Worldwound's things in the valleys she guarded.
 - The prior's lessons (optional, physical on Kyado's list in Chapter 3): Kyado, who is afraid, and the woman who is not.
+- Old Deadeye's house (optional): Erastil answers his faithful at her seal with "A stag bellows in the distance"
+  (TombOfDelamere_BookEvent/Cue_0067 a58f2095): the god's answer was over her grave all along, and the Commander's horn
+  borrowed it. The Drezen chapel of Erastil and Brother Haddo are authored.
+- The names (optional): "I will count them later. All of them." (the waking) paid on the crypt wall where Zanedra's cult
+  feasted (TombOfDelamere_BookEvent/Cue_0002; the farm boy, ZanedraInTemple).
+- Doe in fawn (optional): crusade poachers in her wood; whose law judges them (the crusade's, hers, or a Trickster's bluff).
+- The hide (optional, after the commit): the stag hide from the blind cut into a brace for the leg her arrow broke; her
+  household line (05 voice note a_village_not_a_city): she will know every name at the Commander's fire.
 """
 from story_format import c
 from storylines.delamere_trickster import (BOW_RETURNED, CLOSED, COMMITTED, KYADO_JUDGED, KYADO_SPOKEN, KEPT_QUIET, LIMP, P,
-                                           PROCLAIMED, RETURNED, STAG_TOLD, YEW_BOW, dl, kyado, nar)
+                                           NAMES, POACHERS_HERS, POACHERS_PROVOST, POACHERS_TRICKED, PROCLAIMED,
+                                           RETURNED, STAG_TOLD, YEW_BOW, dl, kyado, nar)
 from storylines.delamere_trickster import temple as _temple, visit as _visit
-from storylines.delamere_woods import COUNTED, FIRST_MEAT, TABLE
+from storylines.delamere_woods import CONFESSED, COUNTED, FIRST_MEAT, LIED, TABLE
 
 SCENES = []
 
@@ -34,6 +43,8 @@ KNIFE_LIFTED = P + "knife_lifted"
 DEMON_HUNTED = P + "demon_hunted"
 BAIT_CLEAN = P + "bait_clean"
 LESSONS = P + "prior_lessons"
+DEADEYE = P + "old_deadeye"
+HIDE = P + "hide_brace"
 
 
 # --- The white stag (the device, in her own voice) -------------------------------------------------------------------
@@ -213,6 +224,192 @@ temple(P + "temple.prior_lessons", "The prior's lessons", '"Kyado, what happened
 "On both," she says, very close to your ear. "Even the bad one. Especially the bad one. A leg you do not trust never gets stronger." {n}Her hand does not move from your back while you loose. The arrow goes into the demon's painted eye.{/n}''',
         c("Continue", "eye")),
     dl("eye", '''{n}Kyado, in the dust, applauds, then stops, embarrassed.{/n}
-"Luck," says Delamere, and takes her hand from your back, slowly. "Jester's luck. But you did not close your eyes." {n}She looks at the target, and then at you, and for a moment the yard is very quiet.{/n} "Come again. Both of you. I have not had pupils in a long time. I had forgotten that I liked it."''',
+"Luck," says Delamere, and takes her hand from your back, slowly. "Jester's luck. But you did not close your eyes." {n}She looks at the target, and then at you, and the yard goes quiet around the three of you.{/n} "Come again. Both of you. I have not had pupils in a long time. I had forgotten that I liked it."''',
         c("[Promise to come again.]", flags=(LESSONS,))),
 ], requires=("trickster.ever", FIRST_MEAT), forbids=(CLOSED, LESSONS, KYADO_JUDGED), delay=24, optional=True)
+
+
+# --- Old Deadeye's house (Drezen's chapel of Erastil; optional): the god who does not answer her -------------------
+# The chapel and its priest are authored. The canon under it: at her seal, Erastil answers his faithful with "A stag
+# bellows in the distance" (TombOfDelamere_BookEvent/Cue_0067 a58f2095); Kyado keeps the temple's lore.
+
+visit(P + "woken.old_deadeye", "Old Deadeye's house", [
+    nar("bell", '''{n}The message comes from a priest you have never met: Brother Haddo, who keeps the crusade's little chapel of Erastil down in the lower town, two rooms and a bell and a bean patch behind a wall. The Blessed, he writes, has been kneeling in his chapel since before first light. His parishioners are soldiers' wives who come to pray for husbands in the Wound, and they will not come in past her. Would the Commander be so kind.{/n}''',
+        c("Continue", "inside")),
+    nar("inside", '''{n}The chapel smells of beeswax and wet wool. The altar is a plain board painted with a longbow and a single arrow, the way Erastil's churches paint him now, and on the step below it Delamere kneels with her bow across her thighs and her head up, not bowed, the way a hound waits at a door.{/n}
+{n}Brother Haddo, a stooped Mendevian with soil under his nails, hovers in the vestry doorway. Three women with shawls over their heads wait in the porch, not quite daring the threshold.{/n}''',
+        c("Continue", "silence")),
+    dl("silence", '''"Sit, stag. Not there; that bench is for his people." {n}She does not turn.{/n} "Every night since the crypt I have prayed. On my knees, in my woods, the old words, the ones my mother taught me before I could draw a bow. Every night. Nothing. Not a feather. Not a track in the snow."
+{n}She jerks her chin at the vestry.{/n} "Yesterday that one put his hands on a sick child in the camp, and asked Old Deadeye for her, and the fever broke before he had finished the words. A bean-grower. In a city."''',
+        c('"Maybe Erastil has already said everything he meant to say to you."', "seal"),
+        c('"Ask the priest how he does it."', "haddo"),
+        c('"He\'s been listening to you for a very long time. Maybe he\'s gone a little deaf."', "deaf")),
+    dl("deaf", '''{n}Her head turns, slowly.{/n} "You will joke in his house?"
+{n}Then something twitches at the corner of her mouth, and she looks back at the painted bow.{/n} "My mother said the same. When the snows came late and the elk went south without us. 'He is old, girl. Shout.'" {n}The twitch goes.{/n} "I have shouted, stag. Every night. Ask the priest, then. Ask him how a bean-grower gets an answer."''',
+        c("Continue", "haddo")),
+    nar("haddo", '''{n}Brother Haddo comes forward because there is nothing else he can do, wiping his hands on his habit.{/n} "The prayer isn't mine, Commander. It's the church's. Hearth and field and neighbour. 'The village is the hand, the family is the fingers.' We say it at every wedding." {n}He glances at the woman on the step, and swallows.{/n} "Drezen is a village with ten thousand fingers. That's how I was taught to see it at the seminary in Vyre. He hears me for their sake, not mine."''',
+        c("Continue", "vyre")),
+    dl("vyre", '''"Ten thousand fingers." {n}She says it the way she said "kindling" at the south gate.{/n} "A hand with ten thousand fingers is not a hand. It is a thing in a jar in a sorcerer's cellar." {n}She rises, and the priest steps back without meaning to.{/n} "Your seminary taught you well enough, bean-grower. You are not a fool, and the child lived. But you pray to a god I do not know. Mine counted."''',
+        c('"Yours still does. He answered you. Over your own grave."', "seal")),
+    dl("seal", '''{n}She goes still.{/n} "Say that plainly. I am too old for riddles, and you are too fond of them."''',
+        c('"Kyado says that when Erastil\'s faithful knelt at your seal, a stag bellowed far off in the woods. Every time. Your god has been calling over your grave for as long as there have been pilgrims to hear it."', "stag")),
+    dl("stag", '''{n}For a heartbeat she does not breathe. Then she sits down, hard, on the altar step, as if her knees had been cut.{/n} "A stag."
+"Over my grave." {n}Her hand goes to the stag-hide over her ribs.{/n} "The only word he ever spoke to me with a mouth, he said with a stag's. 'Hunt me.' And all that time in the dark, he was saying it again, over the stone, to anyone who knelt. I could not hear it through the seal. I was holding the string."''',
+        c("Continue", "lied", requires=(LIED,), forbids=(CONFESSED,)),
+        c("Continue", "borrowed", forbids=(LIED,)),
+        c("Continue", "borrowed", requires=(CONFESSED,))),
+    dl("lied", '''{n}She looks up at you, and her face is so open that it hurts to see.{/n} "Then it is as you told me. He sent you. He was calling all that while, and at last he found a stag loud enough." {n}She takes your hand and presses it, hard.{/n} "I will not doubt you again. I swear it, here, in his house."
+{n}Somewhere in your chest, a small cold weight settles and does not move.{/n}''',
+        c("[Say nothing.]", "haddo_end"),
+        c('"Delamere... it wasn\'t like that."', "not_like")),
+    dl("not_like", '''"No?" {n}She waits. The chapel waits.{/n} "Then tell me what it was like."''',
+        c('"...Another time. Not in front of his priest."', "haddo_end")),
+    dl("borrowed", '''{n}She looks at you, and there is something new in it: not suspicion, not quite. The look a tracker gives a set of prints she has been following for days, when she understands at last which way they are going.{/n}
+"You heard it too, before you went down. The boy told you what a stag sounds like, and you blew it on my horn, and I came." {n}Her mouth tightens.{/n} "You borrowed my god's voice, jester. Did you know?"''',
+        c('"Not until Kyado told me about the seal. I\'m sorry if that spoils it."', "spoils"),
+        c('"I\'d like to say it was all my own idea."', "own_idea")),
+    dl("spoils", '''"Spoils it." {n}She shakes her head, slowly.{/n} "Nothing is spoiled. A snare is not less true because the hare did not set it. My lord left the call lying over my grave, and a jester picked it up and blew it. That is how he always worked. He never did a thing himself if a fool would do it for him."''',
+        c("Continue", "haddo_end")),
+    dl("own_idea", '''"I know you would." {n}She almost laughs.{/n} "You would steal the credit off a god's plate and eat it in front of him. Do not do it in his house. He has a long bow and a longer memory, and I have only just got back on speaking terms with him."''',
+        c("Continue", "haddo_end")),
+    dl("haddo_end", '''{n}She gets up and turns to the priest, who flinches.{/n} "Bean-grower. Your rows are crooked; I saw them through the wall. Straighten them before the spring or the rain will take the soil down into the street." {n}She unslings the brace of hares at her belt and lays them on the altar, under the painted bow.{/n} "The first for him. The rest for the women in your porch. They have been standing in the cold for my sake since dawn, and I did not see them. That was a sin. Tell them it was mine."''',
+        c("Continue", "out")),
+    nar("out", '''{n}She walks out past the three women. One of them, the youngest, reaches out without thinking and touches the stag-hide as she goes by, the way you would touch a relic. Delamere stops, and looks at her, and puts a hand on her head for the space of a breath, and goes on.{/n}
+{n}Out in the street she waits for you to catch up, and matches her step to your limp.{/n} "Tonight I will pray again," she says. "Not louder. He is not deaf. I will only listen harder."''',
+        c("[Walk with her as far as the gate.]", flags=(DEADEYE,))),
+], requires=("trickster.ever", STAG_TOLD), forbids=(CLOSED, DEADEYE), delay=48, optional=True)
+
+
+# --- The names (the crypt wall; optional): "I will count them later. All of them." (the waking, gone) ------------------
+
+visit(P + "woken.names", "The names", [
+    nar("wall", '''{n}She has taken the lamp from its hook in the crypt and hung it on the carved stag's antler, which Kyado would think was sacrilege and she thinks is what antlers are for. Below it the wall is scored with lines of old Kellid letters, cut small and deep with a chisel she must have borrowed from someone who has not noticed yet. Stone dust lies in drifts along the floor. Her hands are white with it to the wrist.{/n}''',
+        c('"What are you carving?"', "names")),
+    dl("names", '''"Names." {n}She does not stop.{/n} "I told you I would count them. The ones I can remember. I wake in the night now with a name in my mouth, like a pip, and if I do not cut it before morning it is gone again."
+{n}She taps the first line with the chisel.{/n} "The Stone Hares. That is their mark, the hare with its ears back. Under it, everyone of theirs I knew. Old Tsergun, who kept the ford. His wife, who could not keep a secret. Their girl who tracked foxes. She has no name on the wall yet. I cannot find it."''',
+        c('"How many so far?"', "how_many"),
+        c("[Look along the wall.]", "look")),
+    nar("look", '''{n}The lines go on further than the lamp reaches. There is a hare, and a crooked ash tree, and a mark like an otter, and a mark like three stones, and under every mark a column of names. Some are cut clean. Some have been started and scratched through and started again.{/n}''',
+        c("Continue", "how_many")),
+    dl("how_many", '''"Six hundred and four." {n}She says it at once; she has been counting as she cut.{/n} "Eleven villages. I walked them every season for twenty years, and I knew every soul in them, and I have remembered six hundred and four. There were more. There were always more. The ones I cannot find are the ones who never gave me trouble." {n}Her mouth twists.{/n} "That is a hard thing to learn about yourself, stag. That you remember the thieves and forget the ones who kept the law."''',
+        c('"You remember the girl who tracked foxes."', "girl"),
+        c('"Why cut them here, in the crypt?"', "why_here")),
+    dl("why_here", '''"Because the Horned One's people ate here. They put their bowls where my head lay and sang over a dead boy." {n}She blows the dust out of a letter.{/n} "I have scrubbed this place until my knuckles bled and it still smells of them. So I am giving it better company. Let the next witch who comes down those stairs to feast find six hundred Kellids waiting for her on the wall. Let her eat under that."''',
+        c("Continue", "girl")),
+    dl("girl", '''"I remember her hands." {n}The chisel stops.{/n} "Small, with bitten nails. She would go down on her belly on the ice and put her cheek to it, and tell you where the fox had crossed by the way the frost had closed. Nine winters old." {n}She presses the heel of her hand into her eye, and leaves a white smear of stone dust.{/n} "Her mother called her something short. A bird's name, I think. Wren? Linnet? I have cut both and scratched both out. Neither is right."''',
+        c('"Leave a space for it. It may come back to you."', "space"),
+        c('"Cut the hare\'s mark and leave it at that. She\'d know herself."', "mark"),
+        c('[Take the chisel] "Show me the letters. I\'ll cut what you can remember of her, and you can tell me if it\'s wrong."', "cut")),
+    dl("space", '''"A space." {n}She considers the wall.{/n} "The Stone Hares always left a place at the fire for the ones out hunting. You did not sit in it, even if it was empty all night." {n}She scores a short line under the hare, and leaves the stone after it smooth.{/n} "Very well. Her place at the fire. If her name comes back, she can sit in it."''',
+        c("Continue", "boy")),
+    dl("mark", '''"She would." {n}She thinks about it, and nods.{/n} "She would have laughed at me for fussing. She was a hard little thing; she had to be, with that mother." {n}She cuts a small hare under the others, ears back, running.{/n} "There. That is what she was. It will do until I remember the rest."''',
+        c("Continue", "boy")),
+    dl("cut", '''{n}She looks at you, and then, slowly, she gives you the chisel.{/n} "Hold it like this. Not like that; you hold it like a man holding a stolen purse. Like this." {n}She stands behind you and closes her hand over yours, stone-cold and white with dust, and guides the first stroke.{/n} "Nine winters. Tracked foxes. Bitten nails. The Stone Hares' girl, who put her cheek to the ice." {n}Four strokes, five. What you cut is not a name. It is a description, in a stranger's clumsy hand, in a language you cannot read.{/n}
+"There," she says, very quietly, into your hair. "That is her. Better than a name."''',
+        c("Continue", "boy")),
+    dl("boy", '''{n}She takes the chisel back and moves along the wall, to a place a little apart from the villages, low down, where the lamp barely reaches. Four small marks are already cut there, in a row, like the four finger bones she found in the drain.{/n}
+"The farm boy. The one they ate." {n}Her voice does not change.{/n} "I never knew him. He was born long after me. But he died on my grave, and so he is mine. I have cut him with my own people, because he has no one else to be with."''',
+        c('"What name did you give him?"', "no_name"),
+        c("[Say nothing.]", "no_name")),
+    dl("no_name", '''"None. I do not know it, and I will not make one up. That would be a lie told to the dead, and the dead have been lied to enough." {n}She sits back on her heels.{/n} "When your war is done, if I live, I will walk three valleys over and find his people, if there are any, and ask. Then I will come back and cut it."
+{n}She looks up at you.{/n} "The witch's bowls on my grave, and his bones in my drain. I cannot undo either. I can do this. It is not much. It is what I have."''',
+        c('"It\'s a lot more than anyone else did for him."', "more"),
+        c("[Sit down beside her in the dust.]", "sit")),
+    dl("more", '''"Anyone else was eating him." {n}She says it flatly, and then, after a breath, less flatly.{/n} "Thank you. You say the right thing sometimes, jester, when you are not trying. Sit down. You are blocking my light."''',
+        c("Continue", "sit")),
+    nar("sit", '''{n}You sit beside her in the stone dust under six hundred and four names. She does not pick the chisel up again. After a while she leans her shoulder against yours, and you can feel through it the slow ache of a woman who has been holding a chisel since before dawn, and does not intend to say so.{/n}
+{n}"Tomorrow," she says, to the wall. "Another fifty. Then another. By the new moon I will have them all, or all I am going to get." She lets her head drop onto your shoulder. "Wake me if I sleep. I have done enough of that in this room."{/n}''',
+        c("[Stay until the lamp gutters.]", flags=(NAMES,))),
+], requires=("trickster.ever", TABLE), forbids=(CLOSED, NAMES), delay=48, optional=True)
+
+
+# --- The hide (after the commit; optional): the stag hide from the blind, cut to the leg she broke ------------------
+
+visit(P + "woken.hide", "The hide", [
+    nar("door", '''{n}She comes in by the door this time, which is how you know it is a formal visit. She has a bundle under her arm, wrapped in sacking, and a length of knotted cord looped over her wrist, and she stops just inside the threshold and looks around your quarters as if she were pricing a horse.{/n}
+{n}Outside the window the sky over the north wall is the colour it always is now: bruised, and faintly lit from below. The Wound does not sleep. Neither, it seems, does she.{/n}''',
+        c("Continue", "sit")),
+    dl("sit", '''"Sit. Boots off. The bad leg." {n}She does not wait to see whether you obey. She kneels, and lays the cord along the outside of your leg from hip to heel, and ties a knot in it at the knee, and another at the ankle, and a third where the old wound is, and all the while her lips move, counting.{/n}''',
+        c('"What is this?"', "what"),
+        c("[Let her measure.]", "what")),
+    dl("what", '''"The stag." {n}She unwraps the bundle. It is the hide from the blind, or a long strip of it, scraped and smoked and worked soft, the pale belly hair turned inward.{/n} "I kept the best of him for this. A hunter does not let a good hide rot, and I could not think of anyone else I wanted to wear it."
+"You walk on the outside of that foot now, the way I showed you, and it is too much for the ankle. It rolls. I have watched it roll on your stairs and on my hills. So." {n}She lays the hide against your shin.{/n} "A brace. Lace it tight in the morning, loose at night. It will not make you walk straight. Nothing will. It will stop you falling on your face in front of your soldiers."''',
+        c('"You made this yourself?"', "made"),
+        c('"I thought the limp was the point. So I\'d remember."', "remember")),
+    dl("made", '''"Who else? The boy cannot sew. He tried to mend his own habit once and sewed it to his knee." {n}She is lacing as she talks, quick and rough, the way she cut the arrow out.{/n} "Four nights. My eyes are not what they were. A needle is a harder thing to aim than an arrow."''',
+        c("Continue", "tight")),
+    dl("remember", '''"You will remember." {n}She pulls the first lace tight enough to make you hiss.{/n} "Every stair. Every frost. That is my mark on you and it is not going anywhere. But a mark is not a punishment. I did not break your leg to watch you fall over, jester. I broke it because you ran well and I had to stop you somehow."''',
+        c("Continue", "tight")),
+    nar("tight", '''{n}When she is done she sits back on her heels and looks at her work. The brace runs from below your knee to the arch of your foot, laced up the outside with gut, and where it crosses the old wound she has stitched a small mark into the hide in red thread: an arrow, flying, with nothing in front of it.{/n}
+{n}"Stand," she says. You stand. The ankle holds. She watches you walk to the window and back, and something in her face eases that you did not know was tight.{/n}''',
+        c("Continue", "count")),
+    dl("count", '''"Good. Now hear me, because there is a thing I have been meaning to say, and I say things badly indoors." {n}She stays on her knees on your floor. It does not make her look any smaller.{/n}
+"I have been counting again. I told you, it is what I do. And your village is bigger than fifty-three, stag. I have walked this city. I have heard what they say in your yard, and in the King's tavern, and on the walls. There are a great many people who think they have a claim on you, and some of them are right."''',
+        c('"Does that bother you?"', "bother"),
+        c('"I\'m not going to lie to you about it."', "no_lie")),
+    dl("bother", '''"Bother me?" {n}She considers it honestly, as she considers everything.{/n} "In my day a hunter who brought meat to one hearth and not the rest was a thief, whatever he called it. A hunter who fed every hearth in the village was doing his work." {n}She shrugs.{/n} "I will not be a hearth you visit when the others are cold. That is all. I will be fed, or I will go and feed myself. I have done it before."''',
+        c("Continue", "names")),
+    dl("no_lie", '''"No. You have lied to me once, or you have not, and either way you know what it cost." {n}She looks at you levelly.{/n} "I did not ask for the truth. I told you I have been counting. I know already." {n}A shrug.{/n} "In my day a hunter who fed every hearth in the village was doing his work. I will not be a hearth you visit when the others are cold. That is all."''',
+        c("Continue", "names")),
+    dl("names", '''"One thing more." {n}She gets up, stiffly, and brushes off her knees.{/n} "When I ask you their names, you tell me. All of them. Every one who sits at your fire. I do not need to like them. I may not. But I will not live in a village where I do not know who is sleeping next door, and what they did in the bad winter." {n}Her mouth twitches.{/n} "That is not jealousy, whatever the bards will say. It is only counting."''',
+        c('"You\'ll have every name you ask for."', "promise"),
+        c('"And if you don\'t like what they did in the bad winter?"', "winter")),
+    dl("winter", '''"Then I will tell them so, to their faces, and they will tell me what I did in mine, and we will both be right." {n}She almost smiles.{/n} "That is how a village works, stag. Nobody likes anybody very much. Everybody knows everybody. And when the wolves come down, everybody takes a spear."''',
+        c("Continue", "promise")),
+    dl("promise", '''{n}She picks up the knotted cord from the floor, winds it round her hand, and puts it away inside the breastplate, over her heart, where a city woman would keep a letter.{/n} "I will keep the measure. In case you grow." {n}She goes to the door, and stops, and looks at the brace on your leg with the small red arrow on it.{/n}
+"You wear my mark on your leg and my hide on your mark. In the old days that would have meant something, in the hills. I will not tell you what. You would only laugh." {n}She goes.{/n}''',
+        c("[Lace it looser, for the night.]", flags=(HIDE,))),
+], requires=("trickster.ever", COMMITTED), forbids=(CLOSED, HIDE), delay=48, optional=True)
+
+
+# --- Doe in fawn (optional): crusade poachers in her woods, and whose law judges them ------------------------------------
+
+visit(P + "woken.poachers", "Doe in fawn", [
+    nar("trees", '''{n}A charcoal-burner's boy brings you out to the woods below her temple at a run, and will not say why, only that the Blessed "has got three of yours, and she's being very calm about it".{/n}
+{n}She has. Three crusaders in Mendevian surcoats sit in the leaf litter with their backs to three oaks and their wrists tied behind the trunks with their own bowstrings. Their bows lie snapped in a neat pile. Between them and her, on the grass, lies a doe, gutted, and beside the doe, on a fold of her own hide, what came out of her: a fawn, unborn, not much bigger than a cat.{/n}''',
+        c("Continue", "calm")),
+    dl("calm", '''"Stag." {n}She does not look round. She is sitting on a stump with her bow across her knees, and her voice is perfectly pleasant.{/n} "Yours, I think. They told me so, very loudly, when I took their bows. The crusade. The Commander. They told me whose meat they were fetching and whose name would hang me if I touched them."
+"I have not touched them. I have been waiting for you. I wanted to hear you say it too."''',
+        c('"They\'re hungry, Delamere. The whole army is hungry."', "hungry"),
+        c("[Look at the fawn.]", "fawn")),
+    nar("fawn", '''{n}It lies curled on the hide as it lay inside its mother, legs folded, eyes shut. Somebody has wiped it clean. It was not one of the soldiers.{/n}''',
+        c("Continue", "hungry")),
+    dl("hungry", '''"Hunger I forgive. I have been hungry. I have eaten bark." {n}She stands, and walks to the doe, and crouches by the fawn.{/n} "This I do not forgive. A doe in fawn in the spring is two deer next year and four the year after. Every child in the hills knew it. You let her pass. You let her pass even when your belly is cutting you in half, because she is the village's meat for ten winters and you are one hungry man."
+{n}The youngest soldier, a boy with a bad moustache, opens his mouth. She looks at him. He shuts it.{/n}''',
+        c("Continue", "law")),
+    dl("law", '''"In my day, a man who took a doe in fawn from a village wood lost the two fingers he draws with. Here." {n}She holds up her own right hand, first and second fingers together.{/n} "He could still work. He could still hold a spear when the wolves came. He could never again take the village's meat from it."
+"These are your men, in my wood. So you choose, stag. Whose law?"''',
+        c('"Mine. The crusade has a provost and a whipping post. They answer to me, not to you."', "provost", flags=(POACHERS_PROVOST,)),
+        c('"Yours. Your wood, your law. I won\'t stand between you."', "hers", flags=(POACHERS_HERS,)),
+        c('[Bluff: turn to the soldiers] "You idiots. Do you know whose doe that was?"',
+          check=dict(Skill="CheckBluff", DC=20, Success="bluff", Failure="bluff_fail", CommanderOnly=True))),
+    dl("provost", '''{n}She looks at you for the space of two breaths.{/n} "A whipping post." {n}Then she nods, once.{/n} "Your law is softer than mine and it forgets faster. But you said it to my face, in front of them, and you did not pretend it was mercy." {n}She cuts the bowstrings with three flicks of her knife.{/n} "Take them to your post. And tell your provost from me: the next one I find with a doe in fawn, I will not wait for you."''',
+        c("Continue", "meat")),
+    dl("hers", '''{n}She is quiet. The soldiers are very quiet.{/n} "My law." {n}She walks down the line of them, and stops in front of the boy with the bad moustache, and takes his right hand from behind the tree and holds it up to the light, as if she were looking at a fish.{/n}
+"This one shot her. I watched him. The other two carried." {n}She lets the hand drop.{/n} "Hear me, all three. The law says the fingers. But the law was made for villages, and you are not a village; you are a war, and a war needs its fingers. So."''',
+        c("Continue", "sentence")),
+    dl("sentence", '''"You will dig." {n}She points up the hill, to the clearing below the temple where the volunteers' longhouses stand, or will stand.{/n} "Every day for one season, when your captain can spare you, you will come to my village and dig its ditches and fell its timber, and you will eat at its fires, last. When you go back to your war, you will know fifty-three names you did not know before, and you will think of their faces every time you see a doe."
+{n}She cuts them loose.{/n} "If you do not come, I will come for the fingers. I know where your tents are. I have been in them."''',
+        c("Continue", "meat")),
+    nar("bluff", '''{n}You walk down the line of them slowly, the way a magistrate walks, and stop in front of the boy with the bad moustache, and let your voice drop to a whisper that carries.{/n} "That is Delamere the Blessed. Erastil's own. And that doe was his. He sends one like her into every wood where his priestess walks, in fawn, to see who will take her." {n}You let that sit.{/n} "The last man who did lost his hands to the frost that winter. Both of them. Nobody could say why."''',
+        c("Continue", "bluffed")),
+    nar("bluffed", '''{n}The boy goes grey. One of the others starts to pray, in Mendevian, very fast. By the time you have finished your sentence all three of them are offering, without being asked, to carry every stick of her firewood until the thaw, and swearing on their mothers that no man in their company will draw a bow in her woods again.{/n}
+{n}Delamere watches this with an expression you have not seen on her before. It takes you a moment to recognise it as the look of a woman trying very hard not to laugh in church.{/n}''',
+        c("Continue", "bluff_her", flags=(POACHERS_TRICKED,))),
+    dl("bluff_her", '''{n}She cuts them loose and sends them running up the hill for firewood, and only then turns to you, and her face is thunder.{/n} "You put a lie in my lord's mouth. In my wood. Over a dead doe." {n}She jabs a finger into your chest.{/n}
+"And it will work better than any law of mine ever did, because by tonight every tent in your army will know it, and by spring there will not be a doe in fawn taken between here and the river." {n}She shakes her head.{/n} "I hate you a little. Carry the fawn."''',
+        c("Continue", "meat")),
+    nar("bluff_fail", '''{n}You try. You get as far as "Erastil's own doe" before the boy with the bad moustache, who is braver than he looks, says, "Beg pardon, Commander, but I'm from a farm, and that's a doe."{/n}
+{n}Delamere closes her eyes, briefly, as though praying for patience from a god who has given her very little of it.{/n}''',
+        c("Continue", "law_again")),
+    dl("law_again", '''"He is right. It is a doe." {n}She opens her eyes.{/n} "Do not play your jester's games over a dead mother, stag. Not in my wood. Answer me plainly. Whose law?"''',
+        c('"Mine. The crusade has a provost and a whipping post. They answer to me, not to you."', "provost", flags=(POACHERS_PROVOST,)),
+        c('"Yours. Your wood, your law. I won\'t stand between you."', "hers", flags=(POACHERS_HERS,))),
+    nar("meat", '''{n}When they are gone she kneels by the doe and cuts the first strip of fat from along its spine for Old Deadeye, and says the low Kellid words over it. Then she takes the fawn in her two hands, very gently, and carries it up the hill to a place under an ash tree, and digs, with her knife, until there is a hole deep enough that the foxes will not have it.{/n}
+{n}You help, as much as your leg lets you. She does not tell you to stop.{/n}''',
+        c("Continue", "grave")),
+    dl("grave", '''"The doe goes to your army. They are hungry; I did not lie about that. It would be a worse sin to let her rot." {n}She pats the earth down flat over the fawn, and sits back.{/n}
+"I did not ask you out here to judge three boys. I could have judged three boys in my sleep; I did it for twenty years. I asked you out here to see what you would say when your army and my woods wanted different things." {n}She looks at you across the little grave.{/n} "Now I know. Go home, stag. Take your meat."''',
+        c("[Shoulder the doe.]")),
+], requires=("trickster.ever", FIRST_MEAT), forbids=(CLOSED, POACHERS_PROVOST, POACHERS_HERS, POACHERS_TRICKED), delay=48,
+    optional=True)
