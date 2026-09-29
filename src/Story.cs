@@ -202,6 +202,21 @@ namespace Tirabade
         public bool Submitted;         // the record says a copy was spawned
     }
 
+    // E12d: what keeps a spawn-copy inert. A copy is an instance of the native blueprint (often a companion's: Camelia_Companion
+    // and EvilArueshalae_Companion carry the Player faction, a party AI brain and the companion's voice set), so as spawned it
+    // would join the party's unit group ("<directly-controllable-unit>"), share the party inventory, enter the party's fights
+    // and bark the companion's lines. Each flag is one repair the runtime applies to our copy, never to a native unit.
+    [Flags]
+    public enum CopyQuiet { None = 0, Faction = 1, Group = 2, Silence = 4, Passive = 8 }
+
+    public sealed class CopyObservation
+    {
+        public bool PlayerFaction;     // the copy's faction is the player's (companion blueprints)
+        public bool PartyGroup;        // the copy is in the party's unit group
+        public bool Silenced;          // the copy's asks are the native silent list
+        public bool Passive;           // the copy is marked passive (never joins or is engaged in combat)
+    }
+
     public sealed class CountSpec
     {
         public string[] Of = Array.Empty<string>();
@@ -776,6 +791,18 @@ namespace Tirabade
             else if (seen.CopyFound) steps.Add(PresenceStep.Remove);
             else if (seen.Recorded) steps.Add(PresenceStep.Forget);
             return steps.ToArray();
+        }
+
+        // E12d: the repairs a live spawn-copy still needs. Faction first, so the group the copy then gets is its own; the
+        // group is repaired whenever it is the party's, whatever the faction. Idempotent: an inert copy needs nothing.
+        public static CopyQuiet PlanQuiet(CopyObservation copy)
+        {
+            var steps = CopyQuiet.None;
+            if (copy.PlayerFaction) steps |= CopyQuiet.Faction;
+            if (copy.PlayerFaction || copy.PartyGroup) steps |= CopyQuiet.Group;
+            if (!copy.Silenced) steps |= CopyQuiet.Silence;
+            if (!copy.Passive) steps |= CopyQuiet.Passive;
+            return steps;
         }
 
         // E14a: native epilogue sequences a page may target, with the anchors (member pages) it may follow.

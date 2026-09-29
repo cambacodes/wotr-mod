@@ -14,7 +14,12 @@ internal static class PresenceManagedTests
     private const string IrabethUnit = "280d4712dceb37f4a88e98f1f4c6e64f";
     private const string Capital = "2570015799edf594daf2f076f2f975d8";
 
-    public static IEnumerable<string> NativeIds(Story story) => new[] { IrabethUnit, Capital, "db064cafc234498ca83a702c472c1a7b" }
+    private const string PlayerFaction = "72f240260881111468db610b6c37c099";
+    private const string NeutralFaction = "d8de50cc80eb4dc409a983991e0b77ad";   // Neutrals
+    private const string SilentAsks = "e7b22776ba8e2b84eaaff98e439639a7";       // PC_None_Barks
+
+    public static IEnumerable<string> NativeIds(Story story) => new[] { IrabethUnit, Capital, "db064cafc234498ca83a702c472c1a7b",
+            NeutralFaction, SilentAsks }
         .Concat(story.Presences.Values.Where(p => p.At?.NearUnit != null).Select(p => p.At!.NearUnit!))
         .Concat(story.Presences.Values.SelectMany(p => new[] { p.Unit, p.Area }.Concat(p.AnswerLists)));
 
@@ -55,6 +60,26 @@ internal static class PresenceManagedTests
         check(!(bool)type.GetProperty("AnchorFailed", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(built)!, "A fresh anchored presence reports failure.");
         var report = (string[])typeof(Main).GetMethod("PresenceReport", BindingFlags.Static | BindingFlags.NonPublic)!.Invoke(null, null)!;
         check(report.Length == story.Presences.Count, "Harness presence report does not list every presence.");
+        // E12d: the quiet copy uses two native blueprints; the silent asks list must really be silent (no voice event, text
+        // or sound bank), and the state it changes must be the unit's serialized native state, so a save loads without the mod.
+        string Constant(string name) => (string)type.GetField(name, BindingFlags.Static | BindingFlags.NonPublic)!.GetRawConstantValue();
+        check(Constant("NeutralFaction") == NeutralFaction && Constant("SilentAsks") == SilentAsks, "GuestPresence quiet-copy blueprints differ from the verified ones.");
+        check(Type(NeutralFaction) == "BlueprintFaction", "Quiet copy faction is not a BlueprintFaction.");
+        check(Type(SilentAsks) == "BlueprintUnitAsksList", "Quiet copy asks is not a BlueprintUnitAsksList.");
+        var asks = native[SilentAsks]["Components"]!.Single(c => ((string)c["$type"]!).EndsWith(", UnitAsksComponent", StringComparison.Ordinal));
+        check(!asks["SoundBanks"]!.Values<string>().Any(b => !string.IsNullOrEmpty(b)), "The silent asks list loads a sound bank.");
+        var voiced = ((JContainer)asks).Descendants().OfType<JProperty>().Where(e => e.Name == "AkEvent" && !string.IsNullOrEmpty((string?)e.Value)
+            || e.Name == "Text" && e.Value.Type != JTokenType.Null).Select(e => e.Path).ToArray();
+        check(voiced.Length == 0, "The silent asks list has voiced or text barks: " + string.Join(", ", voiced.Take(3)));
+        var descriptor = typeof(Kingmaker.UnitLogic.UnitDescriptor);
+        check(descriptor.GetField("OverrideAsks")?.GetCustomAttributes(typeof(JsonPropertyAttribute), false).Length == 1
+            && descriptor.GetField("m_Faction", BindingFlags.Instance | BindingFlags.NonPublic)?.GetCustomAttributes(typeof(JsonPropertyAttribute), false).Length == 1
+            && typeof(Kingmaker.EntitySystem.Entities.UnitEntityData).GetField("m_GroupId", BindingFlags.Instance | BindingFlags.NonPublic)?.GetCustomAttributes(typeof(JsonPropertyAttribute), false).Length == 1,
+            "The quiet copy's asks, faction or group is no longer saved native unit state.");
+        // Every spawn-copy of a Player-faction blueprint (companions) is what the quiet copy exists for; list them for the log.
+        var companions = story.Presences.Where(p => p.Value.Mode == "spawn-copy" && ((string?)native[p.Value.Unit]["m_Faction"])?.EndsWith(PlayerFaction, StringComparison.Ordinal) == true)
+            .Select(p => p.Key).OrderBy(k => k, StringComparer.Ordinal).ToArray();
+        Console.WriteLine("E12d: Player-faction spawn-copies quieted at spawn: " + (companions.Length == 0 ? "none" : string.Join(", ", companions)));
         Console.WriteLine("PASS: E12 presences resolve archive types; GuestPresence builds; its save record round-trips; harness report hook present.");
     }
 }

@@ -2,6 +2,8 @@ using System;
 using System.Linq;
 using Kingmaker;
 using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Root;
+using Kingmaker.Visual.Sound;
 using Kingmaker.EntitySystem;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.EntitySystem.Persistence;
@@ -23,6 +25,9 @@ namespace Tirabade
     //    without the mod. It is removed when the presence stops being wanted; if the mod is uninstalled while a copy stands,
     //    that copy stays in that area as an idle native NPC (documented limitation). A copy is never spawned while any live
     //    unit of the blueprint is in the area (duplicate guard), and never twice for one record.
+    //  - E12d quiet copy: the copy's own unit state is set to native values (Neutrals faction, its own unit group, the native
+    //    silent asks list PC_None_Barks as OverrideAsks) and it is marked Passive at run time (not saved; re-applied on every
+    //    tick). All four are plain native state, so a save without the mod loads the copy as a silent, neutral bystander.
     internal sealed class GuestPresence
     {
         internal const string SavePrefix = "RanRomance.Tirabade.Presence.";
@@ -98,6 +103,53 @@ namespace Tirabade
 
         private Vector3 Target => target;
 
+        // E12d: native blueprints the quiet copy uses (blueprints.zip): the Neutrals faction and PC_None_Barks, the empty voice.
+        internal const string NeutralFaction = "d8de50cc80eb4dc409a983991e0b77ad";
+        internal const string SilentAsks = "e7b22776ba8e2b84eaaff98e439639a7";
+        internal const string PartyGroupId = "<directly-controllable-unit>";
+        internal CopyQuiet LastQuiet { get; private set; }
+
+        internal static CopyObservation ObserveCopy(UnitEntityData copy) => new CopyObservation
+        {
+            PlayerFaction = copy.Descriptor.Faction == BlueprintRoot.Instance.PlayerFaction,
+            PartyGroup = copy.GroupId == PartyGroupId,
+            Silenced = copy.Descriptor.OverrideAsks?.AssetGuid.ToString() == SilentAsks,
+            Passive = copy.Passive,
+        };
+
+        // Main thread. Applies the repairs Rules.PlanQuiet asks for; a missing native blueprint skips only its own repair.
+        internal static CopyQuiet Quiet(UnitEntityData copy)
+        {
+            var steps = Rules.PlanQuiet(ObserveCopy(copy));
+            var done = CopyQuiet.None;
+            if ((steps & CopyQuiet.Faction) != 0
+                && ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(NeutralFaction)) is BlueprintFaction neutral)
+            {
+                // Also moves the copy's equipment out of the party's shared inventory (UnitDescriptor.SetupInventory).
+                copy.Descriptor.SwitchFactions(neutral, true);
+                done |= CopyQuiet.Faction;
+            }
+            if ((steps & CopyQuiet.Group) != 0 && copy.Descriptor.Faction != BlueprintRoot.Instance.PlayerFaction)
+            {
+                copy.GroupId = copy.UniqueId;   // what a non-player unit's group id defaults to
+                done |= CopyQuiet.Group;
+            }
+            if ((steps & CopyQuiet.Silence) != 0
+                && ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(SilentAsks)) is BlueprintUnitAsksList silent)
+            {
+                copy.Descriptor.OverrideAsks = silent;
+                copy.View?.UpdateAsks();
+                done |= CopyQuiet.Silence;
+            }
+            if ((steps & CopyQuiet.Passive) != 0)
+            {
+                copy.Passive.Retain();
+                if (copy.IsInCombat) copy.LeaveCombat();
+                done |= CopyQuiet.Passive;
+            }
+            return done;
+        }
+
         internal PresenceObservation Observe(out UnitEntityData? native, out UnitEntityData? copy, out PresenceRecord? record)
         {
             native = copy = null;
@@ -140,10 +192,13 @@ namespace Tirabade
                 Actor = !wanted ? null : copy != null && seen.CopyAlive && copy.IsInGame ? copy : native != null && native.IsInGame ? native : null;
                 // E12b: an anchored copy that cannot be placed is reported, and exposed as <key>.failed for the letter twin.
                 AnchorFailed = wanted && seen.AreaLoaded && Spec.At != null && !seen.AnchorResolved && !seen.CopyFound && !seen.NativeAlive;
+                LastQuiet = CopyQuiet.None;
                 foreach (var step in steps) Execute(step, native, copy, record);
+                // E12d: every live copy (fresh, or spawned by an earlier build) is kept inert; never a native unit.
+                if (copy != null && seen.CopyAlive && !steps.Contains(PresenceStep.Remove)) LastQuiet |= Quiet(copy);
                 Status = !seen.AreaLoaded ? "area not loaded" : (wanted ? "wanted" : "not wanted")
                     + (seen.NativeAlive ? ", native present" + (seen.NativeHidden ? " (hidden)" : "") : "")
-                    + (seen.CopyFound ? ", copy present" : "") + (AnchorFailed ? ", anchor not found (not spawned)" : "")
+                    + (seen.CopyFound ? ", copy present" : "") + (LastQuiet != CopyQuiet.None ? " (quieted: " + LastQuiet + ")" : "") + (AnchorFailed ? ", anchor not found (not spawned)" : "")
                     + (steps.Length > 0 ? " -> " + string.Join("+", steps) : "");
             }
             catch (Exception ex) { LastError = ex; Status = "error: " + ex.Message; }
@@ -169,8 +224,10 @@ namespace Tirabade
                     // Persist before spawning: an ambiguous submitted record is never spawned twice (TerendelevDelivery pattern).
                     var fresh = new PresenceRecord { Key = Key, UnitId = Guid.NewGuid().ToString(), Submitted = true };
                     Write(fresh);
-                    game.EntityCreator.SpawnUnit(Blueprint, Target, Quaternion.Euler(0f, facing, 0f),
+                    var spawned = game.EntityCreator.SpawnUnit(Blueprint, Target, Quaternion.Euler(0f, facing, 0f),
                         game.State.LoadedAreaState.MainState, fresh.UnitId);
+                    // E12d: quiet before the first frame, so the copy never barks or joins a fight as the native unit would.
+                    if (spawned != null) LastQuiet = Quiet(spawned);
                     break;
                 case PresenceStep.Remove:
                     copy!.IsInGame = false;
