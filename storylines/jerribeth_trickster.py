@@ -506,7 +506,7 @@ IN_PERSON = [
 "So I shall do what I did in Wintersun. I shall build a room, and make you believe in it, and this time I shall be in it too."''',
       c("Continue", "tenant_host", requires=(HOST,)),
       c("Continue", "tenant_body", forbids=(HOST,))),
-    j("tenant_host", '''"I could have come to you in the man from the stockade. He is clean, and he would not have minded, since he is not in there any more. I did not think you would want the leavings."''',
+    j("tenant_host", '''"I could have come to you in the man from the stockade. His body is mine now; I stole it fairly, the way I steal everything. But then it would have been his face under your hands, and I have never once let a stolen thing take the credit for my work."''',
       c("Continue", "tenant_body")),
     nar("tenant_body", '''{n}The room she builds is your own, exactly, down to the crack in the ceiling. The only thing in it that is not yours is her, sitting on the edge of the bed in her own form, her carapace catching the light of a lamp that is not lit.{/n}
 {n}You know she is not there. Your body does not. When her claws trace your jaw you feel every point of them, and when she leans down the buzzing is in your skin as well as your skull, low and continuous, so that you cannot tell where the sound stops and the shiver starts.{/n}
