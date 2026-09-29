@@ -107,6 +107,7 @@ CUT_DOWN = P + "raid.cut_down"            # Oskel cut her down at the Commander'
 HUNG = P + "cost.hung"                    # two nights on the yard: her voice left a rasp, and she knows nobody prepared
 HANGMAN_KNIFE = P + "cost.hangman_knife"  # the Commander went through the hangmen and took a cleaver across the forearm
 ZYPHUS_MARK = P + "cost.zyphus_mark"      # the Commander stood nearest and cut her down: the block's grey spade on the shoulder
+SELF = P + "primed.self"                  # the Commander posted at her elbow for the voyage instead of Oskel (11 §2's other choice)
 YARD_KEY = "mielarah_yard"
 YARD_SECRET = "trickster.secret." + YARD_KEY
 CONTACT = P + "contact"                   # Derived: she is coming to Drezen
@@ -418,7 +419,13 @@ tavern(P + "tavern.minder", "The bosun", '"Before we sail. Who is the most dange
          flags=(TOLD,)),
        c('[Lie] "A cursed captain makes a crew nervous. Let them see the biggest man aboard standing at your back."', "lie",
          flags=(MINDER, LIED, SECRET)),
-       c('"Forget I said it."', abort=True)),
+       c('"Forget I said it."', abort=True),
+       c('[Stand nearest yourself] "Then not him. Me. I\'ll be at your elbow every hour until we land."', "self",
+         flags=(SELF,))),
+    mi("self", '''{n}The pencil stops again. This time she looks at you properly, the way she looked at the portal: as a thing that will take her somewhere she has not decided to go.{/n}
+"You." {n}Flatly.{/n} "You have a war, Commander. You have a crusade that falls over if you do. And you want to spend the voyage standing where my steward stood with his tray."
+"I won't pretend I don't know what you're doing. You think my curse has a rule, and you want to be the answer to it." {n}She makes a small, precise tick on her list, as if entering a cost.{/n} "Very well. It's your expedition. But I shall watch you every hour of it, and if anything comes down out of my rigging, I want you to know that I told you so, in the Bad Luck, in front of witnesses."''',
+       c("[Let her finish her list.]")),
     mi("truth", '''{n}She puts the pencil down. For a while she says nothing at all, and the noise of the Bad Luck fills the space where her answer should be.{/n}
 "You want to feed my curse my own bosun." {n}Very quietly.{/n} "I took him off a slaver's deck. I have spent six years in his head, keeping him decent. I promised him that one day I would pay him off with enough gold to buy a quiet life on some other plane, and he believed me, which I assure you is not a thing Oskel does."
 "My code is three lines long, Commander. I never ignore those in distress. I never attack other vessels. I honour the cargo I carry. On my deck, my crew is the cargo."''',
@@ -442,7 +449,7 @@ tavern(P + "tavern.minder", "The bosun", '"Before we sail. Who is the most dange
 "The crew is nervous. They always are, the first week. They count the empty hammocks from the last voyage and they look at me." {n}She taps the pencil against her teeth.{/n} "Oskel at my back. They'll think I've finally hired a bodyguard. The pirates of the Midnight Isles will think I've gone soft."
 "Very well. It's your expedition, and it's a sensible precaution, and I dislike that it's sensible." {n}She almost smiles.{/n} "You think like a quartermaster, Commander. That's a compliment. Mostly."''',
        c("[Let her think so.]")),
-], requires=("trickster", PATTERN, HIRED), forbids=(MINDER, REFUSED))
+], requires=("trickster", PATTERN, HIRED), forbids=(MINDER, REFUSED, SELF))
 
 
 # --- 2b. A charter to Drezen (for a Commander who reads her curse and sails with another captain). -----------------
@@ -639,6 +646,38 @@ remote(P + "raid.rock", "The eleven on the rock", [
 ], requires=("trickster.ever", RETURNED, DEAD_LATCH), forbids=(ROCK_SAVED, ROCK_LEFT, ROCK_SLAVERS, CLOSED), delay=48)
 
 
+# --- 4b2. The Commander at her elbow (11 §2's other prepared choice): nearest at the hanging, the Commander cuts the
+# line before the haul; the curse's accident finds the Commander and cannot finish a mythic body. Nobody else dies; the
+# cost is the Gravedragger's mark for life, and his notice.
+
+remote(P + "raid.elbow", "Nearest", [
+    nar("start", '''{n}You remember it in pieces, afterwards. Her voice at Vazglar, calling you a pirate and worse in front of the whole crew. The crew closing round her like dogs round a fallen horse. And you, at her elbow, where you had said you would be every hour, so that when the slip noose went over her head you were the nearest living thing to her on the ship.{/n}
+{n}Your knife was out before the line went taut. It parted the rope a hand above the knot, and she went down on the deck, and you went down with her, and the man on the other end of the line sat down hard with nothing to haul.{/n}''',
+        c("Continue", "block")),
+    nar("block", '''{n}Then the block at the end of the main yard, which had taken the line's first jerk, turned once, and its pin sheared, and it came down forty feet.{/n}
+{n}It took you across the shoulder instead of the skull, because you are what the Wound made you and a sailor is not, and the collarbone went with a sound like a snapped oar. You did not let go of her. With the breath the noose had left her she called the southern wind, and the ship leaned away from Vazglar, and nobody on that deck came within ten strides of either of you again.{/n}
+{n}When the bruise came up, it came up grey, the grey of turned earth, in the shape of a spade's blade. It has not faded.{/n}''',
+        c("Continue", "cabin")),
+    mi("cabin", '''{n}She comes to you the next night, in the cabin they gave you, with a scarf wound high round her throat, and sits on your sea chest without asking. Her voice is a rasp, but it is hers.{/n}
+"I told you so. In the Bad Luck, in front of witnesses." {n}Her eyes go to your shoulder, to the place under the sling where the grey spade is.{/n} "I felt it come down. Six years I have watched the Gravedragger collect whoever stands nearest, and for the first time I watched him collect, and not finish."
+"He has your measure now. He has put his mark on you like a surveyor's peg. Don't you dare think that was cheap."''',
+        c("Continue", "eleven")),
+    mi("eleven", '''"The eleven who held the rope, I'll put off on the first rock with water on it." {n}A very thin smile.{/n} "My code says I never ignore those in distress. They won't be in distress until I leave them there. I have decided that counts."
+"And there is the raid. There were children in that village, Commander, and fishing nets, and nothing worth a single sack of flour to anyone but them. Tell me why I should be sitting here at all."''',
+        c('"I ordered the raid. You protested, and you were right, and it nearly killed you."', "owned",
+          flags=(RAID_OWNED,)),
+        c('"I ordered the raid. I\'d order it again. Your crew just had worse manners than I did."', "unrepentant",
+          flags=(RAID_UNREPENTANT,), alignment=("Evil", 1))),
+    mi("owned", '''"Right." {n}She tastes the word.{/n} "I was right, and they tried to hang me for it, and you stood where the curse could reach you and you're sorry. That is more than any other captain in the Midnight Isles would have done. I haven't decided yet whether it's more than I'd like."''',
+        c("Continue", "north")),
+    mi("unrepentant", '''"Worse manners than you." {n}She laughs, and it hurts her, and she does it anyway.{/n} "Every pirate I ever wanted to see hanged would have said exactly that, and not one of them would have stood under my yard for it. I'm a magister; I keep accurate records. I'll put both in the book."''',
+        c("Continue", "north")),
+    mi("north", '''"I'm flying Starcatcher north when your war goes home, with a new crew, none of them within two strides of me." {n}She stands.{/n} "Cargo for Drezen. Passengers for anywhere else. Not for you." {n}At the door she stops.{/n} "Mostly not for you. Keep that shoulder out of the rain."''',
+        c("[Let her go.]", flags=(RETURNED, STARTED, ZYPHUS_MARK, NOTICED))),
+], requires=("trickster.ever", DEAD_LATCH, SELF), forbids=(MINDER, RETURNED, CLOSED), delay=24, chapters=(4, 5),
+    TricksterDevice=True, TricksterState="raid")
+
+
 # --- 4c. Nobody at her elbow: the hanging with no bosun posted (the late recovery, dearer than the minder). ----------
 # Without Oskel posted, the curse had nobody nearest when the noose closed, and it cannot finish her: it never has
 # (Cue_0048). She hangs at the edge of it on the main yard, and her crew still feel her in their heads (the
@@ -721,7 +760,7 @@ remote(P + "raid.wind", "Still in his head", [
         c("[Stay with her until morning.]")),
     nar("silent", '''{n}She does not need you to say it. She is a magister of the Arcanamirium and she can count, even now: the line, the knot, the yard, the one man on the ship who could reach it, and the passenger who brought him back. She takes her hand out of yours, and puts it on Oskel's sleeve, and leaves it there.{/n}''',
         c("[Stay with her until morning.]")),
-], requires=("trickster.ever", DEAD_LATCH), forbids=(MINDER, RETURNED, CUT_DOWN, CLOSED), delay=24, chapters=(4,),
+], requires=("trickster.ever", DEAD_LATCH), forbids=(MINDER, SELF, RETURNED, CUT_DOWN, CLOSED), delay=24, chapters=(4,),
     TricksterDevice=True, TricksterState="raid")
 
 

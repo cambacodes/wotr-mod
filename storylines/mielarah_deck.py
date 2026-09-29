@@ -125,11 +125,11 @@ deck(D + "nearest", "The nearest", '"I came to see the ship."', [
         c("Continue", "alive", requires=(TOLD,), forbids=(OSKEL_DEAD,)),
         c("Continue", "alive", requires=(MINDER, SECRET_KNOWN), forbids=(TOLD, OSKEL_DEAD)),
         c("Continue", "secret", requires=(MINDER,), forbids=(TOLD, SECRET_KNOWN, OSKEL_DEAD)),
-        c("Continue", "none", forbids=(MINDER, OSKEL_DEAD, CUT_DOWN)),
+        c("Continue", "none", forbids=(MINDER, OSKEL_DEAD, CUT_DOWN, ZYPHUS_MARK)),
         c("Continue", "dead_cut", requires=(CUT_DOWN, OSKEL_DEAD)),
         c("Continue", "marked", requires=(ZYPHUS_MARK,), forbids=(OSKEL_DEAD,))),
     mi("marked", '''{n}She does not pour for you at once. She looks at your shoulder, at the place under your coat where the grey spade is, as if she could see through the cloth.{/n}
-"I have kept accurate records for six years, Commander. Every name. The steward, my mate, the girl with the apples. Every one of them I put beside me without knowing what I was doing." {n}She pushes the cup across.{/n} "There is no name for Colyphyr. There is a line with nothing in it but a date and a place, and in the margin: the Commander, nearest; marked. I did not know how else to write it. Nobody has ever been nearest and gone on breathing."''',
+"I have kept accurate records for six years, Commander. Every name. The steward, my mate, the girl with the apples. Every one of them I put beside me without knowing what I was doing." {n}She pushes the cup across.{/n} "There is no name for that night. There is a line with nothing in it but a date and a place, and in the margin: the Commander, nearest; marked. I did not know how else to write it. Nobody has ever been nearest and gone on breathing."''',
        c("Continue", "demand")),
     mi("dead", '''{n}A bosun's whistle lies on the chart table between the cups: brass, dented, on a cord gone black with handling.{/n}
 "His." {n}She does not touch it.{/n} "It came up out of the sea tangled in the rigging, and none of the crew would take it. I have been carrying it about for weeks like a fool."

@@ -243,6 +243,17 @@ internal static class MielarahTricksterTests
         var markedBack = After(whisper, Later(story, marked, 49), "two_nights", 0).First();
         check(markedBack.Has(P + "returned") && Reaches(Later(story, markedBack, 10, 5), "mielarah.committed"),
             "Trk_Mielarah_LateAfterDeath: no road to the commit after standing nearest.");
+        // 11 §2's prepared alternative: the Commander at her elbow instead of Oskel; nearest at the hanging, marked, nobody else dies.
+        var self = After(minder, hired, "order", 3).First();
+        check(self.Has(P + "primed.self") && !self.Has(P + "primed.minder"), "Trk_Mielarah_Elbow: the Commander cannot take her elbow.");
+        var elbow = S(P + "raid.elbow");
+        var selfHanged = World(story, 4, "trickster.ever", "mielarah.dead", "mielarah.dead.latched", P + "primed.pattern", P + "primed.self");
+        check(Rules.Available(story, elbow, selfHanged) && !Rules.Available(story, yardWind, selfHanged) && !Rules.Available(story, rope, selfHanged)
+              && elbow.TricksterDevice && elbow.TricksterState == "raid", "Trk_Mielarah_Elbow: the Commander's watch is not its own payoff.");
+        var elbowBack = After(elbow, selfHanged, "north", 0).First();
+        check(elbowBack.Has(P + "returned") && elbowBack.Has(P + "cost.zyphus_mark") && !elbowBack.Has(P + "cost.oskel"),
+            "Trk_Mielarah_Elbow: standing nearest spends a crewman, or leaves no mark.");
+        check(Reaches(Later(story, elbowBack, 10, 5), "mielarah.committed"), "Trk_Mielarah_Elbow: no road to the commit.");
         var refusedYard = World(story, 4, "trickster.ever", "mielarah.dead", "mielarah.dead.latched", P + "primed.pattern", P + "minder.told", P + "minder.refused");
         check(Rules.Available(story, yardWind, refusedYard), "Trk_Mielarah_LateAfterDeath: a withdrawn order leaves her on the rope.");
         check(Rules.Available(story, rock, Later(story, alive, 49)), "Trk_Mielarah_Rock: the eleven on the rock never come up.");
