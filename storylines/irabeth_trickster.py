@@ -317,8 +317,7 @@ physical("irabeth.trickster.commit", "Off the record", '"Knight-Captain. Off the
       c('"Something\'s stopping you. Say it."', "no_home", requires=(SHARES,)),
       c('[Kiss her] "Irabeth." Not her rank. Her name.', "reckon", requires=(SHARES,), forbids=(LIED,),
         flags=("irabeth.committed",)),
-      c('[Wait for her to decide] "Whatever you want. Not an order."', "decides", requires=(SHARES,),
-        flags=("irabeth.committed",)),
+      c('[Wait for her to decide] "Whatever you want. Not an order."', "decides", requires=(SHARES,)),
       c('"Something\'s stopping you. Say it."', "no_gate", requires=(A_RET,), forbids=(SHARES,))),
     i("no", '''"Nevi's out on that road. I'm not doing this behind her back. Not while she's out there. Maybe not after."
 {n}She looks at the empty throne, not at you.{/n}
@@ -335,7 +334,12 @@ physical("irabeth.trickster.commit", "Off the record", '"Knight-Captain. Off the
     i("decides", '''{n}She reads you the way she reads an order: twice, to be sure of it.{/n}
 "Not an order."
 {n}Then she decides.{/n}''',
-      c("Continue", "reckon")),
+      c("Continue", "reckon", forbids=(LIED,), flags=("irabeth.committed",)),
+      c("Continue", "not_tonight", requires=(LIED,))),
+    i("not_tonight", '''"No. Not tonight."
+{n}She says it evenly, the way she reports a loss.{/n}
+"You told me a story about Iz, and I let you, because I wanted to be alive more than I wanted to be right. I'm not deciding anything else on a story. Ask me again when you've told me the other one."''',
+      c('[Step back] "Then I\'ll ask again. Not as your Commander."', flags=(DECLINED,))),
     i("reckon", '''{n}She doesn't move yet. The sword is still in her hand; it is always in her hand.{/n}
 "Before anything. I was dead for two days, Commander. I came back holding a sword I can't put down, under an order I never asked for, to a wife who'd already buried me. None of that was a gift. Some of it's your fault."
 {n}She looks at her sword hand, then at you.{/n}
