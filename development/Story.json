@@ -224969,7 +224969,7 @@
         {
           "Id": "diagnosis",
           "Speaker": "Narrator",
-          "Text": "{n}You make the face that the Kenabres field surgeons made when they had bad news and no time: a short nod, a click of the tongue, a hand on the hip.{/n}\n\"Chronic starvation,\" you tell her. \"Compounded by guilt. You told me once you'd like to kiss someone as a mortal, not as a demon. I've spent three nights in the shrine library finding out what that would take.\"\n{n}Arueshalae stares at you.{/n} \"What it would take.\"\n\"A doctor. I've read the texts. I'm the nearest thing you've got.\"",
+          "Text": "{n}You make the face that the Kenabres field surgeons made when they had bad news and no time: a short nod, a click of the tongue, a hand on the hip.{/n}\n\"Starvation,\" you tell her. \"I'd write it on the chart, if you had a chart.\"\n{n}Her mouth twists.{/n} \"Starvation. That's a mortal word. You starve because there's no bread. I'm not short of bread, Commander. I'm surrounded by it every hour, and it talks to me, and thanks me for my prayers.\" {n}She looks at the hand that held her wrist.{/n} \"I'll tell you what it is. I want to be touched and not count what I took. I want to kiss someone the way a mortal does, and have them still there afterwards. Once. That's the whole illness.\"\n\"Then I've spent three nights in the shrine library finding out what that would take,\" you tell her. \"Somebody has to be the doctor. I've read the texts. I'm the nearest thing you've got.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -227495,7 +227495,7 @@
         {
           "Id": "start",
           "Speaker": "Arueshalae",
-          "Text": "{n}She has the letter in both hands, and she has been crying, and she has been doing it for some time.{/n}\n\"The Mother of the shrine wrote back. She knew. She'd always known it was a demon; the goddess told her, in a dream, the night it happened.\" {n}She holds the letter out, and then pulls it back, as if it might hurt you to read.{/n} \"Her name was Ilvanne. Ilvanne. She's buried under the shrine's apple tree, and the tree has done very well.\" {n}She reads on, and her voice catches.{/n} \"The Mother says Ilvanne always wanted to see the sea. She never went. There was always someone who needed her at the shrine.\"",
+          "Text": "{n}She has the letter in both hands. It is short, and she has read it enough times that the fold has gone soft.{/n}\n\"The Mother of the shrine wrote back.\" {n}Her voice is careful, as if the words might break.{/n} \"They never knew what killed her. They found her in her bed without a mark on her and buried her as a fever. I told them. I wrote it plainly, the way you said.\" {n}She holds the letter out, and then pulls it back, as if it might hurt you to read.{/n} \"Her name was Ilvanne. Ilvanne. She's buried under the shrine's apple tree.\" {n}She reads on, and her voice catches.{/n} \"The Mother says Ilvanne always wanted to see the sea. She never went. There was always someone who needed her at the shrine.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -227511,7 +227511,7 @@
         {
           "Id": "sea",
           "Speaker": "Arueshalae",
-          "Text": "\"And she sent this.\" {n}From the fold of the letter she takes a small flat river stone, grey, with a white band round it.{/n}\n\"She says: 'The goddess told me the one who took our sister would one day ask where she lies. I have kept this for that day. Take her to the sea, and then you may stop asking.'\" {n}Arueshalae turns the stone over and over.{/n} \"She knew. For years. She kept a stone for me. Commander, how do mortals do that? How do you keep a stone for the thing that killed your sister?\"",
+          "Text": "\"And she sent this.\" {n}From the fold of the letter she takes a small flat river stone, grey, with a white band round it.{/n}\n\"She says: 'This is from the river below the shrine, where Ilvanne used to stand in the shallows and call it the nearest she would get. If you are what you say you are, take her to the sea. Then do not write to us again. I will pray for her. I will not pray for you.'\" {n}Arueshalae turns the stone over and over.{/n} \"She hates me. Good. Somebody should, who knew her.\" {n}Her hand closes on it until the knuckles go pale.{/n} \"And she still sent it. Commander, I know what to do with hate. I don't know what to do with a stone.\"",
           "Choices": [
             {
               "Text": "\"I don't know. But when the Wound is closed, we're going to the sea.\"",
@@ -227539,7 +227539,7 @@
         {
           "Id": "promise",
           "Speaker": "Arueshalae",
-          "Text": "\"We.\" {n}She presses the stone to her lips, very lightly, as if it were a person she might drain.{/n} \"Yes. When the Wound is closed. I'm going to hold you to that, doctor. I'm going to hold you to it so hard.\"",
+          "Text": "\"We.\" {n}She presses the stone to her lips, very lightly, as if it were a person she might drain.{/n} \"Yes. When the Wound is closed. I'm going to hold you to that. I'm going to hold you to it so hard.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -231965,7 +231965,7 @@
         {
           "Id": "stone",
           "Speaker": "Arueshalae",
-          "Text": "{n}She picks up the stone and holds it up to the candle, so the white band glows.{/n} \"Ilvanne wanted to see the sea. The Mother said to take her there and then I could stop asking. I've been thinking: I don't want to stop asking. I think asking might be the thing I do now instead of taking.\"\n\"But I want to take her. And I want...\" {n}She stops, and starts again.{/n} \"I want company. On the river. Four months is a long time to be alone with a stone and a list.\"",
+          "Text": "{n}She picks up the stone and holds it up to the candle, so the white band glows.{/n} \"Ilvanne wanted to see the sea. The Mother said to take her there, and never to write again. I've been thinking: she told me to stop writing. She didn't tell me to stop asking. I think asking might be the thing I do now instead of taking.\"\n\"But I want to take her. And I want...\" {n}She stops, and starts again.{/n} \"I want company. On the river. Four months is a long time to be alone with a stone and a list.\"",
           "Choices": [
             {
               "Text": "\"I'll come. We'll argue about the portage the whole way.\"",

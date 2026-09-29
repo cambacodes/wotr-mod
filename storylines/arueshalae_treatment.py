@@ -113,9 +113,9 @@ session(INTAKE, "Intake", 3, '[Hold out your hand, palm up] "You look pale. Let 
 "Properly? Before the goddess. Before Desna caught me in the priestess's dream and made me look at what I was." {n}Her voice drops.{/n} "Since then I've taken only what I couldn't help. A brush of hands in a crowd. Someone's breath when they sleep too close to the fire. Crumbs. I've lived on crumbs for years, and I tell myself every day that I'm not hungry, and every day it's a lie."''',
         c("Continue", "diagnosis")),
     nar("diagnosis", '''{n}You make the face that the Kenabres field surgeons made when they had bad news and no time: a short nod, a click of the tongue, a hand on the hip.{/n}
-"Chronic starvation," you tell her. "Compounded by guilt. You told me once you'd like to kiss someone as a mortal, not as a demon. I've spent three nights in the shrine library finding out what that would take."
-{n}Arueshalae stares at you.{/n} "What it would take."
-"A doctor. I've read the texts. I'm the nearest thing you've got."''',
+"Starvation," you tell her. "I'd write it on the chart, if you had a chart."
+{n}Her mouth twists.{/n} "Starvation. That's a mortal word. You starve because there's no bread. I'm not short of bread, Commander. I'm surrounded by it every hour, and it talks to me, and thanks me for my prayers." {n}She looks at the hand that held her wrist.{/n} "I'll tell you what it is. I want to be touched and not count what I took. I want to kiss someone the way a mortal does, and have them still there afterwards. Once. That's the whole illness."
+"Then I've spent three nights in the shrine library finding out what that would take," you tell her. "Somebody has to be the doctor. I've read the texts. I'm the nearest thing you've got."''',
         c("Continue", "her")),
     a("her", '''{n}For a moment you think you have hurt her. Then she sits down, very suddenly, on an ammunition crate, and laughs until she has to wipe her eyes on her sleeve, and the laugh is the most unguarded sound you have ever heard her make.{/n}
 "A doctor. For a succubus. Oh, gods, they'd hang you in Alushinyrra, and then they'd hire you." {n}She sobers, a little.{/n} "Very well, doctor. What do you prescribe? I warn you, I've been prescribed things before. Chains, mostly."''',

@@ -113,14 +113,14 @@ session(PRIESTESS, "The last one", 3, '"You\'ve been reading the Desnan prayer b
 ], (RELAPSE,), delay=24, chapters=(3, 4, 5))
 
 session(TEMPLE_LETTER, "Reply from the river", 5, '"They wrote back."', [
-    a("start", '''{n}She has the letter in both hands, and she has been crying, and she has been doing it for some time.{/n}
-"The Mother of the shrine wrote back. She knew. She'd always known it was a demon; the goddess told her, in a dream, the night it happened." {n}She holds the letter out, and then pulls it back, as if it might hurt you to read.{/n} "Her name was Ilvanne. Ilvanne. She's buried under the shrine's apple tree, and the tree has done very well." {n}She reads on, and her voice catches.{/n} "The Mother says Ilvanne always wanted to see the sea. She never went. There was always someone who needed her at the shrine."''',
+    a("start", '''{n}She has the letter in both hands. It is short, and she has read it enough times that the fold has gone soft.{/n}
+"The Mother of the shrine wrote back." {n}Her voice is careful, as if the words might break.{/n} "They never knew what killed her. They found her in her bed without a mark on her and buried her as a fever. I told them. I wrote it plainly, the way you said." {n}She holds the letter out, and then pulls it back, as if it might hurt you to read.{/n} "Her name was Ilvanne. Ilvanne. She's buried under the shrine's apple tree." {n}She reads on, and her voice catches.{/n} "The Mother says Ilvanne always wanted to see the sea. She never went. There was always someone who needed her at the shrine."''',
         c("Continue", "sea")),
     a("sea", '''"And she sent this." {n}From the fold of the letter she takes a small flat river stone, grey, with a white band round it.{/n}
-"She says: 'The goddess told me the one who took our sister would one day ask where she lies. I have kept this for that day. Take her to the sea, and then you may stop asking.'" {n}Arueshalae turns the stone over and over.{/n} "She knew. For years. She kept a stone for me. Commander, how do mortals do that? How do you keep a stone for the thing that killed your sister?"''',
+"She says: 'This is from the river below the shrine, where Ilvanne used to stand in the shallows and call it the nearest she would get. If you are what you say you are, take her to the sea. Then do not write to us again. I will pray for her. I will not pray for you.'" {n}Arueshalae turns the stone over and over.{/n} "She hates me. Good. Somebody should, who knew her." {n}Her hand closes on it until the knuckles go pale.{/n} "And she still sent it. Commander, I know what to do with hate. I don't know what to do with a stone."''',
         c('"I don\'t know. But when the Wound is closed, we\'re going to the sea."', "promise", flags=(TEMPLE_LETTER,)),
         c('"Maybe that\'s what dreaming is."', "dream", flags=(TEMPLE_LETTER,))),
-    a("promise", '''"We." {n}She presses the stone to her lips, very lightly, as if it were a person she might drain.{/n} "Yes. When the Wound is closed. I'm going to hold you to that, doctor. I'm going to hold you to it so hard."''', c()),
+    a("promise", '''"We." {n}She presses the stone to her lips, very lightly, as if it were a person she might drain.{/n} "Yes. When the Wound is closed. I'm going to hold you to that. I'm going to hold you to it so hard."''', c()),
     a("dream", '''{n}She is quiet for a long time.{/n} "Desna asked me what I dream of. I've never had an answer." {n}She closes her fist round the stone.{/n} "I think I might have part of one now. It's grey, with a white band round it. And it wants to see the sea."''', c()),
 ], (WRITE,), delay=72, chapters=(5,))
 
