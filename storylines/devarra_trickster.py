@@ -128,7 +128,7 @@ def letter(id, title, nodes, requires, forbids=(), delay=0, **extra):
 SCENES.append(scene(P + "dead.lair_story", "What happened next", "Devarra", 3, '[Speak from cover] "I know a better ending."', [
     nar("story", '''{n}Your voice carries from behind the rocks. The dragon does not turn yet. The old elf has stopped talking, and she is waiting to hear how a story ends, the way she has waited on every story in this lair: head low, one claw curled around the prisoner's ankle, as if he might get up and leave before the last line.{/n}
 {n}Beside you Greybor has gone completely still. He looks at you as though you have started singing in the middle of an ambush. Then he looks at the soft place under her wing, and waits too.{/n}''',
-        c('[Tell her the end of her own story] "The hunters come. The dragon falls. Everyone swears she\'s a corpse. She isn\'t. She\'s a clutch-mother, and a clutch-mother doesn\'t stay down while someone else holds her eggs."',
+        c('[Tell her the end of her own story] "The hunters come. The dragon falls. Everyone swears she\'s a corpse. She isn\'t. Three nights later she sheds the dead hide like a snake and gets up a clutch-mother, in a new skin, hungrier than before."',
           mythic="Trickster", alignment=("Chaotic", 1), native_next=LAIR_NEXT, flags=(PRIMED, STORY_TOLD, ENDING_OWED)),
         c('"Never mind."', abort=True)),
 ], requires=("trickster",), forbids=(PRIMED, DEAD_LAIR, DEAD_SANCTUM), last=3, Relationship="devarra", Chapters=[3],

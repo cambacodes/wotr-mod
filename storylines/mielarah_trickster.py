@@ -19,6 +19,12 @@ failing both, an evening sat at her elbow, paid in blood). Once she is hired, th
 most likely to kill her, at her elbow for the voyage. At the hanging the curse takes the man on the rope first. The
 cost is personal: the Commander spent (or meant to spend) a man of her own crew on her curse, a breach of her code, and
 the Gravedragger has noticed who did the choosing. The curse is never passed to the Commander.
+With nobody posted, the curse takes the first man to fit her noose, and the rest haul her up by the capstan from the
+far side of the deck: a slow strangling, not a drop. In those minutes Oskel flies ashore to the Commander, who is with
+the raiding party, and back; the Commander goes through the hangmen and sends Oskel up to cut her down (raid.wind); the
+curse takes him, unpaid and unchosen. Or (11 §2's other choice) the Commander stands
+nearest and cuts the line with a thrown knife, and the falling block breaks a collarbone and leaves a grey spade on the
+Commander's shoulder that never fades (cost.zyphus_mark). Either way she keeps her life, and the rope keeps her voice.
 
 The Chapter 5 courtship on her presence in Drezen is mielarah_deck (the commit: in flight she lets go of the wheel,
 the mirror of Cue_0426, and the Commander holds the course).
@@ -75,7 +81,7 @@ MINDER = P + "primed.minder"              # Oskel posted at her elbow for the vo
 TOLD = P + "minder.told"
 LIED = P + "minder.lied"
 PAID = P + "minder.paid"                 # she told him and paid him his freedom; he chose to sit at her elbow
-REFUSED = P + "minder.refused"           # the Commander withdrew the order: no minder, canon fate stands at the rope
+REFUSED = P + "minder.refused"           # the Commander withdrew the order: no minder (the late recovery at the yard)
 SECRET_KEY = "mielarah_oskel"
 SECRET = "trickster.secret." + SECRET_KEY
 SECRET_KNOWN = SECRET + ".known.mielarah"
@@ -96,6 +102,16 @@ LATE = P + "cost.late"                    # storm: the rule worked out afterward
 STORM_OWNED = P + "storm.owned"
 STORM_BLAMED = P + "storm.blamed"
 NOTICED = P + "cost.noticed"              # the Gravedragger has noticed the Commander (finale hook)
+# The hanging with nobody posted (the late recovery, dearer than the minder): the curse took the man who fitted her
+# noose, the crew hauled her up by the capstan from the far side of the deck, and the Commander, fetched from the raid
+# by Oskel, came back in those minutes and sent him up to cut her down.
+CUT_DOWN = P + "raid.cut_down"            # Oskel cut her down at the Commander's order, and the curse took him
+HUNG = P + "cost.hung"                    # minutes on the rope: her voice left a rasp, and she knows nobody prepared
+HANGMAN_KNIFE = P + "cost.hangman_knife"  # the Commander went through the hangmen and took a cleaver across the forearm
+ZYPHUS_MARK = P + "cost.zyphus_mark"      # the Commander stood nearest and cut her down: the block's grey spade on the shoulder
+SELF = P + "primed.self"                  # the Commander posted at her elbow for the voyage instead of Oskel (11 §2's other choice)
+YARD_KEY = "mielarah_yard"
+YARD_SECRET = "trickster.secret." + YARD_KEY
 CONTACT = P + "contact"                   # Derived: she is coming to Drezen
 DECLINED = P + "declined"
 LATE_COMMITTED = P + "late_committed"
@@ -177,6 +193,13 @@ household.secret(
     "Drezen.",
     portrait="Mielarah", witnesses=("seelah", "irabeth"), risk="medium")
 
+household.secret(
+    YARD_KEY, "The main yard",
+    "Mielarah hanged at Vazglar because I had prepared nothing for it. Her bosun Oskel fetched me from the raid, and I sent "
+    "him up to the main yard to cut her down, knowing her curse takes whoever stands nearest when trouble comes. It took him and left "
+    "her breathing. She knows. My household does not, and eleven hangmen put off on a rock in the Ishiar could tell them.",
+    portrait="Mielarah", witnesses=("seelah", "irabeth"), risk="medium")
+
 
 def mi(id, text, *choices, **kw):
     return n(id, "Mielarah", text, *choices, portrait="Mielarah", **kw)
@@ -224,7 +247,7 @@ tavern(P + "tavern.arithmetic", "The Gravedragger's arithmetic",
 {n}At the moment, that is you. It is a cold thing to be looked at by. You look back.{/n}''',
         c('"It isn\'t watching you. I don\'t think it ever was. It watches whoever stands closest to you."', "rule")),
     nar("doctrine", '''{n}You know a little of Zyphus. Everyone who has buried friends in the Worldwound learns a little. His priests hold that no death is written in advance; a death is an accident, and an accident is an offering. A curse from his herald would not aim. Aiming is for assassins and for fate. It would simply collect.{/n}
-{n}And every name on her list died within arm's reach of her. Bringing tea. Leaning over the same chart. On her step. Stamping her papers. Taking her copper. Not the people she cared for most, not the people who hated her: the people who happened to be standing nearest when the dice fell.{/n}''',
+{n}And, as far as her own list tells it, every name on it died within arm's reach of her. Bringing tea. Leaning over the same chart. On her step. Stamping her papers. Taking her copper. Not the people she cared for most, not the people who hated her: the people who happened to be standing nearest when the dice fell.{/n}''',
         c('"I don\'t think it chooses. I think it takes whoever is standing nearest you."', "rule")),
     nar("watch", '''{n}You stop listening to the names and watch the room instead.{/n}
 {n}A sailor at the next table has tipped his chair back on two legs to listen, so far that his head is almost at her shoulder. The rear leg finds the one soft board in the floor of the Bad Luck. He goes over backwards, and the back of his skull meets the edge of her table with a sound like a dropped melon, and he lies there blinking at the rafters with blood in his ear.{/n}
@@ -398,7 +421,13 @@ tavern(P + "tavern.minder", "The bosun", '"Before we sail. Who is the most dange
          flags=(TOLD,)),
        c('[Lie] "A cursed captain makes a crew nervous. Let them see the biggest man aboard standing at your back."', "lie",
          flags=(MINDER, LIED, SECRET)),
-       c('"Forget I said it."', abort=True)),
+       c('"Forget I said it."', abort=True),
+       c('[Stand nearest yourself] "Then not him. Me. I\'ll be at your elbow every hour until we land."', "self",
+         flags=(SELF,))),
+    mi("self", '''{n}The pencil stops again. This time she looks at you properly, the way she looked at the portal: as a thing that will take her somewhere she has not decided to go.{/n}
+"You." {n}Flatly.{/n} "You have a war, Commander. You have a crusade that falls over if you do. And you want to spend the voyage standing where my steward stood with his tray."
+"I won't pretend I don't know what you're doing. You think my curse has a rule, and you want to be the answer to it." {n}She makes a small, precise tick on her list, as if entering a cost.{/n} "Very well. It's your expedition. But I shall watch you every hour of it, and if anything comes down out of my rigging, I want you to know that I told you so, in the Bad Luck, in front of witnesses."''',
+       c("[Let her finish her list.]")),
     mi("truth", '''{n}She puts the pencil down. For a while she says nothing at all, and the noise of the Bad Luck fills the space where her answer should be.{/n}
 "You want to feed my curse my own bosun." {n}Very quietly.{/n} "I took him off a slaver's deck. I have spent six years in his head, keeping him decent. I promised him that one day I would pay him off with enough gold to buy a quiet life on some other plane, and he believed me, which I assure you is not a thing Oskel does."
 "My code is three lines long, Commander. I never ignore those in distress. I never attack other vessels. I honour the cargo I carry. On my deck, my crew is the cargo."''',
@@ -422,7 +451,7 @@ tavern(P + "tavern.minder", "The bosun", '"Before we sail. Who is the most dange
 "The crew is nervous. They always are, the first week. They count the empty hammocks from the last voyage and they look at me." {n}She taps the pencil against her teeth.{/n} "Oskel at my back. They'll think I've finally hired a bodyguard. The pirates of the Midnight Isles will think I've gone soft."
 "Very well. It's your expedition, and it's a sensible precaution, and I dislike that it's sensible." {n}She almost smiles.{/n} "You think like a quartermaster, Commander. That's a compliment. Mostly."''',
        c("[Let her think so.]")),
-], requires=("trickster", PATTERN, HIRED), forbids=(MINDER, REFUSED))
+], requires=("trickster", PATTERN, HIRED), forbids=(MINDER, REFUSED, SELF))
 
 
 # --- 2b. A charter to Drezen (for a Commander who reads her curse and sails with another captain). -----------------
@@ -619,6 +648,177 @@ remote(P + "raid.rock", "The eleven on the rock", [
 ], requires=("trickster.ever", RETURNED, DEAD_LATCH), forbids=(ROCK_SAVED, ROCK_LEFT, ROCK_SLAVERS, CLOSED), delay=48)
 
 
+# --- 4b2. The Commander at her elbow (11 §2's other prepared choice): nearest at the hanging, the Commander cuts the
+# line before the haul; the curse's accident finds the Commander and cannot finish a mythic body. Nobody else dies; the
+# cost is the Gravedragger's mark for life, and his notice.
+
+remote(P + "raid.elbow", "Nearest", [
+    nar("start", '''{n}You remember it in pieces, afterwards. Her voice at Vazglar, calling you a pirate and worse in front of the whole crew. The crew closing round her like dogs round a fallen horse. And you, at her elbow, where you had said you would be every hour, so that when the slip noose went over her head you were the nearest living thing to her on the ship.{/n}
+{n}Your knife was out before the line went taut. It parted the rope a hand above the knot, and she went down on the deck, and you went down with her, and the man on the other end of the line sat down hard with nothing to haul.{/n}''',
+        c("Continue", "block")),
+    nar("block", '''{n}Then the block at the end of the main yard, which had taken the line's first jerk, turned once, and its pin sheared, and it came down forty feet.{/n}
+{n}It took you across the shoulder instead of the skull, because you are what the Wound made you and a sailor is not, and the collarbone went with a sound like a snapped oar. You did not let go of her. With the breath the noose had left her she called the southern wind, and the ship leaned away from Vazglar, and nobody on that deck came within ten strides of either of you again.{/n}
+{n}When the bruise came up, it came up grey, the grey of turned earth, in the shape of a spade's blade. It has not faded.{/n}''',
+        c("Continue", "cabin")),
+    mi("cabin", '''{n}She comes to you the next night, in the cabin they gave you, with a scarf wound high round her throat, and sits on your sea chest without asking. Her voice is a rasp, but it is hers.{/n}
+"I told you so. In the Bad Luck, in front of witnesses." {n}Her eyes go to your shoulder, to the place under the sling where the grey spade is.{/n} "I felt it come down. Six years I have watched the Gravedragger collect whoever stands nearest, and for the first time I watched him collect, and not finish."
+"He has your measure now. He has put his mark on you like a surveyor's peg. Don't you dare think that was cheap."''',
+        c("Continue", "eleven")),
+    mi("eleven", '''"The eleven who held the rope, I'll put off on the first rock with water on it." {n}A very thin smile.{/n} "My code says I never ignore those in distress. They won't be in distress until I leave them there. I have decided that counts."
+"And there is the raid. There were children in that village, Commander, and fishing nets, and nothing worth a single sack of flour to anyone but them. Tell me why I should be sitting here at all."''',
+        c('"I ordered the raid. You protested, and you were right, and it nearly killed you."', "owned",
+          flags=(RAID_OWNED,)),
+        c('"I ordered the raid. I\'d order it again. Your crew just had worse manners than I did."', "unrepentant",
+          flags=(RAID_UNREPENTANT,), alignment=("Evil", 1))),
+    mi("owned", '''"Right." {n}She tastes the word.{/n} "I was right, and they tried to hang me for it, and you stood where the curse could reach you and you're sorry. That is more than any other captain in the Midnight Isles would have done. I haven't decided yet whether it's more than I'd like."''',
+        c("Continue", "north")),
+    mi("unrepentant", '''"Worse manners than you." {n}She laughs, and it hurts her, and she does it anyway.{/n} "Every pirate I ever wanted to see hanged would have said exactly that, and not one of them would have stood under my yard for it. I'm a magister; I keep accurate records. I'll put both in the book."''',
+        c("Continue", "north")),
+    mi("north", '''"I'm flying Starcatcher north when your war goes home, with a new crew, none of them within two strides of me." {n}She stands.{/n} "Cargo for Drezen. Passengers for anywhere else. Not for you." {n}At the door she stops.{/n} "Mostly not for you. Keep that shoulder out of the rain."''',
+        c("[Let her go.]", flags=(RETURNED, STARTED, ZYPHUS_MARK, NOTICED))),
+], requires=("trickster.ever", DEAD_LATCH, SELF), forbids=(MINDER, RETURNED, CLOSED), delay=24, chapters=(4, 5),
+    TricksterDevice=True, TricksterState="raid")
+
+
+# --- 4c. Nobody at her elbow: the hanging with no bosun posted (the late recovery, dearer than the minder). ----------
+# Cue_0482 as the curse would play it with nobody posted: the first man to lay hands on her noose is the nearest, and
+# the curse takes him (Cue_0044/0048: those near her die, and she does not). The rest will not go near her again, so
+# they re-reeve the line to the capstan and haul from the far side of the deck: slow work, and a slow strangling rather
+# than a drop. Those minutes are the whole recovery. The Commander is ashore with the raiding party they ordered, a
+# quarter-mile off; Oskel, who stood at the rail, flies ashore with the word and back with the Commander. The rope is
+# still a rope: whoever cuts her down stands nearest. The cost is heavier than the minder's: Oskel is spent by an order
+# given on the spot, unpaid and unchosen; the rope had her long enough that her voice never comes back clear; and she
+# knows the Commander prepared nothing.
+
+remote(P + "raid.wind", "The capstan", [
+    nar("start", '''{n}Afterwards, what you remember of Vazglar is the time. How little of it there was, and how much of it the crew of Starcatcher spent being afraid of her.{/n}
+{n}You were ashore with the raiding party you had ordered down, a quarter-mile of shingle below the ship, when something big came down in the middle of the fishing village, folding its wings with a noise like a sail being struck. A tiefling of the Midnight Isles, broad as a hatch cover, with a slaver's brand gone white on the side of his neck. Oskel, her bosun. When she stood on her own quarterdeck and called you a pirate in front of the whole crew, he was at the rail. He was still at the rail when the crew came round her.{/n}
+{n}"Commander." He is breathing hard, and his voice is low and careful, like a man carrying something full to the brim. "They're hanging the captain."{/n}''',
+        c("[Listen.]", "head")),
+    nar("head", '''{n}He says it fast, the way a bosun reports damage.{/n}
+{n}"Hesk put the noose on her. Pulled it snug, stepped back onto the main hatch grating, and the grating went. Rotten, and none of us knew. He went into the hold head first and broke his neck on the ballast." He touches the back of his own neck, low down. "Six years every man aboard's seen that happen near her. Now they've seen it happen on the rope."{/n}''',
+        c("Continue", "yard")),
+    nar("yard", '''{n}"So nobody'll go near her. They're reeving the line through the block at the yardarm and down to the capstan, so's they can walk her up from the far side of the deck, eleven men on the bars at the full stretch of 'em." His yellow eyes are steady. "That's slow work, the reeving. And a capstan don't drop a body. It lifts her. That's a strangling, not a neck broke. Minutes, Commander. Not many."{/n}''',
+        c("Continue", "rule", requires=(PATTERN,)),
+        c("Continue", "folk", forbids=(PATTERN,))),
+    nar("rule", '''{n}You read her rule at her own table in the Bad Luck. The curse does not aim. It takes whoever stands nearest when trouble comes, and it has never once taken her. It has never once saved her, either: it has only ever taken the people beside her. It took the man who fitted her noose, because he was nearest. It will do nothing at all about the rope. A rope is not an accident.{/n}
+{n}What it has done is teach eleven frightened men to keep their distance, and distance is slow. That is all the time there is.{/n}''',
+        c("Continue", "refused", requires=(REFUSED,)),
+        c("Continue", "why", forbids=(REFUSED,))),
+    nar("folk", '''{n}"Six years I sailed with her." Oskel says it quickly, as if he has been saying it to himself the whole way down. "Seen men go over the side next to her. Seen a mast come down either side of her. Seen a girl choke on an apple across a counter from her. Never a scratch on the captain."{/n}
+{n}"Rope's different. Rope ain't an accident. Rope'll do what rope does, and she's on it."{/n}''',
+        c("Continue", "why")),
+    nar("refused", '''{n}You had more than the rule, once. You had a man to post at her elbow, and you took the order back because she asked you to. This is what the taking back has bought: a quarter-mile of shingle, a capstan, and nobody near enough to die for her.{/n}''',
+        c("Continue", "why")),
+    nar("why", '''{n}"Why me?" you ask him. "You could have cut her down yourself."{/n}
+{n}"Past eleven knives, on my own, and nearest when I got there?" He does not look away. "'Cause you're captain till the expedition's done. That was the arrangement. 'Cause you gave the order for the raid." A pause. "'Cause I stood at the rail. Figured I'd better fetch somebody who didn't."{/n}''',
+        c('[Take hold of his harness.] "Fly."', "moorings"),
+        c('"She\'s dead, Oskel. Let her go."', "leave")),
+    nar("leave", '''{n}He hears it without any change in his face. Then he nods once, the way a bosun acknowledges an order he did not want, and opens his wings, and goes.{/n}
+{n}Nobody on Starcatcher goes near the mainmast that afternoon. The wind that gets up out of the south as the capstan stops blows all night long, and in the morning the crew tell you, carefully, from the far side of the deck, that the captain died in a few seconds.{/n}''',
+        c("[Put it out of your mind.]", flags=(CLOSED,))),
+    nar("moorings", '''{n}He takes you under the arms without another word and goes up. The village drops away, and the shingle, and a quarter-mile of grey surf goes under your boots with the wind tearing at your eyes, and then Starcatcher is below you, riding at anchor forty feet over the water.{/n}
+{n}The capstan is going round. Eleven men lean on the bars at the full stretch of the deck, as far from the mainmast as the ship allows, and the pawls clack, one, and another, and up at the end of the main yard, with her hands tied behind her and her boots a man's height off the planking, Magister Mielarah of the Arcanamirium is being lifted by inches. Her heels are still moving. Her mouth is working at a word it has no breath to say.{/n}
+{n}Oskel drops you on the quarterdeck. The man at the head of the bars is the quartermaster, a one-horned man called Dask, and he lets go with one hand and takes up a boarding cleaver.{/n}
+{n}"Leave her be, passenger." His voice cracks. "Hesk's in the hold with his neck broke. Go near her and you're next. And if she comes down, she'll have the lot of us."{/n}''',
+        c('[Intimidation DC 26] "Stand off the bars, Dask, or I put you on the rope beside her."',
+          check=dict(Skill="CheckIntimidate", DC=26, Success="stood_down", Failure="knife", CommanderOnly=True)),
+        c('[Diplomacy DC 26] "She\'s alive. When she wakes, she\'ll remember who let go of the bars, and who didn\'t."',
+          check=dict(Skill="CheckDiplomacy", DC=26, Success="stood_down", Failure="knife", CommanderOnly=True)),
+        c("[Draw steel and walk through them.]", "knife")),
+    nar("stood_down", '''{n}Nobody moves. Then Dask takes his hands off the bar as if it had burned him, and the others let go after him, and the pawl drops and holds. The eleven go back along the deck, a step and another, until they are pressed against the forecastle rail.{/n}''',
+        c("Continue", "foot")),
+    nar("knife", '''{n}Dask comes at you first, because he is more frightened of her than of you. You put the man behind him on the deck, and the one behind that, and every one of them is a breath she does not take. Then the cleaver opens your forearm from wrist to elbow, down to the bone, and the deck is suddenly slick. Oskel takes Dask by the wrist and breaks it, quite slowly, the way a man breaks a stick for kindling, and the rest of them let go of the bars and go back to the forecastle rail and stay there. The pawl drops and holds.{/n}
+{n}You bind the arm with a strip of sailcloth later. It will close. It will not close clean.{/n}''',
+        c("Continue", "foot", flags=(HANGMAN_KNIFE,))),
+    nar("foot", '''{n}At the foot of the mast you look up. Her heels have stopped. The line runs up to the block at the end of the yard and down to her, and the knot sits under her chin, where a man puts it when he fits a noose at arm's length and steps back quick. Walking the capstan back would take a minute she does not have, and someone would still have to take the knot off her on the deck. Somebody has to take her weight and cut, now. Whoever is holding her when the line parts will be the nearest living thing to her on this ship.{/n}
+{n}Oskel looks at you. He knows the sum, and he knows you know it.{/n}''',
+        c('[Give the order] "Go up, bosun. Cut her down, and hold her."', "cut",
+          flags=(CUT_DOWN, OSKEL_DEAD, MEANT, NOTICED, HUNG, YARD_SECRET), alignment=("Evil", 1)),
+        c('"No. Leave her where she is."', "leave"),
+        c('[Mobility DC 24] "Stand clear, all of you." Stand under her yourself, nearest, and cut the line with a thrown knife.',
+          check=dict(Skill="SkillMobility", DC=24, Success="thrown", Failure="climbed", CommanderOnly=True))),
+    nar("thrown", '''{n}You send Oskel to the forecastle with the others and stand alone at the foot of the mast, directly under her, the only living thing within ten strides. The knife turns twice in the grey light and parts the line a hand above the knot.{/n}
+{n}She comes down into your arms like a sack of wet sailcloth, and you go to your knees on the deck with her and get your fingers under the knot, and for one breath you are exactly where every name in her book once stood.{/n}''',
+        c("Continue", "struck")),
+    nar("climbed", '''{n}The first knife goes wide over the rail. The second bites the yard and hangs there. So you send Oskel to the forecastle with the others and go up the ratlines yourself, and out along the footrope with the line humming beside your face, and saw through it with your belt knife while you hold her against you with your other arm. Her face is dark and her lips are blue. You come down the backstay with her over your shoulder, burning your palm to the meat, and kneel on the deck with her and get your fingers under the knot, and for one breath you are exactly where every name in her book once stood.{/n}''',
+        c("Continue", "struck")),
+    nar("struck", '''{n}The block at the end of the yard has taken the jerk of the haul and every clack of the capstan without a creak. With nothing hanging from it, it turns once in the wind, and the pin that holds it shears, and it comes down forty feet.{/n}
+{n}It takes you across the shoulder instead of the skull, because you are what the Wound made you and a sailor is not, and the collarbone goes with a sound like a snapped oar. You do not let go of her. Afterwards, when the bruise comes up, it comes up grey, the grey of turned earth, in the shape of a spade's blade, and it does not fade. The ship's surgeon at Colyphyr looks at it and will not touch it.{/n}''',
+        c("Continue", "breath_marked", flags=(CUT_DOWN, ZYPHUS_MARK, NOTICED, HUNG))),
+    nar("breath_marked", '''{n}Under your good hand, the knot comes loose, and she coughs.{/n}
+{n}It is a terrible sound, dry and torn, like canvas ripping. Her chest heaves once, twice, and then she is breathing, in long ragged pulls, with her eyes open on the sky. The first breath she has any use of she spends, being who she is, on one cracked word of the Arcanamirium, and out over the sea the southern wind gets up. It blows all night long. After a while her eyes find the block on the deck beside you, and your shoulder, and then your face.{/n}
+{n}She tries to speak again. Nothing comes. She takes your hand instead, and turns it over, and with one cold finger writes on your palm, one letter at a time, the way a magister writes in the margin of a text she disputes: W. H. Y.{/n}''',
+        c("[Stay with her until morning.]")),
+    nar("cut", '''{n}"Aye," says Oskel. That is all.{/n}
+{n}He goes up on his wings with his knife in his teeth, and when he reaches her he does not hesitate at all. He takes her round the waist with one arm, lifts her an inch to slack the line, and cuts. Then he brings her down to the deck at your feet, slowly, the way you would lower a sleeping child, and kneels, and works the knot loose with his big scarred fingers, and straightens her collar.{/n}
+{n}The block at the end of the yard has taken the jerk of the haul and every clack of the capstan without a creak. With nothing hanging from it, it turns once in the wind, and the pin that holds it shears, and it comes down forty feet and takes him on the back of the head.{/n}
+{n}He dies on his knees beside her, with his hand still at her collar. It is quick. It is entirely pointless. Nothing on the ship moves.{/n}''',
+        c("Continue", "breath")),
+    nar("breath", '''{n}Under his hand, she coughs.{/n}
+{n}It is a terrible sound, dry and torn, like canvas ripping. Her chest heaves once, twice, and then she is breathing, in long ragged pulls, with her eyes open on the sky. The first breath she has any use of she spends, being who she is, on one cracked word of the Arcanamirium, and out over the sea the southern wind gets up. It blows all night long. After a while her eyes find Oskel, and the block beside him, and then you.{/n}
+{n}She tries to speak again. Nothing comes. She takes your hand instead, and turns it over, and with one cold finger writes on your palm, one letter at a time, the way a magister writes in the margin of a text she disputes: W. H. O.{/n}''',
+        c('"I sent him up."', "told_her"),
+        c("[Close your hand over hers. Say nothing.]", "silent")),
+    nar("told_her", '''{n}She looks at you for the space of three breaths. Then she turns her head, and looks at Oskel, and does not look away again until the forecastle crew, at your order and from as far off as they can manage, come with a sailcloth to take him below.{/n}''',
+        c("[Stay with her until morning.]")),
+    nar("silent", '''{n}She does not need you to say it. She is a magister of the Arcanamirium and she can count, even now: the line, the knot, the yard, the one man on the ship who could reach it, and the passenger who brought him back. She takes her hand out of yours, and puts it on Oskel's sleeve, and leaves it there.{/n}''',
+        c("[Stay with her until morning.]")),
+], requires=("trickster.ever", DEAD_LATCH), forbids=(MINDER, SELF, RETURNED, CUT_DOWN, CLOSED), delay=24, chapters=(4,),
+    TricksterDevice=True, TricksterState="raid")
+
+
+remote(P + "raid.whisper", "What the rope kept", [
+    nar("start", '''{n}A doorway of salt light opens beside your bedroll in the dark, and wind comes through it, and then Mielarah.{/n}
+{n}She has a scarf wound high around her throat, and she sits down on your pack without asking. Above the scarf the rope has left her face grey and hollowed, and there are small burst vessels in the whites of her eyes, like red thread. When she speaks it is barely a whisper, and every word costs her.{/n}''',
+        c("Continue", "voice")),
+    mi("voice", '''"You'll have to lean in. This is all there is." {n}She touches the scarf.{/n} "The healers in Alushinyrra say it will come back, after a fashion: a rasp, never clear again. Orders I can manage, if the crew lean in. Spells are harder. Half of what I know has to be spoken clearly, and I am relearning it in this, like a child learning her letters."
+"I have a portal left. You see I kept that one."''',
+        c("Continue", "tidy")),
+    mi("tidy", '''"I remember the capstan. One pawl, and another. I could not breathe, and I could feel every one of them in my head, the way I always feel them, leaning on the bars as far from me as my own deck allowed." {n}Her mouth twists.{/n} "So I tidied. It was the only thing I had left to do. And then one of them was not on the bars. He was going away from me, fast, over the water, and I knew where. Then nothing, until a hand on the knot."''',
+        c("Continue", "oskel", requires=(OSKEL_DEAD,)),
+        c("Continue", "marked", forbids=(OSKEL_DEAD,))),
+    mi("marked", '''"And you stood under me yourself." {n}Her eyes go to your shoulder, to the place under your shirt where the grey spade is.{/n} "I felt that. It was the first thing I felt, coming back out of nothing: you, nearest, with your fingers under the knot, and the block coming down. It was the first time in six years I have felt the Gravedragger miss."
+"It didn't miss, of course. It never misses. It only took less than it wanted, because you are not made of the same stuff as a steward with a tray." {n}Her whisper hardens.{/n} "He has your measure now. He has put his mark on you like a surveyor's peg. Don't you dare think that was cheap."''',
+        c("Continue", "rule", requires=(PATTERN,), forbids=(REFUSED,)),
+        c("Continue", "refused", requires=(REFUSED,)),
+        c("Continue", "eleven", forbids=(PATTERN,))),
+    mi("oskel", '''"He came back. That was the last thing I had before the nothing: a steady, careful sort of man in my head, coming back over the water to me, carrying something full to the brim. When I woke, his hand was on my collar." {n}She stops. The whisper will not do what she wants it to.{/n}
+"You sent him. You stood at the foot of my mast and did the sum, and it came out Oskel, and you said so aloud." {n}Her eyes are perfectly dry.{/n} "He was the one man on my ship I had never paid, and he went for nothing, because you told him to."''',
+        c("Continue", "rule", requires=(PATTERN,), forbids=(REFUSED,)),
+        c("Continue", "refused", requires=(REFUSED,)),
+        c("Continue", "eleven", forbids=(PATTERN,))),
+    mi("rule", '''"And you had the rule. You read it at my table, in the Bad Luck, and I thanked you for it. And then you walked me to Vazglar with nobody at my elbow at all, and gave the order for a raid, and let the sum work itself out on my main yard." {n}A breath, very careful.{/n} "I am a magister of the Arcanamirium. I know the difference between an accident and a thing somebody did not trouble to prevent."''',
+        c("Continue", "eleven")),
+    mi("refused", '''"You had the rule, and a man, and you took it back because I asked you to. I asked. I will carry that half, Commander; it is mine." {n}Her fingers tighten on the scarf.{/n} "The other half is the rope. That half is yours."''',
+        c("Continue", "eleven")),
+    mi("eleven", '''"The eleven I put off on the first rock with water on it. Dask went with his wrist in a splint." {n}A very thin smile.{/n} "My code says I never ignore those in distress. They were not in distress until I left them there. I have decided that counts."''',
+        c("Continue", "raid")),
+    mi("raid", '''"And there is the raid. I haven't forgotten the raid. There were children in that village, and fishing nets, and nothing worth a single sack of flour to anyone but them." {n}She holds your eyes.{/n} "Tell me why I should be sitting here at all."''',
+        c('"I ordered the raid. You protested, and you were right, and it nearly killed you."', "owned",
+          flags=(RAID_OWNED,)),
+        c('"I ordered the raid. I\'d order it again. Your crew just had worse manners than I did."', "unrepentant",
+          flags=(RAID_UNREPENTANT,), alignment=("Evil", 1))),
+    mi("owned", '''"Right." {n}She tastes the word.{/n} "I was right, and they hanged me for it, and you're sorry. That is more than any other captain in the Midnight Isles would have said. It is considerably less than I'd like."''',
+        c("Continue", "two_nights")),
+    mi("unrepentant", '''"Worse manners than you." {n}She laughs, and it tears in her throat, and she does it anyway.{/n} "Every pirate I ever wanted to see hanged would have said exactly that. I'm a magister; I keep accurate records. I'll remember you said it."''',
+        c("Continue", "two_nights")),
+    mi("two_nights", '''"I will forgive you the raid, one day. I can feel it coming, and I resent it." {n}She draws the scarf a little higher.{/n} "I don't know about the rope, nor about what it cost at the foot of my mast. I shall keep them where I keep everything, in the book, and look at them when I can bear to."
+"The night after, I dreamt of a spade. It wasn't digging for me. It has never dug for me. It was digging somewhere else, slowly." {n}She looks at you.{/n} "Somebody has been stealing from the Gravedragger, and he has noticed who."''',
+        c('"Let it dig."', "north", flags=(RETURNED, STARTED)),
+        c('"Then I\'ll stand where it can\'t reach me."', "north", flags=(RETURNED, STARTED)),
+        c('"Go home, Captain. You owe me nothing, and I\'ve cost you enough."', "gone", flags=(CLOSED,))),
+    mi("north", '''"Brave, or careless. Everyone says one or the other about you." {n}She stands, and the portal brightens behind her.{/n}
+"I'm flying Starcatcher north when your war goes home, with a new crew, hired at double wages, none of them within two strides of me. Cargo for Drezen. Passengers for anywhere else." {n}At the threshold she stops.{/n} "Not for you. Don't flatter yourself."
+{n}And then, without turning round, in the whisper that is all she has for now:{/n} "Mostly not for you. And tell your paladins about the yard yourself, before a drunk in a tavern does it for you."''',
+        c("[Let her go.]")),
+    mi("gone", '''{n}She considers you, as if checking a figure she thought she had.{/n}
+"You're right. I don't." {n}She stands, and the portal brightens behind her.{/n} "Fair winds, Commander. Keep somebody sensible standing nearest you. I shan't be there to count them."''',
+        c("[Let her go.]")),
+], requires=("trickster.ever", DEAD_LATCH, CUT_DOWN), forbids=(RETURNED, CLOSED), delay=48,
+    TricksterDevice=True, TricksterState="raid")
+
+
 # --- 5. The storm: word at the aeronauts' taverns (the Commander's act), then the survivor (her return). ------------
 
 remote(P + "storm.word", "Word at the Bad Luck", [
@@ -735,6 +935,11 @@ remote(P + "spade.dream", "The spade", [
 SCENES.append(reaction("Woljif", P + "react.woljif_oskel", (OSKEL_DEAD,),
     '''"Chief. Word in the Midnight Isles is, you put the biggest, meanest sailor in the sky next to the cursed lady on purpose. So he'd be the one it got." {n}Woljif rubs the back of his neck.{/n}
 "That's the coldest thing I ever heard, and I grew up in Alushinyrra. Remind me never to stand next to you in a thunderstorm."''',
+    answer_list=WOLJIF_HUB, forbids=(*WOLJIF_GUARD, CUT_DOWN), chapter=4, last=5, entry='"About Mielarah..."', portrait="Woljif"))
+
+SCENES.append(reaction("Woljif", P + "react.woljif_yard", (CUT_DOWN, OSKEL_DEAD),
+    '''"Chief. Word in the Midnight Isles is, the cursed lady's crew strung her up off her own yard at Vazglar, and nobody'd go near, and then you come flyin' back off the raid and sent her big bosun up there with a knife. Knowin'." {n}Woljif rubs the back of his neck.{/n}
+"I grew up in Alushinyrra. I seen people do colder. I just never seen 'em do it so tidy. Remind me never to climb nothin' for you."''',
     answer_list=WOLJIF_HUB, forbids=WOLJIF_GUARD, chapter=4, last=5, entry='"About Mielarah..."', portrait="Woljif"))
 
 SCENES.append(reaction("Lann", P + "react.lann_captain", (FLOWN,),
@@ -766,6 +971,8 @@ SCENES.append(scene(P + "epilogue.committed", "", "MielarahEpilogue", 6, "", [
             p("{n}Her crew served with the amulets, closer than ever, and never once mutinied, and never once laughed. The Commander had asked for that. Neither of them spoke about it afterwards.{/n}", requires=(TIGHTENED,)),
             p("{n}On long night watches her crew recited limericks, badly and in rotation, and the worst offenders were made to climb the rigging to do it. Nobody on Starcatcher has stepped off the rail since.{/n}", requires=(LAUGHING,)),
             p("{n}Once a year, on the anniversary of Vazglar, she wore the scarf, and would not say why to anyone but the Commander.{/n}", requires=(RETURNED, DEAD_LATCH)),
+            p("{n}The Commander carried a grey mark in the shape of a spade's blade on one shoulder for the rest of their life. Surgeons would not touch it. She would, sometimes, with two fingers, the way she corrected a helmsman.{/n}", requires=(ZYPHUS_MARK,)),
+            p("{n}She gave her orders in a rasp for the rest of her life, and her crews learned to lean in. She never once told a passenger what had happened to her voice.{/n}", requires=(HUNG,)),
             p("{n}Nine men who had once hauled on a rope over Vazglar crewed honest ships in the Midnight Isles for the rest of their lives, and none of them would ever say her name in a tavern without standing up first.{/n}", requires=(ROCK_SAVED,)),
             p("{n}She flew past a certain rock in the Ishiar every year, and every year looked down at it, and never once let the Commander see her face while she did.{/n}", requires=(ROCK_LEFT,)),
             p("{n}She never again asked the Commander what her code required. She asked the Commander everything else.{/n}", requires=(ROCK_SLAVERS,)),

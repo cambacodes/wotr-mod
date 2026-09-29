@@ -197775,6 +197775,60 @@
               "Forbids": [],
               "Abort": false,
               "NativeNext": "e433ac35761daa84b86b6b5e5c4fae11"
+            },
+            {
+              "Text": "\"The last one. You've been more pleased with a new pair of gloves.\"",
+              "Next": "guess_pleased",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"The second. You're not going to let me. You're going to make me work for it.\"",
+              "Next": "guess_let",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "guess_pleased",
+          "Speaker": "Camellia",
+          "Text": "{n}She laughs, delighted, and shakes her head.{/n} \"Wrong. The gloves were lovely, but they never told me to die convincingly.\" {n}She turns the knife so the light runs down it.{/n} \"The lie was the second. I'm not going to let you. I'm going to make you earn every inch, and look you in the eye while you do. Otherwise how would I know you meant it?\"",
+          "Choices": [
+            {
+              "Text": "[Draw your weapon]",
+              "Next": null,
+              "Set": [
+                "camellia.trickster.primed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "NativeNext": "e433ac35761daa84b86b6b5e5c4fae11"
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "guess_let",
+          "Speaker": "Camellia",
+          "Text": "{n}Her smile goes very still, the way it does when a reading comes out right.{/n} \"Oh, well done. Nobody ever guesses that one. They think a woman who says she'll let them means it.\" {n}She sets her feet.{/n} \"So. You know the lie, and I know you know it. That makes the rest of this honest, which is more than most endings are.\"",
+          "Choices": [
+            {
+              "Text": "[Draw your weapon]",
+              "Next": null,
+              "Set": [
+                "camellia.trickster.primed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "NativeNext": "e433ac35761daa84b86b6b5e5c4fae11"
             }
           ],
           "Portrait": "Camellia"
@@ -197906,7 +197960,7 @@
       "Title": "Wrong flowers",
       "Owner": "Memory",
       "MinChapter": 3,
-      "MaxChapter": 3,
+      "MaxChapter": 5,
       "Entry": "",
       "Nodes": [
         {
@@ -198082,7 +198136,8 @@
       "Relationship": "camellia",
       "Remote": true,
       "Chapters": [
-        3
+        3,
+        5
       ],
       "TricksterDevice": true,
       "TricksterState": "killed_by_commander",
@@ -198872,7 +198927,7 @@
         {
           "Id": "why",
           "Speaker": "Camellia",
-          "Text": "\"You're wondering why I came back. Everyone wonders that about the dead. Nobody ever asks us.\"\n{n}She turns her glass a quarter turn.{/n} \"I came back because it was the first time in my life that somebody lied to me better than I could lie to them. You told me to die convincingly, and I died, and afterwards, the whole time I was lying in that box, I could hear you not believing it. Do you know how rare that is? To be disbelieved by someone who's right?\"\n\"I couldn't possibly stay dead after that. It would have been so rude.\"",
+          "Text": "\"You're wondering why I came back. Everyone wonders that about the dead. Nobody ever asks us.\"\n{n}She turns her glass a quarter turn.{/n} \"My spirits gave me back because you paid them. That is the bargain, and it is dull. I came to this bar instead of going somewhere nobody would ever find me because it was the first time in my life that somebody lied to me better than I could lie to them. You told me to die convincingly, and I died, and afterwards, the whole time I was lying in that box, I could hear you not believing it. Do you know how rare that is? To be disbelieved by someone who's right?\"\n\"I couldn't possibly stay away after that. It would have been so rude.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -198888,7 +198943,7 @@
         {
           "Id": "primed",
           "Speaker": "Camellia",
-          "Text": "\"You told me to die convincingly, and I did. The gravediggers complained about the weight. The chaplain wept, which I thought was a nice touch. Everyone was convinced, except you, of course.\"\n{n}She presses something into your palm under the lilies: a small, clean knife, still warm from her glove.{/n} \"Keep it. Next time, use it properly. And do not look for me. I shall find you. A dead woman keeps very flexible hours.\"\n{n}Under the lace her mouth curves.{/n} \"Oh, and do look a little sad when you leave. Fye is watching, and the widow from Nerosyan has been stood up by her gentleman. It would be a pity to spoil the story.\"",
+          "Text": "\"You told me to die convincingly, and I did. The gravediggers complained about the weight. The chaplain wept, which I thought was a nice touch. Everyone was convinced, except you, of course. And my spirits, who have had your blood and will be back for more of it.\"\n{n}She presses something into your palm under the lilies: a small, clean knife, still warm from her glove.{/n} \"Keep it. Next time, use it properly. And do not look for me. I shall find you. A dead woman keeps very flexible hours.\"\n{n}Under the lace her mouth curves.{/n} \"Oh, and do look a little sad when you leave. Fye is watching, and the widow from Nerosyan has been stood up by her gentleman. It would be a pity to spoil the story.\"",
           "Choices": [
             {
               "Text": "[Keep the knife] \"I'll keep it close. Closer than you'd like.\"",
@@ -199099,7 +199154,7 @@
       "Title": "A letter from Mireya",
       "Owner": "Memory",
       "MinChapter": 3,
-      "MaxChapter": 3,
+      "MaxChapter": 5,
       "Entry": "",
       "Nodes": [
         {
@@ -199268,7 +199323,8 @@
       "Relationship": "camellia",
       "Remote": true,
       "Chapters": [
-        3
+        3,
+        5
       ],
       "TricksterDevice": true,
       "TricksterState": "killed_by_commander",
@@ -201876,7 +201932,7 @@
         {
           "Id": "morning",
           "Speaker": "Narrator",
-          "Text": "{n}Grey light. The knife is on the pillow between you, point towards the door, where she put it some time in the night. She is awake, lying on her side, watching your face with her chin on her folded hands, the way she watched the funeral from the parapet.{/n}\n\"You slept,\" {n}she says, wonderingly.{/n} \"With me in the bed and my knife on the pillow. You slept like a child. Nobody has ever done that. They lie awake. I can always hear them lying awake.\"\n{n}She reaches out and touches your eyelid with one fingertip, very lightly, as if to make sure it is real.{/n} \"I'm going to have to think about this for a very long time.\"",
+          "Text": "{n}Grey light. The knife is on the pillow between you, point towards the door, where she put it some time in the night. She is awake, lying on her side, watching your face with her chin on her folded hands, the way she watched the funeral from the parapet.{/n}\n\"You slept,\" {n}she says, wonderingly.{/n} \"With me in the bed and my knife on the pillow. You slept like a child. Nobody has ever done that. They lie awake. I can always hear them lying awake.\"\n{n}She reaches out and touches your eyelid with one fingertip, very lightly, as if to make sure it is real, and then lets it rest there, on the thin skin over your eye, the way she rests her thumb on a blade to feel its edge.{/n} \"Next time I shall stay awake and watch you do it. I want to know how long a person can sleep beside a knife before it stops being bravery and becomes a habit. Habits are so much easier to break.\"",
           "Choices": [
             {
               "Text": "[Close your eyes again]",
@@ -202764,7 +202820,7 @@
         {
           "Id": "morning",
           "Speaker": "Narrator",
-          "Text": "{n}Grey light. The knife is on the pillow between you, point towards the door, where she put it some time in the night. She is awake, lying on her side, watching your face with her chin on her folded hands, the way she watched the funeral from the parapet.{/n}\n\"You slept,\" {n}she says, wonderingly.{/n} \"With me in the bed and my knife on the pillow. You slept like a child. Nobody has ever done that. They lie awake. I can always hear them lying awake.\"\n{n}She reaches out and touches your eyelid with one fingertip, very lightly, as if to make sure it is real.{/n} \"I'm going to have to think about this for a very long time.\"",
+          "Text": "{n}Grey light. The knife is on the pillow between you, point towards the door, where she put it some time in the night. She is awake, lying on her side, watching your face with her chin on her folded hands, the way she watched the funeral from the parapet.{/n}\n\"You slept,\" {n}she says, wonderingly.{/n} \"With me in the bed and my knife on the pillow. You slept like a child. Nobody has ever done that. They lie awake. I can always hear them lying awake.\"\n{n}She reaches out and touches your eyelid with one fingertip, very lightly, as if to make sure it is real, and then lets it rest there, on the thin skin over your eye, the way she rests her thumb on a blade to feel its edge.{/n} \"Next time I shall stay awake and watch you do it. I want to know how long a person can sleep beside a knife before it stops being bravery and becomes a habit. Habits are so much easier to break.\"",
           "Choices": [
             {
               "Text": "[Close your eyes again]",
@@ -203647,7 +203703,7 @@
         {
           "Id": "morning",
           "Speaker": "Narrator",
-          "Text": "{n}Grey light. The knife is on the pillow between you, point towards the door, where she put it some time in the night. She is awake, lying on her side, watching your face with her chin on her folded hands, the way she watched the funeral from the parapet.{/n}\n\"You slept,\" {n}she says, wonderingly.{/n} \"With me in the bed and my knife on the pillow. You slept like a child. Nobody has ever done that. They lie awake. I can always hear them lying awake.\"\n{n}She reaches out and touches your eyelid with one fingertip, very lightly, as if to make sure it is real.{/n} \"I'm going to have to think about this for a very long time.\"",
+          "Text": "{n}Grey light. The knife is on the pillow between you, point towards the door, where she put it some time in the night. She is awake, lying on her side, watching your face with her chin on her folded hands, the way she watched the funeral from the parapet.{/n}\n\"You slept,\" {n}she says, wonderingly.{/n} \"With me in the bed and my knife on the pillow. You slept like a child. Nobody has ever done that. They lie awake. I can always hear them lying awake.\"\n{n}She reaches out and touches your eyelid with one fingertip, very lightly, as if to make sure it is real, and then lets it rest there, on the thin skin over your eye, the way she rests her thumb on a blade to feel its edge.{/n} \"Next time I shall stay awake and watch you do it. I want to know how long a person can sleep beside a knife before it stops being bravery and becomes a habit. Habits are so much easier to break.\"",
           "Choices": [
             {
               "Text": "[Close your eyes again]",
@@ -207565,7 +207621,7 @@
         {
           "Id": "lied",
           "Speaker": "Camellia",
-          "Text": "{n}It takes you one afternoon. You visit the witness with a chaplain in tow and grave concern on your face. You ask, gently, whether the lady they saw had a veil. And a fan. And a small dog. And had she perhaps also been singing? By the time you leave, the witness has seen a dead woman, a singing ghost, a dog made of mist and the late Lord Gwerm himself, and the chaplain has recommended rest, and the story has become the sort of thing people tell children at bedtime.{/n}",
+          "Text": "{n}It takes you one afternoon. You visit the witness with a chaplain in tow and grave concern on your face. You ask, gently, whether the lady they saw had a veil. And a fan. And a small dog. And had she perhaps also been singing? By the time you leave, the witness has seen a dead woman, a singing ghost, a dog made of mist and the late Lord Gwerm himself, and the chaplain has recommended rest, and the story has become the sort of thing people tell children at bedtime. The chaplain has the witness moved to the quiet ward, for rest. The candle trade goes to a cousin. Nobody asks after her there.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -207581,7 +207637,7 @@
         {
           "Id": "lied_after",
           "Speaker": "Camellia",
-          "Text": "\"You made them into a ghost story.\" {n}Camellia is laughing so hard she has to sit down on the edge of the table.{/n} \"Oh, that's so much crueller than anything I would have done. They'll spend the rest of their life being the person who saw the ghost.\"\n{n}Then she stops laughing, and looks at you with that terrible, bright tenderness.{/n} \"You saved someone from me. And you did it by being worse. I think I might love you. It's very inconvenient.\"",
+          "Text": "\"You made them into a ghost story.\" {n}Camellia is laughing so hard she has to sit down on the edge of the table.{/n} \"Oh, that's so much crueller than anything I would have done. They'll spend the rest of their life being the person who saw the ghost.\"\n{n}Then she stops laughing, and looks at you with that terrible, bright tenderness.{/n} \"You saved someone from me. And you did it by being worse.\" {n}She leans in and straightens your collar, very carefully, as though you were something of hers she means to keep clean.{/n} \"I shall have to watch you now. All the time. I want to see what else you'll ruin for me.\"",
           "Choices": [
             {
               "Text": "[Let her say it]",
@@ -207711,7 +207767,7 @@
         {
           "Id": "lied",
           "Speaker": "Camellia",
-          "Text": "{n}It takes you one afternoon. You visit the witness with a chaplain in tow and grave concern on your face. You ask, gently, whether the lady they saw had a veil. And a fan. And a small dog. And had she perhaps also been singing? By the time you leave, the witness has seen a dead woman, a singing ghost, a dog made of mist and the late Lord Gwerm himself, and the chaplain has recommended rest, and the story has become the sort of thing people tell children at bedtime.{/n}",
+          "Text": "{n}It takes you one afternoon. You visit the witness with a chaplain in tow and grave concern on your face. You ask, gently, whether the lady they saw had a veil. And a fan. And a small dog. And had she perhaps also been singing? By the time you leave, the witness has seen a dead woman, a singing ghost, a dog made of mist and the late Lord Gwerm himself, and the chaplain has recommended rest, and the story has become the sort of thing people tell children at bedtime. The chaplain has the witness moved to the quiet ward, for rest. The candle trade goes to a cousin. Nobody asks after her there.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -207727,7 +207783,7 @@
         {
           "Id": "lied_after",
           "Speaker": "Camellia",
-          "Text": "\"You made them into a ghost story.\" {n}Camellia is laughing so hard she has to sit down on the edge of the table.{/n} \"Oh, that's so much crueller than anything I would have done. They'll spend the rest of their life being the person who saw the ghost.\"\n{n}Then she stops laughing, and looks at you with that terrible, bright tenderness.{/n} \"You saved someone from me. And you did it by being worse. I think I might love you. It's very inconvenient.\"",
+          "Text": "\"You made them into a ghost story.\" {n}Camellia is laughing so hard she has to sit down on the edge of the table.{/n} \"Oh, that's so much crueller than anything I would have done. They'll spend the rest of their life being the person who saw the ghost.\"\n{n}Then she stops laughing, and looks at you with that terrible, bright tenderness.{/n} \"You saved someone from me. And you did it by being worse.\" {n}She leans in and straightens your collar, very carefully, as though you were something of hers she means to keep clean.{/n} \"I shall have to watch you now. All the time. I want to see what else you'll ruin for me.\"",
           "Choices": [
             {
               "Text": "[Let her say it]",
@@ -207850,7 +207906,7 @@
         {
           "Id": "lied",
           "Speaker": "Camellia",
-          "Text": "{n}It takes you one afternoon. You visit the witness with a chaplain in tow and grave concern on your face. You ask, gently, whether the lady they saw had a veil. And a fan. And a small dog. And had she perhaps also been singing? By the time you leave, the witness has seen a dead woman, a singing ghost, a dog made of mist and the late Lord Gwerm himself, and the chaplain has recommended rest, and the story has become the sort of thing people tell children at bedtime.{/n}",
+          "Text": "{n}It takes you one afternoon. You visit the witness with a chaplain in tow and grave concern on your face. You ask, gently, whether the lady they saw had a veil. And a fan. And a small dog. And had she perhaps also been singing? By the time you leave, the witness has seen a dead woman, a singing ghost, a dog made of mist and the late Lord Gwerm himself, and the chaplain has recommended rest, and the story has become the sort of thing people tell children at bedtime. The chaplain has the witness moved to the quiet ward, for rest. The candle trade goes to a cousin. Nobody asks after her there.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -207866,7 +207922,7 @@
         {
           "Id": "lied_after",
           "Speaker": "Camellia",
-          "Text": "\"You made them into a ghost story.\" {n}Camellia is laughing so hard she has to sit down on the edge of the table.{/n} \"Oh, that's so much crueller than anything I would have done. They'll spend the rest of their life being the person who saw the ghost.\"\n{n}Then she stops laughing, and looks at you with that terrible, bright tenderness.{/n} \"You saved someone from me. And you did it by being worse. I think I might love you. It's very inconvenient.\"",
+          "Text": "\"You made them into a ghost story.\" {n}Camellia is laughing so hard she has to sit down on the edge of the table.{/n} \"Oh, that's so much crueller than anything I would have done. They'll spend the rest of their life being the person who saw the ghost.\"\n{n}Then she stops laughing, and looks at you with that terrible, bright tenderness.{/n} \"You saved someone from me. And you did it by being worse.\" {n}She leans in and straightens your collar, very carefully, as though you were something of hers she means to keep clean.{/n} \"I shall have to watch you now. All the time. I want to see what else you'll ruin for me.\"",
           "Choices": [
             {
               "Text": "[Let her say it]",
@@ -212277,7 +212333,7 @@
         {
           "Id": "bargain",
           "Speaker": "Narrator",
-          "Text": "{n}She has told you herself: a shaman goes to war with spirits at her side, always, and in a fight they grow loud. You speak to those, not to the snake in the amulet. You let your blood run into the silver while her head is bent over the clasp, and you say it very quietly: if she dies, by my hand or on my word, keep her three nights, and give her back to me.{/n}\n{n}The blood in the bowl moves, though nothing touches it. It goes down in a slow ring until the silver is clean. Somewhere very close, something with no breath lets one out.{/n}",
+          "Text": "{n}She has told you herself: a shaman goes to war with spirits at her side, always, and in a fight they grow loud. You speak to those, not to the snake in the amulet. This far into the Wound, crusaders die in every skirmish, and you have buried enough of them to plan for the ones you mean to keep. You let your blood run into the silver while her head is bent over the clasp, and you say it very quietly: if she dies, whatever the hand and whatever the field, keep her three nights, and give her back to me.{/n}\n{n}The blood in the bowl moves, though nothing touches it. It goes down in a slow ring until the silver is clean. Somewhere very close, something with no breath lets one out.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -253463,7 +253519,7 @@
           "Text": "{n}Your voice carries from behind the rocks. The dragon does not turn yet. The old elf has stopped talking, and she is waiting to hear how a story ends, the way she has waited on every story in this lair: head low, one claw curled around the prisoner's ankle, as if he might get up and leave before the last line.{/n}\n{n}Beside you Greybor has gone completely still. He looks at you as though you have started singing in the middle of an ambush. Then he looks at the soft place under her wing, and waits too.{/n}",
           "Choices": [
             {
-              "Text": "[Tell her the end of her own story] \"The hunters come. The dragon falls. Everyone swears she's a corpse. She isn't. She's a clutch-mother, and a clutch-mother doesn't stay down while someone else holds her eggs.\"",
+              "Text": "[Tell her the end of her own story] \"The hunters come. The dragon falls. Everyone swears she's a corpse. She isn't. Three nights later she sheds the dead hide like a snake and gets up a clutch-mother, in a new skin, hungrier than before.\"",
               "Next": null,
               "Set": [
                 "devarra.trickster.primed",
@@ -284212,7 +284268,7 @@
         {
           "Id": "doctrine",
           "Speaker": "Narrator",
-          "Text": "{n}You know a little of Zyphus. Everyone who has buried friends in the Worldwound learns a little. His priests hold that no death is written in advance; a death is an accident, and an accident is an offering. A curse from his herald would not aim. Aiming is for assassins and for fate. It would simply collect.{/n}\n{n}And every name on her list died within arm's reach of her. Bringing tea. Leaning over the same chart. On her step. Stamping her papers. Taking her copper. Not the people she cared for most, not the people who hated her: the people who happened to be standing nearest when the dice fell.{/n}",
+          "Text": "{n}You know a little of Zyphus. Everyone who has buried friends in the Worldwound learns a little. His priests hold that no death is written in advance; a death is an accident, and an accident is an offering. A curse from his herald would not aim. Aiming is for assassins and for fate. It would simply collect.{/n}\n{n}And, as far as her own list tells it, every name on it died within arm's reach of her. Bringing tea. Leaning over the same chart. On her step. Stamping her papers. Taking her copper. Not the people she cared for most, not the people who hated her: the people who happened to be standing nearest when the dice fell.{/n}",
           "Choices": [
             {
               "Text": "\"I don't think it chooses. I think it takes whoever is standing nearest you.\"",
@@ -285114,6 +285170,32 @@
               "Requires": [],
               "Forbids": [],
               "Abort": true
+            },
+            {
+              "Text": "[Stand nearest yourself] \"Then not him. Me. I'll be at your elbow every hour until we land.\"",
+              "Next": "self",
+              "Set": [
+                "mielarah.trickster.primed.self"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "self",
+          "Speaker": "Mielarah",
+          "Text": "{n}The pencil stops again. This time she looks at you properly, the way she looked at the portal: as a thing that will take her somewhere she has not decided to go.{/n}\n\"You.\" {n}Flatly.{/n} \"You have a war, Commander. You have a crusade that falls over if you do. And you want to spend the voyage standing where my steward stood with his tray.\"\n\"I won't pretend I don't know what you're doing. You think my curse has a rule, and you want to be the answer to it.\" {n}She makes a small, precise tick on her list, as if entering a cost.{/n} \"Very well. It's your expedition. But I shall watch you every hour of it, and if anything comes down out of my rigging, I want you to know that I told you so, in the Bad Luck, in front of witnesses.\"",
+          "Choices": [
+            {
+              "Text": "[Let her finish her list.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": "Mielarah"
@@ -285239,7 +285321,8 @@
       "Forbids": [
         "mielarah.voyage_begun",
         "mielarah.trickster.primed.minder",
-        "mielarah.trickster.minder.refused"
+        "mielarah.trickster.minder.refused",
+        "mielarah.trickster.primed.self"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -286321,6 +286404,991 @@
       "Sender": "Mielarah"
     },
     {
+      "Id": "mielarah.trickster.raid.elbow",
+      "Title": "Nearest",
+      "Owner": "Mielarah",
+      "MinChapter": 4,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}You remember it in pieces, afterwards. Her voice at Vazglar, calling you a pirate and worse in front of the whole crew. The crew closing round her like dogs round a fallen horse. And you, at her elbow, where you had said you would be every hour, so that when the slip noose went over her head you were the nearest living thing to her on the ship.{/n}\n{n}Your knife was out before the line went taut. It parted the rope a hand above the knot, and she went down on the deck, and you went down with her, and the man on the other end of the line sat down hard with nothing to haul.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "block",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "block",
+          "Speaker": "Narrator",
+          "Text": "{n}Then the block at the end of the main yard, which had taken the line's first jerk, turned once, and its pin sheared, and it came down forty feet.{/n}\n{n}It took you across the shoulder instead of the skull, because you are what the Wound made you and a sailor is not, and the collarbone went with a sound like a snapped oar. You did not let go of her. With the breath the noose had left her she called the southern wind, and the ship leaned away from Vazglar, and nobody on that deck came within ten strides of either of you again.{/n}\n{n}When the bruise came up, it came up grey, the grey of turned earth, in the shape of a spade's blade. It has not faded.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "cabin",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "cabin",
+          "Speaker": "Mielarah",
+          "Text": "{n}She comes to you the next night, in the cabin they gave you, with a scarf wound high round her throat, and sits on your sea chest without asking. Her voice is a rasp, but it is hers.{/n}\n\"I told you so. In the Bad Luck, in front of witnesses.\" {n}Her eyes go to your shoulder, to the place under the sling where the grey spade is.{/n} \"I felt it come down. Six years I have watched the Gravedragger collect whoever stands nearest, and for the first time I watched him collect, and not finish.\"\n\"He has your measure now. He has put his mark on you like a surveyor's peg. Don't you dare think that was cheap.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "eleven",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "eleven",
+          "Speaker": "Mielarah",
+          "Text": "\"The eleven who held the rope, I'll put off on the first rock with water on it.\" {n}A very thin smile.{/n} \"My code says I never ignore those in distress. They won't be in distress until I leave them there. I have decided that counts.\"\n\"And there is the raid. There were children in that village, Commander, and fishing nets, and nothing worth a single sack of flour to anyone but them. Tell me why I should be sitting here at all.\"",
+          "Choices": [
+            {
+              "Text": "\"I ordered the raid. You protested, and you were right, and it nearly killed you.\"",
+              "Next": "owned",
+              "Set": [
+                "mielarah.trickster.raid.owned"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I ordered the raid. I'd order it again. Your crew just had worse manners than I did.\"",
+              "Next": "unrepentant",
+              "Set": [
+                "mielarah.trickster.raid.unrepentant"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "owned",
+          "Speaker": "Mielarah",
+          "Text": "\"Right.\" {n}She tastes the word.{/n} \"I was right, and they tried to hang me for it, and you stood where the curse could reach you and you're sorry. That is more than any other captain in the Midnight Isles would have done. I haven't decided yet whether it's more than I'd like.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "north",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "unrepentant",
+          "Speaker": "Mielarah",
+          "Text": "\"Worse manners than you.\" {n}She laughs, and it hurts her, and she does it anyway.{/n} \"Every pirate I ever wanted to see hanged would have said exactly that, and not one of them would have stood under my yard for it. I'm a magister; I keep accurate records. I'll put both in the book.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "north",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "north",
+          "Speaker": "Mielarah",
+          "Text": "\"I'm flying Starcatcher north when your war goes home, with a new crew, none of them within two strides of me.\" {n}She stands.{/n} \"Cargo for Drezen. Passengers for anywhere else. Not for you.\" {n}At the door she stops.{/n} \"Mostly not for you. Keep that shoulder out of the rain.\"",
+          "Choices": [
+            {
+              "Text": "[Let her go.]",
+              "Next": null,
+              "Set": [
+                "mielarah.trickster.returned",
+                "mielarah.started",
+                "mielarah.trickster.cost.zyphus_mark",
+                "mielarah.trickster.cost.noticed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "mielarah.dead.latched",
+        "mielarah.trickster.primed.self"
+      ],
+      "Forbids": [
+        "mielarah.trickster.primed.minder",
+        "mielarah.trickster.returned",
+        "mielarah.closed"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "mielarah",
+      "Remote": true,
+      "Chapters": [
+        4,
+        5
+      ],
+      "Kind": "visit",
+      "TricksterDevice": true,
+      "TricksterState": "raid",
+      "Sender": "Mielarah"
+    },
+    {
+      "Id": "mielarah.trickster.raid.wind",
+      "Title": "The capstan",
+      "Owner": "Mielarah",
+      "MinChapter": 4,
+      "MaxChapter": 4,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Afterwards, what you remember of Vazglar is the time. How little of it there was, and how much of it the crew of Starcatcher spent being afraid of her.{/n}\n{n}You were ashore with the raiding party you had ordered down, a quarter-mile of shingle below the ship, when something big came down in the middle of the fishing village, folding its wings with a noise like a sail being struck. A tiefling of the Midnight Isles, broad as a hatch cover, with a slaver's brand gone white on the side of his neck. Oskel, her bosun. When she stood on her own quarterdeck and called you a pirate in front of the whole crew, he was at the rail. He was still at the rail when the crew came round her.{/n}\n{n}\"Commander.\" He is breathing hard, and his voice is low and careful, like a man carrying something full to the brim. \"They're hanging the captain.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Listen.]",
+              "Next": "head",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "head",
+          "Speaker": "Narrator",
+          "Text": "{n}He says it fast, the way a bosun reports damage.{/n}\n{n}\"Hesk put the noose on her. Pulled it snug, stepped back onto the main hatch grating, and the grating went. Rotten, and none of us knew. He went into the hold head first and broke his neck on the ballast.\" He touches the back of his own neck, low down. \"Six years every man aboard's seen that happen near her. Now they've seen it happen on the rope.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "yard",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "yard",
+          "Speaker": "Narrator",
+          "Text": "{n}\"So nobody'll go near her. They're reeving the line through the block at the yardarm and down to the capstan, so's they can walk her up from the far side of the deck, eleven men on the bars at the full stretch of 'em.\" His yellow eyes are steady. \"That's slow work, the reeving. And a capstan don't drop a body. It lifts her. That's a strangling, not a neck broke. Minutes, Commander. Not many.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "rule",
+              "Set": [],
+              "Requires": [
+                "mielarah.trickster.primed.pattern"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "folk",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "mielarah.trickster.primed.pattern"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "rule",
+          "Speaker": "Narrator",
+          "Text": "{n}You read her rule at her own table in the Bad Luck. The curse does not aim. It takes whoever stands nearest when trouble comes, and it has never once taken her. It has never once saved her, either: it has only ever taken the people beside her. It took the man who fitted her noose, because he was nearest. It will do nothing at all about the rope. A rope is not an accident.{/n}\n{n}What it has done is teach eleven frightened men to keep their distance, and distance is slow. That is all the time there is.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "refused",
+              "Set": [],
+              "Requires": [
+                "mielarah.trickster.minder.refused"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "why",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "mielarah.trickster.minder.refused"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "folk",
+          "Speaker": "Narrator",
+          "Text": "{n}\"Six years I sailed with her.\" Oskel says it quickly, as if he has been saying it to himself the whole way down. \"Seen men go over the side next to her. Seen a mast come down either side of her. Seen a girl choke on an apple across a counter from her. Never a scratch on the captain.\"{/n}\n{n}\"Rope's different. Rope ain't an accident. Rope'll do what rope does, and she's on it.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "why",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "refused",
+          "Speaker": "Narrator",
+          "Text": "{n}You had more than the rule, once. You had a man to post at her elbow, and you took the order back because she asked you to. This is what the taking back has bought: a quarter-mile of shingle, a capstan, and nobody near enough to die for her.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "why",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "why",
+          "Speaker": "Narrator",
+          "Text": "{n}\"Why me?\" you ask him. \"You could have cut her down yourself.\"{/n}\n{n}\"Past eleven knives, on my own, and nearest when I got there?\" He does not look away. \"'Cause you're captain till the expedition's done. That was the arrangement. 'Cause you gave the order for the raid.\" A pause. \"'Cause I stood at the rail. Figured I'd better fetch somebody who didn't.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Take hold of his harness.] \"Fly.\"",
+              "Next": "moorings",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"She's dead, Oskel. Let her go.\"",
+              "Next": "leave",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "leave",
+          "Speaker": "Narrator",
+          "Text": "{n}He hears it without any change in his face. Then he nods once, the way a bosun acknowledges an order he did not want, and opens his wings, and goes.{/n}\n{n}Nobody on Starcatcher goes near the mainmast that afternoon. The wind that gets up out of the south as the capstan stops blows all night long, and in the morning the crew tell you, carefully, from the far side of the deck, that the captain died in a few seconds.{/n}",
+          "Choices": [
+            {
+              "Text": "[Put it out of your mind.]",
+              "Next": null,
+              "Set": [
+                "mielarah.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "moorings",
+          "Speaker": "Narrator",
+          "Text": "{n}He takes you under the arms without another word and goes up. The village drops away, and the shingle, and a quarter-mile of grey surf goes under your boots with the wind tearing at your eyes, and then Starcatcher is below you, riding at anchor forty feet over the water.{/n}\n{n}The capstan is going round. Eleven men lean on the bars at the full stretch of the deck, as far from the mainmast as the ship allows, and the pawls clack, one, and another, and up at the end of the main yard, with her hands tied behind her and her boots a man's height off the planking, Magister Mielarah of the Arcanamirium is being lifted by inches. Her heels are still moving. Her mouth is working at a word it has no breath to say.{/n}\n{n}Oskel drops you on the quarterdeck. The man at the head of the bars is the quartermaster, a one-horned man called Dask, and he lets go with one hand and takes up a boarding cleaver.{/n}\n{n}\"Leave her be, passenger.\" His voice cracks. \"Hesk's in the hold with his neck broke. Go near her and you're next. And if she comes down, she'll have the lot of us.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Intimidation DC 26] \"Stand off the bars, Dask, or I put you on the rope beside her.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "CheckIntimidate",
+                "DC": 26,
+                "Success": "stood_down",
+                "Failure": "knife",
+                "CommanderOnly": true
+              }
+            },
+            {
+              "Text": "[Diplomacy DC 26] \"She's alive. When she wakes, she'll remember who let go of the bars, and who didn't.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "CheckDiplomacy",
+                "DC": 26,
+                "Success": "stood_down",
+                "Failure": "knife",
+                "CommanderOnly": true
+              }
+            },
+            {
+              "Text": "[Draw steel and walk through them.]",
+              "Next": "knife",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "stood_down",
+          "Speaker": "Narrator",
+          "Text": "{n}Nobody moves. Then Dask takes his hands off the bar as if it had burned him, and the others let go after him, and the pawl drops and holds. The eleven go back along the deck, a step and another, until they are pressed against the forecastle rail.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "foot",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "knife",
+          "Speaker": "Narrator",
+          "Text": "{n}Dask comes at you first, because he is more frightened of her than of you. You put the man behind him on the deck, and the one behind that, and every one of them is a breath she does not take. Then the cleaver opens your forearm from wrist to elbow, down to the bone, and the deck is suddenly slick. Oskel takes Dask by the wrist and breaks it, quite slowly, the way a man breaks a stick for kindling, and the rest of them let go of the bars and go back to the forecastle rail and stay there. The pawl drops and holds.{/n}\n{n}You bind the arm with a strip of sailcloth later. It will close. It will not close clean.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "foot",
+              "Set": [
+                "mielarah.trickster.cost.hangman_knife"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "foot",
+          "Speaker": "Narrator",
+          "Text": "{n}At the foot of the mast you look up. Her heels have stopped. The line runs up to the block at the end of the yard and down to her, and the knot sits under her chin, where a man puts it when he fits a noose at arm's length and steps back quick. Walking the capstan back would take a minute she does not have, and someone would still have to take the knot off her on the deck. Somebody has to take her weight and cut, now. Whoever is holding her when the line parts will be the nearest living thing to her on this ship.{/n}\n{n}Oskel looks at you. He knows the sum, and he knows you know it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Give the order] \"Go up, bosun. Cut her down, and hold her.\"",
+              "Next": "cut",
+              "Set": [
+                "mielarah.trickster.raid.cut_down",
+                "mielarah.trickster.cost.oskel",
+                "mielarah.trickster.cost.meant",
+                "mielarah.trickster.cost.noticed",
+                "mielarah.trickster.cost.hung",
+                "trickster.secret.mielarah_yard"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "\"No. Leave her where she is.\"",
+              "Next": "leave",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Mobility DC 24] \"Stand clear, all of you.\" Stand under her yourself, nearest, and cut the line with a thrown knife.",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "SkillMobility",
+                "DC": 24,
+                "Success": "thrown",
+                "Failure": "climbed",
+                "CommanderOnly": true
+              }
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "thrown",
+          "Speaker": "Narrator",
+          "Text": "{n}You send Oskel to the forecastle with the others and stand alone at the foot of the mast, directly under her, the only living thing within ten strides. The knife turns twice in the grey light and parts the line a hand above the knot.{/n}\n{n}She comes down into your arms like a sack of wet sailcloth, and you go to your knees on the deck with her and get your fingers under the knot, and for one breath you are exactly where every name in her book once stood.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "struck",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "climbed",
+          "Speaker": "Narrator",
+          "Text": "{n}The first knife goes wide over the rail. The second bites the yard and hangs there. So you send Oskel to the forecastle with the others and go up the ratlines yourself, and out along the footrope with the line humming beside your face, and saw through it with your belt knife while you hold her against you with your other arm. Her face is dark and her lips are blue. You come down the backstay with her over your shoulder, burning your palm to the meat, and kneel on the deck with her and get your fingers under the knot, and for one breath you are exactly where every name in her book once stood.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "struck",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "struck",
+          "Speaker": "Narrator",
+          "Text": "{n}The block at the end of the yard has taken the jerk of the haul and every clack of the capstan without a creak. With nothing hanging from it, it turns once in the wind, and the pin that holds it shears, and it comes down forty feet.{/n}\n{n}It takes you across the shoulder instead of the skull, because you are what the Wound made you and a sailor is not, and the collarbone goes with a sound like a snapped oar. You do not let go of her. Afterwards, when the bruise comes up, it comes up grey, the grey of turned earth, in the shape of a spade's blade, and it does not fade. The ship's surgeon at Colyphyr looks at it and will not touch it.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "breath_marked",
+              "Set": [
+                "mielarah.trickster.raid.cut_down",
+                "mielarah.trickster.cost.zyphus_mark",
+                "mielarah.trickster.cost.noticed",
+                "mielarah.trickster.cost.hung"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "breath_marked",
+          "Speaker": "Narrator",
+          "Text": "{n}Under your good hand, the knot comes loose, and she coughs.{/n}\n{n}It is a terrible sound, dry and torn, like canvas ripping. Her chest heaves once, twice, and then she is breathing, in long ragged pulls, with her eyes open on the sky. The first breath she has any use of she spends, being who she is, on one cracked word of the Arcanamirium, and out over the sea the southern wind gets up. It blows all night long. After a while her eyes find the block on the deck beside you, and your shoulder, and then your face.{/n}\n{n}She tries to speak again. Nothing comes. She takes your hand instead, and turns it over, and with one cold finger writes on your palm, one letter at a time, the way a magister writes in the margin of a text she disputes: W. H. Y.{/n}",
+          "Choices": [
+            {
+              "Text": "[Stay with her until morning.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "cut",
+          "Speaker": "Narrator",
+          "Text": "{n}\"Aye,\" says Oskel. That is all.{/n}\n{n}He goes up on his wings with his knife in his teeth, and when he reaches her he does not hesitate at all. He takes her round the waist with one arm, lifts her an inch to slack the line, and cuts. Then he brings her down to the deck at your feet, slowly, the way you would lower a sleeping child, and kneels, and works the knot loose with his big scarred fingers, and straightens her collar.{/n}\n{n}The block at the end of the yard has taken the jerk of the haul and every clack of the capstan without a creak. With nothing hanging from it, it turns once in the wind, and the pin that holds it shears, and it comes down forty feet and takes him on the back of the head.{/n}\n{n}He dies on his knees beside her, with his hand still at her collar. It is quick. It is entirely pointless. Nothing on the ship moves.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "breath",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "breath",
+          "Speaker": "Narrator",
+          "Text": "{n}Under his hand, she coughs.{/n}\n{n}It is a terrible sound, dry and torn, like canvas ripping. Her chest heaves once, twice, and then she is breathing, in long ragged pulls, with her eyes open on the sky. The first breath she has any use of she spends, being who she is, on one cracked word of the Arcanamirium, and out over the sea the southern wind gets up. It blows all night long. After a while her eyes find Oskel, and the block beside him, and then you.{/n}\n{n}She tries to speak again. Nothing comes. She takes your hand instead, and turns it over, and with one cold finger writes on your palm, one letter at a time, the way a magister writes in the margin of a text she disputes: W. H. O.{/n}",
+          "Choices": [
+            {
+              "Text": "\"I sent him up.\"",
+              "Next": "told_her",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Close your hand over hers. Say nothing.]",
+              "Next": "silent",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "told_her",
+          "Speaker": "Narrator",
+          "Text": "{n}She looks at you for the space of three breaths. Then she turns her head, and looks at Oskel, and does not look away again until the forecastle crew, at your order and from as far off as they can manage, come with a sailcloth to take him below.{/n}",
+          "Choices": [
+            {
+              "Text": "[Stay with her until morning.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "silent",
+          "Speaker": "Narrator",
+          "Text": "{n}She does not need you to say it. She is a magister of the Arcanamirium and she can count, even now: the line, the knot, the yard, the one man on the ship who could reach it, and the passenger who brought him back. She takes her hand out of yours, and puts it on Oskel's sleeve, and leaves it there.{/n}",
+          "Choices": [
+            {
+              "Text": "[Stay with her until morning.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "mielarah.dead.latched"
+      ],
+      "Forbids": [
+        "mielarah.trickster.primed.minder",
+        "mielarah.trickster.primed.self",
+        "mielarah.trickster.returned",
+        "mielarah.trickster.raid.cut_down",
+        "mielarah.closed"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "mielarah",
+      "Remote": true,
+      "Chapters": [
+        4
+      ],
+      "Kind": "visit",
+      "TricksterDevice": true,
+      "TricksterState": "raid",
+      "Sender": "Mielarah"
+    },
+    {
+      "Id": "mielarah.trickster.raid.whisper",
+      "Title": "What the rope kept",
+      "Owner": "Mielarah",
+      "MinChapter": 4,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}A doorway of salt light opens beside your bedroll in the dark, and wind comes through it, and then Mielarah.{/n}\n{n}She has a scarf wound high around her throat, and she sits down on your pack without asking. Above the scarf the rope has left her face grey and hollowed, and there are small burst vessels in the whites of her eyes, like red thread. When she speaks it is barely a whisper, and every word costs her.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "voice",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "voice",
+          "Speaker": "Mielarah",
+          "Text": "\"You'll have to lean in. This is all there is.\" {n}She touches the scarf.{/n} \"The healers in Alushinyrra say it will come back, after a fashion: a rasp, never clear again. Orders I can manage, if the crew lean in. Spells are harder. Half of what I know has to be spoken clearly, and I am relearning it in this, like a child learning her letters.\"\n\"I have a portal left. You see I kept that one.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "tidy",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "tidy",
+          "Speaker": "Mielarah",
+          "Text": "\"I remember the capstan. One pawl, and another. I could not breathe, and I could feel every one of them in my head, the way I always feel them, leaning on the bars as far from me as my own deck allowed.\" {n}Her mouth twists.{/n} \"So I tidied. It was the only thing I had left to do. And then one of them was not on the bars. He was going away from me, fast, over the water, and I knew where. Then nothing, until a hand on the knot.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "oskel",
+              "Set": [],
+              "Requires": [
+                "mielarah.trickster.cost.oskel"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "marked",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "mielarah.trickster.cost.oskel"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "marked",
+          "Speaker": "Mielarah",
+          "Text": "\"And you stood under me yourself.\" {n}Her eyes go to your shoulder, to the place under your shirt where the grey spade is.{/n} \"I felt that. It was the first thing I felt, coming back out of nothing: you, nearest, with your fingers under the knot, and the block coming down. It was the first time in six years I have felt the Gravedragger miss.\"\n\"It didn't miss, of course. It never misses. It only took less than it wanted, because you are not made of the same stuff as a steward with a tray.\" {n}Her whisper hardens.{/n} \"He has your measure now. He has put his mark on you like a surveyor's peg. Don't you dare think that was cheap.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "rule",
+              "Set": [],
+              "Requires": [
+                "mielarah.trickster.primed.pattern"
+              ],
+              "Forbids": [
+                "mielarah.trickster.minder.refused"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "refused",
+              "Set": [],
+              "Requires": [
+                "mielarah.trickster.minder.refused"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "eleven",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "mielarah.trickster.primed.pattern"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "oskel",
+          "Speaker": "Mielarah",
+          "Text": "\"He came back. That was the last thing I had before the nothing: a steady, careful sort of man in my head, coming back over the water to me, carrying something full to the brim. When I woke, his hand was on my collar.\" {n}She stops. The whisper will not do what she wants it to.{/n}\n\"You sent him. You stood at the foot of my mast and did the sum, and it came out Oskel, and you said so aloud.\" {n}Her eyes are perfectly dry.{/n} \"He was the one man on my ship I had never paid, and he went for nothing, because you told him to.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "rule",
+              "Set": [],
+              "Requires": [
+                "mielarah.trickster.primed.pattern"
+              ],
+              "Forbids": [
+                "mielarah.trickster.minder.refused"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "refused",
+              "Set": [],
+              "Requires": [
+                "mielarah.trickster.minder.refused"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "eleven",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "mielarah.trickster.primed.pattern"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "rule",
+          "Speaker": "Mielarah",
+          "Text": "\"And you had the rule. You read it at my table, in the Bad Luck, and I thanked you for it. And then you walked me to Vazglar with nobody at my elbow at all, and gave the order for a raid, and let the sum work itself out on my main yard.\" {n}A breath, very careful.{/n} \"I am a magister of the Arcanamirium. I know the difference between an accident and a thing somebody did not trouble to prevent.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "eleven",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "refused",
+          "Speaker": "Mielarah",
+          "Text": "\"You had the rule, and a man, and you took it back because I asked you to. I asked. I will carry that half, Commander; it is mine.\" {n}Her fingers tighten on the scarf.{/n} \"The other half is the rope. That half is yours.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "eleven",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "eleven",
+          "Speaker": "Mielarah",
+          "Text": "\"The eleven I put off on the first rock with water on it. Dask went with his wrist in a splint.\" {n}A very thin smile.{/n} \"My code says I never ignore those in distress. They were not in distress until I left them there. I have decided that counts.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "raid",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "raid",
+          "Speaker": "Mielarah",
+          "Text": "\"And there is the raid. I haven't forgotten the raid. There were children in that village, and fishing nets, and nothing worth a single sack of flour to anyone but them.\" {n}She holds your eyes.{/n} \"Tell me why I should be sitting here at all.\"",
+          "Choices": [
+            {
+              "Text": "\"I ordered the raid. You protested, and you were right, and it nearly killed you.\"",
+              "Next": "owned",
+              "Set": [
+                "mielarah.trickster.raid.owned"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I ordered the raid. I'd order it again. Your crew just had worse manners than I did.\"",
+              "Next": "unrepentant",
+              "Set": [
+                "mielarah.trickster.raid.unrepentant"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "owned",
+          "Speaker": "Mielarah",
+          "Text": "\"Right.\" {n}She tastes the word.{/n} \"I was right, and they hanged me for it, and you're sorry. That is more than any other captain in the Midnight Isles would have said. It is considerably less than I'd like.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "two_nights",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "unrepentant",
+          "Speaker": "Mielarah",
+          "Text": "\"Worse manners than you.\" {n}She laughs, and it tears in her throat, and she does it anyway.{/n} \"Every pirate I ever wanted to see hanged would have said exactly that. I'm a magister; I keep accurate records. I'll remember you said it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "two_nights",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "two_nights",
+          "Speaker": "Mielarah",
+          "Text": "\"I will forgive you the raid, one day. I can feel it coming, and I resent it.\" {n}She draws the scarf a little higher.{/n} \"I don't know about the rope, nor about what it cost at the foot of my mast. I shall keep them where I keep everything, in the book, and look at them when I can bear to.\"\n\"The night after, I dreamt of a spade. It wasn't digging for me. It has never dug for me. It was digging somewhere else, slowly.\" {n}She looks at you.{/n} \"Somebody has been stealing from the Gravedragger, and he has noticed who.\"",
+          "Choices": [
+            {
+              "Text": "\"Let it dig.\"",
+              "Next": "north",
+              "Set": [
+                "mielarah.trickster.returned",
+                "mielarah.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Then I'll stand where it can't reach me.\"",
+              "Next": "north",
+              "Set": [
+                "mielarah.trickster.returned",
+                "mielarah.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Go home, Captain. You owe me nothing, and I've cost you enough.\"",
+              "Next": "gone",
+              "Set": [
+                "mielarah.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "north",
+          "Speaker": "Mielarah",
+          "Text": "\"Brave, or careless. Everyone says one or the other about you.\" {n}She stands, and the portal brightens behind her.{/n}\n\"I'm flying Starcatcher north when your war goes home, with a new crew, hired at double wages, none of them within two strides of me. Cargo for Drezen. Passengers for anywhere else.\" {n}At the threshold she stops.{/n} \"Not for you. Don't flatter yourself.\"\n{n}And then, without turning round, in the whisper that is all she has for now:{/n} \"Mostly not for you. And tell your paladins about the yard yourself, before a drunk in a tavern does it for you.\"",
+          "Choices": [
+            {
+              "Text": "[Let her go.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "gone",
+          "Speaker": "Mielarah",
+          "Text": "{n}She considers you, as if checking a figure she thought she had.{/n}\n\"You're right. I don't.\" {n}She stands, and the portal brightens behind her.{/n} \"Fair winds, Commander. Keep somebody sensible standing nearest you. I shan't be there to count them.\"",
+          "Choices": [
+            {
+              "Text": "[Let her go.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "mielarah.dead.latched",
+        "mielarah.trickster.raid.cut_down"
+      ],
+      "Forbids": [
+        "mielarah.trickster.returned",
+        "mielarah.closed"
+      ],
+      "DelayHours": 48,
+      "Optional": false,
+      "Relationship": "mielarah",
+      "Remote": true,
+      "Chapters": [
+        4,
+        5
+      ],
+      "Kind": "visit",
+      "TricksterDevice": true,
+      "TricksterState": "raid",
+      "Sender": "Mielarah"
+    },
+    {
       "Id": "mielarah.trickster.storm.word",
       "Title": "Word at the Bad Luck",
       "Owner": "Mielarah",
@@ -287003,6 +288071,48 @@
       ],
       "Forbids": [
         "woljif.dead",
+        "woljif.kicked_out",
+        "mielarah.trickster.raid.cut_down"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "mielarah",
+      "Reaction": true,
+      "AnswerLists": [
+        "e41585da330233143b34ef64d7d62d69"
+      ]
+    },
+    {
+      "Id": "mielarah.trickster.react.woljif_yard",
+      "Title": "Woljif's word",
+      "Owner": "Woljif",
+      "MinChapter": 4,
+      "MaxChapter": 5,
+      "Entry": "\"About Mielarah...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Woljif",
+          "Text": "\"Chief. Word in the Midnight Isles is, the cursed lady's crew strung her up off her own yard at Vazglar, and nobody'd go near, and then you come flyin' back off the raid and sent her big bosun up there with a knife. Knowin'.\" {n}Woljif rubs the back of his neck.{/n}\n\"I grew up in Alushinyrra. I seen people do colder. I just never seen 'em do it so tidy. Remind me never to climb nothin' for you.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Woljif"
+        }
+      ],
+      "Requires": [
+        "mielarah.trickster.raid.cut_down",
+        "mielarah.trickster.cost.oskel"
+      ],
+      "Forbids": [
+        "woljif.dead",
         "woljif.kicked_out"
       ],
       "DelayHours": 0,
@@ -287179,6 +288289,22 @@
               "Requires": [
                 "mielarah.trickster.returned",
                 "mielarah.dead.latched"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The Commander carried a grey mark in the shape of a spade's blade on one shoulder for the rest of their life. Surgeons would not touch it. She would, sometimes, with two fingers, the way she corrected a helmsman.{/n}",
+              "Requires": [
+                "mielarah.trickster.cost.zyphus_mark"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She gave her orders in a rasp for the rest of her life, and her crews learned to lean in. She never once told a passenger what had happened to her voice.{/n}",
+              "Requires": [
+                "mielarah.trickster.cost.hung"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -288084,7 +289210,9 @@
               "Requires": [
                 "mielarah.trickster.cost.oskel"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "mielarah.trickster.raid.cut_down"
+              ],
               "Abort": false
             },
             {
@@ -288133,8 +289261,50 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "mielarah.trickster.primed.minder"
+                "mielarah.trickster.primed.minder",
+                "mielarah.trickster.cost.oskel",
+                "mielarah.trickster.raid.cut_down",
+                "mielarah.trickster.cost.zyphus_mark"
               ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "dead_cut",
+              "Set": [],
+              "Requires": [
+                "mielarah.trickster.raid.cut_down",
+                "mielarah.trickster.cost.oskel"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "marked",
+              "Set": [],
+              "Requires": [
+                "mielarah.trickster.cost.zyphus_mark"
+              ],
+              "Forbids": [
+                "mielarah.trickster.cost.oskel"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "marked",
+          "Speaker": "Mielarah",
+          "Text": "{n}She does not pour for you at once. She looks at your shoulder, at the place under your coat where the grey spade is, as if she could see through the cloth.{/n}\n\"I have kept accurate records for six years, Commander. Every name. The steward, my mate, the girl with the apples. Every one of them I put beside me without knowing what I was doing.\" {n}She pushes the cup across.{/n} \"There is no name for that night. There is a line with nothing in it but a date and a place, and in the margin: the Commander, nearest; marked. I did not know how else to write it. Nobody has ever been nearest and gone on breathing.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "demand",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -288144,6 +289314,22 @@
           "Id": "dead",
           "Speaker": "Mielarah",
           "Text": "{n}A bosun's whistle lies on the chart table between the cups: brass, dented, on a cord gone black with handling.{/n}\n\"His.\" {n}She does not touch it.{/n} \"It came up out of the sea tangled in the rigging, and none of the crew would take it. I have been carrying it about for weeks like a fool.\"\n\"I have kept accurate records for six years, Commander. Every name. The steward, my mate, the girl with the apples. Every one of them I put beside me without knowing what I was doing.\" {n}Now she picks the whistle up, and turns it over.{/n} \"Oskel is the only name on my list that somebody put there on purpose.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "demand",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "dead_cut",
+          "Speaker": "Mielarah",
+          "Text": "{n}A bosun's whistle lies on the chart table between the cups: brass, dented, on a cord gone black with handling.{/n}\n\"His.\" {n}She does not touch it.{/n} \"The crew took it off him before they put him over the side at Colyphyr, and then none of them would keep it. I have been carrying it about for weeks like a fool.\"\n\"I have kept accurate records for six years, Commander. Every name. The steward, my mate, the girl with the apples. Every one of them I put beside me without knowing what I was doing.\" {n}Now she picks the whistle up, and turns it over.{/n} \"Oskel is the only name on my list that somebody sent. Out along my own main yard, with a knife in his teeth, on an order given in two words.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -288450,7 +289636,9 @@
               "Requires": [
                 "mielarah.trickster.cost.oskel"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "mielarah.trickster.raid.cut_down"
+              ],
               "Abort": false
             },
             {
@@ -288499,8 +289687,50 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "mielarah.trickster.primed.minder"
+                "mielarah.trickster.primed.minder",
+                "mielarah.trickster.cost.oskel",
+                "mielarah.trickster.raid.cut_down",
+                "mielarah.trickster.cost.zyphus_mark"
               ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "dead_cut",
+              "Set": [],
+              "Requires": [
+                "mielarah.trickster.raid.cut_down",
+                "mielarah.trickster.cost.oskel"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "marked",
+              "Set": [],
+              "Requires": [
+                "mielarah.trickster.cost.zyphus_mark"
+              ],
+              "Forbids": [
+                "mielarah.trickster.cost.oskel"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "marked",
+          "Speaker": "Mielarah",
+          "Text": "{n}She does not pour for you at once. She looks at your shoulder, at the place under your coat where the grey spade is, as if she could see through the cloth.{/n}\n\"I have kept accurate records for six years, Commander. Every name. The steward, my mate, the girl with the apples. Every one of them I put beside me without knowing what I was doing.\" {n}She pushes the cup across.{/n} \"There is no name for that night. There is a line with nothing in it but a date and a place, and in the margin: the Commander, nearest; marked. I did not know how else to write it. Nobody has ever been nearest and gone on breathing.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "demand",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -288510,6 +289740,22 @@
           "Id": "dead",
           "Speaker": "Mielarah",
           "Text": "{n}A bosun's whistle lies on the chart table between the cups: brass, dented, on a cord gone black with handling.{/n}\n\"His.\" {n}She does not touch it.{/n} \"It came up out of the sea tangled in the rigging, and none of the crew would take it. I have been carrying it about for weeks like a fool.\"\n\"I have kept accurate records for six years, Commander. Every name. The steward, my mate, the girl with the apples. Every one of them I put beside me without knowing what I was doing.\" {n}Now she picks the whistle up, and turns it over.{/n} \"Oskel is the only name on my list that somebody put there on purpose.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "demand",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "dead_cut",
+          "Speaker": "Mielarah",
+          "Text": "{n}A bosun's whistle lies on the chart table between the cups: brass, dented, on a cord gone black with handling.{/n}\n\"His.\" {n}She does not touch it.{/n} \"The crew took it off him before they put him over the side at Colyphyr, and then none of them would keep it. I have been carrying it about for weeks like a fool.\"\n\"I have kept accurate records for six years, Commander. Every name. The steward, my mate, the girl with the apples. Every one of them I put beside me without knowing what I was doing.\" {n}Now she picks the whistle up, and turns it over.{/n} \"Oskel is the only name on my list that somebody sent. Out along my own main yard, with a knife in his teeth, on an order given in two words.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -293142,6 +294388,58 @@
               "Next": "paint",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "mielarah.trickster.raid.cut_down"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Take the line.]",
+              "Next": "paint_cut",
+              "Set": [],
+              "Requires": [
+                "mielarah.trickster.raid.cut_down"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "paint_cut",
+          "Speaker": "Mielarah",
+          "Text": "{n}You pay out the line, and she goes down the stern a little at a time, and under the ship's name, in small white letters, she begins to paint another.{/n}\n\"O. S. K.\" {n}She talks while she paints, not to you exactly, in the rasp the rope left her.{/n} \"He could not read. I taught him his own name, the first year, with chalk on the capstan. He was so angry that it only had five letters. He'd thought it would be longer, a man that size.\"\n\"He liked sweet things. He stole sugar from the galley and pretended he hadn't. He sang, badly, in the heads, where he thought nobody could hear.\" {n}The brush moves.{/n} \"He stood at the rail at Vazglar and did nothing, and then he flew ashore for you, and went up to my yard and cut me down. He was nearest. Somebody sent him.\"",
+          "Choices": [
+            {
+              "Text": "\"I sent him.\"",
+              "Next": "you_cut",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Hold the line and say nothing.]",
+              "Next": "quiet",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "you_cut",
+          "Speaker": "Mielarah",
+          "Text": "\"You did.\" {n}She does not look up.{/n} \"I was at the end of a rope at the time, so I cannot say I let you. But I have asked you to hold this one, and I thought that was fair. You can let go any time, you know. The crew say I would survive the fall. They're probably right about that as well.\"\n{n}She finishes the last letter, and blows on it, which does nothing at all at this height, and then sits back in the chair and looks at it, swinging gently over the drop.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "done",
+              "Set": [],
+              "Requires": [],
               "Forbids": [],
               "Abort": false
             }
@@ -293263,6 +294561,58 @@
             {
               "Text": "[Take the line.]",
               "Next": "paint",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "mielarah.trickster.raid.cut_down"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Take the line.]",
+              "Next": "paint_cut",
+              "Set": [],
+              "Requires": [
+                "mielarah.trickster.raid.cut_down"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "paint_cut",
+          "Speaker": "Mielarah",
+          "Text": "{n}You pay out the line, and she goes down the stern a little at a time, and under the ship's name, in small white letters, she begins to paint another.{/n}\n\"O. S. K.\" {n}She talks while she paints, not to you exactly, in the rasp the rope left her.{/n} \"He could not read. I taught him his own name, the first year, with chalk on the capstan. He was so angry that it only had five letters. He'd thought it would be longer, a man that size.\"\n\"He liked sweet things. He stole sugar from the galley and pretended he hadn't. He sang, badly, in the heads, where he thought nobody could hear.\" {n}The brush moves.{/n} \"He stood at the rail at Vazglar and did nothing, and then he flew ashore for you, and went up to my yard and cut me down. He was nearest. Somebody sent him.\"",
+          "Choices": [
+            {
+              "Text": "\"I sent him.\"",
+              "Next": "you_cut",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Hold the line and say nothing.]",
+              "Next": "quiet",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "you_cut",
+          "Speaker": "Mielarah",
+          "Text": "\"You did.\" {n}She does not look up.{/n} \"I was at the end of a rope at the time, so I cannot say I let you. But I have asked you to hold this one, and I thought that was fair. You can let go any time, you know. The crew say I would survive the fall. They're probably right about that as well.\"\n{n}She finishes the last letter, and blows on it, which does nothing at all at this height, and then sits back in the chair and looks at it, swinging gently over the drop.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "done",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -295115,7 +296465,9 @@
               "Requires": [
                 "mielarah.trickster.cost.oskel"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "mielarah.trickster.raid.cut_down"
+              ],
               "Abort": false
             },
             {
@@ -295139,6 +296491,33 @@
                 "mielarah.trickster.cost.oskel",
                 "mielarah.trickster.cost.meant"
               ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "oskel_cut",
+              "Set": [],
+              "Requires": [
+                "mielarah.trickster.raid.cut_down",
+                "mielarah.trickster.cost.oskel"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "oskel_cut",
+          "Speaker": "Mielarah",
+          "Text": "{n}She turns back a few pages, into the Midnight Isles, and lays a finger beside one line without touching it. Oskel, bosun. And in the margin, where every other line says where somebody was standing, his says: on the main yard; sent up.{/n}\n\"Every other entry in this book says where they stood. His is the only one that says who sent him there.\" {n}She does not say your name. She does not need to.{/n} \"I wrote it with my own neck still purple. I thought about leaving the column empty, the way I leave it for a stranger whose name I never learned. That would not have been accurate.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "last_page",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -295411,7 +296790,9 @@
               "Requires": [
                 "mielarah.trickster.cost.oskel"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "mielarah.trickster.raid.cut_down"
+              ],
               "Abort": false
             },
             {
@@ -295435,6 +296816,33 @@
                 "mielarah.trickster.cost.oskel",
                 "mielarah.trickster.cost.meant"
               ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "oskel_cut",
+              "Set": [],
+              "Requires": [
+                "mielarah.trickster.raid.cut_down",
+                "mielarah.trickster.cost.oskel"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "oskel_cut",
+          "Speaker": "Mielarah",
+          "Text": "{n}She turns back a few pages, into the Midnight Isles, and lays a finger beside one line without touching it. Oskel, bosun. And in the margin, where every other line says where somebody was standing, his says: on the main yard; sent up.{/n}\n\"Every other entry in this book says where they stood. His is the only one that says who sent him there.\" {n}She does not say your name. She does not need to.{/n} \"I wrote it with my own neck still purple. I thought about leaving the column empty, the way I leave it for a stranger whose name I never learned. That would not have been accurate.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "last_page",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -315411,8 +316819,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -323050,6 +324458,37 @@
           ],
           "Requires": [
             "trickster.secret.mielarah_rope"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_Secret"
+        },
+        {
+          "Id": "secret.mielarah_yard",
+          "Section": "Secrets",
+          "Portrait": "Mielarah",
+          "Title": "The main yard",
+          "Text": "{n}Mielarah hanged at Vazglar because I had prepared nothing for it. Her bosun Oskel fetched me from the raid, and I sent him up to the main yard to cut her down, knowing her curse takes whoever stands nearest when trouble comes. It took him and left her breathing. She knows. My household does not, and eleven hangmen put off on a rock in the Ishiar could tell them. {g|RRT_SecretRisk}Risk: medium.{/g}{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Unknown to Seelah.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "trickster.secret.mielarah_yard.known.seelah"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Unknown to Irabeth.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "trickster.secret.mielarah_yard.known.irabeth"
+              ],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "trickster.secret.mielarah_yard"
           ],
           "Forbids": [],
           "AnyGroups": [],

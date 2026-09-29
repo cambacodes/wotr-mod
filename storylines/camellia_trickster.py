@@ -255,6 +255,12 @@ SCENES.append(scene(P + "killed.setup_hub", "Die convincingly", "Camellia", 3, J
         c("Continue", "game", requires=(GAME,)),
         c("[Draw your weapon]", native_next=KILL_NEXT, forbids=(GAME,), flags=(PRIMED,))),
     cam("game", '''"Two lies and a truth, then, one last time." {n}She draws her knife and holds it up to the light, as if to judge its colour.{/n} "You are going to kill me. I am going to let you. I have never been so pleased with anyone in my life. Guess which one I made up."''',
+        c("[Draw your weapon]", native_next=KILL_NEXT, flags=(PRIMED,)),
+        c('"The last one. You\'ve been more pleased with a new pair of gloves."', "guess_pleased"),
+        c('"The second. You\'re not going to let me. You\'re going to make me work for it."', "guess_let")),
+    cam("guess_pleased", '''{n}She laughs, delighted, and shakes her head.{/n} "Wrong. The gloves were lovely, but they never told me to die convincingly." {n}She turns the knife so the light runs down it.{/n} "The lie was the second. I'm not going to let you. I'm going to make you earn every inch, and look you in the eye while you do. Otherwise how would I know you meant it?"''',
+        c("[Draw your weapon]", native_next=KILL_NEXT, flags=(PRIMED,))),
+    cam("guess_let", '''{n}Her smile goes very still, the way it does when a reading comes out right.{/n} "Oh, well done. Nobody ever guesses that one. They think a woman who says she'll let them means it." {n}She sets her feet.{/n} "So. You know the lie, and I know you know it. That makes the rest of this honest, which is more than most endings are."''',
         c("[Draw your weapon]", native_next=KILL_NEXT, flags=(PRIMED,))),
     ], requires=("trickster",), forbids=(PRIMED, KILLED, DEAD), last=5, Relationship=REL, AnswerLists=[KILL_LIST],
     NativeReturnCue=KILL_RETURN, EntryMythic="PlayerIsTrickster", TricksterDevice=True,
@@ -282,6 +288,7 @@ SCENES.append(scene(P + "killed.setup_q1", "A message for the killer", "Anevia",
 
 
 # --- The late fallback (R2-2): no line at the kill, so the Commander says it to the corpse, now, and pays for the lid. ---
+# Chapters 3 and 5: a kill taken through the native verdict in Chapter 5 (FinalTruth) comes here on the same terms.
 
 SCENES.append(scene(P + "killed.late_curtain", "Wrong flowers", "Memory", 3, "", [
     *lead([("start", nar, '''{n}The crusade buried Camellia under a plain stone at the edge of the Drezen cemetery, with a wrong bunch of flowers: lilies, the white wedding kind. Tonight you stand over the stone with the sexton, a stooped man with a lantern, who wants forty gold to lift the lid and a hundred more to forget that he did.{/n}''', None),
@@ -301,8 +308,8 @@ SCENES.append(scene(P + "killed.late_curtain", "Wrong flowers", "Memory", 3, "",
         c("[Walk back to the citadel]", "walk")),
     nar("walk", '''{n}The sexton walks back with you as far as the cemetery gate, very fast, holding the lantern high. At the gate he stops, and says, not looking at you, that he has buried a great many people in this ground and that none of them ever laughed at him before, and he would like it very much if the Commander did not bring him any more work of that kind. Then he goes home, and, you learn later, does not come out again for three days.{/n}''',
         c("[Go home]")),
-    ], requires=("trickster", KILLED), forbids=(PRIMED, RET, DECLINED), last=3, Relationship=REL, Remote=True,
-    Chapters=[3], TricksterDevice=True, TricksterState="killed_by_commander"))
+    ], requires=("trickster", KILLED), forbids=(PRIMED, RET, DECLINED), last=5, Relationship=REL, Remote=True,
+    Chapters=[3, 5], TricksterDevice=True, TricksterState="killed_by_commander"))
 
 
 # --- The third night (primed): the scroll read over her coffin. The device's operation, on the page. -----------------
@@ -355,10 +362,10 @@ SCENES.append(scene(PERFORMANCE, "The veiled mourner", "Camellia", 3,
     cam("how_late", '''"You did it the wrong way round, of course. You lifted my lid, told my corpse it wasn't convincing, and then bled on my face and haggled with my spirits over my body like a fishwife. Your sexton heard me breathe. He hasn't been the same since. I sent him a jar of lilies."''',
         c("Continue", "why")),
     cam("why", '''"You're wondering why I came back. Everyone wonders that about the dead. Nobody ever asks us."
-{n}She turns her glass a quarter turn.{/n} "I came back because it was the first time in my life that somebody lied to me better than I could lie to them. You told me to die convincingly, and I died, and afterwards, the whole time I was lying in that box, I could hear you not believing it. Do you know how rare that is? To be disbelieved by someone who's right?"
-"I couldn't possibly stay dead after that. It would have been so rude."''',
+{n}She turns her glass a quarter turn.{/n} "My spirits gave me back because you paid them. That is the bargain, and it is dull. I came to this bar instead of going somewhere nobody would ever find me because it was the first time in my life that somebody lied to me better than I could lie to them. You told me to die convincingly, and I died, and afterwards, the whole time I was lying in that box, I could hear you not believing it. Do you know how rare that is? To be disbelieved by someone who's right?"
+"I couldn't possibly stay away after that. It would have been so rude."''',
         c("Continue", "primed")),
-    cam("primed", '''"You told me to die convincingly, and I did. The gravediggers complained about the weight. The chaplain wept, which I thought was a nice touch. Everyone was convinced, except you, of course."
+    cam("primed", '''"You told me to die convincingly, and I did. The gravediggers complained about the weight. The chaplain wept, which I thought was a nice touch. Everyone was convinced, except you, of course. And my spirits, who have had your blood and will be back for more of it."
 {n}She presses something into your palm under the lilies: a small, clean knife, still warm from her glove.{/n} "Keep it. Next time, use it properly. And do not look for me. I shall find you. A dead woman keeps very flexible hours."
 {n}Under the lace her mouth curves.{/n} "Oh, and do look a little sad when you leave. Fye is watching, and the widow from Nerosyan has been stood up by her gentleman. It would be a pity to spoil the story."''',
         c('[Keep the knife] "I\'ll keep it close. Closer than you\'d like."', "register", flags=(RET, KNOWS, STARTED)),
@@ -404,7 +411,7 @@ SCENES.append(scene(P + "killed.performance_letter", "A letter from Mireya", "Me
           flags=(RET, KNOWS, STARTED, MARKED, TERMS)),
         c("[Burn the letter]", flags=(DECLINED, CLOSED))),
     ], requires=("trickster.ever", PRIMED, KILLED, RAISED, PRESENCE_FAILED), forbids=(PERFORMANCE, RET, DECLINED), delay=96,
-    last=3, Relationship=REL, Remote=True, Chapters=[3], TricksterDevice=True, TricksterState="killed_by_commander"))
+    last=5, Relationship=REL, Remote=True, Chapters=[3, 5], TricksterDevice=True, TricksterState="killed_by_commander"))
 
 
 # --- Dead otherwise: the same spoken-death lie, told at the body. She names her price before she rises. ---------------
@@ -514,7 +521,7 @@ met(P + "returned.test", "A knife at the right height", '"Come to your quarters 
         c("[Put out the lamp.]", "morning")),
     nar("morning", '''{n}Grey light. The knife is on the pillow between you, point towards the door, where she put it some time in the night. She is awake, lying on her side, watching your face with her chin on her folded hands, the way she watched the funeral from the parapet.{/n}
 "You slept," {n}she says, wonderingly.{/n} "With me in the bed and my knife on the pillow. You slept like a child. Nobody has ever done that. They lie awake. I can always hear them lying awake."
-{n}She reaches out and touches your eyelid with one fingertip, very lightly, as if to make sure it is real.{/n} "I'm going to have to think about this for a very long time."''',
+{n}She reaches out and touches your eyelid with one fingertip, very lightly, as if to make sure it is real, and then lets it rest there, on the thin skin over your eye, the way she rests her thumb on a blade to feel its edge.{/n} "Next time I shall stay awake and watch you do it. I want to know how long a person can sleep beside a knife before it stops being bravery and becomes a habit. Habits are so much easier to break."''',
         c("[Close your eyes again]")),
     cam("no", '''{n}Her smile does not move, which is worse than if it had.{/n}
 "Without the knife? You want the woman and not the appetite. There is no such woman. There was, once, and her name was Mireya, and I made her up."''',

@@ -60,6 +60,8 @@ internal static class MielarahTricksterTests
         var landfallLetter = S(P + "colyphyr.letter");
         var rope = S(P + "raid.rope");
         var rock = S(P + "raid.rock");
+        var yardWind = S(P + "raid.wind");
+        var whisper = S(P + "raid.whisper");
         var word = S(P + "storm.word");
         var survivor = S(P + "storm.survivor");
         var charterLetter = S(P + "charter.letter");
@@ -192,7 +194,7 @@ internal static class MielarahTricksterTests
         check(lied.Has(P + "primed.minder") && lied.Has(P + "minder.lied") && lied.Has("trickster.secret.mielarah_oskel"),
             "Trk_Mielarah_Minder: the lie is not a Ledger secret.");
 
-        // Trk_Mielarah_Raid: the curse takes the man on the rope; without the bosun, canon fate stands.
+        // Trk_Mielarah_Raid: the curse takes the man on the rope; without the bosun, the late recovery at the yard (dearer).
         var hanged = World(story, 4, "trickster.ever", "mielarah.dead", P + "primed.pattern", P + "primed.minder", P + "minder.told");
         check(rope.DelayHours == 24 && Rules.Available(story, rope, hanged), "Trk_Mielarah_Raid: she does not come a day after the hanging.");
         check(Rules.Available(story, rope, World(story, 4, "trickster.ever", "mielarah.dead", "mielarah.dead.latched", P + "primed.minder", P + "minder.told")),
@@ -204,9 +206,56 @@ internal static class MielarahTricksterTests
                   .All(r => r.Has("trickster.secret.mielarah_oskel.known.mielarah")),
             "Trk_Mielarah_Raid: she does not work out the lie.");
         check(Choice(rope, "raid", 1).Alignment?.Direction == "Evil", "The unrepentant raid is not an evil answer.");
+        // Trk_Mielarah_LateAfterDeath: hanged with nobody at her elbow, the curse cannot finish her. Oskel brings word late;
+        // the Commander goes through the hangmen (a check, or a cleaver across the arm) and sends him up the yard. The curse
+        // takes him, unpaid and unchosen; she keeps her life and loses her voice. Dearer than the minder, never a dead end.
         var unprepared = World(story, 4, "trickster.ever", "mielarah.dead", "mielarah.dead.latched", P + "primed.pattern");
-        check(!Rules.Available(story, rope, unprepared) && !Reaches(Later(story, unprepared, 100, 5), "mielarah.committed"),
-            "Trk_Mielarah_LateAfterDeath: a hanging without the bosun at her elbow is defied.");
+        check(!Rules.Available(story, rope, unprepared) && Rules.Available(story, yardWind, unprepared) && yardWind.DelayHours == 24
+              && yardWind.TricksterDevice && yardWind.TricksterState == "raid" && Rules.IsRemote(yardWind) && yardWind.Chapters.SequenceEqual(new[] { 4 }),
+            "Trk_Mielarah_LateAfterDeath: a hanging without the bosun at her elbow has no way back.");
+        check(!Rules.Available(story, yardWind, hanged) && !Rules.Available(story, yardWind, World(story, 4, "trickster.ever", "mielarah.dead.latched", P + "primed.minder")),
+            "Trk_Mielarah_LateAfterDeath: the yard opens when the bosun was posted.");
+        var yardSent = After(yardWind, unprepared, "foot", 0).First();
+        check(yardSent.Has(P + "raid.cut_down") && yardSent.Has(P + "cost.oskel") && yardSent.Has(P + "cost.meant") && yardSent.Has(P + "cost.hung")
+              && yardSent.Has(P + "cost.noticed") && yardSent.Has("trickster.secret.mielarah_yard") && !yardSent.Has(P + "returned")
+              && Choice(yardWind, "foot", 0).Alignment?.Direction == "Evil",
+            "Trk_Mielarah_LateAfterDeath: the yard costs less than the minder, or is not a Ledger secret.");
+        check(Choice(yardWind, "moorings", 0).Check?.Failure == "knife" && Choice(yardWind, "moorings", 1).Check?.Failure == "knife"
+              && Choice(yardWind, "knife", 0).Set.Contains(P + "cost.hangman_knife") && Choice(yardWind, "moorings", 2).Next == "knife",
+            "Trk_Mielarah_LateAfterDeath: going through the hangmen carries no risk.");
+        check(Choice(yardWind, "why", 1).Next == "leave" && Choice(yardWind, "foot", 1).Next == "leave" && Choice(yardWind, "leave", 0).Set.Contains("mielarah.closed"),
+            "Trk_Mielarah_LateAfterDeath: the Commander cannot leave her on the yard.");
+        var cutDown = Later(story, yardSent, 49);
+        check(Rules.Available(story, whisper, cutDown) && Rules.IsRemote(whisper), "Trk_Mielarah_LateAfterDeath: she never comes back after the yard.");
+        var back = After(whisper, cutDown, "two_nights", 0).First();
+        check(back.Has(P + "returned") && back.Has("mielarah.started"), "Trk_Mielarah_LateAfterDeath: her return does not reopen the route.");
+        check(Rules.Available(story, rock, Later(story, back, 49)), "Trk_Mielarah_LateAfterDeath: the eleven on the rock never come up after the yard.");
+        check(Reaches(Later(story, back, 10, 5), "mielarah.committed"), "Trk_Mielarah_LateAfterDeath: no road to the commit after the yard.");
+        // 11 §2's other choice, at the foot of the mast: the Commander stands nearest and cuts the line; nobody else dies,
+        // and the Commander carries the Gravedragger's mark (a failed throw means the climb, same mark).
+        var nearest = Choice(yardWind, "foot", 2);
+        check(nearest.Check?.Skill == "SkillMobility" && nearest.Check.Success == "thrown" && nearest.Check.Failure == "climbed",
+            "Trk_Mielarah_LateAfterDeath: the Commander cannot stand nearest at the mast.");
+        var marked = After(yardWind, unprepared, "struck", 0).First();
+        check(marked.Has(P + "raid.cut_down") && marked.Has(P + "cost.zyphus_mark") && marked.Has(P + "cost.hung") && marked.Has(P + "cost.noticed")
+              && !marked.Has(P + "cost.oskel") && !marked.Has("trickster.secret.mielarah_yard"),
+            "Trk_Mielarah_LateAfterDeath: standing nearest spends a crewman, or leaves no mark.");
+        var markedBack = After(whisper, Later(story, marked, 49), "two_nights", 0).First();
+        check(markedBack.Has(P + "returned") && Reaches(Later(story, markedBack, 10, 5), "mielarah.committed"),
+            "Trk_Mielarah_LateAfterDeath: no road to the commit after standing nearest.");
+        // 11 §2's prepared alternative: the Commander at her elbow instead of Oskel; nearest at the hanging, marked, nobody else dies.
+        var self = After(minder, hired, "order", 3).First();
+        check(self.Has(P + "primed.self") && !self.Has(P + "primed.minder"), "Trk_Mielarah_Elbow: the Commander cannot take her elbow.");
+        var elbow = S(P + "raid.elbow");
+        var selfHanged = World(story, 4, "trickster.ever", "mielarah.dead", "mielarah.dead.latched", P + "primed.pattern", P + "primed.self");
+        check(Rules.Available(story, elbow, selfHanged) && !Rules.Available(story, yardWind, selfHanged) && !Rules.Available(story, rope, selfHanged)
+              && elbow.TricksterDevice && elbow.TricksterState == "raid", "Trk_Mielarah_Elbow: the Commander's watch is not its own payoff.");
+        var elbowBack = After(elbow, selfHanged, "north", 0).First();
+        check(elbowBack.Has(P + "returned") && elbowBack.Has(P + "cost.zyphus_mark") && !elbowBack.Has(P + "cost.oskel"),
+            "Trk_Mielarah_Elbow: standing nearest spends a crewman, or leaves no mark.");
+        check(Reaches(Later(story, elbowBack, 10, 5), "mielarah.committed"), "Trk_Mielarah_Elbow: no road to the commit.");
+        var refusedYard = World(story, 4, "trickster.ever", "mielarah.dead", "mielarah.dead.latched", P + "primed.pattern", P + "minder.told", P + "minder.refused");
+        check(Rules.Available(story, yardWind, refusedYard), "Trk_Mielarah_LateAfterDeath: a withdrawn order leaves her on the rope.");
         check(Rules.Available(story, rock, Later(story, alive, 49)), "Trk_Mielarah_Rock: the eleven on the rock never come up.");
         check(Reaches(Later(story, alive, 10, 5), "mielarah.committed"), "Trk_Mielarah_Raid: no road to the commit.");
 
@@ -288,7 +337,7 @@ internal static class MielarahTricksterTests
         }
 
         // Reactions and pages.
-        check(reactions.Length == 3 && reactions.All(r => r.Nodes.Count == 1)
+        check(reactions.Length == 4 && reactions.All(r => r.Nodes.Count == 1)
               && reactions.Where(r => r.Owner == "Lann").All(r => r.Forbids.Contains("lann.dead") && r.Forbids.Contains("lann.kicked_out"))
               && reactions.Where(r => r.Owner == "Woljif").All(r => r.Forbids.Contains("woljif.dead") && r.Forbids.Contains("woljif.kicked_out"))
               && reactions.Select(r => r.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Lann", "Woljif" }),

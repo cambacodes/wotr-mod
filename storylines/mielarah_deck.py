@@ -20,7 +20,7 @@ from storylines.mielarah_trickster import (
     CLOSED, COMMITTED, CONTACT, CHARTER, CORRECTED, DECLINED, DOCKED, DREZEN, FLOWN, FREED, HUB, HUB_FAILED, HUB_FB,
     KILLED, LANDFALL, LAUGHING, LIED, MEANT, MINDER, MORNING, NIGHT, NOTICED, OSKEL_DEAD, P, RECKONED, REL, RETURNED,
     SECRET_KNOWN, SHIP_LOST, TIGHTENED, TOLD, UNIT, KERZ, NOCTA, D, SAID_USE, CUT, DEAD_LATCH, LANN_GUARD, WOLJIF_GUARD,
-    STORM_OWNED, STORM_BLAMED, PAID)
+    STORM_OWNED, STORM_BLAMED, PAID, CUT_DOWN, ZYPHUS_MARK)
 
 SCENES = []
 
@@ -121,14 +121,23 @@ deck(D + "cargo", "Cargo for the market", '"You came through the Worldwound."', 
 deck(D + "nearest", "The nearest", '"I came to see the ship."', [
     nar("start", '''{n}You step through a door of salt light behind the tiefling's stall and fall over the step, exactly as promised, onto a deck a hundred fathoms above Drezen. The wind up here is clean and very cold. The city below is a map of itself.{/n}
 {n}Mielarah does not show you the ship. She takes you into her cabin, which is small and brass-bound and scrupulously neat, and shuts the door, and pours two cups of something, and sits down on the far side of her chart table.{/n}''',
-        c("Continue", "dead", requires=(OSKEL_DEAD,)),
+        c("Continue", "dead", requires=(OSKEL_DEAD,), forbids=(CUT_DOWN,)),
         c("Continue", "alive", requires=(TOLD,), forbids=(OSKEL_DEAD,)),
         c("Continue", "alive", requires=(MINDER, SECRET_KNOWN), forbids=(TOLD, OSKEL_DEAD)),
         c("Continue", "secret", requires=(MINDER,), forbids=(TOLD, SECRET_KNOWN, OSKEL_DEAD)),
-        c("Continue", "none", forbids=(MINDER,))),
+        c("Continue", "none", forbids=(MINDER, OSKEL_DEAD, CUT_DOWN, ZYPHUS_MARK)),
+        c("Continue", "dead_cut", requires=(CUT_DOWN, OSKEL_DEAD)),
+        c("Continue", "marked", requires=(ZYPHUS_MARK,), forbids=(OSKEL_DEAD,))),
+    mi("marked", '''{n}She does not pour for you at once. She looks at your shoulder, at the place under your coat where the grey spade is, as if she could see through the cloth.{/n}
+"I have kept accurate records for six years, Commander. Every name. The steward, my mate, the girl with the apples. Every one of them I put beside me without knowing what I was doing." {n}She pushes the cup across.{/n} "There is no name for that night. There is a line with nothing in it but a date and a place, and in the margin: the Commander, nearest; marked. I did not know how else to write it. Nobody has ever been nearest and gone on breathing."''',
+       c("Continue", "demand")),
     mi("dead", '''{n}A bosun's whistle lies on the chart table between the cups: brass, dented, on a cord gone black with handling.{/n}
 "His." {n}She does not touch it.{/n} "It came up out of the sea tangled in the rigging, and none of the crew would take it. I have been carrying it about for weeks like a fool."
 "I have kept accurate records for six years, Commander. Every name. The steward, my mate, the girl with the apples. Every one of them I put beside me without knowing what I was doing." {n}Now she picks the whistle up, and turns it over.{/n} "Oskel is the only name on my list that somebody put there on purpose."''',
+       c("Continue", "demand")),
+    mi("dead_cut", '''{n}A bosun's whistle lies on the chart table between the cups: brass, dented, on a cord gone black with handling.{/n}
+"His." {n}She does not touch it.{/n} "The crew took it off him before they put him over the side at Colyphyr, and then none of them would keep it. I have been carrying it about for weeks like a fool."
+"I have kept accurate records for six years, Commander. Every name. The steward, my mate, the girl with the apples. Every one of them I put beside me without knowing what I was doing." {n}Now she picks the whistle up, and turns it over.{/n} "Oskel is the only name on my list that somebody sent. Out along my own main yard, with a knife in his teeth, on an order given in two words."''',
        c("Continue", "demand")),
     mi("alive", '''"Oskel is on deck, splicing a line, two dozen strides from me. That is where he stays now. I made it an order." {n}She turns her cup by the handle.{/n}
 "I have kept accurate records for six years, Commander. Every name. The steward, my mate, the girl with the apples. Every one of them I put beside me without knowing what I was doing, and I have hated myself for all of them."
@@ -591,7 +600,16 @@ deck(D + "oskel", "What he was for", '"Oskel wants a word?"', [
 deck(D + "stern", "A name on the stern", '"You asked for a steady pair of hands?"', [
     nar("start", '''{n}She did. She is sitting in a bosun's chair slung over Starcatcher's stern, a hundred fathoms above Drezen, with a paint pot hooked to the rope beside her and a brush in her hand, and she wants somebody at the rail to pay out the line and not drop her.{/n}
 {n}"The crew won't do it," she calls up, over the wind. "They say it's bad luck to paint a dead man's name. They're sailors of the Midnight Isles. They say everything is bad luck. They are usually right."{/n}''',
-        c("[Take the line.]", "paint")),
+        c("[Take the line.]", "paint", forbids=(CUT_DOWN,)),
+        c("[Take the line.]", "paint_cut", requires=(CUT_DOWN,))),
+    mi("paint_cut", '''{n}You pay out the line, and she goes down the stern a little at a time, and under the ship's name, in small white letters, she begins to paint another.{/n}
+"O. S. K." {n}She talks while she paints, not to you exactly, in the rasp the rope left her.{/n} "He could not read. I taught him his own name, the first year, with chalk on the capstan. He was so angry that it only had five letters. He'd thought it would be longer, a man that size."
+"He liked sweet things. He stole sugar from the galley and pretended he hadn't. He sang, badly, in the heads, where he thought nobody could hear." {n}The brush moves.{/n} "He stood at the rail at Vazglar and did nothing, and then he flew ashore for you, and went up to my yard and cut me down. He was nearest. Somebody sent him."''',
+       c('"I sent him."', "you_cut"),
+       c("[Hold the line and say nothing.]", "quiet")),
+    mi("you_cut", '''"You did." {n}She does not look up.{/n} "I was at the end of a rope at the time, so I cannot say I let you. But I have asked you to hold this one, and I thought that was fair. You can let go any time, you know. The crew say I would survive the fall. They're probably right about that as well."
+{n}She finishes the last letter, and blows on it, which does nothing at all at this height, and then sits back in the chair and looks at it, swinging gently over the drop.{/n}''',
+       c("Continue", "done")),
     mi("paint", '''{n}You pay out the line, and she goes down the stern a little at a time, and under the ship's name, in small white letters, she begins to paint another.{/n}
 "O. S. K." {n}She talks while she paints, not to you exactly.{/n} "He could not read. I taught him his own name, the first year, with chalk on the capstan. He was so angry that it only had five letters. He'd thought it would be longer, a man that size."
 "He liked sweet things. He stole sugar from the galley and pretended he hadn't. He sang, badly, in the heads, where he thought nobody could hear." {n}The brush moves.{/n} "He held my wheel a whole minute in a hurricane once. Or he hauled a noose. It depends which world you're standing in. In both of them he was nearest, and in both of them somebody put him there."''',
@@ -794,9 +812,13 @@ deck(D + "names", "Accurate records", '"You wrote his name down. The boy under t
     mi("last", '''{n}The newest entry is darker than the rest, the ink not yet gone matte. Aldo Venn, mason's apprentice. Drezen, the market square. A scaffold. He asked to carry my rope. And in the margin, in the new column: three strides; he stepped in.{/n}
 "He stepped in." {n}She reads it aloud, flatly, as if checking a figure against an instrument she does not trust.{/n} "Three strides was where I was keeping everyone. I had drawn the line on the cobbles in my head, and I kept it, and a boy who wanted to be kind to a stranger walked over it."
 "That is what the column cannot hold, Commander. I can write down where they stood. I cannot write down why they came closer. The steward came closer because I had asked for tea. Aldo came closer because he was fourteen."''',
-       c("Continue", "oskel", requires=(OSKEL_DEAD,)),
+       c("Continue", "oskel", requires=(OSKEL_DEAD,), forbids=(CUT_DOWN,)),
        c("Continue", "space", requires=(MEANT,), forbids=(OSKEL_DEAD,)),
-       c("Continue", "blank", forbids=(OSKEL_DEAD, MEANT))),
+       c("Continue", "blank", forbids=(OSKEL_DEAD, MEANT)),
+       c("Continue", "oskel_cut", requires=(CUT_DOWN, OSKEL_DEAD))),
+    mi("oskel_cut", '''{n}She turns back a few pages, into the Midnight Isles, and lays a finger beside one line without touching it. Oskel, bosun. And in the margin, where every other line says where somebody was standing, his says: on the main yard; sent up.{/n}
+"Every other entry in this book says where they stood. His is the only one that says who sent him there." {n}She does not say your name. She does not need to.{/n} "I wrote it with my own neck still purple. I thought about leaving the column empty, the way I leave it for a stranger whose name I never learned. That would not have been accurate."''',
+       c("Continue", "last_page")),
     mi("oskel", '''{n}She turns back a few pages, into the Midnight Isles, and lays a finger beside one line without touching it. Oskel, bosun. And in the margin, where every other line says where somebody was standing, his says: at my elbow; posted there.{/n}
 "Every other entry in this book says where they stood. His is the only one that says who put him there." {n}She does not say your name. She does not need to.{/n} "I wrote it the night after. I thought about leaving the column empty, the way I leave it for a stranger whose name I never learned. That would not have been accurate."''',
        c("Continue", "last_page")),
