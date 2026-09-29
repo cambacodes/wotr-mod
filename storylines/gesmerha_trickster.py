@@ -180,7 +180,7 @@ in_yard(P + "returned.yard", "The smith's yard", '"Gesmerha."', [
 NIGHT = '''{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}
 "Two things in this yard I have cut without eyes. The original I have not touched yet. Your hands stayed on the wood with the mallet coming down; let them stay at your sides a little longer. I am reading."
 {n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. She finds the laces at your throat by feel, undoes them the way she strips bark, and lays her palm flat over your heart to count it.{/n}
-"Fast. Good. I have wanted this since your step first came through that gate, and I will not be the only one who wanted it."
+"Fast. Good. I have wanted this since your hands stayed where I put them with my mallet coming down. I was angry about it for a week. I will not be the only one who wanted it."
 {n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. Her hands go on reading, lower and surer. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}'''
 MORNING = '''{n}The forge is still banked when you wake, and there is sawdust in your hair and a curl of pine down your shirt. Gesmerha is already at the trestles, bare-armed in the cold, and on a new block in front of her a face is coming out of the wood: one you have seen in mirrors.{/n}
 "My hands remembered. Nobody paid them for last night, so what they make of it is mine. I will not sell it." {n}The corner of her mouth moves; she does not stop cutting.{/n} "Go and fight your war, stranger. Walk loudly when you come back. I like to hear it from the gate."'''
@@ -201,7 +201,7 @@ in_yard(P + "returned.bench", "What comes after", '"You said to ask you when it 
         c('[Stay at the bench] "Then let me be what comes after."', "terms", forbids=(FLINCHED,)),
         c('[Stay at the bench] "Then let me be what comes after."', "flinch", requires=(FLINCHED,)),
         c('"Finish your life without me, carver. You\'ve earned it."', flags=(CLOSED,))),
-    g("terms", '''"Then listen to what my hands decided in the cold water, because they are mine again, and that means they can refuse. I will not be paid for this. Not in coin, and not in jokes. If you ever buy me again, stranger, I will know it by your step before you open your mouth, and I will not be here when you do."''',
+    g("terms", '''"Then listen to what my hands decided in the cold water, because they are mine again, and that means they can refuse, or choose. They chose you. I did not expect it, and I do not entirely approve of it, and they did not ask me. But I will not be paid for this. Not in coin, and not in jokes. If you ever buy me again, stranger, I will know it by your step before you open your mouth, and I will not be here when you do."''',
         c('"No more purses. Not for you. I swear it."', "night", flags=(COMMITTED,)),
         c('"I can\'t swear that. Buying things is what I do."', "postpone")),
     g("postpone", '''"Then you are honest, which is worse. Go. Come back when you have thought about what you would have to stop being. The bench will still be here. So will I, probably."''',
