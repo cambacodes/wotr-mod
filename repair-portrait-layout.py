@@ -7,7 +7,7 @@ from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).parent
-MOD = Path(r"D:\SteamLibrary\steamapps\common\Pathfinder Second Adventure\Mods\CustomNpcPortraits")
+MOD = Path(r"C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Mods\CustomNpcPortraits")
 USER = Path.home() / "AppData/LocalLow/Owlcat Games/Pathfinder Wrath Of The Righteous"
 SIZES = {"Fulllength.png": (692, 1024), "Medium.png": (330, 432), "Small.png": (185, 242)}
 MISPLACED_NPCS = ("Horgus Gwerm", "Hulrun", "Queen Galfrey", "Storyteller", "Terendelev", "Staunton Vhane")

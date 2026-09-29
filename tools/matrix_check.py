@@ -235,7 +235,7 @@ def main():
     ap.add_argument("--allow-todo", action="store_true", help="report open TODO(B) markers without failing on them")
     ap.add_argument("--quiet", action="store_true", help="summary table only")
     ap.add_argument("--rules", action="store_true", help="runtime-rule mode (validate_rules); exit 1 on any finding")
-    ap.add_argument("--game", default=r"D:\SteamLibrary\steamapps\common\Pathfinder Second Adventure",
+    ap.add_argument("--game", default=r"C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure",
                     help="game folder whose blueprints.zip the --rules checks read")
     a = ap.parse_args()
     try:   # matrix text carries arrows and em dashes; never crash a Windows console on them

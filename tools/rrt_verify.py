@@ -23,7 +23,7 @@ HERE = Path(__file__).resolve().parent
 # The mod root is, in order: $RRT_ROOT, the repository this script lives in (tools/..), or the default checkout.
 MOD = Path(os.environ["RRT_ROOT"]) if os.environ.get("RRT_ROOT") else (
     HERE.parent if (HERE.parent / "expansion.py").exists() else Path(r"C:\Users\Z\Documents\Projects\RanRomanceTirabade"))
-GAME = Path(os.environ.get("RRT_GAME_DIR") or r"D:\SteamLibrary\steamapps\common\Pathfinder Second Adventure")
+GAME = Path(os.environ.get("RRT_GAME_DIR") or r"C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure")
 SCRATCH = HERE / "scratch"
 
 MYTHIC = ["trickster", "angel", "demon", "lich", "aeon", "azata", "devil", "dragon", "legend", "swarm"]

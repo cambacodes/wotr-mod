@@ -20,7 +20,7 @@ def main():
     parser.add_argument("--output", type=Path, default=ROOT / "development/game-bindings-report.json")
     parser.add_argument("--parent-bindings", help="Reviewed parent-mod evidence manifest(s), pinned to the installed assembly; "
                         "several paths may be joined with os.pathsep, as in RRT_PARENT_BINDINGS")
-    parser.add_argument("--game", type=Path, default=Path(r"D:\SteamLibrary\steamapps\common\Pathfinder Second Adventure"))
+    parser.add_argument("--game", type=Path, default=Path(r"C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure"))
     args = parser.parse_args()
     dotnet = Path(os.environ["LOCALAPPDATA"]) / "RanRomanceTools/dotnet/dotnet.exe"
     runner = ROOT / "tests/bin/Release/net8.0/RulesTests.dll"

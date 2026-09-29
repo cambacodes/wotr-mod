@@ -19,7 +19,7 @@ def sha(path):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--game", type=Path, default=Path("D:/SteamLibrary/steamapps/common/Pathfinder Second Adventure"))
+    parser.add_argument("--game", type=Path, default=Path("C:/Program Files (x86)/Steam/steamapps/common/Pathfinder Second Adventure"))
     parser.add_argument("--output", type=Path, default=Path("reference/canon-review/aivu-capital-contact-records.json"))
     args = parser.parse_args()
     game = args.game

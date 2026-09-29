@@ -16,7 +16,7 @@ $env:RRT_PARENT_BINDINGS = @(
 ) -join [IO.Path]::PathSeparator
 & "$env:LOCALAPPDATA/RanRomanceTools/dotnet/dotnet.exe" build src/Tirabade.csproj -c Release --nologo -v quiet
 & "$env:LOCALAPPDATA/RanRomanceTools/dotnet/dotnet.exe" build managed-tests/ManagedBuildTests.csproj -c Release --nologo -v quiet
-& ./managed-tests/bin/Release/net48/ManagedBuildTests.exe 'D:/SteamLibrary/steamapps/common/Pathfinder Second Adventure' development/Story.json
+& ./managed-tests/bin/Release/net48/ManagedBuildTests.exe 'C:/Program Files (x86)/Steam/steamapps/common/Pathfinder Second Adventure' development/Story.json
 ```
 
 For another installation, pass `-p:GameDir=<game directory>/` to the build and the same game directory to the executable.

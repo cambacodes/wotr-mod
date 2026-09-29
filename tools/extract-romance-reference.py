@@ -20,7 +20,7 @@ GROUPS = {
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--game", type=Path, default=Path(r"D:\SteamLibrary\steamapps\common\Pathfinder Second Adventure"))
+    parser.add_argument("--game", type=Path, default=Path(r"C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure"))
     args = parser.parse_args()
     destination = ROOT / "reference/expansion"
     destination.mkdir(parents=True, exist_ok=True)

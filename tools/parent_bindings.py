@@ -4,13 +4,30 @@ This is a source-evidence manifest, not execution of the parent mod's initialize
 """
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 
 
+# Manifests pin the absolute path the evidence was reviewed at. If the game has since moved, re-root that path
+# onto the current game folder; the SHA-256 check below still requires the identical assembly.
+OLD_GAME_ROOTS = (r"D:\SteamLibrary\steamapps\common\Pathfinder Second Adventure",)
+GAME_DIR = os.environ.get("RRT_GAME_DIR") or r"C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure"
+
+
+def _resolve_assembly(assembly):
+    if assembly.exists():
+        return assembly
+    text = str(assembly)
+    for root in OLD_GAME_ROOTS:
+        if text.lower().startswith(root.lower() + "\\"):
+            return Path(GAME_DIR) / text[len(root) + 1:]
+    return assembly
+
+
 def load_parent_bindings(path):
     manifest = json.loads(Path(path).read_text(encoding="utf-8"))
-    assembly = Path(manifest["AssemblyPath"])
+    assembly = _resolve_assembly(Path(manifest["AssemblyPath"]))
     actual = hashlib.sha256(assembly.read_bytes()).hexdigest()
     if actual.lower() != manifest["AssemblySha256"].lower():
         raise ValueError("Parent assembly differs from reviewed binding evidence")

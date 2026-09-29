@@ -12,7 +12,7 @@ using RRT.TestHarness;
 internal static class Program
 {
     static int failures;
-    static string gameDir = @"D:\SteamLibrary\steamapps\common\Pathfinder Second Adventure";
+    static string gameDir = @"C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure";
 
     static int Main(string[] args)
     {

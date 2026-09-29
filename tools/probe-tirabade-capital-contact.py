@@ -8,7 +8,7 @@ import UnityPy
 
 
 def main():
-    bundle = Path("D:/SteamLibrary/steamapps/common/Pathfinder Second Adventure/Bundles/drezencapital_default_mechanics.scenes")
+    bundle = Path("C:/Program Files (x86)/Steam/steamapps/common/Pathfinder Second Adventure/Bundles/drezencapital_default_mechanics.scenes")
     env = UnityPy.load(str(bundle))
     objects = list(env.objects)
     result = {"bundle": str(bundle), "sha256": hashlib.sha256(bundle.read_bytes()).hexdigest().upper(), "objects": []}

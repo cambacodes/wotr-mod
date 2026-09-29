@@ -8,7 +8,7 @@ import subprocess
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--game", type=Path, default=Path("D:/SteamLibrary/steamapps/common/Pathfinder Second Adventure"))
+    parser.add_argument("--game", type=Path, default=Path("C:/Program Files (x86)/Steam/steamapps/common/Pathfinder Second Adventure"))
     args = parser.parse_args()
     assembly = args.game / "Wrath_Data/Managed/Assembly-CSharp.dll"
     print("Assembly SHA256", hashlib.sha256(assembly.read_bytes()).hexdigest().upper())

@@ -32,7 +32,7 @@ def digest(raw):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--game", type=Path, default=Path("D:/SteamLibrary/steamapps/common/Pathfinder Second Adventure"))
+    parser.add_argument("--game", type=Path, default=Path("C:/Program Files (x86)/Steam/steamapps/common/Pathfinder Second Adventure"))
     parser.add_argument("--output", type=Path, default=Path("reference/art-review/roster-native"))
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)

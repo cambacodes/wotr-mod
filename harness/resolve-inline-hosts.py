@@ -169,7 +169,7 @@ def resolve_host(gr, dialog, owners):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--game", type=Path, default=Path(r"D:\SteamLibrary\steamapps\common\Pathfinder Second Adventure"))
+    ap.add_argument("--game", type=Path, default=Path(r"C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure"))
     ap.add_argument("--story", type=Path, default=REPO / "development" / "Story.json")
     ap.add_argument("--out", type=Path, default=REPO / "harness" / "inline-hosts.json")
     args = ap.parse_args()

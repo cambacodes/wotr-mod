@@ -31,7 +31,7 @@
 #>
 [CmdletBinding()]
 param(
-    [string]$GameDir = 'D:\SteamLibrary\steamapps\common\Pathfinder Second Adventure',
+    [string]$GameDir = 'C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure',
     [string[]]$Saves = @(),
     [switch]$Force,
     [switch]$DryRun,

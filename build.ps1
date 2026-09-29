@@ -1,4 +1,4 @@
-param([string]$GameDir = 'D:\SteamLibrary\steamapps\common\Pathfinder Second Adventure')
+param([string]$GameDir = 'C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure')
 $ErrorActionPreference = 'Stop'
 Push-Location $PSScriptRoot
 try {

@@ -1,5 +1,5 @@
 param(
-    [string]$GameDir = 'D:\SteamLibrary\steamapps\common\Pathfinder Second Adventure',
+    [string]$GameDir = 'C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure',
     [string]$UserData = (Join-Path $env:USERPROFILE 'AppData/LocalLow/Owlcat Games/Pathfinder Wrath Of The Righteous')
 )
 $ErrorActionPreference = 'Stop'
