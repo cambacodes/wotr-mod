@@ -118,6 +118,7 @@ internal static class ArueshalaeTricksterTests
         check(starving.TricksterDevice && starving.TricksterState == "dead" && starving.Recovery == "arueshalae" && Rules.IsRemote(starving)
               && Ch(starving, "start", 0).Mythic == "PlayerIsTrickster" && Ch(starving, "start", 0).Requires.Contains("trickster.religion_tier1")
               && Ch(starving, "start", 2).Mythic == "PlayerIsTrickster" && Ch(starving, "start", 2).Forbids.Contains("trickster.religion_tier1")
+              && Ch(starving, "wake", 0).Check?.Skill == "SkillLoreReligion" && Ch(starving, "rite_fails", 0).Abort
               && Ch(starving, "plea", 0).Revive == "arueshalae"
               && Ch(starving, "plea", 1).Revive == "arueshalae" && Ch(starving, "plea", 0).Next == null && Ch(starving, "plea", 1).Next == null,
             "'Starving, not dead' is not a terminal Trickster recovery.");
