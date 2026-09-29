@@ -63,6 +63,7 @@ from storylines import delamere_trickster, delamere_woods, delamere_fire
 from storylines import kaylessa_trickster, kaylessa_wasps, kaylessa_clearing
 from storylines import mielarah_trickster, mielarah_deck
 from storylines import nidalynn_trickster, nidalynn_kiln, nidalynn_salt
+from storylines import shamira_trickster, shamira_mind, shamira_dream
 from storylines import jannah_trickster, jannah_circle
 from storylines import rrt_ui
 from storylines import rrt_portraits
@@ -458,6 +459,17 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(nidalynn_kiln.SCENES))
     payload["Scenes"].extend(copy.deepcopy(nidalynn_salt.SCENES))
     nidalynn_trickster.integrate(payload)
+    # Shamira: a new relationship (shamira.md hooks; 11-ROSTER-PLAN-2 §2 "Dreams for a body", revised 2026-09-29): at the
+    # compulsory kill she flees into the one mind she was let into, the Commander's; a shell stolen in the Fleshmarkets, woken
+    # on the Commander's dreams (shamira_mind); the game lost on purpose in her Harem (shamira_dream). Nothing is spawned for
+    # her (no Shamira unit has a dialog), and nothing touches Areelu's flask, which is Last Call's.
+    payload["Relationships"]["shamira"] = copy.deepcopy(shamira_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(shamira_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(shamira_mind.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(shamira_dream.SCENES))
+    shamira_trickster.integrate(payload)
+    shamira_mind.integrate(payload)
+    shamira_dream.integrate(payload)
     # Jannah: a new relationship (jannah.md; 11-ROSTER-PLAN-2 §2): the Aldori forms at the Molten Scar cage in the killed
     # worlds, blood and tale in her cell in the living ones; the courtship at her cell (jannah_circle) and her challenge.
     payload["Relationships"]["jannah"] = copy.deepcopy(jannah_trickster.RELATIONSHIP)

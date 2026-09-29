@@ -504,6 +504,20 @@ partner("nidalynn", "nidalynn", "nidalynn.committed", "nidalynn.closed", "Of Her
         (PLAIN_CHOICE, (), (), ())),
     ledger=("Nidalynn: salt, eaten", "I ate a silver dragon's salt at a lime-kiln. Among the Windstep that makes me of her fire until the salt is out of my blood, and she says it never comes out. The debt runs both ways. So she says."))
 
+SH = "shamira.trickster."
+partner("shamira", "shamira", "shamira.committed", "shamira.closed", "The Ardent Dream",
+    '''Shamira the Ardent Dream did not come to Threshold. She sat her throne in the Harem of Ardent Dream with the court sent away and the fountains running, and held very still, with the night's coal of the Commander burning in her chest, and listened. Through it she could feel the Commander walk into the rift the way you feel a draught come under a door.''',
+    (
+        page_p('''At the rift the Commander thought of her, hard, the way the Commander had once thought of carpets. A long way off, on an empty throne, a woman who had been sitting very still stood up. For the space of one breath the Commander, awake, at the edge of the world, was not alone behind {mf|his|her} own eyes. Then {mf|he|she} was. It was enough.''', requires=(called("shamira"),)),
+        page_p('''For three days after Threshold she did not come into the Commander's sleep, because there was no sleep to come into, and the coal in her went out, and she sat on her throne with her fingertips going white and would not let anyone light a fire. On the third night there was a dream again: the war tables, the lamps, the same argument about the same river crossing. She walked into it without knocking and sat down on a map chest and wept, which nobody who knew her would have believed, and the Commander, in the dream, pretended not to notice.''', requires=(H2,)),
+        page_p('''She came to the Commander's funeral in a face nobody knew, and stood at the back, and laughed, very quietly, at the moment the priests said the Commander was at peace. She had been in the Commander's sleep the night before. It had been anything but peaceful.''', requires=(ON_RECORD,)),
+    ), declined=None,
+    deal=[[SH + "cost.never_alone"]],
+    call=call('''[Think of her] "Shamira. Stand up."''',
+        '''{n}You think of her the way she taught you to: loudly, in the front of your head, where anyone could see. It goes out of you across the whole of the Abyss, a thought with nobody's voice, and somewhere on an empty throne a woman who has been sitting very still hears it and lifts her head.{/n}''',
+        (PLAIN_CHOICE, (), (), ()),
+        ("[Keep your head to yourself, this once.]", None, (), ())),
+    ledger=("Shamira: company, forever", "She lives on my dreams, and so she lives in them. I will never dream alone again. When I want a night to myself, I am to go and ask her for it to her face. It is the only debt in this book I have no wish to see settled."))
 JA = "jannah.trickster."
 partner("jannah", "jannah", "jannah.committed", "jannah.closed", "The Front Rank",
     '''Jannah Aldori stood the last night of the war in the front rank, where she could see what was coming, because she had asked to. She did not run. When the rift closed, or failed to, she walked back into Drezen with her sword on her shoulder, found the practice yard empty, chalked a circle on the sand in one stroke, and sat down in the middle of it to wait, eyes open, the way the forms teach you to wait for a victor who has not yet quit the field.''',
