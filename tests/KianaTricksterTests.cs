@@ -204,7 +204,8 @@ internal static class KianaTricksterTests
         var king = World(story, 5, "trickster", "trickster.ever", "chapter_later", "fool_king.crowned");
         check(Rules.Available(story, postponed, king) && !Any(king, gem, collar, waited), "Trk_Kiana_NoWedding_King: device unavailable.");
         var desk = postponed.Nodes[0].Choices;
-        check(desk[0].Crusade?.Amount == -300 && desk[0].Mythic == "PlayerIsTrickster" && desk[1].Crusade == null, "The King's fee is wrong.");
+        check(desk[0].Crusade?.Amount == -300 && desk[0].Mythic == "PlayerIsTrickster" && desk[1].Crusade?.Amount == -100 && desk[2].Crusade?.Amount == -100,
+            "The King's fee or the order's forfeited deposits are wrong.");
         var kingOut = Program.Walk(postponed, king).Where(r => r.Has(postponed.Id)).ToList();
         check(kingOut.Any(r => r.Has("kiana.trickster.decree_king") && r.Has("kiana.trickster.cost.betrothed") && r.Has("kiana.history_betrothed")),
             "Trk_Kiana_NoWedding_King failed.");

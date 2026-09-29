@@ -209,9 +209,9 @@ letter("kiana.trickster.no_wedding.postponed", "Postponed", [
         "king", mythic="Trickster", alignment=("Chaotic", 1), crusade=("Finances", -300),
         requires=("fool_king.crowned",), forbids=("fool_king.gone",)),
       c('[Order it at the war council: HELD] "Every licence pledged with a Sunhammer ring is held until his shop has been searched."',
-        "order", mythic="Trickster", alignment=("Chaotic", 1), forbids=("fool_king.crowned",)),
+        "order", mythic="Trickster", alignment=("Chaotic", 1), crusade=("Finances", -100), forbids=("fool_king.crowned",)),
       c('[Order it at the war council: HELD] "Every licence pledged with a Sunhammer ring is held until his shop has been searched."',
-        "order", mythic="Trickster", alignment=("Chaotic", 1), requires=("fool_king.crowned", "fool_king.gone")),
+        "order", mythic="Trickster", alignment=("Chaotic", 1), crusade=("Finances", -100), requires=("fool_king.crowned", "fool_king.gone")),
       c('[Sign it] "Approved. Tell them congratulations."', "signed")),
     nar("signed", '''{n}You sign it, and stamp it, and the clerk takes it away with the others. A week later there is a wedding in Drezen: vampire costumes, red wine for blood, a priestess of Abadar so that nobody's god is offended. You are invited. The ring is very fine.{/n}''',
       c('[Send your congratulations.]', flags=(SIGNED, "kiana.closed"))),
@@ -221,6 +221,7 @@ letter("kiana.trickster.no_wedding.postponed", "Postponed", [
       c("Continue", "complaint_king")),
     nar("order", '''{n}You read it into the minutes of the war council, in front of every officer at the table: *Standing order. Every marriage licence pledged with a ring from the Sunhammer shop is held until the shop and its stock have been searched.* The officers look at one another. Three licences, a jeweller nobody has complained about, and no evidence you are willing to name. The council backs it anyway, because it is the Commander's word and it costs the crusade nothing, and because nobody at that table wants to be the one who argued for a jeweller and was wrong.{/n}
 {n}By evening the other two couples are outside the chancery, still in their good clothes. A baker and a crossbowman ask you to your face what their ring has done. You have no answer for them that isn't a hunch.{/n}
+{n}The search takes four days, turns the shop on the square inside out, and finds nothing but flawless stones and a very offended jeweller's boy. The council minutes it without comment. The crusade pays both couples' forfeited deposits out of its own purse, and every officer at the table remembers whose word cost it.{/n}
 {n}The clerk stamps the licence POSTPONED and sands it. Nobody in Drezen argues with a stamp that has the war council behind it.{/n}''',
       c("Continue", "complaint_order")),
     k("complaint_king", '''{n}Two days later a letter comes, written so hard that the nib has gone through the paper twice.{/n}

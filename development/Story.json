@@ -159835,6 +159835,10 @@
               "Alignment": {
                 "Direction": "Chaotic",
                 "Value": 1
+              },
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -100
               }
             },
             {
@@ -159851,6 +159855,10 @@
               "Alignment": {
                 "Direction": "Chaotic",
                 "Value": 1
+              },
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -100
               }
             },
             {
@@ -159902,7 +159910,7 @@
         {
           "Id": "order",
           "Speaker": "Narrator",
-          "Text": "{n}You read it into the minutes of the war council, in front of every officer at the table: *Standing order. Every marriage licence pledged with a ring from the Sunhammer shop is held until the shop and its stock have been searched.* The officers look at one another. Three licences, a jeweller nobody has complained about, and no evidence you are willing to name. The council backs it anyway, because it is the Commander's word and it costs the crusade nothing, and because nobody at that table wants to be the one who argued for a jeweller and was wrong.{/n}\n{n}By evening the other two couples are outside the chancery, still in their good clothes. A baker and a crossbowman ask you to your face what their ring has done. You have no answer for them that isn't a hunch.{/n}\n{n}The clerk stamps the licence POSTPONED and sands it. Nobody in Drezen argues with a stamp that has the war council behind it.{/n}",
+          "Text": "{n}You read it into the minutes of the war council, in front of every officer at the table: *Standing order. Every marriage licence pledged with a ring from the Sunhammer shop is held until the shop and its stock have been searched.* The officers look at one another. Three licences, a jeweller nobody has complained about, and no evidence you are willing to name. The council backs it anyway, because it is the Commander's word and it costs the crusade nothing, and because nobody at that table wants to be the one who argued for a jeweller and was wrong.{/n}\n{n}By evening the other two couples are outside the chancery, still in their good clothes. A baker and a crossbowman ask you to your face what their ring has done. You have no answer for them that isn't a hunch.{/n}\n{n}The search takes four days, turns the shop on the square inside out, and finds nothing but flawless stones and a very offended jeweller's boy. The council minutes it without comment. The crusade pays both couples' forfeited deposits out of its own purse, and every officer at the table remembers whose word cost it.{/n}\n{n}The clerk stamps the licence POSTPONED and sands it. Nobody in Drezen argues with a stamp that has the war council behind it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
