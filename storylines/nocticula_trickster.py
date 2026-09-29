@@ -150,7 +150,7 @@ threshold("nocticula.trickster.defeated.chair", "Beside me", '"One more question
         c('[Joke] "Because you laughed. Under the projection. I heard it."', "verdict_joke")),
     nt("verdict_true", '''"Liar." {n}She tastes the word, and seems to like it.{/n} "You will ask me for everything, clown, and I will enjoy refusing most of it. Slowly. In front of people."''', *VERDICT),
     nt("verdict_joke", '''"I did not laugh."
-{n}The projection's mouth has not moved. Somewhere far below, something does, and the floor of Threshold remembers it for a long moment afterwards.{/n}''', *VERDICT),
+{n}The projection's mouth has not moved. Somewhere far below, something does, and the floor of Threshold goes on remembering it afterwards, the way a bell remembers being struck.{/n}''', *VERDICT),
     nt("reason_paid", '''{n}She considers you the way she considered her price: from the end backwards.{/n}
 "You agreed to a favour you cannot see the bottom of, and you did not haggle. I have had kings refuse me less, and devils read the terms twice. You killed me, clown, and then you looked at the floor instead of at the corpse. Nobody looks at the floor. I have been wondering since what else you notice."''',
         c("Continue", "yes")),
@@ -254,7 +254,7 @@ page("nocticula.trickster.epilogue.commit", "The chair nobody else sat in", "", 
         c("[Cross the room to her chair.]", "crossed"),
         c("[Make her say it twice.] \"I didn't hear you.\"", "twice")),
     nar("crossed", '''{n}She did not rise. She let the Commander come to her, all the way across a room built to make petitioners feel the distance, and watched every step of it the way she watched the Abyss: as something that would one day belong to her.{/n}
-{n}At the chair she hooked a finger in the Commander's collar and held it there, not pulling, her mouth a breath away. "Well? Kneel, or kiss me. Choose quickly. I bore easily."{/n}''',
+{n}At the chair she laid one fingertip on the Commander's breastbone and held it there, not pressing, her mouth a breath away. "Kneel, or kiss me. Choose quickly. I bore easily."{/n}''',
         c("[Kiss her.]", "kissed"),
         c("[Kneel.]", "knelt")),
     nar("kissed", '''{n}Her mouth was warm, which the Commander had not expected; the projection at Threshold had been cold. She pulled the Commander down into the chair and rose over them, astride, one hand flat on the Commander's chest to keep them exactly where she wanted them, and the lamps of her palace went out one by one, in no hurry at all.{/n}''', c()),
@@ -388,7 +388,7 @@ threshold("nocticula.trickster.court.vellexia", "Black for Vellexia", "\"Lady Ve
     nt("kept", COURT_BLACK + "\n"
        "{n}Her voice drops.{/n} \"Then a little bird told me where she went. She is a looking-glass in your quarters, clown, "
        "and she is awake behind it. You kept her.\"\n"
-       "{n}She considers you for a long moment.{/n} \"I could make you give her back. I will not. A succubus who lets herself "
+       "{n}She considers you the way she considers a wager she has already won.{/n} \"I could make you give her back. I will not. A succubus who lets herself "
        "be made into furniture has learned something I could never have taught her. Dust her. And cover her, on the nights "
        "you would rather she did not watch; she will be taking notes for me.\"", *COURT_CHOICES),
     nt("diminished", COURT_BLACK + "\n"
