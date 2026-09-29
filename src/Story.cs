@@ -22,6 +22,9 @@ namespace Tirabade
         public Dictionary<string, string> StartedQuests = new Dictionary<string, string>();
         // E10: a BlueprintFeature (any fact) the main character holds, e.g. a mythic path trick the player chose.
         public Dictionary<string, string> MainCharacterFacts = new Dictionary<string, string>();
+        // Book pictures: a portrait key with no Scenes/<key>.png falls back to a native BlueprintPortrait (32-hex GUID)
+        // or to another key's file (an alias, e.g. Arsinoe -> ArsinoeShop). A custom PNG always wins.
+        public Dictionary<string, string> PortraitFallbacks = new Dictionary<string, string>();
         public Dictionary<string, Revival> Revivals = new Dictionary<string, Revival>();
         public Dictionary<string, ParentEndingEdit> ParentEpilogueEdits = new Dictionary<string, ParentEndingEdit>();
         public List<ParentEndingLossRule> ParentEpilogueLossRules = new List<ParentEndingLossRule>();
@@ -38,6 +41,9 @@ namespace Tirabade
         public Dictionary<string, string[][]> Derived = new Dictionary<string, string[][]>();
         // E14g: count composites, true when at least Min of Of hold; computed after Derived (groundwork).
         public Dictionary<string, CountSpec> Counts = new Dictionary<string, CountSpec>();
+        // E15 (RRT book UI): data-driven paged books (the Ledger, guides) and in-game glossary tooltips ({g|RRT_...}).
+        public Dictionary<string, BookSpec> Books = new Dictionary<string, BookSpec>();
+        public Dictionary<string, GlossaryText> Glossary = new Dictionary<string, GlossaryText>();
         // E8 (TT-09, ER-4): a successful rest delivers up to PostBagSize letters, at most one per rotation key, and a
         // relationship never holds more than QueueCapPerRelationship undelivered letters.
         public int PostBagSize = 3;
@@ -109,6 +115,18 @@ namespace Tirabade
         public Dictionary<string, TricksterAccess> TricksterAccess = new Dictionary<string, TricksterAccess>();
         // ER-4: relationships sharing a rotation key (e.g. nocticula and nocticula.acquisition) share one post-bag slot.
         public string? RotationKey;
+        // E15: extra journal objectives under the relationship's quest (the Trickster's Ledger). Each entry is given when any
+        // of its OpenWhen AND-groups holds and completed when any of its SettledWhen AND-groups holds.
+        public List<JournalEntry> JournalEntries = new List<JournalEntry>();
+    }
+
+    public sealed class JournalEntry
+    {
+        public string Id = "";
+        public string Title = "";
+        public string Description = "";
+        public string[][] OpenWhen = Array.Empty<string[]>();
+        public string[][] SettledWhen = Array.Empty<string[]>();
     }
 
     // E12: a character made present in an area while Requires hold and no Forbid holds. "reuse-native" unhides and
@@ -207,6 +225,8 @@ namespace Tirabade
         public string[] Areas = Array.Empty<string>();
         public int[] Chapters = Array.Empty<int>();
         public bool Remote;
+        // E15b: a remote scene that arrives as a parcel rather than a letter (page header "A parcel from <Owner>").
+        public bool Parcel;
         public bool ManualOnly;
         public string? InteractionHub;
         public string? Recovery;
@@ -268,6 +288,40 @@ namespace Tirabade
         public string[] Requires = Array.Empty<string>();
         public string[] Forbids = Array.Empty<string>();
         public string[][] AnyGroups = Array.Empty<string[]>();
+    }
+
+    // E15: a paged book: a contents page (title, opening text, one entry per section), then one page per visible entry,
+    // each with its own portrait, read with next/previous and "N of M". Content only supplies entries.
+    public sealed class BookSpec
+    {
+        public string Title = "";
+        public string Opening = "";
+        public string Portrait = "";
+        public string[] Sections = Array.Empty<string>();
+        public List<BookEntry> Entries = new List<BookEntry>();
+    }
+
+    public sealed class BookEntry
+    {
+        public string Id = "";
+        public string Section = "";
+        public string Portrait = "";
+        public string Title = "";
+        public string Text = "";
+        // Conditional lines after the text, in order (the E14c paragraph idiom; read-only conditions).
+        public List<Paragraph> Lines = new List<Paragraph>();
+        public string[] Requires = Array.Empty<string>();
+        public string[] Forbids = Array.Empty<string>();
+        public string[][] AnyGroups = Array.Empty<string[]>();
+        // A Glossary key: the page ends with a hover link that explains the mechanic.
+        public string Tooltip = "";
+    }
+
+    // E15: an in-game tooltip, registered with the native glossary and linked from text as {g|KEY}words{/g}.
+    public sealed class GlossaryText
+    {
+        public string Name = "";
+        public string Description = "";
     }
 
     public sealed class Choice
@@ -339,6 +393,38 @@ namespace Tirabade
         }
 
         public void Clear() => Queue.Clear();
+    }
+
+    // E8b mailbag (default delivery): at a successful rest every deliverable letter arrives together, one per rotation key
+    // (its first in authored order, so a route's later letter never arrives beside an earlier one). The player reads any of
+    // them, in any order, and may leave the rest for later: unread letters stay in the bag until they are read or stop being
+    // available. Letters a read unlocks wait for the next rest, which keeps the authored pacing. Nothing here is saved:
+    // after a reload an unread letter is simply still available and arrives with the next rest.
+    public sealed class Mailbag
+    {
+        public readonly List<Scene> Arrived = new List<Scene>();
+
+        public int Fill(Story story, Snapshot state)
+        {
+            Arrived.RemoveAll(scene => !Rules.Available(story, scene, state));
+            var arrivals = Rules.MailbagArrivals(story, state, Arrived);
+            Arrived.AddRange(arrivals);
+            return arrivals.Count;
+        }
+
+        // The letters readable now, in authored order; letters that stopped being available (read, or overtaken) are dropped.
+        public List<Scene> Entries(Story story, Snapshot state)
+        {
+            Arrived.RemoveAll(scene => !Rules.Available(story, scene, state));
+            var order = story.Scenes.Select((scene, index) => (scene, index)).ToDictionary(pair => pair.scene, pair => pair.index);
+            return Arrived.OrderBy(scene => order.TryGetValue(scene, out int i) ? i : int.MaxValue).ToList();
+        }
+
+        public bool Holds(Scene scene) => Arrived.Contains(scene);
+
+        public void Read(Scene scene) => Arrived.Remove(scene);
+
+        public void Clear() => Arrived.Clear();
     }
 
     public sealed class Snapshot
@@ -484,6 +570,16 @@ namespace Tirabade
         // Journal failure follows the same return: an overridden unavailable flag no longer fails the objective.
         public static bool Failed(Relationship relationship, Snapshot state) =>
             relationship.FailureFlags.Any(flag => Blocks(relationship, flag, state));
+
+        // E15: an OR of AND-groups (the Derived shape). An empty SettledWhen never settles.
+        public static bool JournalEntryOpen(JournalEntry entry, Snapshot state) => entry.OpenWhen.Any(group => group.All(state.Has));
+        public static bool JournalEntrySettled(JournalEntry entry, Snapshot state) => entry.SettledWhen.Any(group => group.All(state.Has));
+
+        // E15: the one journal action due for an entry: "give" (not yet in the journal and open), "complete" (in the journal,
+        // still open, and settled), or null. A debt settled before it was ever noted is given first, completed on a later tick.
+        public static string? JournalStep(JournalEntry entry, bool inJournal, bool started, Snapshot state) =>
+            !inJournal ? (JournalEntryOpen(entry, state) ? "give" : null)
+            : started && JournalEntrySettled(entry, state) ? "complete" : null;
 
         // Remote conversations need live-state guards too, without reapplying authored closure or delays.
         public static bool ContactAvailable(Story story, Scene scene, Snapshot state)
@@ -645,6 +741,81 @@ namespace Tirabade
         }
 
         // E14c: a paragraph shows when its requires hold, no forbid holds and every any-group has a member.
+        // E15: book entries visible now, in section order then authored order.
+        public static bool BookEntryVisible(BookEntry entry, Snapshot state) => entry.Requires.All(state.Has)
+            && !entry.Forbids.Any(state.Has) && entry.AnyGroups.All(group => group.Any(state.Has));
+
+        public static List<BookEntry> BookVisible(BookSpec book, Snapshot state)
+        {
+            var sections = book.Sections.Select((name, index) => (name, index)).ToDictionary(pair => pair.name, pair => pair.index);
+            return book.Entries.Select((entry, index) => (entry, index)).Where(pair => BookEntryVisible(pair.entry, state))
+                .OrderBy(pair => sections.TryGetValue(pair.entry.Section, out int s) ? s : int.MaxValue).ThenBy(pair => pair.index)
+                .Select(pair => pair.entry).ToList();
+        }
+
+        // E15 archive: letters already read (their completion flag holds), the most recently read first.
+        public static List<Scene> ArchiveLetters(Story story, Snapshot state) => story.Scenes
+            .Select((scene, index) => (scene, index))
+            .Where(pair => IsMailbagLetter(pair.scene) && state.Has(pair.scene.Id))
+            .OrderByDescending(pair => state.Times.TryGetValue(pair.scene.Id, out int hour) ? hour : -1).ThenBy(pair => pair.index)
+            .Select(pair => pair.scene).ToList();
+
+        // E15: pagination. Pages are 0-based; an empty list still has one (empty) page.
+        public static int PageCount(int items, int perPage) => Math.Max(1, (items + perPage - 1) / perPage);
+
+        public static List<T> PageSlice<T>(IReadOnlyList<T> items, int page, int perPage) =>
+            items.Skip(Math.Max(0, page) * perPage).Take(perPage).ToList();
+
+        // E15: step a cursor through a list (wrapping); a key no longer in the list restarts at the first item.
+        public static string? Step(IReadOnlyList<string> keys, string? current, int delta)
+        {
+            if (keys.Count == 0) return null;
+            int index = current == null ? -1 : keys.ToList().IndexOf(current);
+            if (index < 0) return keys[0];
+            return keys[((index + delta) % keys.Count + keys.Count) % keys.Count];
+        }
+
+        // E15 read-only replay: where each authored choice of a read letter leads when it is re-read: the next node, or the
+        // success node of a check; null ends the replay. Only text is replayed: no flag, cost, check or native effect.
+        public static List<(string Text, string? Next)> ReplayEdges(Scene scene, Node node)
+        {
+            var edges = new List<(string Text, string? Next)>();
+            foreach (var choice in node.Choices)
+            {
+                string? next = choice.Next ?? (choice.Check != null && choice.Check.Success.Length > 0 ? choice.Check.Success : null);
+                if (next != null && !scene.Nodes.Any(n => n.Id == next)) next = null;
+                if (!edges.Any(edge => edge.Text == choice.Text && edge.Next == next)) edges.Add((choice.Text, next));
+            }
+            return edges;
+        }
+
+        public static void ValidateBooks(Story story)
+        {
+            if (story.Books == null || story.Glossary == null) throw new InvalidOperationException("Book and glossary collections cannot be null.");
+            foreach (var pair in story.Glossary)
+                if (!System.Text.RegularExpressions.Regex.IsMatch(pair.Key, "^RRT_[A-Za-z0-9_]+$") || pair.Value == null
+                    || string.IsNullOrWhiteSpace(pair.Value.Name) || string.IsNullOrWhiteSpace(pair.Value.Description))
+                    throw new InvalidOperationException("Invalid glossary entry (keys are RRT_<word>, with a name and a description): " + pair.Key);
+            var links = new System.Text.RegularExpressions.Regex(@"\{g\|(RRT_[A-Za-z0-9_]+)\}");
+            foreach (var pair in story.Books)
+            {
+                var book = pair.Value;
+                if (!System.Text.RegularExpressions.Regex.IsMatch(pair.Key, "^[a-z0-9_.]+$") || book == null || string.IsNullOrWhiteSpace(book.Title)
+                    || book.Sections.Length == 0 || book.Sections.Distinct().Count() != book.Sections.Length || book.Entries.Count == 0)
+                    throw new InvalidOperationException("Invalid book (a title, distinct sections, at least one entry): " + pair.Key);
+                var ids = new HashSet<string>(StringComparer.Ordinal);
+                foreach (var entry in book.Entries)
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(entry.Id, "^[a-z0-9_.]+$") || !ids.Add(entry.Id)
+                        || !book.Sections.Contains(entry.Section) || string.IsNullOrWhiteSpace(entry.Title) || string.IsNullOrWhiteSpace(entry.Text)
+                        || entry.Tooltip.Length > 0 && !story.Glossary.ContainsKey(entry.Tooltip))
+                        throw new InvalidOperationException("Invalid book entry (unique id, declared section, title, text, known tooltip): " + pair.Key + "/" + entry.Id);
+                var text = string.Join(" ", book.Entries.SelectMany(e => new[] { e.Text }.Concat(e.Lines.Select(l => l.Text))).Concat(new[] { book.Opening }));
+                foreach (System.Text.RegularExpressions.Match link in links.Matches(text))
+                    if (!story.Glossary.ContainsKey(link.Groups[1].Value))
+                        throw new InvalidOperationException("Book text links an unknown glossary key: " + pair.Key + "/" + link.Groups[1].Value);
+            }
+        }
+
         public static bool ParagraphVisible(Paragraph paragraph, Snapshot state) => paragraph.Requires.All(state.Has)
             && !paragraph.Forbids.Any(state.Has) && paragraph.AnyGroups.All(group => group.Any(state.Has));
 
@@ -711,6 +882,25 @@ namespace Tirabade
                 .OrderBy(scene => order[scene]).ToList();
         }
 
+        // E8b: a scene the mailbag can deliver (a rest letter or memory; manual reads and epilogue pages never arrive by post).
+        public static bool IsMailbagLetter(Scene scene) => IsRemote(scene) && !scene.ManualOnly
+            && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
+
+        // E8b: the letters one rest adds to the mailbag: every deliverable remote scene (not manual, not an epilogue page),
+        // one per rotation key and never a key the bag already holds, the key's first scene in authored order. No bag size and
+        // no fairness ordering: the player chooses. Returned in story list order.
+        public static List<Scene> MailbagArrivals(Story story, Snapshot state, IReadOnlyCollection<Scene>? held = null)
+        {
+            held ??= Array.Empty<Scene>();
+            var heldKeys = new HashSet<string>(held.Select(scene => RotationKey(story, scene.Relationship)), StringComparer.Ordinal);
+            return story.Scenes
+                .Where(scene => IsMailbagLetter(scene)
+                    && !held.Contains(scene) && !heldKeys.Contains(RotationKey(story, scene.Relationship)) && Available(story, scene, state))
+                .GroupBy(scene => RotationKey(story, scene.Relationship))
+                .Select(group => group.First())
+                .ToList();
+        }
+
 
         public static string[] EntryTargets(Scene scene)
         {
@@ -763,6 +953,7 @@ namespace Tirabade
         public static void Validate(Story story)
         {
             if (story.Scenes.Count == 0) throw new InvalidOperationException("The route has no scenes.");
+            ValidateBooks(story);
             if (story.UnlockableFlags == null || story.QuestObjectives == null || story.InventoryItems == null || story.StartedQuests == null
                 || story.MainCharacterFacts == null)
                 throw new InvalidOperationException("Native reader collections cannot be null.");
@@ -879,6 +1070,21 @@ namespace Tirabade
                 if (pair.Value.TricksterAccess == null || pair.Value.TricksterAccess.Any(access => string.IsNullOrWhiteSpace(access.Key)
                     || access.Value == null || access.Value.Detect == null || access.Value.Detect.Any(string.IsNullOrWhiteSpace)))
                     throw new InvalidOperationException("Malformed TricksterAccess metadata: " + pair.Key);
+            // E15: journal entries have distinct ids and text, at least one OpenWhen group, and read only known keys.
+            foreach (var pair in story.Relationships)
+            {
+                var entries = pair.Value.JournalEntries ?? throw new InvalidOperationException("JournalEntries cannot be null: " + pair.Key);
+                if (entries.Any(e => e == null || string.IsNullOrWhiteSpace(e.Id) || string.IsNullOrWhiteSpace(e.Title)
+                        || string.IsNullOrWhiteSpace(e.Description) || e.OpenWhen == null || e.OpenWhen.Length == 0 || e.SettledWhen == null)
+                    || entries.Select(e => e.Id).Distinct().Count() != entries.Count)
+                    throw new InvalidOperationException("Invalid journal entries (distinct ids, text, >= 1 OpenWhen group): " + pair.Key);
+                foreach (var entry in entries)
+                    foreach (var group in entry.OpenWhen.Concat(entry.SettledWhen))
+                        if (group == null || group.Length == 0 || group.Any(key => string.IsNullOrWhiteSpace(key)
+                            || !authoredFlags.Contains(key) && !nativeKeys.Contains(key) && !derivedFlags.Contains(key) && !story.Derived.ContainsKey(key)
+                                && !(story.Latches?.ContainsKey(key) ?? false)))
+                            throw new InvalidOperationException("Journal entry reads an unknown or empty key group: " + pair.Key + "/" + entry.Id);
+            }
             if (story.PostBagSize < 1 || story.PostBagSize > 10 || story.QueueCapPerRelationship < 1
                 || story.Relationships.Values.Any(r => r.RotationKey != null && string.IsNullOrWhiteSpace(r.RotationKey)))
                 throw new InvalidOperationException("Invalid post-bag settings (PostBagSize 1-10, QueueCapPerRelationship >= 1, non-blank RotationKey).");

@@ -53,6 +53,13 @@ from storylines import dorgelinda_trickster, dorgelinda_ledger
 from storylines import hepzamirah_trickster, hepzamirah_flesh
 from storylines import camellia_trickster, camellia_masks, camellia_evenings, camellia_cards, camellia_days, camellia_last  # noqa: F401 (the others append to camellia_trickster.SCENES)
 from storylines import targona_trickster
+from storylines import eritrice_trickster, eritrice_minutes, eritrice_council
+from storylines import areelu_trickster
+from storylines import chadali_trickster, chadali_wagers, chadali_fortunes, chadali_sessions, chadali_hours
+from storylines import devarra_trickster, devarra_tower
+from storylines import rrt_ui
+from storylines import rrt_portraits
+from storylines import lastcall
 from storylines import gesmerha_campaign
 from storylines import gesmerha_late_campaign
 from storylines import ember_campaign
@@ -369,8 +376,44 @@ def make_expansion(*, independent_tirabade=True):
     payload["Relationships"]["camellia"] = copy.deepcopy(camellia_trickster.RELATIONSHIP)
     payload["Scenes"].extend(copy.deepcopy(camellia_trickster.SCENES))
     camellia_trickster.integrate(payload)
+    # Eritrice: a new relationship, opened only by the Trickster motion in her private audience (eritrice_trickster).
+    payload["Relationships"]["eritrice"] = copy.deepcopy(eritrice_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(eritrice_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(eritrice_minutes.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(eritrice_council.SCENES))
+    eritrice_trickster.integrate(payload)
+    eritrice_minutes.integrate(payload)
+    eritrice_council.integrate(payload)
+    # Areelu has no registered route of her own: the Trickster wager (areelu-vorlesh.md) is the whole relationship.
+    payload["Relationships"]["areelu"] = copy.deepcopy(areelu_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(areelu_trickster.SCENES))
+    areelu_trickster.integrate(payload)
+    # Chadali: a new relationship, opened only by the Trickster coin in her private audience (chadali_trickster).
+    payload["Relationships"]["chadali"] = copy.deepcopy(chadali_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(chadali_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(chadali_wagers.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(chadali_fortunes.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(chadali_sessions.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(chadali_hours.SCENES))
+    chadali_trickster.integrate(payload)
+    chadali_wagers.integrate(payload)
+    chadali_fortunes.integrate(payload)
+    chadali_sessions.integrate(payload)
+    chadali_hours.integrate(payload)
+    # Devarra: the draft (retired to reference/retired-drafts) is replaced by the Trickster "Clutch-mother" route
+    # (devarra.md round 2) and its watchtower courtship on the Storyteller's hub (devarra_tower).
+    payload["Relationships"]["devarra"] = copy.deepcopy(devarra_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(devarra_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(devarra_tower.SCENES))
+    devarra_trickster.integrate(payload)
+    devarra_tower.integrate(payload)
+    # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
+    lastcall.integrate(payload)
     trickster_engine(payload)
     trickster_world.integrate(payload)
+    # E15: the RRT book UI (glossary tooltips, the guide book).
+    rrt_ui.integrate(payload)
+    rrt_portraits.integrate(payload)
     normalize_trickster_access(payload)
     return payload
 

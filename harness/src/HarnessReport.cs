@@ -78,6 +78,8 @@ namespace RRT.TestHarness
         public List<string> FlagsRemoved = new List<string>();
         public double Ms;
         public bool Passed;
+        /// <summary>Screenshot PNG paths taken during this walk (plan.Screenshots only).</summary>
+        public List<string> Screenshots = new List<string>();
     }
 
     public sealed class RoundTripResult

@@ -12,8 +12,9 @@ Usage:
 
 Sections: A producers | B reachability per mythic world | C chapter/delay traps | D cross-route forbid matrix
           E lints | F native GUID bindings | G runtime-risk metrics | H Trickster roster matrix | I TypeId lint
-          E9 rest budget: Trickster full-roster simulation with E8 post bags (report only; --rest-cadence, --chapter-days,
-             --bag-size, --queue-cap, --sim-natives); also run per matrix supply profile in --matrix mode
+          E9 rest budget: Trickster full-roster simulation with the E8b mailbag (default) or E8 post bags (report only;
+             --delivery, --rest-cadence, --chapter-days, --bag-size, --queue-cap, --sim-natives); also run per matrix supply
+             profile in --matrix mode
 """
 import argparse, collections, difflib, hashlib, importlib, json, os, re, shutil, sys, time, zipfile
 from pathlib import Path
@@ -1542,7 +1543,7 @@ def check_drafts(story, P, game):
 # Chapter lengths are ESTIMATES to calibrate against real Trickster playthroughs (in-game days).
 SIM_CHAPTER_DAYS = {1: 2, 2: 6, 3: 30, 4: 12, 5: 40, 6: 1}
 SIM_REST_CADENCE = 16   # in-game hours of travel between successful rests (default; per chapter via --rest-cadence)
-REST_OPTIONS = {}       # set from the command line (--rest-cadence, --chapter-days, --bag-size, --queue-cap)
+REST_OPTIONS = {}       # set from the command line (--delivery, --rest-cadence, --chapter-days, --bag-size, --queue-cap)
 
 
 class SimState:
@@ -1607,6 +1608,20 @@ def sim_bag(model, st, served, size, queued=(), cap=10 ** 9, skip=()):
     return sorted(bag, key=lambda s: order[id(s)])
 
 
+def sim_key(model, s):
+    return (model.rels.get(s["Relationship"]) or {}).get("RotationKey") or s["Relationship"]
+
+
+def sim_mailbag(model, st, skip=()):
+    """Mirror of Rules.MailbagArrivals (E8b): every deliverable letter, one per rotation key (its first in story order);
+    the simulated pursuing player reads them all. `skip` holds letters the player declines."""
+    groups = collections.OrderedDict()
+    for s in model.scenes:
+        if not is_remote(s) or s["ManualOnly"] or is_epilogue(s) or s["Id"] in skip: continue
+        if sim_available(model, s, st): groups.setdefault(sim_key(model, s), s)
+    return list(groups.values())
+
+
 def sim_plan(model, s, st, rel_flags):
     """Best path through one scene: (score, choices); score = (commits? 0:1, closures set, completes? 0:1, length).
     Abort keeps the relationship open but leaves the scene unfinished."""
@@ -1652,9 +1667,10 @@ def sim_play(model, s, st, rel_flags, plan=None):
 
 
 def simulate_rest_budget(model, chapter_days=None, cadence=None, bag_size=3, cap=2, rests_per_chapter=None, caps=None, label="default",
-                         natives=None):
+                         natives=None, delivery="mailbag"):
     """E9: a Trickster full-roster campaign. Every relationship is pursued, physical scenes are visited daily for free,
-    remote letters arrive only through E8 post bags at each rest. Natives: `trickster` from Chapter 1; every other native
+    remote letters arrive only at rests: in the E8b mailbag (default: every deliverable letter, one per rotation key, all read)
+    or in E8 post bags of `bag_size` (delivery="postbag", the opt-out). Natives: `trickster` from Chapter 1; every other native
     progress key a scene Requires turns true at the earliest MinChapter that requires it (loss, departure, hostility and
     other mythic paths are never forced)."""
     days = dict(SIM_CHAPTER_DAYS)
@@ -1715,7 +1731,7 @@ def simulate_rest_budget(model, chapter_days=None, cadence=None, bag_size=3, cap
                            and s["Id"] not in declined and sim_available(model, s, st)]
                 for s in waiting: ever.setdefault(s["Id"], ch)
                 info["backlog_peak"] = max(info["backlog_peak"], len({(model.rels.get(s["Relationship"]) or {}).get("RotationKey") or s["Relationship"] for s in waiting}))
-                bag = sim_bag(model, st, served, bag_size, (), cap, declined)
+                bag = sim_mailbag(model, st, declined) if delivery == "mailbag" else sim_bag(model, st, served, bag_size, (), cap, declined)
                 if bag: info["rests_used"] += 1
                 for s in bag:
                     if not sim_available(model, s, st): continue
@@ -1730,9 +1746,17 @@ def simulate_rest_budget(model, chapter_days=None, cadence=None, bag_size=3, cap
             # Jump to the next event (a daily visit round or a rest); nothing else changes in between.
             targets = [next_visit, end] + ([next_rest] if rests_done < available_rests else [])
             st.hour = max(st.hour + 1, int(-(-min(targets) // 1)))
-        info["missed"] = sum(1 for sid, c in ever.items() if sid not in played and model.by_id[sid]["MaxChapter"] == ch)
-        info["rests_needed"] = info["rests_used"] + -(-info["missed"] // max(1, bag_size))
-        info["load"] = round((info["letters"] + info["missed"]) / float(max(1, info["rests_available"] * bag_size)), 2)
+        missed_ids = [sid for sid, c in ever.items() if sid not in played and model.by_id[sid]["MaxChapter"] == ch]
+        info["missed"] = len(missed_ids)
+        if delivery == "mailbag":
+            # A rest delivers every waiting route at once, so rests bound only each route's chain: the worst rotation key
+            # needs one more delivery moment per letter it missed.
+            per_key = collections.Counter(sim_key(model, model.by_id[sid]) for sid in missed_ids)
+            info["rests_needed"] = info["rests_used"] + (max(per_key.values()) if per_key else 0)
+            info["load"] = round(info["rests_needed"] / float(max(1, info["rests_available"])), 2)
+        else:
+            info["rests_needed"] = info["rests_used"] + -(-info["missed"] // max(1, bag_size))
+            info["load"] = round((info["letters"] + info["missed"]) / float(max(1, info["rests_available"] * bag_size)), 2)
         chapters.append(info)
     rels = []
     for rk, r in model.rels.items():
@@ -1756,13 +1780,17 @@ def simulate_rest_budget(model, chapter_days=None, cadence=None, bag_size=3, cap
                                      " (declined: only aborts or closes)" if dec else "")
         rels.append(dict(relationship=rk, committed=rk in commit_at, day=(commit_at[rk] // 24 + 1) if rk in commit_at else None,
                          letters={("ch%d" % c): n for c, n in sorted(per_rel_ch[rk].items())}, missed=missed, over_caps=over, blocked=why))
-    return dict(label=label, chapter_days=days, bag_size=bag_size, queue_cap=cap, chapters=chapters, relationships=rels)
+    return dict(label=label, chapter_days=days, bag_size=bag_size, queue_cap=cap, delivery=delivery, chapters=chapters, relationships=rels)
 
 
 def print_rest_budget(res, P):
     days = res["chapter_days"]
-    P("\n## E9. Rest budget [%s]: Trickster full-roster simulation, E8 post bags of %d, <= %d unread per relationship"
-      % (res["label"], res["bag_size"], res["queue_cap"]))
+    if res.get("delivery", "postbag") == "mailbag":
+        P("\n## E9. Rest budget [%s]: Trickster full-roster simulation, E8b mailbag (every deliverable letter at each rest, one"
+          " per rotation key; the player reads them all). Load = delivery moments needed / rests available" % res["label"])
+    else:
+        P("\n## E9. Rest budget [%s]: Trickster full-roster simulation, E8 post bags of %d, <= %d unread per relationship"
+          % (res["label"], res["bag_size"], res["queue_cap"]))
     P("  Chapter lengths in in-game days (ESTIMATES, calibrate against real Trickster runs): %s"
       % ", ".join("ch%d %s" % (c, d) for c, d in sorted(days.items())))
     P("  Physical scenes and manual reads are visited daily at no rest cost; native progress keys (required somewhere, forbidden")
@@ -2020,7 +2048,9 @@ def main():
     ap.add_argument("--matrix-json", default=str(HERE / "rrt_verify_report.matrix.json"))
     ap.add_argument("--rest-cadence", help="E9: hours of travel per rest, one value or per chapter '3:16,5:12' (default 16)")
     ap.add_argument("--chapter-days", help="E9: in-game days per chapter, e.g. '3:30,4:12,5:40' (defaults are estimates)")
-    ap.add_argument("--bag-size", type=int, default=3, help="E9: letters per rest (E8 PostBagSize)")
+    ap.add_argument("--delivery", choices=["mailbag", "postbag"], default="mailbag",
+                    help="E9: E8b mailbag (default: every letter at each rest) or the E8 post bag opt-out (--bag-size per rest)")
+    ap.add_argument("--bag-size", type=int, default=3, help="E9: letters per rest (E8 PostBagSize; --delivery postbag)")
     ap.add_argument("--queue-cap", type=int, default=2, help="E9: undelivered letters per relationship (E8 QueueCapPerRelationship)")
     ap.add_argument("--sim-natives", help="E9: extra native keys held from a chapter, e.g. 'seelah.souls_returned:5,vellexia.native_finished:3'")
     a = ap.parse_args()
@@ -2033,7 +2063,7 @@ def main():
         if ":" not in text: return {c: cast(text) for c in range(1, 7)}
         return {int(k): cast(v) for k, v in (x.split(":") for x in text.split(","))}
     REST_OPTIONS.update(cadence=per_chapter(a.rest_cadence, float), chapter_days=per_chapter(a.chapter_days, float),
-                        bag_size=a.bag_size, cap=a.queue_cap,
+                        bag_size=a.bag_size, cap=a.queue_cap, delivery=a.delivery,
                         natives={k: int(v) for k, v in (x.split(":") for x in a.sim_natives.split(","))} if a.sim_natives else {})
     if a.matrix:
         _, code = run_matrix(a.matrix, a.story, strict=a.strict, out_json=a.matrix_json, extra=matrix_rest_budget)

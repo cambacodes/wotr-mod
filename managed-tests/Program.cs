@@ -130,10 +130,16 @@ internal static class Program
             // E14f speaker units: the game resolves them from the archive like any unit, so seed every node's SpeakerUnit.
             .Concat(story.Scenes.SelectMany(s => s.Nodes).Select(n => n.SpeakerUnit).OfType<string>()).Distinct().ToArray();
         var nurahNativeBindings = NurahMeetingTests.NativeBlueprintBindings();
-        var native = ReadNative(Path.Combine(game, "blueprints.zip"), targetIds.Concat(nativeReturnIds).Concat(nativeNextIds).Concat(sequenceIds.Skip(1)).Concat(story.Etudes.Values).Concat(story.CompletedEtudes.Values).Concat(story.SelectedAnswers.Values).Concat(story.StartedDialogs.Values).Concat(story.CompletedQuests.Values).Concat(story.SeenCues.Values.SelectMany(ids => ids)).Concat(unitIds).Concat(nurahNativeBindings.Keys).Concat(ChoiceExtensionManagedTests.NativeIds).Concat(NativeReaderManagedTests.NativeIds(story)).Concat(PresenceManagedTests.NativeIds(story)).Concat(NativeEpilogueManagedTests.NativeIds).Concat(ContinueBeforeManagedTests.NativeIds).Concat(SpeakerManagedTests.NativeIds).Concat(NativeEpilogueEditManagedTests.NativeIds).Concat(ReturnToListManagedTests.NativeIds).Concat(story.RemovableItems).Distinct());
+        var native = ReadNative(Path.Combine(game, "blueprints.zip"), targetIds.Concat(nativeReturnIds).Concat(nativeNextIds).Concat(sequenceIds.Skip(1)).Concat(story.Etudes.Values).Concat(story.CompletedEtudes.Values).Concat(story.SelectedAnswers.Values).Concat(story.StartedDialogs.Values).Concat(story.CompletedQuests.Values).Concat(story.SeenCues.Values.SelectMany(ids => ids)).Concat(unitIds).Concat(nurahNativeBindings.Keys).Concat(ChoiceExtensionManagedTests.NativeIds).Concat(NativeReaderManagedTests.NativeIds(story)).Concat(PresenceManagedTests.NativeIds(story)).Concat(NativeEpilogueManagedTests.NativeIds).Concat(ContinueBeforeManagedTests.NativeIds).Concat(SpeakerManagedTests.NativeIds).Concat(NativeEpilogueEditManagedTests.NativeIds).Concat(ReturnToListManagedTests.NativeIds).Concat(story.RemovableItems).Concat(story.PortraitFallbacks.Values.Where(v => v.Length == 32)).Distinct());
         // SEE-01: the retained finally-dead Seelah reaches the Trickster pickpocket through revive.seelah.available.
         if (story.Scenes.Any(s => s.Id == "seelah.trickster.dead.pickpocket"))
             SeelahRecoveryTests.Run(story, native["26ae0f50130942b4bb8dfe658e77b1c6"], Check);
+        // Book-picture fallbacks: every native target is a BlueprintPortrait in the archive, and every alias names another key.
+        foreach (var fallback in story.PortraitFallbacks)
+            Check(fallback.Value.Length == 32
+                ? ((string)native[fallback.Value]["$type"]!).EndsWith(", BlueprintPortrait", StringComparison.Ordinal)
+                : fallback.Value.Length > 0 && fallback.Value != fallback.Key,
+                "Portrait fallback is not a native BlueprintPortrait or a key alias: " + fallback.Key);
         foreach (var binding in nurahNativeBindings)
             Check(((string)native[binding.Key]["$type"]!).EndsWith(", " + binding.Value, StringComparison.Ordinal),
                 "Nurah native binding has the wrong archive type: " + binding.Key);
@@ -158,7 +164,9 @@ internal static class Program
         }
         var sequences = new Dictionary<string, BlueprintCueSequence>();
         var originalCues = new Dictionary<string, BlueprintCueBaseReference[]>();
-        foreach (string guid in sequenceIds)
+        // E14a: a page that targets PlayerFinalChoice needs the native sequence (with its members) loaded like the game does.
+        var e14aSequences = story.Scenes.Any(s => s.EpilogueSequence != null) ? new[] { Rules.PlayerFinalChoice } : Array.Empty<string>();
+        foreach (string guid in sequenceIds.Concat(e14aSequences))
         {
             Check(((string)native[guid]["$type"]!).EndsWith(", BlueprintCueSequence", StringComparison.Ordinal), "Wrong native sequence type: " + guid);
             var sequence = Seed<BlueprintCueSequence>(guid);
@@ -350,8 +358,11 @@ internal static class Program
                 Check(ResourcesLibrary.TryGetBlueprint(Id("flag." + scene.Id)) is BlueprintUnlockableFlag, "Save flag missing after partial integration: " + scene.Id);
             foreach (var key in story.Relationships.Keys)
                 Check(ResourcesLibrary.TryGetBlueprint(Id(key == "tirabade" ? "quest" : "quest." + key)) is BlueprintQuest, "Journal quest missing after partial integration: " + key);
-            var degradedEntries = new HashSet<BlueprintGuid>(story.Scenes.Where(sc => dependent.Contains(sc.Relationship)).Select(sc => Id("entry." + sc.Id)));
-            var liveEntries = new HashSet<BlueprintGuid>(story.Scenes.Where(sc => !dependent.Contains(sc.Relationship) && Rules.EntryTargets(sc).Length > 0 && sc.NativeReturnCue == null).Select(sc => Id("entry." + sc.Id)));
+            // E14b: a return-to-list scene has one entry answer per list it joins.
+            IEnumerable<BlueprintGuid> Entries(Tirabade.Scene sc) => sc.ReturnToList
+                ? Rules.EntryTargets(sc).Select(list => Id("entry." + sc.Id + "." + list)) : new[] { Id("entry." + sc.Id) };
+            var degradedEntries = new HashSet<BlueprintGuid>(story.Scenes.Where(sc => dependent.Contains(sc.Relationship)).SelectMany(Entries));
+            var liveEntries = new HashSet<BlueprintGuid>(story.Scenes.Where(sc => !dependent.Contains(sc.Relationship) && Rules.EntryTargets(sc).Length > 0 && sc.NativeReturnCue == null).SelectMany(Entries));
             Check(answerLists.Values.All(list => !list.Answers.Any(r => degradedEntries.Contains(r.Guid))), "A degraded relationship was attached to a native list.");
             Check(liveEntries.All(guid => answerLists.Values.Any(list => list.Answers.Any(r => r.Guid == guid))), "An unaffected relationship lost its native entries.");
             Console.WriteLine($"PASS: {checks} assertions; missing etude '{missingEtude}' degraded only [{string.Join(", ", dependent.OrderBy(x => x))}]; "
@@ -444,7 +455,8 @@ internal static class Program
             var expected = originalAnswers[pair.Key].ToList();
             foreach (var scene in story.Scenes.Where(s => Rules.EntryTargets(s).Contains(pair.Key)))
             {
-                var added = pair.Value.Answers.Single(reference => reference.Guid == Id("entry." + scene.Id));
+                // E14b: a return-to-list scene has one entry answer per list it joins.
+                var added = pair.Value.Answers.Single(reference => reference.Guid == Id(scene.ReturnToList ? "entry." + scene.Id + "." + pair.Key : "entry." + scene.Id));
                 expected.Insert(Math.Max(0, expected.Count - 1), added);
             }
             Check(pair.Value.Answers.SequenceEqual(expected), "Native answers changed or inserted out of order: " + pair.Key);
@@ -452,7 +464,26 @@ internal static class Program
         foreach (var pair in sequences)
         {
             var expected = originalCues[pair.Key].Select(reference => reference.Guid).ToList();
-            expected.AddRange(story.Scenes.Where(s => s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
+            if (pair.Key == Rules.PlayerFinalChoice)
+            {
+                // E14a/E14h: each page lands right after its anchor (a native member or an earlier RRT page), after any pages
+                // already anchored there, in story order; the native members keep their order and instances.
+                var anchored = new HashSet<BlueprintGuid>();
+                foreach (var s in story.Scenes.Where(s => s.EpilogueSequence == "PlayerFinalChoice"))
+                {
+                    var page = Id("page." + s.Id + "." + s.Nodes[0].Id);
+                    int at = expected.IndexOf(BlueprintGuid.Parse(Rules.EpilogueAnchor(story, s.EpilogueAfter, name => Id(name).ToString())!));
+                    int index = at + 1;
+                    while (index < expected.Count && anchored.Contains(expected[index])) index++;
+                    expected.Insert(index, page);
+                    anchored.Add(page);
+                }
+                Check(pair.Value.Cues.Select(reference => reference.Guid).SequenceEqual(expected), "E14a pages misplaced in PlayerFinalChoice.");
+                Check(pair.Value.Cues.Where(c => originalCues[pair.Key].Contains(c)).SequenceEqual(originalCues[pair.Key]),
+                    "PlayerFinalChoice native members moved or replaced");
+                continue;
+            }
+            expected.AddRange(story.Scenes.Where(s => s.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && s.EpilogueSequence == null
                 && (s.Owner == "AeonEpilogue" ? sequenceIds[1] : sequenceIds[0]) == pair.Key)
                 .Select(s => Id("page." + s.Id + "." + s.Nodes[0].Id)));
             Check(pair.Value.Cues.Select(reference => reference.Guid).SequenceEqual(expected), "Native epilogue references changed: " + pair.Key);
@@ -565,6 +596,9 @@ internal static class Program
         SpeakerManagedTests.Run(native, Check);
         ContinueBeforeManagedTests.Run(native, Id, Check);
         PresenceHubManagedTests.Run(Id, Check);
+        MailbagManagedTests.Run(story, Id, Check);
+        BookManagedTests.Run(story, Id, Path.GetFullPath(Path.Combine(Path.GetDirectoryName(Path.GetFullPath(storyPath))!, "..", "art", "CustomNpcPortraits", "RanRomance-Tirabade", "Scenes")), Check);
+        BookPolishManagedTests.Run(story, Id, Check);
         // __E14_MANAGED__
         Console.WriteLine("Scope: real managed blueprint construction and native ending seen-state checks; native answer and Aeon reference lists extracted from blueprints.zip; parent-mod sequence has preservation sentinels. Ending probes bypass route eligibility, Unity page rendering and debug logging. No parent-mod initialization, full campaign condition evaluation, portraits, ToyBox execution or game save round trip.");
         return 0;

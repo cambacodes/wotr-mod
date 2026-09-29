@@ -38,6 +38,7 @@ internal static class Program
         Run("report writing", () => ReportWriting());
         Run("reflection lookups vs built RRT DLL", () => Reflection(rrtDll));
         Run("reflection validator rejects a wrong assembly", NegativeReflection);
+        Run("capture and log filters", Filters);
         Console.WriteLine(failures == 0 ? "SELF-TEST PASSED" : "SELF-TEST FAILED: " + failures + " check(s)");
         return failures == 0 ? 0 : 1;
     }
@@ -72,8 +73,16 @@ internal static class Program
         Check(ps.Saves.Count == 1 && ps.RoundTrip && ps.QuitWhenDone && ps.Timeouts.GlobalSeconds == 2640 && ps.Timeouts.LoadSeconds == 300,
             "run-harness.ps1 plan shape parses");
 
+        // -Screenshots shape: the switch, the per-scene cap and the run's shots folder (added after RunDir exists).
+        var sh = HarnessPlan.Parse(@"{ ""saves"": [], ""headless"": false, ""screenshots"": true, ""screenshotsPerScene"": 4,
+            ""screenshotDir"": ""C:\\runs\\x\\shots"" }");
+        Check(sh.Screenshots && sh.ScreenshotsPerScene == 4 && sh.ScreenshotDir == @"C:\runs\x\shots", "screenshot plan fields parse");
+        var shc = HarnessPlan.Parse(@"{ ""screenshots"": true, ""screenshotsPerScene"": -2, ""screenshotDir"": "" "" }");
+        Check(shc.ScreenshotsPerScene == 0 && shc.ScreenshotDir == null, "screenshot cap clamped to 0 and a blank folder means the default");
+
         var d = HarnessPlan.Parse("");
         Check(d.Saves.Count == 0 && !d.Force && !d.Dfs && d.ShouldReloadBetweenScenes && d.RoundTrip, "empty plan gives defaults");
+        Check(!d.Screenshots && d.ScreenshotsPerScene == 3 && d.ScreenshotDir == null, "screenshots are off by default");
 
         bool threw = false;
         try { HarnessPlan.Parse(@"{ ""savez"": [] }"); } catch (Exception) { threw = true; }
@@ -84,6 +93,25 @@ internal static class Program
 
         Check(HarnessPlan.ResolveSave("Manual_3_x", @"C:\Saved Games") == @"C:\Saved Games\Manual_3_x.zks", "relative save name resolves into Saved Games");
         Check(HarnessPlan.ResolveSave(@"D:\x\y.zks", @"C:\Saved Games") == @"D:\x\y.zks", "absolute save path kept");
+    }
+
+    // Screenshot scene guard and the AIVO audio-shim filter (internal statics, reached by reflection).
+    static void Filters()
+    {
+        var asm = typeof(HarnessPlan).Assembly;
+        var belongs = asm.GetType("RRT.TestHarness.HarnessRunner")!.GetMethod("ShotBelongs", BindingFlags.NonPublic | BindingFlags.Static)!;
+        bool Belongs(string? cue, string scene) => (bool)belongs.Invoke(null, new object?[] { cue, scene })!;
+        Check(Belongs("RRT_cue.chadali.trickster.epilogue.commit.start", "chadali.trickster.epilogue.commit"), "a cue of the walked scene is captured");
+        Check(Belongs("RRT_cue.chadali.x.start.p2", "chadali.x"), "a paragraph cue of the walked scene is captured");
+        Check(!Belongs("Cue_0012", "chadali.x") && !Belongs(null, "chadali.x"), "a native cue is not captured");
+        Check(!Belongs("RRT_cue.chadali.xy.start", "chadali.x"), "a cue of another scene with a shared prefix is not captured");
+        var benign = asm.GetType("RRT.TestHarness.LogCapture")!.GetMethod("BenignReason", BindingFlags.NonPublic | BindingFlags.Static, null, new[] { typeof(string), typeof(string) }, null)!;
+        string? Benign(string m, string? st) => (string?)benign.Invoke(null, new object?[] { m, st });
+        Check(Benign("[Audio] Failed to play sound evt_Anevia_Cue_0012 on DialogSpeaker", "AiVoiceoverMod.Patches.VoiceoverShim_Patch.TryPlayBankEvent") != null,
+            "an AIVO-shim audio failure on a native cue is benign");
+        Check(Benign("[Audio] Failed to play sound evt_Anevia_Cue_0012 on DialogSpeaker", "Kingmaker.Sound.SoundEventsManager.PostEvent") == null,
+            "an audio failure outside the AIVO shim stays relevant-eligible");
+        Check(Benign("NullReferenceException in DialogController", "AiVoiceoverMod.Patches.X") == null, "a non-audio error is never benign");
     }
 
     static void Activation()
