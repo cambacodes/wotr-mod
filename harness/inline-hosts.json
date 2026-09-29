@@ -4,14 +4,14 @@
   "blueprints": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 751,
-  "resolved": 751,
-  "inlineOnlyScenes": 131,
-  "inlineOnlyResolved": 131,
-  "answerListScenesWithoutContact": 370,
-  "answerListScenesWithoutContactResolved": 370,
-  "lists": 78,
-  "listsWithReachableHost": 77
+  "entryTargetScenes": 760,
+  "resolved": 760,
+  "inlineOnlyScenes": 138,
+  "inlineOnlyResolved": 138,
+  "answerListScenesWithoutContact": 379,
+  "answerListScenesWithoutContactResolved": 379,
+  "lists": 79,
+  "listsWithReachableHost": 78
  },
  "scenes": {
   "a_crossing": {
@@ -5576,6 +5576,185 @@
     "list": "e649f211c6b002a49a0c633061877927",
     "dialog": "670057962cd27464298f8a5f3f5e26f6",
     "dialogName": "Council_Chadali_Dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "delamere.lastcall.call": {
+   "kind": "return-to-list",
+   "lists": [
+    "294126e3264796e488ce19bfb1851355",
+    "16994192cfa484744bd10852b8dc806f",
+    "b6bc1d5fb28e115499b8bcbbc0d541f9",
+    "3d3357c0474ce5a4bb13d68730faecb8",
+    "e77c405d6dde5804bb1f873f971958b8"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "294126e3264796e488ce19bfb1851355": "RRT_entry.delamere.lastcall.call.294126e3264796e488ce19bfb1851355",
+    "16994192cfa484744bd10852b8dc806f": "RRT_entry.delamere.lastcall.call.16994192cfa484744bd10852b8dc806f",
+    "b6bc1d5fb28e115499b8bcbbc0d541f9": "RRT_entry.delamere.lastcall.call.b6bc1d5fb28e115499b8bcbbc0d541f9",
+    "3d3357c0474ce5a4bb13d68730faecb8": "RRT_entry.delamere.lastcall.call.3d3357c0474ce5a4bb13d68730faecb8",
+    "e77c405d6dde5804bb1f873f971958b8": "RRT_entry.delamere.lastcall.call.e77c405d6dde5804bb1f873f971958b8"
+   },
+   "resolved": true,
+   "host": {
+    "list": "294126e3264796e488ce19bfb1851355",
+    "dialog": "f125dc501dc6e984385332e67f324f01",
+    "dialogName": "GrandFinal_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "delamere.trickster.crypt.stag": {
+   "kind": "return-cue",
+   "lists": [
+    "d7aadaa261a8023489bdba49216cc334"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "d7aadaa261a8023489bdba49216cc334": "RRT_entry.delamere.trickster.crypt.stag"
+   },
+   "resolved": true,
+   "host": {
+    "list": "d7aadaa261a8023489bdba49216cc334",
+    "dialog": "481139732f41d004ea498e5a06df09bc",
+    "dialogName": "Kyado_main_dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "delamere.trickster.react.kyado_caught": {
+   "kind": "return-cue",
+   "lists": [
+    "d7aadaa261a8023489bdba49216cc334"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "d7aadaa261a8023489bdba49216cc334": "RRT_entry.delamere.trickster.react.kyado_caught"
+   },
+   "resolved": true,
+   "host": {
+    "list": "d7aadaa261a8023489bdba49216cc334",
+    "dialog": "481139732f41d004ea498e5a06df09bc",
+    "dialogName": "Kyado_main_dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "delamere.trickster.react.kyado_woken": {
+   "kind": "return-cue",
+   "lists": [
+    "d7aadaa261a8023489bdba49216cc334"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "d7aadaa261a8023489bdba49216cc334": "RRT_entry.delamere.trickster.react.kyado_woken"
+   },
+   "resolved": true,
+   "host": {
+    "list": "d7aadaa261a8023489bdba49216cc334",
+    "dialog": "481139732f41d004ea498e5a06df09bc",
+    "dialogName": "Kyado_main_dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "delamere.trickster.react.ulbrig_huntress": {
+   "kind": "dialog",
+   "lists": [
+    "0a50c9c878844ed4a69b8d6131304c5e"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "0a50c9c878844ed4a69b8d6131304c5e": "RRT_entry.delamere.trickster.react.ulbrig_huntress"
+   },
+   "resolved": true,
+   "host": {
+    "list": "0a50c9c878844ed4a69b8d6131304c5e",
+    "dialog": "20b70c9bb93940b9a21a488f1721f41c",
+    "dialogName": "Shifter_CompanionDialogue",
+    "cue": "Cue_0005",
+    "clicks": 0
+   }
+  },
+  "delamere.trickster.react.woljif_limp": {
+   "kind": "dialog",
+   "lists": [
+    "e41585da330233143b34ef64d7d62d69"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "e41585da330233143b34ef64d7d62d69": "RRT_entry.delamere.trickster.react.woljif_limp"
+   },
+   "resolved": true,
+   "host": {
+    "list": "e41585da330233143b34ef64d7d62d69",
+    "dialog": "8a38eeddc0215a84ca441439bb96b8f4",
+    "dialogName": "DialogueWoljif_main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "delamere.trickster.temple.horn_lore": {
+   "kind": "return-cue",
+   "lists": [
+    "d7aadaa261a8023489bdba49216cc334"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "d7aadaa261a8023489bdba49216cc334": "RRT_entry.delamere.trickster.temple.horn_lore"
+   },
+   "resolved": true,
+   "host": {
+    "list": "d7aadaa261a8023489bdba49216cc334",
+    "dialog": "481139732f41d004ea498e5a06df09bc",
+    "dialogName": "Kyado_main_dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "delamere.trickster.temple.prior_lessons": {
+   "kind": "return-cue",
+   "lists": [
+    "d7aadaa261a8023489bdba49216cc334"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "d7aadaa261a8023489bdba49216cc334": "RRT_entry.delamere.trickster.temple.prior_lessons"
+   },
+   "resolved": true,
+   "host": {
+    "list": "d7aadaa261a8023489bdba49216cc334",
+    "dialog": "481139732f41d004ea498e5a06df09bc",
+    "dialogName": "Kyado_main_dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "delamere.trickster.woods.second_hunt": {
+   "kind": "return-cue",
+   "lists": [
+    "d7aadaa261a8023489bdba49216cc334"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "d7aadaa261a8023489bdba49216cc334": "RRT_entry.delamere.trickster.woods.second_hunt"
+   },
+   "resolved": true,
+   "host": {
+    "list": "d7aadaa261a8023489bdba49216cc334",
+    "dialog": "481139732f41d004ea498e5a06df09bc",
+    "dialogName": "Kyado_main_dialogue",
     "cue": "Cue_0001",
     "clicks": 0
    }
@@ -19493,6 +19672,102 @@
       "7838168a231b2e342925825fb95e4862": 1,
       "cd0365522bc3ac24caf13964c979bfd3": 1,
       "d58f689b08d80a14095b83edc53402e7": 1
+     }
+    }
+   ]
+  },
+  "d7aadaa261a8023489bdba49216cc334": {
+   "list": "d7aadaa261a8023489bdba49216cc334",
+   "listName": "AnswersList_0005",
+   "hosts": [
+    {
+     "dialog": "481139732f41d004ea498e5a06df09bc",
+     "dialogName": "Kyado_main_dialogue",
+     "cues": [
+      "2674e280e12dc1f489046d55186c8f28",
+      "df0fdfe2930911841aab9792c9b1a3fa",
+      "528fb2e57888bdb48890643aab8ccc6e",
+      "e8cca55db5d7e904286db61c25a62b11",
+      "0a07867040934b94eb4cdb75925fc4cd",
+      "3ab54aa8cb6f6e345ab3eef444c33d78",
+      "d305ec0d369821a4b8b416e9689fa587",
+      "5230d5fd7201db04287903ac6a95d30c",
+      "88a92d85af55bf04f8e34438a9d810d4",
+      "94cd8f2879a6aed4698306fda3a5b677",
+      "690750dd5bed20743890c085f94d61d7",
+      "0424430e6207fc44ea8332f7e3de27a1",
+      "15b59af6d149b914280b59a2790b43ef",
+      "062f826dcda44cb4b9ae5649e95a974e",
+      "eae9f33211058364ebb83787eabf7bc6",
+      "7c71b4d2a5ef8e1438e6e16397cf6060",
+      "a052eaea25f27af42ab013f885ef04ec",
+      "7033b44b12b87a3428b28b9f68610022",
+      "aeed0c21b1f527644a8c6fbd6c0ce03a",
+      "1df2ff75045ad854f91427892e349178",
+      "5f3072cf5e4a28e42b0a67811568fff7",
+      "0e92e2a3cf46df14582bb8622d91af74",
+      "3d5134b6ffeeda94d8072ba1d4a9cbd2",
+      "e99ea77a8a13fdb4aaf28b6498108dc6"
+     ],
+     "cueNames": [
+      "Cue_0001",
+      "Cue_0002",
+      "Cue_0003",
+      "Cue_0004",
+      "Cue_0010",
+      "Cue_0013",
+      "Cue_0016",
+      "Cue_0036",
+      "Cue_0079",
+      "Cue_0081",
+      "Cue_0082",
+      "Cue_0083",
+      "Cue_0087",
+      "Cue_0094_TrickReinf",
+      "Cue_0095",
+      "Cue_0096",
+      "Cue_0104",
+      "Cue_0106",
+      "Cue_0108",
+      "Cue_0110",
+      "Cue_0112",
+      "Cue_0114",
+      "SequenceExit_0120",
+      "SequenceExit_0124"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "0e5c1bc1296e9e14baa86cce63f7f557": 2,
+      "2afc4fda689aa714490bf6675fb16659": 2,
+      "2c673caa08f207641a8f604aabec2afd": 2,
+      "2e3bb4bf9e3820a40aa7c6f620a3c0c2": 2,
+      "30bd21372c5ebaa44af90ef77d10c6cf": 2,
+      "354de7044ae342f48916a7e7928de44b": 2,
+      "39462a8dbd9c3c148bd7b922c9db80fe": 2,
+      "3957eef1a25b5a54b9d61b0ac8eedc00": 2,
+      "3bae5e6f03468a04bb79968fd6160240": 2,
+      "3da186cd4107ca34595bceab0185c112": 1,
+      "4cf682aeb9c667540afb9f0b1a56bb57": 2,
+      "5f6b1bd6e0fdc5b4a8484ed2b1b522ad": 3,
+      "66db9f5b7bfa4ad47b244a613b953e5d": 2,
+      "71cfc295c9edb3c44b5d68315755614f": 4,
+      "7a2d42ab16bf09f43b0558fd774bd485": 1,
+      "80cb2989b5650ea44916bd72fde52dfa": 2,
+      "a19594f9f15ab4542bbdb2a7cb4ba211": 2,
+      "b34ec4f1d033fae459697aa1427f58a4": 2,
+      "cdc7fa23a28f27d4393ff4720d88596d": 1,
+      "dc830d8b1df463040846cbd1b9c4b3b0": 1,
+      "dcb18319ca1c6ec4ebcc72a78b907739": 3,
+      "dd2b0bac6aa3eb849b453a2933c94f27": 3,
+      "de771b2aaae9c2b4b81ecf4a748b90de": 1,
+      "e0e35b31130d1a24d99c78a9c8c55a6a": 2,
+      "eda8a311ded6a344380e4806863ab8ea": 1,
+      "eecb4676206d6894fa410f1c3c15b40b": 3,
+      "f4e19f799b9eb4145a0a76b62b1af846": 3,
+      "f76b5260aaf9fad419204b35bf362e44": 1
      }
     }
    ]
