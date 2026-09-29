@@ -265378,7 +265378,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}The spring after Threshold, a ship with an anchor on her flag came down out of a clear sky over Drezen and hung there, a hundred feet up, while her captain let down a rope ladder and climbed to the bottom of it and did not step off.{/n}\n\"You turned for home, the last time I gave you my wheel,\" said Mielarah. \"I have thought about it for a year. It was the right thing to do, and I have not forgiven you for it.\"\n{n}She held out her hand from the bottom rung.{/n} \"I'm asking once. My deck, my sky. Come up and hold her, Commander, and this time don't turn round.\"",
+          "Text": "{n}The spring after Threshold, a ship with an anchor on her flag came down out of a clear sky over Drezen and hung there, a hundred feet up, while her captain let down a rope ladder and climbed to the bottom of it and did not step off.{/n}\n\"You turned for home, the last time I gave you my wheel,\" said Mielarah. \"I have thought about it for a year. It was the right thing to do, and I have not forgiven you for it.\"\n\"I told you I would not ask you anything again, and I keep my word, even to you.\" {n}She did not hold out her hand. She only moved her boots to one side of the bottom rung, so that there was room on it for two.{/n} \"I am not asking. I am telling you where the ladder is. The wheel is where you left it.\"",
           "Choices": [
             {
               "Text": "[Take her hand and climb.]",
@@ -270476,7 +270476,7 @@
         {
           "Id": "know",
           "Speaker": "Mielarah",
-          "Text": "\"I know you.\" {n}She takes the pistols back, one at a time, without looking at them, and checks that each is still loaded.{/n} \"You drank on credit at the Bad Luck for a month and paid the barman in coins that turned into beetles on the Tuesday. The barman still talks about you. He keeps a jar of the beetles behind the bar.\"\n{n}Woljif looks at you with an expression of enormous dignity, ruined somewhat by the cobweb in his hair. \"Them beetles was a misunderstandin', Cap'n.\"{/n}",
+          "Text": "\"I know you.\" {n}She takes the pistols back, one at a time, without looking at them, and checks that each is still loaded.{/n} \"You drank on credit at the Bad Luck for a month and paid the barman in coins that turned into beetles on the Toilday. The barman still talks about you. He keeps a jar of the beetles behind the bar.\"\n{n}Woljif looks at you with an expression of enormous dignity, ruined somewhat by the cobweb in his hair. \"Them beetles was a misunderstandin', Cap'n.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -270629,7 +270629,7 @@
         {
           "Id": "know",
           "Speaker": "Mielarah",
-          "Text": "\"I know you.\" {n}She takes the pistols back, one at a time, without looking at them, and checks that each is still loaded.{/n} \"You drank on credit at the Bad Luck for a month and paid the barman in coins that turned into beetles on the Tuesday. The barman still talks about you. He keeps a jar of the beetles behind the bar.\"\n{n}Woljif looks at you with an expression of enormous dignity, ruined somewhat by the cobweb in his hair. \"Them beetles was a misunderstandin', Cap'n.\"{/n}",
+          "Text": "\"I know you.\" {n}She takes the pistols back, one at a time, without looking at them, and checks that each is still loaded.{/n} \"You drank on credit at the Bad Luck for a month and paid the barman in coins that turned into beetles on the Toilday. The barman still talks about you. He keeps a jar of the beetles behind the bar.\"\n{n}Woljif looks at you with an expression of enormous dignity, ruined somewhat by the cobweb in his hair. \"Them beetles was a misunderstandin', Cap'n.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -276045,8 +276045,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",

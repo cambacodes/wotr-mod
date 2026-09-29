@@ -760,7 +760,7 @@ SCENES.append(scene(P + "epilogue.committed", "", "MielarahEpilogue", 6, "", [
 SCENES.append(scene(P + "epilogue.late", "", "MielarahEpilogue", 6, "", [
     nar("page", '''{n}The spring after Threshold, a ship with an anchor on her flag came down out of a clear sky over Drezen and hung there, a hundred feet up, while her captain let down a rope ladder and climbed to the bottom of it and did not step off.{/n}
 "You turned for home, the last time I gave you my wheel," said Mielarah. "I have thought about it for a year. It was the right thing to do, and I have not forgiven you for it."
-{n}She held out her hand from the bottom rung.{/n} "I'm asking once. My deck, my sky. Come up and hold her, Commander, and this time don't turn round."''',
+"I told you I would not ask you anything again, and I keep my word, even to you." {n}She did not hold out her hand. She only moved her boots to one side of the bottom rung, so that there was room on it for two.{/n} "I am not asking. I am telling you where the ladder is. The wheel is where you left it."''',
         c('[Take her hand and climb.]', "climb"),
         c('[Stay on the ground.]', "stay")),
     nar("climb", '''{n}The ladder swung under both of you all the way up, and she laughed at you the whole time, and at the top she put your hands on the spokes and took hers away. Starcatcher went north that afternoon, over the healed ground where the Worldwound had been, and held her course the whole way.{/n}'''),
