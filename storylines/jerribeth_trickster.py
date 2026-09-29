@@ -36,6 +36,8 @@ LODGER = "jerribeth.trickster.cost.lodger"
 STATUE = "jerribeth.trickster.body.statue"
 LOCUST = "jerribeth.trickster.body.locust"
 TOAST = "jerribeth.trickster.cost.toast"
+TOAST_HOST = "jerribeth.trickster.cost.toast_host"      # the toast branch: the man who poured the cup, given to her
+TOAST_MEMORY = "jerribeth.trickster.cost.toast_memory"  # the toast branch: the Commander paid with the night of the toast
 LEVY = "jerribeth.trickster.toast_levy"            # the letter twin: the toast was drunk with the Wintersun levy
 FORFEIT = "jerribeth.trickster.cost.forfeit"
 NO_FORFEIT = "jerribeth.trickster.no_forfeit"      # her hard no at jerribeth.future: "I do not sign blank pages."
@@ -276,6 +278,10 @@ TRICKSTER_PARAGRAPHS = (
       "her. It amused her for the rest of the Commander's life.", requires=(LATE,)),
     p("In the taverns of Drezen they still tell the toast. Nobody tells the ending: the Lady of the Sun never did betray "
       "the one who made it. She considered this the finest betrayal of her career.", requires=(TOAST,)),
+    p("A sergeant of the Wintersun levy served in the Commander's household after the war, exact and courteous and "
+      "smiling a little too widely. He never drank, and he never once poured a cup for anyone.", requires=(TOAST_HOST,)),
+    p("The Commander could never remember the night of the toast, only that it had cost something. Jerribeth told it "
+      "differently whenever she was asked, and always as the evening they had first met.", requires=(TOAST_MEMORY,)),
     p("She collected the forfeit on the first anniversary of the contract, without warning, as she had said she would. "
       "She took the Commander's first meeting with her: the voice in the head, the first bargain, all of it. Afterwards "
       "the Commander knew they had met only because she said so, and she told it differently every time, a little more "
@@ -365,6 +371,27 @@ INVITATION_NODES = [
 {n}A narrow, insectile silhouette appears inside the frame. The voice that reaches your thoughts is high and lightly buzzing, and you have heard it once before, out of the wrong mouth.{/n}
 "You drank to me. Now I am writing to you. That is how debts begin, Commander."
 "Try the cloth if you like. I would rather you knew the door works. A captive audience fidgets, and I do not waste my evenings on fidgeting."''',
+      c('[Turn the frame over, wait, then invite her again.]', "toast_price"),
+      c('"Why seek my company?"', "toast_price")),
+    j("toast_price", '''"Before anything else. Strangers who drink to me pay for the privilege, and you are a stranger, Commander. We have never met. I have only been toasted."
+{n}The silhouette tilts, reading you.{/n}
+"The man who poured your cup lent me his mouth for a moment. He found it roomy. I should like to borrow him properly: a body that walks your halls when I cannot. Give me his name. Or give me something of yours instead: the night you drank to me. I shall keep it, and you will have toasted a stranger for nothing."''',
+      c('[Give her the man\'s name] "Sergeant of the levy. He poured. He\'s yours."', "toast_given",
+        alignment=("Evil", 1), flags=(TOAST_HOST,)),
+      c('[Offer the night instead] "Take the toast. Leave him out of it."', "toast_paid", flags=(TOAST_MEMORY,)),
+      c('[Refuse] "Nobody\'s name, and not my memories. I drank. That\'s all you get."', "toast_refused")),
+    j("toast_given", '''"Thank you. He will not mind. He will not be in there to mind."
+{n}The next morning the sergeant salutes you in the yard with a smile that is two finger-widths too wide. Nobody else notices. You will, every time.{/n}''',
+      c('[Turn the frame over, wait, then invite her again.]', "test"),
+      c('"Why seek my company?"', "why")),
+    j("toast_paid", '''"Done."
+{n}Something goes out of you, neatly, like a page cut from a ledger. You remember that there was a toast. You no longer remember raising the cup, or whose face was across the table, or why it seemed a good idea.{/n}
+"Now we are even strangers. It is a better place to begin."''',
+      c('[Turn the frame over, wait, then invite her again.]', "test"),
+      c('"Why seek my company?"', "why")),
+    j("toast_refused", '''"A toast for free. How very mortal."
+{n}The silhouette turns, as if to go. Then it stops.{/n}
+"No. I shall charge it to the future instead, with interest, and I shall decide the interest later. You may keep your sergeant and your memories, Commander. I shall keep a grudge. They are cheaper to store."''',
       c('[Turn the frame over, wait, then invite her again.]', "test"),
       c('"Why seek my company?"', "why")),
 ]

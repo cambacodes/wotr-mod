@@ -27087,6 +27087,118 @@
           "Choices": [
             {
               "Text": "[Turn the frame over, wait, then invite her again.]",
+              "Next": "toast_price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Why seek my company?\"",
+              "Next": "toast_price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "toast_price",
+          "Speaker": "Jerribeth",
+          "Text": "\"Before anything else. Strangers who drink to me pay for the privilege, and you are a stranger, Commander. We have never met. I have only been toasted.\"\n{n}The silhouette tilts, reading you.{/n}\n\"The man who poured your cup lent me his mouth for a moment. He found it roomy. I should like to borrow him properly: a body that walks your halls when I cannot. Give me his name. Or give me something of yours instead: the night you drank to me. I shall keep it, and you will have toasted a stranger for nothing.\"",
+          "Choices": [
+            {
+              "Text": "[Give her the man's name] \"Sergeant of the levy. He poured. He's yours.\"",
+              "Next": "toast_given",
+              "Set": [
+                "jerribeth.trickster.cost.toast_host"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Offer the night instead] \"Take the toast. Leave him out of it.\"",
+              "Next": "toast_paid",
+              "Set": [
+                "jerribeth.trickster.cost.toast_memory"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Refuse] \"Nobody's name, and not my memories. I drank. That's all you get.\"",
+              "Next": "toast_refused",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "toast_given",
+          "Speaker": "Jerribeth",
+          "Text": "\"Thank you. He will not mind. He will not be in there to mind.\"\n{n}The next morning the sergeant salutes you in the yard with a smile that is two finger-widths too wide. Nobody else notices. You will, every time.{/n}",
+          "Choices": [
+            {
+              "Text": "[Turn the frame over, wait, then invite her again.]",
+              "Next": "test",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Why seek my company?\"",
+              "Next": "why",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "toast_paid",
+          "Speaker": "Jerribeth",
+          "Text": "\"Done.\"\n{n}Something goes out of you, neatly, like a page cut from a ledger. You remember that there was a toast. You no longer remember raising the cup, or whose face was across the table, or why it seemed a good idea.{/n}\n\"Now we are even strangers. It is a better place to begin.\"",
+          "Choices": [
+            {
+              "Text": "[Turn the frame over, wait, then invite her again.]",
+              "Next": "test",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Why seek my company?\"",
+              "Next": "why",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "toast_refused",
+          "Speaker": "Jerribeth",
+          "Text": "\"A toast for free. How very mortal.\"\n{n}The silhouette turns, as if to go. Then it stops.{/n}\n\"No. I shall charge it to the future instead, with interest, and I shall decide the interest later. You may keep your sergeant and your memories, Commander. I shall keep a grudge. They are cheaper to store.\"",
+          "Choices": [
+            {
+              "Text": "[Turn the frame over, wait, then invite her again.]",
               "Next": "test",
               "Set": [],
               "Requires": [],
@@ -30003,6 +30115,22 @@
               "AnyGroups": []
             },
             {
+              "Text": "A sergeant of the Wintersun levy served in the Commander's household after the war, exact and courteous and smiling a little too widely. He never drank, and he never once poured a cup for anyone.",
+              "Requires": [
+                "jerribeth.trickster.cost.toast_host"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander could never remember the night of the toast, only that it had cost something. Jerribeth told it differently whenever she was asked, and always as the evening they had first met.",
+              "Requires": [
+                "jerribeth.trickster.cost.toast_memory"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
               "Text": "She collected the forfeit on the first anniversary of the contract, without warning, as she had said she would. She took the Commander's first meeting with her: the voice in the head, the first bargain, all of it. Afterwards the Commander knew they had met only because she said so, and she told it differently every time, a little more flattering to herself with each telling. \"You cannot contradict me,\" she said, when the Commander objected. \"That was the point. Now I am the only one who remembers how we began, and I intend to improve it.\"",
               "Requires": [
                 "jerribeth.trickster.cost.forfeit"
@@ -30134,6 +30262,22 @@
               "Text": "In the taverns of Drezen they still tell the toast. Nobody tells the ending: the Lady of the Sun never did betray the one who made it. She considered this the finest betrayal of her career.",
               "Requires": [
                 "jerribeth.trickster.cost.toast"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "A sergeant of the Wintersun levy served in the Commander's household after the war, exact and courteous and smiling a little too widely. He never drank, and he never once poured a cup for anyone.",
+              "Requires": [
+                "jerribeth.trickster.cost.toast_host"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander could never remember the night of the toast, only that it had cost something. Jerribeth told it differently whenever she was asked, and always as the evening they had first met.",
+              "Requires": [
+                "jerribeth.trickster.cost.toast_memory"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -30293,6 +30437,22 @@
               "AnyGroups": []
             },
             {
+              "Text": "A sergeant of the Wintersun levy served in the Commander's household after the war, exact and courteous and smiling a little too widely. He never drank, and he never once poured a cup for anyone.",
+              "Requires": [
+                "jerribeth.trickster.cost.toast_host"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander could never remember the night of the toast, only that it had cost something. Jerribeth told it differently whenever she was asked, and always as the evening they had first met.",
+              "Requires": [
+                "jerribeth.trickster.cost.toast_memory"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
               "Text": "She collected the forfeit on the first anniversary of the contract, without warning, as she had said she would. She took the Commander's first meeting with her: the voice in the head, the first bargain, all of it. Afterwards the Commander knew they had met only because she said so, and she told it differently every time, a little more flattering to herself with each telling. \"You cannot contradict me,\" she said, when the Commander objected. \"That was the point. Now I am the only one who remembers how we began, and I intend to improve it.\"",
               "Requires": [
                 "jerribeth.trickster.cost.forfeit"
@@ -30429,6 +30589,22 @@
               "AnyGroups": []
             },
             {
+              "Text": "A sergeant of the Wintersun levy served in the Commander's household after the war, exact and courteous and smiling a little too widely. He never drank, and he never once poured a cup for anyone.",
+              "Requires": [
+                "jerribeth.trickster.cost.toast_host"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander could never remember the night of the toast, only that it had cost something. Jerribeth told it differently whenever she was asked, and always as the evening they had first met.",
+              "Requires": [
+                "jerribeth.trickster.cost.toast_memory"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
               "Text": "She collected the forfeit on the first anniversary of the contract, without warning, as she had said she would. She took the Commander's first meeting with her: the voice in the head, the first bargain, all of it. Afterwards the Commander knew they had met only because she said so, and she told it differently every time, a little more flattering to herself with each telling. \"You cannot contradict me,\" she said, when the Commander objected. \"That was the point. Now I am the only one who remembers how we began, and I intend to improve it.\"",
               "Requires": [
                 "jerribeth.trickster.cost.forfeit"
@@ -30522,6 +30698,22 @@
               "Text": "In the taverns of Drezen they still tell the toast. Nobody tells the ending: the Lady of the Sun never did betray the one who made it. She considered this the finest betrayal of her career.",
               "Requires": [
                 "jerribeth.trickster.cost.toast"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "A sergeant of the Wintersun levy served in the Commander's household after the war, exact and courteous and smiling a little too widely. He never drank, and he never once poured a cup for anyone.",
+              "Requires": [
+                "jerribeth.trickster.cost.toast_host"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander could never remember the night of the toast, only that it had cost something. Jerribeth told it differently whenever she was asked, and always as the evening they had first met.",
+              "Requires": [
+                "jerribeth.trickster.cost.toast_memory"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -149533,6 +149725,22 @@
               "AnyGroups": []
             },
             {
+              "Text": "A sergeant of the Wintersun levy served in the Commander's household after the war, exact and courteous and smiling a little too widely. He never drank, and he never once poured a cup for anyone.",
+              "Requires": [
+                "jerribeth.trickster.cost.toast_host"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander could never remember the night of the toast, only that it had cost something. Jerribeth told it differently whenever she was asked, and always as the evening they had first met.",
+              "Requires": [
+                "jerribeth.trickster.cost.toast_memory"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
               "Text": "She collected the forfeit on the first anniversary of the contract, without warning, as she had said she would. She took the Commander's first meeting with her: the voice in the head, the first bargain, all of it. Afterwards the Commander knew they had met only because she said so, and she told it differently every time, a little more flattering to herself with each telling. \"You cannot contradict me,\" she said, when the Commander objected. \"That was the point. Now I am the only one who remembers how we began, and I intend to improve it.\"",
               "Requires": [
                 "jerribeth.trickster.cost.forfeit"
@@ -253463,8 +253671,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",

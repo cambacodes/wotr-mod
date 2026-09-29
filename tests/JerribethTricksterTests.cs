@@ -218,6 +218,14 @@ internal static class JerribethTricksterTests
                 "The tenant's threshold is missing, or she knocks at a door she cannot use.");
             check(tenantPages.Contains("tenant_pinned") && tenantPages.Contains("tenant_free") && tenantPages.Contains("tenant_morning_free"),
                 "The tenant pins without asking, or reaching for her has no distinct outcome.");
+            // The toast branch pays a stranger's price before the courtship (host, memory, or a grudge), each reachable.
+            var invite = S("jerribeth.invitation");
+            var tw = World(story, 5, "trickster", "trickster.ever", "jerribeth.trickster.met_by_toast", "jerribeth.started");
+            var tpages = new HashSet<string>();
+            var touts = Program.Walk(invite, tw, (page, _) => tpages.Add(page));
+            check(tpages.Contains("toast_price") && tpages.Contains("toast_given") && tpages.Contains("toast_paid") && tpages.Contains("toast_refused")
+                  && touts.Any(r => r.Has("jerribeth.trickster.cost.toast_host")) && touts.Any(r => r.Has("jerribeth.trickster.cost.toast_memory")),
+                "The toast branch skips the stranger's price, or one of its answers is unreachable.");
         }
         check(S("jerribeth.trickster.dead.tenant").Nodes.Concat(future.Nodes).All(n => !n.Text.Contains("thrust")),
             "The cut lands after the start of the act.");
