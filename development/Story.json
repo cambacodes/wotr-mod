@@ -150733,7 +150733,7 @@
         {
           "Id": "no",
           "Speaker": "Konomi",
-          "Text": "{n}The question lands somewhere she has not armoured. For a moment she looks tired, and much younger than her office.{/n}\n\"What I want is not to be recalled by anyone. Not by Nerosyan. Not by you, from a wall, with a joke that turns roads round.\" {n}She picks up the fan again. It steadies her hand.{/n} \"Give me a season, Commander. Then ask me again, and do not ask as a Trickster. Ask as someone who could be told no.\"",
+          "Text": "{n}She sets the pen down and squares it with the edge of the ledger, exactly, before she answers.{/n}\n\"What I want is not to be recalled by anyone. Not by Nerosyan. Not by you, from a wall, with a joke that turns roads round.\" {n}She picks up the fan again. It steadies her hand.{/n} \"Give me a season, Commander. Then ask me again, and do not ask as a Trickster. Ask as someone who could be told no.\"",
           "Choices": [
             {
               "Text": "[Let her decide] \"Your call.\"",
@@ -242278,7 +242278,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}They have laid Arueshalae out in the chapel with her wings folded. The chaplains washed her face and did not know what to do with the rest of her, so they left her in her travelling clothes, with a sprig of something green between her hands.{/n}\n{n}Without the careful stillness she wore in life, she looks younger. And hungrier. The hollows under her cheekbones are deeper than they were at the last camp. You have seen that look on the faces of the Kenabres refugees queuing at the soup kettles.{/n}\n{n}She did not only die of her wounds. She has been dying of something else for a long time, and the wounds only finished it.{/n}",
+          "Text": "{n}They have laid Arueshalae out in the chapel with her wings folded. The chaplains washed her face and did not know what to do with the rest of her, so they left her in her travelling clothes, with a sprig of something green between her hands.{/n}\n{n}Without the careful stillness she wore in life, she looks younger. And hungrier. The hollows under her cheekbones are deeper than they were at the last camp. You have seen that look on the faces of the Kenabres refugees queuing at the soup kettles.{/n}\n{n}She died of her wounds. But you know the other thing, the one that will be waiting for her if she ever opens her eyes again: a hunger held on a short chain for so long that it has worn her to the bone, and that will have her by the throat before she has finished her first breath.{/n}",
           "Choices": [
             {
               "Text": "[Treat her like a patient] \"You're not dead. You're starving. Eat.\"",
@@ -242316,7 +242316,7 @@
         {
           "Id": "treat",
           "Speaker": "Narrator",
-          "Text": "{n}The chaplains could raise her. Any crusader who falls in the Commander's company can be raised, with a diamond and the rite; they have done it for knights and for Woljif. They will not spend a diamond on a demon, and they have said so, politely. So you do the rite's work yourself, in two halves.{/n}\n{n}First the Trickster's lore, which cannot raise anyone and does not try: you lay your palm on her breastbone and lift from her body the one condition that would kill her again the moment she woke, the starvation, the way you have lifted plague out of the Kenabres refugees. Then the price the rite would have taken in diamond, you pay in blood. You cut your wrist on the edge of the bier and hold it to her lips.{/n}\n{n}Something under your palm goes from stone to skin. The sprig slides out of her hands. Her eyes open. They find your throat before they find your face.{/n}",
+          "Text": "{n}The chaplains could raise her. Any crusader who falls in the Commander's company can be raised, with a diamond and the rite; they have done it for knights and for Woljif. They will not spend a diamond on a demon, and they have said so, politely. So you do the rite's work yourself, in two halves.{/n}\n{n}First the Trickster's lore, which cannot raise anyone and does not try: you lay your palm on her breastbone and lift from her body the one condition that would destroy her again the moment she woke, the starvation, the way you have lifted plague out of the Kenabres refugees. Then the price the rite would have taken in diamond, you pay in blood. You cut your wrist on the edge of the bier and hold it to her lips.{/n}\n{n}Something under your palm goes from stone to skin. The sprig slides out of her hands. Her eyes open. They find your throat before they find your face.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -243505,7 +243505,7 @@
         {
           "Id": "nothing",
           "Speaker": "Narrator",
-          "Text": "{n}In the morning a patrol sergeant of the third company does not report for duty. They find him at noon, smiling, and he never wakes up. There is a black feather tucked into his cuff, addressed to you.{/n}",
+          "Text": "{n}In the morning a patrol sergeant of the third company does not report for duty. They find him at noon, smiling, and he never wakes up. There is a black feather tucked into his cuff, addressed to you, and on it, in lipstick: \"You chose nothing. Nothing has a name now. It's on your account, darling, not mine.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -243580,7 +243580,7 @@
         {
           "Id": "debt",
           "Speaker": "Arueshalae",
-          "Text": "\"And when she calls, I'll go. Don't sulk. You said yes to it.\"",
+          "Text": "\"And when she calls, I'll go. Don't sulk. You said yes to it. And don't ever try to stop me: lock a door, hire a priest, stand in my way. I'll go through you to get to her, and I won't be gentle, because she won't let me be.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -243621,7 +243621,7 @@
         {
           "Id": "favour",
           "Speaker": "Arueshalae",
-          "Text": "\"And when she comes for what you owe her, I'll be watching. I want to see your face. I want to see what a Trickster looks like when they're the one being collected.\"",
+          "Text": "\"And when she comes for what you owe her, I'll be watching. I want to see your face. I want to see what a Trickster looks like when they're the one being collected. And if you try to wriggle out of it, she won't come to you. She'll come to me, and ask me to fetch it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -243853,7 +243853,7 @@
         {
           "Id": "debt",
           "Speaker": "Arueshalae",
-          "Text": "\"And when she calls, I'll go. Don't sulk. You said yes to it.\"",
+          "Text": "\"And when she calls, I'll go. Don't sulk. You said yes to it. And don't ever try to stop me: lock a door, hire a priest, stand in my way. I'll go through you to get to her, and I won't be gentle, because she won't let me be.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -243894,7 +243894,7 @@
         {
           "Id": "favour",
           "Speaker": "Arueshalae",
-          "Text": "\"And when she comes for what you owe her, I'll be watching. I want to see your face. I want to see what a Trickster looks like when they're the one being collected.\"",
+          "Text": "\"And when she comes for what you owe her, I'll be watching. I want to see your face. I want to see what a Trickster looks like when they're the one being collected. And if you try to wriggle out of it, she won't come to you. She'll come to me, and ask me to fetch it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -255142,7 +255142,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}The war ended before the woundwyrm finished her judgment. She finished it afterwards, on her own terms: a grey dragon landed on the Commander's roof one winter night and said, through the chimney, that the story would do, and that she would be taking her first bite in the spring. She did. The Commander kept the scar, and the appointment, for the rest of their life.{/n}",
+          "Text": "{n}The war ended before the woundwyrm finished her judgment. She finished it afterwards, on her own terms. One winter night a grey dragon landed on the Commander's roof, hard enough to crack the tiles, and put her head down into the yard, where the Commander came out barefoot to meet her.{/n}\n\"The story will do,\" she said. \"It is not finished, and it is not true, and it is yours. That makes it worth a life. Yours, I think, since you keep spending it on me.\" {n}Her eye took in the house, the lamps, the door that could be locked and would not stop her.{/n} \"My tariff stands. Once a year, where I choose. I will choose the spring, and I will choose the arm, and if you are ever not here when I come, I will take the bite out of the house instead.\"\n{n}She took it in the spring, on the ridge, in a ring of fire. The Commander kept the scar, and the appointment, for the rest of their life, and never once locked the door.{/n}",
           "Choices": [
             {
               "Text": "Continue",
