@@ -31,7 +31,8 @@ HOLDER_PORTRAIT = {"socoth": "Anevia", "baphomet": "Minagho", "nocticula": "Noct
                    "nocticula_summons": "Arueshalae"}
 PARTNER_PORTRAIT = {"irabeth": "Irabeth", "jerribeth": "Jerribeth", "konomi": "Konomi", "vellexia": "Vellexia", "aranka": "Aranka",
                     "gesmerha": "Gesmerha", "seelah": "Seelah", "dorgelinda": "Dorgelinda", "eritrice": "Eritrice",
-                    "areelu": "Areelu", "chadali": "Chadali", "camellia": "Camellia", "arueshalae": "Arueshalae"}
+                    "areelu": "Areelu", "chadali": "Chadali", "camellia": "Camellia", "arueshalae": "Arueshalae",
+                    "shamira": "Shamira"}
 
 OPENING = ("{n}The accounts of the Commander of the Fifth Crusade, kept by the Commander, since nobody else would believe "
            "them. Every {g|RRT_Debt}debt{/g} below is a thread from the world into my chest, and a creditor does not let a "
