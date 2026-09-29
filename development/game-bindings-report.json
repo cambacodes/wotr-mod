@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-nidalynn\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 2944,
-  "unique_targets": 684,
+  "binding_uses": 2973,
+  "unique_targets": 687,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -72,6 +72,14 @@
     },
     "90481a29cc75f424b9891a55c6dcbb53": {
       "path": "Units/Companions/Seelah/Seelah_NPC_Level1.jbp",
+      "type": "BlueprintUnit"
+    },
+    "3191b154bbed71b4595a5154ad067e90": {
+      "path": "Units/NPC/Commoners/Act_1_WorldwoundIncursion/DefendersHeart/Refugees/Commoner_Noble_Female_Refugee1.jbp",
+      "type": "BlueprintUnit"
+    },
+    "e24a8cb4f83960748b5bead99d58a36e": {
+      "path": "Units/NPC/Commoners/Act_1_WorldwoundIncursion/DefendersHeart/Refugees/Commoner_Noble_Female_Refugee2.jbp",
       "type": "BlueprintUnit"
     },
     "da4c28dd01413694f82b08b728a8c6e5": {
@@ -361,6 +369,10 @@
     "2a75fbc8e86fd514e82117c99fc9e528": {
       "path": "World/Dialogs/c3/AreeluLaboratory/TargonaWings/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
+    },
+    "d2f3ae3a8d7d0eb4aab722e777b7c260": {
+      "path": "World/Dialogs/c3/IvorySanctum/DragonEggs/Cue_0018.jbp",
+      "type": "BlueprintCue"
     },
     "dd8ac86f25e0f6b4cac75386eb528851": {
       "path": "World/Dialogs/c3/IvorySanctum/Golems_DragonEggs/AnswersList_0002.jbp",
