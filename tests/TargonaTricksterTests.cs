@@ -158,6 +158,7 @@ internal static class TargonaTricksterTests
         Program.Walk(oneSoul, killed, (page, _) => quietPages.Add(page));
         check(quietPages.Contains("quiet") && !quietPages.Contains("open") && !quietPages.Contains("cold")
               && oneSoul.Nodes.Single(n => n.Id == "quiet").Text.Contains("you read the scroll", StringComparison.Ordinal)
+              && oneSoul.Nodes.Single(n => n.Id == "quiet").Text.Contains("her brother's light", StringComparison.Ordinal)
               && oneSoul.Nodes.Single(n => n.Id == "quiet").Text.Contains("Nobody turns round", StringComparison.Ordinal),
             "The scroll is not shown read unnoticed, as it happens.");
         var killedOpen = World(story, 3, "trickster.ever", "targona.dead_lab", P + "primed", P + "cost.raised_openly");

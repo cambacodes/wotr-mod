@@ -165020,7 +165020,7 @@
         {
           "Id": "ink",
           "Speaker": "Herrax",
-          "Text": "\"Paying for a corpse before it's a corpse?\" {n}She counts something behind her eyes, and whatever the sum is, it pleases her.{/n} \"Lover, that's the most romantic thing anyone has ever done in this house.\"\n{n}She writes the line herself and blows on the ink.{/n} \"The price is a favour. When I call. You won't ask what.\"",
+          "Text": "\"Paying for a corpse before it's a corpse?\" {n}She counts something behind her eyes, and whatever the sum is, it pleases her.{/n} \"Lover, that's the most romantic thing anyone has ever done in this house.\"\n{n}She writes the line herself and blows on the ink.{/n} \"One thing is not negotiable, lover. My boys take the house's proof from every job: the rings, and whatever the rings are on. The price is a favour. When I call. You won't ask what.\"",
           "Choices": [
             {
               "Text": "\"Put it on my bill.\"",
@@ -165075,7 +165075,7 @@
         {
           "Id": "start",
           "Speaker": "Herrax",
-          "Text": "{n}The letter smells of the Delights: incense, coin and something under both. The hand is round and unhurried.{/n}\n\"Honey. My boys fetched her out of that cellar with everything else she had left. Rings, fingers, the lot. The house keeps what it collects, and it sells what it keeps.\nThe house also keeps a priestess of Nocticula in the back rooms, and she raises what the house sells. Once. What will it be?\"",
+          "Text": "{n}The letter smells of the Delights: incense, coin and something under both. The hand is round and unhurried.{/n}\n\"Honey. My boys fetched her out of that cellar and took the house's proof, as I told you they would: her rings, and the fingers that wore them. I sent word she was dead. The proof was true. The rest of her is downstairs, breathing, and why she is still breathing is a matter of house law. What will it be?\"\n{n}Pinned under the letter is a scrap in another hand, sharp and slanted and shaking:{/n} \"If you buy me, buy all of it. What is left of my hands, and the part of me that will hate you for the receipt. I will not be grateful. I will be *priced*.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -165132,7 +165132,7 @@
         {
           "Id": "told",
           "Speaker": "Herrax",
-          "Text": "\"You told me she was dead, and she was. Now you want to buy her back from me. I *adore* you.\"",
+          "Text": "\"Everyone thinks she is dead, lover. You told them so. So did I. We are both liars, and now you want to buy the lie back from me. I *adore* you.\"",
           "Choices": [
             {
               "Text": "[Order from the house menu] \"One Chivarro. Forever. My pockets are deep enough.\"",
@@ -165174,7 +165174,7 @@
         {
           "Id": "paid",
           "Speaker": "Herrax",
-          "Text": "\"'One Chivarro, forever. Deposit paid.' My own hand, lover. I laughed while I wrote it.\" {n}Under it, the priestess's fee is struck through: on the house.{/n}\n\"The favour stands. When I call.\"",
+          "Text": "\"'One Chivarro, forever. Deposit paid.' My own hand, lover. I laughed while I wrote it. Then my boys brought her in and my clerk read the order back to me, and I stopped laughing. *Forever*. A corpse is not forever, honey; a corpse is a fortnight, and then it is a smell. My house does not deliver short on a paid order. So I had to keep her breathing.\" {n}Under it, in the same round hand: \"Out-lawyered in my own house. I adore you. Delivered, less the proof.\"{/n}\n\"The favour stands. When I call.\"",
           "Choices": [
             {
               "Text": "\"Deal.\"",
@@ -165194,7 +165194,7 @@
         {
           "Id": "late",
           "Speaker": "Herrax",
-          "Text": "{n}The next page is the order, written while the ink on the first was still wet: \"One Chivarro, forever.\" Your name is waiting for its signature.{/n}\n\"Late orders cost double, honey. Two favours. And the priestess does not work for nothing: three hundred in crusade script, and a writ for the rest.\"",
+          "Text": "{n}The next page is the order, written while the ink on the first was still wet: \"One Chivarro, forever.\" Your name is waiting for its signature.{/n}\n\"Nobody ordered her forever in time, lover, so I kept her breathing for whoever would bid the most. That is you, now. Late orders cost double: two favours. And a month of feeding stock nobody had paid for is not free: three hundred in crusade script, and a writ for the rest.\"",
           "Choices": [
             {
               "Text": "\"Deal. Both favours.\"",
@@ -165231,7 +165231,7 @@
         {
           "Id": "sale",
           "Speaker": "Chivarro",
-          "Text": "{n}The last page is in another hand, sharp and slanted, written by someone who has just learned to hold a pen again.{/n}\n\"Sold. In my own house. To *you*. Under 'goods'.\" {n}The pen has gone through the paper twice.{/n}\n\"Here is my price, since nobody asked it. The bill. Burn it, and I come to Drezen owing you nothing and hating you for the favour. Keep it, and I come anyway, and you sleep with one eye open for the rest of your short life.\"",
+          "Text": "{n}The last page is in another hand, sharp and slanted, written by someone who has just learned to hold a pen again with the fingers she has left.{/n}\n\"Sold. In my own house. To *you*. Under 'goods'.\" {n}The pen has gone through the paper twice.{/n}\n\"Here is my price, since nobody asked it. The bill. Burn it, and I come to Drezen owing you nothing and hating you for the favour. Keep it, and I come anyway, and you sleep with one eye open for the rest of your short life.\"",
           "Choices": [
             {
               "Text": "[Burn the bill] \"Nothing. Get dressed.\"",
@@ -195274,7 +195274,7 @@
         {
           "Id": "scroll",
           "Speaker": "Narrator",
-          "Text": "{n}You show her what is inside your sleeve: a scroll of raise dead from the crusade's chaplains, signed out against your name for next month's relic tithe. It is a cleric's scroll, and you are no cleric. Your hands have learned to use any made thing as if it had been made for them, and so lightly that nobody ever sees them do it.{/n}\n{n}\"If you fall,\" you tell her, \"I will read it over you before they carry anyone out, and nobody in this room will know. You will wake alone, and you will wake weaker. Stay down until we are gone.\"{/n}",
+          "Text": "{n}You show her what is inside your sleeve: a scroll of raise dead from the crusade's chaplains, signed out against your name for next month's relic tithe. It is a cleric's scroll, and you are no cleric. Your hands have learned to use any made thing as if it had been made for them, and so lightly that nobody ever sees them do it.{/n}\n{n}\"If you fall,\" you tell her, \"I will read it over you before they carry anyone out, and nobody in this room will know. And I'll have my hand on you while I read, with his light in it. You made the sword it came from. Whatever you are when the scroll finds you, you'll know that. You will wake alone, and you will wake weaker. Stay down until we are gone.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -195322,7 +195322,7 @@
         {
           "Id": "chooses",
           "Speaker": "Targona",
-          "Text": "{n}She is quiet for a long time. Somewhere below, in Areelu's cells, something is screaming, and she turns her head towards it the way a healer does, without thinking.{/n}\n\"If I wake,\" she says at last, \"I will not hide. I will go to the Hand first, and to my healers, and I will tell them what we did and why, and I will let them judge it. Whatever that costs you. That is my price.\"\n{n}She lowers her head, as she did before, and waits for you to choose.{/n}",
+          "Text": "{n}She is quiet. Somewhere below, in Areelu's cells, something is screaming, and she turns her head towards it the way a healer does, without thinking.{/n}\n\"If I wake,\" she says at last, \"I will not hide. I will go to the Hand first, and to my healers, and I will tell them what we did and why, and I will let them judge it. Whatever that costs you. That is my price.\"\n{n}She lowers her head, as she did before, and waits for you to choose.{/n}",
           "Choices": [
             {
               "Text": "[Accept her price] \"Tell them everything.\"",
@@ -195402,7 +195402,7 @@
         {
           "Id": "scroll",
           "Speaker": "Narrator",
-          "Text": "{n}You show her what is inside your sleeve: a scroll of raise dead from the crusade's chaplains, signed out against your name for next month's relic tithe. You have no gift for hiding the use of a thing. If you read it, you will read it on your knees over her body, aloud, with every soul in this room watching.{/n}\n{n}\"If you fall,\" you tell her, \"I will bring you back where you fell. They will see me do it. You will wake weaker, and they will know why.\"{/n}",
+          "Text": "{n}You show her what is inside your sleeve: a scroll of raise dead from the crusade's chaplains, signed out against your name for next month's relic tithe. You have no gift for hiding the use of a thing. If you read it, you will read it on your knees over her body, aloud, with every soul in this room watching.{/n}\n{n}\"If you fall,\" you tell her, \"I will bring you back where you fell, with my hand on you and his light in it. You made the sword it came from; you'll know it. They will see me do it. You will wake weaker, and they will know why.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -195450,7 +195450,7 @@
         {
           "Id": "chooses",
           "Speaker": "Targona",
-          "Text": "{n}She is quiet for a long time. Somewhere below, in Areelu's cells, something is screaming, and she turns her head towards it the way a healer does, without thinking.{/n}\n\"If I wake,\" she says at last, \"I will not hide. I will go to the Hand first, and to my healers, and I will tell them what we did and why, and I will let them judge it. Whatever that costs you. That is my price.\"\n{n}She lowers her head, as she did before, and waits for you to choose.{/n}",
+          "Text": "{n}She is quiet. Somewhere below, in Areelu's cells, something is screaming, and she turns her head towards it the way a healer does, without thinking.{/n}\n\"If I wake,\" she says at last, \"I will not hide. I will go to the Hand first, and to my healers, and I will tell them what we did and why, and I will let them judge it. Whatever that costs you. That is my price.\"\n{n}She lowers her head, as she did before, and waits for you to choose.{/n}",
           "Choices": [
             {
               "Text": "[Accept her price] \"Tell them everything.\"",
@@ -195620,7 +195620,7 @@
         {
           "Id": "quiet",
           "Speaker": "Narrator",
-          "Text": "{n}The laboratory. You have lived it again every night since:{/n}\n{n}Your blade goes in. She falls, the way the story always meant her to. The room turns towards the door and whatever Areelu has left waiting there. You kneel beside her as if to close her eyes, and under your breath, no louder than a prayer for the dead, you read the scroll from your sleeve to its last word. It crumbles to ash against your palm. Nobody turns round. Her chest does not move. You leave her there, as she asked.{/n}",
+          "Text": "{n}The laboratory. You have lived it again every night since:{/n}\n{n}Your blade goes in. She falls, the way the story always meant her to. The room turns towards the door and whatever Areelu has left waiting there. You kneel beside her as if to close her eyes, and under your breath, no louder than a prayer for the dead, you read the scroll from your sleeve to its last word, with your other palm flat over her heart and her brother's light in it, turned down to the warmth of a hand. It crumbles to ash against your palm. For one breath the light under your hand stings the way it stung at the Nexus, when the two of you burned for him together, and then it is only warm. Nobody turns round. Her chest does not move. You leave her there, as she asked.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -195636,7 +195636,7 @@
         {
           "Id": "open",
           "Speaker": "Narrator",
-          "Text": "{n}The laboratory. You have lived it again every night since:{/n}\n{n}Your blade goes in. She falls, the way the story always meant her to. You are on your knees beside her before anyone can move, the scroll open, reading aloud. Every face in the room turns to you. Someone by the door says your name like a question. The last word, and the scroll goes to ash, and her chest does not move, and you stand up and say, \"Leave her. She'll come,\" and walk out past all of them. Nobody asks you what they saw. They will ask each other for months.{/n}",
+          "Text": "{n}The laboratory. You have lived it again every night since:{/n}\n{n}Your blade goes in. She falls, the way the story always meant her to. You are on your knees beside her before anyone can move, the scroll open, reading aloud, your other hand on her heart, and her brother's light coming out through your fingers white and plain as day. Every face in the room turns to you. Someone by the door says your name like a question. The last word, and the scroll goes to ash, and her chest does not move, and you stand up and say, \"Leave her. She'll come,\" and walk out past all of them. Nobody asks you what they saw. They will ask each other for months.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -195763,7 +195763,7 @@
         {
           "Id": "pikeman",
           "Speaker": "Targona",
-          "Text": "\"Commander. There was a pikeman in your infirmary last night with a fever that would not break. It broke at dawn. I thought you should know that first.\"\n{n}She nods at the two new cots.{/n} \"Those men went to the wall unblessed because of me. Heaven's envoy will not bless what he cannot explain, and he cannot explain me. I have told them I am sorry. They did not know what for.\"\n{n}The black wing folds against her back as if it too is listening.{/n}\n{n}She sets the basin down with both hands. It is only half full, and still it shakes.{/n}\n\"I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. Then nothing, and then I was breathing, and every breath hurt.\" {n}She flexes her fingers.{/n} \"I cannot lift what I lifted a week ago. That is what raising costs. I knew it would.\"\n\"I went to the Hand's chaplain before I came here, as I said I would. I told him what was done, and by whom. He did not say anything for a long time. Then he blessed me, and not you.\"",
+          "Text": "\"Commander. There was a pikeman in your infirmary last night with a fever that would not break. It broke at dawn. I thought you should know that first.\"\n{n}She nods at the two new cots.{/n} \"Those men went to the wall unblessed because of me. Heaven's envoy will not bless what he cannot explain, and he cannot explain me. I have told them I am sorry. They did not know what for.\"\n{n}The black wing folds against her back as if it too is listening.{/n}\n{n}She sets the basin down with both hands. It is only half full, and still it shakes.{/n}\n\"I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. Then nothing, and in the nothing, a light I made with my own hands, a long time ago, for my brother. I went towards it. Then I was breathing, and every breath hurt.\" {n}She flexes her fingers.{/n} \"I cannot lift what I lifted a week ago. That is what raising costs. I knew it would.\"\n\"I went to the Hand's chaplain before I came here, as I said I would. I told him what was done, and by whom. He let the candle burn down a finger's width before he spoke. Then he blessed me, and not you.\"",
           "Choices": [
             {
               "Text": "[Tell her the truth] \"I struck you. I'd rather you hear it from me than from Heaven.\"",
@@ -195831,7 +195831,7 @@
         {
           "Id": "lie",
           "Speaker": "Targona",
-          "Text": "{n}She looks at you for a long time, the way she looked at the wing when Areelu first showed it to her.{/n}\n\"I was there, Commander. I saw your face. It was yours.\"\n{n}She turns back to the pikeman.{/n}\n\"You are lying to me at the foot of a dying man's cot.\" {n}She does not lower her voice, and the pikeman in the next cot turns his head.{/n} \"Go now. Come back when you can say it.\"",
+          "Text": "{n}She looks at you the way she looked at the wing when Areelu first showed it to her: as a wound she will have to live with.{/n}\n\"I was there, Commander. I saw your face. It was yours.\"\n{n}She turns back to the pikeman.{/n}\n\"You are lying to me at the foot of a dying man's cot.\" {n}She does not lower her voice, and the pikeman in the next cot turns his head.{/n} \"Go now. Come back when you can say it.\"",
           "Choices": [
             {
               "Text": "[Go] Leave her to her work.",
@@ -196233,7 +196233,7 @@
         {
           "Id": "dawn",
           "Speaker": "Targona",
-          "Text": "{n}You hold his hand when he cannot breathe, and talk to him about nothing when he can. Towards the fourth hour he asks for his mother, and you answer him as if you were her. Targona comes and goes and does not interrupt.{/n}\n{n}Dawn comes grey through the canvas. The sergeant is asleep, truly asleep, for the first time in three days. Targona puts her hand on his forehead, then takes it away and looks at you.{/n}\n\"Now you may ask.\"",
+          "Text": "{n}You hold his hand when he cannot breathe, and talk to him about nothing when he can. Towards the fourth hour he asks for his mother, and you answer him as if you were her. Targona comes and goes and does not interrupt.{/n}\n{n}Dawn comes grey through the canvas. The sergeant is asleep, truly asleep, the grey gone out of his lips. Targona puts her hand on his forehead, then takes it away and looks at you.{/n}\n\"Now you may ask.\"",
           "Choices": [
             {
               "Text": "[Ask her] \"Stay with me. Not for a season.\"",
@@ -196259,7 +196259,7 @@
         {
           "Id": "refused",
           "Speaker": "Targona",
-          "Text": "\"Not while he's still dying.\" {n}She does not look away from the cot.{/n}\n\"Ask me when the ward is quiet. And ask me without a trick in your pocket. I will know.\"",
+          "Text": "\"Not while he's still dying.\" {n}Her hand stays on the sergeant's chest, counting.{/n}\n\"Ask me when the ward is quiet. And ask me without a trick in your pocket. I will know.\"",
           "Choices": [
             {
               "Text": "[Accept her answer] \"I'll wait.\"",
@@ -196309,7 +196309,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}Her cot is behind a hanging of sacking at the end of the ward, narrow as a soldier's. She draws the sacking shut and stands with her back to it, and for the first time since the laboratory she has nothing in her hands.{/n}\n{n}\"The wing,\" she says. She turns, so that you can see it: bone and scab and something like torn silk. \"Everyone looks away from it. Don't.\"{/n}\n{n}You don't. You put your hand on it, and she shudders from her shoulders to her heels, and kisses you as if she has been holding her breath since the laboratory.{/n}\n\"I have tended every body in this ward,\" she says against your mouth. \"I want one that is mine to want. Tonight I want yours.\" {n}She is warm, warmer than anything mortal, and she pulls the plain infirmary smock over her head and lets it fall, and then she is undoing your buckles with a healer's quick, certain hands, and laughing under her breath when one sticks.{/n}\n{n}Both wings open over the two of you, one white and one black. She draws you down under them onto the cot, and settles over you, and takes your hands and puts them on her hips, and holds them there, and bends to kiss you again with her hair falling round both your faces.{/n}",
+          "Text": "{n}Her cot is behind a hanging of sacking at the end of the ward, narrow as a soldier's. She draws the sacking shut and stands with her back to it, and her hands, which have not been empty since the laboratory, are empty.{/n}\n{n}\"The wing,\" she says. She turns, so that you can see it: bone and scab and something like torn silk. \"Everyone looks away from it. Don't.\"{/n}\n{n}You don't. You put your hand on it, and she shudders from her shoulders to her heels, and kisses you as if she has been holding her breath since the laboratory.{/n}\n\"I have tended every body in this ward,\" she says against your mouth. \"I want one that is mine to want. Tonight I want yours.\" {n}She is warm, warmer than anything mortal, and she pulls the plain infirmary smock over her head and lets it fall, and then she is undoing your buckles with a healer's quick, certain hands, and laughing under her breath when one sticks.{/n}\n{n}Both wings open over the two of you, one white and one black. She draws you down under them onto the cot, and settles over you, and takes your hands and puts them on her hips, and holds them there, and bends to kiss you again with her hair falling round both your faces.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -196440,7 +196440,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}Her cot is behind a hanging of sacking at the end of the ward, narrow as a soldier's. She draws the sacking shut and stands with her back to it, and for the first time since the laboratory she has nothing in her hands.{/n}\n{n}\"The wing,\" she says. She turns, so that you can see it: bone and scab and something like torn silk. \"Everyone looks away from it. Don't.\"{/n}\n{n}You don't. You put your hand on it, and she shudders from her shoulders to her heels, and kisses you as if she has been holding her breath since the laboratory.{/n}\n\"I have tended every body in this ward,\" she says against your mouth. \"I want one that is mine to want. Tonight I want yours.\" {n}She is warm, warmer than anything mortal, and she pulls the plain infirmary smock over her head and lets it fall, and then she is undoing your buckles with a healer's quick, certain hands, and laughing under her breath when one sticks.{/n}\n{n}Both wings open over the two of you, one white and one black. She draws you down under them onto the cot, and settles over you, and takes your hands and puts them on her hips, and holds them there, and bends to kiss you again with her hair falling round both your faces.{/n}",
+          "Text": "{n}Her cot is behind a hanging of sacking at the end of the ward, narrow as a soldier's. She draws the sacking shut and stands with her back to it, and her hands, which have not been empty since the laboratory, are empty.{/n}\n{n}\"The wing,\" she says. She turns, so that you can see it: bone and scab and something like torn silk. \"Everyone looks away from it. Don't.\"{/n}\n{n}You don't. You put your hand on it, and she shudders from her shoulders to her heels, and kisses you as if she has been holding her breath since the laboratory.{/n}\n\"I have tended every body in this ward,\" she says against your mouth. \"I want one that is mine to want. Tonight I want yours.\" {n}She is warm, warmer than anything mortal, and she pulls the plain infirmary smock over her head and lets it fall, and then she is undoing your buckles with a healer's quick, certain hands, and laughing under her breath when one sticks.{/n}\n{n}Both wings open over the two of you, one white and one black. She draws you down under them onto the cot, and settles over you, and takes your hands and puts them on her hips, and holds them there, and bends to kiss you again with her hair falling round both your faces.{/n}",
           "Choices": [
             {
               "Text": "Continue",

@@ -8,8 +8,10 @@ d8b51192); "Any of them can be yours for a night... Or forever, if your pockets 
 asks for the kill in advance (Herraxa_dialogue/Cue_0045_KillChivarro 49135105) and her house strips the dead: rings "cut off a
 dead body along with the fingers" (Cue_0052 d6955c2a). "Closets grant you freedom. You can step inside one, and exit from
 another..." (SocothBriefing/Cue_0011 2f4be0bd). Authored, and labelled as authored: the Commander volunteering as the
-failure of record; the unpaid seal that keeps the body it marks ("The dead do not bleed."); the linen press; the priestess of
-Nocticula in the Delights' back rooms who raises what the house sells, once (a servant of the goddess, never Nocticula).
+failure of record; the unpaid seal that keeps the body it marks ("The dead do not bleed."); the linen press; Herrax's
+house never destroying stock it can sell (polish pass: the killed-Chivarro device is her own house's canon, not a raise;
+Herrax reported her dead and delivered the proof, rings "cut off ... along with the fingers", and kept the rest of her
+alive in the cellar for a buyer; memory rrt-unique-devices).
 """
 import copy
 
@@ -363,7 +365,7 @@ SCENES.append(scene(P + "chivarro_dead.deposit", "The house special", "Herrax", 
          "ink", mythic="Trickster"),
        c('"Forget I asked."', abort=True)),
     hx("ink", '''"Paying for a corpse before it's a corpse?" {n}She counts something behind her eyes, and whatever the sum is, it pleases her.{/n} "Lover, that's the most romantic thing anyone has ever done in this house."
-{n}She writes the line herself and blows on the ink.{/n} "The price is a favour. When I call. You won't ask what."''',
+{n}She writes the line herself and blows on the ink.{/n} "One thing is not negotiable, lover. My boys take the house's proof from every job: the rings, and whatever the rings are on. The price is a favour. When I call. You won't ask what."''',
        c('"Put it on my bill."', flags=(DEPOSIT, FAVOR)),
        c('"No. No favours with no name."', abort=True)),
 ], requires=("trickster", "herrax.asked_kill_chivarro"), forbids=("chivarro.dead", "chivarro.searching", DEPOSIT), last=4,
@@ -372,23 +374,23 @@ SCENES.append(scene(P + "chivarro_dead.deposit", "The house special", "Herrax", 
 
 letter(P + "chivarro_dead.bought", "The house always collects", [
     *varied("start", hx, '''{n}The letter smells of the Delights: incense, coin and something under both. The hand is round and unhurried.{/n}
-"Honey. My boys fetched her out of that cellar with everything else she had left. Rings, fingers, the lot. The house keeps what it collects, and it sells what it keeps.
-The house also keeps a priestess of Nocticula in the back rooms, and she raises what the house sells. Once. What will it be?"''',
-            [("told", hx, '"You told me she was dead, and she was. Now you want to buy her back from me. I *adore* you."',
+"Honey. My boys fetched her out of that cellar and took the house's proof, as I told you they would: her rings, and the fingers that wore them. I sent word she was dead. The proof was true. The rest of her is downstairs, breathing, and why she is still breathing is a matter of house law. What will it be?"
+{n}Pinned under the letter is a scrap in another hand, sharp and slanted and shaking:{/n} "If you buy me, buy all of it. What is left of my hands, and the part of me that will hate you for the receipt. I will not be grateful. I will be *priced*."''',
+            [("told", hx, '"Everyone thinks she is dead, lover. You told them so. So did I. We are both liars, and now you want to buy the lie back from me. I *adore* you."',
               "herrax.told_chivarro_dead")],
             (c('[Order from the house menu] "One Chivarro. Forever. My pockets are deep enough."', "paid", requires=(DEPOSIT,),
                mythic="Trickster"),
              c('[Order from the house menu] "One Chivarro. Forever. My pockets are deep enough. Write it now; I\'ll sign."', "late",
                requires=("trickster",), forbids=(DEPOSIT,), mythic="Trickster"),
              c('"Nothing. Leave her dead."', flags=(DECL_C,)))),
-    hx("paid", '''"'One Chivarro, forever. Deposit paid.' My own hand, lover. I laughed while I wrote it." {n}Under it, the priestess's fee is struck through: on the house.{/n}
+    hx("paid", '''"'One Chivarro, forever. Deposit paid.' My own hand, lover. I laughed while I wrote it. Then my boys brought her in and my clerk read the order back to me, and I stopped laughing. *Forever*. A corpse is not forever, honey; a corpse is a fortnight, and then it is a smell. My house does not deliver short on a paid order. So I had to keep her breathing." {n}Under it, in the same round hand: "Out-lawyered in my own house. I adore you. Delivered, less the proof."{/n}
 "The favour stands. When I call."''',
        c('"Deal."', "sale", alignment=("Evil", 1))),
     hx("late", '''{n}The next page is the order, written while the ink on the first was still wet: "One Chivarro, forever." Your name is waiting for its signature.{/n}
-"Late orders cost double, honey. Two favours. And the priestess does not work for nothing: three hundred in crusade script, and a writ for the rest."''',
+"Nobody ordered her forever in time, lover, so I kept her breathing for whoever would bid the most. That is you, now. Late orders cost double: two favours. And a month of feeding stock nobody had paid for is not free: three hundred in crusade script, and a writ for the rest."''',
        c('"Deal. Both favours."', "sale", flags=(FAVOR, LATE), alignment=("Evil", 1), crusade=("Finances", -300)),
        c('"Too rich. Leave her dead."', flags=(DECL_C,))),
-    cv("sale", '''{n}The last page is in another hand, sharp and slanted, written by someone who has just learned to hold a pen again.{/n}
+    cv("sale", '''{n}The last page is in another hand, sharp and slanted, written by someone who has just learned to hold a pen again with the fingers she has left.{/n}
 "Sold. In my own house. To *you*. Under 'goods'." {n}The pen has gone through the paper twice.{/n}
 "Here is my price, since nobody asked it. The bill. Burn it, and I come to Drezen owing you nothing and hating you for the favour. Keep it, and I come anyway, and you sleep with one eye open for the rest of your short life."''',
        c('[Burn the bill] "Nothing. Get dressed."', flags=(RET_C, CH_IN, BURNED, STARTED), alignment=("Chaotic", 1)),
