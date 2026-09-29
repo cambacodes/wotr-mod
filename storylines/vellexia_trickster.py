@@ -66,7 +66,7 @@ FO = {DEAD: RETURNED, "vellexia.early_fight": RETURNED, "vellexia.final_fight": 
 PRESENCES = {
     # A spawned copy of her Upper City unit (CutsceneNeutrals, no dialog) beside Fye's bar; Dialog "hub" makes it
     # talkable. If Fye has left the capital the anchor fails and vellexia.presence.failed opens the quarters twin.
-    "vellexia.presence": dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=FYE, Side="left", Distance=1.5),
+    "vellexia.presence": dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=FYE, Side="front", Distance=2.0),
                               Requires=["trickster.ever", "vellexia.trickster.in_person"],
                               Forbids=["vellexia.closed", KEPT, VISITED], MinChapter=5, MaxChapter=5, AnswerLists=[],
                               Dialog="hub",
@@ -142,7 +142,7 @@ letter("vellexia.trickster.mirrored.fetch", "A mirror nobody will loot", [
       c('[Let the Upper City keep its mirror] "Somebody else can look at her."', "left")),
     nar("paid", '''{n}Vask's crate comes up the rift road on the ninth day, packed in straw that is warm to the touch. He will not unload it himself. His porters set it down in the corner of your stores and back away from it as if it had spoken.{/n}
 {n}Perhaps it had. None of them will say.{/n}''',
-      c('"Sign for it. I\'ll deal with her."', flags=(PRIMED, LATE, STARTED))),
+      c('"Put it in the stores. I\'ll deal with her."', flags=(PRIMED, LATE, STARTED))),
     nar("left", '''{n}You send Vask a single line: no. He sends back a single line of his own, which is his invoice for the letter.{/n}
 {n}In Alushinyrra, a mirror stands under a sheet in an empty salon, and goes on standing there.{/n}''',
       c('"Pay the man for his ink."', flags=(DECLINED,))),
@@ -151,7 +151,7 @@ letter("vellexia.trickster.mirrored.fetch", "A mirror nobody will loot", [
 
 NICE_FLAGS = (RETURNED, UNMIRRORED, BARE, PRESUMED, KNOWN, STARTED)
 CRUEL_FLAGS = (RETURNED, KEPT, WATCHED, PRESUMED, KNOWN, STARTED)
-NICE_JOKE = '[Play a nice trick on Vellexia] "Hold still. I\'m going to tell it backwards."'
+NICE_JOKE = '[Play a nice trick on Vellexia] "Stay just so. I\'m going to tell it backwards."'
 CRUEL_JOKE = '[Play a cruel trick on Vellexia] "Stay a mirror. You\'ll never be bored. Everyone looks at you."'
 
 
@@ -162,7 +162,7 @@ def unmirror_nodes():
 "Oh, do go on. Tell {mf|him|her} the part where I was magnificent."''',
               c(NICE_JOKE, "nice", mythic="Trickster", alignment=("Chaotic", 1), forbids=(FAILED,)),
               c(CRUEL_JOKE, "cruel", mythic="Trickster", alignment=("Evil", 1), forbids=(FAILED,)),
-              c('[Tell it backwards, without the sparks] "Hold still. I\'m going to tell it backwards."', "no_sparks",
+              c('[Tell it backwards, without the sparks] "Stay just so. I\'m going to tell it backwards."', "no_sparks",
                 alignment=("Chaotic", 1), requires=(FAILED,)),
               c('[Leave her in the glass] "Stay a mirror. You\'ll never be bored. Everyone looks at you."', "no_sparks_cruel",
                 alignment=("Evil", 1), requires=(FAILED,)),
@@ -186,7 +186,7 @@ def unmirror_nodes():
 
 storyteller("vellexia.trickster.mirrored.unmirror", "The joke told backwards",
     '[Have the crated mirror brought in] "This was a succubus, once. Tell me its story."', [
-    teller("start", '''{n}The old elf has the porters stand the crate against his shelves. He lifts the sheet himself and looks into the haze for a long time.{/n}
+    teller("start", '''{n}The old elf has the porters stand the crate against his shelves. He lifts the sheet himself and looks into the haze until the lamp beside it starts to gutter.{/n}
 "Mahogany that remembers being skin. She was bored, Commander. Then she was surprised. Then she was this." {n}He lets the sheet fall back halfway.{/n} "I read the story forwards. I cannot read it any other way. You, I think, can."''',
            c("Continue", "glass")),
     *unmirror_nodes(),
@@ -195,7 +195,7 @@ storyteller("vellexia.trickster.mirrored.unmirror", "The joke told backwards",
 
 # The Storyteller is dead: the crate has stood in the quartermaster's stores since it arrived. Fye leaves the capital
 # when the tavern is lost (Fye_Bartender_NotInCapital 60d1237d), so the stores host this twin, not his bar.
-stores("vellexia.trickster.mirrored.unmirror_stores", "Signed for",
+stores("vellexia.trickster.mirrored.unmirror_stores", "Behind the lamp oil",
     '[Ask about the crate in the corner] "That mirror. Take the straw off it."', [
     nar("start", '''"Your glass, Commander." {n}Wilcer Garms has had the crate stood in the far corner of the stores, behind the lamp oil, as far from the door as it will go.{/n} "It hums when the stores go quiet. The boys won't count stock near it after dark. I'd like it gone, or I'd like it paid for."
 {n}There is nobody left in Drezen who reads the stories in things. You will have to tell this one yourself, from the end.{/n}''',
@@ -242,7 +242,7 @@ letter("vellexia.trickster.sword.late_portrait", "A likeness by the yard", [
       c('[Pay Orrel Vask to cut one portrait out of her gallery] "The one with no hands. Leave the frame."', "paid",
         crusade=("Finances", -200)),
       c('[Let the gallery burn with the rest] "She\'s had enough admirers."', "refused")),
-    nar("paid", '''{n}The canvas comes up the rift road rolled in oilcloth, and Vask's porter will not hand it over until you have signed twice. It is heavier than a canvas should be.{/n}''',
+    nar("paid", '''{n}The canvas comes up the rift road rolled in oilcloth, and Vask's porter will not hand it over until you have counted his master's second fee into his palm. It is heavier than a canvas should be.{/n}''',
       c('"Keep it dry."', flags=(PRIMED, LATE, STARTED))),
     nar("refused", '''{n}You write back one word. Vask sells the rest of the gallery to a factor from the Fleshmarkets, and the unfinished one goes into a brazier on a wharf.{/n}''',
       c('"Enough."', flags=(DECLINED,))),
@@ -268,7 +268,7 @@ def likeness_nodes():
 
 LIKENESS_CHOICES = (
     c(LIKENESS_JOKE, "spell", mythic="Trickster", alignment=("Chaotic", 1), forbids=(FAILED,)),
-    c('[Cast her spell from memory] "I watched you do this to a juggler. Hold still."', "no_sparks",
+    c('[Cast her spell from memory] "I watched you do this to a juggler. Stay where you are."', "no_sparks",
       alignment=("Chaotic", 1), requires=(FAILED,)),
 )
 
@@ -341,7 +341,7 @@ def visit_nodes(place_text):
 "Predict me, sweetheart. What do I do next?"''',
           c('[Tell her how it was done] "A wine-factor, a boast and nine days. That\'s all a prophecy is."', "gave"),
           c('[Keep the trick] "A trick explained is a trick spent. Guess."', "kept")),
-        nar("gave", '''{n}She watches as you explain it, and not your face. When you finish she is quiet for a long moment, which is the most frightening thing you have seen her do.{/n}''',
+        nar("gave", '''{n}She watches as you explain it, and not your face. When you finish she says nothing at all, which is the most frightening thing you have seen her do.{/n}''',
             c("Continue", "gave_end")),
         v("gave_end", '''"Again. Slower."
 {n}You do it again. She mouths it with you, the way a duellist mirrors a lesson, and her eyes do not leave you once.{/n}
@@ -448,13 +448,13 @@ letter("vellexia.trickster.after.night", "Less glass", [
     v("hands", '''"You said the next part might be difficult to come back from. I dislike waiting to find out whether I shall be bored by your corpse." {n}She holds up her unfinished hands.{/n}
 "These still do nothing. So you will have to do the undressing, sweetheart. All of it. I shall watch, and I shall tell you when you are doing it wrong."''',
       c("Continue", "threshold")),
-    nar("threshold", '''{n}She is warm the way a banked fire is warm. When she kisses you it is slow and thorough and completely without mercy, and her teeth close on your lower lip just hard enough to make you understand they are not a human woman's.{/n}
+    nar("threshold", '''{n}She is warm the way a banked fire is warm. When she kisses you it is slow and thorough and completely without mercy, and her teeth find the corner of your mouth, sharp enough to make you understand they are not a human woman's.{/n}
 {n}The dress goes to the floor in one whisper of silk. She stands in the lamplight in nothing but her skin and lets you look, and watches you look, with the open, greedy pleasure of a collector who has finally been given the piece she wanted. Then she pushes you back onto your own bed, climbs over you with her knees either side of your hips, and settles astride you, and bends down until her hair falls around both your faces like a curtain.{/n}
 "Bare your throat, sweetheart," she breathes against it. "Let us see which of us bites."''',
       c("Continue", "morning")),
     nar("morning", '''{n}Morning. The bed is empty and the shutters are open. There is a bruise on your throat the exact shape of her mouth, and a note on your maps of the Worldwound in handwriting that slopes like a laugh.{/n}
 {n}"Come back alive. I have not finished with you, and I refuse to be bored by a monument."{/n}''',
-      c('[Button the collar over the bruise.]', flags=("vellexia.trickster.night_kept",))),
+      c('[Wind a scarf over the bruise.]', flags=("vellexia.trickster.night_kept",))),
 ], requires=("trickster.ever", VISITED, "vellexia.committed"), forbids=(KEPT, "vellexia.trickster.night_kept"), delay=12)
 
 
@@ -481,7 +481,7 @@ MIRROR_PARAGRAPHS = (
 )
 
 SCENES.append(scene("vellexia.trickster.epilogue.commit", "Kept waiting", "Epilogue", 5, "", [
-    nar("start", '''{n}Lady Vellexia finished the conversation after the war, in her own time and at her own party. She sent for the Commander the way she sent for everyone, and was, for the first time anyone could remember, kept waiting. She found this so novel that she did not have the Commander upholstered.{/n}
+    nar("start", '''{n}Lady Vellexia finished the conversation after the war, in her own time and at her own party. She sent for the Commander the way she sent for everyone, and was kept waiting, which nobody could remember happening to her before. She found this so novel that she did not have the Commander upholstered.{/n}
 {n}The terms she named that night were hers. The Commander agreed to them, which she found almost as surprising.{/n}''',
       c(), paragraphs=TRICKSTER_PARAGRAPHS)],
     requires=(LATE_COMMITTED,), forbids=("vellexia.committed", "vellexia.closed", DECLINED, KEPT, "vellexia.farewell_kept"),

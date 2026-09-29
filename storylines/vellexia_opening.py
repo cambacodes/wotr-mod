@@ -421,7 +421,7 @@ s("a_question_kept", "The question she chooses", '"You had another hour for me."
 {n}She leans back, apparently at ease.{/n}
 "Ask. I retain the right to refuse and admit defeat, as you so courageously insisted. I am beginning to appreciate that clause."
 "What do you want from me that I could actually choose to give?"
-{n}Her ease changes. She does not look away.{/n}
+{n}Her ease changes. Her eyes stay on you, and something behind them has started to count.{/n}
 "That is a much better question than whether I have ever loved someone. I had prepared a beautiful lie for that one."''', c('[Wait for the answer she owes.]', "answer")),
     n("unowed", "Vellexia", '''"No. You came back without an enforceable return on your time. That was either generosity or a failure to read the market."
 "Perhaps I enjoyed the company."
