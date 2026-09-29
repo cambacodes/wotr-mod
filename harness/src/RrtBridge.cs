@@ -95,6 +95,10 @@ namespace RRT.TestHarness
             ("Tirabade.GuestPresence", "get_SaveKey", "instance-method()", "String"),
         };
 
+        /// <summary>Members the presence spike (-Spike Presence) uses: the residence spike's, plus the E12d quiet-copy result.</summary>
+        public static readonly (string Type, string Member, string Kind, string Shape)[] PresenceSpikeExpectations = SpikeExpectations
+            .Concat(new[] { ("Tirabade.GuestPresence", "get_LastQuiet", "instance-method()", "CopyQuiet") }).ToArray();
+
         public static string Shape(Type t)
         {
             if (t.IsArray) return Shape(t.GetElementType()!) + "[]";
@@ -233,6 +237,8 @@ namespace RRT.TestHarness
         public static Exception? PresenceError(object presence) => (Exception?)Call(presence, "get_LastError");
         /// <summary>The Player.SettingsList key of the presence record.</summary>
         public static string PresenceSaveKey(object presence) => (string)Call(presence, "get_SaveKey")!;
+        /// <summary>E12d: the repairs the last tick applied to the copy (a CopyQuiet flags name, "None" when it was already inert).</summary>
+        public static string? PresenceQuiet(object presence) => Call(presence, "get_LastQuiet")?.ToString();
         /// <summary>E12c hub dialogs by presence key (BlueprintDialog values).</summary>
         public IDictionary PresenceHubs => (IDictionary)Static("presenceHubs")!;
 

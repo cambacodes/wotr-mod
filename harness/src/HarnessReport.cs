@@ -143,6 +143,8 @@ namespace RRT.TestHarness
         public RoundTripResult RoundTrip = new RoundTripResult();
         /// <summary>-Spike Residence only (omitted otherwise): the P2 residence feasibility spike for this save.</summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public ResidenceSpikeResult? Residence;
+        /// <summary>-Spike Presence only (omitted otherwise): the E12d quiet-copy check for this save.</summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public PresenceSpikeResult? PresenceSpike;
         public List<CapturedLog> Exceptions = new List<CapturedLog>();
         public double TotalMs;
         public bool Passed;
@@ -232,9 +234,11 @@ namespace RRT.TestHarness
                 // -Spike Residence: a failed check is a feasibility finding (P3' fallback), reported like a test failure.
                 if (save.Residence != null && !save.Residence.Passed)
                     s.Failures.Add(save.Save + ": residence spike: " + (save.Residence.Findings.Count > 0 ? string.Join("; ", save.Residence.Findings) : "not evaluated"));
+                if (save.PresenceSpike != null && !save.PresenceSpike.Passed)
+                    s.Failures.Add(save.Save + ": presence spike: " + (save.PresenceSpike.Findings.Count > 0 ? string.Join("; ", save.PresenceSpike.Findings) : "not evaluated"));
                 save.Passed = save.LoadOk && save.StateError == null && save.NotIdle == null && save.Runs.All(r => r.Passed)
                     && !save.Exceptions.Any(e => e.Relevant) && (!save.RoundTrip.Attempted || save.RoundTrip.Passed)
-                    && (save.Residence == null || save.Residence.Passed);
+                    && (save.Residence == null || save.Residence.Passed) && (save.PresenceSpike == null || save.PresenceSpike.Passed);
             }
             s.RelevantExceptions += GlobalExceptions.Count(e => e.Relevant);
             if (GlobalExceptions.Any(e => e.Relevant)) s.Failures.Add("Relevant errors outside any save: " + GlobalExceptions.First(e => e.Relevant).Message);

@@ -65,15 +65,19 @@ namespace RRT.TestHarness
         public int MaxInlineNavSteps = 40;
         /// <summary>
         /// Opt-in feasibility spike, run after each save loads instead of driving scenes. "residence": the P2 harem residence
-        /// spike (enter the Council Chamber, record its mechanics, spawn one presence copy there). Null: a normal run.
+        /// spike (enter the Council Chamber, record its mechanics, spawn one presence copy there). "presence": the E12d quiet
+        /// copy check (spawn companion copies in Drezen, force their barks, watch them). Null: a normal run.
         /// Omitted from the report when null, so a normal run's report is unchanged.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public string? Spike;
         /// <summary>Settings of the residence spike; filled with defaults when Spike is "residence".</summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public ResidenceSpikePlan? Residence;
+        /// <summary>Settings of the presence (quiet copy) spike; filled with defaults when Spike is "presence".</summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public PresenceSpikePlan? Presence;
         public HarnessTimeouts Timeouts = new HarnessTimeouts();
 
         [JsonIgnore] public bool ResidenceSpike => string.Equals(Spike, "residence", StringComparison.OrdinalIgnoreCase);
+        [JsonIgnore] public bool PresenceSpike => string.Equals(Spike, "presence", StringComparison.OrdinalIgnoreCase);
 
         [JsonIgnore] public bool Dfs => string.Equals(Mode, "dfs", StringComparison.OrdinalIgnoreCase);
         [JsonIgnore] public bool ShouldReloadBetweenScenes => ReloadBetweenScenes ?? !Force;
@@ -106,9 +110,11 @@ namespace RRT.TestHarness
             if (string.IsNullOrWhiteSpace(InlineHostsPath)) InlineHostsPath = null;
             if (MaxInlineNavSteps < 1) MaxInlineNavSteps = 1;
             if (string.IsNullOrWhiteSpace(Spike)) Spike = null;
-            if (Spike != null && !ResidenceSpike) throw new FormatException("Plan spike must be \"residence\", not \"" + Spike + "\".");
+            if (Spike != null && !ResidenceSpike && !PresenceSpike) throw new FormatException("Plan spike must be \"residence\" or \"presence\", not \"" + Spike + "\".");
             if (ResidenceSpike) (Residence ??= new ResidenceSpikePlan()).Normalize();
             else if (Residence != null) throw new FormatException("Plan residence settings need spike \"residence\".");
+            if (PresenceSpike) (Presence ??= new PresenceSpikePlan()).Normalize();
+            else if (Presence != null) throw new FormatException("Plan presence settings need spike \"presence\".");
         }
 
         public bool IncludesScene(string id) =>

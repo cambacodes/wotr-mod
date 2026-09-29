@@ -114,5 +114,19 @@ internal static class PresenceTests
         var plain = Fixture();
         plain.Presences["irabeth.presence"] = new Presence { Unit = IrabethUnit, Area = Capital };
         Rules.Validate(plain);
+
+        // E12d: a spawned companion copy (Player faction, party group, native voice, not passive) needs every repair, in
+        // one tick; an inert copy needs none; a non-player copy in the party group still leaves it.
+        var companion = Rules.PlanQuiet(new CopyObservation { PlayerFaction = true, PartyGroup = true });
+        check(companion == (CopyQuiet.Faction | CopyQuiet.Group | CopyQuiet.Silence | CopyQuiet.Passive),
+            "A companion copy is not fully quieted: " + companion);
+        check(Rules.PlanQuiet(new CopyObservation { PlayerFaction = true }).HasFlag(CopyQuiet.Group),
+            "A Player-faction copy keeps the party group id it caches after the faction switch.");
+        check(Rules.PlanQuiet(new CopyObservation { Silenced = true, Passive = true }) == CopyQuiet.None, "An inert copy was changed.");
+        check(Rules.PlanQuiet(new CopyObservation { PartyGroup = true, Silenced = true, Passive = true }) == CopyQuiet.Group,
+            "A neutral copy left in the party group was not moved out of it.");
+        check(Rules.PlanQuiet(new CopyObservation { Silenced = true }) == CopyQuiet.Passive,
+            "A copy reloaded from a save (Passive is not saved) is not made passive again.");
+        check(!Rules.PlanQuiet(new CopyObservation { Passive = true }).HasFlag(CopyQuiet.Faction), "A neutral copy's faction was switched.");
     }
 }
