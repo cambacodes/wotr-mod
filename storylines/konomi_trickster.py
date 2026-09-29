@@ -7,8 +7,8 @@ Nerosyan" (Cue_0075 384cd664). She prices everything: "Very well, let us talk pr
 (Diplomacy_Officer/Cue_0038 efe7fee4). Kyado names the Trickster's rule: "your tricks somehow become the truth" (Kyado_main_
 dialogue/Cue_0109 509eac82, PlayerIsTrickster only). Authored, and labelled as authored: the road that takes a farewell at
 its word; a soul that refuses a recall from her killer until she names her own fee (Pharasma's rule: only the willing
-return); a Nerosyan informer in the Drezen chancery, noticed and used as a postman (her canon: her people "live
-everywhere"). The road is this route's one word made true (Kyado's rule); the recall is her own bargain and the
+return); the attaché's chair the Commander keeps set at the council; a Nerosyan informer in the Drezen
+chancery, noticed and used as a postman (her canon: her people "live everywhere"). The road is this route's one word made true (Kyado's rule); the recall is her own bargain and the
 credentials are protocol worked through a spy. She prices, bills, refuses, and can walk away.
 """
 from story_format import c, n, p, reaction, scene
@@ -281,11 +281,11 @@ physical("konomi.trickster.dead.consultation", "Triple, in advance", '"You asked
    forbids=(DEAD, RETURNED, "konomi.return_first_words", "konomi.missed_letter_sent"), delay=12, chapters=(3, 5))
 
 
-# --- State never_arrived: credentials deemed presented (F03, the secretary's register) -----------------------------
+# --- State never_arrived: credentials deemed presented (F03, the chancery's informer) ------------------------------
 
 letter("konomi.trickster.never_arrived.accredited", "Deemed presented", [
-    nar("start", '''{n}The war council sits. At the foot of the table there is a chair for Nerosyan's attaché, because the Crown's protocol says a crusade's council has one, and the steward keeps protocol the way other men keep saints' days. Nobody has ever come to sit in it. Somebody has put a jug on it.{/n}
-{n}The steward sets her place anyway, every session: a cup, a pen, a sheet of the Crown's paper. He is a quiet old man who came with the Queen's household and has never once been asked to leave a room. He stands behind the empty chair through every council, and after every council, you have noticed, he climbs to the chancery dovecote with a slip of paper no clerk gave him. Nerosyan keeps eyes in every great house in Mendev. Everyone knows it, and nobody looks.{/n}''',
+    nar("start", '''{n}The war council sits. At the foot of the table there is a chair for Nerosyan's attaché, because on the day your council first sat you had one set for Nerosyan's attaché, a courtesy to the Crown that cost nothing, and the steward keeps a courtesy the way other men keep saints' days. Nobody has ever come to sit in it. Somebody has put a jug on it.{/n}
+{n}The steward sets her place anyway, every session: a cup, a pen, a sheet of the Crown's paper. He is a quiet old man who came with the Queen's household and has never once been asked to leave a room. He stands behind the empty chair through every council, and after every council, you have noticed, he climbs to the chancery dovecote with a slip of paper no clerk gave him. Nobody else has noticed. Nobody else has been watching him.{/n}''',
       c('[Bow to the empty chair, with the steward behind it] "Lady Konomi\'s credentials are hereby deemed presented. Someone tell her she\'s late for her own audience."',
         "nerosyan", mythic="Trickster", alignment=("Chaotic", 1)),
       c('[Move the jug and carry on.] "..."', abort=True)),
@@ -298,7 +298,7 @@ letter("konomi.trickster.never_arrived.accredited", "Deemed presented", [
         "sent_burned", alignment=("Evil", 1),
         flags=(PRIMED, ACCREDITED, "konomi.missed_letter_sent", "konomi.started", STEWARD_BURNED))),
     nar("sent_paid", '''{n}He names a price exactly one copper higher than you expected and takes it without counting. The bird goes out over the lower town into the dark. In the morning he is at his post behind the chair, laying a cup and a pen for nobody, and every word your council says from now on goes up that ladder with your blessing.{/n}
-{n}Two days later, in Nerosyan, the Chancellor's office reads the dovecote's report, as it reads every report from Drezen before anyone else does, and enters in its register, column four: 'Drezen: credentials presented.' The Commander of the crusade said it in full council, before witnesses. In Nerosyan a thing the Commander says in full council is protocol until someone proves otherwise, and nobody in the Chancellor's office wants the work.{/n}''',
+{n}Two days later, in Nerosyan, the Chancellor's office reads the dovecote's report, as it reads every report from that dovecote, and enters in its register, column four: 'Drezen: credentials presented.' The Commander of the crusade said it in full council, before witnesses. In Nerosyan a thing the Commander says in full council is protocol until someone proves otherwise, and nobody in the Chancellor's office wants the work.{/n}''',
       c("Continue")),
     nar("sent_burned", '''{n}He sends it. His hands are steady on the bird and on nothing else. In the morning the place behind the chair is empty. Someone has laid a cup and a pen for the attaché, out of habit, and the chancery spends a week finding out that the only man who knew where every key was kept has gone, and taken none of them with him.{/n}
 {n}Two days later, in Nerosyan, the Chancellor's office reads the dovecote's last report and enters in its register, column four: 'Drezen: credentials presented.' The Commander of the crusade said it in full council, before witnesses, and in Nerosyan that is protocol until someone proves otherwise. A second slip comes in on the same bird, in the same hand, smaller. It is the Commander's name.{/n}''',
