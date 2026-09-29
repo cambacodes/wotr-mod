@@ -21,7 +21,9 @@ cost is personal: the Commander spent (or meant to spend) a man of her own crew 
 the Gravedragger has noticed who did the choosing. The curse is never passed to the Commander.
 With nobody posted, nobody stands nearest at the hanging and the curse cannot finish her: she hangs two nights on the
 main yard, still reaching into her crew's heads, until the Commander comes back through her hangmen and sends Oskel up
-to cut her down (raid.wind). The curse takes him, unpaid and unchosen; she keeps her life, and the rope keeps her voice.
+to cut her down (raid.wind); the curse takes him, unpaid and unchosen. Or (11 §2's other choice) the Commander stands
+nearest and cuts the line with a thrown knife, and the falling block breaks a collarbone and leaves a grey spade on the
+Commander's shoulder that never fades (cost.zyphus_mark). Either way she keeps her life, and the rope keeps her voice.
 
 The Chapter 5 courtship on her presence in Drezen is mielarah_deck (the commit: in flight she lets go of the wheel,
 the mirror of Cue_0426, and the Commander holds the course).
@@ -104,6 +106,7 @@ NOTICED = P + "cost.noticed"              # the Gravedragger has noticed the Com
 CUT_DOWN = P + "raid.cut_down"            # Oskel cut her down at the Commander's order, and the curse took him
 HUNG = P + "cost.hung"                    # two nights on the yard: her voice left a rasp, and she knows nobody prepared
 HANGMAN_KNIFE = P + "cost.hangman_knife"  # the Commander went through the hangmen and took a cleaver across the forearm
+ZYPHUS_MARK = P + "cost.zyphus_mark"      # the Commander stood nearest and cut her down: the block's grey spade on the shoulder
 YARD_KEY = "mielarah_yard"
 YARD_SECRET = "trickster.secret." + YARD_KEY
 CONTACT = P + "contact"                   # Derived: she is coming to Drezen
@@ -689,7 +692,21 @@ remote(P + "raid.wind", "Still in his head", [
 {n}Oskel looks at you. He knows the sum, and he knows you know it.{/n}''',
         c('[Give the order] "Go up, bosun. Cut her down, and hold her."', "cut",
           flags=(CUT_DOWN, OSKEL_DEAD, MEANT, NOTICED, HUNG, YARD_SECRET), alignment=("Evil", 1)),
-        c('"No. Leave her where she is."', "leave")),
+        c('"No. Leave her where she is."', "leave"),
+        c('[Mobility DC 24] "Stand clear, all of you." Stand under her yourself, nearest, and cut the line with a thrown knife.',
+          check=dict(Skill="SkillMobility", DC=24, Success="thrown", Failure="climbed", CommanderOnly=True))),
+    nar("thrown", '''{n}You send Oskel to the forecastle with the others and stand alone at the foot of the mast, directly under her, the only living thing within ten strides. The knife turns twice in the lantern light and parts the line a hand above the knot.{/n}
+{n}She comes down into your arms like a sack of wet sailcloth, and you go to your knees on the deck with her, and for one breath you are exactly where every name in her book once stood.{/n}''',
+        c("Continue", "struck")),
+    nar("climbed", '''{n}The first knife goes wide into the dark. The second bites the yard and hangs there. So you send Oskel to the forecastle with the others and go up the ratlines yourself, and out along the footrope with the line humming beside your face, and saw through it with your belt knife while you hold her against you with your other arm. She is very cold. You come down the backstay with her over your shoulder, burning your palm to the meat, and kneel on the deck with her, and for one breath you are exactly where every name in her book once stood.{/n}''',
+        c("Continue", "struck")),
+    nar("struck", '''{n}The block at the end of the yard has held her weight for two days without a creak. With nothing hanging from it, it turns once in the wind, and the pin that holds it shears, and it comes down forty feet.{/n}
+{n}It takes you across the shoulder instead of the skull, because you are what the Wound made you and a sailor is not, and the collarbone goes with a sound like a snapped oar. You do not let go of her. Afterwards, when the bruise comes up, it comes up grey, the grey of turned earth, in the shape of a spade's blade, and it does not fade. The ship's surgeon at Colyphyr looks at it and will not touch it.{/n}''',
+        c("Continue", "breath_marked", flags=(CUT_DOWN, ZYPHUS_MARK, NOTICED, HUNG))),
+    nar("breath_marked", '''{n}Under your good hand, she coughs.{/n}
+{n}It is a terrible sound, dry and torn, like canvas ripping. Her chest heaves once, twice, and then she is breathing, in long ragged pulls, with her eyes open on the stars. After a while they find the block on the deck beside you, and your shoulder, and then your face.{/n}
+{n}She tries to speak. Nothing comes. She takes your hand instead, and turns it over, and with one cold finger writes on your palm, one letter at a time, the way a magister writes in the margin of a text she disputes: W. H. Y.{/n}''',
+        c("[Stay with her until morning.]")),
     nar("cut", '''{n}"Aye," says Oskel. That is all.{/n}
 {n}He goes up the ratlines with his knife in his teeth and out along the yard, his wings half open for balance, and when he reaches her he does not hesitate at all. He takes her round the waist with one arm, lifts her an inch to slack the line, and cuts. Then he steps off the yard and brings her down on his wings to the deck at your feet, slowly, the way you would lower a sleeping child, and kneels, and loosens the knot with his big scarred fingers, and straightens her collar.{/n}
 {n}The block at the end of the yard has held her weight for two days without a creak. With nothing hanging from it, it turns once in the wind, and the pin that holds it shears, and it comes down forty feet and takes him on the back of the head.{/n}
@@ -716,7 +733,13 @@ remote(P + "raid.whisper", "What the rope kept", [
 "I have a portal left. You see I kept that one."''',
         c("Continue", "tidy")),
     mi("tidy", '''"Two nights. I was there for all of it, you understand. Not dead. Not anything. I could not breathe, and I could not stop, and I could feel every one of them in my head, the way I always feel them." {n}Her mouth twists.{/n} "So I tidied. It was the only thing I had left to do. I straightened eleven men's thoughts every morning from the end of a rope, because that is what a captain does, and it was how Oskel knew."''',
-        c("Continue", "oskel")),
+        c("Continue", "oskel", requires=(OSKEL_DEAD,)),
+        c("Continue", "marked", forbids=(OSKEL_DEAD,))),
+    mi("marked", '''"And you stood under me yourself." {n}Her eyes go to your shoulder, to the place under your shirt where the grey spade is.{/n} "I felt that too. Everything near me, for two nights, and then you, nearest, and the block coming down. It was the first time in six years I have felt the Gravedragger miss."
+"It didn't miss, of course. It never misses. It only took less than it wanted, because you are not made of the same stuff as a steward with a tray." {n}Her whisper hardens.{/n} "He has your measure now. He has put his mark on you like a surveyor's peg. Don't you dare think that was cheap."''',
+        c("Continue", "rule", requires=(PATTERN,), forbids=(REFUSED,)),
+        c("Continue", "refused", requires=(REFUSED,)),
+        c("Continue", "eleven", forbids=(PATTERN,))),
     mi("oskel", '''"He came up the ratlines. I felt him the whole way out along the yard: a steady, careful sort of man in my head, carrying something full to the brim. And then he put his arm round me." {n}She stops. The whisper will not do what she wants it to.{/n}
 "You sent him. You stood at the foot of my mast and did the sum, and it came out Oskel, and you said so aloud." {n}Her eyes are perfectly dry.{/n} "He was the one man on my ship I had never paid, and he went for nothing, because you told him to."''',
         c("Continue", "rule", requires=(PATTERN,), forbids=(REFUSED,)),
@@ -724,7 +747,7 @@ remote(P + "raid.whisper", "What the rope kept", [
         c("Continue", "eleven", forbids=(PATTERN,))),
     mi("rule", '''"And you had the rule. You read it at my table, in the Bad Luck, and I thanked you for it. And then you walked me to Vazglar with nobody at my elbow at all, and gave the order for a raid, and let the sum work itself out on my main yard." {n}A breath, very careful.{/n} "I am a magister of the Arcanamirium. I know the difference between an accident and a thing somebody did not trouble to prevent."''',
         c("Continue", "eleven")),
-    mi("refused", '''"You had the rule, and a man, and you took it back because I asked you to. I asked. I will carry that half, Commander; it is mine." {n}Her fingers tighten on the scarf.{/n} "The other half is Oskel, at the foot of my mast. That half is yours."''',
+    mi("refused", '''"You had the rule, and a man, and you took it back because I asked you to. I asked. I will carry that half, Commander; it is mine." {n}Her fingers tighten on the scarf.{/n} "The other half is the two nights. That half is yours."''',
         c("Continue", "eleven")),
     mi("eleven", '''"The eleven I put off on the first rock with water on it. Dask went with his wrist in a splint." {n}A very thin smile.{/n} "My code says I never ignore those in distress. They were not in distress until I left them there. I have decided that counts."''',
         c("Continue", "raid")),
@@ -737,7 +760,7 @@ remote(P + "raid.whisper", "What the rope kept", [
         c("Continue", "two_nights")),
     mi("unrepentant", '''"Worse manners than you." {n}She laughs, and it tears in her throat, and she does it anyway.{/n} "Every pirate I ever wanted to see hanged would have said exactly that. I'm a magister; I keep accurate records. I'll remember you said it."''',
         c("Continue", "two_nights")),
-    mi("two_nights", '''"I will forgive you the raid, one day. I can feel it coming, and I resent it." {n}She draws the scarf a little higher.{/n} "I don't know about the two nights. Nor about Oskel. I shall keep them where I keep everything, in the book, and look at them when I can bear to."
+    mi("two_nights", '''"I will forgive you the raid, one day. I can feel it coming, and I resent it." {n}She draws the scarf a little higher.{/n} "I don't know about the two nights, nor about what they cost at the foot of my mast. I shall keep them where I keep everything, in the book, and look at them when I can bear to."
 "The night after, I dreamt of a spade. It wasn't digging for me. It has never dug for me. It was digging somewhere else, slowly." {n}She looks at you.{/n} "Somebody has been stealing from the Gravedragger, and he has noticed who."''',
         c('"Let it dig."', "north", flags=(RETURNED, STARTED)),
         c('"Then I\'ll stand where it can\'t reach me."', "north", flags=(RETURNED, STARTED)),
@@ -871,7 +894,7 @@ SCENES.append(reaction("Woljif", P + "react.woljif_oskel", (OSKEL_DEAD,),
 "That's the coldest thing I ever heard, and I grew up in Alushinyrra. Remind me never to stand next to you in a thunderstorm."''',
     answer_list=WOLJIF_HUB, forbids=(*WOLJIF_GUARD, CUT_DOWN), chapter=4, last=5, entry='"About Mielarah..."', portrait="Woljif"))
 
-SCENES.append(reaction("Woljif", P + "react.woljif_yard", (CUT_DOWN,),
+SCENES.append(reaction("Woljif", P + "react.woljif_yard", (CUT_DOWN, OSKEL_DEAD),
     '''"Chief. Word in the Midnight Isles is, the cursed lady hung two days off her own yard at Colyphyr, and nobody'd go near, and then you turned up and sent her big bosun out along it with a knife. Knowin'." {n}Woljif rubs the back of his neck.{/n}
 "I grew up in Alushinyrra. I seen people do colder. I just never seen 'em do it so tidy. Remind me never to climb nothin' for you."''',
     answer_list=WOLJIF_HUB, forbids=WOLJIF_GUARD, chapter=4, last=5, entry='"About Mielarah..."', portrait="Woljif"))
@@ -905,6 +928,7 @@ SCENES.append(scene(P + "epilogue.committed", "", "MielarahEpilogue", 6, "", [
             p("{n}Her crew served with the amulets, closer than ever, and never once mutinied, and never once laughed. The Commander had asked for that. Neither of them spoke about it afterwards.{/n}", requires=(TIGHTENED,)),
             p("{n}On long night watches her crew recited limericks, badly and in rotation, and the worst offenders were made to climb the rigging to do it. Nobody on Starcatcher has stepped off the rail since.{/n}", requires=(LAUGHING,)),
             p("{n}Once a year, on the anniversary of Vazglar, she wore the scarf, and would not say why to anyone but the Commander.{/n}", requires=(RETURNED, DEAD_LATCH)),
+            p("{n}The Commander carried a grey mark in the shape of a spade's blade on one shoulder for the rest of their life. Surgeons would not touch it. She would, sometimes, with two fingers, the way she corrected a helmsman.{/n}", requires=(ZYPHUS_MARK,)),
             p("{n}She gave her orders in a rasp for the rest of her life, and her crews learned to lean in. She never once told a passenger what had happened to her voice.{/n}", requires=(HUNG,)),
             p("{n}Nine men who had once hauled on a rope over Vazglar crewed honest ships in the Midnight Isles for the rest of their lives, and none of them would ever say her name in a tavern without standing up first.{/n}", requires=(ROCK_SAVED,)),
             p("{n}She flew past a certain rock in the Ishiar every year, and every year looked down at it, and never once let the Commander see her face while she did.{/n}", requires=(ROCK_LEFT,)),

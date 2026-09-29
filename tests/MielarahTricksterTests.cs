@@ -231,6 +231,18 @@ internal static class MielarahTricksterTests
         check(back.Has(P + "returned") && back.Has("mielarah.started"), "Trk_Mielarah_LateAfterDeath: her return does not reopen the route.");
         check(Rules.Available(story, rock, Later(story, back, 49)), "Trk_Mielarah_LateAfterDeath: the eleven on the rock never come up after the yard.");
         check(Reaches(Later(story, back, 10, 5), "mielarah.committed"), "Trk_Mielarah_LateAfterDeath: no road to the commit after the yard.");
+        // 11 §2's other choice, at the foot of the mast: the Commander stands nearest and cuts the line; nobody else dies,
+        // and the Commander carries the Gravedragger's mark (a failed throw means the climb, same mark).
+        var nearest = Choice(yardWind, "foot", 2);
+        check(nearest.Check?.Skill == "SkillMobility" && nearest.Check.Success == "thrown" && nearest.Check.Failure == "climbed",
+            "Trk_Mielarah_LateAfterDeath: the Commander cannot stand nearest at the mast.");
+        var marked = After(yardWind, unprepared, "struck", 0).First();
+        check(marked.Has(P + "raid.cut_down") && marked.Has(P + "cost.zyphus_mark") && marked.Has(P + "cost.hung") && marked.Has(P + "cost.noticed")
+              && !marked.Has(P + "cost.oskel") && !marked.Has("trickster.secret.mielarah_yard"),
+            "Trk_Mielarah_LateAfterDeath: standing nearest spends a crewman, or leaves no mark.");
+        var markedBack = After(whisper, Later(story, marked, 49), "two_nights", 0).First();
+        check(markedBack.Has(P + "returned") && Reaches(Later(story, markedBack, 10, 5), "mielarah.committed"),
+            "Trk_Mielarah_LateAfterDeath: no road to the commit after standing nearest.");
         var refusedYard = World(story, 4, "trickster.ever", "mielarah.dead", "mielarah.dead.latched", P + "primed.pattern", P + "minder.told", P + "minder.refused");
         check(Rules.Available(story, yardWind, refusedYard), "Trk_Mielarah_LateAfterDeath: a withdrawn order leaves her on the rope.");
         check(Rules.Available(story, rock, Later(story, alive, 49)), "Trk_Mielarah_Rock: the eleven on the rock never come up.");

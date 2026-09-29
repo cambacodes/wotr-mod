@@ -198745,7 +198745,7 @@
         {
           "Id": "primed",
           "Speaker": "Camellia",
-          "Text": "\"You told me to die convincingly, and I did. The gravediggers complained about the weight. The chaplain wept, which I thought was a nice touch. Everyone was convinced, except you, of course.\"\n{n}She presses something into your palm under the lilies: a small, clean knife, still warm from her glove.{/n} \"Keep it. Next time, use it properly. And do not look for me. I shall find you. A dead woman keeps very flexible hours.\"\n{n}Under the lace her mouth curves.{/n} \"Oh, and do look a little sad when you leave. Fye is watching, and the widow from Nerosyan has been stood up by her gentleman. It would be a pity to spoil the story.\"",
+          "Text": "\"You told me to die convincingly, and I did. The gravediggers complained about the weight. The chaplain wept, which I thought was a nice touch. Everyone was convinced, except you, of course. And my spirits, who have had your blood and will be back for more of it.\"\n{n}She presses something into your palm under the lilies: a small, clean knife, still warm from her glove.{/n} \"Keep it. Next time, use it properly. And do not look for me. I shall find you. A dead woman keeps very flexible hours.\"\n{n}Under the lace her mouth curves.{/n} \"Oh, and do look a little sad when you leave. Fye is watching, and the widow from Nerosyan has been stood up by her gentleman. It would be a pity to spoil the story.\"",
           "Choices": [
             {
               "Text": "[Keep the knife] \"I'll keep it close. Closer than you'd like.\"",
@@ -207423,7 +207423,7 @@
         {
           "Id": "lied",
           "Speaker": "Camellia",
-          "Text": "{n}It takes you one afternoon. You visit the witness with a chaplain in tow and grave concern on your face. You ask, gently, whether the lady they saw had a veil. And a fan. And a small dog. And had she perhaps also been singing? By the time you leave, the witness has seen a dead woman, a singing ghost, a dog made of mist and the late Lord Gwerm himself, and the chaplain has recommended rest, and the story has become the sort of thing people tell children at bedtime.{/n}",
+          "Text": "{n}It takes you one afternoon. You visit the witness with a chaplain in tow and grave concern on your face. You ask, gently, whether the lady they saw had a veil. And a fan. And a small dog. And had she perhaps also been singing? By the time you leave, the witness has seen a dead woman, a singing ghost, a dog made of mist and the late Lord Gwerm himself, and the chaplain has recommended rest, and the story has become the sort of thing people tell children at bedtime. The chaplain has the witness moved to the quiet ward, for rest. The candle trade goes to a cousin. Nobody asks after her there.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -207439,7 +207439,7 @@
         {
           "Id": "lied_after",
           "Speaker": "Camellia",
-          "Text": "\"You made them into a ghost story.\" {n}Camellia is laughing so hard she has to sit down on the edge of the table.{/n} \"Oh, that's so much crueller than anything I would have done. They'll spend the rest of their life being the person who saw the ghost.\"\n{n}Then she stops laughing, and looks at you with that terrible, bright tenderness.{/n} \"You saved someone from me. And you did it by being worse. I think I might love you. It's very inconvenient.\"",
+          "Text": "\"You made them into a ghost story.\" {n}Camellia is laughing so hard she has to sit down on the edge of the table.{/n} \"Oh, that's so much crueller than anything I would have done. They'll spend the rest of their life being the person who saw the ghost.\"\n{n}Then she stops laughing, and looks at you with that terrible, bright tenderness.{/n} \"You saved someone from me. And you did it by being worse.\" {n}She leans in and straightens your collar, very carefully, as though you were something of hers she means to keep clean.{/n} \"I shall have to watch you now. All the time. I want to see what else you'll ruin for me.\"",
           "Choices": [
             {
               "Text": "[Let her say it]",
@@ -207569,7 +207569,7 @@
         {
           "Id": "lied",
           "Speaker": "Camellia",
-          "Text": "{n}It takes you one afternoon. You visit the witness with a chaplain in tow and grave concern on your face. You ask, gently, whether the lady they saw had a veil. And a fan. And a small dog. And had she perhaps also been singing? By the time you leave, the witness has seen a dead woman, a singing ghost, a dog made of mist and the late Lord Gwerm himself, and the chaplain has recommended rest, and the story has become the sort of thing people tell children at bedtime.{/n}",
+          "Text": "{n}It takes you one afternoon. You visit the witness with a chaplain in tow and grave concern on your face. You ask, gently, whether the lady they saw had a veil. And a fan. And a small dog. And had she perhaps also been singing? By the time you leave, the witness has seen a dead woman, a singing ghost, a dog made of mist and the late Lord Gwerm himself, and the chaplain has recommended rest, and the story has become the sort of thing people tell children at bedtime. The chaplain has the witness moved to the quiet ward, for rest. The candle trade goes to a cousin. Nobody asks after her there.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -207585,7 +207585,7 @@
         {
           "Id": "lied_after",
           "Speaker": "Camellia",
-          "Text": "\"You made them into a ghost story.\" {n}Camellia is laughing so hard she has to sit down on the edge of the table.{/n} \"Oh, that's so much crueller than anything I would have done. They'll spend the rest of their life being the person who saw the ghost.\"\n{n}Then she stops laughing, and looks at you with that terrible, bright tenderness.{/n} \"You saved someone from me. And you did it by being worse. I think I might love you. It's very inconvenient.\"",
+          "Text": "\"You made them into a ghost story.\" {n}Camellia is laughing so hard she has to sit down on the edge of the table.{/n} \"Oh, that's so much crueller than anything I would have done. They'll spend the rest of their life being the person who saw the ghost.\"\n{n}Then she stops laughing, and looks at you with that terrible, bright tenderness.{/n} \"You saved someone from me. And you did it by being worse.\" {n}She leans in and straightens your collar, very carefully, as though you were something of hers she means to keep clean.{/n} \"I shall have to watch you now. All the time. I want to see what else you'll ruin for me.\"",
           "Choices": [
             {
               "Text": "[Let her say it]",
@@ -207708,7 +207708,7 @@
         {
           "Id": "lied",
           "Speaker": "Camellia",
-          "Text": "{n}It takes you one afternoon. You visit the witness with a chaplain in tow and grave concern on your face. You ask, gently, whether the lady they saw had a veil. And a fan. And a small dog. And had she perhaps also been singing? By the time you leave, the witness has seen a dead woman, a singing ghost, a dog made of mist and the late Lord Gwerm himself, and the chaplain has recommended rest, and the story has become the sort of thing people tell children at bedtime.{/n}",
+          "Text": "{n}It takes you one afternoon. You visit the witness with a chaplain in tow and grave concern on your face. You ask, gently, whether the lady they saw had a veil. And a fan. And a small dog. And had she perhaps also been singing? By the time you leave, the witness has seen a dead woman, a singing ghost, a dog made of mist and the late Lord Gwerm himself, and the chaplain has recommended rest, and the story has become the sort of thing people tell children at bedtime. The chaplain has the witness moved to the quiet ward, for rest. The candle trade goes to a cousin. Nobody asks after her there.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -207724,7 +207724,7 @@
         {
           "Id": "lied_after",
           "Speaker": "Camellia",
-          "Text": "\"You made them into a ghost story.\" {n}Camellia is laughing so hard she has to sit down on the edge of the table.{/n} \"Oh, that's so much crueller than anything I would have done. They'll spend the rest of their life being the person who saw the ghost.\"\n{n}Then she stops laughing, and looks at you with that terrible, bright tenderness.{/n} \"You saved someone from me. And you did it by being worse. I think I might love you. It's very inconvenient.\"",
+          "Text": "\"You made them into a ghost story.\" {n}Camellia is laughing so hard she has to sit down on the edge of the table.{/n} \"Oh, that's so much crueller than anything I would have done. They'll spend the rest of their life being the person who saw the ghost.\"\n{n}Then she stops laughing, and looks at you with that terrible, bright tenderness.{/n} \"You saved someone from me. And you did it by being worse.\" {n}She leans in and straightens your collar, very carefully, as though you were something of hers she means to keep clean.{/n} \"I shall have to watch you now. All the time. I want to see what else you'll ruin for me.\"",
           "Choices": [
             {
               "Text": "[Let her say it]",
@@ -285937,6 +285937,90 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "[Mobility DC 24] \"Stand clear, all of you.\" Stand under her yourself, nearest, and cut the line with a thrown knife.",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "SkillMobility",
+                "DC": 24,
+                "Success": "thrown",
+                "Failure": "climbed",
+                "CommanderOnly": true
+              }
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "thrown",
+          "Speaker": "Narrator",
+          "Text": "{n}You send Oskel to the forecastle with the others and stand alone at the foot of the mast, directly under her, the only living thing within ten strides. The knife turns twice in the lantern light and parts the line a hand above the knot.{/n}\n{n}She comes down into your arms like a sack of wet sailcloth, and you go to your knees on the deck with her, and for one breath you are exactly where every name in her book once stood.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "struck",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "climbed",
+          "Speaker": "Narrator",
+          "Text": "{n}The first knife goes wide into the dark. The second bites the yard and hangs there. So you send Oskel to the forecastle with the others and go up the ratlines yourself, and out along the footrope with the line humming beside your face, and saw through it with your belt knife while you hold her against you with your other arm. She is very cold. You come down the backstay with her over your shoulder, burning your palm to the meat, and kneel on the deck with her, and for one breath you are exactly where every name in her book once stood.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "struck",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "struck",
+          "Speaker": "Narrator",
+          "Text": "{n}The block at the end of the yard has held her weight for two days without a creak. With nothing hanging from it, it turns once in the wind, and the pin that holds it shears, and it comes down forty feet.{/n}\n{n}It takes you across the shoulder instead of the skull, because you are what the Wound made you and a sailor is not, and the collarbone goes with a sound like a snapped oar. You do not let go of her. Afterwards, when the bruise comes up, it comes up grey, the grey of turned earth, in the shape of a spade's blade, and it does not fade. The ship's surgeon at Colyphyr looks at it and will not touch it.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "breath_marked",
+              "Set": [
+                "mielarah.trickster.raid.cut_down",
+                "mielarah.trickster.cost.zyphus_mark",
+                "mielarah.trickster.cost.noticed",
+                "mielarah.trickster.cost.hung"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "breath_marked",
+          "Speaker": "Narrator",
+          "Text": "{n}Under your good hand, she coughs.{/n}\n{n}It is a terrible sound, dry and torn, like canvas ripping. Her chest heaves once, twice, and then she is breathing, in long ragged pulls, with her eyes open on the stars. After a while they find the block on the deck beside you, and your shoulder, and then your face.{/n}\n{n}She tries to speak. Nothing comes. She takes your hand instead, and turns it over, and with one cold finger writes on your palm, one letter at a time, the way a magister writes in the margin of a text she disputes: W. H. Y.{/n}",
+          "Choices": [
+            {
+              "Text": "[Stay with her until morning.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": "Mielarah"
@@ -286085,8 +286169,60 @@
               "Text": "Continue",
               "Next": "oskel",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "mielarah.trickster.cost.oskel"
+              ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "marked",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "mielarah.trickster.cost.oskel"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "marked",
+          "Speaker": "Mielarah",
+          "Text": "\"And you stood under me yourself.\" {n}Her eyes go to your shoulder, to the place under your shirt where the grey spade is.{/n} \"I felt that too. Everything near me, for two nights, and then you, nearest, and the block coming down. It was the first time in six years I have felt the Gravedragger miss.\"\n\"It didn't miss, of course. It never misses. It only took less than it wanted, because you are not made of the same stuff as a steward with a tray.\" {n}Her whisper hardens.{/n} \"He has your measure now. He has put his mark on you like a surveyor's peg. Don't you dare think that was cheap.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "rule",
+              "Set": [],
+              "Requires": [
+                "mielarah.trickster.primed.pattern"
+              ],
+              "Forbids": [
+                "mielarah.trickster.minder.refused"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "refused",
+              "Set": [],
+              "Requires": [
+                "mielarah.trickster.minder.refused"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "eleven",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "mielarah.trickster.primed.pattern"
+              ],
               "Abort": false
             }
           ],
@@ -286151,7 +286287,7 @@
         {
           "Id": "refused",
           "Speaker": "Mielarah",
-          "Text": "\"You had the rule, and a man, and you took it back because I asked you to. I asked. I will carry that half, Commander; it is mine.\" {n}Her fingers tighten on the scarf.{/n} \"The other half is Oskel, at the foot of my mast. That half is yours.\"",
+          "Text": "\"You had the rule, and a man, and you took it back because I asked you to. I asked. I will carry that half, Commander; it is mine.\" {n}Her fingers tighten on the scarf.{/n} \"The other half is the two nights. That half is yours.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -286247,7 +286383,7 @@
         {
           "Id": "two_nights",
           "Speaker": "Mielarah",
-          "Text": "\"I will forgive you the raid, one day. I can feel it coming, and I resent it.\" {n}She draws the scarf a little higher.{/n} \"I don't know about the two nights. Nor about Oskel. I shall keep them where I keep everything, in the book, and look at them when I can bear to.\"\n\"The night after, I dreamt of a spade. It wasn't digging for me. It has never dug for me. It was digging somewhere else, slowly.\" {n}She looks at you.{/n} \"Somebody has been stealing from the Gravedragger, and he has noticed who.\"",
+          "Text": "\"I will forgive you the raid, one day. I can feel it coming, and I resent it.\" {n}She draws the scarf a little higher.{/n} \"I don't know about the two nights, nor about what they cost at the foot of my mast. I shall keep them where I keep everything, in the book, and look at them when I can bear to.\"\n\"The night after, I dreamt of a spade. It wasn't digging for me. It has never dug for me. It was digging somewhere else, slowly.\" {n}She looks at you.{/n} \"Somebody has been stealing from the Gravedragger, and he has noticed who.\"",
           "Choices": [
             {
               "Text": "\"Let it dig.\"",
@@ -287059,7 +287195,8 @@
         }
       ],
       "Requires": [
-        "mielarah.trickster.raid.cut_down"
+        "mielarah.trickster.raid.cut_down",
+        "mielarah.trickster.cost.oskel"
       ],
       "Forbids": [
         "woljif.dead",
@@ -287239,6 +287376,14 @@
               "Requires": [
                 "mielarah.trickster.returned",
                 "mielarah.dead.latched"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The Commander carried a grey mark in the shape of a spade's blade on one shoulder for the rest of their life. Surgeons would not touch it. She would, sometimes, with two fingers, the way she corrected a helmsman.{/n}",
+              "Requires": [
+                "mielarah.trickster.cost.zyphus_mark"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -288204,7 +288349,8 @@
               "Requires": [],
               "Forbids": [
                 "mielarah.trickster.primed.minder",
-                "mielarah.trickster.cost.oskel"
+                "mielarah.trickster.cost.oskel",
+                "mielarah.trickster.raid.cut_down"
               ],
               "Abort": false
             },
@@ -288213,8 +288359,37 @@
               "Next": "dead_cut",
               "Set": [],
               "Requires": [
-                "mielarah.trickster.raid.cut_down"
+                "mielarah.trickster.raid.cut_down",
+                "mielarah.trickster.cost.oskel"
               ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "marked",
+              "Set": [],
+              "Requires": [
+                "mielarah.trickster.cost.zyphus_mark"
+              ],
+              "Forbids": [
+                "mielarah.trickster.cost.oskel"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "marked",
+          "Speaker": "Mielarah",
+          "Text": "{n}She does not pour for you at once. She looks at your shoulder, at the place under your coat where the grey spade is, as if she could see through the cloth.{/n}\n\"I have kept accurate records for six years, Commander. Every name. The steward, my mate, the girl with the apples. Every one of them I put beside me without knowing what I was doing.\" {n}She pushes the cup across.{/n} \"There is no name for Colyphyr. There is a line with nothing in it but a date and a place, and in the margin: the Commander, nearest; marked. I did not know how else to write it. Nobody has ever been nearest and gone on breathing.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "demand",
+              "Set": [],
+              "Requires": [],
               "Forbids": [],
               "Abort": false
             }
@@ -288599,7 +288774,8 @@
               "Requires": [],
               "Forbids": [
                 "mielarah.trickster.primed.minder",
-                "mielarah.trickster.cost.oskel"
+                "mielarah.trickster.cost.oskel",
+                "mielarah.trickster.raid.cut_down"
               ],
               "Abort": false
             },
@@ -288608,8 +288784,37 @@
               "Next": "dead_cut",
               "Set": [],
               "Requires": [
-                "mielarah.trickster.raid.cut_down"
+                "mielarah.trickster.raid.cut_down",
+                "mielarah.trickster.cost.oskel"
               ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "marked",
+              "Set": [],
+              "Requires": [
+                "mielarah.trickster.cost.zyphus_mark"
+              ],
+              "Forbids": [
+                "mielarah.trickster.cost.oskel"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "marked",
+          "Speaker": "Mielarah",
+          "Text": "{n}She does not pour for you at once. She looks at your shoulder, at the place under your coat where the grey spade is, as if she could see through the cloth.{/n}\n\"I have kept accurate records for six years, Commander. Every name. The steward, my mate, the girl with the apples. Every one of them I put beside me without knowing what I was doing.\" {n}She pushes the cup across.{/n} \"There is no name for Colyphyr. There is a line with nothing in it but a date and a place, and in the margin: the Commander, nearest; marked. I did not know how else to write it. Nobody has ever been nearest and gone on breathing.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "demand",
+              "Set": [],
+              "Requires": [],
               "Forbids": [],
               "Abort": false
             }
@@ -295378,7 +295583,8 @@
               "Next": "oskel_cut",
               "Set": [],
               "Requires": [
-                "mielarah.trickster.raid.cut_down"
+                "mielarah.trickster.raid.cut_down",
+                "mielarah.trickster.cost.oskel"
               ],
               "Forbids": [],
               "Abort": false
@@ -295702,7 +295908,8 @@
               "Next": "oskel_cut",
               "Set": [],
               "Requires": [
-                "mielarah.trickster.raid.cut_down"
+                "mielarah.trickster.raid.cut_down",
+                "mielarah.trickster.cost.oskel"
               ],
               "Forbids": [],
               "Abort": false
@@ -299004,8 +299211,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",

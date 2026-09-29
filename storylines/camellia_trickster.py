@@ -359,7 +359,7 @@ SCENES.append(scene(PERFORMANCE, "The veiled mourner", "Camellia", 3,
 {n}She turns her glass a quarter turn.{/n} "My spirits gave me back because you paid them. That is the bargain, and it is dull. I came to this bar instead of going somewhere nobody would ever find me because it was the first time in my life that somebody lied to me better than I could lie to them. You told me to die convincingly, and I died, and afterwards, the whole time I was lying in that box, I could hear you not believing it. Do you know how rare that is? To be disbelieved by someone who's right?"
 "I couldn't possibly stay away after that. It would have been so rude."''',
         c("Continue", "primed")),
-    cam("primed", '''"You told me to die convincingly, and I did. The gravediggers complained about the weight. The chaplain wept, which I thought was a nice touch. Everyone was convinced, except you, of course."
+    cam("primed", '''"You told me to die convincingly, and I did. The gravediggers complained about the weight. The chaplain wept, which I thought was a nice touch. Everyone was convinced, except you, of course. And my spirits, who have had your blood and will be back for more of it."
 {n}She presses something into your palm under the lilies: a small, clean knife, still warm from her glove.{/n} "Keep it. Next time, use it properly. And do not look for me. I shall find you. A dead woman keeps very flexible hours."
 {n}Under the lace her mouth curves.{/n} "Oh, and do look a little sad when you leave. Fye is watching, and the widow from Nerosyan has been stood up by her gentleman. It would be a pity to spoil the story."''',
         c('[Keep the knife] "I\'ll keep it close. Closer than you\'d like."', "register", flags=(RET, KNOWS, STARTED)),

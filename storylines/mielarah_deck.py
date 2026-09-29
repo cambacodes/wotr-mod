@@ -20,7 +20,7 @@ from storylines.mielarah_trickster import (
     CLOSED, COMMITTED, CONTACT, CHARTER, CORRECTED, DECLINED, DOCKED, DREZEN, FLOWN, FREED, HUB, HUB_FAILED, HUB_FB,
     KILLED, LANDFALL, LAUGHING, LIED, MEANT, MINDER, MORNING, NIGHT, NOTICED, OSKEL_DEAD, P, RECKONED, REL, RETURNED,
     SECRET_KNOWN, SHIP_LOST, TIGHTENED, TOLD, UNIT, KERZ, NOCTA, D, SAID_USE, CUT, DEAD_LATCH, LANN_GUARD, WOLJIF_GUARD,
-    STORM_OWNED, STORM_BLAMED, PAID, CUT_DOWN)
+    STORM_OWNED, STORM_BLAMED, PAID, CUT_DOWN, ZYPHUS_MARK)
 
 SCENES = []
 
@@ -125,8 +125,12 @@ deck(D + "nearest", "The nearest", '"I came to see the ship."', [
         c("Continue", "alive", requires=(TOLD,), forbids=(OSKEL_DEAD,)),
         c("Continue", "alive", requires=(MINDER, SECRET_KNOWN), forbids=(TOLD, OSKEL_DEAD)),
         c("Continue", "secret", requires=(MINDER,), forbids=(TOLD, SECRET_KNOWN, OSKEL_DEAD)),
-        c("Continue", "none", forbids=(MINDER, OSKEL_DEAD)),
-        c("Continue", "dead_cut", requires=(CUT_DOWN,))),
+        c("Continue", "none", forbids=(MINDER, OSKEL_DEAD, CUT_DOWN)),
+        c("Continue", "dead_cut", requires=(CUT_DOWN, OSKEL_DEAD)),
+        c("Continue", "marked", requires=(ZYPHUS_MARK,), forbids=(OSKEL_DEAD,))),
+    mi("marked", '''{n}She does not pour for you at once. She looks at your shoulder, at the place under your coat where the grey spade is, as if she could see through the cloth.{/n}
+"I have kept accurate records for six years, Commander. Every name. The steward, my mate, the girl with the apples. Every one of them I put beside me without knowing what I was doing." {n}She pushes the cup across.{/n} "There is no name for Colyphyr. There is a line with nothing in it but a date and a place, and in the margin: the Commander, nearest; marked. I did not know how else to write it. Nobody has ever been nearest and gone on breathing."''',
+       c("Continue", "demand")),
     mi("dead", '''{n}A bosun's whistle lies on the chart table between the cups: brass, dented, on a cord gone black with handling.{/n}
 "His." {n}She does not touch it.{/n} "It came up out of the sea tangled in the rigging, and none of the crew would take it. I have been carrying it about for weeks like a fool."
 "I have kept accurate records for six years, Commander. Every name. The steward, my mate, the girl with the apples. Every one of them I put beside me without knowing what I was doing." {n}Now she picks the whistle up, and turns it over.{/n} "Oskel is the only name on my list that somebody put there on purpose."''',
@@ -811,7 +815,7 @@ deck(D + "names", "Accurate records", '"You wrote his name down. The boy under t
        c("Continue", "oskel", requires=(OSKEL_DEAD,), forbids=(CUT_DOWN,)),
        c("Continue", "space", requires=(MEANT,), forbids=(OSKEL_DEAD,)),
        c("Continue", "blank", forbids=(OSKEL_DEAD, MEANT)),
-       c("Continue", "oskel_cut", requires=(CUT_DOWN,))),
+       c("Continue", "oskel_cut", requires=(CUT_DOWN, OSKEL_DEAD))),
     mi("oskel_cut", '''{n}She turns back a few pages, into the Midnight Isles, and lays a finger beside one line without touching it. Oskel, bosun. And in the margin, where every other line says where somebody was standing, his says: on the main yard; sent up.{/n}
 "Every other entry in this book says where they stood. His is the only one that says who sent him there." {n}She does not say your name. She does not need to.{/n} "I wrote it with my own neck still purple. I thought about leaving the column empty, the way I leave it for a stranger whose name I never learned. That would not have been accurate."''',
        c("Continue", "last_page")),
