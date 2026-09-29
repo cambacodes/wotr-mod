@@ -242316,7 +242316,7 @@
         {
           "Id": "treat",
           "Speaker": "Narrator",
-          "Text": "{n}The chaplain on duty has already told you, politely, that he will not raise her. Not tonight, not with the Kenabres dead still being counted in the nave, not a demon. So you try something no book promises. You have the Desnan travellers' rite you copied out of the shrine library the week you made yourself her doctor: a blessing for the road, not a raising, and nothing in it says it will work on her. You say it anyway, over her, and where it asks for an offering you give it blood. You cut your wrist on the edge of the bier and hold it to her lips.{/n}\n{n}The Trickster's lore cannot raise anyone, and does not try. It lifts afflictions, and you gamble that whatever is still holding on in her is afflicted: your palm on her breastbone, lifting what it can, so that if anything in her answers the blood, it answers strong. It is a guess. It is the kind of guess you make for a living.{/n}\n{n}Something under your palm goes from stone to skin. The sprig slides out of her hands. Her eyes open. They find your throat before they find your face.{/n}",
+          "Text": "{n}The chaplain on duty has already said it plainly, with the tiredness of a man who has said it before. The raising rites call a soul home to its body. She is an outsider, Abyss to the bone, and when her kind die there is no home to call; the rite has nothing to hold on to. It is not a question of diamonds. It is a question of there being nothing there.{/n}\n{n}You read one sentence differently from him. Your lore heals the soul as well as the body: your treatment removes any negative condition affecting the one you treat. Any. The words do not say \"short of death\". They do not say \"except demons\". You have been waiting for the rule to notice the door it left open, and it has not noticed yet.{/n}\n{n}Death is a negative condition. It is affecting her. You put your palm flat on her breastbone and treat it the way you would treat a fever: you name it, and you lift it.{/n}\n{n}It is heavier than any poison you have ever lifted, and colder, and for a long moment the rule seems to notice after all; the lore drags at the whole of you, as if it means to take its fee in kind. Then something under your palm goes from stone to skin. The sprig slides out of her hands.{/n}\n{n}You lifted her death. You did not lift her hunger, because the hunger is not a condition; it is what she is. She wakes with it, exactly as starved as she died, and her eyes find your throat before they find your face. You cut your wrist on the edge of the bier and put it in her way, and her body drinks before she can stop it: three swallows, four, before she tears her mouth off you with a sound like cloth ripping.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -242344,10 +242344,10 @@
         {
           "Id": "wake",
           "Speaker": "Narrator",
-          "Text": "{n}The chaplain on duty has already told you, politely, that he will not raise a demon. You have no lore to lift anything from her. You have the Desnan travellers' rite you copied out of the shrine library the week you made yourself her doctor, a blessing for the road that nothing promises will work on her, a candle, and your own blood for its offering.{/n}",
+          "Text": "{n}The chaplain on duty has already said it plainly: the raising rites call a soul home to its body, and she is an outsider, Abyss to the bone. For her kind the rite has nothing to hold on to.{/n}\n{n}You know the reading a Trickster with the right lore would make: call death one more negative condition, and lift it. You have not got that lore. You make the same diagnosis anyway, by main force, with what any field healer has: the chaplain's commentary open on the bier, every litany against wasting and fever you can drag out of memory, a candle, your hands on her, and the one remedy her body has always answered to, which is to be fed. You will have to name the thing exactly, verse by verse, and keep your wrist at her lips for as long as it takes. It may not be enough. It may cost more blood than you have.{/n}",
           "Choices": [
             {
-              "Text": "[Say the rite over her, and cut your wrist on the edge of the bier]",
+              "Text": "[Work the litanies over her, and cut your wrist on the edge of the bier]",
               "Next": null,
               "Set": [],
               "Requires": [],
@@ -242366,7 +242366,7 @@
         {
           "Id": "rite_holds",
           "Speaker": "Narrator",
-          "Text": "{n}You get every word right. The candle burns blue. You hold your wrist to her lips and keep it there while the chaplain protests, and her body, which was built to drink before its owner can stop it, drinks. Something under your hand goes from stone to skin. The sprig slides out of her hands.{/n}\n{n}Her eyes open. They find your throat before they find your face.{/n}",
+          "Text": "{n}You keep the thread: wasting named, fever named, the hunger named last and longest. By the end the words are only yours, and the room has gone grey at the edges. You hold your wrist to her lips and keep it there while the chaplain protests, and her body, which was built to drink before its owner can stop it, drinks. Something under your hand goes from stone to skin. The sprig slides out of her hands.{/n}\n{n}Her eyes open. They find your throat before they find your face.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -242394,7 +242394,7 @@
         {
           "Id": "rite_fails",
           "Speaker": "Narrator",
-          "Text": "{n}You lose the rite on the third verse. The candle gutters and goes out, and the blood on her lips is only blood. The chaplain lays a hand on your arm and says, not unkindly, that the body will keep until tomorrow, and that you should bandage that.{/n}",
+          "Text": "{n}You lose the thread on the third litany. The candle gutters and goes out, and the blood on her lips is only blood. The chaplain lays a hand on your arm and says, not unkindly, that the body will keep until tomorrow, and that you should bandage that.{/n}",
           "Choices": [
             {
               "Text": "[Bandage the wrist. Try again tomorrow.]",
@@ -245214,7 +245214,7 @@
         {
           "Id": "why",
           "Speaker": "Narrator",
-          "Text": "{n}You tell her the truth, because she would hear anything else. You remember a thing she said once, quietly, as if confessing it: that she should like to kiss someone again, but only as a mortal. Not as a demon. You have been reading ever since.{/n}\n{n}The breviary's blessing for travellers is a small, plain thing: a candle, a star, a few lines asking the goddess to watch one road for one night. It promises nothing about demons; no priest ever meant it for one. The rest is yours. The Trickster's lore can treat a negative condition the way a priest treats a poison, and you mean to hang that lore on the blessing's frame: one star, one night, one wolf kept off one road. Nobody taught you this. Nobody has tried it. You think the two will fit together. You are not sure.{/n}",
+          "Text": "{n}You tell her the truth, because she would hear anything else. You remember a thing she said once, quietly, as if confessing it: that she should like to kiss someone again, but only as a mortal. Not as a demon. You have been reading ever since.{/n}\n{n}The breviary's blessing for travellers is a small, plain thing: a candle, a star, a few lines asking the goddess to watch one road for one night. It promises nothing about demons; no priest ever meant it for one. The rest is yours. The Trickster's lore can treat a negative condition the way a priest treats a poison, and you mean to hang that lore on the blessing's frame: one star, one night, one wolf kept off one road. Nobody taught you this. Nobody has tried it. You think the two will fit together. You are not sure.{/n}\n{n}If it fits at all, the arithmetic is already plain on the page. One candle, lit at dusk, can carry one drain: the first cold out of her, into the flame, and the wick is spent until you have slept. The second drain has nowhere to go but you. There is no version of this where you do not pay; there is only a version where you pay a little less, and know the moment the paying starts.{/n}",
           "Choices": [
             {
               "Text": "[Lay the two texts side by side: you already know the lore] \"The blessing gives it a shape. The lore does the rest.\"",
@@ -245248,7 +245248,7 @@
         {
           "Id": "fit",
           "Speaker": "Arueshalae",
-          "Text": "{n}She reads over your shoulder for a long time, her lips moving on the old Desnan words.{/n}\n\"One star, one night.\" {n}She sounds as though she is afraid to breathe on it.{/n} \"Not a cure. A lamp you have to light every evening, and it only keeps one wolf off the road.\" {n}She straightens, and then does not seem to know what to do with her hands.{/n} \"I don't trust it. Nobody's ever offered me something that small. I keep looking for the hook.\"",
+          "Text": "{n}She reads over your shoulder for a long time, her lips moving on the old Desnan words.{/n}\n\"One star, one night.\" {n}She sounds as though she is afraid to breathe on it.{/n} \"Not a cure. A lamp you have to light every evening, and it only keeps one wolf off the road.\" {n}Her finger stops on your margin note.{/n} \"And the second wolf eats the doctor. You've written that down. You've written it down as if it were a dosage.\" {n}She straightens, and then does not seem to know what to do with her hands.{/n} \"I don't trust it. Nobody's ever offered me something that small. I keep looking for the hook.\"",
           "Choices": [
             {
               "Text": "[Close the books.]",
@@ -247325,10 +247325,10 @@
         {
           "Id": "undress",
           "Speaker": "Narrator",
-          "Text": "{n}She knows how to undress a person. She was taught in the Upper City, and the teaching is the worst thing in her. Her hands begin that way, quick and certain, and then she hears how quietly the buckles are coming loose, the way they did for the guests who did not wake, and she stops. When she begins again she is slow, and clumsy, and has to try your belt twice, and she does not let herself get better at it. Her wings unfold and curve round you both against the wind off the Worldwound; she apologises for them; you tell her not to.{/n}\n{n}She lays you down on her cloak on the old bell-floor, under the whole wheel of the stars, and follows you down, her hair falling round both your faces, her skin cool and then not cool at all. She settles astride your hips, braces one hand on the stone beside your head, and draws one long breath that she does not need.{/n}",
+          "Text": "{n}She knows how to undress a person. She was taught in the Upper City, and the teaching is the worst thing in her. Her hands begin that way, quick and certain, and then she hears how quietly the buckles are coming loose, the way they did for the guests who did not wake, and she stops. When she begins again she is slow, and clumsy, and has to try your belt twice, and she does not let herself get better at it. Her wings unfold and curve round you both against the wind off the Worldwound; she apologises for them; you tell her not to.{/n}\n{n}She lays you down on her cloak on the old bell-floor, under the whole wheel of the stars, and follows you down, her hair falling round both your faces, her skin cool and then not cool at all. She settles astride your hips, braces one hand on the stone beside your head, and draws one long breath that she does not need.{/n}\n\"I want you.\" {n}It comes out rough, and far too loud for a bell tower, and she does not take it back.{/n} \"Not the way I was taught to want. Mine. Look at me while I do this.\"",
           "Choices": [
             {
-              "Text": "[Let her.]",
+              "Text": "Continue",
               "Next": "morning_after",
               "Set": [],
               "Requires": [],
@@ -252496,10 +252496,10 @@
         {
           "Id": "why",
           "Speaker": "Arueshalae",
-          "Text": "\"Do you know why I said no?\" {n}She looks at you.{/n} \"Because he'd forgive me. Instantly, completely, before I'd even finished. And I'd take it, because it would be so easy, and every time I took it I'd need a little more forgiving.\" {n}She twists her hands together.{/n}\n\"You don't forgive me. You make jokes, and you hold out your wrist, and you let me decide what that means. It's much harder. I think I need hard.\"",
+          "Text": "\"Do you know why I said no?\" {n}She looks at you, then at her hands.{/n} \"Because he'd forgive me. Instantly, before I'd finished the sentence. He'd bandage his own arm and ask if I wanted tea. And I'd take it, every time, because it would be so easy, and one night I'd come to his tent and not bother to knock.\" {n}She twists her hands together.{/n}\n\"And you. In the chapel, you looked at me on that bier and you said I was starving, as if it were a...\" {n}She stops. Starts again.{/n} \"That isn't it. You didn't... I mean, you did, but that isn't why.\" {n}Her mouth closes on it.{/n} \"I had this worked out on the way over. I had a whole sentence. It had a verb in it.\" {n}She glares at the door as if the sentence went out through it.{/n} \"Don't make me look for it.\"",
           "Choices": [
             {
-              "Text": "\"Then I'll keep being hard. It's not difficult. I'm told I'm insufferable.\"",
+              "Text": "\"Keep your sentence. I'll be insufferable at you until you find it.\"",
               "Next": "hard",
               "Set": [
                 "arueshalae.trickster.returned.sosiel"
