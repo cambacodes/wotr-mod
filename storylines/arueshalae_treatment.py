@@ -27,6 +27,11 @@ DREAM = "arueshalae.dream_woken"           # StartedDialogs: the native Ch4 drea
 ELYSIUM = "arueshalae.elysium"             # StartedDialogs: the native Ch5 best ending (her touch no longer harms)
 
 INTAKE = T + "intake"
+STUDIED = T + "studied"
+SLIPPED = T + "rite_slipped"
+VOW_RITE = T + "vow_rite"
+CANDLE_BEARER = T + "candle_bearer"
+DISTANCE_KEPT = T + "distance_kept"
 RX_WATCH = T + "rx_watch"
 RX_WANT = T + "rx_want"
 MEALTIMES = T + "mealtimes"
@@ -39,7 +44,7 @@ SERGEANT_STORY = T + "sergeant_story"
 FORTY = T + "day_forty"
 TOUCHED = T + "touched"
 CURED = T + "cure_works"
-DRAINED = T + "cost.drained"
+DRAINED = "arueshalae.trickster.cost.drained"
 ALUSHINYRRA = T + "alushinyrra"
 WANTS_MEAL = T + "wants_a_meal"
 QUEEN = T + "queen"
@@ -73,6 +78,26 @@ def session(id, title, chapter, entry, nodes, requires, forbids=(), delay=0, las
                         Chapters=list(chapters or range(chapter, last + 1)), **{**BACK, **extra}))
 
 
+# --- The reading (Chapter 3): the work before the joke --------------------------------------------------------------
+
+session(STUDIED, "Night reading", 3, '"You were in the shrine library until the second bell."', [
+    a("start", '''"I watch everyone. You know that." {n}She is standing at your elbow, looking at the books you have not put away: a Desnan breviary with a cracked spine, a travellers' psalter, a chaplain's commentary on the Song of the Spheres, all borrowed from the shrine, all open at the same page.{/n}
+"The Tender of Dreams' blessing for travellers. The star-candle and the words for the road." {n}Her voice changes.{/n} "Why are you reading about my goddess's mercy at the second bell, Commander?"''',
+        c("Continue", "why")),
+    nar("why", '''{n}You tell her the truth, because she would hear anything else. You remember a thing she said once, quietly, as if confessing it: that she should like to kiss someone again, but only as a mortal. Not as a demon. You have been reading ever since.{/n}
+{n}The Desnan rite for travellers asks the goddess to take the road's harm on herself for one night: one star, one night, one safe passage. And the Trickster's own lore can treat a negative condition as a priest treats a poison. You think the two will fit together. You are not sure.{/n}''',
+        c('[Lay the two texts side by side: you already know the lore] "The rite points it. The lore does the rest."', "fit",
+          requires=(CURE,)),
+        c('[Work out the rite the hard way, from the chaplain\'s commentary]', forbids=(CURE,),
+          check={"Skill": "SkillLoreReligion", "DC": 18, "Success": "fit", "Failure": "not_yet"})),
+    a("fit", '''{n}She reads over your shoulder for a long time, her lips moving on the old Desnan words.{/n}
+"One star, one night." {n}She sounds as though she is afraid to breathe on it.{/n} "Not a cure. A lamp you have to light every evening, and it only keeps one wolf off the road." {n}She straightens.{/n} "That's the first honest thing anyone has ever offered me. Everyone else offered me salvation."''',
+        c("[Close the books.]", flags=(STUDIED,))),
+    a("not_yet", '''{n}She watches you turn back three pages, then five, then the whole commentary, and lose the thread each time.{/n}
+"You'll get there," she says. "Or you won't, and you'll have wasted a lot of candles on a demon." {n}She almost smiles.{/n} "Come back to it. I'll be here. I'm always watching."''', c()),
+], ("trickster",), forbids=(STUDIED,), chapters=(3, 4, 5))
+
+
 # --- Intake (Chapter 3): the pulse ----------------------------------------------------------------------------------
 
 session(INTAKE, "Intake", 3, '[Hold out your hand, palm up] "You look pale. Let me take your pulse. When did you last eat?"', [
@@ -88,9 +113,9 @@ session(INTAKE, "Intake", 3, '[Hold out your hand, palm up] "You look pale. Let 
 "Properly? Before the goddess. Before Desna caught me in the priestess's dream and made me look at what I was." {n}Her voice drops.{/n} "Since then I've taken only what I couldn't help. A brush of hands in a crowd. Someone's breath when they sleep too close to the fire. Crumbs. I've lived on crumbs for years, and I tell myself every day that I'm not hungry, and every day it's a lie."''',
         c("Continue", "diagnosis")),
     nar("diagnosis", '''{n}You make the face that the Kenabres field surgeons made when they had bad news and no time: a short nod, a click of the tongue, a hand on the hip.{/n}
-"Chronic starvation," you tell her. "Compounded by guilt. Very common in my practice."
-{n}Arueshalae stares at you.{/n} "Your practice."
-"I'm a doctor now. I've decided. Nobody has told me I can't."''',
+"Chronic starvation," you tell her. "Compounded by guilt. You told me once you'd like to kiss someone as a mortal, not as a demon. I've spent three nights in the shrine library finding out what that would take."
+{n}Arueshalae stares at you.{/n} "What it would take."
+"A doctor. I've read the texts. I'm the nearest thing you've got."''',
         c("Continue", "her")),
     a("her", '''{n}For a moment you think you have hurt her. Then she sits down, very suddenly, on an ammunition crate, and laughs until she has to wipe her eyes on her sleeve, and the laugh is the most unguarded sound you have ever heard her make.{/n}
 "A doctor. For a succubus. Oh, gods, they'd hang you in Alushinyrra, and then they'd hire you." {n}She sobers, a little.{/n} "Very well, doctor. What do you prescribe? I warn you, I've been prescribed things before. Chains, mostly."''',
@@ -101,7 +126,7 @@ session(INTAKE, "Intake", 3, '[Hold out your hand, palm up] "You look pale. Let 
 "Not like this, though. Not on purpose, three times a day, as medicine." {n}She almost smiles.{/n} "All right. I'll take notes. You'll regret asking to read them."''', c()),
     a("want", '''"One thing I want that isn't a person." {n}She looks genuinely frightened, which you did not expect.{/n} "I don't know if I have any. That's the whole... that's the problem, Commander. Demons don't want things. We want people. Everything else is a way of getting to them."
 "But I'll try. Every day. If I can't think of one, I'll come and tell you that instead, and you'll have to live with the disappointment."''', c()),
-], ("trickster",), forbids=(INTAKE,), chapters=(3, 4, 5), EntryMythic="PlayerIsTrickster")
+], ("trickster", STUDIED), forbids=(INTAKE,), chapters=(3, 4, 5), EntryMythic="PlayerIsTrickster")
 
 
 # --- Mealtimes: the first report ----------------------------------------------------------------------------------
@@ -166,17 +191,19 @@ session(TOUCHED, "The procedure", 3, '"I want to try something. Give me your han
 {n}She searches your face for the joke. For once, you aren't making one. It frightens her more than the hand does.{/n}
 "And if you can't deal with it?"
 "Then I'll have learned something, and so will you. That's what procedures are for."''',
-        c('[Hold out your bare hand, and treat the drain as it comes] "Negative condition. I know the cure."', "cure_try",
+        c('[Light the star-candle, say the travellers\' blessing, then hold out your hand] "One star, one night."', "cure_try",
           requires=(CURE,), mythic="Trickster"),
-        c('[Hold out your bare hand anyway] "I haven\'t got a cure. I\'ve got a hand."', "pay_try", forbids=(CURE,)),
+        c('[Light the star-candle and say the blessing from the chaplain\'s commentary, word for word]',
+          forbids=(CURE,), check={"Skill": "SkillLoreReligion", "DC": 20, "Success": "cure_try", "Failure": "pay_try"}),
         c('"You\'re right. Not yet."', abort=True)),
     nar("cure_try", '''{n}She takes it. Her fingers are cool and very light, and for a heartbeat nothing happens, and then the cold begins: not in your hand, in the middle of you, like a draught under a door.{/n}
-{n}You do the thing you learned from the Trickster's lore, the thing that was never meant for this. You name the drain a negative condition, the way a priest names a poison, and you treat it. And again. It lands, and you lift it off, and it lands, and you lift it off, as fast as a heartbeat.{/n}''',
+{n}The candle gutters. You name the drain a negative condition, the way a priest names a poison, and the rite takes it: the cold goes out of the middle of you and into the little star-flame, which burns blue for a breath and then goes out.{/n}
+{n}The second drain comes a heartbeat later, and there is nothing to take it. She feels it land and lets go at once.{/n}''',
         c("Continue", "cured")),
     a("cured", '''{n}She is staring at your joined hands. She has stopped breathing, if she breathes.{/n}
-"It's not going anywhere." {n}Her voice is tiny.{/n} "I can feel it coming out of you and it's not... it's not going anywhere. It's like drinking from a cup that fills itself back up before I can swallow. Commander, what did you do? What is that?"
-"Medicine," you tell her. "Quackery. Some of each."
-{n}She doesn't let go. She holds on with both hands, and she begins to cry, silently, without letting go.{/n} "I've never held anyone's hand before. Not without killing a little of them. Not once. Not in all of it."''',
+"One." {n}Her voice is tiny.{/n} "One whole breath with your hand in mine, and it didn't take anything. The candle took it." {n}She is staring at the dead wick.{/n} "And then it was me again. I felt it. It would have been you the next breath, and the one after."
+"One star, one night," you tell her. "Until I sleep. Every evening, if you want it. That's the treatment."
+{n}She holds her own hand, the one you held, against her chest, and begins to cry, silently.{/n} "I've never held anyone's hand before without killing a little of them. Not once. One breath. Every evening. I'll take it."''',
         c("[Keep holding her hand.]", flags=(TOUCHED, CURED))),
     nar("pay_try", '''{n}She takes it. Her fingers are cool and very light, and then the cold begins: not in your hand, in the middle of you, like a draught under a door, and it keeps coming. The edges of the room go soft. Your knees tell you they have an opinion about standing.{/n}
 {n}You have no trick for this. You have only the choice to keep holding on, and you make it, for three long breaths, and then she makes it for you and tears her hand away.{/n}''',
@@ -241,8 +268,8 @@ session(KITCHEN, "A meal someone made", 5, '"Seventh bell. You said kitchens."',
         c("Continue", "hand_cure", requires=(CURED,)),
         c("Continue", "hand_paid", forbids=(CURED,))),
     nar("hand_cure", '''{n}She reaches across the table and takes your hand, the one with the onion burn on the knuckle, and turns it over, and presses her lips to the burn.{/n}
-{n}The cold begins at once, deep and sweet, and you lift it off, and it comes again, and you lift it off, and she keeps her mouth there, a little too long, deliberately, watching your face over your knuckles to see if you'll flinch.{/n}
-"Still working," she says against your skin. "Still a quack. Good."''',
+{n}You lit the candle at dusk, before the onions burned; it is still going on the windowsill. The cold begins at once, deep and sweet, and the little flame on the sill takes it and goes blue. She lifts her mouth away before the second one can come, deliberately, watching your face over your knuckles.{/n}
+"Still working," she says. "One a night. I counted it. Good."''',
         c("Continue", "after")),
     nar("hand_paid", '''{n}She reaches across the table and takes your hand, the one with the onion burn on the knuckle, and turns it over, and looks at it for a long time. Then she presses her lips, very briefly, to the burn.{/n}
 {n}The cold comes, sharp and quick. You feel it take something. She feels you feel it, and lets go at once, and holds her own wrist as if she had burned herself.{/n}
@@ -274,7 +301,26 @@ session(RELAPSE_TWO, "Contraindications", 5, '"You look like you haven\'t slept.
 "All right. We keep going. But if I ever take more than you mean to give, you tell me. At once. Out loud. Don't be kind about it. Kindness is how they die."''', c()),
     a("her_call", '''{n}She stares at you. Then she gets up, crosses the room, and bends to your ear, and says a word into it that is not Arueshalae: a name made of sounds a throat was not built for, that stings the ear like smoke.{/n}
 "That's the one they made me with. In the Abyss a demon's name is a leash. Whoever holds it can stop her." {n}She straightens, very pale.{/n} "If I ever start to take more than you're giving, say it. I'll stop. I won't be able not to." {n}She sits back down on the bedroll, shaking.{/n} "Nobody has held that since the Delights. Don't lose it. Don't ever use it for anything else."''', c()),
-], (KITCHEN, "trickster.ever"), forbids=(RELAPSE_TWO,), delay=48, chapters=(5,))
+], (KITCHEN, SLIPPED, "trickster.ever"), forbids=(RELAPSE_TWO,), delay=48, chapters=(5,))
+
+
+# --- The rite slips (Chapter 5): the cost, and her distance ---------------------------------------------------------
+
+session(SLIPPED, "A missed night", 5, '"You\'re awake. Don\'t get up."', [
+    nar("start", '''{n}The march from the Ivory Labyrinth ran late, the candles were in the baggage, and you fell asleep in your boots without saying the blessing. You remember her coming to the tent. You remember reaching for her, half-asleep, and her not pulling away fast enough.{/n}
+{n}You wake a day later. A whole day: the council met without you, and the quartermaster signed for you, and nobody could rouse you. Your hands are cold to the wrist and will not warm at the brazier. When you try to stand, the tent tilts.{/n}''',
+        c("Continue", "her")),
+    a("her", '''{n}She is sitting in the far corner of the tent, as far from the cot as the canvas allows, with her knees drawn up and her wings wrapped round them. Her face is grey. You have seen that look on the faces of the soldiers who dug out Kenabres.{/n}
+"You didn't light it." {n}Her voice is very flat.{/n} "You reached for me and I was hungry and I didn't stop, not for a long breath, and you didn't say the words, and I didn't make you. The chaplain says you'll keep the cold in your hands for a month." {n}She looks at the cold hands, and away.{/n}''',
+        c("Continue", "distance")),
+    a("distance", '''"So I've moved my bedroll. To the chapel crypt, in Drezen. Here, to the baggage lines." {n}She has plainly rehearsed this.{/n} "Somewhere I can't reach you in the night. Not until you can light that candle every single evening, march or no march, without once forgetting. I won't be the thing you forget about."''',
+        c('"Then I\'ll never forget it again. Every night. I swear it on the road."', "vow", flags=(SLIPPED, DRAINED, VOW_RITE)),
+        c('"Sleep where you like. I\'ll come to you, every night, with the candle lit."', "come", flags=(SLIPPED, DRAINED, CANDLE_BEARER)),
+        c('"You\'re right. Keep your distance for a while. I\'ll earn it back."', "earn", flags=(SLIPPED, DRAINED, DISTANCE_KEPT))),
+    a("vow", '''"On the road." {n}She looks at you for a long time over her knees.{/n} "Desnans don't swear on the road lightly. Travellers die on it." {n}She does not move from the corner.{/n} "Then I'll come back to the tent when I've watched you keep it for a week. Not before. Rest your hands."''', c()),
+    a("come", '''{n}She laughs, once, badly.{/n} "You'd walk down to a crypt every night with a candle, to a demon who nearly ate you." {n}She hugs her knees tighter.{/n} "Yes. Come. Knock first. And if you ever come without the candle lit, I'll know, and I'll put it out of your reach before you can argue."''', c()),
+    a("earn", '''"Earn it back." {n}She nods, and nods again, and her eyes are wet.{/n} "Yes. That's fair. That's what mortals say, isn't it, when they've done something that can't be undone? I'll wait. I'm good at waiting. I'm getting better at it every day you give me to practise."''', c()),
+], (TOUCHED, KITCHEN, "trickster.ever"), forbids=(SLIPPED,), delay=24, chapters=(5,))
 
 
 # --- The proposal (Chapter 5): she asks (06-ROUTE-REGISTRY §3: "she proposes"; no test, no price) ---------------------
@@ -337,8 +383,8 @@ session(NIGHT, "Under the Tender of Dreams", 5, '"Where are we going?"', [
     a("stars", '''"I know every way there is. I was taught in the Upper City, by the best, on a thousand guests." {n}She is standing with her back to the stars, and her hands have found each other behind her back again.{/n} "And every one of those ways ends with me counting what I took. I'm afraid that halfway through I'll start counting. I'm afraid I'll be good at this, the way I was good at it then." {n}She swallows.{/n} "So I brought us somewhere I've never done anything at all. Nothing here remembers me being good at it."''',
         c("Continue", "cure", requires=(CURE,)),
         c("Continue", "uncured", forbids=(CURE,))),
-    nar("cure", '''{n}Her first kiss is careful, almost a question, and the cold comes with it like a tide coming in. You lift it off. It comes again. You lift it off. She feels you doing it and her breath catches and she kisses you harder, testing you, and you keep up with her, breath for breath, a quack's trick turned into a rhythm, until she is laughing into your mouth.{/n}
-"You're cheating," she whispers. "Don't stop cheating."''',
+    nar("cure", '''{n}You lit the star-candle in a niche of the broken bell-wall before she carried you up; it will take one drain, once, until you sleep. Her first kiss is careful, almost a question, and the cold comes with it like a tide coming in, and the little flame in the niche takes it and goes out.{/n}
+{n}The rest is hers to take, and yours to pay, and you both know it. She kisses you again anyway, and you let it cost what it costs, and she watches your face the whole time, counting.{/n}''',
         c("Continue", "undress")),
     nar("uncured", '''{n}Her first kiss is careful, almost a question, and the cold comes with it, and there is nothing you can do about it except not pull away. She feels it take you, and stops, and you pull her back.{/n}
 "You'll be weak tomorrow," she says against your mouth. "You'll be grey and useless and the second company will talk." {n}You tell her to let them. She makes a sound you have never heard her make, and does.{/n}''',

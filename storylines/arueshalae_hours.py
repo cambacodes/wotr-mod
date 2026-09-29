@@ -84,7 +84,7 @@ hub(ABYSS_TOUCH, "The dose, adjusted", 4, '"It\'s worse here, isn\'t it?"', [
     nar("take", '''{n}She stares at the hand. Then she takes it with both of hers, too hard, and the cold comes through you like a river breaking a dam.{/n}''',
         c("Continue", "cure", requires=(CURED,)),
         c("Continue", "paid", forbids=(CURED,))),
-    nar("cure", '''{n}It is not the gentle tide of Drezen. It is a flood. You lift it and it is back before you have finished, and you lift it, and it is back, and for three long breaths you are only just keeping up, the quack's trick stretched to its last thread, and she feels you straining and does not let go.{/n}
+    nar("cure", '''{n}It is not the gentle tide of Drezen. It is a flood. The star-candle you lit at dusk takes the first of it and goes out like a pinched wick, and the rest comes on with nothing to stop it, and for two long breaths you pay it straight, and she feels you paying and does not let go.{/n}
 {n}Then she does. She drops your hand as if it were a coal and sits there panting.{/n}''',
         c("Continue", "after")),
     nar("paid", '''{n}It is not the gentle cold of Drezen. It is a flood, and you have nothing to stop it with but your own stubbornness, and your vision goes grey at the edges almost at once. You hold on for one breath. For two.{/n}

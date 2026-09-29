@@ -224118,10 +224118,10 @@
         {
           "Id": "cured",
           "Speaker": "Narrator",
-          "Text": "{n}Her mouth finds yours and the cold goes through you like a key turning. You do the thing you learned, the quack's trick: you name the drain a negative condition and treat it, as fast as it lands, breath for breath. She feels it. She pulls back an inch, astonished, furious, laughing.{/n}\n\"You're cheating.\" {n}Her wings open behind her and cut the rain off both of you.{/n} \"You're cheating, and I can't tell where. Do it again.\"",
+          "Text": "{n}Her mouth finds yours and the cold goes through you like a key turning. You do the thing you learned, the quack's trick: you name the drain a negative condition and treat it, once. It holds for one breath, and then there is nothing left in you to treat it with. She feels the second one land. She pulls back an inch, astonished, furious, laughing.{/n}\n\"You cheated once.\" {n}Her wings open behind her and cut the rain off both of you.{/n} \"Once. And now you're mine to take. Do you want me to stop?\"",
           "Choices": [
             {
-              "Text": "[Do it again.]",
+              "Text": "[Don't let her stop.]",
               "Next": "cut",
               "Set": [],
               "Requires": [],
@@ -224276,10 +224276,10 @@
         {
           "Id": "cured",
           "Speaker": "Narrator",
-          "Text": "{n}Her mouth finds yours and the cold goes through you like a key turning. You do the thing you learned, the quack's trick: you name the drain a negative condition and treat it, as fast as it lands, breath for breath. She feels it. She pulls back an inch, astonished, furious, laughing.{/n}\n\"You're cheating.\" {n}Her wings open behind her and cut the rain off both of you.{/n} \"You're cheating, and I can't tell where. Do it again.\"",
+          "Text": "{n}Her mouth finds yours and the cold goes through you like a key turning. You do the thing you learned, the quack's trick: you name the drain a negative condition and treat it, once. It holds for one breath, and then there is nothing left in you to treat it with. She feels the second one land. She pulls back an inch, astonished, furious, laughing.{/n}\n\"You cheated once.\" {n}Her wings open behind her and cut the rain off both of you.{/n} \"Once. And now you're mine to take. Do you want me to stop?\"",
           "Choices": [
             {
-              "Text": "[Do it again.]",
+              "Text": "[Don't let her stop.]",
               "Next": "cut",
               "Set": [],
               "Requires": [],
@@ -224746,6 +224746,125 @@
       ]
     },
     {
+      "Id": "arueshalae.treatment.studied",
+      "Title": "Night reading",
+      "Owner": "Arueshalae",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"You were in the shrine library until the second bell.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Arueshalae",
+          "Text": "\"I watch everyone. You know that.\" {n}She is standing at your elbow, looking at the books you have not put away: a Desnan breviary with a cracked spine, a travellers' psalter, a chaplain's commentary on the Song of the Spheres, all borrowed from the shrine, all open at the same page.{/n}\n\"The Tender of Dreams' blessing for travellers. The star-candle and the words for the road.\" {n}Her voice changes.{/n} \"Why are you reading about my goddess's mercy at the second bell, Commander?\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "why",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arueshalae"
+        },
+        {
+          "Id": "why",
+          "Speaker": "Narrator",
+          "Text": "{n}You tell her the truth, because she would hear anything else. You remember a thing she said once, quietly, as if confessing it: that she should like to kiss someone again, but only as a mortal. Not as a demon. You have been reading ever since.{/n}\n{n}The Desnan rite for travellers asks the goddess to take the road's harm on herself for one night: one star, one night, one safe passage. And the Trickster's own lore can treat a negative condition as a priest treats a poison. You think the two will fit together. You are not sure.{/n}",
+          "Choices": [
+            {
+              "Text": "[Lay the two texts side by side: you already know the lore] \"The rite points it. The lore does the rest.\"",
+              "Next": "fit",
+              "Set": [],
+              "Requires": [
+                "trickster.religion_tier1"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Work out the rite the hard way, from the chaplain's commentary]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "trickster.religion_tier1"
+              ],
+              "Abort": false,
+              "Check": {
+                "Skill": "SkillLoreReligion",
+                "DC": 18,
+                "Success": "fit",
+                "Failure": "not_yet"
+              }
+            }
+          ],
+          "Portrait": "Arueshalae"
+        },
+        {
+          "Id": "fit",
+          "Speaker": "Arueshalae",
+          "Text": "{n}She reads over your shoulder for a long time, her lips moving on the old Desnan words.{/n}\n\"One star, one night.\" {n}She sounds as though she is afraid to breathe on it.{/n} \"Not a cure. A lamp you have to light every evening, and it only keeps one wolf off the road.\" {n}She straightens.{/n} \"That's the first honest thing anyone has ever offered me. Everyone else offered me salvation.\"",
+          "Choices": [
+            {
+              "Text": "[Close the books.]",
+              "Next": null,
+              "Set": [
+                "arueshalae.treatment.studied"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arueshalae"
+        },
+        {
+          "Id": "not_yet",
+          "Speaker": "Arueshalae",
+          "Text": "{n}She watches you turn back three pages, then five, then the whole commentary, and lose the thread each time.{/n}\n\"You'll get there,\" she says. \"Or you won't, and you'll have wasted a lot of candles on a demon.\" {n}She almost smiles.{/n} \"Come back to it. I'll be here. I'm always watching.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arueshalae"
+        }
+      ],
+      "Requires": [
+        "trickster"
+      ],
+      "Forbids": [
+        "arueshalae.closed",
+        "arueshalae_dead",
+        "arueshalae.evil_dead",
+        "arueshalae.evil_recruited",
+        "arueshalae.treatment.studied"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "arueshalae",
+      "AnswerLists": [
+        "03ebad9587cbea0438d901a0f8df44f1"
+      ],
+      "ContactUnit": "a352873d37ec6c54c9fa8f6da3a6b3e1",
+      "Chapters": [
+        3,
+        4,
+        5
+      ],
+      "ForbidOverrides": {
+        "arueshalae_dead": "arueshalae.trickster.returned"
+      }
+    },
+    {
       "Id": "arueshalae.treatment.intake",
       "Title": "Intake",
       "Owner": "Arueshalae",
@@ -224812,7 +224931,7 @@
         {
           "Id": "diagnosis",
           "Speaker": "Narrator",
-          "Text": "{n}You make the face that the Kenabres field surgeons made when they had bad news and no time: a short nod, a click of the tongue, a hand on the hip.{/n}\n\"Chronic starvation,\" you tell her. \"Compounded by guilt. Very common in my practice.\"\n{n}Arueshalae stares at you.{/n} \"Your practice.\"\n\"I'm a doctor now. I've decided. Nobody has told me I can't.\"",
+          "Text": "{n}You make the face that the Kenabres field surgeons made when they had bad news and no time: a short nod, a click of the tongue, a hand on the hip.{/n}\n\"Chronic starvation,\" you tell her. \"Compounded by guilt. You told me once you'd like to kiss someone as a mortal, not as a demon. I've spent three nights in the shrine library finding out what that would take.\"\n{n}Arueshalae stares at you.{/n} \"What it would take.\"\n\"A doctor. I've read the texts. I'm the nearest thing you've got.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -224899,7 +225018,8 @@
         }
       ],
       "Requires": [
-        "trickster"
+        "trickster",
+        "arueshalae.treatment.studied"
       ],
       "Forbids": [
         "arueshalae.closed",
@@ -225326,7 +225446,7 @@
           "Text": "\"It's a procedure,\" you tell her. \"I read about it in a book I haven't written yet. You hold my hand. Whatever it costs, I'll know, the moment it happens. And I'll deal with it.\"\n{n}She searches your face for the joke. For once, you aren't making one. It frightens her more than the hand does.{/n}\n\"And if you can't deal with it?\"\n\"Then I'll have learned something, and so will you. That's what procedures are for.\"",
           "Choices": [
             {
-              "Text": "[Hold out your bare hand, and treat the drain as it comes] \"Negative condition. I know the cure.\"",
+              "Text": "[Light the star-candle, say the travellers' blessing, then hold out your hand] \"One star, one night.\"",
               "Next": "cure_try",
               "Set": [],
               "Requires": [
@@ -225337,14 +225457,20 @@
               "Mythic": "PlayerIsTrickster"
             },
             {
-              "Text": "[Hold out your bare hand anyway] \"I haven't got a cure. I've got a hand.\"",
-              "Next": "pay_try",
+              "Text": "[Light the star-candle and say the blessing from the chaplain's commentary, word for word]",
+              "Next": null,
               "Set": [],
               "Requires": [],
               "Forbids": [
                 "trickster.religion_tier1"
               ],
-              "Abort": false
+              "Abort": false,
+              "Check": {
+                "Skill": "SkillLoreReligion",
+                "DC": 20,
+                "Success": "cure_try",
+                "Failure": "pay_try"
+              }
             },
             {
               "Text": "\"You're right. Not yet.\"",
@@ -225360,7 +225486,7 @@
         {
           "Id": "cure_try",
           "Speaker": "Narrator",
-          "Text": "{n}She takes it. Her fingers are cool and very light, and for a heartbeat nothing happens, and then the cold begins: not in your hand, in the middle of you, like a draught under a door.{/n}\n{n}You do the thing you learned from the Trickster's lore, the thing that was never meant for this. You name the drain a negative condition, the way a priest names a poison, and you treat it. And again. It lands, and you lift it off, and it lands, and you lift it off, as fast as a heartbeat.{/n}",
+          "Text": "{n}She takes it. Her fingers are cool and very light, and for a heartbeat nothing happens, and then the cold begins: not in your hand, in the middle of you, like a draught under a door.{/n}\n{n}The candle gutters. You name the drain a negative condition, the way a priest names a poison, and the rite takes it: the cold goes out of the middle of you and into the little star-flame, which burns blue for a breath and then goes out.{/n}\n{n}The second drain comes a heartbeat later, and there is nothing to take it. She feels it land and lets go at once.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -225376,7 +225502,7 @@
         {
           "Id": "cured",
           "Speaker": "Arueshalae",
-          "Text": "{n}She is staring at your joined hands. She has stopped breathing, if she breathes.{/n}\n\"It's not going anywhere.\" {n}Her voice is tiny.{/n} \"I can feel it coming out of you and it's not... it's not going anywhere. It's like drinking from a cup that fills itself back up before I can swallow. Commander, what did you do? What is that?\"\n\"Medicine,\" you tell her. \"Quackery. Some of each.\"\n{n}She doesn't let go. She holds on with both hands, and she begins to cry, silently, without letting go.{/n} \"I've never held anyone's hand before. Not without killing a little of them. Not once. Not in all of it.\"",
+          "Text": "{n}She is staring at your joined hands. She has stopped breathing, if she breathes.{/n}\n\"One.\" {n}Her voice is tiny.{/n} \"One whole breath with your hand in mine, and it didn't take anything. The candle took it.\" {n}She is staring at the dead wick.{/n} \"And then it was me again. I felt it. It would have been you the next breath, and the one after.\"\n\"One star, one night,\" you tell her. \"Until I sleep. Every evening, if you want it. That's the treatment.\"\n{n}She holds her own hand, the one you held, against her chest, and begins to cry, silently.{/n} \"I've never held anyone's hand before without killing a little of them. Not once. One breath. Every evening. I'll take it.\"",
           "Choices": [
             {
               "Text": "[Keep holding her hand.]",
@@ -225418,7 +225544,7 @@
               "Next": null,
               "Set": [
                 "arueshalae.treatment.touched",
-                "arueshalae.treatment.cost.drained"
+                "arueshalae.trickster.cost.drained"
               ],
               "Requires": [],
               "Forbids": [],
@@ -225785,7 +225911,7 @@
         {
           "Id": "hand_cure",
           "Speaker": "Narrator",
-          "Text": "{n}She reaches across the table and takes your hand, the one with the onion burn on the knuckle, and turns it over, and presses her lips to the burn.{/n}\n{n}The cold begins at once, deep and sweet, and you lift it off, and it comes again, and you lift it off, and she keeps her mouth there, a little too long, deliberately, watching your face over your knuckles to see if you'll flinch.{/n}\n\"Still working,\" she says against your skin. \"Still a quack. Good.\"",
+          "Text": "{n}She reaches across the table and takes your hand, the one with the onion burn on the knuckle, and turns it over, and presses her lips to the burn.{/n}\n{n}You lit the candle at dusk, before the onions burned; it is still going on the windowsill. The cold begins at once, deep and sweet, and the little flame on the sill takes it and goes blue. She lifts her mouth away before the second one can come, deliberately, watching your face over your knuckles.{/n}\n\"Still working,\" she says. \"One a night. I counted it. Good.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -225991,6 +226117,7 @@
       ],
       "Requires": [
         "arueshalae.treatment.kitchen",
+        "arueshalae.treatment.rite_slipped",
         "trickster.ever"
       ],
       "Forbids": [
@@ -226001,6 +226128,165 @@
         "arueshalae.treatment.relapse_two"
       ],
       "DelayHours": 48,
+      "Optional": false,
+      "Relationship": "arueshalae",
+      "AnswerLists": [
+        "03ebad9587cbea0438d901a0f8df44f1"
+      ],
+      "ContactUnit": "a352873d37ec6c54c9fa8f6da3a6b3e1",
+      "Chapters": [
+        5
+      ],
+      "ForbidOverrides": {
+        "arueshalae_dead": "arueshalae.trickster.returned"
+      }
+    },
+    {
+      "Id": "arueshalae.treatment.rite_slipped",
+      "Title": "A missed night",
+      "Owner": "Arueshalae",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You're awake. Don't get up.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The march from the Ivory Labyrinth ran late, the candles were in the baggage, and you fell asleep in your boots without saying the blessing. You remember her coming to the tent. You remember reaching for her, half-asleep, and her not pulling away fast enough.{/n}\n{n}You wake a day later. A whole day: the council met without you, and the quartermaster signed for you, and nobody could rouse you. Your hands are cold to the wrist and will not warm at the brazier. When you try to stand, the tent tilts.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "her",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arueshalae"
+        },
+        {
+          "Id": "her",
+          "Speaker": "Arueshalae",
+          "Text": "{n}She is sitting in the far corner of the tent, as far from the cot as the canvas allows, with her knees drawn up and her wings wrapped round them. Her face is grey. You have seen that look on the faces of the soldiers who dug out Kenabres.{/n}\n\"You didn't light it.\" {n}Her voice is very flat.{/n} \"You reached for me and I was hungry and I didn't stop, not for a long breath, and you didn't say the words, and I didn't make you. The chaplain says you'll keep the cold in your hands for a month.\" {n}She looks at the cold hands, and away.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "distance",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arueshalae"
+        },
+        {
+          "Id": "distance",
+          "Speaker": "Arueshalae",
+          "Text": "\"So I've moved my bedroll. To the chapel crypt, in Drezen. Here, to the baggage lines.\" {n}She has plainly rehearsed this.{/n} \"Somewhere I can't reach you in the night. Not until you can light that candle every single evening, march or no march, without once forgetting. I won't be the thing you forget about.\"",
+          "Choices": [
+            {
+              "Text": "\"Then I'll never forget it again. Every night. I swear it on the road.\"",
+              "Next": "vow",
+              "Set": [
+                "arueshalae.treatment.rite_slipped",
+                "arueshalae.trickster.cost.drained",
+                "arueshalae.treatment.vow_rite"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Sleep where you like. I'll come to you, every night, with the candle lit.\"",
+              "Next": "come",
+              "Set": [
+                "arueshalae.treatment.rite_slipped",
+                "arueshalae.trickster.cost.drained",
+                "arueshalae.treatment.candle_bearer"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"You're right. Keep your distance for a while. I'll earn it back.\"",
+              "Next": "earn",
+              "Set": [
+                "arueshalae.treatment.rite_slipped",
+                "arueshalae.trickster.cost.drained",
+                "arueshalae.treatment.distance_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arueshalae"
+        },
+        {
+          "Id": "vow",
+          "Speaker": "Arueshalae",
+          "Text": "\"On the road.\" {n}She looks at you for a long time over her knees.{/n} \"Desnans don't swear on the road lightly. Travellers die on it.\" {n}She does not move from the corner.{/n} \"Then I'll come back to the tent when I've watched you keep it for a week. Not before. Rest your hands.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arueshalae"
+        },
+        {
+          "Id": "come",
+          "Speaker": "Arueshalae",
+          "Text": "{n}She laughs, once, badly.{/n} \"You'd walk down to a crypt every night with a candle, to a demon who nearly ate you.\" {n}She hugs her knees tighter.{/n} \"Yes. Come. Knock first. And if you ever come without the candle lit, I'll know, and I'll put it out of your reach before you can argue.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arueshalae"
+        },
+        {
+          "Id": "earn",
+          "Speaker": "Arueshalae",
+          "Text": "\"Earn it back.\" {n}She nods, and nods again, and her eyes are wet.{/n} \"Yes. That's fair. That's what mortals say, isn't it, when they've done something that can't be undone? I'll wait. I'm good at waiting. I'm getting better at it every day you give me to practise.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arueshalae"
+        }
+      ],
+      "Requires": [
+        "arueshalae.treatment.touched",
+        "arueshalae.treatment.kitchen",
+        "trickster.ever"
+      ],
+      "Forbids": [
+        "arueshalae.closed",
+        "arueshalae_dead",
+        "arueshalae.evil_dead",
+        "arueshalae.evil_recruited",
+        "arueshalae.treatment.rite_slipped"
+      ],
+      "DelayHours": 24,
       "Optional": false,
       "Relationship": "arueshalae",
       "AnswerLists": [
@@ -226517,7 +226803,7 @@
         {
           "Id": "cure",
           "Speaker": "Narrator",
-          "Text": "{n}Her first kiss is careful, almost a question, and the cold comes with it like a tide coming in. You lift it off. It comes again. You lift it off. She feels you doing it and her breath catches and she kisses you harder, testing you, and you keep up with her, breath for breath, a quack's trick turned into a rhythm, until she is laughing into your mouth.{/n}\n\"You're cheating,\" she whispers. \"Don't stop cheating.\"",
+          "Text": "{n}You lit the star-candle in a niche of the broken bell-wall before she carried you up; it will take one drain, once, until you sleep. Her first kiss is careful, almost a question, and the cold comes with it like a tide coming in, and the little flame in the niche takes it and goes out.{/n}\n{n}The rest is hers to take, and yours to pay, and you both know it. She kisses you again anyway, and you let it cost what it costs, and she watches your face the whole time, counting.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -227337,7 +227623,7 @@
         {
           "Id": "held_cure",
           "Speaker": "Arueshalae",
-          "Text": "{n}The cold comes and you lift it, and it comes and you lift it, and slowly her shoulders come down from round her ears.{/n}\n\"That's the difference,\" she says at last, very quietly. \"Her party would have been more. Much more. And I'd have hated myself before dawn. This is less, and I don't.\" {n}She does not let go.{/n} \"Don't tell her about the doctor. She'll want one.\"",
+          "Text": "{n}You lit the star-candle in the camp at dusk. The first cold comes and the rite takes it, and the second you let come, and slowly her shoulders come down from round her ears.{/n}\n\"That's the difference,\" she says at last, very quietly. \"Her party would have been more. Much more. And I'd have hated myself before dawn. This is less, and I don't.\" {n}She does not let go.{/n} \"Don't tell her about the doctor. She'll want one.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -227579,7 +227865,7 @@
         {
           "Id": "cure",
           "Speaker": "Narrator",
-          "Text": "{n}You dance badly, and she dances beautifully, and between you it comes out as something the fiddlers can live with. All the while the cold comes up through your joined hands and you lift it, and it comes, and you lift it, a second rhythm under the music that only the two of you can hear.{/n}\n\"You're counting,\" she says into your ear. \"Not the steps. The other thing.\" You are. So is she.",
+          "Text": "{n}You dance badly, and she dances beautifully, and between you it comes out as something the fiddlers can live with. The first cold comes up through your joined hands and the candle you lit at dusk takes it; after that she keeps a hand's breadth of air between your palms, and you dance with that air between you, which the fiddlers think is very courtly.{/n}\n\"You're counting,\" she says into your ear. \"Not the steps. The other thing.\" You are. So is she.",
           "Choices": [
             {
               "Text": "Continue",
@@ -228251,6 +228537,14 @@
               "Text": "Nobody came to collect her summons. She waited a week to be sure. Then she stopped waiting, and it was the first thing in her long life that she ever did because she wanted to, and for no one.",
               "Requires": [
                 "trickster.lastcall.summons_outlived"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The star-candle was lit every evening for the rest of their lives, in camp and in palace and once, memorably, in a thunderstorm on a ship's deck. The few nights it was not, the Commander woke with cold hands and a lost day, and found her sitting in the farthest corner of the room with her knees drawn up, and it took a week, each time, to coax her back.",
+              "Requires": [
+                "arueshalae.trickster.cost.drained"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -229588,7 +229882,7 @@
         {
           "Id": "cure",
           "Speaker": "Narrator",
-          "Text": "{n}It is not the gentle tide of Drezen. It is a flood. You lift it and it is back before you have finished, and you lift it, and it is back, and for three long breaths you are only just keeping up, the quack's trick stretched to its last thread, and she feels you straining and does not let go.{/n}\n{n}Then she does. She drops your hand as if it were a coal and sits there panting.{/n}",
+          "Text": "{n}It is not the gentle tide of Drezen. It is a flood. The star-candle you lit at dusk takes the first of it and goes out like a pinched wick, and the rest comes on with nothing to stop it, and for two long breaths you pay it straight, and she feels you paying and does not let go.{/n}\n{n}Then she does. She drops your hand as if it were a coal and sits there panting.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -231104,7 +231398,7 @@
       "Requires": [
         "trickster.ever",
         "arueshalae.treatment.touched",
-        "arueshalae.treatment.cost.drained"
+        "arueshalae.trickster.cost.drained"
       ],
       "Forbids": [
         "arueshalae.closed",
@@ -244300,8 +244594,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",
@@ -245159,7 +245453,7 @@
     },
     "arueshalae": {
       "Title": "Treatment",
-      "Description": "Arueshalae is hungry. She has always been hungry. I have decided to treat it as a medical condition, because I am a Trickster and because nobody has told me I can't.",
+      "Description": "Arueshalae is hungry. She has always been hungry. I have read the Desnan rites and the Trickster's own lore, and I have decided to treat it as a medical condition, one night at a time.",
       "Objective": "Speak with Arueshalae",
       "Guidance": "On the Trickster path, take Arueshalae's pulse at her own hub in Chapter 3 and begin her treatment; the sessions continue in Chapters 3 to 5. If she dies in the party, falls to evil and is killed at her lair, or her romance fails, the Trickster has an answer for each. Her native romance stands beside all of it.",
       "StartedFlag": "arueshalae.started",

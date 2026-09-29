@@ -140,7 +140,7 @@ session(OLD_NAME, "What they called me", 4, '"Who was that, in the market?"', [
     nar("hand", '''{n}She looks at your hand as if it were a door she is not sure she is allowed through. Then she takes it, in the middle of a demon lord's city, with the smell of the Delights still on her sleeve, and holds on.{/n}''',
         c("Continue", "held_cure", requires=(CURED,)),
         c("Continue", "held_paid", forbids=(CURED,))),
-    a("held_cure", '''{n}The cold comes and you lift it, and it comes and you lift it, and slowly her shoulders come down from round her ears.{/n}
+    a("held_cure", '''{n}You lit the star-candle in the camp at dusk. The first cold comes and the rite takes it, and the second you let come, and slowly her shoulders come down from round her ears.{/n}
 "That's the difference," she says at last, very quietly. "Her party would have been more. Much more. And I'd have hated myself before dawn. This is less, and I don't." {n}She does not let go.{/n} "Don't tell her about the doctor. She'll want one."''', c(flags=(OLD_NAME,))),
     a("held_paid", '''{n}The cold comes, and you let it, and she feels you let it, and after two breaths she pulls away and holds your hand between her wrists instead, the careful way.{/n}
 "Two," she says. "Only two. I could have had a whole party. I'd rather have two of yours." {n}She is shaking.{/n} "Don't do that again in the Abyss. Everybody here can smell it when someone gives."''', c(flags=(OLD_NAME,))),
@@ -178,7 +178,7 @@ session(DANCE, "Recommended exercise", 5, '"There\'s music in the square."', [
 {n}Then a fiddler hits a wrong note, and a sergeant treads on your foot, and somebody's child runs between your legs, and she laughs, and the rigidity goes out of her.{/n}''',
         c("Continue", "cure", requires=(CURED,)),
         c("Continue", "glove", forbids=(CURED,))),
-    nar("cure", '''{n}You dance badly, and she dances beautifully, and between you it comes out as something the fiddlers can live with. All the while the cold comes up through your joined hands and you lift it, and it comes, and you lift it, a second rhythm under the music that only the two of you can hear.{/n}
+    nar("cure", '''{n}You dance badly, and she dances beautifully, and between you it comes out as something the fiddlers can live with. The first cold comes up through your joined hands and the candle you lit at dusk takes it; after that she keeps a hand's breadth of air between your palms, and you dance with that air between you, which the fiddlers think is very courtly.{/n}
 "You're counting," she says into your ear. "Not the steps. The other thing." You are. So is she.''',
         c("Continue", "after")),
     nar("glove", '''{n}She has put a glove on, a long silk one from somewhere, and she holds your hand through it, and even so you can feel the faint cold at the edges, the way you feel a draught through a closed shutter. You dance anyway. You dance badly, and she dances beautifully, and nobody in the square notices that the Commander is a little grey by the end of it.{/n}''',

@@ -84,8 +84,8 @@ DREZEN_PLACES = ((TAVERN_PRESENCE, "", (), EVIL_UNIT), (YARD_PRESENCE, "_yard", 
 
 RELATIONSHIP = dict(
     Title="Treatment",
-    Description=("Arueshalae is hungry. She has always been hungry. I have decided to treat it as a medical condition, "
-                 "because I am a Trickster and because nobody has told me I can't."),
+    Description=("Arueshalae is hungry. She has always been hungry. I have read the Desnan rites and the Trickster's own "
+                 "lore, and I have decided to treat it as a medical condition, one night at a time."),
     Objective="Speak with Arueshalae",
     Guidance=("On the Trickster path, take Arueshalae's pulse at her own hub in Chapter 3 and begin her treatment; "
               "the sessions continue in Chapters 3 to 5. If she dies in the party, falls to evil and is killed at her "
@@ -421,9 +421,9 @@ NIGHT_NODES = [
 "This is the part where you remember what I am. Every caress costs. Every one. I'm not going to pretend otherwise, and I'm not going to be careful. If you want careful, you know which saint to go and pray to."''',
         c("Continue", "cured", requires=("trickster.religion_tier1",)),
         c("Continue", "paid", forbids=("trickster.religion_tier1",))),
-    nar("cured", '''{n}Her mouth finds yours and the cold goes through you like a key turning. You do the thing you learned, the quack's trick: you name the drain a negative condition and treat it, as fast as it lands, breath for breath. She feels it. She pulls back an inch, astonished, furious, laughing.{/n}
-"You're cheating." {n}Her wings open behind her and cut the rain off both of you.{/n} "You're cheating, and I can't tell where. Do it again."''',
-        c("[Do it again.]", "cut")),
+    nar("cured", '''{n}Her mouth finds yours and the cold goes through you like a key turning. You do the thing you learned, the quack's trick: you name the drain a negative condition and treat it, once. It holds for one breath, and then there is nothing left in you to treat it with. She feels the second one land. She pulls back an inch, astonished, furious, laughing.{/n}
+"You cheated once." {n}Her wings open behind her and cut the rain off both of you.{/n} "Once. And now you're mine to take. Do you want me to stop?"''',
+        c("[Don't let her stop.]", "cut")),
     nar("paid", '''{n}Her mouth finds yours and the cold goes through you like a key turning, and you let it. You have no trick for this. You have only the choice to stay on the roof in the rain and take it. She feels that too, and something in her goes still and sharp and very interested.{/n}
 "You're letting me." {n}Her wings open behind her and cut the rain off both of you.{/n} "Nobody lets me. They beg, or they fight, or they pray. You're just letting me."''',
         c("[Let her.]", "cut")),

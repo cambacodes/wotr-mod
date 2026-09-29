@@ -220,8 +220,13 @@ internal static class ArueshalaeTricksterTests
 
         // --- The treatment: the living courtship -----------------------------------------------------------------
         var intake = S(T + "intake");
-        var alive = World(story, 3, "", "trickster", "trickster.ever");
-        check(Avail(intake, alive) && intake.EntryMythic == "PlayerIsTrickster", "The treatment's intake is not open to a living Trickster.");
+        var study = S(T + "studied");
+        var reader = World(story, 3, "", "trickster", "trickster.ever");
+        check(Avail(study, reader) && !Avail(intake, reader), "The intake opens before the Commander has done the reading.");
+        check(study.Nodes.Single(n => n.Id == "why").Choices.Any(c => c.Check?.Skill == "SkillLoreReligion" && c.Forbids.Contains("trickster.religion_tier1")),
+            "The reading has no Lore (Religion) check for a Commander without the trick.");
+        var alive = World(story, 3, "", "trickster", "trickster.ever", T + "studied");
+        check(Avail(intake, alive) && intake.EntryMythic == "PlayerIsTrickster", "The treatment's intake is not open after the reading.");
         check(!Avail(intake, World(story, 3, "", "trickster.ever")), "The intake opens without the live Trickster path.");
         var patient = First(intake, alive, "her", 0);
         check(patient.Has(T + "intake") && patient.Has("arueshalae.started"), "The intake does not start the relationship.");
@@ -229,6 +234,11 @@ internal static class ArueshalaeTricksterTests
         var touch = S(T + "touched");
         check(Ch(touch, "explain", 0).Requires.Contains("trickster.religion_tier1") && Ch(touch, "explain", 1).Forbids.Contains("trickster.religion_tier1"),
             "The quack's cure is not keyed to the chosen Lore (Religion) rank 1 trick, with an honest path without it.");
+        var slip = S(T + "rite_slipped");
+        var slipW = Later(story, World(story, 5, "", "trickster.ever", T + "intake", T + "touched", T + "kitchen"), 60);
+        check(Avail(slip, slipW) && slip.Nodes.Single(n => n.Id == "distance").Choices.All(c => c.Set.Contains("arueshalae.trickster.cost.drained")),
+            "The missed rite is not a priced, visible cost with her distance to answer.");
+        check(S(T + "relapse_two").Requires.Contains(T + "rite_slipped"), "The second relapse does not follow the missed rite.");
         var proposal = S(T + "prescription");
         var ask = proposal.Nodes.Single(n => n.Id == "ask");
         check(ask.Choices.Count == 4 && ask.Choices.All(c => c.Crusade == null && c.Alignment == null),
