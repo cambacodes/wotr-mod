@@ -413,3 +413,40 @@ page("nocticula.trickster.defeated.epilogue.mirror_kept", "Black silk",
 _MIRROR_PAGES = [SCENES.pop(), SCENES.pop()][::-1]
 _FAVOUR = next(i for i, s in enumerate(SCENES) if s["Id"] == "nocticula.trickster.defeated.epilogue.favour")
 SCENES[_FAVOUR:_FAVOUR] = _MIRROR_PAGES
+
+
+# Arueshalae's favour (ledger row 11: Nocticula writes court.arueshalae; it collects arueshalae's cost.nocticula_favour
+# once). Remote: after the Ch5 audience her throne room is walled off (Cue_0019/Cue_0023, native comment) and she has no
+# other unit in Chapter 5. Canon: she is "the succubus queen" who allows Arueshalae to follow the Commander
+# (Nocticula_main/Cue_0523 b84ef61b) and trades in what people "desire most" (Cue_0520 e50ab396).
+A_FAVOUR = "arueshalae.trickster.cost.nocticula_favour"
+FAVOUR_CALLED = "nocticula.trickster.favour_called.arueshalae"
+FAVOUR_BURNED = "nocticula.trickster.cost.favour_burned"
+
+
+def ar(id, text, *choices, **kw):
+    return n(id, "Arueshalae", text, *choices, portrait="Arueshalae", **kw)
+
+
+SCENES.append(scene("nocticula.trickster.court.arueshalae", "A favour, called", "Memory", 5, "", [
+    nar("seal", '''{n}The letter smells of night-blooming flowers. It is addressed to you and meant for the succubus reading it over your shoulder, who has gone very still.{/n}''',
+        c("Continue", "letter")),
+    nt("letter", '''"Commander. You owe me a favour for my succubus, and I have decided what it is. Read her this letter aloud, in your own voice, every word."
+"'Arueshalae. You were mine before you were anyone's. You are welcome at my table tonight, and every night after. Choose.'"
+"That is the whole favour. Whatever she chooses, you have paid."''',
+        c("[Read her the letter, word for word.]", "her_side"),
+        c("[Burn it where she can see.]", "raised")),
+    ar("her_side", '''{n}You read it. Every word, in your own voice, as instructed. She does not interrupt. When you finish, she takes the letter out of your hand.{/n}''',
+       c("Continue", "chose", requires=("arueshalae.committed",)),
+       c("Continue", "night", forbids=("arueshalae.committed",))),
+    ar("chose", '''"...She wants me to choose." {n}She folds the letter very small, and smaller, until it will not fold any more.{/n} "I did. Tell her I said so." {n}She puts it in her bodice, next to the black pearl.{/n} "No. Don't. Let her wonder. It's the only thing I've ever been able to give her that she didn't take."''',
+       c("[Let it be.]", flags=(FAVOUR_CALLED,))),
+    ar("night", '''"She wants me to choose." {n}She is quiet for a long time.{/n} "One night. I'll go and hear what she has to say. Leave the door unlocked."
+{n}She comes back at dawn, smelling of flowers, and does not say what she chose.{/n}''',
+       c("[Let it be.]", flags=(FAVOUR_CALLED,))),
+    nt("raised", '''{n}The ash does not settle. It turns, on the table, into a second note, in the same beautiful hand.{/n}
+"You burned a letter from a queen in front of her own subject. The favour is paid, Commander; you have just shown her what you think of me. She will remember that longer than anything I could have written."''',
+       c("[Let the smoke go.]", flags=(FAVOUR_CALLED, FAVOUR_BURNED))),
+], requires=("trickster.ever", "arueshalae.started", "arueshalae.trickster.returned", A_FAVOUR, "nocticula.trickster.contact"),
+   forbids=(FAVOUR_CALLED, FIGHT), delay=24, last=5, optional=True, Relationship="nocticula", Remote=True, Chapters=[5],
+   ForbidOverrides={FIGHT: RETURNED}))

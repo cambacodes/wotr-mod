@@ -56,6 +56,8 @@ from storylines import targona_trickster
 from storylines import eritrice_trickster, eritrice_minutes, eritrice_council
 from storylines import areelu_trickster
 from storylines import chadali_trickster, chadali_wagers, chadali_fortunes, chadali_sessions, chadali_hours
+from storylines import arueshalae_trickster, arueshalae_treatment, arueshalae_rounds, arueshalae_chapel
+from storylines import arueshalae_hours, arueshalae_notes
 from storylines import devarra_trickster, devarra_tower
 from storylines import rrt_ui
 from storylines import rrt_portraits
@@ -401,6 +403,20 @@ def make_expansion(*, independent_tirabade=True):
     chadali_fortunes.integrate(payload)
     chadali_sessions.integrate(payload)
     chadali_hours.integrate(payload)
+    # Arueshalae: a new native adapter (arueshalae.md); it reads ArueshalaeRomance and never starts or completes it.
+    payload["Relationships"]["arueshalae"] = copy.deepcopy(arueshalae_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(arueshalae_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(arueshalae_treatment.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(arueshalae_rounds.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(arueshalae_chapel.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(arueshalae_hours.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(arueshalae_notes.SCENES))
+    arueshalae_trickster.integrate(payload)
+    arueshalae_treatment.integrate(payload)
+    arueshalae_rounds.integrate(payload)
+    arueshalae_chapel.integrate(payload)
+    arueshalae_hours.integrate(payload)
+    arueshalae_notes.integrate(payload)
     # Devarra: the draft (retired to reference/retired-drafts) is replaced by the Trickster "Clutch-mother" route
     # (devarra.md round 2) and its watchtower courtship on the Storyteller's hub (devarra_tower).
     payload["Relationships"]["devarra"] = copy.deepcopy(devarra_trickster.RELATIONSHIP)

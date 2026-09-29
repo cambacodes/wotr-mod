@@ -93,6 +93,12 @@ DEBTS = [
          ledger_title="The Wintersun spirits: a portion",
          ledger_text="The spirits of Soana's wood took a portion of me when the knot was tied. The rest is mine to give. They know where to find me.",
          page_called="The spirits of the Wintersun wood took their portion in the spring, when the snow went off the barrows. Soana had given them blood once already and would not give them the Commander's. She bound them again with her own hands, told the Commander so without a word of gratitude, and went back to her graves."),
+    dict(key="nocticula_summons", groups=[["arueshalae.trickster.cost.nocticula_debt"], ["arueshalae.trickster.cost.nocticula_favour"]],
+         called_by=[called("arueshalae")], outlived=["trickster.lastcall.summons_outlived"],
+         ledger_title="The Lady in Shadow: one summons, for a succubus",
+         ledger_text="I sent Arueshalae to her queen for a second opinion, and the queen sent her back on credit. One summons, once, at an hour of the Lady's choosing, or a favour in my own name. The Lady in Shadow does not forget a patient.",
+         page_called="The Lady in Shadow called in her summons on a night in the first winter after Threshold, when the Commander was away. The black pearl at Arueshalae's throat went warm, and she went, as she had said she would. What the queen asked of her, and what she answered, she never told. She came back before dawn with the pearl gone cold and a flower of the Midnight Isles in her hair, and she left the window unlocked behind her, as she always did.",
+         page_outlived="The debt had no one left to collect it. Arueshalae knew that, and for a week she said nothing to anyone. Then she went to the Commander anyway, and it was the first thing she ever did that she owed no one for."),
 ]
 
 
@@ -439,6 +445,33 @@ partner("camellia", "camellia", "camellia.committed", "camellia.closed", "The Ne
         '''{n}The fire gutters, though there is no wind. Somewhere a lady in black sets down a small clean knife beside an empty bowl, and a great many voices that are not hers lean in to listen.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
     ledger=("Camellia: blood at the new moon", "Her spirits have my blood on account, a little each dark of the moon. She says they are very good at keeping count. So, I'm afraid, is she."))
+
+
+AU = "arueshalae.trickster."
+partner("arueshalae", "arueshalae", "arueshalae.committed", "arueshalae.closed", "Treatment, Continued",
+    '''Arueshalae was waiting in the Commander's rooms in Drezen when the news of Threshold came in, sitting very straight on the edge of the bed with her hands behind her back, the way she had sat through every bad hour of the war. She did not ask whether the Commander was alive. She had decided not to ask anyone anything until she could take a pulse herself.''',
+    (
+        page_p('''When the summons came she went, as she had promised, and came back before dawn with the pearl at her throat gone cold. She never said what she had chosen. The window was never locked again.''',
+               requires=(called("arueshalae"), AU + "cost.nocticula_debt"), forbids=("trickster.lastcall.summons_outlived",)),
+        page_p('''The Commander paid the queen's favour in person, with Arueshalae watching from the doorway, as she had said she would. She wanted to see a Trickster's face while the Trickster was being collected. She told the Commander afterwards that it had been worth every day of waiting, and would not describe it to anyone.''',
+               requires=(called("arueshalae"), AU + "cost.nocticula_favour"), forbids=("trickster.lastcall.summons_outlived",)),
+        page_p('''Nobody came to collect her summons. She waited a week to be sure. Then she stopped waiting, and it was the first thing in her long life that she ever did because she wanted to, and for no one.''',
+               requires=("trickster.lastcall.summons_outlived",)),
+        page_p('''The star-candle was lit every evening for the rest of their lives, in camp and in palace and once, memorably, in a thunderstorm on a ship's deck. The few nights it was not, the Commander woke with cold hands and a lost day, and found her sitting in the farthest corner of the room with her knees drawn up, and it took a week, each time, to coax her back.''', requires=("arueshalae.trickster.cost.drained",)),
+        page_p('''She kept the arrangement to the letter: she came when she was hungry, and the door was open. Some months she was hungry more often than the arrangement strictly allowed, and the door was open then too.''', requires=(AU + "cost.open_door",)),
+        page_p('''She served as chaplain until the second company was disbanded, and she never resigned; nobody had ever given her the chance, and she did not intend to take it now.''', requires=(AU + "cost.chaplain",)),
+        page_p('''The Commander had promised her no more jokes at her deathbed, and she held {mf|him|her} to it by never once dying again, which she said was the only reliable way to keep a Trickster honest.''', requires=(AU + "cost.no_second_joke",)),
+        page_p('''The Commander had asked only for the good days, and on the good days she came to supper. On the others she ate alone, at the far end of the table, where the Commander had put her, and was very polite about it for a very long time. It was a price, and she paid it at the table, apart, until the Commander finally went and sat at that end too.''', requires=(AU + "cost.saint_only",)),
+        page_p('''The world buried the Commander. Arueshalae sat through the funeral with her hands behind her back and did not cry, because she had taken the Commander's pulse that morning and knew exactly how the joke ended.''', requires=(ON_RECORD,)),
+        page_p('''When the flask was opened in Drezen, she was the one who took the first pulse, and she held the wrist long after she had counted it.''', requires=(H2,)),
+    ), declined=AU + "declined",
+    deal=[[AU + "cost.nocticula_debt"], [AU + "cost.nocticula_favour"]],
+    call=call('''[Call in the second opinion] "Your Majesty, you sent her back on credit. Collect your summons tonight. I'll be here to be collected from."''',
+        '''{n}A long way off, a black pearl on a string goes warm against a succubus's throat. She puts her hand over it and does not look at you, and does not take it away.{/n}''',
+        (PILLAR_CHOICE, (PILLAR,), (), ("noct.dead",)),
+        (PLAIN_CHOICE, (), ("noct.dead", "noct.defeated_not_dead"), ()),
+        (PLAIN_CHOICE, ("trickster.lastcall.summons_outlived",), ("noct.dead",), ("noct.defeated_not_dead",))),
+    ledger=("Arueshalae: a patient under treatment", "Arueshalae is still my patient. A doctor who dies before the treatment is finished is no kind of doctor at all."))
 
 # Existing pages that must yield to Last Call (doc 04 backlog): Nocticula's favour page is called in on her Last Call page instead.
 FORBID_ACTIVE = ("nocticula.trickster.defeated.epilogue.favour",)
