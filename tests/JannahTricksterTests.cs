@@ -15,10 +15,11 @@ internal static class JannahTricksterTests
     private const string Drezen = "2570015799edf594daf2f076f2f975d8";
     private const string Locator = "e595a2a6-e8ca-4d13-9010-f482088a4a27";
     private const string CageList = "170fd7a11f66c88428bc27bfba3a569f";
-    private const string CageCue = "423ff8833653bf94cb4bd8fb047578a8";
-    private const string KillCue = "199d4dbffb5a53a4cb73578307cbb4a9";
+    private const string FirstList = "b2b77a591c8808f409aa2083bd1b318a";
+    private const string FirstCue = "8c909dc650b9dff408a0d144da24b920";
     private const string IrabethHub = "871af36f2ab2b1f40b5de77976c54276";
     private const string KingC5 = "6dccfd39947ef4242a8afbe36b21a46c";
+    private const string SeelahHub = "417fa384f3250634bb71859fbc913453";
     private const string P = "jannah.trickster.";
     private const string C = "jannah.circle.";
     private const string Dead = "jannah.dead";
@@ -97,6 +98,7 @@ internal static class JannahTricksterTests
         }
 
         var rel = story.Relationships["jannah"];
+        var named = S(P + "cage.forms");
         var terms = S(P + "cage.terms");
         var ash = S(P + "cage.ash");
         var yield = S(P + "killed.yield");
@@ -119,14 +121,17 @@ internal static class JannahTricksterTests
               && rel.UnavailableOverrides[Dead] == Returned && rel.UnavailableOverrides[DeadKnown] == Returned
               && rel.TricksterAccess.Keys.OrderBy(k => k).SequenceEqual(new[] { "alive", "killed", "killed_known" }),
             "Jannah's relationship does not match the plan (killed/killed_known/alive access; the return lifts both deaths).");
-        check(terms.AnswerLists.SequenceEqual(new[] { CageList }) && terms.NativeReturnCue == CageCue && terms.EntryMythic == "PlayerIsTrickster"
-              && terms.Chapters.SequenceEqual(new[] { 3 }) && terms.Requires.SequenceEqual(new[] { "trickster" }) && !terms.TricksterDevice
-              && Ch(terms, "start", 0).Check?.Skill == "SkillKnowledgeWorld" && Ch(terms, "start", 1).Abort
-              && Ch(terms, "guard", 0).NativeNext == KillCue && Ch(terms, "guard", 0).Set.SequenceEqual(new[] { Primed })
-              && Ch(terms, "guard", 1).Abort,
-            "The forms are not the inline Knowledge (World) primer on the cage list that continues into the native blow.");
-        check(Ch(terms, "garbled_her", 0).Set.SequenceEqual(new[] { P + "cage.botched" }) && Ch(terms, "garbled_her", 0).NativeNext == null,
-            "A garbled challenge primes the device.");
+        check(named.AnswerLists.SequenceEqual(new[] { FirstList }) && named.NativeReturnCue == FirstCue && named.EntryMythic == "PlayerIsTrickster"
+              && named.Chapters.SequenceEqual(new[] { 3 }) && named.Requires.SequenceEqual(new[] { "trickster" }) && !named.TricksterDevice
+              && Ch(named, "start", 0).Check?.Skill == "SkillKnowledgeWorld" && Ch(named, "start", 1).Abort
+              && Ch(named, "named_her", 0).Set.SequenceEqual(new[] { P + "cage.forms_named" }) && Ch(named, "named_her", 1).Set.SequenceEqual(new[] { P + "cage.forms_named" })
+              && Ch(named, "garbled_her", 0).Set.SequenceEqual(new[] { P + "cage.botched" }),
+            "The forms are not the inline Knowledge (World) primer on her first list, returning to a clean native cue.");
+        check(terms.AnswerLists.SequenceEqual(new[] { CageList }) && terms.ReturnToList && terms.NativeReturnCue == null && terms.EntryMythic == "PlayerIsTrickster"
+              && terms.Requires.SequenceEqual(new[] { "trickster", P + "cage.forms_named" }) && terms.Forbids.Contains(Primed) && !terms.TricksterDevice
+              && Ch(terms, "guard", 0).Set.SequenceEqual(new[] { Primed }) && Ch(terms, "guard", 1).Abort && Ch(terms, "accept", 1).Abort
+              && terms.Nodes.All(n => n.Choices.All(c => c.NativeNext == null && c.Check == null)),
+            "The challenge is not the return-to-list scene on the sentence list, made before the native [Attack] and after the forms were named.");
         check(!story.Scenes.Any(s => s.Nodes.Any(n => n.Choices.Any(c => c.Set.Any(f => f.StartsWith("trickster.wmt.use.", StringComparison.Ordinal))))
                                   && s.Relationship == "jannah"),
             "Jannah's device spends a Word Made True (the budget is full: duel law, not a word made true).");
@@ -151,13 +156,15 @@ internal static class JannahTricksterTests
             "A Jannah scene gates on Seelah's fate (coexistence: node-level reads only).");
 
         // Trk_Jannah_Cage: the forms only on the live Trickster path, before the kill.
-        check(Avail(terms, World(story, 3, "trickster", "trickster.ever")) && !Avail(terms, World(story, 3, "trickster.ever", "trickster.was"))
-              && !Avail(terms, World(story, 5, "trickster", "trickster.ever")),
-            "Trk_Jannah_Cage: the forms open off the live path, or outside Chapter 3.");
+        check(Avail(named, World(story, 3, "trickster", "trickster.ever")) && !Avail(named, World(story, 3, "trickster.ever", "trickster.was"))
+              && !Avail(named, World(story, 5, "trickster", "trickster.ever")) && !Avail(terms, World(story, 3, "trickster", "trickster.ever")),
+            "Trk_Jannah_Cage: the forms open off the live path or outside Chapter 3, or the challenge opens before they are named.");
+        var formsNamed = Take(named, World(story, 3, "trickster", "trickster.ever"), "named_her", 0, P + "cage.forms_named");
+        check(Avail(terms, formsNamed) && Program.Walk(named, World(story, 3, "trickster", "trickster.ever")).Where(r => r.Has(P + "cage.botched")).All(r => !r.Has(P + "cage.forms_named")),
+            "Trk_Jannah_Cage: the challenge does not follow the named forms, or the garbled forms still name them.");
         var cage = World(story, 3, "trickster", "trickster.ever");
-        check(Take(terms, cage, "guard", 0, Primed).Has(Primed), "Trk_Jannah_Cage: the blow does not prime her.");
-        check(Program.Walk(terms, cage).Where(r => r.Has(P + "cage.botched")).All(r => !r.Has(Primed)),
-            "Trk_Jannah_Cage: the garbled forms still prime her.");
+        check(Take(terms, formsNamed, "guard", 0, Primed).Has(Primed) && !Avail(terms, Take(terms, formsNamed, "guard", 0, Primed)),
+            "Trk_Jannah_Cage: the accepted challenge does not prime her, or can be made twice.");
 
         // Trk_Jannah_Killed: the kill after the forms; the ash; the unclaimed yield in her cell.
         var killed3 = World(story, 3, "trickster", "trickster.ever", Dead, Primed);
@@ -237,37 +244,56 @@ internal static class JannahTricksterTests
         check(Avail(challenge, walled) && Avail(pages.Single(p => p.Id == P + "epilogue.commit"), World(story, 6, "trickster.ever", C + "walls")),
             "Trk_Jannah_Spine: the challenge does not follow the wall, or the war's end has no late yes.");
 
-        // Trk_Jannah_Commit: her challenge, in public; the first touch either way is the yes; the Commander's public yield.
+        // Trk_Jannah_Commit: her public rematch decides only her record; afterwards she chooses; the Commander's public yield.
         var bout = challenge.Nodes.Single(n => n.Id == "bout").Choices;
         check(bout[0].Check?.Skill == "SkillMobility" && bout[1].Check?.Skill == "SkillAthletics" && bout[2].Next == "no_gift"
-              && challenge.Nodes.Single(n => n.Id == "no_gift").Choices.Single().Next == "bout_again",
-            "Trk_Jannah_Commit: the bout is not Mobility or Athletics, or a thrown line is not refused and re-fought.");
-        var won = Program.Walk(challenge, walled).Where(r => r.Has(P + "bout.commander_first")).ToList();
-        var lostBout = Program.Walk(challenge, walled).Where(r => r.Has(P + "bout.her_first") && r.Has(Committed)).ToList();
-        check(won.Count > 0 && won.All(r => r.Has(Committed) && r.Has(FirstLoss)) && lostBout.Count > 0 && lostBout.All(r => r.Has(P + "cost.public_yield")),
-            "Trk_Jannah_Commit: the first touch is not a yes both ways, or her win does not lay the Commander down in public.");
-        check(Program.Walk(challenge, walled).Where(r => r.Has(P + "refused_the_yield")).All(r => r.Has(Closed) && !r.Has(Committed)),
-            "Trk_Jannah_Commit: refusing the forms after losing still commits.");
+              && challenge.Nodes.Single(n => n.Id == "no_gift").Choices.Single().Next == "bout_again"
+              && challenge.Nodes.Single(n => n.Id == "bout_again").Choices[2].Set.Contains(P + "threw_the_bout"),
+            "Trk_Jannah_Commit: the bout is not Mobility or Athletics, or a thrown line is not refused once and then her no.");
+        check(!challenge.Nodes.Any(n => n.Text.Contains("you're mine")) && challenge.Nodes.Where(n => n.Id != "yes").All(n => n.Choices.All(c => !c.Set.Contains(Committed)))
+              && challenge.Nodes.Single(n => n.Id == "yes").Choices.Take(2).All(c => c.Set.Contains(Committed)),
+            "Trk_Jannah_Commit: somebody is won by the bout (the yes is not hers, after it).");
+        var paths = Program.Walk(challenge, walled).ToList();
+        var won = paths.Where(r => r.Has(P + "bout.commander_first") && r.Has(Committed)).ToList();
+        var lostBout = paths.Where(r => r.Has(P + "bout.her_first") && r.Has(Committed)).ToList();
+        check(won.Count > 0 && won.All(r => r.Has(FirstLoss)) && lostBout.Count > 0 && lostBout.All(r => r.Has(P + "cost.public_yield")),
+            "Trk_Jannah_Commit: her yes does not follow either outcome, or her win does not lay the Commander down in public.");
+        foreach (var cause in new[] { P + "threw_the_bout", P + "shamed_her", P + "refused_the_yield" })
+            check(paths.Any(r => r.Has(cause)) && paths.Where(r => r.Has(cause)).All(r => r.Has(P + "declined") && !r.Has(Committed) && !r.Has(Closed)),
+                "Trk_Jannah_Commit: the Commander's failure " + cause + " is not her no (with a later yes kept).");
+        check(paths.Where(r => r.Has(Closed)).All(r => r.Has(P + "gone") && !r.Has(Committed)), "Trk_Jannah_Commit: a close other than the Commander's refusal.");
         check(Avail(night, Later(story, won[0], 8)) && night.Nodes.Any(n => n.Id == "cut") && Rules.IsRemote(night),
             "Trk_Jannah_Night: the chalked circle does not follow the commit, or has no cut.");
         var nighted = Later(story, Program.Walk(night, Later(story, won[0], 8)).First(r => r.Has(night.Id)), 6);
         check(Avail(morning, nighted), "Trk_Jannah_Morning: the morning does not follow the night.");
 
-        // Trk_Jannah_Lie: the false catch named at the challenge; kept, she throws the bout; the circle in the yard after.
+        // Trk_Jannah_Lie: the false catch named at the challenge; kept, she fights and then says no; the circle in the yard after.
         var liar = World(story, 5, "trickster.ever", Returned, "jannah.started", FirstLoss, P + "alive.false_blood",
                          "trickster.secret.jannah_false_blood", C + "forms", C + "houndheart", C + "walls");
         check(Avail(challenge, liar) && Program.Walk(challenge, liar).Any(r => r.Has(P + "confessed") && r.Has(Committed)),
-            "Trk_Jannah_Lie: confessing does not lead to the bout.");
-        var thrown = Program.Walk(challenge, liar).Where(r => r.Has(P + "held_the_lie")).ToList();
-        check(thrown.Count > 0 && thrown.All(r => r.Has(P + "declined") && !r.Has(Committed) && !r.Has(Closed)
-                                                  && r.Has("trickster.secret.jannah_false_blood.known.jannah")),
-            "Trk_Jannah_Lie: a kept lie does not end in her thrown bout (her no), with the secret known.");
-        check(!Avail(chalk, Later(story, thrown[0], 48)) && Avail(chalk, Later(story, thrown[0], 72)),
+            "Trk_Jannah_Lie: confessing does not lead to the bout and her yes.");
+        var kept = Program.Walk(challenge, liar).Where(r => r.Has(P + "held_the_lie")).ToList();
+        check(kept.Count > 0 && kept.All(r => !r.Has(Committed) && !r.Has(Closed) && r.Has("trickster.secret.jannah_false_blood.known.jannah"))
+              && kept.Any(r => r.Has(P + "declined") && (r.Has(P + "bout.commander_first") || r.Has(P + "bout.her_first"))),
+            "Trk_Jannah_Lie: a kept lie does not end in her no after a fought bout, with the secret known.");
+        var no = kept.First(r => r.Has(P + "declined"));
+        check(!Avail(chalk, Later(story, no, 48)) && Avail(chalk, Later(story, no, 72)),
             "Trk_Jannah_Lie: the chalk circle is not left in the yard.");
-        check(Through(chalk, Later(story, thrown[0], 72), "open", 0).All(r => r.Has(Committed) && r.Has(P + "confessed"))
-              && Take(chalk, Later(story, thrown[0], 72), "open", 1, Closed).Has(P + "gone"),
+        var circle = chalk.Nodes.Single(n => n.Id == "open").Choices;
+        check(circle.Count == 5 && circle[0].Requires.Contains(P + "held_the_lie") && circle[1].Requires.Contains(P + "threw_the_bout")
+              && circle[2].Requires.Contains(P + "shamed_her") && circle[3].Requires.Contains(P + "refused_the_yield")
+              && circle.Take(4).All(c => c.Set.Contains(Committed) && c.Crusade == null) && circle[4].Set.Contains(Closed),
+            "Trk_Jannah_Circle: the circle is not one unpriced answer per failure, and a parting.");
+        check(Through(chalk, Later(story, no, 72), "open", 0).All(r => r.Has(Committed) && r.Has(P + "confessed"))
+              && Take(chalk, Later(story, no, 72), "open", 4, Closed).Has(P + "gone"),
             "Trk_Jannah_Lie: the circle is not a yes (walked into with the truth) or a parting (left).");
-        check(Avail(night, Later(story, Take(chalk, Later(story, thrown[0], 72), "open", 0, Committed), 8)),
+        foreach (var (cause, index) in new[] { (P + "threw_the_bout", 1), (P + "shamed_her", 2), (P + "refused_the_yield", 3) })
+        {
+            var failed = World(story, 5, "trickster.ever", Returned, P + "declined", cause, C + "walls");
+            check(Avail(chalk, failed) && Through(chalk, failed, "open", index).All(r => r.Has(Committed)),
+                "Trk_Jannah_Circle: no later yes after " + cause);
+        }
+        check(Avail(night, Later(story, Take(chalk, Later(story, no, 72), "open", 0, Committed), 8)),
             "Trk_Jannah_Lie: the late yes has no night.");
 
         // Pages: effect-free Chapter 6 pages.
@@ -279,14 +305,23 @@ internal static class JannahTricksterTests
               && Avail(pages.Single(p => p.Id == P + "epilogue.gone"), World(story, 6, "trickster.ever", P + "gone", Closed)),
             "The pages do not follow the commit, the late yes, her no and her leaving.");
 
-        // Reactions: exactly the allocated reactors (Irabeth; King Thaberdine in his tavern), each behind its guard.
-        check(reactions.Length == 5 && reactions.All(r => r.Nodes.Count == 1)
-              && reactions.Select(r => r.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Irabeth", "Thaberdine" })
+        // Reactions: Irabeth and the King (the allocated pair), and Seelah (a named stake), each behind its guard.
+        check(reactions.Length == 10 && reactions.All(r => r.Nodes.Count == 1)
+              && reactions.Select(r => r.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Irabeth", "Seelah", "Thaberdine" })
               && reactions.Where(r => r.Owner == "Irabeth").All(r => r.AnswerLists.SequenceEqual(new[] { IrabethHub })
                                                                      && r.Forbids.Contains("irabeth_dead") && r.ForbidOverrides["irabeth_dead"] == "irabeth.trickster.returned")
+              && reactions.Where(r => r.Owner == "Seelah").All(r => r.AnswerLists.SequenceEqual(new[] { SeelahHub })
+                                                                    && r.Forbids.Contains("seelah_dead") && r.ForbidOverrides["seelah_dead"] == "seelah.trickster.returned"
+                                                                    && r.Forbids.Contains("seelah_gone") && r.ForbidOverrides["seelah_gone"] == "seelah.trickster.returned")
               && reactions.Where(r => r.Owner == "Thaberdine").All(r => r.AnswerLists.SequenceEqual(new[] { KingC5 }) && r.NativeReturnCue != null
                                                                         && r.Forbids.Contains("fool_king.gone") && r.Requires.Contains("fool_king.available")),
-            "The reactions are not exactly Irabeth and the King behind their guards.");
+            "The reactions are not exactly Irabeth, Seelah and the King behind their guards.");
+        var seelahKnown = World(story, 5, "trickster.ever", Returned, DeadKnown, C + "seelah.herself");
+        check(Avail(S(P + "react.seelah_known"), seelahKnown) && !Avail(S(P + "react.seelah_unknown"), seelahKnown)
+              && !Avail(S(P + "react.seelah_known"), World(story, 5, "trickster.ever", Returned, DeadKnown, C + "seelah.kept"))
+              && !Avail(S(P + "react.seelah_known"), World(story, 5, "trickster.ever", Returned, DeadKnown, C + "seelah.herself", "seelah_dead"))
+              && Avail(S(P + "react.seelah_known"), World(story, 5, "trickster.ever", Returned, DeadKnown, C + "seelah.herself", "seelah_dead", "seelah.trickster.returned")),
+            "Seelah speaks before Jannah faced her, over her own death, or not after her own return.");
 
         // The Ledger secret: the false catch, unknown to her until she names it.
         var ledger = story.Books["trickster.ledger"];
@@ -304,12 +339,18 @@ internal static class JannahTricksterTests
 
         // The courtship: every optional beat reachable in some world.
         var courtship = own.Where(s => s.Id.StartsWith(C, StringComparison.Ordinal) && s.Optional).ToArray();
-        check(courtship.Length >= 5 && courtship.All(s => s.Requires.Contains("trickster.ever")),
+        check(courtship.Length >= 27 && courtship.All(s => s.Requires.Contains("trickster.ever")),
             "The courtship is missing beats, or a beat is not a Trickster-path scene.");
         var deep = new[]
         {
-            World(story, 5, "trickster.ever", Returned, "jannah.started", Dead, "jannah.dead.latched", Primed, P + "cost.temple_scar", FirstLoss, C + "forms", C + "houndheart", C + "walls"),
-            World(story, 5, "trickster.ever", Returned, "jannah.started", "jannah.joined", P + "alive.caught_her", FirstLoss, C + "forms", C + "houndheart", C + "walls"),
+            World(story, 5, "trickster.ever", Returned, "jannah.started", Dead, "jannah.dead.latched", Primed, P + "cost.temple_scar", FirstLoss, C + "forms", C + "houndheart", C + "walls",
+                  C + "mivon", C + "mivon.truth"),
+            World(story, 5, "trickster.ever", Returned, "jannah.started", "jannah.joined", "jannah.condemned", P + "alive.caught_her", FirstLoss, C + "forms", C + "houndheart", C + "walls"),
+            World(story, 5, "trickster.ever", Returned, "jannah.started", P + "alive.posted", P + "cost.story_lost", P + "cost.posting", C + "forms"),
+            World(story, 5, "trickster.ever", Returned, "jannah.started", P + "alive.caught_her", FirstLoss, C + "forms", C + "houndheart", C + "walls",
+                  Committed, P + "bout.commander_first", P + "circle_night"),
+            World(story, 5, "trickster.ever", Returned, "jannah.started", Dead, "jannah.dead.latched", Primed, P + "cost.temple_scar", FirstLoss, C + "forms", C + "houndheart", C + "walls",
+                  Committed, P + "bout.her_first", P + "cost.public_yield", P + "circle_night"),
         };
         foreach (var beat in courtship)
             check(deep.Any(w => Reaches(w, beat.Id)), "Courtship beat unreachable in every test world: " + beat.Id);
