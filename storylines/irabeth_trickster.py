@@ -280,16 +280,16 @@ physical("irabeth.trickster.back_on_duty", "Back on duty", '"Knight-Captain. A w
         flags=("irabeth.trickster.back_on_duty", "irabeth.trickster.answered_her"))),
 ], requires=("trickster.ever", RETURNED), forbids=("irabeth.trickster.back_on_duty",), delay=48)
 
-THRESHOLD = '''{n}She tries to set the sword down on the throne-room step. Her fingers will not open. She laughs once, short and furious, and holds the blade out to the side, point to the floor, the way you would hold a torch you cannot drop.{/n}
+THRESHOLD = '''{n}She tries to set the sword down on the throne-room step. Her fingers will not open. She swears at it, short and furious, and holds the blade out to the side, point to the floor, the way you would hold a torch you cannot drop.{/n}
 "I've wanted this since Iz, and I've been ashamed of it since Iz. I'm done being ashamed. Take the rest off me, Commander. One-handed is all I've got. Slowly. I want to remember it."
-{n}Gauntlet, then vambrace, one arm at a time around a hilt she cannot let go. Her free hand stops working on the breastplate buckles and she lets you do it. Under the arming coat she is scar and muscle and heat. She kisses you hard enough that her tusks graze your lip, then drags you through the side door to the cot in the guardroom, her sword arm flung out over the edge of it, the point ringing once on the flagstones. With the other she pulls you down to her and hooks a leg behind yours.{/n}'''
+{n}Gauntlet, then vambrace, one arm at a time around a hilt she cannot let go. Her free hand stops working on the breastplate buckles and she lets you do it. Under the arming coat she is scar and muscle and heat. She kisses you hard enough that her tusks graze your lip, then drags you through the side door into her roster room, where nobody sits at the desk but her. She sweeps the duty lists off it with her free arm. Her sword arm stays flung out over the edge, the point grinding on the flagstones, and with the other she pulls you down onto the desk with her and hooks a leg behind yours.{/n}'''
 
-MORNING_NOTE = '''{n}Dawn. She is back in armour, all but the gauntlet that will not go on over the hilt without help. She holds that hand out to you without a word. There is a white groove across her palm where the grip lay all night.{/n}
+MORNING_NOTE = '''{n}The watch changes under the window. She is back in armour, all but the gauntlet that will not go on over the hilt without help. She holds that hand out to you without a word. There is a white groove across her palm where the grip lay all night.{/n}
 "Nevi will know. Nevi always knows. I'll write to her myself before breakfast, before anyone else can."
 {n}You buckle it for her. She flexes the hand inside the steel, around the sword, and does not thank you.{/n}
 "Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard."'''
 
-MORNING_HOME = '''{n}Dawn. She is back in armour, all but the gauntlet that will not go on over the hilt without help. She holds that hand out to you without a word. There is a white groove across her palm where the grip lay all night.{/n}
+MORNING_HOME = '''{n}The watch changes under the window. She is back in armour, all but the gauntlet that will not go on over the hilt without help. She holds that hand out to you without a word. There is a white groove across her palm where the grip lay all night.{/n}
 "Nevi will know. Nevi always knows. She'll laugh at me. Then she'll want to know every detail. Then she'll want her turn."
 {n}You buckle it for her. She flexes the hand inside the steel, around the sword, and does not thank you.{/n}
 "Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard."'''
@@ -332,7 +332,7 @@ physical("irabeth.trickster.commit", "Off the record", '"Knight-Captain. Off the
 {n}She shifts her grip on the sword.{/n}
 "I'm not doing this behind her back. When she's said her piece to me, to my face, ask me again."''',
       c('[Step back] "Then I\'ll ask again. Not as your Commander."', flags=(DECLINED,))),
-    i("decides", '''{n}She looks at you for a long moment, the way she reads an order: twice, to be sure of it.{/n}
+    i("decides", '''{n}She reads you the way she reads an order: twice, to be sure of it.{/n}
 "Not an order."
 {n}Then she decides.{/n}''',
       c("Continue", "reckon")),
@@ -347,36 +347,34 @@ physical("irabeth.trickster.commit", "Off the record", '"Knight-Captain. Off the
     i("morning", MORNING_HOME, c('"Dismissed, Knight-Captain."')),
 ], requires=("trickster.ever", "irabeth.trickster.back_on_duty"), forbids=("irabeth.committed", DECLINED), delay=72)
 
-physical("irabeth.trickster.second_ask", "A request, signed", '"Knight-Captain. I\'m asking again."', [
-    i("price", '''"You want to ask again. Then here's my price, Commander. Write it down. Not an order. A request, signed, the way a person asks."
-{n}She pushes a sheet of roster paper across the step, and a pen. Your own pen, the one you misplaced.{/n}
-"I'll give it to Nevi before I read it myself. If she laughs, the answer's no."''',
-      c('[Write it as a request and sign it] "Not an order. A request. Signed. Nevi reads it first."', "sent",
+physical("irabeth.trickster.second_ask", "The pen", '"Knight-Captain. I\'m asking again."', [
+    i("price", '''"You want to ask again. Not while you're holding that."
+{n}She nods at your coat, at the inside pocket where the pen has lived since Iz. The pen you misplaced for two days, so her discharge could not be signed.{/n}
+"As long as you've got it, I'm under orders whether I like it or not, and so is anything I say to you. Give it to me. I'll send it to Nevi. If she sends it back, the answer's no. If she keeps it, ask me."''',
+      c('[Hand her the pen] "It\'s yours. So is the discharge. Nevi decides."', "sent",
         forbids=(A_RET,), flags=(SIGNED,)),
-      c('"Some things I don\'t sign."', "refused", flags=("irabeth.closed",)),
-      c('[Write it as a request and sign it] "Not an order. A request. Signed. Nevi reads it first."', "sent_gate",
+      c('"Some things I keep."', "refused", flags=("irabeth.closed",)),
+      c('[Hand her the pen] "It\'s yours. So is the discharge. Nevi decides."', "sent_gate",
         requires=(SHARES,), flags=(SIGNED,)),
-      c('[Write it as a request and sign it] "Not an order. A request. Signed. Nevi reads it first."', "held",
+      c('[Hand her the pen] "It\'s yours. So is the discharge. Nevi decides."', "held",
         requires=(A_RET,), forbids=(SHARES,))),
     i("refused", '''"Then you're my Commander, and that's the end of it."
-{n}She takes the paper back and folds it into her roster, blank.{/n}''',
+{n}She salutes, exactly as the regulations describe, and goes back to her post. The pen stays in your pocket. So does every order you ever gave her.{/n}''',
       c('"Understood."')),
-    i("sent", '''{n}It is five days before she finds you again. She has the paper in her free hand, travel-stained, sealed with a dead drop's wax.{/n}
-"I sent it to her dead drop. It came back with one word on it, in her hand."
-{n}She turns the paper round so you can read it. "Yes." And under it, smaller, pressed hard enough to tear: "Ask me to my face next time, Beth."{/n}
-{n}She is smiling, for the first time since Iz.{/n}''',
+    i("sent", '''{n}It is five days before she finds you again. The courier from the south road brought nothing back: no pen, no packet. Only a message he had been made to learn by heart and would not say until the Knight-Captain was standing in front of him.{/n}
+"'Keeping it. Ask me to my face next time, Beth.'"
+{n}She repeats it to you word for word, the way she repeats every report. Then she smiles, and you realise you have not seen it since Iz.{/n}''',
       c("Continue", "threshold", flags=("irabeth.committed", "irabeth.trickster.nevi_answered"))),
     nar("threshold", THRESHOLD, c("Continue", "morning", forbids=(A_RET,)), c("Continue", "morning_home", requires=(A_RET,))),
     i("morning", MORNING_NOTE, c('"Dismissed, Knight-Captain."')),
-    i("sent_gate", '''{n}She is back within the hour, the paper crumpled in her free hand and mud from the gate road on her boots.{/n}
-"She didn't laugh. She read it twice, the way I read orders, and wrote one word on the back."
-{n}She turns the paper round so you can read it. "Yes." Nothing else. Anevia has never wasted ink.{/n}
-{n}She is smiling, for the first time since Iz.{/n}''',
+    i("sent_gate", '''{n}She is back within the hour, empty-handed, with mud from the gate road on her boots.{/n}
+"She didn't laugh. She turned it over twice, the way I read orders, and put it in her boot. Then she told me to go back up the hill before she changed her mind about both of us."
+{n}She holds out her empty hand to show you, as if the absence were the report. Then she smiles, and you realise you have not seen it since Iz.{/n}''',
       c("Continue", "threshold", flags=("irabeth.committed", "irabeth.trickster.nevi_answered"))),
-    i("held", '''{n}She takes the paper, reads your signature, and folds it into her roster instead of sending it.{/n}
-"Nevi's at the gate and hasn't said her piece. I'm not putting a signed request in front of her before she has. That's not how it goes, not with her."
-{n}She taps the roster once.{/n}
-"It stays in here until she speaks. Then I'll carry it out to her myself."''',
+    i("held", '''{n}She takes the pen, weighs it, and slides it into the cuff of her gauntlet instead of sending it.{/n}
+"Nevi's at the gate and hasn't said her piece. I'm not walking your pen out to her before she has. That's not how it goes, not with her."
+{n}She taps the cuff once.{/n}
+"It stays here until she speaks. Then I'll carry it out to her myself."''',
       c('"Then we wait for her."', abort=True)),
     i("morning_home", MORNING_HOME, c('"Dismissed, Knight-Captain."')),
 ], requires=("trickster.ever", DECLINED, "irabeth.trickster.back_on_duty"), forbids=("irabeth.committed",), delay=96)
@@ -388,17 +386,17 @@ UNDER_ORDERS_PARAGRAPHS = (
     p("She had come back under an order and not under a vow. In the Drezen roster, under 'On watch', her name stayed in "
       "her own square hand for the rest of the war, and no clerk ever tried to strike it again.", requires=(UNDER_ORDERS,)),
     p("She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the "
-      "first had not happened. She taught the step to every recruit who would stand still for it.", requires=(BLOW,),
+      "first had not happened. She taught the step to every recruit who would hold their ground long enough to learn it.", requires=(BLOW,),
       forbids=(LIED,)),
     p("She served out the war exactly, and not one hour more. Of what happened at Iz she said only that the dragon had "
       "been blamed for enough already.", requires=(LIED,)),
-    p("When the Wound closed, the sword opened her hand at last. The Commander signed the discharge that same night, "
-      "with the pen that had been misplaced for so long. She read it twice, the way she read every order, and put it "
-      "in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure "
-      "everyone understood that.", requires=(SIGNED,)),
-    p("When the Wound closed, Irabeth Tirabade put her sword down for the first time since Iz, flexed the hand, and "
-      "asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it in "
-      "writing, signed, and Anevia read it first.", requires=("irabeth.trickster.late_committed",),
+    p("When the Wound closed, the sword opened her hand at last. Anevia took the Commander's pen out of her boot, "
+      "where it had ridden out the war, and handed it to her wife without a word. Irabeth signed her own discharge "
+      "with it, read it twice, the way she read every order, and put it in her pocket instead of the roster. What she "
+      "did with the free hand was her own business, and she made sure everyone understood that.", requires=(SIGNED,)),
+    p("When the Wound closed, Irabeth Tirabade put her sword down at last, flexed the hand, and asked the Commander "
+      "the question she had been saving: not as a knight, and not under orders. She asked it out loud, in the kitchen "
+      "of the house on the corner, with Anevia leaning in the doorway to hear it first.", requires=("irabeth.trickster.late_committed",),
       forbids=("irabeth.committed", "irabeth.closed", DECLINED, "irabeth.trickster.friends")),
     p("She stayed the Commander's knight until the Wound was closed: loyal, exact, and never once off the record.",
       requires=(DECLINED,), forbids=("irabeth.committed", "irabeth.closed")),
