@@ -79,6 +79,8 @@ REFUSED = P + "minder.refused"           # the Commander withdrew the order: no 
 SECRET_KEY = "mielarah_oskel"
 SECRET = "trickster.secret." + SECRET_KEY
 SECRET_KNOWN = SECRET + ".known.mielarah"
+ROPE_KEY = "mielarah_rope"               # the death itself, kept from the household (ROUTE-BRIEF-R §2: a planned NPC sacrifice is a secret)
+ROPE_SECRET = "trickster.secret." + ROPE_KEY
 SAID_USE = P + "said_use"                 # the Commander called the rule a thing to be used, at the table
 CHARTER = P + "charter"                   # a charter to Drezen, for a Commander who sails with another captain
 LANDFALL = P + "landfall"
@@ -166,6 +168,14 @@ household.secret(
     "at her elbow, the man most likely to put a rope round her neck, and I told her it was to steady a nervous crew. "
     "That was a lie. She is a magister of the Arcanamirium; she may work it out.",
     portrait="Mielarah", witnesses=("mielarah", "seelah", "irabeth"), risk="high")
+
+household.secret(
+    ROPE_KEY, "The man on the rope",
+    "Mielarah's curse takes whoever stands nearest when trouble comes. I arranged for her bosun Oskel to be the nearest, "
+    "and when it came, it took him and left her breathing. She knows what I did. My household does not, and there are "
+    "paladins in it who would have a short, ugly word for it. Sailors talk in every tavern between the Midnight Isles and "
+    "Drezen.",
+    portrait="Mielarah", witnesses=("seelah", "irabeth"), risk="medium")
 
 
 def mi(id, text, *choices, **kw):
@@ -549,9 +559,9 @@ remote(P + "raid.rope", "The man on the rope", [
        c("Continue", "oskel")),
     mi("oskel", '''"Now Oskel." {n}She unwinds the scarf, and folds it in her lap, and lets you look at the rope's work.{/n} "Say it. Whatever it is, say it to this."''',
        c('"I chose him. I\'d choose him again, if it kept you breathing."', "chose",
-         flags=(RETURNED, STARTED, OSKEL_DEAD, NOTICED)),
+         flags=(RETURNED, STARTED, OSKEL_DEAD, NOTICED, ROPE_SECRET)),
        c('"It was your curse that took him. Not me."', "deflect",
-         flags=(RETURNED, STARTED, OSKEL_DEAD, NOTICED, DEFLECTED))),
+         flags=(RETURNED, STARTED, OSKEL_DEAD, NOTICED, DEFLECTED, ROPE_SECRET))),
     mi("chose", '''{n}She nods slowly, as if you have confirmed a figure she already had.{/n}
 "At least you don't lie about it now." {n}She winds the scarf back on.{/n} "My code is three lines. You have made me break the third of them. My crew was my cargo, and I let you spend a man of it, and I'm alive because of it, and I don't know what that makes me."''',
        c("Continue", "shovel")),
@@ -564,7 +574,8 @@ remote(P + "raid.rope", "The man on the rope", [
        c('"Then I\'ll have to keep standing where it can\'t reach me."', "north")),
     mi("north", '''"Brave, or careless. I keep saying that about you." {n}She stands, and the portal brightens behind her.{/n}
 "I'm flying Starcatcher north when your war goes home. I have cargo for Drezen, and passengers who would rather be anywhere else, and a hold full of rope I intend to sell." {n}At the threshold she stops.{/n} "Not for you. Don't flatter yourself."
-{n}And then, without turning round:{/n} "Mostly not for you."''',
+{n}And then, without turning round:{/n} "Mostly not for you."
+"One more thing. You keep paladins, I'm told. They will have a short word for what we did at Vazglar, and eleven sailors on a rock already know the story. I would rather your paladins heard it from you than from a drunk in a tavern." {n}The portal takes her.{/n}''',
        c("[Let her go.]")),
 ], requires=("trickster.ever", DEAD_LATCH, MINDER), forbids=(RETURNED,), delay=24,
     TricksterDevice=True, TricksterState="raid")
@@ -660,11 +671,11 @@ remote(P + "storm.survivor", "The survivor", [
     mi("hatch", '''"I came up under a hatch cover and held on to it for three days. Nothing ate me. Nothing ever does. On the fourth day a Nahyndri fishing skiff took me aboard, and on the fifth its mast snapped in a flat calm and killed the man who'd pulled me out of the water." {n}A small, terrible smile.{/n} "You see how it is."
 "And now here you are, alive, and so am I. I've lost Starcatcher the Third. I have lost her crew. Tell me what you want to say about it, because I have been rehearsing both halves of this conversation for a week."''',
        c('"I ordered you into that storm. It was the wrong order."', "owned",
-         flags=(RETURNED, STARTED, SHIP_LOST, STORM_OWNED, NOTICED, OSKEL_DEAD), requires=(MINDER,)),
+         flags=(RETURNED, STARTED, SHIP_LOST, STORM_OWNED, NOTICED, OSKEL_DEAD, ROPE_SECRET), requires=(MINDER,)),
        c('"I ordered you into that storm. It was the wrong order."', "owned",
          flags=(RETURNED, STARTED, SHIP_LOST, STORM_OWNED, NOTICED), forbids=(MINDER,)),
        c('"You let go of the wheel, Captain. Not me."', "blamed",
-         flags=(RETURNED, STARTED, SHIP_LOST, STORM_BLAMED, NOTICED, OSKEL_DEAD), requires=(MINDER,)),
+         flags=(RETURNED, STARTED, SHIP_LOST, STORM_BLAMED, NOTICED, OSKEL_DEAD, ROPE_SECRET), requires=(MINDER,)),
        c('"You let go of the wheel, Captain. Not me."', "blamed",
          flags=(RETURNED, STARTED, SHIP_LOST, STORM_BLAMED, NOTICED), forbids=(MINDER,))),
     mi("owned", '''"The wrong order." {n}She lets out a long breath.{/n} "Yes. It was. And I obeyed it, and then I failed at it. We are going to argue about which of those is worse for the rest of our lives, I expect."
