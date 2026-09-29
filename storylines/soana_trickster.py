@@ -154,19 +154,20 @@ SCENES.append(scene("soana.trickster.killed.knot", "The knot never checked", "So
         c("Continue", "read")),
     nar("spirit", """{n}Orso lies where he fell: a grey pelt stretched over bones. The brand is still on the pelt, darker than a dead thing's brand has any right to be, and the grass around the carcass has gone black in the shape of a knot. Something still lies in those bones: the spirit she bound, still bound, still alive after its fashion.{/n}""",
         c("Continue", "read")),
-    nar("read", """{n}You remember what she told you, with her arms folded over her chest: she forced the spirit to serve good by linking their lives together.{/n}
-{n}One end of that knot is dead on the floor of this cave. The other end is still breathing.{/n}""",
-        c('[Hold her clay medallion to the guardian\'s brand] "You linked your lives together. One end is still breathing. By your own words, so is the other."',
+    nar("read", """{n}You remember exactly what she told you, with her arms folded over her chest: she used the medallion to control a spirit of the Abyss after linking it to the sacred bear, and she forced the spirit to serve good by linking *our* lives together. Hers and the spirit's. The bear was only the house she put it in.{/n}
+{n}A shaman's knot is not a figure of speech. It carries lives: the brand on the guardian and the clay at her throat are one binding, and she tied her own life into it with her own hands.{/n}
+{n}One end of that knot is dead on the floor of this cave. The other end is still alive in the brand, and pulling.{/n}""",
+        c('[Hold her clay medallion to the guardian\'s brand] "You tied your life to the spirit\'s. The spirit is still alive. Your own knot says so are you."',
           "wake_clay", mythic="Trickster", alignment=("Chaotic", 1), requires=("soana.medallion_held",), remove_item=MEDALLION,
           flags=(RETURNED, STARTED, GUARDIAN, SPENT, LEASH)),
-        c('[Lay your hand on the brand and read it her own words] "You linked your lives together. One end is still breathing. By your own words, so is the other."',
+        c('[Lay your hand on the brand and pull on her end of the knot] "You tied your life to the spirit\'s. The spirit is still alive. Your own knot says so are you."',
           "wake_brand", mythic="Trickster", alignment=("Chaotic", 1), forbids=("soana.medallion_held",),
           flags=(RETURNED, STARTED, GUARDIAN, LEASH)),
         c('[Leave the knot tied] "No. She said she was finished. Let her be finished."', flags=(CLOSED,))),
     nar("wake_clay", """{n}You press the clay to the brand. Nothing happens, for long enough that you begin to feel foolish. Then the brand darkens, as a rope darkens when it is pulled wet, and the medallion draws tight in your fist and cracks down the middle with a sound like a knuckle.{/n}
 {n}The pull does not stop when the clay breaks. It comes up your arm instead: a weight round your wrist like a leash wound twice about the hand, with something heavy and hungry at the far end of it.{/n}""",
         c("Continue", "wake_orso", forbids=(BEAR_DEAD,)), c("Continue", "wake_spirit", requires=(BEAR_DEAD,))),
-    nar("wake_brand", """{n}You lay your palm on the brand and say her words back to it. Nothing happens, for long enough that you begin to feel foolish. Then the brand darkens under your hand, as a rope darkens when it is pulled wet, and draws tight until your skin burns with cold.{/n}
+    nar("wake_brand", """{n}You lay your palm on the brand and take hold of her end of the knot, as if it were a rope in the dark. Nothing happens, for long enough that you begin to feel foolish. Then the brand darkens under your hand, as a rope darkens when it is pulled wet, and draws tight until your skin burns with cold.{/n}
 {n}When you take the hand away, the knot is printed on your palm in white, and the pull does not stop: a weight round your wrist like a leash wound twice about the hand, with something heavy and hungry at the far end of it.{/n}""",
         c("Continue", "wake_orso", forbids=(BEAR_DEAD,)), c("Continue", "wake_spirit", requires=(BEAR_DEAD,))),
     nar("wake_orso", """{n}Out in the ferns Orso staggers, and does not fall. He lies down at the cave mouth, panting, alive. The brand on his shoulder has gone pale. The one on your hand has not. Something inside him strains once against the knot, and you feel it strain.{/n}""",
