@@ -4747,7 +4747,9 @@
         "tirabade.negotiated_table"
       ],
       "DelayHours": 0,
-      "Optional": false
+      "Optional": false,
+      "Kind": "visit",
+      "Sender": "Anevia and Irabeth"
     },
     {
       "Id": "abyss_dream",
@@ -4804,7 +4806,9 @@
       "RequiresAny": [
         "abyss_letter",
         "tirabade.negotiated_letter"
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Anevia and Irabeth"
     },
     {
       "Id": "a_waiting",
@@ -9518,7 +9522,9 @@
       "Remote": true,
       "Areas": [
         "7847c3e3537104f4694167af0b9fcd0e"
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Seelah"
     },
     {
       "Id": "seelah.souls",
@@ -12017,7 +12023,9 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Seelah"
     },
     {
       "Id": "seelah.fate_return",
@@ -12290,7 +12298,9 @@
       ],
       "Chapters": [
         4
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Seelah"
     },
     {
       "Id": "seelah.letter_after",
@@ -12502,7 +12512,9 @@
       ],
       "Chapters": [
         4
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Seelah"
     },
     {
       "Id": "seelah.letter_work",
@@ -12778,7 +12790,9 @@
       ],
       "Chapters": [
         4
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Seelah"
     },
     {
       "Id": "seelah.borrowed_saw",
@@ -14475,7 +14489,9 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "Kind": "memory",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.retained_inquiry",
@@ -14755,7 +14771,9 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.retained_attempt",
@@ -14836,7 +14854,9 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "Kind": "memory",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.return_first_words",
@@ -15198,7 +15218,9 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.return_second_visit",
@@ -15558,7 +15580,9 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.margin",
@@ -17262,7 +17286,9 @@
       "DelayHours": 24,
       "Optional": true,
       "Relationship": "konomi",
-      "Remote": true
+      "Remote": true,
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.return",
@@ -19570,7 +19596,8 @@
       "Chapters": [
         3,
         5
-      ]
+      ],
+      "Kind": "event"
     },
     {
       "Id": "konomi.fate_reply",
@@ -19731,7 +19758,9 @@
       "Chapters": [
         3,
         5
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.private_meeting",
@@ -20111,7 +20140,9 @@
       "Chapters": [
         3,
         5
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.ending_public",
@@ -21758,7 +21789,9 @@
           "konomi.private_meeting",
           "konomi.the_courtyard_introduction"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.carriers",
@@ -22006,7 +22039,9 @@
           "konomi.private_meeting",
           "konomi.the_courtyard_introduction"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.before_road",
@@ -22378,7 +22413,9 @@
           "konomi.office_completed",
           "konomi.missed_private_access"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.private_departure",
@@ -22665,7 +22702,9 @@
           "konomi.office_completed",
           "konomi.missed_private_access"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.capital_letter",
@@ -22897,7 +22936,9 @@
           "konomi.office_completed",
           "konomi.missed_private_access"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.return_offer",
@@ -23077,7 +23118,9 @@
           "konomi.office_completed",
           "konomi.missed_private_access"
         ]
-      ]
+      ],
+      "Kind": "letter",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.private_reunion",
@@ -24544,7 +24587,9 @@
           "konomi.office_completed",
           "konomi.missed_private_access"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.lease_offer",
@@ -24744,7 +24789,9 @@
           "konomi.office_completed",
           "konomi.missed_private_access"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.chosen_evening",
@@ -25094,7 +25141,9 @@
           "konomi.office_completed",
           "konomi.missed_private_access"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.private_future_choice",
@@ -25265,7 +25314,9 @@
           "konomi.office_completed",
           "konomi.missed_private_access"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.ending_distance",
@@ -25950,7 +26001,9 @@
           "konomi.office_completed",
           "konomi.missed_private_access"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.private_hearing_after",
@@ -26307,7 +26360,9 @@
           "konomi.office_completed",
           "konomi.missed_private_access"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.private_new_letter",
@@ -26826,7 +26881,9 @@
           "konomi.office_completed",
           "konomi.missed_private_access"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "jerribeth.invitation",
@@ -27071,7 +27128,9 @@
       "RequiresAny": [
         "jerribeth.met",
         "jerribeth.trickster.met_by_toast"
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.question",
@@ -27204,7 +27263,9 @@
       "Areas": [
         "2570015799edf594daf2f076f2f975d8",
         "7847c3e3537104f4694167af0b9fcd0e"
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.guise",
@@ -27351,7 +27412,9 @@
       "Areas": [
         "2570015799edf594daf2f076f2f975d8",
         "7847c3e3537104f4694167af0b9fcd0e"
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.price",
@@ -27610,7 +27673,9 @@
       "Areas": [
         "2570015799edf594daf2f076f2f975d8",
         "7847c3e3537104f4694167af0b9fcd0e"
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.evening",
@@ -28083,7 +28148,9 @@
       "Areas": [
         "2570015799edf594daf2f076f2f975d8",
         "7847c3e3537104f4694167af0b9fcd0e"
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.commission",
@@ -28194,7 +28261,9 @@
       "Areas": [
         "2570015799edf594daf2f076f2f975d8",
         "7847c3e3537104f4694167af0b9fcd0e"
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.patron",
@@ -28308,7 +28377,9 @@
       "Areas": [
         "2570015799edf594daf2f076f2f975d8",
         "7847c3e3537104f4694167af0b9fcd0e"
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.collection",
@@ -28450,7 +28521,9 @@
       "Areas": [
         "2570015799edf594daf2f076f2f975d8",
         "7847c3e3537104f4694167af0b9fcd0e"
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.refuge",
@@ -28617,7 +28690,9 @@
       "Areas": [
         "2570015799edf594daf2f076f2f975d8",
         "7847c3e3537104f4694167af0b9fcd0e"
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.future",
@@ -29283,7 +29358,9 @@
       "RequiresAny": [
         "jerribeth.settlement_kept",
         "jerribeth.short_future_requested"
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.ordinary",
@@ -29473,7 +29550,9 @@
       "Areas": [
         "2570015799edf594daf2f076f2f975d8",
         "7847c3e3537104f4694167af0b9fcd0e"
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.farewell",
@@ -29563,7 +29642,9 @@
       "RequiresAny": [
         "jerribeth.developed_future",
         "jerribeth.short_farewell_requested"
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.parting",
@@ -29649,7 +29730,9 @@
         "2570015799edf594daf2f076f2f975d8",
         "7847c3e3537104f4694167af0b9fcd0e"
       ],
-      "ManualOnly": true
+      "ManualOnly": true,
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.ending_together",
@@ -30601,7 +30684,9 @@
       ],
       "ForbidOverrides": {
         "jerribeth.farewell": "jerribeth.catchup_requested"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.borrowed_sun",
@@ -30830,7 +30915,9 @@
       ],
       "ForbidOverrides": {
         "jerribeth.farewell": "jerribeth.catchup_requested"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.small_print",
@@ -31021,7 +31108,9 @@
       ],
       "ForbidOverrides": {
         "jerribeth.farewell": "jerribeth.catchup_requested"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.unsold_evening",
@@ -31303,7 +31392,9 @@
       ],
       "ForbidOverrides": {
         "jerribeth.farewell": "jerribeth.catchup_requested"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.purchaser_answer",
@@ -31632,7 +31723,9 @@
       ],
       "ForbidOverrides": {
         "jerribeth.farewell": "jerribeth.catchup_requested"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "kiana.invitation",
@@ -31714,7 +31807,9 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "Kind": "letter",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.rehearsal",
@@ -31817,7 +31912,9 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.stagecraft",
@@ -32049,7 +32146,9 @@
           "kiana.company",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.marriage",
@@ -32212,7 +32311,9 @@
           "kiana.company",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.widow",
@@ -32334,7 +32435,9 @@
           "kiana.company",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.answer",
@@ -32459,7 +32562,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.date",
@@ -32741,7 +32846,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.morning",
@@ -32947,7 +33054,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.seelah",
@@ -33084,7 +33193,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.farewell",
@@ -33186,7 +33297,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.parting",
@@ -33275,7 +33388,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.ending_together",
@@ -34113,7 +34228,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.market_weather",
@@ -34465,7 +34582,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.lenna_door",
@@ -34708,7 +34827,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.blue_room",
@@ -35396,7 +35517,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.bakery_stairs",
@@ -35723,7 +35846,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.last_page",
@@ -35984,7 +36109,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.first_readers",
@@ -36422,7 +36549,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.ink_after",
@@ -36709,7 +36838,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.working_room",
@@ -36946,7 +37077,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.kept_evening",
@@ -37297,7 +37430,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "ember.drawing",
@@ -37487,7 +37622,9 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Ember"
     },
     {
       "Id": "ember.visitor",
@@ -37636,7 +37773,9 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Ember"
     },
     {
       "Id": "ember.rain",
@@ -37856,7 +37995,9 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Ember"
     },
     {
       "Id": "ember.paper_bird",
@@ -38072,7 +38213,9 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Ember"
     },
     {
       "Id": "ember.missing_cloth",
@@ -38350,7 +38493,9 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Ember"
     },
     {
       "Id": "ember.courtyard_play",
@@ -38632,7 +38777,9 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Ember"
     },
     {
       "Id": "ember.after_applause",
@@ -38868,7 +39015,9 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Ember"
     },
     {
       "Id": "ember.second_ending",
@@ -39104,7 +39253,9 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Ember"
     },
     {
       "Id": "soana.threshold",
@@ -43654,7 +43805,9 @@
       "ForbidOverrides": {
         "jerribeth.farewell": "jerribeth.catchup_requested",
         "jerribeth.unavailable": "jerribeth.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.counterfeit_hinge",
@@ -43860,7 +44013,9 @@
       "ForbidOverrides": {
         "jerribeth.farewell": "jerribeth.catchup_requested",
         "jerribeth.unavailable": "jerribeth.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.counterfeit_clerk",
@@ -44121,7 +44276,9 @@
       "ForbidOverrides": {
         "jerribeth.farewell": "jerribeth.catchup_requested",
         "jerribeth.unavailable": "jerribeth.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.counterfeit_audience",
@@ -44368,7 +44525,9 @@
       "ForbidOverrides": {
         "jerribeth.farewell": "jerribeth.catchup_requested",
         "jerribeth.unavailable": "jerribeth.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.counterfeit_spoil",
@@ -44623,7 +44782,9 @@
       "ForbidOverrides": {
         "jerribeth.farewell": "jerribeth.catchup_requested",
         "jerribeth.unavailable": "jerribeth.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.counterfeit_after",
@@ -44926,7 +45087,9 @@
       "ForbidOverrides": {
         "jerribeth.farewell": "jerribeth.catchup_requested",
         "jerribeth.unavailable": "jerribeth.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "seelah.letter_return",
@@ -46095,7 +46258,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "memory",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.a_place_afterward",
@@ -46420,7 +46585,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "letter",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.ending_open",
@@ -49285,7 +49452,9 @@
       "ForbidOverrides": {
         "jerribeth.farewell": "jerribeth.catchup_requested"
       },
-      "ManualOnly": false
+      "ManualOnly": false,
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.room_measure",
@@ -49667,7 +49836,9 @@
       "ForbidOverrides": {
         "jerribeth.farewell": "jerribeth.catchup_requested"
       },
-      "ManualOnly": false
+      "ManualOnly": false,
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.short_invitation",
@@ -49744,7 +49915,9 @@
       "ForbidOverrides": {
         "jerribeth.farewell": "jerribeth.catchup_requested"
       },
-      "ManualOnly": true
+      "ManualOnly": true,
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.promise_revisited",
@@ -49877,7 +50050,9 @@
       "ForbidOverrides": {
         "jerribeth.farewell": "jerribeth.catchup_requested"
       },
-      "ManualOnly": false
+      "ManualOnly": false,
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.old_promise",
@@ -49958,7 +50133,9 @@
       "ForbidOverrides": {
         "jerribeth.farewell": "jerribeth.catchup_requested"
       },
-      "ManualOnly": true
+      "ManualOnly": true,
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.farewell_review",
@@ -50040,7 +50217,9 @@
       "ForbidOverrides": {
         "jerribeth.farewell": "jerribeth.catchup_requested"
       },
-      "ManualOnly": true
+      "ManualOnly": true,
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.another_evening",
@@ -50096,7 +50275,9 @@
       "Areas": [
         "2570015799edf594daf2f076f2f975d8",
         "7847c3e3537104f4694167af0b9fcd0e"
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "arsinoe_city_on_paper",
@@ -52300,7 +52481,9 @@
           "konomi.office_completed",
           "konomi.missed_private_access"
         ]
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Konomi"
     },
     {
       "Id": "jerribeth.fate_envelope",
@@ -52650,7 +52833,9 @@
       ],
       "ForbidOverrides": {
         "jerribeth.unavailable": "jerribeth.trickster.returned"
-      }
+      },
+      "Kind": "letter",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "arsinoe_your_hours",
@@ -55831,7 +56016,9 @@
         "targona.ran_azata",
         "targona.ran_aeon",
         "targona.ran_trickster"
-      ]
+      ],
+      "Kind": "letter",
+      "Sender": "Targona"
     },
     {
       "Id": "targona.second_margin",
@@ -55999,7 +56186,9 @@
         "targona.ran_azata",
         "targona.ran_aeon",
         "targona.ran_trickster"
-      ]
+      ],
+      "Kind": "letter",
+      "Sender": "Targona"
     },
     {
       "Id": "targona.the_folded_room",
@@ -56159,7 +56348,9 @@
         "targona.ran_azata",
         "targona.ran_aeon",
         "targona.ran_trickster"
-      ]
+      ],
+      "Kind": "letter",
+      "Sender": "Targona"
     },
     {
       "Id": "targona.an_unpromised_future",
@@ -56384,7 +56575,9 @@
         "targona.ran_azata",
         "targona.ran_aeon",
         "targona.ran_trickster"
-      ]
+      ],
+      "Kind": "letter",
+      "Sender": "Targona"
     },
     {
       "Id": "targona.the_unscheduled_door",
@@ -56557,7 +56750,9 @@
         "targona.ran_azata",
         "targona.ran_aeon",
         "targona.ran_trickster"
-      ]
+      ],
+      "Kind": "letter",
+      "Sender": "Targona"
     },
     {
       "Id": "targona.what_she_keeps",
@@ -56800,7 +56995,9 @@
         "targona.ran_azata",
         "targona.ran_aeon",
         "targona.ran_trickster"
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Targona"
     },
     {
       "Id": "targona.the_open_threshold",
@@ -57195,7 +57392,9 @@
         "targona.ran_azata",
         "targona.ran_aeon",
         "targona.ran_trickster"
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Targona"
     },
     {
       "Id": "targona.the_key_remains_hers",
@@ -57397,7 +57596,9 @@
         "targona.ran_azata",
         "targona.ran_aeon",
         "targona.ran_trickster"
-      ]
+      ],
+      "Kind": "letter",
+      "Sender": "Targona"
     },
     {
       "Id": "kiana.later_incident",
@@ -57461,7 +57662,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.borrowed_name",
@@ -57719,7 +57922,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.yard_evening",
@@ -58026,7 +58231,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.unborrowed_evening",
@@ -58493,7 +58700,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.former_grief",
@@ -58672,7 +58881,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "letter",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.uncertain_reports",
@@ -58863,7 +59074,9 @@
           "seelah.souls_returned",
           "kiana.trickster.met"
         ]
-      ]
+      ],
+      "Kind": "letter",
+      "Sender": "Kiana"
     },
     {
       "Id": "gesmerha.unbought_work",
@@ -62123,7 +62336,9 @@
       "Remote": true,
       "Areas": [
         "7847c3e3537104f4694167af0b9fcd0e"
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Vellexia"
     },
     {
       "Id": "vellexia.the_claim_before_the_event",
@@ -62306,7 +62521,9 @@
       "Remote": true,
       "Areas": [
         "7847c3e3537104f4694167af0b9fcd0e"
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Vellexia"
     },
     {
       "Id": "vellexia.the_clerks_own_price",
@@ -62474,7 +62691,9 @@
       "Remote": true,
       "Areas": [
         "7847c3e3537104f4694167af0b9fcd0e"
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Vellexia"
     },
     {
       "Id": "vellexia.the_wager_with_an_edge",
@@ -62653,7 +62872,9 @@
       "Remote": true,
       "Areas": [
         "7847c3e3537104f4694167af0b9fcd0e"
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Vellexia"
     },
     {
       "Id": "vellexia.an_hour_that_counts",
@@ -62961,7 +63182,9 @@
       "Remote": true,
       "Areas": [
         "7847c3e3537104f4694167af0b9fcd0e"
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Vellexia"
     },
     {
       "Id": "vellexia.the_question_after_business",
@@ -63177,7 +63400,9 @@
       "Remote": true,
       "Areas": [
         "7847c3e3537104f4694167af0b9fcd0e"
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Vellexia"
     },
     {
       "Id": "vellexia.the_voice_after_the_abyss",
@@ -63501,7 +63726,9 @@
         "vellexia.early_fight": "vellexia.trickster.returned",
         "vellexia.final_fight": "vellexia.fight_survived",
         "vellexia.mirrored": "vellexia.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Vellexia"
     },
     {
       "Id": "vellexia.two_unremarkable_pleasures",
@@ -63735,7 +63962,9 @@
         "vellexia.early_fight": "vellexia.trickster.returned",
         "vellexia.final_fight": "vellexia.fight_survived",
         "vellexia.mirrored": "vellexia.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Vellexia"
     },
     {
       "Id": "vellexia.the_cover_before_the_battle",
@@ -64050,7 +64279,9 @@
         "vellexia.early_fight": "vellexia.trickster.returned",
         "vellexia.final_fight": "vellexia.fight_survived",
         "vellexia.mirrored": "vellexia.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Vellexia"
     },
     {
       "Id": "vellexia.ending_lovers",
@@ -65122,7 +65353,9 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.a_useful_supper",
@@ -70154,7 +70387,9 @@
           "konomi.office_completed",
           "konomi.missed_private_access"
         ]
-      ]
+      ],
+      "Kind": "memory",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.private_absence_catchup",
@@ -71566,7 +71801,9 @@
           "konomi.office_completed",
           "konomi.missed_private_access"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "soana.the_thing_in_the_sack",
@@ -73297,7 +73534,9 @@
           "konomi.office_completed",
           "konomi.missed_private_access"
         ]
-      ]
+      ],
+      "Kind": "letter",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.private_kept_hours",
@@ -73594,7 +73833,9 @@
           "konomi.office_completed",
           "konomi.missed_private_access"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.private_last_visit",
@@ -73906,7 +74147,9 @@
           "konomi.office_completed",
           "konomi.missed_private_access"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.ending_distance_lived",
@@ -83271,7 +83514,9 @@
         4
       ],
       "RequiresAny": [],
-      "Remote": true
+      "Remote": true,
+      "Kind": "memory",
+      "Sender": "Anevia"
     },
     {
       "Id": "anevia.the_life_she_lived",
@@ -89578,7 +89823,8 @@
         4
       ],
       "RequiresAny": [],
-      "Remote": true
+      "Remote": true,
+      "Kind": "event"
     },
     {
       "Id": "irabeth.the_person_who_returns",
@@ -92775,7 +93021,9 @@
       "DelayHours": 0,
       "Optional": false,
       "Remote": true,
-      "Relationship": "tirabade"
+      "Relationship": "tirabade",
+      "Kind": "memory",
+      "Sender": "Anevia and Irabeth"
     },
     {
       "Id": "tirabade.negotiated_ending_together",
@@ -93327,7 +93575,9 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Irabeth"
     },
     {
       "Id": "irabeth.return_reply",
@@ -93493,7 +93743,9 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "Kind": "letter",
+      "Sender": "Irabeth"
     },
     {
       "Id": "irabeth.return_first_words",
@@ -96815,7 +97067,9 @@
       "Chapters": [
         5
       ],
-      "Remote": true
+      "Remote": true,
+      "Kind": "visit",
+      "Sender": "Socothbenoth"
     },
     {
       "Id": "arsinoe.trickster.cauldron_seen.react_konomi",
@@ -103668,7 +103922,9 @@
       "Chapters": [
         3,
         5
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.the_answer_she_addressed",
@@ -103786,7 +104042,9 @@
       "Chapters": [
         3,
         5
-      ]
+      ],
+      "Kind": "letter",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.the_courtyard_introduction",
@@ -104079,7 +104337,9 @@
       "Chapters": [
         3,
         5
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.ending_missed_declined",
@@ -104564,7 +104824,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.her_own_arrival",
@@ -104718,7 +104980,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.the_remaining_customers",
@@ -104828,7 +105092,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.the_second_address",
@@ -105011,7 +105277,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.a_factor_at_the_table",
@@ -105222,7 +105490,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.what_the_offer_bought",
@@ -105428,7 +105698,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.the_unhired_evening",
@@ -105833,7 +106105,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.the_answer_after_business",
@@ -106058,7 +106332,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.minaghos_unfinished_sentence",
@@ -106366,7 +106642,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.the_performer_and_the_key",
@@ -106550,7 +106828,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.the_key_in_your_hand",
@@ -106781,7 +107061,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.a_room_she_likes",
@@ -107026,7 +107308,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.the_price_of_her_name",
@@ -107322,7 +107606,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.the_paper_she_kept",
@@ -107479,7 +107765,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.the_man_who_remembers",
@@ -107641,7 +107929,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.the_first_small_audience",
@@ -107834,7 +108124,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.the_entrance_she_wants",
@@ -108036,7 +108328,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.who_keeps_the_house",
@@ -108182,7 +108476,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.when_the_door_opens",
@@ -108416,7 +108712,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.after_the_last_lamp",
@@ -108646,7 +108944,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.the_cost_in_daylight",
@@ -108864,7 +109164,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.what_she_will_take",
@@ -109095,7 +109397,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.before_the_last_road",
@@ -109364,7 +109668,9 @@
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minachiv.ending_together",
@@ -110576,7 +110882,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.sixth_passenger",
@@ -110770,7 +111078,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.lamp_measure",
@@ -110953,7 +111263,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.captains_reply",
@@ -111175,7 +111487,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.her_own_face",
@@ -111364,7 +111678,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.white_shoes",
@@ -111586,7 +111902,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.demonstration",
@@ -111807,7 +112125,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.voices_in_glass",
@@ -112000,7 +112320,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.cost_of_return",
@@ -112218,7 +112540,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.return_count",
@@ -112445,7 +112769,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.after_the_lamps",
@@ -112650,7 +112976,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.another_place",
@@ -112925,7 +113253,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.hearing",
@@ -113194,7 +113524,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.last_buyer",
@@ -113436,7 +113768,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.empty_chair",
@@ -113609,7 +113943,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.mask_and_bell",
@@ -113808,7 +114144,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.uninvited_guest",
@@ -114003,7 +114341,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.closed_gallery",
@@ -114231,7 +114571,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.unborrowed_evening",
@@ -114431,7 +114773,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.bell_without_master",
@@ -114640,7 +114984,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.counterseal",
@@ -114817,7 +115163,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.no_applause",
@@ -115106,7 +115454,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.what_she_keeps",
@@ -115532,7 +115882,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.second_door",
@@ -115793,7 +116145,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.ending_company",
@@ -116345,7 +116699,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.unlit_quay.acquired.refused",
@@ -116561,7 +116917,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.unlit_quay.acquired.prior",
@@ -116777,7 +117135,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.sixth_passenger.acquired.new",
@@ -116982,7 +117342,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.sixth_passenger.acquired.refused",
@@ -117187,7 +117549,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.sixth_passenger.acquired.prior",
@@ -117392,7 +117756,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.lamp_measure.acquired.new",
@@ -117586,7 +117952,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.lamp_measure.acquired.refused",
@@ -117780,7 +118148,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.lamp_measure.acquired.prior",
@@ -117974,7 +118344,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.captains_reply.acquired.new",
@@ -118206,7 +118578,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.captains_reply.acquired.refused",
@@ -118438,7 +118812,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.captains_reply.acquired.prior",
@@ -118670,7 +119046,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.her_own_face.acquired.new.absent",
@@ -118870,7 +119248,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.her_own_face.acquired.new.original",
@@ -119070,7 +119450,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.her_own_face.acquired.new.renewed",
@@ -119269,7 +119651,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.her_own_face.acquired.refused.absent",
@@ -119469,7 +119853,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.her_own_face.acquired.refused.original",
@@ -119669,7 +120055,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.her_own_face.acquired.refused.renewed",
@@ -119868,7 +120256,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.her_own_face.acquired.prior.absent",
@@ -120068,7 +120458,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.her_own_face.acquired.prior.original",
@@ -120268,7 +120660,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.her_own_face.acquired.prior.renewed",
@@ -120467,7 +120861,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.white_shoes.acquired.new",
@@ -120700,7 +121096,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.white_shoes.acquired.refused",
@@ -120933,7 +121331,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.white_shoes.acquired.prior",
@@ -121166,7 +121566,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.demonstration.acquired.new",
@@ -121397,7 +121799,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.demonstration.acquired.refused",
@@ -121628,7 +122032,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.demonstration.acquired.prior",
@@ -121859,7 +122265,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.voices_in_glass.acquired.new",
@@ -122062,7 +122470,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.voices_in_glass.acquired.refused",
@@ -122265,7 +122675,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.voices_in_glass.acquired.prior",
@@ -122468,7 +122880,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.cost_of_return.acquired.new",
@@ -122697,7 +123111,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.cost_of_return.acquired.refused",
@@ -122926,7 +123342,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.cost_of_return.acquired.prior",
@@ -123155,7 +123573,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.return_count.acquired.new",
@@ -123393,7 +123813,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.return_count.acquired.refused",
@@ -123631,7 +124053,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.return_count.acquired.prior",
@@ -123869,7 +124293,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.after_the_lamps.acquired.new",
@@ -124083,7 +124509,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.after_the_lamps.acquired.refused",
@@ -124297,7 +124725,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.after_the_lamps.acquired.prior",
@@ -124511,7 +124941,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.another_place.acquired.new",
@@ -124796,7 +125228,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.another_place.acquired.refused",
@@ -125081,7 +125515,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.another_place.acquired.prior",
@@ -125366,7 +125802,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.hearing.acquired.new",
@@ -125646,7 +126084,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.hearing.acquired.refused",
@@ -125926,7 +126366,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.hearing.acquired.prior",
@@ -126206,7 +126648,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.last_buyer.acquired.new",
@@ -126458,7 +126902,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.last_buyer.acquired.refused",
@@ -126710,7 +127156,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.last_buyer.acquired.prior",
@@ -126962,7 +127410,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.empty_chair.acquired.new",
@@ -127144,7 +127594,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.empty_chair.acquired.refused",
@@ -127326,7 +127778,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.empty_chair.acquired.prior",
@@ -127508,7 +127962,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.mask_and_bell.acquired.new",
@@ -127716,7 +128172,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.mask_and_bell.acquired.refused",
@@ -127924,7 +128382,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.mask_and_bell.acquired.prior",
@@ -128132,7 +128592,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.uninvited_guest.acquired.new",
@@ -128336,7 +128798,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.uninvited_guest.acquired.refused",
@@ -128540,7 +129004,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.uninvited_guest.acquired.prior",
@@ -128744,7 +129210,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.closed_gallery.acquired.new",
@@ -128981,7 +129449,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.closed_gallery.acquired.refused",
@@ -129218,7 +129688,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.closed_gallery.acquired.prior",
@@ -129455,7 +129927,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.unborrowed_evening.acquired.new",
@@ -129665,7 +130139,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.unborrowed_evening.acquired.refused",
@@ -129875,7 +130351,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.unborrowed_evening.acquired.prior",
@@ -130085,7 +130563,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.bell_without_master.acquired.new",
@@ -130303,7 +130783,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.bell_without_master.acquired.refused",
@@ -130521,7 +131003,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.bell_without_master.acquired.prior",
@@ -130739,7 +131223,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.counterseal.acquired.new",
@@ -130925,7 +131411,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.counterseal.acquired.refused",
@@ -131111,7 +131599,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.counterseal.acquired.prior",
@@ -131297,7 +131787,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.no_applause.acquired.new",
@@ -131595,7 +132087,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.no_applause.acquired.refused",
@@ -131893,7 +132387,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.no_applause.acquired.prior",
@@ -132191,7 +132687,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.what_she_keeps.acquired.new",
@@ -132628,7 +133126,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.what_she_keeps.acquired.refused",
@@ -133065,7 +133565,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.what_she_keeps.acquired.prior",
@@ -133502,7 +134004,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.second_door.acquired.new",
@@ -133773,7 +134277,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.second_door.acquired.refused",
@@ -134044,7 +134550,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.second_door.acquired.prior",
@@ -134314,7 +134822,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.ending_company.acquired.new",
@@ -136206,7 +136716,9 @@
           "noct.acq.shamira_reported",
           "noct.acq.amused"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.acq.her_hand",
@@ -136618,7 +137130,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "letter",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.acq.borrowed_signature",
@@ -136871,7 +137385,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "letter",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.acq.the_paid_address",
@@ -137108,7 +137624,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "letter",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.acq.the_retained_copy",
@@ -137382,7 +137900,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.acq.an_answer_of_her_own",
@@ -137578,7 +138098,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "letter",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.join.an_unfinished_map",
@@ -137922,7 +138444,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.join.the_room_she_makes",
@@ -138115,7 +138639,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "noct.join.a_chosen_shore",
@@ -138352,7 +138878,9 @@
       "ForbidOverrides": {
         "noct.dead": "noct.defeated_not_dead",
         "noct.acq.council_fight": "nocticula.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "nurah.borrowed_name",
@@ -138520,7 +139048,9 @@
         "nurah.dead_drezen": "nurah.trickster.returned",
         "nurah.dead_camellia": "nurah.trickster.returned",
         "nurah.killing_mechanism": "nurah.trickster.returned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Nurah"
     },
     {
       "Id": "nurah.invitation_reply",
@@ -138743,7 +139273,9 @@
         "nurah.dead_drezen": "nurah.trickster.returned",
         "nurah.dead_camellia": "nurah.trickster.returned",
         "nurah.killing_mechanism": "nurah.trickster.returned"
-      }
+      },
+      "Kind": "letter",
+      "Sender": "Nurah"
     },
     {
       "Id": "nurah.the_author_arrives",
@@ -142740,7 +143272,9 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "dead"
+      "TricksterState": "dead",
+      "Kind": "visit",
+      "Sender": "Irabeth"
     },
     {
       "Id": "irabeth.trickster.dead.relieved_not_dismissed",
@@ -143159,7 +143693,8 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "killed"
+      "TricksterState": "killed",
+      "Kind": "event"
     },
     {
       "Id": "irabeth.trickster.killed.blow_missed",
@@ -144422,7 +144957,9 @@
       "Chapters": [
         5
       ],
-      "Remote": true
+      "Remote": true,
+      "Kind": "letter",
+      "Sender": "Galfrey"
     },
     {
       "Id": "irabeth.trickster.killed.react_seelah",
@@ -144718,7 +145255,9 @@
         ]
       ],
       "TricksterDevice": true,
-      "TricksterState": "gone"
+      "TricksterState": "gone",
+      "Kind": "visit",
+      "Sender": "Anevia"
     },
     {
       "Id": "anevia.trickster.gone.wardrobe",
@@ -145293,7 +145832,9 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "gone"
+      "TricksterState": "gone",
+      "Kind": "visit",
+      "Sender": "Anevia"
     },
     {
       "Id": "anevia.trickster.gone.fetched",
@@ -145432,7 +145973,9 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "gone"
+      "TricksterState": "gone",
+      "Kind": "letter",
+      "Sender": "Anevia"
     },
     {
       "Id": "anevia.trickster.gone.confession",
@@ -145545,7 +146088,9 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "gone"
+      "TricksterState": "gone",
+      "Kind": "visit",
+      "Sender": "Anevia"
     },
     {
       "Id": "anevia.trickster.gone.gate",
@@ -146323,7 +146868,9 @@
       "Chapters": [
         5
       ],
-      "Remote": true
+      "Remote": true,
+      "Kind": "letter",
+      "Sender": "Anevia"
     },
     {
       "Id": "anevia.trickster.gone.second_ask",
@@ -146601,7 +147148,9 @@
       "Chapters": [
         5
       ],
-      "Remote": true
+      "Remote": true,
+      "Kind": "visit",
+      "Sender": "Irabeth"
     },
     {
       "Id": "tirabade.trickster.third_chair",
@@ -146715,7 +147264,9 @@
       "Chapters": [
         5
       ],
-      "Remote": true
+      "Remote": true,
+      "Kind": "visit",
+      "Sender": "Irabeth"
     },
     {
       "Id": "anevia.trickster.epilogue.nailed_wardrobe",
@@ -147988,7 +148539,9 @@
         "7847c3e3537104f4694167af0b9fcd0e"
       ],
       "TricksterDevice": true,
-      "TricksterState": "dead"
+      "TricksterState": "dead",
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.trickster.dead.tenant",
@@ -148482,7 +149035,9 @@
         "7847c3e3537104f4694167af0b9fcd0e"
       ],
       "TricksterDevice": true,
-      "TricksterState": "dead"
+      "TricksterState": "dead",
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.trickster.never_met.toast_king",
@@ -148707,7 +149262,9 @@
       "Areas": [
         "2570015799edf594daf2f076f2f975d8",
         "7847c3e3537104f4694167af0b9fcd0e"
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "jerribeth.trickster.epilogue.commit",
@@ -149241,7 +149798,9 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "konomi.dismissed"
+      "TricksterState": "konomi.dismissed",
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.trickster.dismissed.recess",
@@ -149997,7 +150556,9 @@
       "Remote": true,
       "Recovery": "konomi",
       "TricksterDevice": true,
-      "TricksterState": "konomi.retained_dead"
+      "TricksterState": "konomi.retained_dead",
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.trickster.dead.consultation",
@@ -150188,7 +150749,9 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "konomi.missed_contact_available"
+      "TricksterState": "konomi.missed_contact_available",
+      "Kind": "visit",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.trickster.never_arrived.audience",
@@ -151213,7 +151776,9 @@
         6
       ],
       "TricksterDevice": true,
-      "TricksterState": "noct.dead"
+      "TricksterState": "noct.dead",
+      "Kind": "visit",
+      "Sender": "Nocticula"
     },
     {
       "Id": "nocticula.trickster.defeated.call_in",
@@ -151650,7 +152215,9 @@
       "Remote": true,
       "Chapters": [
         6
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Nocticula"
     },
     {
       "Id": "nocticula.trickster.palace.brothers_voice",
@@ -152723,7 +153290,9 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "vellexia.mirrored"
+      "TricksterState": "vellexia.mirrored",
+      "Kind": "visit",
+      "Sender": "Vellexia"
     },
     {
       "Id": "vellexia.trickster.mirrored.fetch",
@@ -152823,7 +153392,9 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "vellexia.mirrored"
+      "TricksterState": "vellexia.mirrored",
+      "Kind": "visit",
+      "Sender": "Vellexia"
     },
     {
       "Id": "vellexia.trickster.mirrored.unmirror",
@@ -153486,7 +154057,9 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "vellexia.dead"
+      "TricksterState": "vellexia.dead",
+      "Kind": "sending",
+      "Sender": "Vellexia"
     },
     {
       "Id": "vellexia.trickster.sword.late_portrait",
@@ -153646,7 +154219,9 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "vellexia.dead"
+      "TricksterState": "vellexia.dead",
+      "Kind": "visit",
+      "Sender": "Vellexia"
     },
     {
       "Id": "vellexia.trickster.sword.likeness",
@@ -154074,7 +154649,9 @@
       "Chapters": [
         5
       ],
-      "Remote": true
+      "Remote": true,
+      "Kind": "visit",
+      "Sender": "Vellexia"
     },
     {
       "Id": "vellexia.trickster.after.visit",
@@ -154675,7 +155252,9 @@
           "vellexia.trickster.cost.diminished",
           "vellexia.trickster.entry"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Vellexia"
     },
     {
       "Id": "vellexia.trickster.after.voice",
@@ -154971,7 +155550,9 @@
       "Chapters": [
         5
       ],
-      "Remote": true
+      "Remote": true,
+      "Kind": "sending",
+      "Sender": "Vellexia"
     },
     {
       "Id": "vellexia.trickster.glass.uncovered",
@@ -155050,7 +155631,9 @@
       "Chapters": [
         5
       ],
-      "Remote": true
+      "Remote": true,
+      "Kind": "visit",
+      "Sender": "Vellexia"
     },
     {
       "Id": "vellexia.trickster.after.night",
@@ -155175,7 +155758,9 @@
       "Chapters": [
         5
       ],
-      "Remote": true
+      "Remote": true,
+      "Kind": "visit",
+      "Sender": "Vellexia"
     },
     {
       "Id": "vellexia.trickster.epilogue.commit",
@@ -156796,7 +157381,9 @@
         ]
       ],
       "TricksterDevice": true,
-      "TricksterState": "dead"
+      "TricksterState": "dead",
+      "Kind": "sending",
+      "Sender": "Nurah"
     },
     {
       "Id": "nurah.trickster.dead.rumour_courier",
@@ -157039,7 +157626,9 @@
         ]
       ],
       "TricksterDevice": true,
-      "TricksterState": "dead"
+      "TricksterState": "dead",
+      "Kind": "letter",
+      "Sender": "Nurah"
     },
     {
       "Id": "nurah.trickster.ran_off.dedication",
@@ -157191,7 +157780,9 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "ran_off"
+      "TricksterState": "ran_off",
+      "Kind": "visit",
+      "Sender": "Nurah"
     },
     {
       "Id": "nurah.trickster.ran_off.terms_by_post",
@@ -157352,7 +157943,9 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "ran_off"
+      "TricksterState": "ran_off",
+      "Kind": "letter",
+      "Sender": "Nurah"
     },
     {
       "Id": "nurah.trickster.after.proofs",
@@ -157504,7 +158097,9 @@
           "nurah.trickster.returned",
           "nurah.ran_off"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Nurah"
     },
     {
       "Id": "nurah.trickster.terms",
@@ -158783,7 +159378,9 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "aftermath_missed"
+      "TricksterState": "aftermath_missed",
+      "Kind": "letter",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.trickster.possessed.fake_gem",
@@ -159063,7 +159660,9 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "possessed_no_rescue"
+      "TricksterState": "possessed_no_rescue",
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.trickster.awake.dog_collar",
@@ -159180,7 +159779,9 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "awake_no_rescue"
+      "TricksterState": "awake_no_rescue",
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.trickster.no_wedding.postponed",
@@ -159375,7 +159976,9 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "wedding_never_happened"
+      "TricksterState": "wedding_never_happened",
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.trickster.after.temple",
@@ -160050,7 +160653,9 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Kiana"
     },
     {
       "Id": "kiana.trickster.epilogue.commit",
@@ -162578,7 +163183,9 @@
         5
       ],
       "TricksterDevice": true,
-      "TricksterState": "minagho_dead"
+      "TricksterState": "minagho_dead",
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minagho_chivarro.trickster.minagho_dead.collateral",
@@ -163185,7 +163792,9 @@
         5
       ],
       "TricksterDevice": true,
-      "TricksterState": "minagho_dead"
+      "TricksterState": "minagho_dead",
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minagho_chivarro.trickster.spared.brand",
@@ -163431,7 +164040,9 @@
         5
       ],
       "TricksterDevice": true,
-      "TricksterState": "minagho_alive"
+      "TricksterState": "minagho_alive",
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minagho_chivarro.trickster.debt.collectors",
@@ -164213,7 +164824,9 @@
         5
       ],
       "TricksterDevice": true,
-      "TricksterState": "chivarro_alive"
+      "TricksterState": "chivarro_alive",
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minagho_chivarro.trickster.chivarro_dead.deposit",
@@ -164544,7 +165157,9 @@
         ]
       ],
       "TricksterDevice": true,
-      "TricksterState": "chivarro_dead"
+      "TricksterState": "chivarro_dead",
+      "Kind": "visit",
+      "Sender": "Herrax"
     },
     {
       "Id": "minagho_chivarro.trickster.chivarro_dead.the_bill",
@@ -164718,7 +165333,9 @@
         5
       ],
       "TricksterDevice": true,
-      "TricksterState": "chivarro_dead"
+      "TricksterState": "chivarro_dead",
+      "Kind": "letter",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minagho_chivarro.trickster.after.what_the_offer_bought",
@@ -164834,7 +165451,9 @@
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro",
         "minagho_chivarro.trickster.chivarro_owned": "minagho_chivarro.trickster.bill_burned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minagho_chivarro.trickster.after.the_price_of_her_name",
@@ -165114,7 +165733,9 @@
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro",
         "minagho_chivarro.trickster.chivarro_owned": "minagho_chivarro.trickster.bill_burned"
-      }
+      },
+      "Kind": "letter",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minagho_chivarro.trickster.after.won_back",
@@ -165197,7 +165818,9 @@
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro",
         "minagho_chivarro.trickster.chivarro_owned": "minagho_chivarro.trickster.bill_burned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minagho_chivarro.trickster.after.who_keeps_the_house",
@@ -165304,7 +165927,9 @@
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro",
         "minagho_chivarro.trickster.chivarro_owned": "minagho_chivarro.trickster.bill_burned"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minagho_chivarro.trickster.after.before_the_last_road",
@@ -165522,7 +166147,9 @@
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
         "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro",
         "minagho_chivarro.trickster.chivarro_owned": "minagho_chivarro.trickster.bill_burned"
-      }
+      },
+      "Kind": "letter",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minagho_chivarro.trickster.alone.chivarro",
@@ -165726,7 +166353,9 @@
         "minagho_chivarro.trickster.chivarro_owned": "minagho_chivarro.trickster.bill_burned"
       },
       "TricksterDevice": true,
-      "TricksterState": "minagho_dead"
+      "TricksterState": "minagho_dead",
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minagho_chivarro.trickster.alone.minagho",
@@ -166091,7 +166720,9 @@
         ]
       ],
       "TricksterDevice": true,
-      "TricksterState": "chivarro_dead"
+      "TricksterState": "chivarro_dead",
+      "Kind": "visit",
+      "Sender": "Minagho and Chivarro"
     },
     {
       "Id": "minagho_chivarro.trickster.after.the_morning_after",
@@ -167665,7 +168296,9 @@
           "soana.dead",
           "soana.killed_by_camellia"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Soana"
     },
     {
       "Id": "soana.trickster.returned.graveyard",
@@ -170193,7 +170826,9 @@
       ],
       "ForbidOverrides": {
         "fool_king.crowned": "aranka.trickster.king_gone"
-      }
+      },
+      "Kind": "visit",
+      "Sender": "Aranka"
     },
     {
       "Id": "aranka.trickster.verse.her_letter",
@@ -170315,7 +170950,9 @@
         3,
         5
       ],
-      "Remote": true
+      "Remote": true,
+      "Kind": "letter",
+      "Sender": "Aranka"
     },
     {
       "Id": "aranka.trickster.verse.duet",
@@ -171886,7 +172523,8 @@
         "fool_king.crowned": "aranka.trickster.king_gone"
       },
       "TricksterDevice": true,
-      "TricksterState": "aranka.ran_failure"
+      "TricksterState": "aranka.ran_failure",
+      "Kind": "event"
     },
     {
       "Id": "aranka.trickster.failure.second_verse",
@@ -171937,7 +172575,9 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "aranka.ran_failure"
+      "TricksterState": "aranka.ran_failure",
+      "Kind": "visit",
+      "Sender": "Aranka"
     },
     {
       "Id": "aranka.trickster.touring.boast",
@@ -172016,7 +172656,9 @@
         3,
         5
       ],
-      "Remote": true
+      "Remote": true,
+      "Kind": "letter",
+      "Sender": "Aranka"
     },
     {
       "Id": "aranka.trickster.touring.arrives",
@@ -172818,7 +173460,9 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "dead"
+      "TricksterState": "dead",
+      "Kind": "visit",
+      "Sender": "Gesmerha"
     },
     {
       "Id": "gesmerha.trickster.dead.unfinished_work",
@@ -172969,7 +173613,9 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "dead"
+      "TricksterState": "dead",
+      "Kind": "visit",
+      "Sender": "Gesmerha"
     },
     {
       "Id": "gesmerha.trickster.returned.yard",
@@ -174697,7 +175343,9 @@
       "Recovery": "seelah",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Seelah"
     },
     {
       "Id": "seelah.trickster.dead.wakes",
@@ -174978,7 +175626,8 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "dead_no_unit"
+      "TricksterState": "dead_no_unit",
+      "Kind": "event"
     },
     {
       "Id": "seelah.trickster.dismissed.setup",
@@ -175174,7 +175823,8 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "dismissed"
+      "TricksterState": "dismissed",
+      "Kind": "event"
     },
     {
       "Id": "seelah.trickster.dismissed.back_for_the_papers",
@@ -175390,7 +176040,9 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "dismissed"
+      "TricksterState": "dismissed",
+      "Kind": "letter",
+      "Sender": "Seelah"
     },
     {
       "Id": "seelah.trickster.after.stay_or_go",
@@ -186016,7 +186668,9 @@
         5
       ],
       "TricksterDevice": true,
-      "TricksterState": "ghost"
+      "TricksterState": "ghost",
+      "Kind": "visit",
+      "Sender": "Hepzamirah"
     },
     {
       "Id": "hepzamirah.trickster.ghost.body",
@@ -186537,7 +187191,9 @@
         5
       ],
       "TricksterDevice": true,
-      "TricksterState": "ghost"
+      "TricksterState": "ghost",
+      "Kind": "visit",
+      "Sender": "Hepzamirah"
     },
     {
       "Id": "hepzamirah.trickster.body.hounds",
@@ -186834,7 +187490,9 @@
       "Remote": true,
       "Chapters": [
         5
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Hepzamirah"
     },
     {
       "Id": "hepzamirah.trickster.body.terms",
@@ -194750,7 +195408,9 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "targona.dead_lab"
+      "TricksterState": "targona.dead_lab",
+      "Kind": "visit",
+      "Sender": "Targona"
     },
     {
       "Id": "targona.trickster.dead.one_soul",
@@ -194916,7 +195576,9 @@
       ],
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "targona.dead_lab"
+      "TricksterState": "targona.dead_lab",
+      "Kind": "visit",
+      "Sender": "Targona"
     },
     {
       "Id": "targona.trickster.dead.furlough",
@@ -195255,7 +195917,9 @@
         3,
         5
       ],
-      "Remote": true
+      "Remote": true,
+      "Kind": "visit",
+      "Sender": "Targona"
     },
     {
       "Id": "targona.trickster.free.furlough",
@@ -196492,7 +197156,9 @@
         3
       ],
       "TricksterDevice": true,
-      "TricksterState": "killed_by_commander"
+      "TricksterState": "killed_by_commander",
+      "Kind": "visit",
+      "Sender": "Camellia"
     },
     {
       "Id": "camellia.trickster.killed.third_night",
@@ -196682,7 +197348,9 @@
         5
       ],
       "TricksterDevice": true,
-      "TricksterState": "killed_by_commander"
+      "TricksterState": "killed_by_commander",
+      "Kind": "visit",
+      "Sender": "Camellia"
     },
     {
       "Id": "camellia.trickster.killed.performance",
@@ -197674,7 +198342,9 @@
         3
       ],
       "TricksterDevice": true,
-      "TricksterState": "killed_by_commander"
+      "TricksterState": "killed_by_commander",
+      "Kind": "letter",
+      "Sender": "Camellia"
     },
     {
       "Id": "camellia.trickster.dead.overacting",
@@ -197797,7 +198467,9 @@
       ],
       "Recovery": "camellia",
       "TricksterDevice": true,
-      "TricksterState": "dead_otherwise"
+      "TricksterState": "dead_otherwise",
+      "Kind": "visit",
+      "Sender": "Camellia"
     },
     {
       "Id": "camellia.trickster.returned.terms",
@@ -215752,7 +216424,9 @@
           "council.debrief_motion",
           "trickster.failed"
         ]
-      ]
+      ],
+      "Kind": "letter",
+      "Sender": "Eritrice"
     },
     {
       "Id": "eritrice.trickster.council.late_motion",
@@ -215857,7 +216531,9 @@
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "eritrice",
-      "Remote": true
+      "Remote": true,
+      "Kind": "visit",
+      "Sender": "Eritrice"
     },
     {
       "Id": "eritrice.trickster.fought.tabled",
@@ -216014,7 +216690,9 @@
       "Relationship": "eritrice",
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "eritrice.lost_at_council"
+      "TricksterState": "eritrice.lost_at_council",
+      "Kind": "letter",
+      "Sender": "Eritrice"
     },
     {
       "Id": "eritrice.trickster.epilogue.commit",
@@ -224061,7 +224739,9 @@
       "Remote": true,
       "Chapters": [
         5
-      ]
+      ],
+      "Kind": "memory",
+      "Sender": "Areelu"
     },
     {
       "Id": "areelu.trickster.lens.watched",
@@ -224675,7 +225355,9 @@
       "Remote": true,
       "Chapters": [
         5
-      ]
+      ],
+      "Kind": "sending",
+      "Sender": "Areelu"
     },
     {
       "Id": "areelu.trickster.wager.struck",
@@ -232677,7 +233359,9 @@
           "council.debrief_motion",
           "trickster.failed"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Chadali"
     },
     {
       "Id": "chadali.trickster.fought.lucky",
@@ -232861,7 +233545,9 @@
       "Relationship": "chadali",
       "Remote": true,
       "TricksterDevice": true,
-      "TricksterState": "chadali.lost_at_council"
+      "TricksterState": "chadali.lost_at_council",
+      "Kind": "letter",
+      "Sender": "Chadali"
     },
     {
       "Id": "chadali.trickster.epilogue.commit",
@@ -241782,7 +242468,9 @@
         5
       ],
       "Remote": true,
-      "TricksterDevice": true
+      "TricksterDevice": true,
+      "Kind": "visit",
+      "Sender": "Devarra"
     },
     {
       "Id": "devarra.trickster.after.tithe",
@@ -242433,7 +243121,9 @@
           "devarra.trickster.tested",
           "storyteller.dead"
         ]
-      ]
+      ],
+      "Kind": "visit",
+      "Sender": "Devarra"
     },
     {
       "Id": "devarra.react.greybor.repeat_work",
@@ -250093,7 +250783,8 @@
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "lastcall",
-      "Remote": true
+      "Remote": true,
+      "Kind": "event"
     },
     {
       "Id": "trickster.lastcall.threshold",
@@ -252602,8 +253293,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",

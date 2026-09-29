@@ -36,7 +36,9 @@ internal static class MailbagManagedTests
         check(later.OnSelect.Actions.Single() is Main.MailbagAction close && !close.Reopen, "'Read the rest later' does not close the mailbag.");
         check(!letters.Any(s => s.ManualOnly || s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)), "Manual reads or epilogue pages listed in the mailbag.");
         var label = (string)main.GetMethod("MailbagLabel", BindingFlags.NonPublic | BindingFlags.Static)!.Invoke(null, new object[] { letters[0] })!;
-        check(label.StartsWith(letters[0].Owner == "Memory" ? "[A memory] " : "[Letter from " + letters[0].Owner + "] ", StringComparison.Ordinal),
+        // E15c: the label names what the entry is (letter, visit, sending, memory, event).
+        var prefix = (string)main.GetMethod("MailbagPrefix", BindingFlags.NonPublic | BindingFlags.Static)!.Invoke(null, new object[] { letters[0] })!;
+        check(label.StartsWith(prefix, StringComparison.Ordinal) && label.EndsWith(letters[0].Title.Length > 0 ? letters[0].Title : letters[0].Id, StringComparison.Ordinal),
             "Mailbag label format changed.");
 
         // Settings written before E8b have no Mailbag element; they load with the mailbag on and the old bag size kept.

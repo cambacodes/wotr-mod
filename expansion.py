@@ -59,6 +59,7 @@ from storylines import chadali_trickster, chadali_wagers, chadali_fortunes, chad
 from storylines import devarra_trickster, devarra_tower
 from storylines import rrt_ui
 from storylines import rrt_portraits
+from storylines import scene_kinds
 from storylines import lastcall
 from storylines import gesmerha_campaign
 from storylines import gesmerha_late_campaign
@@ -414,6 +415,8 @@ def make_expansion(*, independent_tirabade=True):
     # E15: the RRT book UI (glossary tooltips, the guide book).
     rrt_ui.integrate(payload)
     rrt_portraits.integrate(payload)
+    # E15c: what each rest-delivered scene is (letter, visit, sending, memory, event), after every route and Last Call.
+    scene_kinds.integrate(payload)
     normalize_trickster_access(payload)
     return payload
 
