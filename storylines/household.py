@@ -66,6 +66,7 @@ PARTNERS = {
     "mielarah": ("Mielarah", "Mielarah"),
     "nidalynn": ("Nidalynn", "Nidalynn"),
     "shamira": ("Shamira", "Shamira"),
+    "jannah": ("Jannah", "Jannah"),
 }
 # Extra eligibility groups: a woman whose route has a second committed state (Nocticula's acquired harbour).
 EXTRA_ELIGIBLE = {"nocticula": [["noct.acq.renewed_agreement"]]}

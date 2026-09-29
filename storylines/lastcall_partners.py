@@ -518,6 +518,20 @@ partner("shamira", "shamira", "shamira.committed", "shamira.closed", "The Ardent
         (PLAIN_CHOICE, (), (), ()),
         ("[Keep your head to yourself, this once.]", None, (), ())),
     ledger=("Shamira: company, forever", "She lives on my dreams, and so she lives in them. I will never dream alone again. When I want a night to myself, I am to go and ask her for it to her face. It is the only debt in this book I have no wish to see settled."))
+JA = "jannah.trickster."
+partner("jannah", "jannah", "jannah.committed", "jannah.closed", "The Front Rank",
+    '''Jannah Aldori stood the last night of the war in the front rank, where she could see what was coming, because she had asked to. She did not run. When the rift closed, or failed to, she walked back into Drezen with her sword on her shoulder, found the practice yard empty, chalked a circle on the sand in one stroke, and sat down in the middle of it to wait, eyes open, the way the forms teach you to wait for a victor who has not yet quit the field.''',
+    (
+        page_p('''At the rift the Commander called the salute, the way {mf|he|she} had once called it on the north wall with the vrocks coming: her whole name, and "To the first blood!" Far off, in a practice yard in Drezen, a half-elf got up out of a chalk circle before anyone had quit it, which is against every form there is, and came.''', requires=(called("jannah"),)),
+        page_p('''The world buried the Commander. Jannah went to the graveside, lay down in the chalk she had drawn round it, and kept her eyes on the sky until the last priest had gone. Under the forms nobody leaves a circle until the victor has quit it, she said afterwards, and she was not at all sure who had won.''', requires=(ON_RECORD,)),
+        page_p('''When the flask was opened in Drezen she was the first through the door with her blade up in the salute, because whatever came out of it was going to be greeted properly.''', requires=(H2,)),
+        page_p('''She kept the scar on her temple where it could be seen. On the day of the Scar she let the Commander trace it once, and not on any other day.''', requires=(JA + "cost.temple_scar",)),
+    ), declined=JA + "declined",
+    deal=[[JA + "cost.first_loss"], [JA + "cost.story_lost"]],
+    call=call('''[Call the salute] "Jannah Aldori! To the first blood!"''',
+        '''{n}You have called it once before, on a wall, with wings coming out of the dark: her whole name and the old Mivon words. You give it everything you have left. It goes out over the rift and is swallowed, and then, very far off, over a city you cannot see, someone who never runs any more answers.{/n}''',
+        (PLAIN_CHOICE, (), (), ())),
+    ledger=("Jannah: a rematch, owed", "An Aldori may always ask the one who beat her for a rematch, and I have beaten her, or she me, too often for the account ever to be square. She keeps the chalk in her pocket. I am to expect a circle wherever I go."))
 
 # Existing pages that must yield to Last Call (doc 04 backlog): Nocticula's favour page is called in on her Last Call page instead.
 FORBID_ACTIVE = ("nocticula.trickster.defeated.epilogue.favour",)
