@@ -79557,6 +79557,14 @@
               "AnyGroups": []
             },
             {
+              "Text": "Some winters the spirits came to the Commander's door instead, wherever it was, and stood in the frost till dawn. The Commander learned to keep a knife by the threshold, and a rag, and to expect a letter from Wintersun a week later calling them stupid.",
+              "Requires": [
+                "soana.trickster.cost.portion_shared"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
               "Text": "She kept a die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
               "Requires": [
                 "soana.trickster.primed_dice"
@@ -79615,6 +79623,14 @@
               "Text": "Every winter the spirits came to the cave mouth for their portion, and every winter she cut her palm for them and cursed the Commander's name while she did it. She never missed a winter.",
               "Requires": [
                 "soana.trickster.cost.blood_given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Some winters the spirits came to the Commander's door instead, wherever it was, and stood in the frost till dawn. The Commander learned to keep a knife by the threshold, and a rag, and to expect a letter from Wintersun a week later calling them stupid.",
+              "Requires": [
+                "soana.trickster.cost.portion_shared"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -79679,6 +79695,14 @@
               "Text": "Every winter the spirits came to the cave mouth for their portion, and every winter she cut her palm for them and cursed the Commander's name while she did it. She never missed a winter.",
               "Requires": [
                 "soana.trickster.cost.blood_given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Some winters the spirits came to the Commander's door instead, wherever it was, and stood in the frost till dawn. The Commander learned to keep a knife by the threshold, and a rag, and to expect a letter from Wintersun a week later calling them stupid.",
+              "Requires": [
+                "soana.trickster.cost.portion_shared"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -79749,6 +79773,14 @@
               "AnyGroups": []
             },
             {
+              "Text": "Some winters the spirits came to the Commander's door instead, wherever it was, and stood in the frost till dawn. The Commander learned to keep a knife by the threshold, and a rag, and to expect a letter from Wintersun a week later calling them stupid.",
+              "Requires": [
+                "soana.trickster.cost.portion_shared"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
               "Text": "She kept a die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
               "Requires": [
                 "soana.trickster.primed_dice"
@@ -79807,6 +79839,14 @@
               "Text": "Every winter the spirits came to the cave mouth for their portion, and every winter she cut her palm for them and cursed the Commander's name while she did it. She never missed a winter.",
               "Requires": [
                 "soana.trickster.cost.blood_given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Some winters the spirits came to the Commander's door instead, wherever it was, and stood in the frost till dawn. The Commander learned to keep a knife by the threshold, and a rag, and to expect a letter from Wintersun a week later calling them stupid.",
+              "Requires": [
+                "soana.trickster.cost.portion_shared"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -168370,7 +168410,7 @@
         {
           "Id": "start",
           "Speaker": "Soana",
-          "Text": "{n}The old woman looks at you for a long moment. Then she laughs, the cracked laugh from your first meeting, and draws her knife across her own palm. Blood runs off her knuckles into the moss. Somewhere in the trees, something answers: not a bird, not a wolf.{/n}\n\"A good cause. There. The spirits have had their portion, bloody hunter, and a portion is all anyone is owed. Tell your hungry friend she can lick the moss.\"\n{n}She wraps the hand in a rag without looking at it, the way other people tie a bootlace.{/n}",
+          "Text": "{n}The old woman weighs you with her small black eyes, the way she would weigh a snare somebody else had set. Then she laughs, the cracked laugh from your first meeting, and draws her knife across her own palm. Blood runs off her knuckles into the moss. Somewhere in the trees, something answers: not a bird, not a wolf.{/n}\n\"A good cause. There. The spirits have had their portion, bloody hunter, and a portion is all anyone is owed. Tell your hungry friend she can lick the moss.\"\n{n}She wraps the hand in a rag without looking at it, the way other people tie a bootlace.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -168658,10 +168698,10 @@
         {
           "Id": "read",
           "Speaker": "Narrator",
-          "Text": "{n}You remember what she told you, with her arms folded over her chest: she forced the spirit to serve good by linking their lives together.{/n}\n{n}One end of that knot is dead on the floor of this cave. The other end is still breathing.{/n}",
+          "Text": "{n}You remember what she told you, with her arms folded over her chest: she used the medallion to control a spirit of the Abyss after linking it to the sacred bear, and she forced the spirit to serve good by linking our lives together.{/n}\n{n}*Our* lives. She may have meant the bear's and the spirit's. She may have meant her own. Shamans are careless with pronouns and careful with knots, and the brand has not faded, though the woman who tied it is dead. Something is still holding the other end.{/n}\n{n}It is a guess. It is the kind of guess a Trickster makes for a living: that the knot is bigger than she said, and that whatever is on the far end of it can be bargained with.{/n}",
           "Choices": [
             {
-              "Text": "[Hold her clay medallion to the guardian's brand] \"You linked your lives together. One end is still breathing. By your own words, so is the other.\"",
+              "Text": "[Hold her clay medallion to the guardian's brand and bargain with what holds the other end] \"Whatever you are: give her back, and pull on me instead.\"",
               "Next": "wake_clay",
               "Set": [
                 "soana.trickster.returned",
@@ -168683,7 +168723,7 @@
               "RemoveItem": "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53"
             },
             {
-              "Text": "[Lay your hand on the brand and read it her own words] \"You linked your lives together. One end is still breathing. By your own words, so is the other.\"",
+              "Text": "[Lay your hand on the brand and bargain with what holds the other end] \"Whatever you are: give her back, and pull on me instead.\"",
               "Next": "wake_brand",
               "Set": [
                 "soana.trickster.returned",
@@ -168718,7 +168758,7 @@
         {
           "Id": "wake_clay",
           "Speaker": "Narrator",
-          "Text": "{n}You press the clay to the brand. Nothing happens, for long enough that you begin to feel foolish. Then the brand darkens, as a rope darkens when it is pulled wet, and the medallion draws tight in your fist and cracks down the middle with a sound like a knuckle.{/n}\n{n}The pull does not stop when the clay breaks. It comes up your arm instead: a weight round your wrist like a leash wound twice about the hand, with something heavy and hungry at the far end of it.{/n}",
+          "Text": "{n}You press the clay to the brand. Nothing happens, for long enough that you begin to feel foolish. Then the brand darkens, as a rope darkens when it is pulled wet, and something on the far end of the knot pulls back.{/n}\n{n}It does not speak. It does not need to. You feel it weigh you, the way it once weighed her: a new hand on the knot, a stranger's, soft with command. It wants what it always wanted, a hand to strain against. It will give her back if it gets yours.{/n}\n{n}You close your fist. The medallion cracks down the middle with a sound like a knuckle, and the pull comes up your arm: a weight round your wrist like a leash wound twice about the hand, with something heavy and hungry at the far end of it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -168746,7 +168786,7 @@
         {
           "Id": "wake_brand",
           "Speaker": "Narrator",
-          "Text": "{n}You lay your palm on the brand and say her words back to it. Nothing happens, for long enough that you begin to feel foolish. Then the brand darkens under your hand, as a rope darkens when it is pulled wet, and draws tight until your skin burns with cold.{/n}\n{n}When you take the hand away, the knot is printed on your palm in white, and the pull does not stop: a weight round your wrist like a leash wound twice about the hand, with something heavy and hungry at the far end of it.{/n}",
+          "Text": "{n}You lay your palm on the brand and take hold of her end of the knot, as if it were a rope in the dark. Nothing happens, for long enough that you begin to feel foolish. Then the brand darkens under your hand, as a rope darkens when it is pulled wet, and draws tight until your skin burns with cold.{/n}\n{n}Something on the far end of the knot pulls back, and weighs you: a stranger's hand, soft with command. It wants what it always wanted, a hand to strain against. It will give her back if it gets yours. You do not let go.{/n}\n{n}When you take the hand away, the knot is printed on your palm in white, and the pull does not stop: a weight round your wrist like a leash wound twice about the hand, with something heavy and hungry at the far end of it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -168806,7 +168846,7 @@
         {
           "Id": "soana",
           "Speaker": "Soana",
-          "Text": "{n}Behind you, someone coughs up forest loam.{/n}\n\"...Bloody hunter. Of course. Who else would hold a dead woman to her own words?\"\n{n}She sits up on the cold floor of her cave, an old dwarf woman in rags, and looks at her hands as if somebody had returned them to her with the fingers in the wrong order. Then she looks at yours.{/n}\n\"I was finished. I had earned it. And now you are holding my leash in a hand that has never held anything but a sword. It will pull. At night, mostly. Do not let go of it until I take it back, and I have not decided when that will be.\"",
+          "Text": "{n}Behind you, someone coughs up forest loam.{/n}\n\"...Bloody hunter. Of course.\" {n}She spits loam.{/n} \"Our lives. I meant the bear and the demon, you fool. I never tied myself into that knot on purpose.\" {n}She looks at the white print on your hand.{/n} \"Then I suppose I tied myself into it by accident, forty winters of holding it. And you guessed. And it listened to you. That is worse.\"\n{n}She sits up on the cold floor of her cave, an old dwarf woman in rags, and looks at her hands as if somebody had returned them to her with the fingers in the wrong order. Then she looks at yours.{/n}\n\"I was finished. I had earned it. And now you are holding my leash in a hand that has never held anything but a sword. It will pull. At night, mostly. Do not let go of it until I take it back, and I have not decided when that will be.\"",
           "Choices": [
             {
               "Text": "\"You can hate me standing up.\"",
@@ -169046,7 +169086,7 @@
       "Owner": "Soana",
       "MinChapter": 3,
       "MaxChapter": 5,
-      "Entry": "\"You said you had terms.\"",
+      "Entry": "\"It has been three days.\"",
       "Nodes": [
         {
           "Id": "start",
@@ -169122,7 +169162,7 @@
         {
           "Id": "price",
           "Speaker": "Soana",
-          "Text": "{n}She opens her hand. The two halves of the clay knot lie in it.{/n}\n\"I have decided. I want you, hunter, which is a great nuisance. So you will have my terms, and you will take them as they are or not at all.\"\n\"A knot with one strand is not a knot. It is a piece of string. You are holding my leash in your bare hand, and it will pull you to pieces inside a year. If I am to take it back and keep it, the knot needs a second life at the other end. Mine is spoken for; you saw to that. So: yours. Carry the pieces. When I die again, and I will, it is your life the knot comes looking for first.\"\n\"Those are my terms. I will not say them twice, and I will not make them sweeter.\"",
+          "Text": "{n}She opens her hand. The two halves of the clay knot lie in it.{/n}\n\"I have decided. I want you, hunter, which is a great nuisance, and I am too old to pretend otherwise for the sake of your pride.\"\n\"Look at it. A knot with one strand is not a knot. It is a piece of string. You are holding my leash in your bare hand, and it will pull you to pieces inside a year. If I am to take it back and keep it, the knot needs a second life at the other end. Mine is spoken for; you saw to that. So: yours. Carry the pieces. When I die again, and I will, it is your life the knot comes looking for first.\"\n\"That is not me haggling. That is what a knot is. I cannot make it sweeter, and I would not if I could.\"",
           "Choices": [
             {
               "Text": "[Hold out your hand for the pieces]",
@@ -169181,7 +169221,7 @@
         {
           "Id": "no",
           "Speaker": "Soana",
-          "Text": "{n}She closes her fist over the shards and turns away.{/n}\n\"No. You laughed at my knot once already, and I woke up in a dead forest. Come back when you can hold still for a thing that matters.\"",
+          "Text": "{n}She closes her fist over the shards and turns away.{/n}\n\"No. You laughed at my knot once already, and I woke up in a dead forest. Come back when you can keep your face straight over a thing that matters.\"",
           "Choices": [
             {
               "Text": "[Go]",
@@ -169217,7 +169257,7 @@
         {
           "Id": "night",
           "Speaker": "Soana",
-          "Text": "{n}She presses the shards into your palm and ties them there with a strip of gut, round your wrist and then round her own, tight enough to hurt. The fire is low. She does not let go of the strip.{/n}\n\"Knots listen.\" {n}Her eyes do not leave yours.{/n} \"So do I. So listen.\"\n{n}She pulls. You come. Her hands are as hard as roots and warmer than anything in this forest has a right to be; she finds the buckle at your collar without looking, the way she finds the knife at her belt. Her mouth tastes of smoke and of the bitter bark she chews against the cold, and she bites your lower lip where the knot drew blood, not gently, to see what you will do about it.{/n}\n\"All those winters I slept with a demon at the door. I am done sleeping.\"\n{n}She draws the gut strip taut between your wrists and hers and leans back into the old furs, and you go down with her, because you are tied to her and because you want to.{/n}",
+          "Text": "{n}She presses the shards into your palm and ties them there with a strip of gut, round your wrist and then round her own, tight enough to hurt. The fire is low. She does not let go of the strip.{/n}\n\"Knots listen.\" {n}Her eyes do not leave yours.{/n} \"So do I. So listen.\"\n{n}She pulls. You come. Her hands are as hard as roots and warmer than anything in this forest has a right to be; she finds the buckle of your sword-belt without looking, the way she finds the knife at her own. Her mouth tastes of smoke and of the bitter bark she chews against the cold. She lifts your tied wrist to her teeth and bites the heel of your hand where the knot drew blood, not gently, to see what you will do about it.{/n}\n\"All those winters I slept with a demon at the door. I am done sleeping.\"\n{n}She draws the gut strip taut between your wrists and hers and leans back into the old furs, and you go down with her, because you are tied to her and because you want to.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -169233,7 +169273,7 @@
         {
           "Id": "morning",
           "Speaker": "Soana",
-          "Text": "{n}Morning. Frost on the cave mouth. The strip is gone from her wrist; it is still round yours, and underneath it the skin is raised in a red weal the shape of a knot.{/n}\n{n}Soana is outside already, feeding the spirits from a bowl. She does not turn around.{/n}\n\"Your end is sore. Good. It is supposed to be. Now go and fight your war, hunter, and do not die before I do. It would be very inconvenient.\"",
+          "Text": "{n}The fire has gone to ash and the frost has come in over the cave mouth as far as the furs. The strip is gone from her wrist; it is still round yours, and underneath it the skin is raised in a red weal the shape of a knot.{/n}\n{n}Soana is outside already, feeding the spirits from a bowl. She does not turn around.{/n}\n\"Your end is sore. Good. It is supposed to be. Now go and fight your war, hunter, and do not die before I do. It would be very inconvenient.\"",
           "Choices": [
             {
               "Text": "[Go]",
@@ -169272,16 +169312,16 @@
     },
     {
       "Id": "soana.trickster.returned.second_ask",
-      "Title": "The price goes up",
+      "Title": "Tied tighter",
       "Owner": "Soana",
       "MinChapter": 3,
       "MaxChapter": 5,
-      "Entry": "\"About your terms.\"",
+      "Entry": "\"The ground has thawed.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Soana",
-          "Text": "\"Back. Good. The price has gone up while you were away, hunter.\"\n{n}She points with her chin at the trees behind her. Half of them are grey to the heartwood.{/n}\n\"The forest needs burying, all of it, and I cannot do it with one spade. Lye, timber, carts. From your stores, not your purse, so that somebody in Drezen goes without. Then the pieces, and the words.\"",
+          "Text": "{n}She does not wait for you to reach the cave. She comes down the path to meet you with the clay halves already in her fist and a strip of fresh gut over her shoulder, and she takes your wrist before you can say anything at all.{/n}\n\"You made me say it twice. I do not say things twice. So the knot will remember that it had to be asked twice, and so will you.\"\n{n}She sets the edge of a clay shard against the inside of your wrist, where the pulse is, and waits.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -169297,10 +169337,10 @@
         {
           "Id": "price",
           "Speaker": "Soana",
-          "Text": "\"Well? I will not wait for the ground to thaw twice.\"",
+          "Text": "\"Deeper than last time would have been. It will scar white and it will ache every winter you live, and every time it aches you will know whose it is. Hold out your hand or take it back. I will not ask a third time.\"",
           "Choices": [
             {
-              "Text": "[Pay for the lye and the timber] \"Mine first.\"",
+              "Text": "[Hold out your wrist] \"Mine first.\"",
               "Next": "night",
               "Set": [
                 "soana.committed",
@@ -169309,14 +169349,10 @@
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false,
-              "Crusade": {
-                "Resource": "Materials",
-                "Amount": -150
-              }
+              "Abort": false
             },
             {
-              "Text": "\"No. Not at that price.\"",
+              "Text": "[Take your hand back] \"No. Not like this.\"",
               "Next": null,
               "Set": [
                 "soana.closed"
@@ -169331,7 +169367,7 @@
         {
           "Id": "night",
           "Speaker": "Soana",
-          "Text": "{n}She presses the shards into your palm and ties them there with a strip of gut, round your wrist and then round her own, tight enough to hurt. The fire is low. She does not let go of the strip.{/n}\n\"Knots listen.\" {n}Her eyes do not leave yours.{/n} \"So do I. So listen.\"\n{n}She pulls. You come. Her hands are as hard as roots and warmer than anything in this forest has a right to be; she finds the buckle at your collar without looking, the way she finds the knife at her belt. Her mouth tastes of smoke and of the bitter bark she chews against the cold, and she bites your lower lip where the knot drew blood, not gently, to see what you will do about it.{/n}\n\"All those winters I slept with a demon at the door. I am done sleeping.\"\n{n}She draws the gut strip taut between your wrists and hers and leans back into the old furs, and you go down with her, because you are tied to her and because you want to.{/n}",
+          "Text": "{n}She presses the shards into your palm and ties them there with a strip of gut, round your wrist and then round her own, tight enough to hurt. The fire is low. She does not let go of the strip.{/n}\n\"Knots listen.\" {n}Her eyes do not leave yours.{/n} \"So do I. So listen.\"\n{n}She pulls. You come. Her hands are as hard as roots and warmer than anything in this forest has a right to be; she finds the buckle of your sword-belt without looking, the way she finds the knife at her own. Her mouth tastes of smoke and of the bitter bark she chews against the cold. She lifts your tied wrist to her teeth and bites the heel of your hand where the knot drew blood, not gently, to see what you will do about it.{/n}\n\"All those winters I slept with a demon at the door. I am done sleeping.\"\n{n}She draws the gut strip taut between your wrists and hers and leans back into the old furs, and you go down with her, because you are tied to her and because you want to.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -169347,7 +169383,7 @@
         {
           "Id": "morning",
           "Speaker": "Soana",
-          "Text": "{n}Morning. Frost on the cave mouth. The strip is gone from her wrist; it is still round yours, and underneath it the skin is raised in a red weal the shape of a knot.{/n}\n{n}Soana is outside already, feeding the spirits from a bowl. She does not turn around.{/n}\n\"Your end is sore. Good. It is supposed to be. Now go and fight your war, hunter, and do not die before I do. It would be very inconvenient.\"",
+          "Text": "{n}The fire has gone to ash and the frost has come in over the cave mouth as far as the furs. The strip is gone from her wrist; it is still round yours, and underneath it the skin is raised in a red weal the shape of a knot.{/n}\n{n}Soana is outside already, feeding the spirits from a bowl. She does not turn around.{/n}\n\"Your end is sore. Good. It is supposed to be. Now go and fight your war, hunter, and do not die before I do. It would be very inconvenient.\"",
           "Choices": [
             {
               "Text": "[Go]",
@@ -169382,6 +169418,98 @@
         "0a5654e7dc18f074d9356009d55eb51b"
       ],
       "InteractionHub": "soana.presence"
+    },
+    {
+      "Id": "soana.trickster.handover.winter_portion",
+      "Title": "The spirits' portion, again",
+      "Owner": "Soana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"The spirits came, didn't they?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}There is frost on the moss, and a ring of it has melted in front of the cave mouth, the size of a cart wheel, as if something warm had stood there all night. Soana sits on the stone beside it with her knife across her knees. Her left palm is a lattice of old white cuts, and one new one, not yet opened.{/n}\n\"They came at moonrise, the way I told you they would. They stood there till dawn and did not say a word. They do not need to. I know what they are owed; a fool struck the bargain for me, and a bargain is a bargain.\"\n{n}She turns the knife so the edge catches the light, and looks at you, not at the blade.{/n}\n\"You may watch. People who make bargains for other people ought to see them paid.\"",
+          "Choices": [
+            {
+              "Text": "[Hold out your own palm] \"My joke. My blood. Pay them from me this winter.\"",
+              "Next": "shared",
+              "Set": [
+                "soana.trickster.cost.portion_shared"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Watch her pay it]",
+              "Next": "watched",
+              "Set": [
+                "soana.trickster.portion_watched"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "shared",
+          "Speaker": "Soana",
+          "Text": "{n}She looks at your hand the way she looks at a snare that has caught the wrong animal. Then she takes your wrist in her root-hard fingers and draws the knife across your palm, not deep, and turns it over the melted ring. The blood goes into the moss and does not stay there. Something in the trees sighs.{/n}\n\"They know your taste now as well as mine. That was stupid, hunter. They will come to your door as well, some winter, and I will not be there to tell them no.\"\n{n}She binds your hand with the same rag she keeps for her own, without being asked, and without being gentle.{/n}\n\"Stupid,\" she says again, more quietly, and does not let go of the rag's end for a while.",
+          "Choices": [
+            {
+              "Text": "[Leave her to the frost]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "watched",
+          "Speaker": "Soana",
+          "Text": "{n}She opens her palm along the old line, without a sound, and holds it over the melted ring until the moss stops drinking. Something in the trees sighs, and the ring begins to freeze over.{/n}\n\"There. Next winter again, and the winter after. Remember it the next time you are clever on somebody else's behalf.\"\n{n}She wraps the hand the way other people tie a bootlace, and goes back into her cave.{/n}",
+          "Choices": [
+            {
+              "Text": "[Leave her to the frost]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "soana.trickster.cost.blood_given"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "soana.trickster.cost.portion_shared",
+        "soana.trickster.portion_watched"
+      ],
+      "DelayHours": 72,
+      "Optional": false,
+      "Relationship": "soana",
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "2b1776f3e398685479ff6b16290b4cc2"
+      ],
+      "NativeReturnCue": "e9feb6b2946c77641875f2bc731ede1e"
     },
     {
       "Id": "soana.trickster.missed.dice_bowl",
@@ -169464,22 +169592,23 @@
         {
           "Id": "price",
           "Speaker": "Soana",
-          "Text": "\"The spirits have been feeding my beasts on your luck, and luck is thin fare. If they are to keep standing up, they eat. Salt and meat, a full cart of each from your stores before the next snow: enough to keep them on their feet until this war is done. That is my price for your joke. I will not haggle.\"",
+          "Text": "\"The spirits have been feeding my beasts on your luck, and luck is thin fare. They will go on eating it for as long as that die sits in my bowl, and it is your luck they eat, hunter, not mine. Every time a bear of mine gets up on the road, something of yours falls down: a girth snaps, a letter goes astray, a sword turns in your hand at the wrong moment. Small things. Every one of them paid to a beast that is still standing.\"\n\"And send a cart of salt, so they have something besides your luck to chew. Leave the die, or take it and let them lie down.\"",
           "Choices": [
             {
-              "Text": "[Send the salt and the meat] \"Done. That's your price.\"",
+              "Text": "[Leave the die in her bowl] \"Let them eat my luck.\"",
               "Next": null,
               "Set": [
                 "soana.trickster.luck_kept",
                 "soana.trickster.cost.catchup",
-                "soana.started"
+                "soana.started",
+                "soana.trickster.cost.luck_fed"
               ],
               "Requires": [],
               "Forbids": [],
               "Abort": false,
               "Crusade": {
                 "Resource": "Materials",
-                "Amount": -100
+                "Amount": -50
               }
             },
             {
@@ -169555,24 +169684,25 @@
         {
           "Id": "price",
           "Speaker": "Soana",
-          "Text": "\"Salt and meat, two full carts of each from your stores before the next snow, and the die stays with me. You threw it; you do not get it back.\"",
+          "Text": "\"They will eat your luck now, not mine: every time a beast of mine gets up on the road, something of yours falls down. And because you threw it at my feet instead of offering it, they will be hungrier than they would have been. Two carts of salt, so they do not eat you to the bone. The die stays with me. You threw it; you do not get it back.\"",
           "Choices": [
             {
-              "Text": "[Pay what she asks] \"Salt, meat, and the die. Done.\"",
+              "Text": "[Leave the die where it fell] \"Salt, and the die. Let them eat.\"",
               "Next": null,
               "Set": [
                 "soana.trickster.primed_dice",
                 "soana.trickster.cost.late",
                 "soana.trickster.luck_kept",
                 "soana.trickster.cost.catchup",
-                "soana.started"
+                "soana.started",
+                "soana.trickster.cost.luck_fed"
               ],
               "Requires": [],
               "Forbids": [],
               "Abort": false,
               "Crusade": {
                 "Resource": "Materials",
-                "Amount": -200
+                "Amount": -100
               }
             },
             {
@@ -169917,7 +170047,7 @@
         {
           "Id": "terms",
           "Speaker": "Soana",
-          "Text": "\"Here are my terms, hunter. A thing that sits in my bowl is mine. I do not keep things I have not touched. Take your die out now, and everything it has done comes undone with it: the she-bear lies down at the cave mouth and stays there. Or leave it, and it is mine, and you with it, for as long as the luck holds.\"\n\"Which is to say, until I decide it does not.\"",
+          "Text": "\"Listen, hunter, because this is the whole of it. A thing that sits in my bowl is mine. I do not keep things I have not touched. Take your die out now, and everything it has done comes undone with it: the she-bear lies down at the cave mouth and stays there. Or leave it, and it is mine, and you with it, for as long as the luck holds.\"\n\"Which is to say, until I decide it does not.\"",
           "Choices": [
             {
               "Text": "[Leave the die in the bowl] \"Keep it. And me.\"",
@@ -169952,7 +170082,7 @@
         {
           "Id": "no",
           "Speaker": "Soana",
-          "Text": "{n}She shrugs, and puts the second blanket back on the shelf.{/n}\n\"Think, then. The bowl is patient. I am not. Do not make me ask the question twice; if I have to, it will cost you.\"",
+          "Text": "{n}She shrugs, and puts the second blanket back on the shelf.{/n}\n\"Think, then. The bowl is patient. I am not. If I have to ask twice, the bowl will want more than one die.\"",
           "Choices": [
             {
               "Text": "[Go]",
@@ -170004,7 +170134,7 @@
         {
           "Id": "threshold",
           "Speaker": "Soana",
-          "Text": "{n}She lets you undo her in turn: the belt of knotted cord, the rags one over another, until the old dwarf woman stands in the firelight in nothing but the clay knot at her throat and her grey braid, broad and heavy and unashamed. She takes your hands by the wrists and puts them where she wants them.{/n}\n{n}When she kisses you it is with her whole small, heavy body, the way she does everything, as if the world were a thing to be carried and she had decided to carry you for a while. She bites. She laughs when you gasp, low in her chest, and bites again.{/n}\n{n}Outside, the she-bear lies down across the cave mouth to keep the night off. Soana pushes you back into the furs, climbs over you with her knees sunk in the pelts on either side, and her hand closes on your hip like a root closing on a stone.{/n}",
+          "Text": "{n}She lets you undo her in turn: the belt of knotted cord, the rags one over another, until the old dwarf woman stands in the firelight in nothing but the clay knot at her throat and her grey braid, broad and heavy and unashamed. She takes your hands by the wrists and puts them where she wants them.{/n}\n{n}She kisses you with her whole small, heavy body behind it, and bites. When you gasp she laughs, low in her chest.{/n}\n\"Soft. I thought so.\" {n}She bites again, harder, where it will show tomorrow.{/n}\n{n}Outside, the she-bear lies down across the cave mouth to keep the night off. Soana pushes you back into the furs, climbs over you with her knees sunk in the pelts on either side, and her hand closes on your hip like a root closing on a stone.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -170020,7 +170150,7 @@
         {
           "Id": "morning",
           "Speaker": "Soana",
-          "Text": "{n}Morning. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty. She keeps frowning at it.{/n}\n\"The she-bear went out before dawn. She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves.\"",
+          "Text": "{n}Grey light at the cave mouth, and the she-bear's place across it empty. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty. She keeps frowning at it.{/n}\n\"The she-bear went out before dawn. She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves.\"",
           "Choices": [
             {
               "Text": "[Go]",
@@ -170060,7 +170190,7 @@
     },
     {
       "Id": "soana.trickster.missed.second_ask",
-      "Title": "The bowl's price",
+      "Title": "The other die",
       "Owner": "Soana",
       "MinChapter": 5,
       "MaxChapter": 5,
@@ -170069,26 +170199,22 @@
         {
           "Id": "start",
           "Speaker": "Soana",
-          "Text": "\"I said it would cost you. It does.\"\n{n}She sets the bowl on the stone between you.{/n}\n\"Your scouts watch my beasts fight on the road, and they report it. Soon your foragers will read the reports too, and come for the meat. Seal an order: no crusader hunts in the Wintersun woods, for any pot, for as long as the war lasts, and whoever does answers to the Commander. Your officers will hate you for it. Then ask me again.\"",
+          "Text": "{n}She sets the bowl on the stone between you, and holds out her other hand, palm up.{/n}\n\"A cheat never carries one die. One sits in my bowl. The other is in your pocket, the one you roll against demons when your own luck is not good enough. I know it is there. I can hear it when you walk.\"\n\"Give me its brother. Then the pair is mine, and my beasts stop sharing your luck with every sword you swing. You will fight the rest of this war on the luck you were born with, hunter. We will see how much that is.\"",
           "Choices": [
             {
-              "Text": "[Seal the letter] \"Done. Keep the die. And me.\"",
+              "Text": "[Give her the other die] \"Keep them both. And me.\"",
               "Next": "night",
               "Set": [
                 "soana.committed",
                 "soana.trickster.cost.die_in_her_bowl",
-                "soana.trickster.cost.woods_sealed"
+                "soana.trickster.cost.pair_given"
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false,
-              "Crusade": {
-                "Resource": "Favors",
-                "Amount": -150
-              }
+              "Abort": false
             },
             {
-              "Text": "\"No. Not at that price.\"",
+              "Text": "\"No. That one stays with me.\"",
               "Next": null,
               "Set": [
                 "soana.closed"
@@ -170119,7 +170245,7 @@
         {
           "Id": "threshold",
           "Speaker": "Soana",
-          "Text": "{n}She lets you undo her in turn: the belt of knotted cord, the rags one over another, until the old dwarf woman stands in the firelight in nothing but the clay knot at her throat and her grey braid, broad and heavy and unashamed. She takes your hands by the wrists and puts them where she wants them.{/n}\n{n}When she kisses you it is with her whole small, heavy body, the way she does everything, as if the world were a thing to be carried and she had decided to carry you for a while. She bites. She laughs when you gasp, low in her chest, and bites again.{/n}\n{n}Outside, the she-bear lies down across the cave mouth to keep the night off. Soana pushes you back into the furs, climbs over you with her knees sunk in the pelts on either side, and her hand closes on your hip like a root closing on a stone.{/n}",
+          "Text": "{n}She lets you undo her in turn: the belt of knotted cord, the rags one over another, until the old dwarf woman stands in the firelight in nothing but the clay knot at her throat and her grey braid, broad and heavy and unashamed. She takes your hands by the wrists and puts them where she wants them.{/n}\n{n}She kisses you with her whole small, heavy body behind it, and bites. When you gasp she laughs, low in her chest.{/n}\n\"Soft. I thought so.\" {n}She bites again, harder, where it will show tomorrow.{/n}\n{n}Outside, the she-bear lies down across the cave mouth to keep the night off. Soana pushes you back into the furs, climbs over you with her knees sunk in the pelts on either side, and her hand closes on your hip like a root closing on a stone.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -170135,7 +170261,7 @@
         {
           "Id": "morning",
           "Speaker": "Soana",
-          "Text": "{n}Morning. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty. She keeps frowning at it.{/n}\n\"The she-bear went out before dawn. She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves.\"",
+          "Text": "{n}Grey light at the cave mouth, and the she-bear's place across it empty. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty. She keeps frowning at it.{/n}\n\"The she-bear went out before dawn. She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves.\"",
           "Choices": [
             {
               "Text": "[Go]",
@@ -170219,6 +170345,22 @@
               ],
               "Forbids": [],
               "AnyGroups": []
+            },
+            {
+              "Text": "For as long as the die sat in her bowl, the Commander's girths snapped, letters went astray and blades turned at bad moments. Each time, somewhere on a Wintersun road, a bear that should have stayed down got up again.",
+              "Requires": [
+                "soana.trickster.cost.luck_fed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander fought the rest of the war on the luck they were born with. Soana said it was more than she had expected, and a good deal less than they deserved.",
+              "Requires": [
+                "soana.trickster.cost.pair_given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
             }
           ]
         }
@@ -170278,6 +170420,22 @@
               "Text": "The crusade's quartermasters never forgave the Commander for the Wintersun woods, and not one crusader ever took a hide from them.",
               "Requires": [
                 "soana.trickster.cost.woods_sealed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "For as long as the die sat in her bowl, the Commander's girths snapped, letters went astray and blades turned at bad moments. Each time, somewhere on a Wintersun road, a bear that should have stayed down got up again.",
+              "Requires": [
+                "soana.trickster.cost.luck_fed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander fought the rest of the war on the luck they were born with. Soana said it was more than she had expected, and a good deal less than they deserved.",
+              "Requires": [
+                "soana.trickster.cost.pair_given"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -170345,6 +170503,22 @@
               ],
               "Forbids": [],
               "AnyGroups": []
+            },
+            {
+              "Text": "For as long as the die sat in her bowl, the Commander's girths snapped, letters went astray and blades turned at bad moments. Each time, somewhere on a Wintersun road, a bear that should have stayed down got up again.",
+              "Requires": [
+                "soana.trickster.cost.luck_fed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander fought the rest of the war on the luck they were born with. Soana said it was more than she had expected, and a good deal less than they deserved.",
+              "Requires": [
+                "soana.trickster.cost.pair_given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
             }
           ]
         }
@@ -170372,7 +170546,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She never asked again. The knot hung in her cave with one strand, and she bound nothing new into the Wintersun woods for as long as she lived. When travellers asked the old woman in the cave about the Commander, she said that she had met a hunter once who could not hold still for a thing that mattered, and that was all she said.{/n}",
+          "Text": "{n}She never asked again. The knot hung in her cave with one strand, and she bound nothing new into the Wintersun woods for as long as she lived. When travellers asked the old woman in the cave about the Commander, she said that she had met a hunter once who laughed at a knot, and that was all she said.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -174050,7 +174224,7 @@
         {
           "Id": "late",
           "Speaker": "Narrator",
-          "Text": "{n}They laid the block beside her as you asked, he says, with your coin driven into the grain. The fire went round it the way water goes round a stone, and round her with it. Three torches, and then the carvers stopped trying. On the third dawn Gesmerha got off the pyre by herself, her palms full of splinters, the block under her arm. The carvers pushed her away from the ground with poles, not hands. She is at the Lady's statue now, and they will not have her back among the houses. She sent him with this, word for word.{/n}\n\"Tell the stranger: you threw coin on my fire and a joke after it. The wood would not take either one.\"",
+          "Text": "{n}They laid the block beside her as you asked, he says, with your coin driven into the grain. The fire went round it the way water goes round a stone, and round her with it. Three torches, and then the carvers stopped trying. On the second night every carver on the ground heard it in the crackle of the fire: three slow knocks, wood on wood, the old count a master raps on the bench to call an apprentice back to unfinished work. Nobody was holding a mallet. On the third dawn Gesmerha got off the pyre by herself, her palms full of splinters, the block under her arm, and her fingers would not open from around it until she had said aloud, to the empty air, that she would finish. The carvers pushed her away from the ground with poles, not hands. Old Yarvo, who taught half of them to hold a chisel, said aloud what they were all thinking: the last thing in Wintersun that would not stay dead was the Lady they had knelt to for a generation, and they were done kneeling to things that came back. She is at the Lady's statue now, and they will not have her back among the houses. She sent him with this, word for word.{/n}\n\"Tell the stranger: you threw coin on my fire and a joke after it. The wood would not take either one.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -174066,7 +174240,7 @@
         {
           "Id": "paid",
           "Speaker": "Narrator",
-          "Text": "{n}He will not stop looking at you while he tells it. Her apprentices laid her out with the birch block from her bench under her hands, the one with your coin in it, because nobody could get the coin out. On the third morning, before anyone had lit a torch, Gesmerha sat up with her palms full of splinters and the block still in her grip. Half the carvers ran. The ones who stayed will not have her back among the houses. She is at the Lady's statue. She sent him with this, word for word.{/n}\n\"Tell the stranger: you heard me say *hands*, in my own yard, among my own statues, and the next thing you did was pay for them. I swore I would never shame my ancestors. You knew that too, didn't you.\"",
+          "Text": "{n}He will not stop looking at you while he tells it. Her apprentices laid her out with the birch block from her bench under her hands, the one with your coin in it, because nobody could get the coin out. On the second night the apprentices sitting up with her heard, from the empty workshop, three slow knocks, wood on wood, the old count a master raps on the bench to call an apprentice back to unfinished work. Nobody was in there. On the third morning, before anyone had lit a torch, Gesmerha sat up with her palms full of splinters and the block still in her grip, and her fingers would not open from around it until she had promised aloud, to nobody they could see, that she would finish it. Half the carvers ran. The ones who stayed went to old Yarvo, the eldest of them, and Yarvo shut his door: the last thing in Wintersun that would not stay dead was the Lady they had knelt to for a generation, and he would not have another under his roof. None of them will have her back among the houses. She is at the Lady's statue. She sent him with this, word for word.{/n}\n\"Tell the stranger: you heard me say *hands*, in my own yard, among my own statues, and the next thing you did was pay for them. I swore I would never shame my ancestors. You knew that too, didn't you.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -174082,7 +174256,7 @@
         {
           "Id": "terms",
           "Speaker": "Gesmerha",
-          "Text": "\"The ancestors came for me in the old tongue. I will not pretend I understood all of it; the dead are not tidy talkers. I understood this much. There was paid work on my bench, with your coin in its heart, and my line does not come home with work on the bench. So they sent me back to it.\n*Finish, daughter.* That is what they said. My hands are theirs until the last cut. If I put the chisel down for anything else, they take the hands back, and me with them. What they want with the finished thing, they did not say. I did not ask. You do not ask the dead for reasons.\"\n\"What is the world coming to, stranger, when the dead cannot even stay dead in peace?\"",
+          "Text": "\"The ancestors came for me in the old tongue. I will not pretend I understood all of it; the dead are not tidy talkers. I understood this much. There was paid work on my bench, with your coin in its heart, and my line does not come home with work on the bench. So they sent me back to it.\n*Finish, daughter.* That is what they said. My hands are theirs until the last cut. If I put the chisel down for anything else, they take the hands back, and me with them. What they want with the finished thing, they did not say. I did not ask. You do not ask the dead for reasons.\"\n\"Yarvo is right to shut his door. I would shut mine. A carver who gets up off her own pyre is not a neighbour any more; she is a commission. So I will not go back among the houses until the work is done, and I will not do the work where they have to watch it. I will do it where the one who paid can see.\"\n\"What is the world coming to, stranger, when the dead cannot even stay dead in peace?\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -174098,7 +174272,7 @@
         {
           "Id": "terms_raised",
           "Speaker": "Gesmerha",
-          "Text": "\"The ancestors came for me in the old tongue, and they were angry. I did not need every word for that. You paid for my work over my ashes, not before them, and the dead do not like a bargain struck at their own fire.\n*Finish, daughter.* My hands are theirs until the last cut, and because I was bought late there is more to cut: the journeymen's pretty Lady comes down first, by my hands, before anything new goes into the wood. If I put the chisel down for anything else, they take the hands back, and me with them. They did not say why. I did not ask.\"",
+          "Text": "\"The ancestors came for me in the old tongue, and they were angry. I did not need every word for that. You paid for my work over my ashes, not before them, and the dead do not like a bargain struck at their own fire.\n*Finish, daughter.* My hands are theirs until the last cut, and because I was bought late there is more to cut: the journeymen's pretty Lady comes down first, by my hands, before anything new goes into the wood. If I put the chisel down for anything else, they take the hands back, and me with them. They did not say why. I did not ask.\"\n\"And Yarvo shut his door on me. He is right to. The last thing that came back to Wintersun smiling was the Lady, and I will be the one to cut her down. I will not do it among the houses. I will do it where the one who paid can watch.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -174236,7 +174410,7 @@
           "Text": "{n}She sets the chisel against the log, then takes your hands one at a time and lays them flat on the wood, either side of the blade, close enough that you can feel the steel's cold through the bark.{/n}\n\"Hold it. Don't move. I cut by sound, and I cannot hear your fingers.\"",
           "Choices": [
             {
-              "Text": "[Hold still]",
+              "Text": "[Keep your hands on the wood]",
               "Next": "after",
               "Set": [
                 "gesmerha.trickster.held_still"
@@ -174449,7 +174623,7 @@
         {
           "Id": "terms",
           "Speaker": "Gesmerha",
-          "Text": "\"Then hear my terms, because my hands are mine again and that means they can refuse. I will not be paid for this. Not in coin, and not in jokes. If you ever buy me again, stranger, I will know it by your step before you open your mouth, and I will not be here when you do.\"",
+          "Text": "\"Then listen to what my hands decided in the cold water, because they are mine again, and that means they can refuse, or choose. They chose you. I did not expect it, and I do not entirely approve of it, and they did not ask me. But I will not be paid for this. Not in coin, and not in jokes. If you ever buy me again, stranger, I will know it by your step before you open your mouth, and I will not be here when you do.\"",
           "Choices": [
             {
               "Text": "\"No more purses. Not for you. I swear it.\"",
@@ -174511,7 +174685,7 @@
         {
           "Id": "night",
           "Speaker": "Gesmerha",
-          "Text": "{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}\n\"Two things in this yard I have cut without eyes. The original I have not touched yet. Stand still. You are good at that now.\"\n{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. At your collar she unlaces you by feel and lays her palm flat over your heart to count it.{/n}\n\"Fast. Good. I have wanted this since your step first came through that gate, and I will not be the only one who wanted it.\"\n{n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. Her hands go on reading, lower and surer. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}",
+          "Text": "{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}\n\"Two things in this yard I have cut without eyes. The original I have not touched yet. Your hands stayed on the wood with the mallet coming down; let them stay at your sides a little longer. I am reading.\"\n{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. She finds the laces at your throat by feel, undoes them the way she strips bark, and lays her palm flat over your heart to count it.{/n}\n\"Fast. Like green wood when the wedge goes in.\" {n}Her palm does not move.{/n} \"My hands found this grain in the yard, under the mallet, and they have gone back to it every night since. I let them. I will not be the only one who does.\"\n{n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. Her hands go on reading, lower and surer. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -174527,7 +174701,7 @@
         {
           "Id": "morning",
           "Speaker": "Gesmerha",
-          "Text": "{n}Morning. There is sawdust in your hair and a curl of pine in your collar. Gesmerha is already at the trestles, bare-armed in the cold, and on a new block in front of her a face is coming out of the wood: one you have seen in mirrors.{/n}\n\"My hands remembered. Nobody paid them for last night, so what they make of it is mine. I will not sell it.\" {n}The corner of her mouth moves; she does not stop cutting.{/n} \"Go and fight your war, stranger. Walk loudly when you come back. I like to hear it from the gate.\"",
+          "Text": "{n}The forge is still banked when you wake, and there is sawdust in your hair and a curl of pine down your shirt. Gesmerha is already at the trestles, bare-armed in the cold, and on a new block in front of her a face is coming out of the wood: one you have seen in mirrors.{/n}\n\"My hands remembered. Nobody paid them for last night, so what they make of it is mine. I will not sell it.\" {n}The corner of her mouth moves; she does not stop cutting.{/n} \"Go and fight your war, stranger. Walk loudly when you come back. I like to hear it from the gate.\"",
           "Choices": [
             {
               "Text": "[Go]",
@@ -174575,7 +174749,7 @@
         {
           "Id": "start",
           "Speaker": "Gesmerha",
-          "Text": "{n}She is waiting for you this time, a fresh log on the trestles and nothing yet cut.{/n}\n\"The second asking costs more. That is fair; I learned it from you. Give me your hands. Three days, here, in the yard, while I carve them. Every hour you sit still, your war waits. Then I will have a pair that were never for sale, and you can have mine.\"",
+          "Text": "{n}She is waiting for you this time, a fresh log on the trestles and nothing yet cut.{/n}\n\"I have thought about your honesty. You cannot swear off buying things, so I will not ask you to. I will ask for something no purse reaches. Give me your hands: three days, here in the yard, while I carve them. I want one pair in this world that nobody ever paid for. When they are done, you can have mine, and nobody will have paid for those either.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -174668,7 +174842,7 @@
         {
           "Id": "night",
           "Speaker": "Gesmerha",
-          "Text": "{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}\n\"Two things in this yard I have cut without eyes. The original I have not touched yet. Stand still. You are good at that now.\"\n{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. At your collar she unlaces you by feel and lays her palm flat over your heart to count it.{/n}\n\"Fast. Good. I have wanted this since your step first came through that gate, and I will not be the only one who wanted it.\"\n{n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. Her hands go on reading, lower and surer. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}",
+          "Text": "{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}\n\"Two things in this yard I have cut without eyes. The original I have not touched yet. Your hands stayed on the wood with the mallet coming down; let them stay at your sides a little longer. I am reading.\"\n{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. She finds the laces at your throat by feel, undoes them the way she strips bark, and lays her palm flat over your heart to count it.{/n}\n\"Fast. Like green wood when the wedge goes in.\" {n}Her palm does not move.{/n} \"My hands found this grain in the yard, under the mallet, and they have gone back to it every night since. I let them. I will not be the only one who does.\"\n{n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. Her hands go on reading, lower and surer. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -174684,7 +174858,7 @@
         {
           "Id": "morning",
           "Speaker": "Gesmerha",
-          "Text": "{n}Morning. There is sawdust in your hair and a curl of pine in your collar. Gesmerha is already at the trestles, bare-armed in the cold, and on a new block in front of her a face is coming out of the wood: one you have seen in mirrors.{/n}\n\"My hands remembered. Nobody paid them for last night, so what they make of it is mine. I will not sell it.\" {n}The corner of her mouth moves; she does not stop cutting.{/n} \"Go and fight your war, stranger. Walk loudly when you come back. I like to hear it from the gate.\"",
+          "Text": "{n}The forge is still banked when you wake, and there is sawdust in your hair and a curl of pine down your shirt. Gesmerha is already at the trestles, bare-armed in the cold, and on a new block in front of her a face is coming out of the wood: one you have seen in mirrors.{/n}\n\"My hands remembered. Nobody paid them for last night, so what they make of it is mine. I will not sell it.\" {n}The corner of her mouth moves; she does not stop cutting.{/n} \"Go and fight your war, stranger. Walk loudly when you come back. I like to hear it from the gate.\"",
           "Choices": [
             {
               "Text": "[Go]",
@@ -177789,7 +177963,7 @@
         {
           "Id": "sign",
           "Speaker": "Dorgelinda",
-          "Text": "{n}Her eye stays on you a long moment, red-rimmed from nights on the job. Then she turns the ledger round and pushes the pen across the table, as if the council could not see her do it.{/n}\n\"Your account, your hand. I don't write other folks' debts. Bless their grubby hands, I've got enough of those already.\"\n{n}Across the table someone laughs and turns it into a cough.{/n}",
+          "Text": "{n}Her eye stays on you, red-rimmed from nights on the job, while she works out what this will cost her. Then she turns the ledger round and pushes the pen across the table, as if the council could not see her do it.{/n}\n\"Your account, your hand. I don't write other folks' debts. Bless their grubby hands, I've got enough of those already.\"\n{n}Across the table someone laughs and turns it into a cough.{/n}",
           "Choices": [
             {
               "Text": "[Write the line, and a rider under it: \"...and all stores that follow them.\"]",
@@ -178745,7 +178919,7 @@
         {
           "Id": "toasted",
           "Speaker": "Dorgelinda",
-          "Text": "{n}She looks at you over the cup for a moment longer than she needs to.{/n}\n\"Two out of three.\" {n}She corrects you, without heat, and refills both cups, and writes nothing in the book, which is the first time.{/n}\n\"Same time next week. Bring the boots back if you've still got 'em.\"",
+          "Text": "{n}She looks at you over the cup for a moment longer than she needs to.{/n}\n\"Two out of three.\" {n}She corrects you, without heat, and refills both cups, and writes nothing in the book, which she has never once done.{/n}\n\"Same time next week. Bring the boots back if you've still got 'em.\"",
           "Choices": [
             {
               "Text": "[Finish your cup.]",
@@ -178928,7 +179102,7 @@
         {
           "Id": "clean",
           "Speaker": "Dorgelinda",
-          "Text": "{n}She looks at you for a long time with the one eye.{/n}\n\"That's a fool's bargain, Commander. You carry the dirt and I get to keep my hands.\" {n}She puts the thin book in the stove and watches it catch, the pages curling one after another like something that wants to live.{/n}\n\"I'll take it. Don't think I don't know what it cost.\"",
+          "Text": "{n}She turns her head so the one eye has you square, the way she sights down a row of barrels for the one that's leaking.{/n}\n\"That's a fool's bargain, Commander. You carry the dirt and I get to keep my hands.\" {n}She puts the thin book in the stove and watches it catch, the pages curling one after another like something that wants to live.{/n}\n\"I'll take it. Don't think I don't know what it cost.\"",
           "Choices": [
             {
               "Text": "[Leave it there.]",
@@ -179146,7 +179320,7 @@
         {
           "Id": "ask",
           "Speaker": "Dorgelinda",
-          "Text": "{n}The thong of keys that never leaves her wrist is lying on the desk, beside the book. You have never seen it off her. Three new locks on Bartley's warehouse, the powder store, the stores' own door, and one small black key worn smooth that you have never seen her use.{/n}\n\"I've been fair with you, Commander, and I'll be plain. I don't want you in my book. You've been in my book since the caravans. I want you in my rooms, and at my table when the carts come in, and in my bed when they don't.\" {n}Her good hand lies flat by the keys, not on them.{/n}\n\"I'm no girl, and I'm no fool, and I don't ask twice. So. Yes or no?\"",
+          "Text": "{n}Her dented tin cup is on the desk beside the book: the one she drinks the third toast from, the one that never goes to anybody else. It is empty. The bottle that was never on any manifest stands next to it, unopened.{/n}\n\"I've been fair with you, Commander, and I'll be plain. I don't want you in my book. You've been in my book since the caravans. I want you in my rooms, and at my table when the carts come in, and in my bed when they don't.\" {n}Her good hand lies flat by the keys, not on them.{/n}\n\"I'm no girl, and I'm no fool, and I don't ask twice. So. Yes or no?\"",
           "Choices": [
             {
               "Text": "\"Keep the line open. And me in the book with it.\"",
@@ -179182,7 +179356,7 @@
         {
           "Id": "yes",
           "Speaker": "Dorgelinda",
-          "Text": "{n}She works the small black key off the thong one-handed, bracing the ring against the desk with her bad wrist, and presses it into your palm and closes your fingers over it with hers.{/n}\n\"My rooms. Behind the stores. Nobody's held that key since Kenabres, and nobody else will.\" {n}She puts the rest of the keys back on her wrist.{/n} \"Use it tonight. Don't knock. I'll hear you anyway.\"",
+          "Text": "{n}She opens the bottle one-handed, bracing it against the desk with her bad wrist, fills her own dented cup to the brim and pushes it across to you with the back of her hand. She does not pour one for herself.{/n}\n\"Armed, armoured and fed. Supply service toast. Most nights it's two out of three.\" {n}She watches you lift it.{/n} \"Tonight it's three. Drink it all; that cup's yours now, and nobody's drunk from it since Kenabres but me.\"\n\"My rooms are behind the stores. The latch is off after the last cart. Don't knock. I'll hear you anyway.\"",
           "Choices": [
             {
               "Text": "[Stay while she writes.]",
@@ -179200,7 +179374,7 @@
         {
           "Id": "yes_boots",
           "Speaker": "Dorgelinda",
-          "Text": "{n}She counts the boots: two, left and right, regulation, drawn today from the Crusade's own stores on your seal. She writes them in. Paid. Then she works the small black key off the thong one-handed and sets it inside the left boot.{/n}\n\"Paid in full. Took you long enough.\" {n}She pushes the boots across the desk at you.{/n} \"My rooms, behind the stores. Nobody's held that key since Kenabres. Use it tonight, and bring the boots. I'll want to see if they fit.\"",
+          "Text": "{n}She counts the boots: two, left and right, regulation, drawn today from the Crusade's own stores on your seal. She writes them in. Paid. Then she fills her own dented cup to the brim and stands it inside the left boot.{/n}\n\"Paid in full. Took you long enough. Armed, armoured and fed: three out of three, for once.\" {n}She pushes the boots across the desk at you.{/n} \"That cup's yours now. Nobody's drunk from it since Kenabres but me. My rooms, behind the stores; the latch is off after the last cart. Bring the boots. I'll want to see if they fit.\"",
           "Choices": [
             {
               "Text": "[Stay while she writes.]",
@@ -179301,7 +179475,7 @@
         {
           "Id": "told",
           "Speaker": "Dorgelinda",
-          "Text": "{n}You tell her. She writes all of it down, and strikes a hundred's worth of stores that were never really there. When you finish, the page balances for the first time since the caravans.{/n}\n\"There. Was that so hard.\" {n}She puts the pen down, and takes the thong of keys off her wrist, and lays it on the balanced page.{/n} \"Now ask.\"",
+          "Text": "{n}You tell her. She writes all of it down, and strikes a hundred's worth of stores that were never really there. When you finish, the page balances, which it has not done since the caravans.{/n}\n\"There. Was that so hard.\" {n}She puts the pen down, takes her own dented cup off the shelf, and stands it on the balanced page, empty.{/n} \"Now ask.\"",
           "Choices": [
             {
               "Text": "[Ask.]",
@@ -179369,7 +179543,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}The Logistics Council's last ledger balanced to the copper, save one line in the Commander's name, marked \"used, quietly\". Dorgelinda Stranglehold never ruled it off, and never explained why to the clerks. The Commander kept a small black key to the rooms behind the stores for the rest of Dorgelinda's life, and used it more often than the clerks thought proper, and never once knocked.{/n}",
+          "Text": "{n}The Logistics Council's last ledger balanced to the copper, save one line in the Commander's name, marked \"used, quietly\". Dorgelinda Stranglehold never ruled it off, and never explained why to the clerks. The Commander drank from Dorgelinda's dented cup at her table for the rest of her life, three out of three on the good nights, and let themselves into the rooms behind the stores more often than the clerks thought proper, and never once knocked.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -180142,7 +180316,7 @@
         {
           "Id": "scar",
           "Speaker": "Dorgelinda",
-          "Text": "{n}She looks at it for a long time, the way she looks at a dented helmet, working out what hit it and how hard and whether whoever wore it walked away.{/n}\n\"That's a bad one. Somebody meant it.\" {n}She writes a line in your column, small. You can read it upside down: One scar, declared.{/n}\n\"There. Now you're on the books properly. Everythin' else you drew was stores. That's the first thing you've given me that isn't.\"",
+          "Text": "{n}She studies it the way she studies a dented helmet, working out what hit it and how hard and whether whoever wore it walked away.{/n}\n\"That's a bad one. Somebody meant it.\" {n}She writes a line in your column, small. You can read it upside down: One scar, declared.{/n}\n\"There. Now you're on the books properly. Everythin' else you drew was stores. That's the first thing you've given me that isn't.\"",
           "Choices": [
             {
               "Text": "\"You write everything down.\"",
@@ -180322,7 +180496,7 @@
         {
           "Id": "lifted",
           "Speaker": "Dorgelinda",
-          "Text": "{n}You do not pull. You lean in to read the manifest upside down, and ask her about a line on it, a shipment of salted fish logged twice. She frowns and looks, and her hand shifts a hair's breadth to point, and the pen is in your sleeve before her finger lands.{/n}\n{n}The sergeant makes a noise like a kettle.{/n}\n\"...Well.\" {n}She lifts her hand and looks at the bare wood under it for a long moment.{/n} \"Used, quietly. Of course it was.\" {n}She takes a silver from her own purse and slaps it down.{/n} \"The fish is logged twice, by the way. You weren't lyin' about that part. That's what makes it work.\"",
+          "Text": "{n}You do not pull. You lean in to read the manifest upside down, and ask her about a line on it, a shipment of salted fish logged twice. She frowns and looks, and her hand shifts a hair's breadth to point, and the pen is in your sleeve before her finger lands.{/n}\n{n}The sergeant makes a noise like a kettle.{/n}\n\"...Well.\" {n}She lifts her hand and looks at the bare wood under it.{/n} \"Used, quietly. Of course it was.\" {n}She takes a silver from her own purse and slaps it down.{/n} \"The fish is logged twice, by the way. You weren't lyin' about that part. That's what makes it work.\"",
           "Choices": [
             {
               "Text": "[Pocket the silver.]",
@@ -181095,7 +181269,7 @@
         {
           "Id": "first",
           "Speaker": "Dorgelinda",
-          "Text": "{n}She looks up when you come in and does not say anything for a long moment. She looks at you as if checking a delivery against its manifest, and finding it, against all odds, complete.{/n}\n\"You came back.\" {n}As if that settles an argument she has been having with someone.{/n}\n\"I had a clerk come to me the week you went down into the Abyss. Young lad, very neat hand. Asked should he rule off the Commander's column. 'Lost with the Commander', he wanted to write.\" {n}She sniffs.{/n} \"I sent him to count horseshoes for a fortnight.\"",
+          "Text": "{n}She looks up when you come in and does not say anything. She looks you over as if checking a delivery against its manifest, and finding it, against all odds, complete.{/n}\n\"You came back.\" {n}As if that settles an argument she has been having with someone.{/n}\n\"I had a clerk come to me the week you went down into the Abyss. Young lad, very neat hand. Asked should he rule off the Commander's column. 'Lost with the Commander', he wanted to write.\" {n}She sniffs.{/n} \"I sent him to count horseshoes for a fortnight.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -181200,7 +181374,7 @@
           "Text": "\"Right.\" {n}She shuts the book on your column, carefully, as if something might fall out.{/n}\n\"Everythin' in Drezen's gone to the Abyss while you were in it. Mendev's in pieces. The Queen marched on Iz and took the treasury's best clerks and every spare cart with her. I've got soldiers wearin' boots made of saddle leather.\" {n}She stands, and for once comes round the desk.{/n}\n\"Don't do that again, Commander. The goin' away. I haven't the stock to lose you.\"",
           "Choices": [
             {
-              "Text": "[Stand very still while she straightens your collar.]",
+              "Text": "[Let her straighten your coat.]",
               "Next": "collar",
               "Set": [],
               "Requires": [],
@@ -181213,7 +181387,7 @@
         {
           "Id": "collar",
           "Speaker": "Narrator",
-          "Text": "{n}She straightens your collar with her good hand, the way a quartermaster straightens a recruit's kit before an inspection, and her fingers stay a moment at your throat. Then she goes back round the desk and sits down and picks up the pen, and whatever it was is back in its column.{/n}",
+          "Text": "{n}She straightens your coat with her good hand, the way a quartermaster straightens a recruit's kit before an inspection, and her fingers stay a moment at your throat. Then she goes back round the desk and sits down and picks up the pen, and whatever it was is back in its column.{/n}",
           "Choices": [
             {
               "Text": "[Leave her to it.]",
@@ -181460,7 +181634,7 @@
         {
           "Id": "order",
           "Speaker": "Dorgelinda",
-          "Text": "{n}Every spoon at the table stops.{/n}\n\"...An order.\" {n}She looks at you for a long moment with the one eye. Then she takes a bowl from the stack, fills it at the pot, sits down, and eats every mouthful while holding your gaze, and sets the spoon down with a click.{/n}\n\"Ration consumed, Commander. Enter it where you like.\" {n}The table starts eating again.{/n} \"You'll pay for that in the book. I've a long memory for orders I didn't want.\"",
+          "Text": "{n}Every spoon at the table stops.{/n}\n\"...An order.\" {n}She gives you the one eye, unblinking. Then she takes a bowl from the stack, fills it at the pot, sits down, and eats every mouthful while holding your gaze, and sets the spoon down with a click.{/n}\n\"Ration consumed, Commander. Enter it where you like.\" {n}The table starts eating again.{/n} \"You'll pay for that in the book. I've a long memory for orders I didn't want.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -181640,7 +181814,7 @@
         {
           "Id": "count",
           "Speaker": "Dorgelinda",
-          "Text": "{n}She undoes you with one hand, slowly at first and then not slowly at all, and swears at a stuck button, and wins. Every scar she finds she touches, the old ones and the new, and asks nothing about any of them. Her breathing has gone ragged. So has yours.{/n}\n{n}Her own she does not name. You find them anyway: the long pale furrows down her arm from shoulder to wrist, the old white knot of a spear wound over the hip, the heavy shoulders and hard forearms of a woman who has hauled crates since before you were born. She watches your face while you find them, and does not look away.{/n}",
+          "Text": "{n}She undoes you with one hand, slowly at first and then not slowly at all, and swears at a stuck button, and wins. Every scar she finds she touches, the old ones and the new, and asks nothing about any of them. Her breathing has gone ragged. So has yours.{/n}\n{n}Her own she does not name. You find them anyway: the long pale furrows down her arm from shoulder to wrist, the old white knot of a spear wound over the hip, the heavy shoulders and hard forearms of a woman who has hauled crates since before you were born. She watches your face while you find them, and keeps count.{/n}",
           "Choices": [
             {
               "Text": "[Tell her she's beautiful.]",
@@ -181745,7 +181919,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}You wake to the scratch of a pen. She is sitting on the edge of the cot, fully dressed, boots laced, the ledger on her knee. It is barely light. Beyond the shutters a supply wagon is being shouted into the yard.{/n}\n{n}She is not writing. She is staring at the page with the pen in her hand, and she looks, for the first time since you have known her, entirely thrown.{/n}",
+          "Text": "{n}You wake to the scratch of a pen. She is sitting on the edge of the cot, fully dressed, boots laced, the ledger on her knee. It is barely light. Beyond the shutters a supply wagon is being shouted into the yard.{/n}\n{n}She is not writing. She is staring at the page with the pen in her hand, and she looks entirely thrown, which you have never once seen.{/n}",
           "Choices": [
             {
               "Text": "\"What's wrong?\"",
@@ -181801,7 +181975,7 @@
         {
           "Id": "sergeant",
           "Speaker": "Dorgelinda",
-          "Text": "{n}Somebody knocks. She does not move.{/n}\n\"Ma'am?\" {n}The sergeant with the bandaged ear, through the door.{/n} \"Ma'am, the Commander's boots are in the office. One of 'em. Under the desk. Should I send 'em up to the citadel?\"\n{n}Dorgelinda closes her eye for a long moment.{/n}\n\"No, Sergeant,\" she calls. \"Log 'em as returned stores. Commander's boots, one pair, to be counted at the Commander's convenience.\"\n{n}A pause, full of thought, on the other side of the door. \"Yes, ma'am.\"{/n}",
+          "Text": "{n}Somebody knocks. She does not move.{/n}\n\"Ma'am?\" {n}The sergeant with the bandaged ear, through the door.{/n} \"Ma'am, the Commander's boots are in the office. One of 'em. Under the desk. Should I send 'em up to the citadel?\"\n{n}Dorgelinda closes her eye and counts to five under her breath.{/n}\n\"No, Sergeant,\" she calls. \"Log 'em as returned stores. Commander's boots, one pair, to be counted at the Commander's convenience.\"\n{n}A pause, full of thought, on the other side of the door. \"Yes, ma'am.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -182085,7 +182259,7 @@
         {
           "Id": "true_books",
           "Speaker": "Dorgelinda",
-          "Text": "{n}She looks at you for a long moment. Then she opens the drawer and takes out every ledger she has, and stacks them, and ties them with cord, and does not remove a page.{/n}\n\"The truth. To Nerosyan. Hammer and tongs.\" {n}She knots the cord hard.{/n} \"They'll hate you for it in the capital. The lords'll say the Commander admits to it. The ranks'll say the Commander told the truth to the lords, which nobody's done in a hundred years.\" {n}She sets the bundle by the door.{/n} \"I don't know which'll be louder. I'll be proud of you either way, and I'll not say so again.\"",
+          "Text": "{n}She taps the desk twice with one blunt nail. Then she opens the drawer and takes out every ledger she has, and stacks them, and ties them with cord, and does not remove a page.{/n}\n\"The truth. To Nerosyan. Hammer and tongs.\" {n}She knots the cord hard.{/n} \"They'll hate you for it in the capital. The lords'll say the Commander admits to it. The ranks'll say the Commander told the truth to the lords, which nobody's done in a hundred years.\" {n}She sets the bundle by the door.{/n} \"I don't know which'll be louder. I'll be proud of you either way, and I'll not say so again.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -182353,7 +182527,7 @@
         {
           "Id": "kiss",
           "Speaker": "Dorgelinda",
-          "Text": "{n}Every clerk in the yard sees it. So do two sergeants, a column of Mendevian levies, a paladin on a warhorse and the carter of the wagon behind, who drops his reins.{/n}\n{n}She lets it happen. Then she kisses you back, hard, with her good hand fisted in your collar, and lets go all at once.{/n}\n\"Well, that's in the book now,\" she says, rather hoarsely. \"And theirs.\" {n}She climbs up onto the wagon seat.{/n} \"Come back and sign the receipt, Commander. I'll not ask twice.\"",
+          "Text": "{n}Every clerk in the yard sees it. So do two sergeants, a column of Mendevian levies, a paladin on a warhorse and the carter of the wagon behind, who drops his reins.{/n}\n{n}She lets it happen. Then she kisses you back, hard, with her good hand flat against your breastbone, pushing as much as holding, and lets go all at once.{/n}\n\"Well, that's in the book now,\" she says, rather hoarsely. \"And theirs.\" {n}She climbs up onto the wagon seat.{/n} \"Come back and sign the receipt, Commander. I'll not ask twice.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -183091,7 +183265,7 @@
         {
           "Id": "me",
           "Speaker": "Dorgelinda",
-          "Text": "{n}She looks at you over the rim of the cup for a long moment.{/n}\n\"You.\" {n}She sets it down.{/n} \"You sit at that council table and you listen to all of us and you pick one, and half the time you pick the one that makes the others sulk for a month. That's the job. I'd not do it for all the helmets in Ustalav.\"\n\"And then you come here after and let me pour you a drink and complain about 'em. That's not the job.\" {n}Her eye is very steady.{/n} \"Nobody told you to do that.\"",
+          "Text": "{n}She looks at you over the rim of the cup.{/n}\n\"You.\" {n}She sets it down.{/n} \"You sit at that council table and you listen to all of us and you pick one, and half the time you pick the one that makes the others sulk for a month. That's the job. I'd not do it for all the helmets in Ustalav.\"\n\"And then you come here after and let me pour you a drink and complain about 'em. That's not the job.\" {n}Her eye is very steady.{/n} \"Nobody told you to do that.\"",
           "Choices": [
             {
               "Text": "\"Nobody had to.\"",
@@ -183323,7 +183497,7 @@
         {
           "Id": "after",
           "Speaker": "Dorgelinda",
-          "Text": "{n}She is breathing hard. Her good hand is shaking now that it can.{/n}\n\"Two hundred pairs,\" {n}she says, to nobody, and then, to the carter under the wagon,{/n} \"you all right under there?\" {n}A muffled answer.{/n} \"Good. Stay there.\"\n{n}She turns to you. She looks at you for a long moment, and then, very briefly, she puts her forehead against your collarbone, and leaves it there for the space of one breath.{/n}\n\"That's how I lost the eye,\" {n}she says into your coat.{/n} \"Somethin' with claws. I thought I'd forgotten what it looked like comin' down.\"",
+          "Text": "{n}She is breathing hard. Her good hand is shaking now that it can.{/n}\n\"Two hundred pairs,\" {n}she says, to nobody, and then, to the carter under the wagon,{/n} \"you all right under there?\" {n}A muffled answer.{/n} \"Good. Stay there.\"\n{n}She turns to you. She looks at you, and then, very briefly, she puts her forehead against your breastbone, and leaves it there for the space of one breath.{/n}\n\"That's how I lost the eye,\" {n}she says into your coat.{/n} \"Somethin' with claws. I thought I'd forgotten what it looked like comin' down.\"",
           "Choices": [
             {
               "Text": "[Hold on to her.]",
@@ -183590,7 +183764,7 @@
         {
           "Id": "keep",
           "Speaker": "Dorgelinda",
-          "Text": "\"The true weights.\" {n}She looks at you with the one eye for a long moment.{/n}\n\"You want me to write down every stone I took, in my own hand, so there's one book in the world that knows.\" {n}She takes the slate back.{/n} \"That's a dangerous book to keep, Commander. Any lord who got hold of it could hang me with it.\" {n}She tucks the slate under her arm.{/n} \"...I'll keep it. Next to yours. They can hang together.\"",
+          "Text": "\"The true weights.\" {n}The one eye comes up off the page and stays on you.{/n}\n\"You want me to write down every stone I took, in my own hand, so there's one book in the world that knows.\" {n}She takes the slate back.{/n} \"That's a dangerous book to keep, Commander. Any lord who got hold of it could hang me with it.\" {n}She tucks the slate under her arm.{/n} \"...I'll keep it. Next to yours. They can hang together.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -183777,7 +183951,7 @@
         {
           "Id": "mine",
           "Speaker": "Dorgelinda",
-          "Text": "{n}She looks at you for a long moment. Then she writes it in your column, in full, figure by figure, and at the bottom a sum that makes your purse wince.{/n}\n\"Paid out of the Commander's own. So I can buy wine for the surgeons from some baron who'll overcharge me.\" {n}She blots it.{/n} \"You'd have sooner paid it than argued. That's the one thing about you I never have to audit.\" {n}A pause.{/n} \"It was a good party, I'm told. I'd have liked to have been at it, if it had been anybody else's cellar.\"",
+          "Text": "{n}She sucks her teeth. Then she writes it in your column, in full, figure by figure, and at the bottom a sum that makes your purse wince.{/n}\n\"Paid out of the Commander's own. So I can buy wine for the surgeons from some baron who'll overcharge me.\" {n}She blots it.{/n} \"You'd have sooner paid it than argued. That's the one thing about you I never have to audit.\" {n}A pause.{/n} \"It was a good party, I'm told. I'd have liked to have been at it, if it had been anybody else's cellar.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -184016,7 +184190,7 @@
         {
           "Id": "bargain",
           "Speaker": "Dorgelinda",
-          "Text": "{n}She looks at you for a very long time with the one eye.{/n}\n\"I've no doubt you have.\" {n}Flatly.{/n} \"And I've no doubt you came out ahead, and the god's still scratchin' his head over where it went.\" {n}She shakes her head.{/n}\n\"Not Torag. Not for me. He's a smith's god. You don't bargain with a smith, you pay what the work's worth.\" {n}A pause.{/n} \"And don't you go makin' any deals on my account behind my back, Commander. I'll find out. It'll be in somebody's ledger.\"",
+          "Text": "{n}She weighs you with the one eye, the way she weighs a sack that has been short-filled before.{/n}\n\"I've no doubt you have.\" {n}Flatly.{/n} \"And I've no doubt you came out ahead, and the god's still scratchin' his head over where it went.\" {n}She shakes her head.{/n}\n\"Not Torag. Not for me. He's a smith's god. You don't bargain with a smith, you pay what the work's worth.\" {n}A pause.{/n} \"And don't you go makin' any deals on my account behind my back, Commander. I'll find out. It'll be in somebody's ledger.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -184253,7 +184427,7 @@
         {
           "Id": "sign",
           "Speaker": "Dorgelinda",
-          "Text": "{n}She puts the cloak down.{/n}\n\"That's what folk say in songs.\" {n}But she says it without any heat at all.{/n} \"You'd sign for it. You sign for everythin'.\" {n}She looks at you for a long time in the cold.{/n}\n\"All right. Sign for it. I'll hold you to it, and I've a grip, you'll recall.\" {n}She picks the cloak up again.{/n} \"Don't make me write it off.\"",
+          "Text": "{n}She puts the cloak down.{/n}\n\"That's what folk say in songs.\" {n}But she says it without any heat at all.{/n} \"You'd sign for it. You sign for everythin'.\" {n}Her breath smokes in the cold while she thinks about it.{/n}\n\"All right. Sign for it. I'll hold you to it, and I've a grip, you'll recall.\" {n}She picks the cloak up again.{/n} \"Don't make me write it off.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -184890,7 +185064,7 @@
         {
           "Id": "remember",
           "Speaker": "Dorgelinda",
-          "Text": "\"Good.\" {n}She looks at you for a long moment.{/n}\n\"Most commanders don't want to know it. They want the victory and the bill for the victory, and they don't want the number in between.\" {n}She picks up the book.{/n} \"You sat in the mud and took names for eight hours. I'll not forget that either.\" {n}She stands, stiffly.{/n} \"Now. Supper. I've some salt pork that isn't on a manifest.\"",
+          "Text": "\"Good.\" {n}She nods once, slowly, as if ticking off a line.{/n}\n\"Most commanders don't want to know it. They want the victory and the bill for the victory, and they don't want the number in between.\" {n}She picks up the book.{/n} \"You sat in the mud and took names for eight hours. I'll not forget that either.\" {n}She stands, stiffly.{/n} \"Now. Supper. I've some salt pork that isn't on a manifest.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -185028,10 +185202,10 @@
         {
           "Id": "lie",
           "Speaker": "Dorgelinda",
-          "Text": "{n}She opens the grey ledger again, without hurry, and reads you three entries from it: two names, two dates, one of them this week. The sentries' arithmetic is excellent.{/n}\n\"That's the first lie you've ever told me about your own column.\" {n}Very quietly.{/n} \"You've lied for thieves. You've lied to tribunals. I carried every one. I'll not carry that.\" {n}She holds out her good hand, palm up.{/n}\n\"The key, Commander.\"",
+          "Text": "{n}She opens the grey ledger again, without hurry, and reads you three entries from it: two names, two dates, one of them this week. The sentries' arithmetic is excellent.{/n}\n\"That's the first lie you've ever told me about your own column.\" {n}Very quietly.{/n} \"You've lied for thieves. You've lied to tribunals. I carried every one. I'll not carry that.\" {n}She holds out her good hand, palm up.{/n}\n\"The cup, Commander.\"",
           "Choices": [
             {
-              "Text": "[Put the key in her hand.]",
+              "Text": "[Put her cup in her hand.]",
               "Next": "ruled",
               "Set": [],
               "Requires": [],
@@ -185118,10 +185292,10 @@
         {
           "Id": "named",
           "Speaker": "Dorgelinda",
-          "Text": "{n}You name them. She writes nothing. She listens to each name with the whole of her attention, the way she listens to a carter explain a shortfall, and once or twice she nods, and once her jaw sets and stays set.{/n}\n\"Right.\" {n}She closes the grey ledger.{/n} \"Here's what I'll have, then. Nobody draws on my stores on your seal but you. None of 'em sets foot in my rooms, ever. And you hear it from me first if one of 'em crosses me, and I hear it from you first if you ever mean to choose.\" {n}She holds out her good hand.{/n} \"Those are my terms. Shake on 'em or don't.\"",
+          "Text": "{n}You name them. She writes nothing. She listens to each name with the whole of her attention, the way she listens to a carter explain a shortfall, and once or twice she nods, and once her jaw sets and stays set.{/n}\n\"Right.\" {n}She closes the grey ledger.{/n} \"Here's what I'll have, then. Nobody draws on my stores on your seal but you. None of 'em sets foot in my rooms, ever. And you hear it from me first if one of 'em crosses me, and I hear it from you first if you ever mean to choose.\" {n}She holds out her good hand.{/n} \"That's the whole of it. Shake on it or don't.\"",
           "Choices": [
             {
-              "Text": "[Shake on them.]",
+              "Text": "[Shake on it.]",
               "Next": "shaken",
               "Set": [],
               "Requires": [],
@@ -185379,7 +185553,7 @@
         {
           "Id": "refuse",
           "Speaker": "Dorgelinda",
-          "Text": "\"You won't sign it.\" {n}She looks at you for a long time.{/n}\n\"And he'll come to my desk tomorrow and ask why, and I'll say the Commander refused it, and he'll look at me like I've taken his medal off him.\" {n}She picks the paper up and puts it in a drawer.{/n} \"Thank you. I mean it. I'd not have been able to do it myself, and I'd not have been able to forgive you if you'd signed it.\" {n}A short breath.{/n} \"That's a rotten position to put you in. I did it anyway. Put it in my column.\"",
+          "Text": "\"You won't sign it.\" {n}She lets the silence run the length of a manifest.{/n}\n\"And he'll come to my desk tomorrow and ask why, and I'll say the Commander refused it, and he'll look at me like I've taken his medal off him.\" {n}She picks the paper up and puts it in a drawer.{/n} \"Thank you. I mean it. I'd not have been able to do it myself, and I'd not have been able to forgive you if you'd signed it.\" {n}A short breath.{/n} \"That's a rotten position to put you in. I did it anyway. Put it in my column.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -185857,7 +186031,7 @@
         {
           "Id": "written",
           "Speaker": "Dorgelinda",
-          "Text": "{n}You write it. She reads it twice, and nods, and folds both letters together and seals them.{/n}\n\"There. That'll get us the powder back, if not the boots.\" {n}She sets the letter in the courier's tray and sits back, and looks at you for a long moment.{/n}\n\"That's the first time we've had a proper row, Commander.\" {n}Something almost like satisfaction.{/n} \"Good. I'd started to worry you were too good to be true. Nobody balances that well. Now shut the door and come here. I'll forgive you properly.\"",
+          "Text": "{n}You write it. She reads it twice, and nods, and folds both letters together and seals them.{/n}\n\"There. That'll get us the powder back, if not the boots.\" {n}She sets the letter in the courier's tray and sits back, and folds her good hand over the bad one.{/n}\n\"That's our first proper row, Commander.\" {n}Something almost like satisfaction.{/n} \"Good. I'd started to worry you were too good to be true. Nobody balances that well. Now shut the door and come here. I'll forgive you properly.\"",
           "Choices": [
             {
               "Text": "[Shut the door.]",
@@ -185962,7 +186136,7 @@
         {
           "Id": "teach",
           "Speaker": "Dorgelinda",
-          "Text": "{n}She looks at you for a long moment with the one eye, as if checking whether that was a joke.{/n}\n\"All right.\" {n}She points at the stool.{/n} \"Sit. Boots off. The right one's goin' to split next, I can hear it from here.\"",
+          "Text": "{n}She squints at you with the one eye, checking whether that was a joke.{/n}\n\"All right.\" {n}She points at the stool.{/n} \"Sit. Boots off. The right one's goin' to split next, I can hear it from here.\"",
           "Choices": [
             {
               "Text": "[Sit. Take off your boots.]",
@@ -186277,7 +186451,7 @@
         {
           "Id": "quote",
           "Speaker": "Dorgelinda",
-          "Text": "{n}The inspector writes it down. Word for word. He blots it.{/n}\n\"'Used. Quietly.'\" {n}He looks at the word for a long moment.{/n} \"Nerosyan will not like that, Commander.\"\n\"Nerosyan doesn't have to eat it,\" {n}Dorgelinda says. It is out before she can stop it. The inspector looks at her. She looks back, one-eyed and entirely unrepentant.{/n}\n{n}He closes his book, and stands, and gives the two of you a small, stiff bow that is somehow both an insult and a compliment.{/n}",
+          "Text": "{n}The inspector writes it down. Word for word. He blots it.{/n}\n\"'Used. Quietly.'\" {n}He looks at the word as if it might be catching.{/n} \"Nerosyan will not like that, Commander.\"\n\"Nerosyan doesn't have to eat it,\" {n}Dorgelinda says. It is out before she can stop it. The inspector looks at her. She looks back, one-eyed and entirely unrepentant.{/n}\n{n}He closes his book, and stands, and gives the two of you a small, stiff bow that is somehow both an insult and a compliment.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -186313,7 +186487,7 @@
         {
           "Id": "caught",
           "Speaker": "Dorgelinda",
-          "Text": "{n}The inspector smiles for the first time. It is not a pleasant smile.{/n}\n\"I sat on the committee that wrote the field regulations, Commander. There is no such practice.\" {n}He closes the book.{/n} \"I shall report the line as irregular. I shall also report that the quartermaster checked it twice.\" {n}He glances at her.{/n} \"She is the only thing in this fortress that is in order.\"\n{n}He leaves. Dorgelinda watches the door close.{/n}",
+          "Text": "{n}The inspector smiles at last. It is not a pleasant smile.{/n}\n\"I sat on the committee that wrote the field regulations, Commander. There is no such practice.\" {n}He closes the book.{/n} \"I shall report the line as irregular. I shall also report that the quartermaster checked it twice.\" {n}He glances at her.{/n} \"She is the only thing in this fortress that is in order.\"\n{n}He leaves. Dorgelinda watches the door close.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -186331,7 +186505,7 @@
         {
           "Id": "hers",
           "Speaker": "Dorgelinda",
-          "Text": "{n}The inspector turns to her. She does not hesitate.{/n}\n\"I know it line by line. Every cart, every crate, every pair of boots. I know where half of it went, and I've a fair guess at the other half, and I'll tell Nerosyan when Nerosyan sends me a warehouse to replace it.\" {n}Her good hand stays flat on the desk.{/n}\n\"Until then it's the Commander's issue, and it's in my book, and I'm the one who's countin' it. You can put that in your report. My name. Spelled right.\"\n{n}He looks at her for a long moment, and then, unexpectedly, writes it down, and spells it right.{/n}",
+          "Text": "{n}The inspector turns to her. She does not hesitate.{/n}\n\"I know it line by line. Every cart, every crate, every pair of boots. I know where half of it went, and I've a fair guess at the other half, and I'll tell Nerosyan when Nerosyan sends me a warehouse to replace it.\" {n}Her good hand stays flat on the desk.{/n}\n\"Until then it's the Commander's issue, and it's in my book, and I'm the one who's countin' it. You can put that in your report. My name. Spelled right.\"\n{n}He looks at her, and then, unexpectedly, writes it down, and spells it right.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -186520,7 +186694,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}The Logistics Council's last ledger balanced to the copper. One column in it, in the Commander's name, was ruled off in a hard straight line the full width of the page, the only line Dorgelinda Stranglehold ever drew in anger. She kept the small black key on her own wrist until she died, with the others, and never used it.{/n}",
+          "Text": "{n}The Logistics Council's last ledger balanced to the copper. One column in it, in the Commander's name, was ruled off in a hard straight line the full width of the page, the only line Dorgelinda Stranglehold ever drew in anger. She kept the dented tin cup on the shelf over her desk until she died, and never drank from it again.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -264901,8 +265075,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",
@@ -267824,7 +267998,7 @@
       "MaxChapter": 5,
       "AnswerLists": [],
       "Dialog": "hub",
-      "Greeting": "{n}Soana is standing where Camellia stood, in her own cave, with loam still under her nails. She does not look up.{/n} \"Well? Say what you came to say, hunter. The dead have more patience than I do.\""
+      "Greeting": "{n}Soana is standing where Camellia stood, in her own cave, with loam still under her nails. She does not look up.{/n} \"Say what you came to say, hunter. The dead have more patience than I do.\""
     },
     "aranka.presence": {
       "Unit": "430cba7801b149b4e8494ace6baf4f7c",

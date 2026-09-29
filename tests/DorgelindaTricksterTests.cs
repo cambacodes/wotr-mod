@@ -321,7 +321,7 @@ internal static class DorgelindaTricksterTests
             "The inquiry's answers cost nothing.");
         check(Rules.Available(story, forward, Later(story, inquiries.First(), 48)), "The last march does not follow the inquiry.");
         // Her other columns: the Commander's answer decides. Honesty gets her terms, "my business" a colder allowance,
-        // a lie her hard no (the key back, the line ruled off) with its own page.
+        // a lie her hard no (her cup back, the line ruled off) with its own page.
         var others = S(L + "other_columns");
         var columns = Play(others, Later(story, mornings.First(), 24));
         check(columns.Any(r => r.Has(L + "terms_kept")) && columns.Any(r => r.Has(L + "unblessed")) && columns.Any(r => r.Has(L + "narrowed") && !r.Has("dorgelinda.closed"))

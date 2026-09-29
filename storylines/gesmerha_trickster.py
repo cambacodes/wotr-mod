@@ -129,18 +129,20 @@ SCENES.append(scene(P + "dead.unfinished_work", "Splinters", "Gesmerha", 3, "", 
     nar("start", "{n}A runner at the edge of camp: the same Wintersun boy, thinner than before, with ash still in the seams of his boots. He asks for you by name this time.{/n}",
         c("Continue", "late", requires=(LATE,)),
         c("Continue", "paid", forbids=(LATE,))),
-    nar("late", '''{n}They laid the block beside her as you asked, he says, with your coin driven into the grain. The fire went round it the way water goes round a stone, and round her with it. Three torches, and then the carvers stopped trying. On the third dawn Gesmerha got off the pyre by herself, her palms full of splinters, the block under her arm. The carvers pushed her away from the ground with poles, not hands. She is at the Lady's statue now, and they will not have her back among the houses. She sent him with this, word for word.{/n}
+    nar("late", '''{n}They laid the block beside her as you asked, he says, with your coin driven into the grain. The fire went round it the way water goes round a stone, and round her with it. Three torches, and then the carvers stopped trying. On the second night every carver on the ground heard it in the crackle of the fire: three slow knocks, wood on wood, the old count a master raps on the bench to call an apprentice back to unfinished work. Nobody was holding a mallet. On the third dawn Gesmerha got off the pyre by herself, her palms full of splinters, the block under her arm, and her fingers would not open from around it until she had said aloud, to the empty air, that she would finish. The carvers pushed her away from the ground with poles, not hands. Old Yarvo, who taught half of them to hold a chisel, said aloud what they were all thinking: the last thing in Wintersun that would not stay dead was the Lady they had knelt to for a generation, and they were done kneeling to things that came back. She is at the Lady's statue now, and they will not have her back among the houses. She sent him with this, word for word.{/n}
 "Tell the stranger: you threw coin on my fire and a joke after it. The wood would not take either one."''',
         c("Continue", "terms_raised")),
-    nar("paid", '''{n}He will not stop looking at you while he tells it. Her apprentices laid her out with the birch block from her bench under her hands, the one with your coin in it, because nobody could get the coin out. On the third morning, before anyone had lit a torch, Gesmerha sat up with her palms full of splinters and the block still in her grip. Half the carvers ran. The ones who stayed will not have her back among the houses. She is at the Lady's statue. She sent him with this, word for word.{/n}
+    nar("paid", '''{n}He will not stop looking at you while he tells it. Her apprentices laid her out with the birch block from her bench under her hands, the one with your coin in it, because nobody could get the coin out. On the second night the apprentices sitting up with her heard, from the empty workshop, three slow knocks, wood on wood, the old count a master raps on the bench to call an apprentice back to unfinished work. Nobody was in there. On the third morning, before anyone had lit a torch, Gesmerha sat up with her palms full of splinters and the block still in her grip, and her fingers would not open from around it until she had promised aloud, to nobody they could see, that she would finish it. Half the carvers ran. The ones who stayed went to old Yarvo, the eldest of them, and Yarvo shut his door: the last thing in Wintersun that would not stay dead was the Lady they had knelt to for a generation, and he would not have another under his roof. None of them will have her back among the houses. She is at the Lady's statue. She sent him with this, word for word.{/n}
 "Tell the stranger: you heard me say *hands*, in my own yard, among my own statues, and the next thing you did was pay for them. I swore I would never shame my ancestors. You knew that too, didn't you."''',
         c("Continue", "terms")),
     g("terms", '''"The ancestors came for me in the old tongue. I will not pretend I understood all of it; the dead are not tidy talkers. I understood this much. There was paid work on my bench, with your coin in its heart, and my line does not come home with work on the bench. So they sent me back to it.
 *Finish, daughter.* That is what they said. My hands are theirs until the last cut. If I put the chisel down for anything else, they take the hands back, and me with them. What they want with the finished thing, they did not say. I did not ask. You do not ask the dead for reasons."
+"Yarvo is right to shut his door. I would shut mine. A carver who gets up off her own pyre is not a neighbour any more; she is a commission. So I will not go back among the houses until the work is done, and I will not do the work where they have to watch it. I will do it where the one who paid can see."
 "What is the world coming to, stranger, when the dead cannot even stay dead in peace?"''',
         c("Continue", "answer")),
     g("terms_raised", '''"The ancestors came for me in the old tongue, and they were angry. I did not need every word for that. You paid for my work over my ashes, not before them, and the dead do not like a bargain struck at their own fire.
-*Finish, daughter.* My hands are theirs until the last cut, and because I was bought late there is more to cut: the journeymen's pretty Lady comes down first, by my hands, before anything new goes into the wood. If I put the chisel down for anything else, they take the hands back, and me with them. They did not say why. I did not ask."''',
+*Finish, daughter.* My hands are theirs until the last cut, and because I was bought late there is more to cut: the journeymen's pretty Lady comes down first, by my hands, before anything new goes into the wood. If I put the chisel down for anything else, they take the hands back, and me with them. They did not say why. I did not ask."
+"And Yarvo shut his door on me. He is right to. The last thing that came back to Wintersun smiling was the Lady, and I will be the one to cut her down. I will not do it among the houses. I will do it where the one who paid can watch."''',
         c("Continue", "answer")),
     nar("answer", "{n}The boy waits for your answer. He has plainly been told to remember it exactly, and to bring it back whatever it is.{/n}",
         c('[Send for her] "Tell her to bring her chisels to Drezen. The smith there makes better ones than the ones she lost, and I want to see the work."',
@@ -161,7 +163,7 @@ in_yard(P + "returned.yard", "The smith's yard", '"Gesmerha."', [
         c("Continue", "hold", flags=(STATUE_TRUE,))),
     g("hold", '''{n}She sets the chisel against the log, then takes your hands one at a time and lays them flat on the wood, either side of the blade, close enough that you can feel the steel's cold through the bark.{/n}
 "Hold it. Don't move. I cut by sound, and I cannot hear your fingers."''',
-        c("[Hold still]", "after", flags=(HELD,)),
+        c("[Keep your hands on the wood]", "after", flags=(HELD,)),
         c("[Pull your hands away]", "pulled", flags=(FLINCHED,))),
     nar("pulled", '''{n}Your hands come off the wood before the mallet falls. It falls anyway, on the steel, where your left thumb was. Gesmerha does not stop the stroke and does not say anything about it. She moves the log with her own knee and cuts on.{/n}''',
         c("Continue", "after")),
@@ -176,11 +178,11 @@ in_yard(P + "returned.yard", "The smith's yard", '"Gesmerha."', [
 
 # The commit night (heat up to the cut; the cut lands at the start of the act) and the morning after.
 NIGHT = '''{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}
-"Two things in this yard I have cut without eyes. The original I have not touched yet. Stand still. You are good at that now."
-{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. At your collar she unlaces you by feel and lays her palm flat over your heart to count it.{/n}
-"Fast. Good. I have wanted this since your step first came through that gate, and I will not be the only one who wanted it."
+"Two things in this yard I have cut without eyes. The original I have not touched yet. Your hands stayed on the wood with the mallet coming down; let them stay at your sides a little longer. I am reading."
+{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. She finds the laces at your throat by feel, undoes them the way she strips bark, and lays her palm flat over your heart to count it.{/n}
+"Fast. Like green wood when the wedge goes in." {n}Her palm does not move.{/n} "My hands found this grain in the yard, under the mallet, and they have gone back to it every night since. I let them. I will not be the only one who does."
 {n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. Her hands go on reading, lower and surer. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}'''
-MORNING = '''{n}Morning. There is sawdust in your hair and a curl of pine in your collar. Gesmerha is already at the trestles, bare-armed in the cold, and on a new block in front of her a face is coming out of the wood: one you have seen in mirrors.{/n}
+MORNING = '''{n}The forge is still banked when you wake, and there is sawdust in your hair and a curl of pine down your shirt. Gesmerha is already at the trestles, bare-armed in the cold, and on a new block in front of her a face is coming out of the wood: one you have seen in mirrors.{/n}
 "My hands remembered. Nobody paid them for last night, so what they make of it is mine. I will not sell it." {n}The corner of her mouth moves; she does not stop cutting.{/n} "Go and fight your war, stranger. Walk loudly when you come back. I like to hear it from the gate."'''
 
 in_yard(P + "returned.bench", "What comes after", '"You said to ask you when it was finished."', [
@@ -199,7 +201,7 @@ in_yard(P + "returned.bench", "What comes after", '"You said to ask you when it 
         c('[Stay at the bench] "Then let me be what comes after."', "terms", forbids=(FLINCHED,)),
         c('[Stay at the bench] "Then let me be what comes after."', "flinch", requires=(FLINCHED,)),
         c('"Finish your life without me, carver. You\'ve earned it."', flags=(CLOSED,))),
-    g("terms", '''"Then hear my terms, because my hands are mine again and that means they can refuse. I will not be paid for this. Not in coin, and not in jokes. If you ever buy me again, stranger, I will know it by your step before you open your mouth, and I will not be here when you do."''',
+    g("terms", '''"Then listen to what my hands decided in the cold water, because they are mine again, and that means they can refuse, or choose. They chose you. I did not expect it, and I do not entirely approve of it, and they did not ask me. But I will not be paid for this. Not in coin, and not in jokes. If you ever buy me again, stranger, I will know it by your step before you open your mouth, and I will not be here when you do."''',
         c('"No more purses. Not for you. I swear it."', "night", flags=(COMMITTED,)),
         c('"I can\'t swear that. Buying things is what I do."', "postpone")),
     g("postpone", '''"Then you are honest, which is worse. Go. Come back when you have thought about what you would have to stop being. The bench will still be here. So will I, probably."''',
@@ -210,10 +212,10 @@ in_yard(P + "returned.bench", "What comes after", '"You said to ask you when it 
     g("morning", MORNING, c("[Go]")),
     ], requires=("trickster.ever", RETURNED, YARD), forbids=(COMMITTED, CLOSED, DECLINED), delay=72)
 
-# 4f. The one priced second ask after her soft no. Not coin: she has forbidden purses. Three days of the Commander's war.
+# 4f. After her soft no she asks, in her own craft: not a price but a trade of hands. The Commander's war waits three days.
 in_yard(P + "returned.second_ask", "A pair that were never for sale", '"About what comes after."', [
     g("start", '''{n}She is waiting for you this time, a fresh log on the trestles and nothing yet cut.{/n}
-"The second asking costs more. That is fair; I learned it from you. Give me your hands. Three days, here, in the yard, while I carve them. Every hour you sit still, your war waits. Then I will have a pair that were never for sale, and you can have mine."''',
+"I have thought about your honesty. You cannot swear off buying things, so I will not ask you to. I will ask for something no purse reaches. Give me your hands: three days, here in the yard, while I carve them. I want one pair in this world that nobody ever paid for. When they are done, you can have mine, and nobody will have paid for those either."''',
         c("Continue", "price", forbids=(FLINCHED,)),
         c("Continue", "price_flinched", requires=(FLINCHED,))),
     g("price_flinched", '''"And you will not pull them away. Three days of it. If you can do that, you can lie still for anything."''',
