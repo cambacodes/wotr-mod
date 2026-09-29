@@ -221752,7 +221752,7 @@
         {
           "Id": "drink",
           "Speaker": "Narrator",
-          "Text": "{n}The wound under your ribs has not closed since Iz, and tonight it does not pretend to. You press the crystal to it and the vessel drinks, as it drank in Areelu's laboratory: a clear, stinging trickle, moonshine where blood ought to be. The tavern goes quiet, then louder, because the King has decided this is a performance.{/n}\n\"A toast!\" {n}Thaberdine is up on the bench.{/n} \"To the Commander, who is bottling {mf|himself|herself} for later! What's the first thing you'll say when they open you, eh? Make it a good one. It'll be quoted.\"",
+          "Text": "{n}The wound under your ribs has not closed since Iz, and tonight it does not pretend to. You press the crystal to it and the vessel drinks, as it drank in Areelu's laboratory: a clear, stinging trickle, moonshine where blood ought to be. Then something else goes. The pull that has lived under your ribs since Iz, the slow drag toward the rift that no healer could name, lets go of you and runs down into the crystal, and settles at the bottom like dark silt. The vessel grows heavy and warm. Nothing is pulling. You had forgotten what that was like. The tavern goes quiet, then louder, because the King has decided this is a performance.{/n}\n\"A toast!\" {n}Thaberdine is up on the bench.{/n} \"To the Commander, who is bottling {mf|himself|herself} for later! What's the first thing you'll say when they open you, eh? Make it a good one. It'll be quoted.\"",
           "Choices": [
             {
               "Text": "[Decide your first words] \"Sorry I'm late.\"",
@@ -221934,7 +221934,7 @@
         {
           "Id": "alone",
           "Speaker": "Narrator",
-          "Text": "{n}There is no King to bless it and no court to drink to it. There is a cot, a candle and the vessel from Areelu's laboratory, heavier than crystal ought to be. The wound under your ribs opens without being asked. You press the vessel to it and listen to it fill: a thin, clean trickle that smells of a still in a burned village.{/n}\n{n}Nobody asks what you'll say when they open it. You decide anyway, out loud, to an empty tent, so that somebody will have heard it.{/n}",
+          "Text": "{n}There is no King to bless it and no court to drink to it. There is a cot, a candle and the vessel from Areelu's laboratory, heavier than crystal ought to be. The wound under your ribs opens without being asked. You press the vessel to it and listen to it fill: a thin, clean trickle that smells of a still in a burned village. Then the pull goes, the slow drag toward the rift that has lived under your ribs since Iz. It runs out of you and down into the crystal, and settles at the bottom like dark silt, and the vessel grows heavy in your hands.{/n}\n{n}Nobody asks what you'll say when they open it. You decide anyway, out loud, to an empty tent, so that somebody will have heard it.{/n}",
           "Choices": [
             {
               "Text": "[Decide your first words] \"Sorry I'm late.\"",
@@ -222013,7 +222013,7 @@
         {
           "Id": "flask",
           "Speaker": "Narrator",
-          "Text": "{n}The flask is warm against your ribs. It has been warm since the night in Drezen when the wound drained into it like a tap into a jug. Areelu's crystal; Areelu's veins, gone the colour of cheap pink wine. Something inside it turns over, heavy and patient, the way a death ought to.{/n}\n{n}Across the rift, Areelu sees it. She knows her own work.{/n}",
+          "Text": "{n}The flask is warm against your ribs. It has been warm since the night in Drezen when the wound drained into it like a tap into a jug. Areelu's crystal; Areelu's veins, gone the colour of cheap pink wine. The dark silt at the bottom, the pull you poured into it in Drezen, stirs toward the rift and cannot reach it through the cork.{/n}\n{n}Across the rift, Areelu sees it. She knows her own work.{/n}",
           "Choices": [
             {
               "Text": "[Uncork the flask] \"See this? My death. Bottled in Drezen. You'll have to go through the bottle.\"",

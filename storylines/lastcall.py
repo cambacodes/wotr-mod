@@ -101,7 +101,7 @@ SCENES.append(scene("trickster.lastcall.bottle.king", "Last orders", "Fool King"
     king("offer", '''"My kingly help! I said that, didn't I?" {n}Thaberdine wipes his mouth and squints at the vessel in your hand, at the veins in the crystal, gone from violet to pink.{/n} "I say a lot of things. But a king's word is better than a king's beer, and my beer's excellent. That's the pot you found at the moonshiner's hut. What are you going to brew in it? Not my recipe, I hope. My recipe is a state secret."''',
         c('[Open your shirt] "My own recipe."', "drink"),
         c('[Put it away] "Another night, Majesty."', abort=True)),
-    nar("drink", '''{n}The wound under your ribs has not closed since Iz, and tonight it does not pretend to. You press the crystal to it and the vessel drinks, as it drank in Areelu's laboratory: a clear, stinging trickle, moonshine where blood ought to be. The tavern goes quiet, then louder, because the King has decided this is a performance.{/n}
+    nar("drink", '''{n}The wound under your ribs has not closed since Iz, and tonight it does not pretend to. You press the crystal to it and the vessel drinks, as it drank in Areelu's laboratory: a clear, stinging trickle, moonshine where blood ought to be. Then something else goes. The pull that has lived under your ribs since Iz, the slow drag toward the rift that no healer could name, lets go of you and runs down into the crystal, and settles at the bottom like dark silt. The vessel grows heavy and warm. Nothing is pulling. You had forgotten what that was like. The tavern goes quiet, then louder, because the King has decided this is a performance.{/n}
 "A toast!" {n}Thaberdine is up on the bench.{/n} "To the Commander, who is bottling {mf|himself|herself} for later! What's the first thing you'll say when they open you, eh? Make it a good one. It'll be quoted."''',
         *(c("[Decide your first words] " + line, "round." + joke) for joke, line in JOKE_LINES)),
     *(_round(joke) for joke, _ in JOKE_LINES),
@@ -109,7 +109,7 @@ SCENES.append(scene("trickster.lastcall.bottle.king", "Last orders", "Fool King"
     Relationship=REL, AnswerLists=[KING_LIST], NativeReturnCue=KING_RETURN, Chapters=[5]))
 
 SCENES.append(scene("trickster.lastcall.bottle.alone", "Last orders, alone", "Commander", 5, "", [
-    nar("alone", '''{n}There is no King to bless it and no court to drink to it. There is a cot, a candle and the vessel from Areelu's laboratory, heavier than crystal ought to be. The wound under your ribs opens without being asked. You press the vessel to it and listen to it fill: a thin, clean trickle that smells of a still in a burned village.{/n}
+    nar("alone", '''{n}There is no King to bless it and no court to drink to it. There is a cot, a candle and the vessel from Areelu's laboratory, heavier than crystal ought to be. The wound under your ribs opens without being asked. You press the vessel to it and listen to it fill: a thin, clean trickle that smells of a still in a burned village. Then the pull goes, the slow drag toward the rift that has lived under your ribs since Iz. It runs out of you and down into the crystal, and settles at the bottom like dark silt, and the vessel grows heavy in your hands.{/n}
 {n}Nobody asks what you'll say when they open it. You decide anyway, out loud, to an empty tent, so that somebody will have heard it.{/n}''',
         *(c("[Decide your first words] " + line, flags=(PRIMED, STARTED, COST_ALONE, JOKE[joke])) for joke, line in JOKE_LINES),
         c("[Cork it and sleep] Not tonight.", abort=True)),
@@ -130,7 +130,7 @@ def at_the_rift(id, title, entry, nodes, requires, forbids=(), lists=FINAL_LISTS
 
 at_the_rift("trickster.lastcall.threshold", "Last orders",
     '''[Call last orders] "Before anyone does anything final: last orders. I've a tab to settle."''', [
-    nar("flask", '''{n}The flask is warm against your ribs. It has been warm since the night in Drezen when the wound drained into it like a tap into a jug. Areelu's crystal; Areelu's veins, gone the colour of cheap pink wine. Something inside it turns over, heavy and patient, the way a death ought to.{/n}
+    nar("flask", '''{n}The flask is warm against your ribs. It has been warm since the night in Drezen when the wound drained into it like a tap into a jug. Areelu's crystal; Areelu's veins, gone the colour of cheap pink wine. The dark silt at the bottom, the pull you poured into it in Drezen, stirs toward the rift and cannot reach it through the cork.{/n}
 {n}Across the rift, Areelu sees it. She knows her own work.{/n}''',
         c('[Uncork the flask] "See this? My death. Bottled in Drezen. You\'ll have to go through the bottle."',
           flags=(OPEN, PILLAR_BOTTLE), requires=(PRIMED,)),
