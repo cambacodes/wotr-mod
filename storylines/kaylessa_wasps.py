@@ -355,7 +355,7 @@ meet(THE_BOW, "Restringing", '"Is that a new string?"', [
     kay("miss_her", '''"Next time." {n}She doesn't sound disappointed. She sounds like she's already planning the next time.{/n} "Your hands are good. You just can't see. That's not your fault. That's the dark's."''',
         c("Continue", "close")),
     kay("hers", '''"Coward." {n}But she takes it, and nocks, and draws, and looses in one movement, and something above the rooftops shrieks and goes flapping east.{/n}
-"There. That one's for the sentry it ate on Tuesday."''',
+"There. That one's for the sentry it ate on Toilday."''',
         c("Continue", "close")),
     nar("close", '''{n}Neither of you moves. The watch-fires crackle. Down in the city a dog barks at the noise and gives up. Her arm is still round you, her cheek against your shoulder, and she seems to have forgotten to take either of them back.{/n}''',
         c('"We should do this more often."', "often"),
