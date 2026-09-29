@@ -4,14 +4,14 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 811,
-  "resolved": 811,
-  "inlineOnlyScenes": 164,
-  "inlineOnlyResolved": 164,
-  "answerListScenesWithoutContact": 430,
-  "answerListScenesWithoutContactResolved": 430,
-  "lists": 88,
-  "listsWithReachableHost": 87
+  "entryTargetScenes": 859,
+  "resolved": 859,
+  "inlineOnlyScenes": 206,
+  "inlineOnlyResolved": 206,
+  "answerListScenesWithoutContact": 478,
+  "answerListScenesWithoutContactResolved": 478,
+  "lists": 89,
+  "listsWithReachableHost": 88
  },
  "scenes": {
   "a_crossing": {
@@ -9363,6 +9363,918 @@
     "list": "174d6c94b6725f44aad1d2a76993a926",
     "dialog": "40a79e99680bd8c4a8ba77413ec372d9",
     "dialogName": "GrimborMainDialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "herrax.house.a_guest_of_note": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.a_guest_of_note"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.a_night_late": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.a_night_late"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.a_night_out": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.a_night_out"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.arena": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.arena"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.bare_hip": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.bare_hip"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.eve": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.eve"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.eye.one": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.eye.one"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.eye.three": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.eye.three"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.eye.two": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.eye.two"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.first_price": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.first_price"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.forgotten_things": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.forgotten_things"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.her_rooms": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.her_rooms"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.honeyed_tongue": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.honeyed_tongue"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.labyrinth": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.labyrinth"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.last_night": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.last_night"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.morevet_laughs": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.morevet_laughs"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.predecessor": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.predecessor"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.pretty_version": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.pretty_version"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.reachable_means": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.reachable_means"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.rehearsal": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.rehearsal"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.rokhorn.sounding": {
+   "kind": "return-cue",
+   "lists": [
+    "571f316720b8d164b819495959222919"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "571f316720b8d164b819495959222919": "RRT_entry.herrax.house.rokhorn.sounding"
+   },
+   "resolved": true,
+   "host": {
+    "list": "571f316720b8d164b819495959222919",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0150",
+    "clicks": 3
+   }
+  },
+  "herrax.house.rokhorn.stitched": {
+   "kind": "return-cue",
+   "lists": [
+    "571f316720b8d164b819495959222919"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "571f316720b8d164b819495959222919": "RRT_entry.herrax.house.rokhorn.stitched"
+   },
+   "resolved": true,
+   "host": {
+    "list": "571f316720b8d164b819495959222919",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0150",
+    "clicks": 3
+   }
+  },
+  "herrax.house.rokhorn.whole": {
+   "kind": "return-cue",
+   "lists": [
+    "571f316720b8d164b819495959222919"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "571f316720b8d164b819495959222919": "RRT_entry.herrax.house.rokhorn.whole"
+   },
+   "resolved": true,
+   "host": {
+    "list": "571f316720b8d164b819495959222919",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0150",
+    "clicks": 3
+   }
+  },
+  "herrax.house.the_chair": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.the_chair"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.the_coin": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.the_coin"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.the_girl_upstairs": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.the_girl_upstairs"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.the_glowworm": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.the_glowworm"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.the_house_talks": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.the_house_talks"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.the_lady": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.the_lady"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.the_lesson_room": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.the_lesson_room"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.the_one_who_left": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.the_one_who_left"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.the_sinners": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.the_sinners"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.the_stain": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.the_stain"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.the_stairs": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.the_stairs"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.the_wings": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.the_wings"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.house.what_she_wants": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.house.what_she_wants"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.trickster.madam.hilt_first": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.trickster.madam.hilt_first"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.trickster.madam.reachable": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.trickster.madam.reachable"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.trickster.madam.reachable_restored": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.trickster.madam.reachable_restored"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.trickster.madam.schedule": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.trickster.madam.schedule"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.trickster.madam.sell_the_night": {
+   "kind": "return-cue",
+   "lists": [
+    "571f316720b8d164b819495959222919"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "571f316720b8d164b819495959222919": "RRT_entry.herrax.trickster.madam.sell_the_night"
+   },
+   "resolved": true,
+   "host": {
+    "list": "571f316720b8d164b819495959222919",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0150",
+    "clicks": 3
+   }
+  },
+  "herrax.trickster.madam.the_night": {
+   "kind": "return-cue",
+   "lists": [
+    "43f93812d6216c94db356622859397f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "43f93812d6216c94db356622859397f1": "RRT_entry.herrax.trickster.madam.the_night"
+   },
+   "resolved": true,
+   "host": {
+    "list": "43f93812d6216c94db356622859397f1",
+    "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+    "dialogName": "Herraxa_dialogue",
+    "cue": "Cue_0063",
+    "clicks": 0
+   }
+  },
+  "herrax.trickster.react.arueshalae_knife": {
+   "kind": "dialog",
+   "lists": [
+    "03ebad9587cbea0438d901a0f8df44f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "03ebad9587cbea0438d901a0f8df44f1": "RRT_entry.herrax.trickster.react.arueshalae_knife"
+   },
+   "resolved": true,
+   "host": {
+    "list": "03ebad9587cbea0438d901a0f8df44f1",
+    "dialog": "a718e45e4ea8f8a45acde516d72b6584",
+    "dialogName": "Dialogue_Arueshalae_Main",
+    "cue": "Cue_0004",
+    "clicks": 0
+   }
+  },
+  "herrax.trickster.react.arueshalae_morning": {
+   "kind": "dialog",
+   "lists": [
+    "03ebad9587cbea0438d901a0f8df44f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "03ebad9587cbea0438d901a0f8df44f1": "RRT_entry.herrax.trickster.react.arueshalae_morning"
+   },
+   "resolved": true,
+   "host": {
+    "list": "03ebad9587cbea0438d901a0f8df44f1",
+    "dialog": "a718e45e4ea8f8a45acde516d72b6584",
+    "dialogName": "Dialogue_Arueshalae_Main",
+    "cue": "Cue_0004",
+    "clicks": 0
+   }
+  },
+  "herrax.trickster.react.regill_night": {
+   "kind": "dialog",
+   "lists": [
+    "2366a8db6481070439fee222c0c52e45"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "2366a8db6481070439fee222c0c52e45": "RRT_entry.herrax.trickster.react.regill_night"
+   },
+   "resolved": true,
+   "host": {
+    "list": "2366a8db6481070439fee222c0c52e45",
+    "dialog": "03519ce01d6363449a9dfd01e162ef0b",
+    "dialogName": "Regill_Main_dialog",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "herrax.trickster.react.regill_wrist": {
+   "kind": "dialog",
+   "lists": [
+    "2366a8db6481070439fee222c0c52e45"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "2366a8db6481070439fee222c0c52e45": "RRT_entry.herrax.trickster.react.regill_wrist"
+   },
+   "resolved": true,
+   "host": {
+    "list": "2366a8db6481070439fee222c0c52e45",
+    "dialog": "03519ce01d6363449a9dfd01e162ef0b",
+    "dialogName": "Regill_Main_dialog",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "herrax.trickster.react.woljif_cheek": {
+   "kind": "dialog",
+   "lists": [
+    "e41585da330233143b34ef64d7d62d69"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "e41585da330233143b34ef64d7d62d69": "RRT_entry.herrax.trickster.react.woljif_cheek"
+   },
+   "resolved": true,
+   "host": {
+    "list": "e41585da330233143b34ef64d7d62d69",
+    "dialog": "8a38eeddc0215a84ca441439bb96b8f4",
+    "dialogName": "DialogueWoljif_main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "herrax.trickster.react.woljif_con": {
+   "kind": "dialog",
+   "lists": [
+    "e41585da330233143b34ef64d7d62d69"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "e41585da330233143b34ef64d7d62d69": "RRT_entry.herrax.trickster.react.woljif_con"
+   },
+   "resolved": true,
+   "host": {
+    "list": "e41585da330233143b34ef64d7d62d69",
+    "dialog": "8a38eeddc0215a84ca441439bb96b8f4",
+    "dialogName": "DialogueWoljif_main",
     "cue": "Cue_0001",
     "clicks": 0
    }
@@ -18858,6 +19770,102 @@
       "c58822f212a192546a985ca00f609e9c": 1,
       "c97b819b38cd2914ca5f9b72d786524f": 1,
       "dde33d9aa9a597242b93f8e1ec463db6": 2
+     }
+    }
+   ]
+  },
+  "571f316720b8d164b819495959222919": {
+   "list": "571f316720b8d164b819495959222919",
+   "listName": "AnswersList_0152",
+   "hosts": [
+    {
+     "dialog": "b1a346ae168956b4a8b759845ab8d2de",
+     "dialogName": "Herraxa_dialogue",
+     "cues": [
+      "d8c5d002cd258f244bdf96dd94d8eca5",
+      "e7d43c3ec7ab16444be9759414f48436",
+      "06def460139b7b54c9a7c2dc55f88782",
+      "3b1d82209acd4c044906fea6ee2d1d29",
+      "a951366578612994881f990e13b64277",
+      "7499cd5ad46977a44ab35e6206e7e9c0",
+      "890bb127d1799084baa438e94adace40"
+     ],
+     "cueNames": [
+      "Cue_0150",
+      "Cue_0159",
+      "Cue_0161",
+      "Cue_0192",
+      "Cue_0243",
+      "Cue_0246",
+      "Cue_0258"
+     ],
+     "speaker": "25ad116e1f5008e488b13f9b968596d4",
+     "reachable": true,
+     "clicks": 3,
+     "path": [
+      {
+       "at": "Cue_0002",
+       "take": "Answer_0028"
+      },
+      {
+       "at": "Cue_0082",
+       "take": "Answer_0087"
+      },
+      {
+       "at": "Cue_0089",
+       "take": "continue"
+      }
+     ],
+     "answerDist": {
+      "04e409ae8e8fd8a45a8079c8585778c9": 1,
+      "07930ebe38b0b6646bdbc0ea305601a5": 4,
+      "093a96dd4aae3e241ab6895d7f975e75": 1,
+      "0d40c3b236556e741983d89fded91a0e": 1,
+      "0f5f7bc482cd26248a11f9c3648b71bc": 5,
+      "1a63a2e6946244940afd7293d6598ee2": 4,
+      "1e88e8e3542dd204e8494e8b62cb87e1": 1,
+      "2a31a174a7431714dbe56cc1ffa2b6d8": 6,
+      "3c23c913503c2354c9c640b648573904": 2,
+      "3eb40c0cdda41144c9495db18c904b88": 5,
+      "4093486ab2e11774aa3e5db7dfea19e4": 3,
+      "415554a83889bf04ebb0052b4de17ac8": 4,
+      "44bf2c640014ee348a7102085ab4c234": 4,
+      "459cbbe8bbd852a47a522a38d9c4544e": 5,
+      "4e6b86523d29cf14791e559093ce7e8b": 4,
+      "50a633c03430f044794d9299a1561595": 6,
+      "5b6b2cbebfc186a44b56a23dfe084027": 3,
+      "6c1f7011940b14745a4ce8eadbb7f1c7": 5,
+      "7827c27fbbc18784995369fc6acbf188": 7,
+      "7e6f38a86eefc924d825d8dea63208b9": 5,
+      "7f31f34378880d646817ba2e1b1588a8": 4,
+      "834fa17f792553949a6ed66248f1330c": 4,
+      "8526210b637ac334db7c635ad7858c29": 3,
+      "8f092c87df04d624b83c08955267caf2": 5,
+      "91ebf380999652e43b305aaa9e73ab9b": 7,
+      "94f3b7797689eb946b7435c978863c9f": 5,
+      "9e0d776993ef54945a5452e3907bd350": 4,
+      "9f4a702656cef7f45a168675c31a3e65": 6,
+      "a16477dcc3a2eec4db5bf553c40ca772": 4,
+      "a5a9e36a40b719146b5639b47c5145bf": 3,
+      "a85ca543134adf64eb9ead264faf100d": 7,
+      "aa23f4bf778752b41998f02420ecb71d": 3,
+      "ba13ccd6121352c4eb04c1d70be9cdc1": 5,
+      "bc3012b0a392468489827c2b6c2ad501": 5,
+      "bf75a533876f9194a8f5cc1e6e357f69": 4,
+      "c21316541863fa643a55da81967bc2e8": 5,
+      "c60613dca14bf0943a428246cf51bb3a": 1,
+      "ca4594f630db201409e29da592a897df": 4,
+      "cdef30b34d050984c8ce7f6f68b693cc": 2,
+      "d023d00b8ec53014b93eb051b54ff0f5": 5,
+      "d69aa03788628cc41848cad53c94e4fb": 3,
+      "d703ac8c2f0dc7445a2715a834feb14c": 4,
+      "db4948ca68e9e864581735195a51b5bd": 5,
+      "dc2678e953c69a544b9f6ec6ce09d908": 2,
+      "dce8ee2c0d6eb7f408c38bd3f13c934b": 2,
+      "e083d50f643d5334eb2b462d06756c6d": 5,
+      "e87dd05baebcb414ca12e825eabe205b": 5,
+      "eeb1718ae44c7714da2a2b47ce66bc0e": 4,
+      "fede90d24721585468c874d51dde9ee6": 4
      }
     }
    ]

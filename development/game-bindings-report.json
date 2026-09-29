@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-herrax\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 3225,
-  "unique_targets": 739,
+  "binding_uses": 3325,
+  "unique_targets": 749,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -966,8 +966,20 @@
       "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/AnswersList_0004.jbp",
       "type": "BlueprintAnswersList"
     },
+    "571f316720b8d164b819495959222919": {
+      "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/AnswersList_0152.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "1a63a2e6946244940afd7293d6598ee2": {
       "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Answer_0046.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "33447e2dcba529f4ba678688db744411": {
+      "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Answer_0157.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "c60613dca14bf0943a428246cf51bb3a": {
+      "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Answer_0187.jbp",
       "type": "BlueprintAnswer"
     },
     "49135105da5bc6c4f93e312e80286f91": {
@@ -976,6 +988,26 @@
     },
     "1af69c65d15cc8949a4fe47a45c4f85d": {
       "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Cue_0100.jbp",
+      "type": "BlueprintCue"
+    },
+    "e7d43c3ec7ab16444be9759414f48436": {
+      "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Cue_0159.jbp",
+      "type": "BlueprintCue"
+    },
+    "2e9aa440f006fc44ba3e34bf1a28de91": {
+      "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Cue_0299.jbp",
+      "type": "BlueprintCue"
+    },
+    "044dc44d93e25bc4da8e244efc46ff9f": {
+      "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Cue_0300.jbp",
+      "type": "BlueprintCue"
+    },
+    "e56632b9824273d4e89804db52ad7210": {
+      "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Cue_0303.jbp",
+      "type": "BlueprintCue"
+    },
+    "2948da80165901a4ea1078f5ec441af3": {
+      "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Cue_0321.jbp",
       "type": "BlueprintCue"
     },
     "74989c07fc5fd8a42b18b333dc40acc1": {
@@ -1694,6 +1726,10 @@
       "path": "World/Dialogs/NPC_Common/Vendor_Quartermaster/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
+    "1d5570f0d0d2b7b4ba805d48f492a749": {
+      "path": "World/Encounters/AlushinyrraCity/Items/TeleportationMarks/TenThousandDelightsArk_Mark.jbp",
+      "type": "BlueprintItem"
+    },
     "f0641f67501a4084897d9bcbc00ddc99": {
       "path": "World/Encounters/AreeluLab/Items/SoulJar_Trickster.jbp",
       "type": "BlueprintItem"
@@ -1864,6 +1900,10 @@
     },
     "bee15cff021828c4c92f09e8f771dbb2": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/FleshMarketMassacre.jbp",
+      "type": "BlueprintEtude"
+    },
+    "3f1a8be9cc6d082469d17da642655f53": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/HerraxaSlaveHaggling.jbp",
       "type": "BlueprintEtude"
     },
     "eff0ca2318f96c049b5c9e6785eac196": {

@@ -533,6 +533,16 @@ partner("jannah", "jannah", "jannah.committed", "jannah.closed", "The Front Rank
         (PLAIN_CHOICE, (), (), ())),
     ledger=("Jannah: a rematch, owed", "An Aldori may always ask the one who beat her for a rematch, and I have beaten her, or she me, too often for the account ever to be square. She keeps the chalk in her pocket. I am to expect a circle wherever I go."))
 
+HX = "herrax.trickster."
+partner("herrax", "herrax", "herrax.committed", "herrax.closed", "The Keeper's Night",
+    '''Herrax did not close the Ten Thousand Delights on the night the rift took the Commander, or failed to. She had said she would close them for one night if the news was bad, and the news took three days to reach the Midnight Isles. She spent the three days on Chivarro's old dais with the lamps lit and the takings unread, pouring her own wine, which nobody in the house had ever seen her do. Rokhorn brought the jug up the steps each time it was empty. He did not smile once, and she did not ask him to.''',
+    (
+        page_p('''The world buried the Commander. Herrax closed the Delights for one night, the first in a thousand years, and the whole of Alushinyrra said the madam had gone soft. She let them say it. The next night she opened again and charged double, and when a guest asked what the black ribbon on the arch was for, she told him it was the price of a room, and he paid it.''', requires=(ON_RECORD,)),
+        page_p('''When the word came up the Wound roads that the Commander had walked out of the rift after all, she threw open the street doors of the Delights and let the whole Lower City drink until dawn at the house's expense. Then she sent the bill to the Lady in Shadow's court, marked "for the queen's amusement", and the court paid it without a word.''', requires=(H2,)),
+        page_p('''The arches of Alushinyrra still did not know the Commander. Nothing had changed about that, and Herrax liked it that way. When the Commander came back, it was up the stairs, all of them, like everyone else, and without paying, like no one else.''', requires=(HX + "cost.coin_lost",)),
+        page_p('''She traced the thin white line on the Commander's cheek, the one an incubus had once read a lie in, and said it was the only mark in the Delights she had not made herself, and the only one she would have kept anyway.''', requires=(HX + "cost.clawed_cheek",)),
+    ), declined=HX + "declined")
+
 # Existing pages that must yield to Last Call (doc 04 backlog): Nocticula's favour page is called in on her Last Call page instead.
 FORBID_ACTIVE = ("nocticula.trickster.defeated.epilogue.favour",)
 
