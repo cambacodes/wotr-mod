@@ -245214,10 +245214,10 @@
         {
           "Id": "why",
           "Speaker": "Narrator",
-          "Text": "{n}You tell her the truth, because she would hear anything else. You remember a thing she said once, quietly, as if confessing it: that she should like to kiss someone again, but only as a mortal. Not as a demon. You have been reading ever since.{/n}\n{n}The Desnan rite for travellers asks the goddess to take the road's harm on herself for one night: one star, one night, one safe passage. And the Trickster's own lore can treat a negative condition as a priest treats a poison. You think the two will fit together. You are not sure.{/n}",
+          "Text": "{n}You tell her the truth, because she would hear anything else. You remember a thing she said once, quietly, as if confessing it: that she should like to kiss someone again, but only as a mortal. Not as a demon. You have been reading ever since.{/n}\n{n}The breviary's blessing for travellers is a small, plain thing: a candle, a star, a few lines asking the goddess to watch one road for one night. It promises nothing about demons; no priest ever meant it for one. The rest is yours. The Trickster's lore can treat a negative condition the way a priest treats a poison, and you mean to hang that lore on the blessing's frame: one star, one night, one wolf kept off one road. Nobody taught you this. Nobody has tried it. You think the two will fit together. You are not sure.{/n}",
           "Choices": [
             {
-              "Text": "[Lay the two texts side by side: you already know the lore] \"The rite points it. The lore does the rest.\"",
+              "Text": "[Lay the two texts side by side: you already know the lore] \"The blessing gives it a shape. The lore does the rest.\"",
               "Next": "fit",
               "Set": [],
               "Requires": [
@@ -245345,6 +245345,22 @@
             },
             {
               "Text": "[Let go] \"Sorry. Occupational habit.\"",
+              "Next": "released",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arueshalae"
+        },
+        {
+          "Id": "released",
+          "Speaker": "Arueshalae",
+          "Text": "{n}You open your hand. She takes her wrist back at once and holds it against her chest, and for a moment neither of you says anything.{/n}\n\"Thank you.\" {n}She sounds surprised to be saying it. Then she looks at your empty palm, still held out, and something in her face argues with itself and loses.{/n} \"No. Here. Finish counting. You let go when I asked, so you can have it for as long as it takes to count.\" {n}She lays her wrist back in your hand herself, and this time she does not watch your fingers. She watches you.{/n}",
+          "Choices": [
+            {
+              "Text": "[Count, and nothing more.]",
               "Next": "answer",
               "Set": [],
               "Requires": [],
@@ -265276,8 +265292,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",

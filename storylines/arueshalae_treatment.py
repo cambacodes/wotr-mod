@@ -85,8 +85,8 @@ session(STUDIED, "Night reading", 3, '"You were in the shrine library until the 
 "The Tender of Dreams' blessing for travellers. The star-candle and the words for the road." {n}Her voice changes.{/n} "Why are you reading about my goddess's mercy at the second bell, Commander?"''',
         c("Continue", "why")),
     nar("why", '''{n}You tell her the truth, because she would hear anything else. You remember a thing she said once, quietly, as if confessing it: that she should like to kiss someone again, but only as a mortal. Not as a demon. You have been reading ever since.{/n}
-{n}The Desnan rite for travellers asks the goddess to take the road's harm on herself for one night: one star, one night, one safe passage. And the Trickster's own lore can treat a negative condition as a priest treats a poison. You think the two will fit together. You are not sure.{/n}''',
-        c('[Lay the two texts side by side: you already know the lore] "The rite points it. The lore does the rest."', "fit",
+{n}The breviary's blessing for travellers is a small, plain thing: a candle, a star, a few lines asking the goddess to watch one road for one night. It promises nothing about demons; no priest ever meant it for one. The rest is yours. The Trickster's lore can treat a negative condition the way a priest treats a poison, and you mean to hang that lore on the blessing's frame: one star, one night, one wolf kept off one road. Nobody taught you this. Nobody has tried it. You think the two will fit together. You are not sure.{/n}''',
+        c('[Lay the two texts side by side: you already know the lore] "The blessing gives it a shape. The lore does the rest."', "fit",
           requires=(CURE,)),
         c('[Work out the rite the hard way, from the chaplain\'s commentary]', forbids=(CURE,),
           check={"Skill": "SkillLoreReligion", "DC": 18, "Success": "fit", "Failure": "not_yet"})),
@@ -108,7 +108,10 @@ session(INTAKE, "Intake", 3, '[Hold out your hand, palm up] "You look pale. Let 
     a("laugh", '''"When did I last..." {n}A laugh startles out of her, and she clamps her free hand over her mouth, appalled at herself.{/n} "Commander, I don't eat. Not the way you mean. I can taste your bread and your wine, and they are lovely, and they are like... like looking at a painting of a fire when you're cold."
 {n}She tries to take her wrist back. You don't let her, yet.{/n} "I'm taking it back now. You shouldn't hold on so long. It isn't safe. Even this is costing you something, a little. You just can't feel it yet."''',
         c('"Answer the question. When did you last eat?"', "answer"),
-        c('[Let go] "Sorry. Occupational habit."', "answer")),
+        c('[Let go] "Sorry. Occupational habit."', "released")),
+    a("released", '''{n}You open your hand. She takes her wrist back at once and holds it against her chest, and for a moment neither of you says anything.{/n}
+"Thank you." {n}She sounds surprised to be saying it. Then she looks at your empty palm, still held out, and something in her face argues with itself and loses.{/n} "No. Here. Finish counting. You let go when I asked, so you can have it for as long as it takes to count." {n}She lays her wrist back in your hand herself, and this time she does not watch your fingers. She watches you.{/n}''',
+        c("[Count, and nothing more.]", "answer")),
     a("answer", '''{n}She rubs the place where your fingers were, as if it were her skin that had been hurt.{/n}
 "Properly? Before the goddess. Before Desna caught me in the priestess's dream and made me look at what I was." {n}Her voice drops.{/n} "Since then I've taken only what I couldn't help. A brush of hands in a crowd. Someone's breath when they sleep too close to the fire. Crumbs. I've lived on crumbs for years, and I tell myself every day that I'm not hungry, and every day it's a lie."''',
         c("Continue", "diagnosis")),
