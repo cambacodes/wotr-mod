@@ -42,6 +42,7 @@ namespace RRT.TestHarness
             ("Tirabade.Scene", "Owner", "field", "String"),
             ("Tirabade.Scene", "Requires", "field", "String[]"),
             ("Tirabade.Scene", "RequiresAnyGroups", "field", "String[][]"),
+            ("Tirabade.Scene", "Forbids", "field", "String[]"),
             ("Tirabade.Scene", "MinChapter", "field", "Int32"),
             ("Tirabade.Scene", "MaxChapter", "field", "Int32"),
             ("Tirabade.Scene", "DelayHours", "field", "Int32"),
@@ -255,6 +256,7 @@ namespace RRT.TestHarness
         public static string SceneRelationship(object scene) => GetAs<string>(scene, "Relationship");
         public static string SceneOwner(object scene) => GetAs<string>(scene, "Owner");
         public static string[] SceneRequires(object scene) => GetAs<string[]>(scene, "Requires");
+        public static string[] SceneForbids(object scene) => GetAs<string[]>(scene, "Forbids");
         public static string[][] SceneRequiresAnyGroups(object scene) => GetAs<string[][]>(scene, "RequiresAnyGroups");
         public static int SceneMinChapter(object scene) => GetAs<int>(scene, "MinChapter");
         public static int SceneMaxChapter(object scene) => GetAs<int>(scene, "MaxChapter");

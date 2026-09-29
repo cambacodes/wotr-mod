@@ -444,9 +444,11 @@ namespace RRT.TestHarness
                 {
                     bool nativeGated = run.Forced && unforceable.Count > 0;
                     bool delayGated = !nativeGated && run.Forced && run.DelayUnmet != null;
-                    run.Result = nativeGated ? "skipped-native" : delayGated ? "skipped-delay" : "not-started";
+                    bool forbidden = !nativeGated && !delayGated && run.ForbiddenHeld.Count > 0;
+                    run.Result = nativeGated ? "skipped-native" : delayGated ? "skipped-delay" : forbidden ? "skipped-forbidden" : "not-started";
                     run.Detail = nativeGated ? "forced run cannot hold native/derived requires: " + string.Join(", ", unforceable)
                         : delayGated ? run.DelayUnmet
+                        : forbidden ? ForbiddenNote(run)
                         : "dialog did not start within 10 s (mode " + Mode() + ", dialog " + (dc.Dialog?.name ?? "null") + ")";
                     yield break;
                 }
@@ -462,8 +464,11 @@ namespace RRT.TestHarness
             }
         }
 
+        static string ForbiddenNote(SceneRun run) => "the save holds its Forbids " + string.Join(", ", run.ForbiddenHeld);
+
         static bool RunPassed(SceneRun run) =>
-            (run.Result == "completed" || run.Result == "skipped-native" || run.Result == "skipped-inline" || run.Result == "skipped-delay")
+            (run.Result == "completed" || run.Result == "skipped-native" || run.Result == "skipped-inline" || run.Result == "skipped-delay"
+                || run.Result == "skipped-forbidden")
             && run.OracleFailures.Count == 0 && !run.Exceptions.Any(e => e.Relevant);
 
         /// <summary>Forces a Story.Derived key by setting the persistent leaves of one satisfiable group (DerivedForcing),
@@ -516,7 +521,13 @@ namespace RRT.TestHarness
                 if (chapter < RrtBridge.SceneMinChapter(scene) || chapter > RrtBridge.SceneMaxChapter(scene))
                     unforceable.Add("chapter " + chapter + " outside " + RrtBridge.SceneMinChapter(scene) + ".." + RrtBridge.SceneMaxChapter(scene));
             }
-            if (plan.MarkStarted && bridge.StartedFlag(run.Relationship) is string started && persistentFlagKeys.Contains(started)) bridge.Set(started);
+            // A pre-start page (e.g. chadali.trickster.council.orange) Forbids its relationship's started flag: marking it
+            // started would hide the very page under test, so MarkStarted skips a started flag the scene forbids.
+            var forbids = RrtBridge.SceneForbids(scene);
+            if (plan.MarkStarted && bridge.StartedFlag(run.Relationship) is string started && persistentFlagKeys.Contains(started)
+                && !forbids.Contains(started)) bridge.Set(started);
+            // A Forbids key the save itself holds is a legitimately closed page, not a defect: recorded for skipped-forbidden.
+            run.ForbiddenHeld = forbids.Where(f => !bridge.Match(new string[0], new[] { f }, before)).ToList();
             return unforceable;
         }
 
@@ -763,9 +774,10 @@ namespace RRT.TestHarness
                         bool listShown = listBp == null || listBp.Answers.Any(r => { try { return r.Get() is BlueprintAnswer x && shown.Contains(x); } catch { return false; } });
                         if (!listShown) { run.Result = "skipped-inline"; run.Detail = "at " + at + " the list's native answers are hidden (list conditions)" + gateNote; break; }
                         bool delayGated = !gated && run.Forced && run.DelayUnmet != null;
-                        run.Result = gated ? "skipped-inline" : delayGated ? "skipped-delay" : "entry-hidden";
+                        bool forbidden = !gated && !delayGated && run.ForbiddenHeld.Count > 0;
+                        run.Result = gated ? "skipped-inline" : delayGated ? "skipped-delay" : forbidden ? "skipped-forbidden" : "entry-hidden";
                         run.Detail = "list " + list + " shown at " + at + " without " + entryName
-                            + (gated ? gateNote : delayGated ? "; " + run.DelayUnmet
+                            + (gated ? gateNote : delayGated ? "; " + run.DelayUnmet : forbidden ? "; " + ForbiddenNote(run)
                                 : run.AvailableAtStart ? " although the scene is available"
                                 : " although its Requires were forced" + (run.DelayBackdated.Count > 0 ? " and its delay backdated" : ""));
                         break;
@@ -793,7 +805,8 @@ namespace RRT.TestHarness
                     if (!ok.Value)
                     {
                         bool delayGated = !gated && run.Forced && run.DelayUnmet != null;
-                        run.Result = gated ? "skipped-inline" : delayGated ? "skipped-delay" : "entry-not-started";
+                        bool forbidden = !gated && !delayGated && run.ForbiddenHeld.Count > 0;
+                        run.Result = gated ? "skipped-inline" : delayGated ? "skipped-delay" : forbidden ? "skipped-forbidden" : "entry-not-started";
                         run.Detail = "after " + entryName + " the current cue is " + (dc.CurrentCue?.name ?? "null") + " of " + (dc.Dialog?.name ?? "no dialog") + gateNote
                             + (delayGated ? "; " + run.DelayUnmet : "");
                     }

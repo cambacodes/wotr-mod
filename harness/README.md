@@ -290,6 +290,10 @@ Results that are not failures are `skipped-inline`, with the reason. The cases a
 
 `skipped-delay` is not a failure either: a forced run could not satisfy the scene's `DelayHours` (see below).
 
+`skipped-forbidden` is not a failure either: the save itself already held one of the scene's `Forbids` before the run
+(`ForbiddenHeld`), so the page is legitimately closed there. The harness never creates that state: `MarkStarted` does not
+set a relationship's started flag when the scene forbids it (a pre-start page such as `chadali.trickster.council.orange`).
+
 **Delayed scenes (`DelayHours`).** `Rules.Available` opens a delayed page only when `DelayHours` have passed since the
 latest `hour.<key>` time of its held `Requires` (and held `RequiresAnyGroups` members). A forced run sets those flags
 "now", and `Main.RecordLatches` stamps a latch such as `trickster.ever` "now" on the first idle tick after loading a save

@@ -46,6 +46,7 @@ internal static class Program
         Run("residence spike: plan, verdicts, report shape", ResidenceSpikeChecks);
         Run("residence spike: presence engine reflection vs built RRT DLL", () => ResidenceSpikeReflection(rrtDll));
         Run("presence spike: plan, verdicts, report shape", PresenceSpikeChecks);
+        Run("skipped-forbidden runs are skips, not failures", ForbiddenSkipChecks);
         Run("presence spike: quiet-copy reflection vs built RRT DLL", () => PresenceSpikeReflection(rrtDll));
         Console.WriteLine(failures == 0 ? "SELF-TEST PASSED" : "SELF-TEST FAILED: " + failures + " check(s)");
         return failures == 0 ? 0 : 1;
@@ -499,6 +500,22 @@ internal static class Program
         Check((string?)j["Plan"]?["Spike"] == "Presence" && j["Saves"]?[0]?["PresenceSpike"]?["Copies"] != null, "the presence spike result is in the report");
         r.Saves[0].PresenceSpike = g; r.ComputeSummary();
         Check(r.Summary.Passed, "a green presence spike leaves the summary green");
+    }
+
+    static void ForbiddenSkipChecks()
+    {
+        var r = new HarnessReport { Status = "complete", Plan = HarnessPlan.Parse("{}") };
+        r.Init.RrtModFound = true; r.Init.Initialized = true;
+        var run = new SceneRun { Scene = "chadali.trickster.council.orange", Result = "skipped-forbidden", Forced = true, Passed = true,
+            Detail = "the save holds its Forbids chadali.lost_at_council", ForbiddenHeld = { "chadali.lost_at_council" } };
+        var save = new SaveReport { Save = "c3", LoadOk = true };
+        save.Runs.Add(run);
+        r.Saves.Add(save);
+        r.ComputeSummary();
+        Check(r.Summary.Passed && r.Summary.Skipped.Any(x => x.Contains("skipped-forbidden")) && r.Summary.Failures.Count == 0,
+            "a skipped-forbidden run is listed as skipped and keeps the summary green");
+        var j = JObject.Parse(r.ToJson());
+        Check(j["Saves"]?[0]?["Runs"]?[0]?["ForbiddenHeld"]?[0]?.ToString() == "chadali.lost_at_council", "ForbiddenHeld is in the report");
     }
 
     static void PresenceSpikeReflection(string rrtDll)
