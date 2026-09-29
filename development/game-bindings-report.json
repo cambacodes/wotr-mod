@@ -1,11 +1,15 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-kaylessa\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 2827,
-  "unique_targets": 652,
+  "binding_uses": 2916,
+  "unique_targets": 675,
   "failures": [],
   "targets": {
+    "c669b34a7b9c2cb42bf6deb5d8d1606f": {
+      "path": "Items/Areas/Act_1_WorldwoundIncursion/KenabresBurning/Kaylessa_Diary.jbp",
+      "type": "BlueprintItem"
+    },
     "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53": {
       "path": "Items/Areas/Act_3_DemonsHerecy/Wintersun/SoanaMedallion.jbp",
       "type": "BlueprintItem"
@@ -32,6 +36,10 @@
     },
     "04177c4ddec20ae4ca04388f9cf23518": {
       "path": "Mythic/Trickster/LoreReligion/TricksterLoreReligionTier1Feature.jbp",
+      "type": "BlueprintFeature"
+    },
+    "90bc71f1d8482184a9ede0bda4773d94": {
+      "path": "Mythic/Trickster/Trickery/TricksterTrickeryTier1Feature.jbp",
       "type": "BlueprintFeature"
     },
     "1383f21534d8b6a45bdbdc8ddce7a187": {
@@ -68,6 +76,10 @@
     },
     "da4c28dd01413694f82b08b728a8c6e5": {
       "path": "Units/NPC/Unique/Act_1_WorldwoundIncursion/BlackWingRuins/Storyteller.jbp",
+      "type": "BlueprintUnit"
+    },
+    "a1569a0739314d04cb8af1d47dcffbe0": {
+      "path": "Units/NPC/Unique/Act_2_SwordOfValor/Warcamp/KaylessaDisguised.jbp",
       "type": "BlueprintUnit"
     },
     "81297c673b63b60448ef88a10db6bc78": {
@@ -526,6 +538,14 @@
       "path": "World/Dialogs/c3/Mythic_Trickster/Council_Eritrice/Cue_0026.jbp",
       "type": "BlueprintCue"
     },
+    "e7236a1fe9273ba498b96b9616b3f379": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/Council_Shyka/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "cd2b35a474db55544a63f59a67ac67bf": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/Council_Shyka/Cue_0002.jbp",
+      "type": "BlueprintCue"
+    },
     "1a17d8053a3be7f47a7908eb6706f2fe": {
       "path": "World/Dialogs/c3/Mythic_Trickster/FoolKing_Tavern/AnswersList_0009.jbp",
       "type": "BlueprintAnswersList"
@@ -841,6 +861,10 @@
     "b9d78ba896d19b14aa6c371dda617979": {
       "path": "World/Dialogs/c5/Drezen_Under_Siedge/StorytellerDangerousDrezen/Answer_0008.jbp",
       "type": "BlueprintAnswer"
+    },
+    "c0fb6762c057bcc4894d1892a9eb22fc": {
+      "path": "World/Dialogs/c5/Iz/Anemora/Cue_0146.jbp",
+      "type": "BlueprintCue"
     },
     "09b8d5eb5dae3634d9dc3d8c7bdd6e9d": {
       "path": "World/Dialogs/c5/Iz/AreeluIntro/AnswersList_0002.jbp",
@@ -1390,6 +1414,54 @@
       "path": "World/Dialogs/NPC_Common/Irabeth/Cue_0197.jbp",
       "type": "BlueprintCue"
     },
+    "30b5b35e84d649245b0fcba5e8d5cc02": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Forn_main/Answer_0039.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "c3e2b86fef76ee441bc66c86ef5f071a": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Answer_0028.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "8d741378ae169454f89a544029823135": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Answer_0058.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "9f98ffa7f2c71cb4c9e5da0c7a053876": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Answer_0068.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "462478faddd1eab45a4e55739d81e6f7": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Cue_0056.jbp",
+      "type": "BlueprintCue"
+    },
+    "b3427ecfc15258f4ba50cbc71e32aac2": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Cue_0080.jbp",
+      "type": "BlueprintCue"
+    },
+    "5f306afcd4d305b41a611a59cc35e274": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Cue_0084.jbp",
+      "type": "BlueprintCue"
+    },
+    "0eb0889b087e0ad41b6987282530ce84": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Kaylessa_main_dialogue.jbp",
+      "type": "BlueprintDialog"
+    },
+    "07bc8bac6a8c8074183e6abb6ce56847": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_Reveal/AnswersList_0029.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "6502c2a294795ca48923e3b1c6d71c20": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_Reveal/Answer_0067.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "0585a80d0b70442409f30afad8207e9d": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_Reveal/Cue_0033.jbp",
+      "type": "BlueprintCue"
+    },
+    "58f994154e180a147a4ab18381f9bc8c": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_Reveal/Cue_0037.jbp",
+      "type": "BlueprintCue"
+    },
     "01d00f006e0e16543b7507ff38e9fb8a": {
       "path": "World/Dialogs/NPC_Common/Nurah-Prison/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
@@ -1616,6 +1688,10 @@
     },
     "a583e4ab47544f5e928fc5b6b7c41e48": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/Chapter05_AreasDefault/Iz_Default/DidntVisitedEvents.jbp",
+      "type": "BlueprintEtude"
+    },
+    "8c2fdd760cc54b4bb874d2832ff14695": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/Chapter05_AreasDefault/Iz_Default/ManuscriptsAnemoraDead.jbp",
       "type": "BlueprintEtude"
     },
     "936af39436c74953b43a4165bfbcc9f9": {
@@ -1878,6 +1954,10 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Arsinoe_Capital.jbp",
       "type": "BlueprintEtude"
     },
+    "7a6f0ef4dd004418aa613693dd9d280a": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/FornIsDead.jbp",
+      "type": "BlueprintEtude"
+    },
     "260454e5186fbd34694a0393097f77b5": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/IrabethNotInDrezenCh5_WithGalfrey.jbp",
       "type": "BlueprintEtude"
@@ -1920,6 +2000,14 @@
     },
     "c0f261c4a259da741ab0052f0100c2a0": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Irabeth/IrabethKilledByPlayer.jbp",
+      "type": "BlueprintEtude"
+    },
+    "78fb64bf32f3f194ab077315650adf10": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Kaylessa/KaylessaTomb.jbp",
+      "type": "BlueprintEtude"
+    },
+    "4dd373d7c9954b6419adf920cca9231f": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Kaylessa/Kaylessa_dead.jbp",
       "type": "BlueprintEtude"
     },
     "3b8c0801d5e9a694b848ee13564d2ad7": {
@@ -2084,6 +2172,10 @@
     },
     "820f28d6776755d47a2169e2851e15ca": {
       "path": "World/Quests/c4/RaptureOfRupture/RaptureOfRupture.jbp",
+      "type": "BlueprintQuest"
+    },
+    "95ff7d975689fcf44b085d10907e711d": {
+      "path": "World/Quests/c5/Iz/Iz_quest.jbp",
       "type": "BlueprintQuest"
     },
     "1fdf404b17d464a489267f69d58b846d": {
