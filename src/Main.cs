@@ -104,6 +104,8 @@ namespace Tirabade
         private static object? mailbagPlayer;
         private static BlueprintDialog? mailbagDialog;
         private static bool mailbagWanted;
+        // E16: a view to open as soon as nothing else is open (set by a native opener or the Table's "[Open the Ledger]").
+        private static string? viewWanted;
         private static bool UseMailbag() => settings.Mailbag && mailbagDialog != null;
         private static KonomiMeeting? konomiMeeting;
         private static IrabethMeeting? irabethMeeting;
@@ -416,6 +418,20 @@ namespace Tirabade
                 if (story.Scenes.Any(Rules.IsMailbagLetter)) mailbagDialog = BuildMailbag();
                 // E15: the RRT book surfaces (mailbag v2, the letter archive, data books) and the glossary tooltips.
                 BuildBooks();
+                // E16: native openers, answers on native lists that open an RRT view once the native dialog has ended.
+                var openers = new List<(NativeOpener Spec, BlueprintAnswer Answer, BlueprintAnswersList? List)>();
+                foreach (var opener in story.Openers)
+                {
+                    var answer = New<BlueprintAnswer>("opener." + opener.Id);
+                    InitializeAnswer(answer);
+                    answer.Text = Text("opener." + opener.Id, opener.Text);
+                    answer.ShowConditions = Conditions(new OpenerCondition { Opener = opener });
+                    answer.SelectConditions = Conditions(new OpenerCondition { Opener = opener });
+                    answer.OnSelect = Actions(new OpenerAction { View = opener.View });
+                    var list = Resolve<BlueprintAnswersList>(opener.AnswerList, "Native opener list " + opener.Id);
+                    if (list == null) warnings.Add("Native opener " + opener.Id + " is not shown: its answer list " + opener.AnswerList + " is missing.");
+                    openers.Add((opener, answer, list));
+                }
                 // E14d: every replacement cue is registered (save names); only verified edits get their native presentation.
                 foreach (var pair in story.NativeEpilogueEdits)
                 {
@@ -505,6 +521,10 @@ namespace Tirabade
                         targets[id].Answers.Insert(Math.Max(0, targets[id].Answers.Count - 1), Ref<BlueprintAnswerBaseReference>(answer));
                     }
                 }
+                // Before the list's last native answer (its leave line), as entry answers are.
+                foreach (var (spec, answer, list) in openers)
+                    if (list != null && !degraded.Contains(spec.Relationship))
+                        list.Answers.Insert(Math.Max(0, list.Answers.Count - 1), Ref<BlueprintAnswerBaseReference>(answer));
                 foreach (var pair in continueParents)
                 {
                     if (degraded.Contains(pair.Key.Relationship)) continue;
@@ -944,6 +964,7 @@ namespace Tirabade
             switch (Rules.KindOf(scene))
             {
                 case "letter": return (scene.Parcel ? "[A parcel from " : "[Letter from ") + sender + "] ";
+                case "invitation": return "[" + sender + " asks you to the Table] ";
                 case "sending": return "[A sending from " + sender + "] ";
                 case "memory": return "[A memory] ";
                 case "event": return "";
@@ -1519,6 +1540,7 @@ namespace Tirabade
                 mailbag.Clear();
                 mailbagWanted = false;
             }
+            if (viewWanted != null && Game.Instance?.Player == null) viewWanted = null;
             if (recoveryPlayer != null && !ReferenceEquals(recoveryPlayer, Game.Instance?.Player))
             {
                 recoveryMessage = null;
@@ -1566,6 +1588,14 @@ namespace Tirabade
                     return;
                 }
                 mailbagWanted = false;
+            }
+            // E16: a view asked for from inside a dialog (the Table, the Ledger) opens once that dialog has closed.
+            if (pending == null && viewWanted != null && Idle())
+            {
+                string wanted = viewWanted;
+                viewWanted = null;
+                OpenView(wanted);
+                return;
             }
             // E8: whenever no dialog is open, the next undelivered letter follows (a finished letter chains into the next).
             if (pending == null && postBag.Queue.Count > 0 && postBag.Next(story, state) is Scene next)
@@ -1637,6 +1667,7 @@ namespace Tirabade
             postBag.Clear();
             mailbag.Clear();
             mailbagWanted = false;
+            viewWanted = null;
             StopNarration();
         }
 

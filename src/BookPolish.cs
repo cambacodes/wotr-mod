@@ -63,7 +63,9 @@ namespace Tirabade
             // A visit, a sending, a memory or an event delivered at a rest is not mail (E15b styled every remote scene so).
             internal static string? LetterHeader(Scene scene)
             {
-                if (Rules.KindOf(scene) != "letter") return null;
+                string kind = Rules.KindOf(scene);
+                if (kind == "invitation") return "An invitation from " + Rules.SenderOf(scene);
+                if (kind != "letter") return null;
                 return (scene.Parcel ? "A parcel from " : "Letter from ") + Rules.SenderOf(scene);
             }
 
@@ -73,7 +75,8 @@ namespace Tirabade
             {
                 switch (Rules.KindOf(scene))
                 {
-                    case "letter": return LetterHeader(scene);
+                    case "letter":
+                    case "invitation": return LetterHeader(scene);
                     case "sending": return "A sending from " + Rules.SenderOf(scene);
                     case "memory": return "A memory";
                     default: return null;

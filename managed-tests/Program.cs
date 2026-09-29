@@ -459,6 +459,9 @@ internal static class Program
                 var added = pair.Value.Answers.Single(reference => reference.Guid == Id(scene.ReturnToList ? "entry." + scene.Id + "." + pair.Key : "entry." + scene.Id));
                 expected.Insert(Math.Max(0, expected.Count - 1), added);
             }
+            // E16: native openers follow the scene entries, each before the list's last native answer too.
+            foreach (var opener in story.Openers.Where(o => o.AnswerList == pair.Key))
+                expected.Insert(Math.Max(0, expected.Count - 1), pair.Value.Answers.Single(reference => reference.Guid == Id("opener." + opener.Id)));
             Check(pair.Value.Answers.SequenceEqual(expected), "Native answers changed or inserted out of order: " + pair.Key);
         }
         foreach (var pair in sequences)
@@ -602,6 +605,7 @@ internal static class Program
         MailbagManagedTests.Run(story, Id, Check);
         BookManagedTests.Run(story, Id, Path.GetFullPath(Path.Combine(Path.GetDirectoryName(Path.GetFullPath(storyPath))!, "..", "art", "CustomNpcPortraits", "RanRomance-Tirabade", "Scenes")), Check);
         BookPolishManagedTests.Run(story, Id, Check);
+        HouseholdManagedTests.Run(story, Id, Check);
         // __E14_MANAGED__
         Console.WriteLine("Scope: real managed blueprint construction and native ending seen-state checks; native answer and Aeon reference lists extracted from blueprints.zip; parent-mod sequence has preservation sentinels. Ending probes bypass route eligibility, Unity page rendering and debug logging. No parent-mod initialization, full campaign condition evaluation, portraits, ToyBox execution or game save round trip.");
         return 0;

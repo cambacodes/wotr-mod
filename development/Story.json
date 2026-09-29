@@ -264956,6 +264956,141 @@
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "lastcall"
+    },
+    {
+      "Id": "household.table.offered",
+      "Title": "The corner table",
+      "Owner": "Thaberdine",
+      "MinChapter": 3,
+      "MaxChapter": 3,
+      "Entry": "\"Your Majesty. Who is the corner table for?\"",
+      "Nodes": [
+        {
+          "Id": "offer",
+          "Speaker": "conversant",
+          "Text": "{n}Thaberdine waves you towards the back of the tavern with his mug, and most of the beer goes with the wave. In the corner there is a table with a cloth on it, darned in three colours, and more chairs round it than a corner ought to hold.{/n}\n\"That one's yours, Commander! Don't argue. It's royal.\"\n\"My pops always said: a man with more sweethearts than chairs is a man on his way to a stabbing. So! Chairs!\" {n}He beams at you as if he had invented furniture.{/n} \"Oh. And you're paying for the cloth.\"",
+          "Choices": [
+            {
+              "Text": "\"Keep it for me, Your Majesty. Whoever asks for me gets a chair.\"",
+              "Next": "kept",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Another time.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "kept",
+          "Speaker": "conversant",
+          "Text": "\"Whoever! That's a big word, in my tavern.\" {n}He thumps the table with the bottom of his mug, which is as close to a royal seal as anything in Drezen gets.{/n} \"Sit 'em where you like. But if two of 'em walk in who shouldn't sit together, that's your mess, Commander, not mine. I'm the King. Kings don't do seating.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "household.started",
+                "household.table.kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "household.any_eligible"
+      ],
+      "Forbids": [
+        "household.table.kept"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "household",
+      "AnswerLists": [
+        "1a17d8053a3be7f47a7908eb6706f2fe"
+      ],
+      "NativeReturnCue": "814dd1a078a1c2849aefc85e2e15b2d2"
+    },
+    {
+      "Id": "household.table.offered_c5",
+      "Title": "The corner table",
+      "Owner": "Thaberdine",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Your Majesty. Who is the corner table for?\"",
+      "Nodes": [
+        {
+          "Id": "offer",
+          "Speaker": "conversant",
+          "Text": "{n}The court has come back from the war louder and fewer. The corner table has not moved. Somebody has put a new cloth on it, darned in three colours, and more chairs round it than there used to be.{/n}\n\"Kept it for you all through the war, Commander! Well. Kept the corner. Don't argue. It's royal.\"\n\"My pops always said: a man with more sweethearts than chairs is a man on his way to a stabbing. So! Chairs!\" {n}He beams at you as if he had invented furniture.{/n} \"Oh. And you're paying for the cloth.\"",
+          "Choices": [
+            {
+              "Text": "\"Keep it for me, Your Majesty. Whoever asks for me gets a chair.\"",
+              "Next": "kept",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Another time.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "kept",
+          "Speaker": "conversant",
+          "Text": "\"Whoever! That's a big word, in my tavern.\" {n}He thumps the table with the bottom of his mug, which is as close to a royal seal as anything in Drezen gets.{/n} \"Sit 'em where you like. But if two of 'em walk in who shouldn't sit together, that's your mess, Commander, not mine. I'm the King. Kings don't do seating.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "household.started",
+                "household.table.kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "household.any_eligible"
+      ],
+      "Forbids": [
+        "household.table.kept",
+        "fool_king.gone"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "household",
+      "AnswerLists": [
+        "6dccfd39947ef4242a8afbe36b21a46c"
+      ],
+      "NativeReturnCue": "7b050ba0745bf144e815632e39b34853"
     }
   ],
   "Etudes": {
@@ -265075,8 +265210,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",
@@ -266623,6 +266758,20 @@
           ]
         }
       ]
+    },
+    "household": {
+      "Title": "The Table",
+      "Description": "The King gave me a table in his tavern and a cloth to go on it, and told me I would need the chairs. He was right. Now I have to fill them without anybody stabbing anybody.",
+      "Objective": "Keep the Table",
+      "Guidance": "Visit the corner table in the Fool King's tavern in Drezen. Your partners' introductions and invitations wait there. The Ledger's Guest List and Seating Notes show where everyone sits.",
+      "StartedFlag": "household.started",
+      "ClosedFlag": "household.closed",
+      "CommittedFlag": "household.table.kept",
+      "UnavailableFlags": [
+        "trickster.failed"
+      ],
+      "FailureFlags": [],
+      "JournalEntries": []
     }
   },
   "CompletedQuests": {
@@ -268949,6 +269098,260 @@
       [
         "council.fought_nocta_allied"
       ]
+    ],
+    "tirabade.harem.eligible": [
+      [
+        "committed"
+      ]
+    ],
+    "anevia.harem.eligible": [
+      [
+        "anevia.committed"
+      ],
+      [
+        "anevia.trickster.late_committed"
+      ]
+    ],
+    "irabeth.harem.eligible": [
+      [
+        "irabeth.committed"
+      ],
+      [
+        "irabeth.trickster.late_committed"
+      ]
+    ],
+    "seelah.harem.eligible": [
+      [
+        "seelah.committed"
+      ],
+      [
+        "seelah.trickster.late_committed"
+      ]
+    ],
+    "konomi.harem.eligible": [
+      [
+        "konomi.committed"
+      ],
+      [
+        "konomi.trickster.late_committed"
+      ]
+    ],
+    "jerribeth.harem.eligible": [
+      [
+        "jerribeth.committed"
+      ],
+      [
+        "jerribeth.trickster.late_committed"
+      ]
+    ],
+    "kiana.harem.eligible": [
+      [
+        "kiana.committed"
+      ],
+      [
+        "kiana.trickster.late_committed"
+      ]
+    ],
+    "soana.harem.eligible": [
+      [
+        "soana.committed"
+      ],
+      [
+        "soana.trickster.late_committed"
+      ]
+    ],
+    "arsinoe.harem.eligible": [
+      [
+        "arsinoe.committed"
+      ]
+    ],
+    "targona.harem.eligible": [
+      [
+        "targona.committed"
+      ],
+      [
+        "targona.trickster.late_committed"
+      ]
+    ],
+    "gesmerha.harem.eligible": [
+      [
+        "gesmerha.committed"
+      ]
+    ],
+    "vellexia.harem.eligible": [
+      [
+        "vellexia.committed"
+      ],
+      [
+        "vellexia.trickster.late_committed"
+      ]
+    ],
+    "aranka.harem.eligible": [
+      [
+        "aranka.extension_kept"
+      ],
+      [
+        "aranka.trickster.late_committed"
+      ]
+    ],
+    "minagho_chivarro.harem.eligible": [
+      [
+        "minachiv.complete"
+      ]
+    ],
+    "nocticula.harem.eligible": [
+      [
+        "noct.complete"
+      ],
+      [
+        "noct.acq.renewed_agreement"
+      ]
+    ],
+    "nurah.harem.eligible": [
+      [
+        "nurah.complete"
+      ],
+      [
+        "nurah.trickster.late_committed"
+      ]
+    ],
+    "dorgelinda.harem.eligible": [
+      [
+        "dorgelinda.committed"
+      ],
+      [
+        "dorgelinda.trickster.late_committed"
+      ]
+    ],
+    "hepzamirah.harem.eligible": [
+      [
+        "hepzamirah.committed"
+      ],
+      [
+        "hepzamirah.trickster.late_committed"
+      ]
+    ],
+    "camellia.harem.eligible": [
+      [
+        "camellia.committed"
+      ],
+      [
+        "camellia.trickster.late_committed"
+      ]
+    ],
+    "eritrice.harem.eligible": [
+      [
+        "eritrice.committed"
+      ],
+      [
+        "eritrice.trickster.late_committed"
+      ]
+    ],
+    "areelu.harem.eligible": [
+      [
+        "areelu.committed"
+      ],
+      [
+        "areelu.trickster.late_committed"
+      ]
+    ],
+    "chadali.harem.eligible": [
+      [
+        "chadali.committed"
+      ],
+      [
+        "chadali.trickster.late_committed"
+      ]
+    ],
+    "arueshalae.harem.eligible": [
+      [
+        "arueshalae.committed"
+      ],
+      [
+        "arueshalae.trickster.late_committed"
+      ]
+    ],
+    "devarra.harem.eligible": [
+      [
+        "devarra.committed"
+      ],
+      [
+        "devarra.trickster.late_committed"
+      ]
+    ],
+    "household.any_eligible": [
+      [
+        "tirabade.harem.eligible"
+      ],
+      [
+        "anevia.harem.eligible"
+      ],
+      [
+        "irabeth.harem.eligible"
+      ],
+      [
+        "seelah.harem.eligible"
+      ],
+      [
+        "konomi.harem.eligible"
+      ],
+      [
+        "jerribeth.harem.eligible"
+      ],
+      [
+        "kiana.harem.eligible"
+      ],
+      [
+        "soana.harem.eligible"
+      ],
+      [
+        "arsinoe.harem.eligible"
+      ],
+      [
+        "targona.harem.eligible"
+      ],
+      [
+        "gesmerha.harem.eligible"
+      ],
+      [
+        "vellexia.harem.eligible"
+      ],
+      [
+        "aranka.harem.eligible"
+      ],
+      [
+        "minagho_chivarro.harem.eligible"
+      ],
+      [
+        "nocticula.harem.eligible"
+      ],
+      [
+        "nurah.harem.eligible"
+      ],
+      [
+        "dorgelinda.harem.eligible"
+      ],
+      [
+        "hepzamirah.harem.eligible"
+      ],
+      [
+        "camellia.harem.eligible"
+      ],
+      [
+        "eritrice.harem.eligible"
+      ],
+      [
+        "areelu.harem.eligible"
+      ],
+      [
+        "chadali.harem.eligible"
+      ],
+      [
+        "arueshalae.harem.eligible"
+      ],
+      [
+        "devarra.harem.eligible"
+      ]
     ]
   },
   "PermanentEtudes": [
@@ -269830,6 +270233,1550 @@
             ]
           ],
           "Tooltip": "RRT_Debt"
+        },
+        {
+          "Id": "guest.tirabade",
+          "Section": "Guest List",
+          "Portrait": "Together",
+          "Title": "Anevia and Irabeth",
+          "Text": "{n}Anevia and Irabeth. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "tirabade.harem.stance.joined"
+              ],
+              "Forbids": [
+                "tirabade.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "tirabade.harem.stance.joined",
+                "tirabade.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "tirabade.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "tirabade.harem.stance.joined",
+                "tirabade.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "tirabade.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.anevia",
+          "Section": "Guest List",
+          "Portrait": "Anevia",
+          "Title": "Anevia",
+          "Text": "{n}Anevia. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "anevia.harem.stance.joined"
+              ],
+              "Forbids": [
+                "anevia.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "anevia.harem.stance.joined",
+                "anevia.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "anevia.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "anevia.harem.stance.joined",
+                "anevia.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "anevia.harem.eligible"
+          ],
+          "Forbids": [
+            "tirabade.harem.eligible"
+          ],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.irabeth",
+          "Section": "Guest List",
+          "Portrait": "Irabeth",
+          "Title": "Irabeth",
+          "Text": "{n}Irabeth. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "irabeth.harem.stance.joined"
+              ],
+              "Forbids": [
+                "irabeth.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "irabeth.harem.stance.joined",
+                "irabeth.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "irabeth.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "irabeth.harem.stance.joined",
+                "irabeth.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "irabeth.harem.eligible"
+          ],
+          "Forbids": [
+            "tirabade.harem.eligible"
+          ],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.seelah",
+          "Section": "Guest List",
+          "Portrait": "Seelah",
+          "Title": "Seelah",
+          "Text": "{n}Seelah. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "seelah.harem.stance.joined"
+              ],
+              "Forbids": [
+                "seelah.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "seelah.harem.stance.joined",
+                "seelah.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "seelah.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "seelah.harem.stance.joined",
+                "seelah.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She will not speak to Areelu.{/n}",
+              "Requires": [
+                "seelah.harem.enmity.areelu"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She will not speak to Camellia.{/n}",
+              "Requires": [
+                "seelah.harem.enmity.camellia"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "seelah.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.konomi",
+          "Section": "Guest List",
+          "Portrait": "Konomi",
+          "Title": "Konomi",
+          "Text": "{n}Konomi. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "konomi.harem.stance.joined"
+              ],
+              "Forbids": [
+                "konomi.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "konomi.harem.stance.joined",
+                "konomi.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "konomi.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "konomi.harem.stance.joined",
+                "konomi.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "konomi.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.jerribeth",
+          "Section": "Guest List",
+          "Portrait": "Jerribeth",
+          "Title": "Jerribeth",
+          "Text": "{n}Jerribeth. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "jerribeth.harem.stance.joined"
+              ],
+              "Forbids": [
+                "jerribeth.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "jerribeth.harem.stance.joined",
+                "jerribeth.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "jerribeth.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "jerribeth.harem.stance.joined",
+                "jerribeth.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "jerribeth.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.kiana",
+          "Section": "Guest List",
+          "Portrait": "Kiana",
+          "Title": "Kiana",
+          "Text": "{n}Kiana. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "kiana.harem.stance.joined"
+              ],
+              "Forbids": [
+                "kiana.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "kiana.harem.stance.joined",
+                "kiana.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "kiana.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "kiana.harem.stance.joined",
+                "kiana.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "kiana.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.soana",
+          "Section": "Guest List",
+          "Portrait": "Soana",
+          "Title": "Soana",
+          "Text": "{n}Soana. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "soana.harem.stance.joined"
+              ],
+              "Forbids": [
+                "soana.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "soana.harem.stance.joined",
+                "soana.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "soana.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "soana.harem.stance.joined",
+                "soana.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "soana.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.arsinoe",
+          "Section": "Guest List",
+          "Portrait": "Arsinoe",
+          "Title": "Arsinoe",
+          "Text": "{n}Arsinoe. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "arsinoe.harem.stance.joined"
+              ],
+              "Forbids": [
+                "arsinoe.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "arsinoe.harem.stance.joined",
+                "arsinoe.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "arsinoe.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "arsinoe.harem.stance.joined",
+                "arsinoe.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She will not speak to Nurah.{/n}",
+              "Requires": [
+                "arsinoe.harem.enmity.nurah"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "arsinoe.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.targona",
+          "Section": "Guest List",
+          "Portrait": "Targona",
+          "Title": "Targona",
+          "Text": "{n}Targona. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "targona.harem.stance.joined"
+              ],
+              "Forbids": [
+                "targona.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "targona.harem.stance.joined",
+                "targona.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "targona.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "targona.harem.stance.joined",
+                "targona.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "targona.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.gesmerha",
+          "Section": "Guest List",
+          "Portrait": "Gesmerha",
+          "Title": "Gesmerha",
+          "Text": "{n}Gesmerha. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "gesmerha.harem.stance.joined"
+              ],
+              "Forbids": [
+                "gesmerha.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "gesmerha.harem.stance.joined",
+                "gesmerha.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "gesmerha.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "gesmerha.harem.stance.joined",
+                "gesmerha.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "gesmerha.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.vellexia",
+          "Section": "Guest List",
+          "Portrait": "Vellexia",
+          "Title": "Vellexia",
+          "Text": "{n}Vellexia. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "vellexia.harem.stance.joined"
+              ],
+              "Forbids": [
+                "vellexia.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "vellexia.harem.stance.joined",
+                "vellexia.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "vellexia.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "vellexia.harem.stance.joined",
+                "vellexia.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "vellexia.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.aranka",
+          "Section": "Guest List",
+          "Portrait": "Aranka",
+          "Title": "Aranka",
+          "Text": "{n}Aranka. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "aranka.harem.stance.joined"
+              ],
+              "Forbids": [
+                "aranka.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "aranka.harem.stance.joined",
+                "aranka.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "aranka.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "aranka.harem.stance.joined",
+                "aranka.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "aranka.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.minagho_chivarro",
+          "Section": "Guest List",
+          "Portrait": "Minagho",
+          "Title": "Minagho and Chivarro",
+          "Text": "{n}Minagho and Chivarro. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Minagho: at the table.{/n}",
+              "Requires": [
+                "minagho_chivarro.harem.stance.minagho.joined"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Minagho: {g|RRT_AtTheTableApart}at the table, apart{/g}.{/n}",
+              "Requires": [
+                "minagho_chivarro.harem.stance.minagho.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Minagho: not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "minagho_chivarro.harem.stance.minagho.joined",
+                "minagho_chivarro.harem.stance.minagho.tolerated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Chivarro: at the table.{/n}",
+              "Requires": [
+                "minagho_chivarro.harem.stance.chivarro.joined"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Chivarro: {g|RRT_AtTheTableApart}at the table, apart{/g}.{/n}",
+              "Requires": [
+                "minagho_chivarro.harem.stance.chivarro.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Chivarro: not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "minagho_chivarro.harem.stance.chivarro.joined",
+                "minagho_chivarro.harem.stance.chivarro.tolerated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Minagho will not speak to Hepzamirah.{/n}",
+              "Requires": [
+                "minagho_chivarro.harem.enmity.minagho.hepzamirah"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Chivarro will not speak to Hepzamirah.{/n}",
+              "Requires": [
+                "minagho_chivarro.harem.enmity.chivarro.hepzamirah"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "minagho_chivarro.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.nocticula",
+          "Section": "Guest List",
+          "Portrait": "Nocticula",
+          "Title": "Nocticula",
+          "Text": "{n}Nocticula. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "nocticula.harem.stance.joined"
+              ],
+              "Forbids": [
+                "nocticula.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "nocticula.harem.stance.joined",
+                "nocticula.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "nocticula.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "nocticula.harem.stance.joined",
+                "nocticula.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She will not speak to Arueshalae.{/n}",
+              "Requires": [
+                "nocticula.harem.enmity.arueshalae"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "nocticula.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.nurah",
+          "Section": "Guest List",
+          "Portrait": "Nurah",
+          "Title": "Nurah",
+          "Text": "{n}Nurah. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "nurah.harem.stance.joined"
+              ],
+              "Forbids": [
+                "nurah.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "nurah.harem.stance.joined",
+                "nurah.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "nurah.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "nurah.harem.stance.joined",
+                "nurah.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She will not speak to Arsinoe.{/n}",
+              "Requires": [
+                "nurah.harem.enmity.arsinoe"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "nurah.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.dorgelinda",
+          "Section": "Guest List",
+          "Portrait": "Dorgelinda",
+          "Title": "Dorgelinda",
+          "Text": "{n}Dorgelinda. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "dorgelinda.harem.stance.joined"
+              ],
+              "Forbids": [
+                "dorgelinda.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "dorgelinda.harem.stance.joined",
+                "dorgelinda.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "dorgelinda.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "dorgelinda.harem.stance.joined",
+                "dorgelinda.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "dorgelinda.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.hepzamirah",
+          "Section": "Guest List",
+          "Portrait": "Hepzamirah",
+          "Title": "Hepzamirah",
+          "Text": "{n}Hepzamirah. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "hepzamirah.harem.stance.joined"
+              ],
+              "Forbids": [
+                "hepzamirah.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "hepzamirah.harem.stance.joined",
+                "hepzamirah.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "hepzamirah.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "hepzamirah.harem.stance.joined",
+                "hepzamirah.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She will not speak to Minagho and Chivarro.{/n}",
+              "Requires": [
+                "hepzamirah.harem.enmity.minagho_chivarro"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "hepzamirah.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.camellia",
+          "Section": "Guest List",
+          "Portrait": "Camellia",
+          "Title": "Camellia",
+          "Text": "{n}Camellia. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "camellia.harem.stance.joined"
+              ],
+              "Forbids": [
+                "camellia.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "camellia.harem.stance.joined",
+                "camellia.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "camellia.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "camellia.harem.stance.joined",
+                "camellia.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She will not speak to Seelah.{/n}",
+              "Requires": [
+                "camellia.harem.enmity.seelah"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "camellia.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.eritrice",
+          "Section": "Guest List",
+          "Portrait": "Eritrice",
+          "Title": "Eritrice",
+          "Text": "{n}Eritrice. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "eritrice.harem.stance.joined"
+              ],
+              "Forbids": [
+                "eritrice.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "eritrice.harem.stance.joined",
+                "eritrice.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "eritrice.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "eritrice.harem.stance.joined",
+                "eritrice.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "eritrice.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.areelu",
+          "Section": "Guest List",
+          "Portrait": "Areelu",
+          "Title": "Areelu",
+          "Text": "{n}Areelu. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "areelu.harem.stance.joined"
+              ],
+              "Forbids": [
+                "areelu.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "areelu.harem.stance.joined",
+                "areelu.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "areelu.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "areelu.harem.stance.joined",
+                "areelu.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She will not speak to Seelah.{/n}",
+              "Requires": [
+                "areelu.harem.enmity.seelah"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "areelu.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.chadali",
+          "Section": "Guest List",
+          "Portrait": "Chadali",
+          "Title": "Chadali",
+          "Text": "{n}Chadali. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "chadali.harem.stance.joined"
+              ],
+              "Forbids": [
+                "chadali.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "chadali.harem.stance.joined",
+                "chadali.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "chadali.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "chadali.harem.stance.joined",
+                "chadali.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "chadali.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.arueshalae",
+          "Section": "Guest List",
+          "Portrait": "Arueshalae",
+          "Title": "Arueshalae",
+          "Text": "{n}Arueshalae. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "arueshalae.harem.stance.joined"
+              ],
+              "Forbids": [
+                "arueshalae.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "arueshalae.harem.stance.joined",
+                "arueshalae.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "arueshalae.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "arueshalae.harem.stance.joined",
+                "arueshalae.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She will not speak to Nocticula.{/n}",
+              "Requires": [
+                "arueshalae.harem.enmity.nocticula"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "arueshalae.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "guest.devarra",
+          "Section": "Guest List",
+          "Portrait": "Devarra",
+          "Title": "Devarra",
+          "Text": "{n}Devarra. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}At the table.{/n}",
+              "Requires": [
+                "devarra.harem.stance.joined"
+              ],
+              "Forbids": [
+                "devarra.harem.joined_late"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}At the table. She came to it late, and on her own terms.{/n}",
+              "Requires": [
+                "devarra.harem.stance.joined",
+                "devarra.harem.joined_late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}{g|RRT_AtTheTableApart}At the table, apart.{/g}{/n}",
+              "Requires": [
+                "devarra.harem.stance.tolerated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Not yet at the table.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "devarra.harem.stance.joined",
+                "devarra.harem.stance.tolerated"
+              ],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "devarra.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_GuestList"
+        },
+        {
+          "Id": "seating.seelah.camellia",
+          "Section": "Seating Notes",
+          "Portrait": "Seelah",
+          "Title": "Seelah and Camellia",
+          "Text": "{n}Seelah prays for the dead. Camellia makes them. Do not seat them where either can see the other's hands.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Settled. They share the table.{/n}",
+              "Requires": [
+                "household.friction.seelah.camellia.settled"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Failed. One of them sits apart now.{/n}",
+              "Requires": [
+                "household.friction.seelah.camellia.failed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "seelah.harem.eligible",
+            "camellia.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_SeatingNotes"
+        },
+        {
+          "Id": "seating.hepzamirah.minagho_chivarro",
+          "Section": "Seating Notes",
+          "Portrait": "Hepzamirah",
+          "Title": "Hepzamirah and Minagho and Chivarro",
+          "Text": "{n}Two of Baphomet's creditors at one table. Each thinks the other owes her. Both are right.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Settled. They share the table.{/n}",
+              "Requires": [
+                "household.friction.hepzamirah.minagho_chivarro.settled"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Failed. One of them sits apart now.{/n}",
+              "Requires": [
+                "household.friction.hepzamirah.minagho_chivarro.failed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "hepzamirah.harem.eligible",
+            "minagho_chivarro.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_SeatingNotes"
+        },
+        {
+          "Id": "seating.arueshalae.nocticula",
+          "Section": "Seating Notes",
+          "Portrait": "Arueshalae",
+          "Title": "Arueshalae and Nocticula",
+          "Text": "{n}The queen wants her rank acknowledged. The defector wants the debt burned. Neither wants the other's chair.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Settled. They share the table.{/n}",
+              "Requires": [
+                "household.friction.arueshalae.nocticula.settled"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Failed. One of them sits apart now.{/n}",
+              "Requires": [
+                "household.friction.arueshalae.nocticula.failed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "arueshalae.harem.eligible",
+            "nocticula.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_SeatingNotes"
+        },
+        {
+          "Id": "seating.arsinoe.nurah",
+          "Section": "Seating Notes",
+          "Portrait": "Arsinoe",
+          "Title": "Arsinoe and Nurah",
+          "Text": "{n}One of them keeps the crusade's accounts. The other has forged several of them. Arsinoe has not noticed yet.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Settled. They share the table.{/n}",
+              "Requires": [
+                "household.friction.arsinoe.nurah.settled"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Failed. One of them sits apart now.{/n}",
+              "Requires": [
+                "household.friction.arsinoe.nurah.failed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "arsinoe.harem.eligible",
+            "nurah.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_SeatingNotes"
+        },
+        {
+          "Id": "seating.seelah.areelu",
+          "Section": "Seating Notes",
+          "Portrait": "Seelah",
+          "Title": "Seelah and Areelu",
+          "Text": "{n}Some things cannot be joked away. Seelah will not break bread with the woman who made the Wound, and I will not ask her to without earning it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Settled. They share the table.{/n}",
+              "Requires": [
+                "household.friction.seelah.areelu.settled"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Failed. One of them sits apart now.{/n}",
+              "Requires": [
+                "household.friction.seelah.areelu.failed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}No word of mine will make this true. It needs something done.{/n}",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "seelah.harem.eligible",
+            "areelu.harem.eligible"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_SeatingNotes"
+        },
+        {
+          "Id": "seating.word_made_true",
+          "Section": "Seating Notes",
+          "Portrait": "",
+          "Title": "The Word, made true",
+          "Text": "{n}Three times, and no more, I can say a feud is over and have the world agree. Each time leaves a {g|RRT_Debt}debt{/g}, and the women who keep to the truth will know it was said.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Three words left in me.{/n}",
+              "Requires": [
+                "trickster.wmt.left.3"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Two words left in me.{/n}",
+              "Requires": [
+                "trickster.wmt.left.2"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}One word left in me.{/n}",
+              "Requires": [
+                "trickster.wmt.left.1"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}No words left. From here on I settle things the long way.{/n}",
+              "Requires": [
+                "trickster.wmt.left.0"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [
+            "trickster",
+            "household.table.kept"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_WordMadeTrueUses"
         }
       ]
     },
@@ -269947,7 +271894,53 @@
   "UnlockableFlags": {
     "kyado.dead": "8c8b748a66ebad84f9b4cbcd73c2aab9"
   },
+  "Openers": [
+    {
+      "Id": "household.table.c3",
+      "Relationship": "household",
+      "AnswerList": "1a17d8053a3be7f47a7908eb6706f2fe",
+      "Text": "[The corner table]",
+      "View": "table",
+      "Requires": [
+        "trickster",
+        "household.table.kept"
+      ],
+      "Forbids": [],
+      "MinChapter": 3,
+      "MaxChapter": 4
+    },
+    {
+      "Id": "household.table.c5",
+      "Relationship": "household",
+      "AnswerList": "6dccfd39947ef4242a8afbe36b21a46c",
+      "Text": "[The corner table]",
+      "View": "table",
+      "Requires": [
+        "trickster",
+        "household.table.kept"
+      ],
+      "Forbids": [],
+      "MinChapter": 5,
+      "MaxChapter": 5
+    }
+  ],
   "Glossary": {
+    "RRT_Table": {
+      "Name": "The Table",
+      "Description": "The corner table in the Fool King's tavern, kept for the Commander's household. It lists only what is waiting now: an introduction, an invitation, a seating to settle."
+    },
+    "RRT_GuestList": {
+      "Name": "Guest List",
+      "Description": "Every partner the Commander has won, and where she sits: at the table, at the table but apart from one woman she cannot stand, or not yet at the table."
+    },
+    "RRT_SeatingNotes": {
+      "Name": "Seating Notes",
+      "Description": "The pairs with a real reason to clash, and what might settle each. Settling one takes something done: a trick, an item, a favour, a job. Failing one leaves a woman at the table, apart."
+    },
+    "RRT_WordMadeTrueUses": {
+      "Name": "Word Made True: uses",
+      "Description": "The Trickster may declare a feud settled and make it so, three times in a campaign. Each use leaves a debt, the women who value the truth notice, and it never works on an atrocity."
+    },
     "RRT_Mailbag": {
       "Name": "The Satchel",
       "Description": "Letters that arrive while you rest wait here until you read them. Open any of them, in any order; the rest will keep. A correspondent's next letter arrives only once you have read the one before."
