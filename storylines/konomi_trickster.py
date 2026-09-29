@@ -7,7 +7,9 @@ Nerosyan" (Cue_0075 384cd664). She prices everything: "Very well, let us talk pr
 (Diplomacy_Officer/Cue_0038 efe7fee4). Kyado names the Trickster's rule: "your tricks somehow become the truth" (Kyado_main_
 dialogue/Cue_0109 509eac82, PlayerIsTrickster only). Authored, and labelled as authored: the road that takes a farewell at
 its word; a soul that refuses a recall from her killer until she names her own fee (Pharasma's rule: only the willing
-return); a secretary in Nerosyan who writes the wrong word in the right column. She prices, bills, refuses, and can walk away.
+return); a Nerosyan informer in the Drezen chancery, noticed and used as a postman (her canon: her people "live
+everywhere"). The road is this route's one word made true (Kyado's rule); the recall is her own bargain and the
+credentials are protocol worked through a spy. She prices, bills, refuses, and can walk away.
 """
 from story_format import c, n, p, reaction, scene
 
@@ -34,6 +36,8 @@ RECALLED = "konomi.trickster.cost.recalled"
 FEE = "konomi.trickster.cost.consult_fee"
 FEE_PAID = "konomi.trickster.fee_paid"
 ACCREDITED = "konomi.trickster.cost.accredited"
+STEWARD_PAID = "konomi.trickster.cost.steward_paid"       # the informer paid, and left in the chancery
+STEWARD_BURNED = "konomi.trickster.cost.steward_burned"   # the informer threatened with the rope, and gone
 JOURNEY = "konomi.trickster.journey_paid"
 LATE_COMMITTED = "konomi.trickster.late_committed"
 DEAD = "konomi.retained_dead"
@@ -250,7 +254,7 @@ letter("konomi.trickster.dead.recalled", "For consultations", [
 {n}The clerk has not breathed for some time.{/n}''',
       c('[Agree to her fee] "Triple. In advance. Your decision, on the record."', "record", alignment=("Chaotic", 1))),
     nar("record", '''{n}A dead woman's hand turns on the folded fan, very slightly, palm-up, the way an attaché receives a sealed dispatch.{/n}
-{n}The clerk crosses out DECEASED. Above it, in a neater hand that is not his, someone has added: FOR CONSULTATIONS, AT HER OWN REQUEST.{/n}''',
+{n}The clerk crosses out DECEASED. Above it, in his best hand, at the dictation of a dry voice he will swear for the rest of his life he did not hear, he writes: FOR CONSULTATIONS, AT HER OWN REQUEST.{/n}''',
       c('[Let her come back.]', revive="konomi", flags=(CONFIRMED,))),
 ], requires=("trickster", DEAD), forbids=(CONFIRMED, "konomi.return_path_prepared"), delay=0,
    chapters=(3, 5), Recovery="konomi", TricksterDevice=True, TricksterState=DEAD)
@@ -280,15 +284,25 @@ physical("konomi.trickster.dead.consultation", "Triple, in advance", '"You asked
 # --- State never_arrived: credentials deemed presented (F03, the secretary's register) -----------------------------
 
 letter("konomi.trickster.never_arrived.accredited", "Deemed presented", [
-    nar("start", '''{n}The war council sits. At the foot of the table there is a chair for Nerosyan's attaché, because the Crown's protocol says a crusade's council has one, and the steward keeps protocol the way other men keep saints' days. Nobody has ever come to sit in it. Somebody has put a jug on it.{/n}''',
-      c('[Bow to the empty chair] "Lady Konomi\'s credentials are hereby deemed presented. Someone tell her she\'s late for her own audience."',
+    nar("start", '''{n}The war council sits. At the foot of the table there is a chair for Nerosyan's attaché, because the Crown's protocol says a crusade's council has one, and the steward keeps protocol the way other men keep saints' days. Nobody has ever come to sit in it. Somebody has put a jug on it.{/n}
+{n}The steward sets her place anyway, every session: a cup, a pen, a sheet of the Crown's paper. He is a quiet old man who came with the Queen's household and has never once been asked to leave a room. He stands behind the empty chair through every council, and after every council, you have noticed, he climbs to the chancery dovecote with a slip of paper no clerk gave him. Nerosyan keeps eyes in every great house in Mendev. Everyone knows it, and nobody looks.{/n}''',
+      c('[Bow to the empty chair, with the steward behind it] "Lady Konomi\'s credentials are hereby deemed presented. Someone tell her she\'s late for her own audience."',
         "nerosyan", mythic="Trickster", alignment=("Chaotic", 1)),
       c('[Move the jug and carry on.] "..."', abort=True)),
-    nar("nerosyan", '''{n}The council laughs politely. You bow to the jug anyway, properly, from the waist.{/n}
-{n}The same hour, in Nerosyan. A junior secretary of the Royal Council is copying the day's dispatches by a bad lamp. He writes 'Drezen: credentials presented' in the column for the attaché's journey, where 'Drezen: pending' should go. He stares at it. The register is sealed at the bell, and the Chancellor's office docks a clerk a week's wage for every scraped line; he has two sisters and no second shirt. He blots it, and tells himself it was always like that, and at the bell it is sealed. In Nerosyan a sealed register is fact.{/n}
-{n}Across the room, at a reception, a kitsune in grey silk is being very charming to a margrave she despises. She has never been to Drezen. She has no idea.{/n}
-{n}In Drezen, when the steward lifts the jug, the seat beneath it is warm.{/n}''',
-      c("Continue", flags=(PRIMED, ACCREDITED, "konomi.missed_letter_sent", "konomi.started"))),
+    nar("nerosyan", '''{n}The council laughs politely. You bow to the jug anyway, properly, from the waist, and hold the bow long enough to be sure of the one man in the room who did not laugh. Behind the chair the steward has gone very still, the way a fox goes still in long grass.{/n}
+{n}You find him that evening in the dovecote above the chancery, with a bird in his hands and a slip already rolled on its leg. He does not pretend to be feeding it. The penalty in Mendev for a foreign informer in a crusade's chancery is the rope, and you both know it.{/n}''',
+      c('[Pay him to send it word for word] "Add a line to tonight\'s report. The Commander presented Lady Konomi\'s credentials in full council. To a jug. Word for word."',
+        "sent_paid", crusade=("Finances", -100),
+        flags=(PRIMED, ACCREDITED, "konomi.missed_letter_sent", "konomi.started", STEWARD_PAID)),
+      c('[Threaten him with the rope] "Send it word for word. Then pack. If you are in Drezen at dawn, I find out how well you hang."',
+        "sent_burned", alignment=("Evil", 1),
+        flags=(PRIMED, ACCREDITED, "konomi.missed_letter_sent", "konomi.started", STEWARD_BURNED))),
+    nar("sent_paid", '''{n}He names a price exactly one copper higher than you expected and takes it without counting. The bird goes out over the lower town into the dark. In the morning he is at his post behind the chair, laying a cup and a pen for nobody, and every word your council says from now on goes up that ladder with your blessing.{/n}
+{n}Two days later, in Nerosyan, the Chancellor's office reads the dovecote's report, as it reads every report from Drezen before anyone else does, and enters in its register, column four: 'Drezen: credentials presented.' The Commander of the crusade said it in full council, before witnesses. In Nerosyan a thing the Commander says in full council is protocol until someone proves otherwise, and nobody in the Chancellor's office wants the work.{/n}''',
+      c("Continue")),
+    nar("sent_burned", '''{n}He sends it. His hands are steady on the bird and on nothing else. In the morning the place behind the chair is empty. Someone has laid a cup and a pen for the attaché, out of habit, and the chancery spends a week finding out that the only man who knew where every key was kept has gone, and taken none of them with him.{/n}
+{n}Two days later, in Nerosyan, the Chancellor's office reads the dovecote's last report and enters in its register, column four: 'Drezen: credentials presented.' The Commander of the crusade said it in full council, before witnesses, and in Nerosyan that is protocol until someone proves otherwise. A second slip comes in on the same bird, in the same hand, smaller. It is the Commander's name.{/n}''',
+      c("Continue")),
 ], requires=("trickster", "konomi.missed_contact_available"),
    forbids=("konomi.present", "konomi.dismissed", "konomi.missed_contact_invalidated", RETURNED, ACCREDITED), delay=0,
    chapters=(3, 5), TricksterDevice=True, TricksterState="konomi.missed_contact_available")
@@ -296,7 +310,8 @@ letter("konomi.trickster.never_arrived.accredited", "Deemed presented", [
 physical("konomi.trickster.never_arrived.audience", "Late for her own audience", '[Greet the woman in the attaché\'s office.]', [
     k("start", '''{n}A kitsune in travelling silks is standing in the attaché's office, empty since Drezen fell, with a ledger under her arm, as if she had been there for an hour. She has.{/n}
 "Lady Konomi, official attaché of Nerosyan. Here are my credentials." {n}She holds out her credentials. The ink on the date is two days old.{/n} "Though I understand they have already been presented. By you. To a jug."
-"I was halfway through a reception in Nerosyan when a secretary showed me his register. Column four, in his hand: 'credentials presented, Drezen'. He could not say how. Nobody could. I have come to see what I said."
+"I was halfway through a reception in Nerosyan when the Chancellor's clerk showed me his register. Column four: 'credentials presented, Drezen', entered on the strength of a report from our dovecote in your chancery. My people live everywhere, Commander. You are not supposed to be aware of it. One of them has stood behind that chair since your council first sat, and nobody in this city has ever looked at him twice. You looked. Then you used him to send me an invitation by my own post."
+"He is either richer or gone. I have not yet decided which of those I shall bill you for."
 {n}Her smile is small, sharp and entirely pleased with itself.{/n}
 "The journey is on your account, Commander. So is the reception I left. It was a very good reception."
 "And one thing more. On the strength of that register, the Chancellor's office stopped paying my stipend in the capital three months ago and began charging it to Drezen. Arrears. They would like to know why you never reported my arrival. So, frankly, would I."''',
@@ -323,12 +338,12 @@ TRICKSTER_PARAGRAPHS = (
       "nobody else was shown.", requires=(RECESSED, OUTFOXED)),
     p("She kept the unnamed favour for years, and mentioned it only when the Commander seemed in danger of forgetting it.",
       requires=(FAVOUR,)),
-    p("Nerosyan's archive holds one dispatch with a word crossed out and six words added in a neater hand. Lady Konomi had "
+    p("Nerosyan's archive holds one dispatch with a word crossed out and six words added at a dead woman's dictation. Lady Konomi had "
       "it framed, and billed the crown for the frame. Every envoy who ever sat across from her read it, and asked, and was "
       "told plainly that the Commander had killed her. None of them ever again quite trusted a treaty the Commander signed.",
       requires=(RETURNED, RECALLED)),
-    p("In the Royal Council's register for that year, column four still reads 'credentials presented, Drezen', in a junior "
-      "secretary's hand, two days before anyone left the capital. Auditors query it every spring. Lady Konomi signs the "
+    p("In the Royal Council's register for that year, column four still reads 'credentials presented, Drezen', entered from "
+      "a dovecote's report two days before anyone left the capital. Auditors query it every spring. Lady Konomi signs the "
       "query every spring, and sends it back.", requires=(RETURNED, ACCREDITED)),
 )
 
@@ -381,7 +396,7 @@ REACTIONS = [
     reaction("Regill", "konomi.trickster.never_arrived.react_regill", (RETURNED, ACCREDITED),
              '''"Credentials are presented, or they are not, Commander. 'Deemed' is a word for people who have lost the argument."
 {n}Regill's mouth tightens a fraction.{/n}
-"And yet here she is, with Nerosyan's register to prove it, in a secretary's hand that no court could fault. I dislike being out-argued by furniture."''',
+"And yet here she is, with Nerosyan's register to prove it. You found a foreign informer in your own chancery and, instead of hanging him, made him your postman. I dislike being out-argued by furniture. I dislike the rest of it more."''',
              answer_list=REGILL_HUB, forbids=REGILL_GONE, chapter=3, last=5, entry='"About Lady Konomi..."'),
     reaction("Kyado", "konomi.trickster.never_arrived.react_kyado", (RETURNED, ACCREDITED, "kyado.in_drezen"),
              '''{n}Kyado laughs before he can stop himself, then looks guilty about it.{/n}
