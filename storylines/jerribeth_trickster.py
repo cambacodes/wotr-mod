@@ -107,7 +107,9 @@ SCENES.append(scene("jerribeth.trickster.dead.setup_greeting", "Rent", "Jerribet
 {n}A pause, long enough for the Sanctum's cold to find the back of your neck.{/n}
 "You would charge a demon rent for the use of your own head. How very mortal. I always read the small print, Commander. Yours has none."
 {n}Laughter, high and abrasive, like a buzzing insect, and for one moment it comes from inside your ear rather than beside it.{/n}
-"Very well. Lease accepted. Consider it a small investment on my part. You will not feel it. Probably."''',
+"Do you know what I left in Wintersun? Ideas. I have not been there in months, and they are still there, because the heads they live in grew used to them. A thought a house keeps does not need its mother, crusader. It needs the house."
+{n}The antennae tilt, pricing you.{/n}
+"Very well. Lease accepted. And I shall pay my rent in the only coin a tenant like me carries: one of your memories a month, my choice, taken in lieu of repairs. Consider it a small investment on my part. You will not feel it. Probably."''',
       c("Continue", "lore", requires=(EGG_LORE,)),
       c('"Now. The deal."', forbids=(EGG_LORE,), flags=(PRIMED,))),
     j("lore", '''"Your fox has told you what we lay, and where. And still you offer me a room."
@@ -131,7 +133,7 @@ SCENES.append(scene("jerribeth.trickster.dead.setup_final", "A lease, read in ad
       c('"On second thought, keep out of my head."', abort=True)),
     j("accepted", '''"Accepted."
 {n}Something settles behind your left eye, light as a moth on a sleeve.{/n}
-"Deals with demons are a losing game, Commander. I said so myself. We shall see which of us is losing this one."''',
+"A room you give is a room I keep, even when I am not there to keep it. Ask Wintersun. I pay my rent in your memories, one a month, my choice. Deals with demons are a losing game, Commander. I said so myself. We shall see which of us is losing this one."''',
       c('"We\'ll see."')),
 ], requires=("trickster",), forbids=(PRIMED, DEAD), last=3, optional=True, Relationship="jerribeth", Chapters=[3],
    AnswerLists=[FINAL_LIST]))
@@ -183,7 +185,7 @@ SCENES.append(scene("jerribeth.trickster.dead.tenant", "The tenant", "Jerribeth"
       c("Continue", "tenant")),
     j("tenant", '''"Commander. You told me I could plant whatever I liked, and that you would charge rent. I planted. You charged."
 {n}The voice is exactly where it was in the Sanctum: behind your eyes, a little to the left.{/n}
-"When the sword went through me, the seed began to die. And then it remembered it had a lease. A lodger is not evicted by a sword through its landlady."
+"When the sword went through me, the seed began to die, as my children do when I do. Then it found what my Wintersun ideas found: a house that had agreed to keep it. You gave it a room, and it paid its rent every month, the way I set it: one of your memories, taken and kept. A house that has been paid is a house that holds."
 {n}Laughter buzzes behind your eyes, high and abrasive.{/n}
 "I am in arrears. You are haunted. Which of us minds more, do you think?"''', *_TENANT_ENTRY),
     *_TENANT_NODES,
@@ -295,7 +297,7 @@ REFUSED_PARAGRAPH = p(
 
 SCENES.append(scene("jerribeth.trickster.epilogue.commit", "The guest who knocked", "Epilogue", 5, "", [
     nar("offer", '''{n}The war ended before the lease did. Jerribeth came to the Commander's door the first spring after the Worldwound closed, in a guise the guards did not question, with the clause she had been saving.{/n}
-"The forfeit is one memory, of my choosing, when I choose. Give me your hand, or do not. I have already read your answer."''',
+"The forfeit is one memory, of my choosing, when I choose. I have already read your answer, Commander. Show me whether I read it right."''',
       c('[Give her your hand.]', "signed"),
       c('[Keep your hands folded in your lap.]', "torn")),
     nar("signed", '''{n}The Commander held out a hand. She turned it palm up and read it twice, the way she read small print, as if checking it for a trick, and did not find one, and seemed disappointed and pleased in exactly equal measure.{/n}
@@ -307,7 +309,7 @@ SCENES.append(scene("jerribeth.trickster.epilogue.commit", "The guest who knocke
     nar("torn", '''{n}The Commander kept both hands folded in their lap, where she could see them.{/n}
 {n}She studied the hands, then the face above them. Then she laughed, high and abrasive, loud enough to bring the guard running.{/n}
 "No forfeit, no lease. And still you open the door to me." {n}She sat down anyway, uninvited, at the Commander's own table.{/n} "You are very bad at this, Commander. I shall come back tomorrow, and the day after, until one of us learns to write a better one."
-{n}She did. Neither of them ever did. The Commander kept every memory of the war, including the ones worth losing.{/n}''',
+{n}She did. Neither of them ever did. Whatever else she took, the Commander kept the war, including the parts worth losing.{/n}''',
       c())],
     requires=("trickster.ever", "jerribeth.commission", LATE_COMMITTED),
     forbids=("jerribeth.committed", "jerribeth.closed", DECLINED, DEAD), last=99, Relationship="jerribeth",
@@ -480,7 +482,7 @@ IN_PERSON = [
 {n}She takes your hands and sets them at her waist, where the illusion is warm and the thing beneath it is hard and ridged and moving under your palms. She watches you feel the difference. She enjoys it far more than the face would suggest.{/n}''',
       c("Continue", "ask")),
     j("ask", '''{n}She takes both your wrists, loosely, the way she once held a locust she had not yet decided to pin, and does not close her hand.{/n}
-"I like things still, Commander. I like them to have chosen to be still. Give me your hands, or keep them. I shall read either answer, and I shall enjoy either answer, and only one of them will leave marks."''',
+"I collect things that hold still, Commander. The ones that hold still for me, I keep. Let us find out which you are."''',
       c('[Give her your wrists.]', "threshold"),
       c('[Keep your hands, and pull her down to you.]', "threshold_free")),
     nar("threshold_free", '''{n}You take your hands back and put them on her instead: the ridge of her carapace, the cold hinge of a wing. She goes very still, and then the buzzing starts again, lower, and you realise it is a laugh.{/n}

@@ -29318,7 +29318,7 @@
         {
           "Id": "ask",
           "Speaker": "Jerribeth",
-          "Text": "{n}She takes both your wrists, loosely, the way she once held a locust she had not yet decided to pin, and does not close her hand.{/n}\n\"I like things still, Commander. I like them to have chosen to be still. Give me your hands, or keep them. I shall read either answer, and I shall enjoy either answer, and only one of them will leave marks.\"",
+          "Text": "{n}She takes both your wrists, loosely, the way she once held a locust she had not yet decided to pin, and does not close her hand.{/n}\n\"I collect things that hold still, Commander. The ones that hold still for me, I keep. Let us find out which you are.\"",
           "Choices": [
             {
               "Text": "[Give her your wrists.]",
@@ -148606,7 +148606,7 @@
         {
           "Id": "lease",
           "Speaker": "Jerribeth",
-          "Text": "{n}The buzzing in your skull stops, as if something with many legs has gone very still.{/n}\n\"Rent.\"\n{n}A pause, long enough for the Sanctum's cold to find the back of your neck.{/n}\n\"You would charge a demon rent for the use of your own head. How very mortal. I always read the small print, Commander. Yours has none.\"\n{n}Laughter, high and abrasive, like a buzzing insect, and for one moment it comes from inside your ear rather than beside it.{/n}\n\"Very well. Lease accepted. Consider it a small investment on my part. You will not feel it. Probably.\"",
+          "Text": "{n}The buzzing in your skull stops, as if something with many legs has gone very still.{/n}\n\"Rent.\"\n{n}A pause, long enough for the Sanctum's cold to find the back of your neck.{/n}\n\"You would charge a demon rent for the use of your own head. How very mortal. I always read the small print, Commander. Yours has none.\"\n{n}Laughter, high and abrasive, like a buzzing insect, and for one moment it comes from inside your ear rather than beside it.{/n}\n\"Do you know what I left in Wintersun? Ideas. I have not been there in months, and they are still there, because the heads they live in grew used to them. A thought a house keeps does not need its mother, crusader. It needs the house.\"\n{n}The antennae tilt, pricing you.{/n}\n\"Very well. Lease accepted. And I shall pay my rent in the only coin a tenant like me carries: one of your memories a month, my choice, taken in lieu of repairs. Consider it a small investment on my part. You will not feel it. Probably.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -148709,7 +148709,7 @@
         {
           "Id": "accepted",
           "Speaker": "Jerribeth",
-          "Text": "\"Accepted.\"\n{n}Something settles behind your left eye, light as a moth on a sleeve.{/n}\n\"Deals with demons are a losing game, Commander. I said so myself. We shall see which of us is losing this one.\"",
+          "Text": "\"Accepted.\"\n{n}Something settles behind your left eye, light as a moth on a sleeve.{/n}\n\"A room you give is a room I keep, even when I am not there to keep it. Ask Wintersun. I pay my rent in your memories, one a month, my choice. Deals with demons are a losing game, Commander. I said so myself. We shall see which of us is losing this one.\"",
           "Choices": [
             {
               "Text": "\"We'll see.\"",
@@ -148932,7 +148932,7 @@
         {
           "Id": "tenant",
           "Speaker": "Jerribeth",
-          "Text": "\"Commander. You told me I could plant whatever I liked, and that you would charge rent. I planted. You charged.\"\n{n}The voice is exactly where it was in the Sanctum: behind your eyes, a little to the left.{/n}\n\"When the sword went through me, the seed began to die. And then it remembered it had a lease. A lodger is not evicted by a sword through its landlady.\"\n{n}Laughter buzzes behind your eyes, high and abrasive.{/n}\n\"I am in arrears. You are haunted. Which of us minds more, do you think?\"",
+          "Text": "\"Commander. You told me I could plant whatever I liked, and that you would charge rent. I planted. You charged.\"\n{n}The voice is exactly where it was in the Sanctum: behind your eyes, a little to the left.{/n}\n\"When the sword went through me, the seed began to die, as my children do when I do. Then it found what my Wintersun ideas found: a house that had agreed to keep it. You gave it a room, and it paid its rent every month, the way I set it: one of your memories, taken and kept. A house that has been paid is a house that holds.\"\n{n}Laughter buzzes behind your eyes, high and abrasive.{/n}\n\"I am in arrears. You are haunted. Which of us minds more, do you think?\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -149639,7 +149639,7 @@
         {
           "Id": "offer",
           "Speaker": "Narrator",
-          "Text": "{n}The war ended before the lease did. Jerribeth came to the Commander's door the first spring after the Worldwound closed, in a guise the guards did not question, with the clause she had been saving.{/n}\n\"The forfeit is one memory, of my choosing, when I choose. Give me your hand, or do not. I have already read your answer.\"",
+          "Text": "{n}The war ended before the lease did. Jerribeth came to the Commander's door the first spring after the Worldwound closed, in a guise the guards did not question, with the clause she had been saving.{/n}\n\"The forfeit is one memory, of my choosing, when I choose. I have already read your answer, Commander. Show me whether I read it right.\"",
           "Choices": [
             {
               "Text": "[Give her your hand.]",
@@ -149753,7 +149753,7 @@
         {
           "Id": "torn",
           "Speaker": "Narrator",
-          "Text": "{n}The Commander kept both hands folded in their lap, where she could see them.{/n}\n{n}She studied the hands, then the face above them. Then she laughed, high and abrasive, loud enough to bring the guard running.{/n}\n\"No forfeit, no lease. And still you open the door to me.\" {n}She sat down anyway, uninvited, at the Commander's own table.{/n} \"You are very bad at this, Commander. I shall come back tomorrow, and the day after, until one of us learns to write a better one.\"\n{n}She did. Neither of them ever did. The Commander kept every memory of the war, including the ones worth losing.{/n}",
+          "Text": "{n}The Commander kept both hands folded in their lap, where she could see them.{/n}\n{n}She studied the hands, then the face above them. Then she laughed, high and abrasive, loud enough to bring the guard running.{/n}\n\"No forfeit, no lease. And still you open the door to me.\" {n}She sat down anyway, uninvited, at the Commander's own table.{/n} \"You are very bad at this, Commander. I shall come back tomorrow, and the day after, until one of us learns to write a better one.\"\n{n}She did. Neither of them ever did. Whatever else she took, the Commander kept the war, including the parts worth losing.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -253671,8 +253671,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",

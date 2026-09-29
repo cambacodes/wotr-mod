@@ -77,6 +77,12 @@ internal static class JerribethTricksterTests
         var finals = Program.Walk(final, ch3);
         check(finals.Any(r => r.Has(Primed)) && finals.Any(r => !r.Has(Primed) && !r.Has(final.Id)), "Final lease cannot be taken or left.");
         check(final.Nodes[0].Choices[0].Mythic == "PlayerIsTrickster", "Final lease joke is not a [Trickster] answer.");
+        // BEL: the lease holds by a rule the route plants first (a thought the house keeps outlives its mother, as her
+        // Wintersun ideas did), and the payoff cites that rule; the rent is hers to set and is paid in the Commander's memories.
+        string Text(Scene s) => string.Join(" ", s.Nodes.Select(n => n.Text));
+        check(Text(greeting).Contains("Wintersun") && Text(greeting).Contains("one of your memories a month")
+              && Text(final).Contains("Ask Wintersun") && Text(tenant).Contains("Wintersun") && !Text(tenant).Contains("evicted by a sword"),
+            "The lease law is not planted before the tenant pays it off.");
         check(!Rules.Available(story, greeting, World(story, 4, "trickster")) && !Rules.Available(story, greeting, World(story, 3)),
             "Greeting lease outside Chapter 3 or off the path.");
 
