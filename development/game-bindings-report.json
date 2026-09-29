@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 2474,
-  "unique_targets": 615,
+  "binding_uses": 2646,
+  "unique_targets": 628,
   "failures": [],
   "targets": {
     "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53": {
@@ -29,6 +29,10 @@
     "1383f21534d8b6a45bdbdc8ddce7a187": {
       "path": "Mythic/Trickster/UseMagicDevice/TricksterUseMagicDeviceTier2Feature.jbp",
       "type": "BlueprintFeature"
+    },
+    "397b090721c41044ea3220445300e1b8": {
+      "path": "Units/Companions/Camelia/Camelia_Companion.jbp",
+      "type": "BlueprintUnit"
     },
     "2779754eecffd044fbd4842dba55312c": {
       "path": "Units/Companions/Ember/Ember_Companion.jbp",
@@ -1106,8 +1110,24 @@
       "path": "World/Dialogs/Companions/CompanionDialogues/Camelia/AnswersList_0030.jbp",
       "type": "BlueprintAnswersList"
     },
+    "74f66c9edaa71a644ba091fb1ff4a435": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Camelia/AnswersList_0045.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "6f6ceeffe5e77dc42896e3e8b937b752": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Camelia/Cue_0044.jbp",
+      "type": "BlueprintCue"
+    },
+    "e433ac35761daa84b86b6b5e5c4fae11": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Camelia/Cue_0049.jbp",
+      "type": "BlueprintCue"
+    },
     "f505392f3d7c18348b178da457b4272e": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Camelia/Cue_0136.jbp",
+      "type": "BlueprintCue"
+    },
+    "320802ce6b647e942aaf33d96ed9321d": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Camelia/Cue_0174.jbp",
       "type": "BlueprintCue"
     },
     "4d978cbd2aa780d46874255282039f3f": {
@@ -1169,6 +1189,34 @@
     "e41585da330233143b34ef64d7d62d69": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Woljif/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
+    },
+    "d977fae7974bb88419e51e2c33876aac": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Camellia/Q1_NobleIntent/AneviaResults/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "794e654ae10d09d41860cf90335f0244": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Camellia/Q1_NobleIntent/AneviaResults/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "6d583904c4659fe478c2e26e9305ad4d": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Camellia/Q1_NobleIntent/AneviaResults/Cue_0009.jbp",
+      "type": "BlueprintCue"
+    },
+    "2199689753593844a8caceef5150ff4e": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Camellia/Q3_TheFinalDrop/FinalTruth/AnswersList_0039.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "6aa5270c8474fc14487e6ad42b278339": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Camellia/Q3_TheFinalDrop/FinalTruth/Cue_0012.jbp",
+      "type": "BlueprintCue"
+    },
+    "1d0757c2ccde7034baa737419150bacd": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Camellia/Q3_TheFinalDrop/FinalTruth/Cue_0031.jbp",
+      "type": "BlueprintCue"
+    },
+    "be5af575d343fdb49badcd32d8336996": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Camellia/Q3_TheFinalDrop/FinalTruth/Cue_0047.jbp",
+      "type": "BlueprintCue"
     },
     "c8298f1630fd82046986d313ba35f601": {
       "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/AnswersList_0030.jbp",
@@ -1544,6 +1592,10 @@
     },
     "6f8232943eadc914da5d60121e6ce612": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/CamelliaCompanion/CamelliaNotInParty_KickedOut.jbp",
+      "type": "BlueprintEtude"
+    },
+    "89f8c2f1a7a8ea24794bf4af231e89a1": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/CamelliaCompanion/CamelliaRomance.jbp",
       "type": "BlueprintEtude"
     },
     "cf3639c5cf057034fa766dd5f421d2ed": {
