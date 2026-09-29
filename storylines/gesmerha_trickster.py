@@ -161,7 +161,7 @@ in_yard(P + "returned.yard", "The smith's yard", '"Gesmerha."', [
         c("Continue", "hold", flags=(STATUE_TRUE,))),
     g("hold", '''{n}She sets the chisel against the log, then takes your hands one at a time and lays them flat on the wood, either side of the blade, close enough that you can feel the steel's cold through the bark.{/n}
 "Hold it. Don't move. I cut by sound, and I cannot hear your fingers."''',
-        c("[Hold still]", "after", flags=(HELD,)),
+        c("[Keep your hands on the wood]", "after", flags=(HELD,)),
         c("[Pull your hands away]", "pulled", flags=(FLINCHED,))),
     nar("pulled", '''{n}Your hands come off the wood before the mallet falls. It falls anyway, on the steel, where your left thumb was. Gesmerha does not stop the stroke and does not say anything about it. She moves the log with her own knee and cuts on.{/n}''',
         c("Continue", "after")),
@@ -176,11 +176,11 @@ in_yard(P + "returned.yard", "The smith's yard", '"Gesmerha."', [
 
 # The commit night (heat up to the cut; the cut lands at the start of the act) and the morning after.
 NIGHT = '''{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}
-"Two things in this yard I have cut without eyes. The original I have not touched yet. Stand still. You are good at that now."
-{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. At your collar she unlaces you by feel and lays her palm flat over your heart to count it.{/n}
+"Two things in this yard I have cut without eyes. The original I have not touched yet. Your hands stayed on the wood with the mallet coming down; let them stay at your sides a little longer. I am reading."
+{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. She finds the laces at your throat by feel, undoes them the way she strips bark, and lays her palm flat over your heart to count it.{/n}
 "Fast. Good. I have wanted this since your step first came through that gate, and I will not be the only one who wanted it."
 {n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. Her hands go on reading, lower and surer. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}'''
-MORNING = '''{n}Morning. There is sawdust in your hair and a curl of pine in your collar. Gesmerha is already at the trestles, bare-armed in the cold, and on a new block in front of her a face is coming out of the wood: one you have seen in mirrors.{/n}
+MORNING = '''{n}The forge is still banked when you wake, and there is sawdust in your hair and a curl of pine down your shirt. Gesmerha is already at the trestles, bare-armed in the cold, and on a new block in front of her a face is coming out of the wood: one you have seen in mirrors.{/n}
 "My hands remembered. Nobody paid them for last night, so what they make of it is mine. I will not sell it." {n}The corner of her mouth moves; she does not stop cutting.{/n} "Go and fight your war, stranger. Walk loudly when you come back. I like to hear it from the gate."'''
 
 in_yard(P + "returned.bench", "What comes after", '"You said to ask you when it was finished."', [
@@ -199,7 +199,7 @@ in_yard(P + "returned.bench", "What comes after", '"You said to ask you when it 
         c('[Stay at the bench] "Then let me be what comes after."', "terms", forbids=(FLINCHED,)),
         c('[Stay at the bench] "Then let me be what comes after."', "flinch", requires=(FLINCHED,)),
         c('"Finish your life without me, carver. You\'ve earned it."', flags=(CLOSED,))),
-    g("terms", '''"Then hear my terms, because my hands are mine again and that means they can refuse. I will not be paid for this. Not in coin, and not in jokes. If you ever buy me again, stranger, I will know it by your step before you open your mouth, and I will not be here when you do."''',
+    g("terms", '''"Then listen to what my hands decided in the cold water, because they are mine again, and that means they can refuse. I will not be paid for this. Not in coin, and not in jokes. If you ever buy me again, stranger, I will know it by your step before you open your mouth, and I will not be here when you do."''',
         c('"No more purses. Not for you. I swear it."', "night", flags=(COMMITTED,)),
         c('"I can\'t swear that. Buying things is what I do."', "postpone")),
     g("postpone", '''"Then you are honest, which is worse. Go. Come back when you have thought about what you would have to stop being. The bench will still be here. So will I, probably."''',
@@ -210,10 +210,10 @@ in_yard(P + "returned.bench", "What comes after", '"You said to ask you when it 
     g("morning", MORNING, c("[Go]")),
     ], requires=("trickster.ever", RETURNED, YARD), forbids=(COMMITTED, CLOSED, DECLINED), delay=72)
 
-# 4f. The one priced second ask after her soft no. Not coin: she has forbidden purses. Three days of the Commander's war.
+# 4f. After her soft no she asks, in her own craft: not a price but a trade of hands. The Commander's war waits three days.
 in_yard(P + "returned.second_ask", "A pair that were never for sale", '"About what comes after."', [
     g("start", '''{n}She is waiting for you this time, a fresh log on the trestles and nothing yet cut.{/n}
-"The second asking costs more. That is fair; I learned it from you. Give me your hands. Three days, here, in the yard, while I carve them. Every hour you sit still, your war waits. Then I will have a pair that were never for sale, and you can have mine."''',
+"I have thought about your honesty. You cannot swear off buying things, so I will not ask you to. I will ask for something no purse reaches. Give me your hands: three days, here in the yard, while I carve them. I want one pair in this world that nobody ever paid for. When they are done, you can have mine, and nobody will have paid for those either."''',
         c("Continue", "price", forbids=(FLINCHED,)),
         c("Continue", "price_flinched", requires=(FLINCHED,))),
     g("price_flinched", '''"And you will not pull them away. Three days of it. If you can do that, you can lie still for anything."''',
