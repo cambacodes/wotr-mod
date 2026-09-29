@@ -42,6 +42,8 @@ internal static class Program
         Run("inline navigation policy", InlinePolicy);
         Run("inline-hosts.json matches the built RRT's entry lists", () => InlineHostsFresh(rrtDll));
         Run("derived keys force through their leaves", DerivedForcingChecks);
+        Run("residence spike: plan, verdicts, report shape", ResidenceSpikeChecks);
+        Run("residence spike: presence engine reflection vs built RRT DLL", () => ResidenceSpikeReflection(rrtDll));
         Console.WriteLine(failures == 0 ? "SELF-TEST PASSED" : "SELF-TEST FAILED: " + failures + " check(s)");
         return failures == 0 ? 0 : 1;
     }
@@ -328,5 +330,86 @@ internal static class Program
     {
         var problems = RrtBridge.Validate(typeof(HarnessPlan).Assembly);
         Check(problems.Count == RrtBridge.Expectations.Length, "every expectation fails against the harness assembly (" + problems.Count + ")");
+    }
+
+    static void ResidenceSpikeChecks()
+    {
+        // Opt-in: a plan without "spike" is a normal run and its report carries no spike keys.
+        var normal = HarnessPlan.Parse("{\"saves\":[\"a\"]}");
+        Check(normal.Spike == null && normal.Residence == null && !normal.ResidenceSpike, "no spike by default");
+        var plain = new HarnessReport { Plan = normal, Status = "complete" };
+        plain.Saves.Add(new SaveReport { Save = "a", LoadOk = true });
+        var pj = JObject.Parse(plain.ToJson());
+        Check(pj["Plan"]?["Spike"] == null && pj["Plan"]?["Residence"] == null && pj["Saves"]?[0]?["Residence"] == null,
+            "a normal report has no Spike/Residence keys (unchanged shape)");
+
+        var sp = HarnessPlan.Parse("{\"spike\":\"Residence\"}");
+        Check(sp.ResidenceSpike && sp.Residence != null && sp.Residence.EnterPoint == ResidenceSpikePlan.EnterNative
+            && sp.Residence.Units.Count == 3 && sp.Residence.Seat.Length == 4, "spike residence fills the default settings");
+        var custom = HarnessPlan.Parse("{\"spike\":\"residence\",\"residence\":{\"units\":[\"B5E867E1-3503-C6F4-1BB1-316705EFB4A2\"],\"seat\":[1,0,2,90]}}");
+        Check(custom.Residence!.Units.Single() == "b5e867e13503c6f41bb1316705efb4a2" && custom.Residence.Seat[3] == 90f, "custom units are normalized and the seat parses");
+        bool threw = false;
+        try { HarnessPlan.Parse("{\"spike\":\"tavern\"}"); } catch (FormatException) { threw = true; }
+        Check(threw, "an unknown spike is rejected");
+        threw = false;
+        try { HarnessPlan.Parse("{\"residence\":{}}"); } catch (FormatException) { threw = true; }
+        Check(threw, "residence settings without spike residence are rejected");
+        threw = false;
+        try { HarnessPlan.Parse("{\"spike\":\"residence\",\"residence\":{\"seat\":[1,2]}}"); } catch (FormatException) { threw = true; }
+        Check(threw, "a seat without four numbers is rejected");
+
+        Check(ResidenceSpikePlan.ClassifyPreset(new string[0]) == "base", "no addon mechanics is the base area");
+        Check(ResidenceSpikePlan.ClassifyPreset(new[] { ResidenceSpikePlan.MechanicsNoCouncil }) == "NoCouncil", "NoCouncil preset set");
+        Check(ResidenceSpikePlan.ClassifyPreset(new[] { ResidenceSpikePlan.MechanicsNoCouncil, ResidenceSpikePlan.MechanicsCouncil1.ToUpperInvariant() }) == "Default", "Default preset set, case-insensitive");
+        Check(ResidenceSpikePlan.ClassifyPreset(new[] { ResidenceSpikePlan.MechanicsCouncil1, ResidenceSpikePlan.MechanicsCouncilFight }) == "other", "a fight set is other");
+
+        ResidenceSpikeResult Green() => new ResidenceSpikeResult
+        {
+            EntryStarted = true, AreaLoaded = true, Preset = "NoCouncil", ActiveMechanicsGuids = { ResidenceSpikePlan.MechanicsNoCouncil },
+            Presence = new PresenceProbe { Spawned = true, Exists = true, HasView = true, ViewActive = true, Rendered = true, Pathed = true, PathMovedMetres = 4.7, DialogStarted = true, Removed = true },
+        };
+        var g = Green(); g.Evaluate(true, 2f);
+        Check(g.Passed && g.EntryOk && g.PresetOk && g.PresenceOk && g.Findings.Count == 0, "an all-green spike passes");
+        var fight = Green(); fight.Preset = "other"; fight.ActiveMechanicsGuids.Add(ResidenceSpikePlan.MechanicsCouncilFight);
+        fight.NativeActions.Add("ShowPartySelection: Show party selection (in TricksterCouncil)"); fight.Evaluate(true, 2f);
+        Check(!fight.Passed && fight.EntryOk && !fight.PresetOk && fight.PresenceOk
+            && fight.Findings.Any(f => f.Contains("CouncilFight")) && fight.Findings.Any(f => f.Contains("ShowPartySelection")), "CouncilFight mechanics and a party selection fail (b) only");
+        var noEntry = new ResidenceSpikeResult { EntryError = "the load did not start within 30 s" }; noEntry.Evaluate(false, 2f);
+        Check(!noEntry.Passed && !noEntry.EntryOk && noEntry.Findings.Single().StartsWith("(a)"), "no entry fails (a) and skips the rest");
+        var hidden = Green(); hidden.Presence.Rendered = false; hidden.Evaluate(false, 2f);
+        Check(hidden.Passed, "rendering is informational without a rendered window");
+        hidden.Evaluate(true, 2f);
+        Check(!hidden.Passed && hidden.Findings.Any(f => f.Contains("renderer")), "rendering is required with screenshots");
+        var still = Green(); still.Presence.Pathed = false; still.Presence.PathMovedMetres = 0.3; still.Evaluate(true, 2f);
+        Check(!still.PresenceOk && still.Findings.Any(f => f.Contains("walked 0.3 m")), "a copy that does not walk fails (c)");
+
+        var r = new HarnessReport { Status = "complete", Plan = sp };
+        r.Init.RrtModFound = true; r.Init.Initialized = true;
+        r.Saves.Add(new SaveReport { Save = "c6", LoadOk = true, Residence = fight });
+        r.ComputeSummary();
+        Check(!r.Summary.Passed && r.Summary.Failures.Any(f => f.StartsWith("c6: residence spike: (b)")), "a failed spike is a summary failure");
+        var j = JObject.Parse(r.ToJson());
+        Check((string?)j["Plan"]?["Spike"] == "Residence" && j["Saves"]?[0]?["Residence"]?["Findings"] != null, "the spike result is in the report");
+        r.Saves[0].Residence = g; r.ComputeSummary();
+        Check(r.Summary.Passed, "a green spike leaves the summary green");
+    }
+
+    static void ResidenceSpikeReflection(string rrtDll)
+    {
+        if (!File.Exists(rrtDll)) { Fail("built RRT DLL missing: " + rrtDll); return; }
+        var asm = Assembly.LoadFrom(rrtDll);
+        var problems = RrtBridge.Validate(asm, RrtBridge.SpikeExpectations);
+        foreach (var p in problems) Fail(p);
+        Console.WriteLine("    " + RrtBridge.SpikeExpectations.Length + " spike member expectations checked, " + problems.Count + " problem(s)");
+        Check(RrtBridge.Validate(typeof(HarnessPlan).Assembly, RrtBridge.SpikeExpectations).Count == RrtBridge.SpikeExpectations.Length,
+            "every spike expectation fails against the harness assembly");
+        if (problems.Count > 0) return;
+        // Build the presence through the bridge exactly as the spike does (the blueprint is only stored until the first tick).
+        var bridge = new RrtBridge(asm);
+        var guest = bridge.NewSpawnCopyPresence("harness.spike.residence", "b5e867e13503c6f41bb1316705efb4a2",
+            ResidenceSpikePlan.CouncilArea, 0f, 0f, 3.92f, 180f, null!);
+        Check(RrtBridge.PresenceSaveKey(guest) == "RanRomance.Tirabade.Presence.harness.spike.residence", "presence record key");
+        Check(RrtBridge.PresenceStatus(guest) == "not observed" && RrtBridge.PresenceActor(guest) == null && RrtBridge.PresenceError(guest) == null,
+            "a fresh presence is unobserved");
     }
 }

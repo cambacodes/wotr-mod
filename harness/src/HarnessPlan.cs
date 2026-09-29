@@ -63,7 +63,17 @@ namespace RRT.TestHarness
         public string? InlineHostsPath;
         /// <summary>Clicks allowed inside the host dialog before the list counts as unreachable (skipped-inline).</summary>
         public int MaxInlineNavSteps = 40;
+        /// <summary>
+        /// Opt-in feasibility spike, run after each save loads instead of driving scenes. "residence": the P2 harem residence
+        /// spike (enter the Council Chamber, record its mechanics, spawn one presence copy there). Null: a normal run.
+        /// Omitted from the report when null, so a normal run's report is unchanged.
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public string? Spike;
+        /// <summary>Settings of the residence spike; filled with defaults when Spike is "residence".</summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public ResidenceSpikePlan? Residence;
         public HarnessTimeouts Timeouts = new HarnessTimeouts();
+
+        [JsonIgnore] public bool ResidenceSpike => string.Equals(Spike, "residence", StringComparison.OrdinalIgnoreCase);
 
         [JsonIgnore] public bool Dfs => string.Equals(Mode, "dfs", StringComparison.OrdinalIgnoreCase);
         [JsonIgnore] public bool ShouldReloadBetweenScenes => ReloadBetweenScenes ?? !Force;
@@ -95,6 +105,10 @@ namespace RRT.TestHarness
             if (string.IsNullOrWhiteSpace(ScreenshotDir)) ScreenshotDir = null;
             if (string.IsNullOrWhiteSpace(InlineHostsPath)) InlineHostsPath = null;
             if (MaxInlineNavSteps < 1) MaxInlineNavSteps = 1;
+            if (string.IsNullOrWhiteSpace(Spike)) Spike = null;
+            if (Spike != null && !ResidenceSpike) throw new FormatException("Plan spike must be \"residence\", not \"" + Spike + "\".");
+            if (ResidenceSpike) (Residence ??= new ResidenceSpikePlan()).Normalize();
+            else if (Residence != null) throw new FormatException("Plan residence settings need spike \"residence\".");
         }
 
         public bool IncludesScene(string id) =>

@@ -49,6 +49,7 @@ The `run-harness.ps1` options are:
 - `-Headless` opens dialogs without the UI.
 - `-Windowed` passes the standard Unity `-screen-*` arguments.
 - `-TimeoutMinutes` sets the run timeout (default 45).
+- `-Spike Residence` runs the P2 residence feasibility spike instead of driving scenes. See [Residence spike](#residence-spike--spike-residence).
 - `-Build` rebuilds the harness first.
 - `-RestoreFrom harness/.runs/<stamp>` restores the Mods folder after the script itself was killed.
 
@@ -315,3 +316,37 @@ Add `-DryRun` to see each matching scene's host, owning cue and click count with
 ## Presence hooks (E12/E12c)
 
 `RrtBridge.PresenceReport()` returns one line per presence ("key [mode] wanted; status; click-to-talk attached|not attached"). `RrtBridge.PresenceClick(key)` clicks a presence the way the player would and returns true when its RRT hub dialog started; a live run can assert that the presence appeared and that its hub opens.
+
+## Residence spike (`-Spike Residence`)
+
+The P2 spike of `Writer/handoffs/10-HAREM-RESIDENCE.md`; the static findings and the verdict rules are in
+`Writer/handoffs/10b-RESIDENCE-SPIKE.md`. It is opt-in: without `-Spike` the plan has no `spike` key, the harness never
+reaches `ResidenceSpike.cs`, and the report has no `Residence` keys. With it, each save is loaded and then, instead of
+driving scenes (`ResidenceSpike.cs`, `ResidenceSpikeModel.cs`):
+
+1. **(a) Entry.** It records whether the native closet would still teleport (`Obj_6a_KillNocta` / `Obj_6b_KillCouncil`,
+   as `ToCouncil_CheckPassedActions` checks) and the Council etude states, then calls `Game.LoadArea(TricksterCouncil_Enter,
+   AutoSaveMode.None)`, which is what `TeleportParty` does for another area. It records whether the load started, the load
+   time, and every `ShowPartySelection`, `StartCombat`, `PlayCutscene` and `TeleportParty` action that runs meanwhile
+   (Harmony prefixes that only record, patched in spike runs only).
+2. **(b) Preset.** After up to `SettleSeconds` it records the idle blocker, game mode, combat, the addon mechanics the
+   etudes loaded (`EtudesSystem.GetActiveAdditionalMechanics`), the preset they match (`Default` = Council1 + NoCouncil,
+   `NoCouncil`, `base` or `other`), the etude states again and every non-party unit in the area. A native dialog still
+   open is noted and closed so that (c) is measured on its own.
+3. **(c) Presence.** It builds a spawn-copy `GuestPresence` (RRT's own engine, by reflection: `RrtBridge.SpikeExpectations`)
+   for the first candidate unit with no live unit in the area, at the seat (default `Locators/CouncilLoc3`, 0/0/3.92,
+   facing 180), and ticks it as `Main.TickPresences` does. It checks the copy exists, has an active view, is rendered
+   (required only with `-Screenshots`, which gives a rendered window), walks at least 2 m toward `Locators/CouncilLoc2`
+   under a `UnitMoveTo`, and that an RRT presence hub dialog starts with it as the target unit. It then ticks the presence
+   unwanted and checks that the copy and its `Player.SettingsList` record are gone.
+4. With `-Screenshots` it saves `residence__entry.png`, `residence__presence.png` and `residence__dialog.png` in the shots folder.
+
+The result is `Saves[i].Residence` in the report: `EntryOk`, `PresetOk`, `PresenceOk`, `Passed` and `Findings`, which lists
+each failed check prefixed with (a), (b) or (c). A spike that does not pass is a summary failure (exit code 1). That is a
+feasibility answer, not a harness defect. Nothing is saved, so the area change and the copy are discarded. The settings are
+under `residence` in the plan (`enterPoint`, `seat`, `pathTo`, `units`, `entrySeconds`, `settleSeconds`, `pathSeconds`,
+`pathMinMetres`); `run-harness.ps1` uses the defaults.
+
+```powershell
+./harness/run-harness.ps1 -Build -Saves '<copy of Manual_339_Trickster_Ending_Act_5.zks>' -Spike Residence -Screenshots -NoRoundTrip -TimeoutMinutes 20
+```

@@ -18,6 +18,12 @@
   into harness/.runs/<stamp>/shots/<scene-id>__<step>.png; the report lists them per run. A minimized Unity window can
   render black, so -Screenshots launches Wrath in a normal (not minimized) 1280x720 window, as -Windowed does.
 
+  -Spike Residence runs the P2 harem-residence feasibility spike (Writer/handoffs/10b-RESIDENCE-SPIKE.md) instead of
+  driving scenes: after each save loads it enters the Council Chamber (area 28a49e11) through Game.LoadArea at
+  TricksterCouncil_Enter, records load time, loaded mechanics and native entry actions, spawns one presence copy at a seat
+  with RRT's GuestPresence, checks view, rendering (with -Screenshots), a walk and a dialog, then removes it. Nothing is saved.
+  ./harness/run-harness.ps1 -Saves 'D:\saves\ch6.zks' -Spike Residence -Screenshots -NoRoundTrip
+
 .NOTES
   Exit codes: 0 all checks passed, 1 tests failed, 2 harness/infrastructure failure (no report, timeout, crash),
   3 bad arguments or failed preflight.
@@ -42,6 +48,7 @@ param(
     [int]$ScreenshotsPerScene = 3,
     [switch]$Inline,
     [int]$MaxInlineNavSteps = 40,
+    [ValidateSet('Residence')][string]$Spike,
     [switch]$Build,
     [int]$TimeoutMinutes = 45,
     [string]$UserData = (Join-Path $env:USERPROFILE 'AppData\LocalLow\Owlcat Games\Pathfinder Wrath Of The Righteous'),
@@ -181,6 +188,8 @@ $plan = [ordered]@{
     quitWhenDone      = $true
     timeouts          = [ordered]@{ globalSeconds = [Math]::Max(60, $TimeoutMinutes * 60 - 60) }
 }
+# Opt-in only: without -Spike the plan (and so the run) is exactly as before.
+if ($Spike) { $plan.spike = $Spike.ToLowerInvariant() }
 $planJson = $plan | ConvertTo-Json -Depth 5
 
 $launchArgs = @()
@@ -357,6 +366,15 @@ try {
         foreach ($sv in @($r.Saves)) {
             Say ("  {0}: load={1} ({2:N0} ms) available={3} driven={4} choices={5} roundtrip={6}" -f (Split-Path -Leaf $sv.Save), $sv.LoadOk, $sv.LoadMs,
                 @($sv.AvailableScenes).Count, $sv.ScenesDriven, $sv.ChoicesTaken, $(if ($sv.RoundTrip.Attempted) { $sv.RoundTrip.Passed } else { "skipped: $($sv.RoundTrip.SkipReason)" }))
+            if ($sv.PSObject.Properties['Residence'] -and $sv.Residence) {
+                $rs = $sv.Residence; $pr = $rs.Presence
+                Say ("    residence spike: (a) entry={0} ({1:N0} ms from {2}; closet live={3}) (b) preset={4} ok={5} (c) presence ok={6} -> passed={7}" -f `
+                    $rs.EntryOk, $rs.LoadMs, $rs.FromArea, $rs.ClosetLive, $rs.Preset, $rs.PresetOk, $rs.PresenceOk, $rs.Passed) Cyan
+                Say ("      mechanics: {0}" -f (@($rs.ActiveMechanics) -join '; '))
+                if (@($rs.NativeActions).Count) { Say ("      native actions: {0}" -f (@($rs.NativeActions) -join '; ')) Yellow }
+                Say ("      copy {0}: spawned={1} view={2} rendered={3} walked={4} m dialog={5} removed={6}" -f $pr.UnitName, $pr.Spawned, $pr.ViewActive, $pr.Rendered, $pr.PathMovedMetres, $pr.DialogStarted, $pr.Removed)
+                foreach ($f in @($rs.Findings)) { Say "      - $f" Yellow }
+            }
         }
         Say ("Runs {0}/{1} passed, choices {2}, relevant exceptions {3}, oracle failures {4}" -f $s.RunsPassed, $s.Runs, $s.Choices, $s.RelevantExceptions, $s.OracleFailures)
         if ($s.PSObject.Properties['SkippedInline'] -and $s.SkippedInline) { Say ("Skipped inline (host or list not reachable): {0}" -f $s.SkippedInline) Yellow }
