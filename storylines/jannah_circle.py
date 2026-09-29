@@ -94,7 +94,7 @@ meet(FORMS, "The forms", '"You\'re drawing circles again."', [
     jan("story", '''"If you're going to keep coming down here, you're going to learn them properly." {n}She finishes the sequence before she looks at you.{/n}
 "You caught me in a story. That isn't the same as catching me in a circle, and I'd hate for you to get the two confused. It could be fatal."''',
         c('"Then teach me."', "salute")),
-    jan("book", '''"A book." {n}She looks personally offended.{/n} "Somebody wrote the forms down. In a book. For anybody to read." {n}She shakes her head.{/n}
+    jan("book", '''"A book." {n}She looks personally offended.{/n} "Somebody wrote Mivon down. In a book. For anybody to read." {n}She shakes her head.{/n}
 "My master would have had him flogged with the binding. Well. It saved my life, so I suppose the flogging can wait."''',
         c("Continue", "salute")),
     jan("planned", '''"Before you ever came to the cage." {n}She stops moving.{/n}
@@ -447,7 +447,7 @@ meet(WATCH, "The blue tabard", '"The Watch sergeant was asking about you."', [
 "It'll be there. That's the good thing about a tabard; it waits. It's more patient than I am."''',
         c("[Leave her with it.]")),
     jan("mine", '''"For you." {n}She tilts her head.{/n}
-"That's a dangerous thing to say to an Aldori. In Mivon, a fencer who fights for one person and not a city is called a sellsword, or a lover, and they're both a bit of a scandal." {n}She puts the tabard on the shelf, folded.{/n} "I'll think about which one you meant."''',
+"That's a dangerous thing to say to me. The old man used to say a fencer who fights for one person and not a city is a sellsword or a lover, and that both end badly." {n}She puts the tabard on the shelf, folded.{/n} "I'll think about which one you meant."''',
         c("[Leave her with it.]")),
 ], requires=(WALLS,), forbids=(COMMITTED,), delay=24)
 
@@ -480,7 +480,7 @@ meet(SPARRING, "Measure", '"The yard\'s empty this time of night."', [
     nar("close", '''{n}By the time the lantern starts to gutter you are both sweating in the cold and her hair has come down. She has stopped taking your sword. The last pass ends with the blunted blades crossed between you and her face a hand's breadth from yours, and neither of you steps back.{/n}''',
         c("Continue", "measure_line")),
     jan("measure_line", '''"This is inside measure." {n}She doesn't move.{/n} "This is where the forms say you finish something."
-"Not yet." {n}Her eyes go to your mouth and come back.{/n} "Not here, with a lantern and a pump. I'm an Aldori. We don't do anything worth doing where nobody can see it."''',
+"Not yet." {n}Her eyes go to your mouth and come back.{/n} "Not here, with a lantern and a pump. The old man used to say nothing worth doing is done where nobody can see it."''',
         c('"Then I\'ll wait for a better audience."', "wait"),
         c("[Close the hand's breadth.]", "kissed", flags=(SPAR_KISSED,))),
     jan("wait", '''"You'd better." {n}She steps back out of measure, very deliberately, the way you'd step back from a drop.{/n}
@@ -563,7 +563,7 @@ meet(YOUR_TALE, "Your part", '"You look like you\'re about to ask me something."
     jan("cage", '''"Not knowing." {n}She weighs the cup as if it were a blade.{/n}''',
         c("Continue", "cage_planned", requires=(TOLD_PLANNED,)),
         c("Continue", "cage_plain", forbids=(TOLD_PLANNED,))),
-    jan("cage_planned", '''"You told me you'd made it your business to know the forms before you ever came to the cage. So you knew the words. You didn't know me. You didn't know whether I'd take them, or whether my pride had died in there with everything else."
+    jan("cage_planned", '''"You told me you'd made it your business to know Mivon before you ever came to the cage. So you knew where to put the question. You didn't know me. You didn't know whether I'd take them, or whether my pride had died in there with everything else."
 "And you swung anyway."''',
         c("Continue", "cage_end")),
     jan("cage_plain", '''"You knew the words. You didn't know me. You didn't know whether I'd take them, or whether my pride had died in that cage with everything else."
@@ -692,7 +692,7 @@ meet(YIELD_CIRCLE, "Yielding the circle", '"The muster\'s in an hour."', [
 {n}The yard goes so quiet you can hear the lantern chains on the barracks wall. Somebody on the smithy roof says, "What's the Commander doing?" and somebody else says, "Shut up. It's Mivon."{/n}''',
         c("Continue", "yielded_her")),
     jan("yielded_her", '''{n}Jannah stands over you with her sword still raised in the salute, and her face is doing something very complicated.{/n}
-"The Commander yields the circle," she says, not loudly. Then, because she is an Aldori and the forms require it, loud enough for the gate: "The Commander of the crusade yields the circle to Jannah Aldori, of Mivon!"
+"The Commander yields the circle," she says, not loudly. Then, because the old man would have wanted it said properly, loud enough for the gate: "The Commander of the crusade yields the circle to Jannah Aldori, of Mivon!"
 {n}She quits the circle, as she must. Then she turns on her heel, walks straight back in and lies down in the sand beside you, which is not in any of the forms at all.{/n}''',
         c("Continue", "sand")),
     jan("sand", '''"I'm not cutting a notch for that," she says to the sky. "It doesn't count. It's the best thing anybody's ever done for me in public, and it doesn't count."
@@ -705,7 +705,7 @@ meet(YIELD_CIRCLE, "Yielding the circle", '"The muster\'s in an hour."', [
 visit(TAUGHT, "Eyes open", [
     nar("open", '''{n}She has chalked a circle on the floor of the last cell, small, just wide enough for one person lying down. She's sitting on the bunk beside it with her boots off and the lamp turned low.{/n}''',
         c("Continue", "start")),
-    jan("start", '''"Lie down in it." {n}A pause.{/n} "On your back. Eyes open. You're going to learn the yield, and you're going to learn it properly, because the forms are the forms and I won't have anybody in my circle who can't do it."''',
+    jan("start", '''"Lie down in it." {n}A pause.{/n} "On your back. Eyes open. You're going to learn the yield, and you're going to learn it properly, because I won't have anybody in my circle who can't do it."''',
         c("[Lie down in the chalk.]", "down"),
         c('[Flirt] "Is this a lesson or an invitation?"', "invite")),
     jan("invite", '''"Yes." {n}She doesn't elaborate.{/n} "Lie down."''',
@@ -901,7 +901,7 @@ meet(TRACE, "Once", '"You keep touching it."', [
     nar("trace", '''{n}She takes your hand and puts your fingers at her brow, where the scar begins, and lets you follow it: over the temple, along the line of the bone where the blade turned, up to above the ear where it stops. She keeps her eyes open the whole time and doesn't blink.{/n}''',
         c("Continue", "once")),
     jan("once", '''"Once," she says, when you reach the end of it. "You get to do that once a year. On the day of the Scar. Not on any other day, and not because you're sorry."
-{n}She holds your hand there a moment longer than the forms would allow.{/n} "I'm going to enjoy making you wait for it."''',
+{n}She holds your hand there a moment longer than she meant to.{/n} "I'm going to enjoy making you wait for it."''',
         c("[Take your hand back when she lets you.]")),
 ], requires=(SCAR, NIGHT), delay=24)
 
@@ -1030,7 +1030,7 @@ meet(NOTCH, "The right way", '"You\'re cutting a notch."', [
     nar("open", '''{n}She has her scabbard across her knees and the point of a small knife resting on the leather inside its throat, and she hasn't made the cut yet. She has been sitting like that for some time.{/n}''',
         c("Continue", "start")),
     jan("start", '''"Trying to." {n}The knife stays where it is.{/n}
-"I drew first blood on the Commander of the crusade in front of four hundred soldiers. By the forms that's a win, a clean one, and it goes in the scabbard the right way, next to the others." {n}The knife doesn't move.{/n} "I can't make myself cut it."''',
+"I drew first blood on the Commander of the crusade in front of four hundred soldiers. By the old man's reckoning that's a win, a clean one, and it goes in the scabbard the right way, next to the others." {n}The knife doesn't move.{/n} "I can't make myself cut it."''',
         c('"Why not?"', "why"),
         c('"You earned it."', "earned")),
     jan("earned", '''"I know I did. You didn't give it to me; I'd have known, and I'd have hated you." {n}She turns the knife.{/n}''',

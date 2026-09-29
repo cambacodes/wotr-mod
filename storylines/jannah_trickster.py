@@ -231,9 +231,9 @@ SCENES.append(scene(P + "cage.terms", "To the first blood", "Jannah", 3,
 "That's what you're counting on, isn't it? That I'd rather lose a bout than be butchered. That I'm still that proud." {n}She wipes her face with the back of a filthy wrist and gets up off the floor of the cage, one hand on the bars.{/n} "You're right. Give me my blade."''',
          c("[Pass her sword through the bars, hilt first, with a healing draught and a roll of linen wound under the grip where only her hand will find them.]", "guard"),
          c('"No. Not like this."', abort=True)),
-     nar("guard", '''{n}She takes the hilt the way other women take a hand at a dance. The cage leaves her no footwork at all, so she sets her rear heel against the bars, sinks her weight, and brings the long blade up into the high Aldori guard, the only line the bars allow. Then she salutes you through the gap, flat of the blade to her brow, and her eyes above it are perfectly dry.{/n}
+     nar("guard", '''{n}She takes the hilt the way other women take a hand at a dance. The cage leaves her no footwork at all, so she sets her rear heel against the bars, sinks her weight, and brings the long blade up into a high guard, the only line the bars allow. Then she salutes you through the gap, flat of the blade to her brow, and her eyes above it are perfectly dry.{/n}
 "Jannah Aldori. Of Mivon." {n}Her fingers have found what is under the grip. Her face does not change at all; seven years in a salle teach you that too.{/n} "Ready."''',
-         c("[Take your guard.]", flags=(PRIMED,)),
+         c("[Take your guard, and choose your line: high, for the temple and first blood, not the throat.]", flags=(PRIMED,)),
          c("[Lower your blade, and take her sword back through the bars.]", abort=True))],
     requires=("trickster", NAMED), forbids=(PRIMED,), last=3, Relationship=REL, Chapters=[3],
     AnswerLists=[CAGE_LIST], ReturnToList=True,
@@ -248,7 +248,7 @@ visit(P + "cage.ash", "Where the blade went", [
         c("Continue", "cut")),
     nar("cut", '''{n}Her guard came up where the forms put it and the bars allowed it, high and forward. Your cut rode down the flat of her sword to the hilt, turned off the crossguard, and opened her right temple from the brow to above the ear. Not deep. Scalp wounds never need to be deep. They bleed as if the whole head were emptying.{/n}''',
         c("Continue", "fall")),
-    nar("fall", '''{n}She went down on her back with her face a red mask and her eyes wide open, fixed on the roof of the cage. An Aldori who has yielded does not close her eyes, does not wipe away the blood, does not move a finger until the victor has quit the circle. She breathed through her teeth, shallow as a sleeper, and the smoke of the Scar did the rest.{/n}
+    nar("fall", '''{n}She went down on her back with her face a red mask and her eyes wide open, fixed on the roof of the cage. Her master's rule, the one she had recited to you through the bars: a fencer who has yielded does not close her eyes, does not wipe away the blood, does not move a finger until the victor has gone. She kept it. She had chosen to. She breathed through her teeth, shallow as a sleeper, and the smoke of the Scar did the rest.{/n}
 {n}Your companions saw an execution, because you had shouted one. Nobody went into the cage to be sure: you were already out of it and giving the order to move, and nobody wanted to be the one to kneel in a deserter's blood.{/n}
 {n}Everything else she needed you had put in her hand. A sword, and the cage's lock was vrock iron gone rotten in the heat; Seelah had once broken one like it with a single blow. A healing draught and a roll of linen, wound under the grip. And the dark, which the vrocks spend over their ritual pits on the far side of the Scar. What she needed from herself was only not to blink. You chose to trust her with that, because the only other way to leave her alive was to leave her in front of witnesses who would ask why.{/n}''',
         c("[Remember that you said nothing over her, and walked out of the circle.]", "silent", flags=(ASH_SILENT, COST_ASH)),
@@ -256,7 +256,7 @@ visit(P + "cage.ash", "Where the blade went", [
     nar("silent", '''{n}Under the forms, a yield the victor leaves unspoken is owed until it is spoken. You left hers lying in the ash with her. Whether she ever comes to collect it is hers to decide.{/n}
 {n}Out in the dark the vrocks are circling back to their cages and their ritual. You hope she remembers to be dead for them too.{/n}''',
         c("[Put out the lamp.]")),
-    nar("sentence", '''{n}You said it loud enough for everyone to hear, and the forms heard it too. Whatever the victor says over the yield is the end of the matter. The sentence was death to deserters, and it has been carried out: Jannah Aldori, recruit of the Eagle Watch, is dead. What the woman lying in the ash does with that is hers to decide.{/n}
+    nar("sentence", '''{n}You said it loud enough for everyone to hear, and she heard it too. By her master's rule, whatever the victor says over the yield is the end of the matter. The sentence was death to deserters, and it has been carried out: Jannah Aldori, recruit of the Eagle Watch, is dead. What the woman lying in the ash does with that is hers to decide.{/n}
 {n}Out in the dark the vrocks are circling back to their cages and their ritual. You hope she remembers to be dead for them too.{/n}''',
         c("[Put out the lamp.]")),
 ], requires=("trickster.ever", DEAD_L, PRIMED), forbids=(RETURNED,), delay=6, kind="memory", chapter=3, optional=True,
@@ -273,7 +273,7 @@ meet(P + "killed.yield", "An unclaimed yield", '"The turnkey says there\'s a dea
 "Commander. Jannah Aldori, of Mivon. I yielded to you in the Molten Scar."''',
         c("Continue", "unsaid", forbids=(ASH_SAID,)),
         c("Continue", "said", requires=(ASH_SAID,))),
-    jan("unsaid", '''"You shouted your sentence as you cut, for the others to hear. That was before the blood. Over me, after it, you said nothing, and quit the circle. Under the forms, a yield nobody claims is owed until somebody does. I've been owing you since the Scar." {n}She says it like a debt to a moneylender.{/n}
+    jan("unsaid", '''"You shouted your sentence as you cut, for the others to hear. That was before the blood. Over me, after it, you said nothing, and quit the circle. By the old man's rule, a yield nobody claims is owed until somebody does. I've been owing you since the Scar." {n}She says it like a debt to a moneylender.{/n}
 "I don't like owing. So I came to hear what you'd say."''',
         c("Continue", "how")),
     jan("said", '''"You said the sentence was carried out, and quit the circle. So it was. Jannah Aldori of the Eagle Watch is on the rolls of the dead. I read her name on the board by the chapel on my way in. They spelled it wrong."
@@ -314,7 +314,7 @@ meet(P + "killed.yield", "An unclaimed yield", '"The turnkey says there\'s a dea
 "As you say. No name." {n}Her voice is perfectly even.{/n}
 "I'll keep it. Under the forms I have to. Don't expect me to like you for it, Commander."''',
         c("[Leave her to the cell.]")),
-    nar("dismissed", '''{n}You turn your back on her and climb the steps. Behind you there is no sound at all: an Aldori does not move until the victor has quit the circle.{/n}
+    nar("dismissed", '''{n}You turn your back on her and climb the steps. Behind you there is no sound at all: she does not move until you have gone. She never has.{/n}
 {n}In the morning the last cell is empty. On its floor someone has scratched a circle into the stones with a sword's point, and in the middle of it one word: PAID.{/n}''',
         c("[Let her go.]")),
 ], requires=(DEAD_L, PRIMED), forbids=(RETURNED,), delay=24, TricksterDevice=True)
@@ -451,7 +451,7 @@ visit(P + "alive.wagon", "The ninth bell, and after", [
     jan("ford", '''"Half the wagon came back. We held a ford on the north road for three days against things with too many legs, and nobody in my file ran. I didn't either." {n}She touches the stitches at her temple, briefly, like a fencer touching the button on a foil.{/n}
 "I'd like that written down too."''',
         c("Continue", "said")),
-    jan("said", '''"I won in your cell. You yielded. Under the forms the winner says the end of the matter, and I didn't say it before the wagon left, because I didn't know it yet."
+    jan("said", '''"I won in your cell. You yielded. By the old man's rule the winner says the end of the matter, and I didn't say it before the wagon left, because I didn't know it yet."
 "I do now. I'm staying. Not because you won; you didn't. Because I did, and it's mine to say."''',
         c('"Then stay."', "stay", flags=(RETURNED, STARTED, STORY_LOST, POSTING)),
         c('"Good. I was about to send somebody after the wagon."', "cheat", flags=(RETURNED, STARTED, STORY_LOST, POSTING)),
@@ -504,13 +504,13 @@ meet(P + "challenge", "The rematch", '"You look like someone about to do somethi
 "Nobody in Drezen has seen Jannah Aldori cross blades with anyone. They've only heard about her running."''',
         c("Continue", "stake_won")),
     jan("stake", '''{n}She puts the chalk in your hand and closes your fingers over it.{/n}
-"The stake is the only one the forms allow in a rematch. If I draw first blood, the old loss is answered, and my record is mine again to keep. If you do, it stands, and I carry it, and I cut a second notch the wrong way."
+"My stake, and I'm setting it, not the old man. If I draw first blood, the old loss is answered, and my record is mine again to keep. If you do, it stands, and I carry it, and I cut a second notch the wrong way."
 "That's all a bout decides. A sword doesn't get a say in anything else between us. That part, I decide."''',
         c('"Fourth bell. I\'ll be there."', "yard"),
         c('[Flirt] "And the rest of it? When do you decide that?"', "rather"),
         c('"Not in front of the muster. Ask me somewhere else."', "not_there")),
     jan("stake_won", '''{n}She puts the chalk in your hand and closes your fingers over it.{/n}
-"The stake is the only one the forms allow. If I draw first blood, I've beaten you twice, and everybody saw the second time. If you do, we're square, and I'll say so to anyone who asks."
+"My stake, and I'm setting it. If I draw first blood, I've beaten you twice, and everybody saw the second time. If you do, we're square, and I'll say so to anyone who asks."
 "That's all a bout decides. A sword doesn't get a say in anything else between us. That part, I decide."''',
         c('"Fourth bell. I\'ll be there."', "yard"),
         c('[Flirt] "And the rest of it? When do you decide that?"', "rather"),
@@ -525,7 +525,7 @@ meet(P + "challenge", "The rematch", '"You look like someone about to do somethi
 {n}Jannah walks into the middle of it and draws a circle on the sand, three paces across, in one stroke, without looking down. The yard goes quiet.{/n}''',
         c("Continue", "challenge")),
     jan("challenge", '''{n}She steps into the circle and draws. The long blade comes up to her brow in the salute, and she says it loud enough for the gate guards to hear:{/n}
-"Jannah Aldori, of Mivon, recruit of the Eagle Watch, who ran at the Houndheart camp. I claim my rematch from the Commander of the crusade, by the forms, to the first blood."
+"Jannah Aldori, of Mivon, recruit of the Eagle Watch, who ran at the Houndheart camp. I claim my rematch from the Commander of the crusade. To the first blood."
 {n}On the smithy roof somebody drops a hammer. Nobody laughs.{/n}''',
         c("[Step into the circle and salute.]", "bout")),
     nar("bout", '''{n}She comes at you the way she must have come at everyone in Mivon for seven years: on the balls of her feet, the blade low and quick and never where you are looking. She isn't trying to hit you. She's trying to take the sword out of your hand, the Aldori way, and twice she very nearly does.{/n}''',
@@ -551,7 +551,7 @@ meet(P + "challenge", "The rematch", '"You look like someone about to do somethi
 "The bout's void. Nobody bled. Nothing's answered." {n}She walks out of the yard without looking back, and the muster parts to let her through.{/n}''',
         c("[Let her go.]")),
     nar("you_first", '''{n}She overreaches by a hand's breadth. It's enough. Your point takes her high on the sword arm, through the gambeson, and a line of red opens on the sleeve. First blood.{/n}
-{n}She lays her blade down on the sand, lies back inside the chalk, and fixes her eyes on the sky. Under the forms the victor may say something over her before quitting the circle. The whole yard waits to hear what.{/n}''',
+{n}She lays her blade down on the sand, lies back inside the chalk, and fixes her eyes on the sky. By her master's rule the victor may say something over her before leaving the circle. The whole yard waits to hear what.{/n}''',
         c('"It stands. You fought like an Aldori."', "you_honour", flags=(YOU_FIRST, FIRST_LOSS)),
         c('"Nothing I could say over you is worth more than how you fought."', "you_honour", flags=(YOU_FIRST, FIRST_LOSS)),
         c('[Mock her before the muster] "Four hundred witnesses, and you still lost. Run along, deserter."', "shamed",
@@ -562,7 +562,7 @@ meet(P + "challenge", "The rematch", '"You look like someone about to do somethi
     jan("you_up", '''{n}You step over the chalk. She gets up, sheathes, and stands in the circle bleeding through her sleeve while the yard stares at her.{/n}
 "Two notches the wrong way," she says, to you, not to them. "Good. I'd hate to think the first one was an accident."''',
         c("Continue", "after")),
-    jan("shamed", '''{n}The yard goes very still. Jannah gets up, which the forms do not allow until the victor has quit the circle, and she does it slowly, deliberately, so that every one of them sees her break the forms rather than lie there under that.{/n}
+    jan("shamed", '''{n}The yard goes very still. Jannah gets up, which she has never once done before the victor left the circle, and she does it slowly, deliberately, so that every one of them sees her break the forms rather than lie there under that.{/n}
 "The bout was fair," she says, to the yard. "What the Commander said after it wasn't. Write that down, anybody here who writes things down." {n}She walks out without sheathing.{/n}''',
         c("[Watch her go.]")),
     nar("her_first", '''{n}You never see it coming. A turn of her wrist, a flicker of steel inside your guard, and a sting along your jaw; when you touch it your fingers come away red. First blood.{/n}
@@ -571,11 +571,11 @@ meet(P + "challenge", "The rematch", '"You look like someone about to do somethi
           flags=(SHE_FIRST, PUBLIC_YIELD), crusade=("Favors", -100)),
         c("[Wipe the blood off your jaw and walk out of the circle.]", "walked_off", flags=(REFUSED_YIELD, DECLINED))),
     jan("her_yield", '''{n}Four hundred soldiers watch their Commander lie down on {mf|his|her} back in the sand inside a deserter's chalk circle, eyes open, not moving. It is so quiet you can hear the smith's forge breathing.{/n}
-"Answered," Jannah says, to you. Then, louder, to the whole yard: "By the forms! Does anybody here want to argue with an Aldori?"
+"Answered," Jannah says, to you. Then, louder, to the whole yard: "First blood! Does anybody here want to argue with me about it?"
 {n}Some of them do. You can see it in the Mendevian knights by the barracks door: a Commander who lies down in the sand for a deserter is a Commander who can be made to lie down. By evening the Queen's liaison will have written it up for Nerosyan, and the knights' donations will be slower to come.{/n}
-{n}Nobody on the smithy roof wants to. She quits the circle, as the forms require, so that you're allowed to move. Then she steps straight back in and pulls you up by both hands.{/n}''',
+{n}Nobody on the smithy roof wants to. She steps out of the chalk, as the old man's rule would have it, so that you're allowed to move. Then she steps straight back in and pulls you up by both hands.{/n}''',
         c("Continue", "after")),
-    jan("walked_off", '''{n}The yard watches you walk out of the chalk with blood on your jaw, as if the forms were a game she had made up to pass the time in a cell.{/n}
+    jan("walked_off", '''{n}The yard watches you walk out of the chalk with blood on your jaw, as if her rules were a game she had made up to pass the time in a cell.{/n}
 {n}Jannah doesn't follow. She stands in the middle of the circle with her blade lowered and says, quite clearly, so that everyone hears it: "Then it wasn't a bout. It was a brawl, and I don't give anything to brawlers."{/n}''',
         c("[Keep walking.]")),
     jan("after", '''{n}Later, when the muster has been dismissed three times and still hasn't gone anywhere, she walks you round behind the barracks to the practice yard. There's nobody in it: sand, a trough, a rack of blunted blades.{/n}
@@ -589,7 +589,7 @@ meet(P + "challenge", "The rematch", '"You look like someone about to do somethi
         c("[Kiss her back, and let the barracks look.]", flags=(COMMITTED,)),
         c('[Refuse her] "No. It was a bout. That\'s all it was."', "refuse", flags=(CLOSED, GONE))),
     jan("refuse", '''{n}She takes her hands back as if from a hot blade.{/n}
-"All right." {n}Her voice is perfectly level.{/n} "I decided. You decided. That's fair, and it's the forms, more or less." {n}She salutes you, flat of the blade to the brow, and goes.{/n}''',
+"All right." {n}Her voice is perfectly level.{/n} "I decided. You decided. That's fair. The old man would have said so too." {n}She salutes you, flat of the blade to the brow, and goes.{/n}''',
         c("[Let her go.]")),
     jan("no_lie", '''"And I've decided no." {n}She says it quietly, without heat.{/n}
 "You caught me in a lie I never told, and you let me give you my record for it, and when I asked you for the truth you looked me in the eye and moved the fire again." {n}She steps back out of measure.{/n}
@@ -609,9 +609,9 @@ visit(P + "circle_night", "Inside the chalk", [
     nar("saluted", '''{n}She returns it, flat of the blade to the brow, and then lays her sword on the sand. After a moment you lay yours across it, and the two blades lie there crossed, catching the red light.{/n}''',
         c("Continue", "close")),
     jan("laid", '''"No salute?" {n}She looks at your blade lying at her feet, and something in her face gives way.{/n}
-"That's a salute too, in Mivon. The oldest one. You just don't know it." {n}She lays her own sword across yours.{/n}''',
+"That's a salute too. The old man gave it once, to a student who'd beaten him. You just don't know it." {n}She lays her own sword across yours.{/n}''',
         c("Continue", "close")),
-    jan("close", '''{n}She steps in, inside measure, where nobody who knows the forms ever stands unless they mean to finish something.{/n}
+    jan("close", '''{n}She steps in, inside measure, where the old man taught her never to stand unless she meant to finish something.{/n}
 "In Mivon I never let anyone this close. You don't, if you want to stay unbeaten." {n}Her breath is quick and she isn't hiding it.{/n} "I'm not unbeaten any more. I find I don't mind."''',
         c("Continue", "mark_jaw", requires=(SHE_FIRST,)),
         c("Continue", "mark_arm", requires=(YOU_FIRST,)),
@@ -710,7 +710,7 @@ KEPT_PARAS = (
     p("{n}She kept the scar on her temple where it could be seen, and let the Commander trace it exactly once a year, on the anniversary of the Molten Scar, and never on any other day.{/n}", requires=(SCAR,)),
     p("{n}The Eagle Watch never did correct its roll of the dead. Jannah Aldori, recruit, is listed there still, killed in the Molten Scar. She went to look at it sometimes, when she was in a bad mood, and came away cheerful.{/n}", requires=(SCAR,), forbids=(NAMELESS,)),
     p("{n}She fought the rest of the war under no name, as she had been told to, and after the war the Commander offered to give her own back. She said she would think about it. She was still thinking about it years later, and making the Commander ask.{/n}", requires=(NAMELESS,)),
-    p("{n}She liked to tell people that the Commander had released her from a yield once, which in her old salle was the highest honour one fencer could pay another, and that she had stayed anyway, which in Mivon is called being a fool.{/n}", requires=(RELEASED,)),
+    p("{n}She liked to tell people that the Commander had released her from a yield once, which in her old salle was the highest honour one fencer could pay another, and that she had stayed anyway, which her old master would have called being a fool.{/n}", requires=(RELEASED,)),
     p("{n}Of the Condemned company she rode north with, half came home. She kept their names on a strip of leather wound under her sword's grip, and rewound it every spring.{/n}", requires=(POSTING,)),
     p("{n}She never let the Commander forget that she had won blood and tale in a gaol cell. When they argued, she would say, \"Drawn bouts go to the one who was challenged,\" and the argument would be over, whether or not anybody had been challenged.{/n}", requires=(STORY_LOST,)),
     p("{n}Every year at the muster she challenged the Commander again, in front of whoever was watching, for no stake at all but the pleasure of it. The Commander never drew first blood in any of them. Nobody who had seen the first bout believed that was an accident, and nobody said so to her face.{/n}", requires=(PUBLIC_YIELD,)),
