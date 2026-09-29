@@ -257,6 +257,29 @@ at_cave("soana.trickster.returned.second_ask", "Tied tighter", '"The ground has 
     ], requires=("trickster.ever", RETURNED, DECLINED), forbids=(CLOSED, COMMITTED), delay=96)
 
 
+# The portion comes due (audit: the recurring blood price must be witnessed, not only promised). The first winter after
+# the handover, on her own list: the spirits come to the cave mouth, and the Commander can pay it or watch her pay it.
+inline("soana.trickster.handover.winter_portion", "The spirits' portion, again", 5, '"The spirits came, didn\'t they?"', [
+    n("start", "Soana", '''{n}There is frost on the moss, and a ring of it has melted in front of the cave mouth, the size of a cart wheel, as if something warm had stood there all night. Soana sits on the stone beside it with her knife across her knees. Her left palm is a lattice of old white cuts, and one new one, not yet opened.{/n}
+"They came at moonrise, the way I told you they would. They stood there till dawn and did not say a word. They do not need to. I know what they are owed; a fool struck the bargain for me, and a bargain is a bargain."
+{n}She turns the knife so the edge catches the light, and looks at you, not at the blade.{/n}
+"You may watch. People who make bargains for other people ought to see them paid."''',
+        c('[Hold out your own palm] "My joke. My blood. Pay them from me this winter."', "shared",
+          flags=("soana.trickster.cost.portion_shared",)),
+        c("[Watch her pay it]", "watched", flags=("soana.trickster.portion_watched",))),
+    n("shared", "Soana", '''{n}She looks at your hand the way she looks at a snare that has caught the wrong animal. Then she takes your wrist in her root-hard fingers and draws the knife across your palm, not deep, and turns it over the melted ring. The blood goes into the moss and does not stay there. Something in the trees sighs.{/n}
+"They know your taste now as well as mine. That was stupid, hunter. They will come to your door as well, some winter, and I will not be there to tell them no."
+{n}She binds your hand with the same rag she keeps for her own, without being asked, and without being gentle.{/n}
+"Stupid," she says again, more quietly, and does not let go of the rag's end for a while.''',
+        c("[Leave her to the frost]")),
+    n("watched", "Soana", '''{n}She opens her palm along the old line, without a sound, and holds it over the melted ring until the moss stops drinking. Something in the trees sighs, and the ring begins to freeze over.{/n}
+"There. Next winter again, and the winter after. Remember it the next time you are clever on somebody else's behalf."
+{n}She wraps the hand the way other people tie a bootlace, and goes back into her cave.{/n}''',
+        c("[Leave her to the frost]"))],
+    requires=("trickster.ever", BLOOD), forbids=(*LOSS, CLOSED, "soana.trickster.cost.portion_shared", "soana.trickster.portion_watched"),
+    delay=72)
+
+
 # --- State 3, the missed window: crooked luck (F13) ---------------------------------------------------------------------
 
 inline("soana.trickster.missed.dice_bowl", "An offering", 3,
@@ -457,6 +480,9 @@ SCENES.extend(REACTIONS)
 ALIVE_PARAGRAPHS = (
     p("Every winter the spirits came to the cave mouth for their portion, and every winter she cut her palm for them and "
       "cursed the Commander's name while she did it. She never missed a winter.", requires=(BLOOD,)),
+    p("Some winters the spirits came to the Commander's door instead, wherever it was, and stood in the frost till dawn. The "
+      "Commander learned to keep a knife by the threshold, and a rag, and to expect a letter from Wintersun a week later "
+      "calling them stupid.", requires=("soana.trickster.cost.portion_shared",)),
     p("She kept a die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
       requires=(DICE,), forbids=(LUCK_REFUSED,)),
 )

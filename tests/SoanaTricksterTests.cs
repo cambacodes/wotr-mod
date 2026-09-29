@@ -240,6 +240,16 @@ internal static class SoanaTricksterTests
         var fooled = Pick(terms, atTerms, "soana.closed");
         check(!fooled.Has("soana.committed"), "The Commander's hard no commits.");
 
+        // Trk_Soana_WinterPortion: the blood bargain comes due in person, in Chapter 5, and the Commander may pay it.
+        var winter = S(P + "handover.winter_portion");
+        var bled = World(story, 5, "trickster.ever", P + "cost.blood_given", "soana.after_quest");
+        check(Rules.Available(story, winter, Later(story, bled, 72)),
+            "Trk_Soana_WinterPortion: the portion never comes due.");
+        check(!Rules.Available(story, winter, World(story, 5, "trickster.ever", "soana.after_quest")),
+            "The portion comes due without a bargain.");
+        check(Play(winter, Later(story, bled, 72)).Any(r => r.Has(P + "cost.portion_shared")),
+            "The Commander cannot pay the portion.");
+
         // Trk_Soana_DicePrimer: planted in Chapter 3 on her own list.
         var alive3 = World(story, 3, "trickster", "trickster.ever", "soana.after_quest", "soana.old_defender");
         check(Rules.Available(story, dice, alive3), "Trk_Soana_DicePrimer: the die cannot be offered.");
