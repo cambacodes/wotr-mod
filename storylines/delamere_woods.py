@@ -483,7 +483,7 @@ visit(P + "woken.village", "Fifty-three, again", [
 visit(P + "woken.day_owed", "The day owed", [
     nar("window", '''{n}The first frost comes in the night. You wake because the room is cold, and the room is cold because the shutter is open, and the shutter is open because there is a woman crouched on your windowsill with a bow in one hand and the other hand over your mouth.{/n}''',
         c("Continue", "whisper")),
-    dl("whisper", '''"Shh." {n}Her breath is white in the cold.{/n} "I have come for my day, stag. It is a night, but I am old and I round up." {n}She takes her hand from your mouth and nocks an arrow.{/n} "I will count to fifty-three. Run."''',
+    dl("whisper", '''"Shh." {n}Her breath is white in the cold.{/n} "I have come for my day, stag. It is a night, but I am old and I round up." {n}She takes her hand from your mouth and nocks an arrow.{/n} "I will count to a hundred, in Kellid. Run."''',
         c('"You\'re joking."', "joking"),
         c("[Run.]", "run")),
     dl("joking", '''"I have never made a joke in my life. One." {n}She draws.{/n} "Two."''',
@@ -504,6 +504,6 @@ visit(P + "woken.day_owed", "The day owed", [
         c("Continue", "cold")),
     nar("down", '''{n}You pull her down by the lacing of her breastplate, and she comes, laughing into your mouth, the knife clattering away down the tiles into somebody's gutter. For a while the frost does not matter at all.{/n}''',
         c("Continue", "cold")),
-    dl("cold", '''{n}Somewhere below, a watchman's lantern is swinging round to find the noise.{/n} "Up. You are barefoot on a roof in the first frost, and my arrow's bone is in your leg, and I will not carry you." {n}She stands, and gives you her hand, and hauls you up.{/n} "Next year I will count to fifty. You are getting slow."''',
+    dl("cold", '''{n}Somewhere below, a watchman's lantern is swinging round to find the noise.{/n} "Up. You are barefoot on a roof in the first frost, and my arrow's bone is in your leg, and I will not carry you." {n}She stands, and gives you her hand, and hauls you up.{/n} "Next year I will count to ninety. You are getting slow."''',
         c("[Limp home with her.]", flags=(FIRST_FROST,))),
 ], requires=("trickster.ever", COMMITTED, HUNT_OWED), forbids=(CLOSED, FIRST_FROST), delay=72)

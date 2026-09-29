@@ -270720,7 +270720,7 @@
         {
           "Id": "whisper",
           "Speaker": "Delamere",
-          "Text": "\"Shh.\" {n}Her breath is white in the cold.{/n} \"I have come for my day, stag. It is a night, but I am old and I round up.\" {n}She takes her hand from your mouth and nocks an arrow.{/n} \"I will count to fifty-three. Run.\"",
+          "Text": "\"Shh.\" {n}Her breath is white in the cold.{/n} \"I have come for my day, stag. It is a night, but I am old and I round up.\" {n}She takes her hand from your mouth and nocks an arrow.{/n} \"I will count to a hundred, in Kellid. Run.\"",
           "Choices": [
             {
               "Text": "\"You're joking.\"",
@@ -270872,7 +270872,7 @@
         {
           "Id": "cold",
           "Speaker": "Delamere",
-          "Text": "{n}Somewhere below, a watchman's lantern is swinging round to find the noise.{/n} \"Up. You are barefoot on a roof in the first frost, and my arrow's bone is in your leg, and I will not carry you.\" {n}She stands, and gives you her hand, and hauls you up.{/n} \"Next year I will count to fifty. You are getting slow.\"",
+          "Text": "{n}Somewhere below, a watchman's lantern is swinging round to find the noise.{/n} \"Up. You are barefoot on a roof in the first frost, and my arrow's bone is in your leg, and I will not carry you.\" {n}She stands, and gives you her hand, and hauls you up.{/n} \"Next year I will count to ninety. You are getting slow.\"",
           "Choices": [
             {
               "Text": "[Limp home with her.]",
@@ -271135,7 +271135,7 @@
         {
           "Id": "opened",
           "Speaker": "Delamere",
-          "Text": "\"So now you know what you did with your horn.\" {n}She looks at you across the fire.{/n} \"You did not raise me. I am not one of the lich-things; no god bought me back and no sorcerer tied me to his will. The stag called, and I answered, because I swore I would. And when I answered, my fingers opened at last.\"\n{n}She reaches over and lays her hand flat on your thigh, over the place where the arrow went in.{/n} \"Your leg is where it went. It had been waiting a very long time.\"",
+          "Text": "\"So now you know what you did with your horn.\" {n}She looks at you across the fire.{/n} \"I do not know all of what I am, stag. I know what I am not. The lich-things are cold, and I see my breath every morning. They do not bleed, and I bleed. They do not dream, and I dream of snow.\"\n{n}She turns her hand palm up in the firelight.{/n} \"And I know what I have lost. When I was the Blessed I could lay these hands on a torn hound and feel Old Deadeye come down them like warm water. Since the crypt, nothing. Whether he took it as the price of the waking, or I left it down there in the dark, I cannot tell you. The stag called, and I answered, because I swore I would. When I answered, my fingers opened at last. That much I know.\"\n{n}She reaches over and lays her hand flat on your thigh, over the place where the arrow went in.{/n} \"Your leg is where it went. It had been waiting a very long time.\"",
           "Choices": [
             {
               "Text": "\"You kept a promise for centuries. I've never kept one for a week.\"",
@@ -272850,7 +272850,7 @@
         {
           "Id": "count",
           "Speaker": "Delamere",
-          "Text": "\"Good. Now hear me, because there is a thing I have been meaning to say, and I say things badly indoors.\" {n}She stays on her knees on your floor. It does not make her look any smaller.{/n}\n\"I have been counting again. I told you, it is what I do. And your village is bigger than fifty-three, stag. I have walked this city. I have heard what they say in your yard, and in the King's tavern, and on the walls. There are a great many people who think they have a claim on you, and some of them are right.\"",
+          "Text": "\"Good. Now hear me, because there is a thing I have been meaning to say, and I say things badly indoors.\" {n}She stays on her knees on your floor. It does not make her look any smaller.{/n}\n\"I have walked this city, stag, the way I used to walk my valleys. I have heard what they say in your yard, and in the King's tavern, and on the walls. There are a great many people who think they have a claim on you, and some of them are right.\"",
           "Choices": [
             {
               "Text": "\"Does that bother you?\"",
@@ -272906,7 +272906,7 @@
         {
           "Id": "names",
           "Speaker": "Delamere",
-          "Text": "\"One thing more.\" {n}She gets up, stiffly, and brushes off her knees.{/n} \"When I ask you their names, you tell me. All of them. Every one who sits at your fire. I do not need to like them. I may not. But I will not live in a village where I do not know who is sleeping next door, and what they did in the bad winter.\" {n}Her mouth twitches.{/n} \"That is not jealousy, whatever the bards will say. It is only counting.\"",
+          "Text": "\"One thing more.\" {n}She gets up, stiffly, and brushes off her knees.{/n} \"When I ask you their names, you tell me. All of them. Every one who sits at your fire. I do not need to like them. I may not. But I will not live in a village where I do not know who is sleeping next door, and what they did in the bad winter.\" {n}Her mouth twitches.{/n} \"That is not jealousy, whatever the bards will say. It is how a village lives.\"",
           "Choices": [
             {
               "Text": "\"You'll have every name you ask for.\"",
@@ -272946,7 +272946,7 @@
         {
           "Id": "promise",
           "Speaker": "Delamere",
-          "Text": "{n}She picks up the knotted cord from the floor, winds it round her hand, and puts it away inside the breastplate, over her heart, where a city woman would keep a letter.{/n} \"I will keep the measure. In case you grow.\" {n}She goes to the door, and stops, and looks at the brace on your leg with the small red arrow on it.{/n}\n\"You wear my mark on your leg and my hide on your mark. In the old days that would have meant something, in the hills. I will not tell you what. You would only laugh.\" {n}She goes.{/n}",
+          "Text": "\"And hear the rest, so you do not mistake me. Knowing them is not sitting down with them. When I have looked each of them in the face, I will decide whether I eat at your fire, or at mine, with you coming to me. That is mine to choose. Not yours, and not theirs.\" {n}She picks up the knotted cord from the floor, winds it round her hand, and puts it away inside the breastplate, over her heart, where a city woman would keep a letter.{/n} \"I will keep the measure. In case you grow.\" {n}She goes to the door, and stops, and looks at the brace on your leg with the small red arrow on it.{/n}\n\"You wear my mark on your leg and my hide on your mark. In the old days that would have meant something, in the hills. I will not tell you what. You would only laugh.\" {n}She goes.{/n}",
           "Choices": [
             {
               "Text": "[Lace it looser, for the night.]",
@@ -273139,7 +273139,7 @@
         {
           "Id": "sentence",
           "Speaker": "Delamere",
-          "Text": "\"You will dig.\" {n}She points up the hill, to the clearing below the temple where the volunteers' longhouses stand, or will stand.{/n} \"Every day for one season, when your captain can spare you, you will come to my village and dig its ditches and fell its timber, and you will eat at its fires, last. When you go back to your war, you will know fifty-three names you did not know before, and you will think of their faces every time you see a doe.\"\n{n}She cuts them loose.{/n} \"If you do not come, I will come for the fingers. I know where your tents are. I have been in them.\"",
+          "Text": "\"You will dig.\" {n}She points up the hill, to the clearing below the temple where the volunteers' longhouses stand, or will stand.{/n} \"Every day for one season, when your captain can spare you, you will come to my village and dig its ditches and fell its timber, and you will eat at its fires, last. When you go back to your war, you will know the name of every child in it, and you will think of their faces every time you see a doe.\"\n{n}She cuts them loose.{/n} \"If you do not come, I will come for the fingers. I know where your tents are. I have been in them.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -276418,8 +276418,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",
