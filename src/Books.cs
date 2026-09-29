@@ -45,6 +45,19 @@ namespace Tirabade
         // without art keeps the book's native picture rather than a wrong face. List, cover and data-book pages speak as
         // "Book" (no art), not "Narrator", whose default picture is the Anevia and Irabeth scene.
         internal static string PortraitKey(params string?[] keys) => keys.FirstOrDefault(key => !string.IsNullOrEmpty(key)) ?? "";
+        // E15c: the archive cover line for a kept scene, by what it was.
+        internal static string KeptLine(Scene scene)
+        {
+            string sender = Rules.SenderOf(scene);
+            switch (Rules.KindOf(scene))
+            {
+                case "letter": return "{n}" + (scene.Parcel ? "A parcel from " : "A letter from ") + sender + ", read and kept.{/n}";
+                case "sending": return "{n}A sending from " + sender + ", remembered word for word.{/n}";
+                case "memory": return "{n}A memory you have already lived through once.{/n}";
+                case "event": return "{n}An evening you have already lived through once.{/n}";
+                default: return "{n}An evening with " + sender + ", remembered.{/n}";
+            }
+        }
 
         internal static List<string> ViewItems(string view) =>
             views.TryGetValue(view, out var v) && enabled && initialized && Game.Instance?.Player != null ? v.Items(State()) : new List<string>();
@@ -246,7 +259,7 @@ namespace Tirabade
             var covers = new Dictionary<string, BlueprintBookPage>();
             foreach (var scene in letters)
             {
-                string kept = scene.Owner == "Memory" ? "{n}A memory you have already lived through once.{/n}" : "{n}A letter from " + scene.Owner + ", read and kept.{/n}";
+                string kept = KeptLine(scene);
                 CueSetup(out var cue, "cue.view.archive." + scene.Id, kept + "\n\n" + scene.Title);
                 covers[scene.Id] = ViewPage("page.view.archive." + scene.Id, "Letters kept", new Node { Id = "kept", Speaker = scene.Owner,
                     Portrait = PortraitKey(scene.Nodes.FirstOrDefault()?.Portrait, scene.Owner), Text = kept },

@@ -227,6 +227,10 @@ namespace Tirabade
         public bool Remote;
         // E15b: a remote scene that arrives as a parcel rather than a letter (page header "A parcel from <Owner>").
         public bool Parcel;
+        // E15c: what a remote scene is (letter, visit, sending, memory, event) and who it is from, when the Owner is a
+        // presentation label ("Memory"). Set by storylines/scene_kinds.py; absent on in-person and epilogue scenes.
+        public string? Kind;
+        public string? Sender;
         public bool ManualOnly;
         public string? InteractionHub;
         public string? Recovery;
@@ -673,6 +677,18 @@ namespace Tirabade
 
         public static bool IsRemote(Scene scene) => scene.Remote || scene.Owner == "Memory";
 
+        // E15c: the presentation kind of a scene. In-person and epilogue scenes are "visit"; a remote scene without an
+        // authored Kind keeps the E15b behaviour (a "Memory" owner is a memory, anything else a letter).
+        public static readonly string[] SceneKinds = { "letter", "visit", "sending", "memory", "event" };
+        public static string KindOf(Scene scene)
+        {
+            if (!IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)) return "visit";
+            return scene.Kind ?? (scene.Owner == "Memory" ? "memory" : "letter");
+        }
+
+        public static string SenderOf(Scene scene) =>
+            scene.Sender ?? (scene.Owner == "Together" ? "Anevia and Irabeth" : scene.Owner);
+
         public static Scene? NextRemote(Story story, Snapshot state) => story.Scenes
             .FirstOrDefault(scene => IsRemote(scene) && !scene.ManualOnly
                 && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && Available(story, scene, state));
@@ -954,6 +970,9 @@ namespace Tirabade
         {
             if (story.Scenes.Count == 0) throw new InvalidOperationException("The route has no scenes.");
             ValidateBooks(story);
+            foreach (var scene in story.Scenes)
+                if (scene.Kind != null && (Array.IndexOf(SceneKinds, scene.Kind) < 0 || !IsRemote(scene)))
+                    throw new InvalidOperationException("Invalid scene kind (E15c: letter, visit, sending, memory, event; remote scenes only): " + scene.Id);
             if (story.UnlockableFlags == null || story.QuestObjectives == null || story.InventoryItems == null || story.StartedQuests == null
                 || story.MainCharacterFacts == null)
                 throw new InvalidOperationException("Native reader collections cannot be null.");

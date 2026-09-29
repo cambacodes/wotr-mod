@@ -59,19 +59,35 @@ namespace Tirabade
                 return speaker;
             }
 
-            // E15b letters: a remote scene is correspondence. Its page is headed "Letter from <Owner>" (or "A parcel from
-            // <Owner>"). Epilogue pages and memories are not letters.
+            // E15c: only a scene of Kind "letter" is correspondence ("Letter from <Sender>", or "A parcel from <Sender>").
+            // A visit, a sending, a memory or an event delivered at a rest is not mail (E15b styled every remote scene so).
             internal static string? LetterHeader(Scene scene)
             {
-                if (!Rules.IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.Owner == "Memory") return null;
-                string sender = scene.Owner == "Together" ? "Anevia and Irabeth" : scene.Owner;
-                return (scene.Parcel ? "A parcel from " : "Letter from ") + sender;
+                if (Rules.KindOf(scene) != "letter") return null;
+                return (scene.Parcel ? "A parcel from " : "Letter from ") + Rules.SenderOf(scene);
             }
+
+            // E15c: the first line printed on the scene's first page, in the book's narration style, so the page says what
+            // the player is looking at even though the book page title is not rendered.
+            internal static string? KindLine(Scene scene)
+            {
+                switch (Rules.KindOf(scene))
+                {
+                    case "letter": return LetterHeader(scene);
+                    case "sending": return "A sending from " + Rules.SenderOf(scene);
+                    case "memory": return "A memory";
+                    default: return null;
+                }
+            }
+
+            internal const float MemoryAlpha = 0.72f;
+            internal static readonly Color MemoryTint = new Color(0.82f, 0.8f, 0.78f, MemoryAlpha);
 
             internal static string PageTitle(Scene scene) =>
                 LetterHeader(scene) is string header ? (scene.Title.Length > 0 ? header + ": " + scene.Title : header) : scene.Title;
 
             internal static bool IsLetterPage(string guid) => letterPages.Contains(guid);
+            internal static string PageKind(string guid) => pageKinds.TryGetValue(guid, out var kind) ? kind : "visit";
 
             internal static bool IsRrtPage(BlueprintBookPage? page, out Node? node, out string? owner)
             {
@@ -178,6 +194,13 @@ namespace Tirabade
                         addedFrames.Add(frame);
                         Caption(view, picture, "— " + (owner == "Together" ? "Anevia and Irabeth" : owner ?? node!.Speaker));
                     }
+                    else if (bookPage != null && PageKind(bookPage.AssetGuid.ToString()) == "memory")
+                    {
+                        // A memory: the picture is muted, like something remembered rather than seen.
+                        if (!savedColors.ContainsKey(picture)) savedColors[picture] = picture.color;
+                        picture.color = MemoryTint;
+                    }
+                    else if (bookPage != null && PageKind(bookPage.AssetGuid.ToString()) == "event") { }
                     else Caption(view, picture, CaptionFor(node!.Speaker, owner));
                 }
                 catch (Exception ex) { Log("E15b picture polish skipped: " + ex.Message); }
@@ -213,29 +236,89 @@ namespace Tirabade
                 captionRoot.SetActive(true);
             }
 
-            // Short RRT page: the cue block stops stretching, so the answers follow the text. Long pages keep the native
-            // layout (the paginator measures the stretched block to split text into pages).
+            // E15c short RRT page: the answers follow the text.
+            // Root cause of the E15b miss (live run 20260928-204514): the book page is a vertical layout of the paginator's
+            // viewport container (flexible, fills the page) and the answer block (minHeight = 6-7 lines). The cue block lives
+            // INSIDE the paginated viewport, so un-stretching it moved nothing, and OnContentChanged only schedules its work
+            // (SetCues/SetAnswers run in an animation callback), so a postfix on it ran before the content existed.
+            // Now: on m_OnContentUpdate (fired after SetCues/SetAnswers, before the paginator's delayed viewport sizing), a
+            // short page gives the viewport container a preferred height of its text (whole lines) and no flex, so the answer
+            // block rises under the text and the paginator sizes a single page from the shrunken container. Every change is
+            // restored before the next page, and a native page is never touched.
+            internal static readonly FieldInfo? PaginatorField = AccessTools.Field(ViewType, "m_CuePaginator");
+            internal static readonly FieldInfo? ContainerField = AccessTools.Field(typeof(Kingmaker.UI.Common.Paginator), "m_ViewPortContainer");
+            internal static readonly FieldInfo? ContentUpdateField = AccessTools.Field(ViewType, "m_OnContentUpdate");
+            private static LayoutElement? heldElement;
+            private static bool heldAdded;
+            private static float heldMin, heldPreferred, heldFlexible;
+            private static bool layoutDumped;
+
+            private static void RestoreLayout()
+            {
+                if (heldElement == null) return;
+                if (heldAdded) UnityEngine.Object.Destroy(heldElement);
+                else { heldElement.minHeight = heldMin; heldElement.preferredHeight = heldPreferred; heldElement.flexibleHeight = heldFlexible; }
+                if (heldElement.transform.parent is RectTransform parent) LayoutRebuilder.MarkLayoutForRebuild(parent);
+                heldElement = null;
+            }
+
+            // Whole lines of text plus one line of breathing room; the viewport must stay divisible by the line height.
+            internal static float ShortViewportHeight(float textHeight, float line) =>
+                line <= 0 ? textHeight : (float)Math.Ceiling(textHeight / line) * line + line;
+
             internal static void ApplyLayout(object view)
             {
                 try
                 {
-                    foreach (var pair in savedFlex) if (pair.Key != null) pair.Key.flexibleHeight = pair.Value;
-                    savedFlex.Clear();
+                    RestoreLayout();
                     var page = Page(view);
                     if (!IsRrtPage(page, out var node, out _)) return;
                     var texts = new List<string> { node!.Text };
                     texts.AddRange(node.Paragraphs.Select(p => p.Text));
                     if (!IsShortPage(texts)) return;
-                    if (!(CuesLayoutField?.GetValue(view) is Component cues)) return;
-                    foreach (var element in cues.GetComponents<LayoutElement>())
+                    if (!(PaginatorField?.GetValue(view) is Component paginator) || !(ContainerField?.GetValue(paginator) is RectTransform container)) return;
+                    if (!(CuesLayoutField?.GetValue(view) is Component cues) || !(cues.transform is RectTransform cuesRect)) return;
+                    if (!(container.parent is RectTransform parent) || parent.GetComponent<LayoutGroup>() == null)
                     {
-                        if (element.flexibleHeight <= 0) continue;
-                        savedFlex[element] = element.flexibleHeight;
-                        element.flexibleHeight = 0;
+                        if (!layoutDumped) { layoutDumped = true; Log("E15c layout: the viewport container is not driven by a layout group; the native page layout is kept."); }
+                        return;
                     }
-                    if (savedFlex.Count > 0 && cues.transform.parent is RectTransform parent) LayoutRebuilder.MarkLayoutForRebuild(parent);
+                    LayoutRebuilder.ForceRebuildLayoutImmediate(cuesRect);
+                    float text = LayoutUtility.GetPreferredHeight(cuesRect);
+                    float font = (float)(AccessTools.Property(ViewType, "FontHeight")?.GetValue(view) ?? 0f);
+                    float space = (float)(AccessTools.Property(ViewType, "SpaceHeight")?.GetValue(view) ?? 0f);
+                    float target = ShortViewportHeight(text, font + space);
+                    if (text <= 0 || target >= container.rect.height) return;
+                    var element = container.GetComponent<LayoutElement>();
+                    heldAdded = element == null;
+                    if (element == null) element = container.gameObject.AddComponent<LayoutElement>();
+                    heldMin = element.minHeight; heldPreferred = element.preferredHeight; heldFlexible = element.flexibleHeight;
+                    heldElement = element;
+                    element.flexibleHeight = 0;
+                    element.preferredHeight = target;
+                    if (element.minHeight > target) element.minHeight = target;
+                    LayoutRebuilder.MarkLayoutForRebuild(parent);
+                    if (!layoutDumped)
+                    {
+                        layoutDumped = true;
+                        Log("E15c layout: short page " + page!.AssetGuid + " text " + text.ToString("0") + "px, viewport container " + container.name
+                            + " " + container.rect.height.ToString("0") + "px -> " + target.ToString("0") + "px under " + parent.name + " ("
+                            + parent.GetComponent<LayoutGroup>()!.GetType().Name + ")");
+                    }
                 }
-                catch (Exception ex) { Log("E15b layout polish skipped: " + ex.Message); }
+                catch (Exception ex) { Log("E15c layout polish skipped: " + ex.Message); }
+            }
+
+            // Hooked once per bound view: runs after the page's cues and answers exist.
+            internal static void Subscribe(object view)
+            {
+                try
+                {
+                    if (!(ContentUpdateField?.GetValue(view) is UniRx.ReactiveCommand command)) return;
+                    var subscription = UniRx.ObservableExtensions.Subscribe(command, _ => ApplyLayout(view));
+                    AccessTools.Method(view.GetType(), "AddDisposable", new[] { typeof(IDisposable) })?.Invoke(view, new object[] { subscription });
+                }
+                catch (Exception ex) { Log("E15c layout hook skipped: " + ex.Message); }
             }
         }
 
@@ -250,9 +333,10 @@ namespace Tirabade
         [HarmonyPatch]
         private static class BookLayoutPatch
         {
-            private static MethodBase TargetMethod() => AccessTools.Method(BookPolish.ViewType, "OnContentChanged");
+            // E15c: subscribe to the view's content-update command when it binds (see BookPolish.ApplyLayout).
+            private static MethodBase TargetMethod() => AccessTools.Method(BookPolish.ViewType, "BindViewImplementation");
             [HarmonyPostfix]
-            private static void Postfix(object __instance) => BookPolish.ApplyLayout(__instance);
+            private static void Postfix(object __instance) => BookPolish.Subscribe(__instance);
         }
     }
 }

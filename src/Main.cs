@@ -59,6 +59,9 @@ namespace Tirabade
         private static readonly Dictionary<string, string> pageOwners = new Dictionary<string, string>();
         // E15b: RRT pages of remote scenes (letters and parcels), styled as correspondence on the book page.
         private static readonly HashSet<string> letterPages = new HashSet<string>();
+        // E15c: the presentation kind of every RRT page (letter, visit, sending, memory, event) and its scene.
+        private static readonly Dictionary<string, string> pageKinds = new Dictionary<string, string>();
+        private static readonly Dictionary<string, Scene> pageScenes = new Dictionary<string, Scene>();
         private static readonly Dictionary<string, Sprite> portraits = new Dictionary<string, Sprite>();
         private static readonly Dictionary<string, BlueprintEtude> etudes = new Dictionary<string, BlueprintEtude>();
         private static readonly Dictionary<string, BlueprintQuest> completedQuests = new Dictionary<string, BlueprintQuest>();
@@ -587,6 +590,12 @@ namespace Tirabade
                 page.Conditions = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) ? Conditions(new RouteCondition { Scene = scene }) : Conditions();
                 page.OnShow = Actions();
                 page.Title = Text("title." + id, BookPolish.PageTitle(scene));
+                // E15c: the scene's first page says what it is ("Letter from Seelah", "A sending from Jerribeth", "A memory").
+                if (ReferenceEquals(node, scene.Nodes[0]) && BookPolish.KindLine(scene) is string kindLine)
+                {
+                    CueSetup(out var kindCue, "cue." + id + ".kind", "{n}" + kindLine + "{/n}");
+                    page.Cues.Add(Ref<BlueprintCueBaseReference>(kindCue));
+                }
                 // E14c: a textless paragraph node keeps its (registered) base cue off the page.
                 if (!string.IsNullOrWhiteSpace(node.Text)) page.Cues.Add(Ref<BlueprintCueBaseReference>(cue));
                 for (int p = 0; p < node.Paragraphs.Count; p++)
@@ -605,6 +614,8 @@ namespace Tirabade
                 pages.Add(page.AssetGuid.ToString(), node);
                 pageOwners[page.AssetGuid.ToString()] = scene.Owner;
                 if (BookPolish.LetterHeader(scene) != null) letterPages.Add(page.AssetGuid.ToString());
+                pageKinds[page.AssetGuid.ToString()] = Rules.KindOf(scene);
+                pageScenes[page.AssetGuid.ToString()] = scene;
             }
             foreach (var node in scene.Nodes)
             {
@@ -924,9 +935,21 @@ namespace Tirabade
             return dialog;
         }
 
-        // "[Letter from Konomi] A seal of blue wax"; memories read as memories.
-        internal static string MailbagLabel(Scene scene) => (scene.Owner == "Memory" ? "[A memory] " : "[Letter from " + scene.Owner + "] ")
-            + (scene.Title.Length > 0 ? scene.Title : scene.Id);
+        // "[Letter from Konomi] A seal of blue wax"; E15c: each kind reads as what it is.
+        internal static string MailbagLabel(Scene scene) => MailbagPrefix(scene) + (scene.Title.Length > 0 ? scene.Title : scene.Id);
+
+        internal static string MailbagPrefix(Scene scene)
+        {
+            string sender = Rules.SenderOf(scene);
+            switch (Rules.KindOf(scene))
+            {
+                case "letter": return (scene.Parcel ? "[A parcel from " : "[Letter from ") + sender + "] ";
+                case "sending": return "[A sending from " + sender + "] ";
+                case "memory": return "[A memory] ";
+                case "event": return "";
+                default: return "[" + sender + " asks to see you] ";
+            }
+        }
 
         private static bool CanOpenMailbag() => initialized && enabled && UseMailbag() && Idle() && Game.Instance?.Player != null
             && ReferenceEquals(mailbagPlayer, Game.Instance.Player) && mailbag.Entries(story, State()).Count > 0;
@@ -1868,8 +1891,18 @@ namespace Tirabade
             private static void Postfix(BookEventVM __instance, BlueprintBookPage page)
             {
                 if (!pages.TryGetValue(page.AssetGuid.ToString(), out var node)) return;
-                var portrait = Portrait(node.Portrait.Length > 0 ? node.Portrait : node.Speaker == "Narrator" ? "Together" : node.Speaker);
-                if (portrait != null) __instance.EventPicture.Value = portrait;
+                string guid = page.AssetGuid.ToString();
+                pageScenes.TryGetValue(guid, out var scene);
+                // E15c: an event page (the Commander alone, a framework beat) shows no partner at all: the native book
+                // picture stays. A narrated page shows its own sender; only the Anevia/Irabeth route keeps the pair image.
+                if (!(pageKinds.TryGetValue(guid, out var kind) && kind == "event" && node.Portrait.Length == 0))
+                {
+                    string key = node.Portrait.Length > 0 ? node.Portrait
+                        : node.Speaker != "Narrator" ? node.Speaker
+                        : scene == null || scene.Relationship == "tirabade" || scene.Owner == "Together" ? "Together" : Rules.SenderOf(scene);
+                    var portrait = Portrait(key);
+                    if (portrait != null) __instance.EventPicture.Value = portrait;
+                }
                 Narrate(node);
             }
         }

@@ -15,6 +15,16 @@ internal static class BookTests
 
     internal static void Run(Story built, Action<bool, string> check)
     {
+        // E15c: every rest-delivered scene of the built story says what it is; kinds are the five allowed values, only on
+        // remote scenes, and a framework page (the Commander alone) is an event, never correspondence.
+        var remote = built.Scenes.Where(s => Rules.IsRemote(s) && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToList();
+        check(remote.Count > 0 && remote.All(s => s.Kind != null && Rules.SceneKinds.Contains(s.Kind)),
+            "E15c remote scene without a valid Kind: " + string.Join(", ", remote.Where(s => s.Kind == null || !Rules.SceneKinds.Contains(s.Kind)).Select(s => s.Id).Take(5)));
+        check(built.Scenes.All(s => s.Kind == null || Rules.IsRemote(s)), "E15c Kind on an in-person scene.");
+        check(remote.Where(s => s.Relationship == "lastcall").All(s => s.Kind == "event"), "E15c a Last Call framework page is not an event.");
+        check(remote.Where(s => s.Kind != "event").All(s => !string.IsNullOrEmpty(Rules.SenderOf(s)) && Rules.SenderOf(s) != "Memory"),
+            "E15c a remote scene has no real sender (a presentation owner leaked into its header).");
+
         // The archive lists letters already read, the most recently read first; unread, manual and epilogue pages never.
         var story = new Story();
         var a = Letter("l.a", "Konomi");
