@@ -5,13 +5,13 @@
  },
  "summary": {
   "entryTargetScenes": 751,
-  "resolved": 750,
+  "resolved": 751,
   "inlineOnlyScenes": 131,
-  "inlineOnlyResolved": 130,
+  "inlineOnlyResolved": 131,
   "answerListScenesWithoutContact": 370,
-  "answerListScenesWithoutContactResolved": 369,
+  "answerListScenesWithoutContactResolved": 370,
   "lists": 78,
-  "listsWithReachableHost": 76
+  "listsWithReachableHost": 77
  },
  "scenes": {
   "a_crossing": {
@@ -1568,8 +1568,14 @@
    "entry": {
     "199a940b97b11664aace4101733cd963": "RRT_entry.areelu.trickster.audience.notes"
    },
-   "resolved": false,
-   "reason": "199a940b: no cue in any dialog shows this list"
+   "resolved": true,
+   "host": {
+    "list": "199a940b97b11664aace4101733cd963",
+    "dialog": "f07dc7568a829ba4bac9f07d05e86a65",
+    "dialogName": "Audience_Areelu_c4_dialog",
+    "cue": "Cue_0029",
+    "clicks": 6
+   }
   },
   "areelu.trickster.react.ember_regret": {
    "kind": "dialog",
@@ -14551,7 +14557,10 @@
       "0a4fc7299fe64c1448ddf815627c4334",
       "62c22eab2badbc140a842997583a06c9",
       "64f24ff468f2c2444a38391c0235d82c",
-      "a0055a0cafe246f4ab98aad1ab60d59e"
+      "a0055a0cafe246f4ab98aad1ab60d59e",
+      "e64cae5f407c950418b3a10cb687284f",
+      "2d4c54615f8c5d941a7c6047fed9a4b3",
+      "33054fdd96b775e41981562b7a2cc68c"
      ],
      "cueNames": [
       "Cue_0025",
@@ -14562,7 +14571,10 @@
       "Cue_0037",
       "Cue_0046",
       "Cue_0050",
-      "Cue_0054"
+      "Cue_0054",
+      "SequenceExit_0059",
+      "SequenceExit_0073",
+      "SequenceExit_0093"
      ],
      "speaker": "64805abb52739e44280a758f850b300c",
      "reachable": true,
@@ -14868,13 +14880,21 @@
       "e4bfd58e60ae9ad4d810bafeb1714dab",
       "d70781463130f1d4fb3c0f7d3566f2e8",
       "97b34ed3d3b00b646abed6b79deea81e",
-      "2d1f3bdd78c83ee4aae49df566f1d43d"
+      "2d1f3bdd78c83ee4aae49df566f1d43d",
+      "8721619f00808a24b967bc72fe421bbe",
+      "ab2a4ebb999f35e41859efac3ab9f9b1",
+      "3a1c5d0fa265a3f49974603db7bfbc70",
+      "a0da9df9e8f451a46bbf5dc203c349c9"
      ],
      "cueNames": [
       "Cue_0001",
       "Cue_0028",
       "Cue_0030",
-      "Cue_0031"
+      "Cue_0031",
+      "SequenceExit_0004",
+      "SequenceExit_0018",
+      "SequenceExit_0026",
+      "SequenceExit_0029"
      ],
      "speaker": null,
      "reachable": true,
@@ -14935,13 +14955,17 @@
       "214c8572a8c24c8439dd94c6ebe39d69",
       "c000ae3d47250b943953b1bd25333f30",
       "891a8c1c1cf92da46ad19f539d73ef15",
-      "826e3442cbbe92b41b362475849e56a0"
+      "826e3442cbbe92b41b362475849e56a0",
+      "22e7a7c2ee45f7444a64fbfe5ce8059d",
+      "57215be528368ee4884db28c7360f946"
      ],
      "cueNames": [
       "Cue_0001",
       "Cue_0009",
       "Cue_0010",
-      "Cue_0037"
+      "Cue_0037",
+      "SequenceExit_0022",
+      "SequenceExit_0047"
      ],
      "speaker": null,
      "reachable": true,
@@ -15448,7 +15472,10 @@
       "5c747ed884802094a88dfe60048a010e",
       "2bf8b29b8071908469bd2545ba4c7ab5",
       "6748a5a0c4beae546b1da7e53253be1e",
-      "8fd8a664c0dfb6441896a567c349a0f7"
+      "8fd8a664c0dfb6441896a567c349a0f7",
+      "d309019844ee6734e9e2b13b280e3cc3",
+      "92a3bf2e5af5c574e8d75f17aed880fa",
+      "7ddb9c74cb1c89847870e86ae1459266"
      ],
      "cueNames": [
       "Cue_0010",
@@ -15457,7 +15484,10 @@
       "Cue_0021",
       "Cue_0022",
       "Cue_0026",
-      "Cue_0028"
+      "Cue_0028",
+      "SequenceExit_0033",
+      "SequenceExit_0036",
+      "SequenceExit_0050"
      ],
      "speaker": null,
      "reachable": true,
@@ -15531,8 +15561,113 @@
   "199a940b97b11664aace4101733cd963": {
    "list": "199a940b97b11664aace4101733cd963",
    "listName": "AnswersList_0030",
-   "hosts": [],
-   "reason": "no cue in any dialog shows this list"
+   "hosts": [
+    {
+     "dialog": "f07dc7568a829ba4bac9f07d05e86a65",
+     "dialogName": "Audience_Areelu_c4_dialog",
+     "cues": [
+      "46603da28aa69bf49840cd15040e82f5",
+      "ed17e94135f47de4e87e86c22fdf2622",
+      "348c40271e049ff408ab3a4298c29262",
+      "c6763f72738db4c4d967c3a635bba428",
+      "2be4665dcec96654aa1e74240e2aac69",
+      "c9639bb05f044c7458b4497392dba929",
+      "933c1cedcb4feb348931b1521d55e537",
+      "4610db909c3c000459ca81d99a1ba3dd",
+      "5e414d9bd3aaf8440b3b829e1f6d1b34",
+      "3ccfe96869f229d4d992bac0a72f469d",
+      "fd019e5d9fb7d4941b6e202f3120bb6e",
+      "a6ee5b9325b372d4f98105f7cf062445",
+      "60e714736cbf0994cafa7f78a6d6831e",
+      "8bd7e6a3b570eb949a4f799fb861a8e4",
+      "b537403139b51ef47b39363f2b7bd62e",
+      "88fd64983f17c874bb3ddb8705ee941f",
+      "2577015646ec46546885be234ee091a6",
+      "fee23c85e8496874c80f5d94c98bc50d",
+      "ba46031ae5d107d40b2e7f4f7d738a0a",
+      "9b162c3ea7942a6429b04eed8806eb75"
+     ],
+     "cueNames": [
+      "Cue_0029",
+      "Cue_0040",
+      "Cue_0041",
+      "Cue_0042",
+      "Cue_0043",
+      "Cue_0055",
+      "Cue_0060",
+      "Cue_0061",
+      "Cue_0065",
+      "Cue_0070",
+      "Cue_0080",
+      "Cue_0081",
+      "Cue_0082",
+      "Cue_0083",
+      "Cue_0092",
+      "Cue_0094",
+      "Cue_0115",
+      "Cue_0116",
+      "Cue_0117",
+      "SequenceExit_0105"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 6,
+     "path": [
+      {
+       "at": "Cue_0013",
+       "take": "Answer_0015"
+      },
+      {
+       "at": "Cue_0017",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0022",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0095",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0113",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0024",
+       "take": "Answer_0026"
+      }
+     ],
+     "answerDist": {
+      "0b352d24f25350a4f9e8cfb0fe701c94": 3,
+      "0b93dcbc37ab9484f841f597111e0273": 1,
+      "1490a2994870a4440bd207ddf852a890": 1,
+      "2471a90ecdb63cc4cac45563bd0cfb48": 1,
+      "25d392700a6cae642be969ee35865c34": 1,
+      "2dd10e71644e5f5438efa87cc5e6dd5a": 2,
+      "439da14dd2f7274428bc741f771319cc": 2,
+      "4526ab5c588bab64799cb29b4e56af90": 2,
+      "4a01c76ccd7ab2b4aa9527cbaa59511b": 1,
+      "4f160f7a9ff98a94da5c7d4d8841d384": 1,
+      "512223927be44014ba1b596cf32742bd": 1,
+      "563878bbc88f2ad4db00ae0e4fbf536c": 1,
+      "6c13f376f2cf9034abbb9d3c45c1e5c9": 6,
+      "7d3f04a864e4be14abffcc03c71bef34": 6,
+      "7ed78e7702b68fa429f0969948757ab8": 2,
+      "8959254e84f43ae4eb3ca2b3794ca4d9": 4,
+      "90963b548674c1340abaf877c3ba0d5c": 2,
+      "9d4c81e46253a9848a838d17848d9f6e": 1,
+      "ab2321c842c13ab479a75afbeb5de70d": 1,
+      "ba81b560599b59146b327d78818dfb76": 1,
+      "bf1c153f13d34a847a7a02fcce029afa": 1,
+      "c9f3b147ae9fe4e44b74b003da88ee2e": 1,
+      "d2f45e4871f21ae418840126baaad2dc": 2,
+      "d7a5ec0bc3c57644988b3b687654f016": 4,
+      "f6c5054ceccd00046b23f1ead6af0a83": 4,
+      "fd30d30c26e49aa40a08639af46589ba": 3
+     }
+    }
+   ]
   },
   "1a17d8053a3be7f47a7908eb6706f2fe": {
    "list": "1a17d8053a3be7f47a7908eb6706f2fe",
@@ -15825,13 +15960,15 @@
       "0b8856db5788cba44845a26718d9fa83",
       "3de8c946e5e8fca46bfd39dfd4f9aa61",
       "c940bdd34a03e0a45adbbfd57e5ea692",
-      "300925c1dfca04a4cb89e69eab420cce"
+      "300925c1dfca04a4cb89e69eab420cce",
+      "bd84e9419d8d6da4fa9705bf3b771522"
      ],
      "cueNames": [
       "Cue_0008",
       "Cue_0029",
       "Cue_0063",
-      "Cue_0065"
+      "Cue_0065",
+      "SequenceExit_0014"
      ],
      "speaker": "a352873d37ec6c54c9fa8f6da3a6b3e1",
      "reachable": true,
@@ -16143,7 +16280,9 @@
       "3ab1909d0d1790546844b20579131fa6",
       "155cdd426a6951b48aa30c96e214eb82",
       "61deb3dba1af8ab4ca20917e73bf531f",
-      "594b8f760f82bf946b384c932917e5f6"
+      "594b8f760f82bf946b384c932917e5f6",
+      "a9d82759b63f01c4f830e3b44d2fee3e",
+      "ee63f58126d82a84baff270b388a0a0e"
      ],
      "cueNames": [
       "Cue_0007",
@@ -16156,7 +16295,9 @@
       "Cue_0033",
       "Cue_0044",
       "Cue_0048",
-      "Cue_0049"
+      "Cue_0049",
+      "SequenceExit_0054",
+      "SequenceExit_0056"
      ],
      "speaker": null,
      "reachable": true,
@@ -16226,6 +16367,7 @@
       "3653c46ce5a3b054e92bceed6469a780",
       "04afc85667cb0264e970688952e1860d",
       "74d6669c420cd6e4e863cc6785cbc1a7",
+      "85860f0e2802b8d4bb1a9f6847b06920",
       "d961306afff009844bd1a5594a6dc6b5",
       "d1f8508e02d058d4fbdc742bb43c6b23",
       "f07b0f5bdfd81be4cb8394b2810196b3",
@@ -16264,6 +16406,7 @@
       "Cue_0002",
       "Cue_0021",
       "Cue_0032",
+      "Cue_0042",
       "Cue_0067",
       "Cue_0118",
       "Cue_0134",
@@ -16302,17 +16445,17 @@
      "clicks": 0,
      "path": [],
      "answerDist": {
-      "0161a03196534247a0c5a4b45f657bcf": 5,
+      "0161a03196534247a0c5a4b45f657bcf": 4,
       "033f28fa37b2bf847a7830220eafdb45": 5,
       "05a0956a5af587c4b9cfa02b269e5e4a": 6,
       "05d28b52c045179479a7ab6a1d309e50": 2,
-      "06093936625e4afe9f299e277a0c5263": 4,
+      "06093936625e4afe9f299e277a0c5263": 3,
       "063f59c961b23ff4bbe57de15526e30a": 1,
       "0682d3c1553b5f644b429e0b2281b14b": 2,
       "06bbd1d99188dd940ae5045ec8a28f89": 9,
-      "06f8de7c399d4f1e8b4d703f481b181a": 4,
-      "0995ceddeb4745dbbf3a5de37e2afd92": 3,
-      "0a88e4250d044703a3eff10ad539ad25": 8,
+      "06f8de7c399d4f1e8b4d703f481b181a": 3,
+      "0995ceddeb4745dbbf3a5de37e2afd92": 2,
+      "0a88e4250d044703a3eff10ad539ad25": 7,
       "0b23a730a9b5b00468e6cd06b0feff7b": 2,
       "0bac5e4da86071243b8558454017618a": 15,
       "0d91ebb6e77f2aa448a9868cdc45107f": 11,
@@ -16322,27 +16465,27 @@
       "0fbb8c991feb7754ba9a9609985b7e76": 1,
       "10993bfc034ff784eaf3f705f8b8bc75": 1,
       "1112fe2f6c7765145905fc7c944bba63": 9,
-      "114910bd7f02444a9795b995a7c8fa46": 5,
+      "114910bd7f02444a9795b995a7c8fa46": 4,
       "1178a9b6cf8bed64398045c3db454a13": 4,
-      "11e16732f6f9270488eb1b40e5556025": 4,
+      "11e16732f6f9270488eb1b40e5556025": 3,
       "14a5a8c4e4236ae4c9613e6dfbeed6ec": 3,
       "155b5fd40b01d404cab769d9196121fb": 6,
-      "1717a8b52b1f448387ab43d5d5d22b16": 8,
-      "18436096710244cbaed7debe3c83f0cd": 9,
-      "19cc112632ba4ff58f9c56eac5b249f3": 4,
+      "1717a8b52b1f448387ab43d5d5d22b16": 7,
+      "18436096710244cbaed7debe3c83f0cd": 8,
+      "19cc112632ba4ff58f9c56eac5b249f3": 3,
       "19d95bd41b448d745b214769b9e3c29b": 7,
       "1a0b812e3af541a4fae5bccd62b14fdf": 3,
       "1cac8b6b1c762394e846e8a8d1242b5f": 2,
       "1d476b4c6825b104182590c34d875779": 2,
-      "1e368e69e803b574ab5fb82712dd1f67": 7,
+      "1e368e69e803b574ab5fb82712dd1f67": 6,
       "1f16e6d5a409a394187b43302124f538": 2,
       "2009311630a46fa449557a477871bac9": 11,
       "2022b1a7b563656479a5722ea1381293": 8,
       "20351706419e431459232c6f24e3290c": 1,
       "20f4642a065cee74fb2babdbd60c461d": 12,
       "22f257bb0ac650440a35e4580256f470": 8,
-      "241dc39a52e644ba9ac8e82daff14b45": 3,
-      "274c2a7b30534de2ba6471d2c4c16087": 5,
+      "241dc39a52e644ba9ac8e82daff14b45": 2,
+      "274c2a7b30534de2ba6471d2c4c16087": 4,
       "28e849fdcc06dac46a35acdc27fb3751": 1,
       "29c62b4c1488e70458c3de800156fad6": 13,
       "2c17cb92060377e45850f293d734dcc4": 1,
@@ -16353,56 +16496,56 @@
       "306e0d038d30fb8438605a83eaa0e255": 11,
       "309574f19b9dffe4ab8a759589d92943": 2,
       "313a80db19f74ce4abdc5b4ed4142f5f": 2,
-      "31665b38d6922ef4ab4cb83afa8245fe": 4,
+      "31665b38d6922ef4ab4cb83afa8245fe": 3,
       "32bcaa3e90332804aa10f0b8fe45da75": 7,
-      "32ca0cc398f64e468a92edf6b9938c08": 4,
-      "32e1fdeac5494447ac3db96a687b77f7": 5,
-      "33b9c5108a4a4d5ea558cfb83926cdbc": 4,
+      "32ca0cc398f64e468a92edf6b9938c08": 3,
+      "32e1fdeac5494447ac3db96a687b77f7": 4,
+      "33b9c5108a4a4d5ea558cfb83926cdbc": 3,
       "342f8769727d4b649956e7525529aab4": 11,
       "35cd32d062a066f409106fd0fd0b39ed": 10,
-      "36ce995c1e103124b9eb9866f8662695": 3,
+      "36ce995c1e103124b9eb9866f8662695": 2,
       "3ab628a9bd1b885409d706737aa2fd4c": 6,
-      "3ae81b5c2ea64734b60bbee71c017320": 3,
+      "3ae81b5c2ea64734b60bbee71c017320": 2,
       "3b8d2d7e6dd33924dbe0a901ecc85971": 2,
-      "3bd23d2c32e0fe548aac2b02118d743c": 4,
-      "3c0367f7f7a28154ca2b95b199ea5077": 4,
+      "3bd23d2c32e0fe548aac2b02118d743c": 3,
+      "3c0367f7f7a28154ca2b95b199ea5077": 3,
       "3ce1cb36c0a727846bd739d205543342": 1,
       "3d3188ec1905d6545b6579cc14cff13f": 2,
-      "3d57760ae2b39a44f9b0e254e81a1e4b": 4,
+      "3d57760ae2b39a44f9b0e254e81a1e4b": 3,
       "3e8509699511ec84a997eebffe1362f6": 2,
-      "4147d3e82eac49a9a3bd96ff66ae8e97": 5,
+      "4147d3e82eac49a9a3bd96ff66ae8e97": 4,
       "45244db7c791f86458eb40182937cf04": 8,
-      "46da1169d5a2235469dc0aebaffd02a8": 6,
+      "46da1169d5a2235469dc0aebaffd02a8": 5,
       "471b92e510b641442ad3ce96ae8366be": 5,
       "47cce3760b0f0bc4ebb4239a2c176c49": 6,
       "48abf8a865ef0bd478c93a78ac7586ce": 12,
-      "48befb8d2f47b1140b7823bcc2c77745": 3,
+      "48befb8d2f47b1140b7823bcc2c77745": 2,
       "4b0b82d1e7de1e046a08ac8bf357e151": 14,
-      "4b64f47333394513b21074834dd583c3": 3,
+      "4b64f47333394513b21074834dd583c3": 2,
       "501a21b1d15abfe4c840a251c62ed2d3": 2,
       "523e98f5d12ead941a62c59a6434bad3": 3,
-      "5296690aec59d104db90f200df6df13e": 3,
+      "5296690aec59d104db90f200df6df13e": 2,
       "52fbeabc870e4f74593868442f2dc4ff": 5,
-      "53173097d471d3a45bc31e770e2f35f2": 8,
-      "537bf39a6846469696c03b660162ae41": 5,
+      "53173097d471d3a45bc31e770e2f35f2": 7,
+      "537bf39a6846469696c03b660162ae41": 4,
       "54354322c2d1e334eacaff48d66a7f3a": 5,
       "54f2c35318fd0974b8751773314be702": 11,
       "5566b258b18c3cb4ba5ae363d4185e17": 8,
-      "56f04f96cd7844b68c13c31a59739bc3": 4,
+      "56f04f96cd7844b68c13c31a59739bc3": 3,
       "56f09faf9f3191449886262cc23c84c8": 13,
       "57f51cbeade09cf42ab36217b8e7f4be": 2,
       "584c33e2358e73449a9f933b2181892d": 3,
       "59f42a4d14da5ca459acb0f89e6d2875": 10,
-      "5b1163ff3302417382af151f8f27ec39": 4,
+      "5b1163ff3302417382af151f8f27ec39": 3,
       "5bdceda7664249f4b3e6fdc32889a2fe": 1,
       "5da1cd176615e54419ce956d99f85b30": 2,
-      "5e0f6d18492e4af3bf6e4bd00bb04274": 3,
+      "5e0f6d18492e4af3bf6e4bd00bb04274": 2,
       "5e7db0ccf3f781847a5428a9aaeb2b8f": 2,
       "5ebe232186edb4a4db419c5f8390aa9d": 1,
-      "5f16d9711c6d92647a28496a44e38395": 3,
+      "5f16d9711c6d92647a28496a44e38395": 2,
       "6142bbcff48fe3e4087bd29fe54e278c": 2,
       "618bc5238c153a04eafc156cd6b3b277": 10,
-      "62ff3234bfb0fa846b99be082ca68352": 5,
+      "62ff3234bfb0fa846b99be082ca68352": 4,
       "636e9a5c8f280da40b609b5c7f4f76a9": 4,
       "6441e3df624f81a4a864e1af260e3016": 7,
       "66485a65ced485d40b4b82d63e7433e2": 10,
@@ -16411,52 +16554,52 @@
       "69bffb6d59a24fa47ac51669ec253562": 7,
       "6aa683ba976a1ad418256ca3a2b82ae2": 13,
       "6d540f9bbd69ed24b9bea6e160686f10": 2,
-      "6d96ea9b61dd8424aac49cf63683bcf4": 3,
+      "6d96ea9b61dd8424aac49cf63683bcf4": 2,
       "6e2cb00e626e0894ea240f0c4b82b532": 5,
       "6e4baf99ab9ec3d4284b4d63a9f693bc": 10,
-      "6f5aac99f8f649e9abe34fc92731aaf0": 4,
+      "6f5aac99f8f649e9abe34fc92731aaf0": 3,
       "707b1c59cb62f404b87d7fdb46443d13": 2,
       "7100ce9b173e17048a38d2fab918e2ba": 3,
       "726bc40f27e8f2e45acd670f678b33a1": 1,
-      "73741b896e67e4947aabe25d28eff73a": 3,
+      "73741b896e67e4947aabe25d28eff73a": 2,
       "76028d8c46e94bd49ac98aac3fcfadba": 2,
       "7640a0da69e200841a75db973b60c2b9": 10,
-      "7699baa577da4ae3ad91e9982bcc3f1c": 5,
+      "7699baa577da4ae3ad91e9982bcc3f1c": 4,
       "795c418ea8bcaf04d95d54f338bf2e1a": 11,
       "7b64c5baa42560e4caf9a97c42c6a491": 3,
       "7b68ec722300d9b449aeb00cb17e5502": 2,
       "7f00d84f51b3f9b43878a22909de5722": 3,
-      "804f042540abac342a6d80463c5ba336": 4,
-      "81a59705901f406290179c10caa41e06": 7,
+      "804f042540abac342a6d80463c5ba336": 3,
+      "81a59705901f406290179c10caa41e06": 6,
       "82575271adac0cf4d902dd7bfd3a9117": 6,
-      "842ddb71f7a54d447bfa28d7cb9cd0f7": 3,
+      "842ddb71f7a54d447bfa28d7cb9cd0f7": 2,
       "84935bdf31913ea4496dd0d81912729b": 3,
-      "876ad1b8482d16542a68a1b346ec662a": 3,
+      "876ad1b8482d16542a68a1b346ec662a": 2,
       "886b8a60daade304d88dc8506d0e2970": 2,
       "88cf3f4641127ae4eb4f424a0dfb9d39": 6,
       "892fbad62e2c06047b7049d18228a20a": 2,
-      "8b908687ab58406a87064f06ea501ec8": 5,
+      "8b908687ab58406a87064f06ea501ec8": 4,
       "8c2821521d35b0642a4768a7cd69fae8": 6,
       "8c65d84dc586d8943a78e0b7dae2244a": 9,
       "8cfc994b0c30a464d9722f48a36263ff": 1,
       "8e1805758f9f3d244824d856bf37deab": 11,
-      "8fd4b8966bb94ec2a3dc52dc33a26a6d": 3,
+      "8fd4b8966bb94ec2a3dc52dc33a26a6d": 2,
       "91ab0e950944b984a992f125cfc8bc65": 1,
       "9320e6a75ecfbc8448480dca36f77b9d": 11,
       "939e5d9960456f74cb1d7a089cee8be8": 3,
       "9423fd73a8129d141b22ec9b73ee1ae5": 7,
       "949067983a25bc24db51f7aadecb8dac": 9,
       "97a1c7b0bd602af4cbb17a9bda2aa1af": 4,
-      "986ffc0506ca42f3b9638d1f66ad9a4d": 4,
-      "9c961ae22d744ddfabb3f57319a3fb48": 4,
+      "986ffc0506ca42f3b9638d1f66ad9a4d": 3,
+      "9c961ae22d744ddfabb3f57319a3fb48": 3,
       "9ccd80c2d3a4e8547aba5c6655018352": 3,
       "9d24904d4d59a074ba600469b5d7062c": 7,
       "9d8117a52ab78ea41a08b2e58a7df0e0": 2,
-      "9d9106edde33d20499a0e058e7188f56": 8,
+      "9d9106edde33d20499a0e058e7188f56": 7,
       "9e337aba8aea24448a028f716863297c": 2,
       "9ecc2e21e390d4d41b85314808fe1c4e": 1,
       "a06f52d64141f554bbccb764466b868a": 3,
-      "a088203f7e1c4021a7293edbf2b959a2": 3,
+      "a088203f7e1c4021a7293edbf2b959a2": 2,
       "a195e8554f4e01747ab8daf761e0ccf3": 5,
       "a1b361b941bb3554a913bc237b41c8e6": 10,
       "a260f85807a5fef488519c97eb3d04de": 2,
@@ -16465,8 +16608,8 @@
       "a678d572803786c4485f50fccc32e7ac": 2,
       "a74f30e25f3611d42a4aa715b62a5bd9": 2,
       "a8a180766796b8d4496f12a723c258d6": 4,
-      "a9232cf7a5480a841a11f6bf5c2158b2": 8,
-      "a92f7e9aa8fb47c48bb1fae11669b6b0": 2,
+      "a9232cf7a5480a841a11f6bf5c2158b2": 7,
+      "a92f7e9aa8fb47c48bb1fae11669b6b0": 1,
       "a9b4177e7a4c3954ba547e8aaefda0a0": 3,
       "a9d06e8d63025c5468f365d4a7f2b533": 1,
       "ab13ebf0cee29924a983dd42fd783b90": 9,
@@ -16477,38 +16620,38 @@
       "b0e6cc33f06a22a4c92e84c74fd5812e": 2,
       "b12acc29c1f52a74997916c32b31c4cb": 6,
       "b260735637005b14e9b9e1fccd4ee594": 4,
-      "b27e0a70596a4b1f9f6779a372f632d3": 3,
+      "b27e0a70596a4b1f9f6779a372f632d3": 2,
       "b38c7a2316da05144b3d81bfeddfadaf": 10,
       "b3c5e56de6cf66343957c6b3b3b0ea04": 2,
       "b4586135e0c704d4fb7302e6808191f1": 4,
       "b4672d925ff7cfa42a1ccba3b27a0023": 2,
       "b79b3e6ad16a75641a84f5b830de4dbb": 1,
-      "b839f555762c46c0a08f6f0180f3144d": 5,
+      "b839f555762c46c0a08f6f0180f3144d": 4,
       "b8e47a1ec8626a94fbdaae5d85b76aa3": 8,
       "bc2dc78bec2854f40a9b5918fde63bbe": 5,
       "bcb3dc56c913a8642872a919d5fbe7e1": 2,
-      "bd8ba68f92d447d4b91d713c8417f1f1": 5,
+      "bd8ba68f92d447d4b91d713c8417f1f1": 4,
       "c06cf17eba0117943be91fda18b82063": 6,
       "c1abf6fcd08e32a45b233222fc507921": 2,
       "c2c22d12ae991fc438e28c1f1dbfea1f": 5,
-      "c2d2489295364f8aa5048ddf0e8ef890": 6,
+      "c2d2489295364f8aa5048ddf0e8ef890": 5,
       "c2ed1e9bf8e94cc46bab93519714e421": 2,
-      "c4555119c09e3ca4daebade2deb4aeee": 3,
+      "c4555119c09e3ca4daebade2deb4aeee": 2,
       "c5b56d7039aec4546a978540f78f6a51": 1,
       "c6b0831f34687564cabbd7ab7c8e9d35": 13,
       "c9afe16339ecd424e803420b1bb86fd5": 2,
       "cb7a315e3c8f85f4fb30d2233d6106c5": 2,
-      "cbea7ffd90af39642beba1c846c5823b": 3,
-      "cc548ea06afb0b84d80f309953b3907a": 3,
+      "cbea7ffd90af39642beba1c846c5823b": 2,
+      "cc548ea06afb0b84d80f309953b3907a": 2,
       "ccecc6355fb3bb54fb7898a26bbdcdf4": 2,
       "cd31944a58e13b14a8642bc5363c90ce": 11,
       "ce36796c951ab6a45999835f68e5f971": 9,
       "d0f45d919067a8942a2a8863e449d5fd": 5,
-      "d2507904aa004bc9b31536c22d0e1890": 3,
+      "d2507904aa004bc9b31536c22d0e1890": 2,
       "d282577f91d16ff42b91848804c78122": 2,
       "d2f83e0d037647c4bf53b4caf2948eab": 1,
       "d2fb3f0928c05384bbd5a47764fb4b22": 2,
-      "d3107360b007cf7449859537d13c25f9": 5,
+      "d3107360b007cf7449859537d13c25f9": 4,
       "d4a1492298dc9e14d91ced638222ce7d": 9,
       "d5f6f29475736ba49968b35a5e875510": 1,
       "d845427323803c843b9c0be976b29ba7": 11,
@@ -16520,8 +16663,8 @@
       "e21ba1d25118fee46a517a17edb71c55": 5,
       "e25486f338b864043b9fec4070d74248": 1,
       "e4900845506f26443907b6900934f528": 2,
-      "e51c0cb1f2514c76a3c1b492a458a188": 3,
-      "e7458b3f7190e164697947f1bfd80f5a": 5,
+      "e51c0cb1f2514c76a3c1b492a458a188": 2,
+      "e7458b3f7190e164697947f1bfd80f5a": 4,
       "e815468fcd32d72448e4b3fe7a3b521b": 5,
       "e88aac0a04b4eec48a7816a840c57688": 15,
       "e8e05b7dc76927340a6cdef4d8e349ef": 6,
@@ -16529,18 +16672,18 @@
       "ece0a81ba52201b4e98b4338e532ba1f": 2,
       "ece592c60eede314d84a67e6cc52f028": 5,
       "ed73594cd80ea89439d0a078a945e91a": 4,
-      "f2b4f9c47b7a4c9fa48a49f254a8c888": 4,
+      "f2b4f9c47b7a4c9fa48a49f254a8c888": 3,
       "f65e45a7fa5709e47a37575f2ca5b30f": 1,
       "f7e7ca18060de774b88a004a45d6e4ba": 10,
-      "f9cd2deb27a51e248a62c4451a6244e0": 3,
+      "f9cd2deb27a51e248a62c4451a6244e0": 2,
       "fa11094775449804daa44cfefe8e9707": 5,
       "fb4d10c788c71ac478909584969b6d9a": 5,
       "fbfeeb5dd5ca29542a5dcf4e833a4584": 11,
-      "fcd809cb78aa4d6b95424a1d9f53ad20": 4,
-      "fd39fd84212de2047b6b887c9a9cf28e": 4,
+      "fcd809cb78aa4d6b95424a1d9f53ad20": 3,
+      "fd39fd84212de2047b6b887c9a9cf28e": 3,
       "fdea4a2be69f96042996cfe6521b6622": 3,
       "ff071ea5f68a97845a0075feabbe99d5": 2,
-      "ff4b63ae52c362e4c9ced489df37014b": 3
+      "ff4b63ae52c362e4c9ced489df37014b": 2
      }
     }
    ]
@@ -16823,7 +16966,8 @@
       "4c9b94e76d31407eb8f60e4cb1ee7c43",
       "b1d2b97c32354d2186bad8cc6baf2c10",
       "d5bd1f7891a749d797affe14e7d153d0",
-      "7e68df06b1314922afbf34e022a3af8e"
+      "7e68df06b1314922afbf34e022a3af8e",
+      "1ef5ae46cf114251b9d550dfbe50b6a8"
      ],
      "cueNames": [
       "Cue_0001",
@@ -16858,7 +17002,8 @@
       "Cue_10",
       "Cue_6",
       "Cue_7",
-      "Cue_8"
+      "Cue_8",
+      "SequenceExit_0003"
      ],
      "speaker": "1e8d2770a79db2242a90d75df2d5a260",
      "reachable": true,
@@ -16933,14 +17078,20 @@
       "f95980a82d410e143a748c412da887fa",
       "b0d49adaf7704f44083b88f0b10aeebe",
       "ab5e0787369abeb4aae025c5a94cbc74",
-      "b68601071961fe24cbc387ed1578e156"
+      "b68601071961fe24cbc387ed1578e156",
+      "30602db778e24d068dd3b2bf7220705b",
+      "8cbdd1d1769044d79b1ab0e68f5a80a0",
+      "66401546324f42a7bb8fbdbfe2fd1df8"
      ],
      "cueNames": [
       "Cue_0001",
       "Cue_0006",
       "Cue_0007",
       "Cue_0008",
-      "Cue_0022"
+      "Cue_0022",
+      "SequenceExit_0002",
+      "SequenceExit_0003",
+      "SequenceExit_0006"
      ],
      "speaker": null,
      "reachable": true,
@@ -17085,6 +17236,7 @@
       "0362b7554c485544f80146d5d3053be8",
       "a203e38fd0bfb7a4d881bfc536fb87a6",
       "13920b7d94b696d4aba9028612a3976c",
+      "1af69c65d15cc8949a4fe47a45c4f85d",
       "e77b039ff775bde44927d8a9b52d8d35",
       "3e0bc38f5f09d8443a1c19459995a793",
       "fdbce4a391e10ba439ebc936917e0380"
@@ -17100,6 +17252,7 @@
       "Cue_0049",
       "Cue_0054",
       "Cue_0071",
+      "Cue_0100",
       "Cue_0279",
       "Cue_0280",
       "Cue_0315"
@@ -17109,55 +17262,55 @@
      "clicks": 0,
      "path": [],
      "answerDist": {
-      "04e409ae8e8fd8a45a8079c8585778c9": 4,
-      "07930ebe38b0b6646bdbc0ea305601a5": 4,
-      "093a96dd4aae3e241ab6895d7f975e75": 4,
-      "0d40c3b236556e741983d89fded91a0e": 4,
-      "0f5f7bc482cd26248a11f9c3648b71bc": 5,
+      "04e409ae8e8fd8a45a8079c8585778c9": 3,
+      "07930ebe38b0b6646bdbc0ea305601a5": 3,
+      "093a96dd4aae3e241ab6895d7f975e75": 3,
+      "0d40c3b236556e741983d89fded91a0e": 3,
+      "0f5f7bc482cd26248a11f9c3648b71bc": 4,
       "1a63a2e6946244940afd7293d6598ee2": 1,
-      "1e88e8e3542dd204e8494e8b62cb87e1": 4,
+      "1e88e8e3542dd204e8494e8b62cb87e1": 3,
       "2a31a174a7431714dbe56cc1ffa2b6d8": 3,
-      "3c23c913503c2354c9c640b648573904": 5,
-      "3eb40c0cdda41144c9495db18c904b88": 5,
-      "4093486ab2e11774aa3e5db7dfea19e4": 6,
-      "415554a83889bf04ebb0052b4de17ac8": 4,
+      "3c23c913503c2354c9c640b648573904": 4,
+      "3eb40c0cdda41144c9495db18c904b88": 4,
+      "4093486ab2e11774aa3e5db7dfea19e4": 5,
+      "415554a83889bf04ebb0052b4de17ac8": 3,
       "44bf2c640014ee348a7102085ab4c234": 1,
-      "459cbbe8bbd852a47a522a38d9c4544e": 5,
+      "459cbbe8bbd852a47a522a38d9c4544e": 4,
       "4e6b86523d29cf14791e559093ce7e8b": 1,
       "50a633c03430f044794d9299a1561595": 3,
-      "5b6b2cbebfc186a44b56a23dfe084027": 3,
+      "5b6b2cbebfc186a44b56a23dfe084027": 2,
       "6c1f7011940b14745a4ce8eadbb7f1c7": 2,
       "7827c27fbbc18784995369fc6acbf188": 4,
       "7e6f38a86eefc924d825d8dea63208b9": 2,
       "7f31f34378880d646817ba2e1b1588a8": 1,
-      "834fa17f792553949a6ed66248f1330c": 4,
-      "8526210b637ac334db7c635ad7858c29": 3,
+      "834fa17f792553949a6ed66248f1330c": 3,
+      "8526210b637ac334db7c635ad7858c29": 2,
       "8f092c87df04d624b83c08955267caf2": 2,
       "91ebf380999652e43b305aaa9e73ab9b": 4,
       "94f3b7797689eb946b7435c978863c9f": 2,
-      "9e0d776993ef54945a5452e3907bd350": 2,
+      "9e0d776993ef54945a5452e3907bd350": 1,
       "9f4a702656cef7f45a168675c31a3e65": 3,
       "a16477dcc3a2eec4db5bf553c40ca772": 1,
-      "a5a9e36a40b719146b5639b47c5145bf": 3,
+      "a5a9e36a40b719146b5639b47c5145bf": 2,
       "a85ca543134adf64eb9ead264faf100d": 4,
-      "aa23f4bf778752b41998f02420ecb71d": 3,
+      "aa23f4bf778752b41998f02420ecb71d": 2,
       "ba13ccd6121352c4eb04c1d70be9cdc1": 2,
       "bc3012b0a392468489827c2b6c2ad501": 2,
       "bf75a533876f9194a8f5cc1e6e357f69": 1,
       "c21316541863fa643a55da81967bc2e8": 2,
-      "c60613dca14bf0943a428246cf51bb3a": 4,
+      "c60613dca14bf0943a428246cf51bb3a": 3,
       "ca4594f630db201409e29da592a897df": 1,
-      "cdef30b34d050984c8ce7f6f68b693cc": 5,
+      "cdef30b34d050984c8ce7f6f68b693cc": 4,
       "d023d00b8ec53014b93eb051b54ff0f5": 2,
-      "d69aa03788628cc41848cad53c94e4fb": 3,
+      "d69aa03788628cc41848cad53c94e4fb": 2,
       "d703ac8c2f0dc7445a2715a834feb14c": 1,
       "db4948ca68e9e864581735195a51b5bd": 2,
-      "dc2678e953c69a544b9f6ec6ce09d908": 5,
-      "dce8ee2c0d6eb7f408c38bd3f13c934b": 5,
+      "dc2678e953c69a544b9f6ec6ce09d908": 4,
+      "dce8ee2c0d6eb7f408c38bd3f13c934b": 4,
       "e083d50f643d5334eb2b462d06756c6d": 2,
       "e87dd05baebcb414ca12e825eabe205b": 2,
       "eeb1718ae44c7714da2a2b47ce66bc0e": 1,
-      "fede90d24721585468c874d51dde9ee6": 4
+      "fede90d24721585468c874d51dde9ee6": 3
      }
     }
    ]
@@ -17372,7 +17525,8 @@
       "080fd41a1f2d5e041acb6a55470c8833",
       "11789a3f36953c14886e6538f51ddfca",
       "96301374cccd56d438a5a5069d4821f0",
-      "6b841dbb7faefc44eacbd05e6c17565e"
+      "6b841dbb7faefc44eacbd05e6c17565e",
+      "f8ccffef3c987684d840dc8e624daa06"
      ],
      "cueNames": [
       "Cue_0003",
@@ -17381,7 +17535,8 @@
       "Cue_0011",
       "Cue_0013",
       "Cue_0014",
-      "Cue_0015"
+      "Cue_0015",
+      "SequenceExit_0017"
      ],
      "speaker": null,
      "reachable": true,
@@ -17414,6 +17569,7 @@
       "f9c3e49d5b11ef34eb694a805d8377ac",
       "edb0833df5191af488f0650577cbf23d",
       "593620bca7c1eeb43911052363a3c876",
+      "72c9c8ac2eaac12469133dd774bb95d2",
       "8319bd4d29c56ff4c8167d5bb5b8b859",
       "e9716fbee71a083468f2ec6e3f56fc9b",
       "f29b784e708e2354da250f9898815e4b",
@@ -17448,6 +17604,7 @@
       "Cue_0067",
       "Cue_0116",
       "Cue_0124",
+      "Cue_0135",
       "Cue_0144",
       "Cue_0151",
       "Cue_0165",
@@ -17512,7 +17669,7 @@
       "792856e482b0d1e4c80a9892be1ae822": 2,
       "79caaa8acbe28d443be0ba14b592185d": 1,
       "7ada0b713ad17c741bb2d60944bc9817": 1,
-      "7daff12aca0d3e147a42e6824e66e6e4": 2,
+      "7daff12aca0d3e147a42e6824e66e6e4": 1,
       "7db9a28402e56fc459d8c6f50eaa3397": 3,
       "7f2eb308538cf6b43938e64292e3819e": 2,
       "7fa8879b28e60954c96fd8f78281e4f4": 2,
@@ -17631,7 +17788,9 @@
       "ee57ab5d7913a5e43a17abdd8e34331e",
       "7223dc885bb2294409440cd1ea218f41",
       "4b166262195cdf14d99bf01417a6a67d",
-      "358766febddb82a4c952aa88b432a104"
+      "358766febddb82a4c952aa88b432a104",
+      "a5051d1efde825f4b8f9cf49a31f4076",
+      "9fc57c11de91a82459b501d72c96f459"
      ],
      "cueNames": [
       "Cue_0001",
@@ -17649,7 +17808,9 @@
       "Cue_0045",
       "Cue_0046",
       "Cue_0047",
-      "Cue_0058"
+      "Cue_0058",
+      "SequenceExit_0030",
+      "SequenceExit_0049"
      ],
      "speaker": "6cdc010337068ca439e2a31e8258fafd",
      "reachable": true,
@@ -18162,7 +18323,8 @@
       "704e7f779d2524747b17a5a2399532dc",
       "76cf8b5fd32cbe54083e34b1abcdbd6b",
       "0d62a6d7816cf454bb14ea17a638117e",
-      "d82db518c6a748b49aa13843d9cd2e5a"
+      "d82db518c6a748b49aa13843d9cd2e5a",
+      "439d8f577a8175345bc932d6a757c238"
      ],
      "cueNames": [
       "Cue_0002",
@@ -18174,7 +18336,8 @@
       "Cue_0039",
       "Cue_0059",
       "Cue_0060",
-      "Cue_0073"
+      "Cue_0073",
+      "SequenceExit_0045"
      ],
      "speaker": null,
      "reachable": true,
@@ -18321,7 +18484,8 @@
       "efb8973454b43624695be7baf7ffee34",
       "b65116ad845aba245a176f0cf8b13e34",
       "2e8da73cd0e96ed4bac54fc5d71f8a10",
-      "77216dc2c3770794f93b010659f4aa64"
+      "77216dc2c3770794f93b010659f4aa64",
+      "d456ccf2b495e5e42956037ecc5b03f6"
      ],
      "cueNames": [
       "Cue_0001",
@@ -18335,7 +18499,8 @@
       "Cue_0048",
       "Cue_0049",
       "Cue_0055",
-      "Cue_0056"
+      "Cue_0056",
+      "SequenceExit_0031"
      ],
      "speaker": null,
      "reachable": true,
@@ -18372,7 +18537,9 @@
       "1963c1a93d80f104888d846a3f70518b",
       "a2b06f44955ed4247acca1a0b47e2230",
       "7cbd8206534e05a498b48c0968da2a22",
-      "52ce0a15b40dd9d48903c8fc71067d13"
+      "52ce0a15b40dd9d48903c8fc71067d13",
+      "1f31c1bf677e3e848b8731658f1fc9c9",
+      "8ba91ef77bcf385448d3af3636053e5a"
      ],
      "cueNames": [
       "Cue_0001",
@@ -18388,7 +18555,9 @@
       "Cue_0103",
       "Cue_0111",
       "Cue_0115",
-      "Cue_0116"
+      "Cue_0116",
+      "SequenceExit_0057",
+      "SequenceExit_0062"
      ],
      "speaker": "ae766624c03058440a036de90a7f2009",
      "reachable": true,
@@ -18429,7 +18598,9 @@
       "0aa00bcf3121a694dbf306bea0f62153",
       "8b0365d202213d64887b0cb796c85ec0",
       "6ff198cae9f018d4598dc78562f88270",
-      "8df51beb05454d241baae53fa70eccd0"
+      "8df51beb05454d241baae53fa70eccd0",
+      "d3ab267e7349b894cac27b48b2c45d00",
+      "32b5684d9b9a8f44db5ff5333c56fc83"
      ],
      "cueNames": [
       "Cue_0002",
@@ -18438,7 +18609,9 @@
       "Cue_0025",
       "Cue_0041",
       "Cue_0043",
-      "Cue_0045"
+      "Cue_0045",
+      "SequenceExit_0057",
+      "SequenceExit_0075"
      ],
      "speaker": "0bcf3c125a28d164191e874e3c0c52de",
      "reachable": true,
@@ -18506,7 +18679,8 @@
       "d47bcd8d88f8ea149a596ca927e1153f",
       "01a60e3bad6462e4e9da53b912923d0e",
       "c61ec565e2eccc84a85d736d9bd1888c",
-      "3159a97dafb14b2baa5a678f7551a5c3"
+      "3159a97dafb14b2baa5a678f7551a5c3",
+      "bca2ceabdec97ae44a7f2ec8c8dbdb93"
      ],
      "cueNames": [
       "Cue_0069",
@@ -18553,7 +18727,8 @@
       "Cue_0197",
       "Cue_0201",
       "Cue_0203",
-      "Cue_18"
+      "Cue_18",
+      "SequenceExit_0140"
      ],
      "speaker": null,
      "reachable": true,
@@ -18697,7 +18872,10 @@
       "b03aa7395540e8040a55a62309caaa1a",
       "afedf9d267c8b524990b3b12fe9ede3b",
       "56d92e97cafa0de4dbb0161469c9f473",
-      "cb5d3de1c6668a94db48c22b7c4ebad8"
+      "cb5d3de1c6668a94db48c22b7c4ebad8",
+      "17ed8581143dad243b8b6c102fb392c9",
+      "f45e7c948415d2d419dc61a346ba311f",
+      "a6685e5fe649e2449980d2d169abf1d3"
      ],
      "cueNames": [
       "Cue_0001",
@@ -18705,7 +18883,10 @@
       "Cue_0013",
       "Cue_0014",
       "Cue_0019",
-      "Cue_0026"
+      "Cue_0026",
+      "SequenceExit_0021",
+      "SequenceExit_0030",
+      "SequenceExit_0054"
      ],
      "speaker": "a40904b640d757a498f7d10b3e066f84",
      "reachable": true,
@@ -18843,11 +19024,13 @@
      "dialogName": "AreeluThresholdWelcome_c6_dialog",
      "cues": [
       "4907194aa1923d34894bca5996d3054d",
-      "6b4c8a08d22268f41badc455825b3082"
+      "6b4c8a08d22268f41badc455825b3082",
+      "b8c9fa71f9f3fe34f85fe0bfd4ea6814"
      ],
      "cueNames": [
       "Cue_0001",
-      "Cue_0027"
+      "Cue_0027",
+      "SequenceExit_0024"
      ],
      "speaker": null,
      "reachable": true,
@@ -18954,7 +19137,8 @@
       "17d1484bb5b687840b936c9de35fa8c2",
       "753c00e6878e7d548aea19a9b44f75af",
       "3029bca94d3edd5468c0bd041c853670",
-      "554c82116837afa44ab25e58fe7cc665"
+      "554c82116837afa44ab25e58fe7cc665",
+      "f181b83582f92b74c80ffeb2b15be5d7"
      ],
      "cueNames": [
       "Cue_0050",
@@ -18966,7 +19150,8 @@
       "Cue_0073",
       "Cue_0074",
       "Cue_0076",
-      "Cue_0078"
+      "Cue_0078",
+      "SequenceExit_0014"
      ],
      "speaker": "bedefe8c744446a1beb175c1f288cad4",
      "reachable": true,
@@ -19008,7 +19193,9 @@
       "17249a81e2f0d7d4ca67937db86ef858",
       "537a72b88a457dc4eb92194611ddccba",
       "2ab02d249302eff418535f9140e422cc",
-      "073bc5f9d5e784a47bd802453ad393f2"
+      "073bc5f9d5e784a47bd802453ad393f2",
+      "b4f5981d55f13ce49bdff8ab99ca34de",
+      "049fff39a63b4e84bac15d889f9999c4"
      ],
      "cueNames": [
       "Cue_0127",
@@ -19018,7 +19205,9 @@
       "Cue_0124",
       "Cue_0125",
       "Cue_0126",
-      "Cue_0172"
+      "Cue_0172",
+      "SequenceExit_0137",
+      "SequenceExit_0151"
      ],
      "speaker": null,
      "reachable": true,
@@ -19382,7 +19571,11 @@
       "05d66664080144c4bb8fc08b90cc700b",
       "39a310ee567e4aa409a161afc3e60426",
       "aedc55c0af60c9d46b1aadaf6234e8f1",
-      "3d7327a78f3fdb04d9b824c9734e09ad"
+      "3d7327a78f3fdb04d9b824c9734e09ad",
+      "16403119a8fc43dca724d1c23d08a763",
+      "95d4ffeeef1083641bee630838253560",
+      "1b1f4e942897e80479b464f4e6418389",
+      "8f0caffae8a70444ba75ca84f7e6723a"
      ],
      "cueNames": [
       "Cue_0006",
@@ -19396,7 +19589,11 @@
       "Cue_0031",
       "Cue_0034",
       "Cue_0037",
-      "Cue_0039"
+      "Cue_0039",
+      "SequenceExit_0004",
+      "SequenceExit_0043",
+      "SequenceExit_0045",
+      "SequenceExit_0048"
      ],
      "speaker": "3ba3a0ff8575be8419159221177c1411",
      "reachable": true,
@@ -19428,12 +19625,14 @@
      "cues": [
       "24de2c3ecf95fc640a84a5211d90121d",
       "9c653a907d8549248bd9d202c1fb8964",
-      "d39b1e850904daa43b7e6dab3a6e7f83"
+      "d39b1e850904daa43b7e6dab3a6e7f83",
+      "86673475758fe2b4fb1e5aeee07cc6bd"
      ],
      "cueNames": [
       "Cue_0006",
       "Cue_0045",
-      "Cue_0046"
+      "Cue_0046",
+      "SequenceExit_0049"
      ],
      "speaker": null,
      "reachable": true,
@@ -19791,6 +19990,7 @@
       "2eb5361520f02f740a4da0bee9ed9e76",
       "d14f60d540ae5bb488fd552852664b05",
       "dde0e9808ca844b4993529bd3b068f37",
+      "e56c211cf21ab524f9025791ca1c32fc",
       "fa4ac28b286aeab48a1bac0ea8ac67b0",
       "644137c5a79490d4ab383d00a4e6a8c0",
       "68b586541d285f846b21fb140b485a1a",
@@ -19817,6 +20017,7 @@
       "Cue_0037",
       "Cue_0038",
       "Cue_0052",
+      "Cue_0054",
       "Cue_0064",
       "Cue_0066",
       "Cue_0071",
@@ -19830,7 +20031,7 @@
      "answerDist": {
       "023df12aa57113945886dac9ea12e875": 1,
       "0beabce6f37afd14c9518762a81e13e0": 1,
-      "24b7ea9b82093b749b0106c1421fa3e4": 4,
+      "24b7ea9b82093b749b0106c1421fa3e4": 3,
       "41ce58a496d12c642b13674b7b387bd8": 1,
       "452c766814aac02498e47800e32e3760": 1,
       "56efdf64011cfde4b8faf50e643c87c6": 1,
@@ -19955,14 +20156,18 @@
       "001f33d929abf1440945839ace51891a",
       "c1c8de1235d14cc4b85b2454855b90a5",
       "ac4fdb1e862306543917b6dbac8a65e6",
-      "382857e652ac89741a366d721e06c93c"
+      "382857e652ac89741a366d721e06c93c",
+      "336a443f39128814597ebaec59cedef3",
+      "a97037b9575271049b355f426ef6e51b"
      ],
      "cueNames": [
       "Cue_0003",
       "Cue_0002",
       "Cue_0011",
       "Cue_0012",
-      "Cue_0018"
+      "Cue_0018",
+      "SequenceExit_0023",
+      "SequenceExit_0031"
      ],
      "speaker": null,
      "reachable": true,
@@ -20018,7 +20223,9 @@
       "ea18f6c30de064b45ad0a276364e215c",
       "e0528d4d9385e514bb877e6b453adab8",
       "ee9846a917e379d4b9d17d2e1f6227d2",
-      "12a26fbfef2eb2446a0868c2b69e8751"
+      "12a26fbfef2eb2446a0868c2b69e8751",
+      "28c51bc09f086674f8bbc44b82761c05",
+      "a0d105f6c1f6a034e876780edbbbb633"
      ],
      "cueNames": [
       "Cue_0010",
@@ -20028,7 +20235,9 @@
       "Cue_0019",
       "Cue_0044",
       "Cue_0048",
-      "Cue_0052"
+      "Cue_0052",
+      "SequenceExit_0062",
+      "SequenceExit_0083"
      ],
      "speaker": "64805abb52739e44280a758f850b300c",
      "reachable": true,

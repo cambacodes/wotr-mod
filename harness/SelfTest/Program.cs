@@ -194,6 +194,13 @@ internal static class Program
         Check(mismatched == 0, mismatched + " scene(s) with stale entry lists: rerun python harness/resolve-inline-hosts.py");
         Check(withEntry == hosts.Scenes.Count, "every scene in the hosts file has a live entry list (" + withEntry + " vs " + hosts.Scenes.Count + ")");
         Console.WriteLine("    " + withEntry + " scenes with a native entry; " + hosts.Scenes.Values.Count(s => s.Resolved) + " resolve to a host dialog");
+        // Reachability: an inline-only scene has no other door, so its list must be shown by some native cue the navigator can reach.
+        var stranded = hosts.Scenes.Where(kv => kv.Value.Kind != "dialog" && !kv.Value.Resolved).Select(kv => kv.Key).ToList();
+        Check(stranded.Count == 0, stranded.Count + " inline-only scene(s) with no reachable host: " + string.Join(", ", stranded.Take(5)));
+        // Regression: Audience_Areelu shows AnswersList_0030 from cues under CueSequence_0019, whose SequenceExit has no ParentAsset.
+        Check(hosts.Scenes.TryGetValue("areelu.trickster.audience.notes", out var notes) && notes.Resolved
+              && (string?)notes.Host?["dialogName"] == "Audience_Areelu_c4_dialog",
+              "areelu.trickster.audience.notes resolves to Audience_Areelu_c4_dialog (SequenceExit -> CueSequence parent)");
     }
 
     static void DerivedForcingChecks()
