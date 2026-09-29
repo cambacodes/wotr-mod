@@ -15,8 +15,10 @@ Xanthir Vang's golems hold her clutch hostage and shout at her carcass (Golems_D
 Storyteller: "For several days she held me prisoner" (KTC_StorytellerIsBack/Cue_0019 6be2fbf6) and "I do not pity her"
 (Cue_0021 9fee959d).
 
-Authored, and labelled as authored: that the lie makes the carcass moult into a clutch-mother; the grey new hide; the
-three days; the watchtower above Drezen; everything she says after the Sanctum. Her only native unit is a hostile
+Authored, and labelled as authored: that her own tariff, paid with a story told where she can hear it (from cover in
+the lair, over her warm body before the golems, or by the Storyteller to her bones), buys the life back, and the carcass
+moults into the clutch-mother the story named; the grey new hide; the three days; the watchtower above Drezen;
+everything she says after the Sanctum. Her only native unit is a hostile
 Mobs-faction monster with no dialog (WoundWormsLair_BlackDragon c540d81c), so the return and the commit are letters, and
 every other beat is physical on the Storyteller's hub: he is her canon captive, the one buyer of her tariff who lived,
 and her messenger. The courtship around this spine is devarra_tower.
@@ -134,15 +136,16 @@ SCENES.append(scene(P + "dead.lair_story", "What happened next", "Devarra", 3, '
 
 
 # --- Primer B (physical, Chapter 3): the golems over the carcass, minutes old ---------------------------------------
-# Only when the body lies in front of them (Cue_0001); the joke continues into Cue_0045, where the native answers still
-# decide the clutch. The lair-death world (Cue_0047) gets no golem joke: that carcass is days old.
+# Only when the body lies in front of them (Cue_0001); the trick continues into Cue_0045, where the native answers still
+# decide the clutch. The payment is her tariff: the story is told over a body minutes dead, while she can still hear it.
+# The lair-death world (Cue_0047) gets no golem trick: that carcass is days old, and deaf.
 
 SCENES.append(scene(P + "dead.setup", "No order about clutch-mothers", "Devarra", 3, '"Golem. State the lizard\'s orders."', [
-    nar("carcass", '''{n}The woundwyrm lies where she fell, across the chamber floor in front of the golems, one wing half open like a torn tent. Smoke still leaks from her nostrils. Her eyes are open and already clouding.{/n}
+    nar("carcass", '''{n}The woundwyrm lies where she fell, across the chamber floor in front of the golems, one wing half open like a torn tent. Smoke still leaks from her nostrils. Her eyes are open and already clouding, and when your boots scrape on the stone one of them turns a hair's breadth toward the sound. Dragons die slowly. This one has always listened to the end of a story.{/n}
 {n}The nearest golem has not lowered its fist. It stands over the clutch exactly as Xanthir Vang taught it to stand, waiting for the lizard to get up and fight, because nobody ever told it what to do if she did not.{/n}''',
         c("Continue", "orders")),
     n("orders", "Golem", '''{n}The magical mouth works, stops, and works again.{/n} "Orders: fight. Or the eggs are destroyed. The lizard is not fighting. Clarify: is the lizard in breach?"''',
-      c('[Play a cruel trick on the dead wyrm] "She\'s not a corpse. She\'s a clutch-mother, and she\'s hungry."',
+      c('[Tell the golems her story, loud enough for the dying wyrm to hear] "She\'s not a corpse. She\'s a clutch-mother, and she\'s hungry."',
         mythic="Trickster", alignment=("Chaotic", 1), native_next=GOLEM_NEXT, flags=(PRIMED,)),
       c('"Forget it."', abort=True)),
 ], requires=("trickster", "devarra.golems_over_body"), forbids=(PRIMED,), last=3, Relationship="devarra", Chapters=[3],
@@ -199,14 +202,14 @@ letter(P + "dead.woken", "The hide splits", [
     dv("threat_shame", '''"The blind elf came up the gorge with a lantern he did not need and told your story to my bones. Kenabres. The lies. All of it. It was impressive. I pay what I charge."
 {n}The lip lifts a little further.{/n} "He told the shameful part twice. I think he enjoyed it."''',
        c("Continue", "mother")),
-    dv("threat_escaped", '''"You let me fly once. Xanthir's toys did not." {n}She breathes out through her nose, and the cart under her chin smokes.{/n} "I will remember which of you was polite."''',
+    dv("threat_escaped", '''"You let me fly once. Xanthir's toys did not." {n}She breathes out through her nose, and the cart under her chin smokes.{/n} "I will remember which of you was polite. And I heard what you told them over my body. It was a good story, and cruel, and about me. I pay what I charge."''',
        c("Continue", "mother")),
-    dv("threat", '''"You. The little parasite who told the golems what I was."''',
+    dv("threat", '''"You. The little parasite who told a room full of stone a story about me while I was still warm." {n}The new hide over the old wound is paler than the rest, a grey seam.{/n} "I was not quite gone. I heard every word. A story buys a life from me, crusader, if it is good enough. It was. I pay what I charge, even dead."''',
        c("Continue", "mother")),
-    dv("mother", '''"I died a dragon. I got up a mother. I did not ask for the difference, and I will not thank you for it."''',
+    dv("mother", '''"I died a dragon. I got up a mother, because that was the story I was paid with, and I pay in the coin I am offered. I did not ask for the difference, and I will not thank you for it."''',
        c("Continue", "failed", requires=(FAILED,)),
        c("Continue", "which_eggs", forbids=(FAILED,))),
-    dv("failed", '''"Your little jokes have stopped working, I hear. Mine has not."''',
+    dv("failed", '''"Your little tricks have stopped working, I hear. My tariff has not."''',
        c("Continue", "which_eggs")),
     dv("which_eggs", '''{n}She lifts her chin off the cart. The whole camp holds its breath with her.{/n} "Now. My clutch."''',
        c("Continue", "said_omelet", requires=("eggs.omelet",)),
@@ -341,7 +344,7 @@ letter(P + "after.lair", "A tower above Drezen", [
 # --- Reactions (doc 05 section 3.1 row 11: exactly Greybor and the Storyteller) --------------------------------------
 
 SCENES.append(reaction("Greybor", "devarra.react.greybor.repeat_work", (RETURNED,),
-    '''{n}Greybor does not look up from the whetstone.{/n} "I was paid for that dragon. You told the carcass it was something else, and now it is." {n}A shrug.{/n} "Repeat work is billed at the full rate. Tell her that, if she asks who set the ambush. She will."''',
+    '''{n}Greybor does not look up from the whetstone.{/n} "I was paid for that dragon. You sold her back her own life for a story, and she took the deal." {n}A shrug.{/n} "Repeat work is billed at the full rate. Tell her that, if she asks who set the ambush. She will."''',
     answer_list=GREYBOR_LIST, relationship="devarra", forbids=("greybor.dead", "greybor.kicked_out"),
     entry='"The dragon is back."', chapter=3, last=5, portrait="Greybor"))
 SCENES.append(reaction("Storyteller", "devarra.react.storyteller.woken", (RETURNED,),
@@ -366,7 +369,9 @@ SCENES.append(scene(P + "epilogue.woken", "", "DevarraEpilogue", 6, "", [
     requires=("trickster.ever", RETURNED, COMMITTED), last=6, Relationship="devarra"))
 
 SCENES.append(scene(P + "epilogue.commit", "", "DevarraEpilogue", 6, "", [
-    nar("page", '''{n}The war ended before the woundwyrm finished her judgment. She finished it afterwards, on her own terms: a grey dragon landed on the Commander's roof one winter night and said, through the chimney, that the story would do, and that she would be taking her first bite in the spring. She did. The Commander kept the scar, and the appointment, for the rest of their life.{/n}''')],
+    nar("page", '''{n}The war ended before the woundwyrm finished her judgment. She finished it afterwards, on her own terms. One winter night a grey dragon landed on the Commander's roof, hard enough to crack the tiles, and put her head down into the yard, where the Commander came out barefoot to meet her.{/n}
+"The story will do," she said. "It is not finished, and it is not true, and it is yours. That makes it worth a life. Yours, I think, since you keep spending it on me." {n}Her eye took in the house, the lamps, the door that could be locked and would not stop her.{/n} "My tariff stands. Once a year, where I choose. I will choose the spring, and I will choose the arm, and if you are ever not here when I come, I will take the bite out of the house instead."
+{n}She took it in the spring, on the ridge, in a ring of fire. The Commander kept the scar, and the appointment, for the rest of their life, and never once locked the door.{/n}''')],
     requires=("trickster.ever", TESTED), forbids=(COMMITTED, CLOSED, DECLINED, LEFT_HUNGRY), last=6, Relationship="devarra"))
 
 SCENES.append(scene(P + "epilogue.refused", "", "DevarraEpilogue", 6, "", [

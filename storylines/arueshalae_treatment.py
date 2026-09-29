@@ -85,13 +85,14 @@ session(STUDIED, "Night reading", 3, '"You were in the shrine library until the 
 "The Tender of Dreams' blessing for travellers. The star-candle and the words for the road." {n}Her voice changes.{/n} "Why are you reading about my goddess's mercy at the second bell, Commander?"''',
         c("Continue", "why")),
     nar("why", '''{n}You tell her the truth, because she would hear anything else. You remember a thing she said once, quietly, as if confessing it: that she should like to kiss someone again, but only as a mortal. Not as a demon. You have been reading ever since.{/n}
-{n}The Desnan rite for travellers asks the goddess to take the road's harm on herself for one night: one star, one night, one safe passage. And the Trickster's own lore can treat a negative condition as a priest treats a poison. You think the two will fit together. You are not sure.{/n}''',
-        c('[Lay the two texts side by side: you already know the lore] "The rite points it. The lore does the rest."', "fit",
+{n}The breviary's blessing for travellers is a small, plain thing: a candle, a star, a few lines asking the goddess to watch one road for one night. It promises nothing about demons; no priest ever meant it for one. The rest is yours. The Trickster's lore can treat a negative condition the way a priest treats a poison, and you mean to hang that lore on the blessing's frame: one star, one night, one wolf kept off one road. Nobody taught you this. Nobody has tried it. You think the two will fit together. You are not sure.{/n}
+{n}If it fits at all, the arithmetic is already plain on the page. One candle, lit at dusk, can carry one drain: the first cold out of her, into the flame, and the wick is spent until you have slept. The second drain has nowhere to go but you. There is no version of this where you do not pay; there is only a version where you pay a little less, and know the moment the paying starts.{/n}''',
+        c('[Lay the two texts side by side: you already know the lore] "The blessing gives it a shape. The lore does the rest."', "fit",
           requires=(CURE,)),
         c('[Work out the rite the hard way, from the chaplain\'s commentary]', forbids=(CURE,),
           check={"Skill": "SkillLoreReligion", "DC": 18, "Success": "fit", "Failure": "not_yet"})),
     a("fit", '''{n}She reads over your shoulder for a long time, her lips moving on the old Desnan words.{/n}
-"One star, one night." {n}She sounds as though she is afraid to breathe on it.{/n} "Not a cure. A lamp you have to light every evening, and it only keeps one wolf off the road." {n}She straightens.{/n} "That's the first honest thing anyone has ever offered me. Everyone else offered me salvation."''',
+"One star, one night." {n}She sounds as though she is afraid to breathe on it.{/n} "Not a cure. A lamp you have to light every evening, and it only keeps one wolf off the road." {n}Her finger stops on your margin note.{/n} "And the second wolf eats the doctor. You've written that down. You've written it down as if it were a dosage." {n}She straightens, and then does not seem to know what to do with her hands.{/n} "I don't trust it. Nobody's ever offered me something that small. I keep looking for the hook."''',
         c("[Close the books.]", flags=(STUDIED,))),
     a("not_yet", '''{n}She watches you turn back three pages, then five, then the whole commentary, and lose the thread each time.{/n}
 "You'll get there," she says. "Or you won't, and you'll have wasted a lot of candles on a demon." {n}She almost smiles.{/n} "Come back to it. I'll be here. I'm always watching."''', c()),
@@ -108,7 +109,10 @@ session(INTAKE, "Intake", 3, '[Hold out your hand, palm up] "You look pale. Let 
     a("laugh", '''"When did I last..." {n}A laugh startles out of her, and she clamps her free hand over her mouth, appalled at herself.{/n} "Commander, I don't eat. Not the way you mean. I can taste your bread and your wine, and they are lovely, and they are like... like looking at a painting of a fire when you're cold."
 {n}She tries to take her wrist back. You don't let her, yet.{/n} "I'm taking it back now. You shouldn't hold on so long. It isn't safe. Even this is costing you something, a little. You just can't feel it yet."''',
         c('"Answer the question. When did you last eat?"', "answer"),
-        c('[Let go] "Sorry. Occupational habit."', "answer")),
+        c('[Let go] "Sorry. Occupational habit."', "released")),
+    a("released", '''{n}You open your hand. She takes her wrist back at once and holds it against her chest, and for a moment neither of you says anything.{/n}
+"Thank you." {n}She sounds surprised to be saying it. Then she looks at your empty palm, still held out, and something in her face argues with itself and loses.{/n} "No. Here. Finish counting. You let go when I asked, so you can have it for as long as it takes to count." {n}She lays her wrist back in your hand herself, and this time she does not watch your fingers. She watches you.{/n}''',
+        c("[Count, and nothing more.]", "answer")),
     a("answer", '''{n}She rubs the place where your fingers were, as if it were her skin that had been hurt.{/n}
 "Properly? Before the goddess. Before Desna caught me in the priestess's dream and made me look at what I was." {n}Her voice drops.{/n} "Since then I've taken only what I couldn't help. A brush of hands in a crowd. Someone's breath when they sleep too close to the fire. Crumbs. I've lived on crumbs for years, and I tell myself every day that I'm not hungry, and every day it's a lie."''',
         c("Continue", "diagnosis")),
@@ -164,7 +168,7 @@ session(RELAPSE, "Relapse", 3, '"You haven\'t been to see me."', [
 "I was. I said yes. I didn't take my hand away. I felt him begin to go, just a little, just at the edges, and it was so good, Commander. It was the best I've felt since the goddess. And I sat there, and I let it go on for as long as it takes to breathe in, and out, and in again."''',
         c("Continue", "stopped")),
     a("stopped", '''"And then I stood up and walked out into the rain without paying for my wine, and I didn't stop walking until I was at the far end of the city wall, and I stayed there till dawn." {n}She looks at her hands, finally, as if they belonged to the sergeant.{/n}
-"He's fine. I went back to look. He's fine. He'll have had a headache and thought it was the ale. He won't ever know." {n}She lifts her chin, bracing for the verdict.{/n} "So. Doctor. What's the treatment for that?"''',
+"He's fine. I went back to look. He's fine. He'll have had a headache and thought it was the ale. He won't ever know." {n}She lifts her chin, bracing for the verdict.{/n} "So. Desna's priests would give me a road to walk and a star to walk it by. What do you give me?"''',
         c('"Next time, come to me. Whatever hour. I\'ll be the one who notices first."', "come", flags=(RELAPSE, COME_TO_ME)),
         c('"Then stay out of Fye\'s for a while. Out of taverns, out of crowds."', "stay_out", flags=(RELAPSE, STAY_OUT)),
         c('[Straight-faced] "I\'ll tell the sergeant he was blessed by a Desnan saint in disguise. He\'ll dine out on it for years."',
@@ -172,9 +176,9 @@ session(RELAPSE, "Relapse", 3, '"You haven\'t been to see me."', [
     a("come", '''"Come to you." {n}She says it as if you had told her to walk into a fire to warm up.{/n} "Commander, you are the last person I should come to when I'm hungry. You're the one I..." {n}She stops herself.{/n}
 "No. I understand. You'd rather I came to you than to a stranger. Because you know what I am, and he didn't." {n}Something in her face eases, and something else tightens.{/n} "All right. I'll come to you. And you'll send me away. Promise me you'll send me away."''', c()),
     a("stay_out", '''"Out of taverns." {n}She nods too quickly.{/n} "Yes. That's sensible. That's what a real doctor would say." {n}She is quiet for a moment.{/n}
-"The only thing is... that's where they are. The mortals. That's where they laugh and sing and hold each other's hands. If I stay out of the places where they're happy, I'll learn everything about them except the one thing I want to understand." {n}She squares her shoulders.{/n} "But I'll do it. For a while. You're the doctor."''', c()),
+"The only thing is... that's where they are. The mortals. That's where they laugh and sing and hold each other's hands. If I stay out of the places where they're happy, I'll learn everything about them except the one thing I want to understand." {n}She squares her shoulders.{/n} "But I'll do it. For a while. I've walked worse roads for worse gods."''', c()),
     a("saint_story", '''{n}She opens her mouth to protest, and nothing comes out. Then she laughs, helplessly, and slides down the stable wall until she is sitting in the straw.{/n}
-"A saint. In disguise." {n}She is laughing and crying at the same time.{/n} "You're horrible. You're a horrible, horrible doctor. I nearly ate a man and you're going to tell him he was blessed." {n}She wipes her face.{/n} "He'll believe you. That's the worst of it. He'll light a candle at the shrine every week for the rest of his life, and I'll have to walk past it."''', c()),
+"A saint. In disguise." {n}She is laughing and crying at the same time.{/n} "You're horrible. Tender of Dreams forgive me, you're horrible. I nearly ate a man and you're going to tell him he was blessed." {n}She wipes her face.{/n} "He'll believe you. That's the worst of it. He'll light a candle at the shrine every week for the rest of his life, and I'll have to walk past it."''', c()),
 ], (MEALTIMES, "trickster.ever"), forbids=(RELAPSE,), delay=48, chapters=(3, 4, 5))
 
 
@@ -347,7 +351,7 @@ session(T + "prescription", "The patient proposes", 5, '"You asked me to meet yo
         c('"Then I\'ll have known the price every night and paid it. That\'s mine to decide, not yours."', "ask"),
         c('"Then we don\'t sleep in the same room on those nights. Ever. That\'s the rule, not the risk."', "ask")),
     a("ask", '''{n}She brings her hands out from behind her back. They are empty. She holds them out to you, palms up, not touching, an inch away.{/n}
-"I'm not going to test you. I've tested everyone I ever met and it never once made me happy. I'm just going to ask." {n}Her voice goes very small and very steady.{/n} "Will you have me? All of it. The praying and the wanting. The priests hoped those were two things; they never were. It's one knot, and it's mine, and I'm asking you to hold it."''',
+"I'm not going to test you. I've tested everyone I ever met and it never once made me happy. I'm just going to ask." {n}Her voice goes very small and very steady.{/n} "Will you have me? All of it. The praying and the wanting. The priests hoped those were two things. They aren't."''',
         c('"Yes. Both of you."', "both", flags=(COMMITTED,)),
         c('"Yes. But keep the hunger out of my sight."', "saint", flags=(COMMITTED, SAINT_ONLY)),
         c('"Not yet. Ask me again when we\'ve both slept."', "not_yet", flags=(DECLINED,)),
@@ -394,8 +398,9 @@ session(NIGHT, "Under the Tender of Dreams", 5, '"Where are we going?"', [
 "You'll be weak tomorrow," she says against your mouth. "You'll be grey and useless and the second company will talk." {n}You tell her to let them. She makes a sound you have never heard her make, and does.{/n}''',
         c("Continue", "undress")),
     nar("undress", '''{n}She knows how to undress a person. She was taught in the Upper City, and the teaching is the worst thing in her. Her hands begin that way, quick and certain, and then she hears how quietly the buckles are coming loose, the way they did for the guests who did not wake, and she stops. When she begins again she is slow, and clumsy, and has to try your belt twice, and she does not let herself get better at it. Her wings unfold and curve round you both against the wind off the Worldwound; she apologises for them; you tell her not to.{/n}
-{n}She lays you down on her cloak on the old bell-floor, under the whole wheel of the stars, and follows you down, her hair falling round both your faces, her skin cool and then not cool at all. She settles astride your hips, braces one hand on the stone beside your head, and draws one long breath that she does not need.{/n}''',
-        c("[Let her.]", "morning_after")),
+{n}She lays you down on her cloak on the old bell-floor, under the whole wheel of the stars, and follows you down, her hair falling round both your faces, her skin cool and then not cool at all. She settles astride your hips, braces one hand on the stone beside your head, and draws one long breath that she does not need.{/n}
+"I want you." {n}It comes out rough, and far too loud for a bell tower, and she does not take it back.{/n} "Not the way I was taught to want. Mine. Look at me while I do this."''',
+        c("Continue", "morning_after")),
     a("morning_after", '''{n}Much later, she lies with her head on your chest, listening to your heart with the concentration of someone taking a pulse, while the stars turn overhead.{/n}
 "Still beating." {n}She sounds amazed.{/n} "Still going. I'm lying here, and you're still here, and nobody is any less than they were." {n}She presses her ear closer.{/n} "Don't talk. I'm taking notes. Desna's watching. Let her."''',
         c("[Let her listen.]", flags=(NIGHT,))),

@@ -200,8 +200,11 @@ internal static class KonomiTricksterTests
         check(!Rules.Available(story, S("konomi.the_unintroduced_letter"), never), "The unintroduced letter still opens beside the jug.");
         var bowPages = new HashSet<string>();
         var bowed = Program.Walk(accredited, never, (page, _) => bowPages.Add(page)).Where(r => r.Has(accredited.Id)).ToList();
-        check(bowed.Count == 1 && bowed[0].Has("konomi.trickster.primed") && bowed[0].Has("konomi.trickster.cost.accredited")
-              && bowed[0].Has("konomi.missed_letter_sent") && bowPages.Contains("nerosyan"), "Trk_Konomi_NeverArrived: wrong flags.");
+        // Two ways to use the chancery's informer (paid, or threatened with the rope); each sets the device flags and its cost.
+        check(bowed.Count == 2 && bowed.All(r => r.Has("konomi.trickster.primed") && r.Has("konomi.trickster.cost.accredited")
+              && r.Has("konomi.missed_letter_sent")) && bowPages.Contains("nerosyan")
+              && bowed.Count(r => r.Has("konomi.trickster.cost.steward_paid")) == 1
+              && bowed.Count(r => r.Has("konomi.trickster.cost.steward_burned")) == 1, "Trk_Konomi_NeverArrived: wrong flags.");
         var arrived = Later(story, bowed[0], 48);
         check(Rules.Available(story, audience, arrived) && arrived.Has("konomi.trickster.presence_on"), "Trk_Konomi_NeverArrived: no audience.");
         check(!Rules.Available(story, S("konomi.the_answer_she_addressed"), arrived), "The carrier's answer opens beside the audience.");

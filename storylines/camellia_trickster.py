@@ -4,9 +4,10 @@ the spoken death).
 Canon: Camellia Gwerm, spirit shaman, Horgus's illegitimate daughter, who kills only those who considered her a friend,
 "so that I can see the disbelief and dread in my victims' eyes" (FinalTruth/Cue_0042 f53d2eeb), and who tells the Commander
 at the end of her lies: "You are an excellent liar, perhaps even better than I am" (Cue_0029 b5485676). Her spirit Mireya is
-her own invention (Cue_0012 6aa5270c: "There is no Mireya. I made her up."; hub Cue_0107 1b515274). The Trickster's words
-become true (Kyado Cue_0109 509eac82; CalebFooled 25d3d486). At the moment the Commander turns on her, the joke makes her
-death a performance: she dies, is buried, and walks back into Drezen veiled, calling herself Mireya.
+her own invention (Cue_0012 6aa5270c: "There is no Mireya. I made her up."; hub Cue_0107 1b515274). The device is a
+bargain with her battle spirits, paid in the Commander's blood (before the kill, or late over the coffin on dearer
+terms); the line at the kill only tells her the plan. She dies, is buried, and walks back into Drezen veiled, calling
+herself Mireya.
 
 This relationship is a native adapter: it reads CamelliaRomance (89f8c2f1) and never starts or completes it. Her life with
 the Commander before the kill, the days between her return and her price, and the life after her answer are camellia_masks.
@@ -235,7 +236,7 @@ def met(id, title, entry, nodes, requires, forbids=(), delay=24, optional=False,
                             Relationship=REL, AnswerLists=[HUB_LIST], ContactUnit=UNIT, **lextra))
 
 
-# --- The joke, at the kill (P1 primers). Owlcat's inline mythic answers are the tone target. ---------------------------
+# --- The line at the kill (P1 primers). Owlcat's inline mythic answers are the tone target. ---------------------------
 
 JOKE = '[Play a cruel trick on Camellia] "Go on, then. Die convincingly. I\'ll know if you don\'t."'
 
@@ -290,7 +291,7 @@ SCENES.append(scene(P + "killed.late_curtain", "Wrong flowers", "Memory", 3, "",
         c('[Close the lid] "No. Let her stay dead."', flags=(DECLINED, CLOSED))),
     nar("scroll", '''{n}Then you draw your knife across your own palm and hold it over her mouth, and speak to what goes to war with her: the spirits of battle she swore were always at her side. Keep her three nights more, you tell them, and give her back, and take it out of me. The blood runs between her lips. The lantern gutters. The sexton has stopped breathing. She has started.{/n}''',
         c("Continue", "shut", flags=(BARGAIN_COST, BARGAINED))),
-    nar("shut", '''{n}Her eyes open. She looks up at you out of the box without moving anything else, and her voice is a dry whisper.{/n} "Rude. You bled on my face. Put the lid back. I'm dead until I say I'm not. That was the joke, wasn't it?"
+    nar("shut", '''{n}Her eyes open. She looks up at you out of the box without moving anything else, and her voice is a dry whisper.{/n} "Rude. You bled on my face. Put the lid back. I'm dead until I say I'm not. That was the plan, wasn't it?"
 {n}You nod to the sexton. He lowers the lid on a woman who is, by every measure he knows, dead, and you both pretend very hard not to hear the small, delighted exhalation from inside the box as it closes.{/n}''',
         c("[Walk back to the citadel]", "walk")),
     nar("walk", '''{n}The sexton walks back with you as far as the cemetery gate, very fast, holding the lantern high. At the gate he stops, and says, not looking at you, that he has buried a great many people in this ground and that none of them ever laughed at him before, and he would like it very much if the Commander did not bring him any more work of that kind. Then he goes home, and, you learn later, does not come out again for three days.{/n}''',
@@ -308,7 +309,7 @@ SCENES.append(scene(P + "killed.third_night", "The third night", "Memory", 3, ""
     nar("coffin", '''{n}Before the sexton can set his spade, you hear it: a scratching from under the earth, slow, patient, like a dog at a door. The sexton hears it too. He drops the lantern.{/n}''',
         c("[Dig]", "dug", requires=(BARGAINED,)),
         c("[Dig]", "unbargained", forbids=(BARGAINED,))),
-    nar("unbargained", '''{n}There is no scratching. You dig anyway, and lift the lid, and she lies exactly as she was laid out, hands folded over the bone snake at her throat. She is dead. The joke held; nothing was ever asked of the spirits at her back to keep her.{/n}''',
+    nar("unbargained", '''{n}There is no scratching. You dig anyway, and lift the lid, and she lies exactly as she was laid out, hands folded over the bone snake at her throat. She is dead. A line spoken at a killing keeps nobody alive; nothing was ever asked of the spirits at her back to keep her.{/n}''',
         c("[Cut your palm over her mouth and bargain with her spirits now, on dearer terms]", "late_bargain",
           flags=(BARGAIN_COST, BARGAINED, P + "cost.bargain_late", RAISED, P + "cost.sexton_paid"), alignment=("Evil", 1)),
         c('[Close the lid] "No. Let her stay dead."', flags=(DECLINED, CLOSED))),
@@ -316,7 +317,7 @@ SCENES.append(scene(P + "killed.third_night", "The third night", "Memory", 3, ""
         c("Continue", "breath")),
     nar("dug", '''{n}The lid is unnailed, as you paid for. It lifts at the first touch, from inside. Her fingers come over the edge of it first, and the tips are raw to the quick, the nails torn, the pine under them scored in long pale furrows. She has been at it for hours. The spirits kept her three nights, as you bargained, and gave her back on the third, and she has been clawing ever since.{/n}''',
         c("Continue", "breath", flags=(RAISED, P + "cost.sexton_paid"))),
-    nar("breath", '''{n}She looks up at you out of the box without moving anything else, and her voice is a dry whisper.{/n} "Rude. You took your time." {n}A pause.{/n} "Put the lid back. I'm dead until I say I'm not. That was the joke, wasn't it? Go home. I'll find you."''',
+    nar("breath", '''{n}She looks up at you out of the box without moving anything else, and her voice is a dry whisper.{/n} "Rude. You took your time." {n}A pause.{/n} "Put the lid back. I'm dead until I say I'm not. That was the plan, wasn't it? Go home. I'll find you."''',
         c("[Put the lid back]", "home")),
     nar("home", '''{n}You walk the sexton back to the cemetery gate. He does not say anything. When you look back from the gate the lid is already a little askew, and the lilies on the grave have been rearranged, very neatly, by somebody with a strong opinion about flowers.{/n}''',
         c("[Go home]")),
@@ -343,7 +344,7 @@ SCENES.append(scene(PERFORMANCE, "The veiled mourner", "Camellia", 3,
     *lead([("who", cam, '''"Do sit. Fye is pretending I am a widow from Nerosyan who drinks nothing and tips in silver. He is quite good at it. Everyone in this city is quite good at not seeing the dead."''', None),
            *PERFORMANCE_LEADS], "how"),
     cam("how", '''{n}She peels off one black lace glove, slowly, finger by finger, and lays her hand on the bar between you. The fingertips are wrapped in strips of linen, brown at the ends. Under the linen there are no nails.{/n}
-"You bled into my bowl and asked my spirits to keep me for you. The ones that go to war with me; I'd have heard you, if I hadn't been so busy with Mireya. And then you told me to die convincingly, and I understood the whole joke at once: die truly, stay dead through my own funeral, so that nobody ever looks for me, and let them hold me until the third night." {n}She flexes the wrapped fingers.{/n} "They kept their word. They simply didn't think to give me a door. Pine is softer than you'd think."''',
+"You bled into my bowl and asked my spirits to keep me for you. The ones that go to war with me; I'd have heard you, if I hadn't been so busy with Mireya. And then you told me to die convincingly, and I understood the whole trick at once: die truly, stay dead through my own funeral, so that nobody ever looks for me, and let them hold me until the third night." {n}She flexes the wrapped fingers.{/n} "They kept their word. They simply didn't think to give me a door. Pine is softer than you'd think."''',
         c("Continue", "how_late", requires=(LATE,)),
         c("Continue", "why", forbids=(LATE,))),
     cam("how_late", '''"You did it the wrong way round, of course. You lifted my lid, told my corpse it wasn't convincing, and then bled on my face and haggled with my spirits over my body like a fishwife. Your sexton heard me breathe. He hasn't been the same since. I sent him a jar of lilies."''',

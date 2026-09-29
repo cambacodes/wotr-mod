@@ -6,7 +6,8 @@ every path. The Trickster layer answers her three losses with the quack's diagno
 - evil, killed at the lair (Ch5): a referral for a second opinion to the only physician a succubus has, her queen, who
   bills for the consultation (Nocticula_main/Cue_0520, Cue_0523). The queen's terms are evil terms: pay them, shift them
   onto yourself, or refuse, and each has a cost that stays;
-- romance failed: the crusade's new chaplain, appointed out loud at the shrine, a piece of staging the crowd makes real.
+- romance failed: the crusade's new chaplain, appointed out loud at the shrine at the hour the second company kneels:
+  a piece of staging that she then has to live up to with her own hands.
 The living courtship on her own hub is arueshalae_treatment and arueshalae_rounds; the other paths' middle beats are
 arueshalae_chapel, arueshalae_hours and arueshalae_notes.
 
@@ -173,25 +174,28 @@ def drezen_pair(id, title, entry, nodes, requires, forbids, delay):
 letter(P + "dead.starving", "Diagnosis", 3, [
     nar("start", '''{n}They have laid Arueshalae out in the chapel with her wings folded. The chaplains washed her face and did not know what to do with the rest of her, so they left her in her travelling clothes, with a sprig of something green between her hands.{/n}
 {n}Without the careful stillness she wore in life, she looks younger. And hungrier. The hollows under her cheekbones are deeper than they were at the last camp. You have seen that look on the faces of the Kenabres refugees queuing at the soup kettles.{/n}
-{n}She did not only die of her wounds. She has been dying of something else for a long time, and the wounds only finished it.{/n}''',
+{n}She died of her wounds. But you know the other thing, the one that will be waiting for her if she ever opens her eyes again: a hunger held on a short chain for so long that it has worn her to the bone, and that will have her by the throat before she has finished her first breath.{/n}''',
         c('[Treat her like a patient] "You\'re not dead. You\'re starving. Eat."', "treat", mythic="Trickster",
           requires=("trickster.religion_tier1",)),
         c("[Let her rest.]", abort=True),
         c('[Treat her like a patient] "You\'re not dead. You\'re starving. Eat."', "wake", mythic="Trickster",
           forbids=("trickster.religion_tier1",))),
-    nar("treat", '''{n}The chaplains could raise her. Any crusader who falls in the Commander's company can be raised, with a diamond and the rite; they have done it for knights and for Woljif. They will not spend a diamond on a demon, and they have said so, politely. So you do the rite's work yourself, in two halves.{/n}
-{n}First the Trickster's lore, which cannot raise anyone and does not try: you lay your palm on her breastbone and lift from her body the one condition that would kill her again the moment she woke, the starvation, the way you have lifted plague out of the Kenabres refugees. Then the price the rite would have taken in diamond, you pay in blood. You cut your wrist on the edge of the bier and hold it to her lips.{/n}
-{n}Something under your palm goes from stone to skin. The sprig slides out of her hands. Her eyes open. They find your throat before they find your face.{/n}''',
+    nar("treat", '''{n}The chaplain on duty has already said it plainly, with the tiredness of a man who has said it before. The raising rites call a soul home to its body. She is an outsider, Abyss to the bone, and when her kind die there is no home to call; the rite has nothing to hold on to. It is not a question of diamonds. It is a question of there being nothing there.{/n}
+{n}You read one sentence differently from him. Your lore heals the soul as well as the body: your treatment removes any negative condition affecting the one you treat. Any. The words do not say "short of death". They do not say "except demons". You have been waiting for the rule to notice the door it left open, and it has not noticed yet.{/n}
+{n}Death is a negative condition. It is affecting her. You put your palm flat on her breastbone and treat it the way you would treat a fever: you name it, and you lift it.{/n}
+{n}It is heavier than any poison you have ever lifted, and colder, and for a long moment the rule seems to notice after all; the lore drags at the whole of you, as if it means to take its fee in kind. Then something under your palm goes from stone to skin. The sprig slides out of her hands.{/n}
+{n}You lifted her death. You did not lift her hunger, because the hunger is not a condition; it is what she is. She wakes with it, exactly as starved as she died, and her eyes find your throat before they find your face. You cut your wrist on the edge of the bier and put it in her way, and her body drinks before she can stop it: three swallows, four, before she tears her mouth off you with a sound like cloth ripping.{/n}''',
         c("Continue", "claimed", requires=(CLAIMED,)),
         c("Continue", "plea", forbids=(CLAIMED,))),
-    nar("wake", '''{n}The chaplains could raise her, with a diamond and the rite, as they raise any crusader who falls in your company. They will not spend a diamond on a demon. You have no lore to lift the starvation from her; you have the Desnan travellers' rite you read in the shrine library, a candle, and your own blood for the price.{/n}''',
-        c('[Say the rite over her, and cut your wrist on the edge of the bier]',
+    nar("wake", '''{n}The chaplain on duty has already said it plainly: the raising rites call a soul home to its body, and she is an outsider, Abyss to the bone. For her kind the rite has nothing to hold on to.{/n}
+{n}You know the reading a Trickster with the right lore would make: call death one more negative condition, and lift it. You have not got that lore. You make the same diagnosis anyway, by main force, with what any field healer has: the chaplain's commentary open on the bier, every litany against wasting and fever you can drag out of memory, a candle, your hands on her, and the one remedy her body has always answered to, which is to be fed. You will have to name the thing exactly, verse by verse, and keep your wrist at her lips for as long as it takes. It may not be enough. It may cost more blood than you have.{/n}''',
+        c('[Work the litanies over her, and cut your wrist on the edge of the bier]',
           check={"Skill": "SkillLoreReligion", "DC": 22, "Success": "rite_holds", "Failure": "rite_fails"})),
-    nar("rite_holds", '''{n}You get every word right. The candle burns blue. You hold your wrist to her lips and keep it there while the chaplain protests, and her body, which was built to drink before its owner can stop it, drinks. Something under your hand goes from stone to skin. The sprig slides out of her hands.{/n}
+    nar("rite_holds", '''{n}You keep the thread: wasting named, fever named, the hunger named last and longest. By the end the words are only yours, and the room has gone grey at the edges. You hold your wrist to her lips and keep it there while the chaplain protests, and her body, which was built to drink before its owner can stop it, drinks. Something under your hand goes from stone to skin. The sprig slides out of her hands.{/n}
 {n}Her eyes open. They find your throat before they find your face.{/n}''',
         c("Continue", "claimed", requires=(CLAIMED,)),
         c("Continue", "plea", forbids=(CLAIMED,))),
-    nar("rite_fails", '''{n}You lose the rite on the third verse. The candle gutters and goes out, and the blood on her lips is only blood. The chaplain lays a hand on your arm and says, not unkindly, that the body will keep until tomorrow, and that you should bandage that.{/n}''',
+    nar("rite_fails", '''{n}You lose the thread on the third litany. The candle gutters and goes out, and the blood on her lips is only blood. The chaplain lays a hand on your arm and says, not unkindly, that the body will keep until tomorrow, and that you should bandage that.{/n}''',
         c("[Bandage the wrist. Try again tomorrow.]", abort=True)),
     a("claimed", '''{n}Very quietly, as if there were someone else in the chapel:{/n} "Our Lady in Shadow will have felt that. She counts us, you know. Like coins in a purse. One of hers just rolled back out from under the table."''',
         c("Continue", "plea")),
@@ -214,8 +218,9 @@ hub(P + "returned.aftertaste", "Aftertaste", 3, '"How do you feel?"', [
 "I can still taste it. Every time I close my eyes. I thought the worst thing would be the wanting. It isn't. It's that I'm not hungry any more, and I can feel how good that is, and I know exactly what it cost."''',
       c("Continue", "you", requires=(FED_ON_YOU,)),
       c("Continue", "him", forbids=(FED_ON_YOU,))),
-    a("you", '''"Do you remember any of it? You were on the chapel floor by the end, and I was holding your hand to my cheek. The chaplain says I made no sound. I thought I was screaming." {n}She rubs her mouth with the back of her hand.{/n}
-"You made me eat. You made me want it, and then you smiled like a surgeon who'd done a clever stitch." {n}A small, shocked laugh escapes her.{/n} "Only you would call my death a bad diet. The novices think you performed a miracle. I didn't have the heart to tell them it was a joke."''',
+    a("you", '''"Do you remember any of it? You were on the chapel floor by the end, and I was holding your hand to my cheek. The chaplain says I made no sound. I thought I was screaming."
+{n}Her eyes go to your hands. They have not quite stopped shaking since, and the bandage on your wrist is fresh again this morning.{/n} "You let me take too much. You knew I would. You lay there and let me." {n}She rubs her mouth with the back of her hand.{/n}
+"You made me eat. You made me want it, and then you smiled like a surgeon who'd done a clever stitch." {n}A small, shocked laugh escapes her.{/n} "Only you would call my death a bad diet. The novices think you performed a miracle. I didn't have the heart to tell them it was your wrist and a very bad bedside manner."''',
       c("Continue", "test")),
     a("him", '''"They brought him up gagged. A Deskari lay preacher, condemned at the assize. I told you not to watch and you watched." {n}Her hands shake. She puts them flat against her thighs to stop them.{/n}
 "He screamed, you know. I didn't hear it at the time. I hear it now, whenever it's quiet. He's still breathing, in the east cells. He'll never be anybody again. You gave me back my life with a stranger's in my mouth, and I don't know whether to thank you."''',
@@ -223,7 +228,7 @@ hub(P + "returned.aftertaste", "Aftertaste", 3, '"How do you feel?"', [
     a("test", '''{n}She makes herself look up.{/n} "Tell me the truth. Not the joke, the truth. If I die again, will you do it again?"''',
       c('"Every time."', "again", flags=(AFTERTASTE, EVERY_TIME)),
       c('"Only if you ask me to."', "ask", flags=(AFTERTASTE, IF_ASKED))),
-    a("again", '''{n}She nods slowly, as if you've confirmed a diagnosis she was afraid of.{/n} "Every time. Then I had better not die, had I? Because I don't think I could say no to you twice."''', c()),
+    a("again", '''{n}She nods slowly, as if you've confirmed a diagnosis she was afraid of.{/n} "Every time. Then hear my side of it, because it isn't a question. You don't do it again unless I ask. If I wake a second time with your wrist in my mouth and no say in it, I walk out of this crusade that same night, and you don't follow me."''', c()),
     a("ask", '''"Good. Then it's mine to ask." {n}Something in her shoulders comes down an inch, and then goes straight back up.{/n} "Which means one day I'll have to. Out loud. With my mouth still tasting of the last time." {n}She wipes her lips with the back of her hand, hard, though there is nothing on them.{/n}''', c()),
 ], requires=("trickster.ever", RETURNED), forbids=(AFTERTASTE, EVIL_DEAD, CLOSED), delay=24, chapters=(3, 5))
 
@@ -245,7 +250,7 @@ letter(P + "evil.late_referral", "A referral, posthumously", 5, [
         c('[Give the vrock the referral, word for word] "Say this to your queen: patient, one succubus, deceased, misdiagnosed. Requesting a second opinion. Now say it back to me."',
           "sent", mythic="Trickster", flags=(PRIMED, LATE)),
         c("[Let it go without a message.]", "gone", flags=(DECLINED,))),
-    nar("sent", '''{n}It says it back to you three times, in a voice like a hinge, until it has every word. Then it goes, flapping badly into the purple sky, and looks back once as if to ask whether you are serious. You are. You have never been more serious about a joke.{/n}''', c()),
+    nar("sent", '''{n}It says it back to you three times, in a voice like a hinge, until it has every word. Then it goes, flapping badly into the purple sky, and looks back once as if to ask whether you are serious. You are. It is the most serious referral you have ever written.{/n}''', c()),
     nar("gone", '''{n}You let it go. It scuttles off into the rubble with its rings. You leave her where she fell. It is the only thing about her that you never tried to fix.{/n}''', c()),
 ], requires=("trickster", EVIL_DEAD, EVIL_LATCH), forbids=(PRIMED, RETURNED, DECLINED), delay=24, chapters=(5,),
     TricksterDevice=True, TricksterState="evil_dead")
@@ -326,11 +331,11 @@ letter(P + "evil.reunion_letter", "A note in lipstick", 5, [
         c("[Leave the window open.]", "window", flags=(REUNITED, FED_ON_YOU)),
         c("[Leave a cultist tied to the gate.]", "gate", alignment=("Evil", 2), flags=(REUNITED, FED_ON_PRISONER)),
         c("[Chain the babau from her gang to the gate instead.]", "vrock", flags=(REUNITED, FED_ON_DEMON)),
-        c("[Leave nothing.]", "nothing", flags=(REUNITED, HUNGRY))),
+        c("[Leave nothing, and let her do what she threatened.]", "nothing", flags=(REUNITED, HUNGRY))),
     nar("window", '''{n}You wake at the hour before the first bell, colder than you went to sleep, with a black feather on the pillow and the taste of someone else's lipstick on your mouth.{/n}''', c()),
     nar("gate", '''{n}In the morning the gate guard reports that the prisoner tied there overnight has gone mad and will not stop weeping. Nobody saw anything. Nobody ever does.{/n}''', c()),
     nar("vrock", '''{n}In the morning there is an empty chain at the gate and a smear of something grey and sticky on the cobbles, and a lipstick mark on the gatepost at exactly the height of a woman leaning against it, laughing.{/n}''', c()),
-    nar("nothing", '''{n}In the morning a patrol sergeant of the third company does not report for duty. They find him at noon, smiling, and he never wakes up. There is a black feather tucked into his cuff, addressed to you.{/n}''', c()),
+    nar("nothing", '''{n}In the morning a patrol sergeant of the third company does not report for duty. They find him at noon, smiling, and he never wakes up. There is a black feather tucked into his cuff, addressed to you, and on it, in lipstick: "You chose nothing. Nothing has a name now. It's on your account, darling, not mine."{/n}''', c()),
 ], requires=("trickster.ever", RETURNED, EVIL_DEAD, LAIR_FAILED), forbids=(P + "evil.reunion", REUNITED, CLOSED, LATE),
     delay=120, chapters=(5,))
 
@@ -338,11 +343,11 @@ TERMS_OPEN = [
     a("terms", '''"I won't wear your colours, and I won't bless anything. I'll come when I'm hungry, and you'll open the door. That's the arrangement. Don't look at me like that. It's the only arrangement I've ever kept."''',
       c("Continue", "debt", requires=(DEBT,)),
       c("Continue", "favour", forbids=(DEBT,))),
-    a("debt", '''"And when she calls, I'll go. Don't sulk. You said yes to it."''',
+    a("debt", '''"And when she calls, I'll go. Don't sulk. You said yes to it. And don't ever try to stop me: lock a door, hire a priest, stand in my way. I'll go through you to get to her, and I won't be gentle, because she won't let me be."''',
       c("Continue", "hungry", requires=(HUNGRY,)),
       c("Continue", "hiding", requires=(IN_HIDING,), forbids=(HUNGRY,)),
       c("Continue", "ask", forbids=(HUNGRY, IN_HIDING))),
-    a("favour", '''"And when she comes for what you owe her, I'll be watching. I want to see your face. I want to see what a Trickster looks like when they're the one being collected."''',
+    a("favour", '''"And when she comes for what you owe her, I'll be watching. I want to see your face. I want to see what a Trickster looks like when they're the one being collected. And if you try to wriggle out of it, she won't come to you. She'll come to me, and ask me to fetch it."''',
       c("Continue", "hungry", requires=(HUNGRY,)),
       c("Continue", "hiding", requires=(IN_HIDING,), forbids=(HUNGRY,)),
       c("Continue", "ask", forbids=(HUNGRY, IN_HIDING))),
@@ -363,11 +368,11 @@ drezen_pair(P + "evil.terms", "House calls", '"You\'re sitting on the jeweller\'
             ("trickster.ever", RETURNED, EVIL_DEAD, REUNITED), (CLOSED, COMMITTED, ALLY), 48)
 
 
-# --- 6. Romance failed: "The crusade's new chaplain" (staging: the crowd makes the joke real) ---------------------
+# --- 6. Romance failed: "The crusade's new chaplain" (staging: a public appointment, then her own work) ---------------------
 
 hub(P + "failed.chaplain", "Chaplain", 3,
     '[Announce it to the whole shrine] "Meet the crusade\'s new chaplain. She starts tomorrow."', [
-    a("start", '''{n}The words carry further than they should. The shrine has good bones for sound; it was built by people who expected to be heard by a goddess. By vespers the acolytes are calling her "Chaplain" to her face, and the second company is queuing at the altar rail with their swords laid across their palms. Nobody wrote it down. Nobody needed to.{/n}
+    a("start", '''{n}You chose the hour on purpose: vespers, with the second company kneeling at the rail and every acolyte in the shrine lighting lamps. The words carry further than they should. The shrine has good bones for sound; it was built by people who expected to be heard by a goddess. By vespers the acolytes are calling her "Chaplain" to her face, and the second company is queuing at the altar rail with their swords laid across their palms. Nobody wrote it down. Nobody needed to.{/n}
 "Take it back." {n}She has you by the sleeve in the vestry, whispering, furious.{/n} "They'll look at me every day. A succubus, blessing their swords. Do you know what they'll say? Do you know what I'll want, with every one of them kneeling in front of me?"''',
       c("Continue", "sword")),
     a("sword", '''{n}She doesn't leave, though. When the first soldier at the rail clears his throat, she goes out to him. She takes his sword in both hands as if it might burn her, and says the words she has heard the Desnan priests say over travellers, and hands it back. He thanks her. She stands there looking at her own hands.{/n}
