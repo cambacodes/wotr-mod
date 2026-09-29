@@ -438,24 +438,32 @@ IN_PERSON = [
     nar("arrival", '''{n}The frame goes dark and stays dark. You are reaching to turn it over when someone knocks at the door: three knocks, precisely spaced, the way a clerk knocks.{/n}
 {n}She is on the threshold when you open it. Not an image. The lamplight finds the edges of her carapace and does not slide off them. She is taller than the frame ever let her look, and she smells of cold stone and something sweet and spoiled, like fruit left on an altar.{/n}''',
       c("Continue", "arrival_terms")),
-    j("arrival_terms", '''"A contract wants a signature in the signatory's own hand. Mine is here."
-{n}She lifts it: long, jointed, clawed at the tips, very still.{/n}
-"The road demons use is short, if you do not mind what it smells of. I shall not stay the night; the Abyss notices when I am absent, and so will your guards. But I do not sign things at a distance. Which face do you want across the table, Commander?"''',
+    j("arrival_terms", '''"A forfeit is collected in person. I have come to see what I bought."
+{n}She lifts her hand into the light: long, jointed, clawed at the tips, very still.{/n}
+"The road demons use is short, if you do not mind what it smells of. I shall not stay the night; the Abyss notices when I am absent, and so will your guards. But I do not collect at a distance. Which face do you want across the table, Commander?"''',
       c('"Your own. All of it."', "own"),
       c('"The guise. I know who is wearing it."', "guise")),
     j("own", '''{n}She lets the last of the pretence fall away and steps inside, and the room is suddenly too small for her. Her antennae brush the lintel. Her wings, folded, rasp against the doorframe like pages turning.{/n}
 "Most people close their eyes, the first time."
 {n}You do not. She comes closer, one deliberate step at a time, and stops when there is no more room to stop. Her clawed fingers find the fastenings at your collar and undo them one by one, with the care she gave the locusts, and she watches your face the whole time to see what each one costs you.{/n}''',
-      c("Continue", "threshold")),
+      c("Continue", "ask")),
     j("guise", '''{n}The elven woman who steps inside is exactly the one the frame showed you, down to the seam of light along her jaw that she has left there on purpose, so that you will not forget.{/n}
 "I made her for you. It seemed only fair that you should unwrap her."
 {n}She takes your hands and sets them at her waist, where the illusion is warm and the thing beneath it is hard and ridged and moving under your palms. She watches you feel the difference. She enjoys it far more than the face would suggest.{/n}''',
-      c("Continue", "threshold")),
-    nar("threshold", '''{n}She backs you toward the bed without appearing to push, the way she herded Wintersun: by making every other direction less interesting. Her mouth, or what serves her for one, is at your throat, and the buzzing you have only ever heard in your head is in your skin now, low and continuous, so that you cannot tell where the sound stops and the shiver starts.{/n}
+      c("Continue", "ask")),
+    j("ask", '''{n}She takes both your wrists, loosely, the way she once held a locust she had not yet decided to pin, and does not close her hand.{/n}
+"I like things still, Commander. I like them to have chosen to be still. Give me your hands, or keep them. I shall read either answer, and I shall enjoy either answer, and only one of them will leave marks."''',
+      c('[Give her your wrists.]', "threshold"),
+      c('[Keep your hands, and pull her down to you.]', "threshold_free")),
+    nar("threshold_free", '''{n}You take your hands back and put them on her instead: the ridge of her carapace, the cold hinge of a wing. She goes very still, and then the buzzing starts again, lower, and you realise it is a laugh.{/n}
+"Oh," {n}she says.{/n} "You are going to be difficult. Good."
+{n}She lets you pull her down. Her wings open over you both and shut out the lamp, and the sound you have only ever heard in your skull is in your skin now, everywhere she touches, and she lowers herself onto you.{/n}''',
+      c("Continue", "morning")),
+    nar("threshold", '''{n}You hold out your wrists. She takes them as if you had handed her something breakable and rare, and walks you backwards to the bed without once tightening her grip. Her mouth, or what serves her for one, is at your throat, and the buzzing you have only ever heard in your head is in your skin now, low and continuous, so that you cannot tell where the sound stops and the shiver starts.{/n}
 {n}When your knees meet the edge of the mattress she lets you fall, and follows, and settles over you with her weight on her elbows and her wings half open, shutting out the lamp. Her claws close lightly round your wrists and press them into the blanket.{/n}
 "Terms accepted," {n}she says, very softly, against your ear, and lowers herself onto you.{/n}''',
       c("Continue", "morning")),
-    nar("morning", '''{n}She is gone before the watch changes. The sheets smell of cold stone. There are four small crescents on each of your wrists where her claws rested, very precise, as if she had counted them.{/n}
+    nar("morning", '''{n}She is gone before the watch changes. The sheets smell of cold stone. There are small crescents on your skin where her claws rested, very precise, as if she had counted them. You press a thumb to one. It stings, exactly as much as she meant it to, and you find you are in no hurry for it to heal.{/n}
 {n}Tucked into the frame, where the image should be, is one dry locust wing, veined like a leaf and folded exactly in half. When you touch it, a voice that is not quite a memory arrives behind your left eye: "The forfeit stands. I have not decided which memory. You will be the second to know."{/n}''',
       c(_KEEP[0], "end", forbids=("jerribeth.short_future_chosen",), flags=("jerribeth.chosen_future",)),
       c(_KEEP[0], "short_end", requires=("jerribeth.short_future_chosen",))),
