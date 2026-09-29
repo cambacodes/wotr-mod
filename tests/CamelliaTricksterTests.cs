@@ -164,7 +164,10 @@ internal static class CamelliaTricksterTests
         // Trk_Camellia_KilledLate
         var unprimed = World(story, 3, "trickster", "trickster.ever", Killed);
         check(Avail(late, unprimed) && !Avail(performance, unprimed), "Trk_Camellia_KilledLate: the late curtain should be the only way in.");
-        check(late.Remote && late.Chapters.SequenceEqual(new[] { 3 }), "The late curtain is not a Chapter 3 rest page.");
+        check(late.Remote && late.Chapters.SequenceEqual(new[] { 3, 5 }), "The late curtain is not a Chapter 3 and 5 rest page.");
+        // A kill taken through the native verdict in Chapter 5 (FinalTruth) has the same way back, on the same terms.
+        check(Avail(late, World(story, 5, "trickster", "trickster.ever", Killed)), "Trk_Camellia_KilledLate: a Chapter 5 kill has no way back.");
+        check(letter.Chapters.SequenceEqual(new[] { 3, 5 }), "The letter twin is shut in Chapter 5.");
         check(Ch(late, "choose", 0).Crusade?.Resource == "Finances" && Ch(late, "choose", 0).Crusade!.Amount == -100,
             "The sexton is not paid for in Finances (-100).");
         check(Ch(late, "coffin", 0).Mythic == "PlayerIsTrickster", "The line said to the corpse is not a native [Trickster] answer.");

@@ -282,6 +282,7 @@ SCENES.append(scene(P + "killed.setup_q1", "A message for the killer", "Anevia",
 
 
 # --- The late fallback (R2-2): no line at the kill, so the Commander says it to the corpse, now, and pays for the lid. ---
+# Chapters 3 and 5: a kill taken through the native verdict in Chapter 5 (FinalTruth) comes here on the same terms.
 
 SCENES.append(scene(P + "killed.late_curtain", "Wrong flowers", "Memory", 3, "", [
     *lead([("start", nar, '''{n}The crusade buried Camellia under a plain stone at the edge of the Drezen cemetery, with a wrong bunch of flowers: lilies, the white wedding kind. Tonight you stand over the stone with the sexton, a stooped man with a lantern, who wants forty gold to lift the lid and a hundred more to forget that he did.{/n}''', None),
@@ -301,8 +302,8 @@ SCENES.append(scene(P + "killed.late_curtain", "Wrong flowers", "Memory", 3, "",
         c("[Walk back to the citadel]", "walk")),
     nar("walk", '''{n}The sexton walks back with you as far as the cemetery gate, very fast, holding the lantern high. At the gate he stops, and says, not looking at you, that he has buried a great many people in this ground and that none of them ever laughed at him before, and he would like it very much if the Commander did not bring him any more work of that kind. Then he goes home, and, you learn later, does not come out again for three days.{/n}''',
         c("[Go home]")),
-    ], requires=("trickster", KILLED), forbids=(PRIMED, RET, DECLINED), last=3, Relationship=REL, Remote=True,
-    Chapters=[3], TricksterDevice=True, TricksterState="killed_by_commander"))
+    ], requires=("trickster", KILLED), forbids=(PRIMED, RET, DECLINED), last=5, Relationship=REL, Remote=True,
+    Chapters=[3, 5], TricksterDevice=True, TricksterState="killed_by_commander"))
 
 
 # --- The third night (primed): the scroll read over her coffin. The device's operation, on the page. -----------------
@@ -404,7 +405,7 @@ SCENES.append(scene(P + "killed.performance_letter", "A letter from Mireya", "Me
           flags=(RET, KNOWS, STARTED, MARKED, TERMS)),
         c("[Burn the letter]", flags=(DECLINED, CLOSED))),
     ], requires=("trickster.ever", PRIMED, KILLED, RAISED, PRESENCE_FAILED), forbids=(PERFORMANCE, RET, DECLINED), delay=96,
-    last=3, Relationship=REL, Remote=True, Chapters=[3], TricksterDevice=True, TricksterState="killed_by_commander"))
+    last=5, Relationship=REL, Remote=True, Chapters=[3, 5], TricksterDevice=True, TricksterState="killed_by_commander"))
 
 
 # --- Dead otherwise: the same spoken-death lie, told at the body. She names her price before she rises. ---------------
