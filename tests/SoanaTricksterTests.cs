@@ -226,15 +226,15 @@ internal static class SoanaTricksterTests
         foreach (var r in Program.Walk(terms, Later(story, bought, 72), (id, _) => boughtPages.Add(id))) { }
         check(boughtPages.Contains("bought") && !boughtPages.Contains("dug"), "The terms misremember who dug.");
 
-        // Trk_Soana_TermsRefused: her soft no, then the one priced second ask.
+        // Trk_Soana_TermsRefused: her soft no, then her second ask: the knot tied tighter (a scar, not a fee).
         var refused = Pick(terms, atTerms, P + "declined");
         check(!refused.Has("soana.committed") && !refused.Has("soana.closed"), "Trk_Soana_TermsRefused: her no closes or commits.");
         check(Rules.Available(story, secondAsk, Later(story, refused, 96)) && !Rules.Available(story, secondAsk, Later(story, refused, 95))
               && !Rules.Available(story, terms, Later(story, refused, 96)),
             "Trk_Soana_TermsRefused: the second ask ignores its days, or the terms repeat.");
         var paid = Pick(secondAsk, Later(story, refused, 96), "soana.committed", P + "cost.second_ask");
-        check(secondAsk.Nodes.SelectMany(n => n.Choices).Any(c => c.Crusade?.Resource == "Materials" && c.Crusade.Amount == -150
-              && c.Set.Contains("soana.committed")), "The second ask costs nothing.");
+        check(secondAsk.Nodes.SelectMany(n => n.Choices).Any(c => c.Crusade == null && c.Set.Contains(P + "cost.second_ask")
+              && c.Set.Contains("soana.committed")), "The second ask is a fee, or leaves no scar.");
         check(Play(secondAsk, Later(story, refused, 96)).Any(r => r.Has("soana.closed") && !r.Has("soana.committed")),
             "The Commander cannot refuse her raised price.");
         var fooled = Pick(terms, atTerms, "soana.closed");
@@ -254,8 +254,9 @@ internal static class SoanaTricksterTests
             "Trk_Soana_Missed: the payoff is shut, or the late throw or the knot opens beside it.");
         var lucky = Pick(crooked, missed, P + "luck_kept", P + "cost.catchup");
         check(!lucky.Has("soana.progression_kept"), "The luck pretends the registered visits happened.");
-        check(crooked.Nodes.SelectMany(n => n.Choices).Any(c => c.Crusade?.Resource == "Materials" && c.Crusade.Amount == -100
-              && c.Set.Contains(P + "luck_kept")), "Trk_Soana_Missed: the salt and meat are free.");
+        check(crooked.Nodes.SelectMany(n => n.Choices).Any(c => c.Crusade?.Resource == "Materials" && c.Crusade.Amount == -50
+              && c.Set.Contains(P + "luck_kept") && c.Set.Contains(P + "cost.luck_fed")),
+            "Trk_Soana_Missed: her beasts do not eat the Commander's luck, or the salt is free.");
         check(Play(crooked, missed).Any(r => r.Has(P + "luck_refused") && !r.Has(P + "luck_kept")), "Her price cannot be refused.");
         check(Rules.Available(story, sheBear, Later(story, lucky, 48)) && !Rules.Available(story, sheBear, Later(story, lucky, 47))
               && !Rules.Available(story, bowl, Later(story, lucky, 48)),
@@ -278,8 +279,8 @@ internal static class SoanaTricksterTests
         var bowlNo = Pick(bowl, Later(story, tested0, 72), P + "declined");
         check(Rules.Available(story, bowlAsk, Later(story, bowlNo, 96)) && !Rules.Available(story, bowl, Later(story, bowlNo, 96)),
             "The missed branch has no priced second ask.");
-        check(bowlAsk.Nodes.SelectMany(n => n.Choices).Any(c => c.Crusade?.Resource == "Favors" && c.Crusade.Amount == -150
-              && c.Set.Contains("soana.committed")), "The woods are sealed for free.");
+        check(bowlAsk.Nodes.SelectMany(n => n.Choices).Any(c => c.Crusade == null && c.Set.Contains(P + "cost.pair_given")
+              && c.Set.Contains("soana.committed")), "The bowl's second ask does not take the other die.");
         check(!Rules.Available(story, sheBear, World(story, 5, "trickster.ever", "soana.after_quest", "soana.old_defender", "soana.progression_kept")),
             "The missed courtship opens for a Commander who kept the registered visits.");
 
@@ -288,8 +289,8 @@ internal static class SoanaTricksterTests
         check(Rules.Available(story, lateLuck, noDie) && !Rules.Available(story, crooked, noDie),
             "Trk_Soana_MissedLate: the late throw is unavailable, or the payoff opens without a die.");
         var thrown = Pick(lateLuck, noDie, P + "primed_dice", P + "cost.late", P + "luck_kept");
-        check(lateLuck.Nodes.SelectMany(n => n.Choices).Any(c => c.Crusade?.Resource == "Materials" && c.Crusade.Amount == -200),
-            "Trk_Soana_MissedLate: the late throw is no dearer.");
+        check(lateLuck.Nodes.SelectMany(n => n.Choices).Any(c => c.Crusade?.Resource == "Materials" && c.Crusade.Amount == -100
+              && c.Set.Contains(P + "cost.luck_fed")), "Trk_Soana_MissedLate: the late throw is no dearer, or costs no luck.");
         check(!Rules.Available(story, crooked, thrown) && !Rules.Available(story, lateLuck, thrown), "The luck is sold twice.");
         check(Reaches(thrown, "soana.committed"), "Trk_Soana_MissedLate: no road to the commit.");
 
