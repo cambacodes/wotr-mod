@@ -271,8 +271,8 @@ session(RELAPSE_TWO, "Contraindications", 5, '"You look like you haven\'t slept.
     a("fast", '''"A week." {n}She nods, and nods again.{/n} "And you'll still come. Even when there's nothing to give me." {n}She tries to smile.{/n} "That's the experiment, then. If I'm still glad to see you on the seventh day, it's you. If I'm not, it was the hunger all along, and you should find a better class of patient."''', c()),
     a("no_fast", '''"You're very sure." {n}She studies your face, the way she studies strangers in the market.{/n} "That's what frightens me. You're very sure, and you've never been a succubus, and I have." {n}She closes her eyes.{/n}
 "All right. We keep going. But if I ever take more than you mean to give, you tell me. At once. Out loud. Don't be kind about it. Kindness is how they die."''', c()),
-    a("her_call", '''{n}She stares at you. Then she opens the daybook to a clean page and writes in it while you watch, which she has never let you do. She turns it round.{/n}
-"One hand a day. Only when I ask. If I ask twice, you say no." {n}She taps the page.{/n} "My prescription. Written by the patient. Nobody has ever let me write the rules for what I'm allowed to take, doctor. I hope you know what you've done."''', c()),
+    a("her_call", '''{n}She stares at you. Then she gets up, crosses the room, and bends to your ear, and says a word into it that is not Arueshalae: a name made of sounds a throat was not built for, that stings the ear like smoke.{/n}
+"That's the one they made me with. In the Abyss a demon's name is a leash. Whoever holds it can stop her." {n}She straightens, very pale.{/n} "If I ever start to take more than you're giving, say it. I'll stop. I won't be able not to." {n}She sits back down on the bedroll, shaking.{/n} "Nobody has held that since the Delights. Don't lose it. Don't ever use it for anything else."''', c()),
 ], (KITCHEN, "trickster.ever"), forbids=(RELAPSE_TWO,), delay=48, chapters=(5,))
 
 
@@ -289,7 +289,7 @@ session(T + "prescription", "The patient proposes", 5, '"You asked me to meet yo
     a("no_fast", '''"You were right. I hate that you were right." {n}She keeps her hands behind her back.{/n} "You never let me take more than you meant. Not once. And you told me, every time, out loud, and you weren't kind about it. I think that's the kindest thing anyone has ever done for me."''',
         c("Continue", "list", requires=(FORTY,)),
         c("Continue", "ask", forbids=(FORTY,))),
-    a("her_call", '''"I kept to my own prescription. One hand a day, only when I asked." {n}She keeps her hands behind her back.{/n} "I asked twice, once. You said no. You didn't make a joke of it. You just said no, and stayed, and talked to me about the weather in Nerosyan until I stopped shaking. I've decided that's what love is. I might be wrong. I'm new at this."''',
+    a("her_call", '''"You have my name. The old one. And you've never said it." {n}She keeps her hands behind her back.{/n} "There was a night I nearly took too much. I felt you draw breath to say it, and you didn't. You said 'Arueshalae' instead, and I stopped anyway, because you'd chosen the name I chose." {n}Her mouth works.{/n} "Every demon in the Upper City would have used that leash by now. You held it for a month and never once pulled."''',
         c("Continue", "list", requires=(FORTY,)),
         c("Continue", "ask", forbids=(FORTY,))),
     a("list", '''"You wanted to know what day forty was, on the list. The one I kept back." {n}She doesn't take it out. She knows it by heart.{/n}

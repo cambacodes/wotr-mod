@@ -220358,9 +220358,11 @@
           "Choices": [
             {
               "Text": "[Treat her like a patient] \"You're not dead. You're starving. Eat.\"",
-              "Next": "wake",
+              "Next": "treat",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "trickster.religion_tier1"
+              ],
               "Forbids": [],
               "Abort": false,
               "Mythic": "PlayerIsTrickster"
@@ -220372,6 +220374,45 @@
               "Requires": [],
               "Forbids": [],
               "Abort": true
+            },
+            {
+              "Text": "[Treat her like a patient] \"You're not dead. You're starving. Eat.\"",
+              "Next": "wake",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "trickster.religion_tier1"
+              ],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster"
+            }
+          ],
+          "Portrait": "Arueshalae"
+        },
+        {
+          "Id": "treat",
+          "Speaker": "Narrator",
+          "Text": "{n}You lay your palm flat on her breastbone and do what the Trickster's lore lets you do for a soldier with a poisoned wound: you name the condition, and you treat it. You have lifted plague out of the Kenabres refugees this way, and a basilisk's stiffness out of a scout. This time the name you give it is \"starvation\", and you say it the way a field surgeon says \"you'll live\": flatly, as a fact the patient is being unreasonable about.{/n}\n{n}The lore does not care that the patient is dead. It only cares that the condition is negative. Something under your palm goes from stone to skin. You put your wrist to her lips, where a starving thing would smell it. The sprig slides out of her hands.{/n}\n{n}Her eyes open. They find your throat before they find your face.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "claimed",
+              "Set": [],
+              "Requires": [
+                "arueshalae.nocticula_claimed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "plea",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "arueshalae.nocticula_claimed"
+              ],
+              "Abort": false
             }
           ],
           "Portrait": "Arueshalae"
@@ -220379,7 +220420,7 @@
         {
           "Id": "wake",
           "Speaker": "Narrator",
-          "Text": "{n}You say it the way a field surgeon says \"you'll live\": flatly, as a fact the patient is being unreasonable about. You put your wrist against her lips while you say it, where a starving thing would smell it. Nothing happens. Then something does. The sprig slides out of her hands.{/n}\n{n}Her eyes open. They find your throat before they find your face.{/n}",
+          "Text": "{n}You have no cure for this. You have a joke and a wrist. You say it the way a field surgeon says \"you'll live\", and you cut your own wrist on the edge of the bier and hold it to her lips, and you keep it there while the chaplain protests. A succubus's body lives on life. It was built to drink before its owner can stop it, and it is not yet entirely dead. Nothing happens. Then something does. The sprig slides out of her hands.{/n}\n{n}Her eyes open. They find your throat before they find your face.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -224406,7 +224447,7 @@
         {
           "Id": "her_call",
           "Speaker": "Arueshalae",
-          "Text": "{n}She stares at you. Then she opens the daybook to a clean page and writes in it while you watch, which she has never let you do. She turns it round.{/n}\n\"One hand a day. Only when I ask. If I ask twice, you say no.\" {n}She taps the page.{/n} \"My prescription. Written by the patient. Nobody has ever let me write the rules for what I'm allowed to take, doctor. I hope you know what you've done.\"",
+          "Text": "{n}She stares at you. Then she gets up, crosses the room, and bends to your ear, and says a word into it that is not Arueshalae: a name made of sounds a throat was not built for, that stings the ear like smoke.{/n}\n\"That's the one they made me with. In the Abyss a demon's name is a leash. Whoever holds it can stop her.\" {n}She straightens, very pale.{/n} \"If I ever start to take more than you're giving, say it. I'll stop. I won't be able not to.\" {n}She sits back down on the bedroll, shaking.{/n} \"Nobody has held that since the Delights. Don't lose it. Don't ever use it for anything else.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -224551,7 +224592,7 @@
         {
           "Id": "her_call",
           "Speaker": "Arueshalae",
-          "Text": "\"I kept to my own prescription. One hand a day, only when I asked.\" {n}She keeps her hands behind her back.{/n} \"I asked twice, once. You said no. You didn't make a joke of it. You just said no, and stayed, and talked to me about the weather in Nerosyan until I stopped shaking. I've decided that's what love is. I might be wrong. I'm new at this.\"",
+          "Text": "\"You have my name. The old one. And you've never said it.\" {n}She keeps her hands behind her back.{/n} \"There was a night I nearly took too much. I felt you draw breath to say it, and you didn't. You said 'Arueshalae' instead, and I stopped anyway, because you'd chosen the name I chose.\" {n}Her mouth works.{/n} \"Every demon in the Upper City would have used that leash by now. You held it for a month and never once pulled.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -225456,7 +225497,7 @@
         {
           "Id": "tell",
           "Speaker": "Arueshalae",
-          "Text": "\"She was a priestess of Desna in a little shrine above a river town. I don't remember the town. I remember her. She had a burn on her left hand from a lamp, and she was afraid of spiders, and she wanted to see the sea.\" {n}Her voice is very steady.{/n}\n\"I found her through her dreams. I spent a month in them before I went to her in the flesh, so she would already love me when I arrived. That was how I did it. That was how we all did it. She lay in my arms, and she died of my kiss. I remember every smallest detail. The cold sweat. Her weak whisper. And I went into her mind to see what dreaming was, and the goddess was waiting there.\"",
+          "Text": "\"She was a priestess of Desna in a little shrine above a river. I don't remember the town. I never knew her name. I spent a month in her dreams and I never once asked it; it wasn't a thing I needed.\" {n}Her voice is very steady.{/n}\n\"I found her through her dreams. I spent a month in them before I went to her in the flesh, so she would already love me when I arrived. That was how I did it. That was how we all did it. She lay in my arms, and she died of my kiss. I remember every smallest detail. The cold sweat. Her weak whisper. And I went into her mind to see what dreaming was, and the goddess was waiting there.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -225486,7 +225527,7 @@
               "Abort": false
             },
             {
-              "Text": "\"No. But she wanted to see the sea. Somebody could write to her temple and ask where she's buried.\"",
+              "Text": "\"No. But she had a name. Somebody could write to her shrine and ask it.\"",
               "Next": "write",
               "Set": [
                 "arueshalae.treatment.the_priestess",
@@ -225518,7 +225559,7 @@
         {
           "Id": "write",
           "Speaker": "Arueshalae",
-          "Text": "{n}She stares at you as if you had suggested she fly to the moon.{/n} \"Write to them. To the Desnans. And say what? 'Dear Mother of the shrine, I am the succubus who killed your priestess, please tell me where she lies so I can...'\" {n}She stops.{/n} \"So I can what?\"\n{n}You tell her: so she can take her to the sea. A handful of earth, a pebble from the river, whatever there is. The priestess wanted to see the sea.{/n}\n\"That's insane,\" she whispers. \"That's the most insane thing you've ever prescribed. I'm going to do it.\"",
+          "Text": "{n}She stares at you as if you had suggested she fly to the moon.{/n} \"Write to them. To the Desnans. And say what? 'Dear Mother of the shrine, I am the succubus who killed your priestess, please tell me her name so I can...'\" {n}She stops.{/n} \"So I can what?\"\n{n}You tell her: so she can stop calling her \"the priestess\". So the one person in the world who remembers every smallest detail of her death can remember the one detail that was hers.{/n}\n\"That's insane,\" she whispers. \"That's the most insane thing you've ever prescribed. I'm going to do it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -225570,7 +225611,7 @@
         {
           "Id": "start",
           "Speaker": "Arueshalae",
-          "Text": "{n}She has the letter in both hands, and she has been crying, and she has been doing it for some time.{/n}\n\"The Mother of the shrine wrote back. She knew. She'd always known it was a demon; the goddess told her, in a dream, the night it happened.\" {n}She holds the letter out, and then pulls it back, as if it might hurt you to read.{/n} \"She says the priestess's name was Ilvanne. She says Ilvanne is buried under the shrine's apple tree, and the tree has done very well.\"",
+          "Text": "{n}She has the letter in both hands, and she has been crying, and she has been doing it for some time.{/n}\n\"The Mother of the shrine wrote back. She knew. She'd always known it was a demon; the goddess told her, in a dream, the night it happened.\" {n}She holds the letter out, and then pulls it back, as if it might hurt you to read.{/n} \"Her name was Ilvanne. Ilvanne. She's buried under the shrine's apple tree, and the tree has done very well.\" {n}She reads on, and her voice catches.{/n} \"The Mother says Ilvanne always wanted to see the sea. She never went. There was always someone who needed her at the shrine.\"",
           "Choices": [
             {
               "Text": "Continue",

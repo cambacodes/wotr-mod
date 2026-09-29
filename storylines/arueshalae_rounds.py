@@ -97,24 +97,24 @@ session(PRIESTESS, "The last one", 3, '"You\'ve been reading the Desnan prayer b
     a("start", '''{n}She has, and she closes it when she sees you, and then, with an effort, opens it again.{/n}
 "I want to tell you about her. The priestess. I told you once, when you asked about the goddess, but I told it like a story, the way I tell everything. I want to tell it like a patient tells a doctor. With the parts that matter." {n}She takes a breath she does not need.{/n} "May I?"''',
         c('"Tell me."', "tell")),
-    a("tell", '''"She was a priestess of Desna in a little shrine above a river town. I don't remember the town. I remember her. She had a burn on her left hand from a lamp, and she was afraid of spiders, and she wanted to see the sea." {n}Her voice is very steady.{/n}
+    a("tell", '''"She was a priestess of Desna in a little shrine above a river. I don't remember the town. I never knew her name. I spent a month in her dreams and I never once asked it; it wasn't a thing I needed." {n}Her voice is very steady.{/n}
 "I found her through her dreams. I spent a month in them before I went to her in the flesh, so she would already love me when I arrived. That was how I did it. That was how we all did it. She lay in my arms, and she died of my kiss. I remember every smallest detail. The cold sweat. Her weak whisper. And I went into her mind to see what dreaming was, and the goddess was waiting there."''',
         c("Continue", "question")),
     a("question", '''"Everything since has been because of her. The mercy. The memories of the ones I was made from. The years as a spy. This." {n}She gestures at herself, at the crusade, at you.{/n}
 "So I want to ask the doctor something. Your treatment, the watching, the list, the hand. Does any of it make up for her? Is that what it's for? Because if it is, I'll do it forever. And if it isn't, I need to know what it's for."''',
         c('"No. Nothing makes up for her. You carry her. That\'s all."', "carry", flags=(PRIESTESS, CARRY)),
-        c('"No. But she wanted to see the sea. Somebody could write to her temple and ask where she\'s buried."',
+        c('"No. But she had a name. Somebody could write to her shrine and ask it."',
           "write", flags=(PRIESTESS, WRITE))),
     a("carry", '''{n}She closes her eyes, and you think you have done her harm. Then she nods.{/n}
 "Thank you. Everyone else says something kind. The priests say the goddess has forgiven me, and I think, then the goddess is wrong, and I'm not allowed to think that." {n}She puts her hand flat on the prayer book.{/n} "You carry her. Yes. That's right. I'll carry her, and I'll carry the watching and the list and your terrible onions, all at once. They don't cancel. They just have to fit."''', c()),
-    a("write", '''{n}She stares at you as if you had suggested she fly to the moon.{/n} "Write to them. To the Desnans. And say what? 'Dear Mother of the shrine, I am the succubus who killed your priestess, please tell me where she lies so I can...'" {n}She stops.{/n} "So I can what?"
-{n}You tell her: so she can take her to the sea. A handful of earth, a pebble from the river, whatever there is. The priestess wanted to see the sea.{/n}
+    a("write", '''{n}She stares at you as if you had suggested she fly to the moon.{/n} "Write to them. To the Desnans. And say what? 'Dear Mother of the shrine, I am the succubus who killed your priestess, please tell me her name so I can...'" {n}She stops.{/n} "So I can what?"
+{n}You tell her: so she can stop calling her "the priestess". So the one person in the world who remembers every smallest detail of her death can remember the one detail that was hers.{/n}
 "That's insane," she whispers. "That's the most insane thing you've ever prescribed. I'm going to do it."''', c()),
 ], (RELAPSE,), delay=24, chapters=(3, 4, 5))
 
 session(TEMPLE_LETTER, "Reply from the river", 5, '"They wrote back."', [
     a("start", '''{n}She has the letter in both hands, and she has been crying, and she has been doing it for some time.{/n}
-"The Mother of the shrine wrote back. She knew. She'd always known it was a demon; the goddess told her, in a dream, the night it happened." {n}She holds the letter out, and then pulls it back, as if it might hurt you to read.{/n} "She says the priestess's name was Ilvanne. She says Ilvanne is buried under the shrine's apple tree, and the tree has done very well."''',
+"The Mother of the shrine wrote back. She knew. She'd always known it was a demon; the goddess told her, in a dream, the night it happened." {n}She holds the letter out, and then pulls it back, as if it might hurt you to read.{/n} "Her name was Ilvanne. Ilvanne. She's buried under the shrine's apple tree, and the tree has done very well." {n}She reads on, and her voice catches.{/n} "The Mother says Ilvanne always wanted to see the sea. She never went. There was always someone who needed her at the shrine."''',
         c("Continue", "sea")),
     a("sea", '''"And she sent this." {n}From the fold of the letter she takes a small flat river stone, grey, with a white band round it.{/n}
 "She says: 'The goddess told me the one who took our sister would one day ask where she lies. I have kept this for that day. Take her to the sea, and then you may stop asking.'" {n}Arueshalae turns the stone over and over.{/n} "She knew. For years. She kept a stone for me. Commander, how do mortals do that? How do you keep a stone for the thing that killed your sister?"''',

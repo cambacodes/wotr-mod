@@ -174,9 +174,17 @@ letter(P + "dead.starving", "Diagnosis", 3, [
     nar("start", '''{n}They have laid Arueshalae out in the chapel with her wings folded. The chaplains washed her face and did not know what to do with the rest of her, so they left her in her travelling clothes, with a sprig of something green between her hands.{/n}
 {n}Without the careful stillness she wore in life, she looks younger. And hungrier. The hollows under her cheekbones are deeper than they were at the last camp. You have seen that look on the faces of the Kenabres refugees queuing at the soup kettles.{/n}
 {n}She did not only die of her wounds. She has been dying of something else for a long time, and the wounds only finished it.{/n}''',
-        c('[Treat her like a patient] "You\'re not dead. You\'re starving. Eat."', "wake", mythic="Trickster"),
-        c("[Let her rest.]", abort=True)),
-    nar("wake", '''{n}You say it the way a field surgeon says "you'll live": flatly, as a fact the patient is being unreasonable about. You put your wrist against her lips while you say it, where a starving thing would smell it. Nothing happens. Then something does. The sprig slides out of her hands.{/n}
+        c('[Treat her like a patient] "You\'re not dead. You\'re starving. Eat."', "treat", mythic="Trickster",
+          requires=("trickster.religion_tier1",)),
+        c("[Let her rest.]", abort=True),
+        c('[Treat her like a patient] "You\'re not dead. You\'re starving. Eat."', "wake", mythic="Trickster",
+          forbids=("trickster.religion_tier1",))),
+    nar("treat", '''{n}You lay your palm flat on her breastbone and do what the Trickster's lore lets you do for a soldier with a poisoned wound: you name the condition, and you treat it. You have lifted plague out of the Kenabres refugees this way, and a basilisk's stiffness out of a scout. This time the name you give it is "starvation", and you say it the way a field surgeon says "you'll live": flatly, as a fact the patient is being unreasonable about.{/n}
+{n}The lore does not care that the patient is dead. It only cares that the condition is negative. Something under your palm goes from stone to skin. You put your wrist to her lips, where a starving thing would smell it. The sprig slides out of her hands.{/n}
+{n}Her eyes open. They find your throat before they find your face.{/n}''',
+        c("Continue", "claimed", requires=(CLAIMED,)),
+        c("Continue", "plea", forbids=(CLAIMED,))),
+    nar("wake", '''{n}You have no cure for this. You have a joke and a wrist. You say it the way a field surgeon says "you'll live", and you cut your own wrist on the edge of the bier and hold it to her lips, and you keep it there while the chaplain protests. A succubus's body lives on life. It was built to drink before its owner can stop it, and it is not yet entirely dead. Nothing happens. Then something does. The sprig slides out of her hands.{/n}
 {n}Her eyes open. They find your throat before they find your face.{/n}''',
         c("Continue", "claimed", requires=(CLAIMED,)),
         c("Continue", "plea", forbids=(CLAIMED,))),
