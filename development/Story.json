@@ -167979,7 +167979,7 @@
         {
           "Id": "start",
           "Speaker": "Soana",
-          "Text": "{n}The old woman looks at you for a long moment. Then she laughs, the cracked laugh from your first meeting, and draws her knife across her own palm. Blood runs off her knuckles into the moss. Somewhere in the trees, something answers: not a bird, not a wolf.{/n}\n\"A good cause. There. The spirits have had their portion, bloody hunter, and a portion is all anyone is owed. Tell your hungry friend she can lick the moss.\"\n{n}She wraps the hand in a rag without looking at it, the way other people tie a bootlace.{/n}",
+          "Text": "{n}The old woman weighs you with her small black eyes, the way she would weigh a snare somebody else had set. Then she laughs, the cracked laugh from your first meeting, and draws her knife across her own palm. Blood runs off her knuckles into the moss. Somewhere in the trees, something answers: not a bird, not a wolf.{/n}\n\"A good cause. There. The spirits have had their portion, bloody hunter, and a portion is all anyone is owed. Tell your hungry friend she can lick the moss.\"\n{n}She wraps the hand in a rag without looking at it, the way other people tie a bootlace.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -168655,7 +168655,7 @@
       "Owner": "Soana",
       "MinChapter": 3,
       "MaxChapter": 5,
-      "Entry": "\"You said you had terms.\"",
+      "Entry": "\"It has been three days.\"",
       "Nodes": [
         {
           "Id": "start",
@@ -168731,7 +168731,7 @@
         {
           "Id": "price",
           "Speaker": "Soana",
-          "Text": "{n}She opens her hand. The two halves of the clay knot lie in it.{/n}\n\"I have decided. I want you, hunter, which is a great nuisance. So you will have my terms, and you will take them as they are or not at all.\"\n\"A knot with one strand is not a knot. It is a piece of string. You are holding my leash in your bare hand, and it will pull you to pieces inside a year. If I am to take it back and keep it, the knot needs a second life at the other end. Mine is spoken for; you saw to that. So: yours. Carry the pieces. When I die again, and I will, it is your life the knot comes looking for first.\"\n\"Those are my terms. I will not say them twice, and I will not make them sweeter.\"",
+          "Text": "{n}She opens her hand. The two halves of the clay knot lie in it.{/n}\n\"I have decided. I want you, hunter, which is a great nuisance, and I am too old to pretend otherwise for the sake of your pride.\"\n\"Look at it. A knot with one strand is not a knot. It is a piece of string. You are holding my leash in your bare hand, and it will pull you to pieces inside a year. If I am to take it back and keep it, the knot needs a second life at the other end. Mine is spoken for; you saw to that. So: yours. Carry the pieces. When I die again, and I will, it is your life the knot comes looking for first.\"\n\"That is not me haggling. That is what a knot is. I cannot make it sweeter, and I would not if I could.\"",
           "Choices": [
             {
               "Text": "[Hold out your hand for the pieces]",
@@ -168790,7 +168790,7 @@
         {
           "Id": "no",
           "Speaker": "Soana",
-          "Text": "{n}She closes her fist over the shards and turns away.{/n}\n\"No. You laughed at my knot once already, and I woke up in a dead forest. Come back when you can hold still for a thing that matters.\"",
+          "Text": "{n}She closes her fist over the shards and turns away.{/n}\n\"No. You laughed at my knot once already, and I woke up in a dead forest. Come back when you can keep your face straight over a thing that matters.\"",
           "Choices": [
             {
               "Text": "[Go]",
@@ -168826,7 +168826,7 @@
         {
           "Id": "night",
           "Speaker": "Soana",
-          "Text": "{n}She presses the shards into your palm and ties them there with a strip of gut, round your wrist and then round her own, tight enough to hurt. The fire is low. She does not let go of the strip.{/n}\n\"Knots listen.\" {n}Her eyes do not leave yours.{/n} \"So do I. So listen.\"\n{n}She pulls. You come. Her hands are as hard as roots and warmer than anything in this forest has a right to be; she finds the buckle at your collar without looking, the way she finds the knife at her belt. Her mouth tastes of smoke and of the bitter bark she chews against the cold, and she bites your lower lip where the knot drew blood, not gently, to see what you will do about it.{/n}\n\"All those winters I slept with a demon at the door. I am done sleeping.\"\n{n}She draws the gut strip taut between your wrists and hers and leans back into the old furs, and you go down with her, because you are tied to her and because you want to.{/n}",
+          "Text": "{n}She presses the shards into your palm and ties them there with a strip of gut, round your wrist and then round her own, tight enough to hurt. The fire is low. She does not let go of the strip.{/n}\n\"Knots listen.\" {n}Her eyes do not leave yours.{/n} \"So do I. So listen.\"\n{n}She pulls. You come. Her hands are as hard as roots and warmer than anything in this forest has a right to be; she finds the buckle of your sword-belt without looking, the way she finds the knife at her own. Her mouth tastes of smoke and of the bitter bark she chews against the cold. She lifts your tied wrist to her teeth and bites the heel of your hand where the knot drew blood, not gently, to see what you will do about it.{/n}\n\"All those winters I slept with a demon at the door. I am done sleeping.\"\n{n}She draws the gut strip taut between your wrists and hers and leans back into the old furs, and you go down with her, because you are tied to her and because you want to.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -168842,7 +168842,7 @@
         {
           "Id": "morning",
           "Speaker": "Soana",
-          "Text": "{n}Morning. Frost on the cave mouth. The strip is gone from her wrist; it is still round yours, and underneath it the skin is raised in a red weal the shape of a knot.{/n}\n{n}Soana is outside already, feeding the spirits from a bowl. She does not turn around.{/n}\n\"Your end is sore. Good. It is supposed to be. Now go and fight your war, hunter, and do not die before I do. It would be very inconvenient.\"",
+          "Text": "{n}The fire has gone to ash and the frost has come in over the cave mouth as far as the furs. The strip is gone from her wrist; it is still round yours, and underneath it the skin is raised in a red weal the shape of a knot.{/n}\n{n}Soana is outside already, feeding the spirits from a bowl. She does not turn around.{/n}\n\"Your end is sore. Good. It is supposed to be. Now go and fight your war, hunter, and do not die before I do. It would be very inconvenient.\"",
           "Choices": [
             {
               "Text": "[Go]",
@@ -168881,16 +168881,16 @@
     },
     {
       "Id": "soana.trickster.returned.second_ask",
-      "Title": "The price goes up",
+      "Title": "Tied tighter",
       "Owner": "Soana",
       "MinChapter": 3,
       "MaxChapter": 5,
-      "Entry": "\"About your terms.\"",
+      "Entry": "\"The ground has thawed.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Soana",
-          "Text": "\"Back. Good. The price has gone up while you were away, hunter.\"\n{n}She points with her chin at the trees behind her. Half of them are grey to the heartwood.{/n}\n\"The forest needs burying, all of it, and I cannot do it with one spade. Lye, timber, carts. From your stores, not your purse, so that somebody in Drezen goes without. Then the pieces, and the words.\"",
+          "Text": "{n}She does not wait for you to reach the cave. She comes down the path to meet you with the clay halves already in her fist and a strip of fresh gut over her shoulder, and she takes your wrist before you can say anything at all.{/n}\n\"You made me say it twice. I do not say things twice. So the knot will remember that it had to be asked twice, and so will you.\"\n{n}She sets the edge of a clay shard against the inside of your wrist, where the pulse is, and waits.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -168906,10 +168906,10 @@
         {
           "Id": "price",
           "Speaker": "Soana",
-          "Text": "\"Well? I will not wait for the ground to thaw twice.\"",
+          "Text": "\"Deeper than last time would have been. It will scar white and it will ache every winter you live, and every time it aches you will know whose it is. Hold out your hand or take it back. I will not ask a third time.\"",
           "Choices": [
             {
-              "Text": "[Pay for the lye and the timber] \"Mine first.\"",
+              "Text": "[Hold out your wrist] \"Mine first.\"",
               "Next": "night",
               "Set": [
                 "soana.committed",
@@ -168918,14 +168918,10 @@
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false,
-              "Crusade": {
-                "Resource": "Materials",
-                "Amount": -150
-              }
+              "Abort": false
             },
             {
-              "Text": "\"No. Not at that price.\"",
+              "Text": "[Take your hand back] \"No. Not like this.\"",
               "Next": null,
               "Set": [
                 "soana.closed"
@@ -168940,7 +168936,7 @@
         {
           "Id": "night",
           "Speaker": "Soana",
-          "Text": "{n}She presses the shards into your palm and ties them there with a strip of gut, round your wrist and then round her own, tight enough to hurt. The fire is low. She does not let go of the strip.{/n}\n\"Knots listen.\" {n}Her eyes do not leave yours.{/n} \"So do I. So listen.\"\n{n}She pulls. You come. Her hands are as hard as roots and warmer than anything in this forest has a right to be; she finds the buckle at your collar without looking, the way she finds the knife at her belt. Her mouth tastes of smoke and of the bitter bark she chews against the cold, and she bites your lower lip where the knot drew blood, not gently, to see what you will do about it.{/n}\n\"All those winters I slept with a demon at the door. I am done sleeping.\"\n{n}She draws the gut strip taut between your wrists and hers and leans back into the old furs, and you go down with her, because you are tied to her and because you want to.{/n}",
+          "Text": "{n}She presses the shards into your palm and ties them there with a strip of gut, round your wrist and then round her own, tight enough to hurt. The fire is low. She does not let go of the strip.{/n}\n\"Knots listen.\" {n}Her eyes do not leave yours.{/n} \"So do I. So listen.\"\n{n}She pulls. You come. Her hands are as hard as roots and warmer than anything in this forest has a right to be; she finds the buckle of your sword-belt without looking, the way she finds the knife at her own. Her mouth tastes of smoke and of the bitter bark she chews against the cold. She lifts your tied wrist to her teeth and bites the heel of your hand where the knot drew blood, not gently, to see what you will do about it.{/n}\n\"All those winters I slept with a demon at the door. I am done sleeping.\"\n{n}She draws the gut strip taut between your wrists and hers and leans back into the old furs, and you go down with her, because you are tied to her and because you want to.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -168956,7 +168952,7 @@
         {
           "Id": "morning",
           "Speaker": "Soana",
-          "Text": "{n}Morning. Frost on the cave mouth. The strip is gone from her wrist; it is still round yours, and underneath it the skin is raised in a red weal the shape of a knot.{/n}\n{n}Soana is outside already, feeding the spirits from a bowl. She does not turn around.{/n}\n\"Your end is sore. Good. It is supposed to be. Now go and fight your war, hunter, and do not die before I do. It would be very inconvenient.\"",
+          "Text": "{n}The fire has gone to ash and the frost has come in over the cave mouth as far as the furs. The strip is gone from her wrist; it is still round yours, and underneath it the skin is raised in a red weal the shape of a knot.{/n}\n{n}Soana is outside already, feeding the spirits from a bowl. She does not turn around.{/n}\n\"Your end is sore. Good. It is supposed to be. Now go and fight your war, hunter, and do not die before I do. It would be very inconvenient.\"",
           "Choices": [
             {
               "Text": "[Go]",
@@ -169073,22 +169069,23 @@
         {
           "Id": "price",
           "Speaker": "Soana",
-          "Text": "\"The spirits have been feeding my beasts on your luck, and luck is thin fare. If they are to keep standing up, they eat. Salt and meat, a full cart of each from your stores before the next snow: enough to keep them on their feet until this war is done. That is my price for your joke. I will not haggle.\"",
+          "Text": "\"The spirits have been feeding my beasts on your luck, and luck is thin fare. They will go on eating it for as long as that die sits in my bowl, and it is your luck they eat, hunter, not mine. Every time a bear of mine gets up on the road, something of yours falls down: a girth snaps, a letter goes astray, a sword turns in your hand at the wrong moment. Small things. Every one of them paid to a beast that is still standing.\"\n\"And send a cart of salt, so they have something besides your luck to chew. Leave the die, or take it and let them lie down.\"",
           "Choices": [
             {
-              "Text": "[Send the salt and the meat] \"Done. That's your price.\"",
+              "Text": "[Leave the die in her bowl] \"Let them eat my luck.\"",
               "Next": null,
               "Set": [
                 "soana.trickster.luck_kept",
                 "soana.trickster.cost.catchup",
-                "soana.started"
+                "soana.started",
+                "soana.trickster.cost.luck_fed"
               ],
               "Requires": [],
               "Forbids": [],
               "Abort": false,
               "Crusade": {
                 "Resource": "Materials",
-                "Amount": -100
+                "Amount": -50
               }
             },
             {
@@ -169164,24 +169161,25 @@
         {
           "Id": "price",
           "Speaker": "Soana",
-          "Text": "\"Salt and meat, two full carts of each from your stores before the next snow, and the die stays with me. You threw it; you do not get it back.\"",
+          "Text": "\"They will eat your luck now, not mine: every time a beast of mine gets up on the road, something of yours falls down. And because you threw it at my feet instead of offering it, they will be hungrier than they would have been. Two carts of salt, so they do not eat you to the bone. The die stays with me. You threw it; you do not get it back.\"",
           "Choices": [
             {
-              "Text": "[Pay what she asks] \"Salt, meat, and the die. Done.\"",
+              "Text": "[Leave the die where it fell] \"Salt, and the die. Let them eat.\"",
               "Next": null,
               "Set": [
                 "soana.trickster.primed_dice",
                 "soana.trickster.cost.late",
                 "soana.trickster.luck_kept",
                 "soana.trickster.cost.catchup",
-                "soana.started"
+                "soana.started",
+                "soana.trickster.cost.luck_fed"
               ],
               "Requires": [],
               "Forbids": [],
               "Abort": false,
               "Crusade": {
                 "Resource": "Materials",
-                "Amount": -200
+                "Amount": -100
               }
             },
             {
@@ -169526,7 +169524,7 @@
         {
           "Id": "terms",
           "Speaker": "Soana",
-          "Text": "\"Here are my terms, hunter. A thing that sits in my bowl is mine. I do not keep things I have not touched. Take your die out now, and everything it has done comes undone with it: the she-bear lies down at the cave mouth and stays there. Or leave it, and it is mine, and you with it, for as long as the luck holds.\"\n\"Which is to say, until I decide it does not.\"",
+          "Text": "\"Listen, hunter, because this is the whole of it. A thing that sits in my bowl is mine. I do not keep things I have not touched. Take your die out now, and everything it has done comes undone with it: the she-bear lies down at the cave mouth and stays there. Or leave it, and it is mine, and you with it, for as long as the luck holds.\"\n\"Which is to say, until I decide it does not.\"",
           "Choices": [
             {
               "Text": "[Leave the die in the bowl] \"Keep it. And me.\"",
@@ -169561,7 +169559,7 @@
         {
           "Id": "no",
           "Speaker": "Soana",
-          "Text": "{n}She shrugs, and puts the second blanket back on the shelf.{/n}\n\"Think, then. The bowl is patient. I am not. Do not make me ask the question twice; if I have to, it will cost you.\"",
+          "Text": "{n}She shrugs, and puts the second blanket back on the shelf.{/n}\n\"Think, then. The bowl is patient. I am not. If I have to ask twice, the bowl will want more than one die.\"",
           "Choices": [
             {
               "Text": "[Go]",
@@ -169629,7 +169627,7 @@
         {
           "Id": "morning",
           "Speaker": "Soana",
-          "Text": "{n}Morning. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty. She keeps frowning at it.{/n}\n\"The she-bear went out before dawn. She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves.\"",
+          "Text": "{n}Grey light at the cave mouth, and the she-bear's place across it empty. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty. She keeps frowning at it.{/n}\n\"The she-bear went out before dawn. She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves.\"",
           "Choices": [
             {
               "Text": "[Go]",
@@ -169669,7 +169667,7 @@
     },
     {
       "Id": "soana.trickster.missed.second_ask",
-      "Title": "The bowl's price",
+      "Title": "The other die",
       "Owner": "Soana",
       "MinChapter": 5,
       "MaxChapter": 5,
@@ -169678,26 +169676,22 @@
         {
           "Id": "start",
           "Speaker": "Soana",
-          "Text": "\"I said it would cost you. It does.\"\n{n}She sets the bowl on the stone between you.{/n}\n\"Your scouts watch my beasts fight on the road, and they report it. Soon your foragers will read the reports too, and come for the meat. Seal an order: no crusader hunts in the Wintersun woods, for any pot, for as long as the war lasts, and whoever does answers to the Commander. Your officers will hate you for it. Then ask me again.\"",
+          "Text": "{n}She sets the bowl on the stone between you, and holds out her other hand, palm up.{/n}\n\"A cheat never carries one die. One sits in my bowl. The other is in your pocket, the one you roll against demons when your own luck is not good enough. I know it is there. I can hear it when you walk.\"\n\"Give me its brother. Then the pair is mine, and my beasts stop sharing your luck with every sword you swing. You will fight the rest of this war on the luck you were born with, hunter. We will see how much that is.\"",
           "Choices": [
             {
-              "Text": "[Seal the letter] \"Done. Keep the die. And me.\"",
+              "Text": "[Give her the other die] \"Keep them both. And me.\"",
               "Next": "night",
               "Set": [
                 "soana.committed",
                 "soana.trickster.cost.die_in_her_bowl",
-                "soana.trickster.cost.woods_sealed"
+                "soana.trickster.cost.pair_given"
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false,
-              "Crusade": {
-                "Resource": "Favors",
-                "Amount": -150
-              }
+              "Abort": false
             },
             {
-              "Text": "\"No. Not at that price.\"",
+              "Text": "\"No. That one stays with me.\"",
               "Next": null,
               "Set": [
                 "soana.closed"
@@ -169744,7 +169738,7 @@
         {
           "Id": "morning",
           "Speaker": "Soana",
-          "Text": "{n}Morning. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty. She keeps frowning at it.{/n}\n\"The she-bear went out before dawn. She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves.\"",
+          "Text": "{n}Grey light at the cave mouth, and the she-bear's place across it empty. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty. She keeps frowning at it.{/n}\n\"The she-bear went out before dawn. She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves.\"",
           "Choices": [
             {
               "Text": "[Go]",
@@ -169828,6 +169822,22 @@
               ],
               "Forbids": [],
               "AnyGroups": []
+            },
+            {
+              "Text": "For as long as the die sat in her bowl, the Commander's girths snapped, letters went astray and blades turned at bad moments. Each time, somewhere on a Wintersun road, a bear that should have stayed down got up again.",
+              "Requires": [
+                "soana.trickster.cost.luck_fed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander fought the rest of the war on the luck they were born with. Soana said it was more than she had expected, and a good deal less than they deserved.",
+              "Requires": [
+                "soana.trickster.cost.pair_given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
             }
           ]
         }
@@ -169887,6 +169897,22 @@
               "Text": "The crusade's quartermasters never forgave the Commander for the Wintersun woods, and not one crusader ever took a hide from them.",
               "Requires": [
                 "soana.trickster.cost.woods_sealed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "For as long as the die sat in her bowl, the Commander's girths snapped, letters went astray and blades turned at bad moments. Each time, somewhere on a Wintersun road, a bear that should have stayed down got up again.",
+              "Requires": [
+                "soana.trickster.cost.luck_fed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander fought the rest of the war on the luck they were born with. Soana said it was more than she had expected, and a good deal less than they deserved.",
+              "Requires": [
+                "soana.trickster.cost.pair_given"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -169954,6 +169980,22 @@
               ],
               "Forbids": [],
               "AnyGroups": []
+            },
+            {
+              "Text": "For as long as the die sat in her bowl, the Commander's girths snapped, letters went astray and blades turned at bad moments. Each time, somewhere on a Wintersun road, a bear that should have stayed down got up again.",
+              "Requires": [
+                "soana.trickster.cost.luck_fed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander fought the rest of the war on the luck they were born with. Soana said it was more than she had expected, and a good deal less than they deserved.",
+              "Requires": [
+                "soana.trickster.cost.pair_given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
             }
           ]
         }
@@ -169981,7 +170023,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She never asked again. The knot hung in her cave with one strand, and she bound nothing new into the Wintersun woods for as long as she lived. When travellers asked the old woman in the cave about the Commander, she said that she had met a hunter once who could not hold still for a thing that mattered, and that was all she said.{/n}",
+          "Text": "{n}She never asked again. The knot hung in her cave with one strand, and she bound nothing new into the Wintersun woods for as long as she lived. When travellers asked the old woman in the cave about the Commander, she said that she had met a hunter once who laughed at a knot, and that was all she said.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -267433,7 +267475,7 @@
       "MaxChapter": 5,
       "AnswerLists": [],
       "Dialog": "hub",
-      "Greeting": "{n}Soana is standing where Camellia stood, in her own cave, with loam still under her nails. She does not look up.{/n} \"Well? Say what you came to say, hunter. The dead have more patience than I do.\""
+      "Greeting": "{n}Soana is standing where Camellia stood, in her own cave, with loam still under her nails. She does not look up.{/n} \"Say what you came to say, hunter. The dead have more patience than I do.\""
     },
     "aranka.presence": {
       "Unit": "430cba7801b149b4e8494ace6baf4f7c",
