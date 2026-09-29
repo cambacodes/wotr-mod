@@ -115,8 +115,10 @@ internal static class TargonaTricksterTests
                   && j.Crusade?.Resource == "Favors" && j.Crusade.Amount == -100 && j.Text.StartsWith("[Spend it again,", StringComparison.Ordinal),
                 "A primer lost its joke or its price: " + primer.Id);
             var scroll = primer.Nodes.Single(n => n.Id == "scroll").Text;
-            check(scroll.Contains("scroll of raise dead", StringComparison.Ordinal) && scroll.Contains("signed out", StringComparison.Ordinal),
-                "A primer does not put the signed-out scroll on the page: " + primer.Id);
+            // Polish pass: the device is hers (one soul, two angels; Lariel's half is in the Commander), prepared on the page.
+            check(scroll.Contains("brother", StringComparison.Ordinal) && scroll.Contains("Hand's chaplain", StringComparison.Ordinal)
+                  && !scroll.Contains("scroll of raise dead", StringComparison.Ordinal),
+                "A primer does not put the prepared hold with her brother's light on the page: " + primer.Id);
             var pages = new HashSet<string>();
             Program.Walk(primer, primer == setup ? lab : noTrick, (page, _) => pages.Add(page));
             check(pages.Contains("resist") && pages.Contains("chooses"), "She does not resist and then choose: " + primer.Id);
@@ -157,9 +159,12 @@ internal static class TargonaTricksterTests
         var quietPages = new HashSet<string>();
         Program.Walk(oneSoul, killed, (page, _) => quietPages.Add(page));
         check(quietPages.Contains("quiet") && !quietPages.Contains("open") && !quietPages.Contains("cold")
-              && oneSoul.Nodes.Single(n => n.Id == "quiet").Text.Contains("you read the scroll", StringComparison.Ordinal)
+              && oneSoul.Nodes.Single(n => n.Id == "quiet").Text.Contains("her brother's light go into her", StringComparison.Ordinal)
               && oneSoul.Nodes.Single(n => n.Id == "quiet").Text.Contains("Nobody turns round", StringComparison.Ordinal),
-            "The scroll is not shown read unnoticed, as it happens.");
+            "The hold is not shown done unnoticed, as it happens.");
+        check(story.Scenes.Where(s => s.Relationship == "targona").SelectMany(s => s.Nodes)
+                  .All(n => !n.Text.Contains("scroll of raise dead", StringComparison.OrdinalIgnoreCase)),
+            "The generic raise-dead scroll is back in Targona's route (memory rrt-unique-devices).");
         var killedOpen = World(story, 3, "trickster.ever", "targona.dead_lab", P + "primed", P + "cost.raised_openly");
         var openPages = new HashSet<string>();
         Program.Walk(oneSoul, killedOpen, (page, _) => openPages.Add(page));
