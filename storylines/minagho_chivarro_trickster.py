@@ -365,7 +365,7 @@ SCENES.append(scene(P + "chivarro_dead.deposit", "The house special", "Herrax", 
          "ink", mythic="Trickster"),
        c('"Forget I asked."', abort=True)),
     hx("ink", '''"Paying for a corpse before it's a corpse?" {n}She counts something behind her eyes, and whatever the sum is, it pleases her.{/n} "Lover, that's the most romantic thing anyone has ever done in this house."
-{n}She writes the line herself and blows on the ink.{/n} "And since you've paid in advance, lover, a word of house custom: the house never spoils stock that's already sold. The price is a favour. When I call. You won't ask what."''',
+{n}She writes the line herself and blows on the ink.{/n} "One thing is not negotiable, lover. My boys take the house's proof from every job: the rings, and whatever the rings are on. The price is a favour. When I call. You won't ask what."''',
        c('"Put it on my bill."', flags=(DEPOSIT, FAVOR)),
        c('"No. No favours with no name."', abort=True)),
 ], requires=("trickster", "herrax.asked_kill_chivarro"), forbids=("chivarro.dead", "chivarro.searching", DEPOSIT), last=4,
@@ -374,8 +374,8 @@ SCENES.append(scene(P + "chivarro_dead.deposit", "The house special", "Herrax", 
 
 letter(P + "chivarro_dead.bought", "The house always collects", [
     *varied("start", hx, '''{n}The letter smells of the Delights: incense, coin and something under both. The hand is round and unhurried.{/n}
-"Honey. My boys fetched her out of that cellar, and I sent word she was dead, and I sent her rings to prove it. Fingers and all. That part was true.
-The rest of her is downstairs. The house keeps what it collects, and it never throws away stock that can still walk. She is short the fingers that wore the rings, and her temper is short of everything. What will it be?"''',
+"Honey. My boys fetched her out of that cellar and took the house's proof, as I told you they would: her rings, and the fingers that wore them. I sent word she was dead. The proof was true. The rest of her is downstairs, breathing, and why she is still breathing is a matter of house law. What will it be?"
+{n}Pinned under the letter is a scrap in another hand, sharp and slanted and shaking:{/n} "If you buy me, buy all of it. What is left of my hands, and the part of me that will hate you for the receipt. I will not be grateful. I will be *priced*."''',
             [("told", hx, '"Everyone thinks she is dead, lover. You told them so. So did I. We are both liars, and now you want to buy the lie back from me. I *adore* you."',
               "herrax.told_chivarro_dead")],
             (c('[Order from the house menu] "One Chivarro. Forever. My pockets are deep enough."', "paid", requires=(DEPOSIT,),
@@ -383,11 +383,11 @@ The rest of her is downstairs. The house keeps what it collects, and it never th
              c('[Order from the house menu] "One Chivarro. Forever. My pockets are deep enough. Write it now; I\'ll sign."', "late",
                requires=("trickster",), forbids=(DEPOSIT,), mythic="Trickster"),
              c('"Nothing. Leave her dead."', flags=(DECL_C,)))),
-    hx("paid", '''"'One Chivarro, forever. Deposit paid.' My own hand, lover. I laughed while I wrote it." {n}Under it, in the same round hand: "Delivered breathing, as per house custom. Less the proof."{/n}
+    hx("paid", '''"'One Chivarro, forever. Deposit paid.' My own hand, lover. I laughed while I wrote it. Then my boys brought her in and my clerk read the order back to me, and I stopped laughing. *Forever*. A corpse is not forever, honey; a corpse is a fortnight, and then it is a smell. My house does not deliver short on a paid order. So I had to keep her breathing." {n}Under it, in the same round hand: "Out-lawyered in my own house. I adore you. Delivered, less the proof."{/n}
 "The favour stands. When I call."''',
        c('"Deal."', "sale", alignment=("Evil", 1))),
     hx("late", '''{n}The next page is the order, written while the ink on the first was still wet: "One Chivarro, forever." Your name is waiting for its signature.{/n}
-"Late orders cost double, honey. Two favours. And a month of feeding stock nobody had paid for is not free: three hundred in crusade script, and a writ for the rest."''',
+"Nobody ordered her forever in time, lover, so I kept her breathing for whoever would bid the most. That is you, now. Late orders cost double: two favours. And a month of feeding stock nobody had paid for is not free: three hundred in crusade script, and a writ for the rest."''',
        c('"Deal. Both favours."', "sale", flags=(FAVOR, LATE), alignment=("Evil", 1), crusade=("Finances", -300)),
        c('"Too rich. Leave her dead."', flags=(DECL_C,))),
     cv("sale", '''{n}The last page is in another hand, sharp and slanted, written by someone who has just learned to hold a pen again with the fingers she has left.{/n}

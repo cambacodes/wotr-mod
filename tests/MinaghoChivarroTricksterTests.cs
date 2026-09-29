@@ -74,11 +74,11 @@ internal static class MinaghoChivarroTricksterTests
         // not a raise. The deposit plants it, the letter pays it off, and no priestess raise may come back.
         var boughtText = string.Join(" ", bought.Nodes.Select(n => n.Text));
         check(!boughtText.Contains("raises what the house sells", StringComparison.Ordinal) && !boughtText.Contains("priestess", StringComparison.Ordinal)
-              && boughtText.Contains("never throws away stock that can still walk", StringComparison.Ordinal)
-              && boughtText.Contains("fingers that wore the rings", StringComparison.Ordinal),
+              && boughtText.Contains("A corpse is not forever", StringComparison.Ordinal)
+              && boughtText.Contains("the fingers that wore them", StringComparison.Ordinal) && boughtText.Contains("buy all of it", StringComparison.Ordinal),
             "Chivarro's return is a generic raise again, or has lost its price (memory rrt-unique-devices).");
-        check(deposit.Nodes.Any(n => n.Text.Contains("never spoils stock that's already sold", StringComparison.Ordinal)),
-            "The deposit no longer plants the house custom its payoff depends on.");
+        check(deposit.Nodes.Any(n => n.Text.Contains("the rings, and whatever the rings are on", StringComparison.Ordinal)),
+            "The deposit no longer plants the proof the house takes (the price of her return).");
         var road = S(P + "after.before_the_last_road");
         var roadLetter = S(P + "after.before_the_last_road_letter");
         var aloneChiv = S(P + "alone.chivarro");

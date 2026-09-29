@@ -164864,7 +164864,7 @@
         {
           "Id": "ink",
           "Speaker": "Herrax",
-          "Text": "\"Paying for a corpse before it's a corpse?\" {n}She counts something behind her eyes, and whatever the sum is, it pleases her.{/n} \"Lover, that's the most romantic thing anyone has ever done in this house.\"\n{n}She writes the line herself and blows on the ink.{/n} \"And since you've paid in advance, lover, a word of house custom: the house never spoils stock that's already sold. The price is a favour. When I call. You won't ask what.\"",
+          "Text": "\"Paying for a corpse before it's a corpse?\" {n}She counts something behind her eyes, and whatever the sum is, it pleases her.{/n} \"Lover, that's the most romantic thing anyone has ever done in this house.\"\n{n}She writes the line herself and blows on the ink.{/n} \"One thing is not negotiable, lover. My boys take the house's proof from every job: the rings, and whatever the rings are on. The price is a favour. When I call. You won't ask what.\"",
           "Choices": [
             {
               "Text": "\"Put it on my bill.\"",
@@ -164919,7 +164919,7 @@
         {
           "Id": "start",
           "Speaker": "Herrax",
-          "Text": "{n}The letter smells of the Delights: incense, coin and something under both. The hand is round and unhurried.{/n}\n\"Honey. My boys fetched her out of that cellar, and I sent word she was dead, and I sent her rings to prove it. Fingers and all. That part was true.\nThe rest of her is downstairs. The house keeps what it collects, and it never throws away stock that can still walk. She is short the fingers that wore the rings, and her temper is short of everything. What will it be?\"",
+          "Text": "{n}The letter smells of the Delights: incense, coin and something under both. The hand is round and unhurried.{/n}\n\"Honey. My boys fetched her out of that cellar and took the house's proof, as I told you they would: her rings, and the fingers that wore them. I sent word she was dead. The proof was true. The rest of her is downstairs, breathing, and why she is still breathing is a matter of house law. What will it be?\"\n{n}Pinned under the letter is a scrap in another hand, sharp and slanted and shaking:{/n} \"If you buy me, buy all of it. What is left of my hands, and the part of me that will hate you for the receipt. I will not be grateful. I will be *priced*.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -165018,7 +165018,7 @@
         {
           "Id": "paid",
           "Speaker": "Herrax",
-          "Text": "\"'One Chivarro, forever. Deposit paid.' My own hand, lover. I laughed while I wrote it.\" {n}Under it, in the same round hand: \"Delivered breathing, as per house custom. Less the proof.\"{/n}\n\"The favour stands. When I call.\"",
+          "Text": "\"'One Chivarro, forever. Deposit paid.' My own hand, lover. I laughed while I wrote it. Then my boys brought her in and my clerk read the order back to me, and I stopped laughing. *Forever*. A corpse is not forever, honey; a corpse is a fortnight, and then it is a smell. My house does not deliver short on a paid order. So I had to keep her breathing.\" {n}Under it, in the same round hand: \"Out-lawyered in my own house. I adore you. Delivered, less the proof.\"{/n}\n\"The favour stands. When I call.\"",
           "Choices": [
             {
               "Text": "\"Deal.\"",
@@ -165038,7 +165038,7 @@
         {
           "Id": "late",
           "Speaker": "Herrax",
-          "Text": "{n}The next page is the order, written while the ink on the first was still wet: \"One Chivarro, forever.\" Your name is waiting for its signature.{/n}\n\"Late orders cost double, honey. Two favours. And a month of feeding stock nobody had paid for is not free: three hundred in crusade script, and a writ for the rest.\"",
+          "Text": "{n}The next page is the order, written while the ink on the first was still wet: \"One Chivarro, forever.\" Your name is waiting for its signature.{/n}\n\"Nobody ordered her forever in time, lover, so I kept her breathing for whoever would bid the most. That is you, now. Late orders cost double: two favours. And a month of feeding stock nobody had paid for is not free: three hundred in crusade script, and a writ for the rest.\"",
           "Choices": [
             {
               "Text": "\"Deal. Both favours.\"",
