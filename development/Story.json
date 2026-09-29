@@ -303879,7 +303879,7 @@
               "Text": "\"So that when I decide what to do with you, I can offer them to you.\"",
               "Next": null,
               "Set": [
-                "jannah.trickster.cage.forms_named"
+                "jannah.trickster.primed.forms_named"
               ],
               "Requires": [],
               "Forbids": [],
@@ -303889,7 +303889,7 @@
               "Text": "\"Keep them close. You may need them before this cage is open.\"",
               "Next": null,
               "Set": [
-                "jannah.trickster.cage.forms_named"
+                "jannah.trickster.primed.forms_named"
               ],
               "Requires": [],
               "Forbids": [],
@@ -303937,7 +303937,7 @@
         "trickster"
       ],
       "Forbids": [
-        "jannah.trickster.cage.forms_named",
+        "jannah.trickster.primed.forms_named",
         "jannah.trickster.cage.botched"
       ],
       "DelayHours": 0,
@@ -303950,7 +303950,8 @@
         "b2b77a591c8808f409aa2083bd1b318a"
       ],
       "NativeReturnCue": "8c909dc650b9dff408a0d144da24b920",
-      "EntryMythic": "PlayerIsTrickster"
+      "EntryMythic": "PlayerIsTrickster",
+      "TricksterDevice": true
     },
     {
       "Id": "jannah.trickster.cage.terms",
@@ -304013,7 +304014,7 @@
       ],
       "Requires": [
         "trickster",
-        "jannah.trickster.cage.forms_named"
+        "jannah.trickster.primed.forms_named"
       ],
       "Forbids": [
         "jannah.trickster.primed"
@@ -304029,7 +304030,8 @@
       ],
       "ReturnToList": true,
       "ReturnText": "{n}She is on her feet in the cramped cage, blade high in the Aldori guard, eyes on you, waiting for your move.{/n}",
-      "EntryMythic": "PlayerIsTrickster"
+      "EntryMythic": "PlayerIsTrickster",
+      "TricksterDevice": true
     },
     {
       "Id": "jannah.trickster.cage.ash",

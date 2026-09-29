@@ -122,13 +122,13 @@ internal static class JannahTricksterTests
               && rel.TricksterAccess.Keys.OrderBy(k => k).SequenceEqual(new[] { "alive", "killed", "killed_known" }),
             "Jannah's relationship does not match the plan (killed/killed_known/alive access; the return lifts both deaths).");
         check(named.AnswerLists.SequenceEqual(new[] { FirstList }) && named.NativeReturnCue == FirstCue && named.EntryMythic == "PlayerIsTrickster"
-              && named.Chapters.SequenceEqual(new[] { 3 }) && named.Requires.SequenceEqual(new[] { "trickster" }) && !named.TricksterDevice
+              && named.Chapters.SequenceEqual(new[] { 3 }) && named.Requires.SequenceEqual(new[] { "trickster" }) && named.TricksterDevice
               && Ch(named, "start", 0).Check?.Skill == "SkillKnowledgeWorld" && Ch(named, "start", 1).Abort
-              && Ch(named, "named_her", 0).Set.SequenceEqual(new[] { P + "cage.forms_named" }) && Ch(named, "named_her", 1).Set.SequenceEqual(new[] { P + "cage.forms_named" })
+              && Ch(named, "named_her", 0).Set.SequenceEqual(new[] { P + "primed.forms_named" }) && Ch(named, "named_her", 1).Set.SequenceEqual(new[] { P + "primed.forms_named" })
               && Ch(named, "garbled_her", 0).Set.SequenceEqual(new[] { P + "cage.botched" }),
             "The forms are not the inline Knowledge (World) primer on her first list, returning to a clean native cue.");
         check(terms.AnswerLists.SequenceEqual(new[] { CageList }) && terms.ReturnToList && terms.NativeReturnCue == null && terms.EntryMythic == "PlayerIsTrickster"
-              && terms.Requires.SequenceEqual(new[] { "trickster", P + "cage.forms_named" }) && terms.Forbids.Contains(Primed) && !terms.TricksterDevice
+              && terms.Requires.SequenceEqual(new[] { "trickster", P + "primed.forms_named" }) && terms.Forbids.Contains(Primed) && terms.TricksterDevice
               && Ch(terms, "guard", 0).Set.SequenceEqual(new[] { Primed }) && Ch(terms, "guard", 1).Abort && Ch(terms, "accept", 1).Abort
               && terms.Nodes.All(n => n.Choices.All(c => c.NativeNext == null && c.Check == null)),
             "The challenge is not the return-to-list scene on the sentence list, made before the native [Attack] and after the forms were named.");
@@ -159,8 +159,8 @@ internal static class JannahTricksterTests
         check(Avail(named, World(story, 3, "trickster", "trickster.ever")) && !Avail(named, World(story, 3, "trickster.ever", "trickster.was"))
               && !Avail(named, World(story, 5, "trickster", "trickster.ever")) && !Avail(terms, World(story, 3, "trickster", "trickster.ever")),
             "Trk_Jannah_Cage: the forms open off the live path or outside Chapter 3, or the challenge opens before they are named.");
-        var formsNamed = Take(named, World(story, 3, "trickster", "trickster.ever"), "named_her", 0, P + "cage.forms_named");
-        check(Avail(terms, formsNamed) && Program.Walk(named, World(story, 3, "trickster", "trickster.ever")).Where(r => r.Has(P + "cage.botched")).All(r => !r.Has(P + "cage.forms_named")),
+        var formsNamed = Take(named, World(story, 3, "trickster", "trickster.ever"), "named_her", 0, P + "primed.forms_named");
+        check(Avail(terms, formsNamed) && Program.Walk(named, World(story, 3, "trickster", "trickster.ever")).Where(r => r.Has(P + "cage.botched")).All(r => !r.Has(P + "primed.forms_named")),
             "Trk_Jannah_Cage: the challenge does not follow the named forms, or the garbled forms still name them.");
         var cage = World(story, 3, "trickster", "trickster.ever");
         check(Take(terms, formsNamed, "guard", 0, Primed).Has(Primed) && !Avail(terms, Take(terms, formsNamed, "guard", 0, Primed)),

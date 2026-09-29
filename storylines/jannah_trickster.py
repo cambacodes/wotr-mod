@@ -70,7 +70,7 @@ SEELAH_GONE = "seelah_gone"
 SEELAH_BACK = "seelah.trickster.returned"
 
 # The device, killed worlds.
-NAMED = P + "cage.forms_named"                    # the Commander named the Aldori forms to her (Knowledge (World))
+NAMED = P + "primed.forms_named"                  # the Commander named the Aldori forms to her (Knowledge (World))
 PRIMED = P + "primed"                             # the challenge made and accepted, her sword passed, before the native [Attack]
 BOTCHED = P + "cage.botched"                      # the forms garbled; the cage is only an execution now
 ASH_SILENT = P + "ash.said_nothing"
@@ -217,7 +217,7 @@ SCENES.append(scene(P + "cage.forms", "The forms", "Jannah", 3,
 "If you mean to kill me, Commander, kill me. Just don't call it the forms."''',
          c("[Step back from the cage.]", flags=(BOTCHED,)))],
     requires=("trickster",), forbids=(NAMED, BOTCHED), last=3, Relationship=REL, Chapters=[3],
-    AnswerLists=[FIRST_LIST], NativeReturnCue=FIRST_CUE, EntryMythic="PlayerIsTrickster"))
+    AnswerLists=[FIRST_LIST], NativeReturnCue=FIRST_CUE, EntryMythic="PlayerIsTrickster", TricksterDevice=True))
 
 # The challenge itself, invoked before the native [Attack] (on the sentence list she reaches only when Seelah is not there
 # to break the lock): her pride accepts, she takes her own sword through the bars, and the native answers come back. The
@@ -237,7 +237,7 @@ SCENES.append(scene(P + "cage.terms", "To the first blood", "Jannah", 3,
     requires=("trickster", NAMED), forbids=(PRIMED,), last=3, Relationship=REL, Chapters=[3],
     AnswerLists=[CAGE_LIST], ReturnToList=True,
     ReturnText="{n}She is on her feet in the cramped cage, blade high in the Aldori guard, eyes on you, waiting for your move.{/n}",
-    EntryMythic="PlayerIsTrickster"))
+    EntryMythic="PlayerIsTrickster", TricksterDevice=True))
 
 
 # The same night, alone: where the blade went (a memory; the Commander knows what the companions saw, and what they didn't).
