@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-pol-b3\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 2646,
-  "unique_targets": 628,
+  "binding_uses": 2647,
+  "unique_targets": 630,
   "failures": [],
   "targets": {
     "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53": {
@@ -26,6 +26,10 @@
       "path": "Mythic/Azata/AzataDragon/AzataDragonUnit.jbp",
       "type": "BlueprintUnit"
     },
+    "5e26c673173e423881e318d2f0ae84f0": {
+      "path": "Mythic/Trickster/KnowledgeArcana/TricksterKnowledgeArcanaTier3Feature.jbp",
+      "type": "BlueprintFeature"
+    },
     "1383f21534d8b6a45bdbdc8ddce7a187": {
       "path": "Mythic/Trickster/UseMagicDevice/TricksterUseMagicDeviceTier2Feature.jbp",
       "type": "BlueprintFeature"
@@ -44,6 +48,10 @@
     },
     "90481a29cc75f424b9891a55c6dcbb53": {
       "path": "Units/Companions/Seelah/Seelah_NPC_Level1.jbp",
+      "type": "BlueprintUnit"
+    },
+    "da4c28dd01413694f82b08b728a8c6e5": {
+      "path": "Units/NPC/Unique/Act_1_WorldwoundIncursion/BlackWingRuins/Storyteller.jbp",
       "type": "BlueprintUnit"
     },
     "81297c673b63b60448ef88a10db6bc78": {

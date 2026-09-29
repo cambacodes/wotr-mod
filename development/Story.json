@@ -33494,7 +33494,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Commander's standing order against marriage leave was lifted the day the Wound closed. Drezen held forty-one weddings that week, fourteen of them long overdue. Kiana went to every one, cried at all of them, and laughed at most.",
+              "Text": "The hold on the Sunhammer licences was lifted the day the Wound closed. Three weddings went ahead that week, all of them long overdue, all with plain silver rings. Kiana went to every one, cried at all of them, and laughed at most.",
               "Requires": [
                 "kiana.trickster.cost.betrothed"
               ],
@@ -33504,7 +33504,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King was sober. He was not. Drezen held forty-one weddings that week anyway, and Kiana went to every one.",
+              "Text": "The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King was sober. He was not. Three weddings went ahead that week anyway, and Kiana went to every one.",
               "Requires": [
                 "kiana.trickster.cost.betrothed",
                 "kiana.trickster.decree_king"
@@ -33630,7 +33630,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Commander's standing order against marriage leave was lifted the day the Wound closed. Drezen held forty-one weddings that week, fourteen of them long overdue. Kiana went to every one, cried at all of them, and laughed at most.",
+              "Text": "The hold on the Sunhammer licences was lifted the day the Wound closed. Three weddings went ahead that week, all of them long overdue, all with plain silver rings. Kiana went to every one, cried at all of them, and laughed at most.",
               "Requires": [
                 "kiana.trickster.cost.betrothed"
               ],
@@ -33640,7 +33640,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King was sober. He was not. Drezen held forty-one weddings that week anyway, and Kiana went to every one.",
+              "Text": "The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King was sober. He was not. Three weddings went ahead that week anyway, and Kiana went to every one.",
               "Requires": [
                 "kiana.trickster.cost.betrothed",
                 "kiana.trickster.decree_king"
@@ -33766,7 +33766,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Commander's standing order against marriage leave was lifted the day the Wound closed. Drezen held forty-one weddings that week, fourteen of them long overdue. Kiana went to every one, cried at all of them, and laughed at most.",
+              "Text": "The hold on the Sunhammer licences was lifted the day the Wound closed. Three weddings went ahead that week, all of them long overdue, all with plain silver rings. Kiana went to every one, cried at all of them, and laughed at most.",
               "Requires": [
                 "kiana.trickster.cost.betrothed"
               ],
@@ -33776,7 +33776,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King was sober. He was not. Drezen held forty-one weddings that week anyway, and Kiana went to every one.",
+              "Text": "The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King was sober. He was not. Three weddings went ahead that week anyway, and Kiana went to every one.",
               "Requires": [
                 "kiana.trickster.cost.betrothed",
                 "kiana.trickster.decree_king"
@@ -46767,7 +46767,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Commander's standing order against marriage leave was lifted the day the Wound closed. Drezen held forty-one weddings that week, fourteen of them long overdue. Kiana went to every one, cried at all of them, and laughed at most.",
+              "Text": "The hold on the Sunhammer licences was lifted the day the Wound closed. Three weddings went ahead that week, all of them long overdue, all with plain silver rings. Kiana went to every one, cried at all of them, and laughed at most.",
               "Requires": [
                 "kiana.trickster.cost.betrothed"
               ],
@@ -46777,7 +46777,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King was sober. He was not. Drezen held forty-one weddings that week anyway, and Kiana went to every one.",
+              "Text": "The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King was sober. He was not. Three weddings went ahead that week anyway, and Kiana went to every one.",
               "Requires": [
                 "kiana.trickster.cost.betrothed",
                 "kiana.trickster.decree_king"
@@ -154655,7 +154655,7 @@
     },
     {
       "Id": "vellexia.trickster.after.visit",
-      "Title": "Beside the bar",
+      "Title": "Among the shelves",
       "Owner": "Vellexia",
       "MinChapter": 5,
       "MaxChapter": 5,
@@ -154664,7 +154664,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She is sitting at Fye's bar in the middle of a siege as if it were a salon, in a borrowed cloak with the lining turned out to show the silk. Every soldier in the room is pretending not to look at her. Fye has put a clean cup in front of her and is standing as far away from it as the bar allows.{/n}",
+          "Text": "{n}She is sitting among the Storyteller's shelves in the middle of a siege as if they were her salon, in a borrowed cloak with the lining turned out to show the silk, a book open face-down on her knee. Every soldier who passes the door is pretending not to look at her. The Storyteller has put a clean cup at her elbow and is standing as far from it as his shelves allow.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -154964,7 +154964,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Fye's is shut and boarded, so she has come to your quarters instead. The sentry at your door let her in. He will not be able to explain why, afterwards, and he will not try very hard.{/n}\n{n}She is sitting in your chair with her feet on your maps of the Worldwound, and she has already read them.{/n}",
+          "Text": "{n}The Storyteller's shelves stand empty and under dust sheets, so she has come to your quarters instead. The sentry at your door let her in. He will not be able to explain why, afterwards, and he will not try very hard.{/n}\n{n}She is sitting in your chair with her feet on your maps of the Worldwound, and she has already read them.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -159393,7 +159393,7 @@
         {
           "Id": "start",
           "Speaker": "Arsinoe",
-          "Text": "{n}The hospital for Darek Sunhammer's victims smells of lamp oil, tallow and three kinds of incense. The churches of Iomedae, Torag and Abadar share its roof and have agreed on nothing else. The bodies lie in rows under clean blankets, breathing, empty. Two Houndhearts keep the door.{/n}\n{n}At the end of the last row, beside the cot where Kiana lies in what is left of her wedding dress, a young man in a jeweller's leather apron is holding a pale stone up to the lamp, turning it the way his master must have taught him. Arsinoe stands between him and the cot. From the set of her shoulders she has been standing there for some time.{/n}\n\"Commander. He says this is Kiana.\" {n}She does not take her eyes off the stone.{/n} \"Abadar forgive me, I have checked. He is not lying. And it is flawless, which is the whole of his craft. A trap-stone holds a soul because nothing in it gives. One true flaw, girdle to heart, and it holds nothing at all. Nobody has ever found one in his work. That is why he signs it.\"",
+          "Text": "{n}The hospital for Darek Sunhammer's victims smells of lamp oil, tallow and three kinds of incense. The churches of Iomedae, Torag and Abadar share its roof and have agreed on nothing else. The bodies lie in rows under clean blankets, breathing, empty. Two Houndhearts keep the door.{/n}\n{n}At the end of the last row, beside the cot where Kiana lies in what is left of her wedding dress, a young man in a jeweller's leather apron is holding a pale stone up to the lamp, turning it the way his master must have taught him. Arsinoe stands between him and the cot. From the set of her shoulders she has been standing there for some time.{/n}\n\"Commander. He says this is Kiana.\" {n}She does not take her eyes off the stone.{/n} \"Abadar forgive me, I have checked. He is not lying.\" {n}Her voice drops.{/n} \"I audit jewellers for the temple, Commander. I cannot tell you how his stones hold what they hold. I can tell you they are flawless, every one, and I would not care to learn what one does with a flaw in it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -159415,7 +159415,9 @@
               "Text": "[Appraise the soul-gem out loud] \"Paste. Cheap paste. I wouldn't trade a boot for it.\"",
               "Next": "appraisal",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "trickster.arcana_tier3"
+              ],
               "Forbids": [],
               "Abort": false,
               "Mythic": "PlayerIsTrickster",
@@ -159429,7 +159431,8 @@
               "Next": "swapped",
               "Set": [],
               "Requires": [
-                "kiana.counterfeit_held"
+                "kiana.counterfeit_held",
+                "trickster.arcana_tier3"
               ],
               "Forbids": [],
               "Abort": false
@@ -159460,7 +159463,7 @@
         {
           "Id": "appraisal",
           "Speaker": "Narrator",
-          "Text": "{n}You say it the way you would say it to a fence on the Kenabres docks: bored, and a little sorry for him.{/n}\n{n}You name its faults as you go, the way a pawnbroker does to bring the price down: a bubble under the table, just off centre; a crack no wider than a hair, running from the girdle clean through to the heart. Arsinoe's flaw, the only one that matters. None of it is there. It is the finest stone in the room. You are not describing it. You are identifying it, the way the Trickster identifies things: by finding properties that are not there and could not possibly be.{/n}\n{n}Arsinoe goes very still. She has understood what you are doing, and what it risks: a soul let out of a stone goes to the nearest thing that will hold it. \"She is right there,\" she says under her breath, to you or to her god. \"Right there. Let it be her.\"{/n}\n{n}Then the apprentice screws in his loupe and holds the stone up to the lamp to prove you wrong, and you watch his face as he finds it. The bubble, exactly where you said. The crack, fine as a hair, from the girdle to the heart, where no crack was a breath ago. And along it, slow as oil, the pale light that lived in the stone is running out through the flaw you gave it, beading at the girdle, and falling, not to the floor, but toward the cot.{/n}\n{n}The apprentice holds it up to the lamp again, and his face changes. Behind you Arsinoe makes a small sound that, in a lesser priestess, would have been a laugh.{/n}",
+          "Text": "{n}You say it the way you would say it to a fence on the Kenabres docks: bored, and a little sorry for him.{/n}\n{n}You name its faults as you go, the way a pawnbroker does to bring the price down: a bubble under the table, just off centre; a crack no wider than a hair, running from the girdle clean through to the heart. Arsinoe's flaw, the only one that matters. None of it is there. It is the finest stone in the room. You are not describing it. You are identifying it, with the knack you chose on the Trickster's road: every item you identify gains a property that is not there, and could not possibly be there.{/n}\n{n}Arsinoe goes very still. She has understood what you are doing, and what it risks: a soul let out of a stone goes to the nearest thing that will hold it. \"She is right there,\" she says under her breath, to you or to her god. \"Right there. Let it be her.\"{/n}\n{n}Then the apprentice screws in his loupe and holds the stone up to the lamp to prove you wrong, and you watch his face as he finds it. The bubble, exactly where you said. The crack, fine as a hair, from the girdle to the heart, where no crack was a breath ago. And along it, slow as oil, the pale light that lived in the stone is running out through the flaw you gave it, beading at the girdle, and falling, not to the floor, but toward the cot.{/n}\n{n}The apprentice holds it up to the lamp again, and his face changes. Behind you Arsinoe makes a small sound that, in a lesser priestess, would have been a laugh.{/n}",
           "Choices": [
             {
               "Text": "[Keep a straight face] \"...Paste.\"",
@@ -159681,7 +159684,9 @@
               "Text": "[Appraise the dog's stone out loud] \"Paste. Cheap paste. I wouldn't trade a boot for it.\"",
               "Next": "bark",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "trickster.arcana_tier3"
+              ],
               "Forbids": [],
               "Abort": false,
               "Mythic": "PlayerIsTrickster",
@@ -159797,7 +159802,7 @@
           "Text": "{n}The clerk brings the week's marriage licences for liberated Drezen and stacks them at your elbow. Somebody has to sign them. In a city at war, it turns out, that somebody is you.{/n}\n{n}The third one reads: *Elan, knight of the crusade, and Kiana, of Ustalav. Rite of Abadar. Pledge: one ring, from the Sunhammer shop on the square.*{/n}\n{n}The clerk has already stamped two others from the same shop this week. He mentions it as a point in the jeweller's favour.{/n}\n{n}The pen is in your hand. So is the stamp.{/n}",
           "Choices": [
             {
-              "Text": "[Take it to the King: POSTPONED BY ROYAL DECREE] \"His Majesty forbids all weddings until the King is sober.\"",
+              "Text": "[Take it to the King: POSTPONED BY ROYAL DECREE] \"His Majesty forbids these three weddings until the King is sober.\"",
               "Next": "king",
               "Set": [],
               "Requires": [
@@ -159818,7 +159823,7 @@
               }
             },
             {
-              "Text": "[Order it at the war council: POSTPONED] \"Standing order: no marriage leave for anyone under arms until the siege lines hold.\"",
+              "Text": "[Order it at the war council: HELD] \"Every licence pledged with a Sunhammer ring is held until his shop has been searched.\"",
               "Next": "order",
               "Set": [],
               "Requires": [],
@@ -159833,7 +159838,7 @@
               }
             },
             {
-              "Text": "[Order it at the war council: POSTPONED] \"Standing order: no marriage leave for anyone under arms until the siege lines hold.\"",
+              "Text": "[Order it at the war council: HELD] \"Every licence pledged with a Sunhammer ring is held until his shop has been searched.\"",
               "Next": "order",
               "Set": [],
               "Requires": [
@@ -159881,7 +159886,7 @@
         {
           "Id": "king",
           "Speaker": "Narrator",
-          "Text": "{n}The Fool King hears you out from his throne, which today is a barrel. He reads the licence upside down, then the right way up, then asks what's in it for him. You tell him: his fee, and the best joke in Drezen. He takes the fee.{/n}\n{n}\"POSTPONED,\" he declares, and stamps it himself. \"By royal decree! No weddings in my kingdom until the King is sober!\" He thinks about it. \"That's never, by the way. Put that in. 'Which is never.'\"{/n}\n{n}The herald reads it out in the square at noon, including the last part. Drezen, which has been at war for a very long time, laughs until it hurts. By evening there are fourteen couples outside the chancery, some still in their good clothes, and nobody laughing among them. A baker and a crossbowman ask you to your face whether the King will ever be sober. You have no answer that isn't the King.{/n}",
+          "Text": "{n}The Fool King hears you out from his throne, which today is a barrel. He reads the three licences upside down, then the right way up, then asks what's in it for him. You tell him: his fee, and the best joke in Drezen. He takes the fee.{/n}\n{n}\"POSTPONED,\" he declares, and stamps it himself. \"By royal decree! No weddings for these three until the King is sober!\" He thinks about it. \"That's never, by the way. Put that in. 'Which is never.'\"{/n}\n{n}The herald reads it out in the square at noon, including the last part. Drezen, which has been at war for a very long time, laughs until it hurts. By evening the other two couples are outside the chancery, still in their good clothes, and neither of them is laughing. A baker and a crossbowman ask you to your face whether the King will ever be sober. You have no answer that isn't the King.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -159897,7 +159902,7 @@
         {
           "Id": "order",
           "Speaker": "Narrator",
-          "Text": "{n}You read it into the minutes of the war council, in front of every officer at the table: *Standing order. No marriage leave for anyone under arms until the siege lines hold.* The quartermaster, who has been losing a sentry a week to wedding nights, nods before you have finished. For weeks the officers have been complaining that they are sick of fighting and doing nothing else; you have answered their prayer the wrong way round, and a few of them laugh, and then stop, because it is an order.{/n}\n{n}By evening there are fourteen couples outside the chancery, some still in their good clothes. A baker and a crossbowman ask you to your face how long the lines will take to hold. You have no answer for them that isn't the order.{/n}\n{n}The clerk stamps the licence POSTPONED and sands it. Nobody in Drezen argues with a stamp that has the war council behind it.{/n}",
+          "Text": "{n}You read it into the minutes of the war council, in front of every officer at the table: *Standing order. Every marriage licence pledged with a ring from the Sunhammer shop is held until the shop and its stock have been searched.* The officers look at one another. Three licences, a jeweller nobody has complained about, and no evidence you are willing to name. The council backs it anyway, because it is the Commander's word and it costs the crusade nothing, and because nobody at that table wants to be the one who argued for a jeweller and was wrong.{/n}\n{n}By evening the other two couples are outside the chancery, still in their good clothes. A baker and a crossbowman ask you to your face what their ring has done. You have no answer for them that isn't a hunch.{/n}\n{n}The clerk stamps the licence POSTPONED and sands it. Nobody in Drezen argues with a stamp that has the war council behind it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -159913,7 +159918,7 @@
         {
           "Id": "complaint_king",
           "Speaker": "Kiana",
-          "Text": "{n}Two days later a letter comes, written so hard that the nib has gone through the paper twice.{/n}\n\"So I'm not a wife. I am a *fiancée*. Again. Because the KING has banned weddings until he is SOBER. Which, as his herald was kind enough to tell the entire square, is NEVER.\"\n\"Elan is furious. The priestess of Abadar has returned our deposit with a note of condolence. I have lost another wedding night to this war, Commander, and I know exactly whose idea it was, because the King told everybody.\"\n{n}The next line has been crossed out and rewritten three times.{/n}\n\"...I laughed. I didn't want to. Come and explain yourself. Bring no speeches.\"",
+          "Text": "{n}Two days later a letter comes, written so hard that the nib has gone through the paper twice.{/n}\n\"So I'm not a wife. I am *betrothed*. Again. Because the KING has banned our wedding until he is SOBER. Which, as his herald was kind enough to tell the entire square, is NEVER.\"\n\"Elan is furious. The priestess of Abadar has returned our deposit with a note of condolence. I have lost another wedding night to this war, Commander, and I know exactly whose idea it was, because the King told everybody.\"\n{n}The next line has been crossed out and rewritten three times.{/n}\n\"...I laughed. I didn't want to. Come and explain yourself. Bring no speeches.\"",
           "Choices": [
             {
               "Text": "[Write back] \"I heard. Which is never.\"",
@@ -159935,7 +159940,7 @@
         {
           "Id": "complaint_order",
           "Speaker": "Kiana",
-          "Text": "{n}Two days later a letter comes, written so hard that the nib has gone through the paper twice.{/n}\n\"So I'm not a wife. I am a *fiancée*. Again. Because the Commander of the crusade has cancelled marriage leave for everyone under arms until the siege lines hold, in front of the whole war council, and Elan is under arms. Nobody will tell me when the lines will hold. I asked a sergeant. He laughed until he cried, and then he just cried; he was supposed to be married on Sunday.\"\n\"Elan wants to challenge you to a duel. I told him to get in line behind the other thirteen grooms. The priestess of Abadar has returned our deposit with a note of condolence.\"\n{n}The next line has been crossed out and rewritten three times.{/n}\n\"...I laughed. It was only half a joke. Come and explain yourself. Bring no speeches.\"",
+          "Text": "{n}Two days later a letter comes, written so hard that the nib has gone through the paper twice.{/n}\n\"So I'm not a wife. I am *betrothed*. Again. Because the Commander of the crusade has had the war council hold every licence with a Sunhammer ring on it, and ours has the prettiest ring in Drezen. Nobody will tell me when the searching will be done. I asked a sergeant. He laughed until he cried, and then he just cried; he was supposed to be married on Sunday.\"\n\"Elan wants to challenge you to a duel. I told him to get in line behind the other two grooms. The priestess of Abadar has returned our deposit with a note of condolence.\"\n{n}The next line has been crossed out and rewritten three times.{/n}\n\"...I laughed. It was only half a joke. Come and explain yourself. Bring no speeches.\"",
           "Choices": [
             {
               "Text": "[Write back] \"I heard. Which is never.\"",
@@ -160333,7 +160338,7 @@
         {
           "Id": "told_licence",
           "Speaker": "Kiana",
-          "Text": "\"A hunch.\" {n}She stares at you.{/n} \"You banned every wedding in a city at war on a *hunch* about a jeweller.\"\n{n}Then, slowly, she looks at her left hand, where the ring from the shop on the square is not.{/n}\n\"...Elan paid a great deal for that ring. The man in the shop was charming. He asked me all sorts of questions about the guests.\" {n}She shakes herself.{/n} \"No. I am not going to be frightened of a *ring*. I'm going to be furious with you instead. It's much more satisfying, and you can watch.\"",
+          "Text": "\"A hunch.\" {n}She stares at you.{/n} \"You held three weddings in a city at war on a *hunch* about a jeweller.\"\n{n}Then, slowly, she looks at her left hand, where the ring from the shop on the square is not.{/n}\n\"...Elan paid a great deal for that ring. The man in the shop was charming. He asked me all sorts of questions about the guests.\" {n}She shakes herself.{/n} \"No. I am not going to be frightened of a *ring*. I'm going to be furious with you instead. It's much more satisfying, and you can watch.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -160349,7 +160354,7 @@
         {
           "Id": "spared_licence",
           "Speaker": "Kiana",
-          "Text": "\"A joke.\" {n}She considers this.{/n} \"A joke that cost me a wedding and made the whole city laugh at me in the square. It was a very good joke. I hate that it was a very good joke.\"\n\"If you're going to write my life for me, you can at least learn your lines.\"",
+          "Text": "\"A joke.\" {n}She considers this.{/n} \"A joke that cost me a wedding and made half of Drezen laugh at me. It was a very good joke. I hate that it was a very good joke.\"\n\"If you're going to write my life for me, you can at least learn your lines.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -160566,7 +160571,7 @@
     },
     {
       "Id": "kiana.betrothal",
-      "Title": "What a fiancée is for",
+      "Title": "What betrothal is for",
       "Owner": "Kiana",
       "MinChapter": 5,
       "MaxChapter": 5,
@@ -160575,7 +160580,7 @@
         {
           "Id": "start",
           "Speaker": "Kiana",
-          "Text": "{n}Kiana has taken down the cliff and the paper moon. The borrowed castle is a storeroom again, with two chairs in it, and she is sitting in one of them with the postponed licence on her knee.{/n}\n\"A fiancée can still change her mind. That's the whole point of fiancées. It's the only good thing about them.\" {n}She smooths the licence flat.{/n} \"So tell me, Commander, and don't be charming about it. Did you stamp this to save a war, or to keep me unmarried?\"",
+          "Text": "{n}Kiana has taken down the cliff and the paper moon. The borrowed castle is a storeroom again, with two chairs in it, and she is sitting in one of them with the postponed licence on her knee.{/n}\n\"A woman who is only betrothed can still change her mind. That's the whole point of betrothals. It's the only good thing about them.\" {n}She smooths the licence flat.{/n} \"So tell me, Commander, and don't be charming about it. Did you stamp this to save a war, or to keep me unmarried?\"",
           "Choices": [
             {
               "Text": "[Tell her to marry him] \"Marry him, Kiana. When the war lets you.\"",
@@ -160783,7 +160788,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Commander's standing order against marriage leave was lifted the day the Wound closed. Drezen held forty-one weddings that week, fourteen of them long overdue. Kiana went to every one, cried at all of them, and laughed at most.",
+              "Text": "The hold on the Sunhammer licences was lifted the day the Wound closed. Three weddings went ahead that week, all of them long overdue, all with plain silver rings. Kiana went to every one, cried at all of them, and laughed at most.",
               "Requires": [
                 "kiana.trickster.cost.betrothed"
               ],
@@ -160793,7 +160798,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King was sober. He was not. Drezen held forty-one weddings that week anyway, and Kiana went to every one.",
+              "Text": "The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King was sober. He was not. Three weddings went ahead that week anyway, and Kiana went to every one.",
               "Requires": [
                 "kiana.trickster.cost.betrothed",
                 "kiana.trickster.decree_king"
@@ -160897,7 +160902,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Commander's standing order against marriage leave was lifted the day the Wound closed. Drezen held forty-one weddings that week, fourteen of them long overdue. Kiana went to every one, cried at all of them, and laughed at most.",
+              "Text": "The hold on the Sunhammer licences was lifted the day the Wound closed. Three weddings went ahead that week, all of them long overdue, all with plain silver rings. Kiana went to every one, cried at all of them, and laughed at most.",
               "Requires": [
                 "kiana.trickster.cost.betrothed"
               ],
@@ -160907,7 +160912,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King was sober. He was not. Drezen held forty-one weddings that week anyway, and Kiana went to every one.",
+              "Text": "The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King was sober. He was not. Three weddings went ahead that week anyway, and Kiana went to every one.",
               "Requires": [
                 "kiana.trickster.cost.betrothed",
                 "kiana.trickster.decree_king"
@@ -161011,7 +161016,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Kiana married Elan the week the Wound closed and the ban on weddings was lifted, the first of forty-one weddings Drezen held that week. The Commander stood at the back and looked guilty, as promised. Kiana cried at her own vows and laughed at them in the same breath, which the priestess of Abadar said she had never seen anyone manage before.{/n}",
+          "Text": "{n}Kiana married Elan the week the Wound closed and the hold on the Sunhammer licences was lifted, with a plain silver ring from a smith in the lower town. The Commander stood at the back and looked guilty, as promised. Kiana cried at her own vows and laughed at them in the same breath, which the priestess of Abadar said she had never seen anyone manage before.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -161480,7 +161485,7 @@
         {
           "Id": "start",
           "Speaker": "Arsinoe",
-          "Text": "\"Fourteen contracts of marriage, suspended by order. I shall honour the order.\"\n{n}Arsinoe dips her pen.{/n}\n\"I shall also invoice the crusade for the deposits, to the last copper of the flowers, and for the priestesses' time, and for one wedding cake, which was already baked and has since been eaten by the Houndhearts.\"",
+          "Text": "\"Three contracts of marriage, suspended by order. I shall honour the order.\"\n{n}Arsinoe dips her pen.{/n}\n\"I shall also invoice the crusade for the deposits, to the last copper of the flowers, and for the priestesses' time, and for one wedding cake, which was already baked and has since been eaten by the Houndhearts.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -161523,7 +161528,7 @@
         {
           "Id": "start",
           "Speaker": "Anevia",
-          "Text": "\"No weddings while the siege lasts?\" {n}Anevia whistles.{/n} \"Beth and I got in under the wire, then. Don't you dare make it retroactive. And go and look at the queue outside the chancery some evening. Those people had cakes ordered.\"",
+          "Text": "\"You held three weddings over a jeweller?\" {n}Anevia whistles.{/n} \"Beth's ring is from a smith in the lower town, thank the gods. Don't you dare go looking at it. And go and talk to those other two couples some evening. They had cakes ordered.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -253293,8 +253298,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",
@@ -255926,8 +255931,8 @@
       "Area": "2570015799edf594daf2f076f2f975d8",
       "Mode": "spawn-copy",
       "At": {
-        "NearUnit": "0f12118177d102f428a3b30b15b132eb",
-        "Side": "front",
+        "NearUnit": "da4c28dd01413694f82b08b728a8c6e5",
+        "Side": "right",
         "Distance": 2.0
       },
       "Requires": [
@@ -255943,7 +255948,7 @@
       "MaxChapter": 5,
       "AnswerLists": [],
       "Dialog": "hub",
-      "Greeting": "{n}Vellexia is leaning on Fye's bar as if she had bought it. Judging by Fye's face, she is considering it.{/n}"
+      "Greeting": "{n}Vellexia is reading the spines on the Storyteller's shelves as if she were pricing them. Judging by the old elf's face, she is.{/n}"
     },
     "nurah.presence": {
       "Unit": "f999fc37ddb225640b7f98c0a05d6948",
@@ -257846,7 +257851,8 @@
     ]
   },
   "MainCharacterFacts": {
-    "trickster.umd_tier2": "1383f21534d8b6a45bdbdc8ddce7a187"
+    "trickster.umd_tier2": "1383f21534d8b6a45bdbdc8ddce7a187",
+    "trickster.arcana_tier3": "5e26c673173e423881e318d2f0ae84f0"
   },
   "UnlockableFlags": {
     "kyado.dead": "8c8b748a66ebad84f9b4cbcd73c2aab9"
