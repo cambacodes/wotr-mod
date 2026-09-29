@@ -347,7 +347,7 @@ session(T + "prescription", "The patient proposes", 5, '"You asked me to meet yo
         c('"Then I\'ll have known the price every night and paid it. That\'s mine to decide, not yours."', "ask"),
         c('"Then we don\'t sleep in the same room on those nights. Ever. That\'s the rule, not the risk."', "ask")),
     a("ask", '''{n}She brings her hands out from behind her back. They are empty. She holds them out to you, palms up, not touching, an inch away.{/n}
-"I'm not going to test you. I've tested everyone I ever met and it never once made me happy. I'm just going to ask." {n}Her voice goes very small and very steady.{/n} "Will you have me? All of it. The praying and the wanting. The priests hoped those were two things; they never were. It's one knot, and it's mine, and I'm asking you to hold it."''',
+"I'm not going to test you. I've tested everyone I ever met and it never once made me happy. I'm just going to ask." {n}Her voice goes very small and very steady.{/n} "Will you have me? All of it. The praying and the wanting. The priests hoped those were two things. They aren't."''',
         c('"Yes. Both of you."', "both", flags=(COMMITTED,)),
         c('"Yes. But keep the hunger out of my sight."', "saint", flags=(COMMITTED, SAINT_ONLY)),
         c('"Not yet. Ask me again when we\'ve both slept."', "not_yet", flags=(DECLINED,)),

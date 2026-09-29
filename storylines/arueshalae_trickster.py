@@ -180,12 +180,12 @@ letter(P + "dead.starving", "Diagnosis", 3, [
         c("[Let her rest.]", abort=True),
         c('[Treat her like a patient] "You\'re not dead. You\'re starving. Eat."', "wake", mythic="Trickster",
           forbids=("trickster.religion_tier1",))),
-    nar("treat", '''{n}The chaplains could raise her. Any crusader who falls in the Commander's company can be raised, with a diamond and the rite; they have done it for knights and for Woljif. They will not spend a diamond on a demon, and they have said so, politely. So you do the rite's work yourself, in two halves.{/n}
-{n}First the Trickster's lore, which cannot raise anyone and does not try: you lay your palm on her breastbone and lift from her body the one condition that would destroy her again the moment she woke, the starvation, the way you have lifted plague out of the Kenabres refugees. Then the price the rite would have taken in diamond, you pay in blood. You cut your wrist on the edge of the bier and hold it to her lips.{/n}
+    nar("treat", '''{n}The chaplains could raise her. Any crusader who falls in the Commander's company can be raised, with a diamond and the rite; they have done it for knights and for Woljif. They will not spend a diamond on a demon, and they have said so, politely. So you use the rite you copied out of the shrine library the week you made yourself her doctor: the Desnan travellers' raising, which asks a life's worth of price and does not care whose. You pay it in blood. You cut your wrist on the edge of the bier and hold it to her lips while you say the words.{/n}
+{n}The Trickster's lore cannot raise anyone, and does not try. It does what it has always done, the way you did it for the Kenabres refugees: as the rite takes hold you lay your palm on her breastbone and strip from the waking body the sickness and the weakness a raising leaves behind, so that she comes back with all her strength, and with nothing between her and the hunger but your wrist.{/n}
 {n}Something under your palm goes from stone to skin. The sprig slides out of her hands. Her eyes open. They find your throat before they find your face.{/n}''',
         c("Continue", "claimed", requires=(CLAIMED,)),
         c("Continue", "plea", forbids=(CLAIMED,))),
-    nar("wake", '''{n}The chaplains could raise her, with a diamond and the rite, as they raise any crusader who falls in your company. They will not spend a diamond on a demon. You have no lore to lift the starvation from her; you have the Desnan travellers' rite you read in the shrine library, a candle, and your own blood for the price.{/n}''',
+    nar("wake", '''{n}The chaplains could raise her, with a diamond and the rite, as they raise any crusader who falls in your company. They will not spend a diamond on a demon. You have no lore to lift a raising's weakness from her; you have the Desnan travellers' rite you copied out of the shrine library the week you made yourself her doctor, a candle, and your own blood for the price.{/n}''',
         c('[Say the rite over her, and cut your wrist on the edge of the bier]',
           check={"Skill": "SkillLoreReligion", "DC": 22, "Success": "rite_holds", "Failure": "rite_fails"})),
     nar("rite_holds", '''{n}You get every word right. The candle burns blue. You hold your wrist to her lips and keep it there while the chaplain protests, and her body, which was built to drink before its owner can stop it, drinks. Something under your hand goes from stone to skin. The sprig slides out of her hands.{/n}
@@ -224,7 +224,7 @@ hub(P + "returned.aftertaste", "Aftertaste", 3, '"How do you feel?"', [
     a("test", '''{n}She makes herself look up.{/n} "Tell me the truth. Not the joke, the truth. If I die again, will you do it again?"''',
       c('"Every time."', "again", flags=(AFTERTASTE, EVERY_TIME)),
       c('"Only if you ask me to."', "ask", flags=(AFTERTASTE, IF_ASKED))),
-    a("again", '''{n}She nods slowly, as if you've confirmed a diagnosis she was afraid of.{/n} "Every time. Then I had better not die, had I? Because I don't think I could say no to you twice."''', c()),
+    a("again", '''{n}She nods slowly, as if you've confirmed a diagnosis she was afraid of.{/n} "Every time. Then hear my side of it, because it isn't a question. You don't do it again unless I ask. If I wake a second time with your wrist in my mouth and no say in it, I walk out of this crusade that same night, and you don't follow me."''', c()),
     a("ask", '''"Good. Then it's mine to ask." {n}Something in her shoulders comes down an inch, and then goes straight back up.{/n} "Which means one day I'll have to. Out loud. With my mouth still tasting of the last time." {n}She wipes her lips with the back of her hand, hard, though there is nothing on them.{/n}''', c()),
 ], requires=("trickster.ever", RETURNED), forbids=(AFTERTASTE, EVIL_DEAD, CLOSED), delay=24, chapters=(3, 5))
 
@@ -327,7 +327,7 @@ letter(P + "evil.reunion_letter", "A note in lipstick", 5, [
         c("[Leave the window open.]", "window", flags=(REUNITED, FED_ON_YOU)),
         c("[Leave a cultist tied to the gate.]", "gate", alignment=("Evil", 2), flags=(REUNITED, FED_ON_PRISONER)),
         c("[Chain the babau from her gang to the gate instead.]", "vrock", flags=(REUNITED, FED_ON_DEMON)),
-        c("[Leave nothing.]", "nothing", flags=(REUNITED, HUNGRY))),
+        c("[Leave nothing, and let her do what she threatened.]", "nothing", flags=(REUNITED, HUNGRY))),
     nar("window", '''{n}You wake at the hour before the first bell, colder than you went to sleep, with a black feather on the pillow and the taste of someone else's lipstick on your mouth.{/n}''', c()),
     nar("gate", '''{n}In the morning the gate guard reports that the prisoner tied there overnight has gone mad and will not stop weeping. Nobody saw anything. Nobody ever does.{/n}''', c()),
     nar("vrock", '''{n}In the morning there is an empty chain at the gate and a smear of something grey and sticky on the cobbles, and a lipstick mark on the gatepost at exactly the height of a woman leaning against it, laughing.{/n}''', c()),
