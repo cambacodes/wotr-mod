@@ -1086,6 +1086,86 @@ hub(T + "the_scar", "The surgeons have questions", '"The surgeons keep asking ab
        c('"They will."', flags=(SCAR,))),
 ], requires=(BITTEN_ONCE,), forbids=(SCAR,), delay=72)
 
+# --- 37b. One short (Nidalynn's route, ledger 05 row 5): custody of the twelfth egg, before the bill --------------------
+# Additive (R2, claude/trk-nidalynn). Custody: the clutch is hers and follows its native fate and her own route's flags;
+# the one egg the Commander took out of the Sanctum in the ash-bin stays with whoever raises it. She never takes it back
+# and never closes Nidalynn's route; Nidalynn never closes hers. What she wants is to know, and later to be paid.
+
+ONE_SHORT = T + "one_short"
+TWELFTH_TOLD = T + "twelfth_told"
+TWELFTH_LIED = T + "twelfth_lied"
+N_PRIMED = "nidalynn.trickster.primed"
+
+hub(ONE_SHORT, "One short", '"She\'s counting again, isn\'t she?"', [
+    teller("start", '''"She has never stopped." {n}He turns his cup a quarter turn.{/n} "She laid twelve, she says. She has had every account of that chamber out of me that I could give her, and out of anyone else she could frighten, and she makes it eleven. Eleven in the straw when the golems were done with it, whatever became of them after." {n}His blind face turns toward you.{/n} "She says the twelfth went out of that chamber on somebody's back. She says she can smell whose."''',
+        c("Continue", "climb")),
+    dv("climb", '''{n}She is lying across the top of the broken stair with her chin on her claws, and she does not look at you when you come up.{/n} "Eleven." {n}The word comes out on a long, hot breath.{/n} "I have counted them in the dark of that dead body, and I have counted them since. Eleven. I laid twelve."
+{n}Now she looks at you.{/n} "Where is the twelfth, crusader? Do not tell me there never was one. A mother knows the weight of what she carried."''',
+       c('"I have it. It was the smallest, and it was cold, and it\'s alive."', "told", flags=(ONE_SHORT, TWELFTH_TOLD)),
+       c('[Lie] "There were eleven. You miscounted, dying."', "lied", flags=(ONE_SHORT, TWELFTH_LIED)),
+       c('"It\'s safe. That\'s all I\'ll say."', "safe", flags=(ONE_SHORT,))),
+    dv("told", '''{n}Something very old moves behind her eyes and goes back into the dark.{/n} "The smallest. It always is." {n}She lays her head back on her claws.{/n} "I will not come down for it. A thing that small, taken out from under Xanthir's toys by a thief who could have smashed it, is warmer where it is than it would be here. I know what I am."
+"But I know who took it now. Remember that I know. When I have decided what it cost me, you will hear the price."''',
+       c("[Go down the mountain.]")),
+    dv("lied", '''"I died counting, and I got up counting, and I have never once in three hundred years miscounted an egg." {n}She does not raise her voice. She does not need to.{/n} "That is the worst lie you have told me, crusader, and the first one I did not enjoy. Keep it. I will keep it too, next to the egg you are lying about, and I will add them together when I send the bill."''',
+       c("[Go down the mountain.]")),
+    dv("safe", '''"Safe." {n}She tastes the word, as she did once before.{/n} "From me, you mean." {n}A long breath; the fleeces in the arrow slits stir.{/n} "Good. Keep it safe from me, then. I will let you. It is the only thing of mine you will ever keep from me without paying, and you will pay for it anyway, later, when I know the whole of it."''',
+       c("[Go down the mountain.]")),
+], requires=("trickster.ever", RETURNED, N_PRIMED), forbids=(ONE_SHORT,), delay=24)
+
+
+# --- 38. The smallest egg (Nidalynn's route, ledger 05 row 5): the bill for the one the Commander stole lands on the Commander -
+# Additive (R2, claude/trk-nidalynn). The Commander confessed at the kiln that the "rock" was her egg; the scream carried to
+# the ridge. She does not take the hatchling from the silver who raises it; she bills the thief. Nidalynn's route reads the
+# flag in nodes only and never gates on it; this scene gates only on the public confession.
+
+EGG_BILL = "devarra.trickster.cost.egg_withheld"
+SMALLEST = T + "smallest_egg"
+N_CONFESSED = "nidalynn.trickster.confessed"
+
+hub(SMALLEST, "The smallest egg", '"She heard it too, didn\'t she? At the kiln."', [
+    teller("start", '''"The whole ridge heard it. A hatchling's first scream carries further than you would credit; I heard it in my bed, and I am a long way from the lower town." {n}He does not smile.{/n} "She came down in the night and lay along the east wall above the old kiln until the sky went grey, and looked at it, and did not go closer. The sentries did not dare wake you. This morning she told me to fetch you. She did not say your title. She said 'the thief'."''',
+        c("Continue", "climb")),
+    dv("climb", '''{n}She does not lift her head from the sill when you come up the stair. Her eye is on the lower town, on one thin line of smoke under the east wall.{/n} "Twelve." {n}Her voice is very quiet.{/n} "I laid twelve, in the dark under the Sanctum, and I counted them every day that Xanthir's toys stood over them with their fists up. I died counting them. I got up counting them."''',
+       c("Continue", "omelet", requires=("eggs.omelet",)),
+       c("Continue", "druids", requires=("eggs.druids",), forbids=("eggs.omelet",)),
+       c("Continue", "vault", requires=("eggs.project",), forbids=("eggs.druids", "eggs.omelet")),
+       c("Continue", "destroyed", requires=("eggs.destroyed",)),
+       c("Continue", "eleven", forbids=("eggs.omelet", "eggs.druids", "eggs.project", "eggs.destroyed"))),
+    dv("omelet", '''"Eleven your city ate. I have smelled every one of them on its breath." {n}Her claws close on the stone.{/n} "And one it did not eat, because you had it in your hearth, under a coat of ash, and called it a rock."''',
+       c("Continue", "stole")),
+    dv("druids", '''"Eleven the golden liars carried off in a handcart. I know where they went." {n}Her claws close on the stone.{/n} "And one they never carried, because you had it in your hearth, under a coat of ash, and called it a rock."''',
+       c("Continue", "stole")),
+    dv("vault", '''"Eleven in your vault, in straw, and a clerk who cannot count." {n}Her claws close on the stone.{/n} "And one that was never in the straw at all, because you had it in your hearth, under a coat of ash, and called it a rock."''',
+       c("Continue", "stole")),
+    dv("destroyed", '''"Eleven on the chamber floor, under the fists." {n}Her claws close on the stone.{/n} "And one the fists never touched, because you had it in your pack, under a coat of ash, and called it a rock."''',
+       c("Continue", "stole")),
+    dv("eleven", '''"Eleven I cannot find." {n}Her claws close on the stone.{/n} "And one I found last night, screaming, in a lime-kiln, because you had it in your hearth, under a coat of ash, and called it a rock."''',
+       c("Continue", "stole")),
+    dv("stole", '''"You stood in that lane and told your city it was yours to answer for. Good. I heard that too." {n}Her head turns at last, and the eye is the size of a shield, and the colour of the inside of a furnace.{/n} "In my lair a story buys a life. You took a life out of my clutch and paid me nothing. Not a story. Not a lie. Nothing."''',
+       c('"She\'s the silver\'s now. I gave up my claim."', "silver"),
+       c('"What do you want for her?"', "want"),
+       c('[Lie] "It wasn\'t one of yours."', "lie")),
+    dv("lie", '''{n}She breathes in, long and slow, through her nose, a sound like a bellows filling.{/n} "You smell of my child's shell. You have smelled of it since the Sanctum." {n}Something in the eye almost approves.{/n} "That was a poor lie, crusader. You are tired. Try again when you have slept, and I will pretend to believe it. Now listen."''',
+       c("Continue", "want")),
+    dv("silver", '''"I know whose she is. I lay on your wall all night and smelled it: old snow, and old metal, and bread. A silver, older than I am, in a widow's dress." {n}Her lip lifts off one tooth.{/n} "I know whose she is, and I know who took her. They are not the same, and I am not a fool."''',
+       c("Continue", "want")),
+    dv("want", '''"I do not want her." {n}It comes out flat and hard.{/n} "I do not take a hatchling out of a nest where something older than me is sitting on it and has not wronged me. I am hungry, crusader, not stupid. And one day that little screamer will be big enough to fly up this ridge by herself and ask me what she is. I would like to be here for that. I will not spoil it by eating the silver."
+"So I bill the thief. A life. You took one; you owe one. I will name it when I choose: tomorrow, or when you are old, or at the edge of the world. And when I name it, you will pay it, and you will not send the silver to argue for you."''',
+       c("Continue", "tariff", requires=(BITTEN,)),
+       c("Continue", "pay", forbids=(BITTEN,))),
+    dv("tariff", '''"And do not think to offer me your arm for it. The bite is my tariff; you pay that gladly, and I take it gladly, and we both enjoy it." {n}The eye narrows.{/n} "This is a bill. You will not enjoy paying it. That is how you will know it is paid."''',
+       c("Continue", "pay")),
+    dv("pay", '''{n}She waits. The whole tower waits with her, and the Storyteller at the door does not breathe.{/n}''',
+       c('"Name it when you like. I\'ll pay."', "named", flags=(EGG_BILL,)),
+       c('"And if I won\'t?"', "wont", flags=(EGG_BILL,))),
+    dv("wont", '''"Then I will collect it anyway, from whatever of yours is nearest when I come, and you will know it was your refusing that chose." {n}She puts her head back on the sill.{/n} "You will pay. Everyone pays me. Even the dead."''',
+       c("[Go down the mountain.]")),
+    dv("named", '''"Good." {n}She puts her head back on the sill, and looks at the kiln's smoke again.{/n} "Go down. Tell the silver that the grey one knows, and is not coming. Not for the child." {n}A long, hot breath.{/n} "For the thief, one day."''',
+       c("[Go down the mountain.]")),
+], requires=("trickster.ever", RETURNED, N_CONFESSED), forbids=(SMALLEST,), delay=24)
+
+
 # --- Epilogue: her committed page remembers what the watchtower made of the years -----------------------------------
 
 EPILOGUE_PARAGRAPHS = (
@@ -1100,6 +1180,7 @@ EPILOGUE_PARAGRAPHS = (
     (TAX_EXEMPT, "{n}The east road paid its levy in oxen for the rest of the war, and nobody from the Treasury ever climbed the north ridge again to dispute the rate.{/n}"),
     (ROOF, "{n}Drezen never again ran a book on anything to do with the grey dragon. The man who had run the last one kept the ledger, framed, over his fireplace, with the odds on the last page: a hundred to one, and nobody on the other side.{/n}"),
     (COIN_ASKED, "{n}The Commander carried a small gold coin with a vanished queen's head on it for the rest of their life, and never spent it. It was, as far as anyone knows, the only thing ever given out of a dragon's hoard.{/n}"),
+    (EGG_BILL, "{n}The smallest egg of her clutch grew up in a lime-kiln under the east wall, raised by someone else, and flew up the north ridge the year it was grown to ask her what it was. She told it. She never collected the life the Commander owed her for it. She said a bill that has not been collected is worth more than one that has, because it can still be called.{/n}"),
 )
 
 
