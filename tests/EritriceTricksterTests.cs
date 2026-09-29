@@ -160,9 +160,10 @@ internal static class EritriceTricksterTests
             "Trk_Eritrice_Declined: the second reading closes the relationship.");
         var afterNo = Later(story, declined, 72);
         check(Rules.Available(story, third, afterNo) && !Rules.Available(story, second, afterNo), "Trk_Eritrice_Declined: no third reading after her no.");
-        check(Choice(third, "start", 0).Crusade?.Resource == "Favors" && Choice(third, "start", 0).Crusade!.Amount == -100
+        // Polish b6a: the third reading is a debate reversal (the Commander argues the case against), not a crusade fee.
+        check(Choice(third, "start", 0).Crusade == null && Choice(third, "start", 0).Set.Contains(P + "cost.on_the_record")
               && Choice(third, "start", 0).Set.Contains("eritrice.committed") && Choice(third, "start", 1).Set.Contains("eritrice.closed"),
-            "Trk_Eritrice_Declined: the third reading is not the priced second ask with a hard no.");
+            "Trk_Eritrice_Declined: the third reading is not the case-against second ask with a hard no.");
         check(Reaches(declined, "eritrice.committed"), "Trk_Eritrice_Declined: no road to the commit after her no.");
 
         // Trk_Eritrice_LateMinutes.
@@ -174,8 +175,9 @@ internal static class EritriceTricksterTests
         // Trk_Eritrice_LateMotion.
         var allied = World(story, 5, "trickster", "trickster.ever", "council.debrief_motion");
         check(Rules.Available(story, late, allied) && !Rules.Available(story, letter, allied), "Trk_Eritrice_LateMotion: the circular does not arrive.");
-        check(Choice(late, "start", 0).Crusade?.Resource == "Favors" && Choice(late, "start", 0).Crusade!.Amount == -100,
-            "Trk_Eritrice_LateMotion: the bond is not posted.");
+        // Polish b6a: the surety is the mover's own (a sealed truth), not a crusade bond.
+        check(Choice(late, "start", 0).Crusade == null && Choice(late, "start", 0).Set.Contains(P + "cost.sealed_truth"),
+            "Trk_Eritrice_LateMotion: the sealed truth is not posted as surety.");
         var bonded = First(late, allied, "reply", 0);
         check(bonded.Has(P + "primed") && bonded.Has("eritrice.started") && bonded.Has(P + "cost.late"), "Trk_Eritrice_LateMotion: the reply does not start the debate.");
         check(Rules.Available(story, pageCommit, Later(story, bonded, 100, 6)), "Trk_Eritrice_LateMotion: the late commit page is not reachable.");
