@@ -61,6 +61,11 @@ internal static class AneviaTricksterTests
         check(story.Presences.TryGetValue("anevia.presence", out var presence) && presence.Unit == Contact && presence.Mode == "reuse-native"
               && presence.At?.NearUnit == "15f754455d1d87c42a4e14df456d5415" && presence.Requires.Contains(Returned),
             "Anevia presence is not anchored at the smith by the gate.");
+        // Polish b6b: Gesmerha and Hepzamirah stand at the smith's sides (2.5); Anevia keeps her own spot out on the road.
+        check(presence!.At!.Side == "front" && presence.At.Distance >= 6f && presence.At.Distance <= 10f
+              && story.Presences.Where(kv => kv.Key != "anevia.presence" && kv.Value.At?.NearUnit == presence.At.NearUnit)
+                   .All(kv => kv.Value.At!.Side != "front" && kv.Value.At.Distance <= 3f),
+            "Anevia is crowded back into the smith's corner.");
         var tirabade = story.Relationships["tirabade"];
         check(tirabade.UnavailableOverrides["irabeth_dead"] == IrabethReturned && tirabade.UnavailableOverrides["anevia_gone"] == Returned,
             "Tirabade relationship does not come back with both women.");

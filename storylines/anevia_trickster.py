@@ -50,10 +50,12 @@ RELATIONSHIP_PATCH = dict(
     UnavailableOverrides={"anevia_gone": RETURNED},
     TricksterAccess={"gone": dict(detect=["anevia_gone"], device="anevia.trickster.gone.setup", returned=RETURNED)})
 PRESENCES = {
-    # Her capital actor is hidden by AneviaNotInDrezen; reuse-native unhides it in front of the smith by the gate.
-    # She will not come inside: the gate is the line she chose. An unresolved anchor raises anevia.presence.failed.
+    # Her capital actor is hidden by AneviaNotInDrezen; reuse-native unhides it out on the road side of the smithy by the
+    # gate, seven paces in front of the smith (polish b6b: clear of Gesmerha and Hepzamirah at his sides; he watches her
+    # over his anvil). She will not come inside: the gate is the line she chose. An unresolved anchor raises
+    # anevia.presence.failed.
     "anevia.presence": dict(Unit=ANEVIA, Area=DREZEN, Mode="reuse-native",
-                            At=dict(NearUnit=SMITH, Side="front", Distance=2.0),
+                            At=dict(NearUnit=SMITH, Side="front", Distance=7.0),
                             Requires=["trickster.ever", RETURNED], Forbids=["anevia.closed"],
                             MinChapter=5, MaxChapter=5, AnswerLists=[HUB]),
 }
