@@ -77,6 +77,12 @@ internal static class JerribethTricksterTests
         var finals = Program.Walk(final, ch3);
         check(finals.Any(r => r.Has(Primed)) && finals.Any(r => !r.Has(Primed) && !r.Has(final.Id)), "Final lease cannot be taken or left.");
         check(final.Nodes[0].Choices[0].Mythic == "PlayerIsTrickster", "Final lease joke is not a [Trickster] answer.");
+        // BEL: the lease holds by a rule the route plants first (a thought the house keeps outlives its mother, as her
+        // Wintersun ideas did), and the payoff cites that rule; the rent is hers to set and is paid in the Commander's memories.
+        string Text(Scene s) => string.Join(" ", s.Nodes.Select(n => n.Text));
+        check(Text(greeting).Contains("Wintersun") && Text(greeting).Contains("one of your memories a month")
+              && Text(final).Contains("Ask Wintersun") && Text(tenant).Contains("Wintersun") && !Text(tenant).Contains("evicted by a sword"),
+            "The lease law is not planted before the tenant pays it off.");
         check(!Rules.Available(story, greeting, World(story, 4, "trickster")) && !Rules.Available(story, greeting, World(story, 3)),
             "Greeting lease outside Chapter 3 or off the path.");
 
@@ -207,6 +213,8 @@ internal static class JerribethTricksterTests
             // Directive 12: a Trickster contract is countersigned in person, and the cut lands at the start of the act.
             check(pages.Contains("arrival") && pages.Contains("threshold") && pages.Contains("morning") && !pages.Contains("tenant_room"),
                 "The committed contract has no in-person threshold.");
+            check(pages.Contains("ask") && pages.Contains("threshold_free") && pages.Contains("morning_free"),
+                "Her restraint is not the Commander's choice, or keeping your hands has no distinct outcome.");
             check(outs.Where(r => r.Has("jerribeth.committed")).All(r => r.Has("jerribeth.future")), "The visit does not finish the promise.");
             var tenantW = Program.Copy(w); tenantW.Flags.UnionWith(new[] { Dead, Returned, "jerribeth.trickster.cost.host" });
             var tenantPages = new HashSet<string>();
@@ -214,6 +222,16 @@ internal static class JerribethTricksterTests
             check(tenantPages.Contains("tenant_room") && tenantPages.Contains("tenant_host") && tenantPages.Contains("tenant_body")
                   && !tenantPages.Contains("arrival") && tenantOuts.Any(r => r.Has("jerribeth.committed")),
                 "The tenant's threshold is missing, or she knocks at a door she cannot use.");
+            check(tenantPages.Contains("tenant_pinned") && tenantPages.Contains("tenant_free") && tenantPages.Contains("tenant_morning_free"),
+                "The tenant pins without asking, or reaching for her has no distinct outcome.");
+            // The toast branch pays a stranger's price before the courtship (host, memory, or a grudge), each reachable.
+            var invite = S("jerribeth.invitation");
+            var tw = World(story, 5, "trickster", "trickster.ever", "jerribeth.trickster.met_by_toast", "jerribeth.started");
+            var tpages = new HashSet<string>();
+            var touts = Program.Walk(invite, tw, (page, _) => tpages.Add(page));
+            check(tpages.Contains("toast_price") && tpages.Contains("toast_given") && tpages.Contains("toast_paid") && tpages.Contains("toast_refused")
+                  && touts.Any(r => r.Has("jerribeth.trickster.cost.toast_host")) && touts.Any(r => r.Has("jerribeth.trickster.cost.toast_memory")),
+                "The toast branch skips the stranger's price, or one of its answers is unreachable.");
         }
         check(S("jerribeth.trickster.dead.tenant").Nodes.Concat(future.Nodes).All(n => !n.Text.Contains("thrust")),
             "The cut lands after the start of the act.");

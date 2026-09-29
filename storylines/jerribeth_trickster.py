@@ -36,6 +36,8 @@ LODGER = "jerribeth.trickster.cost.lodger"
 STATUE = "jerribeth.trickster.body.statue"
 LOCUST = "jerribeth.trickster.body.locust"
 TOAST = "jerribeth.trickster.cost.toast"
+TOAST_HOST = "jerribeth.trickster.cost.toast_host"      # the toast branch: the man who poured the cup, given to her
+TOAST_MEMORY = "jerribeth.trickster.cost.toast_memory"  # the toast branch: the Commander paid with the night of the toast
 LEVY = "jerribeth.trickster.toast_levy"            # the letter twin: the toast was drunk with the Wintersun levy
 FORFEIT = "jerribeth.trickster.cost.forfeit"
 NO_FORFEIT = "jerribeth.trickster.no_forfeit"      # her hard no at jerribeth.future: "I do not sign blank pages."
@@ -105,7 +107,9 @@ SCENES.append(scene("jerribeth.trickster.dead.setup_greeting", "Rent", "Jerribet
 {n}A pause, long enough for the Sanctum's cold to find the back of your neck.{/n}
 "You would charge a demon rent for the use of your own head. How very mortal. I always read the small print, Commander. Yours has none."
 {n}Laughter, high and abrasive, like a buzzing insect, and for one moment it comes from inside your ear rather than beside it.{/n}
-"Very well. Lease accepted. Consider it a small investment on my part. You will not feel it. Probably."''',
+"Do you know what I left in Wintersun? Ideas. I have not been there in months, and they are still there, because the heads they live in grew used to them. A thought a house keeps does not need its mother, crusader. It needs the house."
+{n}The antennae tilt, pricing you.{/n}
+"Very well. Lease accepted. And I shall pay my rent in the only coin a tenant like me carries: one of your memories a month, my choice, taken in lieu of repairs. Consider it a small investment on my part. You will not feel it. Probably."''',
       c("Continue", "lore", requires=(EGG_LORE,)),
       c('"Now. The deal."', forbids=(EGG_LORE,), flags=(PRIMED,))),
     j("lore", '''"Your fox has told you what we lay, and where. And still you offer me a room."
@@ -129,7 +133,7 @@ SCENES.append(scene("jerribeth.trickster.dead.setup_final", "A lease, read in ad
       c('"On second thought, keep out of my head."', abort=True)),
     j("accepted", '''"Accepted."
 {n}Something settles behind your left eye, light as a moth on a sleeve.{/n}
-"Deals with demons are a losing game, Commander. I said so myself. We shall see which of us is losing this one."''',
+"A room you give is a room I keep, even when I am not there to keep it. Ask Wintersun. I pay my rent in your memories, one a month, my choice. Deals with demons are a losing game, Commander. I said so myself. We shall see which of us is losing this one."''',
       c('"We\'ll see."')),
 ], requires=("trickster",), forbids=(PRIMED, DEAD), last=3, optional=True, Relationship="jerribeth", Chapters=[3],
    AnswerLists=[FINAL_LIST]))
@@ -181,7 +185,7 @@ SCENES.append(scene("jerribeth.trickster.dead.tenant", "The tenant", "Jerribeth"
       c("Continue", "tenant")),
     j("tenant", '''"Commander. You told me I could plant whatever I liked, and that you would charge rent. I planted. You charged."
 {n}The voice is exactly where it was in the Sanctum: behind your eyes, a little to the left.{/n}
-"When the sword went through me, the seed began to die. And then it remembered it had a lease. A lodger is not evicted by a sword through its landlady."
+"When the sword went through me, the seed began to die, as my children do when I do. Then it found what my Wintersun ideas found: a house that had agreed to keep it. You gave it a room, and it paid its rent every month, the way I set it: one of your memories, taken and kept. A house that has been paid is a house that holds."
 {n}Laughter buzzes behind your eyes, high and abrasive.{/n}
 "I am in arrears. You are haunted. Which of us minds more, do you think?"''', *_TENANT_ENTRY),
     *_TENANT_NODES,
@@ -201,7 +205,7 @@ SCENES.append(scene("jerribeth.trickster.dead.tenant", "The tenant", "Jerribeth"
 {n}At night its gilt face turns, very slightly, toward your window.{/n}''',
       c('"Goodnight, my lady."')),
     nar("locust_done", '''{n}A salvage team goes back into the Ivory Sanctum for her pinning case and brings it out whole, cursing the stairs. One needle has been pulled.{/n}
-{n}On your desk, under a glass, a locust cleans its face with its forelegs, slowly and very thoroughly, and does not look away from you once.{/n}''',
+{n}On your desk, under a glass, a locust cleans its face with its forelegs, slowly and very thoroughly, and keeps every one of its eyes on you.{/n}''',
       c('"Mind the papers."')),
     j("host_done", '''"*Now* you have taste."
 {n}In the morning the stockade reports one prisoner fewer, and a sentry who swears the man walked out past him at the change of watch, smiling, with his hands folded behind his back like a courtier.{/n}
@@ -220,7 +224,7 @@ SCENES.append(scene("jerribeth.trickster.dead.tenant", "The tenant", "Jerribeth"
 VOICE = '''"Whoever you are *not*. How generous, to make yourself the single exception in a demon's life."
 {n}The voice is too high for the throat it comes out of, and it takes the long way round the words, tasting them.{/n}
 "I left a few ideas in Wintersun, Commander. They keep. This one {what}."
-{n}Laughter, high and abrasive, from a man who has stopped smiling.{/n}
+{n}The deserter's mouth stays shut. The laughter comes from inside your own head, high and abrasive, and his face goes slack while it lasts.{/n}
 "I have never met you. I intend to. Then we shall see which of us the joke was on."'''
 
 # Inline on the King's hub: Owner-voiced cues take the native speaker (the King), every other node is unvoiced prose, so
@@ -276,6 +280,10 @@ TRICKSTER_PARAGRAPHS = (
       "her. It amused her for the rest of the Commander's life.", requires=(LATE,)),
     p("In the taverns of Drezen they still tell the toast. Nobody tells the ending: the Lady of the Sun never did betray "
       "the one who made it. She considered this the finest betrayal of her career.", requires=(TOAST,)),
+    p("A sergeant of the Wintersun levy served in the Commander's household after the war, exact and courteous and "
+      "smiling a little too widely. He never drank, and he never once poured a cup for anyone.", requires=(TOAST_HOST,)),
+    p("The Commander could never remember the night of the toast, only that it had cost something. Jerribeth told it "
+      "differently whenever she was asked, and always as the evening they had first met.", requires=(TOAST_MEMORY,)),
     p("She collected the forfeit on the first anniversary of the contract, without warning, as she had said she would. "
       "She took the Commander's first meeting with her: the voice in the head, the first bargain, all of it. Afterwards "
       "the Commander knew they had met only because she said so, and she told it differently every time, a little more "
@@ -288,19 +296,20 @@ REFUSED_PARAGRAPH = p(
     "hand: \"No forfeit, no signature.\"", requires=(NO_FORFEIT,))
 
 SCENES.append(scene("jerribeth.trickster.epilogue.commit", "The guest who knocked", "Epilogue", 5, "", [
-    nar("offer", '''{n}The war ended before the contract did. Jerribeth came to the Commander's door the first spring after the Worldwound closed, in a guise the guards did not question, with the clause she had been saving.{/n}
-"The forfeit is one memory, of my choosing, when I choose. Sign, or do not. I have already read your answer."''',
-      c('[Sign.]', "signed"),
-      c('[Tear the contract in half.]', "torn")),
-    nar("signed", '''{n}The Commander signed. She read the signature twice, as if checking it for a trick, and did not find one, and seemed disappointed and pleased in exactly equal measure.{/n}
+    nar("offer", '''{n}The war ended before the lease did. Jerribeth came to the Commander's door the first spring after the Worldwound closed, in a guise the guards did not question, with the clause she had been saving.{/n}
+"The forfeit is one memory, of my choosing, when I choose. I have already read your answer, Commander. Show me whether I read it right."''',
+      c('[Give her your hand.]', "signed"),
+      c('[Keep your hands folded in your lap.]', "torn")),
+    nar("signed", '''{n}The Commander held out a hand. She turned it palm up and read it twice, the way she read small print, as if checking it for a trick, and did not find one, and seemed disappointed and pleased in exactly equal measure.{/n}
 {n}She collected a year later to the day, over breakfast, between one sentence and the next. She took the war: not the Commander's deeds, which were written down everywhere, but the having been there. The Commander put down the cup and could not say why the tea tasted of smoke.{/n}
 "There," she said. "Now I am the only one at this table who remembers how we met, and I intend to improve it."
-{n}Afterwards the Commander read about the crusade like a stranger reading a history, and Jerribeth, who had not been there either, told it back over supper, with herself in it. The Commander never once caught her in a lie, which was, she said, the whole point.{/n}''',
+{n}Afterwards the Commander read about the crusade like a stranger reading a history, and Jerribeth, who had not been there either, told it back over supper, with herself in it.{/n}
+{n}At the first Drezen muster after the war, a grey sergeant who had carried the Commander off the wall at Iz came up to clasp arms, and the Commander asked his name. He stood there with his hand out until Jerribeth, at the Commander's elbow, told him the story of that day, better than he could have told it himself, with a detail in it that had not happened. He never came to a muster again. The Commander never once caught her in a lie, which was, she said, the whole point.{/n}''',
       c(), paragraphs=TRICKSTER_PARAGRAPHS),
-    nar("torn", '''{n}The Commander tore the contract in half, and then in quarters, and handed her the pieces.{/n}
-{n}She looked at them for a long time. Then she laughed, high and abrasive, loud enough to bring the guard running.{/n}
-"No forfeit, no contract. And still you open the door to me." {n}She put the pieces in her sleeve.{/n} "You are very bad at this, Commander. I shall come back tomorrow, and the day after, until one of us learns to write a better one."
-{n}She did. Neither of them ever did. The Commander kept every memory of the war, including the ones worth losing.{/n}''',
+    nar("torn", '''{n}The Commander kept both hands folded in their lap, where she could see them.{/n}
+{n}She studied the hands, then the face above them. Then she laughed, high and abrasive, loud enough to bring the guard running.{/n}
+"No forfeit, no lease. And still you open the door to me." {n}She sat down anyway, uninvited, at the Commander's own table.{/n} "You are very bad at this, Commander. I shall come back tomorrow, and the day after, until one of us learns to write a better one."
+{n}She did. Neither of them ever did. Whatever else she took, the Commander kept the war, including the parts worth losing.{/n}''',
       c())],
     requires=("trickster.ever", "jerribeth.commission", LATE_COMMITTED),
     forbids=("jerribeth.committed", "jerribeth.closed", DECLINED, DEAD), last=99, Relationship="jerribeth",
@@ -363,7 +372,28 @@ INVITATION_NODES = [
     j("voice_toast", '''{n}The deserter from the tavern brought it himself, at dawn, and would not say who had sent him. He looked as if he did not know.{/n}
 {n}A narrow, insectile silhouette appears inside the frame. The voice that reaches your thoughts is high and lightly buzzing, and you have heard it once before, out of the wrong mouth.{/n}
 "You drank to me. Now I am writing to you. That is how debts begin, Commander."
-"You may test the instructions. I have no desire to spend our first private conversation arguing about whether you can end it."''',
+"Try the cloth if you like. I would rather you knew the door works. A captive audience fidgets, and I do not waste my evenings on fidgeting."''',
+      c('[Turn the frame over, wait, then invite her again.]', "toast_price"),
+      c('"Why seek my company?"', "toast_price")),
+    j("toast_price", '''"Before anything else. Strangers who drink to me pay for the privilege, and you are a stranger, Commander. We have never met. I have only been toasted."
+{n}The silhouette tilts, reading you.{/n}
+"The man who poured your cup lent me his mouth for a moment. He found it roomy. I should like to borrow him properly: a body that walks your halls when I cannot. Give me his name. Or give me something of yours instead: the night you drank to me. I shall keep it, and you will have toasted a stranger for nothing."''',
+      c('[Give her the man\'s name] "Sergeant of the levy. He poured. He\'s yours."', "toast_given",
+        alignment=("Evil", 1), flags=(TOAST_HOST,)),
+      c('[Offer the night instead] "Take the toast. Leave him out of it."', "toast_paid", flags=(TOAST_MEMORY,)),
+      c('[Refuse] "Nobody\'s name, and not my memories. I drank. That\'s all you get."', "toast_refused")),
+    j("toast_given", '''"Thank you. He will not mind. He will not be in there to mind."
+{n}The next morning the sergeant salutes you in the yard with a smile that is two finger-widths too wide. Nobody else notices. You will, every time.{/n}''',
+      c('[Turn the frame over, wait, then invite her again.]', "test"),
+      c('"Why seek my company?"', "why")),
+    j("toast_paid", '''"Done."
+{n}Something goes out of you, neatly, like a page cut from a ledger. You remember that there was a toast. You no longer remember raising the cup, or whose face was across the table, or why it seemed a good idea.{/n}
+"Now we are even strangers. It is a better place to begin."''',
+      c('[Turn the frame over, wait, then invite her again.]', "test"),
+      c('"Why seek my company?"', "why")),
+    j("toast_refused", '''"A toast for free. How very mortal."
+{n}The silhouette turns, as if to go. Then it stops.{/n}
+"No. I shall charge it to the future instead, with interest, and I shall decide the interest later. You may keep your sergeant and your memories, Commander. I shall keep a grudge. They are cheaper to store."''',
       c('[Turn the frame over, wait, then invite her again.]', "test"),
       c('"Why seek my company?"', "why")),
 ]
@@ -438,25 +468,37 @@ IN_PERSON = [
     nar("arrival", '''{n}The frame goes dark and stays dark. You are reaching to turn it over when someone knocks at the door: three knocks, precisely spaced, the way a clerk knocks.{/n}
 {n}She is on the threshold when you open it. Not an image. The lamplight finds the edges of her carapace and does not slide off them. She is taller than the frame ever let her look, and she smells of cold stone and something sweet and spoiled, like fruit left on an altar.{/n}''',
       c("Continue", "arrival_terms")),
-    j("arrival_terms", '''"A contract wants a signature in the signatory's own hand. Mine is here."
-{n}She lifts it: long, jointed, clawed at the tips, very still.{/n}
-"The road demons use is short, if you do not mind what it smells of. I shall not stay the night; the Abyss notices when I am absent, and so will your guards. But I do not sign things at a distance. Which face do you want across the table, Commander?"''',
+    j("arrival_terms", '''"A forfeit is collected in person. I have come to see what I bought."
+{n}She lifts her hand into the light: long, jointed, clawed at the tips, very still.{/n}
+"The road demons use is short, if you do not mind what it smells of. I shall not stay the night; the Abyss notices when I am absent, and so will your guards. But I do not collect at a distance. Which face do you want across the table, Commander?"''',
       c('"Your own. All of it."', "own"),
       c('"The guise. I know who is wearing it."', "guise")),
     j("own", '''{n}She lets the last of the pretence fall away and steps inside, and the room is suddenly too small for her. Her antennae brush the lintel. Her wings, folded, rasp against the doorframe like pages turning.{/n}
 "Most people close their eyes, the first time."
 {n}You do not. She comes closer, one deliberate step at a time, and stops when there is no more room to stop. Her clawed fingers find the fastenings at your collar and undo them one by one, with the care she gave the locusts, and she watches your face the whole time to see what each one costs you.{/n}''',
-      c("Continue", "threshold")),
+      c("Continue", "ask")),
     j("guise", '''{n}The elven woman who steps inside is exactly the one the frame showed you, down to the seam of light along her jaw that she has left there on purpose, so that you will not forget.{/n}
 "I made her for you. It seemed only fair that you should unwrap her."
 {n}She takes your hands and sets them at her waist, where the illusion is warm and the thing beneath it is hard and ridged and moving under your palms. She watches you feel the difference. She enjoys it far more than the face would suggest.{/n}''',
-      c("Continue", "threshold")),
-    nar("threshold", '''{n}She backs you toward the bed without appearing to push, the way she herded Wintersun: by making every other direction less interesting. Her mouth, or what serves her for one, is at your throat, and the buzzing you have only ever heard in your head is in your skin now, low and continuous, so that you cannot tell where the sound stops and the shiver starts.{/n}
+      c("Continue", "ask")),
+    j("ask", '''{n}She takes both your wrists, loosely, the way she once held a locust she had not yet decided to pin, and does not close her hand.{/n}
+"I collect things that hold still, Commander. The ones that hold still for me, I keep. Let us find out which you are."''',
+      c('[Give her your wrists.]', "threshold"),
+      c('[Keep your hands, and pull her down to you.]', "threshold_free")),
+    nar("threshold_free", '''{n}You take your hands back and put them on her instead: the ridge of her carapace, the cold hinge of a wing. She goes very still, and then the buzzing starts again, lower, and you realise it is a laugh.{/n}
+"Oh," {n}she says.{/n} "You are going to be difficult. Good."
+{n}She lets you pull her down. Her wings open over you both and shut out the lamp, and the sound you have only ever heard in your skull is in your skin now, everywhere she touches, and she lowers herself onto you.{/n}''',
+      c("Continue", "morning_free")),
+    nar("morning_free", '''{n}She is gone before the watch changes. Your wrists are unmarked. On the pillow lies one sliver of chitin, dark and glossy, prised from the edge of a wing by a hand that was not careful.{/n}
+{n}Behind your left eye, something neat and patient is thinking very hard.{/n} "You kept your hands. Nobody keeps their hands. I shall have to find out why, and I shall enjoy the finding out. Keep the scale. It is the only one I have ever given away."''',
+      c(_KEEP[0], "end", forbids=("jerribeth.short_future_chosen",), flags=("jerribeth.chosen_future",)),
+      c(_KEEP[0], "short_end", requires=("jerribeth.short_future_chosen",))),
+    nar("threshold", '''{n}You hold out your wrists. She takes them as if you had handed her something breakable and rare, and walks you backwards to the bed without once tightening her grip. Her mouth, or what serves her for one, is at your throat, and the buzzing you have only ever heard in your head is in your skin now, low and continuous, so that you cannot tell where the sound stops and the shiver starts.{/n}
 {n}When your knees meet the edge of the mattress she lets you fall, and follows, and settles over you with her weight on her elbows and her wings half open, shutting out the lamp. Her claws close lightly round your wrists and press them into the blanket.{/n}
 "Terms accepted," {n}she says, very softly, against your ear, and lowers herself onto you.{/n}''',
       c("Continue", "morning")),
-    nar("morning", '''{n}She is gone before the watch changes. The sheets smell of cold stone. There are four small crescents on each of your wrists where her claws rested, very precise, as if she had counted them.{/n}
-{n}Tucked into the frame, where the image should be, is a note in a fine, impatient hand: "Countersigned. The forfeit clause stands. I have not decided which memory. You will be the second to know."{/n}''',
+    nar("morning", '''{n}She is gone before the watch changes. The sheets smell of cold stone. There are small crescents on your skin where her claws rested, very precise, as if she had counted them. You press a thumb to one. It stings, exactly as much as she meant it to, and you find you are in no hurry for it to heal.{/n}
+{n}Tucked into the frame, where the image should be, is one dry locust wing, veined like a leaf and folded exactly in half. When you touch it, a voice that is not quite a memory arrives behind your left eye: "The forfeit stands. I have not decided which memory. You will be the second to know."{/n}''',
       c(_KEEP[0], "end", forbids=("jerribeth.short_future_chosen",), flags=("jerribeth.chosen_future",)),
       c(_KEEP[0], "short_end", requires=("jerribeth.short_future_chosen",))),
     j("tenant_room", '''"You cannot open a door to me, Commander. I live on the wrong side of it."
@@ -464,15 +506,24 @@ IN_PERSON = [
 "So I shall do what I did in Wintersun. I shall build a room, and make you believe in it, and this time I shall be in it too."''',
       c("Continue", "tenant_host", requires=(HOST,)),
       c("Continue", "tenant_body", forbids=(HOST,))),
-    j("tenant_host", '''"I could have come to you in the man from the stockade. He is clean, and he would not have minded, since he is not in there any more. I did not think you would want the leavings."''',
+    j("tenant_host", '''"I could have come to you in the man from the stockade. His body is mine now; I stole it fairly, the way I steal everything. But then it would have been his face under your hands, and I have never once let a stolen thing take the credit for my work."''',
       c("Continue", "tenant_body")),
     nar("tenant_body", '''{n}The room she builds is your own, exactly, down to the crack in the ceiling. The only thing in it that is not yours is her, sitting on the edge of the bed in her own form, her carapace catching the light of a lamp that is not lit.{/n}
 {n}You know she is not there. Your body does not. When her claws trace your jaw you feel every point of them, and when she leans down the buzzing is in your skin as well as your skull, low and continuous, so that you cannot tell where the sound stops and the shiver starts.{/n}
 "I know where every nerve in this house runs," {n}she says.{/n} "I have been reading the plans for months."
-{n}She pushes you back into a pillow that does not exist, settles her weight over you, pins your wrists, and lowers herself onto you.{/n}''',
+"I shall not take your hands in here unless you give them. In this house, that is the only rule I keep."''',
+      c('[Give her your wrists.]', "tenant_pinned"),
+      c('[Reach for her instead.]', "tenant_free")),
+    nar("tenant_pinned", '''{n}She pushes you back into a pillow that does not exist, settles her weight over you, pins your wrists where you offered them, and lowers herself onto you.{/n}''',
       c("Continue", "tenant_morning")),
+    nar("tenant_free", '''{n}You reach for her, and she lets you find her, ridge and hinge and the cold edge of a wing, in a room that is only real because you both agree it is. She lowers herself onto you with a sound in your skull like pages turning very fast.{/n}''',
+      c("Continue", "tenant_morning_free")),
+    nar("tenant_morning_free", '''{n}You wake alone, as you went to sleep. Your hands still remember the shape of something that was never in the room.{/n}
+{n}Behind your left eye, something neat and patient is unusually quiet. Then: "You reached. Tenants are not supposed to be reached for. I shall have to renegotiate."''',
+      c(_KEEP[0], "end", forbids=("jerribeth.short_future_chosen",), flags=("jerribeth.chosen_future",)),
+      c(_KEEP[0], "short_end", requires=("jerribeth.short_future_chosen",))),
     nar("tenant_morning", '''{n}You wake alone, as you went to sleep. There are no marks on your wrists. You can still feel exactly where they would be.{/n}
-{n}Behind your left eye, something neat and patient is very pleased with itself.{/n} "Countersigned. The forfeit clause stands. Pay the rent on time, Commander. I have been told I am a very demanding landlady, and I intend to prove it."''',
+{n}Behind your left eye, something neat and patient is very pleased with itself.{/n} "Rent received. The forfeit stands. Pay on time, Commander. I have been told I am a very demanding landlady, and I intend to prove it."''',
       c(_KEEP[0], "end", forbids=("jerribeth.short_future_chosen",), flags=("jerribeth.chosen_future",)),
       c(_KEEP[0], "short_end", requires=("jerribeth.short_future_chosen",))),
 ]

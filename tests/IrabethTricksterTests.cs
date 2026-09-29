@@ -247,9 +247,12 @@ internal static class IrabethTricksterTests
             ask.Times["irabeth.trickster.back_on_duty"] = ask.Hour - 72;
             var pages = new HashSet<string>();
             var outcomes = Program.Walk(irabethCommit, ask, (page, _) => pages.Add(page));
-            check(pages.Contains("talked") && pages.Contains("no_home") && !pages.Contains("no") && pages.Contains("reckon") && pages.Contains("threshold") && pages.Contains("morning"),
+            check(pages.Contains("talked") && pages.Contains("no_home") && !pages.Contains("no")
+                  && (lie || pages.Contains("reckon") && pages.Contains("threshold") && pages.Contains("morning")),
                 "Irabeth's commit ignores Nevi's return.");
-            check(outcomes.Count(r => r.Has("irabeth.committed")) == (lie ? 1 : 2), "Kiss offered after an exposed lie, or Kiss / Wait missing.");
+            // Wait-for-her no longer commits by the answer: she decides in node decides, and after an exposed lie she says not tonight.
+            check(outcomes.Count(r => r.Has("irabeth.committed")) == (lie ? 0 : 2), "Kiss offered after an exposed lie, or Kiss / Wait missing.");
+            check(!lie || pages.Contains("not_tonight"), "After an exposed lie, her decision is not her no.");
             check(outcomes.Any(r => r.Has("irabeth.trickster.declined") && !r.Has("irabeth.committed")), "Her no is gone once Nevi is home.");
         }
         // Anevia back but silent: no intimate choice, and Irabeth's no names the silence.

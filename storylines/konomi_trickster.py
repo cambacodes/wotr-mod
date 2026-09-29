@@ -195,12 +195,12 @@ physical("konomi.trickster.dismissed.private", "Off the record", '"Business conc
       c('[Ask her to stay as envoy] "Stay as Nerosyan\'s envoy. The chair is yours."', "envoy")),
     k("answer", '''{n}She does not answer at once. She opens the fan, and closes it, and sets it on her closed ledger as if it were a paperweight.{/n}
 "Three days on your road, and you wait until the business is sealed to say it. You did the same at the council table: the price first, the thing you actually wanted afterwards, when there was nobody left to bargain with but me."
-"Very well. My terms. I stay. I keep my own rooms, my own correspondents and my own opinions, and I shall give you all three at breakfast. And you never again dismiss me in front of a council. You may dismiss me in private. I shall enjoy watching you try."''',
+"Very well, let us talk price. I stay. I keep my own rooms, my own correspondents and my own opinions, and I shall give you all three at breakfast. And you never again dismiss me in front of a council. You may dismiss me in private. I shall enjoy watching you try."''',
       c('[Take her hand] "Then name the next evening."', "threshold", flags=("konomi.committed",)),
       c('[Ask what she wants] "What do you want, Konomi? Not the capital. You."', "no")),
-    k("courted", '''{n}She looks at you for a long moment over the closed fan, as if you had put a clause in front of her in a language she reads well and did not expect to see here.{/n}
+    k("courted", '''{n}She studies you over the closed fan, as if you had put a clause in front of her in a language she reads well and did not expect to see here.{/n}
 "You have never once asked me to supper, Commander. You dismissed me in front of a council. Then you turned a road round to fetch me back, and paid for it with a letter that will cost you your nobles' grain for a season."
-"That is either the most romantic thing anyone has ever done for me or the most insulting. I have had three days on your road to decide which." {n}The corner of her mouth moves.{/n} "I have decided it is both, and that I will take it anyway. So. My terms."
+"In my trade, the difference between a courtship and an insult is usually the seal. I have had three days on your road to read yours." {n}The corner of her mouth moves.{/n} "It is both, and I will take it anyway. So. Let us talk price."
 "I keep my own rooms, my own correspondents and my own opinions, and I shall give you all three at breakfast. And you never again dismiss me in front of a council. You may dismiss me in private. I shall enjoy watching you try."''',
       c('[Take her hand] "Then name the next evening."', "threshold", flags=("konomi.committed",)),
       c('[Ask what she wants] "What do you want, Konomi? Not the capital. You."', "no")),
@@ -213,7 +213,7 @@ physical("konomi.trickster.dismissed.private", "Off the record", '"Business conc
       c('[Let her decide] "Your call."', flags=(DECLINED,))),
     nar("threshold", '''{n}She looks at your hand in hers as if it were a clause she had drafted herself and was only now reading in fair copy.{/n}
 "The next evening," she says, "is this one."
-{n}The fan closes with a snap. She rises, and for the first time since the day she walked into your council with a scroll under the Queen's seal she lets go of her manners all at once: the ears she keeps so correctly upright at the table tip back, pleased, and the tail she holds in a careful curl through every audience comes loose and sweeps out behind her in the lamplight, slow, russet and pale-tipped, like a banner let down from a wall.{/n}
+{n}The fan closes with a snap. She rises, and the manners she has worn since the day she walked into your council with a scroll under the Queen's seal come off all at once: the ears she keeps so correctly upright at the table tip back, pleased, and the tail she holds in a careful curl through every audience comes loose and sweeps out behind her in the lamplight, slow, russet and pale-tipped, like a banner let down from a wall.{/n}
 "Agreed. Now take this robe off me, Commander. Slowly. I bill by the minute, and tonight I intend to be very expensive."
 {n}You do it slowly. She lets the outer robe slide from one shoulder, then the other, and stands in the lamplight with nothing on but her rings and her smile, and lets you look for exactly as long as she has decided you may. Then she kisses you, with a politician's patience and none of a politician's restraint, her nails light at the back of your neck, her tail curling round the backs of your knees as if it had its own opinion about where you should stand.{/n}
 {n}She walks you backwards to the desk. A week of Nerosyan's dispatches goes to the floor in a slither of wax and ribbon. She pushes you down across the place where they lay, climbs over you with her knees either side of your hips, catches both your wrists in one hand and pins them above your head, and settles astride your hips, and reaches down between you with her free hand, watching your face the whole time to see what it costs you.{/n}''',
@@ -335,9 +335,9 @@ TRICKSTER_PARAGRAPHS = (
 SCENES.append(scene("konomi.trickster.epilogue.commit", "Accepted in advance", "Epilogue", 5, "", [
     nar("offer", '''{n}Lady Konomi came back to Drezen after the war as envoy of a Nerosyan that had learned to read the Commander's letters very carefully.{/n}
 {n}She asked the question herself, in a sealed dispatch addressed to the Commander in person, not to the Commander's office. It was two lines long. She did not wait for the courier to leave before adding a postscript: 'Accepted in advance.'{/n}''',
-      c('[Write "Countersigned" under the postscript.]', "signed"),
+      c('[Ride to Nerosyan and answer it at her door.]', "signed"),
       c('[Send it back with terms of your own.]', "terms")),
-    nar("signed", '''{n}She read the countersignature in the doorway of the Commander's rooms, with the courier still standing behind her, and laughed out loud, which nobody in Nerosyan had ever heard her do.{/n}
+    nar("signed", '''{n}The Commander answered it in person, on the steps of the Nerosyan embassy, overtaking the courier on the road to do it. She heard the answer in her own doorway, in front of her whole staff, and laughed out loud, which nobody in Nerosyan had ever heard her do.{/n}
 {n}She kept her rooms, her correspondents and her opinions, and delivered all three at breakfast. The dispatch hung framed above the desk they shared. Visitors assumed it was a treaty. In a sense it was.{/n}''',
       c(), paragraphs=TRICKSTER_PARAGRAPHS),
     nar("terms", '''{n}The Commander sent it back with a single clause added: 'Not to be recalled by anyone. Including me.'{/n}
@@ -364,12 +364,12 @@ REACTIONS = [
              answer_list=REGILL_HUB, forbids=REGILL_GONE, chapter=5, last=5, entry='"About Lady Konomi..."'),
     reaction("Kyado", "konomi.trickster.dismissed.react_kyado", (RECESSED, "kyado.in_drezen", KYADO_SAID_IT),
              '''{n}Kyado has heard. Everyone in the lower town has heard. He does not laugh; he looks at you the way he looked at you once in the temple, as if you were weather.{/n}
-"I told you, Commander. Back at the temple. You play tricks, and your tricks become the truth. I didn't think it would be roads."
+"I warned you, Commander. Back at the temple, about what your tricks do. I didn't think it would be roads."
 "The fox lady's driver came to me for a blessing. I gave him one. Erastil keeps the roads for honest travellers, I told him, and you were honest; it was the road that wasn't." {n}He hesitates.{/n} "I hope she made you pay for it."''',
              answer_list=KYADO_HUB, forbids=("kyado.dead",), chapter=5, last=5, entry='"About Lady Konomi..."'),
     reaction("Regill", "konomi.trickster.dead_retained.react_regill", (CONFIRMED, RECALLED),
              '''{n}Regill does not look up from his report.{/n}
-"A death is a record, Commander. You amended it, and the deceased countersigned. I have no statute for that."
+"A death is a record, Commander. You amended it, and the deceased invoiced you for the correction. I have no statute for that."
 {n}He turns a page.{/n}
 "I shall write one. I shall also note, for your file, that she charged you triple, and that you paid. It is the first sign of discipline I have seen in you."''',
              answer_list=REGILL_HUB, forbids=REGILL_GONE, chapter=3, last=5, entry='"About Lady Konomi..."'),
