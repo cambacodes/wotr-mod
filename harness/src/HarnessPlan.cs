@@ -54,6 +54,15 @@ namespace RRT.TestHarness
         public int ScreenshotsPerScene = 3;
         /// <summary>Folder for the PNGs (run-harness.ps1 passes the run's shots folder); null: persistentDataPath/RRTHarnessShots.</summary>
         public string? ScreenshotDir;
+        /// <summary>
+        /// Drive each scene that has a native entry (Rules.EntryTargets) through its host native dialog: start the host,
+        /// click toward the answer list, select the RRT entry, then walk the scene. Scenes without a native entry are not driven.
+        /// </summary>
+        public bool Inline;
+        /// <summary>inline-hosts.json from harness/resolve-inline-hosts.py; null: the file next to the harness DLL.</summary>
+        public string? InlineHostsPath;
+        /// <summary>Clicks allowed inside the host dialog before the list counts as unreachable (skipped-inline).</summary>
+        public int MaxInlineNavSteps = 40;
         public HarnessTimeouts Timeouts = new HarnessTimeouts();
 
         [JsonIgnore] public bool Dfs => string.Equals(Mode, "dfs", StringComparison.OrdinalIgnoreCase);
@@ -84,6 +93,8 @@ namespace RRT.TestHarness
             if (MaxScenesPerSave < 0) MaxScenesPerSave = 0;
             if (ScreenshotsPerScene < 0) ScreenshotsPerScene = 0;
             if (string.IsNullOrWhiteSpace(ScreenshotDir)) ScreenshotDir = null;
+            if (string.IsNullOrWhiteSpace(InlineHostsPath)) InlineHostsPath = null;
+            if (MaxInlineNavSteps < 1) MaxInlineNavSteps = 1;
         }
 
         public bool IncludesScene(string id) =>

@@ -7,8 +7,11 @@ using System.Linq;
 using System.Reflection;
 using HarmonyLib;
 using Kingmaker;
+using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Root;
 using Kingmaker.Controllers.Dialog;
 using Kingmaker.DialogSystem.Blueprints;
+using Kingmaker.EntitySystem.Entities;
 using Kingmaker.EntitySystem.Persistence;
 using Kingmaker.GameModes;
 using Kingmaker.Settings;
@@ -34,6 +37,7 @@ namespace RRT.TestHarness
         HarnessPlan plan = null!;
         LogCapture capture = null!;
         RrtBridge? rrt;
+        InlineHosts? inlineHosts;
         Dictionary<string, RrtBridge.ChoiceInfo> choices = new Dictionary<string, RrtBridge.ChoiceInfo>();
         HashSet<string> persistentFlagKeys = new HashSet<string>(StringComparer.Ordinal);
         readonly Stack<Frame> stack = new Stack<Frame>();
@@ -67,10 +71,13 @@ namespace RRT.TestHarness
                 catch (Exception ex)
                 {
                     capture.Add("harness", "Exception", "Harness step failed: " + ex.GetType().Name + ": " + ex.Message, ex.ToString());
-                    // Unwind to the nearest guarded frame.
-                    while (stack.Count > 0 && stack.Peek().OnError == null) stack.Pop();
+                    // Unwind to the nearest guarded frame, disposing each popped iterator so its finally blocks run
+                    // (a scene's bookkeeping lives in a finally, and the walk runs in a child frame).
+                    while (stack.Count > 0 && stack.Peek().OnError == null) DisposeFrame(stack.Pop());
                     if (stack.Count == 0) { Abort("unhandled harness exception: " + ex.Message); return; }
-                    var handler = stack.Pop().OnError!;
+                    var guarded = stack.Pop();
+                    DisposeFrame(guarded);
+                    var handler = guarded.OnError!;
                     try { handler(ex); } catch (Exception hex) { Abort("error handler failed: " + hex.Message); return; }
                     continue;
                 }
@@ -83,6 +90,11 @@ namespace RRT.TestHarness
                     default: return; // null: next frame
                 }
             }
+        }
+
+        static void DisposeFrame(Frame frame)
+        {
+            try { (frame.It as IDisposable)?.Dispose(); } catch { }
         }
 
         IEnumerator WaitFor(Func<bool> condition, double timeoutSeconds, Box<bool> ok, int stableFrames = 1)
@@ -178,6 +190,12 @@ namespace RRT.TestHarness
             yield return new Wait(2f);
             RecordInit();
             TryWrite();
+            if (plan.Inline)
+            {
+                string hostsPath = plan.InlineHostsPath ?? Path.Combine(Entry.Mod.Path, InlineHosts.FileName);
+                try { inlineHosts = InlineHosts.Parse(File.ReadAllText(hostsPath)); }
+                catch (Exception ex) { Abort("-Inline needs " + hostsPath + " (harness/resolve-inline-hosts.py): " + ex.Message); yield break; }
+            }
 
             string savedGames = Game.Instance.SaveManager.SavePath;
             for (int i = 0; i < plan.Saves.Count; i++)
@@ -270,7 +288,7 @@ namespace RRT.TestHarness
             catch (Exception ex) { sr.StateError = ex.GetType().Name + ": " + ex.Message; capture.Add("harness", "Exception", "State() threw", ex.ToString()); yield break; }
 
             var dialogs = rrt.Dialogs;
-            var targets = new List<(object Scene, string Id, bool Available)>();
+            var targets = new List<(object Scene, string Id, bool Available, string[] Lists)>();
             foreach (var scene in rrt.Scenes)
             {
                 string id = RrtBridge.SceneId(scene!);
@@ -278,7 +296,15 @@ namespace RRT.TestHarness
                 try { available = rrt.Available(scene!, snapshot); }
                 catch (Exception ex) { capture.Add("harness", "Exception", "Rules.Available threw for " + id + " (Tirabade)", ex.ToString()); continue; }
                 if (available) { sr.AvailableScenes.Add(id); if (!dialogs.Contains(id)) sr.ScenesWithoutDialog.Add(id); }
-                if ((available || plan.Force) && dialogs.Contains(id) && plan.IncludesScene(id)) targets.Add((scene!, id, available));
+                // -Inline drives every scene that has a native entry list, through its host; the default drives RRT dialogs directly.
+                string[] lists = new string[0];
+                if (plan.Inline)
+                {
+                    try { lists = rrt.EntryTargets(scene!); }
+                    catch (Exception ex) { capture.Add("harness", "Exception", "Rules.EntryTargets threw for " + id + " (Tirabade)", ex.ToString()); continue; }
+                }
+                bool drivable = plan.Inline ? lists.Length > 0 : dialogs.Contains(id);
+                if ((available || plan.Force) && drivable && plan.IncludesScene(id)) targets.Add((scene!, id, available, lists));
             }
             if (plan.MaxScenesPerSave > 0) targets = targets.Take(plan.MaxScenesPerSave).ToList();
 
@@ -317,7 +343,9 @@ namespace RRT.TestHarness
                     var counts = new List<int>();
                     sr.Runs.Add(run);
                     capture.Context = prefix + "scene:" + target.Id;
-                    yield return new Guarded(DriveScene(target.Scene, dialogs[target.Id]!, prefixPath, rng, run, counts), ex =>
+                    var drive = plan.Inline ? DriveInline(target.Scene, target.Lists, prefixPath, rng, run, counts)
+                        : DriveScene(target.Scene, dialogs[target.Id]!, prefixPath, rng, run, counts);
+                    yield return new Guarded(drive, ex =>
                     {
                         run.Result = "exception";
                         run.Detail = "harness: " + ex.Message;
@@ -375,28 +403,7 @@ namespace RRT.TestHarness
 
                 var before = bridge.State();
                 var flagsBefore = RrtBridge.FlagSet(before);
-                run.AvailableAtStart = bridge.Available(scene, before);
-                if (!run.AvailableAtStart)
-                {
-                    run.Forced = true;
-                    if (plan.ForceSetRequires)
-                        foreach (var req in RrtBridge.SceneRequires(scene).Where(persistentFlagKeys.Contains)) bridge.Set(req);
-                    // Native / derived world keys cannot be forced from a save; note them so a page that stays hidden is a skip.
-                    unforceable = RrtBridge.SceneRequires(scene).Where(req => !persistentFlagKeys.Contains(req) && !flagsBefore.Contains(req)).ToList();
-                    // RequiresAnyGroups: an unmet group is forced with its first persistent flag; a group with none is unforceable.
-                    foreach (var group in RrtBridge.SceneRequiresAnyGroups(scene) ?? new string[0][])
-                    {
-                        if (group.Any(flagsBefore.Contains)) continue;
-                        var pick = group.FirstOrDefault(persistentFlagKeys.Contains);
-                        if (pick != null && plan.ForceSetRequires) bridge.Set(pick);
-                        else if (pick == null) unforceable.Add("any-of [" + string.Join(", ", group) + "]");
-                    }
-                    // Nor can the chapter: a page gated on a later chapter cannot open from an earlier save.
-                    int chapter = RrtBridge.ToData(before).Chapter;
-                    if (chapter < RrtBridge.SceneMinChapter(scene) || chapter > RrtBridge.SceneMaxChapter(scene))
-                        unforceable.Add("chapter " + chapter + " outside " + RrtBridge.SceneMinChapter(scene) + ".." + RrtBridge.SceneMaxChapter(scene));
-                }
-                if (plan.MarkStarted && bridge.StartedFlag(run.Relationship) is string started && persistentFlagKeys.Contains(started)) bridge.Set(started);
+                unforceable = Prepare(scene, run, before, flagsBefore);
 
                 var dc = Game.Instance.DialogController;
                 dc.StartDialogWithoutTarget((BlueprintDialog)dialogObj, null);
@@ -410,95 +417,310 @@ namespace RRT.TestHarness
                     yield break;
                 }
 
-                bool ending = Ending(scene);
-                for (int step = 0; ; step++)
-                {
-                    yield return WaitFor(() => dc.Dialog == null
-                        || (!IsCuePlayScheduled(dc) && dc.CurrentCue != null && dc.Answers.Any()), plan.Timeouts.StepSeconds, ok, 2);
-                    if (!ok.Value)
-                    {
-                        run.Result = "stuck";
-                        run.Detail = "no answers after " + plan.Timeouts.StepSeconds + " s at cue " + (dc.CurrentCue?.name ?? "null") + ", mode " + Mode();
-                        break;
-                    }
-                    if (dc.Dialog == null) { run.Result = "completed"; break; }
-                    if (step >= plan.MaxStepsPerWalk) { run.Result = "step-limit"; run.Detail = "exceeded " + plan.MaxStepsPerWalk + " selections"; break; }
-
-                    // Let the dialog UI bind the current cue before answering: selecting within the bind frame races
-                    // CueVM.GetCueText (NullReferenceException in DialogCueView.BindViewImplementation), a harness artefact.
-                    // Poll: the same cue must have been current for 0.25 s real time AND 10 rendered frames (the first
-                    // dialog after a save load builds its UI over several slow frames, so a fixed delay is not enough).
-                    {
-                        var shown = dc.CurrentCue;
-                        int frame0 = Time.frameCount;
-                        float time0 = Time.realtimeSinceStartup;
-                        while (dc.Dialog != null && (Time.frameCount - frame0 < 10 || Time.realtimeSinceStartup - time0 < 0.25f))
-                        {
-                            yield return null;
-                            if (dc.CurrentCue != shown) { shown = dc.CurrentCue; frame0 = Time.frameCount; time0 = Time.realtimeSinceStartup; }
-                        }
-                    }
-                    if (dc.Dialog == null) { run.Result = "completed"; break; }
-                    // Screenshots (plan.Screenshots): the cue is bound and on screen, so capture it before answering.
-                    // Only a cue of the walked scene is captured: a walk that has continued into a native dialog (an epilogue
-                    // handing back to the game, a native return) would otherwise photograph the wrong conversation.
-                    if (plan.Screenshots && run.Screenshots.Count < plan.ScreenshotsPerScene)
-                    {
-                        if (dc.Dialog == (BlueprintDialog)dialogObj && ShotBelongs(dc.CurrentCue?.name, run.Scene)) yield return Screenshot(run, step);
-                        else ShotFailed(run, "screenshot skipped at step " + step + ": current cue " + (dc.CurrentCue?.name ?? "null") + " is not a cue of " + run.Scene);
-                    }
-                    if (dc.Dialog == null) { run.Result = "completed"; break; }
-                    var answers = dc.Answers.ToList();
-                    counts.Add(answers.Count);
-                    int index = prefixPath != null ? (step < prefixPath.Count ? prefixPath[step] : 0) : rng!.Next(answers.Count);
-                    if (index >= answers.Count)
-                    {
-                        run.Result = "path-diverged";
-                        run.Detail = "replayed path expects answer " + index + " but only " + answers.Count + " shown at step " + step;
-                        break;
-                    }
-                    var answer = answers[index];
-                    run.Path.Add(index);
-                    var taken = new ChoiceTaken { Step = step, Index = index, Of = answers.Count, Answer = answer.name };
-                    try { taken.Text = answer.DisplayText; } catch { }
-                    choices.TryGetValue(answer.name ?? "", out var info);
-                    taken.StoryChoice = info?.Label;
-                    run.Choices.Add(taken);
-
-                    // Oracle precondition: mirror RouteAction.RunAction's own guards (Main.cs).
-                    bool expectEffects = false;
-                    if (info != null)
-                    {
-                        var now = bridge.State();
-                        bool continuation = !Ending(info.Scene) && (RrtBridge.SceneContactUnit(info.Scene) != null || bridge.IsRemote(info.Scene));
-                        expectEffects = info.Revive == null && bridge.Match(info.Requires, info.Forbids, now)
-                            && (!continuation || bridge.ContactAvailable(info.Scene, now));
-                    }
-                    dc.SelectAnswer(answer);
-                    if (info != null && expectEffects)
-                    {
-                        var flags = RrtBridge.FlagSet(bridge.State());
-                        var missing = info.Set.Where(f => !flags.Contains(f)).ToList();
-                        if (missing.Count > 0) run.OracleFailures.Add(info.Label + ": Set flags not recorded after selection: " + string.Join(", ", missing));
-                        if (info.Terminal && !Ending(info.Scene) && !flags.Contains(info.SceneId))
-                            run.OracleFailures.Add(info.Label + ": terminal choice did not record completion flag '" + info.SceneId + "'");
-                    }
-                    yield return null;
-                }
-
-                if (dc.Dialog != null) TryStopDialog();
-                yield return WaitFor(() => dc.Dialog == null && Game.Instance.CurrentMode != GameModeType.Dialog, 10, ok);
-                var after = RrtBridge.FlagSet(bridge.State());
-                run.FlagsAdded = after.Except(flagsBefore).OrderBy(x => x, StringComparer.Ordinal).ToList();
-                run.FlagsRemoved = flagsBefore.Except(after).OrderBy(x => x, StringComparer.Ordinal).ToList();
-                run.CompletedFlagSet = after.Contains(run.Scene);
-                if (ending && run.Result == "completed") run.Detail = "epilogue scene: completion flag not expected";
+                yield return Walk((BlueprintDialog)dialogObj, false, prefixPath, rng, run, counts);
+                yield return Settle(run, flagsBefore, Ending(scene));
             }
             finally
             {
                 run.Ms = sw.Elapsed.TotalMilliseconds;
                 run.Exceptions = capture.Since(mark);
-                run.Passed = (run.Result == "completed" || run.Result == "skipped-native") && run.OracleFailures.Count == 0 && !run.Exceptions.Any(e => e.Relevant);
+                run.Passed = RunPassed(run);
+            }
+        }
+
+        static bool RunPassed(SceneRun run) =>
+            (run.Result == "completed" || run.Result == "skipped-native" || run.Result == "skipped-inline")
+            && run.OracleFailures.Count == 0 && !run.Exceptions.Any(e => e.Relevant);
+
+        /// <summary>
+        /// A forced run (the scene is not available) sets the scene's Requires and one flag of each unmet RequiresAnyGroups
+        /// group; with MarkStarted, the relationship's started flag too. Returns what a save cannot force.
+        /// </summary>
+        List<string> Prepare(object scene, SceneRun run, object before, HashSet<string> flagsBefore)
+        {
+            var bridge = rrt!;
+            var unforceable = new List<string>();
+            run.AvailableAtStart = bridge.Available(scene, before);
+            if (!run.AvailableAtStart)
+            {
+                run.Forced = true;
+                if (plan.ForceSetRequires)
+                    foreach (var req in RrtBridge.SceneRequires(scene).Where(persistentFlagKeys.Contains)) bridge.Set(req);
+                // Native / derived world keys cannot be forced from a save; note them so a page that stays hidden is a skip.
+                unforceable = RrtBridge.SceneRequires(scene).Where(req => !persistentFlagKeys.Contains(req) && !flagsBefore.Contains(req)).ToList();
+                // RequiresAnyGroups: an unmet group is forced with its first persistent flag; a group with none is unforceable.
+                foreach (var group in RrtBridge.SceneRequiresAnyGroups(scene) ?? new string[0][])
+                {
+                    if (group.Any(flagsBefore.Contains)) continue;
+                    var pick = group.FirstOrDefault(persistentFlagKeys.Contains);
+                    if (pick != null && plan.ForceSetRequires) bridge.Set(pick);
+                    else if (pick == null) unforceable.Add("any-of [" + string.Join(", ", group) + "]");
+                }
+                // Nor can the chapter: a page gated on a later chapter cannot open from an earlier save.
+                int chapter = RrtBridge.ToData(before).Chapter;
+                if (chapter < RrtBridge.SceneMinChapter(scene) || chapter > RrtBridge.SceneMaxChapter(scene))
+                    unforceable.Add("chapter " + chapter + " outside " + RrtBridge.SceneMinChapter(scene) + ".." + RrtBridge.SceneMaxChapter(scene));
+            }
+            if (plan.MarkStarted && bridge.StartedFlag(run.Relationship) is string started && persistentFlagKeys.Contains(started)) bridge.Set(started);
+            return unforceable;
+        }
+
+        // Let the dialog UI bind the current cue before answering: selecting within the bind frame races
+        // CueVM.GetCueText (NullReferenceException in DialogCueView.BindViewImplementation), a harness artefact.
+        // Poll: the same cue must have been current for 0.25 s real time AND 10 rendered frames (the first
+        // dialog after a save load builds its UI over several slow frames, so a fixed delay is not enough).
+        static IEnumerator WaitBound(DialogController dc)
+        {
+            var shown = dc.CurrentCue;
+            int frame0 = Time.frameCount;
+            float time0 = Time.realtimeSinceStartup;
+            while (dc.Dialog != null && (Time.frameCount - frame0 < 10 || Time.realtimeSinceStartup - time0 < 0.25f))
+            {
+                yield return null;
+                if (dc.CurrentCue != shown) { shown = dc.CurrentCue; frame0 = Time.frameCount; time0 = Time.realtimeSinceStartup; }
+            }
+        }
+
+        /// <summary>
+        /// Answers the scene's cues until the dialog closes. ownDialog: screenshots only while that dialog is open (null: any
+        /// dialog, for a scene played inside its host). leaveEnds (-Inline): the walk also completes when the current cue is no
+        /// longer one of the scene's, i.e. a native_next or the return cue handed the conversation back to the host.
+        /// </summary>
+        IEnumerator Walk(BlueprintDialog? ownDialog, bool leaveEnds, List<int>? prefixPath, System.Random? rng, SceneRun run, List<int> counts)
+        {
+            var bridge = rrt!;
+            var dc = Game.Instance.DialogController;
+            var ok = new Box<bool>();
+            for (int step = 0; ; step++)
+            {
+                yield return WaitFor(() => dc.Dialog == null
+                    || (!IsCuePlayScheduled(dc) && dc.CurrentCue != null && dc.Answers.Any()), plan.Timeouts.StepSeconds, ok, 2);
+                if (!ok.Value)
+                {
+                    run.Result = "stuck";
+                    run.Detail = "no answers after " + plan.Timeouts.StepSeconds + " s at cue " + (dc.CurrentCue?.name ?? "null") + ", mode " + Mode();
+                    break;
+                }
+                if (dc.Dialog == null) { run.Result = "completed"; break; }
+                if (leaveEnds && !ShotBelongs(dc.CurrentCue?.name, run.Scene))
+                {
+                    run.Result = "completed";
+                    run.Detail = "returned to native cue " + (dc.CurrentCue?.name ?? "null") + " of " + (dc.Dialog?.name ?? "null");
+                    break;
+                }
+                if (step >= plan.MaxStepsPerWalk) { run.Result = "step-limit"; run.Detail = "exceeded " + plan.MaxStepsPerWalk + " selections"; break; }
+
+                yield return WaitBound(dc);
+                if (dc.Dialog == null) { run.Result = "completed"; break; }
+                // Screenshots (plan.Screenshots): the cue is bound and on screen, so capture it before answering.
+                // Only a cue of the walked scene is captured: a walk that has continued into a native dialog (an epilogue
+                // handing back to the game, a native return) would otherwise photograph the wrong conversation.
+                if (plan.Screenshots && run.Screenshots.Count < plan.ScreenshotsPerScene)
+                {
+                    if ((ownDialog == null || dc.Dialog == ownDialog) && ShotBelongs(dc.CurrentCue?.name, run.Scene)) yield return Screenshot(run, step.ToString());
+                    else ShotFailed(run, "screenshot skipped at step " + step + ": current cue " + (dc.CurrentCue?.name ?? "null") + " is not a cue of " + run.Scene);
+                }
+                if (dc.Dialog == null) { run.Result = "completed"; break; }
+                var answers = dc.Answers.ToList();
+                counts.Add(answers.Count);
+                int index = prefixPath != null ? (step < prefixPath.Count ? prefixPath[step] : 0) : rng!.Next(answers.Count);
+                if (index >= answers.Count)
+                {
+                    run.Result = "path-diverged";
+                    run.Detail = "replayed path expects answer " + index + " but only " + answers.Count + " shown at step " + step;
+                    break;
+                }
+                var answer = answers[index];
+                run.Path.Add(index);
+                var taken = new ChoiceTaken { Step = step, Index = index, Of = answers.Count, Answer = answer.name };
+                try { taken.Text = answer.DisplayText; } catch { }
+                choices.TryGetValue(answer.name ?? "", out var info);
+                taken.StoryChoice = info?.Label;
+                run.Choices.Add(taken);
+
+                // Oracle precondition: mirror RouteAction.RunAction's own guards (Main.cs).
+                bool expectEffects = false;
+                if (info != null)
+                {
+                    var now = bridge.State();
+                    bool continuation = !Ending(info.Scene) && (RrtBridge.SceneContactUnit(info.Scene) != null || bridge.IsRemote(info.Scene));
+                    expectEffects = info.Revive == null && bridge.Match(info.Requires, info.Forbids, now)
+                        && (!continuation || bridge.ContactAvailable(info.Scene, now));
+                }
+                dc.SelectAnswer(answer);
+                if (info != null && expectEffects)
+                {
+                    var flags = RrtBridge.FlagSet(bridge.State());
+                    var missing = info.Set.Where(f => !flags.Contains(f)).ToList();
+                    if (missing.Count > 0) run.OracleFailures.Add(info.Label + ": Set flags not recorded after selection: " + string.Join(", ", missing));
+                    if (info.Terminal && !Ending(info.Scene) && !flags.Contains(info.SceneId))
+                        run.OracleFailures.Add(info.Label + ": terminal choice did not record completion flag '" + info.SceneId + "'");
+                }
+                yield return null;
+            }
+        }
+
+        /// <summary>Closes whatever dialog is still open and records the flags the run changed.</summary>
+        IEnumerator Settle(SceneRun run, HashSet<string> flagsBefore, bool ending)
+        {
+            var dc = Game.Instance.DialogController;
+            var ok = new Box<bool>();
+            if (dc.Dialog != null) TryStopDialog();
+            yield return WaitFor(() => dc.Dialog == null && Game.Instance.CurrentMode != GameModeType.Dialog, 10, ok);
+            var after = RrtBridge.FlagSet(rrt!.State());
+            run.FlagsAdded = after.Except(flagsBefore).OrderBy(x => x, StringComparer.Ordinal).ToList();
+            run.FlagsRemoved = flagsBefore.Except(after).OrderBy(x => x, StringComparer.Ordinal).ToList();
+            run.CompletedFlagSet = after.Contains(run.Scene);
+            if (ending && run.Result == "completed") run.Detail = "epilogue scene: completion flag not expected";
+        }
+
+        // ---- -Inline: reach the scene through its host native dialog -------------------------------------------------------
+
+        static bool IsAnswer(BlueprintAnswer a, Func<DialogRoot, BlueprintAnswer> pick)
+        {
+            try { var root = BlueprintRoot.Instance?.Dialog; return root != null && pick(root) == a; } catch { return false; }
+        }
+
+        static bool Conditioned(BlueprintAnswer a) =>
+            (a.ShowConditions?.Conditions?.Length ?? 0) > 0 || (a.SelectConditions?.Conditions?.Length ?? 0) > 0;
+
+        /// <summary>
+        /// -Inline: start the scene's host dialog (inline-hosts.json) as the StartDialog action would: with the host's speaker
+        /// unit when one is loaded in the area, else without a target, the main character initiating. Click toward the cue that
+        /// shows the entry list (InlineHosts.Pick, at most MaxInlineNavSteps clicks), select the RRT entry answer, then walk the
+        /// scene like a direct run. A host or list that cannot be reached is "skipped-inline" with the reason, not a failure.
+        /// </summary>
+        IEnumerator DriveInline(object scene, string[] lists, List<int>? prefixPath, System.Random? rng, SceneRun run, List<int> counts)
+        {
+            var bridge = rrt!;
+            var sw = Stopwatch.StartNew();
+            int mark = capture.Mark();
+            var ok = new Box<bool>();
+            var inl = run.Inline = new InlineRun();
+            try
+            {
+                inl.Kind = inlineHosts!.Scenes.TryGetValue(run.Scene, out var known) ? known.Kind : "unknown (not in " + InlineHosts.FileName + ")";
+                var chosen = inlineHosts.Choose(lists, out string? noHost);
+                if (chosen == null) { run.Result = "skipped-inline"; run.Detail = "no reachable host: " + noHost; yield break; }
+                var (list, host) = chosen.Value;
+                inl.List = list;
+                inl.Dialog = host.DialogName;
+                inl.ResolvedPath = host.PathText();
+                string entryName = InlineHosts.EntryName(run.Scene, list, RrtBridge.SceneReturnToList(scene));
+                inl.EntryAnswer = entryName;
+                var dialog = ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(host.Dialog)) as BlueprintDialog;
+                if (dialog == null) { run.Result = "skipped-inline"; run.Detail = "host dialog " + host.DialogName + " " + host.Dialog + " is not loaded"; yield break; }
+                var listBp = ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(list)) as BlueprintAnswersList;
+
+                yield return WaitFor(() => IdleBlocker() == null, plan.Timeouts.IdleSeconds, ok, 5);
+                if (!ok.Value) { run.Result = "not-started"; run.Detail = "game not idle: " + IdleBlocker(); yield break; }
+                var before = bridge.State();
+                var flagsBefore = RrtBridge.FlagSet(before);
+                var unforceable = Prepare(scene, run, before, flagsBefore);
+                bool gated = run.Forced && unforceable.Count > 0;
+                string gateNote = gated ? "; forced run cannot hold " + string.Join(", ", unforceable) : "";
+
+                var dc = Game.Instance.DialogController;
+                var main = Game.Instance.Player.MainCharacter.Value;
+                UnitEntityData? unit = null;
+                if (host.Speaker != null)
+                    unit = Game.Instance.State.Units.FirstOrDefault(u => u.IsInGame && !u.IsDisposed && u.Blueprint != null
+                        && InlineHosts.Norm(u.Blueprint.AssetGuid.ToString()) == InlineHosts.Norm(host.Speaker));
+                if (unit != null) { inl.Initiator = "unit " + unit.CharacterName; dc.StartDialogWithUnit(dialog, unit, main); }
+                else
+                {
+                    inl.Initiator = "main character" + (host.Speaker != null ? " (speaker " + host.Speaker + " not loaded here)" : "");
+                    dc.StartDialogWithoutTarget(dialog, null, main);
+                }
+                yield return WaitFor(() => dc.Dialog != null && dc.CurrentCue != null, 10, ok);
+                if (!ok.Value)
+                {
+                    run.Result = "skipped-inline";
+                    run.Detail = "host " + host.DialogName + " did not start within 10 s (its conditions or mode " + Mode() + ")";
+                    yield return Settle(run, flagsBefore, false);
+                    yield break;
+                }
+
+                var used = new Dictionary<string, int>(StringComparer.Ordinal);
+                var owners = new HashSet<string>(host.Cues.Select(InlineHosts.Norm), StringComparer.Ordinal);
+                bool entered = false;
+                for (int nav = 0; ; nav++)
+                {
+                    yield return WaitFor(() => dc.Dialog == null
+                        || (!IsCuePlayScheduled(dc) && dc.CurrentCue != null && dc.Answers.Any()), plan.Timeouts.StepSeconds, ok, 2);
+                    string at = dc.CurrentCue?.name ?? "null";
+                    if (!ok.Value) { run.Result = "skipped-inline"; run.Detail = "host stuck at " + at + ": no answers after " + plan.Timeouts.StepSeconds + " s"; break; }
+                    if (dc.Dialog == null) { run.Result = "skipped-inline"; run.Detail = "host " + host.DialogName + " ended after " + nav + " click(s) before the list" + gateNote; break; }
+                    yield return WaitBound(dc);
+                    if (dc.Dialog == null) { run.Result = "skipped-inline"; run.Detail = "host " + host.DialogName + " ended after " + nav + " click(s) before the list" + gateNote; break; }
+                    at = dc.CurrentCue?.name ?? "null";
+                    var shown = dc.Answers.ToList();
+                    var view = shown.Select(a => new InlineHosts.Shown
+                    {
+                        Name = a.name, Guid = a.AssetGuid.ToString(), Conditioned = Conditioned(a),
+                        IsContinue = IsAnswer(a, r => r.ContinueAnswer) || IsAnswer(a, r => r.InterchapterContinueAnswer),
+                        IsExit = IsAnswer(a, r => r.ExitAnswer) || IsAnswer(a, r => r.InterchapterExitAnswer),
+                    }).ToList();
+                    int pick = InlineHosts.Pick(view, entryName, host, used, out string why);
+                    if (why == "entry")
+                    {
+                        inl.EntryShown = true;
+                        // Screenshot the native list with the RRT entry on it before selecting it.
+                        if (plan.Screenshots && run.Screenshots.Count < plan.ScreenshotsPerScene) yield return Screenshot(run, "list");
+                        if (dc.Dialog == null) { run.Result = "skipped-inline"; run.Detail = "host closed while the list was shown"; break; }
+                        inl.NavPath.Add(at + ": " + entryName + " [entry]");
+                        dc.SelectAnswer(shown[pick]);
+                        entered = true;
+                        break;
+                    }
+                    bool atOwner = dc.CurrentCue != null && owners.Contains(InlineHosts.Norm(dc.CurrentCue.AssetGuid.ToString()));
+                    if (atOwner)
+                    {
+                        bool listShown = listBp == null || listBp.Answers.Any(r => { try { return r.Get() is BlueprintAnswer x && shown.Contains(x); } catch { return false; } });
+                        if (!listShown) { run.Result = "skipped-inline"; run.Detail = "at " + at + " the list's native answers are hidden (list conditions)" + gateNote; break; }
+                        run.Result = gated ? "skipped-inline" : "entry-hidden";
+                        run.Detail = "list " + list + " shown at " + at + " without " + entryName
+                            + (gated ? gateNote : run.AvailableAtStart ? " although the scene is available" : " although its Requires were forced");
+                        break;
+                    }
+                    if (pick < 0) { run.Result = "skipped-inline"; run.Detail = "at " + at + ": " + why + "; path " + string.Join(" > ", inl.NavPath) + gateNote; break; }
+                    if (nav >= plan.MaxInlineNavSteps)
+                    {
+                        run.Result = "skipped-inline";
+                        run.Detail = "list not reached within " + plan.MaxInlineNavSteps + " clicks; path " + string.Join(" > ", inl.NavPath);
+                        break;
+                    }
+                    var answer = shown[pick];
+                    string key = InlineHosts.Norm(answer.AssetGuid.ToString());
+                    used[key] = used.TryGetValue(key, out int n) ? n + 1 : 1;
+                    inl.NavPath.Add(at + ": " + answer.name + " [" + why + "]");
+                    dc.SelectAnswer(answer);
+                    yield return null;
+                }
+
+                if (entered)
+                {
+                    // Inline kinds continue in the host with the scene's first cue; a "dialog" scene's entry queues its RRT
+                    // dialog, which Main.Update starts two frames after the host closes.
+                    yield return WaitFor(() => dc.Dialog != null && !IsCuePlayScheduled(dc) && ShotBelongs(dc.CurrentCue?.name, run.Scene), 10, ok);
+                    if (!ok.Value)
+                    {
+                        run.Result = gated ? "skipped-inline" : "entry-not-started";
+                        run.Detail = "after " + entryName + " the current cue is " + (dc.CurrentCue?.name ?? "null") + " of " + (dc.Dialog?.name ?? "no dialog") + gateNote;
+                    }
+                    else
+                    {
+                        inl.SceneStarted = true;
+                        yield return Walk(null, true, prefixPath, rng, run, counts);
+                    }
+                }
+                yield return Settle(run, flagsBefore, false);
+            }
+            finally
+            {
+                run.Ms = sw.Elapsed.TotalMilliseconds;
+                run.Exceptions = capture.Since(mark);
+                run.Passed = RunPassed(run);
             }
         }
 
@@ -516,7 +738,7 @@ namespace RRT.TestHarness
         internal static bool ShotBelongs(string? cueName, string sceneId) =>
             cueName != null && cueName.StartsWith("RRT_cue." + sceneId + ".", StringComparison.Ordinal);
 
-        IEnumerator Screenshot(SceneRun run, int step)
+        IEnumerator Screenshot(SceneRun run, string tag)
         {
             // UnityModManager opens its window over the game in a normal-window run; close it so it is not captured.
             bool closed = false;
@@ -528,7 +750,7 @@ namespace RRT.TestHarness
             {
                 string dir = plan.ScreenshotDir ?? Path.Combine(Application.persistentDataPath, "RRTHarnessShots");
                 Directory.CreateDirectory(dir);
-                string stem = Safe(run.Scene) + "__" + step;
+                string stem = Safe(run.Scene) + "__" + tag;
                 path = Path.Combine(dir, stem + ".png");
                 for (int n = 2; File.Exists(path); n++) path = Path.Combine(dir, stem + "_" + n + ".png");
                 ScreenCapture.CaptureScreenshot(path);

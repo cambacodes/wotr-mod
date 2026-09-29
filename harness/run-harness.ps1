@@ -8,6 +8,11 @@
   ./harness/run-harness.ps1 -Saves 'Manual_12_Drezen','D:\saves\ch3.zks'
   ./harness/run-harness.ps1 -Saves 'Manual_12_Drezen' -Force -Mode dfs
   ./harness/run-harness.ps1 -Saves 'Manual_12_Drezen' -Force -Screenshots -ScreenshotsPerScene 4 -SceneFilter @('seelah.letter')
+  ./harness/run-harness.ps1 -Saves 'D:\saves\ch3.zks' -Force -Inline -Screenshots -SceneFilter @('household.')
+
+  -Inline drives each scene that has a native entry list (Rules.EntryTargets) through its host native dialog, as the player
+  reaches it: it starts the host (harness/inline-hosts.json, from harness/resolve-inline-hosts.py), clicks toward the list,
+  selects the RRT entry, then walks the scene. A host or list the run cannot reach is reported as skipped-inline, not failed.
 
   -Screenshots captures a PNG of each shown cue (after the dialog UI has bound it), up to -ScreenshotsPerScene per walk,
   into harness/.runs/<stamp>/shots/<scene-id>__<step>.png; the report lists them per run. A minimized Unity window can
@@ -35,6 +40,8 @@ param(
     [switch]$Windowed,
     [switch]$Screenshots,
     [int]$ScreenshotsPerScene = 3,
+    [switch]$Inline,
+    [int]$MaxInlineNavSteps = 40,
     [switch]$Build,
     [int]$TimeoutMinutes = 45,
     [string]$UserData = (Join-Path $env:USERPROFILE 'AppData\LocalLow\Owlcat Games\Pathfinder Wrath Of The Righteous'),
@@ -136,6 +143,8 @@ if (Test-Path -LiteralPath $artPortraits) {
 }
 Add-Copy $harnessDll (Join-Path $HarnessModDir 'RRT.TestHarness.dll')
 Add-Copy (Join-Path $HarnessDir 'Info.json') (Join-Path $HarnessModDir 'Info.json')
+$inlineHosts = Join-Path $HarnessDir 'inline-hosts.json'
+Add-Copy $inlineHosts (Join-Path $HarnessModDir 'inline-hosts.json') (-not $Inline)
 
 # ---------------------------------------------------------------------------------------------
 # Saves and plan
@@ -167,6 +176,8 @@ $plan = [ordered]@{
     headless          = [bool]$Headless
     screenshots       = [bool]$Screenshots
     screenshotsPerScene = $ScreenshotsPerScene
+    inline            = [bool]$Inline
+    maxInlineNavSteps = $MaxInlineNavSteps
     quitWhenDone      = $true
     timeouts          = [ordered]@{ globalSeconds = [Math]::Max(60, $TimeoutMinutes * 60 - 60) }
 }
@@ -190,6 +201,7 @@ foreach ($c in $copies) { if (!$c.Optional -and !(Test-Path -LiteralPath $c.Sour
 foreach ($s in $resolvedSaves) { if (!(Test-Path -LiteralPath $s)) { $pre += "Save not found: $s" } }
 if ($resolvedSaves.Count -eq 0) { $pre += 'No saves: pass -Saves <name or path>.' }
 if (Get-Process -Name 'Wrath' -ErrorAction SilentlyContinue) { $pre += 'Wrath is already running; close it first.' }
+if ($Inline -and !(Test-Path -LiteralPath $inlineHosts)) { $pre += 'No harness/inline-hosts.json: run  python harness/resolve-inline-hosts.py' }
 
 if ($DryRun) {
     Say '=== RRT harness dry run: nothing is copied, launched or modified ===' Cyan
@@ -215,7 +227,23 @@ if ($DryRun) {
     Say "Would write plan: $(Join-Path $HarnessModDir 'rrt-harness-plan.json')" Cyan
     Say $planJson
     Say ''
-    Say ("Would launch: `"{0}`" {1}  (window style Minimized; timeout {2} min)" -f $exe, ($launchArgs -join ' '), $TimeoutMinutes) Cyan
+    if ($Inline -and (Test-Path -LiteralPath $inlineHosts)) {
+        # The offline resolution each matching scene would be driven through (the run re-checks the live entry lists).
+        $h = Get-Content -LiteralPath $inlineHosts -Raw | ConvertFrom-Json
+        $ids = @($h.scenes.PSObject.Properties | Where-Object {
+            $id = $_.Name; ($SceneFilter.Count -eq 0) -or @($SceneFilter | Where-Object { $id -eq $_ -or $id.StartsWith($_) }).Count -gt 0 })
+        $ok = @($ids | Where-Object { $_.Value.resolved }).Count
+        Say ''
+        Say ("Inline hosts ({0}): {1}/{2} matching scenes resolve to a host dialog" -f (Split-Path -Leaf $inlineHosts), $ok, $ids.Count) Cyan
+        foreach ($p in $ids | Select-Object -First 40) {
+            $s = $p.Value
+            if ($s.resolved) { Say ("  {0} [{1}] -> {2} / {3} ({4} click(s)); entry {5}" -f $p.Name, $s.kind, $s.host.dialogName, $s.host.cue, $s.host.clicks, $s.entry.($s.host.list)) }
+            else { Say ("  {0} [{1}] unresolved: {2}" -f $p.Name, $s.kind, $s.reason) Yellow }
+        }
+        if ($ids.Count -gt 40) { Say "  ... $($ids.Count - 40) more" }
+        Say ''
+    }
+    Say ("Would launch: `"{0}`" {1}  (window style {3}; timeout {2} min)" -f $exe, ($launchArgs -join ' '), $TimeoutMinutes, $windowStyle) Cyan
     Say "Would wait for: $(Join-Path $HarnessModDir $ReportName)"
     Say "Would archive report and logs under: $(Join-Path $HarnessDir '.runs\<stamp>')"
     if ($pre.Count) { Say ''; Say 'Preflight problems (a live run would stop here):' Yellow; $pre | ForEach-Object { Say "  - $_" Yellow } }
@@ -331,6 +359,7 @@ try {
                 @($sv.AvailableScenes).Count, $sv.ScenesDriven, $sv.ChoicesTaken, $(if ($sv.RoundTrip.Attempted) { $sv.RoundTrip.Passed } else { "skipped: $($sv.RoundTrip.SkipReason)" }))
         }
         Say ("Runs {0}/{1} passed, choices {2}, relevant exceptions {3}, oracle failures {4}" -f $s.RunsPassed, $s.Runs, $s.Choices, $s.RelevantExceptions, $s.OracleFailures)
+        if ($s.PSObject.Properties['SkippedInline'] -and $s.SkippedInline) { Say ("Skipped inline (host or list not reachable): {0}" -f $s.SkippedInline) Yellow }
         foreach ($f in @($s.Failures) | Select-Object -First 25) { Say "  - $f" Red }
         if ($s.PSObject.Properties['Skipped']) { foreach ($k in @($s.Skipped)) { Say "  (skipped) $k" Yellow } }
         if ($s.Passed) { Say 'PASS' Green; $exitCode = 0 }
