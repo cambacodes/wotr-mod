@@ -312459,7 +312459,7 @@
         {
           "Id": "fall",
           "Speaker": "Narrator",
-          "Text": "{n}She went down on her back with her face a red mask and her eyes wide open, fixed on the roof of the cage. Her master's rule, the one she had recited to you through the bars: a fencer who has yielded does not close her eyes, does not wipe away the blood, does not move a finger until the victor has gone. She kept it. She had chosen to. She breathed through her teeth, shallow as a sleeper, and the smoke of the Scar did the rest.{/n}\n{n}Your companions saw an execution, because you had shouted one. Nobody went into the cage to be sure: you were already out of it and giving the order to move, and nobody wanted to be the one to kneel in a deserter's blood.{/n}\n{n}Everything else she needed you had put in her hand. A sword, and the cage's lock was vrock iron gone rotten in the heat; Seelah had once broken one like it with a single blow. A healing draught and a roll of linen, wound under the grip. And the dark, which the vrocks spend over their ritual pits on the far side of the Scar. What she needed from herself was only not to blink. You chose to trust her with that, because the only other way to leave her alive was to leave her in front of witnesses who would ask why.{/n}",
+          "Text": "{n}She went down on her back with her face a red mask and her eyes wide open, fixed on the roof of the cage. Her master's rule, the one she had recited to you through the bars: a fencer who has yielded does not close her eyes, does not wipe away the blood, does not move a finger until the victor has gone. She kept it. She had chosen to. She breathed through her teeth, shallow and slow, the way the old man taught his students to breathe while they lay in the chalk; with that much blood on her face, nobody looking from outside the bars could have told breath from the heat-shimmer of the Scar.{/n}\n{n}Your companions saw an execution, because you had shouted one. Nobody went into the cage to be sure: you were already out of it and giving the order to move, and nobody wanted to be the one to kneel in a deserter's blood.{/n}\n{n}Everything else she needed you had put in her hand. A sword, and the cage's lock was vrock iron gone rotten in the heat; Seelah had once broken one like it with a single blow. A healing draught and a roll of linen, wound under the grip. And the dark, which the vrocks spend over their ritual pits on the far side of the Scar. What she needed from herself was only not to blink. You chose to trust her with that, because the only other way to leave her alive was to leave her in front of witnesses who would ask why.{/n}",
           "Choices": [
             {
               "Text": "[Remember that you said nothing over her, and walked out of the circle.]",
@@ -312627,7 +312627,7 @@
         {
           "Id": "how",
           "Speaker": "Jannah",
-          "Text": "\"You'll want to know how. I lay in the ash until your boots were out of hearing. Then I counted to a thousand, because my master used to say a victor's field is exactly as big as a victor's pride, and I didn't know how proud you were.\"\n\"Then I found what you'd wound under my grip. I drank the draught and bound my head in the dark, and broke the lock with my pommel. Three blows. Seelah would have done it in one.\" {n}A dry twist of the mouth.{/n}\n\"I went down into the lava channels, where the air is too hot for wings, and walked south by night until the Scar was behind me. After that it was only walking.\"",
+          "Text": "\"You'll want to know how. I lay in the ash until your boots were out of hearing. Then I counted to a thousand, because my master used to say a victor's field is exactly as big as a victor's pride, and I didn't know how proud you were.\"\n\"Then I found what you'd wound under my grip. I drank the draught first. It closed the cut to a seam, enough that I stopped leaving a trail. Then I packed the linen over the seam and tied it with my belt, and broke the lock with my pommel. Three blows. Seelah would have done it in one.\" {n}A dry twist of the mouth.{/n}\n\"I went down into the lava channels, where the air is too hot for wings, and walked south by night until the Scar was behind me. After that it was only walking.\"",
           "Choices": [
             {
               "Text": "\"And after that?\"",
@@ -313039,7 +313039,7 @@
         {
           "Id": "unmet",
           "Speaker": "Jannah",
-          "Text": "\"Commander. The last you saw of me I was running north from the Houndheart camp in the rain. The vrocks had me in a cage in the Molten Scar after that. A Mendevian patrol cut the cages open in the winter. Everyone else in them was dead.\"\n\"I walked here, and gave the gaol my name, and asked for a cell. They gave me one. I think they were too surprised to argue.\"",
+          "Text": "\"Commander. The last you saw of me I was running north from the Houndheart camp in the rain. The vrocks had me in a cage in the Molten Scar after that. When your army cleared the Scar, the sappers who came through behind you to burn the ritual pits found the cages. Everyone else in them was dead. They thought I was too, until I asked one of them for water.\"\n\"I walked here, and gave the gaol my name, and asked for a cell. They gave me one. I think they were too surprised to argue.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -325461,8 +325461,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",

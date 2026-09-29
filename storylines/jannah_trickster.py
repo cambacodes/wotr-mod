@@ -248,7 +248,7 @@ visit(P + "cage.ash", "Where the blade went", [
         c("Continue", "cut")),
     nar("cut", '''{n}Her guard came up where the forms put it and the bars allowed it, high and forward. Your cut rode down the flat of her sword to the hilt, turned off the crossguard, and opened her right temple from the brow to above the ear. Not deep. Scalp wounds never need to be deep. They bleed as if the whole head were emptying.{/n}''',
         c("Continue", "fall")),
-    nar("fall", '''{n}She went down on her back with her face a red mask and her eyes wide open, fixed on the roof of the cage. Her master's rule, the one she had recited to you through the bars: a fencer who has yielded does not close her eyes, does not wipe away the blood, does not move a finger until the victor has gone. She kept it. She had chosen to. She breathed through her teeth, shallow as a sleeper, and the smoke of the Scar did the rest.{/n}
+    nar("fall", '''{n}She went down on her back with her face a red mask and her eyes wide open, fixed on the roof of the cage. Her master's rule, the one she had recited to you through the bars: a fencer who has yielded does not close her eyes, does not wipe away the blood, does not move a finger until the victor has gone. She kept it. She had chosen to. She breathed through her teeth, shallow and slow, the way the old man taught his students to breathe while they lay in the chalk; with that much blood on her face, nobody looking from outside the bars could have told breath from the heat-shimmer of the Scar.{/n}
 {n}Your companions saw an execution, because you had shouted one. Nobody went into the cage to be sure: you were already out of it and giving the order to move, and nobody wanted to be the one to kneel in a deserter's blood.{/n}
 {n}Everything else she needed you had put in her hand. A sword, and the cage's lock was vrock iron gone rotten in the heat; Seelah had once broken one like it with a single blow. A healing draught and a roll of linen, wound under the grip. And the dark, which the vrocks spend over their ritual pits on the far side of the Scar. What she needed from herself was only not to blink. You chose to trust her with that, because the only other way to leave her alive was to leave her in front of witnesses who would ask why.{/n}''',
         c("[Remember that you said nothing over her, and walked out of the circle.]", "silent", flags=(ASH_SILENT, COST_ASH)),
@@ -280,7 +280,7 @@ meet(P + "killed.yield", "An unclaimed yield", '"The turnkey says there\'s a dea
 {n}Something dry happens at the corner of her mouth.{/n} "So I came to ask who that leaves standing in your cells."''',
         c("Continue", "how")),
     jan("how", '''"You'll want to know how. I lay in the ash until your boots were out of hearing. Then I counted to a thousand, because my master used to say a victor's field is exactly as big as a victor's pride, and I didn't know how proud you were."
-"Then I found what you'd wound under my grip. I drank the draught and bound my head in the dark, and broke the lock with my pommel. Three blows. Seelah would have done it in one." {n}A dry twist of the mouth.{/n}
+"Then I found what you'd wound under my grip. I drank the draught first. It closed the cut to a seam, enough that I stopped leaving a trail. Then I packed the linen over the seam and tied it with my belt, and broke the lock with my pommel. Three blows. Seelah would have done it in one." {n}A dry twist of the mouth.{/n}
 "I went down into the lava channels, where the air is too hot for wings, and walked south by night until the Scar was behind me. After that it was only walking."''',
         c('"And after that?"', "after"),
         c('"You could have kept walking."', "after")),
@@ -345,7 +345,7 @@ visit(P + "alive.letter", "From the last cell", [
     jan("free", '''"Commander. You let me go at the Molten Scar. I went to Kenabres and tried to be nobody. It didn't take. I'm bad at being nobody; I was raised to be looked at."
 "So I came back and gave the gaol my name, and they didn't know what to do with it, so they gave me a cell."''',
         c("Continue", "wagon")),
-    jan("unmet", '''"Commander. The last you saw of me I was running north from the Houndheart camp in the rain. The vrocks had me in a cage in the Molten Scar after that. A Mendevian patrol cut the cages open in the winter. Everyone else in them was dead."
+    jan("unmet", '''"Commander. The last you saw of me I was running north from the Houndheart camp in the rain. The vrocks had me in a cage in the Molten Scar after that. When your army cleared the Scar, the sappers who came through behind you to burn the ritual pits found the cages. Everyone else in them was dead. They thought I was too, until I asked one of them for water."
 "I walked here, and gave the gaol my name, and asked for a cell. They gave me one. I think they were too surprised to argue."''',
         c("Continue", "wagon")),
     jan("wagon", '''"The Condemned wagon goes north at the ninth bell of Oathday, and I mean to be on it. I'm writing so you'll hear it from me and not from a turnkey, and not think I ran again."''',
