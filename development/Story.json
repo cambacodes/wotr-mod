@@ -227598,9 +227598,9 @@
       "Id": "arueshalae.treatment.old_name",
       "Title": "What they called me",
       "Owner": "Arueshalae",
-      "MinChapter": 4,
+      "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "\"Who was that, in the market?\"",
+      "Entry": "\"The woman in the Alushinyrra market. Who was she?\"",
       "Nodes": [
         {
           "Id": "start",
@@ -227621,7 +227621,7 @@
         {
           "Id": "offer",
           "Speaker": "Arueshalae",
-          "Text": "\"She asked if I was hungry. She said there was a party in the Upper City and plenty of mortals at it who'd paid to be eaten, and she'd get me in, for old times' sake. She said it kindly. That's the worst of it. In the Delights they say those things kindly.\"\n{n}Her hands are clenched in the fabric of her wings.{/n} \"And I was hungry. I am. The Abyss makes it worse, Commander, it's like trying not to drink when you're standing in the sea. I stood there with her hand on my arm and I thought about saying yes for as long as it takes to say it.\"",
+          "Text": "\"She asked if I was hungry. She said there was a party in the Upper City and plenty of mortals at it who'd paid to be eaten, and she'd get me in, for old times' sake. She said it kindly. That's the worst of it. In the Delights they say those things kindly.\"\n{n}Her hands are clenched in the fabric of her wings.{/n} \"And I was hungry. I am. The Abyss made it worse, Commander. It was like trying not to drink when you're standing in the sea. Some nights it still is, even here. I stood there with her hand on my arm and I thought about saying yes for as long as it takes to say it.\"",
           "Choices": [
             {
               "Text": "\"You didn't say it.\"",
@@ -227665,7 +227665,7 @@
         {
           "Id": "hand",
           "Speaker": "Narrator",
-          "Text": "{n}She looks at your hand as if it were a door she is not sure she is allowed through. Then she takes it, in the middle of a demon lord's city, with the smell of the Delights still on her sleeve, and holds on.{/n}",
+          "Text": "{n}She looks at your hand as if it were a door she is not sure she is allowed through. Then she takes it, here in the chapel yard, with the Delights still on her like a smell she cannot wash out, and holds on.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -227693,7 +227693,7 @@
         {
           "Id": "held_cure",
           "Speaker": "Arueshalae",
-          "Text": "{n}You lit the star-candle in the camp at dusk. The first cold comes and the rite takes it, and the second you let come, and slowly her shoulders come down from round her ears.{/n}\n\"That's the difference,\" she says at last, very quietly. \"Her party would have been more. Much more. And I'd have hated myself before dawn. This is less, and I don't.\" {n}She does not let go.{/n} \"Don't tell her about the doctor. She'll want one.\"",
+          "Text": "{n}You lit the star-candle at dusk. The first cold comes and the rite takes it, and the second you let come, and slowly her shoulders come down from round her ears.{/n}\n\"That's the difference,\" she says at last, very quietly. \"Her party would have been more. Much more. And I'd have hated myself before dawn. This is less, and I don't.\" {n}She does not let go.{/n} \"Don't tell her about the doctor. She'll want one.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -227711,7 +227711,7 @@
         {
           "Id": "held_paid",
           "Speaker": "Arueshalae",
-          "Text": "{n}The cold comes, and you let it, and she feels you let it, and after two breaths she pulls away and holds your hand between her wrists instead, the careful way.{/n}\n\"Two,\" she says. \"Only two. I could have had a whole party. I'd rather have two of yours.\" {n}She is shaking.{/n} \"Don't do that again in the Abyss. Everybody here can smell it when someone gives.\"",
+          "Text": "{n}The cold comes, and you let it, and she feels you let it, and after two breaths she pulls away and holds your hand between her wrists instead, the careful way.{/n}\n\"Two,\" she says. \"Only two. I could have had a whole party. I'd rather have two of yours.\" {n}She is shaking.{/n} \"If we ever go back down there, don't do that. Everybody in the Abyss can smell it when someone gives.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -227746,7 +227746,7 @@
       ],
       "ContactUnit": "a352873d37ec6c54c9fa8f6da3a6b3e1",
       "Chapters": [
-        4
+        5
       ],
       "ForbidOverrides": {
         "arueshalae_dead": "arueshalae.trickster.returned"
@@ -229891,14 +229891,14 @@
       "Id": "arueshalae.treatment.abyss_dose",
       "Title": "The dose, adjusted",
       "Owner": "Arueshalae",
-      "MinChapter": 4,
+      "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "\"It's worse here, isn't it?\"",
+      "Entry": "\"You're thinking about the Abyss again.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Arueshalae",
-          "Text": "\"Everything is worse here.\" {n}She is sitting as far from the camp's fire as she can and still be inside the pickets.{/n} \"The air here tastes of it. Every scream from the dark tastes of it. It's like being a drunk in a city made of wine.\" {n}She looks at your hand, and away, and back.{/n}\n\"I haven't asked. I've been very good. I haven't asked for your hand once since we crossed. I didn't think I could stop, here, if I started.\"",
+          "Text": "{n}Back in Drezen, she brings it up without warning, and the night comes back whole: the camp at the edge of the Abyss, the pickets, the fire she would not sit near.{/n}\n\"Everything is worse here.\" {n}She is sitting as far from the camp's fire as she can and still be inside the pickets.{/n} \"The air here tastes of it. Every scream from the dark tastes of it. It's like being a drunk in a city made of wine.\" {n}She looks at your hand, and away, and back.{/n}\n\"I haven't asked. I've been very good. I haven't asked for your hand once since we crossed. I didn't think I could stop, here, if I started.\"",
           "Choices": [
             {
               "Text": "[Hold out your hand] \"Doctor's orders. The dose is adjusted for altitude.\"",
@@ -230051,7 +230051,7 @@
       ],
       "ContactUnit": "a352873d37ec6c54c9fa8f6da3a6b3e1",
       "Chapters": [
-        4
+        5
       ],
       "ForbidOverrides": {
         "arueshalae_dead": "arueshalae.trickster.returned"

@@ -278,6 +278,16 @@ internal static class ArueshalaeTricksterTests
                   && r.Forbids.Contains(r.Owner == "Sosiel" ? "sosiel.kicked_out" : "lann.kicked_out"),
                 "A reaction without its reactor's guard: " + r.Id);
 
+        // --- The Abyss night and the old name are told in Drezen, after the crossing (Chapter 5 only) ----------------
+        foreach (var id in new[] { T + "abyss_dose", T + "old_name" })
+        {
+            var scene = S(id);
+            var ch4 = Later(story, World(story, 4, "", "trickster.ever", T + "intake", T + "touched"), 100);
+            var ch5 = Later(story, World(story, 5, "", "trickster.ever", T + "intake", T + "touched"), 100);
+            check(!Avail(scene, ch4), "A physical Abyss-memory scene is offered in Chapter 4, where the hub cannot play it: " + id);
+            check(Avail(scene, ch5), "The Abyss-memory scene is not available in Chapter 5, where it is told: " + id);
+        }
+
         // --- Never another route's state; never a key token; never a crusade fee as the device's price --------------
         foreach (var s in story.Scenes.Where(s => s.Relationship == "arueshalae"))
         {

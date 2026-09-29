@@ -76,8 +76,9 @@ hub(BAKERY, "Tanner's Row, at dawn", 3, '"You smell of flour."', [
 
 # --- The dose in the Abyss (Chapter 4) ---------------------------------------------------------------------
 
-hub(ABYSS_TOUCH, "The dose, adjusted", 4, '"It\'s worse here, isn\'t it?"', [
-    a("start", '''"Everything is worse here." {n}She is sitting as far from the camp's fire as she can and still be inside the pickets.{/n} "The air here tastes of it. Every scream from the dark tastes of it. It's like being a drunk in a city made of wine." {n}She looks at your hand, and away, and back.{/n}
+hub(ABYSS_TOUCH, "The dose, adjusted", 5, '"You\'re thinking about the Abyss again."', [
+    a("start", '''{n}Back in Drezen, she brings it up without warning, and the night comes back whole: the camp at the edge of the Abyss, the pickets, the fire she would not sit near.{/n}
+"Everything is worse here." {n}She is sitting as far from the camp's fire as she can and still be inside the pickets.{/n} "The air here tastes of it. Every scream from the dark tastes of it. It's like being a drunk in a city made of wine." {n}She looks at your hand, and away, and back.{/n}
 "I haven't asked. I've been very good. I haven't asked for your hand once since we crossed. I didn't think I could stop, here, if I started."''',
         c('[Hold out your hand] "Doctor\'s orders. The dose is adjusted for altitude."', "take"),
         c('"Then don\'t ask. I\'ll sit here instead."', "sit", flags=(ABYSS_TOUCH,))),
@@ -95,7 +96,7 @@ hub(ABYSS_TOUCH, "The dose, adjusted", 4, '"It\'s worse here, isn\'t it?"', [
         c('"Down to nothing, until we\'re home."', "home", flags=(ABYSS_TOUCH,))),
     a("sit", '''{n}You sit down next to her in the dark, at the edge of the pickets, not touching. After a while she starts to talk, very quietly, about the bakery and the cat and the net-menders' song, as if reciting a list of things to hold on to. You let her. You are what the Abyss cannot give her: someone sitting there who wants nothing.{/n}''', c()),
     a("home", '''"Until we're home." {n}She smiles, and it is the smile of someone very tired.{/n} "Drezen isn't home. Nothing's home. I've never had one." {n}She shrugs.{/n} "But I know which way it is from here. That's new too."''', c()),
-], (TOUCHED,), delay=24, chapters=(4,))
+], (TOUCHED,), delay=24, chapters=(5,))
 
 
 # --- A bad day: the demon's temper ---------------------------------------------------------------------------

@@ -127,24 +127,24 @@ session(TEMPLE_LETTER, "Reply from the river", 5, '"They wrote back."', [
 
 # --- The Abyss (Chapter 4): her old name ------------------------------------------------------------------------
 
-session(OLD_NAME, "What they called me", 4, '"Who was that, in the market?"', [
+session(OLD_NAME, "What they called me", 5, '"The woman in the Alushinyrra market. Who was she?"', [
     a("start", '''{n}She is sitting with her back to the fire, which she never does, and her wings are wrapped round her like a cloak.{/n}
 "Somebody I knew. Somebody from the Ten Thousand Delights. She recognised me across the whole market and she called me by my old name, loud, so everyone would turn, and they all did." {n}She is holding herself very still.{/n} "It isn't Arueshalae. You don't need to know what it is. It's a name that means something you'd do to a person, and it was mine for a very long time."''',
         c("Continue", "offer")),
     a("offer", '''"She asked if I was hungry. She said there was a party in the Upper City and plenty of mortals at it who'd paid to be eaten, and she'd get me in, for old times' sake. She said it kindly. That's the worst of it. In the Delights they say those things kindly."
-{n}Her hands are clenched in the fabric of her wings.{/n} "And I was hungry. I am. The Abyss makes it worse, Commander, it's like trying not to drink when you're standing in the sea. I stood there with her hand on my arm and I thought about saying yes for as long as it takes to say it."''',
+{n}Her hands are clenched in the fabric of her wings.{/n} "And I was hungry. I am. The Abyss made it worse, Commander. It was like trying not to drink when you're standing in the sea. Some nights it still is, even here. I stood there with her hand on my arm and I thought about saying yes for as long as it takes to say it."''',
         c('"You didn\'t say it."', "didnt"),
         c('[Hold out your hand] "Then take this instead. Right now."', "hand", requires=(TOUCHED,))),
     a("didnt", '''"No. I didn't. I said..." {n}She laughs, cracked.{/n} "I said I was seeing a doctor. She didn't understand. She thought it was a new kind of client."
 {n}She finally turns to face the fire, and you.{/n} "But I nearly did. You should know that. Your patient nearly went to a party in the Upper City. You should write it in the notes, with a very black line under it."''', c(flags=(OLD_NAME,))),
-    nar("hand", '''{n}She looks at your hand as if it were a door she is not sure she is allowed through. Then she takes it, in the middle of a demon lord's city, with the smell of the Delights still on her sleeve, and holds on.{/n}''',
+    nar("hand", '''{n}She looks at your hand as if it were a door she is not sure she is allowed through. Then she takes it, here in the chapel yard, with the Delights still on her like a smell she cannot wash out, and holds on.{/n}''',
         c("Continue", "held_cure", requires=(CURED,)),
         c("Continue", "held_paid", forbids=(CURED,))),
-    a("held_cure", '''{n}You lit the star-candle in the camp at dusk. The first cold comes and the rite takes it, and the second you let come, and slowly her shoulders come down from round her ears.{/n}
+    a("held_cure", '''{n}You lit the star-candle at dusk. The first cold comes and the rite takes it, and the second you let come, and slowly her shoulders come down from round her ears.{/n}
 "That's the difference," she says at last, very quietly. "Her party would have been more. Much more. And I'd have hated myself before dawn. This is less, and I don't." {n}She does not let go.{/n} "Don't tell her about the doctor. She'll want one."''', c(flags=(OLD_NAME,))),
     a("held_paid", '''{n}The cold comes, and you let it, and she feels you let it, and after two breaths she pulls away and holds your hand between her wrists instead, the careful way.{/n}
-"Two," she says. "Only two. I could have had a whole party. I'd rather have two of yours." {n}She is shaking.{/n} "Don't do that again in the Abyss. Everybody here can smell it when someone gives."''', c(flags=(OLD_NAME,))),
-], (INTAKE,), delay=24, chapters=(4,))
+"Two," she says. "Only two. I could have had a whole party. I'd rather have two of yours." {n}She is shaking.{/n} "If we ever go back down there, don't do that. Everybody in the Abyss can smell it when someone gives."''', c(flags=(OLD_NAME,))),
+], (INTAKE,), delay=24, chapters=(5,))
 
 
 # --- The Commander wounded (Chapter 5): the doctor is the patient ---------------------------------------------
