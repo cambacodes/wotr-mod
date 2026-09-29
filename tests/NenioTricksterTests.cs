@@ -1,0 +1,285 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Tirabade;
+
+// Nenio, Trickster (Writer/handoffs/trickster/nenio.md; binding plan 11-ROSTER-PLAN-2 §2 and its build sheet, after the Astra
+// design review r3): "A name for a name". One block per rules test (Trk_Nenio_*): the riddle in the Enigma (the stake, the
+// told answer, the failed telling rebuilt once, the dissolution), her hypothesis and her own test (clean, tampered, dictated,
+// replicated, denied), the loss worlds (the Sphinx's servant for a dead or a Ch1-killed Nenio; the field report and the
+// probation for a sent-away or kicked-out one), the dictation spine, the night and the morning, the pages, the two reactors,
+// the presence, and the Areelu G6(b) overrides.
+internal static class NenioTricksterTests
+{
+    private const string Unit = "1b893f7cf2b150e4f8bc2b3c389ba71d";
+    private const string CopyUnit = "49e6676f68337114985a22bd548a8a4d";
+    private const string Hub = "1ab909cc3a6194840b1475b99547c263";
+    private const string Drezen = "2570015799edf594daf2f076f2f975d8";
+    private const string FoxList = "d0eed6e4ca8dd5f478810c3ee59228de";
+    private const string FoxReturn = "cfae2454cb77dc8479ff0b044158e067";
+    private const string FoxOne = "357224f06cf28804294c737124e66c29";
+    private const string FoxTwo = "e7831690d3ccf5f4594e842cb7b8af9e";
+    private const string P = "nenio.trickster.";
+    private const string F = "nenio.folio.";
+    private const string Started = "nenio.started";
+    private const string Committed = "nenio.committed";
+    private const string Closed = "nenio.closed";
+    private const string Returned = P + "returned";
+    private const string Scribe = P + "scribe";
+    private const string Test = P + "test_running";
+    private const string Tampered = P + "tampered";
+    private const string Declined = P + "declined";
+    private const string NameFiled = P + "cost.name_filed";
+
+    private static Snapshot World(Story story, int chapter, params string[] flags)
+    {
+        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000 };
+        state.Flags.UnionWith(flags);
+        state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
+        state.AvailableContacts.Add(Unit);
+        state.AvailableContacts.Add(CopyUnit);
+        Rules.Complete(story, state);
+        foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 300;
+        return state;
+    }
+
+    private static Snapshot Later(Story story, Snapshot state, int hours, int? chapter = null)
+    {
+        var later = Program.Copy(state);
+        later.Hour += hours;
+        if (chapter != null) later.Chapter = chapter.Value;
+        Rules.Complete(story, later);
+        foreach (var flag in later.Flags.Where(f => !later.Times.ContainsKey(f)).ToList()) later.Times[flag] = state.Hour;
+        return later;
+    }
+
+    internal static void Run(Story story, Action<bool, string> check)
+    {
+        Scene S(string id) => story.Scenes.Single(s => s.Id == id);
+        bool Avail(Scene s, Snapshot w) => Rules.Available(story, s, w);
+        Choice Ch(Scene s, string node, int index) => s.Nodes.Single(n => n.Id == node).Choices[index];
+        List<Snapshot> Through(Scene scene, Snapshot w, string node, int index)
+        {
+            var chosen = Ch(scene, node, index);
+            var hits = new List<Snapshot>();
+            foreach (var r in Program.Walk(scene, w))
+                if (chosen.Set.All(r.Has) && (chosen.Set.Length > 0 || r.Has(scene.Id))
+                    && chosen.Forbids.All(f => !r.Has(f) || chosen.Set.Contains(f))) hits.Add(r);
+            check(hits.Count > 0, "No outcome through " + scene.Id + "/" + node + "[" + index + "]");
+            return hits;
+        }
+        Snapshot Take(Scene scene, Snapshot w, string node, int index, params string[] also)
+        {
+            var hit = Through(scene, w, node, index).FirstOrDefault(r => also.All(r.Has));
+            check(hit != null, "No outcome of " + scene.Id + " through " + node + "[" + index + "] with " + string.Join(", ", also));
+            return hit ?? w;
+        }
+        var own = story.Scenes.Where(s => s.Relationship == "nenio" && !s.Reaction && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToArray();
+        bool Reaches(Snapshot start, string flag, int chapter = 5, Func<Snapshot, bool>? keep = null)
+        {
+            var seen = new HashSet<string>();
+            var frontier = new List<Snapshot> { start };
+            for (int depth = 0; depth < 24 && frontier.Count > 0; depth++)
+            {
+                var next = new List<Snapshot>();
+                foreach (var from in frontier)
+                {
+                    if (from.Has(flag)) return true;
+                    var w = Later(story, from, 160, chapter);
+                    foreach (var scene in own.Where(s => Avail(s, w)))
+                        foreach (var r in Program.Walk(scene, w))
+                        {
+                            if (r.Has(flag)) return true;
+                            if (keep != null && !keep(r)) continue;
+                            if (seen.Add(string.Join(",", r.Flags.OrderBy(f => f)))) next.Add(r);
+                        }
+                }
+                frontier = next.Take(300).ToList();
+            }
+            return false;
+        }
+
+        var rel = story.Relationships["nenio"];
+        var riddle = S(P + "taken.riddle");
+        var hyp = S(P + "commit.hypothesis");
+        var hypVisitor = S(P + "commit.hypothesis_visitor");
+        var result = S(P + "commit.result");
+        var replication = S(P + "commit.replication");
+        var night = S(P + "night");
+        var morning = S(P + "morning");
+        var price = S(P + "dead.the_price");
+        var priceRecreated = S(P + "dead.the_price_recreated");
+        var recreated = S(P + "killed.recreated");
+        var fieldReport = S(P + "away.field_report");
+        var correction = S(P + "away.correction_visitor");
+        var first = S(F + "dictation");
+        var demons = S(F + "demons");
+        var pages = story.Scenes.Where(s => s.Relationship == "nenio" && s.Owner == "NenioEpilogue").ToArray();
+
+        // Shape and hooks.
+        check(rel.StartedFlag == Started && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed
+              && rel.UnavailableFlags.OrderBy(f => f).SequenceEqual(new[] { "nenio.dead", "nenio.dissolved", "nenio.kicked_out", "nenio.killed_by_commander", "nenio.sent_away" })
+              && !rel.UnavailableOverrides.ContainsKey("nenio.dissolved") && rel.UnavailableOverrides.Count == 4
+              && rel.UnavailableOverrides.Values.All(v => v == Returned)
+              && rel.TricksterAccess.Keys.OrderBy(k => k).SequenceEqual(new[] { "enigma", "nenio.away", "nenio.dead", "nenio.killed_by_commander" }),
+            "Nenio's relationship does not match the build sheet (four loss overrides to the return, none for the dissolution).");
+        check(riddle.AnswerLists.SequenceEqual(new[] { FoxList }) && riddle.NativeReturnCue == FoxReturn && riddle.EntryMythic == "PlayerIsTrickster"
+              && riddle.Chapters.SequenceEqual(new[] { 5 }) && riddle.Requires.SequenceEqual(new[] { "trickster", "nenio.asked_to_leave" })
+              && riddle.Forbids.Contains("nenio.dissolved") && riddle.TricksterDevice && riddle.TricksterState == "enigma",
+            "The riddle is not the inline Trickster device on FoxMyself/AnswersList_0004, returning to Cue_0002.");
+        check(Ch(riddle, "start", 0).Check?.Skill == "SkillKnowledgeWorld" && Ch(riddle, "start", 0).Check?.DC == 32
+              && Ch(riddle, "start", 1).Check?.DC == 26 && Ch(riddle, "start", 1).Requires.SequenceEqual(new[] { "nenio.asked_forgetting" })
+              && Ch(riddle, "start", 2).Check?.DC == 26 && Ch(riddle, "start", 2).Requires.SequenceEqual(new[] { "nenio.asked_gift" })
+              && Ch(riddle, "tangled_her", 0).Check?.Skill == "SkillLoreReligion" && Ch(riddle, "tangled_her", 0).Check?.DC == 24,
+            "The riddle's checks are not Knowledge (World) 32/26 (after she explained her forgetting or her gift), with one Lore (Religion) rebuild.");
+        check(Ch(riddle, "filed", 0).NativeNext == FoxOne && Ch(riddle, "filed", 0).Forbids.Contains("nenio.fox_argued")
+              && Ch(riddle, "filed", 1).NativeNext == FoxTwo && Ch(riddle, "filed", 1).Requires.Contains("nenio.fox_argued")
+              && riddle.Nodes.Single(n => n.Id == "filed").Choices.All(c => c.Set.Contains(P + "riddle_done") && c.Set.Contains(Started) && c.Set.Contains(NameFiled)),
+            "The answered riddle is not one of her two native arguments (Cue_0019 first, Cue_0020 second) with the name filed.");
+        check(!story.Scenes.Where(s => s.Relationship == "nenio").Any(s => s.Nodes.Any(n => n.Choices.Any(c => c.Set.Any(f => f.StartsWith("trickster.wmt.use.", StringComparison.Ordinal))))),
+            "Nenio's device spends a Word Made True (the budget is full).");
+
+        // Trk_Nenio_Riddle: the stake, the told answer, a failure that costs only this wager, and the dissolution.
+        var fox = World(story, 5, "trickster", "trickster.ever", "nenio.asked_to_leave");
+        check(Avail(riddle, fox) && !Avail(riddle, World(story, 5, "trickster", "trickster.ever", "nenio.asked_to_leave", "nenio.dissolved"))
+              && !Avail(riddle, World(story, 5, "trickster.ever", "trickster.failed", "nenio.asked_to_leave")),
+            "Trk_Nenio_Riddle: the riddle is closed in the Enigma, or open after the dissolution or the lost path.");
+        var staked = Take(riddle, fox, "filed", 0, P + "riddle_done", NameFiled, Started);
+        check(!Avail(riddle, staked), "Trk_Nenio_Riddle: the wager can be made twice.");
+        var told = Take(riddle, fox, "told", 0, P + "riddle_declined");
+        check(!told.Has(Started) && !told.Has(Closed) && !told.Has(Declined), "Trk_Nenio_Riddle: the told answer closes more than the wager.");
+        var failed = Take(riddle, fox, "lost", 0, P + "riddle_declined");
+        check(!failed.Has(Closed) && Reaches(Later(story, failed, 1), Committed), "Trk_Nenio_Riddle: a failed telling locks the romance (review r3 HOW).");
+        check(Program.Walk(riddle, fox).Any(r => r.Has(P + "riddle_done")) && riddle.Nodes.Single(n => n.Id == "rebuilt").Choices.Single().Next == "stake",
+            "Trk_Nenio_Riddle: the rebuilt riddle does not lead back to the stake.");
+        check(Reaches(staked, Committed), "Trk_Nenio_Riddle: no road from the stake to the commit.");
+
+        // Trk_Nenio_Dictated: in the party, the dictation entry leaves the space; a stated fact aborts; the hypothesis commits.
+        var party = World(story, 3, "trickster", "trickster.ever", "nenio.friendship_concluded");
+        check(Avail(first, party) && !Avail(hyp, party), "Trk_Nenio_Dictated: the dictation is not the entry, or the question comes before any session.");
+        var scribed = Take(first, party, "go_on", 0, Scribe, Started);
+        check(Avail(demons, Later(story, scribed, 24)) && !Avail(hyp, Later(story, scribed, 24)), "Trk_Nenio_Dictated: the second session does not follow, or the question comes too soon.");
+        var margin = Take(demons, Later(story, scribed, 24), "hand", 0);
+        var asked = Later(story, margin, 24);
+        check(Avail(hyp, asked) && Avail(hyp, Later(story, margin, 24, 5)) && !Avail(hyp, Later(story, margin, 24, 4)),
+            "Trk_Nenio_Dictated: the hypothesis is not open in Chapters 3 and 5 after the second session.");
+        check(Ch(hyp, "dictated", 0).Abort && Ch(hyp, "unmeant", 1).Next == "dictated" && Ch(hyp, "dodge", 2).Abort,
+            "Trk_Nenio_Dictated: a stated fact does not stop her (and leave the hypothesis open).");
+        var running = Take(hyp, asked, "conditions", 0, Test, Started);
+        check(!running.Has(Tampered) && !Avail(result, Later(story, running, 12)) && Avail(result, Later(story, running, 24)),
+            "Trk_Nenio_Dictated: the result does not come the morning after the clean night.");
+        var yes = Take(result, Later(story, running, 24), "variable", 0, Committed, P + "first_night");
+        check(!Program.Walk(result, Later(story, running, 24)).Any(r => r.Has(Declined)),
+            "Trk_Nenio_Dictated: a clean night can end in her void ruling.");
+        var no = Take(result, Later(story, running, 24), "variable", 2, P + "refused_her", Closed);
+        check(!no.Has(Committed), "Trk_Nenio_Dictated: the Commander's no still commits.");
+
+        // Trk_Nenio_Tampered: the reminders void it; a confession replicates it; a denial closes it.
+        var tampering = Take(hyp, asked, "conditions", 1, Test, Tampered);
+        var voided = Take(result, Later(story, tampering, 24), "void_her", 0, Declined);
+        check(!voided.Has(Committed) && !voided.Has(Closed) && !Avail(replication, Later(story, voided, 48)) && Avail(replication, Later(story, voided, 72)),
+            "Trk_Nenio_Tampered: the contaminated night does not void the result, or the replication does not wait three days.");
+        check(Take(replication, Later(story, voided, 72), "morning", 0, Committed, P + "confessed", P + "replicated", P + "first_night").Has(Committed),
+            "Trk_Nenio_Tampered: the confession does not earn a clean replication and her yes.");
+        check(Take(replication, Later(story, voided, 72), "denied", 0, Closed).Has(Closed), "Trk_Nenio_Tampered: the denial does not close it.");
+        check(Avail(S(F + "void_days"), Later(story, voided, 24)), "Trk_Nenio_Tampered: she does not work on the evidence between the ruling and the question.");
+
+        // Trk_Nenio_Night: the threshold and the morning, the reactors, and the study after.
+        var nightWorld = Later(story, yes, 4);
+        check(Avail(night, nightWorld) && Rules.IsRemote(night) && !night.Optional, "Trk_Nenio_Night: the night does not follow her yes.");
+        var slept = Take(night, nightWorld, "watch", 0, P + "night");
+        check(Avail(morning, Later(story, slept, 6)), "Trk_Nenio_Night: the morning does not follow.");
+        var after = Take(morning, Later(story, slept, 6), "war", 0, P + "morning_after");
+        check(Avail(S(F + "longitudinal"), Later(story, after, 48)), "Trk_Nenio_Night: the study does not continue after the morning.");
+        check(night.Nodes.Single(n => n.Id == "count").Choices.Any(c => c.Requires.Contains("nenio.fox_revealed"))
+              && night.Nodes.Single(n => n.Id == "count").Choices.Any(c => c.Forbids.Contains("nenio.fox_revealed")),
+            "Trk_Nenio_Night: her tail is not gated on the kitsune reveal.");
+        var sosiel = S(P + "react.sosiel_point_five");
+        check(sosiel.Reaction && sosiel.AnswerLists.SequenceEqual(new[] { "129b55b8b5d50974f84f7c607d894fd0" }) && sosiel.Requires.Contains(P + "first_night")
+              && sosiel.Forbids.Contains("sosiel.dead") && sosiel.Forbids.Contains("sosiel.kicked_out"),
+            "Trk_Nenio_Night: Sosiel's reaction is not on his hub after the first night.");
+
+        // Trk_Nenio_LossEntries: dead (revived for the notes, or recreated), killed (recreated, unremembered), away (probation).
+        var dead = World(story, 4, "trickster", "trickster.ever", "nenio.dead", "revive.nenio.available");
+        check(Avail(price, dead) && !Avail(priceRecreated, dead) && price.Recovery == "nenio" && price.TricksterDevice,
+            "Trk_Nenio_LossEntries: the Sphinx's claim does not come for a retained body (or the recreated twin does too).");
+        var revived = Take(price, dead, "terms", 0, Returned, Started, P + "cost.manuscript_surrendered", P + "cost.owes_an_answer");
+        check(Ch(price, "raised", 0).Revive == "nenio" && Reaches(Later(story, revived, 1), Committed), "Trk_Nenio_Dead: no revive, or no road to the commit.");
+        check(Take(price, dead, "terms", 1, P + "let_rest").Has(P + "let_rest") && !Avail(price, Take(price, dead, "terms", 1, P + "let_rest")),
+            "Trk_Nenio_Dead: refusing the price does not let her rest.");
+        var noBody = World(story, 4, "trickster", "trickster.ever", "nenio.dead");
+        check(!Avail(price, noBody) && Avail(priceRecreated, noBody), "Trk_Nenio_Dead: with no body the new vessel is not offered.");
+        var remade = Take(priceRecreated, noBody, "terms", 0, Returned, P + "cost.recreated");
+        check(Later(story, remade, 1).Has(P + "visitor") && Reaches(Later(story, remade, 1), Committed), "Trk_Nenio_Recreated: she is not a visitor, or cannot be reached.");
+        var killed = World(story, 3, "trickster", "trickster.ever", "nenio.killed_by_commander");
+        check(Avail(recreated, killed) && recreated.TricksterDevice && Ch(recreated, "purpose", 0).Check?.Skill == "SkillKnowledgeArcana",
+            "Trk_Nenio_Killed: the servant does not come to the Kenabres report.");
+        var stranger = Take(recreated, killed, "terms", 0, Returned, Started, P + "cost.unremembered", P + "cost.owes_an_answer");
+        check(Later(story, stranger, 1).Has(P + "visitor") && Avail(S(P + "killed.stranger_visitor"), Later(story, stranger, 48)),
+            "Trk_Nenio_Killed: she does not come to the market, remembering nothing.");
+        check(Reaches(Later(story, stranger, 1), Committed), "Trk_Nenio_Killed: no road from the recreation to the commit.");
+        var kicked = World(story, 3, "trickster", "trickster.ever", "nenio.kicked_out");
+        check(Avail(fieldReport, kicked) && Avail(fieldReport, World(story, 5, "trickster", "trickster.ever", "nenio.sent_away")),
+            "Trk_Nenio_Away: the field report is not the device for both departures.");
+        var primed = Take(fieldReport, kicked, "reply", 0, P + "primed_away");
+        check(!primed.Has(Returned) && Avail(correction, Later(story, primed, 48)),
+            "Trk_Nenio_Away: the probation is not offered at the market after the reply.");
+        var probation = Take(correction, Later(story, primed, 48), "record", 0, Returned, Started, P + "cost.demoted", Scribe);
+        check(Take(correction, Later(story, primed, 48), "record", 1, Closed).Has(Closed) && Reaches(Later(story, probation, 1), Committed),
+            "Trk_Nenio_Away: the probation has no refusal, or no road to the commit.");
+        check(Avail(hypVisitor, Later(story, Take(S(F + "demons_visitor"), Later(story, probation, 24), "hand", 0), 24)),
+            "Trk_Nenio_Away: the question does not come to the market.");
+        check(!own.Any(s => Avail(s, World(story, 5, "trickster.ever", "trickster.failed", "nenio.dead"))) && !Avail(price, World(story, 5, "trickster.ever", "nenio.dead", "revive.nenio.available")),
+            "Trk_Nenio_PathFailed: a loss device opens after the path is lost.");
+        check(!own.Any(s => Avail(s, World(story, 5, "trickster", "trickster.ever", "nenio.dissolved", "nenio.asked_to_leave"))),
+            "Trk_Nenio_Dissolved: a scene opens after 'Farewell, Nenio.'.");
+
+        // Coexistence: no state closes or reads another relationship; no crowded hub; the presence is off Fye, the yard and the smith.
+        var others = story.Relationships.Where(r => r.Key != "nenio").SelectMany(r => new[] { r.Value.StartedFlag, r.Value.ClosedFlag, r.Value.CommittedFlag }).ToHashSet();
+        check(story.Scenes.Where(s => s.Relationship == "nenio").All(s => s.Requires.Concat(s.Forbids).Concat(s.RequiresAnyGroups.SelectMany(g => g)).All(f => !others.Contains(f))
+              && s.Nodes.All(n => n.Choices.All(c => c.Set.All(f => f.StartsWith("nenio.", StringComparison.Ordinal) || f == "trickster.secret.nenio_kenabres")))),
+            "A Nenio scene reads or writes another relationship's state.");
+        check(!own.Any(s => s.AnswerLists.Contains("0f12118177d102f428a3b30b15b132eb") || s.AnswerLists.Contains("9b15b09c244076047b02f317e55ef5e3")
+                            || s.AnswerLists.Contains("a380d926e92f70e429681eb9654478f9") || s.AnswerLists.Contains("15f754455d1d87c42a4e14df456d5415")),
+            "A Nenio scene hangs on a crowded hub (Fye, the yard, the smith).");
+        var presence = story.Presences["nenio.presence"];
+        var arcade = story.Presences["nenio.presence.arcade"];
+        check(presence.Unit == CopyUnit && presence.At?.NearUnit == "bad9f602b81a80047ac470b01ebe65a9" && presence.At?.Side == "behind"
+              && presence.Requires.Contains(P + "visitor") && presence.Forbids.Contains(Closed) && presence.Dialog == "hub"
+              && arcade.At?.NearUnit == "bc1093231b1577a4485a730c29595195" && arcade.Requires.Contains("nenio.presence.failed"),
+            "Her presence is not the copy behind the exotic trader (5 m from Aranka), with the jeweller's arcade as the fallback.");
+        foreach (var hub in own.Where(s => s.InteractionHub != null))
+            check(hub.ContactUnit == CopyUnit && hub.Areas.SequenceEqual(new[] { Drezen }) && hub.Requires.Contains(P + "visitor") && hub.Forbids.Contains(Closed),
+                "A market scene is not a visitor scene at her copy: " + hub.Id);
+        foreach (var inParty in own.Where(s => s.AnswerLists.Contains(Hub)))
+            check(inParty.ContactUnit == Unit && inParty.Forbids.Contains(P + "visitor"), "A hub scene plays for a visitor: " + inParty.Id);
+
+        // Pacing: a beat in every chapter she is available (Ch4 by rest, in the party or by letter).
+        check(own.Count(s => s.Chapters.Contains(4) && Rules.IsRemote(s) && s.Id.StartsWith(F, StringComparison.Ordinal) && s.Forbids.Contains(P + "visitor")) >= 2
+              && own.Any(s => s.Chapters.Contains(4) && s.Requires.Contains(P + "visitor")),
+            "Pacing: Chapter 4 is a silence (the Abyss beats in the party, the letter from Drezen).");
+
+        // Pages: the article, the late yes, the void, and the closed page; none writes anything.
+        check(pages.Select(s => s.Id).OrderBy(i => i).SequenceEqual(new[] { P + "epilogue.article", P + "epilogue.closed", P + "epilogue.commit", P + "epilogue.void" })
+              && pages.All(s => s.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0))),
+            "Nenio's pages are not the article, the late yes, the void and the closed page.");
+        var ch6 = World(story, 6, "trickster.ever", Started, Committed, NameFiled);
+        check(Avail(S(P + "epilogue.article"), ch6) && !Avail(S(P + "epilogue.commit"), ch6), "Pages: the committed page is not the article.");
+        check(Avail(S(P + "epilogue.commit"), World(story, 6, "trickster.ever", Started)), "Pages: the war's end has no late yes.");
+
+        // Reactions: Anevia at the gate (a Ch1-killed Nenio walks in), guarded by her own return.
+        var anevia = S(P + "react.anevia_gate");
+        check(anevia.Reaction && anevia.Requires.Contains(Returned) && anevia.Requires.Contains("nenio.killed_by_commander")
+              && anevia.Forbids.Contains("anevia_gone") && anevia.ForbidOverrides["anevia_gone"] == "anevia.trickster.returned",
+            "Anevia's gate reaction is not guarded by her own fate and return.");
+
+        // Areelu G6(b): her Nenio lines lift the four losses (never the dissolution) on Nenio's return.
+        var areeluReact = S("areelu.trickster.react.nenio_two_drafts");
+        check(areeluReact.ForbidOverrides.Count == 4 && areeluReact.ForbidOverrides.Values.All(v => v == Returned)
+              && !areeluReact.ForbidOverrides.ContainsKey("nenio.dissolved"),
+            "Areelu's reaction does not carry the G6(b) overrides to Nenio's return.");
+        var visitors = S("areelu.trickster.report.visitors").Nodes.Single(n => n.Id == "start").Choices;
+        check(visitors.Last().Next == "nenio" && visitors.Last().Requires.SequenceEqual(new[] { Returned }) && visitors.Last().Forbids.SequenceEqual(new[] { "nenio.dissolved" }),
+            "Areelu's 'Let Nenio in' has no appended G6(b) twin for a returned Nenio.");
+    }
+}

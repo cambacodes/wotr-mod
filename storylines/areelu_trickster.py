@@ -87,6 +87,7 @@ CRIB_MYSTERY = "areelu.crib.mystery"    # AreeluCell/Answer_0015 "Closeness to m
 YEARS_ASKED = "areelu.years_asked"      # LetsFinalFight/Answer_0054 -> Cue_0055 "Years, or decades, perhaps."
 TRICKSTER_ENDINGS = ("ending.trickster", "ending.trickster_allplanes", "ending.trickster_allplanes_fw", "ending.trickster_full")
 NENIO_GONE = ("nenio.dead", "nenio.killed_by_commander", "nenio.sent_away", "nenio.kicked_out", "nenio.dissolved")
+NENIO_BACK = "nenio.trickster.returned"   # Nenio's Trickster return (nenio_trickster); G6(b) overrides only, never read otherwise
 
 DERIVED = {SURVIVES: [[SAC_TRICK, DRAWN], [CHEATED]], BURNED: [["sacrifice", "ending.wound_closed"]]}
 
@@ -746,7 +747,9 @@ SCENES.extend([
 "One says 'deceased'. The other says 'bankrupt'. I will publish whichever one your joke makes true."
 {n}She lowers them, and her ears flatten a little.{/n} "I have also left a third sheet blank. I do not like the third sheet. It is the only entry in the whole encyclopaedia that I cannot finish by research."''',
              answer_list=NENIO_HUB, forbids=("nenio.dead", "nenio.killed_by_commander", "nenio.sent_away", "nenio.kicked_out"),
-             chapter=5, last=6, entry='"I made a wager with Areelu."'),
+             chapter=5, last=6, entry='"I made a wager with Areelu."',
+             # G6(b), added with Nenio's route: her Trickster return lifts every loss but the dissolution.
+             ForbidOverrides={k: NENIO_BACK for k in NENIO_GONE if k != "nenio.dissolved"}),
     reaction("Ember", "areelu.trickster.react.ember_regret", (BET,),
              '''"You made a bet with the sad lady." {n}Ember twists a strand of her hair around one finger, thinking hard.{/n}
 "If she loses, will she be sad? She said she doesn't remember what regret feels like."
@@ -1497,7 +1500,9 @@ report("areelu.trickster.report.visitors", "The report: visitors", [
         c("[Let the old knight in.]", "knight"),
         c("[Let Daeran in.]", "daeran", forbids=("daeran.dead", "daeran.kicked_out")),
         c("[Let the girl with the drum in.]", "drum"),
-        c("[Close the door on the curious.]", "shut")),
+        c("[Close the door on the curious.]", "shut"),
+        # G6(b), added with Nenio's route (append-only): she comes back on the Trickster path; never after the dissolution.
+        c("[Let Nenio in.]", "nenio", requires=(NENIO_BACK,), forbids=("nenio.dissolved",))),
     nar("nenio", '''{n}Nenio came with a folio, two pairs of calipers, and a list of forty questions, several of which were the same question asked in different ways to catch a liar out.{/n}
 {n}"At Iz I saluted you on behalf of the entire scientific community of Golarion," she announced. "I would like to withdraw the salute and issue a revised one, with footnotes." "I told you then," said Areelu, "that I was interested in neither praise nor reproach." "Yes," said Nenio. "That is footnote one."{/n}''',
         c("Continue", "nenio_after")),
