@@ -17,7 +17,8 @@ OVERRIDES below. Writer/handoffs/SCENE-KINDS.md is the review table (tools: pyth
 """
 import re
 
-KINDS = ("letter", "visit", "sending", "memory", "event")
+KINDS = ("letter", "visit", "sending", "memory", "event", "invitation")
+# "invitation" is never inferred: it is authored (household.invitation(), 08 §8) and kind_of() keeps an authored Kind.
 
 # Owners that are presentation labels rather than a person the player sees.
 GENERIC_OWNERS = ("Memory", "Rest", "Commander")
@@ -127,6 +128,9 @@ def classify(scene):
 
 
 def kind_of(scene):
+    authored = scene.get("Kind")
+    if authored in KINDS:
+        return authored
     return OVERRIDES.get(scene["Id"]) or classify(scene)
 
 

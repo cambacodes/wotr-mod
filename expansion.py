@@ -63,6 +63,7 @@ from storylines import rrt_ui
 from storylines import rrt_portraits
 from storylines import scene_kinds
 from storylines import lastcall
+from storylines import household
 from storylines import gesmerha_campaign
 from storylines import gesmerha_late_campaign
 from storylines import ember_campaign
@@ -428,6 +429,9 @@ def make_expansion(*, independent_tirabade=True):
     lastcall.integrate(payload)
     trickster_engine(payload)
     trickster_world.integrate(payload)
+    # The household (08): the Table, stance hooks and the Ledger's household sections. After Last Call (its Ledger book)
+    # and after the Trickster engine and world, whose late-commitment keys feed <rel>.harem.eligible.
+    household.integrate(payload)
     # E15: the RRT book UI (glossary tooltips, the guide book).
     rrt_ui.integrate(payload)
     rrt_portraits.integrate(payload)
