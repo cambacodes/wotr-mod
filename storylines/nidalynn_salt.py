@@ -143,8 +143,8 @@ visit(FLIGHT, "Salt on bread", [
     nar("table", '''{n}When she sees you she goes inside without a word, and you follow her.{/n}
 {n}Inside, in the heat, on the bricks by the kiln's mouth, she has laid out a cloth. On the cloth is a round loaf, dark, still warm, and a knife, and a small cake of something greyish-white, rough, the size of a child's fist, worn smooth on one side, as if something had licked it for a long time.{/n}''',
         c("Continue", "salt")),
-    nd("salt", '''"It's salt. From the Windstep lick-stone at the summer camp, where the mares came to lick it." {n}She sits down on her heels by the cloth and touches it with one finger.{/n} "The last piece. I took it the year the Wound opened, when I came back and there was nothing on the grass. I've carried it a hundred years. I never found anyone to break it for."
-"Reudger gave me bread and salt the night I came out of the snow. Among the Windstep that's how you say 'of my fire'. You don't say it with your mouth. You say it with salt, and the other one says yes by eating it."''',
+    nd("salt", '''"It's salt. From the lick-stone at Reudger's summer pasture, where his mares came to lick it." {n}She sits down on her heels by the cloth and touches it with one finger.{/n} "The last piece. I took it the year the Wound opened, when I came back and there was nothing on the grass. I've carried it a hundred years. I never found anyone to break it for."
+"Reudger gave me bread and salt the first night I came to his fire. It was his way of saying 'of my fire'. Not the clan's; his. You don't say it with your mouth. You say it with salt, and the other one says yes by eating it."''',
         c("Continue", "ask")),
     nd("ask", '''{n}She picks up the knife and cuts the heel off the loaf, and holds the salt over it, and breaks a piece off the edge of the cake between her thumb and forefinger. It takes some doing. It has been a stone for a long time.{/n}
 "I'm not asking you to be anybody's husband, or wife, or to swear anything to a priest. I'm too old for priests." {n}She crumbles the salt over the bread.{/n} "I'm asking you to be of my fire. Mine, and hers, as long as the salt's in your blood. And it doesn't go out. So."''',
@@ -362,12 +362,12 @@ visit(LONG_NIGHT, "What a silver is afraid of", [
         c("[Put your arm round her, and wait.]", "arm")),
     nar("arm", '''{n}She leans into it, the whole long warm weight of her, as if she had been waiting for somebody to do exactly that for a very long time and had given up expecting it.{/n}''',
         c("Continue", "tell")),
-    nd("tell", '''"When the Wound opened I was two years north, sulking. Reudger and I had quarrelled over a mare. I'd said his eyes were going, which they were, and flown off to show him." {n}She pokes the embers with a stick, harder than they need.{/n}
-"I came back to ash. I never said sorry. That's the whole of it." {n}A pause.{/n} "And the mare was lame. I was right about the mare. That's the worst part: I was right about the mare."''',
+    nd("tell", '''"When the Wound opened I was a long way north, off on my own business and in no hurry, because I'm never in a hurry." {n}She pokes the embers with a stick, harder than they need.{/n}
+"I came back to ash. I'd not said goodbye to him. I thought there was time; there's always time, for us. That's the whole of it." {n}She holds out her hand without looking.{/n} "There. It's said. Pass me the bread."''',
         c('"He knew."', "knew"),
         c("[Say nothing. Hold on.]", "hold")),
     nd("knew", '''"You can't know that." {n}But she is listening.{/n}''',
-        c('"He gave a white-haired girl his salt when she came out of the snow, and never asked her where from. He knew she\'d come back. People like that always know."', "salt")),
+        c('"He gave a white-haired girl his salt at his fire, and never asked her where from. He knew she\'d come back. People like that always know."', "salt")),
     nd("salt", '''{n}She does not answer for a long time. When she does, her voice has gone thick.{/n} "That's a trickster's trick. Saying the thing somebody needs to hear, and saying it so well they can't argue." {n}She wipes her face with the heel of her hand.{/n} "It's also true. I think. I'm going to decide it's true, and you're not to take it back."''',
         c("Continue", "afraid")),
     nd("hold", '''{n}She lets you. After a while her breathing evens out, and she says, in a different voice:{/n} "Thank you. For not saying something clever. I know you had one ready."''',

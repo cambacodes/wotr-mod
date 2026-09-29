@@ -286246,7 +286246,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "Nidalynn did not wait in Drezen for news of Threshold, and she did not go north. She banked the kiln under the east wall as high as it would go, and sat on its step through the whole of that night with bread and salt in her lap, feeding the fire, the way the Windstep sat up for a rider who was late home in a snowstorm. The young dragon sat beside her and would not go to sleep.",
+          "Text": "Nidalynn did not wait in Drezen for news of Threshold, and she did not go north. She banked the kiln under the east wall as high as it would go, and sat on its step through the whole of that night with bread and salt in her lap, feeding the fire, the way old Reudger, she said, used to sit up for a rider late home in a snowstorm. The young dragon sat beside her and would not go to sleep.",
           "Choices": [
             {
               "Text": "Continue",
@@ -286260,7 +286260,7 @@
           "Portrait": "",
           "Paragraphs": [
             {
-              "Text": "At the rift the Commander called across the broken ground the way the Windstep called kin home over a great distance, a long rising shout with a name at the end of it, and far off to the south something silver came up out of the clouds over Drezen and answered it, and came. She landed on the lip of the world with a young red-black dragon screaming at her heels, and took one look at what was left of the Commander, and said that the soup was getting cold.",
+              "Text": "At the rift the Commander called across the broken ground with a long rising herding-shout, the kind that brings mares home over a great distance, with her name at the end of it, and far off to the south something silver came up out of the clouds over Drezen and answered it, and came. She landed on the lip of the world with a young red-black dragon screaming at her heels, and took one look at what was left of the Commander, and said that the soup was getting cold.",
               "Requires": [
                 "nidalynn.lastcall.called"
               ],
@@ -286866,7 +286866,7 @@
         {
           "Id": "windstep",
           "Speaker": "Nidalynn",
-          "Text": "\"The Windstep were horse-folk. North, past the Moutray, on the grass.\" {n}She stares into the kiln's mouth, and something in her face goes a long way off.{/n} \"Mares, and mare's milk, and skies that went on for ever. The brand was a mare galloping under the stars. They'd sear it into the leather of their saddles and the rinds of their cheeses and the lintels of their winter houses.\"\n\"I came to them out of a snowstorm, when I was very young, in a shape I'd only just learned to wear. A white-haired girl with no people and very bad manners. Reudger the White took me in. He was their cheesemaker, and their best horseman, and he was nobody's lord. I called him grandfather because everybody did.\"",
+          "Text": "\"The Windstep were horse-folk, on the grass, north of the Moutray.\" {n}She stares into the kiln's mouth, and something in her face goes a long way off.{/n} \"Mares, and mare's milk, and skies that went on for ever. The brand was a mare galloping under the stars.\"\n\"Reudger the White was their cheesemaker. Not a lord, not a warrior. I came to his fire when I was young and still clumsy in this shape, and he never once asked me where from. I called him grandfather. Half the grass did.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -286882,7 +286882,7 @@
         {
           "Id": "reudger",
           "Speaker": "Nidalynn",
-          "Text": "\"You knew Reudger, then.\" {n}It is not quite a question, and she does not quite answer it.{/n} \"They say he asked after the Olesk, when your clan stopped coming to the summer camp. They say he thought the Olesk boys had gone off to be warriors, and called it a waste of good horsemanship.\"\n\"Nobody ever found his grave, Olesk. I've heard it said people looked.\"",
+          "Text": "\"It was his habit, not the clan's: a heel of bread with salt on it for anyone who came to his fire. 'There. Now you're of my fire, and I'll hear no more about where you're from.'\" {n}She almost smiles.{/n} \"He'd sit on the step of his summer house with his pipe, watching the mares, and when I sat down by him he'd pass me a piece of cheese and ask me a riddle.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -286898,7 +286898,7 @@
         {
           "Id": "riddle",
           "Speaker": "Nidalynn",
-          "Text": "\"Always the same riddle. 'You need salt to make cheese, girl. It keeps it and gives it its taste. So what's Golarion's salt? What lets us live here, and makes it worth the living?'\" {n}She says it in a deep, slow voice, a man's voice with a pipe in it, and then she laughs at herself.{/n}\n\"And I'd say 'snow', every time, because I loved the snow. And every time he'd laugh at me and say snow was as white as salt but half the world had never seen it. For forty years.\"",
+          "Text": "\"Always the same riddle. 'You need salt to make cheese, girl. It keeps it and gives it its taste. So what's Golarion's salt? What lets us live here, and makes it worth the living?'\" {n}She says it in a deep, slow voice, a man's voice with a pipe in it, and then she laughs at herself.{/n}\n\"And I'd say 'snow', every time, because I loved the snow. And every time he'd laugh at me and say snow was as white as salt but half the world had never seen it. Year after year.\"",
           "Choices": [
             {
               "Text": "\"And the answer?\"",
@@ -286968,7 +286968,7 @@
         {
           "Id": "snow",
           "Speaker": "Nidalynn",
-          "Text": "{n}She laughs, delighted, loud enough that the snow on the kiln's lip shivers.{/n} \"Forty years I said that, and nobody ever agreed with me. Not once.\" {n}She wipes her eyes with a sooty wrist and leaves a streak.{/n} \"It's wrong. The answer's the common folk. Farmers and weavers and cheesemakers; wars come and go and the ploughing doesn't. But I've always liked the snow better, and I'll not be told I'm wrong about it twice in one night.\"",
+          "Text": "{n}She laughs, delighted, loud enough that the snow on the kiln's lip shivers.{/n} \"Year after year I said that, and nobody ever agreed with me. Not once.\" {n}She wipes her eyes with a sooty wrist and leaves a streak.{/n} \"It's wrong. The answer's the common folk. Farmers and weavers and cheesemakers; wars come and go and the ploughing doesn't. But I've always liked the snow better, and I'll not be told I'm wrong about it twice in one night.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -287868,7 +287868,7 @@
         {
           "Id": "salt",
           "Speaker": "Nidalynn",
-          "Text": "\"I'm not going to bargain with you, Commander. I'm too old, and it's beneath us both.\" {n}She folds her hands on the belly.{/n} \"I'll tell you how it is with me, and you'll do what you like.\"\n\"Among the Windstep you don't eat salt with somebody who lies about what they love. It's not a law. There's no punishment. It's only that the salt won't go down.\" {n}She looks at the hatchling.{/n} \"You love this ugly little thing. I've seen you look at her. And you stood in that lane and told the whole city she was a stray from the hills. I can't eat at your fire while that's the story. The salt won't go down.\"",
+          "Text": "\"I'm not going to bargain with you, Commander. I'm too old, and it's beneath us both.\" {n}She folds her hands on the belly.{/n} \"I'll tell you how it is with me, and you'll do what you like.\"\n\"Reudger wouldn't eat salt with a man who lied to him about what he loved. It wasn't a rule. He said it only wouldn't go down. I've found he was right.\" {n}She looks at the hatchling.{/n} \"You love this ugly little thing. I've seen you look at her. And you stood in that lane and told the whole city she was a stray from the hills. I can't eat at your fire while that's the story. The salt won't go down.\"",
           "Choices": [
             {
               "Text": "[Go to the morning muster and tell the garrison the truth] \"Tomorrow. At muster, in front of all of them.\"",
@@ -288415,7 +288415,7 @@
         {
           "Id": "goats",
           "Speaker": "Nidalynn",
-          "Text": "\"Goats.\" {n}Something eases in her face.{/n} \"Yes. That's a farmer's answer. A dragon that thinks of goats as dinner thinks of goatherds as the people who keep her dinner. That's a start.\" {n}She scratches the hatchling under the jaw; it allows it.{/n} \"The Windstep had a dragon once, did I tell you? An old green, in the high fells. They paid it a goat a month and it guarded their passes for two generations.\"",
+          "Text": "\"Goats.\" {n}Something eases in her face.{/n} \"Yes. That's a farmer's answer. A dragon that thinks of goats as dinner thinks of goatherds as the people who keep her dinner. That's a start.\" {n}She scratches the hatchling under the jaw; it allows it.{/n} \"The old folk on the grass used to say a well-fed dragon is a good neighbour. They mostly meant wolves. It holds.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -290719,7 +290719,7 @@
         {
           "Id": "salt",
           "Speaker": "Nidalynn",
-          "Text": "\"It's salt. From the Windstep lick-stone at the summer camp, where the mares came to lick it.\" {n}She sits down on her heels by the cloth and touches it with one finger.{/n} \"The last piece. I took it the year the Wound opened, when I came back and there was nothing on the grass. I've carried it a hundred years. I never found anyone to break it for.\"\n\"Reudger gave me bread and salt the night I came out of the snow. Among the Windstep that's how you say 'of my fire'. You don't say it with your mouth. You say it with salt, and the other one says yes by eating it.\"",
+          "Text": "\"It's salt. From the lick-stone at Reudger's summer pasture, where his mares came to lick it.\" {n}She sits down on her heels by the cloth and touches it with one finger.{/n} \"The last piece. I took it the year the Wound opened, when I came back and there was nothing on the grass. I've carried it a hundred years. I never found anyone to break it for.\"\n\"Reudger gave me bread and salt the first night I came to his fire. It was his way of saying 'of my fire'. Not the clan's; his. You don't say it with your mouth. You say it with salt, and the other one says yes by eating it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -292121,7 +292121,7 @@
         {
           "Id": "tell",
           "Speaker": "Nidalynn",
-          "Text": "\"When the Wound opened I was two years north, sulking. Reudger and I had quarrelled over a mare. I'd said his eyes were going, which they were, and flown off to show him.\" {n}She pokes the embers with a stick, harder than they need.{/n}\n\"I came back to ash. I never said sorry. That's the whole of it.\" {n}A pause.{/n} \"And the mare was lame. I was right about the mare. That's the worst part: I was right about the mare.\"",
+          "Text": "\"When the Wound opened I was a long way north, off on my own business and in no hurry, because I'm never in a hurry.\" {n}She pokes the embers with a stick, harder than they need.{/n}\n\"I came back to ash. I'd not said goodbye to him. I thought there was time; there's always time, for us. That's the whole of it.\" {n}She holds out her hand without looking.{/n} \"There. It's said. Pass me the bread.\"",
           "Choices": [
             {
               "Text": "\"He knew.\"",
@@ -292148,7 +292148,7 @@
           "Text": "\"You can't know that.\" {n}But she is listening.{/n}",
           "Choices": [
             {
-              "Text": "\"He gave a white-haired girl his salt when she came out of the snow, and never asked her where from. He knew she'd come back. People like that always know.\"",
+              "Text": "\"He gave a white-haired girl his salt at his fire, and never asked her where from. He knew she'd come back. People like that always know.\"",
               "Next": "salt",
               "Set": [],
               "Requires": [],
@@ -295110,7 +295110,7 @@
         {
           "Id": "call",
           "Speaker": "Narrator",
-          "Text": "{n}The Windstep called their kin home across the grass with one long rising shout and a name at the end of it; she taught it to you on a snowfield. You give it everything you have left. It goes out over the rift and is swallowed, and then, very far off, over a city you cannot see, something answers.{/n}",
+          "Text": "{n}You have heard her hum it at the kiln: the long rising herding-shout that brought Reudger's mares home across the grass. You put her name at the end of it. You give it everything you have left. It goes out over the rift and is swallowed, and then, very far off, over a city you cannot see, something answers.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -295467,8 +295467,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",

@@ -135,14 +135,13 @@ visit(P + "kiln.fire", "The lime-kiln", [
         c("Continue", "windstep")),
     nd("old", '''"Old enough that it's rude to ask." {n}She takes the knife back and cuts herself a piece of the bread.{/n} "Old enough that I was a girl at a fire in Sarkoris before the Wound. Old enough that it doesn't feel very long ago." {n}She chews.{/n} "Not as old as all that. Dragons live a long time. I'm not halfway."''',
         c("Continue", "windstep")),
-    nd("windstep", '''"The Windstep were horse-folk. North, past the Moutray, on the grass." {n}She stares into the kiln's mouth, and something in her face goes a long way off.{/n} "Mares, and mare's milk, and skies that went on for ever. The brand was a mare galloping under the stars. They'd sear it into the leather of their saddles and the rinds of their cheeses and the lintels of their winter houses."
-"I came to them out of a snowstorm, when I was very young, in a shape I'd only just learned to wear. A white-haired girl with no people and very bad manners. Reudger the White took me in. He was their cheesemaker, and their best horseman, and he was nobody's lord. I called him grandfather because everybody did."''',
+    nd("windstep", '''"The Windstep were horse-folk, on the grass, north of the Moutray." {n}She stares into the kiln's mouth, and something in her face goes a long way off.{/n} "Mares, and mare's milk, and skies that went on for ever. The brand was a mare galloping under the stars."
+"Reudger the White was their cheesemaker. Not a lord, not a warrior. I came to his fire when I was young and still clumsy in this shape, and he never once asked me where from. I called him grandfather. Half the grass did."''',
         c("Continue", "reudger")),
-    nd("reudger", '''"You knew Reudger, then." {n}It is not quite a question, and she does not quite answer it.{/n} "They say he asked after the Olesk, when your clan stopped coming to the summer camp. They say he thought the Olesk boys had gone off to be warriors, and called it a waste of good horsemanship."
-"Nobody ever found his grave, Olesk. I've heard it said people looked."''',
+    nd("reudger", '''"It was his habit, not the clan's: a heel of bread with salt on it for anyone who came to his fire. 'There. Now you're of my fire, and I'll hear no more about where you're from.'" {n}She almost smiles.{/n} "He'd sit on the step of his summer house with his pipe, watching the mares, and when I sat down by him he'd pass me a piece of cheese and ask me a riddle."''',
         c("Continue", "riddle")),
     nd("riddle", '''"Always the same riddle. 'You need salt to make cheese, girl. It keeps it and gives it its taste. So what's Golarion's salt? What lets us live here, and makes it worth the living?'" {n}She says it in a deep, slow voice, a man's voice with a pipe in it, and then she laughs at herself.{/n}
-"And I'd say 'snow', every time, because I loved the snow. And every time he'd laugh at me and say snow was as white as salt but half the world had never seen it. For forty years."''',
+"And I'd say 'snow', every time, because I loved the snow. And every time he'd laugh at me and say snow was as white as salt but half the world had never seen it. Year after year."''',
         c('"And the answer?"', "answer"),
         c('"The common folk."', "folk", flags=(RIDDLE_FOLK,)),
         c('"Snow. You were right."', "snow", flags=(RIDDLE_SNOW,))),
@@ -150,7 +149,7 @@ visit(P + "kiln.fire", "The lime-kiln", [
         c("Continue", "remember", flags=(RIDDLE_NONE,))),
     nd("folk", '''{n}She turns her head and looks at you, surprised, and then not surprised at all.{/n} "Yes. Of course you'd know it. You've got a city of them behind that wall and you're the one feeding them." {n}She looks back at the fire.{/n} "I didn't understand it until they were all dead. You don't, usually."''',
         c("Continue", "remember")),
-    nd("snow", '''{n}She laughs, delighted, loud enough that the snow on the kiln's lip shivers.{/n} "Forty years I said that, and nobody ever agreed with me. Not once." {n}She wipes her eyes with a sooty wrist and leaves a streak.{/n} "It's wrong. The answer's the common folk. Farmers and weavers and cheesemakers; wars come and go and the ploughing doesn't. But I've always liked the snow better, and I'll not be told I'm wrong about it twice in one night."''',
+    nd("snow", '''{n}She laughs, delighted, loud enough that the snow on the kiln's lip shivers.{/n} "Year after year I said that, and nobody ever agreed with me. Not once." {n}She wipes her eyes with a sooty wrist and leaves a streak.{/n} "It's wrong. The answer's the common folk. Farmers and weavers and cheesemakers; wars come and go and the ploughing doesn't. But I've always liked the snow better, and I'll not be told I'm wrong about it twice in one night."''',
         c("Continue", "remember")),
     nd("remember", '''"When the Wound opened, I was a long way north. By the time I came back there was nothing on the grass but ash, and things walking in the ash that should not walk." {n}The kiln roars softly.{/n} "I couldn't even find his grave. None of their graves. So I sit on steps in refugee quarters and listen to them sell their grandmothers' torcs, and I remember the names on the brands. Somebody has to. Warriors are not the only ones worth remembering."''',
         c('"You\'re still grieving them."', "grieve"),
@@ -294,7 +293,7 @@ visit(P + "kiln.truth_owed", "Hills in the north", [
     nd("silent", '''"No. I didn't." {n}She meets your eyes.{/n} "It wasn't mine to say. You stole her; I'd only have been telling on you. And you'd have let me, I think. You'd have let an old widow take the torches for you, and felt clever about it after."''',
         c("Continue", "salt")),
     nd("salt", '''"I'm not going to bargain with you, Commander. I'm too old, and it's beneath us both." {n}She folds her hands on the belly.{/n} "I'll tell you how it is with me, and you'll do what you like."
-"Among the Windstep you don't eat salt with somebody who lies about what they love. It's not a law. There's no punishment. It's only that the salt won't go down." {n}She looks at the hatchling.{/n} "You love this ugly little thing. I've seen you look at her. And you stood in that lane and told the whole city she was a stray from the hills. I can't eat at your fire while that's the story. The salt won't go down."''',
+"Reudger wouldn't eat salt with a man who lied to him about what he loved. It wasn't a rule. He said it only wouldn't go down. I've found he was right." {n}She looks at the hatchling.{/n} "You love this ugly little thing. I've seen you look at her. And you stood in that lane and told the whole city she was a stray from the hills. I can't eat at your fire while that's the story. The salt won't go down."''',
         c('[Go to the morning muster and tell the garrison the truth] "Tomorrow. At muster, in front of all of them."', "muster",
           flags=(CONFESSED,), crusade=("Favors", -150)),
         c('"The story stays. It\'s safer for her."', "stays", flags=(LIE_KEPT, CLOSED))),
@@ -381,7 +380,7 @@ visit(FEEDING, "What she eats", [
         c('"The undercroft\'s full of rats. Let her work for it."', "rats", flags=(FED_RATS,))),
     nd("demons", '''{n}She is quiet a moment.{/n} "That's a hard way to raise a child. On the thing that ruined her." {n}She looks at the pale seam down the hatchling's spine.{/n} "It might be the right one. She'll never be free of the Wound; it's in her. Better she learns to hate it than to crave it." {n}She nods, once.{/n} "Demons, then. I'll tell the provosts to bring them dead. I'll not have her fighting a vrock at this size."''',
         c("Continue", "name")),
-    nd("goats", '''"Goats." {n}Something eases in her face.{/n} "Yes. That's a farmer's answer. A dragon that thinks of goats as dinner thinks of goatherds as the people who keep her dinner. That's a start." {n}She scratches the hatchling under the jaw; it allows it.{/n} "The Windstep had a dragon once, did I tell you? An old green, in the high fells. They paid it a goat a month and it guarded their passes for two generations."''',
+    nd("goats", '''"Goats." {n}Something eases in her face.{/n} "Yes. That's a farmer's answer. A dragon that thinks of goats as dinner thinks of goatherds as the people who keep her dinner. That's a start." {n}She scratches the hatchling under the jaw; it allows it.{/n} "The old folk on the grass used to say a well-fed dragon is a good neighbour. They mostly meant wolves. It holds."''',
         c("Continue", "name")),
     nd("rats", '''"The undercroft." {n}She laughs, surprised.{/n} "You're cheaper than the Windstep, and they counted every copper." {n}She thinks about it.{/n} "It's not wrong. Let her hunt what's under her feet. She'll learn patience, and the cooks will love her, and she'll grow up thinking that what a dragon is for is keeping a house clean." {n}A pause.{/n} "There are worse lessons."''',
         c("Continue", "name")),
