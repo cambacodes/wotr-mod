@@ -220,7 +220,7 @@ SCENES.append(scene("jerribeth.trickster.dead.tenant", "The tenant", "Jerribeth"
 VOICE = '''"Whoever you are *not*. How generous, to make yourself the single exception in a demon's life."
 {n}The voice is too high for the throat it comes out of, and it takes the long way round the words, tasting them.{/n}
 "I left a few ideas in Wintersun, Commander. They keep. This one {what}."
-{n}Laughter, high and abrasive, from a man who has stopped smiling.{/n}
+{n}The deserter's mouth stays shut. The laughter comes from inside your own head, high and abrasive, and his face goes slack while it lasts.{/n}
 "I have never met you. I intend to. Then we shall see which of us the joke was on."'''
 
 # Inline on the King's hub: Owner-voiced cues take the native speaker (the King), every other node is unvoiced prose, so

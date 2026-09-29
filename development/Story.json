@@ -149252,7 +149252,7 @@
         {
           "Id": "voice",
           "Speaker": "Narrator",
-          "Text": "\"Whoever you are *not*. How generous, to make yourself the single exception in a demon's life.\"\n{n}The voice is too high for the throat it comes out of, and it takes the long way round the words, tasting them.{/n}\n\"I left a few ideas in Wintersun, Commander. They keep. This one drinks.\"\n{n}Laughter, high and abrasive, from a man who has stopped smiling.{/n}\n\"I have never met you. I intend to. Then we shall see which of us the joke was on.\"",
+          "Text": "\"Whoever you are *not*. How generous, to make yourself the single exception in a demon's life.\"\n{n}The voice is too high for the throat it comes out of, and it takes the long way round the words, tasting them.{/n}\n\"I left a few ideas in Wintersun, Commander. They keep. This one drinks.\"\n{n}The deserter's mouth stays shut. The laughter comes from inside your own head, high and abrasive, and his face goes slack while it lasts.{/n}\n\"I have never met you. I intend to. Then we shall see which of us the joke was on.\"",
           "Choices": [
             {
               "Text": "\"Then come and find out.\"",
@@ -149392,7 +149392,7 @@
         {
           "Id": "voice",
           "Speaker": "Jerribeth",
-          "Text": "{n}The sergeant's hand stops on the jug. His eyes go flat and bright at the same time, like a beetle's back.{/n}\n\"Whoever you are *not*. How generous, to make yourself the single exception in a demon's life.\"\n{n}The voice is too high for the throat it comes out of, and it takes the long way round the words, tasting them.{/n}\n\"I left a few ideas in Wintersun, Commander. They keep. This one carries cups.\"\n{n}Laughter, high and abrasive, from a man who has stopped smiling.{/n}\n\"I have never met you. I intend to. Then we shall see which of us the joke was on.\"",
+          "Text": "{n}The sergeant's hand stops on the jug. His eyes go flat and bright at the same time, like a beetle's back.{/n}\n\"Whoever you are *not*. How generous, to make yourself the single exception in a demon's life.\"\n{n}The voice is too high for the throat it comes out of, and it takes the long way round the words, tasting them.{/n}\n\"I left a few ideas in Wintersun, Commander. They keep. This one carries cups.\"\n{n}The deserter's mouth stays shut. The laughter comes from inside your own head, high and abrasive, and his face goes slack while it lasts.{/n}\n\"I have never met you. I intend to. Then we shall see which of us the joke was on.\"",
           "Choices": [
             {
               "Text": "\"Then come and find out.\"",
