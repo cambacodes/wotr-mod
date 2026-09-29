@@ -224156,10 +224156,10 @@
         {
           "Id": "cured",
           "Speaker": "Narrator",
-          "Text": "{n}Her mouth finds yours and the cold goes through you like a key turning. You do the thing you learned, the quack's trick: you name the drain a negative condition and treat it, once. It holds for one breath, and then there is nothing left in you to treat it with. She feels the second one land. She pulls back an inch, astonished, furious, laughing.{/n}\n\"You cheated once.\" {n}Her wings open behind her and cut the rain off both of you.{/n} \"Once. And now you're mine to take. Do you want me to stop?\"",
+          "Text": "{n}Her mouth finds yours and the cold goes through you like a key turning. You do the thing you learned, the quack's trick: you name the drain a negative condition and treat it, once. It holds for one breath, and then there is nothing left in you to treat it with. She feels the second one land. She pulls back an inch, astonished, furious, laughing.{/n}\n\"You cheated once.\" {n}Her wings open behind her and cut the rain off both of you.{/n} \"Once. And now you're mine to take, and I'm starving, and the only thing between you and the bottom of me is how long I can make myself hold my breath.\" {n}Her nails are in your shoulders.{/n} \"Count for me. Out loud. When you reach ten, push me off the roof.\"",
           "Choices": [
             {
-              "Text": "[Don't let her stop.]",
+              "Text": "[Start counting.]",
               "Next": "cut",
               "Set": [],
               "Requires": [],
@@ -224314,10 +224314,10 @@
         {
           "Id": "cured",
           "Speaker": "Narrator",
-          "Text": "{n}Her mouth finds yours and the cold goes through you like a key turning. You do the thing you learned, the quack's trick: you name the drain a negative condition and treat it, once. It holds for one breath, and then there is nothing left in you to treat it with. She feels the second one land. She pulls back an inch, astonished, furious, laughing.{/n}\n\"You cheated once.\" {n}Her wings open behind her and cut the rain off both of you.{/n} \"Once. And now you're mine to take. Do you want me to stop?\"",
+          "Text": "{n}Her mouth finds yours and the cold goes through you like a key turning. You do the thing you learned, the quack's trick: you name the drain a negative condition and treat it, once. It holds for one breath, and then there is nothing left in you to treat it with. She feels the second one land. She pulls back an inch, astonished, furious, laughing.{/n}\n\"You cheated once.\" {n}Her wings open behind her and cut the rain off both of you.{/n} \"Once. And now you're mine to take, and I'm starving, and the only thing between you and the bottom of me is how long I can make myself hold my breath.\" {n}Her nails are in your shoulders.{/n} \"Count for me. Out loud. When you reach ten, push me off the roof.\"",
           "Choices": [
             {
-              "Text": "[Don't let her stop.]",
+              "Text": "[Start counting.]",
               "Next": "cut",
               "Set": [],
               "Requires": [],
@@ -244664,8 +244664,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",
