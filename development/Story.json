@@ -32615,7 +32615,7 @@
         {
           "Id": "changed",
           "Speaker": "Kiana",
-          "Text": "\"No. And I can't make this easy by pretending you are wearing a costume.\"\n{n}Kiana leaves space between you. Her hands are steady, though she has stopped playing with the ribbon at her throat.{/n}\n\"I used to laugh at things that frightened me. Sometimes that helped. Sometimes I was simply frightened and laughing.\"\n{n}She draws a chair to the other side of the table.{/n}\n\"Tonight I want to hear you. We can stay here and talk. If I need more distance, I will say so. I would rather tell you the truth than perform courage for someone I want to know.\"",
+          "Text": "\"No. And I can't make this easy by pretending you are wearing a costume.\"\n{n}Kiana leaves space between you. Her hands are steady, though she has stopped playing with the ribbon at her throat.{/n}\n\"I used to laugh at things that frightened me. Sometimes that helped. Sometimes I was simply frightened and laughing.\"\n{n}She draws a chair to the other side of the table.{/n}\n\"Tonight I want to hear you. We stay here and talk. If the scene needs a wider stage, the leading lady will move her chair, and the audience will pretend not to notice. I have performed brave for half of Drezen. You get the rehearsal, lines fluffed and all.\"",
           "Choices": [
             {
               "Text": "\"Then we begin with your voice, and mine.\"",
@@ -32647,7 +32647,7 @@
         {
           "Id": "want",
           "Speaker": "Kiana",
-          "Text": "\"Here is what I want.\"\n{n}Kiana waits until she has your attention before continuing.{/n}\n\"I want this evening with you. I know you may love other people. I am not asking you to dismiss them. I am asking you to answer my letters and keep the time you give me.\"",
+          "Text": "\"Here is what I want.\"\n{n}Kiana waits until she has your attention before continuing.{/n}\n\"I want this evening with you. And the next one, if you have it. I am asking you to answer my letters, and to turn up when you say you will. An actress can forgive anything but an empty seat she was promised.\"",
           "Choices": [
             {
               "Text": "\"I can promise that.\"",
@@ -152790,7 +152790,7 @@
         {
           "Id": "inn",
           "Speaker": "Narrator",
-          "Text": "{n}The Commander went back to the inn. The dream came that night anyway, and it was hers, and she did not let the Commander wake from it until morning. At breakfast a note waited beside the bread, in a hand the Commander had never seen and knew at once: \"Twice. Do not get used to it.\"{/n}",
+          "Text": "{n}The Commander went back to the inn, and slept, and dreamed of nothing in particular. She kept her word to the letter: the Queen of Shadows did not set one foot in that dream, and made sure the Commander noticed the absence. At breakfast a note waited beside the bread, in a hand the Commander had never seen and knew at once: \"Twice. Do not get used to it.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -253293,8 +253293,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",
