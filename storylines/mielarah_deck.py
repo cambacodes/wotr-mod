@@ -1,8 +1,8 @@
 """Mielarah, Chapter 5: Starcatcher over Drezen (the courtship on her presence; 11 §2).
 
 She comes north through the Worldwound's sky with cargo, as she said she would, and moors her ship high over the city
-where nobody has to stand near her. Every beat opens from her presence at the curio stall in the market (or the
-jewellers' arcade when the stall's keeper is not in the capital), and most of them go up through her portal onto her
+where nobody has to stand near her. Every beat opens from her presence under the tailor's awning in the market (or
+the jewellers' arcade when the tailor is not in the capital), and most of them go up through her portal onto her
 deck (Tumberd/Cue_0075: "just use this portal. It will drop you right onto the deck").
 
 The beats: the cargo (her arrival, per voyage), the nearest (what the Commander did or meant to do with her curse, and
@@ -49,7 +49,7 @@ PLACES = ((HUB, "", ()), (HUB_FB, ".arcade", (HUB_FAILED,)))
 
 
 def deck(id, title, entry, nodes, requires, forbids=(), delay=0):
-    """A beat opened from her presence (the curio stall, or the arcade when the stall's keeper is gone): the same scene
+    """A beat opened from her presence (the tailor's awning, or the arcade when the tailor is gone): the same scene
     on each hub, each forbidding the other's completion."""
     for hub, suffix, extra in PLACES:
         twin = id + ("" if suffix else ".arcade")
@@ -61,13 +61,13 @@ def deck(id, title, entry, nodes, requires, forbids=(), delay=0):
 
 # --- 1. The cargo: Starcatcher over Drezen. ------------------------------------------------------------------------
 
-deck(D + "cargo", "Cargo for the curio stall", '"You came through the Worldwound."', [
-    nar("start", '''{n}Mielarah looks up from the bill of lading. The circle of empty cobbles around her is a good three strides across; the curio seller has pulled his whole stall back against the wall to keep out of it, and looks as though he would pull the wall back too, if he could.{/n}
+deck(D + "cargo", "Cargo for the market", '"You came through the Worldwound."', [
+    nar("start", '''{n}Mielarah looks up from the bill of lading. The circle of empty cobbles around her is a good three strides across; the tailor has dragged his cutting table back under the far edge of his awning to keep out of it, and looks as though he would drag the awning back too, if he could.{/n}
 {n}She sees you, and her face does something complicated, and then settles on courtesy, which is where it always settles.{/n}''',
         c("Continue", "third", requires=(LANDFALL,), forbids=(RETURNED,)),
         c("Continue", "scarf", requires=(RETURNED,), forbids=(SHIP_LOST,)),
         c("Continue", "fourth", requires=(SHIP_LOST,)),
-        c("Continue", "charter", requires=(CHARTER,), forbids=(LANDFALL, RETURNED))),
+        c("Continue", "charter", forbids=(LANDFALL, RETURNED, SHIP_LOST))),
     mi("third", '''"Through the Worldwound, yes. As promised." {n}She points up with her pencil, without looking. High over the citadel, small as a toy against the clouds, a ship hangs at anchor in the sky: Starcatcher the Third, her sails furled, her lanterns lit in the afternoon.{/n}
 "The sky over the Wound is the colour of a week-old bruise and full of things with wings. My crew prayed to four gods on the way through. One of them answered, but I couldn't tell you which." {n}She ticks a line.{/n} "Cold iron from the Isles, Abyssal salts for your alchemists, and forty-one people from Alushinyrra who wanted any sky but that one. I set them down outside the walls. Your gate sergeant was very rude about it."''',
        c("Continue", "oskel_told", requires=(MEANT,), forbids=OSKEL_ALIVE),
@@ -90,7 +90,7 @@ deck(D + "cargo", "Cargo for the curio stall", '"You came through the Worldwound
 "It also has a use for a cursed one, apparently, since you asked me here. Three days, and a porter has dropped a crate of my cold iron on his own foot, and a cart horse has bolted in this square and put a man through a shop window. Nobody dead." {n}Her mouth tightens.{/n} "Yet. That is the most accurate word in my vocabulary. Yet."''',
        c('[Step inside her circle of empty cobbles.]', "circle"),
        c('"You keep everyone at arm\'s length out here."', "arms")),
-    mi("circle", '''{n}The curio seller makes a small noise, as if you had stepped off a roof.{/n}
+    mi("circle", '''{n}The tailor makes a small noise, as if you had stepped off a roof.{/n}
 "Nobody comes inside the circle." {n}She does not step back. She has to lift her chin a little to look at you, and she does it the way she lifted it in the Bad Luck to tell you her ship was at your disposal: solemnly, as if pronouncing something.{/n} "You know the rule. You know it better than I do. And you walk in anyway."
 "Brave, or careless. I keep saying that about you. I am beginning to think it is a single word in some language I don't speak."''',
        c("Continue", "moored")),
@@ -98,7 +98,7 @@ deck(D + "cargo", "Cargo for the curio stall", '"You came through the Worldwound
 {n}She does not seem hurt by it. She seems to find it correct.{/n}''',
        c("Continue", "moored")),
     mi("moored", '''"So I have moored Starcatcher a hundred fathoms up, where the only people near me are my crew, and they are paid for it. I come down to trade, and I go back up, and your city keeps its porters." {n}She folds the bill of lading, and folds it again.{/n}
-"There is a portal on the deck that comes out behind this stall, and another behind it that goes back. If you wanted to come up and see her, I would not stop you." {n}The smile arrives, quick and a little sharp.{/n} "Don't read anything into it. It is a professional courtesy. I show all my best customers the ship."''',
+"There is a portal on the deck that comes out behind this awning, and another behind it that goes back. If you wanted to come up and see her, I would not stop you." {n}The smile arrives, quick and a little sharp.{/n} "Don't read anything into it. It is a professional courtesy. I show all my best customers the ship."''',
        c('"I\'ll come up."', "close", flags=(DOCKED,)),
        c('[Flirt] "All your best customers? I\'d like to meet the competition."', "competition", flags=(DOCKED,))),
     mi("close", '''"Tomorrow, then. I will be busy today being rude to your quartermasters." {n}She tucks the bill of lading into her coat.{/n} "Mind the step when you come through. There is always a step, with portals. Nobody believes me until they've fallen over it."''',
@@ -112,12 +112,12 @@ deck(D + "cargo", "Cargo for the curio stall", '"You came through the Worldwound
 # --- 2. The nearest: what was done with her curse, and her one demand. ----------------------------------------------
 
 deck(D + "nearest", "The nearest", '"I came to see the ship."', [
-    nar("start", '''{n}You step through a door of salt light behind the curio stall and fall over the step, exactly as promised, onto a deck a hundred fathoms above Drezen. The wind up here is clean and very cold. The city below is a map of itself.{/n}
+    nar("start", '''{n}You step through a door of salt light behind the tailor's awning and fall over the step, exactly as promised, onto a deck a hundred fathoms above Drezen. The wind up here is clean and very cold. The city below is a map of itself.{/n}
 {n}Mielarah does not show you the ship. She takes you into her cabin, which is small and brass-bound and scrupulously neat, and shuts the door, and pours two cups of something, and sits down on the far side of her chart table.{/n}''',
         c("Continue", "dead", requires=(OSKEL_DEAD,)),
         c("Continue", "alive", requires=(TOLD,), forbids=(OSKEL_DEAD,)),
-        c("Continue", "alive", requires=(LIED, SECRET_KNOWN), forbids=(OSKEL_DEAD,)),
-        c("Continue", "secret", requires=(LIED,), forbids=(SECRET_KNOWN, OSKEL_DEAD)),
+        c("Continue", "alive", requires=(MINDER, SECRET_KNOWN), forbids=(TOLD, OSKEL_DEAD)),
+        c("Continue", "secret", requires=(MINDER,), forbids=(TOLD, SECRET_KNOWN, OSKEL_DEAD)),
         c("Continue", "none", forbids=(MINDER,))),
     mi("dead", '''{n}A bosun's whistle lies on the chart table between the cups: brass, dented, on a cord gone black with handling.{/n}
 "His." {n}She does not touch it.{/n} "It came up out of the sea tangled in the rigging, and none of the crew would take it. I have been carrying it about for weeks like a fool."
@@ -526,7 +526,7 @@ deck(D + "stowaway", "The stowaway", '"Is that Woljif in your hold?"', [
     nar("start", '''{n}It is. Mielarah comes up out of the forward hatch dragging him by the back of his coat, the way a cook drags a sack of onions, and deposits him on the deck at your feet. He has a pistol in each hand. Both of them are hers.{/n}
 {n}"Chief! Chief. Tell her. Tell her I was lookin' after 'em for her."{/n}''',
         c("Continue", "know")),
-    mi("know", '''"I know you." {n}She takes the pistols back, one at a time, without looking at them, and checks that each is still loaded.{/n} "You drank on credit at the Bad Luck for a month and paid the barman in coins that turned into beetles on the Tuesday. The barman still talks about you. He keeps a jar of the beetles behind the bar."
+    mi("know", '''"I know you." {n}She takes the pistols back, one at a time, without looking at them, and checks that each is still loaded.{/n} "You drank on credit at the Bad Luck for a month and paid the barman in coins that turned into beetles on the Toilday. The barman still talks about you. He keeps a jar of the beetles behind the bar."
 {n}Woljif looks at you with an expression of enormous dignity, ruined somewhat by the cobweb in his hair. "Them beetles was a misunderstandin', Cap'n."{/n}''',
        c("Continue", "threat")),
     mi("threat", '''"Of course they were." {n}She crouches, at the distance she always keeps, and looks at him with polite academic interest, and her eyes darken very slightly.{/n} "I could reach into your head, Master Woljif, and tidy up the part of it that thinks my pistols are its business. It would take me a moment. You'd hardly notice. You'd simply never want to steal from me again."
@@ -601,7 +601,7 @@ deck(D + "stern", "A name on the stern", '"You asked for a steady pair of hands?
 
 
 deck(D + "last_night", "Before the march", '"The quartermasters say the crusade marches soon."', [
-    nar("start", '''{n}They do, and the quartermasters are right, and Starcatcher is loading. For three days the portal behind the curio stall has not closed: crates of bandages, barrels of pitch, cold-iron arrowheads in straw, all going up through a door of salt light into a hold a hundred fathoms over the city. Mielarah stands beside it with her bill of lading and ticks everything off in her small upright hand, and the porters bring the crates to a chalk line on the cobbles and go no further.{/n}
+    nar("start", '''{n}They do, and the quartermasters are right, and Starcatcher is loading. For three days the portal behind the tailor's awning has not closed: crates of bandages, barrels of pitch, cold-iron arrowheads in straw, all going up through a door of salt light into a hold a hundred fathoms over the city. Mielarah stands beside it with her bill of lading and ticks everything off in her small upright hand, and the porters bring the crates to a chalk line on the cobbles and go no further.{/n}
 {n}She sees you, and finishes the line she is writing, and puts the pencil behind her ear, which you have learned means she is going to say something she has rehearsed.{/n}''',
         c("Continue", "carry")),
     mi("carry", '''"Supplies up, wounded back, for as long as your war needs carrying. I have told your quartermasters so, and they have written it down, and one of them tried to negotiate my rates and has gone to lie down." {n}She looks at the portal, and not at you.{/n}
@@ -631,14 +631,14 @@ OTHER_VOYAGE = D + "other_voyage"
 AFTER_NO = D + "after_no"
 
 deck(D + "fourth", "Starcatcher the Fourth", '"Your ship is leaking on my market."', [
-    nar("start", '''{n}She is. A thin, steady drizzle comes down out of a clear sky onto the cobbles behind the curio stall, and the curio seller has put a bucket under it with an expression of deep personal injury.{/n}
+    nar("start", '''{n}She is. A thin, steady drizzle comes down out of a clear sky onto the cobbles behind the tailor's awning, and the tailor has put a bucket under it with an expression of deep personal injury.{/n}
 {n}When you come up through the portal, Mielarah is on her knees on the Fourth's deck with her coat off and her sleeves rolled, driving oakum into a seam with a mallet and a caulking iron. Her hands are black with pitch to the wrist. She does not get up.{/n}
 "Hold this," {n}she says, and hands you the pitch pot, and goes on hammering.{/n}''',
         c("Continue", "seam")),
     mi("seam", '''"Twenty years old. Every seam in her opens a finger's width in a crosswind and closes again in a calm, like a mouth deciding whether to speak." {n}The mallet comes down, and down.{/n} "The Third never leaked. The Third was the finest ship in the Midnight Isles. I had her charts in my cabin going back six years, and a figurehead of Desna that a carver in Absalom made with my face on it, which I pretended to be embarrassed by."
 "All of it's at the bottom of the Ishiar now. The charts, the figurehead, the sketches from the Rift. My good hat." {n}She sits back on her heels.{/n} "I had my hands on her wheel, and I let go."''',
        c("Continue", "owned", requires=(STORM_OWNED,)),
-       c("Continue", "blamed", requires=(STORM_BLAMED,))),
+       c("Continue", "blamed", forbids=(STORM_OWNED,))),
     mi("owned", '''"You said it was the wrong order. You said it to my face with salt still in my hair, and I have been living on that for a month like hardtack." {n}She takes the pitch pot back from you.{/n} "It was the wrong order. And I was the wrong captain for it. Both of those can be true. Magisters are trained to hold two contradictory results at once and wait for a third experiment."''',
        c("Continue", "third_exp")),
     mi("blamed", '''"You said I let go of the wheel. You were right. You're the only person who has ever said it to my face, and I think it is the kindest thing anyone has done for me since Abaddon, because nobody else would say it and I needed somebody to." {n}She takes the pitch pot back from you.{/n} "Everybody else says it wasn't my fault. It was my fault. I would like very much to be allowed to have done something."''',
@@ -657,7 +657,7 @@ deck(D + "fourth", "Starcatcher the Fourth", '"Your ship is leaking on my market
 deck(D + "other_voyage", "The ship you chose", '"You wanted to hear about the voyage."', [
     mi("start", '''"I did not want to hear about it. I wanted to hear about it without asking." {n}She is in her cabin, with the charts of the Midnight Isles spread across the table and a glass weighting each corner.{/n} "But you are here, and I am a professional, and professionals learn from their competitors. Tell me. Who flew you to Colyphyr instead of me?"''',
        c("Continue", "kerz", requires=(KERZ,)),
-       c("Continue", "nocta", requires=(NOCTA,))),
+       c("Continue", "nocta", forbids=(KERZ,))),
     mi("kerz", '''"Kerz." {n}She says the name as if it had a smell.{/n} "Got-Stabbed. You sailed to Colyphyr with a man who sells his passengers' fingers back to them at a markup. And you are alive, and I understand you came back with all your fingers."
 "I have been trying for a week to decide whether that makes you very clever or Kerz very stupid. I have settled on both." {n}She moves a glass on the chart.{/n} "Was it the price? Tell me it was the price. I could bear it being the price."''',
        c('"It was the price."', "price"),
@@ -700,7 +700,7 @@ WOUNDED_LEFT = D + "wounded_left"
 
 deck(D + "wounded", "Those in distress", '"A column was cut up in the Wound. They need a ship."', [
     nar("start", '''{n}They do. A supply column was caught in the open two days north of the walls, in the red-lit badlands where nothing good grows, and the riders who got back say there are forty men lying in a dry streambed with a demon warband between them and the wagons.{/n}
-{n}Mielarah hears it from you at the curio stall, standing in her circle of empty cobbles, and her face does the complicated thing and then does not settle on courtesy at all.{/n}
+{n}Mielarah hears it from you under the tailor's awning, standing in her circle of empty cobbles, and her face does the complicated thing and then does not settle on courtesy at all.{/n}
 "Forty wounded," {n}she says,{/n} "in a hold the length of my ship, for a day and a night, with me at the wheel."''',
         c("Continue", "sum")),
     mi("sum", '''"You know the sum. I know you know it; you worked it out before I did." {n}She is speaking fast, and very evenly.{/n} "Forty men who can't walk, packed in a hold, and every one of them near me for a day and a night. A stretcher slips. A lantern falls. A splinter in the wrong place, a fever that should have broken. I'd land at Drezen with thirty-five. With thirty."

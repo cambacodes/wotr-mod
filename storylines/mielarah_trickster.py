@@ -35,8 +35,8 @@ REL = "mielarah"
 UNIT = "9d9c523bc2b17434bb66df212b127187"          # Mielara (Act_4 BadLuck; no dialog component: the presence copy)
 PORTRAIT_GUID = "55aaada6899b415c99227ec23aff520f"  # her BlueprintPortrait (BCT_Mielara), the book-picture fallback
 DREZEN = "2570015799edf594daf2f076f2f975d8"        # DrezenCapital
-MARKET = "bad9f602b81a80047ac470b01ebe65a9"        # ExoticCapitalTrader, the curio stall (Aranka stands front 2.5)
-JEWELER = "bc1093231b1577a4485a730c29595195"       # JewelerCapitalTrader, the fallback (Arueshalae's arcade is front 2.0)
+TAILOR = "253cdb8f434e5a6469b75e18428316e3"        # TailorCapitalTrader, the awning (Arueshalae's fallback copy stands front 2.0)
+JEWELER = "bc1093231b1577a4485a730c29595195"       # JewelerCapitalTrader, the fallback (Arueshalae's arcade copy is front 2.0)
 TAVERN_LIST = "5cb721033c29ca04dab453de7c13b607"   # Tumberd/AnswersList_0003 (the Bad Luck)
 TAVERN_RETURN = "2437e93b015b82d47900667402e01a9c" # Tumberd/Cue_0002 "I'm glad to see you again!"
 COLYPHYR_LIST = "ef7be5c16b82f734096f5a5f9fd497ce" # Tumberd/AnswersList_0034 (the landfall)
@@ -140,14 +140,13 @@ RELATIONSHIP = dict(
 DERIVED = {
     CONTACT: [[LANDFALL], [RETURNED], [CHARTER, KERZ], [CHARTER, NOCTA]],
     LATE_COMMITTED: [["trickster.ever", FLOWN]],
-    "mielarah.harem.eligible": [[COMMITTED], [LATE_COMMITTED]],
 }
 
-GREETING = ("{n}Crates stamped with the anchor of Starcatcher stand stacked beside the curio stall, and the woman "
+GREETING = ("{n}Crates stamped with the anchor of Starcatcher stand stacked under the tailor's awning, and the woman "
             "counting them off against a bill of lading keeps an arm's length of empty cobbles around her without "
             "seeming to try. The market has noticed. Nobody walks close.{/n}")
 PRESENCES = {
-    HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=MARKET, Side="right", Distance=2.5),
+    HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TAILOR, Side="behind", Distance=3.0),
               Requires=["trickster.ever", CONTACT], Forbids=[CLOSED, KILLED, HUB_FAILED], MinChapter=5, MaxChapter=5,
               AnswerLists=[], Dialog="hub", Greeting=GREETING),
     HUB_FB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=JEWELER, Side="behind", Distance=2.5),
@@ -424,7 +423,7 @@ SCENES.append(scene(P + "colyphyr.landfall", "Landfall", "Mielarah", 4, '"Before
     nar("start", '''{n}The crew are lashing Starcatcher to the stalagmites. Somewhere in the dark above the rocks, the thing that almost ate you on the approach is still circling, and every sailor on the deck keeps half an eye on the sky.{/n}
 {n}Mielarah has taken off her hat. Without it she looks younger and more tired, and she is looking at you as if you were a column of figures that has, against all expectation, added up.{/n}''',
         c("Continue", "told", requires=(TOLD,)),
-        c("Continue", "lied", requires=(LIED,)),
+        c("Continue", "lied", requires=(MINDER,), forbids=(TOLD,)),
         c("Continue", "voyage", forbids=(MINDER,))),
     mi("told", '''"He's alive." {n}She nods along the deck, to where Oskel is coiling a line, never more than two strides from her. He has been at her elbow for the whole voyage, as ordered.{/n}
 "He is alive, and I am alive, and you are alive, which on any ship of mine is a small miracle and on this voyage is three. Nothing went wrong enough. The curse never needed him."
@@ -518,7 +517,7 @@ remote(P + "raid.rope", "The man on the rope", [
     mi("crew", '''"Nobody came near me after that. Not one of them. They stood at the far rail all night, watching me breathe, and in the morning they put their knives on the deck without being asked."
 "At Colyphyr I didn't come out of my cabin. I heard you disembark. I didn't trust myself to look at you." {n}Her hand tightens on the scarf.{/n} "After, I put the eleven men who had held that rope off on the first rock with water on it. My code says I never ignore those in distress." {n}A very thin smile.{/n} "They weren't in distress until I left them there. I have decided that counts."''',
        c("Continue", "told", requires=(TOLD,)),
-       c("Continue", "lied", requires=(LIED,))),
+       c("Continue", "lied", forbids=(TOLD,))),
     mi("told", '''"You told me why. At my own table, with my own pencil in my hand. I posted him anyway." {n}She looks at you, and her eyes are perfectly dry.{/n} "So we did it together, you and I. You chose him and I put him there, and he's dead, and I'm alive, and his wings are somewhere at the bottom of the Ishiar."''',
        c("Continue", "raid")),
     mi("lied", '''"You told me a cursed captain makes a crew nervous." {n}Her voice is flat.{/n} "I lay on that deck all night with nothing to do but think, and I am a certified specialist in resolving magic-related issues, Commander. By morning I had it. The most dangerous man. Nearest. Always."
@@ -640,7 +639,7 @@ remote(P + "storm.survivor", "The survivor", [
     mi("oskel", '''"Oskel caught it." {n}She looks at her own hands.{/n} "He was at my elbow, where you'd put him, and when my hands came off the spokes his went on. He held her a whole minute, head into the wind, all by himself. I have never seen a man hold a wheel like that."
 "Then the mainmast came down across the helm. It did not touch me. It never does." {n}Her voice does not change.{/n} "He was nearest. You knew he would be."''',
        c("Continue", "hatch", requires=(TOLD,)),
-       c("Continue", "worked_out", requires=(LIED,))),
+       c("Continue", "worked_out", forbids=(TOLD,))),
     mi("worked_out", '''"You told me a cursed captain makes a crew nervous. You told me to let them see a big man at my back." {n}She says it slowly, as if reading it off a slate.{/n}
 "Three days on a hatch cover is a long time to think, Commander, and I am a certified specialist in resolving magic-related issues. You didn't want a bodyguard. You wanted a lightning rod. You lied to me at my own table so that my curse would have somebody to take who wasn't me." {n}Her hands close in her lap.{/n} "And it did."''',
        c("Continue", "hatch", flags=(SECRET_KNOWN,))),

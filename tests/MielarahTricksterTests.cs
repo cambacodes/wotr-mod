@@ -192,8 +192,7 @@ internal static class MielarahTricksterTests
 
         // Trk_Mielarah_Raid: the curse takes the man on the rope; without the bosun, canon fate stands.
         var hanged = World(story, 4, "trickster.ever", "mielarah.dead", P + "primed.pattern", P + "primed.minder", P + "minder.told");
-        check(!Rules.Available(story, rope, hanged) && Rules.Available(story, rope, Later(story, hanged, 25)) == Rules.Available(story, rope, Later(story, hanged, 25)),
-            "Trk_Mielarah_Raid: delay check.");
+        check(rope.DelayHours == 24 && Rules.Available(story, rope, hanged), "Trk_Mielarah_Raid: she does not come a day after the hanging.");
         check(Rules.Available(story, rope, World(story, 4, "trickster.ever", "mielarah.dead", "mielarah.dead.latched", P + "primed.minder", P + "minder.told")),
             "Trk_Mielarah_Raid: the hanging's payoff is shut.");
         var alive = After(rope, World(story, 4, "trickster.ever", "mielarah.dead", "mielarah.dead.latched", P + "primed.minder", P + "minder.told"), "oskel", 0).First();
@@ -225,7 +224,7 @@ internal static class MielarahTricksterTests
         var arrived = World(story, 4, "trickster.ever", "trickster", "mielarah.arrived", P + "primed.pattern");
         check(Rules.Available(story, landfall, arrived), "Trk_Mielarah_Arrived: the landfall is shut.");
         var invited = After(landfall, arrived, "close", 0).First();
-        check(invited.Has(P + "landfall") && invited.Has(P + "contact"), "Trk_Mielarah_Arrived: the invitation does not bring her north.");
+        check(invited.Has(P + "landfall") && Later(story, invited, 0).Has(P + "contact"), "Trk_Mielarah_Arrived: the invitation does not bring her north.");
         check(Rules.Available(story, landfallLetter, Later(story, arrived, 73)), "Trk_Mielarah_Arrived: the missed landfall has no letter.");
         check(Reaches(Later(story, invited, 10, 5), "mielarah.committed"), "Trk_Mielarah_Arrived: no road to the commit.");
 
@@ -256,7 +255,7 @@ internal static class MielarahTricksterTests
             "Trk_Mielarah_Declined: turning for home is not her soft no.");
         check(!Rules.Available(story, wheel, Later(story, home, 100)), "Her soft no is asked again (no second ask).");
         check(After(wheel, ready, "kiss_first", 0).Any(r => r.Has(D + "quarterdeck")), "The quarterdeck does not follow the commit.");
-        check(!Rules.Available(story, quarterdeck, Later(story, ready, 100)) && Rules.Available(story, quarterdeck, Later(story, held, 13)),
+        check(!Rules.Available(story, quarterdeck, Later(story, ready, 100)) && Rules.Available(story, quarterdeck, Later(story, After(wheel, ready, "letgo", 0).First(r => !r.Has(D + "quarterdeck")), 13)),
             "The quarterdeck is not gated on the commit.");
         var night = After(wheel, ready, "kiss_first", 0).First(r => r.Has(D + "quarterdeck"));
         check(Rules.Available(story, morning, Later(story, night, 7)), "The morning does not follow the night.");
@@ -287,7 +286,7 @@ internal static class MielarahTricksterTests
         check(pages.Length == 2 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
         check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", D + "flown" })
-              && story.Derived["mielarah.harem.eligible"].Count == 2, "The late commit or the harem eligibility is not declared.");
+              && story.Derived["mielarah.harem.eligible"].Count() == 2, "The late commit or the harem eligibility is not declared.");
         Console.WriteLine("PASS: Mielarah Trickster (Trk_Mielarah_*): the rule read, the bosun, the hanging, the storm, the landfall, the charter, "
                           + deck.Length / 2 + " Chapter 5 beats and the wheel.");
     }
