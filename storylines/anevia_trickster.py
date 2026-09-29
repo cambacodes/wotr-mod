@@ -313,9 +313,9 @@ physical("anevia.trickster.gone.gate", "The line in the mud", '"You said the gat
 TERMS_TEXT = '''"Here's how it goes. I don't come inside. You come out. No closets, no wardrobes, no demons breathin' in the coats. You knock on a real door, like a person."
 {n}She holds up one finger.{/n}
 "And the first time you lie to me, I'm gone. And this time I'll be better at it."'''
-THRESHOLD = '''{n}She doesn't wait for you to decide. Her fist is in your collar before the lantern stops swinging, and she kisses you like someone who has been rationing it all the way up the road. Round the side of the gatehouse there is a real door. She raps on it twice with her knuckles, for form's sake, then kicks it shut behind you.{/n}
+THRESHOLD = '''{n}She doesn't wait for you to decide. She kisses you before the lantern stops swinging, both hands flat on your chest as if she were checking you for a knife, like someone who has been rationing it all the way up the road. Round the side of the gatehouse there is a real door. She raps on it twice with her knuckles, for form's sake, then kicks it shut behind you.{/n}
 "Real door. I knocked. Now shut up and get that shirt off before I lose my nerve. And I never lose my nerve."
-{n}Her fingers find every buckle on the first try, a spy's hands, and your coat hits the floor. The guardroom cot creaks under the two of you. Her breath is warm and ragged against your neck, her bad leg hooks hard round yours, and she drags you down onto the cot with a sound that is half a laugh and half something she has not let herself say since the Coronation.{/n}'''
+{n}Her fingers find every buckle on the first try, a spy's hands, and your coat hits the floor. She kicks your cloak out flat across the gatehouse floor, under the lantern hook, and takes the lantern down so she can see your face. Her breath is warm and ragged against your neck, her bad leg hooks hard round yours, and she drags you down onto the cloak with a sound that is half a laugh and half something she has not let herself say since the Coronation.{/n}'''
 
 physical("anevia.trickster.gone.commit", "A real door", '"Same gate. Same line."', [
     a("start", '''{n}Same gate, same mud line, a colder night. She has brought a lantern and set it down on her side.{/n}
@@ -365,7 +365,7 @@ physical("anevia.trickster.gone.commit", "A real door", '"Same gate. Same line."
       c('"Same door."')),
     a("morning_back", '''{n}Grey light. She is already dressed and lacing her boots, the lantern relit.{/n}
 "Beth's gonna know the second she looks at me. Good. Saves me the speech."
-{n}She stands, grinning for the first time since Kenabres.{/n}
+{n}She stands, and there it is: the grin from before Kenabres, a little rusty.{/n}
 "She'll want a turn yellin' at you. Let her. Then she'll want a turn at the rest, and you'll let her that too."''',
       c('"I\'ll knock."')),
     a("no", '''"Then we're done for tonight. I'm not sayin' never. I'm sayin' not like this. Come back when you can knock."
@@ -393,28 +393,28 @@ Don't make me wait too long. I'm a spy, not a saint."''',
 ], requires=("trickster.ever", RETURNED, "anevia.presence.failed"),
    forbids=("anevia.committed", DECLINED, "anevia.trickster.gone.gate", "anevia.trickster.gone.commit"), delay=96)
 
-physical("anevia.trickster.gone.second_ask", "The key", '"I knocked."', [
+physical("anevia.trickster.gone.second_ask", "Something true", '"I knocked."', [
     a("start", '''{n}She is at the gate again, four nights later, as if she never left it.{/n}
 "You knocked. On the guardhouse door, like an idiot, in front of half the watch. All right. I heard you."''',
       c("Continue", "price")),
-    a("price", '''"Here's my price, and it's not cheap. The key to your rooms. Not a copy. Yours."
-{n}She holds out her hand, palm up, and waits.{/n}
-"I'll never use it. Probably. But you'll never again know for sure who's on the other side of your door. That's how I've felt every night since that wardrobe opened."''',
-      c('[Give her the key to your quarters] "You won\'t come in. Fine. You can come in whenever you like."', "key",
+    a("price", '''"Door's paid for. Now you pay for me. Tell me somethin' true about you that nobody in Drezen knows. Not your mythic nonsense. Somethin' that'd cost you if I sold it."
+{n}She holds out her hand, palm up, the way a fence waits for a coin.{/n}
+"I'll never use it. Probably. But you'll never again be sure what I know about you. That's how I've felt every night since that wardrobe opened."''',
+      c('[Tell her something true] "All right. Lean in."', "key",
         flags=("anevia.committed", KEY)),
-      c('[Keep your key] "Some doors stay mine."', "kept", flags=("anevia.closed",))),
+      c('[Keep it] "Some things stay mine."', "kept", flags=("anevia.closed",))),
     a("kept", '''"Then that's that."
 {n}She closes the hand, slowly, and puts it in her pocket.{/n}
 "Good luck, Commander. I mean it."''',
       c('"Goodbye, Anevia."')),
-    a("key", '''{n}She turns the key over in her fingers the way she turns over a forged seal, looking for the flaw. She doesn't find one. She pockets it.{/n}
+    a("key", '''{n}You tell her. She listens the way she listens to a confession she means to keep: no expression at all, then one slow nod, as if a lock had turned somewhere behind her eyes. She closes the empty hand and puts it in her pocket.{/n}
 "Probably never use it."''',
       c("Continue", "night")),
-    a("night", '''{n}That night there is a knock at your door: three knocks, like a person. Then the lock turns anyway.{/n}
+    a("night", '''{n}That night there is a knock at your door: three knocks, like a person. You have not reached the latch when it lifts on its own. Spies do not wait for locks.{/n}
 {n}She is across the room before you are out of the chair, and she does not bother with the lantern. Her hands are cold from the road and then they are not. She has your shirt half over your head when she laughs, low, into your mouth, and says "Probably" as if it were the filthiest word she knows, and pushes you back onto the bed and follows you down.{/n}''',
       c("Continue", "dawn")),
-    a("dawn", '''{n}Dawn. The key is on the table where she left it, in plain sight, and she is gone.{/n}
-{n}By noon it is back in her pocket. You never see her take it.{/n}''',
+    a("dawn", '''{n}Grey light, and her side of the bed is cold. On the table, where anyone could read it, she has chalked one word into the wood: the thing you told her.{/n}
+{n}By noon it has been wiped away. You never see her do it.{/n}''',
       c('"Probably."')),
 ], requires=("trickster.ever", RETURNED, DECLINED), forbids=("anevia.committed",), delay=96)
 
@@ -497,7 +497,7 @@ PARAGRAPHS = (
       requires=(LATE, I_RET), forbids=("anevia.committed", "anevia.closed", DECLINED, FRIENDS)),
     ret("She kept to the door rule for the rest of her life, and made the Commander keep it too: a real door, three "
       "knocks, and no furniture.", requires=(TERMS,)),
-    ret("She kept the key to the Commander's rooms, and never once used it. Probably.", requires=(KEY,)),
+    ret("She kept the one secret the Commander ever handed her, and never once used it. Probably.", requires=(KEY,)),
     ret("She kept her word and never came inside. Letters reached the Commander now and then from towns on the road "
       "south, unsigned, in a hand nobody else could read. None of them was a yes. None of them was quite a no.",
       requires=(DECLINED,), forbids=("anevia.committed", "anevia.closed")),
@@ -519,7 +519,7 @@ def epilogue(id, requires, forbids, **extra):
 
 
 # One Anevia page per history. A non-lover gets this page; a registered lover keeps her registered ending (with the
-# paragraphs) except in the two histories that have none: committed at the gate, or closed at the key.
+# paragraphs) except in the two histories that have none: committed at the gate, or closed at the secret.
 FATES = ("sacrifice", "ascended", "inhuman")
 epilogue("anevia.trickster.epilogue.nailed_wardrobe", (RETURNED,), ("anevia.lover",))
 epilogue("anevia.trickster.epilogue.nailed_wardrobe_lover", (RETURNED, "anevia.lover", "anevia.committed"),
