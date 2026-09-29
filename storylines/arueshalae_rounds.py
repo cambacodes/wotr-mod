@@ -63,7 +63,7 @@ session(CAT, "Field observations", 3, '"You look pleased with yourself."', [
         c('"I\'m going to need to examine that scratch. Very thoroughly."', "examine")),
     a("pet", '''"It isn't mine. Nobody owns a cat. That's the other thing I've learned about mortals: they love the things they can't own, and they're very happy about it, and they complain about it all the time." {n}She beams.{/n} "I'm going to buy it a fish."''',
         c("[Let her go and buy it a fish.]", flags=(CAT,))),
-    a("examine", '''{n}She laughs and hides the hand behind her back.{/n} "You are the worst doctor in the Worldwound. The scratch is fine. The scratch is perfect. I'm keeping it until it scars." {n}She pauses.{/n} "Do succubi scar? I don't know. I'll find out. That can go in the notes too."''',
+    a("examine", '''{n}She laughs and hides the hand behind her back.{/n} "You are the worst thing that ever happened to a demon. The scratch is fine. The scratch is perfect. I'm keeping it until it scars." {n}She pauses.{/n} "Do succubi scar? I don't know. I'll find out. That can go in the notes too."''',
         c("[Let her go and buy it a fish.]", flags=(CAT,))),
 ], (MEALTIMES,), delay=24, chapters=(3, 4, 5))
 
@@ -109,7 +109,7 @@ session(PRIESTESS, "The last one", 3, '"You\'ve been reading the Desnan prayer b
 "Thank you. Everyone else says something kind. The priests say the goddess has forgiven me, and I think, then the goddess is wrong, and I'm not allowed to think that." {n}She puts her hand flat on the prayer book.{/n} "You carry her. Yes. That's right. I'll carry her, and I'll carry the watching and the list and your terrible onions, all at once. They don't cancel. They just have to fit."''', c()),
     a("write", '''{n}She stares at you as if you had suggested she fly to the moon.{/n} "Write to them. To the Desnans. And say what? 'Dear Mother of the shrine, I am the succubus who killed your priestess, please tell me her name so I can...'" {n}She stops.{/n} "So I can what?"
 {n}You tell her: so she can stop calling her "the priestess". So the one person in the world who remembers every smallest detail of her death can remember the one detail that was hers.{/n}
-"That's insane," she whispers. "That's the most insane thing you've ever prescribed. I'm going to do it."''', c()),
+"That's insane," she whispers. "That's the most insane thing anyone has asked of me, and I have been asked for things in Alushinyrra that would curl your hair. I'm going to do it."''', c()),
 ], (RELAPSE,), delay=24, chapters=(3, 4, 5))
 
 session(TEMPLE_LETTER, "Reply from the river", 5, '"They wrote back."', [
@@ -236,8 +236,8 @@ session(EVE, "Before Threshold", 5, '"Tomorrow, then."', [
     a("start", '''{n}The camp before the last march is very quiet. Everybody who has anything to say is saying it, in low voices, in the dark, and she has found you on the edge of the lines with a lantern and the daybook, which is nearly full now.{/n}
 "I've been reading it back. From the beginning. 'Watch people eat. Three times a day.'" {n}She laughs softly.{/n} "It seems a very long time ago. I was so sure it was a joke."''',
         c("Continue", "fear")),
-    a("fear", '''"I'm afraid of tomorrow." {n}She says it simply, as a clinical observation.{/n} "Not of dying. I've died. Of what's at the bottom of the Wound. Of the Abyss seeing me come back and remembering what I am, and calling, and me answering." {n}She closes the book.{/n}
-"So I want to ask you something, doctor. If it calls me, tomorrow, and I start to go, what's the treatment?"''',
+    a("fear", '''"I'm afraid of tomorrow." {n}She says it simply, the way she used to name a mark's weakness to her sisters: a fact, laid on the table.{/n} "Not of dying. I've died. Of what's at the bottom of the Wound. Of the Abyss seeing me come back and remembering what I am, and calling, and me answering." {n}She closes the book.{/n}
+"So I want to ask you something, and not as your patient. If it calls me, tomorrow, and I start to go, what's the treatment?"''',
         c('"Look for me. I\'ll be the one making a bad joke."', "joke", flags=(EVE,)),
         c('"Burnt onions. A cat. A song about a lake. A stone that wants to see the sea."', "list", flags=(EVE,))),
     a("joke", '''"Of course you will." {n}She laughs, and it catches in her throat.{/n} "In the middle of the end of the world, you'll be making a joke, and I'll hear it, and I'll be so annoyed I'll forget to fall." {n}She puts the book in your hands.{/n} "Keep this for me until after. I'll want to write the ending."''', c()),
