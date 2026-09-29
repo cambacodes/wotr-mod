@@ -29222,7 +29222,7 @@
         {
           "Id": "morning",
           "Speaker": "Narrator",
-          "Text": "{n}She is gone before the watch changes. The sheets smell of cold stone. There are four small crescents on each of your wrists where her claws rested, very precise, as if she had counted them.{/n}\n{n}Tucked into the frame, where the image should be, is a note in a fine, impatient hand: \"Countersigned. The forfeit clause stands. I have not decided which memory. You will be the second to know.\"{/n}",
+          "Text": "{n}She is gone before the watch changes. The sheets smell of cold stone. There are four small crescents on each of your wrists where her claws rested, very precise, as if she had counted them.{/n}\n{n}Tucked into the frame, where the image should be, is one dry locust wing, veined like a leaf and folded exactly in half. When you touch it, a voice that is not quite a memory arrives behind your left eye: \"The forfeit stands. I have not decided which memory. You will be the second to know.\"{/n}",
           "Choices": [
             {
               "Text": "[Keep the next evening for her.]",
@@ -29312,7 +29312,7 @@
         {
           "Id": "tenant_morning",
           "Speaker": "Narrator",
-          "Text": "{n}You wake alone, as you went to sleep. There are no marks on your wrists. You can still feel exactly where they would be.{/n}\n{n}Behind your left eye, something neat and patient is very pleased with itself.{/n} \"Countersigned. The forfeit clause stands. Pay the rent on time, Commander. I have been told I am a very demanding landlady, and I intend to prove it.\"",
+          "Text": "{n}You wake alone, as you went to sleep. There are no marks on your wrists. You can still feel exactly where they would be.{/n}\n{n}Behind your left eye, something neat and patient is very pleased with itself.{/n} \"Rent received. The forfeit stands. Pay on time, Commander. I have been told I am a very demanding landlady, and I intend to prove it.\"",
           "Choices": [
             {
               "Text": "[Keep the next evening for her.]",
@@ -84461,7 +84461,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Text": "She kept the one secret the Commander ever handed her, and never once used it. Probably.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.her_key"
@@ -84652,7 +84652,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Text": "She kept the one secret the Commander ever handed her, and never once used it. Probably.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.her_key"
@@ -84844,7 +84844,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Text": "She kept the one secret the Commander ever handed her, and never once used it. Probably.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.her_key"
@@ -85036,7 +85036,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Text": "She kept the one secret the Commander ever handed her, and never once used it. Probably.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.her_key"
@@ -85229,7 +85229,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Text": "She kept the one secret the Commander ever handed her, and never once used it. Probably.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.her_key"
@@ -85416,7 +85416,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Text": "She kept the one secret the Commander ever handed her, and never once used it. Probably.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.her_key"
@@ -85607,7 +85607,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Text": "She kept the one secret the Commander ever handed her, and never once used it. Probably.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.her_key"
@@ -85850,7 +85850,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Text": "She kept the one secret the Commander ever handed her, and never once used it. Probably.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.her_key"
@@ -86131,7 +86131,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Text": "She kept the one secret the Commander ever handed her, and never once used it. Probably.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.her_key"
@@ -86320,7 +86320,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Text": "She kept the one secret the Commander ever handed her, and never once used it. Probably.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.her_key"
@@ -86502,7 +86502,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Text": "She kept the one secret the Commander ever handed her, and never once used it. Probably.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.her_key"
@@ -91102,7 +91102,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would stand still for it.",
+              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would hold their ground long enough to learn it.",
               "Requires": [
                 "irabeth.trickster.cost.remembers_the_blow"
               ],
@@ -91120,7 +91120,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "When the Wound closed, the sword opened her hand at last. The Commander signed the discharge that same night, with the pen that had been misplaced for so long. She read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
+              "Text": "When the Wound closed, the sword opened her hand at last. Anevia took the Commander's pen out of her boot, where it had ridden out the war, and handed it to her wife without a word. Irabeth signed her own discharge with it, read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
               "Requires": [
                 "irabeth.trickster.cost.signed_request"
               ],
@@ -91128,7 +91128,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "When the Wound closed, Irabeth Tirabade put her sword down for the first time since Iz, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it in writing, signed, and Anevia read it first.",
+              "Text": "When the Wound closed, Irabeth Tirabade put her sword down at last, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it out loud, in the kitchen of the house on the corner, with Anevia leaning in the doorway to hear it first.",
               "Requires": [
                 "irabeth.trickster.late_committed"
               ],
@@ -91197,7 +91197,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would stand still for it.",
+              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would hold their ground long enough to learn it.",
               "Requires": [
                 "irabeth.trickster.cost.remembers_the_blow"
               ],
@@ -91215,7 +91215,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "When the Wound closed, the sword opened her hand at last. The Commander signed the discharge that same night, with the pen that had been misplaced for so long. She read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
+              "Text": "When the Wound closed, the sword opened her hand at last. Anevia took the Commander's pen out of her boot, where it had ridden out the war, and handed it to her wife without a word. Irabeth signed her own discharge with it, read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
               "Requires": [
                 "irabeth.trickster.cost.signed_request"
               ],
@@ -91223,7 +91223,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "When the Wound closed, Irabeth Tirabade put her sword down for the first time since Iz, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it in writing, signed, and Anevia read it first.",
+              "Text": "When the Wound closed, Irabeth Tirabade put her sword down at last, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it out loud, in the kitchen of the house on the corner, with Anevia leaning in the doorway to hear it first.",
               "Requires": [
                 "irabeth.trickster.late_committed"
               ],
@@ -91292,7 +91292,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would stand still for it.",
+              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would hold their ground long enough to learn it.",
               "Requires": [
                 "irabeth.trickster.cost.remembers_the_blow"
               ],
@@ -91310,7 +91310,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "When the Wound closed, the sword opened her hand at last. The Commander signed the discharge that same night, with the pen that had been misplaced for so long. She read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
+              "Text": "When the Wound closed, the sword opened her hand at last. Anevia took the Commander's pen out of her boot, where it had ridden out the war, and handed it to her wife without a word. Irabeth signed her own discharge with it, read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
               "Requires": [
                 "irabeth.trickster.cost.signed_request"
               ],
@@ -91318,7 +91318,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "When the Wound closed, Irabeth Tirabade put her sword down for the first time since Iz, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it in writing, signed, and Anevia read it first.",
+              "Text": "When the Wound closed, Irabeth Tirabade put her sword down at last, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it out loud, in the kitchen of the house on the corner, with Anevia leaning in the doorway to hear it first.",
               "Requires": [
                 "irabeth.trickster.late_committed"
               ],
@@ -91424,7 +91424,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would stand still for it.",
+              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would hold their ground long enough to learn it.",
               "Requires": [
                 "irabeth.trickster.cost.remembers_the_blow"
               ],
@@ -91442,7 +91442,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "When the Wound closed, the sword opened her hand at last. The Commander signed the discharge that same night, with the pen that had been misplaced for so long. She read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
+              "Text": "When the Wound closed, the sword opened her hand at last. Anevia took the Commander's pen out of her boot, where it had ridden out the war, and handed it to her wife without a word. Irabeth signed her own discharge with it, read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
               "Requires": [
                 "irabeth.trickster.cost.signed_request"
               ],
@@ -91450,7 +91450,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "When the Wound closed, Irabeth Tirabade put her sword down for the first time since Iz, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it in writing, signed, and Anevia read it first.",
+              "Text": "When the Wound closed, Irabeth Tirabade put her sword down at last, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it out loud, in the kitchen of the house on the corner, with Anevia leaning in the doorway to hear it first.",
               "Requires": [
                 "irabeth.trickster.late_committed"
               ],
@@ -91556,7 +91556,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would stand still for it.",
+              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would hold their ground long enough to learn it.",
               "Requires": [
                 "irabeth.trickster.cost.remembers_the_blow"
               ],
@@ -91574,7 +91574,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "When the Wound closed, the sword opened her hand at last. The Commander signed the discharge that same night, with the pen that had been misplaced for so long. She read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
+              "Text": "When the Wound closed, the sword opened her hand at last. Anevia took the Commander's pen out of her boot, where it had ridden out the war, and handed it to her wife without a word. Irabeth signed her own discharge with it, read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
               "Requires": [
                 "irabeth.trickster.cost.signed_request"
               ],
@@ -91582,7 +91582,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "When the Wound closed, Irabeth Tirabade put her sword down for the first time since Iz, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it in writing, signed, and Anevia read it first.",
+              "Text": "When the Wound closed, Irabeth Tirabade put her sword down at last, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it out loud, in the kitchen of the house on the corner, with Anevia leaning in the doorway to hear it first.",
               "Requires": [
                 "irabeth.trickster.late_committed"
               ],
@@ -91688,7 +91688,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would stand still for it.",
+              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would hold their ground long enough to learn it.",
               "Requires": [
                 "irabeth.trickster.cost.remembers_the_blow"
               ],
@@ -91706,7 +91706,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "When the Wound closed, the sword opened her hand at last. The Commander signed the discharge that same night, with the pen that had been misplaced for so long. She read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
+              "Text": "When the Wound closed, the sword opened her hand at last. Anevia took the Commander's pen out of her boot, where it had ridden out the war, and handed it to her wife without a word. Irabeth signed her own discharge with it, read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
               "Requires": [
                 "irabeth.trickster.cost.signed_request"
               ],
@@ -91714,7 +91714,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "When the Wound closed, Irabeth Tirabade put her sword down for the first time since Iz, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it in writing, signed, and Anevia read it first.",
+              "Text": "When the Wound closed, Irabeth Tirabade put her sword down at last, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it out loud, in the kitchen of the house on the corner, with Anevia leaning in the doorway to hear it first.",
               "Requires": [
                 "irabeth.trickster.late_committed"
               ],
@@ -91912,7 +91912,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would stand still for it.",
+              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would hold their ground long enough to learn it.",
               "Requires": [
                 "irabeth.trickster.cost.remembers_the_blow"
               ],
@@ -91930,7 +91930,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "When the Wound closed, the sword opened her hand at last. The Commander signed the discharge that same night, with the pen that had been misplaced for so long. She read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
+              "Text": "When the Wound closed, the sword opened her hand at last. Anevia took the Commander's pen out of her boot, where it had ridden out the war, and handed it to her wife without a word. Irabeth signed her own discharge with it, read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
               "Requires": [
                 "irabeth.trickster.cost.signed_request"
               ],
@@ -91938,7 +91938,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "When the Wound closed, Irabeth Tirabade put her sword down for the first time since Iz, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it in writing, signed, and Anevia read it first.",
+              "Text": "When the Wound closed, Irabeth Tirabade put her sword down at last, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it out loud, in the kitchen of the house on the corner, with Anevia leaning in the doorway to hear it first.",
               "Requires": [
                 "irabeth.trickster.late_committed"
               ],
@@ -92041,7 +92041,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would stand still for it.",
+              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would hold their ground long enough to learn it.",
               "Requires": [
                 "irabeth.trickster.cost.remembers_the_blow"
               ],
@@ -92059,7 +92059,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "When the Wound closed, the sword opened her hand at last. The Commander signed the discharge that same night, with the pen that had been misplaced for so long. She read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
+              "Text": "When the Wound closed, the sword opened her hand at last. Anevia took the Commander's pen out of her boot, where it had ridden out the war, and handed it to her wife without a word. Irabeth signed her own discharge with it, read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
               "Requires": [
                 "irabeth.trickster.cost.signed_request"
               ],
@@ -92067,7 +92067,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "When the Wound closed, Irabeth Tirabade put her sword down for the first time since Iz, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it in writing, signed, and Anevia read it first.",
+              "Text": "When the Wound closed, Irabeth Tirabade put her sword down at last, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it out loud, in the kitchen of the house on the corner, with Anevia leaning in the doorway to hear it first.",
               "Requires": [
                 "irabeth.trickster.late_committed"
               ],
@@ -92170,7 +92170,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would stand still for it.",
+              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would hold their ground long enough to learn it.",
               "Requires": [
                 "irabeth.trickster.cost.remembers_the_blow"
               ],
@@ -92188,7 +92188,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "When the Wound closed, the sword opened her hand at last. The Commander signed the discharge that same night, with the pen that had been misplaced for so long. She read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
+              "Text": "When the Wound closed, the sword opened her hand at last. Anevia took the Commander's pen out of her boot, where it had ridden out the war, and handed it to her wife without a word. Irabeth signed her own discharge with it, read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
               "Requires": [
                 "irabeth.trickster.cost.signed_request"
               ],
@@ -92196,7 +92196,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "When the Wound closed, Irabeth Tirabade put her sword down for the first time since Iz, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it in writing, signed, and Anevia read it first.",
+              "Text": "When the Wound closed, Irabeth Tirabade put her sword down at last, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it out loud, in the kitchen of the house on the corner, with Anevia leaning in the doorway to hear it first.",
               "Requires": [
                 "irabeth.trickster.late_committed"
               ],
@@ -144347,7 +144347,7 @@
         {
           "Id": "decides",
           "Speaker": "Irabeth",
-          "Text": "{n}She looks at you for a long moment, the way she reads an order: twice, to be sure of it.{/n}\n\"Not an order.\"\n{n}Then she decides.{/n}",
+          "Text": "{n}She reads you the way she reads an order: twice, to be sure of it.{/n}\n\"Not an order.\"\n{n}Then she decides.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -144407,7 +144407,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}She tries to set the sword down on the throne-room step. Her fingers will not open. She laughs once, short and furious, and holds the blade out to the side, point to the floor, the way you would hold a torch you cannot drop.{/n}\n\"I've wanted this since Iz, and I've been ashamed of it since Iz. I'm done being ashamed. Take the rest off me, Commander. One-handed is all I've got. Slowly. I want to remember it.\"\n{n}Gauntlet, then vambrace, one arm at a time around a hilt she cannot let go. Her free hand stops working on the breastplate buckles and she lets you do it. Under the arming coat she is scar and muscle and heat. She kisses you hard enough that her tusks graze your lip, then drags you through the side door to the cot in the guardroom, her sword arm flung out over the edge of it, the point ringing once on the flagstones. With the other she pulls you down to her and hooks a leg behind yours.{/n}",
+          "Text": "{n}She tries to set the sword down on the throne-room step. Her fingers will not open. She swears at it, short and furious, and holds the blade out to the side, point to the floor, the way you would hold a torch you cannot drop.{/n}\n\"I've wanted this since Iz, and I've been ashamed of it since Iz. I'm done being ashamed. Take the rest off me, Commander. One-handed is all I've got. Slowly. I want to remember it.\"\n{n}Gauntlet, then vambrace, one arm at a time around a hilt she cannot let go. Her free hand stops working on the breastplate buckles and she lets you do it. Under the arming coat she is scar and muscle and heat. She kisses you hard enough that her tusks graze your lip, then drags you through the side door into her roster room, where nobody sits at the desk but her. She sweeps the duty lists off it with her free arm. Her sword arm stays flung out over the edge, the point grinding on the flagstones, and with the other she pulls you down onto the desk with her and hooks a leg behind yours.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -144423,7 +144423,7 @@
         {
           "Id": "morning",
           "Speaker": "Irabeth",
-          "Text": "{n}Dawn. She is back in armour, all but the gauntlet that will not go on over the hilt without help. She holds that hand out to you without a word. There is a white groove across her palm where the grip lay all night.{/n}\n\"Nevi will know. Nevi always knows. She'll laugh at me. Then she'll want to know every detail. Then she'll want her turn.\"\n{n}You buckle it for her. She flexes the hand inside the steel, around the sword, and does not thank you.{/n}\n\"Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard.\"",
+          "Text": "{n}The watch changes under the window. She is back in armour, all but the gauntlet that will not go on over the hilt without help. She holds that hand out to you without a word. There is a white groove across her palm where the grip lay all night.{/n}\n\"Nevi will know. Nevi always knows. She'll laugh at me. Then she'll want to know every detail. Then she'll want her turn.\"\n{n}You buckle it for her. She flexes the hand inside the steel, around the sword, and does not thank you.{/n}\n\"Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard.\"",
           "Choices": [
             {
               "Text": "\"Dismissed, Knight-Captain.\"",
@@ -144462,7 +144462,7 @@
     },
     {
       "Id": "irabeth.trickster.second_ask",
-      "Title": "A request, signed",
+      "Title": "The pen",
       "Owner": "Irabeth",
       "MinChapter": 5,
       "MaxChapter": 5,
@@ -144471,10 +144471,10 @@
         {
           "Id": "price",
           "Speaker": "Irabeth",
-          "Text": "\"You want to ask again. Then here's my price, Commander. Write it down. Not an order. A request, signed, the way a person asks.\"\n{n}She pushes a sheet of roster paper across the step, and a pen. Your own pen, the one you misplaced.{/n}\n\"I'll give it to Nevi before I read it myself. If she laughs, the answer's no.\"",
+          "Text": "\"You want to ask again. Not while you're holding that.\"\n{n}She nods at your coat, at the inside pocket where the pen has lived since Iz. The pen you misplaced for two days, so her discharge could not be signed.{/n}\n\"As long as you've got it, I'm under orders whether I like it or not, and so is anything I say to you. Give it to me. I'll send it to Nevi. If she sends it back, the answer's no. If she keeps it, ask me.\"",
           "Choices": [
             {
-              "Text": "[Write it as a request and sign it] \"Not an order. A request. Signed. Nevi reads it first.\"",
+              "Text": "[Hand her the pen] \"It's yours. So is the discharge. Nevi decides.\"",
               "Next": "sent",
               "Set": [
                 "irabeth.trickster.cost.signed_request"
@@ -144486,7 +144486,7 @@
               "Abort": false
             },
             {
-              "Text": "\"Some things I don't sign.\"",
+              "Text": "\"Some things I keep.\"",
               "Next": "refused",
               "Set": [
                 "irabeth.closed"
@@ -144496,7 +144496,7 @@
               "Abort": false
             },
             {
-              "Text": "[Write it as a request and sign it] \"Not an order. A request. Signed. Nevi reads it first.\"",
+              "Text": "[Hand her the pen] \"It's yours. So is the discharge. Nevi decides.\"",
               "Next": "sent_gate",
               "Set": [
                 "irabeth.trickster.cost.signed_request"
@@ -144508,7 +144508,7 @@
               "Abort": false
             },
             {
-              "Text": "[Write it as a request and sign it] \"Not an order. A request. Signed. Nevi reads it first.\"",
+              "Text": "[Hand her the pen] \"It's yours. So is the discharge. Nevi decides.\"",
               "Next": "held",
               "Set": [],
               "Requires": [
@@ -144525,7 +144525,7 @@
         {
           "Id": "refused",
           "Speaker": "Irabeth",
-          "Text": "\"Then you're my Commander, and that's the end of it.\"\n{n}She takes the paper back and folds it into her roster, blank.{/n}",
+          "Text": "\"Then you're my Commander, and that's the end of it.\"\n{n}She salutes, exactly as the regulations describe, and goes back to her post. The pen stays in your pocket. So does every order you ever gave her.{/n}",
           "Choices": [
             {
               "Text": "\"Understood.\"",
@@ -144541,7 +144541,7 @@
         {
           "Id": "sent",
           "Speaker": "Irabeth",
-          "Text": "{n}It is five days before she finds you again. She has the paper in her free hand, travel-stained, sealed with a dead drop's wax.{/n}\n\"I sent it to her dead drop. It came back with one word on it, in her hand.\"\n{n}She turns the paper round so you can read it. \"Yes.\" And under it, smaller, pressed hard enough to tear: \"Ask me to my face next time, Beth.\"{/n}\n{n}She is smiling, for the first time since Iz.{/n}",
+          "Text": "{n}It is five days before she finds you again. The courier from the south road brought nothing back: no pen, no packet. Only a message he had been made to learn by heart and would not say until the Knight-Captain was standing in front of him.{/n}\n\"'Keeping it. Ask me to my face next time, Beth.'\"\n{n}She repeats it to you word for word, the way she repeats every report. Then she smiles, and you realise you have not seen it since Iz.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -144560,7 +144560,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}She tries to set the sword down on the throne-room step. Her fingers will not open. She laughs once, short and furious, and holds the blade out to the side, point to the floor, the way you would hold a torch you cannot drop.{/n}\n\"I've wanted this since Iz, and I've been ashamed of it since Iz. I'm done being ashamed. Take the rest off me, Commander. One-handed is all I've got. Slowly. I want to remember it.\"\n{n}Gauntlet, then vambrace, one arm at a time around a hilt she cannot let go. Her free hand stops working on the breastplate buckles and she lets you do it. Under the arming coat she is scar and muscle and heat. She kisses you hard enough that her tusks graze your lip, then drags you through the side door to the cot in the guardroom, her sword arm flung out over the edge of it, the point ringing once on the flagstones. With the other she pulls you down to her and hooks a leg behind yours.{/n}",
+          "Text": "{n}She tries to set the sword down on the throne-room step. Her fingers will not open. She swears at it, short and furious, and holds the blade out to the side, point to the floor, the way you would hold a torch you cannot drop.{/n}\n\"I've wanted this since Iz, and I've been ashamed of it since Iz. I'm done being ashamed. Take the rest off me, Commander. One-handed is all I've got. Slowly. I want to remember it.\"\n{n}Gauntlet, then vambrace, one arm at a time around a hilt she cannot let go. Her free hand stops working on the breastplate buckles and she lets you do it. Under the arming coat she is scar and muscle and heat. She kisses you hard enough that her tusks graze your lip, then drags you through the side door into her roster room, where nobody sits at the desk but her. She sweeps the duty lists off it with her free arm. Her sword arm stays flung out over the edge, the point grinding on the flagstones, and with the other she pulls you down onto the desk with her and hooks a leg behind yours.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -144588,7 +144588,7 @@
         {
           "Id": "morning",
           "Speaker": "Irabeth",
-          "Text": "{n}Dawn. She is back in armour, all but the gauntlet that will not go on over the hilt without help. She holds that hand out to you without a word. There is a white groove across her palm where the grip lay all night.{/n}\n\"Nevi will know. Nevi always knows. I'll write to her myself before breakfast, before anyone else can.\"\n{n}You buckle it for her. She flexes the hand inside the steel, around the sword, and does not thank you.{/n}\n\"Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard.\"",
+          "Text": "{n}The watch changes under the window. She is back in armour, all but the gauntlet that will not go on over the hilt without help. She holds that hand out to you without a word. There is a white groove across her palm where the grip lay all night.{/n}\n\"Nevi will know. Nevi always knows. I'll write to her myself before breakfast, before anyone else can.\"\n{n}You buckle it for her. She flexes the hand inside the steel, around the sword, and does not thank you.{/n}\n\"Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard.\"",
           "Choices": [
             {
               "Text": "\"Dismissed, Knight-Captain.\"",
@@ -144604,7 +144604,7 @@
         {
           "Id": "sent_gate",
           "Speaker": "Irabeth",
-          "Text": "{n}She is back within the hour, the paper crumpled in her free hand and mud from the gate road on her boots.{/n}\n\"She didn't laugh. She read it twice, the way I read orders, and wrote one word on the back.\"\n{n}She turns the paper round so you can read it. \"Yes.\" Nothing else. Anevia has never wasted ink.{/n}\n{n}She is smiling, for the first time since Iz.{/n}",
+          "Text": "{n}She is back within the hour, empty-handed, with mud from the gate road on her boots.{/n}\n\"She didn't laugh. She turned it over twice, the way I read orders, and put it in her boot. Then she told me to go back up the hill before she changed her mind about both of us.\"\n{n}She holds out her empty hand to show you, as if the absence were the report. Then she smiles, and you realise you have not seen it since Iz.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -144623,7 +144623,7 @@
         {
           "Id": "held",
           "Speaker": "Irabeth",
-          "Text": "{n}She takes the paper, reads your signature, and folds it into her roster instead of sending it.{/n}\n\"Nevi's at the gate and hasn't said her piece. I'm not putting a signed request in front of her before she has. That's not how it goes, not with her.\"\n{n}She taps the roster once.{/n}\n\"It stays in here until she speaks. Then I'll carry it out to her myself.\"",
+          "Text": "{n}She takes the pen, weighs it, and slides it into the cuff of her gauntlet instead of sending it.{/n}\n\"Nevi's at the gate and hasn't said her piece. I'm not walking your pen out to her before she has. That's not how it goes, not with her.\"\n{n}She taps the cuff once.{/n}\n\"It stays here until she speaks. Then I'll carry it out to her myself.\"",
           "Choices": [
             {
               "Text": "\"Then we wait for her.\"",
@@ -144639,7 +144639,7 @@
         {
           "Id": "morning_home",
           "Speaker": "Irabeth",
-          "Text": "{n}Dawn. She is back in armour, all but the gauntlet that will not go on over the hilt without help. She holds that hand out to you without a word. There is a white groove across her palm where the grip lay all night.{/n}\n\"Nevi will know. Nevi always knows. She'll laugh at me. Then she'll want to know every detail. Then she'll want her turn.\"\n{n}You buckle it for her. She flexes the hand inside the steel, around the sword, and does not thank you.{/n}\n\"Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard.\"",
+          "Text": "{n}The watch changes under the window. She is back in armour, all but the gauntlet that will not go on over the hilt without help. She holds that hand out to you without a word. There is a white groove across her palm where the grip lay all night.{/n}\n\"Nevi will know. Nevi always knows. She'll laugh at me. Then she'll want to know every detail. Then she'll want her turn.\"\n{n}You buckle it for her. She flexes the hand inside the steel, around the sword, and does not thank you.{/n}\n\"Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard.\"",
           "Choices": [
             {
               "Text": "\"Dismissed, Knight-Captain.\"",
@@ -144709,7 +144709,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would stand still for it.",
+              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would hold their ground long enough to learn it.",
               "Requires": [
                 "irabeth.trickster.cost.remembers_the_blow"
               ],
@@ -144727,7 +144727,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "When the Wound closed, the sword opened her hand at last. The Commander signed the discharge that same night, with the pen that had been misplaced for so long. She read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
+              "Text": "When the Wound closed, the sword opened her hand at last. Anevia took the Commander's pen out of her boot, where it had ridden out the war, and handed it to her wife without a word. Irabeth signed her own discharge with it, read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
               "Requires": [
                 "irabeth.trickster.cost.signed_request"
               ],
@@ -144735,7 +144735,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "When the Wound closed, Irabeth Tirabade put her sword down for the first time since Iz, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it in writing, signed, and Anevia read it first.",
+              "Text": "When the Wound closed, Irabeth Tirabade put her sword down at last, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it out loud, in the kitchen of the house on the corner, with Anevia leaning in the doorway to hear it first.",
               "Requires": [
                 "irabeth.trickster.late_committed"
               ],
@@ -146638,7 +146638,7 @@
         {
           "Id": "threshold",
           "Speaker": "Anevia",
-          "Text": "{n}She doesn't wait for you to decide. Her fist is in your collar before the lantern stops swinging, and she kisses you like someone who has been rationing it all the way up the road. Round the side of the gatehouse there is a real door. She raps on it twice with her knuckles, for form's sake, then kicks it shut behind you.{/n}\n\"Real door. I knocked. Now shut up and get that shirt off before I lose my nerve. And I never lose my nerve.\"\n{n}Her fingers find every buckle on the first try, a spy's hands, and your coat hits the floor. The guardroom cot creaks under the two of you. Her breath is warm and ragged against your neck, her bad leg hooks hard round yours, and she drags you down onto the cot with a sound that is half a laugh and half something she has not let herself say since the Coronation.{/n}",
+          "Text": "{n}She doesn't wait for you to decide. She kisses you before the lantern stops swinging, both hands flat on your chest as if she were checking you for a knife, like someone who has been rationing it all the way up the road. Round the side of the gatehouse there is a real door. She raps on it twice with her knuckles, for form's sake, then kicks it shut behind you.{/n}\n\"Real door. I knocked. Now shut up and get that shirt off before I lose my nerve. And I never lose my nerve.\"\n{n}Her fingers find every buckle on the first try, a spy's hands, and your coat hits the floor. She kicks your cloak out flat across the gatehouse floor, under the lantern hook, and takes the lantern down so she can see your face. Her breath is warm and ragged against your neck, her bad leg hooks hard round yours, and she drags you down onto the cloak with a sound that is half a laugh and half something she has not let herself say since the Coronation.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -146682,7 +146682,7 @@
         {
           "Id": "morning_back",
           "Speaker": "Anevia",
-          "Text": "{n}Grey light. She is already dressed and lacing her boots, the lantern relit.{/n}\n\"Beth's gonna know the second she looks at me. Good. Saves me the speech.\"\n{n}She stands, grinning for the first time since Kenabres.{/n}\n\"She'll want a turn yellin' at you. Let her. Then she'll want a turn at the rest, and you'll let her that too.\"",
+          "Text": "{n}Grey light. She is already dressed and lacing her boots, the lantern relit.{/n}\n\"Beth's gonna know the second she looks at me. Good. Saves me the speech.\"\n{n}She stands, and there it is: the grin from before Kenabres, a little rusty.{/n}\n\"She'll want a turn yellin' at you. Let her. Then she'll want a turn at the rest, and you'll let her that too.\"",
           "Choices": [
             {
               "Text": "\"I'll knock.\"",
@@ -146874,7 +146874,7 @@
     },
     {
       "Id": "anevia.trickster.gone.second_ask",
-      "Title": "The key",
+      "Title": "Something true",
       "Owner": "Anevia",
       "MinChapter": 5,
       "MaxChapter": 5,
@@ -146899,10 +146899,10 @@
         {
           "Id": "price",
           "Speaker": "Anevia",
-          "Text": "\"Here's my price, and it's not cheap. The key to your rooms. Not a copy. Yours.\"\n{n}She holds out her hand, palm up, and waits.{/n}\n\"I'll never use it. Probably. But you'll never again know for sure who's on the other side of your door. That's how I've felt every night since that wardrobe opened.\"",
+          "Text": "\"Door's paid for. Now you pay for me. Tell me somethin' true about you that nobody in Drezen knows. Not your mythic nonsense. Somethin' that'd cost you if I sold it.\"\n{n}She holds out her hand, palm up, the way a fence waits for a coin.{/n}\n\"I'll never use it. Probably. But you'll never again be sure what I know about you. That's how I've felt every night since that wardrobe opened.\"",
           "Choices": [
             {
-              "Text": "[Give her the key to your quarters] \"You won't come in. Fine. You can come in whenever you like.\"",
+              "Text": "[Tell her something true] \"All right. Lean in.\"",
               "Next": "key",
               "Set": [
                 "anevia.committed",
@@ -146913,7 +146913,7 @@
               "Abort": false
             },
             {
-              "Text": "[Keep your key] \"Some doors stay mine.\"",
+              "Text": "[Keep it] \"Some things stay mine.\"",
               "Next": "kept",
               "Set": [
                 "anevia.closed"
@@ -146944,7 +146944,7 @@
         {
           "Id": "key",
           "Speaker": "Anevia",
-          "Text": "{n}She turns the key over in her fingers the way she turns over a forged seal, looking for the flaw. She doesn't find one. She pockets it.{/n}\n\"Probably never use it.\"",
+          "Text": "{n}You tell her. She listens the way she listens to a confession she means to keep: no expression at all, then one slow nod, as if a lock had turned somewhere behind her eyes. She closes the empty hand and puts it in her pocket.{/n}\n\"Probably never use it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -146960,7 +146960,7 @@
         {
           "Id": "night",
           "Speaker": "Anevia",
-          "Text": "{n}That night there is a knock at your door: three knocks, like a person. Then the lock turns anyway.{/n}\n{n}She is across the room before you are out of the chair, and she does not bother with the lantern. Her hands are cold from the road and then they are not. She has your shirt half over your head when she laughs, low, into your mouth, and says \"Probably\" as if it were the filthiest word she knows, and pushes you back onto the bed and follows you down.{/n}",
+          "Text": "{n}That night there is a knock at your door: three knocks, like a person. You have not reached the latch when it lifts on its own. Spies do not wait for locks.{/n}\n{n}She is across the room before you are out of the chair, and she does not bother with the lantern. Her hands are cold from the road and then they are not. She has your shirt half over your head when she laughs, low, into your mouth, and says \"Probably\" as if it were the filthiest word she knows, and pushes you back onto the bed and follows you down.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -146976,7 +146976,7 @@
         {
           "Id": "dawn",
           "Speaker": "Anevia",
-          "Text": "{n}Dawn. The key is on the table where she left it, in plain sight, and she is gone.{/n}\n{n}By noon it is back in her pocket. You never see her take it.{/n}",
+          "Text": "{n}Grey light, and her side of the bed is cold. On the table, where anyone could read it, she has chalked one word into the wood: the thing you told her.{/n}\n{n}By noon it has been wiped away. You never see her do it.{/n}",
           "Choices": [
             {
               "Text": "\"Probably.\"",
@@ -147378,7 +147378,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Text": "She kept the one secret the Commander ever handed her, and never once used it. Probably.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.her_key"
@@ -147558,7 +147558,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Text": "She kept the one secret the Commander ever handed her, and never once used it. Probably.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.her_key"
@@ -147747,7 +147747,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Text": "She kept the one secret the Commander ever handed her, and never once used it. Probably.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.her_key"
@@ -148966,7 +148966,7 @@
         {
           "Id": "locust_done",
           "Speaker": "Narrator",
-          "Text": "{n}A salvage team goes back into the Ivory Sanctum for her pinning case and brings it out whole, cursing the stairs. One needle has been pulled.{/n}\n{n}On your desk, under a glass, a locust cleans its face with its forelegs, slowly and very thoroughly, and does not look away from you once.{/n}",
+          "Text": "{n}A salvage team goes back into the Ivory Sanctum for her pinning case and brings it out whole, cursing the stairs. One needle has been pulled.{/n}\n{n}On your desk, under a glass, a locust cleans its face with its forelegs, slowly and very thoroughly, and keeps every one of its eyes on you.{/n}",
           "Choices": [
             {
               "Text": "\"Mind the papers.\"",
@@ -149277,10 +149277,10 @@
         {
           "Id": "offer",
           "Speaker": "Narrator",
-          "Text": "{n}The war ended before the contract did. Jerribeth came to the Commander's door the first spring after the Worldwound closed, in a guise the guards did not question, with the clause she had been saving.{/n}\n\"The forfeit is one memory, of my choosing, when I choose. Sign, or do not. I have already read your answer.\"",
+          "Text": "{n}The war ended before the lease did. Jerribeth came to the Commander's door the first spring after the Worldwound closed, in a guise the guards did not question, with the clause she had been saving.{/n}\n\"The forfeit is one memory, of my choosing, when I choose. Give me your hand, or do not. I have already read your answer.\"",
           "Choices": [
             {
-              "Text": "[Sign.]",
+              "Text": "[Give her your hand.]",
               "Next": "signed",
               "Set": [],
               "Requires": [],
@@ -149288,7 +149288,7 @@
               "Abort": false
             },
             {
-              "Text": "[Tear the contract in half.]",
+              "Text": "[Keep your hands folded in your lap.]",
               "Next": "torn",
               "Set": [],
               "Requires": [],
@@ -149301,7 +149301,7 @@
         {
           "Id": "signed",
           "Speaker": "Narrator",
-          "Text": "{n}The Commander signed. She read the signature twice, as if checking it for a trick, and did not find one, and seemed disappointed and pleased in exactly equal measure.{/n}\n{n}She collected a year later to the day, over breakfast, between one sentence and the next. She took the war: not the Commander's deeds, which were written down everywhere, but the having been there. The Commander put down the cup and could not say why the tea tasted of smoke.{/n}\n\"There,\" she said. \"Now I am the only one at this table who remembers how we met, and I intend to improve it.\"\n{n}Afterwards the Commander read about the crusade like a stranger reading a history, and Jerribeth, who had not been there either, told it back over supper, with herself in it. The Commander never once caught her in a lie, which was, she said, the whole point.{/n}",
+          "Text": "{n}The Commander held out a hand. She turned it palm up and read it twice, the way she read small print, as if checking it for a trick, and did not find one, and seemed disappointed and pleased in exactly equal measure.{/n}\n{n}She collected a year later to the day, over breakfast, between one sentence and the next. She took the war: not the Commander's deeds, which were written down everywhere, but the having been there. The Commander put down the cup and could not say why the tea tasted of smoke.{/n}\n\"There,\" she said. \"Now I am the only one at this table who remembers how we met, and I intend to improve it.\"\n{n}Afterwards the Commander read about the crusade like a stranger reading a history, and Jerribeth, who had not been there either, told it back over supper, with herself in it. The Commander never once caught her in a lie, which was, she said, the whole point.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -149375,7 +149375,7 @@
         {
           "Id": "torn",
           "Speaker": "Narrator",
-          "Text": "{n}The Commander tore the contract in half, and then in quarters, and handed her the pieces.{/n}\n{n}She looked at them for a long time. Then she laughed, high and abrasive, loud enough to bring the guard running.{/n}\n\"No forfeit, no contract. And still you open the door to me.\" {n}She put the pieces in her sleeve.{/n} \"You are very bad at this, Commander. I shall come back tomorrow, and the day after, until one of us learns to write a better one.\"\n{n}She did. Neither of them ever did. The Commander kept every memory of the war, including the ones worth losing.{/n}",
+          "Text": "{n}The Commander kept both hands folded in their lap, where she could see them.{/n}\n{n}She studied the hands, then the face above them. Then she laughed, high and abrasive, loud enough to bring the guard running.{/n}\n\"No forfeit, no lease. And still you open the door to me.\" {n}She sat down anyway, uninvited, at the Commander's own table.{/n} \"You are very bad at this, Commander. I shall come back tomorrow, and the day after, until one of us learns to write a better one.\"\n{n}She did. Neither of them ever did. The Commander kept every memory of the war, including the ones worth losing.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -150245,7 +150245,7 @@
         {
           "Id": "answer",
           "Speaker": "Konomi",
-          "Text": "{n}She does not answer at once. She opens the fan, and closes it, and sets it on her closed ledger as if it were a paperweight.{/n}\n\"Three days on your road, and you wait until the business is sealed to say it. You did the same at the council table: the price first, the thing you actually wanted afterwards, when there was nobody left to bargain with but me.\"\n\"Very well. My terms. I stay. I keep my own rooms, my own correspondents and my own opinions, and I shall give you all three at breakfast. And you never again dismiss me in front of a council. You may dismiss me in private. I shall enjoy watching you try.\"",
+          "Text": "{n}She does not answer at once. She opens the fan, and closes it, and sets it on her closed ledger as if it were a paperweight.{/n}\n\"Three days on your road, and you wait until the business is sealed to say it. You did the same at the council table: the price first, the thing you actually wanted afterwards, when there was nobody left to bargain with but me.\"\n\"Very well, let us talk price. I stay. I keep my own rooms, my own correspondents and my own opinions, and I shall give you all three at breakfast. And you never again dismiss me in front of a council. You may dismiss me in private. I shall enjoy watching you try.\"",
           "Choices": [
             {
               "Text": "[Take her hand] \"Then name the next evening.\"",
@@ -150271,7 +150271,7 @@
         {
           "Id": "courted",
           "Speaker": "Konomi",
-          "Text": "{n}She looks at you for a long moment over the closed fan, as if you had put a clause in front of her in a language she reads well and did not expect to see here.{/n}\n\"You have never once asked me to supper, Commander. You dismissed me in front of a council. Then you turned a road round to fetch me back, and paid for it with a letter that will cost you your nobles' grain for a season.\"\n\"That is either the most romantic thing anyone has ever done for me or the most insulting. I have had three days on your road to decide which.\" {n}The corner of her mouth moves.{/n} \"I have decided it is both, and that I will take it anyway. So. My terms.\"\n\"I keep my own rooms, my own correspondents and my own opinions, and I shall give you all three at breakfast. And you never again dismiss me in front of a council. You may dismiss me in private. I shall enjoy watching you try.\"",
+          "Text": "{n}She studies you over the closed fan, as if you had put a clause in front of her in a language she reads well and did not expect to see here.{/n}\n\"You have never once asked me to supper, Commander. You dismissed me in front of a council. Then you turned a road round to fetch me back, and paid for it with a letter that will cost you your nobles' grain for a season.\"\n\"In my trade, the difference between a courtship and an insult is usually the seal. I have had three days on your road to read yours.\" {n}The corner of her mouth moves.{/n} \"It is both, and I will take it anyway. So. Let us talk price.\"\n\"I keep my own rooms, my own correspondents and my own opinions, and I shall give you all three at breakfast. And you never again dismiss me in front of a council. You may dismiss me in private. I shall enjoy watching you try.\"",
           "Choices": [
             {
               "Text": "[Take her hand] \"Then name the next evening.\"",
@@ -150333,7 +150333,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}She looks at your hand in hers as if it were a clause she had drafted herself and was only now reading in fair copy.{/n}\n\"The next evening,\" she says, \"is this one.\"\n{n}The fan closes with a snap. She rises, and for the first time since the day she walked into your council with a scroll under the Queen's seal she lets go of her manners all at once: the ears she keeps so correctly upright at the table tip back, pleased, and the tail she holds in a careful curl through every audience comes loose and sweeps out behind her in the lamplight, slow, russet and pale-tipped, like a banner let down from a wall.{/n}\n\"Agreed. Now take this robe off me, Commander. Slowly. I bill by the minute, and tonight I intend to be very expensive.\"\n{n}You do it slowly. She lets the outer robe slide from one shoulder, then the other, and stands in the lamplight with nothing on but her rings and her smile, and lets you look for exactly as long as she has decided you may. Then she kisses you, with a politician's patience and none of a politician's restraint, her nails light at the back of your neck, her tail curling round the backs of your knees as if it had its own opinion about where you should stand.{/n}\n{n}She walks you backwards to the desk. A week of Nerosyan's dispatches goes to the floor in a slither of wax and ribbon. She pushes you down across the place where they lay, climbs over you with her knees either side of your hips, catches both your wrists in one hand and pins them above your head, and settles astride your hips, and reaches down between you with her free hand, watching your face the whole time to see what it costs you.{/n}",
+          "Text": "{n}She looks at your hand in hers as if it were a clause she had drafted herself and was only now reading in fair copy.{/n}\n\"The next evening,\" she says, \"is this one.\"\n{n}The fan closes with a snap. She rises, and the manners she has worn since the day she walked into your council with a scroll under the Queen's seal come off all at once: the ears she keeps so correctly upright at the table tip back, pleased, and the tail she holds in a careful curl through every audience comes loose and sweeps out behind her in the lamplight, slow, russet and pale-tipped, like a banner let down from a wall.{/n}\n\"Agreed. Now take this robe off me, Commander. Slowly. I bill by the minute, and tonight I intend to be very expensive.\"\n{n}You do it slowly. She lets the outer robe slide from one shoulder, then the other, and stands in the lamplight with nothing on but her rings and her smile, and lets you look for exactly as long as she has decided you may. Then she kisses you, with a politician's patience and none of a politician's restraint, her nails light at the back of your neck, her tail curling round the backs of your knees as if it had its own opinion about where you should stand.{/n}\n{n}She walks you backwards to the desk. A week of Nerosyan's dispatches goes to the floor in a slither of wax and ribbon. She pushes you down across the place where they lay, climbs over you with her knees either side of your hips, catches both your wrists in one hand and pins them above your head, and settles astride your hips, and reaches down between you with her free hand, watching your face the whole time to see what it costs you.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -150873,7 +150873,7 @@
           "Text": "{n}Lady Konomi came back to Drezen after the war as envoy of a Nerosyan that had learned to read the Commander's letters very carefully.{/n}\n{n}She asked the question herself, in a sealed dispatch addressed to the Commander in person, not to the Commander's office. It was two lines long. She did not wait for the courier to leave before adding a postscript: 'Accepted in advance.'{/n}",
           "Choices": [
             {
-              "Text": "[Write \"Countersigned\" under the postscript.]",
+              "Text": "[Ride to Nerosyan and answer it at her door.]",
               "Next": "signed",
               "Set": [],
               "Requires": [],
@@ -150894,7 +150894,7 @@
         {
           "Id": "signed",
           "Speaker": "Narrator",
-          "Text": "{n}She read the countersignature in the doorway of the Commander's rooms, with the courier still standing behind her, and laughed out loud, which nobody in Nerosyan had ever heard her do.{/n}\n{n}She kept her rooms, her correspondents and her opinions, and delivered all three at breakfast. The dispatch hung framed above the desk they shared. Visitors assumed it was a treaty. In a sense it was.{/n}",
+          "Text": "{n}The Commander answered it in person, on the steps of the Nerosyan embassy, overtaking the courier on the road to do it. She heard the answer in her own doorway, in front of her whole staff, and laughed out loud, which nobody in Nerosyan had ever heard her do.{/n}\n{n}She kept her rooms, her correspondents and her opinions, and delivered all three at breakfast. The dispatch hung framed above the desk they shared. Visitors assumed it was a treaty. In a sense it was.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -151233,7 +151233,7 @@
         {
           "Id": "start",
           "Speaker": "Kyado",
-          "Text": "{n}Kyado has heard. Everyone in the lower town has heard. He does not laugh; he looks at you the way he looked at you once in the temple, as if you were weather.{/n}\n\"I told you, Commander. Back at the temple. You play tricks, and your tricks become the truth. I didn't think it would be roads.\"\n\"The fox lady's driver came to me for a blessing. I gave him one. Erastil keeps the roads for honest travellers, I told him, and you were honest; it was the road that wasn't.\" {n}He hesitates.{/n} \"I hope she made you pay for it.\"",
+          "Text": "{n}Kyado has heard. Everyone in the lower town has heard. He does not laugh; he looks at you the way he looked at you once in the temple, as if you were weather.{/n}\n\"I warned you, Commander. Back at the temple, about what your tricks do. I didn't think it would be roads.\"\n\"The fox lady's driver came to me for a blessing. I gave him one. Erastil keeps the roads for honest travellers, I told him, and you were honest; it was the road that wasn't.\" {n}He hesitates.{/n} \"I hope she made you pay for it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -151274,7 +151274,7 @@
         {
           "Id": "start",
           "Speaker": "Regill",
-          "Text": "{n}Regill does not look up from his report.{/n}\n\"A death is a record, Commander. You amended it, and the deceased countersigned. I have no statute for that.\"\n{n}He turns a page.{/n}\n\"I shall write one. I shall also note, for your file, that she charged you triple, and that you paid. It is the first sign of discipline I have seen in you.\"",
+          "Text": "{n}Regill does not look up from his report.{/n}\n\"A death is a record, Commander. You amended it, and the deceased invoiced you for the correction. I have no statute for that.\"\n{n}He turns a page.{/n}\n\"I shall write one. I shall also note, for your file, that she charged you triple, and that you paid. It is the first sign of discipline I have seen in you.\"",
           "Choices": [
             {
               "Text": "Continue",
