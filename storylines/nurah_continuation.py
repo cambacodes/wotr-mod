@@ -792,7 +792,7 @@ You kiss the corner of her mouth. She turns toward you and makes you begin again
 "This furniture has no discretion," she murmurs.
 "We could move."
 "I was hoping you would think of that."
-{n}You lift her from the chair. She laughs once, sharply, and wraps an arm around your neck. On the way past the table she reaches down to extinguish the lamp. The old letter disappears into darkness with everything else.
+{n}You lift her from the chair. She makes a small, affronted sound that turns into a laugh halfway through, and wraps an arm around your neck. On the way past the table she reaches down to extinguish the lamp. The old letter disappears into darkness with everything else.
 Later, when she retrieves it, she does so without hurrying. She folds it into her sleeve and steals the warmer side of the cover before you can object.{/n}''', c('[Let the work wait until the next appointment.]', flags=f("letter_faced"))),
 ], "papers_recovered")
 
@@ -950,7 +950,7 @@ A guest tears the dedication from his copy. The small sound carries surprisingly
 She begins reading Nurah's old praise of Trezbot. The room falls quiet. Nurah leaves the stand and walks toward her, slowly enough that nobody mistakes it for an attempt to snatch the letter.
 Vhal finishes the first paragraph. Nurah holds out her hand.
 "The next line," she says. "You have skipped it."
-The collector looks down. Whatever Nurah expected to find, it is there. For the first time that evening Vhal seems uncertain whether she has chosen the right page.{/n}''',
+The collector looks down. Whatever Nurah expected to find, it is there. Vhal's certainty, which has lasted all evening, develops a small visible crack: she is no longer sure she has chosen the right page.{/n}''',
       c('[Watch her compare the original against the variants Nurah circulated.]', "variants", requires=f("letter_variants")),
       c('[Let Nurah finish the sentence her former master kept.]', "original", forbids=f("letter_variants"))),
     n("original", "Nurah", '''{n}Vhal folds the bottom of the page under her fingers.
@@ -1180,7 +1180,7 @@ Vhal signs. When Nurah adds her signature, the collector watches it with an expr
 {n}She turns the list toward Vhal. A second payment, entered privately, suppressed an earlier account. Vhal calls it additional research. Nurah asks whether the family would like to compare the invoices.{/n}
 "You would destroy the value by publishing them."
 "Yes. I would prefer you to sell me the value instead."
-{n}For the first time they look like competitors who understand the same business.
+{n}Now they look like competitors who understand the same business.
 Vhal demands that existing contracts remain hers and that Nurah approach no current client for a new commission until those contracts are delivered. Nurah resists the delay. You point to the suppliers and former clients outside that list. She checks the names, calculates, and agrees.
 Vhal keeps a public trade to rebuild. The proposed transfer gives Nurah the private purchase records, supplier correspondence, and coercive material. Her first offers must go to former clients and people outside the protected list, rather than the easiest buyers she wanted.
 The collector adds a prohibition on publishing evidence of the offer she made concerning Bressa. Nurah places her pen beside the sentence rather than signing it.{/n}''',
