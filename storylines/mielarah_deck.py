@@ -604,7 +604,7 @@ deck(D + "stern", "A name on the stern", '"You asked for a steady pair of hands?
         c("[Take the line.]", "paint_cut", requires=(CUT_DOWN,))),
     mi("paint_cut", '''{n}You pay out the line, and she goes down the stern a little at a time, and under the ship's name, in small white letters, she begins to paint another.{/n}
 "O. S. K." {n}She talks while she paints, not to you exactly, in the rasp the rope left her.{/n} "He could not read. I taught him his own name, the first year, with chalk on the capstan. He was so angry that it only had five letters. He'd thought it would be longer, a man that size."
-"He liked sweet things. He stole sugar from the galley and pretended he hadn't. He sang, badly, in the heads, where he thought nobody could hear." {n}The brush moves.{/n} "He stood at the rail at Vazglar and did nothing, and two nights later he went out along my yard and cut me down. He was nearest. Somebody sent him."''',
+"He liked sweet things. He stole sugar from the galley and pretended he hadn't. He sang, badly, in the heads, where he thought nobody could hear." {n}The brush moves.{/n} "He stood at the rail at Vazglar and did nothing, and then he flew ashore for you, and went up to my yard and cut me down. He was nearest. Somebody sent him."''',
        c('"I sent him."', "you_cut"),
        c("[Hold the line and say nothing.]", "quiet")),
     mi("you_cut", '''"You did." {n}She does not look up.{/n} "I was at the end of a rope at the time, so I cannot say I let you. But I have asked you to hold this one, and I thought that was fair. You can let go any time, you know. The crew say I would survive the fall. They're probably right about that as well."
