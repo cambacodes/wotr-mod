@@ -101,7 +101,7 @@ visit(E + "beat.writ", "A writ from the chaplains", [
     nar("upheld", '''{n}The grey chaplain stares at you as if you had struck him. The clerk closes his register with great care. The young one says, "Commander, surely..." and stops, because the older man has put a hand on his arm.{/n}
 {n}They go. They do not bow. At the gate of the yard the grey one turns and says, to the air, that the Inheritor sees what is done in her name, and then they are gone, and the hearse-yard is very quiet.{/n}''',
         c("Continue", "upheld2")),
-    el("upheld2", '''{n}Elyanka lets out a breath, slowly, through her teeth, as if she had been holding it for six hundred years.{/n}
+    el("upheld2", '''{n}Elyanka lets out a breath, slowly, through her teeth, as if she had been holding it since the asylum.{/n}
 "You stood in front of your own priests for a priestess of my Lady. On the law. In daylight." {n}Her eyes are very bright.{/n} "Do you understand what you have done? In Caliphas they will not believe it. In Nerosyan they will never forgive it. Those chaplains will pray for your soul every night until they die, and they will mean every word."
 "I have never in my life been defended. I find it quite unbearable. Go away before I say something foolish."''',
        c("[Go away.]", flags=(WRIT_UPHELD,))),
@@ -156,11 +156,11 @@ visit(E + "beat.hunt", "Venison", [
 ], requires=(BIER,), forbids=(HUNT_ATE, HUNT_SANG, HUNT_WATCHED), delay=36, last=5)
 
 
-# --- 4. A man in grey (T, optional, Kind letter): the Way writes nothing, so a courier recites her. ----------------------
+# --- 4. A man in grey (T, optional, Kind letter): she will not trust this to paper, so a courier recites her. ----------------------
 
 visit(E + "beat.courier", "A man in grey", [
     nar("start", '''{n}One of her escort is standing in your doorway when you wake: a man in grey with a face like a closed shutter. He does not bow. He clears his throat, and when he speaks it is in her voice, exactly, the cadence and the chill and the faint Ustalavic roll of the r, coming out of a mouth that is not hers.{/n}
-"The priestess sends word. It is not written, because the Way writes nothing. I will say it once."''',
+"The priestess sends word. She does not trust it to paper. I will say it once."''',
         c("[Listen.]", "message")),
     n("message", "Man in grey", '''"*Commander. I have gone south to the border, to a house on the Ustalav road where the Way keeps rooms. A master of the Way has come up from Caliphas to ask me why my carriage is empty.*"
 "*I told him the goods are still ripening. He asked me whether I had grown fond of the goods. I told him I do not grow fond. I grow hungry. He did not believe me. Neither, when I lie awake in this house, do I.*"''',
@@ -240,7 +240,7 @@ visit(E + "ch6.collateral", "The collateral, inspected", [
 "Thinner. A new cut on the forearm, badly stitched. You carry your left shoulder higher than you did in Drezen." {n}She wrinkles her nose.{/n} "And you smell of the Wound. Everything here does. It gets into the meat."''',
        c("Continue", "tomorrow")),
     el("tomorrow", '''"Tomorrow, or the next day, you go into the Wound. If you die at the edge of it, I collect. That is what the Way paid for, and that is what I came north to see." {n}She sounds perfectly calm.{/n}
-"If the Wound takes you whole, I have nothing. No body. No table. No offering. Six hundred years of patience, and a hearse built in Caliphas, for nothing." {n}Her mouth thins.{/n} "So I will ask you one thing, as your creditor. Where do you want me standing?"''',
+"If the Wound takes you whole, I have nothing. No body. No table. No offering. Half my life of patience, and a hearse built in Caliphas, for nothing." {n}Her mouth thins.{/n} "So I will ask you one thing, as your creditor. Where do you want me standing?"''',
        c('"Are you afraid for me?"', "afraid"),
        c('[Tell her to stand at the rift\'s edge] "Somewhere you can see. If it falls due, collect."', "rift"),
        c('[Tell her to wait in Drezen] "In the dead-house. If I don\'t come back, you won\'t need to see it."', "drezen")),
@@ -279,13 +279,21 @@ visit(E + "beat.whisper", "The Way's tongue", [
 {n}You try again. This time she is quiet for a while afterwards.{/n}
 "Better. Now the Way's custom: a secret for a secret. You tell me a true thing, and I tell you one, and neither of us may ever repeat what we heard, not even to each other. Go first. You are the debtor."''',
        c('[Whisper a true thing] "I am afraid of the Wound. Not of dying in it. Of what it wants me to be."', "fear"),
-       c('[Whisper a true thing] "I enjoyed the wake. Every minute of it."', "wake"),
+       c('[Whisper a true thing] "I enjoyed the wake. Every minute of it."', "wake", requires=(BLUFFED,)),
+       c('[Whisper a true thing] "When you found my pulse under the veil, I was glad you had."', "wake_exposed", requires=(EXPOSED,)),
+       c('[Whisper a true thing] "I came to supper bare-faced to watch your face when the corpse sat down."', "wake_straight", requires=(STRAIGHT,)),
        c("[Whisper something that isn't true.]", "lie")),
     el("fear", '''{n}She does not answer at once. Her cheek rests against yours, cold, and you feel her jaw move as if she were tasting what you said.{/n}
 "Yes. That is true. I can hear it; it sits lower than the words." {n}A pause.{/n} "The witch in the Wound made you for something. My Lady at least tells her children what they are for. Hunger. Keeping. Never lying down." {n}Her fingers find your wrist, and the pulse in it.{/n} "Now mine."''',
        c("Continue", "hers", flags=(WHISPER_FEAR,))),
     el("wake", '''{n}Her breath catches against your ear, and then she laughs, without a sound, the laugh going through her shoulders and into yours.{/n}
 "Yes. That is true. I watched you enjoy it through a curtain and thought you were grieving." {n}She is still smiling; you can feel it.{/n} "You are a monster, Commander. A small, warm, sweating monster. Now mine."''',
+       c("Continue", "hers", flags=(WHISPER_WAKE,))),
+    el("wake_exposed", '''{n}Her fingers, on your wrist, stop moving.{/n}
+"Glad." {n}A long pause.{/n} "Yes. That is true. It sits low. You wanted to be caught, a little; you wanted someone to be good enough to catch you." {n}She does not sound pleased about it.{/n} "I still will not believe your face. Now mine."''',
+       c("Continue", "hers", flags=(WHISPER_WAKE,))),
+    el("wake_straight", '''{n}She breathes out against your ear, not quite a laugh.{/n}
+"True. You watched me smell you and be disgusted, and you enjoyed it. I thought you were only rude." {n}Her cheek stays against yours.{/n} "You are worse than rude, Commander. You are curious. Now mine."''',
        c("Continue", "hers", flags=(WHISPER_WAKE,))),
     el("lie", '''{n}She is silent for a long breath. Then she sits back, a hand's width, which in that dark is as far as the other side of a room.{/n}
 "No." {n}Quite gently.{/n} "That was a lie. It sat at the top of the words, where lies sit. I told you the Way would teach you to hear the difference. I did not tell you it would teach me first."
@@ -361,7 +369,7 @@ visit(E + "beat.master", "A master from Caliphas", [
        c("Continue", "choice")),
     nar("choice", '''{n}The master looks from her to you, and his smile does not move. Then he rises, and bows, the precise bow of a man who has been insulted and has made a note of it.{/n}
 "The Way will consider its position," {n}he says,{/n} "on the road home." {n}And he goes out into the yard, where his own carriage is waiting.{/n}
-{n}Elyanka does not watch him go. Only now does she look at you, and her eyes are perfectly calm.{/n} "He will not consider anything on the road home. He will write to the masters that I have gone soft, and they will send someone who is not a clerk. Unless he does not reach the border."''',
+{n}Elyanka does not watch him go. Only now does she look at you, and her eyes are perfectly calm.{/n} "He will not consider anything on the road home. He will tell the masters that I have gone soft, and they will send someone who is not a clerk. Unless he does not reach the border."''',
         c('[Give her the road] "Then he doesn\'t reach the border. It\'s a long road."', "kill"),
         c('[Give him an escort] "He came under your oath. He leaves under mine. Twelve crusaders to the border."', "escort"),
         c('[Leave it to her] "He\'s your master, and your order. You decide."', "hers")),
@@ -490,7 +498,7 @@ TYRANT_TOLD = E + "tyrant.told_her"
 visit(E + "beat.tyrant", "The Tyrant's seals", [
     nar("start", '''{n}She is in a good mood tonight, which in her looks like cruelty with the edges filed off. There is wine, and a map of Avistan she has had one of her six pin to the dead-house wall, old and soft at the folds, with the Worldwound a brown stain at the top and Ustalav a grey smudge in the south.{/n}''',
         c("Continue", "map")),
-    el("map", '''"Look." {n}She traces a long finger down into the grey smudge of Ustalav, to a small black tower drawn in the hills of the south.{/n} "Gallowspire. Where your Shining Crusade buried my Lady's greatest servant under a Great Seal and three little ones, and called it victory, and went home."
+    el("map", '''"Look." {n}She traces a long finger down into the grey smudge of Ustalav, to a small black tower drawn among the hills.{/n} "Gallowspire. Where your Shining Crusade buried my Lady's greatest servant under a Great Seal and three little ones, and called it victory, and went home."
 "Tar-Baphon. The Whispering Tyrant. He challenged Aroden and lost, and rose again as a lich, and conquered Ustalav, and ruled it six hundred years." {n}Her finger rests on the black tower.{/n} "Two of the three lesser seals are gone, Commander. And Aroden, his old enemy, is dead. We believe the Tyrant won their quarrel after all."''',
        c('"Why tell me this?"', "why"),
        c("[Say nothing. Let her talk.]", "talk")),
@@ -535,13 +543,13 @@ visit(E + "beat.sisters", "Six sisters", [
        c("[Sit down beside her and look at the faces.]", "faces")),
     el("faces", '''{n}You sit on the step beside her, close enough that her robe touches your knee, and look at them one by one. She lets you. She does not say which is which, and you do not ask. After a while she speaks anyway, to the case, not to you.{/n}''',
        c("Continue", "after")),
-    el("after", '''"Four of them are still in the Camilary house. They keep it. They do not go out in daylight, and they do not need to eat, and they are never, ever afraid." {n}Her voice is quite even.{/n} "My mother is with them. My brothers went south, to the Way. One of them is a master now. He does not write, because the Way writes nothing, but I hear."
-"Two of my sisters would not take the gift properly. They lie down. Every night I put them in their beds, they get up and walk to the churchyard and lie down on the grass, as if they were still waiting to be buried." {n}Her finger rests on one oval.{/n} "It was a long time before I understood that it was not the gift that failed. It was them. They wanted the warden's queue. They wanted to be judged."''',
+    el("after", '''"Four of them are still in the Camilary house. They keep it. They do not go out in daylight, and they do not need to eat, and they are never, ever afraid." {n}Her voice is quite even.{/n} "My mother is with them. My brothers went south, to the Way. One of them is a master now. He does not come home, but I hear."
+"Two of my sisters would not take the gift properly. Every night I put them in their beds, and every night they get up and walk to the churchyard and lie down on the grass, as if they were still waiting to be buried." {n}Her finger rests on one oval.{/n} "They want the warden's queue. They want to be judged. Ingratitude. My Lady gave them forever, and they would rather have a hole."''',
        c('"What did you do with them?"', "what"),
        c("[Say nothing. Leave her the case.]", "silence")),
     el("what", '''{n}She closes the case, very gently, with both hands.{/n}
-"What they wanted." {n}Nothing else, for a while.{/n} "I dug the graves myself. I put them in, and I did not call a priest, and I did not say a prayer to anyone, because I did not know one that would not have been a lie." {n}She looks at you then.{/n}
-"You asked. Nobody asks. Now you know that I can let a thing go that I love, if it wants to go badly enough. Do not make a habit of wanting it."''',
+"Nothing. They are mine." {n}Her voice does not change at all.{/n} "The servants carry them back from the churchyard every morning, wet with dew, and chain them in their beds, and every night they slip the chains and walk out again. I shall go on having them fetched until they learn to be grateful, or until the stars go out."
+{n}She looks at you then.{/n} "You asked. Nobody asks. Now you know what I do with things that are mine and want to leave. Do not make a habit of wanting it."''',
        c("[Take her hand.]", flags=(SISTERS_ASKED,))),
     el("silence", '''{n}You say nothing. After a while she closes the case herself, with both hands, gently, and puts it inside her robe against her breast.{/n}
 "You are learning," {n}she says.{/n} "Most people cannot bear a silence at a graveside. They fill it with something stupid." {n}She stands.{/n} "Come inside. I am hungry, and I would like to watch you eat."''',
@@ -558,7 +566,7 @@ visit(E + "beat.face", "A liar's face", [
 {n}Tonight she is waiting in the dead-house with a stick of charcoal and a sheet of heavy grey paper pinned to a board, and she points at the stool across from her with the charcoal.{/n}''',
         c("Continue", "draw")),
     el("draw", '''"Sit. Do not talk. Do not smile." {n}She begins to draw, fast, with quick hard strokes, and still she does not look at your face; she looks at the paper, and at your hands in your lap, and at your throat, and draws.{/n}
-"The Way writes nothing down. It does not say anything about drawing." {n}The charcoal scratches.{/n} "I am going to draw the face that lied to me in a veil, from everything else about you that does not lie. Then I will look at the drawing instead of at you. It will be a great deal more honest."''',
+"I do not put what matters on paper. Drawing is not writing." {n}The charcoal scratches.{/n} "I am going to draw the face that lied to me in a veil, from everything else about you that does not lie. Then I will look at the drawing instead of at you. It will be a great deal more honest."''',
        c("[Sit still, and let her draw.]", "done"),
        c('[Take the charcoal from her] "Look at me. Just once."', "look")),
     el("done", '''{n}It takes an hour. When she turns the board round, the face on it is yours, and not quite yours: harder about the mouth, older about the eyes, the face of someone who would sit through their own wake in crepe to learn their price.{/n}
@@ -664,14 +672,14 @@ visit(E + "beat.night", "The collector at night", [
        c("Continue", flags=(NIGHT_WOKE,))),
     el("woke_out", '''"As you like." {n}She rises without hurry, and smooths her robe.{/n} "It is your room. For now." {n}At the door she pauses.{/n} "You reached for your sword twice, and both times your hand came to the place where I was sitting. I do not think you meant to kill me. I think you meant to make sure I was still there. Good night, Commander."''',
        c("Continue", flags=(NIGHT_WOKE,))),
-], requires=(BIER,), forbids=(NIGHT_WOKE, NIGHT_FEIGNED), delay=84, last=6)
+], requires=(BIER,), forbids=(NIGHT_WOKE, NIGHT_FEIGNED), delay=84, last=5)
 
 
 # --- 7. Reaction: Regill, who reads law (the writ). ------------------------------------------------------------------------
 
 SCENES.append(reaction("Regill", E + "react.regill_writ", ("trickster.ever", "regill.in_party"),
     '''{n}Regill does not look up from the report he is annotating.{/n}
-"The priestess of Urgathoa in the dead-house. I went to Nerosyan's register myself, Commander, after the chaplains came to you with their writ. Her oath is in it. So are the oaths of six men who do not appear to breathe. Every seal is correct. Every witness is real." {n}He turns a page.{/n}
+"The priestess of Urgathoa in the dead-house. I read the register the chaplains' clerk carried to the dead-house, Commander, the copy from Nerosyan. Her oath is in it. So are the oaths of six men who do not appear to breathe. Every seal is correct. Every witness is real." {n}He turns a page.{/n}
 "The law does not require me to like her, and I do not. It does require me to note that you were right, and the chaplains were not. I have noted it." {n}His pen scratches.{/n} "I have also noted where she sleeps."''',
     answer_list=REGILL_HUB, chapter=5, last=5, entry='"About the Ustalavic priestess."', portrait="Regill",
     forbids=("regill.dead", "regill.kicked_out", "regill.plot_absent"),
@@ -680,7 +688,7 @@ tag(E + "react.regill_writ", "T")
 
 SCENES.append(reaction("Regill", E + "react.regill_lie", ("trickster.ever", "regill.in_party", WRIT_LIED),
     '''{n}Regill does not look up from the report he is annotating.{/n}
-"You told the chaplains that the priestess in the dead-house is your embalmer, Commander. I went to Nerosyan's register afterwards. She is entered there as a noblewoman of Ustalav under the crusader's oath, with six men who do not appear to breathe. She is not entered as anybody's servant." {n}He turns a page.{/n}
+"You told the chaplains that the priestess in the dead-house is your embalmer, Commander. I read the register the chaplains' clerk carried, the copy from Nerosyan. She is entered there as a noblewoman of Ustalav under the crusader's oath, with six men who do not appear to breathe. She is not entered as anybody's servant." {n}He turns a page.{/n}
 "Her oath would have held without your lie. You lied anyway, to two chaplains and a clerk of the court, about a matter the law had already settled." {n}His pen scratches.{/n} "I have noted it. I note everything. I simply want you to know which of the two of you I trust to tell the truth under oath, and it is not you."''',
     answer_list=REGILL_HUB, chapter=5, last=5, entry='"About the Ustalavic priestess."', portrait="Regill",
     forbids=("regill.dead", "regill.kicked_out", "regill.plot_absent")))

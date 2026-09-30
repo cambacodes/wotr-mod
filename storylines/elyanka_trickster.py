@@ -26,7 +26,7 @@ Nothing reads a Lich key; nothing is hosted on the King's or Fye's list (the Kin
 Device ("Mourner at your own wake"): the Commander receives her veiled, as the executor of the late Knight Commander, and
 haggles over the body, to learn what a lich-cult pays for a mythic corpse, and why, before it learns the corpse is
 listening (CheckBluff DC 26, 22 with the Fool King's court hired as weeping mourners). No mythic power solves anything.
-Commit: an exchange of claims; she whispers her own corpse to the Commander in return (the Way writes nothing down).
+Commit: an exchange of claims; she whispers her own corpse to the Commander in return (her bargains are whispered, like the Way's teaching).
 Cost: the Commander's body, bequeathed to the Whispering Way in her keeping, due at death (Evil 1); the soul stays
 Pharasma's. A Ledger debt to a live power: Last Call's bottle cheats it by the letter; without the bottle it stands unpaid
 while the Commander lives, and the Wound leaves her nothing to collect if it takes the Commander.
@@ -277,7 +277,7 @@ visit(E + "executor.haggle", "The executor", [
        c('[Sell it] "My body, at my death, to the Whispering Way, in your keeping. Done."', "sold"),
        c('"No. You came for a corpse. You\'ll go home without one."', "refuse")),
     el("sold", '''{n}She does not call for pen or paper. She leans across the table instead, close enough that you smell cloves and cold wine on her, and says the terms into your ear in a whisper, in a language older than the words she is using. Then she waits, her cheek almost against yours, until you have whispered them back.{/n}
-"The Way writes nothing down, Commander. What is whispered cannot be burned, or forged, or forgotten by anyone who heard it." {n}She sits back, and for a moment she looks almost pleased with you.{/n} "You are mine when you are dead. Try to make it an interesting death."''',
+"The Way's teaching cannot be written, Commander, only told. I keep my bargains the same way. What is whispered cannot be burned, or forged, or forgotten by anyone who heard it." {n}She sits back, and for a moment she looks almost pleased with you.{/n} "You are mine when you are dead. Try to make it an interesting death."''',
        c("[Put the veil back on for the walk home.]", flags=(*SOLD, BLUFFED), alignment=("Evil", 1))),
     el("refuse_veiled", '''{n}She looks at the veil for a while, as if she could see through it, and perhaps she can.{/n}
 "You made me say it aloud," {n}she says softly,{/n} "to a curtain, in a barn, and now you will not sell. That was not grief, executor. That was curiosity." {n}She rises.{/n} "Tell the estate the Way does not forget who was curious about it. Good night."''',
@@ -297,7 +297,7 @@ visit(E + "executor.haggle", "The executor", [
        c('[Sell it bare-faced] "Done. My body, at my death, to the Way."', "bare_sold"),
        c('[See her out] "The owner isn\'t selling after all."', "seen_out")),
     el("bare_sold", '''{n}No pen and no paper. She leans across the table and says the terms into your ear in a whisper, in words older than the language they are in, and waits until you have whispered them back. Her breath is cold, and smells of cloves.{/n}
-"The Way writes nothing down. What is whispered cannot be burned or forged." {n}She sits back.{/n} "You are mine when you are dead, Commander. Until then I shall watch your hands. Your face is a liar."''',
+"I do not put my bargains on paper, Commander. What is whispered cannot be burned or forged." {n}She sits back.{/n} "You are mine when you are dead, Commander. Until then I shall watch your hands. Your face is a liar."''',
        c("[Take the veil with you.]", flags=(*SOLD, EXPOSED), alignment=("Evil", 1))),
     el("seen_out", '''"As you like." {n}She rises, unhurried, and tucks the wine jug under her arm as though it were part of her fee.{/n}
 "You dressed as your own mourner to see what you were worth, and did not like the number. That is the most honest thing a mortal has done in front of me in years." {n}At the door she turns.{/n} "Keep the veil. You will want it one day."''',
@@ -326,7 +326,7 @@ visit(E + "straight.offer", "The corpse comes to supper", [
        c('[Bequeath it] "When I die, it\'s yours. Keep your carriage polished."', "sold"),
        c('"No. Nobody is waiting for my corpse, and nobody gets it."', "refuse")),
     el("sold", '''{n}She does not call for pen or paper. She rises, comes round the trestle, and bends to say the terms into your ear in a whisper, in words older than the language they are in. Then she waits, a hand on your shoulder as cold as a banister in winter, until you have whispered them back.{/n}
-"The Way writes nothing down, Commander. What is whispered cannot be burned, or forged, or forgotten." {n}She straightens.{/n} "You are mine when you are dead. Do not dawdle."''',
+"Paper burns, Commander. I keep my bargains as the Way keeps its teaching: told, not written. What is whispered cannot be burned, or forged, or forgotten." {n}She straightens.{/n} "You are mine when you are dead. Do not dawdle."''',
        c("[Finish her wine.]", flags=SOLD, alignment=("Evil", 1))),
     el("refuse", '''"Everybody is waiting for your corpse, Commander. The Abyss, the witch who made you, the grey warden with her ledger. I am only the first who had the manners to ask." {n}She rises, and she is taller than you expected.{/n}
 "But you have refused me, so I will go and wait somewhere more comfortable. Live as long as you please. I am told it is a great deal of work."''',
@@ -381,7 +381,7 @@ visit(E + "test.the_dead", "Sixty-one under canvas", [
     el("refuse2", '''"I asked, Commander, because a {mf|man|woman} who would hand me sixty-one strangers for nothing would one day hand me to someone else for less." {n}She sets the lantern down on the nearest canvas, over a dead man's chest, as if it were a table.{/n}
 "I do not care about your dead. I care what you do with things that are not yours. Now I know." {n}She almost smiles.{/n} "Go to bed. You smell of lime, and it does not suit you."''',
        c("[Leave her with the dead.]", flags=(TESTED, REFUSED_DEAD))),
-], requires=(OWNED,), forbids=(TESTED,), delay=48, last=6)
+], requires=(OWNED,), forbids=(TESTED,), delay=48, last=5)
 
 
 # --- 5. The exchange of claims (T): the commit. -------------------------------------------------------------------------
@@ -428,7 +428,7 @@ visit(E + "commit.claims", "An exchange of claims", [
 "A buyer asks that." {n}Her voice is quite level.{/n} "A bride does not."
 {n}She picks up her knife and goes back to the venison, and eats with the same appetite as before, as if you had already left.{/n} "You may finish your wine. I will think about what you are."''',
        c("[Finish your wine.]", flags=(DECLINED,))),
-], requires=(TESTED,), forbids=(COMMITTED, DECLINED), delay=24, last=6)
+], requires=(TESTED,), forbids=(COMMITTED, DECLINED), delay=24, last=5)
 
 
 # --- 6. Her move (T): the delayed return. No price. --------------------------------------------------------------------
@@ -452,7 +452,7 @@ visit(E + "commit.her_move", "A lock of grey hair", [
 "Your body is mine when you die, and nothing else is." {n}She repeats it slowly, tasting it.{/n} "Yes. That is what I sold you, too. How precise we both are."
 {n}At the door she stops.{/n} "I will go home. The Way will keep what it bought. And one day I will stand beside a hole with your name on it, Commander, and I will not weep, and nobody will ever know I once cut my hair for you."''',
        c("[Let her go.]", flags=(LEFT_FREE, CLOSED))),
-], requires=(DECLINED,), forbids=(COMMITTED, LEFT_FREE), delay=48, last=6)
+], requires=(DECLINED,), forbids=(COMMITTED, LEFT_FREE), delay=48, last=5)
 
 
 # --- 7. The hearse (T): desire, the threshold, the cut, and the morning. --------------------------------------------------
@@ -506,7 +506,7 @@ visit(E + "visit.hearse", "The velvet in the hearse", [
     el("horses2", '''"They will get used to you," {n}Elyanka says, as the last mare is led away, still shivering,{/n} "or I will have them killed and buy horses who do not mind." {n}She considers you, standing half-dressed among the overturned candles.{/n}
 "I find I mind less than they do. That is very inconvenient of me. Go back to your war."''',
        c("[Go back to the war.]", flags=(BIER, HORSES))),
-], requires=(COMMITTED,), forbids=(BIER,), delay=24, last=6)
+], requires=(COMMITTED,), forbids=(BIER,), delay=24, last=5)
 
 
 # --- 8. Reactions (named companions with a stake: Daeran, a noble who buried his whole line; Seelah, who prayed over the
@@ -582,7 +582,7 @@ UNPAID = (
 )
 
 COMMON = (
-    p('''{n}In Caliphas, where the Way writes nothing down, they still tell the story of the executor who sat through an entire wake in borrowed crepe to learn what the deceased was worth, and the envoy who laughed until she coughed. It is told in a whisper. It is never told the same way twice.{/n}''',
+    p('''{n}In Caliphas, where the Way's teaching is passed by word of mouth, they still tell the story of the executor who sat through an entire wake in borrowed crepe to learn what the deceased was worth, and the envoy who laughed until she coughed. It is told in a whisper. It is never told the same way twice.{/n}''',
       requires=(BLUFFED,)),
     p('''{n}She never once looked at the Commander's face when a question mattered. She watched the hands, and the pulse at the throat, and on the rare nights she was pleased with what she saw, she said so to the hands.{/n}''',
       requires=(EXPOSED,)),
@@ -592,8 +592,6 @@ COMMON = (
       requires=(REFUSED_DEAD,)),
     p('''{n}The head of a vrock hung for years in a certain house in Caliphas, above a fireplace, with a card beneath it in no hand at all. Visitors from the Way who asked about it were told it was the Knight Commander's idea of an offering, and that the Knight Commander was not squeamish, only stingy.{/n}''',
       requires=(CARRION,)),
-    p('''{n}Every year on the day Drezen had feasted the Commander dead, a bottle arrived from the Arendae cellars, older than she was, with Daeran's compliments. She sneered at every one of them, and never once left a drop.{/n}''',
-      requires=(DAERAN_ALLY,)),
     p('''{n}She kept a drawing of the Commander's face, done in charcoal from everything about the Commander except the face, rolled in her sleeve. When she needed to know what the Commander really thought, she unrolled it and asked it. She said it had never once lied to her.{/n}''',
       requires=(E + "face.read",)),
     p('''{n}There were men in the old granary by the north wall who died smiling, that winter, with a name on their lips the chaplains did not recognize. The Commander had let her in. The Commander never forgot it, and never pretended to be sorry.{/n}''',
@@ -608,6 +606,14 @@ COMMON = (
       any_groups=((E + "whisper.fear", E + "whisper.wake"),)),
     p('''{n}Once, in the dark end of the dead-house, the Commander had whispered her a lie, and she had heard it. She kept the secret she gave in return anyway. That, she said, was what made the Commander hers: a debt that could never be paid back in kind.{/n}''',
       requires=(E + "whisper.lie",)),
+    p('''{n}Her black mares never got used to the living. She sold them in the second spring and bought four grey ones that did not mind a passenger with a pulse, and said it was the only concession to mortal life she had ever made.{/n}''',
+      requires=(HORSES,)),
+)
+
+# After the war, while she and the Commander still meet: the partner's page only.
+LATER = (
+    p('''{n}Every year on the day Drezen had feasted the Commander dead, a bottle arrived from the Arendae cellars, older than she was, with Daeran's compliments. She sneered at every one of them, and never once left a drop.{/n}''',
+      requires=(DAERAN_ALLY,)),
     p('''{n}A grey granite stone stood under the east wall of Drezen for many years, with the Commander's name on it and nothing under it. A woman in grey sat on it in the evenings and read, and the chaplains learned not to ask her why.{/n}''',
       requires=(E + "grave.stone_kept",)),
     p('''{n}Once, very early in the morning, a sentry on the east wall saw two people lying side by side on the grass of the burying ground, on an empty grave, with their hands folded, looking at the sky. He reported it. Nobody believed him, and he did not insist.{/n}''',
@@ -618,11 +624,9 @@ COMMON = (
       requires=(E + "ustalav.promised",), forbids=("sacrifice",)),
     p('''{n}Some nights the Commander woke with the smell of cloves in the room, and a white flower on the pillow, and never saw who had left it. The sentries swore that nobody had passed.{/n}''',
       any_groups=((E + "night.feigned", E + "night.woke"),)),
-    p('''{n}Her black mares never got used to the living. She sold them in the second spring and bought four grey ones that did not mind a passenger with a pulse, and said it was the only concession to mortal life she had ever made.{/n}''',
-      requires=(HORSES,)),
 )
 
-HER_PARAGRAPHS = COMMON + UNPAID + (
+HER_PARAGRAPHS = COMMON + LATER + UNPAID + (
     p('''{n}Somewhere north of Drezen, in the crooked woods above the walls, there is a clearing where two people once ate the heart of a stag that nobody had given them leave to kill. She went back to it every autumn. She never said whether she went alone.{/n}''',
       any_groups=((E + "hunt.ate", E + "hunt.sang"),)),
     p('''{n}She never sang again where anyone could hear. Once, a long time after the war, the Commander heard her humming in the dead-house yard, rough and tuneless, in the tongue they speak in the woods north of Caliphas, and stood very still in the gateway until she had finished, and never told her.{/n}''',
@@ -683,18 +687,25 @@ page("lock", "A lock of grey hair", '''{n}The war ended before Elyanka Camilary 
 {n}What the Commander did with it, and what she did after, belongs to the years after the war.{/n}''',
      requires=(DECLINED,), forbids=(COMMITTED, CLOSED), paragraphs=COMMON + UNPAID)
 
-page("left_free", "Sent home", '''{n}Elyanka Camilary went home to Ustalav with a whispered claim on the Commander's corpse and nothing else, and never came to Drezen again. The Way kept what it had bought. It is patient; it has been waiting six hundred years for things far more interesting than one mortal's death.{/n}
-{n}She wrote nothing, because the Way writes nothing. But once a year, on the day Drezen had feasted the Commander dead, a courier in grey came to the south gate and said, word for word, in a voice that was not his own: "Still unpaid. I have not forgotten where you are kept."{/n}''',
-     requires=(LEFT_FREE,), paragraphs=COMMON + UNPAID)
+page("left_free", "Sent home", '''{n}Elyanka Camilary went home to Ustalav with a whispered claim on the Commander's corpse and nothing else, and never came to Drezen again. The Way kept what it had bought. It is patient; it has been waiting since the Tyrant fell for things far more interesting than one mortal's death.{/n}
+{n}She never wrote to the Commander; what she had to say, she would not trust to paper. But once a year, on the day Drezen had feasted the Commander dead, a courier in grey came to the south gate and said, word for word, in a voice that was not his own: "Still unpaid. I have not forgotten where you are kept."{/n}''',
+     requires=(LEFT_FREE,), paragraphs=COMMON + (
+         p('''{n}The grey stone the garrison had raised for the Commander stayed under the east wall of Drezen, over nothing. She had asked for it once, and had it, and left it where it stood when she went. Nobody sat on it in the evenings after that.{/n}''',
+           any_groups=((E + "grave.stone_kept", E + "grave.lay"),)),
+         p('''{n}A grey Mendevian stone with the Commander's name on it went south in her hearse, and stands in a clearing in the Camilary woods over a hole dug and waiting. She never sent word of it. The Commander learned of it years later, from a pedlar, and did not know whether to laugh.{/n}''',
+           requires=(E + "grave.stone_down",)),
+         p('''{n}The claim never fell due while the Commander lived. She never came to look at the collateral. Once, at a crossroads inn in Ustalav, a traveller from Drezen mentioned the Knight Commander's name at the next table, and a woman in grey paid for his supper and left before it came.{/n}''',
+           forbids=("sacrifice", ACTIVE)),
+     ))
 
 page("eaten", "The Wound ate my claim", '''{n}Word came to Drezen that the Commander of the Fifth Crusade had given everything at the Threshold, and that the Wound had closed on what was given. There was no body to carry home. The Wound had taken it with everything else.{/n}
 {n}Elyanka Camilary heard the news in the dead-house yard, with her knotted cord wound round her hand. She sat on the shaft of the hearse for a day and a night without eating, which nobody who knew her would have believed. On the second morning she said, to nobody, "The Wound ate my claim," and harnessed the horses herself, and drove the hearse that had been built for the Commander's corpse home to Ustalav, empty. She did not weep. She was hungry, and she stayed hungry.{/n}''',
      requires=(OWNED, "sacrifice"), forbids=(BACK,), survived=False, paragraphs=(
          p('''{n}In Caliphas she laid the lock of hair she had cut for the Commander on her father's grave, where she visits, and left it there to rot, like a peasant. It was the only thing she ever buried.{/n}''',
            requires=(LOCK,)),
-         p('''{n}Somewhere she kept a claim on her own corpse that nobody would ever collect. She said, once, that the Commander had got the better bargain after all: the only debtor in six hundred years to cheat the Way by dying properly.{/n}''',
+         p('''{n}Somewhere she kept a claim on her own corpse that nobody would ever collect. She said, once, that the Commander had got the better bargain after all: the only debtor she had ever heard of who cheated the Way by dying properly.{/n}''',
            requires=(COMMITTED,)),
-         p('''{n}The Way wrote nothing down. But in the Whispering Way's house in Caliphas they still say, in a whisper, that one mythic corpse was sold to them in Drezen and never delivered, and that the envoy who bought it never asked for another.{/n}''',
+         p('''{n}Nobody wrote it down. But in the Whispering Way's house in Caliphas they still say, in a whisper, that one mythic corpse was sold to them in Drezen and never delivered, and that the envoy who bought it never asked for another.{/n}''',
            forbids=(COMMITTED,)),
          p('''{n}The stone the garrison had raised for the Commander under the east wall of Drezen stayed where it was, over nothing, as it always had. Once a year a woman in grey came and sat on it for an afternoon, and read, and did not weep, and went away again.{/n}''',
            requires=(E + "grave.stone_kept",)),

@@ -403340,7 +403340,7 @@
         {
           "Id": "sold",
           "Speaker": "Elyanka",
-          "Text": "{n}She does not call for pen or paper. She leans across the table instead, close enough that you smell cloves and cold wine on her, and says the terms into your ear in a whisper, in a language older than the words she is using. Then she waits, her cheek almost against yours, until you have whispered them back.{/n}\n\"The Way writes nothing down, Commander. What is whispered cannot be burned, or forged, or forgotten by anyone who heard it.\" {n}She sits back, and for a moment she looks almost pleased with you.{/n} \"You are mine when you are dead. Try to make it an interesting death.\"",
+          "Text": "{n}She does not call for pen or paper. She leans across the table instead, close enough that you smell cloves and cold wine on her, and says the terms into your ear in a whisper, in a language older than the words she is using. Then she waits, her cheek almost against yours, until you have whispered them back.{/n}\n\"The Way's teaching cannot be written, Commander, only told. I keep my bargains the same way. What is whispered cannot be burned, or forged, or forgotten by anyone who heard it.\" {n}She sits back, and for a moment she looks almost pleased with you.{/n} \"You are mine when you are dead. Try to make it an interesting death.\"",
           "Choices": [
             {
               "Text": "[Put the veil back on for the walk home.]",
@@ -403465,7 +403465,7 @@
         {
           "Id": "bare_sold",
           "Speaker": "Elyanka",
-          "Text": "{n}No pen and no paper. She leans across the table and says the terms into your ear in a whisper, in words older than the language they are in, and waits until you have whispered them back. Her breath is cold, and smells of cloves.{/n}\n\"The Way writes nothing down. What is whispered cannot be burned or forged.\" {n}She sits back.{/n} \"You are mine when you are dead, Commander. Until then I shall watch your hands. Your face is a liar.\"",
+          "Text": "{n}No pen and no paper. She leans across the table and says the terms into your ear in a whisper, in words older than the language they are in, and waits until you have whispered them back. Her breath is cold, and smells of cloves.{/n}\n\"I do not put my bargains on paper, Commander. What is whispered cannot be burned or forged.\" {n}She sits back.{/n} \"You are mine when you are dead, Commander. Until then I shall watch your hands. Your face is a liar.\"",
           "Choices": [
             {
               "Text": "[Take the veil with you.]",
@@ -403628,7 +403628,7 @@
         {
           "Id": "sold",
           "Speaker": "Elyanka",
-          "Text": "{n}She does not call for pen or paper. She rises, comes round the trestle, and bends to say the terms into your ear in a whisper, in words older than the language they are in. Then she waits, a hand on your shoulder as cold as a banister in winter, until you have whispered them back.{/n}\n\"The Way writes nothing down, Commander. What is whispered cannot be burned, or forged, or forgotten.\" {n}She straightens.{/n} \"You are mine when you are dead. Do not dawdle.\"",
+          "Text": "{n}She does not call for pen or paper. She rises, comes round the trestle, and bends to say the terms into your ear in a whisper, in words older than the language they are in. Then she waits, a hand on your shoulder as cold as a banister in winter, until you have whispered them back.{/n}\n\"Paper burns, Commander. I keep my bargains as the Way keeps its teaching: told, not written. What is whispered cannot be burned, or forged, or forgotten.\" {n}She straightens.{/n} \"You are mine when you are dead. Do not dawdle.\"",
           "Choices": [
             {
               "Text": "[Finish her wine.]",
@@ -403688,7 +403688,7 @@
       "Title": "Sixty-one under canvas",
       "Owner": "Elyanka",
       "MinChapter": 5,
-      "MaxChapter": 6,
+      "MaxChapter": 5,
       "Entry": "",
       "Nodes": [
         {
@@ -403985,7 +403985,7 @@
       "Title": "An exchange of claims",
       "Owner": "Elyanka",
       "MinChapter": 5,
-      "MaxChapter": 6,
+      "MaxChapter": 5,
       "Entry": "",
       "Nodes": [
         {
@@ -404258,7 +404258,7 @@
       "Title": "A lock of grey hair",
       "Owner": "Elyanka",
       "MinChapter": 5,
-      "MaxChapter": 6,
+      "MaxChapter": 5,
       "Entry": "",
       "Nodes": [
         {
@@ -404394,7 +404394,7 @@
       "Title": "The velvet in the hearse",
       "Owner": "Elyanka",
       "MinChapter": 5,
-      "MaxChapter": 6,
+      "MaxChapter": 5,
       "Entry": "",
       "Nodes": [
         {
@@ -404872,7 +404872,7 @@
           "Portrait": "",
           "Paragraphs": [
             {
-              "Text": "{n}In Caliphas, where the Way writes nothing down, they still tell the story of the executor who sat through an entire wake in borrowed crepe to learn what the deceased was worth, and the envoy who laughed until she coughed. It is told in a whisper. It is never told the same way twice.{/n}",
+              "Text": "{n}In Caliphas, where the Way's teaching is passed by word of mouth, they still tell the story of the executor who sat through an entire wake in borrowed crepe to learn what the deceased was worth, and the envoy who laughed until she coughed. It is told in a whisper. It is never told the same way twice.{/n}",
               "Requires": [
                 "elyanka.trickster.bluffed"
               ],
@@ -404907,14 +404907,6 @@
               "Text": "{n}The head of a vrock hung for years in a certain house in Caliphas, above a fireplace, with a card beneath it in no hand at all. Visitors from the Way who asked about it were told it was the Knight Commander's idea of an offering, and that the Knight Commander was not squeamish, only stingy.{/n}",
               "Requires": [
                 "elyanka.trickster.gave_carrion"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "{n}Every year on the day Drezen had feasted the Commander dead, a bottle arrived from the Arendae cellars, older than she was, with Daeran's compliments. She sneered at every one of them, and never once left a drop.{/n}",
-              "Requires": [
-                "elyanka.trickster.daeran_ally"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -404979,6 +404971,22 @@
               "AnyGroups": []
             },
             {
+              "Text": "{n}Her black mares never got used to the living. She sold them in the second spring and bought four grey ones that did not mind a passenger with a pulse, and said it was the only concession to mortal life she had ever made.{/n}",
+              "Requires": [
+                "elyanka.trickster.horses_balked"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Every year on the day Drezen had feasted the Commander dead, a bottle arrived from the Arendae cellars, older than she was, with Daeran's compliments. She sneered at every one of them, and never once left a drop.{/n}",
+              "Requires": [
+                "elyanka.trickster.daeran_ally"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
               "Text": "{n}A grey granite stone stood under the east wall of Drezen for many years, with the Commander's name on it and nothing under it. A woman in grey sat on it in the evenings and read, and the chaplains learned not to ask her why.{/n}",
               "Requires": [
                 "elyanka.trickster.grave.stone_kept"
@@ -405022,14 +405030,6 @@
                   "elyanka.trickster.night.woke"
                 ]
               ]
-            },
-            {
-              "Text": "{n}Her black mares never got used to the living. She sold them in the second spring and bought four grey ones that did not mind a passenger with a pulse, and said it was the only concession to mortal life she had ever made.{/n}",
-              "Requires": [
-                "elyanka.trickster.horses_balked"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
             },
             {
               "Text": "{n}The claim never fell due. The Commander went on living, stubbornly and at length, and every year Elyanka came to look at the collateral as a moneylender looks at a ship that will not sink. \"Unpaid,\" she would say, running a cold thumb along the Commander's jaw. \"Still unpaid. You are the worst investment the Way has ever made.\"{/n}",
@@ -405253,7 +405253,7 @@
           "Portrait": "",
           "Paragraphs": [
             {
-              "Text": "{n}In Caliphas, where the Way writes nothing down, they still tell the story of the executor who sat through an entire wake in borrowed crepe to learn what the deceased was worth, and the envoy who laughed until she coughed. It is told in a whisper. It is never told the same way twice.{/n}",
+              "Text": "{n}In Caliphas, where the Way's teaching is passed by word of mouth, they still tell the story of the executor who sat through an entire wake in borrowed crepe to learn what the deceased was worth, and the envoy who laughed until she coughed. It is told in a whisper. It is never told the same way twice.{/n}",
               "Requires": [
                 "elyanka.trickster.bluffed"
               ],
@@ -405288,14 +405288,6 @@
               "Text": "{n}The head of a vrock hung for years in a certain house in Caliphas, above a fireplace, with a card beneath it in no hand at all. Visitors from the Way who asked about it were told it was the Knight Commander's idea of an offering, and that the Knight Commander was not squeamish, only stingy.{/n}",
               "Requires": [
                 "elyanka.trickster.gave_carrion"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "{n}Every year on the day Drezen had feasted the Commander dead, a bottle arrived from the Arendae cellars, older than she was, with Daeran's compliments. She sneered at every one of them, and never once left a drop.{/n}",
-              "Requires": [
-                "elyanka.trickster.daeran_ally"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -405358,51 +405350,6 @@
               ],
               "Forbids": [],
               "AnyGroups": []
-            },
-            {
-              "Text": "{n}A grey granite stone stood under the east wall of Drezen for many years, with the Commander's name on it and nothing under it. A woman in grey sat on it in the evenings and read, and the chaplains learned not to ask her why.{/n}",
-              "Requires": [
-                "elyanka.trickster.grave.stone_kept"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "{n}Once, very early in the morning, a sentry on the east wall saw two people lying side by side on the grass of the burying ground, on an empty grave, with their hands folded, looking at the sky. He reported it. Nobody believed him, and he did not insist.{/n}",
-              "Requires": [
-                "elyanka.trickster.grave.lay"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "{n}The stone the garrison of Drezen raised for the Commander was broken out of the ground by the crusade's own masons and went south in the hearse, wrapped in grey cloth. It stands now in a clearing in the Camilary woods, in the hills north of Caliphas, with the grass cut short around it and the hole beneath it dug and waiting.{/n}",
-              "Requires": [
-                "elyanka.trickster.grave.stone_down"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "{n}There is a clearing in the birch woods north of Caliphas where the grass never grew back. She took the Commander there once, alive and walking and sweating up the hill, and was refused bread in three villages on the way, and said it was the best journey of her life, and made the Commander swear never to repeat that she had said so.{/n}",
-              "Requires": [
-                "elyanka.trickster.ustalav.promised"
-              ],
-              "Forbids": [
-                "sacrifice"
-              ],
-              "AnyGroups": []
-            },
-            {
-              "Text": "{n}Some nights the Commander woke with the smell of cloves in the room, and a white flower on the pillow, and never saw who had left it. The sentries swore that nobody had passed.{/n}",
-              "Requires": [],
-              "Forbids": [],
-              "AnyGroups": [
-                [
-                  "elyanka.trickster.night.feigned",
-                  "elyanka.trickster.night.woke"
-                ]
-              ]
             },
             {
               "Text": "{n}Her black mares never got used to the living. She sold them in the second spring and bought four grey ones that did not mind a passenger with a pulse, and said it was the only concession to mortal life she had ever made.{/n}",
@@ -405498,7 +405445,7 @@
           "Portrait": "",
           "Paragraphs": [
             {
-              "Text": "{n}In Caliphas, where the Way writes nothing down, they still tell the story of the executor who sat through an entire wake in borrowed crepe to learn what the deceased was worth, and the envoy who laughed until she coughed. It is told in a whisper. It is never told the same way twice.{/n}",
+              "Text": "{n}In Caliphas, where the Way's teaching is passed by word of mouth, they still tell the story of the executor who sat through an entire wake in borrowed crepe to learn what the deceased was worth, and the envoy who laughed until she coughed. It is told in a whisper. It is never told the same way twice.{/n}",
               "Requires": [
                 "elyanka.trickster.bluffed"
               ],
@@ -405533,14 +405480,6 @@
               "Text": "{n}The head of a vrock hung for years in a certain house in Caliphas, above a fireplace, with a card beneath it in no hand at all. Visitors from the Way who asked about it were told it was the Knight Commander's idea of an offering, and that the Knight Commander was not squeamish, only stingy.{/n}",
               "Requires": [
                 "elyanka.trickster.gave_carrion"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "{n}Every year on the day Drezen had feasted the Commander dead, a bottle arrived from the Arendae cellars, older than she was, with Daeran's compliments. She sneered at every one of them, and never once left a drop.{/n}",
-              "Requires": [
-                "elyanka.trickster.daeran_ally"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -405603,51 +405542,6 @@
               ],
               "Forbids": [],
               "AnyGroups": []
-            },
-            {
-              "Text": "{n}A grey granite stone stood under the east wall of Drezen for many years, with the Commander's name on it and nothing under it. A woman in grey sat on it in the evenings and read, and the chaplains learned not to ask her why.{/n}",
-              "Requires": [
-                "elyanka.trickster.grave.stone_kept"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "{n}Once, very early in the morning, a sentry on the east wall saw two people lying side by side on the grass of the burying ground, on an empty grave, with their hands folded, looking at the sky. He reported it. Nobody believed him, and he did not insist.{/n}",
-              "Requires": [
-                "elyanka.trickster.grave.lay"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "{n}The stone the garrison of Drezen raised for the Commander was broken out of the ground by the crusade's own masons and went south in the hearse, wrapped in grey cloth. It stands now in a clearing in the Camilary woods, in the hills north of Caliphas, with the grass cut short around it and the hole beneath it dug and waiting.{/n}",
-              "Requires": [
-                "elyanka.trickster.grave.stone_down"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "{n}There is a clearing in the birch woods north of Caliphas where the grass never grew back. She took the Commander there once, alive and walking and sweating up the hill, and was refused bread in three villages on the way, and said it was the best journey of her life, and made the Commander swear never to repeat that she had said so.{/n}",
-              "Requires": [
-                "elyanka.trickster.ustalav.promised"
-              ],
-              "Forbids": [
-                "sacrifice"
-              ],
-              "AnyGroups": []
-            },
-            {
-              "Text": "{n}Some nights the Commander woke with the smell of cloves in the room, and a white flower on the pillow, and never saw who had left it. The sentries swore that nobody had passed.{/n}",
-              "Requires": [],
-              "Forbids": [],
-              "AnyGroups": [
-                [
-                  "elyanka.trickster.night.feigned",
-                  "elyanka.trickster.night.woke"
-                ]
-              ]
             },
             {
               "Text": "{n}Her black mares never got used to the living. She sold them in the second spring and bought four grey ones that did not mind a passenger with a pulse, and said it was the only concession to mortal life she had ever made.{/n}",
@@ -405706,7 +405600,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}Elyanka Camilary went home to Ustalav with a whispered claim on the Commander's corpse and nothing else, and never came to Drezen again. The Way kept what it had bought. It is patient; it has been waiting six hundred years for things far more interesting than one mortal's death.{/n}\n{n}She wrote nothing, because the Way writes nothing. But once a year, on the day Drezen had feasted the Commander dead, a courier in grey came to the south gate and said, word for word, in a voice that was not his own: \"Still unpaid. I have not forgotten where you are kept.\"{/n}",
+          "Text": "{n}Elyanka Camilary went home to Ustalav with a whispered claim on the Commander's corpse and nothing else, and never came to Drezen again. The Way kept what it had bought. It is patient; it has been waiting since the Tyrant fell for things far more interesting than one mortal's death.{/n}\n{n}She never wrote to the Commander; what she had to say, she would not trust to paper. But once a year, on the day Drezen had feasted the Commander dead, a courier in grey came to the south gate and said, word for word, in a voice that was not his own: \"Still unpaid. I have not forgotten where you are kept.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -405720,7 +405614,7 @@
           "Portrait": "",
           "Paragraphs": [
             {
-              "Text": "{n}In Caliphas, where the Way writes nothing down, they still tell the story of the executor who sat through an entire wake in borrowed crepe to learn what the deceased was worth, and the envoy who laughed until she coughed. It is told in a whisper. It is never told the same way twice.{/n}",
+              "Text": "{n}In Caliphas, where the Way's teaching is passed by word of mouth, they still tell the story of the executor who sat through an entire wake in borrowed crepe to learn what the deceased was worth, and the envoy who laughed until she coughed. It is told in a whisper. It is never told the same way twice.{/n}",
               "Requires": [
                 "elyanka.trickster.bluffed"
               ],
@@ -405755,14 +405649,6 @@
               "Text": "{n}The head of a vrock hung for years in a certain house in Caliphas, above a fireplace, with a card beneath it in no hand at all. Visitors from the Way who asked about it were told it was the Knight Commander's idea of an offering, and that the Knight Commander was not squeamish, only stingy.{/n}",
               "Requires": [
                 "elyanka.trickster.gave_carrion"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "{n}Every year on the day Drezen had feasted the Commander dead, a bottle arrived from the Arendae cellars, older than she was, with Daeran's compliments. She sneered at every one of them, and never once left a drop.{/n}",
-              "Requires": [
-                "elyanka.trickster.daeran_ally"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -405827,51 +405713,6 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}A grey granite stone stood under the east wall of Drezen for many years, with the Commander's name on it and nothing under it. A woman in grey sat on it in the evenings and read, and the chaplains learned not to ask her why.{/n}",
-              "Requires": [
-                "elyanka.trickster.grave.stone_kept"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "{n}Once, very early in the morning, a sentry on the east wall saw two people lying side by side on the grass of the burying ground, on an empty grave, with their hands folded, looking at the sky. He reported it. Nobody believed him, and he did not insist.{/n}",
-              "Requires": [
-                "elyanka.trickster.grave.lay"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "{n}The stone the garrison of Drezen raised for the Commander was broken out of the ground by the crusade's own masons and went south in the hearse, wrapped in grey cloth. It stands now in a clearing in the Camilary woods, in the hills north of Caliphas, with the grass cut short around it and the hole beneath it dug and waiting.{/n}",
-              "Requires": [
-                "elyanka.trickster.grave.stone_down"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "{n}There is a clearing in the birch woods north of Caliphas where the grass never grew back. She took the Commander there once, alive and walking and sweating up the hill, and was refused bread in three villages on the way, and said it was the best journey of her life, and made the Commander swear never to repeat that she had said so.{/n}",
-              "Requires": [
-                "elyanka.trickster.ustalav.promised"
-              ],
-              "Forbids": [
-                "sacrifice"
-              ],
-              "AnyGroups": []
-            },
-            {
-              "Text": "{n}Some nights the Commander woke with the smell of cloves in the room, and a white flower on the pillow, and never saw who had left it. The sentries swore that nobody had passed.{/n}",
-              "Requires": [],
-              "Forbids": [],
-              "AnyGroups": [
-                [
-                  "elyanka.trickster.night.feigned",
-                  "elyanka.trickster.night.woke"
-                ]
-              ]
-            },
-            {
               "Text": "{n}Her black mares never got used to the living. She sold them in the second spring and bought four grey ones that did not mind a passenger with a pulse, and said it was the only concession to mortal life she had ever made.{/n}",
               "Requires": [
                 "elyanka.trickster.horses_balked"
@@ -405880,20 +405721,29 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The claim never fell due. The Commander went on living, stubbornly and at length, and every year Elyanka came to look at the collateral as a moneylender looks at a ship that will not sink. \"Unpaid,\" she would say, running a cold thumb along the Commander's jaw. \"Still unpaid. You are the worst investment the Way has ever made.\"{/n}",
+              "Text": "{n}The grey stone the garrison had raised for the Commander stayed under the east wall of Drezen, over nothing. She had asked for it once, and had it, and left it where it stood when she went. Nobody sat on it in the evenings after that.{/n}",
               "Requires": [],
-              "Forbids": [
-                "sacrifice",
-                "lastcall.active"
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "elyanka.trickster.grave.stone_kept",
+                  "elyanka.trickster.grave.lay"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}A grey Mendevian stone with the Commander's name on it went south in her hearse, and stands in a clearing in the Camilary woods over a hole dug and waiting. She never sent word of it. The Commander learned of it years later, from a pedlar, and did not know whether to laugh.{/n}",
+              "Requires": [
+                "elyanka.trickster.grave.stone_down"
               ],
+              "Forbids": [],
               "AnyGroups": []
             },
             {
-              "Text": "{n}The claim never fell due. The Commander had walked out of the end of the world laughing, and went on living, stubbornly and at length, and every year Elyanka came to look at the collateral as a moneylender looks at a ship that will not sink. \"Unpaid,\" she would say. \"Still unpaid. You are the worst investment the Way has ever made.\"{/n}",
-              "Requires": [
-                "trickster.commander_back"
-              ],
+              "Text": "{n}The claim never fell due while the Commander lived. She never came to look at the collateral. Once, at a crossroads inn in Ustalav, a traveller from Drezen mentioned the Knight Commander's name at the next table, and a woman in grey paid for his supper and left before it came.{/n}",
+              "Requires": [],
               "Forbids": [
+                "sacrifice",
                 "lastcall.active"
               ],
               "AnyGroups": []
@@ -405948,7 +405798,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}Somewhere she kept a claim on her own corpse that nobody would ever collect. She said, once, that the Commander had got the better bargain after all: the only debtor in six hundred years to cheat the Way by dying properly.{/n}",
+              "Text": "{n}Somewhere she kept a claim on her own corpse that nobody would ever collect. She said, once, that the Commander had got the better bargain after all: the only debtor she had ever heard of who cheated the Way by dying properly.{/n}",
               "Requires": [
                 "elyanka.committed"
               ],
@@ -405956,7 +405806,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The Way wrote nothing down. But in the Whispering Way's house in Caliphas they still say, in a whisper, that one mythic corpse was sold to them in Drezen and never delivered, and that the envoy who bought it never asked for another.{/n}",
+              "Text": "{n}Nobody wrote it down. But in the Whispering Way's house in Caliphas they still say, in a whisper, that one mythic corpse was sold to them in Drezen and never delivered, and that the envoy who bought it never asked for another.{/n}",
               "Requires": [],
               "Forbids": [
                 "elyanka.committed"
@@ -406504,7 +406354,7 @@
         {
           "Id": "upheld2",
           "Speaker": "Elyanka",
-          "Text": "{n}Elyanka lets out a breath, slowly, through her teeth, as if she had been holding it for six hundred years.{/n}\n\"You stood in front of your own priests for a priestess of my Lady. On the law. In daylight.\" {n}Her eyes are very bright.{/n} \"Do you understand what you have done? In Caliphas they will not believe it. In Nerosyan they will never forgive it. Those chaplains will pray for your soul every night until they die, and they will mean every word.\"\n\"I have never in my life been defended. I find it quite unbearable. Go away before I say something foolish.\"",
+          "Text": "{n}Elyanka lets out a breath, slowly, through her teeth, as if she had been holding it since the asylum.{/n}\n\"You stood in front of your own priests for a priestess of my Lady. On the law. In daylight.\" {n}Her eyes are very bright.{/n} \"Do you understand what you have done? In Caliphas they will not believe it. In Nerosyan they will never forgive it. Those chaplains will pray for your soul every night until they die, and they will mean every word.\"\n\"I have never in my life been defended. I find it quite unbearable. Go away before I say something foolish.\"",
           "Choices": [
             {
               "Text": "[Go away.]",
@@ -406806,7 +406656,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}One of her escort is standing in your doorway when you wake: a man in grey with a face like a closed shutter. He does not bow. He clears his throat, and when he speaks it is in her voice, exactly, the cadence and the chill and the faint Ustalavic roll of the r, coming out of a mouth that is not hers.{/n}\n\"The priestess sends word. It is not written, because the Way writes nothing. I will say it once.\"",
+          "Text": "{n}One of her escort is standing in your doorway when you wake: a man in grey with a face like a closed shutter. He does not bow. He clears his throat, and when he speaks it is in her voice, exactly, the cadence and the chill and the faint Ustalavic roll of the r, coming out of a mouth that is not hers.{/n}\n\"The priestess sends word. She does not trust it to paper. I will say it once.\"",
           "Choices": [
             {
               "Text": "[Listen.]",
@@ -407263,7 +407113,7 @@
         {
           "Id": "tomorrow",
           "Speaker": "Elyanka",
-          "Text": "\"Tomorrow, or the next day, you go into the Wound. If you die at the edge of it, I collect. That is what the Way paid for, and that is what I came north to see.\" {n}She sounds perfectly calm.{/n}\n\"If the Wound takes you whole, I have nothing. No body. No table. No offering. Six hundred years of patience, and a hearse built in Caliphas, for nothing.\" {n}Her mouth thins.{/n} \"So I will ask you one thing, as your creditor. Where do you want me standing?\"",
+          "Text": "\"Tomorrow, or the next day, you go into the Wound. If you die at the edge of it, I collect. That is what the Way paid for, and that is what I came north to see.\" {n}She sounds perfectly calm.{/n}\n\"If the Wound takes you whole, I have nothing. No body. No table. No offering. Half my life of patience, and a hearse built in Caliphas, for nothing.\" {n}Her mouth thins.{/n} \"So I will ask you one thing, as your creditor. Where do you want me standing?\"",
           "Choices": [
             {
               "Text": "\"Are you afraid for me?\"",
@@ -407459,7 +407309,29 @@
               "Text": "[Whisper a true thing] \"I enjoyed the wake. Every minute of it.\"",
               "Next": "wake",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "elyanka.trickster.bluffed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Whisper a true thing] \"When you found my pulse under the veil, I was glad you had.\"",
+              "Next": "wake_exposed",
+              "Set": [],
+              "Requires": [
+                "elyanka.trickster.exposed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Whisper a true thing] \"I came to supper bare-faced to watch your face when the corpse sat down.\"",
+              "Next": "wake_straight",
+              "Set": [],
+              "Requires": [
+                "elyanka.trickster.straight"
+              ],
               "Forbids": [],
               "Abort": false
             },
@@ -407496,6 +407368,42 @@
           "Id": "wake",
           "Speaker": "Elyanka",
           "Text": "{n}Her breath catches against your ear, and then she laughs, without a sound, the laugh going through her shoulders and into yours.{/n}\n\"Yes. That is true. I watched you enjoy it through a curtain and thought you were grieving.\" {n}She is still smiling; you can feel it.{/n} \"You are a monster, Commander. A small, warm, sweating monster. Now mine.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "hers",
+              "Set": [
+                "elyanka.trickster.whisper.wake"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Elyanka"
+        },
+        {
+          "Id": "wake_exposed",
+          "Speaker": "Elyanka",
+          "Text": "{n}Her fingers, on your wrist, stop moving.{/n}\n\"Glad.\" {n}A long pause.{/n} \"Yes. That is true. It sits low. You wanted to be caught, a little; you wanted someone to be good enough to catch you.\" {n}She does not sound pleased about it.{/n} \"I still will not believe your face. Now mine.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "hers",
+              "Set": [
+                "elyanka.trickster.whisper.wake"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Elyanka"
+        },
+        {
+          "Id": "wake_straight",
+          "Speaker": "Elyanka",
+          "Text": "{n}She breathes out against your ear, not quite a laugh.{/n}\n\"True. You watched me smell you and be disgusted, and you enjoyed it. I thought you were only rude.\" {n}Her cheek stays against yours.{/n} \"You are worse than rude, Commander. You are curious. Now mine.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -407868,7 +407776,7 @@
         {
           "Id": "choice",
           "Speaker": "Narrator",
-          "Text": "{n}The master looks from her to you, and his smile does not move. Then he rises, and bows, the precise bow of a man who has been insulted and has made a note of it.{/n}\n\"The Way will consider its position,\" {n}he says,{/n} \"on the road home.\" {n}And he goes out into the yard, where his own carriage is waiting.{/n}\n{n}Elyanka does not watch him go. Only now does she look at you, and her eyes are perfectly calm.{/n} \"He will not consider anything on the road home. He will write to the masters that I have gone soft, and they will send someone who is not a clerk. Unless he does not reach the border.\"",
+          "Text": "{n}The master looks from her to you, and his smile does not move. Then he rises, and bows, the precise bow of a man who has been insulted and has made a note of it.{/n}\n\"The Way will consider its position,\" {n}he says,{/n} \"on the road home.\" {n}And he goes out into the yard, where his own carriage is waiting.{/n}\n{n}Elyanka does not watch him go. Only now does she look at you, and her eyes are perfectly calm.{/n} \"He will not consider anything on the road home. He will tell the masters that I have gone soft, and they will send someone who is not a clerk. Unless he does not reach the border.\"",
           "Choices": [
             {
               "Text": "[Give her the road] \"Then he doesn't reach the border. It's a long road.\"",
@@ -408518,7 +408426,7 @@
         {
           "Id": "map",
           "Speaker": "Elyanka",
-          "Text": "\"Look.\" {n}She traces a long finger down into the grey smudge of Ustalav, to a small black tower drawn in the hills of the south.{/n} \"Gallowspire. Where your Shining Crusade buried my Lady's greatest servant under a Great Seal and three little ones, and called it victory, and went home.\"\n\"Tar-Baphon. The Whispering Tyrant. He challenged Aroden and lost, and rose again as a lich, and conquered Ustalav, and ruled it six hundred years.\" {n}Her finger rests on the black tower.{/n} \"Two of the three lesser seals are gone, Commander. And Aroden, his old enemy, is dead. We believe the Tyrant won their quarrel after all.\"",
+          "Text": "\"Look.\" {n}She traces a long finger down into the grey smudge of Ustalav, to a small black tower drawn among the hills.{/n} \"Gallowspire. Where your Shining Crusade buried my Lady's greatest servant under a Great Seal and three little ones, and called it victory, and went home.\"\n\"Tar-Baphon. The Whispering Tyrant. He challenged Aroden and lost, and rose again as a lich, and conquered Ustalav, and ruled it six hundred years.\" {n}Her finger rests on the black tower.{/n} \"Two of the three lesser seals are gone, Commander. And Aroden, his old enemy, is dead. We believe the Tyrant won their quarrel after all.\"",
           "Choices": [
             {
               "Text": "\"Why tell me this?\"",
@@ -408772,7 +408680,7 @@
         {
           "Id": "after",
           "Speaker": "Elyanka",
-          "Text": "\"Four of them are still in the Camilary house. They keep it. They do not go out in daylight, and they do not need to eat, and they are never, ever afraid.\" {n}Her voice is quite even.{/n} \"My mother is with them. My brothers went south, to the Way. One of them is a master now. He does not write, because the Way writes nothing, but I hear.\"\n\"Two of my sisters would not take the gift properly. They lie down. Every night I put them in their beds, they get up and walk to the churchyard and lie down on the grass, as if they were still waiting to be buried.\" {n}Her finger rests on one oval.{/n} \"It was a long time before I understood that it was not the gift that failed. It was them. They wanted the warden's queue. They wanted to be judged.\"",
+          "Text": "\"Four of them are still in the Camilary house. They keep it. They do not go out in daylight, and they do not need to eat, and they are never, ever afraid.\" {n}Her voice is quite even.{/n} \"My mother is with them. My brothers went south, to the Way. One of them is a master now. He does not come home, but I hear.\"\n\"Two of my sisters would not take the gift properly. Every night I put them in their beds, and every night they get up and walk to the churchyard and lie down on the grass, as if they were still waiting to be buried.\" {n}Her finger rests on one oval.{/n} \"They want the warden's queue. They want to be judged. Ingratitude. My Lady gave them forever, and they would rather have a hole.\"",
           "Choices": [
             {
               "Text": "\"What did you do with them?\"",
@@ -408796,7 +408704,7 @@
         {
           "Id": "what",
           "Speaker": "Elyanka",
-          "Text": "{n}She closes the case, very gently, with both hands.{/n}\n\"What they wanted.\" {n}Nothing else, for a while.{/n} \"I dug the graves myself. I put them in, and I did not call a priest, and I did not say a prayer to anyone, because I did not know one that would not have been a lie.\" {n}She looks at you then.{/n}\n\"You asked. Nobody asks. Now you know that I can let a thing go that I love, if it wants to go badly enough. Do not make a habit of wanting it.\"",
+          "Text": "{n}She closes the case, very gently, with both hands.{/n}\n\"Nothing. They are mine.\" {n}Her voice does not change at all.{/n} \"The servants carry them back from the churchyard every morning, wet with dew, and chain them in their beds, and every night they slip the chains and walk out again. I shall go on having them fetched until they learn to be grateful, or until the stars go out.\"\n{n}She looks at you then.{/n} \"You asked. Nobody asks. Now you know what I do with things that are mine and want to leave. Do not make a habit of wanting it.\"",
           "Choices": [
             {
               "Text": "[Take her hand.]",
@@ -408876,7 +408784,7 @@
         {
           "Id": "draw",
           "Speaker": "Elyanka",
-          "Text": "\"Sit. Do not talk. Do not smile.\" {n}She begins to draw, fast, with quick hard strokes, and still she does not look at your face; she looks at the paper, and at your hands in your lap, and at your throat, and draws.{/n}\n\"The Way writes nothing down. It does not say anything about drawing.\" {n}The charcoal scratches.{/n} \"I am going to draw the face that lied to me in a veil, from everything else about you that does not lie. Then I will look at the drawing instead of at you. It will be a great deal more honest.\"",
+          "Text": "\"Sit. Do not talk. Do not smile.\" {n}She begins to draw, fast, with quick hard strokes, and still she does not look at your face; she looks at the paper, and at your hands in your lap, and at your throat, and draws.{/n}\n\"I do not put what matters on paper. Drawing is not writing.\" {n}The charcoal scratches.{/n} \"I am going to draw the face that lied to me in a veil, from everything else about you that does not lie. Then I will look at the drawing instead of at you. It will be a great deal more honest.\"",
           "Choices": [
             {
               "Text": "[Sit still, and let her draw.]",
@@ -409260,7 +409168,7 @@
       "Title": "The collector at night",
       "Owner": "Elyanka",
       "MinChapter": 5,
-      "MaxChapter": 6,
+      "MaxChapter": 5,
       "Entry": "",
       "Nodes": [
         {
@@ -409412,7 +409320,7 @@
         {
           "Id": "start",
           "Speaker": "Regill",
-          "Text": "{n}Regill does not look up from the report he is annotating.{/n}\n\"The priestess of Urgathoa in the dead-house. I went to Nerosyan's register myself, Commander, after the chaplains came to you with their writ. Her oath is in it. So are the oaths of six men who do not appear to breathe. Every seal is correct. Every witness is real.\" {n}He turns a page.{/n}\n\"The law does not require me to like her, and I do not. It does require me to note that you were right, and the chaplains were not. I have noted it.\" {n}His pen scratches.{/n} \"I have also noted where she sleeps.\"",
+          "Text": "{n}Regill does not look up from the report he is annotating.{/n}\n\"The priestess of Urgathoa in the dead-house. I read the register the chaplains' clerk carried to the dead-house, Commander, the copy from Nerosyan. Her oath is in it. So are the oaths of six men who do not appear to breathe. Every seal is correct. Every witness is real.\" {n}He turns a page.{/n}\n\"The law does not require me to like her, and I do not. It does require me to note that you were right, and the chaplains were not. I have noted it.\" {n}His pen scratches.{/n} \"I have also noted where she sleeps.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -409460,7 +409368,7 @@
         {
           "Id": "start",
           "Speaker": "Regill",
-          "Text": "{n}Regill does not look up from the report he is annotating.{/n}\n\"You told the chaplains that the priestess in the dead-house is your embalmer, Commander. I went to Nerosyan's register afterwards. She is entered there as a noblewoman of Ustalav under the crusader's oath, with six men who do not appear to breathe. She is not entered as anybody's servant.\" {n}He turns a page.{/n}\n\"Her oath would have held without your lie. You lied anyway, to two chaplains and a clerk of the court, about a matter the law had already settled.\" {n}His pen scratches.{/n} \"I have noted it. I note everything. I simply want you to know which of the two of you I trust to tell the truth under oath, and it is not you.\"",
+          "Text": "{n}Regill does not look up from the report he is annotating.{/n}\n\"You told the chaplains that the priestess in the dead-house is your embalmer, Commander. I read the register the chaplains' clerk carried, the copy from Nerosyan. She is entered there as a noblewoman of Ustalav under the crusader's oath, with six men who do not appear to breathe. She is not entered as anybody's servant.\" {n}He turns a page.{/n}\n\"Her oath would have held without your lie. You lied anyway, to two chaplains and a clerk of the court, about a matter the law had already settled.\" {n}His pen scratches.{/n} \"I have noted it. I note everything. I simply want you to know which of the two of you I trust to tell the truth under oath, and it is not you.\"",
           "Choices": [
             {
               "Text": "Continue",

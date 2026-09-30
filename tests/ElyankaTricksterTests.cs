@@ -239,6 +239,25 @@ internal static class ElyankaTricksterTests
         check(unpaid.Count == 2 && unpaid.All(pp => pp.Forbids.Contains(Active)),
             "Trk_Elyanka_LastCall: without the bottle the claim does not stand unpaid on her page.");
 
+        // Trk_Elyanka_Continuity: the rendered ending of a dismissal carries no later visit or shared journey; the whisper only
+        // remembers a wake the Commander actually attended; the Drezen encounters end with Chapter 5.
+        bool Shows(Paragraph pp, Snapshot w) => pp.Requires.All(w.Has) && !pp.Forbids.Any(w.Has) && pp.AnyGroups.All(g => g.Any(w.Has));
+        var parted = World(story, 6, "trickster.ever", Owned, Bequeathed, Started, Tested, Declined, LeftFree, Closed, P + "grave.stone_kept",
+            P + "ustalav.promised", P + "night.woke", P + "daeran_ally", P + "bluffed");
+        var partedText = string.Join(" ", Pg("left_free").Nodes[0].Paragraphs.Where(pp => Shows(pp, parted)).Select(pp => pp.Text));
+        check(Avail(Pg("left_free"), parted) && partedText.Length > 0 && !partedText.Contains("in the evenings, and read") && !partedText.Contains("took the Commander there")
+              && !partedText.Contains("came to look at the collateral as") && !partedText.Contains("white flower on the pillow") && !partedText.Contains("Arendae cellars"),
+            "Trk_Elyanka_Continuity: the dismissal page renders a later visit or a shared journey.");
+        var whisper = S(P + "beat.whisper");
+        check(Ch(whisper, "again", 1).Requires.Contains(P + "bluffed") && Ch(whisper, "again", 2).Requires.Contains(P + "exposed")
+              && Ch(whisper, "again", 3).Requires.Contains(P + "straight")
+              && Paths(whisper, World(story, 5, "trickster.ever", Owned, P + "straight")).All(o => !o.path.Contains(("again", 1)))
+              && Paths(whisper, World(story, 5, "trickster.ever", Owned, P + "bluffed")).Any(o => o.path.Contains(("again", 1))),
+            "Trk_Elyanka_Continuity: the whisper remembers a veiled wake in a world that never had one.");
+        var late6 = World(story, 6, "trickster.ever", Owned, Tested, Committed, Started, Declined);
+        check(new[] { dead, claims, move, hearse, S(P + "beat.night") }.All(x => x.MaxChapter == 5 && !Avail(x, late6)),
+            "Trk_Elyanka_Continuity: a Drezen encounter plays in Chapter 6.");
+
         // Trk_Elyanka_LastCall: her coda needs the real commit; the bequest is a debt to a live power; it never keeps anyone alive.
         var coda = story.Scenes.Single(s => s.Id == "elyanka.lastcall.page");
         var call = story.Scenes.Single(s => s.Id == "elyanka.lastcall.call");
