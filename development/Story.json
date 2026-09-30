@@ -26945,6 +26945,54 @@
       "Sender": "Konomi"
     },
     {
+      "Id": "jerribeth.trickster.host.taken",
+      "Title": "The stockade, one fewer",
+      "Owner": "Jerribeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The first night you sleep in Drezen again, you dream of a corridor you have never walked, lit by a lantern you are not carrying, and of a lock that turns for you as if it had been waiting.{/n}\n{n}In the morning the stockade reports one prisoner fewer, and a sentry who swears the man walked out past him at the change of watch, smiling, with his hands folded behind his back like a courtier. Nobody asks the man's name. Nobody ever will.{/n}\n\"Warm,\" {n}says the voice behind your left eye, and then, for the first time since the Sanctum, it says nothing else for a whole day, because it is busy.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Keep him clean.\"",
+              "Next": null,
+              "Set": [
+                "jerribeth.trickster.cost.host"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "jerribeth.trickster.host_promised"
+      ],
+      "Forbids": [
+        "jerribeth.trickster.cost.host",
+        "jerribeth.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "jerribeth",
+      "Remote": true,
+      "Chapters": [
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Kind": "visit",
+      "Sender": "Jerribeth"
+    },
+    {
       "Id": "jerribeth.invitation",
       "Title": "A message that waits",
       "Owner": "Jerribeth",
@@ -27120,7 +27168,8 @@
               "Text": "[Decline further private invitations.]",
               "Next": null,
               "Set": [
-                "jerribeth.closed"
+                "jerribeth.closed",
+                "jerribeth.trickster.parted"
               ],
               "Requires": [],
               "Forbids": [],
@@ -28056,7 +28105,8 @@
               "Text": "[End the private relationship.]",
               "Next": null,
               "Set": [
-                "jerribeth.closed"
+                "jerribeth.closed",
+                "jerribeth.trickster.parted"
               ],
               "Requires": [],
               "Forbids": [],
@@ -28116,7 +28166,8 @@
               "Text": "[End the private relationship.]",
               "Next": null,
               "Set": [
-                "jerribeth.closed"
+                "jerribeth.closed",
+                "jerribeth.trickster.parted"
               ],
               "Requires": [],
               "Forbids": [],
@@ -28232,7 +28283,8 @@
               "Text": "[Close the private relationship.]",
               "Next": null,
               "Set": [
-                "jerribeth.closed"
+                "jerribeth.closed",
+                "jerribeth.trickster.parted"
               ],
               "Requires": [],
               "Forbids": [],
@@ -29088,7 +29140,8 @@
               "Text": "[Close the private relationship.]",
               "Next": null,
               "Set": [
-                "jerribeth.closed"
+                "jerribeth.closed",
+                "jerribeth.trickster.parted"
               ],
               "Requires": [],
               "Forbids": [],
@@ -29392,7 +29445,8 @@
                 "jerribeth.trickster.forfeit_named"
               ],
               "Forbids": [
-                "jerribeth.trickster.returned"
+                "jerribeth.trickster.returned",
+                "jerribeth.trickster.forfeit_named"
               ],
               "Abort": false
             },
@@ -29419,6 +29473,23 @@
                 "trickster"
               ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I want those evenings. Keep expecting me.\"",
+              "Next": "arrival_note",
+              "Set": [
+                "jerribeth.committed",
+                "jerribeth.short_future_chosen",
+                "jerribeth.trickster.cost.forfeit",
+                "jerribeth.trickster.visit_due"
+              ],
+              "Requires": [
+                "jerribeth.trickster.forfeit_named"
+              ],
+              "Forbids": [
+                "jerribeth.trickster.returned"
+              ],
               "Abort": false
             }
           ],
@@ -29550,7 +29621,8 @@
                 "jerribeth.trickster.forfeit_named"
               ],
               "Forbids": [
-                "jerribeth.trickster.returned"
+                "jerribeth.trickster.returned",
+                "jerribeth.trickster.forfeit_named"
               ],
               "Abort": false
             },
@@ -29579,7 +29651,8 @@
                 "jerribeth.trickster.forfeit_named"
               ],
               "Forbids": [
-                "jerribeth.trickster.returned"
+                "jerribeth.trickster.returned",
+                "jerribeth.trickster.forfeit_named"
               ],
               "Abort": false
             },
@@ -29595,6 +29668,38 @@
                 "jerribeth.trickster.returned"
               ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"You matter to me. Write that into whatever you are drafting, and read it as closely as you like.\"",
+              "Next": "arrival_note",
+              "Set": [
+                "jerribeth.committed",
+                "jerribeth.trickster.cost.forfeit",
+                "jerribeth.trickster.visit_due"
+              ],
+              "Requires": [
+                "jerribeth.trickster.forfeit_named"
+              ],
+              "Forbids": [
+                "jerribeth.trickster.returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"I want you in my life. Needles, small print and all.\"",
+              "Next": "arrival_note",
+              "Set": [
+                "jerribeth.committed",
+                "jerribeth.trickster.cost.forfeit",
+                "jerribeth.trickster.visit_due"
+              ],
+              "Requires": [
+                "jerribeth.trickster.forfeit_named"
+              ],
+              "Forbids": [
+                "jerribeth.trickster.returned"
+              ],
               "Abort": false
             }
           ],
@@ -29693,7 +29798,8 @@
               "Text": "[End the relationship.]",
               "Next": null,
               "Set": [
-                "jerribeth.closed"
+                "jerribeth.closed",
+                "jerribeth.trickster.parted"
               ],
               "Requires": [],
               "Forbids": [],
@@ -29889,7 +29995,8 @@
               "Text": "[Let the frame go dark.]",
               "Next": null,
               "Set": [
-                "jerribeth.closed"
+                "jerribeth.closed",
+                "jerribeth.trickster.parted"
               ],
               "Requires": [],
               "Forbids": [],
@@ -29908,7 +30015,8 @@
               "Next": null,
               "Set": [
                 "jerribeth.closed",
-                "jerribeth.trickster.no_forfeit"
+                "jerribeth.trickster.no_forfeit",
+                "jerribeth.trickster.parted"
               ],
               "Requires": [],
               "Forbids": [],
@@ -29935,7 +30043,8 @@
                 "jerribeth.trickster.forfeit_named"
               ],
               "Forbids": [
-                "jerribeth.trickster.returned"
+                "jerribeth.trickster.returned",
+                "jerribeth.trickster.forfeit_named"
               ],
               "Abort": false
             },
@@ -29966,6 +30075,24 @@
               "Requires": [],
               "Forbids": [
                 "jerribeth.trickster.forfeit_named"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"I want those evenings. Keep expecting me.\"",
+              "Next": "arrival_note",
+              "Set": [
+                "jerribeth.committed",
+                "jerribeth.short_future_chosen",
+                "jerribeth.trickster.cost.forfeit",
+                "jerribeth.fate_terms",
+                "jerribeth.trickster.visit_due"
+              ],
+              "Requires": [
+                "jerribeth.trickster.forfeit_named"
+              ],
+              "Forbids": [
+                "jerribeth.trickster.returned"
               ],
               "Abort": false
             }
@@ -30294,6 +30421,36 @@
           "Id": "tenant_morning",
           "Speaker": "Narrator",
           "Text": "{n}You wake alone, as you went to sleep. There are no marks on your wrists. You can still feel exactly where they would be.{/n}\n{n}Behind your left eye, something neat and patient is very pleased with itself.{/n} \"Rent received. The forfeit stands. Pay on time, Commander. I have been told I am a very demanding landlady, and I intend to prove it.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the next evening for her.]",
+              "Next": "end",
+              "Set": [
+                "jerribeth.chosen_future"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "jerribeth.short_future_chosen"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the next evening for her.]",
+              "Next": "short_end",
+              "Set": [],
+              "Requires": [
+                "jerribeth.short_future_chosen"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "arrival_note",
+          "Speaker": "Jerribeth",
+          "Text": "\"A forfeit is collected in person, Commander. Not through a frame.\"\n{n}The silhouette leans so close to the glass that for a moment you could swear the glass is warm.{/n}\n\"Go home tomorrow by the market. I shall be at the spice stall. Nobody will see me there whom I do not wish to see me.\"",
           "Choices": [
             {
               "Text": "[Keep the next evening for her.]",
@@ -30709,7 +30866,8 @@
               "Text": "[End the relationship.]",
               "Next": null,
               "Set": [
-                "jerribeth.closed"
+                "jerribeth.closed",
+                "jerribeth.trickster.parted"
               ],
               "Requires": [],
               "Forbids": [],
@@ -30925,9 +31083,7 @@
                 "jerribeth.trickster.cost.forfeit",
                 "jerribeth.closed"
               ],
-              "Forbids": [
-                "lastcall.active"
-              ],
+              "Forbids": [],
               "AnyGroups": []
             },
             {
@@ -31110,9 +31266,7 @@
                 "jerribeth.trickster.cost.forfeit",
                 "jerribeth.closed"
               ],
-              "Forbids": [
-                "lastcall.active"
-              ],
+              "Forbids": [],
               "AnyGroups": []
             },
             {
@@ -31313,9 +31467,7 @@
                 "jerribeth.trickster.cost.forfeit",
                 "jerribeth.closed"
               ],
-              "Forbids": [
-                "lastcall.active"
-              ],
+              "Forbids": [],
               "AnyGroups": []
             },
             {
@@ -31498,9 +31650,7 @@
                 "jerribeth.trickster.cost.forfeit",
                 "jerribeth.closed"
               ],
-              "Forbids": [
-                "lastcall.active"
-              ],
+              "Forbids": [],
               "AnyGroups": []
             },
             {
@@ -31645,9 +31795,7 @@
                 "jerribeth.trickster.cost.forfeit",
                 "jerribeth.closed"
               ],
-              "Forbids": [
-                "lastcall.active"
-              ],
+              "Forbids": [],
               "AnyGroups": []
             },
             {
@@ -32144,7 +32292,8 @@
               "Text": "[End the private relationship.]",
               "Next": null,
               "Set": [
-                "jerribeth.closed"
+                "jerribeth.closed",
+                "jerribeth.trickster.parted"
               ],
               "Requires": [],
               "Forbids": [],
@@ -51364,7 +51513,8 @@
               "Text": "[End the relationship.]",
               "Next": null,
               "Set": [
-                "jerribeth.closed"
+                "jerribeth.closed",
+                "jerribeth.trickster.parted"
               ],
               "Requires": [],
               "Forbids": [],
@@ -155574,7 +155724,9 @@
                 "jerribeth.started",
                 "jerribeth.trickster.body.locust"
               ],
-              "Requires": [],
+              "Requires": [
+                "jerribeth.xanthir_known"
+              ],
               "Forbids": [],
               "Abort": false,
               "Crusade": {
@@ -156068,7 +156220,9 @@
                 "jerribeth.started",
                 "jerribeth.trickster.body.locust"
               ],
-              "Requires": [],
+              "Requires": [
+                "jerribeth.xanthir_known"
+              ],
               "Forbids": [],
               "Abort": false,
               "Crusade": {
@@ -156208,54 +156362,6 @@
       "TricksterDevice": true,
       "TricksterState": "dead",
       "Kind": "sending",
-      "Sender": "Jerribeth"
-    },
-    {
-      "Id": "jerribeth.trickster.host.taken",
-      "Title": "The stockade, one fewer",
-      "Owner": "Jerribeth",
-      "MinChapter": 5,
-      "MaxChapter": 5,
-      "Entry": "",
-      "Nodes": [
-        {
-          "Id": "start",
-          "Speaker": "Narrator",
-          "Text": "{n}The first night you sleep in Drezen again, you dream of a corridor you have never walked, lit by a lantern you are not carrying, and of a lock that turns for you as if it had been waiting.{/n}\n{n}In the morning the stockade reports one prisoner fewer, and a sentry who swears the man walked out past him at the change of watch, smiling, with his hands folded behind his back like a courtier. Nobody asks the man's name. Nobody ever will.{/n}\n\"Warm,\" {n}says the voice behind your left eye, and then, for the first time since the Sanctum, it says nothing else for a whole day, because it is busy.{/n}",
-          "Choices": [
-            {
-              "Text": "\"Keep him clean.\"",
-              "Next": null,
-              "Set": [
-                "jerribeth.trickster.cost.host"
-              ],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Jerribeth"
-        }
-      ],
-      "Requires": [
-        "trickster.ever",
-        "jerribeth.trickster.host_promised"
-      ],
-      "Forbids": [
-        "jerribeth.trickster.cost.host",
-        "jerribeth.trickster.declined"
-      ],
-      "DelayHours": 0,
-      "Optional": true,
-      "Relationship": "jerribeth",
-      "Remote": true,
-      "Chapters": [
-        5
-      ],
-      "Areas": [
-        "2570015799edf594daf2f076f2f975d8"
-      ],
-      "Kind": "visit",
       "Sender": "Jerribeth"
     },
     {
@@ -156496,7 +156602,7 @@
         {
           "Id": "offer",
           "Speaker": "Narrator",
-          "Text": "{n}The war ended before the lease did. The first spring after Threshold, Jerribeth came to collect the clause she had been saving.{/n}",
+          "Text": "{n}The first spring after Threshold, Jerribeth came to collect the clause she had been saving.{/n}",
           "Choices": [
             {
               "Text": "[Give her your hand.]",
@@ -156566,7 +156672,7 @@
           "Portrait": "Jerribeth",
           "Paragraphs": [
             {
-              "Text": "She came to the Commander's door in the elven guise, with the seam of light left along its jaw so that nobody who knew her could mistake it, and the guards let her in because nobody who did not know her could see it. She sat down at the Commander's table without being asked. \"The forfeit is one memory, of my choosing, when I choose. I have already read your answer, Commander. Show me whether I read it right.\"",
+              "Text": "The war had ended with their correspondence unfinished: a frame on a shelf, a promise drafted and never signed. She came to the Commander's door in the elven guise, with the seam of light left along its jaw so that nobody who knew her could mistake it, and the guards let her in because nobody who did not know her could see it. She sat down at the Commander's table without being asked. \"The forfeit is one memory, of my choosing, when I choose. I have already read your answer, Commander. Show me whether I read it right.\"",
               "Requires": [],
               "Forbids": [
                 "jerribeth.trickster.returned"
@@ -156574,7 +156680,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She came to the door in the man from the stockade, smiling two finger-widths too wide, and the guards let him in because they had long ago stopped looking at his face. He sat down at the Commander's table without being asked, and her voice came out of him, high and pleased. \"The forfeit is one memory, of my choosing, when I choose. I have already read your answer, Commander. Show me whether I read it right.\"",
+              "Text": "The war had ended before the lease did. She came to the door in the man from the stockade, smiling two finger-widths too wide, and the guards let him in because they had long ago stopped looking at his face. He sat down at the Commander's table without being asked, and her voice came out of him, high and pleased. \"The forfeit is one memory, of my choosing, when I choose. I have already read your answer, Commander. Show me whether I read it right.\"",
               "Requires": [
                 "jerribeth.trickster.cost.host"
               ],
@@ -156582,7 +156688,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She did not come to the door. She had no door to come to. She came up from the back of the Commander's skull at breakfast, where she had lived since the Sanctum, and the tea went cold while she talked. \"The forfeit is one memory, of my choosing, when I choose. I have already read your answer; I live beside it. Say it aloud anyway. I prefer my bargains witnessed, even when the only witness is you.\"",
+              "Text": "The war had ended before the lease did. She did not come to the door. She had no door to come to. She came up from the back of the Commander's skull at breakfast, where she had lived since the Sanctum, and the tea went cold while she talked. \"The forfeit is one memory, of my choosing, when I choose. I have already read your answer; I live beside it. Say it aloud anyway. I prefer my bargains witnessed, even when the only witness is you.\"",
               "Requires": [
                 "jerribeth.trickster.returned"
               ],
@@ -156864,9 +156970,7 @@
                 "jerribeth.trickster.cost.forfeit",
                 "jerribeth.closed"
               ],
-              "Forbids": [
-                "lastcall.active"
-              ],
+              "Forbids": [],
               "AnyGroups": []
             },
             {
@@ -156944,7 +157048,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "Jerribeth came to the victory feast uninvited, which she considered the only honest way to attend one, and stayed until the last candle, counting who had drunk to whom. She never once let the Commander forget who held paper on {mf|him|her}, or on what terms. She was, in the opinion of everyone who met her, entirely too pleased with herself.",
+          "Text": "Jerribeth came to the victory feast uninvited, which she considered the only honest way to attend one, and stayed until the last candle, counting who had drunk to whom. She never once let the Commander forget what was owed, and to whom. She was, in the opinion of everyone who met her, entirely too pleased with herself.",
           "Choices": [
             {
               "Text": "Continue",
@@ -156996,24 +157100,40 @@
               ],
               "Forbids": [],
               "AnyGroups": []
+            },
+            {
+              "Text": "There was no contract yet, only one she had drafted and left on the Commander's table, the clause she was saving written in very small, very neat print. She came to the feast anyway, uninvited, to watch the Commander not sign it. Whether the Commander ever would was a question she asked every spring, and she enjoyed the asking more than she would have enjoyed an answer.",
+              "Requires": [
+                "jerribeth.trickster.late_committed"
+              ],
+              "Forbids": [
+                "jerribeth.committed"
+              ],
+              "AnyGroups": []
             }
           ]
         }
       ],
       "Requires": [
         "trickster.ever",
-        "lastcall.active",
-        "jerribeth.committed"
+        "lastcall.active"
       ],
       "Forbids": [
-        "jerribeth.trickster.declined"
+        "jerribeth.trickster.declined",
+        "jerribeth.trickster.parted"
       ],
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "lastcall",
       "ForbidOverrides": {
         "jerribeth.trickster.declined": "jerribeth.committed"
-      }
+      },
+      "RequiresAnyGroups": [
+        [
+          "jerribeth.committed",
+          "jerribeth.trickster.late_committed"
+        ]
+      ]
     },
     {
       "Id": "jerribeth.trickster.reaction.camellia",
@@ -157269,7 +157389,8 @@
       ],
       "Requires": [
         "jerribeth.trickster.cost.forfeit",
-        "jerribeth.committed"
+        "jerribeth.committed",
+        "jerribeth.trickster.visited"
       ],
       "Forbids": [
         "woljif.dead",
@@ -157325,6 +157446,256 @@
       "AnswerLists": [
         "e41585da330233143b34ef64d7d62d69"
       ]
+    },
+    {
+      "Id": "jerribeth.trickster.visit",
+      "Title": "Collected in person",
+      "Owner": "Jerribeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You said you collect in person.\"",
+      "Nodes": [
+        {
+          "Id": "arrival",
+          "Speaker": "Narrator",
+          "Text": "{n}She is at the spice stall, as she said, in her own shape: antennae, carapace, the folded wings. The trader weighs out cardamom for a quartermaster's boy a yard from her and does not look up. Seeing is a habit, and she has been breaking people's habits for longer than Drezen has had walls.{/n}\n{n}\"Go home,\" she says, without turning. \"I know the way.\"{/n}\n{n}An hour after dark there are three knocks at your door, precisely spaced, the way a clerk knocks. She is on the threshold when you open it. Not an image. The lamplight finds the edges of her carapace and does not slide off them. She smells of cold stone and something sweet and spoiled, like fruit left on an altar.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "arrival_terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "arrival_terms",
+          "Speaker": "Jerribeth",
+          "Text": "\"A forfeit is collected in person. I have come to see what I bought.\"\n{n}She lifts her hand into the light: long, jointed, clawed at the tips, very still.{/n}\n\"I walked through your market in my own shape and nobody looked twice. I shall not stay the night; the Abyss notices when I am absent, and your guards will notice at dawn. But I do not collect at a distance. Which face do you want across the table, Commander?\"",
+          "Choices": [
+            {
+              "Text": "\"Your own. All of it.\"",
+              "Next": "own",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"The guise. I know who is wearing it.\"",
+              "Next": "guise",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "own",
+          "Speaker": "Jerribeth",
+          "Text": "{n}She lets the last of the pretence fall away and steps inside, and the room is suddenly too small for her. Her antennae brush the lintel. Her wings, folded, rasp against the doorframe like pages turning.{/n}\n\"Most people close their eyes, the first time.\"\n{n}You do not. She comes closer, one deliberate step at a time, and stops when there is no more room to stop. Her clawed fingers find the fastenings at your collar and undo them one by one, with the care she gave the locusts, and she watches your face the whole time to see what each one costs you.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "guise",
+          "Speaker": "Jerribeth",
+          "Text": "{n}The elven woman who steps inside is exactly the one the frame showed you, down to the seam of light along her jaw that she has left there on purpose, so that you will not forget.{/n}\n\"I made her for you. It seemed only fair that you should unwrap her.\"\n{n}She takes your hands and sets them at her waist, where the illusion is warm and the thing beneath it is hard and ridged and moving under your palms. She watches you feel the difference. She enjoys it far more than the face would suggest.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "ask",
+          "Speaker": "Jerribeth",
+          "Text": "{n}She takes both your wrists, loosely, the way she once held a locust she had not yet decided to pin, and does not close her hand.{/n}\n\"I collect things that hold still, Commander. The ones that hold still for me, I keep. Let us find out which you are.\"",
+          "Choices": [
+            {
+              "Text": "[Give her your wrists.]",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep your hands, and pull her down to you.]",
+              "Next": "threshold_free",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "threshold_free",
+          "Speaker": "Narrator",
+          "Text": "{n}You take your hands back and put them on her instead: the ridge of her carapace, the cold hinge of a wing. Your grip is not careful, and something small and glossy comes away in your fingers. She goes very still, and then the buzzing starts again, lower, and you realise it is a laugh.{/n}\n\"Oh,\" {n}she says.{/n} \"You are going to be difficult. Good.\"\n{n}She lets you pull her down. Her wings open over you both and shut out the lamp, and the sound you have only ever heard in your skull is in your skin now, everywhere she touches, and she lowers herself onto you.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning_free",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "morning_free",
+          "Speaker": "Narrator",
+          "Text": "{n}She is gone before the watch changes. Your wrists are unmarked. On the pillow lies the sliver of chitin you took, dark and glossy, prised from the edge of her wing by your own hand.{/n}\n{n}Behind your left eye, something neat and patient is thinking very hard.{/n} \"You kept your hands, and you took a piece of me with them. A thing that holds still is finished. A thing that fights stays interesting. I intend to keep you interesting for a long time.\"\n\"The scale is mine, and it is on your pillow, so we shall call it a loan. Every night you keep it, you owe me an hour of my choosing. Give it back and we are square, and I will know you wanted to be square with me. I shall enjoy watching you decide.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the next evening for her.]",
+              "Next": null,
+              "Set": [
+                "jerribeth.trickster.visited"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "threshold",
+          "Speaker": "Narrator",
+          "Text": "{n}You hold out your wrists. She takes them as if you had handed her something breakable and rare, and walks you backwards to the bed without once tightening her grip. Her mouth, or what serves her for one, is at your throat, and the buzzing you have only ever heard in your head is in your skin now, low and continuous, so that you cannot tell where the sound stops and the shiver starts.{/n}\n{n}When your knees meet the edge of the mattress she lets you fall, and follows, and settles over you with her weight on her elbows and her wings half open, shutting out the lamp. Her claws close lightly round your wrists and press them into the blanket.{/n}\n\"Terms accepted,\" {n}she says, very softly, against your ear, and lowers herself onto you.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Narrator",
+          "Text": "{n}She is gone before the watch changes. The sheets smell of cold stone. There are small crescents on your skin where her claws rested, very precise, as if she had counted them. You press a thumb to one. It stings, exactly as much as she meant it to, and you find you are in no hurry for it to heal.{/n}\n{n}Tucked into the frame, where the image should be, is one dry locust wing, veined like a leaf and folded exactly in half. When you touch it, a voice that is not quite a memory arrives behind your left eye: \"The forfeit stands. I have not decided which memory. You will be the second to know.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the next evening for her.]",
+              "Next": null,
+              "Set": [
+                "jerribeth.trickster.visited"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "jerribeth.committed",
+        "jerribeth.trickster.cost.forfeit",
+        "jerribeth.trickster.visit_due"
+      ],
+      "Forbids": [
+        "jerribeth.trickster.returned",
+        "jerribeth.trickster.visited",
+        "jerribeth.trickster.declined",
+        "jerribeth.trickster.parted"
+      ],
+      "DelayHours": 12,
+      "Optional": true,
+      "Relationship": "jerribeth",
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "417ce3dcf3a9707488f2b9b2a790814b",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "InteractionHub": "jerribeth.presence"
+    },
+    {
+      "Id": "jerribeth.trickster.visit_letter",
+      "Title": "The stall was empty",
+      "Owner": "Jerribeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Jerribeth",
+          "Text": "{n}The frame lights on its own, late, with no scenery at all.{/n}\n\"I came to the market. Your quartermasters had moved the stall, and half the ward-priests of Drezen were standing where it used to be, blessing a well. I do not collect in front of priests. It spoils the goods.\"\n{n}The buzzing drops to something you feel in your teeth.{/n}\n\"The forfeit stands. So does the night you owe me. I shall choose another door, Commander, and I shall not warn you which.\"",
+          "Choices": [
+            {
+              "Text": "\"I'll leave it unlocked.\"",
+              "Next": null,
+              "Set": [
+                "jerribeth.trickster.visited"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "jerribeth.committed",
+        "jerribeth.trickster.cost.forfeit",
+        "jerribeth.trickster.visit_due",
+        "jerribeth.presence.failed"
+      ],
+      "Forbids": [
+        "jerribeth.trickster.returned",
+        "jerribeth.trickster.visited",
+        "jerribeth.trickster.declined",
+        "jerribeth.trickster.parted"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "jerribeth",
+      "Remote": true,
+      "Chapters": [
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Kind": "sending",
+      "Sender": "Jerribeth"
     },
     {
       "Id": "konomi.trickster.dismissed.late",
@@ -185667,7 +186038,8 @@
               "Text": "\"Finish your life without me, carver. You've earned it.\"",
               "Next": null,
               "Set": [
-                "gesmerha.closed"
+                "gesmerha.closed",
+                "gesmerha.parted"
               ],
               "Requires": [],
               "Forbids": [],
@@ -186342,7 +186714,61 @@
         {
           "Id": "start",
           "Speaker": "Gesmerha",
-          "Text": "{n}Her hands stop on the wood as your step reaches the bench. She tilts her head toward it, the way she listens for a crack in the grain, and does not find what she is listening for.{/n}\n\"A step I do not know. Heavy in the heel, in a hurry, and pretending not to be.\" {n}Her mouth tightens.{/n} \"The clan says the Commander who tore the mask off our Lady walked through Wintersun and never once came near my bench. Is that you?\"",
+          "Text": "{n}Her hands stop on the wood as your step reaches the bench. She tilts her head toward it, the way she listens for a crack in the grain, and does not find what she is listening for.{/n}\n\"A step I do not know. Heavy in the heel, in a hurry, and pretending not to be.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "known_truth",
+              "Set": [],
+              "Requires": [
+                "gesmerha.truth"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "known_illusions",
+              "Set": [],
+              "Requires": [
+                "gesmerha.illusions"
+              ],
+              "Forbids": [
+                "gesmerha.truth"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "known_truth",
+          "Speaker": "Gesmerha",
+          "Text": "{n}Her mouth tightens.{/n} \"The clan says the Commander who tore the mask off our Lady walked through Wintersun and never once came near my bench. Is that you?\"",
+          "Choices": [
+            {
+              "Text": "\"It is. I should have come sooner.\"",
+              "Next": "board",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Never mind.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "known_illusions",
+          "Speaker": "Gesmerha",
+          "Text": "{n}Her mouth tightens, and she lowers her voice, though there is nobody near enough to hear.{/n} \"The chief says a stranger came to Wintersun with questions, found out what our Lady is, and chose to leave the rest of the village its sleep. A few of us were told. The others still laugh in the evenings. And in all that, the stranger never once came near my bench. Is that you, Commander?\"",
           "Choices": [
             {
               "Text": "\"It is. I should have come sooner.\"",
@@ -186450,7 +186876,61 @@
         {
           "Id": "start",
           "Speaker": "Gesmerha",
-          "Text": "{n}Her hands stop on the wood as your step reaches the bench. She tilts her head toward it, the way she listens for a crack in the grain, and does not find what she is listening for.{/n}\n\"A step I do not know. Heavy in the heel, in a hurry, and pretending not to be.\" {n}Her mouth tightens.{/n} \"The clan says the Commander who tore the mask off our Lady walked through Wintersun and never once came near my bench. Is that you?\"",
+          "Text": "{n}Her hands stop on the wood as your step reaches the bench. She tilts her head toward it, the way she listens for a crack in the grain, and does not find what she is listening for.{/n}\n\"A step I do not know. Heavy in the heel, in a hurry, and pretending not to be.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "known_truth",
+              "Set": [],
+              "Requires": [
+                "gesmerha.truth"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "known_illusions",
+              "Set": [],
+              "Requires": [
+                "gesmerha.illusions"
+              ],
+              "Forbids": [
+                "gesmerha.truth"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "known_truth",
+          "Speaker": "Gesmerha",
+          "Text": "{n}Her mouth tightens.{/n} \"The clan says the Commander who tore the mask off our Lady walked through Wintersun and never once came near my bench. Is that you?\"",
+          "Choices": [
+            {
+              "Text": "\"It is. I should have come sooner.\"",
+              "Next": "board",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Never mind.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "known_illusions",
+          "Speaker": "Gesmerha",
+          "Text": "{n}Her mouth tightens, and she lowers her voice, though there is nobody near enough to hear.{/n} \"The chief says a stranger came to Wintersun with questions, found out what our Lady is, and chose to leave the rest of the village its sleep. A few of us were told. The others still laugh in the evenings. And in all that, the stranger never once came near my bench. Is that you, Commander?\"",
           "Choices": [
             {
               "Text": "\"It is. I should have come sooner.\"",
@@ -186649,7 +187129,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Gesmerha finished the Commander's carving in the spring after Threshold, in a borrowed corner of a Drezen smithy, and then she walked the width of the city by ear to find out what came after. The smith swore she stopped at the Commander's door and listened for a long time before she knocked. She never said what she decided. She never carved on commission again.{/n}",
+          "Text": "{n}Gesmerha finished the Commander's carving in the spring after Threshold, in a borrowed corner of a Drezen smithy, and then she walked the width of the city by ear to the Commander's door. The smith, who followed at a distance because he did not trust the city with her, swore she stood listening for a long time before she knocked.{/n}\n{n}She gave her answer on the step, loud enough for the street to hear it. She would have the Commander, in her bed and at her bench, on two conditions. No purse would ever pass between them, not for a carving, not for a night, not for a kindness. And the Commander would walk loudly, always, so that she would never again have to wonder whose step was at her gate. The Commander agreed to both before she had finished the second. She said that was too fast to be honest, found the Commander's collar by feel, and pulled the Commander's mouth down to hers by it, there on the doorstep. The smith, who had seen enough, went home.{/n}\n{n}She never carved on commission again.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -187144,10 +187624,22 @@
             {
               "Text": "The commission paid for in Wintersun, before Marhevok's ambush, was still on her bench at Threshold: the pale birch with the Commander's coin standing proud of the grain. The Commander had called it in at the rift. She took that the way she took every order, which is to say she took her time. A commission is a commission, she said, not a summons.",
               "Requires": [
-                "gesmerha.trickster.cost.advance_paid"
+                "gesmerha.trickster.cost.advance_paid",
+                "gesmerha.lastcall.called"
               ],
               "Forbids": [
                 "gesmerha.trickster.cost.ancestor_debt"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The commission paid for in Wintersun, before Marhevok's ambush, was still on her bench at Threshold: the pale birch with the Commander's coin standing proud of the grain. Nobody asked her for it, and she did not hurry. A commission is a commission, she said; it would be finished when the wood agreed.",
+              "Requires": [
+                "gesmerha.trickster.cost.advance_paid"
+              ],
+              "Forbids": [
+                "gesmerha.trickster.cost.ancestor_debt",
+                "gesmerha.lastcall.called"
               ],
               "AnyGroups": []
             },
@@ -187180,8 +187672,7 @@
       ],
       "Requires": [
         "trickster.ever",
-        "lastcall.active",
-        "gesmerha.committed"
+        "lastcall.active"
       ],
       "Forbids": [
         "gesmerha.trickster.declined",
@@ -187192,7 +187683,13 @@
       "Relationship": "lastcall",
       "ForbidOverrides": {
         "gesmerha.trickster.declined": "gesmerha.committed"
-      }
+      },
+      "RequiresAnyGroups": [
+        [
+          "gesmerha.committed",
+          "gesmerha.trickster.late_committed"
+        ]
+      ]
     },
     {
       "Id": "gesmerha.trickster.react.lann_pyre",
@@ -210010,8 +210507,8 @@
       "RequiresAnyGroups": [
         [
           "targona.committed",
-          "targona.trickster.late_committed",
-          "targona.trickster.parent_romanced"
+          "targona.trickster.parent_romanced",
+          "targona.trickster.late_committed"
         ]
       ]
     },
@@ -424333,18 +424830,43 @@
       "Owner": "Commander",
       "MinChapter": 6,
       "MaxChapter": 6,
-      "Entry": "[Call in the work on her bench] \"Carver, there's work of mine still on your bench. Leave it there until I come to collect.\"",
+      "Entry": "[Call to the carver] \"Gesmerha! Listen for this step.\"",
       "Nodes": [
         {
           "Id": "call",
           "Speaker": "Narrator",
-          "Text": "{n}Somewhere a long way off, a chisel stops over a block of wood on a woodshaper's bench. A Sarkorian carver's line does not go to its ancestors with work unfinished, and she has been listening for this step too.{/n}",
+          "Text": "{n}Somewhere a long way off, a woodshaper sets down her chisel and turns her head toward a step she knows, as if it had just come in at her gate.{/n}",
           "Choices": [
             {
-              "Text": "Continue",
+              "Text": "\"There's work of mine still on your bench, carver. Leave it there until I come to collect.\"",
               "Next": null,
               "Set": [
                 "gesmerha.lastcall.called",
+                "gesmerha.lastcall.resolved"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "gesmerha.trickster.cost.likeness_cut"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"The face is finished, carver. Turn it to the wall. I'm not done with the one it was cut from.\"",
+              "Next": null,
+              "Set": [
+                "gesmerha.lastcall.called",
+                "gesmerha.lastcall.resolved"
+              ],
+              "Requires": [
+                "gesmerha.trickster.cost.likeness_cut"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Leave it unspoken. She will finish her work in her own time.]",
+              "Next": null,
+              "Set": [
                 "gesmerha.lastcall.resolved"
               ],
               "Requires": [],
@@ -425912,8 +426434,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -427748,8 +428270,8 @@
         },
         {
           "Id": "owed.gesmerha",
-          "Title": "Gesmerha: work on her bench",
-          "Description": "Gesmerha's line does not leave work unfinished on the bench, and there is work of mine on hers. While it stays unfinished, so do I.",
+          "Title": "Gesmerha: a step she listens for",
+          "Description": "Gesmerha listens for my step. If there is work of mine unfinished on her bench, her line will not leave it that way; if it is finished, she will want the one it was cut from to come and see it.",
           "OpenWhen": [
             [
               "gesmerha.trickster.cost.advance_paid"
@@ -430643,6 +431165,17 @@
         "irabeth.trickster.answered_her"
       ]
     ],
+    "gesmerha.trickster.late_committed": [
+      [
+        "trickster.ever",
+        "gesmerha.trickster.yard_seen"
+      ],
+      [
+        "trickster.ever",
+        "gesmerha.trickster.returned",
+        "gesmerha.presence.failed"
+      ]
+    ],
     "fool_king.available": [
       [
         "fool_king.crowned"
@@ -430867,6 +431400,9 @@
     "gesmerha.harem.eligible": [
       [
         "gesmerha.committed"
+      ],
+      [
+        "gesmerha.trickster.late_committed"
       ]
     ],
     "vellexia.harem.eligible": [
@@ -431232,6 +431768,29 @@
       "AnswerLists": [
         "33960c7f7af40cd43b7f801a76c87a0b"
       ]
+    },
+    "jerribeth.presence": {
+      "Unit": "417ce3dcf3a9707488f2b9b2a790814b",
+      "Area": "2570015799edf594daf2f076f2f975d8",
+      "Mode": "spawn-copy",
+      "At": {
+        "NearUnit": "bad9f602b81a80047ac470b01ebe65a9",
+        "Side": "left",
+        "Distance": 2.5
+      },
+      "Requires": [
+        "trickster.ever",
+        "jerribeth.trickster.visit_due"
+      ],
+      "Forbids": [
+        "jerribeth.trickster.visited",
+        "jerribeth.closed"
+      ],
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "AnswerLists": [],
+      "Dialog": "hub",
+      "Greeting": "{n}A narrow, insectile figure stands at the spice stall, and nobody in the market sees her. Her antennae turn toward you before you are close.{/n} \"You came by the market. Good. I dislike being kept waiting by people I have already bought.\""
     },
     "konomi.presence": {
       "Unit": "ca2d58c5c65723945857e04fb85d30ce",
@@ -432933,8 +433492,8 @@
           "Id": "owed.gesmerha",
           "Section": "Debts",
           "Portrait": "Gesmerha",
-          "Title": "Gesmerha: work on her bench",
-          "Text": "{n}Gesmerha's line does not leave work unfinished on the bench, and there is work of mine on hers. While it stays unfinished, so do I.{/n}",
+          "Title": "Gesmerha: a step she listens for",
+          "Text": "{n}Gesmerha listens for my step. If there is work of mine unfinished on her bench, her line will not leave it that way; if it is finished, she will want the one it was cut from to come and see it.{/n}",
           "Lines": [
             {
               "Text": "{n}Called in at the rift.{/n}",

@@ -593,6 +593,72 @@ internal static class GesmerhaTricksterTests
             check(Rules.Available(story, yardNight, told), "Anevia does not hear about the smith's yard night: " + label);
         }
         check(!Rules.Available(story, yardNight, Later(story, declined, 24)), "Anevia hears of a night that never happened.");
+
+        // Sol round 3 (CAN): the first meeting opens on the Wintersun outcome actually chosen.
+        var truthPages = Pages(firstHome, neverMetHome);
+        var illusionPages = Pages(firstCapital, neverMetGuest);
+        check(truthPages.Contains("known_truth") && !truthPages.Contains("known_illusions")
+              && illusionPages.Contains("known_illusions") && !illusionPages.Contains("known_truth"),
+            "The first meeting ignores whether Wintersun was told the truth.");
+        check(firstCapital.Nodes.Single(x => x.Id == "known_illusions").Text.Contains("leave the rest of the village its sleep")
+              && !firstCapital.Nodes.Single(x => x.Id == "known_illusions").Text.Contains("mask")
+              && firstHome.Nodes.Single(x => x.Id == "known_truth").Text.Contains("tore the mask"),
+            "The preserved-illusion history is told the Lady was exposed to the clan.");
+
+        // Sol round 3 (INT/BEL/HOW): Last Call through the call itself and onto the coda, for every returned and living state.
+        Snapshot AtRift(Snapshot s)
+        {
+            var w = Program.Copy(s); w.Chapter = 6; w.Flags.UnionWith(new[] { "trickster", "trickster.lastcall.open" });
+            if (w.Has(P + "returned")) w.Flags.Add(P + "cost.ancestor_debt");   // the letter's answer sets both
+            Rules.Complete(story, w);
+            return w;
+        }
+        Snapshot Coda(Snapshot s) { var e = End(s); e.Flags.Add("lastcall.active"); Rules.Complete(story, e); return e; }
+        string[] Spoken(Snapshot w) => lcCall.Nodes[0].Choices.Where(c => c.Requires.All(w.Has) && !c.Forbids.Any(w.Has)).Select(c => c.Text).ToArray();
+        check(!lcCall.Entry.Contains("still on your bench") && !lcCall.Nodes[0].Text.Contains("unfinished"),
+            "The call's shared lines assert unfinished work for every history.");
+        var callOwed = AtRift(owed);
+        var callCut = AtRift(cutFromMemory);
+        check(Rules.Available(story, lcCall, callOwed) && Rules.Available(story, lcCall, callCut), "The call is not offered for a returned carver.");
+        check(Spoken(callOwed).Any(t => t.Contains("still on your bench")) && !Spoken(callOwed).Any(t => t.Contains("The face is finished")),
+            "The unfinished portrait is called in as finished.");
+        check(Spoken(callCut).Any(t => t.Contains("The face is finished")) && !Spoken(callCut).Any(t => t.Contains("still on your bench")),
+            "The finished portrait is called in as unfinished work.");
+        foreach (var w in new[] { callOwed, callCut })
+        {
+            var outs = Program.Walk(lcCall, w);
+            check(outs.Count >= 2 && outs.All(r => r.Has("gesmerha.lastcall.resolved")) && outs.Any(r => !r.Has("gesmerha.lastcall.called")),
+                "The call leaves the last joke waiting, or cannot be left unspoken.");
+            foreach (var r in outs)
+                check(Rules.Available(story, lcPage, Coda(r)), "The coda does not follow the call.");
+        }
+        check(Rules.VisibleParagraphs(lcPage.Nodes[0], Coda(Program.Walk(lcCall, callCut).First(r => r.Has("gesmerha.lastcall.called"))))
+                  .Count(x => x.Text.Contains("turned it to the wall")) == 1,
+            "The finished portrait's coda does not answer the call.");
+        // The living advance: called, or left unspoken, each told truthfully.
+        var callLiving = AtRift(livingPaid);
+        var livingOuts = Program.Walk(lcCall, callLiving);
+        check(Spoken(callLiving).Any(t => t.Contains("still on your bench")), "The living advance cannot be called in.");
+        var calledLiving = Rules.VisibleParagraphs(lcPage.Nodes[0], Coda(livingOuts.First(r => r.Has("gesmerha.lastcall.called"))));
+        var unspokenLiving = Rules.VisibleParagraphs(lcPage.Nodes[0], Coda(livingOuts.First(r => !r.Has("gesmerha.lastcall.called"))));
+        check(calledLiving.Count(x => x.Text.Contains("called it in at the rift")) == 1 && calledLiving.All(x => !x.Text.Contains("Nobody asked her for it")),
+            "The called living advance is told as unspoken.");
+        check(unspokenLiving.Count(x => x.Text.Contains("Nobody asked her for it")) == 1 && unspokenLiving.All(x => !x.Text.Contains("called it in")),
+            "The unspoken living advance reports a call the Commander never made.");
+        // R2-6: the returned route's epilogue commit (a yard visit without the bench commit, or a failed presence) gets the coda
+        // too; a refusal, a Commander who ended it, and a carver never visited do not.
+        foreach (var (lateState, label) in new[] { (seen, "yard without commit"), (failed, "failed presence") })
+        {
+            check(Endings(lateState).SequenceEqual(new[] { P + "epilogue.commit" }), "The epilogue commit page is missing: " + label);
+            var afterCall = Program.Walk(lcCall, AtRift(lateState)).First(r => r.Has("gesmerha.lastcall.resolved"));
+            check(Rules.Available(story, lcPage, Coda(afterCall)), "The epilogue commit gets no Last Call coda: " + label);
+        }
+        foreach (var (noCoda, label) in new[] { (returned, "never visited"), (declined, "her refusal"), (finished, "the Commander's own no") })
+            check(!Rules.Available(story, lcPage, Coda(AtRift(noCoda))), "Last Call writes a coda for " + label + ".");
+        var commitPage = S(P + "epilogue.commit").Nodes[0].Text;
+        check(commitPage.Contains("two conditions") && commitPage.Contains("No purse") && commitPage.Contains("walk loudly")
+              && commitPage.Contains("collar") && !commitPage.Contains("never said what she decided"),
+            "The epilogue commit leaves her answer unsaid.");
         Console.WriteLine("PASS: Gesmerha Trickster (Trk_Gesmerha_*): commission, pyre, splinters, the yard, the bench and wrong footsteps.");
     }
 }

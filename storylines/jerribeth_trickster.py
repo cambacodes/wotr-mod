@@ -43,7 +43,14 @@ TOAST_HOST = "jerribeth.trickster.cost.toast_host"      # the toast branch: the 
 TOAST_MEMORY = "jerribeth.trickster.cost.toast_memory"  # the toast branch: the Commander paid with the night of the toast
 TOAST_GRUDGE = "jerribeth.trickster.cost.toast_grudge"   # the toast refused: charged to the future, with interest
 GRUDGE_PAID = "jerribeth.trickster.cost.toast_interest"   # the interest collected at the promise
-LEVY = "jerribeth.trickster.toast_levy"            # the letter twin: the toast was drunk with the Wintersun levy
+LEVY = "jerribeth.trickster.toast_levy"
+VISIT_DUE = "jerribeth.trickster.visit_due"      # the living contract is signed; she will collect in person, in Drezen
+VISITED = "jerribeth.trickster.visited"          # the in-person collection (or its fallback letter) has happened
+PARTED = "jerribeth.trickster.parted"            # every answer that closes her relationship also records this (Last Call reads it)
+J_UNIT = "417ce3dcf3a9707488f2b9b2a790814b"       # Jerribeth (Units/NPC/Unique/Act_3_DemonsHerecy/Wintersun), her own form
+EXOTIC = "bad9f602b81a80047ac470b01ebe65a9"       # ExoticCapitalTrader: Aranka stands in front (2.5 m), Nenio behind; left is free
+PRESENCE = "jerribeth.presence"
+PRESENCE_FAILED = PRESENCE + ".failed"            # the letter twin: the toast was drunk with the Wintersun levy
 FORFEIT = "jerribeth.trickster.cost.forfeit"          # the accepted contract: set only by the committing answers
 OFFERED = "jerribeth.trickster.forfeit_named"          # the forfeit named in negotiation, before any promise
 ACTIVE = "lastcall.active"                             # Last Call owns the single forfeit collection when it plays
@@ -220,7 +227,7 @@ def _tenant_scene(id, host_flag, statue_text, locust_text, host_node, chapters, 
           c('"The Lady of the Sun statue. You always liked being worshipped."', "statue_done", crusade=("Favors", -100),
             flags=(RETURNED, TENANT, "jerribeth.started", STATUE)),
           c('"One of Xanthir\'s locusts. You pinned them for a reason."', "locust_done", crusade=("Materials", -100),
-            flags=(RETURNED, TENANT, "jerribeth.started", LOCUST)),
+            requires=("jerribeth.xanthir_known",), flags=(RETURNED, TENANT, "jerribeth.started", LOCUST)),
           c('[Give her a host] "Take a deserter from the stockade. Nobody will miss him."', "host_done", alignment=("Evil", 2),
             flags=(RETURNED, TENANT, "jerribeth.started", host_flag)),
           c('"Stay where you are. Rent\'s due on the first of the month."', "lodger_done", alignment=("Chaotic", 1),
@@ -343,7 +350,7 @@ TRICKSTER_PARAGRAPHS = (
     p("A broken contract is a demon's favourite kind. She collected the forfeit on the first anniversary of it, without "
       "warning, in a single line of a letter the Commander found already open on the desk: one memory, the first meeting, "
       "taken. Afterwards the Commander knew they had ever met only because the letter said so.",
-      requires=(FORFEIT, "jerribeth.closed"), forbids=(ACTIVE,)),
+      requires=(FORFEIT, "jerribeth.closed")),
     p("She collected the forfeit on the first anniversary of the contract, without warning. Nothing had been broken; "
       "she said a clause nobody invokes goes stale, and she did not keep stale things. "
       "She took the Commander's first meeting with her: the voice in the head, the first bargain, all of it. Afterwards "
@@ -383,7 +390,7 @@ MUSTER_PARAGRAPHS = (
 )
 
 SCENES.append(scene("jerribeth.trickster.epilogue.commit", "The guest who knocked", "Epilogue", 5, "", [
-    nar("offer", '''{n}The war ended before the lease did. The first spring after Threshold, Jerribeth came to collect the clause she had been saving.{/n}''',
+    nar("offer", '''{n}The first spring after Threshold, Jerribeth came to collect the clause she had been saving.{/n}''',
       c('[Give her your hand.]', "signed", forbids=(RETURNED,)),
       c('[Keep your hands folded in your lap.]', "torn", forbids=(RETURNED,)),
       c('[Give her your hand.]', "signed", requires=(HOST,)),
@@ -391,13 +398,14 @@ SCENES.append(scene("jerribeth.trickster.epilogue.commit", "The guest who knocke
       c('[Say yes, aloud, to an empty breakfast room.]', "signed_mind", **_MIND),
       c('[Say nothing, and finish the tea.]', "torn_mind", **_MIND),
       paragraphs=(
-          p("She came to the Commander's door in the elven guise, with the seam of light left along its jaw so that "
+          p("The war had ended with their correspondence unfinished: a frame on a shelf, a promise drafted and never signed. "
+            "She came to the Commander's door in the elven guise, with the seam of light left along its jaw so that "
             "nobody who knew her could mistake it, and the guards let her in because nobody who did not know her could see "
             "it. She sat down at the Commander's table without being asked. " + _OFFER_LINE, forbids=(RETURNED,)),
-          p("She came to the door in the man from the stockade, smiling two finger-widths too wide, and the guards let him "
+          p("The war had ended before the lease did. She came to the door in the man from the stockade, smiling two finger-widths too wide, and the guards let him "
             "in because they had long ago stopped looking at his face. He sat down at the Commander's table without being "
             "asked, and her voice came out of him, high and pleased. " + _OFFER_LINE, requires=(HOST,)),
-          p("She did not come to the door. She had no door to come to. She came up from the back of the Commander's skull "
+          p("The war had ended before the lease did. She did not come to the door. She had no door to come to. She came up from the back of the Commander's skull "
             "at breakfast, where she had lived since the Sanctum, and the tea went cold while she talked. \"The forfeit is "
             "one memory, of my choosing, when I choose. I have already read your answer; I live beside it. Say it aloud "
             "anyway. I prefer my bargains witnessed, even when the only witness is you.\"", **_MIND),
@@ -491,7 +499,7 @@ REACTIONS = [
              entry='"About that toast..."'),
     # BEL (Sol r1): the living, previously met Jerribeth who countersigned in person has a witness too. Woljif keeps the
     # night hours; exclusive with the device reactions (no return, no toast).
-    reaction("Woljif", "jerribeth.trickster.reaction.woljif_visitor", (FORFEIT, "jerribeth.committed"),
+    reaction("Woljif", "jerribeth.trickster.reaction.woljif_visitor", (FORFEIT, "jerribeth.committed", VISITED),
              '''"Chief. Something knocked on your door last night. Three knocks, all the same length, like a bailiff. The lad on your corridor says it was a lady. He's got a nosebleed, he can't tell me what her face looked like, and he's been sick twice."
 {n}He glances at your collar, then very carefully away from it.{/n}
 "And word is you've pledged her a memory. One. Her pick. Chief, I've sold plenty of things I didn't own, but I never once let the buyer choose which. When she comes for it, you give her a boring one. The weather. A queue. Promise me."''',
@@ -742,6 +750,58 @@ IN_PERSON = [
       c(_KEEP[0], "short_end", requires=("jerribeth.short_future_chosen",))),
 ]
 
+# BEL (Sol r3, ledger R2-3): a bodily visit is a physical scene. The living contract's letter ends with her appointment;
+# she then stands in the Drezen market in her own shape (a presence with her own hub) and comes to the Commander's
+# quarters that night. The tenant keeps the mental room inside the letter. If the presence cannot spawn, a delayed letter
+# carries her apology and the debt instead.
+ARRIVAL_NOTE = j("arrival_note", '''"A forfeit is collected in person, Commander. Not through a frame."
+{n}The silhouette leans so close to the glass that for a moment you could swear the glass is warm.{/n}
+"Go home tomorrow by the market. I shall be at the spice stall. Nobody will see me there whom I do not wish to see me."''',
+    c(_KEEP[0], "end", forbids=("jerribeth.short_future_chosen",), flags=("jerribeth.chosen_future",)),
+    c(_KEEP[0], "short_end", requires=("jerribeth.short_future_chosen",)))
+
+
+def _visit_nodes():
+    keep = {"arrival", "arrival_terms", "own", "guise", "ask", "threshold_free", "morning_free", "threshold", "morning"}
+    nodes = [copy.deepcopy(x) for x in IN_PERSON if x["Id"] in keep]
+    for node in nodes:
+        if node["Id"] == "arrival":
+            node["Text"] = VISIT_ARRIVAL.strip()
+        elif node["Id"] == "arrival_terms":
+            node["Text"] = VISIT_TERMS.strip()
+        elif node["Id"] in ("morning", "morning_free"):
+            node["Choices"] = [c(_KEEP[0], flags=(VISITED,))]
+    return nodes
+
+
+VISIT_ARRIVAL = '''{n}She is at the spice stall, as she said, in her own shape: antennae, carapace, the folded wings. The trader weighs out cardamom for a quartermaster's boy a yard from her and does not look up. Seeing is a habit, and she has been breaking people's habits for longer than Drezen has had walls.{/n}
+{n}"Go home," she says, without turning. "I know the way."{/n}
+{n}An hour after dark there are three knocks at your door, precisely spaced, the way a clerk knocks. She is on the threshold when you open it. Not an image. The lamplight finds the edges of her carapace and does not slide off them. She smells of cold stone and something sweet and spoiled, like fruit left on an altar.{/n}'''
+VISIT_TERMS = '''"A forfeit is collected in person. I have come to see what I bought."
+{n}She lifts her hand into the light: long, jointed, clawed at the tips, very still.{/n}
+"I walked through your market in my own shape and nobody looked twice. I shall not stay the night; the Abyss notices when I am absent, and your guards will notice at dawn. But I do not collect at a distance. Which face do you want across the table, Commander?"'''
+PRESENCES = {
+    PRESENCE: dict(Unit=J_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=EXOTIC, Side="left", Distance=2.5),
+                   Requires=["trickster.ever", VISIT_DUE], Forbids=[VISITED, "jerribeth.closed"],
+                   MinChapter=5, MaxChapter=5, AnswerLists=[], Dialog="hub",
+                   Greeting="{n}A narrow, insectile figure stands at the spice stall, and nobody in the market sees her. Her "
+                            "antennae turn toward you before you are close.{/n} \"You came by the market. Good. I dislike "
+                            "being kept waiting by people I have already bought.\""),
+}
+SCENES.append(scene("jerribeth.trickster.visit", "Collected in person", "Jerribeth", 5, '"You said you collect in person."',
+    _visit_nodes(), requires=("trickster.ever", "jerribeth.committed", FORFEIT, VISIT_DUE), forbids=(RETURNED, VISITED, DECLINED, PARTED),
+    delay=12, last=5, optional=True, Relationship="jerribeth", Chapters=[5], ContactUnit=J_UNIT, Areas=[DREZEN],
+    InteractionHub=PRESENCE))
+SCENES.append(scene("jerribeth.trickster.visit_letter", "The stall was empty", "Jerribeth", 5, "", [
+    j("start", '''{n}The frame lights on its own, late, with no scenery at all.{/n}
+"I came to the market. Your quartermasters had moved the stall, and half the ward-priests of Drezen were standing where it used to be, blessing a well. I do not collect in front of priests. It spoils the goods."
+{n}The buzzing drops to something you feel in your teeth.{/n}
+"The forfeit stands. So does the night you owe me. I shall choose another door, Commander, and I shall not warn you which."''',
+      c('"I\'ll leave it unlocked."', flags=(VISITED,)))],
+    requires=("trickster.ever", "jerribeth.committed", FORFEIT, VISIT_DUE, PRESENCE_FAILED), forbids=(RETURNED, VISITED, DECLINED, PARTED),
+    delay=24, last=5, optional=True, Relationship="jerribeth", Remote=True, Chapters=[5], Areas=[DREZEN]))
+
+
 # JER-08 (rest budget, Trickster full roster): the purchaser/counteroffer campaign (offered_signature and the ten letters
 # that chain from it) does not open on a Trickster run; a save already inside it continues. A Commander who met her only
 # through the Chapter 5 toast has one chapter left: the courtship ends at the promise, and the endings take it from there.
@@ -842,6 +902,23 @@ def integrate(payload):
         c(keep["Text"], "tenant_room", requires=(OFFERED, RETURNED), flags=(*keep["Set"], FORFEIT, FATE_TERMS)),
         c(keep["Text"], "short_end", forbids=(OFFERED,), flags=(*keep["Set"], FATE_TERMS))))
     future["Nodes"].extend(IN_PERSON)
+    # BEL (Sol r3): the in-letter bodily arrival is retired (gated off, kept for saves already on it); the living contract
+    # now ends the letter with her appointment, and the visit plays on her presence.
+    for node_id in ("promise", "short_future", "fate_short"):
+        node = _node(future, node_id)
+        for choice in list(node["Choices"]):
+            if choice.get("Next") == "arrival":
+                twin = c(choice["Text"], "arrival_note", requires=tuple(choice["Requires"]), forbids=tuple(choice["Forbids"]),
+                         flags=(*choice["Set"], VISIT_DUE))
+                _gate(choice, forbids=(OFFERED,))
+                node["Choices"].append(twin)
+    future["Nodes"].append(copy.deepcopy(ARRIVAL_NOTE))
+    payload.setdefault("Presences", {}).update({k: copy.deepcopy(v) for k, v in PRESENCES.items()})
+    # INT (Sol r3): the host promised at the Nexus is taken on the first Chapter 5 Drezen rest, before any courtship letter
+    # (MailbagArrivals takes the first available scene per relationship in story order).
+    taken = _scene(by_id, "jerribeth.trickster.host.taken")
+    payload["Scenes"].remove(taken)
+    payload["Scenes"].insert(payload["Scenes"].index(_scene(by_id, "jerribeth.invitation")), taken)
     # INT (Sol r1): on the path the settlement campaign never opens, so the commission's last answer asks for the shorter
     # promise itself (short_future_requested was otherwise only a manual read); off the path the answer is unchanged.
     commission = _scene(by_id, "jerribeth.commission")
@@ -942,3 +1019,12 @@ def integrate(payload):
                 if id == "jerribeth.ending_apart":
                     node["Paragraphs"].append(dict(REFUSED_PARAGRAPH))
                     node["Paragraphs"].append(dict(GRUDGE_UNPAID_PARAGRAPH))
+    # COX (Sol r3): every answer that closes the relationship also records PARTED, which Last Call may read (G5 keeps it
+    # off the closed flag itself).
+    for s_ in payload["Scenes"]:
+        if s_.get("Relationship") != "jerribeth":
+            continue
+        for node in s_["Nodes"]:
+            for choice in node["Choices"]:
+                if "jerribeth.closed" in choice["Set"] and PARTED not in choice["Set"]:
+                    choice["Set"] = [*choice["Set"], PARTED]
