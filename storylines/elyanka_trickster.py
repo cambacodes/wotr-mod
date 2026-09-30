@@ -68,6 +68,10 @@ DAERAN_GONE = ("daeran.dead", "daeran.kicked_out")
 
 # The route.
 DOOR_SEEN = E + "door_seen"
+REFUSED_VEILED = E + "refused.veiled"              # the wake refused before the veil came off
+REFUSED_UNVEILED = E + "refused.unveiled"          # the wake refused after the unveiling and her laughter
+REFUSED_CAUGHT = E + "refused.caught"              # the owner, caught, would not sell (she took the jug)
+REFUSED_SUPPER = E + "refused.supper"              # the corpse came to supper bare-faced and would not sell
 ESCORTED = E + "escorted"                        # the door refused: escorted back to the Ustalav road
 EXECUTOR = E + "executor"                        # the Commander will receive her as the executor, veiled
 STRAIGHT = E + "straight"                        # the Commander will receive her bare-faced
@@ -283,10 +287,10 @@ visit(E + "executor.haggle", "The executor", [
        c("[Put the veil back on for the walk home.]", flags=(*SOLD, BLUFFED), alignment=("Evil", 1))),
     el("refuse_veiled", '''{n}She looks at the veil for a while, as if she could see through it, and perhaps she can.{/n}
 "You made me say it aloud," {n}she says softly,{/n} "to a curtain, in a barn, and now you will not sell. That was not grief, executor. That was curiosity." {n}She rises.{/n} "Tell the estate the Way does not forget who was curious about it. Good night."''',
-       c("Continue", flags=(CLOSED,))),
+       c("Continue", flags=(CLOSED, REFUSED_VEILED))),
     el("refuse", '''"Then I have laughed more tonight than in the last ten years, and that is worth something." {n}She stands, and she is taller than you expected.{/n}
 "But you should not have let me say it. The Way does not like to be heard by people who will not deal. Go home, Knight Commander, and live as long as you like. I will not be there when you stop."''',
-       c("Continue", flags=(CLOSED,))),
+       c("Continue", flags=(CLOSED, REFUSED_UNVEILED))),
     el("pulse", '''{n}You press the lie too hard. The estate has other buyers; the estate will not wait; the estate will not have your remains haggled over like a side of beef in a barn. She lets you finish.{/n}
 "*My* remains." {n}She says it back to you in your own cadence.{/n} "You said *my*, executor. Mourners grieve in the third person; it is the first thing an undertaker learns. Only one person at a wake ever says *my remains*." {n}She reaches across the table, quite unhurried, and lays two cold fingers against the side of your throat, just above the crepe, the way a physician does. Or an embalmer.{/n}
 "And the deceased has a pulse, Commander. It is in the throat, and it is racing."''',
@@ -304,7 +308,7 @@ visit(E + "executor.haggle", "The executor", [
        c("[Take the veil with you.]", flags=(*SOLD, EXPOSED), alignment=("Evil", 1))),
     el("seen_out", '''"As you like." {n}She rises, unhurried, and tucks the wine jug under her arm as though it were part of her fee.{/n}
 "You dressed as your own mourner to see what you were worth, and did not like the number. That is the most honest thing a mortal has done in front of me in years." {n}At the door she turns.{/n} "Keep the veil. You will want it one day."''',
-       c("Continue", flags=(CLOSED,))),
+       c("Continue", flags=(CLOSED, REFUSED_CAUGHT))),
 ], requires=(EXECUTOR,), forbids=(OWNED,), delay=24, last=5)
 
 
@@ -333,7 +337,7 @@ visit(E + "straight.offer", "The corpse comes to supper", [
        c("[Finish her wine.]", flags=SOLD, alignment=("Evil", 1))),
     el("refuse", '''"Everybody is waiting for your corpse, Commander. The Abyss, the witch who made you, the grey warden with her ledger. I am only the first who had the manners to ask." {n}She rises, and she is taller than you expected.{/n}
 "But you have refused me, so I will go and wait somewhere more comfortable. Live as long as you please. I am told it is a great deal of work."''',
-       c("Continue", flags=(CLOSED,))),
+       c("Continue", flags=(CLOSED, REFUSED_SUPPER))),
 ], requires=(STRAIGHT,), forbids=(OWNED,), delay=24, last=5)
 
 
@@ -775,8 +779,14 @@ page("turned_away", "A hearse on the Ustalav road", '''{n}A black hearse with gl
      requires=(DOOR_SEEN, CLOSED), forbids=(OWNED,), paragraphs=(
          p('''{n}It went back between twelve crusaders of the border escort. At the edge of the camp the woman inside asked the sergeant whether the Knight Commander had been buried with the eyes open or shut, and said she would ask again another time. She never did.{/n}''',
            requires=(ESCORTED,)),
-         p('''{n}The woman inside had sat at a trestle in the dead-house by the south gate and named a price to the Commander's face, and been refused. She took the wine jug with her, and it was never seen again, and neither was she.{/n}''',
-           forbids=(ESCORTED,)),
+         p('''{n}The woman inside had sat at a trestle in the dead-house by the south gate and told her order's purpose to a veiled executor who then would not sell. She never learned whose face was under the crepe. She said it did not matter; the Way would ask again another time.{/n}''',
+           requires=(REFUSED_VEILED,)),
+         p('''{n}The woman inside had sat at a trestle in the dead-house by the south gate, watched the late Knight Commander take off a veil, and laughed until she coughed, and then been refused. She did not laugh on the road home.{/n}''',
+           requires=(REFUSED_UNVEILED,)),
+         p('''{n}The woman inside had caught the Knight Commander at a wake in a borrowed coat, and named her terms to the owner's face, and been refused. She took the wine jug with her, and it was never seen again, and neither was she.{/n}''',
+           requires=(REFUSED_CAUGHT,)),
+         p('''{n}The woman inside had sat at a trestle in the dead-house by the south gate and watched the corpse she came for walk in to supper, sweating, and refuse to be bought. She wrinkled her nose at the memory for years.{/n}''',
+           requires=(REFUSED_SUPPER,)),
      ))
 
 

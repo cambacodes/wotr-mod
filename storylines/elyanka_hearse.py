@@ -535,7 +535,7 @@ visit(E + "beat.tyrant", "The Tyrant's seals", [
 "Yes," {n}she says.{/n} "I have. I have told a crusader where the Tyrant's cage is thin." {n}She sets the cup down.{/n} "And you have told me that you noticed, instead of simply using it. That is either very foolish or very clever, and I do not know which, and I do not like not knowing."
 "Do what you like with it, Commander. It is a whisper. You cannot prove you heard it. I cannot prove I said it." {n}Her hand closes over yours on the table, cold and very hard.{/n} "But if a single knight of Lastwall rides for Gallowspire this year, I will know whose whisper sent him."''',
        c('"Then no knight will ride."', flags=(TYRANT_TOLD,)),
-       c('"Then you\'ll know."', flags=(TYRANT_TOLD, TYRANT_WARNED))),
+       c('"Then you\'ll know."', flags=(TYRANT_TOLD,))),
 ], requires=(BIER,), forbids=(TYRANT_KEPT, TYRANT_WARNED, TYRANT_TOLD), delay=72, last=5)
 
 
@@ -717,7 +717,8 @@ visit(E + "beat.inquiry", "The paladin's questions", [
     el("hers2", '''"She did not strike me," {n}Elyanka says, that evening, sounding almost disappointed.{/n} "She asked me whether they had suffered. I told her the dead do not suffer; only the living, who bury them." {n}She pours wine.{/n}
 "She knows now, Commander. She knows it was your word that let my carts through the gate. What she does with that is between the two of you. I have never been so glad to be a stranger in a city."''',
        c("Continue", flags=(INQUIRY_HERS, "trickster.secret.elyanka_siege_dead.known.seelah"))),
-], requires=(GAVE_DEAD, E + "react.seelah_rows", BIER), forbids=(INQUIRY_TRUTH, INQUIRY_MISLED, INQUIRY_HERS), delay=48, last=5)
+], requires=(GAVE_DEAD, E + "react.seelah_rows", BIER, "seelah.in_party"),
+    forbids=(INQUIRY_TRUTH, INQUIRY_MISLED, INQUIRY_HERS, "seelah_dead", "seelah_gone"), delay=48, last=5)
 
 
 # --- 7. Reaction: Regill, who reads law (the writ). ------------------------------------------------------------------------

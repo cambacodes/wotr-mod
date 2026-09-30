@@ -400,6 +400,29 @@ internal static class ElyankaTricksterTests
               && Reachable(claims, honest).Any(x => x.Contains("whispered me something true")) && !Reachable(claims, honest).Any(x => x.Contains("whispered me a lie")),
             "Trk_Elyanka_Claims: her proposal praises a truth the Commander lied about, or the reverse.");
 
+        // Audit r8: the inquiry needs Seelah present; a threat to Lastwall is not a letter sent; each rejection page tells its own.
+        var rowsSeen = World(story, 5, "trickster.ever", Owned, Tested, Committed, Bier, P + "gave_dead", P + "seelah_prayed", "seelah.in_party", P + "react.seelah_rows");
+        var inquiry = S(P + "beat.inquiry");
+        check(Avail(inquiry, rowsSeen) && !Avail(inquiry, World(story, 5, "trickster.ever", Owned, Tested, Committed, Bier, P + "gave_dead", P + "seelah_prayed", P + "react.seelah_rows", "seelah_gone"))
+              && !Avail(inquiry, World(story, 5, "trickster.ever", Owned, Tested, Committed, Bier, P + "gave_dead", P + "seelah_prayed", "seelah.in_party", P + "react.seelah_rows", "seelah_dead"))
+              && Avail(S(P + "beat.hunt"), World(story, 5, "trickster.ever", Owned, Tested, Committed, Bier, "seelah_gone")),
+            "Trk_Elyanka_Inquiry: Seelah investigates while gone or dead, or her absence stalls Elyanka.");
+        var tyrant = S(P + "beat.tyrant");
+        check(tyrant.Nodes.Single(n => n.Id == "told").Choices.All(ch => !ch.Set.Contains(P + "tyrant.lastwall_warned"))
+              && tyrant.Nodes.Single(n => n.Id == "warned2").Choices.All(ch => ch.Set.Contains(P + "tyrant.lastwall_warned")),
+            "Trk_Elyanka_Tyrant: a spoken threat sets the Lastwall letter.");
+        foreach (var (scene0, node, index, marker) in new[] { (haggle, "refuse_veiled", 0, "veiled executor"), (haggle, "refuse", 0, "take off a veil"),
+                                                               (haggle, "seen_out", 0, "wine jug"), (straight, "refuse", 0, "walk in to supper") })
+        {
+            var w0 = World(story, 5, "trickster.ever", scene0 == straight ? P + "straight" : P + "executor", P + "door_seen");
+            var refusedW = Take(scene0, w0, node, index, Closed);
+            refusedW.Chapter = 6;
+            var shown = Render(Pg("turned_away"), refusedW);
+            check(Avail(Pg("turned_away"), refusedW) && shown.Contains(marker)
+                  && new[] { "veiled executor", "take off a veil", "wine jug", "walk in to supper", "border escort" }.Count(shown.Contains) == 1,
+                "Trk_Elyanka_Rejections: the page after " + scene0.Id + "/" + node + " tells another branch's refusal.");
+        }
+
         // Trk_Elyanka_LastCall: her coda needs the real commit; the bequest is a debt to a live power; it never keeps anyone alive.
         var coda = story.Scenes.Single(s => s.Id == "elyanka.lastcall.page");
         var call = story.Scenes.Single(s => s.Id == "elyanka.lastcall.call");

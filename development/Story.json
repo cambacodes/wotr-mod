@@ -403374,7 +403374,8 @@
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "elyanka.closed"
+                "elyanka.closed",
+                "elyanka.trickster.refused.veiled"
               ],
               "Requires": [],
               "Forbids": [],
@@ -403392,7 +403393,8 @@
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "elyanka.closed"
+                "elyanka.closed",
+                "elyanka.trickster.refused.unveiled"
               ],
               "Requires": [],
               "Forbids": [],
@@ -403499,7 +403501,8 @@
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "elyanka.closed"
+                "elyanka.closed",
+                "elyanka.trickster.refused.caught"
               ],
               "Requires": [],
               "Forbids": [],
@@ -403664,7 +403667,8 @@
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "elyanka.closed"
+                "elyanka.closed",
+                "elyanka.trickster.refused.supper"
               ],
               "Requires": [],
               "Forbids": [],
@@ -406394,11 +406398,35 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The woman inside had sat at a trestle in the dead-house by the south gate and named a price to the Commander's face, and been refused. She took the wine jug with her, and it was never seen again, and neither was she.{/n}",
-              "Requires": [],
-              "Forbids": [
-                "elyanka.trickster.escorted"
+              "Text": "{n}The woman inside had sat at a trestle in the dead-house by the south gate and told her order's purpose to a veiled executor who then would not sell. She never learned whose face was under the crepe. She said it did not matter; the Way would ask again another time.{/n}",
+              "Requires": [
+                "elyanka.trickster.refused.veiled"
               ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The woman inside had sat at a trestle in the dead-house by the south gate, watched the late Knight Commander take off a veil, and laughed until she coughed, and then been refused. She did not laugh on the road home.{/n}",
+              "Requires": [
+                "elyanka.trickster.refused.unveiled"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The woman inside had caught the Knight Commander at a wake in a borrowed coat, and named her terms to the owner's face, and been refused. She took the wine jug with her, and it was never seen again, and neither was she.{/n}",
+              "Requires": [
+                "elyanka.trickster.refused.caught"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The woman inside had sat at a trestle in the dead-house by the south gate and watched the corpse she came for walk in to supper, sweating, and refuse to be bought. She wrinkled her nose at the memory for years.{/n}",
+              "Requires": [
+                "elyanka.trickster.refused.supper"
+              ],
+              "Forbids": [],
               "AnyGroups": []
             }
           ]
@@ -409197,8 +409225,7 @@
               "Text": "\"Then you'll know.\"",
               "Next": null,
               "Set": [
-                "elyanka.trickster.tyrant.told_her",
-                "elyanka.trickster.tyrant.lastwall_warned"
+                "elyanka.trickster.tyrant.told_her"
               ],
               "Requires": [],
               "Forbids": [],
@@ -410097,13 +410124,16 @@
         "trickster.ever",
         "elyanka.trickster.gave_dead",
         "elyanka.trickster.react.seelah_rows",
-        "elyanka.trickster.bier_seen"
+        "elyanka.trickster.bier_seen",
+        "seelah.in_party"
       ],
       "Forbids": [
         "elyanka.closed",
         "elyanka.trickster.inquiry.told_seelah",
         "elyanka.trickster.inquiry.misled",
-        "elyanka.trickster.inquiry.hers"
+        "elyanka.trickster.inquiry.hers",
+        "seelah_dead",
+        "seelah_gone"
       ],
       "DelayHours": 48,
       "Optional": true,
