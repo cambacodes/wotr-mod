@@ -311,6 +311,17 @@ internal static class GalfreyTricksterTests
               && Rules.Available(story, S(P + "epilogue.alive"), World(story, 6, livingYes.Flags.ToArray()))
               && World(story, 6, livingYes.Flags.ToArray()).Has(P + "partner"),
             "Trk_Galfrey_Living: the living commit has no no of hers, or no page, or no Last Call seat.");
+        check(!Rules.Available(story, tent, Later(story, livingYes, 30)) && !Rules.Available(story, S(P + "kitrane.grey"), Later(story, livingYes, 30)),
+            "Trk_Galfrey_Living: the living Queen is sent to the returned knight's tent.");
+        check(Program.Walk(plan, Later(story, evening, 50)).Where(r => r.Has(P + "alive.plan_kept")).All(r => r.Has(P + "alive.plan_told")),
+            "Trk_Galfrey_Living: a plan is kept that was never told.");
+        // The manuscripts deathbed with Terendelev returned: no recollection of her claw.
+        var manuIz = World(story, 5, back.Flags.Concat(new[] { "iz.manuscripts", "terendelev.trickster.returned", P + "first_morning" }).ToArray());
+        manuIz.Hour += 100;
+        var seen = new List<string>();
+        Program.Walk(S(P + "kitrane.iz"), manuIz, (id, _) => seen.Add(id));
+        check(seen.Contains("priestess") && !seen.Contains("dragon") && !seen.Contains("hate") && seen.Contains("hate_manu"),
+            "Trk_Galfrey_Manuscripts: the priestess's branch recalls the dragon's claw.");
         check(native.Has(P + "partner") && native.Has("galfrey.harem.eligible")
               && pages.Count(s => Rules.Available(story, s, native)) == 1 && Rules.Available(story, S(P + "epilogue.native"), native),
             "Trk_Galfrey_NativeFirst: the native world does not count her once, with exactly one page.");

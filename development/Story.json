@@ -361092,7 +361092,7 @@
         {
           "Id": "pressed",
           "Speaker": "conversant",
-          "Text": "{n}Her eyebrows rise. For a moment she looks as if she might rebuke you; then something in her face turns inward, like a key in a lock.{/n} \"For myself.\" {n}She says it as though it were a word in a foreign tongue.{/n} \"Nobody has asked me to think of anything for myself in a hundred years.\" {n}She nods, once.{/n} \"Very well. After the Fane. If there is an after.\"",
+          "Text": "{n}Her eyebrows rise. For a moment she looks as if she might rebuke you; then something in her face turns inward, like a key in a lock.{/n} \"For myself.\" {n}She says it as though it were a word in a foreign tongue.{/n} \"For myself. That was hardly what I expected from my Commander.\" {n}She nods, once.{/n} \"Very well. After the Fane. If there is an after.\"",
           "Choices": [
             {
               "Text": "[Leave her to her thoughts.]",
@@ -362126,7 +362126,7 @@
         {
           "Id": "accept_rent",
           "Speaker": "conversant",
-          "Text": "\"Choose.\" {n}Her lips move on the word as if tasting it.{/n} \"You cannot even see whether it would work. You are offering me a door in the dark, and telling me it is dark.\" {n}A breath.{/n} \"That is the first honest thing anyone has offered me in years.\"",
+          "Text": "\"Choose.\" {n}Her lips move on the word as if tasting it.{/n} \"You cannot even see whether it would work. You are offering me a door in the dark, and telling me it is dark.\" {n}A breath.{/n} \"An honest gamble, then. I prefer it to a false promise.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -363331,7 +363331,7 @@
         {
           "Id": "look",
           "Speaker": "Narrator",
-          "Text": "{n}She lets you. She stands in the cold sunlight with the black crepe of her own mourning snapping on the gate behind her, and lets you look at her the way nobody has looked at her in a hundred years: without a crown to look at instead.{/n}\n{n}\"Well, Commander,\" she says at last, dry as dust. \"Am I what you ordered?\"{/n}",
+          "Text": "{n}She lets you. She stands in the cold sunlight with the black crepe of her own mourning snapping on the gate behind her, and lets you look at her the way people rarely look at a queen: without a crown to look at instead.{/n}\n{n}\"Well, Commander,\" she says at last, dry as dust. \"Am I what you ordered?\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -363787,7 +363787,7 @@
         {
           "Id": "look",
           "Speaker": "Narrator",
-          "Text": "{n}She lets you. She stands in the cold sunlight with the black crepe of her own mourning snapping on the gate behind her, and lets you look at her the way nobody has looked at her in a hundred years: without a crown to look at instead.{/n}\n{n}\"Well, Commander,\" she says at last, dry as dust. \"Am I what you ordered?\"{/n}",
+          "Text": "{n}She lets you. She stands in the cold sunlight with the black crepe of her own mourning snapping on the gate behind her, and lets you look at her the way people rarely look at a queen: without a crown to look at instead.{/n}\n{n}\"Well, Commander,\" she says at last, dry as dust. \"Am I what you ordered?\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -366304,7 +366304,7 @@
         {
           "Id": "watch",
           "Speaker": "Galfrey",
-          "Text": "{n}She stares at you. Then she laughs, low and helpless, and has to put a hand on the stall to steady herself, and the curio-seller looks up in alarm.{/n} \"Sixty.\" {n}She wipes her eyes.{/n} \"Commander, I have been sixty. It was a very long time ago, and I had a great deal less patience then. You have no idea what you are asking for.\" {n}And then, lower, still smiling:{/n} \"But you are asking to be there for it. Nobody has ever asked me that.\"",
+          "Text": "{n}She stares at you. Then she laughs, low and helpless, and has to put a hand on the stall to steady herself, and the curio-seller looks up in alarm.{/n} \"Sixty.\" {n}She wipes her eyes.{/n} \"Commander, I have been sixty. It was a very long time ago, and I had a great deal less patience then. You have no idea what you are asking for.\" {n}And then, lower, still smiling:{/n} \"But you are asking to be there for it. That is not a thing people ask a queen.\"",
           "Choices": [
             {
               "Text": "[Leave it there.]",
@@ -366477,7 +366477,7 @@
         {
           "Id": "watch",
           "Speaker": "Galfrey",
-          "Text": "{n}She stares at you. Then she laughs, low and helpless, and has to put a hand on the stall to steady herself, and the curio-seller looks up in alarm.{/n} \"Sixty.\" {n}She wipes her eyes.{/n} \"Commander, I have been sixty. It was a very long time ago, and I had a great deal less patience then. You have no idea what you are asking for.\" {n}And then, lower, still smiling:{/n} \"But you are asking to be there for it. Nobody has ever asked me that.\"",
+          "Text": "{n}She stares at you. Then she laughs, low and helpless, and has to put a hand on the stall to steady herself, and the curio-seller looks up in alarm.{/n} \"Sixty.\" {n}She wipes her eyes.{/n} \"Commander, I have been sixty. It was a very long time ago, and I had a great deal less patience then. You have no idea what you are asking for.\" {n}And then, lower, still smiling:{/n} \"But you are asking to be there for it. That is not a thing people ask a queen.\"",
           "Choices": [
             {
               "Text": "[Leave it there.]",
@@ -368041,12 +368041,42 @@
               "Next": "hate",
               "Set": [],
               "Requires": [],
-              "Forbids": [],
+              "Forbids": [
+                "iz.manuscripts"
+              ],
               "Abort": false
             },
             {
               "Text": "\"Do you want to?\"",
               "Next": "hate",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "iz.manuscripts"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"Do you mind?\"",
+              "Next": "hate_manu",
+              "Set": [],
+              "Requires": [
+                "iz.manuscripts"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "hate_manu",
+          "Speaker": "Galfrey",
+          "Text": "\"Mind.\" {n}She considers it with care.{/n} \"It was not her that rent me; it was a priestess in the dark with her god's work in her hands. Terendelev was never mine to put down. My knights went to her while I went for the books, and I have thought since that I should have gone with them.\" {n}Drier:{/n} \"So no, I do not mind that she walks the lower town. I mind that I was not there to say goodbye to her the first time. It seems I shall have to say good morning instead.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -368286,12 +368316,42 @@
               "Next": "hate",
               "Set": [],
               "Requires": [],
-              "Forbids": [],
+              "Forbids": [
+                "iz.manuscripts"
+              ],
               "Abort": false
             },
             {
               "Text": "\"Do you want to?\"",
               "Next": "hate",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "iz.manuscripts"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"Do you mind?\"",
+              "Next": "hate_manu",
+              "Set": [],
+              "Requires": [
+                "iz.manuscripts"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "hate_manu",
+          "Speaker": "Galfrey",
+          "Text": "\"Mind.\" {n}She considers it with care.{/n} \"It was not her that rent me; it was a priestess in the dark with her god's work in her hands. Terendelev was never mine to put down. My knights went to her while I went for the books, and I have thought since that I should have gone with them.\" {n}Drier:{/n} \"So no, I do not mind that she walks the lower town. I mind that I was not there to say goodbye to her the first time. It seems I shall have to say good morning instead.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -370807,7 +370867,7 @@
         {
           "Id": "slow",
           "Speaker": "Galfrey",
-          "Text": "\"Slowly.\" {n}She looks at you as if you had offered her something rare.{/n} \"Nobody has ever let me do anything slowly. There was always a war, or a council, or a bishop at the door.\" {n}She nods.{/n} \"Very well. Slowly. Do not mistake it for reluctance, Commander. It is appetite, taking its time.\"",
+          "Text": "\"Slowly.\" {n}She looks at you as if you had offered her something rare.{/n} \"I have done very little slowly since the Worldwound opened. There was always a war, or a council, or a bishop at the door.\" {n}She nods.{/n} \"Very well. Slowly. Do not mistake it for reluctance, Commander. It is appetite, taking its time.\"",
           "Choices": [
             {
               "Text": "[Leave her with that.]",
@@ -370981,7 +371041,7 @@
         {
           "Id": "slow",
           "Speaker": "Galfrey",
-          "Text": "\"Slowly.\" {n}She looks at you as if you had offered her something rare.{/n} \"Nobody has ever let me do anything slowly. There was always a war, or a council, or a bishop at the door.\" {n}She nods.{/n} \"Very well. Slowly. Do not mistake it for reluctance, Commander. It is appetite, taking its time.\"",
+          "Text": "\"Slowly.\" {n}She looks at you as if you had offered her something rare.{/n} \"I have done very little slowly since the Worldwound opened. There was always a war, or a council, or a bishop at the door.\" {n}She nods.{/n} \"Very well. Slowly. Do not mistake it for reluctance, Commander. It is appetite, taking its time.\"",
           "Choices": [
             {
               "Text": "[Leave her with that.]",
@@ -372842,7 +372902,7 @@
         {
           "Id": "buckles",
           "Speaker": "Narrator",
-          "Text": "{n}She instructs you. She instructs you in exactly the voice she uses on a parade ground: left pauldron, the strap underneath, no, the other strap, have you never taken off a suit of plate in your life? You have, and you tell her so, and she says that you have plainly only taken it off corpses, and then she starts to laugh and cannot stop.{/n}\n{n}The Queen of Mendev, standing in a leaking tent with one pauldron off and her own Commander fumbling at the buckle of her cuirass, laughing until she has to lean on your shoulder: nobody in a hundred years has ever seen it. You are the only one who ever will.{/n}",
+          "Text": "{n}She instructs you. She instructs you in exactly the voice she uses on a parade ground: left pauldron, the strap underneath, no, the other strap, have you never taken off a suit of plate in your life? You have, and you tell her so, and she says that you have plainly only taken it off corpses, and then she starts to laugh and cannot stop.{/n}\n{n}The Queen of Mendev, standing in a leaking tent with one pauldron off and her own Commander fumbling at the buckle of her cuirass, laughing until she has to lean on your shoulder: her court would not have believed it. You are the only one who will ever see it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -372962,7 +373022,7 @@
         {
           "Id": "after",
           "Speaker": "Galfrey",
-          "Text": "{n}Much later, in the grey before morning, she lies with her head on your shoulder and one hand spread flat on your chest, as if keeping a place in a book.{/n} \"I have slept beside no one in a hundred years.\" {n}Her voice is drowsy and quite unsurprised.{/n} \"I did not know that I would like it. One learns such a lot, being nobody.\" {n}She yawns.{/n} \"The Crows drill at first light. I am the only knight. I shall be late, and the sergeant will say so.\"",
+          "Text": "{n}Much later, in the grey before morning, she lies with her head on your shoulder and one hand spread flat on your chest, as if keeping a place in a book.{/n} \"It has been a very long time since I slept beside anyone.\" {n}Her voice is drowsy and quite unsurprised.{/n} \"I did not know that I would like it. One learns such a lot, being nobody.\" {n}She yawns.{/n} \"The Crows drill at first light. I am the only knight. I shall be late, and the sergeant will say so.\"",
           "Choices": [
             {
               "Text": "\"Stay.\"",
@@ -373072,7 +373132,8 @@
       ],
       "Requires": [
         "trickster.ever",
-        "galfrey.committed"
+        "galfrey.committed",
+        "galfrey.trickster.returned"
       ],
       "Forbids": [
         "galfrey.trickster.tent_seen",
@@ -375468,7 +375529,7 @@
         {
           "Id": "helps",
           "Speaker": "Galfrey",
-          "Text": "\"I do not know.\" {n}Honestly.{/n} \"I spent a century being a thing people prayed to before battles. It helped them. It helped Mendev. It very nearly finished me, and it never once let me be anybody.\" {n}She tucks the folded woodcut inside her surcoat.{/n} \"Let them have her. She is better at it than I was. And she will never have to disappoint them.\"",
+          "Text": "\"I do not know.\" {n}Honestly.{/n} \"I spent a century being a thing people prayed to before battles. It helped them. It helped Mendev. It very nearly finished me, and it left very little room to be anybody in particular.\" {n}She tucks the folded woodcut inside her surcoat.{/n} \"Let them have her. She is better at it than I was. And she will never have to disappoint them.\"",
           "Choices": [
             {
               "Text": "[Leave her with it.]",
@@ -375666,7 +375727,7 @@
         {
           "Id": "helps",
           "Speaker": "Galfrey",
-          "Text": "\"I do not know.\" {n}Honestly.{/n} \"I spent a century being a thing people prayed to before battles. It helped them. It helped Mendev. It very nearly finished me, and it never once let me be anybody.\" {n}She tucks the folded woodcut inside her surcoat.{/n} \"Let them have her. She is better at it than I was. And she will never have to disappoint them.\"",
+          "Text": "\"I do not know.\" {n}Honestly.{/n} \"I spent a century being a thing people prayed to before battles. It helped them. It helped Mendev. It very nearly finished me, and it left very little room to be anybody in particular.\" {n}She tucks the folded woodcut inside her surcoat.{/n} \"Let them have her. She is better at it than I was. And she will never have to disappoint them.\"",
           "Choices": [
             {
               "Text": "[Leave her with it.]",
@@ -376136,7 +376197,7 @@
           "Choices": [
             {
               "Text": "\"Come out tonight, in the Crows' surcoat. Nobody will look twice. I'll tell you one plan of mine before I carry it out, and you can watch me keep it.\"",
-              "Next": "accept",
+              "Next": "tell",
               "Set": [
                 "galfrey.trickster.alive.evening"
               ],
@@ -376151,6 +376212,24 @@
               "Requires": [],
               "Forbids": [],
               "Abort": true
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "tell",
+          "Speaker": "conversant",
+          "Text": "{n}She gives you a long, calculating look, and then, very slightly, nods.{/n} \"Tell me now. Here. Before anyone else knows it, including your quartermaster.\"",
+          "Choices": [
+            {
+              "Text": "[Tell her the whole plan: the empty wagons up the eastern road, loudly, and the real column a day behind by the dry riverbed.]",
+              "Next": "accept",
+              "Set": [
+                "galfrey.trickster.alive.plan_told"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": ""
@@ -376200,41 +376279,39 @@
       "Owner": "Galfrey",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "\"About the plan I told you, Kitrane.\"",
+      "Entry": "\"The eastern road marches at dawn, Your Majesty.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "conversant",
-          "Text": "{n}She does not smile, but the Queen's eyes go to the door, and back, and she lowers her voice to the pitch she used in the Crows' tent, over a table of bad cards she lost at on purpose.{/n} \"The eastern supply road. You said you would send the empty wagons first, loudly, and the real column a day behind by the riverbed, and you would lose nothing but wagons.\" {n}A breath.{/n} \"You did exactly that. Nobody died. Your quartermaster is furious about the wagons.\"",
+          "Text": "{n}She looks up from her dispatches, and the Queen's eyes go to the door, and back.{/n} \"At dawn. As you told me.\" {n}A pause.{/n} \"Or as you told me, and then changed on the road without a word, the way you change everything. I am curious which. So is Kitrane.\"",
           "Choices": [
             {
-              "Text": "\"I said I would. I did.\"",
+              "Text": "[Carry it out exactly as you told her: the empty wagons first, loudly, and the column by the riverbed.]",
               "Next": "kept",
               "Set": [
                 "galfrey.trickster.alive.plan_kept"
               ],
-              "Requires": [],
+              "Requires": [
+                "galfrey.trickster.alive.plan_told"
+              ],
               "Forbids": [],
-              "Abort": false
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Materials",
+                "Amount": -150
+              }
             },
             {
-              "Text": "[Trickster] \"I also sent a third column you didn't know about.\"",
+              "Text": "[Trickster] [Improvise on the road: a third column she knows nothing about.]",
               "Next": "third",
               "Set": [],
               "Requires": [],
               "Forbids": [],
               "Abort": false
-            }
-          ],
-          "Portrait": ""
-        },
-        {
-          "Id": "third",
-          "Speaker": "conversant",
-          "Text": "{n}Her face goes still.{/n} \"A third column.\" {n}Very quietly:{/n} \"Then you told me a plan, and kept part of it, and kept the rest from me. That is what I cannot trust, Commander. Not the powers. That.\" {n}She turns away.{/n} \"Tell me the whole of the next one. Then come back.\"",
-          "Choices": [
+            },
             {
-              "Text": "[Leave her.]",
+              "Text": "\"Not yet, Your Majesty.\"",
               "Next": null,
               "Set": [],
               "Requires": [],
@@ -376246,8 +376323,24 @@
         },
         {
           "Id": "kept",
+          "Speaker": "Narrator",
+          "Text": "{n}You do it exactly as you said. The empty wagons go up the eastern road at dawn with every banner in the baggage train flying over them, and the Lord of Locusts' raiders fall on them at the second bridge and burn them to the axles, and find nothing inside but straw. A day behind, by the dry riverbed, the real column goes through without a single arrow.{/n}\n{n}Your quartermaster is furious about the wagons. You let him be.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "kept_her",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "kept_her",
           "Speaker": "conversant",
-          "Text": "{n}The Queen of Mendev looks at you for a long breath, and something in her shoulders comes down.{/n} \"One plan, told and kept. It is a very small thing to be moved by. I have had ambassadors swear to me on their children and lie by supper.\" {n}Lower:{/n} \"Kitrane would like to see you again. The Queen will pretend not to know.\"",
+          "Text": "{n}When you come back the Queen hears the report standing, as she hears all reports.{/n} \"One plan, told and kept.\" {n}She is quiet a moment.{/n} \"Your powers are still a storm I cannot read, Commander, and I still do not like half of what you decide. That has not changed and I shall not pretend it has.\" {n}Lower:{/n} \"But you told me first. And then you did what you said. Kitrane would like to see you again. The Queen will pretend not to know.\"",
           "Choices": [
             {
               "Text": "[Bow to the Queen.]",
@@ -376256,6 +376349,22 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "third",
+          "Speaker": "conversant",
+          "Text": "{n}You tell her afterwards, when it is done and it has worked. Her face goes still.{/n} \"A third column.\" {n}Very quietly:{/n} \"The powers I cannot trust; that has not changed. This I could have trusted, and you did not let me.\" {n}She turns back to her dispatches.{/n} \"Tell me the whole of the next one before you do it. Then come back.\"",
+          "Choices": [
+            {
+              "Text": "[Leave her.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
             }
           ],
           "Portrait": ""

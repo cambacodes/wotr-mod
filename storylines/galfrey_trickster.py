@@ -260,7 +260,7 @@ SCENES.append(scene(CROWS, "The Green Crows", "Galfrey", 3, '"Did Kitrane come w
           flags=(PRESSED,)),
         c('[Press her, as her general] "Think about it anyway. Mendev can\'t afford a sentimental queen."', "pressed_general",
           flags=(PRESSED_GENERAL,))),
-    conv("pressed", '''{n}Her eyebrows rise. For a moment she looks as if she might rebuke you; then something in her face turns inward, like a key in a lock.{/n} "For myself." {n}She says it as though it were a word in a foreign tongue.{/n} "Nobody has asked me to think of anything for myself in a hundred years." {n}She nods, once.{/n} "Very well. After the Fane. If there is an after."''',
+    conv("pressed", '''{n}Her eyebrows rise. For a moment she looks as if she might rebuke you; then something in her face turns inward, like a key in a lock.{/n} "For myself." {n}She says it as though it were a word in a foreign tongue.{/n} "For myself. That was hardly what I expected from my Commander." {n}She nods, once.{/n} "Very well. After the Fane. If there is an after."''',
         c("[Leave her to her thoughts.]", "end")),
     conv("pressed_general", '''"Sentimental." {n}The Queen's voice goes very even, which in Galfrey is worse than shouting.{/n} "I have buried three generations of knights in the Worldwound, Commander. I know exactly what Mendev can afford." {n}A pause.{/n} "But you are my general, and you have asked. I shall think on it tonight, as a general's advice. You will have your answer."''',
         c("[Bow, and leave her.]", "end")),
@@ -428,7 +428,7 @@ SCENES.append(scene(OFFER, "The Queen's last hour", "Galfrey", 5, "[Kneel beside
       c('[As her friend] "Then as your friend: you never chose your own life. The church chose it, for the Queen. Choose this one yourself."',
         "accept", forbids=(BLIND,), flags=(OFFER_REFUSED, TAKEN, STARTED)),
       c('[Let her die as the Queen] "...Then die as her, Your Majesty."', "let_die", flags=(OFFER_REFUSED, LET_DIE, CLOSED))),
-    n("accept_rent", "conversant", '''"Choose." {n}Her lips move on the word as if tasting it.{/n} "You cannot even see whether it would work. You are offering me a door in the dark, and telling me it is dark." {n}A breath.{/n} "That is the first honest thing anyone has offered me in years."''',
+    n("accept_rent", "conversant", '''"Choose." {n}Her lips move on the word as if tasting it.{/n} "You cannot even see whether it would work. You are offering me a door in the dark, and telling me it is dark." {n}A breath.{/n} "An honest gamble, then. I prefer it to a false promise."''',
       c("Continue", "accept")),
     n("accept", "conversant", '''"For me." {n}The Queen of Mendev looks at you for as long as her breath allows.{/n} "The Queen has had a century. She may have the dying; she has earned it. And if there is anything left over when she is done..." {n}Her hand turns under yours and grips it, hard, a sword-hand still.{/n} "Kitrane will take it. She is not proud. She will take scraps."''',
       c("Continue", "command_romance", requires=(ROMANCE,)),
@@ -618,7 +618,7 @@ def return_nodes(scarred):
             c("Continue", "heard")),
         ga("late", '''"Late." {n}One eyebrow.{/n} "I have been dead, Commander. It takes a little while to arrange one's affairs." {n}The corner of her mouth moves.{/n} "Also I walked. A knight of the Green Crows does not own a horse. I had not appreciated how far it is from the field camp to the citadel when one's boots have been stolen. Twice."''',
             c("Continue", "heard")),
-        nar("look", '''{n}She lets you. She stands in the cold sunlight with the black crepe of her own mourning snapping on the gate behind her, and lets you look at her the way nobody has looked at her in a hundred years: without a crown to look at instead.{/n}
+        nar("look", '''{n}She lets you. She stands in the cold sunlight with the black crepe of her own mourning snapping on the gate behind her, and lets you look at her the way people rarely look at a queen: without a crown to look at instead.{/n}
 {n}"Well, Commander," she says at last, dry as dust. "Am I what you ordered?"{/n}''',
             c("Continue", "heard")),
         ga("heard", '''"I know about the vigil." {n}She says it flatly, the way one reports a casualty.{/n}''',
