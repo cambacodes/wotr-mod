@@ -543,7 +543,7 @@ internal static class Program
                     Check(answer.ShowConditions.Conditions.Single() is Tirabade.Main.RouteCondition shown && ReferenceEquals(shown.Choice, choice) && ReferenceEquals(shown.Owner, answer), "Choice lost its visibility guard or owner: " + nodeId);
                     Check(answer.SelectConditions.Conditions.Single() is Tirabade.Main.RouteCondition selected && ReferenceEquals(selected.Choice, choice) && ReferenceEquals(selected.Owner, answer), "Choice lost its selection guard or owner: " + nodeId);
                     var action = answer.OnSelect.Actions.OfType<Tirabade.Main.RouteAction>().Single();
-                    int nativeEffects = (choice.Crusade != null ? 1 : 0) + (choice.RemoveItem != null ? 1 : 0);
+                    int nativeEffects = (choice.Crusade != null ? 1 : 0) + (choice.RemoveItem != null ? 1 : 0) + (choice.StartEtude != null ? 1 : 0);
                     Check(answer.OnSelect.Actions.Length - 1 - nativeEffects is 0 or 1 && (choice.Mythic != null || answer.OnSelect.Actions.Length == 1 + nativeEffects)
                         && answer.OnSelect.Actions[0] is Tirabade.Main.RouteAction, "Choice carries unexpected native actions: " + nodeId);
                     Check((answer.MythicRequirement.ToString() == (choice.Mythic ?? "None")) && (answer.AlignmentShift?.Value ?? 0) == (choice.Alignment?.Value ?? 0), "Choice native mythic/alignment drifted: " + nodeId);

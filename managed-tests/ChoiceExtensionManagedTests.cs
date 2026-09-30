@@ -21,10 +21,12 @@ internal static class ChoiceExtensionManagedTests
     private const string NativeCrusadeCue = "7005d12127f06b94995a262a0e6bd675";      // c3 KTC_ReactivityReinforcements/Cue_0028 (AddCrusadeResources)
     private const string NativeRemovalCue = "6603e3274d42438faa38af673024a832";      // c0 RadianceFound/Cue_0002 (RemoveItemFromPlayer)
     private const string Scale = "816f244523b5455a85ae06db452d4330";                 // TerendelevScaleItem
+    private const string FornAmbushCue = "7cc523117d7b0df4c9b515de1f534c0e";         // Kaylessa/Forn_Ambush/Cue_0040 (OnStop StartEtude FornIsDead)
+    private const string FornIsDead = "7a6f0ef4dd004418aa613693dd9d280a";            // ImportantNPCs_fate/FornIsDead
     private const BindingFlags PrivateStatic = BindingFlags.NonPublic | BindingFlags.Static;
 
     public static IEnumerable<string> NativeIds => Rules.MythicAchievementFlags.Values
-        .Concat(new[] { NativeTricksterAnswer, NocticulaCue, StorytellerCue, NativeCrusadeCue, NativeRemovalCue, Scale });
+        .Concat(new[] { NativeTricksterAnswer, NocticulaCue, StorytellerCue, NativeCrusadeCue, NativeRemovalCue, Scale, FornAmbushCue, FornIsDead });
 
     private static bool IsItem(Dictionary<string, JObject> native, string guid) =>
         ((string)native[guid]["$type"]!).Split(new[] { ", " }, StringSplitOptions.None).Last().StartsWith("BlueprintItem", StringComparison.Ordinal);
@@ -146,6 +148,23 @@ internal static class ChoiceExtensionManagedTests
         check(entryAnswer.MythicRequirement == Mythic.PlayerIsTrickster && entryAnswer.OnSelect.Actions.Length == 2
             && entryAnswer.OnSelect.Actions[1] is IncrementFlagValue && entryAnswer.AlignmentShift.Direction == AlignmentShiftDirection.Chaotic,
             "Entry-answer native effects differ from the E5 choice shape.");
-        Console.WriteLine("PASS: E5/E11 choice extensions built with the real assemblies (Mythic, NativeNext, Alignment, Crusade, RemoveItem) and matched native shapes.");
+        // E17: StartEtude, compared with the native cue whose outcome the authored ravine replaces (Forn_Ambush/Cue_0040).
+        var nativeStart = ((JArray)native[FornAmbushCue]["OnStop"]!["Actions"]!).OfType<JObject>()
+            .Single(a => ((string)a["$type"]!).EndsWith(", StartEtude", StringComparison.Ordinal));
+        check((string)nativeStart["Etude"]! == "!bp_" + FornIsDead && ((string)native[FornIsDead]["$type"]!).EndsWith(", BlueprintEtude", StringComparison.Ordinal),
+            "Forn_Ambush/Cue_0040 no longer starts FornIsDead with the shape E17 imitates.");
+        var startAnswer = new BlueprintAnswer();
+        startAnswer.OnSelect = new Kingmaker.ElementsSystem.ActionList { Actions = new Kingmaker.ElementsSystem.GameAction[] { new Main.RouteAction() } };
+        if (ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(FornIsDead)) is Kingmaker.AreaLogic.Etudes.BlueprintEtude)
+        {
+            typeof(Main).GetMethod("ConfigureNativeEffects", PrivateStatic)!.Invoke(null, new object[] { startAnswer,
+                new Choice { StartEtude = FornIsDead }, new Action<string>(_ => { }) });
+            var started = startAnswer.OnSelect.Actions.OfType<StartEtude>().SingleOrDefault();
+            check(startAnswer.OnSelect.Actions.Length == 2 && startAnswer.OnSelect.Actions[0] is Main.RouteAction && started != null
+                  && started.Etude?.Guid == BlueprintGuid.Parse(FornIsDead) && !started.Evaluate,
+                "E17 StartEtude differs from the native StartEtude shape.");
+        }
+        else check(false, "FornIsDead was not seeded as a BlueprintEtude for the E17 fixture.");
+        Console.WriteLine("PASS: E5/E11/E17 choice extensions built with the real assemblies (Mythic, NativeNext, Alignment, Crusade, RemoveItem, StartEtude) and matched native shapes.");
     }
 }

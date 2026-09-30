@@ -285,6 +285,11 @@ namespace Tirabade
                     if (Resolve<Kingmaker.Blueprints.Items.BlueprintItem>(guid, "Removable item " + guid) == null)
                         foreach (var scene in story.Scenes.Where(s => s.Nodes.SelectMany(n => n.Choices).Any(c => c.RemoveItem == guid)))
                             Degrade(scene.Relationship, "removable item " + guid + " for " + scene.Id + " is missing");
+                // E17: a whitelisted startable etude must resolve, or the relationships that start it are disabled.
+                foreach (string guid in story.StartableEtudes)
+                    if (Resolve<Kingmaker.AreaLogic.Etudes.BlueprintEtude>(guid, "Startable etude " + guid) == null)
+                        foreach (var scene in story.Scenes.Where(s => s.Nodes.SelectMany(n => n.Choices).Any(c => c.StartEtude == guid)))
+                            Degrade(scene.Relationship, "startable etude " + guid + " for " + scene.Id + " is missing");
                 // E5: a native continuation must resolve to a BlueprintCue, or its relationship is disabled.
                 foreach (var scene in story.Scenes)
                     foreach (var guid in scene.Nodes.SelectMany(n => n.Choices).Select(c => c.NativeNext).OfType<string>().Distinct())
@@ -763,6 +768,17 @@ namespace Tirabade
                     answer.OnSelect = Actions((answer.OnSelect?.Actions ?? Array.Empty<GameAction>()).Concat(new GameAction[] { remove }).ToArray());
                 }
                 else warn("Removable item " + choice.RemoveItem + " is missing; the choice removes nothing.");
+            }
+            // E17: the native StartEtude action, shaped as the native cue that would have started it (Forn_Ambush/Cue_0040).
+            if (choice.StartEtude != null)
+            {
+                if (ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(choice.StartEtude)) is Kingmaker.AreaLogic.Etudes.BlueprintEtude etude)
+                {
+                    var start = new Kingmaker.Designers.EventConditionActionSystem.Actions.StartEtude();
+                    Field(start, "Etude", Ref<BlueprintEtudeReference>(etude));
+                    answer.OnSelect = Actions((answer.OnSelect?.Actions ?? Array.Empty<GameAction>()).Concat(new GameAction[] { start }).ToArray());
+                }
+                else warn("Startable etude " + choice.StartEtude + " is missing; the choice starts nothing.");
             }
             if (choice.Alignment != null)
                 answer.AlignmentShift = new Kingmaker.UnitLogic.Alignments.AlignmentShift

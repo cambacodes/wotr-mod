@@ -69,7 +69,8 @@ def norm_scene(s):
         n.setdefault("Choices", [])
         for c in n["Choices"]:
             for k, v in dict(Text="Continue", Next=None, Abort=False, Revive=None, Check=None, Set=[], Requires=[],
-                             Forbids=[], Mythic=None, NativeNext=None, Alignment=None, Crusade=None, RemoveItem=None).items():
+                             Forbids=[], Mythic=None, NativeNext=None, Alignment=None, Crusade=None, RemoveItem=None,
+                             StartEtude=None).items():
                 if c.get(k) is None and v is not None:
                     c[k] = v
                 c.setdefault(k, v)
@@ -769,6 +770,10 @@ def validate(model):
                 if ri is not None and (is_epilogue(s) or ri not in (st.get("RemovableItems") or [])
                                        or not any(inv.get(k) == ri for k in list(c["Requires"]) + list(s["Requires"]))):
                     errs.append("Invalid item removal: %s/%s" % (sid, n["Id"]))
+                se = c["StartEtude"]
+                if se is not None and (is_epilogue(s) or se not in (st.get("StartableEtudes") or [])
+                                       or c["Next"] is not None or c["Check"] or c["Abort"]):
+                    errs.append("Invalid etude start (E17): %s/%s" % (sid, n["Id"]))
                 if c["NativeNext"] is not None and (not hexre.match(c["NativeNext"]) or s["NativeReturnCue"] is None or c["Next"] is not None
                                                     or c["Check"] or c["Abort"] or c["Revive"] is not None):
                     errs.append("Invalid native continuation (terminal choice of an inline scene only): %s/%s" % (sid, n["Id"]))
@@ -1366,6 +1371,7 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
                     if c["NativeNext"]: want.append((c["NativeNext"], "BlueprintCue", "NativeNext@%s/%s" % (s["Id"], n["Id"])))
         for k in (story.get("ParentEpilogueEdits") or {}): want.append((k, "BlueprintCue", "ParentEpilogueEdit"))
         for g in story.get("RemovableItems") or []: want.append((g, "BlueprintItem*", "RemovableItems"))
+        for g in story.get("StartableEtudes") or []: want.append((g, "BlueprintEtude", "StartableEtudes"))
         for g, e in (story.get("NativeEpilogueEdits") or {}).items():
             want += [(g, "BlueprintCue", "NativeEpilogueEdits"), (e.get("Page"), "BlueprintBookPage", "NativeEpilogueEdits." + g),
                      (e.get("Sequence"), "BlueprintCueSequence", "NativeEpilogueEdits." + g)]
