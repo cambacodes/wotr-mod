@@ -330,7 +330,7 @@ partner("gesmerha", "gesmerha", "gesmerha.committed", "gesmerha.closed", "The Co
 
 SE = "seelah.trickster."
 partner("seelah", "seelah", "seelah.committed", "seelah.closed", "The Thief's Promise",
-    '''Seelah did not go back to the order after the war. She said she had a debt to settle first, and she settled it the way she had settled things as a girl in the streets of Kenabres: quietly, with a hand in someone else's pocket, and an apology afterwards.''',
+    '''Seelah did not go back to the order after the war. She said she had a debt to settle first, and she settled it the way she had settled things as a girl in the streets of Solku: quietly, with a hand in someone else's pocket, and an apology afterwards.''',
     (
         page_p('''At the rift the Commander had called in her promise, and she kept it. The flask came out of the Commander's coat one evening in Drezen in her hand, as easily as a purse, and went back into it a moment later, heavier by one small coin. She never said which coin. She said the trick was not the hand, it was the apology.''', requires=(called("seelah"), BOTTLED)),
         page_p('''At the rift the Commander had called in her promise, and she kept it: she picked {mf|his|her} pocket the next evening in Drezen and took back what was hers, and would not say what else she took.''', requires=(called("seelah"),), forbids=(BOTTLED,)),

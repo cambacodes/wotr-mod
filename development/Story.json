@@ -79416,7 +79416,7 @@
           "Text": "{n}Soana lifts a hand to your cheek. The pad of her thumb is rough from work; the touch is careful until you lean into it. Then she stops being tentative.{/n}\n\"There you are,\" she says softly.\n{n}She moves close enough that you can feel her breath, then waits. One loose strand of hair catches against her lip. You move it clear. Her hand closes gently around yours before you can lower it.{/n}\n\"I would like to kiss you. I would like to keep you here until the daylight makes us admit there is work beyond the entrance. I had a cleverer way of asking.\"\n\"You can save it.\"\n\"No. This one was good. I shall recover it when you are least prepared.\"\n{n}Her laughter is low and close. The shawl has slipped from one shoulder; she lets it fall into her lap and asks how much of the night you can give her.{/n}",
           "Choices": [
             {
-              "Text": "\"I want to stay with you. Tell me when you want anything slower.\"",
+              "Text": "\"Keep me here, then. All night.\"",
               "Next": "night",
               "Set": [],
               "Requires": [],
@@ -177509,7 +177509,9 @@
               "Requires": [
                 "seelah.trickster.cost.holds_her_death"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "seelah.trickster.death_returned"
+              ],
               "Abort": false
             },
             {
@@ -177525,6 +177527,46 @@
               "Forbids": [
                 "seelah.trickster.death_returned"
               ],
+              "Abort": false
+            },
+            {
+              "Text": "[Kiss her] \"Stay. Not as a sword. As you.\"",
+              "Next": "threshold",
+              "Set": [
+                "seelah.committed"
+              ],
+              "Requires": [
+                "seelah.started",
+                "seelah.romance",
+                "seelah.trickster.cost.holds_her_death",
+                "seelah.trickster.death_returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Let her choose] \"You know where the coat is.\"",
+              "Next": "chooses",
+              "Set": [
+                "seelah.committed"
+              ],
+              "Requires": [
+                "seelah.romance",
+                "seelah.trickster.cost.holds_her_death",
+                "seelah.trickster.death_returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask what's wrong] \"You're not saying something.\"",
+              "Next": "no",
+              "Set": [],
+              "Requires": [
+                "seelah.trickster.cost.holds_her_death",
+                "seelah.trickster.death_returned"
+              ],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -177771,7 +177813,7 @@
         {
           "Id": "robbed",
           "Speaker": "Narrator",
-          "Text": "{n}You stand still. It is harder than it sounds. She takes her time, and she apologises the whole while, softly, for nothing in particular, and you do not watch her hands.{/n}\n{n}When she steps back, your coat is lighter by something. You do not know what. She is smiling.{/n}\n\"Now ask me,\" she says, and does not wait for you to finish.",
+          "Text": "{n}You stand still. It is harder than it sounds. She takes her time, and she apologises the whole while, softly, for nothing in particular, and you do not watch her hands.{/n}\n{n}When she steps back, your coat is lighter by something. You do not know what, except that if her list was still in it, it is not there now. She is smiling.{/n}\n\"Now ask me,\" she says, and does not wait for you to finish.",
           "Choices": [
             {
               "Text": "Continue",
@@ -178177,7 +178219,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "Seelah did not go back to the order after the war. She said she had a debt to settle first, and she settled it the way she had settled things as a girl in the streets of Kenabres: quietly, with a hand in someone else's pocket, and an apology afterwards.",
+          "Text": "Seelah did not go back to the order after the war. She said she had a debt to settle first, and she settled it the way she had settled things as a girl in the streets of Solku: quietly, with a hand in someone else's pocket, and an apology afterwards.",
           "Choices": [
             {
               "Text": "Continue",
@@ -254168,7 +254210,7 @@
         {
           "Id": "walls",
           "Speaker": "conversant",
-          "Text": "\"Before you begin, a thing you ought to know, since you are paying.\" {n}He turns his cup a quarter turn.{/n} \"I spent several days in that lair with nothing to do but feel the walls for a way out. They are not stone. They are hides. Her old ones, split down the back and dry as vellum, and one of them has a hole through the chest I could put my head through. She has died in a skin before, Commander, and left the skin behind.\"\n\"Nobody has ever let a dead woundwyrm lie long enough to find out whether she can do it twice. The crusade's renderers have been at her since yesterday, for the hide and the blood; your quartermaster has a price list. They have taken the teeth and the wing-leather. They have not reached the spine.\"",
+          "Text": "\"Before you begin, a thing you ought to know, since you are paying.\" {n}He turns his cup a quarter turn.{/n} \"I spent several days in that lair with nothing to do but feel the walls for a way out. They are not stone. They are hides. Her old ones, split down the back and dry as vellum, and one of them has a hole through the chest I could put my head through. She has died in a skin before, Commander, and left the skin behind.\"\n\"Nobody has ever let a dead woundwyrm lie long enough to find out whether she can do it twice. The crusade's renderers have been at her since she fell, a little at a time; your quartermaster has a price list. A woundwyrm's hide turns saws, and her meat does not rot, which is the other thing nobody has thought to ask about. The last I heard, they had the teeth and the wing-leather, and had not reached the spine. Whether anything under that hide can still finish what it started, I cannot tell you. Nobody can. Leave her whole three days and find out.\"",
           "Choices": [
             {
               "Text": "[Call the renderers off her] \"Every saw off her tonight, and a guard on her till she gets up or rots. Put it on the quartermaster's account.\"",
@@ -255818,6 +255860,17 @@
               "Text": "{n}She followed the druids' trail into the hills every spring and came back every autumn, thinner and furious, with nothing. Once she came back with a single shed scale that was not her own, and would not say whose.{/n}",
               "Requires": [
                 "devarra.trickster.hunting_druids"
+              ],
+              "Forbids": [
+                "devarra.tower.trail_followed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Every spring she flew three rivers east to a valley with a white stone at the top, and lay on the ridge above it for a day, listening to children who were hers and had been raised by a gold dragon. She never went down. She came back each time in a temper that lasted a week, and never once said the gold one's name.{/n}",
+              "Requires": [
+                "devarra.trickster.hunting_druids",
+                "devarra.tower.trail_followed"
               ],
               "Forbids": [],
               "AnyGroups": []

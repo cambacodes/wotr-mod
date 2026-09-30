@@ -357,10 +357,16 @@ tavern("seelah.trickster.dismissed.commit", "Not as a sword", '"Seelah. Stay a w
       c('[Be her friend] "Then as a friend. Same coat. Same door."', "friend", forbids=(ROMANCE,), flags=(FRIENDS,)),
       c('[Give her the door] "Go and help people. Write."', "door", flags=(FRIENDS,)),
       c('[Ask what\'s wrong] "You\'re not saying something."', "no", forbids=(HOLDS,)),
-      c('[Ask what\'s wrong] "You\'re not saying something."', "no_death", requires=(HOLDS,)),
+      c('[Ask what\'s wrong] "You\'re not saying something."', "no_death", requires=(HOLDS,), forbids=(GIVEN_BACK,)),
       # b9c: while the Commander still holds her list she will not say yes; giving it back first is the way through.
       c('[Put her list on the table first] "Yours. Every line. I only borrowed it."', "list_back",
-        requires=(HOLDS, ROMANCE), forbids=(GIVEN_BACK,), flags=(GIVEN_BACK,))),
+        requires=(HOLDS, ROMANCE), forbids=(GIVEN_BACK,), flags=(GIVEN_BACK,)),
+      # b9c: the list already given back (possession is holds_her_death without death_returned).
+      c('[Kiss her] "Stay. Not as a sword. As you."', "threshold", requires=("seelah.started", ROMANCE, HOLDS, GIVEN_BACK),
+        flags=("seelah.committed",)),
+      c('[Let her choose] "You know where the coat is."', "chooses", requires=(ROMANCE, HOLDS, GIVEN_BACK),
+        flags=("seelah.committed",)),
+      c('[Ask what\'s wrong] "You\'re not saying something."', "no", requires=(HOLDS, GIVEN_BACK))),
     s_("list_back", '''{n}She does not touch it at once. Then she unfolds it and reads it from the top, Acemi first, the way you would count the money in a purse somebody had just given back to you. At the last line she stops.{/n}
 "You never crossed it out." {n}She borrows the stub of pencil behind the tankards and writes a line under it, and does not cross that out either: "Kenabres stones. Stolen for me. Owed."{/n}
 {n}She folds it small and puts it inside her tunic, flat against her ribs.{/n} "All right. Now it's only you and me at this table. Now ask."''',
@@ -397,7 +403,7 @@ tavern("seelah.trickster.dismissed.second_ask", "Her way", '"Seelah. I\'m asking
         flags=("seelah.committed", ROBBED)),
       c('[Keep your hand on your purse] "No."', "closed", flags=("seelah.closed",))),
     nar("robbed", '''{n}You stand still. It is harder than it sounds. She takes her time, and she apologises the whole while, softly, for nothing in particular, and you do not watch her hands.{/n}
-{n}When she steps back, your coat is lighter by something. You do not know what. She is smiling.{/n}
+{n}When she steps back, your coat is lighter by something. You do not know what, except that if her list was still in it, it is not there now. She is smiling.{/n}
 "Now ask me," she says, and does not wait for you to finish.''',
       c("Continue", "threshold")),
     nar("threshold", THRESHOLD, c("Continue", "morning_near", forbids=(FAR,)), c("Continue", "morning_far", requires=(FAR,))),
