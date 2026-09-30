@@ -622,20 +622,20 @@ REACTIONS = [
 # instead (Sol quality pass, INT). A Camellia raised from a retained death is back on her companion hub (camellia_trickster
 # FOREIGN_REACTIONS lifts camellia.dead there), and keeps the originals.
 VEILED = ("camellia.killed", "camellia.trickster.returned")
-CARD = "{n}Fye brings a folded card to your table without being asked. It smells of lilies, and it was left, he says, by the lady at the far end of the bar, who has still not touched her wine.{/n}\n"
+CARD = "{n}A folded card comes up with the evening dispatches, sent over from Fye's tavern by his pot-boy. It smells of lilies. It was left, the boy says, by the lady at the far end of the bar, who has still not touched her wine.{/n}\n"
 REACTIONS += [
     reaction("Camellia", "nurah.trickster.react.camellia_veiled_pardon", (LEDGER, RELEASED, *VEILED),
              CARD + '''"You gave the little traitor a pardon. How merciful of you. I have been dead, darling, so I know exactly what mercy is worth: it is worth what someone is willing to pay to take it back. I do hope nobody makes you an offer for her. I would hate to be outbid."''',
-             remote=True, chapter=3, last=5, Chapters=[3, 5], Kind="letter", portrait="Camellia"),
+             remote=True, chapter=3, last=5, Chapters=[3, 5], Kind="letter", portrait="Camellia", Areas=[DREZEN]),
     reaction("Camellia", "nurah.trickster.react.camellia_veiled_market", (RETURNED, RUMOUR, *VEILED),
              CARD + '''"You bought a soul from that marilith in the Fleshmarkets. The whole bar is saying so, very quietly, with its back to me. You and I have both come back from somewhere we were put, darling. Tell your halfling that the first thing one wants afterwards is to be looked at. The second is to be feared. She will work out the third herself."''',
-             remote=True, forbids=(CAMELLIA_KILL,), chapter=5, last=5, Chapters=[5], Kind="letter", portrait="Camellia"),
+             remote=True, forbids=(CAMELLIA_KILL,), chapter=5, last=5, Chapters=[5], Kind="letter", portrait="Camellia", Areas=[DREZEN]),
     reaction("Camellia", "nurah.trickster.react.camellia_veiled_supper", (RETURNED, RUMOUR, CAMELLIA_KILL, *VEILED),
              CARD + '''"You bought my supper back from a marilith. You said she was mine, and then you killed me, and then you bought her back, and now we are all three of us sitting in the same city pretending to be alive. I do not think I have ever been given so many things and had them all taken back. It is... truly terrible. I have ordered a second glass."''',
-             remote=True, chapter=5, last=5, Chapters=[5], Kind="letter", portrait="Camellia"),
+             remote=True, chapter=5, last=5, Chapters=[5], Kind="letter", portrait="Camellia", Areas=[DREZEN]),
     reaction("Camellia", "nurah.trickster.react.camellia_veiled_draft", (GHOST, RAN_OFF, *VEILED),
              CARD + '''"Your runaway halfling's pamphlet is on the bar. Someone left it here for me, as a joke, I think. There is an insult to her on the first page, in her own hand. I read it three times. I would simply have eaten her, darling. Your way leaves so much more of her for later."''',
-             remote=True, chapter=3, last=5, Chapters=[3, 5], Kind="letter", portrait="Camellia"),
+             remote=True, chapter=3, last=5, Chapters=[3, 5], Kind="letter", portrait="Camellia", Areas=[DREZEN]),
 ]
 SCENES.extend(REACTIONS)
 
