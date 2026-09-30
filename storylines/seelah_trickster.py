@@ -4,8 +4,8 @@ Canon: Seelah became a paladin because she was a thief. As a girl she stole a mi
 owner, Acemi, died of a gnoll's blow to her unprotected head (string 2a34986a: "who was really to blame for her death -
 the gnoll attacker or the young thief named Seelah?"). Penta's rule is canon too: "After standing trial before [the
 Lady of Graves], a soul can no longer be resurrected" (DLC6 Tavern_Night_Debate/Cue_0001 9e410aac). The Trickster robs
-a richer thief (polish b9c: no mythic power does the work). At her bier the chaplain's bowl is short and her soul is
-still in the line at the Lady's gate. In her purse the Commander finds her list of old thefts (authored), whose last
+a richer thief (polish b9c: no mythic power does the work). At her bier the chaplain's bowl is short, and nobody knows
+how long her soul waits before it is tried (Penta's rule; no deadline is invented). In her purse the Commander finds her list of old thefts (authored), whose last
 line names a Drezen relic-seller selling diamonds prised from the Kenabres reliquaries. The Commander lifts his pouch
 with the lift she taught (Thievery DC 15 with the lesson, 25 without; caught, the Commander faces him down, and he
 knows the face), and the stolen stones fill the bowl before her trial. The cost stays: she wakes to a life bought
@@ -162,7 +162,7 @@ def lift_choices():
 
 letter("seelah.trickster.dead.pickpocket", "The dead thief's purse", [
     nar("bier", '''{n}The chaplain of the Drezen chapel stands over the bier with a bowl of diamond dust that is not full, and a rite he cannot finish with it.{/n}
-"Before she stands trial, Commander. A soul that has stood its trial cannot be raised. The line at the Lady's gate has been long since the Wound opened; she will wait in it a night, perhaps two. After that, nothing comes back."
+"Before she stands trial, Commander. A soul that has stood its trial cannot be raised, and nobody on this side of the Boneyard can tell you how long a soul waits before the Lady tries it. An hour. A week. I have never dared find out. Tonight, if the rite can be paid for tonight."
 {n}Seelah's purse lies beside her, its strings tied neatly by somebody who did not know her. She always tied them badly, so she could get them open fast.{/n}''',
       c("Continue", "strings", requires=(LESSON,)), c("Continue", "fumble", forbids=(LESSON,))),
     nar("strings", '''{n}You untie them the way she taught you: while apologising to her. The chaplain watches your face. Nobody watches your fingers.{/n}''',
@@ -222,7 +222,7 @@ letter("seelah.trickster.dead.pickpocket_effects", "Her effects, without her", [
       c("Continue", "purse")),
     nar("purse", '''{n}At the bottom of the purse is a square of paper folded very small: a list, in her hand, of every theft she can remember, most of them crossed out and marked "paid". The first line is not: "A mithral helm. Acemi."{/n}
 ''' + LIST_LAST + '''
-{n}The chaplain at the border hospital has written too. He has a bowl and nothing to put in it, and one rule: a soul that has stood its trial cannot be raised. The line at the Lady's gate is long this year, he says. Days, not weeks. A fast rider reaches him in two.{/n}''',
+{n}The chaplain at the border hospital has written too. He has a bowl and nothing to put in it, and one rule: a soul that has stood its trial cannot be raised. Nobody can say how long a soul waits before the Lady tries it, he writes; he has never dared find out. A fast rider reaches him in two days.{/n}''',
       c('[Pick the dead thief\'s pocket] "Old habits, Seelah. Whatever\'s in the purse is mine. Including that."', "stall",
         requires=(DIAMOND_HELD,), mythic="Trickster", alignment=("Chaotic", 1), remove_item=DIAMOND,
         flags=(RETURNED, HOLDS, CORRESPONDENT, "seelah.started")),
@@ -329,7 +329,7 @@ tavern("seelah.trickster.after.stay_or_go", "Two notices", '"Seelah. What now?"'
 
 THRESHOLD = '''{n}She does not answer with words. She drags you up the tavern stairs by the belt, and on the landing you find the belt is in her hand and no longer round your waist.{/n}
 "Ha. Got your belt. Old habits." Her breath is hot on your mouth. "Now hold still. I'm taking the rest, and this time I'm not giving it back."
-{n}She kisses you laughing, then not laughing. Her armour is already off; she wriggles out of the gambeson in one practised motion, all freckles and sword-callus, and has your shirt over your head before you have reached the top step. The door of the little room slams behind you. She backs you into it, bare to the waist, fingers already at the lacing of your breeches, and tumbles you down onto the narrow bed. Then she swings a knee over your hips and straddles you, palms flat on your chest, hair falling round both your faces, and lowers herself onto you with a thief's grin, as if she has just got away with something.{/n}'''
+{n}She kisses you laughing, then not laughing. Her armour is already off; she wriggles out of the gambeson in one practised motion, all freckles and sword-callus, and has your shirt over your head before you have reached the top step. The door of the little room slams behind you. She backs you into it, bare to the waist, fingers already at the lacing of your breeches, and tumbles you down onto the narrow bed. Then she swings a knee over your hips and straddles you, palms flat on your chest, hair falling round both your faces, and grins down at you like a thief who has just got away with something.{/n}'''
 
 MORNING_NEAR = '''{n}Morning. She is sitting cross-legged on the bed counting your coins, and she hands the purse back with a grin.{/n}
 "All there. I only wanted to know how much you're worth." She stretches until her shoulders crack. "The Drezen road company can wait an hour. Iomedae forgive me, I'd do it again. Twice before breakfast, probably."'''

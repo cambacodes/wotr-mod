@@ -364,7 +364,7 @@ hub(T + "what_she_says", "What she says about you", '"Does she talk about me? Wh
         c("Continue", "says")),
     teller("says", '''"She counts your visits. Not out loud; she scratches them on the stair, one line for each, the way prisoners mark days. I found them with my fingers, the last time I went up." {n}He turns his cup.{/n} "When the wind is from the city she lies with her head out of the tower and listens for your voice among the others. She can pick it out. She told me so as though she were confessing to a disease."''',
         c("Continue", "worst")),
-    teller("worst", '''"And she says the worst things about you, all the time, with great enjoyment. That you climb like an ox. That you smell of other people's secrets. That you are the most dishonest creature she has met in three centuries, and that she has met demons." {n}He pauses.{/n} "She says it the way I have heard old soldiers talk about the one comrade they would have died for. You know the tone. Every insult polished like a medal."''',
+    teller("worst", '''"And she says the worst things about you, all the time, with great enjoyment. That you climb like an ox. That you smell of other people's secrets. That you are the most dishonest creature she has met in three centuries, and that she has met demons." {n}He pauses.{/n} "Then she eats something, slowly, looking at the city, and does not speak again until I have gone. She does not do that after she talks about anyone else. I do not know what it means, Commander. I am only telling you what she does."''',
         c('"Tell her something from me."', "message"),
         c('"Don\'t tell her I asked."', "secret")),
     teller("message", '''"Very well. What shall I carry?"''',

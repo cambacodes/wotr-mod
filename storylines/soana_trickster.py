@@ -123,7 +123,7 @@ def portion(suffix, answer_list, return_cue, joke, requires, any_of, nodes):
 
 # After the quest: Camellia asked at camp; she need not be standing here, so Soana answers the joke alone.
 portion("after_quest", HER_LIST, HER_RETURN,
-    '"My friend wants your blood turned to a good cause. Your forest is a good cause. Bleed for it first, and she can have what\'s left."',
+    '"Camellia asked me at camp to turn your blood to a good cause. Your forest is a good cause. Bleed for it first, and she can have what\'s left."',
     ("trickster", "camellia.asked_for_soana"), None, [
     n("start", "Soana", '''{n}The old woman weighs you with her small black eyes, the way she would weigh a snare somebody else had set. Then she laughs, the cracked laugh from your first meeting, and draws her knife across her own palm. Blood runs off her knuckles into the moss. Somewhere in the trees, something answers: not a bird, not a wolf.{/n}
 "A good cause. There. The spirits have had their portion, bloody hunter, and a portion is all anyone is owed. Tell your hungry friend she can lick the moss."
@@ -143,7 +143,7 @@ for suffix, lst, nrc, nxt in (("after_bear_a", "001686714a5c2384ba09686b45bd033f
         n("start", "Soana", '''{n}The old woman barks a laugh at Camellia, not at you, and draws her knife across her own palm. Blood runs into the moss. Somewhere in the trees, something answers.{/n}
 "There, spirit talker. The spirits of this land have had their portion, from my own hand. That is all you get. That is all *anyone* gets."''', c("Continue", "camellia")),
         n("camellia", "Camellia", '''{n}Camellia watches the blood soak into the ground with the fixed attention of a cat at a closed door. Her smile does not move at all.{/n}
-"How very generous of her. And of you, my friend. You have cheated me out of a perfectly good death in front of the one audience I cared about." {n}She wets her lips.{/n} "I shall have to think of a way to thank you. I think about such things a great deal."''',
+"How very generous of her. And of you, my friend. You have taken a death off my plate in front of the one audience I cared about." {n}She wets her lips.{/n} "I do not forget who takes food off my plate. I shall be thinking of you, often, and very carefully."''',
             c('[Leave before either of them decides otherwise]', native_next=nxt, flags=(PRIMED, BLOOD)),
             speaker_unit=CAMELLIA)])
 
@@ -462,7 +462,7 @@ ULBRIG_GONE = ("ulbrig.dead", "ulbrig.kicked_out")
 
 REACTIONS = [
     reaction("Camellia", "soana.trickster.react.camellia_portion", (BLOOD,),
-             '''"You cheated me out of a perfectly good death, my friend. The old woman fed her trees and left me the smell of it." {n}Camellia smooths her skirt with both hands, very slowly.{/n} "I shall have to think of a way to thank you. I have already thought of several."''',
+             '''"You took a death off my plate, my friend. The old woman fed her trees and left me the smell of it." {n}Camellia smooths her skirt with both hands, very slowly.{/n} "Someone will pay me for that meal. I have not decided who. I have decided it will not be quick."''',
              answer_list=CAMELLIA_HUB, forbids=CAMELLIA_GONE, chapter=3, last=5, delay=24, entry='"About Soana..."'),
     reaction("Camellia", "soana.trickster.react.camellia_knot", (RETURNED, KILLED),
              '''"The old woman is walking again? I bled her myself. I felt her stop." {n}Camellia smiles, slowly, and does not blink.{/n} "How very interesting you make things. I wonder what else of mine you would take back, if I let you."''',

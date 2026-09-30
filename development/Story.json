@@ -168646,7 +168646,7 @@
       "Owner": "Soana",
       "MinChapter": 3,
       "MaxChapter": 3,
-      "Entry": "[Play a cruel trick on Camellia] \"My friend wants your blood turned to a good cause. Your forest is a good cause. Bleed for it first, and she can have what's left.\"",
+      "Entry": "[Play a cruel trick on Camellia] \"Camellia asked me at camp to turn your blood to a good cause. Your forest is a good cause. Bleed for it first, and she can have what's left.\"",
       "Nodes": [
         {
           "Id": "start",
@@ -168739,7 +168739,7 @@
         {
           "Id": "camellia",
           "Speaker": "Camellia",
-          "Text": "{n}Camellia watches the blood soak into the ground with the fixed attention of a cat at a closed door. Her smile does not move at all.{/n}\n\"How very generous of her. And of you, my friend. You have cheated me out of a perfectly good death in front of the one audience I cared about.\" {n}She wets her lips.{/n} \"I shall have to think of a way to thank you. I think about such things a great deal.\"",
+          "Text": "{n}Camellia watches the blood soak into the ground with the fixed attention of a cat at a closed door. Her smile does not move at all.{/n}\n\"How very generous of her. And of you, my friend. You have taken a death off my plate in front of the one audience I cared about.\" {n}She wets her lips.{/n} \"I do not forget who takes food off my plate. I shall be thinking of you, often, and very carefully.\"",
           "Choices": [
             {
               "Text": "[Leave before either of them decides otherwise]",
@@ -168817,7 +168817,7 @@
         {
           "Id": "camellia",
           "Speaker": "Camellia",
-          "Text": "{n}Camellia watches the blood soak into the ground with the fixed attention of a cat at a closed door. Her smile does not move at all.{/n}\n\"How very generous of her. And of you, my friend. You have cheated me out of a perfectly good death in front of the one audience I cared about.\" {n}She wets her lips.{/n} \"I shall have to think of a way to thank you. I think about such things a great deal.\"",
+          "Text": "{n}Camellia watches the blood soak into the ground with the fixed attention of a cat at a closed door. Her smile does not move at all.{/n}\n\"How very generous of her. And of you, my friend. You have taken a death off my plate in front of the one audience I cared about.\" {n}She wets her lips.{/n} \"I do not forget who takes food off my plate. I shall be thinking of you, often, and very carefully.\"",
           "Choices": [
             {
               "Text": "[Leave before either of them decides otherwise]",
@@ -170937,7 +170937,7 @@
         {
           "Id": "start",
           "Speaker": "Camellia",
-          "Text": "\"You cheated me out of a perfectly good death, my friend. The old woman fed her trees and left me the smell of it.\" {n}Camellia smooths her skirt with both hands, very slowly.{/n} \"I shall have to think of a way to thank you. I have already thought of several.\"",
+          "Text": "\"You took a death off my plate, my friend. The old woman fed her trees and left me the smell of it.\" {n}Camellia smooths her skirt with both hands, very slowly.{/n} \"Someone will pay me for that meal. I have not decided who. I have decided it will not be quick.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -176138,7 +176138,7 @@
         {
           "Id": "bier",
           "Speaker": "Narrator",
-          "Text": "{n}The chaplain of the Drezen chapel stands over the bier with a bowl of diamond dust that is not full, and a rite he cannot finish with it.{/n}\n\"Before she stands trial, Commander. A soul that has stood its trial cannot be raised. The line at the Lady's gate has been long since the Wound opened; she will wait in it a night, perhaps two. After that, nothing comes back.\"\n{n}Seelah's purse lies beside her, its strings tied neatly by somebody who did not know her. She always tied them badly, so she could get them open fast.{/n}",
+          "Text": "{n}The chaplain of the Drezen chapel stands over the bier with a bowl of diamond dust that is not full, and a rite he cannot finish with it.{/n}\n\"Before she stands trial, Commander. A soul that has stood its trial cannot be raised, and nobody on this side of the Boneyard can tell you how long a soul waits before the Lady tries it. An hour. A week. I have never dared find out. Tonight, if the rite can be paid for tonight.\"\n{n}Seelah's purse lies beside her, its strings tied neatly by somebody who did not know her. She always tied them badly, so she could get them open fast.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -176543,7 +176543,7 @@
         {
           "Id": "purse",
           "Speaker": "Narrator",
-          "Text": "{n}At the bottom of the purse is a square of paper folded very small: a list, in her hand, of every theft she can remember, most of them crossed out and marked \"paid\". The first line is not: \"A mithral helm. Acemi.\"{/n}\n{n}The last line is fresh ink: \"The relic-seller under the chapel steps. Sells 'saints' tears' to pilgrims. They are the Kenabres reliquary diamonds; I would know them anywhere, I used to steal the candles off those altars. Not mine to take back. I am a paladin now. Tell Irabeth.\"{/n}\n{n}The chaplain at the border hospital has written too. He has a bowl and nothing to put in it, and one rule: a soul that has stood its trial cannot be raised. The line at the Lady's gate is long this year, he says. Days, not weeks. A fast rider reaches him in two.{/n}",
+          "Text": "{n}At the bottom of the purse is a square of paper folded very small: a list, in her hand, of every theft she can remember, most of them crossed out and marked \"paid\". The first line is not: \"A mithral helm. Acemi.\"{/n}\n{n}The last line is fresh ink: \"The relic-seller under the chapel steps. Sells 'saints' tears' to pilgrims. They are the Kenabres reliquary diamonds; I would know them anywhere, I used to steal the candles off those altars. Not mine to take back. I am a paladin now. Tell Irabeth.\"{/n}\n{n}The chaplain at the border hospital has written too. He has a bowl and nothing to put in it, and one rule: a soul that has stood its trial cannot be raised. Nobody can say how long a soul waits before the Lady tries it, he writes; he has never dared find out. A fast rider reaches him in two days.{/n}",
           "Choices": [
             {
               "Text": "[Pick the dead thief's pocket] \"Old habits, Seelah. Whatever's in the purse is mine. Including that.\"",
@@ -177448,7 +177448,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}She does not answer with words. She drags you up the tavern stairs by the belt, and on the landing you find the belt is in her hand and no longer round your waist.{/n}\n\"Ha. Got your belt. Old habits.\" Her breath is hot on your mouth. \"Now hold still. I'm taking the rest, and this time I'm not giving it back.\"\n{n}She kisses you laughing, then not laughing. Her armour is already off; she wriggles out of the gambeson in one practised motion, all freckles and sword-callus, and has your shirt over your head before you have reached the top step. The door of the little room slams behind you. She backs you into it, bare to the waist, fingers already at the lacing of your breeches, and tumbles you down onto the narrow bed. Then she swings a knee over your hips and straddles you, palms flat on your chest, hair falling round both your faces, and lowers herself onto you with a thief's grin, as if she has just got away with something.{/n}",
+          "Text": "{n}She does not answer with words. She drags you up the tavern stairs by the belt, and on the landing you find the belt is in her hand and no longer round your waist.{/n}\n\"Ha. Got your belt. Old habits.\" Her breath is hot on your mouth. \"Now hold still. I'm taking the rest, and this time I'm not giving it back.\"\n{n}She kisses you laughing, then not laughing. Her armour is already off; she wriggles out of the gambeson in one practised motion, all freckles and sword-callus, and has your shirt over your head before you have reached the top step. The door of the little room slams behind you. She backs you into it, bare to the waist, fingers already at the lacing of your breeches, and tumbles you down onto the narrow bed. Then she swings a knee over your hips and straddles you, palms flat on your chest, hair falling round both your faces, and grins down at you like a thief who has just got away with something.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -177656,7 +177656,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}She does not answer with words. She drags you up the tavern stairs by the belt, and on the landing you find the belt is in her hand and no longer round your waist.{/n}\n\"Ha. Got your belt. Old habits.\" Her breath is hot on your mouth. \"Now hold still. I'm taking the rest, and this time I'm not giving it back.\"\n{n}She kisses you laughing, then not laughing. Her armour is already off; she wriggles out of the gambeson in one practised motion, all freckles and sword-callus, and has your shirt over your head before you have reached the top step. The door of the little room slams behind you. She backs you into it, bare to the waist, fingers already at the lacing of your breeches, and tumbles you down onto the narrow bed. Then she swings a knee over your hips and straddles you, palms flat on your chest, hair falling round both your faces, and lowers herself onto you with a thief's grin, as if she has just got away with something.{/n}",
+          "Text": "{n}She does not answer with words. She drags you up the tavern stairs by the belt, and on the landing you find the belt is in her hand and no longer round your waist.{/n}\n\"Ha. Got your belt. Old habits.\" Her breath is hot on your mouth. \"Now hold still. I'm taking the rest, and this time I'm not giving it back.\"\n{n}She kisses you laughing, then not laughing. Her armour is already off; she wriggles out of the gambeson in one practised motion, all freckles and sword-callus, and has your shirt over your head before you have reached the top step. The door of the little room slams behind you. She backs you into it, bare to the waist, fingers already at the lacing of your breeches, and tumbles you down onto the narrow bed. Then she swings a knee over your hips and straddles you, palms flat on your chest, hair falling round both your faces, and grins down at you like a thief who has just got away with something.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -253879,7 +253879,7 @@
         {
           "Id": "carcass",
           "Speaker": "Narrator",
-          "Text": "{n}The woundwyrm lies where she fell, across the chamber floor in front of the golems, one wing half open like a torn tent. Smoke still leaks from her nostrils. Her eyes are open and already clouding, and when your boots scrape on the stone one of them turns a hair's breadth toward the sound. Dragons die slowly. This one has always listened to the end of a story.{/n}\n{n}Where the fall split her hide along the spine, what shows through the crack is not meat. It is grey, and dry, and new, like the skin under a snake's in the week before it sheds. There is a whole second hide under the first, and it is not dead yet.{/n}\n{n}The nearest golem has not lowered its fist. It stands over the clutch exactly as Xanthir Vang taught it to stand, waiting for the lizard to get up and fight, because nobody ever told it what to do if she did not.{/n}",
+          "Text": "{n}The woundwyrm lies where she fell, across the chamber floor in front of the golems, one wing half open like a torn tent. Smoke still leaks from her nostrils. Her eyes are open and already clouding, and when your boots scrape on the stone one of them turns a hair's breadth toward the sound. Dragons die slowly. This one has always listened to the end of a story.{/n}\n{n}Where the fall split her hide along the spine, what shows through the crack is not meat. It is grey, and dry, and new, like the skin under a snake's in the week before it sheds. It might be a second hide, half grown. It might be the last thing a dying wyrm grows, and nothing under it at all. There is no way to know but to leave her whole and wait, and nobody who ever killed a woundwyrm has waited.{/n}\n{n}The nearest golem has not lowered its fist. It stands over the clutch exactly as Xanthir Vang taught it to stand, waiting for the lizard to get up and fight, because nobody ever told it what to do if she did not.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -254106,7 +254106,7 @@
         {
           "Id": "wake",
           "Speaker": "Narrator",
-          "Text": "{n}Three days after the woundwyrm died, the reports from her carcass stopped making sense.{/n}",
+          "Text": "{n}For two days the reports from her carcass said what reports from carcasses say: that it stank, that it had not moved, that the quartermaster wished it minuted he had advised against paying good silver to guard meat. On the third day they stopped making sense.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -258018,7 +258018,7 @@
         {
           "Id": "worst",
           "Speaker": "conversant",
-          "Text": "\"And she says the worst things about you, all the time, with great enjoyment. That you climb like an ox. That you smell of other people's secrets. That you are the most dishonest creature she has met in three centuries, and that she has met demons.\" {n}He pauses.{/n} \"She says it the way I have heard old soldiers talk about the one comrade they would have died for. You know the tone. Every insult polished like a medal.\"",
+          "Text": "\"And she says the worst things about you, all the time, with great enjoyment. That you climb like an ox. That you smell of other people's secrets. That you are the most dishonest creature she has met in three centuries, and that she has met demons.\" {n}He pauses.{/n} \"Then she eats something, slowly, looking at the city, and does not speak again until I have gone. She does not do that after she talks about anyone else. I do not know what it means, Commander. I am only telling you what she does.\"",
           "Choices": [
             {
               "Text": "\"Tell her something from me.\"",

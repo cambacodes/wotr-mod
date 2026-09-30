@@ -158,7 +158,7 @@ SCENES.append(scene(P + "dead.lair_story", "What happened next", "Devarra", 3, '
 
 SCENES.append(scene(P + "dead.setup", "No order about clutch-mothers", "Devarra", 3, '"Golem. State the lizard\'s orders."', [
     nar("carcass", '''{n}The woundwyrm lies where she fell, across the chamber floor in front of the golems, one wing half open like a torn tent. Smoke still leaks from her nostrils. Her eyes are open and already clouding, and when your boots scrape on the stone one of them turns a hair's breadth toward the sound. Dragons die slowly. This one has always listened to the end of a story.{/n}
-{n}Where the fall split her hide along the spine, what shows through the crack is not meat. It is grey, and dry, and new, like the skin under a snake's in the week before it sheds. There is a whole second hide under the first, and it is not dead yet.{/n}
+{n}Where the fall split her hide along the spine, what shows through the crack is not meat. It is grey, and dry, and new, like the skin under a snake's in the week before it sheds. It might be a second hide, half grown. It might be the last thing a dying wyrm grows, and nothing under it at all. There is no way to know but to leave her whole and wait, and nobody who ever killed a woundwyrm has waited.{/n}
 {n}The nearest golem has not lowered its fist. It stands over the clutch exactly as Xanthir Vang taught it to stand, waiting for the lizard to get up and fight, because nobody ever told it what to do if she did not.{/n}''',
         c("Continue", "orders")),
     n("orders", "Golem", '''{n}The magical mouth works, stops, and works again.{/n} "Orders: fight. Or the eggs are destroyed. The lizard is not fighting. Clarify: is the lizard in breach?"''',
@@ -202,7 +202,7 @@ storyteller(P + "dead.storytellers_version", "A story for a carcass", '"You were
 # --- The return (remote, tier B). Device scene: the hide splits on the page ---------------------------------------
 
 letter(P + "dead.woken", "The hide splits", [
-    nar("wake", '''{n}Three days after the woundwyrm died, the reports from her carcass stopped making sense.{/n}''',
+    nar("wake", '''{n}For two days the reports from her carcass said what reports from carcasses say: that it stank, that it had not moved, that the quartermaster wished it minuted he had advised against paying good silver to guard meat. On the third day they stopped making sense.{/n}''',
         c("Continue", "wake_sanctum", requires=(DEAD_SANCTUM,), forbids=(LATE,)),
         c("Continue", "wake_lair", forbids=(DEAD_SANCTUM, LATE)),
         c("Continue", "wake_late", requires=(LATE,))),
