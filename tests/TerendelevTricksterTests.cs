@@ -284,8 +284,8 @@ internal static class TerendelevTricksterTests
               && new[] { "Seelah", "Irabeth", "Anevia", "Storyteller", "Galfrey" }.All(o => reactions.Any(s => s.Owner == o))
               && reactions.Where(s => s.Owner == "Daeran" || s.Owner == "Regill").All(s => s.Forbids.Contains("chapter_later")),
             "Terendelev's reactors are not Seelah (twice), Irabeth, Anevia, the Storyteller, Galfrey, Daeran and Regill.");
-        check(pages.Length == 5 && pages.All(s => s.MinChapter == 6 && s.MaxChapter == 6 && s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0)),
-            "Her epilogue pages are not five read-only Chapter 6 pages.");
+        check(pages.Length == 6 && pages.All(s => s.MinChapter == 6 && s.MaxChapter == 6 && s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0)),
+            "Her epilogue pages are not six read-only Chapter 6 pages.");
         var epiWatch = World(story, 6, turret.Flags.ToArray());
         check(Rules.Available(story, S(P + "epilogue.watch"), epiWatch) && !Rules.Available(story, S(P + "epilogue.late"), epiWatch)
               && !Rules.Available(story, S(P + "epilogue.debt"), epiWatch), "Her committed page is not the only page of a committed watch.");
@@ -316,6 +316,24 @@ internal static class TerendelevTricksterTests
         check(PagesOf(galScene, qEarly).Contains("dead_late") && PagesOf(galScene, qPriestess).Contains("dead_priestess") && !PagesOf(galScene, qPriestess).Contains("dead_late")
               && PagesOf(galScene, qBackPriestess).Contains("queen_back_priestess") && !PagesOf(galScene, qBackPriestess).Contains("queen_back"),
             "Terendelev claims a killing the record gives to the priestess.");
+        // Q6 r3 (CAN/COX): the Commander's own kill survives the Queen's return; the Lord of Locusts' death needs its record.
+        var qBackByYou = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen", "galfrey.killed_by_commander", "galfrey.trickster.returned");
+        var qByYou = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen", "galfrey.killed_by_commander");
+        check(PagesOf(galScene, qBackByYou).Contains("queen_back_by_you") && !PagesOf(galScene, qBackByYou).Contains("queen_back")
+              && !PagesOf(galScene, qBackByYou).Contains("queen_back_priestess") && PagesOf(galScene, qByYou).Contains("dead_by_you")
+              && !PagesOf(galScene, qByYou).Contains("dead") && !PagesOf(galScene, qByYou).Contains("alive"),
+            "Terendelev claims the Queen's death when the Commander killed her.");
+        var deskari = S(P + "watch.deskari");
+        var dBase = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen");
+        var dKilled = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen", "iz.deskari_killed.live");
+        check(story.Etudes["iz.deskari_killed.live"] == "047d71e3e928d454bbd168497ee7c17f" && dKilled.Has("iz.deskari_killed")
+              && !Rules.Available(story, deskari, Later(story, dBase, 30)) && Rules.Available(story, deskari, Later(story, dKilled, 30)),
+            "The barracks confirm Deskari's death without DeskariKilledInIz.");
+        // Q6 r3 (INT): no living-Commander page after an unsurvived sacrifice; her own page instead.
+        var lost = World(story, 6, "trickster.ever", Returned, Committed, "sacrifice");
+        check(!Rules.Available(story, S(P + "epilogue.watch"), lost) && Rules.Available(story, S(P + "epilogue.sacrifice"), lost)
+              && !Rules.Available(story, S(P + "epilogue.sacrifice"), World(story, 6, "trickster.ever", Returned, Committed, "sacrifice", "ending.trickster")),
+            "An unsurvived sacrifice still gets the watch, or a returned Commander is mourned.");
         var galLetter = S(P + "react.galfrey.letter");
         check(galLetter.ForbidOverrides.TryGetValue("galfrey.dead", out var gback) && gback == "galfrey.trickster.returned"
               && Rules.Available(story, galLetter, Later(story, World(story, 5, "trickster.ever", Returned, "galfrey.dead", "galfrey.trickster.returned"), 60)),

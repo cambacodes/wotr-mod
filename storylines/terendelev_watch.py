@@ -36,6 +36,7 @@ GALFREY_BACK = "galfrey.trickster.returned"         # Q6 (COX): the Queen brough
 MANUSCRIPTS = "iz.manuscripts"                       # latched GalfreyGoesToManuscripts: the priestess's sorcery killed her (Cue_0072)
 QUEEN_KILLED = "galfrey.killed_by_commander"
 LEFT_EARLY_W = "iz.left_early"
+DESKARI_KILLED = "iz.deskari_killed"                  # latched DeskariKilledInIz 047d71e3 (terendelev_trickster BINDINGS)
 SCALE_KEPT = P + "watch.scale_kept"
 CLAW_RETURNED = P + "watch.claw_returned"
 NIGHT = P + "night.seen"                 # set on the night watch (either hub twin): the reactions and pages read it
@@ -209,21 +210,27 @@ watch(P + "watch.deskari", "An orderly grudge", '"Something is on your mind."', 
        c("[Leave her with it.]")),
     te("no", '''{n}She is silent for a breath, and you think she will argue. She does not.{/n} "That is the answer a friend gives, and I asked a commander." {n}Then, more quietly:{/n} "It may also be the right one. I will not thank you for it. Not this month. Ask me again in a year, and I may."''',
        c("[Leave her with it.]")),
-], requires=(FIRST_NIGHT,), delay=24)
+], requires=(FIRST_NIGHT, DESKARI_KILLED), delay=24)
 
 
 # --- 6. The Queen: rest granted, and undone ----------------------------------------------------------------------------
 
 watch(P + "watch.galfrey", "The Queen", '"The chaplain says you\'ve been in the chapel every night."', [
     te("start", '''"The chaplain is right, and should mind his chaplaincy." {n}She rubs her eyes.{/n} "I go to think about the Queen. Somebody should."''',
-       c("Continue", "alive", forbids=(QUEEN_FELL, "galfrey.dead")),
-       c("Continue", "dead", requires=(QUEEN_FELL,), forbids=(GALFREY_BACK,)),
+       c("Continue", "alive", forbids=(QUEEN_FELL, "galfrey.dead", QUEEN_KILLED)),
+       c("Continue", "dead", requires=(QUEEN_FELL,), forbids=(GALFREY_BACK, QUEEN_KILLED, MANUSCRIPTS)),
        c("Continue", "dead_late", requires=("galfrey.dead", LEFT_EARLY_W), forbids=(QUEEN_FELL, GALFREY_BACK, MANUSCRIPTS, QUEEN_KILLED)),
-       c("Continue", "queen_back", requires=(GALFREY_BACK,), forbids=(MANUSCRIPTS,)),
-       c("Continue", "dead_priestess", requires=("galfrey.dead", MANUSCRIPTS), forbids=(QUEEN_FELL, GALFREY_BACK)),
-       c("Continue", "dead_by_you", requires=(QUEEN_KILLED,), forbids=(QUEEN_FELL, GALFREY_BACK, MANUSCRIPTS)),
+       c("Continue", "queen_back", requires=(GALFREY_BACK,), forbids=(MANUSCRIPTS, QUEEN_KILLED)),
+       c("Continue", "dead_priestess", requires=("galfrey.dead", MANUSCRIPTS), forbids=(GALFREY_BACK, QUEEN_KILLED)),
+       c("Continue", "dead_by_you", requires=(QUEEN_KILLED,), forbids=(GALFREY_BACK,)),
        c("Continue", "dead_unknown", requires=("galfrey.dead",), forbids=(QUEEN_FELL, GALFREY_BACK, MANUSCRIPTS, QUEEN_KILLED, LEFT_EARLY_W)),
-       c("Continue", "queen_back_priestess", requires=(GALFREY_BACK, MANUSCRIPTS))),
+       c("Continue", "queen_back_priestess", requires=(GALFREY_BACK, MANUSCRIPTS), forbids=(QUEEN_KILLED,)),
+       # Q6 r3 (CAN/COX): the Commander's own kill, then the Queen's return on her route (GalfreyOnTheEdge/Answer_0023).
+       c("Continue", "queen_back_by_you", requires=(GALFREY_BACK, QUEEN_KILLED))),
+    te("queen_back_by_you", '''"She died at Iz by your hand. Not mine, not his. Yours." {n}She says it to the chapel door, not to you.{/n} "And now she is alive, and walks in the chapel yard with her knights around her, and you did both of those things. I do not know what that makes you, crusader. I have stopped trying to work it out before breakfast."
+"I will kneel to her one day. For the hundred years, not for you. What she says to you is hers to say."''',
+       c("[Leave her to it.]", flags=(GALFREY_SPOKEN,)),
+       c("[Go with her as far as the chapel yard.]", flags=(GALFREY_SPOKEN,))),
     te("dead_priestess", '''"She died at Iz. Not by my claws: the priestess's sorcery tore her out of her body while her knights were busy with what was left of me." {n}No tremor at all, which is how you know.{/n} "I have asked every knight who was there. They all say the same, and I believe them, and it does not help. I was the reason she was on that field."
 "So I go and I kneel, and I tell the Inheritor about her Queen. Somebody who was there should."''',
        c("[Go with her to the chapel.]", flags=(GALFREY_SPOKEN,)),
@@ -577,7 +584,7 @@ letter(P + "letter.watch_report", "The north turret: a report", [
     te("start", '''{n}The letter is written in a large, square, careful hand on a page torn from a quartermaster's ledger, and it is headed, in capitals: REPORT OF THE NORTH TURRET WATCH.{/n}
 "Nights stood on the north turret: four. Alarms: none. Sentries reprimanded for sleeping: one, twice. Snow: a great deal. Dressings changed: four, at the proper hour. The wound complained each time, which I have entered in the log as insubordination."''',
        c("Continue", "more")),
-    te("more", '''"Otherwise: the woman who fries bread by the lower gate asks after you. I have told her you are busy with crusade business, and she has decided that you are my husband, and gives me the burnt pieces out of pity. I have not corrected her.
+    te("more", '''"Otherwise: the woman who fries bread by the lower gate asks after you. I have told her you are busy with crusade business, and she has decided that you are my {mf|husband|wife}, and gives me the burnt pieces out of pity. I have not corrected her.
 "The Worldwound's weather is loud this week. I feel it in my wrists. Keep the dressing clean. Change it at the proper hour, not whenever you remember. I will know.
 "The watch is very dull between dressings. T."''',
        c("[Fold the letter into your coat.]")),

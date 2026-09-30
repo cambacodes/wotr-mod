@@ -105,10 +105,12 @@ BINDINGS = {
                  AREELU_TOLD: ["af5d0b6be337672478f086357442cd15"]},
     "SeenCues_parent": {PARENT_RETURNED: ["8bf0fdc74bae4ef79dcfe04036e813ab", "4791f49d19624dafa2ea1ae6dd18c588",
                                           "30b3341acced4fa793dcc92dfe3587a9", "10fe0c7bd80d441c8688c37babc19f66"]},
-    "Etudes": {PARENT_LICH: "bbe7d7dbb92a4923a1ca4433e626a5ec"},
+    "Etudes": {PARENT_LICH: "bbe7d7dbb92a4923a1ca4433e626a5ec",
+               # Q6 r3 (CAN): DeskariKilledInIz (Chapter05_Outcomes); read as a latch source only, recorded below.
+               "iz.deskari_killed.live": "047d71e3e928d454bbd168497ee7c17f"},
     "InventoryItems": {CLAW_HELD: CLAW},
     "MainCharacterFacts": {SIGHT: "8bc2f9b88a0cf704ea72d86c2a3e2aef"},
-    "Latches": {MONSTER_LATCH: [MONSTER_DEAD + ".live"]},   # the raw Iz reader; MONSTER_DEAD is its Derived record (trickster_world)
+    "Latches": {MONSTER_LATCH: [MONSTER_DEAD + ".live"], "iz.deskari_killed": ["iz.deskari_killed.live"]},   # the raw Iz reader; MONSTER_DEAD is its Derived record (trickster_world)
 }
 
 DERIVED = {
@@ -520,9 +522,14 @@ EPI = "TerendelevEpilogue"
 WATCH = P + "watch."
 
 
-def epilogue(id, text, requires, forbids=(), paragraphs=()):
+def epilogue(id, text, requires, forbids=(), paragraphs=(), **extra):
     SCENES.append(scene(P + "epilogue." + id, "", EPI, 6, "", [nar("page", text, paragraphs=paragraphs)],
-                        requires=("trickster.ever", *requires), forbids=forbids, last=6, Relationship=REL))
+                        requires=("trickster.ever", *requires), forbids=forbids, last=6, Relationship=REL, **extra))
+
+
+# Q6 r3 (INT, ledger row 16): the living-Commander pages never follow an unsurvived sacrifice; `sacrifice` is lifted only
+# by trickster.commander_back (Last Call's kept Appointment or the Commander's own return).
+SURVIVED = dict(ForbidOverrides={"sacrifice": "trickster.commander_back"})
 
 
 EPILOGUE_PARAGRAPHS = (
@@ -580,15 +587,21 @@ EPILOGUE_PARAGRAPHS = (
 
 epilogue("watch", '''{n}Terendelev stayed in Drezen. She kept the north turret's night watch for the rest of the war, and for a long time after it, and the garrison learned to salute her on the stair. She never asked to be called anything but Terendelev; the city called her its dragon anyway, the way Kenabres once had, and she said that a city which insists on having a dragon should at least keep its gutters clean, and made sure it did.{/n}
 {n}She healed whoever came to her. She never healed the Commander, because she could not, and she never stopped trying.{/n}''',
-         requires=(COMMITTED,), forbids=(CLOSED,), paragraphs=EPILOGUE_PARAGRAPHS)
+         requires=(COMMITTED,), forbids=(CLOSED, "sacrifice"), paragraphs=EPILOGUE_PARAGRAPHS, **SURVIVED)
 
 epilogue("late", '''{n}The war ended before Terendelev had answered her own question: what she owed, and how to pay it. The evening after Threshold she climbed the stair to the Commander's rooms with a roll of clean linen under her arm, knelt, and changed the dressing on the wound without asking. When it was done she stayed kneeling, and said that she had decided, and that it would take the rest of the Commander's life, and that she hoped that would be long.{/n}''',
-         requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED, P + "declined"), paragraphs=EPILOGUE_PARAGRAPHS)
+         requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED, P + "declined", "sacrifice"), paragraphs=EPILOGUE_PARAGRAPHS,
+         **SURVIVED)
 
 epilogue("debt", '''{n}Terendelev paid her debt. She stood between the Commander and harm at Threshold and after, and never once let it be said that a silver dragon had failed to settle what she owed. She stood watch on the north turret every night of the war, and never once let the Commander join her there.{/n}
 {n}It was a very correct arrangement. Everyone in Drezen said so, and some of them said it kindly.{/n}
 {n}On the last night of the war she was seen on the north turret, alone, with the linen folded in its square in her lap, looking at the Commander's lit window for a long while. Then she put the linen down on the parapet and went down the stair, and in the morning the dressing was changed at the proper hour, correctly, and she did not speak.{/n}''',
-         requires=(P + "declined",), forbids=(COMMITTED, CLOSED), paragraphs=EPILOGUE_PARAGRAPHS)
+         requires=(P + "declined",), forbids=(COMMITTED, CLOSED, "sacrifice"), paragraphs=EPILOGUE_PARAGRAPHS, **SURVIVED)
+
+epilogue("sacrifice", '''{n}The Commander did not come back from the Threshold. Terendelev heard it on the north turret, from a runner who could not look at her, and thanked him, and sent him down.{/n}
+{n}She kept the watch that night anyway, and the next, and every night after, with the linen folded in its square on the parapet beside her while the hour of the dressing came and went. The garrison learned not to speak to her between the second bell and the dawn. In the spring she walked out of Drezen with a pike and a borrowed cloak, and the sentries on the north road said she did not look back, which in a dragon, one of them said, is a kind of looking back.{/n}''',
+         requires=(RETURNED, "sacrifice"), forbids=("trickster.commander_back", CLOSED),
+         RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED, P + "declined"]])
 
 epilogue("guardian", '''{n}Terendelev went home to Kenabres. She walked the whole way, since she could not fly it, and arrived at the broken gate in a borrowed cloak with her boots worn through, and the first person to recognise her was a baker who had sold her bread for forty years and had never once guessed what she was.{/n}
 {n}She did not ask to be its dragon again; she could not have been. She took a room over the rebuilt east gate and stood its night watch in her grey coat with a pike, and healed whoever came up the stair, and was, the city said, a great deal more trouble than the old one had been, and a great deal easier to talk to. She guarded the city for the rest of its long life. Once a year a letter came to the Commander in a hand like claw-marks, always short. The last line was always the same: "The wound. Is it still open? Tell me the truth."{/n}''',

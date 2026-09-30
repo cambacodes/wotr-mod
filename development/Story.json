@@ -208302,7 +208302,8 @@
         "targona.trickster.primed",
         "targona.free",
         "targona.dead_lab",
-        "targona.condemned"
+        "targona.condemned",
+        "chapter_later"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -328837,7 +328838,8 @@
       ],
       "Forbids": [
         "jannah.trickster.primed.forms_named",
-        "jannah.trickster.cage.botched"
+        "jannah.trickster.cage.botched",
+        "chapter_later"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -328916,7 +328918,8 @@
         "jannah.trickster.primed.forms_named"
       ],
       "Forbids": [
-        "jannah.trickster.primed"
+        "jannah.trickster.primed",
+        "chapter_later"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -330174,7 +330177,7 @@
         {
           "Id": "open",
           "Speaker": "Narrator",
-          "Text": "{n}Six days after the Condemned wagon went north, the gate sergeant sends up word that one of it has come back.{/n}\n{n}She comes into your quarters grey with road dust, her gambeson slit along one sleeve and sewn shut again with a Condemned surgeon's black thread.{/n}",
+          "Text": "{n}On the second evening after the Condemned wagon went north, the gate sergeant sends up word that one of it has come back.{/n}\n{n}She comes into your quarters grey with road dust, her gambeson slit along one sleeve and sewn shut again with a Condemned surgeon's black thread.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -330247,7 +330250,7 @@
         {
           "Id": "ford",
           "Speaker": "Jannah",
-          "Text": "\"Half the wagon came back. We held a ford on the north road for three days against things with too many legs, and nobody in my file ran. I didn't either.\" {n}She touches the stitches at her temple, briefly, like a fencer touching the button on a foil.{/n}\n\"I'd like that written down too.\"",
+          "Text": "\"Half the wagon came back. They put us on a ford a morning's march up the north road, and in the night things with too many legs came over the water, and we held it till the relief came at noon, and nobody in my file ran. I didn't either.\" {n}She touches the stitches at her temple, briefly, like a fencer touching the button on a foil.{/n}\n\"I'd like that written down too.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -330363,7 +330366,7 @@
         "jannah.trickster.gone",
         "jannah.trickster.returned"
       ],
-      "DelayHours": 144,
+      "DelayHours": 36,
       "Optional": false,
       "Relationship": "jannah",
       "Remote": true,
@@ -331627,6 +331630,19 @@
               "Next": "irabeth",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "irabeth_dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"Irabeth is going to want a word with me.\"",
+              "Next": "irabeth",
+              "Set": [],
+              "Requires": [
+                "irabeth_dead",
+                "irabeth.trickster.returned"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -331652,7 +331668,7 @@
         {
           "Id": "irabeth",
           "Speaker": "Jannah",
-          "Text": "\"Irabeth has already had a word with me. She said she spoke for me once, in Kenabres, four days before the demons came, and that she'd like to know what she's speaking for now.\" {n}Jannah shrugs.{/n}\n\"I told her: a fencer. She didn't laugh. I think that means she was satisfied.\"",
+          "Text": "\"Irabeth has already had a word with me. She wanted to know what exactly the Eagle Watch would be vouching for, if anybody asked it.\" {n}Jannah shrugs, and her ears go pink.{/n}\n\"I told her: a fencer. She didn't laugh. I think that means she was satisfied.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -332418,7 +332434,54 @@
         }
       ],
       "Requires": [
-        "jannah.trickster.cost.public_yield"
+        "jannah.trickster.cost.public_yield",
+        "jannah.trickster.bout.her_first"
+      ],
+      "Forbids": [
+        "irabeth_dead"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "jannah",
+      "Reaction": true,
+      "Chapters": [
+        5
+      ],
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      },
+      "AnswerLists": [
+        "871af36f2ab2b1f40b5de77976c54276"
+      ]
+    },
+    {
+      "Id": "jannah.trickster.react.irabeth_yielded",
+      "Title": "Irabeth's word",
+      "Owner": "Irabeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You heard about the muster.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Irabeth",
+          "Text": "\"You lay down in the sand in front of my sergeants.\" {n}Irabeth says it the way she would read out a charge.{/n}\n\"Before a blade was lifted. You'd beaten her twice, and you walked into her chalk and lay down anyway, and she lay down next to you, and four hundred soldiers stood there with their mouths open.\"\n{n}She is quiet a moment.{/n} \"I asked the Watch what it meant. The ones from Mivon wouldn't tell me. They just looked at me as if I'd asked what a prayer was for. I haven't decided whether that's a good sign.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        }
+      ],
+      "Requires": [
+        "jannah.trickster.cost.public_yield",
+        "jannah.circle.yielded_the_circle"
       ],
       "Forbids": [
         "irabeth_dead"
@@ -335438,7 +335501,7 @@
         {
           "Id": "changed",
           "Speaker": "Jannah",
-          "Text": "\"People don't change.\" {n}She touches her temple, the ugly seam of it.{/n}\n\"They get cut, and they heal crooked, and they learn to fence around the scar. That isn't change. It's only better footwork.\"",
+          "Text": "\"Changed.\" {n}She touches her temple, the ugly seam of it, and scowls.{/n}\n\"I was cold and I was hungry and the carter owed me four coppers. That's why I stood. Don't you dare make it a sermon.\" {n}She stabs the needle back in.{/n} \"...I did look round, after. To see if anyone had noticed. Nobody had. I was a bit disappointed.\"",
           "Choices": [
             {
               "Text": "[Leave her to her darning.]",
@@ -335533,7 +335596,7 @@
         {
           "Id": "hold",
           "Speaker": "Jannah",
-          "Text": "\"They put us on a ford on the north road and told us to hold it three days. Things came over the water at night, low, with too many legs, and in the mornings there were fewer of us.\" {n}She runs her thumb down the names.{/n}\n\"On the second night one of them got into our line right beside me, and I felt my legs start to decide.\"",
+          "Text": "\"They put us on a ford a morning's march up the north road and told us to hold it till the relief came. Things came over the water in the dark, low, with too many legs, and every time the moon came out there were fewer of us.\" {n}She runs her thumb down the names.{/n}\n\"Some time after midnight one of them got into our line right beside me, and I felt my legs start to decide.\"",
           "Choices": [
             {
               "Text": "\"And?\"",
@@ -335573,7 +335636,7 @@
         {
           "Id": "names",
           "Speaker": "Jannah",
-          "Text": "\"He's the fourth name. He died on the third morning, on the far bank, pulling a boy out of the water. I wound them all under my grip, so that when I hold the sword I'm holding them.\"",
+          "Text": "\"He's the fourth name. He died at dawn, on the far bank, pulling a boy out of the water. I wound them all under my grip, so that when I hold the sword I'm holding them.\"",
           "Choices": [
             {
               "Text": "\"You'd won in the cell. Why come back at all?\"",
@@ -335597,7 +335660,7 @@
         {
           "Id": "why",
           "Speaker": "Jannah",
-          "Text": "\"Because I'd won. Because the forms say the winner says the end, and I sat on that ford three days thinking about what I'd say.\"\n\"In Mivon I won forty-one bouts and never once had anything to say at the end of one. I'd just salute and walk off. This time I had something.\" {n}She winds the leather back on, tight and neat.{/n} \"It was you. Don't make me say it twice.\"",
+          "Text": "\"Because I'd won. Because the forms say the winner says the end, and I sat on that ford all night thinking about what I'd say.\"\n\"In Mivon I won forty-one bouts and never once had anything to say at the end of one. I'd just salute and walk off. This time I had something.\" {n}She winds the leather back on, tight and neat.{/n} \"It was you. Don't make me say it twice.\"",
           "Choices": [
             {
               "Text": "[Leave her to her grip.]",
@@ -336430,14 +336493,26 @@
         {
           "Id": "open",
           "Speaker": "Narrator",
-          "Text": "{n}She has two new notches on the inside of her scabbard, both cut the wrong way, and she is looking at them as if they belonged to someone she didn't much like.{/n}",
+          "Text": "{n}She has new notches on the inside of her scabbard, cut the wrong way, and she is looking at them as if they belonged to someone she didn't much like.{/n}",
           "Choices": [
             {
               "Text": "Continue",
               "Next": "start",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "jannah.trickster.cost.first_loss"
+              ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "start_one",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "jannah.trickster.cost.first_loss"
+              ],
               "Abort": false
             }
           ],
@@ -336458,6 +336533,30 @@
             },
             {
               "Text": "\"They were fair bouts. You lost them fairly.\"",
+              "Next": "fair",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jannah"
+        },
+        {
+          "Id": "start_one",
+          "Speaker": "Jannah",
+          "Text": "\"One.\" {n}She runs a thumbnail along it.{/n} \"Forty-one bouts in Mivon, and a cell where I won with my mouth, and then one, to you, the wrong way, in front of everybody. I'll get used to it. I'm getting used to a lot of things.\"",
+          "Choices": [
+            {
+              "Text": "[Yield the circle] \"At the muster today I'm going to walk into your chalk and lay my blade down before the salute.\"",
+              "Next": "warn",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"It was a fair bout. You lost it fairly.\"",
               "Next": "fair",
               "Set": [],
               "Requires": [],
@@ -336513,7 +336612,11 @@
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -100
+              }
             },
             {
               "Text": "\"You're right. I won't.\"",
@@ -338251,7 +338354,7 @@
         {
           "Id": "start",
           "Speaker": "Jannah",
-          "Text": "\"Elan saw Sunhammer with the souls and went in after him. Alone. He told me to stay and keep watch, and wait for you.\" {n}The cloth goes down the blade and back.{/n}\n\"So I stayed. I stood outside that door with my sword out, listening to him fighting inside, and I didn't go in, because I'd been told to hold a door, and I had deserted the last post anybody ever gave me.\"",
+          "Text": "\"Elan saw Sunhammer with the souls and went after him. Alone. He didn't wait for any of us.\" {n}The cloth goes down the blade and back.{/n}\n\"I was behind you the whole way through that place, watching every door like it owed me money. Every door but his. It was trapped, and he opened it, because he was thinking about Kiana and not about doors.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -338279,7 +338382,7 @@
         {
           "Id": "elan_dead",
           "Speaker": "Jannah",
-          "Text": "\"And he died in there. On the other side of the door I was holding.\" {n}The cloth stops.{/n}\n\"I've gone over it more than Houndheart. Whether I should have gone in. Whether holding the door was courage or just a new way of not being there. I'll never know. That's the thing about keeping your post: you never find out what would have happened if you'd left it.\"",
+          "Text": "\"And he was lying there when we came round the corner, and Seelah got to him first, and I said something stupid about good people dying.\" {n}The cloth stops.{/n}\n\"I meant it. It's still stupid. I've gone over it more than Houndheart. Whether I'd have seen the trap if I'd been in front. Whether I'd have been fast enough. I'll never know. That's the thing about keeping your place in a file: you never find out what would have happened if you'd left it.\"",
           "Choices": [
             {
               "Text": "\"You kept your post. That's all a soldier gets to know.\"",
@@ -338290,7 +338393,7 @@
               "Abort": false
             },
             {
-              "Text": "\"If you'd gone in, you'd be dead too.\"",
+              "Text": "\"If you'd been in front, you'd be dead too.\"",
               "Next": "dead",
               "Set": [],
               "Requires": [],
@@ -338303,7 +338406,7 @@
         {
           "Id": "elan_lives",
           "Speaker": "Jannah",
-          "Text": "\"And he came out. Bloody, furious, alive, with the souls. He shouted at me for not coming in, and then he shouted at himself for telling me not to, and then Seelah shouted at both of us.\" {n}Something like a smile.{/n}\n\"I don't know if holding that door was courage or just a new way of not being there. I'll never know. But everyone came out.\"",
+          "Text": "\"And he lived. I was there, and I still don't know exactly how you managed it.\" {n}Something like a smile.{/n}\n\"I didn't do anything clever. I kept my place and I didn't run, and afterwards I couldn't stop shaking. But everyone came out.\"",
           "Choices": [
             {
               "Text": "\"You kept your post. That's all a soldier gets to know.\"",
@@ -338343,7 +338446,7 @@
         {
           "Id": "dead",
           "Speaker": "Jannah",
-          "Text": "\"Probably.\" {n}She doesn't pretend it helps.{/n}\n\"Seelah says the same. Everybody says the same. And every one of them would have gone through that door without thinking twice, and I know it, and so do they.\" {n}She sheathes the blade.{/n} \"I held it. That has to be enough. Most nights it is.\"",
+          "Text": "\"Probably.\" {n}She doesn't pretend it helps.{/n}\n\"Seelah says the same. Everybody says the same. And every one of them would have opened that door without thinking twice, for someone they loved, and I know it, and so do they.\" {n}She sheathes the blade.{/n} \"I stayed in my place. That has to be enough. Most nights it is.\"",
           "Choices": [
             {
               "Text": "[Leave her to the blade.]",
@@ -365764,11 +365867,15 @@
         "terendelev.committed"
       ],
       "Forbids": [
-        "terendelev.closed"
+        "terendelev.closed",
+        "sacrifice"
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "terendelev"
+      "Relationship": "terendelev",
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      }
     },
     {
       "Id": "terendelev.trickster.epilogue.late",
@@ -366017,11 +366124,15 @@
       "Forbids": [
         "terendelev.committed",
         "terendelev.closed",
-        "terendelev.trickster.declined"
+        "terendelev.trickster.declined",
+        "sacrifice"
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "terendelev"
+      "Relationship": "terendelev",
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      }
     },
     {
       "Id": "terendelev.trickster.epilogue.debt",
@@ -366269,11 +366380,61 @@
       ],
       "Forbids": [
         "terendelev.committed",
-        "terendelev.closed"
+        "terendelev.closed",
+        "sacrifice"
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "terendelev"
+      "Relationship": "terendelev",
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      }
+    },
+    {
+      "Id": "terendelev.trickster.epilogue.sacrifice",
+      "Title": "",
+      "Owner": "TerendelevEpilogue",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander did not come back from the Threshold. Terendelev heard it on the north turret, from a runner who could not look at her, and thanked him, and sent him down.{/n}\n{n}She kept the watch that night anyway, and the next, and every night after, with the linen folded in its square on the parapet beside her while the hour of the dressing came and went. The garrison learned not to speak to her between the second bell and the dawn. In the spring she walked out of Drezen with a pike and a borrowed cloak, and the sentries on the north road said she did not look back, which in a dragon, one of them said, is a kind of looking back.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Terendelev"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "terendelev.trickster.returned",
+        "sacrifice"
+      ],
+      "Forbids": [
+        "trickster.commander_back",
+        "terendelev.closed",
+        "lastcall.active"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "terendelev",
+      "RequiresAnyGroups": [
+        [
+          "terendelev.committed",
+          "terendelev.trickster.late_committed",
+          "terendelev.trickster.declined"
+        ]
+      ]
     },
     {
       "Id": "terendelev.trickster.epilogue.guardian",
@@ -368365,7 +368526,8 @@
       "Requires": [
         "trickster.ever",
         "terendelev.trickster.returned",
-        "terendelev.trickster.first_night_seen"
+        "terendelev.trickster.first_night_seen",
+        "iz.deskari_killed"
       ],
       "Forbids": [
         "terendelev.closed",
@@ -368531,6 +368693,7 @@
         "trickster.ever",
         "terendelev.trickster.returned",
         "terendelev.trickster.first_night_seen",
+        "iz.deskari_killed",
         "terendelev.presence.failed"
       ],
       "Forbids": [
@@ -368570,7 +368733,8 @@
               "Requires": [],
               "Forbids": [
                 "terendelev.trickster.saw_the_queen_fall",
-                "galfrey.dead"
+                "galfrey.dead",
+                "galfrey.killed_by_commander"
               ],
               "Abort": false
             },
@@ -368582,7 +368746,9 @@
                 "terendelev.trickster.saw_the_queen_fall"
               ],
               "Forbids": [
-                "galfrey.trickster.returned"
+                "galfrey.trickster.returned",
+                "galfrey.killed_by_commander",
+                "iz.manuscripts"
               ],
               "Abort": false
             },
@@ -368610,7 +368776,8 @@
                 "galfrey.trickster.returned"
               ],
               "Forbids": [
-                "iz.manuscripts"
+                "iz.manuscripts",
+                "galfrey.killed_by_commander"
               ],
               "Abort": false
             },
@@ -368623,8 +368790,8 @@
                 "iz.manuscripts"
               ],
               "Forbids": [
-                "terendelev.trickster.saw_the_queen_fall",
-                "galfrey.trickster.returned"
+                "galfrey.trickster.returned",
+                "galfrey.killed_by_commander"
               ],
               "Abort": false
             },
@@ -368636,9 +368803,7 @@
                 "galfrey.killed_by_commander"
               ],
               "Forbids": [
-                "terendelev.trickster.saw_the_queen_fall",
-                "galfrey.trickster.returned",
-                "iz.manuscripts"
+                "galfrey.trickster.returned"
               ],
               "Abort": false
             },
@@ -368666,6 +368831,47 @@
                 "galfrey.trickster.returned",
                 "iz.manuscripts"
               ],
+              "Forbids": [
+                "galfrey.killed_by_commander"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "queen_back_by_you",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.returned",
+                "galfrey.killed_by_commander"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Terendelev"
+        },
+        {
+          "Id": "queen_back_by_you",
+          "Speaker": "Terendelev",
+          "Text": "\"She died at Iz by your hand. Not mine, not his. Yours.\" {n}She says it to the chapel door, not to you.{/n} \"And now she is alive, and walks in the chapel yard with her knights around her, and you did both of those things. I do not know what that makes you, crusader. I have stopped trying to work it out before breakfast.\"\n\"I will kneel to her one day. For the hundred years, not for you. What she says to you is hers to say.\"",
+          "Choices": [
+            {
+              "Text": "[Leave her to it.]",
+              "Next": null,
+              "Set": [
+                "terendelev.trickster.watch.galfrey_spoken"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Go with her as far as the chapel yard.]",
+              "Next": null,
+              "Set": [
+                "terendelev.trickster.watch.galfrey_spoken"
+              ],
+              "Requires": [],
               "Forbids": [],
               "Abort": false
             }
@@ -368969,7 +369175,8 @@
               "Requires": [],
               "Forbids": [
                 "terendelev.trickster.saw_the_queen_fall",
-                "galfrey.dead"
+                "galfrey.dead",
+                "galfrey.killed_by_commander"
               ],
               "Abort": false
             },
@@ -368981,7 +369188,9 @@
                 "terendelev.trickster.saw_the_queen_fall"
               ],
               "Forbids": [
-                "galfrey.trickster.returned"
+                "galfrey.trickster.returned",
+                "galfrey.killed_by_commander",
+                "iz.manuscripts"
               ],
               "Abort": false
             },
@@ -369009,7 +369218,8 @@
                 "galfrey.trickster.returned"
               ],
               "Forbids": [
-                "iz.manuscripts"
+                "iz.manuscripts",
+                "galfrey.killed_by_commander"
               ],
               "Abort": false
             },
@@ -369022,8 +369232,8 @@
                 "iz.manuscripts"
               ],
               "Forbids": [
-                "terendelev.trickster.saw_the_queen_fall",
-                "galfrey.trickster.returned"
+                "galfrey.trickster.returned",
+                "galfrey.killed_by_commander"
               ],
               "Abort": false
             },
@@ -369035,9 +369245,7 @@
                 "galfrey.killed_by_commander"
               ],
               "Forbids": [
-                "terendelev.trickster.saw_the_queen_fall",
-                "galfrey.trickster.returned",
-                "iz.manuscripts"
+                "galfrey.trickster.returned"
               ],
               "Abort": false
             },
@@ -369065,6 +369273,47 @@
                 "galfrey.trickster.returned",
                 "iz.manuscripts"
               ],
+              "Forbids": [
+                "galfrey.killed_by_commander"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "queen_back_by_you",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.returned",
+                "galfrey.killed_by_commander"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Terendelev"
+        },
+        {
+          "Id": "queen_back_by_you",
+          "Speaker": "Terendelev",
+          "Text": "\"She died at Iz by your hand. Not mine, not his. Yours.\" {n}She says it to the chapel door, not to you.{/n} \"And now she is alive, and walks in the chapel yard with her knights around her, and you did both of those things. I do not know what that makes you, crusader. I have stopped trying to work it out before breakfast.\"\n\"I will kneel to her one day. For the hundred years, not for you. What she says to you is hers to say.\"",
+          "Choices": [
+            {
+              "Text": "[Leave her to it.]",
+              "Next": null,
+              "Set": [
+                "terendelev.trickster.watch.galfrey_spoken"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Go with her as far as the chapel yard.]",
+              "Next": null,
+              "Set": [
+                "terendelev.trickster.watch.galfrey_spoken"
+              ],
+              "Requires": [],
               "Forbids": [],
               "Abort": false
             }
@@ -373506,7 +373755,7 @@
         {
           "Id": "more",
           "Speaker": "Terendelev",
-          "Text": "\"Otherwise: the woman who fries bread by the lower gate asks after you. I have told her you are busy with crusade business, and she has decided that you are my husband, and gives me the burnt pieces out of pity. I have not corrected her.\n\"The Worldwound's weather is loud this week. I feel it in my wrists. Keep the dressing clean. Change it at the proper hour, not whenever you remember. I will know.\n\"The watch is very dull between dressings. T.\"",
+          "Text": "\"Otherwise: the woman who fries bread by the lower gate asks after you. I have told her you are busy with crusade business, and she has decided that you are my {mf|husband|wife}, and gives me the burnt pieces out of pity. I have not corrected her.\n\"The Worldwound's weather is loud this week. I feel it in my wrists. Keep the dressing clean. Change it at the proper hour, not whenever you remember. I will know.\n\"The watch is very dull between dressings. T.\"",
           "Choices": [
             {
               "Text": "[Fold the letter into your coat.]",
@@ -420280,6 +420529,7 @@
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
     "terendelev.parent_lich_bind": "bbe7d7dbb92a4923a1ca4433e626a5ec",
+    "iz.deskari_killed.live": "047d71e3e928d454bbd168497ee7c17f",
     "eliandra.research_stolen": "c946f95a3f79eaa429799db96538fc07",
     "galfrey.final": "e9205b9f9e8ecd04c92852d72d09ca86",
     "galfrey.romance_finished": "133f3b1b38f04fa44be3200b786e437f",
@@ -420655,7 +420905,7 @@
       "Title": "What she carries out",
       "Description": "Targona has begun sending me pages she wants someone to read with her. Our earlier choices remain our own.",
       "Objective": "Read Targona's correspondence",
-      "Guidance": "After completing RanRomance's Angelic Treatment finale, read the correspondence in Drezen. Allow time for replies. On the Trickster path, a Commander who keeps Areelu's sleep for her in the laboratory (the Suture's key in hand, before the choice at her barrier), or who uses Lariel's light without spending it in Drezen's field infirmary, may find Targona at the cots behind the quartermaster's stores in Chapter 3 or Chapter 5.",
+      "Guidance": "After completing RanRomance's Angelic Treatment finale, read the correspondence in Drezen. Allow time for replies. On the Trickster path, free her in the laboratory: destroy her barrier with the Suture's key (a blow there kills her). Then work Drezen's field infirmary through a night with healing wands, and look for Targona at the cots behind the quartermaster's stores in Chapter 3 or Chapter 5.",
       "StartedFlag": "targona.started",
       "ClosedFlag": "targona.closed",
       "CommittedFlag": "targona.committed",
@@ -421441,7 +421691,7 @@
       "Title": "First blood",
       "Description": "Jannah Aldori, a half-elf duellist of Mivon who never lost a bout and ran from one battle. She keeps the Aldori forms the way other people keep a faith. I have had to learn them.",
       "Objective": "Answer Jannah Aldori",
-      "Guidance": "On the Trickster path. At the Molten Scar, if you mean to strike the deserter in the cage, know the Aldori forms first and offer them to her. If she lives, look for her in Chapter 5 in the old cells under the Drezen citadel, where she has put herself. She fights her own duels, and she may throw one.",
+      "Guidance": "On the Trickster path. At the Molten Scar, do not strike the deserter in the cage: a blow there kills her. If she lives, look for her in Chapter 5 in the old cells under the Drezen citadel, where she has put herself. She fights her own duels, and she may throw one.",
       "StartedFlag": "jannah.started",
       "ClosedFlag": "jannah.closed",
       "CommittedFlag": "jannah.committed",
@@ -426503,6 +426753,9 @@
   "Latches": {
     "iz.monster_dead.latched": [
       "iz.monster_dead.live"
+    ],
+    "iz.deskari_killed": [
+      "iz.deskari_killed.live"
     ],
     "trickster.ever": [
       "trickster",

@@ -130,9 +130,9 @@ RELATIONSHIP = dict(
     Description=("Jannah Aldori, a half-elf duellist of Mivon who never lost a bout and ran from one battle. She keeps "
                  "the Aldori forms the way other people keep a faith. I have had to learn them."),
     Objective="Answer Jannah Aldori",
-    Guidance=("On the Trickster path. At the Molten Scar, if you mean to strike the deserter in the cage, know the Aldori "
-              "forms first and offer them to her. If she lives, look for her in Chapter 5 in the old cells under the "
-              "Drezen citadel, where she has put herself. She fights her own duels, and she may throw one."),
+    Guidance=("On the Trickster path. At the Molten Scar, do not strike the deserter in the cage: a blow there kills her. "
+              "If she lives, look for her in Chapter 5 in the old cells under the Drezen citadel, where she has put "
+              "herself. She fights her own duels, and she may throw one."),
     StartedFlag=STARTED, ClosedFlag=CLOSED, CommittedFlag=COMMITTED,
     UnavailableFlags=[DEAD, DEAD_KNOWN], FailureFlags=[],
     UnavailableOverrides={DEAD: RETURNED, DEAD_KNOWN: RETURNED},
@@ -199,6 +199,14 @@ def visit(id, title, nodes, requires, forbids=(), delay=24, kind="visit", chapte
 
 
 # --- Killed worlds, Chapter 3: the forms at the cage (inline, before the native [Attack]). -----------------------------
+# Quality pass Q6 r3: RETIRED BY GATING (both primers forbid chapter_later, held by the runtime in every chapter from 2 on;
+# ids, nodes and choice indices kept). The native [Attack] (Answer_0026 -> Cue_0027 199d4dbf) narrates her death and plays
+# KillJanna (103de7bd), whose CommandAction 3d7d10a2 executes a real Kill and whose CommandAction 1 opens the cage. A
+# staged survival needs a primed substitution of that outcome, which the engine does not have (contract, for a later E-item:
+# a primed-only authored cue ahead of Cue_0027 in Answer_0026.NextCue, running StartEtude JannaDead_SeelahDoesntKnow
+# f8129442 without PlayCutscene, plus a native-unit hide on leaving the area; verified in the harness in both branches).
+# Until it exists the cage is the Commander's own choice of a non-partner's death, and canon stands (11-ROSTER-PLAN-2
+# section 5, ruling #2). Her Trickster route is the living worlds: the duel of stories.
 
 SCENES.append(scene(P + "cage.forms", "The forms", "Jannah", 3,
     '"In Kenabres you boasted of a fencing master in Mivon. Did he teach you the forms?"',
@@ -220,7 +228,7 @@ SCENES.append(scene(P + "cage.forms", "The forms", "Jannah", 3,
      jan("garbled_her", '''"No. You've never been anywhere near Mivon." {n}The pride goes back wherever it was hiding, and what is left is a frightened girl in a cage.{/n}
 "If you mean to kill me, Commander, kill me. Just don't pretend you know where I come from."''',
          c("[Step back from the cage.]", flags=(BOTCHED,)))],
-    requires=("trickster",), forbids=(NAMED, BOTCHED), last=3, Relationship=REL, Chapters=[3],
+    requires=("trickster",), forbids=(NAMED, BOTCHED, "chapter_later"), last=3, Relationship=REL, Chapters=[3],   # retired (Q6 r3)
     AnswerLists=[FIRST_LIST], NativeReturnCue=FIRST_CUE, EntryMythic="PlayerIsTrickster", TricksterDevice=True))
 
 # The challenge itself, invoked before the native [Attack] (on the sentence list she reaches only when Seelah is not there
@@ -238,7 +246,7 @@ SCENES.append(scene(P + "cage.terms", "To the first blood", "Jannah", 3,
 "Jannah Aldori. Of Mivon." {n}Her fingers have found what is under the grip. Her face does not change at all; seven years in a salle teach you that too.{/n} "Ready."''',
          c("[Take your guard, and choose your line: high, for the temple and first blood, not the throat.]", flags=(PRIMED,)),
          c("[Lower your blade, and take her sword back through the bars.]", abort=True))],
-    requires=("trickster", NAMED), forbids=(PRIMED,), last=3, Relationship=REL, Chapters=[3],
+    requires=("trickster", NAMED), forbids=(PRIMED, "chapter_later"), last=3, Relationship=REL, Chapters=[3],   # retired (Q6 r3)
     AnswerLists=[CAGE_LIST], ReturnToList=True,
     ReturnText="{n}She is on her feet in the cramped cage, blade high in the Aldori guard, eyes on you, waiting for your move.{/n}",
     EntryMythic="PlayerIsTrickster", TricksterDevice=True))
@@ -446,7 +454,7 @@ visit(P + "alive.stories", "Blood and tale", [
 
 
 visit(P + "alive.wagon", "The ninth bell, and after", [
-    nar("open", '''{n}Six days after the Condemned wagon went north, the gate sergeant sends up word that one of it has come back.{/n}
+    nar("open", '''{n}On the second evening after the Condemned wagon went north, the gate sergeant sends up word that one of it has come back.{/n}
 {n}She comes into your quarters grey with road dust, her gambeson slit along one sleeve and sewn shut again with a Condemned surgeon's black thread.{/n}''',
         c("Continue", "old_scar", requires=(JOINED,)),
         c("Continue", "old_scar", requires=(REFUSED,), forbids=(JOINED,)),
@@ -455,7 +463,7 @@ visit(P + "alive.wagon", "The ninth bell, and after", [
         c("Continue", "ford")),
     nar("new_scar", '''{n}There is a cut on her right temple from the brow to above the ear, still angry and badly knitted. She stands in front of your table and waits to be looked at.{/n}''',
         c("Continue", "ford")),
-    jan("ford", '''"Half the wagon came back. We held a ford on the north road for three days against things with too many legs, and nobody in my file ran. I didn't either." {n}She touches the stitches at her temple, briefly, like a fencer touching the button on a foil.{/n}
+    jan("ford", '''"Half the wagon came back. They put us on a ford a morning's march up the north road, and in the night things with too many legs came over the water, and we held it till the relief came at noon, and nobody in my file ran. I didn't either." {n}She touches the stitches at her temple, briefly, like a fencer touching the button on a foil.{/n}
 "I'd like that written down too."''',
         c("Continue", "said")),
     jan("said", '''"I won in your cell. You yielded. By the old man's rule the winner says the end of the matter, and I didn't say it before the wagon left, because I didn't know it yet."
@@ -472,7 +480,7 @@ visit(P + "alive.wagon", "The ninth bell, and after", [
     jan("refused", '''{n}She takes it standing, the way she took the wagon: heels together, chin up.{/n}
 "All right. That's a fair reading of the forms. Not the only one." {n}She salutes you, flat of the blade to the brow, and goes out the way she came in, not running.{/n}''',
         c("[Let her go.]")),
-], requires=(POSTED,), forbids=(RETURNED,), delay=144, TricksterDevice=True, TricksterState="alive")
+], requires=(POSTED,), forbids=(RETURNED,), delay=36, TricksterDevice=True, TricksterState="alive")   # Q6 r3 (COX): 36 h keeps the lost-story chain inside 168 h
 
 
 # --- The commit: her public rematch at the muster (the bout decides only her record); then she chooses. -----------------------------------------------
@@ -673,10 +681,11 @@ meet(MORNING, "A scuffed circle", '"You\'ve got sand in your hair."', [
 {n}She tests the grip in her palm.{/n} "Whoever else you've got, Commander, and I've heard things, none of them chalked a circle in front of your muster. I did. You'll remember that."''',
         c('"I\'ll remember."', "houndheart"),
         c('[Flirt] "You hum when you\'re happy."', "hum"),
-        c('"Irabeth is going to want a word with me."', "irabeth")),
+        c('"Irabeth is going to want a word with me."', "irabeth", forbids=("irabeth_dead",)),
+        c('"Irabeth is going to want a word with me."', "irabeth", requires=("irabeth_dead", "irabeth.trickster.returned"))),
     jan("hum", '''"I do not." {n}She does, and she knows it, and the points of her ears go pink.{/n} "It's a drinking song from the river docks. It's about a boatman's wife. You wouldn't like the third verse."''',
         c("Continue", "houndheart")),
-    jan("irabeth", '''"Irabeth has already had a word with me. She said she spoke for me once, in Kenabres, four days before the demons came, and that she'd like to know what she's speaking for now." {n}Jannah shrugs.{/n}
+    jan("irabeth", '''"Irabeth has already had a word with me. She wanted to know what exactly the Eagle Watch would be vouching for, if anybody asked it." {n}Jannah shrugs, and her ears go pink.{/n}
 "I told her: a fencer. She didn't laugh. I think that means she was satisfied."''',
         c("Continue", "houndheart")),
     jan("houndheart", '''{n}She stops working the grip.{/n}
@@ -798,12 +807,21 @@ SCENES.append(reaction("Irabeth", P + "react.irabeth_wagon", (RETURNED,),
     answer_list=IRABETH_HUB, forbids=(*IRABETH_GONE, DEAD_L), chapter=5, last=5, Chapters=[5],
     entry='"About the deserter in the gaol..."', portrait="Irabeth", ForbidOverrides=dict(IRABETH_BACK)))
 
-SCENES.append(reaction("Irabeth", P + "react.irabeth_sand", (PUBLIC_YIELD,),
+SCENES.append(reaction("Irabeth", P + "react.irabeth_sand", (PUBLIC_YIELD, SHE_FIRST),
     '''"You lay down in the sand in front of my sergeants." {n}Irabeth says it the way she would read out a charge.{/n}
 "The whole muster. Flat on your back inside a deserter's chalk, with your eyes on the sky, because she cut your jaw and some rule from Mivon said you had to."
 {n}She is quiet a moment.{/n} "I've never seen anything like it. Half of them think less of you for it. The other half would walk into the Worldwound behind you tomorrow. I haven't decided which half I'm in."''',
     answer_list=IRABETH_HUB, forbids=IRABETH_GONE, chapter=5, last=5, Chapters=[5], entry='"You heard about the muster."',
     portrait="Irabeth", ForbidOverrides=dict(IRABETH_BACK)))
+
+# Q6 r3 (INT): the voluntary yield (yielding_the_circle) has its own account; nobody cut the Commander for it.
+SCENES.append(reaction("Irabeth", P + "react.irabeth_yielded", (PUBLIC_YIELD, C + "yielded_the_circle"),
+    '''"You lay down in the sand in front of my sergeants." {n}Irabeth says it the way she would read out a charge.{/n}
+"Before a blade was lifted. You'd beaten her twice, and you walked into her chalk and lay down anyway, and she lay down next to you, and four hundred soldiers stood there with their mouths open."
+{n}She is quiet a moment.{/n} "I asked the Watch what it meant. The ones from Mivon wouldn't tell me. They just looked at me as if I'd asked what a prayer was for. I haven't decided whether that's a good sign."''',
+    answer_list=IRABETH_HUB, forbids=IRABETH_GONE, chapter=5, last=5, Chapters=[5], entry='"You heard about the muster."',
+    portrait="Irabeth", ForbidOverrides=dict(IRABETH_BACK)))
+
 
 # Seelah: the friend she failed, who grieved her or lost her, and whose Q3 may have returned her (a named stake, per the
 # coordinator's brief update; she speaks on her own companion hub, and only once Jannah has faced her or been told of).

@@ -155,17 +155,18 @@ internal static class JannahTricksterTests
                            .Any(f => f == "seelah_dead" || f == "seelah_gone" || f == "seelah.closed" || f == "seelah.trickster.returned")),
             "A Jannah scene gates on Seelah's fate (coexistence: node-level reads only).");
 
-        // Trk_Jannah_Cage: the forms only on the live Trickster path, before the kill.
-        check(Avail(named, World(story, 3, "trickster", "trickster.ever")) && !Avail(named, World(story, 3, "trickster.ever", "trickster.was"))
-              && !Avail(named, World(story, 5, "trickster", "trickster.ever")) && !Avail(terms, World(story, 3, "trickster", "trickster.ever")),
-            "Trk_Jannah_Cage: the forms open off the live path or outside Chapter 3, or the challenge opens before they are named.");
-        var formsNamed = Take(named, World(story, 3, "trickster", "trickster.ever"), "named_her", 0, P + "primed.forms_named");
-        check(Avail(terms, formsNamed) && Program.Walk(named, World(story, 3, "trickster", "trickster.ever")).Where(r => r.Has(P + "cage.botched")).All(r => !r.Has(P + "primed.forms_named")),
-            "Trk_Jannah_Cage: the challenge does not follow the named forms, or the garbled forms still name them.");
-        var cage = World(story, 3, "trickster", "trickster.ever");
-        check(Take(terms, formsNamed, "guard", 0, Primed).Has(Primed) && !Avail(terms, Take(terms, formsNamed, "guard", 0, Primed)),
-            "Trk_Jannah_Cage: the accepted challenge does not prime her, or can be made twice.");
+        // Trk_Jannah_Cage (quality pass Q6 r3): the cage primers are retired by gating until an engine substitution of the native
+        // [Attack] outcome exists (Cue_0027 + KillJanna run a real Kill). The cage is then the Commander's own choice of a
+        // non-partner's death, and canon stands (11-ROSTER-PLAN-2 section 5 ruling #2). Ids, nodes and indices are kept.
+        foreach (var w in new[] { World(story, 3, "trickster", "trickster.ever"), World(story, 3, "trickster", "trickster.ever", P + "primed.forms_named") })
+            check(!Avail(named, w) && !Avail(terms, w), "Trk_Jannah_Cage: a retired cage primer still opens.");
+        check(named.Forbids.Contains("chapter_later") && terms.Forbids.Contains("chapter_later")
+              && !own.Where(s => s.MinChapter <= 3).Where(s => Avail(s, World(story, 3, "trickster", "trickster.ever")))
+                     .SelectMany(s => s.Nodes).SelectMany(n => n.Choices).Any(c => c.Set.Contains(Primed)),
+            "Trk_Jannah_Cage: something still primes the staged survival.");
+        check(!rel.Guidance.Contains("know the Aldori forms first", StringComparison.Ordinal), "The journal still promises the cage device.");
 
+        // The killed-world scenes below are dormant (nothing sets `primed`); their unit checks stay for the day the substitution lands.
         // Trk_Jannah_Killed: the kill after the forms; the ash; the unclaimed yield in her cell.
         var killed3 = World(story, 3, "trickster", "trickster.ever", Dead, Primed);
         check(Avail(ash, Later(story, killed3, 6)) && ash.TricksterDevice && Rules.IsRemote(ash) && ash.Optional,
@@ -223,9 +224,9 @@ internal static class JannahTricksterTests
         check(Program.Walk(stories, inCells).Where(r => r.Has(Closed)).All(r => r.Has(P + "gone")),
             "Trk_Jannah_Stories: the only close is letting her go without a bout.");
         var posted = lost[0];
-        check(!Avail(wagon, Later(story, posted, 100)) && Avail(wagon, Later(story, posted, 144)) && wagon.TricksterDevice,
+        check(!Avail(wagon, Later(story, posted, 35)) && Avail(wagon, Later(story, posted, 36)) && wagon.TricksterDevice,
             "Trk_Jannah_Wagon: she does not come back from the posting.");
-        var home = Take(wagon, Later(story, posted, 144), "said", 0, Returned, P + "cost.story_lost", P + "cost.posting");
+        var home = Take(wagon, Later(story, posted, 36), "said", 0, Returned, P + "cost.story_lost", P + "cost.posting");
         check(!home.Has(FirstLoss) && Reaches(home, Committed), "Trk_Jannah_Wagon: no road from the wagon to the commit, or she lost her record in a tale she won.");
 
         // Trk_Jannah_Spine: the forms, Houndheart, the wall; the challenge only after the wall.
@@ -306,7 +307,7 @@ internal static class JannahTricksterTests
             "The pages do not follow the commit, the late yes, her no and her leaving.");
 
         // Reactions: Irabeth and the King (the allocated pair), and Seelah (a named stake), each behind its guard.
-        check(reactions.Length == 10 && reactions.All(r => r.Nodes.Count == 1)
+        check(reactions.Length == 11 && reactions.All(r => r.Nodes.Count == 1)
               && reactions.Select(r => r.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Irabeth", "Seelah", "Thaberdine" })
               && reactions.Where(r => r.Owner == "Irabeth").All(r => r.AnswerLists.SequenceEqual(new[] { IrabethHub })
                                                                      && r.Forbids.Contains("irabeth_dead") && r.ForbidOverrides["irabeth_dead"] == "irabeth.trickster.returned")

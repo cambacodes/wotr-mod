@@ -96,7 +96,7 @@ RETIRED = "chapter_later"                    # retired by gating: the runtime ho
 RELATIONSHIP_PATCH = dict(
     UnavailableOverrides={DEAD: RETURNED},
     TricksterAccess={
-        DEAD: dict(detect=[DEAD], device=P + "dead.one_soul", returned=RETURNED),
+        DEAD: dict(detect=[DEAD], device=P + "dead.one_soul", returned=RETURNED),   # kept for save/validation; unreachable (Q6 r3)
         "freed_in_heaven": dict(detect=[], device=P + "free.spent_light", returned=MET),
     })
 PRESENCES = {
@@ -216,8 +216,17 @@ SCENES.append(scene(P + "dead.setup_sleep", "Her sleep", "Targona", 3, '"Before 
 "And if I do not wake, do not come back for the body. Leave me in her fire. I will have chosen it."
 {n}She lowers her head, as she did before, and waits for you to choose.{/n}''',
         c('[Accept her price] "Tell them everything."', flags=(PRIMED, LAB_LINE, TOLD, SLEEP))),
-], requires=("trickster", KEY_HELD), forbids=(PRIMED, FREE, DEAD, CONDEMNED), last=3, optional=True, Relationship="targona",
-   AnswerLists=[LAB_LIST], EntryMythic="PlayerIsTrickster"))
+], requires=("trickster", KEY_HELD), forbids=(PRIMED, FREE, DEAD, CONDEMNED, RETIRED), last=3, optional=True, Relationship="targona",
+   AnswerLists=[LAB_LIST], EntryMythic="PlayerIsTrickster"))   # retired by gating (Q6 r3): see the note below
+
+# Q6 r3: the killed state has no device. Native [Attack] (Answer_0034 -> Cue_0035) starts a real, lethal fight and the
+# etude TargonaIsWasKilledInAreeluLab; no primer can make that fight survivable without a raise (the campaign's one raise
+# is Irabeth's) or an engine interception of native combat, and Areelu's sleep is not a mechanism the barrier renews.
+# The attack is the Commander's own open-eyed choice against a woman who is not yet a partner, so canon stands
+# (11-ROSTER-PLAN-2 section 5, coordinator ruling #2, user-confirmed 2026-09-28: "canon stands; a player-chosen kill of a
+# non-partner is not fate"). Her Trickster route is the freed state: [Destroy the barrier], the wand night, the furlough.
+# Every killed-state scene (setup, setup_open, setup_sleep, late_light, late_crypt, one_soul, long_sleep and their
+# consequences) keeps its ids and is unreachable: no primer can set `primed`.
 
 def ring_nodes():
     """Quality pass Q6: the laboratory as it happened, and the night the Commander went back down with the key."""
@@ -623,10 +632,9 @@ def integrate(payload):
     rel = payload["Relationships"]["targona"]
     rel.setdefault("UnavailableOverrides", {}).update(RELATIONSHIP_PATCH["UnavailableOverrides"])
     rel["TricksterAccess"] = {k: dict(v) for k, v in RELATIONSHIP_PATCH["TricksterAccess"].items()}
-    rel["Guidance"] += (" On the Trickster path, a Commander who keeps Areelu's sleep for her in the laboratory (the "
-                        "Suture's key in hand, before the choice at her barrier), or who uses Lariel's light without spending "
-                        "it in Drezen's field infirmary, may find Targona at the cots behind the quartermaster's stores in "
-                        "Chapter 3 or Chapter 5.")
+    rel["Guidance"] += (" On the Trickster path, free her in the laboratory: destroy her barrier with the Suture's key "
+                        "(a blow there kills her). Then work Drezen's field infirmary through a night with healing wands, "
+                        "and look for Targona at the cots behind the quartermaster's stores in Chapter 3 or Chapter 5.")
     payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
     # A completed Angelic Treatment runs RanRomance's own route only when it ended as a romance; a friendship-only treatment
     # history can still be courted on Trickster (Sol quality pass, INT).
