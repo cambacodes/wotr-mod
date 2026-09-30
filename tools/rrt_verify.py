@@ -76,6 +76,12 @@ def is_remote(s): return bool(s["Remote"]) or s["Owner"] == "Memory"
 def is_epilogue(s): return s["Owner"].endswith("Epilogue")
 
 
+def opens_in_prologue(s):
+    """E-new 0: a non-epilogue scene whose window admits chapter 0 (the Prologue; Player.Chapter is 0 until SetChapter(1)).
+    Epilogue pages carry MinChapter 0 but only ever show in the ending book, so they never count."""
+    return not is_epilogue(s) and s["MinChapter"] <= 0 <= s["MaxChapter"] and (not s["Chapters"] or 0 in s["Chapters"])
+
+
 def is_nurah_hub(s):
     return (s["InteractionHub"] == "nurah.arrival" and s["Relationship"] == "nurah" and s["Owner"] == "Nurah"
             and not is_remote(s) and s["ContactUnit"] == NURAH_CONTACT and not s["AnswerLists"]
@@ -156,6 +162,8 @@ class Model:
         # E14g count composites.
         self.counts = {k: (list(v.get("Of") or []), int(v.get("Min", 1))) for k, v in (story.get("Counts") or {}).items()}
         self.derived |= set(self.counts)
+        # E-new 0: walk the Prologue (chapter 0) only when some scene can open there, so stories without one are unchanged.
+        self.prologue = any(opens_in_prologue(s) for s in self.scenes)
         # producers: flag -> list of (scene, node, choice-index or None)
         self.producers = collections.defaultdict(list)
         for s in self.scenes:
@@ -263,13 +271,15 @@ class Reach:
     # native/derived possibility ----------------------------------------------------------
     def native_possible(self, f, ch):
         m, w = self.m, self.w
+        if self.chaptered and ch == 0 and f in MYTHIC: return False   # no mythic path is chosen in the Prologue
         if f in w.false: return False
         if f in m.native: return True
         if f in m.latches: return any(self.native_possible(x, ch) for x in m.latches[f])
         if f in m.composites: return any(all(self.possible(x, ch) for x in g) for g in m.composites[f])
         if f in m.counts: return sum(1 for x in m.counts[f][0] if self.possible(x, ch)) >= m.counts[f][1]
-        if f == "chapter_one": return (ch == 1) if ch else True
-        if f == "chapter_later": return (ch > 1) if ch else True
+        # Unchaptered walks pass ch=0 as "any chapter"; chaptered ch=0 is the Prologue, which holds neither flag.
+        if f == "chapter_one": return (ch == 1) if self.chaptered else True
+        if f == "chapter_later": return (ch > 1) if self.chaptered else True
         if f == "inhuman": return self.native_possible("swarm", ch) or self.native_possible("true_lich", ch)
         if f == "ascended": return any(self.native_possible(a, ch) for a in ("ascend_all", "ascend_alone", "ascend_areelu", "ascend_companions"))
         if f == "loss": return any(self.native_possible(a, ch) for a in ("irabeth_dead", "anevia_dead", "irabeth_gone", "anevia_gone", "sacrifice"))
@@ -283,11 +293,12 @@ class Reach:
 
     def forced(self, f, ch):
         w = self.w
+        if self.chaptered and ch == 0 and f in MYTHIC: return False
         if f in w.true: return True
         if f in self.m.latches: return any(self.forced(x, ch) for x in self.m.latches[f])
         if f in self.m.composites: return any(all(self.forced(x, ch) for x in g) for g in self.m.composites[f])
         if f in self.m.counts: return sum(1 for x in self.m.counts[f][0] if self.forced(x, ch)) >= self.m.counts[f][1]
-        if f == "chapter_one": return ch == 1 if ch else False
+        if f == "chapter_one": return ch == 1 if self.chaptered else False
         if f == "chapter_later": return (ch or 0) > 1
         if f == "inhuman": return "swarm" in w.true or "true_lich" in w.true
         if f == "loss": return any(a in w.true for a in ("irabeth_dead", "anevia_dead", "irabeth_gone", "anevia_gone", "sacrifice"))
@@ -343,7 +354,7 @@ class Reach:
         self.held, self.reached, self.choices = set(), {}, set()   # reached: scene -> earliest chapter
         self.why = {}
         waiting = collections.defaultdict(set)
-        chapters = [1, 2, 3, 4, 5, 6] if self.chaptered else [0]
+        chapters = ([0] if m.prologue else []) + [1, 2, 3, 4, 5, 6] if self.chaptered else [0]
         for ch in chapters:
             # re-walk scenes reached earlier that are still inside their window (chapter-dependent choices)
             queue = [s for s in m.scenes if s["Id"] not in self.reached]
@@ -1542,6 +1553,7 @@ def check_drafts(story, P, game):
 # ----------------------------------------------------------------------------- E9 rest-budget simulator
 # Chapter lengths are ESTIMATES to calibrate against real Trickster playthroughs (in-game days).
 SIM_CHAPTER_DAYS = {1: 2, 2: 6, 3: 30, 4: 12, 5: 40, 6: 1}
+SIM_PROLOGUE_DAYS = 1    # chapter 0, added only when a scene opens in the Prologue (Model.prologue)
 SIM_REST_CADENCE = 16   # in-game hours of travel between successful rests (default; per chapter via --rest-cadence)
 REST_OPTIONS = {}       # set from the command line (--delivery, --rest-cadence, --chapter-days, --bag-size, --queue-cap)
 
@@ -1691,14 +1703,15 @@ def simulate_rest_budget(model, chapter_days=None, cadence=None, bag_size=3, cap
     rel_flags = {"committed": {r["CommittedFlag"] for r in model.rels.values()}, "closed": {r["ClosedFlag"] for r in model.rels.values()}}
     by_rel = collections.OrderedDict((rk, [s for s in model.scenes if s["Relationship"] == rk and not is_epilogue(s)
                                            and (not is_remote(s) or s["ManualOnly"])]) for rk in model.rels)
-    st = SimState(1, 0)
+    if model.prologue: days.setdefault(0, SIM_PROLOGUE_DAYS)   # E-new 0: the Prologue, only when a scene opens there
+    st = SimState(min(days), 0)
     served, played, ever, commit_at, delivered, declined = {}, set(), {}, {}, collections.Counter(), set()
     per_rel_ch = collections.defaultdict(collections.Counter)
     chapters = []
     for ch in sorted(days):
         st.chapter = ch
         st.flags -= {"chapter_one", "chapter_later"}
-        st.flags |= {"trickster", "chapter_one" if ch == 1 else "chapter_later"}
+        if ch >= 1: st.flags |= {"trickster", "chapter_one" if ch == 1 else "chapter_later"}   # the Prologue holds neither
         st.flags |= {f for f, c in native_on.items() if c <= ch}
         hours = int(days[ch] * 24)
         step = cadence.get(ch) or (hours / rests_per_chapter[ch] if rests_per_chapter and rests_per_chapter.get(ch) else SIM_REST_CADENCE)
