@@ -578,7 +578,7 @@ def return_nodes(scarred):
             c("Continue", "e_true", requires=(EULOGY_TRUE,)),
             c("Continue", "e_legend", requires=(EULOGY_LEGEND,)),
             c("Continue", "e_sign", requires=(EULOGY_SIGN,)),
-            c("Continue", "e_none", forbids=(EULOGY,))),
+            c("Continue", "e_none", forbids=(EULOGY_TRUE, EULOGY_LEGEND, EULOGY_SIGN))),
         ga("e_true", '''"You told them the truth about me." {n}She looks away, at the black on the gate.{/n} "All of it. Proud, and hard, and could not sit still." {n}Her voice roughens.{/n} "It was the most honest thing said over that coffin, and it was said over the wrong coffin. I have been trying for three days to decide whether to thank you."''',
             c("Continue", "why")),
         ga("e_legend", '''"The Queen of the chronicles. Chosen of the Inheritor, never doubted, never slept." {n}Dry as dust.{/n} "The knights wept. I expect half of them will name daughters after that woman. I should very much like to meet her. She sounds exhausting." {n}A pause.{/n} "It was well done, Commander. It was what Drezen needed. Do not ever do it to me again."''',
@@ -611,7 +611,7 @@ page(P + "return.kitrane", "A knight of the Green Crows", return_nodes(False),
      requires=("trickster.ever", TAKEN, DEAD, CORONATION), forbids=(RETURNED, CLOSED, RENT, P + "return.kitrane_scarred"),
      delay=48, TricksterDevice=True, TricksterState="dead")
 page(P + "return.kitrane_scarred", "A knight of the Green Crows", return_nodes(True),
-     requires=("trickster.ever", TAKEN, DEAD, CORONATION, RENT), forbids=(RETURNED, CLOSED, P + "return.kitrane"),
+     requires=("trickster.ever", TAKEN, DEAD, CORONATION, RENT, EULOGY), forbids=(RETURNED, CLOSED, P + "return.kitrane"),
      delay=96, TricksterDevice=True, TricksterState="dead")
 tag(P + "return.kitrane", "T")
 tag(P + "return.kitrane_scarred", "T")
@@ -682,13 +682,13 @@ def epilogue(id, title, text, requires, forbids=(), paragraphs=()):
 KITRANE_PARAGRAPHS = (
     p('''{n}After Threshold she rode to Nerosyan in a green surcoat, walked into the cathedral in the middle of the spring vigil, and had the royal crypt opened in front of the bishops, the regents and half the court. She named the man inside it: Sir Anselm Wray, of the Green Crows, who had died beside her at Iz. Then she took off her hood. His daughter buried her father that summer with every honour Mendev had. The Queen stood at the graveside in plain armour, and nobody in Mendev ever forgot it.{/n}''',
       requires=(CROWN,)),
-    p('''{n}She took no more of the church's elixir. She refused it at the altar, in front of them all, and Mendev watched its Queen grow old after a century of standing still, one grey hair and one stiff winter at a time. When she was tired, she abdicated. She said she had always meant to try being a knight of some small order nobody had heard of.{/n}''',
+    p('''{n}When the church offered to buy her a third cup of the elixir, she refused it at the altar, in front of them all, and Mendev watched its Queen grow old after a century of standing still, one grey hair and one stiff winter at a time. When she was tired, she abdicated. She said she had always meant to try being a knight of some small order nobody had heard of.{/n}''',
       requires=(CROWN,)),
     p('''{n}Mendev never forgave the Commander for it entirely. There were inquiries, and sermons, and one very long letter from the Inquisitor Hulrun. The Commander answered all of them, in person, for years.{/n}''',
       requires=(CROWN,)),
     p('''{n}She stayed Kitrane. The Queen of Mendev lay in the crypt at Nerosyan, and Sir Anselm Wray kept her place there, and every year on the day of Iz his daughter found a purse at her door from a knight who owed him a debt. She never learned who sent it. It came every year until the knight was very old indeed.{/n}''',
       requires=(FOREVER,)),
-    p('''{n}She grew old without the church's elixir, in the ordinary way, and complained about her knees, and was delighted by every one of her grey hairs, and made the Commander count them on bad nights.{/n}''',
+    p('''{n}She grew old without a third cup of the church's elixir, in the ordinary way, and complained about her knees, and was delighted by every one of her grey hairs, and made the Commander count them on bad nights.{/n}''',
       requires=(FOREVER,)),
     p('''{n}Whether she would ever take the crown back she did not say, and the Commander never asked. Some years she seemed close to it. Most years she was drilling squires in the mud behind a tent that leaked on the left.{/n}''',
       forbids=(CROWN, FOREVER)),
@@ -698,7 +698,7 @@ KITRANE_PARAGRAPHS = (
       requires=(ALONE,)),
     p('''{n}The Green Crows grew, slowly. The girl from the eel stall was knighted in the third year after the war, by a knight of the order in plain armour, in a field, with nobody watching but a mule. She was the first Crow in a century who had never lied about anything.{/n}''',
       requires=(P + "kitrane.squire_sworn",)),
-    p('''{n}At the eastern ford she had refused an order of the Commander's, and she never pretended afterwards that she had not. When anyone asked what it was like to follow the Commander, she said it was the easiest thing in the world, except once, and that once was the reason she stayed.{/n}''',
+    p('''{n}At the eastern ford she had refused an order of the Commander's, and six people hanged anyway. She never pretended afterwards that she had forgiven it. Every year on that day she and the Commander walked down to a grave in the lower town of Drezen with a tallow candle, and stood there together, and neither of them ever said it was enough.{/n}''',
       requires=(REFUSED_ORDER,)),
     p('''{n}Every morning of the rest of her life she drilled at first light, and nobody saluted. She said it was the best part of the day.{/n}''',
       requires=(DRILL,)),
@@ -713,7 +713,7 @@ KITRANE_PARAGRAPHS = (
 )
 
 epilogue("kitrane", "Kitrane", '''{n}Queen Galfrey of Mendev died at Iz, of the dragon's sorcery, with her Commander at her side, and was buried with honours in Nerosyan. Mendev mourned her for a year and a day.{/n}
-{n}A knight of the Green Crows named Kitrane, of no lands, no crown and no enemies, lived a great deal longer. She stood beside the Commander at Threshold and after it, in the crowd, where she had asked to be; and the Commander, whatever else became of the world, never once failed to look for her there.{/n}''',
+{n}A knight of the Green Crows named Kitrane, of no lands, no crown and no enemies, lived a great deal longer. She followed the Commander to the end of the war as a knight of the Crows, and on its last night she kept the walls of Drezen among the soldiers who had not been sent to Threshold, in the crowd, where she had asked to be; and the Commander, whatever else became of the world, never once failed to look for her there.{/n}''',
          requires=(RETURNED, COMMITTED), forbids=(CLOSED,), paragraphs=KITRANE_PARAGRAPHS)
 
 epilogue("sworn", "Kitrane, sworn", '''{n}Queen Galfrey of Mendev died at Iz and was buried with honours in Nerosyan.{/n}

@@ -214,9 +214,12 @@ internal static class GalfreyTricksterTests
         check(!Program.Walk(offer, bed).Any(r => r.Has(P + "offer_refused") && !r.Has(Taken) && !r.Has(P + "let_die")),
             "Trk_Galfrey_RefusedThenYes: her refusal ends the scene without a yes or the Commander's own choice.");
         var diedBlind = Later(story, Died(takenBlind), 60, null, "coronation.after", "coronation.seen");
-        check(!Rules.Available(story, ret, Later(story, diedBlind, 50)) && !Rules.Available(story, retScarred, Later(story, diedBlind, 50))
-              && Rules.Available(story, retScarred, Later(story, diedBlind, 100)),
-            "Trk_Galfrey_RefusedThenYes: the blind return is not 96 hours after the Coronation.");
+        check(!Rules.Available(story, retScarred, Later(story, diedBlind, 200)),
+            "Trk_Galfrey_RefusedThenYes: a blind offer is released without the proclamation (the eulogy).");
+        var proclaimed = Later(story, One(eulogy, Later(story, diedBlind, 1), new[] { P + "cost.eulogy" }), 1);
+        check(!Rules.Available(story, ret, Later(story, proclaimed, 50)) && !Rules.Available(story, retScarred, Later(story, proclaimed, 50))
+              && Rules.Available(story, retScarred, Later(story, proclaimed, 100)),
+            "Trk_Galfrey_RefusedThenYes: the blind return is not 96 hours after the Coronation and the eulogy.");
         var letDie = One(offer, bed, new[] { P + "let_die", Closed }, Taken);
         check(!Rules.Available(story, ret, Later(story, Died(letDie, "coronation.after", "coronation.seen"), 200))
               && Rules.Available(story, S(P + "epilogue.queen"), World(story, 6, letDie.Flags.Concat(new[] { "trickster.ever", Dead }).ToArray())),
@@ -225,7 +228,8 @@ internal static class GalfreyTricksterTests
         // Trk_Galfrey_Offscreen: the Commander never came; planted, she writes; unplanted, canon stands.
         var offscreen = World(story, 5, "trickster", "trickster.ever", "iz.left_early", Dead, P + "crows_mooted");
         var wrote = One(alone, offscreen, new[] { Taken, P + "cost.rent_scar", P + "cost.alone", P + "cost.coffin" });
-        check(Rules.Available(story, retScarred, Later(story, Later(story, wrote, 10, null, "coronation.after", "coronation.seen"), 100))
+        check(!Rules.Available(story, retScarred, Later(story, Later(story, wrote, 10, null, "coronation.after", "coronation.seen"), 100))
+              && Rules.Available(story, retScarred, Later(story, One(eulogy, Later(story, wrote, 40, null, "coronation.after", "coronation.seen"), new[] { P + "cost.eulogy" }), 100))
               && !Rules.Available(story, road, Later(story, wrote, 20)),
             "Trk_Galfrey_Offscreen: the letter does not lead to the scarred return, or the road plays without the bed.");
         var unplanted = World(story, 5, "trickster", "trickster.ever", "iz.left_early", Dead, "coronation.after", "coronation.seen");
@@ -240,6 +244,8 @@ internal static class GalfreyTricksterTests
         check(!Rules.Available(story, release, Later(story, sworn, 20)) && Rules.Available(story, release, Later(story, sworn, 50)),
             "Trk_Galfrey_Sworn: the release is not 48 hours after the oath.");
         One(release, Later(story, sworn, 50), new[] { Committed });
+        check(Program.Walk(release, Later(story, sworn, 50)).Any(r => !r.Has(Committed)),
+            "Trk_Galfrey_Sworn: the release has no refusal of hers (an order dressed as a release).");
         check(Rules.Available(story, S(P + "epilogue.sworn"), World(story, 6, sworn.Flags.ToArray())),
             "Trk_Galfrey_Sworn: a sworn knight has no page.");
 
@@ -252,7 +258,10 @@ internal static class GalfreyTricksterTests
             "Trk_Galfrey_Cost: kept, she does not stay Kitrane.");
         // The ford: an order she refuses (Evil), or a trial.
         var crowsOrder = Later(story, morning, 30, null, P + "kitrane.squire_sworn");
-        One(ford, Later(story, crowsOrder, 30), new[] { P + "ride.refused_order", P + "ride.hanged" });
+        var hanged = One(ford, Later(story, crowsOrder, 30), new[] { P + "ride.refused_order", P + "ride.hanged" });
+        check(!Rules.Available(story, oath, Later(story, hanged, 60)), "Trk_Galfrey_Ford: the oath is offered over six unanswered ropes.");
+        var answered = One(S(P + "kitrane.ford_after"), Later(story, hanged, 30), new[] { P + "ride.answered" });
+        check(Rules.Available(story, oath, Later(story, answered, 60)), "Trk_Galfrey_Ford: her terms met, the oath stays shut.");
         One(ford, Later(story, crowsOrder, 30), new[] { P + "ride.trial" }, P + "ride.refused_order");
 
         // Trk_Galfrey_NativeFirst: she lived, the native romance ran to the end: no device, one page, a partner.

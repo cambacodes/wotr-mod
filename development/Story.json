@@ -363091,7 +363091,9 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "galfrey.trickster.cost.eulogy"
+                "galfrey.trickster.eulogy.true",
+                "galfrey.trickster.eulogy.legend",
+                "galfrey.trickster.eulogy.sign"
               ],
               "Abort": false
             }
@@ -363500,7 +363502,9 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "galfrey.trickster.cost.eulogy"
+                "galfrey.trickster.eulogy.true",
+                "galfrey.trickster.eulogy.legend",
+                "galfrey.trickster.eulogy.sign"
               ],
               "Abort": false
             }
@@ -363745,7 +363749,8 @@
         "galfrey.trickster.kitrane_taken",
         "galfrey.dead",
         "coronation.seen",
-        "galfrey.trickster.cost.rent_scar"
+        "galfrey.trickster.cost.rent_scar",
+        "galfrey.trickster.cost.eulogy"
       ],
       "Forbids": [
         "galfrey.trickster.returned",
@@ -364118,7 +364123,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}Queen Galfrey of Mendev died at Iz, of the dragon's sorcery, with her Commander at her side, and was buried with honours in Nerosyan. Mendev mourned her for a year and a day.{/n}\n{n}A knight of the Green Crows named Kitrane, of no lands, no crown and no enemies, lived a great deal longer. She stood beside the Commander at Threshold and after it, in the crowd, where she had asked to be; and the Commander, whatever else became of the world, never once failed to look for her there.{/n}",
+          "Text": "{n}Queen Galfrey of Mendev died at Iz, of the dragon's sorcery, with her Commander at her side, and was buried with honours in Nerosyan. Mendev mourned her for a year and a day.{/n}\n{n}A knight of the Green Crows named Kitrane, of no lands, no crown and no enemies, lived a great deal longer. She followed the Commander to the end of the war as a knight of the Crows, and on its last night she kept the walls of Drezen among the soldiers who had not been sent to Threshold, in the crowd, where she had asked to be; and the Commander, whatever else became of the world, never once failed to look for her there.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -364140,7 +364145,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}She took no more of the church's elixir. She refused it at the altar, in front of them all, and Mendev watched its Queen grow old after a century of standing still, one grey hair and one stiff winter at a time. When she was tired, she abdicated. She said she had always meant to try being a knight of some small order nobody had heard of.{/n}",
+              "Text": "{n}When the church offered to buy her a third cup of the elixir, she refused it at the altar, in front of them all, and Mendev watched its Queen grow old after a century of standing still, one grey hair and one stiff winter at a time. When she was tired, she abdicated. She said she had always meant to try being a knight of some small order nobody had heard of.{/n}",
               "Requires": [
                 "galfrey.trickster.crown_reclaimed"
               ],
@@ -364164,7 +364169,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}She grew old without the church's elixir, in the ordinary way, and complained about her knees, and was delighted by every one of her grey hairs, and made the Commander count them on bad nights.{/n}",
+              "Text": "{n}She grew old without a third cup of the church's elixir, in the ordinary way, and complained about her knees, and was delighted by every one of her grey hairs, and made the Commander count them on bad nights.{/n}",
               "Requires": [
                 "galfrey.trickster.kitrane_forever"
               ],
@@ -364205,7 +364210,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}At the eastern ford she had refused an order of the Commander's, and she never pretended afterwards that she had not. When anyone asked what it was like to follow the Commander, she said it was the easiest thing in the world, except once, and that once was the reason she stayed.{/n}",
+              "Text": "{n}At the eastern ford she had refused an order of the Commander's, and six people hanged anyway. She never pretended afterwards that she had forgiven it. Every year on that day she and the Commander walked down to a grave in the lower town of Drezen with a tallow candle, and stood there together, and neither of them ever said it was enough.{/n}",
               "Requires": [
                 "galfrey.trickster.ride.refused_order"
               ],
@@ -364302,7 +364307,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}She took no more of the church's elixir. She refused it at the altar, in front of them all, and Mendev watched its Queen grow old after a century of standing still, one grey hair and one stiff winter at a time. When she was tired, she abdicated. She said she had always meant to try being a knight of some small order nobody had heard of.{/n}",
+              "Text": "{n}When the church offered to buy her a third cup of the elixir, she refused it at the altar, in front of them all, and Mendev watched its Queen grow old after a century of standing still, one grey hair and one stiff winter at a time. When she was tired, she abdicated. She said she had always meant to try being a knight of some small order nobody had heard of.{/n}",
               "Requires": [
                 "galfrey.trickster.crown_reclaimed"
               ],
@@ -364326,7 +364331,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}She grew old without the church's elixir, in the ordinary way, and complained about her knees, and was delighted by every one of her grey hairs, and made the Commander count them on bad nights.{/n}",
+              "Text": "{n}She grew old without a third cup of the church's elixir, in the ordinary way, and complained about her knees, and was delighted by every one of her grey hairs, and made the Commander count them on bad nights.{/n}",
               "Requires": [
                 "galfrey.trickster.kitrane_forever"
               ],
@@ -364367,7 +364372,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}At the eastern ford she had refused an order of the Commander's, and she never pretended afterwards that she had not. When anyone asked what it was like to follow the Commander, she said it was the easiest thing in the world, except once, and that once was the reason she stayed.{/n}",
+              "Text": "{n}At the eastern ford she had refused an order of the Commander's, and six people hanged anyway. She never pretended afterwards that she had forgiven it. Every year on that day she and the Commander walked down to a grave in the lower town of Drezen with a tallow candle, and stood there together, and neither of them ever said it was enough.{/n}",
               "Requires": [
                 "galfrey.trickster.ride.refused_order"
               ],
@@ -364465,7 +364470,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}She took no more of the church's elixir. She refused it at the altar, in front of them all, and Mendev watched its Queen grow old after a century of standing still, one grey hair and one stiff winter at a time. When she was tired, she abdicated. She said she had always meant to try being a knight of some small order nobody had heard of.{/n}",
+              "Text": "{n}When the church offered to buy her a third cup of the elixir, she refused it at the altar, in front of them all, and Mendev watched its Queen grow old after a century of standing still, one grey hair and one stiff winter at a time. When she was tired, she abdicated. She said she had always meant to try being a knight of some small order nobody had heard of.{/n}",
               "Requires": [
                 "galfrey.trickster.crown_reclaimed"
               ],
@@ -364489,7 +364494,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}She grew old without the church's elixir, in the ordinary way, and complained about her knees, and was delighted by every one of her grey hairs, and made the Commander count them on bad nights.{/n}",
+              "Text": "{n}She grew old without a third cup of the church's elixir, in the ordinary way, and complained about her knees, and was delighted by every one of her grey hairs, and made the Commander count them on bad nights.{/n}",
               "Requires": [
                 "galfrey.trickster.kitrane_forever"
               ],
@@ -364530,7 +364535,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}At the eastern ford she had refused an order of the Commander's, and she never pretended afterwards that she had not. When anyone asked what it was like to follow the Commander, she said it was the easiest thing in the world, except once, and that once was the reason she stayed.{/n}",
+              "Text": "{n}At the eastern ford she had refused an order of the Commander's, and six people hanged anyway. She never pretended afterwards that she had forgiven it. Every year on that day she and the Commander walked down to a grave in the lower town of Drezen with a tallow candle, and stood there together, and neither of them ever said it was enough.{/n}",
               "Requires": [
                 "galfrey.trickster.ride.refused_order"
               ],
@@ -365482,7 +365487,7 @@
         {
           "Id": "old",
           "Speaker": "Galfrey",
-          "Text": "\"The church of Iomedae paid for every year of the Queen's life.\" {n}She says it the way she said it once in a war camp, to a stranger who asked.{/n} \"Sun orchid elixir. A dose each spring, brought from the far south under guard, blessed at the altar in Nerosyan, and set before me in a silver cup. I was needed, they said. I accepted.\" {n}Her hand closes on the mirror.{/n} \"This spring's dose went into the crypt with Sir Anselm. There will not be another. The church does not pay for a knight of the Green Crows to stay young.\"",
+          "Text": "\"The church of Iomedae bought the Queen her years.\" {n}She says it the way she said it once in a war camp, to a stranger who asked.{/n} \"Sun orchid elixir. Twice, a cup of it was set before me at the altar, bought at a price that would have fed Mendev for a winter. I was needed, they said. I accepted.\" {n}Her hand closes on the mirror.{/n} \"The second cup was meant to last until they could find a third. It is beginning not to. And the church does not buy a third cup for a knight of the Green Crows.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -365530,7 +365535,7 @@
         {
           "Id": "church",
           "Speaker": "Galfrey",
-          "Text": "\"Yes. They would.\" {n}Flatly.{/n} \"They would give it back, and give me back the crown with it, and thank Iomedae for the miracle, and in five years the Queen would be forty again and Sir Anselm would still be in her crypt.\" {n}She puts the mirror away.{/n} \"No. They bought the Queen. They cannot have Kitrane. Whatever years she has, she will have them the way everyone else does: one at a time, and badly.\"",
+          "Text": "\"Yes. They would.\" {n}Flatly.{/n} \"They would find a third cup, and give me back the crown with it, and thank Iomedae for the miracle, and in five years the Queen would be forty again and Sir Anselm would still be in her crypt.\" {n}She puts the mirror away.{/n} \"No. They bought the Queen. They cannot have Kitrane. Whatever years she has, she will have them the way everyone else does: one at a time, and badly.\"",
           "Choices": [
             {
               "Text": "[Leave it there.]",
@@ -365655,7 +365660,7 @@
         {
           "Id": "old",
           "Speaker": "Galfrey",
-          "Text": "\"The church of Iomedae paid for every year of the Queen's life.\" {n}She says it the way she said it once in a war camp, to a stranger who asked.{/n} \"Sun orchid elixir. A dose each spring, brought from the far south under guard, blessed at the altar in Nerosyan, and set before me in a silver cup. I was needed, they said. I accepted.\" {n}Her hand closes on the mirror.{/n} \"This spring's dose went into the crypt with Sir Anselm. There will not be another. The church does not pay for a knight of the Green Crows to stay young.\"",
+          "Text": "\"The church of Iomedae bought the Queen her years.\" {n}She says it the way she said it once in a war camp, to a stranger who asked.{/n} \"Sun orchid elixir. Twice, a cup of it was set before me at the altar, bought at a price that would have fed Mendev for a winter. I was needed, they said. I accepted.\" {n}Her hand closes on the mirror.{/n} \"The second cup was meant to last until they could find a third. It is beginning not to. And the church does not buy a third cup for a knight of the Green Crows.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -365703,7 +365708,7 @@
         {
           "Id": "church",
           "Speaker": "Galfrey",
-          "Text": "\"Yes. They would.\" {n}Flatly.{/n} \"They would give it back, and give me back the crown with it, and thank Iomedae for the miracle, and in five years the Queen would be forty again and Sir Anselm would still be in her crypt.\" {n}She puts the mirror away.{/n} \"No. They bought the Queen. They cannot have Kitrane. Whatever years she has, she will have them the way everyone else does: one at a time, and badly.\"",
+          "Text": "\"Yes. They would.\" {n}Flatly.{/n} \"They would find a third cup, and give me back the crown with it, and thank Iomedae for the miracle, and in five years the Queen would be forty again and Sir Anselm would still be in her crypt.\" {n}She puts the mirror away.{/n} \"No. They bought the Queen. They cannot have Kitrane. Whatever years she has, she will have them the way everyone else does: one at a time, and badly.\"",
           "Choices": [
             {
               "Text": "[Leave it there.]",
@@ -368107,6 +368112,219 @@
       "InteractionHub": "galfrey.presence.stall"
     },
     {
+      "Id": "galfrey.trickster.kitrane.ford_after",
+      "Title": "Six ropes",
+      "Owner": "Galfrey",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You haven't spoken to me since the ford.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Galfrey",
+          "Text": "\"No.\" {n}She is standing very straight by the curio stall, in full armour, as if on parade.{/n} \"I have been deciding whether to leave. The Crows' sergeant has packed the mule twice. I unpacked it twice.\" {n}Her hand is white on the pommel of the old sword.{/n} \"There was a boy of fifteen at that ford, Commander. He surrendered to a knight. I have hanged men, and signed for the hanging of more, and I have never once hanged a boy who had put his hands on his head for me.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "terms",
+          "Speaker": "Galfrey",
+          "Text": "\"So. Terms.\" {n}The Queen's voice, the one that ended wars.{/n} \"His name was Tobin; the Inquisition's clerk wrote it down before the rope. His mother sells tallow in the lower town. You will go to her yourself, and tell her who gave the order, and pay for his grave, and not send a clerk.\" {n}A breath.{/n} \"And never again, under the Crows' colours or near them. That is all. It is not small. It is not meant to be.\"",
+          "Choices": [
+            {
+              "Text": "\"Agreed. All of it. I'll go today.\"",
+              "Next": "agreed",
+              "Set": [
+                "galfrey.trickster.ride.answered"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"It was the right call. I won't apologise to a cultist's mother.\"",
+              "Next": "refused",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "agreed",
+          "Speaker": "Galfrey",
+          "Text": "{n}She looks at you for a long breath, and some of the parade goes out of her shoulders.{/n} \"Then I shall unpack the mule a third time.\" {n}Quietly:{/n} \"I will not forget the six of them, Commander. I do not ask you to. I ask you to remember them in the same place I do.\"",
+          "Choices": [
+            {
+              "Text": "[Go to the lower town.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "refused",
+          "Speaker": "Galfrey",
+          "Text": "\"Then I am your knight, and I shall do my duty, and there it will stay.\" {n}Without heat, which is worse.{/n} \"The mule stays packed. When you are ready to walk down to the tallow-seller's, Commander, I shall still be here. I am old. I can wait.\" {n}She salutes.{/n}",
+          "Choices": [
+            {
+              "Text": "[Leave her.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Galfrey"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "galfrey.trickster.returned",
+        "galfrey.trickster.first_morning",
+        "galfrey.trickster.ride.hanged"
+      ],
+      "Forbids": [
+        "galfrey.closed",
+        "galfrey.trickster.kitrane.ford_after_stall",
+        "galfrey.trickster.ride.answered"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "galfrey",
+      "Chapters": [
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "ContactUnit": "a8b7f6fd39ff2974f8b5fbf944a7f735",
+      "InteractionHub": "galfrey.presence"
+    },
+    {
+      "Id": "galfrey.trickster.kitrane.ford_after_stall",
+      "Title": "Six ropes",
+      "Owner": "Galfrey",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You haven't spoken to me since the ford.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Galfrey",
+          "Text": "\"No.\" {n}She is standing very straight by the curio stall, in full armour, as if on parade.{/n} \"I have been deciding whether to leave. The Crows' sergeant has packed the mule twice. I unpacked it twice.\" {n}Her hand is white on the pommel of the old sword.{/n} \"There was a boy of fifteen at that ford, Commander. He surrendered to a knight. I have hanged men, and signed for the hanging of more, and I have never once hanged a boy who had put his hands on his head for me.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "terms",
+          "Speaker": "Galfrey",
+          "Text": "\"So. Terms.\" {n}The Queen's voice, the one that ended wars.{/n} \"His name was Tobin; the Inquisition's clerk wrote it down before the rope. His mother sells tallow in the lower town. You will go to her yourself, and tell her who gave the order, and pay for his grave, and not send a clerk.\" {n}A breath.{/n} \"And never again, under the Crows' colours or near them. That is all. It is not small. It is not meant to be.\"",
+          "Choices": [
+            {
+              "Text": "\"Agreed. All of it. I'll go today.\"",
+              "Next": "agreed",
+              "Set": [
+                "galfrey.trickster.ride.answered"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"It was the right call. I won't apologise to a cultist's mother.\"",
+              "Next": "refused",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "agreed",
+          "Speaker": "Galfrey",
+          "Text": "{n}She looks at you for a long breath, and some of the parade goes out of her shoulders.{/n} \"Then I shall unpack the mule a third time.\" {n}Quietly:{/n} \"I will not forget the six of them, Commander. I do not ask you to. I ask you to remember them in the same place I do.\"",
+          "Choices": [
+            {
+              "Text": "[Go to the lower town.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "refused",
+          "Speaker": "Galfrey",
+          "Text": "\"Then I am your knight, and I shall do my duty, and there it will stay.\" {n}Without heat, which is worse.{/n} \"The mule stays packed. When you are ready to walk down to the tallow-seller's, Commander, I shall still be here. I am old. I can wait.\" {n}She salutes.{/n}",
+          "Choices": [
+            {
+              "Text": "[Leave her.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Galfrey"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "galfrey.trickster.returned",
+        "galfrey.trickster.first_morning",
+        "galfrey.trickster.ride.hanged",
+        "galfrey.presence.failed"
+      ],
+      "Forbids": [
+        "galfrey.closed",
+        "galfrey.trickster.kitrane.ford_after",
+        "galfrey.trickster.ride.answered"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "galfrey",
+      "Chapters": [
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "ContactUnit": "a8b7f6fd39ff2974f8b5fbf944a7f735",
+      "InteractionHub": "galfrey.presence.stall"
+    },
+    {
       "Id": "galfrey.trickster.kitrane.king",
       "Title": "Two false crowns",
       "Owner": "Galfrey",
@@ -370031,7 +370249,7 @@
         {
           "Id": "ford",
           "Speaker": "Galfrey",
-          "Text": "\"I refused you at the ford.\" {n}She says it first, so that it is out of the way.{/n} \"I would refuse you again. I want you to know that I have not forgotten it, and that I have come anyway, and that what I am about to do is not obedience. I have had a century of obedience. I know what it looks like, and this is not it.\"",
+          "Text": "\"I refused you at the ford, and you hanged them anyway, and then you walked down to the tallow-seller's, as I asked.\" {n}She says it first, so that it is out of the way.{/n} \"I would refuse you again. I want you to know that I have not forgotten the six of them, and that I have come anyway, and that what I am about to do is not obedience. I have had a century of obedience. I know what it looks like, and this is not it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -370268,7 +370486,8 @@
         "galfrey.closed",
         "galfrey.trickster.commit.oath_stall",
         "galfrey.committed",
-        "galfrey.trickster.sworn"
+        "galfrey.trickster.sworn",
+        "galfrey.trickster.ride.hanged"
       ],
       "DelayHours": 48,
       "Optional": false,
@@ -370280,7 +370499,10 @@
         "2570015799edf594daf2f076f2f975d8"
       ],
       "ContactUnit": "a8b7f6fd39ff2974f8b5fbf944a7f735",
-      "InteractionHub": "galfrey.presence"
+      "InteractionHub": "galfrey.presence",
+      "ForbidOverrides": {
+        "galfrey.trickster.ride.hanged": "galfrey.trickster.ride.answered"
+      }
     },
     {
       "Id": "galfrey.trickster.commit.oath_stall",
@@ -370332,7 +370554,7 @@
         {
           "Id": "ford",
           "Speaker": "Galfrey",
-          "Text": "\"I refused you at the ford.\" {n}She says it first, so that it is out of the way.{/n} \"I would refuse you again. I want you to know that I have not forgotten it, and that I have come anyway, and that what I am about to do is not obedience. I have had a century of obedience. I know what it looks like, and this is not it.\"",
+          "Text": "\"I refused you at the ford, and you hanged them anyway, and then you walked down to the tallow-seller's, as I asked.\" {n}She says it first, so that it is out of the way.{/n} \"I would refuse you again. I want you to know that I have not forgotten the six of them, and that I have come anyway, and that what I am about to do is not obedience. I have had a century of obedience. I know what it looks like, and this is not it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -370570,7 +370792,8 @@
         "galfrey.closed",
         "galfrey.trickster.commit.oath",
         "galfrey.committed",
-        "galfrey.trickster.sworn"
+        "galfrey.trickster.sworn",
+        "galfrey.trickster.ride.hanged"
       ],
       "DelayHours": 48,
       "Optional": false,
@@ -370582,7 +370805,10 @@
         "2570015799edf594daf2f076f2f975d8"
       ],
       "ContactUnit": "a8b7f6fd39ff2974f8b5fbf944a7f735",
-      "InteractionHub": "galfrey.presence.stall"
+      "InteractionHub": "galfrey.presence.stall",
+      "ForbidOverrides": {
+        "galfrey.trickster.ride.hanged": "galfrey.trickster.ride.answered"
+      }
     },
     {
       "Id": "galfrey.trickster.commit.release",
@@ -370644,6 +370870,30 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "[Command her] \"You're released. Now come to my tent tonight.\"",
+              "Next": "ordered",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "ordered",
+          "Speaker": "Galfrey",
+          "Text": "{n}Something in her face shuts, gently, like a book.{/n} \"You release me from one order and give me another in the same breath.\" {n}She salutes, precisely.{/n} \"No, Commander. Not like that. Not ever like that. I have had a century of being sent for.\" {n}She turns on her heel.{/n} \"When you know the difference, you know where the Crows' tent is. Until then I am your knight, and nothing else.\"",
+          "Choices": [
+            {
+              "Text": "[Let her go.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
             }
           ],
           "Portrait": "Galfrey"
@@ -370775,6 +371025,30 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "[Command her] \"You're released. Now come to my tent tonight.\"",
+              "Next": "ordered",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "ordered",
+          "Speaker": "Galfrey",
+          "Text": "{n}Something in her face shuts, gently, like a book.{/n} \"You release me from one order and give me another in the same breath.\" {n}She salutes, precisely.{/n} \"No, Commander. Not like that. Not ever like that. I have had a century of being sent for.\" {n}She turns on her heel.{/n} \"When you know the difference, you know where the Crows' tent is. Until then I am your knight, and nothing else.\"",
+          "Choices": [
+            {
+              "Text": "[Let her go.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
             }
           ],
           "Portrait": "Galfrey"
@@ -371018,7 +371292,7 @@
         {
           "Id": "cut",
           "Speaker": "Narrator",
-          "Text": "{n}\"Kitrane,\" you say, because it is the only name she has left, and she answers it with her whole body. Her hand closes on yours and guides it, and her eyes stay open on your face, and she draws you into her with the same unhesitating certainty she has carried onto every field she ever meant to win.{/n}\n{n}Outside, the mule shifts its feet. The lantern gutters, and steadies, and burns on.{/n}",
+          "Text": "{n}\"Kitrane,\" you say, because it is the only name she has left, and she answers it with her whole body, rising under you, her knees tightening at your hips. Her hand closes over yours and draws it down between you, and her eyes stay open on your face, full of the same unhesitating certainty she has carried onto every field she ever meant to win.{/n}\n{n}Outside, the mule shifts its feet. The lantern gutters, and steadies, and burns on.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -371040,7 +371314,9 @@
               "Text": "\"Stay.\"",
               "Next": "morning",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "galfrey.trickster.kitrane.squire_sworn"
+              ],
               "Forbids": [],
               "Abort": false
             },
@@ -371048,8 +371324,30 @@
               "Text": "[Pull the cloak over her shoulders.]",
               "Next": "morning",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "galfrey.trickster.kitrane.squire_sworn"
+              ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Stay.\"",
+              "Next": "morning_alone",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "galfrey.trickster.kitrane.squire_sworn"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Pull the cloak over her shoulders.]",
+              "Next": "morning_alone",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "galfrey.trickster.kitrane.squire_sworn"
+              ],
               "Abort": false
             }
           ],
@@ -371072,9 +371370,25 @@
           "Portrait": "Galfrey"
         },
         {
+          "Id": "morning_alone",
+          "Speaker": "Narrator",
+          "Text": "{n}She does not stay; she is a knight of the Green Crows, and the Crows drill at first light. By the time you have found your boots she is out on the trampled ground behind the tent in her padded doublet with the old sword in her hand, running the forms alone against the morning, cut and guard and cut, while the sergeant of sixty leans on the mule and offers loud, contradictory advice.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "drill",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
           "Id": "drill",
           "Speaker": "Narrator",
-          "Text": "{n}A column of the Eagle Watch goes by on the road to Drezen. Not one of them looks twice at the knight of a minor order drilling a squire in the mud. Not one of them salutes. Kitrane watches them pass out of the corner of her eye, and her face, when she turns back to the girl, is so full of something that you have to look away from it.{/n}\n{n}\"Nobody saluted,\" she tells you afterwards, sheathing her sword. \"I have been saluted every morning of my life. I did not know how heavy it was until this one.\"{/n}",
+          "Text": "{n}A column of the Eagle Watch goes by on the road to Drezen. Not one of them looks twice at a knight of a minor order at her drill in the mud. Not one of them salutes. Kitrane watches them pass out of the corner of her eye, and her face, when she turns back to her forms, is so full of something that you have to look away from it.{/n}\n{n}\"Nobody saluted,\" she tells you afterwards, sheathing her sword. \"I have been saluted every morning of my life. I did not know how heavy it was until this one.\"{/n}",
           "Choices": [
             {
               "Text": "\"Get used to it.\"",
@@ -371689,8 +372003,22 @@
               "Text": "Continue",
               "Next": "seelah",
               "Set": [],
+              "Requires": [
+                "galfrey.seelah_at_bed"
+              ],
+              "Forbids": [
+                "seelah_dead",
+                "seelah_gone"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "seelah_drezen",
+              "Set": [],
               "Requires": [],
               "Forbids": [
+                "galfrey.seelah_at_bed",
                 "seelah_dead",
                 "seelah_gone"
               ],
@@ -371701,9 +372029,22 @@
               "Next": "stranger",
               "Set": [],
               "Requires": [
-                "seelah_dead"
+                "seelah_dead",
+                "galfrey.seelah_at_bed"
               ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "stranger_absent",
+              "Set": [],
+              "Requires": [
+                "seelah_dead"
+              ],
+              "Forbids": [
+                "galfrey.seelah_at_bed"
+              ],
               "Abort": false
             },
             {
@@ -371711,10 +372052,24 @@
               "Next": "stranger",
               "Set": [],
               "Requires": [
-                "seelah_gone"
+                "seelah_gone",
+                "galfrey.seelah_at_bed"
               ],
               "Forbids": [
                 "seelah_dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "stranger_absent",
+              "Set": [],
+              "Requires": [
+                "seelah_gone"
+              ],
+              "Forbids": [
+                "seelah_dead",
+                "galfrey.seelah_at_bed"
               ],
               "Abort": false
             }
@@ -371724,7 +372079,7 @@
         {
           "Id": "seelah",
           "Speaker": "Galfrey",
-          "Text": "\"Your paladin. The one with the quick hands, who used to cut purses in Kenabres before the Inheritor caught her at it.\" {n}She turns the pie over in its paper.{/n} \"She walked up to me, bought this from the girl with the tray, put it in my hands, and walked away again. She did not say a word. She did not look at my face.\" {n}A long breath.{/n} \"She was at the bed at Iz. She cried out, 'Your Majesty!', and I felt the thing in me turn its head at it like a hound.\"",
+          "Text": "\"Your paladin. The one with the quick hands, who cut purses in Solku before she ever held a sword for the Inheritor.\" {n}She turns the pie over in its paper.{/n} \"She walked up to me, bought this from the girl with the tray, put it in my hands, and walked away again. She did not say a word. She did not look at my face.\" {n}A long breath.{/n} \"She was at the bed at Iz. She cried out, 'Your Majesty!', and I felt the thing in me turn its head at it like a hound.\"",
           "Choices": [
             {
               "Text": "\"She knows.\"",
@@ -371737,6 +372092,22 @@
             {
               "Text": "\"She's kind. That's all.\"",
               "Next": "kind",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "seelah_drezen",
+          "Speaker": "Galfrey",
+          "Text": "\"Your paladin. The one with the quick hands, who cut purses in Solku before she ever held a sword for the Inheritor.\" {n}She turns the pie over in its paper.{/n} \"She walked up to me, bought this from the girl with the tray, put it in my hands, and walked away again. She did not say a word. She did not look at my face.\" {n}A long breath.{/n} \"She was not at Iz. She has only ever seen the Queen across a war council, and at the head of a column. And she looked at me across a market for as long as it takes to count a purse, and knew.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "knows",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -371781,6 +372152,22 @@
           "Id": "stranger",
           "Speaker": "Galfrey",
           "Text": "\"A woman from the Eagle Watch. She bought it from the girl with the tray and put it in my hands and walked off, the way soldiers do for a knight who looks hungry.\" {n}She turns it over.{/n} \"There was a paladin in your company once, with quick hands, who was at the bed at Iz. She cried out, 'Your Majesty,' and I felt the thing in me turn its head at it.\" {n}Her voice drops.{/n} \"She is not in Drezen now. I find I should have liked to thank her. That is the trouble with being dead, Commander. One keeps missing people.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "stranger_absent",
+          "Speaker": "Galfrey",
+          "Text": "\"A woman from the Eagle Watch. She bought it from the girl with the tray and put it in my hands and walked off, the way soldiers do for a knight who looks hungry.\" {n}She turns it over.{/n} \"Kindness from strangers. I had a century of kindness from people who wanted something, Commander. This is a great deal more alarming.\" {n}A dry breath.{/n} \"There was a paladin in your company once, with quick hands. She would have known me in a heartbeat. I find I am glad and sorry, in equal parts, that she is not here to try.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -371861,8 +372248,22 @@
               "Text": "Continue",
               "Next": "seelah",
               "Set": [],
+              "Requires": [
+                "galfrey.seelah_at_bed"
+              ],
+              "Forbids": [
+                "seelah_dead",
+                "seelah_gone"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "seelah_drezen",
+              "Set": [],
               "Requires": [],
               "Forbids": [
+                "galfrey.seelah_at_bed",
                 "seelah_dead",
                 "seelah_gone"
               ],
@@ -371873,9 +372274,22 @@
               "Next": "stranger",
               "Set": [],
               "Requires": [
-                "seelah_dead"
+                "seelah_dead",
+                "galfrey.seelah_at_bed"
               ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "stranger_absent",
+              "Set": [],
+              "Requires": [
+                "seelah_dead"
+              ],
+              "Forbids": [
+                "galfrey.seelah_at_bed"
+              ],
               "Abort": false
             },
             {
@@ -371883,10 +372297,24 @@
               "Next": "stranger",
               "Set": [],
               "Requires": [
-                "seelah_gone"
+                "seelah_gone",
+                "galfrey.seelah_at_bed"
               ],
               "Forbids": [
                 "seelah_dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "stranger_absent",
+              "Set": [],
+              "Requires": [
+                "seelah_gone"
+              ],
+              "Forbids": [
+                "seelah_dead",
+                "galfrey.seelah_at_bed"
               ],
               "Abort": false
             }
@@ -371896,7 +372324,7 @@
         {
           "Id": "seelah",
           "Speaker": "Galfrey",
-          "Text": "\"Your paladin. The one with the quick hands, who used to cut purses in Kenabres before the Inheritor caught her at it.\" {n}She turns the pie over in its paper.{/n} \"She walked up to me, bought this from the girl with the tray, put it in my hands, and walked away again. She did not say a word. She did not look at my face.\" {n}A long breath.{/n} \"She was at the bed at Iz. She cried out, 'Your Majesty!', and I felt the thing in me turn its head at it like a hound.\"",
+          "Text": "\"Your paladin. The one with the quick hands, who cut purses in Solku before she ever held a sword for the Inheritor.\" {n}She turns the pie over in its paper.{/n} \"She walked up to me, bought this from the girl with the tray, put it in my hands, and walked away again. She did not say a word. She did not look at my face.\" {n}A long breath.{/n} \"She was at the bed at Iz. She cried out, 'Your Majesty!', and I felt the thing in me turn its head at it like a hound.\"",
           "Choices": [
             {
               "Text": "\"She knows.\"",
@@ -371909,6 +372337,22 @@
             {
               "Text": "\"She's kind. That's all.\"",
               "Next": "kind",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "seelah_drezen",
+          "Speaker": "Galfrey",
+          "Text": "\"Your paladin. The one with the quick hands, who cut purses in Solku before she ever held a sword for the Inheritor.\" {n}She turns the pie over in its paper.{/n} \"She walked up to me, bought this from the girl with the tray, put it in my hands, and walked away again. She did not say a word. She did not look at my face.\" {n}A long breath.{/n} \"She was not at Iz. She has only ever seen the Queen across a war council, and at the head of a column. And she looked at me across a market for as long as it takes to count a purse, and knew.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "knows",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -371953,6 +372397,22 @@
           "Id": "stranger",
           "Speaker": "Galfrey",
           "Text": "\"A woman from the Eagle Watch. She bought it from the girl with the tray and put it in my hands and walked off, the way soldiers do for a knight who looks hungry.\" {n}She turns it over.{/n} \"There was a paladin in your company once, with quick hands, who was at the bed at Iz. She cried out, 'Your Majesty,' and I felt the thing in me turn its head at it.\" {n}Her voice drops.{/n} \"She is not in Drezen now. I find I should have liked to thank her. That is the trouble with being dead, Commander. One keeps missing people.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "stranger_absent",
+          "Speaker": "Galfrey",
+          "Text": "\"A woman from the Eagle Watch. She bought it from the girl with the tray and put it in my hands and walked off, the way soldiers do for a knight who looks hungry.\" {n}She turns it over.{/n} \"Kindness from strangers. I had a century of kindness from people who wanted something, Commander. This is a great deal more alarming.\" {n}A dry breath.{/n} \"There was a paladin in your company once, with quick hands. She would have known me in a heartbeat. I find I am glad and sorry, in equal parts, that she is not here to try.\"",
           "Choices": [
             {
               "Text": "Continue",

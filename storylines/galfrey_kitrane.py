@@ -14,7 +14,7 @@ accepted, the tent in the field camp, the war table, and her last choice: Kitran
 import copy
 
 from story_format import c, n, scene
-from storylines.galfrey_trickster import (
+from storylines.galfrey_trickster import (SEELAH_BED,
     ALONE, BLIND, CLOSED, COFFIN, COMMITTED, CROWN, DEAD, DISGUISED, DRILL, DREZEN, EULOGY_SIGN, EULOGY_LEGEND, EULOGY_TRUE,
     FAREWELL, FOREVER, KEPT, LETTER_BURNED, LETTER_MOOTED, NAMED, OFFER_REFUSED, P, PLANTED, READ, REFUSED_ORDER, REL, RENT,
     RETURNED, ROMANCE, SWORN, TENT, TERENDELEV_BACK, tag)
@@ -39,6 +39,7 @@ CROWS_ORDER = P + "kitrane.squire_sworn"
 FORD = P + "ride.seen"
 FORD_TRIAL = P + "ride.trial"
 FORD_HANGED = P + "ride.hanged"
+FORD_ANSWERED = P + "ride.answered"   # the Commander met her terms after the hanging: the oath may be offered again
 KING_SEEN = P + "kitrane.king_seen"
 LETTER_SPOKEN = P + "kitrane.letter_spoken"
 CONVERSATION = P + "kitrane.conversation"
@@ -147,13 +148,13 @@ beat(P + "kitrane.elixir", "The last dose", '"Is something wrong?"', [
         c('[Flirt] "It suits you."', "suits")),
     ki("suits", '''"Flatterer." {n}But she looks at the mirror again, and something in her frown eases.{/n} "The Queen would have had it plucked before breakfast by a lady of the bedchamber whose family has held that office for four generations. Kitrane has only the one mirror, and it belongs to the Crows' sergeant." {n}She lowers it.{/n} "But that is not why I am frowning."''',
         c("Continue", "old")),
-    ki("old", '''"The church of Iomedae paid for every year of the Queen's life." {n}She says it the way she said it once in a war camp, to a stranger who asked.{/n} "Sun orchid elixir. A dose each spring, brought from the far south under guard, blessed at the altar in Nerosyan, and set before me in a silver cup. I was needed, they said. I accepted." {n}Her hand closes on the mirror.{/n} "This spring's dose went into the crypt with Sir Anselm. There will not be another. The church does not pay for a knight of the Green Crows to stay young."''',
+    ki("old", '''"The church of Iomedae bought the Queen her years." {n}She says it the way she said it once in a war camp, to a stranger who asked.{/n} "Sun orchid elixir. Twice, a cup of it was set before me at the altar, bought at a price that would have fed Mendev for a winter. I was needed, they said. I accepted." {n}Her hand closes on the mirror.{/n} "The second cup was meant to last until they could find a third. It is beginning not to. And the church does not buy a third cup for a knight of the Green Crows."''',
         c("Continue", "grow")),
     ki("grow", '''"I am going to grow old, Commander." {n}She says it very simply.{/n} "I had forgotten that it was a thing that happens to people. That one wakes one morning with a knee that aches in the rain, and a grey hair, and then another. I have been the same age for eighty years." {n}She is quiet.{/n} "I lay awake last night, and I could not tell whether I was frightened or glad. I think I was both, in turns, until the Crows' squire started snoring and I could no longer think at all."''',
         c('"The church would give it back if you told them who you are."', "church"),
         c('"Does it frighten you?"', "frighten"),
         c('[Flirt] "Then I\'ll get to watch. I\'ve always wanted to see what you look like when you\'re sixty."', "watch")),
-    ki("church", '''"Yes. They would." {n}Flatly.{/n} "They would give it back, and give me back the crown with it, and thank Iomedae for the miracle, and in five years the Queen would be forty again and Sir Anselm would still be in her crypt." {n}She puts the mirror away.{/n} "No. They bought the Queen. They cannot have Kitrane. Whatever years she has, she will have them the way everyone else does: one at a time, and badly."''',
+    ki("church", '''"Yes. They would." {n}Flatly.{/n} "They would find a third cup, and give me back the crown with it, and thank Iomedae for the miracle, and in five years the Queen would be forty again and Sir Anselm would still be in her crypt." {n}She puts the mirror away.{/n} "No. They bought the Queen. They cannot have Kitrane. Whatever years she has, she will have them the way everyone else does: one at a time, and badly."''',
         c("[Leave it there.]", flags=(ELIXIR,))),
     ki("frighten", '''"A little." {n}She considers.{/n} "I have faced demon lords and not been frightened. I have faced the bishops of Iomedae over a budget and been very frightened indeed. This is nearer the second." {n}A dry sideways look.{/n} "But I chose it. That makes a difference I did not expect. A fear one chooses is a sort of possession. I have so few."''',
         c("[Leave it there.]", flags=(ELIXIR,))),
@@ -322,6 +323,21 @@ beat(P + "kitrane.ford", "The ford", '"I\'m riding out to clear the eastern ford
 ], requires=(FIRST, CROWS_ORDER), forbids=(FORD,), delay=24)
 
 
+
+# --- 9b. After the ford: her terms (the hanging is a breach until it is answered) ------------------------------------------------
+
+beat(P + "kitrane.ford_after", "Six ropes", '"You haven\'t spoken to me since the ford."', [
+    ki("start", '''"No." {n}She is standing very straight by the curio stall, in full armour, as if on parade.{/n} "I have been deciding whether to leave. The Crows' sergeant has packed the mule twice. I unpacked it twice." {n}Her hand is white on the pommel of the old sword.{/n} "There was a boy of fifteen at that ford, Commander. He surrendered to a knight. I have hanged men, and signed for the hanging of more, and I have never once hanged a boy who had put his hands on his head for me."''',
+        c("Continue", "terms")),
+    ki("terms", '''"So. Terms." {n}The Queen's voice, the one that ended wars.{/n} "His name was Tobin; the Inquisition's clerk wrote it down before the rope. His mother sells tallow in the lower town. You will go to her yourself, and tell her who gave the order, and pay for his grave, and not send a clerk." {n}A breath.{/n} "And never again, under the Crows' colours or near them. That is all. It is not small. It is not meant to be."''',
+        c('"Agreed. All of it. I\'ll go today."', "agreed", flags=(FORD_ANSWERED,)),
+        c('"It was the right call. I won\'t apologise to a cultist\'s mother."', "refused")),
+    ki("agreed", '''{n}She looks at you for a long breath, and some of the parade goes out of her shoulders.{/n} "Then I shall unpack the mule a third time." {n}Quietly:{/n} "I will not forget the six of them, Commander. I do not ask you to. I ask you to remember them in the same place I do."''',
+        c("[Go to the lower town.]")),
+    ki("refused", '''"Then I am your knight, and I shall do my duty, and there it will stay." {n}Without heat, which is worse.{/n} "The mule stays packed. When you are ready to walk down to the tallow-seller's, Commander, I shall still be here. I am old. I can wait." {n}She salutes.{/n}''',
+        c("[Leave her.]", abort=True)),
+], requires=(FIRST, FORD_HANGED), forbids=(FORD_ANSWERED,), delay=24)
+
 # --- 10. Two false crowns (the Fool King) ------------------------------------------------------------------------------------
 
 beat(P + "kitrane.king", "Two false crowns", '"I hear you\'ve been drinking with the King."', [
@@ -458,7 +474,7 @@ beat(P + "commit.oath", "The oath", '"The Crows\' sergeant says you asked for me
         c("Continue", "ford", requires=(REFUSED_ORDER,)),
         c("Continue", "trial", requires=(FORD_TRIAL,)),
         c("Continue", "speak", forbids=(REFUSED_ORDER, FORD_TRIAL))),
-    ki("ford", '''"I refused you at the ford." {n}She says it first, so that it is out of the way.{/n} "I would refuse you again. I want you to know that I have not forgotten it, and that I have come anyway, and that what I am about to do is not obedience. I have had a century of obedience. I know what it looks like, and this is not it."''',
+    ki("ford", '''"I refused you at the ford, and you hanged them anyway, and then you walked down to the tallow-seller's, as I asked." {n}She says it first, so that it is out of the way.{/n} "I would refuse you again. I want you to know that I have not forgotten the six of them, and that I have come anyway, and that what I am about to do is not obedience. I have had a century of obedience. I know what it looks like, and this is not it."''',
         c("Continue", "speak")),
     ki("trial", '''"At the ford you sent six cultists back to Drezen to stand trial, when you had a rope and a tree and nobody to stop you." {n}She nods, once.{/n} "I watched you decide. That is why I am here."''',
         c("Continue", "speak")),
@@ -488,7 +504,7 @@ beat(P + "commit.oath", "The oath", '"The Crows\' sergeant says you asked for me
         c("Continue", "sworn2")),
     ki("sworn2", '''{n}Something in her face has closed, gently, like a book.{/n} "The Queen had knights. I used to wonder what it was like from their side." {n}A pause.{/n} "It is very simple, it turns out. One knows exactly where one stands." {n}She salutes again.{/n} "Good night, Commander."''',
         c("[Return the salute.]")),
-], requires=(FIRST,), forbids=(COMMITTED, SWORN), delay=48)
+], requires=(FIRST,), forbids=(COMMITTED, SWORN, FORD_HANGED), delay=48, ForbidOverrides={FORD_HANGED: FORD_ANSWERED})
 
 
 # --- The release: the soft no answered ----------------------------------------------------------------------------------------
@@ -500,7 +516,10 @@ beat(P + "commit.release", "Released", '"I have something to say to my knight."'
     ki("release", '''{n}She does not move.{/n} "On what grounds?" {n}The Queen's voice, the one that has heard a great many petitions.{/n} "A knight is released for three reasons, Commander. Death, disgrace, or a better use. I am not dead, and I have not disgraced you. What better use do you have for me?"''',
         c('"I was wrong to take it. I should have refused."', "choose"),
         c('"None. I want you free, and then I want you to choose."', "choose"),
-        c('"I don\'t want a knight. I want Kitrane."', "choose")),
+        c('"I don\'t want a knight. I want Kitrane."', "choose"),
+        c('[Command her] "You\'re released. Now come to my tent tonight."', "ordered")),
+    ki("ordered", '''{n}Something in her face shuts, gently, like a book.{/n} "You release me from one order and give me another in the same breath." {n}She salutes, precisely.{/n} "No, Commander. Not like that. Not ever like that. I have had a century of being sent for." {n}She turns on her heel.{/n} "When you know the difference, you know where the Crows' tent is. Until then I am your knight, and nothing else."''',
+        c("[Let her go.]", abort=True)),
     ki("choose", '''{n}For a long breath she simply looks at you, and the correctness goes out of her face a little at a time, like armour being unbuckled.{/n} "Choose." {n}She tries the word.{/n} "You took my oath, and I let you, because it was easier than being refused. And then I stood at attention for two days waiting for you to notice what you had done." {n}She draws a breath.{/n} "Very well. Released. Hear what I choose, then."''',
         c("Continue", "yes")),
     ki("yes", '''{n}She steps in close, closer than any knight stands to her Commander, and puts her hand flat on your chest.{/n} "I choose you. Not your service. Not your army. You." {n}Very low:{/n} "The Crows' tent, at the end of the minor orders' row. After the ninth bell. Bring nothing, and do not dare salute me."''',
@@ -536,15 +555,19 @@ page(P + "visit.tent", "The Crows' tent", [
     nar("bed", '''{n}The linen goes over her head and away into the dark of the tent. In the lantern light she is all long, hard lines, a swordswoman's shoulders and a century of scars, pale seams and old white nicks, and the new one at her collarbone like a signature. There is no crown anywhere on her. She is more beautiful for it than any portrait of her ever painted.{/n}
 {n}The Crows' bedroll is three saddle-blankets and a cloak on the ground. She pulls you down onto it by the collar of what is left of your shirt, and laughs again, softly, at nothing, at everything.{/n}''',
         c("Continue", "cut")),
-    nar("cut", '''{n}"Kitrane," you say, because it is the only name she has left, and she answers it with her whole body. Her hand closes on yours and guides it, and her eyes stay open on your face, and she draws you into her with the same unhesitating certainty she has carried onto every field she ever meant to win.{/n}
+    nar("cut", '''{n}"Kitrane," you say, because it is the only name she has left, and she answers it with her whole body, rising under you, her knees tightening at your hips. Her hand closes over yours and draws it down between you, and her eyes stay open on your face, full of the same unhesitating certainty she has carried onto every field she ever meant to win.{/n}
 {n}Outside, the mule shifts its feet. The lantern gutters, and steadies, and burns on.{/n}''',
         c("Continue", "after")),
     ki("after", '''{n}Much later, in the grey before morning, she lies with her head on your shoulder and one hand spread flat on your chest, as if keeping a place in a book.{/n} "I have slept beside no one in a hundred years." {n}Her voice is drowsy and quite unsurprised.{/n} "I did not know that I would like it. One learns such a lot, being nobody." {n}She yawns.{/n} "The Crows drill at first light. I am the only knight. I shall be late, and the sergeant will say so."''',
-        c('"Stay."', "morning"),
-        c("[Pull the cloak over her shoulders.]", "morning")),
+        c('"Stay."', "morning", requires=(CROWS_ORDER,)),
+        c("[Pull the cloak over her shoulders.]", "morning", requires=(CROWS_ORDER,)),
+        c('"Stay."', "morning_alone", forbids=(CROWS_ORDER,)),
+        c("[Pull the cloak over her shoulders.]", "morning_alone", forbids=(CROWS_ORDER,))),
     nar("morning", '''{n}She does not stay; she is a knight of the Green Crows, and the Crows drill at first light. By the time you have found your boots she is out on the trampled ground behind the tent in her padded doublet with the old sword in her hand, running the eel-girl through a guard, while the sergeant of sixty leans on the mule and offers loud, contradictory advice.{/n}''',
         c("Continue", "drill")),
-    nar("drill", '''{n}A column of the Eagle Watch goes by on the road to Drezen. Not one of them looks twice at the knight of a minor order drilling a squire in the mud. Not one of them salutes. Kitrane watches them pass out of the corner of her eye, and her face, when she turns back to the girl, is so full of something that you have to look away from it.{/n}
+    nar("morning_alone", '''{n}She does not stay; she is a knight of the Green Crows, and the Crows drill at first light. By the time you have found your boots she is out on the trampled ground behind the tent in her padded doublet with the old sword in her hand, running the forms alone against the morning, cut and guard and cut, while the sergeant of sixty leans on the mule and offers loud, contradictory advice.{/n}''',
+        c("Continue", "drill")),
+    nar("drill", '''{n}A column of the Eagle Watch goes by on the road to Drezen. Not one of them looks twice at a knight of a minor order at her drill in the mud. Not one of them salutes. Kitrane watches them pass out of the corner of her eye, and her face, when she turns back to her forms, is so full of something that you have to look away from it.{/n}
 {n}"Nobody saluted," she tells you afterwards, sheathing her sword. "I have been saluted every morning of my life. I did not know how heavy it was until this one."{/n}''',
         c('"Get used to it."', flags=(TENT, DRILL)),
         c("[Salute her, very badly.]", flags=(TENT, DRILL))),
@@ -622,17 +645,24 @@ SEELAH_SPOKEN = P + "kitrane.seelah_spoken"
 
 beat(P + "kitrane.seelah", "A pie from a paladin", '"Who was that you were talking to?"', [
     ki("start", '''{n}She is holding a meat pie in a twist of paper, still steaming, and looking after someone who has already vanished into the crowd.{/n}''',
-        c("Continue", "seelah", forbids=("seelah_dead", "seelah_gone")),
-        c("Continue", "stranger", requires=("seelah_dead",)),
-        c("Continue", "stranger", requires=("seelah_gone",), forbids=("seelah_dead",))),
-    ki("seelah", '''"Your paladin. The one with the quick hands, who used to cut purses in Kenabres before the Inheritor caught her at it." {n}She turns the pie over in its paper.{/n} "She walked up to me, bought this from the girl with the tray, put it in my hands, and walked away again. She did not say a word. She did not look at my face." {n}A long breath.{/n} "She was at the bed at Iz. She cried out, 'Your Majesty!', and I felt the thing in me turn its head at it like a hound."''',
+        c("Continue", "seelah", requires=(SEELAH_BED,), forbids=("seelah_dead", "seelah_gone")),
+        c("Continue", "seelah_drezen", forbids=(SEELAH_BED, "seelah_dead", "seelah_gone")),
+        c("Continue", "stranger", requires=("seelah_dead", SEELAH_BED)),
+        c("Continue", "stranger_absent", requires=("seelah_dead",), forbids=(SEELAH_BED,)),
+        c("Continue", "stranger", requires=("seelah_gone", SEELAH_BED), forbids=("seelah_dead",)),
+        c("Continue", "stranger_absent", requires=("seelah_gone",), forbids=("seelah_dead", SEELAH_BED))),
+    ki("seelah", '''"Your paladin. The one with the quick hands, who cut purses in Solku before she ever held a sword for the Inheritor." {n}She turns the pie over in its paper.{/n} "She walked up to me, bought this from the girl with the tray, put it in my hands, and walked away again. She did not say a word. She did not look at my face." {n}A long breath.{/n} "She was at the bed at Iz. She cried out, 'Your Majesty!', and I felt the thing in me turn its head at it like a hound."''',
         c('"She knows."', "knows"),
         c('"She\'s kind. That\'s all."', "kind")),
+    ki("seelah_drezen", '''"Your paladin. The one with the quick hands, who cut purses in Solku before she ever held a sword for the Inheritor." {n}She turns the pie over in its paper.{/n} "She walked up to me, bought this from the girl with the tray, put it in my hands, and walked away again. She did not say a word. She did not look at my face." {n}A long breath.{/n} "She was not at Iz. She has only ever seen the Queen across a war council, and at the head of a column. And she looked at me across a market for as long as it takes to count a purse, and knew."''',
+        c("Continue", "knows")),
     ki("knows", '''"She knows." {n}Quietly.{/n} "A thief knows a disguise; a paladin knows a lie. She is both, and she has decided to be neither where I am concerned." {n}She looks at the pie.{/n} "The Queen would have summoned her and thanked her formally and given her a ring. Kitrane has no rings. Kitrane is going to eat the pie, standing up, and think well of her for the rest of her life. I believe that is the better bargain for both of us."''',
         c("Continue", "end")),
     ki("kind", '''"Kindness is never all, Commander. Not in a paladin." {n}She shakes her head.{/n} "Kindness is what one does with what one knows. She knows, and she bought me a pie. I have had dukes do a great deal less with a great deal more." {n}She takes a bite at last, and burns her tongue, and swears like a sergeant.{/n}''',
         c("Continue", "end")),
     ki("stranger", '''"A woman from the Eagle Watch. She bought it from the girl with the tray and put it in my hands and walked off, the way soldiers do for a knight who looks hungry." {n}She turns it over.{/n} "There was a paladin in your company once, with quick hands, who was at the bed at Iz. She cried out, 'Your Majesty,' and I felt the thing in me turn its head at it." {n}Her voice drops.{/n} "She is not in Drezen now. I find I should have liked to thank her. That is the trouble with being dead, Commander. One keeps missing people."''',
+        c("Continue", "end")),
+    ki("stranger_absent", '''"A woman from the Eagle Watch. She bought it from the girl with the tray and put it in my hands and walked off, the way soldiers do for a knight who looks hungry." {n}She turns it over.{/n} "Kindness from strangers. I had a century of kindness from people who wanted something, Commander. This is a great deal more alarming." {n}A dry breath.{/n} "There was a paladin in your company once, with quick hands. She would have known me in a heartbeat. I find I am glad and sorry, in equal parts, that she is not here to try."''',
         c("Continue", "end")),
     ki("end", '''"Here." {n}She breaks the pie in two, with scrupulous fairness, and holds out the larger half.{/n} "A knight shares her rations with her Commander. It is in the regulations. I wrote the regulations."''',
         c("[Take the larger half.]", flags=(SEELAH_SPOKEN,)),
