@@ -450,6 +450,10 @@ MORNING_HOME = '''{n}The watch changes under the window. She is back in armour, 
 {n}You buckle it for her. She takes the sword belt down and buckles that herself, and does not thank you.{/n}
 "Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard."'''
 
+REASONS_NEW = '''"You want reasons. Here's what I've got. You slept under my sword and didn't lie in your sleep; I've watched men who did. You're still the one who can shut the Wound, and somebody who knows what you're capable of has to stand close enough to stop you."
+{n}Her jaw sets.{/n}
+"And somewhere between the ruin and that stool I started wanting you. I didn't before Iz. I don't like that I do now. I'm not going to pretend otherwise, and I'm not going to thank you for it."'''
+
 REASONS_TEXT = '''"You want reasons. Here's what I've got. You slept under my sword and didn't lie in your sleep; I've watched men who did. You're still the one who can shut the Wound, and the Queen's gone or near it, and somebody who knows what you're capable of has to stand close enough to stop you."
 {n}Her jaw sets.{/n}
 "And I wanted you before Iz. I buried it under the duty lists and it didn't stay buried. That's the part I can't forgive either of us for."'''
@@ -473,12 +477,14 @@ def her_answer(mornings):
           c('[Ask her as her Commander] "Knight-Captain. I\'m asking."', "no_rank")),
         i("yes", '''{n}She doesn't answer. She crosses the room and kisses you instead, hard, and that is the answer.{/n}''',
           c("Continue", "threshold", forbids=(BLOW,), flags=("irabeth.committed",)),
-          c("Continue", "reasons", requires=(BLOW,), flags=("irabeth.committed",))),
+          c("Continue", "reasons", requires=(BLOW, "irabeth.lover"), flags=("irabeth.committed",)),
+          c("Continue", "reasons_new", requires=(BLOW,), forbids=("irabeth.lover",), flags=("irabeth.committed",))),
         i("no_rank", '''"There it is."
 {n}She steps back, and salutes, and it is a perfect salute.{/n}
 "You asked my Commander's way, with my wife's answer in your pocket like a signed order. No. I'll serve you till the Wound's shut. That's what you asked for."''',
           c('"...Understood."', flags=("irabeth.trickster.asked_as_commander",))),
         i("reasons", REASONS_TEXT, c("Continue", "threshold_blow")),
+        i("reasons_new", REASONS_NEW, c("Continue", "threshold_blow")),
         nar("threshold_blow", THRESHOLD_BLOW, *mornings),
     ]
 
@@ -541,7 +547,9 @@ physical("irabeth.trickster.commit", "Off the record", '"Knight-Captain. Off the
       c("Continue", "reckon_blow", requires=(BLOW,)), c("Continue", "threshold", forbids=(BLOW,))),
     i("reckon_blow", '''"And I remember your blade going in. I'll remember it tomorrow, and the day after. I'm here anyway. Work out what that says about me on your own time."''',
       c("Continue", "threshold", forbids=(BLOW,)),          # retired by gating (index kept): the blow has its own approach
-      c("Continue", "reasons")),
+      c("Continue", "reasons", requires=("irabeth.lover",)),
+      c("Continue", "reasons_new", forbids=("irabeth.lover",))),
+    i("reasons_new", REASONS_NEW, c("Continue", "threshold_blow")),
     i("reasons", REASONS_TEXT,
       c("Continue", "threshold_blow")),
     nar("threshold_blow", THRESHOLD_BLOW,

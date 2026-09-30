@@ -85021,10 +85021,32 @@
           "Portrait": "Anevia",
           "Paragraphs": [
             {
+              "Text": "She never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
               "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the crate lid, the one with the air holes, and used it as a tray for the rest of her life. Anyone who asked about the holes was told they were for ventilation, which was true.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -85255,10 +85277,32 @@
           "Portrait": "Anevia",
           "Paragraphs": [
             {
+              "Text": "She never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
               "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the crate lid, the one with the air holes, and used it as a tray for the rest of her life. Anyone who asked about the holes was told they were for ventilation, which was true.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -85490,10 +85534,32 @@
           "Portrait": "Anevia",
           "Paragraphs": [
             {
+              "Text": "She never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
               "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the crate lid, the one with the air holes, and used it as a tray for the rest of her life. Anyone who asked about the holes was told they were for ventilation, which was true.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -85725,10 +85791,32 @@
           "Portrait": "Anevia",
           "Paragraphs": [
             {
+              "Text": "She never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
               "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the crate lid, the one with the air holes, and used it as a tray for the rest of her life. Anyone who asked about the holes was told they were for ventilation, which was true.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -85961,10 +86049,32 @@
           "Portrait": "Anevia",
           "Paragraphs": [
             {
+              "Text": "She never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
               "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the crate lid, the one with the air holes, and used it as a tray for the rest of her life. Anyone who asked about the holes was told they were for ventilation, which was true.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -86190,10 +86300,32 @@
           "Portrait": "Anevia",
           "Paragraphs": [
             {
+              "Text": "She never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
               "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the crate lid, the one with the air holes, and used it as a tray for the rest of her life. Anyone who asked about the holes was told they were for ventilation, which was true.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -86425,10 +86557,32 @@
           "Portrait": "Anevia",
           "Paragraphs": [
             {
+              "Text": "She never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
               "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the crate lid, the one with the air holes, and used it as a tray for the rest of her life. Anyone who asked about the holes was told they were for ventilation, which was true.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -86712,10 +86866,32 @@
           "Portrait": "Anevia",
           "Paragraphs": [
             {
+              "Text": "She never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
               "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the crate lid, the one with the air holes, and used it as a tray for the rest of her life. Anyone who asked about the holes was told they were for ventilation, which was true.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -87037,10 +87213,32 @@
           "Portrait": "Anevia",
           "Paragraphs": [
             {
+              "Text": "She never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
               "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the crate lid, the one with the air holes, and used it as a tray for the rest of her life. Anyone who asked about the holes was told they were for ventilation, which was true.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -87269,10 +87467,32 @@
           "Portrait": "Anevia",
           "Paragraphs": [
             {
+              "Text": "She never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
               "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the crate lid, the one with the air holes, and used it as a tray for the rest of her life. Anyone who asked about the holes was told they were for ventilation, which was true.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -87493,10 +87713,32 @@
           "Portrait": "Anevia",
           "Paragraphs": [
             {
+              "Text": "She never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
               "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the crate lid, the one with the air holes, and used it as a tray for the rest of her life. Anyone who asked about the holes was told they were for ventilation, which was true.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -92188,12 +92430,177 @@
                 "anevia_gone"
               ],
               "Forbids": [
+                "anevia_dead",
+                "anevia.trickster.returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Remember the wife who came back to the gate.]",
+              "Next": "returned",
+              "Set": [],
+              "Requires": [
+                "anevia_gone",
+                "anevia.trickster.returned"
+              ],
+              "Forbids": [
                 "anevia_dead"
               ],
               "Abort": false
             }
           ],
           "Portrait": ""
+        },
+        {
+          "Id": "returned",
+          "Speaker": "Narrator",
+          "Text": "{n}Anevia came back as far as the Drezen gate and, for a long while, no further. Irabeth walked out to the road side of the line every evening she was off duty, and after the war she walked out one last time with both their packs and did not come back in.{/n}\n{n}They took the house on the corner in the end. Anevia made the Commander knock on its door every single time, three knocks, like a person, and Irabeth pretended not to be listening for them.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She had come back because she was still on the Drezen roster, and she stayed under a vow she had sworn over Teodor Vell's bier. His sword never left her side until the Wound was shut. Then she carried it to his mother in Nerosyan herself, and stood in the doorway with her helmet under her arm until she was let in.",
+              "Requires": [
+                "irabeth.trickster.cost.vell"
+              ],
+              "Forbids": [
+                "irabeth.trickster.cost.second_diamond"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She had come back because she was still on the Drezen roster, on a diamond the crusade could not spare. Teodor Vell, called back the same night, served in her company for the rest of the war and never learned what the second stone had cost; she saw to that, and saw to it that the company ate.",
+              "Requires": [
+                "irabeth.trickster.cost.second_diamond"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would hold their ground long enough to learn it.",
+              "Requires": [
+                "irabeth.trickster.cost.remembers_the_blow"
+              ],
+              "Forbids": [
+                "irabeth.trickster.cost.accounting_lied",
+                "irabeth.trickster.raised_on_record"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The chapel's book of Iz kept both lines under her name for as long as there was a chapel in Drezen: struck down by the Commander, called back on the Commander's order. She read them once a year, on the day, and never asked for either to be struck.",
+              "Requires": [
+                "irabeth.trickster.raised_on_record"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She served out the war exactly, and not one hour more. Of what happened at Iz she said only that the dragon had been blamed for enough already.",
+              "Requires": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, she kept her vow to the hour and set the sword down at last. Anevia took the Commander's pen from wherever she had kept it through the war and handed it to her wife without a word. Irabeth signed her own discharge with it, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
+              "Requires": [
+                "irabeth.trickster.cost.signed_request"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, Irabeth Tirabade put her sword down at last, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it out loud, in the kitchen of the house on the corner, with Anevia leaning in the doorway to hear it first.",
+              "Requires": [
+                "irabeth.trickster.late_committed"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed",
+                "irabeth.trickster.declined",
+                "irabeth.trickster.friends",
+                "anevia_gone"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, Irabeth Tirabade put her sword down at last, walked out of the gate to where her wife was waiting on the road side of the line, and came back with an answer from both of them. She asked the Commander the question she had been saving: not as a knight, and not under orders.",
+              "Requires": [
+                "irabeth.trickster.late_committed",
+                "anevia.trickster.returned"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed",
+                "irabeth.trickster.declined",
+                "irabeth.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The south-road courier caught her up after the Wound was closed, with the answer she had sent him for. Nevi had kept the pen. Irabeth went to find the Commander without her sword.",
+              "Requires": [
+                "irabeth.trickster.pen_sent"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight until the Wound was closed: loyal, exact, and never once off the record. The pen stayed with Nevi.",
+              "Requires": [
+                "irabeth.trickster.asked_as_commander"
+              ],
+              "Forbids": [
+                "irabeth.committed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight until the Wound was closed: loyal, exact, and never once off the record.",
+              "Requires": [
+                "irabeth.trickster.declined"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed",
+                "irabeth.trickster.asked_as_commander"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight, and that was all. When the discharge was finally signed she saluted, took it, and did not look back.",
+              "Requires": [
+                "irabeth.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed what they had agreed to be on the night of the salute: a Knight-Captain and her Commander, who knew exactly how far the other would go.",
+              "Requires": [
+                "irabeth.trickster.friends"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed"
+              ],
+              "AnyGroups": []
+            }
+          ]
         },
         {
           "Id": "living",
@@ -146930,6 +147337,34 @@
               "Text": "Continue",
               "Next": "reasons",
               "Set": [],
+              "Requires": [
+                "irabeth.lover"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "reasons_new",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.lover"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "reasons_new",
+          "Speaker": "Irabeth",
+          "Text": "\"You want reasons. Here's what I've got. You slept under my sword and didn't lie in your sleep; I've watched men who did. You're still the one who can shut the Wound, and somebody who knows what you're capable of has to stand close enough to stop you.\"\n{n}Her jaw sets.{/n}\n\"And somewhere between the ruin and that stool I started wanting you. I didn't before Iz. I don't like that I do now. I'm not going to pretend otherwise, and I'm not going to thank you for it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "threshold_blow",
+              "Set": [],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -147383,9 +147818,24 @@
                 "irabeth.committed"
               ],
               "Requires": [
-                "irabeth.trickster.cost.remembers_the_blow"
+                "irabeth.trickster.cost.remembers_the_blow",
+                "irabeth.lover"
               ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "reasons_new",
+              "Set": [
+                "irabeth.committed"
+              ],
+              "Requires": [
+                "irabeth.trickster.cost.remembers_the_blow"
+              ],
+              "Forbids": [
+                "irabeth.lover"
+              ],
               "Abort": false
             }
           ],
@@ -147413,6 +147863,22 @@
           "Id": "reasons",
           "Speaker": "Irabeth",
           "Text": "\"You want reasons. Here's what I've got. You slept under my sword and didn't lie in your sleep; I've watched men who did. You're still the one who can shut the Wound, and the Queen's gone or near it, and somebody who knows what you're capable of has to stand close enough to stop you.\"\n{n}Her jaw sets.{/n}\n\"And I wanted you before Iz. I buried it under the duty lists and it didn't stay buried. That's the part I can't forgive either of us for.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "threshold_blow",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "reasons_new",
+          "Speaker": "Irabeth",
+          "Text": "\"You want reasons. Here's what I've got. You slept under my sword and didn't lie in your sleep; I've watched men who did. You're still the one who can shut the Wound, and somebody who knows what you're capable of has to stand close enough to stop you.\"\n{n}Her jaw sets.{/n}\n\"And somewhere between the ruin and that stool I started wanting you. I didn't before Iz. I don't like that I do now. I'm not going to pretend otherwise, and I'm not going to thank you for it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -147691,9 +148157,24 @@
                 "irabeth.committed"
               ],
               "Requires": [
-                "irabeth.trickster.cost.remembers_the_blow"
+                "irabeth.trickster.cost.remembers_the_blow",
+                "irabeth.lover"
               ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "reasons_new",
+              "Set": [
+                "irabeth.committed"
+              ],
+              "Requires": [
+                "irabeth.trickster.cost.remembers_the_blow"
+              ],
+              "Forbids": [
+                "irabeth.lover"
+              ],
               "Abort": false
             }
           ],
@@ -147721,6 +148202,22 @@
           "Id": "reasons",
           "Speaker": "Irabeth",
           "Text": "\"You want reasons. Here's what I've got. You slept under my sword and didn't lie in your sleep; I've watched men who did. You're still the one who can shut the Wound, and the Queen's gone or near it, and somebody who knows what you're capable of has to stand close enough to stop you.\"\n{n}Her jaw sets.{/n}\n\"And I wanted you before Iz. I buried it under the duty lists and it didn't stay buried. That's the part I can't forgive either of us for.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "threshold_blow",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "reasons_new",
+          "Speaker": "Irabeth",
+          "Text": "\"You want reasons. Here's what I've got. You slept under my sword and didn't lie in your sleep; I've watched men who did. You're still the one who can shut the Wound, and somebody who knows what you're capable of has to stand close enough to stop you.\"\n{n}Her jaw sets.{/n}\n\"And somewhere between the ruin and that stool I started wanting you. I didn't before Iz. I don't like that I do now. I'm not going to pretend otherwise, and I'm not going to thank you for it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -150517,6 +151014,21 @@
                 "anevia.lover"
               ],
               "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "wait_muster",
+              "Set": [],
+              "Requires": [
+                "anevia.irabeth_killed_by_commander",
+                "anevia.trickster.said_it",
+                "anevia.lover"
+              ],
+              "Forbids": [
+                "irabeth.trickster.returned",
+                "anevia.trickster.cost.muster_confession"
+              ],
+              "Abort": false
             }
           ],
           "Portrait": "Anevia"
@@ -150550,7 +151062,23 @@
               "Set": [],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": true
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "wait_muster",
+          "Speaker": "Anevia",
+          "Text": "\"You know where muster is. I'm not hearin' another word from you till you've said the first one in the yard.\"",
+          "Choices": [
+            {
+              "Text": "\"After muster.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
             }
           ],
           "Portrait": "Anevia"
@@ -151120,7 +151648,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}Anevia Tirabade never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.{/n}",
+          "Text": "{n}Anevia Tirabade came back as far as the Drezen gate, and for a long while no further.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -151134,10 +151662,32 @@
           "Portrait": "Anevia",
           "Paragraphs": [
             {
+              "Text": "She never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
               "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the crate lid, the one with the air holes, and used it as a tray for the rest of her life. Anyone who asked about the holes was told they were for ventilation, which was true.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -151342,7 +151892,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}Anevia Tirabade never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.{/n}",
+          "Text": "{n}Anevia Tirabade came back as far as the Drezen gate, and for a long while no further.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -151356,10 +151906,32 @@
           "Portrait": "Anevia",
           "Paragraphs": [
             {
+              "Text": "She never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
               "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the crate lid, the one with the air holes, and used it as a tray for the rest of her life. Anyone who asked about the holes was told they were for ventilation, which was true.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -151575,7 +152147,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}Anevia Tirabade never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.{/n}",
+          "Text": "{n}Anevia Tirabade came back as far as the Drezen gate, and for a long while no further.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -151589,10 +152161,32 @@
           "Portrait": "Anevia",
           "Paragraphs": [
             {
+              "Text": "She never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
               "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the crate lid, the one with the air holes, and used it as a tray for the rest of her life. Anyone who asked about the holes was told they were for ventilation, which was true.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -151804,7 +152398,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}Anevia Tirabade never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.{/n}",
+          "Text": "{n}Anevia Tirabade came back as far as the Drezen gate, and for a long while no further.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -151818,10 +152412,32 @@
           "Portrait": "Anevia",
           "Paragraphs": [
             {
+              "Text": "She never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
               "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the crate lid, the one with the air holes, and used it as a tray for the rest of her life. Anyone who asked about the holes was told they were for ventilation, which was true.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -152038,7 +152654,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}Anevia Tirabade never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.{/n}",
+          "Text": "{n}Anevia Tirabade came back as far as the Drezen gate, and for a long while no further.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -152052,10 +152668,32 @@
           "Portrait": "Anevia",
           "Paragraphs": [
             {
+              "Text": "She never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
               "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
               "Requires": [
                 "anevia.trickster.returned",
                 "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the crate lid, the one with the air holes, and used it as a tray for the rest of her life. Anyone who asked about the holes was told they were for ventilation, which was true.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -154493,7 +155131,7 @@
         "konomi.dismissed",
         "konomi.office_completed",
         "konomi.trickster.cost.late",
-        "konomi.trickster.arrived"
+        "konomi.trickster.back_from_the_road"
       ],
       "Forbids": [
         "konomi.closed",
@@ -154534,6 +155172,18 @@
                 "konomi.trickster.arrived"
               ],
               "Requires": [],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "konomi.trickster.back_from_the_road"
+              ],
+              "Requires": [],
               "Forbids": [],
               "Abort": false
             }
@@ -154549,7 +155199,7 @@
       "Forbids": [
         "konomi.closed",
         "inhuman",
-        "konomi.trickster.arrived",
+        "konomi.trickster.back_from_the_road",
         "konomi.trickster.recessed"
       ],
       "DelayHours": 48,
@@ -155220,7 +155870,33 @@
         {
           "Id": "yes",
           "Speaker": "Konomi",
-          "Text": "{n}She reads your face the way she reads a treaty, from the last line backwards, and finds what she wanted in it.{/n}\n\"Then we are agreed.\" {n}Her ears tip back, pleased, and this time she lets them.{/n} \"Come here, Commander. I have been told no by nobody tonight, and I intend to keep it that way.\"\n{n}She rises out of the chair and out of the outer robe in the same motion, lets it pool on the ledger, and pulls you down into the chair she has just left, and settles across your lap with one knee either side of you and her tail sweeping the floor behind her. Her hands are already at your collar. She kisses you as if she were closing a negotiation she has won.{/n}",
+          "Text": "{n}She reads your face the way she reads a treaty, from the last line backwards, and finds what she wanted in it.{/n}\n\"Then we are agreed.\" {n}Her ears tip back, pleased, and this time she lets them.{/n} \"Come here, Commander. I have been told no by nobody tonight, and I intend to keep it that way.\"\n{n}She rises out of the chair and out of the outer robe in the same motion, lets it pool on the ledger, and pulls you down into the chair she has just left. The silk underneath goes over her head; the rings stay on. She strips your shirt off you with none of the patience she spends on treaties, settles bare across your lap with one knee either side of you and her tail sweeping the floor behind her, takes your hands and puts them on her hips, and sinks down against you with a low, satisfied sound.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "council",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "konomi.trickster.terms_settled"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "a_season_morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "a_season_morning",
+          "Speaker": "Konomi",
+          "Text": "{n}Morning. She has taken the good side of your bed and the better half of your blanket, and she is reading your dispatches over your shoulder before you are awake enough to stop her.{/n}\n\"You write 'regret' when you mean 'refuse'. I shall correct that.\" {n}She does not get up. She hooks her ankle over yours instead, so that you cannot either.{/n} \"The levy is on the council's list for this morning. Remember what you promised.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -384721,8 +385397,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -389800,7 +390476,7 @@
       [
         "konomi.trickster.cost.late",
         "konomi.dismissed",
-        "konomi.trickster.arrived"
+        "konomi.trickster.back_from_the_road"
       ],
       [
         "konomi.trickster.cost.accredited",
@@ -389863,7 +390539,8 @@
     "irabeth.trickster.late_committed": [
       [
         "trickster.ever",
-        "irabeth.trickster.back_on_duty"
+        "irabeth.trickster.back_on_duty",
+        "irabeth.trickster.answered_her"
       ]
     ],
     "horzalah.dead": [
@@ -389996,7 +390673,12 @@
     "anevia.trickster.late_committed": [
       [
         "trickster.ever",
-        "anevia.trickster.gate_seen"
+        "anevia.trickster.gate_seen",
+        "anevia.trickster.hand_taken"
+      ],
+      [
+        "trickster.ever",
+        "anevia.trickster.terms_kept"
       ]
     ],
     "anevia.socoth_absent": [

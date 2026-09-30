@@ -1392,7 +1392,12 @@ ending("lasting", "The journeys she chose", [
     n("marriage", "Narrator", '''{n}Irabeth's ring stayed on her finger. She turned it when she was thinking, and she never once took it off on the Commander's account.{/n}''',
       c('[Remember the living marriage.]', "living", forbids=("anevia_dead", "anevia_gone")),
       c('[Remember the wife she mourned.]', "dead", requires=("anevia_dead",)),
-      c('[Remember the wife who never came back.]', "gone", requires=("anevia_gone",), forbids=("anevia_dead",))),
+      c('[Remember the wife who never came back.]', "gone", requires=("anevia_gone",),
+        forbids=("anevia_dead", "anevia.trickster.returned")),
+      c('[Remember the wife who came back to the gate.]', "returned", requires=("anevia_gone", "anevia.trickster.returned"),
+        forbids=("anevia_dead",))),
+    n("returned", "Narrator", '''{n}Anevia came back as far as the Drezen gate and, for a long while, no further. Irabeth walked out to the road side of the line every evening she was off duty, and after the war she walked out one last time with both their packs and did not come back in.{/n}
+{n}They took the house on the corner in the end. Anevia made the Commander knock on its door every single time, three knocks, like a person, and Irabeth pretended not to be listening for them.{/n}'''),
     n("living", "Narrator", '''{n}Anevia and Irabeth stayed wives, in the house on the corner, with the stone oven Anevia finally bullied a mason into building. The Commander came to supper on the nights Irabeth asked and to breakfast on the mornings Anevia did, and learned which of those invitations could be refused and which could not. Anevia burned the first loaf out of the new oven and made everyone eat it.{/n}
 {n}Irabeth went on asking for what she wanted, in her abrupt way. A road. A room. A hand at the back of her neck while she read reports. An audience for the guard. She liked the applause. She liked the Commander still being there when it stopped.{/n}'''),
     n("dead", "Narrator", '''{n}On the first day of every month Irabeth went to Anevia's grave and told her, out loud, the price of bread and which officers were fools. The Commander learned to wait at the cemetery gate on those mornings and not to ask.{/n}

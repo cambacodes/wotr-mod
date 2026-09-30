@@ -103,7 +103,11 @@ internal static class KonomiTricksterTests
         check(!shouted[0].Has("konomi.trickster.presence_on") && !Later(story, shouted[0], 47).Has("konomi.trickster.presence_on")
               && !Rules.Available(story, dismArrival, Later(story, shouted[0], 47)) && Rules.Available(story, dismArrival, Later(story, shouted[0], 48)),
             "Konomi placed while the carriage is still on the road.");
-        var afterShout = Later(story, Program.Walk(dismArrival, Later(story, shouted[0], 48)).Single(r => r.Has("konomi.trickster.arrived")), 0);
+        var afterShout = Later(story, Program.Walk(dismArrival, Later(story, shouted[0], 48)).Single(r => r.Has("konomi.trickster.back_from_the_road")), 0);
+        // Sol r5 INT: an earlier arrival (the jug's) is not proof of this journey.
+        var jugThenDismissed = Program.Copy(shouted[0]); jugThenDismissed.Flags.Add("konomi.trickster.arrived"); Rules.Complete(story, jugThenDismissed);
+        check(!jugThenDismissed.Has("konomi.trickster.presence_on") && !Rules.Available(story, recess, Later(story, jugThenDismissed, 47)),
+            "An earlier arrival places her while the carriage is on the road.");
         check(Rules.Available(story, recess, afterShout) && !Rules.Available(story, late, afterShout), "Trk_Konomi_Dismissed: no recess.");
         check(!Rules.Available(story, recess, Later(story, shouted[0], 47)), "The recess ignores the three days on the road.");
         check(afterShout.Has("konomi.trickster.presence_on"), "Konomi not placed after the loop.");
@@ -111,7 +115,7 @@ internal static class KonomiTricksterTests
 
         // Trk_Konomi_Recess: the fox contest; a failed bluff costs her own terms.
         var primed = World(story, 5, "trickster.ever", "konomi.dismissed", "konomi.office_completed", "konomi.trickster.primed",
-                           "konomi.trickster.cost.late", "konomi.trickster.arrived");
+                           "konomi.trickster.cost.late", "konomi.trickster.back_from_the_road");
         check(Rules.Available(story, recess, primed) && !Rules.Available(story, late, primed), "Trk_Konomi_Recess: recess unavailable.");
         var recesses = Program.Walk(recess, primed);
         check(recesses.All(r => r.Has("konomi.trickster.recessed") && r.Has("konomi.trickster.cost.debt_owed")

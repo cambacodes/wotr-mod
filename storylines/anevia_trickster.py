@@ -442,12 +442,15 @@ physical("anevia.trickster.gone.second_ask", "Something true", '"I knocked."', [
       c("Continue", "price", requires=(KILLED, I_RET)),
       c("Continue", "price", requires=(KILLED, PENANCE), forbids=(I_RET,)),
       c("Continue", "say_it", requires=(KILLED, "anevia.lover"), forbids=(I_RET, SAID)),
-      c("Continue", "no_door", requires=(KILLED,), forbids=(I_RET, "anevia.lover"))),
+      c("Continue", "no_door", requires=(KILLED,), forbids=(I_RET, "anevia.lover")),
+      c("Continue", "wait_muster", requires=(KILLED, SAID, "anevia.lover"), forbids=(I_RET, PENANCE))),
     a("no_door", '''"No. Not you. You were never anythin' to me before Iz, and you put your sword through my wife. Go home, Commander."
 {n}She does not wait to see whether you go.{/n}''',
       c('"Goodbye, Anevia."', flags=("anevia.closed",))),
     a("promise_again", '''"Then go and say it where her knights can hear. After, come out to the gate."''',
-      c('"After muster."')),
+      c('"After muster."', abort=True)),
+    a("wait_muster", '''"You know where muster is. I'm not hearin' another word from you till you've said the first one in the yard."''',
+      c('"After muster."', abort=True)),
     a("say_it", '''"No. Not a secret. I don't want somethin' nobody knows. I want the thing everybody knows and you won't say."
 {n}She holds up the lantern, the way she did at the gate.{/n}
 "Say what you did at Iz. Then tomorrow you say it at muster, in front of her knights. Then we'll talk about doors."''',
@@ -559,8 +562,12 @@ def ret(text, requires=(), forbids=()):
 
 
 PARAGRAPHS = (
+    ret("She never again owned a wardrobe she had not nailed shut, and she never again went through a door without "
+      "knocking on it first.", requires=(NAILED,), forbids=(CRATED,)),
     ret("The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the "
-      "carpenters found it and could not work out why anyone had used so many nails.", requires=(NAILED,)),
+      "carpenters found it and could not work out why anyone had used so many nails.", requires=(NAILED,), forbids=(CRATED,)),
+    ret("She kept the crate lid, the one with the air holes, and used it as a tray for the rest of her life. Anyone who "
+      "asked about the holes was told they were for ventilation, which was true.", requires=(CRATED,)),
     ret("Somewhere south of Drezen a quartermaster still tells the story of the crate marked \"salt pork, Commander's "
       "personal\", and nobody believes him.", requires=(CRATED,)),
     ret("Whenever the Commander asked, she said she had come back because Beth had fetched her. Whenever Beth was in "
@@ -597,7 +604,7 @@ PARAGRAPHS = (
     ret("Beth stood watch at the Drezen gate until the Wound was closed, left foot forward, and Anevia stood on the "
       "road side of it and talked to her through the whole of every watch.", requires=(I_RET,)),
 )
-PAGE = '''{n}Anevia Tirabade never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.{/n}'''
+PAGE = '''{n}Anevia Tirabade came back as far as the Drezen gate, and for a long while no further.{/n}'''
 TOGETHER = {"trying": "tirabade.group_closed", "committed": "tirabade.group_closed"}
 
 

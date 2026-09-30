@@ -196,6 +196,8 @@ internal static class IrabethIndependentTests
             Ending(state, future);
             foreach (string wife in new[] { "anevia_dead", "anevia_gone" })
             { var changed = Program.Copy(state); changed.Flags.Add(wife); Ending(changed, future); }
+            // Q2 (Sol r5 COX): Anevia came back to the gate on the Trickster path; the absent-wife page is not hers.
+            { var back = Program.Copy(state); back.Flags.Add("anevia_gone"); back.Flags.Add("anevia.trickster.returned"); Ending(back, future); }
             Special(state);
             foreach (string refusal in new[] { "closed", "irabeth.closed" })
             { var changed = Program.Copy(state); changed.Flags.Add(refusal); check(!ends.Any(e => Rules.Available(story, e, changed)), "Ending ignores an explicit refusal."); }

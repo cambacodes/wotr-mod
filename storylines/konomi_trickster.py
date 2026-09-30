@@ -51,6 +51,7 @@ TESTED = "konomi.trickster.supper_asked"                 # Sol BEL: a non-lover 
 ASKED_AGAIN = "konomi.trickster.asked_again"             # Sol INT: the season she asked for, and the second ask
 SLIP = "konomi.trickster.slip_read"                      # Sol TRK: the informer's slip, caught on the page
 ARRIVED = "konomi.trickster.arrived"                     # Sol r2 INT: she is placed in her office only once she is back
+ROAD_BACK = "konomi.trickster.back_from_the_road"        # Sol r5 INT: the dismissal journey's own arrival (not the jug's)
 GALFREY_GONE = ("galfrey.dead", "galfrey.killed_by_commander")
 REGILL_GONE = ("regill.dead", "regill.kicked_out", "regill.left_plot")
 OWN = ("konomi.closed", "konomi.farewell", "inhuman")
@@ -172,14 +173,15 @@ physical("konomi.trickster.dismissed.recess", "The third morning", '"Lady Konomi
       c('[Hear her terms] "Name them."', flags=(RECESSED, DEBT))),
     k("read_outfoxed_ledger", LEDGER_TERMS,
       c('[Hear her terms] "Name them."', flags=(RECESSED, DEBT, OUTFOXED))),
-], requires=("trickster.ever", "konomi.dismissed", "konomi.office_completed", LATE, ARRIVED),
+], requires=("trickster.ever", "konomi.dismissed", "konomi.office_completed", LATE, ROAD_BACK),
    forbids=(RECESSED,), delay=0, own=DEVICE_OWN)
 
 # Sol r2 INT: her actor is placed only when she is back in Drezen, two days after the road (and the letter says so).
 letter("konomi.trickster.dismissed.arrival", "The east gate at noon", [
     nar("start", '''{n}A note from the gate sergeant, in a hand that has plainly been laughing: the Nerosyan carriage came back in by the east gate at noon, the attaché in it. She asked for her old office. The driver asked for a priest.{/n}''',
-      c("Continue", flags=(ARRIVED,))),
-], requires=("trickster.ever", "konomi.dismissed", LATE), forbids=(ARRIVED, RECESSED), delay=48, own=DEVICE_OWN)
+      c("Continue", flags=(ARRIVED,), forbids=("konomi.dismissed",)),   # retired by gating (index kept)
+      c("Continue", flags=(ROAD_BACK,))),
+], requires=("trickster.ever", "konomi.dismissed", LATE), forbids=(ROAD_BACK, RECESSED), delay=48, own=DEVICE_OWN)
 
 physical("konomi.trickster.dismissed.terms", "Terms", '"You said you would name your terms."', [
     k("price", '''{n}She has had the desk polished. There is a single sheet on it, and her pen, and nothing else.{/n}
@@ -294,7 +296,11 @@ physical("konomi.trickster.dismissed.a_season", "A season, abridged", '"You aske
       c('[Balk] "Not in front of the council."', "no")),
     k("yes", '''{n}She reads your face the way she reads a treaty, from the last line backwards, and finds what she wanted in it.{/n}
 "Then we are agreed." {n}Her ears tip back, pleased, and this time she lets them.{/n} "Come here, Commander. I have been told no by nobody tonight, and I intend to keep it that way."
-{n}She rises out of the chair and out of the outer robe in the same motion, lets it pool on the ledger, and pulls you down into the chair she has just left, and settles across your lap with one knee either side of you and her tail sweeping the floor behind her. Her hands are already at your collar. She kisses you as if she were closing a negotiation she has won.{/n}''',
+{n}She rises out of the chair and out of the outer robe in the same motion, lets it pool on the ledger, and pulls you down into the chair she has just left. The silk underneath goes over her head; the rings stay on. She strips your shirt off you with none of the patience she spends on treaties, settles bare across your lap with one knee either side of you and her tail sweeping the floor behind her, takes your hands and puts them on her hips, and sinks down against you with a low, satisfied sound.{/n}''',
+      c("Continue", "council", forbids=(SETTLED,)),       # retired by gating (index kept): the morning comes first
+      c("Continue", "a_season_morning")),
+    k("a_season_morning", '''{n}Morning. She has taken the good side of your bed and the better half of your blanket, and she is reading your dispatches over your shoulder before you are awake enough to stop her.{/n}
+"You write 'regret' when you mean 'refuse'. I shall correct that." {n}She does not get up. She hooks her ankle over yours instead, so that you cannot either.{/n} "The levy is on the council's list for this morning. Remember what you promised."''',
       c("Continue", "council")),
     k("council", '''{n}At the next council she refuses your recommendation on the winter levy, in full session, in four crisp sentences. You thank her and move to the next business. Three lords stare at you until the session ends. She does not look at you once, and her tail, under the table, is curled round your boot the whole time.{/n}''',
       c('"Next business."')),

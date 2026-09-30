@@ -302,6 +302,16 @@ internal static class AneviaTricksterTests
         var sayPages = new HashSet<string>();
         var sayOut = Program.Walk(second, Later(story, killedNo, 96), (page, _) => sayPages.Add(page));
         check(sayPages.Contains("say_it") && sayOut.All(r => !r.Has("anevia.committed")), "The second ask trades the murder for an unrelated secret.");
+        // Sol r5 INT: the promise leaves the second ask open; muster, then the second ask, reaches the door.
+        var promisedAgain = sayOut.First(r => r.Has("anevia.trickster.said_it") && !r.Has(second.Id));
+        check(Rules.Available(story, second, promisedAgain), "The promise closes the second ask.");
+        var waitPages = new HashSet<string>();
+        check(Program.Walk(second, promisedAgain, (page, _) => waitPages.Add(page)).All(r => !r.Has("anevia.committed")) && waitPages.Contains("wait_muster"),
+            "Coming back before muster opens the door, or has no answer.");
+        check(Rules.Available(story, muster, Later(story, promisedAgain, 12)), "The muster does not follow the second-ask promise.");
+        var penancePaid = Program.Walk(muster, Later(story, promisedAgain, 12)).First(r => r.Has("anevia.trickster.cost.muster_confession"));
+        check(Rules.Available(story, second, penancePaid) && Program.Walk(second, penancePaid).Any(r => r.Has("anevia.committed")),
+            "After the muster the second ask cannot open the door.");
         // A Commander who was never her lover and killed her wife gets no door (the stranger branch).
         var stranger = Program.Copy(penanceWorld); stranger.Flags.Remove("anevia.lover");
         var strangerPages = new HashSet<string>();
