@@ -91,12 +91,12 @@ s("arsinoe_city_on_paper", "A handsome city", '"What is that picture?"', [
 {n}For the first time she seems to consider the invitation without the printer in it.{/n}
 "Then I should choose a better beginning than an argument over a purchase. Still, you have seen the picture. I suspect you would notice if I suddenly lost interest in the matter."
 {n}She ties the roll with a narrow ribbon.{/n}
-"Come when we can both leave our work behind for a little while. I have not forgotten how to enjoy company."''', c('[Agree to visit when you are both free.]', flags=("arsinoe.picture_invitation",))),
+"Come when we can both leave our work behind for a little while. I have not forgotten how to enjoy company."''', c('[Agree to visit when you are both free.]', flags=("arsinoe.picture_invitation", "arsinoe.started"))),
     n("city", "Arsinoe", '''"So would I. There are things worth drawing here even now."
 {n}She lifts the rolled picture and measures its extravagant title with her eye.{/n}
 "He has made us remarkably prosperous. Perhaps we can persuade him to make us recognizable."
 {n}Before you leave, she writes the location on the back of a scrap of paper and gives it to you.{/n}
-"For the shop. I have learned not to describe a street by the building that used to stand at its corner."''', c('[Agree to visit when you are both free.]', flags=("arsinoe.picture_invitation",))),
+"For the shop. I have learned not to describe a street by the building that used to stand at its corner."''', c('[Agree to visit when you are both free.]', flags=("arsinoe.picture_invitation", "arsinoe.started"))),
 ], delay=0)
 
 
