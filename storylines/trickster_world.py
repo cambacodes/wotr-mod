@@ -513,9 +513,9 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
  'nurah.native_fate': [['nurah.prison'], ['nurah.dead_drezen'], ['nurah.dead_camellia'], ['nurah.killing_mechanism']],
  # Proofs seen by a Nurah who is alive now: raised, run off, or still in her cell (the prison etude stops playing on her
  # death), so proofs followed by an execution never commit her (Sol quality pass, TRK).
- 'nurah.trickster.late_committed': [['trickster.ever', 'nurah.trickster.proofs_seen', 'nurah.trickster.returned'],
-                                    ['trickster.ever', 'nurah.trickster.proofs_seen', 'nurah.ran_off'],
-                                    ['trickster.ever', 'nurah.trickster.proofs_seen', 'nurah.prison']],
+ # (Round 3) only the late branches, which can never reach her in-person terms: a proofs-only history elsewhere is her
+ # unanswered page, not a romance. The late courier is raised and both pedlars leave her alive.
+ 'nurah.trickster.late_committed': [['trickster.ever', 'nurah.trickster.proofs_seen', 'nurah.trickster.cost.late']],
  'seelah.trickster.in_drezen': [['seelah_gone', 'seelah.trickster.primed'],
                                 ['seelah_dead', 'seelah.trickster.correspondent']],
  'seelah.trickster.late_committed': [['trickster.ever', 'seelah.trickster.stay_decided']],

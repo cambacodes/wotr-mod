@@ -220,8 +220,10 @@ TERMS_CHOICES = (
     c('"Put my name on the cover too. Next to yours."', "partners", requires=(EVIL,),
       flags=(COMPLETE, "nurah.trickster.cost.coauthor")),
     c('"Put my name on it too. Above yours."', "refused", flags=(CLOSED, "nurah.trickster.cost.name_above")))
-DONE = '''"Then we have a book." {n}She says it the way other people say a prayer, quickly, before anyone can take it back.{/n}'''
-PARTNERS = '''"Co-authors. Partners in crime, in print, in the same typeface." {n}She grins, all teeth.{/n} "Trezbot would choke on it. Do that again sometime."'''
+DONE = '''"Then we have a book." {n}She says it the way other people say a prayer, quickly, before anyone can take it back.{/n}
+"And now the part that isn't in the contract." {n}She looks you over, slowly, the way she looks at a page she means to cut.{/n} "You kept me when it would have been cheaper to hang me, and you never once pretended it was mercy. I have wanted to know what you're like when you're not being clever since the night you slid that dreadful pardon under my door. Say no now, Commander, and the book still happens. Say nothing, and I'll take it as the best review I've had."'''
+PARTNERS = '''"Co-authors. Partners in crime, in print, in the same typeface." {n}She grins, all teeth.{/n} "Trezbot would choke on it. Do that again sometime."
+"And since we're sharing things now." {n}She hooks a finger in your collar.{/n} "You're the only person who ever read what I wrote about them and laughed in the right places. I've been wanting to find out where else you laugh. Say no and we're still partners. Say nothing, and I'll take it as a signature."'''
 REFUSED = '''"No." {n}Not angry. Final.{/n}
 "Lord Axilar Trezbot's name is on the cover of the best book I ever wrote. His name, his deeds, his glorious story for future generations, in my hand, every word. I did not climb out from under that name to climb under yours. Keep your joke, Commander. There's no book."'''
 
@@ -452,7 +454,7 @@ terms_in_person("nurah.trickster.terms", "nurah.presence.raised",
 {n}She holds up the parcel: the whole manuscript, tied with chapel string.{/n}''',
     '''{n}She takes you by the hand as if leading a mark to the card table, and she does not let go until your own door is shut behind you both. Then she climbs onto your writing desk, scattering your dispatches, so that she can look down at you.{/n}
 "I spent a season as a thing in a cage that could not touch anything. Author's terms: tonight I touch everything."
-{n}She means it. Her hands are everywhere at once, quick and ink-stained and greedy, learning you the way she learns a city, by getting lost in it on purpose. The chaplains' shift goes over her head and onto the floor. She is warm, warmer than she has any right to be, and when you lift her off the desk she wraps her legs around you and laughs against your throat as if she has just won a very large bet.{/n}''',
+{n}She means it. Her hands are quick and ink-stained and greedy, at your buckles, your ribs, the old scar under your arm, which she finds in the dark and presses with one thumb until you flinch. "Found you," she says, pleased, and files it away. The chaplains' shift goes over her head and onto the floor. She is warm, warmer than she has any right to be, and when you lift her off the desk she wraps her legs around you and laughs against your throat as if she has just won a very large bet.{/n}''',
     '''{n}Dawn finds her at your desk in your shirt, which comes to her knees, writing fast with your best pen.{/n} "Chapter nine," she says without looking up. "I'm taking out the hunchback. I'm putting in something much worse. You'll love it."
 {n}Two days later the chaplains send the rest of their account: one grey shift, not returned. It has been paid already, in a small, stitched hand, with money you are fairly sure used to be yours, and made out in a name that is not hers.{/n}''',
     (RETURNED,), ())
@@ -489,9 +491,12 @@ EPILOGUE_PARAGRAPHS = (
       "the prisoner in it forged her own pardon out of professional disgust, and that the Commander had counted on it.",
       requires=(LEDGER, RELEASED), forbids=(RETURNED,)),
     p("The Commander's name appeared once, on the first page, exactly where she had decided it should go.",
-      forbids=(SIGNED,)),
+      forbids=(SIGNED, "nurah.trickster.cost.coauthor")),
     p("The Commander's name appeared once, on the first page, in the Commander's own hand. She never let anyone forget "
-      "whose idea that had been.", requires=(SIGNED,)),
+      "whose idea that had been.", requires=(SIGNED,), forbids=("nurah.trickster.cost.coauthor",)),
+    p("The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, where it had "
+      "been since the proofs. She said the second one was the only one the Commander had earned.",
+      requires=("nurah.trickster.cost.coauthor",)),
     p("Ramisa of the Fleshmarkets was seen, for one night only, in the front row of something. She never said what.",
       requires=(AUDIENCE,)),
 )
@@ -509,8 +514,23 @@ SCENES.append(scene("nurah.trickster.epilogue.commit", "The author herself", "Ep
 {n}"Good. I'll read you the best parts myself." She climbed onto the table, which made her the taller, opened the book one-handed at a page she had marked with a hair ribbon, and read a sentence about the Commander aloud, slowly, against the Commander's mouth. With her free hand she was already working the buckle of the Commander's belt. When it gave she let the book fall shut on the table behind her, wrapped her legs round the Commander's waist, and pulled the Commander down with her among the loose proofs.{/n}
 {n}In the morning half the proofs were ruined, creased and smeared and one of them torn clean through. She sent the whole sheaf back to the printer anyway, with a note that the author approved every correction on them, and that he was on no account to ask how they had been made.{/n}''',
         c(), paragraphs=EPILOGUE_PARAGRAPHS)],
-    requires=("trickster.ever", LATE_COMMITTED), forbids=(COMPLETE, CLOSED, *DEATHS), last=99, Relationship="nurah",
+    requires=("trickster.ever", LATE_COMMITTED), forbids=(COMPLETE, CLOSED, *DEATHS, "sacrifice"), last=99, Relationship="nurah",
+    ForbidOverrides={**{d: RETURNED for d in DEATHS}, "sacrifice": "trickster.commander_back"}))
+
+# Proofs seen, her terms never answered (a presence missed, or the war moved on): a published book, not a romance.
+SCENES.append(scene("nurah.trickster.epilogue.unanswered", "Terms unanswered", "Epilogue", 5, "", [
+    nar("start", '''{n}Two years after the Threshold a book came out of the River Kingdoms: the crusade from the wrong side, told by a halfling who had been a slave, a traitor and a prisoner. The Commander's chapter was short and exact and not unkind. It ended with a sentence about terms that had been offered and never answered, and readers argued for years about whether that was a complaint.{/n}''',
+        c(), paragraphs=EPILOGUE_PARAGRAPHS)],
+    requires=("trickster.ever", PROOFS), forbids=(COMPLETE, CLOSED, LATE, *DEATHS), last=99, Relationship="nurah",
     ForbidOverrides={d: RETURNED for d in DEATHS}))
+
+# The Commander's sacrifice with no way back (native Ending_PlayerSacrifice, Epilogues/Cue_0116): no reunion.
+SCENES.append(scene("nurah.trickster.epilogue.bereaved", "The last chapter, unread", "Epilogue", 5, "", [
+    nar("start", '''{n}The Commander did not come back from the Threshold. Nurah heard it from a sergeant who expected her to be glad, and she corrected his grammar and went home and did not write for a month.{/n}
+{n}Two years after the war her book came out of the River Kingdoms. The chapter on the Commander was the longest in it. It was also the only one she never read aloud to anyone, and the only one without a single joke.{/n}''',
+        c(), paragraphs=EPILOGUE_PARAGRAPHS)],
+    requires=("trickster.ever", "sacrifice"), forbids=(CLOSED, "trickster.commander_back", *DEATHS), last=99, Relationship="nurah",
+    RequiresAnyGroups=[[COMPLETE, LATE_COMMITTED]], ForbidOverrides={d: RETURNED for d in DEATHS}))
 
 # The in-play commitment's own page (nurah.complete; the prison cell or the in-person terms), with or without Last Call. One
 # publication date throughout: her Last Call coda also publishes two years after the Threshold.
@@ -524,8 +544,8 @@ SCENES.append(scene("nurah.trickster.epilogue.the_margin", "Author's terms", "Ep
               "bunk for the next prisoner.", requires=(RELEASED,), forbids=(RETURNED, RAN_OFF)),
             p("She never went back to the River Kingdoms pedlars. She said she had outgrown crates.", requires=(RAN_OFF,)),
         ))],
-    requires=("trickster.ever", COMPLETE), forbids=(CLOSED, *DEATHS), last=99, Relationship="nurah",
-    ForbidOverrides={d: RETURNED for d in DEATHS}))
+    requires=("trickster.ever", COMPLETE), forbids=(CLOSED, *DEATHS, "sacrifice"), last=99, Relationship="nurah",
+    ForbidOverrides={**{d: RETURNED for d in DEATHS}, "sacrifice": "trickster.commander_back"}))
 
 SCENES.append(scene("nurah.trickster.epilogue.refused", "No review", "Epilogue", 5, "", [
     nar("start", '''{n}The last chapter never reached Drezen. Nurah Dendiwhar, who had been owned once and meant never to be again, published it under a name nobody could trace, and anyone who asked about the Commander was told that the Commander had wanted a name above hers, and that this was the whole of the review.{/n}''',

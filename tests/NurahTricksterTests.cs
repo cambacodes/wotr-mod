@@ -298,9 +298,28 @@ internal static class NurahTricksterTests
             "An executed Nurah is narrated alive without the bargain.");
         var boughtBack6 = World(story, 6, "trickster.ever", "nurah.trickster.proofs_seen", "nurah.dead_drezen", "nurah.killing_mechanism",
                                 "nurah.trickster.returned");
-        check(boughtBack6.Has("nurah.trickster.late_committed") && Rules.Available(story, epCommit, boughtBack6), "The bought-back Nurah loses her page.");
+        // Round 3 (INT): proofs with her terms never answered are a published book, not a romance; only the late branches,
+        // which can never reach her in-person terms, commit on the page.
+        var epUnanswered = S("nurah.trickster.epilogue.unanswered");
         var cell6 = World(story, 6, "trickster.ever", "nurah.prison", "nurah.trickster.released", "nurah.trickster.proofs_seen");
-        check(cell6.Has("nurah.trickster.late_committed"), "The living prisoner's late commit is lost.");
+        foreach (var w in new[] { boughtBack6, cell6 })
+            check(!w.Has("nurah.trickster.late_committed") && !Rules.Available(story, epCommit, w) && Rules.Available(story, epUnanswered, w),
+                "Unanswered terms are decided as a romance.");
+        check(!Rules.Available(story, epUnanswered, executedAfterProofs) && !Rules.Available(story, epUnanswered, ending),
+            "The unanswered page plays for an executed Nurah or a late branch.");
+        // Round 3 (CAN): no postwar reunion after an unsurvived sacrifice; a bereaved page instead; the return keeps it.
+        var epBereaved = S("nurah.trickster.epilogue.bereaved");
+        var lost = World(story, 6, "trickster.ever", "nurah.complete", "nurah.ran_off", "sacrifice");
+        var back = World(story, 6, "trickster.ever", "nurah.complete", "nurah.ran_off", "sacrifice", "ending.trickster");
+        check(!Rules.Available(story, epMargin, lost) && Rules.Available(story, epBereaved, lost)
+              && Rules.Available(story, epMargin, back) && !Rules.Available(story, epBereaved, back), "The sacrifice reunites or mourns wrongly.");
+        var lateLost = Program.Copy(ending); lateLost.Flags.Add("sacrifice"); Rules.Complete(story, lateLost);
+        check(!Rules.Available(story, epCommit, lateLost) && Rules.Available(story, epBereaved, lateLost), "The late page survives the sacrifice.");
+        // Round 3 (BEL): the byline paragraphs never contradict the co-author cover.
+        var bylines = epMargin.Nodes[0].Paragraphs.Where(q => q.Text.Contains("The Commander's name appeared", StringComparison.Ordinal)).ToList();
+        check(bylines.Count == 3 && bylines.Count(q => !q.Requires.Contains("nurah.trickster.cost.coauthor")) == 2
+              && bylines.Where(q => !q.Requires.Contains("nurah.trickster.cost.coauthor")).All(q => q.Forbids.Contains("nurah.trickster.cost.coauthor")),
+            "The first-page byline contradicts the co-author cover.");
         // Sol round 2 (INT): an in-play commitment has its own page, without Last Call; one publication date throughout.
         foreach (var w in new[] { World(story, 6, "trickster.ever", "nurah.complete", "nurah.trickster.released", "nurah.prison"),
                                   World(story, 6, "trickster.ever", "nurah.complete", "nurah.ran_off"),
