@@ -57538,7 +57538,7 @@
           "Text": "{n}The ordinary page hid no door, and you do not pretend it did. What you have is a named wayhouse, a courier who runs the eastern road twice a week, and a woman who wrote that she wants to see you.{/n}\nYou buy the dispatch clerk a bottle and a quiet hour, and your sealed invitation goes into the returns bag on top instead of at the bottom. The courier who was meant to carry a packet of requisitions reaches the wayhouse before her evening duty with your letter in his hand, and he never learns why the clerk was so cheerful.\nShe writes back in her own hand, on the back of yours. She will walk the public road to Drezen, if you still want her to come.",
           "Choices": [
             {
-              "Text": "Send the courier's invitation and let Targona choose the walk.",
+              "Text": "Send the courier back with your invitation.",
               "Next": "road",
               "Set": [],
               "Requires": [],
@@ -57559,7 +57559,7 @@
         {
           "Id": "ordinary",
           "Speaker": "Narrator",
-          "Text": "{n}You do not make a magical route. You write that you will leave the invitation with the courier and let Targona decide whether to walk the road from her wayhouse.{/n}\nShe replies that she will not come this week: there is fever on the eastern road, and eleven men in the wayhouse who need an angel more than you do. You answer with an ordinary account of your day, including one detail too small for any dispatch.\nShe sends back one from hers. The wayhouse cat has taken the chaplain's chair, and nobody in the house has the courage to move it.",
+          "Text": "{n}You do not make a magical route. You write that the invitation will wait with the courier, and that the road from her wayhouse is an ordinary one.{/n}\nShe replies that she will not come this week: there is fever on the eastern road, and eleven men in the wayhouse who need an angel more than you do. You answer with an ordinary account of your day, including one detail too small for any dispatch.\nShe sends back one from hers. The wayhouse cat has taken the chaplain's chair, and nobody in the house has the courage to move it.",
           "Choices": [
             {
               "Text": "Send your answer and leave a later invitation to her.",
@@ -57580,7 +57580,7 @@
           "Text": "{n}You send no key and no courier. You write that you want to see her, and that you would rather see her on a night when the road and the war both allow it.{/n}\nTargona's answer is warm, if brief.\n\"You took me at my word. Few people do; they think an angel's no is only a yes that has not been prayed over long enough. I still want you. Keep writing to me, and one evening I will write back and name the night.\"\nYou answer with the smallest news you have, and ask for hers.",
           "Choices": [
             {
-              "Text": "Reply with affection and leave the next decision open.",
+              "Text": "Write back.",
               "Next": null,
               "Set": [
                 "targona.visit_correspondence"
@@ -57598,7 +57598,7 @@
           "Text": "{n}The two anchors hold when you test the opening with an empty dispatch pouch, first from the wayhouse side and then from Drezen. The path returns to the same two places every time. It will stay open for the evening.{/n}\n{n}The courier carries Targona a written account of the test, the way to close the passage, and the key. She reads every line of it. Her reply is one sentence: \"I will inspect it myself.\"{/n}\n{n}When she arrives in the Drezen courtyard she examines both anchors, slowly, the way a healer examines a wound someone else has dressed, and then puts the key in her own pocket.{/n}\n\"It is well made,\" she says. \"For a trick.\"",
           "Choices": [
             {
-              "Text": "Offer to walk beside her and let her choose where to begin.",
+              "Text": "Walk the wall with her.",
               "Next": "walk",
               "Set": [],
               "Requires": [],
@@ -57606,7 +57606,7 @@
               "Abort": false
             },
             {
-              "Text": "Ask whether she would rather close the passage and take the road home now.",
+              "Text": "Tell her the wounded on the eastern road will want her at first light.",
               "Next": "close_passage",
               "Set": [],
               "Requires": [],
@@ -57637,10 +57637,10 @@
         {
           "Id": "road",
           "Speaker": "Narrator",
-          "Text": "{n}The courier carries your invitation to the Celestial Order's wayhouse. Targona reads the terms there and chooses to come by the public eastern road, on foot and at her own pace.{/n}\nNo spell moves her and no unstable gate closes behind her. She reaches the Drezen courtyard before the appointed hour and waits until you arrive.\n\"I walked,\" she says. \"It was a long road, and nobody on it looked at the wing. I liked that. Walk beside me the rest of the way.\"",
+          "Text": "{n}The courier carries your invitation to the Celestial Order's wayhouse. Targona comes by the public eastern road, on foot, stopping twice on the way at the dressing station by the ford because there were men there.{/n}\nNo spell moves her and no unstable gate closes behind her. She reaches the Drezen courtyard before the appointed hour and waits until you arrive.\n\"I walked,\" she says. \"It was a long road, and nobody on it looked at the wing. I liked that. Walk beside me the rest of the way.\"",
           "Choices": [
             {
-              "Text": "Walk with her and let her choose where to begin.",
+              "Text": "Walk the wall with her.",
               "Next": "walk",
               "Set": [],
               "Requires": [],
@@ -57648,7 +57648,7 @@
               "Abort": false
             },
             {
-              "Text": "Ask whether she would rather return to the wayhouse tonight.",
+              "Text": "Tell her the wounded on the eastern road will want her at first light.",
               "Next": "close_road",
               "Set": [],
               "Requires": [],
@@ -57661,7 +57661,7 @@
         {
           "Id": "walk",
           "Speaker": "Narrator",
-          "Text": "{n}You take the path around the courtyard rather than leading her through it. Targona chooses the slower walk along the wall, where the city noise thins and the evening air reaches the open edge of her wing.{/n}\nYou ask if the wing hurts today. She answers without apology: sometimes, and not now. Then she asks what you would have done if she had declined.\n\"Waited,\" you say. \"Possibly complained to the nearest statue.\"\n\"Good. I would have disliked becoming responsible for your disappointment.\"\nHer mouth curves. The joke has reached its mark, but not its end.\n\"Everyone looks at me as a sign,\" she says. \"Heaven's healers look at the wing and see Areelu's work. The soldiers look at the other one and see a promise. In that laboratory I was proof of something.\" {n}She stops walking.{/n} \"You are looking at me as if I were a woman. I do not know yet what to do with that. I think I like it.\"\n{n}She turns to face you. The black wing lifts a little, the way it does when she is startled, and she does not fold it down.{/n}\n\"Commander. You have looked at me like that the whole length of the wall. Are you going to do anything about it?\"",
+          "Text": "{n}You take the path around the courtyard and up onto the wall, where the city noise thins and the evening air reaches the open edge of her wing.{/n}\nYou ask if the wing hurts today. She answers without apology: sometimes, and not now. Then she asks what you would have done if she had not come.\n\"Waited,\" you say. \"Possibly complained to the nearest statue.\"\n\"Pray for patience instead. It works on commanders too, I am told, though slowly.\" {n}Her mouth curves.{/n} \"I prayed for it all day. It did not take.\"\nThe joke has reached its mark, but not its end.\n\"Everyone looks at me as a sign,\" she says. \"Heaven's healers look at the wing and see Areelu's work. The soldiers look at the other one and see a promise. In that laboratory I was proof of something.\" {n}She stops walking.{/n} \"You are looking at me as if I were a woman. I do not know yet what to do with that. I think I like it.\"\n{n}She turns to face you. The black wing lifts a little, the way it does when she is startled, and she does not fold it down.{/n}\n\"Commander. You have looked at me like that the whole length of the wall. Are you going to do anything about it?\"",
           "Choices": [
             {
               "Text": "Ask her again, and wait for her answer.",
@@ -57685,7 +57685,7 @@
         {
           "Id": "close_passage",
           "Speaker": "Narrator",
-          "Text": "{n}You ask whether she would rather close the tested passage and take the public road home now. Targona turns the key herself; the opening folds shut at the Drezen end.{/n}\n\"Yes. I would like to walk back while the evening is still quiet.\" {n}She smiles, a little ruefully.{/n} \"If I stay, I will stay too long, and tomorrow there are wounded on the eastern road who deserve an angel who slept.\"\nYou tell her you are glad she came, and do not ask her to reconsider. She offers you her arm for the walk to the eastern road.",
+          "Text": "{n}She looks east, where the watchfires are, and then turns the key herself; the opening folds shut at the Drezen end.{/n}\n\"You are right, and I hate it. If I stay, I will stay too long, and tomorrow there are wounded on the eastern road who deserve an angel who slept.\" {n}She smiles, a little ruefully, and offers you her arm.{/n} \"Walk me to the road, at least. I will not use your trick twice in one night.\"",
           "Choices": [
             {
               "Text": "Walk with her to the road and say goodnight.",
@@ -57701,7 +57701,7 @@
         {
           "Id": "close_road",
           "Speaker": "Narrator",
-          "Text": "{n}You ask whether she would rather return to the wayhouse tonight. Targona says yes; she would like to walk back while the evening is still quiet.{/n}\n\"I am glad we met.\" {n}She smiles, a little ruefully.{/n} \"If I stay, I will stay too long, and tomorrow there are wounded on the eastern road who deserve an angel who slept.\"\nYou tell her you are glad she came, and do not ask her to reconsider. She offers you her arm for the walk to the eastern road.",
+          "Text": "{n}She looks east, where the watchfires are.{/n}\n\"You are right, and I hate it. If I stay, I will stay too long, and tomorrow there are wounded on the eastern road who deserve an angel who slept.\" {n}She smiles, a little ruefully, and offers you her arm.{/n} \"Walk me to the gate, then. Slowly.\"",
           "Choices": [
             {
               "Text": "Walk with her to the road and say goodnight.",
@@ -57717,7 +57717,7 @@
         {
           "Id": "departed",
           "Speaker": "Narrator",
-          "Text": "{n}You walk her as far as the eastern gate. The sentries there have been told nothing, and they look at the wing, and then at you, and then very hard at the road.{/n}\nShe squeezes your hand before letting go.\n\"That is all I want tonight. I am glad I came. Do not ask me for the next evening now. Ask me in a letter, where I can say yes slowly.\"\nTwo days later the courier brings a note. She reached the wayhouse before midnight, the cat has kept the chaplain's chair, and she prayed for you at compline, which she says you are not to make anything of.",
+          "Text": "{n}You walk her as far as the eastern gate. The sentries there have been told nothing, and they look at the wing, and then at you, and then very hard at the road.{/n}\nShe squeezes your hand before letting go.\n\"I am glad I came. Do not ask me for the next evening here, at a gate, in front of sentries. Ask me in a letter, where I can say yes slowly.\"\nTwo days later the courier brings a note. She reached the wayhouse before midnight, the cat has kept the chaplain's chair, and she prayed for you at compline, which she says you are not to make anything of.",
           "Choices": [
             {
               "Text": "Reply with affection and leave the next invitation open.",
@@ -57789,7 +57789,7 @@
         {
           "Id": "continue",
           "Speaker": "Narrator",
-          "Text": "{n}You tell her that a walk is enough. Targona leaves her fingers in your sleeve and chooses the battlements, where the city opens below and the watchfires on the eastern road show where the wounded are coming in.{/n}\n\"There,\" she says, pointing. \"That fire is the ford. They brought eleven across it this morning. I counted.\" {n}She is quiet for a moment.{/n} \"I have spent my whole life being useful. I am not sure I know how to be idle beside someone.\"\n\"Walk until I am tired. Then eat something sweet enough to be imprudent. Then decide whether I want another kiss. That is my plan, and I will not be argued out of it.\"\n{n}She tells you which of the city lights she can see from the terrace, and which she has mistaken for stars. You listen as the night deepens around the places she chooses to name.{/n}",
+          "Text": "{n}You tell her that a walk is enough. Targona leaves her fingers in your sleeve and chooses the battlements, where the city opens below and the watchfires on the eastern road show where the wounded are coming in.{/n}\n\"There,\" she says, pointing. \"That fire is the ford. They brought eleven across it this morning. I counted.\" {n}She is quiet for a moment.{/n} \"I have spent my whole life being useful. I am not sure I know how to be idle beside someone.\"\n\"Walk until I am tired. Then eat something sweet enough to be imprudent. Then decide whether I want another kiss. That is my plan, and I will not be argued out of it.\"\n{n}She tells you which of the city lights she can see from the terrace, and which she has mistaken for stars, and which is the lamp in the infirmary where a boy with a fever is waiting for morning.{/n}",
           "Choices": [
             {
               "Text": "End the evening with affection and leave the next choice open.",
@@ -141413,10 +141413,10 @@
         {
           "Id": "near",
           "Speaker": "Nurah",
-          "Text": "{n}Nurah sets the pen down. When you move the old letter away from the lamp, she catches your wrist.{/n}\n\"Leave it. I know where it is.\"\n{n}She rises onto the chair to reach you without pulling you down. Her hands settle on your shoulders, then slide beneath the edge of your collar. The touch is slow now, with none of the performance she used in front of Carrow.\nYou kiss the corner of her mouth. She turns toward you and makes you begin again properly. One knee presses against your hip as she steadies herself. The chair protests.{/n}\n\"This furniture has no discretion,\" she murmurs.\n\"We could move.\"\n\"I was hoping you would think of that.\"\n{n}You lift her from the chair. She makes a small, affronted sound that turns into a laugh halfway through, and wraps an arm around your neck. On the way past the table she reaches down to extinguish the lamp. The old letter disappears into darkness with everything else.\nLater, when she retrieves it, she does so without hurrying. She folds it into her sleeve and steals the warmer side of the cover before you can object.{/n}",
+          "Text": "{n}Nurah sets the pen down. When you move the old letter away from the lamp, she catches your wrist.{/n}\n\"Leave it. I know where it is.\"\n{n}She rises onto the chair to reach you without pulling you down. Her hands settle on your shoulders, then slide beneath the edge of your collar. The touch is slow now, with none of the performance she used in front of Carrow.\nYou kiss the corner of her mouth. She turns toward you and makes you begin again properly. One knee presses against your hip as she steadies herself. The chair protests.{/n}\n\"This furniture has no discretion,\" she murmurs.\n\"We could move.\"\n\"I was hoping you would think of that.\"\n{n}You lift her from the chair. She makes a small, affronted sound that turns into a laugh halfway through, and wraps an arm around your neck. On the way past the table she reaches down to extinguish the lamp. The old letter disappears into darkness with everything else.\nAt the bed she twists out of your arms before you can set her down, lands on her knees on the cover, and hauls you after her by the collar she has already half unfastened.{/n}\n\"You were slow,\" she says. \"Trezbot's clerks were faster, and they were paid by the hour.\" {n}She pulls the pins out of her hair one at a time and drops them on the floor, and then her dress after them, and puts one ink-stained hand flat on your chest and pushes you down onto your back, and follows.{/n}\n{n}In the morning she retrieves the letter without hurrying, folds it into her sleeve, and steals the warmer side of the cover before you can object. When you reach for her she does not pretend to be asleep. From that night she stops knocking at your door; she simply comes in, and tells you what she has been writing, and sits where she likes.{/n}",
           "Choices": [
             {
-              "Text": "[Let the work wait until the next appointment.]",
+              "Text": "[Let the work wait until she comes up the stair again.]",
               "Next": null,
               "Set": [
                 "nurah.letter_faced"
@@ -142095,7 +142095,7 @@
           "Text": "\"The document would have settled this,\" Vhal says. \"Unfortunately the Commander's manner made its removal necessary.\"\n\"Then bring it back,\" you answer.\n{n}She refuses. A guest complains that his evening has been spoiled by accusations neither side can settle. Nurah turns to him.{/n}\n\"The record may wait. The offer did not. You heard what she wanted me to say before she would let me see it. Would you pay a historian to work that way?\"\n\"We pay for a finished history.\"\n\"Then you have had an unusually good view of its manufacture.\"\n{n}He closes his book. Vhal keeps repeating that the original remains available to a properly arranged inquiry. But when another subscriber asks whether his deposit purchased research or a performance, she cannot answer by blaming the Commander.\nNurah takes your arm and walks toward the door. Vhal catches you before you leave, lowering her voice so the guests cannot hear the word settlement.\nNurah makes her repeat it.{/n}",
           "Choices": [
             {
-              "Text": "[Take the offer without pretending the missing record was displayed.]",
+              "Text": "[Take the offer. The record stays missing.]",
               "Next": null,
               "Set": [
                 "nurah.reading_confronted"
@@ -143008,7 +143008,7 @@
           "Text": "{n}Nurah has arranged the transferred papers by usefulness. The largest stack concerns households that paid Vhal to conceal information while publicly praising the accuracy of her histories.\nShe has already written to two former clients outside the protected list. The letters offer private research services at prices calculated from what the recipients previously paid for silence.{/n}\n\"You have not wasted time.\"\n\"Neither have they. One former client tried to purchase his own file before Edran finished packing it. The present clients must wait until Vhal delivers their contracts. I have marked the dates.\"\n{n}She shows you the offer, then the answer she sent. Her price is higher. She has no intention of transferring the only copy.\nBressa's record sits in a smaller folder with the acquisition note. Nurah has sent a query about the purchaser, partly to follow the woman's disappearance and partly to test a source named in the collection. She has kept the expense against the new business.{/n}\n\"Does everything become useful?\" you ask.\n\"No. Some things become expensive. I try to notice the difference before I acquire them.\"\n{n}Her gaze settles on you, warm and deliberately appraising.{/n}\n\"You are making that calculation difficult. I resent it more attractively on some evenings than others.\"",
           "Choices": [
             {
-              "Text": "[Accept the profitable, coercive business she has chosen to build.]",
+              "Text": "[Let her keep her collection, and name her own price for it.]",
               "Next": "history",
               "Set": [
                 "nurah.outcome_collection"
@@ -143023,10 +143023,10 @@
         {
           "Id": "distance",
           "Speaker": "Nurah",
-          "Text": "{n}The settlement releases Bressa's record and the evidence concerning Vhal's offer. The wider supplier list remains outside your joint undertaking. Nurah has copied the record for an inquiry and paid to have it carried to the purchaser's district.\nShe gives you the account without mentioning the separate scrap she kept when you refused her larger plan.{/n}\n\"You are waiting for me to ask,\" you say.\n\"I am waiting to see whether you can resist.\"\n\"Have you bought another collection?\"\n\"No. I have written a letter. It is my letter.\"\n{n}You leave the question there. Nurah looks almost disappointed, then amused by the disappointment.{/n}\n\"We worked rather well together until you began editing my ambitions.\"\n\"We still obtained the record.\"\n\"We did. I am capable of remembering a useful partner while being annoyed with one.\"\n{n}She puts the final inventory beside you and leans back in the chair. She has brought the completed work in person. The disagreement has changed what she shares, not made her vanish or recant what she wanted.\nWhen she reaches for your hand a few moments later, the gesture contains neither apology nor a request for one.{/n}",
+          "Text": "{n}The settlement releases Bressa's record and the evidence concerning Vhal's offer. The wider supplier list remains outside your joint undertaking. Nurah has copied the record for an inquiry and paid to have it carried to the purchaser's district.\nShe gives you the account without mentioning the separate scrap she kept when you refused her larger plan.{/n}\n\"You are waiting for me to ask,\" you say.\n\"I am waiting to see whether you can resist.\"\n\"Have you bought another collection?\"\n\"No. I have written a letter. It is my letter.\"\n{n}You leave the question there. Nurah looks almost disappointed, then amused by the disappointment.{/n}\n\"We worked rather well together until you began editing my ambitions.\"\n\"We still obtained the record.\"\n\"We did. I am capable of remembering a useful partner while being annoyed with one.\"\n{n}She puts the final inventory beside you and leans back in the chair. The scrap she kept stays folded in her sleeve, and she makes sure you see her not taking it out.\nWhen she reaches for your hand a few moments later, she does it without apologising, and without asking whether you would like her to.{/n}",
           "Choices": [
             {
-              "Text": "[Keep the result and the disagreement without pretending either has disappeared.]",
+              "Text": "[Keep the record, and let her keep her scrap.]",
               "Next": "history",
               "Set": [
                 "nurah.outcome_distance"
@@ -161519,13 +161519,18 @@
       ],
       "Requires": [
         "trickster.ever",
-        "lastcall.active",
-        "nurah.complete"
+        "lastcall.active"
       ],
       "Forbids": [],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "lastcall"
+      "Relationship": "lastcall",
+      "RequiresAnyGroups": [
+        [
+          "nurah.complete",
+          "nurah.trickster.late_coda"
+        ]
+      ]
     },
     {
       "Id": "nurah.trickster.react.irabeth_night",
@@ -198971,10 +198976,10 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The chaplains of the Hand keep a crypt under the chapel for knights whose orders have not yet said where they are to be buried. Since Areelu's laboratory they have kept an angel in it, on a bier, under a Mendevian shroud, waiting for Heaven to answer a letter about her. Heaven has not answered.{/n}\n{n}You have come back up out of the Abyss with the war nearly over and her name still on a list of the dead. The crusade's last scroll of raise dead is locked in the chaplains' own reliquary, promised to the first knight of the Hand who falls at the Threshold.{/n}",
+          "Text": "{n}The crusade's chaplains keep a crypt under the chapel for the dead whose orders have not yet said where they are to be buried. Since Areelu's laboratory they have kept an angel in it, on a bier, under a Mendevian shroud, waiting for Heaven to answer a letter about her. Heaven has not answered.{/n}\n{n}You have come back up out of the Abyss with the war nearly over and her name still on a list of the dead. There is one scroll of raise dead left in Drezen: the chaplains' reliquary holds it as the crusade's relic tithe, sealed and promised to Heaven's envoy, who is to carry it back to the Upper Planes after the Threshold as proof that the crusade kept faith.{/n}",
           "Choices": [
             {
-              "Text": "[Take the knight's scroll] \"Open the crypt. I'll read it myself, and you'll say nothing.\"",
+              "Text": "[Break the tithe seal] \"Open the crypt. I'll read it myself, and the envoy can take it up with me.\"",
               "Next": "raise",
               "Set": [],
               "Requires": [],
@@ -199000,15 +199005,35 @@
         {
           "Id": "raise",
           "Speaker": "Narrator",
-          "Text": "{n}The chaplain-captain opens the reliquary with a face like a shut door. Somewhere in the Threshold's first assault a knight of the Hand will fall with no scroll kept for him, and every chaplain in the chapel knows whose name to curse for it.{/n}\n{n}In the crypt you turn back the shroud. She looks as she did on the laboratory floor. The crypt is cold, and the chaplains have been careful with her. You read the scroll over her by one lamp, with your palm flat on her heart and her brother's light in it, and the chaplain-captain stands at the stair with his back to you and prays aloud for the knight who will not have it. Coming back from the dead is an ordeal. The breath goes into her like a blade.{/n}",
+          "Text": "{n}The chaplain-captain opens the reliquary with a face like a shut door and makes you break the envoy's seal with your own thumb. By nightfall the envoy will know whose thumb it was, and he will take his blessing off the Threshold muster, and every officer in Drezen will know why.{/n}\n{n}In the crypt you turn back the shroud. She looks as she did on the laboratory floor. The crypt is cold, and the chaplains have been careful with her. You read the scroll over her by one lamp, with your palm flat on her heart and her brother's light in it, and it goes to ash in your hand at the last word. Coming back from the dead is an ordeal. The breath goes into her like a blade, and she opens her eyes on a stone ceiling and your face.{/n}",
           "Choices": [
             {
-              "Text": "[Stay until she breathes.]",
+              "Text": "Continue",
+              "Next": "wake",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "wake",
+          "Speaker": "Targona",
+          "Text": "{n}It is a long time before she can speak, and when she can, it is only a whisper.{/n}\n\"Whose scroll?\" {n}She hears the answer out. The black wing moves once against the bier.{/n}\n\"Heaven's tithe. You broke Heaven's tithe for an angel you killed.\" {n}She closes her eyes.{/n} \"I would have told you to leave me. You knew that. It is why you did not wait until I could.\"\n\"Then I will not be carried to a crypt again for nothing. Take me up to the infirmary, Commander. If I am to cost that much, the wounded had better get the worth of it.\"",
+          "Choices": [
+            {
+              "Text": "[Carry her up the crypt stair.]",
               "Next": null,
               "Set": [
                 "targona.trickster.primed",
                 "targona.trickster.cost.late",
-                "targona.trickster.cost.raised_from_the_crypt"
+                "targona.trickster.cost.raised_from_the_crypt",
+                "targona.trickster.returned",
+                "targona.started",
+                "targona.trickster.cost.struck_down",
+                "targona.trickster.cost.left_for_dead"
               ],
               "Requires": [],
               "Forbids": [],
@@ -199061,8 +199086,7 @@
               "Requires": [],
               "Forbids": [
                 "targona.trickster.cost.raised_the_hard_way",
-                "targona.trickster.cost.raised_openly",
-                "targona.trickster.cost.raised_from_the_crypt"
+                "targona.trickster.cost.raised_openly"
               ],
               "Abort": false
             },
@@ -199074,8 +199098,7 @@
                 "targona.trickster.cost.raised_openly"
               ],
               "Forbids": [
-                "targona.trickster.cost.raised_the_hard_way",
-                "targona.trickster.cost.raised_from_the_crypt"
+                "targona.trickster.cost.raised_the_hard_way"
               ],
               "Abort": false
             },
@@ -199085,16 +199108,6 @@
               "Set": [],
               "Requires": [
                 "targona.trickster.cost.raised_the_hard_way"
-              ],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
-              "Next": "crypt",
-              "Set": [],
-              "Requires": [
-                "targona.trickster.cost.raised_from_the_crypt"
               ],
               "Forbids": [],
               "Abort": false
@@ -199138,22 +199151,6 @@
           "Id": "cold",
           "Speaker": "Narrator",
           "Text": "{n}You remember the chapel exactly: the scroll, the breath going into her like a blade, the chaplain praying with his eyes shut. She did not wake while you were there. The priests carried her down to the infirmary on a litter, as one more wounded thing.{/n}",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "news",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Targona"
-        },
-        {
-          "Id": "crypt",
-          "Speaker": "Narrator",
-          "Text": "{n}You remember the crypt exactly: the cold, the lamp, the shroud turned back, the second scroll ready in your other hand in case the first failed. It did not fail. The breath went into her like a blade after all those weeks, and she did not wake while you were there. The Hand's chaplains carried her up the crypt stair on a bier and down to the infirmary on a litter, and said nothing to anyone, as they had been paid to.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -200218,7 +200215,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She came back through the chaplains' crypt, on the scroll the Hand had kept for its own. A knight of the Hand fell at the Threshold with no scroll kept for him. She learned his name, and said it at every compline for the rest of her life, before the Commander's.",
+              "Text": "She came back through the chaplains' crypt, on the scroll the crusade owed Heaven as its tithe. Heaven's envoy never blessed another muster of the Commander's, and Targona spent a year of feast days in his anteroom, asking him to, until he wrote her a letter she did not show anyone.",
               "Requires": [
                 "targona.trickster.cost.raised_from_the_crypt"
               ],
@@ -200363,7 +200360,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She came back through the chaplains' crypt, on the scroll the Hand had kept for its own. A knight of the Hand fell at the Threshold with no scroll kept for him. She learned his name, and said it at every compline for the rest of her life, before the Commander's.",
+              "Text": "She came back through the chaplains' crypt, on the scroll the crusade owed Heaven as its tithe. Heaven's envoy never blessed another muster of the Commander's, and Targona spent a year of feast days in his anteroom, asking him to, until he wrote her a letter she did not show anyone.",
               "Requires": [
                 "targona.trickster.cost.raised_from_the_crypt"
               ],
@@ -200424,7 +200421,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}The Commander did not come back from the Threshold. Targona heard it in the infirmary, from a runner who did not know what he was telling her, and she finished binding the arm in front of her before she sat down.{/n}\n{n}She asked Heaven for no more furloughs, and Heaven, for once, did not argue. She kept the ward in Drezen with the Commander's name over the door until the last cot was folded, and prayed for the Commander at every compline, and when the Hand asked her where she wished to be sent next, she said: wherever the dying are, and nobody sits with them.{/n}",
+          "Text": "{n}The Commander did not come back from the Threshold. Targona heard it in the infirmary, from a runner who did not know what he was telling her, and she finished binding the arm in front of her before she sat down.{/n}\n{n}She asked Heaven for no more furloughs, and Heaven, for once, did not argue. She kept the ward in Drezen with the Commander's name over the door until the last cot was folded, and prayed for the Commander at every compline, and when her superiors in Heaven asked her where she wished to be sent next, she said: wherever the dying are, and nobody sits with them.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -200454,7 +200451,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She came back through the chaplains' crypt, on the scroll the Hand had kept for its own. A knight of the Hand fell at the Threshold with no scroll kept for him. She learned his name, and said it at every compline for the rest of her life, before the Commander's.",
+              "Text": "She came back through the chaplains' crypt, on the scroll the crusade owed Heaven as its tithe. Heaven's envoy never blessed another muster of the Commander's, and Targona spent a year of feast days in his anteroom, asking him to, until he wrote her a letter she did not show anyone.",
               "Requires": [
                 "targona.trickster.cost.raised_from_the_crypt"
               ],
@@ -200551,8 +200548,7 @@
       ],
       "Requires": [
         "trickster.ever",
-        "lastcall.active",
-        "targona.committed"
+        "lastcall.active"
       ],
       "Forbids": [
         "targona.trickster.declined"
@@ -200562,7 +200558,13 @@
       "Relationship": "lastcall",
       "ForbidOverrides": {
         "targona.trickster.declined": "targona.committed"
-      }
+      },
+      "RequiresAnyGroups": [
+        [
+          "targona.committed",
+          "targona.trickster.parent_romanced"
+        ]
+      ]
     },
     {
       "Id": "targona.trickster.react.seelah_furlough",
@@ -278561,11 +278563,11 @@
         {
           "Id": "open",
           "Speaker": "Narrator",
-          "Text": "{n}There is an elf waiting in your antechamber when you come off the walls: tall, pale, with a bandaged forearm and a melancholy, courteous face. Forn Autumn Haze, darkhunter of Kyonin, rises and bows as if the war had left him nothing but his manners.{/n}",
+          "Text": "{n}There is an elf waiting in your antechamber when you come off the walls: tall, pale, in Kyonin grey with a leaf-shaped brooch at the throat, a bandaged forearm, and a melancholy, courteous face.{/n}",
           "Choices": [
             {
               "Text": "Continue",
-              "Next": "ask",
+              "Next": "named",
               "Set": [],
               "Requires": [],
               "Forbids": [
@@ -278587,9 +278589,9 @@
           "Portrait": "Kaylessa"
         },
         {
-          "Id": "second",
+          "Id": "named",
           "Speaker": "Narrator",
-          "Text": "{n}Not Forn; Forn is dead. This one wears the same grey, the same leaf-shaped brooch at the throat, and the same careful sorrow, as if the Winter Council issued it with the cloak. He gives no name. He says the name does not matter; the duty is the same one.{/n}",
+          "Text": "{n}Forn Autumn Haze, darkhunter of Kyonin, rises and bows as if the war had left him nothing but his manners.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -278601,6 +278603,148 @@
             }
           ],
           "Portrait": "Kaylessa"
+        },
+        {
+          "Id": "second",
+          "Speaker": "Narrator",
+          "Text": "{n}He is not Forn Autumn Haze; Forn is dead. This one wears the same grey, the same brooch, and the same careful sorrow, as if the Winter Council issued it with the cloak. He rises and bows. He gives no name. He says the name does not matter; the duty is the same one.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "ask_s",
+              "Set": [
+                "kaylessa.trickster.alive.successor"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kaylessa"
+        },
+        {
+          "Id": "ask_s",
+          "Speaker": "Darkhunter",
+          "Text": "\"Commander. Forgive the hour. The one I hunt is in Drezen. The man who hunted her before me did not come home, and the Council has sent me to finish his work. She came in under a courier's grey and a face that is not hers, and she has been watching your markets for a week.\"\n\"I ask for nothing that would trouble your crusade. Only your leave, and one courtesy: a word, from you, that an elf lies wounded in the ravine below the south wall. She goes to the wounded. She cannot help it. It is the last thing about her that is still one of us.\"",
+          "Choices": [
+            {
+              "Text": "[Play along] \"Name the place and the hour. I'll send her to you.\"",
+              "Next": "agreed_s",
+              "Set": [
+                "kaylessa.trickster.primed",
+                "kaylessa.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Study the bandage while he talks]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "SkillPerception",
+                "DC": 25,
+                "Success": "seen_s",
+                "Failure": "missed_s"
+              }
+            },
+            {
+              "Text": "[Send him away] \"No hunting in my city.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "seen_s",
+          "Speaker": "Narrator",
+          "Text": "{n}The bandage is clean where it ought to be foul, and the arm under it moves too easily whenever he forgets it. There is no wound. He has learned his predecessor's trade to the letter. A man who fakes a wound to bring his prey into the open keeps friends with bows somewhere out of the light.{/n}",
+          "Choices": [
+            {
+              "Text": "[Play along] \"Name the place and the hour. I'll send her to you.\"",
+              "Next": "agreed_s",
+              "Set": [
+                "kaylessa.trickster.primed",
+                "kaylessa.started",
+                "kaylessa.trickster.alive.wound_seen"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Send him away] \"No hunting in my city.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Kaylessa"
+        },
+        {
+          "Id": "missed_s",
+          "Speaker": "Narrator",
+          "Text": "{n}The bandage is stained and tight, and he favours the arm the way a wounded man does. If it is theatre, it is good theatre.{/n}",
+          "Choices": [
+            {
+              "Text": "[Play along] \"Name the place and the hour. I'll send her to you.\"",
+              "Next": "agreed_s",
+              "Set": [
+                "kaylessa.trickster.primed",
+                "kaylessa.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Send him away] \"No hunting in my city.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Kaylessa"
+        },
+        {
+          "Id": "agreed_s",
+          "Speaker": "Darkhunter",
+          "Text": "\"Two nights from now, in the ravine below the south wall, when the moon is down. She sees in the dark; we must give her every advantage, or she will suspect a trap.\" {n}He bows again, lower.{/n}\n\"You do my people a service they will never be permitted to thank you for. My predecessor would have said that circumstances are stronger than our desires. I have found it simpler not to have desires.\"",
+          "Choices": [
+            {
+              "Text": "[Watch him go.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
         },
         {
           "Id": "ask",
@@ -278844,6 +278988,42 @@
               "Next": "amulet",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "kaylessa.trickster.alive.successor"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "amulet_s",
+              "Set": [],
+              "Requires": [
+                "kaylessa.trickster.alive.successor"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kaylessa"
+        },
+        {
+          "Id": "amulet_s",
+          "Speaker": "Kaylessa",
+          "Text": "\"Anemora's work. Her people wore faces like this round a campfire near your war camp, pretending to be your scouts. I took this one off a dead one in the fog.\"\n\"It shows a courier of the Green Road. Some girl they killed on the way to Mendev; I never learned her name. Forn hunted that face across half the country. Forn's dead, and the Council sent the next one with the same cloak and the same list, and he's hunting it now. It's the only elf face I've got, soldier. It's how I buy bread.\"",
+          "Choices": [
+            {
+              "Text": "\"Then let him catch it. On somebody else.\"",
+              "Next": "swap",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Could that amulet hang round another neck?\"",
+              "Next": "swap",
+              "Set": [],
+              "Requires": [],
               "Forbids": [],
               "Abort": false
             }
@@ -278984,13 +279164,25 @@
         {
           "Id": "open",
           "Speaker": "Narrator",
-          "Text": "{n}With the moon down, the ravine below the south wall is as black as the bottom of a well. Forn lies propped against a stone at the very bottom of it, a lantern turned low at his side, his bandaged arm across his knees: exactly where a wounded man would be found, exactly where a rescuer would have to stand in the light.{/n}",
+          "Text": "{n}With the moon down, the ravine below the south wall is as black as the bottom of a well. The darkhunter lies propped against a stone at the very bottom of it, a lantern turned low at his side, his bandaged arm across his knees: exactly where a wounded man would be found, exactly where a rescuer would have to stand in the light.{/n}",
           "Choices": [
             {
               "Text": "Continue",
               "Next": "forn",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "kaylessa.trickster.alive.successor"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "forn_s",
+              "Set": [],
+              "Requires": [
+                "kaylessa.trickster.alive.successor"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -279014,9 +279206,25 @@
           "Portrait": "Forn"
         },
         {
+          "Id": "forn_s",
+          "Speaker": "Darkhunter",
+          "Text": "\"Commander. And the courier.\" {n}Kaylessa comes down the slope behind you in the Green Road girl's face, her bow unstrung on her back, like a woman who has been told a friend is hurt.{/n}\n\"Forn Autumn Haze would have apologised to you both. I never learned how. Come into the light.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "ridge",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
           "Id": "ridge",
           "Speaker": "Narrator",
-          "Text": "{n}A pebble rolls somewhere on the ridge above. Then another, on the other side. Forn's good hand is already on his knife. Kaylessa's shoulder touches yours, once: the only signal you agreed on.{/n}",
+          "Text": "{n}A pebble rolls somewhere on the ridge above. Then another, on the other side. The darkhunter's good hand is already on his knife. Kaylessa's shoulder touches yours, once: the only signal you agreed on.{/n}",
           "Choices": [
             {
               "Text": "[Unpick the glamour like a trap, and set it again on him]",
@@ -279070,13 +279278,25 @@
         {
           "Id": "swap",
           "Speaker": "Narrator",
-          "Text": "{n}Kaylessa goes first, straight at him, the way she once went at a different trap on a different night. Forn's knife comes up for her throat. You are already inside his reach.{/n}\n{n}Two fingers under the cord at her neck, a turn of the wrist, and the cord is over his head before his arm finishes its stroke, the way a wasp's sting is in before the hand can slap. The glamour takes him like water takes dye. For a heartbeat there are two of her in the lamplight: a freckled Green Road girl with Forn's knife in her hand, and a drow woman throwing herself flat on the stones.{/n}",
+          "Text": "{n}Kaylessa goes first, straight at him, the way she once went at a different trap on a different night. His knife comes up for her throat. You are already inside his reach.{/n}\n{n}Two fingers under the cord at her neck, a turn of the wrist, and the cord is over his head before his arm finishes its stroke, the way a wasp's sting is in before the hand can slap. The glamour takes him like water takes dye. For a heartbeat there are two of her in the lamplight: a freckled Green Road girl with the darkhunter's knife in her hand, and a drow woman throwing herself flat on the stones.{/n}",
           "Choices": [
             {
               "Text": "Continue",
               "Next": "volley",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "kaylessa.trickster.alive.successor"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "volley_s",
+              "Set": [],
+              "Requires": [
+                "kaylessa.trickster.alive.successor"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -279100,9 +279320,25 @@
           "Portrait": "Kaylessa"
         },
         {
+          "Id": "volley_s",
+          "Speaker": "Narrator",
+          "Text": "{n}The ridge looses. Six bows, perhaps eight, every one at the face they were told to shoot before it could speak. He does not speak. He looks down at the fletching in his chest as though it were an error in a report he had signed without reading.{/n}\n{n}The amulet at his throat sputters, flares white, and burns out. The girl's face runs off him like wax, and what slides down the stone is a darkhunter of Kyonin who never gave his name, killed by Kyonin, in the same ravine his predecessor's work had led him to.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "after",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kaylessa"
+        },
+        {
           "Id": "after",
           "Speaker": "Kaylessa",
-          "Text": "{n}Up on the ridge somebody shouts a single word in Elven, and then there is the sound of men running the other way. Kaylessa gets up off the stones and stands over Forn without moving.{/n}\n\"No one in Kyonin will ever say this happened. They'll write that he died hunting me, and that I died with him, because the truth is worse than a lie to them. It's embarrassing.\" {n}She touches her throat where the cord was. There is nothing there now but her own dark skin.{/n}\n\"That was the last elf face I had, soldier. The only one I could have walked home in. Burnt out on him.\"",
+          "Text": "{n}Up on the ridge somebody shouts a single word in Elven, and then there is the sound of men running the other way. Kaylessa gets up off the stones and stands over him without moving.{/n}\n\"No one in Kyonin will ever say this happened. They'll write that he died hunting me, and that I died with him, because the truth is worse than a lie to them. It's embarrassing.\" {n}She touches her throat where the cord was. There is nothing there now but her own dark skin.{/n}\n\"That was the last elf face I had, soldier. The only one I could have walked home in. Burnt out on him.\"",
           "Choices": [
             {
               "Text": "[Say nothing.]",
@@ -279153,6 +279389,23 @@
                 "kaylessa.trickster.alive.swap_clean"
               ],
               "Requires": [],
+              "Forbids": [
+                "kaylessa.trickster.alive.successor"
+              ],
+              "Abort": false,
+              "StartEtude": "7a6f0ef4dd004418aa613693dd9d280a"
+            },
+            {
+              "Text": "[Take her back up the slope.]",
+              "Next": null,
+              "Set": [
+                "kaylessa.trickster.returned",
+                "kaylessa.trickster.cost.amulet_burnt",
+                "kaylessa.trickster.alive.swap_clean"
+              ],
+              "Requires": [
+                "kaylessa.trickster.alive.successor"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -279162,7 +279415,7 @@
         {
           "Id": "fumble",
           "Speaker": "Narrator",
-          "Text": "{n}Your fingers find the cord, and Forn finds your wrist. He is faster than a wounded man and stronger than a courteous one. The amulet comes off her neck and hangs in his fist between the three of you, blazing, half a face on it and half off.{/n}",
+          "Text": "{n}Your fingers find the cord, and the darkhunter finds your wrist. He is faster than a wounded man and stronger than a courteous one. The amulet comes off her neck and hangs in his fist between the three of you, blazing, half a face on it and half off.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -279222,7 +279475,7 @@
         {
           "Id": "beast",
           "Speaker": "Narrator",
-          "Text": "{n}What she does to Forn then, she does with her hands. The knife is somewhere on the stones and she doesn't look for it. You hear her, low, a sound that is nothing like her voice, and you see her face in the dying glare of the amulet, and it is delighted.{/n}\n{n}By the time the amulet burns out, Forn has stopped moving, and the ridge is empty. The marksmen have seen enough to carry home.{/n}",
+          "Text": "{n}What she does to him then, she does with her hands. The knife is somewhere on the stones and she doesn't look for it. You hear her, low, a sound that is nothing like her voice, and you see her face in the dying glare of the amulet, and it is delighted.{/n}\n{n}By the time the amulet burns out, he has stopped moving, and the ridge is empty. The marksmen have seen enough to carry home.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -279254,6 +279507,46 @@
               "Requires": [
                 "kaylessa.trickster.alive.shield_sworn"
               ],
+              "Forbids": [
+                "kaylessa.trickster.alive.successor"
+              ],
+              "Abort": false,
+              "StartEtude": "7a6f0ef4dd004418aa613693dd9d280a"
+            },
+            {
+              "Text": "[Help her up] \"Come on. Somewhere with a roof.\"",
+              "Next": null,
+              "Set": [
+                "kaylessa.trickster.returned",
+                "kaylessa.trickster.cost.amulet_burnt",
+                "kaylessa.trickster.alive.swap_fumbled",
+                "kaylessa.trickster.cost.council_knows",
+                "kaylessa.trickster.beast_seen",
+                "kaylessa.trickster.cost.her_collarbone"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "kaylessa.trickster.alive.shield_sworn",
+                "kaylessa.trickster.alive.successor"
+              ],
+              "Abort": false,
+              "StartEtude": "7a6f0ef4dd004418aa613693dd9d280a"
+            },
+            {
+              "Text": "[Help her up] \"Come on. Somewhere with a roof.\"",
+              "Next": null,
+              "Set": [
+                "kaylessa.trickster.returned",
+                "kaylessa.trickster.cost.amulet_burnt",
+                "kaylessa.trickster.alive.swap_fumbled",
+                "kaylessa.trickster.cost.council_knows",
+                "kaylessa.trickster.beast_seen",
+                "kaylessa.trickster.cost.arrow_taken"
+              ],
+              "Requires": [
+                "kaylessa.trickster.alive.shield_sworn",
+                "kaylessa.trickster.alive.successor"
+              ],
               "Forbids": [],
               "Abort": false
             },
@@ -279268,7 +279561,9 @@
                 "kaylessa.trickster.beast_seen",
                 "kaylessa.trickster.cost.her_collarbone"
               ],
-              "Requires": [],
+              "Requires": [
+                "kaylessa.trickster.alive.successor"
+              ],
               "Forbids": [
                 "kaylessa.trickster.alive.shield_sworn"
               ],
@@ -279604,7 +279899,9 @@
               "Requires": [
                 "kaylessa.trickster.alive.swap_clean"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "kaylessa.trickster.alive.successor"
+              ],
               "Abort": false
             },
             {
@@ -279613,6 +279910,17 @@
               "Set": [],
               "Requires": [
                 "kaylessa.trickster.alive.swap_fumbled"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "clean_s",
+              "Set": [],
+              "Requires": [
+                "kaylessa.trickster.alive.swap_clean",
+                "kaylessa.trickster.alive.successor"
               ],
               "Forbids": [],
               "Abort": false
@@ -279640,6 +279948,22 @@
           "Id": "clean",
           "Speaker": "Kaylessa",
           "Text": "\"Days. Since the ravine.\" {n}She holds up the wrist.{/n}\n\"Every morning I check. It moves, soldier. A little each week, like water through a boot. But I watched Forn go down with Kyonin's arrows in him, and I waited for it to howl, the way it did when I first saw him bleed in Mendev. It didn't. It didn't move at all.\"\n\"I don't know what that means. I'm afraid to hope it means anything.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "what",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kaylessa"
+        },
+        {
+          "Id": "clean_s",
+          "Speaker": "Kaylessa",
+          "Text": "\"Days. Since the ravine.\" {n}She holds up the wrist.{/n}\n\"Every morning I check. It moves, soldier. A little each week, like water through a boot. But I watched the Council's new man go down with Kyonin's arrows in him, in Forn's cloak, with Forn's list in his coat, and I waited for it to howl. It didn't. It didn't move at all.\"\n\"I don't know what that means. I'm afraid to hope it means anything.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -280354,7 +280678,7 @@
         {
           "Id": "truth_first",
           "Speaker": "Kaylessa",
-          "Text": "\"You still haven't told me what that thing at your Council took for me. You lied about it on the first day, and it's been sitting in my throat ever since.\" {n}Her grip on the hilt doesn't change.{/n}\n\"I'm not asking it as a toll, soldier. What I'm about to do, I'll do either way. I'm telling you so you know I haven't forgotten, and so you can say it now if you want to be clean when I do it.\"",
+          "Text": "\"Rule three, soldier. You still haven't told me what that thing at your Council took for me. You lied about it on the first day, and it's been sitting in my throat ever since.\" {n}Her grip on the hilt doesn't change.{/n}\n\"Say it now, or carry it. I'd rather you were clean for this. I'm doing it anyway.\"",
           "Choices": [
             {
               "Text": "[Confess] \"A branch where I say yes to Shyka. Where I become one of them.\"",
@@ -280472,7 +280796,7 @@
         {
           "Id": "ask",
           "Speaker": "Kaylessa",
-          "Text": "\"This is the knife I meant for the beast. For the night it comes the rest of the way. I couldn't use it on myself once, and I've been afraid ever since that I won't manage it the second time either.\"\n\"So I'm giving it to you. Not because you've earned it. Not because you passed some test. I'm done with tests; I've been tested by better liars than you.\" {n}Her mouth twists.{/n} \"Because I want to. That's all. Take it, soldier.\"",
+          "Text": "\"This is the knife I meant for the beast. For the night it comes the rest of the way. I couldn't use it on myself once, and I've been afraid ever since that I won't manage it the second time either.\"\n\"You've sat under this awning with me in the heat and the rain, and you never once asked me to take the shawl down. You kept my rules when breaking them was easier. You're the only one in two years who's looked at me like something that might still get better, instead of something to be put down.\" {n}Her mouth twists.{/n} \"So it's yours. Take it, soldier.\"",
           "Choices": [
             {
               "Text": "[Take the knife] \"I'll hold it.\"",
@@ -280874,7 +281198,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}The drow Kaylessa, once of the Sunset Wasps of Kyonin, stayed at the Commander's side through the Threshold and after it. She called the Commander \"soldier\" to the end of her days, in public and in private and in the middle of arguments, and nobody who heard it ever mistook it for anything but what it was.{/n}\n{n}She was never tame. She kept her rules and made the Commander keep them. She hunted, at night, the kind of men the law had missed, and came home before light, and some of the men were found and some were not.{/n}\n{n}She was not cured. There is no Light Fate. She lived with what was in her the way a soldier lives with a wound that will not close: carefully, angrily, and a long time.{/n}",
+          "Text": "{n}The drow Kaylessa, once of the Sunset Wasps of Kyonin, stayed at the Commander's side through the Threshold and after it. She called the Commander \"soldier\" to the end of her days, in public and in private and in the middle of arguments, and nobody who heard it ever mistook it for anything but what it was.{/n}\n{n}She was never tame. She kept her rules and made the Commander keep them. She hunted, at night, the kind of men the law had missed, and came home before light, and some of the men were found and some were not.{/n}\n{n}She was not cured. There is no Light Fate. She lived with what was in her the way a soldier lives with a wound that will not close: carefully and angrily, one morning at a time, and she checked it every one of them.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -280928,8 +281252,30 @@
               "Requires": [
                 "kaylessa.trickster.alive.swap_clean"
               ],
+              "Forbids": [
+                "kaylessa.trickster.alive.successor"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The Winter Council's records list the drow Kaylessa as dead in Mendev, killed in the same night as the nameless darkhunter it sent after Forn Autumn Haze. The Council never asked who killed whom. It preferred not to know.{/n}",
+              "Requires": [
+                "kaylessa.trickster.alive.swap_clean",
+                "kaylessa.trickster.alive.successor"
+              ],
               "Forbids": [],
               "AnyGroups": []
+            },
+            {
+              "Text": "{n}In the living world the clock never stopped. Some seasons it moved and some it did not, and she tied a knot for every step it took and hung the strips on a nail by the door. The Commander learned to count them too, and never once said the number aloud. The Kyonin dagger hung on the next nail.{/n}",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "kaylessa.trickster.alive.swap_clean",
+                  "kaylessa.trickster.alive.swap_fumbled"
+                ]
+              ]
             },
             {
               "Text": "{n}The Winter Council knew she lived. Twice more it sent hunters. The first was found in the Drezen ravine with his own arrows in him. The second never arrived; the crusade's border patrol said he had turned for home, and would not say what they had told him.{/n}",
@@ -281017,7 +281363,7 @@
       "DelayHours": 0,
       "Optional": false,
       "ForbidOverrides": {
-        "sacrifice": "trickster.cheated_death"
+        "sacrifice": "trickster.commander_back"
       },
       "Relationship": "kaylessa"
     },
@@ -281032,7 +281378,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}The drow Kaylessa did not answer the Commander's question until the war was over. The Commander had never quite asked it. She answered it anyway, one evening after the Threshold, by walking into the Commander's rooms with the shutters open and the lamp out, and laying a Kyonin dagger on the table between them, hilt towards the Commander's hand.{/n}\n{n}\"Your choice, soldier,\" she said. \"It always was. I only wanted to be sure you knew it.\"{/n}\n{n}Whatever the Commander chose, she stayed. She kept her rules, and she kept her knife where one of them could reach it, and she did not say which one, and she was never cured, and she lived a long time.{/n}",
+          "Text": "{n}The drow Kaylessa did not answer the Commander's question until the war was over. The Commander had never quite asked it. She answered it anyway, one evening after the Threshold, by walking into the Commander's rooms with the shutters open and the lamp out, and laying a Kyonin dagger on the table between them, hilt towards the Commander's hand.{/n}\n{n}\"Your choice, soldier,\" she said. \"It always was. I only wanted to be sure you knew it.\"{/n}\n{n}Whatever the Commander chose, she stayed. She kept her rules, and she kept her knife where one of them could reach it, and she did not say which one, and she was never cured, and she checked the clock every morning she had.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -281068,6 +281414,17 @@
               ],
               "Forbids": [],
               "AnyGroups": []
+            },
+            {
+              "Text": "{n}In the living world the clock never stopped. She tied a knot for every step it took, and hung the strips by the door beside the knife.{/n}",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "kaylessa.trickster.alive.swap_clean",
+                  "kaylessa.trickster.alive.swap_fumbled"
+                ]
+              ]
             }
           ]
         }
@@ -281085,7 +281442,7 @@
       "DelayHours": 0,
       "Optional": false,
       "ForbidOverrides": {
-        "sacrifice": "trickster.cheated_death"
+        "sacrifice": "trickster.commander_back"
       },
       "Relationship": "kaylessa"
     },
@@ -281383,6 +281740,50 @@
       "Requires": [
         "kaylessa.trickster.returned",
         "kaylessa.begged_death"
+      ],
+      "Forbids": [
+        "woljif.dead",
+        "woljif.kicked_out"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "kaylessa",
+      "Reaction": true,
+      "Chapters": [
+        3,
+        5
+      ],
+      "AnswerLists": [
+        "e41585da330233143b34ef64d7d62d69"
+      ]
+    },
+    {
+      "Id": "kaylessa.trickster.react.woljif_morning",
+      "Title": "Woljif's word",
+      "Owner": "Woljif",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Something you want to say?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Woljif",
+          "Text": "\"Chief. You came in the east postern at the second horn with grass all down your back and no horse, and you walked like a man who's been sat on a rock since dawn.\" {n}Woljif lowers his voice to what he believes is a whisper.{/n}\n\"And the one at the tailor's has got her shawl down today. Down! I saw her whole face. She nodded at me. I didn't know what to do, so I nodded back, and now I think we're friends, and I'm scared.\" {n}He squints at you.{/n} \"Don't tell me where you were. I don't want to know. I want to know a bit.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Woljif"
+        }
+      ],
+      "Requires": [
+        "kaylessa.clearing.grey_light"
       ],
       "Forbids": [
         "woljif.dead",
@@ -285362,7 +285763,7 @@
         {
           "Id": "miss",
           "Speaker": "Kaylessa",
-          "Text": "\"Miss it?\" {n}She thinks about it honestly, which is what she does with every question you give her.{/n}\n\"I miss being looked at the way people looked at her. Politely. Like I was nobody in particular. That face could stand in a queue for the grain dole and nobody's hand went to a sword.\"\n\"This one can't.\" {n}She touches her own cheek, dark as slate.{/n} \"This one's the only face I'll ever have again, soldier. You burnt out the other one on Forn. I'm not complaining. I'm telling you what it cost.\"",
+          "Text": "\"Miss it?\" {n}She thinks about it honestly, which is what she does with every question you give her.{/n}\n\"I miss being looked at the way people looked at her. Politely. Like I was nobody in particular. That face could stand in a queue for the grain dole and nobody's hand went to a sword.\"\n\"This one can't.\" {n}She touches her own cheek, dark as slate.{/n} \"This one's the only face I'll ever have again, soldier. You burnt out the other one on the hunter in the ravine. I'm not complaining. I'm telling you what it cost.\"",
           "Choices": [
             {
               "Text": "\"I'd do it again.\"",
@@ -285900,7 +286301,7 @@
         {
           "Id": "ravine",
           "Speaker": "Narrator",
-          "Text": "{n}Not far. Out of the south gate and down into the ravine below the wall, where the stones are still stained dark in places and someone has swept away the lantern glass. It's black as the bottom of a well with the moon down. She can see. You can't.{/n}\n{n}She walks you to the stone where Forn lay and stops there, with your wrist still in her hand.{/n}",
+          "Text": "{n}Not far. Out of the south gate and down into the ravine below the wall, where the stones are still stained dark in places and someone has swept away the lantern glass. It's black as the bottom of a well with the moon down. She can see. You can't.{/n}\n{n}She walks you to the stone where the darkhunter lay and stops there, with your wrist still in her hand.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -286363,7 +286764,7 @@
         {
           "Id": "clean",
           "Speaker": "Kaylessa",
-          "Text": "\"It moved.\" {n}She finally looks at you, over the shawl.{/n} \"Back. An inch. Maybe less. I don't trust it. It's never moved that way before, not once since the Worldwound. I'm not going to say anything more about it in case it hears.\"",
+          "Text": "\"Same place as yesterday.\" {n}She finally looks at you, over the shawl.{/n} \"I thought a night like that would feed it. It didn't get a crumb. It'll move again next week; it always does, a little, like water through a boot. But not for you. Not for last night.\" {n}She rubs her thumb over the knots.{/n} \"I'm not going to say anything more about it in case it hears.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -286738,7 +287139,7 @@
         {
           "Id": "amulet",
           "Speaker": "Kaylessa",
-          "Text": "\"And I've got nothing left to hide under. No elf face, not any more. It burnt out on Forn. So I thought, if I'm going to walk round your city looking like what I am, I might as well be seen doing it.\" {n}She lifts her chin.{/n} \"Calistria's colour. The Sting's girls wore red under the grey, in Kyonin. Where nobody could see it.\"",
+          "Text": "\"And I've got nothing left to hide under. No elf face, not any more. It burnt out on the man they sent to kill me. So I thought, if I'm going to walk round your city looking like what I am, I might as well be seen doing it.\" {n}She lifts her chin.{/n} \"Calistria's colour. The Sting's girls wore red under the grey, in Kyonin. Where nobody could see it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -287598,7 +287999,7 @@
         {
           "Id": "start",
           "Speaker": "Kaylessa",
-          "Text": "\"They sent another one.\" {n}She doesn't stop cleaning.{/n} \"The Council. Your marksmen on the ridge ran home and told them I'm alive, and they sent another hunter. Younger than Forn. Worse manners. He came over the east wall last night with a blade he'd rubbed with ash.\"\n\"I've got him in the old cooper's cellar by the tannery. He's alive. For now.\"",
+          "Text": "\"They sent another one.\" {n}She doesn't stop cleaning.{/n} \"The Council. Your marksmen on the ridge ran home and told them I'm alive, and they sent another hunter. Younger than the last one. Worse manners. He came over the east wall last night with a blade he'd rubbed with ash.\"\n\"I've got him in the old cooper's cellar by the tannery. He's alive. For now.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -378715,7 +379116,6 @@
         "vellexia.trickster.returned",
         "vellexia.trickster.cost.predicted",
         "vellexia.trickster.cost.trick_kept",
-        "nurah.trickster.cost.ramisa_fee",
         "nurah.trickster.cost.ramisa_audience",
         "nurah.trickster.cost.bill_in_your_name",
         "kiana.trickster.cost.sunhammer_favour",
@@ -378809,7 +379209,6 @@
         "vellexia.trickster.returned": "vellexia.lastcall.resolved",
         "vellexia.trickster.cost.predicted": "vellexia.lastcall.resolved",
         "vellexia.trickster.cost.trick_kept": "vellexia.lastcall.resolved",
-        "nurah.trickster.cost.ramisa_fee": "nurah.lastcall.resolved",
         "nurah.trickster.cost.ramisa_audience": "nurah.lastcall.resolved",
         "nurah.trickster.cost.bill_in_your_name": "nurah.lastcall.resolved",
         "kiana.trickster.cost.sunhammer_favour": "kiana.lastcall.resolved",
@@ -378938,7 +379337,6 @@
         "vellexia.trickster.returned",
         "vellexia.trickster.cost.predicted",
         "vellexia.trickster.cost.trick_kept",
-        "nurah.trickster.cost.ramisa_fee",
         "nurah.trickster.cost.ramisa_audience",
         "nurah.trickster.cost.bill_in_your_name",
         "kiana.trickster.cost.sunhammer_favour",
@@ -379033,7 +379431,6 @@
         "vellexia.trickster.returned": "vellexia.lastcall.resolved",
         "vellexia.trickster.cost.predicted": "vellexia.lastcall.resolved",
         "vellexia.trickster.cost.trick_kept": "vellexia.lastcall.resolved",
-        "nurah.trickster.cost.ramisa_fee": "nurah.lastcall.resolved",
         "nurah.trickster.cost.ramisa_audience": "nurah.lastcall.resolved",
         "nurah.trickster.cost.bill_in_your_name": "nurah.lastcall.resolved",
         "kiana.trickster.cost.sunhammer_favour": "kiana.lastcall.resolved",
@@ -380083,8 +380480,27 @@
                 "nurah.lastcall.resolved",
                 "trickster.lastcall.creditors_called"
               ],
-              "Requires": [],
+              "Requires": [
+                "nurah.trickster.cost.ramisa_audience"
+              ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Front row, for the duplicate bill with my name on it. You burn it when the curtain falls.\"",
+              "Next": null,
+              "Set": [
+                "nurah.lastcall.called",
+                "nurah.lastcall.resolved",
+                "trickster.lastcall.creditors_called",
+                "trickster.lastcall.nurah_story_sold"
+              ],
+              "Requires": [
+                "nurah.trickster.cost.bill_in_your_name"
+              ],
+              "Forbids": [
+                "nurah.trickster.cost.ramisa_audience"
+              ],
               "Abort": false
             }
           ],
@@ -380119,8 +380535,7 @@
       "RequiresAnyGroups": [
         [
           "nurah.trickster.cost.bill_in_your_name",
-          "nurah.trickster.cost.ramisa_audience",
-          "nurah.trickster.cost.ramisa_fee"
+          "nurah.trickster.cost.ramisa_audience"
         ]
       ]
     },
@@ -385996,6 +386411,13 @@
         "nurah.ran_off"
       ]
     ],
+    "nurah.trickster.late_coda": [
+      [
+        "trickster.ever",
+        "nurah.trickster.proofs_seen",
+        "nurah.trickster.cost.late"
+      ]
+    ],
     "minagho_chivarro.trickster.chivarro_cellar": [
       [
         "chivarro.removed"
@@ -387178,6 +387600,9 @@
       ],
       [
         "targona.trickster.late_committed"
+      ],
+      [
+        "targona.trickster.parent_romanced"
       ]
     ],
     "gesmerha.harem.eligible": [
@@ -387516,6 +387941,9 @@
     "trickster.religion_tier1": "04177c4ddec20ae4ca04388f9cf23518",
     "trickster.arcana_tier3": "5e26c673173e423881e318d2f0ae84f0"
   },
+  "StartableEtudes": [
+    "7a6f0ef4dd004418aa613693dd9d280a"
+  ],
   "PortraitFallbacks": {
     "Kaylessa": "f1d4b8ee52d14783a73cf6dea090ed41",
     "Forn": "d35dce02ae4c478b92cb92a9d35342f3",
