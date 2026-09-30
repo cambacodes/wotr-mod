@@ -809,9 +809,9 @@ def epilogue(id, text, requires, forbids=(), paragraphs=(), any_groups=()):
 
 
 EPILOGUE_PARAGRAPHS = (
-    p('''{n}When the stargazers' artifact set the northern stars ablaze over Threshold, every soldier in the siege lines looked up. The Commander saw a clear, dark sky, and did not mind it as much as expected. That winter, and every winter after, Eliandra described the lights over Sarkoris aloud, in great detail, until she was begged to stop, and then for a little longer.{/n}''',
+    p('''{n}When the stargazers' artifact set the northern stars ablaze over Threshold, every soldier in the siege lines looked up. The Commander saw the stars blaze, every one of them, and did not see the Maiden's lights that rose among them; the eye slid off them to the stars, as it always would. That winter, and every winter after, Eliandra described the lights over Sarkoris aloud, in great detail, until she was begged to stop, and then for a little longer.{/n}''',
       requires=(LIGHTS_GIVEN, LIGHTS_LIT)),
-    p('''{n}Every winter the Maiden's lights stood over the ruins of Sarkoris, and every winter the Commander looked up at a dark sky while Eliandra described them aloud, in great detail, until she was begged to stop, and then for a little longer. She had promised to be tiresome about it. She was a woman who kept her promises.{/n}''',
+    p('''{n}Every winter the Maiden's lights stood over the ruins of Sarkoris, and every winter the Commander looked up at a sky of plain stars while Eliandra described them aloud, in great detail, until she was begged to stop, and then for a little longer. She had promised to be tiresome about it. She was a woman who kept her promises.{/n}''',
       requires=(LIGHTS_GIVEN,), forbids=(LIGHTS_LIT,)),
     p('''{n}She was never again the strongest of her Lady's priestesses. She healed as other priestesses heal, one wound at a time, and slept afterwards, and complained about it. The temples she reopened filled with priests who could do more than she could, and she ordered every one of them about.{/n}''',
       requires=(REWARD_RETURNED,)),
@@ -849,7 +849,7 @@ EPILOGUE_PARAGRAPHS = (
       requires=(E + "drezen.sea",)),
     p('''{n}Whatever the demon had carried off from Pulura's Fall, the Commander burned where it was found, every page, as promised. Eliandra never asked what it had cost to find. She only asked, every year on that day, whether it had all burned. It had.{/n}''',
       requires=(RESEARCH_BURN, "eliandra.research_stolen")),
-    p('''{n}The demon had carried nothing of theirs away; the Commander had seen to that at the shrine. Eliandra kept her promise's other half anyway: every page of the stargazers' work that could open a door was copied once, for the crusade, and the originals burned under the open stars.{/n}''',
+    p('''{n}The demon had carried nothing of theirs away; the Commander had seen to that at the shrine, and there was nothing in his hands to burn. The stargazers' work went to the crusade's scholars as she had wanted, in chests under her own seal, and she read every report they wrote from it, and corrected the margins.{/n}''',
       requires=(RESEARCH_BURN,), forbids=("eliandra.research_stolen",)),
     p('''{n}What was left of the stargazers' work went to the crusade's scholars, and some of it, it is said, helped at Threshold. Eliandra never asked what the rest was used for. Once a year she asked the Commander whether they had decided carefully, and listened to the answer with great attention.{/n}''',
       requires=(RESEARCH_KEEP,)),

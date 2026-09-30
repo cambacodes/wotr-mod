@@ -349,6 +349,12 @@ internal static class EliandraTricksterTests
             "The late pages do not follow whether she was courted before the war ran out.");
         check(story.SelectedAnswers["eliandra.northern_lights_awakened"] == "984d9d1432ea89044a6515be61a22125",
             "The Threshold lights paragraph does not read the artifact actually awakened.");
+        // Last Call (R2-6): her coda plays for the commit or the kept letter, and not for the soft no alone.
+        var coda = S("eliandra.lastcall.page");
+        check(coda.RequiresAnyGroups.Length == 1 && coda.RequiresAnyGroups[0].Contains(Committed) && coda.RequiresAnyGroups[0].Contains(E + "late_committed")
+              && Rules.Available(story, coda, World(story, 6, kept.Flags.Concat(new[] { "lastcall.active" }).ToArray()))
+              && !Rules.Available(story, coda, World(story, 6, no.Flags.Concat(new[] { "lastcall.active" }).ToArray())),
+            "Her Last Call coda does not follow the kept letter, or plays for the soft no alone.");
         // Rest-delivered pages in Chapter 5: the planning page, and the road letter on the soft no only.
         var remote5 = own.Where(s => Rules.IsRemote(s) && s.Chapters.Contains(5) && s.Owner != "EliandraEpilogue").Select(s => s.Id).ToList();
         check(remote5.SequenceEqual(new[] { E + "ch5.road_letter" }),

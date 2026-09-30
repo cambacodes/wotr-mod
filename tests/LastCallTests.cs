@@ -133,7 +133,7 @@ internal static class LastCallTests
             "LastCall_AllCommitted: expected 29 shown codas with the pair page replacing Anevia's and Irabeth's (got " + shown.Count + ").");
         foreach (var coda in codas)
         {
-            var own = World(story, 6, "trickster.ever", Taken, "ending.trickster", Bottle, coda.Requires.Last());
+            var own = World(story, 6, "trickster.ever", Taken, "ending.trickster", Bottle, coda.RequiresAnyGroups.Length > 0 ? coda.RequiresAnyGroups[0][0] : coda.Requires.Last());
             check(Av(coda, own), "LastCall_AllCommitted: a coda does not play for its committed partner alone: " + coda.Id);
             var uncommitted = World(story, 6, "trickster.ever", Taken, "ending.trickster", Bottle);
             check(!Av(coda, uncommitted), "LastCall_AllCommitted: a coda plays without her commit: " + coda.Id);

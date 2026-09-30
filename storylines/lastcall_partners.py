@@ -112,11 +112,14 @@ PARTNERS = []
 
 
 def partner(key, rel, commit, closed, title, opener, paragraphs, declined=None, page_forbids=(), deal=(), call=None,
-            call_commit=None, ledger=None):
+            call_commit=None, ledger=None, page_commit_groups=None):
+    """page_commit_groups (optional): the page plays on any of these commitment states instead of `commit` alone (R2-6: a
+    route's late_committed key); `commit` stays first."""
     PARTNERS.append(dict(key=key, rel=rel, commit=commit, closed=closed, title=title, opener=opener, paragraphs=paragraphs,
                          declined=declined, page_forbids=tuple(page_forbids), deal=[list(g) for g in deal], call=call,
                          call_commit=call_commit or [[commit]], ledger_title=ledger[0] if ledger else None,
-                         ledger_text=ledger[1] if ledger else None))
+                         ledger_text=ledger[1] if ledger else None,
+                         page_commit_groups=[list(g) for g in page_commit_groups] if page_commit_groups else None))
 
 
 def call(entry, text, *choices):
@@ -581,7 +584,8 @@ partner("eliandra", "eliandra", "eliandra.committed", "eliandra.closed", "The Ma
         page_p('''When the flask was opened in Drezen she was there with her question already chosen. It was, she admitted afterwards, not a very good one. She had been saving the good ones.''', requires=(H2,)),
         page_p('''Whatever the sky over Threshold did that night, the Commander could not see the part of it that belonged to the Maiden, and never would. She said that was all the proof she needed that the bargain had held, and went on describing it anyway.''', requires=(EL + "cost.lights_given",)),
         page_p('''She was not the strongest of her Lady's priestesses any more. She was, she said, strong enough to wait up.''', requires=(EL + "cost.reward_returned",)),
-    ), declined=EL + "declined",
+        page_p('''Her letter from the fords was still in the Commander's coat, its answer owed until the war was done. At the rift the Commander meant to write it the next morning, if there was a next morning. There was. It said: either.''', requires=(EL + "letter_kept",), forbids=("eliandra.committed",)),
+    ), page_commit_groups=[["eliandra.committed"], [EL + "late_committed"]],
     deal=[[EL + "cost.lights_given"]],
     call=call('''[Look north] "Eliandra. Tell me what the sky is doing."''',
         '''{n}Low in the north, over the rift, there is a place your eyes will not stay on. They slide off it to the smoke, to the stones, to your own hands. It has been that way since the night at the basin. You say her name into it anyway, and ask it what it is doing, the way she once asked you every morning. For a while nothing answers. Then, very far off, slow and plain and entirely sure of itself, the evening reading begins.{/n}''',
@@ -632,8 +636,14 @@ def pages():
         extra = dict(Relationship="lastcall")
         if part["declined"]:
             extra["ForbidOverrides"] = {part["declined"]: part["commit"]}
-        page = scene(part["key"] + ".lastcall.page", part["title"], "Epilogue", 1, "", [
-            n("page", "Narrator", part["opener"], paragraphs=part["paragraphs"])],
-            requires=("trickster.ever", ACTIVE, part["commit"]), forbids=forbids, last=99, **extra)
+        if part.get("page_commit_groups"):
+            extra["RequiresAnyGroups"] = [sorted({k for g in part["page_commit_groups"] for k in g}, key=lambda k: k != part["commit"])]
+            page = scene(part["key"] + ".lastcall.page", part["title"], "Epilogue", 1, "", [
+                n("page", "Narrator", part["opener"], paragraphs=part["paragraphs"])],
+                requires=("trickster.ever", ACTIVE), forbids=forbids, last=99, **extra)
+        else:
+            page = scene(part["key"] + ".lastcall.page", part["title"], "Epilogue", 1, "", [
+                n("page", "Narrator", part["opener"], paragraphs=part["paragraphs"])],
+                requires=("trickster.ever", ACTIVE, part["commit"]), forbids=forbids, last=99, **extra)
         out.append((part["rel"], page))
     return out

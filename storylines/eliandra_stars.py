@@ -448,7 +448,7 @@ drezen(E + "drezen.threshold", "What she saw at Threshold", '"You\'ve been to Th
        c("Continue", "blind", requires=(LIGHTS_GIVEN,)),
        c("Continue", "sighted", forbids=(LIGHTS_GIVEN,))),
     el("blind", '''{n}She looks at you, and you both know the next thing before she says it.{/n}
-"If we do it, the whole crusade will look up at Threshold and see my Lady's lights over the Wound. And you will not." {n}Neither of you pretends otherwise.{/n} "I will be there, if I can. Not in the breach. In the camp, with the healers. When they light, find me. I will tell you what they look like. I will tell you exactly."''',
+"If we do it, the whole crusade will look up at Threshold and see the northern stars burning, and my Lady's lights among them. You will see the stars. Not the lights." {n}Neither of you pretends otherwise.{/n} "I will be there, if I can. Not in the breach. In the camp, with the healers. When they light, find me. I will tell you what they look like. I will tell you exactly."''',
        c('"Then I\'ll find you."', "end"),
        c('"Tell me kindly, that time."', "end")),
     el("sighted", '''"If we do it, the whole crusade will look up at Threshold and see my Lady's lights over the Wound." {n}She smiles, a little crookedly.{/n} "You will see them. I made sure of that when I paid her myself. It is the one thing I have done in a hundred years that was entirely selfish, and I am very pleased with it."

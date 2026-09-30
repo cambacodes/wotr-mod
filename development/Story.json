@@ -364737,7 +364737,7 @@
           "Portrait": "",
           "Paragraphs": [
             {
-              "Text": "{n}When the stargazers' artifact set the northern stars ablaze over Threshold, every soldier in the siege lines looked up. The Commander saw a clear, dark sky, and did not mind it as much as expected. That winter, and every winter after, Eliandra described the lights over Sarkoris aloud, in great detail, until she was begged to stop, and then for a little longer.{/n}",
+              "Text": "{n}When the stargazers' artifact set the northern stars ablaze over Threshold, every soldier in the siege lines looked up. The Commander saw the stars blaze, every one of them, and did not see the Maiden's lights that rose among them; the eye slid off them to the stars, as it always would. That winter, and every winter after, Eliandra described the lights over Sarkoris aloud, in great detail, until she was begged to stop, and then for a little longer.{/n}",
               "Requires": [
                 "eliandra.trickster.cost.lights_given",
                 "eliandra.northern_lights_awakened"
@@ -364746,7 +364746,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}Every winter the Maiden's lights stood over the ruins of Sarkoris, and every winter the Commander looked up at a dark sky while Eliandra described them aloud, in great detail, until she was begged to stop, and then for a little longer. She had promised to be tiresome about it. She was a woman who kept her promises.{/n}",
+              "Text": "{n}Every winter the Maiden's lights stood over the ruins of Sarkoris, and every winter the Commander looked up at a sky of plain stars while Eliandra described them aloud, in great detail, until she was begged to stop, and then for a little longer. She had promised to be tiresome about it. She was a woman who kept her promises.{/n}",
               "Requires": [
                 "eliandra.trickster.cost.lights_given"
               ],
@@ -364906,7 +364906,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The demon had carried nothing of theirs away; the Commander had seen to that at the shrine. Eliandra kept her promise's other half anyway: every page of the stargazers' work that could open a door was copied once, for the crusade, and the originals burned under the open stars.{/n}",
+              "Text": "{n}The demon had carried nothing of theirs away; the Commander had seen to that at the shrine, and there was nothing in his hands to burn. The stargazers' work went to the crusade's scholars as she had wanted, in chests under her own seal, and she read every report they wrote from it, and corrected the margins.{/n}",
               "Requires": [
                 "eliandra.trickster.research.burn"
               ],
@@ -364966,7 +364966,7 @@
           "Portrait": "",
           "Paragraphs": [
             {
-              "Text": "{n}When the stargazers' artifact set the northern stars ablaze over Threshold, every soldier in the siege lines looked up. The Commander saw a clear, dark sky, and did not mind it as much as expected. That winter, and every winter after, Eliandra described the lights over Sarkoris aloud, in great detail, until she was begged to stop, and then for a little longer.{/n}",
+              "Text": "{n}When the stargazers' artifact set the northern stars ablaze over Threshold, every soldier in the siege lines looked up. The Commander saw the stars blaze, every one of them, and did not see the Maiden's lights that rose among them; the eye slid off them to the stars, as it always would. That winter, and every winter after, Eliandra described the lights over Sarkoris aloud, in great detail, until she was begged to stop, and then for a little longer.{/n}",
               "Requires": [
                 "eliandra.trickster.cost.lights_given",
                 "eliandra.northern_lights_awakened"
@@ -364975,7 +364975,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}Every winter the Maiden's lights stood over the ruins of Sarkoris, and every winter the Commander looked up at a dark sky while Eliandra described them aloud, in great detail, until she was begged to stop, and then for a little longer. She had promised to be tiresome about it. She was a woman who kept her promises.{/n}",
+              "Text": "{n}Every winter the Maiden's lights stood over the ruins of Sarkoris, and every winter the Commander looked up at a sky of plain stars while Eliandra described them aloud, in great detail, until she was begged to stop, and then for a little longer. She had promised to be tiresome about it. She was a woman who kept her promises.{/n}",
               "Requires": [
                 "eliandra.trickster.cost.lights_given"
               ],
@@ -365135,7 +365135,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The demon had carried nothing of theirs away; the Commander had seen to that at the shrine. Eliandra kept her promise's other half anyway: every page of the stargazers' work that could open a door was copied once, for the crusade, and the originals burned under the open stars.{/n}",
+              "Text": "{n}The demon had carried nothing of theirs away; the Commander had seen to that at the shrine, and there was nothing in his hands to burn. The stargazers' work went to the crusade's scholars as she had wanted, in chests under her own seal, and she read every report they wrote from it, and corrected the margins.{/n}",
               "Requires": [
                 "eliandra.trickster.research.burn"
               ],
@@ -365196,7 +365196,7 @@
           "Portrait": "",
           "Paragraphs": [
             {
-              "Text": "{n}When the stargazers' artifact set the northern stars ablaze over Threshold, every soldier in the siege lines looked up. The Commander saw a clear, dark sky, and did not mind it as much as expected. That winter, and every winter after, Eliandra described the lights over Sarkoris aloud, in great detail, until she was begged to stop, and then for a little longer.{/n}",
+              "Text": "{n}When the stargazers' artifact set the northern stars ablaze over Threshold, every soldier in the siege lines looked up. The Commander saw the stars blaze, every one of them, and did not see the Maiden's lights that rose among them; the eye slid off them to the stars, as it always would. That winter, and every winter after, Eliandra described the lights over Sarkoris aloud, in great detail, until she was begged to stop, and then for a little longer.{/n}",
               "Requires": [
                 "eliandra.trickster.cost.lights_given",
                 "eliandra.northern_lights_awakened"
@@ -365205,7 +365205,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}Every winter the Maiden's lights stood over the ruins of Sarkoris, and every winter the Commander looked up at a dark sky while Eliandra described them aloud, in great detail, until she was begged to stop, and then for a little longer. She had promised to be tiresome about it. She was a woman who kept her promises.{/n}",
+              "Text": "{n}Every winter the Maiden's lights stood over the ruins of Sarkoris, and every winter the Commander looked up at a sky of plain stars while Eliandra described them aloud, in great detail, until she was begged to stop, and then for a little longer. She had promised to be tiresome about it. She was a woman who kept her promises.{/n}",
               "Requires": [
                 "eliandra.trickster.cost.lights_given"
               ],
@@ -365365,7 +365365,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The demon had carried nothing of theirs away; the Commander had seen to that at the shrine. Eliandra kept her promise's other half anyway: every page of the stargazers' work that could open a door was copied once, for the crusade, and the originals burned under the open stars.{/n}",
+              "Text": "{n}The demon had carried nothing of theirs away; the Commander had seen to that at the shrine, and there was nothing in his hands to burn. The stargazers' work went to the crusade's scholars as she had wanted, in chests under her own seal, and she read every report they wrote from it, and corrected the margins.{/n}",
               "Requires": [
                 "eliandra.trickster.research.burn"
               ],
@@ -365732,24 +365732,34 @@
               ],
               "Forbids": [],
               "AnyGroups": []
+            },
+            {
+              "Text": "Her letter from the fords was still in the Commander's coat, its answer owed until the war was done. At the rift the Commander meant to write it the next morning, if there was a next morning. There was. It said: either.",
+              "Requires": [
+                "eliandra.trickster.letter_kept"
+              ],
+              "Forbids": [
+                "eliandra.committed"
+              ],
+              "AnyGroups": []
             }
           ]
         }
       ],
       "Requires": [
         "trickster.ever",
-        "lastcall.active",
-        "eliandra.committed"
+        "lastcall.active"
       ],
-      "Forbids": [
-        "eliandra.trickster.declined"
-      ],
+      "Forbids": [],
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "lastcall",
-      "ForbidOverrides": {
-        "eliandra.trickster.declined": "eliandra.committed"
-      }
+      "RequiresAnyGroups": [
+        [
+          "eliandra.committed",
+          "eliandra.trickster.late_committed"
+        ]
+      ]
     },
     {
       "Id": "eliandra.trickster.ch5.terms_drezen",
@@ -372317,7 +372327,7 @@
         {
           "Id": "blind",
           "Speaker": "Eliandra",
-          "Text": "{n}She looks at you, and you both know the next thing before she says it.{/n}\n\"If we do it, the whole crusade will look up at Threshold and see my Lady's lights over the Wound. And you will not.\" {n}Neither of you pretends otherwise.{/n} \"I will be there, if I can. Not in the breach. In the camp, with the healers. When they light, find me. I will tell you what they look like. I will tell you exactly.\"",
+          "Text": "{n}She looks at you, and you both know the next thing before she says it.{/n}\n\"If we do it, the whole crusade will look up at Threshold and see the northern stars burning, and my Lady's lights among them. You will see the stars. Not the lights.\" {n}Neither of you pretends otherwise.{/n} \"I will be there, if I can. Not in the breach. In the camp, with the healers. When they light, find me. I will tell you what they look like. I will tell you exactly.\"",
           "Choices": [
             {
               "Text": "\"Then I'll find you.\"",
@@ -372491,7 +372501,7 @@
         {
           "Id": "blind",
           "Speaker": "Eliandra",
-          "Text": "{n}She looks at you, and you both know the next thing before she says it.{/n}\n\"If we do it, the whole crusade will look up at Threshold and see my Lady's lights over the Wound. And you will not.\" {n}Neither of you pretends otherwise.{/n} \"I will be there, if I can. Not in the breach. In the camp, with the healers. When they light, find me. I will tell you what they look like. I will tell you exactly.\"",
+          "Text": "{n}She looks at you, and you both know the next thing before she says it.{/n}\n\"If we do it, the whole crusade will look up at Threshold and see the northern stars burning, and my Lady's lights among them. You will see the stars. Not the lights.\" {n}Neither of you pretends otherwise.{/n} \"I will be there, if I can. Not in the breach. In the camp, with the healers. When they light, find me. I will tell you what they look like. I will tell you exactly.\"",
           "Choices": [
             {
               "Text": "\"Then I'll find you.\"",
@@ -377950,8 +377960,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
