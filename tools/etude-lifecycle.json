@@ -2122,6 +2122,25 @@
     "conditional"
    ]
   },
+  "7c5526416ab9e104ba53446c47a8637c": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Yaniel_Freed",
+    "Yaniel",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "Yaniel_Freed: EtudeStatus"
+   ],
+   "name": "Yaniel_Freed",
+   "traits": [
+    "conditional"
+   ]
+  },
   "7efcde13580d70648896ee8ae33b26f2": {
    "ancestors_completed": [],
    "areas": {},
@@ -3533,6 +3552,23 @@
    "name": "(parent mod / not in blueprints.zip)",
    "traits": [
     "parent_mod"
+   ]
+  },
+  "d6579be891428ff4fba964097afe5794": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Yaniel_Killed",
+    "Yaniel",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Yaniel_Killed",
+   "traits": [
+    "hold"
    ]
   },
   "d70304f3d15343fca38e48da6027f89c": {

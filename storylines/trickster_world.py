@@ -391,6 +391,8 @@ BINDINGS = {
     'yaniel.radiance_masterwork': ('InventoryItems', '3b2df06a731030d49a1240b763cb6069', 'RadianceMasterwork'),
     'yaniel.radiance_plus1': ('InventoryItems', 'de1fc233ad934a0a93a17ebed3ec0cfb', 'RadiancePlus1ITem'),
     'yaniel.radiance_plus2': ('InventoryItems', '6a80e629e9a5ca74da1dabc2984bba3b', 'RadiancePlus2'),
+    'yaniel.radiance_ha4': ('InventoryItems', '0ff011d62af77e9428e12ac08f63709e', 'Yaniel_Longsword4HolyAvenger (TrueYaniel/Cue_0017 remakes RadiancePlus2 into it)'),
+    'yaniel.radiance_ha6': ('InventoryItems', 'cf5c1a507825f184dacbc3abe14b9db1', 'Yaniel_Longsword6HolyAvenger (the upgraded Holy Avenger)'),
     'yaniel.radiance_seen': ('SeenCues', 'cbf1a11c8d3ce814595149a211502ad1', 'TrueYaniel/Cue_0008 (Radiance handed to her; proves the Commander carried Radiance, whose '),
 }
 
@@ -552,7 +554,8 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
                                ['wenduag.vellexia_conflict_c140'],
                                ['wenduag.vellexia_conflict_c141'],
                                ['wenduag.vellexia_conflict_main117']],
- 'yaniel.radiance_held': [['yaniel.radiance_masterwork'], ['yaniel.radiance_plus1'], ['yaniel.radiance_plus2']],
+ 'yaniel.radiance_held': [['yaniel.radiance_masterwork'], ['yaniel.radiance_plus1'], ['yaniel.radiance_plus2'],
+                          ['yaniel.radiance_ha4'], ['yaniel.radiance_ha6']],
  'yaniel.trickster.late_committed': [['trickster.ever', 'yaniel.trickster.custody_seen']],
  'yaniel.trickster.presence_on': [['yaniel.freed', 'yaniel.trickster.primed'],
                                   ['yaniel.killed', 'yaniel.trickster.primed_husk'],
