@@ -122,17 +122,20 @@ namespace Tirabade
         {
             var steps = Rules.PlanQuiet(ObserveCopy(copy));
             var done = CopyQuiet.None;
-            if ((steps & CopyQuiet.Faction) != 0
-                && ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(NeutralFaction)) is BlueprintFaction neutral)
+            var neutral = (steps & CopyQuiet.Faction) != 0 ? ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(NeutralFaction)) as BlueprintFaction : null;
+            // The group goes first: UnitGroup.Remove takes the copy's faction out of the old group's faction set, so it must
+            // still be the faction the copy joined with (after a switch it logs "Has no item in set" and leaves the party
+            // group's set stale). A copy whose faction cannot be switched keeps its group too.
+            if ((steps & CopyQuiet.Group) != 0 && ((steps & CopyQuiet.Faction) == 0 || neutral != null))
+            {
+                copy.GroupId = copy.UniqueId;   // what a non-player unit's group id defaults to
+                done |= CopyQuiet.Group;
+            }
+            if (neutral != null)
             {
                 // Also moves the copy's equipment out of the party's shared inventory (UnitDescriptor.SetupInventory).
                 copy.Descriptor.SwitchFactions(neutral, true);
                 done |= CopyQuiet.Faction;
-            }
-            if ((steps & CopyQuiet.Group) != 0 && copy.Descriptor.Faction != BlueprintRoot.Instance.PlayerFaction)
-            {
-                copy.GroupId = copy.UniqueId;   // what a non-player unit's group id defaults to
-                done |= CopyQuiet.Group;
             }
             if ((steps & CopyQuiet.Silence) != 0
                 && ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(SilentAsks)) is BlueprintUnitAsksList silent)
@@ -165,8 +168,13 @@ namespace Tirabade
             seen.Submitted = record?.Submitted == true;
             var commander = game.Player.MainCharacter.Value;
             string? copyId = record?.UnitId;
+            // A blueprint with a PretendUnit component (Seelah_NPC_Level1 -> Seelah_Companion, CR20_EvilArueshalae_NPC ->
+            // EvilArueshalae_Companion) reports the pretended blueprint as Blueprint once its facts activate, so our copy and
+            // natives are matched by OriginalBlueprint as well (Rules.IsPresenceUnit).
+            string blueprintId = Blueprint.AssetGuid.ToString();
             var units = game.State.LoadedAreaState.AllEntityData.OfType<UnitEntityData>()
-                .Where(unit => unit.Blueprint == Blueprint && !unit.Destroyed && !unit.DestroyMark && !unit.IsDisposed).ToArray();
+                .Where(unit => Rules.IsPresenceUnit(blueprintId, unit.OriginalBlueprint?.AssetGuid.ToString(), unit.Blueprint?.AssetGuid.ToString())
+                    && !unit.Destroyed && !unit.DestroyMark && !unit.IsDisposed).ToArray();
             copy = copyId == null ? null : units.FirstOrDefault(unit => unit.UniqueId == copyId);
             seen.CopyFound = copy != null;
             seen.CopyAlive = copy != null && !copy.State.IsDead && !copy.State.IsFinallyDead;

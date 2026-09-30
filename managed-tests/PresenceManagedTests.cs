@@ -79,6 +79,11 @@ internal static class PresenceManagedTests
         // Every spawn-copy of a Player-faction blueprint (companions) is what the quiet copy exists for; list them for the log.
         var companions = story.Presences.Where(p => p.Value.Mode == "spawn-copy" && ((string?)native[p.Value.Unit]["m_Faction"])?.EndsWith(PlayerFaction, StringComparison.Ordinal) == true)
             .Select(p => p.Key).OrderBy(k => k, StringComparer.Ordinal).ToArray();
+        // E12e: PretendUnit copies report another blueprint as Blueprint; GuestPresence matches them by OriginalBlueprint.
+        var pretenders = story.Presences.Where(p => p.Value.Mode == "spawn-copy" && native[p.Value.Unit]["Components"]?
+            .Any(c => ((string?)c["$type"])?.EndsWith(", PretendUnit", StringComparison.Ordinal) == true) == true).Select(p => p.Key).OrderBy(k => k, StringComparer.Ordinal).ToArray();
+        check(pretenders.Contains("seelah.presence"), "Seelah_NPC_Level1 no longer carries PretendUnit; re-check E12e.");
+        Console.WriteLine("E12e: PretendUnit spawn-copies matched by OriginalBlueprint: " + string.Join(", ", pretenders));
         Console.WriteLine("E12d: Player-faction spawn-copies quieted at spawn: " + (companions.Length == 0 ? "none" : string.Join(", ", companions)));
         Console.WriteLine("PASS: E12 presences resolve archive types; GuestPresence builds; its save record round-trips; harness report hook present.");
     }

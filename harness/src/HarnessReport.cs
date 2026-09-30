@@ -70,13 +70,16 @@ namespace RRT.TestHarness
         public List<ChoiceTaken> Choices = new List<ChoiceTaken>();
         /// <summary>completed | not-started | stuck | step-limit | exception | skipped | skipped-native (forced, gated on unforceable native keys)
         /// | skipped-inline (-Inline: the host dialog or its list could not be reached; not a failure) | entry-hidden | entry-not-started
-        /// | skipped-delay (forced, but the scene's DelayHours cannot be satisfied by backdating from this save; not a failure)</summary>
+        /// | skipped-delay (forced, but the scene's DelayHours cannot be satisfied by backdating from this save; not a failure)
+        /// | skipped-forbidden (the save itself holds one of the scene's Forbids; the page is legitimately closed; not a failure)</summary>
         public string Result = "";
         public string? Detail;
         /// <summary>Forced runs of a DelayHours scene: the keys whose hour.* times were backdated, e.g. "trickster.ever@1203".</summary>
         public List<string> DelayBackdated = new List<string>();
         /// <summary>Set when a forced run could not satisfy the scene's DelayHours (see DelayForcing).</summary>
         public string? DelayUnmet;
+        /// <summary>The scene's Forbids keys the save held before the run (the harness never sets them); non-empty makes a hidden page skipped-forbidden.</summary>
+        public List<string> ForbiddenHeld = new List<string>();
         public bool CompletedFlagSet;
         public List<string> OracleFailures = new List<string>();
         public List<CapturedLog> Exceptions = new List<CapturedLog>();
@@ -210,7 +213,7 @@ namespace RRT.TestHarness
                         s.SkippedInline++;
                         s.Skipped.Add(save.Save + " / " + run.Scene + ": skipped-inline (" + run.Detail + ")");
                     }
-                    if (run.Result == "skipped-delay") s.Skipped.Add(save.Save + " / " + run.Scene + ": skipped-delay (" + run.Detail + ")");
+                    if (run.Result == "skipped-delay" || run.Result == "skipped-forbidden") s.Skipped.Add(save.Save + " / " + run.Scene + ": " + run.Result + " (" + run.Detail + ")");
                     if (run.Passed) s.RunsPassed++;
                     else s.Failures.Add(save.Save + " / " + run.Scene + " [" + run.Strategy + "]: " + run.Result
                         + (run.Detail != null ? " (" + run.Detail + ")" : "")

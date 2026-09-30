@@ -128,5 +128,10 @@ internal static class PresenceTests
         check(Rules.PlanQuiet(new CopyObservation { Silenced = true }) == CopyQuiet.Passive,
             "A copy reloaded from a save (Passive is not saved) is not made passive again.");
         check(!Rules.PlanQuiet(new CopyObservation { Passive = true }).HasFlag(CopyQuiet.Faction), "A neutral copy's faction was switched.");
+        // E12e: a PretendUnit copy (Seelah_NPC_Level1 pretending to be Seelah_Companion) is still the presence's unit.
+        const string seelahNpc = "90481a29cc75f424b9891a55c6dcbb53", seelahCompanion = "54be53f0b35bf3c4592a97ae335fe765";
+        check(Rules.IsPresenceUnit(seelahNpc, seelahNpc, seelahCompanion), "A pretending copy is not recognized as the presence's unit.");
+        check(Rules.IsPresenceUnit(seelahNpc, seelahNpc, seelahNpc) && Rules.IsPresenceUnit(seelahNpc, null, seelahNpc), "A plain unit is not recognized.");
+        check(!Rules.IsPresenceUnit(seelahNpc, seelahCompanion, seelahCompanion), "The pretended companion was taken for the presence's unit.");
     }
 }

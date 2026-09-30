@@ -793,8 +793,15 @@ namespace Tirabade
             return steps.ToArray();
         }
 
-        // E12d: the repairs a live spawn-copy still needs. Faction first, so the group the copy then gets is its own; the
-        // group is repaired whenever it is the party's, whatever the faction. Idempotent: an inert copy needs nothing.
+        // E12d: the repairs a live spawn-copy still needs. A Player-faction copy caches the party's group id, so it needs
+        // both; the group is repaired whenever it is the party's, whatever the faction (the runtime moves the group before
+        // switching the faction). Idempotent: an inert copy needs nothing.
+        // E12e: a unit is the presence's unit when its original blueprint is (a PretendUnit copy reports another blueprint
+        // as Blueprint), or when its current blueprint is (as before).
+        public static bool IsPresenceUnit(string presenceUnit, string? originalBlueprint, string? blueprint)
+            => string.Equals(originalBlueprint, presenceUnit, StringComparison.OrdinalIgnoreCase)
+            || string.Equals(blueprint, presenceUnit, StringComparison.OrdinalIgnoreCase);
+
         public static CopyQuiet PlanQuiet(CopyObservation copy)
         {
             var steps = CopyQuiet.None;

@@ -94,7 +94,7 @@ namespace RRT.TestHarness
                 {
                     var bp = Bp<BlueprintUnit>(guid);
                     if (bp == null) { res.Skipped.Add(guid + ": not a BlueprintUnit"); continue; }
-                    if (units.Any(u => u.Blueprint == bp && !u.State.IsDead)) { res.Skipped.Add(bp.name + ": a live unit of it is already in the area"); continue; }
+                    if (units.Any(u => (u.OriginalBlueprint == bp || u.Blueprint == bp) && !u.State.IsDead)) { res.Skipped.Add(bp.name + ": a live unit of it is already in the area"); continue; }
                     var probe = new QuietCopyProbe { Unit = guid, UnitName = bp.name, NativeFaction = bp.Faction?.name, NativeAsks = bp.Visual?.Barks?.name };
                     res.Copies.Add(probe);
                     var at = main.Position + Quaternion.Euler(0f, 90f * seat++, 0f) * Vector3.forward * sp.Distance;
@@ -123,7 +123,11 @@ namespace RRT.TestHarness
                 var copies = new List<(UnitEntityData Unit, QuietCopyProbe Probe)>();
                 foreach (var (guest, probe) in guests.Where(g => g.Probe.Spawned))
                 {
-                    if (!(RrtBridge.PresenceActor(guest) is UnitEntityData copy)) continue;
+                    if (!(RrtBridge.PresenceActor(guest) is UnitEntityData copy))
+                    {
+                        probe.Error = "the engine has no actor for its copy after spawning (" + RrtBridge.PresenceStatus(guest) + ")";
+                        continue;
+                    }
                     copies.Add((copy, probe));
                     spikeBarks[copy] = probe.Barks;
                     probe.Exists = copy.IsInGame && !copy.Destroyed && !copy.State.IsDead && game.State.LoadedAreaState.AllEntityData.Contains(copy);
