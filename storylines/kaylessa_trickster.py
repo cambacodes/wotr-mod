@@ -843,7 +843,7 @@ SCENES.append(reaction("Woljif", P + "react.woljif_haggled", (RETURNED, BEGGED),
 
 # Sol quality pass (BEL): the morning after the clearing, seen by the one companion who never misses a comings and goings.
 SCENES.append(reaction("Woljif", P + "react.woljif_morning", ("kaylessa.clearing.grey_light",),
-    '''"Chief. You came in the east postern at the second horn with grass all down your back and no horse, and you walked like a man who's been sat on a rock since dawn." {n}Woljif lowers his voice to what he believes is a whisper.{/n}
+    '''"Chief. You rode in the east gate at the second horn with grass all down your back, and you got off that horse like a man who's been sat on a rock since dawn." {n}Woljif lowers his voice to what he believes is a whisper.{/n}
 "And the one at the tailor's has got her shawl down today. Down! I saw her whole face. She nodded at me. I didn't know what to do, so I nodded back, and now I think we're friends, and I'm scared." {n}He squints at you.{/n} "Don't tell me where you were. I don't want to know. I want to know a bit."''',
     answer_list=WOLJIF_HUB, forbids=WOLJIF_GONE, chapter=3, last=5, Chapters=[3, 5],
     entry='"Something you want to say?"', portrait="Woljif"))

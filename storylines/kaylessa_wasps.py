@@ -242,7 +242,7 @@ visit(HER_TOMB, "A very tasteful stone", [
 meet(SOLDIER, "Everyone's a soldier", '"You never use my name. Why is that?"', [
     nar("open", '''{n}A squad of recruits goes past under the awning at the double, too young, their mail borrowed and badly fitted, a sergeant bawling at their heels. Kaylessa watches them out of sight.{/n}''',
         c("Continue", "start")),
-    kay("start", '''"Your name?" {n}She considers it.{/n} "Everyone's a soldier in a war, generals and privates alike. I told you that once, or I told another you. I look at you and I see someone whose life is war and only war."
+    kay("start", '''"Your name?" {n}She considers it.{/n} "Everyone's a soldier in a war, generals and privates alike. I've been telling people that since Mendev. I look at you and I see someone whose life is war and only war."
 "Those boys there. Soldiers. The quartermaster with the ink on his fingers. Soldier. You." {n}She tips her cup at you.{/n} "Soldier."''',
         c('"And you?"', "you"),
         c('"I\'d like to hear you say my name."', "name"),

@@ -282757,7 +282757,7 @@
         {
           "Id": "start",
           "Speaker": "Woljif",
-          "Text": "\"Chief. You came in the east postern at the second horn with grass all down your back and no horse, and you walked like a man who's been sat on a rock since dawn.\" {n}Woljif lowers his voice to what he believes is a whisper.{/n}\n\"And the one at the tailor's has got her shawl down today. Down! I saw her whole face. She nodded at me. I didn't know what to do, so I nodded back, and now I think we're friends, and I'm scared.\" {n}He squints at you.{/n} \"Don't tell me where you were. I don't want to know. I want to know a bit.\"",
+          "Text": "\"Chief. You rode in the east gate at the second horn with grass all down your back, and you got off that horse like a man who's been sat on a rock since dawn.\" {n}Woljif lowers his voice to what he believes is a whisper.{/n}\n\"And the one at the tailor's has got her shawl down today. Down! I saw her whole face. She nodded at me. I didn't know what to do, so I nodded back, and now I think we're friends, and I'm scared.\" {n}He squints at you.{/n} \"Don't tell me where you were. I don't want to know. I want to know a bit.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -283876,7 +283876,7 @@
         {
           "Id": "start",
           "Speaker": "Kaylessa",
-          "Text": "\"Your name?\" {n}She considers it.{/n} \"Everyone's a soldier in a war, generals and privates alike. I told you that once, or I told another you. I look at you and I see someone whose life is war and only war.\"\n\"Those boys there. Soldiers. The quartermaster with the ink on his fingers. Soldier. You.\" {n}She tips her cup at you.{/n} \"Soldier.\"",
+          "Text": "\"Your name?\" {n}She considers it.{/n} \"Everyone's a soldier in a war, generals and privates alike. I've been telling people that since Mendev. I look at you and I see someone whose life is war and only war.\"\n\"Those boys there. Soldiers. The quartermaster with the ink on his fingers. Soldier. You.\" {n}She tips her cup at you.{/n} \"Soldier.\"",
           "Choices": [
             {
               "Text": "\"And you?\"",
