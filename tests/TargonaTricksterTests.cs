@@ -377,9 +377,33 @@ internal static class TargonaTricksterTests
         // the etude and a living angel is not a native state; no fixture pretends otherwise.
 
         // Trk_Targona_Epilogue_Late and the siblings.
-        var late6 = World(story, 6, "trickster.ever", P + "forgiven");
+        // Sol quality pass (BEL): on the killed branch the late commitment needs the washing, as the vigil does; forgiveness
+        // alone is an ally's ending.
+        var late6 = World(story, 6, "trickster.ever", P + "forgiven", P + "washed_the_dead");
         check(Rules.Available(story, epCommit, late6) && !Rules.Available(story, epDeclined, late6), "Trk_Targona_Epilogue_Late.");
         check(Rules.Available(story, epFurlough, late6), "The late commit has no furlough page.");
+        var epAlly = S(P + "epilogue.ally");
+        var forgivenOnly6 = World(story, 6, "trickster.ever", P + "forgiven");
+        check(!forgivenOnly6.Has(P + "late_committed") && !Rules.Available(story, epCommit, forgivenOnly6)
+              && !Rules.Available(story, epFurlough, forgivenOnly6) && Rules.Available(story, epAlly, forgivenOnly6)
+              && !Rules.Available(story, epAlly, late6), "Forgiveness without the washing is a romance ending.");
+        // Unprepared returns never recall a promise made at the barrier.
+        var furloughPages = new HashSet<string>();
+        Program.Walk(furlough, World(story, 5, "trickster.ever", "targona.dead_lab", P + "returned", P + "cost.struck_down", P + "cost.raised_the_hard_way"),
+            (page, _) => furloughPages.Add(page));
+        check(furloughPages.Contains("pikeman_late") && !furloughPages.Contains("pikeman")
+              && !furlough.Nodes.Single(n => n.Id == "pikeman_late").Text.Contains("as I said I would", StringComparison.Ordinal),
+            "An unprepared return recalls a promise she never made.");
+        var toldPages = new HashSet<string>();
+        Program.Walk(furlough, World(story, 5, "trickster.ever", "targona.dead_lab", P + "returned", P + "cost.struck_down", P + "cost.she_told_heaven"),
+            (page, _) => toldPages.Add(page));
+        check(toldPages.Contains("pikeman") && !toldPages.Contains("pikeman_late"), "The promised report is lost.");
+        // The wand stays the Commander's gift; the promise's paragraph follows what Last Call recorded.
+        var furloughParas = epFurlough.Nodes[0].Paragraphs;
+        check(!furloughParas.Any(q => q.Text.Contains("never ran down. She never let", StringComparison.Ordinal))
+              && furloughParas.Single(q => q.Requires.Contains(P + "cost.light_sealed") && !q.Requires.Contains("targona.lastcall.called")).Forbids.Contains("targona.lastcall.called")
+              && furloughParas.Any(q => q.Requires.Contains(P + "cost.light_sealed") && q.Requires.Contains("targona.lastcall.called")),
+            "The kept-promise paragraph survives a recorded breach, or the wand runs on without the Commander.");
         var wed6 = World(story, 6, "trickster.ever", P + "forgiven", Committed);
         check(!Rules.Available(story, epCommit, wed6) && Rules.Available(story, epFurlough, wed6), "A committed Targona gets the late page.");
         var no6 = World(story, 6, "trickster.ever", P + "met", P + "declined");

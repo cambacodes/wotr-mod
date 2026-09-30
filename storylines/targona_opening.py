@@ -181,10 +181,10 @@ s("an_unpromised_future", "The part no one commissioned", [
 "A sergeant of the Mendevian line wrote to me afterwards. He said it made him less ashamed of how angry he still is about the Worldwound. I answered him the same day. Another reader asked why an angel needs so many words. I have not answered him. I prayed for patience instead, and that prayer has not been answered either.
 "I am glad I sent it. I am gladder that I do not have to send another."
 {n}At the bottom she has begun a question meant only for you.{/n}''', c("Read the private question.", "question")),
-    n("private", "Narrator", '''"I refused him. He was courteous and disappointed, and then he printed another man's account in the place mine would have gone. It gives me one sentence: 'The angel Targona, too, was held by the Architect, and later freed.' Too. As if I were one more line on a quartermaster's list, after the tent pegs.
+    n("private", "Narrator", '''"I refused him. He was courteous and disappointed, and then he printed another man's account in the place mine would have gone. It gives me one paragraph. It says that the angel Targona gave herself to the Architect's barrier of her own will, so that her light might shelter the camps, and that her sacrifice was accepted in Heaven. It is beautifully written. Every word of it is a gift to Areelu.
 "I was so angry I broke a basin. One of the good ones. The sister who keeps the linen made me sweep it up myself, which was just.
-"When my duties next take me into the city, I will go to his shop. I will not shout. I will stand there with both wings open until he has looked at the black one properly, and then I will ask him whether 'too' is the word he would like carved over his own door.
-"I still will not give him my pages. I only want him to know whose story he shortened."
+"There are men in the Mendevian camps who will read it and believe that what was done to them near that laboratory was an angel's holy choice. It was not. It was Areelu's, and she chose it for all of us. When my duties next take me into the city, I will go to his shop and ask him, before Iomedae, to print a correction. I will not shout. I will not need to.
+"I still will not give him my pages. But I will not let him give her mine."
 {n}She has left the next question on a line of its own.{/n}''', c("Read the private question.", "question")),
     n("question", "Narrator", '''"May I ask you something that has no place in any account? What should I want, when nobody needs me for an hour?"
 {n}She has struck the question out and left it legible. Beneath it is another.{/n}

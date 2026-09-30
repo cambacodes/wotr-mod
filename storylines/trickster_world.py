@@ -511,7 +511,11 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
                                  ['noct.acq.audience_started']],
  'nocticula.trickster.late_committed': [['trickster.ever', 'nocticula.trickster.returned']],
  'nurah.native_fate': [['nurah.prison'], ['nurah.dead_drezen'], ['nurah.dead_camellia'], ['nurah.killing_mechanism']],
- 'nurah.trickster.late_committed': [['trickster.ever', 'nurah.trickster.proofs_seen']],
+ # Proofs seen by a Nurah who is alive now: raised, run off, or still in her cell (the prison etude stops playing on her
+ # death), so proofs followed by an execution never commit her (Sol quality pass, TRK).
+ 'nurah.trickster.late_committed': [['trickster.ever', 'nurah.trickster.proofs_seen', 'nurah.trickster.returned'],
+                                    ['trickster.ever', 'nurah.trickster.proofs_seen', 'nurah.ran_off'],
+                                    ['trickster.ever', 'nurah.trickster.proofs_seen', 'nurah.prison']],
  'seelah.trickster.in_drezen': [['seelah_gone', 'seelah.trickster.primed'],
                                 ['seelah_dead', 'seelah.trickster.correspondent']],
  'seelah.trickster.late_committed': [['trickster.ever', 'seelah.trickster.stay_decided']],
@@ -526,7 +530,8 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
  # there before `met` exists (Sol quality pass: `met` is produced only by talking to that copy).
  'targona.trickster.in_drezen': [['targona.trickster.returned'], ['targona.trickster.met'],
                                  ['targona.free', 'targona.trickster.cost.wand_unspent']],
- 'targona.trickster.late_committed': [['trickster.ever', 'targona.trickster.forgiven'],
+ # Killed branch: the washing (after forgiveness) is the last beat before the vigil (Sol quality pass, BEL).
+ 'targona.trickster.late_committed': [['trickster.ever', 'targona.trickster.washed_the_dead'],
                                       ['trickster.ever', 'targona.trickster.met']],
  'terendelev.ravener_dead': [['iz.monster_dead', 'trickster.ever']],
  # The monster's death as history: its latch, recorded while the party is in Iz (save-compatible with earlier builds).

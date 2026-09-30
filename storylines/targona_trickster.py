@@ -216,13 +216,23 @@ ward(P + "dead.furlough", "A fever that broke at dawn", '"Targona."', [
     nar("start", '''{n}Wilcer Garms points you past the stores with his quill. "She's at the cots, Commander. Hasn't slept. Hasn't asked for a thing but water."{/n}
 {n}He lowers his voice. "The Third Company marched out for the east wall this morning without the envoy's blessing. First time since Kenabres. The chaplains stood on the steps and said nothing, and the men noticed. Two of them are on her cots already."{/n}
 {n}The angel does not stand when you reach her. She finishes binding a pikeman's hand first, and ties the knot, and only then looks up.{/n}''',
-        c("Continue", "pikeman")),
+        c("Continue", "pikeman", requires=(TOLD,)),
+        c("Continue", "pikeman_late", forbids=(TOLD,))),
     t("pikeman", '''"Commander. There was a pikeman in your infirmary last night with a fever that would not break. It broke at dawn. I thought you should know that first."
 {n}She nods at the two new cots.{/n} "Those men went to the wall unblessed because of me. Heaven's envoy will not bless what he cannot explain, and he cannot explain me. I have told them I am sorry. They did not know what for."
 {n}The black wing folds against her back as if it too is listening.{/n}
 {n}She sets the basin down with both hands. It is only half full, and still it shakes.{/n}
 "I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. Then nothing, and in the nothing, a light I made with my own hands, a long time ago, for my brother. I went towards it. Then I was breathing, and every breath hurt." {n}She flexes her fingers.{/n} "I cannot lift what I lifted a week ago. That is what raising costs. I knew it would."
 "I went to the Hand's chaplain before I came here, as I said I would. I told him what was done, and by whom. He let the candle burn down a finger's width before he spoke. Then he blessed me, and not you."''',
+      c('[Tell her the truth] "I struck you. I\'d rather you hear it from me than from Heaven."', "truth"),
+      c('[Make light of it] "It was a joke. You\'re alive. That\'s the punchline."', "joke"),
+      c('[Lie] "Areelu turned my hand. It was never my blow."', "lie")),
+    t("pikeman_late", '''"Commander. There was a pikeman in your infirmary last night with a fever that would not break. It broke at dawn. I thought you should know that first."
+{n}She nods at the two new cots.{/n} "Those men went to the wall unblessed because of me. Heaven's envoy will not bless what he cannot explain, and he cannot explain me. I have told them I am sorry. They did not know what for."
+{n}The black wing folds against her back as if it too is listening.{/n}
+{n}She sets the basin down with both hands. It is only half full, and still it shakes.{/n}
+"I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. Then nothing, and in the nothing, a light I made with my own hands, a long time ago, for my brother. I went towards it. Then I was breathing, and every breath hurt." {n}She flexes her fingers.{/n} "I cannot lift what I lifted before the laboratory. That is what raising costs. The chaplains told me so while I was still on the litter."
+"Before I would let them carry me to the cots, I sent for the Hand's chaplain. Nobody asked me to. I had not promised anyone. But I will not be raised on a lie, and I told him what was done, and by whom. He let the candle burn down a finger's width before he spoke. Then he blessed me, and not you."''',
       c('[Tell her the truth] "I struck you. I\'d rather you hear it from me than from Heaven."', "truth"),
       c('[Make light of it] "It was a joke. You\'re alive. That\'s the punchline."', "joke"),
       c('[Lie] "Areelu turned my hand. It was never my blow."', "lie")),
@@ -394,8 +404,11 @@ LIGHT_PARAGRAPHS = (
     p("She came back through the chaplains' crypt, on the scroll the crusade owed Heaven as its tithe. Heaven's envoy "
       "never blessed another muster of the Commander's, and Targona spent a year of feast days in his anteroom, asking "
       "him to, until he wrote her a letter she did not show anyone.", requires=(CRYPT,)),
-    p("The Commander kept the promise made in the quiet ward. It was harder than any vow they had broken, and "
-      "Targona knew it, and said so, once.", requires=(SEALED,)),
+    p("The Commander kept the promise made in the quiet ward, never to spend her brother's light on death again. It was "
+      "harder than any vow they had broken, and Targona knew it, and said so, once.", requires=(SEALED,),
+      forbids=("targona.lastcall.called",)),
+    p("The Commander broke the promise made in the quiet ward, once, at the rift, and spent her brother's light after "
+      "all. She did not leave. She did not pretend it had not happened, either.", requires=(SEALED, "targona.lastcall.called")),
     p("She told Heaven the truth about the laboratory, as she had said she would, and she told it that the Commander "
       "had told it first. Heaven, she reported afterwards, was not amused. She was.", requires=(FORGIVEN,), forbids=(SEALED,)),
 )
@@ -403,8 +416,9 @@ LIGHT_PARAGRAPHS = (
 
 # The wand night belongs to the freed state only; the death-return ward never had it.
 WARD_PARAGRAPHS = (
-    p("The wounded who passed through it swore that its one wand of healing never ran down. She never let the Commander "
-      "use it.", requires=(WAND,), forbids=(CHARGES,)),
+    p("The wounded who passed through it still told new arrivals about the night the Commander worked the rows with a "
+      "wand that never ran down. Afterwards its wands ran down like anyone's, and she rationed every charge, and never once "
+      "sent for the Commander to do it again.", requires=(WAND,), forbids=(CHARGES,)),
     p("Three empty wands hung on a nail by its door, from the night the Commander emptied the stores for strangers. "
       "The treasurer's bill for them hung beside them, receipted, and she would not let anyone take either down.",
       requires=(CHARGES,)),
@@ -419,7 +433,11 @@ def page(id, title, text, requires, forbids=(), paragraphs=(), **extra):
 page(P + "epilogue.commit", "When the ward was quiet",
      '''{n}Targona did not go back to Heaven when the war ended. She stayed in Drezen's field infirmary until the last cot was folded, and on the morning the tents came down she found the Commander and asked the question herself, because, she said, she had waited for the ward to be quiet, and it finally was.{/n}''',
      requires=("trickster.ever",), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice"), paragraphs=LIGHT_PARAGRAPHS,
-     RequiresAnyGroups=[[FORGIVEN, MET]], **SACRIFICE_GUARD)
+     RequiresAnyGroups=[[TESTED, MET]], **SACRIFICE_GUARD)
+
+page(P + "epilogue.ally", "The ward's other chair",
+     '''{n}Targona forgave the Commander in front of the whole ward, and meant it, and never went further than that. She stayed in Drezen until the last cot was folded. When the Commander came to the infirmary, she handed over a basin or a roll of linen without being asked, and talked about the wounded, and about her brother, and never about the laboratory. People who saw them together took them for old comrades. In a way they were.{/n}''',
+     requires=("trickster.ever", FORGIVEN), forbids=(TESTED, MET, COMMITTED, CLOSED, DECLINED), paragraphs=LIGHT_PARAGRAPHS[:3])
 
 page(P + "epilogue.declined", "The stool by the last cot",
      '''{n}Targona returned to the halls of Heaven with the last of the wounded she could not leave. She never did hear the question asked without a trick in it. In Drezen's infirmary there is still a stool beside the last cot that nobody sits on.{/n}''',
