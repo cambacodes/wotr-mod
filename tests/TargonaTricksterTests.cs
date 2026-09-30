@@ -205,8 +205,20 @@ internal static class TargonaTricksterTests
         var forgiven = After(furlough, back, "truth", 0);
         check(forgiven.Has(P + "forgiven") && !forgiven.Has(Committed), "Trk_Targona_Furlough: flags.");
         check(!furlough.Nodes.SelectMany(n => n.Choices).Any(c => c.Set.Contains(Committed)), "The return beat commits.");
-        check(Rules.Available(story, ward, Later(story, forgiven, 96)) && !Rules.Available(story, ward, Later(story, forgiven, 95)),
+        // Sol quality pass (BEL): forgiveness alone no longer opens the vigil; she first asks the Commander's hands to wash a
+        // dead soldier with her (after.the_washing), and the ward waits four days on that.
+        var washing = S(P + "after.the_washing");
+        check(!Rules.Available(story, ward, Later(story, forgiven, 500)) && !Rules.Available(story, washing, Later(story, forgiven, 47))
+              && Rules.Available(story, washing, Later(story, forgiven, 48)), "Trk_Targona_Furlough: the washing does not follow forgiveness.");
+        check(washing.InteractionHub == "targona.presence" && washing.ContactUnit == Unit && Rules.IsPresenceHubScene(washing),
+            "The washing left the ward.");
+        var shirked = Program.Walk(washing, Later(story, forgiven, 48)).Where(o => !o.Has(P + "washed_the_dead")).ToList();
+        check(shirked.Count > 0 && shirked.All(o => !o.Has(washing.Id) && !o.Has(Closed)), "Sending for a chaplain closes the washing for good.");
+        var washed = After(washing, Later(story, forgiven, 48), "after", 0);
+        check(Rules.Available(story, ward, Later(story, washed, 96)) && !Rules.Available(story, ward, Later(story, washed, 95)),
             "Trk_Targona_Furlough: the ward ignores its four days.");
+        check(!Rules.Available(story, washing, World(story, 5, "trickster.ever", "targona.free", P + "met")),
+            "The freed state is asked to wash a body it never struck.");
         var joked = After(furlough, back, "joke", 0);
         check(joked.Has(P + "cost.unforgiven") && !Rules.Available(story, ward, Later(story, joked, 200))
               && Rules.Available(story, second, Later(story, joked, 96)), "The glib answer does not lead to the second asking.");
@@ -218,7 +230,7 @@ internal static class TargonaTricksterTests
         check(sent.Has(Closed) && !sent.Has("seelah.closed") && !sent.Has("sosiel.closed"), "Sending her away closes the wrong thing.");
 
         // Trk_Targona_Commit: the named producer, then the night.
-        var ready = World(story, 5, "trickster.ever", "targona.dead_lab", P + "returned", P + "forgiven");
+        var ready = World(story, 5, "trickster.ever", "targona.dead_lab", P + "returned", P + "forgiven", P + "washed_the_dead");
         check(Rules.Available(story, ward, ready) && !Rules.Available(story, quiet, ready), "Trk_Targona_Commit: availability.");
         var committed = After(ward, ready, "dawn", 0);
         check(committed.Has(Committed), "Trk_Targona_Commit: flags.");
@@ -315,9 +327,42 @@ internal static class TargonaTricksterTests
         foreach (var node in oneSoul.Nodes)
             check(!node.Text.Contains("Nexus", StringComparison.Ordinal), "The laboratory flashback remembers the Nexus: " + node.Id);
 
-        // Trk_Targona_TreatmentDone: the parent Angelic Treatment route runs instead.
-        var treated = World(story, 5, "trickster", "trickster.ever", "targona.free", "targona.ran_treatment_completed");
-        check(!Rules.Available(story, spent, treated) && !Rules.Available(story, lateLight, treated), "Trk_Targona_TreatmentDone.");
+        // Trk_Targona_TreatmentDone: a treatment that ended as RanRomance's romance runs the parent route instead. A friendship-only
+        // treatment history (Sol quality pass, INT) can still be courted: walk it from the parent's own flags, no injected romance.
+        var treatedRomance = World(story, 5, "trickster", "trickster.ever", "targona.free", "targona.ran_treatment_completed", "targona.ran_romance");
+        check(treatedRomance.Has(P + "parent_romanced") && !Rules.Available(story, spent, treatedRomance)
+              && !Rules.Available(story, lateLight, treatedRomance), "Trk_Targona_TreatmentDone.");
+        var treatedFriend = World(story, 5, false, "trickster", "trickster.ever", "targona.free", "targona.ran_treatment_completed",
+                                  "trickster.umd_tier2");
+        check(!treatedFriend.Has(P + "parent_romanced") && Rules.Available(story, spent, treatedFriend),
+            "A friendship-only treatment history has no Trickster courtship.");
+        var friendNight = Program.Copy(After(spent, treatedFriend, "night", 0));
+        friendNight.AvailableContacts.Add(Unit);
+        Rules.Complete(story, friendNight);
+        var friendPages = new HashSet<string>();
+        Program.Walk(freeFurlough, friendNight, (page, _) => friendPages.Add(page));
+        check(Rules.Available(story, freeFurlough, friendNight) && friendPages.Contains("greet_treated") && !friendPages.Contains("greet"),
+            "The treated angel greets her physician as a stranger.");
+        check(Reaches(After(freeFurlough, friendNight, "why", 0), Committed), "A friendship-only treatment history cannot commit.");
+
+        // Chapter 5 fallback for an unprepared killing (Sol quality pass, INT): the Hand's crypt, dearer; never in Chapter 3.
+        var crypt = S(P + "dead.late_crypt");
+        var killed5 = World(story, 5, "trickster", "trickster.ever", "targona.dead_lab");
+        check(crypt.Chapters.SequenceEqual(new[] { 5 }) && Rules.IsRemote(crypt) && crypt.TricksterDevice
+              && Rules.Available(story, crypt, killed5) && !Rules.Available(story, crypt, World(story, 3, "trickster", "trickster.ever", "targona.dead_lab"))
+              && !Rules.Available(story, crypt, World(story, 5, "trickster.ever", "targona.dead_lab")), "The crypt fallback has the wrong window.");
+        var cryptCost = crypt.Nodes.Single(n => n.Id == "start").Choices[0];
+        check(cryptCost.Crusade?.Resource == "Favors" && cryptCost.Crusade.Amount == -500 && cryptCost.Mythic == "PlayerIsTrickster",
+            "The crypt fallback is not dearer than the Chapter 3 one.");
+        var cryptRaised = Later(story, After(crypt, killed5, "raise", 0), 72);
+        var cryptPages = new HashSet<string>();
+        Program.Walk(oneSoul, cryptRaised, (page, _) => cryptPages.Add(page));
+        check(Rules.Available(story, oneSoul, cryptRaised) && cryptPages.Contains("crypt") && !cryptPages.Contains("quiet")
+              && !cryptPages.Contains("cold"), "The crypt raising is remembered as another one.");
+        check(Reaches(After(oneSoul, cryptRaised, "news", 0), Committed), "The crypt raising cannot commit.");
+        // The laboratory death: TargonaIsWasKilledInAreeluLab starts at the [Attack] cue, and the native game itself reads it as her
+        // death (Epilogues/Cue_0531, ThresholdCamp_Scripts03). The fight it begins has no surrender and no exit, so a world with
+        // the etude and a living angel is not a native state; no fixture pretends otherwise.
 
         // Trk_Targona_Epilogue_Late and the siblings.
         var late6 = World(story, 6, "trickster.ever", P + "forgiven");
@@ -330,13 +375,35 @@ internal static class TargonaTricksterTests
             "The declined page is wrong.");
         var shut6 = World(story, 6, "trickster.ever", P + "forgiven", Closed);
         check(!Rules.Available(story, epCommit, shut6) && !Rules.Available(story, epFurlough, shut6), "A closed route gets a page.");
-        foreach (var page in new[] { epCommit, epDeclined, epFurlough })
+        // The Commander's sacrifice: no reunion unless the Commander came back (trickster.commander_back); otherwise her own page.
+        var epSacrifice = S(P + "epilogue.sacrifice");
+        var lost6 = World(story, 6, "trickster.ever", P + "forgiven", Committed, "sacrifice");
+        check(!Rules.Available(story, epFurlough, lost6) && !Rules.Available(story, epCommit, World(story, 6, "trickster.ever", P + "forgiven", "sacrifice"))
+              && Rules.Available(story, epSacrifice, lost6), "An unsurvived sacrifice still gets the reunion.");
+        var back6 = World(story, 6, "trickster.ever", P + "forgiven", Committed, "sacrifice", "ending.trickster");
+        check(back6.Has("trickster.commander_back") && Rules.Available(story, epFurlough, back6) && !Rules.Available(story, epSacrifice, back6),
+            "A Commander who came back is mourned.");
+        check(!Rules.Available(story, epSacrifice, wed6), "The sacrifice page plays without a sacrifice.");
+        foreach (var page in new[] { epCommit, epDeclined, epFurlough, epSacrifice })
             check(page.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0), "An epilogue page has effects: " + page.Id);
 
         // Reactions: exactly Seelah, Sosiel and Ember; guarded; never touching another relationship.
         var reactions = story.Scenes.Where(s => s.Relationship == "targona" && s.Reaction).ToList();
-        check(reactions.Select(s => s.Owner).OrderBy(o => o).SequenceEqual(new[] { "Ember", "Seelah", "Sosiel" }),
+        check(reactions.Select(s => s.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Ember", "Seelah", "Sosiel" }),
             "Targona's reactors are not exactly Seelah, Sosiel and Ember.");
+        // Ember reports only the history the player made: the unspent wand, the three emptied wands, or the raised angel's bandages.
+        var eWand = S(P + "react.ember_wand"); var eEmpty = S(P + "react.ember_empty_wands"); var eBandage = S(P + "react.ember_bandages");
+        var quietWand = World(story, 5, "trickster.ever", "targona.free", P + "cost.wand_unspent");
+        var emptied = World(story, 5, "trickster.ever", "targona.free", P + "cost.wand_unspent", P + "cost.charges_spent");
+        var raisedAngel = World(story, 5, "trickster.ever", "targona.dead_lab", P + "returned");
+        check(Rules.Available(story, eWand, quietWand) && !Rules.Available(story, eEmpty, quietWand) && !Rules.Available(story, eBandage, quietWand)
+              && !Rules.Available(story, eWand, emptied) && Rules.Available(story, eEmpty, emptied) && !Rules.Available(story, eBandage, emptied)
+              && !Rules.Available(story, eWand, raisedAngel) && !Rules.Available(story, eEmpty, raisedAngel) && Rules.Available(story, eBandage, raisedAngel),
+            "Ember reports a wand history the player never made.");
+        foreach (var e in new[] { eWand, eEmpty, eBandage })
+            check(e.Forbids.Contains("ember_dead") && e.Forbids.Contains("ember_gone")
+                  && !new[] { "kiss", "love", "beautiful", "darling" }.Any(w => e.Nodes[0].Text.Contains(w, StringComparison.OrdinalIgnoreCase)),
+                "Ember's reaction is unguarded or romantic: " + e.Id);
         check(S(P + "react.seelah_furlough").Forbids.Contains("seelah_dead") && S(P + "react.seelah_furlough").Forbids.Contains("seelah_gone")
               && S(P + "react.sosiel_forgiven").Forbids.Contains("sosiel.dead") && S(P + "react.sosiel_forgiven").Forbids.Contains("sosiel.kicked_out")
               && S(P + "react.ember_wand").Forbids.Contains("ember_dead") && S(P + "react.ember_wand").Forbids.Contains("ember_gone"),

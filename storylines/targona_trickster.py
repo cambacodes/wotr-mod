@@ -62,6 +62,10 @@ UMD2 = "trickster.umd_tier2"   # MainCharacterFacts: TricksterUseMagicDeviceTier
 CHARGES = P + "cost.charges_spent"
 OPEN = P + "cost.raised_openly"     # the no-trick prepared route: the scroll read aloud, in front of everyone
 TOLD = P + "cost.she_told_heaven"   # her price at the barrier: she tells the Hand and her healers what was done
+CRYPT = P + "cost.raised_from_the_crypt"   # Chapter 5 fallback: no primer, no Chapter 3 retrieval; raised from the Hand's crypt
+TESTED = P + "washed_the_dead"      # death branch: she asked the Commander's hands to wash a dead man with her, and they did
+PARENT_ROMANCED = P + "parent_romanced"    # derived: RanRomance's Angelic Treatment completed as a romance (its own route runs)
+SACRIFICE_GUARD = dict(ForbidOverrides={"sacrifice": "trickster.commander_back"})
 
 RELATIONSHIP_PATCH = dict(
     UnavailableOverrides={DEAD: RETURNED},
@@ -167,11 +171,27 @@ letter(P + "dead.late_light", "The hard way back", [
 ], requires=("trickster", DEAD), forbids=(PRIMED, RETURNED), delay=0, chapters=(3,),
    TricksterDevice=True, TricksterState=DEAD)
 
+# Sol quality pass (INT): the same fallback after the Abyss, for a Commander who never prepared the scroll and never sent
+# back into the ruin in Chapter 3. Dearer, and later: the Hand's chaplains carried her out of the ruin themselves and have
+# kept her in the chapel crypt while Heaven decides where an angel is buried (authored).
+letter(P + "dead.late_crypt", "The crypt under the chapel", [
+    nar("start", '''{n}The chaplains of the Hand keep a crypt under the chapel for knights whose orders have not yet said where they are to be buried. Since Areelu's laboratory they have kept an angel in it, on a bier, under a Mendevian shroud, waiting for Heaven to answer a letter about her. Heaven has not answered.{/n}
+{n}You have come back up out of the Abyss with the war nearly over and her name still on a list of the dead. The crusade's last scroll of raise dead is locked in the chaplains' own reliquary, promised to the first knight of the Hand who falls at the Threshold.{/n}''',
+        c('[Take the knight\'s scroll] "Open the crypt. I\'ll read it myself, and you\'ll say nothing."', "raise", mythic="Trickster",
+          crusade=("Favors", -500)),
+        c('"Let her rest."', abort=True)),
+    nar("raise", '''{n}The chaplain-captain opens the reliquary with a face like a shut door. Somewhere in the Threshold's first assault a knight of the Hand will fall with no scroll kept for him, and every chaplain in the chapel knows whose name to curse for it.{/n}
+{n}In the crypt you turn back the shroud. She looks as she did on the laboratory floor. The crypt is cold, and the chaplains have been careful with her. You read the scroll over her by one lamp, with your palm flat on her heart and her brother's light in it, and the chaplain-captain stands at the stair with his back to you and prays aloud for the knight who will not have it. Coming back from the dead is an ordeal. The breath goes into her like a blade.{/n}''',
+        c('[Stay until she breathes.]', flags=(PRIMED, LATE, CRYPT))),
+], requires=("trickster", DEAD), forbids=(PRIMED, RETURNED), delay=0, chapters=(5,),
+   TricksterDevice=True, TricksterState=DEAD)
+
 letter(P + "dead.one_soul", "Read back in", [
-    nar("start", '''{n}Three days after Areelu's laboratory, a runner comes up from the field infirmary behind the quartermaster's stores.{/n}''',
-        c("Continue", "quiet", forbids=(ECHO_SPENT, OPEN)),
-        c("Continue", "open", requires=(OPEN,), forbids=(ECHO_SPENT,)),
-        c("Continue", "cold", requires=(ECHO_SPENT,))),
+    nar("start", '''{n}A runner comes up from the field infirmary behind the quartermaster's stores, out of breath, with his cap in his hand.{/n}''',
+        c("Continue", "quiet", forbids=(ECHO_SPENT, OPEN, CRYPT)),
+        c("Continue", "open", requires=(OPEN,), forbids=(ECHO_SPENT, CRYPT)),
+        c("Continue", "cold", requires=(ECHO_SPENT,)),
+        c("Continue", "crypt", requires=(CRYPT,))),
     nar("quiet", '''{n}The laboratory. You have lived it again every night since:{/n}
 {n}Your blade goes in. She falls, the way the story always meant her to. The room turns towards the door and whatever Areelu has left waiting there. You kneel beside her as if to close her eyes, and under your breath, no louder than a prayer for the dead, you read the scroll from your sleeve to its last word, with your other palm flat over her heart and her brother's light in it, turned down to the warmth of a hand. It crumbles to ash against your palm. For one breath the light under your hand stings the way it stung in the rock under Kenabres, when his sword went out at your touch and left its fire in you, and then it is only warm. Nobody turns round. Her chest does not move. You leave her there, as she asked.{/n}''',
         c("Continue", "news")),
@@ -179,6 +199,8 @@ letter(P + "dead.one_soul", "Read back in", [
 {n}Your blade goes in. She falls, the way the story always meant her to. You are on your knees beside her before anyone can move, the scroll open, reading aloud, your other hand on her heart, and her brother's light coming out through your fingers white and plain as day. Every face in the room turns to you. Someone by the door says your name like a question. The last word, and the scroll goes to ash, and her chest does not move, and you stand up and say, "Leave her. She'll come," and walk out past all of them. Nobody asks you what they saw. They will ask each other for months.{/n}''',
         c("Continue", "news")),
     nar("cold", '''{n}You remember the chapel exactly: the scroll, the breath going into her like a blade, the chaplain praying with his eyes shut. She did not wake while you were there. The priests carried her down to the infirmary on a litter, as one more wounded thing.{/n}''',
+        c("Continue", "news")),
+    nar("crypt", '''{n}You remember the crypt exactly: the cold, the lamp, the shroud turned back, the second scroll ready in your other hand in case the first failed. It did not fail. The breath went into her like a blade after all those weeks, and she did not wake while you were there. The Hand's chaplains carried her up the crypt stair on a bier and down to the infirmary on a litter, and said nothing to anyone, as they had been paid to.{/n}''',
         c("Continue", "news")),
     nar("news", '''{n}The runner says that an angel with one black wing is up and washing wounds. She can barely lift the basin. She has not said her name. She asked whether the Knight-Commander was awake.{/n}
 {n}By noon Heaven's envoy to the crusade has heard, and by evening the Queen's chaplains have: an angel the lists call dead is changing bandages in Drezen, and nobody can say by whose hand. The envoy withholds his blessing from the next muster until someone explains it.{/n}''',
@@ -202,8 +224,9 @@ ward(P + "dead.furlough", "A fever that broke at dawn", '"Targona."', [
       c('[Tell her the truth] "I struck you. I\'d rather you hear it from me than from Heaven."', "truth"),
       c('[Make light of it] "It was a joke. You\'re alive. That\'s the punchline."', "joke"),
       c('[Lie] "Areelu turned my hand. It was never my blow."', "lie")),
-    t("truth", '''"Yes. And now Heaven will hear that you said so without being asked." {n}She wrings out the cloth.{/n}
-"My brother always said the truth was the hardest gift to give. He was wrong. It is the second hardest. The hardest is forgiving it." {n}She looks at the two unblessed soldiers, and then at you.{/n} "I forgive you, Commander. For those men's sake I will not pretend it is easy."''',
+    t("truth", '''"Yes. And now Heaven will hear that you said so without being asked." {n}She wrings out the cloth, and her hands are not quite steady.{/n}
+"I still see your face over me when I close my eyes. I saw it at the fourth bell last night, with this man's fever in my hands, and I had to stop and pray before I could go on." {n}She looks at the two unblessed soldiers, and then at you.{/n}
+"Iomedae, give me the strength to mean this. I forgive you, Commander. Now hold his arm still while I bind it. For those men's sake I will not pretend it is easy."''',
       c('[Promise] "I\'ll try."', flags=(FORGIVEN,))),
     t("joke", '''{n}The basin goes still in her hands.{/n}
 "A punchline. I see."
@@ -231,6 +254,25 @@ ward(P + "dead.second_asking", "The boy with one leg", '"Targona. A word."', [
       c('[Leave the ward.]')),
 ], requires=("trickster.ever", UNFORGIVEN), forbids=(CLOSED, FORGIVEN), delay=96)
 
+# Sol quality pass (BEL): after forgiveness and before the vigil, one beat in which she moves first and tests the hands that
+# killed her with a concrete act (washing a dead soldier, the rite his own comrades would have done). The ward waits on it.
+ward(P + "after.the_washing", "Wash him with me", '"Targona?"', [
+    t("start", '''{n}The man on the end cot died at the fourth bell. Targona has drawn the blanket up over his face and set a basin of warm water and a folded length of linen on the stool beside him. She does not look up when you come in.{/n}
+"His company is on the east wall and the chaplains are with them. In Iomedae's orders a knight is washed for burial by his comrades, so that he goes to her clean and not alone. He has no comrades here." {n}She holds out the second cloth. Her hand is steady; she has made it steady.{/n}
+"Help me, Commander."''',
+      c('[Kneel and take the cloth.]', "wash"),
+      c('"I\'ll send for a chaplain."', "chaplain")),
+    nar("wash", '''{n}You wash him together, the way she shows you: the face first, then the hands, then the rest, and his ring left on. She sings under her breath, not a hymn you know. Twice she stops singing to watch your hands, the hands she last saw over her in Areelu's laboratory, as they move on a body that cannot fight them off, and twice she starts again.{/n}
+{n}When he is clean she folds his arms and lays the linen over him, and then she takes your wet hands in hers and dries them herself, finger by finger, longer than drying takes.{/n}''',
+        c("Continue", "after")),
+    t("after", '''"I wanted to see what they did near a body that could not stop them." {n}She does not let go.{/n} "They were careful. You closed his eyes before I asked."
+"I have been forgiving you for a week, Commander, because I said I would. Tonight is the first time I have wanted to know anything about you." {n}Her thumb moves once over your knuckles.{/n} "What do these do, when there is no war in them? No. Do not tell me now. Come back when the ward is quiet, and sit with whoever is dying, and I will watch."''',
+      c('[Let her keep your hands a moment longer.]', flags=(TESTED,))),
+    t("chaplain", '''"They are on the wall, and he is here." {n}She takes the cloth back.{/n}
+"Go, then. I will wash him myself. I have done it alone before." {n}She turns down the blanket, and does not watch you leave.{/n}''',
+      c('[Leave her to it.]', abort=True)),
+], requires=("trickster.ever", FORGIVEN), forbids=(CLOSED, COMMITTED, TESTED, MET), delay=48)
+
 
 # --- State freed_in_heaven: the wand that does not run down (F16) ---------------------------------------------------
 
@@ -246,13 +288,17 @@ letter(P + "free.spent_light", "The last wand", [
     nar("night_spent", '''{n}You take the wand yourself and work down the rows all night. It runs dry before midnight. Wilcer Garms opens the stores and signs out a second one against the war chest without being asked, and then a third, and the crusade's treasurer will hear about it by noon.{/n}
 {n}By dawn every cot has had its charge, and three empty wands lie on the table by the door. Far above, in the halls of Heaven, someone who has spent her whole life healing strangers looks up.{/n}''',
         c('[Finish at dawn] Put the empty wands away.', flags=(PRIMED, WAND, CHARGES))),
-], requires=("trickster", FREE), forbids=(WAND, TREATED, DEAD), delay=0)
+], requires=("trickster", FREE), forbids=(WAND, PARENT_ROMANCED, DEAD), delay=0)
 
 ward(P + "free.furlough", "Greetings, my rescuer", '"There\'s an angel in the wards."', [
     nar("start", '''{n}Wilcer Garms clears his throat. "There's an angel in the wards, Commander. I didn't requisition her."{/n}
 {n}She has a basin of water, one wing black and twisted, the other folded tight. She is going down the same rows you went down last night, and she stops at each cot as if the man in it were the only one.{/n}''',
-        c("Continue", "greet_lab", requires=(LAB_LINE,)),
-        c("Continue", "greet", forbids=(LAB_LINE,))),
+        c("Continue", "greet_lab", requires=(LAB_LINE,), forbids=(TREATED,)),
+        c("Continue", "greet", forbids=(LAB_LINE, TREATED)),
+        c("Continue", "greet_treated", requires=(TREATED,))),
+    t("greet_treated", '''"Commander. Greetings, my rescuer, and my physician." {n}She does not smile.{/n}
+"You have treated this wing, and argued with it, and sat with me while it was dressed. I thought I knew what kind of soul you were. Then someone worked these rows all night with a healer's wand and would not stop, and I felt it in the halls of Heaven like a hand on my shoulder, and I came down to see whether it was the same one."''',
+      c('[Explain] "They were dying. I had a light."', "why")),
     t("greet_lab", '''"Commander. Greetings, my rescuer." {n}She does not smile.{/n}
 "Behind the barrier you showed me a scroll up your sleeve and asked me to let everyone mourn me. I said yes. And then you did not need it: you broke the barrier instead. And then someone worked these rows all night with a healer's wand and would not stop. I came to see who would do such a thing, and why."''',
       c('[Explain] "They were dying. I had a light."', "why")),
@@ -317,7 +363,7 @@ ward(P + "after.ward", "Sit with this man", '"Is it quiet tonight?"', [
       c("Continue", "threshold")),
     *night_nodes(),
 ], requires=("trickster.ever",), forbids=(COMMITTED, CLOSED, DECLINED), delay=96,
-   RequiresAnyGroups=[[FORGIVEN, MET]])
+   RequiresAnyGroups=[[TESTED, MET]])
 
 ward(P + "after.quiet_ward", "A quiet ward", '"The ward is quiet."', [
     t("start", '''{n}The ward is quiet. The sergeant has gone back to his company on the east wall. Targona is folding bandages, and she does not stop when you come in.{/n}
@@ -343,6 +389,9 @@ LIGHT_PARAGRAPHS = (
     p("She came back the hard way, through the chapel and the raise dead scroll, and it took her a year to lift a full "
       "basin again. Four volunteers went into Areelu's ruin for her body. She learned their names, and tended the one "
       "who lost his arm there until the day he died, old, in his bed.", requires=(ECHO_SPENT,)),
+    p("She came back through the chaplains' crypt, on the scroll the Hand had kept for its own. A knight of the Hand fell "
+      "at the Threshold with no scroll kept for him. She learned his name, and said it at every compline for the rest of "
+      "her life, before the Commander's.", requires=(CRYPT,)),
     p("The Commander kept the promise made in the quiet ward. It was harder than any vow they had broken, and "
       "Targona knew it, and said so, once.", requires=(SEALED,)),
     p("She told Heaven the truth about the laboratory, as she had said she would, and she told it that the Commander "
@@ -367,8 +416,8 @@ def page(id, title, text, requires, forbids=(), paragraphs=(), **extra):
 
 page(P + "epilogue.commit", "When the ward was quiet",
      '''{n}Targona did not go back to Heaven when the war ended. She stayed in Drezen's field infirmary until the last cot was folded, and on the morning the tents came down she found the Commander and asked the question herself, because, she said, she had waited for the ward to be quiet, and it finally was.{/n}''',
-     requires=("trickster.ever",), forbids=(COMMITTED, CLOSED, DECLINED), paragraphs=LIGHT_PARAGRAPHS,
-     RequiresAnyGroups=[[FORGIVEN, MET]])
+     requires=("trickster.ever",), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice"), paragraphs=LIGHT_PARAGRAPHS,
+     RequiresAnyGroups=[[FORGIVEN, MET]], **SACRIFICE_GUARD)
 
 page(P + "epilogue.declined", "The stool by the last cot",
      '''{n}Targona returned to the halls of Heaven with the last of the wounded she could not leave. She never did hear the question asked without a trick in it. In Drezen's infirmary there is still a stool beside the last cot that nobody sits on.{/n}''',
@@ -376,8 +425,16 @@ page(P + "epilogue.declined", "The stool by the last cot",
 
 page(P + "epilogue.furlough", "A wand that never ran down",
      '''{n}Heaven granted Targona her furlough, and then another, and then stopped counting. She kept a ward in Drezen with the Commander's name over the door.{/n}''',
-     requires=("trickster.ever",), forbids=(CLOSED, DECLINED), paragraphs=WARD_PARAGRAPHS + LIGHT_PARAGRAPHS,
-     RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED]], ForbidOverrides={DECLINED: COMMITTED})
+     requires=("trickster.ever",), forbids=(CLOSED, DECLINED, "sacrifice"), paragraphs=WARD_PARAGRAPHS + LIGHT_PARAGRAPHS,
+     RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED]],
+     ForbidOverrides={DECLINED: COMMITTED, "sacrifice": "trickster.commander_back"})
+
+# The Commander's sacrifice at the Threshold, with no way back (native Epilogues/Cue_0116 records the death): no reunion.
+page(P + "epilogue.sacrifice", "The name over the door",
+     '''{n}The Commander did not come back from the Threshold. Targona heard it in the infirmary, from a runner who did not know what he was telling her, and she finished binding the arm in front of her before she sat down.{/n}
+{n}She asked Heaven for no more furloughs, and Heaven, for once, did not argue. She kept the ward in Drezen with the Commander's name over the door until the last cot was folded, and prayed for the Commander at every compline, and when the Hand asked her where she wished to be sent next, she said: wherever the dying are, and nobody sits with them.{/n}''',
+     requires=("trickster.ever", "sacrifice"), forbids=(CLOSED, DECLINED, "trickster.commander_back"),
+     paragraphs=LIGHT_PARAGRAPHS[:3], RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED]])
 
 
 # --- Reactions (ledger 05 section 3.1 row 39: exactly Seelah, Sosiel and Ember) -------------------------------------
@@ -397,10 +454,23 @@ REACTIONS = [
 "I don't think she meant it as mercy, Commander. I think she meant it as a debt. The kind you pay back by becoming someone who deserved it."''',
              answer_list=SOSIEL_HUB, forbids=("sosiel.dead", "sosiel.kicked_out"), chapter=3, last=5, Chapters=[3, 5],
              entry='"You look thoughtful."'),
-    reaction("Ember", P + "react.ember_wand", (IN_DREZEN,),
+    # Sol quality pass (BEL): the unspent wand exists only after the quiet wand night; the other histories get their own line.
+    reaction("Ember", P + "react.ember_wand", (IN_DREZEN, WAND),
              '''"The angel has a sad wing and a happy face. She let me hold the wand while she worked."
 {n}Ember turns her empty hands over.{/n}
 "It never got lighter. Things always get lighter when you use them. Not that one. I think it's being kind on purpose."''',
+             answer_list=EMBER_HUB, forbids=("ember_dead", "ember_gone", CHARGES), chapter=3, last=5, Chapters=[3, 5],
+             entry='"What have you been up to?"'),
+    reaction("Ember", P + "react.ember_empty_wands", (IN_DREZEN, CHARGES),
+             '''"There are three empty wands on a nail by the angel's door. She says you used them all up in one night, on people you didn't know."
+{n}Ember touches the nail with one finger, very gently, as if it might still be warm.{/n}
+"She keeps them there so nobody forgets. I think that's a nice thing to keep. Most people keep the full ones."''',
+             answer_list=EMBER_HUB, forbids=("ember_dead", "ember_gone"), chapter=3, last=5, Chapters=[3, 5],
+             entry='"What have you been up to?"'),
+    reaction("Ember", P + "react.ember_bandages", (IN_DREZEN, RETURNED),
+             '''"I've been rolling bandages for the angel with the sad wing. She showed me how. You roll them tight so they don't come undone in the bag."
+{n}Ember holds up a finished roll, a little lopsided, and looks at it with great seriousness.{/n}
+"She says she was dead for a while. She doesn't seem to mind talking about it. She minds a lot about the bandages being tight."''',
              answer_list=EMBER_HUB, forbids=("ember_dead", "ember_gone"), chapter=3, last=5, Chapters=[3, 5],
              entry='"What have you been up to?"'),
 ]
@@ -417,3 +487,10 @@ def integrate(payload):
                         "laboratory or in Drezen's field infirmary, may find Targona at the cots behind the "
                         "quartermaster's stores in Chapter 3 or Chapter 5.")
     payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
+    # A completed Angelic Treatment runs RanRomance's own route only when it ended as a romance; a friendship-only treatment
+    # history can still be courted on Trickster (Sol quality pass, INT).
+    derived = payload.setdefault("Derived", {})
+    groups = [[TREATED, "targona.ran_romance"]]
+    if derived.get(PARENT_ROMANCED, groups) != groups:
+        raise ValueError("Conflicting derived key: " + PARENT_ROMANCED)
+    derived[PARENT_ROMANCED] = groups
