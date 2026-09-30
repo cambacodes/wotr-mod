@@ -6,7 +6,7 @@ DREZEN = "2570015799edf594daf2f076f2f975d8"
 CONTACT = "a609ed9b2205d034bb3bb04d2a255681"
 
 
-def s(id, title, entry, nodes, previous, delay=48):
+def s(id, title, entry, nodes, previous, delay=24):
     SCENES.append(scene(id, title, "Arsinoe", 3, entry, nodes,
                         requires=tuple(dict.fromkeys(("arsinoe.capital", "arsinoe.opening_kept", previous))),
                         forbids=("arsinoe.closed",), delay=delay, optional=True,
@@ -157,7 +157,7 @@ There is more heat in her answer than in the original proposal. She notices it, 
 "I was thinking of a full courtyard. You were thinking of the people in it. We can still have the gathering without advertising your presence."
 She turns the cost calculation toward you.
 "There remains this less flattering part. Neral must be paid. I can pay her myself for one evening, or we can ask those who come to contribute. I will not obtain a cheaper room by explaining whose companion I am."
-{n}The last sentence is firm, and addressed as much to her own tempting plan as to you.{/n}''',
+{n}She says it firmly, looking at her own handwriting.{/n}''',
       c('"A small charge could work if people know exactly what they are buying."', "terms"),
       c('"I would prefer a small private invitation this time."', "terms")),
     n("charge", "Arsinoe", '''"Because Neral is spending her evening here instead of upstairs with her supper. Because the lamps burn oil. Because I would like this to happen again without requiring a generous person's purse every time."
@@ -171,13 +171,13 @@ She turns the cost calculation toward you.
     n("private_objection", "Arsinoe", '''"That I can understand. I came here to be useful. You cannot cross a courtyard without someone deciding how to make use of you."
 {n}She strikes your title from the notice.{/n}
 "I still want other company sometimes. People who are neither buying a scroll nor asking me to officiate. I am quite capable of being lonely in a place where everyone knows where to find me."
-Her admission is matter-of-fact, without an invitation to repair it by yourself.
+She says it the way she would report a leak: a fact, to be dealt with.
 "Will you come to an evening where you are one of the players, and I am one of the people who arranged it? Or would you prefer that we keep this first gathering small enough to know everyone we invite? Either is possible. I would rather choose one honestly than spend the evening regretting the other."''',
       c('"Let us settle the size and the price together."', "terms")),
     n("price_objection", "Arsinoe", '''"They may. And I do not want to pretend that a low price is no price."
 {n}She looks toward the street before continuing.{/n}
 "But I will not tell Neral to work for our good intentions. If we choose a public evening, I can pay for two unclaimed places as well as my own. No names on those places. No announcement about who needed them. That is what I can afford to promise tonight."
-Two places would be sold at the stated price; you and Arsinoe would pay for your own, making six in all. There would still be people for whom the arrangement did not work.
+Two places would be sold at the stated price; you and Arsinoe would pay for your own, making six in all.
 "Or we invite a small group and pay the whole sum between ourselves. I will cover my share. It will be a pleasant private evening, and we can stop asking it to solve the question of every evening after it."''',
       c('"Show me both versions."', "terms")),
     n("terms", "Arsinoe", '''{n}You work through the two arrangements. For the public gathering, Neral will collect two modest fees from guests; Arsinoe will pay for two places available without explanation to anyone who asks. You and Arsinoe will each cover your own place, making six. The notice will promise a game and a reading, with no mention of your attendance. People will be free to leave before paying if the prospect does not suit them.{/n}
@@ -201,7 +201,7 @@ Nobody has made a speech. Nobody has hung a crusader banner over the door. Arsin
     n("public", "Arsinoe", '''{n}The two paid guest places fill. One guest is a wheelwright, who pauses to admire the workshop's door hinge before sitting down. One of the two places Arsinoe has covered goes to a quiet older laundress; the other goes to a young adult courier who asks twice whether he needs to give his employer's name. Neral tells him he needs only a chair.{/n}
 A paying guest recognizes you and begins, "Since I have the opportunity..."
 "You have the opportunity to choose a brass merchant," Arsinoe says, offering him the board. "Official business keeps different hours."
-{n}He considers arguing, notices the other guests watching, and selects the locksmith instead. The refusal costs the evening a little ease. It also allows it to begin.{/n}
+{n}He considers arguing, notices the other guests watching, and selects the locksmith instead.{/n}
 The courier leaves his satchel beneath his feet. The laundress chooses the cloth merchant without asking what it does. Arsinoe looks to you for the rules you agreed to use.''',
       c("Explain the reconstructed toll rule.", "original_game", requires=("arsinoe.game_reconstructed",)),
       c("Explain the missing rule and resume the recorded position.", "uncertain_game", requires=("arsinoe.game_unresolved",)),
@@ -223,17 +223,17 @@ Your earlier discovery saves the company a lengthy argument. It does not save Ar
 "I wanted witnesses to other people's mistakes. This is a discouraging start."
 {n}There is time for a second round before the reading. The company chooses its pieces with considerably more care.{/n}''',
       c("Play on until the reading.", "reading")),
-    n("uncertain_game", "Arsinoe", '''{n}You set up the unfinished position from your sketch and explain that the original privilege remains unknown. The company will keep the disputed route closed. Nobody is being asked to mistake the compromise for a recovered rule.{/n}
+    n("uncertain_game", "Arsinoe", '''{n}You set up the unfinished position from your sketch and explain that the original privilege remains unknown. The company will keep the disputed route closed.{/n}
 The resulting game takes most of the available time. Three people offer to improve it, and two of their suggestions would immediately favor their own pieces. Arsinoe insists that any change wait until the next round.
 "We may be ignorant. We need not be so obliging about it."
 {n}At last the courier finds a way to clear the central square. You finish the old game with a narrow loss and an entirely disproportionate sense of relief. Arsinoe folds the sketch, writes FINISHED across its back, and keeps it.{/n}
-The extra play has eaten into the reading time. She tells the company so and asks them to choose one piece rather than rushing through several. Your uncertainty has cost variety, but it has not cost the evening.''',
+The extra play has eaten into the reading time. She tells the company so and makes them choose one piece rather than gallop through three.''',
       c("Choose the evening's reading.", "reading")),
     n("house_game", "Arsinoe", '''{n}The rule granting each merchant one use of the short road sounds simple until six people begin remembering whose turn came before whose. Neral finds a shallow dish. Used tokens go into it, and the first dispute ends before anyone raises a voice.{/n}
 Arsinoe writes this addition beneath COURTYARD RULES.
 "We now owe Neral credit as well as rent."
 {n}The courier wins by allowing two rivals to block each other while he takes the long road. He appears almost apologetic about it, until the laundress tells him to enjoy his victory while he has one.{/n}
-Your improvised game belongs comfortably to this table now. Someone asks whether the rules may be copied. Arsinoe agrees, then hands the request to you to answer as well. It is a small courtesy, but after the draft notice you recognize the deliberate effort behind it.
+Your improvised game belongs comfortably to this table now. Someone asks whether the rules may be copied. Arsinoe agrees, then hands the request to you to answer as well.
 {n}You leave the board set up for anyone who wants another round after the reading.{/n}''',
       c("Begin the reading.", "reading")),
     n("reading", "Arsinoe", '''{n}The guests move their chairs. Arsinoe gives the lamplight to whoever holds the page, then sits beside the table with her own cup between both hands.{/n}''',
@@ -251,31 +251,31 @@ You turn a brass merchant in your fingers. The courier leans over to show you th
 {n}You put the merchant down. The company laughs, and you give her the attention you would have wanted for your own interest. She continues without another rebuke.{/n}
 Before the passage ends, the courier sees the hour and rises in a hurry. His satchel catches a chair; his cup spills. He has a delivery still to make. The little gathering rearranges itself around his apologies.''',
       c("Help him free the satchel.", "leaving")),
-    n("leaving", "Arsinoe", '''{n}The courier insists on wiping the table before leaving. Arsinoe finds a cloth and lets him help, instead of turning his embarrassment into a public reassurance.{/n}
+    n("leaving", "Arsinoe", '''{n}The courier insists on wiping the table before leaving. Arsinoe finds a cloth and lets him help.{/n}
 "Come again if you can," she says.
 "If it is earlier. I thought I could stay for both."
 {n}After he has gone, the question remains. Neral could open the courtyard an hour earlier on another evening, but only if the gathering used the smaller side table while she finished working. The hammer would occasionally interrupt. Keeping this hour would preserve the quiet and exclude the courier from part of it.{/n}
 Arsinoe looks at the remaining company.
 "I like the quiet. I also asked people to come together. I should like to hear what you think before I choose for everyone."
-{n}The answer will not put an extra hour into anybody's day. It can change which hour you offer.{/n}''',
+{n}Neral, from her doorway, makes it plain she does not care which, so long as somebody decides before her supper goes cold.{/n}''',
       c('"Try the earlier hour next time. We can stop speaking while Neral works."', "earlier"),
       c('"Keep this hour. Give the courier a shorter game before his delivery when we can."', "quiet")),
-    n("earlier", "Arsinoe", '''{n}Neral agrees to the earlier trial. The wheelwright cannot promise to attend it, and says so without making the courier responsible for his own working hours. The laundress prefers it.{/n}
+    n("earlier", "Arsinoe", '''{n}Neral agrees to the earlier trial. The wheelwright cannot promise to attend it. The laundress prefers it.{/n}
 Arsinoe writes the new time on the back of the notice.
 "One trial. Then we ask again."
 {n}The reading resumes. Twice someone glances toward the empty chair, but nobody leaves it ceremonially untouched. Neral moves it out of the way so that the remaining company can sit closer.{/n}
 When the lamps are put out, Arsinoe checks the courtyard for dropped pieces. You find the key-bearing merchant under the leg of a table.
 "An independent trader," she says, holding out the cloth. "He has been evading every arrangement we made."
-{n}You wrap the board together. The evening has produced a game, a reading interrupted by other people's needs, and a next meeting that will sound different from this one.{/n}''',
+{n}You wrap the board together. She knots the green cloth twice, as if the merchants might otherwise escape before the next meeting.{/n}''',
       c("Walk back with Arsinoe.", flags=("arsinoe.company_earlier",))),
-    n("quiet", "Arsinoe", '''{n}Neral keeps the later hour. The laundress would have preferred an earlier one, and Arsinoe acknowledges the preference without claiming that the company has agreed unanimously.{/n}
+    n("quiet", "Arsinoe", '''{n}Neral keeps the later hour. The laundress would have preferred an earlier one, and says so. Arsinoe writes her complaint on the back of the notice, beneath the chairs.{/n}
 "I will offer him a short game before his route when I can spare the time. I cannot promise it every evening."
 {n}The reading resumes in the quiet courtyard. There is room to hear the small changes in Arsinoe's voice, and enough time afterward for the company to disagree about the story's ending.{/n}
 When the last guest leaves, she checks beneath each table for missing pieces. You find the key-bearing merchant by a chair leg.
 "At least one of us has found a private evening," she says.
-{n}She wraps the board carefully. Keeping this hour has preserved something she wanted. It has also left the courier outside part of the gathering. Neither fact disappears because the remaining company enjoyed itself.{/n}''',
+{n}She wraps the board carefully, then puts the courier's unused cup back on the shelf while the others go on disputing the story's ending.{/n}''',
       c("Walk back with Arsinoe.", flags=("arsinoe.company_quiet",))),
-], "arsinoe_price_of_an_evening", delay=72)
+], "arsinoe_price_of_an_evening", delay=24)
 
 
 s("arsinoe_another_hour", "What the evening cost",
@@ -299,7 +299,7 @@ She has told Neral that the earlier hour suits games better than readings. Neral
 "I offered the courier a game before his route. He could spare a few minutes; I could not finish a round in them. We left the board set up behind my table, and completed it on his next visit. He won. He has been extremely courteous about reminding me."
 She looks at the wrapped board.
 "That is company too. But it does not replace sitting with everyone else. I asked whether he wanted us to change the reading hour. He said he would rather we kept playing when we could. I believe him. I still mean to ask again if his work changes."
-{n}Her pleasure in the quiet gathering remains, alongside the unfinished accommodation.{/n}''',
+{n}She sounds pleased with the evening, and faintly annoyed about the courier, and does not try to reconcile the two.{/n}''',
       c('"And the arrangement for paying?"', "accounts")),
     n("accounts", "Arsinoe", '''{n}She turns the paper over. The sums are small enough to fit in a few lines, and substantial enough to matter to the people who paid them.{/n}''',
       c("Examine the public gathering's account.", "public", requires=("arsinoe.evening_public",)),
@@ -315,7 +315,7 @@ The guest who wanted official business has not returned. Arsinoe heard that he f
       c('"I enjoyed seeing you with your guests. But I would like another hour of our own."', "alone")),
     n("private", "Arsinoe", '''"Neral has been paid. I can afford my share occasionally, as I promised. I cannot afford to make every idle evening a gathering, and I do not want you to begin paying for all of them."
 {n}She taps the list of names on the other side.{/n}
-"The wheelwright has offered his own room for a future reading. It is smaller, and we must not knock anything into the glue pot. I accepted an invitation to look at it. I did not accept it as a permanent solution to anybody's loneliness."
+"The wheelwright has offered his own room for a future reading. It is smaller, and we must not knock anything into the glue pot. I accepted an invitation to look at it. One evening. I will not promise his room to half the market."
 She smiles, a little ruefully.
 "You were right that a private evening could be enough. I still like the idea of something more regular. For now, I would rather have the company than exhaust myself arranging its ideal future."
 {n}She folds the account.{/n}
@@ -325,12 +325,12 @@ She smiles, a little ruefully.
     n("alone", "Arsinoe", '''"Good. Then let us choose something before I decide it needs three lamps and a printed announcement."
 {n}She puts the account away and rests her hands on the table.{/n}
 "I want to hear you disagree with a story. Or watch you make a clever move and pretend not to be pleased with yourself. I have learned that I enjoy both."
-The words are lightly spoken, but she does not hide their personal meaning in a proposal for another gathering.
-"I am used to making plans for a place. It is easier than admitting that I want a particular person to come back on an ordinary day. You need not make that into a promise about the rest of your life. Another ordinary day will do."
+She says it lightly, and then does not smile, so that you will know she meant it.
+"I am used to making plans for a place. A place does not refuse. You might. So: come back on an ordinary day, Commander, and let me have you to myself."
 {n}She names an evening when her business can close at its usual hour.{/n}''',
       c('"Then I will come for that evening."', flags=("arsinoe.private_hour_invited",))),
     n("invitation", "Arsinoe", '''{n}Arsinoe considers the distinction, then inclines her head.{/n}
-"Very well. I want another evening with you. I want to stop being responsible for whether everybody in the room has a good time. I would like there to be only two people in it, both capable of saying what they want."
+"Very well. I want another evening with you. I want to stop being responsible for whether everybody in the room has a good time. Two people, one table, and neither of us a host."
 {n}A customer passes outside. She lets him continue toward the market without turning the invitation into business.{/n}
 "I also want to finish a story without being interrupted by a hammer. Or a courier. Or my own excellent ideas. I am willing to tolerate some interruption from you."
 Her smile returns, warmer now.
@@ -382,13 +382,12 @@ Her tone is dry, but there is no retreat from the affection in what she has said
 "I would like you to return when you can. I would like to have something to tell you when you do. That is as far as I need to look tonight."
 {n}Outside, the market's last voices have thinned to footsteps. Neither of you rises at once.{/n}''',
       c("Stay beside her a little longer.", "pace")),
-    n("pace", "Arsinoe", '''{n}Arsinoe lets the quiet settle without filling it with another plan. The choice of how to spend it remains between the two of you.{/n}''',
-      c('"May I kiss you?"', "kiss", requires=("arsinoe.courting",)),
+    n("pace", "Arsinoe", '''{n}Arsinoe lets the quiet settle. For once she has no plan for the next hour, and seems to enjoy the novelty.{/n}''',
+      c('[Kiss her.]', "kiss", requires=("arsinoe.courting",)),
       c("Offer her your hand and remain beside her.", "hand", requires=("arsinoe.courting",)),
       c('"I like finding our way slowly."', "slow", requires=("arsinoe.slow",)),
       c('"I am glad we made time for this, my friend."', "friend", requires=("arsinoe.friendship",))),
-    n("kiss", "Arsinoe", '''"Yes."
-{n}She says it without looking away. When you lean toward her, she meets you with one hand against your cheek. The kiss is unhurried, warm with the pleasure of an evening already shared. She draws back only far enough to look at you, then kisses you again of her own accord.{/n}
+    n("kiss", "Arsinoe", '''{n}She sees it coming and does not look away. When you lean toward her, she meets you with one hand against your cheek. The kiss is unhurried, warm with the pleasure of an evening already shared. She draws back only far enough to look at you, then kisses you again of her own accord.{/n}
 "I am pleased we kept this hour for ourselves."
 {n}Her hand slips from your cheek to your shoulder. You stay close, discovering the comfortable angle of two chairs that were never designed for this use. She laughs softly when one complains beneath you and pulls you toward the sturdier one.{/n}
 The rest of the hour needs little conversation. When it is time to leave, she retrieves her clasp but does not put it on until she has walked you to the door.

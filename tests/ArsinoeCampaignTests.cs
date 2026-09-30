@@ -80,6 +80,11 @@ internal static class ArsinoeCampaignTests
                             check(partial.Has("arsinoe.campaign_lover"), "Friendship or slow pace receives a sexual invitation.");
                         if (scene.Id == "arsinoe_where_she_stays" && page == "departure")
                             check(partial.Has("arsinoe.departure_kept"), "Skipped farewell is treated as played history.");
+                        // Sol r3 INT: the loan confession (Senn's debt) is heard only on the loan branch, the landing sulk only on the gift.
+                        if (scene.Id == "arsinoe_the_first_cart" && page == "expected")
+                            check(partial.Has("arsinoe.repair_loan") && !partial.Has("arsinoe.repair_staged"), "The staged gift reaches the loan confession.");
+                        if (scene.Id == "arsinoe_the_first_cart" && page == "expected_staged")
+                            check(partial.Has("arsinoe.repair_staged"), "The loan branch reaches the staged-gift response.");
                     });
                     foreach (var result in results)
                     {
@@ -135,6 +140,25 @@ internal static class ArsinoeCampaignTests
                     check(endings.Count(e => e.Owner == "Epilogue" && Rules.Available(story, e, changed)) == 1,
                         "Arsinoe has conflicting exceptional endings: " + special);
                 }
+                // Sol INT/HOW (2026-09-30): the native Trickster punchline undoes the sacrifice (trickster.commander_back,
+                // GrandFinal Answer_0011 + Epilogues Cue_0564). A surviving Commander is never mourned, with or without Last Call.
+                foreach (string key in new[] { "ending.trickster", "ending.trickster_full", "ending.trickster_allplanes", "ending.trickster_allplanes_fw" })
+                foreach (bool lastCall in new[] { false, true })
+                {
+                    var back = Program.Copy(result);
+                    back.Flags.UnionWith(new[] { "sacrifice", "trickster.ever", key });
+                    if (lastCall) back.Flags.Add("lastcall.active");
+                    Rules.Complete(story, back);
+                    var open = endings.Where(e => e.Owner == "Epilogue" && Rules.Available(story, e, back)).ToArray();
+                    check(back.Has("trickster.commander_back") && open.Length == 1 && open[0].Id != "arsinoe_ending_sacrifice",
+                        "A Trickster back from the sacrifice is mourned, or has no single living ending: " + key + (lastCall ? " +Last Call" : ""));
+                }
+                var mourned = Program.Copy(result);
+                mourned.Flags.Add("sacrifice");
+                Rules.Complete(story, mourned);
+                var mourning = endings.Where(e => e.Owner == "Epilogue" && Rules.Available(story, e, mourned)).ToArray();
+                check(!mourned.Has("trickster.commander_back") && mourning.Length == 1 && mourning[0].Id == "arsinoe_ending_sacrifice",
+                    "A genuine sacrifice loses its mourning page.");
             }
             check(states.Any(s => !s.Has("arsinoe.night_shared")), "Campaign forces a night together.");
             if (pace != "arsinoe.friendship") check(states.Any(s => s.Has("arsinoe.night_shared")), "Romantic path cannot choose a night together.");

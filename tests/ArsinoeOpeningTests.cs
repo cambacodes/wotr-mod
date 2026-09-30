@@ -96,6 +96,8 @@ internal static class ArsinoeOpeningTests
                         }
                         check(!Rules.Available(story, scene, result), "Arsinoe repeats completed scene.");
                         check(!result.Has("arsinoe.first_kiss") || result.Has("arsinoe.courting"), "Arsinoe kisses outside courtship.");
+                        // Sol r6 INT: accepting her first invitation sets the StartedFlag, so the journal objective opens.
+                        check(result.Has(story.Relationships["arsinoe"].StartedFlag), "Accepted Arsinoe invitation does not start her relationship.");
                         foreach (string flag in new[] { "arsinoe.print_source_found", "arsinoe.print_source_uncertain", "arsinoe.print_asked", "arsinoe.print_listened", "arsinoe.first_kiss", "arsinoe.friendship", "arsinoe.slow" })
                             if (result.Has(flag)) outcomes.Add(flag);
                         next.Add(result);

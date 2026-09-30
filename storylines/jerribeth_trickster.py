@@ -11,6 +11,8 @@ dies with its mother unless it has a claim to the house; the Commander's joke gi
 property that isn't there (TricksterKnowledgeArcanaTier3Feature 5e26c673), applied to her own biology. A Commander who
 never met her drinks to her, and one of her Wintersun ideas, still lodged in a deserter, hears the toast.
 """
+import copy
+
 from story_format import c, n, p, reaction, scene
 
 SCENES = []
@@ -31,15 +33,23 @@ DECLINED = "jerribeth.trickster.declined"
 MET_BY_TOAST = "jerribeth.trickster.met_by_toast"
 TENANT = "jerribeth.trickster.cost.tenant"
 LATE = "jerribeth.trickster.cost.late"
-HOST = "jerribeth.trickster.cost.host"
+HOST = "jerribeth.trickster.cost.host"               # the host taken (his body is hers)
+HOST_PROMISED = "jerribeth.trickster.host_promised"  # the host promised at the Nexus, taken later in Drezen
 LODGER = "jerribeth.trickster.cost.lodger"
 STATUE = "jerribeth.trickster.body.statue"
 LOCUST = "jerribeth.trickster.body.locust"
 TOAST = "jerribeth.trickster.cost.toast"
 TOAST_HOST = "jerribeth.trickster.cost.toast_host"      # the toast branch: the man who poured the cup, given to her
 TOAST_MEMORY = "jerribeth.trickster.cost.toast_memory"  # the toast branch: the Commander paid with the night of the toast
+TOAST_GRUDGE = "jerribeth.trickster.cost.toast_grudge"   # the toast refused: charged to the future, with interest
+GRUDGE_PAID = "jerribeth.trickster.cost.toast_interest"   # the interest collected at the promise
 LEVY = "jerribeth.trickster.toast_levy"            # the letter twin: the toast was drunk with the Wintersun levy
-FORFEIT = "jerribeth.trickster.cost.forfeit"
+FORFEIT = "jerribeth.trickster.cost.forfeit"          # the accepted contract: set only by the committing answers
+OFFERED = "jerribeth.trickster.forfeit_named"          # the forfeit named in negotiation, before any promise
+ACTIVE = "lastcall.active"                             # Last Call owns the single forfeit collection when it plays
+CAMELLIA_SAW = "jerribeth.camellia_spectacle_heard"    # SeenCues JerribetnFinal/Cue_0039: Camellia's "repugnant spectacle"
+CAMELLIA_DEAD = "camellia.dead"
+CAMELLIA_RETURNED = "camellia.trickster.returned"
 NO_FORFEIT = "jerribeth.trickster.no_forfeit"      # her hard no at jerribeth.future: "I do not sign blank pages."
 LATE_COMMITTED = "jerribeth.trickster.late_committed"
 KILLED = "jerribeth.killed_by_commander"
@@ -61,13 +71,17 @@ SEEN_CUES = {
     BETRAYED: ["09280d586e0118b4882abcdb5a4787c6",       # JerribetnFinal/Cue_0012 "...the only thing standing between me..."
                "8ccd036dc7f03704590ac5787c3997d2"],      # JerribetnFinal/Cue_0029
     WINTERSUN_IDEA: ["063d159af56b4c54292e6e2eaca8ca08"],  # Reveal/Cue_0008 "I merely planted a few... ideas in their heads."
+    CAMELLIA_SAW: ["f52f61f9f2ada7045a3b7f2f89350b95"],    # JerribetnFinal/Cue_0039 (Camellia): "...a repugnant spectacle... useful."
 }
 SELECTED_ANSWERS = {
     "jerribeth.trickster.attack_final": "e3158fbb613ebec4bade9b91b9c31aed",    # JerribetnFinal/Answer_0017 [Attack]
     "jerribeth.trickster.attack_bored": "807cc780b4bdcbe49a69aa179576857d",    # Greetings/Answer_0008 [Attack] "You're boring me"
     "jerribeth.trickster.attack_refused": "0149f56290ac8d540a83ec5e92f10c51",  # Greetings/Answer_0016 [Attack] "...Die!"
 }
-DERIVED = {KILLED: [[key] for key in SELECTED_ANSWERS]}
+SHORT_FAREWELL = "jerribeth.trickster.short_farewell"  # a Trickster short promise, settled: the farewell letter may come
+DERIVED = {KILLED: [[key] for key in SELECTED_ANSWERS],
+           SHORT_FAREWELL: [["trickster.ever", "jerribeth.short_future_chosen", "jerribeth.future_settled"]]}
+FATE_TERMS = "jerribeth.fate_terms"
 PERMANENT = (DEAD,)   # JER-11: a completed JerribethDead still counts as her death
 
 
@@ -109,7 +123,9 @@ SCENES.append(scene("jerribeth.trickster.dead.setup_greeting", "Rent", "Jerribet
 {n}Laughter, high and abrasive, like a buzzing insect, and for one moment it comes from inside your ear rather than beside it.{/n}
 "Do you know what I left in Wintersun? Ideas. I have not been there in months, and they are still there, because the heads they live in grew used to them. A thought a house keeps does not need its mother, crusader. It needs the house."
 {n}The antennae tilt, pricing you.{/n}
-"Very well. Lease accepted. And I shall pay my rent in the only coin a tenant like me carries: one of your memories a month, my choice, taken in lieu of repairs. Consider it a small investment on my part. You will not feel it. Probably."''',
+"Very well. Lease accepted. And I shall pay my rent in the only coin a tenant like me carries: one of your memories a month, my choice, taken in lieu of repairs. The first instalment in advance. I always pay the first one in advance; it makes the rest so much harder to dispute."
+{n}Something small goes out of you, neatly, like a page cut from a ledger. You try to remember the colour of the door of the house you grew up in, and find a clean, swept space where the colour used to be.{/n}
+"Consider it a small investment on my part."''',
       c("Continue", "lore", requires=(EGG_LORE,)),
       c('"Now. The deal."', forbids=(EGG_LORE,), flags=(PRIMED,))),
     j("lore", '''"Your fox has told you what we lay, and where. And still you offer me a room."
@@ -133,7 +149,9 @@ SCENES.append(scene("jerribeth.trickster.dead.setup_final", "A lease, read in ad
       c('"On second thought, keep out of my head."', abort=True)),
     j("accepted", '''"Accepted."
 {n}Something settles behind your left eye, light as a moth on a sleeve.{/n}
-"A room you give is a room I keep, even when I am not there to keep it. Ask Wintersun. I pay my rent in your memories, one a month, my choice. Deals with demons are a losing game, Commander. I said so myself. We shall see which of us is losing this one."''',
+"A room you give is a room I keep, even when I am not there to keep it. Ask Wintersun. I pay my rent in your memories, one a month, my choice, and the first instalment in advance."
+{n}Something small goes out of you, neatly, like a page cut from a ledger. You try to remember the colour of the door of the house you grew up in, and find a clean, swept space where the colour used to be.{/n}
+"Deals with demons are a losing game, Commander. I said so myself. We shall see which of us is losing this one."''',
       c('"We\'ll see."')),
 ], requires=("trickster",), forbids=(PRIMED, DEAD), last=3, optional=True, Relationship="jerribeth", Chapters=[3],
    AnswerLists=[FINAL_LIST]))
@@ -156,7 +174,8 @@ SCENES.append(scene("jerribeth.trickster.dead.backdated", "Signed late", "Jerrib
         mythic="Trickster", alignment=("Evil", 1), flags=(PRIMED, LATE)),
       c('"Get out of my head."', "evicted", flags=(DECLINED,))),
     j("signed", '''{n}Something in your skull stops dying. It takes the lease with both hands, the way a drowning thing takes a rope.{/n}
-"Rent. From *tonight*. And no forfeit clause. You are very bad at this, Commander."
+"Rent. From *tonight*. And no forfeit clause. You are very bad at this, Commander. The first instalment, then, before I starve."
+{n}Something small goes out of you, neatly, like a page cut from a ledger. You try to remember the colour of the door of the house you grew up in, and find a clean, swept space where the colour used to be.{/n}
 {n}The buzzing comes back, stronger, and settles in to stay.{/n}
 "I will honour a lease signed this late exactly as long as it amuses me. Do try to remain amusing."''',
       c('"Sleep well, tenant."')),
@@ -178,45 +197,76 @@ TENANT_VARIANTS = [
     ("v_insulted", (INSULTED,), _variant("v_insulted", '''"And I told you I would remember. I am, as it happens, *inside* the remembering."''')),
     ("v_failed", ("trickster.failed",), _variant("v_failed", '''"Your little power is gone, I notice. The trick went out of you like air out of a bladder. My lease did not."''')),
 ]
-_TENANT_ENTRY, _TENANT_NODES = ladder(TENANT_VARIANTS, "house")
-
-SCENES.append(scene("jerribeth.trickster.dead.tenant", "The tenant", "Jerribeth", 3, "", [
-    nar("start", '''{n}Near dawn a thought arrives that is not yours. It is neat, it is patient, and it is counting.{/n}''',
-      c("Continue", "tenant")),
-    j("tenant", '''"Commander. You told me I could plant whatever I liked, and that you would charge rent. I planted. You charged."
+_TENANT_START = '''{n}Near dawn a thought arrives that is not yours. It is neat, it is patient, and it is counting.{/n}'''
+_TENANT_CLAIM = '''"Commander. You told me I could plant whatever I liked, and that you would charge rent. I planted. You charged."
 {n}The voice is exactly where it was in the Sanctum: behind your eyes, a little to the left.{/n}
-"When the sword went through me, the seed began to die, as my children do when I do. Then it found what my Wintersun ideas found: a house that had agreed to keep it. You gave it a room, and it paid its rent every month, the way I set it: one of your memories, taken and kept. A house that has been paid is a house that holds."
+"When the sword went through me, the seed began to die, as my children do when I do. Then it found what my Wintersun ideas found: a house that had agreed to keep it. You gave it a room, and it paid its first rent the night you signed, in advance, the way I set it: the colour of the door you grew up behind. Taken and kept. A house that has been paid is a house that holds. The rest falls due on the first of every month."
 {n}Laughter buzzes behind your eyes, high and abrasive.{/n}
-"I am in arrears. You are haunted. Which of us minds more, do you think?"''', *_TENANT_ENTRY),
-    *_TENANT_NODES,
-    j("house", '''"Do not make that face. You cannot see it; I can."
+"I am in arrears. You are haunted. Which of us minds more, do you think?"'''
+_HOUSE = '''"Do not make that face. You cannot see it; I can."
 {n}Something turns over in your memory, idly, the way a guest turns over the ornaments on a shelf.{/n}
-"A seed needs somewhere to grow, and I will not spend my second life as an itch. Choose where I live, or I will choose. I have already walked through your memories, and I know which of your officers sleeps soundly."''',
-      c('"The Lady of the Sun statue. You always liked being worshipped."', "statue_done", crusade=("Favors", -100),
-        flags=(RETURNED, TENANT, "jerribeth.started", STATUE)),
-      c('"One of Xanthir\'s locusts. You pinned them for a reason."', "locust_done", crusade=("Materials", -100),
-        flags=(RETURNED, TENANT, "jerribeth.started", LOCUST)),
-      c('[Give her a host] "Take a deserter from the stockade. Nobody will miss him."', "host_done", alignment=("Evil", 2),
-        flags=(RETURNED, TENANT, "jerribeth.started", HOST)),
-      c('"Stay where you are. Rent\'s due on the first of the month."', "lodger_done", alignment=("Chaotic", 1),
-        flags=(RETURNED, TENANT, "jerribeth.started", LODGER)),
-      c('"Not tonight."', abort=True)),
-    nar("statue_done", '''{n}Four days later a Wintersun idol of the Lady of the Sun arrives in camp under canvas, gilt and serene and a head taller than the carters who unload it. The chaplains want a favour for the room it takes up, and a second favour for the prayers they will have to say around it.{/n}
+"A seed needs somewhere to grow, and I will not spend my second life as an itch. Choose where I live, or I will choose. I have already walked through your memories, and I know which of your officers sleeps soundly."'''
+_LODGER_DONE = '''{n}On the first night of the month you laugh at nothing, high and abrasive, and the aide bringing your dispatches drops one of them.{/n}
+{n}In the morning you cannot remember the name of your first horse. You look for it, the way you would feel for a missing tooth, and find only a neat, swept space where it used to be.{/n}'''
+
+
+def _tenant_scene(id, host_flag, statue_text, locust_text, host_node, chapters, areas):
+    entry, nodes = ladder(TENANT_VARIANTS, "house")
+    return scene(id, "The tenant", "Jerribeth", min(chapters), "", [
+        nar("start", _TENANT_START, c("Continue", "tenant")),
+        j("tenant", _TENANT_CLAIM, *entry),
+        *nodes,
+        j("house", _HOUSE,
+          c('"The Lady of the Sun statue. You always liked being worshipped."', "statue_done", crusade=("Favors", -100),
+            flags=(RETURNED, TENANT, "jerribeth.started", STATUE)),
+          c('"One of Xanthir\'s locusts. You pinned them for a reason."', "locust_done", crusade=("Materials", -100),
+            flags=(RETURNED, TENANT, "jerribeth.started", LOCUST)),
+          c('[Give her a host] "Take a deserter from the stockade. Nobody will miss him."', "host_done", alignment=("Evil", 2),
+            flags=(RETURNED, TENANT, "jerribeth.started", host_flag)),
+          c('"Stay where you are. Rent\'s due on the first of the month."', "lodger_done", alignment=("Chaotic", 1),
+            flags=(RETURNED, TENANT, "jerribeth.started", LODGER)),
+          c('"Not tonight."', abort=True)),
+        nar("statue_done", statue_text, c('"Goodnight, my lady."')),
+        nar("locust_done", locust_text, c('"Mind the papers."')),
+        host_node,
+        nar("lodger_done", _LODGER_DONE, c('"Paid in full."')),
+    ], requires=("trickster.ever", PRIMED, DEAD), forbids=(RETURNED, DECLINED), delay=48, last=5, optional=True,
+       Relationship="jerribeth", Remote=True, Chapters=list(chapters), Areas=list(areas), TricksterDevice=True,
+       TricksterState="dead")
+
+
+# In Drezen (Chapters 3 and 5) the vessels are at hand: the idol is carted in, the case is fetched, the host is taken.
+SCENES.append(_tenant_scene("jerribeth.trickster.dead.tenant", HOST,
+    '''{n}Four days later a Wintersun idol of the Lady of the Sun arrives in camp under canvas, gilt and serene and a head taller than the carters who unload it. The chaplains want a favour for the room it takes up, and a second favour for the prayers they will have to say around it.{/n}
 {n}At night its gilt face turns, very slightly, toward your window.{/n}''',
-      c('"Goodnight, my lady."')),
-    nar("locust_done", '''{n}A salvage team goes back into the Ivory Sanctum for her pinning case and brings it out whole, cursing the stairs. One needle has been pulled.{/n}
+    '''{n}A salvage team goes back into the Ivory Sanctum for her pinning case and brings it out whole, cursing the stairs. One needle has been pulled.{/n}
 {n}On your desk, under a glass, a locust cleans its face with its forelegs, slowly and very thoroughly, and keeps every one of its eyes on you.{/n}''',
-      c('"Mind the papers."')),
     j("host_done", '''"*Now* you have taste."
 {n}In the morning the stockade reports one prisoner fewer, and a sentry who swears the man walked out past him at the change of watch, smiling, with his hands folded behind his back like a courtier.{/n}
-{n}Nobody asks the man's name. Nobody ever will.{/n}''',
-      c('"Keep him clean."')),
-    nar("lodger_done", '''{n}On the first night of the month you laugh at nothing, high and abrasive, and the aide bringing your dispatches drops one of them.{/n}
-{n}In the morning you cannot remember the name of your first horse. You look for it, the way you would feel for a missing tooth, and find only a neat, swept space where it used to be.{/n}''',
-      c('"Paid in full."')),
-], requires=("trickster.ever", PRIMED, DEAD), forbids=(RETURNED, DECLINED), delay=48, last=5, optional=True,
-   Relationship="jerribeth", Remote=True, Chapters=[3, 4, 5], Areas=[DREZEN, NEXUS], TricksterDevice=True,
-   TricksterState="dead"))
+{n}Nobody asks the man's name. Nobody ever will.{/n}''', c('"Keep him clean."')),
+    (3, 5), (DREZEN,)))
+
+# CAN/BEL (Sol): at the Nexus (Chapter 4) the vessels are on another plane. The idol and the case are ordered and go to
+# Drezen by the first hand going that way; the host is only promised (host_promised). She takes him in Drezen, in
+# Chapter 5, on the page (host.taken), and until then no line claims his body. Exactly one of the two tenant letters plays.
+SCENES.append(_tenant_scene("jerribeth.trickster.dead.tenant_nexus", HOST_PROMISED,
+    '''{n}You write the order before you sleep again and seal it for the quartermasters in Drezen: one Wintersun idol of the Lady of the Sun, carted down from the village that carved it, paid for in favours. It goes to Drezen by the first hand going that way, and if no hand is, it goes with you. The chaplains will want a favour for the room it takes up, and a second favour for the prayers they will have to say around it.{/n}
+{n}Until it stands in your quarters she stays where she is, behind your left eye, complaining about the furniture. She tells you, with relish, what you will find when you get there: a gilt face, a head taller than the carters who unload it, that turns at night, very slightly, toward your window.{/n}''',
+    '''{n}You write a second order for the quartermasters in Drezen: a salvage team, when one can be spared, back into the Ivory Sanctum for her pinning case, and timber to shore the stairs they will curse. The materials come out of the crusade's stores. The order goes to Drezen by the first hand going that way, and if no hand is, it goes with you.{/n}
+{n}She waits behind your left eye until the case is on your desk, and she describes, at length, what will happen then: one needle pulled, and a locust under a glass cleaning its face with its forelegs, slowly and very thoroughly, keeping every one of its eyes on you.{/n}''',
+    j("host_done", '''"*Now* you have taste. Pity he is a plane away."
+{n}She will take him the first night you sleep in Drezen, and not before: a seed, she says, crosses from one head to the next only at arm's length. Until then she waits behind your left eye and tells you, in detail, what she means to do with his hands when she has them.{/n}''', c('"Keep your hands off him until we\'re home."')),
+    (4,), (NEXUS,)))
+
+# The fulfillment of the Nexus promise, on the first Drezen rest of Chapter 5. It is her only Chapter 5 device letter on
+# this branch (the tenant letter was read in Chapter 4), inside the tier B allowance of 2.
+SCENES.append(scene("jerribeth.trickster.host.taken", "The stockade, one fewer", "Jerribeth", 5, "", [
+    nar("start", '''{n}The first night you sleep in Drezen again, you dream of a corridor you have never walked, lit by a lantern you are not carrying, and of a lock that turns for you as if it had been waiting.{/n}
+{n}In the morning the stockade reports one prisoner fewer, and a sentry who swears the man walked out past him at the change of watch, smiling, with his hands folded behind his back like a courtier. Nobody asks the man's name. Nobody ever will.{/n}
+"Warm," {n}says the voice behind your left eye, and then, for the first time since the Sanctum, it says nothing else for a whole day, because it is busy.{/n}''',
+      c('"Keep him clean."', flags=(HOST,)))],
+    requires=("trickster.ever", HOST_PROMISED), forbids=(HOST, DECLINED), delay=0, last=5, optional=True,
+    Relationship="jerribeth", Remote=True, Chapters=[5], Areas=[DREZEN]))
 
 
 # --- State never_met: the toast (F05) ------------------------------------------------------------------------------
@@ -257,7 +307,7 @@ SCENES.append(scene("jerribeth.trickster.never_met.toast", "A toast at the eveni
         mythic="Trickster"),
       c('"Not tonight."', abort=True)),
     j("voice", '''{n}The sergeant's hand stops on the jug. His eyes go flat and bright at the same time, like a beetle's back.{/n}
-''' + VOICE.replace("{what}", "carries cups"),
+''' + VOICE.replace("{what}", "carries cups").replace("The deserter's mouth", "The sergeant's mouth"),
       c('"Then come and find out."', flags=(MET_BY_TOAST, TOAST, LEVY, "jerribeth.started"))),
 ], requires=("trickster", "chapter_later"),
    forbids=("jerribeth.met", DEAD, MET_BY_TOAST, "jerribeth.trickster.never_met.toast_king", "fool_king.available"),
@@ -281,35 +331,117 @@ TRICKSTER_PARAGRAPHS = (
     p("In the taverns of Drezen they still tell the toast. Nobody tells the ending: the Lady of the Sun never did betray "
       "the one who made it. She considered this the finest betrayal of her career.", requires=(TOAST,)),
     p("A sergeant of the Wintersun levy served in the Commander's household after the war, exact and courteous and "
-      "smiling a little too widely. He never drank, and he never once poured a cup for anyone.", requires=(TOAST_HOST,)),
+      "smiling a little too widely. He never drank, and he never once poured a cup for anyone.", requires=(TOAST_HOST, LEVY)),
+    p("A Wintersun deserter who had once put down his cup in the Fool King's tavern served in the Commander's household "
+      "after the war, exact and courteous and smiling a little too widely. He never drank again, in any tavern.",
+      requires=(TOAST_HOST,), forbids=(LEVY,)),
+    p("The toast drunk for free was charged to the future, as she had said it would be, with interest. The Commander never "
+      "again remembered raising a cup to anyone before her.", requires=(GRUDGE_PAID,)),
     p("The Commander could never remember the night of the toast, only that it had cost something. Jerribeth told it "
       "differently whenever she was asked, and always as the evening they had first met.", requires=(TOAST_MEMORY,)),
-    p("She collected the forfeit on the first anniversary of the contract, without warning, as she had said she would. "
+    # COX: one owner for the single forfeit. When Last Call plays, its coda collects it (the rift); otherwise this does.
+    p("A broken contract is a demon's favourite kind. She collected the forfeit on the first anniversary of it, without "
+      "warning, in a single line of a letter the Commander found already open on the desk: one memory, the first meeting, "
+      "taken. Afterwards the Commander knew they had ever met only because the letter said so.",
+      requires=(FORFEIT, "jerribeth.closed"), forbids=(ACTIVE,)),
+    p("She collected the forfeit on the first anniversary of the contract, without warning. Nothing had been broken; "
+      "she said a clause nobody invokes goes stale, and she did not keep stale things. "
       "She took the Commander's first meeting with her: the voice in the head, the first bargain, all of it. Afterwards "
       "the Commander knew they had met only because she said so, and she told it differently every time, a little more "
       "flattering to herself with each telling. \"You cannot contradict me,\" she said, when the Commander objected. "
       "\"That was the point. Now I am the only one who remembers how we began, and I intend to improve it.\"",
-      requires=(FORFEIT,)),
+      requires=(FORFEIT,), forbids=(ACTIVE, "jerribeth.closed")),
 )
+GRUDGE_UNPAID_PARAGRAPH = p(
+    "She never did collect the interest on the toast. She told everyone who would listen that the Commander still owed it, "
+    "and let them wonder what it was. The Commander came to understand that this was worse.",
+    requires=(TOAST_GRUDGE, "jerribeth.closed"), forbids=(GRUDGE_PAID,))
 REFUSED_PARAGRAPH = p(
     "A crusade clerk later found, in the Commander's papers, a blank contract with a single line written in a small, neat "
     "hand: \"No forfeit, no signature.\"", requires=(NO_FORFEIT,))
 
+# The late commit is staged by what she is: a living demon in her guise, a tenant wearing the man from the stockade, or a
+# tenant with no body of her own (idol, locust or lodger) who comes up from the back of the Commander's skull. The accepted
+# contract has its own intimate threshold (cut at the start of the act) and a morning, or the Commander keeps the table.
+_OFFER_LINE = '''"The forfeit is one memory, of my choosing, when I choose. I have already read your answer, Commander. Show me whether I read it right."'''
+_MIND = dict(requires=(RETURNED,), forbids=(HOST,))
+_MUSTER_END = ("He never came to a muster again. The Commander never once caught her in a lie, which was, she said, the "
+               "whole point.")
+MUSTER_PARAGRAPHS = (
+    p("At the first Drezen muster after the war, a grey sergeant who had carried the Commander off the wall at Iz came up "
+      "to clasp arms, and the Commander asked his name. He stood there with his hand out until Jerribeth, at the "
+      "Commander's elbow in her elven guise, told him the story of that day, better than he could have told it himself, "
+      "with a detail in it that had not happened. " + _MUSTER_END, forbids=(RETURNED,)),
+    p("At the first Drezen muster after the war, a grey sergeant who had carried the Commander off the wall at Iz came up "
+      "to clasp arms, and the Commander asked his name. He stood there with his hand out until the smiling man at the "
+      "Commander's elbow told him the story of that day in a high, pleased voice that was not his own, better than the "
+      "sergeant could have told it himself, with a detail in it that had not happened. " + _MUSTER_END, requires=(HOST,)),
+    p("At the first Drezen muster after the war, a grey sergeant who had carried the Commander off the wall at Iz came up "
+      "to clasp arms, and the Commander asked his name. He stood there with his hand out until the Commander heard their "
+      "own voice tell him the story of that day, better than he could have told it himself, with a detail in it that had "
+      "not happened. It was her story, told with the Commander's mouth. " + _MUSTER_END, **_MIND),
+)
+
 SCENES.append(scene("jerribeth.trickster.epilogue.commit", "The guest who knocked", "Epilogue", 5, "", [
-    nar("offer", '''{n}The war ended before the lease did. Jerribeth came to the Commander's door the first spring after the Worldwound closed, in a guise the guards did not question, with the clause she had been saving.{/n}
-"The forfeit is one memory, of my choosing, when I choose. I have already read your answer, Commander. Show me whether I read it right."''',
-      c('[Give her your hand.]', "signed"),
-      c('[Keep your hands folded in your lap.]', "torn")),
+    nar("offer", '''{n}The war ended before the lease did. The first spring after Threshold, Jerribeth came to collect the clause she had been saving.{/n}''',
+      c('[Give her your hand.]', "signed", forbids=(RETURNED,)),
+      c('[Keep your hands folded in your lap.]', "torn", forbids=(RETURNED,)),
+      c('[Give her your hand.]', "signed", requires=(HOST,)),
+      c('[Keep your hands folded in your lap.]', "torn", requires=(HOST,)),
+      c('[Say yes, aloud, to an empty breakfast room.]', "signed_mind", **_MIND),
+      c('[Say nothing, and finish the tea.]', "torn_mind", **_MIND),
+      paragraphs=(
+          p("She came to the Commander's door in the elven guise, with the seam of light left along its jaw so that "
+            "nobody who knew her could mistake it, and the guards let her in because nobody who did not know her could see "
+            "it. She sat down at the Commander's table without being asked. " + _OFFER_LINE, forbids=(RETURNED,)),
+          p("She came to the door in the man from the stockade, smiling two finger-widths too wide, and the guards let him "
+            "in because they had long ago stopped looking at his face. He sat down at the Commander's table without being "
+            "asked, and her voice came out of him, high and pleased. " + _OFFER_LINE, requires=(HOST,)),
+          p("She did not come to the door. She had no door to come to. She came up from the back of the Commander's skull "
+            "at breakfast, where she had lived since the Sanctum, and the tea went cold while she talked. \"The forfeit is "
+            "one memory, of my choosing, when I choose. I have already read your answer; I live beside it. Say it aloud "
+            "anyway. I prefer my bargains witnessed, even when the only witness is you.\"", **_MIND),
+      )),
     nar("signed", '''{n}The Commander held out a hand. She turned it palm up and read it twice, the way she read small print, as if checking it for a trick, and did not find one, and seemed disappointed and pleased in exactly equal measure.{/n}
-{n}She collected a year later to the day, over breakfast, between one sentence and the next. She took the war: not the Commander's deeds, which were written down everywhere, but the having been there. The Commander put down the cup and could not say why the tea tasted of smoke.{/n}
+"Signed," she said, and did not let go of the hand. "I collect in person, Commander. I do not collect at breakfast."''',
+      c('[Take her to bed.]', "night", forbids=(RETURNED,)),
+      c('[Take her to bed.]', "night_host", requires=(HOST,)),
+      c('[Keep the breakfast table between you.]', "collected")),
+    nar("signed_mind", '''{n}The Commander said yes, aloud, to an empty room. A servant in the doorway decided not to have heard it.{/n}
+{n}Behind the Commander's left eye something read the word twice, the way she read small print, looking for the trick, and did not find one, and was disappointed and pleased in exactly equal measure.{/n}
+"Signed. I collect in person, Commander. My person happens to live in your head."''',
+      c('[Go back to bed, and let her build the room.]', "night_mind"),
+      c('[Finish breakfast.]', "collected")),
+    nar("night", '''{n}She did not wait for the table to be cleared. She let the guise go at the bedroom door, all of it, and the room was suddenly too small for her: antennae brushing the lintel, wings folded and rasping against the frame like pages turning, the smell of cold stone and of fruit left on an altar.{/n}
+"Most people close their eyes."
+{n}The Commander did not. She undid the Commander's collar with the care she had once given her locusts, one fastening at a time, watching to see what each one cost, and walked the Commander back to the bed by the wrists without once tightening her grip. When the Commander's knees met the mattress she let them fall and followed, wings half open to shut out the window, settled astride, and lowered herself onto the Commander, buzzing low enough to be felt in the teeth.{/n}''',
+      c("Continue", "night_after")),
+    nar("night_after", '''{n}She was gone by noon, which she called restraint. The Commander found small crescents on both wrists where her claws had rested, very precise, as if counted, and one folded locust wing on the pillow. They healed slowly. The Commander was in no hurry for them to.{/n}
+{n}A note in her hand lay on the breakfast table, which nobody had dared to clear: "Rent received. The forfeit stands. I have not decided which memory. You will be the second to know."{/n}''',
+      c("Continue", "collected")),
+    nar("night_host", '''{n}She did not take the Commander to bed in the man from the stockade. She sat him down in the chair by the door, folded his hands for him, and left him there, smiling at nothing.{/n}
+"His body is mine; I stole it fairly. But I have never once let a stolen thing take the credit for my work. Lie down, Commander. I am coming the other way."''',
+      c("Continue", "night_mind")),
+    nar("night_mind", '''{n}The room she built was the Commander's own bedroom, exactly, down to the crack in the ceiling, and the only thing in it that did not belong there was her, in her own form, sitting on the edge of the bed with her carapace catching the light of a lamp that was not lit.{/n}
+"I know where every nerve in this house runs. I have had years to read the plans."
+{n}Her claws traced the Commander's jaw, and the Commander felt every point of them. She pushed the Commander back into a pillow that did not exist, settled astride with her wings opening over them both, and lowered herself onto the Commander with a sound in the skull like pages turning very fast.{/n}''',
+      c("Continue", "night_mind_after")),
+    nar("night_mind_after", '''{n}The Commander woke alone, as the Commander had lain down, with no marks anywhere and the exact memory of where every one of them should be.{/n}
+{n}Behind the left eye, something neat and patient was very pleased with itself. "Rent received. The forfeit stands. I have not decided which memory. You will be the second to know."{/n}''',
+      c("Continue", "collected")),
+    nar("collected", '''{n}She collected a year later to the day, over breakfast, between one sentence and the next. She took the war: not the Commander's deeds, which were written down everywhere, but the having been there. The Commander put down the cup and could not say why the tea tasted of smoke.{/n}
 "There," she said. "Now I am the only one at this table who remembers how we met, and I intend to improve it."
-{n}Afterwards the Commander read about the crusade like a stranger reading a history, and Jerribeth, who had not been there either, told it back over supper, with herself in it.{/n}
-{n}At the first Drezen muster after the war, a grey sergeant who had carried the Commander off the wall at Iz came up to clasp arms, and the Commander asked his name. He stood there with his hand out until Jerribeth, at the Commander's elbow, told him the story of that day, better than he could have told it himself, with a detail in it that had not happened. He never came to a muster again. The Commander never once caught her in a lie, which was, she said, the whole point.{/n}''',
-      c(), paragraphs=TRICKSTER_PARAGRAPHS),
+{n}Afterwards the Commander read about the crusade like a stranger reading a history, and Jerribeth, who had not been there either, told it back over supper, with herself in it.{/n}''',
+      c(), paragraphs=MUSTER_PARAGRAPHS + TRICKSTER_PARAGRAPHS),
     nar("torn", '''{n}The Commander kept both hands folded in their lap, where she could see them.{/n}
 {n}She studied the hands, then the face above them. Then she laughed, high and abrasive, loud enough to bring the guard running.{/n}
-"No forfeit, no lease. And still you open the door to me." {n}She sat down anyway, uninvited, at the Commander's own table.{/n} "You are very bad at this, Commander. I shall come back tomorrow, and the day after, until one of us learns to write a better one."
+"No forfeit, no contract. And still you open the door to me." {n}She stayed at the Commander's table, uninvited.{/n} "You are very bad at this, Commander. I shall come back tomorrow, and the day after, until one of us learns to write a better one."
 {n}She did. Neither of them ever did. Whatever else she took, the Commander kept the war, including the parts worth losing.{/n}''',
+      c()),
+    nar("torn_mind", '''{n}The Commander said nothing, and finished the tea.{/n}
+{n}Behind the left eye she waited. Then she laughed, high and abrasive, out loud, with the Commander's own mouth, loud enough to bring the guard running.{/n}
+"No forfeit, no contract. Only the lease, and you pay that already. You are very bad at this, Commander. I shall ask again tomorrow, and the day after, until one of us learns to write a better one."
+{n}She did. Neither of them ever did. Whatever else she took in rent, the Commander kept the war, including the parts worth losing.{/n}''',
       c())],
     requires=("trickster.ever", "jerribeth.commission", LATE_COMMITTED),
     forbids=("jerribeth.committed", "jerribeth.closed", DECLINED, DEAD), last=99, Relationship="jerribeth",
@@ -318,27 +450,53 @@ SCENES.append(scene("jerribeth.trickster.epilogue.commit", "The guest who knocke
 
 # --- Reactions (05 section 3.1: exactly Camellia and Woljif) --------------------------------------------------------
 
+# CAN (Sol): Camellia recalls her Sanctum remark only when the player heard it (SeenCues JerribetnFinal/Cue_0039). The
+# unwitnessed lines comment on the returned demon without claiming a shared history; each pair is mutually exclusive.
+_CAM_GONE = ("camellia.killed", CAMELLIA_DEAD, "camellia.kicked_out")
+_CAM_LIFT = dict(ForbidOverrides={CAMELLIA_DEAD: CAMELLIA_RETURNED})   # as camellia_trickster.FOREIGN_REACTIONS does
 REACTIONS = [
     reaction("Camellia", "jerribeth.trickster.reaction.camellia", (RETURNED,),
+             '''{n}Camellia is arranging the dried flowers in her room. She does not look up.{/n}
+"The demon from the Sanctum with the pinning case. I am told she keeps living things on pins. Now she lives in you, and you let her, for rent."
+{n}She snips a stem, considers it, and throws it away.{/n}
+"A pinned thing is either a spectacle or a use, Commander. Which did you want her for?"''',
+             answer_list=CAMELLIA_HUB, forbids=(*_CAM_GONE, HOST, CAMELLIA_SAW),
+             chapter=3, last=5, entry='"The Lady of the Sun is back."'),
+    reaction("Camellia", "jerribeth.trickster.reaction.camellia_host", (RETURNED, HOST),
+             '''{n}Camellia is arranging the dried flowers in her room. She does not look up.{/n}
+"The demon from the Sanctum with the pinning case lives in you now. And you have promised her a man from the stockade to wear."
+{n}She snips a stem, considers it, and smiles at it.{/n}
+"I would have chosen someone more interesting. Next time, ask me."''',
+             answer_list=CAMELLIA_HUB, forbids=(*_CAM_GONE, CAMELLIA_SAW),
+             chapter=3, last=5, entry='"The Lady of the Sun is back."'),
+    reaction("Camellia", "jerribeth.trickster.reaction.camellia_saw", (RETURNED, CAMELLIA_SAW),
              '''{n}Camellia is arranging the dried flowers in her room. She does not look up.{/n}
 "At the Sanctum I called her pinning a repugnant spectacle. And useful. Now she pins things in you."
 {n}She snips a stem, considers it, and throws it away.{/n}
 "Which did you want, Commander: the spectacle, or the use?"''',
-             answer_list=CAMELLIA_HUB, forbids=("camellia.killed", "camellia.dead", "camellia.kicked_out", HOST),
-             chapter=3, last=5, entry='"The Lady of the Sun is back."'),
-    reaction("Camellia", "jerribeth.trickster.reaction.camellia_host", (RETURNED, HOST),
+             answer_list=CAMELLIA_HUB, forbids=(*_CAM_GONE, HOST, "jerribeth.trickster.reaction.camellia"),
+             chapter=3, last=5, entry='"The Lady of the Sun is back."', **_CAM_LIFT),
+    reaction("Camellia", "jerribeth.trickster.reaction.camellia_host_saw", (RETURNED, HOST, CAMELLIA_SAW),
              '''{n}Camellia is arranging the dried flowers in her room. She does not look up.{/n}
-"At the Sanctum I called her pinning a repugnant spectacle. And useful. Now she pins things in you. And you fed her a man."
+"At the Sanctum I called her pinning a repugnant spectacle. And useful. Now she pins things in you. And you have promised her a man from the stockade to wear."
 {n}She snips a stem, considers it, and smiles at it.{/n}
 "I would have chosen someone more interesting. Next time, ask me."''',
-             answer_list=CAMELLIA_HUB, forbids=("camellia.killed", "camellia.dead", "camellia.kicked_out"),
-             chapter=3, last=5, entry='"The Lady of the Sun is back."'),
+             answer_list=CAMELLIA_HUB, forbids=(*_CAM_GONE, "jerribeth.trickster.reaction.camellia_host"),
+             chapter=3, last=5, entry='"The Lady of the Sun is back."', **_CAM_LIFT),
     reaction("Woljif", "jerribeth.trickster.reaction.woljif", (MET_BY_TOAST,),
              '''"Chief. You drank to a demon's loyalty in front of the whole court of the crown, and now my ears itch."
 {n}He scratches one, hard, and looks at his fingers as if he expects something to be on them.{/n}
 "Tell me that's a coincidence. Go on. Lie to me, I'll feel better."''',
              answer_list=WOLJIF_HUB, forbids=("woljif.dead", "woljif.kicked_out", LEVY), chapter=5, last=5,
              entry='"About that toast..."'),
+    # BEL (Sol r1): the living, previously met Jerribeth who countersigned in person has a witness too. Woljif keeps the
+    # night hours; exclusive with the device reactions (no return, no toast).
+    reaction("Woljif", "jerribeth.trickster.reaction.woljif_visitor", (FORFEIT, "jerribeth.committed"),
+             '''"Chief. Something knocked on your door last night. Three knocks, all the same length, like a bailiff. The lad on your corridor says it was a lady. He's got a nosebleed, he can't tell me what her face looked like, and he's been sick twice."
+{n}He glances at your collar, then very carefully away from it.{/n}
+"And word is you've pledged her a memory. One. Her pick. Chief, I've sold plenty of things I didn't own, but I never once let the buyer choose which. When she comes for it, you give her a boring one. The weather. A queue. Promise me."''',
+             answer_list=WOLJIF_HUB, forbids=("woljif.dead", "woljif.kicked_out", RETURNED, MET_BY_TOAST), chapter=5, last=5,
+             entry='"About my visitor last night..."'),
     reaction("Woljif", "jerribeth.trickster.reaction.woljif_levy", (MET_BY_TOAST, LEVY),
              '''"Chief. You drank to a demon's loyalty in front of half the Wintersun levy, and now my ears itch."
 {n}He scratches one, hard, and looks at his fingers as if he expects something to be on them.{/n}
@@ -360,6 +518,22 @@ RETURNING = ("jerribeth.ending_together", "jerribeth.ending_ascended", "jerribet
              "jerribeth.ending_unfinished", "jerribeth.counterfeit_guest", "jerribeth.counterfeit_hinge",
              "jerribeth.counterfeit_clerk", "jerribeth.counterfeit_audience", "jerribeth.counterfeit_spoil",
              "jerribeth.counterfeit_after", "jerribeth.fate_letter")
+X_BRIDGE = '{n}She does not end the connection. Her projected hands draw together while she studies you.{/n}'
+LATE_START = "jerribeth.late_start"              # the correspondence began in Chapter 5 (question_late)
+XANTHIR = "jerribeth.xanthir_known"
+XANTHIR_IN_PRICE = "jerribeth.xanthir_in_price"  # the Xanthir talk was held inside price, so collection is not sent
+LATE_FOLD_NODES = [
+    j("late_ordinary", '''{n}She does not let the frame go dark. She brings back a bird made of shifting light, the one that will not fly properly, and sets it going between you, and while it fails she watches your face, not the bird.{/n}
+"There. Now I know what holds you, and for how many heartbeats. You should not have shown me that. I shall use it."
+{n}Near the end she tells you, idly, the name of a clerk in your own chancery who has been selling your dispatches. She has known for weeks. A debt you owe her, she says, is worth more than a secret you lack, and she would rather be the one who watches him ruined.{/n}''',
+      c('"Keep the bird. I will want to see it fly."', "late_farewell", flags=("jerribeth.ordinary", "jerribeth.at_ease"))),
+    j("late_farewell", '''"And now the part you came to say without saying it. There are important things you must do, and this may be our last convenient evening before them."
+{n}Her hands link together, tightly.{/n}
+"I would prefer you to survive. I have become particular about whose attention I want, and I dislike having to replace an investment. When you come back, invite me. I will know what you mean."''',
+      c('[Carry the promise into what comes next.]', flags=("jerribeth.farewell", "jerribeth.farewell_kept"))),
+]
+CH4_DEFERRED = ("jerribeth.guise", "jerribeth.price", "jerribeth.evening", "jerribeth.commission", "jerribeth.collection")
+CH4_ONLY = ("jerribeth.patron", "jerribeth.refuge")
 EXAMINE = '[Examine the charm, then deliberately invite a conversation.]'
 
 INVITATION_NODES = [
@@ -369,7 +543,7 @@ INVITATION_NODES = [
 "The charm shows the form I wore. Do not be sentimental about it. I borrowed your hands for an hour last night to buy it, and you slept through the whole transaction."''',
       c('[Turn the frame over, wait, then invite her again.]', "test"),
       c('"Why seek my company?"', "why")),
-    j("voice_toast", '''{n}The deserter from the tavern brought it himself, at dawn, and would not say who had sent him. He looked as if he did not know.{/n}
+    j("voice_toast", '''{n}The Wintersun deserter from the Fool King's tavern brought it himself, at dawn, and would not say who had sent him. He looked as if he did not know.{/n}
 {n}A narrow, insectile silhouette appears inside the frame. The voice that reaches your thoughts is high and lightly buzzing, and you have heard it once before, out of the wrong mouth.{/n}
 "You drank to me. Now I am writing to you. That is how debts begin, Commander."
 "Try the cloth if you like. I would rather you knew the door works. A captive audience fidgets, and I do not waste my evenings on fidgeting."''',
@@ -377,12 +551,30 @@ INVITATION_NODES = [
       c('"Why seek my company?"', "toast_price")),
     j("toast_price", '''"Before anything else. Strangers who drink to me pay for the privilege, and you are a stranger, Commander. We have never met. I have only been toasted."
 {n}The silhouette tilts, reading you.{/n}
-"The man who poured your cup lent me his mouth for a moment. He found it roomy. I should like to borrow him properly: a body that walks your halls when I cannot. Give me his name. Or give me something of yours instead: the night you drank to me. I shall keep it, and you will have toasted a stranger for nothing."''',
-      c('[Give her the man\'s name] "Sergeant of the levy. He poured. He\'s yours."', "toast_given",
+"The deserter at the end of the King's bench lent me his mouth for a moment. He found it roomy. I should like to borrow him properly: a body that walks your halls when I cannot. Give me his name. Or give me something of yours instead: the night you drank to me. I shall keep it, and you will have toasted a stranger for nothing."''',
+      c('[Give her the man\'s name] "The deserter from the tavern. Sun on his collar. He\'s yours."', "toast_given",
         alignment=("Evil", 1), flags=(TOAST_HOST,)),
       c('[Offer the night instead] "Take the toast. Leave him out of it."', "toast_paid", flags=(TOAST_MEMORY,)),
-      c('[Refuse] "Nobody\'s name, and not my memories. I drank. That\'s all you get."', "toast_refused")),
+      c('[Refuse] "Nobody\'s name, and not my memories. I drank. That\'s all you get."', "toast_refused", flags=(TOAST_GRUDGE,))),
     j("toast_given", '''"Thank you. He will not mind. He will not be in there to mind."
+{n}The next morning the deserter from the tavern is at your gate, asking to enlist, with a smile that is two finger-widths too wide. The quartermaster takes him on. Nobody else notices the smile. You will, every time.{/n}''',
+      c('[Turn the frame over, wait, then invite her again.]', "test"),
+      c('"Why seek my company?"', "why")),
+    # BEL (Sol r2): the levy toast was carried by a sergeant at the evening rest, not by a deserter in the King's tavern.
+    j("voice_toast_levy", '''{n}The sergeant of the Wintersun levy who poured your toast brought it himself, at dawn, and would not say who had sent him. He looked as if he did not know.{/n}
+{n}A narrow, insectile silhouette appears inside the frame. The voice that reaches your thoughts is high and lightly buzzing, and you have heard it once before, out of the wrong mouth.{/n}
+"You drank to me. Now I am writing to you. That is how debts begin, Commander."
+"Try the cloth if you like. I would rather you knew the door works. A captive audience fidgets, and I do not waste my evenings on fidgeting."''',
+      c('[Turn the frame over, wait, then invite her again.]', "toast_price_levy"),
+      c('"Why seek my company?"', "toast_price_levy")),
+    j("toast_price_levy", '''"Before anything else. Strangers who drink to me pay for the privilege, and you are a stranger, Commander. We have never met. I have only been toasted."
+{n}The silhouette tilts, reading you.{/n}
+"The man who poured your cup lent me his mouth for a moment. He found it roomy. I should like to borrow him properly: a body that walks your halls when I cannot. Give me his name. Or give me something of yours instead: the night you drank to me. I shall keep it, and you will have toasted a stranger for nothing."''',
+      c('[Give her the man\'s name] "Sergeant of the levy. He poured. He\'s yours."', "toast_given_levy",
+        alignment=("Evil", 1), flags=(TOAST_HOST,)),
+      c('[Offer the night instead] "Take the toast. Leave him out of it."', "toast_paid", flags=(TOAST_MEMORY,)),
+      c('[Refuse] "Nobody\'s name, and not my memories. I drank. That\'s all you get."', "toast_refused", flags=(TOAST_GRUDGE,))),
+    j("toast_given_levy", '''"Thank you. He will not mind. He will not be in there to mind."
 {n}The next morning the sergeant salutes you in the yard with a smile that is two finger-widths too wide. Nobody else notices. You will, every time.{/n}''',
       c('[Turn the frame over, wait, then invite her again.]', "test"),
       c('"Why seek my company?"', "why")),
@@ -393,7 +585,7 @@ INVITATION_NODES = [
       c('"Why seek my company?"', "why")),
     j("toast_refused", '''"A toast for free. How very mortal."
 {n}The silhouette turns, as if to go. Then it stops.{/n}
-"No. I shall charge it to the future instead, with interest, and I shall decide the interest later. You may keep your sergeant and your memories, Commander. I shall keep a grudge. They are cheaper to store."''',
+"No. I shall charge it to the future instead, with interest, and I shall decide the interest later. You may keep your man and your memories, Commander. I shall keep a grudge. They are cheaper to store, and I always collect."''',
       c('[Turn the frame over, wait, then invite her again.]', "test"),
       c('"Why seek my company?"', "why")),
 ]
@@ -429,7 +621,7 @@ PRICE_NODES = [
 
 def _evening_nodes():
     steps = [
-        ("ev_host", (HOST,), _variant("ev_host", '''"I have hands now, of a sort. His hands. They are clumsy, and they are warm, and I have been practising what they can do with a cup, a knife and a lock. I thought you should know that before you decide what you want tonight."''')),
+        ("ev_host", (HOST,), _variant("ev_host", '''"I have claimed a pair of hands, of a sort. His hands. They are clumsy, and they are warm, and I have been planning what they can do with a cup, a knife and a lock. I thought you should know that before you decide what you want tonight."''')),
         ("ev_lodger", (LODGER,), _variant("ev_lodger", '''"You laughed in council this morning. That was me. The magister thought it was at him. It was not; it was at the magister's hat."''')),
         ("ev_vessel", (TENANT,), _variant("ev_vessel", '''"I have been sitting very still in my new house, looking out, and finding the view improves when you are in it. I dislike that it does."''')),
         ("ev_late", (LATE,), _variant("ev_late", '''"And do not think I have forgotten the terms. A lease signed that late I may void whenever it stops amusing me. Tonight it amuses me. Tomorrow is another rent day."''')),
@@ -444,15 +636,36 @@ FUTURE_NODES = [
     j("her_terms", '''"Before you promise me anything."
 {n}She lets the scenery go dark before you can admire it.{/n}
 "I read contracts, Commander. Yours has a clause missing. What do I get if you break it?"''',
-      c('[Name a forfeit] "One memory. Your choice of which, and when."', "start", flags=(FORFEIT,)),
+      c('[Name a forfeit] "One memory. Your choice of which, and when."', "start", forbids=(TOAST_GRUDGE,), flags=(OFFERED,)),
       c('"Nothing. You have my word."', "blank"),
-      c('"I cannot promise you a future together."', "part")),
+      c('"I cannot promise you a future together."', "part"),
+      c('[Name a forfeit] "One memory. Your choice of which, and when."', "grudge", requires=(TOAST_GRUDGE,))),
     j("her_terms_short", '''"Before you promise me anything, even a short one."
 {n}She lets the scenery go dark before you can admire it.{/n}
 "I read contracts, Commander. Yours has a clause missing. What do I get if you break it?"''',
-      c('[Name a forfeit] "One memory. Your choice of which, and when."', "short_future", flags=(FORFEIT,)),
+      c('[Name a forfeit] "One memory. Your choice of which, and when."', "short_future", forbids=(TOAST_GRUDGE,), flags=(OFFERED,)),
       c('"Nothing. You have my word."', "blank"),
-      c('"I cannot promise you a future together."', "part")),
+      c('"I cannot promise you a future together."', "part"),
+      c('[Name a forfeit] "One memory. Your choice of which, and when."', "grudge_short", requires=(TOAST_GRUDGE,))),
+    # INT (Sol r2): the toast refused at the invitation was charged to the future; she collects it here, on the page,
+    # before she accepts any promise. Refusing to pay ends the negotiation.
+    j("grudge", '''"One memory, my choice, when I choose. Good. That is the forfeit, and I accept it."
+{n}The silhouette does not move. The buzzing does.{/n}
+"And now the other account. You drank to me for free, and I told you I would charge it to the future, with interest. This is the future, Commander. The interest is every toast you ever drank before mine: every cup you raised to anyone, and every face across it. I take it tonight, or there is no contract at all."''',
+      c('[Pay the interest.]', "interest", flags=(OFFERED, GRUDGE_PAID)),
+      c('[Refuse to pay.]', "grudge_refused")),
+    j("grudge_short", '''"One memory, my choice, when I choose. Good. That is the forfeit, and I accept it."
+{n}The silhouette does not move. The buzzing does.{/n}
+"And now the other account. You drank to me for free, and I told you I would charge it to the future, with interest. This is the future, Commander. The interest is every toast you ever drank before mine: every cup you raised to anyone, and every face across it. I take it tonight, or there is no contract at all."''',
+      c('[Pay the interest.]', "interest_short", flags=(OFFERED, GRUDGE_PAID)),
+      c('[Refuse to pay.]', "grudge_refused")),
+    nar("interest", '''{n}Something goes out of you, not neatly this time: a long, ragged pull, like a thread drawn out of a seam. You remember that you have drunk to people. To a friend. To a victory. To someone you buried. You cannot see a single face across a single cup. There is only hers, which you have never seen, raised in a tavern where you were not.{/n}
+"Paid in full," {n}she says, and she sounds, for once, entirely satisfied.{/n} "Now we may talk about promises."''', c("Continue", "start")),
+    nar("interest_short", '''{n}Something goes out of you, not neatly this time: a long, ragged pull, like a thread drawn out of a seam. You remember that you have drunk to people. To a friend. To a victory. To someone you buried. You cannot see a single face across a single cup. There is only hers, which you have never seen, raised in a tavern where you were not.{/n}
+"Paid in full," {n}she says, and she sounds, for once, entirely satisfied.{/n} "Now we may talk about promises."''', c("Continue", "short_future")),
+    j("grudge_refused", '''"Then you still owe me, and I do not sign contracts with debtors. I collect from them."
+{n}The frame goes dark. It does not light again.{/n}''',
+      c('[Let the frame go dark.]', flags=("jerribeth.closed",))),
     j("blank", '''{n}For a moment you hear only the hum of the charm.{/n}
 "A Trickster's word. Keep it. It is the one thing of yours I will not take."
 {n}Her antennae fold flat.{/n}
@@ -485,12 +698,13 @@ IN_PERSON = [
 "I collect things that hold still, Commander. The ones that hold still for me, I keep. Let us find out which you are."''',
       c('[Give her your wrists.]', "threshold"),
       c('[Keep your hands, and pull her down to you.]', "threshold_free")),
-    nar("threshold_free", '''{n}You take your hands back and put them on her instead: the ridge of her carapace, the cold hinge of a wing. She goes very still, and then the buzzing starts again, lower, and you realise it is a laugh.{/n}
+    nar("threshold_free", '''{n}You take your hands back and put them on her instead: the ridge of her carapace, the cold hinge of a wing. Your grip is not careful, and something small and glossy comes away in your fingers. She goes very still, and then the buzzing starts again, lower, and you realise it is a laugh.{/n}
 "Oh," {n}she says.{/n} "You are going to be difficult. Good."
 {n}She lets you pull her down. Her wings open over you both and shut out the lamp, and the sound you have only ever heard in your skull is in your skin now, everywhere she touches, and she lowers herself onto you.{/n}''',
       c("Continue", "morning_free")),
-    nar("morning_free", '''{n}She is gone before the watch changes. Your wrists are unmarked. On the pillow lies one sliver of chitin, dark and glossy, prised from the edge of a wing by a hand that was not careful.{/n}
-{n}Behind your left eye, something neat and patient is thinking very hard.{/n} "You kept your hands. Nobody keeps their hands. I shall have to find out why, and I shall enjoy the finding out. Keep the scale. It is the only one I have ever given away."''',
+    nar("morning_free", '''{n}She is gone before the watch changes. Your wrists are unmarked. On the pillow lies the sliver of chitin you took, dark and glossy, prised from the edge of her wing by your own hand.{/n}
+{n}Behind your left eye, something neat and patient is thinking very hard.{/n} "You kept your hands, and you took a piece of me with them. A thing that holds still is finished. A thing that fights stays interesting. I intend to keep you interesting for a long time."
+"The scale is mine, and it is on your pillow, so we shall call it a loan. Every night you keep it, you owe me an hour of my choosing. Give it back and we are square, and I will know you wanted to be square with me. I shall enjoy watching you decide."''',
       c(_KEEP[0], "end", forbids=("jerribeth.short_future_chosen",), flags=("jerribeth.chosen_future",)),
       c(_KEEP[0], "short_end", requires=("jerribeth.short_future_chosen",))),
     nar("threshold", '''{n}You hold out your wrists. She takes them as if you had handed her something breakable and rare, and walks you backwards to the bed without once tightening her grip. Her mouth, or what serves her for one, is at your throat, and the buzzing you have only ever heard in your head is in your skin now, low and continuous, so that you cannot tell where the sound stops and the shiver starts.{/n}
@@ -576,7 +790,8 @@ def integrate(payload):
     start = _node(invitation, "start")
     _gate(start["Choices"][0], forbids=(RETURNED, MET_BY_TOAST))
     start["Choices"].append(c(EXAMINE, "voice_tenant", requires=(RETURNED,)))
-    start["Choices"].append(c(EXAMINE, "voice_toast", requires=(MET_BY_TOAST,), forbids=(RETURNED,)))
+    start["Choices"].append(c(EXAMINE, "voice_toast", requires=(MET_BY_TOAST,), forbids=(RETURNED, LEVY)))
+    start["Choices"].append(c(EXAMINE, "voice_toast_levy", requires=(MET_BY_TOAST, LEVY), forbids=(RETURNED,)))
     invitation["Nodes"].extend(INVITATION_NODES)
 
     # Edit 2 (COX, G5): the refuge gates on her own evidence; Vellexia's fate is a node variant.
@@ -604,17 +819,38 @@ def integrate(payload):
     future["Nodes"].extend(FUTURE_NODES)
     # The committing answers of a Trickster contract (a named forfeit) lead to her visit; the originals serve every
     # other run.
+    # INT (Sol): naming the forfeit only offers it (OFFERED); the contract, and the forfeit a later ending collects, exist
+    # only once a committing answer accepts it (FORFEIT). A name-then-decline negotiation collects nothing.
     promise = _node(future, "promise")
     for choice in list(promise["Choices"]):
-        _gate(choice, forbids=(FORFEIT,))
-        promise["Choices"].append(c(choice["Text"], "arrival", requires=(FORFEIT,), forbids=(RETURNED,), flags=tuple(choice["Set"])))
-        promise["Choices"].append(c(choice["Text"], "tenant_room", requires=(FORFEIT, RETURNED), flags=tuple(choice["Set"])))
+        _gate(choice, forbids=(OFFERED,))
+        promise["Choices"].append(c(choice["Text"], "arrival", requires=(OFFERED,), forbids=(RETURNED,), flags=(*choice["Set"], FORFEIT)))
+        promise["Choices"].append(c(choice["Text"], "tenant_room", requires=(OFFERED, RETURNED), flags=(*choice["Set"], FORFEIT)))
     short_future = _node(future, "short_future")
     keep = short_future["Choices"][0]
-    _gate(keep, forbids=(FORFEIT,))
-    short_future["Choices"].append(c(keep["Text"], "arrival", requires=(FORFEIT,), forbids=(RETURNED,), flags=tuple(keep["Set"])))
-    short_future["Choices"].append(c(keep["Text"], "tenant_room", requires=(FORFEIT, RETURNED), flags=tuple(keep["Set"])))
+    _gate(keep, forbids=(OFFERED,))
+    short_future["Choices"].append(c(keep["Text"], "arrival", requires=(OFFERED,), forbids=(RETURNED,), flags=(*keep["Set"], FORFEIT)))
+    short_future["Choices"].append(c(keep["Text"], "tenant_room", requires=(OFFERED, RETURNED), flags=(*keep["Set"], FORFEIT)))
+    # INT (Sol r1): the live-Trickster answer "Fate may object" also on the shorter negotiation, the one a fresh Trickster
+    # history reaches (the long branch needs the settlement campaign, which JER-08 closes on the path).
+    short_future["Choices"].append(c('"Fate may object. As a Trickster, I would enjoy proving it wrong."', "fate_short",
+                                     requires=("trickster",)))
+    future["Nodes"].append(j("fate_short", '''"Then find me a loophole large enough for two, and find it before the war does. I have no intention of applauding you from the wrong side of a closed door."
+{n}Her amusement is bright and eager, and a little greedy.{/n}
+"An inevitable ending discovering that somebody has read the smaller print. I would pay to watch it. Tell me before you sign anything on my behalf. I choose which impossible arrangements I enter, and this one I have already chosen."''',
+        c(keep["Text"], "arrival", requires=(OFFERED,), forbids=(RETURNED,), flags=(*keep["Set"], FORFEIT, FATE_TERMS)),
+        c(keep["Text"], "tenant_room", requires=(OFFERED, RETURNED), flags=(*keep["Set"], FORFEIT, FATE_TERMS)),
+        c(keep["Text"], "short_end", forbids=(OFFERED,), flags=(*keep["Set"], FATE_TERMS))))
     future["Nodes"].extend(IN_PERSON)
+    # INT (Sol r1): on the path the settlement campaign never opens, so the commission's last answer asks for the shorter
+    # promise itself (short_future_requested was otherwise only a manual read); off the path the answer is unchanged.
+    commission = _scene(by_id, "jerribeth.commission")
+    stay = _node(commission, "keep")["Choices"]
+    _gate(stay[0], forbids=("trickster.ever",))
+    stay.append(c('"It is beautiful. Keep it for me, for after the war, and ask me then what I will pay for it."',
+                  requires=("trickster.ever",), flags=(*stay[0]["Set"], "jerribeth.short_future_requested")))
+    farewell = _scene(by_id, "jerribeth.farewell")
+    farewell["RequiresAny"] = [*farewell["RequiresAny"], SHORT_FAREWELL]
     _scene(by_id, TRICKSTER_CAMPAIGN_ENTRY)["Forbids"].append("trickster.ever")
     for id in LATE_ENTRY_CUT:
         _scene(by_id, id)["Forbids"].append(MET_BY_TOAST)
@@ -637,6 +873,62 @@ def integrate(payload):
         s = _scene(by_id, id)
         s["Chapters"] = [4, 5]
         s["MinChapter"] = 4
+    # COX (Sol r1, ledger R2-5): at most three Jerribeth letters in Chapter 4 on any branch. The courtship's first two
+    # letters may come at the Nexus; the rest are Drezen letters (Chapters 3 and 5). Her Chapter 4 story stays Chapter 4.
+    for id in CH4_DEFERRED:
+        _scene(by_id, id)["Chapters"] = [3, 5]
+    for id in CH4_ONLY:
+        _scene(by_id, id)["Chapters"] = [4]
+
+    # COX (Sol r2): a met Commander who opens the correspondence only in Chapter 5 receives at most eight core letters.
+    # The second letter has a Chapter 5 twin (question_late) that records the late start; for a late start the ordinary
+    # evening and the farewell are folded into the promise letter. Scene ids are kept for saves already under way.
+    question = _scene(by_id, "jerribeth.question")
+    question["Chapters"] = [3, 4]
+    late_q = copy.deepcopy(question)
+    late_q["Id"] = "jerribeth.question_late"
+    late_q["Chapters"] = [5]
+    late_q["MinChapter"] = 5
+    late_q["Forbids"] = [*late_q["Forbids"], "jerribeth.question"]
+    for node in late_q["Nodes"]:
+        for choice in list(node["Choices"]):
+            if choice.get("Next") is None and not choice.get("Abort"):
+                # The late-start fold is the Trickster roster's budget; off the path and for the toast it records nothing.
+                base = tuple(choice["Set"]) + ("jerribeth.question",)
+                _gate(choice, requires=("trickster.ever",), forbids=(MET_BY_TOAST,))
+                choice["Set"] = [*base, LATE_START]
+                node["Choices"].append(c(choice["Text"], forbids=("trickster.ever",), flags=base))
+                node["Choices"].append(c(choice["Text"], requires=(MET_BY_TOAST,), flags=base))
+    payload["Scenes"].insert(payload["Scenes"].index(question) + 1, late_q)
+    for id in ("jerribeth.ordinary", "jerribeth.farewell"):
+        _scene(by_id, id)["Forbids"].append(LATE_START)
+    for node_id in ("future_conclusion", "short_end"):
+        node = _node(future, node_id)
+        for choice in list(node["Choices"]):
+            if choice.get("Next") is None and not choice.get("Abort"):
+                _gate(choice, forbids=(LATE_START,))
+                node["Choices"].append(c(choice["Text"], "late_ordinary", requires=(*choice["Requires"], LATE_START),
+                                         forbids=tuple(x for x in choice["Forbids"] if x != LATE_START), flags=tuple(choice["Set"])))
+    future["Nodes"].extend(copy.deepcopy(LATE_FOLD_NODES))
+    # The Xanthir talk rides inside price when the Commander already knows what she did to him.
+    collection = _scene(by_id, "jerribeth.collection")
+    collection["Forbids"].append(XANTHIR_IN_PRICE)
+    price = _scene(by_id, "jerribeth.price")
+    terms = _node(price, "terms")
+    agreed = terms["Choices"][0]
+    _gate(agreed, forbids=(XANTHIR,))
+    terms["Choices"].append(c(agreed["Text"], requires=(XANTHIR, MET_BY_TOAST), flags=tuple(agreed["Set"])))
+    terms["Choices"].append(c(agreed["Text"], "x_start", requires=(XANTHIR,), forbids=(MET_BY_TOAST,)))
+    for node in copy.deepcopy(collection["Nodes"]):
+        node["Id"] = "x_" + node["Id"]
+        for choice in node["Choices"]:
+            if choice.get("Next"):
+                choice["Next"] = "x_" + choice["Next"]
+            elif not choice.get("Abort") and "jerribeth.closed" not in choice["Set"]:
+                choice["Set"] = [*choice["Set"], *agreed["Set"], "jerribeth.collection", XANTHIR_IN_PRICE]
+        if node["Id"] == "x_start":
+            node["Text"] = X_BRIDGE + "\n" + node["Text"]
+        price["Nodes"].append(node)
 
     # G6(b), the late commit, and the Trickster paragraphs on the endings that close her story.
     for id in RETURNING:
@@ -649,3 +941,4 @@ def integrate(payload):
                 node.setdefault("Paragraphs", []).extend(dict(x) for x in TRICKSTER_PARAGRAPHS)
                 if id == "jerribeth.ending_apart":
                     node["Paragraphs"].append(dict(REFUSED_PARAGRAPH))
+                    node["Paragraphs"].append(dict(GRUDGE_UNPAID_PARAGRAPH))

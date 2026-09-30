@@ -1359,13 +1359,18 @@ internal static class Program
         unmet.Flags.Add("jerribeth.unavailable");
         Check(!Rules.Available(story, Find("invitation"), unmet), "Unavailable Jerribeth offers correspondence without restoration.");
 
+        // Sol r1 (HOW): native observations are completed before every step (so "trickster" latches trickster.ever, as a
+        // real Trickster save does), authored prerequisites come only from their producers, and manual reads are omitted.
+        foreach (bool trickster in new[] { false, true })
         foreach (int start in new[] { 3, 4, 5 })
         foreach (bool inhuman in new[] { false, true })
         foreach (bool patronLost in new[] { false, true })
         foreach (bool knowledge in new[] { false, true })
         {
             var state = new Snapshot { Chapter = start, Hour = 1000 };
-            state.Flags.UnionWith(new[] { "jerribeth.met", "jerribeth.refuge_known", "trickster", "seelah.closed", "konomi.closed", "closed" });
+            state.Flags.UnionWith(new[] { "jerribeth.met", "jerribeth.refuge_known", "seelah.closed", "konomi.closed", "closed" });
+            if (trickster) state.Flags.Add("trickster");
+            var letters = new Dictionary<int, int>();
             if (inhuman) state.Flags.Add("inhuman");
             if (patronLost) state.Flags.Add("jerribeth.patron_lost");
             if (knowledge) state.Flags.UnionWith(new[] { "jerribeth.wintersun_known", "jerribeth.xanthir_known" });
@@ -1376,9 +1381,14 @@ internal static class Program
                 for (int attempt = 0; attempt < story.Scenes.Count; attempt++)
                 {
                     state.Hour += 48;
-                    var next = story.Scenes.FirstOrDefault(s => s.Relationship == "jerribeth" && s.Id != "jerribeth.parting" && !s.Id.StartsWith("jerribeth.trickster.") && !s.Owner.EndsWith("Epilogue") && Rules.Available(story, s, state));
+                    if (chapter > 1) state.Flags.Add("chapter_later");
+                    Rules.Complete(story, state);
+                    Check(state.Has("trickster.ever") == trickster, "Jerribeth campaign: trickster.ever is not latched from a native Trickster run.");
+                    var next = story.Scenes.FirstOrDefault(s => s.Relationship == "jerribeth" && !s.ManualOnly && !s.Reaction && !s.Id.StartsWith("jerribeth.trickster.") && !s.Owner.EndsWith("Epilogue") && Rules.Available(story, s, state));
                     if (next == null) break;
                     Check(Rules.EntryTargets(next).Length == 0 && Rules.IsRemote(next), "Jerribeth correspondence takes over a native encounter.");
+                    Check(next.Nodes[0].Choices.Any(c => Rules.Match(c.Requires, c.Forbids, state)), "A delivered Jerribeth letter opens with no answer: " + next.Id);
+                    letters[chapter] = letters.TryGetValue(chapter, out var sent) ? sent + 1 : 1;
                     var outcomes = Walk(next, state).Where(s => s.Has(next.Id) && !s.Has("jerribeth.closed"));
                     // Alternate private and slower paths, and exercise the Trickster option.
                     if (next.Id == "jerribeth.evening") outcomes = outcomes.Where(s => s.Has(inhuman ? "jerribeth.slow_evening" : "jerribeth.private_evening"));
@@ -1386,10 +1396,15 @@ internal static class Program
                 }
             }
             Check(state.Has("jerribeth.farewell_kept") && state.Has("jerribeth.committed"), "Jerribeth campaign cannot reach farewell.");
-            Check(state.Has("jerribeth.fate_terms"), "Jerribeth Trickster response is unreachable.");
-            // COX edit (Trickster spec): the refuge gates on her own evidence; the patron loss is a variant of its text.
-            Check(state.Has("jerribeth.refuge_acknowledged"), "Jerribeth refuge unreachable on her own evidence.");
-            Check(state.Has("jerribeth.warned") != patronLost, "Jerribeth offers a dead patron's protection.");
+            Check(state.Has("jerribeth.fate_terms") == trickster, "Jerribeth Trickster response is unreachable on a fresh Trickster history, or leaks off it.");
+            Check(!trickster || state.Has("jerribeth.trickster.cost.forfeit"), "Jerribeth's fresh Trickster contract has no forfeit.");
+            // COX (ledger R2-5, Sol r1): on the path, at most three Jerribeth letters in Chapter 4; the Chapter 3 core is at most eight.
+            Check((!trickster || letters.GetValueOrDefault(4) <= 3 && letters.GetValueOrDefault(5) <= 8) && letters.GetValueOrDefault(3) <= 8, "Jerribeth chapter letter limit exceeded: Ch3 "
+                  + letters.GetValueOrDefault(3) + ", Ch4 " + letters.GetValueOrDefault(4) + ", Ch5 " + letters.GetValueOrDefault(5) + " (start " + start + ", Trickster " + trickster + ").");
+            // COX edit (Trickster spec): the refuge gates on her own evidence; the patron loss is a variant of its text. Both are
+            // Chapter 4 letters, so a correspondence begun at the Nexus or later never reaches them.
+            Check(state.Has("jerribeth.refuge_acknowledged") == (start == 3), "Jerribeth refuge unreachable on her own evidence, or read outside Chapter 4.");
+            Check(state.Has("jerribeth.warned") == (start == 3 && !patronLost), "Jerribeth offers a dead patron's protection.");
             Check(state.Has("jerribeth.collection") == knowledge, "Jerribeth Xanthir topic ignores actual knowledge.");
             Check(!state.Has("jerribeth.condemned_wintersun") || knowledge, "Jerribeth debate invents knowledge of Wintersun.");
             string[] Endings() => story.Scenes.Where(s => s.Relationship == "jerribeth" && s.Owner == "Epilogue" && Rules.Available(story, s, state)).Select(s => s.Id).ToArray();

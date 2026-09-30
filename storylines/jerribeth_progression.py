@@ -259,7 +259,7 @@ s("room_measure", "A room before its walls", [
 {n}She moves the image nearer. You can still see the unfinished street. She dims its far end until you can no longer follow the little figure.{/n}
 {n}Jerribeth adds a lamp beside the nearest arch and asks where you would put it. You tell her. She moves it, dislikes the effect and moves it back. Then she laughs at herself before you can answer.{/n}
 "Leave it there. Tell me something I cannot improve."
-{n}The conversation leaves the room and its measurements. Her voice stays with you as the image darkens. When she thinks you have grown tired, she asks rather than deciding for you.{/n}''', c('[Stay a little longer.]', "end")),
+{n}The conversation leaves the room and its measurements. Her voice stays with you as the image darkens. When she decides you have grown tired, she tells you so, and is right, and is insufferable about it.{/n}''', c('[Stay a little longer.]', "end")),
     n("end", "Jerribeth", '''"I will keep working on it."
 {n}She means the room. She leaves the rest for you to answer another evening.{/n}
 "Come back when you can. I should like to hear what you intend to do after you have finished being inconvenient to the world."''', c('[Keep her invitation to speak about what comes next.]', flags=("jerribeth.settlement_kept",))),
@@ -269,27 +269,27 @@ s("room_measure", "A room before its walls", [
 s("short_invitation", "An evening before the promises", [
     n("start", "Jerribeth", '''"You have been turning the frame toward you as though there is something you mean to ask."
 {n}She leaves her work where it is.{/n}
-"If it concerns how little time you have, I am aware of that difficulty. I would rather hear the offer than discover that you have decided on my behalf to disappear."''',
+"If it concerns how little time you have, I have already counted it. Make your offer. I dislike learning that somebody has vanished from my books by reading it in theirs."''',
       c('"I want to keep seeing you after the war, even if we cannot make time for the longer visits before it ends."', "short"),
       c('"I want to make that time. Let us return to what you wanted to show me."', abort=True)),
-    n("short", "Jerribeth", '''"Then ask me for that. We have had evenings I want repeated. I shall not pretend we have already discovered how every bargain between us ends."
+    n("short", "Jerribeth", '''"Then ask me for that, properly, and I shall name what it costs. We have had evenings I want repeated. I have not yet had the ones I want most."
 {n}Her hands unlink.{/n}
-"The work will still be here if you choose to return to it before you leave. This invitation need not become an excuse to avoid the next one."''', c('[Arrange a conversation about continuing the shorter courtship.]', flags=("jerribeth.short_future_requested",))),
+"The work will keep. If you come back to it before you leave, so much the better for you. If you do not, I shall remember, and charge the difference later."''', c('[Arrange a conversation about continuing the shorter courtship.]', flags=("jerribeth.short_future_requested",))),
 ], forbids=("jerribeth.future", "jerribeth.settlement_kept"), delay=0, manual=True)
 
 s("promise_revisited", "The promise with days inside it", [
     n("start", "Jerribeth", '''"You promised to keep answering. You have answered through several evenings that would have been easier to miss."
 {n}She brings the unfinished city into the frame. The visible street ends well before the edge of the image.{/n}
-"I would like to ask again now that there is something here besides my talent for making an invitation attractive. The work has not made me easy company. I am not offering that as a future improvement."''',
+"So I am raising the price. There is something here now besides my talent for making an invitation attractive, and a thing that exists is worth more than a thing promised. The work has not made me easy company. I do not intend to improve."''',
       c('"I want to keep choosing this. Your work, our evenings, and the arguments we will still have."', "chosen"),
       c('"I mean the promise I made. I am not ready to promise more tonight."', "held"),
       c('"I no longer want this relationship."', "close"),
       c('[Find another evening for this conversation.]', abort=True)),
     n("chosen", "Jerribeth", '''"I want you to see the room when it exists. If it takes longer than I expect, you may hear me complain while I find another fee."
 {n}Her antennae lift toward the frame.{/n}
-"I would like to hear your complaints too. I will probably be excellent at discovering whom to blame. Less excellent at remembering when you only wanted me to listen."
-"We can learn."
-"We have been. Rather inconveniently, I want more of it."''', c('[Renew the promise with the life you have begun to share.]', flags=("jerribeth.developed_future", "jerribeth.future_settled"))),
+"Bring me your complaints too. I am excellent at finding out whom to blame, and very reasonable about what it costs to ruin them."
+"I only want you to hear them."
+"You will get both. I do not do half-measures. Rather inconveniently, I want more of this than I have paid for."''', c('[Renew the promise with the life you have begun to share.]', flags=("jerribeth.developed_future", "jerribeth.future_settled"))),
     n("held", "Jerribeth", '''"Then I shall keep the promise I actually heard."
 {n}She looks back at the unfinished street and leaves it unfinished.{/n}
 "You may still come and argue about the next corner. I have not sold the right to complain about your suggestions."''', c('[Keep the existing promise without enlarging it.]', flags=("jerribeth.future_settled", "jerribeth.promise_held"))),
@@ -302,25 +302,25 @@ s("promise_revisited", "The promise with days inside it", [
 s("old_promise", "What the earlier promise meant", [
     n("start", "Jerribeth", '''"We made a promise. I have no intention of pretending it did not happen because there are evenings we have not found time for."
 {n}She watches you across the charm.{/n}
-"If you need to leave soon, tell me. I can keep a place for another conversation without calling the unfinished work complete."''',
+"If you are leaving soon, say so now. I keep a place open for a debtor. I do not keep it open for a rumour."''',
       c('"Keep the promise as we made it. I cannot offer the longer visits before I leave."', "keep"),
       c('"I want to make those visits before we say our farewells."', abort=True)),
-    n("keep", "Jerribeth", '''"Then I will expect your answer when you can give it. I shall be angry if you decide my patience means I have forgotten."
+    n("keep", "Jerribeth", '''"Then I will expect your answer when you can give it. If you mistake my patience for forgetting, I shall show you what I remember, all at once, at a moment of my choosing."
 {n}Her voice brightens slightly.{/n}
-"And pleased when you prove that you have not. Both are possible."''', c('[Keep the earlier promise and arrange a farewell before the unfinished visits.]', flags=("jerribeth.future_settled", "jerribeth.short_future_chosen", "jerribeth.short_farewell_requested"))),
+"Come back and I shall not have to. I would enjoy either."''', c('[Keep the earlier promise and arrange a farewell before the unfinished visits.]', flags=("jerribeth.future_settled", "jerribeth.short_future_chosen", "jerribeth.short_farewell_requested"))),
 ], requires=("jerribeth.future", "jerribeth.committed"), forbids=("jerribeth.future_settled", "jerribeth.settlement_kept"), delay=0, manual=True)
 
 s("farewell_review", "Before the unfinished evenings", [
     n("start", "Jerribeth", '''"Are you leaving soon?"
 {n}She puts down the work she was about to show you.{/n}
-"We can say our farewells if you must. I would rather know than keep preparing an invitation you have no time to answer."
+"We can say our farewells if you must. I do not waste good work on an audience that has already left."
 {n}She looks back at the table.{/n}
-"Or you can stay for what comes next. I have been looking forward to discovering what you make of it."''',
+"Or you can stay for what comes next. I made it to see your face when you understand it. Do not cheat me of that."''',
       c('"I need to say farewell before we finish those evenings. Keep our promise as it stands."', "leave"),
       c('"There is still time. Show me what you have been preparing."', abort=True)),
     n("leave", "Jerribeth", '''"Then give me one more evening before you go. I shall try to think of something you have not already heard."
 {n}Her hands meet over the unfinished work.{/n}
-"If you discover there is more time after all, ask to return to this. I will not mistake a farewell for an order never to invite you again."''',
+"If you find there is more time after all, come back to this. A farewell is not a contract. I have broken better ones."''',
       c('[Arrange the farewell, leaving the remaining work for an invitation you can explicitly renew.]', flags=("jerribeth.short_farewell_requested",))),
 ], requires=("jerribeth.ordinary", "jerribeth.committed", "jerribeth.future_settled"),
    forbids=("jerribeth.developed_future", "jerribeth.short_farewell_requested", "jerribeth.catchup_requested"), delay=0, manual=True)

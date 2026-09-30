@@ -91,12 +91,12 @@ s("arsinoe_city_on_paper", "A handsome city", '"What is that picture?"', [
 {n}For the first time she seems to consider the invitation without the printer in it.{/n}
 "Then I should choose a better beginning than an argument over a purchase. Still, you have seen the picture. I suspect you would notice if I suddenly lost interest in the matter."
 {n}She ties the roll with a narrow ribbon.{/n}
-"Come when we can both leave our work behind for a little while. I have not forgotten how to enjoy company."''', c('[Agree to visit when you are both free.]', flags=("arsinoe.picture_invitation",))),
+"Come when we can both leave our work behind for a little while. I have not forgotten how to enjoy company."''', c('[Agree to visit when you are both free.]', flags=("arsinoe.picture_invitation", "arsinoe.started"))),
     n("city", "Arsinoe", '''"So would I. There are things worth drawing here even now."
 {n}She lifts the rolled picture and measures its extravagant title with her eye.{/n}
 "He has made us remarkably prosperous. Perhaps we can persuade him to make us recognizable."
 {n}Before you leave, she writes the location on the back of a scrap of paper and gives it to you.{/n}
-"For the shop. I have learned not to describe a street by the building that used to stand at its corner."''', c('[Agree to visit when you are both free.]', flags=("arsinoe.picture_invitation",))),
+"For the shop. I have learned not to describe a street by the building that used to stand at its corner."''', c('[Agree to visit when you are both free.]', flags=("arsinoe.picture_invitation", "arsinoe.started"))),
 ], delay=0)
 
 
@@ -263,7 +263,7 @@ s("arsinoe_roofs", "An evening above the street", '"You offered to show me the v
 "Then I shall enjoy that. I am a little disappointed, but I have had a good evening. You need not make a poorer one of it by worrying over my expression."
 {n}She begins wrapping the cups.{/n}
 "I should still like your opinion of Tovin's next attempt. Friends may be put to work on matters of taste, I believe."''', c('[Help her pack the basket.]', flags=("arsinoe.roof_shared", "arsinoe.friendship"))),
-], requires=("arsinoe.printer_met",), delay=48)
+], requires=("arsinoe.printer_met",), delay=24)
 
 
 s("arsinoe_first_impression", "What the picture leaves out", '"Has Tovin brought his new work?"', [
@@ -333,7 +333,7 @@ s("arsinoe_first_impression", "What the picture leaves out", '"Has Tovin brought
 "I promised you a choice. There is a table in the shop after Tovin closes, and he is willing to lend it. Or we could walk while there is still light. I should enjoy either, although I warn you that I may have opinions about anything you point out."''',
       c('"Bring the book. I will meet you at the table."', flags=("arsinoe.next_table", "arsinoe.first_impression_kept")),
       c('"A walk. Show me the things you would keep as they are."', flags=("arsinoe.next_walk", "arsinoe.first_impression_kept"))),
-], requires=("arsinoe.roof_shared",), delay=72)
+], requires=("arsinoe.roof_shared",), delay=24)
 
 
 s("arsinoe_hours_of_her_own", "When her work is finished", '"Have you time for our evening?"', [
@@ -388,7 +388,7 @@ s("arsinoe_hours_of_her_own", "When her work is finished", '"Have you time for o
 {n}She answers before you have quite finished speaking, then laughs at herself.{/n}
 "I have been sufficiently composed for one evening. You may know that I was hoping you would ask."
 {n}She takes a step nearer. The book presses lightly against her side as she lifts her free hand toward yours.{/n}
-"May I kiss you before I go?"''',
+"I intend to kiss you before I go. You may object now."''',
       c('[Kiss her.]', "kiss"),
       c('"Hold my hand a moment. I would like that tonight."', "hand")),
     n("kiss", "Narrator", '''{n}She comes close enough that you feel the warmth of her before her lips touch yours. The first kiss is brief. When you stay near, she smiles and kisses you again, less cautiously.{/n}
@@ -405,10 +405,10 @@ s("arsinoe_hours_of_her_own", "When her work is finished", '"Have you time for o
 "I would enjoy another walk. Or something you would like to show me. I know rather more about your patience with my interests than I do about your own."''', c('[Promise another conversation.]', flags=("arsinoe.opening_kept",))),
     n("friend_end", "Arsinoe", '''"And thank you for coming."
 {n}She offers you the book, opened to the place where the traveler finally leaves the inn.{/n}
-"Borrow it. I shall ask whether you agreed with him about the next city. You need not invent a favorable answer to be invited again."
+"Borrow it. I shall ask whether you agreed with him about the next city. Disagree if you like. I usually do."
 {n}She waits while you find a safe place for it, then wishes you a good night and turns toward her own door.{/n}''', c('[Leave with the borrowed book.]', flags=("arsinoe.opening_kept",))),
     n("parting", "Arsinoe", '''"Next time, something of yours. A place, a story, an argument you have been saving. I should like to know what occupies you when nobody has come to ask for a decision."
 {n}She releases your hand reluctantly enough for you to notice.{/n}
 "Good night."
 {n}After a few steps she looks back. Finding you still there, she smiles without trying to disguise it.{/n}''', c('[Wish her a good night.]', flags=("arsinoe.opening_kept",))),
-], requires=("arsinoe.first_impression_kept",), delay=48)
+], requires=("arsinoe.first_impression_kept",), delay=24)

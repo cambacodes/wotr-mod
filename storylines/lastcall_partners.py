@@ -182,28 +182,35 @@ AR = "arsinoe.trickster."
 partner("arsinoe", "arsinoe", "arsinoe.committed", "arsinoe.closed", "Paid in Full",
     '''Arsinoe of the First Vault closed the Commander's account on the morning after Threshold, in a counting-room that smelled of ink and scorched air. She checked every figure twice. Then she closed the book, put her hand flat on the cover, and said that it was the first ledger she had ever balanced that made her want to laugh.''',
     (
-        page_p('''The cauldron went back as leased. She was there when it did, with a receipt, and when the clerks of Abadar asked what the Worldwound was now worth as collateral, she told them "Slightly used," and would not be moved.''', requires=(called("arsinoe"),)),
+        page_p('''The cauldron went back across her counter as leased. She was there when it did, with a receipt, and when the clerks of Abadar asked what the Worldwound was now worth as collateral, she told them "Slightly used," and would not be moved.''', requires=(called("arsinoe"),), forbids=("arsinoe.siphon_burst",)),
+        page_p('''The cauldron was handed back at the rift as leased, a breath before it burst, so that what burst was the temple's property, consumed in the course of its intended use. She entered the discharge with a receipt, and when the clerks of Abadar asked what the Worldwound was now worth as collateral, she told them "Slightly used," and would not be moved.''', requires=(called("arsinoe"), "arsinoe.siphon_burst")),
         page_p('''The Fool King's still had been pledged, a barrel baron and everything it guarded. The First Vault now holds a lien on the best-loved tap in Drezen. Arsinoe audits it in person on the first of every month, and has never once been seen to leave before the audit was complete, or sober.''', requires=(AR + "cost.collateral_still",)),
         page_p('''The Commander's word had been the collateral. Abadar's clerks entered it at face value, which amused them, and then found that it held, which did not.''', requires=(AR + "cost.collateral_word",)),
-        page_p('''The First Vault does not recognize death as grounds for default. The account stayed open.''', requires=(ON_RECORD,)),
+        page_p('''The First Vault does not recognize death as grounds for default, nor as grounds for refusing a payment from the deceased. She took the Commander's anyway, and entered it without comment.''', requires=(ON_RECORD,)),
     ), deal=[[AR + "cost.lien"], [AR + "cost.collateral_worldwound"], [AR + "cost.collateral_still"], [AR + "cost.collateral_word"]],
     call=call('''[Return the cauldron] "Returnable at the end of the world. This is the end of the world. Here."''',
         '''{n}Somewhere under the roar, you swear you hear an abacus. The First Vault has a claim on this night, and the First Vault is always present at the end of an account.{/n}''',
         (PILLAR_CHOICE, (PILLAR,), (), ())))
 
 J = "jerribeth.trickster."
+# Sol COX: the coda owns the single forfeit when Last Call plays (her ordinary endings forbid lastcall.active); rent is
+# only a tenant's; the idol is read from body.statue; the call-in answers what she actually is (tenant, toasted, living).
 partner("jerribeth", "jerribeth", "jerribeth.committed", "jerribeth.closed", "Rent Day",
-    '''Jerribeth collected her rent on the first of the month after Threshold, as the terms said, and every first of the month after that. She never once let the Commander forget whose house {mf|he|she} was living in, or whose {mf|he|she} was living on. She was, in the opinion of everyone who met her, entirely too pleased with herself.''',
+    '''Jerribeth came to the victory feast uninvited, which she considered the only honest way to attend one, and stayed until the last candle, counting who had drunk to whom. She never once let the Commander forget who held paper on {mf|him|her}, or on what terms. She was, in the opinion of everyone who met her, entirely too pleased with herself.''',
     (
+        page_p('''She collected her rent on the first of the month after Threshold, as the lease said, and on every first of the month after that: one small memory, her choice, taken in lieu of repairs. She never let the Commander forget whose house she was living in.''', requires=(J + "cost.tenant",)),
         page_p('''She took her forfeit in the second year: one memory, hers to choose. She chose the rift. The Commander remembers everything about Threshold except the joke itself, and she tells it back, badly, on purpose, whenever {mf|he|she} asks.''', requires=(J + "cost.forfeit",)),
-        page_p('''She had worn a deserter from the stockade since the night the Commander gave him to her, and she wore him to the victory feast. Nobody missed him. She made a point of telling the Commander how right {mf|he|she} had been about that.''', requires=(J + "cost.host",)),
-        page_p('''The statue of the Lady of the Sun stood in the square at Drezen for years afterwards, and pilgrims who prayed to it went home oddly satisfied and slightly out of pocket.''', requires=(J + "cost.tenant",)),
+        page_p('''She had worn a deserter from the stockade since the first night the Commander slept in Drezen after giving him to her, and she wore him to the victory feast. Nobody missed him. She made a point of telling the Commander how right {mf|he|she} had been about that.''', requires=(J + "cost.host",)),
+        page_p('''The gilt idol of the Lady of the Sun was carried to the victory feast on a handcart, at her insistence, and set at the Commander's right hand. It did not eat. Everyone who sat near it lost a little money that night and could not afterwards say how.''', requires=(J + "body.statue",)),
+        page_p('''She sent the man she had taken in payment for the toast to pour the Commander's cup at the feast, smiling two finger-widths too wide. The toast had been paid for, she said, and she liked to see her property used.''', requires=(J + "cost.toast_host",)),
     ), declined=J + "declined",
     deal=[[J + "cost.tenant"], [J + "cost.lodger"], [J + "cost.host"], [J + "cost.toast"], [J + "cost.forfeit"]],
-    call=call('''[Call in the lease] "Rent's due, tenant. A house doesn't fall down while you're living in it."''',
-        '''{n}Something in the back of your skull laughs, low and delighted, and settles more comfortably into its lodgings.{/n}''',
-        (PLAIN_CHOICE, (), (), ())),
-    ledger=("Jerribeth: rent due on the first", "I let a succubus a room. The rent is due on the first of the month. She will collect it from me, or from my estate, and she prefers me."))
+    call=call('''[Call in Jerribeth's paper] "Lady of the Sun. You hold paper on me. Collect it from a living debtor, or not at all."''',
+        '''{n}For a moment nothing answers. Then a buzzing, very faint, like a fly against glass a long way off, and the smell of cold stone under the smoke of the rift.{/n}''',
+        ('''"Rent's due, tenant. A house doesn't fall down while you're living in it."''', (), (J + "cost.tenant",), ()),
+        ('"You were toasted, madam, by a stranger. A toast is a debt. Come and collect it after tonight."', (), (J + "cost.toast",), (J + "cost.tenant",)),
+        ('"One memory, your choice, when you choose. Choose after tonight. I want to have something worth taking."', (), (J + "cost.forfeit",), (J + "cost.tenant", J + "cost.toast"))),
+    ledger=("Jerribeth: paper held on me", "Jerribeth holds paper on me: a lease, a toast, or a forfeit clause. She reads small print better than I write it, and she collects in person."))
 
 K = "konomi.trickster."
 partner("konomi", "konomi", "konomi.committed", "konomi.closed", "Terms, Accepted",
@@ -317,19 +324,28 @@ partner("aranka", "aranka", "aranka.extension_kept", "aranka.extension_closed", 
     ledger=("Aranka: a verse unsung", "Aranka is owed a second verse, and the whole crusade knows the tune. A song that isn't finished can't bury you."))
 
 G = "gesmerha.trickster."
-partner("gesmerha", "gesmerha", "gesmerha.committed", "gesmerha.closed", "The Commission",
-    '''Gesmerha finished the statue the spring after Threshold. She would not let anyone see it until it was done, and when it was done she would not let anyone see it at all, except the Commander, blindfolded, by touch, the way she had carved it. {mf|He|She} said afterwards that it was the only honest likeness anyone had ever made of {mf|him|her}.''',
+partner("gesmerha", "gesmerha", "gesmerha.committed", "gesmerha.closed", "Work on the Bench",
+    '''Gesmerha heard the news of Threshold the way she heard everything, by the step of the one who carried it. She said afterwards that she knew before the messenger opened his mouth: he walked like a man who had been told one thing and did not believe it. She sent him away without letting him finish, and went back to her bench.''',
     (
-        page_p('''The commission had been paid in advance, and the coin the Commander drove into the uncut block stayed in the finished stone, over the statue's heart. She had carved around it rather than take it out. She said the ancestors would want to see it had been paid.''', requires=(called("gesmerha"),)),
+        # The Commander's face, the second work on her bench (gesmerha_trickster 4g), in its three states. The ancestors' own
+        # commission (the monster or the listening woman) was finished before Threshold and is not retold here.
+        page_p('''The Commander's face had waited on her bench all winter under a knotted cloth, finished but for the eyes. In the spring she sat the Commander down in the smith's yard with a blindfold on, put her left hand over the living face and the chisel in her right, and cut the last of it by touch, a stroke at a time, stopping whenever the face under her hand moved. When it was done she let nobody see it, except the Commander, still blindfolded, by touch, the way she had carved it. {mf|He|She} said afterwards that it was the only honest likeness anyone had ever made of {mf|him|her}.''',
+               requires=(G + "cost.likeness_owed",)),
+        page_p('''The face she had cut from memory before Threshold stood on the shelf over her bench, eyes and all. She had called it a grave-post. When the Commander walked into the yard in the spring, loudly, she took it down, turned it to the wall, and never turned it back.''',
+               requires=(G + "cost.likeness_cut",)),
+        page_p('''The face she had begun on the morning after the night in the yard was still on her bench, a little further along each season. It was not a commission, she said, so it could take as long as it liked, and so could its owner.''',
+               requires=(G + "cost.ancestor_debt",), forbids=(G + "cost.likeness_owed", G + "cost.likeness_cut")),
+        page_p('''The commission paid for in Wintersun, before Marhevok's ambush, was still on her bench at Threshold: the pale birch with the Commander's coin standing proud of the grain. The Commander had called it in at the rift. She took that the way she took every order, which is to say she took her time. A commission is a commission, she said, not a summons.''',
+               requires=(G + "cost.advance_paid",), forbids=(G + "cost.ancestor_debt",)),
         page_p('''She kept the carved hands, the ones she had made while the Commander sat for her those three days. They stood on her bench for the rest of her life, and she worked with them facing her, and she would not say why.''', requires=(G + "cost.hands_carved",)),
         page_p('''The Commander had laughed at her grave. She delivered the work, and then she sat apart from the Commander at supper for a whole season, where she could hear {mf|his|her} footsteps and not {mf|his|her} voice. At the end of the season she moved her chair back, and told {mf|him|her} the footsteps had improved.''', requires=(G + "cost.laughed_at_grave",)),
-        page_p('''She carved the Commander's gravestone, for the empty grave. It said nothing untrue.''', requires=(ON_RECORD,)),
-    ), declined=G + "declined",
+        page_p('''She cut the marker for the Commander's empty grave, in oak. It said nothing untrue.''', requires=(ON_RECORD,)),
+    ), declined=G + "declined", page_forbids=("gesmerha.parted",),   # a committed lover who parted later (never her closed flag, G5)
     deal=[[G + "cost.advance_paid"], [G + "cost.ancestor_debt"]],
-    call=call('''[Call in the commission] "Carver, it's paid for. Finish it. I'd like to see it before they bury me."''',
-        '''{n}Somewhere a chisel stops mid-stroke over a block of stone with a coin driven into it. The ancestors of a Sarkorian woodshaper do not let a paid commission go unfinished.{/n}''',
+    call=call('''[Call in the work on her bench] "Carver, there's work of mine still on your bench. Leave it there until I come to collect."''',
+        '''{n}Somewhere a long way off, a chisel stops over a block of wood on a woodshaper's bench. A Sarkorian carver's line does not go to its ancestors with work unfinished, and she has been listening for this step too.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
-    ledger=("Gesmerha: a commission unfinished", "Gesmerha's ancestors let her come back because there was paid work on her bench. The statue isn't finished. Neither, apparently, am I."))
+    ledger=("Gesmerha: work on her bench", "Gesmerha's line does not leave work unfinished on the bench, and there is work of mine on hers. While it stays unfinished, so do I."))
 
 SE = "seelah.trickster."
 partner("seelah", "seelah", "seelah.committed", "seelah.closed", "The Thief's Promise",
