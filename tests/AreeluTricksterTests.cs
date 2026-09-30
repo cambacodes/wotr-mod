@@ -226,6 +226,9 @@ internal static class AreeluTricksterTests
         check(collect.ReturnToList && Available(collect, cauldronWorld) && !Available(collect, World(story, 6, "trickster.ever", Primed, Bet, Struck, Committed, Named, WoundCeded))
               && !Available(collect, World(story, 6, "trickster.ever", Siphon, Primed, Bet, Struck, Committed, WoundCeded)),
             "The collection does not need both a siphon in hand and the named stake.");
+        // Sol INT (r1): the native Trickster finale (GrandFinal/Answer_0055) needs a filled siphon; an empty one cannot be collected into.
+        check(!Available(collect, World(story, 6, "trickster", "trickster.ever", "areelu.siphon.empty", Primed, Bet, Struck, Committed, Named, WoundCeded)),
+            "The graft can be collected into the empty siphon.");
         // Sol INT: the historical hand-over is not possession (Shyka_Offer/Cue_0031 takes the filled siphon back).
         check(!Available(collect, World(story, 6, "trickster.ever", "council.cauldron_given", Primed, Bet, Struck, Committed, Named, WoundCeded)),
             "The collection reads the Council's hand-over instead of the siphon in the inventory.");
@@ -300,6 +303,22 @@ internal static class AreeluTricksterTests
         check(drawnNight.Contains("in_mortal_2") && !drawnNight.Contains("in_witch_2"), "The drawn punchline night shows the Abyss.");
         // A punchline over her native death in the fight revives nobody.
         check(!report.Any(s => Available(s, With(story, punchline, "areelu.dead_fight"))), "The punchline revives an Areelu who died.");
+
+        // Sol COX (r1): Areelu's page and the Last Call page agree about Shyka (H1: the Commander came back one person).
+        var fw = World(story, 6, "trickster.ever", "sacrifice", "ending.trickster_allplanes_fw", Struck, Bet, Committed);
+        var fwH1 = With(story, fw, "trickster.lastcall.taken");
+        string ShykaLine(Snapshot w) => string.Join("|", Rules.VisibleParagraphs(survived.Nodes[0], w).Select(pp => pp.Text).Where(tx => tx.Contains("Shyka")));
+        check(Available(survived, fw) && fwH1.Has("lastcall.h1") && ShykaLine(fw).Contains("initialled twice") && !ShykaLine(fw).Contains("bottle")
+              && ShykaLine(fwH1).Contains("bottle") && !ShykaLine(fwH1).Contains("initialled twice"),
+            "The Shyka paragraph contradicts the Last Call H1 page.");
+        // Sol INT (r1): a returned Nenio (G6(b)) is at breakfast exactly once; a dissolved one never.
+        var nenioBack = With(story, rewriteWorld, "nenio.dead", "nenio.trickster.returned");
+        int Breakfast(Snapshot w) => Rules.VisibleParagraphs(report.Single(s => s.Id.EndsWith(".participation")).Nodes.Single(n => n.Id == "morning"), w).Count(pp => pp.Text.StartsWith("Nenio arrived at breakfast"));
+        check(Breakfast(rewriteWorld) == 1 && Breakfast(nenioBack) == 1 && Breakfast(With(story, rewriteWorld, "nenio.dead")) == 0
+              && Breakfast(With(story, nenioBack, "nenio.dissolved")) == 0, "A returned Nenio misses breakfast, or appears twice.");
+        // Sol COX (r1): no companion outside the allocation visits the report.
+        check(report.Single(s => s.Id.EndsWith(".visitors")).Nodes.Single(n => n.Id == "start").Choices.Where(ch => ch.Next == "daeran").All(ch => ch.Forbids.Contains("trickster.ever")),
+            "Daeran still visits the report.");
 
         // Sol BEL: the breakup ends the report; the afterword lives only in the branches that continue.
         var promise = report.Single(s => s.Id.EndsWith(".promise"));
