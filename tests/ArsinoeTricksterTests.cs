@@ -188,9 +188,10 @@ internal static class ArsinoeTricksterTests
         var latePages = new HashSet<string>();
         var lateResults = Program.Walk(lateCommit, flirted, (page, _) => latePages.Add(page));
         check(latePages.SetEquals(lateCommit.Nodes.Select(n => n.Id)), "Unreached late-commit page.");
-        check(lateResults.Any(r => r.Has("arsinoe.trickster.late_yes")) && lateResults.Any(r => r.Has("arsinoe.trickster.late_declined"))
-              && lateResults.All(r => r.Has("arsinoe.trickster.late_yes") != r.Has("arsinoe.trickster.late_declined")),
-            "Late commitment lacks a yes and a refusal, or records both.");
+        // R2-6: an epilogue writes no flags; the yes (night or table) and the refusal are narrative branches only.
+        check(lateCommit.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0), "The late epilogue writes flags.");
+        check(new[] { "night", "table", "business" }.All(id => lateCommit.Nodes.Single(n => n.Id == "offer").Choices.Any(c => c.Next == id)),
+            "Late commitment lacks a night, a deferred yes or a refusal.");
         check(lateCommit.Nodes.Single(n => n.Id == "night").Choices.Single().Next == "morning", "Late night has no morning after.");
 
         // Sol r2 INT: the late page never visits a dead or ascended Commander; a Commander brought back is visited.
@@ -209,15 +210,46 @@ internal static class ArsinoeTricksterTests
         check(Rules.Available(story, lateAscended, risen) && !Rules.Available(story, lateAscended, flirted), "Ascended late page wrong.");
         check(lateCommit.MinChapter == 6 && lateCommit.MaxChapter == 6 && lateAscended.MinChapter == 6, "Late pages outside the epilogue chapter.");
         // Sol r2 COX: an ordinary courtship begun on the roof, with no cauldron, also reaches the late page; friendship does not.
-        var roofOnly = World(story, "trickster.ever", "arsinoe.roof_shared", "arsinoe.courting", "arsinoe.opening_kept");
-        roofOnly.Chapter = 6;
+        // Sol r4 HOW: walk the opening through the roof and stop there (no later evenings are claimed).
+        var cityScene = story.Scenes.Single(s => s.Id == "arsinoe_city_on_paper");
+        var printerScene = story.Scenes.Single(s => s.Id == "arsinoe_printers_view");
+        var roofScene = story.Scenes.Single(s => s.Id == "arsinoe_roofs");
+        var entry = new Snapshot { Chapter = 5, Area = Drezen, Hour = 5000 };
+        entry.Flags.UnionWith(new[] { "trickster", "arsinoe.capital" });
+        entry.AvailableContacts.Add(Contact);
+        Rules.Complete(story, entry);
+        Snapshot? roofOnlyMaybe = null;
+        foreach (var a in Program.Walk(cityScene, entry).Where(r => r.Has("arsinoe.picture_invitation")))
+        {
+            var b1 = Program.Copy(a); b1.Hour += printerScene.DelayHours;
+            foreach (var b2 in Program.Walk(printerScene, b1).Where(r => r.Has("arsinoe.printer_met")))
+            {
+                var c1 = Program.Copy(b2); c1.Hour += roofScene.DelayHours;
+                roofOnlyMaybe ??= Program.Walk(roofScene, c1).FirstOrDefault(r => r.Has("arsinoe.courting"));
+            }
+        }
+        check(roofOnlyMaybe != null, "The roof courtship cannot be played from a Chapter 5 entry.");
+        var roofOnly = Program.Copy(roofOnlyMaybe!);
+        roofOnly.Chapter = 6; roofOnly.Flags.Add("trickster.ever");
+        Rules.Complete(story, roofOnly);
         check(roofOnly.Has("arsinoe.trickster.late_committed") && Rules.Available(story, lateCommit, roofOnly), "Roof courtship has no late commitment.");
         var roofFriend = World(story, "trickster.ever", "arsinoe.roof_shared", "arsinoe.friendship");
         roofFriend.Chapter = 6;
         check(!Rules.Available(story, lateCommit, roofFriend), "Friendship is reopened as a late romance.");
         var roofOffer = lateCommit.Nodes.Single(n => n.Id == "offer");
-        check(Rules.VisibleParagraphs(roofOffer, roofOnly).Length == 2 && Rules.VisibleParagraphs(roofOffer, flirted).Length == 2,
-            "Late offer does not tell the lease and the roof histories apart.");
+        string OfferText(Snapshot st) => string.Join(" ", Rules.VisibleParagraphs(roofOffer, st).Select(p => p.Text));
+        var roofText = OfferText(roofOnly);
+        check(roofText.Contains("a roof, once") && !roofText.Contains("innkeeper") && !roofText.Contains("walk I made")
+              && !roofText.Contains("Tovin's shop") && !roofText.Contains("line about late payments"),
+            "Roof-only late offer recalls evenings that were never played.");
+        check(OfferText(flirted).Contains("line about late payments") && !OfferText(flirted).Contains("a roof, once"),
+            "Lease-flirt late offer borrows the roof history.");
+        var booked = Program.Copy(roofOnly); booked.Flags.Add("arsinoe_first_impression");
+        check(OfferText(booked).Contains("innkeeper") && !OfferText(booked).Contains("walk I made"), "Book callback wrong.");
+        var tabled = Program.Copy(booked); tabled.Flags.UnionWith(new[] { "arsinoe_hours_of_her_own", "arsinoe.next_table" });
+        check(OfferText(tabled).Contains("Tovin's shop") && !OfferText(tabled).Contains("walk I made"), "Table callback wrong.");
+        var walked = Program.Copy(booked); walked.Flags.UnionWith(new[] { "arsinoe_hours_of_her_own", "arsinoe.next_walk" });
+        check(OfferText(walked).Contains("walk I made") && !OfferText(walked).Contains("Tovin's shop"), "Walk callback wrong.");
         // A Chapter 5 fresh entry reaches the roof within the post-Coronation budget (168 h).
         int roofHours = new[] { "arsinoe_city_on_paper", "arsinoe_printers_view", "arsinoe_roofs" }.Sum(id => story.Scenes.Single(s => s.Id == id).DelayHours);
         check(roofHours <= 168, "Post-Coronation entry cannot reach the late-commit beat in 168 h: " + roofHours);
@@ -238,6 +270,20 @@ internal static class ArsinoeTricksterTests
             var whole = World(story, "trickster.ever", "arsinoe.trickster.cost.lien");
             if (active) whole.Flags.Add("lastcall.active");
             check(Rules.VisibleParagraphs(potNode, whole).Count(p => p.Text.Contains("still paying")) == (active ? 0 : 1), "Returned cauldron page contradicts Last Call.");
+        }
+
+        // Sol r4 BEL: no collateral or arrears paragraph has a dead Commander visit or pay; a Commander brought back does.
+        foreach (string id in new[] { "arsinoe.trickster.epilogue.bill_to_threshold", "arsinoe.trickster.epilogue.pot_returned" })
+        foreach (bool back in new[] { false, true })
+        {
+            var node = story.Scenes.Single(s => s.Id == id).Nodes[0];
+            var st = World(story, "trickster.ever", "arsinoe.trickster.cost.lien", "arsinoe.trickster.cost.collateral_word", "sacrifice");
+            if (back) st.Flags.Add("ending.trickster");
+            Rules.Complete(story, st);
+            var text = string.Join(" ", Rules.VisibleParagraphs(node, st).Select(p => p.Text));
+            check(text.Contains("The Commander came") == back && text.Contains("never called in") == !back, "Pledged word ignores death on " + id);
+            if (id.EndsWith("pot_returned"))
+                check(text.Contains("still paying") == back && text.Contains("Nobody paid it") == !back, "Arrears ignore death.");
         }
 
         // Sol r2 INT: the Kiana wedding line (added to this scene by kiana_trickster.integrate) reads her route's robbery,

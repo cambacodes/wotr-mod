@@ -141,11 +141,18 @@ physical(COLLECTION, "Collateral", '"You wanted to see me about the lease?"', [
 
 
 # The collateral is collected on whichever cauldron page the finale shows (E14c paragraphs).
+WORD_CALLED = ("The Commander's word, pledged as collateral, stayed on her books long after the account itself was closed. "
+               "Arsinoe called it in exactly once, years later, in a single line on temple vellum: a request for an evening, "
+               "at a time of her choosing, with no excuses accepted. The Commander came. She marked the debt paid, and then, "
+               "in the margin, reopened it.")
+# Paragraphs have no ForbidOverrides: "alive" is (no sacrifice) or trickster.commander_back (which implies sacrifice).
+ALIVE = "trickster.commander_back"
 COLLATERAL = (
-    p("The Commander's word, pledged as collateral, stayed on her books long after the account itself was closed. "
-      "Arsinoe called it in exactly once, years later, in a single line on temple vellum: a request for an evening, "
-      "at a time of her choosing, with no excuses accepted. The Commander came. She marked the debt paid, and then, "
-      "in the margin, reopened it.", requires=(WORD,)),
+    p(WORD_CALLED, requires=(WORD,), forbids=("sacrifice",)),
+    p(WORD_CALLED, requires=(WORD, ALIVE)),
+    p("The Commander's word, pledged as collateral, was never called in. Arsinoe kept it on her books at face value for "
+      "the rest of her life, and would not let the clerks from Absalom write it off. \"A word is not void because the one "
+      "who gave it is dead,\" she told them. \"It is merely unpaid.\"", requires=(WORD, "sacrifice"), forbids=(ALIVE,)),
     p("The Fool King's still, pledged as collateral, was audited by the temple of Abadar every season. The barrel baron "
       "met each inspection in full regalia. Arsinoe's reports describe the collateral as 'well guarded, fully "
       "operational, and regrettably drinkable', and bear the rings of several cups.", requires=(STILL,)),
@@ -178,7 +185,10 @@ epilogue("arsinoe.trickster.epilogue.bill_to_threshold", "Consumed in the course
 epilogue("arsinoe.trickster.epilogue.pot_returned", "Returned at the end of the world",
     '''{n}The soul cauldron came back from Threshold whole, which surprised everyone except Arsinoe. She locked it in the temple strongroom with the gold-wax tag still on the cradle, and wrote in the lease's margin in her smallest, neatest hand: "Returned at the end of the world, as agreed. Title: unproven, pending Absalom. Rent in arrears: considerable."{/n}''',
     ("trickster.ever", LIEN), ("arsinoe.siphon_burst",), paragraphs=(
-        p("The Commander is still paying it. Arsinoe has never once suggested a discount.", forbids=("lastcall.active",)),
+        p("The Commander is still paying it. Arsinoe has never once suggested a discount.", forbids=("lastcall.active", "sacrifice")),
+        p("The Commander is still paying it. Arsinoe has never once suggested a discount.", requires=(ALIVE,), forbids=("lastcall.active",)),
+        p("Nobody paid it. The Commander's estate was settled without the arrears, which Arsinoe carried forward every year "
+          "in her own hand and never once wrote off.", requires=("sacrifice",), forbids=(ALIVE, "lastcall.active")),
         p("The Commander paid the arrears the next morning, across her own table, to the copper, and watched her close the "
           "account. She has never once suggested a discount, and she did not start then.", requires=("lastcall.active",)),
     ) + COLLATERAL)
@@ -213,8 +223,6 @@ SCENES.extend(REACTIONS)
 # A Trickster who flirted at the collection (stays_to_collect) but never reached her commitment scene still has a romance
 # to answer: the first rent day after Threshold. The derived key means "reached the last beat", as on every route.
 LATE_COMMITTED = "arsinoe.trickster.late_committed"
-LATE_YES = "arsinoe.trickster.late_yes"
-LATE_DECLINED = "arsinoe.trickster.late_declined"
 COURTED = "arsinoe.courting"                       # the roof: her hand taken, the courtship begun
 # Reached the last beat: the collection flirt, or an ordinary courtship begun on the roof (no cauldron needed).
 DERIVED = {LATE_COMMITTED: [["trickster.ever", STAYS], ["trickster.ever", COURTED, "arsinoe.roof_shared"]]}
@@ -234,8 +242,15 @@ SCENES.append(scene("arsinoe.trickster.late.commit", "Interest on late payments"
              p("She laid the lease on the table and put a finger on the line about late payments. \"You told me you would make "
                "certain the payments were always a little late. The war ended before the first one fell due. So I have come "
                "to collect early, which is a thing I never do.\"", requires=(STAYS,)),
-             p("\"We had a roof, once,\" she said. \"And a book with a sauce in it, and a walk I made far too long so that it "
-               "would not end. Then the war took the evenings, and I let it. I have decided it has had enough of them.\"",
+             p("\"We had a roof, once,\" she said. \"Bread and cheese, and a city I pointed at for a whole evening while you "
+               "held my hand.\"", requires=(COURTED,), forbids=(STAYS,)),
+             p("\"And a book I promised to lend you, with a whole page about an innkeeper's sauce.\"",
+               requires=(COURTED, "arsinoe_first_impression"), forbids=(STAYS,)),
+             p("\"And a table in Tovin's shop after closing, where you read the sauce while I watched your face.\"",
+               requires=(COURTED, "arsinoe_hours_of_her_own", "arsinoe.next_table"), forbids=(STAYS,)),
+             p("\"And a walk I made far too long, so that it would not end.\"",
+               requires=(COURTED, "arsinoe_hours_of_her_own", "arsinoe.next_walk"), forbids=(STAYS,)),
+             p("\"Then the war took the evenings, and I let it. I have decided it has had enough of them.\"",
                requires=(COURTED,), forbids=(STAYS,)),
              p("\"I did not come as the temple. I came because I want you, Commander, and I am not in the habit of wanting "
                "things I have not priced. I have not priced this. So. Yes, or no?\""),
@@ -247,15 +262,15 @@ SCENES.append(scene("arsinoe.trickster.late.commit", "Interest on late payments"
     late("morning", '''{n}In the morning she was at the Commander's table in her shift, her hair down, writing on the back of something in her smallest hand. "Collected," it said. Then, a little lower: "Early."{/n}
 "Go back to sleep, Commander," she said, without looking up. "I intend to be very late opening the shop, and I want company for it."
 {n}The next month she set a second cup on the shelf in the room behind her shop, and she never once charged for it.{/n}''',
-         c('[Stay.]', flags=(LATE_YES,))),
+         c('[Stay.]')),
     late("table", '''{n}She let you take her hand across the table. Then she leaned over and kissed you, hard, the way she presses a seal, and sat back to admire the impression.{/n}
 "Supper, then. Tonight. The rest in a month, after I have had a month to look forward to it. I have waited through a war; I can afford four weeks, and I intend to enjoy every one of them at your expense."
 {n}She kept that appointment, and one every month after it, and the queue outside her shop learned to expect it opened late.{/n}''',
-         c('[Keep the appointment.]', flags=(LATE_YES,))),
+         c('[Keep the appointment.]')),
     late("business", '''{n}Arsinoe looked at the Commander for a while. Then she gathered her gloves, and did not hurry about it.{/n}
 "Business only," she said. "May Abadar keep you, Commander."
 {n}She stayed in Drezen. When their business crossed she was perfectly courteous about it, and she never once sat down.{/n}''',
-         c('[Let her go.]', flags=(LATE_DECLINED,))),
+         c('[Let her go.]')),
 ], requires=(LATE_COMMITTED,), forbids=(*LATE_GONE, "sacrifice", "ascended", "swarm", "true_lich"),
    ForbidOverrides={"sacrifice": "trickster.commander_back"}, last=6, Relationship="arsinoe"))
 
