@@ -189339,16 +189339,12 @@
             },
             {
               "Text": "{n}Somewhere a vat of Mutasafen's still held a little of the Commander, until the fire.{/n}",
-              "Requires": [],
+              "Requires": [
+                "hepzamirah.trickster.cost.blood_sample",
+                "hepzamirah.trickster.cost.vial_paid"
+              ],
               "Forbids": [],
-              "AnyGroups": [
-                [
-                  "hepzamirah.trickster.cost.blood_sample"
-                ],
-                [
-                  "hepzamirah.trickster.cost.vial_paid"
-                ]
-              ]
+              "AnyGroups": []
             },
             {
               "Text": "{n}The crusade's books listed one laboratory \"in the Worldwound, address unknown\". The address, it turned out, was known to one person.{/n}",
@@ -230386,7 +230382,8 @@
         "trickster.ever",
         "areelu.trickster.wager_struck",
         "areelu.trickster.rivalry_on_screen",
-        "areelu.trickster.survives"
+        "areelu.trickster.survives",
+        "areelu.died_at_finale"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -230401,9 +230398,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "areelu.died_at_finale"
         ]
       ],
       "ForbidOverrides": {
@@ -230585,7 +230579,8 @@
         "trickster.ever",
         "areelu.trickster.wager_struck",
         "areelu.trickster.rivalry_on_screen",
-        "areelu.trickster.survives"
+        "areelu.trickster.survives",
+        "trickster.cheated_death"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -230600,9 +230595,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "trickster.cheated_death"
         ]
       ],
       "ForbidOverrides": {
@@ -233126,7 +233118,8 @@
         "trickster.ever",
         "areelu.trickster.wager_struck",
         "areelu.trickster.rivalry_on_screen",
-        "areelu.trickster.survives"
+        "areelu.trickster.survives",
+        "trickster.cheated_death"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -233141,9 +233134,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "trickster.cheated_death"
         ]
       ],
       "ForbidOverrides": {

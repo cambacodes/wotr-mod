@@ -52,6 +52,10 @@ The `run-harness.ps1` options are:
 - `-TimeoutMinutes` sets the run timeout (default 45).
 - `-Spike Residence` runs the P2 residence feasibility spike instead of driving scenes. See [Residence spike](#residence-spike--spike-residence).
 - `-Spike Presence` runs the E12d quiet-copy check instead of driving scenes. See [Presence spike](#presence-spike--spike-presence).
+- `-Probes` installs the harness-only probe story instead of `development/Story.json`: `tools/build-harness-probes.py` appends
+  `storylines/harness_probes.py` (e.g. `pacing.e0.probe`, the E-new 0 Prologue attachment) and resolves its inline hosts into
+  `harness/probes/` (gitignored). Probes are never registered in `expansion.py` and never ship; `tests/test_chapter_zero.py`
+  checks that, and `build-expansion.ps1` load-tests the probe story.
 - `-Build` rebuilds the harness first.
 - `-RestoreFrom harness/.runs/<stamp>` restores the Mods folder after the script itself was killed.
 

@@ -1185,7 +1185,7 @@ namespace Tirabade
                 else if (Fate.CanRevive(revival.Value)) state.Flags.Add("revive." + revival.Key + ".available");
             if (new[] { "ascend_all", "ascend_alone", "ascend_areelu", "ascend_companions" }.Any(state.Has)) state.Flags.Add("ascended");
             if (state.Has("swarm") || state.Has("true_lich")) state.Flags.Add("inhuman");
-            state.Flags.Add(player.Chapter == 1 ? "chapter_one" : "chapter_later");
+            if (Rules.ChapterFlag(player.Chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
             // Latches and data-driven composites read the completed native picture.
             Rules.Complete(story, state);
             foreach (var relationship in degraded) state.Flags.Add(Rules.DegradedPrefix + relationship);

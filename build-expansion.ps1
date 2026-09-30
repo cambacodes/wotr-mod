@@ -28,9 +28,15 @@ try {
     # Static gate (GLOBAL-15): structure, dead gates, TypeIds, native bindings, released-save references.
     & $pythonPath tools/rrt_verify.py --strict --quiet --story development/Story.json --game $GameDir
     if ($LASTEXITCODE) { throw 'Static verification failed (tools/rrt_verify_report.txt)' }
+    # rrt_verify sections F2 (tools/return_safety.py: the Main.cs native return contract) and E2 (tools/gate_lint.py): fixtures
+    & $pythonPath -m unittest tests.test_return_safety tests.test_gate_lint
+    if ($LASTEXITCODE) { throw 'Return safety or gate lint tests failed' }
     # Pacing lint (handoff 13 section 6): REVIEW and WARN lines are advisory; a HARD violation or a bad availability map fails.
     & $pythonPath -m unittest tests.test_pacing_lint
     if ($LASTEXITCODE) { throw 'Pacing lint tests failed' }
+    # E-new 0: chapter 0 in rrt_verify, the simulator and the matrix tests; harness probes never ship.
+    & $pythonPath -m unittest tests.test_chapter_zero
+    if ($LASTEXITCODE) { throw 'Chapter 0 (Prologue) tests failed' }
     & $pythonPath tools/pacing_lint.py --story development/Story.json --availability tools/pacing-availability.json
     if ($LASTEXITCODE) { throw 'Pacing lint failed: a hard violation, or an invalid tools/pacing-availability.json' }
     & $dotnetPath build narrator/Narrator.csproj -c Release --nologo -v quiet
@@ -53,6 +59,14 @@ try {
     $loadExit = $LASTEXITCODE
     $env:RRT_TEST_LOAD = $null
     if ($loadExit) { throw 'Load smoke test failed: the mod would not load in UnityModManager' }
+    # The harness-only probe story (run-harness.ps1 -Probes) must load too. It is written to harness/probes/, never shipped.
+    & $pythonPath tools/build-harness-probes.py
+    if ($LASTEXITCODE) { throw 'Harness probe story build failed' }
+    $env:RRT_TEST_LOAD = '1'
+    & ./managed-tests/bin/Release/net48/ManagedBuildTests.exe $GameDir harness/probes/Story.json
+    $probeExit = $LASTEXITCODE
+    $env:RRT_TEST_LOAD = $null
+    if ($probeExit) { throw 'Probe load smoke test failed: run-harness.ps1 -Probes would not load' }
     # Save-safe degradation (GLOBAL-01): a vanished native binding disables only the relationships that use it.
     foreach ($missing in @('irabeth_dead', 'trickster')) {
         $env:RRT_TEST_MISSING_ETUDE = $missing
