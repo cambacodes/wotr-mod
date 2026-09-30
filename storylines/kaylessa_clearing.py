@@ -70,7 +70,7 @@ away(NIGHT, "Where I was meant to die", [
     nar("branch", '''{n}An hour's ride out of the gate, to a clearing among dead trees where, she tells you, Forn meant to spring his trap on you. "In my branch I came out of those trees and took his arrow for you, here." She touches her collarbone. "In yours I was already dead, so you met him alone, or you never met him at all. I can't tell. I remember both."{/n}''',
         c("Continue", "why_branch")),
     nar("ravine", '''{n}Not far. Out of the south gate and down into the ravine below the wall, where the stones are still stained dark in places and someone has swept away the lantern glass. It's black as the bottom of a well with the moon down. She can see. You can't.{/n}
-{n}She walks you to the stone where Forn lay and stops there, with your wrist still in her hand.{/n}''',
+{n}She walks you to the stone where the darkhunter lay and stops there, with your wrist still in her hand.{/n}''',
         c("Continue", "why_ravine")),
     kay("why", '''"This is where I'm supposed to be, soldier. Under that." {n}She nods at the ground as if it had insulted her.{/n}
 "I asked you for it. I got it, for a night. And then I got this instead, all of it, the market and the tea and you." {n}She turns round.{/n} "I wanted to do something here that isn't dying."''',
@@ -134,7 +134,7 @@ away(MORNING, "Grey light", [
         c("Continue", "now")),
     kay("fed", '''"It's quiet." {n}She says it as if it were bad news.{/n} "It's been hungry since your cells, soldier. Every night I can feel it at the back of my teeth. Last night it was quiet. I don't know if that's because of you or in spite of you, and I don't trust it either way."''',
         c("Continue", "now")),
-    kay("clean", '''"It moved." {n}She finally looks at you, over the shawl.{/n} "Back. An inch. Maybe less. I don't trust it. It's never moved that way before, not once since the Worldwound. I'm not going to say anything more about it in case it hears."''',
+    kay("clean", '''"Same place as yesterday." {n}She finally looks at you, over the shawl.{/n} "I thought a night like that would feed it. It didn't get a crumb. It'll move again next week; it always does, a little, like water through a boot. But not for you. Not for last night." {n}She rubs her thumb over the knots.{/n} "I'm not going to say anything more about it in case it hears."''',
         c("Continue", "now")),
     kay("fumbled", '''"It's where it was after the ravine. No further." {n}She rubs her hands together, hard, as if they were cold.{/n} "I was afraid it would come for you. Last night. When I stopped thinking. It didn't. I don't know what that means, and I'm not going to ask."''',
         c("Continue", "now")),
@@ -190,7 +190,7 @@ here(CLOAK, "Not grey", '"Is that... a new cloak?"', [
 "The grey was a courier's colour. It was for hiding." {n}Her fingers tighten on the edge of the hood.{/n}''',
         c("Continue", "amulet", requires=(AMULET,)),
         c("Continue", "no_amulet", forbids=(AMULET,))),
-    kay("amulet", '''"And I've got nothing left to hide under. No elf face, not any more. It burnt out on Forn. So I thought, if I'm going to walk round your city looking like what I am, I might as well be seen doing it." {n}She lifts her chin.{/n} "Calistria's colour. The Sting's girls wore red under the grey, in Kyonin. Where nobody could see it."''',
+    kay("amulet", '''"And I've got nothing left to hide under. No elf face, not any more. It burnt out on the man they sent to kill me. So I thought, if I'm going to walk round your city looking like what I am, I might as well be seen doing it." {n}She lifts her chin.{/n} "Calistria's colour. The Sting's girls wore red under the grey, in Kyonin. Where nobody could see it."''',
         c("Continue", "ask")),
     kay("no_amulet", '''"I'm still hiding. I'll be hiding till the day Kyonin forgets my name, which will be never. But I'm tired of hiding in a colour that means I'm running." {n}She lifts her chin.{/n} "Calistria's colour. The Sting's girls wore red under the grey, in Kyonin. Where nobody could see it."''',
         c("Continue", "ask")),
@@ -324,7 +324,7 @@ here(SHYKA_ANSWER, "How it ends", '"Is that from Shyka?"', [
 here(HUNTER, "The next one", '"You\'ve got blood on your sleeve."', [
     nar("open", '''{n}She's cleaning an arrowhead with a rag, very thoroughly, under the awning. There is blood on her sleeve that isn't hers and blood on the rag, and the tailor has gone round the other side of his stall to be busy.{/n}''',
         c("Continue", "start")),
-    kay("start", '''"They sent another one." {n}She doesn't stop cleaning.{/n} "The Council. Your marksmen on the ridge ran home and told them I'm alive, and they sent another hunter. Younger than Forn. Worse manners. He came over the east wall last night with a blade he'd rubbed with ash."
+    kay("start", '''"They sent another one." {n}She doesn't stop cleaning.{/n} "The Council. Your marksmen on the ridge ran home and told them I'm alive, and they sent another hunter. Younger than the last one. Worse manners. He came over the east wall last night with a blade he'd rubbed with ash."
 "I've got him in the old cooper's cellar by the tannery. He's alive. For now."''',
         c("Continue", "ask")),
     kay("ask", '''"I'm asking you, because rule three cuts both ways and because the last time I didn't ask anybody, you saw what I did in that ravine." {n}She puts the arrowhead down.{/n}

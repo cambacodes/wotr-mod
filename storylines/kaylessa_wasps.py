@@ -712,7 +712,7 @@ meet(GIRLS_FACE, "The courier's face", '"You keep touching your throat."', [
         c("Continue", "miss")),
     kay("miss", '''"Miss it?" {n}She thinks about it honestly, which is what she does with every question you give her.{/n}
 "I miss being looked at the way people looked at her. Politely. Like I was nobody in particular. That face could stand in a queue for the grain dole and nobody's hand went to a sword."
-"This one can't." {n}She touches her own cheek, dark as slate.{/n} "This one's the only face I'll ever have again, soldier. You burnt out the other one on Forn. I'm not complaining. I'm telling you what it cost."''',
+"This one can't." {n}She touches her own cheek, dark as slate.{/n} "This one's the only face I'll ever have again, soldier. You burnt out the other one on the hunter in the ravine. I'm not complaining. I'm telling you what it cost."''',
         c('"I\'d do it again."', "again"),
         c('"We could find out her name. Send it home."', "name"),
         c('"I like this one better."', "better")),

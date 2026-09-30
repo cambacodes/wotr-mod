@@ -263,6 +263,71 @@ internal static class KaylessaTricksterTests
               && reactions.Where(r => r.Owner == "Shyka").All(r => Rules.IsRemote(r) && r.Forbids.Contains("shyka.gone")),
             "The reactions are not exactly Anevia, Woljif and Shyka behind their guards.");
 
+        // Sol quality pass (CAN/INT/COX/BEL): the successor, the native outcome of the ravine, bottle survival, the morning seen.
+        const string FornIsDead = "7a6f0ef4dd004418aa613693dd9d280a";
+        check(story.Etudes["kaylessa.forn_dead"] == FornIsDead && story.StartableEtudes.Contains(FornIsDead),
+            "E17: FornIsDead is not both read and startable.");
+        // The original Forn: every ravine outcome starts FornIsDead (native Forn_Ambush/Cue_0040 would have), which removes his
+        // DrezenCapital spawner (Forn_m_spawnConditions requires it not playing) and hides him (DrezenCapital_DefaultMechanic).
+        var ravineEnds = swap.Nodes.SelectMany(n => n.Choices).Where(c => c.Next == null && c.Check == null && !c.Abort).ToList();
+        check(ravineEnds.Where(c => c.Forbids.Contains(P + "alive.successor")).All(c => c.StartEtude == FornIsDead)
+              && ravineEnds.Where(c => c.Requires.Contains(P + "alive.successor")).All(c => c.StartEtude == null)
+              && ravineEnds.Count(c => c.StartEtude == FornIsDead) == 3 && ravineEnds.Count(c => c.Requires.Contains(P + "alive.successor")) == 3,
+            "The ravine does not start FornIsDead for the original Forn only.");
+        var origPages = new HashSet<string>();
+        Program.Walk(swap, ready, (page, _) => origPages.Add(page));
+        check(origPages.Contains("forn") && origPages.Contains("volley") && !origPages.Contains("forn_s") && !origPages.Contains("volley_s"),
+            "The original ravine plays the successor's pages.");
+        // After the ravine the native etude plays: the later scenes must still remember the original Forn, not a successor.
+        var afterRavine = Program.Copy(clean); afterRavine.Flags.Add("kaylessa.forn_dead"); afterRavine.Times["kaylessa.forn_dead"] = afterRavine.Hour;
+        var cleanRuled = Later(story, Take(rules, Later(story, afterRavine, 24), "rules", 0), 24);
+        var clockPages = new HashSet<string>();
+        Program.Walk(clock, cleanRuled, (page, _) => clockPages.Add(page));
+        check(clockPages.Contains("clean") && !clockPages.Contains("clean_s"), "FornIsDead turns the original Forn into his successor afterwards.");
+        // Forn died in canon: a nameless successor, named nowhere as Forn, with Forn's face nowhere on the page.
+        var heirWorld = World(story, 5, "trickster", "trickster.ever", "kaylessa.met", "kaylessa.forn_dead");
+        var heirPages = new HashSet<string>();
+        Program.Walk(hunter, heirWorld, (page, _) => heirPages.Add(page));
+        check(heirPages.Contains("second") && heirPages.Contains("ask_s") && !heirPages.Contains("named") && !heirPages.Contains("ask"),
+            "The successor is introduced as Forn.");
+        var heirPlayed = Take(hunter, heirWorld, "seen_s", 0, P + "primed", P + "alive.successor");
+        var heirPlanned = Later(story, Take(warning, Later(story, heirPlayed, 12), "terms", 0, P + "alive.planned"), 24);
+        var heirWarnPages = new HashSet<string>(); var heirSwapPages = new HashSet<string>();
+        Program.Walk(warning, Later(story, heirPlayed, 12), (page, _) => heirWarnPages.Add(page));
+        Program.Walk(swap, heirPlanned, (page, _) => heirSwapPages.Add(page));
+        check(heirWarnPages.Contains("amulet_s") && !heirWarnPages.Contains("amulet") && heirSwapPages.Contains("forn_s")
+              && heirSwapPages.Contains("volley_s") && !heirSwapPages.Contains("forn") && !heirSwapPages.Contains("volley"),
+            "The successor's ambush plays Forn's pages.");
+        foreach (var id in heirSwapPages.Concat(heirPages).Distinct())
+        {
+            var node = swap.Nodes.Concat(hunter.Nodes).First(n => n.Id == id && (heirSwapPages.Contains(id) ? swap.Nodes.Contains(n) : hunter.Nodes.Contains(n)));
+            check(node.Speaker != "Forn" && node.Portrait != "Forn", "The successor speaks with Forn's name or face: " + id);
+        }
+        var heirClean = Take(swap, heirPlanned, "end", 1, Returned, P + "alive.swap_clean");
+        check(Program.Walk(swap, heirPlanned).All(r => !r.Has(Returned) || r.Has(P + "alive.successor")), "The successor's ravine forgets whose it was.");
+        var heirClock = new HashSet<string>();
+        Program.Walk(clock, Later(story, Take(rules, Later(story, heirClean, 24), "rules", 0), 24), (page, _) => heirClock.Add(page));
+        check(heirClock.Contains("clean_s") && !heirClock.Contains("clean"), "The clock remembers Forn going down in the successor's ravine.");
+        var noLamb = pages.Single(p => p.Id == P + "epilogue.no_lamb");
+        var swapPara = noLamb.Nodes[0].Paragraphs.Where(p => p.Requires.Contains(P + "alive.swap_clean")).ToList();
+        check(swapPara.Count == 2 && swapPara.Single(p => p.Forbids.Contains(P + "alive.successor")).Text.Contains("Forn Autumn Haze")
+              && swapPara.Single(p => p.Requires.Contains(P + "alive.successor")).Text.Contains("nameless"), "The page names the wrong dead hunter.");
+        // The living clock: no unprepared reversal, no promised long life; the knots continue.
+        var morning = S(N + "grey_light");
+        check(!morning.Nodes.Single(n => n.Id == "clean").Text.Contains("Back.", StringComparison.Ordinal)
+              && !noLamb.Nodes[0].Text.Contains("a long time", StringComparison.Ordinal)
+              && noLamb.Nodes[0].Paragraphs.Any(p => p.AnyGroups.Any(g => g.Contains(P + "alive.swap_clean") && g.Contains(P + "alive.swap_fumbled"))),
+            "The living world's curse is reversed or outlived without a cause.");
+        // Last Call: a Commander who came back from the sacrifice (bottle or not) keeps the ending; an unsurvived one does not.
+        foreach (var page in pages.Where(p => p.Forbids.Contains("sacrifice")))
+            check(page.ForbidOverrides["sacrifice"] == "trickster.commander_back", "A page ignores the Commander's return: " + page.Id);
+        check(Avail(noLamb, World(story, 6, "trickster.ever", Committed, "sacrifice", "ending.trickster"))
+              && !Avail(noLamb, World(story, 6, "trickster.ever", Committed, "sacrifice")), "Bottle-backed survival loses her ending.");
+        // Directive 12: the morning after, seen by Woljif.
+        var wMorning = S(P + "react.woljif_morning");
+        check(wMorning.Owner == "Woljif" && wMorning.Requires.Contains(N + "grey_light") && !Avail(wMorning, World(story, 5, "trickster.ever", Committed))
+              && Avail(wMorning, World(story, 5, "trickster.ever", Committed, N + "grey_light")), "Nobody notices the morning after.");
+
         // Camellia's oath: her kill that didn't take, now that this route returns her (ledger 05 row 12).
         var oathCamp = S("camellia.trickster.kills_answered.oath_camp");
         var kWorld = World(story, 5, "trickster.ever", Returned, "kaylessa.camellia_killed");
