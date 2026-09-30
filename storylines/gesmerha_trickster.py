@@ -219,7 +219,7 @@ in_yard(P + "returned.bench", "What comes after", '"You said to ask you when it 
     g("ask", '''"The ancestors said *finish*. They did not say what comes after. I have been deciding, with my hands in cold water, and I will tell you what I decided when you ask."''',
         c('[Stay at the bench] "Then let me be what comes after."', "terms", forbids=(FLINCHED,)),
         c('[Stay at the bench] "Then let me be what comes after."', "flinch", requires=(FLINCHED,)),
-        c('"Finish your life without me, carver. You\'ve earned it."', flags=(CLOSED,))),
+        c('"Finish your life without me, carver. You\'ve earned it."', flags=(CLOSED, "gesmerha.parted"))),
     g("terms", '''"Then listen to what my hands decided in the cold water, because they are mine again, and that means they can refuse, or choose. They chose you. I did not expect it, and I do not entirely approve of it, and they did not ask me. But I will not be paid for this. Not in coin, and not in jokes. If you ever buy me again, stranger, I will know it by your step before you open your mouth, and I will not be here when you do."''',
         c('"No more purses. Not for you. I swear it."', "night", flags=(COMMITTED,)),
         c('"I can\'t swear that. Buying things is what I do."', "postpone")),
@@ -308,7 +308,13 @@ def first_meeting(suffix, lists, areas, extra):
     SCENES.append(scene(P + "missed.first_meeting_" + suffix, "A step she does not know", "Gesmerha", 5,
         '"You are the woodshaper. I never came to your bench."', [
         g("start", '''{n}Her hands stop on the wood as your step reaches the bench. She tilts her head toward it, the way she listens for a crack in the grain, and does not find what she is listening for.{/n}
-"A step I do not know. Heavy in the heel, in a hurry, and pretending not to be." {n}Her mouth tightens.{/n} "The clan says the Commander who tore the mask off our Lady walked through Wintersun and never once came near my bench. Is that you?"''',
+"A step I do not know. Heavy in the heel, in a hurry, and pretending not to be."''',
+            c("Continue", "known_truth", requires=("gesmerha.truth",)),
+            c("Continue", "known_illusions", requires=("gesmerha.illusions",), forbids=("gesmerha.truth",))),
+        g("known_truth", '''{n}Her mouth tightens.{/n} "The clan says the Commander who tore the mask off our Lady walked through Wintersun and never once came near my bench. Is that you?"''',
+            c('"It is. I should have come sooner."', "board"),
+            c('"Never mind."', abort=True)),
+        g("known_illusions", '''{n}Her mouth tightens, and she lowers her voice, though there is nobody near enough to hear.{/n} "The chief says a stranger came to Wintersun with questions, found out what our Lady is, and chose to leave the rest of the village its sleep. A few of us were told. The others still laugh in the evenings. And in all that, the stranger never once came near my bench. Is that you, Commander?"''',
             c('"It is. I should have come sooner."', "board"),
             c('"Never mind."', abort=True)),
         g("board", '''"Sooner, later. The dead of Wintersun do not care which."
@@ -359,7 +365,9 @@ page("bench", "What came after", '''{n}Gesmerha never carved on commission again
            requires=(HANDS,)),
      ) + STATUE_PARAGRAPHS)
 
-page("commit", "The Commander's door", '''{n}Gesmerha finished the Commander's carving in the spring after Threshold, in a borrowed corner of a Drezen smithy, and then she walked the width of the city by ear to find out what came after. The smith swore she stopped at the Commander's door and listened for a long time before she knocked. She never said what she decided. She never carved on commission again.{/n}''',
+page("commit", "The Commander's door", '''{n}Gesmerha finished the Commander's carving in the spring after Threshold, in a borrowed corner of a Drezen smithy, and then she walked the width of the city by ear to the Commander's door. The smith, who followed at a distance because he did not trust the city with her, swore she stood listening for a long time before she knocked.{/n}
+{n}She gave her answer on the step, loud enough for the street to hear it. She would have the Commander, in her bed and at her bench, on two conditions. No purse would ever pass between them, not for a carving, not for a night, not for a kindness. And the Commander would walk loudly, always, so that she would never again have to wonder whose step was at her gate. The Commander agreed to both before she had finished the second. She said that was too fast to be honest, found the Commander's collar by feel, and pulled the Commander's mouth down to hers by it, there on the doorstep. The smith, who had seen enough, went home.{/n}
+{n}She never carved on commission again.{/n}''',
      requires=("trickster.ever", RETURNED), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice"), paragraphs=STATUE_PARAGRAPHS,
      RequiresAnyGroups=[[YARD, PRESENCE_FAILED]], ForbidOverrides={"sacrifice": "trickster.commander_back"})
 

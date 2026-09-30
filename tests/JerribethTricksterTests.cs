@@ -92,7 +92,7 @@ internal static class JerribethTricksterTests
             "Trk_Jerribeth_Setups_AfterDeath failed.");
 
         // Trk_Jerribeth_Dead_Primed: the tenant after 48 h, choice 0 (statue).
-        var primed = World(story, 3, "trickster", "trickster.ever", "jerribeth.met", Dead, Primed);
+        var primed = World(story, 3, "trickster", "trickster.ever", "jerribeth.met", Dead, Primed, "jerribeth.xanthir_known");
         primed.Times[Primed] = primed.Hour - 47;
         check(!Rules.Available(story, tenant, primed), "Tenant ignores the 48 h delay.");
         primed = Later(story, primed, 1);
@@ -213,10 +213,27 @@ internal static class JerribethTricksterTests
             check(outs.Any(r => r.Has("jerribeth.committed")), "No Trickster commit.");
             check(outs.Any(r => r.Has("jerribeth.closed") && r.Has("jerribeth.trickster.no_forfeit")), "Her blank-page no is missing.");
             // Directive 12: a Trickster contract is countersigned in person, and the cut lands at the start of the act.
-            check(pages.Contains("arrival") && pages.Contains("threshold") && pages.Contains("morning") && !pages.Contains("tenant_room"),
-                "The committed contract has no in-person threshold.");
-            check(pages.Contains("ask") && pages.Contains("threshold_free") && pages.Contains("morning_free"),
-                "Her restraint is not the Commander's choice, or keeping your hands has no distinct outcome.");
+            check(pages.Contains("arrival_note") && !pages.Contains("arrival") && !pages.Contains("threshold") && !pages.Contains("tenant_room"),
+                "The living contract stages a bodily visit inside a letter (ledger R2-3).");
+            var visitScene = S("jerribeth.trickster.visit");
+            check(!visitScene.Remote && visitScene.InteractionHub == "jerribeth.presence" && story.Presences.ContainsKey("jerribeth.presence"),
+                "The in-person collection is not a physical scene on her presence.");
+            foreach (var signedOut in outs.Where(r => r.Has("jerribeth.committed")).Take(1))
+            {
+                var due = Later(story, signedOut, 12);
+                due.AvailableContacts.Add("417ce3dcf3a9707488f2b9b2a790814b");   // her presence has spawned in the market
+                check(signedOut.Has("jerribeth.trickster.visit_due") && Rules.Available(story, visitScene, due), "The signed contract never gets its visit.");
+                var visitPages = new HashSet<string>();
+                var visitOuts = Program.Walk(visitScene, due, (page, _) => visitPages.Add(page));
+                check(visitPages.Contains("arrival") && visitPages.Contains("threshold") && visitPages.Contains("morning")
+                      && visitPages.Contains("ask") && visitPages.Contains("threshold_free") && visitPages.Contains("morning_free")
+                      && visitOuts.All(r => r.Has("jerribeth.trickster.visited")),
+                    "The visit has no staged threshold, or keeping your hands has no distinct outcome.");
+                var noSpawn = Program.Copy(due); noSpawn.Flags.Add("jerribeth.presence.failed"); noSpawn.Hour += 24;
+                check(Rules.Available(story, S("jerribeth.trickster.visit_letter"), noSpawn)
+                      && !Rules.Available(story, S("jerribeth.trickster.visit_letter"), Later(story, due, 24)),
+                    "No delayed letter when her presence cannot spawn, or it plays beside the visit.");
+            }
             check(outs.Where(r => r.Has("jerribeth.committed")).All(r => r.Has("jerribeth.future")), "The visit does not finish the promise.");
             var tenantW = Program.Copy(w); tenantW.Flags.UnionWith(new[] { Dead, Returned, "jerribeth.trickster.cost.host" });
             var tenantPages = new HashSet<string>();
@@ -359,7 +376,7 @@ internal static class JerribethTricksterTests
                 "A Golarion vessel is delivered at the Nexus: " + node);
         foreach (var (chapter, area) in new[] { (3, Drezen), (4, Nexus), (5, Drezen) })
         {
-            var w = Later(story, World(story, chapter, "trickster", "trickster.ever", "jerribeth.met", Dead, Primed), 48);
+            var w = Later(story, World(story, chapter, "trickster", "trickster.ever", "jerribeth.met", Dead, Primed, "jerribeth.xanthir_known"), 48);
             w.Area = area;
             var device = area == Nexus ? tenantNexus : tenant;
             check(Rules.Available(story, device, w) && !Rules.Available(story, area == Nexus ? tenant : tenantNexus, w),
@@ -480,8 +497,7 @@ internal static class JerribethTricksterTests
             {
                 s.Hour += 48;
                 Rules.Complete(story, s);
-                var next = story.Scenes.FirstOrDefault(x => x.Relationship == "jerribeth" && x.Remote && !x.ManualOnly && !x.Reaction
-                    && !x.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && Rules.Available(story, x, s));
+                var next = Rules.MailbagArrivals(story, s).FirstOrDefault(x => x.Relationship == "jerribeth");
                 if (next == null) break;
                 check(next.Nodes[0].Choices.Any(ch => Rules.Match(ch.Requires, ch.Forbids, s)), "A delivered Jerribeth letter opens with no answer: " + next.Id);
                 got.Add(next.Id);
@@ -511,6 +527,10 @@ internal static class JerribethTricksterTests
 
         // BEL (Sol r1 cap): the living, previously met Jerribeth's countersigned contract has a companion witness.
         var visitor = S("jerribeth.trickster.reaction.woljif_visitor");
+        check(!Rules.Available(story, visitor, ch5), "Woljif reports a visit that has not happened.");
+        var atStall = Later(story, ch5, 12); atStall.AvailableContacts.Add("417ce3dcf3a9707488f2b9b2a790814b");
+        check(Rules.Available(story, S("jerribeth.trickster.visit"), atStall), "The living contract's visit never plays.");
+        ch5 = Program.Walk(S("jerribeth.trickster.visit"), atStall).First(r => r.Has("jerribeth.trickster.visited"));
         check(!ch5.Has(Returned) && !ch5.Has(Toasted) && Rules.Available(story, visitor, ch5)
               && reactions.Where(r => r != visitor).All(r => !Rules.Available(story, r, ch5)),
             "The living contract has no companion reaction, or a device reaction plays beside it.");
@@ -533,6 +553,9 @@ internal static class JerribethTricksterTests
             check(!isDead || ch4Letters.Contains("jerribeth.trickster.dead.tenant_nexus") && after4.Has(Promised) && !after4.Has(Host),
                 "The Nexus tenant letter does not promise the host.");
             var home5 = Program.Copy(after4); home5.Chapter = 5; home5.Area = Drezen;
+            var firstHome = Later(story, home5, 48);
+            check(!isDead || Rules.MailbagArrivals(story, firstHome).FirstOrDefault(x => x.Relationship == "jerribeth")?.Id == "jerribeth.trickster.host.taken",
+                "The promised host is not taken on the first Drezen rest.");
             var (end5, ch5Tail) = Deliver(home5, 40);
             check(end5.Has("jerribeth.committed") && end5.Has("jerribeth.fate_terms") && ch5Tail.Count(x => !Device(x)) <= 8
                   && (!isDead || ch5Tail.Contains("jerribeth.trickster.host.taken") && end5.Has(Host) && ch5Tail.Count(Device) <= 2),
@@ -635,5 +658,50 @@ internal static class JerribethTricksterTests
                   && (!isLate || !all.Contains("jerribeth.ordinary") && !all.Contains("jerribeth.farewell") && s0.Has("jerribeth.ordinary")),
                 "The late start is not folded into the promise, " + label);
         }
+
+        // --- Sol round 3 -----------------------------------------------------------------------------------------------
+        // CAN: the locust vessel needs the pinning the Commander actually saw (JerribetnFinal/Cue_0001, xanthir_known). A
+        // greeting-stage kill never saw it; a final-stage kill did.
+        foreach (var device in new[] { tenant, tenantNexus })
+        {
+            var locust = device.Nodes.Single(n => n.Id == "house").Choices[1];
+            var greetingKill = World(story, 3, "trickster", "trickster.ever", "jerribeth.met", Dead, Primed, "jerribeth.trickster.attack_bored");
+            var finalKill = World(story, 3, "trickster", "trickster.ever", "jerribeth.met", Dead, Primed, "jerribeth.trickster.attack_final", "jerribeth.xanthir_known");
+            check(greetingKill.Has("jerribeth.killed_by_commander") && !Shown(locust, greetingKill) && Shown(locust, finalKill)
+                  && device.Nodes.Single(n => n.Id == "house").Choices.Count(ch => Shown(ch, greetingKill)) == 4,
+                "The locust vessel assumes a pinning the Commander never saw: " + device.Id);
+        }
+
+        // BEL: the late commit opens on a lease only for a tenant; other histories open on the unfinished correspondence.
+        foreach (var (label2, extra) in new[] { ("living", new string[0]), ("toasted", new[] { Toasted }),
+                                                ("lodger", new[] { Dead, Returned, "jerribeth.trickster.cost.tenant", "jerribeth.trickster.cost.lodger" }),
+                                                ("host", new[] { Dead, Returned, "jerribeth.trickster.cost.tenant", Host }) })
+        {
+            var w = World(story, 6, new[] { "trickster.ever", "jerribeth.attracted", "jerribeth.commission", "jerribeth.lovers" }
+                .Concat(label2 == "toasted" ? new string[0] : new[] { "jerribeth.met" }).Concat(extra).ToArray());
+            check(Rules.Available(story, epCommit, w), "The late commit is missing for " + label2);
+            var offer = epCommit.Nodes[0];
+            string text = offer.Text + " " + string.Join(" ", Rules.VisibleParagraphs(offer, w).Select(p => p.Text));
+            bool tenantHistory = label2 == "lodger" || label2 == "host";
+            check(text.Contains("lease") == tenantHistory && text.Contains("correspondence unfinished") == !tenantHistory
+                  && !text.Contains("Worldwound"), "The late commit's opening claims the wrong history for " + label2 + ": " + text);
+        }
+
+        // COX + HOW (R2-6): the late history (commission reached, no campaign commitment) has its Last Call coda; a parted or
+        // declined history has none, and the committed history does not read the late line.
+        var lateLc = World(story, 6, "trickster.ever", "jerribeth.met", "jerribeth.commission", "jerribeth.lovers", Taken, "ending.trickster");
+        check(lateLc.Has("jerribeth.trickster.late_committed") && lateLc.Has("lastcall.active") && Rules.Available(story, epCommit, lateLc)
+              && Rules.Available(story, lcPage, lateLc) && Visible(lcPage, lateLc, "no contract yet") == 1,
+            "The late-commit history has no Last Call coda, or the coda claims a signed contract.");
+        foreach (var guard in new[] { "jerribeth.trickster.parted", "jerribeth.trickster.declined" })
+        {
+            var guarded = Program.Copy(lateLc); guarded.Flags.Add(guard);
+            check(!Rules.Available(story, lcPage, guarded), "Last Call plays for a history that ended: " + guard);
+        }
+        var committedLc = Program.Copy(lateLc); committedLc.Flags.Add("jerribeth.committed");
+        check(Rules.Available(story, lcPage, committedLc) && Visible(lcPage, committedLc, "no contract yet") == 0, "The committed coda reads the late line.");
+        check(story.Scenes.Where(s => s.Relationship == "jerribeth").SelectMany(s => s.Nodes).SelectMany(n => n.Choices)
+                .Where(ch => ch.Set.Contains("jerribeth.closed")).All(ch => ch.Set.Contains("jerribeth.trickster.parted")),
+            "An answer closes the relationship without recording parted.");
     }
 }
