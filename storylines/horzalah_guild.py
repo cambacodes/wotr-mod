@@ -155,7 +155,7 @@ beat(H + "beat.father", "The weaker branch", '"Do you ever hear from your father
 "*Stronger in a fight.*" {n}She turns the words over as if they were a coin she had found in the street and did not trust.{/n} "A hundred years I have waited for him to say one good thing of me, and he said it to you. In passing. On his way to calling me a weed."
 "I should hate you for telling me." {n}She looks at you.{/n} "I am going to keep it instead. It is mine now. I took it off you. That is how I know it is real."''',
        c("[Let her keep it.]", flags=(FATHER, STRONGER))),
-    hz("silence", '''"Now he says nothing." {n}She nods, slowly, as if agreeing with a verdict.{/n} "I called his name at the end, you know, when I was on my back. Everyone does. He did not answer, and I thought that was the worst thing that could happen to me."
+    hz("silence", '''"Now he says nothing." {n}She nods, slowly, as if agreeing with a verdict.{/n} "I called his name once, in my sister's cell, when I thought she would finally kill me. He did not answer, and I thought that was the worst thing that could happen to me."
 "It was not. The worst thing would have been if he had answered, and taken back the Guild, and put the collar back on. Silence I can live in." {n}She touches the high leather at her throat.{/n} "I have lived in worse."''',
        c('"You live in it well."', "end"),
        c('"You don\'t have to live in it alone."', "end_alone", forbids=(ALLY,))),
@@ -376,7 +376,7 @@ beat(H + "beat.threshold", "The rest of the Abyss", '"The crusade marches on the
 "To the Threshold? To fight Deskari's rabble in the mud beside a thousand crusaders who would rather put a sword in me than in him?" {n}She laughs, not unkindly.{/n} "No, mortal. I am an assassin, not a soldier. I do not stand in lines. I will be in my hall, with your ear, listening to the bets."
 "And when you come back, I will come and look at the rest of you, to see what the war took. Do not let it take anything of mine."''',
        c("Continue", "promise")),
-    hz("army", '''{n}That surprises a real laugh out of her.{/n} "You remember that. I shouted it at you on the road, when I thought I had you: that I would rout the armies of Alushinyrra and cut down Deskari's lackeys and take his army for myself."
+    hz("army", '''{n}That surprises a real laugh out of her.{/n} "Who told you? The dwarf? My masters?" {n}She waves it away.{/n} "It is no secret. When I thought I had you, I meant to rout the armies of Alushinyrra and cut down Deskari's lackeys and take his army for myself."
 "Yes. I still want it. I want everything. Wanting is free." {n}Her eyes glint.{/n} "If you kill the Locust Lord, mortal, his rabble will scatter across half the Abyss looking for a master. Some of them will come to Alushinyrra. Some of them will come to my board. I will be very busy after your war, and very rich. You may consider it a gift to myself, from you."''',
        c("Continue", "promise")),
     hz("promise", '''{n}She reaches out and straightens the collar of your coat, as if you were a door she was checking on her way out.{/n}
@@ -445,7 +445,11 @@ beat(H + "beat.bare", "Bare", '"You\'re not wearing the collar."', [
     hz("start", '''{n}She is not. The high black leather is gone. The scar is there for anyone who passes to see: a band of pale, glossy skin all round her throat, two fingers wide, with the ghost of a buckle pressed into one side of it. The soldiers going by look at it and then, very quickly, at the cobbles.{/n}
 "No," {n}she says.{/n} "I am not."''',
        c('"Why?"', "why"),
-       c("[Say nothing. Look at her, not the scar.]", "look")),
+       c("[Say nothing. Look at her, not the scar.]", "look", requires=(SCAR_NOTED,)),
+       c("[Say nothing. Look at her, not the scar.]", "look_first", forbids=(SCAR_NOTED,))),
+    hz("look_first", '''{n}You look at her. Her face, which is proud and bony and a little hungry, as it always is; her eyes, which are watching you watch her. Not the scar.{/n}
+{n}After a while she lets out a breath through her nose, the kind that is almost a laugh.{/n} "Everyone who ever saw this looked at nothing else. My father's priests. Yozz's guests. My own masters, when they think I am not watching." {n}She tilts her head.{/n} "You look at me as if it were not there. I have not decided whether that is a kindness or an insult. I think I will let it be both."''',
+       c("Continue", "end")),
     hz("why", '''"Because everyone in this street has seen it now. I let them. They looked, and they looked away, and nothing happened." {n}Her fingers move to her throat, and stop, and come down again.{/n}
 "In Alushinyrra I wear it. There, it would be a weakness, and weaknesses are posted on the board with a price beside them. Here..." {n}She shrugs.{/n} "Here it is only a scar. On a woman who is standing in your street because she chooses to."''',
        c("Continue", "end")),
@@ -462,7 +466,8 @@ beat(H + "beat.bare", "Bare", '"You\'re not wearing the collar."', [
 beat(H + "beat.hunger", "Thin", '"When did you last eat?"', [
     hz("start", '''{n}She looks at you as if you had asked her when she last bled.{/n}
 "Why?"''',
-       c('"You were half-starved in Yozz\'s hall. You\'re not much better now."', "yozz"),
+       c('"You were half-starved in Yozz\'s hall. You\'re not much better now."', "yozz", requires=(MET_Q2,)),
+       c('"You look half-starved."', "yozz", forbids=(MET_Q2,)),
        c('[Hold out the bread and sausage you brought from the cookhouse.] "No reason."', "food")),
     hz("yozz", '''{n}Her mouth tightens.{/n} "Yozz liked his concubine thin. He said it showed off the seals. He said a daughter of Baphomet with meat on her bones would look like any other demon, and he had not paid for any other demon." {n}She shrugs, a sharp movement of sharp shoulders.{/n}
 "So I was fed what the dogs did not want, and I learned to live on it, and I am still alive. Everything he did to me, I lived through. I do not need your cookhouse."''',
@@ -521,7 +526,7 @@ beat(H + "beat.labyrinth", "Her cell", '"I\'ve walked the Ivory Labyrinth."', [
     hz("long", '''"Long enough to stop counting." {n}She says it without any particular feeling.{/n} "Hepzamirah came to visit, the first year, to tell me how she was doing. Then she stopped coming. I think she forgot I was there. I think that was the cruellest thing she ever did to me, and she did not even do it on purpose."''',
        c("Continue", "jailers")),
     hz("father", '''"Alive and busy." {n}She laughs, harshly.{/n} "Yes. He is always busy. The Labyrinth is his house and his ledger and his larder. Every soul in it is his: every jailer, every prisoner, every cultist who died on his altar. He walks its halls counting what he owns."
-"And he walked past my cell for years, and counted me, and went on." {n}Her fingers find her collar.{/n} "He did not answer me on the road either. He is very consistent. It is the only virtue he has."''',
+"And he walked past my cell for years, and counted me, and went on." {n}Her fingers find her collar.{/n} "He did not answer me there, and he has not answered me since. He is very consistent. It is the only virtue he has."''',
        c("Continue", "jailers")),
     hz("jailers", '''"The jailers grovelled to me when I first came, you know. Baphomet's own daughter, in their care; they did not know what they were allowed to do. Then my sister told them, and they found out, and they enjoyed finding out." {n}A thin smile.{/n}
 "I have their names. I have had them for a long time. One day, when I am bored, I will post them on my board, one at a time, at a very low rate, so that everyone in Alushinyrra knows how little they are worth to me."''',
@@ -569,7 +574,7 @@ beat(H + "beat.ramparts", "What you were", '"Walk the walls with me tonight."', 
        c('"Someone who never expected any of this."', "never")),
     hz("nobody", '''"Nobody." {n}She tries the word, as she tried *horzalah* in your mouth.{/n} "I have never been nobody. I was spawned somebody's daughter, with a price already on me. I would have liked, for one day, to be nobody." {n}She looks at the red sky.{/n} "It must have been very quiet."''',
        c("Continue", "end")),
-    hz("liar", '''"A liar." {n}Her mouth curves.{/n} "Yes. I thought so, on the road, when you lay there bleeding and told me a better story than the one I was going to tell. Only a liar knows how much a good story is worth." {n}She glances at you.{/n} "The difference between us, mortal, is that I lie for a living. I have never been sure what you lie for."''',
+    hz("liar", '''"A liar." {n}Her mouth curves.{/n} "Yes. I thought so, the night you told me a better story than the one I was going to tell. Only a liar knows how much a good story is worth." {n}She glances at you.{/n} "The difference between us, mortal, is that I lie for a living. I have never been sure what you lie for."''',
        c('"For you, lately."', "end"),
        c("Continue", "end")),
     hz("never", '''"Nobody expects any of this." {n}She shrugs.{/n} "My father did not expect me to come back from Yozz's hall. My sister did not expect her gift. Deskari did not expect you. The whole Abyss runs on people not expecting things." {n}A pause.{/n} "I did not expect you either, if you want to know. I expected your head."''',
@@ -751,7 +756,7 @@ beat(H + "beat.masters", "A vacancy", '"You look pleased with yourself."', [
     hz("you", '''"I thought you should know. It was, in its way, about you." {n}She puts the knife away.{/n} "Every master in that hall has now been reminded that the ear in the box was taken, not given, and that anyone who says otherwise will be joining it." {n}A thin smile.{/n} "It is a lie. You and I know it is a lie. I have just made it the most expensive truth in Alushinyrra."''',
        c('"Remind me never to call you soft."', flags=(MASTERS,)),
        c('"You enjoyed that."', "enjoyed")),
-    hz("enjoyed", '''"Of course I did." {n}She looks at you as if you had remarked that water was wet.{/n} "I am Baphomet's daughter, mortal. I enjoy almost everything I do with a knife. If you were hoping I would stop, you should have let the dwarf have me on the road."''',
+    hz("enjoyed", '''"Of course I did." {n}She looks at you as if you had remarked that water was wet.{/n} "I am Baphomet's daughter, mortal. I enjoy almost everything I do with a knife. If you were hoping I would stop, you should have killed me when you had the chance."''',
        c("[Let it go.]", flags=(MASTERS,))),
 ], requires=(TESTED,), forbids=(MASTERS, ALLY), delay=48)
 
@@ -769,7 +774,7 @@ beat(H + "beat.stood", "They stood", '"Your masters stood up."', [
 ], requires=(CHAMBER,), forbids=(STOOD,), delay=24)
 
 
-# --- 27. Letters, pinned by a knife (the worst branch reads two in Chapter 5, and none in Chapter 6). ----------------------
+# --- 27. Letters, pinned by a knife (with the Chapter 4/5 box, the worst branch reads two in Chapter 5, none in Chapter 6). ----------------------
 
 letter(H + "letter.first", "Pinned", [
     nar("start", '''{n}You wake with a knife in the post of your bed, a hand's breadth above your head, so thin you did not hear it go in. It pins a folded sheet of black paper. The hand is as sharp as a row of nails.{/n}''',
@@ -797,13 +802,6 @@ For services rendered this month, as retained: the watching of three doors in Dr
 The dresser sends his respects, and asks whether the Knight Commander would like a new coat. He is very good. He does not look up. H., master."''',
        c("[Pay the courier.]", crusade=("Finances", -150))),
 ], requires=(ALLY,), delay=96)
-
-letter(H + "letter.deciding", "Deciding", [
-    hz("start", '''{n}The knife is in the lintel of your door, high up, where you have to stand on a chair to reach it. The note is very short, and the pen has gone through the paper twice.{/n}
-"I am deciding. Do not come looking for me. Do not send anyone. Do not reach for anything.
-If you are wondering whether I am angry, I am. If you are wondering whether that means no, it does not mean anything yet. It means I am deciding. H."''',
-       c("[Get down off the chair.]")),
-], requires=(DECLINED,), forbids=(COMMITTED, LEFT_FREE), delay=18)
 
 
 def integrate(payload):

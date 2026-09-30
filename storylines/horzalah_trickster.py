@@ -67,6 +67,7 @@ NAMED = "baphomet.named_horzalah"
 HEPZ_BACK = "hepzamirah.trickster.returned"           # node variants only (build sheet: no Requires/Forbids on hepzamirah.*)
 Q2_DONE = "greybor.q2_done"
 Q3_FAILED = "greybor.q3_failed"
+RESCUE_TOLD = "horzalah.rescue_refused_told"  # YozzDying/Cue_0051 "He refused to rescue me back then..." (her own words, Ch4)
 LAPSED = "horzalah.q3_lapsed"                         # Derived: Greybor dead, kicked out, away, Q3 failed, or Chapter 6
 GREY_IN = "greybor.in_party"
 GREY_GONE = ("greybor.dead", "greybor.kicked_out")
@@ -130,7 +131,7 @@ DERIVED = {
 }
 # The objective itself (QuestObjectives [528bc8a8..., "Failed"]) does not resolve as a standalone blueprint at load, so the
 # failure is read from the cue that sets it: Greybor's "We've lost an important lead" after the assassin dies unquestioned.
-SEEN_CUES = {Q3_FAILED: [Q3_FAIL]}
+SEEN_CUES = {Q3_FAILED: [Q3_FAIL], RESCUE_TOLD: ["fc5119d8d4a54e047b07338764beb346"]}
 
 # Path fit (ROUTE-BRIEF-R 2026-09-29, v1): T = device or Trickster-only; N-all = any path; N-fit = the fitting paths.
 PATH_FIT = {}
@@ -283,16 +284,18 @@ SCENES.append(scene(H + "mercy.gift", "What she has left", "Horzalah", 5, '"Here
 "A guess." {n}Her voice drips with contempt.{/n} "A mortal guesses what the Lord of Beasts will bother to do. How generous of you. Go on, then. Guess some more, since I am in no position to leave."''',
         c('"I\'ve been in his prison. He told me what he thinks of you: \'Why should I nourish the shoots of the weaker branch?\'"',
           "branch", requires=(NAMED,)),
-        c('"When you went down, you called his name. I heard you. Nothing answered."', "called")),
+        c('"He left you in your sister\'s cell and sold you to Yozz. A father like that doesn\'t cross the Abyss to take back a Guild."',
+          "called", requires=(RESCUE_TOLD,)),
+        c('"Listen to yourself. You\'re asking what he\'ll take, not whether he\'ll come for you. You already know he won\'t."', "called")),
     hzi("branch", '''{n}The words land. You watch them land. Her hand goes to her throat, to the collar-shaped scar, and stays there.{/n}
 "The weaker branch." {n}She says it very quietly, and then she laughs, a dry sound with nothing inside it.{/n} "He said that to you. To a crusader, in his own house, as if he were remarking on the weather."
 "Yes. That is Father. He does not pluck a weed he has already stopped watering. Why would he come all the way to Alushinyrra to take a Guild off a daughter he cannot even be bothered to hate?"''',
         c("Continue", "guild")),
-    hzi("called", '''{n}She bares her teeth at you.{/n} "He heard. He hears everything said in his name. He simply..." {n}She stops, because there is no end to that sentence she can bear to say aloud with the dwarf listening.{/n}
+    hzi("called", '''{n}She bares her teeth at you.{/n} "He will come when it pleases him. He hears everything said in his name. He simply..." {n}She stops, because there is no end to that sentence she can bear to say aloud with the dwarf listening.{/n}
 "You know nothing of my father, mortal. That is a stranger's guess, and a stupid one. The Lord of Beasts takes back what he gives. It is the one thing he has always been good at."''',
         c("Continue", "guild")),
     hzi("guild", '''{n}She looks past you, at her own people lying on the road with their throats open.{/n}
-"But you are right about one thing, and only because it is obvious. The Guild does not wait for Father's verdict. The Guild bows to strength and eats failure. A dozen of my knives are lying here tonight, and the ones who stayed home will hear by morning that their master called for her father on a crossroads and got silence."
+"But you are right about one thing, and only because it is obvious. The Guild does not wait for Father's verdict. The Guild bows to strength and eats failure. A dozen of my knives are lying here tonight, and the ones who stayed home will hear by morning that their master was beaten on a crossroads by one mortal and a dwarf."
 "By the next night, someone will be sitting in my chair, wondering whether my head would look better on the notice board or over the door."''',
         *pitch(MERCY_PITCH, "ear", "refused"),
         c('"Then I suppose you\'d better think of something."', abort=True)),
@@ -371,7 +374,7 @@ SCENES.append(scene(H + "late.at_night", "Three nights", "Horzalah", 5, "", [
     hz("refused_room", '''"You let me go," {n}she says.{/n} "You sat me on the floor of this room with your blade under my chin, and then you let me walk out through the wall, and told me to take my chances." {n}Her mouth twists.{/n}
 "I took them. Father has said nothing. Not a word, not a whisper, not a cultist at the door. And for three nights three of my own masters have followed me from room to room in my own hall, smiling. They heard before I was home that I went out alone to take one mortal's head and came back without it. They are waiting to see who says the word 'failure' first, and they are beginning to think it will not need to be Father."''',
        c("Continue", "head")),
-    hz("refused", '''"You guessed," {n}she says.{/n} "You lay there bleeding on my crossroads and guessed, and you guessed right, and I spat on your boot for it."
+    hz("refused", '''"You guessed," {n}she says.{/n} "I lay there bleeding on that crossroads and you guessed, and you guessed right, and I spat on your boot for it."
 "Father has said nothing. Not a word, not a whisper, not a cultist at the door. And for three nights three of my own masters have followed me from room to room in my own hall, smiling. They are waiting for someone to say the word first. They would prefer it to be Father. They are beginning to think they do not need him to."''',
        c("Continue", "head")),
     hz("dismissed", '''"'Get out of my sight,' you said." {n}Her voice is hoarse, as if she had been shouting for days, or not using it at all.{/n} "I got out. It did not help."
@@ -437,7 +440,7 @@ SCENES.append(scene(H + "guild.kept", "The Guild bowed to the box", "Horzalah", 
     hz("sister", '''"And my sister walks again, they tell me. Dead in Colyphyr, and now she stands in your city by a smith's forge, in a body some butcher grew her, eating onions." {n}Her lip curls back from her teeth.{/n}
 "I will not ask how. I do not care how. Keep her away from my box. If she so much as breathes on that ear, I will send her something else with a ribbon on it, and this time it will not be a canary."''',
        c("Continue", "pivot")),
-    hz("pivot", '''{n}She folds her arms and looks at you, down the length of her nose, the way she looked at you from above the corpses in Yozz's hall.{/n}
+    hz("pivot", '''{n}She folds her arms and looks at you, down the length of her nose, the way she looks at a contract she has not yet decided to accept.{/n}
 "So. The Guild is mine. My father is silent. My knives are grateful. I have everything I had before you beat me, and one ear more." {n}She tilts her head.{/n} "I came to see what I bought with your blood, mortal. I have seen. Now tell me why I should not simply go home and never think of you again."''',
        c('[Hear what she wants] "Because you came. You didn\'t have to. What do you want?"', "wants"),
        c('[Let her go for good] "You shouldn\'t. You have your Guild. Go home, and keep the ear."', "free"),
@@ -498,9 +501,12 @@ def presence(id, title, entry, opening, nodes, requires, forbids=(), delay=24, o
                         InteractionHub=PRESENCE, **extra))
     tag(id, "T")
     if night is not None:
+        # When the presence failed, or when the chain reaches Chapter 6 (the Greybor-less night after Q3 lapsed), she comes
+        # to the Commander's room instead.
         SCENES.append(scene(id + "_night", title, "Horzalah", 5, "", [night, *_resite(nodes, night_subs)],
-                            requires=("trickster.ever", PRESENCE_FAILED, *requires), forbids=(CLOSED, id, *forbids),
-                            delay=delay, last=5, optional=optional, Relationship=REL, Chapters=[5], Remote=True,
+                            requires=("trickster.ever", *requires), forbids=(CLOSED, id, *forbids),
+                            RequiresAnyGroups=[[PRESENCE_FAILED, "chapter.six"]],
+                            delay=delay, last=6, optional=optional, Relationship=REL, Chapters=[5, 6], Remote=True,
                             Kind="visit", **extra))
         tag(id + "_night", "T")
 
@@ -533,7 +539,7 @@ presence(H + "test.the_gift", "A gift in the Abyss's idiom", '"Who is your frien
         hz("accept", '''{n}She smiles, very pleasantly, and puts the end of the chain in your hand. The dresser does not look up. He has had a great deal of practice at not looking up.{/n}
 "Then we are what my father and Yozz were," {n}she says.{/n} "Two owners, doing business with the things we own. It is a respectable arrangement. It is how the Abyss is run."''',
            c("Continue", "accept2")),
-        hz("accept2", '''"You will have my knives when you need them, at the Guild's rates, and you will pay on time." {n}She steps back, out of reach, the way she used to keep her distance in Yozz's hall.{/n}
+        hz("accept2", '''"You will have my knives when you need them, at the Guild's rates, and you will pay on time." {n}She steps back, out of reach, the way she keeps her distance from anything she has put a price on.{/n}
 "And that is all you will have. I was bought once, mortal. I know exactly what happens to a thing that is bought: it goes on a shelf. I will not go on yours."''',
            c("[Keep hold of the chain.]", flags=(ALLY,))),
     ],
@@ -599,7 +605,8 @@ presence(H + "commit.collar", "The collar", '"Walk with me."',
 
 
 presence(H + "commit.her_move", "Her move", '"Well, have you decided?"',
-    hz("start", '''{n}She does not look up from the Storyteller's shelves when you come, and she does not answer at once. She finishes the spine she is reading, and the one after it.{/n}''',
+    hz("start", '''{n}Yesterday there was a knife in the lintel of your door, high up, pinning a note: *I am deciding. Do not come looking for me. Do not reach for anything. If you are wondering whether that means no, it does not mean anything yet.*{/n}
+{n}Today she is back by the Storyteller's shelves. She does not look up when you come, and she does not answer at once. She finishes the spine she is reading, and the one after it.{/n}''',
        c("Continue", "decided")),
     [
         hz("decided", '''"Two days," {n}she says.{/n} "I have spent two days deciding whether you are a buyer. I have watched how you speak to your soldiers, and to your quartermaster, and to that grovelling priest who still wants to put his hands on your head. I have had my people watch the rest."
@@ -619,7 +626,8 @@ presence(H + "commit.her_move", "Her move", '"Well, have you decided?"',
     requires=(DECLINED,), forbids=(COMMITTED, LEFT_FREE), delay=48,
     night_subs=(("She puts the book back on the shelf, spine out, exactly where it was. Then she turns and takes your hand, without asking, and draws it up under the edge of her collar, and holds it there against the band of smooth skin, where the Storyteller cannot see and everyone else can guess.",
                  "She puts your letter back on the pile, face down, exactly where it was. Then she stands, and takes your hand, without asking, and draws it up under the edge of her collar, and holds it there against the band of smooth skin."),),
-    night=hz("start", '''{n}The air in your room folds, and she is sitting in your chair with her boots on your table, reading one of your letters. She finishes it, and the one under it, before she looks up.{/n}''',
+    night=hz("start", '''{n}Yesterday there was a knife in the lintel of your door, high up, pinning a note: *I am deciding. Do not come looking for me. Do not reach for anything.*{/n}
+{n}Tonight the air in your room folds, and she is sitting in your chair with her boots on your table, reading one of your letters. She finishes it, and the one under it, before she looks up.{/n}''',
              c("Continue", "decided")))
 
 
@@ -705,6 +713,8 @@ tag(H + "epilogue.together", "T")
 SCENES.append(scene(H + "epilogue.commit", "", "HorzalahEpilogue", 6, "", [
     nar("page", '''{n}The war ended before Horzalah had finished thinking about what she wanted. She finished it anyway, the spring after the Threshold, in her own time and on her own terms.{/n}
 {n}She came to Drezen through no door at all, stood in the Commander's rooms until she was noticed, and unbuckled her collar. The Commander waited, as the Commander had learned to do around her, and she took the Commander's hand and put it on the scar herself.{/n}
+{n}She brought a gift, as she had always meant to: a grey-haired man on a thin gold chain, Yozz's dresser, held out across the Commander's table. What the Commander did with the chain, she never told anyone. She only ever said that she had been bought once, and knew what a buyer looked like, and had not seen one.{/n}
+{n}That night she did not leave. She let the Commander unbuckle her collar, and every lace after it, and when the last of her leathers was on the floor she took two fistfuls of the Commander's shirt and fell back onto the bed and pulled the Commander down with her, and the candle went out.{/n}
 {n}After that she came and went as she pleased, and nobody in Drezen was ever quite sure whether she was a guest, a visitor or a threat, and nobody dared to ask her which. In the Guild's hall in Alushinyrra, a small box with a white ribbon hung on the notice board in a place of honour, and the masters who had known what was in it grew old and careful in her service.{/n}''',
         paragraphs=(p("{n}Before the Threshold there had been a note, pinned to the pole of the Commander's tent by a knife: *I have not finished thinking about what I want. You are going to your war before I have finished. That is very inconsiderate of you. Come back, and I will tell you.* The Commander came back. She told.{/n}"), *COMMON))],
     requires=("trickster.ever", LATE_COMMITTED),
@@ -720,7 +730,7 @@ SCENES.append(scene(H + "epilogue.decided", "", "HorzalahEpilogue", 6, "", [
 tag(H + "epilogue.decided", "T")
 
 SCENES.append(scene(H + "epilogue.left_free", "", "HorzalahEpilogue", 6, "", [
-    nar("page", '''{n}Horzalah kept the Assassins' Guild of Alushinyrra long after the war, and kept it well. Her father never spoke of her. She was seen in the Midnight Isles and in Absalom and once, it is said, in Katapesh, on business nobody ever lived to describe. She owned a great many things and, by all accounts, no one at all.{/n}
+    nar("page", '''{n}Horzalah kept the Assassins' Guild of Alushinyrra long after the war, and kept it well. Her father never spoke of her. She was seen in the Midnight Isles and in Absalom and once, it is said, in Katapesh, on business nobody ever lived to describe. She owned a great many people, and a great many more feared that she would. Nobody owned her.{/n}
 {n}Once, years after the Threshold, a small box wrapped in black paper arrived in Drezen with no note. It was tied with a white ribbon in a perfect bow, the ends cut on the slant so they would not fray. Inside, on black silk, there was nothing at all.{/n}
 {n}The Commander understood it perfectly.{/n}''',
         paragraphs=COMMON)],

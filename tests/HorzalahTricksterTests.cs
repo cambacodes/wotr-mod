@@ -318,14 +318,30 @@ internal static class HorzalahTricksterTests
               && reactions.All(s => s.AnswerLists.Length == 1 && s.Forbids.Length > 0),
             "Horzalah's reactions are not Greybor and Wenduag on their hubs, each with its guard.");
 
-        // Rest budget (spec §10: two Chapter 5 letters on the worst branch, none in Chapter 6): her first letter and the
-        // Guild's invoice are exclusive (an ally gets only the invoice); the third comes only while she decides after a soft no.
-        var first = letters.Single(s => s.Id == P + "letter.first");
-        var invoice = letters.Single(s => s.Id == P + "letter.invoice");
-        var deciding = letters.Single(s => s.Id == P + "letter.deciding");
-        check(first.Forbids.Contains(Ally) && invoice.Requires.Contains(Ally) && deciding.Requires.Contains(Declined) && deciding.Forbids.Contains(Committed)
-              && !own.Any(s => Rules.IsRemote(s) && s.Kind == "letter" && s.MaxChapter == 6),
-            "Horzalah's letters exceed two on the worst Chapter 5 branch, or one arrives in Chapter 6.");
+        // Rest budget (spec §10: two Chapter 5 letters on the worst branch, none in Chapter 6). Every rest-delivered page
+        // presented as a letter counts, whatever its id: the Chapter 5 box, her first letter and the Guild's invoice. The first
+        // letter and the invoice are exclusive (an ally gets only the invoice), so no branch reads more than two.
+        var mail = story.Scenes.Where(s => s.Relationship == "horzalah" && Rules.IsRemote(s) && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
+                                           && Rules.KindOf(s) == "letter").ToArray();
+        var ch5Mail = mail.Where(s => s.MinChapter <= 5 && s.MaxChapter >= 5).Select(s => s.Id).OrderBy(x => x).ToArray();
+        var first = mail.Single(s => s.Id == P + "letter.first");
+        var invoice = mail.Single(s => s.Id == P + "letter.invoice");
+        check(ch5Mail.SequenceEqual(new[] { P + "ch5.nothing", P + "letter.first", P + "letter.invoice" })
+              && first.Forbids.Contains(Ally) && invoice.Requires.Contains(Ally) && !mail.Any(s => s.MaxChapter >= 6),
+            "Horzalah's letters exceed two on the worst Chapter 5 branch, or one arrives in Chapter 6: " + string.Join(",", ch5Mail));
+
+        // Trk_Horzalah_Chapter6: the Greybor-less night after Q3 lapsed at Chapter 6 still carries her test, her yes, the
+        // chamber and her Last Call coda (the room twins stand in for her presence, which is Chapter 5 only).
+        var c6 = World(story, 6, "trickster", "trickster.ever", "iz.done", "coronation.after", "greybor.q2_done", "chapter.six");
+        var c6a = Take(unmet, c6, "exit", 0, Primed, Ear);
+        var c6b = Take(kept, Later(story, c6a, 48), "wants", 0, Wants);
+        check(!Avail(gift, Later(story, c6b, 48)), "Trk_Horzalah_Chapter6: her Chapter 5 presence opens in Chapter 6.");
+        var c6c = Take(giftNight, Later(story, c6b, 48), "decline_end", 0, Tested);
+        var c6d = Take(collarNight, Later(story, c6c, 24), "word3", 0, Committed);
+        var c6e = Take(chamber, Later(story, c6d, 24), "morning2", 0, Chamber, Morning);
+        var coda = story.Scenes.Single(s => s.Id == "horzalah.lastcall.page");
+        check(c6e.Has(Committed) && NoKill(c6e) && coda.Requires.Contains(Committed),
+            "Trk_Horzalah_Chapter6: the Chapter 6 road loses her test, her yes, the chamber or her Last Call coda.");
         // H2 (Last Call's bottle brings the Commander back with sacrifice held) keeps her romantic pages, as the native endings do.
         var h2 = World(story, 6, "trickster.ever", Committed, Ear, "sacrifice", "trickster.lastcall.taken", "ending.wound_closed", "trickster.lastcall.pillar.bottle");
         check(h2.Has("trickster.commander_back") && Avail(pg["epilogue.together"], h2)
@@ -338,9 +354,9 @@ internal static class HorzalahTricksterTests
             "A reactor speaks without being with the Commander, or after a native death.");
 
         // Courtship: every beat and letter is reachable on some road.
-        check(beats.Length == 27 && letters.Length == 3 && letters.All(s => Rules.IsRemote(s) && s.Kind == "letter" && s.Chapters.SequenceEqual(new[] { 5 }))
+        check(beats.Length == 27 && letters.Length == 2 && letters.All(s => Rules.IsRemote(s) && s.Kind == "letter" && s.Chapters.SequenceEqual(new[] { 5 }))
               && beats.All(s => s.ContactUnit == Unit && s.InteractionHub == "horzalah.presence" && s.Optional),
-            "Horzalah's courtship is not twenty-seven beats on her presence and three Chapter 5 letters.");
+            "Horzalah's courtship is not twenty-seven beats on her presence and two Chapter 5 letters.");
         var reachedIds = new HashSet<string>();
         void Play(Snapshot start, int chapter, int rounds, params string[] avoid)
         {
