@@ -158397,7 +158397,7 @@
         {
           "Id": "done",
           "Speaker": "Nurah",
-          "Text": "\"Then we have a book.\" {n}She says it the way other people say a prayer, quickly, before anyone can take it back.{/n}",
+          "Text": "\"Then we have a book.\" {n}She says it the way other people say a prayer, quickly, before anyone can take it back.{/n}\n\"And now the part that isn't in the contract.\" {n}She looks you over, slowly, the way she looks at a page she means to cut.{/n} \"You kept me when it would have been cheaper to hang me, and you never once pretended it was mercy. I have wanted to know what you're like when you're not being clever since the night you slid that dreadful pardon under my door. Say no now, Commander, and the book still happens. Say nothing, and I'll take it as the best review I've had.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -158413,7 +158413,7 @@
         {
           "Id": "partners",
           "Speaker": "Nurah",
-          "Text": "\"Co-authors. Partners in crime, in print, in the same typeface.\" {n}She grins, all teeth.{/n} \"Trezbot would choke on it. Do that again sometime.\"",
+          "Text": "\"Co-authors. Partners in crime, in print, in the same typeface.\" {n}She grins, all teeth.{/n} \"Trezbot would choke on it. Do that again sometime.\"\n\"And since we're sharing things now.\" {n}She hooks a finger in your collar.{/n} \"You're the only person who ever read what I wrote about them and laughed in the right places. I've been wanting to find out where else you laugh. Say no and we're still partners. Say nothing, and I'll take it as a signature.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -158839,7 +158839,7 @@
         {
           "Id": "done",
           "Speaker": "Nurah",
-          "Text": "\"Then we have a book.\" {n}She says it the way other people say a prayer, quickly, before anyone can take it back.{/n}",
+          "Text": "\"Then we have a book.\" {n}She says it the way other people say a prayer, quickly, before anyone can take it back.{/n}\n\"And now the part that isn't in the contract.\" {n}She looks you over, slowly, the way she looks at a page she means to cut.{/n} \"You kept me when it would have been cheaper to hang me, and you never once pretended it was mercy. I have wanted to know what you're like when you're not being clever since the night you slid that dreadful pardon under my door. Say no now, Commander, and the book still happens. Say nothing, and I'll take it as the best review I've had.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -158855,7 +158855,7 @@
         {
           "Id": "partners",
           "Speaker": "Nurah",
-          "Text": "\"Co-authors. Partners in crime, in print, in the same typeface.\" {n}She grins, all teeth.{/n} \"Trezbot would choke on it. Do that again sometime.\"",
+          "Text": "\"Co-authors. Partners in crime, in print, in the same typeface.\" {n}She grins, all teeth.{/n} \"Trezbot would choke on it. Do that again sometime.\"\n\"And since we're sharing things now.\" {n}She hooks a finger in your collar.{/n} \"You're the only person who ever read what I wrote about them and laughed in the right places. I've been wanting to find out where else you laugh. Say no and we're still partners. Say nothing, and I'll take it as a signature.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -160791,7 +160791,7 @@
         {
           "Id": "done",
           "Speaker": "Nurah",
-          "Text": "\"Then we have a book.\" {n}She says it the way other people say a prayer, quickly, before anyone can take it back.{/n}",
+          "Text": "\"Then we have a book.\" {n}She says it the way other people say a prayer, quickly, before anyone can take it back.{/n}\n\"And now the part that isn't in the contract.\" {n}She looks you over, slowly, the way she looks at a page she means to cut.{/n} \"You kept me when it would have been cheaper to hang me, and you never once pretended it was mercy. I have wanted to know what you're like when you're not being clever since the night you slid that dreadful pardon under my door. Say no now, Commander, and the book still happens. Say nothing, and I'll take it as the best review I've had.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -160807,7 +160807,7 @@
         {
           "Id": "partners",
           "Speaker": "Nurah",
-          "Text": "\"Co-authors. Partners in crime, in print, in the same typeface.\" {n}She grins, all teeth.{/n} \"Trezbot would choke on it. Do that again sometime.\"",
+          "Text": "\"Co-authors. Partners in crime, in print, in the same typeface.\" {n}She grins, all teeth.{/n} \"Trezbot would choke on it. Do that again sometime.\"\n\"And since we're sharing things now.\" {n}She hooks a finger in your collar.{/n} \"You're the only person who ever read what I wrote about them and laughed in the right places. I've been wanting to find out where else you laugh. Say no and we're still partners. Say nothing, and I'll take it as a signature.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -160823,7 +160823,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}She takes you by the hand as if leading a mark to the card table, and she does not let go until your own door is shut behind you both. Then she climbs onto your writing desk, scattering your dispatches, so that she can look down at you.{/n}\n\"I spent a season as a thing in a cage that could not touch anything. Author's terms: tonight I touch everything.\"\n{n}She means it. Her hands are everywhere at once, quick and ink-stained and greedy, learning you the way she learns a city, by getting lost in it on purpose. The chaplains' shift goes over her head and onto the floor. She is warm, warmer than she has any right to be, and when you lift her off the desk she wraps her legs around you and laughs against your throat as if she has just won a very large bet.{/n}",
+          "Text": "{n}She takes you by the hand as if leading a mark to the card table, and she does not let go until your own door is shut behind you both. Then she climbs onto your writing desk, scattering your dispatches, so that she can look down at you.{/n}\n\"I spent a season as a thing in a cage that could not touch anything. Author's terms: tonight I touch everything.\"\n{n}She means it. Her hands are quick and ink-stained and greedy, at your buckles, your ribs, the old scar under your arm, which she finds in the dark and presses with one thumb until you flinch. \"Found you,\" she says, pleased, and files it away. The chaplains' shift goes over her head and onto the floor. She is warm, warmer than she has any right to be, and when you lift her off the desk she wraps her legs around you and laughs against your throat as if she has just won a very large bet.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -161011,7 +161011,7 @@
         {
           "Id": "done",
           "Speaker": "Nurah",
-          "Text": "\"Then we have a book.\" {n}She says it the way other people say a prayer, quickly, before anyone can take it back.{/n}",
+          "Text": "\"Then we have a book.\" {n}She says it the way other people say a prayer, quickly, before anyone can take it back.{/n}\n\"And now the part that isn't in the contract.\" {n}She looks you over, slowly, the way she looks at a page she means to cut.{/n} \"You kept me when it would have been cheaper to hang me, and you never once pretended it was mercy. I have wanted to know what you're like when you're not being clever since the night you slid that dreadful pardon under my door. Say no now, Commander, and the book still happens. Say nothing, and I'll take it as the best review I've had.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -161027,7 +161027,7 @@
         {
           "Id": "partners",
           "Speaker": "Nurah",
-          "Text": "\"Co-authors. Partners in crime, in print, in the same typeface.\" {n}She grins, all teeth.{/n} \"Trezbot would choke on it. Do that again sometime.\"",
+          "Text": "\"Co-authors. Partners in crime, in print, in the same typeface.\" {n}She grins, all teeth.{/n} \"Trezbot would choke on it. Do that again sometime.\"\n\"And since we're sharing things now.\" {n}She hooks a finger in your collar.{/n} \"You're the only person who ever read what I wrote about them and laughed in the right places. I've been wanting to find out where else you laugh. Say no and we're still partners. Say nothing, and I'll take it as a signature.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -161207,7 +161207,8 @@
               "Text": "The Commander's name appeared once, on the first page, exactly where she had decided it should go.",
               "Requires": [],
               "Forbids": [
-                "nurah.trickster.cost.signed_proofs"
+                "nurah.trickster.cost.signed_proofs",
+                "nurah.trickster.cost.coauthor"
               ],
               "AnyGroups": []
             },
@@ -161215,6 +161216,16 @@
               "Text": "The Commander's name appeared once, on the first page, in the Commander's own hand. She never let anyone forget whose idea that had been.",
               "Requires": [
                 "nurah.trickster.cost.signed_proofs"
+              ],
+              "Forbids": [
+                "nurah.trickster.cost.coauthor"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, where it had been since the proofs. She said the second one was the only one the Commander had earned.",
+              "Requires": [
+                "nurah.trickster.cost.coauthor"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -161295,7 +161306,8 @@
               "Text": "The Commander's name appeared once, on the first page, exactly where she had decided it should go.",
               "Requires": [],
               "Forbids": [
-                "nurah.trickster.cost.signed_proofs"
+                "nurah.trickster.cost.signed_proofs",
+                "nurah.trickster.cost.coauthor"
               ],
               "AnyGroups": []
             },
@@ -161303,6 +161315,16 @@
               "Text": "The Commander's name appeared once, on the first page, in the Commander's own hand. She never let anyone forget whose idea that had been.",
               "Requires": [
                 "nurah.trickster.cost.signed_proofs"
+              ],
+              "Forbids": [
+                "nurah.trickster.cost.coauthor"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, where it had been since the proofs. She said the second one was the only one the Commander had earned.",
+              "Requires": [
+                "nurah.trickster.cost.coauthor"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -161327,11 +161349,277 @@
         "nurah.closed",
         "nurah.dead_drezen",
         "nurah.dead_camellia",
+        "nurah.killing_mechanism",
+        "sacrifice"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "nurah",
+      "ForbidOverrides": {
+        "nurah.dead_drezen": "nurah.trickster.returned",
+        "nurah.dead_camellia": "nurah.trickster.returned",
+        "nurah.killing_mechanism": "nurah.trickster.returned",
+        "sacrifice": "trickster.commander_back"
+      }
+    },
+    {
+      "Id": "nurah.trickster.epilogue.unanswered",
+      "Title": "Terms unanswered",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Two years after the Threshold a book came out of the River Kingdoms: the crusade from the wrong side, told by a halfling who had been a slave, a traitor and a prisoner. The Commander's chapter was short and exact and not unkind. It ended with a sentence about terms that had been offered and never answered, and readers argued for years about whether that was a complaint.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah",
+          "Paragraphs": [
+            {
+              "Text": "The book was called 'To the Abyss and Back', and in her case the title was a matter of record. Somewhere in the Midnight Isles a marilith keeps a bill of sale for the author herself, and has never once been able to collect on it.",
+              "Requires": [
+                "nurah.trickster.returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The crusade's rolls list Nurah Dendiwhar among the dead of Drezen, struck off on the Commander's word. The author of 'To the Abyss and Back' put another name on every copy, and the inquisitors who hunted her never once thought to look for a dead woman.",
+              "Requires": [
+                "nurah.trickster.cost.chaplains_writ"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She never managed to remove it: every printer she went to had already been paid to keep it. After a while she stopped trying, and began adding a footnote to it instead, a different one in every edition.",
+              "Requires": [
+                "nurah.trickster.cost.ghostwritten",
+                "nurah.trickster.printer_paid"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She could have struck it from the forme any day she liked. She never did. Instead she added a footnote to it, a different one in every edition.",
+              "Requires": [
+                "nurah.trickster.cost.ghostwritten"
+              ],
+              "Forbids": [
+                "nurah.trickster.printer_paid"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Drezen gaol kept her cell exactly as she left it, plank desk and all. The turnkeys still tell new recruits that the prisoner in it forged her own pardon out of professional disgust, and that the Commander had counted on it.",
+              "Requires": [
+                "nurah.trickster.cost.ledger_lie",
+                "nurah.trickster.released"
+              ],
+              "Forbids": [
+                "nurah.trickster.returned"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's name appeared once, on the first page, exactly where she had decided it should go.",
+              "Requires": [],
+              "Forbids": [
+                "nurah.trickster.cost.signed_proofs",
+                "nurah.trickster.cost.coauthor"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's name appeared once, on the first page, in the Commander's own hand. She never let anyone forget whose idea that had been.",
+              "Requires": [
+                "nurah.trickster.cost.signed_proofs"
+              ],
+              "Forbids": [
+                "nurah.trickster.cost.coauthor"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, where it had been since the proofs. She said the second one was the only one the Commander had earned.",
+              "Requires": [
+                "nurah.trickster.cost.coauthor"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Ramisa of the Fleshmarkets was seen, for one night only, in the front row of something. She never said what.",
+              "Requires": [
+                "nurah.trickster.cost.ramisa_audience"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "nurah.trickster.proofs_seen"
+      ],
+      "Forbids": [
+        "nurah.complete",
+        "nurah.closed",
+        "nurah.trickster.cost.late",
+        "nurah.dead_drezen",
+        "nurah.dead_camellia",
         "nurah.killing_mechanism"
       ],
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "nurah",
+      "ForbidOverrides": {
+        "nurah.dead_drezen": "nurah.trickster.returned",
+        "nurah.dead_camellia": "nurah.trickster.returned",
+        "nurah.killing_mechanism": "nurah.trickster.returned"
+      }
+    },
+    {
+      "Id": "nurah.trickster.epilogue.bereaved",
+      "Title": "The last chapter, unread",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander did not come back from the Threshold. Nurah heard it from a sergeant who expected her to be glad, and she corrected his grammar and went home and did not write for a month.{/n}\n{n}Two years after the war her book came out of the River Kingdoms. The chapter on the Commander was the longest in it. It was also the only one she never read aloud to anyone, and the only one without a single joke.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah",
+          "Paragraphs": [
+            {
+              "Text": "The book was called 'To the Abyss and Back', and in her case the title was a matter of record. Somewhere in the Midnight Isles a marilith keeps a bill of sale for the author herself, and has never once been able to collect on it.",
+              "Requires": [
+                "nurah.trickster.returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The crusade's rolls list Nurah Dendiwhar among the dead of Drezen, struck off on the Commander's word. The author of 'To the Abyss and Back' put another name on every copy, and the inquisitors who hunted her never once thought to look for a dead woman.",
+              "Requires": [
+                "nurah.trickster.cost.chaplains_writ"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She never managed to remove it: every printer she went to had already been paid to keep it. After a while she stopped trying, and began adding a footnote to it instead, a different one in every edition.",
+              "Requires": [
+                "nurah.trickster.cost.ghostwritten",
+                "nurah.trickster.printer_paid"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She could have struck it from the forme any day she liked. She never did. Instead she added a footnote to it, a different one in every edition.",
+              "Requires": [
+                "nurah.trickster.cost.ghostwritten"
+              ],
+              "Forbids": [
+                "nurah.trickster.printer_paid"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Drezen gaol kept her cell exactly as she left it, plank desk and all. The turnkeys still tell new recruits that the prisoner in it forged her own pardon out of professional disgust, and that the Commander had counted on it.",
+              "Requires": [
+                "nurah.trickster.cost.ledger_lie",
+                "nurah.trickster.released"
+              ],
+              "Forbids": [
+                "nurah.trickster.returned"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's name appeared once, on the first page, exactly where she had decided it should go.",
+              "Requires": [],
+              "Forbids": [
+                "nurah.trickster.cost.signed_proofs",
+                "nurah.trickster.cost.coauthor"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's name appeared once, on the first page, in the Commander's own hand. She never let anyone forget whose idea that had been.",
+              "Requires": [
+                "nurah.trickster.cost.signed_proofs"
+              ],
+              "Forbids": [
+                "nurah.trickster.cost.coauthor"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, where it had been since the proofs. She said the second one was the only one the Commander had earned.",
+              "Requires": [
+                "nurah.trickster.cost.coauthor"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Ramisa of the Fleshmarkets was seen, for one night only, in the front row of something. She never said what.",
+              "Requires": [
+                "nurah.trickster.cost.ramisa_audience"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "sacrifice"
+      ],
+      "Forbids": [
+        "nurah.closed",
+        "trickster.commander_back",
+        "nurah.dead_drezen",
+        "nurah.dead_camellia",
+        "nurah.killing_mechanism",
+        "lastcall.active"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "nurah",
+      "RequiresAnyGroups": [
+        [
+          "nurah.complete",
+          "nurah.trickster.late_committed"
+        ]
+      ],
       "ForbidOverrides": {
         "nurah.dead_drezen": "nurah.trickster.returned",
         "nurah.dead_camellia": "nurah.trickster.returned",
@@ -161412,7 +161700,8 @@
               "Text": "The Commander's name appeared once, on the first page, exactly where she had decided it should go.",
               "Requires": [],
               "Forbids": [
-                "nurah.trickster.cost.signed_proofs"
+                "nurah.trickster.cost.signed_proofs",
+                "nurah.trickster.cost.coauthor"
               ],
               "AnyGroups": []
             },
@@ -161420,6 +161709,16 @@
               "Text": "The Commander's name appeared once, on the first page, in the Commander's own hand. She never let anyone forget whose idea that had been.",
               "Requires": [
                 "nurah.trickster.cost.signed_proofs"
+              ],
+              "Forbids": [
+                "nurah.trickster.cost.coauthor"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, where it had been since the proofs. She said the second one was the only one the Commander had earned.",
+              "Requires": [
+                "nurah.trickster.cost.coauthor"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -161470,7 +161769,8 @@
         "nurah.closed",
         "nurah.dead_drezen",
         "nurah.dead_camellia",
-        "nurah.killing_mechanism"
+        "nurah.killing_mechanism",
+        "sacrifice"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -161478,7 +161778,8 @@
       "ForbidOverrides": {
         "nurah.dead_drezen": "nurah.trickster.returned",
         "nurah.dead_camellia": "nurah.trickster.returned",
-        "nurah.killing_mechanism": "nurah.trickster.returned"
+        "nurah.killing_mechanism": "nurah.trickster.returned",
+        "sacrifice": "trickster.commander_back"
       }
     },
     {
@@ -161555,7 +161856,8 @@
               "Text": "The Commander's name appeared once, on the first page, exactly where she had decided it should go.",
               "Requires": [],
               "Forbids": [
-                "nurah.trickster.cost.signed_proofs"
+                "nurah.trickster.cost.signed_proofs",
+                "nurah.trickster.cost.coauthor"
               ],
               "AnyGroups": []
             },
@@ -161563,6 +161865,16 @@
               "Text": "The Commander's name appeared once, on the first page, in the Commander's own hand. She never let anyone forget whose idea that had been.",
               "Requires": [
                 "nurah.trickster.cost.signed_proofs"
+              ],
+              "Forbids": [
+                "nurah.trickster.cost.coauthor"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, where it had been since the proofs. She said the second one was the only one the Commander had earned.",
+              "Requires": [
+                "nurah.trickster.cost.coauthor"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -198830,7 +199142,7 @@
         {
           "Id": "scroll",
           "Speaker": "Narrator",
-          "Text": "{n}You show her what is inside your sleeve: a scroll of raise dead from the crusade's chaplains, signed out against your name for next month's relic tithe. It is a cleric's scroll, and you are no cleric. Your hands have learned to use any made thing as if it had been made for them, and so lightly that nobody ever sees them do it.{/n}\n{n}\"If you fall,\" you tell her, \"I will read it over you before they carry anyone out, and nobody in this room will know. And I'll have my hand on you while I read, with his light in it. You made the sword it came from. Whatever you are when the scroll finds you, you'll know that. You will wake alone, and you will wake weaker. Stay down until we are gone.\"{/n}",
+          "Text": "{n}You show her what is inside your sleeve: a scroll of resurrection from the crusade's reliquary, signed out against your name for next month's relic tithe. It is a cleric's scroll, and you are no cleric. Your hands have learned to use any made thing as if it had been made for them, and so lightly that nobody ever sees them do it.{/n}\n{n}\"If you fall,\" you tell her, \"I will read it over you before they carry anyone out, and nobody in this room will know. And I'll have my hand on you while I read, with his light in it. You made the sword it came from. Whatever you are when the scroll finds you, you'll know that. You will wake alone, and whole, and you will remember all of it. Stay down until we are gone.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -198846,7 +199158,7 @@
         {
           "Id": "resist",
           "Speaker": "Targona",
-          "Text": "\"No.\" {n}She says it at once, and then she makes herself look at the scroll properly.{/n}\n\"Raise dead is not mercy, Commander. I have watched chaplains use it. It takes something out of whoever it brings back, and it does not give it back. And you are asking me to let them mourn me. My healers in Heaven. The Hand, who has already buried my brother. Everyone who ever prayed beside me.\"\n{n}The black wing draws tight against her back.{/n} \"Tell me why I should let you make liars of all of them.\"",
+          "Text": "\"No.\" {n}She says it at once, and then she makes herself look at the scroll properly.{/n}\n\"Resurrection is not mercy, Commander. I have watched chaplains use it. It gives back the body whole, every hair of it, and nothing of what the dying was like. And you are asking me to let them mourn me. My healers in Heaven. The Hand, who has already buried my brother. Everyone who ever prayed beside me.\"\n{n}The black wing draws tight against her back.{/n} \"Tell me why I should let you make liars of all of them.\"",
           "Choices": [
             {
               "Text": "[The wounded] \"Because Drezen's infirmary loses a man every hour, and none of them will ever reach Heaven's healers. They could reach you.\"",
@@ -198958,7 +199270,7 @@
         {
           "Id": "scroll",
           "Speaker": "Narrator",
-          "Text": "{n}You show her what is inside your sleeve: a scroll of raise dead from the crusade's chaplains, signed out against your name for next month's relic tithe. You have no gift for hiding the use of a thing. If you read it, you will read it on your knees over her body, aloud, with every soul in this room watching.{/n}\n{n}\"If you fall,\" you tell her, \"I will bring you back where you fell, with my hand on you and his light in it. You made the sword it came from; you'll know it. They will see me do it. You will wake weaker, and they will know why.\"{/n}",
+          "Text": "{n}You show her what is inside your sleeve: a scroll of resurrection from the crusade's reliquary, signed out against your name for next month's relic tithe. You have no gift for hiding the use of a thing. If you read it, you will read it on your knees over her body, aloud, with every soul in this room watching.{/n}\n{n}\"If you fall,\" you tell her, \"I will bring you back where you fell, with my hand on you and his light in it. You made the sword it came from; you'll know it. They will see me do it. You will wake whole, and they will know why.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -198974,7 +199286,7 @@
         {
           "Id": "resist",
           "Speaker": "Targona",
-          "Text": "\"No.\" {n}She says it at once, and then she makes herself look at the scroll properly.{/n}\n\"Raise dead is not mercy, Commander. I have watched chaplains use it. It takes something out of whoever it brings back, and it does not give it back. And you are asking me to let them mourn me. My healers in Heaven. The Hand, who has already buried my brother. Everyone who ever prayed beside me.\"\n{n}The black wing draws tight against her back.{/n} \"Tell me why I should let you make liars of all of them.\"",
+          "Text": "\"No.\" {n}She says it at once, and then she makes herself look at the scroll properly.{/n}\n\"Resurrection is not mercy, Commander. I have watched chaplains use it. It gives back the body whole, every hair of it, and nothing of what the dying was like. And you are asking me to let them mourn me. My healers in Heaven. The Hand, who has already buried my brother. Everyone who ever prayed beside me.\"\n{n}The black wing draws tight against her back.{/n} \"Tell me why I should let you make liars of all of them.\"",
           "Choices": [
             {
               "Text": "[The wounded] \"Because Drezen's infirmary loses a man every hour, and none of them will ever reach Heaven's healers. They could reach you.\"",
@@ -199083,7 +199395,7 @@
         {
           "Id": "raise",
           "Speaker": "Narrator",
-          "Text": "{n}Four volunteers go back into the ruin and come out with her wrapped in a Mendevian cloak. All four come out. One of them leaves an arm down there, and the other three do not speak of what is still down there. At the chapel you read a scroll of raise dead over her yourself, at the hour the priests call the thin one, while the chaplain kneeling at the altar keeps his eyes shut.{/n}\n{n}Coming back from the dead is an ordeal. The breath goes into her like a blade. Whatever she was before the laboratory, she will be less of it for a long while.{/n}",
+          "Text": "{n}Four volunteers go back into the ruin and come out with her wrapped in a Mendevian cloak. All four come out. One of them leaves an arm down there, and the other three do not speak of what is still down there. At the chapel you read the reliquary's scroll of resurrection over her yourself, at the hour the priests call the thin one, while the chaplain kneeling at the altar keeps his eyes shut. It is the last one the crusade has, and the treasurer will want to know why.{/n}\n{n}The breath goes into her like a blade. The scroll gives her body back whole, the black wing and all, and gives her nothing back of the days she lay in the ruin.{/n}",
           "Choices": [
             {
               "Text": "[Stay until she breathes.]",
@@ -199135,7 +199447,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The crusade's chaplains keep a crypt under the chapel for the dead whose orders have not yet said where they are to be buried. Since Areelu's laboratory they have kept an angel in it, on a bier, under a Mendevian shroud, waiting for Heaven to answer a letter about her. Heaven has not answered.{/n}\n{n}You have come back up out of the Abyss with the war nearly over and her name still on a list of the dead. There is one scroll of raise dead left in Drezen: the chaplains' reliquary holds it as the crusade's relic tithe, sealed and promised to Heaven's envoy, who is to carry it back to the Upper Planes after the Threshold as proof that the crusade kept faith.{/n}",
+          "Text": "{n}The crusade's chaplains keep a crypt under the chapel for the dead whose orders have not yet said where they are to be buried. Since Areelu's laboratory they have kept an angel in it, on a bier, under a Mendevian shroud, waiting for Heaven to answer a letter about her. Heaven has not answered.{/n}\n{n}You have come back up out of the Abyss with the war nearly over and her name still on a list of the dead. There is one scroll of resurrection left in Drezen: the chaplains' reliquary holds it as the crusade's relic tithe, sealed and promised to Heaven's envoy, who is to carry it back to the Upper Planes after the Threshold as proof that the crusade kept faith.{/n}",
           "Choices": [
             {
               "Text": "[Break the tithe seal] \"Open the crypt. I'll read it myself, and the envoy can take it up with me.\"",
@@ -199164,7 +199476,7 @@
         {
           "Id": "raise",
           "Speaker": "Narrator",
-          "Text": "{n}The chaplain-captain opens the reliquary with a face like a shut door and makes you break the envoy's seal with your own thumb. By nightfall the envoy will know whose thumb it was, and he will take his blessing off the Threshold muster, and every officer in Drezen will know why.{/n}\n{n}In the crypt you turn back the shroud. She looks as she did on the laboratory floor. The crypt is cold, and the chaplains have been careful with her. You read the scroll over her by one lamp, with your palm flat on her heart and her brother's light in it, and it goes to ash in your hand at the last word. Coming back from the dead is an ordeal. The breath goes into her like a blade, and she opens her eyes on a stone ceiling and your face.{/n}",
+          "Text": "{n}The chaplain-captain opens the reliquary with a face like a shut door and makes you break the envoy's seal with your own thumb. By nightfall the envoy will know whose thumb it was, and he will take his blessing off the Threshold muster, and every officer in Drezen will know why.{/n}\n{n}In the crypt you turn back the shroud. She looks as she did on the laboratory floor. The crypt is cold, and the chaplains have been careful with her. You read the scroll over her by one lamp, with your palm flat on her heart and her brother's light in it, and it goes to ash in your hand at the last word. The breath goes into her like a blade, and she opens her eyes on a stone ceiling and your face.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -199325,7 +199637,7 @@
         {
           "Id": "news",
           "Speaker": "Narrator",
-          "Text": "{n}The runner says that an angel with one black wing is up and washing wounds. She can barely lift the basin. She has not said her name. She asked whether the Knight-Commander was awake.{/n}\n{n}By noon Heaven's envoy to the crusade has heard, and by evening the Queen's chaplains have: an angel the lists call dead is changing bandages in Drezen, and nobody can say by whose hand. The envoy withholds his blessing from the next muster until someone explains it.{/n}",
+          "Text": "{n}The runner says that an angel with one black wing is up and washing wounds. Her hands shake on the basin. She has not said her name. She asked whether the Knight-Commander was awake.{/n}\n{n}By noon Heaven's envoy to the crusade has heard, and by evening the Queen's chaplains have: an angel the lists call dead is changing bandages in Drezen, and nobody can say by whose hand. The envoy withholds his blessing from the next muster until someone explains it.{/n}",
           "Choices": [
             {
               "Text": "[Go to her] Go down to the infirmary.",
@@ -199432,7 +199744,7 @@
         {
           "Id": "pikeman",
           "Speaker": "Targona",
-          "Text": "\"Commander. There was a pikeman in your infirmary last night with a fever that would not break. It broke at dawn. I thought you should know that first.\"\n{n}She nods at the two new cots.{/n} \"Those men went to the wall unblessed because of me. Heaven's envoy will not bless what he cannot explain, and he cannot explain me. I have told them I am sorry. They did not know what for.\"\n{n}The black wing folds against her back as if it too is listening.{/n}\n{n}She sets the basin down with both hands. It is only half full, and still it shakes.{/n}\n\"I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. Then nothing, and in the nothing, a light I made with my own hands, a long time ago, for my brother. I went towards it. Then I was breathing, and every breath hurt.\" {n}She flexes her fingers.{/n} \"I cannot lift what I lifted a week ago. That is what raising costs. I knew it would.\"\n\"I went to the Hand's chaplain before I came here, as I said I would. I told him what was done, and by whom. He let the candle burn down a finger's width before he spoke. Then he blessed me, and not you.\"",
+          "Text": "\"Commander. There was a pikeman in your infirmary last night with a fever that would not break. It broke at dawn. I thought you should know that first.\"\n{n}She nods at the two new cots.{/n} \"Those men went to the wall unblessed because of me. Heaven's envoy will not bless what he cannot explain, and he cannot explain me. I have told them I am sorry. They did not know what for.\"\n{n}The black wing folds against her back as if it too is listening.{/n}\n{n}She sets the basin down with both hands. It is only half full, and still it shakes.{/n}\n\"I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. Then nothing, and in the nothing, a light I made with my own hands, a long time ago, for my brother. I went towards it. Then I was breathing, and every breath hurt.\" {n}She flexes her fingers.{/n} \"The chaplains say resurrection gives the body back whole. It does. It does not give back the floor of that laboratory. I have lain on it every night since.\"\n\"I went to the Hand's chaplain before I came here, as I said I would. I told him what was done, and by whom. He let the candle burn down a finger's width before he spoke. Then he blessed me, and not you.\"",
           "Choices": [
             {
               "Text": "[Tell her the truth] \"I struck you. I'd rather you hear it from me than from Heaven.\"",
@@ -199464,7 +199776,7 @@
         {
           "Id": "pikeman_late",
           "Speaker": "Targona",
-          "Text": "\"Commander. There was a pikeman in your infirmary last night with a fever that would not break. It broke at dawn. I thought you should know that first.\"\n{n}She nods at the two new cots.{/n} \"Those men went to the wall unblessed because of me. Heaven's envoy will not bless what he cannot explain, and he cannot explain me. I have told them I am sorry. They did not know what for.\"\n{n}The black wing folds against her back as if it too is listening.{/n}\n{n}She sets the basin down with both hands. It is only half full, and still it shakes.{/n}\n\"I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. Then nothing, and in the nothing, a light I made with my own hands, a long time ago, for my brother. I went towards it. Then I was breathing, and every breath hurt.\" {n}She flexes her fingers.{/n} \"I cannot lift what I lifted before the laboratory. That is what raising costs. The chaplains told me so while I was still on the litter.\"\n\"Before I would let them carry me to the cots, I sent for the Hand's chaplain. Nobody asked me to. I had not promised anyone. But I will not be raised on a lie, and I told him what was done, and by whom. He let the candle burn down a finger's width before he spoke. Then he blessed me, and not you.\"",
+          "Text": "\"Commander. There was a pikeman in your infirmary last night with a fever that would not break. It broke at dawn. I thought you should know that first.\"\n{n}She nods at the two new cots.{/n} \"Those men went to the wall unblessed because of me. Heaven's envoy will not bless what he cannot explain, and he cannot explain me. I have told them I am sorry. They did not know what for.\"\n{n}The black wing folds against her back as if it too is listening.{/n}\n{n}She sets the basin down with both hands. It is only half full, and still it shakes.{/n}\n\"I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. Then nothing, and in the nothing, a light I made with my own hands, a long time ago, for my brother. I went towards it. Then I was breathing, and every breath hurt.\" {n}She flexes her fingers.{/n} \"The chaplains say resurrection gives the body back whole. It does. It does not give back the floor of that laboratory. I have lain on it every night since.\"\n\"Before I would let them carry me to the cots, I sent for the Hand's chaplain. Nobody asked me to. I had not promised anyone. But I will not be raised on a lie, and I told him what was done, and by whom. He let the candle burn down a finger's width before he spoke. Then he blessed me, and not you.\"",
           "Choices": [
             {
               "Text": "[Tell her the truth] \"I struck you. I'd rather you hear it from me than from Heaven.\"",
@@ -200410,7 +200722,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She came back the hard way, through the chapel and the raise dead scroll, and it took her a year to lift a full basin again. Four volunteers went into Areelu's ruin for her body. She learned their names, and tended the one who lost his arm there until the day he died, old, in his bed.",
+              "Text": "She came back the hard way, through the chapel and the crusade's last scroll of resurrection, and it took her a year to sleep through a night again. Four volunteers went into Areelu's ruin for her body. She learned their names, and tended the one who lost his arm there until the day he died, old, in his bed.",
               "Requires": [
                 "targona.trickster.cost.raised_the_hard_way"
               ],
@@ -200512,7 +200824,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She came back the hard way, through the chapel and the raise dead scroll, and it took her a year to lift a full basin again. Four volunteers went into Areelu's ruin for her body. She learned their names, and tended the one who lost his arm there until the day he died, old, in his bed.",
+              "Text": "She came back the hard way, through the chapel and the crusade's last scroll of resurrection, and it took her a year to sleep through a night again. Four volunteers went into Areelu's ruin for her body. She learned their names, and tended the one who lost his arm there until the day he died, old, in his bed.",
               "Requires": [
                 "targona.trickster.cost.raised_the_hard_way"
               ],
@@ -200632,7 +200944,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She came back the hard way, through the chapel and the raise dead scroll, and it took her a year to lift a full basin again. Four volunteers went into Areelu's ruin for her body. She learned their names, and tended the one who lost his arm there until the day he died, old, in his bed.",
+              "Text": "She came back the hard way, through the chapel and the crusade's last scroll of resurrection, and it took her a year to sleep through a night again. Four volunteers went into Areelu's ruin for her body. She learned their names, and tended the one who lost his arm there until the day he died, old, in his bed.",
               "Requires": [
                 "targona.trickster.cost.raised_the_hard_way"
               ],
@@ -200734,7 +201046,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She came back the hard way, through the chapel and the raise dead scroll, and it took her a year to lift a full basin again. Four volunteers went into Areelu's ruin for her body. She learned their names, and tended the one who lost his arm there until the day he died, old, in his bed.",
+              "Text": "She came back the hard way, through the chapel and the crusade's last scroll of resurrection, and it took her a year to sleep through a night again. Four volunteers went into Areelu's ruin for her body. She learned their names, and tended the one who lost his arm there until the day he died, old, in his bed.",
               "Requires": [
                 "targona.trickster.cost.raised_the_hard_way"
               ],
@@ -200831,6 +201143,17 @@
               "Requires": [
                 "targona.trickster.cost.unforgiven"
               ],
+              "Forbids": [
+                "targona.trickster.forgiven"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She forgave the joke at her bier in the end, when it had been apologised for properly, but she never forgot it. Some evenings she would bring it up at table, precisely, word for word, and watch the Commander wince, and then pour the wine.",
+              "Requires": [
+                "targona.trickster.cost.unforgiven",
+                "targona.trickster.forgiven"
+              ],
               "Forbids": [],
               "AnyGroups": []
             }
@@ -200853,6 +201176,7 @@
       "RequiresAnyGroups": [
         [
           "targona.committed",
+          "targona.trickster.late_committed",
           "targona.trickster.parent_romanced"
         ]
       ]
@@ -281164,7 +281488,7 @@
         {
           "Id": "took",
           "Speaker": "Kaylessa",
-          "Text": "{n}You close your hand on the hilt. She lets go of it slowly, one finger at a time, as though she were letting go of a rope over a drop.{/n}\n\"There.\" {n}She looks at her empty hand.{/n} \"That's the lightest I've been since Kyonin.\"\n{n}Then she reaches up and pulls your face down to hers and kisses you, hard, with her fingers in your hair and her fangs careful, the way a soldier seals a bargain with the only thing she has left to give.{/n}",
+          "Text": "{n}You close your hand on the hilt. She lets go of it slowly, one finger at a time, as though she were letting go of a rope over a drop.{/n}\n\"There.\" {n}She looks at her empty hand.{/n} \"That's the lightest I've been since Kyonin.\"\n{n}Then she reaches up and pulls your face down to hers and kisses you, hard, with her fingers in your hair and her fangs careful.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -281180,7 +281504,7 @@
         {
           "Id": "back",
           "Speaker": "Kaylessa",
-          "Text": "{n}Your fingers close over hers on the hilt, and push the knife gently back against her own palm.{/n}\n{n}She stares at your hand on hers. Something in her face breaks open, and she lets it.{/n} \"You'd leave it with me. After everything you've seen.\" {n}Her voice has gone rough.{/n} \"Nobody's ever trusted me with my own death, soldier. They all wanted to hold it for me.\"\n{n}She kisses you with the knife still between your joined hands, hard, her fangs careful, and doesn't let go of either.{/n}",
+          "Text": "{n}Your fingers close over hers on the hilt, and push the knife gently back against her own palm.{/n}\n{n}She stares at your hand on hers. Something in her face breaks open, and she lets it.{/n} \"You'd leave it with me. After everything you've seen.\" {n}Her voice has gone rough.{/n} \"Nobody's ever left my death in my own hand, soldier. They take it off me, or they hold it for me.\"\n{n}She kisses you with the knife still between your joined hands, hard, her fangs careful, and doesn't let go of either.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -281196,7 +281520,7 @@
         {
           "Id": "not_after",
           "Speaker": "Kaylessa",
-          "Text": "\"No.\" {n}She pulls her hand out from under yours and pushes the hilt into your palm, and holds your fingers closed round it with both of hers.{/n}\n\"Not after the cells. I know what that hand does when it's left alone. Hold it for me, soldier. That's what I'm asking. That's all I'm asking.\"\n{n}And then she kisses you, hard, as if she were settling a debt.{/n}",
+          "Text": "\"No.\" {n}She pulls her hand out from under yours and pushes the hilt into your palm, and holds your fingers closed round it with both of hers.{/n}\n\"Not after the cells. I know what that hand does when it's left alone. Hold it for me, soldier. That's what I'm asking. That's all I'm asking.\"\n{n}And then she kisses you, hard, and doesn't let go of your fingers.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -281587,8 +281911,24 @@
               "Requires": [
                 "kaylessa.trickster.cost.council_knows"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "kaylessa.clearing.hunter_turned_back",
+                "kaylessa.clearing.hunter_hers"
+              ],
               "AnyGroups": []
+            },
+            {
+              "Text": "{n}The Winter Council knew she lived. The hunter it sent after the ravine walked back into Kyonin with both hands broken and a letter pinned to his coat in her writing, and the Council hid him as it had hidden everything else. It sent no one after him.{/n}",
+              "Requires": [
+                "kaylessa.trickster.cost.council_knows"
+              ],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "kaylessa.clearing.hunter_turned_back",
+                  "kaylessa.clearing.hunter_hers"
+                ]
+              ]
             },
             {
               "Text": "{n}She never again wore a face that was not her own. When she went among people she went wrapped to the eyes, or she went as she was, and let them stare.{/n}",
@@ -281700,6 +282040,16 @@
               "Text": "{n}The beast in her never moved again from where it had stopped on the night of her death. She checked it every morning of her life.{/n}",
               "Requires": [
                 "kaylessa.trickster.cost.dark_fate_stalled"
+              ],
+              "Forbids": [
+                "kaylessa.trickster.cost.beast_fed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The beast had tasted something in the crusade's cells, and it did not forget. Some mornings the thumb on the clock slipped a little, and on those mornings she put the Kyonin dagger where the Commander could reach it before she said good morning.{/n}",
+              "Requires": [
+                "kaylessa.trickster.cost.beast_fed"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -286261,7 +286611,7 @@
         {
           "Id": "start",
           "Speaker": "Kaylessa",
-          "Text": "\"I haven't. I don't, not properly.\" {n}She has dark smudges under her eyes, visible even on her skin, and she's holding her tea with both hands. The bells for the night watch are ringing along the wall; somewhere north the sky flickers where the Wound is restless.{/n}\n\"Elves don't sleep, soldier. Did you know? We trance. Four hours, sitting up, awake and not awake, remembering things in order. That's how you keep three hundred years straight in your head.\"",
+          "Text": "\"I haven't. I don't, not properly.\" {n}She has dark smudges under her eyes, visible even on her skin, and she's holding her tea with both hands. The bells for the night watch are ringing along the wall; somewhere north the sky flickers where the Wound is restless.{/n}\n\"I used to sleep like a stone, soldier. In Kyonin, in the Wasps' loft, eight of us in a row and me snoring loudest, they said. I slept the night before every job. I slept the night before Anemora.\"",
           "Choices": [
             {
               "Text": "\"And now?\"",
@@ -286277,7 +286627,7 @@
         {
           "Id": "now",
           "Speaker": "Kaylessa",
-          "Text": "\"Now I sleep. Like you. Lying down, gone, and then back.\" {n}Her mouth twists.{/n} \"The curse took the trance. I didn't notice at first. I just noticed that I'd started to dream.\"\n\"I dream about the Worldwound every night. The prisoners. Tessariel holding the lamp. The sound a person makes when you've found the right place.\" {n}She sips the tea without tasting it.{/n} \"So I stay up, and sit under this awning, and watch your city not burn.\"",
+          "Text": "\"Now I lie down and I'm gone for an hour, and then I'm back, and I'm awake till the bells.\" {n}Her mouth twists.{/n} \"I didn't notice it at first. I just noticed that the dreams had started.\"\n\"I dream about the Worldwound every night. The prisoners. Tessariel holding the lamp. The sound a person makes when you've found the right place.\" {n}She sips the tea without tasting it.{/n} \"So I stay up, and sit under this awning, and watch your city not burn.\"",
           "Choices": [
             {
               "Text": "\"What do you dream when it isn't the Worldwound?\"",
@@ -286756,7 +287106,7 @@
               "Next": "like_met",
               "Set": [],
               "Requires": [
-                "kaylessa.met"
+                "kaylessa.first_words_seen"
               ],
               "Forbids": [],
               "Abort": false
@@ -286767,7 +287117,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "kaylessa.met"
+                "kaylessa.first_words_seen"
               ],
               "Abort": false
             }
@@ -381342,7 +381692,7 @@
         {
           "Id": "call",
           "Speaker": "Narrator",
-          "Text": "{n}Something warm and patient moves under your ribs: a light that belongs to someone's brother, lent to you in an infirmary and never quite given back.{/n}",
+          "Text": "{n}Something warm and patient moves under your ribs: a light that belongs to someone's brother, that went into you in the rock under Kenabres and never quite became yours.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -387718,17 +388068,7 @@
       [
         "trickster.ever",
         "nurah.trickster.proofs_seen",
-        "nurah.trickster.returned"
-      ],
-      [
-        "trickster.ever",
-        "nurah.trickster.proofs_seen",
-        "nurah.ran_off"
-      ],
-      [
-        "trickster.ever",
-        "nurah.trickster.proofs_seen",
-        "nurah.prison"
+        "nurah.trickster.cost.late"
       ]
     ],
     "nocticula.trickster.contact": [
