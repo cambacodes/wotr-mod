@@ -236,8 +236,8 @@ letter("kiana.trickster.no_wedding.postponed", "Postponed", [
       c("Continue", "complaint_king")),
     nar("order", '''{n}You read it into the minutes of the war council, in front of every officer at the table: *Standing order. Every marriage licence pledged with a ring from the Sunhammer shop is held until the shop and its stock have been searched.* The officers look at one another. Three licences, a jeweller nobody has complained about, and no evidence you are willing to name. The council backs it anyway, because it is the Commander's word and it costs the crusade nothing, and because nobody at that table wants to be the one who argued for a jeweller and was wrong.{/n}
 {n}By evening the other two couples are outside the chancery, still in their good clothes. A baker and a crossbowman ask you to your face what their ring has done. You have no answer for them that isn't a hunch.{/n}
-{n}The search takes four days and turns the shop on the square inside out. The stock is flawless. The ledger is not: the baker's ring and the crossbowman's are entered, priced and paid for, and the ring pledged on Kiana's licence is not in it at all. The shop's boy says it was a gift from the master, to the bride, with his compliments. Nobody on the council can remember the last time a jeweller gave a bride a stone for nothing.{/n}
-{n}The council releases the other two licences and minutes it without comment. The crusade pays both couples' forfeited deposits out of its own purse, and every officer at the table remembers whose word cost it. The third licence stays held until someone can say what the master's compliments were for. The clerk stamps it POSTPONED and sands it.{/n}''',
+{n}The search takes four days and turns the shop on the square inside out. The stock is flawless, and so is the day-book: three rings, three commissions, all paid, Elan's the dearest of them by a distance. But under the counter there is a second ledger in the master's own hand, and only one of the three weddings is in it: Kiana's, with the whole guest list copied out beneath it, name by name, as if somebody meant to send each of them something.{/n}
+{n}The council releases the other two licences and minutes it without comment. The crusade pays both couples' forfeited deposits out of its own purse, and every officer at the table remembers whose word cost it. The third licence stays held until someone can say what a jeweller wants with a list of wedding guests. The clerk stamps it POSTPONED and sands it.{/n}''',
       c("Continue", "complaint_order")),
     k("complaint_king", '''{n}Two days later a letter comes, written so hard that the nib has gone through the paper twice.{/n}
 "So I'm not a wife. I am *betrothed*. Again. Because the KING has banned our wedding until he is SOBER. Which, as his herald was kind enough to tell the entire square, is NEVER."
@@ -246,7 +246,7 @@ letter("kiana.trickster.no_wedding.postponed", "Postponed", [
 "...I laughed. I didn't want to. Come and explain yourself. Bring no speeches."''',
       c('[Write back] "I heard. Which is never."', flags=(PRIMED, RETURNED, POSTPONED, KING, H_BETROTHED))),
     k("complaint_order", '''{n}Two days later a letter comes, written so hard that the nib has gone through the paper twice.{/n}
-"So I'm not a wife. I am *betrothed*. Again. Because the Commander of the crusade had the war council hold every licence with a Sunhammer ring on it, and the other two got theirs back on Thursday, and ours did not, because our ring is *not in his ledger*. It was a gift. The master gave it to me himself, with compliments. Apparently that is suspicious now. I asked a sergeant what it meant. He looked at my hand for a very long time and would not say."
+"So I'm not a wife. I am *betrothed*. Again. Because the Commander of the crusade had the war council hold every licence with a Sunhammer ring on it, and the other two got theirs back on Thursday, and ours did not, because our wedding is in *a second ledger*. With all our guests in it. Elan saved for that ring for four months, Commander, and paid for it, and it is in a ledger under a counter beside the name of every guest we invited. I asked a sergeant what that meant. He looked at my hand for a very long time and would not say."
 "Elan wants to challenge you to a duel. I told him the baker and the crossbowman already tried, and got their licences back instead. The priestess of Abadar has returned our deposit with a note of condolence."
 {n}The next line has been crossed out and rewritten three times.{/n}
 "...I laughed. It was only half a joke. Come and explain yourself. Bring no speeches."''',
@@ -523,12 +523,15 @@ REACTIONS = [
     arsinoe("kiana.trickster.awake.react_arsinoe", (ROBBED, DOG),
             '''"A dog, Commander. I have a ward of sleeping wedding guests, and the one patient who woke up is a dog."
 {n}She holds up what is left of a quill.{/n}
-"He ate this. I am choosing to regard it as a sign, although I have not yet decided of what."'''),
+"He ate this. I am choosing to regard it as a sign, although I have not yet decided of what."''', forbids=(BOUGHT, Q3)),
     anevia("kiana.trickster.awake.react_anevia", (RETURNED, DOG),
            '''"Heard you saved a dog from a cursed collar and let the rest walk out the door."
 {n}Anevia shrugs, not quite as lightly as she means to.{/n}
 "I've had worse days at work. Not many. You'll want to go and get the rest back, you know. Whatever you told the jeweller's boy."'''),
-    arsinoe("kiana.trickster.no_wedding.react_arsinoe", (POSTPONED,),
+    arsinoe("kiana.trickster.no_wedding.react_arsinoe_council", (POSTPONED,),
+            '''"One contract of marriage, suspended by order, and two reimbursed out of the crusade's purse, to the last copper of the flowers." {n}Arsinoe dips her pen.{/n}
+"The suspended one I shall hold as long as the council holds it. I audit jewellers, Commander. A second ledger under a counter is not a clerical habit. It is a plan."''', forbids=(KING,)),
+    arsinoe("kiana.trickster.no_wedding.react_arsinoe", (POSTPONED, KING),
             '''"Three contracts of marriage, suspended by order. I shall honour the order."
 {n}Arsinoe dips her pen.{/n}
 "I shall also invoice the crusade for the deposits, to the last copper of the flowers, and for the priestesses' time, and for one wedding cake, which was already baked and has since been eaten by the Houndhearts."'''),

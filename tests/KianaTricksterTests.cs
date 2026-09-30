@@ -290,7 +290,7 @@ internal static class KianaTricksterTests
 
         // Reactions: Arsinoe, Anevia, Irabeth only; Anevia's lift with her return, Irabeth's with hers.
         var reactions = story.Scenes.Where(s => s.Relationship == "kiana" && s.Reaction).ToArray();
-        check(reactions.Length == 10 && reactions.All(r => r.Owner == "Arsinoe" || r.Owner == "Anevia" || r.Owner == "Irabeth"),
+        check(reactions.Length == 11 && reactions.All(r => r.Owner == "Arsinoe" || r.Owner == "Anevia" || r.Owner == "Irabeth"),
             "Kiana reactions changed.");
         var aneviaDog = S("kiana.trickster.awake.react_anevia");
         var dogWorld = World(story, 5, "trickster.ever", "kiana.trickster.returned", "kiana.trickster.dog_saved", "anevia_gone");
