@@ -12,7 +12,7 @@ Every scene is Trickster-only (T in PATH_FIT): it follows the device.
 """
 from story_format import c, n, scene
 from storylines.horzalah_trickster import (ALLY, CANARY, FREED, CHAMBER, CLOSED, COMMITTED, DECLINED, DREZEN, GREY_IN, HEPZ_BACK,
-                                            LATE, LEFT_FREE, MET_A, MET_B, MET_Q2, NAMED, P_KNIFE, P_PIPE, P_RIBBON, PRESENCE, REL,
+                                            LATE, LEFT_FREE, MET_A, MET_B, MET_Q2, NAMED, P_KNIFE, P_RIBBON, P_WHISTLE, PRESENCE, REL,
                                             SCAR_NOTED, TESTED, UNIT, WANTS, H, hz, nar, tag)
 
 SCENES = []
@@ -279,12 +279,12 @@ beat(H + "beat.lady", "Her city", '"Does the Lady in Shadow know what you do in 
 # --- 8. The dwarf. ---------------------------------------------------------------------------------------------------------
 
 beat(H + "beat.dwarf", "The dwarf", '"You\'re watching Greybor."', [
-    hz("start", '''{n}She is. Across the street, by the tavern door, a dwarf with a pipe is watching her back, with exactly the same expression.{/n}
+    hz("start", '''{n}She is. Across the street, by the tavern door, a dwarf with a whetstone and a blade across his knees is watching her back, with exactly the same expression.{/n}
 "I am watching the dwarf," {n}she agrees.{/n} "The dwarf is watching me. It is a professional courtesy. If either of us stopped, the other would take it as an insult."''',
        c("Continue", "betrayed", requires=(MET_A,)),
        c("Continue", "betrayed_b", requires=(MET_B,), forbids=(MET_A,)),
        c("Continue", "never", forbids=(MET_A, MET_B))),
-    hz("betrayed", '''"He took my contract on you, and my gold, and my confidence, and he led me to the Dry Crossroads by the nose, and at the end of it he stood over me filling his pipe and told me my three mistakes, in order, like a schoolmaster." {n}Her teeth show.{/n} "I have never been so humiliated in my life, and my life has been one long humiliation. I want his head, mortal."''',
+    hz("betrayed", '''"He took my contract on you, and my gold, and my confidence, and he led me to the Dry Crossroads by the nose, and at the end of it he stood over me and told me my three mistakes, in order, like a schoolmaster." {n}Her teeth show.{/n} "I have never been so humiliated in my life, and my life has been one long humiliation. I want his head, mortal."''',
        c("Continue", "demand")),
     hz("betrayed_b", '''"He sold you to me, and then he sold me to you, and he did it all without once raising his voice." {n}Something like admiration moves across her face, and she smothers it.{/n} "I have hired a great many knives. That one I should have hired properly. I want his head anyway, mortal. It is a matter of principle."''',
        c("Continue", "demand")),
@@ -293,19 +293,19 @@ beat(H + "beat.dwarf", "The dwarf", '"You\'re watching Greybor."', [
     hz("demand", '''"Give me the dwarf." {n}She says it lightly, as if asking for the salt.{/n} "He is not one of your precious crusaders. He is a sellsword who would sell you tomorrow for a better offer; he has said so to your face. Give him to me, and I will make it quick, and I will think better of you for the rest of your short life."''',
        c('"No. He\'s under my protection."', "no"),
        c('"Take it up with him. He\'ll enjoy that."', "him"),
-       c('[Trickster] "I\'ll give you something better. His pipe."', "pipe")),
+       c('[Trickster] "I\'ll give you something better. His whistle."', "pipe")),
     hz("no", '''"Under your protection." {n}She lets the words sit in the air for a while, examining them.{/n} "A dwarf who would sell you. Under the protection of the {mf|man|woman} he would sell." {n}She shakes her head.{/n}
 "You are the strangest owner I have ever met, mortal. Very well. He keeps his head. I keep watching it. And I will think, occasionally, about how much I would have enjoyed taking it."''',
        c("[Leave them watching each other.]", flags=(DWARF,))),
-    hz("him", '''{n}She looks across at Greybor. Greybor, who has heard every word, raises his pipe to her in a small salute.{/n}
+    hz("him", '''{n}She looks across at Greybor. Greybor, who has heard every word, touches two fingers to his brow in a small salute.{/n}
 "He would enjoy it." {n}She sounds almost wistful.{/n} "That is the trouble. He would enjoy it, and I would probably lose, and then he would charge you for the cleaning." {n}She turns back to the Storyteller's shelves.{/n} "Another time. When I am less tired and he is less smug."''',
        c("[Leave them watching each other.]", flags=(DWARF,))),
-    nar("pipe", '''{n}Greybor's pipe is on the step beside him while he refills his pouch. You walk across the street to ask him about the weather in the Worldwound, which he tells you at some length, and when you come back the pipe is in your sleeve and he has not yet noticed that his hand is closing on nothing.{/n}
+    nar("pipe", '''{n}Greybor keeps a whistle in his coat, a little thing of dark metal chased with runes, the one that calls his hidden friends out of the dark. You walk across the street to ask him about the weather in the Worldwound, which he tells you at some length, and when you come back the whistle is in your sleeve and his coat pocket is a little lighter than it was.{/n}
 {n}Horzalah takes it from you with two fingers, as if it were something dead she had been given to identify.{/n}''',
         c("Continue", "pipe2")),
-    hz("pipe2", '''"His pipe." {n}She turns it over. Then she laughs, properly, loud enough that Greybor looks up, looks at his empty hand, looks at her, and goes very still.{/n}
-"You stole the dwarf's pipe for me. In the street. In front of him." {n}She puts it inside her collar, against her throat.{/n} "It is the stupidest gift anyone has ever given me, and I would not trade it for his head. He will be looking for it for a week. He will know exactly where it is, and he will never ask for it back, because then he would have to admit I have it."''',
-       c("[Leave before Greybor crosses the street.]", flags=(DWARF, P_PIPE))),
+    hz("pipe2", '''"His whistle." {n}She turns it over, runes and all. Then she laughs, properly, loud enough that Greybor looks up, pats his coat, looks at her, and goes very still.{/n}
+"You stole the dwarf's whistle for me. The thing that springs his traps. In the street, in front of him." {n}She puts it inside her collar, against her throat.{/n} "It is the stupidest gift anyone has ever given me, and I would not trade it for his head. The next time he lays a trap for me, he will have to whistle it up by hand. He will be looking for it for a week. He will know exactly where it is, and he will never ask for it back, because then he would have to admit I have it."''',
+       c("[Leave before Greybor crosses the street.]", flags=(DWARF, P_WHISTLE))),
 ], requires=(GREY_IN,), forbids=(DWARF, GREY_DEAD, GREY_KICKED), delay=24)
 
 
@@ -536,7 +536,7 @@ beat(H + "beat.labyrinth", "Her cell", '"I\'ve walked the Ivory Labyrinth."', [
        c("[Leave them to their waiting.]", flags=(LABYRINTH,))),
     hz("leave", '''"Nothing to me." {n}She considers it.{/n} "You say that as if it were a kindness. It is not, to them. To be nothing to someone who owns a Guild of knives is the safest thing in the Abyss." {n}She shrugs.{/n} "Very well. They are nothing to me. I will still keep the names. Nothing is a very changeable thing."''',
        c("[Let her keep them.]", flags=(LABYRINTH,))),
-], requires=(SISTER,), forbids=(LABYRINTH,), delay=24)
+], requires=(SISTER, "baphomet.parley.latched"), forbids=(LABYRINTH,), delay=24)
 
 
 # --- 18. A head in a box. --------------------------------------------------------------------------------------------------
@@ -580,10 +580,10 @@ beat(H + "beat.ramparts", "What you were", '"Walk the walls with me tonight."', 
     hz("never", '''"Nobody expects any of this." {n}She shrugs.{/n} "My father did not expect me to come back from Yozz's hall. My sister did not expect her gift. Deskari did not expect you. The whole Abyss runs on people not expecting things." {n}A pause.{/n} "I did not expect you either, if you want to know. I expected your head."''',
        c("Continue", "end")),
     hz("end", '''{n}At the corner tower she stops, and puts her back to the parapet, and looks at you in the red light, saying nothing, until the sentry on the next tower has turned his back twice.{/n}
-"I am not going to tell you that I love you," {n}she says at last.{/n} "Baphomet's daughters do not have the word. We have *mine*, and we have *kept*, and we have *not for sale*. You may have all three."''',
-       c('"I\'ll take them."', "take"),
+"When Yozz walked me through his parties on the leash, I made a list," {n}she says at last, as if it were being dragged out of her.{/n} "Everyone who looked at me. I meant to kill them all, one day. I have killed most of them." {n}Her jaw tightens.{/n} "Last week I started another list. It has one name on it, and I do not know what it is for, and I hate it, and I will not cross it off. Do not ask me whose name. Do not *smile*, mortal."''',
+       c('"I\'m not smiling."', "take"),
        c("[Take her hand, and wait.]", "hand")),
-    hz("take", '''"You will take them." {n}She laughs, very low.{/n} "Of course you will. You take everything I give you, mortal. You are the worst negotiator I have ever met."''',
+    hz("take", '''"You are. With your whole face." {n}She shoves you, not gently, and then catches the front of your coat before you can step back, and holds on.{/n} "You are the worst liar I have ever met, for someone who lies for a living. Walk. Before the sentry comes back."''',
        c("[Walk her back along the wall.]", flags=(RAMPARTS,))),
     nar("hand", '''{n}You hold out your hand and leave it there, between you, and do nothing else. She looks at it. Then she takes it, and puts it flat against her throat, under the collar, and holds it there, and the two of you stand on the wall with the Worldwound burning low in the north until the next watch comes up the stair and goes very quickly down again.{/n}''',
         c("[Stay until she lets go.]", flags=(RAMPARTS,))),
@@ -649,7 +649,7 @@ beat(H + "beat.question", "What you want", '"You\'re frowning at me."', [
        c('"You."', "you")),
     hz("sell", '''"Nothing I have to sell." {n}She tastes it.{/n} "Everything I have is for sale, mortal. The Guild, my knives, my masters, the names on my board. Everything except me." {n}Her eyes narrow.{/n} "So you are telling me it is me you want, and you are too clever to say it. I have met a great many clever people. It never ends well for them."''',
        c("Continue", "end")),
-    hz("see", '''{n}She says nothing at first.{/n} "What I do when nobody owns me." {n}Her fingers find the buckle under her jaw.{/n} "I do not know. I have never been nobody's. I was Father's, and then Yozz's, and then my sister's cell's, and then the Guild's, a little, because I had to be." {n}She lets go of the buckle.{/n}
+    hz("see", '''{n}She says nothing at first.{/n} "What I do when nobody owns me." {n}Her fingers find the buckle under her jaw.{/n} "I do not know. I have never been nobody's. I was Father's, and then my sister's cell's, and then Yozz's, and then the Guild's, a little, because I had to be." {n}She lets go of the buckle.{/n}
 "I will let you know. You may have to wait a long time. I am told that is a thing you are good at now."''',
        c("Continue", "end")),
     hz("you", '''{n}She looks at you as if you had put a knife on the table between you, hilt towards her.{/n}
@@ -787,12 +787,12 @@ I do not write letters. I write contracts. This is not a contract. I have no ide
 You are not safe. Nobody is safe. But nobody in my city will take gold to kill you, and that is a thing no crusader has been able to say since the Wound opened. Stop eating breakfast with your back to the door.
 Still nothing from Father. I went down to the shrine in the Guild's cellar, where Yozz kept his offerings to the Lord of Beasts, and stood in front of it for an hour. I did not pray. I only wanted to see whether he would notice me standing there. He did not. I have never slept so well."''',
        c("[Pull the knife out of the bedpost.]", "knife")),
-    nar("knife", '''{n}It comes out with difficulty. It is a very good knife, better than anything in your armoury, with no maker's mark anywhere, and the handle is hollow. When you unscrew the pommel, three small glass vials slide out into your palm, each stoppered with black wax and tied with a thread of white ribbon.{/n}''',
+    nar("knife", '''{n}It comes out with difficulty. It is a very good knife, better than anything in your armoury, with no maker's mark anywhere, and the handle is hollow. When you unscrew the pommel, a second sheet slides out, rolled tight.{/n}''',
         c("Continue", "vials")),
-    hz("vials", '''{n}There is a second sheet, rolled tight inside the handle.{/n}
-"The Guild's own antidotes. One for the green, one for the black, one for the thing the Midnight Isles call *the lover's kiss*, which your priests do not know how to treat because they have never been kissed by anyone who meant it.
-Deskari's rabble do not use poison; they are too stupid. But you have people around you who are not stupid, and some of them are not yours. Do not waste these on your soldiers. If I hear you gave one away, I will send you six more. Do not let anyone touch the side of your head. H."''',
-       c("[Keep the knife, and the vials.]", flags=(LETTER1,))),
+    hz("vials", '''"This part is not for the old elf to read over your shoulder.
+Deskari's rabble do not use poison; they are too stupid. But you have people around you who are not stupid, and some of them are not yours. Eat nothing you did not see cooked. Drink nothing that was poured out of your sight. My people in your kitchens will not touch your food, because I have told them what I will do to them; I cannot say the same for everyone else's.
+Do not let anyone touch the side of your head. H."''',
+       c("[Keep the knife.]", flags=(LETTER1,))),
 ], requires=(WANTS,), forbids=(LETTER1, ALLY), delay=72)
 
 letter(H + "letter.invoice", "An invoice", [

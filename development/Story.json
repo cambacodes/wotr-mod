@@ -360729,189 +360729,6 @@
       "NativeReturnCue": "7dce8fddc72c85d49a9520a9bc1ac85f"
     },
     {
-      "Id": "horzalah.trickster.ch4.nothing",
-      "Title": "A box with a white ribbon",
-      "Owner": "Horzalah",
-      "MinChapter": 4,
-      "MaxChapter": 4,
-      "Entry": "",
-      "Nodes": [
-        {
-          "Id": "start",
-          "Speaker": "Narrator",
-          "Text": "{n}It is waiting on your camp table when you come back from the day's business, and nobody on watch saw who left it: a neat little box wrapped in black paper and tied with a white ribbon in a perfect bow. When you lift it, it weighs almost nothing. When you shake it, nothing moves.{/n}",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "canary",
-              "Set": [],
-              "Requires": [
-                "horzalah.gift_delivered"
-              ],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
-              "Next": "plain",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [
-                "horzalah.gift_delivered"
-              ],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        },
-        {
-          "Id": "canary",
-          "Speaker": "Narrator",
-          "Text": "{n}You have seen that ribbon before. You carried a box tied with it all the way down into the mines of Colyphyr, and watched a dead canary come out of it with her voice in its beak, and turn into a spear of fire, and fly at her sister's face.{/n}\n{n}You hold this one a little further from your own.{/n}",
-          "Choices": [
-            {
-              "Text": "[Untie the bow.]",
-              "Next": "open",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        },
-        {
-          "Id": "plain",
-          "Speaker": "Narrator",
-          "Text": "{n}The bow is tied the way a jeweller ties one, the ends cut on the slant so they will not fray. Whoever tied it took a great deal of trouble over something that weighs nothing.{/n}",
-          "Choices": [
-            {
-              "Text": "[Untie the bow.]",
-              "Next": "open",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        },
-        {
-          "Id": "open",
-          "Speaker": "Horzalah",
-          "Text": "{n}Inside, on a bed of black silk, there is nothing at all. Under the silk there is a card, written in a hand as sharp as a row of nails.{/n}\n\"Hepzamirah is dead in the mines of Colyphyr, and they tell me it was you who put her there. My father has already remembered that he has another daughter. My seals came off this morning. It hurt a great deal less than it did going on.\nIn gratitude, I send you exactly what you have earned from me. Look carefully. It is all there.\nHorzalah. Not Hepzamirah.\"",
-          "Choices": [
-            {
-              "Text": "[Look carefully.]",
-              "Next": "careful",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "[Keep the box, and the ribbon.]",
-              "Next": "kept",
-              "Set": [
-                "horzalah.trickster.box_kept"
-              ],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "[Put the whole thing in the stove.]",
-              "Next": "burned",
-              "Set": [
-                "horzalah.trickster.box_burned"
-              ],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Horzalah"
-        },
-        {
-          "Id": "careful",
-          "Speaker": "Narrator",
-          "Text": "{n}You look carefully. You lift the silk and look under it, and turn the box over, and run a thumb along the seams. It is very good black silk, the kind the Midnight Isles sell by the finger's width, and it is wrapped around nothing, perfectly.{/n}\n{n}On the back of the card, in a different ink and a hurried hand, as if it had been added at the door:{/n} \"You looked. I knew you would. Keep the ribbon; I have plenty.\"",
-          "Choices": [
-            {
-              "Text": "[Keep the box, and the ribbon.]",
-              "Next": "kept",
-              "Set": [
-                "horzalah.trickster.box_kept"
-              ],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "[Put the whole thing in the stove.]",
-              "Next": "burned",
-              "Set": [
-                "horzalah.trickster.box_burned"
-              ],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        },
-        {
-          "Id": "kept",
-          "Speaker": "Narrator",
-          "Text": "{n}You put the empty box in the bottom of your pack, under the maps, with the ribbon tied round it again. It is a ridiculous thing to carry to war. It takes up almost no room.{/n}",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": null,
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        },
-        {
-          "Id": "burned",
-          "Speaker": "Narrator",
-          "Text": "{n}The paper goes up at once. The silk takes longer and smells of the Isles, of incense and something sweeter underneath. The ribbon does not burn at all. You find it in the ashes in the morning, white and whole, and throw it out with them.{/n}",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": null,
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        }
-      ],
-      "Requires": [
-        "horzalah.met_q2",
-        "horzalah.gift_delivered"
-      ],
-      "Forbids": [
-        "horzalah.trickster.box_kept",
-        "horzalah.trickster.box_burned"
-      ],
-      "DelayHours": 24,
-      "Optional": true,
-      "Relationship": "horzalah",
-      "Remote": true,
-      "Kind": "letter",
-      "Chapters": [
-        4
-      ],
-      "Sender": "Horzalah"
-    },
-    {
       "Id": "horzalah.trickster.ch5.nothing",
       "Title": "A box with a white ribbon",
       "Owner": "Horzalah",
@@ -361082,7 +360899,6 @@
       "Forbids": [
         "horzalah.trickster.box_kept",
         "horzalah.trickster.box_burned",
-        "horzalah.trickster.ch4.nothing",
         "horzalah.met_q3_a",
         "horzalah.met_q3_b",
         "horzalah.trickster.primed",
@@ -363426,7 +363242,7 @@
         {
           "Id": "decided",
           "Speaker": "Horzalah",
-          "Text": "\"Two days,\" {n}she says.{/n} \"I have spent two days deciding whether you are a buyer. I have watched how you speak to your soldiers, and to your quartermaster, and to that grovelling priest who still wants to put his hands on your head. I have had my people watch the rest.\"\n\"You are not a buyer. You are a clumsy {mf|man|woman} who has never been shown a thing and told to wait. That can be mended. Most things can, if you do not let a priest near them.\"",
+          "Text": "\"A day and a night,\" {n}she says.{/n} \"I have spent a day and a night deciding whether you are a buyer. I have watched how you speak to your soldiers, and to your quartermaster, and to that grovelling priest who still wants to put his hands on your head. I have had my people watch the rest.\"\n\"You are not a buyer. You are a clumsy {mf|man|woman} who has never been shown a thing and told to wait. That can be mended. Most things can, if you do not let a priest near them.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -363510,7 +363326,7 @@
         "horzalah.committed",
         "horzalah.trickster.left_free"
       ],
-      "DelayHours": 48,
+      "DelayHours": 24,
       "Optional": false,
       "Relationship": "horzalah",
       "Chapters": [
@@ -363549,7 +363365,7 @@
         {
           "Id": "decided",
           "Speaker": "Horzalah",
-          "Text": "\"Two days,\" {n}she says.{/n} \"I have spent two days deciding whether you are a buyer. I have watched how you speak to your soldiers, and to your quartermaster, and to that grovelling priest who still wants to put his hands on your head. I have had my people watch the rest.\"\n\"You are not a buyer. You are a clumsy {mf|man|woman} who has never been shown a thing and told to wait. That can be mended. Most things can, if you do not let a priest near them.\"",
+          "Text": "\"A day and a night,\" {n}she says.{/n} \"I have spent a day and a night deciding whether you are a buyer. I have watched how you speak to your soldiers, and to your quartermaster, and to that grovelling priest who still wants to put his hands on your head. I have had my people watch the rest.\"\n\"You are not a buyer. You are a clumsy {mf|man|woman} who has never been shown a thing and told to wait. That can be mended. Most things can, if you do not let a priest near them.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -363633,7 +363449,7 @@
         "horzalah.committed",
         "horzalah.trickster.left_free"
       ],
-      "DelayHours": 48,
+      "DelayHours": 24,
       "Optional": false,
       "RequiresAnyGroups": [
         [
@@ -364047,9 +363863,9 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}A certain dwarf never did get his pipe back. It hung at Horzalah's throat on a white ribbon for years, and he would raise his new one to her across any room they happened to share, and she would touch the old one, and neither of them ever said a word about it.{/n}",
+              "Text": "{n}A certain dwarf never did get his whistle back. It hung at Horzalah's throat on a white ribbon for years, and whenever he came into a room where she was, she would lift it to her lips, and not blow it, and neither of them ever said a word about it.{/n}",
               "Requires": [
-                "horzalah.trickster.beat.pipe_taken"
+                "horzalah.trickster.beat.whistle_taken"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -364549,7 +364365,7 @@
         {
           "Id": "start",
           "Speaker": "Greybor",
-          "Text": "{n}Greybor fills his pipe slowly, with the particular care of a man who has decided not to look at the side of your head.{/n}\n\"I have seen a great many deals struck over a beaten enemy, Commander. Gold for a life. A name for a life. Once, a very good horse.\" {n}He tamps the bowl.{/n} \"I have never before seen the loser walk off with a piece of the winner, wrapped with a bow, and the winner pleased about it.\"\n\"I saw nothing on that road, of course. I value my reputation too much to have seen anything. But if anyone ever asks me who took the Knight Commander's ear, I will tell them it was Horzalah, and that she was magnificent, and I will charge them for the story.\"",
+          "Text": "{n}Greybor runs a whetstone along a blade, slowly, with the particular care of a man who has decided not to look at the side of your head.{/n}\n\"I have seen a great many deals struck over a beaten enemy, Commander. Gold for a life. A name for a life. Once, a very good horse.\" {n}He turns the blade to the light.{/n} \"I have never before seen the loser walk off with a piece of the winner, wrapped with a bow, and the winner pleased about it.\"\n\"I saw nothing on that road, of course. I value my reputation too much to have seen anything. But if anyone ever asks me who took the Knight Commander's ear, I will tell them it was Horzalah, and that she was magnificent, and I will charge them for the story.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -364592,7 +364408,7 @@
         {
           "Id": "start",
           "Speaker": "Greybor",
-          "Text": "{n}Greybor studies the side of your head without a word, the way he looks at a job someone else botched.{/n}\n\"Horzalah. The one who put a price on you in Alushinyrra.\" {n}He lights his pipe.{/n} \"They say in the taverns she took that and let you live. They say it like a song. Somebody in that Guild is paying for the song, Commander, and it is not you.\"\n\"A professional takes the head, or takes nothing. An ear is a signature.\" {n}He puffs.{/n} \"I would very much like to know what you bought with it. No, don't tell me. I would only have to charge you for keeping quiet.\"",
+          "Text": "{n}Greybor studies the side of your head without a word, the way he looks at a job someone else botched.{/n}\n\"Horzalah. The one who put a price on you in Alushinyrra.\" {n}He sets down the whetstone.{/n} \"They say in the taverns she took that and let you live. They say it like a song. Somebody in that Guild is paying for the song, Commander, and it is not you.\"\n\"A professional takes the head, or takes nothing. An ear is a signature.\" {n}He picks the whetstone up again.{/n} \"I would very much like to know what you bought with it. No, don't tell me. I would only have to charge you for keeping quiet.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -364740,8 +364556,7 @@
       ],
       "Forbids": [
         "greybor.dead",
-        "greybor.kicked_out",
-        "horzalah.trickster.beat.pipe_taken"
+        "greybor.kicked_out"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -364804,7 +364619,7 @@
         {
           "Id": "start",
           "Speaker": "Greybor",
-          "Text": "{n}Greybor looks at the new mortar on your door frame, where the guards took an axe to it to get in, and then at the side of your head.{/n}\n\"She came in person. To your bedchamber. Alone.\" {n}He shakes his head slowly, with the pained expression of a craftsman looking at somebody else's joinery.{/n}\n\"A master of the Guild. Doing her own work, at night, without a second knife on the stair.\" {n}He lights his pipe.{/n} \"And you let her walk out with a piece of you. I have no idea which of you is the bigger amateur, Commander, and I would pay good money to find out.\"",
+          "Text": "{n}Greybor looks at the new mortar on your door frame, where the guards took an axe to it to get in, and then at the side of your head.{/n}\n\"She came in person. To your bedchamber. Alone.\" {n}He shakes his head slowly, with the pained expression of a craftsman looking at somebody else's joinery.{/n}\n\"A master of the Guild. Doing her own work, at night, without a second knife on the stair.\" {n}He shakes his head again.{/n} \"And you let her walk out with a piece of you. I have no idea which of you is the bigger amateur, Commander, and I would pay good money to find out.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -366201,7 +366016,7 @@
         {
           "Id": "start",
           "Speaker": "Horzalah",
-          "Text": "{n}She is. Across the street, by the tavern door, a dwarf with a pipe is watching her back, with exactly the same expression.{/n}\n\"I am watching the dwarf,\" {n}she agrees.{/n} \"The dwarf is watching me. It is a professional courtesy. If either of us stopped, the other would take it as an insult.\"",
+          "Text": "{n}She is. Across the street, by the tavern door, a dwarf with a whetstone and a blade across his knees is watching her back, with exactly the same expression.{/n}\n\"I am watching the dwarf,\" {n}she agrees.{/n} \"The dwarf is watching me. It is a professional courtesy. If either of us stopped, the other would take it as an insult.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -366242,7 +366057,7 @@
         {
           "Id": "betrayed",
           "Speaker": "Horzalah",
-          "Text": "\"He took my contract on you, and my gold, and my confidence, and he led me to the Dry Crossroads by the nose, and at the end of it he stood over me filling his pipe and told me my three mistakes, in order, like a schoolmaster.\" {n}Her teeth show.{/n} \"I have never been so humiliated in my life, and my life has been one long humiliation. I want his head, mortal.\"",
+          "Text": "\"He took my contract on you, and my gold, and my confidence, and he led me to the Dry Crossroads by the nose, and at the end of it he stood over me and told me my three mistakes, in order, like a schoolmaster.\" {n}Her teeth show.{/n} \"I have never been so humiliated in my life, and my life has been one long humiliation. I want his head, mortal.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -366309,7 +366124,7 @@
               "Abort": false
             },
             {
-              "Text": "[Trickster] \"I'll give you something better. His pipe.\"",
+              "Text": "[Trickster] \"I'll give you something better. His whistle.\"",
               "Next": "pipe",
               "Set": [],
               "Requires": [],
@@ -366340,7 +366155,7 @@
         {
           "Id": "him",
           "Speaker": "Horzalah",
-          "Text": "{n}She looks across at Greybor. Greybor, who has heard every word, raises his pipe to her in a small salute.{/n}\n\"He would enjoy it.\" {n}She sounds almost wistful.{/n} \"That is the trouble. He would enjoy it, and I would probably lose, and then he would charge you for the cleaning.\" {n}She turns back to the Storyteller's shelves.{/n} \"Another time. When I am less tired and he is less smug.\"",
+          "Text": "{n}She looks across at Greybor. Greybor, who has heard every word, touches two fingers to his brow in a small salute.{/n}\n\"He would enjoy it.\" {n}She sounds almost wistful.{/n} \"That is the trouble. He would enjoy it, and I would probably lose, and then he would charge you for the cleaning.\" {n}She turns back to the Storyteller's shelves.{/n} \"Another time. When I am less tired and he is less smug.\"",
           "Choices": [
             {
               "Text": "[Leave them watching each other.]",
@@ -366358,7 +366173,7 @@
         {
           "Id": "pipe",
           "Speaker": "Narrator",
-          "Text": "{n}Greybor's pipe is on the step beside him while he refills his pouch. You walk across the street to ask him about the weather in the Worldwound, which he tells you at some length, and when you come back the pipe is in your sleeve and he has not yet noticed that his hand is closing on nothing.{/n}\n{n}Horzalah takes it from you with two fingers, as if it were something dead she had been given to identify.{/n}",
+          "Text": "{n}Greybor keeps a whistle in his coat, a little thing of dark metal chased with runes, the one that calls his hidden friends out of the dark. You walk across the street to ask him about the weather in the Worldwound, which he tells you at some length, and when you come back the whistle is in your sleeve and his coat pocket is a little lighter than it was.{/n}\n{n}Horzalah takes it from you with two fingers, as if it were something dead she had been given to identify.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -366374,14 +366189,14 @@
         {
           "Id": "pipe2",
           "Speaker": "Horzalah",
-          "Text": "\"His pipe.\" {n}She turns it over. Then she laughs, properly, loud enough that Greybor looks up, looks at his empty hand, looks at her, and goes very still.{/n}\n\"You stole the dwarf's pipe for me. In the street. In front of him.\" {n}She puts it inside her collar, against her throat.{/n} \"It is the stupidest gift anyone has ever given me, and I would not trade it for his head. He will be looking for it for a week. He will know exactly where it is, and he will never ask for it back, because then he would have to admit I have it.\"",
+          "Text": "\"His whistle.\" {n}She turns it over, runes and all. Then she laughs, properly, loud enough that Greybor looks up, pats his coat, looks at her, and goes very still.{/n}\n\"You stole the dwarf's whistle for me. The thing that springs his traps. In the street, in front of him.\" {n}She puts it inside her collar, against her throat.{/n} \"It is the stupidest gift anyone has ever given me, and I would not trade it for his head. The next time he lays a trap for me, he will have to whistle it up by hand. He will be looking for it for a week. He will know exactly where it is, and he will never ask for it back, because then he would have to admit I have it.\"",
           "Choices": [
             {
               "Text": "[Leave before Greybor crosses the street.]",
               "Next": null,
               "Set": [
                 "horzalah.trickster.beat.dwarf_heard",
-                "horzalah.trickster.beat.pipe_taken"
+                "horzalah.trickster.beat.whistle_taken"
               ],
               "Requires": [],
               "Forbids": [],
@@ -367877,7 +367692,8 @@
       "Requires": [
         "trickster.ever",
         "horzalah.trickster.wants_heard",
-        "horzalah.trickster.beat.sister_heard"
+        "horzalah.trickster.beat.sister_heard",
+        "baphomet.parley.latched"
       ],
       "Forbids": [
         "horzalah.closed",
@@ -368145,10 +367961,10 @@
         {
           "Id": "end",
           "Speaker": "Horzalah",
-          "Text": "{n}At the corner tower she stops, and puts her back to the parapet, and looks at you in the red light, saying nothing, until the sentry on the next tower has turned his back twice.{/n}\n\"I am not going to tell you that I love you,\" {n}she says at last.{/n} \"Baphomet's daughters do not have the word. We have *mine*, and we have *kept*, and we have *not for sale*. You may have all three.\"",
+          "Text": "{n}At the corner tower she stops, and puts her back to the parapet, and looks at you in the red light, saying nothing, until the sentry on the next tower has turned his back twice.{/n}\n\"When Yozz walked me through his parties on the leash, I made a list,\" {n}she says at last, as if it were being dragged out of her.{/n} \"Everyone who looked at me. I meant to kill them all, one day. I have killed most of them.\" {n}Her jaw tightens.{/n} \"Last week I started another list. It has one name on it, and I do not know what it is for, and I hate it, and I will not cross it off. Do not ask me whose name. Do not *smile*, mortal.\"",
           "Choices": [
             {
-              "Text": "\"I'll take them.\"",
+              "Text": "\"I'm not smiling.\"",
               "Next": "take",
               "Set": [],
               "Requires": [],
@@ -368169,7 +367985,7 @@
         {
           "Id": "take",
           "Speaker": "Horzalah",
-          "Text": "\"You will take them.\" {n}She laughs, very low.{/n} \"Of course you will. You take everything I give you, mortal. You are the worst negotiator I have ever met.\"",
+          "Text": "\"You are. With your whole face.\" {n}She shoves you, not gently, and then catches the front of your coat before you can step back, and holds on.{/n} \"You are the worst liar I have ever met, for someone who lies for a living. Walk. Before the sentry comes back.\"",
           "Choices": [
             {
               "Text": "[Walk her back along the wall.]",
@@ -368580,7 +368396,7 @@
         {
           "Id": "see",
           "Speaker": "Horzalah",
-          "Text": "{n}She says nothing at first.{/n} \"What I do when nobody owns me.\" {n}Her fingers find the buckle under her jaw.{/n} \"I do not know. I have never been nobody's. I was Father's, and then Yozz's, and then my sister's cell's, and then the Guild's, a little, because I had to be.\" {n}She lets go of the buckle.{/n}\n\"I will let you know. You may have to wait a long time. I am told that is a thing you are good at now.\"",
+          "Text": "{n}She says nothing at first.{/n} \"What I do when nobody owns me.\" {n}Her fingers find the buckle under her jaw.{/n} \"I do not know. I have never been nobody's. I was Father's, and then my sister's cell's, and then Yozz's, and then the Guild's, a little, because I had to be.\" {n}She lets go of the buckle.{/n}\n\"I will let you know. You may have to wait a long time. I am told that is a thing you are good at now.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -369444,7 +369260,7 @@
         {
           "Id": "knife",
           "Speaker": "Narrator",
-          "Text": "{n}It comes out with difficulty. It is a very good knife, better than anything in your armoury, with no maker's mark anywhere, and the handle is hollow. When you unscrew the pommel, three small glass vials slide out into your palm, each stoppered with black wax and tied with a thread of white ribbon.{/n}",
+          "Text": "{n}It comes out with difficulty. It is a very good knife, better than anything in your armoury, with no maker's mark anywhere, and the handle is hollow. When you unscrew the pommel, a second sheet slides out, rolled tight.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -369460,10 +369276,10 @@
         {
           "Id": "vials",
           "Speaker": "Horzalah",
-          "Text": "{n}There is a second sheet, rolled tight inside the handle.{/n}\n\"The Guild's own antidotes. One for the green, one for the black, one for the thing the Midnight Isles call *the lover's kiss*, which your priests do not know how to treat because they have never been kissed by anyone who meant it.\nDeskari's rabble do not use poison; they are too stupid. But you have people around you who are not stupid, and some of them are not yours. Do not waste these on your soldiers. If I hear you gave one away, I will send you six more. Do not let anyone touch the side of your head. H.\"",
+          "Text": "\"This part is not for the old elf to read over your shoulder.\nDeskari's rabble do not use poison; they are too stupid. But you have people around you who are not stupid, and some of them are not yours. Eat nothing you did not see cooked. Drink nothing that was poured out of your sight. My people in your kitchens will not touch your food, because I have told them what I will do to them; I cannot say the same for everyone else's.\nDo not let anyone touch the side of your head. H.\"",
           "Choices": [
             {
-              "Text": "[Keep the knife, and the vials.]",
+              "Text": "[Keep the knife.]",
               "Next": null,
               "Set": [
                 "horzalah.trickster.letter.first_read"

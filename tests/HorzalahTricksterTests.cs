@@ -112,7 +112,6 @@ internal static class HorzalahTricksterTests
         var pages = story.Scenes.Where(s => s.Relationship == "horzalah" && s.Owner == "HorzalahEpilogue").ToArray();
         var reactions = story.Scenes.Where(s => s.Relationship == "horzalah" && s.Reaction).ToArray();
         var scar = S(P + "ch4.scar");
-        var box = S(P + "ch4.nothing");
         var box5 = S(P + "ch5.nothing");
         var mercy = S(P + "mercy.gift");
         var unmet = S(P + "unmet.knife");
@@ -170,7 +169,7 @@ internal static class HorzalahTricksterTests
         check(!own.Any(s => s.Nodes.Any(n => n.Choices.Any(c => c.Set.Any(f => f.StartsWith("trickster.wmt.use.", StringComparison.Ordinal))))),
             "Horzalah's device spends a Word Made True (the budget is full: a con, not a word made true).");
         // Path fit (v1): the two Chapter 4 build-up beats carry no Trickster gate; everything after the device does.
-        var buildUp = new[] { scar, box, box5 };
+        var buildUp = new[] { scar, box5 };
         check(buildUp.All(b => !b.Requires.Any(f => f.StartsWith("trickster", StringComparison.Ordinal)))
               && own.Concat(reactions).Concat(pages).Where(s => !buildUp.Contains(s)).All(s => s.Requires.Contains("trickster") || s.Requires.Contains("trickster.ever")),
             "Path fit: a build-up beat is Trickster-gated, or a device-side scene is not.");
@@ -180,10 +179,10 @@ internal static class HorzalahTricksterTests
         check(Avail(scar, ch4) && scar.AnswerLists.SequenceEqual(new[] { YozzList }) && scar.NativeReturnCue == ScarCue
               && Take(scar, ch4, "who", 0, P + "scar_noted").Has(P + "scar_noted") && Ch(scar, "look", 2).Abort,
             "The Chapter 4 scar beat is not inline on YozzDying's list, returning to Cue_0049, with a silent abort.");
-        check(Avail(box, Later(story, World(story, 4, "horzalah.met_q2", "horzalah.gift_delivered"), 24)) && Rules.IsRemote(box) && box.Kind == "letter"
-              && !Avail(box, Later(story, World(story, 4, "horzalah.met_q2"), 24)) && Avail(box5, World(story, 5, "horzalah.met_q2"))
-              && !Avail(box5, World(story, 5, "horzalah.met_q2", P + "ch4.nothing")) && !Avail(box5, World(story, 5, "horzalah.met_q2", "horzalah.met_q3_a")),
-            "The empty box does not arrive after the canary (Chapter 4) or at the start of Chapter 5, once, before the ambush.");
+        check(Avail(box5, World(story, 5, "horzalah.met_q2")) && Rules.IsRemote(box5) && box5.Kind == "letter" && box5.MinChapter == 5
+              && !Avail(box5, World(story, 5, "horzalah.met_q2", "horzalah.met_q3_a")) && !Avail(box5, World(story, 5, "horzalah.met_q2", Primed))
+              && !story.Scenes.Any(s => s.Relationship == "horzalah" && Rules.IsRemote(s) && s.MinChapter <= 4),
+            "The empty box does not arrive at the start of Chapter 5, once, before the ambush, or a Horzalah page arrives in Chapter 4.");
 
         // Trk_Horzalah_Mercy: the guess, the story, her knife; the Guild kept; her gift; the collar; the chamber.
         var m = World(story, 5, "trickster", "trickster.ever");
@@ -260,8 +259,8 @@ internal static class HorzalahTricksterTests
         check(dismissed.Has("horzalah.dismissed.latched") && Avail(late, Later(story, dismissed, 24)),
             "Trk_Horzalah_RefusedLate: the native dismissal does not reach the night.");
         var declined = Take(collar, Later(story, Take(gift, Later(story, Take(kept, Later(story, lateYes, 48), "wants", 0, Wants), 48), "decline_end", 0, Tested), 24), "buyer", 0, Declined);
-        check(!declined.Has(Committed) && !Avail(move, Later(story, declined, 24)) && Avail(move, Later(story, declined, 48)),
-            "Trk_Horzalah_RefusedLate: her soft no does not hold two days before she moves.");
+        check(!declined.Has(Committed) && !Avail(move, Later(story, declined, 12)) && Avail(move, Later(story, declined, 24)),
+            "Trk_Horzalah_RefusedLate: her soft no does not hold a day before she moves.");
         check(Take(move, Later(story, declined, 48), "yes", 0, Committed).Has(Committed) && Take(move, Later(story, declined, 48), "go", 0, LeftFree).Has(LeftFree)
               && Take(collar, Later(story, Take(gift, Later(story, wants, 48), "decline_end", 0, Tested), 24), "brand", 0, Declined).Has(Declined),
             "Trk_Horzalah_RefusedLate: asking whose mark it is is not her soft no, or her own move is not the yes.");
@@ -374,7 +373,17 @@ internal static class HorzalahTricksterTests
                 }
             }
         }
-        var road = World(story, 5, "trickster", "trickster.ever", "greybor.in_party", "horzalah.met_q3_a", "baphomet.named_horzalah",
+        // Her cell in the Ivory Labyrinth is talked of only with a Commander who has been in her father's prison.
+        var labyrinth = beats.Single(s => s.Id == P + "beat.labyrinth");
+        check(labyrinth.Requires.Contains("baphomet.parley.latched")
+              && !Avail(labyrinth, Later(story, World(story, 5, "trickster.ever", Wants, P + "beat.father_heard", P + "beat.sister_heard"), 48)),
+            "The Labyrinth beat plays for a Commander who never walked the Labyrinth.");
+        // The longest road after the coronation (dismissed or refused, the Guild circling, her gift, the soft no, her move)
+        // reaches the commit within 168 hours.
+        check(late.DelayHours + kept.DelayHours + gift.DelayHours + collar.DelayHours + move.DelayHours <= 168
+              && giftNight.DelayHours == gift.DelayHours && moveNight.DelayHours == move.DelayHours && collarNight.DelayHours == collar.DelayHours,
+            "The refusal road to her commit is longer than 168 hours.");
+        var road = World(story, 5, "trickster", "trickster.ever", "greybor.in_party", "horzalah.met_q3_a", "baphomet.named_horzalah", "baphomet.parley",
             "horzalah.gift_delivered", "hepzamirah.trickster.returned", "horzalah.met_q2", P + "scar_noted", P + "cost.late");
         Play(road, 5, 20, Ally, LeftFree, Declined, P + "threatened");
         Play(World(story, 5, "trickster", "trickster.ever", Primed, Ear, Returned, Wants, Ally), 5, 6);

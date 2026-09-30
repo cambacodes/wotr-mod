@@ -96,7 +96,7 @@ CHAMBER = H + "chamber_seen"
 MORNING = H + "morning_seen"
 # Keepsakes from the courtship on her presence (horzalah_guild), read by the pages and her Last Call coda.
 P_KNIFE = H + "beat.knife_won"         # the Commander took her knife off her in the lesson: the one that cut the ear
-P_PIPE = H + "beat.pipe_taken"         # the dwarf's pipe, stolen for her in the street
+P_WHISTLE = H + "beat.whistle_taken"   # the dwarf's rune whistle (Horzalah_Ambush/Cue_0057), stolen for her in the street
 P_RIBBON = H + "beat.ribbon_tied"      # the Commander learned her bow, and ties it badly
 LATE_COMMITTED = H + "late_committed"  # R2-6: she said what she wants; the page after the Threshold answers it
 
@@ -214,14 +214,10 @@ Horzalah. Not Hepzamirah."''',
         c("Continue")),
     nar("burned", '''{n}The paper goes up at once. The silk takes longer and smells of the Isles, of incense and something sweeter underneath. The ribbon does not burn at all. You find it in the ashes in the morning, white and whole, and throw it out with them.{/n}''',
         c("Continue"))]
-# In Chapter 4 once the canary has reached her sister in Colyphyr; otherwise at the first rest of Chapter 5, before the ambush
-# (Greybor's third quest waits for Iz). Hepzamirah is dead in Colyphyr by then on every path; no hepzamirah.* key is read.
-SCENES.append(scene(H + "ch4.nothing", "A box with a white ribbon", "Horzalah", 4, "", copy.deepcopy(BOX_NODES),
-    requires=(MET_Q2, CANARY), forbids=(BOX_KEPT, BOX_BURNED), delay=24, last=4, Relationship=REL, Remote=True,
-    Kind="letter", Chapters=[4], optional=True))
-tag(H + "ch4.nothing", "N-all")
+# At the first rest of Chapter 5, before the ambush (Greybor's third quest waits for Iz): Hepzamirah is dead in Colyphyr by
+# then on every path, so no hepzamirah.* key is read, and her rest budget allows no Chapter 4 letter.
 SCENES.append(scene(H + "ch5.nothing", "A box with a white ribbon", "Horzalah", 5, "", copy.deepcopy(BOX_NODES),
-    requires=(MET_Q2,), forbids=(BOX_KEPT, BOX_BURNED, H + "ch4.nothing", MET_A, MET_B, PRIMED, REFUSED, CLOSED), delay=0, last=5,
+    requires=(MET_Q2,), forbids=(BOX_KEPT, BOX_BURNED, MET_A, MET_B, PRIMED, REFUSED, CLOSED), delay=0, last=5,
     Relationship=REL, Remote=True, Kind="letter", Chapters=[5], optional=True))
 tag(H + "ch5.nothing", "N-all")
 
@@ -609,7 +605,7 @@ presence(H + "commit.her_move", "Her move", '"Well, have you decided?"',
 {n}Today she is back by the Storyteller's shelves. She does not look up when you come, and she does not answer at once. She finishes the spine she is reading, and the one after it.{/n}''',
        c("Continue", "decided")),
     [
-        hz("decided", '''"Two days," {n}she says.{/n} "I have spent two days deciding whether you are a buyer. I have watched how you speak to your soldiers, and to your quartermaster, and to that grovelling priest who still wants to put his hands on your head. I have had my people watch the rest."
+        hz("decided", '''"A day and a night," {n}she says.{/n} "I have spent a day and a night deciding whether you are a buyer. I have watched how you speak to your soldiers, and to your quartermaster, and to that grovelling priest who still wants to put his hands on your head. I have had my people watch the rest."
 "You are not a buyer. You are a clumsy {mf|man|woman} who has never been shown a thing and told to wait. That can be mended. Most things can, if you do not let a priest near them."''',
            c("Continue", "move")),
         hz("move", '''{n}She puts the book back on the shelf, spine out, exactly where it was. Then she turns and takes your hand, without asking, and draws it up under the edge of her collar, and holds it there against the band of smooth skin, where the Storyteller cannot see and everyone else can guess.{/n}
@@ -623,7 +619,7 @@ presence(H + "commit.her_move", "Her move", '"Well, have you decided?"',
 "Nobody has ever sent me home before," {n}she says.{/n} "They sold me, and they kept me, and they locked me up. Nobody ever said *go home*." {n}She buckles her collar a notch tighter.{/n} "Very well. I am going. Remember that I chose to."''',
            c("[Watch her go.]", flags=(LEFT_FREE,))),
     ],
-    requires=(DECLINED,), forbids=(COMMITTED, LEFT_FREE), delay=48,
+    requires=(DECLINED,), forbids=(COMMITTED, LEFT_FREE), delay=24,
     night_subs=(("She puts the book back on the shelf, spine out, exactly where it was. Then she turns and takes your hand, without asking, and draws it up under the edge of her collar, and holds it there against the band of smooth skin, where the Storyteller cannot see and everyone else can guess.",
                  "She puts your letter back on the pile, face down, exactly where it was. Then she stands, and takes your hand, without asking, and draws it up under the edge of her collar, and holds it there against the band of smooth skin."),),
     night=hz("start", '''{n}Yesterday there was a knife in the lintel of your door, high up, pinning a note: *I am deciding. Do not come looking for me. Do not reach for anything.*{/n}
@@ -705,7 +701,7 @@ SCENES.append(scene(H + "epilogue.together", "", "HorzalahEpilogue", 6, "", [
                     p("{n}On the night before the Threshold there was a knife in the pole of the Commander's tent, above the Commander's head, pinning a sheet of black paper tied with a badly tied bow. The bets in her hall stood at eleven days, it said. She had placed none. She had bought up, through third parties, every wager that the Commander would not come back, so that she would be very rich and very angry, or a great many demons would owe her money and never know why. *Come back with everything else attached. I have one piece of you. I do not intend to settle for it.*{/n}"),
                     p("{n}She wore a white ribbon at her collar in her hall every day of her reign, tied in a bow that was very slightly lopsided. No master of the Guild ever mentioned it. The Commander tied it, when the Commander was there, and practised on the maps when not.{/n}", requires=(P_RIBBON,)),
                     p("{n}The Commander carried a very thin knife with no maker's mark through the rest of the war and never once cleaned it. Horzalah said that was the most romantic thing anyone had ever done for her, and that she would kill anyone who repeated it.{/n}", requires=(P_KNIFE,)),
-                    p("{n}A certain dwarf never did get his pipe back. It hung at Horzalah's throat on a white ribbon for years, and he would raise his new one to her across any room they happened to share, and she would touch the old one, and neither of them ever said a word about it.{/n}", requires=(P_PIPE,)),
+                    p("{n}A certain dwarf never did get his whistle back. It hung at Horzalah's throat on a white ribbon for years, and whenever he came into a room where she was, she would lift it to her lips, and not blow it, and neither of them ever said a word about it.{/n}", requires=(P_WHISTLE,)),
                     p("{n}She never said what she had come to the Commander's room to do on the night she came alone. She did not have to. She kept the knife she had brought, and it hung over the bed in her chamber, and the Commander slept beneath it more soundly than anywhere else in the world.{/n}", requires=(CAME,))))],
     requires=("trickster.ever", COMMITTED), forbids=(CLOSED, "sacrifice"), **SAC, **EP))
 tag(H + "epilogue.together", "T")
@@ -768,16 +764,16 @@ WEN_GUARD = dict(forbids=("wenduag.killed", "wenduag.kicked_out"))
 WEN_IN = "wenduag.in_party"
 
 SCENES.append(reaction("Greybor", H + "react.greybor_witness", ("trickster.ever", GREY_IN, EAR, MET_A),
-    '''{n}Greybor fills his pipe slowly, with the particular care of a man who has decided not to look at the side of your head.{/n}
-"I have seen a great many deals struck over a beaten enemy, Commander. Gold for a life. A name for a life. Once, a very good horse." {n}He tamps the bowl.{/n} "I have never before seen the loser walk off with a piece of the winner, wrapped with a bow, and the winner pleased about it."
+    '''{n}Greybor runs a whetstone along a blade, slowly, with the particular care of a man who has decided not to look at the side of your head.{/n}
+"I have seen a great many deals struck over a beaten enemy, Commander. Gold for a life. A name for a life. Once, a very good horse." {n}He turns the blade to the light.{/n} "I have never before seen the loser walk off with a piece of the winner, wrapped with a bow, and the winner pleased about it."
 "I saw nothing on that road, of course. I value my reputation too much to have seen anything. But if anyone ever asks me who took the Knight Commander's ear, I will tell them it was Horzalah, and that she was magnificent, and I will charge them for the story."''',
     answer_list=GREYBOR_LIST, chapter=5, last=5, entry='"About Horzalah."', portrait="Greybor", **GREY_GUARD))
 tag(H + "react.greybor_witness", "T")
 
 SCENES.append(reaction("Greybor", H + "react.greybor_ear", ("trickster.ever", GREY_IN, EAR),
     '''{n}Greybor studies the side of your head without a word, the way he looks at a job someone else botched.{/n}
-"Horzalah. The one who put a price on you in Alushinyrra." {n}He lights his pipe.{/n} "They say in the taverns she took that and let you live. They say it like a song. Somebody in that Guild is paying for the song, Commander, and it is not you."
-"A professional takes the head, or takes nothing. An ear is a signature." {n}He puffs.{/n} "I would very much like to know what you bought with it. No, don't tell me. I would only have to charge you for keeping quiet."''',
+"Horzalah. The one who put a price on you in Alushinyrra." {n}He sets down the whetstone.{/n} "They say in the taverns she took that and let you live. They say it like a song. Somebody in that Guild is paying for the song, Commander, and it is not you."
+"A professional takes the head, or takes nothing. An ear is a signature." {n}He picks the whetstone up again.{/n} "I would very much like to know what you bought with it. No, don't tell me. I would only have to charge you for keeping quiet."''',
     answer_list=GREYBOR_LIST, chapter=5, last=5, entry='"About Horzalah."', portrait="Greybor",
     forbids=(*GREY_GONE, MET_A)))
 tag(H + "react.greybor_ear", "T")
@@ -801,7 +797,7 @@ SCENES.append(reaction("Greybor", H + "react.greybor_morning", ("trickster.ever"
     '''{n}Greybor does not look up from the whetstone.{/n}
 "Word came up the Wound roads from Alushinyrra, Commander. They say the masters of the Assassins' Guild stood up from their tables when you came down the main stair of her hall, and that nobody in that Guild has stood up for anyone in a hundred years." {n}The stone scrapes.{/n}
 "I have been inside that hall. I know those tables. They do not stand for anyone, not for the Lady in Shadow's own messengers." {n}He finally looks at you.{/n} "Whatever you did in there, do not ever do it to me. I would not survive the embarrassment."''',
-    answer_list=GREYBOR_LIST, chapter=5, last=6, entry='"About Horzalah."', portrait="Greybor", forbids=(*GREY_GONE, P_PIPE)))
+    answer_list=GREYBOR_LIST, chapter=5, last=6, entry='"About Horzalah."', portrait="Greybor", forbids=GREY_GONE))
 tag(H + "react.greybor_morning", "T")
 
 SCENES.append(reaction("Wenduag", H + "react.wenduag_ally", ("trickster.ever", WEN_IN, ALLY),
@@ -815,7 +811,7 @@ tag(H + "react.wenduag_ally", "T")
 SCENES.append(reaction("Greybor", H + "react.greybor_amateur", ("trickster.ever", GREY_IN, CAME),
     '''{n}Greybor looks at the new mortar on your door frame, where the guards took an axe to it to get in, and then at the side of your head.{/n}
 "She came in person. To your bedchamber. Alone." {n}He shakes his head slowly, with the pained expression of a craftsman looking at somebody else's joinery.{/n}
-"A master of the Guild. Doing her own work, at night, without a second knife on the stair." {n}He lights his pipe.{/n} "And you let her walk out with a piece of you. I have no idea which of you is the bigger amateur, Commander, and I would pay good money to find out."''',
+"A master of the Guild. Doing her own work, at night, without a second knife on the stair." {n}He shakes his head again.{/n} "And you let her walk out with a piece of you. I have no idea which of you is the bigger amateur, Commander, and I would pay good money to find out."''',
     answer_list=GREYBOR_LIST, chapter=5, last=6, entry='"About Horzalah."', portrait="Greybor", forbids=(*GREY_GONE, MET_A, MET_B)))
 tag(H + "react.greybor_amateur", "T")
 
