@@ -221,19 +221,24 @@ physical("konomi.trickster.dismissed.private", "Off the record", '"Business conc
 "Three days on your road, and you wait until the business is sealed to say it. You did the same at the council table: the price first, the thing you actually wanted afterwards, when there was nobody left to bargain with but me."
 "I stay. On my own account, not Nerosyan's. I keep my own rooms, my own correspondents and my own opinions, and you shall have all three at breakfast. And you never again dismiss me in front of a council. In private you may try. I shall enjoy watching."''',
       c('[Take her hand] "Then name the next evening."', "threshold", flags=("konomi.committed",)),
-      c('[Ask what she wants] "What do you want, Konomi? Not the capital. You."', "no")),
+      c('[Ask what she wants] "What do you want, Konomi? Not the capital. You."', "wants")),
     k("courted", '''{n}She studies you over the closed fan, as if you had put a clause in front of her in a language she reads well and did not expect to see here.{/n}
 "You dismissed me in front of a council. You bought my driver. Then you sat through a supper with no clerk and answered my question like a person, which I did not expect, and I have been annoyed about it since."
 "In my trade, the difference between a courtship and an insult is usually the seal. I have had a road and a supper to read yours." {n}The corner of her mouth moves.{/n} "It is both, and I will take it anyway."
 "I keep my own rooms, my own correspondents and my own opinions, and I shall give you all three at breakfast. And you never again dismiss me in front of a council. You may dismiss me in private. I shall enjoy watching you try."''',
       c('[Take her hand] "Then name the next evening."', "threshold", flags=("konomi.committed",)),
-      c('[Ask what she wants] "What do you want, Konomi? Not the capital. You."', "no")),
+      c('[Ask what she wants] "What do you want, Konomi? Not the capital. You."', "wants")),
+    k("wants", '''"Me. Very well."
+{n}She counts them off on the closed fan.{/n}
+"My letters go to Nerosyan under my seal and come back under it, and nobody in your chancery opens them. Not your clerks, not your spymaster, not you. I sit at your council in my own right, not as your guest. And the next time you want me gone, you tell me so in a room with a door, not from a wall."''',
+      c('[Agree to all of it] "All of it. Your seal, your chair, a door."', "threshold", flags=("konomi.committed",)),
+      c('"Your letters go through my chancery like everyone\'s. That one I won\'t give."', "no")),
     k("envoy", '''"Envoy. A chair at your table, with my name on it and Nerosyan's seal under it."
 {n}She considers the offer the way she considers a treaty: from the end backwards.{/n}
 "That, Commander, I will take. And I will make you regret offering it every single week, in writing, in triplicate, with the capital copied in."''',
       c('[Accept the chair\'s terms] "Envoy, then. My door stays open."', flags=(ENVOY,))),
     k("no", '''{n}She sets the pen down and squares it with the edge of the ledger, exactly, before she answers.{/n}
-"What I want is not to be recalled by anyone. Not by Nerosyan. Not by you, from a wall, with a joke that turns roads round." {n}She picks up the fan again. It steadies her hand.{/n} "Give me a season, Commander. Then ask me again, and do not ask as a Trickster. Ask as someone who could be told no."''',
+"Then you want an attaché whose letters you read. I have been that, for the Crown, and I will not be it in your bed." {n}She picks up the fan again. It steadies her hand.{/n} "Give me a season, Commander. Then ask me again, and do not ask as a Trickster. Ask as someone who could be told no."''',
       c('[Let her decide] "Your call."', flags=(DECLINED,))),
     nar("threshold", '''{n}She looks at your hand in hers for a moment, and her thumb moves once across your knuckles.{/n}
 "The next evening," she says, "is this one."
@@ -319,7 +324,7 @@ letter("konomi.trickster.dead.recalled", "For consultations", [
 {n}One line is not. Every week, since her first week in Drezen: "To the lamp-seller on the chancery steps, for oil." Konomi's office has never once burned a lamp of its own; she complains about the crusade's oil at every council. She has been paying somebody for something else.{/n}''',
       c('[Go down to the chancery steps yourself]', "lamp")),
     nar("lamp", '''{n}The lamp-seller is an old woman with a tray of cheap oil and very bright eyes, who has sat on the chancery steps every day that you can remember and whom you have never once looked at. She looks at the ledger in your hand, and then at you, and the smile she gives you is Konomi's, older.{/n}
-"We live everywhere, Commander. You are not supposed to be aware of it. She told you so herself." {n}She stands and shoulders her tray.{/n} "We will call her. Our way, with our words and your diamonds. What she says when she hears us is hers. And our price is that you never ask who we are, and never write one of us down."''',
+"We live everywhere, Commander. Most people never notice us. She always did." {n}She stands and shoulders her tray.{/n} "We will call her. Our way, with our words and your diamonds. What she says when she hears us is hers. And our price is that you never ask who we are, and never write one of us down."''',
       c('[Pay their price, and the diamonds] "I never saw you. Bring her home."', "rite", flags=(LAMP,),
         crusade=("Finances", -500)),
       c('[Let them be.] "..."', abort=True)),
@@ -381,7 +386,7 @@ letter("konomi.trickster.never_arrived.accredited", "Deemed presented", [
       c('[Bow to the empty chair, with the steward behind it] "Lady Konomi\'s credentials are hereby deemed presented. Someone tell her she\'s late for her own audience."',
         "nerosyan", mythic="Trickster", alignment=("Chaotic", 1))),
     nar("nerosyan", '''{n}The council laughs politely. You bow to the jug anyway, properly, from the waist, and hold the bow long enough to be sure of the one man in the room who did not laugh. Behind the chair the steward has gone very still, the way a fox goes still in long grass.{/n}
-{n}You find him that evening in the dovecote above the chancery, with a bird in his hands and a slip already rolled on its leg. He does not pretend to be feeding it. The penalty in Mendev for a foreign informer in a crusade's chancery is the rope, and you both know it.{/n}''',
+{n}You find him that evening in the dovecote above the chancery, with a bird in his hands and a slip already rolled on its leg. He does not pretend to be feeding it. He has been sending your council's business to the Chancellor's office in Nerosyan without your leave or the Queen's, and what a crusade does to a man who sells its council is whatever its Commander says. You both know which Commander he has.{/n}''',
       c('[Pay him to send it word for word] "Add a line to tonight\'s report. The Commander presented Lady Konomi\'s credentials in full council. To a jug. Word for word."',
         "sent_paid", crusade=("Finances", -100),
         flags=(PRIMED, ACCREDITED, "konomi.missed_letter_sent", "konomi.started", STEWARD_PAID)),
@@ -503,7 +508,7 @@ REACTIONS = [
     reaction("Regill", "konomi.trickster.never_arrived.react_regill", (RETURNED, ACCREDITED),
              '''"Credentials are presented, or they are not, Commander. 'Deemed' is a word for people who have lost the argument."
 {n}Regill's mouth tightens a fraction.{/n}
-"And yet here she is, with Nerosyan's register to prove it. You found a foreign informer in your own chancery and, instead of hanging him, made him your postman. I dislike being out-argued by furniture. I dislike the rest of it more."''',
+"And yet here she is, with Nerosyan's register to prove it. You found the Chancellor's informer in your own chancery and, instead of hanging him, made him your postman. I dislike being out-argued by furniture. I dislike the rest of it more."''',
              answer_list=REGILL_HUB, forbids=REGILL_GONE, chapter=3, last=5, entry='"About Lady Konomi..."'),
     reaction("Kyado", "konomi.trickster.never_arrived.react_kyado", (RETURNED, ACCREDITED, "kyado.in_drezen"),
              '''{n}Kyado laughs before he can stop himself, then looks guilty about it.{/n}

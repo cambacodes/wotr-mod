@@ -120,9 +120,9 @@ s("unborrowed_hour", "An hour she had not promised", [
       c('"We do not have to decide today. I would like another afternoon."', "wait")),
     n("honest", "Anevia", '''"Yeah. We would."
 {n}She does not take your hand. She rubs a nick in the basket handle with her thumb.{/n}
-"I love my wife. Not a disclaimer, before you start. It's the first thing about me, and anybody who wants me gets that too."
+"I love Beth. You make her miserable, you'll have two Tirabades to answer to, and she's the nice one."
 "I heard you."
-"Good. 'Cause I ain't sneakin' about behind her back, and I ain't bringin' her some deal already struck either. She gets asked. By me. First."
+"Good. And I ain't sneakin' about behind her back. I tell her. Me. Tonight, probably, while she's got her boots off and can't storm out proper."
 {n}Anevia picks up the basket. This time the repaired handle holds.{/n}
 "So. Another talk, somewhere with fewer pears. You think about whether you meant that. I'll think about how to say it to Beth without her reachin' for her sword out of sheer habit."
 {n}On the way back she walks close enough that your sleeves brush, and she does not make a joke about it.{/n}''', c('[Agree to another straight conversation.]', flags=("anevia.courtship_requested",))),
@@ -354,7 +354,7 @@ s("beths_question", "An answer that is hers", [
 "I am answering as your lover and as her wife. I can do both. I have done harder drills."''', c('"Then tell me what you will and won\'t have."', "practical")),
     n("not_courtship", "Irabeth", '''"Good. I was beginning to wonder if I would be expected to be grateful for being left out."
 {n}She gives you a level look and lets the awkwardness sit there for both of you.{/n}
-"I can like you without courting you. I can love Anevia without wanting everything she wants. I would like that to be allowed to be dull."
+"I can like you without courting you. I can love Anevia without wanting everything she wants. I would like all of it to be very, very dull."
 "It will be."
 "Then keep arguing with me about patrols. If every quarrel over a watch rota turns into a private message about my wife, I will resign my commission and take up goats."
 {n}The smile is short, and real.{/n}
@@ -406,9 +406,9 @@ s("beths_answer", "What she can agree to", [
 "One more thing. I want it said before we are done."''',
       c('"Say the rest of it."', "hurt", requires=("a_affair",)),
       c('"What are you still unsure of?"', "uncertain", forbids=("a_affair",))),
-    n("hurt", "Irabeth", '''"This agreement does not mean I agreed to the lying. I am still angry about it. Anevia knows."
+    n("hurt", "Irabeth", '''"I said yes to this. I never said yes to the lying. I am still angry about it. Anevia knows; I threw a boot."
 {n}Her voice stays level.{/n}
-"Some nights I can take her hand without thinking of the question I did not know to ask. Some nights I cannot. Neither kind of night is the verdict on my marriage. We have agreed on that much."
+"Some nights I can take her hand and think of nothing. Some nights I lie there doing the arithmetic of every evening she said she was at the Heart. Both kinds of night are still my marriage, and she is still in it."
 "What do you want from me?"
 "Keep your word now. Tell me if something changes. And do not come round expecting me to forgive you on schedule so the two of you can sleep better."
 {n}She straightens the back of the chair, which was already straight.{/n}
@@ -574,9 +574,9 @@ s("an_invitation_afterward", "The question she asked separately", [
 {n}She lets that sit, then shifts closer.{/n}''', c('[Hear what Anevia wants for herself.]', "own")),
     n("declined", "Anevia", '''"We never started the life we talked about. Doesn't mean everythin' before it was a game we can forget we played."
 {n}She waits until you meet her eyes.{/n}
-"There was sneakin'. There were talks after that I owed Beth whether or not anybody agreed to anythin'. I ain't callin' any of that harmless 'cause we've found a new door."
+"There was sneakin'. There were nights I lied to Beth's face and she let me. I ain't callin' any of that harmless 'cause we've found a new door."
 "Nor do I."
-"Good. Then we ask the new thing without usin' it to run from the old one. Beth knows I asked you here. You've heard her answer from her own mouth."
+"Good. Beth knows I asked you here. She told you so herself, with that face she does. If you'd heard it from me you'd've thought I was lyin' again."
 {n}She rests her hand on the empty chair beside her.{/n}
 "This one's from me."''', c('"Go on, then."', "own")),
     n("own", "Anevia", '''"I want to see you. For a walk. To moan at you about somethin'. To kiss you without the night endin' right after."
@@ -793,8 +793,8 @@ s("the_woman_with_the_basket", "What Dema chooses to carry", [
 {n}When Dema returns, she does not stop beside you. She passes, sets down her empty basket at the shed and waits until Anevia comes to her.{/n}
 "Basket on the stool. Blue cloth over it. Cale and another woman inside. The other one said they should finish collecting before more people hear about the warning."
 {n}Anevia asks whether Dema saw a weapon. She says no, then corrects herself: she saw none; that is not the same thing.{/n}
-"Go on, then. That's the answer I agreed to give."
-{n}Anevia thanks her once. Dema returns to the washing. Then she goes back to her washing and does not look up again.{/n}''',
+"Go on, then. That's all you're getting."
+{n}Anevia thanks her once. Dema goes back to her washing and does not look up again.{/n}''',
       c('[Go in knowing there are two of them and a basket.]', "approach", flags=("anevia.basket_located",))),
     n("watch", "Narrator", '''{n}You and Anevia wait where you can see the entrance. A woman carries a basket into the counting room, but the angle gives you no view beneath its cover. Dema does not approach the building again.{/n}
 {n}The wait gives the occupants time to move things. Once Anevia points to a thin drift of smoke from a side window. Someone has lit a brazier inside. It may be for warmth or dye work. It may not.{/n}
@@ -1098,9 +1098,9 @@ s("the_blank_half", "A page with room for an answer", [
 {n}The page fills slowly. You do not turn the ending into an assurance that you will certainly return. Instead you ask about something ordinary in her life, something whose answer will belong to days you did not see.{/n}
 {n}You leave a little room beside the question, though she will not be here to answer it tonight.{/n}''',
       c('[Keep the written answer for a possible return.]', flags=("anevia.absence_account", "anevia.absence_shared_moment"))),
-    n("changed", "Narrator", '''{n}You write that you are afraid she will have got used to your absence. Then you read it back and find the ugly wish under it: that missing you should have stopped her getting used to anything.{/n}
-{n}You leave the fear on the page and write the next thought under it. If you come back, you want a place in the life she actually lived, not a house kept exactly as you left it.{/n}
-{n}It is easier to write than to believe, and you say so. The page gets less dignified and more like something she would recognize.{/n}
+    n("changed", "Narrator", '''{n}You write that you are afraid she will have got used to your absence. It takes three tries. The first sounds like a report, the second like a sulk, and the third you cannot read back without wincing, so you leave it.{/n}
+{n}Under it you write about the Abyss instead: the heat, the colour of the sky, a demon that tried to sell your party a hat. It is easier than the other thing. Then you go back to the other thing and write one more line of it.{/n}
+{n}The page ends up blotted and crooked, and more like something she would recognize.{/n}
 {n}You finish by asking what she has wanted that you do not know about yet.{/n}''',
       c('[Keep the fear and the plainer answer together.]', flags=("anevia.absence_account", "anevia.absence_changed"))),
     n("memory", "Narrator", '''{n}You fold the page without writing. There are things you want to tell her that will not settle into a useful order tonight. You try the opening aloud, dislike it, and stop.{/n}
@@ -1212,7 +1212,7 @@ s("a_key_that_is_hers", "What she wants to keep", [
 {n}She lays the key by the lamp.{/n}
 "I like askin' you. Like knowin' you came 'cause you wanted to, not 'cause the room's on your way past."
 "You may still ask for a different arrangement later."
-"So can you. Preferably before one of us has worked up a lovely grievance about somethin' the other never agreed to."
+"So can you. Preferably before one of us throws a boot."
 {n}She grins and leans against you.{/n}
 "There. For keeps, with a few questions left in it. Believe that more than any vow."''', c('[Ask what she hopes will happen in the room.]', "room")),
     n("room", "Anevia", '''"Breakfast. Though if I try cooking it here, that window'll have to open all the way."
@@ -1268,9 +1268,9 @@ s("a_key_that_is_hers", "What she wants to keep", [
 "Wanted the other answer. I can still hear this one."
 {n}She asks what you can offer without dressing it up as forever. You tell her. She thinks about it long enough that you stop getting a reply ready and just wait.{/n}
 "I want to keep seein' you. I won't build plans on a promise you ain't made. If it stops bein' enough, I'll say so to your face, not let every night turn into a row till you notice."
-"I can agree to that."
-"Agree 'cause you want it. Not 'cause I made it easy. It stings a bit. I'm takin' it anyway."
-{n}She takes your hand. What she feels is real, and so is the part you did not promise.{/n}''',
+"Fair."
+"Don't you 'fair' me like a quartermaster. It stings. I'm takin' it anyway."
+{n}She takes your hand and squeezes it hard enough to hurt, which is the closest she comes to saying the rest.{/n}''',
       c('"Keep askin\' me. I\'ll keep comin\'."', flags=("anevia.open_future", "anevia.future_chosen"))),
     n("part", "Anevia", '''{n}She closes her hand round the key and keeps it there.{/n}
 "Right. Can't argue it wasn't clear."
@@ -1295,7 +1295,7 @@ s("the_last_ordinary_thing", "Before the next road", [
       c('[Leave this farewell for another evening.]', abort=True)),
     n("remember", "Anevia", '''"That I won the first game. Historical fact. Very important."
 {n}She puts it in your palm and closes your fingers over it.{/n}
-"And that I wanted to see you when there was nothin' to ask. That we could fight and still have a good night. That you don't have to go and do somethin' heroic before you're allowed to miss somebody."
+"And that I wanted to see you when there was nothin' to ask. That we could fight and still have a good night. That you don't have to go and do somethin' heroic before you get to miss somebody. Write that on your arm if you have to."
 {n}She looks at your closed hand.{/n}
 "It's small. Fits somewhere without you havin' to leave a bandage behind. Wouldn't want to win that argument."
 {n}You put it away. Anevia watches until it is safe, then steps in close.{/n}''', c('[Hold her close.]', "future")),
@@ -1361,9 +1361,9 @@ s("a_grief_with_a_name", "The person she is missing", [
 {n}She says it flat, not offering either half to soften the other.{/n}
 "Some nights I'll want you close and then I won't be able to stand anybody touchin' me. Some days I'll have a good afternoon and hate myself for it before I'm home. That's comin'. I ain't gonna let every bad hour decide the rest of my life, neither."
 "What can I do?"
-"Ask what kind of day it is. Believe me when I tell you. And don't you ever think the spot next to me got easier to have 'cause she's gone. It didn't. It's a different spot, in a life I never asked for."
+"Ask what kind of day it is. If I throw somethin', it's a bad one. And don't you ever think you got her side of the bed. You didn't. That's hers. You've got the draughty side, same as always."
 {n}Her hand stays by yours.{/n}
-"You were somebody I wanted before. I won't have you turned into her stand-in. Neither of you deserves that."''',
+"You were somebody I wanted before. Stay that. You try bein' Beth and I'll know in a minute, 'cause you'll fold the socks wrong."''',
       c('"I want to stay. Not in her place. Beside it. One visit at a time."', "remain"),
       c('"I care for you. But I can\'t go on with this, and it\'s not your fault."', "part")),
     n("remain", "Anevia", '''"Then come back. Knock first. I'll try to tell you straight, not just say whatever'll make you feel better."
@@ -1391,13 +1391,13 @@ def ending(identity, title, text, *, requires=(), forbids=(), owner="Epilogue"):
 LIVING_END = ("anevia.closed", "anevia_dead", "anevia_gone", "irabeth_dead", "irabeth_gone", "inhuman", "sacrifice", "ascended")
 ending("ending_kept", "The room with the repaired window", '''{n}Anevia kept the room. The window needed a second repair, and the plant outgrew another pot before she admitted she had become the kind of woman who asks the neighbors about roots.{/n}
 {n}The Commander stayed part of that life: visits actually kept, notes that sometimes came late, and a long habit of saying so when either of them minded something. Anevia never got easier to surprise, and never stopped picking fights with explanations she found too convenient. She did start bringing her half-finished thoughts to the Commander before they were polished.{/n}
-{n}Her marriage to Irabeth stayed its own house, with its own rows and its own bed. Asking one woman to supper was never taken as an order to the other. When the three of them did end up at one table, somebody had asked first, out loud.{/n}
+{n}Irabeth stayed Irabeth: she still folded her socks in threes, still read the Commander's notes to Anevia aloud in a flat voice at breakfast to embarrass everyone, and once, memorably, came up the stairs to the room with the bad window to deliver a pie and a lecture on fire hazards, and stayed for the pie.{/n}
 {n}Ressa's street remembered the false inspection. Some of the money took years to come back. Anevia kept asking after the women on the list without ever sending Dema another basket. The Commander knew enough of that work to admire it and enough of Anevia to argue with her about it.{/n}
 {n}Some evenings went badly. Some nights neither of them wanted to end. Now and then Anevia would look up from a book or a sulking seedling and seem freshly delighted to find the Commander still there. She always made a joke first. The admission came after, and quicker every year.{/n}''',
        requires=("anevia.committed", "anevia.developed"), forbids=LIVING_END)
 ending("ending_open", "An invitation without a final promise", '''{n}Anevia and the Commander kept seeing each other without calling it settled. Some invitations were taken, some put off, and a few refused to their faces. They learned which promises they could keep and stopped dressing up the ones they couldn't.{/n}
 {n}Her home with Irabeth stayed her home. Her work stayed hard, and most of her life went on in rooms the Commander never saw. She never apologized for that, and she never pretended the gaps were easy.{/n}
-{n}The room with the bad window kept its own evenings. Some nights the goat game came out. Some nights it stayed folded while the two of them talked, or found a better use for the bed. Anevia liked being asked. She liked even more that she could say no and nobody sulked.{/n}
+{n}The room with the bad window kept its own evenings. Some nights the goat game came out. Some nights it stayed folded while the two of them talked, or found a better use for the bed. Anevia liked being asked. She liked even more saying "not tonight, I'm busy" and watching the Commander try not to look put out.{/n}
 {n}Leaving, the Commander would sometimes find a crooked wooden goat in a pocket, and a note daring them to come back and lose again.{/n}''',
        requires=("anevia.open_future", "anevia.developed"), forbids=(*LIVING_END, "anevia.committed"))
 ending("ending_unfinished", "A question they had not finished", '''{n}Anevia and the Commander had started something with more questions in it than they had nights to answer. The nights they had kept were good ones. Anevia still had things to ask.{/n}
@@ -1406,17 +1406,17 @@ ending("ending_unfinished", "A question they had not finished", '''{n}Anevia and
        requires=("anevia.lover",), forbids=(*LIVING_END, "anevia.developed", "anevia.committed"))
 ending("ending_promised", "The next visit they had chosen", '''{n}Before the last campaign was over, Anevia and the Commander had said out loud that this was for keeps. What they had not yet had was the years to find out if they could keep it.{/n}
 {n}Anevia kept the key on its green cord. Sometimes she wound it round a finger while she wrote a note, scratched out a perfectly good opening and started instead with the thing she actually wanted.{/n}
-{n}Her home with Irabeth stayed her home. The room she'd taken for herself still needed fixing. Neither surprised the Commander. There would be missed nights and bad conversations, and they had agreed to come back from both.{/n}
+{n}Her home with Irabeth stayed her home. The room she'd taken for herself still needed fixing. Neither surprised the Commander. There would be missed nights and bad rows. The first time the Commander stood her up, she sent the note back with the spelling corrected and one word underneath: Tuesday.{/n}
 {n}She waited for the next visit with an impatience that embarrassed her. It never stopped her sending the note.{/n}''',
        requires=("anevia.lover", "anevia.committed", "anevia.future_chosen"), forbids=(*LIVING_END, "anevia.developed"))
 ending("ending_parted", "What remained after the goodbye", '''{n}Anevia never called it a mistake just because it ended. There were things she had wanted and got, and things she would have done differently knowing what she knew after. The Commander was part of that, and had no say in what she chose next.{/n}
 {n}They kept out of each other's way where they could. Work put them in the same room sometimes, and they managed courtesy long before they managed ease. Anevia did not put on a cheerful friendship to make the parting look better.{/n}
 {n}Her life went on past the goodbye. She had people to see and work to finish. Some evenings she left early, sick of being asked whether she was quite herself.{/n}''',
        requires=("anevia.parted", "anevia.closed"), forbids=("anevia_dead", "anevia_gone", "inhuman", "sacrifice", "ascended"))
-ending("ending_survivor", "The life she did not stop living", '''{n}Irabeth's death stayed in Anevia's life. The Commander staying did not make the grief smaller, and the Commander never became a stand-in for the woman she had lost.{/n}
-{n}Some visits she asked for. Some she could not stand. She learned to say which kind of day it was, badly and often too late. The Commander learned to take the answer and not argue with it.{/n}
-{n}They said Irabeth's name. They remembered her burned fingers and her bad chair, and some nights they talked about something else entirely. A good day was allowed to be a good day.{/n}
-{n}Anevia went on choosing what to do with the life she had left. Some of it had the Commander in it. None of it asked her to give up the years she had loved her wife.{/n}''',
+ending("ending_survivor", "The life she did not stop living", '''{n}Irabeth's death stayed in Anevia's life. Her boots stayed under the bed for a year, toes to the wall, and the Commander learned to step round them in the dark.{/n}
+{n}Some visits Anevia asked for. Some she met at the door with "Not today," and shut it. Some days she threw things; the Commander learned which cups were safe to have given her.{/n}
+{n}They said Irabeth's name. They remembered her burned fingers and her bad chair, and some nights they talked about something else entirely and laughed, and Anevia did not apologize for it the next morning.{/n}
+{n}On the anniversary of Iz she went up to the wall alone, every year, and came down again, every year, and knocked on the Commander's door on the way back.{/n}''',
        requires=("anevia.lover", "anevia.survivor_continues", "irabeth_dead"),
        forbids=("anevia.closed", "anevia_dead", "anevia_gone", "inhuman", "sacrifice", "ascended", "anevia.irabeth_killed_by_commander"))
 
@@ -1450,15 +1450,15 @@ ending("ending_sacrifice", "The answer she could not receive", '''{n}The Command
 {n}She had always known no road promised a way home. Knowing did not make it easier to walk past the empty chair. It did not make the nights they'd had any less real than the ones they didn't get.{/n}
 {n}Anevia went on living among the people and the work that were left. She refused to become anybody's noble widow before she was allowed to just miss the one she'd wanted beside her.{/n}''',
        requires=("anevia.lover", "sacrifice"), forbids=("anevia_dead", "anevia_gone", "inhuman", "ascended", "anevia.irabeth_killed_by_commander"))
-ending("ending_changed_power", "An answer power could not supply", '''{n}Whatever the Commander became, Anevia had not signed up for it. The life in which she had said yes was gone, and the thing that had replaced the Commander was not what she had said yes to.{/n}
-{n}A remembered kiss was not a deed of ownership. A promise of Tuesday suppers did not give anyone the right to rewrite her answer. Whatever was left of the two of them belonged to the people who had lived it, not to the power that could now claim so much else.{/n}
-{n}The old words could still be said. Saying them did not make the thing they had named go on.{/n}''',
+ending("ending_changed_power", "An answer power could not supply", '''{n}Whatever the Commander became, Anevia took one look at it and packed a bag. She left the key on its green cord hanging from the doorknob, where the thing that had been the Commander would find it.{/n}
+{n}It sent for her once. She sent the messenger back with his boots tied together.{/n}
+{n}She kept the goat game. She played it with Beth, badly, on Tuesdays, and she did not say who had taught her the house rule.{/n}''',
        requires=("anevia.lover", "inhuman"), forbids=())
-ending("ending_ascended", "The scale of an ordinary invitation", '''{n}Ascension changed what the Commander could become. It did not go back and decide what Anevia had agreed to, or carry her off into some divine household without asking her.{/n}
+ending("ending_ascended", "The scale of an ordinary invitation", '''{n}Ascension changed what the Commander could become. Anevia, told about it by a very nervous herald, asked whether it was catching and whether the herald wanted tea.{/n}
 {n}There had been a woman who liked an ordinary invitation and could find something to tease the Commander about even at a funeral. The Commander had known her at that size. Remembering her that way mattered more than giving what they'd had a grander name.{/n}
-{n}Whatever came after would have to go through her, and she had never once been easy to go through. Power could do remarkable things. It could not stand in for asking her.{/n}''',
+{n}Whatever came after would have to knock. She was very clear with the herald on that point, and she made him repeat it back.{/n}''',
        requires=("anevia.lover", "ascended"), forbids=("inhuman",))
-ending("ending_aeon", "An invitation outside the rewritten world", '''{n}In the rewritten world, nothing that had put Anevia and the Commander in the same room had happened. The borrowed room, the goat game, the nights she had picked: none of it could be brought back by pretending a different life owed the same answer.{/n}
-{n}The woman living beyond that erased history belonged to herself. Whatever she loved there was not a prize kept back for the Commander who had changed the world.{/n}
-{n}If any trace of their time together survived past ordinary memory, it was not an order to remember. It was the shape of an invitation nobody in that world had made yet.{/n}''',
+ending("ending_aeon", "An invitation outside the rewritten world", '''{n}In the rewritten world, nothing that had put Anevia and the Commander in the same room had happened. The borrowed room, the goat game, the nights she had picked: all of it was gone.{/n}
+{n}Somewhere in that world a woman with sharp eyes and a Kenabres accent ran a tavern, cheated at a game with wooden goats, and had a wife who snored like a siege engine.{/n}
+{n}The Commander went there once, bought a drink, and lost a game to her. She said "Come back and lose again," the way she said it to everybody. It was not nothing.{/n}''',
        requires=("anevia.lover",), forbids=(), owner="AeonEpilogue")

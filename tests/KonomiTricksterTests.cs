@@ -275,7 +275,11 @@ internal static class KonomiTricksterTests
         // Epilogues: the late commit is the Commander's answer; her soft no is its own page; paragraphs on her endings.
         var lateCommit = World(story, 6, "trickster.ever", "konomi.dismissed", "konomi.trickster.recessed",
                                "konomi.trickster.terms_settled", "konomi.trickster.debt_paid", "konomi.private_future", "konomi.attracted",
-                               "konomi.trickster.supper_asked");
+                               "konomi.lovers");
+        // Sol r3 BEL: a supper alone is not an intimate history; only the private beat's threshold commits a non-lover.
+        var supperOnly = World(story, 6, "trickster.ever", "konomi.dismissed", "konomi.trickster.terms_settled", "konomi.trickster.supper_asked");
+        check(!supperOnly.Has("konomi.trickster.late_committed") && !Rules.Available(story, epCommit, supperOnly),
+            "A supper completes the romance without an intimate beat.");
         check(Rules.Available(story, epCommit, lateCommit) && !Rules.Available(story, S("konomi.ending_unfinished"), lateCommit),
             "Trk_Konomi_EpilogueCommit failed.");
         check(epCommit.Nodes[0].Choices.Count == 2 && epCommit.Nodes[0].Choices.All(ch => ch.Next != null),

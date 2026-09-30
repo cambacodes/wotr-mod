@@ -437,7 +437,7 @@ physical("irabeth.trickster.back_on_duty", "Back on duty", '"Knight-Captain. A w
 ], requires=("trickster.ever", RETURNED), forbids=("irabeth.trickster.back_on_duty",), delay=24)
 
 THRESHOLD = '''{n}She unbuckles the sword belt and hangs it on the corner of the roster-room door, a hand's width from where she stands, because she swore it would be there. Then she swears again, short and furious, at nothing in particular.{/n}
-"I've wanted this since Iz, and I've been ashamed of it since Iz. I'm done being ashamed. Take the rest off me, Commander. One-handed is all I've got. Slowly. I want to remember it."
+"I've wanted this since Iz, and I've been ashamed of it since Iz. I'm done being ashamed. Take the rest off me, Commander. Slowly. I want to remember it."
 {n}Gauntlet, then vambrace. Her hands stop working on the breastplate buckles and she lets you do it. Under the arming coat she is scar and muscle and heat. She kisses you hard enough that her tusks graze your lip, then drags you through the side door into her roster room, where nobody sits at the desk but her. She sweeps the duty lists off it with one arm, pulls you down onto the desk with her, and hooks a leg behind yours, and her hand goes to your belt.{/n}'''
 
 MORNING_NOTE = '''{n}The watch changes under the window. She is back in armour, all but one gauntlet, and the sword belt is on the door where she hung it, a hand's width from her head all night. She holds out the bare hand to you without a word.{/n}
@@ -450,10 +450,38 @@ MORNING_HOME = '''{n}The watch changes under the window. She is back in armour, 
 {n}You buckle it for her. She takes the sword belt down and buckles that herself, and does not thank you.{/n}
 "Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard."'''
 
+REASONS_TEXT = '''"You want reasons. Here's what I've got. You slept under my sword and didn't lie in your sleep; I've watched men who did. You're still the one who can shut the Wound, and the Queen's gone or near it, and somebody who knows what you're capable of has to stand close enough to stop you."
+{n}Her jaw sets.{/n}
+"And I wanted you before Iz. I buried it under the duty lists and it didn't stay buried. That's the part I can't forgive either of us for."'''
+
+THRESHOLD_BLOW = '''{n}She unbuckles the sword belt and hangs it on the corner of the roster-room door, where she can reach it from anywhere in the room, and looks at you while she does it so that you understand exactly why.{/n}
+"Take the rest off me, Commander. Slowly. If your hands go anywhere near that door, I'll know."
+{n}Gauntlet, then vambrace. Under the arming coat she is scar and muscle and heat, and the newest scar is under her ribs, where your blade went in. She puts your palm flat over it and holds it there, and kisses you like a dare. Then she drags you through the side door into her roster room, sweeps the duty lists off the desk with one arm, pulls you down onto it with her and hooks a leg behind yours, and her hand goes to your belt.{/n}'''
+
 MORNING_HOUSE = '''{n}The watch changes under the window. She is back in armour, all but one gauntlet, and the sword belt is on the door where she hung it, a hand's width from her head all night. She holds out the bare hand to you without a word.{/n}
 "Nevi will know the second I walk into the kitchen. She'll laugh at me, and then she'll put me to work on the bread and ask questions until it's proved."
 {n}You buckle it for her. She takes the sword belt down and buckles that herself, and does not thank you.{/n}
 "Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard."'''
+
+def her_answer(mornings):
+    """Sol r3 HOW/BEL: Nevi's answer licenses the ask; it is not Irabeth's. She is asked, and she can say no. The
+    killed history (remembers_the_blow) keeps its own reasons and threshold here too."""
+    return [
+        i("her_answer", '''"Nevi's said her piece. That's hers. This part's mine."
+{n}She waits, and does not help you.{/n}''',
+          c('[Ask her] "Irabeth. Not your rank. You."', "yes"),
+          c('[Ask her as her Commander] "Knight-Captain. I\'m asking."', "no_rank")),
+        i("yes", '''{n}She doesn't answer. She crosses the room and kisses you instead, hard, and that is the answer.{/n}''',
+          c("Continue", "threshold", forbids=(BLOW,), flags=("irabeth.committed",)),
+          c("Continue", "reasons", requires=(BLOW,), flags=("irabeth.committed",))),
+        i("no_rank", '''"There it is."
+{n}She steps back, and salutes, and it is a perfect salute.{/n}
+"You asked my Commander's way, with my wife's answer in your pocket like a signed order. No. I'll serve you till the Wound's shut. That's what you asked for."''',
+          c('"...Understood."', flags=("irabeth.trickster.asked_as_commander",))),
+        i("reasons", REASONS_TEXT, c("Continue", "threshold_blow")),
+        nar("threshold_blow", THRESHOLD_BLOW, *mornings),
+    ]
+
 
 physical("irabeth.trickster.commit", "Off the record", '"Knight-Captain. Off the record."', [
     i("start", '''{n}Late. The throne room is empty but for the two of you and the sword she will not let out of reach.{/n}
@@ -498,9 +526,8 @@ physical("irabeth.trickster.commit", "Off the record", '"Knight-Captain. Off the
 {n}She rests her hand on the hilt at her hip.{/n}
 "I'm not doing this behind her back. When she's said her piece to me, to my face, ask me again."''',
       c('[Step back] "Then I\'ll ask again. Not as your Commander."', flags=(DECLINED,))),
-    i("decides", '''{n}She reads you the way she reads an order: twice, to be sure of it.{/n}
-"Not an order."
-{n}Then she decides.{/n}''',
+    i("decides", '''"Not an order."
+{n}She comes round the desk and takes your face in both hands.{/n}''',
       c("Continue", "reckon", forbids=(LIED,), flags=("irabeth.committed",)),
       c("Continue", "not_tonight", requires=(LIED,))),
     i("not_tonight", '''"No. Not tonight."
@@ -515,13 +542,9 @@ physical("irabeth.trickster.commit", "Off the record", '"Knight-Captain. Off the
     i("reckon_blow", '''"And I remember your blade going in. I'll remember it tomorrow, and the day after. I'm here anyway. Work out what that says about me on your own time."''',
       c("Continue", "threshold", forbids=(BLOW,)),          # retired by gating (index kept): the blow has its own approach
       c("Continue", "reasons")),
-    i("reasons", '''"You want reasons. Here's what I've got. You slept under my sword and didn't lie in your sleep; I've watched men who did. You're still the one who can shut the Wound, and the Queen's gone or near it, and somebody who knows what you're capable of has to stand close enough to stop you."
-{n}Her jaw sets.{/n}
-"And I wanted you before Iz. I buried it under the duty lists and it didn't stay buried. That's the part I can't forgive either of us for."''',
+    i("reasons", REASONS_TEXT,
       c("Continue", "threshold_blow")),
-    nar("threshold_blow", '''{n}She unbuckles the sword belt and hangs it on the corner of the roster-room door, where she can reach it from anywhere in the room, and looks at you while she does it so that you understand exactly why.{/n}
-"Take the rest off me, Commander. Slowly. If your hands go anywhere near that door, I'll know."
-{n}Gauntlet, then vambrace. Under the arming coat she is scar and muscle and heat, and the newest scar is under her ribs, where your blade went in. She puts your palm flat over it and holds it there, and kisses you like a dare. Then she drags you through the side door into her roster room, sweeps the duty lists off the desk with one arm, pulls you down onto it with her and hooks a leg behind yours, and her hand goes to your belt.{/n}''',
+    nar("threshold_blow", THRESHOLD_BLOW,
       c("Continue", "morning")),
     nar("threshold", THRESHOLD, c("Continue", "morning")),
     i("morning", MORNING_HOME, c('"Dismissed, Knight-Captain."')),
@@ -553,11 +576,13 @@ physical("irabeth.trickster.second_ask", "The pen", '"Knight-Captain. I\'m askin
         c("Continue", "morning_home", requires=(A_RET,)), c("Continue", "morning_house", forbids=("anevia_gone",))),
     i("morning", MORNING_NOTE, c('"Dismissed, Knight-Captain."')),
     i("sent_gate", '''{n}She is back within the hour, empty-handed, with mud from the gate road on her boots.{/n}
-"She didn't laugh. She turned it over twice, the way I read orders, and put it in her boot. Then she told me to go back up the hill before she changed her mind about both of us."
+"She didn't laugh. She turned it over, and put it in her boot. Then she told me to go back up the hill before she changed her mind about both of us."
 {n}She holds out her empty hand to show you, as if the absence were the report. Then she smiles, and you realise you have not seen it since Iz.{/n}''',
       c("Continue", "threshold", flags=("irabeth.committed", "irabeth.trickster.nevi_answered"),
         forbids=(SHARES,)),                             # retired by gating (index kept): the ask now sets ASKED
-      c("Continue", "threshold", flags=("irabeth.committed", "irabeth.trickster.nevi_answered", ASKED))),
+      c("Continue", "threshold", flags=("irabeth.committed", "irabeth.trickster.nevi_answered", ASKED),
+        forbids=("irabeth.trickster.back_on_duty",)),     # retired by gating (index kept): her own answer follows
+      c("Continue", "her_answer", flags=("irabeth.trickster.nevi_answered", ASKED))),
     i("held", '''{n}She takes the pen, weighs it, and slides it into the cuff of her gauntlet instead of sending it.{/n}
 "Nevi's at the gate and hasn't said her piece. I'm not walking your pen out to her before she has. That's not how it goes, not with her."
 {n}She taps the cuff once.{/n}
@@ -567,8 +592,12 @@ physical("irabeth.trickster.second_ask", "The pen", '"Knight-Captain. I\'m askin
     i("sent_home", '''{n}She is back before the bell, with flour on her sleeve and the pen gone.{/n}
 "She was baking. Nevi doesn't bake. She was baking because she knew I'd come. She took it out of my hand before I'd said a word, stuck it behind her ear and went on kneading. Then she said, 'Took you long enough, Beth,' and threw me out."
 {n}She holds out her empty hand as if the absence were the report. Then she smiles, and you realise you have not seen it since Iz.{/n}''',
-      c("Continue", "threshold", flags=("irabeth.committed", "irabeth.trickster.nevi_answered", ASKED))),
+      c("Continue", "threshold", flags=("irabeth.committed", "irabeth.trickster.nevi_answered", ASKED),
+        forbids=("irabeth.trickster.back_on_duty",)),     # retired by gating (index kept): her own answer follows
+      c("Continue", "her_answer", flags=("irabeth.trickster.nevi_answered", ASKED))),
     i("morning_house", MORNING_HOUSE, c('"Dismissed, Knight-Captain."')),
+    *her_answer((c("Continue", "morning", requires=("anevia_gone",), forbids=(A_RET,)),
+                 c("Continue", "morning_home", requires=(A_RET,)), c("Continue", "morning_house", forbids=("anevia_gone",)))),
 ], requires=("trickster.ever", DECLINED, "irabeth.trickster.back_on_duty"), forbids=("irabeth.committed", LIED),
    delay=24, ForbidOverrides={LIED: CONFESSED})
 
@@ -590,11 +619,14 @@ physical("irabeth.trickster.the_other_story", "The other story", '"Knight-Captai
 physical("irabeth.trickster.nevi_reply", "Keeping it", '"The south-road courier is back."', [
     i("start", '''{n}It is three days before she finds you again. The courier from the south road brought nothing back: no pen, no packet. Only a message he had been made to learn by heart and would not say until the Knight-Captain was standing in front of him.{/n}
 "'Keeping it. Ask me to my face next time, Beth.'"
-{n}She repeats it to you word for word, the way she repeats every report. Then she smiles, and you realise you have not seen it since Iz.{/n}''',
-      c("Continue", "threshold", flags=("irabeth.committed", "irabeth.trickster.nevi_answered", ASKED))),
+{n}She tells you it as the courier told it, flat, and then she smiles, and you realise you have not seen it since Iz.{/n}''',
+      c("Continue", "threshold", flags=("irabeth.committed", "irabeth.trickster.nevi_answered", ASKED),
+        forbids=(PEN_SENT,)),                             # retired by gating (index kept): her own answer follows
+      c("Continue", "her_answer", flags=("irabeth.trickster.nevi_answered", ASKED))),
     nar("threshold", THRESHOLD, c("Continue", "morning")),
     i("morning", MORNING_NOTE, c('"Dismissed, Knight-Captain."')),
-], requires=("trickster.ever", PEN_SENT), forbids=("irabeth.committed",), delay=72)
+    *her_answer((c("Continue", "morning"),)),
+], requires=("trickster.ever", PEN_SENT), forbids=("irabeth.committed", "irabeth.trickster.asked_as_commander"), delay=72)
 
 
 # --- Epilogue: one page, or paragraphs on her registered ending ----------------------------------------------------
@@ -617,7 +649,7 @@ UNDER_ORDERS_PARAGRAPHS = (
       "been blamed for enough already.", requires=(LIED,)),
     p("When the Wound closed, she kept her vow to the hour and set the sword down at last. Anevia took the "
       "Commander's pen from wherever she had kept it through the war and handed it to her wife without a word. Irabeth signed her own discharge "
-      "with it, read it twice, the way she read every order, and put it in her pocket instead of the roster. What she "
+      "with it, and put it in her pocket instead of the roster. What she "
       "did with the free hand was her own business, and she made sure everyone understood that.", requires=(SIGNED,)),
     p("When the Wound closed, Irabeth Tirabade put her sword down at last, flexed the hand, and asked the Commander "
       "the question she had been saving: not as a knight, and not under orders. She asked it out loud, in the kitchen "
@@ -628,10 +660,12 @@ UNDER_ORDERS_PARAGRAPHS = (
       "the question she had been saving: not as a knight, and not under orders.", requires=("irabeth.trickster.late_committed", A_RET),
       forbids=("irabeth.committed", "irabeth.closed", DECLINED, "irabeth.trickster.friends")),
     p("The south-road courier caught her up after the Wound was closed, with the answer she had sent him for. Nevi had "
-      "kept the pen. Irabeth read the message twice, the way she read every order, and went to find the Commander "
+      "kept the pen. Irabeth went to find the Commander "
       "without her sword.", requires=(PEN_SENT,), forbids=("irabeth.committed", "irabeth.closed")),
+    p("She stayed the Commander's knight until the Wound was closed: loyal, exact, and never once off the record. "
+      "The pen stayed with Nevi.", requires=("irabeth.trickster.asked_as_commander",), forbids=("irabeth.committed",)),
     p("She stayed the Commander's knight until the Wound was closed: loyal, exact, and never once off the record.",
-      requires=(DECLINED,), forbids=("irabeth.committed", "irabeth.closed")),
+      requires=(DECLINED,), forbids=("irabeth.committed", "irabeth.closed", "irabeth.trickster.asked_as_commander")),
     p("She stayed the Commander's knight, and that was all. When the discharge was finally signed she saluted, took "
       "it, and did not look back.", requires=("irabeth.closed",)),
     p("She and the Commander stayed what they had agreed to be on the night of the salute: a Knight-Captain and her "

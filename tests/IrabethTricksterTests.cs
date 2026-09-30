@@ -258,12 +258,16 @@ internal static class IrabethTricksterTests
             var replyPages = new HashSet<string>();
             var replied = Program.Walk(reply, Later(story, sent, 72), (page, _) => replyPages.Add(page));
             // Sol r2 INT: a Trickster commit without the registered lover history gets a romantic page of its own.
-            var sixth = World(story, 6, replied[0].Flags.ToArray());
+            var sixth = World(story, 6, replied.First(r => r.Has("irabeth.committed")).Flags.ToArray());
             var sixthPages = story.Scenes.Where(s => s.Relationship == "irabeth" && s.Owner == "Epilogue" && Rules.Available(story, s, sixth)).ToList();
             check(sixthPages.Count == 1 && sixthPages[0].Id == "irabeth.trickster.epilogue.off_the_record",
                 "The committed Irabeth gets no page, or the non-lover page: " + string.Join(",", sixthPages.Select(s => s.Id)));
-            check(replied.All(r => r.Has("irabeth.committed") && r.Has("irabeth.trickster.nevi_answered") && r.Has("irabeth.trickster.asked_nevi"))
-                  && replyPages.Contains("threshold") && replyPages.Contains("morning"), "Nevi's answer skips the intimate beat.");
+            // Sol r3 HOW: Nevi's answer licenses the ask; Irabeth answers it herself, and can say no.
+            check(replied.All(r => r.Has("irabeth.trickster.nevi_answered") && r.Has("irabeth.trickster.asked_nevi"))
+                  && replied.Any(r => r.Has("irabeth.committed"))
+                  && replied.Any(r => r.Has("irabeth.trickster.asked_as_commander") && !r.Has("irabeth.committed"))
+                  && replyPages.Contains("her_answer") && replyPages.Contains("threshold") && replyPages.Contains("morning"),
+                "Nevi's answer commits Irabeth, or skips the intimate beat.");
         }
 
         // Sol r1 BEL: after the Commander's own blade, her test comes before any yes.

@@ -613,9 +613,9 @@ FATES = ("sacrifice", "ascended", "inhuman")
 epilogue("anevia.trickster.epilogue.nailed_wardrobe", (RETURNED,), ("anevia.lover",))
 epilogue("anevia.trickster.epilogue.nailed_wardrobe_lover", (RETURNED, "anevia.lover", "anevia.committed"),
          ("anevia.future_chosen", "anevia.developed", "anevia.survivor_continues", "irabeth_dead", *FATES),
-         ForbidOverrides={"irabeth_dead": I_RET, "anevia.survivor_continues": I_RET})
+         ForbidOverrides={"irabeth_dead": I_RET, "anevia.survivor_continues": I_RET, "sacrifice": "trickster.commander_back"})
 epilogue("anevia.trickster.epilogue.nailed_wardrobe_closed", (RETURNED, "anevia.lover", "anevia.closed"),
-         ("anevia.parted", "anevia.committed", *FATES))
+         ("anevia.parted", "anevia.committed", *FATES), ForbidOverrides={"sacrifice": "trickster.commander_back"})
 # Sol INT: the registered "wife killed" ending denies the night she chose after her return; this history gets its own
 # page (the registered ending Forbids her renewed terms instead).
 epilogue("anevia.trickster.epilogue.nailed_wardrobe_widow", (RETURNED, "anevia.lover", "irabeth_dead"),
