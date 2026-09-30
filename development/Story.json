@@ -405424,6 +405424,36 @@
               "Next": "given",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "yaniel.trickster.carries"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Give her the shackle back, and leave her the sword.]",
+              "Next": "given_carries",
+              "Set": [],
+              "Requires": [
+                "yaniel.trickster.carries"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Yaniel"
+        },
+        {
+          "Id": "given_carries",
+          "Speaker": "Yaniel",
+          "Text": "{n}You put the iron in her palm. When she holds the sword out after it, you shake your head.{/n}\n\"Keep it,\" {n}you say.{/n} {n}She stares at you, and at the sword, and does not offer it again.{/n}\n\"Then it is not a trade,\" {n}she says slowly.{/n} \"It is two gifts, and nobody asked for either.\" {n}She turns the iron over. The sheared link swings.{/n} \"It is lighter than I remembered. Or I am stronger. One of us has changed.\"\n{n}She does not put it on. She hangs it from a nail by the window, where it can see the road, and stands looking at it with her back to you, with your sword still on her hip.{/n} \"Thank you, Commander. You had better go. I have a watch to stand.\"",
+          "Choices": [
+            {
+              "Text": "[Go.]",
+              "Next": null,
+              "Set": [
+                "yaniel.trickster.declined"
+              ],
+              "Requires": [],
               "Forbids": [],
               "Abort": false
             }
@@ -405909,6 +405939,36 @@
               "Next": "given",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "yaniel.trickster.carries"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Give her the shackle back, and leave her the sword.]",
+              "Next": "given_carries",
+              "Set": [],
+              "Requires": [
+                "yaniel.trickster.carries"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Yaniel"
+        },
+        {
+          "Id": "given_carries",
+          "Speaker": "Yaniel",
+          "Text": "{n}You put the iron in her palm. When she holds the sword out after it, you shake your head.{/n}\n\"Keep it,\" {n}you say.{/n} {n}She stares at you, and at the sword, and does not offer it again.{/n}\n\"Then it is not a trade,\" {n}she says slowly.{/n} \"It is two gifts, and nobody asked for either.\" {n}She turns the iron over. The sheared link swings.{/n} \"It is lighter than I remembered. Or I am stronger. One of us has changed.\"\n{n}She does not put it on. She hangs it from a nail by the window, where it can see the road, and stands looking at it with her back to you, with your sword still on her hip.{/n} \"Thank you, Commander. You had better go. I have a watch to stand.\"",
+          "Choices": [
+            {
+              "Text": "[Go.]",
+              "Next": null,
+              "Set": [
+                "yaniel.trickster.declined"
+              ],
+              "Requires": [],
               "Forbids": [],
               "Abort": false
             }
@@ -406050,7 +406110,7 @@
         {
           "Id": "declined",
           "Speaker": "Yaniel",
-          "Text": "\"You gave it back.\" {n}She says it to the statue.{/n} \"I have had it on a nail by my window for three nights now, and every night I have taken it down and held it, and put it back. I thought it would feel like having my wrist back. It feels like having something taken away from me twice.\"\n\"I do not know what that means. When I do not know what a thing means I kneel a night on it. That is what a vigil is for.\"",
+          "Text": "\"You gave it back.\" {n}She says it to the statue.{/n} \"It has been on a nail by my window since you put it in my hand, and I have taken it down and held it, and put it back, more times than I will admit. I thought it would feel like having my wrist back. It feels like having something taken away from me twice.\"\n\"I do not know what that means. When I do not know what a thing means I kneel a night on it. That is what a vigil is for.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -406096,17 +406156,49 @@
               "Text": "Continue",
               "Next": "bell",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "yaniel.trickster.declined"
+              ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "bell_broken",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "yaniel.trickster.declined"
+              ],
               "Abort": false
             }
           ],
           "Portrait": ""
         },
         {
+          "Id": "bell_broken",
+          "Speaker": "Yaniel",
+          "Text": "{n}The morning bell goes in the cathedral. She stands, stiffly, and pulls you up after her, and holds out her other hand, palm up.{/n}\n\"My iron,\" {n}she says.{/n}\n{n}You give it to her. She weighs it, the way she weighed the sword in the Fane, and turns it over so the sheared link swings, and looks at it in the gray light for as long as it takes the bell to stop.{/n}\n\"You broke your word on my sword,\" {n}she says,{/n} \"and then you knelt all night on wet stone beside me and did not once ask me to forgive you. I noticed that.\" {n}She takes your hand and puts the iron back in it, and closes your fingers over it, one at a time, the way you closed hers over the sword in the Fane.{/n} \"Keep it. Not because I have forgiven you. Because I would rather you had it than anyone. There. Now it is my trick.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the shackle.]",
+              "Next": "bell_yes",
+              "Set": [
+                "yaniel.committed",
+                "yaniel.trickster.cost.shackle_kept",
+                "yaniel.trickster.vigil_stood"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Yaniel"
+        },
+        {
           "Id": "bell",
           "Speaker": "Yaniel",
-          "Text": "{n}The morning bell goes in the cathedral. She stands, stiffly, and pulls you up after her, and then she holds out her other hand. The iron is in it: her cuff, the sheared link swinging.{/n}\n\"Take it back,\" {n}she says.{/n} \"Not because I cannot carry it. I carried it on a nail for three nights and it did not kill me. Because I would rather you had it. Because every time I look at your hands I want to know what they are holding, and I have decided I want it to be this.\"\n{n}She puts it in your palm and closes your fingers over it, one at a time, the way you closed hers over the sword in the Fane.{/n} \"There. Now it is my trick.\"",
+          "Text": "{n}The morning bell goes in the cathedral. She stands, stiffly, and pulls you up after her, and then she holds out her other hand. The iron is in it: her cuff, the sheared link swinging.{/n}\n\"Take it back,\" {n}she says.{/n} \"Not because I cannot carry it. I carried it on a nail and it did not kill me. Because I would rather you had it. Because every time I look at your hands I want to know what they are holding, and I have decided I want it to be this.\"\n{n}She puts it in your palm and closes your fingers over it, one at a time, the way you closed hers over the sword in the Fane.{/n} \"There. Now it is my trick.\"",
           "Choices": [
             {
               "Text": "[Keep the shackle.]",
@@ -406741,7 +406833,8 @@
             {
               "Text": "{n}Radiance hung in the Commander's hall afterwards, not on the wall, where Yaniel had said it must never hang, but on a peg by the door at the height of a hand, so that it could be taken down in a hurry. It was, twice.{/n}",
               "Requires": [
-                "yaniel.trickster.judges"
+                "yaniel.trickster.judges",
+                "yaniel.radiance_held"
               ],
               "Forbids": [
                 "yaniel.trickster.oath_broken"
@@ -406845,11 +406938,10 @@
             {
               "Text": "{n}She told the Commander once, in the dark, that the oath had been the first true thing anyone had sworn to her since the siege, and that the Commander had kept it, and that she had no idea what to do with a person who kept things. She was learning.{/n}",
               "Requires": [
-                "yaniel.trickster.judges"
+                "yaniel.trickster.judges",
+                "yaniel.trickster.oath_stands"
               ],
-              "Forbids": [
-                "yaniel.trickster.oath_broken"
-              ],
+              "Forbids": [],
               "AnyGroups": []
             },
             {
@@ -406869,7 +406961,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}A paladin of Iomedae who had once been a thief in Kenabres kept the lamp at the niche filled, every morning, for as long as the statue stood at the gate. Nobody asked her to. Yaniel called her Sister, and meant it, and Seelah pretended not to hear.{/n}",
+              "Text": "{n}A paladin of Iomedae who had once been a street thief in Solku kept the lamp at the niche filled, every morning, for as long as the statue stood at the gate. Nobody asked her to. Yaniel called her Sister, and meant it, and Seelah pretended not to hear.{/n}",
               "Requires": [
                 "yaniel.trickster.seelah_blessed"
               ],
@@ -406989,7 +407081,8 @@
             {
               "Text": "{n}Radiance hung in the Commander's hall afterwards, not on the wall, where Yaniel had said it must never hang, but on a peg by the door at the height of a hand, so that it could be taken down in a hurry. It was, twice.{/n}",
               "Requires": [
-                "yaniel.trickster.judges"
+                "yaniel.trickster.judges",
+                "yaniel.radiance_held"
               ],
               "Forbids": [
                 "yaniel.trickster.oath_broken"
@@ -407160,7 +407253,8 @@
             {
               "Text": "{n}Radiance hung in the Commander's hall afterwards, not on the wall, where Yaniel had said it must never hang, but on a peg by the door at the height of a hand, so that it could be taken down in a hurry. It was, twice.{/n}",
               "Requires": [
-                "yaniel.trickster.judges"
+                "yaniel.trickster.judges",
+                "yaniel.radiance_held"
               ],
               "Forbids": [
                 "yaniel.trickster.oath_broken"
@@ -407327,7 +407421,8 @@
             {
               "Text": "{n}Radiance hung in the Commander's hall afterwards, not on the wall, where Yaniel had said it must never hang, but on a peg by the door at the height of a hand, so that it could be taken down in a hurry. It was, twice.{/n}",
               "Requires": [
-                "yaniel.trickster.judges"
+                "yaniel.trickster.judges",
+                "yaniel.radiance_held"
               ],
               "Forbids": [
                 "yaniel.trickster.oath_broken"
@@ -407497,7 +407592,8 @@
             {
               "Text": "{n}Radiance hung in the Commander's hall afterwards, not on the wall, where Yaniel had said it must never hang, but on a peg by the door at the height of a hand, so that it could be taken down in a hurry. It was, twice.{/n}",
               "Requires": [
-                "yaniel.trickster.judges"
+                "yaniel.trickster.judges",
+                "yaniel.radiance_held"
               ],
               "Forbids": [
                 "yaniel.trickster.oath_broken"
@@ -407623,7 +407719,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}Yaniel hung her iron from a nail by the window of the gate tower, where it could see the road the refugees took, and there it stayed. She never wore it again. She never threw it away.{/n}\n{n}She and the Commander were square, as she had asked, and she was scrupulous about it: she never owed the Commander so much as a cup of wine, and she never let the Commander owe her one. They were friends, of a sort, the careful sort. Some evenings, when the Commander came up the stair, she would be standing at the window with the iron in her hand, and she would put it back on its nail before she turned round.{/n}\n{n}She lived a long time, as half-elves do when nothing kills them. When she died the iron was found in her hand, and the priest who laid her out did not know what it was, and put it in the coffin with her anyway, because she would not let go of it.{/n}",
+          "Text": "{n}Yaniel hung her iron from a nail by the window of the gate tower, where it could see the road the refugees took, and there it stayed. She never wore it again. She never threw it away.{/n}\n{n}She and the Commander were square, or as near to it as she could make them, and she was scrupulous about it: she never owed the Commander so much as a cup of wine, and she never let the Commander owe her one. They were friends, of a sort, the careful sort. Some evenings, when the Commander came up the stair, she would be standing at the window with the iron in her hand, and she would put it back on its nail before she turned round.{/n}\n{n}She lived a long time, as half-elves do when nothing kills them. When she died the iron was found in her hand, and the priest who laid her out did not know what it was, and put it in the coffin with her anyway, because she would not let go of it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -407666,7 +407762,8 @@
             {
               "Text": "{n}Radiance hung in the Commander's hall afterwards, not on the wall, where Yaniel had said it must never hang, but on a peg by the door at the height of a hand, so that it could be taken down in a hurry. It was, twice.{/n}",
               "Requires": [
-                "yaniel.trickster.judges"
+                "yaniel.trickster.judges",
+                "yaniel.radiance_held"
               ],
               "Forbids": [
                 "yaniel.trickster.oath_broken"
@@ -408124,7 +408221,35 @@
           "Choices": [
             {
               "Text": "Continue",
+              "Next": "statue_told",
+              "Set": [],
+              "Requires": [
+                "yaniel.told_statue"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
               "Next": "statue",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "yaniel.told_statue"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Yaniel"
+        },
+        {
+          "Id": "statue_told",
+          "Speaker": "Yaniel",
+          "Text": "\"You told me in the Fane there was a statue of me. You did not tell me it was twice my height, in the middle of the cathedral square, with Radiance held up at the sky and a face on it like a girl who has never been hungry. The pilgrims leave candles at its feet. I went and stood among them one evening with my hood up. An old woman next to me was praying for her grandson at the front, to me, and I stood there beside her and did not know what to do with my hands.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "statue_end",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -408136,7 +408261,23 @@
         {
           "Id": "statue",
           "Speaker": "Yaniel",
-          "Text": "\"They have a statue of me in the cathedral square. You did not tell me that. Stone, twice my height, with Radiance held up at the sky and a face on it like a girl who has never been hungry. The pilgrims leave candles at its feet. I went and stood among them one evening with my hood up. An old woman next to me was praying for her grandson at the front, to me, and I stood there beside her and did not know what to do with my hands.\n\"The chaplains are taking it down next week and sending it up to Drezen on an ox-cart, because Drezen is ours again and the martyr ought to go home. I am going to Drezen too. I would like to get there before my statue does. I would like, if you are anywhere near the city, to see what you have done with my iron.\n\"Y.\"",
+          "Text": "\"They have a statue of me in the cathedral square. You did not tell me that. Stone, twice my height, with Radiance held up at the sky and a face on it like a girl who has never been hungry. The pilgrims leave candles at its feet. I went and stood among them one evening with my hood up. An old woman next to me was praying for her grandson at the front, to me, and I stood there beside her and did not know what to do with my hands.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "statue_end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Yaniel"
+        },
+        {
+          "Id": "statue_end",
+          "Speaker": "Yaniel",
+          "Text": "\"The chaplains are taking it down next week and sending it up to Drezen on an ox-cart, because Drezen is ours again and the martyr ought to go home. I am going to Drezen too. I would like to get there before my statue does. I would like, if you are anywhere near the city, to see what you have done with my iron.\n\"Y.\"",
           "Choices": [
             {
               "Text": "[Fold the letter away.]",
@@ -409013,7 +409154,7 @@
         {
           "Id": "told",
           "Speaker": "Yaniel",
-          "Text": "\"You told me in the Fane. Staunton and Joran, gone over to the demons, and dead for it. I said I knew. I did know; Minagho told me a hundred times. But I did not believe it until I came up here and asked the quartermaster where Staunton's forge had been, and he spat.\"",
+          "Text": "\"You told me in the Fane. Staunton and Joran, gone over to the demons, and dead for it. I said I knew. I did know; Minagho told me a hundred times. But I did not believe it until I came up here and asked the quartermaster where Joran's forge had been, and he spat.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -411424,7 +411565,7 @@
         {
           "Id": "two",
           "Speaker": "Yaniel",
-          "Text": "{n}She lets go of your hands and steps away and does them in the air, empty-handed, the way she did them in her head on the hook: two hundred cuts with a sword that is not there, fast and exact, her feet never moving off the one flagstone, her breath going in and out like a bellows.{/n}\n{n}When she stops, the first bell is ringing. She is not even flushed.{/n} \"There,\" {n}she says.{/n} \"Now you know what you are carrying. It is not a sword. It is the two hundred. Do not drop them.\"",
+          "Text": "{n}She lets go of your hands and steps away and does them in the air, empty-handed, the way she did them in her head on the hook: two hundred cuts with a sword that is not there, fast and exact, her feet never moving off the one flagstone, her breath going in and out like a bellows.{/n}\n{n}When she stops, the first bell is ringing. She is not even flushed.{/n} \"Two hundred,\" {n}she says.{/n} \"Every morning. I kept count in the Fane, on the hook, in my head, and I never lost my place once. Keep your wrist straight. You have done forty.\"",
           "Choices": [
             {
               "Text": "Continue",

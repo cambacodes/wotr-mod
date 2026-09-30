@@ -50,9 +50,13 @@ visit(Y + "ch3.nerosyan", "The Half Measure", [
        c("Continue", "half")),
     yn("half", '''"The Half Measure is still there. I stood in the street outside it for most of an afternoon before I could go in. The board over the door is new and the stairs are the same. They do not serve the roast any more. The cook who made it died forty years ago, and her daughter after her, and the girl behind the counter now had never heard of it. I told her how it was done, as near as I remembered, and she wrote it down on a slate, and made a face.
 "The old tree by the town hall is in leaf, and not in bloom. I stood under it anyway. It is a great deal bigger than it was. So, I suppose, am I, in the wrong direction."''',
-       c("Continue", "statue")),
-    yn("statue", '''"They have a statue of me in the cathedral square. You did not tell me that. Stone, twice my height, with Radiance held up at the sky and a face on it like a girl who has never been hungry. The pilgrims leave candles at its feet. I went and stood among them one evening with my hood up. An old woman next to me was praying for her grandson at the front, to me, and I stood there beside her and did not know what to do with my hands.
-"The chaplains are taking it down next week and sending it up to Drezen on an ox-cart, because Drezen is ours again and the martyr ought to go home. I am going to Drezen too. I would like to get there before my statue does. I would like, if you are anywhere near the city, to see what you have done with my iron.
+       c("Continue", "statue_told", requires=(TOLD_STATUE,)),
+       c("Continue", "statue", forbids=(TOLD_STATUE,))),
+    yn("statue_told", '''"You told me in the Fane there was a statue of me. You did not tell me it was twice my height, in the middle of the cathedral square, with Radiance held up at the sky and a face on it like a girl who has never been hungry. The pilgrims leave candles at its feet. I went and stood among them one evening with my hood up. An old woman next to me was praying for her grandson at the front, to me, and I stood there beside her and did not know what to do with my hands."''',
+       c("Continue", "statue_end")),
+    yn("statue", '''"They have a statue of me in the cathedral square. You did not tell me that. Stone, twice my height, with Radiance held up at the sky and a face on it like a girl who has never been hungry. The pilgrims leave candles at its feet. I went and stood among them one evening with my hood up. An old woman next to me was praying for her grandson at the front, to me, and I stood there beside her and did not know what to do with my hands.''',
+       c("Continue", "statue_end")),
+    yn("statue_end", '''"The chaplains are taking it down next week and sending it up to Drezen on an ox-cart, because Drezen is ours again and the martyr ought to go home. I am going to Drezen too. I would like to get there before my statue does. I would like, if you are anywhere near the city, to see what you have done with my iron.
 "Y."''',
        c("[Fold the letter away.]", flags=(CH3_READ,))),
 ], requires=("trickster.ever",), forbids=(CH3_READ,), delay=48, kind="letter", chapters=(3, 4), areas=(),
@@ -188,7 +192,7 @@ visit(Y + "beat.staunton", "Joran's brand", [
     nar("start", '''{n}She comes down to your rooms after dark, which she has never done, and does not sit. She stands by the hearth with her arms folded and her back to the fire, and says, before you have shut the door:{/n}''',
         c("Continue", "told", requires=(TOLD_STAUNTON,)),
         c("Continue", "learned", forbids=(TOLD_STAUNTON,))),
-    yn("told", '''"You told me in the Fane. Staunton and Joran, gone over to the demons, and dead for it. I said I knew. I did know; Minagho told me a hundred times. But I did not believe it until I came up here and asked the quartermaster where Staunton's forge had been, and he spat."''',
+    yn("told", '''"You told me in the Fane. Staunton and Joran, gone over to the demons, and dead for it. I said I knew. I did know; Minagho told me a hundred times. But I did not believe it until I came up here and asked the quartermaster where Joran's forge had been, and he spat."''',
        c("Continue", "brand")),
     yn("learned", '''"I asked the quartermaster where Staunton's brother kept his forge. He spat. Then a sergeant with more tact told me the rest: Staunton gone over to the demons, again, at the end, and Joran with him, and both of them dead for it. Minagho told me that a hundred times in the Fane. I did not believe her. I believe a sergeant."''',
        c("Continue", "brand")),
@@ -537,7 +541,7 @@ visit(Y + "beat.drill", "Hold it properly", [
         c('"Show me the two hundred."', "two"),
         c('"You still want it back."', "want")),
     yn("two", '''{n}She lets go of your hands and steps away and does them in the air, empty-handed, the way she did them in her head on the hook: two hundred cuts with a sword that is not there, fast and exact, her feet never moving off the one flagstone, her breath going in and out like a bellows.{/n}
-{n}When she stops, the first bell is ringing. She is not even flushed.{/n} "There," {n}she says.{/n} "Now you know what you are carrying. It is not a sword. It is the two hundred. Do not drop them."''',
+{n}When she stops, the first bell is ringing. She is not even flushed.{/n} "Two hundred," {n}she says.{/n} "Every morning. I kept count in the Fane, on the hook, in my head, and I never lost my place once. Keep your wrist straight. You have done forty."''',
         c("Continue", "end")),
     yn("want", '''{n}Her hands go still on yours.{/n}
 "Yes," {n}she says, after a while.{/n} "Every day. Every time I see it on your hip I want to take it off you and run. I told you in the Fane my hands were not fit for it. They are fit. I am the one who is not." {n}She lets go.{/n} "Carry it where you swore, Commander. Carry it well. And do not ever offer it to me again, because one day I will take it, and then we will both have to live with that."''',

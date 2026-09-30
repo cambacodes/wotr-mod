@@ -577,7 +577,13 @@ TRADE_BODY = [
 "Well, Commander? It is a fair trade. It is the fairest one anybody has offered me in seventy years."''',
        c('[Keep the shackle] "No. You keep what I gave you. I keep what I took. Nobody\'s square."', "yes",
          flags=(COMMITTED, SHACKLE)),
-       c("[Give her the shackle back.]", "given")),
+       c("[Give her the shackle back.]", "given", forbids=(CARRIES,)),
+       c("[Give her the shackle back, and leave her the sword.]", "given_carries", requires=(CARRIES,))),
+    yn("given_carries", '''{n}You put the iron in her palm. When she holds the sword out after it, you shake your head.{/n}
+"Keep it," {n}you say.{/n} {n}She stares at you, and at the sword, and does not offer it again.{/n}
+"Then it is not a trade," {n}she says slowly.{/n} "It is two gifts, and nobody asked for either." {n}She turns the iron over. The sheared link swings.{/n} "It is lighter than I remembered. Or I am stronger. One of us has changed."
+{n}She does not put it on. She hangs it from a nail by the window, where it can see the road, and stands looking at it with her back to you, with your sword still on her hip.{/n} "Thank you, Commander. You had better go. I have a watch to stand."''',
+       c("[Go.]", flags=(DECLINED,))),
     yn("yes", '''{n}She stares at you. Her hand stays out a moment longer, empty, and then she lets it drop.{/n}
 "Nobody's square," {n}she repeats.{/n} "That is not a trade. That is a debt. Two debts, going the wrong way." {n}She crosses the room. Up close she smells of the wall, of cold stone and wind and the oil she uses on the sword.{/n} "Do you know what Minagho used to say to me? That a thing you owe is a thing that owns you. She said it the way other people say good night."
 {n}She takes your face in both her hands. They are hard hands, callused in all the places a sword calluses a hand, and they are shaking.{/n} "I would like very much to owe you something, and be owned by nothing," {n}she says, and kisses you.{/n}''',
@@ -622,7 +628,7 @@ VIGIL_NODES = [
         c("Continue", "declined", requires=(DECLINED,), forbids=(OATH_BROKEN,))),
     yn("broken", '''"You broke an oath on my sword." {n}She says it to the statue.{/n} "A paladin who breaks an oath kneels a night for it. You are not a paladin, and I am not your confessor, and I do not know what this is. But I know what a vigil is for. It is for finding out what is left when everything you were going to say has been said to the dark."''',
        c("Continue", "choose")),
-    yn("declined", '''"You gave it back." {n}She says it to the statue.{/n} "I have had it on a nail by my window for three nights now, and every night I have taken it down and held it, and put it back. I thought it would feel like having my wrist back. It feels like having something taken away from me twice."
+    yn("declined", '''"You gave it back." {n}She says it to the statue.{/n} "It has been on a nail by my window since you put it in my hand, and I have taken it down and held it, and put it back, more times than I will admit. I thought it would feel like having my wrist back. It feels like having something taken away from me twice."
 "I do not know what that means. When I do not know what a thing means I kneel a night on it. That is what a vigil is for."''',
        c("Continue", "choose")),
     yn("choose", '''"Kneel with me until the bell. Or do not. There is no shame in going to bed, Commander. The crusade needs you awake more than it needs you on your knees in front of a statue that does not look like me."''',
@@ -631,9 +637,15 @@ VIGIL_NODES = [
     nar("kneel", '''{n}You kneel. The flags are wet and colder than anything has a right to be in summer. The lamp throws the statue's shadow up the wall, sword and all, three times the height of the woman beside you.{/n}
 {n}She does not pray aloud. After the first hour, neither do you. The watch changes on the wall above; a cart goes by in the dark; somewhere out in the ash something howls and is answered and falls quiet. Your knees stop hurting sometime after midnight, which is worse than when they hurt.{/n}
 {n}Toward the end of the night she reaches over without looking and takes your hand, and holds it on the stone between you, and does not let go.{/n}''',
-        c("Continue", "bell")),
+        c("Continue", "bell", requires=(DECLINED,)),
+        c("Continue", "bell_broken", forbids=(DECLINED,))),
+    yn("bell_broken", '''{n}The morning bell goes in the cathedral. She stands, stiffly, and pulls you up after her, and holds out her other hand, palm up.{/n}
+"My iron," {n}she says.{/n}
+{n}You give it to her. She weighs it, the way she weighed the sword in the Fane, and turns it over so the sheared link swings, and looks at it in the gray light for as long as it takes the bell to stop.{/n}
+"You broke your word on my sword," {n}she says,{/n} "and then you knelt all night on wet stone beside me and did not once ask me to forgive you. I noticed that." {n}She takes your hand and puts the iron back in it, and closes your fingers over it, one at a time, the way you closed hers over the sword in the Fane.{/n} "Keep it. Not because I have forgiven you. Because I would rather you had it than anyone. There. Now it is my trick."''',
+       c("[Keep the shackle.]", "bell_yes", flags=(COMMITTED, SHACKLE, VIGIL))),
     yn("bell", '''{n}The morning bell goes in the cathedral. She stands, stiffly, and pulls you up after her, and then she holds out her other hand. The iron is in it: her cuff, the sheared link swinging.{/n}
-"Take it back," {n}she says.{/n} "Not because I cannot carry it. I carried it on a nail for three nights and it did not kill me. Because I would rather you had it. Because every time I look at your hands I want to know what they are holding, and I have decided I want it to be this."
+"Take it back," {n}she says.{/n} "Not because I cannot carry it. I carried it on a nail and it did not kill me. Because I would rather you had it. Because every time I look at your hands I want to know what they are holding, and I have decided I want it to be this."
 {n}She puts it in your palm and closes your fingers over it, one at a time, the way you closed hers over the sword in the Fane.{/n} "There. Now it is my trick."''',
        c("[Keep the shackle.]", "bell_yes", flags=(COMMITTED, SHACKLE, VIGIL))),
     yn("bell_yes", '''{n}She kisses you in the gray light at the foot of her own statue, briefly and hard, with the lamp guttering out at her knee.{/n}
@@ -737,7 +749,7 @@ COMMON = (
     p("{n}The Commander carried a husk's iron cuff for the rest of a long life, crude and heavy, with one sheared link of chain still hanging from its eye. Nobody was ever allowed to clean it.{/n}", requires=(SHACKLE,)),
     p("{n}Radiance stayed in Yaniel's hands. The Church of Iomedae asked for it back four times in the first year of the peace, politely, and then stopped asking. It never sang again, so far as anyone knew; she said once had been enough, and that she had heard it for both of them.{/n}", requires=(CARRIES, HOLY)),
     p("{n}Radiance stayed in Yaniel's hands. The Church of Iomedae asked for it back four times in the first year of the peace, politely, and then stopped asking. It never sang for her, and she never asked it to; she said it was a sword, and she was a soldier, and that was enough for both of them.{/n}", requires=(CARRIES,), forbids=(HOLY,)),
-    p("{n}Radiance hung in the Commander's hall afterwards, not on the wall, where Yaniel had said it must never hang, but on a peg by the door at the height of a hand, so that it could be taken down in a hurry. It was, twice.{/n}", requires=(JUDGES,), forbids=(OATH_BROKEN,)),
+    p("{n}Radiance hung in the Commander's hall afterwards, not on the wall, where Yaniel had said it must never hang, but on a peg by the door at the height of a hand, so that it could be taken down in a hurry. It was, twice.{/n}", requires=(JUDGES, HELD), forbids=(OATH_BROKEN,)),
     p("{n}When the Commander came back from the Threshold, Yaniel was at the gate, and she looked at the Commander's hip before she looked at anything else. Radiance was there. She said that was proof enough that it had gone into the Wound and come out again, which it was not quite, and she knew it, and she let it be enough anyway. She never asked about the oath again.{/n}", any_groups=((OATH_PENDING, OATH_UNPROVEN),), requires=(HELD,)),
     p("{n}When the Commander came back from the Threshold, Yaniel was at the gate, and she looked at the Commander's hip before she looked at anything else. Radiance was not there. She did not ask where it was. She said, to nobody in particular, that she had sworn a stranger to carry her sword into the Wound and did not know to this day whether it had gone, and that not knowing was a thing she would carry herself, since somebody had to.{/n}", any_groups=((OATH_PENDING, OATH_UNPROVEN),), forbids=(HELD,)),
     p("{n}The painted martyr went into the cathedral of Drezen at midsummer, as the chaplains had planned. The chaplains never did find out why the Commander's household laughed every time the procession went by it.{/n}", requires=(NICHE,)),
@@ -755,10 +767,10 @@ SCENES.append(scene(Y + "epilogue.together", "", "YanielEpilogue", 6, "", [
 {n}Every year, on the night the Fane fell, she knelt a vigil in front of her own statue in the cathedral, and at the morning bell she got up and went home, and on the way she laughed.{/n}''',
         paragraphs=(*COMMON,
                     p("{n}The Commander never took the iron off. Yaniel said it looked ridiculous on a free wrist and was the only piece of jewellery she had ever given anyone, and that she would break the arm of whoever tried to remove it.{/n}", requires=(CUFF_WORN,)),
-                    p("{n}She told the Commander once, in the dark, that the oath had been the first true thing anyone had sworn to her since the siege, and that the Commander had kept it, and that she had no idea what to do with a person who kept things. She was learning.{/n}", requires=(JUDGES,), forbids=(OATH_BROKEN,)),
+                    p("{n}She told the Commander once, in the dark, that the oath had been the first true thing anyone had sworn to her since the siege, and that the Commander had kept it, and that she had no idea what to do with a person who kept things. She was learning.{/n}", requires=(JUDGES, OATH_STANDS)),
                     p("{n}The broken oath was never mentioned between them after the night of the vigil. She said a vigil was for leaving something at the foot of a statue, and she had left it there.{/n}", requires=(OATH_BROKEN,)),
                     p("{n}On the night before the Threshold she came to the Commander's tent with Radiance in its saddle-leather scabbard and a lamp. She did not say anything. She set the lamp down, put the Commander's hand on the hilt beside her own, and held it there until the lamp went out.{/n}", requires=(CARRIES,)),
-                    p("{n}A paladin of Iomedae who had once been a thief in Kenabres kept the lamp at the niche filled, every morning, for as long as the statue stood at the gate. Nobody asked her to. Yaniel called her Sister, and meant it, and Seelah pretended not to hear.{/n}", requires=(SEELAH_BLESSED,)),
+                    p("{n}A paladin of Iomedae who had once been a street thief in Solku kept the lamp at the niche filled, every morning, for as long as the statue stood at the gate. Nobody asked her to. Yaniel called her Sister, and meant it, and Seelah pretended not to hear.{/n}", requires=(SEELAH_BLESSED,)),
                     p("{n}The sentries of the east wall told for years how the Commander once kissed the paladin on the parapet in front of the whole watch, with ichor to the elbows, and how she pushed the Commander off and said 'Not yet', and how everybody on the wall knew exactly what 'yet' meant.{/n}", requires=(Y + "raid_kiss",)),
                     p("{n}She never learned to sleep through the night. But on the nights the Commander stayed, she slept past the second bell, and she said that was worth more than a bed.{/n}", requires=(Y + "night_stayed",)),
                     p("{n}She fought dirty from then on, when it mattered, and never once admitted where she had learned it.{/n}", requires=(Y + "bout_dirty",)),
@@ -800,7 +812,7 @@ tag(Y + "epilogue.unsettled")
 
 SCENES.append(scene(Y + "epilogue.declined", "", "YanielEpilogue", 6, "", [
     nar("page", '''{n}Yaniel hung her iron from a nail by the window of the gate tower, where it could see the road the refugees took, and there it stayed. She never wore it again. She never threw it away.{/n}
-{n}She and the Commander were square, as she had asked, and she was scrupulous about it: she never owed the Commander so much as a cup of wine, and she never let the Commander owe her one. They were friends, of a sort, the careful sort. Some evenings, when the Commander came up the stair, she would be standing at the window with the iron in her hand, and she would put it back on its nail before she turned round.{/n}
+{n}She and the Commander were square, or as near to it as she could make them, and she was scrupulous about it: she never owed the Commander so much as a cup of wine, and she never let the Commander owe her one. They were friends, of a sort, the careful sort. Some evenings, when the Commander came up the stair, she would be standing at the window with the iron in her hand, and she would put it back on its nail before she turned round.{/n}
 {n}She lived a long time, as half-elves do when nothing kills them. When she died the iron was found in her hand, and the priest who laid her out did not know what it was, and put it in the coffin with her anyway, because she would not let go of it.{/n}''',
         paragraphs=COMMON)],
     requires=("trickster.ever", DECLINED), forbids=(COMMITTED, LEFT_FREE, "sacrifice"), **SAC, **EP))

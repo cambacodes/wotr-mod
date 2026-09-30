@@ -313,16 +313,22 @@ internal static class YanielTricksterTests
             "Trk_Yaniel_Oath: the Commander's word is not a Diplomacy DC 20 check, or a lost sword can be talked round.");
         check(!Avail(trade, Later(story, broke, 24)) && Avail(vigil, Later(story, broke, 24)),
             "Trk_Yaniel_Oath: a broken oath still reaches the plain yes, or does not reach the vigil.");
-        var knelt = Take(vigil, Later(story, broke, 24), "bell", 0, Committed, Shackle, P + "vigil_stood");
+        var knelt = Take(vigil, Later(story, broke, 24), "bell_broken", 0, Committed, Shackle, P + "vigil_stood");
+        check(!Paths(vigil, Later(story, broke, 24)).Any(o => o.path.Any(e => e.node == "bell" || e.node == "declined")),
+            "The vigil after a broken oath tells the history of a returned cuff.");
         check(Avail(niche, Later(story, knelt, 24)), "Trk_Yaniel_Oath: the vigil does not reach the niche.");
         var gone = Take(vigil, Later(story, broke, 24), "leave", 0, LeftFree, Closed);
         check(!own.Any(s => Avail(s, Later(story, gone, 72))), "Leaving her to the vigil does not close the route.");
 
         // The player's no at the trade, and the recovery: the vigil reopens it.
-        var gaveBack = Take(trade, Later(story, afterLetter, 24), "given", 0, Declined);
+        var gaveBack = Take(trade, Later(story, afterLetter, 24), "given_carries", 0, Declined);
+        check(gaveBack.Has(Carries) && Ch(trade, "ask", 1).Forbids.Contains(Carries) && Ch(trade, "ask", 2).Requires.Contains(Carries),
+            "Giving the cuff back when she offered the sword does not leave her the sword.");
         check(!gaveBack.Has(Committed) && Avail(vigil, Later(story, gaveBack, 24)) && !Avail(trade, Later(story, gaveBack, 24)),
             "Giving the shackle back is not her no with the vigil after it.");
-        check(Take(vigil, Later(story, gaveBack, 24), "bell_yes", 0, Committed, Shackle).Has(Committed), "The vigil after a no does not reach the yes.");
+        check(Take(vigil, Later(story, gaveBack, 24), "bell_yes", 0, Committed, Shackle).Has(Committed)
+              && !Paths(vigil, Later(story, gaveBack, 24)).Any(o => o.path.Any(e => e.node == "bell_broken" || e.node == "broken")),
+            "The vigil after a no does not reach the yes, or tells the broken-oath history.");
 
         // The late road: the walls, her message, then the same verdict.
         var lateRoad = Take(wall, Later(story, Observe(story, World(story, 5, "trickster", "trickster.ever", "yaniel.freed", "yaniel.radiance_plus1"), "irabeth.chapter_five"), 24),
@@ -348,6 +354,10 @@ internal static class YanielTricksterTests
             check(together.Paragraphs.Count(q => Rules.ParagraphVisible(q, home6) && q.Text.Contains("Radiance was there")) == 1
                   && together.Paragraphs.Count(q => Rules.ParagraphVisible(q, empty6) && q.Text.Contains("Radiance was not there")) == 1,
                 "The open oath (" + open + ") is never answered after the Threshold.");
+            var all6 = new[] { home6, empty6 };
+            check(all6.All(w => !together.Paragraphs.Any(q => Rules.ParagraphVisible(q, w) && q.Text.Contains("first true thing")))
+                  && !S(P + "epilogue.together").Nodes[0].Paragraphs.Any(q => Rules.ParagraphVisible(q, empty6) && q.Text.Contains("hung in the Commander's hall")),
+                "An open oath is remembered as kept, or an absent sword hangs in the hall (" + open + ").");
         }
         // The trade's yes and the vigil need one of the Commander's own reciprocal choices.
         check(trade.Requires.Contains(P + "drawn") && vigil.Requires.Contains(P + "drawn")
