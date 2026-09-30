@@ -5,10 +5,17 @@ jewellery and meant to use the souls "as leverage to coerce people into doing my
 At the wedding "even the poor dog's" soul went into the cup (ElanIsDesperate/Cue_0006 d852d08d); the victims' bodies lie
 in a Drezen hospital "under the patronage of the churches of Iomedae, Torag, and Abadar" (string c96376e6), kept by
 Arsinoe and guarded by Houndhearts (string 1a8a489f). Kiana laughs at what frightens her: "The best way to stop being
-afraid of something is to laugh at it" (KyanaWelcome/Cue_0014 2b07731a). The Trickster's arcana: "You can reveal item
-properties that aren't even there" (TricksterKnowledgeArcanaTier3, string 08c5494d); an officer's complaint is "basically
-an invocation" (TricksterRankUp_1/Cue_0007 b1da045d). Authored, and labelled as authored: Sunhammer's apprentice and his
+afraid of something is to laugh at it" (KyanaWelcome/Cue_0014 2b07731a); an officer's complaint is "basically an
+invocation" (TricksterRankUp_1/Cue_0007 b1da045d). Authored, and labelled as authored: Sunhammer's apprentice and his
 master's price; the whole pouch sold or none; the marriage licence and the postponement; Kiana's unfinished page.
+
+Polish batch 9 (no mythic-power solutions): the soul-gem is freed by a con and a chisel, not by an appraisal that makes
+a crack real. A trapped soul goes free when its gem is broken (the soul-trapping rule of Pathfinder's trap the soul);
+Arsinoe audits jewellers for Abadar and carries a cleaving chisel, and every stone has a grain. "Paste" is the insult that
+gets the stone into the Commander's hand and the Bluff that sends the apprentice home believing his master's work
+failed; with the honest forger's counterfeit (DarekSunhammersFake) the stone is palmed and he never knows. The dog's
+sample is broken with a sword pommel in front of Kiana. The chosen TricksterKnowledgeArcanaTier3 only lowers the Bluff
+DC ("you know stones better than he does"). No other romance is required: Arsinoe acts as the hospital's keeper.
 """
 from story_format import c, n, p, reaction, scene
 
@@ -114,7 +121,7 @@ letter("kiana.trickster.aftermath.letter_waited", "The bottom of the box", [
 # --- State possessed_no_rescue: the fake gem (F14) --------------------------------------------------------------------
 
 TRICK_WAKE = '''{n}She sits up too fast, grabs the edge of the cot, and laughs at herself before anyone else can.{/n}
-"So. I was a stone." {n}She looks at Arsinoe, then at you.{/n} "A *flawed* stone, Arsinoe tells me. Bubbles! I was married for about a quarter of an hour, and then I was a stone with a bubble in it."
+"So. I was a stone." {n}She looks at Arsinoe, then at you.{/n} "A *broken* stone, Arsinoe tells me. Split down the middle like a walnut! I was married for about a quarter of an hour, and then I was a stone with a crack in it."
 {n}Her hands are shaking. She looks at them as if they belong to a guest who has had too much wine.{/n}
 "The best way to stop being afraid of something is to laugh at it. So I'm going to laugh at this until they stop."
 {n}They do not stop. She laughs anyway. Then she looks down the row of cots at the others, still breathing, still empty, and the laugh runs out.{/n}
@@ -123,35 +130,39 @@ TRICK_WAKE = '''{n}She sits up too fast, grabs the edge of the cot, and laughs a
 letter("kiana.trickster.possessed.fake_gem", "Paste", [
     ars("start", '''{n}The hospital for Darek Sunhammer's victims smells of lamp oil, tallow and three kinds of incense. The churches of Iomedae, Torag and Abadar share its roof and have agreed on nothing else. The bodies lie in rows under clean blankets, breathing, empty. Two Houndhearts keep the door.{/n}
 {n}At the end of the last row, beside the cot where Kiana lies in what is left of her wedding dress, a young man in a jeweller's leather apron is holding a pale stone up to the lamp, turning it the way his master must have taught him. Arsinoe stands between him and the cot. From the set of her shoulders she has been standing there for some time.{/n}
-"Commander. He says this is Kiana." {n}She does not take her eyes off the stone.{/n} "Abadar forgive me, I have checked. He is not lying." {n}Her voice drops.{/n} "I audit jewellers for the temple, Commander. I cannot tell you how his stones hold what they hold. I can tell you they are flawless, every one, and I would not care to learn what one does with a flaw in it."''',
+"Commander. He says this is Kiana." {n}She does not take her eyes off the stone.{/n} "Abadar forgive me, I have checked. He is not lying." {n}Her voice drops.{/n} "I audit jewellers for the temple, Commander. I cannot tell you how his stones hold what they hold. I can tell you two things. A soul shut in a stone goes free when the stone breaks, to the nearest thing that will hold it. And every stone has a grain, even his. Strike along it, and the finest diamond in Mendev comes apart in your hand." {n}Her fingers rest on the leather case at her belt, where an auditor of jewellers keeps her loupe and her cleaving chisel.{/n} "He will not let it out of his hand for me. I have asked."''',
       c("Continue", "terms")),
     nar("terms", '''{n}The apprentice bows to you exactly as low as a shopkeeper bows to a customer who has not yet paid.{/n}
 "Master Sunhammer sends his compliments, Commander, and his terms. A craftsman honours every commission. The bride's stone is the sample; the rest of the wedding party is in here." {n}He touches the pouch at his belt. It is heavy, and it does not chink like coin.{/n} "The lot, for a thousand crowns in crusade gold and one small favour, to be named when it pleases him. He sells them all, or none."
 {n}He tilts the stone so the lamplight moves inside it.{/n}
-"He asked me to say that he is a patient man. Every soul in this pouch is a door into a house in Mendev, and he has the key to every one. He would hate for yours to be the one door he had to break."''',
+"He asked me to say that he is a patient man. Every soul in this pouch is a door into a house in Mendev, and he has the key to every one. He would hate for yours to be the one door he had to break."
+{n}The two Houndhearts at the door could have him on the floor before he finished the sentence. He knows it. He glances at them, and then at you, with the calm of a man whose master will start knocking on doors at the fourth bell if he is not back on the square to say otherwise.{/n}''',
       c('[Appraise the soul-gem out loud] "Paste. Cheap paste. I wouldn\'t trade a boot for it."', "appraisal",
-        mythic="Trickster", alignment=("Chaotic", 1), requires=(ARCANA,)),
-      c('[Palm the real stone first] "Let me see that. Closer."', "swapped", requires=(HELD, ARCANA)),
+        mythic="Trickster", alignment=("Chaotic", 1)),
+      c('[Palm the real stone first] "Let me see that. Closer."', "swapped", requires=(HELD,)),
       c('[Pay his master\'s price] "Done. A thousand crowns. Tell him he\'ll get his favour."', "paid",
         crusade=("Finances", -1000)),
       c('[Not yet] "Not yet. Keep him here."', abort=True), portrait="Arsinoe"),
-    nar("appraisal", '''{n}You say it the way you would say it to a fence on the Kenabres docks: bored, and a little sorry for him.{/n}
-{n}You name its faults as you go, the way a pawnbroker does to bring the price down: a bubble under the table, just off centre; a crack no wider than a hair, running from the girdle clean through to the heart. Arsinoe's flaw, the only one that matters. None of it is there. It is the finest stone in the room. You are not describing it. You are identifying it, with the knack you chose on the Trickster's road: every item you identify gains a property that is not there, and could not possibly be there.{/n}
-{n}Arsinoe goes very still. She has understood what you are doing, and what it risks: a soul let out of a stone goes to the nearest thing that will hold it. "She is right there," she says under her breath, to you or to her god. "Right there. Let it be her."{/n}
-{n}Then the apprentice screws in his loupe and holds the stone up to the lamp to prove you wrong, and you watch his face as he finds it. The bubble, exactly where you said. The crack, fine as a hair, from the girdle to the heart, where no crack was a breath ago. And along it, slow as oil, the pale light that lived in the stone is running out through the flaw you gave it, beading at the girdle, and falling, not to the floor, but toward the cot.{/n}
-{n}The apprentice holds it up to the lamp again, and his face changes. Behind you Arsinoe makes a small sound that, in a lesser priestess, would have been a laugh.{/n}''',
+    nar("appraisal", '''{n}You say it the way you would say it to a fence on the Kenabres docks: bored, and a little sorry for him. Then you go on, the way a pawnbroker goes on to bring the price down. Glass under the table. Lead in the colour. The kind of stone a sutler sells to a homesick soldier for his girl. His master, you suggest, has been sending the boy out with the shop's seconds.{/n}
+{n}It is the finest stone in the room, and he knows it, and you are insulting the only thing he is proud of. His face goes red to the ears. "Paste scratches," he says. "Paste chips. Try it, Commander, if you know a tool from a teaspoon." And he holds it out to you, flat on his palm, the way a craftsman holds out his work to a customer who is about to be made a fool of.{/n}
+{n}You take it. You turn it to the lamp as if you meant to scratch it, and Arsinoe, who has understood you a sentence ago, has her case open and her cleaving chisel in your other hand before the apprentice has seen her move. You find the grain the way she told you, a faint line of light along the table. You set the edge on it. You strike it once with the heel of your hand.{/n}
+{n}The stone comes apart in two clean halves, and out of the break, slow as oil, runs a pale light that beads on your fingers and falls, not to the floor, but toward the cot. Arsinoe steps sideways, easily, into the apprentice's line of sight, and says under her breath, to you or to her god: "Let it be her."{/n}
+{n}The apprentice stares at the two halves on your palm. Craftsmen's stones do not split at one blow. Paste does.{/n}''',
       c('[Keep a straight face] "...Paste."',
-        check=dict(Skill="CheckBluff", DC=20, Success="sold", Failure="bolted", CommanderOnly=True)), portrait="Arsinoe"),
-    nar("sold", '''{n}He believes you. More to the point, he believes his own eyes. He swears at his master's craftsmanship in a guild cant you do not know, drops the ruined stone back into the pouch with the rest, and goes, to take it up with the jeweller in person. The other stones go with him. You let them.{/n}
-{n}The cracked stone is empty. Whatever it held is not in the pouch any more. The lamp by the cot flickers once and steadies, and Kiana draws in a breath like someone coming up from deep water.{/n}''',
+        check=dict(Skill="CheckBluff", DC=20, Success="sold", Failure="bolted", CommanderOnly=True), forbids=(ARCANA,)),
+      c('[Keep a straight face; you know stones better than he does] "...Paste. Look at the grain."',
+        check=dict(Skill="CheckBluff", DC=15, Success="sold", Failure="bolted", CommanderOnly=True), requires=(ARCANA,)),
+      portrait="Arsinoe"),
+    nar("sold", '''{n}He believes you. More to the point, he believes his own eyes. He swears at his master's craftsmanship in a guild cant you do not know, drops the two halves of the ruined stone back into the pouch with the rest, and goes, to take it up with the jeweller in person. The other stones go with him. You let them.{/n}
+{n}The broken stone is empty. Whatever it held is not in the pouch any more. The lamp by the cot flickers once and steadies, and Kiana draws in a breath like someone coming up from deep water.{/n}''',
       c('[Watch her wake] "Kiana?"', "woke_sold"), portrait="Arsinoe"),
-    nar("bolted", '''{n}He looks from the flaw to your face, and sees the grin you did not quite manage to keep off it. He goes white. Then he runs, through the Houndhearts before they can close the door and out into the street, pouch and all, and the other stones with it.{/n}
+    nar("bolted", '''{n}He looks from the broken stone to your face, and past Arsinoe's shoulder to the cot, and sees the grin you did not quite manage to keep off it. He goes white. Then he runs, through the Houndhearts before they can close the door and out into the street, pouch and all, and the other stones with it.{/n}
 {n}By tonight, somewhere in Mendev, a dwarf with a jeweller's hands will know exactly whose trick that was.{/n}
 {n}On the cot, Kiana draws in a breath like someone coming up from deep water.{/n}''',
       c('[Watch her wake] "Kiana?"', "woke_bolted"), portrait="Arsinoe"),
     nar("swapped", '''{n}He hands it over. Of course he does: a craftsman likes his work admired. You turn it to the lamp, and turn it back, and hand him the other one, the counterfeit of Sunhammer's work you have been carrying, cut by some honest forger to pass for his master's. He never feels the difference.{/n}
-{n}Then you appraise the stone in your fist out loud, the way you would at any pawnbroker's counter: a bubble just off centre, a crack no wider than a hair from the girdle clean through to the heart. When you open your hand the crack is there, and the pale light that lived in the stone has already run out along it, into the warm air above the cot.{/n}
-{n}The apprentice squints at the counterfeit between his own fingers. Now, and not before, he looks unsure of his trade.{/n}''',
+{n}Then you turn away to the cot, as if to compare the stone with the bride, and lean over her with your back to him. Arsinoe has already set her open case on the blanket by the bride's hand, without a word, the way a nurse sets out a tray before the surgeon asks. You take the chisel out of it, find the grain by feel, set the edge on it against the bedframe, and lean your weight on it. The stone parts in your fist with a sound no louder than a knuckle cracking. When you open your hand, the pale light that lived in it has already run out through the break, into the warm air above the cot.{/n}
+{n}You tell him, over your shoulder, that there is a bubble in his stone just off centre. The apprentice squints at the counterfeit between his own fingers, and finds one, because the honest forger who cut it was honest about that much. Now, and not before, he looks unsure of his trade.{/n}''',
       c('[Send him back to his master] "Take your stone back to Sunhammer. Tell him the Commander said it was flawed."', "woke_swapped",
         mythic="Trickster", alignment=("Chaotic", 1), remove_item=COUNTERFEIT, requires=(HELD,)),
       portrait="Arsinoe"),
@@ -180,13 +191,16 @@ letter("kiana.trickster.awake.dog_collar", "The sample", [
     nar("start", '''{n}Kiana is at the hospital, where she has been every day since the wedding: on a stool between two cots, reading aloud to people who cannot hear her. Her friend's dog lies at the foot of one of them, breathing and empty, and does not lift its head when you come in.{/n}
 {n}Sunhammer's apprentice is waiting for you by the door, in a jeweller's leather apron, with a pouch at his belt and a small bejewelled collar dangling from one finger.{/n}
 "Commander. Master Sunhammer sends his compliments." {n}He holds the collar up so the stone in it catches the lamplight.{/n} "The dog's. A sample, free of charge, so that you know the master's work is genuine. The rest of the wedding party is in the pouch. A thousand crowns in crusade gold for the lot, and one small favour, to be named when it pleases him. He sells them all, or none."
-{n}Behind you Kiana has stopped reading. She has heard every word.{/n}''',
+{n}Behind you Kiana has stopped reading. She has heard every word.{/n}
+{n}The Houndhearts at the door could take the pouch off him by force. He knows that too, and tells you, pleasantly, what his master does to the houses behind those doors if his boy is not back on the square by the fourth bell.{/n}''',
       c('[Appraise the dog\'s stone out loud] "Paste. Cheap paste. I wouldn\'t trade a boot for it."', "bark",
-        mythic="Trickster", alignment=("Chaotic", 1), requires=(ARCANA,)),
+        mythic="Trickster", alignment=("Chaotic", 1)),
       c('[Pay for the guests] "All of them. The thousand, and his favour."', "paid", crusade=("Finances", -1000)),
       c('[Not yet] "Not yet."', abort=True)),
-    k("bark", '''{n}You name its faults, bored, the way a pawnbroker does: a bubble under the table, a crack no wider than a hair, girdle to heart. None of it was true until you found it. When the apprentice turns the collar to the lamp the crack is there, and a thread of pale light is running out along it and down, toward the foot of the cot. At the foot of the cot the dog sneezes, sits up, and barks at nothing, furiously, as if it has a great deal to catch up on.{/n}
-{n}The apprentice looks at the flaw in the collar, and at the dog, and puts the collar away very carefully, the way you put away something that has bitten you. He does not stay to haggle. The pouch goes with him.{/n}
+    k("bark", '''{n}You say it bored, the way a pawnbroker does: glass under the table, lead in the colour, a sutler's trinket. It is a free sample, and he has just been told in front of a witness that it is worth nothing. He tosses the collar to you, stung, the way a craftsman tosses his work to a doubter. "Keep it, then, Commander. Scratch it and see."{/n}
+{n}You do not scratch it. You lay the collar on the flagstones, stone up, draw your sword an inch, and bring the pommel down on it with your whole weight.{/n}
+{n}The stone bursts like a hailstone on a roof. A thread of pale light runs out of the powder and along the floor, toward the foot of the cot. At the foot of the cot the dog sneezes, sits up, and barks at nothing, furiously, as if it has a great deal to catch up on.{/n}
+{n}The apprentice looks at the powder on the flagstones, and at the dog, and at you, and takes a step back and puts his hand over the pouch, the way you put your hand over something that has nearly been bitten. He does not stay to haggle. The pouch goes with him.{/n}
 "You saved the *dog*." {n}Kiana's voice cracks halfway up.{/n} "Of everyone in that cup, you saved the dog."
 {n}She laughs until she has to sit down on the floor, and the dog climbs into her lap to help.{/n}
 "Oh, gods. Elan is going to be *furious*. I love it. I love it, and there are still..." {n}She looks along the cots, and the laugh stops.{/n}''',
@@ -296,12 +310,12 @@ SCENES.append(scene("kiana.trickster.after.temple", "Behind the counter", "Kiana
       c('[Make light of it] "It was a joke. It got out of hand."', "spared_licence"),
       c('[Remind her who holds the stamp] "I hold the stamp, Kiana. Remember that."', "claimed_licence")),
     stone_pivot(),
-    k("told_robbed", '''{n}She listens to all of it without interrupting, which you suspect is a first. When you get to the part about the bubble and the flaw she puts her hand over her mouth.{/n}
-"You called me cheap. To his face. And it *worked*." {n}She lowers the hand. She isn't laughing now.{/n} "And the rest of them walked out of here in his pouch, because you had one joke in you that day and you spent it on me."
+    k("told_robbed", '''{n}She listens to all of it without interrupting, which you suspect is a first. When you get to the part about the chisel she puts her hand over her mouth.{/n}
+"You called me cheap. To his face. And then you broke me in half in front of him, and he *thanked* you." {n}She lowers the hand. She isn't laughing now.{/n} "And the rest of them walked out of here in his pouch, because there was one stone within reach that day and you spent it on me."
 {n}She is quiet for a while.{/n}
 "I don't know whether to kiss you or hit you. I'm going to do neither until I've written it down. Then I'll know which one the scene wants."''',
       c("Continue", "page")),
-    k("told_dog", '''"I heard. I was sitting right there." {n}She scratches the dog behind the ears; he groans with pleasure.{/n} "I wanted to hear you say it anyway, without an audience. You had one joke, and you spent it on a dog, and the rest of them walked out of here in a pouch."
+    k("told_dog", '''"I heard. I was sitting right there." {n}She scratches the dog behind the ears; he groans with pleasure.{/n} "I wanted to hear you say it anyway, without an audience. You had one stone within reach, and you spent it on a dog, and the rest of them walked out of here in a pouch."
 "I'm not angry. I don't think I'm angry. I'm going to write it down until I find out."''',
       c("Continue", "page")),
     k("told_ransomed", '''"A thousand crowns and a favour. To him." {n}She repeats it the way you would repeat the price of a horse you could not believe anyone had paid.{/n} "You know he'll come for it. Men like that always come for it, at the worst moment, in front of everyone. It's how they get an audience."
@@ -332,12 +346,12 @@ SCENES.append(scene("kiana.trickster.after.temple", "Behind the counter", "Kiana
    Areas=[DREZEN], Chapters=[5], ContactUnit=ARSINOE, AnswerLists=[ARSINOE_HUB]))
 
 
-# --- The pouch: Sunhammer's revised terms for the guests the joke left behind -------------------------------------------
+# --- The pouch: Sunhammer's revised terms for the guests the trick left behind ------------------------------------------
 
 SCENES.append(scene("kiana.trickster.pouch.second_offer", "Revised terms", "Kiana", 5,
                     '"Sunhammer\'s apprentice is back, I hear."', [
     ars("start", '''{n}He is at Arsinoe's counter, the same young man in the same leather apron, with the same pouch at his belt, lighter by one stone. Arsinoe has not offered him a chair.{/n}
-"Commander." {n}He bows exactly as low as before.{/n} "Master Sunhammer received my report of the flaw, and of what his stone was called at the lamp. He was displeased, and when my master is displeased he revises his terms. The rest of the wedding party: a thousand crowns and the favour, as before." {n}He clears his throat.{/n} "And an apology, in your own voice, for the insult to his craft. He has written the words himself. I am to carry them back exactly as you say them, and he intends to have them read out at the guild's feast, every year, for as long as there is a guild."
+"Commander." {n}He bows exactly as low as before.{/n} "Master Sunhammer received my report of the stone that split at the lamp, and of what it was called. He was displeased, and when my master is displeased he revises his terms. The rest of the wedding party: a thousand crowns and the favour, as before." {n}He clears his throat.{/n} "And an apology, in your own voice, for the insult to his craft. He has written the words himself. I am to carry them back exactly as you say them, and he intends to have them read out at the guild's feast, every year, for as long as there is a guild."
 {n}Behind the curtain somebody has stopped moving. Kiana is standing in the gap in her borrowed robe, listening.{/n}
 "Don't you dare," {n}she says.{/n} "Don't you *dare* apologise to him." {n}Then, much more quietly, looking at the pouch:{/n} "...Unless that's what it costs."''',
         c('[Pay, and say the apology] "A thousand crowns. The favour. And his words, in my mouth."', "paid",
@@ -485,9 +499,9 @@ REACTIONS = [
              entry='"About Kiana..."', Areas=[DREZEN], Chapters=[5],
              ForbidOverrides={"irabeth_dead": "irabeth.trickster.returned"}),
     anevia("kiana.trickster.possessed.react_anevia", (RETURNED, SOUL_LOST, ROBBED),
-           '''"You told a jeweller's boy his stone was fake, and it went fake."
+           '''"You told a jeweller's boy his stone was paste, broke it in half in front of him, and he went home believing you."
 {n}Anevia looks at you sidelong, the way she looks at a lock she has not picked yet.{/n}
-"I spent twenty years learning to lie to people. You lie to *things*. I can't decide whether to be impressed or to start checking my own rings."'''),
+"I spent twenty years learning to lie to people. I never once thought of lying to a man while I broke his things in his hand. I can't decide whether to be impressed or to start checking my own rings."'''),
     arsinoe("kiana.trickster.awake.react_arsinoe", (ROBBED, DOG),
             '''"A dog, Commander. I have a ward of sleeping wedding guests, and the one patient who woke up is a dog."
 {n}She holds up what is left of a quill.{/n}
@@ -514,11 +528,11 @@ MARRIED_ONLY = ("kiana.marriage", "kiana.widow", "kiana.answer")
 COMMITTED_ENDINGS = ("kiana.ending_together", "kiana.ending_bereaved", "kiana.ending_ascended", "kiana.ending_promised")
 ARSINOE_WEDDING = [
     ars("wedding", '''{n}She turns back one page, to a column headed in red ink: *Sunhammer. Outstanding.*{/n}
-"Before we come to the pledge. Your joke about paste brought one soul home from that man's stones. The other wedding guests still lie in my hospital without theirs." {n}She runs a finger down the column. It is not a short column.{/n} "That is not a debt you owe me, Commander. I do not bill for what I cannot price. I mention it so that you remember it, because I will."''',
+"Before we come to the pledge. Your paste and my chisel brought one soul home from that man's stones. The other wedding guests still lie in my hospital without theirs." {n}She runs a finger down the column. It is not a short column.{/n} "That is not a debt you owe me, Commander. I do not bill for what I cannot price. I mention it so that you remember it, because I will."''',
         c("Continue", "rider", requires=("konomi.trickster.cost.recalled",)),
         c("Continue", "pledge", forbids=("konomi.trickster.cost.recalled",))),
     ars("wedding_dog", '''{n}She turns back one page, to a column headed in red ink: *Sunhammer. Outstanding.*{/n}
-"Before we come to the pledge. Your joke about paste brought one soul home from that man's stones. It belonged to a dog. The wedding guests still lie in my hospital without theirs." {n}She runs a finger down the column. It is not a short column.{/n} "That is not a debt you owe me, Commander. I do not bill for what I cannot price. I mention it so that you remember it, because I will."''',
+"Before we come to the pledge. Your paste and my chisel brought one soul home from that man's stones. It belonged to a dog. The wedding guests still lie in my hospital without theirs." {n}She runs a finger down the column. It is not a short column.{/n} "That is not a debt you owe me, Commander. I do not bill for what I cannot price. I mention it so that you remember it, because I will."''',
         c("Continue", "rider", requires=("konomi.trickster.cost.recalled",)),
         c("Continue", "pledge", forbids=("konomi.trickster.cost.recalled",))),
 ]

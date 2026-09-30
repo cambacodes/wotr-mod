@@ -62,9 +62,14 @@ internal static class KianaTricksterTests
         check(terms[0].Mythic == "PlayerIsTrickster" && terms[0].Alignment?.Direction == "Chaotic" && terms[0].Alignment.Value == 1,
             "The appraisal lost its price.");
         check(terms[2].Crusade?.Resource == "Finances" && terms[2].Crusade.Amount == -1000, "Sunhammer's price is free.");
-        var bluff = gem.Nodes.Single(n => n.Id == "appraisal").Choices.Single().Check;
-        check(bluff != null && bluff.Skill == "CheckBluff" && bluff.DC == 20 && bluff.Success == "sold" && bluff.Failure == "bolted",
-            "The straight face is not a Bluff check.");
+        var straight = gem.Nodes.Single(n => n.Id == "appraisal").Choices;
+        var bluff = straight.Single(ch => ch.Forbids.Contains("trickster.arcana_tier3")).Check;
+        var knowing = straight.Single(ch => ch.Requires.Contains("trickster.arcana_tier3")).Check;
+        check(straight.Count == 2 && bluff != null && bluff.Skill == "CheckBluff" && bluff.DC == 20 && bluff.Success == "sold" && bluff.Failure == "bolted"
+              && knowing != null && knowing.Skill == "CheckBluff" && knowing.DC < 20 && knowing.Success == "sold" && knowing.Failure == "bolted",
+            "The straight face is not a Bluff check, or the arcana does more than lower its DC.");
+        check(!gem.Nodes.Concat(collar.Nodes).Any(n => n.Text.Contains("property that is not there") || n.Text.Contains("None of it was true until")),
+            "Trk_Kiana_NoPowerCrack (polish batch 9): an appraisal still makes the crack real.");
         var sendBack = gem.Nodes.Single(n => n.Id == "swapped").Choices.Single();
         check(sendBack.RemoveItem == Counterfeit && sendBack.Requires.Contains("kiana.counterfeit_held") && sendBack.Mythic == "PlayerIsTrickster",
             "The swap does not spend the counterfeit.");
@@ -102,12 +107,16 @@ internal static class KianaTricksterTests
         check(gemOut.Count(r => r.Has("kiana.trickster.cost.courier_marked")) == 1, "A failed Bluff does not mark the Commander.");
         check(!Pages(gem, possessed).Contains("swapped"), "The swap opens without the counterfeit.");
 
-        // Trk_Kiana_NoArcana (polish batch 3): the appraisal is the chosen Trickster arcana (TricksterKnowledgeArcanaTier3,
-        // "reveal item properties that aren't even there"); without it the Commander can only pay, and the swap stays shut too.
+        // Trk_Kiana_NoArcana (polish batch 9, replacing batch 3): the con is the Commander's, not the arcana's. Without the
+        // chosen TricksterKnowledgeArcanaTier3 the paste insult, the chisel and the swap all stay open; the arcana only
+        // lowers the Bluff DC.
         var noArcana = World(story, 5, "trickster", "trickster.ever", "chapter_later", "kiana.possessed", "kiana.counterfeit_held");
         var plain = Program.Walk(gem, noArcana).Where(r => r.Has(gem.Id)).ToList();
-        check(plain.Count == 1 && plain[0].Has("kiana.trickster.cost.sunhammer_favour") && !plain.Any(r => r.Has("kiana.trickster.cost.guests_robbed")),
-            "Trk_Kiana_NoArcana: the appraisal or the swap opened without the arcana trick.");
+        check(plain.Count(r => r.Has("kiana.trickster.cost.guests_robbed")) == 3 && plain.Any(r => r.Has("kiana.trickster.cost.counterfeit_spent"))
+              && plain.Any(r => r.Has("kiana.trickster.cost.sunhammer_favour")),
+            "Trk_Kiana_NoArcana: the chisel or the swap needs the arcana trick.");
+        var plainAwake = World(story, 5, "trickster", "trickster.ever", "chapter_later", "kiana.q2_done", "seelah_dead");
+        check(Program.Walk(collar, plainAwake).Any(r => r.Has("kiana.trickster.dog_saved")), "Trk_Kiana_NoArcana: the dog's stone needs the arcana trick.");
         // Trk_Kiana_Counterfeit: the preparation replaces the Bluff.
         var carrying = World(story, 5, "trickster", "trickster.ever", "chapter_later", "kiana.possessed", "kiana.counterfeit_held", "trickster.arcana_tier3");
         var swapped = Program.Walk(gem, carrying).Where(r => r.Has("kiana.trickster.cost.counterfeit_spent")).ToList();
