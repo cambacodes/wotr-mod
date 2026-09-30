@@ -438,7 +438,15 @@ SCENES.append(scene("soana.trickster.epilogue.commit", "Your end", "Epilogue", 5
     nar("start", '''{n}Soana took her leash back from the Commander's hand alone, with one strand and her own blood, and it nearly killed her. She buried the dead forest one grave a day. The year after the Worldwound closed she walked all the way to Drezen with the broken clay knot in her fist, found the Commander, and tied it to their wrist without asking.{/n}
 "Your end. I held it alone once. I will not do that twice."''',
         c(), paragraphs=EPILOGUE_PARAGRAPHS)],
-    requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED, DECLINED), last=99, Relationship="soana"))
+    requires=(LATE_COMMITTED, RETURNED), forbids=(COMMITTED, CLOSED, DECLINED), last=99, Relationship="soana"))
+
+# b9c: the living, missed-window Soana whose luck was paid but whose bowl was never answered gets her own late page (the
+# killed branch's leash and dead forest are not hers).
+SCENES.append(scene("soana.trickster.epilogue.luck_late", "The rattle in the bowl", "Epilogue", 5, "", [
+    nar("start", '''{n}The war ended before Soana finished thinking. She finished afterwards, on her own terms. The year after the Worldwound closed she walked all the way to Drezen with the loaded die in her fist, found the Commander, and put it in their palm.{/n}
+"Your luck. It has rattled in my bowl since the snow and I am sick of the noise. Bring it back to Wintersun and keep it where I can hear it, and we will see how much of it is left."''',
+        c(), paragraphs=EPILOGUE_PARAGRAPHS)],
+    requires=(LATE_COMMITTED, LUCK_KEPT), forbids=(RETURNED, COMMITTED, CLOSED, DECLINED), last=99, Relationship="soana"))
 
 UNBOUND = p("She took her leash back from the Commander's hand the day they parted, with a single strand and her own blood. "
              "It held, barely, for as long as she lived.", requires=(RETURNED,))

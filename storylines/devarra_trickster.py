@@ -133,8 +133,8 @@ def letter(id, title, nodes, requires, forbids=(), delay=0, **extra):
 # story for you, too!") with the same next cue (Cue_0012) and the same Chaotic shift, so the native fight follows.
 
 SCENES.append(scene(P + "dead.lair_story", "What happened next", "Devarra", 3, '[Speak from cover] "I know a better ending."', [
-    nar("hides", '''{n}She has heard you, and she waits for the rest; a dragon who sells lives for stories does not interrupt one. Behind the rocks, all the while the old elf was talking, you were looking at the walls. They are hung with hides: black, enormous, dry as old paper, each one split along the spine from the horns to the tail and left where it fell, like a snake's cast skin. There are six that you can count. The oldest is grey with dust. The one nearest the entrance has a hole through the chest you could put your arm into, the edges ragged where a lance went in.{/n}
-{n}Whatever wore that hide took a lance through the heart, and shed it, and is lying twenty paces away listening to a story.{/n}''',
+    nar("hides", '''{n}She has heard you, and she waits for the rest; a dragon who sells lives for stories does not interrupt one. Behind the rocks, all the while the old elf was talking, you were looking at the walls. They are hung with hides: black, enormous, dry as old paper, each one split along the spine from the horns to the tail and left where it fell, like a snake's cast skin. There are six that you can count. The oldest is grey with dust. The one nearest the entrance has a hole low in the chest you could put your arm into, the edges ragged where a lance went in.{/n}
+{n}Whatever wore that hide took a wound that should have killed it, shed the wound with the skin, and is lying twenty paces away listening to a story. It is a guess, and nobody has ever tested it: that a thing which can shed a mortal wound might shed a death, if nobody cuts it open first.{/n}''',
         c("[One whisper to Greybor first.]", "greybor"),
         c('"Never mind."', abort=True)),
     nar("greybor", '''{n}Greybor does not take his eyes off the soft place under her wing.{/n} "Whisper, then. I'm working."
@@ -203,14 +203,19 @@ storyteller(P + "dead.storytellers_version", "A story for a carcass", '"You were
 
 letter(P + "dead.woken", "The hide splits", [
     nar("wake", '''{n}For two days the reports from her carcass said what reports from carcasses say: that it stank, that it had not moved, that the quartermaster wished it minuted he had advised against paying good silver to guard meat. On the third day they stopped making sense.{/n}''',
-        c("Continue", "wake_sanctum", requires=(DEAD_SANCTUM,), forbids=(LATE,)),
+        c("Continue", "wake_sanctum", requires=(DEAD_SANCTUM,), forbids=(LATE, STORY_TOLD)),
         c("Continue", "wake_lair", forbids=(DEAD_SANCTUM, LATE)),
-        c("Continue", "wake_late", requires=(LATE,))),
-    nar("wake_sanctum", '''{n}The golems had their order now: the lizard is shedding, not in breach; stand over her; let nobody cut her. They stood over the carcass for three days, fists raised, and when Xanthir's last apprentice came back for the heart with a bone-saw, and when the crusade's renderers came for the hide with a wagon, the golems did exactly what they had been told. The renderers left the wagon. On the third night the hide split along the spine, the way a snake's does, from the horns to the tail.{/n}
+        c("Continue", "wake_late", requires=(LATE,)),
+        # b9c: primed in the lair (Greybor's bargain), escaped, and killed in the Sanctum: the bargain held there too.
+        c("Continue", "wake_sanctum_told", requires=(DEAD_SANCTUM, STORY_TOLD), forbids=(LATE,))),
+    nar("wake_sanctum", '''{n}The golems had their order now: the lizard is shedding, not in breach; stand over her; let nobody cut her. For as long as they stood, they did exactly what they had been told; when Xanthir's last apprentice came back for the heart with a bone-saw, they turned him out. Your own standing order and two pickets in the egg chamber did the rest, and the crusade's renderers left their wagon at the door. On the third night the hide split along the spine, the way a snake's does, from the horns to the tail.{/n}
 {n}What came out of it was wet, and grey as eggshell, and smaller in the shoulder than the thing that had died. It stepped over its own old face without looking down. The golems, having no order about that, let it pass.{/n}''',
         c("Continue", "camp")),
     nar("wake_lair", '''{n}Greybor took his double fee and left the head on. For three days two of your own pickets sat at the gorge mouth with orders nobody understood, and turned back the quartermaster's renderers, and a party of Grimwood trappers with a cart, and one very persistent alchemist. The carcass did not rot. The crows would not land on it. On the third night something inside it began to push, slowly, the way a thing pushes that has all the time in the world and knows it.{/n}
 {n}By morning there were two dragons in the gorge. One of them was a split, empty hide. The other one was grey as eggshell, and hungry.{/n}''',
+        c("Continue", "camp")),
+    nar("wake_sanctum_told", '''{n}She fell in the Sanctum, not in her gorge, but Greybor's bargain was for wherever she fell. He took his double fee and left the head on, and two of your pickets sat three days in the egg chamber with orders nobody understood, and turned back Xanthir's last apprentice and the crusade's renderers alike. On the third night the hide split along the spine, the way a snake's does, from the horns to the tail.{/n}
+{n}What came out of it was wet, and grey as eggshell, and smaller in the shoulder than the thing that had died. It stepped over its own old face without looking down.{/n}''',
         c("Continue", "camp")),
     nar("wake_late", '''{n}The renderers came down off the carcass with their saws still clean, cursing the Commander and the quartermaster's ledger in that order. A guard sat by what was left of her for three days. She had no teeth to speak of and one wing was bare bone, and on the third night the hide split along the spine anyway, from the horns to the tail.{/n}
 {n}What came out of it was wet, and grey as eggshell, and smaller in the shoulder than the thing that had died, and it came out with every tooth it had lost. The guard did not stay to see where it went.{/n}''',

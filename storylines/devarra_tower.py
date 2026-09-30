@@ -406,7 +406,7 @@ hub(T + "what_happened_next", "The next part of the story", '"She wants the next
         c("Continue", "end")),
     dv("end", '''"Go down. That will do for tonight. There is more you owe me, and I will have it." {n}Her tail shifts across the stair, over the scratched lines, one for each visit.{/n} "You will still be paying when you are old. That was the plan."''',
        c("[Go down the mountain.]", flags=(NEXT_TOLD,))),
-], requires=(COMMITTED, BITTEN_ONCE), forbids=(NEXT_TOLD,), delay=72)
+], requires=(COMMITTED, BITTEN_ONCE), forbids=(NEXT_TOLD,), delay=72, chapters=(5,))
 
 
 # --- 10. Back up the mountain (the Commander left her the tower and her memory; one more climb) --------------------
@@ -877,19 +877,19 @@ hub(T + "the_hoard", "What she left in the lair", '"She wants to go back to her 
         c('[Carry it all. Every coin.]', "honest"),
         c('[Carry it all, and palm one coin on the way.]', "steal", flags=(COIN_STOLEN,)),
         c('"Can I have one coin? Ask first, like a person."', "ask", flags=(COIN_ASKED,))),
-    nar("honest", '''{n}It takes eleven trips and the whole of a day. You carry every coin, every spoon, the crown, the torcs, and the wooden horse last of all, and you set each sack down on the tower floor in front of her and go back for the next.{/n}
+    nar("honest", '''{n}She flies the hoard to the foot of the ridge in two loads, the sacks swinging from her claws; the ridge is your part. It takes eleven climbs and the whole of a day. You carry every coin, every spoon, the crown, the torcs, and the wooden horse last of all, and you set each sack down on the tower floor in front of her and go back for the next.{/n}
 {n}She counts it all when you have finished, with one claw, very slowly. Then she counts it again.{/n}''',
         c("Continue", "honest_her")),
     dv("honest_her", '''"All of it." {n}She sounds almost offended.{/n} "You carried three hundred years of gold up a mountain on your own back, and you did not take one coin." {n}She looks at you with something close to suspicion.{/n} "Either you are an honest thing, crusader, which I refuse to believe, or you are playing a longer game than I can see. I will find out which. I have time."''',
        c("Continue", "end")),
-    nar("steal", '''{n}On the fourth trip you let one coin slip from the sack into your sleeve: a small gold piece from a kingdom that no longer exists, with a queen's head on it. You do it well. You have done it a thousand times.{/n}
+    nar("steal", '''{n}On the fourth climb you let one coin slip from the sack into your sleeve: a small gold piece from a kingdom that no longer exists, with a queen's head on it. You do it well. You have done it a thousand times.{/n}
 {n}She counts it all when you have finished, with one claw, very slowly. Then she looks at your sleeve.{/n}''',
         c("Continue", "steal_her")),
     dv("steal_her", '''"One." {n}Her voice is perfectly calm.{/n} "The Queen of Iobaria. I took her from a bandit who took her from a merchant who took her from a tomb. She has been stolen more often than she was ever spent." {n}Her eye does not move from your sleeve.{/n} "Keep her. You earned her; nobody has ever stolen from me and lived to be caught. That was the price of seeing what you would do. Now I know."''',
        c("Continue", "end")),
     dv("ask", '''{n}She stares at you as though you had grown a second head.{/n} "Ask." {n}It comes out of her like a cough of smoke.{/n} "You are a thief. I have watched you steal from generals and golems and gods. And you ask me, for one coin, like a child at a table." {n}Then she puts one claw into the hoard and slides out a single gold piece with a queen's head on it, and pushes it toward you across the floor.{/n} "Take it. And now carry the rest."''',
        c("Continue", "ask_2")),
-    nar("ask_2", '''{n}It takes eleven trips and the whole of a day. She counts it all when you have finished, twice. Then she looks at the gold piece, which you have been carrying in your hand the whole time, turning it over.{/n}''',
+    nar("ask_2", '''{n}She flies the hoard to the foot of the ridge in two loads; the ridge is your part. It takes eleven climbs and the whole of a day. She counts it all when you have finished, twice. Then she looks at the gold piece, which you have been carrying in your hand the whole time, turning it over.{/n}''',
         c("Continue", "ask_her")),
     dv("ask_her", '''"Nobody has ever been given anything from my hoard." {n}She lays her head down beside the heap of gold.{/n} "Taken, yes. Every coin there was taken. That one was given. It is the only one in the world." {n}Her eye closes.{/n} "Do not spend it. I will know. And one day I will ask for something out of your hoard, crusader, and before you answer you will remember that coin."''',
        c("Continue", "end")),

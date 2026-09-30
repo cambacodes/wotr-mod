@@ -170765,9 +170765,91 @@
         }
       ],
       "Requires": [
-        "soana.trickster.late_committed"
+        "soana.trickster.late_committed",
+        "soana.trickster.returned"
       ],
       "Forbids": [
+        "soana.committed",
+        "soana.closed",
+        "soana.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana"
+    },
+    {
+      "Id": "soana.trickster.epilogue.luck_late",
+      "Title": "The rattle in the bowl",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The war ended before Soana finished thinking. She finished afterwards, on her own terms. The year after the Worldwound closed she walked all the way to Drezen with the loaded die in her fist, found the Commander, and put it in their palm.{/n}\n\"Your luck. It has rattled in my bowl since the snow and I am sick of the noise. Bring it back to Wintersun and keep it where I can hear it, and we will see how much of it is left.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She took the Commander's half of the knot back only once, to retie it, and she pulled it tighter.",
+              "Requires": [
+                "soana.trickster.cost.second_ask"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Wintersun beasts kept going out against the demons on the roads until the last of them was gone, and they kept getting up. The scouts stopped reporting it. It had become ordinary.",
+              "Requires": [
+                "soana.trickster.cost.catchup"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The crusade's quartermasters never forgave the Commander for the Wintersun woods, and not one crusader ever took a hide from them.",
+              "Requires": [
+                "soana.trickster.cost.woods_sealed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "For as long as the die sat in her bowl, the Commander's girths snapped, letters went astray and blades turned at bad moments. Each time, somewhere on a Wintersun road, a bear that should have stayed down got up again.",
+              "Requires": [
+                "soana.trickster.cost.luck_fed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander fought the rest of the war on the luck they were born with. Soana said it was more than she had expected, and a good deal less than they deserved.",
+              "Requires": [
+                "soana.trickster.cost.pair_given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "soana.trickster.late_committed",
+        "soana.trickster.luck_kept"
+      ],
+      "Forbids": [
+        "soana.trickster.returned",
         "soana.committed",
         "soana.closed",
         "soana.trickster.declined"
@@ -170885,7 +170967,7 @@
           "Portrait": "",
           "Paragraphs": [
             {
-              "Text": "The knot that bound her life to her guardian's still held, one end breathing in her and the other in Orso. The Commander learned to sleep through the bear's snoring, which Soana said was the most romantic thing anyone had ever done for her.",
+              "Text": "The knot still held, retied, one end in Soana and the other round the Commander's wrist where the gut strip had marked it. On hungry nights it pulled. The Commander learned to sleep through it, which Soana said was the most romantic thing anyone had ever done for her.",
               "Requires": [
                 "soana.trickster.cost.guardian_paid"
               ],
@@ -176198,7 +176280,7 @@
         {
           "Id": "coin",
           "Speaker": "Narrator",
-          "Text": "{n}Her savings go into the chaplain's bowl coin by coin: coppers, a few silver, one gold piece she must have been keeping for something. It is not enough. It was never going to be enough. The rite wants five thousand gold in diamond dust, and a stone from your own coat would not cover a quarter of what is missing.{/n}\n{n}At the bottom of the purse is a square of paper folded very small. It is a list, in her hand, of every theft she can remember. Most lines are crossed out, each with a sum beside it and the word \"paid\". The first line is not: \"A mithral helm. Acemi.\" There is no sum beside it.{/n}\n{n}The last line is newer than the rest, the ink hardly a week old; she must have found him since she came to Drezen: \"The relic-seller under the chapel steps. Sells 'saints' tears' to pilgrims. They are the Kenabres reliquary diamonds; I would know them anywhere, I used to steal the candles off those altars. Not mine to take back. I am a paladin now. Tell Irabeth.\"{/n}",
+          "Text": "{n}Her savings go into the chaplain's bowl coin by coin: coppers, a few silver, one gold piece she must have been keeping for something. It is not enough. It was never going to be enough.{/n}\n\"Whatever killed her took the arm she swung with,\" the chaplain says. \"The lesser rite would give her back without it. The greater rite gives her back whole, and it wants two stones' worth of diamond dust. The chapel's own stone is promised to the next knight who falls.\"\n{n}At the bottom of the purse is a square of paper folded very small. It is a list, in her hand, of every theft she can remember. Most lines are crossed out, each with a sum beside it and the word \"paid\". The first line is not: \"A mithral helm. Acemi.\" There is no sum beside it.{/n}\n{n}The last line is newer than the rest, the ink hardly a week old; she must have found him since she came to Drezen: \"The relic-seller under the chapel steps. Sells 'saints' tears' to pilgrims. They are the Kenabres reliquary diamonds; I stood guard in that cathedral at the Armasse, the day the Wound came up under it, and I would know the settings anywhere. Not mine to take back. I am a paladin now. Tell Irabeth.\"{/n}",
           "Choices": [
             {
               "Text": "[Pick the dead thief's pocket] \"Old habits, Seelah. Whatever's in the purse is mine. Including that.\"",
@@ -176303,10 +176385,10 @@
         {
           "Id": "pocketed",
           "Speaker": "Narrator",
-          "Text": "{n}The chaplain is still at the bier when you come back. You tip the pouch into his bowl, and the stones rattle down on top of her coppers.{/n}\n{n}He picks one out and turns it to the candle. There is gilt on it.{/n}\n\"These came off the Kenabres altars.\" {n}He does not ask how you came by them. He looks at the paper in your hand, and at her, and for a while he says nothing at all.{/n} \"They were given to the dead of Kenabres, Commander.\"",
+          "Text": "{n}The chaplain is still at the bier when you come back. You tip the pouch into his bowl, and the stones rattle down on top of her coppers.{/n}\n{n}He picks one out and turns it to the candle. There is gilt on it.{/n}\n\"These came off the Kenabres altars.\" {n}He does not ask how you came by them. He looks at the paper in your hand, and at her, and weighs the pouch in his palm.{/n} \"They were given to the dead of Kenabres, Commander. One stone's worth, near enough. Half the rite.\"",
           "Choices": [
             {
-              "Text": "[Leave a diamond of your own on the relic-seller's plank] \"Then one goes back to him, so he has nothing to take to the Inheritor. She's Kenabres dead. Begin.\"",
+              "Text": "[Put a diamond from your own coat in with them] \"She stood guard over those altars. That's both stones. Begin.\"",
               "Next": null,
               "Set": [
                 "seelah.trickster.returned",
@@ -176323,7 +176405,7 @@
               "RemoveItem": "6a7cdeb14fc6ef44580cf639c5cdc113"
             },
             {
-              "Text": "[Give him your word] \"She's Kenabres dead. Begin. If anyone asks where they came from, the crusade answers for them.\"",
+              "Text": "[Give him your word for the other stone] \"She stood guard over those altars. Spend the chapel's stone; the crusade will make it good. Begin.\"",
               "Next": null,
               "Set": [
                 "seelah.trickster.returned",
@@ -176391,7 +176473,7 @@
           "Text": "\"You robbed my corpse.\"\n{n}She is sitting on the edge of the chapel cot in her shirt, turning her empty purse inside out. She laughs once, badly.{/n}\n\"The worst part is I'd have done the same. Every copper I had, Commander. Even the gold piece, and I've carried that one since Solku without ever spending it. Did She let me go, or did you buy me?\"",
           "Choices": [
             {
-              "Text": "\"The chaplain did the work. Your purse paid for some of it. A grave-robber paid for the rest.\"",
+              "Text": "\"The chaplain did the work. A grave-robber paid for half of it, and my coat for the rest.\"",
               "Next": "coin",
               "Set": [],
               "Requires": [],
@@ -176401,7 +176483,7 @@
               "Abort": false
             },
             {
-              "Text": "\"The chaplain did the work. A grave-robber paid for it, and the chapel took his stones on my word.\"",
+              "Text": "\"The chaplain did the work. A grave-robber paid for half of it, and his chapel for the rest, on my word.\"",
               "Next": "coin_word",
               "Set": [],
               "Requires": [
@@ -176416,7 +176498,7 @@
         {
           "Id": "coin_word",
           "Speaker": "Seelah",
-          "Text": "\"On your word.\" She closes her eyes. \"So the whole chapel knows the Commander robbed a dead paladin, then robbed a grave-robber, and asked the priests to bless the takings. Wonderful. I'm going to be hearing about that at every mass until the Wound shuts.\"",
+          "Text": "\"On your word.\" She closes her eyes. \"So the whole chapel knows the Commander robbed a dead paladin, then robbed a grave-robber, and then asked the priests for credit. Wonderful. I'm going to be hearing about that at every mass until the Wound shuts.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -176432,7 +176514,7 @@
         {
           "Id": "coin",
           "Speaker": "Seelah",
-          "Text": "\"He showed me one of the stones. Gilt still on it.\" She turns the empty purse over again, as if something might have grown in it overnight. \"Kenabres stones. I used to steal the candles off those altars when I was nine. Now I'm walking round on them.\"\n\"And something else is gone. My list.\" {n}Her hand goes flat under her collarbone, where the purse hangs when she sleeps.{/n} \"You read it. Every line. You're the one who took it.\"\n{n}She holds out her palm, and it is steady.{/n}\n\"Give it back. Now, while I'm still too weak to take it off you.\"",
+          "Text": "\"He showed me one of the stones. Gilt still on it.\" She turns the empty purse over again, as if something might have grown in it overnight. \"Kenabres stones. I stood guard over those altars at the Armasse, the day the Wound came up under them. Now I'm walking round on them.\"\n\"And something else is gone. My list.\" {n}Her hand goes flat under her collarbone, where the purse hangs when she sleeps.{/n} \"You read it. Every line. You're the one who took it.\"\n{n}She holds out her palm, and it is steady.{/n}\n\"Give it back. Now, while I'm still too weak to take it off you.\"",
           "Choices": [
             {
               "Text": "[Put the list in her hand] \"Here. It's yours. I only borrowed it.\"",
@@ -176543,7 +176625,7 @@
         {
           "Id": "purse",
           "Speaker": "Narrator",
-          "Text": "{n}At the bottom of the purse is a square of paper folded very small: a list, in her hand, of every theft she can remember, most of them crossed out and marked \"paid\". The first line is not: \"A mithral helm. Acemi.\"{/n}\n{n}The last line is newer than the rest, the ink hardly a week old; she must have found him since she came to Drezen: \"The relic-seller under the chapel steps. Sells 'saints' tears' to pilgrims. They are the Kenabres reliquary diamonds; I would know them anywhere, I used to steal the candles off those altars. Not mine to take back. I am a paladin now. Tell Irabeth.\"{/n}\n{n}The chaplain at the border hospital has written too. He has a bowl and nothing to put in it, and one rule: a soul that has stood its trial cannot be raised. Nobody can say how long a soul waits before the Lady tries it, he writes; he has never dared find out. A fast rider reaches him in two days.{/n}",
+          "Text": "{n}At the bottom of the purse is a square of paper folded very small: a list, in her hand, of every theft she can remember, most of them crossed out and marked \"paid\". The first line is not: \"A mithral helm. Acemi.\"{/n}\n{n}The last line is newer than the rest, the ink hardly a week old; she must have found him since she came to Drezen: \"The relic-seller under the chapel steps. Sells 'saints' tears' to pilgrims. They are the Kenabres reliquary diamonds; I stood guard in that cathedral at the Armasse, the day the Wound came up under it, and I would know the settings anywhere. Not mine to take back. I am a paladin now. Tell Irabeth.\"{/n}\n{n}The chaplain at the border hospital has written too. The wound that killed her is one the lesser rite cannot close; the greater rite wants two stones' worth of diamond dust, and he has a bowl and nothing to put in it, and one rule: a soul that has stood its trial cannot be raised. Nobody can say how long a soul waits before the Lady tries it, he writes; he has never dared find out. A fast rider reaches him in two days.{/n}",
           "Choices": [
             {
               "Text": "[Pick the dead thief's pocket] \"Old habits, Seelah. Whatever's in the purse is mine. Including that.\"",
@@ -176707,7 +176789,7 @@
         {
           "Id": "rider",
           "Speaker": "Narrator",
-          "Text": "{n}You send the rider south with her savings and the relic-seller's stones, and leave a diamond of your own on his plank, so that he has nothing left to complain of but his pride. He pockets it without a word. By morning the stall under the chapel steps is boarded up, and he has gone out by the east gate. You keep the list.{/n}\n{n}Four days later a note comes back in the chaplain's hand: \"She sat up and asked who had been in her purse. I told her, and I showed her a stone with gilt on it. She said a word I will not write. She will come to Drezen when she can walk that far.\"{/n}",
+          "Text": "{n}You send the rider south with her savings, the relic-seller's stones and a diamond from your own coat: two stones' worth. By morning the stall under the chapel steps is boarded up, and the relic-seller has gone out by the east gate without a word to anyone. You keep the list.{/n}\n{n}Four days later a note comes back in the chaplain's hand: \"She sat up and asked who had been in her purse. I told her, and I showed her a stone with gilt on it. She said a word I will not write. She will come to Drezen when she can walk that far.\"{/n}",
           "Choices": [
             {
               "Text": "\"Tell her I'll be at Fye's.\"",
@@ -176723,7 +176805,7 @@
         {
           "Id": "rider_word",
           "Speaker": "Narrator",
-          "Text": "{n}You send the rider south with her savings, the relic-seller's stones, and your word, sealed, that the crusade answers for where they came from. You keep the list. The chaplain there knows Kenabres gilt when he sees it; he grinds the stones anyway, on a Commander's promise, and every priest on the border hears of it by the end of the week.{/n}\n{n}Four days later a note comes back: \"She sat up and asked who had been in her purse. I told her. She will come to Drezen when she can walk that far. So, I expect, will the relic-seller's complaint.\"{/n}",
+          "Text": "{n}You send the rider south with her savings, the relic-seller's stones, and your word, sealed, that the crusade will make good the other stone. You keep the list. The chaplain there knows Kenabres gilt when he sees it; he grinds the stones anyway, spends his hospital's own reserve on a Commander's promise for the rest, and every priest on the border hears of it by the end of the week.{/n}\n{n}Four days later a note comes back: \"She sat up and asked who had been in her purse. I told her. She will come to Drezen when she can walk that far. So, I expect, will the relic-seller's complaint.\"{/n}",
           "Choices": [
             {
               "Text": "\"Let him complain. Tell her I'll be at Fye's.\"",
@@ -177369,7 +177451,9 @@
                 "seelah.started",
                 "seelah.romance"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "seelah.trickster.cost.holds_her_death"
+              ],
               "Abort": false
             },
             {
@@ -177381,7 +177465,9 @@
               "Requires": [
                 "seelah.romance"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "seelah.trickster.cost.holds_her_death"
+              ],
               "Abort": false
             },
             {
@@ -177423,6 +177509,51 @@
               "Requires": [
                 "seelah.trickster.cost.holds_her_death"
               ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Put her list on the table first] \"Yours. Every line. I only borrowed it.\"",
+              "Next": "list_back",
+              "Set": [
+                "seelah.trickster.death_returned"
+              ],
+              "Requires": [
+                "seelah.trickster.cost.holds_her_death",
+                "seelah.romance"
+              ],
+              "Forbids": [
+                "seelah.trickster.death_returned"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "list_back",
+          "Speaker": "Seelah",
+          "Text": "{n}She does not touch it at once. Then she unfolds it and reads it from the top, Acemi first, the way you would count the money in a purse somebody had just given back to you. At the last line she stops.{/n}\n\"You never crossed it out.\" {n}She borrows the stub of pencil behind the tankards and writes a line under it, and does not cross that out either: \"Kenabres stones. Stolen for me. Owed.\"{/n}\n{n}She folds it small and puts it inside her tunic, flat against her ribs.{/n} \"All right. Now it's only you and me at this table. Now ask.\"",
+          "Choices": [
+            {
+              "Text": "[Kiss her] \"Stay. Not as a sword. As you.\"",
+              "Next": "threshold",
+              "Set": [
+                "seelah.committed"
+              ],
+              "Requires": [
+                "seelah.started"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Let her choose] \"You know where the coat is.\"",
+              "Next": "chooses",
+              "Set": [
+                "seelah.committed"
+              ],
+              "Requires": [],
               "Forbids": [],
               "Abort": false
             }
@@ -177741,7 +177872,7 @@
         "inhuman",
         "seelah.committed"
       ],
-      "DelayHours": 48,
+      "DelayHours": 96,
       "Optional": true,
       "Relationship": "seelah",
       "Areas": [
@@ -177795,7 +177926,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The chapel never quite forgave being asked to raise a paladin on stolen stones. Seelah paid the Kenabres reliquary back herself, a coin at a time, out of a paladin's stipend. It took her eleven years.",
+              "Text": "The chapel never quite forgave the credit the Commander had asked of it, or the stolen stones it had ground. Seelah paid back both herself, the chapel and the Kenabres reliquary, a coin at a time, out of a paladin's stipend. It took her eleven years.",
               "Requires": [
                 "seelah.trickster.cost.chaplains_word"
               ],
@@ -253770,7 +253901,7 @@
         {
           "Id": "hides",
           "Speaker": "Narrator",
-          "Text": "{n}She has heard you, and she waits for the rest; a dragon who sells lives for stories does not interrupt one. Behind the rocks, all the while the old elf was talking, you were looking at the walls. They are hung with hides: black, enormous, dry as old paper, each one split along the spine from the horns to the tail and left where it fell, like a snake's cast skin. There are six that you can count. The oldest is grey with dust. The one nearest the entrance has a hole through the chest you could put your arm into, the edges ragged where a lance went in.{/n}\n{n}Whatever wore that hide took a lance through the heart, and shed it, and is lying twenty paces away listening to a story.{/n}",
+          "Text": "{n}She has heard you, and she waits for the rest; a dragon who sells lives for stories does not interrupt one. Behind the rocks, all the while the old elf was talking, you were looking at the walls. They are hung with hides: black, enormous, dry as old paper, each one split along the spine from the horns to the tail and left where it fell, like a snake's cast skin. There are six that you can count. The oldest is grey with dust. The one nearest the entrance has a hole low in the chest you could put your arm into, the edges ragged where a lance went in.{/n}\n{n}Whatever wore that hide took a wound that should have killed it, shed the wound with the skin, and is lying twenty paces away listening to a story. It is a guess, and nobody has ever tested it: that a thing which can shed a mortal wound might shed a death, if nobody cuts it open first.{/n}",
           "Choices": [
             {
               "Text": "[One whisper to Greybor first.]",
@@ -254116,7 +254247,8 @@
                 "devarra.dead_sanctum"
               ],
               "Forbids": [
-                "devarra.trickster.cost.late"
+                "devarra.trickster.cost.late",
+                "devarra.trickster.story_told"
               ],
               "Abort": false
             },
@@ -254140,6 +254272,19 @@
               ],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "wake_sanctum_told",
+              "Set": [],
+              "Requires": [
+                "devarra.dead_sanctum",
+                "devarra.trickster.story_told"
+              ],
+              "Forbids": [
+                "devarra.trickster.cost.late"
+              ],
+              "Abort": false
             }
           ],
           "Portrait": "Devarra"
@@ -254147,7 +254292,7 @@
         {
           "Id": "wake_sanctum",
           "Speaker": "Narrator",
-          "Text": "{n}The golems had their order now: the lizard is shedding, not in breach; stand over her; let nobody cut her. They stood over the carcass for three days, fists raised, and when Xanthir's last apprentice came back for the heart with a bone-saw, and when the crusade's renderers came for the hide with a wagon, the golems did exactly what they had been told. The renderers left the wagon. On the third night the hide split along the spine, the way a snake's does, from the horns to the tail.{/n}\n{n}What came out of it was wet, and grey as eggshell, and smaller in the shoulder than the thing that had died. It stepped over its own old face without looking down. The golems, having no order about that, let it pass.{/n}",
+          "Text": "{n}The golems had their order now: the lizard is shedding, not in breach; stand over her; let nobody cut her. For as long as they stood, they did exactly what they had been told; when Xanthir's last apprentice came back for the heart with a bone-saw, they turned him out. Your own standing order and two pickets in the egg chamber did the rest, and the crusade's renderers left their wagon at the door. On the third night the hide split along the spine, the way a snake's does, from the horns to the tail.{/n}\n{n}What came out of it was wet, and grey as eggshell, and smaller in the shoulder than the thing that had died. It stepped over its own old face without looking down. The golems, having no order about that, let it pass.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -254164,6 +254309,22 @@
           "Id": "wake_lair",
           "Speaker": "Narrator",
           "Text": "{n}Greybor took his double fee and left the head on. For three days two of your own pickets sat at the gorge mouth with orders nobody understood, and turned back the quartermaster's renderers, and a party of Grimwood trappers with a cart, and one very persistent alchemist. The carcass did not rot. The crows would not land on it. On the third night something inside it began to push, slowly, the way a thing pushes that has all the time in the world and knows it.{/n}\n{n}By morning there were two dragons in the gorge. One of them was a split, empty hide. The other one was grey as eggshell, and hungry.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "camp",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Devarra"
+        },
+        {
+          "Id": "wake_sanctum_told",
+          "Speaker": "Narrator",
+          "Text": "{n}She fell in the Sanctum, not in her gorge, but Greybor's bargain was for wherever she fell. He took his double fee and left the head on, and two of your pickets sat three days in the egg chamber with orders nobody understood, and turned back Xanthir's last apprentice and the crusade's renderers alike. On the third night the hide split along the spine, the way a snake's does, from the horns to the tail.{/n}\n{n}What came out of it was wet, and grey as eggshell, and smaller in the shoulder than the thing that had died. It stepped over its own old face without looking down.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -258155,7 +258316,7 @@
       "Id": "devarra.tower.what_happened_next",
       "Title": "The next part of the story",
       "Owner": "Devarra",
-      "MinChapter": 3,
+      "MinChapter": 5,
       "MaxChapter": 5,
       "Entry": "\"She wants the next part, doesn't she.\"",
       "Nodes": [
@@ -258365,7 +258526,6 @@
       "Optional": false,
       "Relationship": "devarra",
       "Chapters": [
-        3,
         5
       ],
       "AnswerLists": [
@@ -261425,7 +261585,7 @@
         {
           "Id": "honest",
           "Speaker": "Narrator",
-          "Text": "{n}It takes eleven trips and the whole of a day. You carry every coin, every spoon, the crown, the torcs, and the wooden horse last of all, and you set each sack down on the tower floor in front of her and go back for the next.{/n}\n{n}She counts it all when you have finished, with one claw, very slowly. Then she counts it again.{/n}",
+          "Text": "{n}She flies the hoard to the foot of the ridge in two loads, the sacks swinging from her claws; the ridge is your part. It takes eleven climbs and the whole of a day. You carry every coin, every spoon, the crown, the torcs, and the wooden horse last of all, and you set each sack down on the tower floor in front of her and go back for the next.{/n}\n{n}She counts it all when you have finished, with one claw, very slowly. Then she counts it again.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -261458,7 +261618,7 @@
         {
           "Id": "steal",
           "Speaker": "Narrator",
-          "Text": "{n}On the fourth trip you let one coin slip from the sack into your sleeve: a small gold piece from a kingdom that no longer exists, with a queen's head on it. You do it well. You have done it a thousand times.{/n}\n{n}She counts it all when you have finished, with one claw, very slowly. Then she looks at your sleeve.{/n}",
+          "Text": "{n}On the fourth climb you let one coin slip from the sack into your sleeve: a small gold piece from a kingdom that no longer exists, with a queen's head on it. You do it well. You have done it a thousand times.{/n}\n{n}She counts it all when you have finished, with one claw, very slowly. Then she looks at your sleeve.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -261508,7 +261668,7 @@
         {
           "Id": "ask_2",
           "Speaker": "Narrator",
-          "Text": "{n}It takes eleven trips and the whole of a day. She counts it all when you have finished, twice. Then she looks at the gold piece, which you have been carrying in your hand the whole time, turning it over.{/n}",
+          "Text": "{n}She flies the hoard to the foot of the ridge in two loads; the ridge is your part. It takes eleven climbs and the whole of a day. She counts it all when you have finished, twice. Then she looks at the gold piece, which you have been carrying in your hand the whole time, turning it over.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -364378,8 +364538,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
