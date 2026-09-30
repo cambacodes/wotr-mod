@@ -342,7 +342,7 @@ internal static class EliandraTricksterTests
         check(chiefs.Chapters.SequenceEqual(new[] { 3 }), "The chiefs' ground page can arrive in the Abyss with its Drezen frame.");
         // R2-6 (audit r7): released and courted but out of Chapter 5 before her question: a definite late yes on the page;
         // released with no exchange at all: no romance.
-        var courtedLate = World(story, 6, granted.Flags.ToArray());
+        var courtedLate = World(story, 6, granted.Flags.Concat(new[] { E + "flirted" }).ToArray());
         var bareLate = World(story, 6, One(rite, read, new[] { Leave, Lights }, Reward, NoLeave).Flags.ToArray());
         check(Rules.Available(story, S(E + "epilogue.unasked"), courtedLate) && !Rules.Available(story, S(E + "epilogue.released"), courtedLate)
               && Rules.Available(story, S(E + "epilogue.released"), bareLate) && !Rules.Available(story, S(E + "epilogue.unasked"), bareLate),
@@ -355,6 +355,26 @@ internal static class EliandraTricksterTests
               && Rules.Available(story, coda, World(story, 6, kept.Flags.Concat(new[] { "lastcall.active" }).ToArray()))
               && !Rules.Available(story, coda, World(story, 6, no.Flags.Concat(new[] { "lastcall.active" }).ToArray())),
             "Her Last Call coda does not follow the kept letter, or plays for the soft no alone.");
+        // The stranded Drezen state (audit r9): the shrine unit gone, the terms misheard on either presence; the wall observation
+        // opens the rite there, and the yes is still reachable, with the King present or gone.
+        foreach (var (twinId, gone) in new[] { (E + "ch5.terms_drezen", false), (E + "ch5.terms_drezen_mark", true) })
+        {
+            var start = gone ? World(story, 5, "trickster", "trickster.ever", Met, "fool_king.gone") : World(story, 5, "trickster", "trickster.ever", Met);
+            var misheard = One(S(twinId), start, new[] { E + "terms_guessed" }, E + "terms_read");
+            var suffix = gone ? "_mark" : "";
+            check(!Rules.Available(story, S(E + "ch5.last_rite_drezen" + suffix), misheard), "Stranded: the rite opens on misheard terms alone.");
+            var watchedWall = One(S(E + "ch5.observe_drezen" + suffix), misheard, new[] { E + "observed" });
+            var releasedThere = One(S(E + "ch5.last_rite_drezen" + suffix), watchedWall, new[] { Leave });
+            var eve = One(S(E + "ch5.evening" + suffix), Later(story, releasedThere, 10), new[] { E + "drezen.evening" });
+            One(S(E + "ch5.first_mile" + suffix), Later(story, eve, 30), new[] { Committed });
+        }
+        // The late yes is a romance only when the player chose one.
+        var friendLate = World(story, 6, One(rite, watched, new[] { Leave, Lights, Reward }).Flags.Where(f => f != E + "flirted").ToArray());
+        check(!friendLate.Has(E + "flirted") && Rules.Available(story, S(E + "epilogue.released"), friendLate)
+              && !Rules.Available(story, S(E + "epilogue.unasked"), friendLate),
+            "A friend who never showed interest is given a romance on the late page.");
+        check(new[] { "late", "unasked" }.All(id => S(E + "epilogue." + id).Nodes.Single().Text.Contains("drew them down onto the bed")),
+            "A late romance page skips the night (Directive 12).");
         // Rest-delivered pages in Chapter 5: the planning page, and the road letter on the soft no only.
         var remote5 = own.Where(s => Rules.IsRemote(s) && s.Chapters.Contains(5) && s.Owner != "EliandraEpilogue").Select(s => s.Id).ToList();
         check(remote5.SequenceEqual(new[] { E + "ch5.road_letter" }),

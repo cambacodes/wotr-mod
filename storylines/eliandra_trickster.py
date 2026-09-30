@@ -280,12 +280,12 @@ shrine(E + "ch5.lovers", "My dear rebels", '"Tell me about Vestari and Cristry."
        c('"And you? Whom did you forbid yourself?"', "herself")),
     el("demons", '''"Yes. That is what Katair will say when he comes back, and he will say it kindly." {n}She looks up at you.{/n} "It is true, and it is not enough. I made a rule for other people's hearts because I did not trust them. Before I die, I should like to have been wrong about fewer things."''',
        c('"And you? Whom did you forbid yourself?"', "herself")),
-    el("truth", '''{n}She flinches, very slightly, and does not deny it.{/n} "No. I would not." {n}A long breath.{/n} "Thank you. Everyone here will tell me it was the demons, and they will be right, and it will help no one. You have told me I was wrong in a way I can use. Nobody has done that in a hundred years."''',
+    el("truth", '''{n}She flinches, very slightly, and does not deny it.{/n} "No. I would not." {n}A long breath.{/n} "I made the rule for Odden, and Taeriell, and Katair, who had given up their wives and children for the mission; it was not fair that two of us should flaunt what the rest had surrendered. I still think that was a real reason. But I kept those two apart for a century to spare other people's grief, and the price of it was theirs." {n}She looks at her hands.{/n} "I should have found another way. I did not look for one."''',
        c('"And you? Whom did you forbid yourself?"', "herself")),
     el("herself", '''"Myself?" {n}The question seems to startle her more than anything you have said.{/n} "Nobody. There was nothing to forbid. I gave my Lady my whole life when I was thirteen, and she gave me back more strength than any priestess of hers before me. That is the bargain. It is not a rule. It is simply what I am."
 "Or what I was. The sanctuary is found, the work of a century is scattered, and our mission is finished. I have not yet worked out what that makes me."''',
        c('"Someone who gets to decide."', "decide", flags=(LOVERS_SPOKEN,)),
-       c('[Flirt] "Someone who could stand to be asked a question or two."', "flirt", flags=(LOVERS_SPOKEN,)),
+       c('[Flirt] "Someone who could stand to be asked a question or two."', "flirt", flags=(LOVERS_SPOKEN, FLIRTED)),
        c('"Tired. Get some sleep, Eliandra."', "sleep", flags=(LOVERS_SPOKEN,))),
     el("decide", '''"Decide." {n}She turns the word over like a stone from a river she used to know.{/n} "I decided things for a hundred people for a hundred years, Commander. Not once for myself. I am not sure I would know how to begin." {n}She stands, and smooths her robe.{/n} "Perhaps I will learn on the road. There will be a great deal of road."''',
        c("[Leave her with it.]")),
@@ -626,10 +626,10 @@ shrine(E + "ch5.last_rite", "The last rite", '"Will you hold one last rite at th
 "Come to the star-heart at nightfall. I will hold the rite, and you will make the offering, aloud, under the open stars." {n}Her voice hardens, very slightly, into the voice that once forbade a whole shrine to love.{/n} "And, Commander: if you have come to cheat her, go now."''',
        c("[Go to the star-heart at nightfall.]", "heart_known", requires=(OBSERVED,)),
        c("[Go to the star-heart at nightfall.]", "heart_new", forbids=(OBSERVED,))),
-    nar("heart_new", '''{n}The heart of the sanctuary has no roof. Where a roof should be there is sky: the true sky, black and burning, its stars sharper than any you have seen since Mendev, though the hour is barely past sunset outside. The instruments round the walls are crated. Only a great bronze basin remains, brimming with still water, and in it the stars lie as clearly as they lie overhead.{/n}
+    nar("heart_new", '''{n}The heart of the sanctuary has no roof. Where a roof should be there is sky: the true sky, black and burning, its stars sharper than any you have seen since Mendev, though the hour is barely past sunset outside. The instruments round the walls are crated, and a few last charts lie half rolled on a long table. A great bronze basin remains, brimming with still water, and in it the stars lie as clearly as they lie overhead.{/n}
 {n}Eliandra kneels at the basin in her white robes with her hair unbound. She does not look up when you come in.{/n}''',
         c("Continue", "rite")),
-    nar("heart_known", '''{n}The star-heart is emptier than the evening you watched her take her reading. The lenses are crated, the charts gone, the long table bare to the wood. Only the basin remains, brimming, and the sky overhead, black and burning, and in the water the stars a heartbeat behind their own movement, as you remember them.{/n}
+    nar("heart_known", '''{n}The star-heart is emptier than the evening you watched her take her reading. The lenses are crated and most of the charts rolled and gone; only her last few lie half rolled on the long table, weighted with river stones. Only the basin remains, brimming, and the sky overhead, black and burning, and in the water the stars a heartbeat behind their own movement, as you remember them.{/n}
 {n}Eliandra kneels at the basin in her white robes with her hair unbound. She does not look up when you come in.{/n}''',
         c("Continue", "rite")),
     el("rite", '''"Kneel across from me," she says. "Keep your hands where I can see them. When I have called her, you will name what you give. Aloud. Once." {n}She dips her fingers in the water and touches them to her eyelids, her lips, her heart.{/n}
@@ -729,8 +729,8 @@ shrine(E + "ch5.night_after", "The night after the rite", '"My eyes are still st
        c("Continue", "eyes")),
     nar("eyes", '''{n}She rises on her knees and kisses your eyes: the left, and then the right, where the lights went in. Her lips are cool from the water and not at all steady. She stays there, close, her unbound hair falling round both your faces like a curtain, her breath warm against your lashes.{/n}
 {n}Then she sits back on her heels, very straight, with colour high in her face and the composure of a high priestess everywhere else.{/n}''',
-        c('"You weren\'t wrong."', "right"),
-        c("[Reach out and touch her face.]", "touch")),
+        c('"You weren\'t wrong."', "right", flags=(FLIRTED,)),
+        c("[Reach out and touch her face.]", "touch", flags=(FLIRTED,))),
     el("right", '''"No," she says. "I did not think so. But I have been wrong about so many things lately, Commander, that I have got into the habit of checking." {n}She rises, takes up the bowl.{/n} "Sleep. The column leaves soon, and I have a great deal to carry, and I would like you to be awake for it."''',
        c("[Sleep.]", flags=(E + "eyes_kissed",))),
     nar("touch", '''{n}Her skin is warm under your fingers. She goes very still, the way she went still over the lens in the star-heart, measuring something at the edge of what can be seen. Then she turns her face into your palm, briefly, and closes her eyes.{/n}
@@ -860,16 +860,20 @@ epilogue("together", '''{n}Eliandra, who had given almost her entire life over t
          requires=(COMMITTED,), forbids=(CLOSED,), paragraphs=EPILOGUE_PARAGRAPHS)
 
 epilogue("late", '''{n}Her letter from the fords stayed in the Commander's coat through Threshold, as promised, with its answer owed. The day after the war ended, the Commander wrote it: either, both, bring them all, ask me every morning.{/n}
-{n}She came to Drezen a month later with Odden, the girl with the sling, and a mule that bit everyone. She said she had not asked a third time, as she had promised, and that she had not stopped hoping either, as she had also promised, and that she hoped the Commander appreciated how difficult it had been to keep both. Then she gave the rest of her life to Sarkoris, as she had meant to all along, and to the Commander, which she had not.{/n}''',
+{n}She came to Drezen a month later with Odden, the girl with the sling, and a mule that bit everyone. She said she had not asked a third time, as she had promised, and that she had not stopped hoping either, as she had also promised, and that she hoped the Commander appreciated how difficult it had been to keep both. Then she gave the rest of her life to Sarkoris, as she had meant to all along, and to the Commander, which she had not.{/n}
+{n}The night she came, in the Commander's rooms in Drezen, she unpinned the grey cloak herself and let it fall, and stood a moment in the lamplight in the white robes of an office she no longer owed anyone, and then unlaced those too, tie by tie, looking at the Commander the whole while. "I have waited through a war," she said. "I am not waiting through the lamp." She put it out with two fingers, took the Commander's face in both hands, and drew them down onto the bed with her.{/n}
+{n}In the morning Odden, delivering a message nobody had asked him to deliver, found the door unbarred and the high priestess of Pulura asleep with her hair across the Commander's pillow, and went away again, and told the entire cooper's shop by noon.{/n}''',
          requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED), paragraphs=EPILOGUE_PARAGRAPHS)
 
 epilogue("unasked", '''{n}The war moved faster than the stargazers' carts, and the question she had carried away from the basin was never asked on the road. The day after Threshold she came to the Commander's door in Drezen, with the hood of her travelling cloak thrown back and the dust of Sarkoris on her boots, and asked it there: Drezen, or the road?{/n}
-{n}The Commander said either. She said that would do to begin with, and that she would ask again every morning, and she did. Then she gave the rest of her life to the revival of Sarkoris, as she had always meant to, and to the Commander, which she had not.{/n}''',
+{n}The Commander said either. She said that would do to begin with, and that she would ask again every morning.{/n}
+{n}That night, in the Commander's rooms in Drezen, she unpinned the grey cloak herself and let it fall, and stood a moment in the lamplight in the white robes of an office she no longer owed anyone, and then unlaced those too, tie by tie, looking at the Commander the whole while. "I have waited through a war," she said. "I am not waiting through the lamp." She put it out with two fingers, took the Commander's face in both hands, and drew them down onto the bed with her.{/n}
+{n}In the morning Odden, delivering a message nobody had asked him to deliver, found the door unbarred and the high priestess of Pulura asleep with her hair across the Commander's pillow, and went away again, and told the entire cooper's shop by noon.{/n}
+{n}Then she gave the rest of her life to the revival of Sarkoris, as she had always meant to, and to the Commander, which she had not.{/n}''',
          requires=(LEAVE,), forbids=(COMMITTED, DECLINED, CLOSED), paragraphs=EPILOGUE_PARAGRAPHS,
-         any_groups=((LOVERS_SPOKEN, OBSERVED, FLIRTED, E + "eyes_kissed", E + "vow_told", REMEMBRANCE, SARKORIS_TOLD, E + "drezen.evening"),))
-epilogue("released", '''{n}Eliandra led the stargazers into what was left of Sarkoris, released from her vow, and gave herself to its revival. The Commander had given what was needed at the basin, or watched her give it, and had never once sat down with her afterwards to find out what she wanted. She wrote once, after Threshold, to thank the Commander for the rite. The letter was warm, and exact, and asked nothing.{/n}''',
-         requires=(LEAVE,), forbids=(COMMITTED, DECLINED, CLOSED, LOVERS_SPOKEN, OBSERVED, FLIRTED, E + "eyes_kissed", E + "vow_told",
-                                     REMEMBRANCE, SARKORIS_TOLD, E + "drezen.evening"))
+         any_groups=((FLIRTED,),))
+epilogue("released", '''{n}Eliandra led the stargazers into what was left of Sarkoris, released from her vow, and gave herself to its revival. The Commander had given what was needed at the basin, or watched her give it, and had been a friend to her and her people when they had none; but whatever might have been between them was never spoken, by either of them, and the war ended before it could be. She wrote once, after Threshold, to thank the Commander for the rite. The letter was warm, and exact, and asked nothing.{/n}''',
+         requires=(LEAVE,), forbids=(COMMITTED, DECLINED, CLOSED, FLIRTED))
 
 epilogue("own_offering", '''{n}The stargazers took the road still bound by their high priestess's vow, and she carried it as far as the fords. There, in the spring after Threshold, under the open stars and with no one to see it, she gave her Lady back the strength she had been given at thirteen, and asked for nothing in return, and was let go.{/n}
 {n}She was never again the strongest of Pulura's priestesses. She devoted herself to the revival of Sarkoris anyway, one wound at a time, and wrote to the Commander about it every week, in a small exact hand, correcting herself in the margins and never crossing anything out.{/n}''',

@@ -16,7 +16,7 @@ from storylines.eliandra_trickster import (
     CHARTS, CLOSED, COMMITTED, DEAD, DECLINED, DREZEN, E, FLIRTED, HEALING_SEEN, HEART_SEEN, LEAVE, LETTER_ANSWERED,
     LIED_ABOUT_HAND, LIGHTS_GIVEN, LIGHTS_SEEN, MET, NO_LEAVE, PATH_FIT, REFUSED_FOR_HER, REL, REWARD_RETURNED, TABLET,
     TRIED_TO_CHEAT, UNIT)
-from storylines.eliandra_trickster import FLIRTED, LOVERS_SPOKEN, OBSERVED, REMEMBRANCE, SARKORIS_TOLD
+from storylines.eliandra_trickster import FLIRTED, LOVERS_SPOKEN, OBSERVED, REMEMBRANCE, SARKORIS_TOLD, TERMS_READ
 from storylines.eliandra_trickster import SCENES as SCENES_MAIN
 
 SCENES = []
@@ -118,6 +118,16 @@ def drezen_pre(id, title, entry, nodes, requires, forbids=(), delay=0, **fields)
     drezen(id, title, entry, nodes, requires, forbids=forbids, delay=delay, heart=False, **fields)
 
 
+drezen_pre(E + "ch5.observe_drezen", "The reading on the wall", '"Will you take your evening reading tonight? I\'d like to watch."', [
+    el("start", '''"On the north wall, at dusk. The shrine is gone; the sky is not." {n}Eliandra considers you, as she considers a question that is not quite the one being asked.{/n} "Come, then. Say nothing unless I ask, and touch nothing made of brass. I have carried every lens I own up those stairs, and I will not carry them down again in pieces."''',
+       c("[Go up to the north wall at dusk.]", "wall")),
+    nar("wall", '''{n}She sets out her lenses on the parapet in the angle of a tower, out of the wind, with a chart pinned flat under four river stones she has carried all the way from the dry fall. The sky over Drezen is not the sky of the star-heart: there is smoke in it, and the Wound's red glare low in the north. She reads it anyway. Her lips move. Her pen moves. When she makes an error she writes the correction beside it and leaves the error where it is.{/n}
+{n}Once, low over the Wound, there is a flicker at the edge of your sight: green, gone before you can look at it. She glances at you, sees that you saw it, and says nothing.{/n}''',
+        c("Continue", "done")),
+    el("done", '''{n}At last she lowers the lens.{/n} "That is what my Lady is," she says. "Not gold. Not temples. The patience to look, every evening, and the lights at the edge of it. If you still mean to make her an offering, now you know what she will be weighing it against."''',
+       c("[Thank her, and go down.]", flags=(OBSERVED,))),
+], requires=(), forbids=(OBSERVED, TERMS_READ, LEAVE, NO_LEAVE), delay=0)
+
 drezen_pre(E + "ch5.self_offering", "Her own offering", '"You sent for me?"', [
     el("start", '''"I did. Come up to the north wall tonight." {n}Eliandra has the stargazers' crates stacked round her, roped and labelled in her small exact hand, and she does not look at any of them.{/n} "I have had the basin carried up there. My Lady's rite is made under the open stars, and the wall is the nearest open sky in this city that nobody will walk across."''',
        c("[Go up to the north wall at nightfall.]", "heart")),
@@ -154,7 +164,7 @@ drezen_pre(E + "ch5.evening", "Two people on a wall", '"You look as if you haven
        c("[Sit beside her.]", "ask")),
     el("ask", '''"Why did you come to my shrine at all? Not the demons; the demons brought everyone. Why did you stay, and ask about my dead, or my Lady, or whatever it was you asked, when you had a war to be at?"''',
        c('"Because nobody had asked you anything in a hundred years. I wanted to be the first."', "first"),
-       c('[Flirt] "Because I wanted to find out what you look like when you forget to be the high priestess."', "forget"),
+       c('[Flirt] "Because I wanted to find out what you look like when you forget to be the high priestess."', "forget", flags=(FLIRTED,)),
        c('"I don\'t know. I kept finding reasons to come back."', "reasons")),
     el("first", '''"The first." {n}She turns the word over.{/n} "You were. You still are. It is a strange thing to be to someone, after a century. I am not sure whether it is a gift or a burden, and I have decided not to decide tonight."''',
        c("Continue", "close")),

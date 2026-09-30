@@ -361245,7 +361245,7 @@
         {
           "Id": "truth",
           "Speaker": "conversant",
-          "Text": "{n}She flinches, very slightly, and does not deny it.{/n} \"No. I would not.\" {n}A long breath.{/n} \"Thank you. Everyone here will tell me it was the demons, and they will be right, and it will help no one. You have told me I was wrong in a way I can use. Nobody has done that in a hundred years.\"",
+          "Text": "{n}She flinches, very slightly, and does not deny it.{/n} \"No. I would not.\" {n}A long breath.{/n} \"I made the rule for Odden, and Taeriell, and Katair, who had given up their wives and children for the mission; it was not fair that two of us should flaunt what the rest had surrendered. I still think that was a real reason. But I kept those two apart for a century to spare other people's grief, and the price of it was theirs.\" {n}She looks at her hands.{/n} \"I should have found another way. I did not look for one.\"",
           "Choices": [
             {
               "Text": "\"And you? Whom did you forbid yourself?\"",
@@ -361277,7 +361277,8 @@
               "Text": "[Flirt] \"Someone who could stand to be asked a question or two.\"",
               "Next": "flirt",
               "Set": [
-                "eliandra.trickster.lovers.spoken"
+                "eliandra.trickster.lovers.spoken",
+                "eliandra.trickster.flirted"
               ],
               "Requires": [],
               "Forbids": [],
@@ -363681,7 +363682,7 @@
         {
           "Id": "heart_new",
           "Speaker": "Narrator",
-          "Text": "{n}The heart of the sanctuary has no roof. Where a roof should be there is sky: the true sky, black and burning, its stars sharper than any you have seen since Mendev, though the hour is barely past sunset outside. The instruments round the walls are crated. Only a great bronze basin remains, brimming with still water, and in it the stars lie as clearly as they lie overhead.{/n}\n{n}Eliandra kneels at the basin in her white robes with her hair unbound. She does not look up when you come in.{/n}",
+          "Text": "{n}The heart of the sanctuary has no roof. Where a roof should be there is sky: the true sky, black and burning, its stars sharper than any you have seen since Mendev, though the hour is barely past sunset outside. The instruments round the walls are crated, and a few last charts lie half rolled on a long table. A great bronze basin remains, brimming with still water, and in it the stars lie as clearly as they lie overhead.{/n}\n{n}Eliandra kneels at the basin in her white robes with her hair unbound. She does not look up when you come in.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -363697,7 +363698,7 @@
         {
           "Id": "heart_known",
           "Speaker": "Narrator",
-          "Text": "{n}The star-heart is emptier than the evening you watched her take her reading. The lenses are crated, the charts gone, the long table bare to the wood. Only the basin remains, brimming, and the sky overhead, black and burning, and in the water the stars a heartbeat behind their own movement, as you remember them.{/n}\n{n}Eliandra kneels at the basin in her white robes with her hair unbound. She does not look up when you come in.{/n}",
+          "Text": "{n}The star-heart is emptier than the evening you watched her take her reading. The lenses are crated and most of the charts rolled and gone; only her last few lie half rolled on the long table, weighted with river stones. Only the basin remains, brimming, and the sky overhead, black and burning, and in the water the stars a heartbeat behind their own movement, as you remember them.{/n}\n{n}Eliandra kneels at the basin in her white robes with her hair unbound. She does not look up when you come in.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -364368,7 +364369,9 @@
             {
               "Text": "\"You weren't wrong.\"",
               "Next": "right",
-              "Set": [],
+              "Set": [
+                "eliandra.trickster.flirted"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -364376,7 +364379,9 @@
             {
               "Text": "[Reach out and touch her face.]",
               "Next": "touch",
-              "Set": [],
+              "Set": [
+                "eliandra.trickster.flirted"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -364952,7 +364957,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}Her letter from the fords stayed in the Commander's coat through Threshold, as promised, with its answer owed. The day after the war ended, the Commander wrote it: either, both, bring them all, ask me every morning.{/n}\n{n}She came to Drezen a month later with Odden, the girl with the sling, and a mule that bit everyone. She said she had not asked a third time, as she had promised, and that she had not stopped hoping either, as she had also promised, and that she hoped the Commander appreciated how difficult it had been to keep both. Then she gave the rest of her life to Sarkoris, as she had meant to all along, and to the Commander, which she had not.{/n}",
+          "Text": "{n}Her letter from the fords stayed in the Commander's coat through Threshold, as promised, with its answer owed. The day after the war ended, the Commander wrote it: either, both, bring them all, ask me every morning.{/n}\n{n}She came to Drezen a month later with Odden, the girl with the sling, and a mule that bit everyone. She said she had not asked a third time, as she had promised, and that she had not stopped hoping either, as she had also promised, and that she hoped the Commander appreciated how difficult it had been to keep both. Then she gave the rest of her life to Sarkoris, as she had meant to all along, and to the Commander, which she had not.{/n}\n{n}The night she came, in the Commander's rooms in Drezen, she unpinned the grey cloak herself and let it fall, and stood a moment in the lamplight in the white robes of an office she no longer owed anyone, and then unlaced those too, tie by tie, looking at the Commander the whole while. \"I have waited through a war,\" she said. \"I am not waiting through the lamp.\" She put it out with two fingers, took the Commander's face in both hands, and drew them down onto the bed with her.{/n}\n{n}In the morning Odden, delivering a message nobody had asked him to deliver, found the door unbarred and the high priestess of Pulura asleep with her hair across the Commander's pillow, and went away again, and told the entire cooper's shop by noon.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -365182,7 +365187,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}The war moved faster than the stargazers' carts, and the question she had carried away from the basin was never asked on the road. The day after Threshold she came to the Commander's door in Drezen, with the hood of her travelling cloak thrown back and the dust of Sarkoris on her boots, and asked it there: Drezen, or the road?{/n}\n{n}The Commander said either. She said that would do to begin with, and that she would ask again every morning, and she did. Then she gave the rest of her life to the revival of Sarkoris, as she had always meant to, and to the Commander, which she had not.{/n}",
+          "Text": "{n}The war moved faster than the stargazers' carts, and the question she had carried away from the basin was never asked on the road. The day after Threshold she came to the Commander's door in Drezen, with the hood of her travelling cloak thrown back and the dust of Sarkoris on her boots, and asked it there: Drezen, or the road?{/n}\n{n}The Commander said either. She said that would do to begin with, and that she would ask again every morning.{/n}\n{n}That night, in the Commander's rooms in Drezen, she unpinned the grey cloak herself and let it fall, and stood a moment in the lamplight in the white robes of an office she no longer owed anyone, and then unlaced those too, tie by tie, looking at the Commander the whole while. \"I have waited through a war,\" she said. \"I am not waiting through the lamp.\" She put it out with two fingers, took the Commander's face in both hands, and drew them down onto the bed with her.{/n}\n{n}In the morning Odden, delivering a message nobody had asked him to deliver, found the door unbarred and the high priestess of Pulura asleep with her hair across the Commander's pillow, and went away again, and told the entire cooper's shop by noon.{/n}\n{n}Then she gave the rest of her life to the revival of Sarkoris, as she had always meant to, and to the Commander, which she had not.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -365403,14 +365408,7 @@
       },
       "RequiresAnyGroups": [
         [
-          "eliandra.trickster.lovers.spoken",
-          "eliandra.trickster.observed",
-          "eliandra.trickster.flirted",
-          "eliandra.trickster.eyes_kissed",
-          "eliandra.trickster.vow_told",
-          "eliandra.trickster.remembrance",
-          "eliandra.trickster.sarkoris.told",
-          "eliandra.trickster.drezen.evening"
+          "eliandra.trickster.flirted"
         ]
       ]
     },
@@ -365425,7 +365423,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}Eliandra led the stargazers into what was left of Sarkoris, released from her vow, and gave herself to its revival. The Commander had given what was needed at the basin, or watched her give it, and had never once sat down with her afterwards to find out what she wanted. She wrote once, after Threshold, to thank the Commander for the rite. The letter was warm, and exact, and asked nothing.{/n}",
+          "Text": "{n}Eliandra led the stargazers into what was left of Sarkoris, released from her vow, and gave herself to its revival. The Commander had given what was needed at the basin, or watched her give it, and had been a friend to her and her people when they had none; but whatever might have been between them was never spoken, by either of them, and the war ended before it could be. She wrote once, after Threshold, to thank the Commander for the rite. The letter was warm, and exact, and asked nothing.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -365447,14 +365445,7 @@
         "eliandra.committed",
         "eliandra.trickster.declined",
         "eliandra.closed",
-        "eliandra.trickster.lovers.spoken",
-        "eliandra.trickster.observed",
         "eliandra.trickster.flirted",
-        "eliandra.trickster.eyes_kissed",
-        "eliandra.trickster.vow_told",
-        "eliandra.trickster.remembrance",
-        "eliandra.trickster.sarkoris.told",
-        "eliandra.trickster.drezen.evening",
         "sacrifice"
       ],
       "DelayHours": 0,
@@ -366641,7 +366632,7 @@
         {
           "Id": "heart_new",
           "Speaker": "Narrator",
-          "Text": "{n}The heart of the sanctuary has no roof. Where a roof should be there is sky: the true sky, black and burning, its stars sharper than any you have seen since Mendev, though the hour is barely past sunset outside. The instruments round the walls are crated. Only a great bronze basin remains, brimming with still water, and in it the stars lie as clearly as they lie overhead.{/n}\n{n}Eliandra kneels at the basin in her white robes with her hair unbound. She does not look up when you come in.{/n}",
+          "Text": "{n}The heart of the sanctuary has no roof. Where a roof should be there is sky: the true sky, black and burning, its stars sharper than any you have seen since Mendev, though the hour is barely past sunset outside. The instruments round the walls are crated, and a few last charts lie half rolled on a long table. A great bronze basin remains, brimming with still water, and in it the stars lie as clearly as they lie overhead.{/n}\n{n}Eliandra kneels at the basin in her white robes with her hair unbound. She does not look up when you come in.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -366657,7 +366648,7 @@
         {
           "Id": "heart_known",
           "Speaker": "Narrator",
-          "Text": "{n}The star-heart is emptier than the evening you watched her take her reading. The lenses are crated, the charts gone, the long table bare to the wood. Only the basin remains, brimming, and the sky overhead, black and burning, and in the water the stars a heartbeat behind their own movement, as you remember them.{/n}\n{n}Eliandra kneels at the basin in her white robes with her hair unbound. She does not look up when you come in.{/n}",
+          "Text": "{n}The star-heart is emptier than the evening you watched her take her reading. The lenses are crated and most of the charts rolled and gone; only her last few lie half rolled on the long table, weighted with river stones. Only the basin remains, brimming, and the sky overhead, black and burning, and in the water the stars a heartbeat behind their own movement, as you remember them.{/n}\n{n}Eliandra kneels at the basin in her white robes with her hair unbound. She does not look up when you come in.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -367328,7 +367319,7 @@
         {
           "Id": "heart_new",
           "Speaker": "Narrator",
-          "Text": "{n}The heart of the sanctuary has no roof. Where a roof should be there is sky: the true sky, black and burning, its stars sharper than any you have seen since Mendev, though the hour is barely past sunset outside. The instruments round the walls are crated. Only a great bronze basin remains, brimming with still water, and in it the stars lie as clearly as they lie overhead.{/n}\n{n}Eliandra kneels at the basin in her white robes with her hair unbound. She does not look up when you come in.{/n}",
+          "Text": "{n}The heart of the sanctuary has no roof. Where a roof should be there is sky: the true sky, black and burning, its stars sharper than any you have seen since Mendev, though the hour is barely past sunset outside. The instruments round the walls are crated, and a few last charts lie half rolled on a long table. A great bronze basin remains, brimming with still water, and in it the stars lie as clearly as they lie overhead.{/n}\n{n}Eliandra kneels at the basin in her white robes with her hair unbound. She does not look up when you come in.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -367344,7 +367335,7 @@
         {
           "Id": "heart_known",
           "Speaker": "Narrator",
-          "Text": "{n}The star-heart is emptier than the evening you watched her take her reading. The lenses are crated, the charts gone, the long table bare to the wood. Only the basin remains, brimming, and the sky overhead, black and burning, and in the water the stars a heartbeat behind their own movement, as you remember them.{/n}\n{n}Eliandra kneels at the basin in her white robes with her hair unbound. She does not look up when you come in.{/n}",
+          "Text": "{n}The star-heart is emptier than the evening you watched her take her reading. The lenses are crated and most of the charts rolled and gone; only her last few lie half rolled on the long table, weighted with river stones. Only the basin remains, brimming, and the sky overhead, black and burning, and in the water the stars a heartbeat behind their own movement, as you remember them.{/n}\n{n}Eliandra kneels at the basin in her white robes with her hair unbound. She does not look up when you come in.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -367933,6 +367924,181 @@
       "InteractionHub": "eliandra.presence.mark"
     },
     {
+      "Id": "eliandra.trickster.ch5.observe_drezen",
+      "Title": "The reading on the wall",
+      "Owner": "Eliandra",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Will you take your evening reading tonight? I'd like to watch.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Eliandra",
+          "Text": "\"On the north wall, at dusk. The shrine is gone; the sky is not.\" {n}Eliandra considers you, as she considers a question that is not quite the one being asked.{/n} \"Come, then. Say nothing unless I ask, and touch nothing made of brass. I have carried every lens I own up those stairs, and I will not carry them down again in pieces.\"",
+          "Choices": [
+            {
+              "Text": "[Go up to the north wall at dusk.]",
+              "Next": "wall",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eliandra"
+        },
+        {
+          "Id": "wall",
+          "Speaker": "Narrator",
+          "Text": "{n}She sets out her lenses on the parapet in the angle of a tower, out of the wind, with a chart pinned flat under four river stones she has carried all the way from the dry fall. The sky over Drezen is not the sky of the star-heart: there is smoke in it, and the Wound's red glare low in the north. She reads it anyway. Her lips move. Her pen moves. When she makes an error she writes the correction beside it and leaves the error where it is.{/n}\n{n}Once, low over the Wound, there is a flicker at the edge of your sight: green, gone before you can look at it. She glances at you, sees that you saw it, and says nothing.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "done",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eliandra"
+        },
+        {
+          "Id": "done",
+          "Speaker": "Eliandra",
+          "Text": "{n}At last she lowers the lens.{/n} \"That is what my Lady is,\" she says. \"Not gold. Not temples. The patience to look, every evening, and the lights at the edge of it. If you still mean to make her an offering, now you know what she will be weighing it against.\"",
+          "Choices": [
+            {
+              "Text": "[Thank her, and go down.]",
+              "Next": null,
+              "Set": [
+                "eliandra.trickster.observed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eliandra"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "eliandra.met_ch5"
+      ],
+      "Forbids": [
+        "eliandra.closed",
+        "eliandra.dead",
+        "eliandra.trickster.ch5.observe_drezen_mark",
+        "eliandra.trickster.observed",
+        "eliandra.trickster.terms_read",
+        "eliandra.trickster.leave_granted",
+        "eliandra.trickster.no_leave"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "eliandra",
+      "Chapters": [
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "ContactUnit": "e349079a648cb15448a27f9049344bf1",
+      "InteractionHub": "eliandra.presence",
+      "RequiresAnyGroups": []
+    },
+    {
+      "Id": "eliandra.trickster.ch5.observe_drezen_mark",
+      "Title": "The reading on the wall",
+      "Owner": "Eliandra",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Will you take your evening reading tonight? I'd like to watch.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Eliandra",
+          "Text": "\"On the north wall, at dusk. The shrine is gone; the sky is not.\" {n}Eliandra considers you, as she considers a question that is not quite the one being asked.{/n} \"Come, then. Say nothing unless I ask, and touch nothing made of brass. I have carried every lens I own up those stairs, and I will not carry them down again in pieces.\"",
+          "Choices": [
+            {
+              "Text": "[Go up to the north wall at dusk.]",
+              "Next": "wall",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eliandra"
+        },
+        {
+          "Id": "wall",
+          "Speaker": "Narrator",
+          "Text": "{n}She sets out her lenses on the parapet in the angle of a tower, out of the wind, with a chart pinned flat under four river stones she has carried all the way from the dry fall. The sky over Drezen is not the sky of the star-heart: there is smoke in it, and the Wound's red glare low in the north. She reads it anyway. Her lips move. Her pen moves. When she makes an error she writes the correction beside it and leaves the error where it is.{/n}\n{n}Once, low over the Wound, there is a flicker at the edge of your sight: green, gone before you can look at it. She glances at you, sees that you saw it, and says nothing.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "done",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eliandra"
+        },
+        {
+          "Id": "done",
+          "Speaker": "Eliandra",
+          "Text": "{n}At last she lowers the lens.{/n} \"That is what my Lady is,\" she says. \"Not gold. Not temples. The patience to look, every evening, and the lights at the edge of it. If you still mean to make her an offering, now you know what she will be weighing it against.\"",
+          "Choices": [
+            {
+              "Text": "[Thank her, and go down.]",
+              "Next": null,
+              "Set": [
+                "eliandra.trickster.observed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eliandra"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "eliandra.met_ch5"
+      ],
+      "Forbids": [
+        "eliandra.closed",
+        "eliandra.dead",
+        "eliandra.trickster.ch5.observe_drezen",
+        "eliandra.trickster.observed",
+        "eliandra.trickster.terms_read",
+        "eliandra.trickster.leave_granted",
+        "eliandra.trickster.no_leave"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "eliandra",
+      "Chapters": [
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "ContactUnit": "e349079a648cb15448a27f9049344bf1",
+      "InteractionHub": "eliandra.presence.mark",
+      "RequiresAnyGroups": [
+        [
+          "eliandra.presence.failed",
+          "fool_king.gone"
+        ]
+      ]
+    },
+    {
       "Id": "eliandra.trickster.ch5.self_offering",
       "Title": "Her own offering",
       "Owner": "Eliandra",
@@ -368429,7 +368595,9 @@
             {
               "Text": "[Flirt] \"Because I wanted to find out what you look like when you forget to be the high priestess.\"",
               "Next": "forget",
-              "Set": [],
+              "Set": [
+                "eliandra.trickster.flirted"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -368578,7 +368746,9 @@
             {
               "Text": "[Flirt] \"Because I wanted to find out what you look like when you forget to be the high priestess.\"",
               "Next": "forget",
-              "Set": [],
+              "Set": [
+                "eliandra.trickster.flirted"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -377960,8 +378130,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
