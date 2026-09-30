@@ -69,6 +69,7 @@ from storylines import nenio_trickster, nenio_folios
 from storylines import herrax_trickster, herrax_house
 from storylines import terendelev_trickster, terendelev_watch
 from storylines import eliandra_trickster, eliandra_stars
+from storylines import galfrey_trickster, galfrey_kitrane
 from storylines import rrt_ui
 from storylines import rrt_portraits
 from storylines import scene_kinds
@@ -511,6 +512,15 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(eliandra_stars.SCENES))
     eliandra_trickster.integrate(payload)
     eliandra_stars.integrate(payload)
+    # Galfrey: a new relationship (trickster/galfrey.md; 11-ROSTER-PLAN-2 §2, R4 build sheet): "The Queen dies; Kitrane walks
+    # out", an offer she takes or refuses at her deathbed at Iz (inline on GalfreyOnTheEdge), and the courtship on her presence
+    # in Drezen as a knight of the Green Crows (galfrey_kitrane). Where she lives, her native romance comes first: nothing here
+    # starts or completes it. The unregistered galfrey_all_path_continuation draft stays unregistered.
+    payload["Relationships"]["galfrey"] = copy.deepcopy(galfrey_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(galfrey_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(galfrey_kitrane.SCENES))
+    galfrey_trickster.integrate(payload)
+    galfrey_kitrane.integrate(payload)
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
     trickster_engine(payload)

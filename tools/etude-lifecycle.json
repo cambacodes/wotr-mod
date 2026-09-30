@@ -365,6 +365,26 @@
     "self_completed"
    ]
   },
+  "133f3b1b38f04fa44be3200b786e437f": {
+   "ancestors_completed": [
+    "GalfreyRomance"
+   ],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "GalfreyRomance_Finished",
+    "GalfreyRomance",
+    "Galfrey",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "GalfreyRomance_Finished",
+   "traits": [
+    "event_cascade"
+   ]
+  },
   "148423f1d35917946a5ebeeb4f19246c": {
    "ancestors_completed": [],
    "areas": {
@@ -834,6 +854,23 @@
    "name": "(parent mod / not in blueprints.zip)",
    "traits": [
     "parent_mod"
+   ]
+  },
+  "37a2df11c979ed446b6716142b2b01f5": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "PlayerIsKnightCommanderAfterFane",
+    "Chapter03_Outcomes",
+    "Chapter03_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "PlayerIsKnightCommanderAfterFane",
+   "traits": [
+    "hold"
    ]
   },
   "381a296094804761af0893d2e70dc2df": {
@@ -1326,6 +1363,26 @@
    "name": "(parent mod / not in blueprints.zip)",
    "traits": [
     "parent_mod"
+   ]
+  },
+  "4b3f1b15817e2034f85d7fa7b2a6f20a": {
+   "ancestors_completed": [],
+   "areas": {
+    "2ccc6731787b6ec41ab5adc13f1b9ce9": "2ccc6731787b6ec41ab5adc13f1b9ce9"
+   },
+   "cascade_chapter": null,
+   "chain": [
+    "GalfreyGoesToManuscripts",
+    "Iz_Default",
+    "Chapter05_AreasDefault",
+    "Chapter05_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "GalfreyGoesToManuscripts",
+   "traits": [
+    "area"
    ]
   },
   "4bb966e7df502394cba4b650a54ce92f": {
@@ -2707,6 +2764,28 @@
     "hold"
    ]
   },
+  "ac4649451b994be88be421b16be9cd0e": {
+   "ancestors_completed": [],
+   "areas": {
+    "2570015799edf594daf2f076f2f975d8": "2570015799edf594daf2f076f2f975d8"
+   },
+   "cascade_chapter": null,
+   "chain": [
+    "HurlunNotInDrezenChapter5",
+    "Hulrun",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "HurlunNotInDrezenChapter5: EtudeStatus, OrAndLogic"
+   ],
+   "name": "HurlunNotInDrezenChapter5",
+   "traits": [
+    "area",
+    "conditional"
+   ]
+  },
   "b02cb06ba219ef9419a1b37cad576afa": {
    "ancestors_completed": [],
    "areas": {},
@@ -3154,6 +3233,33 @@
     "self_completed"
    ]
   },
+  "c9358d866e0b3844b8d72536ca60e4b4": {
+   "ancestors_completed": [
+    "GalfreyRomance"
+   ],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "GalfreyRomance_Active",
+    "GalfreyRomance",
+    "Galfrey",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "Answer_0023",
+    "Answer_0071",
+    "Cue_0010",
+    "GalfreyRomance",
+    "PF-400461"
+   ],
+   "conditional": [],
+   "name": "GalfreyRomance_Active",
+   "traits": [
+    "self_completed",
+    "event_cascade"
+   ]
+  },
   "c946f95a3f79eaa429799db96538fc07": {
    "ancestors_completed": [],
    "areas": {},
@@ -3377,6 +3483,23 @@
     "conditional"
    ]
   },
+  "d7169995e449fdc4db861ddf0b9beff8": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "HurlunDead",
+    "Hulrun",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "HurlunDead",
+   "traits": [
+    "hold"
+   ]
+  },
   "d99770b13ebc47447881d33763209b03": {
    "ancestors_completed": [],
    "areas": {},
@@ -3574,6 +3697,25 @@
    "name": "NocticulaDead",
    "traits": [
     "hold"
+   ]
+  },
+  "e9205b9f9e8ecd04c92852d72d09ca86": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Galfrey_Final",
+    "Galfrey",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "Galfrey_Final: EtudeStatus"
+   ],
+   "name": "Galfrey_Final",
+   "traits": [
+    "conditional"
    ]
   },
   "e9efc34083d087941bf9242388c258c3": {
