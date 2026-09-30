@@ -69,6 +69,7 @@ Q2_DONE = "greybor.q2_done"
 Q3_FAILED = "greybor.q3_failed"
 GREY_MET_Q2 = "horzalah.greybor_met_q2"  # HorzalahFirst/Cue_0003: her projection congratulates Greybor on Willodus (Ch4)
 EXPLAINED = "horzalah.greybor_explained"  # Horzalah_Mercy/Cue_0011: Greybor tells her three mistakes (optional, Answer_0010)
+GUILD_SEEN = "horzalah.guild_seen"    # YozzDying/Cue_0015: in Yozz's hall she takes the Guild before the Commander (Ch4)
 SEALS_SEEN = "horzalah.seals_seen"    # HorzalahFirst/Cue_0001: the projection's "flaming seals of Baphomet" (Ch4)
 SPAWN_TOLD = "baphomet.spawn_told"     # Prison_Baph/Cue_0121: "I could spawn hundreds, thousands more"
 RESCUE_TOLD = "horzalah.rescue_refused_told"  # YozzDying/Cue_0051 "He refused to rescue me back then..." (her own words, Ch4)
@@ -137,7 +138,7 @@ DERIVED = {
 # failure is read from the cue that sets it: Greybor's "We've lost an important lead" after the assassin dies unquestioned.
 SEEN_CUES = {Q3_FAILED: [Q3_FAIL], RESCUE_TOLD: ["fc5119d8d4a54e047b07338764beb346"],
              SEALS_SEEN: ["fc1030e8724b086479d7ec2a52aae2a5"], SPAWN_TOLD: ["0cdc1a24d29c77f4490900d3a9418afc"],
-             EXPLAINED: ["ae22177b1bc76fc42a9d08dba83cccdc"], GREY_MET_Q2: ["f3ba94d6ca5f33d499b5ff0a11cda5df"]}
+             EXPLAINED: ["ae22177b1bc76fc42a9d08dba83cccdc"], GUILD_SEEN: ["88e13a2fad6652e40aba28c64de187d3"], GREY_MET_Q2: ["f3ba94d6ca5f33d499b5ff0a11cda5df"]}
 
 # Path fit (ROUTE-BRIEF-R 2026-09-29, v1): T = device or Trickster-only; N-all = any path; N-fit = the fitting paths.
 PATH_FIT = {}
@@ -318,10 +319,14 @@ UNMET_PITCH = ('[Offer her a better story] "Then don\'t go home with nothing. Ta
 
 SCENES.append(scene(H + "unmet.knife", "Hired help is so disappointing", "Horzalah", 5, "", [
     nar("start", '''{n}The first you know of it is the lamp. It was burning when you lay down, and now it is not, and the dark in the room has a shape standing in it, tall and lean, with a knife.{/n}''',
-        c("Continue", "met", requires=(MET_Q2,)),
-        c("Continue", "stranger", forbids=(MET_Q2,))),
+        c("Continue", "met", requires=(SEALS_SEEN, GUILD_SEEN)),
+        c("Continue", "met_first", requires=(SEALS_SEEN,), forbids=(GUILD_SEEN,)),
+        c("Continue", "stranger", forbids=(SEALS_SEEN,))),
     hz("met", '''{n}You know the voice before the lamp flares up again under her hand. The projection from the Guild in Alushinyrra, in the flesh this time: no seals now, no flames, only skin, and a pale band around her throat where a collar used to be.{/n}
 "Horzalah," {n}she says,{/n} "not Hepzamirah. We spoke over a pile of corpses in my Guild, and you left with Yozz's bounty and your life. I let you keep both. I have since learned that my father values your head rather more than I did."''',
+       c("Continue", "demise")),
+    hz("met_first", '''{n}You know the voice before the lamp flares up again under her hand. The projection that congratulated your dwarf over Willodus's corpse, in the flesh this time: no seals now, no flames, only skin, and a pale band around her throat where a collar used to be.{/n}
+"Horzalah," {n}she says,{/n} "not Hepzamirah. You never did come to my Guild to collect your bounty. Perhaps that was wise. I have since learned that my father values your head rather more than I did."''',
        c("Continue", "demise")),
     hz("stranger", '''{n}The lamp flares up again under her hand. A demon-woman, thin to the point of hunger, with a nephilim's horns and not a single brand on her skin; only a pale band around her throat where a collar used to be.{/n}
 "Horzalah," {n}she says,{/n} "not Hepzamirah. You killed my sister in Colyphyr, and for that I will give you... nothing. My father gave me back my power and took his seals off me, and I took Yozz's Guild for myself. Now he will give me his favour, when I bring him your head."''',
@@ -505,12 +510,10 @@ def presence(id, title, entry, opening, nodes, requires, forbids=(), delay=24, o
                         InteractionHub=PRESENCE, **extra))
     tag(id, "T")
     if night is not None:
-        # When the presence failed, or when the chain reaches Chapter 6 (the Greybor-less night after Q3 lapsed), she comes
-        # to the Commander's room instead.
+        # Only when the presence failed (Chapter 5). A chain that reaches Chapter 6 ends on the epilogue pages instead.
         SCENES.append(scene(id + "_night", title, "Horzalah", 5, "", [night, *_resite(nodes, night_subs)],
-                            requires=("trickster.ever", *requires), forbids=(CLOSED, id, *forbids),
-                            RequiresAnyGroups=[[PRESENCE_FAILED, "chapter.six"]],
-                            delay=delay, last=6, optional=optional, Relationship=REL, Chapters=[5, 6], Remote=True,
+                            requires=("trickster.ever", PRESENCE_FAILED, *requires), forbids=(CLOSED, id, *forbids),
+                            delay=delay, last=5, optional=optional, Relationship=REL, Chapters=[5], Remote=True,
                             Kind="visit", **extra))
         tag(id + "_night", "T")
 

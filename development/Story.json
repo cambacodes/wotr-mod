@@ -361784,9 +361784,22 @@
               "Next": "met",
               "Set": [],
               "Requires": [
-                "horzalah.met_q2"
+                "horzalah.seals_seen",
+                "horzalah.guild_seen"
               ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "met_first",
+              "Set": [],
+              "Requires": [
+                "horzalah.seals_seen"
+              ],
+              "Forbids": [
+                "horzalah.guild_seen"
+              ],
               "Abort": false
             },
             {
@@ -361795,7 +361808,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "horzalah.met_q2"
+                "horzalah.seals_seen"
               ],
               "Abort": false
             }
@@ -361806,6 +361819,22 @@
           "Id": "met",
           "Speaker": "Horzalah",
           "Text": "{n}You know the voice before the lamp flares up again under her hand. The projection from the Guild in Alushinyrra, in the flesh this time: no seals now, no flames, only skin, and a pale band around her throat where a collar used to be.{/n}\n\"Horzalah,\" {n}she says,{/n} \"not Hepzamirah. We spoke over a pile of corpses in my Guild, and you left with Yozz's bounty and your life. I let you keep both. I have since learned that my father values your head rather more than I did.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "demise",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "met_first",
+          "Speaker": "Horzalah",
+          "Text": "{n}You know the voice before the lamp flares up again under her hand. The projection that congratulated your dwarf over Willodus's corpse, in the flesh this time: no seals now, no flames, only skin, and a pale band around her throat where a collar used to be.{/n}\n\"Horzalah,\" {n}she says,{/n} \"not Hepzamirah. You never did come to my Guild to collect your bounty. Perhaps that was wise. I have since learned that my father values your head rather more than I did.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -363113,7 +363142,7 @@
       "Title": "A gift in the Abyss's idiom",
       "Owner": "Horzalah",
       "MinChapter": 5,
-      "MaxChapter": 6,
+      "MaxChapter": 5,
       "Entry": "",
       "Nodes": [
         {
@@ -363278,6 +363307,7 @@
       ],
       "Requires": [
         "trickster.ever",
+        "horzalah.presence.failed",
         "horzalah.trickster.wants_heard"
       ],
       "Forbids": [
@@ -363289,16 +363319,9 @@
       ],
       "DelayHours": 48,
       "Optional": false,
-      "RequiresAnyGroups": [
-        [
-          "horzalah.presence.failed",
-          "chapter.six"
-        ]
-      ],
       "Relationship": "horzalah",
       "Chapters": [
-        5,
-        6
+        5
       ],
       "Remote": true,
       "Kind": "visit",
@@ -363541,7 +363564,7 @@
       "Title": "The collar",
       "Owner": "Horzalah",
       "MinChapter": 5,
-      "MaxChapter": 6,
+      "MaxChapter": 5,
       "Entry": "",
       "Nodes": [
         {
@@ -363748,6 +363771,7 @@
       ],
       "Requires": [
         "trickster.ever",
+        "horzalah.presence.failed",
         "horzalah.trickster.tested"
       ],
       "Forbids": [
@@ -363758,16 +363782,9 @@
       ],
       "DelayHours": 24,
       "Optional": false,
-      "RequiresAnyGroups": [
-        [
-          "horzalah.presence.failed",
-          "chapter.six"
-        ]
-      ],
       "Relationship": "horzalah",
       "Chapters": [
-        5,
-        6
+        5
       ],
       "Remote": true,
       "Kind": "visit",
@@ -363901,7 +363918,7 @@
       "Title": "Her move",
       "Owner": "Horzalah",
       "MinChapter": 5,
-      "MaxChapter": 6,
+      "MaxChapter": 5,
       "Entry": "",
       "Nodes": [
         {
@@ -363999,6 +364016,7 @@
       ],
       "Requires": [
         "trickster.ever",
+        "horzalah.presence.failed",
         "horzalah.trickster.declined"
       ],
       "Forbids": [
@@ -364009,16 +364027,9 @@
       ],
       "DelayHours": 24,
       "Optional": false,
-      "RequiresAnyGroups": [
-        [
-          "horzalah.presence.failed",
-          "chapter.six"
-        ]
-      ],
       "Relationship": "horzalah",
       "Chapters": [
-        5,
-        6
+        5
       ],
       "Remote": true,
       "Kind": "visit",
@@ -366142,8 +366153,20 @@
               "Text": "Continue",
               "Next": "canary",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "horzalah.gift_delivered"
+              ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "no_canary",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "horzalah.gift_delivered"
+              ],
               "Abort": false
             }
           ],
@@ -366158,8 +366181,20 @@
               "Text": "Continue",
               "Next": "canary",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "horzalah.gift_delivered"
+              ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "no_canary",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "horzalah.gift_delivered"
+              ],
               "Abort": false
             }
           ],
@@ -366174,29 +366209,31 @@
               "Text": "\"She laughed, actually.\"",
               "Next": "laughed",
               "Set": [],
-              "Requires": [
-                "horzalah.gift_delivered"
-              ],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "\"I didn't carry it.\"",
-              "Next": "didnt",
-              "Set": [],
               "Requires": [],
-              "Forbids": [
-                "horzalah.gift_delivered"
-              ],
+              "Forbids": [],
               "Abort": false
             },
             {
               "Text": "\"She was too busy trying to kill me.\"",
               "Next": "busy",
               "Set": [],
-              "Requires": [
-                "horzalah.gift_delivered"
-              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "no_canary",
+          "Speaker": "Horzalah",
+          "Text": "\"I gave you a gift for her, in Yozz's hall. A box with a white ribbon, and a dead canary in it with my voice in its beak and a spear of fire in its heart.\" {n}Her eyes narrow.{/n} \"What did you do with my box, mortal?\"",
+          "Choices": [
+            {
+              "Text": "\"I didn't carry it to her.\"",
+              "Next": "didnt",
+              "Set": [],
+              "Requires": [],
               "Forbids": [],
               "Abort": false
             }
@@ -376593,6 +376630,9 @@
     ],
     "horzalah.greybor_explained": [
       "ae22177b1bc76fc42a9d08dba83cccdc"
+    ],
+    "horzalah.guild_seen": [
+      "88e13a2fad6652e40aba28c64de187d3"
     ],
     "horzalah.greybor_met_q2": [
       "f3ba94d6ca5f33d499b5ff0a11cda5df"

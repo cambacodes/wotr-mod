@@ -365,18 +365,16 @@ internal static class HorzalahTricksterTests
               && story.SeenCues["horzalah.greybor_explained"].SequenceEqual(new[] { "ae22177b1bc76fc42a9d08dba83cccdc" }),
             "The dwarf's lecture is remembered in a world where he never gave it.");
 
-        // Trk_Horzalah_Chapter6: the Greybor-less night after Q3 lapsed at Chapter 6 still carries her test, her yes, the
-        // chamber and her Last Call coda (the room twins stand in for her presence, which is Chapter 5 only).
+        // Trk_Horzalah_Chapter6: the Greybor-less night after Q3 lapsed at Chapter 6 ends on the pages (the one-rest Chapter 6
+        // budget): no presence, no room twins; her gift left unanswered is the open page. The Last Call coda needs the commit.
         var c6 = World(story, 6, "trickster", "trickster.ever", "iz.done", "coronation.after", "greybor.q2_done", "chapter.six");
         var c6a = Take(unmet, c6, "exit", 0, Primed, Ear);
         var c6b = Take(kept, Later(story, c6a, 48), "wants", 0, Wants);
-        check(!Avail(gift, Later(story, c6b, 48)), "Trk_Horzalah_Chapter6: her Chapter 5 presence opens in Chapter 6.");
-        var c6c = Take(giftNight, Later(story, c6b, 48), "decline_end", 0, Tested);
-        var c6d = Take(collarNight, Later(story, c6c, 24), "word3", 0, Committed);
-        var c6e = Take(chamber, Later(story, c6d, 24), "morning2", 0, Chamber, Morning);
-        var coda = story.Scenes.Single(s => s.Id == "horzalah.lastcall.page");
-        check(c6e.Has(Committed) && NoKill(c6e) && coda.Requires.Contains(Committed),
-            "Trk_Horzalah_Chapter6: the Chapter 6 road loses her test, her yes, the chamber or her Last Call coda.");
+        check(!Avail(gift, Later(story, c6b, 48)) && !Avail(giftNight, Later(story, c6b, 48))
+              && !Avail(giftNight, Later(story, World(story, 6, "trickster.ever", Wants, "horzalah.presence.failed"), 48))
+              && Avail(pg["epilogue.unanswered"], c6b)
+              && story.Scenes.Single(s => s.Id == "horzalah.lastcall.page").Requires.Contains(Committed),
+            "Trk_Horzalah_Chapter6: a courtship scene plays in Chapter 6, or the road does not end on the open page.");
         // H2 (Last Call's bottle brings the Commander back with sacrifice held) keeps her romantic pages, as the native endings do.
         var h2 = World(story, 6, "trickster.ever", Committed, Ear, "sacrifice", "trickster.lastcall.taken", "ending.wound_closed", "trickster.lastcall.pillar.bottle");
         check(h2.Has("trickster.commander_back") && Avail(pg["epilogue.together"], h2)
