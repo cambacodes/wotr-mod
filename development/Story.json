@@ -362721,7 +362721,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Drezen keeps its vigil for the Queen in the chapel of the citadel, before the coffin goes home to Nerosyan. The oak box stands before the altar of the Inheritor under the blue and silver of Mendev, with a sword laid along its lid. It is not her sword. It is Sir Anselm's, because hers had to go with Kitrane, and nobody who knows the difference is going to say so.{/n}\n{n}The chapel is full to the doors, and the square outside is full, and the walls. It falls to the Commander of the crusade to speak.{/n}",
+          "Text": "{n}Drezen keeps its vigil for the Queen in the chapel of the citadel, before the coffin goes home to Nerosyan. The oak box stands before the altar of the Inheritor under the blue and silver of Mendev, with her sword laid along its lid. It is the only thing of hers in the box. The knight who carried her out is wearing Sir Anselm's, and nobody who knows the difference is going to say so.{/n}\n{n}The chapel is full to the doors, and the square outside is full, and the walls. It falls to the Commander of the crusade to speak.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -362871,7 +362871,48 @@
         {
           "Id": "sign",
           "Speaker": "Narrator",
-          "Text": "{n}You tell them about the Queen, and it is a good speech, and in the middle of it you tell them one small thing more: that she once said she envied a knight of a minor order, who had no lands, no crown and no enemies, and slept under canvas, and had her boots stolen twice.{/n}\n{n}A few people laugh through their tears, as you meant them to. The Inquisitor does not laugh. He looks at you for rather longer than a grieving man needs to, and then down at his hands.{/n}",
+          "Text": "{n}You tell them about the Queen, and it is a good speech, and in the middle of it you tell them one small thing more: that she once said she envied a knight of a minor order, who had no lands, no crown and no enemies, and slept under canvas, and had her boots stolen twice.{/n}\n{n}A few people laugh through their tears, as you meant them to.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "sign_hulrun",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "hulrun.dead",
+                "hulrun.away_c5"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "after",
+              "Set": [],
+              "Requires": [
+                "hulrun.dead"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "after",
+              "Set": [],
+              "Requires": [
+                "hulrun.away_c5"
+              ],
+              "Forbids": [
+                "hulrun.dead"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "sign_hulrun",
+          "Speaker": "Narrator",
+          "Text": "{n}The Inquisitor does not laugh. He looks at you for rather longer than a grieving man needs to, and then down at his hands.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -363415,7 +363456,7 @@
         {
           "Id": "why",
           "Speaker": "Galfrey",
-          "Text": "\"So. Here I am.\" {n}She squares her shoulders, knight to Commander.{/n} \"I have no lands, no crown and no enemies. I have an old sword, a green surcoat, and a name that was two weeks old in the war camp. And I have discovered that I do not know how to be anyone who has not been given orders.\" {n}She meets your eyes.{/n} \"Mendev buried a queen. I would like, just once, to be a face in your crowd that you look for.\"",
+          "Text": "\"So. Here I am.\" {n}She squares her shoulders, knight to Commander.{/n} \"I have no lands, no crown and no enemies. I have an old sword, a green surcoat, and a name that was two weeks old in the war camp. And I have discovered that I still stand in the square at the hour of petitions, every morning, waiting for somebody to need a ruling. Nobody does.\" {n}She meets your eyes.{/n} \"Mendev buried a queen. I would like, just once, to be a face in your crowd that you look for.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -363830,7 +363871,7 @@
         {
           "Id": "why",
           "Speaker": "Galfrey",
-          "Text": "\"So. Here I am.\" {n}She squares her shoulders, knight to Commander.{/n} \"I have no lands, no crown and no enemies. I have an old sword, a green surcoat, and a name that was two weeks old in the war camp. And I have discovered that I do not know how to be anyone who has not been given orders.\" {n}She meets your eyes.{/n} \"Mendev buried a queen. I would like, just once, to be a face in your crowd that you look for.\"",
+          "Text": "\"So. Here I am.\" {n}She squares her shoulders, knight to Commander.{/n} \"I have no lands, no crown and no enemies. I have an old sword, a green surcoat, and a name that was two weeks old in the war camp. And I have discovered that I still stand in the square at the hour of petitions, every morning, waiting for somebody to need a ruling. Nobody does.\" {n}She meets your eyes.{/n} \"Mendev buried a queen. I would like, just once, to be a face in your crowd that you look for.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -364050,7 +364091,8 @@
         }
       ],
       "Requires": [
-        "galfrey.trickster.returned"
+        "galfrey.trickster.returned",
+        "galfrey.trickster.carried.irabeth"
       ],
       "Forbids": [
         "irabeth_dead",
@@ -364095,7 +364137,52 @@
       ],
       "Requires": [
         "galfrey.trickster.returned",
-        "galfrey.trickster.cost.alone"
+        "galfrey.trickster.cost.alone",
+        "galfrey.trickster.carried.irabeth"
+      ],
+      "Forbids": [
+        "irabeth_dead",
+        "galfrey.closed"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "galfrey",
+      "Reaction": true,
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      },
+      "AnswerLists": [
+        "871af36f2ab2b1f40b5de77976c54276"
+      ]
+    },
+    {
+      "Id": "galfrey.trickster.react.irabeth.learned",
+      "Title": "Irabeth's word",
+      "Owner": "Irabeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You've been quiet, knight.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Irabeth",
+          "Text": "{n}Irabeth has the duty roster open and has not written on it since you came in.{/n} \"The old sergeant of the Green Crows came to see me last night. Drunk, which he never is. He told me who is buying boots in the market.\" {n}Her voice is very even.{/n} \"I was holding Drezen when she fell. She did not send for me; she sent for two old men and a cart.\" {n}She closes the roster.{/n} \"I have been angry about it all morning, Commander. I think it was the kindest thing she ever did to me. I shall not be telling her either.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        }
+      ],
+      "Requires": [
+        "galfrey.trickster.returned",
+        "galfrey.trickster.carried.crows"
       ],
       "Forbids": [
         "irabeth_dead",
@@ -364138,7 +364225,8 @@
         }
       ],
       "Requires": [
-        "galfrey.trickster.morning_drill"
+        "galfrey.trickster.morning_drill",
+        "galfrey.trickster.kitrane.squire_sworn"
       ],
       "Forbids": [
         "irabeth_dead",
@@ -364368,6 +364456,50 @@
       ]
     },
     {
+      "Id": "galfrey.trickster.react.irabeth.drill_alone",
+      "Title": "Irabeth's word",
+      "Owner": "Irabeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Anything to report, knight?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Irabeth",
+          "Text": "\"I rode past the Crows' tent this morning with the Eagle Watch.\" {n}Irabeth says it to the roster, not to you.{/n} \"She was at her forms in the mud behind it, alone, cut and guard and cut, the way the old knights of Mendev used to drill.\" {n}A pause.{/n} \"Forty knights rode past, and not one of them saluted a knight of a minor order at her drill. They were right not to. That is the whole of the Queen's last command.\" {n}Her jaw works.{/n} \"I saluted. From the road, where she could not see. I wanted somebody to know that I did it once.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        }
+      ],
+      "Requires": [
+        "galfrey.trickster.morning_drill"
+      ],
+      "Forbids": [
+        "irabeth_dead",
+        "galfrey.closed",
+        "galfrey.trickster.kitrane.squire_sworn"
+      ],
+      "DelayHours": 12,
+      "Optional": false,
+      "Relationship": "galfrey",
+      "Reaction": true,
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      },
+      "AnswerLists": [
+        "871af36f2ab2b1f40b5de77976c54276"
+      ]
+    },
+    {
       "Id": "galfrey.trickster.epilogue.kitrane",
       "Title": "Kitrane",
       "Owner": "GalfreyEpilogue",
@@ -364411,6 +364543,17 @@
               "Text": "{n}Mendev never forgave the Commander for it entirely. There were inquiries, and sermons, and one very long letter from the Inquisitor Hulrun. The Commander answered all of them, in person, for years.{/n}",
               "Requires": [
                 "galfrey.trickster.crown_reclaimed"
+              ],
+              "Forbids": [
+                "hulrun.dead"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Mendev never forgave the Commander for it entirely. There were inquiries, and sermons, and one very long letter from the bishops of Nerosyan. The Commander answered all of them, in person, for years.{/n}",
+              "Requires": [
+                "galfrey.trickster.crown_reclaimed",
+                "hulrun.dead"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -364518,9 +364661,17 @@
               "AnyGroups": []
             },
             {
+              "Text": "{n}She kept the letter she had once hidden in a wall in the lid of her armour chest, with Sir Anselm's broadsheet, and never read it again. Once, very late, she told the Commander what it said, word for word, and then laughed at the Queen who wrote it.{/n}",
+              "Requires": [
+                "galfrey.trickster.kitrane.letter_returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
               "Text": "{n}The letter she had once hidden in a wall stayed where the Commander kept it. Every few years she asked to read it again, and every time she laughed at the Queen who wrote it, and every time she kept the Commander's hand for a while afterwards.{/n}",
               "Requires": [
-                "galfrey.trickster.kitrane.letter_spoken"
+                "galfrey.trickster.kitrane.letter_kept"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -364541,7 +364692,7 @@
       "Optional": false,
       "Relationship": "galfrey",
       "ForbidOverrides": {
-        "sacrifice": "trickster.cheated_death"
+        "sacrifice": "trickster.commander_back"
       }
     },
     {
@@ -364589,6 +364740,17 @@
               "Requires": [
                 "galfrey.trickster.crown_reclaimed"
               ],
+              "Forbids": [
+                "hulrun.dead"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Mendev never forgave the Commander for it entirely. There were inquiries, and sermons, and one very long letter from the bishops of Nerosyan. The Commander answered all of them, in person, for years.{/n}",
+              "Requires": [
+                "galfrey.trickster.crown_reclaimed",
+                "hulrun.dead"
+              ],
               "Forbids": [],
               "AnyGroups": []
             },
@@ -364695,9 +364857,17 @@
               "AnyGroups": []
             },
             {
+              "Text": "{n}She kept the letter she had once hidden in a wall in the lid of her armour chest, with Sir Anselm's broadsheet, and never read it again. Once, very late, she told the Commander what it said, word for word, and then laughed at the Queen who wrote it.{/n}",
+              "Requires": [
+                "galfrey.trickster.kitrane.letter_returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
               "Text": "{n}The letter she had once hidden in a wall stayed where the Commander kept it. Every few years she asked to read it again, and every time she laughed at the Queen who wrote it, and every time she kept the Commander's hand for a while afterwards.{/n}",
               "Requires": [
-                "galfrey.trickster.kitrane.letter_spoken"
+                "galfrey.trickster.kitrane.letter_kept"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -364719,7 +364889,7 @@
       "Optional": false,
       "Relationship": "galfrey",
       "ForbidOverrides": {
-        "sacrifice": "trickster.cheated_death"
+        "sacrifice": "trickster.commander_back"
       }
     },
     {
@@ -364767,6 +364937,17 @@
               "Requires": [
                 "galfrey.trickster.crown_reclaimed"
               ],
+              "Forbids": [
+                "hulrun.dead"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Mendev never forgave the Commander for it entirely. There were inquiries, and sermons, and one very long letter from the bishops of Nerosyan. The Commander answered all of them, in person, for years.{/n}",
+              "Requires": [
+                "galfrey.trickster.crown_reclaimed",
+                "hulrun.dead"
+              ],
               "Forbids": [],
               "AnyGroups": []
             },
@@ -364873,9 +365054,17 @@
               "AnyGroups": []
             },
             {
+              "Text": "{n}She kept the letter she had once hidden in a wall in the lid of her armour chest, with Sir Anselm's broadsheet, and never read it again. Once, very late, she told the Commander what it said, word for word, and then laughed at the Queen who wrote it.{/n}",
+              "Requires": [
+                "galfrey.trickster.kitrane.letter_returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
               "Text": "{n}The letter she had once hidden in a wall stayed where the Commander kept it. Every few years she asked to read it again, and every time she laughed at the Queen who wrote it, and every time she kept the Commander's hand for a while afterwards.{/n}",
               "Requires": [
-                "galfrey.trickster.kitrane.letter_spoken"
+                "galfrey.trickster.kitrane.letter_kept"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -364897,7 +365086,7 @@
       "Optional": false,
       "Relationship": "galfrey",
       "ForbidOverrides": {
-        "sacrifice": "trickster.cheated_death"
+        "sacrifice": "trickster.commander_back"
       }
     },
     {
@@ -364932,7 +365121,7 @@
         "sacrifice"
       ],
       "Forbids": [
-        "trickster.cheated_death",
+        "trickster.commander_back",
         "lastcall.active",
         "galfrey.closed"
       ],
@@ -364980,7 +365169,7 @@
       "Optional": false,
       "Relationship": "galfrey",
       "ForbidOverrides": {
-        "sacrifice": "trickster.cheated_death"
+        "sacrifice": "trickster.commander_back"
       }
     },
     {
@@ -365020,7 +365209,7 @@
       "Optional": false,
       "Relationship": "galfrey",
       "ForbidOverrides": {
-        "sacrifice": "trickster.cheated_death"
+        "sacrifice": "trickster.commander_back"
       }
     },
     {
@@ -369435,7 +369624,8 @@
               "Text": "[Leave her with it.]",
               "Next": null,
               "Set": [
-                "galfrey.trickster.kitrane.letter_spoken"
+                "galfrey.trickster.kitrane.letter_spoken",
+                "galfrey.trickster.kitrane.letter_returned"
               ],
               "Requires": [],
               "Forbids": [],
@@ -369453,7 +369643,8 @@
               "Text": "[Put it away.]",
               "Next": null,
               "Set": [
-                "galfrey.trickster.kitrane.letter_spoken"
+                "galfrey.trickster.kitrane.letter_spoken",
+                "galfrey.trickster.kitrane.letter_kept"
               ],
               "Requires": [],
               "Forbids": [],
@@ -369471,7 +369662,8 @@
               "Text": "[Hold her hand a moment longer.]",
               "Next": null,
               "Set": [
-                "galfrey.trickster.kitrane.letter_spoken"
+                "galfrey.trickster.kitrane.letter_spoken",
+                "galfrey.trickster.kitrane.letter_kept"
               ],
               "Requires": [],
               "Forbids": [],
@@ -369697,7 +369889,8 @@
               "Text": "[Leave her with it.]",
               "Next": null,
               "Set": [
-                "galfrey.trickster.kitrane.letter_spoken"
+                "galfrey.trickster.kitrane.letter_spoken",
+                "galfrey.trickster.kitrane.letter_returned"
               ],
               "Requires": [],
               "Forbids": [],
@@ -369715,7 +369908,8 @@
               "Text": "[Put it away.]",
               "Next": null,
               "Set": [
-                "galfrey.trickster.kitrane.letter_spoken"
+                "galfrey.trickster.kitrane.letter_spoken",
+                "galfrey.trickster.kitrane.letter_kept"
               ],
               "Requires": [],
               "Forbids": [],
@@ -369733,7 +369927,8 @@
               "Text": "[Hold her hand a moment longer.]",
               "Next": null,
               "Set": [
-                "galfrey.trickster.kitrane.letter_spoken"
+                "galfrey.trickster.kitrane.letter_spoken",
+                "galfrey.trickster.kitrane.letter_kept"
               ],
               "Requires": [],
               "Forbids": [],
@@ -373893,7 +374088,7 @@
         {
           "Id": "meant",
           "Speaker": "Galfrey",
-          "Text": "{n}She is silent for a while.{/n} \"Yes. He did. That is the only mercy in it.\" {n}She holds the sword up, and turns it, and you notice the name scratched small and crooked near the hilt, under the Crows' mark.{/n} \"This is his. Mine went with Kitrane, so his went on the coffin, and when the Crows brought me out I took his. I did not think about it at the time. I think about nothing else now.\"",
+          "Text": "{n}She is silent for a while.{/n} \"Yes. He did. That is the only mercy in it.\" {n}She holds the sword up, and turns it, and you notice the name scratched small and crooked near the hilt, under the Crows' mark.{/n} \"This is his. Mine went home on the coffin, because the Queen's sword must go home with the Queen, and when the Crows brought me out I took his. I did not think about it at the time. I think about nothing else now.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -374055,7 +374250,7 @@
         {
           "Id": "meant",
           "Speaker": "Galfrey",
-          "Text": "{n}She is silent for a while.{/n} \"Yes. He did. That is the only mercy in it.\" {n}She holds the sword up, and turns it, and you notice the name scratched small and crooked near the hilt, under the Crows' mark.{/n} \"This is his. Mine went with Kitrane, so his went on the coffin, and when the Crows brought me out I took his. I did not think about it at the time. I think about nothing else now.\"",
+          "Text": "{n}She is silent for a while.{/n} \"Yes. He did. That is the only mercy in it.\" {n}She holds the sword up, and turns it, and you notice the name scratched small and crooked near the hilt, under the Crows' mark.{/n} \"This is his. Mine went home on the coffin, because the Queen's sword must go home with the Queen, and when the Crows brought me out I took his. I did not think about it at the time. I think about nothing else now.\"",
           "Choices": [
             {
               "Text": "Continue",

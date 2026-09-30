@@ -293,6 +293,31 @@ internal static class GalfreyTricksterTests
             "Trk_Galfrey_NativeFirst: the native world does not count her once, with exactly one page.");
         check(!World(story, 6, "trickster.ever", "galfrey.romance_active", Dead).Has(P + "partner"),
             "Trk_Galfrey_NativeFirst: a dead Queen counts as a partner through the native romance.");
+        // The bottle world: the Commander died at Threshold and came back (trickster.commander_back): the shared life, not the loss.
+        var bottle = World(story, 6, night.Flags.Concat(new[] { "trickster.ever", Dead, "sacrifice", "trickster.commander_back" }).ToArray());
+        check(Rules.Available(story, S(P + "epilogue.kitrane"), bottle) && !Rules.Available(story, S(P + "epilogue.widow"), bottle)
+              && pages.Count(s => Rules.Available(story, s, bottle)) == 1,
+            "Trk_Galfrey_Pages: the bottle-survival world does not get exactly the shared-life page.");
+        // Carriers: Irabeth's firsthand accounts only where she carried the order; the Crows' version where they did.
+        var byIrabeth = World(story, 5, back.Flags.Concat(new[] { P + "carried.irabeth" }).Where(f => f != P + "carried.crows").ToArray());
+        var byCrows = World(story, 5, back.Flags.Concat(new[] { P + "carried.crows" }).Where(f => f != P + "carried.irabeth").ToArray());
+        byIrabeth.Hour += 100; byCrows.Hour += 100;
+        check(Rules.Available(story, S(P + "react.irabeth.carried"), byIrabeth) && !Rules.Available(story, S(P + "react.irabeth.carried"), byCrows)
+              && Rules.Available(story, S(P + "react.irabeth.learned"), byCrows) && !Rules.Available(story, S(P + "react.irabeth.learned"), byIrabeth),
+            "Trk_Galfrey_Reactions: Irabeth's account does not follow who carried the order.");
+        var drilled = World(story, 5, night.Flags.ToArray()); drilled.Hour += 100;
+        var drilledSquire = World(story, 5, night.Flags.Concat(new[] { P + "kitrane.squire_sworn" }).ToArray()); drilledSquire.Hour += 100;
+        check(Rules.Available(story, S(P + "react.irabeth.drill_alone"), drilled) && !Rules.Available(story, S(P + "react.irabeth.drill"), drilled)
+              && Rules.Available(story, S(P + "react.irabeth.drill"), drilledSquire) && !Rules.Available(story, S(P + "react.irabeth.drill_alone"), drilledSquire),
+            "Trk_Galfrey_Reactions: Irabeth's drill does not follow whether there was a squire.");
+        // Hulrun absent: the vigil's line reaches no Inquisitor.
+        foreach (var gone in new[] { "hulrun.dead", "hulrun.away_c5" })
+        {
+            var visited = new List<string>();
+            Program.Walk(eulogy, Later(story, roaded, 40, null, gone), (id, _) => visited.Add(id));
+            check(!visited.Contains("hulrun") && !visited.Contains("sign_hulrun") && visited.Contains("chaplain"),
+                "Trk_Galfrey_Vigil: Hulrun is in the chapel although " + gone + ".");
+        }
         var lost = World(story, 6, night.Flags.Concat(new[] { "trickster.ever", Dead, "sacrifice" }).ToArray());
         check(Rules.Available(story, S(P + "epilogue.widow"), lost) && !Rules.Available(story, S(P + "epilogue.kitrane"), lost),
             "Trk_Galfrey_Pages: a Commander lost at Threshold still gets the shared-life page.");
@@ -303,11 +328,11 @@ internal static class GalfreyTricksterTests
         }
 
         // Reactions and pages.
-        check(reactions.Length == 8 && reactions.All(s => s.Nodes.Count == 1)
+        check(reactions.Length == 10 && reactions.All(s => s.Nodes.Count == 1)
               && new[] { "Irabeth", "Seelah", "Hulrun", "Daeran", "Thaberdine" }.All(o => reactions.Any(s => s.Owner == o))
               && reactions.Where(s => s.Owner == "Irabeth").All(s => s.Forbids.Contains("irabeth_dead")
                   && s.ForbidOverrides.TryGetValue("irabeth_dead", out var r) && r == "irabeth.trickster.returned"),
-            "Galfrey's reactors are not Irabeth (three), Seelah, Hulrun (two), Daeran and the King, or Irabeth's are unguarded.");
+            "Galfrey's reactors are not Irabeth (five), Seelah, Hulrun (two), Daeran and the King, or Irabeth's are unguarded.");
         check(pages.Length == 6 && pages.All(s => s.MinChapter == 6 && s.MaxChapter == 6 && s.Requires.Contains("trickster.ever")
                   && s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0)),
             "Her epilogue pages are not six read-only Trickster Chapter 6 pages.");

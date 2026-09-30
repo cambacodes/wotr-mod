@@ -409,11 +409,11 @@ beat(P + "kitrane.letter", "Forgive me", '"I\'ve read your letter. The one you h
         c('"Keep it. You wrote it to me."', "keep"),
         c('"Answer it." [Take her hand.] "I forgive you."', "forgive")),
     ki("give", '''{n}She takes it from you, and looks at it, and without a word she folds it once more and tucks it inside her surcoat, next to the broadsheet about Sir Anselm.{/n} "The Queen's things," she says. "I seem to be collecting them. I shall have a trunk of her soon, like any other widow."''',
-        c("[Leave her with it.]", flags=(LETTER_SPOKEN,))),
+        c("[Leave her with it.]", flags=(LETTER_SPOKEN, P + "kitrane.letter_returned"))),
     ki("keep", '''"I did." {n}A long breath.{/n} "Keep it, then. Keep it somewhere no Inquisitor goes. And if I am ever tempted to be the Queen again, show it to me, and remind me what she was like at the end of a day."''',
-        c("[Put it away.]", flags=(LETTER_SPOKEN,))),
+        c("[Put it away.]", flags=(LETTER_SPOKEN, P + "kitrane.letter_kept"))),
     ki("forgive", '''{n}Her hand is cold, and very still in yours, and then it is not.{/n} "That," she says, not quite steadily, "is a thing I have wanted to hear from you since the night I wrote it, and I would have had you flogged for saying it to the Queen." {n}She does not take her hand back.{/n} "Kitrane will allow it. Just this once. In a market. Where nobody is looking."''',
-        c("[Hold her hand a moment longer.]", flags=(LETTER_SPOKEN,))),
+        c("[Hold her hand a moment longer.]", flags=(LETTER_SPOKEN, P + "kitrane.letter_kept"))),
 ], requires=(FIRST, FAREWELL), forbids=(LETTER_SPOKEN,), delay=24)
 
 
@@ -737,7 +737,7 @@ beat(P + "kitrane.sergeant", "What the sergeant remembers", '"Your sergeant was 
         c("[Say nothing. Sit down beside her.]", "sit")),
     ki("fault", '''"No. It was a dragon's fault, and the Lord of Locusts', and the Worldwound's." {n}Very even.{/n} "I am a paladin, Commander. I know exactly how much blame to take and where to put it down. I have done it ten thousand times." {n}Her hands resume on the blade.{/n} "I am only finding it very hard to put this particular one down. It is shaped like a deaf old man."''',
         c("Continue", "end")),
-    ki("meant", '''{n}She is silent for a while.{/n} "Yes. He did. That is the only mercy in it." {n}She holds the sword up, and turns it, and you notice the name scratched small and crooked near the hilt, under the Crows' mark.{/n} "This is his. Mine went with Kitrane, so his went on the coffin, and when the Crows brought me out I took his. I did not think about it at the time. I think about nothing else now."''',
+    ki("meant", '''{n}She is silent for a while.{/n} "Yes. He did. That is the only mercy in it." {n}She holds the sword up, and turns it, and you notice the name scratched small and crooked near the hilt, under the Crows' mark.{/n} "This is his. Mine went home on the coffin, because the Queen's sword must go home with the Queen, and when the Crows brought me out I took his. I did not think about it at the time. I think about nothing else now."''',
         c("Continue", "end")),
     nar("sit", '''{n}You sit down on the next crate. She goes on oiling the sword for a long time, stroke after stroke, until the steel shines, and neither of you says anything. When she has finished she lays the blade across her knees and rests both hands on it.{/n}
 {n}"Thank you," she says at last. "The Queen never had anyone who simply sat."{/n}''',

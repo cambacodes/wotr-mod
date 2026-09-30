@@ -509,7 +509,7 @@ tag(ROAD, "T")
 # The Commander's cost, and the proclamation that the rending of a blind offer waits for.
 
 page(P + "iz.eulogy", "The Queen lies in state", [
-    nar("start", '''{n}Drezen keeps its vigil for the Queen in the chapel of the citadel, before the coffin goes home to Nerosyan. The oak box stands before the altar of the Inheritor under the blue and silver of Mendev, with a sword laid along its lid. It is not her sword. It is Sir Anselm's, because hers had to go with Kitrane, and nobody who knows the difference is going to say so.{/n}
+    nar("start", '''{n}Drezen keeps its vigil for the Queen in the chapel of the citadel, before the coffin goes home to Nerosyan. The oak box stands before the altar of the Inheritor under the blue and silver of Mendev, with her sword laid along its lid. It is the only thing of hers in the box. The knight who carried her out is wearing Sir Anselm's, and nobody who knows the difference is going to say so.{/n}
 {n}The chapel is full to the doors, and the square outside is full, and the walls. It falls to the Commander of the crusade to speak.{/n}''',
         c("Continue", "hulrun", forbids=("hulrun.dead", "hulrun.away_c5")),
         c("Continue", "chaplain", requires=("hulrun.dead",)),
@@ -529,7 +529,11 @@ page(P + "iz.eulogy", "The Queen lies in state", [
 {n}It is a very good speech. The knights weep openly. It is also, you reflect, as you step down, a portrait of a woman who would have despised it.{/n}''',
         c("Continue", "after")),
     nar("sign", '''{n}You tell them about the Queen, and it is a good speech, and in the middle of it you tell them one small thing more: that she once said she envied a knight of a minor order, who had no lands, no crown and no enemies, and slept under canvas, and had her boots stolen twice.{/n}
-{n}A few people laugh through their tears, as you meant them to. The Inquisitor does not laugh. He looks at you for rather longer than a grieving man needs to, and then down at his hands.{/n}''',
+{n}A few people laugh through their tears, as you meant them to.{/n}''',
+        c("Continue", "sign_hulrun", forbids=("hulrun.dead", "hulrun.away_c5")),
+        c("Continue", "after", requires=("hulrun.dead",)),
+        c("Continue", "after", requires=("hulrun.away_c5",), forbids=("hulrun.dead",))),
+    nar("sign_hulrun", '''{n}The Inquisitor does not laugh. He looks at you for rather longer than a grieving man needs to, and then down at his hands.{/n}''',
         c("Continue", "after")),
     nar("after", '''{n}The bells of Drezen ring for the Queen of Mendev, all of them together, the way they rang when the city was retaken. The crowd in the square goes to its knees in a long rustle like wind in wheat.{/n}''',
         c("Continue", "present", requires=(READ,), forbids=(ALONE,)),
@@ -624,7 +628,7 @@ def return_nodes(scarred):
             c("Continue", "why")),
         ga("e_none", '''"Drezen rang every bell it had. They could hear it in the field camp; they could hear it in Kenabres, I should think." {n}She is quiet.{/n} "I stood outside the walls with a Crows' squire and listened to a city grieve for me. I do not recommend it either. It is very hard to know what to do with one's hands."''',
             c("Continue", "why")),
-        ga("why", '''"So. Here I am." {n}She squares her shoulders, knight to Commander.{/n} "I have no lands, no crown and no enemies. I have an old sword, a green surcoat, and a name that was two weeks old in the war camp. And I have discovered that I do not know how to be anyone who has not been given orders." {n}She meets your eyes.{/n} "Mendev buried a queen. I would like, just once, to be a face in your crowd that you look for."''',
+        ga("why", '''"So. Here I am." {n}She squares her shoulders, knight to Commander.{/n} "I have no lands, no crown and no enemies. I have an old sword, a green surcoat, and a name that was two weeks old in the war camp. And I have discovered that I still stand in the square at the hour of petitions, every morning, waiting for somebody to need a ruling. Nobody does." {n}She meets your eyes.{/n} "Mendev buried a queen. I would like, just once, to be a face in your crowd that you look for."''',
             c("Continue", "alone", requires=(ALONE,)),
             c("Continue", "refused", requires=(OFFER_REFUSED,), forbids=(ALONE,)),
             c("Continue", "romance", requires=(ROMANCE,), forbids=(ALONE, OFFER_REFUSED)),
@@ -660,17 +664,22 @@ tag(P + "return.kitrane_scarred", "T")
 
 IRABETH_GUARD = dict(forbids=("irabeth_dead", CLOSED), ForbidOverrides={"irabeth_dead": "irabeth.trickster.returned"})
 
-SCENES.append(reaction("Irabeth", P + "react.irabeth.carried", (RETURNED,),
+SCENES.append(reaction("Irabeth", P + "react.irabeth.carried", (RETURNED, CARRIED_IRABETH),
     '''{n}Irabeth is at the duty roster with a pen in her hand, and she does not write anything for some time after you come in.{/n} "The knight of the Green Crows came through the gate this morning. On foot. She had bought new boots." {n}Her pen hovers.{/n} "I carried her out of Iz in a Crows' cloak, Commander, on my own horse, with her head against my back. She said nothing the whole way. Neither did I." {n}She sets the pen down very precisely.{/n} "I have told everyone who asked that the Queen fell. I saw her fall. I will be saying it on my deathbed. I only wanted one person in this citadel to know that I know what I am saying."''',
     answer_list=IRABETH_HUB, relationship=REL, entry='"You\'ve been quiet, knight."', chapter=5, last=5, delay=24,
     portrait="Irabeth", **{**IRABETH_GUARD, "forbids": IRABETH_GUARD["forbids"] + (ALONE,)}))
 
-SCENES.append(reaction("Irabeth", P + "react.irabeth.alone", (RETURNED, ALONE),
+SCENES.append(reaction("Irabeth", P + "react.irabeth.alone", (RETURNED, ALONE, CARRIED_IRABETH),
     '''{n}Irabeth does not look up from the duty roster.{/n} "You were not at Iz. So you will not know what she looked like when she gave me that order." {n}Her pen has stopped.{/n} "Lying in the rubble with the dragon's work in her, alone but for me and two old Crows, telling us in her parade-ground voice that the Queen had fallen and a knight called Kitrane needed carrying. She did it herself, Commander. Nobody offered her anything. She offered it to herself." {n}Now she looks up.{/n} "I have never been so proud of anyone, or so angry. I have not decided which of those I owe you."''',
     answer_list=IRABETH_HUB, relationship=REL, entry='"You\'ve been quiet, knight."', chapter=5, last=5, delay=24,
     portrait="Irabeth", **IRABETH_GUARD))
 
-SCENES.append(reaction("Irabeth", P + "react.irabeth.drill", (DRILL,),
+SCENES.append(reaction("Irabeth", P + "react.irabeth.learned", (RETURNED, CARRIED_CROWS),
+    '''{n}Irabeth has the duty roster open and has not written on it since you came in.{/n} "The old sergeant of the Green Crows came to see me last night. Drunk, which he never is. He told me who is buying boots in the market." {n}Her voice is very even.{/n} "I was holding Drezen when she fell. She did not send for me; she sent for two old men and a cart." {n}She closes the roster.{/n} "I have been angry about it all morning, Commander. I think it was the kindest thing she ever did to me. I shall not be telling her either."''',
+    answer_list=IRABETH_HUB, relationship=REL, entry='"You\'ve been quiet, knight."', chapter=5, last=5, delay=24,
+    portrait="Irabeth", **IRABETH_GUARD))
+
+SCENES.append(reaction("Irabeth", P + "react.irabeth.drill", (DRILL, P + "kitrane.squire_sworn"),
     '''"I rode past the Crows' tent this morning with the Eagle Watch." {n}Irabeth says it to the roster, not to you.{/n} "She was drilling a girl from the eel stall in the mud behind it. Badly. The girl, I mean. Not her." {n}A pause.{/n} "Forty knights rode past, and not one of them saluted a knight of a minor order at her drill. They were right not to. That is the whole of the Queen's last command." {n}Her jaw works.{/n} "I saluted. From the road, where she could not see. I will not do it again. But I wanted somebody to know that I did it once."''',
     answer_list=IRABETH_HUB, relationship=REL, entry='"Anything to report, knight?"', chapter=5, last=5, delay=12,
     portrait="Irabeth", **IRABETH_GUARD))
@@ -700,7 +709,13 @@ SCENES.append(reaction("Thaberdine", P + "react.king", (P + "kitrane.king_seen",
     answer_list=KING_C5, speaker="conversant", NativeReturnCue=KING_C5_BACK, relationship=REL,
     forbids=("fool_king.gone", CLOSED), entry='"How\'s the court, Your Majesty?"', chapter=5, last=5, Chapters=[5], delay=12))
 
-for rid in (P + "react.irabeth.carried", P + "react.irabeth.alone", P + "react.irabeth.drill", P + "react.seelah.majesty",
+SCENES.append(reaction("Irabeth", P + "react.irabeth.drill_alone", (DRILL,),
+    '''"I rode past the Crows' tent this morning with the Eagle Watch." {n}Irabeth says it to the roster, not to you.{/n} "She was at her forms in the mud behind it, alone, cut and guard and cut, the way the old knights of Mendev used to drill." {n}A pause.{/n} "Forty knights rode past, and not one of them saluted a knight of a minor order at her drill. They were right not to. That is the whole of the Queen's last command." {n}Her jaw works.{/n} "I saluted. From the road, where she could not see. I wanted somebody to know that I did it once."''',
+    answer_list=IRABETH_HUB, relationship=REL, entry='"Anything to report, knight?"', chapter=5, last=5, delay=12,
+    portrait="Irabeth", **{**IRABETH_GUARD, "forbids": IRABETH_GUARD["forbids"] + (P + "kitrane.squire_sworn",)}))
+
+for rid in (P + "react.irabeth.carried", P + "react.irabeth.alone", P + "react.irabeth.drill", P + "react.irabeth.learned",
+            P + "react.irabeth.drill_alone", P + "react.seelah.majesty",
             P + "react.hulrun.door", P + "react.hulrun.ledger", P + "react.daeran.cousin", P + "react.king"):
     tag(rid, "T")
 
@@ -712,7 +727,7 @@ EPI = "GalfreyEpilogue"
 
 def epilogue(id, title, text, requires, forbids=(), paragraphs=(), survived=True):
     """survived: the page is a shared life, so it waits for the Commander to have lived (or cheated death)."""
-    extra = dict(ForbidOverrides={"sacrifice": "trickster.cheated_death"}) if survived else {}
+    extra = dict(ForbidOverrides={"sacrifice": "trickster.commander_back"}) if survived else {}
     SCENES.append(scene(P + "epilogue." + id, title, EPI, 6, "", [nar("page", text, paragraphs=paragraphs)],
                         requires=("trickster.ever", *requires), forbids=tuple(forbids) + (("sacrifice",) if survived else ()),
                         last=6, Relationship=REL, **extra))
@@ -725,7 +740,9 @@ KITRANE_PARAGRAPHS = (
     p('''{n}When the church offered to buy her a third cup of the elixir, she refused it at the altar, in front of them all, and Mendev watched its Queen grow old after a century of standing still, one grey hair and one stiff winter at a time. When she was tired, she abdicated. She said she had always meant to try being a knight of some small order nobody had heard of.{/n}''',
       requires=(CROWN,)),
     p('''{n}Mendev never forgave the Commander for it entirely. There were inquiries, and sermons, and one very long letter from the Inquisitor Hulrun. The Commander answered all of them, in person, for years.{/n}''',
-      requires=(CROWN,)),
+      requires=(CROWN,), forbids=("hulrun.dead",)),
+    p('''{n}Mendev never forgave the Commander for it entirely. There were inquiries, and sermons, and one very long letter from the bishops of Nerosyan. The Commander answered all of them, in person, for years.{/n}''',
+      requires=(CROWN, "hulrun.dead")),
     p('''{n}She stayed Kitrane. The Queen of Mendev lay in the crypt at Nerosyan, and Sir Anselm Wray kept her place there, and every year on the day of Iz his daughter found a purse at her door from a knight who owed him a debt. She never learned who sent it. It came every year until the knight was very old indeed.{/n}''',
       requires=(FOREVER,)),
     p('''{n}She grew old without a third cup of the church's elixir, in the ordinary way, and complained about her knees, and was delighted by every one of her grey hairs, and made the Commander count them on bad nights.{/n}''',
@@ -750,8 +767,10 @@ KITRANE_PARAGRAPHS = (
       requires=(P + "kitrane.king_seen",)),
     p('''{n}A treatise on the campaign for Threshold, written in Absalom a decade later, devoted a chapter to "the unknown knight of the Green Crows" whose advice was said to have saved the army at the dry riverbed. She read it aloud to the Commander in bed, in a variety of silly voices.{/n}''',
       requires=(P + "kitrane.war_table",)),
+    p('''{n}She kept the letter she had once hidden in a wall in the lid of her armour chest, with Sir Anselm's broadsheet, and never read it again. Once, very late, she told the Commander what it said, word for word, and then laughed at the Queen who wrote it.{/n}''',
+      requires=(P + "kitrane.letter_returned",)),
     p('''{n}The letter she had once hidden in a wall stayed where the Commander kept it. Every few years she asked to read it again, and every time she laughed at the Queen who wrote it, and every time she kept the Commander's hand for a while afterwards.{/n}''',
-      requires=(P + "kitrane.letter_spoken",)),
+      requires=(P + "kitrane.letter_kept",)),
 )
 
 epilogue("kitrane", "Kitrane", '''{n}Queen Galfrey of Mendev died at Iz, of the dragon's sorcery, and was buried with honours in Nerosyan. Mendev mourned her for a year and a day.{/n}
@@ -769,7 +788,7 @@ epilogue("late", "Kitrane, late", '''{n}Queen Galfrey of Mendev died at Iz and w
 epilogue("widow", "Kitrane, after", '''{n}Queen Galfrey of Mendev died at Iz and was buried with honours in Nerosyan.{/n}
 {n}The Commander of the Fifth Crusade did not come back from Threshold. A knight of the Green Crows named Kitrane kept the walls of Drezen that night, as she had asked to, and was there when the news came in the morning. She did not weep where anyone could see. She walked down to the chapel, and stood at the back, as she had once stood for her own vigil, and stayed until the candles went out.{/n}
 {n}She lived a long time after, as nobody in particular, and grew old without a third cup of the church's elixir. Every year on the day of Threshold she went up onto the walls of Drezen at dusk and stood in the crowd, and looked, out of old habit, for a face that was not there.{/n}''',
-         requires=(RETURNED, COMMITTED, "sacrifice"), forbids=("trickster.cheated_death", "lastcall.active", CLOSED), survived=False)
+         requires=(RETURNED, COMMITTED, "sacrifice"), forbids=("trickster.commander_back", "lastcall.active", CLOSED), survived=False)
 
 epilogue("native", "The Queen and the Trickster", '''{n}Queen Galfrey of Mendev did not die at Iz. She came home from the Worldwound with her crown on her head and her Commander at her side, and Mendev, which had expected to bury her, did not quite know what to do with her alive.{/n}
 {n}What she and the Commander were to each other was her own affair, and she made sure everyone understood it. At court she was the Queen, severe and exact. In the Fool King's tavern, on the rare evenings she could be persuaded there, she held her cup like somebody who was used to being watched, and spilled some early, on purpose, so that everybody could stop waiting for it. The Commander's strange court of jesters and drunkards took her in without a word, the way it took in everyone, and she found, to her lasting surprise, that she liked it there.{/n}''',
