@@ -195,7 +195,9 @@ internal static class GalfreyTricksterTests
             "Trk_Galfrey_Kitrane: the return is not 48 hours after the Coronation, or the scarred twin plays in the read world.");
         var back = One(ret, Later(story, crowned, 50), new[] { Returned });
         check(Rules.PresenceWanted(stall, back) && !Rules.PresenceWanted(fb, back), "Trk_Galfrey_Kitrane: her presence does not stand in the market.");
-        var morning = One(first, Later(story, back, 10), new[] { P + "first_morning" });
+        var met = One(first, Later(story, back, 10), new[] { P + "first_morning" });
+        check(!Rules.Available(story, oath, Later(story, met, 60)), "Trk_Galfrey_Kitrane: the oath comes without a shared act and a real exchange.");
+        var morning = Later(story, met, 0, null, P + "kitrane.reel", P + "kitrane.elixir_told");
         check(!Rules.Available(story, oath, Later(story, morning, 20)) && Rules.Available(story, oath, Later(story, morning, 50)),
             "Trk_Galfrey_Kitrane: the oath is not 48 hours after her first morning.");
         var yes = One(oath, Later(story, morning, 50), new[] { Committed }, P + "sworn");
@@ -260,8 +262,12 @@ internal static class GalfreyTricksterTests
         var crowsOrder = Later(story, morning, 30, null, P + "kitrane.squire_sworn");
         var hanged = One(ford, Later(story, crowsOrder, 30), new[] { P + "ride.refused_order", P + "ride.hanged" });
         check(!Rules.Available(story, oath, Later(story, hanged, 60)), "Trk_Galfrey_Ford: the oath is offered over six unanswered ropes.");
-        var answered = One(S(P + "kitrane.ford_after"), Later(story, hanged, 30), new[] { P + "ride.answered" });
+        var promised = One(S(P + "kitrane.ford_after"), Later(story, hanged, 30), new[] { P + "ride.promised" }, P + "ride.answered");
+        check(!Rules.Available(story, oath, Later(story, promised, 60)), "Trk_Galfrey_Ford: a promise opens the oath before it is kept.");
+        var answered = One(S(P + "kitrane.tallow"), Later(story, promised, 20), new[] { P + "ride.answered" });
         check(Rules.Available(story, oath, Later(story, answered, 60)), "Trk_Galfrey_Ford: her terms met, the oath stays shut.");
+        var hangedAfter = Later(story, yes, 1, null, P + "ride.hanged", P + "ride.refused_order");
+        check(!Rules.Available(story, tent, Later(story, hangedAfter, 20)), "Trk_Galfrey_Ford: the tent opens over an unanswered hanging after the commit.");
         One(ford, Later(story, crowsOrder, 30), new[] { P + "ride.trial" }, P + "ride.refused_order");
 
         // Trk_Galfrey_NativeFirst: she lived, the native romance ran to the end: no device, one page, a partner.

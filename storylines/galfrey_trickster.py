@@ -84,7 +84,10 @@ LETTER = P + "ch4.letter"
 LETTER_MOOTED = P + "letter_mooted"
 LETTER_REFUSED = P + "letter_refused"
 LETTER_BURNED = P + "letter_burned"
-PLANTED = P + "kitrane_planted"           # Derived: she mooted Kitrane once, in Chapter 2, 3 or 4
+PLANTED = P + "kitrane_planted"
+ADDRESS = P + "address_heard"             # Ch4: a hag of the Midnight Isles says a curse is an address (a market saying, labelled)
+CARRIED_IRABETH = P + "carried.irabeth"   # who took the Queen's last command: Irabeth
+CARRIED_CROWS = P + "carried.crows"       # ...or the Crows, Irabeth being already dead           # Derived: she mooted Kitrane once, in Chapter 2, 3 or 4
 # Authored: the device (T).
 OFFER = P + "iz.offer"
 READ = P + "sorcery_read"                 # the dark light in the wound answered the title, and stilled at "Kitrane"
@@ -284,11 +287,14 @@ page(P + "ch4.crowd", "Another face in the crowd", [
 {n}You look down at the market full of borrowed faces and wonder what the Queen of Mendev would look like with nobody watching.{/n}''',
         c("Continue", "plain")),
     nar("mooted", '''{n}"Kitrane has no lands, no crown and no enemies," she said to you once, as if reading it off a ledger. "Some days I envy her." A careful person would write that down. You have. You are not entirely sure yet what you mean to do with it, which is how you know it matters.{/n}''',
-        c("[Watch the market until the lanterns brighten.]")),
+        c("Continue", "address")),
     nar("refused", '''{n}"A queen who rehearses her funeral has begun it," she told you, when you asked her whether Kitrane could hold the line. It was a good answer. It was the answer of a woman who has never once been allowed to want anything for herself, and knows it, and would rather die than say so.{/n}''',
-        c("[Watch the market until the lanterns brighten.]")),
+        c("Continue", "address")),
     nar("plain", '''{n}Somewhere up there, in Drezen or in Nerosyan, she is being the Queen of Mendev at somebody. You hope, a little to your own surprise, that she has an hour in the day when she is not.{/n}''',
-        c("[Watch the market until the lanterns brighten.]")),
+        c("Continue", "address")),
+    nar("address", '''{n}Below the balcony a masked woman is haggling with an old hag of the market over a charm against the evil eye. The hag laughs at her, not unkindly, and says a thing you find you remember: that in the Midnight Isles a curse is only an address. It finds you by what you answer to. That, she says, is what the masks are for.{/n}
+{n}It is the sort of thing markets say. You turn it over anyway, the way you turn over everything, and put it away somewhere you will be able to find it again.{/n}''',
+        c("[Watch the market until the lanterns brighten.]", flags=(ADDRESS,))),
 ], requires=(), forbids=(P + "ch4.crowd", DEAD), delay=24, chapters=(4,), kind="memory", owner="Memory")
 tag(P + "ch4.crowd", "N-all")
 
@@ -367,6 +373,11 @@ SCENES.append(scene(OFFER, "The Queen's last hour", "Galfrey", 5, "[Kneel beside
       c("Continue", "pitch")),
     n("pitch", "Narrator", '''{n}You tell her, and it is not much. That the church of Iomedae bought every year of the Queen's life for the office, and the office has worn it like armour. That the thing which rent her soul was made to guard Iz against the crusade, and struck at the crusade's Queen. That it seems to hold her by the crown.{/n}
 {n}That if the Queen of Mendev dies here, in front of her knights, and the woman answers afterwards to another name, the sorcery may let go of what is left. Or it may not. Nobody knows. You say that too.{/n}''',
+      c("Continue", "address", requires=(ADDRESS,)),
+      c("Continue", "planted", requires=(PLANTED,), forbids=(ADDRESS,)),
+      c("Continue", "refusedbefore", requires=(LETTER_REFUSED,), forbids=(PLANTED, ADDRESS)),
+      c("Continue", "mendev", forbids=(PLANTED, LETTER_REFUSED, ADDRESS))),
+    n("address", "Narrator", '''{n}And you tell her where the thought came from, because she will ask: a hag in a market in the Abyss, laughing at a masked girl, saying that a curse is only an address and finds you by what you answer to. It is a market saying. It is also, as far as you can see, exactly what the wound has just done in front of you.{/n}''',
       c("Continue", "planted", requires=(PLANTED,)),
       c("Continue", "refusedbefore", requires=(LETTER_REFUSED,), forbids=(PLANTED,)),
       c("Continue", "mendev", forbids=(PLANTED, LETTER_REFUSED))),
@@ -397,8 +408,8 @@ SCENES.append(scene(OFFER, "The Queen's last hour", "Galfrey", 5, "[Kneel beside
     n("command_romance", "conversant", '''{n}Her thumb moves once across your knuckles.{/n} "We never had our conversation. I kept putting it off until after the next battle. There was always a next battle." {n}Very low:{/n} "If this works, Commander, Kitrane will want it. She is much less patient than I am."''',
       c("Continue", "command")),
     n("command", "conversant", '''{n}She lifts her head a finger's breadth, and her voice changes. It is the voice she uses on parade grounds, and it carries.{/n} "Knight Tirabade. To me."''',
-      c("Continue", "irabeth", forbids=("irabeth_dead",)),
-      c("Continue", "crows", requires=("irabeth_dead",))),
+      c("Continue", "irabeth", forbids=("irabeth_dead",), flags=(CARRIED_IRABETH,)),
+      c("Continue", "crows", requires=("irabeth_dead",), flags=(CARRIED_CROWS,))),
     n("irabeth", "Narrator", '''{n}Irabeth comes through the ring of knights like a woman walking into a gale, her face grey, her blade still in her hand because she has forgotten it is there. She kneels on the Queen's other side. She does not look at you.{/n}''',
       c("Continue", "order")),
     n("crows", "Narrator", '''{n}Nobody answers to the name. The Queen remembers, a heartbeat late, and her mouth tightens. "The Crows, then. Whoever of them still stands." Two knights in green surcoats with three black birds on the breast come through the ring and kneel, the older of them bleeding from the scalp and not troubling to wipe it.{/n}''',
@@ -533,8 +544,8 @@ page(P + "iz.alone", "A letter sealed in green", [
         c("Continue", "letter2")),
     ga("letter2", '''"And then, because I am an old woman and my mind wanders, I thought of a knight of a minor order who had her boots stolen twice in the war camp. You once told me she could outlive the Queen. I said some days I envied her.
 "So I tried it. Nobody offered. I offered it to myself, which is a thing I have never done in a hundred years, and I do not recommend it; it is very lonely."''',
-        c("Continue", "irabeth", forbids=("irabeth_dead",)),
-        c("Continue", "crows", requires=("irabeth_dead",))),
+        c("Continue", "irabeth", forbids=("irabeth_dead",), flags=(CARRIED_IRABETH,)),
+        c("Continue", "crows", requires=("irabeth_dead",), flags=(CARRIED_CROWS,))),
     ga("irabeth", '''"I gave Knight Tirabade the last command of her Queen. The Queen fell at Iz; the wounded knight Kitrane goes to the rear; Sir Anselm Wray, who died beside me, goes home to Nerosyan in my coffin, under my name. She obeyed. She will not lie for me, and she will not have to. She saw me fall."''',
         c("Continue", "letter3")),
     ga("crows", '''"I gave the last command of the Queen to the two Crows who still stood. The Queen fell at Iz; the wounded knight Kitrane goes to the rear; Sir Anselm Wray, who died beside me, goes home to Nerosyan in my coffin, under my name. They obeyed. They are very discreet men."''',
@@ -608,7 +619,7 @@ def return_nodes(scarred):
 
 
 page(P + "return.kitrane", "A knight of the Green Crows", return_nodes(False),
-     requires=("trickster.ever", TAKEN, DEAD, CORONATION), forbids=(RETURNED, CLOSED, RENT, P + "return.kitrane_scarred"),
+     requires=("trickster.ever", TAKEN, DEAD, CORONATION, EULOGY), forbids=(RETURNED, CLOSED, RENT, P + "return.kitrane_scarred"),
      delay=48, TricksterDevice=True, TricksterState="dead")
 page(P + "return.kitrane_scarred", "A knight of the Green Crows", return_nodes(True),
      requires=("trickster.ever", TAKEN, DEAD, CORONATION, RENT, EULOGY), forbids=(RETURNED, CLOSED, P + "return.kitrane"),
@@ -712,7 +723,7 @@ KITRANE_PARAGRAPHS = (
       requires=(P + "kitrane.letter_spoken",)),
 )
 
-epilogue("kitrane", "Kitrane", '''{n}Queen Galfrey of Mendev died at Iz, of the dragon's sorcery, with her Commander at her side, and was buried with honours in Nerosyan. Mendev mourned her for a year and a day.{/n}
+epilogue("kitrane", "Kitrane", '''{n}Queen Galfrey of Mendev died at Iz, of the dragon's sorcery, and was buried with honours in Nerosyan. Mendev mourned her for a year and a day.{/n}
 {n}A knight of the Green Crows named Kitrane, of no lands, no crown and no enemies, lived a great deal longer. She followed the Commander to the end of the war as a knight of the Crows, and on its last night she kept the walls of Drezen among the soldiers who had not been sent to Threshold, in the crowd, where she had asked to be; and the Commander, whatever else became of the world, never once failed to look for her there.{/n}''',
          requires=(RETURNED, COMMITTED), forbids=(CLOSED,), paragraphs=KITRANE_PARAGRAPHS)
 

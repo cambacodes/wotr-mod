@@ -361326,8 +361326,8 @@
           "Text": "{n}\"Kitrane has no lands, no crown and no enemies,\" she said to you once, as if reading it off a ledger. \"Some days I envy her.\" A careful person would write that down. You have. You are not entirely sure yet what you mean to do with it, which is how you know it matters.{/n}",
           "Choices": [
             {
-              "Text": "[Watch the market until the lanterns brighten.]",
-              "Next": null,
+              "Text": "Continue",
+              "Next": "address",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -361342,8 +361342,8 @@
           "Text": "{n}\"A queen who rehearses her funeral has begun it,\" she told you, when you asked her whether Kitrane could hold the line. It was a good answer. It was the answer of a woman who has never once been allowed to want anything for herself, and knows it, and would rather die than say so.{/n}",
           "Choices": [
             {
-              "Text": "[Watch the market until the lanterns brighten.]",
-              "Next": null,
+              "Text": "Continue",
+              "Next": "address",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -361358,9 +361358,27 @@
           "Text": "{n}Somewhere up there, in Drezen or in Nerosyan, she is being the Queen of Mendev at somebody. You hope, a little to your own surprise, that she has an hour in the day when she is not.{/n}",
           "Choices": [
             {
+              "Text": "Continue",
+              "Next": "address",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "address",
+          "Speaker": "Narrator",
+          "Text": "{n}Below the balcony a masked woman is haggling with an old hag of the market over a charm against the evil eye. The hag laughs at her, not unkindly, and says a thing you find you remember: that in the Midnight Isles a curse is only an address. It finds you by what you answer to. That, she says, is what the masks are for.{/n}\n{n}It is the sort of thing markets say. You turn it over anyway, the way you turn over everything, and put it away somewhere you will be able to find it again.{/n}",
+          "Choices": [
+            {
               "Text": "[Watch the market until the lanterns brighten.]",
               "Next": null,
-              "Set": [],
+              "Set": [
+                "galfrey.trickster.address_heard"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -361760,6 +361778,61 @@
           "Choices": [
             {
               "Text": "Continue",
+              "Next": "address",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.address_heard"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "planted",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.kitrane_planted"
+              ],
+              "Forbids": [
+                "galfrey.trickster.address_heard"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "refusedbefore",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.letter_refused"
+              ],
+              "Forbids": [
+                "galfrey.trickster.kitrane_planted",
+                "galfrey.trickster.address_heard"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "mendev",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "galfrey.trickster.kitrane_planted",
+                "galfrey.trickster.letter_refused",
+                "galfrey.trickster.address_heard"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "address",
+          "Speaker": "Narrator",
+          "Text": "{n}And you tell her where the thought came from, because she will ask: a hag in a market in the Abyss, laughing at a masked girl, saying that a curse is only an address and finds you by what you answer to. It is a market saying. It is also, as far as you can see, exactly what the wound has just done in front of you.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
               "Next": "planted",
               "Set": [],
               "Requires": [
@@ -361999,7 +362072,9 @@
             {
               "Text": "Continue",
               "Next": "irabeth",
-              "Set": [],
+              "Set": [
+                "galfrey.trickster.carried.irabeth"
+              ],
               "Requires": [],
               "Forbids": [
                 "irabeth_dead"
@@ -362009,7 +362084,9 @@
             {
               "Text": "Continue",
               "Next": "crows",
-              "Set": [],
+              "Set": [
+                "galfrey.trickster.carried.crows"
+              ],
               "Requires": [
                 "irabeth_dead"
               ],
@@ -362817,7 +362894,9 @@
             {
               "Text": "Continue",
               "Next": "irabeth",
-              "Set": [],
+              "Set": [
+                "galfrey.trickster.carried.irabeth"
+              ],
               "Requires": [],
               "Forbids": [
                 "irabeth_dead"
@@ -362827,7 +362906,9 @@
             {
               "Text": "Continue",
               "Next": "crows",
-              "Set": [],
+              "Set": [
+                "galfrey.trickster.carried.crows"
+              ],
               "Requires": [
                 "irabeth_dead"
               ],
@@ -363337,7 +363418,8 @@
         "trickster.ever",
         "galfrey.trickster.kitrane_taken",
         "galfrey.dead",
-        "coronation.seen"
+        "coronation.seen",
+        "galfrey.trickster.cost.eulogy"
       ],
       "Forbids": [
         "galfrey.trickster.returned",
@@ -364123,7 +364205,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}Queen Galfrey of Mendev died at Iz, of the dragon's sorcery, with her Commander at her side, and was buried with honours in Nerosyan. Mendev mourned her for a year and a day.{/n}\n{n}A knight of the Green Crows named Kitrane, of no lands, no crown and no enemies, lived a great deal longer. She followed the Commander to the end of the war as a knight of the Crows, and on its last night she kept the walls of Drezen among the soldiers who had not been sent to Threshold, in the crowd, where she had asked to be; and the Commander, whatever else became of the world, never once failed to look for her there.{/n}",
+          "Text": "{n}Queen Galfrey of Mendev died at Iz, of the dragon's sorcery, and was buried with honours in Nerosyan. Mendev mourned her for a year and a day.{/n}\n{n}A knight of the Green Crows named Kitrane, of no lands, no crown and no enemies, lived a great deal longer. She followed the Commander to the end of the war as a knight of the Crows, and on its last night she kept the walls of Drezen among the soldiers who had not been sent to Threshold, in the crowd, where she had asked to be; and the Commander, whatever else became of the world, never once failed to look for her there.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -366570,10 +366652,24 @@
               "Next": "gone",
               "Set": [],
               "Requires": [
-                "irabeth_dead"
+                "irabeth_dead",
+                "galfrey.trickster.carried.irabeth"
               ],
               "Forbids": [
                 "irabeth.trickster.returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "gone_before",
+              "Set": [],
+              "Requires": [
+                "irabeth_dead"
+              ],
+              "Forbids": [
+                "irabeth.trickster.returned",
+                "galfrey.trickster.carried.irabeth"
               ],
               "Abort": false
             }
@@ -366664,6 +366760,22 @@
           "Id": "gone",
           "Speaker": "Galfrey",
           "Text": "\"Knight Tirabade is dead.\" {n}Her voice does not change, which is how you know what it costs.{/n} \"She carried my last command out of Iz and then she did not come home. The Crows who carried me say she was quiet all the way to the gate. She had the order in her ears and nothing else.\" {n}Her hands tighten on the pommel.{/n} \"I look at the barracks because I keep expecting her to come out of it. It is a habit. I have a great many habits I am going to have to break.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "gone_before",
+          "Speaker": "Galfrey",
+          "Text": "\"Knight Tirabade is dead.\" {n}Her voice does not change, which is how you know what it costs.{/n} \"She fell at Iz before I could give her anything to carry. I called her name with my last command in my mouth, and two old Crows came instead.\" {n}Her hands tighten on the pommel.{/n} \"I look at the barracks because I keep expecting her to come out of it. It is a habit. I have a great many habits I am going to have to break.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -366756,10 +366868,24 @@
               "Next": "gone",
               "Set": [],
               "Requires": [
-                "irabeth_dead"
+                "irabeth_dead",
+                "galfrey.trickster.carried.irabeth"
               ],
               "Forbids": [
                 "irabeth.trickster.returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "gone_before",
+              "Set": [],
+              "Requires": [
+                "irabeth_dead"
+              ],
+              "Forbids": [
+                "irabeth.trickster.returned",
+                "galfrey.trickster.carried.irabeth"
               ],
               "Abort": false
             }
@@ -366850,6 +366976,22 @@
           "Id": "gone",
           "Speaker": "Galfrey",
           "Text": "\"Knight Tirabade is dead.\" {n}Her voice does not change, which is how you know what it costs.{/n} \"She carried my last command out of Iz and then she did not come home. The Crows who carried me say she was quiet all the way to the gate. She had the order in her ears and nothing else.\" {n}Her hands tighten on the pommel.{/n} \"I look at the barracks because I keep expecting her to come out of it. It is a habit. I have a great many habits I am going to have to break.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "gone_before",
+          "Speaker": "Galfrey",
+          "Text": "\"Knight Tirabade is dead.\" {n}Her voice does not change, which is how you know what it costs.{/n} \"She fell at Iz before I could give her anything to carry. I called her name with my last command in my mouth, and two old Crows came instead.\" {n}Her hands tighten on the pommel.{/n} \"I look at the barracks because I keep expecting her to come out of it. It is a habit. I have a great many habits I am going to have to break.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -367350,7 +367492,7 @@
         {
           "Id": "take",
           "Speaker": "Galfrey",
-          "Text": "\"I shall.\" {n}She says it at once, as if she had only been waiting for somebody to agree.{/n} \"I cannot knight her; I am a knight of an order of three, and our patent of arms is in a trunk in Nerosyan under another name. But I can take a squire. Any knight can.\" {n}She is already watching the girl.{/n} \"It will be the first thing I have done in my life that nobody arranged for me.\"",
+          "Text": "\"I shall.\" {n}She says it at once, as if she had only been waiting for somebody to agree.{/n} \"I cannot knight her; I am a knight of an order of three, and our patent of arms is in a trunk in Nerosyan under another name. But I can take a squire. Any knight can.\" {n}She is already watching the girl.{/n} \"No council to consult, no succession to weigh, no bishop to ask. I have made a great many choices in my life, Commander, and every one of them was Mendev's. This one is only mine.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -367521,7 +367663,7 @@
         {
           "Id": "take",
           "Speaker": "Galfrey",
-          "Text": "\"I shall.\" {n}She says it at once, as if she had only been waiting for somebody to agree.{/n} \"I cannot knight her; I am a knight of an order of three, and our patent of arms is in a trunk in Nerosyan under another name. But I can take a squire. Any knight can.\" {n}She is already watching the girl.{/n} \"It will be the first thing I have done in my life that nobody arranged for me.\"",
+          "Text": "\"I shall.\" {n}She says it at once, as if she had only been waiting for somebody to agree.{/n} \"I cannot knight her; I am a knight of an order of three, and our patent of arms is in a trunk in Nerosyan under another name. But I can take a squire. Any knight can.\" {n}She is already watching the girl.{/n} \"No council to consult, no succession to weigh, no bishop to ask. I have made a great many choices in my life, Commander, and every one of them was Mendev's. This one is only mine.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -368144,7 +368286,7 @@
               "Text": "\"Agreed. All of it. I'll go today.\"",
               "Next": "agreed",
               "Set": [
-                "galfrey.trickster.ride.answered"
+                "galfrey.trickster.ride.promised"
               ],
               "Requires": [],
               "Forbids": [],
@@ -368203,6 +368345,7 @@
       "Forbids": [
         "galfrey.closed",
         "galfrey.trickster.kitrane.ford_after_stall",
+        "galfrey.trickster.ride.promised",
         "galfrey.trickster.ride.answered"
       ],
       "DelayHours": 24,
@@ -368250,7 +368393,7 @@
               "Text": "\"Agreed. All of it. I'll go today.\"",
               "Next": "agreed",
               "Set": [
-                "galfrey.trickster.ride.answered"
+                "galfrey.trickster.ride.promised"
               ],
               "Requires": [],
               "Forbids": [],
@@ -368310,6 +368453,7 @@
       "Forbids": [
         "galfrey.closed",
         "galfrey.trickster.kitrane.ford_after",
+        "galfrey.trickster.ride.promised",
         "galfrey.trickster.ride.answered"
       ],
       "DelayHours": 24,
@@ -368323,6 +368467,84 @@
       ],
       "ContactUnit": "a8b7f6fd39ff2974f8b5fbf944a7f735",
       "InteractionHub": "galfrey.presence.stall"
+    },
+    {
+      "Id": "galfrey.trickster.kitrane.tallow",
+      "Title": "The tallow-seller",
+      "Owner": "Galfrey",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The tallow-seller's stall is two streets below the curio stall, in the part of the lower town where the gutters run grey. She is a small woman with burned hands, and she knows who you are before you open your mouth; everybody in Drezen knows the Commander's face.{/n}\n{n}You tell her anyway. That her son Tobin surrendered at the eastern ford with his hands on his head. That a knight of the Green Crows refused to hang him. That you gave the order, and it was carried out.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "mother",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "mother",
+          "Speaker": "Narrator",
+          "Text": "{n}She does not weep. She listens to the whole of it with her burned hands folded on the counter, and when you have finished and put the purse for the grave down beside them, she looks at it a long while and does not touch it.{/n}\n{n}\"He was a fool,\" she says at last. \"He went to the Locust men because they fed him. I told him he would hang.\" {n}She pushes the purse back an inch, and then, slowly, draws it to her.{/n} \"You came yourself. The knights never come themselves.\" {n}That is all she says. You buy two candles from her, because it seems wrong to leave with nothing, and she wraps them, and you go.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "kitrane",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "kitrane",
+          "Speaker": "Narrator",
+          "Text": "{n}At the top of the street, by the curio stall, a knight in a green surcoat has been watching the whole time from under her hood. She does not come down. When you reach her she takes one of the candles out of your hand without a word, and puts it inside her surcoat, next to the broadsheet about Sir Anselm.{/n}",
+          "Choices": [
+            {
+              "Text": "[Stand beside her a while.]",
+              "Next": null,
+              "Set": [
+                "galfrey.trickster.ride.answered"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "galfrey.trickster.returned",
+        "galfrey.trickster.ride.promised"
+      ],
+      "Forbids": [
+        "galfrey.trickster.ride.answered",
+        "galfrey.closed"
+      ],
+      "DelayHours": 12,
+      "Optional": false,
+      "Relationship": "galfrey",
+      "Chapters": [
+        5
+      ],
+      "Remote": true,
+      "Kind": "visit",
+      "Sender": "Galfrey"
     },
     {
       "Id": "galfrey.trickster.kitrane.king",
@@ -370281,7 +370503,7 @@
         {
           "Id": "speak",
           "Speaker": "Galfrey",
-          "Text": "\"A knight of the Green Crows owes service. I have lived on the Crows' pay and your army's bread for weeks, and I have sworn to nobody. That is not how a knight lives.\" {n}She draws her sword. Then, in the straw and the eel-water and the last of the light, the Queen of Mendev goes down on one knee in front of you and holds it out, hilt first, across her forearm.{/n}",
+          "Text": "\"A knight of the Green Crows owes service. I have lived on the Crows' pay and your army's bread since I walked out of Iz, and I have sworn to nobody. That is not how a knight lives.\" {n}She draws her sword. Then, in the straw and the eel-water and the last of the light, the Queen of Mendev goes down on one knee in front of you and holds it out, hilt first, across her forearm.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -370502,7 +370724,22 @@
       "InteractionHub": "galfrey.presence",
       "ForbidOverrides": {
         "galfrey.trickster.ride.hanged": "galfrey.trickster.ride.answered"
-      }
+      },
+      "RequiresAnyGroups": [
+        [
+          "galfrey.trickster.kitrane.reel",
+          "galfrey.trickster.kitrane.squire_sworn",
+          "galfrey.trickster.kitrane.king_seen",
+          "galfrey.trickster.kitrane.conversation"
+        ],
+        [
+          "galfrey.trickster.coffin.named",
+          "galfrey.trickster.coffin.kept",
+          "galfrey.trickster.kitrane.hands",
+          "galfrey.trickster.kitrane.elixir_told",
+          "galfrey.trickster.kitrane.letter_spoken"
+        ]
+      ]
     },
     {
       "Id": "galfrey.trickster.commit.oath_stall",
@@ -370586,7 +370823,7 @@
         {
           "Id": "speak",
           "Speaker": "Galfrey",
-          "Text": "\"A knight of the Green Crows owes service. I have lived on the Crows' pay and your army's bread for weeks, and I have sworn to nobody. That is not how a knight lives.\" {n}She draws her sword. Then, in the straw and the eel-water and the last of the light, the Queen of Mendev goes down on one knee in front of you and holds it out, hilt first, across her forearm.{/n}",
+          "Text": "\"A knight of the Green Crows owes service. I have lived on the Crows' pay and your army's bread since I walked out of Iz, and I have sworn to nobody. That is not how a knight lives.\" {n}She draws her sword. Then, in the straw and the eel-water and the last of the light, the Queen of Mendev goes down on one knee in front of you and holds it out, hilt first, across her forearm.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -370808,7 +371045,22 @@
       "InteractionHub": "galfrey.presence.stall",
       "ForbidOverrides": {
         "galfrey.trickster.ride.hanged": "galfrey.trickster.ride.answered"
-      }
+      },
+      "RequiresAnyGroups": [
+        [
+          "galfrey.trickster.kitrane.reel",
+          "galfrey.trickster.kitrane.squire_sworn",
+          "galfrey.trickster.kitrane.king_seen",
+          "galfrey.trickster.kitrane.conversation"
+        ],
+        [
+          "galfrey.trickster.coffin.named",
+          "galfrey.trickster.coffin.kept",
+          "galfrey.trickster.kitrane.hands",
+          "galfrey.trickster.kitrane.elixir_told",
+          "galfrey.trickster.kitrane.letter_spoken"
+        ]
+      ]
     },
     {
       "Id": "galfrey.trickster.commit.release",
@@ -371422,7 +371674,8 @@
       ],
       "Forbids": [
         "galfrey.trickster.tent_seen",
-        "galfrey.closed"
+        "galfrey.closed",
+        "galfrey.trickster.ride.hanged"
       ],
       "DelayHours": 8,
       "Optional": false,
@@ -371432,6 +371685,9 @@
       ],
       "Remote": true,
       "Kind": "visit",
+      "ForbidOverrides": {
+        "galfrey.trickster.ride.hanged": "galfrey.trickster.ride.answered"
+      },
       "Sender": "Galfrey"
     },
     {
@@ -371734,13 +371990,13 @@
       "Title": "The crown or the crow",
       "Owner": "Galfrey",
       "MinChapter": 5,
-      "MaxChapter": 6,
-      "Entry": "",
+      "MaxChapter": 5,
+      "Entry": "\"You wanted to walk the wall with me.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She finds you on the citadel wall, where you have gone to look at the weather over the Wound, and stands beside you for some time without speaking. She has a broadsheet folded in her belt and the old sword at her hip, and she looks, for once, exactly her age.{/n}",
+          "Text": "{n}She walks with you up onto the citadel wall, where you have gone to look at the weather over the Wound, and stands beside you for some time without speaking. She has a broadsheet folded in her belt and the old sword at her hip, and she looks, for once, exactly her age.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -371965,26 +372221,288 @@
         "galfrey.trickster.returned"
       ],
       "Forbids": [
+        "galfrey.closed",
+        "galfrey.trickster.kitrane.crown_stall",
         "galfrey.trickster.kitrane_forever",
-        "galfrey.trickster.crown_reclaimed",
-        "galfrey.closed"
+        "galfrey.trickster.crown_reclaimed"
       ],
       "DelayHours": 48,
       "Optional": false,
       "Relationship": "galfrey",
       "Chapters": [
-        5,
-        6
+        5
       ],
-      "Remote": true,
-      "Kind": "visit",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "ContactUnit": "a8b7f6fd39ff2974f8b5fbf944a7f735",
+      "InteractionHub": "galfrey.presence",
       "RequiresAnyGroups": [
         [
           "galfrey.trickster.coffin.named",
           "galfrey.trickster.coffin.kept"
         ]
+      ]
+    },
+    {
+      "Id": "galfrey.trickster.kitrane.crown_stall",
+      "Title": "The crown or the crow",
+      "Owner": "Galfrey",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You wanted to walk the wall with me.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}She walks with you up onto the citadel wall, where you have gone to look at the weather over the Wound, and stands beside you for some time without speaking. She has a broadsheet folded in her belt and the old sword at her hip, and she looks, for once, exactly her age.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "speak",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "speak",
+          "Speaker": "Galfrey",
+          "Text": "\"Threshold.\" {n}She nods toward the Wound.{/n} \"After it, this war ends, one way or the other. If it ends the right way, there will be a world afterwards, and Mendev will be in it, and a crypt in Nerosyan with the wrong man lying in it under my name.\" {n}She does not look at you.{/n} \"I have decided what I shall do, on the other side. I wanted you to hear it from me before anyone else did.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "named",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.coffin.named"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "kept",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.coffin.kept"
+              ],
+              "Forbids": [
+                "galfrey.trickster.coffin.named"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "named",
+          "Speaker": "Galfrey",
+          "Text": "\"You said Sir Anselm should have his name back one day, even if it cost me mine. I have thought of little else.\" {n}Her hand rests on the hilt of her sword.{/n} \"When the war is over I shall ride to Nerosyan and walk into the cathedral in this surcoat, and have that crypt opened, and say who is in it and who is not. His daughter will have her father back to bury. Mendev will have its Queen back, and a scandal to go with her.\"",
+          "Choices": [
+            {
+              "Text": "\"They'll want to know how.\"",
+              "Next": "how",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"And Kitrane?\"",
+              "Next": "kitrane",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "how",
+          "Speaker": "Galfrey",
+          "Text": "\"They will. And I shall tell them: that I lay dying at Iz, and the Commander of the crusade offered me another name, and I took it.\" {n}A thin smile.{/n} \"You will be answering for that, Commander, before bishops and regents and the whole of the Mendevian court, for years. I am sorry. I am not sorry enough not to do it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "kitrane",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "kitrane",
+          "Speaker": "Galfrey",
+          "Text": "\"Kitrane will not end. She will have a crown on again, that is all, and know the difference between the woman and the hat.\" {n}She turns to you at last.{/n} \"I shall take no more elixir. The church may offer it; I shall refuse it at the altar, in front of them all. The Queen of Mendev will grow old like anybody, and when she is tired, she will abdicate, and go and be a knight of some small order that nobody has heard of.\"",
+          "Choices": [
+            {
+              "Text": "\"I'll stand beside you in the cathedral.\"",
+              "Next": "end_crown",
+              "Set": [
+                "galfrey.trickster.crown_reclaimed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"You don't have to do this.\"",
+              "Next": "must",
+              "Set": [
+                "galfrey.trickster.crown_reclaimed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "must",
+          "Speaker": "Galfrey",
+          "Text": "\"No. I do not have to. That is why I can.\" {n}Quite gently.{/n} \"For a hundred years everything I did, I had to. This I choose. You taught me the difference, at Iz, with a name. Do not try to unteach it now.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end_crown",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "end_crown",
+          "Speaker": "Galfrey",
+          "Text": "\"After Threshold, then.\" {n}She looks back out at the Wound.{/n} \"Until then I am Kitrane of the Green Crows, and I have a squire to drill, and a mule who bites. Do not tell anyone, Commander. I should like to enjoy the last of it.\"",
+          "Choices": [
+            {
+              "Text": "[Stand with her on the wall until the light goes.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "kept",
+          "Speaker": "Galfrey",
+          "Text": "\"You said Sir Anselm chose to stand beside me, and still does. I have decided you were right.\" {n}She breathes out, slowly.{/n} \"He keeps his post in the crypt at Nerosyan. The Queen stays dead. His daughter has his sword-belt, and every year, on the day of Iz, she will find a purse at her door from a knight who owed him a debt. It will never be enough. It will be every year until I die.\"",
+          "Choices": [
+            {
+              "Text": "\"And the crown?\"",
+              "Next": "crown",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "crown",
+          "Speaker": "Galfrey",
+          "Text": "\"Mendev will find another. It will quarrel first, and it will make mistakes, and it will learn to decide without me, which it should have learned fifty years ago.\" {n}She touches the green surcoat at her breast.{/n} \"I shall take no more elixir. I shall grow old in a leaking tent, and teach eel-girls to hold a sword, and nobody will ever salute me again. Kitrane, for good.\"",
+          "Choices": [
+            {
+              "Text": "\"Kitrane, for good.\"",
+              "Next": "end_forever",
+              "Set": [
+                "galfrey.trickster.kitrane_forever"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Are you certain?\"",
+              "Next": "certain",
+              "Set": [
+                "galfrey.trickster.kitrane_forever"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "certain",
+          "Speaker": "Galfrey",
+          "Text": "\"No.\" {n}Promptly.{/n} \"I was certain every day of my reign, and look where it brought me: dying in a rubble-heap, being asked what becomes of Mendev.\" {n}Her mouth curves.{/n} \"I am not certain. I am decided. It is a much more comfortable thing to be.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end_forever",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "end_forever",
+          "Speaker": "Galfrey",
+          "Text": "\"There. It is said.\" {n}She leans her forearms on the parapet beside yours.{/n} \"Now stand here with me a while and look at the weather over the Wound, as if we were two knights with nothing better to do. I have always wanted to do that, too.\"",
+          "Choices": [
+            {
+              "Text": "[Stand with her on the wall until the light goes.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        }
       ],
-      "Sender": "Galfrey"
+      "Requires": [
+        "trickster.ever",
+        "galfrey.trickster.returned",
+        "galfrey.presence.failed"
+      ],
+      "Forbids": [
+        "galfrey.closed",
+        "galfrey.trickster.kitrane.crown",
+        "galfrey.trickster.kitrane_forever",
+        "galfrey.trickster.crown_reclaimed"
+      ],
+      "DelayHours": 48,
+      "Optional": false,
+      "Relationship": "galfrey",
+      "Chapters": [
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "ContactUnit": "a8b7f6fd39ff2974f8b5fbf944a7f735",
+      "InteractionHub": "galfrey.presence.stall",
+      "RequiresAnyGroups": [
+        [
+          "galfrey.trickster.coffin.named",
+          "galfrey.trickster.coffin.kept"
+        ]
+      ]
     },
     {
       "Id": "galfrey.trickster.kitrane.seelah",
@@ -377654,8 +378172,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
