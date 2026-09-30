@@ -113,6 +113,7 @@ BEAST_FED = P + "cost.beast_fed"
 BEAST_STOPPED = P + "beast_stopped"
 WASP_SENT = P + "wasp_sent_home"
 KNIFE_SHOWN = P + "knife_shown"
+TRUTH_OK = P + "truth_settled"                    # derived: no price lied about, or the lie confessed
 READY = "kaylessa.wasps.in_the_dark"               # the kiss after curfew: the played exchange of attraction before the proposal
 KNIFE_HELD = P + "knife_held"
 KNIFE_BACK = P + "knife_handed_back"
@@ -150,7 +151,9 @@ PRESENCES = {
 DERIVED = {
     PRESENCE_ON: [[DEAD_L, PRIMED], [RETURNED]],
     # R2-6: the last beat before the knife; the epilogue answers a question the war left no time to ask.
-    LATE_COMMITTED: [["trickster.ever", KNIFE_SHOWN, READY]],   # the last beats before her proposal (Sol quality pass, BEL)
+    LATE_COMMITTED: [["trickster.ever", KNIFE_SHOWN, READY, TRUTH_OK]],   # the last beats before her proposal (Sol quality pass, BEL)
+    # Rule three: the dead worlds' return records the truth told or the lie; the living worlds never lied about a price.
+    TRUTH_OK: [[TOLD], [CONFESSED], [SWAP_CLEAN], [SWAP_FUMBLED]],
     # 05 §2.1: the stance hooks come from household.PARTNERS (kaylessa.harem.eligible = committed or late_committed).
 }
 
@@ -763,7 +766,9 @@ SCENES.append(scene(P + "epilogue.no_lamb", "", "KaylessaEpilogue", 6, "", [
 SCENES.append(scene(P + "epilogue.commit", "", "KaylessaEpilogue", 6, "", [
     nar("page", '''{n}The drow Kaylessa did not answer the Commander's question until the war was over. The Commander had never quite asked it. She answered it anyway, one evening after the Threshold, by walking into the Commander's rooms with the shutters open and the lamp out, and laying a Kyonin dagger on the table between them, hilt towards the Commander's hand.{/n}
 {n}"Your choice, soldier," she said. "It always was. I only wanted to be sure you knew it."{/n}
-{n}The Commander closed a hand round the hilt. She stayed. She kept her rules, and she kept her knife where one of them could reach it, and she did not say which one, and she was never cured, and she checked the clock every morning she had.{/n}''',
+{n}The Commander closed a hand round the hilt, and she let go of it one finger at a time, and then she put out the lamp. She took the Commander's wrist in the dark, the way she had in the streets after curfew, and walked backwards to the bed without once looking where she was going, and pulled the Commander down onto it by the collar, and knelt astride and unlaced the courier's grey at her own throat with quick soldier's fingers, and said the word she called everyone against the Commander's mouth.{/n}
+{n}In the morning the dagger hung on a nail by the door, where either of them could reach it, and the first thing she did on waking was check the clock, and the second was to tell the Commander that they snored.{/n}
+{n}She stayed. She kept her rules, and she kept her knife where one of them could reach it, and she did not say which one, and she was never cured, and she checked the clock every morning she had.{/n}''',
         paragraphs=(
             p("{n}The beast in her never moved again from where it had stopped on the night of her death. She checked it every morning of her life.{/n}", requires=(STALLED,), forbids=(BEAST_FED,)),
             p("{n}The beast had tasted something in the crusade's cells, and it did not forget. Some mornings the thumb on the clock slipped a little, and on those mornings she put the Kyonin dagger where the Commander could reach it before she said good morning.{/n}", requires=(BEAST_FED,)),

@@ -57,7 +57,7 @@ def away(id, title, nodes, requires, forbids=(), delay=24, owner="Kaylessa", kin
 # --- The night: where she was meant to die (heat up to the cut). ------------------------------------------------------
 
 away(NIGHT, "Where I was meant to die", [
-    nar("open", '''{n}She comes for you after the last bell, wrapped to the eyes, with no lantern. She doesn't say where you're going. She doesn't need a light; you do, and she takes your wrist instead and leads you.{/n}''',
+    nar("open", '''{n}She comes for you after the last bell, wrapped to the eyes, with no lantern. She doesn't say where you're going. She carries no light and wants none. She takes your wrist and leads you.{/n}''',
         c("Continue", "tomb", requires=(TOMB,)),
         c("Continue", "bare", requires=(BEGGED,), forbids=(TOMB,)),
         c("Continue", "branch", requires=(DEAD_L,), forbids=(BEGGED,)),
@@ -70,7 +70,7 @@ away(NIGHT, "Where I was meant to die", [
         c("Continue", "why")),
     nar("branch", '''{n}An hour's ride out of the gate, to a clearing among dead trees where, she tells you, Forn meant to spring his trap on you. "In my branch I came out of those trees and took his arrow for you, here." She touches her collarbone. "In yours I was already dead, so you met him alone, or you never met him at all. I can't tell. I remember both."{/n}''',
         c("Continue", "why_branch")),
-    nar("ravine", '''{n}Not far. Out of the south gate and down into the ravine below the wall, where the stones are still stained dark in places and someone has swept away the lantern glass. It's black as the bottom of a well with the moon down. She can see. You can't.{/n}
+    nar("ravine", '''{n}Not far. Out of the south gate and down into the ravine below the wall, where the stones are still stained dark in places and someone has swept away the lantern glass. It's black as the bottom of a well with the moon down, and she knows every stone of it.{/n}
 {n}She walks you to the stone where the hunter lay and stops there, with your wrist still in her hand.{/n}''',
         c("Continue", "why_ravine")),
     kay("why", '''"This is where I'm supposed to be, soldier. Under that." {n}She nods at the ground as if it had insulted her.{/n}
@@ -111,7 +111,7 @@ away(NIGHT, "Where I was meant to die", [
     kay("down", '''"There. Now nobody's holding anything." {n}She is breathing hard, and her skin under your hands is cool as river stone and getting warmer, and every muscle Anemora's work put in her is moving at once.{/n}
 "Don't you dare be gentle with me, soldier. I've had enough careful hands for one life. I want yours."''',
         c("[Pull her down onto the cloak.]", "cut", flags=(NIGHT_FLAG,))),
-    nar("cut", '''{n}She goes down onto the courier's cloak and pulls you down after her with both hands knotted in your hair, and says the word she calls everyone against your mouth. It has never once sounded like that. Above you the stars she can see and you can't burn on over the place where she was meant to die.{/n}''',
+    nar("cut", '''{n}She goes down onto the courier's cloak and pulls you down after her with both hands knotted in your hair, and says the word she calls everyone against your mouth. It has never once sounded like that. Above you the stars she has been naming to you one by one burn on over the place where she was meant to die.{/n}''',
         c("[...]")),
 ], requires=(), delay=12)
 
@@ -124,7 +124,7 @@ away(MORNING, "Grey light", [
         c("Continue", "back", requires=(KNIFE_BACK,))),
     nar("held", '''{n}The Kyonin dagger is back at your belt. She must have buckled it on you while you slept. You didn't feel her do it. You aren't sure you'd have felt anything she chose to do.{/n}''',
         c("Continue", "check")),
-    nar("back", '''{n}The Kyonin dagger is back in her left boot. She is turning its empty sheath on her knee, round and round, a habit she hasn't noticed she has.{/n}''',
+    nar("back", '''{n}The Kyonin dagger is back in her left boot, sheathed. Her fingers keep going to the hilt where it sticks up past the leather, round and round the worn wood, a habit she hasn't noticed she has.{/n}''',
         c("Continue", "check")),
     kay("check", '''"I checked." {n}She doesn't turn her head.{/n} "First thing, before I even opened my eyes. Same as every morning."''',
         c("Continue", "stalled", requires=(STALLED,), forbids=(BEAST_FED,)),
@@ -273,7 +273,7 @@ here(AFTER, "After", '"Do you ever think about after?"', [
 
 # --- Avennara's answer (only when her letter went under the crusade's seal). -------------------------------------------
 
-away(AVENNARA, "From the border", [
+here(AVENNARA, "From the border", '"You\'ve got a letter."', [
     nar("open", '''{n}The letter comes by an elven courier who will not stay for an answer, in a leather case sealed with a leaf pressed into green wax. It is addressed in a clear, upright hand to Kaylessa of the Sunset Wasps, in care of the Commander of the Fifth Crusade. It has been opened once already on the road and resealed, not very well. You carry it down to the market yourself.{/n}''',
         c("Continue", "letter")),
     nar("letter", '''{n}She reads it under the awning with her shoulder against yours, so you read it too.{/n}

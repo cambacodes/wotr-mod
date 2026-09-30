@@ -252,10 +252,10 @@ internal static class KaylessaTricksterTests
             "Trk_Kaylessa_Lie: the postponed proposal has no road back through the truth.");
         // The late page needs the dagger's disclosure (the last beat before her proposal); the clock alone is an ally's ending.
         var epAlly = pages.Single(p => p.Id == P + "epilogue.ally");
-        check(Avail(pages.Single(p => p.Id == P + "epilogue.commit"), World(story, 6, "trickster.ever", P + "clock_named", P + "knife_shown", W + "in_the_dark"))
+        check(Avail(pages.Single(p => p.Id == P + "epilogue.commit"), World(story, 6, "trickster.ever", P + "clock_named", P + "knife_shown", W + "in_the_dark", P + "alive.swap_clean"))
               && !Avail(pages.Single(p => p.Id == P + "epilogue.commit"), World(story, 6, "trickster.ever", P + "clock_named"))
               && Avail(epAlly, World(story, 6, "trickster.ever", P + "clock_named"))
-              && !Avail(epAlly, World(story, 6, "trickster.ever", P + "clock_named", P + "knife_shown", W + "in_the_dark"))
+              && !Avail(epAlly, World(story, 6, "trickster.ever", P + "clock_named", P + "knife_shown", W + "in_the_dark", P + "alive.swap_clean"))
               && Avail(epAlly, World(story, 6, "trickster.ever", P + "clock_named", P + "knife_shown"))
               && !Avail(pages.Single(p => p.Id == P + "epilogue.commit"), World(story, 6, "trickster.ever", P + "clock_named", P + "knife_shown")),
             "Trk_Kaylessa_Late: the war's end commits a mere acquaintance, or leaves the knife's disclosure without a late yes.");
@@ -294,6 +294,22 @@ internal static class KaylessaTricksterTests
         check(!own.Concat(pages).SelectMany(x => x.Nodes).Any(n => n.Text.Contains("darkhunter", StringComparison.OrdinalIgnoreCase))
               && !own.SelectMany(x => x.Nodes).Any(n => n.Text.Contains("You're blind", StringComparison.Ordinal)),
             "Forn is called a darkhunter, or the Commander is declared blind.");
+        // Round 5 (INT): rule three reaches the late page too; an unconfessed liar gets the ally's ending, not the romance.
+        var lateLiar = World(story, 6, "trickster.ever", Dead, Returned, P + "clock_named", P + "knife_shown", W + "in_the_dark", P + "lied_about_price");
+        check(!lateLiar.Has(P + "late_committed") && !Avail(pages.Single(p => p.Id == P + "epilogue.commit"), lateLiar)
+              && Avail(pages.Single(p => p.Id == P + "epilogue.ally"), lateLiar) && !lateLiar.Has("kaylessa.harem.eligible"),
+            "An unconfessed liar gets the late romance.");
+        var lateConfessed = Program.Copy(lateLiar); lateConfessed.Flags.Add(P + "confessed_price"); Rules.Complete(story, lateConfessed);
+        check(lateConfessed.Has(P + "late_committed") && Avail(pages.Single(p => p.Id == P + "epilogue.commit"), lateConfessed),
+            "A confessed lie still blocks the late page.");
+        check(pages.Single(p => p.Id == P + "epilogue.commit").Nodes[0].Text.Contains("astride", StringComparison.Ordinal),
+            "The late romance has no threshold.");
+        // Round 5 (CAN/COX): no narration decides the Commander's night sight; Avennara's reply comes at the awning.
+        foreach (var x in own.Concat(pages))
+            foreach (var n in x.Nodes.Where(n => n.Speaker == "Narrator"))
+                check(!n.Text.Contains("You can't", StringComparison.Ordinal) && !n.Text.Contains("you can't", StringComparison.Ordinal)
+                      && !n.Text.Contains("you do,", StringComparison.Ordinal), "Narration declares the Commander blind: " + x.Id + "/" + n.Id);
+        check(Rules.IsPresenceHubScene(S(N + "avennara")), "Avennara's reply is a second Chapter 5 letter.");
         var nightScene = S(N + "where_i_was_meant_to_die");
         var desireNode = nightScene.Nodes.Single(n => n.Id == "desire");
         check(desireNode.Choices.Single(c => c.Next == "like_met").Requires.Contains("kaylessa.first_words_seen")
