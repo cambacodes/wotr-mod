@@ -1,0 +1,314 @@
+{
+ "Relationships": {
+  "alpha": {
+   "Title": "Alpha",
+   "StartedFlag": "alpha.started",
+   "ClosedFlag": "alpha.closed",
+   "CommittedFlag": "alpha.committed",
+   "UnavailableFlags": [],
+   "FailureFlags": []
+  },
+  "beta": {
+   "Title": "Beta",
+   "StartedFlag": "beta.started",
+   "ClosedFlag": "beta.closed",
+   "CommittedFlag": "beta.committed",
+   "UnavailableFlags": [],
+   "FailureFlags": []
+  }
+ },
+ "Etudes": {
+  "alpha.native_romance": "89f8c2f1a7a8ea24794bf4af231e89a1",
+  "kenabres.fallen": "0123456789abcdef0123456789abcdef"
+ },
+ "CompletedEtudes": {},
+ "CompletedQuests": {},
+ "SeenCues": {},
+ "SelectedAnswers": {},
+ "StartedDialogs": {},
+ "UnlockableFlags": {},
+ "Scenes": [
+  {
+   "Id": "alpha.early",
+   "Title": "alpha.early",
+   "Owner": "Alpha",
+   "MinChapter": 1,
+   "MaxChapter": 2,
+   "Entry": "x",
+   "Requires": [],
+   "Forbids": [],
+   "DelayHours": 0,
+   "Optional": false,
+   "Relationship": "alpha",
+   "Chapters": [],
+   "Nodes": [
+    {
+     "Id": "start",
+     "Speaker": "Alpha",
+     "Text": "x",
+     "Portrait": "",
+     "Choices": [
+      {
+       "Text": "y",
+       "Next": null,
+       "Set": [
+        "alpha.early.watch"
+       ],
+       "Requires": [],
+       "Forbids": [],
+       "Abort": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "Id": "alpha.mid",
+   "Title": "alpha.mid",
+   "Owner": "Alpha",
+   "MinChapter": 3,
+   "MaxChapter": 5,
+   "Entry": "x",
+   "Requires": [],
+   "Forbids": [],
+   "DelayHours": 0,
+   "Optional": false,
+   "Relationship": "alpha",
+   "Chapters": [
+    3,
+    5
+   ],
+   "Nodes": [
+    {
+     "Id": "start",
+     "Speaker": "Alpha",
+     "Text": "x",
+     "Portrait": "",
+     "Choices": [
+      {
+       "Text": "y",
+       "Next": null,
+       "Set": [
+        "alpha.mid"
+       ],
+       "Requires": [],
+       "Forbids": [],
+       "Abort": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "Id": "alpha.trk",
+   "Title": "alpha.trk",
+   "Owner": "Alpha",
+   "MinChapter": 3,
+   "MaxChapter": 3,
+   "Entry": "x",
+   "Requires": [
+    "trickster"
+   ],
+   "Forbids": [],
+   "DelayHours": 0,
+   "Optional": false,
+   "Relationship": "alpha",
+   "Chapters": [
+    3
+   ],
+   "Nodes": [
+    {
+     "Id": "start",
+     "Speaker": "Alpha",
+     "Text": "x",
+     "Portrait": "",
+     "Choices": [
+      {
+       "Text": "y",
+       "Next": null,
+       "Set": [
+        "alpha.started"
+       ],
+       "Requires": [],
+       "Forbids": [],
+       "Abort": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "Id": "alpha.letter",
+   "Title": "alpha.letter",
+   "Owner": "Memory",
+   "MinChapter": 4,
+   "MaxChapter": 4,
+   "Entry": "x",
+   "Requires": [],
+   "Forbids": [],
+   "DelayHours": 0,
+   "Optional": false,
+   "Relationship": "alpha",
+   "Chapters": [
+    4
+   ],
+   "Nodes": [
+    {
+     "Id": "start",
+     "Speaker": "Memory",
+     "Text": "x",
+     "Portrait": "",
+     "Choices": [
+      {
+       "Text": "y",
+       "Next": null,
+       "Set": [],
+       "Requires": [],
+       "Forbids": [],
+       "Abort": false
+      }
+     ]
+    }
+   ],
+   "Remote": true
+  },
+  {
+   "Id": "beta.base",
+   "Title": "beta.base",
+   "Owner": "Beta",
+   "MinChapter": 3,
+   "MaxChapter": 3,
+   "Entry": "x",
+   "Requires": [],
+   "Forbids": [],
+   "DelayHours": 0,
+   "Optional": false,
+   "Relationship": "beta",
+   "Chapters": [
+    3
+   ],
+   "Nodes": [
+    {
+     "Id": "start",
+     "Speaker": "Beta",
+     "Text": "x",
+     "Portrait": "",
+     "Choices": [
+      {
+       "Text": "y",
+       "Next": null,
+       "Set": [
+        "beta.started"
+       ],
+       "Requires": [],
+       "Forbids": [],
+       "Abort": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "Id": "beta.c3",
+   "Title": "beta.c3",
+   "Owner": "Beta",
+   "MinChapter": 3,
+   "MaxChapter": 5,
+   "Entry": "x",
+   "Requires": [],
+   "Forbids": [],
+   "DelayHours": 0,
+   "Optional": false,
+   "Relationship": "beta",
+   "Chapters": [
+    3,
+    5
+   ],
+   "Nodes": [
+    {
+     "Id": "start",
+     "Speaker": "Beta",
+     "Text": "x",
+     "Portrait": "",
+     "Choices": [
+      {
+       "Text": "y",
+       "Next": null,
+       "Set": [],
+       "Requires": [],
+       "Forbids": [],
+       "Abort": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "Id": "beta.c4",
+   "Title": "beta.c4",
+   "Owner": "Beta",
+   "MinChapter": 4,
+   "MaxChapter": 4,
+   "Entry": "x",
+   "Requires": [],
+   "Forbids": [],
+   "DelayHours": 0,
+   "Optional": false,
+   "Relationship": "beta",
+   "Chapters": [
+    4
+   ],
+   "Nodes": [
+    {
+     "Id": "start",
+     "Speaker": "Beta",
+     "Text": "x",
+     "Portrait": "",
+     "Choices": [
+      {
+       "Text": "y",
+       "Next": null,
+       "Set": [],
+       "Requires": [],
+       "Forbids": [],
+       "Abort": false
+      }
+     ]
+    }
+   ],
+   "Remote": true
+  },
+  {
+   "Id": "alpha.epilogue",
+   "Title": "alpha.epilogue",
+   "Owner": "Epilogue",
+   "MinChapter": 0,
+   "MaxChapter": 99,
+   "Entry": "x",
+   "Requires": [],
+   "Forbids": [],
+   "DelayHours": 0,
+   "Optional": false,
+   "Relationship": "alpha",
+   "Chapters": [],
+   "Nodes": [
+    {
+     "Id": "start",
+     "Speaker": "Epilogue",
+     "Text": "x",
+     "Portrait": "",
+     "Choices": [
+      {
+       "Text": "y",
+       "Next": null,
+       "Set": [],
+       "Requires": [],
+       "Forbids": [],
+       "Abort": false
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
