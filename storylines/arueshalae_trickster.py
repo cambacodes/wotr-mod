@@ -461,8 +461,8 @@ hub(P + "terms", "Both of me", 5, '"You wanted to ask me something."', [
 
 hub(P + "terms_again", "Seven days", 5, '"It\'s been a week."', [
     a("start", '''"Seven days. I counted twice, and then I made Sosiel count, because I didn't trust myself." {n}She doesn't smile.{/n}
-"Before I answer, I want one promise from you, and you won't like it. The next time I'm dying, you don't decide for me. No diagnosis I never agreed to. No wrist held out like a bowl while I can't say no, and nobody dragged up from the cells to be eaten. If you want to be ready for next time, you ask me now, while I can still answer, and you take no if I give it. Otherwise I'll never know which of my days are mine and which are yours."''',
-      c('[Promise] "Nothing at your deathbed that you didn\'t agree to first. I swear it."', "yes", flags=(COMMITTED, NO_SECOND_JOKE)),
+"Before I answer, I want one promise from you, and you won't like it. The next time I'm dying, you don't decide for me. No wrist held out like a bowl while I'm too far gone to spit it out, and nobody dragged up from the cells to be eaten. If you want a thread in me for next time, you come and ask for it while I'm alive to bite you for asking. Otherwise I'll never know which of my days are mine and which are yours."''',
+      c('[Promise] "No more doctoring you in your sleep. I swear it."', "yes", flags=(COMMITTED, NO_SECOND_JOKE)),
       c('"I can\'t promise that."', "no", flags=(CLOSED,))),
     a("yes", '''{n}She watches you the way she watches strangers in the market, trying to read what they are.{/n} "Then yes. All of it. For as long as what you didn't kill of me lasts." {n}She almost laughs.{/n} "Which is a terrible thing to say to someone you love. I'll work on it."''', c()),
     a("no", '''"Then we're done asking each other things." {n}She says it gently. That is the worst part.{/n}''', c()),
