@@ -409684,7 +409684,11 @@
               "Set": [],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
             },
             {
               "Text": "[Leave it to Elyanka] \"She's asking about your carts. Answer her yourself.\"",

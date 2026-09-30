@@ -689,7 +689,7 @@ visit(E + "beat.inquiry", "The paladin's questions", [
     el("her", '''"Your paladin," {n}she says.{/n} "She came this morning with a lamp and a piece of chalk and did that. Then she went to every carter on the south road and asked who drove at midnight. Two of them remember my men. One of them remembers my hearse." {n}She looks at the crosses, not at you.{/n}
 "She will be at the gate of this yard by tomorrow, with her questions and her sword. She told you she would find out, and she asked for your help. Well, Commander. Whose help will she get?"''',
        c('[Tell Seelah the truth yourself] "Mine. She\'ll hear it from me, not from a carter."', "truth"),
-       c('[Throw her off] "Grave-robbers from the lower town. I\'ll give her some to hang."', "mislead"),
+       c('[Throw her off] "Grave-robbers from the lower town. I\'ll give her some to hang."', "mislead", alignment=("Evil", 1)),
        c('[Leave it to Elyanka] "She\'s asking about your carts. Answer her yourself."', "hers")),
     el("truth", '''{n}She looks at you for some time, and her face does not move at all.{/n}
 "You will tell a paladin of the Inheritor that you gave sixty-one of her crusade's dead to a priestess of Urgathoa, for nothing, on a whim, to see what I would do." {n}A dry breath.{/n} "She will never look at you the same way again. Neither will I."
