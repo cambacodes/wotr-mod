@@ -74,6 +74,9 @@ UNMASKED = "yaniel.areelu_unmasked"                  # FakeYaniel_ToAreelu/Cue_0
 FAKE_FREED = "yaniel.fake_freed"                     # FakeYaniel_ToAreelu/Cue_0006 "The 'Yaniel' you freed from the dungeon..."
 FAKE_REFUSED = "yaniel.fake_refused"                 # FakeYaniel_ToAreelu/Cue_0014 "...why did you refuse to set the poor prisoner free?"
 SEELAH_DEAD, SEELAH_GONE, SEELAH_BACK = "seelah_dead", "seelah_gone", "seelah.trickster.returned"
+RADIANCE_SEEN = "yaniel.radiance_seen"              # Cue_0008: the Commander handed her Radiance in the Fane (trickster_world)
+STRUCK = "yaniel.struck"                           # Derived: the Commander attacked her in the Fane and Seelah stopped it
+SOSIEL_PROMISED = "yaniel.sosiel_promised"         # FakeYaniel_First/Cue_0016: Sosiel promised the false Yaniel healing
 
 # The route.
 SWAPPED = Y + "swapped"               # the Commander holds her shackle (every device outcome)
@@ -137,6 +140,7 @@ RELATIONSHIP = dict(
 )
 
 DERIVED = {
+    STRUCK: [["yaniel.struck_kill"], ["yaniel.struck_test"], ["yaniel.struck_glad"]],
     DRAWN: [[DRAWN_WALLS], [DRAWN_BITE], [DRAWN_TREE], [Y + "raid_kiss"], [Y + "statue_scars"], [Y + "night_stayed"]],
     # 05 §2.5 voice note: she joins the table as a soldier who keeps her own watch; she stands where she chooses.
     "yaniel.harem.voice.keeps_her_own_watch": [[COMMITTED]],
@@ -144,8 +148,11 @@ DERIVED = {
 LATCHES = {CH5: ["irabeth.chapter_five"]}             # the Chapter05 etude (5b01aa69), bound by irabeth_independent
 SEEN_CUES = {DOUBT: [DOUBT_CUE], HOPE: [HOPE_CUE], SANG: ["221a9592527d8b5498346c55549dd2be"],
              SEELAH_SISTER: ["fd994112dc80453a954e9486f4668d36"], UNMASKED: ["7418d421e3af812439ea312991c37147"],
-             FAKE_FREED: ["b618fff15d921894e84b9b2fe9efaa39"], FAKE_REFUSED: ["f1a82798065c27b45aa1d17d9db80dc6"]}
-SELECTED = {TOLD_STAUNTON: "09d9caa56d1dd4743bb04f8e39ae7459", TOLD_STATUE: "8f635c7b16eadd44b8a28aac5e937e37"}
+             FAKE_FREED: ["b618fff15d921894e84b9b2fe9efaa39"], FAKE_REFUSED: ["f1a82798065c27b45aa1d17d9db80dc6"],
+             SOSIEL_PROMISED: ["c1d54aee5b5ca0246a9294ce35df9b66"]}
+SELECTED = {TOLD_STAUNTON: "09d9caa56d1dd4743bb04f8e39ae7459", TOLD_STATUE: "8f635c7b16eadd44b8a28aac5e937e37",
+            "yaniel.struck_kill": "29a08c2b296c6b743a0c4579ba218b09", "yaniel.struck_test": "40fc513adfa1fd0428ae21b39b68e397",
+            "yaniel.struck_glad": "f44d8f29a2f640c4885414cb2be61e05"}
 
 # Path fit (ROUTE-BRIEF-R 2026-09-29, v1): T = device or Trickster-only; N-all = any path; N-fit = the fitting paths.
 PATH_FIT = {}
@@ -290,7 +297,14 @@ SWAP_LATE = '[Diplomacy] "You came up here to look at the city you held. Hold it
 late_nodes = [
     nar("start", '''{n}The sentry on the east tower tells you, a little too loudly, that there is a woman on his wall who is not on his roster, and that she has been there since the bell before dawn and will not come down. She is standing at the old gate tower where the parapet is broken, looking out over the ash toward the Wound: a lean, gray-headed half-elf in a borrowed crusader's cloak, bareheaded in the wind, with a husk's iron cuff still on her left wrist and one sheared link of chain swinging from it.{/n}''',
         c("Continue", "tried", requires=(FANE_REFUSED,)),
-        c("Continue", "fresh", forbids=(FANE_REFUSED,))),
+        c("Continue", "struck", requires=(STRUCK,), forbids=(FANE_REFUSED,)),
+        c("Continue", "fresh", requires=(RADIANCE_SEEN,), forbids=(FANE_REFUSED, STRUCK)),
+        c("Continue", "fresh_nosword", forbids=(FANE_REFUSED, STRUCK, RADIANCE_SEEN))),
+    yn("struck", '''{n}She hears your boots on the stair and turns round all the way this time, and her hand is on the knife at her belt before she has finished turning.{/n}
+"You," {n}she says.{/n} "You drew on me in the Fane. A paladin of Iomedae caught your arm, or I would be in a pit with the others." {n}She does not take her hand off the knife.{/n} "I did not come to Drezen for you. I came for this wall. You can stand on it, since it is yours now. Do not stand close."''',
+       c("Continue", "wall")),
+    yn("fresh_nosword", '''{n}She hears your boots on the stair and turns her head, not her body, the way a sentry does who has decided you are not worth turning around for.{/n} "Commander," {n}she says.{/n} "They told me in the square that is what you are now. The one who cut me down in the Fane and pointed me at an angel, and did not stay to hear my name twice." {n}Her mouth twitches.{/n} "I have been walking for a long time to come and look at you."''',
+       c("Continue", "wall")),
     yn("tried", '''{n}She hears your boots on the stair and does not turn around.{/n} "The quick hands from the Fane," {n}she says.{/n} "You tried to rob me once, in the dark, with an angel watching. Don't look like that; I know a robbery when one is done to me. I have had a great deal of practice."
 {n}She rattles the cuff against the stone.{/n} "I kept it. You were right about that much, whatever else you were playing at. I have tried to leave it off three times since, and three times I have gone back for it. That is a thing I would not say to a priest."''',
        c("Continue", "wall")),
@@ -529,6 +543,15 @@ PRESENCES = {
                    AnswerLists=[], Dialog="hub", Greeting=GREETING),
 }
 
+def hub(id, title, entry, nodes, requires, forbids=(), optional=False, delay=24):
+    """A scene on her presence at her own Drezen mark (Chapter 5): she is there in person, and walks the Commander where
+    the scene needs to be (the wall, her room, the niche)."""
+    SCENES.append(scene(id, title, "Yaniel", 5, entry, nodes, requires=tuple(dict.fromkeys(requires)),
+                        forbids=tuple(dict.fromkeys((KILLED, CLOSED) + tuple(forbids))), delay=delay, last=5, optional=optional,
+                        Relationship=REL, Chapters=[5], Areas=[DREZEN], ContactUnit=UNIT, InteractionHub=PRESENCE))
+    tag(id)
+
+
 TRADE_ROOM = '''{n}The room in the old east gate tower is exactly as bad as she said. There is a camp bed that the damp has warped, a brazier, a pail under the place where the roof leaks, and one good thing: a window cut in the thickness of the wall that looks straight down the road the refugees took the day the city fell.{/n}'''
 
 TRADE_BODY = [
@@ -721,6 +744,7 @@ SCENES.append(reaction("Seelah", Y + "react.seelah_fane", ("trickster.ever", SWA
 {n}She glances at your belt pouch, then away.{/n} "I was a thief before I was a paladin. I know that twist of the wrist. I just never thought I'd see anyone use it to take something off a saint." {n}A breath.{/n} "I'm not going to ask why. I'm going to pray you had a good reason, and I'm going to keep an eye on that pouch."''',
     answer_list=SEELAH_HUB, entry='"You\'ve been looking at me oddly since the Fane."', chapter=3, last=5, portrait="Seelah",
     **SEELAH_GUARD))
+SCENES[-1]["Forbids"].append(LATE)   # her memory is of the Fane; a swap on the walls is not it
 tag(Y + "react.seelah_fane")
 
 SCENES.append(reaction("Seelah", Y + "react.seelah_after", ("trickster.ever", NICHE),
@@ -733,9 +757,9 @@ tag(Y + "react.seelah_after")
 
 
 SOSIEL_HUB = "129b55b8b5d50974f84f7c607d894fd0"      # CompanionDialogues/Sosiel/AnswersList_0002
-SCENES.append(reaction("Sosiel", Y + "react.sosiel_iron", ("trickster.ever", SWAPPED),
-    '''{n}Sosiel has a sketch half-finished on his knee: a woman's wrist, bare, with a pale band across it where something used to be.{/n} "I promised her in the Fane we would heal her wounds," {n}he says, without looking up.{/n} "I thought I meant the ones you could put a salve on."
-"She let me look at her wrist on the road up out of the pit. The skin is healing. The rest of it..." {n}He turns the charcoal in his fingers.{/n} "You took the iron off her, and she let you keep it. Shelyn teaches that the ugliest thing a person carries can be the thing that makes them beautiful to someone else, if the someone else is willing to hold it for a while. I never thought I would see it done with a manacle." {n}He looks at your belt pouch.{/n} "Hold it gently, Commander. It was the only thing she had."''',
+SCENES.append(reaction("Sosiel", Y + "react.sosiel_iron", ("trickster.ever", SWAPPED, SOSIEL_PROMISED),
+    '''{n}Sosiel has a sketch half-finished on his knee: a woman's wrist, bare, with a pale band across it where something used to be.{/n} "Do you remember the woman in the citadel dungeon, when we took Drezen? The one who said she was Yaniel?" {n}He does not look up.{/n} "I told her we would heal her wounds. I meant it with my whole heart. She was Areelu Vorlesh, and she let me say it."
+"And the real one was on a hook in the Fane the whole time, and nobody promised her anything." {n}The charcoal stops.{/n} "Now she stands on the east wall, and you carry her iron, and I have been trying to draw her wrist without the cuff for a week and I cannot get it right. Shelyn would say the ugliest thing a person carries can be what makes them beautiful to someone willing to hold it. Hold it gently, Commander. I owe her a promise, and you are keeping it for me."''',
     answer_list=SOSIEL_HUB, entry='"What are you drawing?"', chapter=3, last=5, portrait="Sosiel",
     forbids=("sosiel.dead", "sosiel.kicked_out", CLOSED, KILLED)))
 tag(Y + "react.sosiel_iron")
@@ -754,7 +778,7 @@ COMMON = (
     p("{n}When the Commander came back from the Threshold, Yaniel was at the gate, and she looked at the Commander's hip before she looked at anything else. Radiance was there. She said that was proof enough that it had gone into the Wound and come out again, which it was not quite, and she knew it, and she let it be enough anyway. She never asked about the oath again.{/n}", any_groups=((OATH_PENDING, OATH_UNPROVEN),), requires=(HELD,)),
     p("{n}When the Commander came back from the Threshold, Yaniel was at the gate, and she looked at the Commander's hip before she looked at anything else. Radiance was not there. She did not ask where it was. She said, to nobody in particular, that she had sworn a stranger to carry her sword into the Wound and did not know to this day whether it had gone, and that not knowing was a thing she would carry herself, since somebody had to.{/n}", any_groups=((OATH_PENDING, OATH_UNPROVEN),), forbids=(HELD,)),
     p("{n}The painted martyr went into the cathedral of Drezen at midsummer, as the chaplains had planned. The chaplains never did find out why the Commander's household laughed every time the procession went by it.{/n}", requires=(NICHE,)),
-    p("{n}The Half Measure in Nerosyan put her roast back on its board, on the old recipe, and wrote her name beside it in chalk. She ate there every spring, under the old tree by the town hall, when it was in bloom.{/n}", requires=(B_ROAST,)),
+    p("{n}The Half Measure in Drezen put her roast back on its board, on the old recipe, and Fye wrote her name beside it in chalk. Every spring she went down to Nerosyan to sit under the old tree by the town hall when it was in bloom, and came back and told the Half Measure it had been late again.{/n}", requires=(B_ROAST,)),
     p("{n}An old merchant of Nerosyan with a crutch and a cloudy eye was carried up to Drezen once more before he died, to see the gate. She held his hand on the parapet for an afternoon, and afterwards she would never say what they talked about, except that it was mostly turnips.{/n}", requires=(B_REFUGEE,)),
     p("{n}When the war was over she went to the place where Staunton Vhane was buried, as she had said she would, and shouted at the ground for most of an hour. Then she sat down on it and wept for him at last, and the Commander stood between her and the road so that nobody would see.{/n}", requires=(B_STAUNTON,)),
     p("{n}The Church of Iomedae never did examine her. The chaplain who had come to the Commander's door with the seal of Nerosyan wrote to his superiors that the relic was in the hands it was meant for, and that he would not be the one to take it out of them, and after that nobody else volunteered.{/n}", requires=(B_CHURCH, CARRIES)),

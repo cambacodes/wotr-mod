@@ -12,6 +12,7 @@ citadel (FakeYaniel_First/Cue_0032 1ed1497d, FakeYaniel_ToAreelu/Cue_0001 7418d4
 """
 from story_format import c, n
 from storylines import yaniel_trickster as yt
+from storylines.yaniel_trickster import hub  # noqa: E402 (the presence hub helper)
 from storylines.yaniel_trickster import (B_AREELU, B_BOUT, B_CHURCH, B_NIGHT, B_PRAYER, B_RAID, B_REFUGEE, B_ROAST,
                                          B_STATUE, B_STAUNTON, B_WALLS, DRAWN_BITE, DRAWN_TREE, DRAWN_WALLS, HELD, HOLY, HUSK_BOUGHT, HUSK_FREED, HUSK_LEFT, NICHE, CARRIES, CLOSED,
                                          COMMITTED, CUFF_PACKED, CUFF_WORN, JUDGES, KILLED, MINAGHO_SECRET, MINAGHO_SEEN,
@@ -30,7 +31,7 @@ AREELU_COURTED = "areelu.started"      # node variant only: the Commander is kee
 
 # --- Chapter 3 (T): a letter from Nerosyan -------------------------------------------------------------------------------
 
-visit(Y + "ch3.nerosyan", "The Half Measure", [
+visit(Y + "ch3.nerosyan", "The tree by the town hall", [
     nar("start", '''{n}A letter finds you, travel-stained and much handled, carried by the crusade's couriers from Nerosyan. The last of them, a Mendevian sergeant, says the woman who gave it to him paid him in advance, in old coin, and told him the Commander would know her by her hand. The hand is square and upright, pressed hard into the paper, as if its owner did not trust ink to stay where it was put.{/n}''',
         c("[Read it.]", "one")),
     yn("one", '''"Commander,
@@ -48,7 +49,7 @@ visit(Y + "ch3.nerosyan", "The Half Measure", [
     yn("refused", '''"I still have my iron. I have tried to leave it off three nights running, and three nights running I have got up in the dark and put it back in my belt. I am telling you this because you are the only person in the world who would understand why it is funny, and because I do not know anybody else's address.
 "You kept your sword. I hope you keep it well. I should have liked, I think, to watch you do it."''',
        c("Continue", "half")),
-    yn("half", '''"The Half Measure is still there. I stood in the street outside it for most of an afternoon before I could go in. The board over the door is new and the stairs are the same. They do not serve the roast any more. The cook who made it died forty years ago, and her daughter after her, and the girl behind the counter now had never heard of it. I told her how it was done, as near as I remembered, and she wrote it down on a slate, and made a face.
+    yn("half", '''"They tell me the Half Measure is open again, in Drezen, on its old street, with a new keeper. I do not believe it. I will believe it when I am standing at the counter and they have never heard of my roast."
 "The old tree by the town hall is in leaf, and not in bloom. I stood under it anyway. It is a great deal bigger than it was. So, I suppose, am I, in the wrong direction."''',
        c("Continue", "statue_told", requires=(TOLD_STATUE,)),
        c("Continue", "statue", forbids=(TOLD_STATUE,))),
@@ -137,8 +138,8 @@ visit(Y + "ch5.minagho", "The lilitu on the crate", [
 
 BEAT = dict(forbids=(COMMITTED,), optional=True)
 
-visit(Y + "beat.walls", "The city as it was", [
-    nar("start", '''{n}She is waiting for you at the foot of the gate tower after the second bell, and she walks you along the east wall in the dark without saying where you are going. Every so often she stops, and puts her hand on the parapet, and looks down into the city.{/n}''',
+hub(Y + "beat.walls", "The city as it was", '"Walk the wall with me?"', [
+    nar("start", '''{n}She pushes herself off the wall without a word and walks you up the gate tower stair and along the east wall in the dusk, without saying where you are going. Every so often she stops, and puts her hand on the parapet, and looks down into the city.{/n}''',
         c("Continue", "one")),
     yn("one", '''"There." {n}She points down at a roofless shell where the soldiers now keep their mules.{/n} "That was a bakery. Brown bread and poppy-seed rolls. The baker had a daughter who threw flour at the garrison when we came off watch, and her father let her, because he said the men needed to be told they were not heroes at least once a day."
 "And there. A chapel of Torag. Staunton prayed there before he went on watch. Very loudly. You could hear him up here." {n}Her hand moves along the stone.{/n} "And there, where the demons have been burning their rubbish, there was a fountain. Somebody painted me by it once, the summer before the city fell. I was vain about it for a month."''',
@@ -167,8 +168,8 @@ visit(Y + "beat.walls", "The city as it was", [
         c("[Go down into the city.]", flags=(B_WALLS,))),
 ], requires=("trickster.ever", RETURNED), **BEAT)
 
-visit(Y + "beat.statue", "Yaniel of Drezen, the Holy Martyr", [
-    nar("start", '''{n}The ox-cart from Nerosyan comes in at the east gate in the middle of the morning, with a crowd of pilgrims behind it and a crowd of chaplains in front, and in the back, lashed upright under a sheet like a bride under a veil, the Holy Martyr of Drezen. The chaplains mean to set her in the niche at the foot of the gate tower until the cathedral is ready for her. The real one has come down off the wall to watch, and has sent for you, and is standing at the back of the crowd with her hood up.{/n}''',
+hub(Y + "beat.statue", "Yaniel of Drezen, the Holy Martyr", '"There\'s a crowd at the east gate."', [
+    nar("start", '''{n}The ox-cart from Nerosyan comes in at the east gate in the middle of the morning, with a crowd of pilgrims behind it and a crowd of chaplains in front, and in the back, lashed upright under a sheet like a bride under a veil, the Holy Martyr of Drezen. The chaplains mean to set her in the niche at the foot of the gate tower until the cathedral is ready for her. The real one has walked you down to watch, and is standing at the back of the crowd beside you with her hood up.{/n}''',
         c("Continue", "sheet")),
     nar("sheet", '''{n}They take the sheet off. The crowd sighs. The statue is twice the height of a woman, painted, with a gilded sword raised to heaven and a face like a girl of twenty who has never been cold or hungry or afraid: smooth, sweet, empty. At its feet the carver has cut, in letters as long as your hand: YANIEL OF DREZEN, THE HOLY MARTYR. SHE HELD THE GATE.{/n}''',
         c("Continue", "told", requires=(TOLD_STATUE,)),
@@ -193,8 +194,8 @@ visit(Y + "beat.statue", "Yaniel of Drezen, the Holy Martyr", [
         c("[Leave her there.]", flags=(B_STATUE,))),
 ], requires=("trickster.ever", RETURNED, B_WALLS), **BEAT)
 
-visit(Y + "beat.staunton", "Joran's brand", [
-    nar("start", '''{n}She comes down to your rooms after dark, which she has never done, and does not sit. She stands by the hearth with her arms folded and her back to the fire, and says, before you have shut the door:{/n}''',
+hub(Y + "beat.staunton", "Joran's brand", '"You look like you have a question."', [
+    nar("start", '''{n}She takes you up to her room in the gate tower and does not sit. She stands by the brazier with her arms folded and her back to the coals, and says, before you have shut the door:{/n}''',
         c("Continue", "told", requires=(TOLD_STAUNTON,)),
         c("Continue", "learned", forbids=(TOLD_STAUNTON,))),
     yn("told", '''"You told me in the Fane. Staunton and Joran, gone over to the demons, and dead for it. I said I knew. I did know; Minagho told me a hundred times. But I did not believe it until I came up here and asked the quartermaster where Joran's forge had been, and he spat."''',
@@ -232,8 +233,8 @@ visit(Y + "beat.staunton", "Joran's brand", [
         c('"I\'ll come."', flags=(B_STAUNTON,))),
 ], requires=("trickster.ever", RETURNED, B_WALLS), **BEAT)
 
-visit(Y + "beat.areelu", "The masquerade", [
-    nar("start", '''{n}She is waiting on the gate tower stair with a face like a shut door. A chaplain has been telling her things, she says, in the kind voice chaplains use for bad news. About the siege. About a woman calling herself Yaniel who was found chained in the citadel dungeon when the crusade took Drezen back, and who showed the Commander the way to the Sword of Valor.{/n}''',
+hub(Y + "beat.areelu", "The masquerade", '"Something\'s wrong."', [
+    nar("start", '''{n}She takes you to the gate tower stair and sits down on it with a face like a shut door. A chaplain has been telling her things, she says, in the kind voice chaplains use for bad news. About the siege. About a woman calling herself Yaniel who was found chained in the citadel dungeon when the crusade took Drezen back, and who showed the Commander the way to the Sword of Valor.{/n}''',
         c("Continue", "freed", requires=(FAKE_FREED,)),
         c("Continue", "refused", requires=(FAKE_REFUSED,), forbids=(FAKE_FREED,)),
         c("Continue", "plain", forbids=(FAKE_FREED, FAKE_REFUSED))),
@@ -264,9 +265,9 @@ visit(Y + "beat.areelu", "The masquerade", [
        c("[Go.]", flags=(B_AREELU,))),
 ], requires=("trickster.ever", RETURNED, UNMASKED), **BEAT)
 
-visit(Y + "beat.bout", "Not all enemies", [
-    nar("start", '''{n}"Practice swords," says the note under your door. "The court behind the gate tower. First light. Come alone, or I will know you are afraid of an old woman."{/n}
-{n}She is there before you with two blunt blades from the armoury and her sleeves rolled to the elbow. Her forearms are ropy and white-scarred. She throws you a sword without warning and it is only luck and a lifetime of bad habits that you catch it by the grip.{/n}''',
+hub(Y + "beat.bout", "Not all enemies", '"Those are practice swords."', [
+    nar("start", '''{n}"They are," she says. "The court behind the gate tower. Now. Come alone, or I will know you are afraid of an old woman."{/n}
+{n}In the court she drops the two blunt blades from the armoury on the flags and rolls her sleeves to the elbow. Her forearms are ropy and white-scarred. She throws you a sword without warning and it is only luck and a lifetime of bad habits that you catch it by the grip.{/n}''',
         c("Continue", "fight")),
     yn("fight", '''"Seventy years on a hook," {n}she says, circling,{/n} "and not a day went by that I did not try to escape or kill one of my guards. I got very good at the second one. The trick is that they always think you are finished." {n}She lunges without shifting her feet at all, and you only just get your blade across in time.{/n}
 "You are not finished yet. Good. Show me what the Commander of the crusade does when an old woman is trying to put {mf|him|her} on the ground."''',
@@ -287,11 +288,11 @@ visit(Y + "beat.bout", "Not all enemies", [
         c("[Take your hand back, eventually.]", flags=(B_BOUT,))),
 ], requires=("trickster.ever", RETURNED, B_WALLS), **BEAT)
 
-visit(Y + "beat.roast", "The roast", [
-    nar("start", '''{n}The smell reaches the citadel before the invitation does: juniper, burnt fat, something sharp and old-fashioned that nobody in Drezen has cooked in living memory. Then a boy comes up with a message. The paladin has taken the citadel's cook hostage, and his kitchen, and a whole side of mutton, and requests the Commander on the east wall at the third bell, and the Commander is to bring bread, and is not to bring anybody else.{/n}''',
+hub(Y + "beat.roast", "The roast", '"What is that smell?"', [
+    nar("start", '''{n}Juniper, burnt fat, something sharp and old-fashioned that nobody in Drezen has cooked in living memory. It is on her cloak and her hands. "The Half Measure's roast," she says. "Fye let me have her kitchen for a day, and a whole side of mutton, and her cook, who wept. Come up to the wall at the third bell. Bring bread. Bring nobody else."{/n}''',
         c("Continue", "wall")),
     yn("wall", '''{n}She has made a table of two barrels and a door on the broken parapet of the gate tower, and a brazier, and the roast is on the door in a pan, black at the edges and very nearly the right shape.{/n}
-"The Half Measure's," {n}she says.{/n} "Or near enough. I wrote to the girl in Nerosyan for the slate she took down, and I bullied your cook for two days, and he wept, and I think in the end I made most of it myself." {n}She saws off a slab with her belt knife and puts it on your bread.{/n} "Eat. Tell me it is terrible. It is. I want to hear somebody else say it."''',
+"The Half Measure's," {n}she says.{/n} "Or near enough. The Half Measure is back on its old street, did you know? Fye Kito keeps it now; a relative of hers had it before the siege. Nobody there remembered the roast. I told her cook how it was done, as near as I remembered, and he wrote it on a slate and made a face, and in the end I made most of it myself." {n}She saws off a slab with her belt knife and puts it on your bread.{/n} "Eat. Tell me it is terrible. It is. I want to hear somebody else say it."''',
        c('"It\'s terrible."', "terrible"),
        c('"It\'s the best thing I\'ve eaten in the Worldwound."', "best")),
     yn("terrible", '''{n}She laughs until she has to put her knife down.{/n} "It is. It is dreadful. The juniper is wrong and the mutton is old and I have burnt it on one side." {n}She eats a mouthful anyway, with her eyes shut.{/n} "And it tastes of the Half Measure. Of spring. Of the night before my first watch, when Staunton bought for the whole table and Joran fell asleep in the gravy."''',
@@ -374,8 +375,8 @@ visit(Y + "beat.church", "The Church's sword", [
         c("[Keep the note.]", flags=(B_CHURCH, CHURCH_DEFIED))),
 ], requires=("trickster.ever", RETURNED, B_STATUE), **BEAT)
 
-visit(Y + "beat.refugee", "The last cart", [
-    nar("start", '''{n}She sends a boy for you in the afternoon, which she never does, and when you come down to the east gate she is standing in the road outside it with an old man. He is very old: bent, bald, with a crutch and a cloudy eye and the lace-cuffed coat of a prosperous Mendevian merchant who has not bought a new coat in thirty years. He is holding her hand in both of his and will not let go of it.{/n}''',
+hub(Y + "beat.refugee", "The last cart", '"Who is your friend?"', [
+    nar("start", '''{n}She is not alone today. She is standing with an old man who has come up the road from the east gate on a crutch to find her. He is very old: bent, bald, with a crutch and a cloudy eye and the lace-cuffed coat of a prosperous Mendevian merchant who has not bought a new coat in thirty years. He is holding her hand in both of his and will not let go of it.{/n}''',
         c("Continue", "him")),
     nar("him", '''"I was six," {n}the old man tells you, in a thin high voice, before anybody has introduced anybody.{/n} "Six years old. In the last cart. My mother had me under a sack of turnips and told me not to move. I moved. I looked out through the tail of the cart and there was a lady on the gate with a sword that shone, and she was laughing, and there were demons all the way up the road behind her like black water."
 "I have told that story every year of my life. My grandchildren think I made it up." {n}He pats her hand.{/n} "I came back to Drezen when they said the crusade had taken it. I wanted to see the gate before I died. And here she is. On the gate. Laughing."''',
@@ -427,11 +428,11 @@ visit(Y + "beat.raid", "Over the wall", [
         c("[Go down.]", flags=(B_RAID,))),
 ], requires=("trickster.ever", RETURNED, B_BOUT), **BEAT)
 
-visit(Y + "beat.prayer", "A silent goddess", [
-    nar("start", '''{n}You find her in the niche at the foot of the gate tower, in front of the painted martyr, but she is not praying. She is sitting on the plinth with her back to her own statue, looking at the lamp, with the face of a woman trying to add up a column of figures that will not come out.{/n}''',
+hub(Y + "beat.prayer", "Nothing to ask", '"Where are you going?"', [
+    nar("start", '''{n}She takes you down to the niche at the foot of the gate tower, in front of the painted martyr, but she does not pray. She is sitting on the plinth with her back to her own statue, looking at the lamp, with the face of a woman trying to add up a column of figures that will not come out.{/n}''',
         c("Continue", "ask")),
     yn("ask", '''"You laugh at gods," {n}she says, without looking up.{/n} "The sentries say so. They say it as if it were a trick you do at dinner. I want to know how it is done."
-"Every day on that hook I prayed. Morning and night and in between. Minagho would sit on the rack and listen and laugh, and tell me there was nobody on the other end, and I said the words anyway, because they were the only thing in that room that belonged to me." {n}Her hands tighten on her knees.{/n} "And now I am out, and everybody tells me it was Her who got me out, and I kneel and I say the words, and there is nothing on the other end at all. There was more on the other end when I was on the hook."''',
+"Every day on that hook I prayed. Morning and night and in between. Minagho would sit on the rack and listen and laugh, and tell me there was nobody on the other end, and I said the words anyway, because they were the only thing in that room that belonged to me. And She answered. She sent you." {n}Her hands tighten on her knees.{/n} "And now I kneel, and I open my mouth, and I have nothing to ask Her for. I do not know how to pray to Her without asking. I never learned. On the hook there was always something to ask."''',
         c('"Maybe she\'s tired of being asked for things. Try telling her something."', "tell"),
         c('"I laugh at gods because they can take it. You pray because you can. Both are ways of standing up."', "stand"),
         c('"I got you out. Not her. If you need someone to thank, I\'m here."', "me")),
@@ -491,8 +492,8 @@ visit(Y + "ch4.block", "Another collector's item", [
 
 AFTER = dict(optional=True)
 
-visit(Y + "after.watch", "The night watch", [
-    nar("start", '''{n}She does not ask you up to the wall any more. She simply leaves a second spear leaning in the doorway of the gate tower, and a second cup by the brazier, and when you come up the stair after the last bell she hands you the spear without looking round, and you stand the watch with her.{/n}
+hub(Y + "after.watch", "The night watch", '"Is that second spear for me?"', [
+    nar("start", '''{n}It is. She does not ask you up to the wall any more. She simply hands you the spear, and a second cup, and walks you up the stair after the last bell, and you stand the watch with her.{/n}
 {n}Nothing comes over the wall tonight. The ash lies quiet under a dirty moon. Far out toward the Wound something burns, very small, like a candle in a house across a valley.{/n}''',
         c("Continue", "talk")),
     yn("talk", '''"When the war is over," {n}she says, after an hour,{/n} "they will want me to be something. The Church will want a saint. The Queen's people will want a banner. The old knights who are left will want a story about how it was in the old days, and they will want me to tell it at dinners, in a clean dress, with that statue in the next room."
@@ -510,8 +511,8 @@ visit(Y + "after.watch", "The night watch", [
         c("[Go down.]", flags=(Y + "after.watch_stood",))),
 ], requires=("trickster.ever", COMMITTED, NICHE), **AFTER)
 
-visit(Y + "after.wrist", "The mark it leaves", [
-    nar("start", '''{n}She comes to your rooms in daylight, which she almost never does, and shuts the door behind her, and stands against it with her arms folded.{/n}''',
+hub(Y + "after.wrist", "The mark it leaves", '"You want something."', [
+    nar("start", '''{n}She takes you up to her room in the gate tower in daylight, and shuts the door behind her, and stands against it with her arms folded.{/n}''',
         c("Continue", "worn", requires=(CUFF_WORN,)),
         c("Continue", "packed", forbids=(CUFF_WORN,))),
     yn("worn", '''"You said you would take it off in front of me one day," {n}she says,{/n} "and let me see your wrist. I have been waiting. I am not good at waiting. I had a lifetime of it and I used it all up."
@@ -535,8 +536,8 @@ visit(Y + "after.wrist", "The mark it leaves", [
         c("Continue", flags=(Y + "after.wrist_seen",))),
 ], requires=("trickster.ever", COMMITTED, NICHE, Y + "after.watch_stood"), **AFTER)
 
-visit(Y + "beat.drill", "Hold it properly", [
-    nar("start", '''{n}"Bring the sword," says the note under your door. "Not a practice blade. Mine. The court behind the gate tower, before the first bell." She is waiting there in the half-dark with her sleeves rolled and no weapon at all, and when you come through the arch she holds out her empty hand, not for the sword: for your wrist.{/n}''',
+hub(Y + "beat.drill", "Hold it properly", '"You wanted to see the sword."', [
+    nar("start", '''{n}"Not here," she says. "The court behind the gate tower." She walks you there with her sleeves rolled and no weapon at all, and when you come through the arch she holds out her empty hand, not for the sword: for your wrist.{/n}''',
         c("Continue", "grip")),
     yn("grip", '''"You carry it like a quartermaster's stores," {n}she says, turning your hand over.{/n} "On the hip, in the scabbard, safe. That is not what I swore you to. I swore you to take it somewhere. Draw it."
 {n}You draw Radiance. She steps round behind you and puts her hands over yours on the grip, the right one first, then the left, and moves your fingers, one at a time, the way you moved hers in the Fane.{/n} "There. Joran made the grip for a hand that means it. Not tighter; that is fear. Not looser; that is pride. There."''',
@@ -549,14 +550,14 @@ visit(Y + "beat.drill", "Hold it properly", [
 {n}When she stops, the first bell is ringing. She is not even flushed.{/n} "Two hundred," {n}she says.{/n} "Every morning. I kept count in the Fane, on the hook, in my head, and I never lost my place once. Keep your wrist straight. You have done forty."''',
         c("Continue", "end")),
     yn("want", '''{n}Her hands go still on yours.{/n}
-"Yes," {n}she says, after a while.{/n} "Every day. Every time I see it on your hip I want to take it off you and run. I told you in the Fane my hands were not fit for it. They are fit. I am the one who is not." {n}She lets go.{/n} "Carry it where you swore, Commander. Carry it well. And do not ever offer it to me again, because one day I will take it, and then we will both have to live with that."''',
+"Yes," {n}she says, after a while.{/n} "Every day. Every time I see it on your hip I want to take it off you and run. I gave it to you because the crusade needs it in a hand that will carry it all the way, and I still think that. I did not say I would stop wanting it." {n}She lets go.{/n} "Carry it where you swore, Commander. Carry it well. And do not ever offer it to me again, because one day I will take it, and then we will both have to live with that."''',
         c("Continue", "end")),
     nar("end", '''{n}She makes you do the gate cut forty times before she lets you go, and at the fortieth she says nothing, which you have learned is the highest praise she gives.{/n}''',
         c("[Sheathe the sword.]", flags=(Y + "beat.drill",))),
 ], requires=("trickster.ever", RETURNED, JUDGES, HELD, B_WALLS), forbids=(COMMITTED, CARRIES), optional=True)
 
-visit(Y + "beat.light", "The light on the ash", [
-    nar("start", '''{n}The sentry says she wants you on the wall, now, and that she said to say it is not an alarm. When you come up she is at the broken place in the parapet with Radiance drawn, and she does not turn round.{/n}
+hub(Y + "beat.light", "The light on the ash", '"You look like you want to show me something."', [
+    nar("start", '''{n}"The wall," she says. "Now. It is not an alarm." She takes you up to the broken place in the parapet and draws Radiance, and does not turn round.{/n}
 "Look," {n}she says.{/n}''',
         c("Continue", "look")),
     nar("look", '''{n}Out on the ash, a long bowshot from the wall, something is moving: low and slow and too many legs, feeling its way toward the city through the dark the way a hand feels along a table for a cup. The sentries have not seen it. The torches on the wall do not reach that far.{/n}
@@ -577,8 +578,8 @@ visit(Y + "beat.light", "The light on the ash", [
         c("[Go down at the bell.]", flags=(Y + "beat.light",))),
 ], requires=("trickster.ever", RETURNED, CARRIES, HOLY, B_WALLS), **BEAT)
 
-visit(Y + "beat.hunter", "A paladin who hunts alone", [
-    nar("start", '''{n}She is in the guardroom at the foot of the gate tower when you find her, sitting on a bench across a table from a scout of the Eagle Watch who has just come in off the ash, and she is listening to him the way a hound listens at a door.{/n}''',
+hub(Y + "beat.hunter", "A paladin who hunts alone", '"Who is the scout?"', [
+    nar("start", '''{n}She takes you into the guardroom at the foot of the gate tower, where a scout of the Eagle Watch who has just come in off the ash is eating at a table, and sits down across from him, and listens to him the way a hound listens at a door.{/n}''',
         c("Continue", "scout")),
     nar("scout", '''{n}The scout is telling a story he has plainly told before. Out past the old Sarkorian cairns, he says, there is a paladin who hunts alone. An old man, gray as a wolf, in armour nobody has made in fifty years. He has been out in the Wound longer than the scout has been alive. He comes and goes by paths nobody else knows, and where he has been the demons are fewer, and he will not come in to any fort, and he will not take a banner. Berenguer, they call him, the ones who have seen him. The ones who have tried to follow him mostly have not come back.{/n}''',
         c("Continue", "her")),

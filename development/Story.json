@@ -403258,16 +403258,75 @@
             },
             {
               "Text": "Continue",
+              "Next": "struck",
+              "Set": [],
+              "Requires": [
+                "yaniel.struck"
+              ],
+              "Forbids": [
+                "yaniel.trickster.fane_refused"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
               "Next": "fresh",
+              "Set": [],
+              "Requires": [
+                "yaniel.radiance_seen"
+              ],
+              "Forbids": [
+                "yaniel.trickster.fane_refused",
+                "yaniel.struck"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "fresh_nosword",
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "yaniel.trickster.fane_refused"
+                "yaniel.trickster.fane_refused",
+                "yaniel.struck",
+                "yaniel.radiance_seen"
               ],
               "Abort": false
             }
           ],
           "Portrait": ""
+        },
+        {
+          "Id": "struck",
+          "Speaker": "Yaniel",
+          "Text": "{n}She hears your boots on the stair and turns round all the way this time, and her hand is on the knife at her belt before she has finished turning.{/n}\n\"You,\" {n}she says.{/n} \"You drew on me in the Fane. A paladin of Iomedae caught your arm, or I would be in a pit with the others.\" {n}She does not take her hand off the knife.{/n} \"I did not come to Drezen for you. I came for this wall. You can stand on it, since it is yours now. Do not stand close.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "wall",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Yaniel"
+        },
+        {
+          "Id": "fresh_nosword",
+          "Speaker": "Yaniel",
+          "Text": "{n}She hears your boots on the stair and turns her head, not her body, the way a sentry does who has decided you are not worth turning around for.{/n} \"Commander,\" {n}she says.{/n} \"They told me in the square that is what you are now. The one who cut me down in the Fane and pointed me at an angel, and did not stay to hear my name twice.\" {n}Her mouth twitches.{/n} \"I have been walking for a long time to come and look at you.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "wall",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Yaniel"
         },
         {
           "Id": "tried",
@@ -406673,7 +406732,8 @@
         "seelah_dead",
         "seelah_gone",
         "yaniel.closed",
-        "yaniel.killed.latched"
+        "yaniel.killed.latched",
+        "yaniel.trickster.cost.late"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -406747,7 +406807,7 @@
         {
           "Id": "start",
           "Speaker": "Sosiel",
-          "Text": "{n}Sosiel has a sketch half-finished on his knee: a woman's wrist, bare, with a pale band across it where something used to be.{/n} \"I promised her in the Fane we would heal her wounds,\" {n}he says, without looking up.{/n} \"I thought I meant the ones you could put a salve on.\"\n\"She let me look at her wrist on the road up out of the pit. The skin is healing. The rest of it...\" {n}He turns the charcoal in his fingers.{/n} \"You took the iron off her, and she let you keep it. Shelyn teaches that the ugliest thing a person carries can be the thing that makes them beautiful to someone else, if the someone else is willing to hold it for a while. I never thought I would see it done with a manacle.\" {n}He looks at your belt pouch.{/n} \"Hold it gently, Commander. It was the only thing she had.\"",
+          "Text": "{n}Sosiel has a sketch half-finished on his knee: a woman's wrist, bare, with a pale band across it where something used to be.{/n} \"Do you remember the woman in the citadel dungeon, when we took Drezen? The one who said she was Yaniel?\" {n}He does not look up.{/n} \"I told her we would heal her wounds. I meant it with my whole heart. She was Areelu Vorlesh, and she let me say it.\"\n\"And the real one was on a hook in the Fane the whole time, and nobody promised her anything.\" {n}The charcoal stops.{/n} \"Now she stands on the east wall, and you carry her iron, and I have been trying to draw her wrist without the cuff for a week and I cannot get it right. Shelyn would say the ugliest thing a person carries can be what makes them beautiful to someone willing to hold it. Hold it gently, Commander. I owe her a promise, and you are keeping it for me.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -406763,7 +406823,8 @@
       ],
       "Requires": [
         "trickster.ever",
-        "yaniel.trickster.swapped"
+        "yaniel.trickster.swapped",
+        "yaniel.sosiel_promised"
       ],
       "Forbids": [
         "sosiel.dead",
@@ -406888,7 +406949,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The Half Measure in Nerosyan put her roast back on its board, on the old recipe, and wrote her name beside it in chalk. She ate there every spring, under the old tree by the town hall, when it was in bloom.{/n}",
+              "Text": "{n}The Half Measure in Drezen put her roast back on its board, on the old recipe, and Fye wrote her name beside it in chalk. Every spring she went down to Nerosyan to sit under the old tree by the town hall when it was in bloom, and came back and told the Half Measure it had been late again.{/n}",
               "Requires": [
                 "yaniel.trickster.beat.roast"
               ],
@@ -407168,7 +407229,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The Half Measure in Nerosyan put her roast back on its board, on the old recipe, and wrote her name beside it in chalk. She ate there every spring, under the old tree by the town hall, when it was in bloom.{/n}",
+              "Text": "{n}The Half Measure in Drezen put her roast back on its board, on the old recipe, and Fye wrote her name beside it in chalk. Every spring she went down to Nerosyan to sit under the old tree by the town hall when it was in bloom, and came back and told the Half Measure it had been late again.{/n}",
               "Requires": [
                 "yaniel.trickster.beat.roast"
               ],
@@ -407352,7 +407413,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The Half Measure in Nerosyan put her roast back on its board, on the old recipe, and wrote her name beside it in chalk. She ate there every spring, under the old tree by the town hall, when it was in bloom.{/n}",
+              "Text": "{n}The Half Measure in Drezen put her roast back on its board, on the old recipe, and Fye wrote her name beside it in chalk. Every spring she went down to Nerosyan to sit under the old tree by the town hall when it was in bloom, and came back and told the Half Measure it had been late again.{/n}",
               "Requires": [
                 "yaniel.trickster.beat.roast"
               ],
@@ -407532,7 +407593,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The Half Measure in Nerosyan put her roast back on its board, on the old recipe, and wrote her name beside it in chalk. She ate there every spring, under the old tree by the town hall, when it was in bloom.{/n}",
+              "Text": "{n}The Half Measure in Drezen put her roast back on its board, on the old recipe, and Fye wrote her name beside it in chalk. Every spring she went down to Nerosyan to sit under the old tree by the town hall when it was in bloom, and came back and told the Half Measure it had been late again.{/n}",
               "Requires": [
                 "yaniel.trickster.beat.roast"
               ],
@@ -407715,7 +407776,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The Half Measure in Nerosyan put her roast back on its board, on the old recipe, and wrote her name beside it in chalk. She ate there every spring, under the old tree by the town hall, when it was in bloom.{/n}",
+              "Text": "{n}The Half Measure in Drezen put her roast back on its board, on the old recipe, and Fye wrote her name beside it in chalk. Every spring she went down to Nerosyan to sit under the old tree by the town hall when it was in bloom, and came back and told the Half Measure it had been late again.{/n}",
               "Requires": [
                 "yaniel.trickster.beat.roast"
               ],
@@ -407897,7 +407958,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The Half Measure in Nerosyan put her roast back on its board, on the old recipe, and wrote her name beside it in chalk. She ate there every spring, under the old tree by the town hall, when it was in bloom.{/n}",
+              "Text": "{n}The Half Measure in Drezen put her roast back on its board, on the old recipe, and Fye wrote her name beside it in chalk. Every spring she went down to Nerosyan to sit under the old tree by the town hall when it was in bloom, and came back and told the Half Measure it had been late again.{/n}",
               "Requires": [
                 "yaniel.trickster.beat.roast"
               ],
@@ -408195,7 +408256,7 @@
     },
     {
       "Id": "yaniel.trickster.ch3.nerosyan",
-      "Title": "The Half Measure",
+      "Title": "The tree by the town hall",
       "Owner": "Yaniel",
       "MinChapter": 3,
       "MaxChapter": 4,
@@ -408309,7 +408370,7 @@
         {
           "Id": "half",
           "Speaker": "Yaniel",
-          "Text": "\"The Half Measure is still there. I stood in the street outside it for most of an afternoon before I could go in. The board over the door is new and the stairs are the same. They do not serve the roast any more. The cook who made it died forty years ago, and her daughter after her, and the girl behind the counter now had never heard of it. I told her how it was done, as near as I remembered, and she wrote it down on a slate, and made a face.\n\"The old tree by the town hall is in leaf, and not in bloom. I stood under it anyway. It is a great deal bigger than it was. So, I suppose, am I, in the wrong direction.\"",
+          "Text": "\"They tell me the Half Measure is open again, in Drezen, on its old street, with a new keeper. I do not believe it. I will believe it when I am standing at the counter and they have never heard of my roast.\"\n\"The old tree by the town hall is in leaf, and not in bloom. I stood under it anyway. It is a great deal bigger than it was. So, I suppose, am I, in the wrong direction.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -408867,12 +408928,12 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"Walk the wall with me?\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She is waiting for you at the foot of the gate tower after the second bell, and she walks you along the east wall in the dark without saying where you are going. Every so often she stops, and puts her hand on the parapet, and looks down into the city.{/n}",
+          "Text": "{n}She pushes herself off the wall without a word and walks you up the gate tower stair and along the east wall in the dusk, without saying where you are going. Every so often she stops, and puts her hand on the parapet, and looks down into the city.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -409057,12 +409118,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Yaniel"
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "yaniel.trickster.beat.statue",
@@ -409070,12 +409130,12 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"There's a crowd at the east gate.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The ox-cart from Nerosyan comes in at the east gate in the middle of the morning, with a crowd of pilgrims behind it and a crowd of chaplains in front, and in the back, lashed upright under a sheet like a bride under a veil, the Holy Martyr of Drezen. The chaplains mean to set her in the niche at the foot of the gate tower until the cathedral is ready for her. The real one has come down off the wall to watch, and has sent for you, and is standing at the back of the crowd with her hood up.{/n}",
+          "Text": "{n}The ox-cart from Nerosyan comes in at the east gate in the middle of the morning, with a crowd of pilgrims behind it and a crowd of chaplains in front, and in the back, lashed upright under a sheet like a bride under a veil, the Holy Martyr of Drezen. The chaplains mean to set her in the niche at the foot of the gate tower until the cathedral is ready for her. The real one has walked you down to watch, and is standing at the back of the crowd beside you with her hood up.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -409253,12 +409313,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Yaniel"
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "yaniel.trickster.beat.staunton",
@@ -409266,12 +409325,12 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"You look like you have a question.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She comes down to your rooms after dark, which she has never done, and does not sit. She stands by the hearth with her arms folded and her back to the fire, and says, before you have shut the door:{/n}",
+          "Text": "{n}She takes you up to her room in the gate tower and does not sit. She stands by the brazier with her arms folded and her back to the coals, and says, before you have shut the door:{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -409532,12 +409591,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Yaniel"
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "yaniel.trickster.beat.areelu",
@@ -409545,12 +409603,12 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"Something's wrong.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She is waiting on the gate tower stair with a face like a shut door. A chaplain has been telling her things, she says, in the kind voice chaplains use for bad news. About the siege. About a woman calling herself Yaniel who was found chained in the citadel dungeon when the crusade took Drezen back, and who showed the Commander the way to the Sword of Valor.{/n}",
+          "Text": "{n}She takes you to the gate tower stair and sits down on it with a face like a shut door. A chaplain has been telling her things, she says, in the kind voice chaplains use for bad news. About the siege. About a woman calling herself Yaniel who was found chained in the citadel dungeon when the crusade took Drezen back, and who showed the Commander the way to the Sword of Valor.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -409783,12 +409841,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Yaniel"
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "yaniel.trickster.beat.bout",
@@ -409796,12 +409853,12 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"Those are practice swords.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}\"Practice swords,\" says the note under your door. \"The court behind the gate tower. First light. Come alone, or I will know you are afraid of an old woman.\"{/n}\n{n}She is there before you with two blunt blades from the armoury and her sleeves rolled to the elbow. Her forearms are ropy and white-scarred. She throws you a sword without warning and it is only luck and a lifetime of bad habits that you catch it by the grip.{/n}",
+          "Text": "{n}\"They are,\" she says. \"The court behind the gate tower. Now. Come alone, or I will know you are afraid of an old woman.\"{/n}\n{n}In the court she drops the two blunt blades from the armoury on the flags and rolls her sleeves to the elbow. Her forearms are ropy and white-scarred. She throws you a sword without warning and it is only luck and a lifetime of bad habits that you catch it by the grip.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -409939,12 +409996,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Yaniel"
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "yaniel.trickster.beat.roast",
@@ -409952,12 +410008,12 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"What is that smell?\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The smell reaches the citadel before the invitation does: juniper, burnt fat, something sharp and old-fashioned that nobody in Drezen has cooked in living memory. Then a boy comes up with a message. The paladin has taken the citadel's cook hostage, and his kitchen, and a whole side of mutton, and requests the Commander on the east wall at the third bell, and the Commander is to bring bread, and is not to bring anybody else.{/n}",
+          "Text": "{n}Juniper, burnt fat, something sharp and old-fashioned that nobody in Drezen has cooked in living memory. It is on her cloak and her hands. \"The Half Measure's roast,\" she says. \"Fye let me have her kitchen for a day, and a whole side of mutton, and her cook, who wept. Come up to the wall at the third bell. Bring bread. Bring nobody else.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -409973,7 +410029,7 @@
         {
           "Id": "wall",
           "Speaker": "Yaniel",
-          "Text": "{n}She has made a table of two barrels and a door on the broken parapet of the gate tower, and a brazier, and the roast is on the door in a pan, black at the edges and very nearly the right shape.{/n}\n\"The Half Measure's,\" {n}she says.{/n} \"Or near enough. I wrote to the girl in Nerosyan for the slate she took down, and I bullied your cook for two days, and he wept, and I think in the end I made most of it myself.\" {n}She saws off a slab with her belt knife and puts it on your bread.{/n} \"Eat. Tell me it is terrible. It is. I want to hear somebody else say it.\"",
+          "Text": "{n}She has made a table of two barrels and a door on the broken parapet of the gate tower, and a brazier, and the roast is on the door in a pan, black at the edges and very nearly the right shape.{/n}\n\"The Half Measure's,\" {n}she says.{/n} \"Or near enough. The Half Measure is back on its old street, did you know? Fye Kito keeps it now; a relative of hers had it before the siege. Nobody there remembered the roast. I told her cook how it was done, as near as I remembered, and he wrote it on a slate and made a face, and in the end I made most of it myself.\" {n}She saws off a slab with her belt knife and puts it on your bread.{/n} \"Eat. Tell me it is terrible. It is. I want to hear somebody else say it.\"",
           "Choices": [
             {
               "Text": "\"It's terrible.\"",
@@ -410119,12 +410175,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Yaniel"
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "yaniel.trickster.beat.night",
@@ -410554,12 +410609,12 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"Who is your friend?\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She sends a boy for you in the afternoon, which she never does, and when you come down to the east gate she is standing in the road outside it with an old man. He is very old: bent, bald, with a crutch and a cloudy eye and the lace-cuffed coat of a prosperous Mendevian merchant who has not bought a new coat in thirty years. He is holding her hand in both of his and will not let go of it.{/n}",
+          "Text": "{n}She is not alone today. She is standing with an old man who has come up the road from the east gate on a crutch to find her. He is very old: bent, bald, with a crutch and a cloudy eye and the lace-cuffed coat of a prosperous Mendevian merchant who has not bought a new coat in thirty years. He is holding her hand in both of his and will not let go of it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -410703,12 +410758,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Yaniel"
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "yaniel.trickster.beat.raid",
@@ -410939,16 +410993,16 @@
     },
     {
       "Id": "yaniel.trickster.beat.prayer",
-      "Title": "A silent goddess",
+      "Title": "Nothing to ask",
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"Where are you going?\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}You find her in the niche at the foot of the gate tower, in front of the painted martyr, but she is not praying. She is sitting on the plinth with her back to her own statue, looking at the lamp, with the face of a woman trying to add up a column of figures that will not come out.{/n}",
+          "Text": "{n}She takes you down to the niche at the foot of the gate tower, in front of the painted martyr, but she does not pray. She is sitting on the plinth with her back to her own statue, looking at the lamp, with the face of a woman trying to add up a column of figures that will not come out.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -410964,7 +411018,7 @@
         {
           "Id": "ask",
           "Speaker": "Yaniel",
-          "Text": "\"You laugh at gods,\" {n}she says, without looking up.{/n} \"The sentries say so. They say it as if it were a trick you do at dinner. I want to know how it is done.\"\n\"Every day on that hook I prayed. Morning and night and in between. Minagho would sit on the rack and listen and laugh, and tell me there was nobody on the other end, and I said the words anyway, because they were the only thing in that room that belonged to me.\" {n}Her hands tighten on her knees.{/n} \"And now I am out, and everybody tells me it was Her who got me out, and I kneel and I say the words, and there is nothing on the other end at all. There was more on the other end when I was on the hook.\"",
+          "Text": "\"You laugh at gods,\" {n}she says, without looking up.{/n} \"The sentries say so. They say it as if it were a trick you do at dinner. I want to know how it is done.\"\n\"Every day on that hook I prayed. Morning and night and in between. Minagho would sit on the rack and listen and laugh, and tell me there was nobody on the other end, and I said the words anyway, because they were the only thing in that room that belonged to me. And She answered. She sent you.\" {n}Her hands tighten on her knees.{/n} \"And now I kneel, and I open my mouth, and I have nothing to ask Her for. I do not know how to pray to Her without asking. I never learned. On the hook there was always something to ask.\"",
           "Choices": [
             {
               "Text": "\"Maybe she's tired of being asked for things. Try telling her something.\"",
@@ -411076,12 +411130,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Yaniel"
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "yaniel.trickster.ch4.block",
@@ -411322,12 +411375,12 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"Is that second spear for me?\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She does not ask you up to the wall any more. She simply leaves a second spear leaning in the doorway of the gate tower, and a second cup by the brazier, and when you come up the stair after the last bell she hands you the spear without looking round, and you stand the watch with her.{/n}\n{n}Nothing comes over the wall tonight. The ash lies quiet under a dirty moon. Far out toward the Wound something burns, very small, like a candle in a house across a valley.{/n}",
+          "Text": "{n}It is. She does not ask you up to the wall any more. She simply hands you the spear, and a second cup, and walks you up the stair after the last bell, and you stand the watch with her.{/n}\n{n}Nothing comes over the wall tonight. The ash lies quiet under a dirty moon. Far out toward the Wound something burns, very small, like a candle in a house across a valley.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -411454,12 +411507,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Yaniel"
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "yaniel.trickster.after.wrist",
@@ -411467,12 +411519,12 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"You want something.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She comes to your rooms in daylight, which she almost never does, and shuts the door behind her, and stands against it with her arms folded.{/n}",
+          "Text": "{n}She takes you up to her room in the gate tower in daylight, and shuts the door behind her, and stands against it with her arms folded.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -411640,12 +411692,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Yaniel"
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "yaniel.trickster.beat.drill",
@@ -411653,12 +411704,12 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"You wanted to see the sword.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}\"Bring the sword,\" says the note under your door. \"Not a practice blade. Mine. The court behind the gate tower, before the first bell.\" She is waiting there in the half-dark with her sleeves rolled and no weapon at all, and when you come through the arch she holds out her empty hand, not for the sword: for your wrist.{/n}",
+          "Text": "{n}\"Not here,\" she says. \"The court behind the gate tower.\" She walks you there with her sleeves rolled and no weapon at all, and when you come through the arch she holds out her empty hand, not for the sword: for your wrist.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -411730,7 +411781,7 @@
         {
           "Id": "want",
           "Speaker": "Yaniel",
-          "Text": "{n}Her hands go still on yours.{/n}\n\"Yes,\" {n}she says, after a while.{/n} \"Every day. Every time I see it on your hip I want to take it off you and run. I told you in the Fane my hands were not fit for it. They are fit. I am the one who is not.\" {n}She lets go.{/n} \"Carry it where you swore, Commander. Carry it well. And do not ever offer it to me again, because one day I will take it, and then we will both have to live with that.\"",
+          "Text": "{n}Her hands go still on yours.{/n}\n\"Yes,\" {n}she says, after a while.{/n} \"Every day. Every time I see it on your hip I want to take it off you and run. I gave it to you because the crusade needs it in a hand that will carry it all the way, and I still think that. I did not say I would stop wanting it.\" {n}She lets go.{/n} \"Carry it where you swore, Commander. Carry it well. And do not ever offer it to me again, because one day I will take it, and then we will both have to live with that.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -411781,12 +411832,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Yaniel"
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "yaniel.trickster.beat.light",
@@ -411794,12 +411844,12 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"You look like you want to show me something.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The sentry says she wants you on the wall, now, and that she said to say it is not an alarm. When you come up she is at the broken place in the parapet with Radiance drawn, and she does not turn round.{/n}\n\"Look,\" {n}she says.{/n}",
+          "Text": "{n}\"The wall,\" she says. \"Now. It is not an alarm.\" She takes you up to the broken place in the parapet and draws Radiance, and does not turn round.{/n}\n\"Look,\" {n}she says.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -411937,12 +411987,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Yaniel"
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "yaniel.trickster.beat.hunter",
@@ -411950,12 +411999,12 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"Who is the scout?\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She is in the guardroom at the foot of the gate tower when you find her, sitting on a bench across a table from a scout of the Eagle Watch who has just come in off the ash, and she is listening to him the way a hound listens at a door.{/n}",
+          "Text": "{n}She takes you into the guardroom at the foot of the gate tower, where a scout of the Eagle Watch who has just come in off the ash is eating at a table, and sits down across from him, and listens to him the way a hound listens at a door.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -412099,12 +412148,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Yaniel"
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "trickster.lastcall.bottle.king",
@@ -415816,8 +415864,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -418103,6 +418151,9 @@
     "horzalah.killed_b": "717a2f84c7dbfd24dbb474abd26211b3",
     "yaniel.told_staunton": "09d9caa56d1dd4743bb04f8e39ae7459",
     "yaniel.told_statue": "8f635c7b16eadd44b8a28aac5e937e37",
+    "yaniel.struck_kill": "29a08c2b296c6b743a0c4579ba218b09",
+    "yaniel.struck_test": "40fc513adfa1fd0428ae21b39b68e397",
+    "yaniel.struck_glad": "f44d8f29a2f640c4885414cb2be61e05",
     "lastcall.flask_taken": "dbf6695999d744747aeb2d4f20b21b50",
     "storyteller.asked_queen": "b9d78ba896d19b14aa6c371dda617979",
     "shamira.cauldron_shown": "7b0b6c9d1425a7a41a154ee1b566842b",
@@ -418549,6 +418600,12 @@
     ],
     "yaniel.fake_refused": [
       "f1a82798065c27b45aa1d17d9db80dc6"
+    ],
+    "yaniel.sosiel_promised": [
+      "c1d54aee5b5ca0246a9294ce35df9b66"
+    ],
+    "yaniel.radiance_seen": [
+      "cbf1a11c8d3ce814595149a211502ad1"
     ],
     "vellexia.spared": [
       "58d69774dbe696e46a9232167e8d3479"
@@ -420965,6 +421022,17 @@
     "horzalah.harem.voice.keeps_what_she_takes": [
       [
         "horzalah.committed"
+      ]
+    ],
+    "yaniel.struck": [
+      [
+        "yaniel.struck_kill"
+      ],
+      [
+        "yaniel.struck_test"
+      ],
+      [
+        "yaniel.struck_glad"
       ]
     ],
     "yaniel.trickster.drawn": [
