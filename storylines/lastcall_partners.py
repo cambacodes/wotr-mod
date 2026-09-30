@@ -649,7 +649,7 @@ partner("elyanka", "elyanka", "elyanka.committed", "elyanka.closed", "The Claim"
     ), declined=EY + "declined",
     deal=[[EY + "cost.corpse_bequeathed"]],
     call=call('''[Call in the bequest] "Elyanka, if I fall at the rift, your claim falls due. Stand where you can collect."''',
-        '''{n}You sold your body once, at your own wake, in a whisper, to a woman who had come four hundred miles for it. You say the terms aloud now, over the rift, the way she whispered them in the dead-house, word for word, in the language older than its words. Nobody here understands them. That is not the point. A creditor ought to know when her debt is about to fall due, and where to stand to collect it.{/n}''',
+        '''{n}You sold your body once, in the dead-house by the south gate, in a whisper, to a woman who had come four hundred miles for it. You say the terms aloud now, over the rift, the way she whispered them in the dead-house, word for word, in the language older than its words. Nobody here understands them. That is not the point. A creditor ought to know when her debt is about to fall due, and where to stand to collect it.{/n}''',
         (PLAIN_CHOICE, (PILLAR,), (), ())))
 
 # Existing pages that must yield to Last Call (doc 04 backlog): Nocticula's favour page is called in on her Last Call page instead.

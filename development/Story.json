@@ -404105,10 +404105,44 @@
             },
             {
               "Text": "Continue",
+              "Next": "reason_gave",
+              "Set": [],
+              "Requires": [
+                "elyanka.trickster.gave_dead"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "reason_carrion",
+              "Set": [],
+              "Requires": [
+                "elyanka.trickster.gave_carrion"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "reason_refused",
+              "Set": [],
+              "Requires": [
+                "elyanka.trickster.refused_dead"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
               "Next": "claim",
               "Set": [],
               "Requires": [],
-              "Forbids": [],
+              "Forbids": [
+                "elyanka.trickster.gave_dead",
+                "elyanka.trickster.gave_carrion",
+                "elyanka.trickster.refused_dead"
+              ],
               "Abort": false
             }
           ],
@@ -404145,6 +404179,106 @@
           "Choices": [
             {
               "Text": "Continue",
+              "Next": "reason_gave",
+              "Set": [],
+              "Requires": [
+                "elyanka.trickster.gave_dead"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "reason_carrion",
+              "Set": [],
+              "Requires": [
+                "elyanka.trickster.gave_carrion"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "reason_refused",
+              "Set": [],
+              "Requires": [
+                "elyanka.trickster.refused_dead"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "claim",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "elyanka.trickster.gave_dead",
+                "elyanka.trickster.gave_carrion",
+                "elyanka.trickster.refused_dead"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Elyanka"
+        },
+        {
+          "Id": "world_sides",
+          "Speaker": "Elyanka",
+          "Text": "\"One day.\" {n}She considers you, head a little on one side.{/n} \"And on that day you will still be warm, and I will still hold your corpse, and you will have to decide whether to kill your creditor. I look forward to it. It will be the first honest quarrel anyone has had with me in years.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "reason_gave",
+              "Set": [],
+              "Requires": [
+                "elyanka.trickster.gave_dead"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "reason_carrion",
+              "Set": [],
+              "Requires": [
+                "elyanka.trickster.gave_carrion"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "reason_refused",
+              "Set": [],
+              "Requires": [
+                "elyanka.trickster.refused_dead"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "claim",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "elyanka.trickster.gave_dead",
+                "elyanka.trickster.gave_carrion",
+                "elyanka.trickster.refused_dead"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Elyanka"
+        },
+        {
+          "Id": "reason_gave",
+          "Speaker": "Elyanka",
+          "Text": "\"You gave me sixty-one strangers without asking what they would remember. A debtor as free with other people's bodies as that ought to know what it is to be handed one.\" {n}She wipes her fingers.{/n} \"And you whispered me something true, in the dark, and kept my secret after. Nobody keeps my secrets. They sell them.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
               "Next": "claim",
               "Set": [],
               "Requires": [],
@@ -404155,9 +404289,25 @@
           "Portrait": "Elyanka"
         },
         {
-          "Id": "world_sides",
+          "Id": "reason_carrion",
           "Speaker": "Elyanka",
-          "Text": "\"One day.\" {n}She considers you, head a little on one side.{/n} \"And on that day you will still be warm, and I will still hold your corpse, and you will have to decide whether to kill your creditor. I look forward to it. It will be the first honest quarrel anyone has had with me in years.\"",
+          "Text": "\"You offered my Lady carrion from a ditch. You are stingy, Commander, and a stingy debtor guards the larder.\" {n}She wipes her fingers.{/n} \"And you whispered me something in the dark, and kept my secret after. So I will put something of mine in your larder, and see whether you guard it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "claim",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Elyanka"
+        },
+        {
+          "Id": "reason_refused",
+          "Speaker": "Elyanka",
+          "Text": "\"You kept the grey warden's dead from me, though she will never thank you for it. You pay your debts, even the ones nobody can collect.\" {n}She wipes her fingers.{/n} \"And you whispered me something in the dark, and kept my secret after. I have decided I want to be one of your debts.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404285,7 +404435,8 @@
       ],
       "Requires": [
         "trickster.ever",
-        "elyanka.trickster.tested"
+        "elyanka.trickster.tested",
+        "elyanka.trickster.beat.whisper"
       ],
       "Forbids": [
         "elyanka.closed",
@@ -404997,7 +405148,15 @@
             {
               "Text": "{n}She kept a drawing of the Commander's face, done in charcoal from everything about the Commander except the face, rolled in her sleeve. When she needed to know what the Commander really thought, she unrolled it and asked it. She said it had never once lied to her.{/n}",
               "Requires": [
-                "elyanka.trickster.face.read"
+                "elyanka.trickster.face.drawn"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Once, in the dead-house, she had looked the Commander in the face for as long as it takes a candle to gutter and steady, and never again. She went on treating the Commander's face as a liar to the end, on principle, and the Commander went on letting her.{/n}",
+              "Requires": [
+                "elyanka.trickster.face.looked"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -405414,7 +405573,15 @@
             {
               "Text": "{n}She kept a drawing of the Commander's face, done in charcoal from everything about the Commander except the face, rolled in her sleeve. When she needed to know what the Commander really thought, she unrolled it and asked it. She said it had never once lied to her.{/n}",
               "Requires": [
-                "elyanka.trickster.face.read"
+                "elyanka.trickster.face.drawn"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Once, in the dead-house, she had looked the Commander in the face for as long as it takes a candle to gutter and steady, and never again. She went on treating the Commander's face as a liar to the end, on principle, and the Commander went on letting her.{/n}",
+              "Requires": [
+                "elyanka.trickster.face.looked"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -405652,7 +405819,15 @@
             {
               "Text": "{n}She kept a drawing of the Commander's face, done in charcoal from everything about the Commander except the face, rolled in her sleeve. When she needed to know what the Commander really thought, she unrolled it and asked it. She said it had never once lied to her.{/n}",
               "Requires": [
-                "elyanka.trickster.face.read"
+                "elyanka.trickster.face.drawn"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Once, in the dead-house, she had looked the Commander in the face for as long as it takes a candle to gutter and steady, and never again. She went on treating the Commander's face as a liar to the end, on principle, and the Commander went on letting her.{/n}",
+              "Requires": [
+                "elyanka.trickster.face.looked"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -405857,7 +406032,15 @@
             {
               "Text": "{n}She kept a drawing of the Commander's face, done in charcoal from everything about the Commander except the face, rolled in her sleeve. When she needed to know what the Commander really thought, she unrolled it and asked it. She said it had never once lied to her.{/n}",
               "Requires": [
-                "elyanka.trickster.face.read"
+                "elyanka.trickster.face.drawn"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Once, in the dead-house, she had looked the Commander in the face for as long as it takes a candle to gutter and steady, and never again. She went on treating the Commander's face as a liar to the end, on principle, and the Commander went on letting her.{/n}",
+              "Requires": [
+                "elyanka.trickster.face.looked"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -406403,7 +406586,39 @@
         {
           "Id": "knife",
           "Speaker": "Elyanka",
-          "Text": "{n}She puts the knife in your hand and closes her own hand over yours, from behind, her cold fingers laid along your warm ones, her chin at your shoulder.{/n}\n\"Here. The liver. Your priests say the soul lives in the heart. The soul lives nowhere. The appetite lives here.\" {n}She guides the blade.{/n} \"Steady. You have killed a hundred of these, and a dead one makes your hand shake.\"\n{n}It does not shake because of the dead one. She knows that. You can hear her knowing it, in the small pleased breath she lets out against your neck.{/n}",
+          "Text": "{n}She puts the knife in your hand and closes her own hand over yours, from behind, her cold fingers laid along your warm ones, her chin at your shoulder.{/n}\n\"Here. The liver. Your priests say the soul lives in the heart. The soul lives nowhere. The appetite lives here.\" {n}She guides the blade.{/n} \"Steady. You have killed a hundred of these, and a dead one makes your hand shake.\"\n{n}Her body is against your back from shoulder to hip, cool through the grey wool, and her thumb rests on the inside of your wrist, over the pulse, as if that were where the lesson was.{/n}",
+          "Choices": [
+            {
+              "Text": "[Lean back into her, and let her guide the cut.]",
+              "Next": "knife2",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep your eyes on the dead man, and cut.]",
+              "Next": "knife2",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Take your hand out from under hers.]",
+              "Next": "knife_off",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Elyanka"
+        },
+        {
+          "Id": "knife_off",
+          "Speaker": "Elyanka",
+          "Text": "{n}She lets your hand go at once, and steps back, and the cold goes with her.{/n}\n\"As you like. You cut, then. I will watch.\" {n}She folds her arms.{/n} \"A surgeon's hand, after all. Careful of other people's fingers. It will not save you, but it is very correct.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -406449,8 +406664,26 @@
             },
             {
               "Text": "\"Both.\"",
-              "Next": "watch_notes",
+              "Next": "watch_both",
               "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Elyanka"
+        },
+        {
+          "Id": "watch_both",
+          "Speaker": "Elyanka",
+          "Text": "\"Good. Both is the right answer. The disgust keeps you alive; the notes make it worth the trouble.\" {n}She wipes her hands, finger by finger, on a cloth that was white.{/n}\n\"Remember what you saw. When you are tempted to let the Abyss have you whole, remember the lace. The Way will not waste you like that. I will not.\" {n}She almost smiles.{/n} \"Now go and wash. You look like a {mf|man|woman} who has been reading.\"",
+          "Choices": [
+            {
+              "Text": "[Leave her to her burning.]",
+              "Next": null,
+              "Set": [
+                "elyanka.trickster.anatomy.watched"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -406461,7 +406694,7 @@
         {
           "Id": "watch_notes",
           "Speaker": "Elyanka",
-          "Text": "\"Good. Both is the right answer.\" {n}She wipes her hands, finger by finger, on a cloth that was white.{/n}\n\"Remember what you saw. When you are tempted to let the Abyss have you whole, remember the lace. The Way will not waste you like that. I will not.\" {n}She almost smiles.{/n} \"Now go and wash. You look like a {mf|man|woman} who has been reading.\"",
+          "Text": "\"Notes.\" {n}She looks at you with frank approval, the way she looked at the venison.{/n} \"Good. Disgust is for people who can afford to be surprised. You cannot.\"\n{n}She wipes her hands, finger by finger, on a cloth that was white.{/n}\n\"Remember what you saw. When you are tempted to let the Abyss have you whole, remember the lace. The Way will not waste you like that. I will not.\" {n}She almost smiles.{/n} \"Now go and wash. You look like a {mf|man|woman} who has been reading.\"",
           "Choices": [
             {
               "Text": "[Leave her to her burning.]",
@@ -406497,7 +406730,7 @@
       ],
       "Requires": [
         "trickster.ever",
-        "elyanka.trickster.owned"
+        "elyanka.trickster.bier_seen"
       ],
       "Forbids": [
         "elyanka.closed",
@@ -406727,7 +406960,7 @@
       ],
       "Requires": [
         "trickster.ever",
-        "elyanka.trickster.owned"
+        "elyanka.trickster.bier_seen"
       ],
       "Forbids": [
         "elyanka.closed",
@@ -406863,7 +407096,7 @@
         {
           "Id": "ate",
           "Speaker": "Elyanka",
-          "Text": "{n}It is hot outside and cold in the middle, and tastes of iron and smoke and something wild. The blood runs down your chin. She watches you eat it with the same frank hunger she watched you with in the hearse, and when you have finished she wipes your chin with her thumb and licks the thumb.{/n}\n\"There,\" {n}she says.{/n} \"Hungry and fed at once. Now you know what I have been looking for all these years.\" {n}She eats her own half slowly, with her eyes shut.{/n} \"It turns out I needed a sweaty mortal to eat it with. My Lady has a vulgar sense of humour.\"",
+          "Text": "{n}It is hot outside and cold in the middle, and tastes of iron and smoke and something wild. The blood runs down your chin. She watches you eat it with the same frank hunger she watched you with in the hearse, and when you have finished she wipes your chin with her thumb and licks the thumb.{/n}\n\"There,\" {n}she says.{/n} \"Hungry and fed at once. Now you know what my Lady promises.\" {n}She eats her own half slowly, with her eyes shut.{/n} \"She has been fed well tonight. So have I. I shall tell her so, in the morning, at length.\"",
           "Choices": [
             {
               "Text": "[Sit with her by the fire until it burns down.]",
@@ -406965,7 +407198,7 @@
         {
           "Id": "message",
           "Speaker": "Man in grey",
-          "Text": "\"*Commander. I have gone south to the border, to a house on the Ustalav road where the Way keeps rooms. A master of the Way has come up from Caliphas to ask me why my carriage is empty.*\"\n\"*I told him the goods are still ripening. He asked me whether I had grown fond of the goods. I told him I do not grow fond. I grow hungry. He did not believe me. Neither, when I lie awake in this house, do I.*\"",
+          "Text": "\"*Commander. I have gone south to the border, to a house on the Ustalav road where the Way keeps rooms. A master of the Way has come up from Caliphas to ask me why my carriage is empty.*\"\n\"*I told him the goods are the finest offering my Lady will be served this century, and that I will not have them hurried to her table half-ripe. He asked me whether that was faith or appetite. I told him that with my Lady there is no difference.*\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -407495,7 +407728,7 @@
         {
           "Id": "rift2",
           "Speaker": "Elyanka",
-          "Text": "{n}At the tent flap she stops, and comes back, and kisses you, hard, on the mouth, with her cold hand flat over your heart as if she were counting it.{/n}\n\"For the claim,\" {n}she says, against your lips.{/n} \"Do not flatter yourself.\"",
+          "Text": "{n}At the tent flap she stops, and comes back, and kisses you, hard, on the mouth, with her cold hand flat over your heart as if she were counting it.{/n}\n\"For my Lady,\" {n}she says, against your lips.{/n} \"She likes an offering warm when it is pledged.\"",
           "Choices": [
             {
               "Text": "[Let her go back to her hearse.]",
@@ -407751,7 +407984,7 @@
       ],
       "Requires": [
         "trickster.ever",
-        "elyanka.trickster.owned"
+        "elyanka.trickster.tested"
       ],
       "Forbids": [
         "elyanka.closed",
@@ -407759,8 +407992,8 @@
         "elyanka.trickster.whisper.wake",
         "elyanka.trickster.whisper.lie"
       ],
-      "DelayHours": 60,
-      "Optional": true,
+      "DelayHours": 24,
+      "Optional": false,
       "Relationship": "elyanka",
       "Remote": true,
       "Kind": "visit",
@@ -408110,7 +408343,7 @@
         {
           "Id": "kill",
           "Speaker": "Elyanka",
-          "Text": "{n}She does not smile. She nods once, as she might to a tradesman who had quoted a fair price, and makes a small gesture toward the door. Two of her six men in grey detach themselves from the wall of the yard and walk out into the dark after the master's carriage, not hurrying.{/n}\n\"You understand that he is my master,\" {n}she says,{/n} \"and that I have just had him killed for you.\" {n}She considers this.{/n} \"No. For my claim. It is not the same thing. Do not flatter yourself that it is the same thing.\"",
+          "Text": "{n}She does not smile. She nods once, as she might to a tradesman who had quoted a fair price, and makes a small gesture toward the door. Two of her six men in grey detach themselves from the wall of the yard and walk out into the dark after the master's carriage, not hurrying.{/n}\n\"You understand that he is my master,\" {n}she says,{/n} \"and that I have just had him killed for you.\" {n}She considers this.{/n} \"No. For my Lady. A master who would hurry an offering to her table half-ripe insults her. I have done her a service tonight.\" {n}She smiles, showing strong white teeth.{/n} \"And the Way will learn that the priestess in Drezen keeps her collateral the way she keeps her faith: with a knife.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -408692,7 +408925,7 @@
       ],
       "Requires": [
         "trickster.ever",
-        "elyanka.trickster.owned"
+        "elyanka.trickster.bier_seen"
       ],
       "Forbids": [
         "elyanka.closed",
@@ -409134,7 +409367,8 @@
               "Text": "[Let her keep it.]",
               "Next": null,
               "Set": [
-                "elyanka.trickster.face.read"
+                "elyanka.trickster.face.read",
+                "elyanka.trickster.face.drawn"
               ],
               "Requires": [],
               "Forbids": [],
@@ -409152,7 +409386,8 @@
               "Text": "[Give her back the charcoal.]",
               "Next": null,
               "Set": [
-                "elyanka.trickster.face.read"
+                "elyanka.trickster.face.read",
+                "elyanka.trickster.face.looked"
               ],
               "Requires": [],
               "Forbids": [],
@@ -409313,7 +409548,7 @@
       ],
       "Requires": [
         "trickster.ever",
-        "elyanka.trickster.owned"
+        "elyanka.trickster.bier_seen"
       ],
       "Forbids": [
         "elyanka.closed",
@@ -409471,7 +409706,7 @@
       ],
       "Requires": [
         "trickster.ever",
-        "elyanka.trickster.owned"
+        "elyanka.trickster.bier_seen"
       ],
       "Forbids": [
         "elyanka.closed",
@@ -409793,7 +410028,8 @@
       "Requires": [
         "trickster.ever",
         "elyanka.trickster.gave_dead",
-        "elyanka.trickster.react.seelah_rows"
+        "elyanka.trickster.react.seelah_rows",
+        "elyanka.trickster.bier_seen"
       ],
       "Forbids": [
         "elyanka.closed",
@@ -413265,7 +413501,7 @@
         {
           "Id": "call",
           "Speaker": "Narrator",
-          "Text": "{n}You sold your body once, at your own wake, in a whisper, to a woman who had come four hundred miles for it. You say the terms aloud now, over the rift, the way she whispered them in the dead-house, word for word, in the language older than its words. Nobody here understands them. That is not the point. A creditor ought to know when her debt is about to fall due, and where to stand to collect it.{/n}",
+          "Text": "{n}You sold your body once, in the dead-house by the south gate, in a whisper, to a woman who had come four hundred miles for it. You say the terms aloud now, over the rift, the way she whispered them in the dead-house, word for word, in the language older than its words. Nobody here understands them. That is not the point. A creditor ought to know when her debt is about to fall due, and where to stand to collect it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -413623,8 +413859,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",

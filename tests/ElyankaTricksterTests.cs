@@ -177,7 +177,7 @@ internal static class ElyankaTricksterTests
         check(dead.DelayHours == 48, "Trk_Elyanka_TheDead: the test does not wait two days after the sale.");
 
         // Trk_Elyanka_Claims: the exchange of claims (her proposal), the soft no, her move 48 hours later with no price.
-        var t = World(story, 5, "trickster.ever", Owned, Bequeathed, Started, Tested);
+        var t = World(story, 5, "trickster.ever", Owned, Bequeathed, Started, Tested, P + "gave_carrion", P + "beat.whisper");
         var yes = Take(claims, t, "rites", 0, Committed);
         check(yes.Has(Committed) && yes.Has("trickster.secret.elyanka_rites") && Take(claims, t, "yes_kiss", 0, Committed).Has(Committed),
             "Trk_Elyanka_Claims: taking her claim does not commit (with her rites kept secret).");
@@ -213,7 +213,8 @@ internal static class ElyankaTricksterTests
         // Trk_Elyanka_Beats: the courtship spreads over Chapter 5 (and one Chapter 6 visit), optional, after the sale.
         var beats = own.Where(s => s.Id.StartsWith(P + "beat.", StringComparison.Ordinal)).ToArray();
         var ch6 = S(P + "ch6.collateral");
-        check(beats.Length >= 18 && beats.All(b => b.Optional && b.Remote && b.Requires.Any(f => f == Owned || f == Bier || f == P + "daeran_ally" || f == P + "gave_dead"))
+        check(beats.Length >= 18 && beats.Where(b => b.Id != P + "beat.whisper").All(b => b.Optional && b.Remote && b.Requires.Contains(Bier) || b.Requires.Contains(P + "daeran_ally"))
+              && !S(P + "beat.whisper").Optional && S(P + "beat.whisper").Requires.Contains(Tested) && claims.Requires.Contains(P + "beat.whisper")
               && ch6.Chapters.SequenceEqual(new[] { 6 }) && Avail(ch6, World(story, 6, "trickster.ever", Owned)),
             "Trk_Elyanka_Beats: a courtship beat is not optional, not after the sale, or the Chapter 6 visit is missing.");
         check(Avail(S(P + "beat.king_bill"), World(story, 5, "trickster.ever", Owned, Bier, P + "mourners", "fool_king.crowned"))
@@ -297,7 +298,9 @@ internal static class ElyankaTricksterTests
         var s2 = Take(haggle, Later(s1, 24), "sold", 0, Owned);
         check(!Avail(dead, Later(s2, 47)), "Trk_Elyanka_Spine: the dead do not wait two days after the sale.");
         var s3 = Take(dead, Later(s2, 48), "refuse", 0, Tested);
-        var s4 = Take(claims, Later(s3, 24), "rites", 0, Committed);
+        var s3w = Take(S(P + "beat.whisper"), Later(s3, 24), "hers", 0, P + "beat.whisper");
+        check(!Avail(claims, Later(s3w, 23)), "Trk_Elyanka_Spine: the claims do not wait a day after the whisper.");
+        var s4 = Take(claims, Later(s3w, 24), "rites", 0, Committed);
         var s5 = Take(hearse, Later(s4, 24), "last_night", 0, Bier);
         var abroad = Later(s4, 24);
         abroad.Area = "00000000000000000000000000000000";

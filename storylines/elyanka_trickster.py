@@ -406,14 +406,29 @@ visit(E + "commit.claims", "An exchange of claims", [
     el("story2", '''"My father's hunters followed me. They killed everyone at the fire except me. My father spared me, as he called it, and sent me to a house near Caliphas where they kept me in straps and starved me, to cure me of appetite. Three years. Then I walked home."
 "That night we had lamb, baked with herbs, the way he liked it. He never noticed the bitterness. Mother, my three brothers, my six sisters: I gave them all my Lady's gift. Undeath." {n}She wipes her fingers, one by one.{/n} "All but him. Him I left in the ground, to rot like a peasant. He is still there. I visit."''',
        c('"And the Way? What does the Way want, in the end?"', "world"),
-       c("Continue", "claim")),
+       c("Continue", "reason_gave", requires=(GAVE_DEAD,)),
+       c("Continue", "reason_carrion", requires=(CARRION,)),
+       c("Continue", "reason_refused", requires=(REFUSED_DEAD,)),
+       c("Continue", "claim", forbids=(GAVE_DEAD, CARRION, REFUSED_DEAD))),
     el("world", '''"You have been too polite to ask until now. I wondered how long it would take." {n}She licks cherry juice from her thumb.{/n}
 "Undeath is the truest and best form of existence. Eternity, and no fear of the end. Mortals, with their constant fear of dying, are cattle, fit for food and labour. Our dream is the death of the entire world, Commander. Purification. Life reviled by everyone who remains." {n}She says it as calmly as she would say the price of bread.{/n} "Not this year. Not while your demons are at the door. But one day."''',
        c('"And my corpse on your Lady\'s table helps it along."', "world_help"),
        c('"Then one day we\'ll be on opposite sides of the war."', "world_sides")),
     el("world_help", '''"A little. Everything helps a little." {n}She shrugs.{/n} "You sold it to me anyway. You knew what I was when you whispered back the terms, and you whispered them. I have always thought that was the most interesting thing about you."''',
-       c("Continue", "claim")),
+       c("Continue", "reason_gave", requires=(GAVE_DEAD,)),
+       c("Continue", "reason_carrion", requires=(CARRION,)),
+       c("Continue", "reason_refused", requires=(REFUSED_DEAD,)),
+       c("Continue", "claim", forbids=(GAVE_DEAD, CARRION, REFUSED_DEAD))),
     el("world_sides", '''"One day." {n}She considers you, head a little on one side.{/n} "And on that day you will still be warm, and I will still hold your corpse, and you will have to decide whether to kill your creditor. I look forward to it. It will be the first honest quarrel anyone has had with me in years."''',
+       c("Continue", "reason_gave", requires=(GAVE_DEAD,)),
+       c("Continue", "reason_carrion", requires=(CARRION,)),
+       c("Continue", "reason_refused", requires=(REFUSED_DEAD,)),
+       c("Continue", "claim", forbids=(GAVE_DEAD, CARRION, REFUSED_DEAD))),
+    el("reason_gave", '''"You gave me sixty-one strangers without asking what they would remember. A debtor as free with other people's bodies as that ought to know what it is to be handed one." {n}She wipes her fingers.{/n} "And you whispered me something true, in the dark, and kept my secret after. Nobody keeps my secrets. They sell them."''',
+       c("Continue", "claim")),
+    el("reason_carrion", '''"You offered my Lady carrion from a ditch. You are stingy, Commander, and a stingy debtor guards the larder." {n}She wipes her fingers.{/n} "And you whispered me something in the dark, and kept my secret after. So I will put something of mine in your larder, and see whether you guard it."''',
+       c("Continue", "claim")),
+    el("reason_refused", '''"You kept the grey warden's dead from me, though she will never thank you for it. You pay your debts, even the ones nobody can collect." {n}She wipes her fingers.{/n} "And you whispered me something in the dark, and kept my secret after. I have decided I want to be one of your debts."''',
        c("Continue", "claim")),
     el("claim", '''"I tell you this so you know what I do with a claim, Commander. I have bought your death. It is only good manners to give you mine."
 {n}She leans across the table, as she did on the night of the sale, until her cheek is almost against yours.{/n} "When the Princess adopts me there will be nothing left of me to bury. She will take all of it, and I will never lie down anywhere. Take the claim anyway. Keep it. You will have bought nothing at all." {n}Her breath is cold and smells of cherries.{/n} "I adore a bad bargain made with open eyes."''',
@@ -434,7 +449,7 @@ visit(E + "commit.claims", "An exchange of claims", [
 "A buyer asks that." {n}Her voice is quite level.{/n} "A bride does not."
 {n}She picks up her knife and goes back to the venison, and eats with the same appetite as before, as if you had already left.{/n} "You may finish your wine. I will think about what you are."''',
        c("[Finish your wine.]", flags=(DECLINED,))),
-], requires=(TESTED,), forbids=(COMMITTED, DECLINED), delay=24, last=5)
+], requires=(TESTED, E + "beat.whisper"), forbids=(COMMITTED, DECLINED), delay=24, last=5)
 
 
 # --- 6. Her move (T): the delayed return. No price. --------------------------------------------------------------------
@@ -602,7 +617,9 @@ COMMON = (
     p('''{n}The head of a vrock hung for years in a certain house in Caliphas, above a fireplace, with a card beneath it in no hand at all. Visitors from the Way who asked about it were told it was the Knight Commander's idea of an offering, and that the Knight Commander was not squeamish, only stingy.{/n}''',
       requires=(CARRION,)),
     p('''{n}She kept a drawing of the Commander's face, done in charcoal from everything about the Commander except the face, rolled in her sleeve. When she needed to know what the Commander really thought, she unrolled it and asked it. She said it had never once lied to her.{/n}''',
-      requires=(E + "face.read",)),
+      requires=(E + "face.drawn",)),
+    p('''{n}Once, in the dead-house, she had looked the Commander in the face for as long as it takes a candle to gutter and steady, and never again. She went on treating the Commander's face as a liar to the end, on principle, and the Commander went on letting her.{/n}''',
+      requires=(E + "face.looked",)),
     p('''{n}There were men in the old granary by the north wall who died smiling, that winter, with a name on their lips the chaplains did not recognize. The Commander had let her in.{/n}''',
       requires=(E + "wards.let",)),
     p('''{n}The boy with one arm from the fever ward lived to be a baker in the lower town of Drezen. He never knew who had sat with him the night he did not die, or who had been sent away from his bed so that he could be sure of it.{/n}''',

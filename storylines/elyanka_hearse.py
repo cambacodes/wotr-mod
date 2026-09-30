@@ -60,7 +60,12 @@ visit(E + "beat.anatomy", "What the Abyss does to meat", [
        c('"I\'ve seen enough of him. Burn it."', "leave")),
     el("knife", '''{n}She puts the knife in your hand and closes her own hand over yours, from behind, her cold fingers laid along your warm ones, her chin at your shoulder.{/n}
 "Here. The liver. Your priests say the soul lives in the heart. The soul lives nowhere. The appetite lives here." {n}She guides the blade.{/n} "Steady. You have killed a hundred of these, and a dead one makes your hand shake."
-{n}It does not shake because of the dead one. She knows that. You can hear her knowing it, in the small pleased breath she lets out against your neck.{/n}''',
+{n}Her body is against your back from shoulder to hip, cool through the grey wool, and her thumb rests on the inside of your wrist, over the pulse, as if that were where the lesson was.{/n}''',
+       c("[Lean back into her, and let her guide the cut.]", "knife2"),
+       c("[Keep your eyes on the dead man, and cut.]", "knife2"),
+       c("[Take your hand out from under hers.]", "knife_off")),
+    el("knife_off", '''{n}She lets your hand go at once, and steps back, and the cold goes with her.{/n}
+"As you like. You cut, then. I will watch." {n}She folds her arms.{/n} "A surgeon's hand, after all. Careful of other people's fingers. It will not save you, but it is very correct."''',
        c("Continue", "knife2")),
     el("knife2", '''{n}She lets you cut alone for a while, and watches, and says nothing, which from her is praise.{/n}
 "You hold a knife like a butcher, not like a surgeon. Good. Surgeons are liars. They pretend they are saving something." {n}She takes the knife back and wipes it on the dead man's sheet.{/n}
@@ -70,15 +75,19 @@ visit(E + "beat.anatomy", "What the Abyss does to meat", [
 "There. That was his. The rest belonged to his god, and his god did not even come to collect." {n}She lays the heart on a pewter plate, as if serving it.{/n}
 "You are very quiet, Commander. I cannot tell whether you are disgusted or taking notes."''',
        c('"Taking notes."', "watch_notes"),
-       c('"Both."', "watch_notes")),
-    el("watch_notes", '''"Good. Both is the right answer." {n}She wipes her hands, finger by finger, on a cloth that was white.{/n}
+       c('"Both."', "watch_both")),
+    el("watch_both", '''"Good. Both is the right answer. The disgust keeps you alive; the notes make it worth the trouble." {n}She wipes her hands, finger by finger, on a cloth that was white.{/n}
+"Remember what you saw. When you are tempted to let the Abyss have you whole, remember the lace. The Way will not waste you like that. I will not." {n}She almost smiles.{/n} "Now go and wash. You look like a {mf|man|woman} who has been reading."''',
+       c("[Leave her to her burning.]", flags=(ANATOMY_WATCHED,))),
+    el("watch_notes", '''"Notes." {n}She looks at you with frank approval, the way she looked at the venison.{/n} "Good. Disgust is for people who can afford to be surprised. You cannot."
+{n}She wipes her hands, finger by finger, on a cloth that was white.{/n}
 "Remember what you saw. When you are tempted to let the Abyss have you whole, remember the lace. The Way will not waste you like that. I will not." {n}She almost smiles.{/n} "Now go and wash. You look like a {mf|man|woman} who has been reading."''',
        c("[Leave her to her burning.]", flags=(ANATOMY_WATCHED,))),
     el("leave", '''{n}She looks at you across the opened body with mild contempt, as if you had refused a second helping.{/n}
 "Burn it. As you like. That is what your crusade does with everything it does not understand." {n}She draws the sheet back up to the dead man's chin, quite gently.{/n}
 "I am not offended, Commander. I am disappointed, which is worse, and lasts longer. Go on. I will burn him myself. It will take me all night, and I will think of you the whole time, unkindly."''',
        c("[Go.]", flags=(ANATOMY_LEFT,))),
-], requires=(OWNED,), forbids=(ANATOMY_KNIFE, ANATOMY_WATCHED, ANATOMY_LEFT), delay=24, last=5)
+], requires=(BIER,), forbids=(ANATOMY_KNIFE, ANATOMY_WATCHED, ANATOMY_LEFT), delay=24, last=5)
 
 
 # --- 2. The chaplains' writ (T, optional): the hatemongers, and her oath. ------------------------------------------------
@@ -120,7 +129,7 @@ visit(E + "beat.writ", "A writ from the chaplains", [
     nar("hers2", '''{n}The young chaplain pulls the old one away by the sleeve. The clerk is already at the gate. Behind Elyanka, one of her grey escort turns his head, slowly, to watch them go, and you see the young chaplain see it, and go white.{/n}
 {n}When they have gone she turns back to you, entirely composed.{/n} "You let me speak for myself. Nobody does that for a priestess of my Lady. They either burn her or hide her." {n}A dry, pleased breath.{/n} "You will regret it one day. I shall enjoy watching you not regret it yet."''',
         c("[Leave her in her yard.]", flags=(WRIT_HERS,))),
-], requires=(OWNED,), forbids=(WRIT_UPHELD, WRIT_LIED, WRIT_HERS), delay=36, last=5)
+], requires=(BIER,), forbids=(WRIT_UPHELD, WRIT_LIED, WRIT_HERS), delay=36, last=5)
 
 
 # --- 3. Venison (T, optional, after the hearse): hungry and fed at once. -------------------------------------------------
@@ -146,7 +155,7 @@ visit(E + "beat.hunt", "Venison", [
        c('[Sing] "What did they sing, the priests in the woods?"', "sang"),
        c("[Keep watch on the trees. This is the Worldwound's edge.]", "watched")),
     el("ate", '''{n}It is hot outside and cold in the middle, and tastes of iron and smoke and something wild. The blood runs down your chin. She watches you eat it with the same frank hunger she watched you with in the hearse, and when you have finished she wipes your chin with her thumb and licks the thumb.{/n}
-"There," {n}she says.{/n} "Hungry and fed at once. Now you know what I have been looking for all these years." {n}She eats her own half slowly, with her eyes shut.{/n} "It turns out I needed a sweaty mortal to eat it with. My Lady has a vulgar sense of humour."''',
+"There," {n}she says.{/n} "Hungry and fed at once. Now you know what my Lady promises." {n}She eats her own half slowly, with her eyes shut.{/n} "She has been fed well tonight. So have I. I shall tell her so, in the morning, at length."''',
        c("[Sit with her by the fire until it burns down.]", flags=(HUNT_ATE,))),
     el("sang", '''{n}She looks at you across the fire for a while, surprised.{/n}
 "You want the words?" {n}She sets the knife down.{/n} "Songs to her. Old songs, in the tongue they speak in the woods north of Caliphas, where the Camilary deer run. About eating, and drinking, and lying down, and never having to get up again."
@@ -165,7 +174,7 @@ visit(E + "beat.courier", "A man in grey", [
 "The priestess sends word. She does not trust it to paper. I will say it once."''',
         c("[Listen.]", "message")),
     n("message", "Man in grey", '''"*Commander. I have gone south to the border, to a house on the Ustalav road where the Way keeps rooms. A master of the Way has come up from Caliphas to ask me why my carriage is empty.*"
-"*I told him the goods are still ripening. He asked me whether I had grown fond of the goods. I told him I do not grow fond. I grow hungry. He did not believe me. Neither, when I lie awake in this house, do I.*"''',
+"*I told him the goods are the finest offering my Lady will be served this century, and that I will not have them hurried to her table half-ripe. He asked me whether that was faith or appetite. I told him that with my Lady there is no difference.*"''',
       c("Continue", "message2")),
     n("message2", "Man in grey", '''"*I will be back in four days. Do not die while I am gone. I would not be there to collect, and the master would, and he is not gentle with other people's property.*"
 "*Send your answer with this man. He will forget it the moment he has said it to me. He forgets everything. It is why I keep him.*"
@@ -256,7 +265,7 @@ visit(E + "ch6.collateral", "The collateral, inspected", [
        c("Continue", "rift2", requires=(COMMITTED,)),
        c("[Let her go back to her hearse.]", flags=(AT_RIFT,), forbids=(COMMITTED,))),
     el("rift2", '''{n}At the tent flap she stops, and comes back, and kisses you, hard, on the mouth, with her cold hand flat over your heart as if she were counting it.{/n}
-"For the claim," {n}she says, against your lips.{/n} "Do not flatter yourself."''',
+"For my Lady," {n}she says, against your lips.{/n} "She likes an offering warm when it is pledged."''',
        c("[Let her go back to her hearse.]", flags=(AT_RIFT,))),
     el("drezen", '''{n}For a moment she does not answer, and you would swear she is offended.{/n}
 "You would send your creditor home on the eve of the settlement." {n}Then the corner of her mouth goes up.{/n} "Very well. I will sit in the dead-house by the south gate with a candle, and wait for the news, like a widow. It will be a new experience. I do not expect to enjoy it."
@@ -305,7 +314,7 @@ visit(E + "beat.whisper", "The Way's tongue", [
 "I am afraid she will never take me. That I will be useful and mortal and grey until I die like one of your cattle, in a bed, of something stupid, and she will not even come to the table." {n}Her hand tightens on your wrist.{/n} "I have waited half my life. Every morning I wake warm, and it is a small death."
 {n}Then she lets go of you, and stands, and she is Elyanka Camilary again, straight-backed and cold.{/n} "You did not hear that. Go home."''',
        c("[Go home, and never repeat it.]")),
-], requires=(OWNED,), forbids=(WHISPER_FEAR, WHISPER_WAKE, WHISPER_LIE), delay=60, last=5)
+], requires=(TESTED,), forbids=(WHISPER_FEAR, WHISPER_WAKE, WHISPER_LIE), delay=24, last=5, optional=False)
 
 
 # --- 9. A box that pinches (T, optional): the fitting. -------------------------------------------------------------------
@@ -376,7 +385,7 @@ visit(E + "beat.master", "A master from Caliphas", [
         c('[Give him an escort] "He came under your oath. He leaves under mine. Twelve crusaders to the border."', "escort"),
         c('[Leave it to her] "He\'s your master, and your order. You decide."', "hers")),
     el("kill", '''{n}She does not smile. She nods once, as she might to a tradesman who had quoted a fair price, and makes a small gesture toward the door. Two of her six men in grey detach themselves from the wall of the yard and walk out into the dark after the master's carriage, not hurrying.{/n}
-"You understand that he is my master," {n}she says,{/n} "and that I have just had him killed for you." {n}She considers this.{/n} "No. For my claim. It is not the same thing. Do not flatter yourself that it is the same thing."''',
+"You understand that he is my master," {n}she says,{/n} "and that I have just had him killed for you." {n}She considers this.{/n} "No. For my Lady. A master who would hurry an offering to her table half-ripe insults her. I have done her a service tonight." {n}She smiles, showing strong white teeth.{/n} "And the Way will learn that the priestess in Drezen keeps her collateral the way she keeps her faith: with a knife."''',
        c("Continue", "kill2")),
     nar("kill2", '''{n}Three days later a carriage is found in a ditch on the Ustalav road, south of the Mendevian border, with its horses gone and nobody inside it. The report reaches your desk as an item of no great interest, between a bill for tallow and a complaint about a sergeant.{/n}
 {n}That night she is waiting in your quarters, and she does not mention it, and neither do you. She is hungrier than you have ever seen her.{/n}''',
@@ -488,7 +497,7 @@ visit(E + "beat.wards", "Her Lady's mercy", [
     nar("hopeless2", '''{n}She keeps it. You watch her pass the boy with the arm without a glance, though he calls after her, and kneel by the eleven, one by one, with her cup and her whisper.{/n}
 {n}Seven of them die before dawn. All seven die quietly. The boy with the arm lives, and in the morning asks the chaplain where the grey lady went, and the chaplain does not know what he means.{/n}''',
         c("Continue", flags=(WARDS_HOPELESS,))),
-], requires=(OWNED,), forbids=(WARDS_STOPPED, WARDS_LET, WARDS_HOPELESS), delay=48, last=5)
+], requires=(BIER,), forbids=(WARDS_STOPPED, WARDS_LET, WARDS_HOPELESS), delay=48, last=5)
 
 
 # --- 14. The Tyrant's seals (T, optional): what a planner does with a creditor's secrets. --------------------------------
@@ -573,11 +582,11 @@ visit(E + "beat.face", "A liar's face", [
        c('[Take the charcoal from her] "Look at me. Just once."', "look")),
     el("done", '''{n}It takes an hour. When she turns the board round, the face on it is yours, and not quite yours: harder about the mouth, older about the eyes, the face of someone who would sit through their own wake in crepe to learn their price.{/n}
 "There," {n}she says.{/n} "That one I believe." {n}She unpins it and rolls it up and puts it in her sleeve.{/n} "I will talk to it when I need to know what you really think. You may keep the other one. It is no use to me."''',
-       c("[Let her keep it.]", flags=(FACE_READ,))),
+       c("[Let her keep it.]", flags=(FACE_READ, E + "face.drawn"))),
     el("look", '''{n}Her hand closes on the charcoal and on your fingers together. For a moment she does not lift her eyes; you can see her deciding not to.{/n}
 {n}Then she does. She looks at your face, as she has not once since the veil came off, for as long as it takes a candle to gutter and steady, with those pale unblinking eyes, and whatever she finds there she does not say.{/n}
 "Once," {n}she says, and lets go of the charcoal.{/n} "That was once. Do not ask again. I have to go on believing you are a liar. If I stop, I will start believing that a sweating crusader has a better claim on me than the masters in Caliphas, and the Way kills priestesses who believe that."''',
-       c("[Give her back the charcoal.]", flags=(FACE_READ,))),
+       c("[Give her back the charcoal.]", flags=(FACE_READ, E + "face.looked"))),
 ], requires=(EXPOSED, BIER), forbids=(FACE_READ,), delay=48, last=5)
 
 
@@ -611,7 +620,7 @@ visit(E + "beat.grave", "The stone they raised", [
     el("kept", '''"Mine." {n}She says it very quietly, with her palm still on the granite.{/n} "Then let it stand. Let the grass grow over it, and the priests pray at it on their holy days, and the soldiers who were at your funeral feast come here drunk and weep for you, and all the time you are up in the citadel, warm, eating their bread."
 "I shall come here in the evenings, and sit on it, and read. No one will dare to ask me why." {n}She almost smiles.{/n} "It is the nicest thing anyone has ever given me that they did not know they had."''',
        c("[Leave her with her grave.]", flags=(GRAVE_KEPT,))),
-], requires=(OWNED,), forbids=(GRAVE_LAY, GRAVE_DOWN, GRAVE_KEPT), delay=36, last=5)
+], requires=(BIER,), forbids=(GRAVE_LAY, GRAVE_DOWN, GRAVE_KEPT), delay=36, last=5)
 
 
 # --- 19. Where they lock the shutters (T, optional): Ustalav, from the walls of Drezen. -----------------------------------
@@ -643,7 +652,7 @@ visit(E + "beat.ustalav", "Where they lock the shutters", [
     el("refuse", '''"Good." {n}She sounds pleased.{/n} "Most crusaders pretend. They say they would love to see my country, and they mean they would love to burn it. You at least say what you mean, when it suits you."
 "You will see it anyway, of course. The body always goes home with the collector." {n}She pulls her robe closer.{/n} "Stay up here as long as you like. I am going in. Your walls are cold, and I have no desire to die of anything so stupid as a chill."''',
        c("[Stay on the wall alone.]", flags=(USTALAV_REFUSED,))),
-], requires=(OWNED,), forbids=(USTALAV_PROMISED, USTALAV_REFUSED, USTALAV_WOODS), delay=84, last=5)
+], requires=(BIER,), forbids=(USTALAV_PROMISED, USTALAV_REFUSED, USTALAV_WOODS), delay=84, last=5)
 
 
 # --- 20. The collector at night (T, optional): she watches the goods at rest. --------------------------------------------
@@ -708,7 +717,7 @@ visit(E + "beat.inquiry", "The paladin's questions", [
     el("hers2", '''"She did not strike me," {n}Elyanka says, that evening, sounding almost disappointed.{/n} "She asked me whether they had suffered. I told her the dead do not suffer; only the living, who bury them." {n}She pours wine.{/n}
 "She knows now, Commander. She knows it was your word that let my carts through the gate. What she does with that is between the two of you. I have never been so glad to be a stranger in a city."''',
        c("Continue", flags=(INQUIRY_HERS, "trickster.secret.elyanka_siege_dead.known.seelah"))),
-], requires=(GAVE_DEAD, E + "react.seelah_rows"), forbids=(INQUIRY_TRUTH, INQUIRY_MISLED, INQUIRY_HERS), delay=48, last=5)
+], requires=(GAVE_DEAD, E + "react.seelah_rows", BIER), forbids=(INQUIRY_TRUTH, INQUIRY_MISLED, INQUIRY_HERS), delay=48, last=5)
 
 
 # --- 7. Reaction: Regill, who reads law (the writ). ------------------------------------------------------------------------
