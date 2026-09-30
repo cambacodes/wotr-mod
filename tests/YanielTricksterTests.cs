@@ -177,8 +177,7 @@ internal static class YanielTricksterTests
         int Remote(int chapter, Func<Scene, bool>? extra = null) => story.Scenes.Count(s => s.Relationship == "yaniel" && Rules.IsRemote(s)
             && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && s.MinChapter <= chapter && s.MaxChapter >= chapter
             && (s.Chapters == null || s.Chapters.Length == 0 || s.Chapters.Contains(chapter)) && (extra == null || extra(s)));
-        check(Remote(3) <= 2 && Remote(4) == Remote(4, s => s.Owner == "Memory") && Remote(4) <= 1 && Remote(5) <= 1 && Remote(6) == 0
-              && Remote(5, s => s.Id == P + "verdict.letter") == 1,
+        check(Remote(3) <= 2 && Remote(4) == Remote(4, s => s.Owner == "Memory") && Remote(4) <= 1 && Remote(5) <= 1 && Remote(6) == 0,
             "Ledger 05 §4.2: Yaniel's rest delivery exceeds her caps (Ch3 " + Remote(3) + ", Ch4 " + Remote(4) + ", Ch5 " + Remote(5) + ", Ch6 " + Remote(6) + ").");
         check(!own.Any(s => s.Nodes.Any(n => n.Choices.Any(c => c.Set.Any(f => f.StartsWith("trickster.wmt.use.", StringComparison.Ordinal))))),
             "Yaniel's device spends a Word Made True.");
@@ -263,6 +262,32 @@ internal static class YanielTricksterTests
         check(Paths(wall, struck).All(o => o.path.Any(e => e.node == "struck")) && Paths(wall, sentOnly).All(o => o.path.Any(e => e.node == "fresh_nosword"))
               && Paths(wall, handed).All(o => o.path.Any(e => e.node == "fresh")),
             "The walls invent a Fane history: an attack Seelah stopped, a Commander who never handed her the sword, or one who did.");
+        // With no sword in the pack, the walls ask about Radiance only as she knows it: handed over in the Fane, or a rumour.
+        var bareUnseen = Later(story, Observe(story, World(story, 5, "trickster", "trickster.ever", "yaniel.freed"), "irabeth.chapter_five"), 24);
+        var bareSeen = Later(story, Observe(story, World(story, 5, "trickster", "trickster.ever", "yaniel.freed", "yaniel.radiance_seen"), "irabeth.chapter_five"), 24);
+        check(Paths(wall, bareUnseen).Where(o => o.path.Any(e => e.node == "wall" && e.index != 2)).All(o => o.path.Any(e => e.node == "cuff_unseen") && !o.path.Any(e => e.node == "cuff_empty"))
+              && Paths(wall, bareUnseen).Any(o => o.path.Any(e => e.node == "cuff_unseen"))
+              && Paths(wall, bareSeen).Where(o => o.path.Any(e => e.node == "wall" && e.index != 2)).All(o => o.path.Any(e => e.node == "cuff_empty") && !o.path.Any(e => e.node == "cuff_unseen")),
+            "The walls remember a Radiance handover that never happened, or forget one that did.");
+        // The Commander who drew on her in the Fane earns her trust back on the wall before any yes (review r9 BEL).
+        var courtedFlags = new[] { "trickster", "trickster.ever", Swapped, Carries, Returned, Verdict, "iz.done", P + "drawn.walls", P + "beat.raid" };
+        var struckCourted = Later(story, World(story, 5, courtedFlags.Concat(new[] { "yaniel.struck_test", P + "distrust" }).ToArray()), 24);
+        var struckTrusted = Later(story, World(story, 5, courtedFlags.Concat(new[] { "yaniel.struck_test", P + "distrust", P + "trusted" }).ToArray()), 24);
+        check(Avail(trade, Later(story, World(story, 5, courtedFlags), 24)) && !Avail(trade, struckCourted) && Avail(trade, struckTrusted)
+              && Paths(wall, struck).All(o => o.path.Any(e => e.node == "struck") && (o.state.Has(P + "distrust") || !o.path.Any(e => e.node == "wall"))),
+            "The struck Commander reaches the yes without earning her trust back, or cannot reach it after the raid.");
+        var raid = S(P + "beat.raid");
+        var raidStruck = Later(story, World(story, 5, "trickster", "trickster.ever", Swapped, Carries, Returned, P + "beat.walls", P + "beat.bout", "yaniel.struck_test"), 24);
+        check(Paths(raid, raidStruck).All(o => o.path.Any(e => e.node == "after_struck") && o.state.Has(P + "trusted"))
+              && Paths(raid, Later(story, World(story, 5, "trickster", "trickster.ever", Swapped, Carries, Returned, P + "beat.walls", P + "beat.bout"), 24)).All(o => !o.path.Any(e => e.node == "after_struck")),
+            "The raid does not answer the Fane attack on the struck branch, or answers one that never happened.");
+        var ep6 = new[] { "trickster.ever", Returned, Verdict, P + "drawn.walls", P + "beat.raid", "yaniel.struck_test", P + "distrust" };
+        var ep6Trusted = ep6.Concat(new[] { P + "trusted" }).ToArray();
+        int Shown(string[] flags) => pages.Count(s => Avail(s, World(story, 6, flags)) && s.Id != P + "epilogue.mourned");
+        check(Avail(S(P + "epilogue.distrusted"), World(story, 6, ep6)) && !Avail(S(P + "epilogue.commit"), World(story, 6, ep6)) && Shown(ep6) == 1
+              && Avail(S(P + "epilogue.commit"), World(story, 6, ep6Trusted)) && Shown(ep6Trusted) == 1
+              && Avail(S(P + "epilogue.unasked"), World(story, 6, "trickster.ever", Returned, Verdict, P + "beat.raid", P + "trusted", "yaniel.struck_test", P + "distrust")),
+            "The pages after a struck courtship do not follow whether her trust was earned back.");
 
         // Trk_Yaniel_KillStands (binding coordinator ruling R5, 2026-09-30: "Her Fane death stays canon ONLY if it is the player's own
         // choice"; every native kill is a player answer): nothing of hers plays after it.
@@ -285,9 +310,19 @@ internal static class YanielTricksterTests
         var arrived = Take(found, c5, "stay", 0, Returned, Started);
         var home = Take(S(P + "beat.walls"), Later(story, arrived, 24), "you", 2, P + "drawn.walls", P + "beat.walls");
         check(!Avail(letter, Later(story, home, 24)) && !Avail(trade, Later(story, home, 24)), "The verdict or the trade comes before Iz.");
-        var izDone = Observe(story, Later(story, home, 48), "iz.done");
+        // One flirt is not a courtship (review r9 BEL): without a trial shared with her, the verdict does not open the trade.
+        var flirtOnly = Take(letter, Later(story, Observe(story, Later(story, home, 48), "iz.done"), 24), "end_quiet", 0, Verdict);
+        check(!Avail(trade, Later(story, flirtOnly, 24)) && !Avail(S(P + "epilogue.commit"), World(story, 6, flirtOnly.Flags.Where(f => f.StartsWith("yaniel.", StringComparison.Ordinal) || f == "trickster.ever").ToArray()))
+              && Avail(S(P + "epilogue.unasked"), World(story, 6, flirtOnly.Flags.Where(f => f.StartsWith("yaniel.", StringComparison.Ordinal) || f == "trickster.ever").ToArray())),
+            "The trade's yes (or the late page) opens on a single flirt, with no trial shared with her.");
+        var refugee = S(P + "beat.refugee");
+        var tried = Program.Walk(refugee, Later(story, home, 24)).FirstOrDefault(r => r.Has(refugee.Id));
+        check(tried != null, "The shortest courtship (the walls, then the last cart) cannot be walked.");
+        tried ??= home;
+        var izDone = Observe(story, Later(story, tried, 48), "iz.done");
         var afterLetter = Take(letter, Later(story, izDone, 24), "end_quiet", 0, Verdict);
-        check(!Avail(hands, Later(story, izDone, 24)) && letter.Kind == "letter", "The carries verdict is not her letter from Iz.");
+        check(!Avail(hands, Later(story, izDone, 24)) && !Rules.IsRemote(letter) && letter.InteractionHub == "yaniel.presence",
+            "The carries verdict is not told in person, back from Iz.");
         var yes = Take(trade, Later(story, afterLetter, 24), "ask", 0, Committed, Shackle);
         check(!Avail(vigil, Later(story, yes, 24)) && Avail(niche, Later(story, yes, 24)) && !Avail(niche, Later(story, yes, 23)),
             "Trk_Yaniel_AllRomanceWalk: the niche does not follow the commit a day later.");
@@ -298,7 +333,7 @@ internal static class YanielTricksterTests
             "The commit carries a test or a price, or the yes is not that neither trades.");
 
         // Trk_Yaniel_Oath: judges; the verdict reads the pack and the song; a broken oath goes straight to the vigil.
-        var judged = World(story, 5, "trickster", "trickster.ever", "yaniel.freed", Swapped, Judges, Oath, Returned, "iz.done", P + "drawn.walls");
+        var judged = World(story, 5, "trickster", "trickster.ever", "yaniel.freed", Swapped, Judges, Oath, Returned, "iz.done", P + "drawn.walls", P + "beat.night");
         var withSword = Later(story, Observe(story, judged, "yaniel.radiance_plus1"), 24);
         check(Through(hands, withSword, "held_believed", 0).All(o => o.Has(Stands)) && Through(hands, withSword, "held_unproven", 0).All(o => o.Has(P + "oath_unproven") && !o.Has(Stands) && !o.Has(Broken))
               && Ch(hands, "held_word", 0).Check?.DC == 15 && !Avail(letter, withSword),
@@ -357,7 +392,7 @@ internal static class YanielTricksterTests
         check(!Avail(letter, Later(story, postHome, 24)) && Avail(S(P + "verdict.wall"), Later(story, postHome, 24)),
             "A sword handed over after Iz gets her letter about carrying it at Iz.");
         var wallVerdict = Take(S(P + "verdict.wall"), Later(story, postHome, 24), "talk", 0, Verdict);
-        var lateTrade = Later(story, Observe(story, wallVerdict, P + "drawn.walls"), 24);
+        var lateTrade = Later(story, Observe(story, wallVerdict, P + "drawn.walls", P + "beat.staunton"), 24);
         check(Through(trade, lateTrade, "carries_late", 2).Any() && !Paths(trade, lateTrade).Any(o => o.path.Any(e => e.node == "carries_sang" || e.node == "carries_quiet")),
             "The trade retells Iz for a sword she received after Iz.");
         foreach (var page in pages)
@@ -388,7 +423,7 @@ internal static class YanielTricksterTests
             "The commit opens without any sign the Commander wanted her.");
 
         // Trk_Yaniel_MinaghoCoexist: Minagho's route is read, never forbidden; both commits are reachable.
-        var mc = World(story, 5, "trickster", "trickster.ever", Swapped, Carries, Returned, "minachiv.started", "minagho_chivarro.trickster.minagho_in", "minachiv.complete", P + "drawn.bite");
+        var mc = World(story, 5, "trickster", "trickster.ever", Swapped, Carries, Returned, "minachiv.started", "minagho_chivarro.trickster.minagho_in", "minachiv.complete", P + "drawn.bite", P + "beat.night");
         check(Avail(minagho, Later(story, mc, 24)), "Trk_Yaniel_MinaghoCoexist: her scene about Minagho does not open.");
         var told = Take(minagho, Later(story, mc, 24), "truth_end", 0, P + "minagho_told");
         var hid = Take(minagho, Later(story, mc, 24), "hide", 0, "trickster.secret.yaniel_minagho");
@@ -436,12 +471,12 @@ internal static class YanielTricksterTests
 
         // Pages.
         var pg = pages.ToDictionary(s => s.Id.Substring(P.Length));
-        check(pages.Length == 8 && pages.All(s => s.MinChapter == 6 && s.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.RemoveItem == null && c.Crusade == null))),
-            "Yaniel's pages are not eight effect-free Chapter 6 pages.");
+        check(pages.Length == 9 && pages.All(s => s.MinChapter == 6 && s.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.RemoveItem == null && c.Crusade == null))),
+            "Yaniel's pages are not nine effect-free Chapter 6 pages.");
         check(Avail(pg["epilogue.together"], World(story, 6, "trickster.ever", Committed, Shackle))
-              && Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Returned, Verdict, P + "drawn.walls")) && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Returned, Verdict, P + "drawn.walls", Committed))
+              && Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Returned, Verdict, P + "drawn.walls", P + "beat.refugee")) && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Returned, Verdict, P + "drawn.walls", P + "beat.refugee", Committed))
               && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Returned, Verdict)) && Avail(pg["epilogue.unasked"], World(story, 6, "trickster.ever", Returned, Verdict))
-              && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Returned, Verdict, P + "drawn.walls", Broken)) && Avail(pg["epilogue.broken"], World(story, 6, "trickster.ever", Returned, Verdict, P + "drawn.walls", Broken))
+              && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Returned, Verdict, P + "drawn.walls", P + "beat.refugee", Broken)) && Avail(pg["epilogue.broken"], World(story, 6, "trickster.ever", Returned, Verdict, P + "drawn.walls", P + "beat.refugee", Broken))
               && !Avail(pg["epilogue.broken"], World(story, 6, "trickster.ever", Returned, Verdict, Broken, Committed))
               && Avail(pg["epilogue.unsettled"], World(story, 6, "trickster.ever", Returned)) && !Avail(pg["epilogue.unsettled"], World(story, 6, "trickster.ever", Returned, Verdict))
               && Avail(pg["epilogue.declined"], World(story, 6, "trickster.ever", Returned, Verdict, Declined)) && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Returned, Verdict, Declined))

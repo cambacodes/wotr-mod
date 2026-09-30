@@ -1,6 +1,6 @@
 """Yaniel's courtship on the Trickster path (11-ROSTER-PLAN-2 §2, Yaniel build sheet): her letter from Nerosyan (Chapter 3),
 the Commander alone with her iron in the Abyss (Chapter 4, one Memory page), and her Chapter 5 visits in Drezen, all in
-person on her presence at her own Drezen mark (ledger 05 §4.2: her one Chapter 5 letter is the verdict from Iz). The device,
+person on her presence at her own Drezen mark (ledger 05 §4.2; since audit r9 even the verdict from Iz is told in person). The device,
 the verdict, the commit, the niche, the pages and the reactions live in yaniel_trickster.
 
 Canon anchors used here: the Half Measure's roast and the old tree by the town hall in Nerosyan (TrueYaniel/Cue_0035
@@ -17,7 +17,7 @@ from storylines.yaniel_trickster import (B_AREELU, B_BOUT, B_CHURCH, B_NIGHT, B_
                                          B_STATUE, B_STAUNTON, B_WALLS, DRAWN_BITE, DRAWN_TREE, DRAWN_WALLS, HELD, HOLY, HUSK_BOUGHT, HUSK_FREED, HUSK_LEFT, NICHE, CARRIES, CLOSED,
                                          COMMITTED, CUFF_PACKED, CUFF_WORN, JUDGES, KILLED, MINAGHO_SECRET, MINAGHO_SEEN,
                                          MINAGHO_TOLD, RETURNED, STATUE_LIED, SWAPPED, TOLD_STATUE, TOLD_STAUNTON, UNMASKED,
-                                         FAKE_FREED, FAKE_REFUSED, LATE, WHY_BACK, WHY_CANT, Y, nar, visit, yn)
+                                         FAKE_FREED, FAKE_REFUSED, LATE, STRUCK, TRUSTED, WHY_BACK, WHY_CANT, Y, nar, visit, yn)
 
 SCENES = yt.SCENES   # appended in order: the route's rest delivery keeps authored order within a relationship
 
@@ -450,7 +450,11 @@ hub(Y + "beat.raid", "Over the wall", '"Mind if I stand the watch with you tonig
         c("Continue", "fight")),
     nar("fight", '''{n}It lasts a quarter of an hour and feels like a night. You fight back to back with her at the broken place, because it is the only place on that wall where two people can stand with a stone at each shoulder. Her back is against yours. You can feel her breathing through both your shirts, fast and steady, and every time she moves you move, as if you had drilled it for years.{/n}
 {n}When the last of them goes over the parapet into the dark the sentries start cheering, raggedly, and she turns round, streaked with gray ichor to the elbows, and looks at you.{/n}''',
-        c("Continue", "after")),
+        c("Continue", "after", forbids=(STRUCK,)),
+        c("Continue", "after_struck", requires=(STRUCK,))),
+    yn("after_struck", '''{n}She looks at you the way she looked at you in the Fane with Seelah's hand on your arm, and then she looks at your hands.{/n}
+"In the Fane you drew on me," {n}she says.{/n} "Tonight you had my back for a quarter of an hour on a broken wall, and every one of those things could have had yours. I have been trying all the way through it to decide which of those two was you." {n}She wipes her blade on her cloak.{/n} "I have decided. Do not make me decide again."''',
+        c("Continue", "after", flags=(TRUSTED,))),
     yn("after", '''"You fight like a thief," {n}she says, breathless.{/n} "You kept going for their knees." {n}She wipes her mouth with the back of her wrist and smears ichor across her cheek.{/n} "I have not fought beside anyone since the siege. I had forgotten how it goes. You stop thinking about your back. You just stop. As if somebody had taken a weight off it."
 {n}She is very close. The sentries are still cheering. Nobody is looking at the two of you, and everybody is.{/n}''',
         c("[Kiss her, there on the wall, in front of the sentries.]", "kiss"),
