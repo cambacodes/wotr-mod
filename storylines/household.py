@@ -73,7 +73,9 @@ PARTNERS = {
     "eliandra": ("Eliandra", "Eliandra"),
 }
 # Extra eligibility groups: a woman whose route has a second committed state (Nocticula's acquired harbour).
-EXTRA_ELIGIBLE = {"nocticula": [["noct.acq.renewed_agreement"]]}
+EXTRA_ELIGIBLE = {"nocticula": [["noct.acq.renewed_agreement"]],
+                  # RanRomance's completed Targona romance (targona_trickster: parent_romanced), which never sets committed.
+                  "targona": [["targona.trickster.parent_romanced"]]}
 PAIR_WOMEN = {"minagho_chivarro": ("minagho", "chivarro")}
 
 SCENES = []

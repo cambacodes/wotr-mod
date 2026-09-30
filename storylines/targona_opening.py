@@ -294,9 +294,9 @@ First you must test the opening without sending anyone through it. If its ends w
     n("courier_setup", "Narrator", '''{n}The ordinary page hid no door, and you do not pretend it did. What you have is a named wayhouse, a courier who runs the eastern road twice a week, and a woman who wrote that she wants to see you.{/n}
 You buy the dispatch clerk a bottle and a quiet hour, and your sealed invitation goes into the returns bag on top instead of at the bottom. The courier who was meant to carry a packet of requisitions reaches the wayhouse before her evening duty with your letter in his hand, and he never learns why the clerk was so cheerful.
 She writes back in her own hand, on the back of yours. She will walk the public road to Drezen, if you still want her to come.''',
-      c("Send the courier's invitation and let Targona choose the walk.", "road"),
+      c("Send the courier back with your invitation.", "road"),
       c("Do not send it. Keep the correspondence open.", "declined")),
-    n("ordinary", "Narrator", '''{n}You do not make a magical route. You write that you will leave the invitation with the courier and let Targona decide whether to walk the road from her wayhouse.{/n}
+    n("ordinary", "Narrator", '''{n}You do not make a magical route. You write that the invitation will wait with the courier, and that the road from her wayhouse is an ordinary one.{/n}
 She replies that she will not come this week: there is fever on the eastern road, and eleven men in the wayhouse who need an angel more than you do. You answer with an ordinary account of your day, including one detail too small for any dispatch.
 She sends back one from hers. The wayhouse cat has taken the chaplain's chair, and nobody in the house has the courage to move it.''',
       c("Send your answer and leave a later invitation to her.", flags=("targona.visit_correspondence",))),
@@ -304,44 +304,42 @@ She sends back one from hers. The wayhouse cat has taken the chaplain's chair, a
 Targona's answer is warm, if brief.
 "You took me at my word. Few people do; they think an angel's no is only a yes that has not been prayed over long enough. I still want you. Keep writing to me, and one evening I will write back and name the night."
 You answer with the smallest news you have, and ask for hers.''',
-      c("Reply with affection and leave the next decision open.", flags=("targona.visit_correspondence",))),
+      c("Write back.", flags=("targona.visit_correspondence",))),
     n("steady", "Narrator", '''{n}The two anchors hold when you test the opening with an empty dispatch pouch, first from the wayhouse side and then from Drezen. The path returns to the same two places every time. It will stay open for the evening.{/n}
 {n}The courier carries Targona a written account of the test, the way to close the passage, and the key. She reads every line of it. Her reply is one sentence: "I will inspect it myself."{/n}
 {n}When she arrives in the Drezen courtyard she examines both anchors, slowly, the way a healer examines a wound someone else has dressed, and then puts the key in her own pocket.{/n}
 "It is well made," she says. "For a trick."''',
-      c("Offer to walk beside her and let her choose where to begin.", "walk"),
-      c("Ask whether she would rather close the passage and take the road home now.", "close_passage")),
+      c("Walk the wall with her.", "walk"),
+      c("Tell her the wounded on the eastern road will want her at first light.", "close_passage")),
     n("falter", "Narrator", '''{n}The first end shifts when you test it with the dispatch pouch. The pouch comes back with its seams turned inside out. You close the opening before the courier ever sees it.{/n}
 {n}You send an ordinary letter instead, and tell her exactly what failed. Targona answers by the same courier.{/n}
 "Thank you for not sending me the key. I would have used it, and you know that, which is why I am glad you did not.
 "Write to me tonight instead. Tell me something from your day too small for a dispatch. When there is a road worth trusting, I will walk it."''',
       c("Answer her and keep the correspondence open.", flags=("targona.visit_correspondence",))),
-    n("road", "Narrator", '''{n}The courier carries your invitation to the Celestial Order's wayhouse. Targona reads the terms there and chooses to come by the public eastern road, on foot and at her own pace.{/n}
+    n("road", "Narrator", '''{n}The courier carries your invitation to the Celestial Order's wayhouse. Targona comes by the public eastern road, on foot, stopping twice on the way at the dressing station by the ford because there were men there.{/n}
 No spell moves her and no unstable gate closes behind her. She reaches the Drezen courtyard before the appointed hour and waits until you arrive.
 "I walked," she says. "It was a long road, and nobody on it looked at the wing. I liked that. Walk beside me the rest of the way."''',
-      c("Walk with her and let her choose where to begin.", "walk"),
-      c("Ask whether she would rather return to the wayhouse tonight.", "close_road")),
-    n("walk", "Narrator", '''{n}You take the path around the courtyard rather than leading her through it. Targona chooses the slower walk along the wall, where the city noise thins and the evening air reaches the open edge of her wing.{/n}
-You ask if the wing hurts today. She answers without apology: sometimes, and not now. Then she asks what you would have done if she had declined.
+      c("Walk the wall with her.", "walk"),
+      c("Tell her the wounded on the eastern road will want her at first light.", "close_road")),
+    n("walk", "Narrator", '''{n}You take the path around the courtyard and up onto the wall, where the city noise thins and the evening air reaches the open edge of her wing.{/n}
+You ask if the wing hurts today. She answers without apology: sometimes, and not now. Then she asks what you would have done if she had not come.
 "Waited," you say. "Possibly complained to the nearest statue."
-"Good. I would have disliked becoming responsible for your disappointment."
-Her mouth curves. The joke has reached its mark, but not its end.
+"Pray for patience instead. It works on commanders too, I am told, though slowly." {n}Her mouth curves.{/n} "I prayed for it all day. It did not take."
+The joke has reached its mark, but not its end.
 "Everyone looks at me as a sign," she says. "Heaven's healers look at the wing and see Areelu's work. The soldiers look at the other one and see a promise. In that laboratory I was proof of something." {n}She stops walking.{/n} "You are looking at me as if I were a woman. I do not know yet what to do with that. I think I like it."
 {n}She turns to face you. The black wing lifts a little, the way it does when she is startled, and she does not fold it down.{/n}
 "Commander. You have looked at me like that the whole length of the wall. Are you going to do anything about it?"''',
       c("Ask her again, and wait for her answer.", "kiss"),
       c("Tell her you would rather continue the walk.", "continue")),
-    n("close_passage", "Narrator", '''{n}You ask whether she would rather close the tested passage and take the public road home now. Targona turns the key herself; the opening folds shut at the Drezen end.{/n}
-"Yes. I would like to walk back while the evening is still quiet." {n}She smiles, a little ruefully.{/n} "If I stay, I will stay too long, and tomorrow there are wounded on the eastern road who deserve an angel who slept."
-You tell her you are glad she came, and do not ask her to reconsider. She offers you her arm for the walk to the eastern road.''',
+    n("close_passage", "Narrator", '''{n}She looks east, where the watchfires are, and then turns the key herself; the opening folds shut at the Drezen end.{/n}
+"You are right, and I hate it. If I stay, I will stay too long, and tomorrow there are wounded on the eastern road who deserve an angel who slept." {n}She smiles, a little ruefully, and offers you her arm.{/n} "Walk me to the road, at least. I will not use your trick twice in one night."''',
       c("Walk with her to the road and say goodnight.", "departed")),
-    n("close_road", "Narrator", '''{n}You ask whether she would rather return to the wayhouse tonight. Targona says yes; she would like to walk back while the evening is still quiet.{/n}
-"I am glad we met." {n}She smiles, a little ruefully.{/n} "If I stay, I will stay too long, and tomorrow there are wounded on the eastern road who deserve an angel who slept."
-You tell her you are glad she came, and do not ask her to reconsider. She offers you her arm for the walk to the eastern road.''',
+    n("close_road", "Narrator", '''{n}She looks east, where the watchfires are.{/n}
+"You are right, and I hate it. If I stay, I will stay too long, and tomorrow there are wounded on the eastern road who deserve an angel who slept." {n}She smiles, a little ruefully, and offers you her arm.{/n} "Walk me to the gate, then. Slowly."''',
       c("Walk with her to the road and say goodnight.", "departed")),
     n("departed", "Narrator", '''{n}You walk her as far as the eastern gate. The sentries there have been told nothing, and they look at the wing, and then at you, and then very hard at the road.{/n}
 She squeezes your hand before letting go.
-"That is all I want tonight. I am glad I came. Do not ask me for the next evening now. Ask me in a letter, where I can say yes slowly."
+"I am glad I came. Do not ask me for the next evening here, at a gate, in front of sentries. Ask me in a letter, where I can say yes slowly."
 Two days later the courier brings a note. She reached the wayhouse before midnight, the cat has kept the chaplain's chair, and she prayed for you at compline, which she says you are not to make anything of.''',
       c("Reply with affection and leave the next invitation open.", flags=("targona.visit_pause",))),
     n("kiss", "Narrator", '''{n}Targona does not wait for you to ask twice. She takes the front of your coat in her fist and kisses you, hard and certain, the way she once told Areelu's barrier that she would bear whatever came.{/n}
@@ -363,7 +361,7 @@ Two days later the courier brings a note. She reached the wayhouse before midnig
     n("continue", "Narrator", '''{n}You tell her that a walk is enough. Targona leaves her fingers in your sleeve and chooses the battlements, where the city opens below and the watchfires on the eastern road show where the wounded are coming in.{/n}
 "There," she says, pointing. "That fire is the ford. They brought eleven across it this morning. I counted." {n}She is quiet for a moment.{/n} "I have spent my whole life being useful. I am not sure I know how to be idle beside someone."
 "Walk until I am tired. Then eat something sweet enough to be imprudent. Then decide whether I want another kiss. That is my plan, and I will not be argued out of it."
-{n}She tells you which of the city lights she can see from the terrace, and which she has mistaken for stars. You listen as the night deepens around the places she chooses to name.{/n}''',
+{n}She tells you which of the city lights she can see from the terrace, and which she has mistaken for stars, and which is the lamp in the infirmary where a boy with a fever is waiting for morning.{/n}''',
       c("End the evening with affection and leave the next choice open.", flags=("targona.visit_tender",)),
       c("Ask if she would like that second kiss now.", "kiss")),
 ], "targona.what_she_keeps", delay=0, requires=("targona.ran_romance",))

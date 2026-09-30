@@ -354,12 +354,24 @@ internal static class TargonaTricksterTests
         var cryptCost = crypt.Nodes.Single(n => n.Id == "start").Choices[0];
         check(cryptCost.Crusade?.Resource == "Favors" && cryptCost.Crusade.Amount == -500 && cryptCost.Mythic == "PlayerIsTrickster",
             "The crypt fallback is not dearer than the Chapter 3 one.");
-        var cryptRaised = Later(story, After(crypt, killed5, "raise", 0), 72);
-        var cryptPages = new HashSet<string>();
-        Program.Walk(oneSoul, cryptRaised, (page, _) => cryptPages.Add(page));
-        check(Rules.Available(story, oneSoul, cryptRaised) && cryptPages.Contains("crypt") && !cryptPages.Contains("quiet")
-              && !cryptPages.Contains("cold"), "The crypt raising is remembered as another one.");
-        check(Reaches(After(oneSoul, cryptRaised, "news", 0), Committed), "The crypt raising cannot commit.");
+        // One Chapter 5 delivery (ledger 4.2): the crypt letter retrieves, raises and returns her itself; one_soul never follows.
+        var cryptBack = After(crypt, killed5, "wake", 0);
+        check(cryptBack.Has(P + "returned") && cryptBack.Has(P + "cost.raised_from_the_crypt") && cryptBack.Has(P + "cost.struck_down")
+              && !Rules.Available(story, oneSoul, Later(story, cryptBack, 72)) && Rules.Available(story, furlough, Later(story, cryptBack, 1)),
+            "The crypt raising does not return her in one delivery.");
+        var ch5Letters = story.Scenes.Where(s => s.Relationship == "targona" && s.Id.StartsWith(P, StringComparison.Ordinal) && Rules.IsRemote(s)
+                                                 && !s.Reaction && (Rules.Available(story, s, killed5) || Rules.Available(story, s, Later(story, cryptBack, 72)))).ToList();
+        check(ch5Letters.Count == 1 && ch5Letters[0] == crypt, "The Chapter 5 fallback costs more than one remote delivery.");
+        check(!crypt.Nodes.Any(n => n.Text.Contains("knight", StringComparison.OrdinalIgnoreCase) || n.Text.Contains("second scroll", StringComparison.Ordinal)),
+            "The crypt price is another man's death, or a second scroll appears.");
+        check(Reaches(cryptBack, Committed), "The crypt raising cannot commit.");
+        // RanRomance's own romance (parent treatment completed as a romance) reaches the Last Call coda and the household.
+        var lcTargona = S("targona.lastcall.page");
+        check(lcTargona.RequiresAnyGroups.Length == 1 && lcTargona.RequiresAnyGroups[0].Contains("targona.committed")
+              && lcTargona.RequiresAnyGroups[0].Contains(P + "parent_romanced") && treatedRomance.Has(P + "parent_romanced"),
+            "The parent romance never reaches Targona's coda.");
+        var eligibleGroups = story.Derived["targona.harem.eligible"];
+        check(eligibleGroups.Any(g => g.Length == 1 && g[0] == P + "parent_romanced"), "The parent romance is not a household partner.");
         // The laboratory death: TargonaIsWasKilledInAreeluLab starts at the [Attack] cue, and the native game itself reads it as her
         // death (Epilogues/Cue_0531, ThresholdCamp_Scripts03). The fight it begins has no surrender and no exit, so a world with
         // the etude and a living angel is not a native state; no fixture pretends otherwise.

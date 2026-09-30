@@ -175,23 +175,27 @@ letter(P + "dead.late_light", "The hard way back", [
 # back into the ruin in Chapter 3. Dearer, and later: the Hand's chaplains carried her out of the ruin themselves and have
 # kept her in the chapel crypt while Heaven decides where an angel is buried (authored).
 letter(P + "dead.late_crypt", "The crypt under the chapel", [
-    nar("start", '''{n}The chaplains of the Hand keep a crypt under the chapel for knights whose orders have not yet said where they are to be buried. Since Areelu's laboratory they have kept an angel in it, on a bier, under a Mendevian shroud, waiting for Heaven to answer a letter about her. Heaven has not answered.{/n}
-{n}You have come back up out of the Abyss with the war nearly over and her name still on a list of the dead. The crusade's last scroll of raise dead is locked in the chaplains' own reliquary, promised to the first knight of the Hand who falls at the Threshold.{/n}''',
-        c('[Take the knight\'s scroll] "Open the crypt. I\'ll read it myself, and you\'ll say nothing."', "raise", mythic="Trickster",
-          crusade=("Favors", -500)),
+    nar("start", '''{n}The crusade's chaplains keep a crypt under the chapel for the dead whose orders have not yet said where they are to be buried. Since Areelu's laboratory they have kept an angel in it, on a bier, under a Mendevian shroud, waiting for Heaven to answer a letter about her. Heaven has not answered.{/n}
+{n}You have come back up out of the Abyss with the war nearly over and her name still on a list of the dead. There is one scroll of raise dead left in Drezen: the chaplains' reliquary holds it as the crusade's relic tithe, sealed and promised to Heaven's envoy, who is to carry it back to the Upper Planes after the Threshold as proof that the crusade kept faith.{/n}''',
+        c('[Break the tithe seal] "Open the crypt. I\'ll read it myself, and the envoy can take it up with me."', "raise",
+          mythic="Trickster", crusade=("Favors", -500)),
         c('"Let her rest."', abort=True)),
-    nar("raise", '''{n}The chaplain-captain opens the reliquary with a face like a shut door. Somewhere in the Threshold's first assault a knight of the Hand will fall with no scroll kept for him, and every chaplain in the chapel knows whose name to curse for it.{/n}
-{n}In the crypt you turn back the shroud. She looks as she did on the laboratory floor. The crypt is cold, and the chaplains have been careful with her. You read the scroll over her by one lamp, with your palm flat on her heart and her brother's light in it, and the chaplain-captain stands at the stair with his back to you and prays aloud for the knight who will not have it. Coming back from the dead is an ordeal. The breath goes into her like a blade.{/n}''',
-        c('[Stay until she breathes.]', flags=(PRIMED, LATE, CRYPT))),
+    nar("raise", '''{n}The chaplain-captain opens the reliquary with a face like a shut door and makes you break the envoy's seal with your own thumb. By nightfall the envoy will know whose thumb it was, and he will take his blessing off the Threshold muster, and every officer in Drezen will know why.{/n}
+{n}In the crypt you turn back the shroud. She looks as she did on the laboratory floor. The crypt is cold, and the chaplains have been careful with her. You read the scroll over her by one lamp, with your palm flat on her heart and her brother's light in it, and it goes to ash in your hand at the last word. Coming back from the dead is an ordeal. The breath goes into her like a blade, and she opens her eyes on a stone ceiling and your face.{/n}''',
+        c("Continue", "wake")),
+    t("wake", '''{n}It is a long time before she can speak, and when she can, it is only a whisper.{/n}
+"Whose scroll?" {n}She hears the answer out. The black wing moves once against the bier.{/n}
+"Heaven's tithe. You broke Heaven's tithe for an angel you killed." {n}She closes her eyes.{/n} "I would have told you to leave me. You knew that. It is why you did not wait until I could."
+"Then I will not be carried to a crypt again for nothing. Take me up to the infirmary, Commander. If I am to cost that much, the wounded had better get the worth of it."''',
+        c('[Carry her up the crypt stair.]', flags=(PRIMED, LATE, CRYPT, RETURNED, STARTED, STRUCK, SHARD))),
 ], requires=("trickster", DEAD), forbids=(PRIMED, RETURNED), delay=0, chapters=(5,),
    TricksterDevice=True, TricksterState=DEAD)
 
 letter(P + "dead.one_soul", "Read back in", [
     nar("start", '''{n}A runner comes up from the field infirmary behind the quartermaster's stores, out of breath, with his cap in his hand.{/n}''',
-        c("Continue", "quiet", forbids=(ECHO_SPENT, OPEN, CRYPT)),
-        c("Continue", "open", requires=(OPEN,), forbids=(ECHO_SPENT, CRYPT)),
-        c("Continue", "cold", requires=(ECHO_SPENT,)),
-        c("Continue", "crypt", requires=(CRYPT,))),
+        c("Continue", "quiet", forbids=(ECHO_SPENT, OPEN)),
+        c("Continue", "open", requires=(OPEN,), forbids=(ECHO_SPENT,)),
+        c("Continue", "cold", requires=(ECHO_SPENT,))),
     nar("quiet", '''{n}The laboratory. You have lived it again every night since:{/n}
 {n}Your blade goes in. She falls, the way the story always meant her to. The room turns towards the door and whatever Areelu has left waiting there. You kneel beside her as if to close her eyes, and under your breath, no louder than a prayer for the dead, you read the scroll from your sleeve to its last word, with your other palm flat over her heart and her brother's light in it, turned down to the warmth of a hand. It crumbles to ash against your palm. For one breath the light under your hand stings the way it stung in the rock under Kenabres, when his sword went out at your touch and left its fire in you, and then it is only warm. Nobody turns round. Her chest does not move. You leave her there, as she asked.{/n}''',
         c("Continue", "news")),
@@ -199,8 +203,6 @@ letter(P + "dead.one_soul", "Read back in", [
 {n}Your blade goes in. She falls, the way the story always meant her to. You are on your knees beside her before anyone can move, the scroll open, reading aloud, your other hand on her heart, and her brother's light coming out through your fingers white and plain as day. Every face in the room turns to you. Someone by the door says your name like a question. The last word, and the scroll goes to ash, and her chest does not move, and you stand up and say, "Leave her. She'll come," and walk out past all of them. Nobody asks you what they saw. They will ask each other for months.{/n}''',
         c("Continue", "news")),
     nar("cold", '''{n}You remember the chapel exactly: the scroll, the breath going into her like a blade, the chaplain praying with his eyes shut. She did not wake while you were there. The priests carried her down to the infirmary on a litter, as one more wounded thing.{/n}''',
-        c("Continue", "news")),
-    nar("crypt", '''{n}You remember the crypt exactly: the cold, the lamp, the shroud turned back, the second scroll ready in your other hand in case the first failed. It did not fail. The breath went into her like a blade after all those weeks, and she did not wake while you were there. The Hand's chaplains carried her up the crypt stair on a bier and down to the infirmary on a litter, and said nothing to anyone, as they had been paid to.{/n}''',
         c("Continue", "news")),
     nar("news", '''{n}The runner says that an angel with one black wing is up and washing wounds. She can barely lift the basin. She has not said her name. She asked whether the Knight-Commander was awake.{/n}
 {n}By noon Heaven's envoy to the crusade has heard, and by evening the Queen's chaplains have: an angel the lists call dead is changing bandages in Drezen, and nobody can say by whose hand. The envoy withholds his blessing from the next muster until someone explains it.{/n}''',
@@ -389,9 +391,9 @@ LIGHT_PARAGRAPHS = (
     p("She came back the hard way, through the chapel and the raise dead scroll, and it took her a year to lift a full "
       "basin again. Four volunteers went into Areelu's ruin for her body. She learned their names, and tended the one "
       "who lost his arm there until the day he died, old, in his bed.", requires=(ECHO_SPENT,)),
-    p("She came back through the chaplains' crypt, on the scroll the Hand had kept for its own. A knight of the Hand fell "
-      "at the Threshold with no scroll kept for him. She learned his name, and said it at every compline for the rest of "
-      "her life, before the Commander's.", requires=(CRYPT,)),
+    p("She came back through the chaplains' crypt, on the scroll the crusade owed Heaven as its tithe. Heaven's envoy "
+      "never blessed another muster of the Commander's, and Targona spent a year of feast days in his anteroom, asking "
+      "him to, until he wrote her a letter she did not show anyone.", requires=(CRYPT,)),
     p("The Commander kept the promise made in the quiet ward. It was harder than any vow they had broken, and "
       "Targona knew it, and said so, once.", requires=(SEALED,)),
     p("She told Heaven the truth about the laboratory, as she had said she would, and she told it that the Commander "
@@ -432,7 +434,7 @@ page(P + "epilogue.furlough", "A wand that never ran down",
 # The Commander's sacrifice at the Threshold, with no way back (native Epilogues/Cue_0116 records the death): no reunion.
 page(P + "epilogue.sacrifice", "The name over the door",
      '''{n}The Commander did not come back from the Threshold. Targona heard it in the infirmary, from a runner who did not know what he was telling her, and she finished binding the arm in front of her before she sat down.{/n}
-{n}She asked Heaven for no more furloughs, and Heaven, for once, did not argue. She kept the ward in Drezen with the Commander's name over the door until the last cot was folded, and prayed for the Commander at every compline, and when the Hand asked her where she wished to be sent next, she said: wherever the dying are, and nobody sits with them.{/n}''',
+{n}She asked Heaven for no more furloughs, and Heaven, for once, did not argue. She kept the ward in Drezen with the Commander's name over the door until the last cot was folded, and prayed for the Commander at every compline, and when her superiors in Heaven asked her where she wished to be sent next, she said: wherever the dying are, and nobody sits with them.{/n}''',
      requires=("trickster.ever", "sacrifice"), forbids=(CLOSED, DECLINED, "trickster.commander_back"),
      paragraphs=LIGHT_PARAGRAPHS[:3], RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED]])
 
