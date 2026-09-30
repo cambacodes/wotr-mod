@@ -11,7 +11,7 @@ Usage:
   python rrt_verify.py --matrix ../handoffs/trickster-matrix.json   # TT-20 roster matrix: entry / commit / coexist per character
 
 Sections: A producers | B reachability per mythic world | C chapter/delay traps | D cross-route forbid matrix
-          E lints | E2 gate lints | F native GUID bindings | F2 native return safety | G runtime-risk metrics | H Trickster roster matrix | I TypeId lint
+          E lints | E2 gate lints | E3 etude lifecycle | F native GUID bindings | F2 native return safety | G runtime-risk metrics | H Trickster roster matrix | I TypeId lint
           E9 rest budget: Trickster full-roster simulation with the E8b mailbag (default) or E8 post bags (report only;
              --delivery, --rest-cadence, --chapter-days, --bag-size, --queue-cap, --sim-natives); also run per matrix supply
              profile in --matrix mode
@@ -23,6 +23,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import return_safety  # noqa: E402  (F2: the Main.cs native return contract)
 import gate_lint  # noqa: E402  (E2: gate-writing lints, handoff 17)
+import etude_lifecycle  # noqa: E402  (E3: native etude lifecycle, 18-ETUDE-BINDING-AUDIT)
 # The mod root is, in order: $RRT_ROOT, the repository this script lives in (tools/..), or the default checkout.
 MOD = Path(os.environ["RRT_ROOT"]) if os.environ.get("RRT_ROOT") else (
     HERE.parent if (HERE.parent / "expansion.py").exists() else Path(r"C:\Users\Z\Documents\Projects\RanRomanceTirabade"))
@@ -201,6 +202,10 @@ class Model:
         # must-analysis only needs flags that are ever forbidden (projection commutes with union/intersection)
         self.persistent = frozenset(f for f in allf if (f in self.authored or f in self.latches or self.is_persistent_native(f)) and f in forb) |             ({"loss", "ascended"} & forb)
         self.forbidden_any = frozenset(forb)
+        # E3: a Playing-only etude binding that cannot read as held where it is used (area link, chapter cascade, audit
+        # ruling) is never possible there (tools/etude-lifecycle.json; absent -> no lifecycle model).
+        self.lifecycle = etude_lifecycle.load()
+        self._unreadable = {}
         self.static_ctx = {}
         for f, lst in self.producers.items():
             for (sid, nid, i) in lst:
@@ -208,6 +213,14 @@ class Model:
                 else:
                     c = self.nodes[sid][nid]["Choices"][i]
                     self.static_ctx[(sid, nid, i)] = frozenset((set(c["Requires"]) | set(c["Set"])) & self.persistent)
+
+    def unreadable(self, f, s, ch):
+        """E3: native Etudes key f can never read as held for this use (s None = relationship level; ch 0 = any chapter)."""
+        if self.lifecycle is None or self.native.get(f) != "Etudes": return False
+        key = (f, s["Id"] if s is not None else None, ch)
+        if key not in self._unreadable:
+            self._unreadable[key] = etude_lifecycle.unreadable(self.story, self.lifecycle, f, s, ch)
+        return self._unreadable[key]
 
     def is_persistent_native(self, f):
         sec = self.native.get(f)
@@ -318,13 +331,14 @@ class Reach:
         if self.chaptered:
             if ch < s["MinChapter"] or ch > s["MaxChapter"]: return "chapter"
             if s["Chapters"] and ch not in s["Chapters"]: return "chapter"
+        c = ch if self.chaptered else 0
         for f in s["Requires"]:
-            if not self.possible(f, ch): return "requires:" + f
-        if s["RequiresAny"] and not any(self.possible(f, ch) for f in s["RequiresAny"]): return "requiresAny"
+            if not self.possible(f, ch) or m.unreadable(f, s, c): return "requires:" + f
+        if s["RequiresAny"] and not any(self.possible(f, ch) and not m.unreadable(f, s, c) for f in s["RequiresAny"]): return "requiresAny"
         for g in s["RequiresAnyGroups"]:
-            if not any(self.possible(f, ch) for f in g): return "requiresAnyGroup"
+            if not any(self.possible(f, ch) and not m.unreadable(f, s, c) for f in g): return "requiresAnyGroup"
         for f in s["Forbids"]:
-            if self.forced(f, ch):
+            if self.forced(f, ch) and not m.unreadable(f, s, c):
                 o = s["ForbidOverrides"].get(f)
                 if not (o and self.possible(o, ch)): return "forbid-forced:" + f
         if is_epilogue(s): return None
@@ -341,15 +355,16 @@ class Reach:
             # so a world forced into the death reaches the relationship again once that state's return is possible.
             if any(r.get("DeathFlag") == f and r.get("Relationship") == s["Relationship"] for r in m.revivals.values())                     and any(f in (e.get("Detect") or []) and e.get("Returned") and self.possible(e["Returned"], ch)
                             for e in (rel.get("TricksterAccess") or {}).values()): continue
-            if self.forced(f, ch): return "unavailable-forced:" + f
+            if self.forced(f, ch) and not m.unreadable(f, None, ch if self.chaptered else 0): return "unavailable-forced:" + f
         if s["Relationship"] == "tirabade" and self.chaptered and not is_remote(s) and ch == 4: return "tirabade-ch4"
         return None
 
     def choice_ok(self, s, c, ch):
+        k = ch if self.chaptered else 0
         for f in c["Requires"]:
-            if not self.possible(f, ch): return False
+            if not self.possible(f, ch) or self.m.unreadable(f, s, k): return False
         for f in c["Forbids"]:
-            if self.forced(f, ch): return False
+            if self.forced(f, ch) and not self.m.unreadable(f, s, k): return False
         return True
 
     def _forward(self):
@@ -456,8 +471,9 @@ class Reach:
             mss = ms[sid]
             if sid in mss:
                 self.dead_scenes[sid] = "requires-chain needs this scene's own completion"; newly = True; continue
+            rch = self.reached[sid] if self.chaptered else 0
             for f in s["Forbids"]:
-                if f in mss:
+                if f in mss and not m.unreadable(f, s, rch):   # E3: a Forbids that can never read is never held
                     o = s["ForbidOverrides"].get(f)
                     if o and (o in self.held or self.native_possible(o, None)): continue
                     self.dead_scenes[sid] = "requires-chain holds forbidden '%s'" % f; newly = True; break
@@ -474,7 +490,7 @@ class Reach:
                         if must_flag.get(r): ctx = ctx | must_flag[r]
                     if sid in ctx and not s["Owner"].endswith("Epilogue"):
                         self.dead_choices[key] = "choice requires a flag only producible after this scene completes"; newly = True; continue
-                    bad = [f for f in c["Forbids"] if f in ctx]
+                    bad = [f for f in c["Forbids"] if f in ctx and not m.unreadable(f, s, rch)]
                     inscene = m.scene_sets[sid]
                     bad2 = [f for f in c["Requires"] if f in s["Forbids"] and not s["ForbidOverrides"].get(f) and f not in inscene]
                     if bad or bad2:
@@ -1283,6 +1299,9 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
     # E2: gate lints on the raw story (tools/gate_lint.py): one-flag groups, scenes relying on the tirabade default
     R["gate_lint"] = gate_lint.check(story)
     gate_lint.report(R["gate_lint"], P)
+    # E3: native etude lifecycle (tools/etude_lifecycle.py, 18-ETUDE-BINDING-AUDIT). HARD: a Playing-only binding read where
+    # its etude cannot be Playing (another area, a remote letter, a relationship/Derived use, after a chapter cascade).
+    R["etude_lifecycle"] = etude_lifecycle_report(story, model, P)
 
     # ---- G. runtime risk metrics / Build() mirrors
     names, flagkeys = build_names(model)
@@ -1465,6 +1484,25 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
     if out_json:
         Path(out_json).write_text(json.dumps(R, indent=1, default=lambda o: sorted(o) if isinstance(o, set) else str(o)), encoding="utf-8")
     return R, text
+
+
+def etude_lifecycle_report(story, model, P):
+    table = model.lifecycle
+    if table is None:
+        P("\n## E3. Etude lifecycle: tools/etude-lifecycle.json missing (python tools/etude_lifecycle.py) -> 1 hard failure")
+        return dict(rows=[], hard=["tools/etude-lifecycle.json missing"], warn=[])
+    rows, hard, warn = etude_lifecycle.check(story, table)
+    classes = collections.Counter("/".join(r["traits"]) for r in rows)
+    P("\n## E3. Etude lifecycle (%d etude bindings; read = what Main.BuildState reads): %d HARD, %d WARN; classes %s"
+      % (len(rows), len(hard), len(warn), dict(classes.most_common())))
+    for x in hard: P("  HARD", x)
+    for x in warn[:40]: P("  warn", x)
+    if len(warn) > 40: P("  ... %d more warnings (rrt_verify_report.json etude_lifecycle.warn)" % (len(warn) - 40))
+    P("  %-40s %-14s %-17s %-44s %s" % ("key", "binding", "read", "lifecycle", "etude / ruling"))
+    for r in rows:
+        P("  %-40s %-14s %-17s %-44s %s%s" % (r["key"], r["binding"], r["read"], "/".join(r["traits"]), r["name"] or "?",
+                                              " [%s]" % r["ruling"] if r["ruling"] else ""))
+    return dict(rows=rows, hard=hard, warn=warn)
 
 
 def s_rel(model, where):
@@ -1874,7 +1912,10 @@ def matrix_world_keys(model, st, guid_to_key):
     true, false, unresolved = set(), set(), []
     for keys, into in ((pos, true), (neg, false)):
         for key in keys:
-            if key in model.native or key in model.builtin_derived: into.add(key)
+            # A latch, or a Derived key that is only a latch's record (iz.monster_dead = [[iz.monster_dead.latched]]), stands for
+            # a native event and is forced like a native key. Other Derived composites stay unforced (as before E3).
+            record = key in model.latches or key in model.composites and all(len(g) == 1 and g[0] in model.latches for g in model.composites[key])
+            if key in model.native or key in model.builtin_derived or record: into.add(key)
             elif key not in model.authored and key not in model.derived: unresolved.append(key)
     for kind in ("etudes", "cues", "answers", "quests"):
         for g in det.get(kind, []):
@@ -2096,7 +2137,7 @@ def main():
     Path(a.text).write_text(text, encoding="utf-8")
     hard = len(R["validate_errors"]) + len(R["no_producer_required"]) + len(R.get("typeid", {}).get("problems", [])) \
         + len(R.get("bindings", {}).get("failures", [])) + len(R.get("return_safety", {}).get("failures", [])) \
-        + sum(len(v) for v in R.get("gate_lint", {}).values()) \
+        + sum(len(v) for v in R.get("gate_lint", {}).values()) + len(R.get("etude_lifecycle", {}).get("hard", [])) \
         + len(R["runtime"]["duplicate_names"]) + len(R["runtime"]["retry_dups"])         + len(R.get("released_names_removed", []))
     for x in R.get("released_names_removed", [])[:20]: print("SAVE BREAK (name from a released build no longer registered):", x)
     print("\nHARD FAILURES: %d  (report: %s)" % (hard, a.text))
