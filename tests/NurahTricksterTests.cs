@@ -317,7 +317,7 @@ internal static class NurahTricksterTests
         check(!Rules.Available(story, epCommit, lateLost) && Rules.Available(story, epBereaved, lateLost), "The late page survives the sacrifice.");
         // Round 3 (BEL): the byline paragraphs never contradict the co-author cover.
         var bylines = epMargin.Nodes[0].Paragraphs.Where(q => q.Text.Contains("The Commander's name appeared", StringComparison.Ordinal)).ToList();
-        check(bylines.Count == 3 && bylines.Count(q => !q.Requires.Contains("nurah.trickster.cost.coauthor")) == 2
+        check(bylines.Count == 4 && bylines.Count(q => !q.Requires.Contains("nurah.trickster.cost.coauthor")) == 2
               && bylines.Where(q => !q.Requires.Contains("nurah.trickster.cost.coauthor")).All(q => q.Forbids.Contains("nurah.trickster.cost.coauthor")),
             "The first-page byline contradicts the co-author cover.");
         // Sol round 2 (INT): an in-play commitment has its own page, without Last Call; one publication date throughout.
@@ -332,6 +332,19 @@ internal static class NurahTricksterTests
               && epMargin.Nodes[0].Text.Contains("Two years after the Threshold", StringComparison.Ordinal)
               && S("nurah.lastcall.page").Nodes[0].Text.Contains("two years after Threshold", StringComparison.Ordinal),
             "Her book has two publication dates.");
+        // Round 4 (CAN/VOI/BEL): each in-person terms scene remembers its own history; the parcel answers by post.
+        foreach (var t in new[] { terms, ranTerms })
+            check(!t.Nodes.Single(n => n.Id == "done").Text.Contains("pardon", StringComparison.Ordinal)
+                  && !t.Nodes.Single(n => n.Id == "partners").Text.Contains("pardon", StringComparison.Ordinal)
+                  && !t.Nodes.Single(n => n.Id == "done").Text.Contains("Say no", StringComparison.Ordinal), "A terms scene borrows another history: " + t.Id);
+        check(terms.Nodes.Single(n => n.Id == "done").Text.Contains("killed", StringComparison.Ordinal)
+              && ranTerms.Nodes.Single(n => n.Id == "done").Text.Contains("ran", StringComparison.Ordinal), "The raised and runaway propositions are the same speech.");
+        check(proofs.Nodes.Single(n => n.Id == "trusted").Text.Contains("courier", StringComparison.Ordinal)
+              && proofs.Nodes.Single(n => n.Id == "signed").Text.Contains("courier", StringComparison.Ordinal), "The parcel's answer is narrated in person.");
+        var coPara = epMargin.Nodes[0].Paragraphs.Where(q => q.Requires.Contains("nurah.trickster.cost.coauthor")).ToList();
+        check(coPara.Count(q => q.Text.Contains("The Commander's name appeared twice", StringComparison.Ordinal)) == 2
+              && coPara.Any(q => q.Requires.Contains("nurah.trickster.cost.signed_proofs")) && coPara.Any(q => q.Forbids.Contains("nurah.trickster.cost.signed_proofs")),
+            "Blank proofs followed by co-authorship claim a signature in the gap.");
         // Ramisa's call-in: a soul paid for in gold is no debt; the story (or the duplicate bill, sold on screen) is.
         var lcCall = S("nurah.lastcall.call");
         var owed = lcCall.RequiresAnyGroups.SelectMany(g => g).ToList();

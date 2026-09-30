@@ -221,9 +221,9 @@ TERMS_CHOICES = (
       flags=(COMPLETE, "nurah.trickster.cost.coauthor")),
     c('"Put my name on it too. Above yours."', "refused", flags=(CLOSED, "nurah.trickster.cost.name_above")))
 DONE = '''"Then we have a book." {n}She says it the way other people say a prayer, quickly, before anyone can take it back.{/n}
-"And now the part that isn't in the contract." {n}She looks you over, slowly, the way she looks at a page she means to cut.{/n} "You kept me when it would have been cheaper to hang me, and you never once pretended it was mercy. I have wanted to know what you're like when you're not being clever since the night you slid that dreadful pardon under my door. Say no now, Commander, and the book still happens. Say nothing, and I'll take it as the best review I've had."'''
+"And now the part that isn't in the contract." {n}She looks you over, slowly, the way she looks at a page she means to cut.{/n} "You kept me when it would have been cheaper to hang me, and you never once pretended it was mercy. I have wanted to know what you're like when you're not being clever since the night you slid that dreadful pardon under my door. Don't answer. You'll only be clever, and I have had enough of clever for one book."'''
 PARTNERS = '''"Co-authors. Partners in crime, in print, in the same typeface." {n}She grins, all teeth.{/n} "Trezbot would choke on it. Do that again sometime."
-"And since we're sharing things now." {n}She hooks a finger in your collar.{/n} "You're the only person who ever read what I wrote about them and laughed in the right places. I've been wanting to find out where else you laugh. Say no and we're still partners. Say nothing, and I'll take it as a signature."'''
+"And since we're sharing things now." {n}She hooks a finger in your collar.{/n} "You're the only person who ever read what I wrote about them and laughed in the right places. I've been wanting to find out where else you laugh. Don't answer that either. I can read it off you."'''
 REFUSED = '''"No." {n}Not angry. Final.{/n}
 "Lord Axilar Trezbot's name is on the cover of the best book I ever wrote. His name, his deeds, his glorious story for future generations, in my hand, every word. I did not climb out from under that name to climb under yours. Keep your joke, Commander. There's no book."'''
 
@@ -357,7 +357,7 @@ cell("nurah.trickster.ran_off.dedication", "A dedication in her own hand",
        c("Continue", "write")),
     nar("write", '''{n}By candlelight, on the blank page after the title, you write in her own small stitched hand, practising the loops until they are hers: "To the Commander, who kept me because I had stopped being funny. N. D." You leave the manuscript on her bunk before the bell.{/n}''',
         c("[Leave it on her bunk.]", flags=(PRIMED, GHOST, "nurah.started")),
-        c("[Leave it on her bunk, and send a quartermaster's purse down the south road to every press she might use, with the line and a page of her hand to set it by.]",
+        c("[Leave it on her bunk, and send a quartermaster's purse to the one licensed press at Nerosyan, which every pamphlet south of the Worldwound goes through, with the line and a page of her hand to set it by.]",
           crusade=("Finances", -250), flags=(PRIMED, GHOST, "nurah.started", PRINTER))),
 ], requires=("trickster", "nurah.prison"), forbids=(*DEATHS, RAN_OFF, GHOST), delay=0,
     EntryMythic="PlayerIsTrickster", EntryAlignment=dict(Direction="Chaotic", Value=1))
@@ -429,18 +429,22 @@ letter("nurah.trickster.after.proofs", "Chapter one, by post", 5, [
     nu("proofs_ran", '''"Chapter one. The war from the wrong side, which is the only side worth reading. I've been on both, and I have written this one on the road, on a pedlar's cart, in the backs of inns where nobody has heard of the Commander and everybody has an opinion.
 "There is a gap on the first page exactly one name wide, where you go. Fill it in and send it back, if you still think paper does what you tell it. Or leave it blank, and let me decide what you were."''',
        *PROOFS_CHOICES),
-    *PROOFS_TAIL,
+    # By post (Sol quality pass, BEL): her answer comes back by the next courier; nobody watches her read.
+    nu("trusted", '''{n}Her answer comes back by the same courier two days later, on the back of the returned proof sheet.{/n} "You left it blank. Trezbot never once left me a blank. Every line of his book had him in it before I'd picked up the pen. I have been staring at your gap for two days and I don't know what to do with it."
+"That is a compliment. Don't get used to it."''', c("[Put the letter away.]")),
+    nu("signed", '''{n}Her answer comes back by the same courier two days later, on the back of the returned proof sheet.{/n} "Your name sits in the gap as if the page had been cut to fit it. Of course. And it will say exactly that, in every copy. You are going to hate how accurate I am."''',
+       c("[Put the letter away.]")),
 ], requires=("trickster.ever", ACCEPTED), forbids=(PROOFS,), delay=72, RequiresAnyGroups=[[RETURNED, RAN_OFF]])
 
 
-def terms_in_person(id, hub, arrival, threshold, morning, requires, forbids):
+def terms_in_person(id, hub, arrival, threshold, morning, requires, forbids, done, partners):
     SCENES.append(scene(id, "Author's terms", "Nurah", 5, '"You came yourself."', [
         nu("start", arrival + "\n" + TERMS_TEXT,
            c("Continue", "terms_signed", requires=(SIGNED,)), c("Continue", "terms", forbids=(SIGNED,))),
         nu("terms_signed", '''"You signed chapter one, so you're in it. You don't get to be in the title."''', *TERMS_CHOICES),
         nu("terms", '"Take them or leave them. Nobody has ever let me say that to anyone before, so do me the courtesy of pretending to think about it."', *TERMS_CHOICES),
-        nu("done", DONE, c("Continue", "threshold")),
-        nu("partners", PARTNERS, c("Continue", "threshold")),
+        nu("done", done, c("Continue", "threshold")),
+        nu("partners", partners, c("Continue", "threshold")),
         nar("threshold", threshold, c("Continue", "morning")),
         nar("morning", morning, c("[Let her write.]")),
         nu("refused", REFUSED, c("[Let her go.]")),
@@ -457,7 +461,11 @@ terms_in_person("nurah.trickster.terms", "nurah.presence.raised",
 {n}She means it. Her hands are quick and ink-stained and greedy, at your buckles, your ribs, the old scar under your arm, which she finds in the dark and presses with one thumb until you flinch. "Found you," she says, pleased, and files it away. The chaplains' shift goes over her head and onto the floor. She is warm, warmer than she has any right to be, and when you lift her off the desk she wraps her legs around you and laughs against your throat as if she has just won a very large bet.{/n}''',
     '''{n}Dawn finds her at your desk in your shirt, which comes to her knees, writing fast with your best pen.{/n} "Chapter nine," she says without looking up. "I'm taking out the hunchback. I'm putting in something much worse. You'll love it."
 {n}Two days later the chaplains send the rest of their account: one grey shift, not returned. It has been paid already, in a small, stitched hand, with money you are fairly sure used to be yours, and made out in a name that is not hers.{/n}''',
-    (RETURNED,), ())
+    (RETURNED,), (),
+    '''"Then we have a book." {n}She says it quickly, before anyone can take it back.{/n}
+"And now the part that isn't in the contract." {n}She looks you over the way she looks at a page she means to cut.{/n} "You had me killed, Commander. Or handed over; I've stopped caring which, it comes out the same on the page. And then you bought me back off a marilith with a forged bill and more than you'll ever admit to, and never once came to the chapel to be thanked. That is the most interesting thing anyone has ever done to me, and I have been owned by experts. Don't answer. I'm going to find out what else you do when nobody's looking."''',
+    '''"Co-authors. Partners in crime, in print, in the same typeface." {n}She grins, all teeth.{/n}
+"You killed me, and then you paid for the privilege of undoing it. I have never been so thoroughly edited. Don't answer that. I'm going to return the favour."''')
 
 terms_in_person("nurah.trickster.ran_off.terms", "nurah.presence",
     '''{n}She pushes the hood back just far enough for you to see her grin.{/n} "Came in on a pedlar's cart, under a crate of my own pamphlets. Nobody searches a crate of pamphlets. Nobody reads them either, which is a separate grievance.
@@ -468,7 +476,11 @@ terms_in_person("nurah.trickster.ran_off.terms", "nurah.presence",
 {n}She climbs onto the bed to be taller than you and kisses you as if she is trying to read what you meant by the dedication off your tongue. Her hands are ink-stained and quick and very sure of themselves. When you pull her down she comes gladly, laughing, and bites your shoulder hard enough to leave a mark she clearly intends to describe.{/n}''',
     '''{n}Dawn finds the bed empty and the window open. On your pillow is a single proof sheet: last night, in a hand so small it looks like stitching, with every name changed and not one detail missing.{/n}
 {n}Across the top she has written: "Research. Not for publication. Probably."{/n}''',
-    (RAN_OFF,), (RETURNED,))
+    (RAN_OFF,), (RETURNED,),
+    '''"Then we have a book." {n}She says it quickly, before anyone can take it back.{/n}
+"And now the part that isn't in the contract." {n}She taps the dedication on the first page with one inky finger.{/n} "I ran from you. I got as far as a ditch in the River Kingdoms before I found out you'd been in my book the whole time, in my own hand, better than my own hand. Nobody has ever bothered to forge me properly. I came back to see what else you'd bother with. Don't answer. I'd rather find out."''',
+    '''"Co-authors. Partners in crime, in print, in the same typeface." {n}She grins, all teeth.{/n}
+"You forged me so well I kept it. Let's see if you're as good at the original. Don't answer; I've read enough of you."''')
 
 
 # --- Epilogue: her own pages (R2-6) --------------------------------------------------------------------------------
@@ -481,9 +493,9 @@ EPILOGUE_PARAGRAPHS = (
       "of 'To the Abyss and Back' put another name on every copy, and the inquisitors who hunted her never once "
       "thought to look for a dead woman.", requires=("nurah.trickster.cost.chaplains_writ",)),
     p("Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me "
-      "because I had stopped being funny. N. D.' She never managed to remove it: every printer she went to had already "
-      "been paid to keep it. After a while she stopped trying, and began "
-      "adding a footnote to it instead, a different one in every edition.", requires=(GHOST, PRINTER_PAID)),
+      "because I had stopped being funny. N. D.' The first printings carried it because a quartermaster's purse had paid "
+      "the printer to. After that she kept it herself, and began adding a footnote to it instead, a different one in "
+      "every edition.", requires=(GHOST, PRINTER_PAID)),
     p("Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me "
       "because I had stopped being funny. N. D.' She could have struck it from the forme any day she liked. She never "
       "did. Instead she added a footnote to it, a different one in every edition.", requires=(GHOST,), forbids=(PRINTER_PAID,)),
@@ -496,7 +508,10 @@ EPILOGUE_PARAGRAPHS = (
       "whose idea that had been.", requires=(SIGNED,), forbids=("nurah.trickster.cost.coauthor",)),
     p("The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, where it had "
       "been since the proofs. She said the second one was the only one the Commander had earned.",
-      requires=("nurah.trickster.cost.coauthor",)),
+      requires=("nurah.trickster.cost.coauthor", SIGNED)),
+    p("The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, which the "
+      "Commander had left blank and she had filled in herself, in the Commander's hand, better than the Commander's hand.",
+      requires=("nurah.trickster.cost.coauthor",), forbids=(SIGNED,)),
     p("Ramisa of the Fleshmarkets was seen, for one night only, in the front row of something. She never said what.",
       requires=(AUDIENCE,)),
 )
