@@ -122,7 +122,7 @@ internal static class HorzalahTricksterTests
               && story.Etudes["greybor.kicked_out"] == "dd138e723bf3dd94caddc127a23788ad"
               && story.Etudes["greybor.away"] == "00715f05d727921438971fa32c02ceaf"
               && story.Etudes["chapter.six"] == "41bf413e0fa2ea34b937d4445edd5f89"
-              && story.QuestObjectives["greybor.q3_failed"].SequenceEqual(new[] { "528bc8a8ad0c45f4aa9a3d9554b42499", "Failed" }),
+              && story.SeenCues["greybor.q3_failed"].SequenceEqual(new[] { "e60797a42f8d33c4581cfe3bb37b5d2f" }),
             "Trk_Horzalah_Bindings: a native key is not bound as the build sheet lists it.");
         check(story.Derived[Dead].Select(g => string.Join("+", g)).OrderBy(g => g).SequenceEqual(new[] { "horzalah.killed", "horzalah.killed_b", P + "killed_unmet" })
               && story.Derived["horzalah.q3_lapsed"].Select(g => string.Join("+", g)).OrderBy(g => g)

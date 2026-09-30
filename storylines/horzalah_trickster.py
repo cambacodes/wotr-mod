@@ -47,7 +47,7 @@ MERCY_RET = "4a3f22ae70e441d9b27ce67974f632d5"        # Cue_4: "Nothing. ... eve
 FAREWELL = "c12bda4e0a95464db71e9f9f79e765de"         # Cue_0007: "...Farewell!" (OnStop: the HorzalaTPOut cutscene)
 GREYBOR_LIST = "174d6c94b6725f44aad1d2a76993a926"     # CompanionDialogues/Grimbor/AnswersList_0002
 WENDUAG_HUB = "ced27e744d2dded40bbb5adf17816dbb"      # CompanionDialogues/Wenduag/AnswersList_0003
-Q3_FAIL = "528bc8a8ad0c45f4aa9a3d9554b42499"          # Q3_PriceOfLoyalty_Greybor/HiddenObjective_Fail (SetObjectiveStatus Fail)
+Q3_FAIL = "e60797a42f8d33c4581cfe3bb37b5d2f"          # InterrogationAfterAssasination/Cue_0016 (fails Q3: HiddenObjective_Fail 528bc8a8)
 
 STARTED = "horzalah.started"
 CLOSED = "horzalah.closed"
@@ -127,7 +127,9 @@ DERIVED = {
     # 05 §2.5 voice note: she joins as an owner who keeps what she takes; the household is never her property's keeper.
     "horzalah.harem.voice.keeps_what_she_takes": [[COMMITTED]],
 }
-QUEST_OBJECTIVES = {Q3_FAILED: [Q3_FAIL, "Failed"]}
+# The objective itself (QuestObjectives [528bc8a8..., "Failed"]) does not resolve as a standalone blueprint at load, so the
+# failure is read from the cue that sets it: Greybor's "We've lost an important lead" after the assassin dies unquestioned.
+SEEN_CUES = {Q3_FAILED: [Q3_FAIL]}
 
 # Path fit (ROUTE-BRIEF-R 2026-09-29, v1): T = device or Trickster-only; N-all = any path; N-fit = the fitting paths.
 PATH_FIT = {}
@@ -793,7 +795,7 @@ def integrate(payload):
     """Register the relationship's own native read (Greybor's failed Q3), its Derived keys (they extend the merged
     trickster_world keys and bind before them), its presence and its portrait fallback. Scenes are added by expansion.py;
     the verified world keys (horzalah.*, greybor.*, baphomet.named_horzalah...) bind on demand in trickster_world."""
-    _bind(payload, "QuestObjectives", QUEST_OBJECTIVES)
+    _bind(payload, "SeenCues", SEEN_CUES)
     for key, groups in DERIVED.items():
         have = payload.setdefault("Derived", {}).get(key)
         if have is not None and have != [list(g) for g in groups]:
