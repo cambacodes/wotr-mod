@@ -13,7 +13,7 @@ existence... mortals... dumb cattle" (Cue_0062). Path fit: all T (v1).
 from story_format import c, n, p, reaction, scene
 from storylines.elyanka_trickster import (E, REL, CLOSED, COMMITTED, OWNED, TESTED, BIER, EXPOSED, BLUFFED, STRAIGHT,
                                           GAVE_DEAD, SECRET_RITES, TABLE_SAT, TABLE_DOOR, TABLE_LEFT, WRIT_UPHELD,
-                                          WRIT_LIED, WRIT_HERS, AT_RIFT, IN_DREZEN, REGILL_HUB, LOCK, el, nar, tag)
+                                          WRIT_LIED, WRIT_HERS, AT_RIFT, IN_DREZEN, REGILL_HUB, LOCK, DREZEN, el, nar, tag)
 
 SCENES = []
 
@@ -28,10 +28,12 @@ COURIER_RIPENING = E + "courier.ripening"
 COURIER_SILENT = E + "courier.silent"
 
 
-def visit(id, title, nodes, requires, forbids=(), delay=24, last=5, chapter=5, chapters=(5,), optional=True, kind="visit"):
+def visit(id, title, nodes, requires, forbids=(), delay=24, last=5, chapter=5, chapters=(5,), optional=True, kind="visit",
+          portable=False):
+    """portable=False: a Drezen encounter, delivered at a rest in the capital. The courier and the Threshold visit travel."""
     SCENES.append(scene(id, title, "Elyanka", chapter, "", nodes, requires=("trickster.ever", *requires),
                         forbids=(CLOSED, *forbids), delay=delay, last=last, optional=optional, Relationship=REL,
-                        Remote=True, Kind=kind, Chapters=list(chapters)))
+                        Remote=True, Kind=kind, Chapters=list(chapters), **({} if portable else dict(Areas=[DREZEN]))))
     tag(id, "T")
 
 
@@ -180,7 +182,7 @@ visit(E + "beat.courier", "A man in grey", [
     nar("silent", '''{n}He waits for a while longer, as if you might change your mind, and then he goes, and you hear his boots on the stair.{/n}
 {n}Four days later she is back in the dead-house. She does not mention the courier or the master or your silence. But she looks at you, the first time you meet, for rather longer than she needs to, with the look she gave the grey chaplain's cough, as if she were listening for something in you that she could name.{/n}''',
         c("Continue", flags=(COURIER_SILENT,))),
-], requires=(BIER,), forbids=(COURIER_HUNGRY, COURIER_RIPENING, COURIER_SILENT), delay=72, last=5, kind="letter")
+], requires=(BIER,), forbids=(COURIER_HUNGRY, COURIER_RIPENING, COURIER_SILENT), delay=72, last=5, kind="letter", portable=True)
 
 
 # --- 5. Her Lady's table (T, optional): the secret, kept. -----------------------------------------------------------------
@@ -260,7 +262,7 @@ visit(E + "ch6.collateral", "The collateral, inspected", [
 "You would send your creditor home on the eve of the settlement." {n}Then the corner of her mouth goes up.{/n} "Very well. I will sit in the dead-house by the south gate with a candle, and wait for the news, like a widow. It will be a new experience. I do not expect to enjoy it."
 "Do not make me drive this hearse all the way back to Drezen for nothing, Commander. One way or another, bring me something."''',
        c("[Let her go.]", flags=(IN_DREZEN,))),
-], requires=(OWNED,), forbids=(AT_RIFT, IN_DREZEN), delay=0, last=6, chapter=6, chapters=(6,))
+], requires=(OWNED,), forbids=(AT_RIFT, IN_DREZEN), delay=0, last=6, chapter=6, chapters=(6,), portable=True)
 
 
 # --- 8. The Way's tongue (T, optional): a secret for a secret, in a whisper. ----------------------------------------------
@@ -574,7 +576,7 @@ visit(E + "beat.face", "A liar's face", [
        c("[Let her keep it.]", flags=(FACE_READ,))),
     el("look", '''{n}Her hand closes on the charcoal and on your fingers together. For a moment she does not lift her eyes; you can see her deciding not to.{/n}
 {n}Then she does. She looks at your face, as she has not once since the veil came off, for as long as it takes a candle to gutter and steady, with those pale unblinking eyes, and whatever she finds there she does not say.{/n}
-"Once," {n}she says, and lets go of the charcoal.{/n} "That was once. Do not ask again. I have to go on believing you are a liar, or I will start believing everything else."''',
+"Once," {n}she says, and lets go of the charcoal.{/n} "That was once. Do not ask again. I have to go on believing you are a liar. If I stop, I will start believing that a sweating crusader has a better claim on me than the masters in Caliphas, and the Way kills priestesses who believe that."''',
        c("[Give her back the charcoal.]", flags=(FACE_READ,))),
 ], requires=(EXPOSED, BIER), forbids=(FACE_READ,), delay=48, last=5)
 

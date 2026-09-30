@@ -286,6 +286,47 @@ internal static class ElyankaTricksterTests
         check(!cord.Text.Contains("knotted") && cord.Paragraphs.Where(pp => pp.Text.Contains("knotted")).All(pp => pp.Requires.Contains(Bier)),
             "Trk_Elyanka_Continuity: the coda's measuring cord does not wait for the hearse night.");
 
+        // Trk_Elyanka_Spine (audit r3): the required chain walked in order with advancing time, from the door to the hearse,
+        // at rests in Drezen; nothing of it plays at a rest elsewhere.
+        var spine = World(story, 5, "trickster", "trickster.ever", "iz.done");
+        foreach (var native in new[] { "trickster", "trickster.ever", "iz.done", "chapter_later" }) spine.Times.Remove(native);
+        spine.Times[Latch] = spine.Hour - 72;
+        var s1 = Take(door, spine, "plan", 1, P + "executor");
+        check(!Avail(haggle, Later(s1, 23)), "Trk_Elyanka_Spine: the wake does not wait a day after the door.");
+        var s2 = Take(haggle, Later(s1, 24), "sold", 0, Owned);
+        check(!Avail(dead, Later(s2, 47)), "Trk_Elyanka_Spine: the dead do not wait two days after the sale.");
+        var s3 = Take(dead, Later(s2, 48), "refuse", 0, Tested);
+        var s4 = Take(claims, Later(s3, 24), "rites", 0, Committed);
+        var s5 = Take(hearse, Later(s4, 24), "last_night", 0, Bier);
+        var abroad = Later(s4, 24);
+        abroad.Area = "00000000000000000000000000000000";
+        check(s5.Has(Bier) && !Avail(hearse, abroad) && hearse.Areas.SequenceEqual(new[] { "2570015799edf594daf2f076f2f975d8" })
+              && own.Where(x => x.Id != P + "beat.courier" && x.Id != P + "ch6.collateral").All(x => x.Areas.SequenceEqual(new[] { "2570015799edf594daf2f076f2f975d8" }))
+              && S(P + "beat.courier").Areas.Length == 0 && S(P + "ch6.collateral").Areas.Length == 0,
+            "Trk_Elyanka_Spine: the chain does not run in order, or a Drezen encounter plays at a rest outside Drezen.");
+
+        // Rendered endings (audit r3): exactly one unpaid line per surviving ending; the claim page never promises collection
+        // where the bottle cheats it; the coda places her in one spot; the Ledger names no witness who was not there.
+        string Render(Scene page, Snapshot w) => string.Join(" ", page.Nodes[0].Paragraphs.Where(pp => Shows(pp, w)).Select(pp => pp.Text));
+        var codaScene = story.Scenes.Single(x => x.Id == "elyanka.lastcall.page");
+        var ordinary = World(story, 6, "trickster.ever", Owned, Committed, Bier);
+        var returned = World(story, 6, "trickster.ever", Owned, Committed, Bier, "sacrifice", "ending.trickster", "trickster.commander_back");
+        var h1 = World(story, 6, "trickster.ever", Owned, Committed, Bier, "trickster.lastcall.taken", "ending.trickster");
+        var h2 = World(story, 6, "trickster.ever", Owned, Committed, Bier, "trickster.lastcall.taken", "ending.wound_closed", "sacrifice",
+            "trickster.lastcall.pillar.bottle", "elyanka.lastcall.called", P + "collateral.in_drezen");
+        int Unpaid(Snapshot w) => Pg("claim").Nodes[0].Paragraphs.Count(pp => pp.Text.Contains("Still unpaid") && Shows(pp, w));
+        check(Unpaid(ordinary) == 1 && Unpaid(returned) == 1 && Unpaid(h1) == 0 && h1.Has(Active) && h2.Has(Active),
+            "Trk_Elyanka_Rendered: a surviving ending renders no unpaid line, or two.");
+        check(Render(Pg("claim"), ordinary).Contains("would one day be hers") && !Render(Pg("claim"), h1).Contains("would one day be hers")
+              && Render(Pg("claim"), h1).Contains("would never fall due") && Render(codaScene, h1).Contains("Corked"),
+            "Trk_Elyanka_Rendered: the claim page promises a collection the bottle has cheated.");
+        var codaH2 = Render(codaScene, h2);
+        check(codaH2.Contains("heard nothing") && !codaH2.Contains("behind the lines") && codaH2.Contains("never given it"),
+            "Trk_Elyanka_Rendered: the coda places her at the rift and in Drezen on the same night.");
+        var secretDead = story.Books["trickster.ledger"].Entries.Single(x => x.Id == "secret.elyanka_siege_dead");
+        check(!secretDead.Text.Contains("prayed over every row") && secretDead.Requires.SequenceEqual(new[] { "trickster.secret.elyanka_siege_dead" }),
+            "Trk_Elyanka_Rendered: the Ledger's secret names a witness at the rows who may never have been there.");
+
         // Trk_Elyanka_LastCall: her coda needs the real commit; the bequest is a debt to a live power; it never keeps anyone alive.
         var coda = story.Scenes.Single(s => s.Id == "elyanka.lastcall.page");
         var call = story.Scenes.Single(s => s.Id == "elyanka.lastcall.call");

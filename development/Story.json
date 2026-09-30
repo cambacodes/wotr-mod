@@ -402957,6 +402957,9 @@
       "Kind": "event",
       "Chapters": [
         5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
       ]
     },
     {
@@ -403519,6 +403522,9 @@
       "Relationship": "elyanka",
       "Remote": true,
       "Kind": "visit",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
       "Sender": "Elyanka"
     },
     {
@@ -403681,6 +403687,9 @@
       "Relationship": "elyanka",
       "Remote": true,
       "Kind": "visit",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
       "Sender": "Elyanka"
     },
     {
@@ -403980,6 +403989,9 @@
       "Relationship": "elyanka",
       "Remote": true,
       "Kind": "visit",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
       "Sender": "Elyanka"
     },
     {
@@ -404253,6 +404265,9 @@
       "Relationship": "elyanka",
       "Remote": true,
       "Kind": "visit",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
       "Sender": "Elyanka"
     },
     {
@@ -404389,6 +404404,9 @@
       "Relationship": "elyanka",
       "Remote": true,
       "Kind": "visit",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
       "Sender": "Elyanka"
     },
     {
@@ -404554,7 +404572,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}She pulls you down into the velvet by the belt you are no longer wearing, notices, and laughs at herself, low, against your mouth. Her body is cool everywhere yours is hot. She drags her nails down your chest to learn how fast you mark, and bites your throat where the pulse is loudest, and says into it, \"Mine. Later. All of it.\" Then she rises over you in the gold light and kneels astride you, her knees sunk in the velvet on either side of your hips, and takes you in hand.{/n}",
+          "Text": "{n}She reaches for your belt to pull you down into the velvet, finds it gone, and laughs at herself, low, against your mouth, and pulls you down by the hips instead. Her body is cool everywhere yours is hot. She drags her nails down your chest to learn how fast you mark, and bites your throat where the pulse is loudest, and says into it, \"Mine. Later. All of it.\" Then she rises over you in the gold light and kneels astride you, her knees sunk in the velvet on either side of your hips, and takes you in hand.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -404720,6 +404738,9 @@
       "Relationship": "elyanka",
       "Remote": true,
       "Kind": "visit",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
       "Sender": "Elyanka"
     },
     {
@@ -404860,7 +404881,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}Elyanka Camilary did not go home to Ustalav when the war was over. The Way had sent her to collect, she said, and a creditor who goes home before the debt falls due does not deserve to be paid. She kept the dead-house by the south gate of Drezen, and the hearse in its yard, and her Lady's appetites, all of them.{/n}\n{n}The Pallid Princess did not adopt her that year, or the next. She stayed mortal, and useful, and furious about it, and she whispered her reports to Caliphas into the ears of couriers who forgot them by morning, all but the parts meant for the Way.{/n}\n{n}When the Commander came to the dead-house she wrinkled her nose at the smell of warm living skin, every time, and pulled the Commander into the hearse by the belt anyway, every time. What each of them held of the other stayed where it was, whispered and unwritten: a corpse that would one day be hers, and a corpse that would never be anybody's.{/n}",
+          "Text": "{n}Elyanka Camilary did not go home to Ustalav when the war was over. The Way had sent her to collect, she said, and a creditor who goes home before the debt falls due does not deserve to be paid. She kept the dead-house by the south gate of Drezen, and the hearse in its yard, and her Lady's appetites, all of them.{/n}\n{n}The Pallid Princess did not adopt her that year, or the next. She stayed mortal, and useful, and furious about it, and she whispered her reports to Caliphas into the ears of couriers who forgot them by morning, all but the parts meant for the Way.{/n}\n{n}When the Commander came to the dead-house she wrinkled her nose at the smell of warm living skin, every time, and pulled the Commander into the hearse by the belt anyway, every time. What each of them held of the other stayed where it was, whispered and unwritten.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -404873,6 +404894,22 @@
           ],
           "Portrait": "",
           "Paragraphs": [
+            {
+              "Text": "{n}Hers was a claim on a corpse that would one day be hers; the Commander's, a claim on a corpse that would never be anybody's.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "lastcall.active"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Hers was a claim on a corpse that would never fall due, since the Commander's death was corked in a flask; the Commander's, a claim on a corpse that would never be anybody's. Two claims, and not a copper paid. She said it was the most honest marriage she had ever seen.{/n}",
+              "Requires": [
+                "lastcall.active"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
             {
               "Text": "{n}In Caliphas, where the Way's teaching is passed by word of mouth, they still tell the story of the executor who sat through an entire wake in borrowed crepe to learn what the deceased was worth, and the envoy who laughed until she coughed. It is told in a whisper. It is never told the same way twice.{/n}",
               "Requires": [
@@ -405049,7 +405086,8 @@
               "Requires": [],
               "Forbids": [
                 "sacrifice",
-                "lastcall.active"
+                "lastcall.active",
+                "trickster.commander_back"
               ],
               "AnyGroups": []
             },
@@ -405388,7 +405426,8 @@
               "Requires": [],
               "Forbids": [
                 "sacrifice",
-                "lastcall.active"
+                "lastcall.active",
+                "trickster.commander_back"
               ],
               "AnyGroups": []
             },
@@ -405419,8 +405458,18 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The terms were never repeated aloud. They did not need to be. On the day the Commander died, whenever that was, a woman in grey would be at the graveside with a knotted cord, and would take what she had bought.{/n}",
+              "Text": "{n}The terms were never repeated aloud. They did not need to be. On the day the Commander died, whenever that was, a woman in grey would be at the graveside, and would take what she had bought.{/n}",
               "Requires": [],
+              "Forbids": [
+                "lastcall.active"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The terms were never repeated aloud. They did not need to be. The Commander's death was in a flask, and the flask was in the Commander's pocket, and she inspected the collateral every spring anyway, in case the cork had slipped.{/n}",
+              "Requires": [
+                "lastcall.active"
+              ],
               "Forbids": [],
               "AnyGroups": []
             }
@@ -405591,7 +405640,8 @@
               "Requires": [],
               "Forbids": [
                 "sacrifice",
-                "lastcall.active"
+                "lastcall.active",
+                "trickster.commander_back"
               ],
               "AnyGroups": []
             },
@@ -405991,9 +406041,20 @@
               "AnyGroups": []
             },
             {
-              "Text": "At the rift the Commander said her name, and the terms of the sale, aloud, into the fire: if I fall here, your claim falls due; stand where you can collect. Somewhere behind the lines a woman in grey heard it, or said she did, and laughed, and wound her cord a little tighter.",
+              "Text": "At the rift the Commander said her name, and the terms of the sale, aloud, into the fire: if I fall here, your claim falls due; stand where you can collect. Somewhere behind the lines a woman in grey heard it, or said she did, and laughed.",
               "Requires": [
                 "elyanka.lastcall.called"
+              ],
+              "Forbids": [
+                "elyanka.trickster.collateral.in_drezen"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "At the rift the Commander said her name, and the terms of the sale, aloud, into the fire: if I fall here, your claim falls due. She was in Drezen, with her one candle, and heard nothing. A courier told her in the morning. She said she had known already, from the way the candle burned at the hour, and nobody could prove she had not.",
+              "Requires": [
+                "elyanka.lastcall.called",
+                "elyanka.trickster.collateral.in_drezen"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -406283,6 +406344,9 @@
       "Chapters": [
         5
       ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
       "Sender": "Elyanka"
     },
     {
@@ -406510,6 +406574,9 @@
       "Chapters": [
         5
       ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
       "Sender": "Elyanka"
     },
     {
@@ -406696,6 +406763,9 @@
       "Kind": "visit",
       "Chapters": [
         5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
       ],
       "Sender": "Elyanka"
     },
@@ -407093,6 +407163,9 @@
       "Kind": "visit",
       "Chapters": [
         5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
       ],
       "Sender": "Elyanka"
     },
@@ -407525,6 +407598,9 @@
       "Chapters": [
         5
       ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
       "Sender": "Elyanka"
     },
     {
@@ -407687,6 +407763,9 @@
       "Kind": "visit",
       "Chapters": [
         5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
       ],
       "Sender": "Elyanka"
     },
@@ -407948,6 +408027,9 @@
       "Chapters": [
         5
       ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
       "Sender": "Elyanka"
     },
     {
@@ -408123,6 +408205,9 @@
       "Chapters": [
         5
       ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
       "Sender": "Elyanka"
     },
     {
@@ -408215,6 +408300,9 @@
       "Kind": "visit",
       "Chapters": [
         5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
       ],
       "Sender": "Elyanka"
     },
@@ -408451,6 +408539,9 @@
       "Chapters": [
         5
       ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
       "Sender": "Elyanka"
     },
     {
@@ -408665,6 +408756,9 @@
       "Chapters": [
         5
       ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
       "Sender": "Elyanka"
     },
     {
@@ -408809,6 +408903,9 @@
       "Chapters": [
         5
       ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
       "Sender": "Elyanka"
     },
     {
@@ -408880,7 +408977,7 @@
         {
           "Id": "look",
           "Speaker": "Elyanka",
-          "Text": "{n}Her hand closes on the charcoal and on your fingers together. For a moment she does not lift her eyes; you can see her deciding not to.{/n}\n{n}Then she does. She looks at your face, as she has not once since the veil came off, for as long as it takes a candle to gutter and steady, with those pale unblinking eyes, and whatever she finds there she does not say.{/n}\n\"Once,\" {n}she says, and lets go of the charcoal.{/n} \"That was once. Do not ask again. I have to go on believing you are a liar, or I will start believing everything else.\"",
+          "Text": "{n}Her hand closes on the charcoal and on your fingers together. For a moment she does not lift her eyes; you can see her deciding not to.{/n}\n{n}Then she does. She looks at your face, as she has not once since the veil came off, for as long as it takes a candle to gutter and steady, with those pale unblinking eyes, and whatever she finds there she does not say.{/n}\n\"Once,\" {n}she says, and lets go of the charcoal.{/n} \"That was once. Do not ask again. I have to go on believing you are a liar. If I stop, I will start believing that a sweating crusader has a better claim on me than the masters in Caliphas, and the Way kills priestesses who believe that.\"",
           "Choices": [
             {
               "Text": "[Give her back the charcoal.]",
@@ -408912,6 +409009,9 @@
       "Kind": "visit",
       "Chapters": [
         5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
       ],
       "Sender": "Elyanka"
     },
@@ -409059,6 +409159,9 @@
       "Kind": "visit",
       "Chapters": [
         5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
       ],
       "Sender": "Elyanka"
     },
@@ -409215,6 +409318,9 @@
       "Chapters": [
         5
       ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
       "Sender": "Elyanka"
     },
     {
@@ -409360,6 +409466,9 @@
       "Kind": "visit",
       "Chapters": [
         5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
       ],
       "Sender": "Elyanka"
     },
@@ -413172,8 +413281,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -423047,7 +423156,7 @@
           "Section": "Secrets",
           "Portrait": "Elyanka",
           "Title": "Sixty-one under canvas",
-          "Text": "{n}The unclaimed dead of Iz lay in the dead-house by the south gate, waiting for the chaplains, and I gave them to a priestess of Urgathoa to take to Ustalav or stand up again. The floor was swept clean by morning. Seelah prayed over every row and counted them. Targona can smell a necromancer's work from the other end of a street. {g|RRT_SecretRisk}Risk: high.{/g}{/n}",
+          "Text": "{n}The unclaimed dead of Iz lay in the dead-house by the south gate, waiting for the chaplains, and I gave them to a priestess of Urgathoa to take to Ustalav or stand up again. The floor was swept clean by morning. Sooner or later somebody will count the rows. Seelah prays for the nameless dead; Targona can smell a necromancer's work from the other end of a street. {g|RRT_SecretRisk}Risk: high.{/g}{/n}",
           "Lines": [
             {
               "Text": "{n}Unknown to Seelah.{/n}",

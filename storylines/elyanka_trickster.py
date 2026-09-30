@@ -43,6 +43,7 @@ SCENES = []
 REL = "elyanka"
 E = "elyanka.trickster."
 
+DREZEN = "2570015799edf594daf2f076f2f975d8"           # DrezenCapital: the dead-house, the gate, the Commander's quarters
 UNIT = "68bc27eb628a7584b96e901f4b4c4071"             # MythicLich_KTC_Elyanka (no dialog; not spawned: every scene is remote)
 PORTRAIT_GUID = "db50a1cef98b4c0798982836f0af09cb"    # the unit's m_Portrait (BCT_ElyankaHuman), fallback until custom art
 DAERAN_HUB = "4d978cbd2aa780d46874255282039f3f"       # CompanionDialogues/Daeran/AnswersList_0003
@@ -142,10 +143,11 @@ def nar(id, text, *choices, **kw):
 
 def visit(id, title, nodes, requires, forbids=(), delay=24, last=6, optional=False, kind="visit", owner="Elyanka",
           **extra):
-    """A remote visit (she keeps her hearse in the dead-house yard by the south gate, and comes and goes from it)."""
+    """A remote visit in Drezen (she keeps her hearse in the dead-house yard by the south gate, and comes and goes from it):
+    delivered only at a rest in the capital, where the dead-house is."""
     SCENES.append(scene(id, title, owner, 5, "", nodes, requires=("trickster.ever", *requires),
                         forbids=(CLOSED, *forbids), delay=delay, last=last, optional=optional, Relationship=REL,
-                        Remote=True, Kind=kind, **extra))
+                        Remote=True, Kind=kind, Areas=[DREZEN], **extra))
     tag(id, "T")
 
 
@@ -209,7 +211,7 @@ SCENES.append(scene(E + "door.hearse", "A hearse at the south gate", "Elyanka", 
 {n}He comes back at dusk to report. She read the order twice, as he had read her oath, and handed it back to him, and got into the hearse without a word. At the edge of the camp she put her head out of the window and asked him whether the Knight Commander had been buried with the eyes open or shut. He did not know. She said it did not matter, and that she would ask again another time.{/n}''',
       c("Continue", flags=(CLOSED, DOOR_SEEN, ESCORTED))),
 ], requires=("trickster", FUNERAL, IZ_DONE), forbids=(DOOR_SEEN, CLOSED), delay=72, last=5, Relationship=REL, Remote=True,
-    Kind="event", Chapters=[5]))
+    Kind="event", Chapters=[5], Areas=[DREZEN]))
 tag(E + "door.hearse", "T")
 
 
@@ -483,7 +485,7 @@ visit(E + "visit.hearse", "The velvet in the hearse", [
     nar("down", '''{n}She kisses the way she eats: greedily, without manners, her fingers knotted in your hair to hold your head where she wants it. She tastes of cold wine and cloves. She strips your shirt off you as if it had offended her, and your belt, and the rest, and throws it all into the dark end of the hearse where the feet of the dead would go.{/n}
 {n}Then she sits back on her heels and unpins her grey robe at the shoulder, and lets it fall to her waist, and lower. The candlelight through the glass lays gold on her, on the long pale body she despises and feeds so well, and she lets you look at it as if it were a dish she had set down in front of you.{/n}''',
         c("Continue", "threshold")),
-    nar("threshold", '''{n}She pulls you down into the velvet by the belt you are no longer wearing, notices, and laughs at herself, low, against your mouth. Her body is cool everywhere yours is hot. She drags her nails down your chest to learn how fast you mark, and bites your throat where the pulse is loudest, and says into it, "Mine. Later. All of it." Then she rises over you in the gold light and kneels astride you, her knees sunk in the velvet on either side of your hips, and takes you in hand.{/n}''',
+    nar("threshold", '''{n}She reaches for your belt to pull you down into the velvet, finds it gone, and laughs at herself, low, against your mouth, and pulls you down by the hips instead. Her body is cool everywhere yours is hot. She drags her nails down your chest to learn how fast you mark, and bites your throat where the pulse is loudest, and says into it, "Mine. Later. All of it." Then she rises over you in the gold light and kneels astride you, her knees sunk in the velvet on either side of your hips, and takes you in hand.{/n}''',
         c("Continue", "morning")),
     nar("morning", '''{n}You wake late, alone in the velvet, stiff in places you did not know could stiffen, with a mourning candle guttering on the step. She is sitting outside on the shaft of the hearse in her grey robe, winding a length of black cord around her hand.{/n}
 {n}It is knotted every finger's width, and there are a great many knots.{/n}''',
@@ -542,8 +544,9 @@ tag(E + "react.seelah_rows", "T")
 household.secret(
     "elyanka_siege_dead", "Sixty-one under canvas",
     "The unclaimed dead of Iz lay in the dead-house by the south gate, waiting for the chaplains, and I gave them to a "
-    "priestess of Urgathoa to take to Ustalav or stand up again. The floor was swept clean by morning. Seelah prayed over "
-    "every row and counted them. Targona can smell a necromancer's work from the other end of a street.",
+    "priestess of Urgathoa to take to Ustalav or stand up again. The floor was swept clean by morning. Sooner or later "
+    "somebody will count the rows. Seelah prays for the nameless dead; Targona can smell a necromancer's work from the "
+    "other end of a street.",
     portrait="Elyanka", witnesses=("seelah", "targona"), risk="high")
 
 household.secret(
@@ -576,7 +579,7 @@ def page(id, title, text, requires, forbids=(), paragraphs=(), survived=True):
 # The claim, while the Commander lives: unpaid without the bottle; with it, Last Call's pages tell the rest.
 UNPAID = (
     p('''{n}The claim never fell due. The Commander went on living, stubbornly and at length, and every year Elyanka came to look at the collateral as a moneylender looks at a ship that will not sink. "Unpaid," she would say, running a cold thumb along the Commander's jaw. "Still unpaid. You are the worst investment the Way has ever made."{/n}''',
-      forbids=("sacrifice", ACTIVE)),
+      forbids=("sacrifice", ACTIVE, BACK)),
     p('''{n}The claim never fell due. The Commander had walked out of the end of the world laughing, and went on living, stubbornly and at length, and every year Elyanka came to look at the collateral as a moneylender looks at a ship that will not sink. "Unpaid," she would say. "Still unpaid. You are the worst investment the Way has ever made."{/n}''',
       requires=(BACK,), forbids=(ACTIVE,)),
 )
@@ -671,8 +674,13 @@ HER_PARAGRAPHS = COMMON + LATER + UNPAID + (
 
 page("claim", "A claim, held", '''{n}Elyanka Camilary did not go home to Ustalav when the war was over. The Way had sent her to collect, she said, and a creditor who goes home before the debt falls due does not deserve to be paid. She kept the dead-house by the south gate of Drezen, and the hearse in its yard, and her Lady's appetites, all of them.{/n}
 {n}The Pallid Princess did not adopt her that year, or the next. She stayed mortal, and useful, and furious about it, and she whispered her reports to Caliphas into the ears of couriers who forgot them by morning, all but the parts meant for the Way.{/n}
-{n}When the Commander came to the dead-house she wrinkled her nose at the smell of warm living skin, every time, and pulled the Commander into the hearse by the belt anyway, every time. What each of them held of the other stayed where it was, whispered and unwritten: a corpse that would one day be hers, and a corpse that would never be anybody's.{/n}''',
-     requires=(COMMITTED,), paragraphs=HER_PARAGRAPHS)
+{n}When the Commander came to the dead-house she wrinkled her nose at the smell of warm living skin, every time, and pulled the Commander into the hearse by the belt anyway, every time. What each of them held of the other stayed where it was, whispered and unwritten.{/n}''',
+     requires=(COMMITTED,), paragraphs=(
+         p('''{n}Hers was a claim on a corpse that would one day be hers; the Commander's, a claim on a corpse that would never be anybody's.{/n}''',
+           forbids=(ACTIVE,)),
+         p('''{n}Hers was a claim on a corpse that would never fall due, since the Commander's death was corked in a flask; the Commander's, a claim on a corpse that would never be anybody's. Two claims, and not a copper paid. She said it was the most honest marriage she had ever seen.{/n}''',
+           requires=(ACTIVE,)),
+     ) + HER_PARAGRAPHS)
 
 page("debt", "A claim, outstanding", '''{n}The war ended before Elyanka Camilary had finished deciding what the Commander was, beyond a debtor. She did not give the Commander her own claim. She did not need to; she already held the only one that mattered to her.{/n}
 {n}She went back to Ustalav in the hearse that had been built for the Commander's corpse, empty, with the curtains open. Every spring after that it came up the road to Drezen again, and stood in the dead-house yard for a week, and she inspected the collateral from across a table, and wrinkled her nose at it, and went home.{/n}''',
@@ -681,7 +689,10 @@ page("debt", "A claim, outstanding", '''{n}The war ended before Elyanka Camilary
            requires=(TESTED,)),
          p('''{n}She never gave the Commander her own claim. Once, late, over the dregs of a bottle, she said that she had meant to, in the spring of the Threshold, and that the war had simply ended too soon. Then she said she had been joking, and wrinkled her nose at the smell of the Commander's life, and left the next morning as usual.{/n}''',
            requires=(TESTED,)),
-         p('''{n}The terms were never repeated aloud. They did not need to be. On the day the Commander died, whenever that was, a woman in grey would be at the graveside with a knotted cord, and would take what she had bought.{/n}'''),
+         p('''{n}The terms were never repeated aloud. They did not need to be. On the day the Commander died, whenever that was, a woman in grey would be at the graveside, and would take what she had bought.{/n}''',
+           forbids=(ACTIVE,)),
+         p('''{n}The terms were never repeated aloud. They did not need to be. The Commander's death was in a flask, and the flask was in the Commander's pocket, and she inspected the collateral every spring anyway, in case the cork had slipped.{/n}''',
+           requires=(ACTIVE,)),
      ))
 
 page("lock", "A lock of grey hair", '''{n}The war ended before Elyanka Camilary had decided what to do about a debtor who had asked her the wrong question at supper. She decided anyway, the spring after the Threshold, in the only way the Way knows how to decide anything: in person, and in a whisper.{/n}
