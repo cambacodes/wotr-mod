@@ -403304,7 +403304,9 @@
             {
               "Text": "Continue",
               "Next": "wall",
-              "Set": [],
+              "Set": [
+                "yaniel.trickster.distrust"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -403379,7 +403381,9 @@
               "Text": "[Take her wrist and work the pin out of the cuff.]",
               "Next": "cuff_empty",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "yaniel.radiance_seen"
+              ],
               "Forbids": [
                 "yaniel.radiance_held"
               ],
@@ -403392,6 +403396,17 @@
               "Requires": [],
               "Forbids": [],
               "Abort": true
+            },
+            {
+              "Text": "[Take her wrist and work the pin out of the cuff.]",
+              "Next": "cuff_unseen",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "yaniel.radiance_held",
+                "yaniel.radiance_seen"
+              ],
+              "Abort": false
             }
           ],
           "Portrait": "Yaniel"
@@ -403774,9 +403789,33 @@
           "Portrait": "Yaniel"
         },
         {
+          "Id": "cuff_unseen",
+          "Speaker": "Yaniel",
+          "Text": "{n}She lets you take her wrist. The pin fights you longer than it would have in the Fane; she has been hammering it back in every night, you realise, and the soft metal is mushroomed flat. It comes. The cuff drops into your palm, warm, with the link swinging.{/n}\n{n}She looks at your belt, where a sword ought to be, and at your back, and at your hands.{/n} \"They say in the square that the Commander of the crusade found my sword,\" {n}she says.{/n} \"Radiance. That it came up out of Kenabres with you, broken or whole, nobody could tell me which. I did not see it in the Fane. I do not see it now. Did you have it, Commander?\"",
+          "Choices": [
+            {
+              "Text": "\"I had it. Not any more.\"",
+              "Next": "empty_oath",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I never had it.\"",
+              "Next": "empty_oath",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Yaniel"
+        },
+        {
           "Id": "empty_oath",
           "Speaker": "Yaniel",
-          "Text": "{n}Something goes out of her shoulders. She looks out at the ash for a while.{/n}\n\"Then here is what you will do, since you want my iron so much.\" {n}She turns back.{/n} \"You will find it. Wherever it is, whoever has it, whatever you have to pay. You will put it back on your own hip. And then you will carry it where it has to go: the black heart of Deskari, or the heart of the Wound he made if he is past carrying it to. Swear that on my iron, since I cannot make you swear on my sword. Then keep the iron.\"",
+          "Text": "{n}Something goes out of her shoulders. She looks out at the ash for a while.{/n}\n\"Then here is what you will do, since you want my iron so much.\" {n}She turns back.{/n} \"You will find it. Wherever it is, whoever has it, whatever you have to pay. You will put it on your own hip. And then you will carry it where it has to go: the black heart of Deskari, or the heart of the Wound he made if he is past carrying it to. Swear that on my iron, since I cannot make you swear on my sword. Then keep the iron.\"",
           "Choices": [
             {
               "Text": "[Close your fist on the cuff.] \"I swear it. I'll find it, and I'll carry it.\"",
@@ -404361,15 +404400,15 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"You weren't on the wall.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The letter comes down from Iz with the wounded, in the satchel of a Mendevian sergeant who has plainly been told what she would do to him if he lost it. The hand is square and upright and old-fashioned, the hand of a woman who learned her letters before anyone now living in Drezen was born.{/n}",
+          "Text": "{n}She is back at her post with the dust of the Iz road still on her boots and a fresh cut along one cheekbone, stitched badly, by herself, by the look of it. She hears you out, and nods, as if you had confirmed a report.{/n}",
           "Choices": [
             {
-              "Text": "[Read it.]",
+              "Text": "Continue",
               "Next": "letter",
               "Set": [],
               "Requires": [],
@@ -404382,7 +404421,7 @@
         {
           "Id": "letter",
           "Speaker": "Yaniel",
-          "Text": "\"Commander,\n\"I did not tell you I was going. You would have made a face about it, or made a plan about it, and I have had enough plans made about me. I went up with the Mendevian foot on the second day, in the rank behind the shields, where an old woman with a good sword is most use.\n\"You will have heard that Deskari spoke over Iz. I heard it too. It was like having a hive poured into your ears.\"",
+          "Text": "\"No. I was at Iz.\n\"I did not tell you I was going. You would have made a face about it, or made a plan about it, and I have had enough plans made about me. I went up with the Mendevian foot on the second day, in the rank behind the shields, where an old woman with a good sword is most use.\n\"You heard Deskari speak over Iz. So did I. It was like having a hive poured into your ears.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404442,7 +404481,7 @@
         {
           "Id": "letter_iz",
           "Speaker": "Yaniel",
-          "Text": "\"I should tell you what Iz was like, since you were somewhere at the front of it and will have seen only the front. At the back it was dust and flies and orders nobody could hear. The foot went in through what used to be a gate and is now a hole, over stones that were somebody's house when Sarkoris was a country. There were dead in the streets older than I am. Some of them got up.\n\"I fought beside a boy from Vyre who had never held a spear before the spring and a Mendevian sergeant who had held one for thirty years, and neither of them knew who I was, and neither of them asked. It was the best day I have had since the siege. I would not have believed that possible. I am writing it down so that I do not lie to myself about it later.\"",
+          "Text": "\"I should tell you what Iz was like, since you were somewhere at the front of it and will have seen only the front. At the back it was dust and flies and orders nobody could hear. The foot went in through what used to be a gate and is now a hole, over stones that were somebody's house when Sarkoris was a country. There were dead in the streets older than I am. Some of them got up.\n\"I fought beside a boy from Vyre who had never held a spear before the spring and a Mendevian sergeant who had held one for thirty years, and neither of them knew who I was, and neither of them asked. It was the best day I have had since the siege. I would not have believed that possible. I am telling you so that I do not lie to myself about it later.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404470,10 +404509,10 @@
         {
           "Id": "end_sang",
           "Speaker": "Yaniel",
-          "Text": "\"Seventy years I told myself that sword was a thing I used to have. You put it back in my hands and it glowed for me, and I thought that was the most it would ever do. Over Iz it sang. I do not know what that makes it, or what that makes me.\n\"I know what it makes you. It makes you the one who heard nothing. It would have sung for you. It sang for me instead, because you gave it away.\n\"We are not square. I am coming back to Drezen to settle it. Keep my iron where I can find it.\n\"Y.\"",
+          "Text": "\"Seventy years I told myself that sword was a thing I used to have. You put it back in my hands and it glowed for me, and I thought that was the most it would ever do. Over Iz it sang. I do not know what that makes it, or what that makes me.\n\"I know what it makes you. It makes you the one who heard nothing. It would have sung for you. It sang for me instead, because you gave it away.\n\"We are not square. Come up to my room tomorrow, and we will settle it. Keep my iron where I can find it.\"",
           "Choices": [
             {
-              "Text": "[Fold the letter away.]",
+              "Text": "\"Tomorrow.\"",
               "Next": null,
               "Set": [
                 "yaniel.trickster.verdict"
@@ -404488,10 +404527,10 @@
         {
           "Id": "end_quiet",
           "Speaker": "Yaniel",
-          "Text": "\"Seventy years I told myself that sword was a thing I used to have. You put it back in my hands and it was only a sword. At Iz it was only a sword still, and I was only a soldier in a rank, and that was the best of it. Nobody was looking at the sword. Nobody was looking at me.\n\"You gave me that. I do not know yet what I gave you, except a lump of husk-iron and a great deal of trouble.\n\"We are not square. I am coming back to Drezen to settle it. Keep my iron where I can find it.\n\"Y.\"",
+          "Text": "\"Seventy years I told myself that sword was a thing I used to have. You put it back in my hands and it was only a sword. At Iz it was only a sword still, and I was only a soldier in a rank, and that was the best of it. Nobody was looking at the sword. Nobody was looking at me.\n\"You gave me that. I do not know yet what I gave you, except a lump of husk-iron and a great deal of trouble.\n\"We are not square. Come up to my room tomorrow, and we will settle it. Keep my iron where I can find it.\"",
           "Choices": [
             {
-              "Text": "[Fold the letter away.]",
+              "Text": "\"Tomorrow.\"",
               "Next": null,
               "Set": [
                 "yaniel.trickster.verdict"
@@ -404522,9 +404561,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "letter",
-      "Sender": "Yaniel"
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "yaniel.trickster.verdict.wall",
@@ -405517,7 +405558,7 @@
         {
           "Id": "yes",
           "Speaker": "Yaniel",
-          "Text": "{n}She stares at you. Her hand stays out a moment longer, empty, and then she lets it drop.{/n}\n\"Nobody's square,\" {n}she repeats.{/n} \"That is not a trade. That is a debt, going both ways.\" {n}She crosses the room. Up close she smells of the wall, of cold stone and wind and the oil she uses on the sword.{/n}\n{n}She takes your face in both her hands. They are hard hands, callused in all the places a sword calluses a hand, and they are shaking.{/n} \"I would like very much to owe you something, and be owned by nothing,\" {n}she says, and kisses you.{/n}",
+          "Text": "{n}She stares at you. Her hand stays out a moment longer, empty, and then she lets it drop.{/n}\n\"Nobody's square,\" {n}she repeats.{/n} \"That is not a trade. That is a debt, going both ways.\" {n}She crosses the room. Up close she smells of the wall, of cold stone and wind and the oil she uses on the sword.{/n}\n{n}She takes your face in both her hands. They are hard hands, callused in all the places a sword calluses a hand, and they are shaking.{/n} \"I have wanted to do this since the first time you came up my stair,\" {n}she says,{/n} \"and I am done waiting for a better reason.\" {n}She kisses you.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -405574,10 +405615,14 @@
         "yaniel.closed",
         "yaniel.committed",
         "yaniel.trickster.declined",
-        "yaniel.trickster.oath_broken"
+        "yaniel.trickster.oath_broken",
+        "yaniel.trickster.distrust"
       ],
       "DelayHours": 24,
       "Optional": false,
+      "ForbidOverrides": {
+        "yaniel.trickster.distrust": "yaniel.trickster.trusted"
+      },
       "RequiresAnyGroups": [
         [
           "yaniel.trickster.drawn.walls",
@@ -405586,6 +405631,12 @@
           "yaniel.trickster.raid_kiss",
           "yaniel.trickster.statue_scars",
           "yaniel.trickster.night_stayed"
+        ],
+        [
+          "yaniel.trickster.beat.night",
+          "yaniel.trickster.beat.refugee",
+          "yaniel.trickster.beat.raid",
+          "yaniel.trickster.beat.staunton"
         ]
       ],
       "Relationship": "yaniel",
@@ -405803,7 +405854,8 @@
         "yaniel.killed.latched",
         "yaniel.closed",
         "yaniel.committed",
-        "yaniel.trickster.left_free"
+        "yaniel.trickster.left_free",
+        "yaniel.trickster.distrust"
       ],
       "DelayHours": 24,
       "Optional": false,
@@ -405816,6 +405868,9 @@
       ],
       "ContactUnit": "d914111e83e44194db99ab91d8c04632",
       "InteractionHub": "yaniel.presence",
+      "ForbidOverrides": {
+        "yaniel.trickster.distrust": "yaniel.trickster.trusted"
+      },
       "RequiresAnyGroups": [
         [
           "yaniel.trickster.declined",
@@ -405828,6 +405883,12 @@
           "yaniel.trickster.raid_kiss",
           "yaniel.trickster.statue_scars",
           "yaniel.trickster.night_stayed"
+        ],
+        [
+          "yaniel.trickster.beat.night",
+          "yaniel.trickster.beat.refugee",
+          "yaniel.trickster.beat.raid",
+          "yaniel.trickster.beat.staunton"
         ]
       ]
     },
@@ -406808,7 +406869,7 @@
       "Requires": [
         "trickster.ever",
         "yaniel.trickster.verdict",
-        "yaniel.trickster.drawn"
+        "yaniel.trickster.courted"
       ],
       "Forbids": [
         "yaniel.committed",
@@ -406816,13 +406877,15 @@
         "yaniel.trickster.left_free",
         "yaniel.closed",
         "yaniel.trickster.oath_broken",
+        "yaniel.trickster.distrust",
         "sacrifice",
         "yaniel.killed.latched"
       ],
       "DelayHours": 0,
       "Optional": false,
       "ForbidOverrides": {
-        "sacrifice": "trickster.commander_back"
+        "sacrifice": "trickster.commander_back",
+        "yaniel.trickster.distrust": "yaniel.trickster.trusted"
       },
       "Relationship": "yaniel"
     },
@@ -407204,7 +407267,207 @@
         "yaniel.trickster.verdict"
       ],
       "Forbids": [
-        "yaniel.trickster.drawn",
+        "yaniel.trickster.courted",
+        "yaniel.committed",
+        "yaniel.trickster.declined",
+        "yaniel.trickster.left_free",
+        "yaniel.trickster.oath_broken",
+        "sacrifice",
+        "yaniel.killed.latched"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      },
+      "Relationship": "yaniel"
+    },
+    {
+      "Id": "yaniel.trickster.epilogue.distrusted",
+      "Title": "",
+      "Owner": "YanielEpilogue",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "{n}Yaniel and the Commander settled the matter of the sword after Iz. The other matter they circled for the rest of the war, the way two fencers circle, and neither of them ever closed.{/n}\n{n}She stood the night watch on the east wall of Drezen until the war ended, and after. When the Commander came up the stair she would make room on the parapet, and hand across a cup, and talk: about the ash, the Church, the price of mutton. She never once stood with her back to the Commander. Years later a sentry asked her why, and she said that a hand had drawn on her once in the Fane, and a better paladin than she was had caught it, and that she had liked the Commander very much ever since, and had never stopped watching that hand.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "{n}The Commander carried a husk's iron cuff for the rest of a long life, crude and heavy, with one sheared link of chain still hanging from its eye. Nobody was ever allowed to clean it.{/n}",
+              "Requires": [
+                "yaniel.trickster.cost.shackle_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Radiance stayed in Yaniel's hands. The Church of Iomedae asked for it back four times in the first year of the peace, politely, and then stopped asking. It never sang again, so far as anyone knew; she said once had been enough, and that she had heard it for both of them.{/n}",
+              "Requires": [
+                "yaniel.trickster.carries",
+                "yaniel.trickster.carries_holy"
+              ],
+              "Forbids": [
+                "yaniel.trickster.handed_after_iz"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Radiance stayed in Yaniel's hands, given to her on her own wall after Iz. The Church of Iomedae asked for it back four times in the first year of the peace, politely, and then stopped asking. She never said whether it had ever sung. She said it had kept her wall, and that was the part she had been there for.{/n}",
+              "Requires": [
+                "yaniel.trickster.carries",
+                "yaniel.trickster.handed_after_iz"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Radiance stayed in Yaniel's hands. The Church of Iomedae asked for it back four times in the first year of the peace, politely, and then stopped asking. It never sang for her, and she never asked it to; she said it was a sword, and she was a soldier, and that was enough for both of them.{/n}",
+              "Requires": [
+                "yaniel.trickster.carries"
+              ],
+              "Forbids": [
+                "yaniel.trickster.carries_holy",
+                "yaniel.trickster.handed_after_iz"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Radiance hung in the Commander's hall afterwards, not on the wall, where Yaniel had said it must never hang, but on a peg by the door at the height of a hand, so that it could be taken down in a hurry. It was, twice.{/n}",
+              "Requires": [
+                "yaniel.trickster.judges",
+                "yaniel.radiance_held"
+              ],
+              "Forbids": [
+                "yaniel.trickster.oath_broken"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}When the Commander came back from the Threshold, Yaniel was at the gate, and she looked at the Commander's hip before she looked at anything else. Radiance was there. She said that was proof enough that it had gone into the Wound and come out again, which it was not quite, and she knew it, and she let it be enough anyway. She never asked about the oath again.{/n}",
+              "Requires": [
+                "yaniel.radiance_held"
+              ],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "yaniel.trickster.oath_pending",
+                  "yaniel.trickster.oath_unproven"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}When the Commander came back from the Threshold, Yaniel was at the gate, and she looked at the Commander's hip before she looked at anything else. Radiance was not there. She did not ask where it was. She said, to nobody in particular, that she had sworn a stranger to carry her sword into the Wound and did not know to this day whether it had gone, and that not knowing was a thing she would carry herself, since somebody had to.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "yaniel.radiance_held"
+              ],
+              "AnyGroups": [
+                [
+                  "yaniel.trickster.oath_pending",
+                  "yaniel.trickster.oath_unproven"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}The painted martyr went into the cathedral of Drezen at midsummer, as the chaplains had planned. The chaplains never did find out why the Commander's household laughed every time the procession went by it.{/n}",
+              "Requires": [
+                "yaniel.trickster.niche_seen"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The Half Measure in Drezen put her roast back on its board, on the old recipe, and Fye wrote her name beside it in chalk. Every spring she went down to Nerosyan to sit under the old tree by the town hall when it was in bloom, and came back and told the Half Measure it had been late again.{/n}",
+              "Requires": [
+                "yaniel.trickster.beat.roast"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}An old merchant of Nerosyan with a crutch and a cloudy eye was carried up to Drezen once more before he died, to see the gate. She held his hand on the parapet for an afternoon, and afterwards she would never say what they talked about, except that it was mostly turnips.{/n}",
+              "Requires": [
+                "yaniel.trickster.beat.refugee"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}When the war was over she went to the place where Staunton Vhane was buried, as she had said she would, and shouted at the ground for most of an hour. Then she sat down on it and wept for him at last, and the Commander stood between her and the road so that nobody would see.{/n}",
+              "Requires": [
+                "yaniel.trickster.beat.staunton"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The Church of Iomedae never did examine her. The chaplain who had come to the Commander's door with the seal of Nerosyan wrote to his superiors that the relic was in the hands it was meant for, and that he would not be the one to take it out of them, and after that nobody else volunteered.{/n}",
+              "Requires": [
+                "yaniel.trickster.beat.church",
+                "yaniel.trickster.carries"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She stopped praying for things. She told her goddess about her days instead, out loud, on the wall, in the tone of a sergeant making a report, and she swore that on some nights the report was received.{/n}",
+              "Requires": [
+                "yaniel.trickster.beat.prayer"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack beside the other, and never told anyone why there were two.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "yaniel.trickster.cuff_worn"
+              ],
+              "AnyGroups": [
+                [
+                  "yaniel.trickster.husk_freed",
+                  "yaniel.trickster.husk_bought"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack, and wore the other, and never told anyone why there were two.{/n}",
+              "Requires": [
+                "yaniel.trickster.cuff_worn"
+              ],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "yaniel.trickster.husk_freed",
+                  "yaniel.trickster.husk_bought"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "yaniel.trickster.verdict",
+        "yaniel.trickster.courted",
+        "yaniel.trickster.distrust"
+      ],
+      "Forbids": [
+        "yaniel.trickster.trusted",
         "yaniel.committed",
         "yaniel.trickster.declined",
         "yaniel.trickster.left_free",
@@ -410710,11 +410973,41 @@
               "Next": "after",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "yaniel.struck"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "after_struck",
+              "Set": [],
+              "Requires": [
+                "yaniel.struck"
+              ],
               "Forbids": [],
               "Abort": false
             }
           ],
           "Portrait": ""
+        },
+        {
+          "Id": "after_struck",
+          "Speaker": "Yaniel",
+          "Text": "{n}She looks at you the way she looked at you in the Fane with Seelah's hand on your arm, and then she looks at your hands.{/n}\n\"In the Fane you drew on me,\" {n}she says.{/n} \"Tonight you had my back for a quarter of an hour on a broken wall, and every one of those things could have had yours. I have been trying all the way through it to decide which of those two was you.\" {n}She wipes her blade on her cloak.{/n} \"I have decided. Do not make me decide again.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "after",
+              "Set": [
+                "yaniel.trickster.trusted"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Yaniel"
         },
         {
           "Id": "after",
@@ -415440,8 +415733,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -420634,6 +420927,104 @@
     "yaniel.harem.voice.keeps_her_own_watch": [
       [
         "yaniel.committed"
+      ]
+    ],
+    "yaniel.trickster.courted": [
+      [
+        "yaniel.trickster.drawn.walls",
+        "yaniel.trickster.beat.night"
+      ],
+      [
+        "yaniel.trickster.drawn.walls",
+        "yaniel.trickster.beat.refugee"
+      ],
+      [
+        "yaniel.trickster.drawn.walls",
+        "yaniel.trickster.beat.raid"
+      ],
+      [
+        "yaniel.trickster.drawn.walls",
+        "yaniel.trickster.beat.staunton"
+      ],
+      [
+        "yaniel.trickster.drawn.bite",
+        "yaniel.trickster.beat.night"
+      ],
+      [
+        "yaniel.trickster.drawn.bite",
+        "yaniel.trickster.beat.refugee"
+      ],
+      [
+        "yaniel.trickster.drawn.bite",
+        "yaniel.trickster.beat.raid"
+      ],
+      [
+        "yaniel.trickster.drawn.bite",
+        "yaniel.trickster.beat.staunton"
+      ],
+      [
+        "yaniel.trickster.drawn.tree",
+        "yaniel.trickster.beat.night"
+      ],
+      [
+        "yaniel.trickster.drawn.tree",
+        "yaniel.trickster.beat.refugee"
+      ],
+      [
+        "yaniel.trickster.drawn.tree",
+        "yaniel.trickster.beat.raid"
+      ],
+      [
+        "yaniel.trickster.drawn.tree",
+        "yaniel.trickster.beat.staunton"
+      ],
+      [
+        "yaniel.trickster.raid_kiss",
+        "yaniel.trickster.beat.night"
+      ],
+      [
+        "yaniel.trickster.raid_kiss",
+        "yaniel.trickster.beat.refugee"
+      ],
+      [
+        "yaniel.trickster.raid_kiss",
+        "yaniel.trickster.beat.raid"
+      ],
+      [
+        "yaniel.trickster.raid_kiss",
+        "yaniel.trickster.beat.staunton"
+      ],
+      [
+        "yaniel.trickster.statue_scars",
+        "yaniel.trickster.beat.night"
+      ],
+      [
+        "yaniel.trickster.statue_scars",
+        "yaniel.trickster.beat.refugee"
+      ],
+      [
+        "yaniel.trickster.statue_scars",
+        "yaniel.trickster.beat.raid"
+      ],
+      [
+        "yaniel.trickster.statue_scars",
+        "yaniel.trickster.beat.staunton"
+      ],
+      [
+        "yaniel.trickster.night_stayed",
+        "yaniel.trickster.beat.night"
+      ],
+      [
+        "yaniel.trickster.night_stayed",
+        "yaniel.trickster.beat.refugee"
+      ],
+      [
+        "yaniel.trickster.night_stayed",
+        "yaniel.trickster.beat.raid"
+      ],
+      [
+        "yaniel.trickster.night_stayed",
+        "yaniel.trickster.beat.staunton"
       ]
     ],
     "yaniel.trickster.minagho_here": [
