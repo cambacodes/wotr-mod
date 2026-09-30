@@ -13,7 +13,7 @@ Every scene is Trickster-only (T in PATH_FIT): it follows the device.
 from story_format import c, n, scene
 from storylines.horzalah_trickster import (ALLY, CANARY, FREED, CHAMBER, CLOSED, COMMITTED, DECLINED, DREZEN, GREY_IN, HEPZ_BACK,
                                             LATE, LEFT_FREE, MET_A, MET_B, MET_Q2, NAMED, P_KNIFE, P_RIBBON, P_WHISTLE, PRESENCE, REL,
-                                            SCAR_NOTED, SEALS_SEEN, SPAWN_TOLD, TESTED, UNIT, WANTS, H, hz, nar, tag)
+                                            SCAR_NOTED, SEALS_SEEN, SPAWN_TOLD, EXPLAINED, TESTED, UNIT, WANTS, H, hz, nar, tag)
 
 SCENES = []
 
@@ -284,10 +284,13 @@ beat(H + "beat.lady", "Her city", '"Does the Lady in Shadow know what you do in 
 beat(H + "beat.dwarf", "The dwarf", '"You\'re watching Greybor."', [
     hz("start", '''{n}She is. Across the street, by the tavern door, a dwarf with a whetstone and a blade across his knees is watching her back, with exactly the same expression.{/n}
 "I am watching the dwarf," {n}she agrees.{/n} "The dwarf is watching me. It is a professional courtesy. If either of us stopped, the other would take it as an insult."''',
-       c("Continue", "betrayed", requires=(MET_A,)),
+       c("Continue", "betrayed", requires=(MET_A, EXPLAINED)),
+       c("Continue", "betrayed_plain", requires=(MET_A,), forbids=(EXPLAINED,)),
        c("Continue", "betrayed_b", requires=(MET_B,), forbids=(MET_A,)),
        c("Continue", "never", forbids=(MET_A, MET_B))),
     hz("betrayed", '''"He took my contract on you, and my gold, and my confidence, and he led me to the Dry Crossroads by the nose, and at the end of it he stood over me and told me my three mistakes, in order, like a schoolmaster." {n}Her teeth show.{/n} "I have never been so humiliated in my life, and my life has been one long humiliation. I want his head, mortal."''',
+       c("Continue", "demand")),
+    hz("betrayed_plain", '''"He took my contract on you, and my gold, and my confidence, and at the Dry Crossroads he turned out to have been yours the whole time." {n}Her teeth show.{/n} "He barely looked at me. He stood there with his arms folded while I lay in the dust, as if I were a job that had come in under budget. I have never been so humiliated in my life, and my life has been one long humiliation. I want his head, mortal."''',
        c("Continue", "demand")),
     hz("betrayed_b", '''"He sold you to me, and then he sold me to you, and he did it all without once raising his voice." {n}Something like admiration moves across her face, and she smothers it.{/n} "I have hired a great many knives. That one I should have hired properly. I want his head anyway, mortal. It is a matter of principle."''',
        c("Continue", "demand")),
@@ -804,7 +807,7 @@ letter(H + "letter.invoice", "An invoice", [
 For services rendered this month, as retained: the watching of three doors in Drezen; one message carried into the Abyss and one answer carried out; one deserter returned to the crusade, alive, as specified. At the Guild's rates, which are high. Payment on receipt.
 The dresser sends his respects, and asks whether the Knight Commander would like a new coat. He is very good. He does not look up. H., master."''',
        c("[Pay the courier.]", crusade=("Finances", -150))),
-], requires=(ALLY,), delay=96)
+], requires=(ALLY,), forbids=(LETTER1,), delay=96)
 
 
 def integrate(payload):

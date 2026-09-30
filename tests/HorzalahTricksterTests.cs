@@ -332,6 +332,28 @@ internal static class HorzalahTricksterTests
               && first.Forbids.Contains(Ally) && invoice.Requires.Contains(Ally) && !mail.Any(s => s.MaxChapter >= 6),
             "Horzalah's letters exceed two on the worst Chapter 5 branch, or one arrives in Chapter 6: " + string.Join(",", ch5Mail));
 
+        // Chronologically: a Commander who read her first letter and then accepted her gift gets no invoice on top of it.
+        var readFirst = Take(first, Later(story, World(story, 5, "trickster", "trickster.ever", Primed, Ear, Returned, Wants), 72), "vials", 0, P + "letter.first_read");
+        var boughtAfter = Take(gift, Later(story, readFirst, 48), "accept2", 0, Ally);
+        check(!Avail(invoice, Later(story, boughtAfter, 96)) && Avail(invoice, Later(story, World(story, 5, "trickster.ever", Wants, Ally), 96)),
+            "A Commander who read her first letter and then bought her gift also gets the invoice (three letters).");
+
+        // The late page keeps the gift's history: offered only if it never was; the freed hatter and the declined gift remembered.
+        var latePage = pages.Single(s => s.Id == P + "epilogue.commit").Nodes[0];
+        int Shown(Snapshot st, string fragment) => latePage.Paragraphs.Count(q => Rules.ParagraphVisible(q, st) && q.Text.Contains(fragment));
+        var neverTested = World(story, 6, "trickster.ever", Wants);
+        var freedLate = World(story, 6, "trickster.ever", Wants, Tested, P + "cost.gift_freed");
+        var declinedLate = World(story, 6, "trickster.ever", Wants, Tested);
+        check(Shown(neverTested, "thin gold chain") == 1 && Shown(freedLate, "thin gold chain") == 0 && Shown(freedLate, "sold hats") == 1
+              && Shown(declinedLate, "thin gold chain") == 0 && Shown(declinedLate, "made her collars") == 1 && Shown(freedLate, "made her collars") == 0,
+            "The late page offers the gift again, or forgets how it went.");
+        // The dwarf's three mistakes are remembered only where he told them (Horzalah_Mercy/Cue_0011).
+        var dwarfStart = beats.Single(s => s.Id == P + "beat.dwarf").Nodes.Single(n => n.Id == "start").Choices;
+        check(dwarfStart.Single(c => c.Next == "betrayed").Requires.Contains("horzalah.greybor_explained")
+              && dwarfStart.Single(c => c.Next == "betrayed_plain").Forbids.Contains("horzalah.greybor_explained")
+              && story.SeenCues["horzalah.greybor_explained"].SequenceEqual(new[] { "ae22177b1bc76fc42a9d08dba83cccdc" }),
+            "The dwarf's lecture is remembered in a world where he never gave it.");
+
         // Trk_Horzalah_Chapter6: the Greybor-less night after Q3 lapsed at Chapter 6 still carries her test, her yes, the
         // chamber and her Last Call coda (the room twins stand in for her presence, which is Chapter 5 only).
         var c6 = World(story, 6, "trickster", "trickster.ever", "iz.done", "coronation.after", "greybor.q2_done", "chapter.six");

@@ -67,6 +67,7 @@ NAMED = "baphomet.named_horzalah"
 HEPZ_BACK = "hepzamirah.trickster.returned"           # node variants only (build sheet: no Requires/Forbids on hepzamirah.*)
 Q2_DONE = "greybor.q2_done"
 Q3_FAILED = "greybor.q3_failed"
+EXPLAINED = "horzalah.greybor_explained"  # Horzalah_Mercy/Cue_0011: Greybor tells her three mistakes (optional, Answer_0010)
 SEALS_SEEN = "horzalah.seals_seen"    # HorzalahFirst/Cue_0001: the projection's "flaming seals of Baphomet" (Ch4)
 SPAWN_TOLD = "baphomet.spawn_told"     # Prison_Baph/Cue_0121: "I could spawn hundreds, thousands more"
 RESCUE_TOLD = "horzalah.rescue_refused_told"  # YozzDying/Cue_0051 "He refused to rescue me back then..." (her own words, Ch4)
@@ -134,7 +135,8 @@ DERIVED = {
 # The objective itself (QuestObjectives [528bc8a8..., "Failed"]) does not resolve as a standalone blueprint at load, so the
 # failure is read from the cue that sets it: Greybor's "We've lost an important lead" after the assassin dies unquestioned.
 SEEN_CUES = {Q3_FAILED: [Q3_FAIL], RESCUE_TOLD: ["fc5119d8d4a54e047b07338764beb346"],
-             SEALS_SEEN: ["fc1030e8724b086479d7ec2a52aae2a5"], SPAWN_TOLD: ["0cdc1a24d29c77f4490900d3a9418afc"]}
+             SEALS_SEEN: ["fc1030e8724b086479d7ec2a52aae2a5"], SPAWN_TOLD: ["0cdc1a24d29c77f4490900d3a9418afc"],
+             EXPLAINED: ["ae22177b1bc76fc42a9d08dba83cccdc"]}
 
 # Path fit (ROUTE-BRIEF-R 2026-09-29, v1): T = device or Trickster-only; N-all = any path; N-fit = the fitting paths.
 PATH_FIT = {}
@@ -647,7 +649,7 @@ SCENES.append(scene(H + "visit.chamber", "Everything I own, I took", "Horzalah",
 "Do not touch it. It is the only thing in this room I did not buy, inherit or take off a corpse."''',
        c("[Turn round.]", "her")),
     hz("her", '''{n}She is standing very close. She unbuckles the high collar and lets it drop onto the nearest strongbox, where it lands across somebody's name.{/n}
-"Everything I own, I took," {n}she says.{/n} "The Guild. This room. Yozz, and his dresser, and his debts. My own name back from my sister's mouth. Everything." {n}She lifts a hand and sets her claws, very lightly, in your hair.{/n}
+"Everything I own, I took," {n}she says.{/n} "The Guild. This room. Yozz, and his house, and his debts. My own name back from my sister's mouth. Everything." {n}She lifts a hand and sets her claws, very lightly, in your hair.{/n}
 "You, I am asking for."''',
        c('"Then ask."', "ask"),
        c("[Say nothing. Wait for her, as she taught you.]", "wait")),
@@ -712,10 +714,12 @@ tag(H + "epilogue.together", "T")
 SCENES.append(scene(H + "epilogue.commit", "", "HorzalahEpilogue", 6, "", [
     nar("page", '''{n}The war ended before Horzalah had finished thinking about what she wanted. She finished it anyway, the spring after the Threshold, in her own time and on her own terms.{/n}
 {n}She came to Drezen through no door at all, stood in the Commander's rooms until she was noticed, and unbuckled her collar. The Commander waited, as the Commander had learned to do around her, and she took the Commander's hand and put it on the scar herself.{/n}
-{n}She brought a gift, as she had always meant to: a grey-haired man on a thin gold chain, Yozz's dresser, held out across the Commander's table. What the Commander did with the chain, she never told anyone. She only ever said that she had been bought once, and knew what a buyer looked like, and had not seen one.{/n}
 {n}That night she did not leave. She let the Commander unbuckle her collar, and every lace after it, and when the last of her leathers was on the floor she took two fistfuls of the Commander's shirt and fell back onto the bed and pulled the Commander down with her, and the candle went out.{/n}
 {n}After that she came and went as she pleased, and nobody in Drezen was ever quite sure whether she was a guest, a visitor or a threat, and nobody dared to ask her which. In the Guild's hall in Alushinyrra, a small box with a white ribbon hung on the notice board in a place of honour, and the masters who had known what was in it grew old and careful in her service.{/n}''',
-        paragraphs=(p("{n}Before the Threshold there had been a note, pinned to the pole of the Commander's tent by a knife: *I have not finished thinking about what I want. You are going to your war before I have finished. That is very inconsiderate of you. Come back, and I will tell you.* The Commander came back. She told.{/n}"), *COMMON))],
+        paragraphs=(p('''{n}She brought a gift, as she had always meant to: a grey-haired man on a thin gold chain, Yozz's dresser, held out across the Commander's table. What the Commander did with the chain, she never told anyone. She only ever said that she had been bought once, and knew what a buyer looked like, and had not seen one.{/n}''', forbids=(TESTED,)),
+                    p("{n}She did not bring a gift this time. The last one sold hats by the west gate of Drezen, with her gold still on his wrist, and she walked past his stall on her way in without looking at it, which was how the Commander knew she had noticed it.{/n}", requires=(FREED,)),
+                    p("{n}She did not bring a gift this time. The last one the Commander had refused, and the man still made her collars; she said a second offer would have been bad manners, and worse business.{/n}", requires=(TESTED,), forbids=(FREED,)),
+                    p("{n}Before the Threshold there had been a note, pinned to the pole of the Commander's tent by a knife: *I have not finished thinking about what I want. You are going to your war before I have finished. That is very inconsiderate of you. Come back, and I will tell you.* The Commander came back. She told.{/n}"), *COMMON))],
     requires=("trickster.ever", LATE_COMMITTED),
     forbids=(COMMITTED, DECLINED, LEFT_FREE, ALLY, CLOSED, "sacrifice"), **SAC, **EP))
 tag(H + "epilogue.commit", "T")

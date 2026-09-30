@@ -363557,7 +363557,7 @@
         {
           "Id": "her",
           "Speaker": "Horzalah",
-          "Text": "{n}She is standing very close. She unbuckles the high collar and lets it drop onto the nearest strongbox, where it lands across somebody's name.{/n}\n\"Everything I own, I took,\" {n}she says.{/n} \"The Guild. This room. Yozz, and his dresser, and his debts. My own name back from my sister's mouth. Everything.\" {n}She lifts a hand and sets her claws, very lightly, in your hair.{/n}\n\"You, I am asking for.\"",
+          "Text": "{n}She is standing very close. She unbuckles the high collar and lets it drop onto the nearest strongbox, where it lands across somebody's name.{/n}\n\"Everything I own, I took,\" {n}she says.{/n} \"The Guild. This room. Yozz, and his house, and his debts. My own name back from my sister's mouth. Everything.\" {n}She lifts a hand and sets her claws, very lightly, in your hair.{/n}\n\"You, I am asking for.\"",
           "Choices": [
             {
               "Text": "\"Then ask.\"",
@@ -363907,7 +363907,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}The war ended before Horzalah had finished thinking about what she wanted. She finished it anyway, the spring after the Threshold, in her own time and on her own terms.{/n}\n{n}She came to Drezen through no door at all, stood in the Commander's rooms until she was noticed, and unbuckled her collar. The Commander waited, as the Commander had learned to do around her, and she took the Commander's hand and put it on the scar herself.{/n}\n{n}She brought a gift, as she had always meant to: a grey-haired man on a thin gold chain, Yozz's dresser, held out across the Commander's table. What the Commander did with the chain, she never told anyone. She only ever said that she had been bought once, and knew what a buyer looked like, and had not seen one.{/n}\n{n}That night she did not leave. She let the Commander unbuckle her collar, and every lace after it, and when the last of her leathers was on the floor she took two fistfuls of the Commander's shirt and fell back onto the bed and pulled the Commander down with her, and the candle went out.{/n}\n{n}After that she came and went as she pleased, and nobody in Drezen was ever quite sure whether she was a guest, a visitor or a threat, and nobody dared to ask her which. In the Guild's hall in Alushinyrra, a small box with a white ribbon hung on the notice board in a place of honour, and the masters who had known what was in it grew old and careful in her service.{/n}",
+          "Text": "{n}The war ended before Horzalah had finished thinking about what she wanted. She finished it anyway, the spring after the Threshold, in her own time and on her own terms.{/n}\n{n}She came to Drezen through no door at all, stood in the Commander's rooms until she was noticed, and unbuckled her collar. The Commander waited, as the Commander had learned to do around her, and she took the Commander's hand and put it on the scar herself.{/n}\n{n}That night she did not leave. She let the Commander unbuckle her collar, and every lace after it, and when the last of her leathers was on the floor she took two fistfuls of the Commander's shirt and fell back onto the bed and pulled the Commander down with her, and the candle went out.{/n}\n{n}After that she came and went as she pleased, and nobody in Drezen was ever quite sure whether she was a guest, a visitor or a threat, and nobody dared to ask her which. In the Guild's hall in Alushinyrra, a small box with a white ribbon hung on the notice board in a place of honour, and the masters who had known what was in it grew old and careful in her service.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -363920,6 +363920,32 @@
           ],
           "Portrait": "",
           "Paragraphs": [
+            {
+              "Text": "{n}She brought a gift, as she had always meant to: a grey-haired man on a thin gold chain, Yozz's dresser, held out across the Commander's table. What the Commander did with the chain, she never told anyone. She only ever said that she had been bought once, and knew what a buyer looked like, and had not seen one.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "horzalah.trickster.tested"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She did not bring a gift this time. The last one sold hats by the west gate of Drezen, with her gold still on his wrist, and she walked past his stall on her way in without looking at it, which was how the Commander knew she had noticed it.{/n}",
+              "Requires": [
+                "horzalah.trickster.cost.gift_freed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She did not bring a gift this time. The last one the Commander had refused, and the man still made her collars; she said a second offer would have been bad manners, and worse business.{/n}",
+              "Requires": [
+                "horzalah.trickster.tested"
+              ],
+              "Forbids": [
+                "horzalah.trickster.cost.gift_freed"
+              ],
+              "AnyGroups": []
+            },
             {
               "Text": "{n}Before the Threshold there had been a note, pinned to the pole of the Commander's tent by a knife: *I have not finished thinking about what I want. You are going to your war before I have finished. That is very inconsiderate of you. Come back, and I will tell you.* The Commander came back. She told.{/n}",
               "Requires": [],
@@ -366052,9 +366078,22 @@
               "Next": "betrayed",
               "Set": [],
               "Requires": [
-                "horzalah.met_q3_a"
+                "horzalah.met_q3_a",
+                "horzalah.greybor_explained"
               ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "betrayed_plain",
+              "Set": [],
+              "Requires": [
+                "horzalah.met_q3_a"
+              ],
+              "Forbids": [
+                "horzalah.greybor_explained"
+              ],
               "Abort": false
             },
             {
@@ -366087,6 +366126,22 @@
           "Id": "betrayed",
           "Speaker": "Horzalah",
           "Text": "\"He took my contract on you, and my gold, and my confidence, and he led me to the Dry Crossroads by the nose, and at the end of it he stood over me and told me my three mistakes, in order, like a schoolmaster.\" {n}Her teeth show.{/n} \"I have never been so humiliated in my life, and my life has been one long humiliation. I want his head, mortal.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "demand",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "betrayed_plain",
+          "Speaker": "Horzalah",
+          "Text": "\"He took my contract on you, and my gold, and my confidence, and at the Dry Crossroads he turned out to have been yours the whole time.\" {n}Her teeth show.{/n} \"He barely looked at me. He stood there with his arms folded while I lay in the dust, as if I were a job that had come in under budget. I have never been so humiliated in my life, and my life has been one long humiliation. I want his head, mortal.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -369374,7 +369429,8 @@
         "horzalah.trickster.ally"
       ],
       "Forbids": [
-        "horzalah.closed"
+        "horzalah.closed",
+        "horzalah.trickster.letter.first_read"
       ],
       "DelayHours": 96,
       "Optional": true,
@@ -375424,6 +375480,9 @@
     ],
     "baphomet.spawn_told": [
       "0cdc1a24d29c77f4490900d3a9418afc"
+    ],
+    "horzalah.greybor_explained": [
+      "ae22177b1bc76fc42a9d08dba83cccdc"
     ],
     "vellexia.spared": [
       "58d69774dbe696e46a9232167e8d3479"
