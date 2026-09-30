@@ -363387,7 +363387,7 @@
         {
           "Id": "taught",
           "Speaker": "conversant",
-          "Text": "\"Properly.\" {n}She seems pleased by the word.{/n} \"Then listen, because Sarkorians have been getting it wrong for as long as there have been Sarkorians.\n\"An offering to the Shimmering Maiden is made under the open stars, never under a roof. It is named aloud, once, so there can be no mistaking what is given. It must be something the giver loves; she has no use for what you would throw away. And it must belong to her own domain: light, the night sky, the far north where her lights hang. Or the sight of them.\"",
+          "Text": "\"Properly.\" {n}She seems pleased by the word.{/n} \"Then I will tell you as I was taught it, in the temple where I made my vow. Half the pilgrims who came to us got it wrong, and my Lady forgave them, and gave them nothing.\n\"An offering to the Shimmering Maiden is made under the open stars, never under a roof. It is named aloud, once, so there can be no mistaking what is given. It must be something the giver loves; she has no use for what you would throw away. And it must belong to her own domain: light, the night sky, the far north where her lights hang. Or the sight of them.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -364195,7 +364195,6 @@
       "Requires": [
         "trickster",
         "eliandra.met_ch5",
-        "eliandra.shrine_left",
         "eliandra.trickster.dead_named"
       ],
       "Forbids": [
@@ -375119,7 +375118,7 @@
       "Title": "A Sacrifice in Her Place",
       "Description": "Eliandra kept Pulura's hidden shrine for a hundred years and gave her Lady everything she had when she was thirteen. Her Lady answered with strength. The shrine is found now, and the stargazers are leaving it, and the vow still holds her. Only the Maiden can let her go.",
       "Objective": "Ask the Shimmering Maiden to let Eliandra go",
-      "Guidance": "On the Trickster path, in Chapter 5, after the demons' raid on Pulura's Fall. Ask Eliandra what will happen to the sanctuary, and learn how her Lady takes an offering, or watch her last evening observation. Then ask her for one last rite at the star-heart.",
+      "Guidance": "On the Trickster path, in Chapter 5, after the demons' raid on Pulura's Fall. Ask Eliandra who was lost, learn how her Lady takes an offering, or watch her last evening observation. Then ask her for one last rite at the star-heart.",
       "StartedFlag": "eliandra.started",
       "ClosedFlag": "eliandra.closed",
       "CommittedFlag": "eliandra.committed",
@@ -375131,8 +375130,7 @@
       "TricksterAccess": {
         "vow": {
           "Detect": [
-            "eliandra.met_ch5",
-            "eliandra.shrine_left"
+            "eliandra.met_ch5"
           ],
           "Device": "eliandra.trickster.ch5.last_rite",
           "Returned": "eliandra.trickster.leave_granted"

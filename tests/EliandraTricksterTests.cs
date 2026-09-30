@@ -88,7 +88,7 @@ internal static class EliandraTricksterTests
         check(rel.StartedFlag == Started && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed
               && rel.UnavailableFlags.SequenceEqual(new[] { "eliandra.dead" })
               && rel.TricksterAccess.Keys.OrderBy(k => k).SequenceEqual(new[] { "no_leave", "vow" })
-              && rel.TricksterAccess["vow"].Device == rite.Id && rel.TricksterAccess["no_leave"].Device == self.Id,
+              && rel.TricksterAccess["vow"].Device == rite.Id && rel.TricksterAccess["vow"].Detect.SequenceEqual(new[] { Met }) && rel.TricksterAccess["no_leave"].Device == self.Id,
             "Trk_Eliandra_Bindings: the relationship does not match the build sheet.");
         check(shrine.Length >= 12 && shrine.All(s => s.NativeReturnCue == Ret && s.Chapters.SequenceEqual(new[] { 5 })
                   && s.Requires.Contains(Met) && s.Forbids.Contains(Closed) && s.Forbids.Contains("eliandra.dead") && s.ContactUnit == null),
@@ -131,6 +131,11 @@ internal static class EliandraTricksterTests
         check(!Rules.Available(story, rite, named), "Trk_Eliandra_Leave: the rite opens with neither the terms nor an observation.");
         var read = One(terms, named, new[] { E + "terms_read", Started });
         check(Rules.Available(story, rite, read), "Trk_Eliandra_Leave: the terms read do not open the rite.");
+        // The sanctuary question (Cue_0029/0030) is not a gate: a Commander who never asks it still reaches the rite and its yes.
+        var unasked = World(story, 5, "trickster", "trickster.ever", Met);
+        var unaskedRead = One(terms, One(firstWords, unasked, new[] { E + "dead_named" }), new[] { E + "terms_read" });
+        check(!rite.Requires.Contains(ShrineLeft) && Rules.Available(story, rite, unaskedRead)
+              && Program.Walk(rite, unaskedRead).Any(r => r.Has(Leave)), "Trk_Eliandra_Leave: the rite waits on the sanctuary question.");
         var lightsOffer = rite.Nodes.Single(n => n.Id == "name").Choices.Where(c => c.Check != null).ToList();
         check(rite.Nodes.Single(n => n.Id == "name_again").Choices.Where(c => c.Check != null).Select(c => c.Check!.DC).OrderBy(d => d).SequenceEqual(new[] { 18, 24 }),
             "Trk_Eliandra_Leave: after the refusal the lights are not offered at 24, or 18 with the terms.");

@@ -128,13 +128,13 @@ RELATIONSHIP = dict(
                  "thirteen. Her Lady answered with strength. The shrine is found now, and the stargazers are leaving it, and "
                  "the vow still holds her. Only the Maiden can let her go."),
     Objective="Ask the Shimmering Maiden to let Eliandra go",
-    Guidance=("On the Trickster path, in Chapter 5, after the demons' raid on Pulura's Fall. Ask Eliandra what will happen to "
-              "the sanctuary, and learn how her Lady takes an offering, or watch her last evening observation. Then ask her "
-              "for one last rite at the star-heart."),
+    Guidance=("On the Trickster path, in Chapter 5, after the demons' raid on Pulura's Fall. Ask Eliandra who was lost, "
+              "learn how her Lady takes an offering, or watch her last evening observation. Then ask her for one last rite "
+              "at the star-heart."),
     StartedFlag=STARTED, ClosedFlag=CLOSED, CommittedFlag=COMMITTED,
     UnavailableFlags=[DEAD], FailureFlags=[], UnavailableOverrides={},
     TricksterAccess={
-        "vow": dict(detect=[MET, SHRINE_LEFT], device=E + "ch5.last_rite", returned=LEAVE),
+        "vow": dict(detect=[MET], device=E + "ch5.last_rite", returned=LEAVE),
         "no_leave": dict(detect=[NO_LEAVE], device=E + "ch5.self_offering", returned=LEAVE),
     },
 )
@@ -581,7 +581,7 @@ shrine(E + "ch5.terms", "What the Maiden takes", '"What does your Lady take, in 
        c('[Lore (Religion)] "How is an offering made to Pulura? Properly. The Sarkorian way."',
          check=dict(Skill="SkillLoreReligion", DC=20, Success="taught", Failure="guessed")),
        c('"Only curious. Forget I asked."', abort=True)),
-    el("taught", '''"Properly." {n}She seems pleased by the word.{/n} "Then listen, because Sarkorians have been getting it wrong for as long as there have been Sarkorians.
+    el("taught", '''"Properly." {n}She seems pleased by the word.{/n} "Then I will tell you as I was taught it, in the temple where I made my vow. Half the pilgrims who came to us got it wrong, and my Lady forgave them, and gave them nothing.
 "An offering to the Shimmering Maiden is made under the open stars, never under a roof. It is named aloud, once, so there can be no mistaking what is given. It must be something the giver loves; she has no use for what you would throw away. And it must belong to her own domain: light, the night sky, the far north where her lights hang. Or the sight of them."''',
        c("Continue", "taught2")),
     el("taught2", '''"Gold is not hers. Deeds are not hers; deeds belong to whoever needed them done. My brothers used to leave her silver, and she let it tarnish on the altar." {n}Her eyes narrow, very slightly.{/n} "Why do you want to know? You are not a Sarkorian, and I do not think you are a pious {mf|man|woman}."''',
@@ -701,7 +701,7 @@ shrine(E + "ch5.last_rite", "The last rite", '"Will you hold one last rite at th
        c("[Go.]", flags=(NO_LEAVE, TRIED_TO_CHEAT))),
     nar("walk", '''{n}You stand up. Eliandra's eyes follow you, but she does not speak; she does not stop you, and she does not ask. Behind you the water in the basin settles, and the stars in it go on burning, a heartbeat behind the sky.{/n}''',
        c("[Leave the star-heart.]", flags=(NO_LEAVE,))),
-], requires=(SHRINE_LEFT, DEAD_NAMED), forbids=(LEAVE, NO_LEAVE), fit="T",
+], requires=(DEAD_NAMED,), forbids=(LEAVE, NO_LEAVE), fit="T",
     RequiresAnyGroups=[[TERMS_READ, OBSERVED]], TricksterDevice=True, TricksterState="vow")
 
 
