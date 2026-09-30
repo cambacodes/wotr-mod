@@ -11,7 +11,7 @@ from story_format import c, n, scene
 from storylines.melazmera_trickster import DREZEN
 from storylines.melazmera_trickster import (ATE, CLOSED, COMMITTED, DEAD, DECLINED, FED, FED_CULTISTS, FED_DEMONS, FED_HERD,
                                              GREY_CARRIED, GREY_HAND, HARPOONED, HEAP, LEFT_FREE, M, MESSAGE, PROMISED,
-                                             QUEEN_MET, QUEEN_TURNED, REL, RETURNED, SALTED, SEAL, STONE_KEPT, mz, nar, tag)
+                                             QUEEN_MET, QUEEN_TURNED, FIST, REL, RETURNED, SALTED, SEAL, STONE_KEPT, mz, nar, tag)
 
 SCENES = []
 
@@ -134,13 +134,13 @@ visit(M + "beat.flight", "Over the Wound", [
     mz("sees", '''"Doors." {n}She banks, slowly, and the rifts turn beneath you like the spokes of a wheel.{/n} "Every one of those is a door, and something is always coming up through it. I can taste them. The air above the Wound is full of things going up and things going down. Most of what goes down is yours. Soldiers. They go down very fast, with a sound like a coin dropped in a well." {n}She sounds pleased with the comparison.{/n} "I have been eating the ones that come up. Nobody is eating the ones that go down. That is a waste."''',
         c("Continue", "dive")),
     mz("boast", '''{n}She laughs, and it goes out across the Wound like thunder, and far below a picket-torch stops moving.{/n}
-"You are standing on the back of a dragon in the middle of the sky with nothing under you but a mile of air," {n}she says,{/n} "and you are *boasting*. You are the stupidest thing I have ever had in my hoard." {n}She sounds delighted.{/n} "Hold on, then, conqueror. I am going to show you how small you are."''',
+"You are standing on the back of a dragon in the middle of the sky with nothing under you but a mile of air," {n}she says,{/n} "and you are *boasting*. You are the stupidest thing I have ever carried." {n}She sounds delighted.{/n} "Hold on, then, conqueror. I am going to show you how small you are."''',
         c("Continue", "dive")),
     nar("dive", '''{n}She folds her wings and drops. The wind tears at you. Your eyes stream, the spines under your hands are slick with cold, and the ground comes up out of the dark, a rift the size of a river, glowing, rushing at you, until you can see the stones on its lips and the steam coming off them and something moving in the steam, and at the last moment she opens her wings and the world slams into your spine and you are skimming along the Wound's edge so low that her claws trail through the smoke.{/n}''',
         c("[Hold on with both hands and every muscle you have.]", "hold"),
         c("[Let go of her spines and spread your arms.]", "letgo")),
     mz("hold", '''{n}You hold on. She climbs out of the dive, and out of the smoke, and up into the clean cold air, and when she speaks again she is giggling.{/n}
-"You are holding on so hard I can feel it through my plates," {n}she says.{/n} "Good. Things in my hoard should hold on." {n}She turns south, towards the little string of lights.{/n} "I will take you home now, before you freeze and I have to explain to your priests why their Commander is blue."''',
+"You are holding on so hard I can feel it through my plates," {n}she says.{/n} "Good. Things I carry should hold on." {n}She turns south, towards the little string of lights.{/n} "I will take you home now, before you freeze and I have to explain to your priests why their Commander is blue."''',
         c("Continue", "home")),
     mz("letgo", '''{n}You let go. For one heartbeat there is nothing holding you to her at all but speed and the wind; then her whole body rolls under you, a slow smooth half-turn that keeps you pressed to her neck as if you were glued there, and she comes up out of the smoke with you still on her back and your arms still out.{/n}
 "You *let go*," {n}she says. She sounds scandalised, and something else.{/n} "Nobody lets go. Everything I have ever carried held on until I ate it." {n}She flies on a while in silence.{/n} "Do not do that again. I did not like it. Do it again."''',
@@ -178,7 +178,7 @@ visit(M + "beat.crew", "Salt", [
         c('"He was following my order. He\'s under my protection."', "spare"),
         c('"Then eat him last. Last is a long way off."', "last")),
     mz("spare", '''"Your *protection*." {n}Her lip lifts off her teeth. For a moment you think she is going to go out of the window and down to the place with the boot on the door, and that there is nothing in the world you could do to stop her.{/n}
-{n}Then she hisses out a long breath, and the teeth go away.{/n} "Very well. He is in your hoard, and you are in mine, and so I suppose he is in mine too, the way a flea is in a dog." {n}She scowls.{/n} "I will not eat him. I will sit on the roof across the street from his drinking-house and look at him through the window every night until he dies of it."''',
+{n}Then she hisses out a long breath, and the teeth go away.{/n} "Very well. He is under your protection, and you are under my claw, and so I suppose he is under it too, the way a flea is on a dog." {n}She scowls.{/n} "I will not eat him. I will sit on the roof across the street from his drinking-house and look at him through the window every night until he dies of it."''',
         c("[Let her have that.]", flags=(CREW, CAPTAIN_SPARED))),
     mz("last", '''{n}She considers that, and then she smiles, slowly, with all her teeth.{/n}
 "Last," {n}she says.{/n} "Yes. After everything else, when the war is over and I have eaten the hole in your world and everything that comes up out of it, I will go to the place with the boot on the door, and he will be old, and I will be exactly the same." {n}She sighs with pleasure.{/n} "Let him grow old telling it. I want to hear the story from his own mouth, with all its lies in, before I eat him."''',
@@ -197,13 +197,23 @@ visit(M + "beat.crew", "Salt", [
 visit(M + "beat.queen", "The thing in the swamp", [
     nar("start", '''{n}You come back to your quarters and find her sitting on your desk eating your candles, one after another, like sticks of sugar, in the dark she has made by eating them.{/n}
 "I had news from my island," {n}she says, around a mouthful of tallow.{/n} "A harpy came through the hole. I ate it, and it told me everything first. Harpies always talk."''',
-        c("Continue", "turned", requires=(QUEEN_TURNED,)),
+        c("Continue", "turned", requires=("melazmera.fq_betrayed",)),
+        c("Continue", "fought", requires=("melazmera.queen_fought",), forbids=("melazmera.fq_betrayed",)),
+        c("Continue", "withdrew", requires=("melazmera.queen_withdrew",), forbids=("melazmera.fq_betrayed", "melazmera.queen_fought")),
         c("Continue", "promised", requires=(PROMISED,), forbids=(QUEEN_TURNED,)),
         c("Continue", "plain", forbids=(QUEEN_TURNED, PROMISED))),
     mz("turned", '''"The thing in the swamp turned on you." {n}She sounds delighted.{/n} "She promised you her love and her affection and then she tried to drown you in her whirlpool, because she is too good for the likes of you. The harpy told me all of it. The harpy did the voice." {n}She does the voice too, wetly, and it is very good.{/n}
 "You should have let me eat her the first time. I would have, if you had asked. I would have spat her out again, because she tastes of nothing, but she would have been *chewed*, and she would have remembered it."''',
         c('"She\'s back in her swamp. Let her keep it."', "keep"),
         c('"Next time, I\'ll ask."', "ask")),
+    mz("fought", '''"You fought the thing in the swamp." {n}She sounds delighted.{/n} "The harpy says she swelled up and bubbled and screamed about her powafulness, and you went at her with steel until she had to pour herself away down her holes to get clear of you." {n}She does the voice, wetly, and it is very good.{/n}
+"You should have let me eat her first. I would have spat her out again, because she tastes of nothing, but she would have been *chewed*, and she would have remembered it."''',
+        c('"She\'s back in her swamp. Let her keep it."', "keep"),
+        c('"Next time, I\'ll ask."', "ask")),
+    mz("withdrew", '''"The thing in the swamp waved you off her island like a queen," {n}she says, delighted,{/n} "and then went down one of her holes and has not come up since. The harpy says she is sulking in a plague pit and telling the flies that you were her very best knight." {n}She does the voice, wetly, and it is very good.{/n}
+"When she comes up again, she will find my cave empty and think she has won. I want to be there for her face. She does not really have one. I want to be there for the place where it would be."''',
+        c('"She\'s back in her swamp. Let her keep it."', "keep"),
+        c('"Take me with you when you go and look."', "ask")),
     mz("promised", '''"You promised the thing in the swamp my crown." {n}She sounds delighted.{/n} "The little one on the ledge. The harpy says she has been telling the whole island that the Knight Commander is bringing her a crown, and she has been practising wearing it with a pebble on her head." {n}She giggles.{/n} "It keeps sliding off. She does not have a head, really. She has a place where a head would go."
 "You lied to her. To get into my cave." {n}The scarlet eyes gleam at you in the dark.{/n} "Good. She deserves lies. She has never told the truth in her life except by accident."''',
         c('"Maybe I\'ll send her a rock. She won\'t know the difference."', "rock"),
@@ -544,7 +554,7 @@ visit(M + "beat.inquisitor", "Somebody is asking", [
 "Very well. I will leave him his lamp. But he will look at you, thief, every day, across your castle, with that face. The face of a man who knows there is a thing he cannot prove." {n}She looks back from the window.{/n} "I know that face. I have seen it on a great many knights, just before they touched my crown."''',
         c("Continue", flags=(M + "beat.inquisitor_watched",))),
     mz("do", '''{n}She smiles at you, slowly, with every tooth she has, and for a moment the woman is not there at all.{/n}
-"There," {n}she says softly.{/n} "You are learning what my hoard is for."
+"There," {n}she says softly.{/n} "You are learning what I am for."
 {n}She goes out over the sill. In the morning the inquisitor's acolyte comes to the gatehouse alone, white to the lips, and says that his master went down to the cellars before dawn with the lamp and told him to wait on the stairs, and that the lamp went out, and that his master did not come up. The gaoler writes *missing* in his book, this time, not *escaped*. He does not look at you when he writes it. That is worse.{/n}''',
         c("Continue", flags=(M + "beat.inquisitor_eaten", M + "cost.inquisitor")))],
     requires=(FED_CULTISTS,), forbids=(M + "beat.inquisitor_lied", M + "beat.inquisitor_watched", M + "beat.inquisitor_eaten"))

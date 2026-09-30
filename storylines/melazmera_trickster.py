@@ -128,6 +128,9 @@ RELATIONSHIP = dict(
 DERIVED = {
     SEEN_THROUGH: [[LIFTED], [LIFTED_B]],
     HOARD_KNOWN: [[HOARD_TOLD], [LIFTED], [LIFTED_B]],
+    # The Queen's six native outcomes, told apart for the harpy's news (beat.queen): the betrayal itself, a fight, a retreat.
+    "melazmera.queen_fought": [["melazmera.fq_attacked"], ["melazmera.fq_disobeyed"], ["melazmera.fq_refused"]],
+    "melazmera.queen_withdrew": [["melazmera.fq_retreated"], ["melazmera.fq_sulked"]],
     # 05 §2.5 voice note: she joins as a hoarder; what is in her hoard does not leave, and she says so.
     "melazmera.harem.voice.what_is_mine_stays": [[COMMITTED]],
 }
@@ -327,17 +330,24 @@ HUNT_OPEN_COLYPHYR = nar("start", '''{n}You wake because the rain has stopped fa
 
 KNOWN = nar("known", '''{n}Your hand knows before you do. The two grey fingers, which have felt nothing since the cave, prickle as if they were waking from sleep, and then go cold again.{/n}
 {n}A woman walks out of the dark on the far side of the fire.{/n}''',
-    c("Continue", "arrive_known"))
+    c("Continue", "arrive_known", forbids=(FIST,)),
+    c("Continue", "arrive_fist", requires=(FIST,)))
 
 
 def arrive_known(tail):
-    return mz("arrive_known", '''"You held on," {n}she says, before she has even sat down.{/n} "In my cave. You had lost two fingers and you were kneeling in front of a dragon with her supper still on her breath, and you held on to your ring as if it were yours."
-"Then you let go of it." {n}She sounds genuinely puzzled.{/n} "I lay on my heap a whole night thinking about that, and I could not make it come out even. ''' + tail + '"',
-        c("Continue", "arrive"))
+    """Her memory of the failed salt: the ring held out (grey fingers), or the fist she opened herself (fist_closed)."""
+    return [
+        mz("arrive_known", '''"You held it out," {n}she says, before she has even sat down.{/n} "In my cave. I had my claw on your hand and two of your fingers were going grey, and you scraped the clay off your ring with your thumb and held it up to me, as if you were paying a toll."
+"Nobody pays me. They run, or they fight, or they pray." {n}She sounds genuinely puzzled.{/n} "I lay on my heap a whole night thinking about that, and I could not make it come out even. ''' + tail + '"',
+            c("Continue", "arrive")),
+        mz("arrive_fist", '''"You closed your fist," {n}she says, before she has even sat down.{/n} "In my cave. You came to give me a thing, and then with my claw on you, you would not let go of it, and I had to open your fingers myself, and they went grey while I did it."
+"That was the part I understood. Everything I have ever caught held on." {n}She sounds genuinely puzzled.{/n} "It was the rest I could not make come out even: that you came in with it at all. I lay on my heap a whole night thinking about it. ''' + tail + '"',
+            c("Continue", "arrive")),
+    ]
 
 
 SCENES.append(scene(M + "ch4.hunt", "The thief who gave", "Melazmera", 4, "", [
-    HUNT_OPEN_COLYPHYR, KNOWN, arrive_known("So I came to look at you again."),
+    HUNT_OPEN_COLYPHYR, KNOWN, *arrive_known("So I came to look at you again."),
     nar("stranger", '''{n}The sentry on the near rock has not moved. His eyes are open, and his hand is on his spear, and he is shaking so hard the butt of it clicks on the stone. He is looking at the far side of the fire.{/n}
 {n}A woman walks out of the dark there.{/n}''',
         c("Continue", "arrive")),
@@ -360,13 +370,13 @@ def _found_body():
 
 
 SCENES.append(scene(M + "ch4.hunt_found", "The thief who gave", "Melazmera", 4, "", [
-    nar("start", '''{n}She finds you on the third night after the cave. Your camp is a long way from Colyphyr now, on a ledge above a river of something that is not water, under a sky the colour of old meat. Nobody in the Abyss should be able to find it. You wake because the air over you has gone still and heavy, the way it goes before a storm, and because every demon within earshot has stopped screaming at once.{/n}''',
+    nar("start", '''{n}She finds you on the third night after the cave, under the red sky of the Abyss. You wake because the air over your camp has gone still and heavy, the way it goes before a storm, and because every demon within earshot has stopped screaming at once.{/n}''',
         c("Continue", "known", requires=(GREY_HAND,)),
         c("Continue", "stranger", forbids=(GREY_HAND,))),
-    KNOWN, arrive_known("So I came across half the Abyss to look at you again."),
+    KNOWN, *arrive_known("So I came across half the Abyss to look at you again."),
     nar("stranger", '''{n}There is a fire; somebody has lit one, and it was not you. There is a woman beside it who was not there when you lay down.{/n}''',
         c("Continue", "far")),
-    mz("far", '''"You ran away," {n}she says.{/n} "You put a thing in my hoard, and then you ran off as if I would not be able to smell my own property on your hand." {n}She sounds more amused than offended.{/n} "I can smell a goat across a sea. Did you think I could not smell a crusader across the Abyss?"''',
+    mz("far", '''"You did not wait for me," {n}she says.{/n} "You put a thing in my hoard, and then you went about your war as if I would not be able to smell my own property on your hand." {n}She sounds more amused than offended.{/n} "I can smell a goat across a sea. Did you think I could not find one crusader?"''',
         c("Continue", "arrive")),
     *_found_body()],
     requires=("trickster.ever", SALTED), forbids=(DEAD, RETURNED, CLOSED, M + "ch4.hunt"), delay=36, last=4,
@@ -407,8 +417,9 @@ SCENES.append(scene(M + "ch5.hunt_window", "The thief who gave", "Melazmera", 5,
         c("Continue", "stranger", forbids=(GREY_HAND,))),
     nar("known", '''{n}Your hand knows before you do. The two grey fingers, which have felt nothing since the cave, prickle as if they were waking from sleep, and then go cold again.{/n}
 {n}The thing on the sill unfolds, and it is a woman.{/n}''',
-        c("Continue", "arrive_known")),
-    arrive_known("So I came through the hole in your world to look at you again."),
+        c("Continue", "arrive_known", forbids=(FIST,)),
+        c("Continue", "arrive_fist", requires=(FIST,))),
+    *arrive_known("So I came through the hole in your world to look at you again."),
     nar("stranger", '''{n}The thing on the sill unfolds, and it is a woman, tall and dark, with a rock pressed into her hair like a crown.{/n}''',
         c("Continue", "far")),
     mz("far", '''"You ran away," {n}she says.{/n} "You put a thing in my hoard, and then you ran off, all the way to your own world, as if I would not be able to smell my own property on your hand." {n}She sounds more amused than offended.{/n} "There is a hole in your world, thief. I came up through it after you. It was warm."''',
@@ -686,7 +697,7 @@ SCENES.append(scene(M + "visit.heap", "On the heap", "Melazmera", 5, "", [
     mz("go", '''"In one piece," {n}she agrees.{/n} "I do not want the pieces. I want the whole thing, with the talking still in it." {n}She lifts her head at last, and yawns, and it is like looking into a furnace full of knives.{/n} "Get on. I will take you back before your castle notices you are gone. Your castle notices everything. It is the most frightened building I have ever seen."''',
         c("Continue", "home")),
     nar("home", '''{n}She puts you down on the roof of the keep with the sun barely up. You go down the stairs with your shirt on inside out and a stone in the pocket of it, a lumpy grey stone the size of a hen's egg, warm from lying against you all night, and it stays warm all morning, long after it should have cooled.{/n}
-{n}There is another stone on your windowsill when you get there, small and round, the clay on its corner still wet, the old seal pressed into it very carefully and very straight: FORTY ON THE HEAP. ONE IN YOUR POCKET. ONE SEAL. ONE COMMANDER. YOU LEFT A SHIRT. IT IS MINE NOW.{/n}''',
+{n}There is another stone on your windowsill when you get there, small and round, the clay on its corner still wet, the old seal pressed into it very carefully and very straight: FORTY ON THE HEAP. ONE IN YOUR POCKET. ONE SEAL. ONE COMMANDER. YOU LEFT YOUR BELT ON THE HEAP. IT IS MINE NOW.{/n}''',
         c("Continue", "dogs", requires=(GREY_ABSENT,)),
         c("[Go about your day.]", flags=(HEAP,), forbids=(GREY_ABSENT,))),
     nar("dogs", '''{n}When you cross the stable yard, every dog in it gets up and goes somewhere else. The old wolfhound that sleeps by the forge, who has never moved for anyone, crawls under the feed trough on his belly and will not come out, and whines, and the grooms look from him to you and back again and say nothing at all.{/n}''',
@@ -720,7 +731,8 @@ tag(M + "react.greybor_after")
 SCENES.append(reaction("Nenio", M + "react.nenio_specimen", ("trickster.ever", FED),
     '''{n}Nenio is standing at her window with a spyglass to her eye, pointed north at the Wound, and a folio open on the sill with a great many crossings-out in it.{/n}
 "An umbral dragon," {n}she says, without turning round.{/n} "In the city. Wearing a woman. For *hours*. Do you know what that costs? Illusions do not eat, as a rule. Hers ate the measuring rope I left on your windowsill; I found the knot on the roof." {n}She lowers the spyglass.{/n}
-"I have catalogued a great many specimens. I would very much like her to be the next one. I have calculated, however, that on the balance of evidence I am more likely to be one of hers." {n}Her ears go back.{/n} "I have decided to observe from a great distance. Please tell her I am very stringy."''',
+"I have catalogued a great many specimens. She is the first that has catalogued *me* back: she looked at me over your wall for some time, and I am fairly sure she was estimating my weight." {n}Her ears go up.{/n}
+"So. An experiment. You will hold the end of a new rope, and I will hold the other end from the far side of the yard, and when she next wears the woman you will put your end round her waist. Distance is the control. You are the variable. Please do not be eaten before I have recorded the circumference."''',
     answer_list=NENIO_HUB, relationship=REL, chapter=5, last=5, Chapters=[5], entry='"You\'re watching the Wound."',
     portrait="Nenio", forbids=NENIO_GUARD,
     ForbidOverrides={"nenio.dead": NENIO_BACK, "nenio.killed_by_commander": NENIO_BACK, "nenio.sent_away": NENIO_BACK,
@@ -828,4 +840,15 @@ def integrate(payload):
         if have is not None and have != want:
             raise ValueError("Conflicting derived key: " + key)
         payload["Derived"][key] = want
+    # trickster_world binds a Derived key's sources only when it binds the key itself; these bind here first, so their
+    # verified native sources (melazmera.fq_*) are bound here from the same table.
+    from storylines import trickster_world
+    for key in sorted({k for groups in DERIVED.values() for g in groups for k in g}):
+        if key in trickster_world.BINDINGS:
+            kind, guid, _ = trickster_world.BINDINGS[key]
+            value = [guid] if kind in trickster_world.LIST_KINDS and isinstance(guid, str) else guid
+            have = payload.setdefault(kind, {}).get(key)
+            if have is not None and have != value:
+                raise ValueError("Conflicting binding: " + key)
+            payload[kind][key] = value
     payload.setdefault("PortraitFallbacks", {}).setdefault("Melazmera", PORTRAIT_GUID)

@@ -195,6 +195,22 @@ internal static class MelazmeraTricksterTests
         check(hunt.Nodes.Where(n => n.Text.Contains("sailors") || n.Text.Contains("ate until")).All(n => n.Id == "crew_ate"),
             "The crew's murder is told outside the ate_sailors variant.");
 
+        // The failed salt is remembered as it happened: the ring held out, or the fist she opened herself.
+        var fistSalt = Take(salt, planned, "fist", 0, Salted, Seal, GreyHand, P + "fist_closed");
+        check(Take(hunt, Later(story, fistSalt, 10), "arrive_fist", 0, Returned).Has(Returned)
+              && !Paths(hunt, Later(story, fistSalt, 10)).Any(o => o.path.Contains(("arrive_known", 0)))
+              && !Paths(hunt, Later(story, grey, 10)).Any(o => o.path.Contains(("arrive_fist", 0)))
+              && new[] { found, S(P + "ch5.hunt_window") }.All(s => s.Nodes.Any(n => n.Id == "arrive_fist")),
+            "The hunt remembers the failed salt wrongly (the offered ring against the closed fist).");
+        // The harpy's news tells the Queen's six native outcomes apart.
+        var queenBeat = S(P + "beat.queen");
+        Snapshot QW(string f) => World(story, 5, Drezen, "trickster.ever", Returned, Message, "melazmera.queen_contract_offered", f);
+        bool Reaches(string f, string node) => Paths(queenBeat, QW(f)).Any(o => o.path.Any(e => e.node == node));
+        check(Reaches("melazmera.fq_betrayed", "turned") && !Reaches("melazmera.fq_retreated", "turned") && Reaches("melazmera.fq_retreated", "withdrew")
+              && Reaches("melazmera.fq_sulked", "withdrew") && Reaches("melazmera.fq_attacked", "fought") && Reaches("melazmera.fq_refused", "fought")
+              && Reaches("melazmera.fq_disobeyed", "fought") && !Reaches("melazmera.fq_attacked", "turned"),
+            "The harpy's news overwrites the Queen's native outcome (betrayal, fight or retreat).");
+
         // Trk_Melazmera_Found: salted and gone from Colyphyr: she finds the camp in the Abyss after 36 hours.
         var away = Later(story, salted, 12, Drezen);
         check(!Avail(found, away) && Avail(found, Later(story, salted, 40, "abyss")) && !Avail(found, Later(story, salted, 40, "abyss", 5))

@@ -403119,6 +403119,18 @@
               "Next": "arrive_known",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "melazmera.trickster.fist_closed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "arrive_fist",
+              "Set": [],
+              "Requires": [
+                "melazmera.trickster.fist_closed"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -403128,7 +403140,23 @@
         {
           "Id": "arrive_known",
           "Speaker": "Melazmera",
-          "Text": "\"You held on,\" {n}she says, before she has even sat down.{/n} \"In my cave. You had lost two fingers and you were kneeling in front of a dragon with her supper still on her breath, and you held on to your ring as if it were yours.\"\n\"Then you let go of it.\" {n}She sounds genuinely puzzled.{/n} \"I lay on my heap a whole night thinking about that, and I could not make it come out even. So I came to look at you again.\"",
+          "Text": "\"You held it out,\" {n}she says, before she has even sat down.{/n} \"In my cave. I had my claw on your hand and two of your fingers were going grey, and you scraped the clay off your ring with your thumb and held it up to me, as if you were paying a toll.\"\n\"Nobody pays me. They run, or they fight, or they pray.\" {n}She sounds genuinely puzzled.{/n} \"I lay on my heap a whole night thinking about that, and I could not make it come out even. So I came to look at you again.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "arrive",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Melazmera"
+        },
+        {
+          "Id": "arrive_fist",
+          "Speaker": "Melazmera",
+          "Text": "\"You closed your fist,\" {n}she says, before she has even sat down.{/n} \"In my cave. You came to give me a thing, and then with my claw on you, you would not let go of it, and I had to open your fingers myself, and they went grey while I did it.\"\n\"That was the part I understood. Everything I have ever caught held on.\" {n}She sounds genuinely puzzled.{/n} \"It was the rest I could not make come out even: that you came in with it at all. I lay on my heap a whole night thinking about it. So I came to look at you again.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -403624,7 +403652,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She finds you on the third night after the cave. Your camp is a long way from Colyphyr now, on a ledge above a river of something that is not water, under a sky the colour of old meat. Nobody in the Abyss should be able to find it. You wake because the air over you has gone still and heavy, the way it goes before a storm, and because every demon within earshot has stopped screaming at once.{/n}",
+          "Text": "{n}She finds you on the third night after the cave, under the red sky of the Abyss. You wake because the air over your camp has gone still and heavy, the way it goes before a storm, and because every demon within earshot has stopped screaming at once.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -403659,6 +403687,18 @@
               "Next": "arrive_known",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "melazmera.trickster.fist_closed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "arrive_fist",
+              "Set": [],
+              "Requires": [
+                "melazmera.trickster.fist_closed"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -403668,7 +403708,23 @@
         {
           "Id": "arrive_known",
           "Speaker": "Melazmera",
-          "Text": "\"You held on,\" {n}she says, before she has even sat down.{/n} \"In my cave. You had lost two fingers and you were kneeling in front of a dragon with her supper still on her breath, and you held on to your ring as if it were yours.\"\n\"Then you let go of it.\" {n}She sounds genuinely puzzled.{/n} \"I lay on my heap a whole night thinking about that, and I could not make it come out even. So I came across half the Abyss to look at you again.\"",
+          "Text": "\"You held it out,\" {n}she says, before she has even sat down.{/n} \"In my cave. I had my claw on your hand and two of your fingers were going grey, and you scraped the clay off your ring with your thumb and held it up to me, as if you were paying a toll.\"\n\"Nobody pays me. They run, or they fight, or they pray.\" {n}She sounds genuinely puzzled.{/n} \"I lay on my heap a whole night thinking about that, and I could not make it come out even. So I came across half the Abyss to look at you again.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "arrive",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Melazmera"
+        },
+        {
+          "Id": "arrive_fist",
+          "Speaker": "Melazmera",
+          "Text": "\"You closed your fist,\" {n}she says, before she has even sat down.{/n} \"In my cave. You came to give me a thing, and then with my claw on you, you would not let go of it, and I had to open your fingers myself, and they went grey while I did it.\"\n\"That was the part I understood. Everything I have ever caught held on.\" {n}She sounds genuinely puzzled.{/n} \"It was the rest I could not make come out even: that you came in with it at all. I lay on my heap a whole night thinking about it. So I came across half the Abyss to look at you again.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -403700,7 +403756,7 @@
         {
           "Id": "far",
           "Speaker": "Melazmera",
-          "Text": "\"You ran away,\" {n}she says.{/n} \"You put a thing in my hoard, and then you ran off as if I would not be able to smell my own property on your hand.\" {n}She sounds more amused than offended.{/n} \"I can smell a goat across a sea. Did you think I could not smell a crusader across the Abyss?\"",
+          "Text": "\"You did not wait for me,\" {n}she says.{/n} \"You put a thing in my hoard, and then you went about your war as if I would not be able to smell my own property on your hand.\" {n}She sounds more amused than offended.{/n} \"I can smell a goat across a sea. Did you think I could not find one crusader?\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404169,6 +404225,18 @@
               "Next": "arrive_known",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "melazmera.trickster.fist_closed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "arrive_fist",
+              "Set": [],
+              "Requires": [
+                "melazmera.trickster.fist_closed"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -404178,7 +404246,23 @@
         {
           "Id": "arrive_known",
           "Speaker": "Melazmera",
-          "Text": "\"You held on,\" {n}she says, before she has even sat down.{/n} \"In my cave. You had lost two fingers and you were kneeling in front of a dragon with her supper still on her breath, and you held on to your ring as if it were yours.\"\n\"Then you let go of it.\" {n}She sounds genuinely puzzled.{/n} \"I lay on my heap a whole night thinking about that, and I could not make it come out even. So I came through the hole in your world to look at you again.\"",
+          "Text": "\"You held it out,\" {n}she says, before she has even sat down.{/n} \"In my cave. I had my claw on your hand and two of your fingers were going grey, and you scraped the clay off your ring with your thumb and held it up to me, as if you were paying a toll.\"\n\"Nobody pays me. They run, or they fight, or they pray.\" {n}She sounds genuinely puzzled.{/n} \"I lay on my heap a whole night thinking about that, and I could not make it come out even. So I came through the hole in your world to look at you again.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "arrive",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Melazmera"
+        },
+        {
+          "Id": "arrive_fist",
+          "Speaker": "Melazmera",
+          "Text": "\"You closed your fist,\" {n}she says, before she has even sat down.{/n} \"In my cave. You came to give me a thing, and then with my claw on you, you would not let go of it, and I had to open your fingers myself, and they went grey while I did it.\"\n\"That was the part I understood. Everything I have ever caught held on.\" {n}She sounds genuinely puzzled.{/n} \"It was the rest I could not make come out even: that you came in with it at all. I lay on my heap a whole night thinking about it. So I came through the hole in your world to look at you again.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -406064,7 +406148,7 @@
         {
           "Id": "home",
           "Speaker": "Narrator",
-          "Text": "{n}She puts you down on the roof of the keep with the sun barely up. You go down the stairs with your shirt on inside out and a stone in the pocket of it, a lumpy grey stone the size of a hen's egg, warm from lying against you all night, and it stays warm all morning, long after it should have cooled.{/n}\n{n}There is another stone on your windowsill when you get there, small and round, the clay on its corner still wet, the old seal pressed into it very carefully and very straight: FORTY ON THE HEAP. ONE IN YOUR POCKET. ONE SEAL. ONE COMMANDER. YOU LEFT A SHIRT. IT IS MINE NOW.{/n}",
+          "Text": "{n}She puts you down on the roof of the keep with the sun barely up. You go down the stairs with your shirt on inside out and a stone in the pocket of it, a lumpy grey stone the size of a hen's egg, warm from lying against you all night, and it stays warm all morning, long after it should have cooled.{/n}\n{n}There is another stone on your windowsill when you get there, small and round, the clay on its corner still wet, the old seal pressed into it very carefully and very straight: FORTY ON THE HEAP. ONE IN YOUR POCKET. ONE SEAL. ONE COMMANDER. YOU LEFT YOUR BELT ON THE HEAP. IT IS MINE NOW.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -406237,7 +406321,7 @@
         {
           "Id": "start",
           "Speaker": "Nenio",
-          "Text": "{n}Nenio is standing at her window with a spyglass to her eye, pointed north at the Wound, and a folio open on the sill with a great many crossings-out in it.{/n}\n\"An umbral dragon,\" {n}she says, without turning round.{/n} \"In the city. Wearing a woman. For *hours*. Do you know what that costs? Illusions do not eat, as a rule. Hers ate the measuring rope I left on your windowsill; I found the knot on the roof.\" {n}She lowers the spyglass.{/n}\n\"I have catalogued a great many specimens. I would very much like her to be the next one. I have calculated, however, that on the balance of evidence I am more likely to be one of hers.\" {n}Her ears go back.{/n} \"I have decided to observe from a great distance. Please tell her I am very stringy.\"",
+          "Text": "{n}Nenio is standing at her window with a spyglass to her eye, pointed north at the Wound, and a folio open on the sill with a great many crossings-out in it.{/n}\n\"An umbral dragon,\" {n}she says, without turning round.{/n} \"In the city. Wearing a woman. For *hours*. Do you know what that costs? Illusions do not eat, as a rule. Hers ate the measuring rope I left on your windowsill; I found the knot on the roof.\" {n}She lowers the spyglass.{/n}\n\"I have catalogued a great many specimens. She is the first that has catalogued *me* back: she looked at me over your wall for some time, and I am fairly sure she was estimating my weight.\" {n}Her ears go up.{/n}\n\"So. An experiment. You will hold the end of a new rope, and I will hold the other end from the far side of the yard, and when she next wears the woman you will put your end round her waist. Distance is the control. You are the variable. Please do not be eaten before I have recorded the circumference.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -407383,7 +407467,7 @@
         {
           "Id": "boast",
           "Speaker": "Melazmera",
-          "Text": "{n}She laughs, and it goes out across the Wound like thunder, and far below a picket-torch stops moving.{/n}\n\"You are standing on the back of a dragon in the middle of the sky with nothing under you but a mile of air,\" {n}she says,{/n} \"and you are *boasting*. You are the stupidest thing I have ever had in my hoard.\" {n}She sounds delighted.{/n} \"Hold on, then, conqueror. I am going to show you how small you are.\"",
+          "Text": "{n}She laughs, and it goes out across the Wound like thunder, and far below a picket-torch stops moving.{/n}\n\"You are standing on the back of a dragon in the middle of the sky with nothing under you but a mile of air,\" {n}she says,{/n} \"and you are *boasting*. You are the stupidest thing I have ever carried.\" {n}She sounds delighted.{/n} \"Hold on, then, conqueror. I am going to show you how small you are.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -407423,7 +407507,7 @@
         {
           "Id": "hold",
           "Speaker": "Melazmera",
-          "Text": "{n}You hold on. She climbs out of the dive, and out of the smoke, and up into the clean cold air, and when she speaks again she is giggling.{/n}\n\"You are holding on so hard I can feel it through my plates,\" {n}she says.{/n} \"Good. Things in my hoard should hold on.\" {n}She turns south, towards the little string of lights.{/n} \"I will take you home now, before you freeze and I have to explain to your priests why their Commander is blue.\"",
+          "Text": "{n}You hold on. She climbs out of the dive, and out of the smoke, and up into the clean cold air, and when she speaks again she is giggling.{/n}\n\"You are holding on so hard I can feel it through my plates,\" {n}she says.{/n} \"Good. Things I carry should hold on.\" {n}She turns south, towards the little string of lights.{/n} \"I will take you home now, before you freeze and I have to explain to your priests why their Commander is blue.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -407680,7 +407764,7 @@
         {
           "Id": "spare",
           "Speaker": "Melazmera",
-          "Text": "\"Your *protection*.\" {n}Her lip lifts off her teeth. For a moment you think she is going to go out of the window and down to the place with the boot on the door, and that there is nothing in the world you could do to stop her.{/n}\n{n}Then she hisses out a long breath, and the teeth go away.{/n} \"Very well. He is in your hoard, and you are in mine, and so I suppose he is in mine too, the way a flea is in a dog.\" {n}She scowls.{/n} \"I will not eat him. I will sit on the roof across the street from his drinking-house and look at him through the window every night until he dies of it.\"",
+          "Text": "\"Your *protection*.\" {n}Her lip lifts off her teeth. For a moment you think she is going to go out of the window and down to the place with the boot on the door, and that there is nothing in the world you could do to stop her.{/n}\n{n}Then she hisses out a long breath, and the teeth go away.{/n} \"Very well. He is under your protection, and you are under my claw, and so I suppose he is under it too, the way a flea is on a dog.\" {n}She scowls.{/n} \"I will not eat him. I will sit on the roof across the street from his drinking-house and look at him through the window every night until he dies of it.\"",
           "Choices": [
             {
               "Text": "[Let her have that.]",
@@ -407820,9 +407904,34 @@
               "Next": "turned",
               "Set": [],
               "Requires": [
-                "melazmera.queen_gone"
+                "melazmera.fq_betrayed"
               ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "fought",
+              "Set": [],
+              "Requires": [
+                "melazmera.queen_fought"
+              ],
+              "Forbids": [
+                "melazmera.fq_betrayed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "withdrew",
+              "Set": [],
+              "Requires": [
+                "melazmera.queen_withdrew"
+              ],
+              "Forbids": [
+                "melazmera.fq_betrayed",
+                "melazmera.queen_fought"
+              ],
               "Abort": false
             },
             {
@@ -407866,6 +407975,54 @@
             },
             {
               "Text": "\"Next time, I'll ask.\"",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Melazmera"
+        },
+        {
+          "Id": "fought",
+          "Speaker": "Melazmera",
+          "Text": "\"You fought the thing in the swamp.\" {n}She sounds delighted.{/n} \"The harpy says she swelled up and bubbled and screamed about her powafulness, and you went at her with steel until she had to pour herself away down her holes to get clear of you.\" {n}She does the voice, wetly, and it is very good.{/n}\n\"You should have let me eat her first. I would have spat her out again, because she tastes of nothing, but she would have been *chewed*, and she would have remembered it.\"",
+          "Choices": [
+            {
+              "Text": "\"She's back in her swamp. Let her keep it.\"",
+              "Next": "keep",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Next time, I'll ask.\"",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Melazmera"
+        },
+        {
+          "Id": "withdrew",
+          "Speaker": "Melazmera",
+          "Text": "\"The thing in the swamp waved you off her island like a queen,\" {n}she says, delighted,{/n} \"and then went down one of her holes and has not come up since. The harpy says she is sulking in a plague pit and telling the flies that you were her very best knight.\" {n}She does the voice, wetly, and it is very good.{/n}\n\"When she comes up again, she will find my cave empty and think she has won. I want to be there for her face. She does not really have one. I want to be there for the place where it would be.\"",
+          "Choices": [
+            {
+              "Text": "\"She's back in her swamp. Let her keep it.\"",
+              "Next": "keep",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Take me with you when you go and look.\"",
               "Next": "ask",
               "Set": [],
               "Requires": [],
@@ -410027,7 +410184,7 @@
         {
           "Id": "do",
           "Speaker": "Melazmera",
-          "Text": "{n}She smiles at you, slowly, with every tooth she has, and for a moment the woman is not there at all.{/n}\n\"There,\" {n}she says softly.{/n} \"You are learning what my hoard is for.\"\n{n}She goes out over the sill. In the morning the inquisitor's acolyte comes to the gatehouse alone, white to the lips, and says that his master went down to the cellars before dawn with the lamp and told him to wait on the stairs, and that the lamp went out, and that his master did not come up. The gaoler writes *missing* in his book, this time, not *escaped*. He does not look at you when he writes it. That is worse.{/n}",
+          "Text": "{n}She smiles at you, slowly, with every tooth she has, and for a moment the woman is not there at all.{/n}\n\"There,\" {n}she says softly.{/n} \"You are learning what I am for.\"\n{n}She goes out over the sill. In the morning the inquisitor's acolyte comes to the gatehouse alone, white to the lips, and says that his master went down to the cellars before dawn with the lamp and told him to wait on the stairs, and that the lamp went out, and that his master did not come up. The gaoler writes *missing* in his book, this time, not *escaped*. He does not look at you when he writes it. That is worse.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -413934,8 +414091,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -416633,6 +416790,21 @@
       "ee90b60ecefa31f44aeb8a58c1e5ebab",
       "87aeec42d8aa3544093e3ff144a12e06"
     ],
+    "melazmera.fq_attacked": [
+      "3bacc2cb54f74694aac0d944de8c9b8e"
+    ],
+    "melazmera.fq_disobeyed": [
+      "32bceee6c93459d49ae8407b97240f46"
+    ],
+    "melazmera.fq_refused": [
+      "0f51cd1312db49a46997d0c16246cc36"
+    ],
+    "melazmera.fq_retreated": [
+      "df2a16e54deeb5b4b9844f50852c74c1"
+    ],
+    "melazmera.fq_sulked": [
+      "f74672d04c2903c48bca0d8b9f0448da"
+    ],
     "vellexia.spared": [
       "58d69774dbe696e46a9232167e8d3479"
     ],
@@ -416683,21 +416855,6 @@
     ],
     "mielarah.arrived": [
       "fd7b46bf735b00246a02675345687c82"
-    ],
-    "melazmera.fq_sulked": [
-      "f74672d04c2903c48bca0d8b9f0448da"
-    ],
-    "melazmera.fq_retreated": [
-      "df2a16e54deeb5b4b9844f50852c74c1"
-    ],
-    "melazmera.fq_refused": [
-      "0f51cd1312db49a46997d0c16246cc36"
-    ],
-    "melazmera.fq_disobeyed": [
-      "32bceee6c93459d49ae8407b97240f46"
-    ],
-    "melazmera.fq_attacked": [
-      "3bacc2cb54f74694aac0d944de8c9b8e"
     ],
     "melazmera.fq_betrayed": [
       "ad334b77b794a7c4bac4de380176cc73"
@@ -419068,6 +419225,25 @@
       ],
       [
         "melazmera.illusion_lifted_b"
+      ]
+    ],
+    "melazmera.queen_fought": [
+      [
+        "melazmera.fq_attacked"
+      ],
+      [
+        "melazmera.fq_disobeyed"
+      ],
+      [
+        "melazmera.fq_refused"
+      ]
+    ],
+    "melazmera.queen_withdrew": [
+      [
+        "melazmera.fq_retreated"
+      ],
+      [
+        "melazmera.fq_sulked"
       ]
     ],
     "melazmera.harem.voice.what_is_mine_stays": [
