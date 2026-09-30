@@ -104,7 +104,7 @@ BINDINGS = {
     'eliandra.dead': ('Etudes', '955329a8fc1d4d8e96d433d75d9a2ddd', 'EliandraDead (Angel-only producer)'),
     'eliandra.met_ch3': ('SeenCues', ['0bd02c57a78fd7f4e8b5b379d29280ec', '28e38ac2af7522a478d2b877eadefc30'], 'ElyandraRanger_Intro/Cue_0001 (first meeting) and Elyandra_main/Cue_0001 (hub)'),
     'eliandra.met_ch5': ('SeenCues', ['860edc351f25b624296a572aa1f6c48f', 'c7686ba702d6c5f4393d7483295c67a8', 'e6fdaceb98f00f444bbf5a4b9d1ebf2f'], 'PuluraLeaderSaved Cue_0001/0002/0003'),
-    'eliandra.shrine_left': ('SeenCues', '7ca8fc49de894e94db63142f153a172a', "c5/PuluraFallsC5/PuluraLeaderSaved/Cue_0029 (Katair: 'we will have to leave'; shrine aband"),
+    'eliandra.shrine_left': ('SeenCues', ['7ca8fc49de894e94db63142f153a172a', '28e3b35d52e24fb4da16778f68b2b1c2'], "c5/PuluraFallsC5/PuluraLeaderSaved/Cue_0029 (Katair: 'we will have to leave'), or Cue_0030 (hers: 'It breaks my heart to leave this place'; plays when Katair is absent, i.e. off the Angel path)"),
     'ember.absent': ('Etudes', '79519b75e04ffc744b9bb72a2b369786', 'EmberNotInParty_AccordingToThePlot (plot absence; overridden by ember.trickster.returned s'),
     'ember.altar_rescued': ('SeenCues', '2a74d19a7ea982a40809c7a689ad94ae', 'Ember Q1_Wayward/Shrine_Final/Cue_0001, the first cue of Shrine_Final_Dialogue 73f85b39 (E'),
     'ember.killed_in_kenabres': ('Etudes', 'd21eb4b5e2164aeaa32e48234701c653', 'EmberKilledInKenabres (started by Cutscenes/KenabresBurning/KnightsKillEmber, reached from'),
