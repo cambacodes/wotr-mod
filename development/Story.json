@@ -362794,9 +362794,22 @@
               "Next": "place",
               "Set": [],
               "Requires": [
-                "fool_king.tablet_brought"
+                "fool_king.tablet_brought",
+                "eliandra.trickster.lights_seen"
               ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "place_plain",
+              "Set": [],
+              "Requires": [
+                "fool_king.tablet_brought"
+              ],
+              "Forbids": [
+                "eliandra.trickster.lights_seen"
+              ],
               "Abort": false
             },
             {
@@ -362816,6 +362829,22 @@
           "Id": "place",
           "Speaker": "Narrator",
           "Text": "{n}You know this slope. You fought across it for a king's stone, and sat on that cairn, there, with your sword across your knees, looking up. There is a gap in the line of stones where the tablet stood. The stargazers dig beside it without comment. One of the wardens glances at you, and then very carefully at nothing.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "lovers",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "place_plain",
+          "Speaker": "Narrator",
+          "Text": "{n}You know this slope. You fought across it for a king's stone. There is a gap in the line of stones where the tablet stood. The stargazers dig beside it without comment. One of the wardens glances at you, and then very carefully at nothing.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -367975,6 +368004,7 @@
       ],
       "ContactUnit": "e349079a648cb15448a27f9049344bf1",
       "InteractionHub": "eliandra.presence",
+      "RequiresAnyGroups": [],
       "TricksterDevice": true,
       "TricksterState": "no_leave"
     },
@@ -368208,6 +368238,309 @@
       ],
       "TricksterDevice": true,
       "TricksterState": "no_leave"
+    },
+    {
+      "Id": "eliandra.trickster.ch5.evening",
+      "Title": "Two people on a wall",
+      "Owner": "Eliandra",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You look as if you haven't slept since the basin.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Eliandra",
+          "Text": "\"I have not.\" {n}Eliandra is sitting on the stargazers' crates with her cloak pulled round her, watching Drezen's lamps go out one by one.{/n} \"Odden says I am too old to sit up all night. Odden has been saying that for eighty years, and he has been sitting up with me for most of them.\" {n}She moves over on the crate without being asked.{/n} \"Sit. I have been wanting to ask you something that is not a rite, and not a vow, and not anything a high priestess ought to ask.\"",
+          "Choices": [
+            {
+              "Text": "[Sit beside her.]",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eliandra"
+        },
+        {
+          "Id": "ask",
+          "Speaker": "Eliandra",
+          "Text": "\"Why did you come to my shrine at all? Not the demons; the demons brought everyone. Why did you stay, and ask about my dead, or my Lady, or whatever it was you asked, when you had a war to be at?\"",
+          "Choices": [
+            {
+              "Text": "\"Because nobody had asked you anything in a hundred years. I wanted to be the first.\"",
+              "Next": "first",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Flirt] \"Because I wanted to find out what you look like when you forget to be the high priestess.\"",
+              "Next": "forget",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I don't know. I kept finding reasons to come back.\"",
+              "Next": "reasons",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eliandra"
+        },
+        {
+          "Id": "first",
+          "Speaker": "Eliandra",
+          "Text": "\"The first.\" {n}She turns the word over.{/n} \"You were. You still are. It is a strange thing to be to someone, after a century. I am not sure whether it is a gift or a burden, and I have decided not to decide tonight.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eliandra"
+        },
+        {
+          "Id": "forget",
+          "Speaker": "Eliandra",
+          "Text": "{n}She laughs, very quietly, so as not to wake the street.{/n} \"Tired,\" she says. \"I look tired. You are looking at it now.\" {n}She holds your eyes, and does not move away either.{/n} \"It is not very impressive.\"",
+          "Choices": [
+            {
+              "Text": "\"It is to me.\"",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eliandra"
+        },
+        {
+          "Id": "reasons",
+          "Speaker": "Eliandra",
+          "Text": "\"So did I.\" {n}She says it simply, and then seems surprised at herself.{/n} \"I kept finding reasons to be where you would come. I told myself it was hospitality. I have been a priestess for a very long time, Commander. I know what I tell myself.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eliandra"
+        },
+        {
+          "Id": "close",
+          "Speaker": "Narrator",
+          "Text": "{n}You sit on the crates until the last lamp on the street goes out. At some point her head comes to rest against your shoulder, and neither of you mentions it, and when the sky begins to grey she straightens, and stands, and looks down at you with an expression you have not seen on her before: not the priestess measuring a portent, but a woman deciding something.{/n}\n{n}\"Tomorrow,\" she says. \"Walk with me in the morning. I will ask you then.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Promise to walk with her.]",
+              "Next": null,
+              "Set": [
+                "eliandra.trickster.drezen.evening"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eliandra"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "eliandra.met_ch5",
+        "eliandra.trickster.leave_granted"
+      ],
+      "Forbids": [
+        "eliandra.closed",
+        "eliandra.dead",
+        "eliandra.trickster.ch5.evening_mark",
+        "eliandra.committed",
+        "eliandra.trickster.declined",
+        "eliandra.trickster.drezen.evening"
+      ],
+      "DelayHours": 6,
+      "Optional": false,
+      "Relationship": "eliandra",
+      "Chapters": [
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "ContactUnit": "e349079a648cb15448a27f9049344bf1",
+      "InteractionHub": "eliandra.presence",
+      "RequiresAnyGroups": []
+    },
+    {
+      "Id": "eliandra.trickster.ch5.evening_mark",
+      "Title": "Two people on a wall",
+      "Owner": "Eliandra",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You look as if you haven't slept since the basin.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Eliandra",
+          "Text": "\"I have not.\" {n}Eliandra is sitting on the stargazers' crates with her cloak pulled round her, watching Drezen's lamps go out one by one.{/n} \"Odden says I am too old to sit up all night. Odden has been saying that for eighty years, and he has been sitting up with me for most of them.\" {n}She moves over on the crate without being asked.{/n} \"Sit. I have been wanting to ask you something that is not a rite, and not a vow, and not anything a high priestess ought to ask.\"",
+          "Choices": [
+            {
+              "Text": "[Sit beside her.]",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eliandra"
+        },
+        {
+          "Id": "ask",
+          "Speaker": "Eliandra",
+          "Text": "\"Why did you come to my shrine at all? Not the demons; the demons brought everyone. Why did you stay, and ask about my dead, or my Lady, or whatever it was you asked, when you had a war to be at?\"",
+          "Choices": [
+            {
+              "Text": "\"Because nobody had asked you anything in a hundred years. I wanted to be the first.\"",
+              "Next": "first",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Flirt] \"Because I wanted to find out what you look like when you forget to be the high priestess.\"",
+              "Next": "forget",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I don't know. I kept finding reasons to come back.\"",
+              "Next": "reasons",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eliandra"
+        },
+        {
+          "Id": "first",
+          "Speaker": "Eliandra",
+          "Text": "\"The first.\" {n}She turns the word over.{/n} \"You were. You still are. It is a strange thing to be to someone, after a century. I am not sure whether it is a gift or a burden, and I have decided not to decide tonight.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eliandra"
+        },
+        {
+          "Id": "forget",
+          "Speaker": "Eliandra",
+          "Text": "{n}She laughs, very quietly, so as not to wake the street.{/n} \"Tired,\" she says. \"I look tired. You are looking at it now.\" {n}She holds your eyes, and does not move away either.{/n} \"It is not very impressive.\"",
+          "Choices": [
+            {
+              "Text": "\"It is to me.\"",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eliandra"
+        },
+        {
+          "Id": "reasons",
+          "Speaker": "Eliandra",
+          "Text": "\"So did I.\" {n}She says it simply, and then seems surprised at herself.{/n} \"I kept finding reasons to be where you would come. I told myself it was hospitality. I have been a priestess for a very long time, Commander. I know what I tell myself.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eliandra"
+        },
+        {
+          "Id": "close",
+          "Speaker": "Narrator",
+          "Text": "{n}You sit on the crates until the last lamp on the street goes out. At some point her head comes to rest against your shoulder, and neither of you mentions it, and when the sky begins to grey she straightens, and stands, and looks down at you with an expression you have not seen on her before: not the priestess measuring a portent, but a woman deciding something.{/n}\n{n}\"Tomorrow,\" she says. \"Walk with me in the morning. I will ask you then.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Promise to walk with her.]",
+              "Next": null,
+              "Set": [
+                "eliandra.trickster.drezen.evening"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eliandra"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "eliandra.met_ch5",
+        "eliandra.trickster.leave_granted"
+      ],
+      "Forbids": [
+        "eliandra.closed",
+        "eliandra.dead",
+        "eliandra.trickster.ch5.evening",
+        "eliandra.committed",
+        "eliandra.trickster.declined",
+        "eliandra.trickster.drezen.evening"
+      ],
+      "DelayHours": 6,
+      "Optional": false,
+      "Relationship": "eliandra",
+      "Chapters": [
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "ContactUnit": "e349079a648cb15448a27f9049344bf1",
+      "InteractionHub": "eliandra.presence.mark",
+      "RequiresAnyGroups": [
+        [
+          "eliandra.presence.failed",
+          "fool_king.gone"
+        ]
+      ]
     },
     {
       "Id": "eliandra.trickster.ch5.first_mile",
@@ -368530,7 +368863,19 @@
         "2570015799edf594daf2f076f2f975d8"
       ],
       "ContactUnit": "e349079a648cb15448a27f9049344bf1",
-      "InteractionHub": "eliandra.presence"
+      "InteractionHub": "eliandra.presence",
+      "RequiresAnyGroups": [
+        [
+          "eliandra.trickster.lovers.spoken",
+          "eliandra.trickster.observed",
+          "eliandra.trickster.flirted",
+          "eliandra.trickster.eyes_kissed",
+          "eliandra.trickster.vow_told",
+          "eliandra.trickster.remembrance",
+          "eliandra.trickster.sarkoris.told",
+          "eliandra.trickster.drezen.evening"
+        ]
+      ]
     },
     {
       "Id": "eliandra.trickster.ch5.first_mile_mark",
@@ -368855,6 +369200,16 @@
       "ContactUnit": "e349079a648cb15448a27f9049344bf1",
       "InteractionHub": "eliandra.presence.mark",
       "RequiresAnyGroups": [
+        [
+          "eliandra.trickster.lovers.spoken",
+          "eliandra.trickster.observed",
+          "eliandra.trickster.flirted",
+          "eliandra.trickster.eyes_kissed",
+          "eliandra.trickster.vow_told",
+          "eliandra.trickster.remembrance",
+          "eliandra.trickster.sarkoris.told",
+          "eliandra.trickster.drezen.evening"
+        ],
         [
           "eliandra.presence.failed",
           "fool_king.gone"
@@ -369326,7 +369681,8 @@
         "2570015799edf594daf2f076f2f975d8"
       ],
       "ContactUnit": "e349079a648cb15448a27f9049344bf1",
-      "InteractionHub": "eliandra.presence"
+      "InteractionHub": "eliandra.presence",
+      "RequiresAnyGroups": []
     },
     {
       "Id": "eliandra.trickster.visit.star_heart_mark",
@@ -369988,7 +370344,8 @@
         "2570015799edf594daf2f076f2f975d8"
       ],
       "ContactUnit": "e349079a648cb15448a27f9049344bf1",
-      "InteractionHub": "eliandra.presence"
+      "InteractionHub": "eliandra.presence",
+      "RequiresAnyGroups": []
     },
     {
       "Id": "eliandra.trickster.drezen.city_mark",
@@ -370331,7 +370688,8 @@
         "2570015799edf594daf2f076f2f975d8"
       ],
       "ContactUnit": "e349079a648cb15448a27f9049344bf1",
-      "InteractionHub": "eliandra.presence"
+      "InteractionHub": "eliandra.presence",
+      "RequiresAnyGroups": []
     },
     {
       "Id": "eliandra.trickster.drezen.dark_sky",
@@ -370537,7 +370895,8 @@
         "2570015799edf594daf2f076f2f975d8"
       ],
       "ContactUnit": "e349079a648cb15448a27f9049344bf1",
-      "InteractionHub": "eliandra.presence"
+      "InteractionHub": "eliandra.presence",
+      "RequiresAnyGroups": []
     },
     {
       "Id": "eliandra.trickster.drezen.dark_sky_mark",
@@ -370870,7 +371229,7 @@
         {
           "Id": "brave",
           "Speaker": "Eliandra",
-          "Text": "\"Ordinary.\" {n}She does not like the word, and does not argue with it either.{/n} \"The boy will walk. That is what matters, and I will not pretend otherwise because it took me an hour.\" {n}Her jaw sets, the high priestess for a breath.{/n} \"But I will be quicker next time. My Lady took back her gift; she did not take back a century of knowing where the blood runs. I have been lazy, Commander. The strength did my thinking for me. Now I shall have to do it myself.\"",
+          "Text": "\"Ordinary.\" {n}She does not like the word, and does not argue with it either.{/n} \"The boy will walk. That is what matters, and I will not pretend otherwise because it took me an hour.\" {n}Her jaw sets, the high priestess for a breath.{/n} \"But I will be quicker next time. My Lady took back her gift; she did not take back a century of knowing where the blood runs and how a wound wants to close. That is mine. I learned it at a thousand pallets.\" {n}A breath, not quite steady.{/n} \"I resent the hour, Commander. I will go on resenting it. I would pay it again.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -370939,7 +371298,8 @@
         "2570015799edf594daf2f076f2f975d8"
       ],
       "ContactUnit": "e349079a648cb15448a27f9049344bf1",
-      "InteractionHub": "eliandra.presence"
+      "InteractionHub": "eliandra.presence",
+      "RequiresAnyGroups": []
     },
     {
       "Id": "eliandra.trickster.drezen.ordinary_mark",
@@ -371060,7 +371420,7 @@
         {
           "Id": "brave",
           "Speaker": "Eliandra",
-          "Text": "\"Ordinary.\" {n}She does not like the word, and does not argue with it either.{/n} \"The boy will walk. That is what matters, and I will not pretend otherwise because it took me an hour.\" {n}Her jaw sets, the high priestess for a breath.{/n} \"But I will be quicker next time. My Lady took back her gift; she did not take back a century of knowing where the blood runs. I have been lazy, Commander. The strength did my thinking for me. Now I shall have to do it myself.\"",
+          "Text": "\"Ordinary.\" {n}She does not like the word, and does not argue with it either.{/n} \"The boy will walk. That is what matters, and I will not pretend otherwise because it took me an hour.\" {n}Her jaw sets, the high priestess for a breath.{/n} \"But I will be quicker next time. My Lady took back her gift; she did not take back a century of knowing where the blood runs and how a wound wants to close. That is mine. I learned it at a thousand pallets.\" {n}A breath, not quite steady.{/n} \"I resent the hour, Commander. I will go on resenting it. I would pay it again.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -371188,7 +371548,59 @@
         {
           "Id": "stop",
           "Speaker": "Katair",
-          "Text": "\"So she would grieve, and stop, and go to Mendev, and live.\" {n}He says it flatly, the way a sergeant reads a casualty list.{/n} \"She did. I watched her find it, from behind the veil. I have been going back to that stone for a hundred years because it is the last place I was happy and the first place I did something I could not undo.\"\n\"I tell you this because you have been kneeling at our basin, Commander, and giving away things you cannot get back, and I think you ought to know what it looks like a hundred years later.\"",
+          "Text": "\"So she would grieve, and stop, and go to Mendev, and live.\" {n}He says it flatly, the way a sergeant reads a casualty list.{/n} \"She did. I watched her find it, from behind the veil. I have been going back to that stone for a hundred years because it is the last place I was happy and the first place I did something I could not undo.\"\n\"I tell you this because of what was given at our basin, Commander.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "given",
+              "Set": [],
+              "Requires": [
+                "eliandra.trickster.cost.lights_given"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "hers",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.cost.lights_given"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Katair"
+        },
+        {
+          "Id": "given",
+          "Speaker": "Katair",
+          "Text": "\"You knelt there and gave away something you cannot get back, and I think you ought to know what that looks like a hundred years later.\"",
+          "Choices": [
+            {
+              "Text": "\"What does it look like?\"",
+              "Next": "looks",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Are you warning me off her?\"",
+              "Next": "warn",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Katair"
+        },
+        {
+          "Id": "hers",
+          "Speaker": "Katair",
+          "Text": "\"She knelt there and gave back the strength she had carried since she was thirteen, and she did it with you watching, and I think you ought to know what a thing like that looks like a hundred years later, since you will be the one living beside it.\"",
           "Choices": [
             {
               "Text": "\"What does it look like?\"",
@@ -371244,7 +371656,59 @@
         {
           "Id": "her",
           "Speaker": "Katair",
-          "Text": "\"She gave her whole life to my Lady at thirteen. She never once asked for any of it back, and she held the rest of us together for a century while I went out to stand over my own grave. She deserves one thing that is hers.\"\n{n}He looks at you directly now, and holds it.{/n} \"You gave her that. I do not like the way you did it, and I do not understand you, and I am grateful. Do not make me regret it.\"",
+          "Text": "\"She gave her whole life to my Lady at thirteen. She never once asked for any of it back, and she held the rest of us together for a century while I went out to stand over my own grave. She deserves one thing that is hers.\"\n{n}He looks at you directly now, and holds it.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "gave_it",
+              "Set": [],
+              "Requires": [
+                "eliandra.trickster.cost.lights_given"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "chose_you",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.cost.lights_given"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Katair"
+        },
+        {
+          "Id": "gave_it",
+          "Speaker": "Katair",
+          "Text": "\"You gave her that. I do not like the way you did it, and I do not understand you, and I am grateful. Do not make me regret it.\"",
+          "Choices": [
+            {
+              "Text": "\"I won't.\"",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Offer your hand] \"Come and drink with us at the Stone Tree, when the war's over.\"",
+              "Next": "tree",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Katair"
+        },
+        {
+          "Id": "chose_you",
+          "Speaker": "Katair",
+          "Text": "\"She gave that up herself, and then she chose you. I did not choose you, and I do not understand why she did, and I will not stand between her and the first thing she has ever taken for her own. Do not make me regret it.\"",
           "Choices": [
             {
               "Text": "\"I won't.\"",
@@ -371320,7 +371784,8 @@
         "2570015799edf594daf2f076f2f975d8"
       ],
       "ContactUnit": "e349079a648cb15448a27f9049344bf1",
-      "InteractionHub": "eliandra.presence"
+      "InteractionHub": "eliandra.presence",
+      "RequiresAnyGroups": []
     },
     {
       "Id": "eliandra.trickster.drezen.katair_mark",
@@ -371373,7 +371838,59 @@
         {
           "Id": "stop",
           "Speaker": "Katair",
-          "Text": "\"So she would grieve, and stop, and go to Mendev, and live.\" {n}He says it flatly, the way a sergeant reads a casualty list.{/n} \"She did. I watched her find it, from behind the veil. I have been going back to that stone for a hundred years because it is the last place I was happy and the first place I did something I could not undo.\"\n\"I tell you this because you have been kneeling at our basin, Commander, and giving away things you cannot get back, and I think you ought to know what it looks like a hundred years later.\"",
+          "Text": "\"So she would grieve, and stop, and go to Mendev, and live.\" {n}He says it flatly, the way a sergeant reads a casualty list.{/n} \"She did. I watched her find it, from behind the veil. I have been going back to that stone for a hundred years because it is the last place I was happy and the first place I did something I could not undo.\"\n\"I tell you this because of what was given at our basin, Commander.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "given",
+              "Set": [],
+              "Requires": [
+                "eliandra.trickster.cost.lights_given"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "hers",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.cost.lights_given"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Katair"
+        },
+        {
+          "Id": "given",
+          "Speaker": "Katair",
+          "Text": "\"You knelt there and gave away something you cannot get back, and I think you ought to know what that looks like a hundred years later.\"",
+          "Choices": [
+            {
+              "Text": "\"What does it look like?\"",
+              "Next": "looks",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Are you warning me off her?\"",
+              "Next": "warn",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Katair"
+        },
+        {
+          "Id": "hers",
+          "Speaker": "Katair",
+          "Text": "\"She knelt there and gave back the strength she had carried since she was thirteen, and she did it with you watching, and I think you ought to know what a thing like that looks like a hundred years later, since you will be the one living beside it.\"",
           "Choices": [
             {
               "Text": "\"What does it look like?\"",
@@ -371429,7 +371946,59 @@
         {
           "Id": "her",
           "Speaker": "Katair",
-          "Text": "\"She gave her whole life to my Lady at thirteen. She never once asked for any of it back, and she held the rest of us together for a century while I went out to stand over my own grave. She deserves one thing that is hers.\"\n{n}He looks at you directly now, and holds it.{/n} \"You gave her that. I do not like the way you did it, and I do not understand you, and I am grateful. Do not make me regret it.\"",
+          "Text": "\"She gave her whole life to my Lady at thirteen. She never once asked for any of it back, and she held the rest of us together for a century while I went out to stand over my own grave. She deserves one thing that is hers.\"\n{n}He looks at you directly now, and holds it.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "gave_it",
+              "Set": [],
+              "Requires": [
+                "eliandra.trickster.cost.lights_given"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "chose_you",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.cost.lights_given"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Katair"
+        },
+        {
+          "Id": "gave_it",
+          "Speaker": "Katair",
+          "Text": "\"You gave her that. I do not like the way you did it, and I do not understand you, and I am grateful. Do not make me regret it.\"",
+          "Choices": [
+            {
+              "Text": "\"I won't.\"",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Offer your hand] \"Come and drink with us at the Stone Tree, when the war's over.\"",
+              "Next": "tree",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Katair"
+        },
+        {
+          "Id": "chose_you",
+          "Speaker": "Katair",
+          "Text": "\"She gave that up herself, and then she chose you. I did not choose you, and I do not understand why she did, and I will not stand between her and the first thing she has ever taken for her own. Do not make me regret it.\"",
           "Choices": [
             {
               "Text": "\"I won't.\"",
@@ -371684,7 +372253,8 @@
         "2570015799edf594daf2f076f2f975d8"
       ],
       "ContactUnit": "e349079a648cb15448a27f9049344bf1",
-      "InteractionHub": "eliandra.presence"
+      "InteractionHub": "eliandra.presence",
+      "RequiresAnyGroups": []
     },
     {
       "Id": "eliandra.trickster.drezen.threshold_mark",
@@ -371984,7 +372554,7 @@
         {
           "Id": "irony",
           "Speaker": "Eliandra",
-          "Text": "\"And the north is the one part of the sky you cannot look at any more.\" {n}She says it gently, without pity.{/n} \"So I have drawn it for you instead. It is not the same. It is what I can give you, and I am very good at it.\" {n}She rolls the chart, ties it, and holds it out.{/n} \"Keep it. Correct it, if I have made mistakes. Do not cross anything out.\"",
+          "Text": "\"And the north is where my Lady hangs her lights. You can still count every star there; you will never see the lights among them.\" {n}She says it gently, without pity.{/n} \"So I have drawn it for you instead. It is not the same. It is what I can give you, and I am very good at it.\" {n}She rolls the chart, ties it, and holds it out.{/n} \"Keep it. Correct it, if I have made mistakes. Do not cross anything out.\"",
           "Choices": [
             {
               "Text": "[Take the chart.]",
@@ -372053,7 +372623,8 @@
         "2570015799edf594daf2f076f2f975d8"
       ],
       "ContactUnit": "e349079a648cb15448a27f9049344bf1",
-      "InteractionHub": "eliandra.presence"
+      "InteractionHub": "eliandra.presence",
+      "RequiresAnyGroups": []
     },
     {
       "Id": "eliandra.trickster.drezen.chart_mark",
@@ -372174,7 +372745,7 @@
         {
           "Id": "irony",
           "Speaker": "Eliandra",
-          "Text": "\"And the north is the one part of the sky you cannot look at any more.\" {n}She says it gently, without pity.{/n} \"So I have drawn it for you instead. It is not the same. It is what I can give you, and I am very good at it.\" {n}She rolls the chart, ties it, and holds it out.{/n} \"Keep it. Correct it, if I have made mistakes. Do not cross anything out.\"",
+          "Text": "\"And the north is where my Lady hangs her lights. You can still count every star there; you will never see the lights among them.\" {n}She says it gently, without pity.{/n} \"So I have drawn it for you instead. It is not the same. It is what I can give you, and I am very good at it.\" {n}She rolls the chart, ties it, and holds it out.{/n} \"Keep it. Correct it, if I have made mistakes. Do not cross anything out.\"",
           "Choices": [
             {
               "Text": "[Take the chart.]",
@@ -372367,7 +372938,8 @@
         "2570015799edf594daf2f076f2f975d8"
       ],
       "ContactUnit": "e349079a648cb15448a27f9049344bf1",
-      "InteractionHub": "eliandra.presence"
+      "InteractionHub": "eliandra.presence",
+      "RequiresAnyGroups": []
     },
     {
       "Id": "eliandra.trickster.drezen.road_mark",
@@ -372707,7 +373279,8 @@
         "2570015799edf594daf2f076f2f975d8"
       ],
       "ContactUnit": "e349079a648cb15448a27f9049344bf1",
-      "InteractionHub": "eliandra.presence"
+      "InteractionHub": "eliandra.presence",
+      "RequiresAnyGroups": []
     },
     {
       "Id": "eliandra.trickster.drezen.odden_mark",
@@ -373185,7 +373758,8 @@
         "2570015799edf594daf2f076f2f975d8"
       ],
       "ContactUnit": "e349079a648cb15448a27f9049344bf1",
-      "InteractionHub": "eliandra.presence"
+      "InteractionHub": "eliandra.presence",
+      "RequiresAnyGroups": []
     },
     {
       "Id": "eliandra.trickster.drezen.questions_mark",
@@ -373579,7 +374153,8 @@
         "2570015799edf594daf2f076f2f975d8"
       ],
       "ContactUnit": "e349079a648cb15448a27f9049344bf1",
-      "InteractionHub": "eliandra.presence"
+      "InteractionHub": "eliandra.presence",
+      "RequiresAnyGroups": []
     },
     {
       "Id": "eliandra.trickster.drezen.ramien_mark",
@@ -377235,8 +377810,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",

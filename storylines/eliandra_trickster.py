@@ -489,9 +489,12 @@ shrine(E + "ch5.burial", "Below the dry fall", '"Where will you bury them?"', [
        c("[Go down to the chiefs' ground with the stargazers.]", "ground")),
     nar("ground", '''{n}They carry the dead out through the hidden door on boards, in the grey of the afternoon: four shapes under sheets, and a handful of stargazers and wardens to carry them. Outside the veil the air is thin and cold and smells of the Wound. The cairns of the chiefs stand crooked on the slope below the dry fall, where they have stood for a century, some broken, some re-set by careful hands.{/n}
 {n}The survivors dig. Nobody has dug a grave in Pulura's Fall in a hundred years; the dead were rare, and went into the rock. They do it badly, and slowly, and Eliandra digs with them, in her grey robe, until her hands bleed.{/n}''',
-        c("Continue", "place", requires=(TABLET,)),
+        c("Continue", "place", requires=(TABLET, LIGHTS_SEEN)),
+        c("Continue", "place_plain", requires=(TABLET,), forbids=(LIGHTS_SEEN,)),
         c("Continue", "lovers", forbids=(TABLET,))),
     nar("place", '''{n}You know this slope. You fought across it for a king's stone, and sat on that cairn, there, with your sword across your knees, looking up. There is a gap in the line of stones where the tablet stood. The stargazers dig beside it without comment. One of the wardens glances at you, and then very carefully at nothing.{/n}''',
+        c("Continue", "lovers")),
+    nar("place_plain", '''{n}You know this slope. You fought across it for a king's stone. There is a gap in the line of stones where the tablet stood. The stargazers dig beside it without comment. One of the wardens glances at you, and then very carefully at nothing.{/n}''',
         c("Continue", "lovers")),
     el("lovers", '''{n}When the graves are dug she stands at the head of the second one, which is wider than the others.{/n}
 "Vestari and Cristry together," she says. "It is the first thing I have allowed them in a century, and it is too late, and I am doing it anyway." {n}Her voice is perfectly steady. Her bloodied hands are not.{/n} "Regnard beside them, because he died trying to reach them. Taeriell at the end of the row, facing the Stone Tree, because that is where he spent seventy years looking."''',

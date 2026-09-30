@@ -16,6 +16,7 @@ from storylines.eliandra_trickster import (
     CHARTS, CLOSED, COMMITTED, DEAD, DECLINED, DREZEN, E, FLIRTED, HEALING_SEEN, HEART_SEEN, LEAVE, LETTER_ANSWERED,
     LIED_ABOUT_HAND, LIGHTS_GIVEN, LIGHTS_SEEN, MET, NO_LEAVE, PATH_FIT, REFUSED_FOR_HER, REL, REWARD_RETURNED, TABLET,
     TRIED_TO_CHEAT, UNIT)
+from storylines.eliandra_trickster import FLIRTED, LOVERS_SPOKEN, OBSERVED, REMEMBRANCE, SARKORIS_TOLD
 from storylines.eliandra_trickster import SCENES as SCENES_MAIN
 
 SCENES = []
@@ -79,7 +80,9 @@ def drezen(id, title, entry, nodes, requires, forbids=(), delay=0, places=PLACES
                             requires=("trickster.ever", *((HEART_SEEN,) if heart else (MET,)), *requires),
                             forbids=(CLOSED, DEAD, *[o for o in ids if o != sid], *forbids), delay=delay, last=5,
                             Relationship=REL, Chapters=[5], Areas=[DREZEN], ContactUnit=UNIT, InteractionHub=hub,
-                            **copy.deepcopy(extra), **copy.deepcopy(fields)))
+                            RequiresAnyGroups=[list(g) for g in fields.get("RequiresAnyGroups", [])]
+                            + [list(g) for g in extra.get("RequiresAnyGroups", [])],
+                            **{k: copy.deepcopy(v) for k, v in fields.items() if k != "RequiresAnyGroups"}))
 
 
 # --- 0. The persistent host (audit r4). Her native unit belongs to the captive pool that Pulura_Chapter05_Mechanics destroys
@@ -146,6 +149,24 @@ drezen_pre(E + "ch5.self_offering", "Her own offering", '"You sent for me?"', [
 ], requires=(NO_LEAVE,), forbids=(LEAVE,), delay=48, TricksterDevice=True, TricksterState="no_leave")
 
 
+drezen_pre(E + "ch5.evening", "Two people on a wall", '"You look as if you haven\'t slept since the basin."', [
+    el("start", '''"I have not." {n}Eliandra is sitting on the stargazers' crates with her cloak pulled round her, watching Drezen's lamps go out one by one.{/n} "Odden says I am too old to sit up all night. Odden has been saying that for eighty years, and he has been sitting up with me for most of them." {n}She moves over on the crate without being asked.{/n} "Sit. I have been wanting to ask you something that is not a rite, and not a vow, and not anything a high priestess ought to ask."''',
+       c("[Sit beside her.]", "ask")),
+    el("ask", '''"Why did you come to my shrine at all? Not the demons; the demons brought everyone. Why did you stay, and ask about my dead, or my Lady, or whatever it was you asked, when you had a war to be at?"''',
+       c('"Because nobody had asked you anything in a hundred years. I wanted to be the first."', "first"),
+       c('[Flirt] "Because I wanted to find out what you look like when you forget to be the high priestess."', "forget"),
+       c('"I don\'t know. I kept finding reasons to come back."', "reasons")),
+    el("first", '''"The first." {n}She turns the word over.{/n} "You were. You still are. It is a strange thing to be to someone, after a century. I am not sure whether it is a gift or a burden, and I have decided not to decide tonight."''',
+       c("Continue", "close")),
+    el("forget", '''{n}She laughs, very quietly, so as not to wake the street.{/n} "Tired," she says. "I look tired. You are looking at it now." {n}She holds your eyes, and does not move away either.{/n} "It is not very impressive."''',
+       c('"It is to me."', "close")),
+    el("reasons", '''"So did I." {n}She says it simply, and then seems surprised at herself.{/n} "I kept finding reasons to be where you would come. I told myself it was hospitality. I have been a priestess for a very long time, Commander. I know what I tell myself."''',
+       c("Continue", "close")),
+    nar("close", '''{n}You sit on the crates until the last lamp on the street goes out. At some point her head comes to rest against your shoulder, and neither of you mentions it, and when the sky begins to grey she straightens, and stands, and looks down at you with an expression you have not seen on her before: not the priestess measuring a portent, but a woman deciding something.{/n}
+{n}"Tomorrow," she says. "Walk with me in the morning. I will ask you then."{/n}''',
+        c("[Promise to walk with her.]", flags=(E + "drezen.evening",))),
+], requires=(LEAVE,), forbids=(COMMITTED, DECLINED, E + "drezen.evening"), delay=6)
+
 drezen_pre(E + "ch5.first_mile", "The first mile", '"Walk with you? Where?"', [
     el("start", '''"Out of the north gate, at first light. A mile along the old road, and back." {n}Eliandra is already in a grey travelling cloak, her hair pinned up under the hood; she looks like any priestess on any road.{/n} "The stargazers will winter here, and in the spring I mean to take them on, into whatever is left of Sarkoris. I want to see the first mile of it before I lead anyone down it."''',
        c("[Walk out of the gate with her at first light.]", "gate")),
@@ -192,7 +213,8 @@ drezen_pre(E + "ch5.first_mile", "The first mile", '"Walk with you? Where?"', [
     el("farewell", '''{n}Something moves across her face and is put away, neatly, the way she rolls a chart.{/n}
 "Thank you," she says. "For the rite. For everything you gave that you did not have to." {n}She lays her hand on her heart and bows: the full bow of a high priestess to an honoured guest.{/n} "Farewell, Commander. Pulura's children will remember you."''',
        c("[Watch her walk back to the gate.]")),
-], requires=(LEAVE,), forbids=(COMMITTED, DECLINED), delay=24)
+], requires=(LEAVE,), forbids=(COMMITTED, DECLINED), delay=24,
+    RequiresAnyGroups=[[LOVERS_SPOKEN, OBSERVED, FLIRTED, E + "eyes_kissed", E + "vow_told", REMEMBRANCE, SARKORIS_TOLD, E + "drezen.evening"]])
 
 
 drezen_pre(E + "visit.star_heart", "The shrine's last night", '"Is the heart still open?"', [
@@ -360,7 +382,7 @@ drezen(E + "drezen.ordinary", "One wound at a time", '"You look exhausted. What 
        c("[Take her hands and look at the blood under the nails.]", "hands")),
     el("regret", '''"No." {n}She answers at once, and then, being who she is, checks the answer.{/n} "No. I regret that the boy waited an hour in pain. I regret that the next one will wait longer. I do not regret the bargain." {n}She looks at you.{/n} "I was the strongest of my Lady's priestesses because I gave her everything and kept nothing. Now I keep something. It is a smaller strength. It is mine."''',
        c("Continue", "end")),
-    el("brave", '''"Ordinary." {n}She does not like the word, and does not argue with it either.{/n} "The boy will walk. That is what matters, and I will not pretend otherwise because it took me an hour." {n}Her jaw sets, the high priestess for a breath.{/n} "But I will be quicker next time. My Lady took back her gift; she did not take back a century of knowing where the blood runs. I have been lazy, Commander. The strength did my thinking for me. Now I shall have to do it myself."''',
+    el("brave", '''"Ordinary." {n}She does not like the word, and does not argue with it either.{/n} "The boy will walk. That is what matters, and I will not pretend otherwise because it took me an hour." {n}Her jaw sets, the high priestess for a breath.{/n} "But I will be quicker next time. My Lady took back her gift; she did not take back a century of knowing where the blood runs and how a wound wants to close. That is mine. I learned it at a thousand pallets." {n}A breath, not quite steady.{/n} "I resent the hour, Commander. I will go on resenting it. I would pay it again."''',
        c("Continue", "end")),
     nar("hands", '''{n}Her hands are cold and not quite steady. You turn them palm up. The blood under the nails is the boy's, and the ink stain on the second finger of the right hand is a hundred years old, and there is no shimmer on either palm, none at all, only the lines anyone has.{/n}
 {n}Eliandra lets you look. Then she closes her fingers round yours. "They will learn," she says. "They learned to hold a lens. They can learn to be tired."{/n}''',
@@ -380,7 +402,13 @@ drezen(E + "drezen.katair", "A name on a tombstone", '"Katair wants a word with 
        c('"So she would stop looking."', "stop"),
        c("[Say nothing.]", "stop")),
     kt("stop", '''"So she would grieve, and stop, and go to Mendev, and live." {n}He says it flatly, the way a sergeant reads a casualty list.{/n} "She did. I watched her find it, from behind the veil. I have been going back to that stone for a hundred years because it is the last place I was happy and the first place I did something I could not undo."
-"I tell you this because you have been kneeling at our basin, Commander, and giving away things you cannot get back, and I think you ought to know what it looks like a hundred years later."''',
+"I tell you this because of what was given at our basin, Commander."''',
+       c("Continue", "given", requires=(LIGHTS_GIVEN,)),
+       c("Continue", "hers", forbids=(LIGHTS_GIVEN,))),
+    kt("given", '''"You knelt there and gave away something you cannot get back, and I think you ought to know what that looks like a hundred years later."''',
+       c('"What does it look like?"', "looks"),
+       c('"Are you warning me off her?"', "warn")),
+    kt("hers", '''"She knelt there and gave back the strength she had carried since she was thirteen, and she did it with you watching, and I think you ought to know what a thing like that looks like a hundred years later, since you will be the one living beside it."''',
        c('"What does it look like?"', "looks"),
        c('"Are you warning me off her?"', "warn")),
     kt("looks", '''"It looks like a stone with my name on it, and a woman in Mendev I will never see again, and a mission that ended with a demon walking in through the door." {n}He unfolds his arms.{/n} "It looks like it was worth it. That is the worst of it. It was worth it, and I would do it again, and it is still a grave."''',
@@ -388,7 +416,13 @@ drezen(E + "drezen.katair", "A name on a tombstone", '"Katair wants a word with 
     kt("warn", '''"No." {n}Something almost like humour crosses his face and is gone.{/n} "She has not been warned off anything since she was thirteen, and it has done her no good at all. I am not going to start now." {n}He glances the way she went.{/n} "I am telling you what a sacrifice weighs, because she will never tell you what hers weighed. She will say it was nothing. It was not nothing."''',
        c("Continue", "her")),
     kt("her", '''"She gave her whole life to my Lady at thirteen. She never once asked for any of it back, and she held the rest of us together for a century while I went out to stand over my own grave. She deserves one thing that is hers."
-{n}He looks at you directly now, and holds it.{/n} "You gave her that. I do not like the way you did it, and I do not understand you, and I am grateful. Do not make me regret it."''',
+{n}He looks at you directly now, and holds it.{/n}''',
+       c("Continue", "gave_it", requires=(LIGHTS_GIVEN,)),
+       c("Continue", "chose_you", forbids=(LIGHTS_GIVEN,))),
+    kt("gave_it", '''"You gave her that. I do not like the way you did it, and I do not understand you, and I am grateful. Do not make me regret it."''',
+       c('"I won\'t."', "end"),
+       c('[Offer your hand] "Come and drink with us at the Stone Tree, when the war\'s over."', "tree")),
+    kt("chose_you", '''"She gave that up herself, and then she chose you. I did not choose you, and I do not understand why she did, and I will not stand between her and the first thing she has ever taken for her own. Do not make me regret it."''',
        c('"I won\'t."', "end"),
        c('[Offer your hand] "Come and drink with us at the Stone Tree, when the war\'s over."', "tree")),
     kt("tree", '''{n}Katair looks at your hand as if it were a strange animal. Then he takes it, briefly, hard.{/n}
@@ -444,7 +478,7 @@ drezen(E + "drezen.chart", "Your lights sit low in the north", '"What are you dr
     el("reading", '''"Here is your sky." {n}Her finger moves along the lower edge of the circle, where the northern stars are crowded thickest.{/n} "Most of your lights sit low, in the north. Not overhead, where a king's would be, or a saint's. Low, near the edge of what can be seen, where they are easy to miss unless one is sitting down and looking on purpose."''',
        c("Continue", "irony", requires=(LIGHTS_GIVEN,)),
        c("Continue", "plain", forbids=(LIGHTS_GIVEN,))),
-    el("irony", '''"And the north is the one part of the sky you cannot look at any more." {n}She says it gently, without pity.{/n} "So I have drawn it for you instead. It is not the same. It is what I can give you, and I am very good at it." {n}She rolls the chart, ties it, and holds it out.{/n} "Keep it. Correct it, if I have made mistakes. Do not cross anything out."''',
+    el("irony", '''"And the north is where my Lady hangs her lights. You can still count every star there; you will never see the lights among them." {n}She says it gently, without pity.{/n} "So I have drawn it for you instead. It is not the same. It is what I can give you, and I am very good at it." {n}She rolls the chart, ties it, and holds it out.{/n} "Keep it. Correct it, if I have made mistakes. Do not cross anything out."''',
        c("[Take the chart.]", "end")),
     el("plain", '''"It suits you. Things are always hiding at the edge of the sky, near the ground, where people have stopped looking up." {n}She rolls the chart, ties it, and holds it out.{/n} "Keep it. Correct it, if I have made mistakes. Do not cross anything out."''',
        c("[Take the chart.]", "end")),

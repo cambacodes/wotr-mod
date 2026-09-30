@@ -152,6 +152,11 @@ internal static class EliandraTricksterTests
             "Trk_Eliandra_Leave: the checks are not the terms at 20 and the lights at 24, or 18 with the terms.");
         var granted = One(rite, read, new[] { Leave, Lights }, Reward, NoLeave);
         check(rite.TricksterDevice && rite.TricksterState == "vow" && !granted.Has(Committed), "Trk_Eliandra_Leave: the rite commits, or is not the device.");
+        // Her question needs a personal exchange first (audit r6): the shrine build-up, or the evening on the crates in Drezen.
+        var eveningScene = S(E + "ch5.evening");
+        Snapshot Evening(Snapshot w) => One(eveningScene, Later(story, w, 10), new[] { E + "drezen.evening" });
+        check(!Rules.Available(story, mile, Later(story, granted, 30)), "Trk_Eliandra_Leave: she asks with no personal exchange behind the offering.");
+        granted = Evening(granted);
         check(!Rules.Available(story, mile, Later(story, granted, 4)) && Rules.Available(story, mile, Later(story, granted, 30)),
             "Trk_Eliandra_Leave: the first mile is not 24 hours after the leave.");
         var yes = One(mile, Later(story, granted, 30), new[] { Committed }, E + "declined", Closed);
@@ -186,6 +191,8 @@ internal static class EliandraTricksterTests
             "Trk_Eliandra_NoLeaveAndKingList: her own offering is not 48 hours after the refusal.");
         var hers = One(self, Later(story, walked, 60), new[] { Leave, Reward }, Lights);
         check(self.TricksterDevice && self.TricksterState == "no_leave", "Trk_Eliandra_NoLeaveAndKingList: her offering is not the no_leave device.");
+        check(!Rules.Available(story, mile, Later(story, hers, 30)), "Trk_Eliandra_NoLeaveAndKingList: after the walk-away she asks with no exchange behind it.");
+        hers = Evening(hers);
         var no = One(mile, Later(story, hers, 30), new[] { E + "declined" }, Committed, Closed);
         check(!Rules.Available(story, letter, Later(story, no, 10)) && Rules.Available(story, letter, Later(story, no, 60)),
             "Trk_Eliandra_NoLeaveAndKingList: the road letter is not 48 hours after the soft no.");
@@ -300,7 +307,7 @@ internal static class EliandraTricksterTests
         // The hand behind the back is answered on the road: the truth leads to her question, a second lie to the soft no.
         var cheated = One(rite, watched, new[] { NoLeave, E + "cost.tried_to_cheat" }, Leave);
         var paidAfterCheat = One(self, Later(story, cheated, 60), new[] { Leave, Reward });
-        var road = Later(story, paidAfterCheat, 30);
+        var road = Later(story, Evening(paidAfterCheat), 30);
         One(mile, road, new[] { Committed }, E + "lied_about_hand");
         var liedAgain = One(mile, road, new[] { E + "declined", E + "lied_about_hand" }, Committed);
         check(Program.Walk(letter, Later(story, liedAgain, 60)).Any(r => r.Has(Committed)),
