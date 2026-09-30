@@ -200,6 +200,10 @@ internal static class ArueshalaeTricksterTests
         check(!Avail(lateRef, evilFailed), "Trk_Arueshalae_EvilAfterFailure: a new trick after a Ch4 failure.");
         var hiding = Later(story, World(story, 5, "", "trickster.ever", "arueshalae.evil_dead", P + "primed", "noct.dead", "noct.acq.council_fight"), 80);
         var signedHiding = First(second, hiding, "unanswered", 0);
+        var hidingPages = new HashSet<string>();
+        Program.Walk(second, hiding, (page, _) => hidingPages.Add(page));
+        check(hidingPages.Contains("unanswered") && !hidingPages.Contains("queen") && !hidingPages.Contains("late") && !hidingPages.Contains("fooled"),
+            "Trk_Arueshalae_EvilInHiding: the queen writes while she is in hiding (the unanswered page is unreachable).");
         check(signedHiding.Has(P + "returned") && signedHiding.Has(P + "cost.nocticula_debt"), "Trk_Arueshalae_EvilInHiding: the in-hiding answer does not return her.");
 
         // --- Evil: Reunion (a third way) / Letter / Terms / Refusal / the night -------------------------------------

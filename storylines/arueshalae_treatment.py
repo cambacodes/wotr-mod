@@ -153,7 +153,7 @@ session(MEALTIMES, "Case notes", 3, '"How is the patient?"', [
     a("better", '''"Better." {n}She says the word as if it were in a language she had studied but never heard spoken.{/n} "I don't think succubi get better. I think we get managed, or we get killed." {n}She tucks the book into her belt.{/n} "But you've written it down now. So I suppose it's official. The Commander of the crusade says I'm getting better." {n}A pause.{/n} "Don't tell anyone. They'll want a second opinion."''', c()),
     a("quack", '''{n}She laughs, the startled laugh again, and this time she doesn't cover it.{/n} "A quack. Yes. That's much more honest." {n}She tucks the book into her belt.{/n}
 "You know what's strange? I trust that more. Every holy man who ever tried to save me was certain. You're the first one who's admitted they're making it up." {n}She considers.{/n} "I'll keep taking the medicine, quack. But I want it noted that I'm doing it out of spite."''', c()),
-], (INTAKE, "trickster.ever"), forbids=(MEALTIMES,), delay=24, chapters=(3, 4, 5))
+], (INTAKE, "trickster.ever"), forbids=(MEALTIMES,), delay=24, chapters=(3, 5))   # Drezen-set: not in the Abyss (R2-5)
 
 
 # --- The relapse: a sergeant at Fye's ------------------------------------------------------------------------------
@@ -179,7 +179,7 @@ session(RELAPSE, "Relapse", 3, '"You haven\'t been to see me."', [
 "The only thing is... that's where they are. The mortals. That's where they laugh and sing and hold each other's hands. If I stay out of the places where they're happy, I'll learn everything about them except the one thing I want to understand." {n}She squares her shoulders.{/n} "But I'll do it. For a while. I've walked worse roads for worse gods."''', c()),
     a("saint_story", '''{n}She opens her mouth to protest, and nothing comes out. Then she laughs, helplessly, and slides down the stable wall until she is sitting in the straw.{/n}
 "A saint. In disguise." {n}She is laughing and crying at the same time.{/n} "You're horrible. Tender of Dreams forgive me, you're horrible. I nearly ate a man and you're going to tell him he was blessed." {n}She wipes her face.{/n} "He'll believe you. That's the worst of it. He'll light a candle at the shrine every week for the rest of his life, and I'll have to walk past it."''', c()),
-], (MEALTIMES, "trickster.ever"), forbids=(RELAPSE,), delay=48, chapters=(3, 4, 5))
+], (MEALTIMES, "trickster.ever"), forbids=(RELAPSE,), delay=48, chapters=(3, 5))   # Drezen-set: not in the Abyss (R2-5)
 
 
 # --- The touch: the quack's cure ---------------------------------------------------------------------------------

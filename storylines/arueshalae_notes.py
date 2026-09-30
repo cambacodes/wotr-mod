@@ -200,7 +200,7 @@ hub(SOSIEL_OFFER, "A kinder man's offer", 3, '"I went to see Sosiel."', [
         c('"Keep your sentence. I\'ll be insufferable at you until you find it."', "hard", flags=(SOSIEL_OFFER,)),
         c('"Go back and thank him properly. He\'d want to know you chose."', "thank", flags=(SOSIEL_OFFER,))),
     a("hard", '''{n}She laughs, and it breaks something in her shoulders loose.{/n} "Insufferable. Yes. Everybody says so. The quartermaster keeps a list." {n}She stands.{/n} "Be insufferable at me, then. For a long time. And when I go back to Sosiel, it'll be to learn the lute, not to eat."''', c()),
-    a("thank", '''"He'd want to know I chose." {n}She nods slowly.{/n} "Yes. He would. That's the difference, isn't it? He'd rather I chose no than yes because I couldn't help it." {n}She stands.{/n} "I'll go back tomorrow. With something for his lute. A string. Do lutes like presents?"''', c()),
+    a("thank", '''"He'd want to know I chose." {n}She nods slowly.{/n} "Yes. He would. That's the difference, isn't it? He'd rather I chose no than yes because I couldn't help it." {n}She stands.{/n} "I'll go back tomorrow. With a set of strings for his lute; I've heard the third one buzz. I know six ways to buy a man's cooperation, and I have never once bought a friend a present."''', c()),
 ], (AFTERTASTE,), delay=48, chapters=(3, 5))
 
 
