@@ -566,7 +566,8 @@ page(E + "ch5.inventory", "An inventory", [
 {n}It is the only thing you own that is truly yours and truly hers at the same time. That is not an accident, you think. That is what she meant.{/n}''',
        c("Continue", "decide")),
     pn("decide", '''{n}A careful planner does not make an offering without knowing the price. You write it out plainly, the way you would write the cost of an assault: never to see them again. Not once. Not over Sarkoris in winter, not over whatever is left of the world when the war is done. You read it three times.{/n}
-{n}Then you fold the paper and hold it over the lamp until it catches, because some plans should not exist in writing, and go to bed.{/n}''',
+{n}Then, because you are what you are, you look at it the way a buyer looks at a contract. A goddess who turns eyes aside can take a sight without breaking anything: she need only turn one more pair of eyes. It costs her nothing to collect, and it costs you everything to pay, and that is exactly the kind of price a power accepts. You would ask it yourself, in her place.{/n}
+{n}You fold the paper and hold it over the lamp until it catches, because some plans should not exist in writing, and go to bed.{/n}''',
        c("[Sleep on it.]", flags=(PLANNED,))),
 ], requires=("trickster", DEAD_NAMED), forbids=(LEAVE, NO_LEAVE, PLANNED), delay=8, kind="event", owner="Commander",
     RequiresAnyGroups=[[TERMS_READ, TERMS_GUESSED, OBSERVED]])
@@ -846,6 +847,9 @@ page(E + "visit.star_heart", "The shrine's last night", [
        c("Continue", "wrist")),
     pn("wrist", '''{n}Her skin is paler where the robes have always covered it, and there is a scar on her shoulder you did not know about, old and white, from some fight a century gone. You put your mouth to it. She makes a sound nobody in this shrine has ever heard from her.{/n}
 {n}You find her wrist, and the pulse beneath it, quick and hard: a heart that kept its steady time through a hundred years of evenings and is keeping no time at all now. You press your lips there and feel it race. Eliandra says your name, and then says it again, as if she were checking an observation, and pulls you close.{/n}''',
+       c("Continue", "learn")),
+    pn("learn", '''{n}Then she stops being careful. Your shirt goes, and she spreads her hands flat on your ribs and moves them slowly, north to south, the way she once moved a lens across a sky she meant to know by heart, and you feel her breath catch each time she finds something new: a scar, a pulse, the place where your breath goes ragged.{/n}
+{n}"I have watched things move for a hundred years," she says against your throat. "I want to feel something move." Her teeth close, lightly, on your shoulder. Her thigh is between yours. The white robes are round her hips now and she does not trouble to push them further; her hands are busy, and her mouth, and there is nothing of the high priestess left in either.{/n}''',
        c("Continue", "charts")),
     pn("charts", '''{n}The table is behind her. The charts are on the table. Neither fact turns out to matter. The river stones go over with a clatter, and the half-rolled charts slide off the edge in a slow white landslide, a hundred years of the northern sky spilling across the floor of the star-heart, and Eliandra, flat on her back on the bare wood with her hair loose over the Maiden's own constellations, laughs aloud and draws you down onto her.{/n}
 {n}Overhead, the stars go on burning. For once, nobody in this room is looking at them.{/n}''',
