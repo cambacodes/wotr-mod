@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4120,
-  "unique_targets": 857,
+  "binding_uses": 4173,
+  "unique_targets": 875,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -264,6 +264,10 @@
     },
     "8217b05e37078414981d994151f0ffb1": {
       "path": "World/Areas/Act_4_MidnightIsles/AlushinyrraHigherCity/AlushinyrraHigherCity.jbp",
+      "type": "BlueprintArea"
+    },
+    "c876d5303f4a19f4a80b0cc9b313db6f": {
+      "path": "World/Areas/Act_4_MidnightIsles/ColyphyrDungeon/ColyphyrDungeon.jbp",
       "type": "BlueprintArea"
     },
     "7847c3e3537104f4694167af0b9fcd0e": {
@@ -830,12 +834,68 @@
       "path": "World/Dialogs/c4/AirAdventures/Answer_0404.jbp",
       "type": "BlueprintAnswer"
     },
+    "f35d182506d00494293206a940bb5229": {
+      "path": "World/Dialogs/c4/AirAdventures/Answer_0432.jbp",
+      "type": "BlueprintAnswer"
+    },
     "4dea3c896793d784591ae398e902c739": {
       "path": "World/Dialogs/c4/AirAdventures/Answer_0472.jbp",
       "type": "BlueprintAnswer"
     },
     "1b4e78245cb3a244588f9ec0fda54ea8": {
       "path": "World/Dialogs/c4/AirAdventures/Cue_0426.jbp",
+      "type": "BlueprintCue"
+    },
+    "04805628b9eeb914cb7c5aeea4751596": {
+      "path": "World/Dialogs/c4/AirAdventures/Cue_0494.jbp",
+      "type": "BlueprintCue"
+    },
+    "a39dd7d45c635304f9e8404c78a340c3": {
+      "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "5c08af90f48f60b42b9f14ab0e0e3220": {
+      "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/AnswersList_0037.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "ad334b77b794a7c4bac4de380176cc73": {
+      "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0015.jbp",
+      "type": "BlueprintCue"
+    },
+    "e0dab46a6a2842c4ba0502e82f2981cf": {
+      "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0024.jbp",
+      "type": "BlueprintCue"
+    },
+    "3bacc2cb54f74694aac0d944de8c9b8e": {
+      "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0026.jbp",
+      "type": "BlueprintCue"
+    },
+    "32bceee6c93459d49ae8407b97240f46": {
+      "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0051.jbp",
+      "type": "BlueprintCue"
+    },
+    "0f51cd1312db49a46997d0c16246cc36": {
+      "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0061.jbp",
+      "type": "BlueprintCue"
+    },
+    "ee90b60ecefa31f44aeb8a58c1e5ebab": {
+      "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0078.jbp",
+      "type": "BlueprintCue"
+    },
+    "87aeec42d8aa3544093e3ff144a12e06": {
+      "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0079.jbp",
+      "type": "BlueprintCue"
+    },
+    "df2a16e54deeb5b4b9844f50852c74c1": {
+      "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0085.jbp",
+      "type": "BlueprintCue"
+    },
+    "f74672d04c2903c48bca0d8b9f0448da": {
+      "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0098.jbp",
+      "type": "BlueprintCue"
+    },
+    "8a7d6895c1e22ac4992e1aa2b47be518": {
+      "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0112.jbp",
       "type": "BlueprintCue"
     },
     "995aaa29e772b594a966a2f133be702c": {
@@ -2102,6 +2162,14 @@
       "path": "World/Encounters/AreeluLab/Items/SoulJar_Trickster.jbp",
       "type": "BlueprintItem"
     },
+    "47359cb2a981461db0c138fdc153bc9f": {
+      "path": "World/Encounters/ColyphyrDungeon/UnlockableFlags/DragonTreasure_RocksIllusionLifted.jbp",
+      "type": "BlueprintUnlockableFlag"
+    },
+    "3b2bba05723d42058469f9ecce3c22d0": {
+      "path": "World/Encounters/ColyphyrDungeon/UnlockableFlags/DragonTreasure_TreasuresIllusionLifted.jbp",
+      "type": "BlueprintUnlockableFlag"
+    },
     "3de8e7db06d4b9043bddfa77888ecfa5": {
       "path": "World/Encounters/TempleOfDelamere/UnlockableFlags/GotDelamereLoot.jbp",
       "type": "BlueprintUnlockableFlag"
@@ -2332,6 +2400,10 @@
     },
     "d4657f5e560ea29408b0ba0f97f2e7bc": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/ColyphyrStory/ColyphyrStates/ColyphyrHepzamirahDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "fee0f0cf006c96f4f90f895ba8d73d97": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/ColyphyrStory/ColyphyrStates/ColyphyrMelazmeraDead.jbp",
       "type": "BlueprintEtude"
     },
     "61b07b3511bb71646a717c2b3c0f3bf6": {

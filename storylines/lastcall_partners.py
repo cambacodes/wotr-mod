@@ -691,6 +691,21 @@ partner("elyanka", "elyanka", "elyanka.committed", "elyanka.closed", "The Claim"
         '''{n}You sold your body once, in the dead-house by the south gate, in a whisper, to a woman who had come four hundred miles for it. You say the terms aloud now, over the rift, the way she whispered them in the dead-house, word for word, in the language older than its words. Nobody here understands them. That is not the point. A creditor ought to know when her debt is about to fall due, and where to stand to collect it.{/n}''',
         (PLAIN_CHOICE, (PILLAR,), (), ())))
 
+MZ = "melazmera.trickster."
+partner("melazmera", "melazmera", "melazmera.committed", "melazmera.closed", "The Heap at the Wound's Edge",
+    '''Melazmera did not go to the Threshold. She had said she did not stand in lines, and she did not fight in anybody's war. On the night the rift took the Commander, or failed to, she lay on her heap in the crack at the Wound's edge in her own shape, with the old seal on her claw, and counted. The pickets on the north road heard her all night: a long low sound under the ground, over and over, like a bell rung in a cellar. In the morning one of them worked out that it was a number, and that it never got past forty-two.''',
+    (
+        page_p('''The world buried the Commander. She came to the funeral, after a fashion: she lay along the ridge of the cathedral roof in her own shape through the whole service, and the priests read very fast, and when it was over she flew north without a sound. For a month afterwards nothing at all came up out of the rifts on the northern edge, and the pickets did not know why, and were afraid.''', requires=(ON_RECORD,)),
+        page_p('''When the flask was opened in Drezen she was on the windowsill before anyone else was in the room, in the woman she wears, and she did not say anything at all. She took the Commander's hand and counted the fingers, twice, and then the teeth, and would have gone on to the ribs if she had not been stopped.''', requires=(H2,)),
+        page_p('''At the rift the Commander held up a grey stone the size of a hen's egg and said her name to it. Far to the north, in a crack in the ground, a dragon lifted her head off her heap in the middle of a number and did not finish it, and the pickets on the north road said afterwards that the silence was worse than the counting.''', requires=(called("melazmera"),)),
+        page_p('''Two fingers of the Commander's ring hand had felt nothing since Colyphyr. At the rift, for the length of one breath, they were cold as the inside of a well, and the Commander knew exactly whose mouth that was.''', requires=(MZ + "cost.grey_hand",)),
+    ), declined=MZ + "declined",
+    deal=[[MZ + "stone_kept"]],
+    call=call('''[Hold up the stone] "Melazmera. Come and count me."''',
+        '''{n}The stone has been in your pocket since she let you take it, and it is still warm, here at the end of the world, with the rift screaming in front of you. You hold it up and say her name to it, which is a very stupid thing to do with a sapphire at the edge of the Worldwound. For a while nothing answers. Then, very far off, under the noise, you would swear you hear something enormous begin, slowly, to count.{/n}''',
+        (PLAIN_CHOICE, (), (), ())),
+    ledger=("Melazmera: a seal on a claw", "The Knight Commander's old seal is on the claw of an umbral dragon, and every order I have signed since has gone out under a new one. It is not a debt; it is in her hoard, and things in her hoard do not leave. In exchange I carry one of her stones, a sapphire that looks like a boring rock. She knows exactly which pocket it is in."))
+
 # Existing pages that must yield to Last Call (doc 04 backlog): Nocticula's favour page is called in on her Last Call page instead.
 FORBID_ACTIVE = ("nocticula.trickster.defeated.epilogue.favour",)
 

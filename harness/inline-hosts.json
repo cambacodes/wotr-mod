@@ -4,14 +4,14 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 977,
-  "resolved": 977,
-  "inlineOnlyScenes": 242,
-  "inlineOnlyResolved": 242,
-  "answerListScenesWithoutContact": 563,
-  "answerListScenesWithoutContactResolved": 563,
-  "lists": 100,
-  "listsWithReachableHost": 99
+  "entryTargetScenes": 985,
+  "resolved": 985,
+  "inlineOnlyScenes": 245,
+  "inlineOnlyResolved": 245,
+  "answerListScenesWithoutContact": 571,
+  "answerListScenesWithoutContactResolved": 571,
+  "lists": 102,
+  "listsWithReachableHost": 101
  },
  "scenes": {
   "a_crossing": {
@@ -14058,6 +14058,166 @@
     "clicks": 0
    }
   },
+  "melazmera.lastcall.call": {
+   "kind": "return-to-list",
+   "lists": [
+    "294126e3264796e488ce19bfb1851355",
+    "16994192cfa484744bd10852b8dc806f",
+    "b6bc1d5fb28e115499b8bcbbc0d541f9",
+    "3d3357c0474ce5a4bb13d68730faecb8",
+    "e77c405d6dde5804bb1f873f971958b8"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "294126e3264796e488ce19bfb1851355": "RRT_entry.melazmera.lastcall.call.294126e3264796e488ce19bfb1851355",
+    "16994192cfa484744bd10852b8dc806f": "RRT_entry.melazmera.lastcall.call.16994192cfa484744bd10852b8dc806f",
+    "b6bc1d5fb28e115499b8bcbbc0d541f9": "RRT_entry.melazmera.lastcall.call.b6bc1d5fb28e115499b8bcbbc0d541f9",
+    "3d3357c0474ce5a4bb13d68730faecb8": "RRT_entry.melazmera.lastcall.call.3d3357c0474ce5a4bb13d68730faecb8",
+    "e77c405d6dde5804bb1f873f971958b8": "RRT_entry.melazmera.lastcall.call.e77c405d6dde5804bb1f873f971958b8"
+   },
+   "resolved": true,
+   "host": {
+    "list": "294126e3264796e488ce19bfb1851355",
+    "dialog": "f125dc501dc6e984385332e67f324f01",
+    "dialogName": "GrandFinal_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "melazmera.trickster.ch4.plan": {
+   "kind": "return-to-list",
+   "lists": [
+    "5c08af90f48f60b42b9f14ab0e0e3220"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "5c08af90f48f60b42b9f14ab0e0e3220": "RRT_entry.melazmera.trickster.ch4.plan.5c08af90f48f60b42b9f14ab0e0e3220"
+   },
+   "resolved": true,
+   "host": {
+    "list": "5c08af90f48f60b42b9f14ab0e0e3220",
+    "dialog": "9b62e0e999c49504599b9b8933468a33",
+    "dialogName": "FulsomeQueen_dialogue",
+    "cue": "Cue_0024",
+    "clicks": 1
+   }
+  },
+  "melazmera.trickster.ch4.queen_after": {
+   "kind": "return-to-list",
+   "lists": [
+    "a39dd7d45c635304f9e8404c78a340c3"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "a39dd7d45c635304f9e8404c78a340c3": "RRT_entry.melazmera.trickster.ch4.queen_after.a39dd7d45c635304f9e8404c78a340c3"
+   },
+   "resolved": true,
+   "host": {
+    "list": "a39dd7d45c635304f9e8404c78a340c3",
+    "dialog": "9b62e0e999c49504599b9b8933468a33",
+    "dialogName": "FulsomeQueen_dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "melazmera.trickster.ch5.message": {
+   "kind": "dialog",
+   "lists": [
+    "174d6c94b6725f44aad1d2a76993a926"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "174d6c94b6725f44aad1d2a76993a926": "RRT_entry.melazmera.trickster.ch5.message"
+   },
+   "resolved": true,
+   "host": {
+    "list": "174d6c94b6725f44aad1d2a76993a926",
+    "dialog": "40a79e99680bd8c4a8ba77413ec372d9",
+    "dialogName": "GrimborMainDialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "melazmera.trickster.ch5.message_b": {
+   "kind": "dialog",
+   "lists": [
+    "174d6c94b6725f44aad1d2a76993a926"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "174d6c94b6725f44aad1d2a76993a926": "RRT_entry.melazmera.trickster.ch5.message_b"
+   },
+   "resolved": true,
+   "host": {
+    "list": "174d6c94b6725f44aad1d2a76993a926",
+    "dialog": "40a79e99680bd8c4a8ba77413ec372d9",
+    "dialogName": "GrimborMainDialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "melazmera.trickster.react.greybor_after": {
+   "kind": "dialog",
+   "lists": [
+    "174d6c94b6725f44aad1d2a76993a926"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "174d6c94b6725f44aad1d2a76993a926": "RRT_entry.melazmera.trickster.react.greybor_after"
+   },
+   "resolved": true,
+   "host": {
+    "list": "174d6c94b6725f44aad1d2a76993a926",
+    "dialog": "40a79e99680bd8c4a8ba77413ec372d9",
+    "dialogName": "GrimborMainDialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "melazmera.trickster.react.greybor_colyphyr": {
+   "kind": "dialog",
+   "lists": [
+    "174d6c94b6725f44aad1d2a76993a926"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "174d6c94b6725f44aad1d2a76993a926": "RRT_entry.melazmera.trickster.react.greybor_colyphyr"
+   },
+   "resolved": true,
+   "host": {
+    "list": "174d6c94b6725f44aad1d2a76993a926",
+    "dialog": "40a79e99680bd8c4a8ba77413ec372d9",
+    "dialogName": "GrimborMainDialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "melazmera.trickster.react.nenio_specimen": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.melazmera.trickster.react.nenio_specimen"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
   "mielarah.trickster.colyphyr.landfall": {
    "kind": "return-cue",
    "lists": [
@@ -22438,6 +22598,73 @@
     }
    ]
   },
+  "5c08af90f48f60b42b9f14ab0e0e3220": {
+   "list": "5c08af90f48f60b42b9f14ab0e0e3220",
+   "listName": "AnswersList_0037",
+   "hosts": [
+    {
+     "dialog": "9b62e0e999c49504599b9b8933468a33",
+     "dialogName": "FulsomeQueen_dialogue",
+     "cues": [
+      "e0dab46a6a2842c4ba0502e82f2981cf",
+      "1b9dd65e0e2a12144b23749354c37908",
+      "35fca27d8356ef64da87ec40f4f37a58",
+      "3dcefbfa04983374a831607949d2fec7",
+      "87aeec42d8aa3544093e3ff144a12e06",
+      "d9cf5c5e87a72e943afa9737b02bfbe7",
+      "e315d3fa069fbd245a96e5b2cd94d591",
+      "9a9eb6a4e4eb03c49a6d9da0e03b7fe5"
+     ],
+     "cueNames": [
+      "Cue_0024",
+      "Cue_0045",
+      "Cue_0046",
+      "Cue_0048",
+      "Cue_0079",
+      "Cue_0102",
+      "SequenceExit_0114",
+      "SequenceExit_0118"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 1,
+     "path": [
+      {
+       "at": "Cue_0001",
+       "take": "Answer_0011",
+       "conditioned": true
+      }
+     ],
+     "answerDist": {
+      "11ffae7ef1fa9ce438d25a8ceab3b656": 2,
+      "25bf6ed64ccb7b649ae2501bfac2be24": 2,
+      "2d702f91262aaa54f97ccec3041aa3f6": 3,
+      "2d75b40195311884cae3e23283b80c4c": 2,
+      "3984cf73831cfe4468f841ebe122cc8d": 2,
+      "591555ba2c7ff6b4b875cbe8d31d5ee2": 2,
+      "605e9d19726af364abb616024a9d15e3": 1,
+      "681ed9a3636e5b845843cb93f354617a": 4,
+      "6b0cd38182a3f9f42bc0a55c5346d407": 2,
+      "7a092d79759878640a41c6c3546f8d1c": 3,
+      "8b028cea70dc07840a5f1c80410596ce": 1,
+      "9549b25cb19161c4f9e156aa1baca673": 1,
+      "96bdc8d6d82db324fb155c97c575d84c": 1,
+      "9779430eaf5b8364e989cae8ac4f9e66": 4,
+      "992522211a675594bb88d44f0b0546f7": 2,
+      "9d02e3b88783f42418d3fa177b064478": 4,
+      "aaaf38b276bbb554aa0295acf00ab178": 4,
+      "ab12457c26f85094a8b8d508f63b7751": 5,
+      "b4c6b2d05404f7647bf8f7db1648f775": 3,
+      "ca12e34bbe6f11a4aaeadae661b3903d": 1,
+      "ed8ef50e699a0a8459dc434a2496fa9d": 2,
+      "ee18330db1db746488e2db885684f296": 2,
+      "ee592e0e4a5532d459e811b891ac48b3": 2,
+      "f5dffe91d83a5bb4b90802596114876c": 4,
+      "f72a2584527e83d49bf21809acc8ccad": 3
+     }
+    }
+   ]
+  },
   "5cb721033c29ca04dab453de7c13b607": {
    "list": "5cb721033c29ca04dab453de7c13b607",
    "listName": "AnswersList_0003",
@@ -23881,6 +24108,81 @@
       "ba896768013472f478b1cef133551c6c": 2,
       "bff907ac27c4b284a8d5b352eba70519": 2,
       "d293b540fcc854945926bdba02b412ce": 1
+     }
+    }
+   ]
+  },
+  "a39dd7d45c635304f9e8404c78a340c3": {
+   "list": "a39dd7d45c635304f9e8404c78a340c3",
+   "listName": "AnswersList_0003",
+   "hosts": [
+    {
+     "dialog": "9b62e0e999c49504599b9b8933468a33",
+     "dialogName": "FulsomeQueen_dialogue",
+     "cues": [
+      "ebc6cb75cdc188c458614e82a3b119a5",
+      "437d0b507152630409406cb3a9790a8e",
+      "fbc018207a91eba499dd32269aa20d58",
+      "115e671ff78bc67428b713ef663a9ba3",
+      "7e6662b060460554e9ff26a44e744c66",
+      "f3551d0639887484e99c22146a13accf",
+      "c9872ba18c3debe4cafb0bd4506bfc15",
+      "2deb1acb2a6965f44871ec985491cbab",
+      "54809edfa1e98e2439df06310b5c15d4",
+      "ab3be7a60cd9eb74aaa40be4107247f5",
+      "ee90b60ecefa31f44aeb8a58c1e5ebab",
+      "f48bafe452067294f91ac334187bd25c",
+      "7e099f2d2e2776d44a038675f285bce9",
+      "d5fb7444d0e79564f999f29e4387c3fa",
+      "0496ed50ca95b0c48a9446dd0cfb67d3"
+     ],
+     "cueNames": [
+      "Cue_0001",
+      "Cue_0002",
+      "Cue_0022",
+      "Cue_0032",
+      "Cue_0033",
+      "Cue_0034",
+      "Cue_0035",
+      "Cue_0049",
+      "Cue_0060",
+      "Cue_0070",
+      "Cue_0078",
+      "Cue_0100",
+      "SequenceExit_0104",
+      "SequenceExit_0122",
+      "SequenceExit_0132"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "11ffae7ef1fa9ce438d25a8ceab3b656": 1,
+      "25bf6ed64ccb7b649ae2501bfac2be24": 1,
+      "2d702f91262aaa54f97ccec3041aa3f6": 2,
+      "2d75b40195311884cae3e23283b80c4c": 3,
+      "3984cf73831cfe4468f841ebe122cc8d": 1,
+      "591555ba2c7ff6b4b875cbe8d31d5ee2": 1,
+      "605e9d19726af364abb616024a9d15e3": 2,
+      "681ed9a3636e5b845843cb93f354617a": 3,
+      "6b0cd38182a3f9f42bc0a55c5346d407": 1,
+      "7a092d79759878640a41c6c3546f8d1c": 2,
+      "8b028cea70dc07840a5f1c80410596ce": 2,
+      "9549b25cb19161c4f9e156aa1baca673": 2,
+      "96bdc8d6d82db324fb155c97c575d84c": 2,
+      "9779430eaf5b8364e989cae8ac4f9e66": 3,
+      "992522211a675594bb88d44f0b0546f7": 1,
+      "9d02e3b88783f42418d3fa177b064478": 3,
+      "aaaf38b276bbb554aa0295acf00ab178": 3,
+      "ab12457c26f85094a8b8d508f63b7751": 4,
+      "b4c6b2d05404f7647bf8f7db1648f775": 2,
+      "ca12e34bbe6f11a4aaeadae661b3903d": 2,
+      "ed8ef50e699a0a8459dc434a2496fa9d": 1,
+      "ee18330db1db746488e2db885684f296": 1,
+      "ee592e0e4a5532d459e811b891ac48b3": 3,
+      "f5dffe91d83a5bb4b90802596114876c": 3,
+      "f72a2584527e83d49bf21809acc8ccad": 2
      }
     }
    ]
