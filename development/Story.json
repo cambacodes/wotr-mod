@@ -361456,7 +361456,7 @@
         {
           "Id": "refused",
           "Speaker": "Narrator",
-          "Text": "{n}\"A queen who rehearses her funeral has begun it,\" she told you, when you asked her whether Kitrane could hold the line. It was a good answer. It was the answer of a woman who has never once been allowed to want anything for herself, and knows it, and would rather die than say so.{/n}",
+          "Text": "{n}\"A queen who rehearses her funeral has begun it,\" she told you, when you asked her whether Kitrane could hold the line. It was a good answer. It was the answer of a woman who knows exactly what a queen's death is worth to her kingdom, and will not spend it as a hedge.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -361725,7 +361725,7 @@
         {
           "Id": "watch",
           "Speaker": "Narrator",
-          "Text": "{n}The Queen's breath goes in and out, shallow and careful. Whatever the dragon's sorcery has its teeth in, it has them in deep. Nobody around the bed is looking at the wound any more; they are looking at her face, the way people do at the end.{/n}",
+          "Text": "{n}The Queen's breath goes in and out, shallow and careful. Whatever the enemy's sorcery has its teeth in, it has them in deep. Nobody around the bed is looking at the wound any more; they are looking at her face, the way people do at the end.{/n}",
           "Choices": [
             {
               "Text": "[Perception DC 18] Watch the wound as you say it, the way she would want it said: \"Your Majesty.\"",
@@ -361766,7 +361766,9 @@
               "Next": null,
               "Set": [],
               "Requires": [],
-              "Forbids": [],
+              "Forbids": [
+                "iz.manuscripts"
+              ],
               "Abort": true
             }
           ],
@@ -362279,7 +362281,7 @@
         {
           "Id": "order",
           "Speaker": "conversant",
-          "Text": "\"Hear the last command of your Queen.\" {n}Every knight within ten paces goes still.{/n} \"The knight Kitrane of the Green Crows is wounded. Carry her to the rear in a Crows' cloak, and let no priest near her who does not know her. Sir Anselm Wray fell beside me at the dragon. He goes home to Nerosyan in my armour, in my coffin, sealed, and he will be buried with honours. He has earned them twice over.\"\n\"You will report that the Queen fell at Iz. You saw her fall. You will say so, and nothing else, to anyone, ever.\"",
+          "Text": "\"Hear the last command of your Queen.\" {n}Every knight within ten paces goes still.{/n} \"The knight Kitrane of the Green Crows is wounded. Carry her to the rear in a Crows' cloak, and let no priest near her who does not know her. Sir Anselm Wray fell beside me today. He goes home to Nerosyan in my armour, in my coffin, sealed, and he will be buried with honours. He has earned them twice over.\"\n\"You will report that the Queen fell at Iz. You saw her fall. You will say so, and nothing else, to anyone, ever.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -362855,7 +362857,7 @@
         {
           "Id": "legend",
           "Speaker": "Narrator",
-          "Text": "{n}You give them the Queen of the chronicles: the paladin chosen by the Inheritor, the century of vigil on the edge of the Wound, the last charge at Iz against the dragon the Lord of Locusts had made out of their own protector. You give them a queen who never doubted and never slept and died with the goddess's name on her lips.{/n}\n{n}It is a very good speech. The knights weep openly. It is also, you reflect, as you step down, a portrait of a woman who would have despised it.{/n}",
+          "Text": "{n}You give them the Queen of the chronicles: the paladin chosen by the Inheritor, the century of vigil on the edge of the Wound, the last charge at Iz against the servants of the Lord of Locusts. You give them a queen who never doubted and never slept and died with the goddess's name on her lips.{/n}\n{n}It is a very good speech. The knights weep openly. It is also, you reflect, as you step down, a portrait of a woman who would have despised it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -363065,7 +363067,7 @@
         {
           "Id": "letter",
           "Speaker": "Galfrey",
-          "Text": "\"Commander,\n\"You did not come to Iz. I do not reproach you for it. I sent you into the Abyss, and a commander goes where the war is, not where the Queen happens to be dying.\n\"I fought the dragon without you. Its sorcery went into me like a hook into a fish. My knights bound the wound three times. I lay in the rubble with Pharasma's door in front of me and I thought, quite calmly: so this is how the Queen ends.\"",
+          "Text": "\"Commander,\n\"You did not come to Iz. I do not reproach you for it. I sent you into the Abyss, and a commander goes where the war is, not where the Queen happens to be dying.\n\"I went into Iz without you. The enemy's sorcery went into me like a hook into a fish. My knights bound the wound three times. I lay in the rubble with Pharasma's door in front of me and I thought, quite calmly: so this is how the Queen ends.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -363567,7 +363569,7 @@
         {
           "Id": "romance",
           "Speaker": "Galfrey",
-          "Text": "{n}Then, lower, so that the sentries cannot hear:{/n} \"And we never had our conversation. I put it off until after the Fane, and after the Abyss, and after Iz.\" {n}She looks at you steadily.{/n} \"The Queen had reasons to wait. Kitrane has none that I can find. That frightens me a good deal more than the dragon did.\"",
+          "Text": "{n}Then, lower, so that the sentries cannot hear:{/n} \"And we never had our conversation. I put it off until after the Fane, and after the Abyss, and after Iz.\" {n}She looks at you steadily.{/n} \"The Queen had reasons to wait. Kitrane has none that I can find. That frightens me a good deal more than anything at Iz did.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -363982,7 +363984,7 @@
         {
           "Id": "romance",
           "Speaker": "Galfrey",
-          "Text": "{n}Then, lower, so that the sentries cannot hear:{/n} \"And we never had our conversation. I put it off until after the Fane, and after the Abyss, and after Iz.\" {n}She looks at you steadily.{/n} \"The Queen had reasons to wait. Kitrane has none that I can find. That frightens me a good deal more than the dragon did.\"",
+          "Text": "{n}Then, lower, so that the sentries cannot hear:{/n} \"And we never had our conversation. I put it off until after the Fane, and after the Abyss, and after Iz.\" {n}She looks at you steadily.{/n} \"The Queen had reasons to wait. Kitrane has none that I can find. That frightens me a good deal more than anything at Iz did.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -364121,7 +364123,7 @@
         {
           "Id": "start",
           "Speaker": "Irabeth",
-          "Text": "{n}Irabeth does not look up from the duty roster.{/n} \"You were not at Iz. So you will not know what she looked like when she gave me that order.\" {n}Her pen has stopped.{/n} \"Lying in the rubble with the dragon's work in her, alone but for me and two old Crows, telling us in her parade-ground voice that the Queen had fallen and a knight called Kitrane needed carrying. She did it herself, Commander. Nobody offered her anything. She offered it to herself.\" {n}Now she looks up.{/n} \"I have never been so proud of anyone, or so angry. I have not decided which of those I owe you.\"",
+          "Text": "{n}Irabeth does not look up from the duty roster.{/n} \"You were not at Iz. So you will not know what she looked like when she gave me that order.\" {n}Her pen has stopped.{/n} \"Lying in the rubble with that sorcery in her, alone but for me and two old Crows, telling us in her parade-ground voice that the Queen had fallen and a knight called Kitrane needed carrying. She did it herself, Commander. Nobody offered her anything. She offered it to herself.\" {n}Now she looks up.{/n} \"I have never been so proud of anyone, or so angry. I have not decided which of those I owe you.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -364510,7 +364512,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}Queen Galfrey of Mendev died at Iz, of the dragon's sorcery, and was buried with honours in Nerosyan. Mendev mourned her for a year and a day.{/n}\n{n}A knight of the Green Crows named Kitrane, of no lands, no crown and no enemies, lived a great deal longer. She followed the Commander to the end of the war as a knight of the Crows, and on its last night she kept the walls of Drezen among the soldiers who had not been sent to Threshold, in the crowd, where she had asked to be; and the Commander, whatever else became of the world, never once failed to look for her there.{/n}",
+          "Text": "{n}Queen Galfrey of Mendev died at Iz and was buried with honours in Nerosyan. Mendev mourned her for a year and a day.{/n}\n{n}A knight of the Green Crows named Kitrane, of no lands, no crown and no enemies, lived a great deal longer. She followed the Commander to the end of the war as a knight of the Crows, and on its last night she kept the walls of Drezen among the soldiers who had not been sent to Threshold, in the crowd, where she had asked to be; and the Commander, whatever else became of the world, never once failed to look for her there.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -365140,7 +365142,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}Queen Galfrey of Mendev did not die at Iz. She came home from the Worldwound with her crown on her head and her Commander at her side, and Mendev, which had expected to bury her, did not quite know what to do with her alive.{/n}\n{n}What she and the Commander were to each other was her own affair, and she made sure everyone understood it. At court she was the Queen, severe and exact. In the Fool King's tavern, on the rare evenings she could be persuaded there, she held her cup like somebody who was used to being watched, and spilled some early, on purpose, so that everybody could stop waiting for it. The Commander's strange court of jesters and drunkards took her in without a word, the way it took in everyone, and she found, to her lasting surprise, that she liked it there.{/n}",
+          "Text": "{n}Queen Galfrey of Mendev did not die at Iz. Shortly after the war she laid down the crown, as the chronicles record, and left Nerosyan to spend the rest of her long life with the one who had shown her there was more to life than duty; and Mendev, which had expected to bury her, did not quite know what to do with her alive and uncrowned.{/n}\n{n}What she and the Commander were to each other was her own affair, and she made sure everyone understood it. She was severe and exact with the world to the end of her days, and with one person she was neither.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -365151,12 +365153,32 @@
               "Abort": false
             }
           ],
-          "Portrait": "Galfrey"
+          "Portrait": "Galfrey",
+          "Paragraphs": [
+            {
+              "Text": "{n}On the rare evenings she could be persuaded into the Fool King's tavern, she held her cup like somebody who was used to being watched, and spilled some early, on purpose, so that everybody could stop waiting for it. The Commander's strange court of jesters and drunkards took her in without a word, the way it took in everyone, and she found, to her lasting surprise, that she liked it there.{/n}",
+              "Requires": [
+                "fool_king.available"
+              ],
+              "Forbids": [
+                "fool_king.gone"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The Commander's strange court had no king in it by then, only a tavern bench where one had once sat, and she sat on it now and then, as if keeping it warm for somebody.{/n}",
+              "Requires": [
+                "fool_king.gone"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
         "trickster.ever",
-        "galfrey.romance_active",
+        "galfrey.romance_finished",
         "galfrey.final"
       ],
       "Forbids": [
@@ -367605,7 +367627,7 @@
     },
     {
       "Id": "galfrey.trickster.kitrane.iz",
-      "Title": "The dragon's sorcery",
+      "Title": "The sorcery at Iz",
       "Owner": "Galfrey",
       "MinChapter": 5,
       "MaxChapter": 5,
@@ -367649,6 +367671,18 @@
               "Next": "dragon",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "iz.manuscripts"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "priestess",
+              "Set": [],
+              "Requires": [
+                "iz.manuscripts"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -367665,6 +367699,18 @@
               "Next": "dragon",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "iz.manuscripts"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "priestess",
+              "Set": [],
+              "Requires": [
+                "iz.manuscripts"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -367689,6 +367735,34 @@
             {
               "Text": "Continue",
               "Next": "rest",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "terendelev.trickster.returned"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "priestess",
+          "Speaker": "Galfrey",
+          "Text": "\"It was not even the dragon.\" {n}Something wry in it.{/n} \"I went into the Temple of Stone Manuscripts after the enemy's knowledge, because the Lexicon said it was there, and a priestess of the Lord of Locusts was waiting in the dark with exactly what she meant to use. She knew her work. It did not merely wound; it rent.\" {n}Her hand rests on the scar under her collar.{/n} \"My knights put down what was left of Terendelev elsewhere in that city, without me. I was meant to be there. I went for the books instead.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "back",
+              "Set": [],
+              "Requires": [
+                "terendelev.trickster.returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "end",
               "Set": [],
               "Requires": [],
               "Forbids": [
@@ -367798,7 +367872,7 @@
     },
     {
       "Id": "galfrey.trickster.kitrane.iz_stall",
-      "Title": "The dragon's sorcery",
+      "Title": "The sorcery at Iz",
       "Owner": "Galfrey",
       "MinChapter": 5,
       "MaxChapter": 5,
@@ -367842,6 +367916,18 @@
               "Next": "dragon",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "iz.manuscripts"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "priestess",
+              "Set": [],
+              "Requires": [
+                "iz.manuscripts"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -367858,6 +367944,18 @@
               "Next": "dragon",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "iz.manuscripts"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "priestess",
+              "Set": [],
+              "Requires": [
+                "iz.manuscripts"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -367882,6 +367980,34 @@
             {
               "Text": "Continue",
               "Next": "rest",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "terendelev.trickster.returned"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "priestess",
+          "Speaker": "Galfrey",
+          "Text": "\"It was not even the dragon.\" {n}Something wry in it.{/n} \"I went into the Temple of Stone Manuscripts after the enemy's knowledge, because the Lexicon said it was there, and a priestess of the Lord of Locusts was waiting in the dark with exactly what she meant to use. She knew her work. It did not merely wound; it rent.\" {n}Her hand rests on the scar under her collar.{/n} \"My knights put down what was left of Terendelev elsewhere in that city, without me. I was meant to be there. I went for the books instead.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "back",
+              "Set": [],
+              "Requires": [
+                "terendelev.trickster.returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "end",
               "Set": [],
               "Requires": [],
               "Forbids": [
@@ -369656,7 +369782,7 @@
         {
           "Id": "forgive",
           "Speaker": "Galfrey",
-          "Text": "{n}Her hand is cold, and very still in yours, and then it is not.{/n} \"That,\" she says, not quite steadily, \"is a thing I have wanted to hear from you since the night I wrote it, and I would have had you flogged for saying it to the Queen.\" {n}She does not take her hand back.{/n} \"Kitrane will allow it. Just this once. In a market. Where nobody is looking.\"",
+          "Text": "{n}Her hand is cold, and very still in yours, and then it is not.{/n} \"That,\" she says, not quite steadily, \"is a thing I have wanted to hear from you since the night I wrote it, and the Queen would have changed the subject and ordered more candles.\" {n}She does not take her hand back.{/n} \"Kitrane will allow it. Just this once. In a market. Where nobody is looking.\"",
           "Choices": [
             {
               "Text": "[Hold her hand a moment longer.]",
@@ -369921,7 +370047,7 @@
         {
           "Id": "forgive",
           "Speaker": "Galfrey",
-          "Text": "{n}Her hand is cold, and very still in yours, and then it is not.{/n} \"That,\" she says, not quite steadily, \"is a thing I have wanted to hear from you since the night I wrote it, and I would have had you flogged for saying it to the Queen.\" {n}She does not take her hand back.{/n} \"Kitrane will allow it. Just this once. In a market. Where nobody is looking.\"",
+          "Text": "{n}Her hand is cold, and very still in yours, and then it is not.{/n} \"That,\" she says, not quite steadily, \"is a thing I have wanted to hear from you since the night I wrote it, and the Queen would have changed the subject and ordered more candles.\" {n}She does not take her hand back.{/n} \"Kitrane will allow it. Just this once. In a market. Where nobody is looking.\"",
           "Choices": [
             {
               "Text": "[Hold her hand a moment longer.]",
@@ -370829,7 +370955,7 @@
         {
           "Id": "dance",
           "Speaker": "Narrator",
-          "Text": "{n}She hesitates for exactly as long as it takes a queen to overrule a century. Then she unbuckles her sword-belt, hands it to her squire, and takes your hand, and you are in the ring.{/n}\n{n}She is terrible at it. She is terrible at it with enormous dignity for the first turn and with rapidly diminishing dignity for the second, and by the third she has trodden on a pikeman's foot and apologised to him with a curtsey that makes the whole ring roar, and she is laughing so hard she can barely stand.{/n}",
+          "Text": "{n}She hesitates for exactly as long as it takes a queen to overrule a century. Then she unbuckles her sword-belt, hands it to the Crows' sergeant, and takes your hand, and you are in the ring.{/n}\n{n}She is terrible at it. She is terrible at it with enormous dignity for the first turn and with rapidly diminishing dignity for the second, and by the third she has trodden on a pikeman's foot and apologised to him with a curtsey that makes the whole ring roar, and she is laughing so hard she can barely stand.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -370993,7 +371119,7 @@
         {
           "Id": "dance",
           "Speaker": "Narrator",
-          "Text": "{n}She hesitates for exactly as long as it takes a queen to overrule a century. Then she unbuckles her sword-belt, hands it to her squire, and takes your hand, and you are in the ring.{/n}\n{n}She is terrible at it. She is terrible at it with enormous dignity for the first turn and with rapidly diminishing dignity for the second, and by the third she has trodden on a pikeman's foot and apologised to him with a curtsey that makes the whole ring roar, and she is laughing so hard she can barely stand.{/n}",
+          "Text": "{n}She hesitates for exactly as long as it takes a queen to overrule a century. Then she unbuckles her sword-belt, hands it to the Crows' sergeant, and takes your hand, and you are in the ring.{/n}\n{n}She is terrible at it. She is terrible at it with enormous dignity for the first turn and with rapidly diminishing dignity for the second, and by the third she has trodden on a pikeman's foot and apologised to him with a curtsey that makes the whole ring roar, and she is laughing so hard she can barely stand.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -371221,7 +371347,7 @@
         {
           "Id": "crowd",
           "Speaker": "Narrator",
-          "Text": "{n}Nobody in the market so much as turns their head. A knight kneeling to an officer is nothing; there are a dozen such oaths sworn in Drezen every week. The eel-girl, her squire, has stopped sluicing and is holding her breath. Otherwise the world goes on shutting up for the night around the Queen of Mendev on her knees in the straw.{/n}",
+          "Text": "{n}Nobody in the market so much as turns their head. A knight kneeling to an officer is nothing; there are a dozen such oaths sworn in Drezen every week. At the eel stall a thin girl has stopped sluicing and is holding her breath. Otherwise the world goes on shutting up for the night around the Queen of Mendev on her knees in the straw.{/n}",
           "Choices": [
             {
               "Text": "[Refuse her oath; offer your hand] \"No. I won't take your sword. Get up.\"",
@@ -371311,7 +371437,7 @@
         {
           "Id": "invite",
           "Speaker": "Galfrey",
-          "Text": "\"The Crows' tent is at the end of the minor orders' row in the field camp. It leaks on the left. The sergeant sleeps like a stone and the squire will be at her mother's; I have already arranged it.\" {n}She steps back, and her eyes are very bright, and very steady.{/n} \"Come tonight, after the ninth bell. Bring nothing. And do not keep me waiting, Commander. I have done enough of that for both of us.\"",
+          "Text": "\"The Crows' tent is at the end of the minor orders' row in the field camp. It leaks on the left. The sergeant sleeps like a stone and the squire has been sent into town with the mule; I have already arranged it.\" {n}She steps back, and her eyes are very bright, and very steady.{/n} \"Come tonight, after the ninth bell. Bring nothing. And do not keep me waiting, Commander. I have done enough of that for both of us.\"",
           "Choices": [
             {
               "Text": "\"I'll be there.\"",
@@ -371541,7 +371667,7 @@
         {
           "Id": "crowd",
           "Speaker": "Narrator",
-          "Text": "{n}Nobody in the market so much as turns their head. A knight kneeling to an officer is nothing; there are a dozen such oaths sworn in Drezen every week. The eel-girl, her squire, has stopped sluicing and is holding her breath. Otherwise the world goes on shutting up for the night around the Queen of Mendev on her knees in the straw.{/n}",
+          "Text": "{n}Nobody in the market so much as turns their head. A knight kneeling to an officer is nothing; there are a dozen such oaths sworn in Drezen every week. At the eel stall a thin girl has stopped sluicing and is holding her breath. Otherwise the world goes on shutting up for the night around the Queen of Mendev on her knees in the straw.{/n}",
           "Choices": [
             {
               "Text": "[Refuse her oath; offer your hand] \"No. I won't take your sword. Get up.\"",
@@ -371631,7 +371757,7 @@
         {
           "Id": "invite",
           "Speaker": "Galfrey",
-          "Text": "\"The Crows' tent is at the end of the minor orders' row in the field camp. It leaks on the left. The sergeant sleeps like a stone and the squire will be at her mother's; I have already arranged it.\" {n}She steps back, and her eyes are very bright, and very steady.{/n} \"Come tonight, after the ninth bell. Bring nothing. And do not keep me waiting, Commander. I have done enough of that for both of us.\"",
+          "Text": "\"The Crows' tent is at the end of the minor orders' row in the field camp. It leaks on the left. The sergeant sleeps like a stone and the squire has been sent into town with the mule; I have already arranged it.\" {n}She steps back, and her eyes are very bright, and very steady.{/n} \"Come tonight, after the ninth bell. Bring nothing. And do not keep me waiting, Commander. I have done enough of that for both of us.\"",
           "Choices": [
             {
               "Text": "\"I'll be there.\"",
@@ -373703,7 +373829,7 @@
         {
           "Id": "start",
           "Speaker": "Galfrey",
-          "Text": "\"I went to the Storyteller's shelves. I should not have.\" {n}She is gripping the pommel of her sword hard enough to whiten her knuckles.{/n} \"I wanted a book. The Crows' squire cannot read, and I thought I would teach her from something with pictures. I asked the old man if he had anything suitable for a girl of sixteen.\"",
+          "Text": "\"I went to the Storyteller's shelves. I should not have.\" {n}She is gripping the pommel of her sword hard enough to whiten her knuckles.{/n} \"I wanted a book. The Crows' squire cannot read, and I thought I would teach the boy from something with pictures. I asked the old man if he had anything suitable for a squire of fourteen.\"",
           "Choices": [
             {
               "Text": "\"And?\"",
@@ -373719,7 +373845,7 @@
         {
           "Id": "and",
           "Speaker": "Galfrey",
-          "Text": "\"He was very still. Then he said, 'For a girl of sixteen, Your Majesty? I should think the Lays of the First Crusade. You always liked them best.'\" {n}She lets out a breath.{/n} \"He is blind, Commander. I had forgotten. He has never once seen my face, in any of the times he has told my story. He knows me by my voice.\"",
+          "Text": "\"He was very still. Then he said, 'For a squire of fourteen, Your Majesty? I should think the Lays of the First Crusade. You always liked them best.'\" {n}She lets out a breath.{/n} \"He is blind, Commander. I had forgotten. He has never once seen my face, in any of the times he has told my story. He knows me by my voice.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -373855,7 +373981,7 @@
         {
           "Id": "start",
           "Speaker": "Galfrey",
-          "Text": "\"I went to the Storyteller's shelves. I should not have.\" {n}She is gripping the pommel of her sword hard enough to whiten her knuckles.{/n} \"I wanted a book. The Crows' squire cannot read, and I thought I would teach her from something with pictures. I asked the old man if he had anything suitable for a girl of sixteen.\"",
+          "Text": "\"I went to the Storyteller's shelves. I should not have.\" {n}She is gripping the pommel of her sword hard enough to whiten her knuckles.{/n} \"I wanted a book. The Crows' squire cannot read, and I thought I would teach the boy from something with pictures. I asked the old man if he had anything suitable for a squire of fourteen.\"",
           "Choices": [
             {
               "Text": "\"And?\"",
@@ -373871,7 +373997,7 @@
         {
           "Id": "and",
           "Speaker": "Galfrey",
-          "Text": "\"He was very still. Then he said, 'For a girl of sixteen, Your Majesty? I should think the Lays of the First Crusade. You always liked them best.'\" {n}She lets out a breath.{/n} \"He is blind, Commander. I had forgotten. He has never once seen my face, in any of the times he has told my story. He knows me by my voice.\"",
+          "Text": "\"He was very still. Then he said, 'For a squire of fourteen, Your Majesty? I should think the Lays of the First Crusade. You always liked them best.'\" {n}She lets out a breath.{/n} \"He is blind, Commander. I had forgotten. He has never once seen my face, in any of the times he has told my story. He knows me by my voice.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -374040,7 +374166,7 @@
         {
           "Id": "heard",
           "Speaker": "Galfrey",
-          "Text": "\"Every time.\" {n}The oil-cloth stops.{/n} \"I thought he was being impertinent. I thought I was being gracious, not having him disciplined.\" {n}She looks down at the blade.{/n} \"He was telling me to stay behind him. Every time, for forty years, in the only way a knight may tell his Queen anything. And at Iz I did not, and he stepped in front of the dragon instead, and that is how he came to be in the box.\"",
+          "Text": "\"Every time.\" {n}The oil-cloth stops.{/n} \"I thought he was being impertinent. I thought I was being gracious, not having him disciplined.\" {n}She looks down at the blade.{/n} \"He was telling me to stay behind him. Every time, for forty years, in the only way a knight may tell his Queen anything. And at Iz I did not, and he stepped in front of what was meant for me instead, and that is how he came to be in the box.\"",
           "Choices": [
             {
               "Text": "\"It wasn't your fault.\"",
@@ -374072,7 +374198,7 @@
         {
           "Id": "fault",
           "Speaker": "Galfrey",
-          "Text": "\"No. It was a dragon's fault, and the Lord of Locusts', and the Worldwound's.\" {n}Very even.{/n} \"I am a paladin, Commander. I know exactly how much blame to take and where to put it down. I have done it ten thousand times.\" {n}Her hands resume on the blade.{/n} \"I am only finding it very hard to put this particular one down. It is shaped like a deaf old man.\"",
+          "Text": "\"No. It was the enemy's fault, and the Lord of Locusts', and the Worldwound's.\" {n}Very even.{/n} \"I am a paladin, Commander. I know exactly how much blame to take and where to put it down. I have done it ten thousand times.\" {n}Her hands resume on the blade.{/n} \"I am only finding it very hard to put this particular one down. It is shaped like a deaf old man.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -374202,7 +374328,7 @@
         {
           "Id": "heard",
           "Speaker": "Galfrey",
-          "Text": "\"Every time.\" {n}The oil-cloth stops.{/n} \"I thought he was being impertinent. I thought I was being gracious, not having him disciplined.\" {n}She looks down at the blade.{/n} \"He was telling me to stay behind him. Every time, for forty years, in the only way a knight may tell his Queen anything. And at Iz I did not, and he stepped in front of the dragon instead, and that is how he came to be in the box.\"",
+          "Text": "\"Every time.\" {n}The oil-cloth stops.{/n} \"I thought he was being impertinent. I thought I was being gracious, not having him disciplined.\" {n}She looks down at the blade.{/n} \"He was telling me to stay behind him. Every time, for forty years, in the only way a knight may tell his Queen anything. And at Iz I did not, and he stepped in front of what was meant for me instead, and that is how he came to be in the box.\"",
           "Choices": [
             {
               "Text": "\"It wasn't your fault.\"",
@@ -374234,7 +374360,7 @@
         {
           "Id": "fault",
           "Speaker": "Galfrey",
-          "Text": "\"No. It was a dragon's fault, and the Lord of Locusts', and the Worldwound's.\" {n}Very even.{/n} \"I am a paladin, Commander. I know exactly how much blame to take and where to put it down. I have done it ten thousand times.\" {n}Her hands resume on the blade.{/n} \"I am only finding it very hard to put this particular one down. It is shaped like a deaf old man.\"",
+          "Text": "\"No. It was the enemy's fault, and the Lord of Locusts', and the Worldwound's.\" {n}Very even.{/n} \"I am a paladin, Commander. I know exactly how much blame to take and where to put it down. I have done it ten thousand times.\" {n}Her hands resume on the blade.{/n} \"I am only finding it very hard to put this particular one down. It is shaped like a deaf old man.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -374429,7 +374555,7 @@
         {
           "Id": "end",
           "Speaker": "Galfrey",
-          "Text": "{n}She tucks the mirror back into her belt.{/n} \"Enough vanity. There is a war on, and I have a squire who still holds a sword like an eel knife.\" {n}And then, as you turn to go, lower:{/n} \"Come to the tent tonight. Bring nothing. Count again.\"",
+          "Text": "{n}She tucks the mirror back into her belt.{/n} \"Enough vanity. There is a war on, and the Crows drill at first light.\" {n}And then, as you turn to go, lower:{/n} \"Come to the tent tonight. Bring nothing. Count again.\"",
           "Choices": [
             {
               "Text": "\"I'll be there.\"",
@@ -374586,7 +374712,7 @@
         {
           "Id": "end",
           "Speaker": "Galfrey",
-          "Text": "{n}She tucks the mirror back into her belt.{/n} \"Enough vanity. There is a war on, and I have a squire who still holds a sword like an eel knife.\" {n}And then, as you turn to go, lower:{/n} \"Come to the tent tonight. Bring nothing. Count again.\"",
+          "Text": "{n}She tucks the mirror back into her belt.{/n} \"Enough vanity. There is a war on, and the Crows drill at first light.\" {n}And then, as you turn to go, lower:{/n} \"Come to the tent tonight. Bring nothing. Count again.\"",
           "Choices": [
             {
               "Text": "\"I'll be there.\"",
@@ -378869,13 +378995,15 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
     "terendelev.parent_lich_bind": "bbe7d7dbb92a4923a1ca4433e626a5ec",
     "galfrey.final": "e9205b9f9e8ecd04c92852d72d09ca86",
+    "galfrey.romance_finished": "133f3b1b38f04fa44be3200b786e437f",
+    "iz.manuscripts": "4b3f1b15817e2034f85d7fa7b2a6f20a",
     "galfrey.kc_after_fane": "37a2df11c979ed446b6716142b2b01f5",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
@@ -383566,7 +383694,7 @@
         "galfrey.committed"
       ],
       [
-        "galfrey.romance_active",
+        "galfrey.romance_finished",
         "galfrey.final"
       ]
     ],
@@ -383587,7 +383715,7 @@
         "galfrey.committed"
       ],
       [
-        "galfrey.romance_active",
+        "galfrey.romance_finished",
         "galfrey.final"
       ]
     ],
@@ -384393,7 +384521,7 @@
         "galfrey.trickster.late_committed"
       ],
       [
-        "galfrey.romance_active",
+        "galfrey.romance_finished",
         "galfrey.final"
       ]
     ],
@@ -384507,6 +384635,8 @@
     "ending.trickster_allplanes",
     "ending.trickster_allplanes_fw",
     "ending.trickster_full",
+    "galfrey.romance_finished",
+    "iz.manuscripts",
     "jerribeth.unavailable",
     "trickster.was"
   ],

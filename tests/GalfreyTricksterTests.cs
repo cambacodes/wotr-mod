@@ -185,6 +185,9 @@ internal static class GalfreyTricksterTests
         var taken = One(offer, bed, new[] { Taken, P + "sorcery_read", "galfrey.started" }, P + "cost.rent_scar");
         var takenBlind = One(offer, bed, new[] { Taken, P + "blind", P + "cost.rent_scar" });
         var died = Died(taken);
+        // The manuscripts branch (the priestess, Cue_0072): no way back to the dragon's Cue_0073 once she is knelt to.
+        check(Program.Walk(offer, Later(story, bed, 0, null, "iz.manuscripts")).All(r => r.Has(Taken) || r.Has(P + "let_die")),
+            "Trk_Galfrey_Kitrane: the manuscripts deathbed can fall back to the dragon's return cue.");
         check(Program.Walk(offer, Later(story, bed, 0, null, "galfrey.kc_after_fane")).Where(r => r.Has(Taken)).All(r => r.Has(P + "carried.crows") && !r.Has(P + "carried.irabeth")),
             "Trk_Galfrey_Kitrane: Irabeth carries the order while she was left in Drezen (the title kept after the Fane).");
         var awayRest = Later(story, died, 40); awayRest.Area = "";
@@ -284,7 +287,9 @@ internal static class GalfreyTricksterTests
         One(ford, Later(story, crowsOrder, 30), new[] { P + "ride.trial" }, P + "ride.refused_order");
 
         // Trk_Galfrey_NativeFirst: she lived, the native romance ran to the end: no device, one page, a partner.
-        var native = World(story, 6, "trickster.ever", "iz.fought_with_galfrey", "galfrey.romance_active", "galfrey.final");
+        var native = World(story, 6, "trickster.ever", "iz.fought_with_galfrey", "galfrey.romance_active", "galfrey.romance_finished", "galfrey.final");
+        check(!World(story, 6, "trickster.ever", "iz.fought_with_galfrey", "galfrey.romance_active", "galfrey.final").Has(P + "partner"),
+            "Trk_Galfrey_NativeFirst: an unfinished native courtship counts as a partner.");
         check(!own.Where(s => s.TricksterDevice || s.MinChapter == 5).Any(s => Rules.Available(story, s, World(story, 5, "trickster", "trickster.ever",
                   "iz.fought_with_galfrey", "galfrey.romance_active", "galfrey.final", "coronation.after", "coronation.seen"))),
             "Trk_Galfrey_NativeFirst: a Chapter 5 Galfrey scene opens where she lives.");

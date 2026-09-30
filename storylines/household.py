@@ -75,7 +75,7 @@ PARTNERS = {
 # Extra eligibility groups: a woman whose route has a second committed state (Nocticula's acquired harbour).
 EXTRA_ELIGIBLE = {"nocticula": [["noct.acq.renewed_agreement"]],
                   # Galfrey: where she lives, her native romance kept to the end (Galfrey_Final) makes her a partner.
-                  "galfrey": [["galfrey.romance_active", "galfrey.final"]]}
+                  "galfrey": [["galfrey.romance_finished", "galfrey.final"]]}
 PAIR_WOMEN = {"minagho_chivarro": ("minagho", "chivarro")}
 
 SCENES = []

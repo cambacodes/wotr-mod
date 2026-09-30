@@ -63,7 +63,9 @@ DEAD = "galfrey.dead"                     # GalfreyDead
 KILLED = "galfrey.killed_by_commander"    # GalfreyKilledByCommander (a player-chosen kill closes the route: §5 ruling #2)
 DYING = "galfrey.dying_seen"              # SeenCues GalfreyOnTheEdge/Cue_0011_GalfreyDies
 ROMANCE = "galfrey.romance_active"        # GalfreyRomance_Active (read only; never started or completed here)
-FINAL = "galfrey.final"                   # Galfrey_Final: she is alive at the Coronation and after (activation: not dead)
+FINAL = "galfrey.final"
+FINISHED = "galfrey.romance_finished"     # GalfreyRomance_Finished (133f3b1b), set at Threshold: the native romance completed
+MANU = "iz.manuscripts"                   # GalfreyGoesToManuscripts (4b3f1b15): she was wounded by the priestess, not the dragon                   # Galfrey_Final: she is alive at the Coronation and after (activation: not dead)
 LEFT_EARLY = "iz.left_early"              # DidntVisitedEvents: the Commander never came to Iz
 MET = "galfrey.incognito_met"             # SeenCues Galfrey_Incognito/Cue_0001: "I have introduced myself as Kitrane"
 SEELAH_BED = "galfrey.seelah_at_bed"      # SeenCues GalfreyOnTheEdge/Cue_0079: "Your Majesty! How did this...?"
@@ -126,7 +128,8 @@ BINDINGS = {
     "SeenCues": {MET: ["19d217c3503c0304db4bec29c9882bc9"],
                  SEELAH_BED: ["95037d694c52c964a8bf7b121b309caa"],
                  FAREWELL: ["c0cf7ea6c8f13434fa36671b3b81a2ab"]},
-    "Etudes": {FINAL: "e9205b9f9e8ecd04c92852d72d09ca86",
+    "Etudes": {FINAL: "e9205b9f9e8ecd04c92852d72d09ca86", FINISHED: "133f3b1b38f04fa44be3200b786e437f",
+               MANU: "4b3f1b15817e2034f85d7fa7b2a6f20a",
                KC_KEPT: "37a2df11c979ed446b6716142b2b01f5"},
 }
 
@@ -134,12 +137,12 @@ DERIVED = {
     PLANTED: [[E_MOOTED], [CROWS_MOOTED], [LETTER_MOOTED]],
     # Last Call and the Ledger: the Kitrane world counts her by her commit; where she lives, by the native romance kept to
     # the end (Galfrey_Final plays only while she is alive, from the Coronation on).
-    PARTNER: [[COMMITTED], [ROMANCE, FINAL]],
+    PARTNER: [[COMMITTED], [FINISHED, FINAL]],
     LIVED: [[FINAL]],
     # R2-6: she came back, and the war ended before the oath was answered either way.
     LATE_COMMITTED: [["trickster.ever", RETURNED, P + "first_morning"]],
     # 05 §2.5 voice note: she joins a household the way she joined the war camp, as one face in the crowd she chose.
-    "galfrey.harem.voice.a_face_in_the_crowd": [[COMMITTED], [ROMANCE, FINAL]],
+    "galfrey.harem.voice.a_face_in_the_crowd": [[COMMITTED], [FINISHED, FINAL]],
 }
 
 RELATIONSHIP = dict(
@@ -310,7 +313,7 @@ page(P + "ch4.crowd", "Another face in the crowd", [
         c("Continue", "plain")),
     nar("mooted", '''{n}"Kitrane has no lands, no crown and no enemies," she said to you once, as if reading it off a ledger. "Some days I envy her." A careful person would write that down. You have. You are not entirely sure yet what you mean to do with it, which is how you know it matters.{/n}''',
         c("Continue", "address")),
-    nar("refused", '''{n}"A queen who rehearses her funeral has begun it," she told you, when you asked her whether Kitrane could hold the line. It was a good answer. It was the answer of a woman who has never once been allowed to want anything for herself, and knows it, and would rather die than say so.{/n}''',
+    nar("refused", '''{n}"A queen who rehearses her funeral has begun it," she told you, when you asked her whether Kitrane could hold the line. It was a good answer. It was the answer of a woman who knows exactly what a queen's death is worth to her kingdom, and will not spend it as a hedge.{/n}''',
         c("Continue", "address")),
     nar("plain", '''{n}Somewhere up there, in Drezen or in Nerosyan, she is being the Queen of Mendev at somebody. You hope, a little to your own surprise, that she has an hour in the day when she is not.{/n}''',
         c("Continue", "address")),
@@ -363,7 +366,7 @@ WATCH = (
       check=dict(Skill="SkillPerception", DC=18, Success="read", Failure="blind", CommanderOnly=True)),
     c('[Perception DC 22] Watch the wound as you say it, the way she would want it said: "Your Majesty."', forbids=(PLANTED,),
       check=dict(Skill="SkillPerception", DC=22, Success="read", Failure="blind", CommanderOnly=True)),
-    c("[Stay where you are. Let her be.]", abort=True),
+    c("[Stay where you are. Let her be.]", abort=True, forbids=(MANU,)),
 )
 
 SCENES.append(scene(OFFER, "The Queen's last hour", "Galfrey", 5, "[Kneel beside her.]", [
@@ -373,7 +376,7 @@ SCENES.append(scene(OFFER, "The Queen's last hour", "Galfrey", 5, "[Kneel beside
       c("Continue", "watch", forbids=(SEELAH_BED,))),
     n("seelah", "Narrator", '''{n}Seelah's cry is still in the air: "Your Majesty!" You were looking at the wound when she said it, only because you were looking at everything. You are not sure what you saw. Something in the dark light moved, as a sleeping dog's ear moves at its name.{/n}''',
       c("Continue", "watch")),
-    n("watch", "Narrator", '''{n}The Queen's breath goes in and out, shallow and careful. Whatever the dragon's sorcery has its teeth in, it has them in deep. Nobody around the bed is looking at the wound any more; they are looking at her face, the way people do at the end.{/n}''',
+    n("watch", "Narrator", '''{n}The Queen's breath goes in and out, shallow and careful. Whatever the enemy's sorcery has its teeth in, it has them in deep. Nobody around the bed is looking at the wound any more; they are looking at her face, the way people do at the end.{/n}''',
       *WATCH),
     n("read", "Narrator", '''{n}"Your Majesty." You say it plainly, as a knight would. The dark light in the wound brightens the way a coal brightens under breath, and her whole body tightens against it.{/n}
 {n}You wait until it dulls. Then, very quietly, so that only she can hear: "Kitrane."{/n}
@@ -439,7 +442,7 @@ SCENES.append(scene(OFFER, "The Queen's last hour", "Galfrey", 5, "[Kneel beside
       c("Continue", "order")),
     n("crows", "Narrator", '''{n}Nobody answers to the name. The Queen remembers, a heartbeat late, and her mouth tightens. "The Crows, then. Whoever of them still stands." Two knights in green surcoats with three black birds on the breast come through the ring and kneel, the older of them bleeding from the scalp and not troubling to wipe it.{/n}''',
       c("Continue", "order")),
-    n("order", "conversant", '''"Hear the last command of your Queen." {n}Every knight within ten paces goes still.{/n} "The knight Kitrane of the Green Crows is wounded. Carry her to the rear in a Crows' cloak, and let no priest near her who does not know her. Sir Anselm Wray fell beside me at the dragon. He goes home to Nerosyan in my armour, in my coffin, sealed, and he will be buried with honours. He has earned them twice over."
+    n("order", "conversant", '''"Hear the last command of your Queen." {n}Every knight within ten paces goes still.{/n} "The knight Kitrane of the Green Crows is wounded. Carry her to the rear in a Crows' cloak, and let no priest near her who does not know her. Sir Anselm Wray fell beside me today. He goes home to Nerosyan in my armour, in my coffin, sealed, and he will be buried with honours. He has earned them twice over."
 "You will report that the Queen fell at Iz. You saw her fall. You will say so, and nothing else, to anyone, ever."''',
       c("Continue", "obey")),
     n("obey", "Narrator", '''{n}There is a silence in which a whole order of knighthood decides whether it heard what it heard.{/n}
@@ -525,7 +528,7 @@ page(P + "iz.eulogy", "The Queen lies in state", [
     nar("true", '''{n}You tell them about the Queen you knew. That she was curious, and could not sit still, and came to the crusade because her blade had been in its scabbard long enough. That she was hard on her Commander and harder on herself. That she thought of her soldiers first. That she was proud, and knew it, and served anyway.{/n}
 {n}Every word of it is true, except the one in the middle that makes it a eulogy. When you are done the chapel is so quiet you can hear the candles.{/n}''',
         c("Continue", "after")),
-    nar("legend", '''{n}You give them the Queen of the chronicles: the paladin chosen by the Inheritor, the century of vigil on the edge of the Wound, the last charge at Iz against the dragon the Lord of Locusts had made out of their own protector. You give them a queen who never doubted and never slept and died with the goddess's name on her lips.{/n}
+    nar("legend", '''{n}You give them the Queen of the chronicles: the paladin chosen by the Inheritor, the century of vigil on the edge of the Wound, the last charge at Iz against the servants of the Lord of Locusts. You give them a queen who never doubted and never slept and died with the goddess's name on her lips.{/n}
 {n}It is a very good speech. The knights weep openly. It is also, you reflect, as you step down, a portrait of a woman who would have despised it.{/n}''',
         c("Continue", "after")),
     nar("sign", '''{n}You tell them about the Queen, and it is a good speech, and in the middle of it you tell them one small thing more: that she once said she envied a knight of a minor order, who had no lands, no crown and no enemies, and slept under canvas, and had her boots stolen twice.{/n}
@@ -569,7 +572,7 @@ page(P + "iz.alone", "A letter sealed in green", [
         c("[Break the seal.]", "letter")),
     ga("letter", '''"Commander,
 "You did not come to Iz. I do not reproach you for it. I sent you into the Abyss, and a commander goes where the war is, not where the Queen happens to be dying.
-"I fought the dragon without you. Its sorcery went into me like a hook into a fish. My knights bound the wound three times. I lay in the rubble with Pharasma's door in front of me and I thought, quite calmly: so this is how the Queen ends."''',
+"I went into Iz without you. The enemy's sorcery went into me like a hook into a fish. My knights bound the wound three times. I lay in the rubble with Pharasma's door in front of me and I thought, quite calmly: so this is how the Queen ends."''',
         c("Continue", "letter2")),
     ga("letter2", '''"And then, because I am an old woman and my mind wanders, I thought of a knight of a minor order who had her boots stolen twice in the war camp. You once told me she could outlive the Queen. I said some days I envied her.
 "So I tried it. Nobody offered; you were not there to. But your old sergeant had his orders and his cart and his purse, and he knelt in the rubble and waited for me to say the word. I offered it to myself. I do not recommend it; it is very lonely."''',
@@ -639,7 +642,7 @@ def return_nodes(scarred):
         ga("refused", '''"You asked me for Mendev first." {n}She does not raise her voice; she has never needed to.{/n} "I lay dying and you asked me for Mendev. And then you asked me for myself, when I told you how. I have not decided which of those I shall remember longer." {n}A pause.{/n} "Both, probably. I am old. I have room."''',
             c("Continue", "romance", requires=(ROMANCE,)),
             c("Continue", "end", forbids=(ROMANCE,))),
-        ga("romance", '''{n}Then, lower, so that the sentries cannot hear:{/n} "And we never had our conversation. I put it off until after the Fane, and after the Abyss, and after Iz." {n}She looks at you steadily.{/n} "The Queen had reasons to wait. Kitrane has none that I can find. That frightens me a good deal more than the dragon did."''',
+        ga("romance", '''{n}Then, lower, so that the sentries cannot hear:{/n} "And we never had our conversation. I put it off until after the Fane, and after the Abyss, and after Iz." {n}She looks at you steadily.{/n} "The Queen had reasons to wait. Kitrane has none that I can find. That frightens me a good deal more than anything at Iz did."''',
             c("Continue", "end")),
         ga("end", '''"I shall be in the market. By the curio stall, where the crowd is thickest; I have found I like crowds." {n}She turns to go, and turns back.{/n} "Don't forget, here I am Kitrane the knight. Come and find me when the war allows. I have nothing but time. It is the most extraordinary sensation."''',
             c('"I\'ll find you."', flags=(RETURNED, STARTED)),
@@ -670,7 +673,7 @@ SCENES.append(reaction("Irabeth", P + "react.irabeth.carried", (RETURNED, CARRIE
     portrait="Irabeth", **{**IRABETH_GUARD, "forbids": IRABETH_GUARD["forbids"] + (ALONE,)}))
 
 SCENES.append(reaction("Irabeth", P + "react.irabeth.alone", (RETURNED, ALONE, CARRIED_IRABETH),
-    '''{n}Irabeth does not look up from the duty roster.{/n} "You were not at Iz. So you will not know what she looked like when she gave me that order." {n}Her pen has stopped.{/n} "Lying in the rubble with the dragon's work in her, alone but for me and two old Crows, telling us in her parade-ground voice that the Queen had fallen and a knight called Kitrane needed carrying. She did it herself, Commander. Nobody offered her anything. She offered it to herself." {n}Now she looks up.{/n} "I have never been so proud of anyone, or so angry. I have not decided which of those I owe you."''',
+    '''{n}Irabeth does not look up from the duty roster.{/n} "You were not at Iz. So you will not know what she looked like when she gave me that order." {n}Her pen has stopped.{/n} "Lying in the rubble with that sorcery in her, alone but for me and two old Crows, telling us in her parade-ground voice that the Queen had fallen and a knight called Kitrane needed carrying. She did it herself, Commander. Nobody offered her anything. She offered it to herself." {n}Now she looks up.{/n} "I have never been so proud of anyone, or so angry. I have not decided which of those I owe you."''',
     answer_list=IRABETH_HUB, relationship=REL, entry='"You\'ve been quiet, knight."', chapter=5, last=5, delay=24,
     portrait="Irabeth", **IRABETH_GUARD))
 
@@ -773,7 +776,7 @@ KITRANE_PARAGRAPHS = (
       requires=(P + "kitrane.letter_kept",)),
 )
 
-epilogue("kitrane", "Kitrane", '''{n}Queen Galfrey of Mendev died at Iz, of the dragon's sorcery, and was buried with honours in Nerosyan. Mendev mourned her for a year and a day.{/n}
+epilogue("kitrane", "Kitrane", '''{n}Queen Galfrey of Mendev died at Iz and was buried with honours in Nerosyan. Mendev mourned her for a year and a day.{/n}
 {n}A knight of the Green Crows named Kitrane, of no lands, no crown and no enemies, lived a great deal longer. She followed the Commander to the end of the war as a knight of the Crows, and on its last night she kept the walls of Drezen among the soldiers who had not been sent to Threshold, in the crowd, where she had asked to be; and the Commander, whatever else became of the world, never once failed to look for her there.{/n}''',
          requires=(RETURNED, COMMITTED), forbids=(CLOSED,), paragraphs=KITRANE_PARAGRAPHS)
 
@@ -790,9 +793,14 @@ epilogue("widow", "Kitrane, after", '''{n}Queen Galfrey of Mendev died at Iz and
 {n}She lived a long time after, as nobody in particular, and grew old without a third cup of the church's elixir. Every year on the day of Threshold she went up onto the walls of Drezen at dusk and stood in the crowd, and looked, out of old habit, for a face that was not there.{/n}''',
          requires=(RETURNED, COMMITTED, "sacrifice"), forbids=("trickster.commander_back", "lastcall.active", CLOSED), survived=False)
 
-epilogue("native", "The Queen and the Trickster", '''{n}Queen Galfrey of Mendev did not die at Iz. She came home from the Worldwound with her crown on her head and her Commander at her side, and Mendev, which had expected to bury her, did not quite know what to do with her alive.{/n}
-{n}What she and the Commander were to each other was her own affair, and she made sure everyone understood it. At court she was the Queen, severe and exact. In the Fool King's tavern, on the rare evenings she could be persuaded there, she held her cup like somebody who was used to being watched, and spilled some early, on purpose, so that everybody could stop waiting for it. The Commander's strange court of jesters and drunkards took her in without a word, the way it took in everyone, and she found, to her lasting surprise, that she liked it there.{/n}''',
-         requires=(ROMANCE, FINAL), forbids=(DEAD, RETURNED, CLOSED))
+epilogue("native", "The Queen and the Trickster", '''{n}Queen Galfrey of Mendev did not die at Iz. Shortly after the war she laid down the crown, as the chronicles record, and left Nerosyan to spend the rest of her long life with the one who had shown her there was more to life than duty; and Mendev, which had expected to bury her, did not quite know what to do with her alive and uncrowned.{/n}
+{n}What she and the Commander were to each other was her own affair, and she made sure everyone understood it. She was severe and exact with the world to the end of her days, and with one person she was neither.{/n}''',
+         requires=(FINISHED, FINAL), forbids=(DEAD, RETURNED, CLOSED), paragraphs=(
+             p('''{n}On the rare evenings she could be persuaded into the Fool King's tavern, she held her cup like somebody who was used to being watched, and spilled some early, on purpose, so that everybody could stop waiting for it. The Commander's strange court of jesters and drunkards took her in without a word, the way it took in everyone, and she found, to her lasting surprise, that she liked it there.{/n}''',
+               requires=("fool_king.available",), forbids=("fool_king.gone",)),
+             p('''{n}The Commander's strange court had no king in it by then, only a tavern bench where one had once sat, and she sat on it now and then, as if keeping it warm for somebody.{/n}''',
+               requires=("fool_king.gone",)),
+         ))
 
 epilogue("queen", "The Queen", '''{n}Queen Galfrey of Mendev died at Iz, as the Queen, with her Commander at her side and her knights around her. At the very end she had been offered another name, and she had not taken it. She was buried with honours in Nerosyan, in her own armour, and Mendev mourned her for a year and a day.{/n}
 {n}The Commander did not speak at her vigil. Somebody asked, afterwards, whether there had been anything the Commander could have done. The Commander said that there had, and that she had been asked, and that she had been right.{/n}''',
@@ -818,3 +826,5 @@ def integrate(payload):
             raise ValueError("Conflicting derived key: " + key)
         payload["Derived"][key] = [list(g) for g in groups]
     payload.setdefault("PortraitFallbacks", {}).setdefault("Galfrey", PORTRAIT_GUID)
+    # A completed native romance and the Iz branch taken stay true once observed.
+    payload["PermanentEtudes"] = sorted(set(payload.get("PermanentEtudes", [])) | {FINISHED, MANU})
