@@ -367,7 +367,7 @@ visit(M + "beat.count", "The Commander's hoard", [
         c('"Everything in yours is from somebody you ate."', "ate"),
         c('[Take the sapphire out of your pocket and put it on the shelf with her stones.]', "sapphire", requires=(STONE_KEPT,))),
     mz("ate", '''{n}She laughs, and the lamp gutters.{/n} "Yes. That is how you keep things properly. You make sure nobody can come back for them." {n}She sits down on the end of your bed.{/n}
-"But I did not eat you. And I did not eat the seal. So now I have two things in my hoard that could get up and walk away." {n}She looks at you sidelong.{/n} "I lie awake counting them. Forty-one, and two. I have never lain awake about anything before. I do not know if I like it. I keep doing it."''',
+"But I did not eat you. And I did not eat the seal. So now I have two things in my hoard that could get up and walk away." {n}She looks at you sidelong.{/n} "I lie awake counting them. Forty on the heap, one in your pocket, and two that walk." I have never lain awake about anything before. I do not know if I like it. I keep doing it."''',
         c("Continue", flags=(COUNTED,))),
     mz("sapphire", '''{n}You put the grey stone on the shelf, at the end of the row of her letters, where it looks like one more of them.{/n}
 {n}She stares at it. Then she comes and picks it up, and weighs it in her palm, and puts it back into your pocket herself, and pats it flat.{/n} "No. That one does not go on the shelf. That one goes where it goes. That is the one you took." {n}Her hand stays flat against you.{/n}
@@ -496,19 +496,14 @@ visit(M + "beat.joke", "The one who makes jokes", [
 "Your soldiers say you are the one who makes jokes," {n}she says.{/n} "In the barracks. I listened at the window. They say the Knight Commander makes jokes in the worst places: on the walls, at the head of a charge, over a grave. They are all very frightened of you, and they laugh about it a great deal." {n}She puts the report down.{/n} "Tell me one."''',
         c('"What do you call a dragon who gives things away?"', "riddle"),
         c('"I\'m not the one who laughs. Other people do that."', "laughs")),
-    mz("laughs", '''"Other people." {n}She tilts her head.{/n} "I do not laugh at jokes. I laugh when things are funny. A goat running the wrong way, into my mouth. A paladin who says *foul beast* and then touches my crown. The thing in the swamp." {n}She considers.{/n} "You are funny. You walked into my cave and left a thing. I laughed about it for three nights. Was that a joke?"''',
-        c('"Yes."', "was"),
-        c('"No. It was the truest thing I ever did."', "true")),
-    mz("was", '''{n}She looks at you, and her face does something slow and complicated, and then she throws back her head and laughs until your inkwell dances on the desk.{/n}
-"Then it is the best joke in the world," {n}she says, wiping her eyes.{/n} "Because nobody else was there to get it, and I did not get it until the third night, lying on my heap in the dark." {n}She wags a finger at you.{/n} "Do not make any more jokes like that one, thief. I have things to eat. I cannot spend all my nights laughing on a pile of rocks."''',
-        c("Continue", flags=(M + "beat.joke_told",))),
-    mz("true", '''{n}She is quiet for a moment. Then she takes her feet off your desk, slowly, and looks at you the way she looked at the lump of clay in her heap: a thing that is not what it seems, and worth more.{/n}
-"The truest thing," {n}she repeats.{/n} "You are the one who makes jokes, and you did a true thing, in my cave, in the dark, where nobody could see you do it." {n}She looks at you as if you were a stone she had just turned over and found to be a ruby.{/n} "Your soldiers do not know you at all."''',
-        c("Continue", flags=(M + "beat.joke_told",))),
+    mz("laughs", '''"Other people." {n}She tilts her head.{/n} "I do not laugh at jokes either. I laugh when things are funny. A goat running the wrong way, into my mouth. A paladin who says *foul beast* and then touches my crown. The thing in the swamp trying to be beautiful."
+"You are the one your soldiers say makes jokes. So make one. If it is bad I will eat your candles."''',
+        c('"What do you call a dragon who gives things away?"', "riddle")),
     mz("riddle", '''"I do not know." {n}She frowns at you, as if it were a riddle with a prize at the end and she meant to have the prize.{/n} "A dragon who gives things away is not a dragon. So it is nothing. You call it nothing." {n}She folds her arms.{/n} "That is not funny. What do you call it?"''',
         c('"A lizard. A very fat lizard."', "joke")),
     mz("joke", '''{n}She stares at you with her mouth open. The fat lizard: the thing in the swamp's word for her, whined across a whole island for years.{/n}
-"That is not a joke," {n}she says.{/n} "That is a *slander*. That is the puddle's word." {n}And then she laughs, so hard she has to hold on to the arm of your chair, and four white scores appear in it that were not there before.{/n} "Because I gave you a heart and a sack of drowned gold and my rain, and I *am* fat, and I am lying in your chair like a lizard on a warm rock. Oh, thief. Tell it to your soldiers. Tell it to the little man with the axe. If anybody tells it back to me, I will eat them."''',
+"That is not a joke," {n}she says.{/n} "That is a *slander*. That is the puddle's word." {n}And then she laughs, so hard she has to hold on to the arm of your chair, and four white scores appear in it that were not there before.{/n}
+"I am going to keep it," {n}she says, when she can.{/n} "The next knight the puddle sends into my cave, I am going to let him get his hand on the crown, and then I am going to come home and put my head down beside him and ask him what you call a dragon who gives things away. He will not know. I will tell him. And then I will eat him, and he will die not understanding it, and that will be the funniest thing that has ever happened on my island."''',
         c("Continue", flags=(M + "beat.joke_told",)))],
     requires=(FED,), forbids=(M + "beat.joke_told",))
 

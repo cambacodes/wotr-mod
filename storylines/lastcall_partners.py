@@ -636,7 +636,7 @@ partner("melazmera", "melazmera", "melazmera.committed", "melazmera.closed", "Th
         page_p('''At the rift the Commander held up a grey stone the size of a hen's egg and said her name to it. Far to the north, in a crack in the ground, a dragon lifted her head off her heap in the middle of a number and did not finish it, and the pickets on the north road said afterwards that the silence was worse than the counting.''', requires=(called("melazmera"),)),
         page_p('''Two fingers of the Commander's ring hand had felt nothing since Colyphyr. At the rift, for the length of one breath, they were cold as the inside of a well, and the Commander knew exactly whose mouth that was.''', requires=(MZ + "cost.grey_hand",)),
     ), declined=MZ + "declined",
-    deal=[[MZ + "cost.seal_given"]],
+    deal=[[MZ + "stone_kept"]],
     call=call('''[Hold up the stone] "Melazmera. Come and count me."''',
         '''{n}The stone has been in your pocket since she let you take it, and it is still warm, here at the end of the world, with the rift screaming in front of you. You hold it up and say her name to it, which is a very stupid thing to do with a sapphire at the edge of the Worldwound. For a while nothing answers. Then, very far off, under the noise, you would swear you hear something enormous begin, slowly, to count.{/n}''',
         (PLAIN_CHOICE, (), (), ())),

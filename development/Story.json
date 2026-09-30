@@ -405806,7 +405806,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She is on the roof at the second bell, as she said, and she flies you north without a word, low over the burned country, and drops into the black split in the ground with her wings half-closed so that your stomach stays somewhere up above the Wound.{/n}\n{n}The cave is warm. The red light comes up from the deep of the rift and lies along the ceiling like the underside of a banked fire. At the mouth the false treasure glitters on its shelf. At the back the heap waits, grey and dull and forty-one stones strong, with the hollow in it where she sleeps.{/n}",
+          "Text": "{n}She is on the roof at the second bell, as she said, and she flies you north without a word, low over the burned country, and drops into the black split in the ground with her wings half-closed so that your stomach stays somewhere up above the Wound.{/n}\n{n}The cave is warm. The red light comes up from the deep of the rift and lies along the ceiling like the underside of a banked fire. At the mouth the false treasure glitters on its shelf. At the back the heap waits, grey and dull, forty stones now, with the hollow in it where she sleeps and a smaller hollow near the top where the sapphire lay for two hundred years.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -406006,7 +406006,7 @@
         {
           "Id": "count",
           "Speaker": "Melazmera",
-          "Text": "\"Forty-one,\" {n}she says, without lifting her head. Her voice comes up through the stones and through your back.{/n} \"And one seal. And one Commander.\" {n}The eye closes and opens again.{/n} \"I counted you twice in the night. You were still there both times. I thought you would go.\"\n\"Your war is going to eat you. I can smell it on you: the fly, and the hole, and whatever is at the bottom of it.\" {n}Her breath goes over you, warm, smelling of cold iron.{/n} \"I do not fight in anybody's war. I do not stand in lines. But if your war eats you, thief, I will come and find what is left and bring it here and put it on the heap anyway. Things in my hoard do not leave. Not even for that.\"",
+          "Text": "\"Forty on the heap,\" {n}she says, without lifting her head. Her voice comes up through the stones and through your back.{/n} \"One in your pocket, and you are mine, so that is forty-one. And one seal. And one Commander.\" {n}The eye closes and opens again.{/n} \"I counted you twice in the night. You were still there both times. I thought you would go.\"\n\"Your war is going to eat you. I can smell it on you: the fly, and the hole, and whatever is at the bottom of it.\" {n}Her breath goes over you, warm, smelling of cold iron.{/n} \"I do not fight in anybody's war. I do not stand in lines. But if your war eats you, thief, I will come and find what is left and bring it here and put it on the heap anyway. Things in my hoard do not leave. Not even for that.\"",
           "Choices": [
             {
               "Text": "\"Then I'd better come back in one piece.\"",
@@ -406064,7 +406064,7 @@
         {
           "Id": "home",
           "Speaker": "Narrator",
-          "Text": "{n}She puts you down on the roof of the keep with the sun barely up. You go down the stairs with your shirt on inside out and a stone in the pocket of it, a lumpy grey stone the size of a hen's egg, warm from lying against you all night, and it stays warm all morning, long after it should have cooled.{/n}\n{n}There is another stone on your windowsill when you get there, small and round, the clay on its corner still wet, the old seal pressed into it very carefully and very straight: FORTY-ONE. ONE SEAL. ONE COMMANDER. YOU LEFT A SHIRT ON THE HEAP. IT IS MINE NOW.{/n}",
+          "Text": "{n}She puts you down on the roof of the keep with the sun barely up. You go down the stairs with your shirt on inside out and a stone in the pocket of it, a lumpy grey stone the size of a hen's egg, warm from lying against you all night, and it stays warm all morning, long after it should have cooled.{/n}\n{n}There is another stone on your windowsill when you get there, small and round, the clay on its corner still wet, the old seal pressed into it very carefully and very straight: FORTY ON THE HEAP. ONE IN YOUR POCKET. ONE SEAL. ONE COMMANDER. YOU LEFT A SHIRT. IT IS MINE NOW.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -406290,7 +406290,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}Melazmera kept her cave at the edge of the Wound after the war. She liked the country. Nothing grew there, and she could see anyone coming for a day in any direction, and eat them if she chose.{/n}\n{n}Her heap stayed forty-one stones and one seal, and the false treasure glittered at the mouth of the cave for any thief who wanted it. A great many thieves came, because the story went round. None of them ever came back. Every so often one of them was a crusader who had heard that the Knight Commander was in the habit of visiting, and thought the dragon might be soft. She was not.{/n}\n{n}The Commander visited when the Commander chose, and lay in the hollow of the heap, and was counted. She never once asked the Commander to stay, and she never once let the Commander leave without saying where the stone was. It was always in the same pocket.{/n}",
+          "Text": "{n}Melazmera kept her cave at the edge of the Wound after the war. She liked the country. Nothing grew there, and she could see anyone coming for a day in any direction, and eat them if she chose.{/n}\n{n}Her heap stayed forty stones, and the forty-first went about in the Commander's pocket, and the seal stayed on her claw, and the false treasure glittered at the mouth of the cave for any thief who wanted it. A great many thieves came, because the story went round. None of them ever came back. Every so often one of them was a crusader who had heard that the Knight Commander was in the habit of visiting, and thought the dragon might be soft. She was not.{/n}\n{n}The Commander visited when the Commander chose, and lay in the hollow of the heap, and was counted. She never once asked the Commander to stay, and she never once let the Commander leave without saying where the stone was. It was always in the same pocket.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -406684,7 +406684,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}Melazmera ate the Wound. That is how the soldiers told it afterwards, and it was nearly true: for the rest of the war, and for years after, nothing that came up out of the rifts on the northern edge got further than a mile before something very large came down on it out of the dark. The pickets called her the Night Tax. Nobody knew her name.{/n}\n{n}She kept the seal. It was on her claw, as long as anyone saw her, glittering. Things in her hoard did not leave.{/n}",
+          "Text": "{n}Melazmera ate the Wound. That is how the soldiers told it afterwards, and it was nearly true: for the rest of the war nothing that came up out of the rifts on the northern edge got further than a mile before something very large came down on it out of the dark. The pickets called her the Night Tax. Nobody knew her name.{/n}\n{n}She kept the seal. It was on her claw, as long as anyone saw her, glittering.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -406697,6 +406697,22 @@
           ],
           "Portrait": "",
           "Paragraphs": [
+            {
+              "Text": "{n}When the Wound closed, she went back through the last of it before it shut, and the Midnight Isles had their dragon again. Somewhere on Colyphyr, in a cave with a hole in its roof, the rain fell on a heap of real stones and one seal, and she lay on them and did not come out for a very long time.{/n}",
+              "Requires": [
+                "ending.wound_closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The Wound stayed open, and she stayed on its edge, and for years after the war the Night Tax was paid every night by whatever came up out of the ground, and nobody on the north road ever complained of it.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "ending.wound_closed"
+              ],
+              "AnyGroups": []
+            },
             {
               "Text": "{n}The Knight Commander's orders went out under a new seal for the rest of the war and after it. The old one was on a dragon's claw, and every so often, on no particular day, a flat grey stone would arrive at the Commander's window with a smear of clay on one corner and the old seal pressed into the clay, sharp and clean, as if to say that it was still there, and still hers.{/n}",
               "Requires": [
@@ -406839,7 +406855,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}Word came up the north road that the Knight Commander had given everything at the end and had not come back. For three nights nothing came out of the rifts on the northern edge of the Wound at all, and the pickets did not understand why, and were afraid.{/n}\n{n}On the fourth night a dragon came down over Drezen and landed on the roof of the keep, and the whole city lay awake under her and listened to her walk up and down the leads, up and down, until dawn, looking for something to count.{/n}",
+          "Text": "{n}Word came up the north road that the Knight Commander had given everything at the end and had not come back. For three nights the pickets on the north road heard nothing from the north at all, not a scream, not a wing, and did not understand why, and were afraid.{/n}\n{n}On the fourth night a dragon came down over Drezen and landed on the roof of the keep, and the whole city lay awake under her and listened to her walk up and down the leads, up and down, until dawn, looking for something to count.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -408990,7 +409006,7 @@
         {
           "Id": "ate",
           "Speaker": "Melazmera",
-          "Text": "{n}She laughs, and the lamp gutters.{/n} \"Yes. That is how you keep things properly. You make sure nobody can come back for them.\" {n}She sits down on the end of your bed.{/n}\n\"But I did not eat you. And I did not eat the seal. So now I have two things in my hoard that could get up and walk away.\" {n}She looks at you sidelong.{/n} \"I lie awake counting them. Forty-one, and two. I have never lain awake about anything before. I do not know if I like it. I keep doing it.\"",
+          "Text": "{n}She laughs, and the lamp gutters.{/n} \"Yes. That is how you keep things properly. You make sure nobody can come back for them.\" {n}She sits down on the end of your bed.{/n}\n\"But I did not eat you. And I did not eat the seal. So now I have two things in my hoard that could get up and walk away.\" {n}She looks at you sidelong.{/n} \"I lie awake counting them. Forty on the heap, one in your pocket, and two that walk.\" I have never lain awake about anything before. I do not know if I like it. I keep doing it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -409709,56 +409725,12 @@
         {
           "Id": "laughs",
           "Speaker": "Melazmera",
-          "Text": "\"Other people.\" {n}She tilts her head.{/n} \"I do not laugh at jokes. I laugh when things are funny. A goat running the wrong way, into my mouth. A paladin who says *foul beast* and then touches my crown. The thing in the swamp.\" {n}She considers.{/n} \"You are funny. You walked into my cave and left a thing. I laughed about it for three nights. Was that a joke?\"",
+          "Text": "\"Other people.\" {n}She tilts her head.{/n} \"I do not laugh at jokes either. I laugh when things are funny. A goat running the wrong way, into my mouth. A paladin who says *foul beast* and then touches my crown. The thing in the swamp trying to be beautiful.\"\n\"You are the one your soldiers say makes jokes. So make one. If it is bad I will eat your candles.\"",
           "Choices": [
             {
-              "Text": "\"Yes.\"",
-              "Next": "was",
+              "Text": "\"What do you call a dragon who gives things away?\"",
+              "Next": "riddle",
               "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "\"No. It was the truest thing I ever did.\"",
-              "Next": "true",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Melazmera"
-        },
-        {
-          "Id": "was",
-          "Speaker": "Melazmera",
-          "Text": "{n}She looks at you, and her face does something slow and complicated, and then she throws back her head and laughs until your inkwell dances on the desk.{/n}\n\"Then it is the best joke in the world,\" {n}she says, wiping her eyes.{/n} \"Because nobody else was there to get it, and I did not get it until the third night, lying on my heap in the dark.\" {n}She wags a finger at you.{/n} \"Do not make any more jokes like that one, thief. I have things to eat. I cannot spend all my nights laughing on a pile of rocks.\"",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": null,
-              "Set": [
-                "melazmera.trickster.beat.joke_told"
-              ],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Melazmera"
-        },
-        {
-          "Id": "true",
-          "Speaker": "Melazmera",
-          "Text": "{n}She is quiet for a moment. Then she takes her feet off your desk, slowly, and looks at you the way she looked at the lump of clay in her heap: a thing that is not what it seems, and worth more.{/n}\n\"The truest thing,\" {n}she repeats.{/n} \"You are the one who makes jokes, and you did a true thing, in my cave, in the dark, where nobody could see you do it.\" {n}She looks at you as if you were a stone she had just turned over and found to be a ruby.{/n} \"Your soldiers do not know you at all.\"",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": null,
-              "Set": [
-                "melazmera.trickster.beat.joke_told"
-              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -409785,7 +409757,7 @@
         {
           "Id": "joke",
           "Speaker": "Melazmera",
-          "Text": "{n}She stares at you with her mouth open. The fat lizard: the thing in the swamp's word for her, whined across a whole island for years.{/n}\n\"That is not a joke,\" {n}she says.{/n} \"That is a *slander*. That is the puddle's word.\" {n}And then she laughs, so hard she has to hold on to the arm of your chair, and four white scores appear in it that were not there before.{/n} \"Because I gave you a heart and a sack of drowned gold and my rain, and I *am* fat, and I am lying in your chair like a lizard on a warm rock. Oh, thief. Tell it to your soldiers. Tell it to the little man with the axe. If anybody tells it back to me, I will eat them.\"",
+          "Text": "{n}She stares at you with her mouth open. The fat lizard: the thing in the swamp's word for her, whined across a whole island for years.{/n}\n\"That is not a joke,\" {n}she says.{/n} \"That is a *slander*. That is the puddle's word.\" {n}And then she laughs, so hard she has to hold on to the arm of your chair, and four white scores appear in it that were not there before.{/n}\n\"I am going to keep it,\" {n}she says, when she can.{/n} \"The next knight the puddle sends into my cave, I am going to let him get his hand on the crown, and then I am going to come home and put my head down beside him and ask him what you call a dragon who gives things away. He will not know. I will tell him. And then I will eat him, and he will die not understanding it, and that will be the funniest thing that has ever happened on my island.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -410769,7 +410741,7 @@
         "horzalah.trickster.cost.ear",
         "eliandra.trickster.cost.lights_given",
         "galfrey.trickster.cost.eulogy",
-        "melazmera.trickster.cost.seal_given"
+        "melazmera.trickster.stone_kept"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -410866,7 +410838,7 @@
         "horzalah.trickster.cost.ear": "horzalah.lastcall.resolved",
         "eliandra.trickster.cost.lights_given": "eliandra.lastcall.resolved",
         "galfrey.trickster.cost.eulogy": "galfrey.lastcall.resolved",
-        "melazmera.trickster.cost.seal_given": "melazmera.lastcall.resolved"
+        "melazmera.trickster.stone_kept": "melazmera.lastcall.resolved"
       }
     },
     {
@@ -410998,7 +410970,7 @@
         "horzalah.trickster.cost.ear",
         "eliandra.trickster.cost.lights_given",
         "galfrey.trickster.cost.eulogy",
-        "melazmera.trickster.cost.seal_given"
+        "melazmera.trickster.stone_kept"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -411096,7 +411068,7 @@
         "horzalah.trickster.cost.ear": "horzalah.lastcall.resolved",
         "eliandra.trickster.cost.lights_given": "eliandra.lastcall.resolved",
         "galfrey.trickster.cost.eulogy": "galfrey.lastcall.resolved",
-        "melazmera.trickster.cost.seal_given": "melazmera.lastcall.resolved"
+        "melazmera.trickster.stone_kept": "melazmera.lastcall.resolved"
       }
     },
     {
@@ -413649,7 +413621,7 @@
       "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
       "RequiresAnyGroups": [
         [
-          "melazmera.trickster.cost.seal_given"
+          "melazmera.trickster.stone_kept"
         ]
       ]
     },
@@ -413962,8 +413934,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -416151,7 +416123,7 @@
           "Description": "The Knight Commander's old seal is on the claw of an umbral dragon, and every order I have signed since has gone out under a new one. It is not a debt; it is in her hoard, and things in her hoard do not leave. In exchange I carry one of her stones, a sapphire that looks like a boring rock. She knows exactly which pocket it is in.",
           "OpenWhen": [
             [
-              "melazmera.trickster.cost.seal_given"
+              "melazmera.trickster.stone_kept"
             ]
           ],
           "SettledWhen": [
@@ -421471,7 +421443,7 @@
           "Forbids": [],
           "AnyGroups": [
             [
-              "melazmera.trickster.cost.seal_given"
+              "melazmera.trickster.stone_kept"
             ]
           ],
           "Tooltip": "RRT_Debt"

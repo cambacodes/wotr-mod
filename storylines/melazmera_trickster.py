@@ -640,7 +640,7 @@ tag(M + "hunt.shared")
 
 SCENES.append(scene(M + "visit.heap", "On the heap", "Melazmera", 5, "", [
     nar("start", '''{n}She is on the roof at the second bell, as she said, and she flies you north without a word, low over the burned country, and drops into the black split in the ground with her wings half-closed so that your stomach stays somewhere up above the Wound.{/n}
-{n}The cave is warm. The red light comes up from the deep of the rift and lies along the ceiling like the underside of a banked fire. At the mouth the false treasure glitters on its shelf. At the back the heap waits, grey and dull and forty-one stones strong, with the hollow in it where she sleeps.{/n}''',
+{n}The cave is warm. The red light comes up from the deep of the rift and lies along the ceiling like the underside of a banked fire. At the mouth the false treasure glitters on its shelf. At the back the heap waits, grey and dull, forty stones now, with the hollow in it where she sleeps and a smaller hollow near the top where the sapphire lay for two hundred years.{/n}''',
         c("Continue", "lie")),
     mz("lie", '''{n}She goes up the heap in the woman she wears and turns round at the top and holds out her hand to you, and you climb. The stones shift under your knees. They are warm all the way through, as if something had lain on them for two hundred years, which something has.{/n}
 "Lie down," {n}she says.{/n} "Here. In the hollow. I want to see what it looks like."
@@ -676,7 +676,7 @@ SCENES.append(scene(M + "visit.heap", "On the heap", "Melazmera", 5, "", [
     nar("morning", '''{n}The light from the rift goes from red to grey when the sun comes up over the Wound, as if the fire down there were going to sleep. You wake in the hollow of the heap with a ruby pressing into your spine and every other stone in the place printed on your back, and a warm, enormous flank against your side that rises and falls like the sea.{/n}
 {n}She has taken off the woman in her sleep. She is curled round the whole heap in her own shape, with you in the middle of it, and her head on her forefeet, and your seal on her claw by your hand, glittering. One scarlet eye is open, watching you, and has been for some time.{/n}''',
         c("Continue", "count")),
-    mz("count", '''"Forty-one," {n}she says, without lifting her head. Her voice comes up through the stones and through your back.{/n} "And one seal. And one Commander." {n}The eye closes and opens again.{/n} "I counted you twice in the night. You were still there both times. I thought you would go."
+    mz("count", '''"Forty on the heap," {n}she says, without lifting her head. Her voice comes up through the stones and through your back.{/n} "One in your pocket, and you are mine, so that is forty-one. And one seal. And one Commander." {n}The eye closes and opens again.{/n} "I counted you twice in the night. You were still there both times. I thought you would go."
 "Your war is going to eat you. I can smell it on you: the fly, and the hole, and whatever is at the bottom of it." {n}Her breath goes over you, warm, smelling of cold iron.{/n} "I do not fight in anybody's war. I do not stand in lines. But if your war eats you, thief, I will come and find what is left and bring it here and put it on the heap anyway. Things in my hoard do not leave. Not even for that."''',
         c('"Then I\'d better come back in one piece."', "go"),
         c("[Lie still until she sleeps again.]", "stay")),
@@ -686,7 +686,7 @@ SCENES.append(scene(M + "visit.heap", "On the heap", "Melazmera", 5, "", [
     mz("go", '''"In one piece," {n}she agrees.{/n} "I do not want the pieces. I want the whole thing, with the talking still in it." {n}She lifts her head at last, and yawns, and it is like looking into a furnace full of knives.{/n} "Get on. I will take you back before your castle notices you are gone. Your castle notices everything. It is the most frightened building I have ever seen."''',
         c("Continue", "home")),
     nar("home", '''{n}She puts you down on the roof of the keep with the sun barely up. You go down the stairs with your shirt on inside out and a stone in the pocket of it, a lumpy grey stone the size of a hen's egg, warm from lying against you all night, and it stays warm all morning, long after it should have cooled.{/n}
-{n}There is another stone on your windowsill when you get there, small and round, the clay on its corner still wet, the old seal pressed into it very carefully and very straight: FORTY-ONE. ONE SEAL. ONE COMMANDER. YOU LEFT A SHIRT ON THE HEAP. IT IS MINE NOW.{/n}''',
+{n}There is another stone on your windowsill when you get there, small and round, the clay on its corner still wet, the old seal pressed into it very carefully and very straight: FORTY ON THE HEAP. ONE IN YOUR POCKET. ONE SEAL. ONE COMMANDER. YOU LEFT A SHIRT. IT IS MINE NOW.{/n}''',
         c("Continue", "dogs", requires=(GREY_ABSENT,)),
         c("[Go about your day.]", flags=(HEAP,), forbids=(GREY_ABSENT,))),
     nar("dogs", '''{n}When you cross the stable yard, every dog in it gets up and goes somewhere else. The old wolfhound that sleeps by the forge, who has never moved for anyone, crawls under the feed trough on his belly and will not come out, and whines, and the grooms look from him to you and back again and say nothing at all.{/n}''',
@@ -746,7 +746,7 @@ COMMON = (
 
 SCENES.append(scene(M + "epilogue.together", "", "MelazmeraEpilogue", 6, "", [
     nar("page", '''{n}Melazmera kept her cave at the edge of the Wound after the war. She liked the country. Nothing grew there, and she could see anyone coming for a day in any direction, and eat them if she chose.{/n}
-{n}Her heap stayed forty-one stones and one seal, and the false treasure glittered at the mouth of the cave for any thief who wanted it. A great many thieves came, because the story went round. None of them ever came back. Every so often one of them was a crusader who had heard that the Knight Commander was in the habit of visiting, and thought the dragon might be soft. She was not.{/n}
+{n}Her heap stayed forty stones, and the forty-first went about in the Commander's pocket, and the seal stayed on her claw, and the false treasure glittered at the mouth of the cave for any thief who wanted it. A great many thieves came, because the story went round. None of them ever came back. Every so often one of them was a crusader who had heard that the Knight Commander was in the habit of visiting, and thought the dragon might be soft. She was not.{/n}
 {n}The Commander visited when the Commander chose, and lay in the hollow of the heap, and was counted. She never once asked the Commander to stay, and she never once let the Commander leave without saying where the stone was. It was always in the same pocket.{/n}''',
         paragraphs=(p("{n}When the Wound closed and the rifts went cold, nothing came up out of the ground any more, and she complained about it for a year, and then flew to the Midnight Isles and back every season to eat what the Abyss had to offer, and came home to her heap.{/n}", requires=("ending.wound_closed",)),
                     p("{n}The Wound did not close. The rifts along the northern edge stayed open, and things went on coming up out of them warm, and she went on eating them, and the pickets on the north road learned to sleep through the screaming.{/n}", forbids=("ending.wound_closed",)),
@@ -774,9 +774,11 @@ SCENES.append(scene(M + "epilogue.declined", "", "MelazmeraEpilogue", 6, "", [
 tag(M + "epilogue.declined")
 
 SCENES.append(scene(M + "epilogue.left_free", "", "MelazmeraEpilogue", 6, "", [
-    nar("page", '''{n}Melazmera ate the Wound. That is how the soldiers told it afterwards, and it was nearly true: for the rest of the war, and for years after, nothing that came up out of the rifts on the northern edge got further than a mile before something very large came down on it out of the dark. The pickets called her the Night Tax. Nobody knew her name.{/n}
-{n}She kept the seal. It was on her claw, as long as anyone saw her, glittering. Things in her hoard did not leave.{/n}''',
-        paragraphs=COMMON)],
+    nar("page", '''{n}Melazmera ate the Wound. That is how the soldiers told it afterwards, and it was nearly true: for the rest of the war nothing that came up out of the rifts on the northern edge got further than a mile before something very large came down on it out of the dark. The pickets called her the Night Tax. Nobody knew her name.{/n}
+{n}She kept the seal. It was on her claw, as long as anyone saw her, glittering.{/n}''',
+        paragraphs=(p("{n}When the Wound closed, she went back through the last of it before it shut, and the Midnight Isles had their dragon again. Somewhere on Colyphyr, in a cave with a hole in its roof, the rain fell on a heap of real stones and one seal, and she lay on them and did not come out for a very long time.{/n}", requires=("ending.wound_closed",)),
+                    p("{n}The Wound stayed open, and she stayed on its edge, and for years after the war the Night Tax was paid every night by whatever came up out of the ground, and nobody on the north road ever complained of it.{/n}", forbids=("ending.wound_closed",)),
+                    *COMMON))],
     requires=("trickster.ever", LEFT_FREE), forbids=(COMMITTED, DEAD, "sacrifice"), **SAC, **EP))
 tag(M + "epilogue.left_free")
 
@@ -787,7 +789,7 @@ SCENES.append(scene(M + "epilogue.closed", "", "MelazmeraEpilogue", 6, "", [
 tag(M + "epilogue.closed")
 
 SCENES.append(scene(M + "epilogue.mourned", "", "MelazmeraEpilogue", 6, "", [
-    nar("page", '''{n}Word came up the north road that the Knight Commander had given everything at the end and had not come back. For three nights nothing came out of the rifts on the northern edge of the Wound at all, and the pickets did not understand why, and were afraid.{/n}
+    nar("page", '''{n}Word came up the north road that the Knight Commander had given everything at the end and had not come back. For three nights the pickets on the north road heard nothing from the north at all, not a scream, not a wing, and did not understand why, and were afraid.{/n}
 {n}On the fourth night a dragon came down over Drezen and landed on the roof of the keep, and the whole city lay awake under her and listened to her walk up and down the leads, up and down, until dawn, looking for something to count.{/n}''',
         paragraphs=(
             p("{n}She had said that if the war ate the Commander she would find what was left and put it on the heap anyway. There was nothing left to find. She took the Commander's old boots from the room under the roof instead, and nobody tried to stop her, and they are on the heap still, between a ruby and a lump of star.{/n}", requires=(COMMITTED,)),

@@ -365,5 +365,17 @@ internal static class MelazmeraTricksterTests
         var coda = story.Scenes.SingleOrDefault(s => s.Id == "melazmera.lastcall.page");
         check(coda != null && coda.Requires.Contains(Committed) && coda.RequiresAnyGroups.All(g => !g.Contains(P + "late_committed")),
             "Her Last Call coda is missing or reads something other than her commitment.");
+        var call = story.Scenes.SingleOrDefault(s => s.Id == "melazmera.lastcall.call");
+        check(call != null && call.RequiresAnyGroups.Length == 1 && call.RequiresAnyGroups[0].SequenceEqual(new[] { StoneKept })
+              && !call.RequiresAnyGroups[0].Contains(Seal),
+            "Her Last Call call-in (the sapphire held up) is offered without the stone: seal-only, declined or closed worlds must not see it.");
+        var leftFree = S(P + "epilogue.left_free").Nodes[0];
+        check(leftFree.Paragraphs.Count(pg => pg.Requires.Contains("ending.wound_closed")) == 1
+              && leftFree.Paragraphs.Count(pg => pg.Forbids.Contains("ending.wound_closed")) == 1 && !leftFree.Text.Contains("years after"),
+            "The left_free page states the Wound's fate unconditionally.");
+        check(heap.Nodes.Single(n => n.Id == "count").Text.Contains("Forty on the heap") && !heap.Nodes.Any(n => n.Text.Contains("forty-one stones strong")),
+            "Her count forgets that the sapphire left the heap.");
+        check(!S(P + "beat.joke").Nodes.Any(n => n.Text.Contains("drowned gold") || n.Text.Contains("third night")),
+            "The joke recalls gifts or nights that may not have happened.");
     }
 }
