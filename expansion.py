@@ -469,8 +469,9 @@ def make_expansion(*, independent_tirabade=True):
     nidalynn_trickster.integrate(payload)
     # Shamira: a new relationship (shamira.md hooks; 11-ROSTER-PLAN-2 §2 "Dreams for a body", revised 2026-09-29): at the
     # compulsory kill she flees into the one mind she was let into, the Commander's; a shell stolen in the Fleshmarkets, woken
-    # on the Commander's dreams (shamira_mind); the game lost on purpose in her Harem (shamira_dream). Nothing is spawned for
-    # her (no Shamira unit has a dialog), and nothing touches Areelu's flask, which is Last Call's.
+    # on the Commander's dreams (shamira_mind); the game lost on purpose in her Harem (shamira_dream). Once she has a body she
+    # is a spawn-copy with a click-to-talk hub at the Fool King's corner table (no Shamira unit has a dialog of its own),
+    # and nothing touches Areelu's flask, which is Last Call's.
     payload["Relationships"]["shamira"] = copy.deepcopy(shamira_trickster.RELATIONSHIP)
     payload["Scenes"].extend(copy.deepcopy(shamira_trickster.SCENES))
     payload["Scenes"].extend(copy.deepcopy(shamira_mind.SCENES))

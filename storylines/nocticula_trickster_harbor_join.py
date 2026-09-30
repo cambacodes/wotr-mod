@@ -95,10 +95,10 @@ She draws a narrow line across the coast.
       c('Your renewed gift is present. It is not permission for this new meeting.', "gift_present", requires=("noct.acq.gift_renewed",)),
       c('Your original gift remains. I will still choose whether to receive this invitation.', "gift_present", requires=("noct.gift",), forbids=("noct.acq.gift_renewed",)),
       c('No current gift supplies the passage. I want to know what you are offering to do instead.', "gift_absent", forbids=("noct.gift", "noct.acq.gift_renewed"))),
-    p("gift_present", "Nocticula", '''"You need not mistake a privilege for consent. I am capable of asking a question while knowing the answer could be made less interesting."
+    p("gift_present", "Nocticula", '''"I could simply take the evening; the gift would let me. Where is the pleasure in that? I would rather watch you walk in on your own feet, knowing exactly what I am."
 "And I am capable of wanting you while objecting to the means of obtaining me."
 "Then we have something to discuss when you arrive. I should hate to exhaust the conversation before making a room for it."
-She offers to host a single meeting through her side of the responding mark. You will name the hour and receive an invitation before sleep. She has asked for your answer instead of making the gift supply one.''', c('Propose the following evening for one trial meeting.', flags=f("an_unfinished_map_done", "trial_offered"))),
+She offers to host a single meeting through her side of the responding mark. You will name the hour and receive an invitation before sleep. She wants your answer; she could have the evening without it, and you both know it.''', c('Propose the following evening for one trial meeting.', flags=f("an_unfinished_map_done", "trial_offered"))),
     p("gift_absent", "Nocticula", '''"My side of the mark. I will make the place and send the invitation. You will provide the inconvenient guest."
 "You could have proposed that before."
 "I could have proposed a great many things before deciding whether your company justified them. You should enjoy being expensive enough to require a decision."
@@ -126,7 +126,7 @@ The new stroke has no branching path to test. It answers from her side of the ma
 "You may refuse this as well," she writes. "I have not offered to make your former discretion look foolish."''', c('Keep the old exposure and surrendered sketch distinct from the invitation.', "prepare")),
     p("prepare", "Nocticula", '''"Write where you mean to wake."
 You name your room in Drezen, the chair, and the lamp with a chipped blue foot. She asks for something the dream should not need to contain. You choose the sentry's watch signal.
-"When you wish to leave, remember that sound. I will end the room when you ask. We will test the answer before discussing anything else."
+"When you wish to leave, remember that sound. I will end the room when you ask. I should like you to know that I can keep you there, and that I choose not to. We will test it before we discuss anything else."
 "You are promising to let me leave."
 "Yes. Not to become incapable of mistreating you. If you wanted a harmless hostess, you chose badly."
 You examine the words. The risk has a name and has not become smaller because she wrote it beautifully.
@@ -198,7 +198,7 @@ She agrees to discuss a specific return for a useful result when you know what t
     p("invitation", "Nocticula", '''"Then I will show you the quay."
 You ask whether she is offering further hosted meetings through the same mark.
 "When you choose to sleep with the answering sheet beside you. Put it away when you want a night of your own. In the room, you may ask to leave as you did before. I will hear the answer even when I dislike its timing."
-You will keep the old correspondence as well. Other lovers remain your own concern; she has asked for an attentive guest, not possession of every hour before and after the meeting.
+You will keep the old correspondence as well. She does not ask about your other lovers. She has never needed to ask about anything she could find out for herself.
 "And if I decline the harbor after hearing the case?"
 "Then I shall have spent an evening arranging a particularly elaborate disappointment. I do not recommend making a habit of it."
 "That was almost an answer."

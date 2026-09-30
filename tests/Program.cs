@@ -41,6 +41,10 @@ internal static class Program
                 var next = Copy(state);
                 foreach (var effect in choice.Set)
                     if (next.Flags.Add(effect)) next.Times[effect] = next.Hour;
+                // E11: a removed item is no longer observed in the inventory (Main.BuildState reads InventoryItems live).
+                if (choice.RemoveItem != null && story != null)
+                    foreach (var held in story.InventoryItems.Where(e => e.Value == choice.RemoveItem).Select(e => e.Key))
+                        next.Flags.Remove(held);
                 if (choice.Next != null || choice.Check != null)
                     foreach (var target in Rules.NextNodes(choice)) Visit(target, Copy(next), new HashSet<string>(path));
                 else

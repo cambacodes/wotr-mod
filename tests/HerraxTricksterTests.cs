@@ -229,10 +229,14 @@ internal static class HerraxTricksterTests
               && reactions.All(s => s.AnswerLists.Length == 1 && s.Forbids.Length > 0),
             "Herrax's reactions are not the three allocated reactors on their hubs, each with its guard.");
 
-        // Courtship: every beat and letter is reachable on some road; Chapter 5 letters come only after the yes.
+        // Courtship: every beat is reachable on some road; Chapter 5 carries one letter (the packet), after the yes. The six
+        // later letters of the first build are folded into it and retired by gating on the packet (never deleted).
+        var courier = letters.Single(s => s.Id == "herrax.letters.the_courier");
+        var retired = letters.Where(s => s != courier).ToArray();
         check(beats.Length >= 18 && letters.Length == 7 && letters.All(s => Rules.IsRemote(s) && s.Chapters.SequenceEqual(new[] { 5 }))
-              && letters.Where(s => s.Id == "herrax.letters.the_courier").All(s => s.Requires.Contains(Committed)),
-            "Herrax's courtship is not the Chapter 4 beats and the seven Chapter 5 letters after the yes.");
+              && courier.Requires.Contains(Committed) && retired.All(s => s.Forbids.Contains("herrax.letters.bundle"))
+              && courier.Nodes[0].Choices.All(c => c.Set.Contains("herrax.letters.bundle")),
+            "Herrax's courtship is not the Chapter 4 beats and the one Chapter 5 packet after the yes (the folded letters retired).");
         // A greedy playthrough per road: every available scene is played through its first completing outcome that keeps her open.
         var reachedIds = new HashSet<string>();
         void Play(Snapshot start, int chapter, int rounds, params string[] avoid)
@@ -255,9 +259,89 @@ internal static class HerraxTricksterTests
         Play(World(story, 4, Base.Concat(new[] { Primed, Bait, Lesson, Declined }).ToArray()), 4, 3, Restored);
         Play(World(story, 4, Base.Concat(new[] { Primed, Bait, Lesson, Declined, Restored }).ToArray()), 4, 3);
         Play(World(story, 5, "trickster", "trickster.ever", "herrax.met", Primed, Bait, Lesson, P + "knife_taken", Committed, P + "cost.clawed_cheek"), 5, 12);
-        foreach (var scene in beats.Concat(letters))
+        foreach (var scene in beats.Concat(new[] { courier }))
             check(reachedIds.Contains(scene.Id), "Herrax: the beat " + scene.Id + " is never reachable.");
+        foreach (var scene in retired)
+            check(!reachedIds.Contains(scene.Id), "Herrax: the folded letter " + scene.Id + " is still delivered after the packet.");
+
+        // Sol INT/HOW: the coin demonstration is about a coin the Commander still holds; it closes once the coin is sold
+        // (RemoveItem clears the inventory observation), handed back before the house, or lost elsewhere.
+        var coinBeat = S("herrax.house.the_coin");
+        var coinWorld = World(story, 4, Base.Concat(new[] { "herrax.house.first_price" }).ToArray());
+        check(Avail(coinBeat, coinWorld), "Trk_Herrax_Coin: the coin demonstration does not open while the coin is held.");
+        var soldWorld = Take(sell, Program.Copy(primed), "bait_end", 0, Bait);
+        soldWorld.Flags.Add("herrax.house.first_price");
+        check(!soldWorld.Has("herrax.coin_held") && !Avail(coinBeat, Later(story, soldWorld, 48)),
+            "Trk_Herrax_Coin: the coin demonstration survives the sale of the coin.");
+        var handedBack = Take(night, Later(story, blown, 24), "hall_coin", 0, P + "coin_handed_back");
+        handedBack.Flags.Add("herrax.house.first_price");
+        check(!handedBack.Has("herrax.coin_held") && !Avail(coinBeat, Later(story, handedBack, 48)),
+            "Trk_Herrax_Coin: the coin demonstration survives the coin handed back before the house.");
+        check(!Avail(coinBeat, World(story, 4, Base.Where(f => f != "herrax.coin_held").Concat(new[] { "herrax.house.first_price" }).ToArray())),
+            "Trk_Herrax_Coin: the coin demonstration opens with the coin lost elsewhere.");
+
+        // Sol INT: every living history reaches its page; a Last Call bottle survival (sacrifice + commander_back, without the
+        // native punchline key) is alive, and a real death is not.
+        var reachablePage = pages.Single(s => s.Id == P + "epilogue.reachable");
+        foreach (var page in new[] { reachablePage, late })
+        {
+            var basis = page == late ? new[] { "trickster.ever", Primed, Promised, Started } : new[] { "trickster.ever", Committed };
+            check(Avail(page, World(story, 6, basis))
+                  && Avail(page, World(story, 6, basis.Concat(new[] { "sacrifice", "trickster.commander_back" }).ToArray()))
+                  && !Avail(page, World(story, 6, basis.Concat(new[] { "sacrifice" }).ToArray())),
+                "Trk_Herrax_Survival: " + page.Id + " does not follow the Commander's survival (commander_back), or plays over a death.");
+        }
+
+        // Sol TRK (R2-2): the late road is a present, priced act. Her letter is an innocent invitation (the plan is under the
+        // coin in her seal); the promise is set only after the doorstep con, and always with its cost.
+        var lateOutcomes = Program.Walk(nextMove, unmet).Where(r => r.Has(Promised)).ToList();
+        check(lateOutcomes.Count > 0 && lateOutcomes.All(r => r.Has(P + "cost.late") && r.Has(Primed) && r.Has(Started)),
+            "Trk_Herrax_LateCon: the late promise is set without the doorstep con's cost.");
+        var earnest = nextMove.Nodes.Single(n => n.Id == "earnest").Choices[0];
+        var doubted = nextMove.Nodes.Single(n => n.Id == "earnest_doubted").Choices[0];
+        check(earnest.Check?.Skill == "CheckBluff" && earnest.Check?.Success == "earnest_taken" && earnest.Check?.Failure == "earnest_doubted"
+              && doubted.Crusade?.Resource == "Finances" && doubted.Crusade?.Amount == -500
+              && nextMove.Nodes.Where(n => n.Id == "door" || n.Id == "why").All(n => n.Choices.All(c => !c.Set.Contains(Promised))),
+            "Trk_Herrax_LateCon: the doorstep con is not a Bluff with a paid fallback, or the promise is still a bare answer.");
+
+        // Sol COX (05 §4.2): one Herrax letter in Chapter 5 on the worst branch, discovery included, through actual delivery.
+        int Ch5Letters(Snapshot start)
+        {
+            var state = start; int delivered = 0;
+            for (int rest = 0; rest < 30; rest++)
+            {
+                state = Later(story, state, 24, 5);
+                var arrived = Rules.MailbagArrivals(story, state).Where(s => s.Relationship == "herrax").ToList();
+                foreach (var letter in arrived)
+                {
+                    var outcome = Program.Walk(letter, state).Where(r => r.Has(letter.Id) && !r.Has(Closed)).OrderByDescending(r => r.Flags.Count).FirstOrDefault();
+                    if (outcome == null) continue;
+                    delivered++; state = outcome;
+                }
+            }
+            return delivered;
+        }
+        var chivWorlds = new[] { "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.reunited" };
+        foreach (var (name, flags) in new (string, string[])[] {
+            ("committed", new[] { "trickster", "trickster.ever", "herrax.madam", "herrax.met", Started, Primed, Bait, Lesson, P + "knife_taken", Committed }),
+            ("owed", new[] { "trickster", "trickster.ever", "herrax.met", Started, Primed }),
+            ("late", new[] { "trickster", "trickster.ever", "herrax.met" }) })
+        {
+            var count = Ch5Letters(World(story, 5, flags.Concat(chivWorlds).ToArray()));
+            check(count == 1, "Trk_Herrax_OneCh5Letter_" + name + ": " + count + " Herrax letters delivered in Chapter 5 (cap 1, discovery included).");
+        }
+        var packetWalk = Program.Walk(courier, World(story, 5, "trickster.ever", Committed, Primed, Bait, Lesson, P + "knife_taken", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.reunited"));
+        check(packetWalk.Any(r => r.Has(P + "contract.kept_out")) && packetWalk.Any(r => r.Has(P + "contract.stood_by_her")),
+            "Trk_Herrax_Discovery_Folded: the packet does not carry the one discovery.");
+
+        // Sol COX (ledger 05 row 2): after the Council the Lady is in hiding; the packet's court letter says so.
+        var hidingSeen = new HashSet<string>();
+        Program.Walk(courier, World(story, 5, "trickster.ever", Committed, Lesson, P + "knife_taken", "noct.defeated_not_dead"), (id, _) => hidingSeen.Add(id));
+        var courtSeen = new HashSet<string>();
+        Program.Walk(courier, World(story, 5, "trickster.ever", Committed, Lesson, P + "knife_taken"), (id, _) => courtSeen.Add(id));
+        check(hidingSeen.Contains("b_lady_hiding") && !hidingSeen.Contains("b_lady") && courtSeen.Contains("b_lady") && !courtSeen.Contains("b_lady_hiding"),
+            "Trk_Herrax_LadyHiding: the Lady's people act for her while she is in hiding (ledger 05 row 2).");
         Console.WriteLine("PASS: Herrax Trickster (Trk_Herrax_*): her night set, the sale and the blown sale, the knife, her proposal, the stayed hand and the hilt, "
-                          + "the courier in both fallbacks, the one discovery, the pages, the reactors, " + beats.Length + " courtship beats and " + letters.Length + " letters.");
+                          + "the courier in both fallbacks, the one discovery, the pages, the reactors, " + beats.Length + " courtship beats, the packet, the coin, survival, the late con and the Chapter 5 cap.");
     }
 }

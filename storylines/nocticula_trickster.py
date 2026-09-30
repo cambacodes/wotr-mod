@@ -139,6 +139,11 @@ threshold("nocticula.trickster.defeated.call_in", "The price of a shadow", '"You
 ], ("trickster.ever", PRIMED), (RETURNED,), T_GAME, TricksterDevice=True, TricksterState=DEAD)
 
 # The commit (R2-1), a separate beat after the return: her test, her yes or her no, and the heat to the cut.
+WHY = (c("Continue", "why_late", requires=(LATE,)),
+       c("Continue", "why_floor", requires=(PRIMED_SHADOW,), forbids=(LATE,)),
+       c("Continue", "why_dress", requires=("noct.fooled",), forbids=(LATE, PRIMED_SHADOW)),
+       c("Continue", "why_voice", requires=(MOCKED,), forbids=(LATE, PRIMED_SHADOW, "noct.fooled")),
+       c("Continue", "why_base", forbids=(LATE, PRIMED_SHADOW, "noct.fooled", MOCKED)))
 VERDICT = (c('"Then say yes."', "reason_paid", requires=(PAID,), flags=("noct.complete", SAID_YES)),
            c('"Then say yes."', "reason_refused", forbids=(PAID,), flags=("noct.complete", SAID_YES)),
            c('"Or keep your answer. You like owning things."', "refusal"))
@@ -152,10 +157,21 @@ threshold("nocticula.trickster.defeated.chair", "Beside me", '"One more question
     nt("verdict_joke", '''"I did not laugh."
 {n}The projection's mouth has not moved. Somewhere far below, something does, and the floor of Threshold goes on remembering it afterwards, the way a bell remembers being struck.{/n}''', *VERDICT),
     nt("reason_paid", '''{n}She considers you the way she considered her price: from the end backwards.{/n}
-"You agreed to a favour you cannot see the bottom of, and you did not haggle. I have had kings refuse me less, and devils read the terms twice. You killed me, clown, and then you looked at the floor instead of at the corpse. Nobody looks at the floor. I have been wondering since what else you notice."''',
-        c("Continue", "yes")),
+"You agreed to a favour you cannot see the bottom of, and you did not haggle. I have had kings refuse me less, and devils read the terms twice."''',
+        *WHY),
     nt("reason_refused", '''{n}She considers you the way she considered her price: from the end backwards.{/n}
-"You refused my price to my face, and you are still standing in my light. Nobody has done that since my brother, and he had to be my brother to survive it. You killed me, clown, and then you looked at the floor instead of at the corpse. Nobody looks at the floor. I have been wondering since what else you notice."''',
+"You refused my price to my face, and you are still standing in my light. Nobody has done that since my brother, and he had to be my brother to survive it."''',
+        *WHY),
+    # What she actually saw of this Commander, by the road taken (Sol BEL: never a clue the player did not witness).
+    nt("why_late", '''"You missed me at the door, clown. You walked past my projection and talked about the scenery. And then, the night before the Wound, you found me anyway: one shadow among a camp full of them, on your own tent wall, and you put your boot on the right one." {n}Her mouth curves.{/n} "I have been wondering since what else you notice when you are not trying."''',
+        c("Continue", "yes")),
+    nt("why_floor", '''"You killed me, clown, and then you looked at the floor instead of at the corpse. Nobody looks at the floor. I have been wondering since what else you notice."''',
+        c("Continue", "yes")),
+    nt("why_dress", '''"You made me walk into a war council in what your pranks had left me, with my brother's clowns braying, and you killed me before the braying stopped. Nobody has humiliated me that thoroughly in an age. Nobody has ever done it and then stood in front of what was left, asking to be let closer." {n}She savours it.{/n} "I want to see what else you will dare."''',
+        c("Continue", "yes")),
+    nt("why_voice", '''"You walked into my palace in my brother's voice and walked out with my secret, and then you killed me with his friends watching and never once spent it. A clown who can hold a secret that expensive through a murder." {n}Her eyes narrow, pleased.{/n} "I have been wondering since what else you are holding."''',
+        c("Continue", "yes")),
+    nt("why_base", '''"You killed me in front of my brother's clowns, and you did not gloat; you went back to your war as if a demon lord were one more chore. Then you came to Threshold and, of everything a mortal could say to a queen's ghost, you told me you had killed my shadow." {n}The projection tilts its head.{/n} "The only true thing anyone has said to me since the Council, and you said it as a joke. I have been wondering since what else you know."''',
         c("Continue", "yes")),
     nt("yes", '''"Yes." {n}No hesitation at all; she has decided long before you asked, and was only waiting to see whether you would.{/n} "Beside me. Not at my feet. Where I can see your hands."
 "And since we are being honest, clown, there is one thing a projection does better than a body. It cannot be touched." {n}Her eyes glitter.{/n} "It can touch."''',
@@ -274,6 +290,8 @@ page("nocticula.trickster.epilogue.declined", "Eleven years",
 
 # --- Reactions (05 section 3.1: exactly Daeran and Nenio) -----------------------------------------------------------
 
+NENIO_BACK = "nenio.trickster.returned"   # Nenio's own Trickster return (nenio_trickster): G6(b) overrides only
+
 REACTIONS = [
     reaction("Daeran", "nocticula.trickster.reaction.daeran", (IMPERSONATED,),
              '''{n}Daeran is laughing before you have finished the story. He has to set his glass down.{/n}
@@ -287,6 +305,8 @@ REACTIONS = [
 {n}She looks up, pen poised.{/n} "May I measure your shadow too? For a control. Stand still. Stand still! It moved."''',
              answer_list=NENIO_HUB,
              forbids=("nenio.dead", "nenio.killed_by_commander", "nenio.sent_away", "nenio.kicked_out", "nenio.dissolved"),
+             ForbidOverrides={"nenio.dead": NENIO_BACK, "nenio.killed_by_commander": NENIO_BACK,
+                              "nenio.sent_away": NENIO_BACK, "nenio.kicked_out": NENIO_BACK},
              chapter=6, last=6, entry='"About Nocticula\'s shadow..."'),
 ]
 SCENES.extend(REACTIONS)
@@ -321,6 +341,8 @@ def integrate(payload):
     """Save-safe edits to the registered routes: no id, node or choice is renamed, removed or reordered. New choices are
     appended; the ones they replace are gated off."""
     rel = payload["Relationships"]["nocticula"]
+    rel["RotationKey"] = "nocticula"
+    payload["Relationships"]["nocticula.acquisition"]["RotationKey"] = "nocticula"
     rel.setdefault("UnavailableOverrides", {}).update(RELATIONSHIP_PATCH["UnavailableOverrides"])
     rel["TricksterAccess"] = {k: dict(v) for k, v in RELATIONSHIP_PATCH["TricksterAccess"].items()}
     rel["Guidance"] += (" On the Trickster path, a Nocticula defeated at the Council may not be as gone as the Abyss "
@@ -462,6 +484,12 @@ AUDIENCE_LIST = "2729c49e2bf20c64caa4f54b352e03f6"   # Nocticula/AnswersList_000
 REPORTED = "84df3b227f54e3e44888b5bb8585089d"        # Nocticula/Cue_0021 "...You've saved me the trouble..."
 SECRET_SHAMIRA = "nocticula.trickster.secret_known.shamira"
 GREETED = "nocticula.trickster.court.shamira_greeted"
+# The evidence that she is in the Commander's head at this audience (straight after the kill, before the closet): the door
+# held open at Socothbenoth's briefing (shamira.trickster.primed). Without it she is not in yet: an unprimed Commander only
+# finds her drowning at the first rest, after the boudoir is shut, so this audience never sees her. Replaces the round-2
+# flask reveal (the flask device was dropped by the coordinator's revision of Shamira's route; 11 §2, 2026-09-29).
+SHAMIRA_IN = "shamira.trickster.primed"
+SHAMIRA_OUT = ("shamira.trickster.declined", "shamira.trickster.cast_out", "shamira.trickster.embodied")
 
 SCENES.append(scene("nocticula.trickster.court.shamira", "Something behind your eyes", "Nocticula", 5,
     "[Keep your thoughts on the carpet.] \"I've done what I came to do, Lady.\"", [
@@ -482,5 +510,5 @@ SCENES.append(scene("nocticula.trickster.court.shamira", "Something behind your 
     nt("hello", '''{n}She bends close again, right to your face, and speaks past you, to whoever is behind your eyes, the way one speaks to a dog in a kennel.{/n} "Hello, my dear."
 {n}That is all. She straightens, and her face is perfectly calm.{/n} "Keep her quiet in my city, clown. If I find her walking around my palace in a borrowed body wanting my chair, I will know whose idea it was." {n}A pause, while she decides something.{/n} "And if I do not find her, I will know that too."''',
         c("[Say nothing more.]", native_next=REPORTED, flags=(SECRET_SHAMIRA,))),
-], requires=("trickster", "shamira.killed"), forbids=(SECRET_SHAMIRA,), last=5, optional=True,
+], requires=("trickster", "shamira.killed", SHAMIRA_IN), forbids=(SECRET_SHAMIRA,) + SHAMIRA_OUT, last=5, optional=True,
    Relationship="nocticula", Chapters=[5], AnswerLists=[AUDIENCE_LIST], NativeReturnCue=AUDIENCE_YOU))

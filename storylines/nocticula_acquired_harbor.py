@@ -136,7 +136,7 @@ You touch that correction. Nocticula watches the movement.{/n}
         elif gift == "absent":
             replace(pages["start"],
                 '"You could make the invitation rather difficult to refuse. Your gift has not gone away."\n"No," she says. "It has not."',
-                '"There is no gift between us tonight. There is still a room which exists because you want me in it."\n"And a door you have already asked me to open. Do not confuse my having opened it with my wishing you gone."')
+                '"There is no gift between us tonight. There is still a room which exists because you want me in it."\n"And a door you asked me to open. I opened it because I wanted you through it. Try not to make me regret the hinges."')
         if history != "prior":
             replace(pages["start"],
                 '"You should remember it. Particularly if you begin imagining that a pleasant evening has altered our older bargain."',

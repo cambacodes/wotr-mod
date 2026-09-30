@@ -15,6 +15,8 @@ demand, a Ledger secret), or none, and then she stays locked in the back of the 
 The cost the waking sets is the Commander's: the body lives on the Commander's dreams, and she must walk into them every
 night, so the Commander never dreams alone again.
 """
+import copy
+
 from story_format import c
 from storylines import household
 from storylines.shamira_trickster import (BARRACKS, CAST_OUT, CLOSED, CRYSTALS, DREAM2, EMBODIED, FOUND, FUEL,
@@ -101,7 +103,9 @@ page(P + "mind.first_night", "The first night", [
 ], requires=("trickster.ever", RETURNED, FOUND), forbids=(NIGHT1, EMBODIED) + LIVE, delay=12)
 
 
-# --- The Council, heard through glass (the primed road: she was on the belt at Council 5-2) -------------------------------
+# --- The Council, heard through the Commander's eyes (the primed road: she sat through Council 5-2 behind them) ----------
+# Folded into the first night (below, FOLDS): delivery order put the first night first and its NIGHT1 then suppressed this
+# page (Sol INT). The page stays registered (save reference) with the first night's delay, so the first night always wins.
 
 COUNCIL_HEARD = P + "council_heard"
 
@@ -111,14 +115,14 @@ page(P + "mind.council", "Through your eyes", [
         c("Continue", "heard")),
     sh("heard", WHISPER + '''"So that is his Council." {n}Contempt, and under the contempt, something like awe she would never admit.{/n} "I always wondered where he went when he vanished into wardrobes. I pictured something grand. It is a room full of has-beens voting on a joke." {n}A pause.{/n} "Your diamond is full of them now. I could feel them in it, the whole time, next to my fire. Axis and Elysium and Hell and my lady's Abyss, all in one stone, and my Nirvana in the middle, like the stone in a peach."''',
         c("Continue", "shyka")),
-    sh("shyka", '''"And that thing. The one that is many people." {n}Her voice drops, as if Shyka might hear her across the planes.{/n} "It looked at me. Through your eyes, from the outside in. Nobody has looked at me like that since my masters in Heaven: as if it had already read the end of me and thought it was rather sweet." {n}The warmth in the crystal shrinks.{/n} "I did not like it. I do not want to talk about it."''',
+    sh("shyka", '''"And that thing. The one that is many people." {n}Her voice drops, as if Shyka might hear her across the planes.{/n} "It looked at me. Through your eyes, from the outside in. Nobody has looked at me like that since my masters in Heaven: as if it had already read the end of me and thought it was rather sweet." {n}The warmth behind your eyes shrinks, like a hand pulled back from a stove.{/n} "I did not like it. I do not want to talk about it."''',
         c('"It seemed to like you."', "liked"),
         c("[Leave it.]", "socoth")),
     sh("liked", '''"It seemed to like everything. That is what frightens me about it." {n}Curtly.{/n} "Stop thinking about it. I can see it in your head, all its faces at once, and it is looking at me again."''',
         c("Continue", "socoth")),
-    sh("socoth", '''"And him. He was so pleased with himself. My fire in his cauldron, and me on your belt, and he kept winking at your forehead across the table as if we were all three in on something." {n}Venom, very pure.{/n} "He has no idea what he has done. He thinks he played a joke on his sister. He played a joke on me. I do not laugh at jokes, Golarian. I remember them."''',
+    sh("socoth", '''"And him. He was so pleased with himself. My fire in his cauldron, and me behind your eyes, and he kept winking at your forehead across the table as if we were all three in on something." {n}Venom, very pure.{/n} "He has no idea what he has done. He thinks he played a joke on his sister. He played a joke on me. I do not laugh at jokes, Golarian. I remember them."''',
         c("[Put out the lamp.]", flags=(COUNCIL_HEARD,))),
-], requires=("trickster.ever", RETURNED, FOUND, PRIMED, HANDED), forbids=(COUNCIL_HEARD, NIGHT1) + LIVE, delay=4)
+], requires=("trickster.ever", RETURNED, FOUND, PRIMED, HANDED), forbids=(COUNCIL_HEARD, NIGHT1) + LIVE, delay=12)
 
 
 # --- Her lady's words (what Nocticula said, before or after) -------------------------------------------------------------
@@ -161,7 +165,7 @@ page(P + "mind.her_lady", "What her lady said", [
         c("[Put out the lamp.]")),
     sh("yes", '''{n}She laughs, a real laugh, short and startled.{/n} "Yes. You did. I felt it, at the end, under the carpets: a little bright thing, like a boy stealing a pie." {n}Something warmer than it should be.{/n} "Good. I would have hated to be killed by somebody who did not enjoy it. It would have been such a waste of me."''',
         c("[Put out the lamp.]")),
-    sh("carpets", '''"Carpets." {n}A long silence.{/n} "You know, in all my long life, I have been hated, feared, worshipped, desired and once, briefly, pitied. I have never before been beneath someone's notice while they killed me." {n}The crystal warms under your hand.{/n} "I will have your notice, Golarian. All of it. I'm going to take it off you piece by piece."''',
+    sh("carpets", '''"Carpets." {n}A long silence.{/n} "You know, in all my long life, I have been hated, feared, worshipped, desired and once, briefly, pitied. I have never before been beneath someone's notice while they killed me." {n}The heat behind your eyes climbs until your temples ache with it.{/n} "I will have your notice, Golarian. All of it. I'm going to take it off you piece by piece."''',
         c("[Put out the lamp.]")),
 ], requires=("trickster.ever", RETURNED, NIGHT1), forbids=(ASKED_LADY, EMBODIED) + LIVE, delay=36)
 
@@ -279,10 +283,10 @@ page(P + "mind.dream", "Where you sleep", [
     nar("show", '''{n}She lifts her hands, and Kenabres comes apart.{/n}
 {n}Not burning: opening. The square unfolds like the petals of an enormous flower, and underneath it there is sky, a sky so blue and so high that it hurts, and falling down it, slow as snow, are sparks. Thousands of them. Every one of them a dream: a song, a city, a face, a kiss. You watch them drop away beneath you towards a world you cannot see.{/n}''',
         c("Continue", "heaven")),
-    sh("heaven", '''"That was my work." {n}She is standing beside you on nothing, and she has wings in the dream, great wings of fire, and she does not seem to know it.{/n} "Every night, for longer than I can count. A dream for a baker's girl who would never be anything. A dream for a king who needed to be frightened. Some of them I made too hot. Some of them lit fires that burned cities down." {n}She shrugs, and the fire on her shoulders shrugs with her.{/n} "It was beautiful. I would do it again."''',
+    sh("heaven", '''"That was my work." {n}She is standing beside you on nothing, and she has wings in the dream, great wings of fire, and she does not seem to know it.{/n} "Every night, for longer than I can count. A dream for a baker's girl who would never be anything. A dream for a king who needed to be frightened. Some of them I made too hot, and the people who dreamed them did terrible things to make them real." {n}She shrugs, and the fire on her shoulders shrugs with her.{/n} "It was beautiful. I would do it again."''',
         c('"You would?"', "again"),
         c('"You\'ve got your wings back."', "wings")),
-    sh("again", '''"Every one." {n}She looks at you, and in the blue light her face is younger and very much worse.{/n} "My masters wanted me to dream small. Safe dreams, with reins on. I wanted to see how high they would fly. When one of them flew high enough to burn a world, I watched it all the way to the top, and I have never been sorry." {n}Then, softer:{/n} "And afterwards there was nowhere to go home to, and she came out across the black water for me."''',
+    sh("again", '''"Every one." {n}She looks at you, and in the blue light her face is younger and very much worse.{/n} "My masters wanted me to dream small. Safe dreams, with reins on. I wanted to see how high they would fly. When one of them caught like a wildfire, and making it real took atrocities, I could have stopped it with a word. I watched it all the way to the top instead, and I have never been sorry." {n}Then, softer:{/n} "And afterwards there was nowhere to go home to, and she came out across the black water for me."''',
         c("Continue", "noct")),
     sh("wings", '''{n}She looks at her shoulders, and for a heartbeat her whole face is naked with longing. Then the wings are gone, and there is only a woman in a red dress, standing on nothing.{/n}
 "In your head. Only in your head." {n}Her voice has gone flat.{/n} "It's a memory, Golarian, and it is mine, and you are not to touch it." {n}A pause.{/n} "She came out across the black water for me, after. My lady. And she put the fire out, very gently, and I let her."''',
@@ -307,7 +311,7 @@ page(P + "mind.dream", "Where you sleep", [
     nar("kept", '''{n}You take hold of the dream the way you would take a horse by the bridle, and pull. The spire shrinks back to a cathedral. The dragon falls, slowly, the way she always falls. The dead lie down. Kenabres, as it was: grey and burning and yours.{/n}
 {n}Beside you, she lets go all at once, and the fire goes out of her like water out of a cracked jug.{/n}''',
         c("Continue", "morning_kept")),
-    sh("morning_kept", WHISPER + '''"Reins." {n}She says it without heat. That is worse than heat.{/n} "You would rather dream the same bad thing every night than one beautiful thing once. Every mortal I ever gave a dream to was like you, in the end. They all took the reins back." {n}The crystal cools a little.{/n} "Keep them, then. It's your head. For now."''',
+    sh("morning_kept", WHISPER + '''"Reins." {n}She says it without heat. That is worse than heat.{/n} "You would rather dream the same bad thing every night than one beautiful thing once. Every mortal I ever gave a dream to was like you, in the end. They all took the reins back." {n}The heat behind your eyes cools a little.{/n} "Keep them, then. It's your head. For now."''',
         c("[Get up.]")),
 ], requires=("trickster.ever", RETURNED, NIGHT1), forbids=(DREAM2, EMBODIED) + LIVE, delay=24)
 
@@ -440,7 +444,7 @@ page(P + "mind.waking", "Dreams for a body", [
         c("Continue", "risen_small", forbids=(BARRACKS, TORN))),
     nar("risen_barracks", '''{n}There is light around her. Not the old light, not the throne-light that withered the courtiers where they knelt, but a glow, low and hot, like embers under ash. It makes the coats on either side of her steam faintly. It makes your eyes ache to look at her, and you look anyway.{/n}''',
         c("Continue", "first_words")),
-    nar("risen_torn", '''{n}Where the coat falls open at the throat, you can see the seam: a thin white line across the collarbone where the last root tore her on the way out of the earth. Everything else about her she has made perfect. That, she has left.{/n}''',
+    nar("risen_torn", '''{n}Where the coat falls open at the throat, you can see the seam: a thin white line across the collarbone where the last root tore her on the way out of the earth. Everything else about her she has made perfect. That, she could not.{/n}''',
         c("Continue", "first_words")),
     nar("risen_small", '''{n}There is no light around her. There is only a woman in a coat, a tall red-haired woman with long hands, standing in a wardrobe door in the grey of the morning. She looks, as she never has since you met her, like something that could be killed. She looks as if she knows it.{/n}''',
         c("Continue", "first_words")),
@@ -503,7 +507,8 @@ page(P + "mind.barracks_after", "The north barracks", [
     nar("start", '''{n}The surgeon of the north barracks asks for you by name, which surgeons do not do. He is a thin Mendevian with ink on his cuffs and he will not sit down.{/n}
 "A sergeant, Commander. Hanged himself in the tack room, three nights back. Good man. No debts, no woman, no drink to speak of." {n}He turns his cap in his hands.{/n} "And the rest of them... They eat. They drill. They do what they're told. But they've stopped talking in their sleep, Commander. All two hundred. I've been a barracks surgeon twenty years, and I've never heard a barracks go quiet like that."''',
         c("Continue", "chaplain")),
-    nar("chaplain", '''"The chaplain's been asking questions." {n}He says it low.{/n} "Whether anything came through the north gate that night. Whether anybody saw a woman. One of the lads says he dreamed of a red-haired woman walking down the rows, and then he never dreamed again." {n}He looks at you, and he does not want to know, and he is going to ask anyway.{/n} "Commander. Do you know anything about this?"''',
+    nar("chaplain", '''"And the Hellknight's been round. The grey one with the notebook. He stood in our doorway the morning after, and counted the bunks, and then he looked up the hill at your door for a good while. He didn't write anything down, Commander. I've never known him not write something down."
+"The chaplain's been asking questions too." {n}He says it low.{/n} "Whether anything came through the north gate that night. Whether anybody saw a woman. One of the lads says he dreamed of a red-haired woman walking down the rows, and then he never dreamed again." {n}He looks at you, and he does not want to know, and he is going to ask anyway.{/n} "Commander. Do you know anything about this?"''',
         c('"Men break, surgeon. There\'s a war on. Write it up as the war."', "blame", flags=(BARRACKS_BLAMED,)),
         c("[Pay him to write it up as marsh fever, and move the barracks to the south wall where nobody asks.]", "cover",
           flags=(BARRACKS_COVERED,), crusade=("Favors", -150)),
@@ -520,6 +525,77 @@ page(P + "mind.barracks_after", "The north barracks", [
         c("[Let him go.]")),
 ], requires=("trickster.ever", BARRACKS, EMBODIED), forbids=(BARRACKS_BLAMED, BARRACKS_COVERED, BARRACKS_TOLD), delay=72, kind="event",
     chapters=(5,))
+
+
+# --- Folds (05 §4.2, tier B: Chapter 5 pages are few). Save-safe: the pages folded in stay registered, with their ids, and
+# are never delivered on a new road, because the page they fold into sets the flag they forbid (COUNCIL_HEARD/NIGHT1,
+# ASKED_LADY, ALMOST). Their nodes are copied under a prefix, so the prose lives in one place. ------------------------------
+
+def _scene(id):
+    return next(s for s in SCENES if s["Id"] == id)
+
+
+def _node(sc, id):
+    return next(x for x in sc["Nodes"] if x["Id"] == id)
+
+
+def fold(source, prefix, skip=(), exit=None, texts=None, exit_text=None):
+    """Copies a page's nodes under a prefix; every terminal (non-abort) choice continues to `exit` instead."""
+    src = [x for x in source["Nodes"] if x["Id"] not in skip]
+    ids = {x["Id"] for x in source["Nodes"]}
+    out = []
+    for node in src:
+        copy_ = copy.deepcopy(node)
+        copy_["Id"] = prefix + node["Id"]
+        if texts and node["Id"] in texts:
+            copy_["Text"] = texts[node["Id"]].strip()
+        for choice in copy_["Choices"]:
+            if choice.get("Next") in ids:
+                choice["Next"] = prefix + choice["Next"]
+            elif choice.get("Next") is None and not choice.get("Abort") and "Check" not in choice and exit is not None:
+                choice["Next"] = exit
+                if exit_text is not None:
+                    choice["Text"] = exit_text
+            if "Check" in choice:
+                for k in ("Success", "Failure"):
+                    if choice["Check"].get(k) in ids:
+                        choice["Check"][k] = prefix + choice["Check"][k]
+        out.append(copy_)
+    return out
+
+
+_night = _scene(P + "mind.first_night")
+# The Council (primed road, the cauldron handed over): heard on the first night, before she looks round the tent.
+_start = _node(_night, "start")
+_start["Choices"][0]["Forbids"] = [*_start["Choices"][0]["Forbids"], PRIMED]
+_start["Choices"] += [c("Continue", "c_heard", requires=(PRIMED, HANDED), forbids=(COUNCIL_HEARD,)),
+                      c("Continue", "look", requires=(PRIMED,), forbids=(HANDED,)),
+                      c("Continue", "look", requires=(PRIMED, HANDED, COUNCIL_HEARD))]
+_night["Nodes"] += fold(_scene(P + "mind.council"), "c_", skip=("start",), exit="look", exit_text="Continue")
+# What her lady said, and whether the Commander enjoyed the killing: the same night, before she comes into the dream.
+_night["Nodes"] += fold(_scene(P + "mind.her_lady"), "l_", skip=("start",), exit="sleep_now", exit_text="Continue", texts={
+    "ask": '''"One more thing, before you sleep." {n}The heat behind your eyes goes still, the way a cat goes still.{/n} "Tell me what she said. My lady. Before you killed me, or after. You went into her audience chamber at some point that night; I can see the room in you."
+{n}A pause.{/n} "Don't pretty it. I would know. I'd rather have the ugly thing than watch you polish it."'''})
+for _want in ("steward", "you", "nothing"):
+    _node(_night, _want)["Choices"][1]["Next"] = "l_ask"
+_node(_night, "noct")["Choices"][0]["Next"] = "l_throne"
+
+# The third night ("Almost") follows the second ("Where you sleep") on the same page.
+_dream = _scene(P + "mind.dream")
+for _m in ("morning_burned", "morning_kept"):
+    _node(_dream, _m)["Choices"][0]["Next"] = "a_start"
+_dream["Nodes"] += fold(_scene(P + "mind.almost"), "a_", texts={
+    "start": '''{n}The next night you do not dream of Kenabres. You dream of nowhere: a warm dark, like the inside of a closed hand, and the sound of water somewhere, running over stone.{/n}
+{n}She is there before you are. She is sitting on the edge of a pool you cannot quite see, with her feet in the water and her red hair down, and she is not wearing anything at all, because in a dream there is no reason to.{/n}'''})
+
+# The waking follows the fuel on the same page (the next night); her first night of company follows the waking
+# (shamira_dream folds it in, since it lives there).
+_fuel = _scene(P + "mind.fuel")
+_node(_fuel, "only_mine")["Choices"][0]["Next"] = "w_start"
+_node(_fuel, "north")["Choices"][0]["Next"] = "w_start"
+_fuel["Nodes"] += fold(_scene(P + "mind.waking"), "w_", texts={
+    "start": '''{n}The next night you take the body down off its hook and lay it on the floor of the wardrobe, among your boots, with its head on a folded cloak. It is lighter than it was in the earth. It is very cold. Its face is smooth and blank, a sketch of a face, waiting.{/n}
+{n}You lie down beside it, and put your hand on its cold chest, and close your eyes.{/n}'''})
 
 
 def integrate(payload):
