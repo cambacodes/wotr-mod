@@ -142,6 +142,9 @@ internal static class HorzalahTricksterTests
               && story.SeenCues["horzalah.met_q3_b"].SequenceEqual(new[] { "bc0174e40cf066444a69785514bc6901" })
               && story.SeenCues["horzalah.scar_seen"].SequenceEqual(new[] { ScarCue })
               && story.SeenCues["baphomet.named_horzalah"].SequenceEqual(new[] { "039978569cf79814899362d3f1b5b45b" })
+              && story.SeenCues["baphomet.spawn_told"].SequenceEqual(new[] { "0cdc1a24d29c77f4490900d3a9418afc" })
+              && story.SeenCues["horzalah.seals_seen"].SequenceEqual(new[] { "fc1030e8724b086479d7ec2a52aae2a5" })
+              && story.SeenCues["horzalah.rescue_refused_told"].SequenceEqual(new[] { "fc5119d8d4a54e047b07338764beb346" })
               && story.CompletedQuests["greybor.q2_done"] == "6377e00508d4c9243a7b89d743d7914c"
               && story.CompletedQuests["iz.done"] == "95ff7d975689fcf44b085d10907e711d"
               && story.Etudes["greybor.dead"] == "10320ad437121a44eb629d5fa9a79c75"
@@ -373,6 +376,16 @@ internal static class HorzalahTricksterTests
                 }
             }
         }
+        // What the Commander claims to have seen or heard rests on the cue that shows it: the seals (HorzalahFirst/Cue_0001),
+        // her father's boast of spawning thousands (Cue_0121, not Cue_0122), her own account of the unanswered rescue (Cue_0051).
+        var fatherBeat = beats.Single(s => s.Id == P + "beat.father");
+        var seals = fatherBeat.Nodes.Single(n => n.Id == "start").Choices;
+        var spawn = beats.Single(s => s.Id == P + "beat.thousands").Nodes.Single(n => n.Id == "start").Choices.Single(c => c.Next == "hundreds");
+        check(seals.Where(c => c.Next == "count" || c.Next == "count_plain").All(c => c.Requires.Contains("horzalah.seals_seen"))
+              && seals.Single(c => c.Next == "never").Forbids.Contains("horzalah.seals_seen")
+              && spawn.Requires.SequenceEqual(new[] { "baphomet.spawn_told" })
+              && mercy.Nodes.Single(n => n.Id == "guess").Choices.Where(c => c.Next == "called").Any(c => c.Requires.Contains("horzalah.rescue_refused_told")),
+            "A recollection is offered without the cue that shows it.");
         // Her cell in the Ivory Labyrinth is talked of only with a Commander who has been in her father's prison.
         var labyrinth = beats.Single(s => s.Id == P + "beat.labyrinth");
         check(labyrinth.Requires.Contains("baphomet.parley.latched")

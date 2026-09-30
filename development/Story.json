@@ -363701,7 +363701,7 @@
         {
           "Id": "morning2",
           "Speaker": "Horzalah",
-          "Text": "{n}Nobody speaks. Somebody drops a cup. At the top of the stair, a grey-bearded master you have never seen before puts down his quill and stands up, and then all of them are standing.{/n}\n\"Let them look,\" {n}she says, at the door, quietly enough that only you hear it.{/n} \"They know whose ear is in that box. Now they know whose the rest of you is. It will do them good.\" {n}She opens the door on the red light of the Middle City.{/n} \"Go back to your war, Knight Commander. I will come for you when I choose.\"",
+          "Text": "{n}Nobody speaks. Somebody drops a cup. At the top of the stair she snaps her fingers once, not loudly, and the grey-bearded master nearest the stair looks at her, and at you, and puts down his quill and stands. Then all of them are standing, because the alternative is to be the one who did not.{/n}\n\"Let them look,\" {n}she says, at the door, quietly enough that only you hear it.{/n} \"They know whose ear is in that box. Now they know whose the rest of you is. It will do them good.\" {n}She opens the door on the red light of the Middle City.{/n} \"Go back to your war, Knight Commander. I will come for you when I choose.\"",
           "Choices": [
             {
               "Text": "\"I'll be waiting.\"",
@@ -364535,7 +364535,7 @@
         {
           "Id": "start",
           "Speaker": "Greybor",
-          "Text": "{n}Greybor does not look up from the whetstone.{/n}\n\"Word came up the Wound roads from Alushinyrra, Commander. They say the masters of the Assassins' Guild stood up from their tables when you came down the main stair of her hall, and that nobody in that Guild has stood up for anyone in a hundred years.\" {n}The stone scrapes.{/n}\n\"I have been inside that hall. I know those tables. They do not stand for anyone, not for the Lady in Shadow's own messengers.\" {n}He finally looks at you.{/n} \"Whatever you did in there, do not ever do it to me. I would not survive the embarrassment.\"",
+          "Text": "{n}Greybor does not look up from the whetstone.{/n}\n\"Word came up the Wound roads from Alushinyrra, Commander. They say the masters of the Assassins' Guild stood up from their tables when you came down the main stair of her hall, at a snap of her fingers, and that nobody in that Guild has stood up for anyone in a hundred years, snap or no snap.\" {n}The stone scrapes.{/n}\n\"I have been inside that hall. I know those tables. They do not stand for anyone, not for the Lady in Shadow's own messengers.\" {n}He finally looks at you.{/n} \"Whatever you did in there, do not ever do it to me. I would not survive the embarrassment.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -364889,7 +364889,7 @@
         {
           "Id": "name2",
           "Speaker": "Horzalah",
-          "Text": "{n}Her mouth does something complicated.{/n} \"Nobody says it like that. They say it like a warning, or like an apology for getting it wrong the first time. You said it like... like the name of a thing that is simply there, and is not going anywhere.\"\n\"Do it again when the sergeant comes back. Loudly. I want him to hear how it is supposed to sound.\"",
+          "Text": "{n}Her chin comes up.{/n} \"Correct. The stress on the second part, and no sister in it, and no flinch.\" {n}She sounds almost offended that it took this long.{/n} \"Your soldiers say it the way you say a curse you are afraid will hear you. You said it the way you would say the name of your own commanding officer.\"\n\"Do it again when the sergeant comes back. Loudly. He will learn it from you, and then his boys will learn it from him, and then I will not have to teach it to any of them with a knife.\"",
           "Choices": [
             {
               "Text": "[Promise.]",
@@ -365093,9 +365093,22 @@
               "Next": "count",
               "Set": [],
               "Requires": [
+                "horzalah.seals_seen",
                 "horzalah.trickster.scar_noted"
               ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I didn't count them.\"",
+              "Next": "count_plain",
+              "Set": [],
+              "Requires": [
+                "horzalah.seals_seen"
+              ],
+              "Forbids": [
+                "horzalah.trickster.scar_noted"
+              ],
               "Abort": false
             },
             {
@@ -365104,7 +365117,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "horzalah.trickster.scar_noted"
+                "horzalah.seals_seen"
               ],
               "Abort": false
             },
@@ -365123,6 +365136,22 @@
           "Id": "count",
           "Speaker": "Horzalah",
           "Text": "\"No. You looked at the collar.\" {n}She says it the way another woman might mention a debt that has not been paid.{/n} \"The seals were for the things I did. The collar was for the thing I am. His. That is the difference, and it is the whole difference, and you saw it with one look and I have been trying to explain it to demons for a hundred years.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "seals",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "count_plain",
+          "Speaker": "Horzalah",
+          "Text": "\"No? Then you were counting the corpses, like a sensible crusader.\" {n}Her mouth twists.{/n} \"They were very fine work. My father lifted every one of them when my sister died, as if they had been lent to me. He left the collar. That was never lent.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -367424,7 +367453,7 @@
               "Next": "hundreds",
               "Set": [],
               "Requires": [
-                "baphomet.named_horzalah"
+                "baphomet.spawn_told"
               ],
               "Forbids": [],
               "Abort": false
@@ -368765,7 +368794,7 @@
         {
           "Id": "three",
           "Speaker": "Horzalah",
-          "Text": "\"No.\" {n}Pleasantly.{/n} \"You may have the four that are for guests, and the kitchens, and the chapel, which is still very funny. You may not have the three that belong to my people. I told you. What is mine in your city stays mine.\" {n}She tilts her head.{/n} \"Fill the other four. It will make my people more careful. Careful people live longer, and I have spent a great deal of money on them.\"",
+          "Text": "\"No.\" {n}Pleasantly.{/n} \"You may have the four through the walls; those are for guests. You may not have the kitchens or the chapel. Those three belong to my people, and the chapel is still very funny. I told you. What is mine in your city stays mine.\" {n}She tilts her head.{/n} \"Fill the other four. It will make my people more careful. Careful people live longer, and I have spent a great deal of money on them.\"",
           "Choices": [
             {
               "Text": "[Take the four.]",
@@ -369121,7 +369150,7 @@
         {
           "Id": "start",
           "Speaker": "Horzalah",
-          "Text": "\"They did.\" {n}She says it as if she were still turning it over.{/n} \"They have not stopped talking about it. They have never stood up for anyone. Not for Yozz. Not for me. Not for the Lady's own emissary, who was very offended and has written to complain.\"\n\"I asked the oldest of them why. He said that no one had ever walked out of my chamber by the front door before, and they had not known what else to do.\"",
+          "Text": "\"They did, because I snapped my fingers.\" {n}She says it as if she were still turning it over.{/n} \"And then they went on doing it. Two of them stood again the next evening, when I only mentioned you at table. My masters do not stand for anyone. Not for Yozz, when he held the chair. Not for the Lady's own emissary, who was very offended and has written to complain.\"\n\"I asked the oldest of them why. He said that no one had ever walked out of my chamber by the front door before, and after I snapped my fingers they had not known what else to do.\"",
           "Choices": [
             {
               "Text": "\"What did you tell him?\"",
@@ -369137,7 +369166,7 @@
         {
           "Id": "told",
           "Speaker": "Horzalah",
-          "Text": "\"That it was the correct response.\" {n}Her eyes glint.{/n} \"That they will do it every time, and that I will have it written into the Guild's rules. Nobody will ask why. We do not care why.\" {n}She tilts her head.{/n}\n\"You understand what you have done, mortal? You have become a custom. In a Guild of assassins. They will be standing up for you when you are a hundred years dead and nobody remembers your name, and none of them will know the reason.\"",
+          "Text": "\"That it was the correct response.\" {n}Her eyes glint.{/n} \"That they will do it every time, for as long as I hold the chair. Nobody will ask why. We do not care why.\" {n}She tilts her head.{/n}\n\"Do not flatter yourself, mortal. They are not standing for you. They are standing for whoever I say is mine, where I can see them do it. The day I lose the chair, they will sit down so fast the benches will crack.\"",
           "Choices": [
             {
               "Text": "\"That's the best kind of custom.\"",
@@ -372873,8 +372902,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -375389,6 +375418,12 @@
     ],
     "horzalah.rescue_refused_told": [
       "fc5119d8d4a54e047b07338764beb346"
+    ],
+    "horzalah.seals_seen": [
+      "fc1030e8724b086479d7ec2a52aae2a5"
+    ],
+    "baphomet.spawn_told": [
+      "0cdc1a24d29c77f4490900d3a9418afc"
     ],
     "vellexia.spared": [
       "58d69774dbe696e46a9232167e8d3479"

@@ -67,6 +67,8 @@ NAMED = "baphomet.named_horzalah"
 HEPZ_BACK = "hepzamirah.trickster.returned"           # node variants only (build sheet: no Requires/Forbids on hepzamirah.*)
 Q2_DONE = "greybor.q2_done"
 Q3_FAILED = "greybor.q3_failed"
+SEALS_SEEN = "horzalah.seals_seen"    # HorzalahFirst/Cue_0001: the projection's "flaming seals of Baphomet" (Ch4)
+SPAWN_TOLD = "baphomet.spawn_told"     # Prison_Baph/Cue_0121: "I could spawn hundreds, thousands more"
 RESCUE_TOLD = "horzalah.rescue_refused_told"  # YozzDying/Cue_0051 "He refused to rescue me back then..." (her own words, Ch4)
 LAPSED = "horzalah.q3_lapsed"                         # Derived: Greybor dead, kicked out, away, Q3 failed, or Chapter 6
 GREY_IN = "greybor.in_party"
@@ -131,7 +133,8 @@ DERIVED = {
 }
 # The objective itself (QuestObjectives [528bc8a8..., "Failed"]) does not resolve as a standalone blueprint at load, so the
 # failure is read from the cue that sets it: Greybor's "We've lost an important lead" after the assassin dies unquestioned.
-SEEN_CUES = {Q3_FAILED: [Q3_FAIL], RESCUE_TOLD: ["fc5119d8d4a54e047b07338764beb346"]}
+SEEN_CUES = {Q3_FAILED: [Q3_FAIL], RESCUE_TOLD: ["fc5119d8d4a54e047b07338764beb346"],
+             SEALS_SEEN: ["fc1030e8724b086479d7ec2a52aae2a5"], SPAWN_TOLD: ["0cdc1a24d29c77f4490900d3a9418afc"]}
 
 # Path fit (ROUTE-BRIEF-R 2026-09-29, v1): T = device or Trickster-only; N-all = any path; N-fit = the fitting paths.
 PATH_FIT = {}
@@ -667,7 +670,7 @@ SCENES.append(scene(H + "visit.chamber", "Everything I own, I took", "Horzalah",
     nar("morning", '''{n}There is no dawn in the Guild master's chamber; there are no windows. There is a bell, somewhere below, that rings for the change of watch, and she is already up when it does, buckling on her collar in front of a mirror of black glass.{/n}
 {n}She does not send you home the way she brought you. She walks you down the main stair, past the masters' tables, past the notice board with its contracts and its one empty patch of wall where a box was pinned, to the front door, in full view of every knife in the Guild.{/n}''',
         c("Continue", "morning2")),
-    hz("morning2", '''{n}Nobody speaks. Somebody drops a cup. At the top of the stair, a grey-bearded master you have never seen before puts down his quill and stands up, and then all of them are standing.{/n}
+    hz("morning2", '''{n}Nobody speaks. Somebody drops a cup. At the top of the stair she snaps her fingers once, not loudly, and the grey-bearded master nearest the stair looks at her, and at you, and puts down his quill and stands. Then all of them are standing, because the alternative is to be the one who did not.{/n}
 "Let them look," {n}she says, at the door, quietly enough that only you hear it.{/n} "They know whose ear is in that box. Now they know whose the rest of you is. It will do them good." {n}She opens the door on the red light of the Middle City.{/n} "Go back to your war, Knight Commander. I will come for you when I choose."''',
        c('"I\'ll be waiting."', flags=(CHAMBER, MORNING)),
        c("[Kiss her in the doorway, where they can all see.]", "doorway")),
@@ -795,7 +798,7 @@ tag(H + "react.wenduag_gift", "T")
 
 SCENES.append(reaction("Greybor", H + "react.greybor_morning", ("trickster.ever", GREY_IN, MORNING),
     '''{n}Greybor does not look up from the whetstone.{/n}
-"Word came up the Wound roads from Alushinyrra, Commander. They say the masters of the Assassins' Guild stood up from their tables when you came down the main stair of her hall, and that nobody in that Guild has stood up for anyone in a hundred years." {n}The stone scrapes.{/n}
+"Word came up the Wound roads from Alushinyrra, Commander. They say the masters of the Assassins' Guild stood up from their tables when you came down the main stair of her hall, at a snap of her fingers, and that nobody in that Guild has stood up for anyone in a hundred years, snap or no snap." {n}The stone scrapes.{/n}
 "I have been inside that hall. I know those tables. They do not stand for anyone, not for the Lady in Shadow's own messengers." {n}He finally looks at you.{/n} "Whatever you did in there, do not ever do it to me. I would not survive the embarrassment."''',
     answer_list=GREYBOR_LIST, chapter=5, last=6, entry='"About Horzalah."', portrait="Greybor", forbids=GREY_GONE))
 tag(H + "react.greybor_morning", "T")

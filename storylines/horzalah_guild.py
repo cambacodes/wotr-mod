@@ -13,7 +13,7 @@ Every scene is Trickster-only (T in PATH_FIT): it follows the device.
 from story_format import c, n, scene
 from storylines.horzalah_trickster import (ALLY, CANARY, FREED, CHAMBER, CLOSED, COMMITTED, DECLINED, DREZEN, GREY_IN, HEPZ_BACK,
                                             LATE, LEFT_FREE, MET_A, MET_B, MET_Q2, NAMED, P_KNIFE, P_RIBBON, P_WHISTLE, PRESENCE, REL,
-                                            SCAR_NOTED, TESTED, UNIT, WANTS, H, hz, nar, tag)
+                                            SCAR_NOTED, SEALS_SEEN, SPAWN_TOLD, TESTED, UNIT, WANTS, H, hz, nar, tag)
 
 SCENES = []
 
@@ -100,8 +100,8 @@ beat(H + "beat.name", "Not Hepzamirah", '"You look like you want to kill someone
     hz("name", '''{n}She turns and looks at you properly, as though she had heard something unexpected from a direction she had not been watching.{/n}
 "Say it again."''',
        c('"Horzalah."', "name2")),
-    hz("name2", '''{n}Her mouth does something complicated.{/n} "Nobody says it like that. They say it like a warning, or like an apology for getting it wrong the first time. You said it like... like the name of a thing that is simply there, and is not going anywhere."
-"Do it again when the sergeant comes back. Loudly. I want him to hear how it is supposed to sound."''',
+    hz("name2", '''{n}Her chin comes up.{/n} "Correct. The stress on the second part, and no sister in it, and no flinch." {n}She sounds almost offended that it took this long.{/n} "Your soldiers say it the way you say a curse you are afraid will hear you. You said it the way you would say the name of your own commanding officer."
+"Do it again when the sergeant comes back. Loudly. He will learn it from you, and then his boys will learn it from him, and then I will not have to teach it to any of them with a knife."''',
        c("[Promise.]", flags=(NAME,))),
 ], requires=(), forbids=(NAME, ALLY), delay=12)
 
@@ -137,10 +137,13 @@ beat(H + "beat.storyteller", "The only man who does not look", '"Is he bothering
 beat(H + "beat.father", "The weaker branch", '"Do you ever hear from your father?"', [
     hz("start", '''{n}She is quiet long enough that you think she is not going to answer. When she does, she keeps her eyes on the street.{/n}
 "You do not *hear* from my father, mortal. He hears from you. You pray, or you fail, or you offer him something, and then, if he pleases, he answers, and his answer is a seal." {n}Her hand moves toward her own arm, where there is nothing now but skin.{/n} "I had eleven. Did you count them, in Yozz's hall? Most people did."''',
-       c('"I didn\'t count them."', "count", requires=(SCAR_NOTED,)),
-       c('"I never saw them."', "never", forbids=(SCAR_NOTED,)),
+       c('"I didn\'t count them."', "count", requires=(SEALS_SEEN, SCAR_NOTED)),
+       c('"I didn\'t count them."', "count_plain", requires=(SEALS_SEEN,), forbids=(SCAR_NOTED,)),
+       c('"I never saw them."', "never", forbids=(SEALS_SEEN,)),
        c('"What were they for?"', "seals")),
     hz("count", '''"No. You looked at the collar." {n}She says it the way another woman might mention a debt that has not been paid.{/n} "The seals were for the things I did. The collar was for the thing I am. His. That is the difference, and it is the whole difference, and you saw it with one look and I have been trying to explain it to demons for a hundred years."''',
+       c("Continue", "seals")),
+    hz("count_plain", '''"No? Then you were counting the corpses, like a sensible crusader." {n}Her mouth twists.{/n} "They were very fine work. My father lifted every one of them when my sister died, as if they had been lent to me. He left the collar. That was never lent."''',
        c("Continue", "seals")),
     hz("never", '''"Lucky you. They were very fine work. Demons came from other layers to admire them." {n}Her mouth twists.{/n} "My father lifted every one of them when my sister died, as if they had been lent to me. He left the collar. That was never lent."''',
        c("Continue", "seals")),
@@ -496,7 +499,7 @@ beat(H + "beat.hunger", "Thin", '"When did you last eat?"', [
 beat(H + "beat.thousands", "One of thousands", '"How many brothers and sisters do you have?"', [
     hz("start", '''"Nobody knows. Father least of all." {n}She says it lightly.{/n} "He spawns us the way a river spawns fish. Nephilim, cambions, beasts with his horns and a mortal's eyes. Some of us are born in his temples, to priestesses who asked for the honour. Some of us are made in his pens. Most of us die before we learn to talk, because the others eat them."
 "Hepzamirah sacrificed our mother to him to get his attention. I suppose I should have thought of that first."''',
-       c('"He told me he could spawn hundreds more."', "hundreds", requires=(NAMED,)),
+       c('"He told me he could spawn hundreds more."', "hundreds", requires=(SPAWN_TOLD,)),
        c('"How do you stand out, among so many?"', "stand_out"),
        c('"Do any of the others know you?"', "others")),
     hz("hundreds", '''"Hundreds. Thousands." {n}She nods.{/n} "Yes. He would say that. It is the truest thing he has ever said about us, and he says it to strangers, to make them understand how little his children cost him."
@@ -709,7 +712,7 @@ beat(H + "beat.sentries", "Holes in the wall", '"You\'re laughing at my sentries
     hz("teach_watch", '''{n}Something like approval crosses her face.{/n} "Now that is how a master thinks." {n}She straightens.{/n} "Yes. Do that. Put your cleverest sergeant behind me and tell him to count what I leave out. He will count wrong, of course, but it will be very good for him."
 {n}She walks your walls with them for three nights. On the fourth morning your sergeant brings you a list of the holes she named, and, underneath, in his own shaking hand, one more, which she did not. When you have it filled, a note arrives, pinned to the new mortar with a knife: "Well done. I was starting to worry about you."{/n}''',
        c("[Keep the note.]", flags=(SENTRIES,))),
-    hz("three", '''"No." {n}Pleasantly.{/n} "You may have the four that are for guests, and the kitchens, and the chapel, which is still very funny. You may not have the three that belong to my people. I told you. What is mine in your city stays mine." {n}She tilts her head.{/n} "Fill the other four. It will make my people more careful. Careful people live longer, and I have spent a great deal of money on them."''',
+    hz("three", '''"No." {n}Pleasantly.{/n} "You may have the four through the walls; those are for guests. You may not have the kitchens or the chapel. Those three belong to my people, and the chapel is still very funny. I told you. What is mine in your city stays mine." {n}She tilts her head.{/n} "Fill the other four. It will make my people more careful. Careful people live longer, and I have spent a great deal of money on them."''',
        c("[Take the four.]", flags=(SENTRIES,))),
     hz("find", '''"You will not." {n}She sounds sorry for you.{/n} "But you will try, and your masons will fill a great many holes that were never there, and my people will laugh about it in their letters." {n}She shrugs.{/n} "That is also a kind of defence. A very expensive one. Crusades are made of those."''',
        c("[Send for the masons anyway.]", flags=(SENTRIES,))),
@@ -762,11 +765,11 @@ beat(H + "beat.masters", "A vacancy", '"You look pleased with yourself."', [
 
 
 beat(H + "beat.stood", "They stood", '"Your masters stood up."', [
-    hz("start", '''"They did." {n}She says it as if she were still turning it over.{/n} "They have not stopped talking about it. They have never stood up for anyone. Not for Yozz. Not for me. Not for the Lady's own emissary, who was very offended and has written to complain."
-"I asked the oldest of them why. He said that no one had ever walked out of my chamber by the front door before, and they had not known what else to do."''',
+    hz("start", '''"They did, because I snapped my fingers." {n}She says it as if she were still turning it over.{/n} "And then they went on doing it. Two of them stood again the next evening, when I only mentioned you at table. My masters do not stand for anyone. Not for Yozz, when he held the chair. Not for the Lady's own emissary, who was very offended and has written to complain."
+"I asked the oldest of them why. He said that no one had ever walked out of my chamber by the front door before, and after I snapped my fingers they had not known what else to do."''',
        c('"What did you tell him?"', "told")),
-    hz("told", '''"That it was the correct response." {n}Her eyes glint.{/n} "That they will do it every time, and that I will have it written into the Guild's rules. Nobody will ask why. We do not care why." {n}She tilts her head.{/n}
-"You understand what you have done, mortal? You have become a custom. In a Guild of assassins. They will be standing up for you when you are a hundred years dead and nobody remembers your name, and none of them will know the reason."''',
+    hz("told", '''"That it was the correct response." {n}Her eyes glint.{/n} "That they will do it every time, for as long as I hold the chair. Nobody will ask why. We do not care why." {n}She tilts her head.{/n}
+"Do not flatter yourself, mortal. They are not standing for you. They are standing for whoever I say is mine, where I can see them do it. The day I lose the chair, they will sit down so fast the benches will crack."''',
        c('"That\'s the best kind of custom."', flags=(STOOD,)),
        c('"I\'ll try to come down the stairs more slowly, then."', "slowly")),
     hz("slowly", '''"Do." {n}Her mouth curves.{/n} "Make them stand there. Make them wonder whether you are going to stop and speak to one of them. It will be the most frightening thing that happens in my hall all year, and I will be at the top of the stairs, enjoying it."''',
