@@ -85,7 +85,7 @@ PRESENCES = {
                       Requires=["trickster.ever", "minagho.spared.latched"], Forbids=["minagho.dead", CLOSED, DECL_M],
                       MinChapter=5, MaxChapter=5, AnswerLists=[], Dialog="hub",
                       Greeting="{n}Minagho is sitting on a crate outside the quartermaster's stores, turning one of the crusade's "
-                               "daggers over in her fingers. The mark on her brow is dry.{/n}"),
+                               "daggers over in her fingers, with her marked brow turned away from the street.{/n}"),
     PRES_MIN: dict(Unit=MIN_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=WILCER, Side="left", Distance=2.0),
                    Requires=["trickster.ever", "minagho.dead"], RequiresAnyGroups=[[MIN_IN, DELIVERED]], Forbids=[CLOSED],
                    MinChapter=5, MaxChapter=5, AnswerLists=[], Dialog="hub",
@@ -282,7 +282,7 @@ letter(P + "minagho_dead.collateral", "What the ledger says", [
 
 # 5.5 Spared: the brand stopped bleeding on her, and she has come to see the thief's hand.
 SPARED_OPEN = (
-    c('[Show her your palm] "Moved it. It bleeds on me now. Mornings, mostly."', "terms", requires=(PRIMED,)),
+    c('[Show her your palm] "Look at your fingers. It stopped the moment I opened my mouth in that cell. It bleeds on me now. Mornings, mostly."', "terms", requires=(PRIMED,)),
     c('[Cut your palm and say the terms over it] "\'Until she spills the blood of the one who caused her to fail.\' That\'s me. Watch."',
       "terms", requires=("trickster",), forbids=(PRIMED,), flags=(PRIMED, DEBT, LATE_CLAIM), mythic="Trickster",
       crusade=("Favors", -100)))
@@ -294,18 +294,26 @@ SPARED_TERMS = mg("terms", '''"What kind of idiot lets their enemy slip away? An
     c('"No reason. Go, and keep your face dry."', flags=(DECL_M,)))
 physical(P + "spared.brand", "It stopped bleeding", "Minagho", PRES_SPARED, MIN_UNIT, [
     *varied("start", mg, '''{n}She has taken one of the crusade's daggers off the quartermaster's rack and is sitting on a crate with it across her knees. Nobody saw her come through Drezen. That is the point.{/n}
-"It stopped. The moment you opened your mouth, it stopped, and it has not bled since. What did you do?"''',
-            [("terrified", mg, '"I ran from you in that cursed cell. I kept running. It did not bleed once."', "minagho.terrified")],
+"You let me go. Nobody lets me go. So either you are a fool, or you have a use for me, and I came to find out which before the Goat's collectors find me first." {n}She touches the mark on her brow and looks at her fingertips, and does not tell you what she sees there.{/n}''',
+            [("terrified", mg, '"I ran from you in that cursed cell. I kept running until I could not. I am tired of running from you, Golarian."', "minagho.terrified")],
             SPARED_OPEN),
     SPARED_TERMS,
 ], requires=("trickster.ever", "minagho.spared.latched"), RequiresAnyGroups=[[PRIMED, "trickster"]], forbids=("minagho.dead", DECL_M),
    TricksterDevice=True, TricksterState="minagho_alive")
 letter(P + "spared.brand_letter", "It stopped bleeding", [
-    mg("start", '''{n}The note is pinned to your pillow with one of your own daggers. There is no blood on it. That is the point of the note.{/n}
-"It stopped. What did you do? I could buy my life back with yours, Golarian. Give me one reason I shouldn't, and give it to my face."''',
-       c('"Because it\'s my name on the brand now. Come and see."', flags=(MIN_IN, STARTED, DEBT)),
-       c('"No reason. Stay away, and keep your face dry."', flags=(DECL_M,)))],
-   requires=("trickster.ever", "minagho.spared.latched", PRIMED, PRES_SPARED + ".failed"),
+    mg("start", '''{n}The note is pinned to your pillow with one of your own daggers.{/n}
+"You let me go. Nobody lets me go. I could buy my life back with yours, Golarian. Give me one reason I shouldn't, and give it to my face."''',
+       c('"Because it\'s my name on the brand now. Come and see."', flags=(MIN_IN, STARTED, DEBT), requires=(PRIMED,)),
+       c('"No reason. Stay away, and keep your face dry."', flags=(DECL_M,), requires=(PRIMED,)),
+       c('[Go down to her yourself, with a knife.]', "late", forbids=(PRIMED,), mythic="Trickster"),
+       c('"No reason. Stay away."', flags=(DECL_M,), forbids=(PRIMED,))),
+    nar("late", '''{n}The dagger's hilt is scratched with a place below the citadel, and you go there alone, at night. She is waiting with her back to a wall, the mark on her brow wet and running into her collar, and her hand on the dagger's twin.{/n}
+{n}You cut your palm in front of her and say the Goat's own terms over it, "until she spills the blood of the one who caused her to fail", and name yourself the failure of Kenabres, and hold the hand out. She stares at it. Then she wipes her brow with two fingers, and looks at them, and they come away dry.{/n}
+"...What did you *do*?"''',
+        c('"Put my name in his ledger. It bleeds on me now. Come and see."', flags=(PRIMED, DEBT, LATE_CLAIM, MIN_IN, STARTED),
+          crusade=("Favors", -100))),
+    ],
+   requires=("trickster.ever", "minagho.spared.latched", PRES_SPARED + ".failed"), RequiresAnyGroups=[[PRIMED, "trickster"]],
    forbids=("minagho.dead", DECL_M, P + "spared.brand"), delay=96, TricksterDevice=True, TricksterState="minagho_alive")
 
 # 5.6 The collectors: optional, physical only, never twice (pursuers_met). One scene per Minagho presence.
@@ -710,8 +718,8 @@ page(P + "epilogue.commit", "One invitation a year", [
         c("[Send your regrets.]", "regrets")),
     nar("went", '''{n}The Commander went. The door was barred from the inside with a chair, and opened anyway. Chivarro took the Commander's sword belt off on the threshold as if collecting a coat; Minagho took the rest, less politely, walking the Commander backwards across a room neither of them had bothered to light, and between them they bore the Commander down onto a bed that Chivarro announced had been built for exactly three.{/n}
 {n}The Commander went every year after that, and some years did not leave until spring.{/n}'''),
-    nar("went_alone", '''{n}The Commander went. Chivarro opened the door herself, in a dressing gown and nothing else, and looked the Commander over the way she had once looked over the Delights' new stock. "Late," she said. "Everything costs more when it is late." She pulled the Commander in by the collar, shut the door with her heel, and let the gown fall on the way to the bed.{/n}
-{n}The Commander went every year after that. The rent went up every time.{/n}'''),
+    nar("went_alone", '''{n}The Commander went. Chivarro opened the door herself, in a dressing gown and nothing else, and looked the Commander over the way she had once looked over the Delights' new stock. "Late," she said. "Everything costs more when it is late." She pulled the Commander in by the collar, shut the door with her heel, and let the gown fall on the way to the bed. At the bed she did not stop: she pushed the Commander down onto it with one hand flat on the chest, climbed astride, and pinned the Commander's wrists to the pillow above. "Late," she said again, against the Commander's mouth, lowering her hips. "Now you pay the interest."{/n}
+{n}In the morning there was a bill on the pillow, itemised, with the interest compounded by the hour, and her signature across the total. The Commander went every year after that. The rent went up every time.{/n}'''),
     nar("regrets", '''{n}The Commander sent regrets. The next year's invitation came anyway, and the year after that. They were patient in the way demons are patient: badly, and with knives.{/n}'''),
 ], requires=("trickster.ever",), forbids=(COMPLETE, CLOSED, DECLINED, KEPT, OWNED), any_groups=[[T_HOUSE, WAITING]],
    overrides=UNOWNED)

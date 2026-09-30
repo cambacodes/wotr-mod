@@ -208,6 +208,16 @@ internal static class MinaghoChivarroTricksterTests
         check(Pages(spared, With(sparedWorld, "minagho.terrified")).Contains("terrified"), "The terrified variant is missing.");
         check(Av(sparedLetter, With(sparedWorld, "minagho_chivarro.presence.minagho_spared.failed")) && !Av(sparedLetter, sparedWorld),
             "The spared letter twin misfires.");
+        // Sol INT/HOW (r1): an unprimed spared Minagho whose presence failed is reached in person from her note, and the transfer is
+        // made on the page (no opening claims a dry brand before it).
+        var unprimedFailed = World(story, 5, "trickster", "trickster.ever", "minagho.fled_fane", "minagho_chivarro.presence.minagho_spared.failed");
+        unprimedFailed.AvailableContacts.Remove(MinUnit);
+        check(!Av(spared, unprimedFailed) && Av(sparedLetter, unprimedFailed)
+              && Done(sparedLetter, unprimedFailed).Any(r => r.Has(MinIn) && r.Has(Primed) && r.Has(Debt) && r.Has(LateClaim))
+              && Pages(sparedLetter, unprimedFailed).Contains("late")
+              && !spared.Nodes.Single(n => n.Id == "start").Text.Contains("It stopped", StringComparison.Ordinal)
+              && !sparedLetter.Nodes.Single(n => n.Id == "start").Text.Contains("It stopped", StringComparison.Ordinal),
+            "An unprimed spared Minagho has no reachable transfer when her presence fails, or an opening precedes its act.");
 
         // Trk_Minagho_SparedParleyAlive.
         var aliveCell = World(story, 5, "trickster.ever", "minagho.spared_c4", Primed);
@@ -349,7 +359,7 @@ internal static class MinaghoChivarroTricksterTests
         check(Pages(epCommit, lateHouse).Contains("went") && !Pages(epCommit, lateHouse).Contains("went_alone")
               && Pages(epCommit, World(story, 5, "trickster.ever", ChIn, Waiting, "minagho.dead")).Contains("went_alone")
               && epCommit.Nodes.Single(n => n.Id == "went").Text.Contains("bore the Commander down")
-              && epCommit.Nodes.Single(n => n.Id == "went_alone").Text.Contains("let the gown fall")
+              && epCommit.Nodes.Single(n => n.Id == "went_alone").Text.Contains("climbed astride") && epCommit.Nodes.Single(n => n.Id == "went_alone").Text.Contains("In the morning")
               && !epCommit.Nodes.Single(n => n.Id == "regrets").Text.Contains("bed"),
             "The late acceptances are not distinct, staged endings.");
         var coda = S("minachiv.lastcall.page");

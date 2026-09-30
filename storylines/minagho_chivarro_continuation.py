@@ -635,8 +635,8 @@ When the round ends, Minagho has lost the remaining plum. She accuses Chivarro o
 {n}Minagho smiles, unabashed, and kisses the inside of her wrist. Chivarro's answer is a hand beneath Minagho's chin, holding her there for another moment.
 When they turn toward you, neither makes a demand of the silence.{/n}''',
       c('"Minagho, I would like some time with you alone."', "minagho", forbids=("minagho.ran_demon",)),
-      c('"Chivarro, I would like to sit beside you, if you still want that."', "chivarro", requires=done("chivarro_interest")),
-      c('"I want to be close to both of you. What would you each want from that?"', "together", requires=done("chivarro_interest"), forbids=("minagho.ran_demon",)),
+      c('"Chivarro. Move over."', "chivarro", requires=done("chivarro_interest")),
+      c('"I want you both. Tell me I\'m not the only one at this table who does."', "together", requires=done("chivarro_interest"), forbids=("minagho.ran_demon",)),
       c('"I am interested, but I would like a slower evening."', "slow", forbids=("minagho.ran_demon",)),
       c('"I would enjoy keeping tonight as company and conversation."', "company"),
       c('"Minagho, the service between us complicates anything else I ask."', "service", requires=("minagho.ran_demon",))),
@@ -649,7 +649,7 @@ When they turn toward you, neither makes a demand of the silence.{/n}''',
 {n}She rests a hand against your cheek, and her thumb traces a short, deliberate line down to the corner of your mouth and presses there, the way a buyer presses fruit.{/n}
 "One hour. She will time it to the grain of sand. I have waited for this through two cities and a demon lord's patience, and I am not going to spend it watching you think. Kiss me, or go and help her carry the tray."''',
       c('"Kiss me."', "minagho_kiss"),
-      c('"Stay close. I want the hour, without going further tonight."', "minagho_close")),
+      c('"Stay close. Just the hour, tonight."', "minagho_close")),
     n("minagho_kiss", "Narrator", '''{n}Minagho leans close enough that her hair brushes your cheek, then stops.{/n}
 "You say that very confidently. Has someone been encouraging you?"
 "You have been trying for most of the evening."
@@ -888,7 +888,7 @@ s("minaghos_unfinished_sentence", "Minagho's unfinished sentence", [
 "Chivarro asked what you are like when you do not want an answer immediately. I said she would have to discover that herself."
 "You could have told her."
 "I could. I wanted her to have a reason to sit with you. It is an excellent thing to know about someone, and people rarely think to ask until they need it."
-{n}Minagho leans against you. Her hair brushes your cheek. You ask whether she wants a kiss, and she answers with a quiet yes before meeting you halfway.
+{n}Minagho leans against you. Her hair brushes your cheek. When you turn your head she is already there, and the kiss she gives you is not quiet at all.
 Afterward she keeps her forehead near yours.{/n}
 "Do not make every hour sensible. I am beginning to like them too much."''', c('[Stay until the rain eases.]', flags=done("minagho_answered", "minagho_quiet_hour"))),
     n("roof", "Minagho", '''"Then I shall be extravagant and ask for both."
