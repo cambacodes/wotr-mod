@@ -65,7 +65,7 @@ session(CAT, "Field observations", 3, '"You look pleased with yourself."', [
         c("[Let her go and buy it a fish.]", flags=(CAT,))),
     a("examine", '''{n}She laughs and hides the hand behind her back.{/n} "You are the worst thing that ever happened to a demon. The scratch is fine. The scratch is perfect. I'm keeping it until it scars." {n}She pauses.{/n} "Do succubi scar? I don't know. I'll find out. That can go in the notes too."''',
         c("[Let her go and buy it a fish.]", flags=(CAT,))),
-], (MEALTIMES,), delay=24, chapters=(3, 4, 5))
+], (MEALTIMES,), delay=24, chapters=(3, 5))   # Drezen-set (the smithy roof): not in the Abyss (R2-5)
 
 
 # --- The net-menders' song (Drezen: Chapters 3 and 5) ------------------------------------------------------------

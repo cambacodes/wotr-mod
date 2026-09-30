@@ -513,8 +513,14 @@ SCENES.append(scene(P + "epilogue.commit", "", "ArueshalaeEpilogue", 6, "", [
     requires=("trickster.ever",), forbids=(COMMITTED, CLOSED, DECLINED, ALLY),
     RequiresAnyGroups=[[AFTERTASTE, CHAPLAIN, REUNITED]], **EP))
 SCENES.append(scene(P + "epilogue.declined", "", "ArueshalaeEpilogue", 6, "", [
-    nar("page", '''{n}Arueshalae never finished counting her week. She served as the crusade's chaplain until the end, blessed the swords of the second company and the lamps of the field hospital, and when anyone asked her about the Commander she said she was still deciding.{/n}''')],
-    requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED), RequiresAnyGroups=[[AFTERTASTE], [CHAPLAIN]], **EP))
+    nar("page", '''{n}Arueshalae never finished counting her week, and when anyone asked her about the Commander she said she was still deciding.{/n}''',
+        paragraphs=(
+            p('''{n}She served as the crusade's chaplain until the end, and blessed the swords of the second company and the lamps of the field hospital.{/n}''',
+              requires=(CHAPLAIN,)),
+            p('''{n}She stayed with the crusade until the end, kept her count in a daybook, and never once let anyone hand her a knife at supper.{/n}''',
+              forbids=(CHAPLAIN,)),
+        ))],
+    requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED), RequiresAnyGroups=[[AFTERTASTE, CHAPLAIN]], **EP))
 SCENES.append(scene(P + "epilogue.ally", "", "ArueshalaeEpilogue", 6, "", [
     nar("page", '''{n}She kept visiting. She never once stayed the night, and she never once missed a month. The Commander's window was never locked again, and the Commander's household learned not to mention the black feathers.{/n}''')],
     requires=("trickster.ever", ALLY), forbids=(COMMITTED, CLOSED), **EP))

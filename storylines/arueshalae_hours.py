@@ -164,7 +164,7 @@ hub(HUNDRED, "One hundred", 5, '"You look like you\'ve been counting."', [
 
 tavern(TOKEN, "The queen's token", '"What\'s that round your neck?"', [
     a("start", '''{n}She lifts it out on its string: a small black pearl, the size of a fingernail, cold even on a warm night.{/n}
-"This? My receipt. She put it on me herself, when she sent me back. It means I'm hers, on loan. When she wants me, it'll get warm." {n}She rolls it between finger and thumb.{/n}''',
+"This? My receipt. It was round my neck when I sat up, and nobody in that house would say whose hand had tied it. It means I'm hers, on loan. When she wants me, it'll get warm." {n}She rolls it between finger and thumb.{/n}''',
         c("Continue", "debt", requires=(DEBT,)),
         c("Continue", "favour", forbids=(DEBT,))),
     a("debt", '''"One summons. Once. That's what you bought me with, darling. My one summons." {n}She laughs.{/n} "Do you know what she's likely to want? Nothing much. A dance. A conversation. A night. She'll pick the hour that hurts you most, not me. That's the art of it."''',
