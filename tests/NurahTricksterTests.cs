@@ -83,9 +83,25 @@ internal static class NurahTricksterTests
             "Nurah relationship patch missing.");
         check(story.Presences["nurah.presence"].Mode == "reuse-native" && story.Presences["nurah.presence.raised"].Mode == "spawn-copy"
               && story.Presences.Where(p => p.Key.StartsWith("nurah.presence", StringComparison.Ordinal)).All(p => p.Value.Dialog == "hub"
-                  && p.Value.Unit == "f999fc37ddb225640b7f98c0a05d6948" && p.Value.At?.Locator == "7b94948a-1954-428f-82d0-94b2adcb1380")
-              && Rules.PresencesExclusive(story.Presences["nurah.presence"], story.Presences["nurah.presence.raised"]),
+                  && p.Value.Unit == "f999fc37ddb225640b7f98c0a05d6948"
+                  && p.Value.At?.Locator == (p.Key == "nurah.presence.cell" ? "336980c3-ad90-4633-aad9-4ef3f40c13f6" : "7b94948a-1954-428f-82d0-94b2adcb1380"))
+              && Rules.PresencesExclusive(story.Presences["nurah.presence"], story.Presences["nurah.presence.raised"])
+              && Rules.PresencesExclusive(story.Presences["nurah.presence.cell"], story.Presences["nurah.presence"])
+              && Rules.PresencesExclusive(story.Presences["nurah.presence.cell"], story.Presences["nurah.presence.raised"]),
             "Nurah presences malformed.");
+        // Sol quality pass (CAN): NurahInPrisonCapitalMechanic shows her at the cell only while Chapter 3 plays, so the native-list
+        // beats are Chapter 3 only and Chapter 5 has hub twins at her own cell locator (NurahInPrison_Locator 336980c3).
+        var cellPresence = story.Presences["nurah.presence.cell"];
+        check(cellPresence.Mode == "reuse-native" && cellPresence.MinChapter == 5 && cellPresence.MaxChapter == 5
+              && cellPresence.Requires.Contains("nurah.prison") && cellPresence.Forbids.Contains("nurah.ran_off")
+              && cellPresence.Forbids.Contains("nurah.trickster.returned"), "The Chapter 5 cell presence is malformed.");
+        foreach (var s in new[] { pardon, pardonR, night, pProofs, pTerms, dedication })
+            check(s.MaxChapter == 3 && s.Chapters.SequenceEqual(new[] { 3 }), "A native-list cell beat outlives Chapter 3: " + s.Id);
+        var lateCell = new[] { "pardon_late", "night_out_late", "proofs_late", "terms_late" }.Select(k => S("nurah.trickster.prison." + k)).ToList();
+        foreach (var s in lateCell)
+            check(s.InteractionHub == "nurah.presence.cell" && s.ContactUnit == "f999fc37ddb225640b7f98c0a05d6948" && Rules.IsPresenceHubScene(s)
+                  && s.Chapters.SequenceEqual(new[] { 5 }) && s.TricksterDevice && s.TricksterState == "prison" && s.Forbids.Contains("nurah.ran_off"),
+                "A Chapter 5 cell twin is malformed: " + s.Id);
         var price = rumour.Nodes.Single(n => n.Id == "offer").Choices;
         check(price[0].Crusade?.Resource == "Finances" && price[0].Crusade.Amount == -500 && price[1].Mythic == "PlayerIsTrickster",
             "Ramisa's price lost its cost.");
@@ -219,7 +235,14 @@ internal static class NurahTricksterTests
             "Trk_Nurah_RanOffReply / RanOffRefused.");
         var ran5 = Later(story, accepted[0], 100, 5);
         check(Rules.Available(story, proofs, ran5), "Trk_Nurah_RanOffTerms: no proofs.");
-        var ranSeen = Later(story, After(proofs, ran5, "proofs", 0), 72);
+        var ranPages = new HashSet<string>();
+        Program.Walk(proofs, ran5, (page, _) => ranPages.Add(page));
+        check(ranPages.Contains("proofs_ran") && !ranPages.Contains("proofs") && !ranPages.Contains("raised")
+              && !proofs.Nodes.Single(n => n.Id == "proofs_ran").Text.Contains("larva", StringComparison.OrdinalIgnoreCase),
+            "The living runaway is given a larva's history.");
+        check(!epCommit.Nodes.Single(n => n.Id == "start").Text.Contains("worse", StringComparison.Ordinal),
+            "The shared epilogue implies a degradation the runaway never had.");
+        var ranSeen = Later(story, After(proofs, ran5, "proofs_ran", 0), 72);
         check(Rules.Available(story, ranTerms, ranSeen) && !Rules.Available(story, terms, ranSeen) && Commits(ranTerms, ranSeen),
             "Trk_Nurah_RanOffTerms.");
         check(Rules.PresenceWanted(story.Presences["nurah.presence"], ranSeen) && !Rules.PresenceWanted(story.Presences["nurah.presence.raised"], ranSeen),
@@ -230,12 +253,92 @@ internal static class NurahTricksterTests
         check(Rules.Available(story, pedlar, unprimed) && !Rules.Available(story, reply, unprimed), "Trk_Nurah_RanOffLate: availability.");
         var bought = After(pedlar, unprimed, "start", 0);
         check(bought.Has("nurah.trickster.cost.late") && bought.Has("nurah.trickster.cost.ghostwritten"), "Trk_Nurah_RanOffLate: flags.");
-        check(!Rules.Available(story, pedlar, World(story, 5, "trickster", "trickster.ever", "nurah.ran_off")), "The pedlar outside Chapter 3.");
+        check(!Rules.Available(story, pedlar, World(story, 5, "trickster", "trickster.ever", "nurah.ran_off")), "The Chapter 3 pedlar outside Chapter 3.");
+
+        // Sol quality pass (INT): a runaway first approached in Chapter 5 (the missed primer) walks the late pedlar, the late reply,
+        // the proofs and the epilogue commit; a Chapter 3 dedication whose reply fell past Chapter 3 gets the late reply.
+        var pedlarLate = S("nurah.trickster.ran_off.second_draft_late");
+        var replyLate = S("nurah.trickster.ran_off.terms_by_post_late");
+        var ranLate = World(story, 5, "trickster", "trickster.ever", "nurah.ran_off");
+        check(pedlarLate.Chapters.SequenceEqual(new[] { 5 }) && replyLate.Chapters.SequenceEqual(new[] { 5 }) && pedlarLate.Remote && replyLate.Remote
+              && Rules.Available(story, pedlarLate, ranLate) && !Rules.Available(story, pedlarLate, unprimed), "The late pedlar has the wrong window.");
+        var lateCost = pedlarLate.Nodes.Single(n => n.Id == "start").Choices[0];
+        check(lateCost.Crusade?.Amount == -400 && pedlar.Nodes.Single(n => n.Id == "start").Choices[0].Crusade?.Amount == -200
+              && lateCost.Mythic == "PlayerIsTrickster", "The late pedlar is not dearer.");
+        var boughtLate = After(pedlarLate, ranLate, "start", 0);
+        check(boughtLate.Has("nurah.trickster.cost.second_edition") && boughtLate.Has("nurah.trickster.cost.ghostwritten")
+              && boughtLate.Has("nurah.trickster.cost.late"), "The late pedlar's flags.");
+        var lateReplyWorld = Later(story, boughtLate, 48);
+        check(Rules.Available(story, replyLate, lateReplyWorld) && !Rules.Available(story, reply, lateReplyWorld)
+              && lateReplyWorld.Has("nurah.trickster.printer_paid"), "The late reply does not follow the late pedlar.");
+        var lateAccepted = Program.Walk(replyLate, lateReplyWorld).Where(r => r.Has("nurah.trickster.accepted")).ToList();
+        check(lateAccepted.Count == 3 && Program.Walk(replyLate, lateReplyWorld).Any(r => r.Has("nurah.closed")), "The late reply's outcomes.");
+        var lateRanProofs = Later(story, lateAccepted[0], 72);
+        check(Rules.Available(story, proofs, lateRanProofs), "No proofs after the late reply.");
+        var lateRanSeen = Later(story, After(proofs, lateRanProofs, "proofs_ran", 0), 72);
+        check(!Rules.Available(story, ranTerms, lateRanSeen), "The late runaway gets the in-person terms.");
+        var lateRanEnd = Program.Copy(lateRanSeen); lateRanEnd.Chapter = 6; Rules.Complete(story, lateRanEnd);
+        check(Rules.Available(story, epCommit, lateRanEnd), "The late runaway has no epilogue commit.");
+        // Primed in Chapter 3, released too late for the Chapter 3 reply: the Chapter 5 reply picks it up.
+        var primedRan5 = World(story, 5, "trickster.ever", "nurah.ran_off", "nurah.trickster.primed", "nurah.trickster.cost.ghostwritten");
+        check(!Rules.Available(story, reply, primedRan5) && Rules.Available(story, replyLate, primedRan5), "A Chapter 3 dedication has no Chapter 5 reply.");
+
+        // Sol quality pass (TRK): the early dedication pays a printer only when the player chooses it; the reply tells which.
+        var purse = dedication.Nodes.Single(n => n.Id == "write").Choices;
+        check(purse.Count == 2 && purse[0].Crusade == null && !purse[0].Set.Contains("nurah.trickster.cost.printer_paid")
+              && purse[1].Crusade?.Amount == -250 && purse[1].Set.Contains("nurah.trickster.cost.printer_paid"), "The printer's purse is not a choice.");
+        var onePage = new HashSet<string>(); var paidPage = new HashSet<string>();
+        Program.Walk(reply, ran, (page, _) => onePage.Add(page));
+        var ranPaid = World(story, 3, "trickster", "trickster.ever", "nurah.ran_off", "nurah.trickster.primed", "nurah.trickster.cost.ghostwritten",
+                            "nurah.trickster.cost.printer_paid");
+        Program.Walk(reply, ranPaid, (page, _) => paidPage.Add(page));
+        check(onePage.Contains("letter_one") && !onePage.Contains("letter") && paidPage.Contains("letter") && !paidPage.Contains("letter_one"),
+            "The reply blames a printer nobody paid, or forgets the one who was.");
+        var pedlarPages = new HashSet<string>();
+        Program.Walk(reply, Later(story, bought, 48), (page, _) => pedlarPages.Add(page));
+        check(pedlarPages.Contains("letter") && !pedlarPages.Contains("letter_one"), "The pedlar's paid printer is forgotten.");
+
+        // Sol quality pass (CAN/INT): Chapter 5 cell twins, reached only through the unhidden actor at her cell.
+        var cell5 = World(story, 5, "trickster", "trickster.ever", "nurah.prison");
+        check(Rules.PresenceWanted(cellPresence, cell5) && !Rules.Available(story, lateCell[0], cell5), "The cell twin opens without her actor.");
+        cell5.AvailableContacts.Add("f999fc37ddb225640b7f98c0a05d6948");
+        check(Rules.Available(story, lateCell[0], cell5) && !Rules.Available(story, pardon, cell5), "Trk_Nurah_Prison5: the late pardon.");
+        var pardoned5 = After(lateCell[0], cell5, "read", 0);
+        check(pardoned5.Has("nurah.trickster.primed") && pardoned5.Has("nurah.trickster.cost.ledger_lie")
+              && lateCell[0].Nodes.Single(n => n.Id == "read").Choices[0].Mythic == "PlayerIsTrickster", "The late pardon's flags or mark.");
+        var night5 = Later(story, pardoned5, 24);
+        check(Rules.Available(story, lateCell[1], night5) && !Rules.Available(story, night, night5), "The late night out.");
+        var released5 = Later(story, After(lateCell[1], night5, "start", 0), 72);
+        check(Rules.PresenceWanted(cellPresence, released5) && Rules.Available(story, lateCell[2], released5), "The late proofs.");
+        var terms5 = Later(story, After(lateCell[2], released5, "start", 0), 72);
+        check(Rules.Available(story, lateCell[3], terms5) && Commits(lateCell[3], terms5), "The late terms do not commit at the cell.");
+        var recruited5 = World(story, 5, "trickster", "trickster.ever", "nurah.prison", "nurah.trickster_recruited");
+        recruited5.AvailableContacts.Add("f999fc37ddb225640b7f98c0a05d6948");
+        var r5 = new HashSet<string>();
+        Program.Walk(lateCell[0], recruited5, (page, _) => r5.Add(page));
+        check(r5.Contains("start_recruited") && !r5.Contains("start"), "The recruited pawn is greeted as a stranger in Chapter 5.");
 
         // Reactions: exactly Irabeth and Camellia; a dead reactor hides the line and nothing waits on it.
         var reactions = story.Scenes.Where(s => s.Relationship == "nurah" && s.Reaction).ToList();
-        check(reactions.Count == 7 && reactions.All(s => s.Owner == "Irabeth" || s.Owner == "Camellia") && reactions.All(s => s.AnswerLists.Length == 1),
+        check(reactions.Count == 11 && reactions.All(s => s.Owner == "Irabeth" || s.Owner == "Camellia")
+              && reactions.All(s => s.AnswerLists.Length == 1 || s.Remote && s.Id.Contains(".camellia_veiled_", StringComparison.Ordinal)),
             "Nurah reactions: wrong reactors or delivery.");
+        // Sol quality pass (INT): a Camellia killed by the Commander and back on her own route is the veiled copy at Fye's, with no
+        // companion hub, so her lines come as cards; a Camellia raised from a retained death keeps her companion-hub lines.
+        var veiledSupper = World(story, 5, "trickster.ever", "nurah.dead_camellia", "nurah.dead_drezen", "nurah.trickster.returned",
+                                 "nurah.trickster.larva_rumour", "camellia.killed", "camellia.trickster.returned");
+        check(Rules.Available(story, S("nurah.trickster.react.camellia_veiled_supper"), veiledSupper)
+              && !Rules.Available(story, S("nurah.trickster.react.camellia_supper"), veiledSupper)
+              && !Rules.Available(story, S("nurah.trickster.react.camellia_veiled_market"), veiledSupper), "The veiled Camellia's supper card.");
+        var raisedCamellia = World(story, 5, "trickster.ever", "nurah.dead_camellia", "nurah.dead_drezen", "nurah.trickster.returned",
+                                   "nurah.trickster.larva_rumour", "camellia.dead", "camellia.trickster.returned");
+        check(Rules.Available(story, S("nurah.trickster.react.camellia_supper"), raisedCamellia)
+              && !Rules.Available(story, S("nurah.trickster.react.camellia_veiled_supper"), raisedCamellia), "The raised Camellia's supper line.");
+        var plainSupper = World(story, 5, "trickster.ever", "nurah.dead_camellia", "nurah.dead_drezen", "nurah.trickster.returned", "nurah.trickster.larva_rumour");
+        check(!Rules.Available(story, S("nurah.trickster.react.camellia_veiled_supper"), plainSupper), "A living Camellia sends a card.");
+        foreach (var id in new[] { "pardon", "market", "supper", "draft" })
+            check(S("nurah.trickster.react.camellia_veiled_" + id).Requires.Contains("camellia.killed")
+                  && S("nurah.trickster.react.camellia_veiled_" + id).Requires.Contains("camellia.trickster.returned"), "A card without the veiled state: " + id);
         var raisedWorld = World(story, 5, "trickster.ever", "nurah.dead_drezen", "nurah.trickster.returned", "irabeth_dead");
         check(!Rules.Available(story, S("nurah.trickster.react.irabeth_raised"), raisedWorld), "A dead Irabeth reacts.");
         raisedWorld.Flags.Add("irabeth.trickster.returned");
