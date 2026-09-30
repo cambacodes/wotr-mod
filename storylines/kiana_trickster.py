@@ -422,8 +422,8 @@ PARAGRAPHS = (
     p("The Commander's promise to fetch the other stones stood in red ink in Arsinoe's ledger for the rest of the war. "
       "Kiana kept the list of names beside it and read it aloud every year on the anniversary, and each year, after the "
       "last name, she looked up.", requires=(MET, VOW), forbids=(Q3, LASTCALL_CALLED)),
-    p("Somewhere in Mendev a dwarf remembered the cold of the Commander's palm on his, and three words that went with it: "
-      "One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched "
+    p("Somewhere in Mendev a jeweller's apprentice remembered the cold of the Commander's palm on his, and his master kept "
+      "the three words that went with it in a ledger: One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched "
       "the Commander's face while they answered.", requires=(MET, FAVOUR), forbids=(LASTCALL_CALLED, Q3)),
     p("Darek Sunhammer died with the Commander's favour still owed him, and nobody else ever came to collect it. Kiana "
       "said it was the only debt she had ever seen cancelled by a funeral, and that she approved.", requires=(MET, FAVOUR, Q3),
@@ -431,10 +431,9 @@ PARAGRAPHS = (
     p("Elan and Kiana stayed friends, which surprised everyone but Elan.", requires=(MET, H_MARRIED),
       forbids=("kiana.widowed",)),
     p("The marriage licence stayed postponed. Kiana had it framed.", requires=(MET, H_BETROTHED)),
-    p("The hold on Kiana's licence was lifted the day the Wound closed. Her wedding went ahead that week with a plain silver "
-      "ring; the gift ring went to Arsinoe's temple, to be broken on an auditor's bench. The baker brought the cake, the "
-      "crossbowman stood at the door, and Kiana cried through all of it and laughed at most.",
-      requires=(POSTPONED,), forbids=(KING,)),
+    p("The hold on Kiana's licence was lifted the day the Wound closed, and the gift ring went to Arsinoe's temple, to be "
+      "broken on an auditor's bench. The baker and the crossbowman had been married since the spring, and sent the "
+      "Commander a slice of each cake, with no note.", requires=(POSTPONED,), forbids=(KING,)),
     p("The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King "
       "was sober. He was not. Three weddings went ahead that week anyway, and Kiana went to every one.",
       requires=(POSTPONED, KING)),
@@ -508,7 +507,7 @@ REACTIONS = [
     anevia("kiana.trickster.possessed.react_anevia", (RETURNED, SOUL_LOST, ROBBED),
            '''"You told a jeweller's boy his stone was paste, broke it in half in front of him, and he went home believing you."
 {n}Anevia looks at you sidelong, the way she looks at a lock she has not picked yet.{/n}
-"I spent twenty years learning to lie to people. I never once thought of lying to a man while I broke his things in his hand. I can't decide whether to be impressed or to start checking my own rings."'''),
+"I spent twenty years learning to lie to people. I never once thought of lying to a man while I broke his things in his hand. I can't decide whether to be impressed or to start checking my own rings."''', forbids=(MARKED, SPENT)),
     arsinoe("kiana.trickster.awake.react_arsinoe", (ROBBED, DOG),
             '''"A dog, Commander. I have a ward of sleeping wedding guests, and the one patient who woke up is a dog."
 {n}She holds up what is left of a quill.{/n}
