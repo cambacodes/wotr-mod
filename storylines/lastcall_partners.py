@@ -341,7 +341,7 @@ partner("seelah", "seelah", "seelah.committed", "seelah.closed", "The Thief's Pr
     call=call('''[Call in the thief's promise] "Seelah, you swore you'd steal it back. Now's the time. Pick my pocket."''',
         '''{n}You feel it before you understand it: a light touch at your coat, a thief's apology, from a woman who is not here.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
-    ledger=("Seelah: a coin to steal back", "I took something from Seelah's purse at her bier that she didn't earn. She swore she'd steal it back. A thief who hasn't collected won't let you die."))
+    ledger=("Seelah: a list to steal back", "At her bier I took Seelah's list of old thefts out of her purse, and robbed a grave-robber off its last line to pay for her. She swore she'd steal the list back. A thief who hasn't collected won't let you die."))
 
 T = "targona.trickster."
 partner("targona", "targona", "targona.committed", "targona.closed", "The Quiet Ward",
