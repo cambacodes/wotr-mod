@@ -75,6 +75,7 @@ HUNGRY = P + "cost.sent_away_hungry"
 OPEN_DOOR = P + "cost.open_door"
 NO_SECOND_JOKE = P + "cost.no_second_joke"
 SAINT_ONLY = P + "cost.saint_only"
+NO_STAGING = P + "cost.no_staging"       # the chaplain's week: no more public appointments to keep her"
 EVERY_TIME = P + "said_every_time"
 IF_ASKED = P + "said_if_asked"
 LATE_COMMITTED = P + "late_committed"
@@ -465,8 +466,18 @@ hub(P + "terms_again", "Seven days", 5, '"It\'s been a week."', [
       c('"I can\'t promise that."', "no", flags=(CLOSED,))),
     a("yes", '''{n}She watches you the way she watches strangers in the market, trying to read what they are.{/n} "Then yes. All of it. For as long as what you didn't kill of me lasts." {n}She almost laughs.{/n} "Which is a terrible thing to say to someone you love. I'll work on it."''', c()),
     a("no", '''"Then we're done asking each other things." {n}She says it gently. That is the worst part.{/n}''', c()),
-], ("trickster.ever", DECLINED), forbids=(EVIL_DEAD, CLOSED, COMMITTED), delay=96, chapters=(5,),
+], ("trickster.ever", DECLINED, AFTERTASTE), forbids=(EVIL_DEAD, CLOSED, COMMITTED), delay=168, chapters=(5,),
     RequiresAnyGroups=[[AFTERTASTE, CHAPLAIN]])
+
+# The chaplain never died and was never fed: her week ends on the thing that was done to her, the public appointment.
+hub(P + "terms_again_chaplain", "Seven days at the rail", 5, '"It\'s been a week."', [
+    a("start", '''"Seven days. I counted twice, and then I made Sosiel count, because I didn't trust myself." {n}She doesn't smile. She is still wearing the stole the second company bought her, and she has not stopped touching its fringe.{/n}
+"Before I answer, I want one promise from you, and you won't like it. You made me their chaplain in front of a kneeling company, at vespers, so that I couldn't refuse without shaming every one of them. It worked. I'm keeping it. But it's mine now. If I ever want to put this down, or put you down, I walk out of that vestry, and you don't stand up at the altar rail and announce anything to keep me. No more staging. Not for me."''',
+      c('[Promise] "No more staging. Your altar, and your door."', "yes", flags=(COMMITTED, NO_STAGING)),
+      c('"I can\'t promise that."', "no", flags=(CLOSED,))),
+    a("yes", '''{n}She watches you the way she watches strangers in the market, trying to read what they are.{/n} "Then yes. All of it. For as long as I can stand at that rail without wanting to bite the hands on it." {n}She almost laughs.{/n} "Which is a terrible thing to say to someone you love. I'll work on it."''', c()),
+    a("no", '''"Then we're done asking each other things." {n}She says it gently, and folds the stole over her arm. That is the worst part.{/n}''', c()),
+], ("trickster.ever", DECLINED, CHAPLAIN), forbids=(EVIL_DEAD, CLOSED, COMMITTED, AFTERTASTE), delay=168, chapters=(5,))
 
 
 # --- The fallen's night: over the roofs of Drezen (heat to the cut; the cut lands at the start of the act) ---------

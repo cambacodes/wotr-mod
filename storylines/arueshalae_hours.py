@@ -119,7 +119,7 @@ hub(BAD_DAY, "Symptoms", 3, '"Arueshalae?"', [
 # --- After the yes: a first quarrel ---------------------------------------------------------------------------
 
 hub(QUARREL, "Second opinion", 5, '"You\'re angry with me."', [
-    a("start", '''"Yes. I am. I'm allowed to be angry with you, it turns out. Nobody told me that was allowed." {n}She has her arms folded and her chin up.{/n}
+    a("start", '''"Yes. I am. You walked into that arrow as if it were weather, and I had to stand there and smell you bleed." {n}She has her arms folded and her chin up.{/n}
 "You went into the siege lines alone yesterday. Without telling anyone. Without telling me. You came back with an arrow in your shoulder and a joke about it." {n}Her voice shakes.{/n} "I have spent this whole war learning how not to take a life from anybody. And you walk out and offer yours to the first demon with a bow, as if it were a cheap thing."''',
         c("Continue", "fear")),
     a("fear", '''"Do you know what I thought, when they brought you in? Not 'will they live'. I thought: if they die, I'll have to learn how to be without them, and I'm so bad at learning, I've been learning for years, I haven't got the time." {n}She is crying now, and furious about it.{/n}

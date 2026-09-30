@@ -172,9 +172,10 @@ internal static class ArueshalaeTricksterTests
         var notYet = First(terms, ch5Returned, "question", 2);
         check(notYet.Has(P + "declined") && !notYet.Has("arueshalae.committed"), "Trk_Arueshalae_TermsRefusal: not a soft no.");
         var again = S(P + "terms_again");
-        check(Avail(again, Later(story, notYet, 100)), "Trk_Arueshalae_TermsRefusal: the second ask does not open.");
-        var sworn = First(again, Later(story, notYet, 100), "start", 0);
+        check(Avail(again, Later(story, notYet, 170)), "Trk_Arueshalae_TermsRefusal: the second ask does not open.");
+        var sworn = First(again, Later(story, notYet, 170), "start", 0);
         check(sworn.Has("arueshalae.committed") && sworn.Has(P + "cost.no_second_joke"), "Trk_Arueshalae_TermsAgain: the promise does not commit.");
+        check(!Avail(again, Later(story, notYet, 100)), "Trk_Arueshalae_TermsAgain: the week is shorter than seven days.");
 
         // --- Evil: Setup / Late / Primed / Haggle / Refused / AfterFailure / InHiding ------------------------------
         var diagnosis = S(P + "evil.diagnosis");
