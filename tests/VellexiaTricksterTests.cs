@@ -219,6 +219,25 @@ internal static class VellexiaTricksterTests
         check(Program.Walk(unmirror, failedReady, (page, _) => failedPages.Add(page)).Any(r => r.Has(P + "unmirrored"))
               && failedPages.Contains("no_sparks"), "Trk_Vellexia_PathFailedUnmirror: no sparkless telling.");
 
+        // Trk_Vellexia_NoPowerUnmaking (polish batch 9): no Trickster sparks or backwards spell does the unmaking or wakes the
+        // canvas; the Commander pays (the house through Vask, the painter's sitting) and she pays (bare walls, her hands).
+        foreach (var s in new[] { unmirror, unmirrorStores, likeness, likenessStores })
+            check(!s.Nodes.Any(n => n.Text.Contains("Sparks come off your fingers") || n.Text.Contains("You say her spell backwards")),
+                "Trk_Vellexia_NoPowerUnmaking: the Trickster's power still does the unmaking in " + s.Id);
+        check(unmirror.Nodes.Single(n => n.Id == "glass").Choices.Where(ch => ch.Next == "nice" || ch.Next == "no_sparks")
+                  .All(ch => ch.Crusade?.Resource == "Finances" && ch.Crusade.Amount < 0),
+            "Trk_Vellexia_NoPowerUnmaking: the house is not bought.");
+        check(likeness.Nodes.Single(n => n.Id == "spell").Choices.All(ch => ch.Set.Contains(P + "cost.sat_for_painter")),
+            "Trk_Vellexia_NoPowerUnmaking: the painter's sitting costs the Commander nothing.");
+        // The native sequence can free her guests first and then mirror her (Cue_0095, then Answer_0091): no furniture is left
+        // to prove she holds the knot, so the reading and the lever change (the stripped house bought back), same flags.
+        var freedMirror = Program.Copy(primed); freedMirror.Flags.Add("vellexia.slaves_freed");
+        var freedPages = new HashSet<string>();
+        var freedOut = Program.Walk(unmirror, freedMirror, (page, _) => freedPages.Add(page));
+        check(freedOut.Any(r => r.Has(P + "unmirrored") && r.Has(P + "cost.bare_walls")) && freedPages.Contains("reading_freed")
+              && freedPages.Contains("nice_freed") && !freedPages.Contains("reading") && !freedPages.Contains("nice"),
+            "Trk_Vellexia_FreedThenMirrored: the freed house still reads as full of furniture.");
+
         // Trk_Vellexia_Sword: the portrait marked in the gallery, taken the night she died.
         var sword = World(story, 4, "trickster", "trickster.ever", "vellexia.greeted", "vellexia.final_fight", "vellexia.dead",
                           "vellexia.slaves_freed", P + "portrait_marked");
@@ -312,7 +331,8 @@ internal static class VellexiaTricksterTests
         var shellPages = new HashSet<string>();
         var shelled = Program.Copy(guest); shelled.Flags.Add("vellexia.seal_agreed");
         Program.Walk(visit, shelled, (page, _) => shellPages.Add(page));
-        check(shellPages.Contains("shell_held") && !shellPages.Contains("shell"), "She gives a second shell to a Commander who kept hers.");
+        check(shellPages.Contains("shell_entry_held") && !shellPages.Contains("shell_entry") && !shellPages.Contains("shell")
+              && !shellPages.Contains("shell_held"), "She gives a second shell to a Commander who kept hers, or tells a living guest she is dead.");
 
         // The first call: her price spoken; her no; the registered evenings; the commit; the night.
         var calling = Later(story, kept1, 24);

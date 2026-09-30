@@ -236,11 +236,11 @@ s("unborrowed_evening", "What she asks of you", [
 "I will try to find a tactful moment."
 "Please do. Immediately afterward may be unwise."''', c('[Stay with the agreement you have actually made.]', "history")),
     n("object", "Kiana", '''{n}She considers that longer than you expect.{/n}
-"Then say you object. Do not tell them what I feel. And if I ask you to stop, stop."
+"Then object. Loudly, if you like; you have the voice for it. But the next time you tell a room what I feel, I shall tell it what you look like asleep, and I shall not be kind."
 "I can do that."
 "I believe you. You have listened to me here. That matters more than devising a perfect answer for someone we may not see again."
 {n}Her hand finds yours on the arm of the chair.{/n}
-"I will try not to make being loved require your becoming invisible."''', c('[Keep the distinction between defending her and speaking for her.]', "history")),
+"And if you ever do stand up in a room and tell it what I feel, I shall stand up after you and tell it what you feel. In detail. With gestures."''', c('[Keep the distinction between defending her and speaking for her.]', "history")),
     n("history", "Narrator", '''{n}She looks at your joined hands before speaking again.{/n}''',
       c('[Stay with the history that began by waiting.]', "waited", requires=("kiana.separated", "kiana.waited"), forbids=("kiana.affair", "kiana.bereaved", "seelah.elan_dead")),
       c('[Stay with the history that includes the undisclosed kiss.]', "affair", requires=("kiana.separated", "kiana.affair"), forbids=("kiana.bereaved", "seelah.elan_dead")),
@@ -269,7 +269,7 @@ s("unborrowed_evening", "What she asks of you", [
       c('"Come outside with me. I want some time with you that no one has advertised."', "walk")),
     n("kiss", "Narrator", '''{n}She meets your kiss with none of the composure she maintained in the yard. Her hand slides to the back of your neck. When you stand, she comes with you, laughing softly as the chair catches against your heel.{/n}
 "Our scenery remains unreliable."
-{n}You move it aside. She closes the door, returns to you, and leaves the pages where they are.{/n}
+{n}You move it aside. She closes the door, turns the key, and comes back already pulling the pins out of her hair. She undoes your belt with more concentration than she gave the whole scene in the yard, and when it is done she pushes you down onto the edge of the bed and climbs into your lap, her knees either side of you, her skirts rucked up and her hands in your hair.{/n}
 {n}Later, when the room has grown quiet, she rests her head against your shoulder. She has not become less troublesome. She seems pleased that you have noticed.{/n}''', c('[Keep the evening without making it an answer to the whole city.]', flags=("kiana.further_kept", "kiana.further_private_evening"))),
     n("walk", "Kiana", '''"An unadvertised walk. We shall be a great disappointment to the public."
 {n}She takes her scarf from the chair and puts it on without arranging it for effect. At the door she catches your hand again.{/n}

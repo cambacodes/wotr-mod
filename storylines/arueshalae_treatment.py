@@ -22,8 +22,8 @@ from storylines.arueshalae_trickster import (AFTERTASTE, CHAPLAIN, CLAIMED, CLOS
 SCENES = []
 T = "arueshalae.treatment."
 CURE = "trickster.religion_tier1"          # MainCharacterFacts: the chosen Lore (Religion) rank 1 trick
-LAB = "arueshalae.lab_seen"                # StartedDialogs: After_Lab (her desires shown to everyone), variant read
-DREAM = "arueshalae.dream_woken"           # StartedDialogs: the native Ch4 dream (her kiss not deadly there), variant read
+LAB = "arueshalae.lab_seen"                # SelectedAnswers After_Lab/Answer_0022 (the supportive answer), variant read
+DREAM = "arueshalae.dream_woken"           # SelectedAnswers Nightmares/Answer_0006 (the dream kiss itself), variant read
 ELYSIUM = "arueshalae.elysium"             # StartedDialogs: the native Ch5 best ending (her touch no longer harms)
 
 INTAKE = T + "intake"
@@ -153,7 +153,7 @@ session(MEALTIMES, "Case notes", 3, '"How is the patient?"', [
     a("better", '''"Better." {n}She says the word as if it were in a language she had studied but never heard spoken.{/n} "I don't think succubi get better. I think we get managed, or we get killed." {n}She tucks the book into her belt.{/n} "But you've written it down now. So I suppose it's official. The Commander of the crusade says I'm getting better." {n}A pause.{/n} "Don't tell anyone. They'll want a second opinion."''', c()),
     a("quack", '''{n}She laughs, the startled laugh again, and this time she doesn't cover it.{/n} "A quack. Yes. That's much more honest." {n}She tucks the book into her belt.{/n}
 "You know what's strange? I trust that more. Every holy man who ever tried to save me was certain. You're the first one who's admitted they're making it up." {n}She considers.{/n} "I'll keep taking the medicine, quack. But I want it noted that I'm doing it out of spite."''', c()),
-], (INTAKE, "trickster.ever"), forbids=(MEALTIMES,), delay=24, chapters=(3, 4, 5))
+], (INTAKE, "trickster.ever"), forbids=(MEALTIMES,), delay=24, chapters=(3, 5))   # Drezen-set: not in the Abyss (R2-5)
 
 
 # --- The relapse: a sergeant at Fye's ------------------------------------------------------------------------------
@@ -179,7 +179,7 @@ session(RELAPSE, "Relapse", 3, '"You haven\'t been to see me."', [
 "The only thing is... that's where they are. The mortals. That's where they laugh and sing and hold each other's hands. If I stay out of the places where they're happy, I'll learn everything about them except the one thing I want to understand." {n}She squares her shoulders.{/n} "But I'll do it. For a while. I've walked worse roads for worse gods."''', c()),
     a("saint_story", '''{n}She opens her mouth to protest, and nothing comes out. Then she laughs, helplessly, and slides down the stable wall until she is sitting in the straw.{/n}
 "A saint. In disguise." {n}She is laughing and crying at the same time.{/n} "You're horrible. Tender of Dreams forgive me, you're horrible. I nearly ate a man and you're going to tell him he was blessed." {n}She wipes her face.{/n} "He'll believe you. That's the worst of it. He'll light a candle at the shrine every week for the rest of his life, and I'll have to walk past it."''', c()),
-], (MEALTIMES, "trickster.ever"), forbids=(RELAPSE,), delay=48, chapters=(3, 4, 5))
+], (MEALTIMES, "trickster.ever"), forbids=(RELAPSE,), delay=48, chapters=(3, 5))   # Drezen-set: not in the Abyss (R2-5)
 
 
 # --- The touch: the quack's cure ---------------------------------------------------------------------------------
@@ -400,9 +400,13 @@ session(NIGHT, "Under the Tender of Dreams", 5, '"Where are we going?"', [
     nar("undress", '''{n}She knows how to undress a person. She was taught in the Upper City, and the teaching is the worst thing in her. Her hands begin that way, quick and certain, and then she hears how quietly the buckles are coming loose, the way they did for the guests who did not wake, and she stops. When she begins again she is slow, and clumsy, and has to try your belt twice, and she does not let herself get better at it. Her wings unfold and curve round you both against the wind off the Worldwound; she apologises for them; you tell her not to.{/n}
 {n}She lays you down on her cloak on the old bell-floor, under the whole wheel of the stars, and follows you down, her hair falling round both your faces, her skin cool and then not cool at all. She settles astride your hips, braces one hand on the stone beside your head, and draws one long breath that she does not need.{/n}
 "I want you." {n}It comes out rough, and far too loud for a bell tower, and she does not take it back.{/n} "Not the way I was taught to want. Mine. Look at me while I do this."''',
-        c("Continue", "morning_after")),
+        c("Continue", "morning_after", requires=(ELYSIUM,)),
+        c("Continue", "morning_after_paid", forbids=(ELYSIUM,))),
     a("morning_after", '''{n}Much later, she lies with her head on your chest, listening to your heart with the concentration of someone taking a pulse, while the stars turn overhead.{/n}
 "Still beating." {n}She sounds amazed.{/n} "Still going. I'm lying here, and you're still here, and nobody is any less than they were." {n}She presses her ear closer.{/n} "Don't talk. I'm taking notes. Desna's watching. Let her."''',
+        c("[Let her listen.]", flags=(NIGHT,))),
+    a("morning_after_paid", '''{n}Much later, she lies with her head on your chest, listening to your heart with the concentration of someone taking a pulse, while the stars turn overhead.{/n}
+"Still beating. Slower than it was." {n}You feel her count it against her cheek.{/n} "I took some of it. I felt myself take it, and I didn't stop, because you told me not to, and because I didn't want to. You'll be grey tomorrow, and I'll have done that, and I'll look at it all day." {n}She does not lift her head.{/n} "Don't talk. I'm taking notes. Desna's watching. Let her see what it cost."''',
         c("[Let her listen.]", flags=(NIGHT,))),
 ], (COMMITTED, "trickster.ever"), forbids=(NIGHT,), delay=24, chapters=(5,))
 

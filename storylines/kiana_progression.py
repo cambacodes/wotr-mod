@@ -63,7 +63,7 @@ s("a_place_afterward", "The promise after the evenings", [
 "Not an appointment. I shall put those on the sensible side. This is to remind me whom I meant to ask when I have decided where I want to go."
 "And if I cannot come?"
 "Then tell me. We will choose another time, or I shall go without you and bring back an unreasonable account of what you missed."
-{n}She leaves room beneath your name for something she has not decided yet.{/n}''', c('[Reaffirm the promise without surrendering either of your other relationships.]', "end", flags=("kiana.committed",))),
+{n}She leaves room beneath your name for something she has not decided yet.{/n}''', c('[Take her hand and promise to keep the evening.]', "end", flags=("kiana.committed",))),
     n("choose", "Kiana", '''{n}She starts to answer, then takes a breath and tries again.{/n}
 "Yes. That is what I wanted."
 {n}She reaches for your hand before she reaches for the pen.{/n}

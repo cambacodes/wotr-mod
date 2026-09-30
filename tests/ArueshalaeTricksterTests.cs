@@ -138,6 +138,26 @@ internal static class ArueshalaeTricksterTests
         check(vow.Has(P + "declined") && !vow.Has("arueshalae.closed") && !Avail(starving, Later(story, vow, 24)),
             "Trk_Arueshalae_DeadDeclined: the vow is not a soft decline that ends the diagnosis.");
 
+        // --- Polish batch 9: no mythic power lifts the death. The lore lowers a DC; the gift is prepared in life ------
+        check(Ch(starving, "treat", 0).Next == "work" && Ch(starving, "treat", 1).Next == "work"
+              && Ch(starving, "work", 0).Check?.Skill == "SkillLoreReligion" && Ch(starving, "work", 0).Check!.DC < 22
+              && Ch(starving, "wake", 0).Check!.DC == 22,
+            "Trk_Arueshalae_NoPowerLift: the lore path revives without a check, or does not lower the DC.");
+        check(!starving.Nodes.Any(n => n.Text.Contains("negative condition")), "Trk_Arueshalae_NoPowerLift: death is still read as a negative condition.");
+        var insurance = S(P + "insurance");
+        var aliveGift = Later(story, World(story, 3, "", "trickster", "trickster.ever"), 30);
+        check(Avail(insurance, aliveGift), "Trk_Arueshalae_Insurance: the gift cannot be asked for in life.");
+        var holding = First(insurance, aliveGift, "reason", 0);
+        check(holding.Has(P + "gift_held") && !Avail(insurance, Later(story, holding, 30)), "Trk_Arueshalae_Insurance: the gift is not kept.");
+        check(!Avail(insurance, dead), "Trk_Arueshalae_Insurance: the gift is asked of a corpse.");
+        var gifted = Later(story, World(story, 3, "", "trickster", "trickster.ever", P + "gift_held", "arueshalae_dead", "arueshalae_dead.latched", "revive.arueshalae.available"), 30);
+        var giftChoices = starving.Nodes.Single(n => n.Id == "start").Choices.Where(ch => Rules.Match(ch.Requires, ch.Forbids, gifted)).ToList();
+        check(giftChoices.Count(ch => ch.Next == "thread") == 1 && !giftChoices.Any(ch => ch.Next == "treat" || ch.Next == "wake")
+              && starving.Nodes.Single(n => n.Id == "thread").Choices.All(ch => ch.Check == null && ch.Set.Contains(P + "cost.gift_torn")),
+            "Trk_Arueshalae_Gift: the prepared thread is not the sure road, or it costs nothing.");
+        var threaded = First(starving, gifted, "plea", 0);
+        check(threaded.Has(P + "returned") && threaded.Has(P + "cost.gift_torn"), "Trk_Arueshalae_Gift: the thread does not return her.");
+
         // --- Aftertaste / Terms / TermsRefusal / TermsAgain --------------------------------------------------------
         var aftertaste = S(P + "returned.aftertaste");
         var returned3 = Later(story, World(story, 3, "", "trickster.ever", P + "returned", P + "cost.fed_on_you"), 30);
@@ -152,9 +172,10 @@ internal static class ArueshalaeTricksterTests
         var notYet = First(terms, ch5Returned, "question", 2);
         check(notYet.Has(P + "declined") && !notYet.Has("arueshalae.committed"), "Trk_Arueshalae_TermsRefusal: not a soft no.");
         var again = S(P + "terms_again");
-        check(Avail(again, Later(story, notYet, 100)), "Trk_Arueshalae_TermsRefusal: the second ask does not open.");
-        var sworn = First(again, Later(story, notYet, 100), "start", 0);
+        check(Avail(again, Later(story, notYet, 170)), "Trk_Arueshalae_TermsRefusal: the second ask does not open.");
+        var sworn = First(again, Later(story, notYet, 170), "start", 0);
         check(sworn.Has("arueshalae.committed") && sworn.Has(P + "cost.no_second_joke"), "Trk_Arueshalae_TermsAgain: the promise does not commit.");
+        check(!Avail(again, Later(story, notYet, 100)), "Trk_Arueshalae_TermsAgain: the week is shorter than seven days.");
 
         // --- Evil: Setup / Late / Primed / Haggle / Refused / AfterFailure / InHiding ------------------------------
         var diagnosis = S(P + "evil.diagnosis");
@@ -180,6 +201,10 @@ internal static class ArueshalaeTricksterTests
         check(!Avail(lateRef, evilFailed), "Trk_Arueshalae_EvilAfterFailure: a new trick after a Ch4 failure.");
         var hiding = Later(story, World(story, 5, "", "trickster.ever", "arueshalae.evil_dead", P + "primed", "noct.dead", "noct.acq.council_fight"), 80);
         var signedHiding = First(second, hiding, "unanswered", 0);
+        var hidingPages = new HashSet<string>();
+        Program.Walk(second, hiding, (page, _) => hidingPages.Add(page));
+        check(hidingPages.Contains("unanswered") && !hidingPages.Contains("queen") && !hidingPages.Contains("late") && !hidingPages.Contains("fooled"),
+            "Trk_Arueshalae_EvilInHiding: the queen writes while she is in hiding (the unanswered page is unreachable).");
         check(signedHiding.Has(P + "returned") && signedHiding.Has(P + "cost.nocticula_debt"), "Trk_Arueshalae_EvilInHiding: the in-hiding answer does not return her.");
 
         // --- Evil: Reunion (a third way) / Letter / Terms / Refusal / the night -------------------------------------

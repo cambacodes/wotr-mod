@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 899,
-  "resolved": 899,
+  "entryTargetScenes": 903,
+  "resolved": 903,
   "inlineOnlyScenes": 212,
   "inlineOnlyResolved": 212,
-  "answerListScenesWithoutContact": 495,
-  "answerListScenesWithoutContactResolved": 495,
+  "answerListScenesWithoutContact": 497,
+  "answerListScenesWithoutContactResolved": 497,
   "lists": 92,
   "listsWithReachableHost": 91
  },
@@ -3227,6 +3227,25 @@
     "clicks": 0
    }
   },
+  "arueshalae.trickster.insurance": {
+   "kind": "dialog",
+   "lists": [
+    "03ebad9587cbea0438d901a0f8df44f1"
+   ],
+   "explicit": true,
+   "contact": "a352873d37ec6c54c9fa8f6da3a6b3e1",
+   "entry": {
+    "03ebad9587cbea0438d901a0f8df44f1": "RRT_entry.arueshalae.trickster.insurance"
+   },
+   "resolved": true,
+   "host": {
+    "list": "03ebad9587cbea0438d901a0f8df44f1",
+    "dialog": "a718e45e4ea8f8a45acde516d72b6584",
+    "dialogName": "Dialogue_Arueshalae_Main",
+    "cue": "Cue_0004",
+    "clicks": 0
+   }
+  },
   "arueshalae.trickster.react.lann_chaplain": {
    "kind": "dialog",
    "lists": [
@@ -3341,6 +3360,25 @@
     "clicks": 0
    }
   },
+  "arueshalae.trickster.react.sosiel_gift": {
+   "kind": "dialog",
+   "lists": [
+    "129b55b8b5d50974f84f7c607d894fd0"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "129b55b8b5d50974f84f7c607d894fd0": "RRT_entry.arueshalae.trickster.react.sosiel_gift"
+   },
+   "resolved": true,
+   "host": {
+    "list": "129b55b8b5d50974f84f7c607d894fd0",
+    "dialog": "0ec4d9a0f5599a44c8a25f77da94bfd7",
+    "dialogName": "Dialogue_Sosiel_Main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
   "arueshalae.trickster.returned.aftertaste": {
    "kind": "dialog",
    "lists": [
@@ -3445,6 +3483,25 @@
    "contact": "a352873d37ec6c54c9fa8f6da3a6b3e1",
    "entry": {
     "03ebad9587cbea0438d901a0f8df44f1": "RRT_entry.arueshalae.trickster.terms_again"
+   },
+   "resolved": true,
+   "host": {
+    "list": "03ebad9587cbea0438d901a0f8df44f1",
+    "dialog": "a718e45e4ea8f8a45acde516d72b6584",
+    "dialogName": "Dialogue_Arueshalae_Main",
+    "cue": "Cue_0004",
+    "clicks": 0
+   }
+  },
+  "arueshalae.trickster.terms_again_chaplain": {
+   "kind": "dialog",
+   "lists": [
+    "03ebad9587cbea0438d901a0f8df44f1"
+   ],
+   "explicit": true,
+   "contact": "a352873d37ec6c54c9fa8f6da3a6b3e1",
+   "entry": {
+    "03ebad9587cbea0438d901a0f8df44f1": "RRT_entry.arueshalae.trickster.terms_again_chaplain"
    },
    "resolved": true,
    "host": {
@@ -11745,6 +11802,25 @@
    "contact": null,
    "entry": {
     "ecaf5cfe8087a4f45a2269974f4885c9": "RRT_entry.kiana.trickster.no_wedding.react_arsinoe"
+   },
+   "resolved": true,
+   "host": {
+    "list": "ecaf5cfe8087a4f45a2269974f4885c9",
+    "dialog": "d5adc0bbbad5f054098b527cf9cc64f1",
+    "dialogName": "VendorArsinoe_dialogue",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "kiana.trickster.no_wedding.react_arsinoe_council": {
+   "kind": "dialog",
+   "lists": [
+    "ecaf5cfe8087a4f45a2269974f4885c9"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "ecaf5cfe8087a4f45a2269974f4885c9": "RRT_entry.kiana.trickster.no_wedding.react_arsinoe_council"
    },
    "resolved": true,
    "host": {

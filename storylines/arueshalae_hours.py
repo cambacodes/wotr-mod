@@ -112,14 +112,14 @@ hub(BAD_DAY, "Symptoms", 3, '"Arueshalae?"', [
     a("snap", '''{n}For a moment you think she will take you at your word. Her wings open fully, filling the tent. Then she laughs, a horrible, broken laugh, and folds them again.{/n}
 "You'd let me. You'd actually let me go." {n}She slides down the pole until she is sitting.{/n} "That's what I can't bear about you. Everyone else tries to keep me or kill me. You just stand there and let me choose. Every time." {n}She wipes her eyes with the back of a clawed hand.{/n} "I'm not going. I'm just... I'm having a bad day. Can demons have bad days? I'm having one."''', c()),
     nar("wait", '''{n}You sit down on the floor of the tent, just out of her reach, and say nothing at all. It takes a long time. The nails go first; then, slowly, the wings; last of all, the second voice under her breath.{/n}
-{n}When she speaks again it is only her own voice, small and hoarse.{/n} "You waited. You didn't try to fix it. You didn't make a joke." {n}She sits down opposite you, knees to her chest.{/n} "Put it in the notes. 'Patient had a bad day. Doctor sat on the floor.' I think that might have been the best treatment yet."''', c()),
+{n}When she speaks again it is only her own voice, small and hoarse.{/n} "I watched them flog him. The deserter. Twelve strokes, and I counted every one, and I was sorry when they stopped." {n}She sits down opposite you, knees to her chest.{/n} "Desna sent me back to learn what dreams were, and I spent this morning wanting a man's back opened. Put it in the notes. 'Patient had a bad day. Doctor sat on the floor.' Don't you dare write down that it helped."''', c()),
 ], (RELAPSE,), delay=48, chapters=(3, 4, 5))
 
 
 # --- After the yes: a first quarrel ---------------------------------------------------------------------------
 
 hub(QUARREL, "Second opinion", 5, '"You\'re angry with me."', [
-    a("start", '''"Yes. I am. I'm allowed to be angry with you, it turns out. Nobody told me that was allowed." {n}She has her arms folded and her chin up.{/n}
+    a("start", '''"Yes. I am. You walked into that arrow as if it were weather, and I had to stand there and smell you bleed." {n}She has her arms folded and her chin up.{/n}
 "You went into the siege lines alone yesterday. Without telling anyone. Without telling me. You came back with an arrow in your shoulder and a joke about it." {n}Her voice shakes.{/n} "I have spent this whole war learning how not to take a life from anybody. And you walk out and offer yours to the first demon with a bow, as if it were a cheap thing."''',
         c("Continue", "fear")),
     a("fear", '''"Do you know what I thought, when they brought you in? Not 'will they live'. I thought: if they die, I'll have to learn how to be without them, and I'm so bad at learning, I've been learning for years, I haven't got the time." {n}She is crying now, and furious about it.{/n}
@@ -164,7 +164,7 @@ hub(HUNDRED, "One hundred", 5, '"You look like you\'ve been counting."', [
 
 tavern(TOKEN, "The queen's token", '"What\'s that round your neck?"', [
     a("start", '''{n}She lifts it out on its string: a small black pearl, the size of a fingernail, cold even on a warm night.{/n}
-"This? My receipt. She put it on me herself, when she sent me back. It means I'm hers, on loan. When she wants me, it'll get warm." {n}She rolls it between finger and thumb.{/n}''',
+"This? My receipt. It was round my neck when I sat up, and nobody in that house would say whose hand had tied it. It means I'm hers, on loan. When she wants me, it'll get warm." {n}She rolls it between finger and thumb.{/n}''',
         c("Continue", "debt", requires=(DEBT,)),
         c("Continue", "favour", forbids=(DEBT,))),
     a("debt", '''"One summons. Once. That's what you bought me with, darling. My one summons." {n}She laughs.{/n} "Do you know what she's likely to want? Nothing much. A dance. A conversation. A night. She'll pick the hour that hurts you most, not me. That's the art of it."''',
