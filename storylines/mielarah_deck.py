@@ -20,7 +20,7 @@ from storylines.mielarah_trickster import (
     CLOSED, COMMITTED, CONTACT, CHARTER, CORRECTED, DECLINED, DOCKED, DREZEN, FLOWN, FREED, HUB, HUB_FAILED, HUB_FB,
     KILLED, LANDFALL, LAUGHING, LIED, MEANT, MINDER, MORNING, NIGHT, NOTICED, OSKEL_DEAD, P, RECKONED, REL, RETURNED,
     SECRET_KNOWN, SHIP_LOST, TIGHTENED, TOLD, UNIT, KERZ, NOCTA, D, SAID_USE, CUT, DEAD_LATCH, LANN_GUARD, WOLJIF_GUARD,
-    STORM_OWNED, STORM_BLAMED, PAID, CUT_DOWN, ZYPHUS_MARK, STORM)
+    STORM_OWNED, STORM_BLAMED, PAID, CUT_DOWN, ZYPHUS_MARK, STORM, AMULETS)
 
 SCENES = []
 
@@ -275,7 +275,18 @@ deck(D + "correction", "Disciplinary thought-correction", '"I heard shouting on 
     mi("cabin", '''{n}She sits down on the edge of her bunk as though her strings have been cut, and presses the heels of her hands into her eyes.{/n}
 "Disciplinary thought-correction." {n}Her voice is muffled.{/n} "I told you about it in the Bad Luck, with a smile, as if it were a clever phrase. It is a clever phrase. It is a very clever phrase for going into a man's head and taking the knife out of his hand from the inside."
 "He'll be fine by supper. He won't remember wanting to kill anybody. He never does." {n}She lowers her hands.{/n} "I have done that to every sailor on this ship, Commander. Most of them more than once. Some of them every day."''',
-       c("Continue", "amulets")),
+       c("Continue", "amulets", requires=(AMULETS,)),
+       c("Continue", "box_first", forbids=(AMULETS,))),
+    mi("box_first", '''{n}She reaches under the bunk and brings out a lacquered box, and does not open it.{/n}
+"And when there are too many of them at once, I have these. Amulets. Twenty men at a time, like dolls on one string. I have opened this box twice in six years, and both times I was sick over the rail afterwards." {n}Her fingers stay well away from the lid.{/n} "I hate them more than I hate the curse. The curse, at least, is not something I chose."
+"Kerz keeps his crew by terror. Nocticula's captains keep theirs with the Lady's name. I keep mine with this, and I tell myself it's kinder, because at least nobody gets flogged." {n}She looks up at you.{/n} "You've seen the whole of it now. The captain with the honest reputation. Tell me what you would do."''',
+       c('[Take her hands out of their heads] "Stop. Pay them, and let them choose what kind of men they are."', "freed",
+         flags=(CORRECTED, FREED), alignment=("Good", 1)),
+       c('"Tighten it. A crew is cargo; you said so yourself. Make sure the cargo never shifts."', "tightened",
+         flags=(CORRECTED, TIGHTENED), alignment=("Evil", 1)),
+       c('[Teach them limericks] "Let me have your crew for an evening. I know a better way to take the knife out of a man\'s hand."', "laughing",
+         flags=(CORRECTED, LAUGHING), mythic="Trickster", alignment=("Chaotic", 1)),
+       c('"Your crew, your call. I won\'t tell you how to keep your ship."', "kept", flags=(CORRECTED, KEPT))),
     mi("amulets", '''{n}She reaches under the bunk and brings out a lacquered box, and does not open it.{/n}
 "And when there are too many of them at once, I have these." {n}The amulets, the ones she wore when the crew rose; you know them by the way her fingers avoid the lid.{/n} "Twenty men like dolls on one string. I hate them more than I hate the curse. The curse, at least, is not something I chose."
 "Kerz keeps his crew by terror. Nocticula's captains keep theirs with the Lady's name. I keep mine with this, and I tell myself it's kinder, because at least nobody gets flogged." {n}She looks up at you.{/n} "You've seen the whole of it now. The captain with the honest reputation. Tell me what you would do."''',
@@ -286,14 +297,14 @@ deck(D + "correction", "Disciplinary thought-correction", '"I heard shouting on 
        c('[Teach them limericks] "Let me have your crew for an evening. I know a better way to take the knife out of a man\'s hand."', "laughing",
          flags=(CORRECTED, LAUGHING), mythic="Trickster", alignment=("Chaotic", 1)),
        c('"Your crew, your call. I won\'t tell you how to keep your ship."', "kept", flags=(CORRECTED, KEPT))),
-    mi("freed", '''"Stop." {n}She says it after you, testing it.{/n} "Just stop. And the next time Mharah comes up under the keel, or a card game goes bad, or eleven men decide their captain has protested once too often..."
-{n}She stops. Her hand has gone to her throat, or to where a rope would be.{/n} "The last crew I let alone hanged me. Or would have. Or might."
+    mi("freed", '''"Stop." {n}She says it after you, testing it.{/n} "Just stop. And the next time Mharah comes up under the keel, or a card game goes bad, or a crew decides its captain has protested once too often..."
+{n}She stops. Her hand has gone to her collar.{/n} "The last crew I let alone put the Second on the rocks of Alinythia, and I had to fight my own friends until I was the last one standing."
 "But you're right. I know you're right. I have known it for six years, and I kept finding reasons." {n}She pushes the lacquered box back under the bunk with her heel, hard.{/n} "I'll pay them. Every one. Double what they came aboard for, and a berth off the ship for anyone who wants it. And then we will see what kind of crew I actually have."''',
        c("Continue", "after")),
     mi("tightened", '''{n}For a moment she only looks at you, and you watch her decide that she heard what she heard.{/n}
 "Cargo." {n}She says it very evenly.{/n} "Yes. I did say that. I said it about Oskel, to stop you spending him, and you have turned it round and handed it back to me by the other end."
 {n}She opens the lacquered box, and takes out one of the amulets, and closes her fist on it.{/n} "It would work. That's the terrible thing. They would never shift again. They'd never mutiny, never quarrel, never laugh either." {n}Her knuckles are white. Then she puts the amulet back and shuts the lid.{/n}
-"No. I am not going to fly a ship of dolls because a customer thinks it tidier. But I won't pretend I'm above it, either; the last crew I let alone hanged me." {n}She sets the box on the shelf over her bunk, where she can reach it without bending.{/n} "The box stays out. Any man who draws steel on my deck from tonight goes under the amulet on the spot, for one watch, in front of everyone, and his name goes in the log. That is my order, not yours. You would make a very good pirate, Commander. I have met a great many, and I have decided not to become one."''',
+"No. I am not going to fly a ship of dolls because a customer thinks it tidier. But I won't pretend I'm above it, either; the last crew I let alone put the Second on the rocks." {n}She sets the box on the shelf over her bunk, where she can reach it without bending.{/n} "The box stays out. Any man who draws steel on my deck from tonight goes under the amulet on the spot, for one watch, in front of everyone, and his name goes in the log. That is my order, not yours. You would make a very good pirate, Commander. I have met a great many, and I have decided not to become one."''',
        c("Continue", "after")),
     mi("laughing", '''"Limericks." {n}She stares at you.{/n} "You are going to stand on my main deck and recite obscene verse to a crew of Midnight Isles cutthroats, and you think that will..."
 {n}She stops. Something is happening at the corner of her mouth, against her will.{/n} "Yes. All right. You did it to a mutiny once, didn't you, on someone's ship. I heard." She puts the lacquered box back under the bunk. "One evening. If anyone draws a knife, I'm going in with my head, and you will not say a word about it afterwards."
@@ -455,7 +466,7 @@ deck(D + "morning", "The block on the planks", '[Wake on the quarterdeck.]', [
 "I stood there all night listening for it to try again," {n}she says into your collar.{/n} "It didn't. It tried once and missed and it didn't try again."''',
        c("Continue", "spade")),
     mi("spade", '''"But I heard something else. Before the sun." {n}Her voice changes; it goes to the cold far place.{/n} "The spade. Not behind me, where it always is. Somewhere else, and slow, and not digging for me at all."
-"He has noticed you, Commander. I have met him once, in Abaddon, and I have lived six years inside his joke. That is all the acquaintance I can claim, and it is enough. You read his rule in a tavern and you stood where his joke says nobody stands and you held my wheel through his weather, and the block missed." {n}She looks out at the white floor of the clouds.{/n} "He is not a god who forgets being made a fool of. He cursed me for walking out of his house. I don't know what he'll do about you. I know he'll take his time."''',
+"He has noticed you, Commander. I have met him once, in Abaddon, and I have lived six years inside his joke. That is all the acquaintance I can claim, and it is enough. You read his rule in a tavern and you stood where his joke says nobody stands and you held my wheel through his weather, and the block missed." {n}She looks out at the white floor of the clouds.{/n} "He is Zyphus's herald, and heralds do not forget being made fools of. He cursed me for taking six Pathfinders out of his hands in Abaddon. I don't know what he'll do about you. I know he'll take his time."''',
        c('"Let him dig."', "shield"),
        c('[Trickster] "Then I\'ll have to keep standing where he can\'t reach me."', "shield")),
     mi("shield", '''{n}She turns her head and looks at you, very close, and then she smiles, and it is not the courteous smile or the bitter one. It is the smile from the chart table in the Bad Luck, when she was sixteen again.{/n}
@@ -514,33 +525,33 @@ STERN = D + "stern"
 LAST_NIGHT = D + "last_night"
 
 deck(D + "supper", "The captain's table", '"Your crew eats at the captain\'s table?"', [
-    nar("start", '''{n}They do, the officers at least, at the end of the first dog-watch, in the great cabin under the quarterdeck with the stern windows open on a sky going red over Drezen. There is a navigator with ink to the elbows, a sailmaker with a voice like a rusty hinge, and a first mate, a grey-winged tiefling woman who says nothing whatever and eats as if the food had insulted her.{/n}
-{n}And there is a chair. It stands at the captain's right hand, pulled out a little from the table, laid with a plate and a cup, and nobody sits in it. Nobody looks at it. The steward serves round it as if it were a pillar.{/n}''',
+    nar("start", '''{n}They do, at the end of the first dog-watch, with the sky going red over Drezen below the keel.{/n}''',
         c("Continue", "chair", forbids=(SHIP_LOST,)),
         c("Continue", "crate", requires=(SHIP_LOST,))),
-    mi("chair", '''"The Commander's chair," {n}she says, quite lightly, to the table, as you come in.{/n} "Or anybody's. It's always laid. It's never sat in. The crew have a superstition about it, which is not a superstition at all, since every man who ever sat in it is dead."
+    mi("chair", '''{n}The officers eat in the great cabin under the quarterdeck, with the stern windows open: a navigator with ink to the elbows, a sailmaker with a voice like a rusty hinge, and a first mate, a grey-winged tiefling woman who says nothing whatever and eats as if the food had insulted her. And there is a chair at the captain's right hand, pulled out a little from the table, laid with a plate and a cup, and nobody sits in it. The steward serves round it as if it were a pillar.{/n}
+"The Commander's chair," {n}she says, quite lightly, to the table, as you come in.{/n} "Or anybody's. It's always laid. It's never sat in. The crew have a superstition about it, which is not a superstition at all, since every man who ever sat in it is dead."
 {n}The navigator coughs into his wine. The first mate goes on eating.{/n} "Sit wherever you like, Commander. The sailmaker's elbow is very safe. He has survived three shipwrecks and a marriage."''',
        c("[Sit in the empty chair.]", "sat"),
        c("[Sit at the sailmaker's elbow.]", "safe")),
     mi("crate", '''{n}The Fourth has no great cabin, only a space behind the helm with a canvas roof and a crate for a table. Five hands and a captain eat off it with their plates on their knees. But there is still a crate at her right hand with a cup set on it, and nobody sits on that crate.{/n}
-"The Commander's crate," {n}she says, to the four new faces and the one bored one, as you duck under the canvas.{/n} "Or anybody's. The crew have a superstition about it, which is not a superstition, since the last man who stood there went into the Ishiar with the mainmast on top of him."''',
+"The Commander's crate," {n}she says, to the four new faces and the one bored one, as you duck under the canvas.{/n} "Or anybody's. The crew have a superstition about it, which is not a superstition. They've heard what happened to the Third, and to everyone who ever sat near me on her."''',
        c("[Sit on the empty crate.]", "sat"),
        c("[Sit on the deck with the crew.]", "safe")),
-    nar("sat", '''{n}You sit. The table goes perfectly silent. Somewhere below a pump thumps and stops. The lamp overhead sways on its chain, a finger's width, back and forth, and every eye at the table watches it except hers.{/n}
+    nar("sat", '''{n}You sit. Everyone goes perfectly silent. Somewhere below a pump thumps and stops. The lamp overhead sways on its chain, a finger's width, back and forth, and every eye at supper watches it except hers.{/n}
 {n}She reaches over and moves your cup an inch further from the edge, precisely, the way she moved the salt cellar on the chart in the Bad Luck. Then she picks up her fork.{/n}
-{n}"The Commander," she says, "has been told the rule, and chooses to ignore it. Pass the salt, please, Master Sailmaker, and stop looking at the lamp."{/n}''',
+{n}"The Commander," she says, "has been told the rule, and chooses to ignore it. Pass the salt, and stop looking at the lamp, the lot of you."{/n}''',
         c("Continue", "rift")),
-    nar("safe", '''{n}You take the safe place. Nobody says anything, and nobody needs to; you watch the relief go round the table like a draught of wine.{/n}
-{n}Mielarah says nothing either. But once, halfway through the meal, while the navigator is arguing with the sailmaker about a wind, you see her look at the empty place at her right hand, and then at you, with an expression you cannot read, and then away.{/n}''',
+    nar("safe", '''{n}You take the safe place. Nobody says anything, and nobody needs to; you watch the relief go round the supper like a draught of wine.{/n}
+{n}Mielarah says nothing either. But once, halfway through the meal, while two of her people are arguing about a wind, you see her look at the empty place at her right hand, and then at you, with an expression you cannot read, and then away.{/n}''',
         c("Continue", "rift")),
-    mi("rift", '''"The navigator wants to know about the Rift of Repose." {n}She says it with the air of a woman who has been asked the same question at every supper for three years.{/n} "Everyone wants to know about the Rift of Repose. The place where the dead demon lords go to rot inside their own statues."
-"We went in on a charter for a scholar who wanted a sketch of one of the statues. We sketched it. On the way out, the statue opened its eyes and asked the scholar, very politely, to stay." {n}A sip of wine.{/n} "He stayed. We did not. I flew Starcatcher out of that rift sideways, at a speed she was not built for, with my hat in my teeth. I have never once been able to describe it at a supper table without the sailmaker telling me I've got the wind wrong."''',
+    mi("rift", '''"Somebody always wants to know about the Rift of Repose." {n}She says it with the air of a woman who has been asked the same question at every supper for three years.{/n} "Everyone wants to know about the Rift of Repose. The place where the dead demon lords go to rot inside their own statues."
+"We went in on a charter for a scholar who wanted a sketch of one of the statues. We sketched it. On the way out, the statue opened its eyes and asked the scholar, very politely, to stay." {n}A sip of wine.{/n} "He stayed. We did not. I flew Starcatcher out of that rift sideways, at a speed she was not built for, with my hat in my teeth. I have never once been able to describe it at supper without somebody telling me I've got the wind wrong."''',
        c('[Toast her] "To the manoeuvre."', "toast"),
        c('"And the scholar?"', "scholar")),
     mi("scholar", '''"Still there, I expect. Sketching." {n}She does not smile.{/n} "He was not nearest me when it happened. He was nearest the statue. I have always found that a comfort, which tells you what sort of comfort I've had to make do with."''',
        c('[Toast her anyway] "To the manoeuvre."', "toast")),
-    nar("toast", '''{n}The table drinks, even the first mate, who raises her cup a quarter of an inch and puts it down again as if the gesture had cost her money.{/n}
-{n}Afterwards, when the officers have gone to their watches and the steward has cleared, Mielarah sits on for a while with her boots up on the empty chair's rung, which you have never seen her do, and tells you about Absalom: the harbour, the smell of tar and oranges, the Arcanamirium's towers at night with a lamp lit in every window, as if the whole academy were awake and thinking.{/n}
+    nar("toast", '''{n}Everyone drinks, even the ones who pretend not to.{/n}
+{n}Afterwards, when the others have gone to their watches, Mielarah sits on for a while with her boots up on the empty place at her right hand, which you have never seen her do, and tells you about Absalom: the harbour, the smell of tar and oranges, the Arcanamirium's towers at night with a lamp lit in every window, as if the whole academy were awake and thinking.{/n}
 {n}"I haven't talked about it in six years," she says at last. "It's odd. It all comes out in the wrong order."{/n}''',
         c("[Stay and listen.]", flags=(SUPPER,))),
 ], requires=(FLOWN,), forbids=(SUPPER,), delay=8)
@@ -781,7 +792,7 @@ deck(D + "the_place", "The Commander's place", '"Why is your carpenter cutting u
        c("Continue", "measure")),
     mi("measure", '''{n}The carpenter sets the brass in the groove and taps it home with the heel of his chisel, and gets up, and backs away from it and from her at the same time, which takes some doing.{/n}
 "The crew have already started calling it something." {n}The quick, sharp smile.{/n} "I won't tell you what. Sailors of the Midnight Isles have filthy minds. The polite version is 'the Commander's place', and I have decided to allow the polite version on my deck and fine anyone who uses the other one a day's rum."
-"I need somebody to stand on it. To see if it's in the right place." {n}She looks at you at last.{/n} "For measuring purposes. I'm a magister. We measure things."''',
+"I need somebody to stand on it. To see if it's in the right place." {n}She looks at you at last.{/n} "Get on it, Commander. That's an order. It's my deck."''',
        c("[Stand on the brass.]", "stand"),
        c('[Trickster] "It\'s a quarter-inch too far aft. I can tell by standing on it with my eyes shut."', "joke")),
     nar("stand", '''{n}You step onto the brass. It is half a stride from the wheel, to the right, exactly where her hand falls when she reaches out without looking; you know, because she does it, and her hand finds your sleeve and stays there.{/n}

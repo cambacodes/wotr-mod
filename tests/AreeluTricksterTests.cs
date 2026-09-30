@@ -320,6 +320,17 @@ internal static class AreeluTricksterTests
         check(report.Single(s => s.Id.EndsWith(".visitors")).Nodes.Single(n => n.Id == "start").Choices.Where(ch => ch.Next == "daeran").All(ch => ch.Forbids.Contains("trickster.ever")),
             "Daeran still visits the report.");
 
+        // Sol r2 (CAN): the lens invents no deaths; the Crossroads shows no fighting hosts (Epilogues/Cue_0175 turns them to ale).
+        check(lens.Nodes.Single(n => n.Id == "died").Text.IndexOf("twice", StringComparison.Ordinal) < 0
+              && report.Single(s => s.Id.EndsWith(".crossroads")).Nodes.All(n => !n.Text.Contains("killing") && !n.Text.Contains("fought") && !n.Text.Contains("still fighting")),
+            "The lens counts deaths that never happened, or the Crossroads is still a battlefield.");
+        // Every other native death keeps canon fate, and the page says whose choice it was.
+        foreach (var fate in new[] { "areelu.incinerated", "areelu.sacrifice_wound", "areelu.sacrifice_before", "areelu.dead_fight" })
+        {
+            var w = World(story, 6, "trickster.ever", fate, Struck, Bet, Committed, Named, Drawn);
+            check(Rules.VisibleParagraphs(unnamed.Nodes[0], w).Length >= 2, "The uncollected page does not explain " + fate);
+        }
+
         // Sol BEL: the breakup ends the report; the afterword lives only in the branches that continue.
         var promise = report.Single(s => s.Id.EndsWith(".promise"));
         check(!Available(report.Single(s => s.Id.EndsWith(".afterword")), rewriteWorld) && !Available(report.Single(s => s.Id.EndsWith(".afterword")), punchline),

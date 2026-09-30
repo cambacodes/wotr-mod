@@ -146,11 +146,11 @@ internal static class NenioTricksterTests
               && Ch(riddle, "filed", 1).NativeNext == FoxTwo && Ch(riddle, "filed", 1).Requires.Contains("nenio.fox_argued")
               && riddle.Nodes.Single(n => n.Id == "filed").Choices.All(c => c.Set.Contains(P + "riddle_done") && c.Set.Contains(Started) && c.Set.Contains(NameStaked)),
             "The answered riddle is not one of her two native arguments (Cue_0019 first, Cue_0020 second) with the name staked.");
-        // Sol INT: both native arguments can reach her farewell by name (FoxMyself/Cue_0032). The stake is filed after it, that night:
-        // no choice inside the Enigma sets the filed cost, and the filing night is its only producer.
-        check(!riddle.Nodes.SelectMany(n => n.Choices).Any(c => c.Set.Contains(NameFiled))
-              && story.Scenes.Where(s => s.Relationship == "nenio").SelectMany(s => s.Nodes.SelectMany(n => n.Choices).Where(c => c.Set.Contains(NameFiled)).Select(_ => s.Id))
-                   .Distinct().SequenceEqual(new[] { P + "taken.filing" })
+        // Sol INT: both native arguments can reach her farewell by name (FoxMyself/Cue_0032). The stake is filed only once that
+        // farewell has been seen: cost.name_filed is Derived [riddle_done, enigma_resolved], and no choice sets it.
+        check(!riddle.Nodes.Any(n => n.Choices.Any(c => c.Set.Contains(NameFiled)))
+              && story.Scenes.Where(s => s.Relationship == "nenio").Where(s => s.Nodes.Any(n => n.Choices.Any(c => c.Set.Contains(NameFiled)))).All(s => s.Id.StartsWith(P + "after_enigma", StringComparison.Ordinal))
+              && story.Derived[P + "name_gone"].Length == 2 && story.Derived[P + "name_gone"][1].OrderBy(f => f).SequenceEqual(new[] { "nenio.enigma_resolved", P + "riddle_done" })
               && story.SeenCues["nenio.enigma_resolved"].SequenceEqual(new[] { FoxFarewell }),
             "The name is filed before her native farewell, which still says it.");
         check(!story.Scenes.Where(s => s.Relationship == "nenio").Any(s => s.Nodes.Any(n => n.Choices.Any(c => c.Set.Any(f => f.StartsWith("trickster.wmt.use.", StringComparison.Ordinal))))),
@@ -163,14 +163,13 @@ internal static class NenioTricksterTests
             "Trk_Nenio_Riddle: the riddle is closed in the Enigma, or open after the dissolution or the lost path.");
         var staked = Take(riddle, fox, "filed", 0, P + "riddle_done", NameStaked, Started);
         check(!Avail(riddle, staked) && !staked.Has(NameFiled), "Trk_Nenio_Riddle: the wager can be made twice, or files the name at once.");
-        var filing = S(P + "taken.filing");
+        check(!story.Scenes.Any(s => s.Id == P + "taken.filing"), "A rest delivery files the name (Sol r1 COX: no extra Chapter 5 delivery).");
         var afterEnigma = S(P + "after_enigma");
-        var farewellSeen = Later(story, With(staked, "nenio.enigma_resolved"), 8);
-        check(Rules.IsRemote(filing) && Avail(filing, farewellSeen) && !Avail(afterEnigma, farewellSeen) && !Avail(filing, Later(story, staked, 2)),
-            "The filing night does not follow the Enigma, or the talk after it comes first.");
-        var filedNight = Program.Walk(filing, farewellSeen).Where(r => r.Has(filing.Id)).ToList();
-        check(filedNight.Count > 0 && filedNight.All(r => r.Has(NameFiled)) && Avail(afterEnigma, Later(story, filedNight[0], 12)),
-            "The filing night does not file the name, or the talk after the Enigma does not follow it.");
+        var agedStake = Later(story, staked, 200);
+        var farewellSeen = Later(story, With(staked, "nenio.enigma_resolved"), 13);
+        check(!agedStake.Has(P + "name_gone") && !Avail(afterEnigma, agedStake) && farewellSeen.Has(P + "name_gone") && Avail(afterEnigma, farewellSeen)
+              && Program.Walk(afterEnigma, farewellSeen).Where(r => r.Has(afterEnigma.Id)).All(r => r.Has(NameFiled)),
+            "The name is filed without her farewell, or the talk after the Enigma does not follow it.");
         var told = Take(riddle, fox, "told", 0, P + "riddle_declined");
         check(!told.Has(Started) && !told.Has(Closed) && !told.Has(Declined), "Trk_Nenio_Riddle: the told answer closes more than the wager.");
         var failed = Take(riddle, fox, "lost", 0, P + "riddle_declined");
@@ -284,10 +283,25 @@ internal static class NenioTricksterTests
         foreach (var inParty in own.Where(s => s.AnswerLists.Contains(Hub)))
             check(inParty.ContactUnit == Unit && inParty.Forbids.Contains(P + "visitor"), "A hub scene plays for a visitor: " + inParty.Id);
 
-        // Pacing: a beat in every chapter she is available (Ch4 by rest, in the party or by letter).
-        check(own.Count(s => s.Chapters.Contains(4) && Rules.IsRemote(s) && s.Id.StartsWith(F, StringComparison.Ordinal) && s.Forbids.Contains(P + "visitor")) >= 2
-              && own.Any(s => s.Chapters.Contains(4) && s.Requires.Contains(P + "visitor")),
-            "Pacing: Chapter 4 is a silence (the Abyss beats in the party, the letter from Drezen).");
+        // Pacing (Sol r1 COX, ledger R2-5): in the Abyss she travels with the company, so her Chapter 4 beats are in person on
+        // her hub; the Drezen report is handed over in person after the return; no Nenio rest delivery plays in Chapter 4.
+        check(own.Count(s => s.Chapters.SequenceEqual(new[] { 4 }) && !Rules.IsRemote(s) && s.AnswerLists.Contains(Hub) && s.Forbids.Contains(P + "visitor")) >= 3
+              && !own.Any(s => s.Id.StartsWith(F, StringComparison.Ordinal) && Rules.IsRemote(s) && s.Chapters.Contains(4) && !s.Forbids.Contains("trickster.ever"))
+              && S(F + "drezen.handed_visitor").Chapters.SequenceEqual(new[] { 5 }) && S(F + "drezen.report").Forbids.Contains("trickster.ever"),
+            "Pacing: Chapter 4 beats are not in person, or a Chapter 4 rest delivery remains.");
+        // Sol r1 INT/BEL: history-bound callbacks.
+        HashSet<string> Visited(Scene sc, Snapshot w) { var seen = new HashSet<string>(); Program.Walk(sc, w, (node, _) => seen.Add(node)); return seen; }
+        var lamp = S(F + "abyss.lamp");
+        check(lamp.Nodes.All(n => !n.Text.Contains("audience hall")), "The lamp remembers an audience the Commander may not have had.");
+        check(!Avail(S(F + "who_are_you"), World(story, 5, "trickster", "trickster.ever", Scribe, Started, "nenio.fox_revealed", "nenio.enigma_resolved")),
+            "Nenio promises to find the masks after the Enigma was resolved natively.");
+        var strangerWorld = World(story, 5, "trickster", "trickster.ever", Returned, P + "cost.unremembered", Scribe, Started);
+        check(!Avail(S(F + "kenabres_box_visitor"), Later(story, strangerWorld, 80)) && Avail(S(F + "kenabres_box_visitor"), Later(story, With(strangerWorld, F + "stranger.kenabres_said"), 80)),
+            "The box quotes a Kenabres confession that was never made.");
+        var nightLost = Visited(night, World(story, 5, "trickster", "trickster.ever", P + "first_night", P + "cost.unremembered"));
+        var nightKept = Visited(night, World(story, 5, "trickster", "trickster.ever", P + "first_night"));
+        check(nightLost.Contains("bare") && !nightLost.Contains("shelves") && nightKept.Contains("shelves") && !nightKept.Contains("bare")
+              && !night.Nodes[0].Text.Contains("ninety-nine"), "The night shows notes she no longer has.");
 
         // Pages: the article, the late yes, the void, and the closed page; none writes anything.
         check(pages.Select(s => s.Id).OrderBy(i => i).SequenceEqual(new[] { P + "epilogue.article", P + "epilogue.closed", P + "epilogue.commit", P + "epilogue.void" })
@@ -306,15 +320,18 @@ internal static class NenioTricksterTests
         check(!Avail(S(P + "epilogue.article"), World(story, 6, "trickster.ever", Started, Committed, "sacrifice", "ending.wound_closed")),
             "A Commander who burned closing the Wound still gets the article.");
 
-        // Sol TRK: the Sphinx collects in Chapter 6: paid, paid in her own coin (prepared at the Ruins), or defaulted.
+        // Sol TRK: the Sphinx's servant collects in person in Chapter 5, in front of her: paid, paid in the Sphinx's own coin
+        // (prepared: the Commander answered the void with silence), or defaulted. No rest delivery.
         var debt = S(P + "debt.collected");
-        var owing = World(story, 6, "trickster", "trickster.ever", Returned, Owes, Started);
-        check(Rules.IsRemote(debt) && Avail(debt, owing) && !Avail(debt, World(story, 5, "trickster", "trickster.ever", Returned, Owes, Started)),
-            "The Sphinx does not come to collect in Chapter 6.");
+        var owing = World(story, 5, "trickster", "trickster.ever", Returned, Owes, Started, Scribe);
+        check(!Rules.IsRemote(debt) && debt.AnswerLists.Contains(Hub) && Avail(debt, Later(story, owing, 49)) && !Avail(debt, World(story, 6, "trickster", "trickster.ever", Returned, Owes, Started, Scribe)),
+            "The Sphinx does not come to collect in person in Chapter 5.");
         var debts = Program.Walk(debt, owing).Where(r => r.Has(debt.Id)).ToList();
         check(debts.Any(r => r.Has(P + "debt.paid")) && debts.Any(r => r.Has(P + "debt.defaulted")) && !debts.Any(r => r.Has(P + "debt.evaded")),
-            "The collection offers the Sphinx's coin without the Ruins, or lacks payment or default.");
-        check(Program.Walk(debt, With(owing, "nenio.fox_revealed")).Any(r => r.Has(P + "debt.evaded")), "The prepared loophole is missing.");
+            "The collection offers the Sphinx's coin without the prepared silence, or lacks payment or default.");
+        check(Program.Walk(debt, With(owing, F + "who_are_you.silent")).Any(r => r.Has(P + "debt.evaded"))
+              && !Program.Walk(debt, With(owing, "nenio.fox_revealed")).Any(r => r.Has(P + "debt.evaded")),
+            "The loophole is not gated on the chosen silence in the void.");
         check(!Avail(debt, With(owing, P + "debt.paid")), "The debt can be collected twice.");
         var article = S(P + "epilogue.article");
         var owedPara = article.Nodes[0].Paragraphs.Single(pp => pp.Requires.SequenceEqual(new[] { Owes }));
@@ -331,6 +348,8 @@ internal static class NenioTricksterTests
             return string.Join(",", new[] { "pre", "post", "visiting", "unvisited", "resolved" }.Where(nodes.Contains));
         }
         var scribe5 = World(story, 5, "trickster", "trickster.ever", Scribe, Started);
+        check(Visited(pageOne, scribe5).Contains("entry_plain") && !Visited(pageOne, scribe5).Contains("entry")
+              && Visited(pageOne, With(scribe5, "nenio.fox_revealed")).Contains("entry"), "Page one announces a rediscovered species before the reveal.");
         check(Opening(scribe5) == "unvisited" && Opening(With(scribe5, "nenio.fox_revealed")) == "pre"
               && Opening(With(scribe5, "nenio.fox_revealed", "nenio.enigma_resolved")) == "resolved"
               && Opening(With(scribe5, "nenio.fox_revealed", "nenio.enigma_resolved", P + "riddle_done")) == "post",

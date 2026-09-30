@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 971,
-  "resolved": 971,
-  "inlineOnlyScenes": 241,
-  "inlineOnlyResolved": 241,
-  "answerListScenesWithoutContact": 557,
-  "answerListScenesWithoutContactResolved": 557,
+  "entryTargetScenes": 972,
+  "resolved": 972,
+  "inlineOnlyScenes": 242,
+  "inlineOnlyResolved": 242,
+  "answerListScenesWithoutContact": 558,
+  "answerListScenesWithoutContactResolved": 558,
   "lists": 100,
   "listsWithReachableHost": 99
  },
@@ -1822,6 +1822,25 @@
     "dialogName": "AreeluCell_AreeluLabAgain_c5_dialog",
     "cue": "Cue_0002",
     "clicks": 1
+   }
+  },
+  "areelu.trickster.wager.unprimed": {
+   "kind": "return-to-list",
+   "lists": [
+    "f56a69dc64a48b14096a557697f43f2a"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "f56a69dc64a48b14096a557697f43f2a": "RRT_entry.areelu.trickster.wager.unprimed.f56a69dc64a48b14096a557697f43f2a"
+   },
+   "resolved": true,
+   "host": {
+    "list": "f56a69dc64a48b14096a557697f43f2a",
+    "dialog": "f125dc501dc6e984385332e67f324f01",
+    "dialogName": "GrandFinal_dialog",
+    "cue": "Cue_0004_ShadowFin",
+    "clicks": 0
    }
   },
   "areelu.trickster.witch.the_clause": {

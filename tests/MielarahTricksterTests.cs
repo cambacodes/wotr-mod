@@ -216,11 +216,29 @@ internal static class MielarahTricksterTests
         // Sol TRK (R2-2): the hanging with nobody posted was recovered inside a retrospective memory. It is retired by gating:
         // the raid is the Commander's own order over her protest, so an unprepared hanging keeps canon fate (as the kill at
         // Colyphyr does); the prepared bosun and the Commander at her elbow are the only ways back from the rope.
-        var unprepared = World(story, 4, "trickster", "trickster.ever", "mielarah.dead", "mielarah.dead.latched", P + "primed.pattern");
+        var unprepared = World(story, 4, "trickster", "trickster.ever", "mielarah.dead", "mielarah.dead.latched", "mielarah.voyage_begun", P + "primed.pattern");
         check(!Rules.Available(story, rope, unprepared) && !Rules.Available(story, yardWind, unprepared) && yardWind.Forbids.Contains("trickster.ever")
-              && whisper.Forbids.Contains("trickster.ever") && S(P + "react.woljif_yard").Forbids.Contains("trickster.ever")
-              && !own.Any(s => Rules.Available(story, s, Later(story, unprepared, 49))),
+              && whisper.Forbids.Contains("trickster.ever") && S(P + "react.woljif_yard").Forbids.Contains("trickster.ever"),
             "Trk_Mielarah_LateAfterDeath: the retrospective capstan rescue still plays.");
+        // Its present-time replacement (R2-2 late fallback): the curse took the man at the plank, so she was alive in the sea.
+        var overboard = S(P + "raid.overboard");
+        var ashore = S(P + "raid.ashore");
+        check(Rules.IsRemote(overboard) && overboard.TricksterDevice && Rules.Available(story, overboard, unprepared)
+              && !Rules.Available(story, overboard, World(story, 4, "trickster.ever", "trickster.failed", "mielarah.dead", "mielarah.dead.latched", "mielarah.voyage_begun"))
+              && !Rules.Available(story, overboard, hanged) && !Rules.Available(story, overboard, With(unprepared, P + "primed.self")),
+            "Trk_Mielarah_LateAfterDeath: the late fallback is missing, opens after the path is lost, or opens for a prepared rescue.");
+        var sentBack = Program.Walk(overboard, unprepared).Where(r => r.Has(P + "raid.sent_back")).ToList();
+        check(sentBack.Count > 0 && sentBack.All(r => r.Has(P + "cost.late") && r.Has(P + "cost.hung") && r.Has(P + "cost.noticed") && !r.Has(P + "returned"))
+              && Program.Walk(overboard, unprepared).Any(r => r.Has("mielarah.closed")),
+            "Trk_Mielarah_LateAfterDeath: the fallback costs nothing, or cannot be refused.");
+        var unread2 = World(story, 4, "trickster", "trickster.ever", "mielarah.dead", "mielarah.dead.latched", "mielarah.voyage_begun");
+        check(Program.Walk(overboard, unread2).Any(r => r.Has(P + "raid.sent_back")) && overboard.Nodes.Single(n => n.Id == "folk").Choices[0].Check?.Skill == "SkillLoreReligion",
+            "Trk_Mielarah_LateAfterDeath: the unread rule has no road (the check, or the bosun's hunch).");
+        var ashoreWorld = Later(story, sentBack[0], 49);
+        check(Rules.Available(story, ashore, ashoreWorld) && !Rules.Available(story, rock, ashoreWorld), "Trk_Mielarah_LateAfterDeath: she never comes ashore, or the rock plays without her ship.");
+        var ashoreBack = Program.Walk(ashore, ashoreWorld).First(r => r.Has(P + "returned"));
+        check(ashoreBack.Has("mielarah.started") && Reaches(Later(story, ashoreBack, 10, 5), "mielarah.committed"),
+            "Trk_Mielarah_LateAfterDeath: no road to the commit after the sea.");
         // 11 §2's prepared alternative: the Commander at her elbow instead of Oskel; nearest at the hanging, marked, nobody else dies.
         var self = After(minder, hired, "order", 3).First();
         check(self.Has(P + "primed.self") && !self.Has(P + "primed.minder"), "Trk_Mielarah_Elbow: the Commander cannot take her elbow.");
@@ -365,6 +383,24 @@ internal static class MielarahTricksterTests
         var sternBase = World(story, 5, "trickster.ever", P + "landfall", "mielarah.started", D + "reckoned", P + "cost.oskel");
         check(Painted(With(sternBase, "mielarah.dead.latched")) == "paint" && Painted(With(sternBase, "mielarah.storm_crash")) == "paint_storm"
               && Painted(With(sternBase, P + "raid.cut_down")) == "paint_cut", "The stern paints a death from another world.");
+        // Sol r1 (INT/BEL/CAN): each history reaches only its own recollections.
+        HashSet<string> Visited(Scene sc, Snapshot w) { var seen = new HashSet<string>(); Program.Walk(sc, w, (node, _) => seen.Add(node)); return seen; }
+        var correction = S(D + "correction");
+        var charterHistory = World(story, 5, "trickster.ever", "captain.kerz", P + "charter", "mielarah.started", D + "flown");
+        var amuletHistory = World(story, 5, "trickster.ever", P + "landfall", "mielarah.started", D + "flown", "mielarah.amulets_used");
+        check(Visited(correction, charterHistory).Contains("box_first") && !Visited(correction, charterHistory).Contains("amulets")
+              && Visited(correction, amuletHistory).Contains("amulets") && !Visited(correction, amuletHistory).Contains("box_first")
+              && correction.Nodes.All(n => !n.Text.Contains("hanged me")),
+            "The correction remembers amulets or a hanging that never happened.");
+        var supper = S(D + "supper");
+        var thirdSupper = Visited(supper, World(story, 5, "trickster.ever", P + "landfall", "mielarah.started", D + "flown"));
+        var fourthSupper = Visited(supper, World(story, 5, "trickster.ever", P + "returned", P + "cost.ship_lost", "mielarah.started", D + "flown"));
+        check(supper.Nodes[0].Text.IndexOf("great cabin", StringComparison.Ordinal) < 0 && thirdSupper.Contains("chair") && !thirdSupper.Contains("crate")
+              && fourthSupper.Contains("crate") && !fourthSupper.Contains("chair")
+              && !supper.Nodes.Single(n => n.Id == "crate").Text.Contains("mainmast"),
+            "The Fourth's supper is staged in the Third's great cabin, or recalls a minder's death that did not happen.");
+        check(story.Scenes.Where(s => s.Relationship == "mielarah").SelectMany(s => s.Nodes).All(n => !n.Text.Contains("not a god who forgets")),
+            "The Gravedragger is called a god (he is Zyphus's herald, Tumberd/Cue_0044).");
         Console.WriteLine("PASS: Mielarah Trickster (Trk_Mielarah_*): the rule read, the bosun, the hanging, the storm, the landfall, the charter, "
                           + deck.Length / 2 + " Chapter 5 beats and the wheel.");
     }
