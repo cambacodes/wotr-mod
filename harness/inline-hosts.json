@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 929,
-  "resolved": 929,
+  "entryTargetScenes": 930,
+  "resolved": 930,
   "inlineOnlyScenes": 230,
   "inlineOnlyResolved": 230,
-  "answerListScenesWithoutContact": 523,
-  "answerListScenesWithoutContactResolved": 523,
+  "answerListScenesWithoutContact": 524,
+  "answerListScenesWithoutContactResolved": 524,
   "lists": 93,
   "listsWithReachableHost": 92
  },
@@ -12011,6 +12011,25 @@
    "contact": null,
    "entry": {
     "e41585da330233143b34ef64d7d62d69": "RRT_entry.jerribeth.trickster.reaction.woljif_levy"
+   },
+   "resolved": true,
+   "host": {
+    "list": "e41585da330233143b34ef64d7d62d69",
+    "dialog": "8a38eeddc0215a84ca441439bb96b8f4",
+    "dialogName": "DialogueWoljif_main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "jerribeth.trickster.reaction.woljif_visitor": {
+   "kind": "dialog",
+   "lists": [
+    "e41585da330233143b34ef64d7d62d69"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "e41585da330233143b34ef64d7d62d69": "RRT_entry.jerribeth.trickster.reaction.woljif_visitor"
    },
    "resolved": true,
    "host": {
