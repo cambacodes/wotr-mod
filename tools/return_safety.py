@@ -13,6 +13,10 @@ else, so a violation here is a relationship that silently vanishes in game. The 
   Main.cs:238      list: MythicRequirement and AlignmentRequirement at their defaults (None)
   Main.cs:239      cue: exactly one answer, and it is the scene's answer list itself
 
+The pass/fail rules match Writer/tools/retcheck.py (the pair-by-pair research tool); this check is additionally strict
+about PrototypeLink/m_Overrides, whose inherited fields it cannot see. Entry answers are inserted before the list's last
+native answer (Main.cs:518-521); rrt_verify section F reports lists whose last answer is not a leave line.
+
 Story.cs Rules.Validate already requires exactly one AnswerLists entry for such a scene; the check repeats it because
 Main.cs calls AnswerLists.Single(). NativeReturnCue is the only story field that names a native return: ReturnToList
 builds its own authored return cue, and NativeNext / ContinueBefore / EpilogueAfter continue into native content

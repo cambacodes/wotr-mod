@@ -11,7 +11,7 @@ Usage:
   python rrt_verify.py --matrix ../handoffs/trickster-matrix.json   # TT-20 roster matrix: entry / commit / coexist per character
 
 Sections: A producers | B reachability per mythic world | C chapter/delay traps | D cross-route forbid matrix
-          E lints | F native GUID bindings | F2 native return safety | G runtime-risk metrics | H Trickster roster matrix | I TypeId lint
+          E lints | E2 gate lints | F native GUID bindings | F2 native return safety | G runtime-risk metrics | H Trickster roster matrix | I TypeId lint
           E9 rest budget: Trickster full-roster simulation with the E8b mailbag (default) or E8 post bags (report only;
              --delivery, --rest-cadence, --chapter-days, --bag-size, --queue-cap, --sim-natives); also run per matrix supply
              profile in --matrix mode
@@ -22,6 +22,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import return_safety  # noqa: E402  (F2: the Main.cs native return contract)
+import gate_lint  # noqa: E402  (E2: gate-writing lints, handoff 17)
 # The mod root is, in order: $RRT_ROOT, the repository this script lives in (tools/..), or the default checkout.
 MOD = Path(os.environ["RRT_ROOT"]) if os.environ.get("RRT_ROOT") else (
     HERE.parent if (HERE.parent / "expansion.py").exists() else Path(r"C:\Users\Z\Documents\Projects\RanRomanceTirabade"))
@@ -1268,6 +1269,9 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
         for x in removed[:6]: P("     removed:", x)
         for x in drift[:6]: P("     drift:", x)
     R["lint"] = lint
+    # E2: gate lints on the raw story (tools/gate_lint.py): one-flag groups, scenes relying on the tirabade default
+    R["gate_lint"] = gate_lint.check(story)
+    gate_lint.report(R["gate_lint"], P)
 
     # ---- G. runtime risk metrics / Build() mirrors
     names, flagkeys = build_names(model)
@@ -2079,6 +2083,7 @@ def main():
     Path(a.text).write_text(text, encoding="utf-8")
     hard = len(R["validate_errors"]) + len(R["no_producer_required"]) + len(R.get("typeid", {}).get("problems", [])) \
         + len(R.get("bindings", {}).get("failures", [])) + len(R.get("return_safety", {}).get("failures", [])) \
+        + sum(len(v) for v in R.get("gate_lint", {}).values()) \
         + len(R["runtime"]["duplicate_names"]) + len(R["runtime"]["retry_dups"])         + len(R.get("released_names_removed", []))
     for x in R.get("released_names_removed", [])[:20]: print("SAVE BREAK (name from a released build no longer registered):", x)
     print("\nHARD FAILURES: %d  (report: %s)" % (hard, a.text))

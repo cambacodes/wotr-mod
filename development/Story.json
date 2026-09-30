@@ -188909,16 +188909,12 @@
             },
             {
               "Text": "{n}Somewhere a vat of Mutasafen's still held a little of the Commander, until the fire.{/n}",
-              "Requires": [],
+              "Requires": [
+                "hepzamirah.trickster.cost.blood_sample",
+                "hepzamirah.trickster.cost.vial_paid"
+              ],
               "Forbids": [],
-              "AnyGroups": [
-                [
-                  "hepzamirah.trickster.cost.blood_sample"
-                ],
-                [
-                  "hepzamirah.trickster.cost.vial_paid"
-                ]
-              ]
+              "AnyGroups": []
             },
             {
               "Text": "{n}The crusade's books listed one laboratory \"in the Worldwound, address unknown\". The address, it turned out, was known to one person.{/n}",
@@ -229956,7 +229952,8 @@
         "trickster.ever",
         "areelu.trickster.wager_struck",
         "areelu.trickster.rivalry_on_screen",
-        "areelu.trickster.survives"
+        "areelu.trickster.survives",
+        "areelu.died_at_finale"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -229971,9 +229968,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "areelu.died_at_finale"
         ]
       ],
       "ForbidOverrides": {
@@ -230155,7 +230149,8 @@
         "trickster.ever",
         "areelu.trickster.wager_struck",
         "areelu.trickster.rivalry_on_screen",
-        "areelu.trickster.survives"
+        "areelu.trickster.survives",
+        "trickster.cheated_death"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -230170,9 +230165,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "trickster.cheated_death"
         ]
       ],
       "ForbidOverrides": {
@@ -232696,7 +232688,8 @@
         "trickster.ever",
         "areelu.trickster.wager_struck",
         "areelu.trickster.rivalry_on_screen",
-        "areelu.trickster.survives"
+        "areelu.trickster.survives",
+        "trickster.cheated_death"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -232711,9 +232704,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "trickster.cheated_death"
         ]
       ],
       "ForbidOverrides": {
@@ -364087,8 +364077,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
