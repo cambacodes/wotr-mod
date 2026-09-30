@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-eliandra\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 3713,
-  "unique_targets": 792,
+  "binding_uses": 3738,
+  "unique_targets": 793,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -1506,6 +1506,10 @@
       "path": "World/Dialogs/c6/ThresholdExterior/AreeluThresholdWelcome/Cue_0027.jbp",
       "type": "BlueprintCue"
     },
+    "984d9d1432ea89044a6515be61a22125": {
+      "path": "World/Dialogs/c6/ThresholdExterior/NorthernLights/Answer_0003.jbp",
+      "type": "BlueprintAnswer"
+    },
     "e77c405d6dde5804bb1f873f971958b8": {
       "path": "World/Dialogs/c6/TrueEnding/Suggest/AnswersList_0037.jbp",
       "type": "BlueprintAnswersList"
@@ -1888,10 +1892,6 @@
     },
     "e4374a1783c74f68ae46bb5db22e0c58": {
       "path": "World/Etudes/Common/ImportantStates/StoryProjectsOutcome/DragonsInEducationFinished.jbp",
-      "type": "BlueprintEtude"
-    },
-    "caed5f67245242e596cf19c2166661c1": {
-      "path": "World/Etudes/Common/ImportantStates/StoryProjectsOutcome/NorthernLights_PuluraFinished.jbp",
       "type": "BlueprintEtude"
     },
     "a9a453f695924f99b4326f60b7c3753e": {
@@ -2496,6 +2496,10 @@
     },
     "3a82aba4de71b89458ac82949ed957c4": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAngel/PlayerIsAngel.jbp",
+      "type": "BlueprintEtude"
+    },
+    "c946f95a3f79eaa429799db96538fc07": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAngel/AngelStates/PuluraFall_States/Pulura_MutasafenStoleProject.jbp",
       "type": "BlueprintEtude"
     },
     "5f72b252bd7fa8d48bd04c27982a4f9c": {
