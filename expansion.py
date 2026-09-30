@@ -68,6 +68,7 @@ from storylines import jannah_trickster, jannah_circle
 from storylines import nenio_trickster, nenio_folios
 from storylines import herrax_trickster, herrax_house
 from storylines import terendelev_trickster, terendelev_watch
+from storylines import eliandra_trickster, eliandra_stars
 from storylines import rrt_ui
 from storylines import rrt_portraits
 from storylines import scene_kinds
@@ -501,6 +502,15 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(terendelev_watch.SCENES))
     terendelev_trickster.integrate(payload)
     terendelev_watch.integrate(payload)
+    # Eliandra: a new relationship (trickster/eliandra.md; 11-ROSTER-PLAN-2 §2, R4 build sheet): a sacrifice in her place,
+    # made in her last rite at the star-heart of Pulura's Fall (inline on her Ch5 hub), her own offering, the first mile,
+    # the shrine's last night, and the courtship on her presence in Drezen (eliandra_stars). Replaces the unregistered draft
+    # eliandra_trickster_opening (never merged).
+    payload["Relationships"]["eliandra"] = copy.deepcopy(eliandra_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(eliandra_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(eliandra_stars.SCENES))
+    eliandra_trickster.integrate(payload)
+    eliandra_stars.integrate(payload)
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
     trickster_engine(payload)

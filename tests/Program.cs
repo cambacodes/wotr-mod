@@ -485,6 +485,7 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "nenio.trickster.taken.riddle")) NenioTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "herrax.trickster.madam.schedule")) HerraxTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "terendelev.trickster.bones.restitution")) TerendelevTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "eliandra.trickster.ch5.last_rite")) EliandraTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "trickster.lastcall.threshold")) LastCallTests.Run(story, Check);
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "arsinoe").Select(s => s.Id));
         }

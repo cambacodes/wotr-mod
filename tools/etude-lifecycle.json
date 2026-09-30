@@ -2339,6 +2339,23 @@
     "parent_mod"
    ]
   },
+  "955329a8fc1d4d8e96d433d75d9a2ddd": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "EliandraDead",
+    "Eliandra",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "EliandraDead",
+   "traits": [
+    "hold"
+   ]
+  },
   "9591c34df22b4d518a059cf608255458": {
    "areas": {},
    "cascade_chapter": null,
@@ -3135,6 +3152,24 @@
    "traits": [
     "conditional",
     "self_completed"
+   ]
+  },
+  "c946f95a3f79eaa429799db96538fc07": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Pulura_MutasafenStoleProject",
+    "PuluraFall_States",
+    "AngelStates",
+    "MythicAngel",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Pulura_MutasafenStoleProject",
+   "traits": [
+    "hold"
    ]
   },
   "c97882cbc65c4c546aed1810627a5b81": {
