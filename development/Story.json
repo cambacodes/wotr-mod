@@ -20268,11 +20268,15 @@
         "inhuman",
         "ascended",
         "konomi.private_future",
-        "konomi.missed_contact_invalidated"
+        "konomi.missed_contact_invalidated",
+        "sacrifice"
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "konomi"
+      "Relationship": "konomi",
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      }
     },
     {
       "Id": "konomi.ending_private",
@@ -20355,11 +20359,15 @@
         "inhuman",
         "ascended",
         "konomi.private_future",
-        "konomi.missed_contact_invalidated"
+        "konomi.missed_contact_invalidated",
+        "sacrifice"
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "konomi"
+      "Relationship": "konomi",
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      }
     },
     {
       "Id": "konomi.ending_changed",
@@ -25442,11 +25450,15 @@
         "inhuman",
         "ascended",
         "konomi.private_consequence_complete",
-        "konomi.missed_contact_invalidated"
+        "konomi.missed_contact_invalidated",
+        "sacrifice"
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "konomi"
+      "Relationship": "konomi",
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      }
     },
     {
       "Id": "konomi.ending_distance_open",
@@ -25530,11 +25542,15 @@
         "inhuman",
         "ascended",
         "konomi.private_consequence_complete",
-        "konomi.missed_contact_invalidated"
+        "konomi.missed_contact_invalidated",
+        "sacrifice"
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "konomi"
+      "Relationship": "konomi",
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      }
     },
     {
       "Id": "konomi.ending_distance_apart",
@@ -74834,11 +74850,15 @@
         "konomi.closed",
         "inhuman",
         "ascended",
-        "konomi.missed_contact_invalidated"
+        "konomi.missed_contact_invalidated",
+        "sacrifice"
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "konomi"
+      "Relationship": "konomi",
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      }
     },
     {
       "Id": "konomi.ending_distance_open_lived",
@@ -75013,11 +75033,15 @@
         "inhuman",
         "ascended",
         "konomi.committed",
-        "konomi.missed_contact_invalidated"
+        "konomi.missed_contact_invalidated",
+        "sacrifice"
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "konomi"
+      "Relationship": "konomi",
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      }
     },
     {
       "Id": "konomi.a_turn_for_herself",
@@ -80797,7 +80821,9 @@
         "anevia.courtship_requested",
         "irabeth_dead",
         "irabeth_gone",
-        "anevia_away"
+        "anevia_away",
+        "anevia.trickster.terms_kept",
+        "anevia.trickster.cost.her_key"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -80866,7 +80892,7 @@
           "Text": "\"To look at you. Beth likes to see a person's face when they say a thing. Paladin habit. Or orc habit. She won't tell me which.\"\n{n}She rubs at a mark on the mug with her thumb.{/n}\n\"She'll want you alone. Don't go in there rehearsed. She's questioned cultists, she knows what rehearsed sounds like. And she ain't interviewin' you for a post, so don't bring references.\"\n\"And if she says no?\"\n\"Then she says no, and I find out what I'm made of. Might be somethin' ugly. Rather find out over tea than on some doorstep at midnight.\"",
           "Choices": [
             {
-              "Text": "\"Before I speak with her, tell me what you want.\"",
+              "Text": "\"Before I go near Beth, what do you want out of this?\"",
               "Next": "desire",
               "Set": [],
               "Requires": [],
@@ -80974,7 +81000,7 @@
         {
           "Id": "her_marriage",
           "Speaker": "Anevia",
-          "Text": "\"Good. Saves me makin' a speech about it.\"\n{n}Her smile is small and a little nervous, which on Anevia is a rare thing to see.{/n}\n\"I know what you and Beth have got. Don't mean I know what you and I would be. I want my own go at findin' out. My own evenings. With my name on 'em.\"\n\"And if all three of us want an evening?\"\n\"Then somebody asks. Out loud. Not tonight, and not by sneakin' it in sideways while we talk about somethin' else.\"\n{n}She wraps both hands around the mug.{/n}\n\"I'm glad she's got you. Doesn't stop me bein' greedy.\"",
+          "Text": "\"Good. Saves me makin' a speech about it.\"\n{n}Her smile is small and a little nervous, which on Anevia is a rare thing to see.{/n}\n\"I know what you and Beth have got. Don't mean I know what you and I would be. I want my own go at findin' out. My own evenings. With my name on 'em.\"\n\"And if all three of us want an evening?\"\n\"Then somebody buys a bigger table. Not tonight.\"\n{n}She wraps both hands around the mug.{/n}\n\"I'm glad she's got you. Doesn't stop me bein' greedy.\"",
           "Choices": [
             {
               "Text": "\"I am answering you, Anevia. Not her.\"",
@@ -80990,7 +81016,7 @@
         {
           "Id": "separate",
           "Speaker": "Anevia",
-          "Text": "\"Then tell her exactly that. Beth'll hear 'he wants all of us' in a weather report if she's nervous enough.\"\n{n}Anevia leans back, considering you.{/n}\n\"I'd like you two able to sit in one room without either of you thinkin' the other's come to collect me. Argue about somethin' stupid. The way I carry a basket. Somethin' like that.\"\n\"You would take her side.\"\n\"Depends if she's right. And whether you just dropped the basket.\"\n{n}She grins, then lets it go.{/n}\n\"She don't have to want you. You don't have to want her. That's the only way this works without somebody sulkin' in a corner for a year.\"",
+          "Text": "\"Then tell her exactly that. Beth'll hear 'he wants all of us' in a weather report if she's nervous enough.\"\n{n}Anevia leans back, considering you.{/n}\n\"I'd like you two in one room arguin' about somethin' stupid. The way I carry a basket. My bread. Somethin' like that.\"\n\"You would take her side.\"\n\"Depends if she's right. And whether you just dropped the basket.\"\n{n}She grins, then lets it go.{/n}\n\"And if you two ever gang up on me about the bread, I'm leavin' the pair of you for the baker.\"",
           "Choices": [
             {
               "Text": "\"And what do you get out of it?\"",
@@ -81006,7 +81032,7 @@
         {
           "Id": "possible",
           "Speaker": "Anevia",
-          "Text": "\"Keep that 'could' where it is. Don't polish it.\"\n{n}She says it kindly, then gives you a sharper look.{/n}\n\"My wife ain't the second half of a bargain. Might be she fancies you. Might be she'd rather see you across a council table. I haven't asked her, and I won't ask for her.\"\n\"I would not want that.\"\n\"Then don't turn up with a plan for three when one of us said yes to a cup of tea. If there's somethin' between you and her, you grow it with her. I can't lend you my years with Beth.\"\n{n}She taps the table.{/n}\n\"Right now it's you and me. I'm enjoyin' that more than I figured. Let me have it.\"",
+          "Text": "\"Keep that 'could' where it is. Don't polish it.\"\n{n}She says it kindly, then gives you a sharper look.{/n}\n\"My wife ain't the second half of a bargain. Might be she fancies you. Might be she'd rather see you across a council table. I haven't asked her, and I won't ask for her.\"\n\"I would not want that.\"\n\"Then don't turn up with a plan for three over one cup of tea. You want Beth, you go stand in front of her like a recruit and see what happens. I'd pay to watch.\"\n{n}She taps the table.{/n}\n\"Right now it's you and me. I'm enjoyin' that more than I figured. Let me have it.\"",
           "Choices": [
             {
               "Text": "\"Then let us talk about you.\"",
@@ -81022,7 +81048,7 @@
         {
           "Id": "other",
           "Speaker": "Anevia",
-          "Text": "\"Then tell me which of your nights have already got somebody's name on 'em. I don't need the gossip. Just the dates.\"\n{n}She listens while you describe what you can offer. Once she cuts you off when the answer starts sounding grander than it is.{/n}\n\"One evenin' you actually turn up for beats a month you promise and don't.\"\n{n}She thinks for a moment.{/n}\n\"You change a plan, you tell me. Don't make me the one who always gets bumped 'cause she understands about the war. I understand fine. I'll still throw somethin'.\"\n\"You may have to change plans too.\"\n\"I will. Then you get to throw somethin'. Only fair. Just don't go blamin' whoever else you've got. Blame me, I can take it.\"",
+          "Text": "\"Then tell me which of your nights have already got somebody's name on 'em. I don't need the gossip. Just the dates.\"\n{n}She listens while you describe what you can offer. Once she cuts you off when the answer starts sounding grander than it is.{/n}\n\"One evenin' you actually turn up for beats a month you promise and don't.\"\n{n}She thinks for a moment.{/n}\n\"You change a plan, you tell me. Don't make me the one who always gets bumped 'cause she understands about the war. I understand fine. I'll still throw somethin'.\"\n\"You may have to change plans too.\"\n\"I will. Then you get to throw somethin'. Mind the good jug.\"",
           "Choices": [
             {
               "Text": "\"Then let us speak about the time we can keep.\"",
@@ -81038,10 +81064,10 @@
         {
           "Id": "time",
           "Speaker": "Anevia",
-          "Text": "\"I want evenin's at home that ain't just the gaps between your visits. And evenin's with you that ain't all spent apologizin' for goin' home. Both. Greedy, told you.\"\n{n}She reaches for the teapot, finds it empty and laughs under her breath.{/n}\n\"Also I want to know how much tea two people drink talkin' about this. Answer's apparently all of it.\"\n{n}You fetch more water together. She lets you carry the pot and takes the mugs herself, refusing to let you balance all three.{/n}\n\"I want to see what you'd do if you picked,\" she says. \"Not what you think I'd like. Kenabres, the year before the Heart, I spent a month bein' exactly the barmaid a cultist wanted to talk to. Laughed at his jokes. Drank his wine. Got so good at it I forgot I hated his wine. Took me weeks after to remember what I did like.\"\n{n}She sets the mugs down in their old places.{/n}\n\"You catch me doin' that with you, you say so. Don't look smug about it. Just say so.\"",
+          "Text": "\"I want evenin's at home that ain't just the gaps between your visits. And evenin's with you that ain't all spent apologizin' for goin' home. Both. Greedy, told you.\"\n{n}She reaches for the teapot, finds it empty and laughs under her breath.{/n}\n\"Also I want to know how much tea two people drink talkin' about this. Answer's apparently all of it.\"\n{n}You fetch more water together. She lets you carry the pot and takes the mugs herself, refusing to let you balance all three.{/n}\n\"I want to see what you'd do if you picked,\" she says. \"Not what you think I'd like. Kenabres, the year before the Heart, I spent a month bein' exactly the barmaid a cultist wanted to talk to. Laughed at his jokes. Drank his wine. Got so good at it I forgot I hated his wine. Took me weeks after to remember what I did like.\"\n{n}She sets the mugs down in their old places.{/n}\n\"You catch me laughin' at a joke of yours I don't find funny, pour your drink down my back. I'll know what it's for.\"",
           "Choices": [
             {
-              "Text": "\"I'll ask what you want before I take what I want.\"",
+              "Text": "\"Name the night. I'll be there before you are.\"",
               "Next": "finish",
               "Set": [],
               "Requires": [],
@@ -81134,7 +81160,9 @@
         "committed",
         "irabeth_dead",
         "irabeth_gone",
-        "anevia_away"
+        "anevia_away",
+        "anevia.trickster.terms_kept",
+        "anevia.trickster.cost.her_key"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -81248,7 +81276,7 @@
         {
           "Id": "account",
           "Speaker": "Anevia",
-          "Text": "\"Don't give her a speech about how love's complicated. She knows. She married me.\"\n{n}For a moment something like humor touches her face, then goes.{/n}\n\"Tell her what happened. Answer what she asks. If she asks somethin' that's mine to tell, say so. But don't hide behind it. She'll know.\"\n{n}She pushes the window open far enough to hear the street.{/n}\n\"I asked if she wanted me to sleep somewhere else tonight. She said she wanted me to stop decidin' what she wants before she's opened her mouth. So I'm goin' home. We'll fight. Might sit in separate rooms for an hour. Still home.\"\n\"And us?\"\n{n}Anevia turns back toward you.{/n}\n\"No more sneakin'. After that, we see what's left standin'. Don't know yet.\"\n{n}She picks up her coat from the back of the chair.{/n}\n\"I want there to be somethin'. Thought you ought to know that before you go in there.\"",
+          "Text": "\"Don't give her a speech about how love's complicated. She knows. She married me.\"\n{n}For a moment something like humor touches her face, then goes.{/n}\n\"Tell her what happened. Answer what she asks. She'll ask the nasty ones first; she questions cultists for a livin'.\"\n{n}She pushes the window open far enough to hear the street.{/n}\n\"I asked if she wanted me to sleep somewhere else tonight. She said she wanted me to stop decidin' what she wants before she's opened her mouth. So I'm goin' home. We'll fight. Might sit in separate rooms for an hour. Still home.\"\n\"And us?\"\n{n}Anevia turns back toward you.{/n}\n\"No more sneakin'. After that, we see what's left standin'. Don't know yet.\"\n{n}She picks up her coat from the back of the chair.{/n}\n\"I want there to be somethin'. Thought you ought to know that before you go in there.\"",
           "Choices": [
             {
               "Text": "\"We tell Irabeth. All of it.\"",
@@ -81300,7 +81328,9 @@
         "anevia.spousal_conversation_requested",
         "irabeth_dead",
         "irabeth_gone",
-        "anevia_away"
+        "anevia_away",
+        "anevia.trickster.terms_kept",
+        "anevia.trickster.cost.her_key"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -81337,7 +81367,7 @@
           "Text": "{n}Irabeth has picked a small room with no council table in it. Two chairs by a window. Her gloves lie folded on the sill, fingers squared one over the other, as if they were due for inspection.{/n}\n\"Commander. Anevia is not outside the door. I checked. Twice.\"\n{n}She points you to the other chair and does not sit until you have.{/n}\n\"I spent the morning drafting what a sensible woman would say to you. I burned the draft. It was very sensible. None of it was true.\"\n{n}Her hands settle on her knees.{/n}\n\"Before anything else. You outrank me in the field, in council and on every piece of paper in Drezen. You do not outrank me in my own marriage. Tell me you know that, or we stop here.\"",
           "Choices": [
             {
-              "Text": "\"Tell me I'm wrong if I'm wrong. Your command's safe either way.\"",
+              "Text": "\"Tell me I'm wrong if I'm wrong. I'll still sign your orders.\"",
               "Next": "history",
               "Set": [],
               "Requires": [],
@@ -81631,7 +81661,9 @@
         "inhuman",
         "irabeth_dead",
         "irabeth_gone",
-        "irabeth_away"
+        "irabeth_away",
+        "anevia.trickster.terms_kept",
+        "anevia.trickster.cost.her_key"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -81667,7 +81699,7 @@
           "Text": "{n}This time Irabeth sees you at the end of an ordinary working day. She puts the last report into its box and closes the lid before she speaks, so that the one business does not touch the other.{/n}\n\"Anevia and I have talked. Several nights. On the second she asked if we could stop for an hour and do something else, and I found out I had been mistaking talking for getting anywhere.\"\n{n}A faint smile.{/n}\n\"We played the card game. She won. I do not think she would have survived losing it that night.\"\n{n}Then she is serious again.{/n}\n\"She may court you. Our house stays ours. She can ask you into a room of her own; that does not make our room somewhere I must avoid. Our nights are nights, not whatever she has left. Yours will be treated the same.\"\n{n}She waits until she is sure you have heard all of it.{/n}\n\"I have not promised to like every part of this. I have promised to say it when I do not, instead of sulking until she guesses. That was the hardest thing I have signed this year.\"",
           "Choices": [
             {
-              "Text": "\"Are you agreeing because you want to try, or because you fear losing her?\"",
+              "Text": "\"Is that a yes, or are you scared of losing her?\"",
               "Next": "choice",
               "Set": [],
               "Requires": [],
@@ -81825,7 +81857,9 @@
         "inhuman",
         "irabeth_dead",
         "irabeth_gone",
-        "irabeth_away"
+        "irabeth_away",
+        "anevia.trickster.terms_kept",
+        "anevia.trickster.cost.her_key"
       ],
       "DelayHours": 72,
       "Optional": true,
@@ -82063,7 +82097,9 @@
         "anevia.personal_ready",
         "irabeth_dead",
         "irabeth_gone",
-        "anevia_away"
+        "anevia_away",
+        "anevia.trickster.terms_kept",
+        "anevia.trickster.cost.her_key"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -82241,7 +82277,9 @@
         "irabeth_dead",
         "irabeth_gone",
         "tirabade.group_closed",
-        "anevia_away"
+        "anevia_away",
+        "anevia.trickster.terms_kept",
+        "anevia.trickster.cost.her_key"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -82418,7 +82456,9 @@
         "anevia.personal_ready",
         "irabeth_dead",
         "irabeth_gone",
-        "anevia_away"
+        "anevia_away",
+        "anevia.trickster.terms_kept",
+        "anevia.trickster.cost.her_key"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -82484,7 +82524,7 @@
         {
           "Id": "courier",
           "Speaker": "Ressa",
-          "Text": "\"A woman in a brown coat. She came with a little board to write on. Asked whether my landlord had mentioned the inspection. When I said no, she said landlords always forget the things tenants have to pay for.\"\n{n}Ressa's mouth tightens.{/n}\n\"I laughed. I knew exactly what she meant. That made her seem more real than the paper did.\"\n\"Did she give a name?\" Anevia asks.\n\"Cale. Perhaps. I didn't write it down.\"\n\"Then we don't build a whole person out of the part you're least sure of. What did she ask next?\"\n{n}Ressa describes the questions in their order. Anevia listens without completing the account for her. When Ressa contradicts herself about the day, Anevia asks what else happened that morning. The answer fixes the delivery after a broken cart had blocked the street. Ressa was not sure before. She is now.{/n}",
+          "Text": "\"A woman in a brown coat. She came with a little board to write on. Asked whether my landlord had mentioned the inspection. When I said no, she said landlords always forget the things tenants have to pay for.\"\n{n}Ressa's mouth tightens.{/n}\n\"I laughed. I knew exactly what she meant. That made her seem more real than the paper did.\"\n\"Did she give a name?\" Anevia asks.\n\"Cale. Perhaps. I didn't write it down.\"\n\"Then 'Cale, perhaps' goes down in pencil. What'd she ask next?\"\n{n}Ressa describes the questions in their order. Anevia lets her talk and keeps her own mouth shut, which visibly costs her. When Ressa contradicts herself about the day, Anevia asks what else happened that morning. The answer fixes the delivery after a broken cart had blocked the street. Ressa was not sure before. She is now.{/n}",
           "Choices": [
             {
               "Text": "[Examine the actual paper.]",
@@ -82500,7 +82540,7 @@
         {
           "Id": "paper",
           "Speaker": "Anevia",
-          "Text": "\"We could send a crier round shoutin' that the inspection's fake. Stops some payments. Also tells whoever's behind it we're sniffin'.\"\n{n}Anevia smooths the paper flat on the table.{/n}\n\"Or we find where the replies go first. There'll be another collection. Nobody asks for addresses if they mean to vanish after one handful of coin.\"\n\"My neighbor gave them her sister's name,\" Ressa says. \"She thought it'd get her roof seen to.\"\n{n}Anevia's face changes.{/n}\n\"Then the warnin' goes out today. Clever can wait. I ain't leavin' women in the dark so I can have a neater trap.\"\n{n}She asks Ressa if she knows anybody who can carry a plain warning without turning it into gossip about who first smelled a rat. Ressa thinks, then nods.{/n}\n\"Dema. Collects washin'. Everybody talks to her while they're handin' over things they don't want the neighbors seein'.\"\n\"Would she help?\"\n\"Ask her. She hates bein' volunteered.\"",
+          "Text": "\"We could send a crier round shoutin' that the inspection's fake. Stops some payments. Also tells whoever's behind it we're sniffin'.\"\n{n}Anevia smooths the paper flat on the table.{/n}\n\"Or we find where the replies go first. There'll be another collection. Nobody asks for addresses if they mean to vanish after one handful of coin.\"\n\"My neighbor gave them her sister's name,\" Ressa says. \"She thought it'd get her roof seen to.\"\n{n}Anevia's face changes.{/n}\n\"Then the warnin' goes out today. Clever can wait. I ain't leavin' women in the dark so I can have a neater trap.\"\n{n}She asks Ressa who on the street can carry a plain warning and keep her mouth shut about where it came from. Ressa thinks, then nods.{/n}\n\"Dema. Collects washin'. Everybody talks to her while they're handin' over things they don't want the neighbors seein'.\"\n\"Would she help?\"\n\"Ask her. She hates bein' volunteered.\"",
           "Choices": [
             {
               "Text": "\"We will ask. Start with the warning and keep Ressa's name out of it.\"",
@@ -82528,7 +82568,7 @@
         {
           "Id": "warning",
           "Speaker": "Anevia",
-          "Text": "\"Good. Ressa, don't tell Dema to pretend it was her idea. Tell her what's true and let her say it her way.\"\n{n}Ressa looks relieved.{/n}\n\"She'll ask why you haven't arrested anybody.\"\n\"So would I. Haven't found the right anybody yet.\"\n{n}Anevia writes a short account of what is false about the notice, leaving the witness's name out. She reads it aloud, changes a phrase Ressa says the street will get wrong, and folds it without sealing it.{/n}\n\"She wants more, she comes to me. She wants nothin' to do with it, we find another way. No arm-twistin'.\"\n{n}Ressa takes the warning. Before she goes, she asks to keep a copy of the false paper. Anevia makes one herself, marks it plainly COPY, and tells her to say to anyone collecting money that she has already asked headquarters about it.{/n}",
+          "Text": "\"Good. Tell Dema straight what it's for. You lie worse than she does, and it'd show.\"\n{n}Ressa looks relieved.{/n}\n\"She'll ask why you haven't arrested anybody.\"\n\"So would I. Haven't found the right anybody yet.\"\n{n}Anevia writes a short account of what is false about the notice, leaving the witness's name out. She reads it aloud, changes a phrase Ressa says the street will get wrong, and folds it without sealing it.{/n}\n\"She wants more, she knows where I drink.\"\n{n}Ressa takes the warning. Before she goes, she asks to keep a copy of the false paper. Anevia makes one herself, marks it plainly COPY, and tells her to say to anyone collecting money that she has already asked headquarters about it.{/n}",
           "Choices": [
             {
               "Text": "[Send Ressa home with something she can tell her neighbours.]",
@@ -82544,7 +82584,7 @@
         {
           "Id": "notice",
           "Speaker": "Anevia",
-          "Text": "\"Then it's about the demand. Not about some brave witness who's got to live next door to whoever we hang.\"\n{n}She writes a plain warning that no such inspection fee exists. You read it over together and strike a sentence that would make everyone who paid sound like a fool. Ressa objects to one more phrase.{/n}\n\"Don't say bring suspicious strangers here. Somebody'll decide that means the woman two streets over who doesn't say good mornin'.\"\n{n}Anevia crosses it out.{/n}\n\"Bring the paper. Remember the face. Don't bring me a prisoner. Better?\"\n{n}Ressa nods. The warning is copied for the neighborhood, and by evening somebody will know the false office has drawn real attention.{/n}\n\"They might drop this notice now,\" Anevia says when Ressa has gone. \"Good for the next woman. Might also move where they collect. We made the call. We live with it.\"",
+          "Text": "\"Then it's about the demand. Not about some brave witness who's got to live next door to whoever we hang.\"\n{n}She writes a plain warning that no such inspection fee exists. You read it over together and strike a sentence that would make everyone who paid sound like a fool. Ressa objects to one more phrase.{/n}\n\"Don't say bring suspicious strangers here. Somebody'll decide that means the woman two streets over who doesn't say good mornin'.\"\n{n}Anevia crosses it out.{/n}\n\"Bring the paper. Remember the face. Don't bring me a prisoner. Better?\"\n{n}Ressa nods. The warning is copied for the neighborhood, and by evening somebody will know the false office has drawn real attention.{/n}\n\"They'll drop this notice now,\" Anevia says when Ressa has gone. \"Then they'll move where they collect. Then we find where.\"",
           "Choices": [
             {
               "Text": "[Discuss what can still be traced.]",
@@ -82560,7 +82600,7 @@
         {
           "Id": "alone",
           "Speaker": "Anevia",
-          "Text": "{n}Anevia turns the false notice over. There is a faint dent on the back, pressed through from something written on a sheet above it.{/n}\n\"Tomorrow. I know a woman sells paper without askin' where every scrap came from. Sometimes that's kind. Sometimes it's how scum like this get cheap stationery.\"\n{n}She looks at you, then at the door Ressa used.{/n}\n\"This was meant to be our afternoon. I should've sent word. She turned up scared, and I figured I'd hear her out quick, and then it wasn't quick.\"\n\"I understand.\"\n\"'Course you do. That's the trouble. So I'm askin' anyway: do you still want what's left of it? Don't say yes just to be understandin'.\"",
+          "Text": "{n}Anevia turns the false notice over. There is a faint dent on the back, pressed through from something written on a sheet above it.{/n}\n\"Tomorrow. I know a woman sells paper without askin' where every scrap came from. Sometimes that's kind. Sometimes it's how scum like this get cheap stationery.\"\n{n}She looks at you, then at the door Ressa used.{/n}\n\"This was meant to be our afternoon. Ressa turned up shakin' and I clean forgot I had one.\"\n\"I noticed.\"\n\"'Course you did. There's an hour left in it. You want it, or you want to go sulk somewhere dignified?\"",
           "Choices": [
             {
               "Text": "\"I want the afternoon. Put the paper away until tomorrow.\"",
@@ -82606,7 +82646,7 @@
         {
           "Id": "rescheduled",
           "Speaker": "Anevia",
-          "Text": "\"Fair. I'd be annoyed if you'd just sat there waitin' on me.\"\n{n}She picks another time and makes you check it before she writes it down. When you agree, she pins the note where she will see it before she can promise the hour to anyone else.{/n}\n\"Wanted you to stay. Not arguin'. Just sayin'.\"\n{n}You kiss her quickly before you go. She keeps hold of your hand a moment longer, then lets go.{/n}\n\"Tomorrow for the paper. And the night we just picked, for us. Two different promises. Watch me keep both.\"",
+          "Text": "\"Go on, then. Crusade won't run itself. Worse luck.\"\n{n}She picks another time and makes you check it before she writes it down. When you agree, she pins the note where she will see it before she can promise the hour to anyone else.{/n}\n\"Wanted you to stay. Go, before I start askin' nicely. It ain't pretty.\"\n{n}You kiss her quickly before you go. She keeps hold of your hand a moment longer, then lets go.{/n}\n\"Tomorrow for the paper. And the night we just picked, for us. Two different promises. Watch me keep both.\"",
           "Choices": [
             {
               "Text": "\"Two promises. I'll keep both.\"",
@@ -82772,7 +82812,7 @@
         {
           "Id": "blurred",
           "Speaker": "Narrator",
-          "Text": "{n}The angle changes the mark, but does not make it reliable. You think you can see a name until a slight movement turns the first letter into the edge of a receipt line. Anevia watches your expression, then lowers the paper.{/n}\n\"Leave it uncertain. We can make a perfectly good mistake without giving it a convincing address.\"\n{n}Tovra looks relieved that you have not asked her to confirm what you hoped to see.{/n}\n\"Dema uses the dye yard when she has cloth that needs more than washing. If somebody is carrying wet bundles around, she might know where they began.\"\n{n}Anevia folds the notice along its existing crease.{/n}\n\"Then we ask. The paper didn't answer. That doesn't mean the next person has to.\"",
+          "Text": "{n}The angle changes the mark, but does not make it reliable. You think you can see a name until a slight movement turns the first letter into the edge of a receipt line. Anevia watches your expression, then lowers the paper.{/n}\n\"Leave it. I ain't kickin' in a door on a smudge.\"\n{n}Tovra shrugs, as if smudges were a common complaint in her trade.{/n}\n\"Dema uses the dye yard when she has cloth that needs more than washing. If somebody is carrying wet bundles around, she might know where they began.\"\n{n}Anevia folds the notice along its existing crease.{/n}\n\"Then we ask Dema. Paper's said all it's gonna.\"",
           "Choices": [
             {
               "Text": "[Write down that you couldn't read it.]",
@@ -82809,7 +82849,7 @@
         {
           "Id": "uncertain",
           "Speaker": "Anevia",
-          "Text": "\"Then we don't need to turn every crease into a clue.\"\n{n}She puts the paper away, careful not to make another mark on the back.{/n}\n\"I'd rather ask somebody who works here than invent an answer because the page looks interesting.\"\n{n}Tovra gives you directions to Dema's collection place. She also tells you which woman at the dye yard will answer a question directly and which will insist on telling you the history of the whole street first.{/n}\n\"Either may know something useful,\" she adds. \"I am merely warning you about the time.\"\n{n}Anevia thanks her. This approach leaves the impression unread and the meeting time unknown. It gets you Dema's name instead, and Tovra's word that Dema will talk.{/n}",
+          "Text": "\"A crease is a crease.\"\n{n}She puts the paper away, careful not to make another mark on the back.{/n}\n\"Let's go ask somebody with a mouth.\"\n{n}Tovra gives you directions to Dema's collection place. She also tells you which woman at the dye yard will answer a question directly and which will insist on telling you the history of the whole street first.{/n}\n\"Either may know something useful,\" she adds. \"I am merely warning you about the time.\"\n{n}Anevia thanks her. This approach leaves the impression unread and the meeting time unknown. It gets you Dema's name instead, and Tovra's word that Dema will talk.{/n}",
           "Choices": [
             {
               "Text": "[Take Tovra's name for Dema and go.]",
@@ -82827,7 +82867,7 @@
         {
           "Id": "cost",
           "Speaker": "Tovra",
-          "Text": "\"You gonna put my name on the warnin'?\"\n{n}The question comes after the work is done, when it is harder to pretend it is for somebody else's sake.{/n}\n\"People will hear the paper came from here. I'd like 'em to hear I helped. I'd also like 'em not to put a brick through my window before they work out which way round it was.\"\n{n}Anevia rests her hand on the counter.{/n}\n\"I can say the seller cooperated. I won't hand out your address as the place to bring everybody's temper. Can't promise nobody'll know the paper, though.\"\n\"No. You can't.\"\n{n}Tovra takes the false notice and looks at the mark one more time before handing it back.{/n}\n\"Then stop whoever's usin' my stock to look respectable. My honest customers are trouble enough.\"",
+          "Text": "\"You gonna put my name on the warnin'?\"\n{n}Tovra asks it with her back to you, squaring packets that are already square.{/n}\n\"People will hear the paper came from here. I'd like 'em to hear I helped. I'd also like 'em not to put a brick through my window before they work out which way round it was.\"\n{n}Anevia rests her hand on the counter.{/n}\n\"I can say the seller cooperated. I won't hand out your address as the place to bring everybody's temper. Can't promise nobody'll know the paper, though.\"\n\"No. You can't.\"\n{n}Tovra takes the false notice and looks at the mark one more time before handing it back.{/n}\n\"Then stop whoever's usin' my stock to look respectable. My honest customers are trouble enough.\"",
           "Choices": [
             {
               "Text": "\"Your name stays off the notice. Nobody pins this on your shop.\"",
@@ -82851,7 +82891,7 @@
         {
           "Id": "outside",
           "Speaker": "Anevia",
-          "Text": "{n}Outside, Anevia takes your arm for a few steps and lets go when the passage narrows.{/n}\n\"Liked that. We didn't make her be brave before we believed her.\"\n{n}She looks back at the shop.{/n}\n\"I get impatient when somebody knows a thing and won't cough it up. Start thinkin' how much easier the world'd be if folk just talked. Usually that's when I've stopped countin' what it costs 'em after I leave.\"\n\"You remembered this time.\"\n\"This time. You catch me forgettin', kick me. Before I've built a whole case for bein' an ass.\"\n{n}She checks the sun and turns toward the street where Dema collects the washing.{/n}\n\"Come on. Somebody to ask, and I'm told she bites if you volunteer her. Think I'm gonna like her.\"",
+          "Text": "{n}Outside, Anevia takes your arm for a few steps and lets go when the passage narrows.{/n}\n\"Blue dye, wet cuffs, and a name that's probably false. I've seen folk hanged on less. I've been wrong on less, too.\"\n{n}She looks back at the shop.{/n}\n\"Tovra'll have a brick through that window inside a month if we're sloppy. Send a lad to sit on her step tonight. Tell him it's for the view.\"\n\"Done.\"\n\"Good. Now I owe her, and she knows it. Best kind of friend.\"\n{n}She checks the sun and turns toward the street where Dema collects the washing.{/n}\n\"Come on. Somebody to ask, and I'm told she bites if you volunteer her. Think I'm gonna like her.\"",
           "Choices": [
             {
               "Text": "\"Then we go where the paper points.\"",
@@ -82911,7 +82951,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Dema's collection place is a shed with a roof that leaks at one corner. She has dealt with the leak by moving a tub beneath it and hanging an emphatic notice above the dry baskets. Nothing on the notice invites a customer to comment on the arrangement.{/n}\n{n}Dema herself is an adult woman with rolled sleeves and a streak of blue beneath one thumbnail. She looks from Anevia to you, then sets down the bundle she was tying.{/n}\n\"Ressa said you might come. She also said I could refuse. I assume that part survived the journey.\"\n\"It did,\" Anevia says.\n\"Good. Then tell me what you want before telling me how helpful I'd be if I supplied it.\"\n{n}Anevia describes the false notices. Dema listens, asks to see the paper and points to the mark at the bottom.{/n}\n\"I've seen a woman carrying those. Cale. That name at least is hers. She's been using the old counting room by the dye yard. I thought she was collecting rents. Several people have been doing that since the original owners stopped coming.\"",
+          "Text": "{n}Dema's collection place is a shed with a roof that leaks at one corner. She has dealt with the leak by moving a tub beneath it and hanging an emphatic notice above the dry baskets. Nothing on the notice invites a customer to comment on the arrangement.{/n}\n{n}Dema herself is an adult woman with rolled sleeves and a streak of blue beneath one thumbnail. She looks from Anevia to you, then sets down the bundle she was tying.{/n}\n\"Ressa said you'd come. She said you'd be polite about it. I've got three tubs soaking, so skip that part.\"\n\"Done,\" Anevia says.\n{n}Anevia describes the false notices. Dema listens, asks to see the paper and points to the mark at the bottom.{/n}\n\"I've seen a woman carrying those. Cale. That name at least is hers. She's been using the old counting room by the dye yard. I thought she was collecting rents. Several people have been doing that since the original owners stopped coming.\"",
           "Choices": [
             {
               "Text": "[Describe the exact meeting place and time read from the impression.]",
@@ -82990,7 +83030,7 @@
         {
           "Id": "work",
           "Speaker": "Dema",
-          "Text": "\"She pays me to carry cloth. Some of it has dye in it, some of it smells as though it ought to. She has a basket she doesn't want washed. I found papers beneath its cover once.\"\n{n}Dema glances toward a shelf of folded sheets.{/n}\n\"I didn't steal them. I put the cloth back. If that disappoints you, consider how much I knew at the time.\"\n\"It doesn't,\" Anevia says. \"What did you read?\"\n\"Names. Not enough to make a list for you. Enough that I remembered Ressa's street when she told me what happened.\"\n{n}Dema considers the door.{/n}\n\"I could carry the next bundle and see whether the basket is still there. I could also tell you to stand outside until Cale comes out. The second option would give me a quieter evening.\"\n\"Then let's discuss both,\" Anevia says.",
+          "Text": "\"She pays me to carry cloth. Some of it has dye in it, some of it smells as though it ought to. She has a basket she doesn't want washed. I found papers beneath its cover once.\"\n{n}Dema glances toward a shelf of folded sheets.{/n}\n\"I didn't steal them. I put the cloth back. I had washing to deliver and no reason yet to be a hero.\"\n\"It doesn't,\" Anevia says. \"What did you read?\"\n\"Names. Not enough to make a list for you. Enough that I remembered Ressa's street when she told me what happened.\"\n{n}Dema considers the door.{/n}\n\"I could carry the next bundle and see whether the basket is still there. I could also tell you to stand outside until Cale comes out. The second option would give me a quieter evening.\"\n\"Tell me the quiet one first,\" Anevia says.",
           "Choices": [
             {
               "Text": "\"Tell us what you'll do, and what you won't.\"",
@@ -83006,7 +83046,7 @@
         {
           "Id": "choice",
           "Speaker": "Dema",
-          "Text": "\"If I help, I want to know what happens when she notices. I work here. I can't run back to headquarters and get a man on my door.\"\n{n}Anevia takes a slow breath before answering.{/n}\n\"You tell us if the basket's there, and you leave. You don't take it, you don't keep her talkin'. She asks why you came, you're deliverin' the washin' you were gonna deliver anyway. We watch the door. Not you playin' spy.\"\n\"And after?\"\n\"You ain't in the public account. Ressa keeps the warnin' movin'. Cale threatens you, we come down on her like a wall. Can't swear she won't guess somebody talked.\"\n{n}Dema studies her.{/n}\n\"That's less comforting than the speech I was expecting.\"\n\"I know.\"\n\"I think I like it better.\"\n{n}She picks up the waiting bundle and sets it down again.{/n}\n\"I'll tell you if the basket's there. I won't wear a signal, and I won't go back a second time because the first answer wasn't enough. Need more than that, pick the other plan.\"",
+          "Text": "\"If I help, I want to know what happens when she notices. I work here. I can't run back to headquarters and get a man on my door.\"\n{n}Anevia takes a slow breath before answering.{/n}\n\"You tell us if the basket's there, and you leave. You don't take it, you don't keep her talkin'. She asks why you came, you're deliverin' the washin' you were gonna deliver anyway. We watch the door. Not you playin' spy.\"\n\"And after?\"\n\"You ain't in the public account. Ressa keeps the warnin' movin'. Cale threatens you, we come down on her like a wall. Can't swear she won't guess somebody talked.\"\n{n}Dema studies her.{/n}\n\"You're a terrible liar, for a spy.\"\n\"I save it for people I don't like.\"\n{n}She picks up the waiting bundle and sets it down again.{/n}\n\"I'll tell you if the basket's there. I won't wear a signal, and I won't go back a second time because the first answer wasn't enough. Need more than that, pick the other plan.\"",
           "Choices": [
             {
               "Text": "\"One delivery, then she walks away. That's enough.\"",
@@ -83052,7 +83092,7 @@
         {
           "Id": "watch",
           "Speaker": "Narrator",
-          "Text": "{n}You and Anevia wait where you can see the entrance. A woman carries a basket into the counting room, but the angle gives you no view beneath its cover. Dema does not approach the building again.{/n}\n{n}The wait gives the occupants time to move things. Once Anevia points to a thin drift of smoke from a side window. Someone has lit a brazier inside. It may be for warmth or dye work. It may not.{/n}\n\"We know enough to question the false collection,\" she says. \"If we wait for the room to explain itself from here, we may lose the papers.\"\n{n}You have chosen not to place another task on Dema. Dema stays at her tubs. You go in not knowing what is on the other side of the door.{/n}",
+          "Text": "{n}You and Anevia wait where you can see the entrance. A woman carries a basket into the counting room, but the angle gives you no view beneath its cover. Dema does not approach the building again.{/n}\n{n}The wait gives the occupants time to move things. Once Anevia points to a thin drift of smoke from a side window. Someone has lit a brazier inside. It may be for warmth or dye work. It may not.{/n}\n\"We know enough to question the false collection,\" she says. \"If we wait for the room to explain itself from here, we may lose the papers.\"\n{n}Dema stays at her tubs. You go in not knowing what is on the other side of the door.{/n}",
           "Choices": [
             {
               "Text": "[Go in with the false notice in your hand.]",
@@ -83070,7 +83110,7 @@
         {
           "Id": "approach",
           "Speaker": "Anevia",
-          "Text": "{n}Anevia stops you before you turn into the passage.{/n}\n\"I want the names back. I want to know who was buyin'. If I start chasin' the buyer while somebody's burnin' the names, grab my collar.\"\n\"What will you do?\"\n\"Talk. Look where they don't want me lookin'. Try not to get so clever I forget there's a back door.\"\n{n}She squints at you.{/n}\n\"And if you think I'm doin' it wrong, say so now, while it can still change somethin'. Not after, over wine.\"\n{n}She squeezes your hand once, hard, and lets it go.{/n}\n\"And don't call me fearless after. Dema asked for somethin' sensible. I'm tryin' to be worth trustin' with it.\"",
+          "Text": "{n}Anevia stops you before you turn into the passage.{/n}\n\"I want the names back. I want to know who was buyin'. If I start chasin' the buyer while somebody's burnin' the names, grab my collar.\"\n\"What will you do?\"\n\"Talk. Look where they don't want me lookin'. Try not to get so clever I forget there's a back door.\"\n{n}She squints at you.{/n}\n\"Side door's on the left. Anybody bolts, it's through there, and I can't run in these boots.\"\n{n}She squeezes your hand once, hard, and lets it go.{/n}\n\"Right. I knock first. It confuses people.\"",
           "Choices": [
             {
               "Text": "\"Names first. Then the buyer.\"",
@@ -83242,7 +83282,7 @@
         {
           "Id": "limits",
           "Speaker": "Anevia",
-          "Text": "{n}Once the immediate danger is past, Anevia uncovers the lists one page at a time. She finds Ressa's street, then the neighbor's sister. She does not read the names aloud for everybody in the room.{/n}\n\"Who else has copies?\"\n{n}Cale looks at the door, then at the brazier, as though considering which answer might have been available a minute earlier.{/n}\n\"I sent a sample. Five names. No addresses.\"\n\"To whom?\"\n\"I don't know the woman's name. She left a place to send it.\"\n{n}Anevia asks for the address and writes it separately from the recovered list.{/n}\n\"We follow that too. We don't tell people we've recovered every copy when we haven't.\"\n{n}There is anger in her voice now, less theatrical than Cale seems to expect.{/n}\n\"You had women asking their neighbors for private details because they thought a roof might be made safe. That's the part I keep coming back to. You used them to do the collecting for you.\"\n\"You use informants.\"\n\"They know they're telling me something. They get to ask what happens next. You took that question away.\"",
+          "Text": "{n}Once the immediate danger is past, Anevia uncovers the lists one page at a time. She finds Ressa's street, then the neighbor's sister. She does not read the names aloud for everybody in the room.{/n}\n\"Who else has copies?\"\n{n}Cale looks at the door, then at the brazier, as though considering which answer might have been available a minute earlier.{/n}\n\"I sent a sample. Five names. No addresses.\"\n\"To whom?\"\n\"I don't know the woman's name. She left a place to send it.\"\n{n}Anevia asks for the address and writes it separately from the recovered list.{/n}\n\"Then there's five names still out there, and we're goin' after 'em.\"\n{n}There is anger in her voice now, less theatrical than Cale seems to expect.{/n}\n\"You had women asking their neighbors for private details because they thought a roof might be made safe. That's the part I keep coming back to. You used them to do the collecting for you.\"\n\"You use informants.\"\n\"Mine know who they're talkin' to, and they get paid. You had grandmothers doin' your legwork for the price of a roof.\"",
           "Choices": [
             {
               "Text": "\"Post the truth: it was a swindle, and we didn't get all of it back.\"",
@@ -83266,7 +83306,7 @@
         {
           "Id": "record",
           "Speaker": "Narrator",
-          "Text": "{n}Cale is taken off for ordinary questioning about the false collection. The recovered papers go into a sealed packet marked with the case, not the witnesses. Anevia keeps a separate list of the people who need warning and asks for the messages to go by hand, privately.{/n}\n{n}The counting room is quieter once the others are gone. The brazier still stinks of scorched paper. Anevia opens the window and stands with her hands on the sill.{/n}\n\"We picked fast back there. I want to chew it over once I've stopped hearin' paper hit the coals.\"\n\"Do you think it was wrong?\"\n\"Right now I could argue it either way and win. That's the relief talkin'. I don't trust it.\"\n{n}She turns to you.{/n}\n\"Come find me in a day or two. Not for a report, I'll do the report at headquarters like a good girl. For the other talk.\"",
+          "Text": "{n}Cale is taken off for ordinary questioning about the false collection. The recovered papers go into a sealed packet marked with the case, not the witnesses. Anevia keeps a separate list of the people who need warning and asks for the messages to go by hand, privately.{/n}\n{n}The counting room is quieter once the others are gone. The brazier still stinks of scorched paper. Anevia opens the window and stands with her hands on the sill.{/n}\n\"Stinks. I'll smell burnt paper for a week.\"\n\"Was it the right door?\"\n\"Ask me when I've slept. Right now I'd hang Cale out that window and call it justice, so I'm the wrong one to ask.\"\n{n}She turns to you.{/n}\n\"Come find me in a day or two. Bring wine. I'll have the sums by then, and I'll be in a mood.\"",
           "Choices": [
             {
               "Text": "\"Tell me later. Breathe first.\"",
@@ -83378,7 +83418,7 @@
         {
           "Id": "papers_answer",
           "Speaker": "Anevia",
-          "Text": "\"Yeah. Ask me tomorrow, after somebody's brought me another useless description of the buyer, and I'll swear first. Still yes.\"\n{n}She grins briefly and does not pretend the itch has gone.{/n}\n\"I've seen agents go that way. Chasin' a secret so long they forget who they wanted it for. Everybody claps 'em on the back right up till somebody else pays the bill.\"\n{n}She picks the letter up again and folds it along the worn crease.{/n}\n\"Ressa didn't ask for a grand investigation. She asked where the names went. We found most of 'em. I'm tryin' to let that be good enough while the rest keeps me up nights.\"",
+          "Text": "\"Yeah. Ask me tomorrow, after somebody's brought me another useless description of the buyer, and I'll swear first. Still yes.\"\n{n}She grins briefly and does not pretend the itch has gone.{/n}\n\"I've seen agents go that way. Chasin' a secret so long they forget who they wanted it for. Everybody claps 'em on the back right up till somebody else pays the bill.\"\n{n}She picks the letter up again and folds it along the worn crease.{/n}\n\"Ressa didn't ask for a grand investigation. She asked where the names went. We found most of 'em. The rest I'm gonna find, and then I'm gonna be unbearable about it.\"",
           "Choices": [
             {
               "Text": "[Ask what remains for Dema.]",
@@ -83394,7 +83434,7 @@
         {
           "Id": "burned",
           "Speaker": "Anevia",
-          "Text": "\"Some amounts we can match. Some we can't. We've got people who remember payin' and no receipt sayin' how much. Cale's gone very vague about sums.\"\n{n}Her mouth tightens.{/n}\n\"Helve's papers gave us another district. Found a woman there with the same letter. Hadn't answered yet. That counts.\"\n\"And the money here?\"\n\"What's left gets split against the claims we can prove. Rest'll need witnesses, and some folk'll wait longer 'cause the receipts burned. That ain't a detail. That's somebody's rent.\"\n{n}She puts both hands flat on the table.{/n}\n\"Stoppin' Helve wasn't daft. It cost somethin'. I want us able to say so without either of us hearin' an accusation in it.\"",
+          "Text": "\"Some amounts we can match. Some we can't. We've got people who remember payin' and no receipt sayin' how much. Cale's gone very vague about sums.\"\n{n}Her mouth tightens.{/n}\n\"Helve's papers gave us another district. Found a woman there with the same letter. Hadn't answered yet. That counts.\"\n\"And the money here?\"\n\"What's left gets split against the claims we can prove. Rest'll need witnesses, and some folk'll wait longer 'cause the receipts burned. That ain't a detail. That's somebody's rent.\"\n{n}She puts both hands flat on the table.{/n}\n\"Wanted those receipts. Still do. But you caught a slippery sod, and I'm gonna find out what she knows before I start yellin' at you.\"",
           "Choices": [
             {
               "Text": "\"I would still stop her. Warning another district mattered.\"",
@@ -83418,7 +83458,7 @@
         {
           "Id": "defend",
           "Speaker": "Anevia",
-          "Text": "\"Maybe. I think I'd have gone for the papers. Doesn't matter now, does it? We don't get to try it both ways and see which feels better.\"\n{n}She leans back and lets the disagreement stand.{/n}\n\"You saw a woman who'd walk out and do it again two streets over. I saw names catchin'. Neither of us saw the whole room. That's why I brought you.\"\n\"Even if we disagree now?\"\n\"Specially then. Long as you don't remind me who commands the army.\"\n{n}The grin comes back, faint and fond.{/n}\n\"Don't make that face. You didn't. I'm allowed to be pleased about it.\"",
+          "Text": "\"I'd have gone for the papers. And Helve's sittin' in a cell eatin' our bread, and she's the only one of the lot who's talked, so now I've got to be grateful to you. Hate it.\"\n{n}She leans back and props her boots on the other chair.{/n}\n\"Next time I grab the papers and you grab the door. We get both, and I get to be smug.\"",
           "Choices": [
             {
               "Text": "\"We disagree. Pour me another.\"",
@@ -83434,7 +83474,7 @@
         {
           "Id": "reconsider",
           "Speaker": "Anevia",
-          "Text": "\"Then remember it. Just don't turn it into a hair shirt you pull on every time the case comes up.\"\n{n}She reaches across and touches your fingers.{/n}\n\"I made calls too. Could've shut up sooner. Could've kicked that brazier over before Cale got to it. I've got a whole list of ways that room could've gone smoother if I'd known the endin'.\"\n\"A long list?\"\n\"Magnificent list. Everybody does exactly what I want. Nothin' like real people.\"\n{n}She squeezes your hand once and lets go.{/n}\n\"We learn it. Learnin' it don't unburn a receipt. Then we get on with the folk still waitin' on us.\"",
+          "Text": "\"Then remember it. Just don't turn it into a hair shirt you pull on every time the case comes up.\"\n{n}She reaches across and touches your fingers.{/n}\n\"I made calls too. Could've shut up sooner. Could've kicked that brazier over before Cale got to it. I've got a whole list of ways that room could've gone smoother if I'd known the endin'.\"\n\"A long list?\"\n\"Magnificent list. Everybody does exactly what I want. Nothin' like real people.\"\n{n}She squeezes your hand once and lets go.{/n}\n\"Anyway. Twelve claims with no receipt behind 'em. You're good with angry widows, apparently. You're takin' four.\"",
           "Choices": [
             {
               "Text": "[Ask what remains for Dema.]",
@@ -83450,7 +83490,7 @@
         {
           "Id": "dema",
           "Speaker": "Anevia",
-          "Text": "\"She sent word. Wanted to know if I'd vouch for her to the next person she helped. I said I wouldn't send her a next person without askin' her first.\"\n{n}Anevia looks amused and a bit sheepish.{/n}\n\"Had another question ready for her. Right there on my tongue. Then I heard myself and remembered she'd agreed to one thing. One.\"\n\"Did you ask?\"\n\"No. Said thanks. She said that was unusually short of me.\"\n{n}Anevia folds Ressa's letter carefully.{/n}\n\"Think she might talk to me again. I'd like that. I'd like it more knowin' she could go her whole life without carryin' another basket for me.\"\n{n}She puts the letter away rather than making it the evening's next job.{/n}\n\"There. That's the report. Now tell me somethin' that ain't about the case, before I start again.\"",
+          "Text": "\"Dema sent word. Her shed roof leaks, and since I owe her, I'm fixin' it.\"\n{n}Anevia looks amused and faintly alarmed.{/n}\n\"I've never fixed a roof in my life. Beth has. I'm gonna volunteer Beth and see how she likes bein' volunteered.\"\n\"Did you have more questions for Dema?\"\n\"Six. Didn't ask one. Next thing she carries for me, I'm payin' for, and she knows it.\"\n{n}Anevia folds Ressa's letter carefully.{/n}\n{n}She puts the letter away rather than making it the evening's next job.{/n}\n\"There. That's the report. Now tell me somethin' that ain't about the case, before I start again.\"",
           "Choices": [
             {
               "Text": "\"I enjoyed watching you do work you cared about. I also missed having you to myself.\"",
@@ -83490,7 +83530,7 @@
         {
           "Id": "trusted",
           "Speaker": "Anevia",
-          "Text": "\"Was nervous about it. You can know that. Don't give me a medal.\"\n{n}She drags her chair round the corner of the table so she can sit nearer.{/n}\n\"I like you. Makes me want to bring you the version of me that sounds cleverest. Rather you saw what I'm still arguin' with myself about. You might even have somethin' useful to say.\"\n\"I might not.\"\n\"Then I'll enjoy the company and ignore you. Solid foundation for romance, that.\"\n{n}She kisses your cheek, then the corner of your mouth, plainly enjoying how hard she is making it for you to answer.{/n}\n\"Come here. I'm done bein' professionally interestin' for tonight.\"",
+          "Text": "\"'Course I did. Who else am I gonna argue with? Beth agrees with me when she's tired, and that's no sport at all.\"\n{n}She drags her chair round the corner of the table so she can sit nearer.{/n}\n\"Besides, you had the right of it about Helve. Once. Don't let it go to your head.\"\n\"I might not.\"\n\"Then I'll enjoy the company and ignore you. Solid foundation for romance, that.\"\n{n}She kisses your cheek, then the corner of your mouth, plainly enjoying how hard she is making it for you to answer.{/n}\n\"Come here. I'm done bein' professionally interestin' for tonight.\"",
           "Choices": [
             {
               "Text": "[Accept the invitation.]",
@@ -83634,7 +83674,7 @@
         {
           "Id": "deciding",
           "Speaker": "Anevia",
-          "Text": "\"In a minute. Wanted to say somethin' before I find another excuse to stare at the board.\"\n{n}She stands the crooked goat up by the lamp.{/n}\n\"You leave, and I'm in a good mood after. Not every time. Sometimes I'm sore the night's over. Sometimes I think of a better comeback. Mostly I catch myself rememberin' some daft thing you did and wantin' to tell you I liked it.\"\n{n}Her finger stays on the little wooden goat.{/n}\n\"Didn't see that comin'. Wantin' you here, sure. Hadn't reckoned on bein' pleased after you'd gone.\"\n\"What did I do?\"\n\"Lost a game without explainin' why it didn't count. Asked what I wanted when I went off on one. Watched me bein' ridiculous and didn't look like you wanted me to stop.\"\n{n}She glances up, grinning.{/n}\n\"There's a list. Not showin' you. You'd get a big head.\"",
+          "Text": "\"In a minute.\"\n{n}She stands the crooked goat up by the lamp.{/n}\n\"Told Beth about last week. How you lost at cards and didn't explain why it didn't count. She said you sounded unnatural. Then she laughed for a good minute, which she don't do for just anybody.\"\n{n}Her finger stays on the little wooden goat.{/n}\n\"What else did I do?\"\n\"Watched me bein' ridiculous about a goat and didn't look like you wanted me to stop.\"\n{n}She glances up, grinning.{/n}\n\"There's a list. Not showin' you. You'd get a big head.\"",
           "Choices": [
             {
               "Text": "\"I remember the way you look pleased before you decide what to say about it.\"",
@@ -83682,10 +83722,10 @@
         {
           "Id": "different",
           "Speaker": "Anevia",
-          "Text": "\"You'd be bored stiff with somebody who agreed with you. I'd be bored tryin'.\"\n{n}She comes round the table and sits next to you.{/n}\n\"Caught myself savin' up arguments 'cause I thought you'd enjoy 'em. Either that's love or it's a very long con.\"\n\"Does it have to be one?\"\n\"No. That's one of the things I like about you.\"\n{n}She leans into you, shifting until her shoulder finds a comfortable place.{/n}\n\"Don't let's get so polite we never surprise each other. You want somethin' I ain't guessed, say it. I'll try the same, before I've built it a nice sensible excuse.\"",
+          "Text": "\"You'd be bored stiff with somebody who agreed with you. I'd be bored tryin'.\"\n{n}She comes round the table and sits next to you.{/n}\n\"Caught myself savin' up arguments 'cause I thought you'd enjoy 'em. Either that's love or it's a very long con.\"\n\"Does it have to be one?\"\n\"No. That's one of the things I like about you.\"\n{n}She leans into you, shifting until her shoulder finds a comfortable place.{/n}\n\"So surprise me. I've got a whole evenin' and a board full of goats.\"",
           "Choices": [
             {
-              "Text": "\"Then tell me what you want now.\"",
+              "Text": "\"Then what are we doing tonight?\"",
               "Next": "desire",
               "Set": [],
               "Requires": [],
@@ -83766,7 +83806,7 @@
         {
           "Id": "leave",
           "Speaker": "Anevia",
-          "Text": "\"Then go keep it. I like that you turn up when you say you will. Somebody else is allowed to like that too.\"\n{n}She kisses you again, and does not rush it to prove she doesn't mind. At the door she straightens a fold in your collar, notices she is doing it and snorts at herself.{/n}\n\"Look at me. Domesticated. Don't you dare put that in a report.\"\n{n}You pick another night before you go. Afterwards she packs the game away and leaves the crooked goat by the lamp. She taps it on the head before she blows the lamp out.{/n}",
+          "Text": "\"Then go keep it. Somebody's waitin'. I know the feelin'.\"\n{n}She kisses you again, and takes her time about it. At the door she straightens a fold in your collar, notices she is doing it and snorts at herself.{/n}\n\"Look at me. Domesticated. Don't you dare put that in a report.\"\n{n}You pick another night before you go. Afterwards she packs the game away and leaves the crooked goat by the lamp. She taps it on the head before she blows the lamp out.{/n}",
           "Choices": [
             {
               "Text": "[Kiss her goodbye and promise the next night.]",
@@ -83784,7 +83824,7 @@
         {
           "Id": "morning",
           "Speaker": "Anevia",
-          "Text": "\"We should eat before I start findin' reasons not to leave.\"\n{n}She gets up, comes back to kiss you, gets up again with more conviction. There is bread, a heel of cheese and what fruit survived your appetites. She hands it round without making breakfast into a test of anything.{/n}\n\"I've got work. You've got work. And I've got a night at home with Beth I mean to keep.\"\n{n}She takes your hand across the table.{/n}\n\"And I want another one here. All of it at once. Greedy woman, you knew that.\"\n{n}You settle on the next visit. She goes off pleased, the folded game under her arm, the crooked goat still standing by your lamp.{/n}",
+          "Text": "\"We should eat before I start findin' reasons not to leave.\"\n{n}She gets up, comes back to kiss you, gets up again with more conviction. There is bread, a heel of cheese and what fruit survived your appetites. She hands it round and steals the best of the cheese.{/n}\n\"I've got work. You've got work. And I've got a night at home with Beth I mean to keep.\"\n{n}She takes your hand across the table.{/n}\n\"And I want another one here. All of it at once. Greedy woman, you knew that.\"\n{n}You settle on the next visit. She goes off pleased, the folded game under her arm, the crooked goat still standing by your lamp.{/n}",
           "Choices": [
             {
               "Text": "\"Friday? If Beth hasn't got it.\"",
@@ -83892,7 +83932,7 @@
         {
           "Id": "fear",
           "Speaker": "Anevia",
-          "Text": "\"So am I. Rather we both said it than each think we were the only one scared.\"\n{n}She looks at the folded page in your hand.{/n}\n\"I won't be brave pretty. I'll bite some poor runner's head off for knockin' at the wrong minute. Say sorry after. Probably be cross about sayin' sorry.\"\n\"That sounds like you.\"\n\"Let's hope I don't turn into a saint while you're off. You'd never recognize me.\"\n{n}The joke cracks down the middle. She takes a breath and lets you see her do it.{/n}\n\"Keep the paper. It ain't a bill. I gave it you 'cause I can't come along.\"",
+          "Text": "\"So am I. Bloody terrified. There. Both said it.\"\n{n}She looks at the folded page in your hand.{/n}\n\"I won't be brave pretty. I'll bite some poor runner's head off for knockin' at the wrong minute. Say sorry after. Probably be cross about sayin' sorry.\"\n\"That sounds like you.\"\n\"Let's hope I don't turn into a saint while you're off. You'd never recognize me.\"\n{n}The joke cracks down the middle. She takes a breath and lets you see her do it.{/n}\n\"Keep the paper. It ain't a bill. I gave it you 'cause I can't come along.\"",
           "Choices": [
             {
               "Text": "[Keep her gift and stay close.]",
@@ -84093,7 +84133,7 @@
         {
           "Id": "start",
           "Speaker": "Anevia",
-          "Text": "{n}Anevia has moved the little plant into a bigger pot. The wooden box now holds scraps of paper, a needle case and a key she says opens nothing she currently owns.{/n}\n\"Kept it 'cause I liked the shape. That's allowed. I checked.\"\n{n}She clears a place beside it for your things and sits close enough that you can reach her hand without anyone making a ceremony of it.{/n}\n\"Been thinkin'. I can give you a lovely report of my week and leave out every bit that mattered. You might've noticed. It's a professional skill.\"\n{n}She raises an eyebrow, daring you to say you had.{/n}\n\"Not tonight. Tonight I want the other kind of talk.\"",
+          "Text": "{n}Anevia has moved the little plant into a bigger pot. The wooden box now holds scraps of paper, a needle case and a key she says opens nothing she currently owns.{/n}\n\"Kept it 'cause I liked the shape. That's allowed. I checked.\"\n{n}She clears a place beside it for your things and sits close enough that you can reach her hand without anyone making a ceremony of it.{/n}\n\"Been thinkin'. I can give you a lovely report of my week and leave out every bit that mattered. You might've noticed. It's a professional skill.\"\n{n}She raises an eyebrow, daring you to say you had.{/n}\n\"Not tonight. Tonight you get the bits I'd cut.\"",
           "Choices": [
             {
               "Text": "\"There are days we missed. I want to hear about yours.\"",
@@ -84129,7 +84169,7 @@
         {
           "Id": "absence",
           "Speaker": "Anevia",
-          "Text": "\"Some were awful. Some were just days. I ain't gonna pretend the plain ones prove I didn't miss you.\"\n{n}She pulls her feet up under her on the chair.{/n}\n\"Went to market with Beth. Fought about whether we needed another blanket. Bought one, got home, found she'd already ordered one. Very well-blanketed evenin', spent bein' cross with each other.\"\n{n}The memory makes her smile before the other thing comes back into her face.{/n}\n\"Another day I nearly bit a runner's head off. She'd brought exactly what I asked for. I was livid 'cause it wasn't news of you. Had to go find her after and say whose fault that was.\"\n\"Yours?\"\n\"Mine. Didn't make me miss you less. Did stop me chuckin' it at people.\"\n{n}She reaches for your hand.{/n}\n\"What'd you keep for me? If you kept anythin'. Don't owe me a page a day.\"",
+          "Text": "\"Some were awful. The plain ones were worse.\"\n{n}She pulls her feet up under her on the chair.{/n}\n\"Went to market with Beth. Fought about whether we needed another blanket. Bought one, got home, found she'd already ordered one. Very well-blanketed evenin', spent bein' cross with each other.\"\n{n}The memory makes her smile before the other thing comes back into her face.{/n}\n\"Another day I nearly bit a runner's head off. She'd brought exactly what I asked for. I was livid 'cause it wasn't news of you. Had to go find her after and say whose fault that was.\"\n\"Yours?\"\n\"Mine. Didn't make me miss you less. Did stop me chuckin' it at people.\"\n{n}She reaches for your hand.{/n}\n\"What'd you keep for me? If you kept anythin'. Don't owe me a page a day.\"",
           "Choices": [
             {
               "Text": "[Give her the written account of a moment you wanted to share.]",
@@ -84193,7 +84233,7 @@
         {
           "Id": "changed",
           "Speaker": "Anevia",
-          "Text": "\"I did get used to some of it.\"\n{n}She gives you the hard answer with her hand still on yours.{/n}\n\"Not havin' you about. Havin' to decide what to do with a night instead of just wantin' you and callin' that a plan. Didn't stop wantin' you. Stopped lettin' it run my whole week.\"\n{n}She reads the second thought again, the one under the fear.{/n}\n\"Glad you left the nasty bit in. And the bit that knew it was nasty. I think things like that too. Usually I try 'em on a wall first.\"\n\"A patient wall?\"\n\"Saintly. Terrible advice, though.\"\n{n}She kisses your fingers before she puts the page down.{/n}\n\"Now ask about the woman that's actually here. You'll still like her. She's got a few new opinions you ain't ready for.\"",
+          "Text": "\"I did get used to some of it.\"\n{n}She gives you the hard answer with her hand still on yours.{/n}\n\"Not havin' you about. Havin' to decide what to do with a night instead of just wantin' you and callin' that a plan. Didn't stop wantin' you. Stopped lettin' it run my whole week.\"\n{n}She reads the second thought again, the one under the fear.{/n}\n\"Glad you left the blots in. Tells me which lines you fought. I'd have burned the page and written you a nice lie.\"\n\"A patient wall?\"\n\"Saintly. Terrible advice, though.\"\n{n}She kisses your fingers before she puts the page down.{/n}\n\"Now ask about the woman that's actually here. You'll still like her. She's got a few new opinions you ain't ready for.\"",
           "Choices": [
             {
               "Text": "[Ask what she wants you to know about her days.]",
@@ -84225,7 +84265,7 @@
         {
           "Id": "new_days",
           "Speaker": "Anevia",
-          "Text": "\"A whole day? Dangerous. You'll find out how much of it I spend lookin' for somethin' I put down a minute ago.\"\n{n}She grins, then thinks about it.{/n}\n\"There's stuff I keep meanin' to tell you. Little stuff. Places I went, rows I had, a woman who taught me somethin' while pretendin' she was only complainin'.\"\n\"You can tell me.\"\n\"I know. Knowin' don't make me remember to. I can spend a whole night with you talkin' about nothin' but the bits of my life you already saw.\"\n{n}She leans in.{/n}\n\"So ask. Not like an interrogation. Like somebody who wants to know what I get up to when I ain't tidied the room for guests.\"",
+          "Text": "\"A whole day? Dangerous. You'll find out how much of it I spend lookin' for somethin' I put down a minute ago.\"\n{n}She grins, then thinks about it.{/n}\n\"There's stuff I keep meanin' to tell you. Little stuff. Places I went, rows I had, a woman who taught me somethin' while pretendin' she was only complainin'.\"\n\"You can tell me.\"\n\"I know. Knowin' don't make me remember to. I can spend a whole night with you talkin' about nothin' but the bits of my life you already saw.\"\n{n}She leans in.{/n}\n\"So ask. And not like you're takin' a deposition.\"",
           "Choices": [
             {
               "Text": "[Ask about an ordinary day she has not described.]",
@@ -84241,7 +84281,7 @@
         {
           "Id": "her_days",
           "Speaker": "Anevia",
-          "Text": "\"Went back to the woman with the cuttin's. Asked if I could help with the boxes on her sill. She said I could start by carryin' 'em without tellin' her how I'd carry a wounded man through a sewer.\"\n{n}She looks at you, amused.{/n}\n\"Apparently I'd been talkin' about the plants like they were a mission.\"\n\"Did you stay?\"\n\"Yeah. Dirt under my nails. Learned which roots you don't pull apart. She asked if I wanted another cuttin' when it's ready. Said yes before I could invent a reason I was too busy.\"\n{n}Anevia rests her hand on the wooden box.{/n}\n\"Want more of that. Somewhere I go 'cause I like it, and somebody waitin' who don't need a single secret off me. Not instead of you. So I've got somethin' to bring you.\"\n{n}She waits, and does not shrink it to make it easier to hear.{/n}",
+          "Text": "\"Went back to the woman with the cuttin's. Asked if I could help with the boxes on her sill. She said I could start by carryin' 'em without tellin' her how I'd carry a wounded man through a sewer.\"\n{n}She looks at you, amused.{/n}\n\"Apparently I'd been talkin' about the plants like they were a mission.\"\n\"Did you stay?\"\n\"Yeah. Dirt under my nails. Learned which roots you don't pull apart. She asked if I wanted another cuttin' when it's ready. Said yes before I could invent a reason I was too busy.\"\n{n}Anevia rests her hand on the wooden box.{/n}\n\"Want more of that. Dirt, and an old woman who don't want a single secret off me. I'm goin' back Tuesday.\"\n{n}She waits to see what you make of Tuesday.{/n}",
           "Choices": [
             {
               "Text": "\"Tell me about it. You don't have to take me along to all of it.\"",
@@ -84265,7 +84305,7 @@
         {
           "Id": "end",
           "Speaker": "Anevia",
-          "Text": "\"Then I'll tell you when I'm off there. You can tell me you miss me. Just don't make it sound like a complaint I've got to fix.\"\n{n}She moves in close enough to kiss you, then leans against you while the light changes in the window. Outside someone drops a bucket. She laughs at the string of curses that follows, each fouler than the last.{/n}\n\"So what're you doin' tomorrow,\" she says, \"that I ain't already guessed?\"\n{n}You tell her. She looks delighted by the part she didn't see coming.{/n}",
+          "Text": "\"Tuesdays I'm in the dirt, then. Come and hold a pot. Badly. She'll love you.\"\n{n}She moves in close enough to kiss you, then leans against you while the light changes in the window. Outside someone drops a bucket. She laughs at the string of curses that follows, each fouler than the last.{/n}\n\"So what're you doin' tomorrow,\" she says, \"that I ain't already guessed?\"\n{n}You tell her. She looks delighted by the part she didn't see coming.{/n}",
           "Choices": [
             {
               "Text": "\"Then let's meet the new ones.\"",
@@ -84554,7 +84594,7 @@
         {
           "Id": "open",
           "Speaker": "Anevia",
-          "Text": "{n}Anevia listens, then puts the key in her pocket.{/n}\n\"Wanted the other answer. I can still hear this one.\"\n{n}She asks what you can offer without dressing it up as forever. You tell her. She thinks about it long enough that you stop getting a reply ready and just wait.{/n}\n\"I want to keep seein' you. I won't build plans on a promise you ain't made. If it stops bein' enough, I'll say so to your face, not let every night turn into a row till you notice.\"\n\"Fair.\"\n\"Don't you 'fair' me like a quartermaster. It stings. I'm takin' it anyway.\"\n{n}She takes your hand and squeezes it hard enough to hurt, which is the closest she comes to saying the rest.{/n}",
+          "Text": "{n}Anevia listens, then puts the key in her pocket.{/n}\n\"Wanted the other answer. I can still hear this one.\"\n{n}She asks what you can offer without dressing it up as forever. You tell her. She thinks about it long enough that you stop getting a reply ready and just wait.{/n}\n\"I want to keep seein' you. I just ain't buildin' shelves in a house you might not live in. It stops bein' enough, you'll hear it before breakfast, with the pan in my hand.\"\n\"Understood.\"\n\"Don't you 'understood' me like a quartermaster. It stings. I'm takin' it anyway.\"\n{n}She takes your hand and squeezes it hard enough to hurt, which is the closest she comes to saying the rest.{/n}",
           "Choices": [
             {
               "Text": "\"Keep askin' me. I'll keep comin'.\"",
@@ -93027,7 +93067,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}The war ended before the two of them had finished beginning. There had been a recitation, a wagon of cold iron and a handful of evenings. There had not been the road, or the lake, or the quarrel about inns she had been saving up.{/n}\n{n}Irabeth went back to her post and her paperwork. Once a season a note in her square hand reached the Commander, with a date on it, a place, and four words: \"If you still want to.\" Whether anyone came was never entered in any report she wrote.{/n}",
+          "Text": "{n}The war ended before the two of them had finished beginning. There had been a handful of evenings. There had not been the road, or the lake, or the quarrel about inns she had been saving up.{/n}\n{n}Irabeth went back to her post and her paperwork. Once a season a note in her square hand reached the Commander, with a date on it, a place, and four words: \"If you still want to.\" Whether anyone came was never entered in any report she wrote.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -93191,7 +93231,8 @@
         "true_lich",
         "sacrifice",
         "ascended",
-        "irabeth.campaign_kept"
+        "irabeth.campaign_kept",
+        "irabeth.trickster.recommitted"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -145264,7 +145305,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The chaplain calls her name over the bier at the second bell of the night, once, with the diamond dust smoking in the bowl. The knight keeping vigil swears afterwards that she answered before her eyes were open, and that the word was \"Reporting\".{/n}\n{n}She spends two days on a chapel cot, weak as a kitten and furious about it. On the third morning the Knight-Captain is in the throne room, at attention before your chair, waiting to report.{/n}",
+          "Text": "{n}The chaplain calls her name over the bier at the second bell of the night, once, with the diamond dust smoking in the bowl. The knight keeping vigil swears afterwards that she answered before her eyes were open, and that the word was \"Reporting\".{/n}\n{n}She spends a day on a chapel cot, weak as a kitten and furious about it. The morning after, the Knight-Captain is in the throne room, at attention before your chair, waiting to report.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -148074,7 +148115,7 @@
         "irabeth.committed"
       ],
       "Forbids": [
-        "irabeth.lover",
+        "irabeth.campaign_kept",
         "trying",
         "committed",
         "sacrifice"
@@ -149900,7 +149941,7 @@
         {
           "Id": "penance",
           "Speaker": "Anevia",
-          "Text": "\"Here's the rest. Tomorrow, at muster, in the yard, in front of every knight who carried her out of Iz, you say it again. Same words. Your mouth, not a clerk's. Then you stand there while they look at you.\"\n{n}She lifts the lantern an inch, so she can see all of your face.{/n}\n\"And don't ask me why I still want you after. I've asked myself every mile of that road. You're the only one in Drezen who don't look at me like a widow. You look at me like somebody who could still hurt you. I'd rather be that.\"",
+          "Text": "\"Here's the rest. Tomorrow, at muster, in the yard, in front of every knight who carried her out of Iz, you say it again. Same words. Your mouth, not a clerk's. Then you stand there while they look at you.\"\n{n}She lifts the lantern an inch, so she can see all of your face.{/n}\n\"And don't ask me why I haven't walked yet. I don't know. I'll find out on the wall, watchin' you say it.\"",
           "Choices": [
             {
               "Text": "[Agree] \"Tomorrow, at muster. My mouth.\"",
@@ -150699,7 +150740,7 @@
         {
           "Id": "gate",
           "Speaker": "Anevia",
-          "Text": "{n}She is at the gate afterwards, on her side of the line, with the lantern. She was on the wall for all of it; you saw her there.{/n}\n\"You didn't say it sideways. Not once.\" {n}She sets the lantern down on your side of the line.{/n} \"I'm still not forgivin' you. I don't think I'm built for it. But I asked for a thing, and you paid it where it cost. Come here.\"",
+          "Text": "{n}She is at the gate afterwards, on her side of the line, with the lantern. She was on the wall for all of it; you saw her there.{/n}\n\"You didn't say it sideways. Not once.\" {n}She keeps the lantern on her side of the line.{/n} \"I'm still not forgivin' you. I don't think I'm built for it. But I asked for a thing, and you paid it where it cost. That buys you the gate. Not the door. Not yet.\"",
           "Choices": [
             {
               "Text": "[Kiss her] \"I'm knocking. See?\"",
@@ -150710,7 +150751,9 @@
                 "anevia.trickster.cost.muster_confession"
               ],
               "Requires": [],
-              "Forbids": [],
+              "Forbids": [
+                "anevia.irabeth_killed_by_commander"
+              ],
               "Abort": false
             },
             {
@@ -150720,6 +150763,19 @@
                 "anevia.committed",
                 "anevia.trickster.terms_kept",
                 "anevia.trickster.cost.muster_confession"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "anevia.irabeth_killed_by_commander"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Walk her back to the road] \"The gate, then. For now.\"",
+              "Next": null,
+              "Set": [
+                "anevia.trickster.cost.muster_confession",
+                "anevia.trickster.declined"
               ],
               "Requires": [],
               "Forbids": [],
@@ -154223,7 +154279,6 @@
       ],
       "Forbids": [
         "konomi.closed",
-        "konomi.farewell",
         "inhuman",
         "konomi.trickster.cost.late",
         "konomi.trickster.recessed"
@@ -154442,7 +154497,6 @@
       ],
       "Forbids": [
         "konomi.closed",
-        "konomi.farewell",
         "inhuman",
         "konomi.trickster.recessed"
       ],
@@ -154494,7 +154548,6 @@
       ],
       "Forbids": [
         "konomi.closed",
-        "konomi.farewell",
         "inhuman",
         "konomi.trickster.arrived",
         "konomi.trickster.recessed"
@@ -154658,7 +154711,6 @@
       ],
       "Forbids": [
         "konomi.closed",
-        "konomi.farewell",
         "inhuman",
         "konomi.trickster.terms_settled"
       ],
@@ -155889,7 +155941,8 @@
         "konomi.present",
         "konomi.trickster.returned",
         "konomi.missed_contact_invalidated",
-        "konomi.retained_return_confirmed"
+        "konomi.retained_return_confirmed",
+        "konomi.presence.failed"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -155905,6 +155958,65 @@
       "AnswerLists": [
         "0dc8b8604bb33c846a63f3eb62443674"
       ]
+    },
+    {
+      "Id": "konomi.trickster.never_arrived.audience_letter",
+      "Title": "Late for her own audience",
+      "Owner": "Konomi",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}A letter in a Nerosyan court hand, delivered by the chancery boy, who will not meet your eye: Lady Konomi, official attaché of Nerosyan, has taken rooms in the lower town, since the attaché's office in the citadel is, in her words, \"occupied by a jug\".{/n}\n{n}\"My credentials were presented, I am told, by you. The journey and the reception I left are on your account. You may write to me here, and I shall choose whether to answer. K.\"{/n}",
+          "Choices": [
+            {
+              "Text": "\"I'll write.\"",
+              "Next": null,
+              "Set": [
+                "konomi.trickster.returned",
+                "konomi.missed_appointment"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "konomi.trickster.primed",
+        "konomi.trickster.cost.accredited",
+        "konomi.missed_letter_sent",
+        "konomi.trickster.arrived",
+        "konomi.presence.failed"
+      ],
+      "Forbids": [
+        "konomi.closed",
+        "konomi.farewell",
+        "inhuman",
+        "konomi.present",
+        "konomi.trickster.returned",
+        "konomi.missed_contact_invalidated",
+        "konomi.retained_return_confirmed"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "konomi",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "Remote": true,
+      "Kind": "letter",
+      "Sender": "Konomi"
     },
     {
       "Id": "konomi.trickster.never_arrived.arrival",
@@ -156313,6 +156425,46 @@
       }
     },
     {
+      "Id": "konomi.trickster.epilogue.sacrifice",
+      "Title": "An account left open",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Lady Konomi read the dispatch from the Wound in her own office, standing, and then sat down, which nobody on her staff had seen her do in the middle of a working day.{/n}\n{n}She finished the war's paperwork. She closed every account the Commander had left open with Nerosyan, to the copper, and signed each one herself. The last she kept in her desk, unsigned, for the rest of her life: a supper the two of them had agreed on and never eaten.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        }
+      ],
+      "Requires": [
+        "konomi.committed",
+        "sacrifice"
+      ],
+      "Forbids": [
+        "trickster.commander_back",
+        "konomi.closed",
+        "ascended",
+        "inhuman",
+        "lastcall.active"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "konomi"
+    },
+    {
       "Id": "konomi.lastcall.page",
       "Title": "Terms, Accepted",
       "Owner": "Epilogue",
@@ -156389,7 +156541,7 @@
         {
           "Id": "start",
           "Speaker": "Regill",
-          "Text": "{n}Regill's pale yellow eyes settle on you with an expression of polite attention that is not polite at all.{/n}\n\"You dismissed the attaché of Nerosyan before your own council, and then retained her with a bribed carter and a minute that lies by being accurate. Either decision alone I could respect. Together they are contempt of your own order.\"\n\"I have no statute for that minute. I shall have to write one. It will be long.\"",
+          "Text": "{n}Regill's pale yellow eyes settle on you with an expression of polite attention that is not polite at all.{/n}\n\"You dismissed the attaché of Nerosyan before your own council, and then retained her with a bribed carter and a minute that lies by being accurate. Either decision alone I could respect. Together they are contempt of your own order.\"\n\"And you have told every man on the east gate that the Commander's word at the war table can be revised by a carter's purse. My sergeants will need to be told otherwise. I will tell them. You will not like how.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -156472,7 +156624,7 @@
         {
           "Id": "start",
           "Speaker": "Regill",
-          "Text": "{n}Regill does not look up from his report.{/n}\n\"A death is a record, Commander. You had it amended, and the deceased invoiced you for the correction. I have no statute for that, or for whoever you paid in the night to make the amendment true.\"\n{n}He turns a page.{/n}\n\"I shall write one. I shall also note, for your file, that she charged you triple, and that you paid. It is the first sign of discipline I have seen in you.\"",
+          "Text": "{n}Regill does not look up from his report.{/n}\n\"A death is a record, Commander. You had it amended, and the deceased invoiced you for the correction.\"\n{n}He turns a page.{/n}\n\"What concerns me is the other matter. Four civilians nobody can name held a rite in your council chamber at midnight, and the clerk was sent out. The chamber was unguarded while they did it. The attaché is alive; I accept that. I do not accept that you will not tell me who they were. Double the watch on that door, or I will.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -156555,7 +156707,7 @@
         {
           "Id": "start",
           "Speaker": "Regill",
-          "Text": "\"Credentials are presented, or they are not, Commander. 'Deemed' is a word for people who have lost the argument.\"\n{n}Regill's mouth tightens a fraction.{/n}\n\"And yet here she is, with Nerosyan's register to prove it. You found the Chancellor's informer in your own chancery and, instead of hanging him, made him your postman. I dislike being out-argued by furniture. I dislike the rest of it more.\"",
+          "Text": "\"Credentials are presented, or they are not, Commander. 'Deemed' is a word for people who have lost the argument.\"\n{n}Regill's mouth tightens a fraction.{/n}\n\"And yet here she is, with Nerosyan's register to prove it. You found the Chancellor's informer in your own chancery and, instead of hanging him, made him your postman. A spy you let run is a door you left open, Commander. I shall want to know every other door in that chancery before the week is out.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -384569,8 +384721,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -389679,6 +389831,12 @@
     "iz.monster_dead": [
       [
         "iz.monster_dead.latched"
+      ]
+    ],
+    "irabeth.trickster.recommitted": [
+      [
+        "irabeth.trickster.returned",
+        "irabeth.committed"
       ]
     ],
     "irabeth.trickster.presence_on": [

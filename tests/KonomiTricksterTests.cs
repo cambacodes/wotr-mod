@@ -289,6 +289,16 @@ internal static class KonomiTricksterTests
         check(!diedLate.Has("trickster.commander_back") && !Rules.Available(story, epCommit, diedLate), "A dead Commander rides to Nerosyan.");
         var backLate = World(story, 6, lateCommit.Flags.Concat(new[] { "sacrifice", "ending.trickster" }).ToArray());
         check(backLate.Has("trickster.commander_back") && Rules.Available(story, epCommit, backLate), "The surviving Commander loses the late commit.");
+        // Sol r4 BEL: the registered living endings also need a living Commander.
+        var deadPartner = World(story, 6, "konomi.committed", "sacrifice");
+        check(!Rules.Available(story, S("konomi.ending_private"), deadPartner) && Rules.Available(story, S("konomi.trickster.epilogue.sacrifice"), deadPartner),
+            "A dead Commander keeps a living future with Konomi.");
+        var backPartner = World(story, 6, "konomi.committed", "sacrifice", "trickster.ever", "ending.trickster");
+        check(Rules.Available(story, S("konomi.ending_private"), backPartner) && !Rules.Available(story, S("konomi.trickster.epilogue.sacrifice"), backPartner),
+            "The returned Commander is mourned.");
+        // Sol r4 INT: the ordinary farewell does not bar the dismissal rescue.
+        var farewell = World(story, 5, "trickster", "trickster.ever", "konomi.dismissed", "konomi.office_completed", "konomi.farewell");
+        check(Rules.Available(story, late, farewell), "A completed farewell blocks the dismissal rescue.");
         var committedLate = Program.Copy(lateCommit); committedLate.Flags.Add("konomi.committed");
         check(!Rules.Available(story, epCommit, committedLate), "The late commit replays after a commit.");
         var soft = World(story, 6, "trickster.ever", "konomi.dismissed", "konomi.trickster.terms_settled", "konomi.trickster.declined");

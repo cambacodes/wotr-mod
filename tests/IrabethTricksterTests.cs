@@ -324,6 +324,11 @@ internal static class IrabethTricksterTests
         check(Rules.Available(story, S("irabeth.trickster.epilogue.under_orders"), endFriend)
               && !story.Scenes.Where(s => s.Id.StartsWith("irabeth.ending_", StringComparison.Ordinal)).Any(s => Rules.Available(story, s, endFriend)),
             "Returned non-lover gets no page or two pages.");
+        // Sol r4 INT: an early lover who dies at Iz, returns and recommits gets the recommitted page, not "unfinished".
+        var recommitted = World(story, 6, "trickster.ever", "irabeth_dead", Returned, "irabeth.lover", "irabeth.committed", Vell);
+        var recommittedPages = story.Scenes.Where(s => s.Relationship == "irabeth" && s.Owner == "Epilogue" && Rules.Available(story, s, recommitted)).ToList();
+        check(recommittedPages.Count == 1 && recommittedPages[0].Id == "irabeth.trickster.epilogue.off_the_record",
+            "The recommitted lover gets the unfinished ending: " + string.Join(",", recommittedPages.Select(s => s.Id)));
         var endDead = World(story, 6, "irabeth_dead", "irabeth.lover");
         check(Rules.Available(story, S("irabeth.ending_loss"), endDead), "Canon loss page lost.");
 

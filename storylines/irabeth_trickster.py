@@ -241,7 +241,7 @@ letter("irabeth.trickster.dead.raise_list", "Diamond for one", [
 
 physical("irabeth.trickster.dead.relieved_not_dismissed", "Reporting in person", '"Knight-Captain?"', [
     nar("start", '''{n}The chaplain calls her name over the bier at the second bell of the night, once, with the diamond dust smoking in the bowl. The knight keeping vigil swears afterwards that she answered before her eyes were open, and that the word was "Reporting".{/n}
-{n}She spends two days on a chapel cot, weak as a kitten and furious about it. On the third morning the Knight-Captain is in the throne room, at attention before your chair, waiting to report.{/n}''',
+{n}She spends a day on a chapel cot, weak as a kitten and furious about it. The morning after, the Knight-Captain is in the throne room, at attention before your chair, waiting to report.{/n}''',
       c("Continue", "report")),
     i("report", '''"Knight-Captain Tirabade, reporting in person. As ordered."
 {n}Her voice is hoarse, and very irritated. The burial whites are belted over her arming coat. There is a sword in her hand that is not hers.{/n}
@@ -683,7 +683,7 @@ SCENES.append(scene("irabeth.trickster.epilogue.off_the_record", "Off the record
     n("end", "Narrator", '''{n}Irabeth Tirabade served the crusade until the Worldwound was closed, and the Commander's bed when she was off duty, and she never once confused the two in front of the guard. She kept her own quarters, her own roster and her own counsel, and she argued with the Commander in council exactly as hard as before, which was very hard.{/n}
 {n}When the war was over she did not ask for a title or a manor. She asked for a week, the three of them or the two of them as the house on the corner saw fit, with no duty lists in it, and she got it.{/n}''',
       portrait="Irabeth", paragraphs=UNDER_ORDERS_PARAGRAPHS)],
-    requires=(RETURNED, "irabeth.committed"), forbids=("irabeth.lover", "trying", "committed", "sacrifice"), last=99,
+    requires=(RETURNED, "irabeth.committed"), forbids=("irabeth.campaign_kept", "trying", "committed", "sacrifice"), last=99,
     Relationship="irabeth",
     ForbidOverrides={"trying": "tirabade.group_closed", "committed": "tirabade.group_closed",
                      "sacrifice": "trickster.commander_back"}))
@@ -746,6 +746,8 @@ def integrate(payload):
             s["Forbids"].append("trickster.commander_back")
         if s["Id"] in LIVING_ENDINGS:
             s.setdefault("ForbidOverrides", {})["sacrifice"] = "trickster.commander_back"
+        if s["Id"] == "irabeth.ending_unfinished":
+            s["Forbids"].append("irabeth.trickster.recommitted")
         if s["Id"] in RETURNING_ENDINGS:
             s.setdefault("ForbidOverrides", {})["irabeth_dead"] = RETURNED
             if s["Owner"].endswith("Epilogue"):

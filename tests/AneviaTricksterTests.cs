@@ -284,8 +284,20 @@ internal static class AneviaTricksterTests
         check(!Rules.Available(story, muster, Later(story, promised, 11)) && Rules.Available(story, muster, Later(story, promised, 12)), "The muster is mistimed.");
         var musterPages = new HashSet<string>();
         var mustered = Program.Walk(muster, Later(story, promised, 12), (page, _) => musterPages.Add(page));
-        check(musterPages.Contains("yard") && mustered.Any(r => r.Has("anevia.committed") && r.Has("anevia.trickster.cost.muster_confession"))
-              && mustered.Any(r => !r.Has("anevia.committed")), "The public confession is not played, or it forces the yes.");
+        check(musterPages.Contains("yard") && mustered.All(r => !r.Has("anevia.committed"))
+              && mustered.Any(r => r.Has("anevia.trickster.cost.muster_confession") && r.Has("anevia.trickster.declined")),
+            "The public confession is not played, or it buys the door at once.");
+        // Sol r4 BEL: the muster buys the gate; her own later decision (the second ask) opens the door.
+        var afterMuster = mustered.First(r => r.Has("anevia.trickster.cost.muster_confession"));
+        var laterPages = new HashSet<string>();
+        var later = Program.Walk(second, Later(story, afterMuster, 96), (page, _) => laterPages.Add(page));
+        check(later.Any(r => r.Has("anevia.committed")) && !laterPages.Contains("say_it"), "After the muster the second ask cannot open the door.");
+        // Sol r4 INT: a Trickster commitment does not restart the registered courtship from its first scenes.
+        var committedAtGate = World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", Returned, IrabethReturned, "anevia.committed",
+                                    "anevia.trickster.terms_kept", "anevia_away");
+        check(!Rules.Available(story, S("anevia.unborrowed_hour"), Later(story, committedAtGate, 500))
+              && !Rules.Available(story, S("anevia.a_question_at_home"), Later(story, committedAtGate, 500)),
+            "The gate commitment reopens the courtship's first scenes.");
         var killedNo = penanceOut.First(r => r.Has("anevia.trickster.declined") && !r.Has("anevia.trickster.said_it"));
         var sayPages = new HashSet<string>();
         var sayOut = Program.Walk(second, Later(story, killedNo, 96), (page, _) => sayPages.Add(page));

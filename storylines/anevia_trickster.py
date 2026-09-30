@@ -359,7 +359,7 @@ physical("anevia.trickster.gone.commit", "A real door", '"Same gate. Same line."
       c('[Refuse] "Not in front of them."', "no")),
     a("penance", '''"Here's the rest. Tomorrow, at muster, in the yard, in front of every knight who carried her out of Iz, you say it again. Same words. Your mouth, not a clerk's. Then you stand there while they look at you."
 {n}She lifts the lantern an inch, so she can see all of your face.{/n}
-"And don't ask me why I still want you after. I've asked myself every mile of that road. You're the only one in Drezen who don't look at me like a widow. You look at me like somebody who could still hurt you. I'd rather be that."''',
+"And don't ask me why I haven't walked yet. I don't know. I'll find out on the wall, watchin' you say it."''',
       c('[Agree] "Tomorrow, at muster. My mouth."', "terms", flags=(SAID, PENANCE), forbids=(KILLED,)),   # retired
       c('[Refuse] "Not in front of them."', "no"),
       c('[Agree] "Tomorrow, at muster. My mouth."', "promise", flags=(SAID,))),
@@ -483,9 +483,10 @@ physical("anevia.trickster.gone.muster", "Muster", '"After muster. You said."', 
 {n}Nobody moves. Then a knight of Irabeth's old company takes off his helmet and holds it under his arm, the way a man stands at a grave. Another turns her back on you and stays that way until the bell. A third spits on the step, precisely, and walks off without being dismissed. Nobody stops him. You don't either.{/n}''',
       c("Continue", "gate")),
     a("gate", '''{n}She is at the gate afterwards, on her side of the line, with the lantern. She was on the wall for all of it; you saw her there.{/n}
-"You didn't say it sideways. Not once." {n}She sets the lantern down on your side of the line.{/n} "I'm still not forgivin' you. I don't think I'm built for it. But I asked for a thing, and you paid it where it cost. Come here."''',
-      c('[Kiss her] "I\'m knocking. See?"', "threshold", flags=("anevia.committed", TERMS, PENANCE)),
-      c('[Take her hand and wait] "Your call, Nevi."', "threshold", flags=("anevia.committed", TERMS, PENANCE)),
+"You didn't say it sideways. Not once." {n}She keeps the lantern on her side of the line.{/n} "I'm still not forgivin' you. I don't think I'm built for it. But I asked for a thing, and you paid it where it cost. That buys you the gate. Not the door. Not yet."''',
+      c('[Kiss her] "I\'m knocking. See?"', "threshold", flags=("anevia.committed", TERMS, PENANCE), forbids=(KILLED,)),  # retired
+      c('[Take her hand and wait] "Your call, Nevi."', "threshold", flags=("anevia.committed", TERMS, PENANCE), forbids=(KILLED,)),
+      c('[Walk her back to the road] "The gate, then. For now."', flags=(PENANCE, DECLINED)),
       c('[Step back] "Not tonight."', flags=(PENANCE, DECLINED))),
     a("threshold", THRESHOLD, c("Continue", "morning")),
     a("morning", '''{n}Grey light. She is already dressed and lacing her boots. On the table, face down, is the little portrait of Beth she carries everywhere; she turned it over last night and has not turned it back.{/n}
@@ -692,6 +693,9 @@ WITH_PARAGRAPHS = ("anevia.ending_kept", "anevia.ending_open", "anevia.ending_un
                    "anevia.ending_wife_killed", "anevia.ending_sacrifice", "anevia.ending_ascended",
                    "anevia.ending_changed_power")
 TIRABADE_ENDINGS = ("ending_promised", "ending_ascend_promised")
+COURTSHIP_OPENING = ("anevia.unborrowed_hour", "anevia.a_question_at_home", "anevia.one_truth", "anevia.beths_question",
+                     "anevia.beths_answer", "anevia.her_own_answer", "anevia.a_place_of_our_own",
+                     "anevia.an_invitation_afterward")
 LIVING_ENDINGS = ("anevia.ending_kept", "anevia.ending_open", "anevia.ending_unfinished", "anevia.ending_promised")
 TIRABADE_PARAGRAPH = p("They had both been lost once, one to Iz and one to the road south, and both had come back by "
                        "routes that did not bear close inspection. At the Tirabade table there were three chairs, and "
@@ -719,6 +723,8 @@ def integrate(payload):
             s["Forbids"].append(I_RET)
         if s["Id"] == "anevia.ending_gone":
             s["Forbids"].append(RETURNED)
+        if s["Id"] in COURTSHIP_OPENING:
+            s["Forbids"].extend((TERMS, KEY))
         if s["Id"] in ("anevia.ending_wife_killed", "anevia.ending_grief_unanswered", "anevia.ending_survivor"):
             s["Forbids"].extend((TERMS, KEY))
         # Sol COX: the shared finale's surviving Commander is not mourned (as Irabeth, Dorgelinda and Eliandra).

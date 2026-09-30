@@ -54,6 +54,7 @@ ARRIVED = "konomi.trickster.arrived"                     # Sol r2 INT: she is pl
 GALFREY_GONE = ("galfrey.dead", "galfrey.killed_by_commander")
 REGILL_GONE = ("regill.dead", "regill.kicked_out", "regill.left_plot")
 OWN = ("konomi.closed", "konomi.farewell", "inhuman")
+DEVICE_OWN = ("konomi.closed", "inhuman")   # Sol r4: a completed ordinary farewell does not bar the dismissal rescue
 
 RELATIONSHIP_PATCH = dict(
     TricksterAccess={
@@ -82,14 +83,15 @@ def nar(id, text, *choices, **kw):
     return n(id, "Narrator", text, *choices, portrait="Konomi", **kw)
 
 
-def physical(id, title, entry, nodes, requires, forbids, delay, chapters=(5,), **extra):
-    SCENES.append(scene(id, title, "Konomi", min(chapters), entry, nodes, requires=requires, forbids=(*OWN, *forbids),
+def physical(id, title, entry, nodes, requires, forbids, delay, chapters=(5,), own=None, **extra):
+    SCENES.append(scene(id, title, "Konomi", min(chapters), entry, nodes, requires=requires, forbids=(*(own or OWN), *forbids),
                         delay=delay, last=max(chapters), optional=True, Relationship="konomi", Areas=[DREZEN],
                         Chapters=list(chapters), ContactUnit=UNIT, AnswerLists=[HUB], **extra))
 
 
-def letter(id, title, nodes, requires, forbids, delay, chapters=(5,), **extra):
-    SCENES.append(scene(id, title, "Konomi", min(chapters), "", nodes, requires=requires, forbids=(*OWN, *forbids),
+
+def letter(id, title, nodes, requires, forbids, delay, chapters=(5,), own=None, **extra):
+    SCENES.append(scene(id, title, "Konomi", min(chapters), "", nodes, requires=requires, forbids=(*(own or OWN), *forbids),
                         delay=delay, last=max(chapters), optional=True, Relationship="konomi", Areas=[DREZEN],
                         Chapters=list(chapters), Remote=True, **extra))
 
@@ -127,7 +129,7 @@ letter("konomi.trickster.dismissed.late", "Mind the step", [
         crusade=("Finances", -150), flags=(PRIMED, LATE, "konomi.started", DRIVER)),
       c('[Let the carriage go.] "..."', abort=True)),
 ], requires=("trickster", "konomi.dismissed", "konomi.office_completed", "konomi.dismissed.latched"),
-   forbids=(LATE, RECESSED), delay=24, TricksterDevice=True, TricksterState="konomi.dismissed")
+   forbids=(LATE, RECESSED), delay=24, TricksterDevice=True, TricksterState="konomi.dismissed", own=DEVICE_OWN)
 
 READ_TERMS = '''"Tricks are my people's prerogative, Commander, and they are never free. You have played one on me without asking. Very well, let us talk price."
 {n}She opens the fan and looks at you over the top of it.{/n}
@@ -171,13 +173,13 @@ physical("konomi.trickster.dismissed.recess", "The third morning", '"Lady Konomi
     k("read_outfoxed_ledger", LEDGER_TERMS,
       c('[Hear her terms] "Name them."', flags=(RECESSED, DEBT, OUTFOXED))),
 ], requires=("trickster.ever", "konomi.dismissed", "konomi.office_completed", LATE, ARRIVED),
-   forbids=(RECESSED,), delay=0)
+   forbids=(RECESSED,), delay=0, own=DEVICE_OWN)
 
 # Sol r2 INT: her actor is placed only when she is back in Drezen, two days after the road (and the letter says so).
 letter("konomi.trickster.dismissed.arrival", "The east gate at noon", [
     nar("start", '''{n}A note from the gate sergeant, in a hand that has plainly been laughing: the Nerosyan carriage came back in by the east gate at noon, the attaché in it. She asked for her old office. The driver asked for a priest.{/n}''',
       c("Continue", flags=(ARRIVED,))),
-], requires=("trickster.ever", "konomi.dismissed", LATE), forbids=(ARRIVED, RECESSED), delay=48)
+], requires=("trickster.ever", "konomi.dismissed", LATE), forbids=(ARRIVED, RECESSED), delay=48, own=DEVICE_OWN)
 
 physical("konomi.trickster.dismissed.terms", "Terms", '"You said you would name your terms."', [
     k("price", '''{n}She has had the desk polished. There is a single sheet on it, and her pen, and nothing else.{/n}
@@ -207,7 +209,7 @@ physical("konomi.trickster.dismissed.terms", "Terms", '"You said you would name 
 {n}At the door she stops, one foot over the threshold, and looks down at it.{/n}
 "The road will let me go this time, I think. I shall pay the driver myself. You have made it very clear you do not want me back."''',
       c('[Let her go.]', flags=("konomi.closed",))),
-], requires=("trickster.ever", RECESSED, "konomi.dismissed"), forbids=(SETTLED,), delay=48)
+], requires=("trickster.ever", RECESSED, "konomi.dismissed"), forbids=(SETTLED,), delay=48, own=DEVICE_OWN)
 
 physical("konomi.trickster.dismissed.private", "Off the record", '"Business concluded?"', [
     nar("start", '''{n}Evening. The office is lit by one lamp. Her terms are entered in her own ledger, in her own hand, and the ledger is closed. The window is open on the square, where the watch is changing.{/n}''',
@@ -422,6 +424,14 @@ physical("konomi.trickster.never_arrived.audience", "Late for her own audience",
 "I have taken rooms in the lower town while I decide what you are. You may write to me there, and I shall choose whether to answer."''',
       c('"I\'ll write."', flags=(RETURNED, "konomi.missed_appointment", JOURNEY))),
 ], requires=("trickster.ever", PRIMED, ACCREDITED, "konomi.missed_letter_sent", ARRIVED),
+   forbids=("konomi.present", RETURNED, "konomi.missed_contact_invalidated", CONFIRMED, "konomi.presence.failed"), delay=0,
+   chapters=(3, 5))
+
+letter("konomi.trickster.never_arrived.audience_letter", "Late for her own audience", [
+    nar("start", '''{n}A letter in a Nerosyan court hand, delivered by the chancery boy, who will not meet your eye: Lady Konomi, official attaché of Nerosyan, has taken rooms in the lower town, since the attaché's office in the citadel is, in her words, "occupied by a jug".{/n}
+{n}"My credentials were presented, I am told, by you. The journey and the reception I left are on your account. You may write to me here, and I shall choose whether to answer. K."{/n}''',
+      c('"I\'ll write."', flags=(RETURNED, "konomi.missed_appointment"))),
+], requires=("trickster.ever", PRIMED, ACCREDITED, "konomi.missed_letter_sent", ARRIVED, "konomi.presence.failed"),
    forbids=("konomi.present", RETURNED, "konomi.missed_contact_invalidated", CONFIRMED), delay=0, chapters=(3, 5))
 
 letter("konomi.trickster.never_arrived.arrival", "A stranger in the attaché's office", [
@@ -481,13 +491,22 @@ SCENES.append(scene("konomi.trickster.epilogue.refused", "Still negotiating", "E
     ForbidOverrides={"sacrifice": "trickster.commander_back"}))
 
 
+# Sol r4 BEL: the Commander's death with no prepared return is her loss, not a living future.
+SCENES.append(scene("konomi.trickster.epilogue.sacrifice", "An account left open", "Epilogue", 5, "", [
+    nar("start", '''{n}Lady Konomi read the dispatch from the Wound in her own office, standing, and then sat down, which nobody on her staff had seen her do in the middle of a working day.{/n}
+{n}She finished the war's paperwork. She closed every account the Commander had left open with Nerosyan, to the copper, and signed each one herself. The last she kept in her desk, unsigned, for the rest of her life: a supper the two of them had agreed on and never eaten.{/n}''',
+      c())],
+    requires=("konomi.committed", "sacrifice"), forbids=("trickster.commander_back", "konomi.closed", "ascended", "inhuman"), last=99,
+    Relationship="konomi"))
+
+
 # --- Reactions (05 section 3.1: exactly Regill and Kyado) ---------------------------------------------------------
 
 REACTIONS = [
     reaction("Regill", "konomi.trickster.dismissed.react_regill", (RECESSED, "konomi.dismissed"),
              '''{n}Regill's pale yellow eyes settle on you with an expression of polite attention that is not polite at all.{/n}
 "You dismissed the attaché of Nerosyan before your own council, and then retained her with a bribed carter and a minute that lies by being accurate. Either decision alone I could respect. Together they are contempt of your own order."
-"I have no statute for that minute. I shall have to write one. It will be long."''',
+"And you have told every man on the east gate that the Commander's word at the war table can be revised by a carter's purse. My sergeants will need to be told otherwise. I will tell them. You will not like how."''',
              answer_list=REGILL_HUB, forbids=REGILL_GONE, chapter=5, last=5, entry='"About Lady Konomi..."'),
     reaction("Kyado", "konomi.trickster.dismissed.react_kyado", (RECESSED, "kyado.in_drezen", KYADO_SAID_IT),
              '''{n}Kyado has heard. Everyone in the lower town has heard. He does not laugh; he looks at you the way he looked at you once in the temple, as if you were weather.{/n}
@@ -496,9 +515,9 @@ REACTIONS = [
              answer_list=KYADO_HUB, forbids=("kyado.dead",), chapter=5, last=5, entry='"About Lady Konomi..."'),
     reaction("Regill", "konomi.trickster.dead_retained.react_regill", (CONFIRMED, RECALLED),
              '''{n}Regill does not look up from his report.{/n}
-"A death is a record, Commander. You had it amended, and the deceased invoiced you for the correction. I have no statute for that, or for whoever you paid in the night to make the amendment true."
+"A death is a record, Commander. You had it amended, and the deceased invoiced you for the correction."
 {n}He turns a page.{/n}
-"I shall write one. I shall also note, for your file, that she charged you triple, and that you paid. It is the first sign of discipline I have seen in you."''',
+"What concerns me is the other matter. Four civilians nobody can name held a rite in your council chamber at midnight, and the clerk was sent out. The chamber was unguarded while they did it. The attaché is alive; I accept that. I do not accept that you will not tell me who they were. Double the watch on that door, or I will."''',
              answer_list=REGILL_HUB, forbids=REGILL_GONE, chapter=3, last=5, entry='"About Lady Konomi..."'),
     reaction("Kyado", "konomi.trickster.dead_retained.react_kyado", (CONFIRMED, RECALLED, "kyado.in_drezen"),
              '''{n}Kyado sets down the ledger he was reading and folds his hands on it, the way a prior folds his hands, though he gave that office up.{/n}
@@ -508,7 +527,7 @@ REACTIONS = [
     reaction("Regill", "konomi.trickster.never_arrived.react_regill", (RETURNED, ACCREDITED),
              '''"Credentials are presented, or they are not, Commander. 'Deemed' is a word for people who have lost the argument."
 {n}Regill's mouth tightens a fraction.{/n}
-"And yet here she is, with Nerosyan's register to prove it. You found the Chancellor's informer in your own chancery and, instead of hanging him, made him your postman. I dislike being out-argued by furniture. I dislike the rest of it more."''',
+"And yet here she is, with Nerosyan's register to prove it. You found the Chancellor's informer in your own chancery and, instead of hanging him, made him your postman. A spy you let run is a door you left open, Commander. I shall want to know every other door in that chancery before the week is out."''',
              answer_list=REGILL_HUB, forbids=REGILL_GONE, chapter=3, last=5, entry='"About Lady Konomi..."'),
     reaction("Kyado", "konomi.trickster.never_arrived.react_kyado", (RETURNED, ACCREDITED, "kyado.in_drezen"),
              '''{n}Kyado laughs before he can stop himself, then looks guilty about it.{/n}
@@ -528,6 +547,8 @@ RETIRED = ("konomi.fate_post", "konomi.retained_inquiry", "konomi.the_unintroduc
 ENDINGS = ("konomi.ending_public", "konomi.ending_private", "konomi.ending_changed", "konomi.ending_ascended",
            "konomi.ending_distance", "konomi.ending_distance_open", "konomi.ending_distance_lived",
            "konomi.ending_distance_open_lived")
+LIVING_ENDINGS = ("konomi.ending_public", "konomi.ending_private", "konomi.ending_distance", "konomi.ending_distance_open",
+                  "konomi.ending_distance_lived", "konomi.ending_distance_open_lived")
 AUDIENCE_ANSWER = '"You chose a better room than the attaché\'s office."'
 COURTYARD_NODES = [
     k("again_audience", '''"I did. The office has a jug in it now, on a shelf, with a label. The chancery will not let anyone move it."
@@ -580,6 +601,10 @@ def integrate(payload):
     start["Choices"].append(c(AUDIENCE_ANSWER, "again_audience", requires=(ACCREDITED,)))
     courtyard["Nodes"].extend(COURTYARD_NODES)
 
+    for id in LIVING_ENDINGS:
+        s = _scene(by_id, id)
+        s["Forbids"].append("sacrifice")
+        s.setdefault("ForbidOverrides", {})["sacrifice"] = "trickster.commander_back"
     # R2-6: the late commit is her own page; the registered unfinished ending does not also play.
     _scene(by_id, "konomi.ending_unfinished")["Forbids"].append(LATE_COMMITTED)
     for id in ENDINGS:

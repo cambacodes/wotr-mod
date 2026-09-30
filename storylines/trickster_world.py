@@ -465,6 +465,7 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
  'iomedae.narrow_owed': [['trickster.cheated_death', 'iomedae.trickster.cost.name_on_the_wall']],
  'iomedae.trickster.late_committed': [['trickster.ever', 'iomedae.trickster.primed']],
  'irabeth.trickster.late_committed': [['trickster.ever', 'irabeth.trickster.back_on_duty']],
+ 'irabeth.trickster.recommitted': [['irabeth.trickster.returned', 'irabeth.committed']],
  'irabeth.trickster.presence_on': [['irabeth_dead', 'irabeth.trickster.cost.vell', 'coronation.seen'],
                                    ['irabeth_dead',
                                     'irabeth.trickster.cost.dug_out',

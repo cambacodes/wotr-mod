@@ -1413,7 +1413,7 @@ ending("friends", "The friendship after the courtship", [
 ], requires=("irabeth.campaign_kept", "irabeth.future_friends"), forbids=ALIVE_END)
 
 ending("unfinished", "An invitation with days still to come", [
-    n("end", "Narrator", '''{n}The war ended before the two of them had finished beginning. There had been a recitation, a wagon of cold iron and a handful of evenings. There had not been the road, or the lake, or the quarrel about inns she had been saving up.{/n}
+    n("end", "Narrator", '''{n}The war ended before the two of them had finished beginning. There had been a handful of evenings. There had not been the road, or the lake, or the quarrel about inns she had been saving up.{/n}
 {n}Irabeth went back to her post and her paperwork. Once a season a note in her square hand reached the Commander, with a date on it, a place, and four words: "If you still want to." Whether anyone came was never entered in any report she wrote.{/n}'''),
 ], forbids=(*ALIVE_END, "irabeth.campaign_kept"))
 
