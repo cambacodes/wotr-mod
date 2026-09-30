@@ -28,7 +28,7 @@ RESERVED = {
 # Portrait keys (CustomNpcPortraits Scenes/<key>.png); "" falls back to the book's picture. A debt shows its holder partner.
 HOLDER_PORTRAIT = {"socoth": "Anevia", "baphomet": "Minagho", "nocticula": "Nocticula", "ramisa": "Nurah", "herrax": "Chivarro",
                    "abadar": "Arsinoe", "sunhammer": "Kiana", "mutasafen": "Hepzamirah", "wintersun": "Soana",
-                   "nocticula_summons": "Arueshalae"}
+                   "nocticula_summons": "Arueshalae", "whispering_way": "Elyanka"}
 PARTNER_PORTRAIT = {"irabeth": "Irabeth", "jerribeth": "Jerribeth", "konomi": "Konomi", "vellexia": "Vellexia", "aranka": "Aranka",
                     "gesmerha": "Gesmerha", "seelah": "Seelah", "dorgelinda": "Dorgelinda", "eritrice": "Eritrice",
                     "areelu": "Areelu", "chadali": "Chadali", "camellia": "Camellia", "arueshalae": "Arueshalae",

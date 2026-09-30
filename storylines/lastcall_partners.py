@@ -99,6 +99,12 @@ DEBTS = [
          ledger_text="I sent Arueshalae to her queen for a second opinion, and the queen sent her back on credit. One summons, once, at an hour of the Lady's choosing, or a favour in my own name. The Lady in Shadow does not forget a patient.",
          page_called="The Lady in Shadow called in her summons on a night in the first winter after Threshold, when the Commander was away. The black pearl at Arueshalae's throat went warm, and she went, as she had said she would. What the queen asked of her, and what she answered, she never told. She came back before dawn with the pearl gone cold and a flower of the Midnight Isles in her hair, and she left the window unlocked behind her, as she always did.",
          page_outlived="The debt had no one left to collect it. Arueshalae knew that, and for a week she said nothing to anyone. Then she went to the Commander anyway, and it was the first thing she ever did that she owed no one for."),
+    # Elyanka (11 §2 R5): the Commander's body, sold to the Whispering Way at the wake, due at death. A live power: the
+    # bottle cheats it by the letter (the death is corked and never falls due), and the page says so.
+    dict(key="whispering_way", groups=[["elyanka.trickster.cost.corpse_bequeathed"]], called_by=[called("elyanka")],
+         ledger_title="The Whispering Way: my body, at my death",
+         ledger_text="Sold at my own wake to Elyanka Camilary, for her Lady's table, whole, due the day I die. The soul stays the grey warden's; the Way does not want it. Nothing was written. The terms were whispered into my ear, and I whispered them back.",
+         page_called="The Whispering Way sent no collector after Threshold. It did not need to: its envoy had never left. Elyanka Camilary presented the claim herself, in a whisper, in the dead-house by the south gate, and was told that the debtor's death was in a flask, corked, in the debtor's pocket, and that the terms had said nothing about flasks. She agreed that they had not. In Caliphas the Way does not forgive a debtor who cheats it by the letter. It does, she let it be known, admire one."),
 ]
 
 
@@ -626,6 +632,23 @@ partner("galfrey", "galfrey", GA + "partner", "galfrey.closed", "The Face in the
         """{n}You gave her that name at a deathbed, and she took it, and wore it into a crowd. You call it now over the rift, at the top of your voice, the way a sentry calls a password into the dark. It goes out over the Wound and is swallowed, and then, very far off, over a city you cannot see, somebody who used to be a queen answers to it.{/n}""",
         (PLAIN_CHOICE, (), (), ())),
     ledger=("Galfrey: a eulogy, false", "I stood before the altar in Drezen and grieved for the Queen of Mendev in front of the whole city, knowing she was alive in a Crows' tent and that a knight called Sir Anselm Wray lay in her coffin. She owes me nothing for it. I owe him a name."))
+
+EY = "elyanka.trickster."
+partner("elyanka", "elyanka", "elyanka.committed", "elyanka.closed", "The Claim",
+    '''Elyanka Camilary spent the last night of the war the way a creditor ought to: as close to the collateral as she could get without lifting a finger for it. She had a knotted black cord wound round her hand, knot by knot the measure of the Commander, and a hearse with glass sides built in Caliphas for a mythic corpse, and six men in grey who did not breathe, and an appetite she had brought all the way from Ustalav. She waited to see whether the claim would fall due.''',
+    (
+        page_p('''She waited on the last ridge above the rift, as the Commander had told her to, with her hearse and her six. She did not lift a finger. When the fire leaned toward the Commander she leaned forward too, the way a moneylender leans toward a ship coming in low in the water, and her escort said afterwards that she never once blinked.''', requires=(EY + "collateral.at_rift",)),
+        page_p('''She waited in the dead-house by the south gate of Drezen, with one candle, like a widow, as the Commander had told her to. She said afterwards that it was the worst night of her life, and the most instructive, and that she would never again agree to wait anywhere she could not see what she was owed.''', requires=(EY + "collateral.in_drezen",)),
+        page_p('''At the rift the Commander said her name, and the terms of the sale, aloud, into the fire: if I fall here, your claim falls due; stand where you can collect. Somewhere behind the lines a woman in grey heard it, or said she did, and laughed, and wound her cord a little tighter.''', requires=(called("elyanka"),)),
+        page_p('''The Commander stepped into the Wound, and gave everything, and came back out of it anyway, with a death corked in a flask where the Wound could not reach it. The claim had not fallen due. It never would. She had been cheated by the letter of her own terms, whispered and unwritten, which said nothing about flasks. She laughed until she coughed, as she had at the wake, and then she held out her hand for the flask. "It's in my pocket," the Commander told her. "Corked." She was shown it. She was never given it.''', requires=(H2,)),
+        page_p('''The Commander walked away from the end of the world with a flask in one pocket that held a death nobody would ever collect. She weighed it once through the cloth of the Commander's coat, with two cold fingers, the way she had once found a pulse under a veil, and took her hand away. "Corked," she said. "You insolent sack of meat. I adore a bad bargain."''', requires=("lastcall.h1",), forbids=("sacrifice",)),
+        page_p('''The world buried the Commander, and the chaplains asked the Ustalavic embalmer, very reluctantly, to prepare the body. She looked into the coffin for some time. Then she told them there was nothing in it but a joke, that she did not embalm jokes, and went back to her hearse, where the Commander was waiting.''', requires=(ON_RECORD,)),
+        page_p('''The lock of silver-grey hair bound in black thread was in the Commander's other pocket, beside the flask, all through the Threshold. She was told so afterwards. She said it was a vulgar place to keep it, next to a cheat, and did not ask for it back.''', requires=(EY + "lock_taken",)),
+    ), declined=EY + "declined",
+    deal=[[EY + "cost.corpse_bequeathed"]],
+    call=call('''[Call in the bequest] "Elyanka, if I fall at the rift, your claim falls due. Stand where you can collect."''',
+        '''{n}You sold your body once, at your own wake, in a whisper, to a woman who had come four hundred miles for it. You say the terms aloud now, over the rift, the way she whispered them in the dead-house, word for word, in the language older than its words. Nobody here understands them. That is not the point. A creditor ought to know when her debt is about to fall due, and where to stand to collect it.{/n}''',
+        (PLAIN_CHOICE, (PILLAR,), (), ())))
 
 # Existing pages that must yield to Last Call (doc 04 backlog): Nocticula's favour page is called in on her Last Call page instead.
 FORBID_ACTIVE = ("nocticula.trickster.defeated.epilogue.favour",)

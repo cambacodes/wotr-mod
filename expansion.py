@@ -71,6 +71,7 @@ from storylines import terendelev_trickster, terendelev_watch
 from storylines import eliandra_trickster, eliandra_stars
 from storylines import galfrey_trickster, galfrey_kitrane
 from storylines import horzalah_trickster, horzalah_guild
+from storylines import elyanka_trickster, elyanka_hearse
 from storylines import rrt_ui
 from storylines import rrt_portraits
 from storylines import scene_kinds
@@ -529,6 +530,14 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(horzalah_trickster.SCENES))
     payload["Scenes"].extend(copy.deepcopy(horzalah_guild.SCENES))
     horzalah_trickster.integrate(payload)
+    # Elyanka Camilary: a new relationship (trickster/elyanka-camilary.md; 11-ROSTER-PLAN-2 §2, R5 build sheet): the only door
+    # is the funeral Drezen held for the Commander; the Commander receives the Whispering Way's envoy veiled, as their own
+    # executor, and sells her the corpse in advance; an exchange of claims; the courtship beats around the dead-house
+    # (elyanka_hearse). Every scene is a rest-delivered visit: no presence, no entry on any native list but her reactors'.
+    payload["Relationships"]["elyanka"] = copy.deepcopy(elyanka_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(elyanka_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(elyanka_hearse.SCENES))
+    elyanka_trickster.integrate(payload)
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
     trickster_engine(payload)

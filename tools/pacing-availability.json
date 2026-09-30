@@ -1163,27 +1163,23 @@
    }
   ],
   "present": {
-   "3": "ip",
-   "4": "remote",
-   "5": "ip"
+   "5": "remote",
+   "6": "remote"
   },
   "exceptions": {},
   "evidence": {
-   "first_met": "959e379e655867a41af3119b98f9e261 c3/Drezen_C3/MythicLich_Chapter3_InDrezen/KTC_ElyankaComing/Cue_0001 (Lich only)",
-   "3": "af64ca5246a43f649af11734f1514bee Elyanka_MainDialogue (Drezen, Ch3, Lich)",
-   "4": "68a4497289b1b48489f3d97dcd00d5d7 KTC_ElyankaComing etude (the envoys settle in Lich Drezen); no c4 presence, so letters only",
-   "5": "34dcbffe64ffc3449b087d1811cec4da c5/Mythic_Lich/BecomeLich_AfterBattle/Cue_0005 speaker MythicLich_KTC_Elyanka"
+   "first_met": "Trickster (R5): the funeral door, elyanka.trickster.door.hearse, Ch5 after Iz (the feast Drezen held: FoolKing_Tavern/Cue_0059 d1c14400d70bf0d4b947283f16f65009, AneviaDrezenPartisans/Cue_0007 59ac2148b08ee7a47912253362ab0b27 / Cue_0017 04923e59ebb21f943b7a2a330a6a8820, VendorDangerousTavern/Cue_0040 c76a1e617bcba114c9c726ba2363c98f). Native (Lich only): 959e379e655867a41af3119b98f9e261 KTC_ElyankaComing/Cue_0001",
+   "5": "Trickster: she lodges her hearse in the dead-house by the south gate of Drezen; every beat is a rest-delivered visit (storylines/elyanka_trickster.py, elyanka_hearse.py)",
+   "6": "Trickster: her hearse follows the army toward the Threshold (elyanka.trickster.ch6.collateral), then the pages and Last Call"
   },
-  "verify": true,
-  "verify_chapters": [
-   "4"
-  ],
+  "verify": false,
+  "verify_chapters": [],
   "sources": [
    "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/elyanka-camilary.md:1 Who she is",
    "World/Dialogs/c3/Drezen_C3/MythicLich_Chapter3_InDrezen",
    "World/Dialogs/c5/Mythic_Lich/BecomeLich_AfterBattle"
   ],
-  "notes": "Whispering Way envoy who reaches Drezen in Ch3, and only on the Lich path. All her native presence is Lich; on Trickster every appearance is authored. DLC1 ElyankaSeptimus is post-campaign."
+  "notes": "Whispering Way envoy who reaches Drezen in Ch3, and only on the Lich path (Ch3 Elyanka_MainDialogue af64ca5246a43f649af11734f1514bee; Ch5 BecomeLich_AfterBattle/Cue_0005 34dcbffe64ffc3449b087d1811cec4da). On Trickster (11-ROSTER-PLAN-2 R5) she learns of the Commander only through the funeral, so Ch3 and Ch4 are absent by design and she first arrives in Ch5. DLC1 ElyankaSeptimus is post-campaign."
  },
  "herrax": {
   "character": "Herrax",
