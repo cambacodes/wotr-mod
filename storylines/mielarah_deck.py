@@ -20,7 +20,7 @@ from storylines.mielarah_trickster import (
     CLOSED, COMMITTED, CONTACT, CHARTER, CORRECTED, DECLINED, DOCKED, DREZEN, FLOWN, FREED, HUB, HUB_FAILED, HUB_FB,
     KILLED, LANDFALL, LAUGHING, LIED, MEANT, MINDER, MORNING, NIGHT, NOTICED, OSKEL_DEAD, P, RECKONED, REL, RETURNED,
     SECRET_KNOWN, SHIP_LOST, TIGHTENED, TOLD, UNIT, KERZ, NOCTA, D, SAID_USE, CUT, DEAD_LATCH, LANN_GUARD, WOLJIF_GUARD,
-    STORM_OWNED, STORM_BLAMED, PAID, CUT_DOWN, ZYPHUS_MARK, STORM, AMULETS)
+    STORM_OWNED, STORM_BLAMED, PAID, CUT_DOWN, ZYPHUS_MARK, STORM, AMULETS, PATTERN)
 
 SCENES = []
 
@@ -98,7 +98,7 @@ deck(D + "cargo", "Cargo for the market", '"You came through the Worldwound."', 
        c('[Step inside her circle of empty cobbles.]', "circle"),
        c('"You keep everyone at arm\'s length out here."', "arms")),
     mi("circle", '''{n}The tiefling trader makes a small noise, as if you had stepped off a roof.{/n}
-"Nobody comes inside the circle." {n}She does not step back. She has to lift her chin a little to look at you, and she does it the way she lifted it in the Bad Luck to tell you her ship was at your disposal: solemnly, as if pronouncing something.{/n} "You know the rule. You know it better than I do. And you walk in anyway."
+"Nobody comes inside the circle." {n}She does not step back. She has to lift her chin a little to look at you, and she does it the way she lifted it in the Bad Luck to tell you her ship was at your disposal: solemnly, as if pronouncing something.{/n} "Everybody in this city has heard the rule by now. The porters have. And you walk in anyway."
 "Brave, or careless. I keep saying that about you. I am beginning to think it is a single word in some language I don't speak."''',
        c("Continue", "moored")),
     mi("arms", '''"Out here, and everywhere." {n}She taps the bill of lading against the edge of a crate.{/n} "In Alushinyrra, nobody minded. People die in Alushinyrra of all sorts of things; my contribution was hardly noticed. Here, they notice. Your crusaders cross themselves when I pass. A priest of Iomedae has asked me, very politely, to buy my bread at a different baker."
@@ -125,9 +125,16 @@ deck(D + "nearest", "The nearest", '"I came to see the ship."', [
         c("Continue", "alive", requires=(TOLD,), forbids=(OSKEL_DEAD,)),
         c("Continue", "alive", requires=(MINDER, SECRET_KNOWN), forbids=(TOLD, OSKEL_DEAD)),
         c("Continue", "secret", requires=(MINDER,), forbids=(TOLD, SECRET_KNOWN, OSKEL_DEAD)),
-        c("Continue", "none", forbids=(MINDER, OSKEL_DEAD, CUT_DOWN, ZYPHUS_MARK)),
+        c("Continue", "none", requires=(PATTERN,), forbids=(MINDER, OSKEL_DEAD, CUT_DOWN, ZYPHUS_MARK)),
         c("Continue", "dead_cut", requires=(CUT_DOWN, OSKEL_DEAD)),
-        c("Continue", "marked", requires=(ZYPHUS_MARK,), forbids=(OSKEL_DEAD,))),
+        c("Continue", "marked", requires=(ZYPHUS_MARK,), forbids=(OSKEL_DEAD,)),
+        c("Continue", "none_unread", forbids=(MINDER, OSKEL_DEAD, CUT_DOWN, ZYPHUS_MARK, PATTERN))),
+    mi("none_unread", '''"I worked something out on the way back from Colyphyr." {n}She opens the sailcloth book at the front, and turns it round so that you can read it.{/n} "Not who died. Where they were standing. The steward, on the stair below me. My mate, across the binnacle. The girl with the apples, across her counter, taking my copper. Every one of them was the nearest thing to me when it happened. Six years, and I never once added up where they stood."
+"Nearest. It takes the nearest." {n}She shuts the book.{/n} "I have been thinking about little else. And the thing I keep coming back to is not the rule. It's you. You're a Trickster, the broadsheets say; the kind that makes a joke and the world goes along with it." {n}She lifts her eyes.{/n} "So tell me, honestly. What would you have done with it, if I had flown you anywhere with a hanging at the end?"''',
+       c('"I\'d have put the most dangerous man on your ship at your elbow. And let it take him."', "honest",
+         flags=(WOULD, PATTERN)),
+       c('"I\'d have stood there myself."', "myself", flags=(PATTERN,)),
+       c('[Lie] "Nothing. It\'s your curse."', "nothing", flags=(PATTERN,))),
     mi("marked", '''{n}She does not pour for you at once. She looks at your shoulder, at the place under your coat where the grey spade is, as if she could see through the cloth.{/n}
 "I have kept accurate records for six years, Commander. Every name. The steward, my mate, the girl with the apples. Every one of them I put beside me without knowing what I was doing." {n}She pushes the cup across.{/n} "There is no name for that night. There is a line with nothing in it but a date and a place, and in the margin: the Commander, nearest; marked. I did not know how else to write it. Nobody has ever been nearest and gone on breathing."''',
        c("Continue", "demand")),
@@ -355,7 +362,7 @@ deck(D + "market", "Nearest, in Drezen", '"Something happened in the market."', 
        c("Continue", "boy")),
     mi("boy", '''{n}She kneels down by the heap of timber, out of habit, at the distance she always keeps, and then, deliberately, closer.{/n}
 "What was his name? Does anybody know his name?" {n}She asks the square, not you. A woman at the edge of the ring says something, and Mielarah repeats it under her breath, twice, the way you would fix a bearing.{/n}
-"Accurate records." {n}She stands.{/n} "It is the least a magister can do."''',
+"Somebody find his mother. Tell her the captain of Starcatcher pays for the burial, and the timber, and whatever else she asks for, and tell her it was an accident." {n}She stands.{/n} "It was. That's the worst of it."''',
        c("[Help clear the timber.]")),
 ], requires=(CORRECTED,), forbids=(MARKET,), delay=24)
 
@@ -386,9 +393,9 @@ INTIMACY = [
 deck(D + "wheel", "Hold her", '"You said next time, the storm."', [
     nar("start", '''{n}She is waiting at the wheel when you come through the portal. It is night. The anchor is already up. Starcatcher is standing north toward the Worldwound, and ahead of her, where the stars should be, there is a wall.{/n}
 {n}Grey, and higher than mountains, and lit from inside by lightning that has no sound yet. The squall line off the Wound, the one she turned away from last time.{/n}
-{n}"I said I'd show you something," she says, without turning round. "It's on the other side of that. I have not flown into weather since Starcatcher the First. I'm going to fly into this."{/n}''',
+{n}"I said I'd show you something," she says, without turning round. "It's on the other side of that. I have not flown into weather of my own choosing in six years. I'm going to fly into this."{/n}''',
         c("Continue", "why")),
-    mi("why", '''"Don't ask me why. I have been asking myself for a week, and the best answer I have is that you held her very well, for a landsman, and I want to know what happens next." {n}Her hands are easy on the spokes. They will not stay that way.{/n}
+    mi("why", '''"I put the crew ashore in Drezen at sunset, all but four who asked to come and know what for, at triple pay. I told them the truth. Two of them laughed." {n}She does not.{/n} "Don't ask me why. I have been asking myself for a week, and the best answer I have is that you held her very well, for a landsman, and I want to know what happens next." {n}Her hands are easy on the spokes. They will not stay that way.{/n}
 "Stand where you're standing. There. At my elbow." {n}She glances at you once, sidelong.{/n} "You know what that place is. You know what it's for. Stand there anyway."''',
        c("[Stand at her elbow.]", "storm")),
     nar("storm", '''{n}The storm takes the ship like a fist. Rain comes sideways, hard as gravel, and the deck goes up on its ear, and the rigging howls, and somewhere below a sailor is praying out loud to a god you don't recognise.{/n}
@@ -481,7 +488,7 @@ deck(D + "morning", "The block on the planks", '[Wake on the quarterdeck.]', [
         c("[Go back down to Drezen.]", flags=(MORNING, NOTICED))),
     nar("crew_new", '''{n}When the two of you finally come down the quarterdeck ladder, the crew are extraordinarily busy with ropes that do not need coiling. Nobody looks up. The cook whistles something under his breath and stops, too late.{/n}
 {n}The half-block lies where it fell. Mielarah picks it up on the way past, and weighs it, and puts it in her coat pocket.{/n}
-{n}"Accurate records," she says, to nobody, and opens the portal for you herself.{/n}''',
+{n}"Ballast," she says, to nobody, and opens the portal for you herself.{/n}''',
         c("[Go back down to Drezen.]", flags=(MORNING, NOTICED))),
 ], requires=(NIGHT,), forbids=(MORNING,), delay=6)
 
@@ -862,7 +869,7 @@ deck(D + "names", "Accurate records", '"You wrote his name down. The boy under t
 {n}In the right-hand column you write nothing. The heading says it already.{/n}
 {n}Mielarah looks at it for a while without speaking. Then she takes the blotter and presses it down over your name, carefully, as if it could smudge, and lifts it, and closes the book.{/n} "Accurate records," {n}she says, and her voice is not steady at all.{/n}''',
         c("[Leave her with the book.]")),
-    mi("later", '''"Earned." {n}She turns the word over like a coin of doubtful mint.{/n} "You read the rule in a tavern and walked into my circle on the cobbles, and you want to earn a column." {n}She almost smiles.{/n} "Very well. It will keep. Paper is patient. It is the only thing on this ship that is."''',
+    mi("later", '''"Earned." {n}She turns the word over like a coin of doubtful mint.{/n} "You walked into my circle on the cobbles, and you want to earn a column." {n}She almost smiles.{/n} "Very well. It will keep. Paper is patient. It is the only thing on this ship that is."''',
        c("[Leave her with the book.]")),
     mi("hers", '''{n}She looks at the empty page, and then at you, and something in her face gives very slightly, like a line easing under a load.{/n}
 "Mine." {n}She picks up the pen and holds it and does not write.{/n} "I have spent six years writing other people into the front of this book. It had not occurred to me that I might be allowed to write anyone into the back of it." {n}She closes the book over the pen, to keep the place.{/n} "Go on up, Commander. I want to think about who."''',

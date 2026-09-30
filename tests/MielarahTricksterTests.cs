@@ -234,7 +234,21 @@ internal static class MielarahTricksterTests
         var unread2 = World(story, 4, "trickster", "trickster.ever", "mielarah.dead", "mielarah.dead.latched", "mielarah.voyage_begun");
         check(Program.Walk(overboard, unread2).Any(r => r.Has(P + "raid.sent_back")) && overboard.Nodes.Single(n => n.Id == "folk").Choices[0].Check?.Skill == "SkillLoreReligion",
             "Trk_Mielarah_LateAfterDeath: the unread rule has no road (the check, or the bosun's hunch).");
-        var ashoreWorld = Later(story, sentBack[0], 49);
+        // Sol r3 TRK: the search is bought from the Gravedragger (the Commander's name, hour blank); refusing him loses her.
+        var bought = sentBack.Where(r => r.Has(P + "cost.herald_debt")).ToList();
+        check(bought.Count > 0 && bought.All(r => !r.Has("mielarah.closed"))
+              && sentBack.Where(r => !r.Has(P + "cost.herald_debt")).All(r => r.Has("mielarah.closed"))
+              && overboard.Nodes.Single(n => n.Id == "price").Choices[0].Mythic == "PlayerIsTrickster",
+            "Sol r3 TRK: the late rescue is not a priced [Trickster] bargain with the Gravedragger.");
+        // Sol r3 INT: carried unread into Chapter 5, the same fallback reaches Drezen; the two never both play.
+        var overboardLate = S(P + "raid.overboard_drezen");
+        var unprepared5 = World(story, 5, "trickster", "trickster.ever", "mielarah.dead", "mielarah.dead.latched", "mielarah.voyage_begun");
+        check(!Rules.Available(story, overboard, unprepared5) && Rules.Available(story, overboardLate, Later(story, unprepared5, 25))
+              && !Rules.Available(story, overboardLate, Later(story, unprepared, 25))
+              && Program.Walk(overboardLate, unprepared5).Any(r => r.Has(P + "cost.herald_debt") && !r.Has("mielarah.closed"))
+              && !Rules.Available(story, overboardLate, With(unprepared5, P + "raid.sent_back")),
+            "Sol r3 INT: an unprepared hanging carried into Chapter 5 has no fallback.");
+        var ashoreWorld = Later(story, bought[0], 49);
         check(Rules.Available(story, ashore, ashoreWorld) && !Rules.Available(story, rock, ashoreWorld), "Trk_Mielarah_LateAfterDeath: she never comes ashore, or the rock plays without her ship.");
         var ashoreBack = Program.Walk(ashore, ashoreWorld).First(r => r.Has(P + "returned"));
         check(ashoreBack.Has("mielarah.started") && Reaches(Later(story, ashoreBack, 10, 5), "mielarah.committed"),

@@ -29,6 +29,8 @@ Commander's shoulder that never fades (cost.zyphus_mark). Either way she keeps h
 The Chapter 5 courtship on her presence in Drezen is mielarah_deck (the commit: in flight she lets go of the wheel,
 the mirror of Cue_0426, and the Commander holds the course).
 """
+import copy
+
 from story_format import c, n, p, reaction, scene
 
 from storylines import household
@@ -108,6 +110,7 @@ NOTICED = P + "cost.noticed"              # the Gravedragger has noticed the Com
 CUT_DOWN = P + "raid.cut_down"            # Oskel cut her down at the Commander's order, and the curse took him
 HUNG = P + "cost.hung"                    # minutes on the rope: her voice left a rasp, and she knows nobody prepared
 HANGMAN_KNIFE = P + "cost.hangman_knife"  # the Commander went through the hangmen and took a cleaver across the forearm
+HERALD_DEBT = P + "cost.herald_debt"      # the late raid: the Gravedragger sold her bearing for the Commander's name, hour blank
 OVERBOARD = P + "raid.sent_back"          # the late fallback: the curse took the man at the plank, so she was alive in the sea
 ZYPHUS_MARK = P + "cost.zyphus_mark"      # the Commander stood nearest and cut her down: the block's grey spade on the shoulder
 SELF = P + "primed.self"                  # the Commander posted at her elbow for the voyage instead of Oskel (11 §2's other choice)
@@ -1037,8 +1040,9 @@ SCENES.append(scene(P + "epilogue.late", "", "MielarahEpilogue", 6, "", [
 
 # Sol quality pass (TRK): the hanging with nobody posted was recovered inside a retrospective memory (the rescue the player
 # never chose, R2-2), and its capstan contradicted Cue_0482. Retired by gating, never deleted. Its place is taken by a
-# present-time late fallback (4d below): the crew put her "body" over the side, the curse took the man at the plank, and a
-# curse does not outlive its owner. No raise: she was never dead.
+# present-time late fallback (4d below): the crew put her "body" over the side, the curse took the man at the plank, and
+# that is only a reason to look. The search is bought from the Gravedragger himself (Sol r3 TRK): his joke keeps her out of
+# his book; her bearing costs the Commander a line in it. No raise: she was never dead.
 RETIRED = (P + "raid.wind", P + "raid.whisper", P + "react.woljif_yard")
 
 
@@ -1057,13 +1061,13 @@ remote(P + "raid.overboard", "The man at the plank", [
 {n}"Dask had his hook on her collar when she went over. Plank snapped under him. He went after her and hit the water wrong and didn't come up." Oskel touches the back of his own neck, low down. "The crew say she took him with her. They're pleased about it. They say it proves she's gone for good."{/n}''',
         c("Continue", "rule", requires=(PATTERN,)),
         c("Continue", "folk", forbids=(PATTERN,))),
-    nar("rule", '''{n}You read her rule at her own table in the Bad Luck. The curse does not aim; it takes whoever stands nearest her when trouble comes. It has never once been seen to take anyone near a dead thing. It is hers. It went into the sea with her, and it took the nearest man on the way.{/n}
-{n}Nobody's curse outlives her. It took Dask. She was alive when she went over the rail.{/n}''',
+    nar("rule", '''{n}You read her rule at her own table in the Bad Luck. The curse does not aim; it takes whoever stands nearest her when trouble comes. In six years it has never once been seen to take anyone near a dead thing, and it took the man with his hook on her collar.{/n}
+{n}That proves nothing. A plank can snap under anyone. But it is the only reason you have, and the Ishiar is two days behind you.{/n}''',
         c("Continue", "act"),
         c('"Even so. She\'s dead, Oskel. Let her lie."', "leave")),
     nar("folk", '''{n}"Here's what I keep thinking." Oskel says it slowly, the way a man sets down something he might drop. "Six years, and it never took a man near a corpse. We buried the cook in the Isles with his hand on her sleeve, near enough, and nobody so much as stubbed a toe. It's hers. It goes where she goes."{/n}
-{n}"It took Dask on the plank."{/n}''',
-        c('[Lore (Religion) DC 24] "A curse dies with the one who carries it. If it took Dask, she was alive."',
+{n}"It took Dask on the plank. Maybe that's nothing. Maybe a plank's a plank."{/n}''',
+        c('[Lore (Religion) DC 24] "Zyphus\'s curses are jokes with a teller. A teller doesn\'t waste the punchline on a corpse."',
           check=dict(Skill="SkillLoreReligion", DC=24, Success="act", Failure="unsure", CommanderOnly=True)),
         c('"She\'s dead, Oskel. Let her lie."', "leave")),
     nar("unsure", '''{n}You try to make the sum come out and it will not. A Zyphus curse is a priest's question, and you are not a priest. All you have is a bosun who does not believe she is dead, and a sea two days behind you.{/n}''',
@@ -1082,12 +1086,50 @@ remote(P + "raid.overboard", "The man at the plank", [
         c("Continue", "cleared", crusade=("Finances", -500))),
     nar("cleared", '''{n}By noon the ship is empty but for you, Oskel, and six hands from the Colyphyr quays who will crew anything for silver and ask nothing. Oskel takes the wheel. He flies her the way she flew her, a little heavy on the helm.{/n}
 {n}"Two days back to Vazglar's water," he says. "Then we look. You'll stay?"{/n}''',
-        c('"No. You\'ll find her faster without me. Bring her back."', "go", flags=(OVERBOARD, LATE, HUNG, NOTICED, STARTED)),
-        c('"I\'ll stay until you\'re out of sight."', "go", flags=(OVERBOARD, LATE, HUNG, NOTICED, STARTED))),
-    nar("go", '''{n}Starcatcher goes out over the Ishiar at dusk with her lanterns lit and nobody at the captain's elbow. You watch her until she is a spark, and then not even that.{/n}''',
+        c('"No. You\'ll find her faster without me. Bring her back."', "herald", flags=(OVERBOARD, LATE, HUNG, NOTICED, STARTED)),
+        c('"I\'ll stay until you\'re out of sight."', "herald", flags=(OVERBOARD, LATE, HUNG, NOTICED, STARTED))),
+    nar("herald", '''{n}At dusk, while Oskel walks the new hands up the rigging, there is somebody at the rail where the plank was: grey, and very tall, and patient, with earth on the hem of a coat that has never been near earth, and a spade over one shoulder, its blade worn bright.{/n}
+{n}"You read my rule in a tavern," the Gravedragger says, "and now you would steer by it. Two hundred miles of sea, and a hatch cover, and a bosun with good eyes. He will not find her. I could tell him where she is."{/n}
+{n}"She is not in my book. She has never been in my book. That is the joke: everyone near her, and never her, and she counts them. I do not end a good joke in the second act." He looks at you the way a sexton looks at a plot. "But I do not give bearings for nothing, and you have been stealing from me."{/n}''',
+        c('"Name the price."', "price")),
+    nar("price", '''{n}"Your name. In my book, with the hour left blank." He says it without relish, like a clerk quoting a tariff. "Not now. Not soon, perhaps. Some day there will be a cornice, or a cart horse, or a loose stair, and you will not see it coming, and I will not warn you. That is all. Everyone else I have ever taken was given no choice. You are being given one. I find that very funny."{/n}''',
+        c("[Trickster] \"Write it. Leave the hour blank, and a wide margin. I intend to be busy.\"", "go", flags=(HERALD_DEBT,),
+          mythic="Trickster"),
+        c('"No. We look without you."', "blind")),
+    nar("blind", '''{n}He inclines his head, exactly as far as courtesy requires, and is not there.{/n}
+{n}Oskel searches for eleven days. He comes back to Colyphyr alone, with her hat, which the sea returned to him on the fourth morning and nothing else, and he will not say a word about the rest.{/n}''',
+        c("[Take the hat.]", flags=(CLOSED,))),
+    nar("go", '''{n}The grey figure is not at the rail any more. Oskel is at the wheel, with a bearing in his head that he did not have a minute ago and will not say where he got. Starcatcher goes out over the Ishiar with her lanterns lit and nobody at the captain's elbow. You watch her until she is a spark, and then not even that.{/n}''',
         c("[Go back to the fire.]")),
 ], requires=("trickster", "trickster.ever", DEAD_LATCH, VOYAGE), forbids=(MINDER, SELF, RETURNED, CLOSED, OVERBOARD), delay=24,
     chapters=(4,), kind="event", TricksterDevice=True, TricksterState="raid")
+
+# Sol r3 INT: carried into Chapter 5 unread, the same news reaches Drezen: the crew bring her ship north to sell the rest of
+# the charter back to the Commander. Same nodes, its own opening; the two never both play (OVERBOARD / CLOSED).
+_late = copy.deepcopy(SCENES[-1]["Nodes"])
+for _node in _late:
+    if _node["Id"] == "start":
+        _node["Text"] = '''{n}Starcatcher comes down over Drezen's walls one grey morning with her captain's hat nailed to the mainmast, and the crew send word to the citadel that they would like the rest of the charter fee. Oskel brings the message. He does not go back to the ship afterwards. He stands at the edge of the lamplight in your quarters, broad as a hatch cover, with the slaver's brand gone white on the side of his neck and his wings folded tight.{/n}
+{n}"Commander. There's a thing the crew won't tell you. I'm telling you." His voice is low and careful. "It's about how we buried the captain."{/n}'''
+    elif _node["Id"] == "act":
+        _node["Text"] = '''{n}The charter is yours until it is paid off, and on that ship, until then, your word is the captain's. You go down to the mooring field below the walls with Oskel at your back and the crew's pay in a sack.{/n}
+{n}They are at the rail when you come aboard, twenty men who hanged their captain and drowned her body, and they know what you are.{/n}'''
+    elif _node["Id"] == "cleared":
+        _node["Text"] = '''{n}By noon the ship is empty but for you, Oskel, and six hands from the Drezen field who will crew anything for silver and ask nothing. Oskel takes the wheel. He flies her the way she flew her, a little heavy on the helm.{/n}
+{n}"Weeks back to Vazglar's water, through the Wound and out," he says. "Then we look. You'll stay?"{/n}'''
+    elif _node["Id"] == "leave":
+        _node["Text"] = _node["Text"].replace("gone from Colyphyr by morning", "gone from Drezen by morning")
+    elif _node["Id"] == "blind":
+        _node["Text"] = _node["Text"].replace("He comes back to Colyphyr alone", "He comes back to Drezen alone")
+    elif _node["Id"] == "rule":
+        _node["Text"] = _node["Text"].replace("the Ishiar is two days behind you", "the Ishiar is a long way south")
+    elif _node["Id"] == "unsure":
+        _node["Text"] = _node["Text"].replace("a sea two days behind you", "a sea a long way south")
+    elif _node["Id"] == "herald":
+        _node["Text"] = _node["Text"].replace("Two hundred miles of sea, and a hatch cover", "Weeks of sea, and a rock somewhere in it")
+remote(P + "raid.overboard_drezen", "The man at the plank", _late,
+       requires=("trickster", "trickster.ever", DEAD_LATCH, VOYAGE), forbids=(MINDER, SELF, RETURNED, CLOSED, OVERBOARD), delay=24,
+       chapters=(5,), kind="event", TricksterDevice=True, TricksterState="raid")
 
 
 remote(P + "raid.ashore", "What the sea gave back", [
@@ -1095,10 +1137,10 @@ remote(P + "raid.ashore", "What the sea gave back", [
 {n}She has a scarf wound high around her throat, and she sits down on your pack without asking. The rope has left her face grey and hollowed and a band of purple under her jaw, and the sea has left the rest of her thin. When she speaks it is barely a whisper, and every word costs her.{/n}''',
         c("Continue", "sea")),
     mi("sea", '''"You'll have to lean in. This is all there is." {n}She touches the scarf.{/n} "I remember the wind. I called it with the last of what the noose left me, and then nothing, and then cold. A great deal of cold, and salt in my mouth, and the sky the wrong way up. They'd put me over the side."
-"I came up under a broken plank with a boathook still caught in it. I held on to it for three days. Nothing ate me. Nothing ever does." {n}A small, terrible smile.{/n} "On the fourth morning my own ship came down out of a clear sky with Oskel at her wheel and six strangers on her yards."''',
+"I came up under a broken plank with a boathook still caught in it, and held on to it until the sea put me on a rock. Nothing ate me. Nothing ever does." {n}A small, terrible smile.{/n} "And one morning my own ship came down out of a clear sky with Oskel at her wheel and six strangers on her yards, and he steered straight to me as if somebody had drawn him a chart."''',
         c("Continue", "sent")),
-    mi("sent", '''"He says you took her off the crew at Colyphyr and paid them to walk. He says you sent him back for a body." {n}She looks at you, and her eyes are perfectly dry.{/n} "He says you worked it out from Dask. That a curse doesn't outlive its captain."
-"It's the first thing anybody has ever proved with my curse that I wanted to know." {n}She breathes, carefully, around the bruise.{/n} "And you did it two days late, from a campfire, because you had prepared nothing at all. I am a magister of the Arcanamirium. I know the difference between a rescue and a thing somebody did not trouble to prevent."''',
+    mi("sent", '''"He says you took her off the crew and paid them to walk. He says you sent him back for a body." {n}She looks at you, and her eyes are perfectly dry.{/n} "He says a tall grey man with a spade stood at my rail and gave you my bearing, and you paid for it with your name. In his book. With the hour left blank."
+"Six years I have kept out of that book, and you walked into it for a compass heading." {n}She breathes, carefully, around the bruise.{/n} "And you did it late, because you had prepared nothing at all. I am a magister of the Arcanamirium. I know the difference between a rescue and a thing somebody did not trouble to prevent."''',
         c("Continue", "raid")),
     mi("raid", '''"And there is the raid. I haven't forgotten the raid. There were children in that village, Commander, and fishing nets, and nothing worth a single sack of flour to anyone but them." {n}She holds your eyes.{/n} "Tell me why I should be sitting here at all."''',
         c('"I ordered the raid. You protested, and you were right, and it nearly killed you."', "owned", flags=(RAID_OWNED,)),
