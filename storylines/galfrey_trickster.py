@@ -91,7 +91,8 @@ ADDRESS = P + "address_heard"             # Ch4: a hag of the Midnight Isles say
 CARRIED_IRABETH = P + "carried.irabeth"   # who took the Queen's last command: Irabeth
 CARRIED_CROWS = P + "carried.crows"       # ...or the Crows (Irabeth dead, or left in Drezen: PlayerIsKnightCommanderAfterFane)
 CROWS_DREZEN = P + "carried.crows_drezen"  # the Crows carried her because Irabeth was holding Drezen (not because she was dead)
-REPLIED = P + "iz.alone_replied"          # the Commander wrote back to her letter from the rubble
+REPLIED = P + "iz.alone_replied"
+LATE_FOUND = P + "cost.found_late"          # unprepared: found on the bier at Drezen, three days dead, the sergeant bought or faced          # the Commander wrote back to her letter from the rubble
 NATIVE_REFUSED = "galfrey.native_refused" # SeenCues DrezenMain_C5/Galfrey/Cue_0041: "friendship is all I can offer you" (the Trickster's native answer)
 BRIEFED_ID = P + "ch3.standing_orders"
 BRIEFED = P + "crows_briefed"             # T, Chapter 3: the Commander gave the Crows standing orders (the offscreen escape needs it)
@@ -597,6 +598,48 @@ page(P + "iz.alone", "A letter sealed in green", [
 ], requires=("trickster", LEFT_EARLY, DEAD, PLANTED, BRIEFED), forbids=(DYING, KILLED, TAKEN, CLOSED), delay=24, kind="letter",
     TricksterDevice=True, TricksterState="dead")
 tag(P + "iz.alone", "T")
+
+
+# --- Chapter 5 (T, a visit in Drezen): the cortege, the lid not yet sealed ------------------------------------------------------
+# The late recovery for the offscreen death when nothing was prepared (no Kitrane mooted, no standing orders; or the letter from
+# the rubble never came). She fell at Iz with no Commander at her side; her knights carry her home to Nerosyan by way of Drezen,
+# and the lead seal goes onto the coffin there. The rending holds her in a death that will not finish: the Crows' surgeon notices
+# she does not stiffen. The Commander reaches the chapel before the seal, on nerve alone, and offers the old name to a woman who
+# is barely there; she decides. Dearer than the prepared ways: the rent voice, the lost weeks, the Crows' sergeant bought or
+# faced down in front of his dead Queen, and a second body to find for the box.
+
+page(P + "iz.cortege", "The lid not yet sealed", [
+    nar("start", '''{n}The Queen's cortege comes through the gate of Drezen at dusk, three days out of Iz: a cart draped in blue and silver, knights walking beside it bareheaded, and the whole of the lower town lining the road in silence. It will lie one night in the citadel chapel. In the morning the lead seal goes on, and it goes home to Nerosyan.{/n}
+{n}You were not at Iz. You have been hearing that sentence in other people's mouths for three days.{/n}''',
+        c("Continue", "surgeon")),
+    n("surgeon", "Crows' sergeant", '''{n}An old knight in a green surcoat with three black birds on the breast is standing guard at the chapel door, and does not step aside for you.{/n} "Commander." {n}His voice is hoarse.{/n} "The surgeon says it is the Wound's cold that keeps her. She has not stiffened. Three days, and she has not stiffened, and she has not breathed either, that anyone can swear to." {n}He looks at you as if you were to blame for all of it, and perhaps you are.{/n} "They seal her at first light."''',
+        c("[Diplomacy DC 24] \"Let me in. There's a thing she said once, in the war camp, about a knight of your order. I need to say it back to her.\"",
+          check=dict(Skill="CheckDiplomacy", DC=24, Success="in", Failure="barred", CommanderOnly=True)),
+        c("[Pay him] \"Then let me sit a vigil. Here: for the Crows, for the road home.\"", "bought", crusade=("Finances", -300)),
+        c("[Leave the Queen to her knights.]", abort=True)),
+    n("barred", "Crows' sergeant", '''"No." {n}Flat as a blade.{/n} "You were not at Iz. You do not get to be at this." {n}And then, because he is an old soldier and knows what a purse is for, he looks at your belt and away again.{/n}''',
+        c("[Pay him] \"For the Crows, and the road home.\"", "bought", crusade=("Finances", -300)),
+        c("[Leave the Queen to her knights.]", abort=True)),
+    n("bought", "Crows' sergeant", '''{n}He takes it. He hates himself for taking it, and hates you worse, and it is all there in his face.{/n} "One hour. And if you do anything to her, Commander, I will know."''',
+        c("[Go in.]", "in")),
+    nar("in", '''{n}The chapel is cold. She lies on the bier in her ruined armour with her sword on her breast, and the wound at her collarbone is bound in linen that has gone black, and under the linen, if you look long enough, there is something that is not blood: a slow dark light, still burning, patient as a lantern in a window.{/n}
+{n}She is not dead. She is not anything. Whatever took her at Iz is still holding on, and it is holding on to the Queen of Mendev.{/n}''',
+        c("[Kneel, and say it close to her ear.] \"Your Majesty.\"", "flare")),
+    nar("flare", '''{n}The dark light brightens. Her hand, on the sword, closes by a hair.{/n}
+{n}You have nothing: no seed, no plan, no knight of a minor order she ever told you she envied. You have what you saw in a war camp and the name she chose for herself there, and the fact that it is the only name in the world this thing does not know.{/n}''',
+        c('[Offer her another name] "Kitrane. Kitrane of the Green Crows. You told everyone you were my old friend. Come back as her."', "wake", mythic="Trickster")),
+    ga("wake", '''{n}It takes a long time. Her lips move before her eyes open, and her eyes, when they open, do not find you at once.{/n} "Commander." {n}Barely a breath.{/n} "You were not at Iz." {n}A longer silence.{/n} "Kitrane. That was a joke. For the war camp." {n}Her fingers move on the sword hilt.{/n} "I am so tired. Tell me why I should wake up as a joke."''',
+        c('"Because the Queen is finished, and you are not. Choose it. Nobody chose your life for you this time."', "choose"),
+        c('[Let her go] "...Then do not. Rest, Your Majesty."', "rest", flags=(LET_DIE, CLOSED))),
+    ga("choose", '''"Choose." {n}Something that was almost a laugh once.{/n} "In a cold chapel, three days dead, with the lid on the floor. You pick your moments, Commander." {n}Her hand turns on the hilt and finds yours.{/n} "Very well. The Queen is in the box. Put someone in it with her name; the Crows lost a man at Iz, Sir Anselm, and he would think this very funny." {n}Her eyes close again.{/n} "Seal it at first light, with every bell. It wants to hear it said. And then carry out a knight."''',
+        c("[Call the sergeant in, and tell him what she said.]", "sergeant")),
+    n("sergeant", "Crows' sergeant", '''{n}He comes in with his hand on his sword, and stops, and sees her eyes open, and goes down on both knees on the chapel stones as if his legs had been cut.{/n} "Your Maj..." {n}He stops himself. He is not a stupid man.{/n} "Kitrane." {n}A long breath.{/n} "Anselm is in the cart. We were taking him home. He will be taking her home instead." {n}He looks up at you, and whatever was in his face at the door is not gone, and never will be.{/n} "First light, Commander. With every bell."''',
+        c("[Stay until first light.]", flags=(TAKEN, RENT, ALONE, STARTED, COFFIN, LATE_FOUND))),
+    ga("rest", '''{n}The fingers on the sword loosen.{/n} "Thank you." {n}It is hardly a word.{/n} "You were not at Iz. You were here. That will have to do."''',
+        c("[Sit with her until the light goes out.]")),
+], requires=("trickster", LEFT_EARLY, DEAD), forbids=(DYING, KILLED, TAKEN, CLOSED), delay=60, Areas=[DREZEN],
+    TricksterDevice=True, TricksterState="dead")
+tag(P + "iz.cortege", "T")
 
 
 # --- Chapter 5 (T, a visit): Kitrane comes to find the Commander -------------------------------------------------------------

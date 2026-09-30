@@ -363798,6 +363798,259 @@
       "Sender": "Galfrey"
     },
     {
+      "Id": "galfrey.trickster.iz.cortege",
+      "Title": "The lid not yet sealed",
+      "Owner": "Galfrey",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The Queen's cortege comes through the gate of Drezen at dusk, three days out of Iz: a cart draped in blue and silver, knights walking beside it bareheaded, and the whole of the lower town lining the road in silence. It will lie one night in the citadel chapel. In the morning the lead seal goes on, and it goes home to Nerosyan.{/n}\n{n}You were not at Iz. You have been hearing that sentence in other people's mouths for three days.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "surgeon",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "surgeon",
+          "Speaker": "Crows' sergeant",
+          "Text": "{n}An old knight in a green surcoat with three black birds on the breast is standing guard at the chapel door, and does not step aside for you.{/n} \"Commander.\" {n}His voice is hoarse.{/n} \"The surgeon says it is the Wound's cold that keeps her. She has not stiffened. Three days, and she has not stiffened, and she has not breathed either, that anyone can swear to.\" {n}He looks at you as if you were to blame for all of it, and perhaps you are.{/n} \"They seal her at first light.\"",
+          "Choices": [
+            {
+              "Text": "[Diplomacy DC 24] \"Let me in. There's a thing she said once, in the war camp, about a knight of your order. I need to say it back to her.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "CheckDiplomacy",
+                "DC": 24,
+                "Success": "in",
+                "Failure": "barred",
+                "CommanderOnly": true
+              }
+            },
+            {
+              "Text": "[Pay him] \"Then let me sit a vigil. Here: for the Crows, for the road home.\"",
+              "Next": "bought",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -300
+              }
+            },
+            {
+              "Text": "[Leave the Queen to her knights.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "barred",
+          "Speaker": "Crows' sergeant",
+          "Text": "\"No.\" {n}Flat as a blade.{/n} \"You were not at Iz. You do not get to be at this.\" {n}And then, because he is an old soldier and knows what a purse is for, he looks at your belt and away again.{/n}",
+          "Choices": [
+            {
+              "Text": "[Pay him] \"For the Crows, and the road home.\"",
+              "Next": "bought",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -300
+              }
+            },
+            {
+              "Text": "[Leave the Queen to her knights.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "bought",
+          "Speaker": "Crows' sergeant",
+          "Text": "{n}He takes it. He hates himself for taking it, and hates you worse, and it is all there in his face.{/n} \"One hour. And if you do anything to her, Commander, I will know.\"",
+          "Choices": [
+            {
+              "Text": "[Go in.]",
+              "Next": "in",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "in",
+          "Speaker": "Narrator",
+          "Text": "{n}The chapel is cold. She lies on the bier in her ruined armour with her sword on her breast, and the wound at her collarbone is bound in linen that has gone black, and under the linen, if you look long enough, there is something that is not blood: a slow dark light, still burning, patient as a lantern in a window.{/n}\n{n}She is not dead. She is not anything. Whatever took her at Iz is still holding on, and it is holding on to the Queen of Mendev.{/n}",
+          "Choices": [
+            {
+              "Text": "[Kneel, and say it close to her ear.] \"Your Majesty.\"",
+              "Next": "flare",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "flare",
+          "Speaker": "Narrator",
+          "Text": "{n}The dark light brightens. Her hand, on the sword, closes by a hair.{/n}\n{n}You have nothing: no seed, no plan, no knight of a minor order she ever told you she envied. You have what you saw in a war camp and the name she chose for herself there, and the fact that it is the only name in the world this thing does not know.{/n}",
+          "Choices": [
+            {
+              "Text": "[Offer her another name] \"Kitrane. Kitrane of the Green Crows. You told everyone you were my old friend. Come back as her.\"",
+              "Next": "wake",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster"
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "wake",
+          "Speaker": "Galfrey",
+          "Text": "{n}It takes a long time. Her lips move before her eyes open, and her eyes, when they open, do not find you at once.{/n} \"Commander.\" {n}Barely a breath.{/n} \"You were not at Iz.\" {n}A longer silence.{/n} \"Kitrane. That was a joke. For the war camp.\" {n}Her fingers move on the sword hilt.{/n} \"I am so tired. Tell me why I should wake up as a joke.\"",
+          "Choices": [
+            {
+              "Text": "\"Because the Queen is finished, and you are not. Choose it. Nobody chose your life for you this time.\"",
+              "Next": "choose",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Let her go] \"...Then do not. Rest, Your Majesty.\"",
+              "Next": "rest",
+              "Set": [
+                "galfrey.trickster.let_die",
+                "galfrey.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "choose",
+          "Speaker": "Galfrey",
+          "Text": "\"Choose.\" {n}Something that was almost a laugh once.{/n} \"In a cold chapel, three days dead, with the lid on the floor. You pick your moments, Commander.\" {n}Her hand turns on the hilt and finds yours.{/n} \"Very well. The Queen is in the box. Put someone in it with her name; the Crows lost a man at Iz, Sir Anselm, and he would think this very funny.\" {n}Her eyes close again.{/n} \"Seal it at first light, with every bell. It wants to hear it said. And then carry out a knight.\"",
+          "Choices": [
+            {
+              "Text": "[Call the sergeant in, and tell him what she said.]",
+              "Next": "sergeant",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "sergeant",
+          "Speaker": "Crows' sergeant",
+          "Text": "{n}He comes in with his hand on his sword, and stops, and sees her eyes open, and goes down on both knees on the chapel stones as if his legs had been cut.{/n} \"Your Maj...\" {n}He stops himself. He is not a stupid man.{/n} \"Kitrane.\" {n}A long breath.{/n} \"Anselm is in the cart. We were taking him home. He will be taking her home instead.\" {n}He looks up at you, and whatever was in his face at the door is not gone, and never will be.{/n} \"First light, Commander. With every bell.\"",
+          "Choices": [
+            {
+              "Text": "[Stay until first light.]",
+              "Next": null,
+              "Set": [
+                "galfrey.trickster.kitrane_taken",
+                "galfrey.trickster.cost.rent_scar",
+                "galfrey.trickster.cost.alone",
+                "galfrey.started",
+                "galfrey.trickster.cost.coffin",
+                "galfrey.trickster.cost.found_late"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "rest",
+          "Speaker": "Galfrey",
+          "Text": "{n}The fingers on the sword loosen.{/n} \"Thank you.\" {n}It is hardly a word.{/n} \"You were not at Iz. You were here. That will have to do.\"",
+          "Choices": [
+            {
+              "Text": "[Sit with her until the light goes out.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "iz.left_early",
+        "galfrey.dead"
+      ],
+      "Forbids": [
+        "galfrey.dying_seen",
+        "galfrey.killed_by_commander",
+        "galfrey.trickster.kitrane_taken",
+        "galfrey.closed"
+      ],
+      "DelayHours": 60,
+      "Optional": false,
+      "Relationship": "galfrey",
+      "Chapters": [
+        5
+      ],
+      "Remote": true,
+      "Kind": "visit",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "TricksterDevice": true,
+      "TricksterState": "dead",
+      "Sender": "Galfrey"
+    },
+    {
       "Id": "galfrey.trickster.return.kitrane",
       "Title": "A knight of the Green Crows",
       "Owner": "Galfrey",
@@ -372699,6 +372952,32 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "\"Whatever you choose to give. Take as long as you need.\"",
+              "Next": "postpone",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "postpone",
+          "Speaker": "Galfrey",
+          "Text": "{n}She looks at you a long while, still on her knee, and then sheathes the sword and gets up on her own.{/n} \"As long as I need.\" {n}She tries the words as if they were a coin of a strange mint.{/n} \"Then I shall take it. Not tonight, Commander. Tonight I should say yes because a knight does not leave a hand held out in a market, and I have had enough of doing things because of what a knight does.\" {n}She touches two fingers to your wrist, briefly.{/n} \"Two days. Ask the Crows' sergeant where I am.\"",
+          "Choices": [
+            {
+              "Text": "[Let her go.]",
+              "Next": null,
+              "Set": [
+                "galfrey.trickster.oath_postponed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": "Galfrey"
@@ -372822,6 +373101,7 @@
         "galfrey.trickster.commit.oath_stall",
         "galfrey.committed",
         "galfrey.trickster.sworn",
+        "galfrey.trickster.oath_postponed",
         "galfrey.trickster.ride.hanged"
       ],
       "DelayHours": 48,
@@ -373019,6 +373299,32 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "\"Whatever you choose to give. Take as long as you need.\"",
+              "Next": "postpone",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "postpone",
+          "Speaker": "Galfrey",
+          "Text": "{n}She looks at you a long while, still on her knee, and then sheathes the sword and gets up on her own.{/n} \"As long as I need.\" {n}She tries the words as if they were a coin of a strange mint.{/n} \"Then I shall take it. Not tonight, Commander. Tonight I should say yes because a knight does not leave a hand held out in a market, and I have had enough of doing things because of what a knight does.\" {n}She touches two fingers to your wrist, briefly.{/n} \"Two days. Ask the Crows' sergeant where I am.\"",
+          "Choices": [
+            {
+              "Text": "[Let her go.]",
+              "Next": null,
+              "Set": [
+                "galfrey.trickster.oath_postponed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": "Galfrey"
@@ -373143,6 +373449,7 @@
         "galfrey.trickster.commit.oath",
         "galfrey.committed",
         "galfrey.trickster.sworn",
+        "galfrey.trickster.oath_postponed",
         "galfrey.trickster.ride.hanged"
       ],
       "DelayHours": 48,
@@ -373174,6 +373481,181 @@
           "galfrey.trickster.kitrane.letter_spoken"
         ]
       ]
+    },
+    {
+      "Id": "galfrey.trickster.commit.answer",
+      "Title": "Two days",
+      "Owner": "Galfrey",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"The Crows' sergeant says you have an answer.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Galfrey",
+          "Text": "\"I have.\" {n}She is standing by the curio stall with her hands folded on Sir Anselm's sword, and she has plainly not slept.{/n} \"I spent the first day being angry that you had let me go, and the second being angry that I had gone.\" {n}A breath.{/n} \"Nobody has ever given me two days to decide anything that was only mine. I did not use them well. I used them.\"",
+          "Choices": [
+            {
+              "Text": "\"And?\"",
+              "Next": "answer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Wait.]",
+              "Next": "answer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "answer",
+          "Speaker": "Galfrey",
+          "Text": "\"Yes.\" {n}Plainly, the way she gives an order she has already weighed.{/n} \"Not because a hand was held out. Because I went two days without it and did not like it.\" {n}She steps in, closer than a knight stands, and kisses you once, hard, in the middle of the market, and nobody looks.{/n} \"The Crows' tent. After the ninth bell. Bring nothing.\"",
+          "Choices": [
+            {
+              "Text": "\"I'll be there.\"",
+              "Next": null,
+              "Set": [
+                "galfrey.committed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Kiss her back.]",
+              "Next": null,
+              "Set": [
+                "galfrey.committed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "galfrey.trickster.returned",
+        "galfrey.trickster.oath_postponed"
+      ],
+      "Forbids": [
+        "galfrey.closed",
+        "galfrey.trickster.commit.answer_stall",
+        "galfrey.committed",
+        "galfrey.trickster.ride.hanged"
+      ],
+      "DelayHours": 48,
+      "Optional": false,
+      "Relationship": "galfrey",
+      "Chapters": [
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "ContactUnit": "a8b7f6fd39ff2974f8b5fbf944a7f735",
+      "InteractionHub": "galfrey.presence",
+      "ForbidOverrides": {
+        "galfrey.trickster.ride.hanged": "galfrey.trickster.ride.answered"
+      }
+    },
+    {
+      "Id": "galfrey.trickster.commit.answer_stall",
+      "Title": "Two days",
+      "Owner": "Galfrey",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"The Crows' sergeant says you have an answer.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Galfrey",
+          "Text": "\"I have.\" {n}She is standing by the curio stall with her hands folded on Sir Anselm's sword, and she has plainly not slept.{/n} \"I spent the first day being angry that you had let me go, and the second being angry that I had gone.\" {n}A breath.{/n} \"Nobody has ever given me two days to decide anything that was only mine. I did not use them well. I used them.\"",
+          "Choices": [
+            {
+              "Text": "\"And?\"",
+              "Next": "answer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Wait.]",
+              "Next": "answer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "answer",
+          "Speaker": "Galfrey",
+          "Text": "\"Yes.\" {n}Plainly, the way she gives an order she has already weighed.{/n} \"Not because a hand was held out. Because I went two days without it and did not like it.\" {n}She steps in, closer than a knight stands, and kisses you once, hard, in the middle of the market, and nobody looks.{/n} \"The Crows' tent. After the ninth bell. Bring nothing.\"",
+          "Choices": [
+            {
+              "Text": "\"I'll be there.\"",
+              "Next": null,
+              "Set": [
+                "galfrey.committed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Kiss her back.]",
+              "Next": null,
+              "Set": [
+                "galfrey.committed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "galfrey.trickster.returned",
+        "galfrey.trickster.oath_postponed",
+        "galfrey.presence.failed"
+      ],
+      "Forbids": [
+        "galfrey.closed",
+        "galfrey.trickster.commit.answer",
+        "galfrey.committed",
+        "galfrey.trickster.ride.hanged"
+      ],
+      "DelayHours": 48,
+      "Optional": false,
+      "Relationship": "galfrey",
+      "Chapters": [
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "ContactUnit": "a8b7f6fd39ff2974f8b5fbf944a7f735",
+      "InteractionHub": "galfrey.presence.stall",
+      "ForbidOverrides": {
+        "galfrey.trickster.ride.hanged": "galfrey.trickster.ride.answered"
+      }
     },
     {
       "Id": "galfrey.trickster.commit.release",

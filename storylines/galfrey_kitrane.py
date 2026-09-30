@@ -30,6 +30,7 @@ TIEFLING = "23eabf5b6364d4a4e86202dc5d27600b"  # Vendor_Tiefling (the lower town
 # Hurlun (6b66b009) and E12b's NearUnit match (unit.Blueprint == anchor) would never find it. The market is used instead.
 
 FIRST = P + "first_morning"
+POSTPONED = P + "oath_postponed"          # she took the refused oath home to think; her answer comes 48 h later
 ELIXIR = P + "kitrane.elixir_told"
 HANDS = P + "kitrane.hands"
 HULRUN_SEEN = P + "kitrane.hulrun_seen"
@@ -553,7 +554,10 @@ beat(P + "commit.oath", "The oath", '"The Crows\' sergeant says you asked for me
     ki("refuse", '''{n}She does not get up. She stays exactly where she is, with the sword across her arm, and looks at your outstretched hand as though it were a piece of very bad news from the front.{/n} "You refuse the fealty of a knight. In the middle of a market." {n}Very evenly:{/n} "I have had oaths refused before, Commander. Always by people who wanted something better. What do you want?"''',
         c('"I don\'t want your sword. I want you."', "yes"),
         c('"Nobody should own your oath again. Least of all me."', "yes"),
-        c('[Flirt] "I want you on your feet, so I can kiss you properly."', "yes")),
+        c('[Flirt] "I want you on your feet, so I can kiss you properly."', "yes"),
+        c('"Whatever you choose to give. Take as long as you need."', "postpone")),
+    ki("postpone", '''{n}She looks at you a long while, still on her knee, and then sheathes the sword and gets up on her own.{/n} "As long as I need." {n}She tries the words as if they were a coin of a strange mint.{/n} "Then I shall take it. Not tonight, Commander. Tonight I should say yes because a knight does not leave a hand held out in a market, and I have had enough of doing things because of what a knight does." {n}She touches two fingers to your wrist, briefly.{/n} "Two days. Ask the Crows' sergeant where I am."''',
+        c("[Let her go.]", flags=(POSTPONED,))),
     ki("yes", '''{n}For the space of a breath the Queen of Mendev looks at you with the whole of her reign in her face: every envoy, every oath, every knight she ever sent into the Wound.{/n}
 {n}Then Kitrane sheathes her sword, and takes your hand, and lets you pull her up out of the straw, and does not let go.{/n} "Then I shall have to find something else to give you." {n}Her other hand comes up to your face.{/n} "And I find I know exactly what."''',
         c("Continue", "kiss")),
@@ -569,8 +573,20 @@ beat(P + "commit.oath", "The oath", '"The Crows\' sergeant says you asked for me
         c("Continue", "sworn2")),
     ki("sworn2", '''{n}Something in her face has closed, gently, like a book.{/n} "The Queen had knights. I used to wonder what it was like from their side." {n}A pause.{/n} "It is very simple, it turns out. One knows exactly where one stands." {n}She salutes again.{/n} "Good night, Commander."''',
         c("[Return the salute.]")),
-], requires=(FIRST,), forbids=(COMMITTED, SWORN, FORD_HANGED), delay=48, ForbidOverrides={FORD_HANGED: FORD_ANSWERED},
+], requires=(FIRST,), forbids=(COMMITTED, SWORN, POSTPONED, FORD_HANGED), delay=48, ForbidOverrides={FORD_HANGED: FORD_ANSWERED},
     RequiresAnyGroups=[[REEL, CROWS_ORDER, KING_SEEN, CONVERSATION], [NAMED, KEPT, HANDS, ELIXIR, LETTER_SPOKEN]])
+
+
+# --- Her answer, two days on (after her own postponement) -----------------------------------------------------------------------
+
+beat(P + "commit.answer", "Two days", '"The Crows\' sergeant says you have an answer."', [
+    ki("start", '''"I have." {n}She is standing by the curio stall with her hands folded on Sir Anselm's sword, and she has plainly not slept.{/n} "I spent the first day being angry that you had let me go, and the second being angry that I had gone." {n}A breath.{/n} "Nobody has ever given me two days to decide anything that was only mine. I did not use them well. I used them."''',
+        c('"And?"', "answer"),
+        c("[Wait.]", "answer")),
+    ki("answer", '''"Yes." {n}Plainly, the way she gives an order she has already weighed.{/n} "Not because a hand was held out. Because I went two days without it and did not like it." {n}She steps in, closer than a knight stands, and kisses you once, hard, in the middle of the market, and nobody looks.{/n} "The Crows' tent. After the ninth bell. Bring nothing."''',
+        c('"I\'ll be there."', flags=(COMMITTED,)),
+        c("[Kiss her back.]", flags=(COMMITTED,))),
+], requires=(POSTPONED,), forbids=(COMMITTED, FORD_HANGED), delay=48, ForbidOverrides={FORD_HANGED: FORD_ANSWERED})
 
 
 # --- The release: the soft no answered ----------------------------------------------------------------------------------------

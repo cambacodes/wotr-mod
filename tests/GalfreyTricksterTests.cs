@@ -234,7 +234,7 @@ internal static class GalfreyTricksterTests
               && Rules.Available(story, S(P + "epilogue.queen"), World(story, 6, letDie.Flags.Concat(new[] { "trickster.ever", Dead }).ToArray())),
             "Trk_Galfrey_RefusedThenYes: letting her die as the Queen does not close her route and give her page.");
 
-        // Trk_Galfrey_Offscreen: the Commander never came; planted, she writes; unplanted, canon stands.
+        // Trk_Galfrey_Offscreen: the Commander never came; planted and briefed, she writes; otherwise the cortege at Drezen.
         var offscreen = World(story, 5, "trickster", "trickster.ever", "iz.left_early", Dead, P + "crows_mooted", P + "crows_briefed");
         check(!Rules.Available(story, alone, World(story, 5, "trickster", "trickster.ever", "iz.left_early", Dead, P + "crows_mooted")),
             "Trk_Galfrey_Offscreen: her letter comes without the Commander's standing orders to the Crows.");
@@ -246,12 +246,33 @@ internal static class GalfreyTricksterTests
               && Rules.Available(story, retScarred, Later(story, One(eulogy, Later(story, wrote, 40, null, "coronation.after", "coronation.seen"), new[] { P + "cost.eulogy" }), 100))
               && !Rules.Available(story, road, Later(story, wrote, 20)),
             "Trk_Galfrey_Offscreen: the letter does not lead to the scarred return, or the road plays without the bed.");
-        var unplanted = World(story, 5, "trickster", "trickster.ever", "iz.left_early", Dead, "coronation.after", "coronation.seen");
-        check(!own.Where(s => s.TricksterDevice).Any(s => Rules.Available(story, s, Later(story, unplanted, 200))),
-            "Trk_Galfrey_Offscreen: without the seed a Galfrey device opens.");
+        // Trk_Galfrey_Cortege (the late recovery): no seed, no orders; the lid not yet sealed at Drezen. Dearer, and hers to refuse.
+        var cortege = S(P + "iz.cortege");
+        var unplanted = World(story, 5, "trickster", "trickster.ever", "iz.left_early", Dead);
+        check(!Rules.Available(story, cortege, Later(story, unplanted, -150)) && Rules.Available(story, cortege, Later(story, unplanted, 0))
+              && !Rules.Available(story, cortege, World(story, 5, "trickster.ever", "iz.left_early", Dead))
+              && !cortege.Requires.Contains(P + "kitrane_planted") && !cortege.Requires.Contains(P + "crows_briefed")
+              && cortege.Areas.SequenceEqual(new[] { Drezen }),
+            "Trk_Galfrey_Cortege: the unprepared offscreen death has no late recovery in Drezen, or one an ex-Trickster can start.");
+        var found = One(cortege, unplanted, new[] { Taken, P + "cost.rent_scar", P + "cost.alone", P + "cost.found_late", P + "cost.coffin" });
+        check(Program.Walk(cortege, unplanted).Any(r => r.Has(P + "let_die") && r.Has(Closed) && !r.Has(Taken)),
+            "Trk_Galfrey_Cortege: she cannot refuse the name on the bier.");
+        check(!Rules.Available(story, cortege, found) && !Rules.Available(story, cortege, Later(story, wrote, 100)),
+            "Trk_Galfrey_Cortege: the cortege plays after she has already taken the name.");
+        var foundProclaimed = One(eulogy, Later(story, found, 40), new[] { P + "cost.eulogy" });
+        check(Rules.Available(story, retScarred, Later(story, Later(story, foundProclaimed, 1, null, "coronation.after", "coronation.seen"), 100)),
+            "Trk_Galfrey_Cortege: the late recovery does not lead to her return.");
         check(!own.Where(s => s.TricksterDevice).Any(s => Rules.Available(story, s,
                   World(story, 5, "trickster", "trickster.ever", Dead, "galfrey.killed_by_commander", P + "crows_mooted", "iz.left_early"))),
             "Trk_Galfrey_Killed: a device serves a kill the Commander chose.");
+
+        // Trk_Galfrey_Postponed: her own two days on the direct oath, then her answer.
+        var postponed = One(oath, Later(story, morning, 50), new[] { P + "oath_postponed" }, Committed, P + "sworn");
+        var answer = S(P + "commit.answer");
+        check(!Rules.Available(story, oath, Later(story, postponed, 60)) && !Rules.Available(story, answer, Later(story, postponed, 20))
+              && Rules.Available(story, answer, Later(story, postponed, 50)),
+            "Trk_Galfrey_Postponed: her answer is not two days after her postponement.");
+        One(answer, Later(story, postponed, 50), new[] { Committed });
 
         // Trk_Galfrey_Sworn: the oath accepted; the release 48 hours later; she chooses.
         var sworn = One(oath, Later(story, morning, 50), new[] { P + "sworn" }, Committed);
