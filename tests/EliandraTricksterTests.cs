@@ -285,6 +285,29 @@ internal static class EliandraTricksterTests
         check(miss.Count == 2 && miss.Single(c => c.Next == "miss_slow").Requires.Contains(Reward)
               && miss.Single(c => c.Next == "miss_strong").Forbids.Contains(Reward),
             "Her answer about her strength does not follow the cost.");
+        // What the rendered outcomes say (audit r3): a withheld promise is not a promise; the soft no after the lights alone keeps her
+        // strength on the page; her own offering is hers at the morning after.
+        var roadScene = S(E + "drezen.road");
+        check(roadScene.Nodes.Single(n => n.Id == "war").Choices.All(c => !c.Set.Contains(E + "drezen.road_promised") && c.Set.Contains(E + "drezen.road_open"))
+              && roadScene.Nodes.Where(n => n.Id != "war").SelectMany(n => n.Choices).Where(c => c.Set.Length > 0).All(c => c.Set.Contains(E + "drezen.road_promised")),
+            "A refused first spring still promises the road.");
+        var together = S(E + "epilogue.together").Nodes.Single().Paragraphs;
+        check(together.Single(p => p.Requires.Contains(E + "drezen.road_promised")).Forbids.Length == 0
+              && together.Single(p => p.Requires.Contains(E + "drezen.road_open")).Forbids.Contains(E + "drezen.road_promised"),
+            "The first spring's paragraphs do not follow the answer given.");
+        var declinedParas = S(E + "epilogue.declined").Nodes.Single().Paragraphs;
+        var lightsOnlyNo = World(story, 6, One(mile, Later(story, granted, 30), new[] { E + "declined" }).Flags.ToArray());
+        bool Shown(Paragraph p, Snapshot w) => p.Requires.All(w.Has) && !p.Forbids.Any(w.Has);
+        check(declinedParas.Where(p => Shown(p, lightsOnlyNo)).All(p => !p.Text.Contains("ordinary priestess") && !p.Text.Contains("asked again from the fords"))
+              && declinedParas.Any(p => Shown(p, lightsOnlyNo) && p.Text.Contains("still the strongest")),
+            "The soft no after the lights alone tells of a strength she never gave, or of a letter never read.");
+        var selfNight = Later(story, answered, 20);
+        var answerNode = heart.Nodes.Single(n => n.Id == "answer").Choices;
+        check(!selfNight.Has(Lights) && answerNode.Single(c => c.Next == "answer_self").Forbids.Contains(Lights)
+              && answerNode.Single(c => c.Next == "answer_given").Requires.Contains(Lights)
+              && Program.Walk(heart, selfNight).Count > 0,
+            "The morning after credits the Commander with her own offering.");
+        check(chiefs.Chapters.SequenceEqual(new[] { 3 }), "The chiefs' ground page can arrive in the Abyss with its Drezen frame.");
         // Rest-delivered pages in Chapter 5: the planning page, and the road letter on the soft no only.
         var remote5 = own.Where(s => Rules.IsRemote(s) && s.Chapters.Contains(5) && s.Owner != "EliandraEpilogue").Select(s => s.Id).ToList();
         check(remote5.OrderBy(x => x).SequenceEqual(new[] { E + "ch5.inventory", E + "ch5.road_letter" }),

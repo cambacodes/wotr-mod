@@ -360639,7 +360639,7 @@
       "Title": "Lights over a dry fall",
       "Owner": "Memory",
       "MinChapter": 3,
-      "MaxChapter": 4,
+      "MaxChapter": 3,
       "Entry": "",
       "Nodes": [
         {
@@ -360695,7 +360695,7 @@
         {
           "Id": "sight",
           "Speaker": "Narrator",
-          "Text": "{n}You have spent your life making other people look at the wrong hand. You know how it feels to be done to. Somebody behind that rock is doing it to an entire valley, and doing it beautifully.{/n}\n{n}You cannot get through it. You can only admire it, the way one cardsharp admires another across a table: the patience of it, the craft. Whoever is behind the veil has been there a very long time. The lights overhead, you think, must be what it looks like from outside when something holy keeps a secret.{/n}",
+          "Text": "{n}Whatever the power in you is, it has taught your eyes to notice what they are being steered away from. They are being steered now. Somebody behind that rock is doing to an entire valley what a good cardsharp does to a table, and doing it beautifully.{/n}\n{n}You cannot get through it. You can only admire it, the way one cardsharp admires another across a table: the patience of it, the craft. Whoever is behind the veil has been there a very long time. The lights overhead, you think, must be what it looks like from outside when something holy keeps a secret.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -360799,8 +360799,7 @@
       "Optional": false,
       "Relationship": "eliandra",
       "Chapters": [
-        3,
-        4
+        3
       ],
       "Remote": true,
       "Kind": "memory",
@@ -361414,7 +361413,7 @@
         {
           "Id": "reading",
           "Speaker": "conversant",
-          "Text": "\"My Lady's gift,\" says Eliandra. \"Day or night, the stars are always visible here. It is why we could do our work at all. If we leave, the work of a hundred years is lost; that is what we used to say. And now we are leaving.\" {n}She sets a lens to her eye and does not speak again for some time. Her lips move. Her pen moves. You have watched spies at work, and forgers, and a very good cardsharp in Kenabres, and none of them had hands so steady.{/n}",
+          "Text": "\"My Lady's gift,\" says Eliandra. \"Day or night, the stars are always visible here. It is why we could do our work at all. If we leave, the work of a hundred years is lost; that is what we used to say. And now we are leaving.\" {n}She sets a lens to her eye and does not speak again for some time. Her lips move. Her pen moves. The crusade's best scribes would envy hands so steady.{/n}",
           "Choices": [
             {
               "Text": "[Watch her hands.]",
@@ -363183,7 +363182,47 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The guard room of Pulura's Fall has one table, one lamp and a century of other people's graffiti scratched into the stone above the cots. You sit at the table after the others are asleep with a sheet of paper and a pencil, the way you sit before any operation that matters, and write down what you have.{/n}\n{n}It is not a long list. It is never a long list. Everything you own of any value is either the crusade's, or borrowed, or already promised to somebody.{/n}",
+          "Text": "{n}The guard room of Pulura's Fall has one table, one lamp and a century of other people's graffiti scratched into the stone above the cots. The others are asleep. There is paper on the table, and a pencil.{/n}",
+          "Choices": [
+            {
+              "Text": "[Write down what you have to give, and what it would cost.]",
+              "Next": "list",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Leave the paper blank. Some things are not planned.]",
+              "Next": "blank",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eliandra"
+        },
+        {
+          "Id": "blank",
+          "Speaker": "Narrator",
+          "Text": "{n}You leave the paper blank and lie down on a cot that is too short for anyone, and listen to the shrine settle round you: a door, a cough, the far-off tapping of someone nailing a crate shut in the dark. Whatever you offer at the basin, you will find it there.{/n}",
+          "Choices": [
+            {
+              "Text": "[Sleep.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eliandra"
+        },
+        {
+          "Id": "list",
+          "Speaker": "Narrator",
+          "Text": "{n}It is not a long list. Everything you own of any value is either the crusade's, or borrowed, or already promised to somebody.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -363227,7 +363266,7 @@
         {
           "Id": "rules_guessed",
           "Speaker": "Narrator",
-          "Text": "{n}Under it you write what you remember of her rules, which is not much: something about the open sky, and naming a thing aloud, and gold. Gold, certainly; gold always works. You write down the crusade's treasury and underline it twice.{/n}\n{n}And then, because you are careful, because you always check the lock twice, you go back over the conversation in your head and find a line you had skated over: she has no use for what you would throw away. You look at the treasury. You would throw it at almost anything. You leave the underline, but you add a question mark.{/n}",
+          "Text": "{n}Under it you write what you remember of her rules, which is not much: something about the open sky, and naming a thing aloud, and gold. Gold, certainly; gold always works. You write down the crusade's treasury and underline it twice.{/n}\n{n}And then you go back over the conversation in your head and find a line you had skated over: she has no use for what you would throw away. You look at the treasury. You would throw it at almost anything. You leave the underline, but you add a question mark.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -363303,7 +363342,7 @@
         {
           "Id": "decide",
           "Speaker": "Narrator",
-          "Text": "{n}A careful planner does not make an offering without knowing the price. You write it out plainly, the way you would write the cost of an assault: never to see them again. Not once. Not over Sarkoris in winter, not over whatever is left of the world when the war is done. You read it three times.{/n}\n{n}Then, because you are what you are, you look at it the way a buyer looks at a contract. A goddess who turns eyes aside can take a sight without breaking anything: she need only turn one more pair of eyes. It costs her nothing to collect, and it costs you everything to pay, and that is exactly the kind of price a power accepts. You would ask it yourself, in her place.{/n}\n{n}You fold the paper and hold it over the lamp until it catches, because some plans should not exist in writing, and go to bed.{/n}",
+          "Text": "{n}A careful planner does not make an offering without knowing the price. You write it out plainly, the way you would write the cost of an assault: never to see them again. Not once. Not over Sarkoris in winter, not over whatever is left of the world when the war is done. You read it three times.{/n}\n{n}Then you look at it the way a buyer looks at a contract. A goddess who turns eyes aside can take a sight without breaking anything: she need only turn one more pair of eyes. It costs her nothing to collect, and it costs you everything to pay, and that is exactly the kind of price a power accepts. You would ask it yourself, in her place.{/n}\n{n}You fold the paper and hold it over the lamp until it catches, because some plans should not exist in writing, and go to bed.{/n}",
           "Choices": [
             {
               "Text": "[Sleep on it.]",
@@ -364621,7 +364660,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}They do. The stargazers leave Pulura's Fall in the grey before sunrise: two dozen people, three carts, a mule with a bad temper, and the great bronze basin roped on top of the last cart like a bell. You fall in beside Eliandra at the head of the column where the path from the hidden door comes out onto the scrub below the dry fall.{/n}\n{n}She has changed her white robes for a grey travelling cloak and pinned her hair up under the hood. She looks like any priestess on any road. She walks as if she has not set foot on open ground in a hundred years, which is the truth.{/n}",
+          "Text": "{n}They do. The stargazers leave Pulura's Fall in the grey before sunrise: two dozen people, three carts, a mule with a bad temper, and the great bronze basin roped on top of the last cart like a bell. You fall in beside Eliandra at the head of the column where the path from the hidden door comes out onto the scrub below the dry fall.{/n}\n{n}She has changed her white robes for a grey travelling cloak and pinned her hair up under the hood. She looks like any priestess on any road. She walks as if the open road were a floor that might give way under her; she has not left this valley in a hundred years, which is the truth.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -365332,7 +365371,51 @@
         {
           "Id": "answer",
           "Speaker": "conversant",
-          "Text": "\"No,\" says Eliandra, \"you were not, and you will carry that, and I cannot stop you.\" {n}She stands, with the charts in her arms.{/n} \"I have let my Lady go, Katair. Or she has let me go. The Commander made an offering in my place, and I have made my choice.\" {n}She lifts her chin.{/n} \"I am not going to be ashamed of it in front of you.\"",
+          "Text": "\"No,\" says Eliandra, \"you were not, and you will carry that, and I cannot stop you.\" {n}She stands, with the charts in her arms.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "answer_given",
+              "Set": [],
+              "Requires": [
+                "eliandra.trickster.cost.lights_given"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "answer_self",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.cost.lights_given"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "answer_given",
+          "Speaker": "conversant",
+          "Text": "\"I have let my Lady go, Katair. Or she has let me go. The Commander made an offering in my place, and I have made my choice.\" {n}She lifts her chin.{/n} \"I am not going to be ashamed of it in front of you.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "wrong",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "answer_self",
+          "Speaker": "conversant",
+          "Text": "\"I gave my Lady back her gift, Katair. Myself, at the basin, with nobody's hand but mine. She let me go. And then I made my choice.\" {n}She lifts her chin.{/n} \"I am not the strongest of her servants any more, and I am not going to be ashamed of any of it in front of you.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -365780,6 +365863,16 @@
               "AnyGroups": []
             },
             {
+              "Text": "{n}She asked again, the first spring, as she had said she would. The war had decided by then; what it decided, and whether the Commander walked the road to Iz with her, the chroniclers do not agree. She did not ask a third time. She never needed to.{/n}",
+              "Requires": [
+                "eliandra.trickster.drezen.road_open"
+              ],
+              "Forbids": [
+                "eliandra.trickster.drezen.road_promised"
+              ],
+              "AnyGroups": []
+            },
+            {
               "Text": "{n}Regnard's plain sword hung on the first wall of the new temple at Iz. Every child who asked was told that its owner had wanted to change so badly that he practised with it every night for years, alone, and then used it.{/n}",
               "Requires": [
                 "eliandra.trickster.regnard_swords"
@@ -365985,6 +366078,16 @@
                 "eliandra.trickster.drezen.road_promised"
               ],
               "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She asked again, the first spring, as she had said she would. The war had decided by then; what it decided, and whether the Commander walked the road to Iz with her, the chroniclers do not agree. She did not ask a third time. She never needed to.{/n}",
+              "Requires": [
+                "eliandra.trickster.drezen.road_open"
+              ],
+              "Forbids": [
+                "eliandra.trickster.drezen.road_promised"
+              ],
               "AnyGroups": []
             },
             {
@@ -366197,6 +366300,16 @@
               "AnyGroups": []
             },
             {
+              "Text": "{n}She asked again, the first spring, as she had said she would. The war had decided by then; what it decided, and whether the Commander walked the road to Iz with her, the chroniclers do not agree. She did not ask a third time. She never needed to.{/n}",
+              "Requires": [
+                "eliandra.trickster.drezen.road_open"
+              ],
+              "Forbids": [
+                "eliandra.trickster.drezen.road_promised"
+              ],
+              "AnyGroups": []
+            },
+            {
               "Text": "{n}Regnard's plain sword hung on the first wall of the new temple at Iz. Every child who asked was told that its owner had wanted to change so badly that he practised with it every night for years, alone, and then used it.{/n}",
               "Requires": [
                 "eliandra.trickster.regnard_swords"
@@ -366350,7 +366463,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}Eliandra led the stargazers to the fords and beyond, into what was left of Sarkoris, and gave herself to its revival. She had asked once, on the first mile, and had been answered with a demand she could not meet; she had asked again from the fords, and been answered with nothing. She did not ask a third time. She had said she would not.{/n}\n{n}She was an ordinary priestess now, or near enough, and a busy one. When travellers from Drezen came through her temples she asked after the Commander, briefly and exactly, the way she took an evening's reading, and wrote the answers down.{/n}",
+          "Text": "{n}Eliandra led the stargazers to the fords and beyond, into what was left of Sarkoris, and gave herself to its revival. She had asked once, on the first mile, and had not been given an answer she could take.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -366361,7 +366474,47 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "{n}She asked again from the fords, in writing, and was answered with nothing. She did not ask a third time. She had said she would not.{/n}",
+              "Requires": [
+                "eliandra.trickster.ch5.road_letter"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She had said she would write when she knew where they were. The war moved faster than the stargazers' carts, and whatever she wrote never found the Commander's hands.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.ch5.road_letter"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She was an ordinary priestess now, or near enough, and a busy one, and slept after every healing like anyone else.{/n}",
+              "Requires": [
+                "eliandra.trickster.cost.reward_returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She was still the strongest of her Lady's priestesses, and the busiest; the lights the Commander had given up stood over every temple she opened.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.cost.reward_returned"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}When travellers from Drezen came through her temples she asked after the Commander, briefly and exactly, the way she took an evening's reading, and wrote the answers down.{/n}",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -367464,7 +367617,7 @@
         {
           "Id": "start",
           "Speaker": "Eliandra",
-          "Text": "\"A boy from the Wintersun road with an axe-cut to the thigh. The chaplain was at the walls; someone remembered there was a priestess of some sort at the King's bar.\" {n}Eliandra's hands are clean, but there is blood dried under her nails, and she is sitting very straight in the way of someone who does not trust herself to sit any other way.{/n}\n\"He will keep the leg. It took me the better part of an hour. Once it would have taken me ten breaths, and I would have gone on to the next.\"",
+          "Text": "\"A boy from the Wintersun road with an axe-cut to the thigh. The chaplain was at the walls; someone remembered the priestess from the dry fall.\" {n}Eliandra's hands are clean, but there is blood dried under her nails, and she is sitting very straight in the way of someone who does not trust herself to sit any other way.{/n}\n\"He will keep the leg. It took me the better part of an hour. Once it would have taken me ten breaths, and I would have gone on to the next.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -367604,7 +367757,7 @@
         {
           "Id": "end",
           "Speaker": "Eliandra",
-          "Text": "\"Go and see to your war. I am going to sit here and drink the King's water and let him tell me about his ancestors, and I am going to enjoy being useless for an hour.\" {n}She almost laughs.{/n} \"I have never been useless for an hour in my life. I should like to find out whether I am any good at it.\"",
+          "Text": "\"Go and see to your war. I am going to sit here with a cup of water and watch the street go by, and I am going to enjoy being useless for an hour.\" {n}She almost laughs.{/n} \"I have never been useless for an hour in my life. I should like to find out whether I am any good at it.\"",
           "Choices": [
             {
               "Text": "[Leave her to her hour.]",
@@ -367654,7 +367807,7 @@
         {
           "Id": "start",
           "Speaker": "Eliandra",
-          "Text": "\"A boy from the Wintersun road with an axe-cut to the thigh. The chaplain was at the walls; someone remembered there was a priestess of some sort at the King's bar.\" {n}Eliandra's hands are clean, but there is blood dried under her nails, and she is sitting very straight in the way of someone who does not trust herself to sit any other way.{/n}\n\"He will keep the leg. It took me the better part of an hour. Once it would have taken me ten breaths, and I would have gone on to the next.\"",
+          "Text": "\"A boy from the Wintersun road with an axe-cut to the thigh. The chaplain was at the walls; someone remembered the priestess from the dry fall.\" {n}Eliandra's hands are clean, but there is blood dried under her nails, and she is sitting very straight in the way of someone who does not trust herself to sit any other way.{/n}\n\"He will keep the leg. It took me the better part of an hour. Once it would have taken me ten breaths, and I would have gone on to the next.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -367794,7 +367947,7 @@
         {
           "Id": "end",
           "Speaker": "Eliandra",
-          "Text": "\"Go and see to your war. I am going to sit here and drink the King's water and let him tell me about his ancestors, and I am going to enjoy being useless for an hour.\" {n}She almost laughs.{/n} \"I have never been useless for an hour in my life. I should like to find out whether I am any good at it.\"",
+          "Text": "\"Go and see to your war. I am going to sit here with a cup of water and watch the street go by, and I am going to enjoy being useless for an hour.\" {n}She almost laughs.{/n} \"I have never been useless for an hour in my life. I should like to find out whether I am any good at it.\"",
           "Choices": [
             {
               "Text": "[Leave her to her hour.]",
@@ -367850,7 +368003,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Katair is not sitting down. He stands beside her table with his arms folded and his bow across his back, as he stood at the shrine's door, and when Eliandra gets up and goes to the bar on some errand that is plainly invented, he watches her go and waits until she is out of earshot.{/n}",
+          "Text": "{n}Katair is not sitting down. He stands beside her table with his arms folded and his bow across his back, as he stood at the shrine's door, and when Eliandra gets up and goes off on some errand that is plainly invented, he watches her go and waits until she is out of earshot.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -367930,7 +368083,7 @@
         {
           "Id": "warn",
           "Speaker": "Katair",
-          "Text": "\"No.\" {n}Something almost like humour crosses his face and is gone.{/n} \"She has not been warned off anything since she was thirteen, and it has done her no good at all. I am not going to start now.\" {n}He glances towards the bar.{/n} \"I am telling you what a sacrifice weighs, because she will never tell you what hers weighed. She will say it was nothing. It was not nothing.\"",
+          "Text": "\"No.\" {n}Something almost like humour crosses his face and is gone.{/n} \"She has not been warned off anything since she was thirteen, and it has done her no good at all. I am not going to start now.\" {n}He glances the way she went.{/n} \"I am telling you what a sacrifice weighs, because she will never tell you what hers weighed. She will say it was nothing. It was not nothing.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -367986,7 +368139,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}Eliandra comes back from the bar with three cups of water, sets one in front of each of you, and looks from Katair to you and back with the air of a woman who knows exactly what she has missed and has decided not to ask. Katair drinks his water in one swallow, like brandy, nods to her, and goes.{/n}",
+          "Text": "{n}Eliandra comes back with three cups of water, sets one in front of each of you, and looks from Katair to you and back with the air of a woman who knows exactly what she has missed and has decided not to ask. Katair drinks his water in one swallow, like brandy, nods to her, and goes.{/n}",
           "Choices": [
             {
               "Text": "[Stay with her.]",
@@ -368035,7 +368188,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Katair is not sitting down. He stands beside her table with his arms folded and his bow across his back, as he stood at the shrine's door, and when Eliandra gets up and goes to the bar on some errand that is plainly invented, he watches her go and waits until she is out of earshot.{/n}",
+          "Text": "{n}Katair is not sitting down. He stands beside her table with his arms folded and his bow across his back, as he stood at the shrine's door, and when Eliandra gets up and goes off on some errand that is plainly invented, he watches her go and waits until she is out of earshot.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -368115,7 +368268,7 @@
         {
           "Id": "warn",
           "Speaker": "Katair",
-          "Text": "\"No.\" {n}Something almost like humour crosses his face and is gone.{/n} \"She has not been warned off anything since she was thirteen, and it has done her no good at all. I am not going to start now.\" {n}He glances towards the bar.{/n} \"I am telling you what a sacrifice weighs, because she will never tell you what hers weighed. She will say it was nothing. It was not nothing.\"",
+          "Text": "\"No.\" {n}Something almost like humour crosses his face and is gone.{/n} \"She has not been warned off anything since she was thirteen, and it has done her no good at all. I am not going to start now.\" {n}He glances the way she went.{/n} \"I am telling you what a sacrifice weighs, because she will never tell you what hers weighed. She will say it was nothing. It was not nothing.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -368171,7 +368324,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}Eliandra comes back from the bar with three cups of water, sets one in front of each of you, and looks from Katair to you and back with the air of a woman who knows exactly what she has missed and has decided not to ask. Katair drinks his water in one swallow, like brandy, nods to her, and goes.{/n}",
+          "Text": "{n}Eliandra comes back with three cups of water, sets one in front of each of you, and looks from Katair to you and back with the air of a woman who knows exactly what she has missed and has decided not to ask. Katair drinks his water in one swallow, like brandy, nods to her, and goes.{/n}",
           "Choices": [
             {
               "Text": "[Stay with her.]",
@@ -369038,7 +369191,7 @@
               "Text": "[Leave her to her map.]",
               "Next": null,
               "Set": [
-                "eliandra.trickster.drezen.road_promised"
+                "eliandra.trickster.drezen.road_open"
               ],
               "Requires": [],
               "Forbids": [],
@@ -369156,7 +369309,7 @@
               "Text": "[Leave her to her map.]",
               "Next": null,
               "Set": [
-                "eliandra.trickster.drezen.road_promised"
+                "eliandra.trickster.drezen.road_open"
               ],
               "Requires": [],
               "Forbids": [],
@@ -369222,7 +369375,7 @@
         {
           "Id": "odden",
           "Speaker": "Odden",
-          "Text": "{n}Odden arrives at the table with his beard freshly braided and his cup held very carefully level.{/n}\n\"Commander. A word. Stargazer to commander.\" {n}He clears his throat.{/n} \"I've watched her for a hundred years. Hundred and some. Every evening, the reading. Every morning, the rounds. Never a day off, never a cup of wine, never a word for herself. I thought she was made that way, like a lens is. Ground to it.\"\n\"Then you came, and she took a cup at my table, and now she's sitting in a tavern with her feet very nearly up, asking people questions.\" {n}His eyes are wet.{/n} \"I don't know what you did at that basin. She won't say. I don't need to know.\"",
+          "Text": "{n}Odden arrives at the table with his beard freshly braided and his cup held very carefully level.{/n}\n\"Commander. A word. Stargazer to commander.\" {n}He clears his throat.{/n} \"I've watched her for a hundred years. Hundred and some. Every evening, the reading. Every morning, the rounds. Never a day off, never a cup of wine, never a word for herself. I thought she was made that way, like a lens is. Ground to it.\"\n\"Then you came, and she took a cup at my table, and now she's sitting in Drezen with her feet very nearly up, asking people questions.\" {n}His eyes are wet.{/n} \"I don't know what you did at that basin. She won't say. I don't need to know.\"",
           "Choices": [
             {
               "Text": "\"She did most of it herself.\"",
@@ -369278,7 +369431,7 @@
         {
           "Id": "after",
           "Speaker": "Eliandra",
-          "Text": "{n}Eliandra has her hand over her mouth. When she takes it away she is trying very hard not to laugh.{/n}\n\"He practised that,\" she says. \"On me. Twice. The first version had a verse in it.\" {n}She watches the old dwarf settle back among the barrels.{/n} \"He had a daughter, you know. Ranhild. We never learned what became of her. I think he has decided that since he cannot fuss over her, he will fuss over me. I have decided to let him.\"",
+          "Text": "{n}Eliandra has her hand over her mouth. When she takes it away she is trying very hard not to laugh.{/n}\n\"He practised that,\" she says. \"On me. Twice. The first version had a verse in it.\" {n}She watches the old dwarf settle back beside the cooper.{/n} \"He had a daughter, you know. Ranhild. We never learned what became of her. I think he has decided that since he cannot fuss over her, he will fuss over me. I have decided to let him.\"",
           "Choices": [
             {
               "Text": "\"For the record, it's a fair question. Whether I cheat at cards.\"",
@@ -369386,7 +369539,7 @@
         {
           "Id": "odden",
           "Speaker": "Odden",
-          "Text": "{n}Odden arrives at the table with his beard freshly braided and his cup held very carefully level.{/n}\n\"Commander. A word. Stargazer to commander.\" {n}He clears his throat.{/n} \"I've watched her for a hundred years. Hundred and some. Every evening, the reading. Every morning, the rounds. Never a day off, never a cup of wine, never a word for herself. I thought she was made that way, like a lens is. Ground to it.\"\n\"Then you came, and she took a cup at my table, and now she's sitting in a tavern with her feet very nearly up, asking people questions.\" {n}His eyes are wet.{/n} \"I don't know what you did at that basin. She won't say. I don't need to know.\"",
+          "Text": "{n}Odden arrives at the table with his beard freshly braided and his cup held very carefully level.{/n}\n\"Commander. A word. Stargazer to commander.\" {n}He clears his throat.{/n} \"I've watched her for a hundred years. Hundred and some. Every evening, the reading. Every morning, the rounds. Never a day off, never a cup of wine, never a word for herself. I thought she was made that way, like a lens is. Ground to it.\"\n\"Then you came, and she took a cup at my table, and now she's sitting in Drezen with her feet very nearly up, asking people questions.\" {n}His eyes are wet.{/n} \"I don't know what you did at that basin. She won't say. I don't need to know.\"",
           "Choices": [
             {
               "Text": "\"She did most of it herself.\"",
@@ -369442,7 +369595,7 @@
         {
           "Id": "after",
           "Speaker": "Eliandra",
-          "Text": "{n}Eliandra has her hand over her mouth. When she takes it away she is trying very hard not to laugh.{/n}\n\"He practised that,\" she says. \"On me. Twice. The first version had a verse in it.\" {n}She watches the old dwarf settle back among the barrels.{/n} \"He had a daughter, you know. Ranhild. We never learned what became of her. I think he has decided that since he cannot fuss over her, he will fuss over me. I have decided to let him.\"",
+          "Text": "{n}Eliandra has her hand over her mouth. When she takes it away she is trying very hard not to laugh.{/n}\n\"He practised that,\" she says. \"On me. Twice. The first version had a verse in it.\" {n}She watches the old dwarf settle back beside the cooper.{/n} \"He had a daughter, you know. Ranhild. We never learned what became of her. I think he has decided that since he cannot fuss over her, he will fuss over me. I have decided to let him.\"",
           "Choices": [
             {
               "Text": "\"For the record, it's a fair question. Whether I cheat at cards.\"",

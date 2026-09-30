@@ -197,7 +197,7 @@ page(E + "ch3.chiefs_ground", "Lights over a dry fall", [
        c("[Trust your eyes] Look hard at the thing your eyes keep refusing.", "sight", requires=(SIGHT,)),
        c("[Watch the lights instead.]", "lights"),
        c("[Pack the tablet and go.]", "gone")),
-    pn("sight", '''{n}You have spent your life making other people look at the wrong hand. You know how it feels to be done to. Somebody behind that rock is doing it to an entire valley, and doing it beautifully.{/n}
+    pn("sight", '''{n}Whatever the power in you is, it has taught your eyes to notice what they are being steered away from. They are being steered now. Somebody behind that rock is doing to an entire valley what a good cardsharp does to a table, and doing it beautifully.{/n}
 {n}You cannot get through it. You can only admire it, the way one cardsharp admires another across a table: the patience of it, the craft. Whoever is behind the veil has been there a very long time. The lights overhead, you think, must be what it looks like from outside when something holy keeps a secret.{/n}''',
        c("Continue", "lights")),
     pn("lights", '''{n}So you watched the lights. There was no reason to. There was a war, a king to crown, a cart to load. You sat on a dead chieftain's cairn with your sword across your knees for as long as the colours lasted, and when they faded you felt it in your chest like a door closing.{/n}
@@ -211,7 +211,7 @@ page(E + "ch3.chiefs_ground", "Lights over a dry fall", [
        c("[Let the memory go.]")),
     pn("end", '''{n}The candle in your room in Drezen gutters. Somewhere below the window the King is singing, the tablet is under its cloth, and the light over the chiefs' ground is, presumably, still moving for no one.{/n}''',
        c("[Sleep.]")),
-], requires=("trickster", TABLET), forbids=(E + "ch3.chiefs_ground",), delay=24, chapters=(3, 4), kind="memory", owner="Memory")
+], requires=("trickster", TABLET), forbids=(E + "ch3.chiefs_ground",), delay=24, chapters=(3,), kind="memory", owner="Memory")
 
 
 # --- Chapter 4 (a memory; the Abyss): no lights in a red sky ----------------------------------------------------------------
@@ -300,7 +300,7 @@ shrine(E + "ch5.observe", "The evening reading", '"May I watch your evening obse
     nar("heart", '''{n}The heart of the sanctuary is a round chamber cut from the living rock, with no roof that you can find. Overhead, where a ceiling should be, there are stars. Not painted stars, not a trick of lamps: the true sky, deep and black and burning, though outside it is the middle of the afternoon and the sky over the Worldwound is the colour of a bruise.{/n}
 {n}Instruments stand round the walls under dust-sheets: astrolabes, lenses in brass rings, a great bronze basin brimming with still water in which the stars lie as clearly as they do overhead. Half the charts are already rolled and tied. The rest are pinned out on a long table, weighted at the corners with river stones.{/n}''',
         c("Continue", "reading")),
-    el("reading", '''"My Lady's gift," says Eliandra. "Day or night, the stars are always visible here. It is why we could do our work at all. If we leave, the work of a hundred years is lost; that is what we used to say. And now we are leaving." {n}She sets a lens to her eye and does not speak again for some time. Her lips move. Her pen moves. You have watched spies at work, and forgers, and a very good cardsharp in Kenabres, and none of them had hands so steady.{/n}''',
+    el("reading", '''"My Lady's gift," says Eliandra. "Day or night, the stars are always visible here. It is why we could do our work at all. If we leave, the work of a hundred years is lost; that is what we used to say. And now we are leaving." {n}She sets a lens to her eye and does not speak again for some time. Her lips move. Her pen moves. The crusade's best scribes would envy hands so steady.{/n}''',
        c("[Watch her hands.]", "hands"),
        c("[Watch the sky.]", "sky")),
     nar("hands", '''{n}Her hands are long and ink-stained, very still between movements, and they do not shake once, though she has spent the day washing her dead. When she makes an error she does not cross it out. She writes the correction beside it, small and exact, and leaves the error where it is.{/n}
@@ -546,15 +546,19 @@ shrine(E + "ch5.maiden", "The Shimmering Maiden", '"Tell me about your Lady. Not
 PLANNED = E + "planned"
 
 page(E + "ch5.inventory", "An inventory", [
-    pn("start", '''{n}The guard room of Pulura's Fall has one table, one lamp and a century of other people's graffiti scratched into the stone above the cots. You sit at the table after the others are asleep with a sheet of paper and a pencil, the way you sit before any operation that matters, and write down what you have.{/n}
-{n}It is not a long list. It is never a long list. Everything you own of any value is either the crusade's, or borrowed, or already promised to somebody.{/n}''',
+    pn("start", '''{n}The guard room of Pulura's Fall has one table, one lamp and a century of other people's graffiti scratched into the stone above the cots. The others are asleep. There is paper on the table, and a pencil.{/n}''',
+       c("[Write down what you have to give, and what it would cost.]", "list"),
+       c("[Leave the paper blank. Some things are not planned.]", "blank")),
+    pn("blank", '''{n}You leave the paper blank and lie down on a cot that is too short for anyone, and listen to the shrine settle round you: a door, a cough, the far-off tapping of someone nailing a crate shut in the dark. Whatever you offer at the basin, you will find it there.{/n}''',
+       c("[Sleep.]")),
+    pn("list", '''{n}It is not a long list. Everything you own of any value is either the crusade's, or borrowed, or already promised to somebody.{/n}''',
        c("Continue", "rules_read", requires=(TERMS_READ,)),
        c("Continue", "rules_guessed", forbids=(TERMS_READ,))),
     pn("rules_read", '''{n}Under it you write her rules, the way she told them to you. Under the open stars. Named aloud, once. Something the giver loves. Of the Maiden's own domain: light, the night sky, the far north, the sight of her lights.{/n}
 {n}Then you cross things off. Gold: not hers, and not yours either, strictly. The crusade's luck, such as it is: not hers. Your name, your voice, a year of your life: yours, but not of her domain, and you suspect a goddess of the northern lights has no use for a Trickster's voice. You sit and look at what is left for some time.{/n}''',
        c("Continue", "left")),
     pn("rules_guessed", '''{n}Under it you write what you remember of her rules, which is not much: something about the open sky, and naming a thing aloud, and gold. Gold, certainly; gold always works. You write down the crusade's treasury and underline it twice.{/n}
-{n}And then, because you are careful, because you always check the lock twice, you go back over the conversation in your head and find a line you had skated over: she has no use for what you would throw away. You look at the treasury. You would throw it at almost anything. You leave the underline, but you add a question mark.{/n}''',
+{n}And then you go back over the conversation in your head and find a line you had skated over: she has no use for what you would throw away. You look at the treasury. You would throw it at almost anything. You leave the underline, but you add a question mark.{/n}''',
        c("Continue", "left")),
     pn("left", '''{n}What is left is a memory, and you did not expect it to be on the list at all.{/n}''',
        c("Continue", "cairn", requires=(LIGHTS_SEEN,)),
@@ -566,7 +570,7 @@ page(E + "ch5.inventory", "An inventory", [
 {n}It is the only thing you own that is truly yours and truly hers at the same time. That is not an accident, you think. That is what she meant.{/n}''',
        c("Continue", "decide")),
     pn("decide", '''{n}A careful planner does not make an offering without knowing the price. You write it out plainly, the way you would write the cost of an assault: never to see them again. Not once. Not over Sarkoris in winter, not over whatever is left of the world when the war is done. You read it three times.{/n}
-{n}Then, because you are what you are, you look at it the way a buyer looks at a contract. A goddess who turns eyes aside can take a sight without breaking anything: she need only turn one more pair of eyes. It costs her nothing to collect, and it costs you everything to pay, and that is exactly the kind of price a power accepts. You would ask it yourself, in her place.{/n}
+{n}Then you look at it the way a buyer looks at a contract. A goddess who turns eyes aside can take a sight without breaking anything: she need only turn one more pair of eyes. It costs her nothing to collect, and it costs you everything to pay, and that is exactly the kind of price a power accepts. You would ask it yourself, in her place.{/n}
 {n}You fold the paper and hold it over the lamp until it catches, because some plans should not exist in writing, and go to bed.{/n}''',
        c("[Sleep on it.]", flags=(PLANNED,))),
 ], requires=("trickster", DEAD_NAMED), forbids=(LEAVE, NO_LEAVE, PLANNED), delay=8, kind="event", owner="Commander",
@@ -770,7 +774,7 @@ LETTER_KEPT = E + "letter_kept"           # the road letter kept, its answer res
 
 shrine(E + "ch5.first_mile", "The first mile", '"You leave at first light?"', [
     nar("start", '''{n}They do. The stargazers leave Pulura's Fall in the grey before sunrise: two dozen people, three carts, a mule with a bad temper, and the great bronze basin roped on top of the last cart like a bell. You fall in beside Eliandra at the head of the column where the path from the hidden door comes out onto the scrub below the dry fall.{/n}
-{n}She has changed her white robes for a grey travelling cloak and pinned her hair up under the hood. She looks like any priestess on any road. She walks as if she has not set foot on open ground in a hundred years, which is the truth.{/n}''',
+{n}She has changed her white robes for a grey travelling cloak and pinned her hair up under the hood. She looks like any priestess on any road. She walks as if the open road were a floor that might give way under her; she has not left this valley in a hundred years, which is the truth.{/n}''',
        c("Continue", "lights", requires=(LIGHTS_GIVEN,)),
        c("Continue", "tired", requires=(REWARD_RETURNED,), forbids=(LIGHTS_GIVEN,)),
        c("Continue", "road", forbids=(LIGHTS_GIVEN, REWARD_RETURNED))),
@@ -880,7 +884,12 @@ shrine(E + "visit.star_heart", "The shrine's last night", '"Is the heart still o
 "I was not here," {n}he says.{/n}''',
         c('"She was. She held the rest of them together."', "answer"),
         c("[Say nothing. Let her answer him.]", "answer")),
-    el("answer", '''"No," says Eliandra, "you were not, and you will carry that, and I cannot stop you." {n}She stands, with the charts in her arms.{/n} "I have let my Lady go, Katair. Or she has let me go. The Commander made an offering in my place, and I have made my choice." {n}She lifts her chin.{/n} "I am not going to be ashamed of it in front of you."''',
+    el("answer", '''"No," says Eliandra, "you were not, and you will carry that, and I cannot stop you." {n}She stands, with the charts in her arms.{/n}''',
+       c("Continue", "answer_given", requires=(LIGHTS_GIVEN,)),
+       c("Continue", "answer_self", forbids=(LIGHTS_GIVEN,))),
+    el("answer_given", '''"I have let my Lady go, Katair. Or she has let me go. The Commander made an offering in my place, and I have made my choice." {n}She lifts her chin.{/n} "I am not going to be ashamed of it in front of you."''',
+       c("Continue", "wrong")),
+    el("answer_self", '''"I gave my Lady back her gift, Katair. Myself, at the basin, with nobody's hand but mine. She let me go. And then I made my choice." {n}She lifts her chin.{/n} "I am not the strongest of her servants any more, and I am not going to be ashamed of any of it in front of you."''',
        c("Continue", "wrong")),
     nar("wrong", '''{n}Katair is silent. Then he crosses the room, takes the charts out of her arms, and looks at them.{/n}
 "You have rolled these wrong," {n}he says.{/n} "Every one. The north is on the outside." {n}He hands them back.{/n} "In a hundred years I never once saw you roll a chart wrong."
@@ -983,6 +992,8 @@ EPILOGUE_PARAGRAPHS = (
       requires=(E + "drezen.katair_grave",)),
     p('''{n}The first spring, the Commander walked the road to Iz beside her, as asked and answered. It was ash most of the way, and green in places, and at the old meeting-ground of the elders she stopped and wept for a long time, and then set up a table and began, immediately, to argue with the local priests.{/n}''',
       requires=(E + "drezen.road_promised",)),
+    p('''{n}She asked again, the first spring, as she had said she would. The war had decided by then; what it decided, and whether the Commander walked the road to Iz with her, the chroniclers do not agree. She did not ask a third time. She never needed to.{/n}''',
+      requires=(E + "drezen.road_open",), forbids=(E + "drezen.road_promised",)),
     p('''{n}Regnard's plain sword hung on the first wall of the new temple at Iz. Every child who asked was told that its owner had wanted to change so badly that he practised with it every night for years, alone, and then used it.{/n}''',
       requires=(E + "regnard_swords",)),
     p('''{n}There was always a lamp in her east window, wherever she was living. Lann saw it once, from the road, and did not mention it to anyone, and was seen afterwards on that road rather more often than his errands required.{/n}''',
@@ -1015,9 +1026,18 @@ epilogue("vowed", '''{n}Eliandra, who had given almost her entire life over to d
 {n}She remained the strongest of her Lady's priestesses to the end of her life, and she remained her Lady's alone. Once, near the end of it, a young stargazer asked her whether she had ever regretted her vow. She said that someone had asked her, once, what her Lady took in return, and that she had thought about the question for a great many years afterwards, and had never quite finished.{/n}''',
          requires=(STARTED,), forbids=(LEAVE, NO_LEAVE, CLOSED))
 
-epilogue("declined", '''{n}Eliandra led the stargazers to the fords and beyond, into what was left of Sarkoris, and gave herself to its revival. She had asked once, on the first mile, and had been answered with a demand she could not meet; she had asked again from the fords, and been answered with nothing. She did not ask a third time. She had said she would not.{/n}
-{n}She was an ordinary priestess now, or near enough, and a busy one. When travellers from Drezen came through her temples she asked after the Commander, briefly and exactly, the way she took an evening's reading, and wrote the answers down.{/n}''',
-         requires=(DECLINED,), forbids=(COMMITTED, CLOSED, E + "letter_kept"))
+epilogue("declined", '''{n}Eliandra led the stargazers to the fords and beyond, into what was left of Sarkoris, and gave herself to its revival. She had asked once, on the first mile, and had not been given an answer she could take.{/n}''',
+         requires=(DECLINED,), forbids=(COMMITTED, CLOSED, E + "letter_kept"), paragraphs=(
+    p('''{n}She asked again from the fords, in writing, and was answered with nothing. She did not ask a third time. She had said she would not.{/n}''',
+      requires=(E + "ch5.road_letter",)),
+    p('''{n}She had said she would write when she knew where they were. The war moved faster than the stargazers' carts, and whatever she wrote never found the Commander's hands.{/n}''',
+      forbids=(E + "ch5.road_letter",)),
+    p('''{n}She was an ordinary priestess now, or near enough, and a busy one, and slept after every healing like anyone else.{/n}''',
+      requires=(REWARD_RETURNED,)),
+    p('''{n}She was still the strongest of her Lady's priestesses, and the busiest; the lights the Commander had given up stood over every temple she opened.{/n}''',
+      forbids=(REWARD_RETURNED,)),
+    p('''{n}When travellers from Drezen came through her temples she asked after the Commander, briefly and exactly, the way she took an evening's reading, and wrote the answers down.{/n}'''),
+))
 
 epilogue("closed", '''{n}Eliandra led the last of the stargazers out of Pulura's Fall and into what was left of Sarkoris, and gave the rest of her life to its revival. Temples of Pulura opened their doors again in the ash, and in each of them, at the evening reading, the name of the Commander who had knelt at her basin was spoken among the names of those who had helped her people when no one else knew they existed.{/n}
 {n}Pulura's children remembered, as she had promised. So did she.{/n}''',

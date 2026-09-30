@@ -162,7 +162,7 @@ drezen(E + "drezen.dark_sky", "Lights over the north wall", '"You sent for me. I
 # --- 4. Ordinary (the reward returned): a healing that takes everything ------------------------------------------------
 
 drezen(E + "drezen.ordinary", "One wound at a time", '"You look exhausted. What happened?"', [
-    el("start", '''"A boy from the Wintersun road with an axe-cut to the thigh. The chaplain was at the walls; someone remembered there was a priestess of some sort at the King's bar." {n}Eliandra's hands are clean, but there is blood dried under her nails, and she is sitting very straight in the way of someone who does not trust herself to sit any other way.{/n}
+    el("start", '''"A boy from the Wintersun road with an axe-cut to the thigh. The chaplain was at the walls; someone remembered the priestess from the dry fall." {n}Eliandra's hands are clean, but there is blood dried under her nails, and she is sitting very straight in the way of someone who does not trust herself to sit any other way.{/n}
 "He will keep the leg. It took me the better part of an hour. Once it would have taken me ten breaths, and I would have gone on to the next."''',
        c("Continue", "shrine", requires=(HEALING_SEEN,)),
        c("Continue", "no_shrine", forbids=(HEALING_SEEN,))),
@@ -181,7 +181,7 @@ drezen(E + "drezen.ordinary", "One wound at a time", '"You look exhausted. What 
     nar("hands", '''{n}Her hands are cold and not quite steady. You turn them palm up. The blood under the nails is the boy's, and the ink stain on the second finger of the right hand is a hundred years old, and there is no shimmer on either palm, none at all, only the lines anyone has.{/n}
 {n}Eliandra lets you look. Then she closes her fingers round yours. "They will learn," she says. "They learned to hold a lens. They can learn to be tired."{/n}''',
         c("Continue", "end")),
-    el("end", '''"Go and see to your war. I am going to sit here and drink the King's water and let him tell me about his ancestors, and I am going to enjoy being useless for an hour." {n}She almost laughs.{/n} "I have never been useless for an hour in my life. I should like to find out whether I am any good at it."''',
+    el("end", '''"Go and see to your war. I am going to sit here with a cup of water and watch the street go by, and I am going to enjoy being useless for an hour." {n}She almost laughs.{/n} "I have never been useless for an hour in my life. I should like to find out whether I am any good at it."''',
        c("[Leave her to her hour.]", flags=(ORDINARY,))),
 ], requires=(REWARD_RETURNED,), forbids=(ORDINARY,), delay=24)
 
@@ -189,7 +189,7 @@ drezen(E + "drezen.ordinary", "One wound at a time", '"You look exhausted. What 
 # --- 5. Katair: his own grave at the Stone Tree (Ranger_main Cue_0016-0023) ------------------------------------------------
 
 drezen(E + "drezen.katair", "A name on a tombstone", '"Katair wants a word with me?"', [
-    nar("start", '''{n}Katair is not sitting down. He stands beside her table with his arms folded and his bow across his back, as he stood at the shrine's door, and when Eliandra gets up and goes to the bar on some errand that is plainly invented, he watches her go and waits until she is out of earshot.{/n}''',
+    nar("start", '''{n}Katair is not sitting down. He stands beside her table with his arms folded and his bow across his back, as he stood at the shrine's door, and when Eliandra gets up and goes off on some errand that is plainly invented, he watches her go and waits until she is out of earshot.{/n}''',
         c("Continue", "stone_tree")),
     kt("stone_tree", '''"The others think I went to the Stone Tree to see my wife," says Katair. "Taeriell thought it for seventy years. He died thinking it." {n}His scarred face does not move.{/n}
 "I was married under that tree the spring before the Wound opened. When my Lady hid the shrine we could send no word to our families. None. And I knew Ymris would come looking for me. So I built a grave there, in the first place she would look, and carved my name on the stone, and let her find it."''',
@@ -201,7 +201,7 @@ drezen(E + "drezen.katair", "A name on a tombstone", '"Katair wants a word with 
        c('"Are you warning me off her?"', "warn")),
     kt("looks", '''"It looks like a stone with my name on it, and a woman in Mendev I will never see again, and a mission that ended with a demon walking in through the door." {n}He unfolds his arms.{/n} "It looks like it was worth it. That is the worst of it. It was worth it, and I would do it again, and it is still a grave."''',
        c("Continue", "her")),
-    kt("warn", '''"No." {n}Something almost like humour crosses his face and is gone.{/n} "She has not been warned off anything since she was thirteen, and it has done her no good at all. I am not going to start now." {n}He glances towards the bar.{/n} "I am telling you what a sacrifice weighs, because she will never tell you what hers weighed. She will say it was nothing. It was not nothing."''',
+    kt("warn", '''"No." {n}Something almost like humour crosses his face and is gone.{/n} "She has not been warned off anything since she was thirteen, and it has done her no good at all. I am not going to start now." {n}He glances the way she went.{/n} "I am telling you what a sacrifice weighs, because she will never tell you what hers weighed. She will say it was nothing. It was not nothing."''',
        c("Continue", "her")),
     kt("her", '''"She gave her whole life to my Lady at thirteen. She never once asked for any of it back, and she held the rest of us together for a century while I went out to stand over my own grave. She deserves one thing that is hers."
 {n}He looks at you directly now, and holds it.{/n} "You gave her that. I do not like the way you did it, and I do not understand you, and I am grateful. Do not make me regret it."''',
@@ -210,7 +210,7 @@ drezen(E + "drezen.katair", "A name on a tombstone", '"Katair wants a word with 
     kt("tree", '''{n}Katair looks at your hand as if it were a strange animal. Then he takes it, briefly, hard.{/n}
 "Perhaps," he says. "Someone should tell the stone it can stop pretending. It has been lying for me for a hundred years. It has earned a drink."''',
        c("Continue", "end")),
-    nar("end", '''{n}Eliandra comes back from the bar with three cups of water, sets one in front of each of you, and looks from Katair to you and back with the air of a woman who knows exactly what she has missed and has decided not to ask. Katair drinks his water in one swallow, like brandy, nods to her, and goes.{/n}''',
+    nar("end", '''{n}Eliandra comes back with three cups of water, sets one in front of each of you, and looks from Katair to you and back with the air of a woman who knows exactly what she has missed and has decided not to ask. Katair drinks his water in one swallow, like brandy, nods to her, and goes.{/n}''',
         c("[Stay with her.]", flags=(KATAIR_GRAVE,))),
 ], requires=(), forbids=(KATAIR_GRAVE,), delay=48)
 
@@ -283,7 +283,7 @@ drezen(E + "drezen.road", "The road into Sarkoris", '"Planning the route already
 "There," she says. "That is not a vow. I am done with vows. It is a thing I asked for and was given, which is much better, and much more frightening."''',
        c("[Leave her to her map.]")),
     el("war", '''"No. It does." {n}She does not seem hurt.{/n} "Then I will ask again in the spring, when the war has decided. I am allowed to ask every morning. You agreed to it on the ford road, and I have a very good memory." {n}She rolls the map, carefully.{/n} "But I will leave a place on the road beside me, all the same, and I will not let Odden put the mule in it."''',
-       c("[Leave her to her map.]", flags=(ROAD,))),
+       c("[Leave her to her map.]", flags=(E + "drezen.road_open",))),
 ], requires=(CHART,), forbids=(ROAD,), delay=24)
 
 
@@ -301,7 +301,7 @@ drezen(E + "drezen.odden", "The dwarf and the cooper", '"Odden looks happier tha
        c("[Let him come.]", "odden")),
     od("odden", '''{n}Odden arrives at the table with his beard freshly braided and his cup held very carefully level.{/n}
 "Commander. A word. Stargazer to commander." {n}He clears his throat.{/n} "I've watched her for a hundred years. Hundred and some. Every evening, the reading. Every morning, the rounds. Never a day off, never a cup of wine, never a word for herself. I thought she was made that way, like a lens is. Ground to it."
-"Then you came, and she took a cup at my table, and now she's sitting in a tavern with her feet very nearly up, asking people questions." {n}His eyes are wet.{/n} "I don't know what you did at that basin. She won't say. I don't need to know."''',
+"Then you came, and she took a cup at my table, and now she's sitting in Drezen with her feet very nearly up, asking people questions." {n}His eyes are wet.{/n} "I don't know what you did at that basin. She won't say. I don't need to know."''',
        c('"She did most of it herself."', "herself"),
        c('"What did you want to say, Odden?"', "say")),
     od("herself", '''"She did. She does everything herself. That's the trouble with her." {n}He glares at you with enormous affection.{/n} "But she didn't do this one alone. So."''',
@@ -310,7 +310,7 @@ drezen(E + "drezen.odden", "The dwarf and the cooper", '"Odden looks happier tha
 "That's all. That's the whole speech. I had a longer one, but the wine ate it." {n}He raises his cup to her, and then, after a moment's thought, to you, and drinks, and goes back to the cooper with the air of a dwarf who has discharged a great duty.{/n}''',
        c("Continue", "after")),
     el("after", '''{n}Eliandra has her hand over her mouth. When she takes it away she is trying very hard not to laugh.{/n}
-"He practised that," she says. "On me. Twice. The first version had a verse in it." {n}She watches the old dwarf settle back among the barrels.{/n} "He had a daughter, you know. Ranhild. We never learned what became of her. I think he has decided that since he cannot fuss over her, he will fuss over me. I have decided to let him."''',
+"He practised that," she says. "On me. Twice. The first version had a verse in it." {n}She watches the old dwarf settle back beside the cooper.{/n} "He had a daughter, you know. Ranhild. We never learned what became of her. I think he has decided that since he cannot fuss over her, he will fuss over me. I have decided to let him."''',
        c('"For the record, it\'s a fair question. Whether I cheat at cards."', "cards"),
        c("[Raise your cup to Odden across the room.]", "cup")),
     el("cards", '''"Do you?" {n}Her eyes narrow, with interest rather than disapproval.{/n} "No. Do not answer. I should like there to be one thing about you that I find out for myself. I am told that is how it is done."''',
