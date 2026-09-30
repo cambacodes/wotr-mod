@@ -157,7 +157,8 @@ visit(M + "beat.crew", "Salt", [
         c("Continue", "missed", forbids=(ATE, HARPOONED))),
     mz("ate", '''"You want me to be sorry about the sailors." {n}She tilts her head, considering it, as she might consider an unfamiliar fruit.{/n} "I was hungry, and they were there, and they were salty. I told you by your fire: be angry quickly. You were not angry quickly. You have been angry slowly, all this time, and saying nothing." {n}She sounds curious, not guilty.{/n}
 "So say it now. What do you want for them? I do not know what people want for sailors. Nobody ever asked me for anything for the ones I ate."''',
-        c('"They had families. You paid Greybor in gold. Pay them."', "pay"),
+        c('"They had families. You paid Greybor in gold. Pay them."', "pay", requires=(GREY_CARRIED,)),
+        c('"They had families. You have gold. Pay them."', "pay", forbids=(GREY_CARRIED,)),
         c('"They were sailors. Sailors die. I only wanted you to know I remember them."', "remember"),
         c('"Nothing. But if you ever touch a ship of mine again, I will come to your cave with a harpoon myself."', "threat")),
     mz("pay", '''"*Pay* them." {n}She stares at you. Then she laughs, and stops laughing, and stares at you again.{/n} "Pay for a meal. After I have eaten it. To the people who did not even cook it."
@@ -423,7 +424,7 @@ SCENES.append(scene(M + "ch4.queen_after", "Where is my crown?", "Melazmera", 4,
     queen("trick", '''"You did not *take* anything." {n}She repeats it slowly, the way she might repeat a word in a language she has decided not to learn.{/n} "Then what was the point of going in?"
 {n}She thinks about it. You watch her think about it; it takes a while, and it bubbles.{/n} "Oh! Oh, you are so cunning! You did not take anything *yet*. You are waiting until she trusts you. And then you will take *everything*, and she will not even come home, because she will think it is a present!" {n}She hugs herself, wetly.{/n} "That is almost as clever as me. Almost."''',
         c("Continue", "crown")),
-    queen("talked", '''"*Talked*." {n}The Queen goes so still that the flies land on her.{/n} "She does not talk. She eats. She ate my knights. She ate my slaves. She chewed *me*." {n}Her voice climbs to a wail.{/n} "She never talked to *me*! I am the Queen! I am much more interesting than you!"
+    queen("talked", '''"*Talked*." {n}The Queen goes so still that the flies land on her.{/n} "She does not talk. She eats. She ate my knights. She ate my slaves. She chewed *me*." {n}Her voice climbs to a wail.{/n} "She only ever talked to me about *eating* me! She never sat and listened! I am the Queen! I am much more interesting than you!"
 {n}Then, abruptly, she is sly again.{/n} "Did she say anything about me? She did. She said I was beautiful. She said she was sorry she chewed me." {n}She does not wait for an answer.{/n} "I knew it. Everybody is sorry, in the end."''',
         c("Continue", "crown")),
     queen("crown", '''"So." {n}She sways towards you, and the smell comes with her.{/n} "Where is my crown?"''',
@@ -548,8 +549,9 @@ visit(M + "beat.inquisitor", "Somebody is asking", [
 {n}You do not answer. She watches you not answer, and her smile widens.{/n} "Oh. You are going to lie to him. A priest. In his own voice, with his own god looking. I want to watch."''',
         c("Continue", "after_mine")),
     nar("after_mine", '''{n}You see the inquisitor the next morning in the chapter room, with his notebook open on the table between you. You tell him that seven of Deskari's faithful were moved by your order to a place the Knight Commander does not name, and that the gaoler was not told, and that the book says what it says because you wanted it to.{/n}
-{n}He writes it down. He looks at you for a long time over the notebook, and then at the window behind you, where there is a stone on the sill with one word scored into it, and he closes the notebook and goes away. He does not come back. You are fairly sure he does not believe you, and quite sure he will never ask again.{/n}''',
-        c("Continue", flags=(M + "beat.inquisitor_lied",))),
+{n}He writes it down. He looks at you over the notebook, and then at the window behind you, where there is a stone on the sill with one word scored into it, and he closes the notebook.{/n}
+"Then it is above my office, Knight Commander," {n}he says,{/n} "and I will send it above my office, with everything else I have found, and let my superiors decide what a Knight Commander may move without naming it." {n}He goes away. He does not come back to the cellars. The report goes up the chain the same week, and you cannot stop it, and nothing ever comes back down.{/n}''',
+        c("Continue", flags=(M + "beat.inquisitor_lied", M + "beat.inquisitor_reported"))),
     mz("prove", '''"Nothing he can prove." {n}She repeats it, and giggles.{/n} "Yes. That is the best kind of nothing. I have a whole heap of it." {n}She slides off the desk.{/n}
 "Very well. I will leave him his lamp. But he will look at you, thief, every day, across your castle, with that face. The face of a man who knows there is a thing he cannot prove." {n}She looks back from the window.{/n} "I know that face. I have seen it on a great many knights, just before they touched my crown."''',
         c("Continue", flags=(M + "beat.inquisitor_watched",))),
@@ -572,8 +574,8 @@ visit(M + "beat.putting_down", "A stronger claim", [
         c('"Then give her something so large she can never give it back."', "large"),
         c('"If you eat her, you\'ll never know whether it would have worked."', "know")),
     mz("keep", '''"*Lost*." {n}She looks at you as if you had struck her, and then, slowly, she laughs, and it is not a pleasant sound.{/n} "Yes. I lost. To a woman with a bowl." {n}She puts the copper in the pocket of the gown that is not there, and it vanishes.{/n}
-"I will keep it. I will put it on the heap, next to the lump of star, and every night I will count it, and every night I will remember that something in this city beat me with half a loaf." {n}She stands.{/n} "I am going to sit on the roof across from her well for a year, thief. She will be the safest beggar in the world, and she will never know why she cannot sleep."''',
-        c("Continue", flags=(M + "beat.put_down",))),
+"I will keep it. Not on the heap; the heap is for things I chose. I will wear it, where I can bite it, and every time I bite it I will remember that something in this city beat me with half a loaf." {n}She stands.{/n} "I am going to sit on the roof across from her well for a year, thief. She will be the safest beggar in the world, and she will never know why she cannot sleep."''',
+        c("Continue", flags=(M + "beat.put_down", M + "beat.copper_kept"))),
     mz("large", '''{n}She goes very still. Then her eyes light up like two coals blown on.{/n}
 "So large she can never give it back." {n}She tastes it.{/n} "Then she is mine, and she cannot get out, because she would have to pay first. Oh, thief. That is how you did it to me. A ring was nothing to you. You made it into a thing I could not give back."
 {n}She is on her feet and at the window before you can answer.{/n} "I have a sapphire the size of her head. No; that is too good for her. I have a gold cup from a sunken temple. She will drink her soup out of it for the rest of her life, and every time she lifts it she will know whose she is."''',
@@ -581,4 +583,4 @@ visit(M + "beat.putting_down", "A stronger claim", [
     mz("know", '''{n}She stops turning the coin.{/n} "No," {n}she agrees, slowly.{/n} "If I eat her it is over, and I know nothing. That is what I always did, and I always knew nothing." {n}She looks at the coin as a scholar looks at a strange beetle.{/n}
 "Very well. I will try again. Tomorrow I will open my hand, if I have to hold it open with the other one, and put the coin in her bowl, and see who owns whom at the end of it." {n}She bares her teeth at you.{/n} "If it goes wrong, thief, I am coming back here and eating something of yours. I have not decided what. Something you like."''',
         c("Continue", flags=(M + "beat.put_down",)))],
-    requires=(COMMITTED,), forbids=(M + "beat.put_down",))
+    requires=(COMMITTED, HEAP), forbids=(M + "beat.put_down",))

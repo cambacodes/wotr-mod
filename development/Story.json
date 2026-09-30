@@ -403788,7 +403788,7 @@
         {
           "Id": "speech",
           "Speaker": "Melazmera",
-          "Text": "\"Everything on this island that walks, I have eaten.\" {n}She reaches into your cook-pot with two fingers, fishes out a lump of salt pork, and eats it, still steaming. She does not seem to notice the heat.{/n} \"Goats. Harpies. Diggers. Demons, when they are fat enough to be worth the bother. Everything that ever walked into my cave, I ate, and everything that walked into my cave had come to take something.\"\n\"Nothing ever left me anything.\" {n}She holds up her hand and lets the ring slide down her finger and back.{/n} \"Nothing, in all the years. And then you. You came in with nothing in your hands and went out with less. I have not decided whether to eat you for it.\"",
+          "Text": "\"Everything on my island that walks, I have eaten.\" {n}She reaches into your cook-pot with two fingers, fishes out a lump of salt pork, and eats it, still steaming. She does not seem to notice the heat.{/n} \"Goats. Harpies. Diggers. Demons, when they are fat enough to be worth the bother. Everything that ever walked into my cave, I ate, and everything that walked into my cave had come to take something.\"\n\"Nothing ever left me anything.\" {n}She holds up her hand and lets the ring slide down her finger and back.{/n} \"Nothing, in all the years. And then you. You came in with nothing in your hands and went out with less. I have not decided whether to eat you for it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404025,7 +404025,7 @@
         {
           "Id": "name",
           "Speaker": "Melazmera",
-          "Text": "{n}She stands. The shadow on the rocks stands with her, and goes on standing for some time after she has.{/n}\n\"Melazmera,\" {n}she says, as though laying a coin down on the table between you.{/n} \"That is my name. Nobody on this island has ever needed it. Everything that heard it was already inside me.\"\n\"Do not touch my crown again, thief. If you touch it, I will come home, and I will have to eat you, and I have not finished deciding whether I want to.\" {n}She turns the ring on her finger.{/n} \"So. You put a thing in my hoard. Tell me what I owe you for it, or what you owe me, or what it was, and choose well. I will remember whatever you say for a very long time.\"",
+          "Text": "{n}She stands. The shadow on the rocks stands with her, and goes on standing for some time after she has.{/n}\n\"Melazmera,\" {n}she says, as though laying a coin down on the table between you.{/n} \"That is my name. Nobody on my island has ever needed it. Everything that heard it was already inside me.\"\n\"Do not touch my crown again, thief. If you touch it, I will come home, and I will have to eat you, and I have not finished deciding whether I want to.\" {n}She turns the ring on her finger.{/n} \"So. You put a thing in my hoard. Tell me what I owe you for it, or what you owe me, or what it was, and choose well. I will remember whatever you say for a very long time.\"",
           "Choices": [
             {
               "Text": "\"You ate my crew off the deck of my ship. Now you owe me.\"",
@@ -404326,7 +404326,7 @@
         {
           "Id": "speech",
           "Speaker": "Melazmera",
-          "Text": "\"Everything on this island that walks, I have eaten.\" {n}She reaches into the supper tray on your desk with two fingers, fishes out a lump of salt pork, and eats it, still steaming. She does not seem to notice the heat.{/n} \"Goats. Harpies. Diggers. Demons, when they are fat enough to be worth the bother. Everything that ever walked into my cave, I ate, and everything that walked into my cave had come to take something.\"\n\"Nothing ever left me anything.\" {n}She holds up her hand and lets the ring slide down her finger and back.{/n} \"Nothing, in all the years. And then you. You came in with nothing in your hands and went out with less. I have not decided whether to eat you for it.\"",
+          "Text": "\"Everything on my island that walks, I have eaten.\" {n}She reaches into the supper tray on your desk with two fingers, fishes out a lump of salt pork, and eats it, still steaming. She does not seem to notice the heat.{/n} \"Goats. Harpies. Diggers. Demons, when they are fat enough to be worth the bother. Everything that ever walked into my cave, I ate, and everything that walked into my cave had come to take something.\"\n\"Nothing ever left me anything.\" {n}She holds up her hand and lets the ring slide down her finger and back.{/n} \"Nothing, in all the years. And then you. You came in with nothing in your hands and went out with less. I have not decided whether to eat you for it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404563,7 +404563,7 @@
         {
           "Id": "name",
           "Speaker": "Melazmera",
-          "Text": "{n}She stands. The shadow on the ceiling stands with her, and goes on standing for some time after she has.{/n}\n\"Melazmera,\" {n}she says, as though laying a coin down on the table between you.{/n} \"That is my name. Nobody on this island has ever needed it. Everything that heard it was already inside me.\"\n\"Do not touch my crown again, thief. If you touch it, I will come home, and I will have to eat you, and I have not finished deciding whether I want to.\" {n}She turns the ring on her finger.{/n} \"So. You put a thing in my hoard. Tell me what I owe you for it, or what you owe me, or what it was, and choose well. I will remember whatever you say for a very long time.\"",
+          "Text": "{n}She stands. The shadow on the ceiling stands with her, and goes on standing for some time after she has.{/n}\n\"Melazmera,\" {n}she says, as though laying a coin down on the table between you.{/n} \"That is my name. Nobody on my island has ever needed it. Everything that heard it was already inside me.\"\n\"Do not touch my crown again, thief. If you touch it, I will come home, and I will have to eat you, and I have not finished deciding whether I want to.\" {n}She turns the ring on her finger.{/n} \"So. You put a thing in my hoard. Tell me what I owe you for it, or what you owe me, or what it was, and choose well. I will remember whatever you say for a very long time.\"",
           "Choices": [
             {
               "Text": "\"You ate my crew off the deck of my ship. Now you owe me.\"",
@@ -406444,6 +406444,14 @@
               "AnyGroups": []
             },
             {
+              "Text": "{n}In the archive of the Inquisition there is a report from Drezen, in a careful hand, about seven prisoners of the Knight Commander's who were moved to a place the Knight Commander would not name, and a cold in a cellar that would not come out of the stones. It was sent up the chain in the last year of the war. Nobody ever closed it.{/n}",
+              "Requires": [
+                "melazmera.trickster.beat.inquisitor_reported"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
               "Text": "{n}An inquisitor of Iomedae went down into the cellars under the citadel one morning in the war with a lamp, and did not come up. His acolyte left the order within the year, and would never say why, and would never go below ground again.{/n}",
               "Requires": [
                 "melazmera.trickster.cost.inquisitor"
@@ -406498,7 +406506,15 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}She never learned to share her hoard. She learned, very slowly, and with a great deal of complaint, that the Commander was a hoard of a different kind, and that things were kept in it that were not hers; and she learned to count those too, and to be contemptuous of them, and to leave them alone, most of the time. She said it was the most difficult thing she had ever not eaten.{/n}",
+              "Text": "{n}She wore a worn copper coin on a thread round the woman's neck, the kind that buys half a loaf, and when she was angry she bit it. She never said where it came from. A beggar by the well in the lower town of Drezen could have told, and slept badly for a year, and then very well for the rest of her life.{/n}",
+              "Requires": [
+                "melazmera.trickster.beat.copper_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She never learned to share her hoard, and she never pretended to. What was hers was hers, and she said so, often, to anyone standing near the Commander.{/n}",
               "Requires": [],
               "Forbids": [],
               "AnyGroups": []
@@ -406582,6 +406598,14 @@
               "Text": "{n}A Mendevian lord was paid for his cattle out of the crusade's own chest, eventually, and grudgingly, and never found out where they had gone. His drovers' dogs never went north of the Drezen road again.{/n}",
               "Requires": [
                 "melazmera.trickster.fed.herd"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}In the archive of the Inquisition there is a report from Drezen, in a careful hand, about seven prisoners of the Knight Commander's who were moved to a place the Knight Commander would not name, and a cold in a cellar that would not come out of the stones. It was sent up the chain in the last year of the war. Nobody ever closed it.{/n}",
+              "Requires": [
+                "melazmera.trickster.beat.inquisitor_reported"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -406700,6 +406724,14 @@
               "Text": "{n}A Mendevian lord was paid for his cattle out of the crusade's own chest, eventually, and grudgingly, and never found out where they had gone. His drovers' dogs never went north of the Drezen road again.{/n}",
               "Requires": [
                 "melazmera.trickster.fed.herd"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}In the archive of the Inquisition there is a report from Drezen, in a careful hand, about seven prisoners of the Knight Commander's who were moved to a place the Knight Commander would not name, and a cold in a cellar that would not come out of the stones. It was sent up the chain in the last year of the war. Nobody ever closed it.{/n}",
+              "Requires": [
+                "melazmera.trickster.beat.inquisitor_reported"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -406833,6 +406865,14 @@
               "Text": "{n}A Mendevian lord was paid for his cattle out of the crusade's own chest, eventually, and grudgingly, and never found out where they had gone. His drovers' dogs never went north of the Drezen road again.{/n}",
               "Requires": [
                 "melazmera.trickster.fed.herd"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}In the archive of the Inquisition there is a report from Drezen, in a careful hand, about seven prisoners of the Knight Commander's who were moved to a place the Knight Commander would not name, and a cold in a cellar that would not come out of the stones. It was sent up the chain in the last year of the war. Nobody ever closed it.{/n}",
+              "Requires": [
+                "melazmera.trickster.beat.inquisitor_reported"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -407643,8 +407683,20 @@
               "Text": "\"They had families. You paid Greybor in gold. Pay them.\"",
               "Next": "pay",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "melazmera.trickster.greybor_carried"
+              ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"They had families. You have gold. Pay them.\"",
+              "Next": "pay",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "melazmera.trickster.greybor_carried"
+              ],
               "Abort": false
             },
             {
@@ -409418,7 +409470,7 @@
         {
           "Id": "talked",
           "Speaker": "conversant",
-          "Text": "\"*Talked*.\" {n}The Queen goes so still that the flies land on her.{/n} \"She does not talk. She eats. She ate my knights. She ate my slaves. She chewed *me*.\" {n}Her voice climbs to a wail.{/n} \"She never talked to *me*! I am the Queen! I am much more interesting than you!\"\n{n}Then, abruptly, she is sly again.{/n} \"Did she say anything about me? She did. She said I was beautiful. She said she was sorry she chewed me.\" {n}She does not wait for an answer.{/n} \"I knew it. Everybody is sorry, in the end.\"",
+          "Text": "\"*Talked*.\" {n}The Queen goes so still that the flies land on her.{/n} \"She does not talk. She eats. She ate my knights. She ate my slaves. She chewed *me*.\" {n}Her voice climbs to a wail.{/n} \"She only ever talked to me about *eating* me! She never sat and listened! I am the Queen! I am much more interesting than you!\"\n{n}Then, abruptly, she is sly again.{/n} \"Did she say anything about me? She did. She said I was beautiful. She said she was sorry she chewed me.\" {n}She does not wait for an answer.{/n} \"I knew it. Everybody is sorry, in the end.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -410148,13 +410200,14 @@
         {
           "Id": "after_mine",
           "Speaker": "Narrator",
-          "Text": "{n}You see the inquisitor the next morning in the chapter room, with his notebook open on the table between you. You tell him that seven of Deskari's faithful were moved by your order to a place the Knight Commander does not name, and that the gaoler was not told, and that the book says what it says because you wanted it to.{/n}\n{n}He writes it down. He looks at you for a long time over the notebook, and then at the window behind you, where there is a stone on the sill with one word scored into it, and he closes the notebook and goes away. He does not come back. You are fairly sure he does not believe you, and quite sure he will never ask again.{/n}",
+          "Text": "{n}You see the inquisitor the next morning in the chapter room, with his notebook open on the table between you. You tell him that seven of Deskari's faithful were moved by your order to a place the Knight Commander does not name, and that the gaoler was not told, and that the book says what it says because you wanted it to.{/n}\n{n}He writes it down. He looks at you over the notebook, and then at the window behind you, where there is a stone on the sill with one word scored into it, and he closes the notebook.{/n}\n\"Then it is above my office, Knight Commander,\" {n}he says,{/n} \"and I will send it above my office, with everything else I have found, and let my superiors decide what a Knight Commander may move without naming it.\" {n}He goes away. He does not come back to the cellars. The report goes up the chain the same week, and you cannot stop it, and nothing ever comes back down.{/n}",
           "Choices": [
             {
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "melazmera.trickster.beat.inquisitor_lied"
+                "melazmera.trickster.beat.inquisitor_lied",
+                "melazmera.trickster.beat.inquisitor_reported"
               ],
               "Requires": [],
               "Forbids": [],
@@ -410306,13 +410359,14 @@
         {
           "Id": "keep",
           "Speaker": "Melazmera",
-          "Text": "\"*Lost*.\" {n}She looks at you as if you had struck her, and then, slowly, she laughs, and it is not a pleasant sound.{/n} \"Yes. I lost. To a woman with a bowl.\" {n}She puts the copper in the pocket of the gown that is not there, and it vanishes.{/n}\n\"I will keep it. I will put it on the heap, next to the lump of star, and every night I will count it, and every night I will remember that something in this city beat me with half a loaf.\" {n}She stands.{/n} \"I am going to sit on the roof across from her well for a year, thief. She will be the safest beggar in the world, and she will never know why she cannot sleep.\"",
+          "Text": "\"*Lost*.\" {n}She looks at you as if you had struck her, and then, slowly, she laughs, and it is not a pleasant sound.{/n} \"Yes. I lost. To a woman with a bowl.\" {n}She puts the copper in the pocket of the gown that is not there, and it vanishes.{/n}\n\"I will keep it. Not on the heap; the heap is for things I chose. I will wear it, where I can bite it, and every time I bite it I will remember that something in this city beat me with half a loaf.\" {n}She stands.{/n} \"I am going to sit on the roof across from her well for a year, thief. She will be the safest beggar in the world, and she will never know why she cannot sleep.\"",
           "Choices": [
             {
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "melazmera.trickster.beat.put_down"
+                "melazmera.trickster.beat.put_down",
+                "melazmera.trickster.beat.copper_kept"
               ],
               "Requires": [],
               "Forbids": [],
@@ -410361,7 +410415,8 @@
       "Requires": [
         "trickster.ever",
         "melazmera.trickster.message",
-        "melazmera.committed"
+        "melazmera.committed",
+        "melazmera.trickster.heap_seen"
       ],
       "Forbids": [
         "melazmera.dead.latched",
@@ -414091,8 +414146,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",

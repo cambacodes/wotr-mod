@@ -363,6 +363,19 @@ internal static class MelazmeraTricksterTests
               && !S(P + "epilogue.together").Nodes[0].Text.Contains("gone cold"),
             "The together page states the Wound's fate unconditionally.");
 
+        // The crew's payment names Greybor only where he carried her stone; the copper is recorded and read.
+        var crew = S(P + "beat.crew");
+        Snapshot CW(params string[] f) => World(story, 5, Drezen, new[] { "trickster.ever", Returned, Message, "melazmera.ate_sailors" }.Concat(f).ToArray());
+        var viaGrey = Paths(crew, CW(Carried)).Where(o => o.path.Contains(("ate", 0))).ToList();
+        var viaStone = Paths(crew, CW("greybor.dead")).Where(o => o.path.Contains(("ate", 1))).ToList();
+        check(viaGrey.Count > 0 && viaGrey.All(o => o.state.Has(P + "beat.crew_paid")) && viaStone.Count > 0 && viaStone.All(o => o.state.Has(P + "beat.crew_paid"))
+              && !Paths(crew, CW("greybor.dead")).Any(o => o.path.Contains(("ate", 0))),
+            "The crew's payment recalls Greybor's fee in a world where he never carried her stone.");
+        check(S(P + "beat.putting_down").Requires.Contains(Heap)
+              && S(P + "epilogue.together").Nodes[0].Paragraphs.Any(pg => pg.Requires.Contains(P + "beat.copper_kept"))
+              && !S(P + "epilogue.together").Nodes[0].Paragraphs.Any(pg => pg.Text.Contains("a hoard of a different kind")),
+            "The kept copper is not read by the ending, or the ending settles how she shares.");
+
         // Pages: one per outcome.
         string[] Shown(params string[] flags) => pages.Where(s => Avail(s, World(story, 6, Drezen, flags))).Select(s => s.Id).ToArray();
         check(Shown("trickster.ever", Returned, Committed, StoneKept, Seal).SequenceEqual(new[] { P + "epilogue.together" })

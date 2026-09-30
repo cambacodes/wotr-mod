@@ -366,6 +366,12 @@ def _found_body():
     truce["Text"] = '''{n}She jerks her chin back the way she came, towards her island and its mines, a whole sea of the Abyss away.{/n}
 "The horned one pays me in slaves to leave her diggers alone. A fat one every new moon." {n}She says it the way a merchant speaks of a standing account.{/n} "What becomes of her is not my business. My business is what walks into my cave, and what walks out of it, and where it goes afterwards."'''
     truce["Choices"] = [c("Continue", "name")]
+    for node_id, old, new in (("speech", "Everything on this island that walks", "Everything on my island that walks"),
+                              ("name", "Nobody on this island has ever needed it.", "Nobody on my island has ever needed it.")):
+        node = next(x for x in body if x["Id"] == node_id)
+        if node["Text"].count(old) != 1:
+            raise ValueError("Off-island restaging must hit exactly once: " + old)
+        node["Text"] = node["Text"].replace(old, new)
     return body
 
 
@@ -750,6 +756,7 @@ COMMON = (
     p("{n}Across the Commander's back, from the shoulder nearly to the hip, ran a long pale scar, and when anyone asked, the Commander told them it was a dragon's tail, and they thought it was a lie, which pleased Melazmera very much.{/n}", requires=(LASHED,)),
     p("{n}In the cellars under the citadel of Drezen, the gaoler's book still says that seven of Deskari's faithful escaped one night in the war. The cellar was cold for a week afterwards. Nobody who works there goes down alone.{/n}", requires=(FED_CULTISTS,)),
     p("{n}A Mendevian lord was paid for his cattle out of the crusade's own chest, eventually, and grudgingly, and never found out where they had gone. His drovers' dogs never went north of the Drezen road again.{/n}", requires=(FED_HERD,)),
+    p("{n}In the archive of the Inquisition there is a report from Drezen, in a careful hand, about seven prisoners of the Knight Commander's who were moved to a place the Knight Commander would not name, and a cold in a cellar that would not come out of the stones. It was sent up the chain in the last year of the war. Nobody ever closed it.{/n}", requires=(M + "beat.inquisitor_reported",)),
     p("{n}An inquisitor of Iomedae went down into the cellars under the citadel one morning in the war with a lamp, and did not come up. His acolyte left the order within the year, and would never say why, and would never go below ground again.{/n}", requires=(M + "cost.inquisitor",)),
     p("{n}In the lower town of Drezen, for a generation, there were widows who paid for their bread in square-holed gold stamped with the face of a drowned king, and nobody could ever tell them where it had come from.{/n}", requires=(M + "beat.crew_paid",)),
     p("{n}An airship captain grew old telling the story of the dragon he harpooned over Colyphyr in a tavern by the Drezen gate with a boot painted on its door. Every night of his life, whatever the weather, there was a woman on the roof across the street, watching him through the window. He never noticed her. Everybody else did.{/n}", requires=(M + "beat.captain_spared",)),
@@ -766,7 +773,8 @@ SCENES.append(scene(M + "epilogue.together", "", "MelazmeraEpilogue", 6, "", [
                     p("{n}The grey stone the size of a hen's egg lived in the Commander's pocket for the rest of the Commander's life. It was a sapphire from the crown of a drowned king, and it never once looked like anything but a boring rock, and it was never once cold.{/n}", requires=(STONE_KEPT,)),
                     p("{n}Greybor never took her coin again, though she offered it, several times, on the principle that a thing refused is a thing worth trying for. He said he had worked for worse clients. He said it at great length, to anyone who would listen, and he never once said who.{/n}", requires=(GREY_WARY,)),
                     p("{n}On the morning the Commander rode out to the last battle, there was a flat grey stone on the windowsill with four words scored into it: ONE PIECE. I COUNT.{/n}"),
-                    p("{n}She never learned to share her hoard. She learned, very slowly, and with a great deal of complaint, that the Commander was a hoard of a different kind, and that things were kept in it that were not hers; and she learned to count those too, and to be contemptuous of them, and to leave them alone, most of the time. She said it was the most difficult thing she had ever not eaten.{/n}")))],
+                    p("{n}She wore a worn copper coin on a thread round the woman's neck, the kind that buys half a loaf, and when she was angry she bit it. She never said where it came from. A beggar by the well in the lower town of Drezen could have told, and slept badly for a year, and then very well for the rest of her life.{/n}", requires=(M + "beat.copper_kept",)),
+                    p("{n}She never learned to share her hoard, and she never pretended to. What was hers was hers, and she said so, often, to anyone standing near the Commander.{/n}")))],
     requires=("trickster.ever", COMMITTED), forbids=(CLOSED, DEAD, "sacrifice"), **SAC, **EP))
 tag(M + "epilogue.together")
 
