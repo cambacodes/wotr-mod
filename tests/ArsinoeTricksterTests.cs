@@ -301,6 +301,36 @@ internal static class ArsinoeTricksterTests
             check(seen.Contains("rider") == recalled && seen.Contains("pledge") && res.All(r => r.Has(Collection)), "Wedding routing broken.");
         }
 
+        // Sol r5 COX/BEL: every combination of fate, Last Call, burst and Wound shows one settlement of the account across
+        // all her Trickster epilogue pages: never "paid" beside "still owed", never a live foreclosure after a call-in.
+        foreach (string life in new[] { "alive", "dead", "back" })
+        foreach (string lc in new[] { "none", "active", "called" })
+        foreach (bool burst in new[] { false, true })
+        foreach (bool closedWound in new[] { false, true })
+        {
+            var st = World(story, "trickster.ever", "arsinoe.trickster.primed", "arsinoe.trickster.cost.lien",
+                "arsinoe.trickster.cost.collateral_worldwound", "arsinoe.trickster.cost.collateral_word");
+            st.Chapter = 6;
+            if (life != "alive") st.Flags.Add("sacrifice");
+            if (life == "back") st.Flags.Add("ending.trickster");
+            if (lc != "none") st.Flags.Add("lastcall.active");
+            if (lc == "called") st.Flags.Add("arsinoe.lastcall.called");
+            if (burst) st.Flags.Add("siphon.burst_council");
+            if (closedWound) st.Flags.Add("ending.wound_closed");
+            Rules.Complete(story, st);
+            var text = string.Join(" ", epilogues.Where(e => Rules.Available(story, e, st))
+                .SelectMany(e => e.Nodes).SelectMany(n => new[] { n.Text }.Concat(Rules.VisibleParagraphs(n, st).Select(p => p.Text))));
+            string what = life + "/" + lc + "/burst=" + burst + "/closed=" + closedWound;
+            bool settled = text.Contains("paid by noon") || text.Contains("paid the arrears the next morning") || text.Contains("Released on payment");
+            bool owed = text.Contains("still paying") || text.Contains("not yet foreclosed") || text.Contains("Nobody paid it") || text.Contains("came back unopened");
+            check(!(settled && owed), "Arsinoe's account is both settled and owed: " + what);
+            check(!text.Contains("Account satisfied"), "Wound closure claims the rent account satisfied: " + what);
+            check(lc != "called" || !text.Contains("not yet foreclosed"), "A called-in lien still threatens foreclosure: " + what);
+            check(lc == "none" || !owed, "Last Call leaves the account owed: " + what);
+            bool alive = life != "dead" || lc != "none";
+            check(!text.Contains("The Commander came.") || alive, "A dead Commander answers the called word: " + what);
+        }
+
         // Sol COX/HOW: the courtship spine fits the shared chain ceiling (ledger: 504 h) at its minimum delays.
         string[] spine = { "arsinoe_printers_view", "arsinoe_roofs", "arsinoe_first_impression", "arsinoe_hours_of_her_own",
             "arsinoe_your_hours", "arsinoe_borrowed_court", "arsinoe_price_of_an_evening", "arsinoe_courtyard_company",

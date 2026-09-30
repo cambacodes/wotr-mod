@@ -141,7 +141,7 @@ physical(COLLECTION, "Collateral", '"You wanted to see me about the lease?"', [
 
 
 # The collateral is collected on whichever cauldron page the finale shows (E14c paragraphs).
-WORD_CALLED = ("The Commander's word, pledged as collateral, stayed on her books long after the account itself was closed. "
+WORD_CALLED = ("The Commander's word, pledged as collateral, stayed on her books whatever became of the rest of the account. "
                "Arsinoe called it in exactly once, years later, in a single line on temple vellum: a request for an evening, "
                "at a time of her choosing, with no excuses accepted. The Commander came. She marked the debt paid, and then, "
                "in the margin, reopened it.")
@@ -193,13 +193,24 @@ epilogue("arsinoe.trickster.epilogue.pot_returned", "Returned at the end of the 
           "account. She has never once suggested a discount, and she did not start then.", requires=("lastcall.active",)),
     ) + COLLATERAL)
 epilogue("arsinoe.trickster.epilogue.foreclosure", "A lien on one Worldwound, slightly used",
-    '''{n}Among the records of the Drezen temple of Abadar lies a lien, sealed in gold wax, on "one Worldwound, slightly used". Clerks from Absalom have tried three times to strike it out as a jest. Each time, the clerk who opens the file finds the seal whole and the terms in order, and closes it again rather more quietly than he opened it.{/n}
-{n}The church has not yet foreclosed. Arsinoe says it is a question of choosing the right moment.{/n}''',
-    ("trickster.ever", WOUND), ("ending.wound_closed",))
+    '''{n}Among the records of the Drezen temple of Abadar lies a lien, sealed in gold wax, on "one Worldwound, slightly used". Clerks from Absalom have tried three times to strike it out as a jest. Each time, the clerk who opens the file finds the seal whole and the terms in order, and closes it again rather more quietly than he opened it.{/n}''',
+    ("trickster.ever", WOUND), ("ending.wound_closed",), paragraphs=(
+        # One settlement per history, agreeing with the cauldron page (Sol r5 COX): unsettled, paid at her table, or called in.
+        p("The church has not yet foreclosed. Arsinoe says it is a question of choosing the right moment.",
+          forbids=("lastcall.active", CALLED)),
+        p("It is a released lien. The morning the Commander paid the arrears across her table, Arsinoe wrote \"Released on "
+          "payment\" beneath the seal, and filed it again rather than burn it, because she could not bring herself to destroy "
+          "so good a document.", requires=("lastcall.active",), forbids=(CALLED,)),
+        p("It is a copy. The lease was called in at Threshold and the lien went with it to the First Vault, attached to "
+          "whatever the Wound became. Beneath the seal, in her hand: \"Transferred. Collect there.\"", requires=(CALLED,)),
+    ))
 epilogue("arsinoe.trickster.epilogue.foreclosure_closed", "Collateral withdrawn by closure",
-    '''{n}When the Worldwound closed, Arsinoe took out the lien sealed in gold wax on "one Worldwound, slightly used", and wrote across it, in a very small hand: "Collateral withdrawn by closure. Account satisfied."{/n}
-{n}It is the only entry in her ledger she ever underlined twice.{/n}''',
-    ("trickster.ever", WOUND, "ending.wound_closed"))
+    '''{n}When the Worldwound closed, Arsinoe took out the lien sealed in gold wax on "one Worldwound, slightly used", and wrote across it, in a very small hand: "Collateral withdrawn by closure. Lien discharged."{/n}
+{n}It is the only entry in her ledger she ever underlined twice. The rent was another matter, and another ledger.{/n}''',
+    ("trickster.ever", WOUND, "ending.wound_closed"), paragraphs=(
+        p("The lien itself had gone to the First Vault at Threshold, when the lease was called in; what she discharged in "
+          "Drezen was her copy, and she sent the Vault a note to say so.", requires=(CALLED,)),
+    ))
 
 
 REACTIONS = [
