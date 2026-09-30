@@ -112,7 +112,7 @@ hub(BAD_DAY, "Symptoms", 3, '"Arueshalae?"', [
     a("snap", '''{n}For a moment you think she will take you at your word. Her wings open fully, filling the tent. Then she laughs, a horrible, broken laugh, and folds them again.{/n}
 "You'd let me. You'd actually let me go." {n}She slides down the pole until she is sitting.{/n} "That's what I can't bear about you. Everyone else tries to keep me or kill me. You just stand there and let me choose. Every time." {n}She wipes her eyes with the back of a clawed hand.{/n} "I'm not going. I'm just... I'm having a bad day. Can demons have bad days? I'm having one."''', c()),
     nar("wait", '''{n}You sit down on the floor of the tent, just out of her reach, and say nothing at all. It takes a long time. The nails go first; then, slowly, the wings; last of all, the second voice under her breath.{/n}
-{n}When she speaks again it is only her own voice, small and hoarse.{/n} "You waited. You didn't try to fix it. You didn't make a joke." {n}She sits down opposite you, knees to her chest.{/n} "Put it in the notes. 'Patient had a bad day. Doctor sat on the floor.' I think that might have been the best treatment yet."''', c()),
+{n}When she speaks again it is only her own voice, small and hoarse.{/n} "I watched them flog him. The deserter. Twelve strokes, and I counted every one, and I was sorry when they stopped." {n}She sits down opposite you, knees to her chest.{/n} "Desna sent me back to learn what dreams were, and I spent this morning wanting a man's back opened. Put it in the notes. 'Patient had a bad day. Doctor sat on the floor.' Don't you dare write down that it helped."''', c()),
 ], (RELAPSE,), delay=48, chapters=(3, 4, 5))
 
 
