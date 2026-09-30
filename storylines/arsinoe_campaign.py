@@ -278,7 +278,7 @@ s("arsinoe_the_first_cart", "What the repair leaves behind",
 {n}She turns to you.{/n}
 "How did it look from where you stood?"''',
       c('"People can use a safe passage again. Let that be an improvement."', "heard"),
-      c('"You wanted the whole job done. You are sulking at a limit you set yourself."', "expected")),
+      c('"You wanted the whole job done. You are sulking at a limit you set yourself."', "expected_staged")),
     n("heard", "Arsinoe", '''"Yes. Even a dry step deserves a moment's admiration before I begin on the landing."
 {n}She looks back at the dry tread. A child being led through by an adult hops over it, expecting the familiar splash, and looks disappointed when none comes.{/n}
 "There. We have ruined someone's entertainment."
@@ -295,6 +295,12 @@ s("arsinoe_the_first_cart", "What the repair leaves behind",
 "I do want to go on being asked to supper after I have behaved foolishly," she says. "I am discovering that this is a rather personal ambition."
 "You have not lost your invitation."
 "Good. I was about to ask for one."''',
+      c('"Go home with her."', "home")),
+    n("expected_staged", "Arsinoe", '''"Sulking."
+{n}She looks at the ugly upper landing, then at you, with the expression of a woman who has been caught complaining in public and intends to go on doing it.{/n}
+"I chose the cheaper repair. I know I chose it. I would choose it again, because a gift that keeps growing becomes a tithe. That does not oblige me to admire the landing. It is hideous, and I shall say so every time I climb it."
+{n}She takes your arm for the lower steps anyway.{/n}
+"Walk with me. You may admire it on my behalf."''',
       c('"Go home with her."', "home")),
     n("home", "Arsinoe", '''{n}At her door, Arsinoe stops to free a length of thread caught in the fastening of her cloak. You wait while she pulls it loose. The small delay seems to settle the last of the day's irritation.{/n}
 "Come another evening. I have something I would like to tell you without a broken wall listening."
@@ -517,8 +523,8 @@ s("arsinoe_the_window_opens", "An evening she intends to keep",
 {n}She reaches past you and turns the little stone face toward the wall. Then she takes your hand and puts it at the clasp of her collar, and holds it there, and watches you with those gold eyes until you understand that she means for you to open it.{/n}
 "Slowly. I have waited long enough to be allowed to enjoy the waiting."
 {n}Her robes are the robes of a priestess who has never once been underdressed in public, and there are a great many fastenings. She knows every one of them. She lets you find them yourself, and laughs, low, when one defeats you, and does not help. When the last of them gives, she steps out of the cloth without looking down at it and draws you to the bed by the belt.{/n}
-{n}The lamp is burning low. She does not put it out. She wants to see you, she says, and she is not in the habit of paying for something she has not inspected. Her mouth is warm, her hands are not shy, and she pulls you down onto the bed with her and wraps her legs around you and draws you close, her eyes open the whole time.{/n}
-{n}She is not quiet about what she wants, and she is very precise about it: here, and slower, and *there*, the same voice she uses to correct a clerk's arithmetic, gone low and unsteady at the edges. Her heels press into the backs of your thighs. She catches your face in both hands to keep your eyes on hers, says your name once, as if she has finally decided what it is worth, and brings her hips up to meet you.{/n}
+{n}The lamp is burning low. She does not put it out. She wants to see you, she says, and she wants you to see her; she has not spent all those years choosing robes to be undressed in the dark. Her mouth is warm, her hands are not shy, and she pulls you down onto the bed with her and wraps her legs around you and draws you close, her eyes open the whole time.{/n}
+{n}She is not quiet about what she wants, and she is very precise about it: here, and slower, and *there*, in a voice gone low and unsteady at the edges. Her heels press into the backs of your thighs. She catches your face in both hands to keep your eyes on hers, says your name once, and brings her hips up to meet you.{/n}
 {n}Later, the room is quiet, and the window is open, and Arsinoe's hand finds yours under the cover.{/n}
 "I am glad you asked. I am gladder that I did."
 {n}In the morning she is reluctant to rise until the street becomes too noisy to ignore. She finds something to eat, objects to your account of who took more than a fair share of the cushion, and kisses you in the middle of the argument.{/n}

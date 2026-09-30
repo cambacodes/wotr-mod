@@ -80,6 +80,11 @@ internal static class ArsinoeCampaignTests
                             check(partial.Has("arsinoe.campaign_lover"), "Friendship or slow pace receives a sexual invitation.");
                         if (scene.Id == "arsinoe_where_she_stays" && page == "departure")
                             check(partial.Has("arsinoe.departure_kept"), "Skipped farewell is treated as played history.");
+                        // Sol r3 INT: the loan confession (Senn's debt) is heard only on the loan branch, the landing sulk only on the gift.
+                        if (scene.Id == "arsinoe_the_first_cart" && page == "expected")
+                            check(partial.Has("arsinoe.repair_loan") && !partial.Has("arsinoe.repair_staged"), "The staged gift reaches the loan confession.");
+                        if (scene.Id == "arsinoe_the_first_cart" && page == "expected_staged")
+                            check(partial.Has("arsinoe.repair_staged"), "The loan branch reaches the staged-gift response.");
                     });
                     foreach (var result in results)
                     {
