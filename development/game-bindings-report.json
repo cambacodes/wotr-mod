@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-galfrey\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 3612,
-  "unique_targets": 779,
+  "binding_uses": 3770,
+  "unique_targets": 802,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -116,6 +116,10 @@
     },
     "a1569a0739314d04cb8af1d47dcffbe0": {
       "path": "Units/NPC/Unique/Act_2_SwordOfValor/Warcamp/KaylessaDisguised.jbp",
+      "type": "BlueprintUnit"
+    },
+    "a8b7f6fd39ff2974f8b5fbf944a7f735": {
+      "path": "Units/NPC/Unique/Act_2_SwordOfValor/Warcamp/QueenGalfreyDisguised.jbp",
       "type": "BlueprintUnit"
     },
     "81297c673b63b60448ef88a10db6bc78": {
@@ -405,6 +409,14 @@
     "2a75fbc8e86fd514e82117c99fc9e528": {
       "path": "World/Dialogs/c3/AreeluLaboratory/TargonaWings/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
+    },
+    "44704bddb6223b84989dd26bcf20b601": {
+      "path": "World/Dialogs/c3/Drezen_C3/GalfreyArrives/AnswersList_0004.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "21467e29a21d22b438eac99a34d8c09b": {
+      "path": "World/Dialogs/c3/Drezen_C3/GalfreyArrives/Cue_0066.jbp",
+      "type": "BlueprintCue"
     },
     "d2f3ae3a8d7d0eb4aab722e777b7c260": {
       "path": "World/Dialogs/c3/IvorySanctum/DragonEggs/Cue_0018.jbp",
@@ -1094,6 +1106,22 @@
       "path": "World/Dialogs/c5/DrezenMain_C5/Coronation/Cue_0018.jbp",
       "type": "BlueprintCue"
     },
+    "fed166af2f1d509478d18ea63a40339f": {
+      "path": "World/Dialogs/c5/DrezenMain_C5/Galfrey/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "344bc63f6bbace64fab2a3e6c69561fe": {
+      "path": "World/Dialogs/c5/DrezenMain_C5/Galfrey/Cue_0003.jbp",
+      "type": "BlueprintCue"
+    },
+    "36f61641ac48bb242b831fe30085ef40": {
+      "path": "World/Dialogs/c5/DrezenMain_C5/Galfrey/Cue_0041.jbp",
+      "type": "BlueprintCue"
+    },
+    "c9c1f633ee0f94e45b546c6243e251c2": {
+      "path": "World/Dialogs/c5/DrezenMain_C5/Hulrun/AnswersList_0005.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "09780c4296b211f40b3ef6e34fabffc3": {
       "path": "World/Dialogs/c5/Drezen_Under_Siedge/FreeGraveknightStaunton_Fallen/Cue_0031.jbp",
       "type": "BlueprintCue"
@@ -1105,6 +1133,10 @@
     "b9d78ba896d19b14aa6c371dda617979": {
       "path": "World/Dialogs/c5/Drezen_Under_Siedge/StorytellerDangerousDrezen/Answer_0008.jbp",
       "type": "BlueprintAnswer"
+    },
+    "c0cf7ea6c8f13434fa36671b3b81a2ab": {
+      "path": "World/Dialogs/c5/Drezen_Under_Siedge/StorytellerDangerousDrezen/Cue_0039.jbp",
+      "type": "BlueprintCue"
     },
     "c0fb6762c057bcc4894d1892a9eb22fc": {
       "path": "World/Dialogs/c5/Iz/Anemora/Cue_0146.jbp",
@@ -1134,8 +1166,28 @@
       "path": "World/Dialogs/c5/Iz/GalfreyAfter/Cue_0028.jbp",
       "type": "BlueprintCue"
     },
+    "13487ef288faa30459888cdcce979b51": {
+      "path": "World/Dialogs/c5/Iz/GalfreyOnTheEdge/AnswersList_0019.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "c37c6235f1748b144903529f78462c50": {
       "path": "World/Dialogs/c5/Iz/GalfreyOnTheEdge/Cue_0005.jbp",
+      "type": "BlueprintCue"
+    },
+    "963c942bae94eed4b8928d65cf56bad5": {
+      "path": "World/Dialogs/c5/Iz/GalfreyOnTheEdge/Cue_0011_GalfreyDies.jbp",
+      "type": "BlueprintCue"
+    },
+    "a5e30e29364069446926ff78a73a026d": {
+      "path": "World/Dialogs/c5/Iz/GalfreyOnTheEdge/Cue_0053.jbp",
+      "type": "BlueprintCue"
+    },
+    "a316738673dc6524eaeeb3feda0e9fe7": {
+      "path": "World/Dialogs/c5/Iz/GalfreyOnTheEdge/Cue_0073.jbp",
+      "type": "BlueprintCue"
+    },
+    "95037d694c52c964a8bf7b121b309caa": {
+      "path": "World/Dialogs/c5/Iz/GalfreyOnTheEdge/Cue_0079.jbp",
       "type": "BlueprintCue"
     },
     "09b65ca563cc63141aebf70b7abe7270": {
@@ -1714,6 +1766,18 @@
       "path": "World/Dialogs/NPC_Common/Anevia/Cue_0045.jbp",
       "type": "BlueprintCue"
     },
+    "f1225677b6e455a4db45f2ce77533816": {
+      "path": "World/Dialogs/NPC_Common/Galfrey_Incognito/AnswersList_0005.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "19d217c3503c0304db4bec29c9882bc9": {
+      "path": "World/Dialogs/NPC_Common/Galfrey_Incognito/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "d5133deffe0362548bd2563ee5291eef": {
+      "path": "World/Dialogs/NPC_Common/Galfrey_Incognito/Cue_0004.jbp",
+      "type": "BlueprintCue"
+    },
     "871af36f2ab2b1f40b5de77976c54276": {
       "path": "World/Dialogs/NPC_Common/Irabeth/AnswersList_0009.jbp",
       "type": "BlueprintAnswersList"
@@ -1938,6 +2002,10 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/KyadoTraderInDrezen.jbp",
       "type": "BlueprintEtude"
     },
+    "37a2df11c979ed446b6716142b2b01f5": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/PlayerIsKnightCommanderAfterFane.jbp",
+      "type": "BlueprintEtude"
+    },
     "995f0ac2951bbb041b062806c163fbf1": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/Chapter03_AreasDefault/Wintersun_Default/Wintersun_ForestQuest_Start/BearDead.jbp",
       "type": "BlueprintEtude"
@@ -2052,6 +2120,10 @@
     },
     "a583e4ab47544f5e928fc5b6b7c41e48": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/Chapter05_AreasDefault/Iz_Default/DidntVisitedEvents.jbp",
+      "type": "BlueprintEtude"
+    },
+    "4b3f1b15817e2034f85d7fa7b2a6f20a": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/Chapter05_AreasDefault/Iz_Default/GalfreyGoesToManuscripts.jbp",
       "type": "BlueprintEtude"
     },
     "8c2fdd760cc54b4bb874d2832ff14695": {
@@ -2346,6 +2418,10 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/FornIsDead.jbp",
       "type": "BlueprintEtude"
     },
+    "ac4649451b994be88be421b16be9cd0e": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/HurlunNotInDrezenChapter5.jbp",
+      "type": "BlueprintEtude"
+    },
     "260454e5186fbd34694a0393097f77b5": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/IrabethNotInDrezenCh5_WithGalfrey.jbp",
       "type": "BlueprintEtude"
@@ -2368,6 +2444,22 @@
     },
     "eb30187696a04f99aa194859b13a629e": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Galfrey/GalfreyKilledByCommander.jbp",
+      "type": "BlueprintEtude"
+    },
+    "e9205b9f9e8ecd04c92852d72d09ca86": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Galfrey/Galfrey_Final.jbp",
+      "type": "BlueprintEtude"
+    },
+    "c9358d866e0b3844b8d72536ca60e4b4": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Galfrey/GalfreyRomance/GalfreyRomance_Active.jbp",
+      "type": "BlueprintEtude"
+    },
+    "133f3b1b38f04fa44be3200b786e437f": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Galfrey/GalfreyRomance/GalfreyRomance_Finished.jbp",
+      "type": "BlueprintEtude"
+    },
+    "d7169995e449fdc4db861ddf0b9beff8": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Hurlun/HurlunDead.jbp",
       "type": "BlueprintEtude"
     },
     "7a038ff7b70e91844954407b18e8feb6": {

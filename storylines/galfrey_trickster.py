@@ -204,7 +204,7 @@ SCENES.append(scene(E, "Kitrane of the Green Crows", "Galfrey", 2, '"How is Kitr
     conv("like", '''"Like her." {n}She considers the word as if it had been handed to her on a tray.{/n} "I hardly know her. She is two weeks old. She sleeps under canvas, she queues for her supper, and when she says something foolish nobody writes it down." {n}Her gaze drifts over the camp: a quartermaster shouting, a boy leading two mules, knights of a dozen poor orders mending harness in the drizzle.{/n} "A queen is a thing that is watched. Kitrane is a thing that watches. I had forgotten how much there is to see."''',
         c("Continue", "romance", requires=("galfrey.romance_active",)),
         c("Continue", "ask", forbids=("galfrey.romance_active",))),
-    conv("romance", '''{n}Then her eyes come back to you, and narrow a little.{/n} "Kitrane is also not in the habit of having her hand kissed by her commander in the middle of a supply line. I would take it kindly if you remembered that, in public." {n}A pause, precisely measured.{/n} "In public."''',
+    conv("romance", '''{n}Then her eyes come back to you, and narrow a little.{/n} "Kitrane is also not in the habit of being flirted with by her commander in the middle of a supply line. I would take it kindly if you remembered that, in public." {n}A pause, precisely measured.{/n} "In public."''',
         c("Continue", "ask")),
     conv("ask", '''"But you did not come to ask after my boots." {n}She tilts her head.{/n} "You have the look of someone turning a thing over. Out with it, Commander. I have had a century of courtiers who approach a question by the long road."''',
         c('[As a friend] "Keep her. When this war is done, Kitrane could outlive the Queen. She has earned a longer life."', "mooted",

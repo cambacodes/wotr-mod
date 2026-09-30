@@ -361270,7 +361270,7 @@
         {
           "Id": "romance",
           "Speaker": "conversant",
-          "Text": "{n}Then her eyes come back to you, and narrow a little.{/n} \"Kitrane is also not in the habit of having her hand kissed by her commander in the middle of a supply line. I would take it kindly if you remembered that, in public.\" {n}A pause, precisely measured.{/n} \"In public.\"",
+          "Text": "{n}Then her eyes come back to you, and narrow a little.{/n} \"Kitrane is also not in the habit of being flirted with by her commander in the middle of a supply line. I would take it kindly if you remembered that, in public.\" {n}A pause, precisely measured.{/n} \"In public.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -366065,7 +366065,7 @@
         {
           "Id": "start",
           "Speaker": "Galfrey",
-          "Text": "\"I did.\" {n}She lifts one foot for inspection: stout brown leather, badly stitched at the heel, a size too large.{/n} \"Four silver. The stallholder asked five, I offered three, and he looked at me with such pity that I paid four and thanked him. I have never bought anything in my life, Commander. Somebody else always paid.\" {n}She flexes her toes inside the boot with evident satisfaction.{/n} \"The Crows' paymaster advanced me a month's wage against my good character. Four silver and a lecture on thrift. I have spent the four silver.\"",
+          "Text": "\"I did.\" {n}She lifts one foot for inspection: stout brown leather, badly stitched at the heel, a size too large.{/n} \"Four silver. The stallholder asked five, I offered three, and he looked at me with such pity that I paid four and thanked him. In Nerosyan a steward would have settled it, and I would never have learned the price.\" {n}She flexes her toes inside the boot with evident satisfaction.{/n} \"The Crows' paymaster advanced me a month's wage against my good character. Four silver and a lecture on thrift. I have spent the four silver.\"",
           "Choices": [
             {
               "Text": "\"And the lecture?\"",
@@ -366219,7 +366219,7 @@
         {
           "Id": "start",
           "Speaker": "Galfrey",
-          "Text": "\"I did.\" {n}She lifts one foot for inspection: stout brown leather, badly stitched at the heel, a size too large.{/n} \"Four silver. The stallholder asked five, I offered three, and he looked at me with such pity that I paid four and thanked him. I have never bought anything in my life, Commander. Somebody else always paid.\" {n}She flexes her toes inside the boot with evident satisfaction.{/n} \"The Crows' paymaster advanced me a month's wage against my good character. Four silver and a lecture on thrift. I have spent the four silver.\"",
+          "Text": "\"I did.\" {n}She lifts one foot for inspection: stout brown leather, badly stitched at the heel, a size too large.{/n} \"Four silver. The stallholder asked five, I offered three, and he looked at me with such pity that I paid four and thanked him. In Nerosyan a steward would have settled it, and I would never have learned the price.\" {n}She flexes her toes inside the boot with evident satisfaction.{/n} \"The Crows' paymaster advanced me a month's wage against my good character. Four silver and a lecture on thrift. I have spent the four silver.\"",
           "Choices": [
             {
               "Text": "\"And the lecture?\"",
@@ -371408,7 +371408,7 @@
         {
           "Id": "camp",
           "Speaker": "Galfrey",
-          "Text": "\"In the war camp you tried to kiss my hand, and I told you that if you wanted to impress me, you would have to do better than that. Do you remember?\" {n}She does not wait.{/n} \"You did better. You did a great deal better, over and over, all the way to Drezen and out of it, and I noticed every time, and I told you nothing, because a queen does not.\" {n}Her jaw sets.{/n} \"In Drezen, before the Fane, I stopped you on the stair and asked to speak with you alone. I nearly said it then. I said something about strategy instead.\"",
+          "Text": "\"In the war camp you flirted with me, and I told you that if you wanted to impress me, you would have to do better than that. Do you remember?\" {n}She does not wait.{/n} \"You did better. You did a great deal better, over and over, all the way to Drezen and out of it, and I noticed every time, and I told you nothing, because a queen does not.\" {n}Her jaw sets.{/n} \"In Drezen, before the Fane, I stopped you on the stair and asked to speak with you alone. I nearly said it then. I said something about strategy instead.\"",
           "Choices": [
             {
               "Text": "\"What would you have said?\"",
@@ -371582,7 +371582,7 @@
         {
           "Id": "camp",
           "Speaker": "Galfrey",
-          "Text": "\"In the war camp you tried to kiss my hand, and I told you that if you wanted to impress me, you would have to do better than that. Do you remember?\" {n}She does not wait.{/n} \"You did better. You did a great deal better, over and over, all the way to Drezen and out of it, and I noticed every time, and I told you nothing, because a queen does not.\" {n}Her jaw sets.{/n} \"In Drezen, before the Fane, I stopped you on the stair and asked to speak with you alone. I nearly said it then. I said something about strategy instead.\"",
+          "Text": "\"In the war camp you flirted with me, and I told you that if you wanted to impress me, you would have to do better than that. Do you remember?\" {n}She does not wait.{/n} \"You did better. You did a great deal better, over and over, all the way to Drezen and out of it, and I noticed every time, and I told you nothing, because a queen does not.\" {n}Her jaw sets.{/n} \"In Drezen, before the Fane, I stopped you on the stair and asked to speak with you alone. I nearly said it then. I said something about strategy instead.\"",
           "Choices": [
             {
               "Text": "\"What would you have said?\"",
@@ -377012,7 +377012,7 @@
         {
           "Id": "accept",
           "Speaker": "conversant",
-          "Text": "{n}Something moves behind her eyes that has not moved there in a long while.{/n} \"One plan, told in advance, and kept.\" {n}She says it like terms of surrender.{/n} \"Very well. The Crows' tent, at the ninth bell. Kitrane will be there. If you are late, she will take it as your first broken promise, and she will not wait for a second.\"",
+          "Text": "{n}Something moves behind her eyes that has not moved there in a long while.{/n} \"One plan, told in advance, and kept.\" {n}She says it like terms of surrender.{/n} \"Very well. Carry it out, and then come and tell me how it went. Kitrane will be listening. If you change it on the road without a word, she will take it as your first broken promise, and she will not wait for a second.\"",
           "Choices": [
             {
               "Text": "[Bow to the Queen.]",
@@ -380823,8 +380823,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
