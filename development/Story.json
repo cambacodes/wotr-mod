@@ -365998,7 +365998,51 @@
         {
           "Id": "names",
           "Speaker": "Horzalah",
-          "Text": "{n}She tells you. The quartermaster you have heard of; the lord you have met twice; the priest you know by sight. She watches your face the whole time, as if every flicker on it were a coin being counted.{/n}\n\"There. Now you know, and now you have to decide whether to do anything about it, and every one of them is your problem and not mine.\" {n}She looks delighted.{/n} \"That is the other secret of the Guild, mortal. Knowing is a knife too.\"",
+          "Text": "{n}She tells you. The quartermaster you have heard of; the lord you have met twice; the priest you know by sight. She watches your face the whole time, as if every flicker on it were a coin being counted.{/n}\n\"There. Now you know, and now you have to decide whether to do anything about it, and every one of them is your problem and not mine.\" {n}She looks delighted.{/n}",
+          "Choices": [
+            {
+              "Text": "[Send them warnings] \"Then I'll warn them.\"",
+              "Next": "warn",
+              "Set": [
+                "horzalah.trickster.beat.board_warned"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Leave the contracts alone] \"Your board. Your business.\"",
+              "Next": "leave",
+              "Set": [
+                "horzalah.trickster.beat.board_left"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "warn",
+          "Speaker": "Horzalah",
+          "Text": "\"Warn them.\" {n}She claps her hands once, softly, like a woman at a play.{/n} \"The crusader's conscience. Go on, then. Write your little notes. The Guild has been paid, mortal, and the Guild does not refund. We shall see which of them listens.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "agent",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "leave",
+          "Speaker": "Horzalah",
+          "Text": "\"My board. My business.\" {n}She studies you a while, the way she studies a coin she has been handed in the dark.{/n} \"You could have saved three people with a sentence, and you chose not to spend it. I did not think you had that in you. I will have to think about whether I like it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -366096,6 +366140,124 @@
       ],
       "DelayHours": 24,
       "Optional": true,
+      "Relationship": "horzalah",
+      "Chapters": [
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "ContactUnit": "38f0acf8ba7c3b64b87369d478014fda",
+      "InteractionHub": "horzalah.presence"
+    },
+    {
+      "Id": "horzalah.trickster.beat.names",
+      "Title": "Three names",
+      "Owner": "Horzalah",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"What happened to the three names on your board?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Horzalah",
+          "Text": "\"You want to know.\" {n}She is enjoying this.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "warned",
+              "Set": [],
+              "Requires": [
+                "horzalah.trickster.beat.board_warned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "left",
+              "Set": [],
+              "Requires": [
+                "horzalah.trickster.beat.board_left"
+              ],
+              "Forbids": [
+                "horzalah.trickster.beat.board_warned"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "warned",
+          "Speaker": "Horzalah",
+          "Text": "\"The quartermaster read your note and ran, straight to the Mendevian lord's house, because he owed the lord money and thought the lord would hide him. The lord's wife had him strangled for bringing the Guild to her door, and then paid my masters the rest of her own contract early, out of gratitude.\" {n}She spreads her hands.{/n}\n\"The priest took sanctuary in his own chapel and has not come out. My knife is sitting on his steps, eating his bread. So you saved one of three, mortal, for a while, and killed one who might have lived.\" {n}Her smile is thin.{/n} \"Welcome to my trade.\"",
+          "Choices": [
+            {
+              "Text": "\"And the lord?\"",
+              "Next": "lord",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "lord",
+          "Speaker": "Horzalah",
+          "Text": "\"Alive. His wife is a very careful woman. She will try again next year.\" {n}She shrugs.{/n} \"The Guild will not refund her either.\"",
+          "Choices": [
+            {
+              "Text": "[Take that away with you.]",
+              "Next": null,
+              "Set": [
+                "horzalah.trickster.beat.names_known"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "left",
+          "Speaker": "Horzalah",
+          "Text": "\"All three are dead.\" {n}She says it the way another woman would report the weather.{/n} \"The quartermaster in his bath. The lord at his own table, which his wife enjoyed very much. The priest on his chapel steps, which I think was in poor taste, but the client insisted.\"\n\"You knew their names for two weeks, mortal, and you did nothing. My masters noticed. They think better of you for it.\" {n}She tilts her head.{/n} \"I have not decided whether I do.\"",
+          "Choices": [
+            {
+              "Text": "[Take that away with you.]",
+              "Next": null,
+              "Set": [
+                "horzalah.trickster.beat.names_known"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "horzalah.trickster.wants_heard"
+      ],
+      "Forbids": [
+        "horzalah.closed",
+        "horzalah.trickster.left_free",
+        "horzalah.trickster.beat.names_known"
+      ],
+      "DelayHours": 72,
+      "Optional": true,
+      "RequiresAnyGroups": [
+        [
+          "horzalah.trickster.beat.board_warned",
+          "horzalah.trickster.beat.board_left"
+        ]
+      ],
       "Relationship": "horzalah",
       "Chapters": [
         5
@@ -366548,7 +366710,7 @@
         {
           "Id": "hold",
           "Speaker": "Narrator",
-          "Text": "{n}She stands behind you and corrects your grip with her own fingers over yours, one knuckle at a time. Her claws rest on the backs of your hands, very lightly, and her breath is warm on the scar where your ear was.{/n}\n\"Wrist loose,\" {n}she says.{/n} \"Loose. You are not holding a sword. A sword is a promise that you will hurt somebody. A knife is a secret.\" {n}Her hand closes over yours and moves it in a short, flat arc through the air.{/n} \"There. That is an ear. Now take mine.\"",
+          "Text": "{n}She stands behind you and corrects your grip with her own fingers over yours, one knuckle at a time. Her claws rest on the backs of your hands, very lightly, and her breath is warm on the scar where your ear was.{/n}\n\"Wrist loose,\" {n}she says.{/n} \"Loose. Blade flat along the forearm, so the man in front of you sees an empty hand. Your other hand takes the hair and turns the head, like this, so he cannot see what the first hand is doing.\" {n}Her hand closes over yours and moves it in a short, flat arc through the air.{/n} \"There. That is an ear. You hold it like a butcher's boy. Now take mine.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -367461,7 +367623,95 @@
         {
           "Id": "end",
           "Speaker": "Horzalah",
-          "Text": "\"The dresser is making me a new collar. For the Guild. It will have a ribbon on it, tied badly.\" {n}Her eyes glint.{/n} \"But not here. You may tell your soldiers that. In Drezen, Baphomet's daughter goes about bare-throated, like a woman who has nothing left to be sold for.\"",
+          "Text": "{n}Her fingers brush the bare skin at her throat, and come away.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end_dresser",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "horzalah.trickster.cost.gift_freed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "end_hatter",
+              "Set": [],
+              "Requires": [
+                "horzalah.trickster.cost.gift_freed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "end_dresser",
+          "Speaker": "Horzalah",
+          "Text": "\"The dresser is making me a new collar. For the Guild.\" {n}Her eyes glint.{/n} \"But not here. You may tell your soldiers that. In Drezen, Baphomet's daughter goes about bare-throated, like a woman who has nothing left to be sold for.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end_ribbon",
+              "Set": [],
+              "Requires": [
+                "horzalah.trickster.beat.ribbon_tied"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Tell them.]",
+              "Next": null,
+              "Set": [
+                "horzalah.trickster.beat.collar_bare"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "horzalah.trickster.beat.ribbon_tied"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "end_hatter",
+          "Speaker": "Horzalah",
+          "Text": "\"Your hatter by the west gate is making me a new collar. For the Guild. I am paying him, which he seems to find very funny.\" {n}Her eyes glint.{/n} \"But not here. You may tell your soldiers that. In Drezen, Baphomet's daughter goes about bare-throated, like a woman who has nothing left to be sold for.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end_ribbon",
+              "Set": [],
+              "Requires": [
+                "horzalah.trickster.beat.ribbon_tied"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Tell them.]",
+              "Next": null,
+              "Set": [
+                "horzalah.trickster.beat.collar_bare"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "horzalah.trickster.beat.ribbon_tied"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "end_ribbon",
+          "Speaker": "Horzalah",
+          "Text": "\"It will have a ribbon on it. Tied badly. You know by whom.\"",
           "Choices": [
             {
               "Text": "[Tell them.]",
@@ -367616,14 +367866,41 @@
               "Text": "[Wipe it away with your thumb.]",
               "Next": "thumb",
               "Set": [],
+              "Requires": [
+                "horzalah.committed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Wipe it away with your thumb.]",
+              "Next": "thumb_early",
+              "Set": [],
               "Requires": [],
               "Forbids": [
-                "horzalah.trickster.ally"
+                "horzalah.trickster.ally",
+                "horzalah.committed"
               ],
               "Abort": false
             }
           ],
           "Portrait": ""
+        },
+        {
+          "Id": "thumb_early",
+          "Speaker": "Horzalah",
+          "Text": "{n}Her hand snaps up and closes on your wrist, hard enough to hurt, before your thumb has finished the stroke. For a heartbeat she only holds it there and looks at you.{/n}\n\"Nobody touches my face,\" {n}she says, very quietly.{/n} \"Yozz's guests used to. With rings on.\" {n}She lets go of your wrist, one finger at a time.{/n} \"You had grease on your thumb. I will take that as a mitigating circumstance. This once.\"",
+          "Choices": [
+            {
+              "Text": "\"Same time tomorrow?\"",
+              "Next": "tomorrow",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
         },
         {
           "Id": "grease",
@@ -368559,7 +368836,8 @@
               "Text": "\"Next time I'll look.\"",
               "Next": null,
               "Set": [
-                "horzalah.trickster.beat.cup_drunk"
+                "horzalah.trickster.beat.cup_drunk",
+                "horzalah.trickster.beat.cup_sick"
               ],
               "Requires": [],
               "Forbids": [],
@@ -368595,7 +368873,8 @@
               "Text": "[Finish your wine.]",
               "Next": null,
               "Set": [
-                "horzalah.trickster.beat.cup_drunk"
+                "horzalah.trickster.beat.cup_drunk",
+                "horzalah.trickster.beat.cup_dreams"
               ],
               "Requires": [],
               "Forbids": [],
@@ -368636,6 +368915,77 @@
       "MaxChapter": 5,
       "Entry": "\"You're frowning at me.\"",
       "Nodes": [
+        {
+          "Id": "opening",
+          "Speaker": "Horzalah",
+          "Text": "{n}She looks you over before she answers.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "sick",
+              "Set": [],
+              "Requires": [
+                "horzalah.trickster.beat.cup_sick"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "dreams",
+              "Set": [],
+              "Requires": [
+                "horzalah.trickster.beat.cup_dreams"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "start",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "horzalah.trickster.beat.cup_sick",
+                "horzalah.trickster.beat.cup_dreams"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "sick",
+          "Speaker": "Horzalah",
+          "Text": "\"You have your colour back. The quartermaster told my people you were sick in a bucket until the second bell and blamed the cook.\" {n}She sounds pleased.{/n} \"You did not blame me. Nobody has ever not blamed me before. It has been bothering me.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "start",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "dreams",
+          "Speaker": "Horzalah",
+          "Text": "\"Did you dream?\" {n}She does not wait for an answer.{/n} \"I did. You were in it, holding two cups, and you would not drink either of them. I woke up furious.\" {n}Her eyes narrow.{/n} \"That was your fault, and I have not decided what it costs.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "start",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
         {
           "Id": "start",
           "Speaker": "Horzalah",
@@ -368764,7 +369114,8 @@
       "Requires": [
         "trickster.ever",
         "horzalah.trickster.wants_heard",
-        "horzalah.trickster.tested"
+        "horzalah.trickster.tested",
+        "horzalah.trickster.beat.cup_drunk"
       ],
       "Forbids": [
         "horzalah.closed",
@@ -369188,7 +369539,7 @@
         {
           "Id": "now",
           "Speaker": "Horzalah",
-          "Text": "\"Now?\" {n}She considers you, head tilted.{/n} \"Now I am wondering which of us is the tool. You lay bleeding on the ground and told me a story that saved my Guild, and I went home and told it, and it worked. I have been using your ear to rule my masters for weeks.\"\n\"And you have been using me to make a Guild of assassins decline every contract on your head in the Midnight Isles.\" {n}Her mouth curves.{/n} \"It is a very good arrangement. It is the first one I have ever made where I cannot work out who is cheating whom.\"",
+          "Text": "\"Now?\" {n}She considers you, head tilted.{/n} \"Now I am wondering which of us is the tool. You offered me a story when I had nothing left, and then you bled for it, and I went home and told it, and it worked. I have been using your ear to rule my masters for weeks.\"\n\"And you have been using me to make a Guild of assassins decline every contract on your head in the Midnight Isles.\" {n}Her mouth curves.{/n} \"It is a very good arrangement. It is the first one I have ever made where I cannot work out who is cheating whom.\"",
           "Choices": [
             {
               "Text": "\"Nobody's cheating.\"",
@@ -373165,8 +373516,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",

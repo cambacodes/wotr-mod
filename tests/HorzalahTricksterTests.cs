@@ -388,10 +388,26 @@ internal static class HorzalahTricksterTests
               && reactions.Where(s => s.Owner == "Greybor").All(s => s.Requires.Contains("greybor.in_party") && s.Forbids.Contains("greybor.dead")),
             "A reactor speaks without being with the Commander, or after a native death.");
 
+        // Choices in the courtship leave traces: the board's names, the poisoned cup, the touch before and after her yes.
+        var namesBeat = beats.Single(s => s.Id == P + "beat.names");
+        var warned = World(story, 5, "trickster.ever", Wants, P + "beat.board_heard", P + "beat.board_warned");
+        var left = World(story, 5, "trickster.ever", Wants, P + "beat.board_heard", P + "beat.board_left");
+        check(Take(namesBeat, Later(story, warned, 72), "lord", 0, P + "beat.names_known").Has(P + "beat.board_warned")
+              && Take(namesBeat, Later(story, left, 72), "left", 0, P + "beat.names_known").Has(P + "beat.board_left")
+              && !Avail(namesBeat, Later(story, World(story, 5, "trickster.ever", Wants, P + "beat.board_heard"), 72)),
+            "The names on her board lead nowhere, or lead to the same place whatever the Commander did.");
+        var question = beats.Single(s => s.Id == P + "beat.question");
+        check(Through(question, Later(story, World(story, 5, "trickster.ever", Wants, Tested, P + "beat.cup_drunk", P + "beat.cup_sick"), 48), "opening", 0).Any()
+              && Through(question, Later(story, World(story, 5, "trickster.ever", Wants, Tested, P + "beat.cup_drunk", P + "beat.cup_dreams"), 48), "opening", 1).Any(),
+            "The poisoned cup is forgotten the next time she speaks to the Commander.");
+        var hunger = beats.Single(s => s.Id == P + "beat.hunger").Nodes.Single(n => n.Id == "eat").Choices;
+        check(hunger.Single(c => c.Next == "thumb").Requires.Contains(Committed) && hunger.Single(c => c.Next == "thumb_early").Forbids.Contains(Committed),
+            "Her remark about being taught to wait comes before she taught it.");
+
         // Courtship: every beat and letter is reachable on some road.
-        check(beats.Length == 27 && letters.Length == 2 && letters.All(s => Rules.IsRemote(s) && s.Kind == "letter" && s.Chapters.SequenceEqual(new[] { 5 }))
+        check(beats.Length == 28 && letters.Length == 2 && letters.All(s => Rules.IsRemote(s) && s.Kind == "letter" && s.Chapters.SequenceEqual(new[] { 5 }))
               && beats.All(s => s.ContactUnit == Unit && s.InteractionHub == "horzalah.presence" && s.Optional),
-            "Horzalah's courtship is not twenty-seven beats on her presence and two Chapter 5 letters.");
+            "Horzalah's courtship is not twenty-eight beats on her presence and two Chapter 5 letters.");
         var reachedIds = new HashSet<string>();
         void Play(Snapshot start, int chapter, int rounds, params string[] avoid)
         {
@@ -430,7 +446,7 @@ internal static class HorzalahTricksterTests
               && giftNight.DelayHours == gift.DelayHours && moveNight.DelayHours == move.DelayHours && collarNight.DelayHours == collar.DelayHours,
             "The refusal road to her commit is longer than 168 hours.");
         var road = World(story, 5, "trickster", "trickster.ever", "greybor.in_party", "horzalah.met_q3_a", "baphomet.named_horzalah", "baphomet.parley",
-            "horzalah.gift_delivered", "hepzamirah.trickster.returned", "horzalah.met_q2", P + "scar_noted", P + "cost.late");
+            "horzalah.gift_delivered", "hepzamirah.trickster.returned", "horzalah.met_q2", P + "scar_noted", P + "cost.late", P + "beat.board_warned");
         Play(road, 5, 20, Ally, LeftFree, Declined, P + "threatened");
         Play(World(story, 5, "trickster", "trickster.ever", Primed, Ear, Returned, Wants, Ally), 5, 6);
         Play(World(story, 6, "trickster", "trickster.ever", Primed, Ear, Returned, Wants, Tested, Committed, Chamber), 6, 2);

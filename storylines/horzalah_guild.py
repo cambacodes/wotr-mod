@@ -45,6 +45,11 @@ QUESTION = H + "beat.question_asked"
 SECOND_NIGHT = H + "beat.second_night"
 SENTRIES = H + "beat.sentries_walked"
 USED = H + "beat.used_heard"
+BOARD_WARNED = H + "beat.board_warned"   # the Commander warned the three names on her board
+BOARD_LEFT = H + "beat.board_left"       # the Commander left the contracts alone
+CUP_SICK = H + "beat.cup_sick"           # guessed wrong: sick until the second bell
+CUP_DREAMS = H + "beat.cup_dreams"       # the clever answer: both cups, bad dreams
+NAMES_KNOWN = H + "beat.names_known"
 MASTERS = H + "beat.masters_heard"
 STOOD = H + "beat.stood_heard"
 
@@ -52,9 +57,10 @@ GREY_DEAD = "greybor.dead"
 GREY_KICKED = "greybor.kicked_out"
 
 
-def beat(id, title, entry, nodes, requires, forbids=(), delay=24):
+def beat(id, title, entry, nodes, requires, forbids=(), delay=24, any_groups=()):
     """An optional beat on her presence by the Storyteller (Chapter 5)."""
-    SCENES.append(scene(id, title, "Horzalah", 5, entry, nodes,
+    extra = dict(RequiresAnyGroups=[list(g) for g in any_groups]) if any_groups else {}
+    SCENES.append(scene(id, title, "Horzalah", 5, entry, nodes, **extra,
                         requires=("trickster.ever", WANTS, *requires), forbids=(CLOSED, LEFT_FREE, *forbids), delay=delay,
                         last=5, optional=True, Relationship=REL, Chapters=[5], Areas=[DREZEN], ContactUnit=UNIT,
                         InteractionHub=PRESENCE))
@@ -245,7 +251,12 @@ beat(H + "beat.board", "The notice board", '"How does your Guild work, exactly?"
        c('"Tell me."', "names"),
        c('"No. Your business is your business."', "agent")),
     hz("names", '''{n}She tells you. The quartermaster you have heard of; the lord you have met twice; the priest you know by sight. She watches your face the whole time, as if every flicker on it were a coin being counted.{/n}
-"There. Now you know, and now you have to decide whether to do anything about it, and every one of them is your problem and not mine." {n}She looks delighted.{/n} "That is the other secret of the Guild, mortal. Knowing is a knife too."''',
+"There. Now you know, and now you have to decide whether to do anything about it, and every one of them is your problem and not mine." {n}She looks delighted.{/n}''',
+       c('[Send them warnings] "Then I\'ll warn them."', "warn", flags=(BOARD_WARNED,)),
+       c('[Leave the contracts alone] "Your board. Your business."', "leave", flags=(BOARD_LEFT,))),
+    hz("warn", '''"Warn them." {n}She claps her hands once, softly, like a woman at a play.{/n} "The crusader's conscience. Go on, then. Write your little notes. The Guild has been paid, mortal, and the Guild does not refund. We shall see which of them listens."''',
+       c("Continue", "agent")),
+    hz("leave", '''"My board. My business." {n}She studies you a while, the way she studies a coin she has been handed in the dark.{/n} "You could have saved three people with a sentence, and you chose not to spend it. I did not think you had that in you. I will have to think about whether I like it."''',
        c("Continue", "agent")),
     hz("agent", '''"And you have been wondering, all this time, who in your city writes to me." {n}She has not stopped smiling.{/n} "The dwarf worked out there was someone. He was right. There is more than one."''',
        c('"Tell me who."', "agent_who"),
@@ -257,6 +268,21 @@ beat(H + "beat.board", "The notice board", '"How does your Guild work, exactly?"
     hz("agent_keep", '''{n}She tilts her head, as if she had expected an argument and been denied it.{/n} "Only watch. Yes. They only watch. It would be very bad manners for a guest to kill the host's servants." {n}A beat.{/n} "I am a very well-mannered guest."''',
        c("[Take that for what it's worth.]", flags=(BOARD,))),
 ], requires=(TESTED,), forbids=(BOARD,), delay=24)
+
+
+beat(H + "beat.names", "Three names", '"What happened to the three names on your board?"', [
+    hz("start", '''"You want to know." {n}She is enjoying this.{/n}''',
+       c("Continue", "warned", requires=(BOARD_WARNED,)),
+       c("Continue", "left", requires=(BOARD_LEFT,), forbids=(BOARD_WARNED,))),
+    hz("warned", '''"The quartermaster read your note and ran, straight to the Mendevian lord's house, because he owed the lord money and thought the lord would hide him. The lord's wife had him strangled for bringing the Guild to her door, and then paid my masters the rest of her own contract early, out of gratitude." {n}She spreads her hands.{/n}
+"The priest took sanctuary in his own chapel and has not come out. My knife is sitting on his steps, eating his bread. So you saved one of three, mortal, for a while, and killed one who might have lived." {n}Her smile is thin.{/n} "Welcome to my trade."''',
+       c('"And the lord?"', "lord")),
+    hz("lord", '''"Alive. His wife is a very careful woman. She will try again next year." {n}She shrugs.{/n} "The Guild will not refund her either."''',
+       c("[Take that away with you.]", flags=(NAMES_KNOWN,))),
+    hz("left", '''"All three are dead." {n}She says it the way another woman would report the weather.{/n} "The quartermaster in his bath. The lord at his own table, which his wife enjoyed very much. The priest on his chapel steps, which I think was in poor taste, but the client insisted."
+"You knew their names for two weeks, mortal, and you did nothing. My masters noticed. They think better of you for it." {n}She tilts her head.{/n} "I have not decided whether I do."''',
+       c("[Take that away with you.]", flags=(NAMES_KNOWN,))),
+], requires=(), any_groups=((BOARD_WARNED, BOARD_LEFT),), forbids=(NAMES_KNOWN,), delay=72)
 
 
 # --- 7. The Lady in Shadow's city. -----------------------------------------------------------------------------------------
@@ -325,7 +351,7 @@ beat(H + "beat.knife", "Hold it like this", '"Show me how you do it."', [
 "Oh. That." {n}She follows your eyes to the side of your head.{/n} "You want to know how I took it without taking half your scalp with it. You want a lesson." {n}She flips the knife over and holds it out, hilt first.{/n} "Very well. Take it. Not like that. You hold it like a quill. You are going to cut someone, mortal, not write them a letter."''',
        c("[Hold it the way she shows you.]", "hold")),
     nar("hold", '''{n}She stands behind you and corrects your grip with her own fingers over yours, one knuckle at a time. Her claws rest on the backs of your hands, very lightly, and her breath is warm on the scar where your ear was.{/n}
-"Wrist loose," {n}she says.{/n} "Loose. You are not holding a sword. A sword is a promise that you will hurt somebody. A knife is a secret." {n}Her hand closes over yours and moves it in a short, flat arc through the air.{/n} "There. That is an ear. Now take mine."''',
+"Wrist loose," {n}she says.{/n} "Loose. Blade flat along the forearm, so the man in front of you sees an empty hand. Your other hand takes the hair and turns the head, like this, so he cannot see what the first hand is doing." {n}Her hand closes over yours and moves it in a short, flat arc through the air.{/n} "There. That is an ear. You hold it like a butcher's boy. Now take mine."''',
         c("Continue", "take")),
     hz("take", '''{n}She steps round in front of you, and draws a second knife from somewhere in her collar, and holds it loosely at her side.{/n}
 "Take my knife off me. Not my ear, mortal; I am fond of my ears. My knife. If you get it, I will tell you a secret. If you do not, I will leave a mark somewhere you will have to explain to your quartermaster."''',
@@ -465,7 +491,16 @@ beat(H + "beat.bare", "Bare", '"You\'re not wearing the collar."', [
     hz("look", '''{n}You look at her. Her face, which is proud and bony and a little hungry, as it always is; her eyes, which are watching you watch her. Not the scar.{/n}
 {n}After a while she lets out a breath through her nose, the kind that is almost a laugh.{/n} "You are still doing it," {n}she says.{/n} "In Yozz's hall, you looked at it and not at the seals. Now you look at me and not at it. You are a very contrary sort of mortal."''',
        c("Continue", "end")),
-    hz("end", '''"The dresser is making me a new collar. For the Guild. It will have a ribbon on it, tied badly." {n}Her eyes glint.{/n} "But not here. You may tell your soldiers that. In Drezen, Baphomet's daughter goes about bare-throated, like a woman who has nothing left to be sold for."''',
+    hz("end", '''{n}Her fingers brush the bare skin at her throat, and come away.{/n}''',
+       c("Continue", "end_dresser", forbids=(FREED,)),
+       c("Continue", "end_hatter", requires=(FREED,))),
+    hz("end_dresser", '''"The dresser is making me a new collar. For the Guild." {n}Her eyes glint.{/n} "But not here. You may tell your soldiers that. In Drezen, Baphomet's daughter goes about bare-throated, like a woman who has nothing left to be sold for."''',
+       c("Continue", "end_ribbon", requires=(P_RIBBON,)),
+       c("[Tell them.]", flags=(BARE,), forbids=(P_RIBBON,))),
+    hz("end_hatter", '''"Your hatter by the west gate is making me a new collar. For the Guild. I am paying him, which he seems to find very funny." {n}Her eyes glint.{/n} "But not here. You may tell your soldiers that. In Drezen, Baphomet's daughter goes about bare-throated, like a woman who has nothing left to be sold for."''',
+       c("Continue", "end_ribbon", requires=(P_RIBBON,)),
+       c("[Tell them.]", flags=(BARE,), forbids=(P_RIBBON,))),
+    hz("end_ribbon", '''"It will have a ribbon on it. Tied badly. You know by whom."''',
        c("[Tell them.]", flags=(BARE,))),
 ], requires=(CHAMBER,), forbids=(BARE,), delay=36)
 
@@ -489,7 +524,11 @@ beat(H + "beat.hunger", "Thin", '"When did you last eat?"', [
     nar("eat", '''{n}She eats the way people eat who have been hungry for years and will not let anyone see it: small bites, very fast, her shoulders hunched round the food, her eyes on the street the whole time in case someone comes to take it. The sausage goes first. Then the bread, all of it, down to the crumbs, which she picks off her leathers with a licked fingertip.{/n}
 {n}When she turns back her face is perfectly composed, and there is a smear of grease at the corner of her mouth that she does not know about.{/n}''',
         c("[Tell her about the grease.]", "grease"),
-        c("[Wipe it away with your thumb.]", "thumb", forbids=(ALLY,))),
+        c("[Wipe it away with your thumb.]", "thumb", requires=(COMMITTED,)),
+       c("[Wipe it away with your thumb.]", "thumb_early", forbids=(ALLY, COMMITTED))),
+    hz("thumb_early", '''{n}Her hand snaps up and closes on your wrist, hard enough to hurt, before your thumb has finished the stroke. For a heartbeat she only holds it there and looks at you.{/n}
+"Nobody touches my face," {n}she says, very quietly.{/n} "Yozz's guests used to. With rings on." {n}She lets go of your wrist, one finger at a time.{/n} "You had grease on your thumb. I will take that as a mitigating circumstance. This once."''',
+       c('"Same time tomorrow?"', "tomorrow")),
     hz("grease", '''"Where?" {n}She wipes the wrong side, and then the right one, and glares at you as if it were your fault.{/n} "You will not mention this to anyone. Not the dwarf. Not the old elf. If my masters hear that Baphomet's daughter eats sausage off a crusader's hand in the street, I will have to kill all of them, and it will take a week."''',
        c('"Same time tomorrow?"', "tomorrow")),
     hz("thumb", '''{n}She goes absolutely still when your thumb touches her mouth. For a heartbeat you think you have made a mistake, and then her lips part, very slightly, and she lets you do it.{/n}
@@ -638,19 +677,27 @@ beat(H + "beat.cup", "A cup of wine", '"Is that for me?"', [
     hz("guessed", '''{n}They look exactly the same. You pick one. She raises her eyebrows, and drinks the other, and waits.{/n}
 {n}Half an hour later you are sitting on the Storyteller's step with your head in your hands and the street going round you slowly, like a wheel. She sits beside you, not touching you, reading one of his books upside down.{/n}
 "You guessed," {n}she says.{/n} "Guessing is the wrong answer. It will pass by morning. Next time, look."''',
-       c('"Next time I\'ll look."', flags=(CUP,))),
+       c('"Next time I\'ll look."', flags=(CUP, CUP_SICK))),
     hz("trust", '''{n}She holds the cup out a moment longer, and then, very deliberately, she pours it out on the cobbles, where it hisses faintly, and hands you the other.{/n}
 "Never say that to me again." {n}Her voice has gone flat.{/n} "Never say *whichever you give me* to anyone in the Abyss, and least of all to me. Somebody will take you at your word one day, and it will not be a game."''',
        c("[Drink the other cup.]", flags=(CUP,))),
     hz("swap", '''"Clever." {n}She sounds pleased, and a little disappointed.{/n} "The clever answer. Yozz always gave the clever answer." {n}She swaps the cups without hesitation and drinks first, and then watches you drink the one she handed back.{/n}
 "The trouble with the clever answer, mortal, is that I poisoned both. A little. We will both have bad dreams tonight." {n}She sets down the cup.{/n} "I will think of you in mine. You may think of me in yours."''',
-       c("[Finish your wine.]", flags=(CUP,))),
+       c("[Finish your wine.]", flags=(CUP, CUP_DREAMS))),
 ], requires=(TESTED,), forbids=(CUP, ALLY), delay=24)
 
 
 # --- 22. Her question. -----------------------------------------------------------------------------------------------------
 
 beat(H + "beat.question", "What you want", '"You\'re frowning at me."', [
+    hz("opening", '''{n}She looks you over before she answers.{/n}''',
+       c("Continue", "sick", requires=(CUP_SICK,)),
+       c("Continue", "dreams", requires=(CUP_DREAMS,)),
+       c("Continue", "start", forbids=(CUP_SICK, CUP_DREAMS))),
+    hz("sick", '''"You have your colour back. The quartermaster told my people you were sick in a bucket until the second bell and blamed the cook." {n}She sounds pleased.{/n} "You did not blame me. Nobody has ever not blamed me before. It has been bothering me."''',
+       c("Continue", "start")),
+    hz("dreams", '''"Did you dream?" {n}She does not wait for an answer.{/n} "I did. You were in it, holding two cups, and you would not drink either of them. I woke up furious." {n}Her eyes narrow.{/n} "That was your fault, and I have not decided what it costs."''',
+       c("Continue", "start")),
     hz("start", '''"I am thinking." {n}She does not stop frowning.{/n} "You asked me what I wanted. In your room, the night after my Guild bowed to the box. I told you. And you have never once told me what *you* want, and I have been trying to work it out, the way I would work out a contract, and I cannot."
 "Nobody gives anything for nothing. You gave me an ear. So, mortal: what do you want from me?"''',
        c('"Nothing you have to sell."', "sell"),
@@ -670,7 +717,7 @@ beat(H + "beat.question", "What you want", '"You\'re frowning at me."', [
        c("[Go away, slowly.]", flags=(QUESTION,))),
     hz("end", '''"Go on, then. I have given you enough of my afternoon for nothing." {n}She turns back to the Storyteller's shelves.{/n} "You may come back tomorrow and give me another one."''',
        c("[Leave her to the shelves.]", flags=(QUESTION,))),
-], requires=(TESTED,), forbids=(QUESTION, ALLY), delay=24)
+], requires=(TESTED, CUP), forbids=(QUESTION, ALLY), delay=24)
 
 
 # --- 23. A night in Drezen. ------------------------------------------------------------------------------------------------
@@ -740,7 +787,7 @@ beat(H + "beat.used", "You served me well", '"In Yozz\'s hall you nearly said so
     hz("owed", '''"Owed you." {n}She repeats it, amused.{/n} "I gave you Yozz's bounty, and his blades if he was stupid enough to offer them, and your life, which I could have taken in that hall with a word to the right assassin. That is a great deal of payment for a tool, mortal."
 "But you are right. I never gave you anything you did not have to fight me for." {n}Her eyes go to the side of your head.{/n} "And then you gave me something without a fight. You see why that bothered me."''',
        c("Continue", "now")),
-    hz("now", '''"Now?" {n}She considers you, head tilted.{/n} "Now I am wondering which of us is the tool. You lay bleeding on the ground and told me a story that saved my Guild, and I went home and told it, and it worked. I have been using your ear to rule my masters for weeks."
+    hz("now", '''"Now?" {n}She considers you, head tilted.{/n} "Now I am wondering which of us is the tool. You offered me a story when I had nothing left, and then you bled for it, and I went home and told it, and it worked. I have been using your ear to rule my masters for weeks."
 "And you have been using me to make a Guild of assassins decline every contract on your head in the Midnight Isles." {n}Her mouth curves.{/n} "It is a very good arrangement. It is the first one I have ever made where I cannot work out who is cheating whom."''',
        c('"Nobody\'s cheating."', "nobody"),
        c('"I am. A little."', "little")),
