@@ -169,8 +169,8 @@ visit(Y + "beat.statue", "Yaniel of Drezen, the Holy Martyr", [
     yn("look", '''{n}She stands looking at it while the chaplains bless it and the pilgrims light their candles and a very small boy is lifted up to kiss its stone toe. Her face does not change at all.{/n}
 "Tell me the truth, Commander," {n}she says, without turning her head.{/n} "Is it a good likeness?"''',
        c('[Lie] "It\'s a good likeness."', "lie", flags=(STATUE_LIED,)),
-       c('"It looks nothing like you."', "truth"),
-       c('[Flirt] "It\'s missing the scars. The scars are the best part."', "scars")),
+       c('"It looks nothing like you."', "truth", flags=(Y + "statue_truth",)),
+       c('[Flirt] "It\'s missing the scars. The scars are the best part."', "scars", flags=(Y + "statue_scars",))),
     yn("lie", '''{n}Her mouth twitches. She does not look at you.{/n}
 "Liar," {n}she says, very softly, almost fondly.{/n} "You are a terrible liar, Commander, which is strange, because I have been told you are a very good one. Perhaps you only lie badly when it does not matter." {n}She pulls her hood lower.{/n} "Thank you. Nobody has lied to me kindly in seventy years. They only ever did it the other way."''',
        c("Continue", "end")),
@@ -192,14 +192,14 @@ visit(Y + "beat.staunton", "Joran's brand", [
        c("Continue", "brand")),
     yn("learned", '''"I asked the quartermaster where Staunton's brother kept his forge. He spat. Then a sergeant with more tact told me the rest: Staunton gone over to the demons, again, at the end, and Joran with him, and both of them dead for it. Minagho told me that a hundred times in the Fane. I did not believe her. I believe a sergeant."''',
        c("Continue", "brand")),
-    yn("brand", '''"Joran made Radiance. Did you know that? He put his mark on the ricasso: a hammer inside a sun. He was barely out of his apprenticeship and so proud of it he could not speak. Staunton stood behind him at the presentation and cried into his beard, and pretended it was the smoke."''',
+    yn("brand", '''"Joran made Radiance. Did you know that? He forged it with his own hands and put his brand on it, and he made the scabbard after, and fussed over the fit of it for a month. He was so proud of that sword he could not speak when he gave it to me. Staunton stood behind him and cried into his beard, and pretended it was the smoke."''',
        c("Continue", "carries", requires=(CARRIES,)),
        c("Continue", "judges", forbids=(CARRIES,))),
-    yn("carries", '''{n}She draws the sword and holds it out to the firelight, blade flat, so that you can see the mark near the hilt: a small hammer in a small sun, worn nearly smooth.{/n}
+    yn("carries", '''{n}She draws the sword and holds it out to the firelight, blade flat, so that you can see the smith's brand near the hilt, worn nearly smooth.{/n}
 "I have been looking at it every night on the wall." {n}Her thumb moves over it.{/n} "I keep thinking I ought to have it ground off. I keep not doing it."''',
        c("Continue", "grief")),
     yn("judges", '''"Show me."
-{n}You draw Radiance and hold it to the firelight, and she leans close and finds the mark near the hilt without looking for it: a small hammer in a small sun, worn nearly smooth. She does not touch it.{/n}
+{n}You draw Radiance and hold it to the firelight, and she leans close and finds the smith's brand near the hilt without looking for it, worn nearly smooth. She does not touch it.{/n}
 "You have been carrying Joran on your hip all this time," {n}she says,{/n} "and I have been carrying Staunton on my wrist, if you think about it. His lilitu's iron. Neither of us asked for it."''',
        c("Continue", "grief")),
     yn("grief", '''"Everyone keeps telling me to mourn him." {n}Her voice is quite level.{/n} "The chaplains. The Hand. Even the sergeant. 'He was your friend; you should grieve.' And I would like to. I would like very much to sit down somewhere and weep for Staunton Vhane the way I wept for my father. But every time I try, I see her. Her hands on his face. Her voice in his ear. And I cannot find him under it."

@@ -18,6 +18,7 @@ internal static class YanielTricksterTests
     private const string Freed = "yaniel.freed.latched";
     private const string Ch5 = "yaniel.ch5.latched";
     private const string Drezen = "2570015799edf594daf2f076f2f975d8";
+    private const string Unit = "d914111e83e44194db99ab91d8c04632";
     private const string Talk = "8b4733e32e9112a479f8af49c39e3c49";
     private const string DoubtCue = "536ceec8863161f489ef28ddd9c51845";
     private const string HopeCue = "efb1ee540ea049743bd146397641bb9b";
@@ -48,6 +49,7 @@ internal static class YanielTricksterTests
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
         var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = Drezen };
+        state.AvailableContacts.Add(Unit);
         state.Flags.UnionWith(flags);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         Rules.Complete(story, state);
@@ -159,8 +161,19 @@ internal static class YanielTricksterTests
               && Forms.Keys.All(k => story.Derived["yaniel.radiance_held"].Any(g => g.Length == 1 && g[0] == k)),
             "Trk_Yaniel_Bindings: a native key is not bound as the build sheet lists it.");
         check(!own.Any(s => s.AnswerLists.Contains("0f12118177d102f428a3b30b15b132eb") || s.AnswerLists.Contains("a380d926e92f70e429681eb9654478f9")
-                            || s.AnswerLists.Contains("15f754455d1d87c42a4e14df456d5415")) && !story.Presences.ContainsKey("yaniel.presence"),
-            "A Yaniel scene hangs on a crowded hub, or she has a presence (every Drezen beat is a remote visit).");
+                            || s.AnswerLists.Contains("15f754455d1d87c42a4e14df456d5415")),
+            "A Yaniel scene hangs on a crowded hub (Fye, the yard, the smith).");
+        var presence = story.Presences["yaniel.presence"];
+        check(presence.Unit == Unit && presence.Area == Drezen && presence.Mode == "spawn-copy" && presence.Dialog == "hub"
+              && presence.At?.Locator == "0e8a0488-bd46-4115-be7a-6674b9358a71" && presence.At?.NearUnit == null
+              && presence.MinChapter == 5 && presence.MaxChapter == 5 && presence.Requires.Contains(Returned)
+              && presence.Forbids.Contains(Closed) && presence.Forbids.Contains(LeftFree),
+            "Her presence is not the spawn-copy at her own Drezen mark (Chapter 5, after she came to stay).");
+        var tradeRoom = S(P + "commit.trade_room");
+        check(!Rules.IsRemote(trade) && trade.ContactUnit == Unit && trade.InteractionHub == "yaniel.presence"
+              && Rules.IsRemote(tradeRoom) && tradeRoom.Requires.Contains("yaniel.presence.failed")
+              && tradeRoom.Forbids.Contains(trade.Id) && trade.Forbids.Contains(tradeRoom.Id),
+            "R2-3: the commit is not in person on her presence, with the room twin only when the presence fails.");
         check(!own.Any(s => s.Nodes.Any(n => n.Choices.Any(c => c.Set.Any(f => f.StartsWith("trickster.wmt.use.", StringComparison.Ordinal))))),
             "Yaniel's device spends a Word Made True.");
         check(own.Concat(reactions).Concat(pages).All(s => s.Requires.Contains("trickster") || s.Requires.Contains("trickster.ever")),
@@ -258,7 +271,7 @@ internal static class YanielTricksterTests
         var home = Take(found, c5, "stay", 0, Returned, Started);
         check(!Avail(letter, Later(story, home, 24)) && !Avail(trade, Later(story, home, 24)), "The verdict or the trade comes before Iz.");
         var izDone = Observe(story, Later(story, home, 48), "iz.done");
-        var afterLetter = Take(letter, Later(story, izDone, 24), "letter2", 0, Verdict);
+        var afterLetter = Take(letter, Later(story, izDone, 24), "end_quiet", 0, Verdict);
         check(!Avail(hands, Later(story, izDone, 24)) && letter.Kind == "letter", "The carries verdict is not her letter from Iz.");
         var yes = Take(trade, Later(story, afterLetter, 24), "ask", 0, Committed, Shackle);
         check(!Avail(vigil, Later(story, yes, 24)) && Avail(niche, Later(story, yes, 24)) && !Avail(niche, Later(story, yes, 23)),
@@ -272,8 +285,25 @@ internal static class YanielTricksterTests
         // Trk_Yaniel_Oath: judges; the verdict reads the pack and the song; a broken oath goes straight to the vigil.
         var judged = World(story, 5, "trickster", "trickster.ever", "yaniel.freed", Swapped, Judges, Oath, Returned, "iz.done");
         var withSword = Later(story, Observe(story, judged, "yaniel.radiance_plus1"), 24);
-        check(Take(hands, withSword, "held_plain", 0, Verdict, Stands).Has(Stands) && !Avail(letter, withSword),
-            "Trk_Yaniel_Oath: a Commander holding Radiance after Iz does not keep the oath.");
+        check(Through(hands, withSword, "held_believed", 0).All(o => o.Has(Stands)) && Through(hands, withSword, "held_unproven", 0).All(o => o.Has(P + "oath_unproven") && !o.Has(Stands) && !o.Has(Broken))
+              && Ch(hands, "held_word", 0).Check?.DC == 15 && !Avail(letter, withSword),
+            "Trk_Yaniel_Oath: holding Radiance after Iz proves the oath by itself, or her doubt condemns an honest Commander.");
+        var unproven = Through(hands, withSword, "held_unproven", 0).First();
+        check(Avail(trade, Later(story, unproven, 24)) && Through(trade, Later(story, unproven, 24), "judges_open", 2).Any(),
+            "Trk_Yaniel_Oath: an unproven oath does not reach the trade, or the trade calls it done.");
+        // An oath sworn on the walls after Iz names the Threshold: the verdict holds it pending, never done or broken.
+        var threshold = World(story, 5, "trickster", "trickster.ever", "yaniel.freed", Swapped, Judges, Oath, P + "oath_threshold", Returned, "iz.done");
+        foreach (var w in new[] { Later(story, threshold, 24), Later(story, Observe(story, threshold, "yaniel.radiance_plus1"), 24) })
+            check(Paths(hands, w).All(o => o.state.Has(P + "oath_pending") && !o.state.Has(Stands) && !o.state.Has(Broken)),
+                "Trk_Yaniel_Oath: a Threshold oath is judged at the verdict after Iz.");
+        var lateRift = Take(wall, post, "late_sworn", 0, P + "oath_threshold");
+        check(lateRift.Has(Oath) && lateRift.Has(Judges), "The Threshold oath on the walls is not an oath.");
+        // The niche remembers what the Commander actually said about the statue.
+        var nicheW = World(story, 5, "trickster", "trickster.ever", Swapped, Carries, Returned, Verdict, Committed, Shackle, P + "beat.statue");
+        check(Through(niche, Later(story, Observe(story, nicheW, P + "statue_lied"), 24), "start", 0).Any()
+              && Through(niche, Later(story, Observe(story, nicheW, P + "statue_truth"), 24), "start", 1).Any()
+              && Through(niche, Later(story, Observe(story, nicheW, P + "statue_scars"), 24), "start", 2).Any(),
+            "The niche puts words in the Commander's mouth about the statue.");
         var sang = Later(story, Observe(story, judged, "yaniel.radiance_sang"), 24);
         check(Take(hands, sang, "sang_gone", 0, Verdict, Stands).Has(Stands), "Trk_Yaniel_Oath: the song heard at Iz does not prove the oath.");
         var empty = Later(story, judged, 24);
@@ -311,7 +341,7 @@ internal static class YanielTricksterTests
             "Trk_Yaniel_MinaghoCoexist: her scene sets a Minagho/Chivarro flag or closes her route.");
         foreach (var s0 in new[] { told, hid })
         {
-            var s1 = Take(letter, Later(story, Observe(story, s0, "iz.done"), 24), "letter2", 0, Verdict);
+            var s1 = Take(letter, Later(story, Observe(story, s0, "iz.done"), 24), "end_quiet", 0, Verdict);
             var s2 = Take(trade, Later(story, s1, 24), "ask", 0, Committed);
             check(s2.Has(Committed) && s2.Has("minachiv.complete"), "Trk_Yaniel_MinaghoCoexist: Yaniel and Minagho are not both committed.");
         }
@@ -331,7 +361,10 @@ internal static class YanielTricksterTests
             "The morning at the niche does not follow Seelah's fate.");
         var after = S(P + "react.seelah_after");
         var fane = S(P + "react.seelah_fane");
-        check(reactions.Length == 2 && reactions.All(s => s.Owner == "Seelah" && s.AnswerLists.SequenceEqual(new[] { "417fa384f3250634bb71859fbc913453" }))
+        var sosiel = S(P + "react.sosiel_iron");
+        check(reactions.Length == 3 && reactions.Where(s => s.Owner == "Seelah").All(s => s.AnswerLists.SequenceEqual(new[] { "417fa384f3250634bb71859fbc913453" }))
+              && sosiel.AnswerLists.SequenceEqual(new[] { "129b55b8b5d50974f84f7c607d894fd0" }) && sosiel.Forbids.Contains("sosiel.dead") && sosiel.Forbids.Contains("sosiel.kicked_out")
+              && Avail(sosiel, World(story, 3, "trickster.ever", Swapped)) && !Avail(sosiel, World(story, 3, "trickster.ever", Swapped, "sosiel.dead"))
               && Avail(after, World(story, 5, "trickster.ever", Niche)) && !Avail(after, World(story, 5, "trickster.ever", Niche, "seelah_dead"))
               && Avail(after, World(story, 5, "trickster.ever", Niche, "seelah_dead", "seelah.trickster.returned"))
               && Ch(after, "start", 0).Set.Contains(P + "seelah_blessed")
