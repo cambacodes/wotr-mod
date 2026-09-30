@@ -107,7 +107,8 @@ def check_character(c, matrix, known, allow_todo):
                     ch = v.get("choice")
                     for choice in (ch if isinstance(ch, list) else [ch] if isinstance(ch, dict) else []):
                         produced |= set(choice.get("sets") or [])
-            produced |= set((st.get("cost") or {}).get("flags") or [])
+            cost = st.get("cost") if isinstance(st, dict) else None
+            produced |= set((cost if isinstance(cost, dict) else {}).get("flags") or [])
     for key in ("relationship_id", "relationship_status"):
         if not c.get(key): probs.append(("character", "missing " + key))
     if "rotation_key" in matrix.get("characters", [{}])[0] and not c.get("rotation_key"):
