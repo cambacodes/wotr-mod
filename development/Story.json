@@ -402672,7 +402672,7 @@
         {
           "Id": "sense",
           "Speaker": "conversant",
-          "Text": "{n}The Queen stares at you with her mouth slightly open. A fly walks across her lower lip and she does not notice.{/n}\n\"You want to *meet* her.\" {n}She says it the way someone else might say \"you want to lick the floor\".{/n} \"She will not want to meet you. She will want to eat you. She eats everything. She said so. She giggled.\"\n{n}Then the doubt drains out of her face, and something much worse fills it: an idea.{/n} \"Ohhh. Ohhh! But if you leave a thing in her cave, then she will smell *you* on it. And she will chase *you*, all over the island, and not me! Not the Queen!\" {n}She claps, wetly.{/n} \"That is a very cunning plan. It is almost as cunning as one of mine.\"",
+          "Text": "{n}The Queen stares at you with her mouth slightly open. A fly walks across her lower lip and she does not notice.{/n}\n\"You want to meet her.\" {n}She says it the way someone else might say \"you want to lick the floor\".{/n} \"She will not want to meet you. She will want to eat you. She eats everything. She said so. She giggled.\"\n{n}Then the doubt drains out of her face, and something much worse fills it: an idea.{/n} \"Ohhh. Ohhh! But if you leave a thing in her cave, then she will smell you on it. And she will chase you, all over the island, and not me! Not the Queen!\" {n}She claps, wetly.{/n} \"That is a very cunning plan. It is almost as cunning as one of mine.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -402688,7 +402688,7 @@
         {
           "Id": "poison",
           "Speaker": "conversant",
-          "Text": "{n}The Queen gasps with delight, a sound like a boot pulled out of a bog.{/n}\n\"Poison! In her own nest! She will lie on it and roll on it and lick it, because she licks everything, and then her fat belly will swell up and...\" {n}She stops, working at it.{/n} \"...and then she will be *dead forever*! Oh, you are almost as clever as me! Almost!\"\n{n}She leans closer. The smell comes with her.{/n} \"And if she does not die, then she will smell *you* on it, and chase *you*, and not me. Either way the Queen wins! I always win.\"",
+          "Text": "{n}The Queen gasps with delight, a sound like a boot pulled out of a bog.{/n}\n\"Poison! In her own nest! She will lie on it and roll on it and lick it, because she licks everything, and then her fat belly will swell up and...\" {n}She stops, working at it.{/n} \"...and then she will be dead forever! Oh, you are almost as clever as me! Almost!\"\n{n}She leans closer. The smell comes with her.{/n} \"And if she does not die, then she will smell you on it, and chase you, and not me. Either way the Queen wins! I always win.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -402704,7 +402704,7 @@
         {
           "Id": "rocks",
           "Speaker": "conversant",
-          "Text": "\"Listen, knight, because I am only going to tell you the secret once, and I am telling you because you are almost as clever as me.\" {n}She drops her voice to a bubbling whisper that carries across the whole cave.{/n}\n\"The shiny things are the trap. The stick with the bird, the dress, the coins, the little crown. If you so much as *breathe* on them she knows, and she comes home in the blink of an eye, and she is very, very cross.\" {n}Her eyes slide sideways.{/n} \"I did not touch the crown. I did not. I only looked at it a lot.\n\"The real treasure is in the heap at the back where she sleeps. Grey rocks. Boring, lumpy, stupid rocks, all warm from her fat belly. If you want her to think your thing is treasure, knight, you must make it look like *nothing*.\"",
+          "Text": "\"Listen, knight, because I am only going to tell you the secret once, and I am telling you because you are almost as clever as me.\" {n}She drops her voice to a bubbling whisper that carries across the whole cave.{/n}\n\"The shiny things are the trap. The stick with the bird, the dress, the coins, the little crown. If you so much as breathe on them she knows, and she comes home in the blink of an eye, and she is very, very cross.\" {n}Her eyes slide sideways.{/n} \"I did not touch the crown. I did not. I only looked at it a lot.\n\"The real treasure is in the heap at the back where she sleeps. Grey rocks. Boring, lumpy, stupid rocks, all warm from her fat belly. If you want her to think your thing is treasure, knight, you must make it look like nothing.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -402981,7 +402981,7 @@
         {
           "Id": "caught",
           "Speaker": "Melazmera",
-          "Text": "{n}She comes down through the roof like a shadow poured through a funnel, and the cave is suddenly full of her: plates the colour of a bruise, a neck that goes on and on, two scarlet eyes as big as shields, lit from inside. Her breath smells of cold iron and old fire. She does not roar. She looks at you, kneeling at her heap with your hand still out over it, and then she looks at the lump of clay under your fingers, and then she giggles.{/n}\n\"A thief,\" {n}she says. Her voice fills the cave the way water fills a jug.{/n} \"Four hundred thieves in this cave, maybe five hundred. I ate all of them. And every one of them had his hand going *out*.\" {n}Her head comes down level with yours.{/n} \"Yours is going *in*.\"",
+          "Text": "{n}She comes down through the roof like a shadow poured through a funnel, and the cave is suddenly full of her: plates the colour of a bruise, a neck that goes on and on, two scarlet eyes as big as shields, lit from inside. Her breath smells of cold iron and old fire. She does not roar. She looks at you, kneeling at her heap with your hand still out over it, and then she looks at the lump of clay under your fingers, and then she giggles.{/n}\n\"A thief,\" {n}she says. Her voice fills the cave the way water fills a jug.{/n} \"Four hundred thieves in this cave, maybe five hundred. I ate all of them. And every one of them had his hand going out.\" {n}Her head comes down level with yours.{/n} \"Yours is going in.\"",
           "Choices": [
             {
               "Text": "[Hold out the ring.] Scrape the clay off it with your thumb and hold it up to her.",
@@ -403232,7 +403232,7 @@
         {
           "Id": "swamp",
           "Speaker": "Melazmera",
-          "Text": "{n}She sniffs, delicately, in the direction of your boots.{/n} \"You have been talking to the thing in the swamp. The one that wears the Lady's face and smells like the bottom of a well. She told you where I sleep.\" {n}Her lip lifts, a little, over teeth that are too many and too white.{/n} \"I chewed her once. She did not taste of anything I could name. I spat her out, and she has been telling everyone I tried to eat her ever since, as if that were an insult to *her*.\"",
+          "Text": "{n}She sniffs, delicately, in the direction of your boots.{/n} \"You have been talking to the thing in the swamp. The one that wears the Lady's face and smells like the bottom of a well. She told you where I sleep.\" {n}Her lip lifts, a little, over teeth that are too many and too white.{/n} \"I chewed her once. She did not taste of anything I could name. I spat her out, and she has been telling everyone I tried to eat her ever since, as if that were an insult to her.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -403248,7 +403248,7 @@
         {
           "Id": "why",
           "Speaker": "Melazmera",
-          "Text": "{n}She leans towards you across the fire. The heat does not seem to trouble her at all; it troubles you, from where you sit, more than she does.{/n}\n\"So. Why.\" {n}It is not quite a question. It is the tone of someone turning a strange coin over to see what is stamped on the other side.{/n} \"You could have taken my crown. You could have taken my coins, and I would have come home and eaten you, and that would have been the end of it, and I would have understood it. Why did you *leave* a thing?\"",
+          "Text": "{n}She leans towards you across the fire. The heat does not seem to trouble her at all; it troubles you, from where you sit, more than she does.{/n}\n\"So. Why.\" {n}It is not quite a question. It is the tone of someone turning a strange coin over to see what is stamped on the other side.{/n} \"You could have taken my crown. You could have taken my coins, and I would have come home and eaten you, and that would have been the end of it, and I would have understood it. Why did you leave a thing?\"",
           "Choices": [
             {
               "Text": "\"Because everyone takes. I wanted to see what you'd do with someone who didn't.\"",
@@ -403288,7 +403288,7 @@
         {
           "Id": "takes",
           "Speaker": "Melazmera",
-          "Text": "\"What I would *do*.\" {n}She considers that, turning the ring on her finger.{/n} \"I did not know what to do. That is the whole of it. I came home from the sea with a goat in my mouth and there was a thing in my heap that had not been there, that was not mine, and I lay on it all night and did not know what to do with it.\"\n{n}She giggles, a high bright sound with nothing kind in it.{/n} \"I have not not-known what to do since I was the size of a horse. It itched. I came to find out who made it itch.\"",
+          "Text": "\"What I would do.\" {n}She considers that, turning the ring on her finger.{/n} \"I did not know what to do. That is the whole of it. I came home from the sea with a goat in my mouth and there was a thing in my heap that had not been there, that was not mine, and I lay on it all night and did not know what to do with it.\"\n{n}She giggles, a high bright sound with nothing kind in it.{/n} \"I have not not-known what to do since I was the size of a horse. It itched. I came to find out who made it itch.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -403304,7 +403304,7 @@
         {
           "Id": "meet",
           "Speaker": "Melazmera",
-          "Text": "\"Over a corpse.\" {n}The giggle again.{/n} \"Most things meet me over a corpse. Theirs, usually.\" {n}She looks you over, slowly, the way a buyer looks over a horse, and does not seem displeased.{/n}\n\"You could have met me by touching my crown. Everyone does. I come home, and they meet me, and then they are over. You wanted to meet me and *go on*.\" {n}She tilts her head.{/n} \"That is either very stupid or very greedy. I cannot tell which yet. I like both.\"",
+          "Text": "\"Over a corpse.\" {n}The giggle again.{/n} \"Most things meet me over a corpse. Theirs, usually.\" {n}She looks you over, slowly, the way a buyer looks over a horse, and does not seem displeased.{/n}\n\"You could have met me by touching my crown. Everyone does. I come home, and they meet me, and then they are over. You wanted to meet me and go on.\" {n}She tilts her head.{/n} \"That is either very stupid or very greedy. I cannot tell which yet. I like both.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -403377,7 +403377,7 @@
         {
           "Id": "crew_ate",
           "Speaker": "Melazmera",
-          "Text": "\"I was hungry that night. Your little sky-ship came over the cliffs like a goose with a broken wing, and it was full of men who shouted and waved their swords, and their swords bounced.\" {n}She licks her thumb.{/n} \"I ate until I was not hungry any more. Sailors are salty. I did not know then that one of the things in that ship was going to walk into my cave and put something *in*.\"\n{n}She regards you across the fire without a shred of apology in her face, as a cat regards the bird it has already eaten.{/n} \"If you have come to be angry about them, be angry quickly. I get bored.\"",
+          "Text": "\"I was hungry that night. Your little sky-ship came over the cliffs like a goose with a broken wing, and it was full of men who shouted and waved their swords, and their swords bounced.\" {n}She licks her thumb.{/n} \"I ate until I was not hungry any more. Sailors are salty. I did not know then that one of the things in that ship was going to walk into my cave and put something in.\"\n{n}She regards you across the fire without a shred of apology in her face, as a cat regards the bird it has already eaten.{/n} \"If you have come to be angry about them, be angry quickly. I get bored.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -403550,7 +403550,7 @@
         {
           "Id": "owed",
           "Speaker": "Melazmera",
-          "Text": "\"*Owe*.\" {n}She rolls the word round her mouth as if it were a stone she had found in her supper.{/n} \"Nobody has ever said that to me. People say *please*, and *mercy*, and *no*, and one of them said *mother*, which I thought was very rude.\" {n}The giggle.{/n}\n\"I do not pay. I have never paid for anything. But I will come back to you, thief, and you can try to collect, and I will enjoy watching you try.\" {n}She looks down at you, and her eyes glow like two coals blown on.{/n} \"Keep your fire lit. I like to see where things are.\"",
+          "Text": "\"Owe.\" {n}She rolls the word round her mouth as if it were a stone she had found in her supper.{/n} \"Nobody has ever said that to me. People say please, and mercy, and no, and one of them said mother, which I thought was very rude.\" {n}The giggle.{/n}\n\"I do not pay. I have never paid for anything. But I will come back to you, thief, and you can try to collect, and I will enjoy watching you try.\" {n}She looks down at you, and her eyes glow like two coals blown on.{/n} \"Keep your fire lit. I like to see where things are.\"",
           "Choices": [
             {
               "Text": "[Watch her go.]",
@@ -403566,7 +403566,7 @@
         {
           "Id": "rent",
           "Speaker": "Melazmera",
-          "Text": "\"*Rent*.\" {n}Her eyebrows go up, and the rock on her head tilts with them.{/n} \"You are paying me rent. For my island. With a ring.\"\n{n}She throws her head back and laughs, and far up the cliffs a flock of something shrieks and scatters.{/n} \"The horned one pays me rent in slaves. The swamp queen pays me in knights, although she does not know it. And now the crusade pays me in jewellery.\" {n}She wipes her eyes with one knuckle.{/n} \"Very well, tenant. I will come and inspect my tenant. Keep your fire lit. I like to see where things are.\"",
+          "Text": "\"Rent.\" {n}Her eyebrows go up, and the rock on her head tilts with them.{/n} \"You are paying me rent. For my island. With a ring.\"\n{n}She throws her head back and laughs, and far up the cliffs a flock of something shrieks and scatters.{/n} \"The horned one pays me rent in slaves. The swamp queen pays me in knights, although she does not know it. And now the crusade pays me in jewellery.\" {n}She wipes her eyes with one knuckle.{/n} \"Very well, tenant. I will come and inspect my tenant. Keep your fire lit. I like to see where things are.\"",
           "Choices": [
             {
               "Text": "[Watch her go.]",
@@ -403816,7 +403816,7 @@
         {
           "Id": "swamp",
           "Speaker": "Melazmera",
-          "Text": "{n}She sniffs, delicately, in the direction of your boots.{/n} \"You have been talking to the thing in the swamp. The one that wears the Lady's face and smells like the bottom of a well. She told you where I sleep.\" {n}Her lip lifts, a little, over teeth that are too many and too white.{/n} \"I chewed her once. She did not taste of anything I could name. I spat her out, and she has been telling everyone I tried to eat her ever since, as if that were an insult to *her*.\"",
+          "Text": "{n}She sniffs, delicately, in the direction of your boots.{/n} \"You have been talking to the thing in the swamp. The one that wears the Lady's face and smells like the bottom of a well. She told you where I sleep.\" {n}Her lip lifts, a little, over teeth that are too many and too white.{/n} \"I chewed her once. She did not taste of anything I could name. I spat her out, and she has been telling everyone I tried to eat her ever since, as if that were an insult to her.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -403832,7 +403832,7 @@
         {
           "Id": "why",
           "Speaker": "Melazmera",
-          "Text": "{n}She leans towards you across the fire. The heat does not seem to trouble her at all; it troubles you, from where you sit, more than she does.{/n}\n\"So. Why.\" {n}It is not quite a question. It is the tone of someone turning a strange coin over to see what is stamped on the other side.{/n} \"You could have taken my crown. You could have taken my coins, and I would have come home and eaten you, and that would have been the end of it, and I would have understood it. Why did you *leave* a thing?\"",
+          "Text": "{n}She leans towards you across the fire. The heat does not seem to trouble her at all; it troubles you, from where you sit, more than she does.{/n}\n\"So. Why.\" {n}It is not quite a question. It is the tone of someone turning a strange coin over to see what is stamped on the other side.{/n} \"You could have taken my crown. You could have taken my coins, and I would have come home and eaten you, and that would have been the end of it, and I would have understood it. Why did you leave a thing?\"",
           "Choices": [
             {
               "Text": "\"Because everyone takes. I wanted to see what you'd do with someone who didn't.\"",
@@ -403872,7 +403872,7 @@
         {
           "Id": "takes",
           "Speaker": "Melazmera",
-          "Text": "\"What I would *do*.\" {n}She considers that, turning the ring on her finger.{/n} \"I did not know what to do. That is the whole of it. I came home from the sea with a goat in my mouth and there was a thing in my heap that had not been there, that was not mine, and I lay on it all night and did not know what to do with it.\"\n{n}She giggles, a high bright sound with nothing kind in it.{/n} \"I have not not-known what to do since I was the size of a horse. It itched. I came to find out who made it itch.\"",
+          "Text": "\"What I would do.\" {n}She considers that, turning the ring on her finger.{/n} \"I did not know what to do. That is the whole of it. I came home from the sea with a goat in my mouth and there was a thing in my heap that had not been there, that was not mine, and I lay on it all night and did not know what to do with it.\"\n{n}She giggles, a high bright sound with nothing kind in it.{/n} \"I have not not-known what to do since I was the size of a horse. It itched. I came to find out who made it itch.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -403888,7 +403888,7 @@
         {
           "Id": "meet",
           "Speaker": "Melazmera",
-          "Text": "\"Over a corpse.\" {n}The giggle again.{/n} \"Most things meet me over a corpse. Theirs, usually.\" {n}She looks you over, slowly, the way a buyer looks over a horse, and does not seem displeased.{/n}\n\"You could have met me by touching my crown. Everyone does. I come home, and they meet me, and then they are over. You wanted to meet me and *go on*.\" {n}She tilts her head.{/n} \"That is either very stupid or very greedy. I cannot tell which yet. I like both.\"",
+          "Text": "\"Over a corpse.\" {n}The giggle again.{/n} \"Most things meet me over a corpse. Theirs, usually.\" {n}She looks you over, slowly, the way a buyer looks over a horse, and does not seem displeased.{/n}\n\"You could have met me by touching my crown. Everyone does. I come home, and they meet me, and then they are over. You wanted to meet me and go on.\" {n}She tilts her head.{/n} \"That is either very stupid or very greedy. I cannot tell which yet. I like both.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -403961,7 +403961,7 @@
         {
           "Id": "crew_ate",
           "Speaker": "Melazmera",
-          "Text": "\"I was hungry that night. Your little sky-ship came over the cliffs like a goose with a broken wing, and it was full of men who shouted and waved their swords, and their swords bounced.\" {n}She licks her thumb.{/n} \"I ate until I was not hungry any more. Sailors are salty. I did not know then that one of the things in that ship was going to walk into my cave and put something *in*.\"\n{n}She regards you across the fire without a shred of apology in her face, as a cat regards the bird it has already eaten.{/n} \"If you have come to be angry about them, be angry quickly. I get bored.\"",
+          "Text": "\"I was hungry that night. Your little sky-ship came over the cliffs like a goose with a broken wing, and it was full of men who shouted and waved their swords, and their swords bounced.\" {n}She licks her thumb.{/n} \"I ate until I was not hungry any more. Sailors are salty. I did not know then that one of the things in that ship was going to walk into my cave and put something in.\"\n{n}She regards you across the fire without a shred of apology in her face, as a cat regards the bird it has already eaten.{/n} \"If you have come to be angry about them, be angry quickly. I get bored.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404009,7 +404009,7 @@
         {
           "Id": "truce",
           "Speaker": "Melazmera",
-          "Text": "{n}She jerks her chin back the way she came, towards her island and its mines, a whole sea of the Abyss away.{/n}\n\"The horned one pays me in slaves to leave her diggers alone. A fat one every new moon.\" {n}She says it the way a merchant speaks of a standing account.{/n} \"What becomes of her is not my business. My business is what walks into my cave, and what walks out of it, and where it goes afterwards.\"",
+          "Text": "{n}She jerks her chin back the way she came, towards her island and its mines, a whole sea of the Abyss away.{/n}\n\"The horned one paid me in slaves to leave her diggers alone. A fat one every new moon, while she had them to give.\" {n}She says it the way a merchant speaks of an old account.{/n} \"What becomes of her is not my business. My business is what walks into my cave, and what walks out of it, and where it goes afterwards.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404090,7 +404090,7 @@
         {
           "Id": "owed",
           "Speaker": "Melazmera",
-          "Text": "\"*Owe*.\" {n}She rolls the word round her mouth as if it were a stone she had found in her supper.{/n} \"Nobody has ever said that to me. People say *please*, and *mercy*, and *no*, and one of them said *mother*, which I thought was very rude.\" {n}The giggle.{/n}\n\"I do not pay. I have never paid for anything. But I will come back to you, thief, and you can try to collect, and I will enjoy watching you try.\" {n}She looks down at you, and her eyes glow like two coals blown on.{/n} \"Keep your fire lit. I like to see where things are.\"",
+          "Text": "\"Owe.\" {n}She rolls the word round her mouth as if it were a stone she had found in her supper.{/n} \"Nobody has ever said that to me. People say please, and mercy, and no, and one of them said mother, which I thought was very rude.\" {n}The giggle.{/n}\n\"I do not pay. I have never paid for anything. But I will come back to you, thief, and you can try to collect, and I will enjoy watching you try.\" {n}She looks down at you, and her eyes glow like two coals blown on.{/n} \"Keep your fire lit. I like to see where things are.\"",
           "Choices": [
             {
               "Text": "[Watch her go.]",
@@ -404106,7 +404106,7 @@
         {
           "Id": "rent",
           "Speaker": "Melazmera",
-          "Text": "\"*Rent*.\" {n}Her eyebrows go up, and the rock on her head tilts with them.{/n} \"You are paying me rent. For my island. With a ring.\"\n{n}She throws her head back and laughs, and far up the cliffs a flock of something shrieks and scatters.{/n} \"The horned one pays me rent in slaves. The swamp queen pays me in knights, although she does not know it. And now the crusade pays me in jewellery.\" {n}She wipes her eyes with one knuckle.{/n} \"Very well, tenant. I will come and inspect my tenant. Keep your fire lit. I like to see where things are.\"",
+          "Text": "\"Rent.\" {n}Her eyebrows go up, and the rock on her head tilts with them.{/n} \"You are paying me rent. For my island. With a ring.\"\n{n}She throws her head back and laughs, and far up the cliffs a flock of something shrieks and scatters.{/n} \"The horned one pays me rent in slaves. The swamp queen pays me in knights, although she does not know it. And now the crusade pays me in jewellery.\" {n}She wipes her eyes with one knuckle.{/n} \"Very well, tenant. I will come and inspect my tenant. Keep your fire lit. I like to see where things are.\"",
           "Choices": [
             {
               "Text": "[Watch her go.]",
@@ -404354,7 +404354,7 @@
         {
           "Id": "swamp",
           "Speaker": "Melazmera",
-          "Text": "{n}She sniffs, delicately, in the direction of your boots.{/n} \"You have been talking to the thing in the swamp. The one that wears the Lady's face and smells like the bottom of a well. She told you where I sleep.\" {n}Her lip lifts, a little, over teeth that are too many and too white.{/n} \"I chewed her once. She did not taste of anything I could name. I spat her out, and she has been telling everyone I tried to eat her ever since, as if that were an insult to *her*.\"",
+          "Text": "{n}She sniffs, delicately, in the direction of your boots.{/n} \"You have been talking to the thing in the swamp. The one that wears the Lady's face and smells like the bottom of a well. She told you where I sleep.\" {n}Her lip lifts, a little, over teeth that are too many and too white.{/n} \"I chewed her once. She did not taste of anything I could name. I spat her out, and she has been telling everyone I tried to eat her ever since, as if that were an insult to her.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404370,7 +404370,7 @@
         {
           "Id": "why",
           "Speaker": "Melazmera",
-          "Text": "{n}She leans towards you across the fire. The heat does not seem to trouble her at all; it troubles you, from where you sit, more than she does.{/n}\n\"So. Why.\" {n}It is not quite a question. It is the tone of someone turning a strange coin over to see what is stamped on the other side.{/n} \"You could have taken my crown. You could have taken my coins, and I would have come home and eaten you, and that would have been the end of it, and I would have understood it. Why did you *leave* a thing?\"",
+          "Text": "{n}She leans towards you across the fire. The heat does not seem to trouble her at all; it troubles you, from where you sit, more than she does.{/n}\n\"So. Why.\" {n}It is not quite a question. It is the tone of someone turning a strange coin over to see what is stamped on the other side.{/n} \"You could have taken my crown. You could have taken my coins, and I would have come home and eaten you, and that would have been the end of it, and I would have understood it. Why did you leave a thing?\"",
           "Choices": [
             {
               "Text": "\"Because everyone takes. I wanted to see what you'd do with someone who didn't.\"",
@@ -404410,7 +404410,7 @@
         {
           "Id": "takes",
           "Speaker": "Melazmera",
-          "Text": "\"What I would *do*.\" {n}She considers that, turning the ring on her finger.{/n} \"I did not know what to do. That is the whole of it. I came home from the sea with a goat in my mouth and there was a thing in my heap that had not been there, that was not mine, and I lay on it all night and did not know what to do with it.\"\n{n}She giggles, a high bright sound with nothing kind in it.{/n} \"I have not not-known what to do since I was the size of a horse. It itched. I came to find out who made it itch.\"",
+          "Text": "\"What I would do.\" {n}She considers that, turning the ring on her finger.{/n} \"I did not know what to do. That is the whole of it. I came home from the sea with a goat in my mouth and there was a thing in my heap that had not been there, that was not mine, and I lay on it all night and did not know what to do with it.\"\n{n}She giggles, a high bright sound with nothing kind in it.{/n} \"I have not not-known what to do since I was the size of a horse. It itched. I came to find out who made it itch.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404426,7 +404426,7 @@
         {
           "Id": "meet",
           "Speaker": "Melazmera",
-          "Text": "\"Over a corpse.\" {n}The giggle again.{/n} \"Most things meet me over a corpse. Theirs, usually.\" {n}She looks you over, slowly, the way a buyer looks over a horse, and does not seem displeased.{/n}\n\"You could have met me by touching my crown. Everyone does. I come home, and they meet me, and then they are over. You wanted to meet me and *go on*.\" {n}She tilts her head.{/n} \"That is either very stupid or very greedy. I cannot tell which yet. I like both.\"",
+          "Text": "\"Over a corpse.\" {n}The giggle again.{/n} \"Most things meet me over a corpse. Theirs, usually.\" {n}She looks you over, slowly, the way a buyer looks over a horse, and does not seem displeased.{/n}\n\"You could have met me by touching my crown. Everyone does. I come home, and they meet me, and then they are over. You wanted to meet me and go on.\" {n}She tilts her head.{/n} \"That is either very stupid or very greedy. I cannot tell which yet. I like both.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404499,7 +404499,7 @@
         {
           "Id": "crew_ate",
           "Speaker": "Melazmera",
-          "Text": "\"I was hungry that night. Your little sky-ship came over the cliffs like a goose with a broken wing, and it was full of men who shouted and waved their swords, and their swords bounced.\" {n}She licks her thumb.{/n} \"I ate until I was not hungry any more. Sailors are salty. I did not know then that one of the things in that ship was going to walk into my cave and put something *in*.\"\n{n}She regards you across the fire without a shred of apology in her face, as a cat regards the bird it has already eaten.{/n} \"If you have come to be angry about them, be angry quickly. I get bored.\"",
+          "Text": "\"I was hungry that night. Your little sky-ship came over the cliffs like a goose with a broken wing, and it was full of men who shouted and waved their swords, and their swords bounced.\" {n}She licks her thumb.{/n} \"I ate until I was not hungry any more. Sailors are salty. I did not know then that one of the things in that ship was going to walk into my cave and put something in.\"\n{n}She regards you across the fire without a shred of apology in her face, as a cat regards the bird it has already eaten.{/n} \"If you have come to be angry about them, be angry quickly. I get bored.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404547,7 +404547,7 @@
         {
           "Id": "truce",
           "Speaker": "Melazmera",
-          "Text": "{n}She jerks her chin back the way she came, towards her island and its mines, a whole world away, through the hole.{/n}\n\"The horned one pays me in slaves to leave her diggers alone. A fat one every new moon.\" {n}She says it the way a merchant speaks of a standing account.{/n} \"What becomes of her is not my business. My business is what walks into my cave, and what walks out of it, and where it goes afterwards.\"",
+          "Text": "{n}She jerks her chin back the way she came, towards her island and its mines, a whole world away, through the hole.{/n}\n\"The horned one paid me in slaves to leave her diggers alone. A fat one every new moon, while she had them to give.\" {n}She says it the way a merchant speaks of an old account.{/n} \"What becomes of her is not my business. My business is what walks into my cave, and what walks out of it, and where it goes afterwards.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404628,7 +404628,7 @@
         {
           "Id": "owed",
           "Speaker": "Melazmera",
-          "Text": "\"*Owe*.\" {n}She rolls the word round her mouth as if it were a stone she had found in her supper.{/n} \"Nobody has ever said that to me. People say *please*, and *mercy*, and *no*, and one of them said *mother*, which I thought was very rude.\" {n}The giggle.{/n}\n\"I do not pay. I have never paid for anything. But I will come back to you, thief, and you can try to collect, and I will enjoy watching you try.\" {n}She looks down at you, and her eyes glow like two coals blown on.{/n} \"Keep your fire lit. I like to see where things are.\"",
+          "Text": "\"Owe.\" {n}She rolls the word round her mouth as if it were a stone she had found in her supper.{/n} \"Nobody has ever said that to me. People say please, and mercy, and no, and one of them said mother, which I thought was very rude.\" {n}The giggle.{/n}\n\"I do not pay. I have never paid for anything. But I will come back to you, thief, and you can try to collect, and I will enjoy watching you try.\" {n}She looks down at you, and her eyes glow like two coals blown on.{/n} \"Keep your fire lit. I like to see where things are.\"",
           "Choices": [
             {
               "Text": "[Watch her go.]",
@@ -404644,7 +404644,7 @@
         {
           "Id": "rent",
           "Speaker": "Melazmera",
-          "Text": "\"*Rent*.\" {n}Her eyebrows go up, and the rock on her head tilts with them.{/n} \"You are paying me rent. For my island. With a ring.\"\n{n}She throws her head back and laughs, and out on the wall a sentry drops his spear.{/n} \"The horned one pays me rent in slaves. The swamp queen pays me in knights, although she does not know it. And now the crusade pays me in jewellery.\" {n}She wipes her eyes with one knuckle.{/n} \"Very well, tenant. I will come and inspect my tenant. Keep your fire lit. I like to see where things are.\"",
+          "Text": "\"Rent.\" {n}Her eyebrows go up, and the rock on her head tilts with them.{/n} \"You are paying me rent. For my island. With a ring.\"\n{n}She throws her head back and laughs, and out on the wall a sentry drops his spear.{/n} \"The horned one pays me rent in slaves. The swamp queen pays me in knights, although she does not know it. And now the crusade pays me in jewellery.\" {n}She wipes her eyes with one knuckle.{/n} \"Very well, tenant. I will come and inspect my tenant. Keep your fire lit. I like to see where things are.\"",
           "Choices": [
             {
               "Text": "[Watch her go.]",
@@ -404733,7 +404733,7 @@
         {
           "Id": "start",
           "Speaker": "Greybor",
-          "Text": "{n}Greybor sets a flat grey stone on the table between you, wrapped in oilcloth and tied with string, and does not take his hand off it at once.{/n}\n\"A woman came to the north gate last night after curfew, Commander. Tall. Very tall. She wore a rock on her head, which I noticed, because I am paid to notice things. She asked the watch for the sellsword who takes monster contracts. The watch sent her to me, which I will be discussing with the watch.\"\n\"She wanted this carried to you. I told her I do not carry letters; I am not a pigeon. So she paid me.\" {n}He lays a coin beside the stone: thick, old, square-holed gold from no mint you know.{/n} \"In advance, as I require. She knew my terms before I named them, and she did not haggle. Nobody who has not been in the trade a very long time pays a sellsword before the work without haggling. I bit it. It is real.\"\n{n}He taps the lump of clay pressed over the knot. In it, sharp and clean, is your old seal.{/n} \"It is sealed with *your* seal, Commander. The one you lost in the Abyss. I will say this for her: she is a better client than that swamp queen. I told you that one would never pay. This one paid twice.\"",
+          "Text": "{n}Greybor sets a flat grey stone on the table between you, wrapped in oilcloth and tied with string, and does not take his hand off it at once.{/n}\n\"A woman came to the north gate last night after curfew, Commander. Tall. Very tall. She wore a rock on her head, which I noticed, because I am paid to notice things. She asked the watch for the sellsword who takes monster contracts. The watch sent her to me, which I will be discussing with the watch.\"\n\"She wanted this carried to you. I told her I do not carry letters; I am not a pigeon. So she paid me.\" {n}He lays a coin beside the stone: thick, old, square-holed gold from no mint you know.{/n} \"In advance, as I require. She knew my terms before I named them, and she did not haggle. Nobody who has not been in the trade a very long time pays a sellsword before the work without haggling. I bit it. It is real.\"\n{n}He taps the lump of clay pressed over the knot. In it, sharp and clean, is your old seal.{/n} \"It is sealed with your seal, Commander. The one you lost in the Abyss. I will say this for her: she is a better client than that swamp queen. I told you that one would never pay. This one paid twice.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404782,7 +404782,7 @@
         {
           "Id": "start",
           "Speaker": "Greybor",
-          "Text": "{n}Greybor sets a flat grey stone on the table between you, wrapped in oilcloth and tied with string, and does not take his hand off it at once.{/n}\n\"A woman came to the north gate last night after curfew, Commander. Tall. Very tall. She wore a rock on her head, which I noticed, because I am paid to notice things. She asked the watch for the sellsword who takes monster contracts. The watch sent her to me, which I will be discussing with the watch.\"\n\"She wanted this carried to you. I told her I do not carry letters; I am not a pigeon. So she paid me.\" {n}He lays a coin beside the stone: thick, old, square-holed gold from no mint you know.{/n} \"In advance, as I require. She knew my terms before I named them, and she did not haggle. Nobody who has not been in the trade a very long time pays a sellsword before the work without haggling. I bit it. It is real.\"\n{n}He taps the lump of clay pressed over the knot. In it, sharp and clean, is your old seal.{/n} \"It is sealed with *your* seal, Commander. The one you lost in the Abyss. I did not ask her what she was. At those rates, I never ask. But when she walked away from the gate her shadow went on walking for some time after she had turned the corner.\"",
+          "Text": "{n}Greybor sets a flat grey stone on the table between you, wrapped in oilcloth and tied with string, and does not take his hand off it at once.{/n}\n\"A woman came to the north gate last night after curfew, Commander. Tall. Very tall. She wore a rock on her head, which I noticed, because I am paid to notice things. She asked the watch for the sellsword who takes monster contracts. The watch sent her to me, which I will be discussing with the watch.\"\n\"She wanted this carried to you. I told her I do not carry letters; I am not a pigeon. So she paid me.\" {n}He lays a coin beside the stone: thick, old, square-holed gold from no mint you know.{/n} \"In advance, as I require. She knew my terms before I named them, and she did not haggle. Nobody who has not been in the trade a very long time pays a sellsword before the work without haggling. I bit it. It is real.\"\n{n}He taps the lump of clay pressed over the knot. In it, sharp and clean, is your old seal.{/n} \"It is sealed with your seal, Commander. The one you lost in the Abyss. I did not ask her what she was. At those rates, I never ask. But when she walked away from the gate her shadow went on walking for some time after she had turned the corner.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -405046,7 +405046,7 @@
         {
           "Id": "city",
           "Speaker": "Melazmera",
-          "Text": "\"Your city is a larder,\" {n}she says, licking her fingers one at a time.{/n} \"Everything in it is fat, and slow, and frightened, and has never been eaten by anything bigger than a plague. I have been walking about your walls for three nights, looking in. I have not eaten anybody.\" {n}She says it as though describing a feat of arms.{/n}\n\"And I am *hungry*, thief. My new cave is at the edge of the hole, and the things that come up out of the hole taste of the hole. Ash and flies. I want something fat.\"",
+          "Text": "\"Your city is a larder,\" {n}she says, licking her fingers one at a time.{/n} \"Everything in it is fat, and slow, and frightened, and has never been eaten by anything bigger than a plague. I have been walking about your walls for three nights, looking in. I have not eaten anybody.\" {n}She says it as though describing a feat of arms.{/n}\n\"And I am hungry, thief. My new cave is at the edge of the hole, and the things that come up out of the hole taste of the hole. Ash and flies. I want something fat.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -405062,7 +405062,7 @@
         {
           "Id": "ask",
           "Speaker": "Melazmera",
-          "Text": "{n}She comes and sits on the edge of your desk, so close that you feel the cold coming off her, a cold like the inside of a well.{/n}\n\"There is a hole under your castle with men in it,\" {n}she says.{/n} \"Men who pray to the fly. Your priests have finished asking them questions; I listened at the grating, and they have nothing left to say. They are fat, because you feed them. You are feeding them to *nothing*.\" {n}Her scarlet eyes are very bright.{/n} \"Give them to me. Nobody will miss them. Your priests will be glad of the room.\"",
+          "Text": "{n}She comes and sits on the edge of your desk, so close that you feel the cold coming off her, a cold like the inside of a well.{/n}\n\"There is a hole under your castle with men in it,\" {n}she says.{/n} \"Men who pray to the fly. Your priests have finished asking them questions; I listened at the grating, and they have nothing left to say. They are fat, because you feed them. You are feeding them to nothing.\" {n}Her scarlet eyes are very bright.{/n} \"Give them to me. Nobody will miss them. Your priests will be glad of the room.\"",
           "Choices": [
             {
               "Text": "[Give her the cultists] \"Take them. Go down quietly, and leave the grating as you found it.\"",
@@ -405134,7 +405134,7 @@
         {
           "Id": "demons",
           "Speaker": "Melazmera",
-          "Text": "\"Demons.\" {n}Her lip curls off her teeth.{/n} \"They taste of the Abyss. I have been eating the Abyss for a very long time, thief. I know what it tastes like. It tastes like being bored.\"\n{n}She considers you, and the dark on the ceiling considers you with her.{/n} \"But you gave me a thing, and I have not given you anything, so I will do what you say this once and see what it feels like.\" {n}She goes to the window.{/n} \"If it feels bad, I will come back and eat your priests' prisoners anyway, and tell them it was your idea.\"",
+          "Text": "\"Demons.\" {n}Her lip curls off her teeth.{/n} \"They taste of the Abyss. I have been eating the Abyss for a very long time, thief. I know what it tastes like. It tastes like being bored.\"\n{n}She considers you, and the dark on the ceiling considers you with her.{/n} \"Very well. This once. I want to see what your face does when a dragon obeys it.\" {n}She goes to the window.{/n} \"If it feels bad, I will come back and eat your priests' prisoners anyway, and tell them it was your idea.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -405463,7 +405463,7 @@
         {
           "Id": "yes",
           "Speaker": "Melazmera",
-          "Text": "{n}She lets out her breath. It comes out of her in a long hiss, and then, astonishingly, in a giggle, high and shaky, as if she had just jumped off something very tall and found she could fly.{/n}\n\"I let you,\" {n}she says.{/n} \"I let a thief walk off my heap with a piece of it in {mf|his|her} hand. I have *never*...\" {n}She stops. She looks at her own empty hand as if it belonged to somebody else.{/n}\n\"That one is a sapphire. It came out of the crown of a king of a drowned country. I have slept on it for two hundred years.\" {n}Her fingers close on your wrist, hard enough to hurt.{/n} \"You keep it, and I keep you. That is the bargain. There is no other bargain. Do you understand me, thief?\"",
+          "Text": "{n}She lets out her breath. It comes out of her in a long hiss, and then, astonishingly, in a giggle, high and shaky, as if she had just jumped off something very tall and found she could fly.{/n}\n\"I let you,\" {n}she says.{/n} \"I let a thief walk off my heap with a piece of it in {mf|his|her} hand. I have never...\" {n}She stops. She looks at her own empty hand as if it belonged to somebody else.{/n}\n\"That one is a sapphire. It came out of the crown of a king of a drowned country. I have slept on it for two hundred years.\" {n}Her fingers close on your wrist, hard enough to hurt.{/n} \"You keep it, and I keep you. That is the bargain. There is no other bargain. Do you understand me, thief?\"",
           "Choices": [
             {
               "Text": "\"I understand you.\"",
@@ -405506,7 +405506,7 @@
         {
           "Id": "crown",
           "Speaker": "Melazmera",
-          "Text": "{n}You walk down the cave to the ledge by the mouth and pick up the little crown. It is heavy and cold and bright, and it goes out in your hand like a snuffed candle. It is a rock, grey and ordinary, with a little glitter of mica on one side.{/n}\n{n}She does not move from the heap. She does not come home in the blink of an eye; she is home.{/n}\n\"You took the lie,\" {n}she says, and she sounds tired, suddenly, and very old.{/n} \"Everyone takes the lie. The dwarf took it, and the paladin, and the puddle would have if she could have reached. I thought you knew better. You *did* know better. You had your hand in my heap on Colyphyr.\"",
+          "Text": "{n}You walk down the cave to the ledge by the mouth and pick up the little crown. It is heavy and cold and bright, and it goes out in your hand like a snuffed candle. It is a rock, grey and ordinary, with a little glitter of mica on one side.{/n}\n{n}She does not move from the heap. She does not come home in the blink of an eye; she is home.{/n}\n\"You took the lie,\" {n}she says, and she sounds tired, suddenly, and very old.{/n} \"Everyone takes the lie. The dwarf took it, and the paladin, and the puddle would have if she could have reached. I thought you knew better. You did know better. You had your hand in my heap on Colyphyr.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -405537,7 +405537,9 @@
             {
               "Text": "\"You told me to take anything. I wanted to see what you'd do if I took the wrong thing.\"",
               "Next": "crown3",
-              "Set": [],
+              "Set": [
+                "melazmera.trickster.crown_challenge"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -405566,7 +405568,7 @@
         {
           "Id": "nothing",
           "Speaker": "Melazmera",
-          "Text": "{n}You stand at the foot of the heap with your hands at your sides and take nothing at all.{/n}\n{n}She looks at you, and at your empty hands, and something in her face goes out as the crown goes out when you touch it.{/n}\n\"Nothing,\" {n}she says.{/n} \"You came into my cave the first time and took nothing, and you left a thing. You come into my cave now and take nothing, and you leave *nothing*.\" {n}She pulls her knees up on top of her heap and looks at you over them, and her eyes have gone as dull as the stones.{/n} \"Then you are not a thief. You were only a guest. Guests go home. Go home, guest.\"",
+          "Text": "{n}You stand at the foot of the heap with your hands at your sides and take nothing at all.{/n}\n{n}She looks at you, and at your empty hands, and something in her face goes out as the crown goes out when you touch it.{/n}\n\"Nothing,\" {n}she says.{/n} \"You came into my cave the first time and took nothing, and you left a thing. You come into my cave now and take nothing, and you leave nothing.\" {n}She pulls her knees up on top of her heap and looks at you over them, and her eyes have gone as dull as the stones.{/n} \"Then you are not a thief. You were only a guest. Guests go home. Go home, guest.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -405729,14 +405731,60 @@
         {
           "Id": "spotted2",
           "Speaker": "Melazmera",
-          "Text": "\"You *saw* it.\" {n}She is almost purring.{/n} \"You, with your little mortal eyes. You looked into a hole full of shadow and you found the one bit of it that was lying.\" {n}She puts her great head down beside you on the rock until her eye is level with your face.{/n}\n\"That is what you did in my cave. On Colyphyr. You looked into a heap of lies and you found the real ones and you put a real thing among them.\" {n}The red light goes soft.{/n} \"And then you took the crown. I know why now. You wanted to see what I would do. Well. Now you have seen what I do when I am not tired.\"",
+          "Text": "\"You saw it.\" {n}She is almost purring.{/n} \"You, with your little mortal eyes. You looked into a hole full of shadow and you found the one bit of it that was lying.\" {n}She puts her great head down beside you on the rock until her eye is level with your face.{/n}\n\"That is what you did in my cave. On Colyphyr. You looked into a heap of lies and you found the real ones and you put a real thing among them.\" {n}The red light goes soft.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "challenge",
+              "Set": [
+                "melazmera.trickster.hunted"
+              ],
+              "Requires": [
+                "melazmera.trickster.crown_challenge"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "not_tired",
+              "Set": [
+                "melazmera.trickster.hunted"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "melazmera.trickster.crown_challenge"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Melazmera"
+        },
+        {
+          "Id": "challenge",
+          "Speaker": "Melazmera",
+          "Text": "\"And then you took the crown, to see what I would do. You told me so.\" {n}Her breath goes over you, warm, smelling of cold iron.{/n} \"Well. That was what I do when I am tired. Now you have seen what I do when I am not.\"",
           "Choices": [
             {
               "Text": "Continue",
               "Next": "again",
-              "Set": [
-                "melazmera.trickster.hunted"
-              ],
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Melazmera"
+        },
+        {
+          "Id": "not_tired",
+          "Speaker": "Melazmera",
+          "Text": "\"And then you took the crown, and I was tired, and I sent you home with a rock.\" {n}Her breath goes over you, warm, smelling of cold iron.{/n} \"I am not tired now. A thief who can find the lie in a hole full of shadow does not take my crown by mistake twice. I am going to give you the chance to show me.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "again",
+              "Set": [],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -405763,7 +405811,7 @@
         {
           "Id": "missed2",
           "Speaker": "Melazmera",
-          "Text": "{n}When you can breathe again she is crouched over you, looking down, with something black still smoking at the corner of her mouth. Your back is wet and hot and does not yet hurt, which means it will.{/n}\n\"You did not see it,\" {n}she says.{/n} \"It was under your feet the whole time, and you were looking at the far side, because the far side is where you would have hidden.\" {n}She considers the long bleeding line across your back.{/n} \"I hit you. I was aiming at it. You were in the way. You will have a mark there as long as your arm for the rest of your life, and every time somebody asks you about it you will have to say *a dragon*, and they will think you are lying.\"\n{n}She sounds pleased about that.{/n}",
+          "Text": "{n}When you can breathe again she is crouched over you, looking down, with something black still smoking at the corner of her mouth. Your back is wet and hot and does not yet hurt, which means it will.{/n}\n\"You did not see it,\" {n}she says.{/n} \"It was under your feet the whole time, and you were looking at the far side, because the far side is where you would have hidden.\" {n}She considers the long bleeding line across your back.{/n} \"I hit you. I was aiming at it. You were in the way. You will have a mark there as long as your arm for the rest of your life, and every time somebody asks you about it you will have to say a dragon, and they will think you are lying.\"\n{n}She sounds pleased about that.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -405922,7 +405970,7 @@
         {
           "Id": "her",
           "Speaker": "Melazmera",
-          "Text": "{n}The woman she wears is tall and dark and wears a rock for a crown, and she comes down onto the heap on her knees astride your legs and puts one hand flat on your chest, and watches your breath lift it. She is smiling. It is not a nice smile, and it is not meant to be.{/n}\n\"I have eaten everything that ever stayed in my reach,\" {n}she says.{/n} \"Everything. It stays, and I eat it. That is what reach is *for*.\" {n}Her fingers spread over your heart.{/n} \"You keep staying.\"",
+          "Text": "{n}The woman she wears is tall and dark and wears a rock for a crown, and she comes down onto the heap on her knees astride your legs and puts one hand flat on your chest, and watches your breath lift it. She is smiling. It is not a nice smile, and it is not meant to be.{/n}\n\"I have eaten everything that ever stayed in my reach,\" {n}she says.{/n} \"Everything. It stays, and I eat it. That is what reach is for.\" {n}Her fingers spread over your heart.{/n} \"You keep staying.\"",
           "Choices": [
             {
               "Text": "[Touch her throat.]",
@@ -406226,7 +406274,7 @@
         {
           "Id": "start",
           "Speaker": "Greybor",
-          "Text": "{n}Greybor is sitting on a rock at the edge of camp, running a whetstone along the head of his axe with great care. He does not look up.{/n}\n\"The swamp queen offered me that dragon, Commander. I said I did not think the client would pay. I stand by that.\" {n}The stone scrapes.{/n} \"Then you went into the dragon's cave and paid *it*. With your own ring. And the dragon came to our fire and ate our supper, and your ladle, and sat on that rock there and giggled at you, and went away again, and nobody was eaten.\"\n\"I have been doing this work for a very long time. I have never seen anyone tip a dragon.\" {n}He tests the edge with his thumb.{/n} \"I have no professional opinion. I would like it noted that I have no professional opinion.\"",
+          "Text": "{n}Greybor is sitting on a rock at the edge of camp, running a whetstone along the head of his axe with great care. He does not look up.{/n}\n\"The swamp queen offered me that dragon, Commander. I said I did not think the client would pay. I stand by that.\" {n}The stone scrapes.{/n} \"Then you went into the dragon's cave and paid it. With your own ring. And the dragon came to our fire and ate our supper, and your ladle, and sat on that rock there and giggled at you, and went away again, and nobody was eaten.\"\n\"I have been doing this work for a very long time. I have never seen anyone tip a dragon.\" {n}He tests the edge with his thumb.{/n} \"I have no professional opinion. I would like it noted that I have no professional opinion.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -406273,7 +406321,7 @@
         {
           "Id": "start",
           "Speaker": "Greybor",
-          "Text": "{n}Greybor sniffs as you come in, once, the way a dog does at a gate, and puts down his whetstone.{/n}\n\"You came back smelling of her lair, Commander. Hot stone and cold iron. I know that smell. I have been in caves with worse things in them, though not many, and I did not come out of any of them smiling.\" {n}He looks at you with no expression at all.{/n}\n\"She came to the gate again last night with a stone for you and a coin for me. The coin was very good. I sent her away with both.\" {n}He picks the whetstone up again.{/n} \"I carry messages for clients, Commander. I do not carry them between my employer and whatever my employer is lying down with. That is not a contract. That is a family. Keep your contracts in writing.\"",
+          "Text": "{n}Greybor sniffs as you come in, once, the way a dog does at a gate, and puts down his whetstone.{/n}\n\"You came back smelling of her lair, Commander. Hot stone and cold iron. I know that smell. I have been in caves with worse things in them, though not many, and I did not come out of any of them smiling.\" {n}He looks at you with no expression at all.{/n}\n\"She came to the gate again last night with a stone for you and a coin for me. The coin was very good. I sent her away with both.\" {n}He picks the whetstone up again.{/n} \"Letting a dragon through the north gate after curfew is a hanging matter for the watch, and my name is in the gate book beside hers twice already. No fee covers a third time. Keep your contracts in writing, Commander, and keep her out of mine.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -406321,7 +406369,7 @@
         {
           "Id": "start",
           "Speaker": "Nenio",
-          "Text": "{n}Nenio is standing at her window with a spyglass to her eye, pointed north at the Wound, and a folio open on the sill with a great many crossings-out in it.{/n}\n\"An umbral dragon,\" {n}she says, without turning round.{/n} \"In the city. Wearing a woman. For *hours*. Do you know what that costs? Illusions do not eat, as a rule. Hers ate the measuring rope I left on your windowsill; I found the knot on the roof.\" {n}She lowers the spyglass.{/n}\n\"I have catalogued a great many specimens. She is the first that has catalogued *me* back: she looked at me over your wall for some time, and I am fairly sure she was estimating my weight.\" {n}Her ears go up.{/n}\n\"So. An experiment. You will hold the end of a new rope, and I will hold the other end from the far side of the yard, and when she next wears the woman you will put your end round her waist. Distance is the control. You are the variable. Please do not be eaten before I have recorded the circumference.\"",
+          "Text": "{n}Nenio is standing at her window with a spyglass to her eye, pointed north at the Wound, and a folio open on the sill with a great many crossings-out in it.{/n}\n\"An umbral dragon,\" {n}she says, without turning round.{/n} \"In the city. Wearing a woman. For hours. Do you know what that costs? Illusions do not eat, as a rule. Hers ate the measuring rope I left on your windowsill; I found the knot on the roof.\" {n}She lowers the spyglass.{/n}\n\"I have catalogued a great many specimens. She is the first that has catalogued me back: she looked at me over your wall for some time, and I am fairly sure she was estimating my weight.\" {n}Her ears go up.{/n}\n\"So. An experiment. You will hold the end of a new rope, and I will hold the other end from the far side of the yard, and when she next wears the woman you will put your end round her waist. Distance is the control. You are the variable. Please do not be eaten before I have recorded the circumference.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -407507,7 +407555,7 @@
         {
           "Id": "boast",
           "Speaker": "Melazmera",
-          "Text": "{n}She laughs, and it goes out across the Wound like thunder, and far below a picket-torch stops moving.{/n}\n\"You are standing on the back of a dragon in the middle of the sky with nothing under you but a mile of air,\" {n}she says,{/n} \"and you are *boasting*. You are the stupidest thing I have ever carried.\" {n}She sounds delighted.{/n} \"Hold on, then, conqueror. I am going to show you how small you are.\"",
+          "Text": "{n}She laughs, and it goes out across the Wound like thunder, and far below a picket-torch stops moving.{/n}\n\"You are standing on the back of a dragon in the middle of the sky with nothing under you but a mile of air,\" {n}she says,{/n} \"and you are boasting. You are the stupidest thing I have ever carried.\" {n}She sounds delighted.{/n} \"Hold on, then, conqueror. I am going to show you how small you are.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -407563,7 +407611,7 @@
         {
           "Id": "letgo",
           "Speaker": "Melazmera",
-          "Text": "{n}You let go. For one heartbeat there is nothing holding you to her at all but speed and the wind; then her whole body rolls under you, a slow smooth half-turn that keeps you pressed to her neck as if you were glued there, and she comes up out of the smoke with you still on her back and your arms still out.{/n}\n\"You *let go*,\" {n}she says. She sounds scandalised, and something else.{/n} \"Nobody lets go. Everything I have ever carried held on until I ate it.\" {n}She flies on a while in silence.{/n} \"Do not do that again. I did not like it. Do it again.\"",
+          "Text": "{n}You let go. For one heartbeat there is nothing holding you to her at all but speed and the wind; then her whole body rolls under you, a slow smooth half-turn that keeps you pressed to her neck as if you were glued there, and she comes up out of the smoke with you still on her back and your arms still out.{/n}\n\"You let go,\" {n}she says. She sounds scandalised, and something else.{/n} \"Nobody lets go. Everything I have ever carried held on until I ate it.\" {n}She flies on a while in silence.{/n} \"Do not do that again. I did not like it. Do it again.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -407721,7 +407769,7 @@
         {
           "Id": "pay",
           "Speaker": "Melazmera",
-          "Text": "\"*Pay* them.\" {n}She stares at you. Then she laughs, and stops laughing, and stares at you again.{/n} \"Pay for a meal. After I have eaten it. To the people who did not even cook it.\"\n{n}She turns the stone over in her hand, and over again.{/n} \"You gave me a thing, and I did not know what to do with it, and now you tell me to give things to people I have never seen, for sailors I have already digested.\" {n}A long breath out.{/n} \"Very well. I have a sack of coin from the drowned country. The coins are square and nobody can spend them. Your quartermaster can work out who gets how many. I will hate every one of them.\"",
+          "Text": "\"Pay them.\" {n}She stares at you. Then she laughs, and stops laughing, and stares at you again.{/n} \"Pay for a meal. After I have eaten it. To the people who did not even cook it.\"\n{n}She turns the stone over in her hand, and over again.{/n} \"You gave me a thing, and I did not know what to do with it, and now you tell me to give things to people I have never seen, for sailors I have already digested.\" {n}A long breath out.{/n} \"Very well. I have a sack of coin from the drowned country. The coins are square and nobody can spend them. Your quartermaster can work out who gets how many. I will hate every one of them.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -407756,7 +407804,7 @@
         {
           "Id": "remember",
           "Speaker": "Melazmera",
-          "Text": "\"You *remember* them.\" {n}She says it slowly, testing it.{/n} \"I do not remember the things I eat. I remember that I ate them. That is different.\" {n}She looks down at the stone in her hand.{/n}\n\"Very well. You remember them, and I remember that I ate them, and between us nothing is forgotten.\" {n}She sets the stone down on the sill, carefully, as though putting something back where it belongs.{/n} \"That is more than most sailors get.\"",
+          "Text": "\"You remember them.\" {n}She says it slowly, testing it.{/n} \"I do not remember the things I eat. I remember that I ate them. That is different.\" {n}She looks down at the stone in her hand.{/n}\n\"Very well. You remember them, and I remember that I ate them, and between us nothing is forgotten.\" {n}She sets the stone down on the sill, carefully, as though putting something back where it belongs.{/n} \"That is more than most sailors get.\"",
           "Choices": [
             {
               "Text": "[Leave the stone where she put it.]",
@@ -407816,7 +407864,7 @@
         {
           "Id": "spare",
           "Speaker": "Melazmera",
-          "Text": "\"Your *protection*.\" {n}Her lip lifts off her teeth. For a moment you think she is going to go out of the window and down to the place with the boot on the door, and that there is nothing in the world you could do to stop her.{/n}\n{n}Then she hisses out a long breath, and the teeth go away.{/n} \"Very well. He is under your protection, and you are under my claw, and so I suppose he is under it too, the way a flea is on a dog.\" {n}She scowls.{/n} \"I will not eat him. I will sit on the roof across the street from his drinking-house and look at him through the window every night until he dies of it.\"",
+          "Text": "\"Your protection.\" {n}Her lip lifts off her teeth. For a moment you think she is going to go out of the window and down to the place with the boot on the door, and that there is nothing in the world you could do to stop her.{/n}\n{n}Then she hisses out a long breath, and the teeth go away.{/n} \"Very well. He is under your protection, and you are under my claw, and so I suppose he is under it too, the way a flea is on a dog.\" {n}She scowls.{/n} \"I will not eat him. I will sit on the roof across the street from his drinking-house and look at him through the window every night until he dies of it.\"",
           "Choices": [
             {
               "Text": "[Let her have that.]",
@@ -407877,7 +407925,7 @@
         {
           "Id": "me",
           "Speaker": "Melazmera",
-          "Text": "\"*You*.\" {n}She stares at you, and then she giggles, high and delighted.{/n} \"You made me go home hungry, and then you walked into my cave and gave me a present. You robbed me and paid me back in the same week and I did not even know it was the same thief.\" {n}She puts her chin on her knees.{/n} \"I should eat you. I keep saying that. It keeps not happening.\"",
+          "Text": "\"You.\" {n}She stares at you, and then she giggles, high and delighted.{/n} \"You made me go home hungry, and then you walked into my cave and gave me a present. You robbed me and paid me back in the same week and I did not even know it was the same thief.\" {n}She puts her chin on her knees.{/n} \"I should eat you. I keep saying that. It keeps not happening.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -407988,13 +408036,40 @@
             },
             {
               "Text": "Continue",
+              "Next": "crowned",
+              "Set": [],
+              "Requires": [
+                "melazmera.trickster.queen_crowned"
+              ],
+              "Forbids": [
+                "melazmera.queen_gone"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "denied",
+              "Set": [],
+              "Requires": [
+                "melazmera.trickster.queen_refused_crown"
+              ],
+              "Forbids": [
+                "melazmera.queen_gone",
+                "melazmera.trickster.queen_crowned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
               "Next": "promised",
               "Set": [],
               "Requires": [
                 "melazmera.trickster.queen_promised"
               ],
               "Forbids": [
-                "melazmera.queen_gone"
+                "melazmera.queen_gone",
+                "melazmera.trickster.queen_crowned",
+                "melazmera.trickster.queen_refused_crown"
               ],
               "Abort": false
             },
@@ -408005,7 +408080,9 @@
               "Requires": [],
               "Forbids": [
                 "melazmera.queen_gone",
-                "melazmera.trickster.queen_promised"
+                "melazmera.trickster.queen_promised",
+                "melazmera.trickster.queen_crowned",
+                "melazmera.trickster.queen_refused_crown"
               ],
               "Abort": false
             }
@@ -408013,9 +408090,57 @@
           "Portrait": ""
         },
         {
+          "Id": "crowned",
+          "Speaker": "Melazmera",
+          "Text": "\"The thing in the swamp is wearing a rock on her head,\" {n}she says, delighted.{/n} \"A grey rock, from your path. The harpy says it has sunk an inch into her and she will not let anyone near it, and she tells the whole island that the Knight Commander brought her a crown and that it shines.\" {n}She crunches another candle.{/n}\n\"You gave her a rock and called it a crown. I give thieves rocks and call them crowns. The difference is that she thanked you.\" {n}Her eyes gleam in the dark.{/n} \"You are very cruel, thief. I did not know.\"",
+          "Choices": [
+            {
+              "Text": "\"She was happy with it.\"",
+              "Next": "keep",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I learned it from you.\"",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Melazmera"
+        },
+        {
+          "Id": "denied",
+          "Speaker": "Melazmera",
+          "Text": "\"The thing in the swamp says you would not bring her my crown,\" {n}she says.{/n} \"She says you told her it was a rock, to her face, and she sank to the bottom of her pool and sulked, and she is going to remember it when the island is hers.\" {n}She crunches another candle.{/n}\n\"You told the puddle the truth. Nobody tells the puddle the truth; it is not worth the breath.\" {n}She looks at you in the dark she has made.{/n} \"Now she has two enemies on her island and one of them is in my hoard. She will not sleep for a hundred years.\"",
+          "Choices": [
+            {
+              "Text": "\"She's back in her swamp. Let her keep it.\"",
+              "Next": "keep",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Take me with you when you go and look.\"",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Melazmera"
+        },
+        {
           "Id": "turned",
           "Speaker": "Melazmera",
-          "Text": "\"The thing in the swamp turned on you.\" {n}She sounds delighted.{/n} \"She promised you her love and her affection and then she tried to drown you in her whirlpool, because she is too good for the likes of you. The harpy told me all of it. The harpy did the voice.\" {n}She does the voice too, wetly, and it is very good.{/n}\n\"You should have let me eat her the first time. I would have, if you had asked. I would have spat her out again, because she tastes of nothing, but she would have been *chewed*, and she would have remembered it.\"",
+          "Text": "\"The thing in the swamp turned on you.\" {n}She sounds delighted.{/n} \"She promised you her love and her affection and then she tried to drown you in her whirlpool, because she is too good for the likes of you. The harpy told me all of it. The harpy did the voice.\" {n}She does the voice too, wetly, and it is very good.{/n}\n\"You should have let me eat her the first time. I would have, if you had asked. I would have spat her out again, because she tastes of nothing, but she would have been chewed, and she would have remembered it.\"",
           "Choices": [
             {
               "Text": "\"She's back in her swamp. Let her keep it.\"",
@@ -408039,7 +408164,7 @@
         {
           "Id": "fought",
           "Speaker": "Melazmera",
-          "Text": "\"You fought the thing in the swamp.\" {n}She sounds delighted.{/n} \"The harpy says she swelled up and bubbled and screamed about her powafulness, and you went at her with steel until she had to pour herself away down her holes to get clear of you.\" {n}She does the voice, wetly, and it is very good.{/n}\n\"You should have let me eat her first. I would have spat her out again, because she tastes of nothing, but she would have been *chewed*, and she would have remembered it.\"",
+          "Text": "\"You fought the thing in the swamp.\" {n}She sounds delighted.{/n} \"The harpy says she swelled up and bubbled and screamed about her powafulness, and you went at her with steel until she had to pour herself away down her holes to get clear of you.\" {n}She does the voice, wetly, and it is very good.{/n}\n\"You should have let me eat her first. I would have spat her out again, because she tastes of nothing, but she would have been chewed, and she would have remembered it.\"",
           "Choices": [
             {
               "Text": "\"She's back in her swamp. Let her keep it.\"",
@@ -408189,7 +408314,7 @@
         {
           "Id": "anyone",
           "Speaker": "Melazmera",
-          "Text": "\"To anyone,\" {n}she repeats.{/n} \"To get into *my* cave.\" {n}She puts down the last candle and looks at you in the dark, and her eyes are the only light left.{/n} \"Then you are a liar and a thief, and you went into a dragon's cave on a puddle's word, and you did not even take the crown.\" {n}She licks tallow off her thumb.{/n} \"I am going to keep a very close watch on you.\"",
+          "Text": "\"To anyone,\" {n}she repeats.{/n} \"To get into my cave.\" {n}She puts down the last candle and looks at you in the dark, and her eyes are the only light left.{/n} \"Then you are a liar and a thief, and you went into a dragon's cave on a puddle's word, and you did not even take the crown.\" {n}She licks tallow off her thumb.{/n} \"I am going to keep a very close watch on you.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -408268,7 +408393,7 @@
         {
           "Id": "why",
           "Speaker": "Melazmera",
-          "Text": "\"Because you are small.\" {n}She says it simply.{/n} \"Your window is small, and your door, and your castle, and everything in it. I cannot come in as myself; I would have to take the roof off, and your priests would be tiresome.\" {n}She looks down at the hands she is wearing, turning them over.{/n}\n\"Making myself small is old magic. Every dragon worth eating has a little sorcery in her. I learned to fold myself down to go into the drowned king's hall, where the doors were narrow and full of fish. But small is only small. Small still looks like *me*.\" {n}She smiles.{/n} \"So I wrap her round me the way I wrap a rock in a crown. The first time was on my island, the night I came to your fire. The first time among your people was on your city's wall, and a sentry said good evening to me.\" {n}She sounds very proud of that.{/n}",
+          "Text": "\"Because you are small.\" {n}She says it simply.{/n} \"Your window is small, and your door, and your castle, and everything in it. I cannot come in as myself; I would have to take the roof off, and your priests would be tiresome.\" {n}She looks down at the hands she is wearing, turning them over.{/n}\n\"Making myself small is old magic. Every dragon worth eating has a little sorcery in her. I learned to fold myself down to go into the drowned king's hall, where the doors were narrow and full of fish. But small is only small. Small still looks like me.\" {n}She smiles.{/n} \"So I wrap her round me the way I wrap a rock in a crown. The first time was on my island, the night I came to your fire. The first time among your people was on your city's wall, and a sentry said good evening to me.\" {n}She sounds very proud of that.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -408328,7 +408453,7 @@
           "Choices": [
             {
               "Text": "[Look properly.]",
-              "Next": "after",
+              "Next": "after_shown",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -408336,7 +408461,7 @@
             },
             {
               "Text": "[Put your hand on her jaw.]",
-              "Next": "after",
+              "Next": "after_shown",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -408352,7 +408477,7 @@
           "Choices": [
             {
               "Text": "Continue",
-              "Next": "after",
+              "Next": "after_held",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -408362,9 +408487,27 @@
           "Portrait": "Melazmera"
         },
         {
-          "Id": "after",
+          "Id": "after_shown",
           "Speaker": "Narrator",
-          "Text": "{n}When she has gone, back out of the window with a sound like a sail filling, you find a long pale scar in the plaster of the ceiling, and a fine dust of it over your maps, and on the arm of your chair four white scores in the wood where something with claws held on while it was being a woman.{/n}\n{n}You do not have the chair mended.{/n}",
+          "Text": "{n}When she has gone, back out of the window with a sound like a sail filling, you find a long pale scar in the plaster of the ceiling where her horns went, and a fine dust of it over your maps, and on the arm of your chair four white scores in the wood where something with claws held on while it was not being a woman.{/n}\n{n}You do not have the chair mended.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "melazmera.trickster.beat.illusion"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "after_held",
+          "Speaker": "Narrator",
+          "Text": "{n}When she has gone, back out of the window with a sound like a sail filling, there is a mark on the palm of your hand the size of a coin, red and tight, like a burn from something very cold. It is gone by morning.{/n}\n{n}The arm of your chair, where her wrist lay, is rimed with frost until noon.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -408515,7 +408658,7 @@
         {
           "Id": "forbid",
           "Speaker": "Melazmera",
-          "Text": "{n}She is quiet for so long that you think she has gone to sleep. Then she says, without opening her eyes:{/n} \"Not one.\"\n\"They go down very fast, your soldiers, and nobody is eating them, and it is a waste. But not one.\" {n}The tip of her tail moves on the slates, once, like a cat's.{/n} \"You gave me a thing. I am giving you a thing back. That is how it works. I am learning how it works.\"",
+          "Text": "{n}She is quiet for so long that you think she has gone to sleep. Then she says, without opening her eyes:{/n} \"Not one.\"\n\"They go down very fast, your soldiers, and nobody is eating them, and it is a waste. But not one.\" {n}The tip of her tail moves on the slates, once, like a cat's.{/n} \"If I eat your dead, your priests will come for me with their bells, and you will have to choose between us, and you might choose badly. You are worth more to me than a soldier. Even a young one.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -408688,7 +408831,7 @@
         {
           "Id": "orders",
           "Speaker": "Melazmera",
-          "Text": "\"Some of them killed people.\" {n}She turns the ring on her finger, looking at it with new interest.{/n} \"That is the most interesting thing you have ever told me about it.\" {n}She holds it to her ear, as though it might speak.{/n}\n\"I thought it was jewellery. It is a claw. You wore a claw on your hand and every time you pressed it into wax, somebody went and died on it somewhere.\" {n}Her eyes gleam.{/n} \"And you gave it to me. You gave me your claw. Oh, thief. I did not know it was *that* kind of present.\"",
+          "Text": "\"Some of them killed people.\" {n}She turns the ring on her finger, looking at it with new interest.{/n} \"That is the most interesting thing you have ever told me about it.\" {n}She holds it to her ear, as though it might speak.{/n}\n\"I thought it was jewellery. It is a claw. You wore a claw on your hand and every time you pressed it into wax, somebody went and died on it somewhere.\" {n}Her eyes gleam.{/n} \"And you gave it to me. You gave me your claw. Oh, thief. I did not know it was that kind of present.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -408706,7 +408849,7 @@
         {
           "Id": "back",
           "Speaker": "Melazmera",
-          "Text": "{n}She pulls her hand back against her chest so fast that the window frame creaks, and for a heartbeat her fingers are claws and her eyes are all red, with no white in them at all.{/n}\n\"No.\" {n}She says it very softly.{/n} \"Things in my hoard do not leave. I told you on my island. You put it there, with your own hand, and now it is there.\"\n{n}Then, slowly, the claws are fingers again, and she looks at you with something like delight.{/n} \"You asked, though. You wanted it back and you *asked*, in my hearing, with my claw a foot from your throat.\" {n}She holds the ring up to the lamp.{/n} \"Ask again whenever you like. I enjoy saying no to you.\"",
+          "Text": "{n}She pulls her hand back against her chest so fast that the window frame creaks, and for a heartbeat her fingers are claws and her eyes are all red, with no white in them at all.{/n}\n\"No.\" {n}She says it very softly.{/n} \"Things in my hoard do not leave. I told you on my island. You put it there, with your own hand, and now it is there.\"\n{n}Then, slowly, the claws are fingers again, and she looks at you with something like delight.{/n} \"You asked, though. You wanted it back and you asked, in my hearing, with my claw a foot from your throat.\" {n}She holds the ring up to the lamp.{/n} \"Ask again whenever you like. I enjoy saying no to you.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -408828,7 +408971,7 @@
         {
           "Id": "mine",
           "Speaker": "Melazmera",
-          "Text": "\"*Yours*.\" {n}Her eyes narrow, and she looks at you, and then out of the window towards the gate, as though weighing something.{/n} \"You keep him, then. The way I keep things.\" {n}She sniffs.{/n} \"Very well. I will not take him. But I will know where he is, all the time, and when you are not using him, I will borrow him to look at thieves.\"",
+          "Text": "\"Yours.\" {n}Her eyes narrow, and she looks at you, and then out of the window towards the gate, as though weighing something.{/n} \"You keep him, then. The way I keep things.\" {n}She sniffs.{/n} \"Very well. I will not take him. But I will know where he is, all the time, and when you are not using him, I will borrow him to look at thieves.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -408936,7 +409079,7 @@
         {
           "Id": "gift",
           "Speaker": "Melazmera",
-          "Text": "\"It is a heart,\" {n}she says.{/n} \"From a thing with six arms and a crown of bone that came up out of the hole last night and wanted to eat your pickets. I ate it instead. I kept you the best part.\"\n\"You gave me a ring. A ring is a very small thing, thief, a thing a clerk could carry. *This* is a gift.\" {n}She lets the word sit there, pleased with the size of it.{/n} \"It is still warm. It will be warm for days. Things like that do not know when to stop. Eat it, and let me watch what you are made of. Or do not, and let me watch that.\"",
+          "Text": "\"It is a heart,\" {n}she says.{/n} \"From a thing with six arms and a crown of bone that came up out of the hole last night and wanted to eat your pickets. I ate it instead. I kept you the best part.\"\n\"You gave me a ring. A ring is a very small thing, thief, a thing a clerk could carry. This is a gift.\" {n}She lets the word sit there, pleased with the size of it.{/n} \"It is still warm. It will be warm for days. Things like that do not know when to stop. Eat it, and let me watch what you are made of. Or do not, and let me watch that.\"",
           "Choices": [
             {
               "Text": "[Cut a slice and eat it.]",
@@ -409233,7 +409376,7 @@
         {
           "Id": "sapphire",
           "Speaker": "Melazmera",
-          "Text": "{n}You put the grey stone on the shelf, at the end of the row of her letters, where it looks like one more of them.{/n}\n{n}She stares at it. Then she comes and picks it up, and weighs it in her palm, and puts it back into your pocket herself, and pats it flat.{/n} \"No. That one does not go on the shelf. That one goes where it goes. That is the one you took.\" {n}Her hand stays flat against you.{/n}\n\"The others are things I gave you. That one is a thing you *stole*, and I let you.\" {n}She sounds very serious.{/n} \"It is the most important thing in your hoard. Do not put it with the letters.\"",
+          "Text": "{n}You put the grey stone on the shelf, at the end of the row of her letters, where it looks like one more of them.{/n}\n{n}She stares at it. Then she comes and picks it up, and weighs it in her palm, and puts it back into your pocket herself, and pats it flat.{/n} \"No. That one does not go on the shelf. That one goes where it goes. That is the one you took.\" {n}Her hand stays flat against you.{/n}\n\"The others are things I gave you. That one is a thing you stole, and I let you.\" {n}She sounds very serious.{/n} \"It is the most important thing in your hoard. Do not put it with the letters.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -409428,7 +409571,7 @@
         {
           "Id": "start",
           "Speaker": "conversant",
-          "Text": "{n}The Fulsome Queen rears up out of her filth so fast that a wave of it slops over the lip of her pool.{/n}\n\"I know! I know you did! The whole island knows! The fat lizard came home and she did not roar, and she did not spit, and she did not come and chew anybody!\" {n}Her borrowed face is working with something between terror and greed.{/n} \"And you are not *dead*! Why are you not dead? Everybody who goes into that cave is dead!\"",
+          "Text": "{n}The Fulsome Queen rears up out of her filth so fast that a wave of it slops over the lip of her pool.{/n}\n\"I know! I know you did! The whole island knows! The fat lizard came home and she did not roar, and she did not spit, and she did not come and chew anybody!\" {n}Her borrowed face is working with something between terror and greed.{/n} \"And you are not dead! Why are you not dead? Everybody who goes into that cave is dead!\"",
           "Choices": [
             {
               "Text": "\"I didn't take anything. That's the trick.\"",
@@ -409454,7 +409597,7 @@
         {
           "Id": "trick",
           "Speaker": "conversant",
-          "Text": "\"You did not *take* anything.\" {n}She repeats it slowly, the way she might repeat a word in a language she has decided not to learn.{/n} \"Then what was the point of going in?\"\n{n}She thinks about it. You watch her think about it; it takes a while, and it bubbles.{/n} \"Oh! Oh, you are so cunning! You did not take anything *yet*. You are waiting until she trusts you. And then you will take *everything*, and she will not even come home, because she will think it is a present!\" {n}She hugs herself, wetly.{/n} \"That is almost as clever as me. Almost.\"",
+          "Text": "\"You did not take anything.\" {n}She repeats it slowly, the way she might repeat a word in a language she has decided not to learn.{/n} \"Then what was the point of going in?\"\n{n}She thinks about it. You watch her think about it; it takes a while, and it bubbles.{/n} \"Oh! Oh, you are so cunning! You did not take anything yet. You are waiting until she trusts you. And then you will take everything, and she will not even come home, because she will think it is a present!\" {n}She hugs herself, wetly.{/n} \"That is almost as clever as me. Almost.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -409470,7 +409613,7 @@
         {
           "Id": "talked",
           "Speaker": "conversant",
-          "Text": "\"*Talked*.\" {n}The Queen goes so still that the flies land on her.{/n} \"She does not talk. She eats. She ate my knights. She ate my slaves. She chewed *me*.\" {n}Her voice climbs to a wail.{/n} \"She only ever talked to me about *eating* me! She never sat and listened! I am the Queen! I am much more interesting than you!\"\n{n}Then, abruptly, she is sly again.{/n} \"Did she say anything about me? She did. She said I was beautiful. She said she was sorry she chewed me.\" {n}She does not wait for an answer.{/n} \"I knew it. Everybody is sorry, in the end.\"",
+          "Text": "\"Talked.\" {n}The Queen goes so still that the flies land on her.{/n} \"She does not talk. She eats. She ate my knights. She ate my slaves. She chewed me.\" {n}Her voice climbs to a wail.{/n} \"She only ever talked to me about eating me! She never sat and listened! I am the Queen! I am much more interesting than you!\"\n{n}Then, abruptly, she is sly again.{/n} \"Did she say anything about me? She did. She said I was beautiful. She said she was sorry she chewed me.\" {n}She does not wait for an answer.{/n} \"I knew it. Everybody is sorry, in the end.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -409710,7 +409853,7 @@
         {
           "Id": "ring",
           "Speaker": "Melazmera",
-          "Text": "{n}She lifts her left hand, where the seal rattles on her smallest finger.{/n}\n\"Here,\" {n}she says.{/n} \"Not on the heap. I tried it on the heap, for a night, and I could not sleep. It kept being warm. The others are warm from me. That one was warm from *you*, from inside your hand, and it would not stop.\" {n}She makes a fist round it.{/n} \"So I wear it. It does not fit. I do not care.\"\n{n}She puts the stones back on the heap one by one, in exactly the places they came from, and you realise she knows every one of those places the way you know the rooms of a house you grew up in.{/n}",
+          "Text": "{n}She lifts her left hand, where the seal rattles on her smallest finger.{/n}\n\"Here,\" {n}she says.{/n} \"Not on the heap. I tried it on the heap, for a night, and I could not sleep. It kept being warm. The others are warm from me. That one was warm from you, from inside your hand, and it would not stop.\" {n}She makes a fist round it.{/n} \"So I wear it. It does not fit. I do not care.\"\n{n}She puts the stones back on the heap one by one, in exactly the places they came from, and you realise she knows every one of those places the way you know the rooms of a house you grew up in.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -409855,7 +409998,7 @@
         {
           "Id": "hold",
           "Speaker": "Melazmera",
-          "Text": "\"No,\" {n}she agrees.{/n} \"Your hand is very small. It holds almost nothing.\" {n}She tips it, and the rain runs off it, and she watches it go.{/n} \"It held a ring. It put the ring down in my heap. It is the only hand that ever put anything *down* in my heap. It can be as small as it likes.\"\n{n}She lets go, and goes to the edge of the roof, and steps off it, and a moment later something enormous goes up past the gate-tower in the rain, and the sentry drops his cloak.{/n}",
+          "Text": "\"No,\" {n}she agrees.{/n} \"Your hand is very small. It holds almost nothing.\" {n}She tips it, and the rain runs off it, and she watches it go.{/n} \"It held a ring. It put the ring down in my heap. It is the only hand that ever put anything down in my heap. It can be as small as it likes.\"\n{n}She lets go, and goes to the edge of the roof, and steps off it, and a moment later something enormous goes up past the gate-tower in the rain, and the sentry drops his cloak.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -409934,7 +410077,7 @@
         {
           "Id": "laughs",
           "Speaker": "Melazmera",
-          "Text": "\"Other people.\" {n}She tilts her head.{/n} \"I do not laugh at jokes either. I laugh when things are funny. A goat running the wrong way, into my mouth. A paladin who says *foul beast* and then touches my crown. The thing in the swamp trying to be beautiful.\"\n\"You are the one your soldiers say makes jokes. So make one. If it is bad I will eat your candles.\"",
+          "Text": "\"Other people.\" {n}She tilts her head.{/n} \"I do not laugh at jokes either. I laugh when things are funny. A goat running the wrong way, into my mouth. A paladin who says foul beast and then touches my crown. The thing in the swamp trying to be beautiful.\"\n\"You are the one your soldiers say makes jokes. So make one. If it is bad I will eat your candles.\"",
           "Choices": [
             {
               "Text": "\"What do you call a dragon who gives things away?\"",
@@ -409966,7 +410109,7 @@
         {
           "Id": "joke",
           "Speaker": "Melazmera",
-          "Text": "{n}She stares at you with her mouth open. The fat lizard: the thing in the swamp's word for her, whined across a whole island for years.{/n}\n\"That is not a joke,\" {n}she says.{/n} \"That is a *slander*. That is the puddle's word.\" {n}And then she laughs, so hard she has to hold on to the arm of your chair, and four white scores appear in it that were not there before.{/n}\n\"I am going to keep it,\" {n}she says, when she can.{/n} \"The next knight the puddle sends into my cave, I am going to let him get his hand on the crown, and then I am going to come home and put my head down beside him and ask him what you call a dragon who gives things away. He will not know. I will tell him. And then I will eat him, and he will die not understanding it, and that will be the funniest thing that has ever happened on my island.\"",
+          "Text": "{n}She stares at you with her mouth open. The fat lizard: the thing in the swamp's word for her, whined across a whole island for years.{/n}\n\"That is not a joke,\" {n}she says.{/n} \"That is a slander. That is the puddle's word.\" {n}And then she laughs, so hard she has to hold on to the arm of your chair, and four white scores appear in it that were not there before.{/n}\n\"I am going to keep it,\" {n}she says, when she can.{/n} \"The next knight the puddle sends into my cave, I am going to let him get his hand on the crown, and then I am going to come home and put my head down beside him and ask him what you call a dragon who gives things away. He will not know. I will tell him. And then I will eat him, and he will die not understanding it, and that will be the funniest thing that has ever happened on my island.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -410148,7 +410291,7 @@
         {
           "Id": "her",
           "Speaker": "Melazmera",
-          "Text": "\"There is a man in your cellar with a lamp,\" {n}she says.{/n} \"He smells of candle-wax and certainty. He is asking where your prisoners went. He knows they did not escape; he has looked at the locks.\" {n}She sits on the corner of your desk and swings her foot.{/n} \"He is very thin. I do not think he would be worth the trouble. But he is asking, and he will go on asking, and in the end he will ask you.\"\n\"I can make him stop asking.\" {n}She says it lightly, as she said everything on Colyphyr.{/n} \"Tonight. He would go down to the cellar with his lamp, and there would be the cold, and then there would not be anything. Your gaoler would write *escaped* again. He is a sensible man.\"",
+          "Text": "\"There is a man in your cellar with a lamp,\" {n}she says.{/n} \"He smells of candle-wax and certainty. He is asking where your prisoners went. He knows they did not escape; he has looked at the locks.\" {n}She sits on the corner of your desk and swings her foot.{/n} \"He is very thin. I do not think he would be worth the trouble. But he is asking, and he will go on asking, and in the end he will ask you.\"\n\"I can make him stop asking.\" {n}She says it lightly, as she said everything on Colyphyr.{/n} \"Tonight. He would go down to the cellar with his lamp, and there would be the cold, and then there would not be anything. Your gaoler would write escaped again. He is a sensible man.\"",
           "Choices": [
             {
               "Text": "\"No. He's mine to deal with.\"",
@@ -410237,7 +410380,7 @@
         {
           "Id": "do",
           "Speaker": "Melazmera",
-          "Text": "{n}She smiles at you, slowly, with every tooth she has, and for a moment the woman is not there at all.{/n}\n\"There,\" {n}she says softly.{/n} \"You are learning what I am for.\"\n{n}She goes out over the sill. In the morning the inquisitor's acolyte comes to the gatehouse alone, white to the lips, and says that his master went down to the cellars before dawn with the lamp and told him to wait on the stairs, and that the lamp went out, and that his master did not come up. The gaoler writes *missing* in his book, this time, not *escaped*. He does not look at you when he writes it. That is worse.{/n}",
+          "Text": "{n}She smiles at you, slowly, with every tooth she has, and for a moment the woman is not there at all.{/n}\n\"There,\" {n}she says softly.{/n} \"You are learning what I am for.\"\n{n}She goes out over the sill. In the morning the inquisitor's acolyte comes to the gatehouse alone, white to the lips, and says that his master went down to the cellars before dawn with the lamp and told him to wait on the stairs, and that the lamp went out, and that his master did not come up. The gaoler writes missing in his book, this time, not escaped. He does not look at you when he writes it. That is worse.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -410311,7 +410454,7 @@
         {
           "Id": "happened",
           "Speaker": "Melazmera",
-          "Text": "\"You put a ring in my heap, and now you are in my hoard. I did not take you. You *gave*, and it held better than anything I ever took.\" {n}She says it like an accusation.{/n} \"So I wanted to know if it works for me. If I give a thing to one of your people, is she mine?\"\n\"There is a woman in your lower town who sits by the well with a bowl. I made myself small and plain and old, and took one of my square coins from the drowned country, and walked up to her bowl to put it in.\" {n}Her hand closes.{/n} \"And I could not open my hand. It was *mine*. I stood in front of her so long that she asked if I was ill. Then she gave me a coin out of *her* bowl, because she thought I was poorer than she was.\"",
+          "Text": "\"You put a ring in my heap, and now you are in my hoard. I did not take you. You gave, and it held better than anything I ever took.\" {n}She says it like an accusation.{/n} \"So I wanted to know if it works for me. If I give a thing to one of your people, is she mine?\"\n\"There is a woman in your lower town who sits by the well with a bowl. I made myself small and plain and old, and took one of my square coins from the drowned country, and walked up to her bowl to put it in.\" {n}Her hand closes.{/n} \"And I could not open my hand. It was mine. I stood in front of her so long that she asked if I was ill. Then she gave me a coin out of her bowl, because she thought I was poorer than she was.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -410327,7 +410470,7 @@
         {
           "Id": "coin",
           "Speaker": "Melazmera",
-          "Text": "{n}She opens her fist. There is a small copper coin in it, worn nearly smooth, the kind that buys half a loaf.{/n}\n\"So she gave to *me*.\" {n}Her voice is very flat.{/n} \"A beggar. With a bowl. She put a thing in my hand and walked off, and now I have a thing of hers, and she has a claim on me, and I did not agree to it.\" {n}The lamp gutters.{/n} \"I have been thinking all day about going back and eating her, so that the claim goes inside me where it belongs.\"",
+          "Text": "{n}She opens her fist. There is a small copper coin in it, worn nearly smooth, the kind that buys half a loaf.{/n}\n\"So she gave to me.\" {n}Her voice is very flat.{/n} \"A beggar. With a bowl. She put a thing in my hand and walked off, and now I have a thing of hers, and she has a claim on me, and I did not agree to it.\" {n}The lamp gutters.{/n} \"I have been thinking all day about going back and eating her, so that the claim goes inside me where it belongs.\"",
           "Choices": [
             {
               "Text": "\"Don't. You lost fairly. Keep the coin.\"",
@@ -410359,7 +410502,7 @@
         {
           "Id": "keep",
           "Speaker": "Melazmera",
-          "Text": "\"*Lost*.\" {n}She looks at you as if you had struck her, and then, slowly, she laughs, and it is not a pleasant sound.{/n} \"Yes. I lost. To a woman with a bowl.\" {n}She puts the copper in the pocket of the gown that is not there, and it vanishes.{/n}\n\"I will keep it. Not on the heap; the heap is for things I chose. I will wear it, where I can bite it, and every time I bite it I will remember that something in this city beat me with half a loaf.\" {n}She stands.{/n} \"I am going to sit on the roof across from her well for a year, thief. She will be the safest beggar in the world, and she will never know why she cannot sleep.\"",
+          "Text": "\"Lost.\" {n}She looks at you as if you had struck her, and then, slowly, she laughs, and it is not a pleasant sound.{/n} \"Yes. I lost. To a woman with a bowl.\" {n}She puts the copper in the pocket of the gown that is not there, and it vanishes.{/n}\n\"I will keep it. Not on the heap; the heap is for things I chose. I will wear it, where I can bite it, and every time I bite it I will remember that something in this city beat me with half a loaf.\" {n}She stands.{/n} \"I am going to sit on the roof across from her well for a year, thief. She will be the safest beggar in the world, and she will never know why she cannot sleep.\"",
           "Choices": [
             {
               "Text": "Continue",

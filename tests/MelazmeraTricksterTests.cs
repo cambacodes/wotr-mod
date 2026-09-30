@@ -376,6 +376,22 @@ internal static class MelazmeraTricksterTests
               && !S(P + "epilogue.together").Nodes[0].Paragraphs.Any(pg => pg.Text.Contains("a hoard of a different kind")),
             "The kept copper is not read by the ending, or the ending settles how she shares.");
 
+        // No authoring notation reaches the player; aftermaths and recollections follow the branch taken.
+        check(story.Scenes.Where(s => s.Relationship == "melazmera").SelectMany(s => s.Nodes)
+                  .All(n => !n.Text.Contains("*") && n.Choices.All(c => !c.Text.Contains("*")) && n.Paragraphs.All(pg => !pg.Text.Contains("*"))),
+            "Markdown emphasis survives in Melazmera's text.");
+        var ill = S(P + "beat.illusion");
+        check(ill.Nodes.Single(n => n.Id == "stay").Choices.All(c => c.Next == "after_held")
+              && !ill.Nodes.Single(n => n.Id == "after_held").Text.Contains("ceiling"),
+            "The illusion's aftermath shows damage from a branch the player did not take.");
+        check(Paths(shared, Later(story, crown, 30)).Where(o => o.path.Any(e => e.node == "challenge")).Count() == 0
+              && Paths(shared, Later(story, Take(commit, ready, "crown3", 0, Declined), 30)).Any(o => o.path.Any(e => e.node == "challenge")),
+            "The shared hunt assigns the Commander an experimental motive the player never gave.");
+        check(Reaches(P + "queen_crowned", "crowned") && Reaches(P + "queen_refused_crown", "denied")
+              && !Paths(queenBeat, World(story, 5, Drezen, "trickster.ever", Returned, Message, "melazmera.queen_contract_offered", P + "queen_promised", P + "queen_crowned"))
+                    .Any(o => o.path.Any(e => e.node == "promised")),
+            "The harpy's news forgets how the crown was settled.");
+
         // Pages: one per outcome.
         string[] Shown(params string[] flags) => pages.Where(s => Avail(s, World(story, 6, Drezen, flags))).Select(s => s.Id).ToArray();
         check(Shown("trickster.ever", Returned, Committed, StoneKept, Seal).SequenceEqual(new[] { P + "epilogue.together" })
