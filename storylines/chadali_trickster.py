@@ -231,6 +231,7 @@ SCENES.append(scene(P + "epilogue.commit", "", "ChadaliEpilogue", 6, "", [
         c("[Give her back the coin.]", "coin"),
         paragraphs=(
             p("{n}The orange was bruised on one side, the way the first one had been, on the road from the sealed hall.{/n}", requires=(LATE,)),
+            p("{n}She had felt the coin fall at the rift, the night the Commander called in the luck she had borrowed, and had paid it all back at once, the way she did everything. She had come up the road, she said, to see what it had bought.{/n}", requires=("chadali.lastcall.called",)),
             p("{n}She had kept the apology the herald read in the square; she took it out of the basket, folded very small, and put it on top of the cookies, where the Commander would see it.{/n}", requires=(APOLOGISED,)),
             p("{n}Before anything else she held out her hand, palm up, and waited until the Commander understood, and pricked a thumb on the brooch-pin she offered. \"The needle,\" she said. \"You promised. That's paid.\"{/n}", requires=(NEEDLE_OWED,)),
         )),
@@ -249,14 +250,16 @@ SCENES.append(scene(P + "epilogue.declined", "", "ChadaliEpilogue", 6, "", [
     ForbidOverrides={"council.fought": RETURNED, "council.fought_nocta_allied": RETURNED}, **EP))
 
 SCENES.append(scene(P + "epilogue.lucky_night", "", "ChadaliEpilogue", 6, "", [
-    nar("page", '''{n}The coin never fell. It stood on its edge on a shelf in the Commander's quarters for the rest of their life together, and on the nights Chadali stayed, she would flick it with one finger on her way to bed, just to watch it refuse.{/n}''',
+    nar("page", '''{n}The coin stood on its edge on a shelf in the Commander's quarters for the rest of their life together, and on the nights Chadali stayed, she would flick it with one finger on her way to bed, just to watch it refuse to fall.{/n}''',
         paragraphs=(
+            p("{n}It had fallen once, at the rift, the night the Commander called in her luck. She stood it back up herself the next morning, and would never say which face it had shown.{/n}", requires=("chadali.lastcall.called",)),
             p("{n}The Council went on meeting without her for a while, and then stopped. \"They pretend they never met,\" she said. \"I don't. I remember every one of them. I send them all cookies. Cobblehoof sends them back.\"{/n}", requires=("council.epilogue_ceased",)),
             p("{n}At the Council's victory feast she sat at the head of the table beside the Commander, which nobody had voted for, and handed round cookies until Eritrice gave up and minuted it.{/n}", requires=("council.epilogue_feast",)),
             p("{n}The Council went on convening, and she went on bringing cookies to it, and every session she left a chair empty beside her with a coin standing on its edge on the seat.{/n}", requires=("council.epilogue_convened",)),
-            p("{n}The tree from the top of Axis took in the best corner of the citadel garden, and bore fruit in its third year. The gardener swore the oranges were ordinary. Nobody who ate one believed him.{/n}", requires=(ORANGE_TREE,)),
-            p("{n}She never paid back the luck she had borrowed on the day of the coin. She said it was invested.{/n}", requires=(LUCK_LENT,), forbids=(LUCK_OWED,)),
-            p("{n}She paid back the borrowed luck, with interest, a little at a time, for the rest of the Commander's life. The Commander never once rolled lower than a four.{/n}", requires=(LUCK_OWED,)),
+            p("{n}The tree from the top of Axis took in the best corner of the citadel garden, and bore fruit in its second year. The gardener swore the oranges were ordinary. Nobody who ate one believed him.{/n}", requires=(ORANGE_TREE,)),
+            p("{n}She never paid back the luck she had borrowed on the day of the coin. She said it was invested.{/n}", requires=(LUCK_LENT,), forbids=(LUCK_OWED, "chadali.lastcall.called")),
+            p("{n}She paid back the borrowed luck, with interest, a little at a time, for the rest of the Commander's life. The Commander never once rolled lower than a four.{/n}", requires=(LUCK_OWED,), forbids=("chadali.fortunes.paid_back", "chadali.lastcall.called")),
+            p("{n}She had paid back the borrowed luck all at once, with interest, in the hall, before the end. The Commander never once rolled lower than a four afterwards, and she said that was only the interest.{/n}", requires=(LUCK_OWED, "chadali.fortunes.paid_back"), forbids=("chadali.lastcall.called",)),
         ))],
     requires=("trickster.ever", COMMITTED), forbids=(CLOSED, DECLINED, "sacrifice"),
     ForbidOverrides={DECLINED: COMMITTED, "sacrifice": "trickster.commander_back"}, **EP))

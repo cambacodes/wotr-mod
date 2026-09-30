@@ -229,6 +229,26 @@ internal static class ChadaliTricksterTests
             "The late yes has no staged threshold and aftermath.");
         // Sol CAN: the Chapter 3 knucklebones recall no Abyss expedition.
         check(!Sc(W + "knucklebones").Nodes.Any(n => n.Text.Contains("Abyss")), "Knucklebones (Chapters 3/5) recall the Chapter 4 Abyss.");
+        // Sol r2. CAN: no invented Shyka testimony, no Abyss in the future tense; INT: no rescue asserted before any extraction.
+        check(!Sc(S + "a_dull_future").Nodes.Any(n => n.Text.Contains("can't see you")) && !Sc(F + "rigged").Nodes.Any(n => n.Text.Contains("Abyss"))
+              && !Sc(S + "an_interesting_way").Nodes.Any(n => n.Text.Contains("avoided the needle")),
+            "Chadali recalls an unplayed or invented event.");
+        // INT: the kept promise is recalled only by the Commander who made it.
+        var needles = Sc(F + "sharp_needles");
+        check(Choice(needles, "start", 2).Next == "sorry" && Choice(needles, "start", 2).Requires.Contains(F + "promised_no_force"),
+            "The needle's apology recalls a promise never made.");
+        // BEL: the feint is a proposal the Commander signs or refuses on the page.
+        var feint = Sc(S + "you_bet_with_people");
+        check(feint.Nodes.Single(n => n.Id == "start").Choices.Count == 4 && Choice(feint, "start", 3).Next == "refuse"
+              && !feint.Nodes.Single(n => n.Id == "start").Text.Contains("You sent a company"),
+            "The feint is an atrocity the player never chose.");
+        // BEL/COX: the committed page agrees with a called Last Call (the coin fell once) and with a loan paid back in the hall.
+        var paras = pageNight.Nodes[0].Paragraphs;
+        check(paras.Any(p => p.Requires.Contains("chadali.lastcall.called")) && !pageNight.Nodes[0].Text.Contains("never fell")
+              && paras.Where(p => p.Requires.Contains(P + "cost.luck_owed")).Count() == 2
+              && paras.Single(p => p.Requires.Contains(P + "cost.luck_owed") && !p.Requires.Contains(F + "paid_back")).Forbids.Contains(F + "paid_back")
+              && pageCommit.Nodes[0].Paragraphs.Any(p => p.Requires.Contains("chadali.lastcall.called")),
+            "The romance pages contradict the Last Call call-in or the repaid loan.");
 
         // The courtship: every sitting reachable, the question only after the wager, the night only after the commit.
         foreach (var sitting in sittings)
@@ -239,7 +259,8 @@ internal static class ChadaliTricksterTests
             "The honey night opens before the commit.");
         check(night.Nodes.Any(n => n.Id == "cut") && night.Nodes.Single(n => n.Id == "look").Choices.Single().Set.Contains(F + "night"),
             "The night does not reach its threshold and cut.");
-        var courting3 = World(story, 3, "trickster.ever", "chadali.started", "chadali.called_babbling", "chadali.cobblehoof_stopped", "eritrice.proposed_key");
+        // Sol r2 HOW: no Chapter 4 key proposal in a Chapter 3 fixture.
+        var courting3 = World(story, 3, "trickster.ever", "chadali.started", "chadali.called_babbling", "chadali.cobblehoof_stopped");
         foreach (var id in new[] { W + "the_recipe", W + "born_lucky", W + "her_worshippers", W + "a_lucky_charm", W + "the_old_fellow",
                                    W + "just_joking", W + "odious_questions", W + "knucklebones", W + "a_free_space", W + "so_gloomy",
                                    W + "the_real_wager", S + "what_you_said", S + "a_dull_future", S + "an_interesting_way",

@@ -76,7 +76,7 @@ fortune(BAG, "Will it hurt?", '"You\'ve been quiet since the cauldron."', [
     nar("open", '''{n}The bag Cobblehoof carried lies folded on the Council table, empty. Chadali is sitting as far from it as the table allows, and she has not baked. Her hands are in her lap, turning the white-gold ring round and round.{/n}''',
         c("Continue", "start")),
     ch("start", '''"Shyka smiled at me." {n}She says it to the ring.{/n} "When I asked if it would hurt. They smiled, and said yes, and said it takes a part of your very being, and that they've done it many times before. Cheerfully. Like a recipe."
-"And then everyone looked at me. Because I'm the one who says everything will work out." {n}Her voice wobbles.{/n} "I said, is there no other way? I sounded so small. I've never sounded small in this hall in my life."''',
+"And then everyone looked at me. Because I'm the one who says everything will work out." {n}Her voice wobbles.{/n} "I said, is there no other way? I sounded so small. I hated it."''',
       c('"Nobody will take it from you by force. Not while I\'m here."', "promise", flags=(PROMISED_SAFE,)),
       c('"It will hurt. I won\'t lie to you. But it won\'t be for nothing."', "truth", flags=(TOLD_IT_HURTS,)),
       c('"There might be another way. I\'m looking."', "looking")),
@@ -98,7 +98,7 @@ fortune(BAG, "Will it hurt?", '"You\'ve been quiet since the cauldron."', [
 {n}She squeezes your fingers so hard her bracelets bite.{/n} "Hold my hand. Don't look at the needle. Tell me a joke. A bad one. I like the bad ones."''',
       c("[Promise.]")),
     ch("brave", '''{n}She straightens up in her chair, the way you have seen soldiers straighten when the horns sound.{/n}
-"Then I'll be brave. I don't know how. I've never had to be; everything always just went well." {n}She pulls the folded bag across the table, at last, and looks at it.{/n}
+"Then I'll be brave. I'm an empyreal lord; I know how. I just don't usually have to bother." {n}She pulls the folded bag across the table, at last, and looks at it.{/n}
 "I'll believe it'll be all right. And then I'll check the oven."''',
       c("[Stay with her.]")),
 ], requires=(STARTED, "council.cauldron_given"), forbids=(BAG,), chapters=(5,))
@@ -223,7 +223,7 @@ fortune(NIGHT, "Honey", '"You sent for me. After dark."', [
     nar("open", '''{n}The hall is lit only by candles, dozens of them, set along the Council table in a crooked, happy line that someone has plainly done without measuring. There is a smell of honey and warm wax. The chairs have been pushed back to the walls, and in the middle of the floor someone has laid out every cushion in the hall, and a few that were not in the hall before.{/n}''',
         c("Continue", "start")),
     ch("start", '''{n}Chadali is standing in the middle of the cushions in a robe of yellow silk so thin the candlelight comes through it. Her hair is down. She has taken every flower out of it but one.{/n}
-"I didn't leave anything to chance." {n}She is trying very hard to look serene, and her hands are twisting in the silk.{/n} "Not one thing. I counted the candles. I chose the cushions. I've never planned anything in my whole existence. It's exhausting. I don't know how you do it every day."''',
+"I didn't leave anything to chance." {n}She is trying very hard to look serene, and her hands are twisting in the silk.{/n} "Not one thing. I counted the candles. I chose the cushions. Planning is exhausting. I don't know how you do it every day, and I'm not going to do it again for at least a century."''',
       c('[Take her hands.] "You did it perfectly."', "hands"),
       c('"You forgot one thing."', "forgot"),
       c('[Kiss her.]', "kiss")),
@@ -232,7 +232,7 @@ fortune(NIGHT, "Honey", '"You sent for me. After dark."', [
 {n}She stares at you. Then she laughs, low and breathless, nothing like the bright laugh of the Council sessions.{/n} "Oh. That. Yes. I forgot to let you do something."''',
       c("[Kiss her.]", "kiss")),
     ch("hands", '''{n}Her hands are warm and shaking, and they stop shaking when you hold them.{/n}
-"Perfectly." {n}She tries the word out.{/n} "Nobody's ever said I did anything perfectly. They say 'lucky'. They say 'what a nice surprise'." {n}She looks up at you, and her eyes in the candlelight are very dark.{/n}
+"Perfectly." {n}She tries the word out, and decides it suits her.{/n} "Yes. It was. Everyone else says 'lucky'. They say 'what a nice surprise'. Tonight wasn't a surprise; tonight was me." {n}She looks up at you, and her eyes in the candlelight are very dark.{/n}
 "I wanted it to be on purpose. Tonight. All of it. I wanted you to know I meant it."''',
       c("[Kiss her.]", "kiss")),
     ch("kiss", '''{n}She tastes of honey. Of course she does. She kisses the way she laughs, all at once and with her whole body, up on her toes with both hands knotted in your sleeves, and when she runs out of breath she does not stop so much as pause and begin again.{/n}
@@ -288,7 +288,7 @@ fortune(RIGGED, "Rigged", '"Why are you looking at me like that?"', [
       c('"I wanted your people to have a good month. Is that so bad?"', "bad"),
       c('"I wanted you to see it work. Your luck. For once."', "see"),
       c('[Trickster] "Someone had to. You\'re always giving it away."', "giving")),
-    ch("bad", '''"Yes!" {n}The calm cracks.{/n} "Yes, it's bad! They think it was me. They think their prayers worked. They'll pray harder, and next month you'll be in the Abyss, and nothing will happen, and they'll think I've stopped loving them."
+    ch("bad", '''"Yes!" {n}The calm cracks.{/n} "Yes, it's bad! They think it was me. They think their prayers worked. They'll pray harder, and next month you'll be off marching somewhere without a stamp, and nothing will happen, and they'll think I've stopped loving them."
 {n}She throws the letter on the table.{/n} "You can't rig somebody's luck because you love them. That's not luck, that's a leash."''',
       c("Continue", "choose")),
     ch("see", '''{n}That stops her. For a moment she looks at you with a kind of helpless tenderness, and then her mouth sets again.{/n}
@@ -366,12 +366,12 @@ fortune(SHARING, "Sharing", '"Something\'s on your mind."', [
       c('"Then what\'s on your mind?"', "mind")),
     ch("mind", '''{n}She hesitates, and the hesitation goes on for long enough that you understand it is serious.{/n}
 "I don't want to be last." {n}Small, and very clear.{/n} "Not first. I don't need first. First is for people who count. I just don't want to be the one you come to when there's nothing left of you. The crumbs at the bottom of the parcel."
-{n}Her fingers have stopped on the cushion.{/n} "Is that selfish? It feels selfish. I've never wanted anything for myself before. I don't know how to tell."''',
+{n}Her fingers have stopped on the cushion.{/n} "Is that selfish? Alichino would say it's selfish and send me an invoice for it. I've decided I don't care what Alichino would say."''',
       c('"It isn\'t selfish. You won\'t be last."', "not_last", flags=(NOT_LAST,)),
       c('"Sometimes you will be. The war takes most of me."', "war")),
     ch("not_last", '''"Promise?" {n}The little finger, again.{/n}
 {n}You link it. She holds on a while, and her face is very serious, and then it breaks into the brightest smile you have ever seen on it.{/n}
-"There. I asked for something for me, and I got it. Oh, that's frightening. That's so much more frightening than luck." {n}She flops back onto the cushions.{/n} "I'm going to do it again. Not often. Just sometimes. To see if I like it."''',
+"There. I asked for something, and I got it, and nobody had to lose for it. That's my favourite kind of luck." {n}She flops back onto the cushions.{/n} "I'm going to do it again. Often. Alichino should be very worried."''',
       c("[Lie down beside her.]")),
     ch("war", '''{n}She takes that, and turns it over, the way she turns her ring.{/n}
 "Then I'll share with the war too. It can have the most of you. I'll have the best of you." {n}Firmly.{/n} "That's a different thing. The war doesn't know how to tell the difference, and I do."

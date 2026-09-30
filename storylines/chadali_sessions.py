@@ -109,7 +109,7 @@ session(FORESEEN, "A dull future", '"Does Shyka frighten you?"', [
       c('"Are they right?"', "right"),
       c('"Futures are just odds. You\'re chance. You should be the one they\'re afraid of."', "afraid")),
     ch("right", '''"Maybe!" {n}Brightly.{/n} "I bake. I send luck. I clap at meetings. It's not very exciting, if you're a thing that's seen the end of worlds."
-{n}Then she looks at you, and her head tilts.{/n} "But they can't see you. Did you know? They said so, at the table, when you found the way into the Lexicon. They laughed and laughed. They said you were the first interesting thing in a thousand years because you kept not happening the way you were supposed to."''',
+{n}Then she looks at you, and her head tilts.{/n} "But you're not dull. I've watched Shyka watching you. They lean forward when you talk, and Shyka never leans forward for anybody. I think you make their dull pages interesting. I think you're the only reason they still come to our meetings."''',
       c("Continue", "bet")),
     ch("afraid", '''{n}She blinks at you. Then she sits up very straight, and her bracelets clink, and she looks, for a moment, genuinely formidable.{/n}
 "Oh. Yes. I should be, shouldn't I?" {n}She considers the empty chair with new interest.{/n} "They see a page, and then I happen, and the page is wrong. That's what I'm for. That's what I've always been for."
@@ -132,7 +132,7 @@ session(FORESEEN, "A dull future", '"Does Shyka frighten you?"', [
 
 session(LEXICON, "Written in a very interesting way", '"Did you understand the Lexicon?"', [
     ch("start", '''"No!" {n}Cheerfully.{/n} "I didn't really understand any of it, but it's written in a very interesting way! I said so at the table. Eritrice wrote it down with the little squiggle."
-"But I clapped. When you found the way in. I said, what an amazing discovery, you really are our lucky charm." {n}She hesitates.{/n} "Will you explain it to me? Slowly? Nobody explains things to me. They think I'll just clap."''',
+"But I clapped. When you found the way in. I said, what an amazing discovery, you really are our lucky charm." {n}She hesitates.{/n} "Will you explain it to me? Slowly? Alichino explains things to me in a voice for children, and I clap to annoy him."''',
       c('"The Worldwound needs a key. The Council thinks it could be me."', "key", requires=(PROPOSED_KEY,)),
       c('"It says how the Wound was made, and how it might be closed."', "how", forbids=(PROPOSED_KEY,))),
     ch("key", '''{n}She stops smiling. You watch her work through it, slowly, the way she asked.{/n}
@@ -147,7 +147,7 @@ session(LEXICON, "Written in a very interesting way", '"Did you understand the L
     ch("didnt_know", '''"I should have known." {n}Fiercely.{/n} "I should have asked. Instead I said 'how interesting' and ate a cookie." {n}She wipes her eyes, angrily, with the heel of her hand.{/n}
 "I'm going to listen properly now. At every session. Even the boring parts. Even Alichino's footnotes." {n}She looks at you.{/n} "And if anybody says 'at worst' again, I'm going to throw a cookie at them. A hard one. From last week."''',
       c("Continue", "close")),
-    ch("worst", '''"You're good at avoiding things." {n}She nods, too many times.{/n} "Yes. That's true. You avoided the needle for me. You avoided Shyka seeing you. You're very good at it."
+    ch("worst", '''"You're good at avoiding things." {n}She nods, too many times.{/n} "Yes. That's true. You'll have to avoid this one too. You'll have to be better at it than you've ever been at anything."
 {n}And then, with sudden fury, she slaps the table so hard the coin on it jumps and, somehow, lands on its edge again.{/n} "But don't make it a joke! Not this one! You can joke about everything else, I'll laugh at everything else, but not this."''',
       c('"Not this one. I promise."', "close")),
     ch("close", '''{n}She takes your hand and turns it over and looks at the palm, the way fortune-tellers do in the markets, though she does not pretend to read anything there.{/n}
@@ -200,7 +200,7 @@ session(SHRINE, "A parcel for the shrine", '"You want me to carry something?"', 
 "No, you're right. You're the Commander. You can't go knocking on little doors with cracks in the steps." {n}She pats the parcel.{/n}
 "A runner, then. A fast one. Tell them to knock loudly; the dog's a bit deaf." {n}She lets go of it slowly.{/n} "It'll still get there. That's what counts. Mostly."''',
       c("Continue", "close")),
-    ch("close", '''"Thank you." {n}She says it very simply, without any flourish.{/n} "Nobody's ever carried anything for me before. I'm always the one carrying things."''',
+    ch("close", '''"Thank you." {n}She says it very simply, without any flourish.{/n} "I'm usually the one carrying things. It's very nice to watch somebody else do it badly."''',
       c("[Carry it.]")),
 ], requires=(PRAYERS,), forbids=(SHRINE,))
 
@@ -270,18 +270,19 @@ session(WISH, "What chance wishes for", '"What do you wish for, Chadali?"', [
 session(BETTING_LIVES, "You bet with people", '"You\'ve heard about the feint."', [
     nar("open", '''{n}She has heard. You can see it before she says a word: the parcel on the table is unopened, and she is sitting on the far side of it, with the width of the Council table between you, which she has never done since the night of the honey.{/n}''',
         c("Continue", "start")),
-    ch("start", '''"You sent a company out ahead, in plain sight, so the demons would go after them." {n}Her voice is very level.{/n} "So the rest of the army could go round. You knew what would happen to them. You sent them anyway."
-"I'm chance. I know about odds. I know you had to." {n}Her hands are fists.{/n} "But you bet with people. And you won. And you came here, afterwards, and you'll want a cookie."''',
-      c('"Yes. I bet with people. That\'s what command is. I won\'t pretend otherwise."', "command"),
-      c('"I didn\'t want a cookie. I wanted you."', "wanted"),
-      c('[Say nothing.]', "silent")),
+    ch("start", '''"Your captains want to send a company out ahead, in plain sight, so the demons go after them and the rest of the army can go round. It's on your war table. Alichino told me; he called it 'sound'." {n}Her voice is very level.{/n} "They know what would happen to that company. So do you."
+"I'm chance. I know about odds. I know somebody has to decide." {n}Her hands are fists.{/n} "So decide. Here, where I can see. Will you sign it?"''',
+      c('"Yes. I\'ll sign it. I bet with people. That\'s what command is. I won\'t pretend otherwise."', "command"),
+      c('"I\'ll sign it. I didn\'t come here for a cookie. I came for you."', "wanted"),
+      c('[Say nothing. Sign it in front of her.]', "silent"),
+      c('"No. We go the long way round."', "refuse")),
     ch("command", '''"Don't pretend otherwise." {n}She nods, sharply.{/n} "Good. I'd hate you if you pretended. I don't hate you."
 "But I want you to feel it. Every one of them. Not just the numbers. I don't care if it slows you down." {n}Her eyes are wet and hard.{/n} "Promise me you'll feel it, and I'll forgive you for winning. I can't forgive you for not minding."''',
       c('"I feel it. I\'ll keep feeling it."', "felt", flags=(FELT_IT,)),
       c('"If I felt every one, I couldn\'t do the job."', "job")),
     ch("wanted", '''{n}That stops her. For a moment the hard face wavers.{/n}
-"That's worse," she says finally. "That's worse and better at once. You did a terrible thing and then you came to me with it, instead of to a cookie."
-{n}She pushes the parcel across the table.{/n} "Tell me their names. Some of them. Then eat one. Then I'll come round to your side of the table."''',
+"That's worse," she says finally. "That's worse and better at once. You're about to do a terrible thing, and you came to me with it first, instead of to a cookie."
+{n}She pushes the parcel across the table.{/n} "Tell me their names. The company's. Some of them. Then eat one. Then I'll come round to your side of the table."''',
       c("[Tell her names.]", "felt", flags=(FELT_IT,))),
     ch("silent", '''{n}You say nothing. You do not take a cookie. You sit, on your side of the long table, and let the silence be as long as it needs to be.{/n}
 {n}After a long time she gets up and comes round, and sits down next to you, and does not touch you, and then does.{/n} "You feel it," she says. "I can tell. You feel it and you don't say. That's the worst way to feel things."''',
@@ -289,6 +290,9 @@ session(BETTING_LIVES, "You bet with people", '"You\'ve heard about the feint."'
     ch("job", '''"Then do it slower." {n}Instantly.{/n} "Or do it worse. I don't care. Win by a bit less. Nobody will write you a song about the feint."
 {n}She stands up.{/n} "I'm going to go and be sad about them, since you won't. That's my job, then. Somebody has to." {n}She takes the unopened parcel with her. At the door she stops.{/n} "Come back tomorrow. I'll have finished being sad. I'll need you to have started."''',
       c("[Let her go.]")),
+    ch("refuse", '''"...Oh." {n}She looks at the unopened parcel as if it had done something surprising.{/n} "It will cost you. A longer march. More of the other kind of dying, the slow kind, in the snow, where nobody writes the names down at all."
+"I don't know if that's better. I'm chance; I never know if it's better." {n}She unties the ribbon.{/n} "But you looked at it, here, where I could see, and you decided it yourself. That's all I wanted. Eat a cookie. You're going to need your strength for the long way round."''',
+      c("[Eat one.]")),
     ch("felt", '''{n}She holds your hand on the table between you, tightly, and does not say it is all right, because it is not.{/n}
 "They were lucky, you know. In a way." {n}Very quietly.{/n} "Their Commander knew their faces. Most soldiers don't get that much luck."''',
       c("[Hold on.]")),

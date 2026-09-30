@@ -200,7 +200,7 @@ hour(WAITING, "Not today", '"You\'re very quiet."', [
 "...You really think so?" {n}And then, before you can answer:{/n} "No, don't answer. If you answer I'll believe you, and then I'll want you to ask, and I've got dough under my nails."''',
       c('"Are you nervous?"', "nervous")),
     ch("nervous", '''{n}She is quiet, her floury hands gone still in the bowl.{/n}
-"I've never been nervous before," she says at last. "I didn't know it felt like this. Like knowing the odds of everything except one thing, and that one thing is the only one that matters."
+"I don't get nervous," she says at last. "I'm getting nervous. I don't care for it. Like knowing the odds of everything except one thing, and that one thing is the only one that matters."
 {n}She looks up at you.{/n} "I'm chance, and I don't know what I'll say. Isn't that silly? I know what I'll say. I don't know if I'll be brave enough to say it."''',
       c('"I\'ll ask when you\'re ready. Not before."', "ready"),
       c('"You\'ll be brave enough. You were born in a meteor shower."', "brave")),
@@ -259,7 +259,7 @@ hour(NUMBER, "Zero", '"What are you writing?"', [
       c("[Don't argue.]", "half", flags=(LUCK_GIVEN_BACK,))),
     ch("half", """{n}She crosses out the nought beside her name, and writes a one, small and crooked, as if she were not sure it was allowed.{/n}
 "There. One. That's Eritrice's number. She'll be furious." {n}A wet little laugh.{/n}
-"Nobody ever made me keep anything before. It feels very strange. It feels like being looked after." {n}She folds the list into her sleeve.{/n} "I don't know if I like it. I think I might." """,
+"I'm keeping one because I decided to, not because you told me to. Write that down somewhere." {n}She folds the list into her sleeve.{/n} "One is a perfectly respectable number. Eritrice has built a whole Council on it." """,
       c("[Leave her with her one.]")),
     ch("keep", """{n}You say nothing. She watches you say nothing, and understands it, and nods once.{/n}
 "All right." {n}Brightly, and it costs her.{/n} "You need it more. You're at the front. That's true."
