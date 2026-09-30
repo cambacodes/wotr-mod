@@ -363482,13 +363482,39 @@
               "Abort": false
             },
             {
-              "Text": "Continue",
+              "Text": "[Remember a night you saw them, somewhere in the north.]",
               "Next": "mendev",
               "Set": [],
               "Requires": [],
               "Forbids": [
                 "eliandra.trickster.lights_seen"
               ],
+              "Abort": false
+            },
+            {
+              "Text": "[You have never really looked at them. Admit it.]",
+              "Next": "never",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.lights_seen"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "never",
+          "Speaker": "Narrator",
+          "Text": "{n}You have never really looked. You know what they are, the way everyone in the north knows; you have never stopped for them. That is the trouble with the list: the one thing on it that is hers is something you have not yet learned to love.{/n}\n{n}Tomorrow night, at the basin, she will call them into the water. You will look at them then, properly, for as long as it takes, and you will see whether what you feel is enough. It is a gamble. You write it down as one.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "decide",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -363513,7 +363539,7 @@
         {
           "Id": "mendev",
           "Speaker": "Narrator",
-          "Text": "{n}You have seen them, as everyone in the north has seen them: some cold night, from some wall or some road, a sky that moved, green and rose and white, and you stopped, as everyone stops, until your feet were numb. You have not thought about it in a long time. It surprises you how clearly you remember it.{/n}\n{n}It is the only thing you own that is truly yours and truly hers at the same time. That is not an accident, you think. That is what she meant.{/n}",
+          "Text": "{n}You have seen them: some cold night, from some wall or some road, a sky that moved, green and rose and white, and you stopped, as everyone stops, until your feet were numb. You have not thought about it in a long time. It surprises you how clearly you remember it.{/n}\n{n}It is the only thing you own that is truly yours and truly hers at the same time. That is not an accident, you think. That is what she meant.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -364714,7 +364740,7 @@
               "Text": "{n}When the stargazers' artifact set the northern stars ablaze over Threshold, every soldier in the siege lines looked up. The Commander saw a clear, dark sky, and did not mind it as much as expected. That winter, and every winter after, Eliandra described the lights over Sarkoris aloud, in great detail, until she was begged to stop, and then for a little longer.{/n}",
               "Requires": [
                 "eliandra.trickster.cost.lights_given",
-                "eliandra.northern_lights"
+                "eliandra.northern_lights_awakened"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -364725,7 +364751,7 @@
                 "eliandra.trickster.cost.lights_given"
               ],
               "Forbids": [
-                "eliandra.northern_lights"
+                "eliandra.northern_lights_awakened"
               ],
               "AnyGroups": []
             },
@@ -364943,7 +364969,7 @@
               "Text": "{n}When the stargazers' artifact set the northern stars ablaze over Threshold, every soldier in the siege lines looked up. The Commander saw a clear, dark sky, and did not mind it as much as expected. That winter, and every winter after, Eliandra described the lights over Sarkoris aloud, in great detail, until she was begged to stop, and then for a little longer.{/n}",
               "Requires": [
                 "eliandra.trickster.cost.lights_given",
-                "eliandra.northern_lights"
+                "eliandra.northern_lights_awakened"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -364954,7 +364980,7 @@
                 "eliandra.trickster.cost.lights_given"
               ],
               "Forbids": [
-                "eliandra.northern_lights"
+                "eliandra.northern_lights_awakened"
               ],
               "AnyGroups": []
             },
@@ -365156,7 +365182,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}The war moved faster than the stargazers' carts, and the question she had carried away from the star-heart was never asked on any road. The stargazers went to Drezen, and then into Sarkoris, and Eliandra gave herself to its revival, one ruined town at a time.{/n}\n{n}After Threshold she came once to the Commander's door, with the hood of her travelling cloak thrown back and the dust of Sarkoris on her boots, and stood there with a question in her face. What was asked, and what was answered, neither of them ever told anyone.{/n}",
+          "Text": "{n}The war moved faster than the stargazers' carts, and the question she had carried away from the basin was never asked on the road. The day after Threshold she came to the Commander's door in Drezen, with the hood of her travelling cloak thrown back and the dust of Sarkoris on her boots, and asked it there: Drezen, or the road?{/n}\n{n}The Commander said either. She said that would do to begin with, and that she would ask again every morning, and she did. Then she gave the rest of her life to the revival of Sarkoris, as she had always meant to, and to the Commander, which she had not.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -365173,7 +365199,7 @@
               "Text": "{n}When the stargazers' artifact set the northern stars ablaze over Threshold, every soldier in the siege lines looked up. The Commander saw a clear, dark sky, and did not mind it as much as expected. That winter, and every winter after, Eliandra described the lights over Sarkoris aloud, in great detail, until she was begged to stop, and then for a little longer.{/n}",
               "Requires": [
                 "eliandra.trickster.cost.lights_given",
-                "eliandra.northern_lights"
+                "eliandra.northern_lights_awakened"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -365184,7 +365210,7 @@
                 "eliandra.trickster.cost.lights_given"
               ],
               "Forbids": [
-                "eliandra.northern_lights"
+                "eliandra.northern_lights_awakened"
               ],
               "AnyGroups": []
             },
@@ -365367,6 +365393,68 @@
         "eliandra.committed",
         "eliandra.trickster.declined",
         "eliandra.closed",
+        "sacrifice"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "eliandra",
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      },
+      "RequiresAnyGroups": [
+        [
+          "eliandra.trickster.lovers.spoken",
+          "eliandra.trickster.observed",
+          "eliandra.trickster.flirted",
+          "eliandra.trickster.eyes_kissed",
+          "eliandra.trickster.vow_told",
+          "eliandra.trickster.remembrance",
+          "eliandra.trickster.sarkoris.told",
+          "eliandra.trickster.drezen.evening"
+        ]
+      ]
+    },
+    {
+      "Id": "eliandra.trickster.epilogue.released",
+      "Title": "",
+      "Owner": "EliandraEpilogue",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "{n}Eliandra led the stargazers into what was left of Sarkoris, released from her vow, and gave herself to its revival. The Commander had given what was needed at the basin, or watched her give it, and had never once sat down with her afterwards to find out what she wanted. She wrote once, after Threshold, to thank the Commander for the rite. The letter was warm, and exact, and asked nothing.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "eliandra.trickster.leave_granted"
+      ],
+      "Forbids": [
+        "eliandra.committed",
+        "eliandra.trickster.declined",
+        "eliandra.closed",
+        "eliandra.trickster.lovers.spoken",
+        "eliandra.trickster.observed",
+        "eliandra.trickster.flirted",
+        "eliandra.trickster.eyes_kissed",
+        "eliandra.trickster.vow_told",
+        "eliandra.trickster.remembrance",
+        "eliandra.trickster.sarkoris.told",
+        "eliandra.trickster.drezen.evening",
         "sacrifice"
       ],
       "DelayHours": 0,
@@ -365943,13 +366031,39 @@
               "Abort": false
             },
             {
-              "Text": "Continue",
+              "Text": "[Remember a night you saw them, somewhere in the north.]",
               "Next": "mendev",
               "Set": [],
               "Requires": [],
               "Forbids": [
                 "eliandra.trickster.lights_seen"
               ],
+              "Abort": false
+            },
+            {
+              "Text": "[You have never really looked at them. Admit it.]",
+              "Next": "never",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.lights_seen"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "never",
+          "Speaker": "Narrator",
+          "Text": "{n}You have never really looked. You know what they are, the way everyone in the north knows; you have never stopped for them. That is the trouble with the list: the one thing on it that is hers is something you have not yet learned to love.{/n}\n{n}Tomorrow night, at the basin, she will call them into the water. You will look at them then, properly, for as long as it takes, and you will see whether what you feel is enough. It is a gamble. You write it down as one.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "decide",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -365974,7 +366088,7 @@
         {
           "Id": "mendev",
           "Speaker": "Narrator",
-          "Text": "{n}You have seen them, as everyone in the north has seen them: some cold night, from some wall or some road, a sky that moved, green and rose and white, and you stopped, as everyone stops, until your feet were numb. You have not thought about it in a long time. It surprises you how clearly you remember it.{/n}\n{n}It is the only thing you own that is truly yours and truly hers at the same time. That is not an accident, you think. That is what she meant.{/n}",
+          "Text": "{n}You have seen them: some cold night, from some wall or some road, a sky that moved, green and rose and white, and you stopped, as everyone stops, until your feet were numb. You have not thought about it in a long time. It surprises you how clearly you remember it.{/n}\n{n}It is the only thing you own that is truly yours and truly hers at the same time. That is not an accident, you think. That is what she meant.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -366311,13 +366425,39 @@
               "Abort": false
             },
             {
-              "Text": "Continue",
+              "Text": "[Remember a night you saw them, somewhere in the north.]",
               "Next": "mendev",
               "Set": [],
               "Requires": [],
               "Forbids": [
                 "eliandra.trickster.lights_seen"
               ],
+              "Abort": false
+            },
+            {
+              "Text": "[You have never really looked at them. Admit it.]",
+              "Next": "never",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.lights_seen"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "never",
+          "Speaker": "Narrator",
+          "Text": "{n}You have never really looked. You know what they are, the way everyone in the north knows; you have never stopped for them. That is the trouble with the list: the one thing on it that is hers is something you have not yet learned to love.{/n}\n{n}Tomorrow night, at the basin, she will call them into the water. You will look at them then, properly, for as long as it takes, and you will see whether what you feel is enough. It is a gamble. You write it down as one.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "decide",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -366342,7 +366482,7 @@
         {
           "Id": "mendev",
           "Speaker": "Narrator",
-          "Text": "{n}You have seen them, as everyone in the north has seen them: some cold night, from some wall or some road, a sky that moved, green and rose and white, and you stopped, as everyone stops, until your feet were numb. You have not thought about it in a long time. It surprises you how clearly you remember it.{/n}\n{n}It is the only thing you own that is truly yours and truly hers at the same time. That is not an accident, you think. That is what she meant.{/n}",
+          "Text": "{n}You have seen them: some cold night, from some wall or some road, a sky that moved, green and rose and white, and you stopped, as everyone stops, until your feet were numb. You have not thought about it in a long time. It surprises you how clearly you remember it.{/n}\n{n}It is the only thing you own that is truly yours and truly hers at the same time. That is not an accident, you think. That is what she meant.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -373595,7 +373735,7 @@
         {
           "Id": "her_turn",
           "Speaker": "Eliandra",
-          "Text": "\"You may ask me one back. That is only fair. I have been taking answers from you for weeks and giving you none.\" {n}She folds her hands.{/n} \"Go on. I will answer anything.\"",
+          "Text": "\"You may ask me one back. That is only fair. I have been taking an answer from you every morning and giving you none.\" {n}She folds her hands.{/n} \"Go on. I will answer anything.\"",
           "Choices": [
             {
               "Text": "\"What are you afraid of?\"",
@@ -373689,7 +373829,7 @@
         {
           "Id": "miss_slow",
           "Speaker": "Eliandra",
-          "Text": "\"The strength, every time someone bleeds and I am slow. The vow...\" {n}A pause.{/n} \"No. I thought I would. I thought it was holding me up. It turns out it was only holding me still.\"",
+          "Text": "\"The strength, every time someone bleeds and I am slow. The vow...\" {n}A pause.{/n} \"The certainty. For a century I never once had to choose what I was for; my Lady had chosen, and I had agreed, and a hundred people are alive because I never wavered. I would make that vow again. But now I choose every morning, and it frightens me, and I have told no one that but you.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -373705,7 +373845,7 @@
         {
           "Id": "miss_strong",
           "Speaker": "Eliandra",
-          "Text": "\"Not the strength. My Lady left me that, and I use it every day, and every day it is heavier, because now I choose each time whom to spend it on. The vow chose for me. The vow...\" {n}A pause.{/n} \"No. I thought I would miss it. I thought it was holding me up. It turns out it was only holding me still.\"",
+          "Text": "\"Not the strength. My Lady left me that, and I use it every day, and every day it is heavier, because now I choose each time whom to spend it on. The vow chose for me. The vow...\" {n}A pause.{/n} \"The certainty. For a century I never once had to choose what I was for; my Lady had chosen, and I had agreed, and a hundred people are alive because I never wavered. I would make that vow again. But now I choose every morning, and it frightens me, and I have told no one that but you.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -373852,7 +373992,7 @@
         {
           "Id": "her_turn",
           "Speaker": "Eliandra",
-          "Text": "\"You may ask me one back. That is only fair. I have been taking answers from you for weeks and giving you none.\" {n}She folds her hands.{/n} \"Go on. I will answer anything.\"",
+          "Text": "\"You may ask me one back. That is only fair. I have been taking an answer from you every morning and giving you none.\" {n}She folds her hands.{/n} \"Go on. I will answer anything.\"",
           "Choices": [
             {
               "Text": "\"What are you afraid of?\"",
@@ -373946,7 +374086,7 @@
         {
           "Id": "miss_slow",
           "Speaker": "Eliandra",
-          "Text": "\"The strength, every time someone bleeds and I am slow. The vow...\" {n}A pause.{/n} \"No. I thought I would. I thought it was holding me up. It turns out it was only holding me still.\"",
+          "Text": "\"The strength, every time someone bleeds and I am slow. The vow...\" {n}A pause.{/n} \"The certainty. For a century I never once had to choose what I was for; my Lady had chosen, and I had agreed, and a hundred people are alive because I never wavered. I would make that vow again. But now I choose every morning, and it frightens me, and I have told no one that but you.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -373962,7 +374102,7 @@
         {
           "Id": "miss_strong",
           "Speaker": "Eliandra",
-          "Text": "\"Not the strength. My Lady left me that, and I use it every day, and every day it is heavier, because now I choose each time whom to spend it on. The vow chose for me. The vow...\" {n}A pause.{/n} \"No. I thought I would miss it. I thought it was holding me up. It turns out it was only holding me still.\"",
+          "Text": "\"Not the strength. My Lady left me that, and I use it every day, and every day it is heavier, because now I choose each time whom to spend it on. The vow chose for me. The vow...\" {n}A pause.{/n} \"The certainty. For a century I never once had to choose what I was for; my Lady had chosen, and I had agreed, and a hundred people are alive because I never wavered. I would make that vow again. But now I choose every morning, and it frightens me, and I have told no one that but you.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -377810,13 +377950,12 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
     "terendelev.parent_lich_bind": "bbe7d7dbb92a4923a1ca4433e626a5ec",
-    "eliandra.northern_lights": "caed5f67245242e596cf19c2166661c1",
     "eliandra.research_stolen": "c946f95a3f79eaa429799db96538fc07",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
@@ -379923,6 +380062,7 @@
     "nenio.asked_gift": "9763b3f979b4cce449e5ca1d28f50eed",
     "herrax.rokhorn_confessed": "c60613dca14bf0943a428246cf51bb3a",
     "herrax.rokhorn_client": "33447e2dcba529f4ba678688db744411",
+    "eliandra.northern_lights_awakened": "984d9d1432ea89044a6515be61a22125",
     "lastcall.flask_taken": "dbf6695999d744747aeb2d4f20b21b50",
     "storyteller.asked_queen": "b9d78ba896d19b14aa6c371dda617979",
     "shamira.cauldron_shown": "7b0b6c9d1425a7a41a154ee1b566842b",

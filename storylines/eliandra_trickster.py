@@ -69,7 +69,7 @@ MET = "eliandra.met_ch5"                  # PuluraLeaderSaved Cue_0001/0002/0003
 SHRINE_LEFT = "eliandra.shrine_left"      # PuluraLeaderSaved Cue_0029 (Katair) or Cue_0030 (hers) (trickster_world)
 TABLET = "fool_king.tablet_brought"       # FoolKing_Tavern/Answer_0025: the stone from the chiefs' ground near her shrine
 SIGHT = "trickster.perception_tier1"      # TricksterPerceptionTier1Feature: "You see more than other people."
-LIGHTS_LIT = "eliandra.northern_lights"   # NorthernLights_PuluraFinished (the stargazers' artifact over Threshold; page variant)
+LIGHTS_LIT = "eliandra.northern_lights_awakened"   # NorthernLights/Answer_0003 "[Awaken the artifact]" at Threshold (page variant)
 # Path gates (story.py bindings): N-fit build-up is shut on the paths that do not fit her, and on Angel, whose Ch5 differs.
 UNFIT = ("demon", "devil", "lich", "swarm", "angel")
 
@@ -109,9 +109,10 @@ LATE_COMMITTED = E + "late_committed"
 PATH_FIT = {}                             # scene id -> "T" | "N-fit" | "N-all" (ROUTE-BRIEF-R §2, path fit v1)
 
 BINDINGS = {
-    "Etudes": {LIGHTS_LIT: "caed5f67245242e596cf19c2166661c1",
-               # Pulura_MutasafenStoleProject: the demon got away with the stargazers' work (read for variants only).
+    "Etudes": {# Pulura_MutasafenStoleProject: the demon got away with the stargazers' work (read for variants only).
                "eliandra.research_stolen": "c946f95a3f79eaa429799db96538fc07"},
+    # c6/ThresholdExterior/NorthernLights/Answer_0003 "[Awaken the artifact] It is time to clear the sky over Threshold!"
+    "SelectedAnswers": {LIGHTS_LIT: "984d9d1432ea89044a6515be61a22125"},
     # RamienPulura/Cue_0007: the Desnan's dream of the northern lights and a priestess at the waterfall (a Drezen beat reads it).
     "SeenCues": {"eliandra.ramien_dream": ["cb2989159fadb0f48a7c5d0affdedfe2"]},
     "MainCharacterFacts": {SIGHT: "8bc2f9b88a0cf704ea72d86c2a3e2aef"},
@@ -591,11 +592,15 @@ shrine(E + "ch5.terms", "What the Maiden takes", '"What does your Lady take, in 
        c("Continue", "left")),
     nar("left", '''{n}What is left is a memory, and you did not expect it to be on the list at all.{/n}''',
        c("Continue", "cairn", requires=(LIGHTS_SEEN,)),
-       c("Continue", "mendev", forbids=(LIGHTS_SEEN,))),
+       c("[Remember a night you saw them, somewhere in the north.]", "mendev", forbids=(LIGHTS_SEEN,)),
+       c("[You have never really looked at them. Admit it.]", "never", forbids=(LIGHTS_SEEN,))),
+    nar("never", '''{n}You have never really looked. You know what they are, the way everyone in the north knows; you have never stopped for them. That is the trouble with the list: the one thing on it that is hers is something you have not yet learned to love.{/n}
+{n}Tomorrow night, at the basin, she will call them into the water. You will look at them then, properly, for as long as it takes, and you will see whether what you feel is enough. It is a gamble. You write it down as one.{/n}''',
+        c("Continue", "decide")),
     nar("cairn", '''{n}A dead chieftain's cairn below a dry fall. A sword across your knees. Green, then rose, then a white like frost on a blade, moving over a cliff your eyes would not stay on. You never told anyone.{/n}
 {n}It is the only thing you own that is truly yours and truly hers at the same time. That is not an accident, you think. That is what she meant by the rules.{/n}''',
        c("Continue", "decide")),
-    nar("mendev", '''{n}You have seen them, as everyone in the north has seen them: some cold night, from some wall or some road, a sky that moved, green and rose and white, and you stopped, as everyone stops, until your feet were numb. You have not thought about it in a long time. It surprises you how clearly you remember it.{/n}
+    nar("mendev", '''{n}You have seen them: some cold night, from some wall or some road, a sky that moved, green and rose and white, and you stopped, as everyone stops, until your feet were numb. You have not thought about it in a long time. It surprises you how clearly you remember it.{/n}
 {n}It is the only thing you own that is truly yours and truly hers at the same time. That is not an accident, you think. That is what she meant.{/n}''',
        c("Continue", "decide")),
     nar("decide", '''{n}A careful planner does not make an offering without knowing the price. You write it out plainly, the way you would write the cost of an assault: never to see them again. Not once. Not over Sarkoris in winter, not over whatever is left of the world when the war is done. You read it three times.{/n}
@@ -794,12 +799,13 @@ EPI = "EliandraEpilogue"
 EP_GUARD = dict(forbids=("sacrifice",), ForbidOverrides={"sacrifice": "trickster.commander_back"})
 
 
-def epilogue(id, text, requires, forbids=(), paragraphs=()):
+def epilogue(id, text, requires, forbids=(), paragraphs=(), any_groups=()):
     sid = E + "epilogue." + id
     PATH_FIT[sid] = "T"
+    extra = dict(RequiresAnyGroups=[list(g) for g in any_groups]) if any_groups else {}
     SCENES.append(scene(sid, "", EPI, 6, "", [n("page", "Narrator", text, paragraphs=paragraphs)],
                         requires=("trickster.ever", *requires), forbids=(*forbids, *EP_GUARD["forbids"]), last=6,
-                        Relationship=REL, ForbidOverrides=dict(EP_GUARD["ForbidOverrides"])))
+                        Relationship=REL, ForbidOverrides=dict(EP_GUARD["ForbidOverrides"]), **extra))
 
 
 EPILOGUE_PARAGRAPHS = (
@@ -857,9 +863,13 @@ epilogue("late", '''{n}Her letter from the fords stayed in the Commander's coat 
 {n}She came to Drezen a month later with Odden, the girl with the sling, and a mule that bit everyone. She said she had not asked a third time, as she had promised, and that she had not stopped hoping either, as she had also promised, and that she hoped the Commander appreciated how difficult it had been to keep both. Then she gave the rest of her life to Sarkoris, as she had meant to all along, and to the Commander, which she had not.{/n}''',
          requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED), paragraphs=EPILOGUE_PARAGRAPHS)
 
-epilogue("unasked", '''{n}The war moved faster than the stargazers' carts, and the question she had carried away from the star-heart was never asked on any road. The stargazers went to Drezen, and then into Sarkoris, and Eliandra gave herself to its revival, one ruined town at a time.{/n}
-{n}After Threshold she came once to the Commander's door, with the hood of her travelling cloak thrown back and the dust of Sarkoris on her boots, and stood there with a question in her face. What was asked, and what was answered, neither of them ever told anyone.{/n}''',
-         requires=(LEAVE,), forbids=(COMMITTED, DECLINED, CLOSED), paragraphs=EPILOGUE_PARAGRAPHS)
+epilogue("unasked", '''{n}The war moved faster than the stargazers' carts, and the question she had carried away from the basin was never asked on the road. The day after Threshold she came to the Commander's door in Drezen, with the hood of her travelling cloak thrown back and the dust of Sarkoris on her boots, and asked it there: Drezen, or the road?{/n}
+{n}The Commander said either. She said that would do to begin with, and that she would ask again every morning, and she did. Then she gave the rest of her life to the revival of Sarkoris, as she had always meant to, and to the Commander, which she had not.{/n}''',
+         requires=(LEAVE,), forbids=(COMMITTED, DECLINED, CLOSED), paragraphs=EPILOGUE_PARAGRAPHS,
+         any_groups=((LOVERS_SPOKEN, OBSERVED, FLIRTED, E + "eyes_kissed", E + "vow_told", REMEMBRANCE, SARKORIS_TOLD, E + "drezen.evening"),))
+epilogue("released", '''{n}Eliandra led the stargazers into what was left of Sarkoris, released from her vow, and gave herself to its revival. The Commander had given what was needed at the basin, or watched her give it, and had never once sat down with her afterwards to find out what she wanted. She wrote once, after Threshold, to thank the Commander for the rite. The letter was warm, and exact, and asked nothing.{/n}''',
+         requires=(LEAVE,), forbids=(COMMITTED, DECLINED, CLOSED, LOVERS_SPOKEN, OBSERVED, FLIRTED, E + "eyes_kissed", E + "vow_told",
+                                     REMEMBRANCE, SARKORIS_TOLD, E + "drezen.evening"))
 
 epilogue("own_offering", '''{n}The stargazers took the road still bound by their high priestess's vow, and she carried it as far as the fords. There, in the spring after Threshold, under the open stars and with no one to see it, she gave her Lady back the strength she had been given at thirteen, and asked for nothing in return, and was let go.{/n}
 {n}She was never again the strongest of Pulura's priestesses. She devoted herself to the revival of Sarkoris anyway, one wound at a time, and wrote to the Commander about it every week, in a small exact hand, correcting herself in the margins and never crossing anything out.{/n}''',

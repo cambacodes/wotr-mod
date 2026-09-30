@@ -286,8 +286,8 @@ internal static class EliandraTricksterTests
         check(!story.Scenes.Any(s => s.Id == E + "ch5.inventory") && terms.Nodes.Any(n => n.Id == "decide")
               && terms.Nodes.Single(n => n.Id == "decide").Choices.Single().Set.Contains(E + "planned"),
             "The planning is not the player's choice inside the terms.");
-        check(pages.Length == 7 && pages.All(s => s.MinChapter == 6 && s.MaxChapter == 6 && s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0)),
-            "Her epilogue pages are not seven read-only Chapter 6 pages.");
+        check(pages.Length == 8 && pages.All(s => s.MinChapter == 6 && s.MaxChapter == 6 && s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0)),
+            "Her epilogue pages are not eight read-only Chapter 6 pages.");
         check(Rules.Available(story, S(E + "epilogue.together"), World(story, 6, night.Flags.ToArray()))
               && !Rules.Available(story, S(E + "epilogue.late"), World(story, 6, night.Flags.ToArray())),
             "The committed page is not the only page of a committed route.");
@@ -340,6 +340,15 @@ internal static class EliandraTricksterTests
               && Program.Walk(heart, selfNight).Count > 0,
             "The morning after credits the Commander with her own offering.");
         check(chiefs.Chapters.SequenceEqual(new[] { 3 }), "The chiefs' ground page can arrive in the Abyss with its Drezen frame.");
+        // R2-6 (audit r7): released and courted but out of Chapter 5 before her question: a definite late yes on the page;
+        // released with no exchange at all: no romance.
+        var courtedLate = World(story, 6, granted.Flags.ToArray());
+        var bareLate = World(story, 6, One(rite, read, new[] { Leave, Lights }, Reward, NoLeave).Flags.ToArray());
+        check(Rules.Available(story, S(E + "epilogue.unasked"), courtedLate) && !Rules.Available(story, S(E + "epilogue.released"), courtedLate)
+              && Rules.Available(story, S(E + "epilogue.released"), bareLate) && !Rules.Available(story, S(E + "epilogue.unasked"), bareLate),
+            "The late pages do not follow whether she was courted before the war ran out.");
+        check(story.SelectedAnswers["eliandra.northern_lights_awakened"] == "984d9d1432ea89044a6515be61a22125",
+            "The Threshold lights paragraph does not read the artifact actually awakened.");
         // Rest-delivered pages in Chapter 5: the planning page, and the road letter on the soft no only.
         var remote5 = own.Where(s => Rules.IsRemote(s) && s.Chapters.Contains(5) && s.Owner != "EliandraEpilogue").Select(s => s.Id).ToList();
         check(remote5.SequenceEqual(new[] { E + "ch5.road_letter" }),
