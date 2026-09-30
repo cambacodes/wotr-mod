@@ -679,14 +679,18 @@ def return_nodes(scarred):
             c("Continue", "why")),
         ga("why", '''"So. Here I am." {n}She squares her shoulders, knight to Commander.{/n} "I have no lands, no crown and no enemies. I have an old sword, a green surcoat, and a name that was two weeks old in the war camp. And I have discovered that I still stand in the square at the hour of petitions, every morning, waiting for somebody to need a ruling. Nobody does." {n}She meets your eyes.{/n} "Mendev buried a queen. I would like, just once, to be a face in your crowd that you look for."''',
             c("Continue", "alone", requires=(ALONE, REPLIED)),
-            c("Continue", "alone_silent", requires=(ALONE,), forbids=(REPLIED,)),
+            c("Continue", "alone_silent", requires=(ALONE,), forbids=(REPLIED, LATE_FOUND)),
+            c("Continue", "alone_found", requires=(LATE_FOUND,)),
             c("Continue", "refused", requires=(OFFER_REFUSED,), forbids=(ALONE,)),
             c("Continue", "romance", requires=(ROMANCE,), forbids=(ALONE, OFFER_REFUSED)),
             c("Continue", "end", forbids=(ALONE, OFFER_REFUSED, ROMANCE))),
         ga("alone", '''{n}Her gaze hardens, just perceptibly.{/n} "You were not at Iz. I have forgiven you that; I wrote so, and I meant it." {n}A beat.{/n} "I have not yet forgiven myself for how glad I was to see your hand on the letter that came back. A queen does not wait by a window for the post, Commander. Kitrane, it seems, does."''',
             c("Continue", "romance", requires=(ROMANCE,)),
             c("Continue", "end", forbids=(ROMANCE,))),
-        ga("alone_silent", '''{n}Her gaze hardens, just perceptibly.{/n} "You were not at Iz. I have forgiven you that; I wrote so, and I meant it." {n}A beat.{/n} "You did not write back. I told myself that was prudence: letters are read. I told myself so every morning for a week, at the window, waiting for the post like a fool. A queen does not do that, Commander. Kitrane, it seems, does."''',
+        ga("alone_found", '''{n}Her gaze hardens, just perceptibly.{/n} "You were not at Iz. You found me three days later on a bier in Drezen, with the lid on the floor and a bribed sergeant at the door." {n}A beat.{/n} "I have not decided whether to forgive you the first part. I find I cannot hold the second against you at all. A queen would have kept those accounts separately, Commander. Kitrane, it seems, does not."''',
+            c("Continue", "romance", requires=(ROMANCE,)),
+            c("Continue", "end", forbids=(ROMANCE,))),
+        ga("alone_silent",'''{n}Her gaze hardens, just perceptibly.{/n} "You were not at Iz. I have forgiven you that; I wrote so, and I meant it." {n}A beat.{/n} "You did not write back. I told myself that was prudence: letters are read. I told myself so every morning for a week, at the window, waiting for the post like a fool. A queen does not do that, Commander. Kitrane, it seems, does."''',
             c("Continue", "romance", requires=(ROMANCE,)),
             c("Continue", "end", forbids=(ROMANCE,))),
         ga("refused", '''"You asked me for Mendev first." {n}She does not raise her voice; she has never needed to.{/n} "I lay dying and you asked me for Mendev. And then you asked me for myself, when I told you how. I have not decided which of those I shall remember longer." {n}A pause.{/n} "Both, probably. I am old. I have room."''',
@@ -864,7 +868,11 @@ epilogue("native", "The Queen and the Trickster", '''{n}Queen Galfrey of Mendev 
 
 epilogue("queen", "The Queen", '''{n}Queen Galfrey of Mendev died at Iz, as the Queen, with her Commander at her side and her knights around her. At the very end she had been offered another name, and she had not taken it. She was buried with honours in Nerosyan, in her own armour, and Mendev mourned her for a year and a day.{/n}
 {n}The Commander did not speak at her vigil. Somebody asked, afterwards, whether there had been anything the Commander could have done. The Commander said that there had, and that she had been asked, and that she had been right.{/n}''',
-         requires=(LET_DIE,), forbids=(RETURNED,))
+         requires=(LET_DIE,), forbids=(RETURNED, LEFT_EARLY))
+
+epilogue("queen_bier", "The Queen", '''{n}Queen Galfrey of Mendev died at Iz, as the Queen, with her knights around her and her Commander elsewhere. Three days later, on a bier in the citadel chapel of Drezen, she was offered another name, and she did not take it. The lead seal went on at first light, with every bell in the city, and she was buried with honours in Nerosyan, in her own armour.{/n}
+{n}The Crows' sergeant who had kept the chapel door never spoke to the Commander again. When he was asked, years later, what had passed in there that night, he said only that the Queen had been asked, and had answered, and that it was more than most people got.{/n}''',
+         requires=(LET_DIE, LEFT_EARLY), forbids=(RETURNED,))
 
 
 def _bind(payload, kind, table):

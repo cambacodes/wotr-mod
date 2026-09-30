@@ -260,8 +260,16 @@ internal static class GalfreyTricksterTests
         check(!Rules.Available(story, cortege, found) && !Rules.Available(story, cortege, Later(story, wrote, 100)),
             "Trk_Galfrey_Cortege: the cortege plays after she has already taken the name.");
         var foundProclaimed = One(eulogy, Later(story, found, 40), new[] { P + "cost.eulogy" });
-        check(Rules.Available(story, retScarred, Later(story, Later(story, foundProclaimed, 1, null, "coronation.after", "coronation.seen"), 100)),
-            "Trk_Galfrey_Cortege: the late recovery does not lead to her return.");
+        var foundBack = Later(story, Later(story, foundProclaimed, 1, null, "coronation.after", "coronation.seen"), 100);
+        check(Rules.Available(story, retScarred, foundBack), "Trk_Galfrey_Cortege: the late recovery does not lead to her return.");
+        var recalled = new List<string>();
+        Program.Walk(retScarred, foundBack, (id, _) => recalled.Add(id));
+        check(recalled.Contains("alone_found") && !recalled.Contains("alone") && !recalled.Contains("alone_silent"),
+            "Trk_Galfrey_Cortege: the return invents a letter for the woman found on the bier.");
+        var bierRefused = Program.Walk(cortege, unplanted).First(r => r.Has(P + "let_die"));
+        var bierEpi = World(story, 6, bierRefused.Flags.Concat(new[] { "trickster.ever" }).ToArray());
+        check(Rules.Available(story, S(P + "epilogue.queen_bier"), bierEpi) && !Rules.Available(story, S(P + "epilogue.queen"), bierEpi),
+            "Trk_Galfrey_Cortege: her refusal on the bier gets the deathbed page.");
         check(!own.Where(s => s.TricksterDevice).Any(s => Rules.Available(story, s,
                   World(story, 5, "trickster", "trickster.ever", Dead, "galfrey.killed_by_commander", P + "crows_mooted", "iz.left_early"))),
             "Trk_Galfrey_Killed: a device serves a kill the Commander chose.");
@@ -396,9 +404,9 @@ internal static class GalfreyTricksterTests
               && reactions.Where(s => s.Owner == "Irabeth").All(s => s.Forbids.Contains("irabeth_dead")
                   && s.ForbidOverrides.TryGetValue("irabeth_dead", out var r) && r == "irabeth.trickster.returned"),
             "Galfrey's reactors are not Irabeth (five), Seelah, Hulrun (two), Daeran and the King, or Irabeth's are unguarded.");
-        check(pages.Length == 7 && pages.All(s => s.MinChapter == 6 && s.MaxChapter == 6 && s.Requires.Contains("trickster.ever")
+        check(pages.Length == 8 && pages.All(s => s.MinChapter == 6 && s.MaxChapter == 6 && s.Requires.Contains("trickster.ever")
                   && s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0)),
-            "Her epilogue pages are not seven read-only Trickster Chapter 6 pages.");
+            "Her epilogue pages are not eight read-only Trickster Chapter 6 pages.");
 
         Console.WriteLine("PASS: Galfrey Trickster (Trk_Galfrey_*): the Kitrane question in Chapters 2-4 on every path, the offer at the bed "
             + "read or blind, for Mendev refused and for her taken, the road, the eulogy, the letter from the rubble, the return, the oath refused "

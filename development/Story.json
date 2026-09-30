@@ -364292,8 +364292,19 @@
                 "galfrey.trickster.cost.alone"
               ],
               "Forbids": [
-                "galfrey.trickster.iz.alone_replied"
+                "galfrey.trickster.iz.alone_replied",
+                "galfrey.trickster.cost.found_late"
               ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "alone_found",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.cost.found_late"
+              ],
+              "Forbids": [],
               "Abort": false
             },
             {
@@ -364340,6 +364351,34 @@
           "Id": "alone",
           "Speaker": "Galfrey",
           "Text": "{n}Her gaze hardens, just perceptibly.{/n} \"You were not at Iz. I have forgiven you that; I wrote so, and I meant it.\" {n}A beat.{/n} \"I have not yet forgiven myself for how glad I was to see your hand on the letter that came back. A queen does not wait by a window for the post, Commander. Kitrane, it seems, does.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "romance",
+              "Set": [],
+              "Requires": [
+                "galfrey.romance_active"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "galfrey.romance_active"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "alone_found",
+          "Speaker": "Galfrey",
+          "Text": "{n}Her gaze hardens, just perceptibly.{/n} \"You were not at Iz. You found me three days later on a bier in Drezen, with the lid on the floor and a bribed sergeant at the door.\" {n}A beat.{/n} \"I have not decided whether to forgive you the first part. I find I cannot hold the second against you at all. A queen would have kept those accounts separately, Commander. Kitrane, it seems, does not.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -364748,8 +364787,19 @@
                 "galfrey.trickster.cost.alone"
               ],
               "Forbids": [
-                "galfrey.trickster.iz.alone_replied"
+                "galfrey.trickster.iz.alone_replied",
+                "galfrey.trickster.cost.found_late"
               ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "alone_found",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.cost.found_late"
+              ],
+              "Forbids": [],
               "Abort": false
             },
             {
@@ -364796,6 +364846,34 @@
           "Id": "alone",
           "Speaker": "Galfrey",
           "Text": "{n}Her gaze hardens, just perceptibly.{/n} \"You were not at Iz. I have forgiven you that; I wrote so, and I meant it.\" {n}A beat.{/n} \"I have not yet forgiven myself for how glad I was to see your hand on the letter that came back. A queen does not wait by a window for the post, Commander. Kitrane, it seems, does.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "romance",
+              "Set": [],
+              "Requires": [
+                "galfrey.romance_active"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "galfrey.romance_active"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "alone_found",
+          "Speaker": "Galfrey",
+          "Text": "{n}Her gaze hardens, just perceptibly.{/n} \"You were not at Iz. You found me three days later on a bier in Drezen, with the lid on the floor and a bribed sergeant at the door.\" {n}A beat.{/n} \"I have not decided whether to forgive you the first part. I find I cannot hold the second against you at all. A queen would have kept those accounts separately, Commander. Kitrane, it seems, does not.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -366210,6 +366288,48 @@
       "Requires": [
         "trickster.ever",
         "galfrey.trickster.let_die"
+      ],
+      "Forbids": [
+        "galfrey.trickster.returned",
+        "iz.left_early",
+        "sacrifice"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "galfrey",
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      }
+    },
+    {
+      "Id": "galfrey.trickster.epilogue.queen_bier",
+      "Title": "The Queen",
+      "Owner": "GalfreyEpilogue",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "{n}Queen Galfrey of Mendev died at Iz, as the Queen, with her knights around her and her Commander elsewhere. Three days later, on a bier in the citadel chapel of Drezen, she was offered another name, and she did not take it. The lead seal went on at first light, with every bell in the city, and she was buried with honours in Nerosyan, in her own armour.{/n}\n{n}The Crows' sergeant who had kept the chapel door never spoke to the Commander again. When he was asked, years later, what had passed in there that night, he said only that the Queen had been asked, and had answered, and that it was more than most people got.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "galfrey.trickster.let_die",
+        "iz.left_early"
       ],
       "Forbids": [
         "galfrey.trickster.returned",
@@ -381305,8 +381425,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
