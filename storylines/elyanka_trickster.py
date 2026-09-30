@@ -449,17 +449,17 @@ visit(E + "commit.claims", "An exchange of claims", [
        c("[Kiss her instead of answering.]", "yes_kiss"),
        c('[Ask what she\'ll do with mine] "What will your Lady do with it, exactly? Mine."', "buyer")),
     el("yes", '''{n}You whisper it back into her ear, word for word, in the language older than its words. When you have finished she stays where she is a moment longer than the words require.{/n}
-"There. Now each of us holds the other's corpse, and neither of us will ever collect." {n}She sits back and looks at you with open, hungry satisfaction, the way she looked at the venison.{/n} "How very Mendevian. Two debtors, and not a copper paid."''',
+"There. Now each of us holds the other's corpse. Mine you will never collect; my Lady will leave nothing. Yours I will, one day, unless you cheat me." {n}She sits back and looks at you with open, hungry satisfaction, the way she looked at the venison.{/n} "How very Mendevian. Two debtors, and not a copper paid."''',
        c("Continue", "rites")),
     el("yes_kiss", '''{n}She lets you. She even allows it to go on, her fingers sticky with cherry juice at the back of your neck, until she decides otherwise and bites your lip, not gently, and pulls back.{/n}
 "That is not how the Way seals anything," {n}she says, and licks the blood off her own mouth with evident enjoyment.{/n} "Say it properly." {n}And you whisper the claim back to her, word for word, with the taste of iron between you.{/n}
-"There. Now each of us holds the other's corpse, and neither will ever collect."''',
+"There. Now each of us holds the other's corpse. Mine you will never collect. Yours I will, one day, unless you cheat me."''',
        c("Continue", "rites")),
     el("rites", RITES_NOTE,
        c("[Keep her secret.]", flags=(COMMITTED, SECRET_RITES)),
        c('"My priests have enough to pray about."', flags=(COMMITTED, SECRET_RITES))),
     el("buyer", '''{n}She draws back from you, not far, but completely, the way a cat steps back from a hand it has decided not to sniff.{/n}
-"A buyer asks that." {n}Her voice is quite level.{/n} "A bride does not."
+"A buyer asks that." {n}Her voice is quite level.{/n} "{mf|A bridegroom|A bride} does not."
 {n}She picks up her knife and goes back to the venison, and eats with the same appetite as before, as if you had already left.{/n} "You may finish your wine. I will think about what you are."''',
        c("[Finish your wine.]", flags=(DECLINED,))),
 ], requires=(TESTED, E + "beat.whisper"), forbids=(COMMITTED, DECLINED), delay=24, last=5)
@@ -478,7 +478,7 @@ visit(E + "commit.her_move", "A lock of grey hair", [
        c("[Take the lock of hair.]", "take"),
        c('[Send her home] "Go home to Ustalav, Elyanka. My body\'s yours when I die. Nothing else is."', "home")),
     el("take", '''{n}It is heavier than hair ought to be. The thread is waxed, and cold, and smells faintly of cloves.{/n}
-"Good." {n}She watches you close your hand on it with the look she gave the venison.{/n} "Keep it somewhere you will see it, so you remember what you are holding. Now we each have a claim on the other, and neither of us will ever collect. I adore a bad bargain."''',
+"Good." {n}She watches you close your hand on it with the look she gave the venison.{/n} "Keep it somewhere you will see it, so you remember what you are holding. Now we each have a claim on the other. Mine on you will fall due one day; yours on me never will. I adore a bad bargain."''',
        c("Continue", "take_rites")),
     el("take_rites", RITES_NOTE,
        c("[Keep her secret, and the hair.]", flags=(COMMITTED, SECRET_RITES, LOCK))),

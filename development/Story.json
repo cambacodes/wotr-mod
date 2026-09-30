@@ -404427,7 +404427,7 @@
         {
           "Id": "yes",
           "Speaker": "Elyanka",
-          "Text": "{n}You whisper it back into her ear, word for word, in the language older than its words. When you have finished she stays where she is a moment longer than the words require.{/n}\n\"There. Now each of us holds the other's corpse, and neither of us will ever collect.\" {n}She sits back and looks at you with open, hungry satisfaction, the way she looked at the venison.{/n} \"How very Mendevian. Two debtors, and not a copper paid.\"",
+          "Text": "{n}You whisper it back into her ear, word for word, in the language older than its words. When you have finished she stays where she is a moment longer than the words require.{/n}\n\"There. Now each of us holds the other's corpse. Mine you will never collect; my Lady will leave nothing. Yours I will, one day, unless you cheat me.\" {n}She sits back and looks at you with open, hungry satisfaction, the way she looked at the venison.{/n} \"How very Mendevian. Two debtors, and not a copper paid.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404443,7 +404443,7 @@
         {
           "Id": "yes_kiss",
           "Speaker": "Elyanka",
-          "Text": "{n}She lets you. She even allows it to go on, her fingers sticky with cherry juice at the back of your neck, until she decides otherwise and bites your lip, not gently, and pulls back.{/n}\n\"That is not how the Way seals anything,\" {n}she says, and licks the blood off her own mouth with evident enjoyment.{/n} \"Say it properly.\" {n}And you whisper the claim back to her, word for word, with the taste of iron between you.{/n}\n\"There. Now each of us holds the other's corpse, and neither will ever collect.\"",
+          "Text": "{n}She lets you. She even allows it to go on, her fingers sticky with cherry juice at the back of your neck, until she decides otherwise and bites your lip, not gently, and pulls back.{/n}\n\"That is not how the Way seals anything,\" {n}she says, and licks the blood off her own mouth with evident enjoyment.{/n} \"Say it properly.\" {n}And you whisper the claim back to her, word for word, with the taste of iron between you.{/n}\n\"There. Now each of us holds the other's corpse. Mine you will never collect. Yours I will, one day, unless you cheat me.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404489,7 +404489,7 @@
         {
           "Id": "buyer",
           "Speaker": "Elyanka",
-          "Text": "{n}She draws back from you, not far, but completely, the way a cat steps back from a hand it has decided not to sniff.{/n}\n\"A buyer asks that.\" {n}Her voice is quite level.{/n} \"A bride does not.\"\n{n}She picks up her knife and goes back to the venison, and eats with the same appetite as before, as if you had already left.{/n} \"You may finish your wine. I will think about what you are.\"",
+          "Text": "{n}She draws back from you, not far, but completely, the way a cat steps back from a hand it has decided not to sniff.{/n}\n\"A buyer asks that.\" {n}Her voice is quite level.{/n} \"{mf|A bridegroom|A bride} does not.\"\n{n}She picks up her knife and goes back to the venison, and eats with the same appetite as before, as if you had already left.{/n} \"You may finish your wine. I will think about what you are.\"",
           "Choices": [
             {
               "Text": "[Finish your wine.]",
@@ -404592,7 +404592,7 @@
         {
           "Id": "take",
           "Speaker": "Elyanka",
-          "Text": "{n}It is heavier than hair ought to be. The thread is waxed, and cold, and smells faintly of cloves.{/n}\n\"Good.\" {n}She watches you close your hand on it with the look she gave the venison.{/n} \"Keep it somewhere you will see it, so you remember what you are holding. Now we each have a claim on the other, and neither of us will ever collect. I adore a bad bargain.\"",
+          "Text": "{n}It is heavier than hair ought to be. The thread is waxed, and cold, and smells faintly of cloves.{/n}\n\"Good.\" {n}She watches you close your hand on it with the look she gave the venison.{/n} \"Keep it somewhere you will see it, so you remember what you are holding. Now we each have a claim on the other. Mine on you will fall due one day; yours on me never will. I adore a bad bargain.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -407378,7 +407378,7 @@
         {
           "Id": "silent",
           "Speaker": "Narrator",
-          "Text": "{n}He waits for a while longer, as if you might change your mind, and then he goes, and you hear his boots on the stair.{/n}\n{n}Four days later she is back in the dead-house. She does not mention the courier or the master or your silence. But she looks at you, the first time you meet, for rather longer than she needs to, with the look she gave the grey chaplain's cough, as if she were listening for something in you that she could name.{/n}",
+          "Text": "{n}He waits for a while longer, as if you might change your mind, and then he goes, and you hear his boots on the stair.{/n}\n{n}Four days later she is back in the dead-house. She does not mention the courier or the master or your silence. But she looks at you, the first time you meet, for rather longer than she needs to, with her head a little on one side, as if she were listening for something in you that she could name.{/n}",
           "Choices": [
             {
               "Text": "Continue",

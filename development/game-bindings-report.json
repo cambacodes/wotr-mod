@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-elyanka\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4008,
-  "unique_targets": 851,
+  "binding_uses": 4046,
+  "unique_targets": 855,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -690,6 +690,10 @@
       "path": "World/Dialogs/c3/Mythic_Trickster/FoolKing_Tavern/Cue_0038.jbp",
       "type": "BlueprintCue"
     },
+    "d1c14400d70bf0d4b947283f16f65009": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/FoolKing_Tavern/Cue_0059.jbp",
+      "type": "BlueprintCue"
+    },
     "7b050ba0745bf144e815632e39b34853": {
       "path": "World/Dialogs/c3/Mythic_Trickster/FoolKing_Tavern/Cue_0065.jbp",
       "type": "BlueprintCue"
@@ -1170,6 +1174,14 @@
       "path": "World/Dialogs/c5/DrezenMain_C5/Hulrun/AnswersList_0005.jbp",
       "type": "BlueprintAnswersList"
     },
+    "59ac2148b08ee7a47912253362ab0b27": {
+      "path": "World/Dialogs/c5/Drezen_Under_Siedge/AneviaDrezenPartisans/Cue_0007.jbp",
+      "type": "BlueprintCue"
+    },
+    "04923e59ebb21f943b7a2a330a6a8820": {
+      "path": "World/Dialogs/c5/Drezen_Under_Siedge/AneviaDrezenPartisans/Cue_0017.jbp",
+      "type": "BlueprintCue"
+    },
     "09780c4296b211f40b3ef6e34fabffc3": {
       "path": "World/Dialogs/c5/Drezen_Under_Siedge/FreeGraveknightStaunton_Fallen/Cue_0031.jbp",
       "type": "BlueprintCue"
@@ -1184,6 +1196,10 @@
     },
     "c0cf7ea6c8f13434fa36671b3b81a2ab": {
       "path": "World/Dialogs/c5/Drezen_Under_Siedge/StorytellerDangerousDrezen/Cue_0039.jbp",
+      "type": "BlueprintCue"
+    },
+    "c76a1e617bcba114c9c726ba2363c98f": {
+      "path": "World/Dialogs/c5/Drezen_Under_Siedge/VendorDangerousTavern/Cue_0040.jbp",
       "type": "BlueprintCue"
     },
     "c0fb6762c057bcc4894d1892a9eb22fc": {

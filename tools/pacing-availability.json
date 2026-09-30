@@ -1169,8 +1169,8 @@
   "exceptions": {},
   "evidence": {
    "first_met": "Trickster (R5): the funeral door, elyanka.trickster.door.hearse, Ch5 after Iz (the feast Drezen held: FoolKing_Tavern/Cue_0059 d1c14400d70bf0d4b947283f16f65009, AneviaDrezenPartisans/Cue_0007 59ac2148b08ee7a47912253362ab0b27 / Cue_0017 04923e59ebb21f943b7a2a330a6a8820, VendorDangerousTavern/Cue_0040 c76a1e617bcba114c9c726ba2363c98f). Native (Lich only): 959e379e655867a41af3119b98f9e261 KTC_ElyankaComing/Cue_0001",
-   "5": "Trickster: she lodges her hearse in the dead-house by the south gate of Drezen; every beat is a rest-delivered visit (storylines/elyanka_trickster.py, elyanka_hearse.py)",
-   "6": "Trickster: her hearse follows the army toward the Threshold (elyanka.trickster.ch6.collateral), then the pages and Last Call"
+   "5": "d1c14400d70bf0d4b947283f16f65009 FoolKing_Tavern/Cue_0059 (the funeral, the door; also 59ac2148b08ee7a47912253362ab0b27, c76a1e617bcba114c9c726ba2363c98f). Trickster: she lodges her hearse in the dead-house by the south gate of Drezen; every beat is a rest-delivered visit (storylines/elyanka_trickster.py, elyanka_hearse.py)",
+   "6": "41bf413e0fa2ea34b937d4445edd5f89 Chapter06 etude. Trickster: her hearse follows the army toward the Threshold (elyanka.trickster.ch6.collateral), then the pages and Last Call"
   },
   "verify": false,
   "verify_chapters": [],

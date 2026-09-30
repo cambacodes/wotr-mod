@@ -189,7 +189,7 @@ visit(E + "beat.courier", "A man in grey", [
 {n}Four days later, to the hour, he is back in your doorway. He clears his throat and says, in her voice, "*Ripening. You insolent sack of meat. The master laughed. Nobody in the Way has heard him laugh in forty years. He gave me leave to stay. I hate you for making him laugh. I am coming back tonight.*" Then he goes, and forgets.{/n}''',
         c("Continue", flags=(COURIER_RIPENING,))),
     nar("silent", '''{n}He waits for a while longer, as if you might change your mind, and then he goes, and you hear his boots on the stair.{/n}
-{n}Four days later she is back in the dead-house. She does not mention the courier or the master or your silence. But she looks at you, the first time you meet, for rather longer than she needs to, with the look she gave the grey chaplain's cough, as if she were listening for something in you that she could name.{/n}''',
+{n}Four days later she is back in the dead-house. She does not mention the courier or the master or your silence. But she looks at you, the first time you meet, for rather longer than she needs to, with her head a little on one side, as if she were listening for something in you that she could name.{/n}''',
         c("Continue", flags=(COURIER_SILENT,))),
 ], requires=(BIER,), forbids=(COURIER_HUNGRY, COURIER_RIPENING, COURIER_SILENT), delay=72, last=5, kind="letter", portable=True)
 
