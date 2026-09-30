@@ -52,6 +52,8 @@ FLINCHED = P + "cost.flinched"
 HANDS = P + "cost.hands_carved"
 CATCHUP = P + "cost.catchup"
 SLOW = P + "cost.campaign_slow"
+LIKENESS = P + "cost.likeness_owed"         # the Commander's face left unfinished on her bench, to be sat for after Threshold
+LIKENESS_DONE = P + "cost.likeness_cut"     # cut from memory before Threshold: a grave-post whether the Commander returns or not
 PRESENCE_FAILED = "gesmerha.presence.failed"
 
 RELATIONSHIP_PATCH = dict(
@@ -229,6 +231,27 @@ in_yard(P + "returned.second_ask", "A pair that were never for sale", '"About wh
     g("morning", MORNING, c("[Go]")),
     ], requires=("trickster.ever", RETURNED, DECLINED), forbids=(COMMITTED, CLOSED), delay=96)
 
+# 4g. The second work (COX, Sol 2026-09-30): the ancestors' commission is finished on the bench before Threshold. The face
+# she began the morning after the night is hers, unpaid, and still on her bench; Last Call reads what became of it
+# (LIKENESS: left unfinished for the Commander to sit for; LIKENESS_DONE: cut from memory; neither: never discussed).
+in_yard(P + "returned.likeness", "The face on the second block", '"The face on your new block..."', [
+    g("start", '''{n}The new block stands on the trestles where the finished work stood. The face that came out of it the morning after is further along now: the brow, the set of the mouth, a scar you had forgotten you owned. The eyes are two smooth hollows. Her chisel lies beside it, clean, as if it has not been lifted for days.{/n}
+"You walk like someone going somewhere they may not walk back from. The whole yard hears it. The smith's boys have started saying goodbye to you."
+{n}She sets her palm flat on the wooden brow.{/n}
+"This is not the ancestors' work. Nobody paid for it, and nobody will. But it is on my bench, and you know what my line does about work on the bench. I will not cut the last of a face whose owner is walking into the demons' country. From memory I would be carving a grave-post, and I cut enough of those for Wintersun."''',
+        c('[Lay your hand on the block beside hers] "Then leave it unfinished. I\'ll come back and sit for the last cuts."', "owed",
+          flags=(LIKENESS,)),
+        c('"Finish it now, from memory. If I don\'t come back, you\'ll have the face."', "memory", flags=(LIKENESS_DONE,))),
+    g("owed", '''"Sit for it. Yes. Your face under my left hand and the chisel in my right, the way I read you the first night."
+{n}She covers the block with a cloth and knots it hard, the way a Sarkorian ties a wound.{/n}
+"It stays like this. Unfinished, on my bench, in my yard. I got up off my own pyre for less. Do not make me come and fetch you."''',
+        c("[Go]")),
+    g("memory", '''"My hands remember what my eyes cannot see."
+{n}She picks up the chisel. Two cuts, and the hollows are eyes, and they are yours, and the face on the block has finished with you.{/n}
+"There. Now it is a grave-post whether you come back or not. Go on. Walk loudly."''',
+        c("[Go]")),
+    ], requires=("trickster.ever", RETURNED, COMMITTED), forbids=(LIKENESS, LIKENESS_DONE, CLOSED), delay=48)
+
 
 # --- State 2, the missed window: wrong footsteps (F04, claimed, not implanted) ----------------------------------------------
 
@@ -311,12 +334,21 @@ REACTIONS = [
              '''"The smith came to me about a blind woman in his yard. Won't give his corner back, won't let his boys near her log, and says you owe her the good chisels." {n}Anevia shrugs.{/n} "I told him that sounded about right."''',
              answer_list=ANEVIA_HUB, forbids=("anevia_gone", "anevia_dead"), chapter=3, last=5, delay=24,
              entry='"About the smith\'s yard..."', ForbidOverrides={"anevia_gone": "anevia.trickster.returned"}),
-    reaction("Lann", P + "react.lann_footsteps", (CATCHUP, *LANN["requires"]),
-             '''"The carver says she caught you lying about ten afternoons, and then you beat her at her own game anyway." {n}Lann grins.{/n} "I've never seen you sit still for ten minutes."''',
+    # The footsteps reactions read the branch actually played: the trick (SLOW: she caught the lie, the Commander knew one
+    # rule and paid for the pieces as the loser) or the confession (CATCHUP without SLOW: the lie owned before the game).
+    reaction("Lann", P + "react.lann_footsteps", (CATCHUP, SLOW, *LANN["requires"]),
+             '''"The blind carver's telling everyone you sat down at her board and swore you'd played there ten afternoons. She says you knew one of her rules, which scared her, and lost anyway, which didn't." {n}Lann grins.{/n} "And you paid for the pieces. Like a loser. I've never seen you sit still for ten minutes, never mind lose sitting down."''',
              answer_list=LANN_HUB, forbids=LANN["forbids"], chapter=5, last=5, delay=24, entry='"About the carver..."'),
-    reaction("Anevia", P + "react.anevia_footsteps", (CATCHUP,),
-             '''"The carver says you two go back. Ten afternoons at her bench." {n}Anevia gives you a long look.{/n} "I keep your calendar, Commander. I'd remember ten afternoons."''',
+    reaction("Anevia", P + "react.anevia_footsteps", (CATCHUP, SLOW),
+             '''"The Wintersun carver's telling anyone who'll listen that you claimed ten afternoons at her bench. She says she counted one, in Wintersun, and that you still knew a rule of hers nobody knows." {n}Anevia gives you a long look.{/n} "I keep your calendar, Commander. I'd remember ten afternoons. I'd like to know about the rule."''',
              answer_list=ANEVIA_HUB, forbids=("anevia_gone", "anevia_dead"), chapter=5, last=5, delay=24,
+             entry='"About the carver..."', ForbidOverrides={"anevia_gone": "anevia.trickster.returned"}),
+    reaction("Lann", P + "react.lann_confessed", (CATCHUP, *LANN["requires"]),
+             '''"Heard you walked up to the blind carver, told her you'd spent ten afternoons at her board, and took it back before she'd finished calling you a liar." {n}Lann scratches his jaw.{/n} "She made you pay for the pieces anyway. Honest liars pay too, she says. I'm writing that one down."''',
+             answer_list=LANN_HUB, forbids=(SLOW, *LANN["forbids"]), chapter=5, last=5, delay=24, entry='"About the carver..."'),
+    reaction("Anevia", P + "react.anevia_confessed", (CATCHUP,),
+             '''"The carver says you lied to her about ten afternoons and then owned up to it before the first move." {n}Anevia gives you a long look.{/n} "I keep your calendar, Commander, so I knew about the ten. Owning up is the part I'd never have guessed."''',
+             answer_list=ANEVIA_HUB, forbids=(SLOW, "anevia_gone", "anevia_dead"), chapter=5, last=5, delay=24,
              entry='"About the carver..."', ForbidOverrides={"anevia_gone": "anevia.trickster.returned"}),
 ]
 SCENES.extend(REACTIONS)
@@ -326,7 +358,7 @@ SCENES.extend(REACTIONS)
 
 # The alive chain: if she lived through the ambush with a commission paid, she carves it.
 COMMISSION_PARAGRAPH = p("She carved the Commander's commission in the end, years after it was paid for: a small thing in "
-                         "black oak, which she would not describe to anyone. She said a commission is a commission, and "
+                         "the pale birch from her Wintersun bench, with the coin still in it, which she would not describe to anyone. She said a commission is a commission, and "
                          "that her line had never left paid work on the bench.", requires=(COMMISSIONED,), forbids=(RETURNED,))
 BORROWED_PARAGRAPH = p("She never believed in the ten afternoons. She kept count of the real ones instead, and told the "
                        "Commander once that they had long since passed ten, and that the borrowed ones were paid back.",

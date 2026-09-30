@@ -317,19 +317,28 @@ partner("aranka", "aranka", "aranka.extension_kept", "aranka.extension_closed", 
     ledger=("Aranka: a verse unsung", "Aranka is owed a second verse, and the whole crusade knows the tune. A song that isn't finished can't bury you."))
 
 G = "gesmerha.trickster."
-partner("gesmerha", "gesmerha", "gesmerha.committed", "gesmerha.closed", "The Commission",
-    '''Gesmerha finished the statue the spring after Threshold. She would not let anyone see it until it was done, and when it was done she would not let anyone see it at all, except the Commander, blindfolded, by touch, the way she had carved it. {mf|He|She} said afterwards that it was the only honest likeness anyone had ever made of {mf|him|her}.''',
+partner("gesmerha", "gesmerha", "gesmerha.committed", "gesmerha.closed", "Work on the Bench",
+    '''Gesmerha heard the news of Threshold the way she heard everything, by the step of the one who carried it. She said afterwards that she knew before the messenger opened his mouth: he walked like a man who had been told one thing and did not believe it. She sent him away without letting him finish, and went back to her bench.''',
     (
-        page_p('''The commission had been paid in advance, and the coin the Commander drove into the uncut block stayed in the finished stone, over the statue's heart. She had carved around it rather than take it out. She said the ancestors would want to see it had been paid.''', requires=(called("gesmerha"),)),
+        # The Commander's face, the second work on her bench (gesmerha_trickster 4g), in its three states. The ancestors' own
+        # commission (the monster or the listening woman) was finished before Threshold and is not retold here.
+        page_p('''The Commander's face had waited on her bench all winter under a knotted cloth, finished but for the eyes. In the spring she sat the Commander down in the smith's yard with a blindfold on, put her left hand over the living face and the chisel in her right, and cut the last of it by touch, a stroke at a time, stopping whenever the face under her hand moved. When it was done she let nobody see it, except the Commander, still blindfolded, by touch, the way she had carved it. {mf|He|She} said afterwards that it was the only honest likeness anyone had ever made of {mf|him|her}.''',
+               requires=(G + "cost.likeness_owed",)),
+        page_p('''The face she had cut from memory before Threshold stood on the shelf over her bench, eyes and all. She had called it a grave-post. When the Commander walked into the yard in the spring, loudly, she took it down, turned it to the wall, and never turned it back.''',
+               requires=(G + "cost.likeness_cut",)),
+        page_p('''The face she had begun on the morning after the night in the yard was still on her bench, a little further along each season. It was not a commission, she said, so it could take as long as it liked, and so could its owner.''',
+               requires=(G + "cost.ancestor_debt",), forbids=(G + "cost.likeness_owed", G + "cost.likeness_cut")),
+        page_p('''The commission paid for in Wintersun, before Marhevok's ambush, was still on her bench at Threshold: the pale birch with the Commander's coin standing proud of the grain. The Commander had called it in at the rift. She took that the way she took every order, which is to say she took her time. A commission is a commission, she said, not a summons.''',
+               requires=(G + "cost.advance_paid",), forbids=(G + "cost.ancestor_debt",)),
         page_p('''She kept the carved hands, the ones she had made while the Commander sat for her those three days. They stood on her bench for the rest of her life, and she worked with them facing her, and she would not say why.''', requires=(G + "cost.hands_carved",)),
         page_p('''The Commander had laughed at her grave. She delivered the work, and then she sat apart from the Commander at supper for a whole season, where she could hear {mf|his|her} footsteps and not {mf|his|her} voice. At the end of the season she moved her chair back, and told {mf|him|her} the footsteps had improved.''', requires=(G + "cost.laughed_at_grave",)),
-        page_p('''She carved the Commander's gravestone, for the empty grave. It said nothing untrue.''', requires=(ON_RECORD,)),
+        page_p('''She cut the marker for the Commander's empty grave, in oak. It said nothing untrue.''', requires=(ON_RECORD,)),
     ), declined=G + "declined",
     deal=[[G + "cost.advance_paid"], [G + "cost.ancestor_debt"]],
-    call=call('''[Call in the commission] "Carver, it's paid for. Finish it. I'd like to see it before they bury me."''',
-        '''{n}Somewhere a chisel stops mid-stroke over a block of stone with a coin driven into it. The ancestors of a Sarkorian woodshaper do not let a paid commission go unfinished.{/n}''',
+    call=call('''[Call in the work on her bench] "Carver, there's work of mine still on your bench. Leave it there until I come to collect."''',
+        '''{n}Somewhere a long way off, a chisel stops over a block of wood on a woodshaper's bench. A Sarkorian carver's line does not go to its ancestors with work unfinished, and she has been listening for this step too.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
-    ledger=("Gesmerha: a commission unfinished", "Gesmerha's ancestors let her come back because there was paid work on her bench. The statue isn't finished. Neither, apparently, am I."))
+    ledger=("Gesmerha: work on her bench", "Gesmerha's line does not leave work unfinished on the bench, and there is work of mine on hers. While it stays unfinished, so do I."))
 
 SE = "seelah.trickster."
 partner("seelah", "seelah", "seelah.committed", "seelah.closed", "The Thief's Promise",

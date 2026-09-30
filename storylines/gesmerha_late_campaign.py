@@ -3,7 +3,7 @@
 Packing, survivors and later affection are authored developments.
 Native chapter, quest, leadership and death state remain read-only.
 """
-from story_format import c, n, scene
+from story_format import c, n, reaction, scene
 from storylines.gesmerha_opening import UNIT, AREA, ANSWER_LIST
 
 ETUDES = {"gesmerha.post_resolution_contact": "24505150d0cf493c936f2c50b1c94468"}
@@ -151,14 +151,14 @@ s("the_box_with_two_names", "The name beneath the clan's", '"Let us hear Sella b
 "But you can carry it back," she adds. "After the three pieces are finished."
 {n}Gesmerha feels for the edge of the lid and asks Halvek to lower it only when she has moved her hand.{/n}''', c('[Keep the three-copy agreement.]', "copies_end")),
     n("loan", "Gesmerha", '''{n}Gesmerha runs her thumb once more along the pattern before giving it back.{/n}
-"I dislike losing the convenience. I accept the arrangement."
+"I will miss having it to hand. Still. Agreed."
 "Six days for a loan," Sella says. "Longer only if I agree before the carrier leaves. If you cannot promise the return, ask for a different time."
 "And if you move farther away?"
 "Then I will tell you where a message can reach me, if there is such a place. I cannot give you a road I have not traveled."
 {n}Gesmerha rests her empty hands against each other.{/n}
 "Then I shall teach the curve from what I know. I will tell them why it may differ from the old piece. There is work enough in that."
 "You sound as though I have deprived you of something," Sella says.
-"You have. Something I enjoyed using. You have also offered to lend it under terms I can understand. I can be disappointed without withdrawing my answer."
+"You have. Something I liked to use. You have also offered to lend it on terms any carver could follow. I can grumble and still keep my word."
 {n}Sella exhales, a small sound that seems to surprise Halvek more than the argument did.{/n}
 "Good. I should like to take the box home without being congratulated for allowing everybody to become wiser."
 "Then let us make the trip useful instead," Gesmerha says. "There are other things waiting with it."''', c('[Keep the limited-loan agreement.]', "loan_end")),
@@ -167,9 +167,9 @@ s("the_box_with_two_names", "The name beneath the clan's", '"Let us hear Sella b
 {n}You offer your arm where she asks for it. She takes it lightly, testing the floor ahead with her staff rather than letting you draw her around the stool.{/n}
 "I wanted you to agree with me," she says as you reach the threshold. "At the beginning. I had a very satisfactory account prepared of why I ought to keep everything."
 "You might have argued it."
-"I still could. That is the irritating part. I have chosen an answer while the other arguments remain perfectly capable of waking me at night."
+"I still could. That is what galls me. I have given my answer, and the other arguments are still perfectly able to wake me at night."
 {n}Cool air reaches the hall. She turns her face toward it and loosens her grip on your arm.{/n}
-"There are worse ways to spend an afternoon than discovering I can bear that. There are also more enjoyable ones. I should like to arrange one with you before I go."''',
+"My grandmother used to say that a chief who never loses an argument has stopped listening to her clan. She said a great many things. I would like a better afternoon than this one with you, before I go."''',
       c('[Agree to help with the carrying, and keep time for an afternoon of your own.]', flags=("gesmerha.patterns_agreed", flag)))
       for id, flag in (("copies_end", "gesmerha.teaching_copies"), ("loan_end", "gesmerha.family_loan"))],
 ], "gesmerha.late_arrived", delay=0)
@@ -192,7 +192,7 @@ s("the_long_way_with_company", "The weight on the road", '"Are the things ready 
 "Will wait. I have told the seller, and he has told me what he intends to charge if I wait too long. Nobody has become saintly about the arrangement. I find that reassuring."''', c('[Take the carrying loop Halvek offers.]', "road")),
     n("loan", "Gesmerha", '''"Yes. One asked whether Sella would permit a loan next month. I told him to ask her, with a date for returning it. He looked remarkably surprised by the simplicity of a thing he had hoped I would do for him."
 "Did he ask?"
-"He began composing the request. I have asked to hear it only if he wants help. I am trying not to acquire another duty merely because I can perform it more quickly."
+"He began composing the request. I told him to bring it to me only if he wants help. A chief who does every small thing herself because she is quicker ends with a clan that cannot tie its own boots."
 {n}She checks the strap of her tool roll.{/n}
 "Today we take the box back. No lesson secretly arranged at the destination. I am bringing tools because Sella asked me to look at a split in the handle of her grandmother's knife. I may be able to mend it. If not, I shall tell her."
 "You would like to mend it."
@@ -282,7 +282,7 @@ s("a_lesson_without_her", "The work someone else began", '"What did the learners
 "Did you?"
 "Yes. I enjoyed it. No argument about who ought to own the lesson afterward."
 {n}Her hand rests on the clean cloth.{/n}
-"The box is hers. If a loan becomes inconvenient, we shall ask for a different time. I have stopped planning my whole workshop around the expectation that somebody else must remain conveniently near it."''', c('[Ask what she wants her own workshop to become.]', "hers")),
+"The box is hers. If a loan comes at a bad time, we ask for another. I will not build my workshop around a box that lives under somebody else's roof."''', c('[Ask what she wants her own workshop to become.]', "hers")),
     n("hers", "Gesmerha", '''"Smaller, for a while. That was not the answer I expected to want."
 {n}She folds the cloth into a narrower strip.{/n}
 "I want to teach people who will carry something away without requiring me to carry every tool after them. I want a morning when I can choose one piece of work and remain with it until I understand why it displeases me."
@@ -312,63 +312,54 @@ s("a_lesson_without_her", "The work someone else began", '"What did the learners
 ], "gesmerha.delivery_kept")
 
 s("the_room_she_chose", "After the last knock", '"It is me. May I come in?"', [
-    n("start", "Gesmerha", '''"Come in. Close the door, then tell me whether you have brought an audience small enough to hide in your pockets."
-{n}Gesmerha sits on the edge of a low bed. Her boots stand beneath it, heels toward the wall. A lamp burns on a chest near the door; its light reaches the long hair she has loosened from its tie.{/n}
-"No audience," you tell her.
-"Good. There is a chair two steps to your left. If you want it closer, tell me before you move it."
-{n}You describe where you put the chair. She turns toward the scrape, then settles with her feet resting on a folded blanket.{/n}
-"I have been waiting for the last knock. Someone asked where we put the smallest pattern. I told him to ask the person who had put it away. Then he remembered that was himself."
+    n("start", "Gesmerha", '''"Come in. Bar the door behind you."
+{n}Gesmerha sits on the edge of the bed. Her boots stand beneath it, heels to the wall. A lamp burns on the chest by the door for your sake; its light finds the long hair she has loosened from its tie.{/n}
+"There is a chair two steps to your left. Leave it where it is, or I will fall over it at dawn."
+{n}You sit. She turns her face toward the creak of it and settles her bare feet on a folded blanket.{/n}
+"I have been waiting for the last knock. Someone wanted to know where we put the smallest pattern. I told him to ask whoever put it away. Then he remembered that was himself."
 "Did you forgive him?"
-"I shall consider it tomorrow. Tonight I have closed the door."''',
-      c('"May I sit beside you and kiss you?"', "lover", requires=("gesmerha.lover",)),
-      c('"I still want to explore what might be between us."', "slow", requires=("gesmerha.campaign_slow",), forbids=("gesmerha.evening_as_friends",)),
+"Tomorrow, perhaps. Tonight the door is barred."''',
+      c('[Sit beside her on the bed.]', "lover", requires=("gesmerha.lover",)),
+      c('"I have been thinking about what might be between us."', "slow", requires=("gesmerha.campaign_slow",), forbids=("gesmerha.evening_as_friends",)),
       c('"I am glad we have kept an evening for our friendship."', "friends", requires=("gesmerha.campaign_friends",), forbids=("gesmerha.evening_as_friends",)),
       c('"I have come for the evening we agreed to spend as friends."', "friends", requires=("gesmerha.evening_as_friends",)),
       c('"I cannot keep the evening clear yet. May I return?"', abort=True)),
-    n("lover", "Gesmerha", '''"Then come where I can reach you. I have thought about it too."
-{n}You tell her when you stand and where you sit beside her. She offers her hand, follows your arm to your shoulder and laughs softly when her fingers encounter the fastener near your collar.{/n}
-"That part is determined to be remembered."
-"Shall I move it?"
-"Please. I should like to touch you without acquiring a lesson in metalwork."
-{n}You loosen it and set it on the chest, telling her where. When you return to her side, she lifts her hand to your cheek.{/n}
-"May I kiss you?"
-"Yes."
-{n}She draws you close. The kiss begins gently and becomes less tentative when your hand settles where she guides it against her waist. When you part, she remains near enough that you feel her laugh before hearing it.{/n}
-"There. An excellent use for the door."
-{n}She asks what you want from the rest of the evening.{/n}''',
-      c('"I want to stay close, and see where we both want the evening to go."', "night"),
-      c('"Your company and a few more kisses. I would like to take the rest slowly tonight."', "gentle")),
-    n("slow", "Gesmerha", '''{n}Gesmerha rests her hands on the blanket beside her.{/n}
-"So do I. I have enjoyed these days, including the parts in which you did not agree with the answer I had hoped to give."
-"I would like more than good afternoons."
-"Then tell me what you mean. I have imagined several answers and would prefer to hear yours before becoming attached to the wrong one."
-{n}You tell her about the closeness you want. She listens, asks one question about what you expect when the two of you are apart, and gives you time to answer.{/n}
-"I cannot promise to remain wherever it is easiest to find me," she says. "There will be other people I care for, work I choose and days I want for myself. You have people of your own. I will not ask you to make their answers for them."
-"I want us to choose our time together honestly."
-"Good. I would also like to kiss you. I have managed to make that sound like the least difficult part of the discussion, and now I am discovering how much I want your answer."''',
-      c('"Yes. I want to be your lover, with the freedom and care we have discussed."', "first_kiss"),
-      c('"I still need time. I want this evening without promising romance."', "open"),
+    n("lover", "Gesmerha", '''"Good. I have thought about it too. All day, with a mallet in my hand, which is not safe."
+{n}She reaches for you as you sit and finds your arm, then your shoulder, then the fastener at your collar, and laughs low when it resists her.{/n}
+"This thing again. Take it off before I take it off with my teeth."
+{n}You unclasp it and drop it on the chest. When you turn back she already has a hand at your cheek, and she pulls you down into a kiss that begins gently and does not stay that way. She takes your hand and sets it at her waist, and holds it there.{/n}
+"There. A better use for a door than keeping out clansmen."
+{n}Her mouth is still close to yours.{/n}
+"Now. Do you want me tonight, or do you want to sit and talk and kiss me like two youngsters at a harvest dance? I can bear either. One I would like better."''',
+      c('"I want you tonight."', "night"),
+      c('"Talk and kisses tonight. The rest another night."', "gentle")),
+    n("slow", "Gesmerha", '''{n}Gesmerha rests her hands on the blanket either side of her.{/n}
+"So have I. Even on the days you argued with me over the box, I liked having you there to argue."
+"I want more than good afternoons."
+"Then say what more. I have imagined three answers already, and I want the true one before I grow fond of a wrong one."
+{n}You tell her. She listens with her head tilted, the way she listens for a crack in a block, and asks one question: what becomes of this when you are on your road and she is on hers.{/n}
+"I will not sit wherever it is easiest for you to find me," she says, when you have answered. "I have a clan to see settled, and work I want, and days I mean to keep for myself. You have your own people. I will not speak for them, and you will not speak for mine."
+"Agreed."
+"Good. Then I want to kiss you. That was meant to be the easy part, and now I find I want your answer more than I wanted the other one."''',
+      c('"Yes. Be my lover."', "first_kiss"),
+      c('"Not tonight. Let this evening be only an evening."', "open"),
       c('"I want to keep knowing you as a friend."', "friends")),
-    n("first_kiss", "Gesmerha", '''"Then sit beside me. Tell me where your hand is."
-{n}You do. She takes it and draws it gently toward her shoulder, letting you know when you are near enough. Her other hand finds your cheek. She pauses until you lean toward her, then kisses you with a warmth that makes the carefully prepared first words disappear.{/n}
+    n("first_kiss", "Gesmerha", '''"Then come here."
+{n}She finds your hand and draws it to her shoulder. Her other hand finds your face. She waits there a breath, until you lean to her, and then kisses you with a warmth that wipes out whatever she had meant to say after it.{/n}
 "Was that the answer you imagined?" you ask when she draws back.
-"No. The imagined one had a very polished remark afterward. I have forgotten it entirely."
-"You could take a moment."
-"I would rather use the moment differently."
-{n}She kisses you again. When she rests against you afterward, she asks you not to move the blanket under her feet; she has finally found a comfortable place for them.{/n}
-{n}You remain together, learning how she likes to be held and telling her what you enjoy in return. She asks for another kiss before either of you begins speaking about tomorrow.{/n}''',
-      c('[Keep the new relationship and an unhurried first evening.]', flags=("gesmerha.private_evening_kept", "gesmerha.late_lovers", "gesmerha.committed"))),
-    n("night", "Gesmerha", '''"Then stay. Ask me when you want something different from what we are doing. I intend to ask you."
-{n}She reaches back to move the pillow, tells you where she is putting it and draws you with her only after you answer. The narrow bed obliges you both to negotiate a comfortable place. At one point she begins laughing so hard that the kiss you were attempting becomes impossible.{/n}
-"You sound surprised," she says.
-"I had imagined more elegance."
-"So had I. We can accuse the bed. It cannot defend itself."
-{n}You try again with less concern for the imagined version. Her hand moves through your hair, then rests against the back of your neck. She tells you what feels good and what catches against a tender place, plainly enough that you can answer without guessing.{/n}
-{n}The room grows quiet around the small sounds you make together. When she asks whether you want to stay for the night, you say yes. She draws the blanket nearer and asks you to describe which things you have put beside the bed so neither of you has to discover them with a bare foot.{/n}
-{n}Later, with her head resting against you, she complains that the pillow has escaped again. You find it, and her thanks becomes another kiss.{/n}
-"I wanted this," she says softly. "I am pleased we did not wait for a room without inconveniences."
-{n}In the morning she wakes before you and tells you, with considerable satisfaction, that the door has successfully refused its first visitor.{/n}''',
-      c('[Keep the night you freely chose together.]', flags=("gesmerha.private_evening_kept", "gesmerha.late_lovers"))),
+"No. The one I imagined had a clever remark after it. I have lost the remark."
+"You could look for it."
+"I would rather spend the time on this."
+{n}She kisses you again. When she settles against you afterward, she warns you off the blanket under her feet; she has finally got them warm. You stay like that, learning how she likes to be held, and she asks for another kiss before either of you says a word about tomorrow.{/n}''',
+      c('[Keep the new relationship and an unhurried first evening.]', flags=("gesmerha.private_evening_kept", "gesmerha.late_lovers", "gesmerha.committed")),
+      c('"Don\'t send me back to the chair. Let me stay the night."', "first_night")),
+    n("night", "Gesmerha", '''"Then stay."
+{n}She says it the way she says *hold it* over the mallet. She is already pulling the tie from the end of her braid. Then she stands, takes the hem of her shift in both hands, draws it over her head and drops it, and stands there in the lamplight with her chin up, letting you look, because she knows you are looking.{/n}
+"I cannot see you. You will have to come here so I can find out what I am getting."
+{n}You come. She reads you the way she reads a block she means to cut: shoulders, the scars the war has left, the belt, which she deals with herself. Her hands are rough from the chisels and quite sure of what they want. When she has you as bare as she is, she pushes you down onto the bed, which was built for one sleeping woman and says so, and she laughs into your mouth at the creak of it and does not care.{/n}
+"Too small," she says. "Good. Nowhere for you to go."
+{n}She pulls the blanket over both your shoulders, slides her knee across you, and draws your hips hard up against hers.{/n}''',
+      c('[Continue]', "after_night")),
     n("gentle", "Gesmerha", '''"Then sit close enough that I need not keep finding the distance."
 {n}You settle beside her with your arm where she asks for it. She leans against you and begins describing the first sculpture she ever made without someone standing over her shoulder. It had an unfortunate resemblance to an irritated goat, although she had intended a dignified person.{/n}
 "Who told you?"
@@ -378,7 +369,7 @@ s("the_room_she_chose", "After the last knock", '"It is me. May I come in?"', [
 {n}You kiss her. She answers slowly, then asks for a story of your own. You choose one that makes her laugh, with her hand resting in yours.{/n}
 {n}When it is time to go, she draws you close once more and asks you to put the chair back where it stood before leaving. Her last remark through the closing door makes you laugh all the way across the hall.{/n}''',
       c('[Keep the gentle evening as lovers.]', flags=("gesmerha.private_evening_kept", "gesmerha.late_lovers"))),
-    n("open", "Gesmerha", '''"Then no promise of romance. I would rather hear that here than carry away a warmer answer you were trying to make yourself believe."
+    n("open", "Gesmerha", '''"Then no promises. Better a cold answer I can trust than a warm one you talked yourself into."
 {n}She pats the place beside her, then asks whether you would prefer to keep the chair.{/n}
 "Beside you is comfortable."
 "Then sit. I can enjoy the company without demanding that the furniture decide what we call it."
@@ -397,6 +388,23 @@ s("the_room_she_chose", "After the last knock", '"It is me. May I come in?"', [
 "A promising development," she says. "Perhaps he has found it himself."
 {n}When you leave, she asks for another such evening if the road permits it. You are pleased to have one worth remembering already.{/n}''',
       c('[Keep the friendship and the private evening.]', flags=("gesmerha.private_evening_kept", "gesmerha.late_friends"))),
+    # The aftermath of the night, its own beat after the cut (Sol 2026-09-30, Directive 12).
+    n("after_night", "Gesmerha", '''{n}Later, with her head on your chest, she complains that the pillow has escaped again. You find it on the floor. Her thanks turns into another kiss, slower than the first ones.{/n}
+"I wanted this," she says quietly. "Since the box. Since before the box. I stopped pretending otherwise somewhere on the road back from Sella's."
+{n}In the morning she is up before you, dressed, sitting on the chest by the door with her staff across her knees. She tells you, with great satisfaction, that the door has turned away its first visitor of the day, that it was Halvek, and that he will never ask her about the smallest pattern again.{/n}''',
+      c('[Stay for breakfast.]', flags=("gesmerha.private_evening_kept", "gesmerha.late_lovers", "gesmerha.night_shared"))),
+    # The same morning for the slower lover's first night: its terminal choice records the commit.
+    n("after_first_night", "Gesmerha", '''{n}Later, with her head on your chest, she complains that the pillow has escaped again. You find it on the floor. Her thanks turns into another kiss, slower than the first ones.{/n}
+"I wanted this," she says quietly. "Since the box. Since before the box. I stopped pretending otherwise somewhere on the road back from Sella's."
+{n}In the morning she is up before you, dressed, sitting on the chest by the door with her staff across her knees. She tells you, with great satisfaction, that the door has turned away its first visitor of the day, that it was Halvek, and that he will never ask her about the smallest pattern again.{/n}''',
+      c('[Stay for breakfast.]', flags=("gesmerha.private_evening_kept", "gesmerha.late_lovers", "gesmerha.committed", "gesmerha.night_shared"))),
+    # The late commit's own threshold: the slower lover who asks to stay after the first kiss (Sol 2026-09-30, pattern 3).
+    n("first_night", "Gesmerha", '''{n}She goes still. Then she laughs, low, and does not let go of your hand.{/n}
+"The chair was never going to hold you. I put it there so I would have something to refuse."
+{n}She pulls you down beside her, and then beneath her. Her shift comes off over her head in one motion; your shirt takes longer, because she will not let you help and her fingers keep stopping to read what they find. The bed was built for one sleeping woman and says so. She tells it to be quiet.{/n}
+"There," she says, when there is nothing left between you but the blanket. "Now I know what I am getting."
+{n}She settles astride you with the blanket around both your shoulders, bends to take your mouth, and reaches down between you.{/n}''',
+      c('[Continue]', "after_first_night")),
 ], "gesmerha.work_settled")
 
 s("the_work_left_finished", "A place in the days ahead", '"Is everything ready for you to leave?"', [
@@ -422,48 +430,47 @@ s("the_work_left_finished", "A place in the days ahead", '"Is everything ready f
 "Will you tell me?"
 "After defending myself for a little while. I am trying to make the warning accurate."
 {n}Her smile fades gently.{/n}
-"I want room in that life for you. I cannot name the house while I say it. I can still tell you what I am offering."''', c('[Ask her to say it.]', "offer")),
+"I want you in that life. I cannot tell you which roof it will be under. I can tell you what I offer."''', c('[Ask her to say it.]', "offer")),
     n("shelter", "Gesmerha", '''"Yes. We can leave the houses without giving every part of this land to what has hurt us. I have not promised that we will return to these same rooms and find the old days waiting."
 "What do you want to restore?"
 "Places where people can work without wondering which alarm will interrupt the next hour. Songs they sing because they want to, not because somebody has demanded proof that Sarkoris remains alive. I want a workshop with a roof I know how to describe without beginning with the leaks."
 {n}She laughs softly.{/n}
 "I have begun with a box delivered to its owner and a lesson somebody else can teach. It is a small beginning for a person who has made several large speeches. I am pleased with it."
 "And the days beyond that?"
-"Will need work of their own. I want room in them for you. That is not a request that you become another duty I must carry to prove I deserve the people who trust me."''', c('[Ask what she wants your place to be.]', "offer")),
+"Will need work of their own. I want you in them. Not as one more duty to carry for the clan. As the reason I set the duties down, some evenings."''', c('[Ask what she wants your place to be.]', "offer")),
     n("unreported", "Gesmerha", '''"Where people will use it. I have spent too long imagining that if every tool leaves this hall, something essential will disappear between the door and the next place it is put down."
 {n}She traces the seam of her bundle.{/n}
 "I have not given you a plan for the whole clan. I will not make one out of this private conversation. There are people who have to speak for themselves, and questions that do not become settled because I am tired of hearing them."
 "You can tell me what you want."
 "A place to work. People willing to learn and willing to leave me alone when I ask. Some mornings I do not begin by counting what everyone needs from me."
 {n}She tilts her face toward your voice.{/n}
-"And time with you. I should like that wish to remain simple even when arranging it becomes inconvenient."''', c('[Ask her to say what she wants between you.]', "offer")),
-    n("offer", "Gesmerha", '''"I want to keep choosing our time. To tell you when I miss you, and when I have work I would rather finish before being distracted. I want you to tell me the same."
-{n}She offers her hand. You describe where yours waits before meeting it.{/n}
-"I will leave word where a trustworthy carrier can find me when there is word worth sending. I will not send someone into danger merely to prove I have remembered you. If we choose a visit, I want it arranged between the people actually making the journey."
+"And time with you. As simple as that. The arranging will be hard enough without my making the wish hard too."''', c('[Ask her to say what she wants between you.]', "offer")),
+    n("offer", "Gesmerha", '''"I want to keep having you. I want to tell you when I miss you, and to throw you out when I have work I mean to finish first. And I want the same from you, or I will know you are being polite, and I hate polite."
+{n}She holds out her hand, and you put yours into it.{/n}
+"When there is word worth sending, I will leave it where a carrier I trust can find it. I will not send a boy into demon country to prove I remember your face. When we meet, it will be because the two of us made the road, not because somebody else arranged it."
 "That may mean waiting."
-"Yes. I have discovered that waiting and being forgotten are different things. I dislike how often they feel alike before there is an answer."
-{n}Her thumb moves once across your hand.{/n}
-"What do you want to keep?"''',
-      c('"I want our life as lovers, with our own work and people still part of it."', "lovers", requires=("gesmerha.late_lovers",)),
-      c('"I want to keep our friendship, and make time to visit when we can."', "friends", requires=("gesmerha.late_friends",)),
-      c('"I want to keep this closeness without a romantic promise."', "open", requires=("gesmerha.late_open",)),
-      c('"I cannot promise another chapter together. I want to end this honestly here."', "part")),
-    n("lovers", "Gesmerha", '''"Then that is what I choose too. I will not move every part of my life into the space left after yours is arranged. Nor would I like you to arrive with nothing of your own left to tell me about."
-"We will have plenty to disagree over."
-"Good. It would be inconvenient to discover I had fallen in love with somebody whose opinions disappeared when I kissed them."
-{n}She smiles at the silence after her words.{/n}
-"Yes," she says. "I meant that. You may take a breath before answering."
-{n}You tell her what she means to you. She listens with your hand between hers, then asks you to come closer. You ask whether she wants a kiss; her answer is immediate.{/n}
-{n}The kiss lasts until a sound at the distant doorway reminds you both where you are. Gesmerha laughs against your cheek, then rests her forehead near yours for one more quiet breath.{/n}
-"I want another ordinary morning with you," she says. "Not merely a farewell worth remembering."
+"Yes. Waiting and being forgotten feel the same until the answer comes. I have learned the difference. It did not come cheap."
+{n}Her thumb moves once across the back of your hand.{/n}
+"What will you keep?"''',
+      c('"You. As my lover, wherever the roads go."', "lovers", requires=("gesmerha.late_lovers",)),
+      c('"Our friendship, and every visit the road allows."', "friends", requires=("gesmerha.late_friends",)),
+      c('"This, as it is. No promises made of it."', "open", requires=("gesmerha.late_open",)),
+      c('"I can\'t promise you anything more. Better to end it here, cleanly."', "part")),
+    n("lovers", "Gesmerha", '''"Then that is what I choose too. I will not pour my life into whatever space is left once yours is arranged. And do not come to me with nothing of your own left to tell."
+"We will have plenty to argue over."
+"Good. It would be a disgrace to find I had fallen in love with someone whose opinions melted when I kissed them."
+{n}She hears the silence after her words and smiles into it.{/n}
+"Yes," she says. "I meant that. Breathe before you answer."
+{n}You tell her what she is to you. She listens with your hand between hers, then pulls you in by it and kisses you until a sound at the far doorway reminds you both where you are. She laughs against your cheek and rests her forehead near yours for one more breath.{/n}
+"I want another ordinary morning with you. Not a farewell worth singing about. A morning."
 "So do I."
-{n}When she lets go, you place her staff where she asks and tell her which way the doorway lies. She lifts her bundle herself. At the threshold she turns toward your last steps and tells you she will miss the sound.{/n}''',
+{n}When she lets go, you set her staff in her hand and turn her toward the doorway. She lifts her bundle herself. At the threshold she turns back toward your last steps and tells you she will miss the sound of them.{/n}''',
       c('[Keep the love and the practical promise you made together.]', flags=("gesmerha.late_complete", "gesmerha.future_lovers", "gesmerha.committed"))),
-    n("friends", "Gesmerha", '''"Then come with a story when you can. If you arrive with a useful question, I may still answer it, but I would prefer not to find that usefulness has become the whole reason we remember one another."
+    n("friends", "Gesmerha", '''"Then come with a story when you can. If you arrive with a useful question, I may even answer it. But I would rather not find, some year, that usefulness was all we had left."
 "I shall try to be an inconvenient guest."
 "Moderation. I have known people with a natural gift for it, and I would not ask you to compete."
 {n}She laughs, squeezes your hand and lets go. You tell her where her staff rests, then describe the clear way to the door.{/n}
-"I am glad we finished the box," she says. "I am glad we had an evening afterward. Those are separate pleasures. I should like to keep remembering both."
+"I am glad we finished the box," she says. "I am glad we had an evening afterward. Two different pleasures. I mean to keep both."
 {n}She lifts her bundle. You walk together as far as the doorway, where Halvek has come to ask whether she is ready. She tells him yes, then turns back toward your voice for the goodbye.{/n}''',
       c('[Keep the friendship and the visits you will try to arrange.]', flags=("gesmerha.late_complete", "gesmerha.future_friends"))),
     n("open", "Gesmerha", '''"Then we shall keep knowing one another. I will not explain your answer to the people who would enjoy predicting what it must become."
@@ -472,60 +479,72 @@ s("the_work_left_finished", "A place in the days ahead", '"Is everything ready f
 {n}Her laughter makes the parting easier without making it unimportant. She releases your hand and feels for the tie of her bundle.{/n}
 "Ask for me when you can. If I am elsewhere, let the message wait somewhere safe. I will answer when I have an answer to give."
 {n}You tell her where her staff lies. She stands, adjusts the bundle and waits while you describe the doorway. Before leaving she asks for another harmless story next time, including whatever unflattering detail you are tempted to leave out.{/n}
-{n}You promise the detail. Neither of you promises what the relationship must become.{/n}''',
+{n}You promise the detail. Neither of you promises what it must become.{/n}''',
       c('[Keep the open relationship without inventing another answer.]', flags=("gesmerha.late_complete", "gesmerha.future_open"))),
     n("part", "Gesmerha", '''{n}Her hand loosens around yours. She draws it back and settles both hands on her bundle.{/n}
 "Then I am glad you have said so before I began choosing the words for your next welcome."
 "I did not want to make the work we shared seem like a mistake."
 "It was not. Sella has her box. I have days I wanted to spend with you. You cannot return them, and I am not asking you to."
 {n}She takes a breath, then asks where her staff lies.{/n}
-"I will need time before I know whether I want another private visit. Do not send explanations until I have had it."
-"I will respect that."
-"Thank you."
+"I will not want another private visit for a long while. Do not send me explanations. I will know where to find you if I want one."
+"I understand."
+"Good."
 {n}You tell her the way to the doorway. She lifts her bundle, waits until you say the path is clear and leaves the hall without asking you to make the parting easier by changing your answer.{/n}''',
       c('[Respect the ending and the time she requested.]', flags=("gesmerha.late_complete", "gesmerha.closed"))),
 ], "gesmerha.private_evening_kept")
 
 
-def ending(id, title, text, requires=(), forbids=(), owner="Epilogue"):
+def ending(id, title, text, requires=(), forbids=(), owner="Epilogue", **extra):
     SCENES.append(scene("gesmerha.late_ending_" + id, title, owner, 0, "", [
         n("start", "Narrator", text, portrait="Gesmerha")], Relationship="gesmerha", last=99,
-        requires=("gesmerha.late_complete", *requires), forbids=forbids))
+        requires=("gesmerha.late_complete", *requires), forbids=forbids,
+        **{k: dict(v) if isinstance(v, dict) else v for k, v in extra.items()}))
 
 
 LIVING_BLOCK = ("gesmerha.dead", "gesmerha.closed", "inhuman", "demon", "devil", "ascended", "sacrifice")
-ending("lovers", "Ordinary mornings", '''{n}Gesmerha and the Commander kept the relationship they had chosen. It took messages, changed plans and an occasional argument about whether a person could reasonably call something a short visit when half a day had already passed. Neither arranged an entire life around waiting for the other to become available.{/n}
-{n}When they met, there was work to hear about and company that did not have to justify itself by being useful. Gesmerha learned the sound of the Commander's arrival in more than one doorway. Sometimes she finished the cut beneath her hand before turning toward it. Sometimes she set the knife down at once, and the difference was a pleasure the Commander learned to recognize.{/n}
-{n}They had ordinary mornings together. A misplaced cup, an interrupted kiss, a story told badly enough to be improved by laughter. Gesmerha remained blind, proud of her work and capable of being thoroughly inconvenient about the things she loved. The Commander was among them.{/n}''', requires=("gesmerha.future_lovers",), forbids=LIVING_BLOCK)
-ending("friends", "A story worth bringing", '''{n}Gesmerha's friendship with the Commander survived the practical inconvenience of two lives that did not always lead toward the same door. Messages waited. Visits were arranged and sometimes rearranged. When they met, Gesmerha asked for the part of the story the Commander had considered too ordinary to include.{/n}
-{n}The box remained Sella's. What the learners made from its lessons belonged to their own hands. Gesmerha could still be heard explaining why a particular curve should be cut differently, then laughing when somebody reminded her how much of its history had begun with a mistake.{/n}
-{n}The Commander had a place among the people who knew when she wanted company and when she wanted to finish a difficult piece. It was a friendship with enough affection to make both answers easy to hear.{/n}''', requires=("gesmerha.future_friends",), forbids=LIVING_BLOCK)
-ending("open", "The answer they kept", '''{n}Gesmerha and the Commander continued to make time for one another when the road permitted it. The relationship remained the open, unpromised closeness they had named. Neither treated another person's prediction as a debt the two of them must eventually pay.{/n}
-{n}There were visits, stories and several arguments worth beginning again. Gesmerha asked about the places the Commander had seen and supplied her own account of people who had misunderstood an apparently simple commission. The visits mattered without becoming evidence for an answer neither had given.{/n}''', requires=("gesmerha.future_open",), forbids=LIVING_BLOCK)
-ending("closed", "What had been finished", '''{n}The Commander and Gesmerha parted after settling the work they had shared. Sella's box had reached its owner. The private evenings had been wanted while they lasted. Their ending did not undo either fact.{/n}
-{n}Gesmerha took the time she had asked for. She did not send a message merely to make the parting easier for the person receiving it. When she thought of the Commander, she remembered particular words and sounds, some with pleasure and some with a pain that did not require another explanation.{/n}''', requires=("gesmerha.closed",), forbids=("gesmerha.dead", "inhuman", "demon", "devil"))
-ending("loss", "The work beyond her hands", '''{n}Gesmerha died. The people she had taught went on making things with their own hands. Their work was not an answer from her, but sometimes a familiar curve made someone stop to remember the exact impatience with which she had explained it.{/n}
-{n}The Commander remembered more private things: a joke through a closing door, her hand waiting to be met, the pause before she said something she had decided mattered. She had given a misplaced stool an address, then made room on the chest for the Commander to sit. The complaint and the welcome returned together. There would be no next visit to hear them again.{/n}
-{n}Sella kept the box. The loss did not make the inheritance belong to someone else.{/n}''', requires=("gesmerha.dead",))
-ending("changed", "A familiar voice was not enough", '''{n}The Commander's transformation ended the welcome Gesmerha had been willing to offer. She had learned too much about comforting appearances to let a familiar voice decide what she must accept.{/n}
-{n}She remembered the time they had chosen, including the moments she would still have been glad to live again. Remembering them did not oblige her to make the same invitation to the being the Commander had become. Her refusal was her own.{/n}''', requires=("inhuman",), forbids=("gesmerha.dead",))
-ending("demon", "The invitation withdrawn", '''{n}Gesmerha would not let her affection for the Commander become a welcome for the Commander's demonic power. She had seen a clan teach itself to accept cruelty through a voice it wished to trust. She had no desire to repeat the lesson in a more private room.{/n}
-{n}The evenings they had shared did not become false. She could miss them and still refuse another. When she gave that answer, she asked for it to be carried accurately, without an assurance that time would persuade her to change it.{/n}''', requires=("demon",), forbids=("gesmerha.dead", "inhuman"))
-ending("devil", "No claim beyond the words", '''{n}The Commander's infernal path did not acquire Gesmerha through anything she had promised before. She had offered time and affection she could choose. She would not allow those words to become another person's authority over the life she meant to lead.{/n}
-{n}She gave her refusal plainly. There was work she still wanted to finish, and people she still wanted to see. Explaining the refusal until a powerful listener approved of it was not among her obligations.{/n}''', requires=("devil",), forbids=("gesmerha.dead", "inhuman", "demon"))
-ending("ascent", "News without a familiar answer", '''{n}News of the Commander's ascent reached Gesmerha through a messenger who seemed to expect her to know what a god would want from the people left behind. She told him she had known someone who could sit beside her and be corrected about the position of a chair. She would not invent the next answer merely because the question had become magnificent.{/n}
-{n}She kept the memory of their farewell. Whatever place she might have in the new power's existence would need a new invitation. Until one came, she had work of her own and people who could still knock at the door.{/n}''', requires=("ascended",), forbids=("gesmerha.dead", "gesmerha.closed", "inhuman", "demon", "devil"))
-ending("sacrifice", "The ordinary morning she wanted", '''{n}Gesmerha heard how the Commander had died. She asked the messenger to tell her the part he knew, then stopped him when he began explaining what she ought to find comforting about it.{/n}
-{n}She wanted another ordinary morning. She remembered the pressure of the Commander's hand while they spoke, and the weight of her own bundle when she lifted it to go. Those small things returned to her more clearly than the messenger's account of the battle.{/n}
-{n}For a time she found reasons not to tell one of the stories the Commander had liked. Later she told it again. Someone laughed at the right place, and the pleasure hurt enough that she had to stop before beginning another.{/n}''', requires=("sacrifice",), forbids=("gesmerha.dead", "gesmerha.closed", "inhuman", "demon", "devil", "ascended"))
-ending("aeon", "A life without that visitor", '''{n}In the history remade without the Worldwound, the same Commander did not arrive to share Gesmerha's afternoons. The disputes, journeys and private answers that had followed that meeting did not survive unchanged as promises she owed to an absent traveler.{/n}
-{n}Whatever work her hands found in that world belonged to the life she lived there. No erased farewell could decide its ending for her.{/n}''', owner="AeonEpilogue")
+# A native Trickster ending after the sacrifice brings the Commander back (trickster.commander_back, trickster_world): the
+# living endings stand and the mourning page yields (Sol 2026-09-30, INT; ledger row 16).
+SURVIVED = dict(ForbidOverrides={"sacrifice": "trickster.commander_back"})
+ending("lovers", "Ordinary mornings", '''{n}Gesmerha and the Commander kept each other, across messages that came late, plans that changed and a standing quarrel about whether half a day can honestly be called a short visit. Neither built a life around waiting for the other to be free.{/n}
+{n}When they met, there was work to hear about and company that did not have to earn its place by being useful. Gesmerha learned the Commander's step in more than one doorway. Some days she finished the cut under her hand before she turned toward it. Some days she put the knife down at once, and the Commander learned what the difference meant.{/n}
+{n}They had ordinary mornings: a cup mislaid, a kiss interrupted, a story told badly enough that laughter improved it. Gesmerha stayed blind, proud of her work and thoroughly inconvenient about the things she loved. The Commander was among them.{/n}''', requires=("gesmerha.future_lovers",), forbids=LIVING_BLOCK, **SURVIVED)
+ending("friends", "A story worth bringing", '''{n}Gesmerha's friendship with the Commander outlasted two lives that did not often lead to the same door. Messages waited. Visits were fixed and unfixed. When they met, she always asked for the part of the story the Commander had thought too ordinary to tell.{/n}
+{n}The box stayed Sella's. What the learners made from its lessons belonged to their own hands. Gesmerha could still be heard explaining why a certain curve should be cut deeper, and laughing when somebody reminded her that the curve had begun as a mistake.{/n}
+{n}The Commander knew when she wanted company and when she wanted to be left alone with a hard piece of wood. She never had to explain which.{/n}''', requires=("gesmerha.future_friends",), forbids=LIVING_BLOCK, **SURVIVED)
+ending("open", "The answer they kept", '''{n}Gesmerha and the Commander went on finding each other when the road allowed it, and made no promise of it. When people in the clan told her what it would come to in the end, she told them to go and carve their own futures and leave hers on the bench.{/n}
+{n}There were visits, stories and several quarrels worth starting again. She asked about the places the Commander had seen, and in return told of people who had misunderstood a simple commission in ways no one could have foreseen.{/n}''', requires=("gesmerha.future_open",), forbids=LIVING_BLOCK, **SURVIVED)
+ending("closed", "What had been finished", '''{n}The Commander and Gesmerha parted once the work they had shared was done. Sella's box had reached its owner. The evenings had been wanted while they lasted, and the parting did not unmake them.{/n}
+{n}Gesmerha kept the distance she had asked for. She sent no message to make the parting easier on the one who would read it. When she thought of the Commander, she remembered certain words and a certain step, some with pleasure and some with an ache she did not care to explain to anyone.{/n}''', requires=("gesmerha.closed",), forbids=("gesmerha.dead", "inhuman", "demon", "devil"))
+ending("loss", "The work beyond her hands", '''{n}Gesmerha died. The people she had taught went on making things with their own hands. Their work was not an answer from her, but sometimes a familiar curve made someone stop and remember the exact impatience with which she had explained it.{/n}
+{n}The Commander remembered other things: a joke through a closing door, her hand held out to be met, the pause before she said something she had decided mattered. She had given a misplaced stool an address and then cleared the chest so the Commander could sit. The complaint and the welcome came back together. There would be no next visit to hear them again.{/n}
+{n}Sella kept the box. The death did not make the inheritance anyone else's.{/n}''', requires=("gesmerha.dead",))
+ending("changed", "A familiar voice was not enough", '''{n}What the Commander became ended the welcome Gesmerha had offered. Wintersun had knelt for a generation to a pleasing voice, and she would not let a familiar one tell her what to accept.{/n}
+{n}She remembered the evenings, some of which she would still have lived again. Remembering them did not oblige her to open the door to what now stood behind it.{/n}''', requires=("inhuman",), forbids=("gesmerha.dead",))
+ending("demon", "The invitation withdrawn", '''{n}Gesmerha would not let her love for the Commander become a welcome for the Commander's demonic power. She had watched a clan teach itself to smile at cruelty because it came in a voice they wished to trust. She would not learn that lesson a second time in her own bed.{/n}
+{n}The evenings they had shared did not become false. She could miss them and still refuse another. She sent her answer word for word, with no promise that time would soften it.{/n}''', requires=("demon",), forbids=("gesmerha.dead", "inhuman"))
+ending("devil", "No claim beyond the words", '''{n}The Commander's infernal path did not acquire Gesmerha through anything she had said before. She had given her time and her affection, not her name to a contract, and she would not have her own words turned into somebody else's title to her life.{/n}
+{n}She gave her refusal plainly. There was work she meant to finish and people she meant to see, and arguing the point until a devil agreed with her was not among her duties.{/n}''', requires=("devil",), forbids=("gesmerha.dead", "inhuman", "demon"))
+ending("ascent", "News without a familiar answer", '''{n}News of the Commander's ascent came to Gesmerha by a messenger who seemed to expect her to know what a god would want from the people left behind. She told him she had known someone who could sit beside her and be corrected about where the chair went. She would not make up the next answer for him because the question had grown grand.{/n}
+{n}She kept the farewell as it had been. Whatever place she might have in the new power's existence would need a new knock at the door. Until one came, she had work of her own, and people who could still knock.{/n}''', requires=("ascended",), forbids=("gesmerha.dead", "gesmerha.closed", "inhuman", "demon", "devil"))
+ending("sacrifice", "The ordinary morning she wanted", '''{n}Gesmerha heard how the Commander had died. She let the messenger tell the part he knew, and stopped him when he began explaining what she ought to find comforting in it.{/n}
+{n}She had wanted another ordinary morning. What came back to her was small: the pressure of the Commander's hand while they talked, the weight of her own bundle when she lifted it to go. Those came back more clearly than anything the messenger said about the battle.{/n}
+{n}For a time she would not tell the stories the Commander had liked. Later she told one again. Someone laughed at the right place, and it hurt enough that she had to stop before she began another. That night she said the Commander's name into the fire in the old way, so that the ancestors would know the step.{/n}''', requires=("sacrifice",), forbids=("gesmerha.dead", "gesmerha.closed", "inhuman", "demon", "devil", "ascended", "trickster.commander_back"))
+ending("aeon", "A life without that visitor", '''{n}In the history remade without the Worldwound, that Commander never came to share Gesmerha's afternoons. The disputes, the journeys and the private answers that followed that meeting were not left behind as promises she owed an absent traveler.{/n}
+{n}Whatever work her hands found in that world belonged to the life she lived there. No erased farewell decided its ending for her.{/n}''', owner="AeonEpilogue")
 
 
 SCENES.append(scene("gesmerha.late_ending_unfinished", "The visit after the return", "Epilogue", 0, "", [
     n("start", "Narrator", '''{n}There had been another meeting in Wintersun. Gesmerha had sat behind a chest of things waiting to be sorted and asked the Commander to describe the stool someone had left in her path. After the long absence, the little complaint had made her presence wonderfully ordinary.{/n}
 {n}The Commander remembered her moving the folded blanket to make room on the chest beside her. She had wanted company among the bundles and the arguments. When another journey failed to bring another afternoon, it was that ordinary welcome the Commander found themself wanting to hear again.{/n}''', portrait="Gesmerha")], Relationship="gesmerha", last=99,
-    requires=("gesmerha.late_arrived",), forbids=(*LIVING_BLOCK, "gesmerha.late_complete")))
+    requires=("gesmerha.late_arrived",), forbids=(*LIVING_BLOCK, "gesmerha.late_complete"),
+    ForbidOverrides=dict(SURVIVED["ForbidOverrides"])))
+
+
+# The companion who reacts to the night (Sol 2026-09-30, BEL): Ulbrig, a Sarkorian, on a Sarkorian carver.
+SCENES.append(reaction("Ulbrig", "gesmerha.react.ulbrig_night", ("gesmerha.night_shared", "ulbrig.in_party"),
+    '''"The Wintersun woodshaper barred her door on you, they're saying, and half the hall heard her bed complain about it." {n}Ulbrig turns his mug a full circle on the table before he goes on.{/n} "My grandmother used to say a carver takes your measure before she takes you to bed, the way she'd measure a trunk before the first cut. So she's decided what's in you, warchief. Try not to make a liar of her."''',
+    answer_list="0a50c9c878844ed4a69b8d6131304c5e", forbids=("ulbrig.dead", "ulbrig.kicked_out"), chapter=5, last=5, delay=24,
+    entry='"About the woodshaper from Wintersun..."'))
 
 
 def integrate(payload):
