@@ -287,15 +287,16 @@ visit(E + "executor.haggle", "The executor", [
     el("refuse", '''"Then I have laughed more tonight than in the last ten years, and that is worth something." {n}She stands, and she is taller than you expected.{/n}
 "But you should not have let me say it. The Way does not like to be heard by people who will not deal. Go home, Knight Commander, and live as long as you like. I will not be there when you stop."''',
        c("Continue", flags=(CLOSED,))),
-    el("pulse", '''{n}She does not answer. She reaches across the table, quite unhurried, and lays two cold fingers against the side of your throat, just above the crepe, the way a physician does. Or an embalmer.{/n}
-"Your executor has a pulse, Commander. It is in the throat, and it is racing."''',
+    el("pulse", '''{n}She does not answer. She is looking at your hands. Somewhere in the argument you took off a glove to lift the cup she poured you, and you did not put it back.{/n}
+"The news of the death came to Caliphas with a description, executor. The Way buys nothing it cannot recognize. The height. The hair. A sword-hand callused across the second knuckle, and a white seam across the back of the left hand where a demon's claw went through." {n}She reaches across the table, quite unhurried, and lays two cold fingers against the side of your throat, just above the crepe, the way a physician does. Or an embalmer.{/n}
+"And the deceased has a pulse, Commander. It is in the throat, and it is racing."''',
        c("Continue", "pulse2")),
-    el("pulse2", '''"Did you think I had never seen a living thing play dead? I have seen hundreds. My order has hidden in plain sight for six hundred years, and you came to me in a *curtain*." {n}She takes her hand back and wipes her fingers on a napkin, one by one.{/n}
+    el("pulse2", '''"Did you think I had never seen a man sit at his own funeral in a borrowed coat? I have seen a dozen, all of them debtors. My order has hidden in plain sight for six hundred years, and you came to me in a *curtain*." {n}She takes her hand back and wipes her fingers on a napkin, one by one.{/n}
 "I can guess why. You wanted to know what I would pay before I knew what you were. Take that off. I will make the same offer to the owner, bare-faced, and the owner will answer it bare-faced, or leave."''',
        c("[Take off the veil and hear her terms.]", "bare"),
        c('[See her out] "The owner isn\'t selling."', "seen_out")),
     el("bare", '''{n}She does not look at your face once you have uncovered it. She looks at your hands, and your throat, and the vein at your temple, as if those were the parts of you that could be trusted.{/n}
-"When you die, the body is the Way's, in my keeping, whole. Until then it is yours. That is all. I do not tell the owner what I want it for; the executor lost that when he lied to me." {n}She pushes her untouched cup across to you.{/n} "And I will never believe your face again. Answer."''',
+"When you die, the body is the Way's, in my keeping, whole. Until then it is yours. That is all. I do not tell the owner what I want it for; the executor lost that with the lie." {n}She pushes her untouched cup across to you.{/n} "And I will never believe your face again. Answer."''',
        c('[Sell it bare-faced] "Done. My body, at my death, to the Way."', "bare_sold"),
        c('[See her out] "The owner isn\'t selling after all."', "seen_out")),
     el("bare_sold", '''{n}No pen and no paper. She leans across the table and says the terms into your ear in a whisper, in words older than the language they are in, and waits until you have whispered them back. Her breath is cold, and smells of cloves.{/n}
@@ -359,17 +360,20 @@ visit(E + "test.the_dead", "Sixty-one under canvas", [
 "I would like to see her face when she learns what her Lady's crusade is built on. One day, perhaps. Not tonight."''',
        c("Continue", "ask")),
     el("ask", '''{n}She lets the canvas fall and turns, and the lantern puts her shadow up the wall to the rafters.{/n}
-"Give them to me. My escort can have carts at the gate by midnight. Some go to Ustalav, to my Lady's table. The rest I will stand up again, and they will walk to the Wound in your first rank. They know no fear or fatigue, and they fight demons as well as any crusader. Better. They have already lost the thing that makes crusaders run."
+"Give them to me. My escort can have carts at the gate by midnight. They go south to Ustalav: some to my Lady's table, and the rest to the Way, who will stand them up again and teach them to serve. They will know no fear or fatigue, and no pit, and no lime. It is the kindest thing anyone will ever have done for them."
 "You sold me your own corpse without haggling. I want to see how you sell somebody else's."''',
        c('[Give her the dead] "Take them. Nobody will count."', "give", alignment=("Evil", 2)),
        c('[Offer her demons instead] "There\'s a dead vrock in the south ditch. Take that, and anything else with horns."', "carrion"),
        c('[Refuse] "Those are owed to the Lady of Graves. Everything in this house is, except me."', "refuse")),
     el("give", '''{n}She does not thank you. She looks at you with her head a little on one side, the way she would look at a hound that had done something unusually clever.{/n}
-"You did not even ask what the ones I stand up will remember." {n}She smiles, showing strong white teeth.{/n} "Nothing, since you wonder. Almost nothing."
+"You did not even ask what the ones the Way stands up will remember." {n}She smiles, showing strong white teeth.{/n} "Nothing, since you wonder. Almost nothing."
 {n}At midnight the carts come, as promised, and men in grey carry out the rows under their canvas one by one, without lanterns and without a word. By the second bell the long room holds nothing but lime dust and sixty-one rectangles where the floor is cleaner.{/n}''',
        c("Continue", "give2")),
     el("give2", '''"The chaplains will come in the morning with their prayers and their lime, and find a clean floor." {n}She dusts her hands.{/n} "Somebody will ask. Somebody always asks. You will have an answer ready, I expect; you are the kind who has one."
-"And that paladin of yours will count the rows in her head until she dies. I would give a great deal to be there when she finishes."''',
+"Your chaplains will count the rows in their ledgers and find sixty-one fewer mouths to pray over. I doubt they will complain."''',
+       c("Continue", "give3", requires=(E + "seelah_prayed",)),
+       c("[Watch the carts go.]", flags=(TESTED, GAVE_DEAD, SECRET_DEAD), forbids=(E + "seelah_prayed",))),
+    el("give3", '''"And that paladin of yours will count the rows in her head until she dies. She knelt by every one of them this morning. I would give a great deal to be there when she finishes counting."''',
        c("[Watch the carts go.]", flags=(TESTED, GAVE_DEAD, SECRET_DEAD))),
     el("carrion", '''{n}For a moment she only stares. Then her nostrils flare, as if you had put something rotten under her nose, which in a sense you have.{/n}
 "Carrion." {n}She says it the way a duchess says *tradesman*.{/n} "You would send my Lady a vrock from a ditch. You would feed the queen of feasts on meat the crows turned down." {n}She looks at you for a long breath, and then, against her will, the corner of her mouth goes up.{/n}''',
@@ -530,7 +534,7 @@ SCENES.append(reaction("Daeran", E + "react.daeran_after", ("trickster.ever", BI
     flags=(DAERAN_ALLY,), forbids=DAERAN_GONE))
 tag(E + "react.daeran_after", "T")
 
-SCENES.append(reaction("Seelah", E + "react.seelah_rows", ("trickster.ever", GAVE_DEAD, "seelah.in_party"),
+SCENES.append(reaction("Seelah", E + "react.seelah_rows", ("trickster.ever", GAVE_DEAD, E + "seelah_prayed", "seelah.in_party"),
     '''{n}Seelah's knees are grey with lime. She does not seem to have noticed.{/n}
 "The dead from Iz, Commander. The ones without names. I prayed over them the other morning, row by row, all sixty-one; I counted, because nobody else was going to." {n}She swallows.{/n} "Yesterday the chaplains went to bury them, and the dead-house was swept clean. Nobody saw carts. Nobody saw anything."
 "Dead people don't get up and walk off. Not on our side of the wall." {n}Her jaw sets.{/n} "I'm going to find out who took them. I'd like you to help me. You're good at finding things out."''',
@@ -589,9 +593,9 @@ COMMON = (
       requires=(BLUFFED,)),
     p('''{n}She never once looked at the Commander's face when a question mattered. She watched the hands, and the pulse at the throat, and on the rare nights she was pleased with what she saw, she said so to the hands.{/n}''',
       requires=(EXPOSED,)),
-    p('''{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back, having nowhere to come back to. The chaplains asked after them for a year, and were told nothing.{/n}''',
+    p('''{n}The sixty-one unnamed dead of Iz were never buried. They went south to Ustalav in the Way's carts, some to a table and some to stand again in grey. The chaplains asked after them for a year, and were told nothing.{/n}''',
       requires=(GAVE_DEAD,), forbids=(E + "seelah_prayed",)),
-    p('''{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back. Seelah had counted them, row by row, the morning before they went, and she kept the count.{/n}''',
+    p('''{n}The sixty-one unnamed dead of Iz were never buried. They went south to Ustalav in the Way's carts, some to a table and some to stand again in grey. Seelah had counted them, row by row, the morning before they went, and she kept the count.{/n}''',
       requires=(GAVE_DEAD, E + "seelah_prayed")),
     p('''{n}The sixty-one unnamed dead of Iz went into the ground with lime and prayers. Elyanka attended the burial, at the back, in grey, and ate an apple all through the service, and told the Commander afterwards that it was the only honest debt she had ever seen a crusade pay.{/n}''',
       requires=(REFUSED_DEAD,)),
@@ -611,6 +615,12 @@ COMMON = (
       any_groups=((E + "whisper.fear", E + "whisper.wake"),)),
     p('''{n}Once, in the dark end of the dead-house, the Commander had whispered her a lie, and she had heard it. She kept the secret she gave in return anyway. That, she said, was what made the Commander hers: a debt that could never be paid back in kind.{/n}''',
       requires=(E + "whisper.lie",)),
+    p('''{n}Seelah learned where the sixty-one had gone from the Commander's own mouth. What passed between them after that was theirs; Elyanka stayed out of the paladin's road, and was sorry, she said, only that she had not been there to hear it.{/n}''',
+      requires=(E + "inquiry.told_seelah",)),
+    p('''{n}A resurrection man hanged at the south gate of Drezen for sixty-one bodies he never touched. Seelah watched him hang, and never believed it, and could never prove otherwise.{/n}''',
+      requires=(E + "inquiry.misled",)),
+    p('''{n}Elyanka told the paladin the truth about the sixty-one herself, in the dead-house yard, without one lie. Seelah never forgave either of them, and never drew her sword on either of them, and the Commander never learned which of those two facts cost her more.{/n}''',
+      requires=(E + "inquiry.hers",)),
     p('''{n}Her black mares never got used to the living. She sold them in the second spring and bought four grey ones that did not mind a passenger with a pulse, and said it was the only concession to mortal life she had ever made.{/n}''',
       requires=(HORSES,)),
 )

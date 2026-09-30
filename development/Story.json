@@ -403404,7 +403404,7 @@
         {
           "Id": "pulse",
           "Speaker": "Elyanka",
-          "Text": "{n}She does not answer. She reaches across the table, quite unhurried, and lays two cold fingers against the side of your throat, just above the crepe, the way a physician does. Or an embalmer.{/n}\n\"Your executor has a pulse, Commander. It is in the throat, and it is racing.\"",
+          "Text": "{n}She does not answer. She is looking at your hands. Somewhere in the argument you took off a glove to lift the cup she poured you, and you did not put it back.{/n}\n\"The news of the death came to Caliphas with a description, executor. The Way buys nothing it cannot recognize. The height. The hair. A sword-hand callused across the second knuckle, and a white seam across the back of the left hand where a demon's claw went through.\" {n}She reaches across the table, quite unhurried, and lays two cold fingers against the side of your throat, just above the crepe, the way a physician does. Or an embalmer.{/n}\n\"And the deceased has a pulse, Commander. It is in the throat, and it is racing.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -403420,7 +403420,7 @@
         {
           "Id": "pulse2",
           "Speaker": "Elyanka",
-          "Text": "\"Did you think I had never seen a living thing play dead? I have seen hundreds. My order has hidden in plain sight for six hundred years, and you came to me in a *curtain*.\" {n}She takes her hand back and wipes her fingers on a napkin, one by one.{/n}\n\"I can guess why. You wanted to know what I would pay before I knew what you were. Take that off. I will make the same offer to the owner, bare-faced, and the owner will answer it bare-faced, or leave.\"",
+          "Text": "\"Did you think I had never seen a man sit at his own funeral in a borrowed coat? I have seen a dozen, all of them debtors. My order has hidden in plain sight for six hundred years, and you came to me in a *curtain*.\" {n}She takes her hand back and wipes her fingers on a napkin, one by one.{/n}\n\"I can guess why. You wanted to know what I would pay before I knew what you were. Take that off. I will make the same offer to the owner, bare-faced, and the owner will answer it bare-faced, or leave.\"",
           "Choices": [
             {
               "Text": "[Take off the veil and hear her terms.]",
@@ -403444,7 +403444,7 @@
         {
           "Id": "bare",
           "Speaker": "Elyanka",
-          "Text": "{n}She does not look at your face once you have uncovered it. She looks at your hands, and your throat, and the vein at your temple, as if those were the parts of you that could be trusted.{/n}\n\"When you die, the body is the Way's, in my keeping, whole. Until then it is yours. That is all. I do not tell the owner what I want it for; the executor lost that when he lied to me.\" {n}She pushes her untouched cup across to you.{/n} \"And I will never believe your face again. Answer.\"",
+          "Text": "{n}She does not look at your face once you have uncovered it. She looks at your hands, and your throat, and the vein at your temple, as if those were the parts of you that could be trusted.{/n}\n\"When you die, the body is the Way's, in my keeping, whole. Until then it is yours. That is all. I do not tell the owner what I want it for; the executor lost that with the lie.\" {n}She pushes her untouched cup across to you.{/n} \"And I will never believe your face again. Answer.\"",
           "Choices": [
             {
               "Text": "[Sell it bare-faced] \"Done. My body, at my death, to the Way.\"",
@@ -403836,7 +403836,7 @@
         {
           "Id": "ask",
           "Speaker": "Elyanka",
-          "Text": "{n}She lets the canvas fall and turns, and the lantern puts her shadow up the wall to the rafters.{/n}\n\"Give them to me. My escort can have carts at the gate by midnight. Some go to Ustalav, to my Lady's table. The rest I will stand up again, and they will walk to the Wound in your first rank. They know no fear or fatigue, and they fight demons as well as any crusader. Better. They have already lost the thing that makes crusaders run.\"\n\"You sold me your own corpse without haggling. I want to see how you sell somebody else's.\"",
+          "Text": "{n}She lets the canvas fall and turns, and the lantern puts her shadow up the wall to the rafters.{/n}\n\"Give them to me. My escort can have carts at the gate by midnight. They go south to Ustalav: some to my Lady's table, and the rest to the Way, who will stand them up again and teach them to serve. They will know no fear or fatigue, and no pit, and no lime. It is the kindest thing anyone will ever have done for them.\"\n\"You sold me your own corpse without haggling. I want to see how you sell somebody else's.\"",
           "Choices": [
             {
               "Text": "[Give her the dead] \"Take them. Nobody will count.\"",
@@ -403872,7 +403872,7 @@
         {
           "Id": "give",
           "Speaker": "Elyanka",
-          "Text": "{n}She does not thank you. She looks at you with her head a little on one side, the way she would look at a hound that had done something unusually clever.{/n}\n\"You did not even ask what the ones I stand up will remember.\" {n}She smiles, showing strong white teeth.{/n} \"Nothing, since you wonder. Almost nothing.\"\n{n}At midnight the carts come, as promised, and men in grey carry out the rows under their canvas one by one, without lanterns and without a word. By the second bell the long room holds nothing but lime dust and sixty-one rectangles where the floor is cleaner.{/n}",
+          "Text": "{n}She does not thank you. She looks at you with her head a little on one side, the way she would look at a hound that had done something unusually clever.{/n}\n\"You did not even ask what the ones the Way stands up will remember.\" {n}She smiles, showing strong white teeth.{/n} \"Nothing, since you wonder. Almost nothing.\"\n{n}At midnight the carts come, as promised, and men in grey carry out the rows under their canvas one by one, without lanterns and without a word. By the second bell the long room holds nothing but lime dust and sixty-one rectangles where the floor is cleaner.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -403888,7 +403888,39 @@
         {
           "Id": "give2",
           "Speaker": "Elyanka",
-          "Text": "\"The chaplains will come in the morning with their prayers and their lime, and find a clean floor.\" {n}She dusts her hands.{/n} \"Somebody will ask. Somebody always asks. You will have an answer ready, I expect; you are the kind who has one.\"\n\"And that paladin of yours will count the rows in her head until she dies. I would give a great deal to be there when she finishes.\"",
+          "Text": "\"The chaplains will come in the morning with their prayers and their lime, and find a clean floor.\" {n}She dusts her hands.{/n} \"Somebody will ask. Somebody always asks. You will have an answer ready, I expect; you are the kind who has one.\"\n\"Your chaplains will count the rows in their ledgers and find sixty-one fewer mouths to pray over. I doubt they will complain.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "give3",
+              "Set": [],
+              "Requires": [
+                "elyanka.trickster.seelah_prayed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Watch the carts go.]",
+              "Next": null,
+              "Set": [
+                "elyanka.trickster.tested",
+                "elyanka.trickster.gave_dead",
+                "trickster.secret.elyanka_siege_dead"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "elyanka.trickster.seelah_prayed"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Elyanka"
+        },
+        {
+          "Id": "give3",
+          "Speaker": "Elyanka",
+          "Text": "\"And that paladin of yours will count the rows in her head until she dies. She knelt by every one of them this morning. I would give a great deal to be there when she finishes counting.\"",
           "Choices": [
             {
               "Text": "[Watch the carts go.]",
@@ -404856,6 +404888,7 @@
       "Requires": [
         "trickster.ever",
         "elyanka.trickster.gave_dead",
+        "elyanka.trickster.seelah_prayed",
         "seelah.in_party"
       ],
       "Forbids": [
@@ -404927,7 +404960,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back, having nowhere to come back to. The chaplains asked after them for a year, and were told nothing.{/n}",
+              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. They went south to Ustalav in the Way's carts, some to a table and some to stand again in grey. The chaplains asked after them for a year, and were told nothing.{/n}",
               "Requires": [
                 "elyanka.trickster.gave_dead"
               ],
@@ -404937,7 +404970,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back. Seelah had counted them, row by row, the morning before they went, and she kept the count.{/n}",
+              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. They went south to Ustalav in the Way's carts, some to a table and some to stand again in grey. Seelah had counted them, row by row, the morning before they went, and she kept the count.{/n}",
               "Requires": [
                 "elyanka.trickster.gave_dead",
                 "elyanka.trickster.seelah_prayed"
@@ -405016,6 +405049,30 @@
               "Text": "{n}Once, in the dark end of the dead-house, the Commander had whispered her a lie, and she had heard it. She kept the secret she gave in return anyway. That, she said, was what made the Commander hers: a debt that could never be paid back in kind.{/n}",
               "Requires": [
                 "elyanka.trickster.whisper.lie"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Seelah learned where the sixty-one had gone from the Commander's own mouth. What passed between them after that was theirs; Elyanka stayed out of the paladin's road, and was sorry, she said, only that she had not been there to hear it.{/n}",
+              "Requires": [
+                "elyanka.trickster.inquiry.told_seelah"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}A resurrection man hanged at the south gate of Drezen for sixty-one bodies he never touched. Seelah watched him hang, and never believed it, and could never prove otherwise.{/n}",
+              "Requires": [
+                "elyanka.trickster.inquiry.misled"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Elyanka told the paladin the truth about the sixty-one herself, in the dead-house yard, without one lie. Seelah never forgave either of them, and never drew her sword on either of them, and the Commander never learned which of those two facts cost her more.{/n}",
+              "Requires": [
+                "elyanka.trickster.inquiry.hers"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -405320,7 +405377,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back, having nowhere to come back to. The chaplains asked after them for a year, and were told nothing.{/n}",
+              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. They went south to Ustalav in the Way's carts, some to a table and some to stand again in grey. The chaplains asked after them for a year, and were told nothing.{/n}",
               "Requires": [
                 "elyanka.trickster.gave_dead"
               ],
@@ -405330,7 +405387,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back. Seelah had counted them, row by row, the morning before they went, and she kept the count.{/n}",
+              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. They went south to Ustalav in the Way's carts, some to a table and some to stand again in grey. Seelah had counted them, row by row, the morning before they went, and she kept the count.{/n}",
               "Requires": [
                 "elyanka.trickster.gave_dead",
                 "elyanka.trickster.seelah_prayed"
@@ -405409,6 +405466,30 @@
               "Text": "{n}Once, in the dark end of the dead-house, the Commander had whispered her a lie, and she had heard it. She kept the secret she gave in return anyway. That, she said, was what made the Commander hers: a debt that could never be paid back in kind.{/n}",
               "Requires": [
                 "elyanka.trickster.whisper.lie"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Seelah learned where the sixty-one had gone from the Commander's own mouth. What passed between them after that was theirs; Elyanka stayed out of the paladin's road, and was sorry, she said, only that she had not been there to hear it.{/n}",
+              "Requires": [
+                "elyanka.trickster.inquiry.told_seelah"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}A resurrection man hanged at the south gate of Drezen for sixty-one bodies he never touched. Seelah watched him hang, and never believed it, and could never prove otherwise.{/n}",
+              "Requires": [
+                "elyanka.trickster.inquiry.misled"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Elyanka told the paladin the truth about the sixty-one herself, in the dead-house yard, without one lie. Seelah never forgave either of them, and never drew her sword on either of them, and the Commander never learned which of those two facts cost her more.{/n}",
+              "Requires": [
+                "elyanka.trickster.inquiry.hers"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -405534,7 +405615,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back, having nowhere to come back to. The chaplains asked after them for a year, and were told nothing.{/n}",
+              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. They went south to Ustalav in the Way's carts, some to a table and some to stand again in grey. The chaplains asked after them for a year, and were told nothing.{/n}",
               "Requires": [
                 "elyanka.trickster.gave_dead"
               ],
@@ -405544,7 +405625,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back. Seelah had counted them, row by row, the morning before they went, and she kept the count.{/n}",
+              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. They went south to Ustalav in the Way's carts, some to a table and some to stand again in grey. Seelah had counted them, row by row, the morning before they went, and she kept the count.{/n}",
               "Requires": [
                 "elyanka.trickster.gave_dead",
                 "elyanka.trickster.seelah_prayed"
@@ -405623,6 +405704,30 @@
               "Text": "{n}Once, in the dark end of the dead-house, the Commander had whispered her a lie, and she had heard it. She kept the secret she gave in return anyway. That, she said, was what made the Commander hers: a debt that could never be paid back in kind.{/n}",
               "Requires": [
                 "elyanka.trickster.whisper.lie"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Seelah learned where the sixty-one had gone from the Commander's own mouth. What passed between them after that was theirs; Elyanka stayed out of the paladin's road, and was sorry, she said, only that she had not been there to hear it.{/n}",
+              "Requires": [
+                "elyanka.trickster.inquiry.told_seelah"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}A resurrection man hanged at the south gate of Drezen for sixty-one bodies he never touched. Seelah watched him hang, and never believed it, and could never prove otherwise.{/n}",
+              "Requires": [
+                "elyanka.trickster.inquiry.misled"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Elyanka told the paladin the truth about the sixty-one herself, in the dead-house yard, without one lie. Seelah never forgave either of them, and never drew her sword on either of them, and the Commander never learned which of those two facts cost her more.{/n}",
+              "Requires": [
+                "elyanka.trickster.inquiry.hers"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -405715,7 +405820,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back, having nowhere to come back to. The chaplains asked after them for a year, and were told nothing.{/n}",
+              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. They went south to Ustalav in the Way's carts, some to a table and some to stand again in grey. The chaplains asked after them for a year, and were told nothing.{/n}",
               "Requires": [
                 "elyanka.trickster.gave_dead"
               ],
@@ -405725,7 +405830,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back. Seelah had counted them, row by row, the morning before they went, and she kept the count.{/n}",
+              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. They went south to Ustalav in the Way's carts, some to a table and some to stand again in grey. Seelah had counted them, row by row, the morning before they went, and she kept the count.{/n}",
               "Requires": [
                 "elyanka.trickster.gave_dead",
                 "elyanka.trickster.seelah_prayed"
@@ -405804,6 +405909,30 @@
               "Text": "{n}Once, in the dark end of the dead-house, the Commander had whispered her a lie, and she had heard it. She kept the secret she gave in return anyway. That, she said, was what made the Commander hers: a debt that could never be paid back in kind.{/n}",
               "Requires": [
                 "elyanka.trickster.whisper.lie"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Seelah learned where the sixty-one had gone from the Commander's own mouth. What passed between them after that was theirs; Elyanka stayed out of the paladin's road, and was sorry, she said, only that she had not been there to hear it.{/n}",
+              "Requires": [
+                "elyanka.trickster.inquiry.told_seelah"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}A resurrection man hanged at the south gate of Drezen for sixty-one bodies he never touched. Seelah watched him hang, and never believed it, and could never prove otherwise.{/n}",
+              "Requires": [
+                "elyanka.trickster.inquiry.misled"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Elyanka told the paladin the truth about the sixty-one herself, in the dead-house yard, without one lie. Seelah never forgave either of them, and never drew her sword on either of them, and the Commander never learned which of those two facts cost her more.{/n}",
+              "Requires": [
+                "elyanka.trickster.inquiry.hers"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -408261,7 +408390,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}There is a bottle on the trestle in the dead-house, black glass furred with the dust of a cellar, with a label so old it has gone the colour of tea, and a card propped against it in a hand of extravagant loops: *With the compliments of the house of Arendae, on the occasion of a funeral that has not yet happened. Do try not to enjoy it.*{/n}\n{n}Elyanka stands looking at it with her arms folded, as she looked at the King.{/n}",
+          "Text": "{n}There is a bottle on the trestle in the dead-house, black glass furred with the dust of a cellar, with a label so old it has gone the colour of tea, and a card propped against it in a hand of extravagant loops: *With the compliments of the house of Arendae, on the occasion of a funeral that has not yet happened. Do try not to enjoy it.*{/n}\n{n}Elyanka is already turning the bottle to the candle to read the year, and her nostrils are flared like a hound's.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -408277,7 +408406,7 @@
         {
           "Id": "her",
           "Speaker": "Elyanka",
-          "Text": "\"Your count sent this.\" {n}She does not touch it.{/n} \"A count with a crypt full of relatives and a face like a spoiled cherub. He looked at me across the lane yesterday the way a cat looks at a bird it has already eaten in its mind.\"\n\"He is trying to make me enjoy something. It is a trick. Mortals are always trying to make one enjoy things.\" {n}She unfolds her arms.{/n} \"Open it.\"",
+          "Text": "\"Your count sent this.\" {n}She does not touch it.{/n} \"A count with a crypt full of relatives and a face like a spoiled cherub. He looked at me across the lane yesterday the way a cat looks at a bird it has already eaten in its mind.\"\n\"He means it as a lesson. He thinks a woman from the Ustalav hills has never tasted anything older than her grandmother, and he wants to watch me learn.\" {n}Her mouth thins.{/n} \"I will drink every drop of his lesson, and he will never hear that I liked it. Open it.\"",
           "Choices": [
             {
               "Text": "[Open it and pour for both of you.]",
@@ -408293,7 +408422,7 @@
         {
           "Id": "pour",
           "Speaker": "Narrator",
-          "Text": "{n}The cork crumbles. The wine is so dark it is almost black, and it smells of dust, and plums, and something underneath like the inside of an old church. She lifts her cup and looks at it against the candle, and smells it, and puts it to her lips, and her face does not change at all.{/n}\n{n}Then she drinks the whole cup, slowly, with her eyes shut, and holds it out to be filled again.{/n}",
+          "Text": "{n}The cork crumbles. The wine is so dark it is almost black, and it smells of dust, and plums, and something underneath like the inside of an old church. She breathes it in with her eyes shut, greedily, the way she eats, and drinks the whole cup slowly, and makes a low sound in her throat that is almost indecent.{/n}\n{n}Then she holds the cup out to be filled again, without opening her eyes.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -409324,7 +409453,7 @@
         {
           "Id": "refuse",
           "Speaker": "Elyanka",
-          "Text": "\"Good.\" {n}She sounds pleased.{/n} \"Most crusaders pretend. They say they would love to see my country, and they mean they would love to burn it. You at least say what you mean, when you are not wearing a curtain.\"\n\"You will see it anyway, of course. The body always goes home with the collector.\" {n}She pulls her robe closer.{/n} \"Stay up here as long as you like. I am going in. Your walls are cold, and I have no desire to die of anything so stupid as a chill.\"",
+          "Text": "\"Good.\" {n}She sounds pleased.{/n} \"Most crusaders pretend. They say they would love to see my country, and they mean they would love to burn it. You at least say what you mean, when it suits you.\"\n\"You will see it anyway, of course. The body always goes home with the collector.\" {n}She pulls her robe closer.{/n} \"Stay up here as long as you like. I am going in. Your walls are cold, and I have no desire to die of anything so stupid as a chill.\"",
           "Choices": [
             {
               "Text": "[Stay on the wall alone.]",
@@ -409500,6 +409629,175 @@
         "elyanka.trickster.night.feigned"
       ],
       "DelayHours": 84,
+      "Optional": true,
+      "Relationship": "elyanka",
+      "Remote": true,
+      "Kind": "visit",
+      "Chapters": [
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Sender": "Elyanka"
+    },
+    {
+      "Id": "elyanka.trickster.beat.inquiry",
+      "Title": "The paladin's questions",
+      "Owner": "Elyanka",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Elyanka is waiting for you at the dead-house door, which she never does. Inside, the long room is swept and empty, and on the clean floor where the sixty-one lay someone has chalked, very neatly, sixty-one small crosses.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "her",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "her",
+          "Speaker": "Elyanka",
+          "Text": "\"Your paladin,\" {n}she says.{/n} \"She came this morning with a lamp and a piece of chalk and did that. Then she went to every carter on the south road and asked who drove at midnight. Two of them remember my men. One of them remembers my hearse.\" {n}She looks at the crosses, not at you.{/n}\n\"She will be at the gate of this yard by tomorrow, with her questions and her sword. She told you she would find out, and she asked for your help. Well, Commander. Whose help will she get?\"",
+          "Choices": [
+            {
+              "Text": "[Tell Seelah the truth yourself] \"Mine. She'll hear it from me, not from a carter.\"",
+              "Next": "truth",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Throw her off] \"Grave-robbers from the lower town. I'll give her some to hang.\"",
+              "Next": "mislead",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Leave it to Elyanka] \"She's asking about your carts. Answer her yourself.\"",
+              "Next": "hers",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Elyanka"
+        },
+        {
+          "Id": "truth",
+          "Speaker": "Elyanka",
+          "Text": "{n}She looks at you for some time, and her face does not move at all.{/n}\n\"You will tell a paladin of the Inheritor that you gave sixty-one of her crusade's dead to a priestess of Urgathoa, for nothing, on a whim, to see what I would do.\" {n}A dry breath.{/n} \"She will never look at you the same way again. Neither will I.\"\n\"Go and do it, then. I will stay out of her road. I have no wish to be struck by a woman praying.\" {n}At the door she adds, without turning round:{/n} \"It was very stupid, and very honest. I do not know which I dislike more.\"",
+          "Choices": [
+            {
+              "Text": "[Go and find Seelah.]",
+              "Next": null,
+              "Set": [
+                "elyanka.trickster.inquiry.told_seelah",
+                "trickster.secret.elyanka_siege_dead.known.seelah"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Elyanka"
+        },
+        {
+          "Id": "mislead",
+          "Speaker": "Narrator",
+          "Text": "{n}It takes three days and a purse. The watch finds two resurrection men in the lower town who have sold bodies to a hedge-necromancer in Kenabres before, and one of them confesses to things he did and to several he did not, and swings for all of them at the south gate with a placard on his chest.{/n}\n{n}Seelah stands at the foot of the gallows with her chalk still in her pocket and watches him hang, and says nothing to you afterwards at all.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "mislead2",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "mislead2",
+          "Speaker": "Elyanka",
+          "Text": "\"You hanged a man for my carts.\" {n}Elyanka does not sound shocked. She sounds interested, the way she was over the dead cultist's liver.{/n}\n\"A thief, and a liar, and he would have died of something stupid in a year anyway. My Lady will have him, since your paladin's goddess will not.\" {n}She almost smiles.{/n} \"Your paladin did not believe you, Commander. She simply could not prove it. Remember that she will go on not believing you, every day, for as long as you know each other.\"",
+          "Choices": [
+            {
+              "Text": "[Let it lie.]",
+              "Next": null,
+              "Set": [
+                "elyanka.trickster.inquiry.misled"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Elyanka"
+        },
+        {
+          "Id": "hers",
+          "Speaker": "Elyanka",
+          "Text": "\"Mine.\" {n}Something like approval.{/n} \"Yes. It was my cart.\"\n{n}The next morning Seelah is at the gate of the yard with her lamp and her sword. Elyanka receives her standing by the hearse, and tells her, in plain words, that the sixty-one went to Ustalav, and that they will never be buried, and that the Knight Commander allowed it. She does not lie once.{/n}\n{n}Seelah does not draw. She looks at the hearse, and at the woman beside it, and then she turns and walks back up the lane without a word, and you hear later that she went straight to the chapel and stayed there until dark.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "hers2",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Elyanka"
+        },
+        {
+          "Id": "hers2",
+          "Speaker": "Elyanka",
+          "Text": "\"She did not strike me,\" {n}Elyanka says, that evening, sounding almost disappointed.{/n} \"She asked me whether they had suffered. I told her the dead do not suffer; only the living, who bury them.\" {n}She pours wine.{/n}\n\"She knows now, Commander. She knows it was your word that let my carts through the gate. What she does with that is between the two of you. I have never been so glad to be a stranger in a city.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "elyanka.trickster.inquiry.hers",
+                "trickster.secret.elyanka_siege_dead.known.seelah"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Elyanka"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "elyanka.trickster.gave_dead",
+        "elyanka.trickster.react.seelah_rows"
+      ],
+      "Forbids": [
+        "elyanka.closed",
+        "elyanka.trickster.inquiry.told_seelah",
+        "elyanka.trickster.inquiry.misled",
+        "elyanka.trickster.inquiry.hers"
+      ],
+      "DelayHours": 48,
       "Optional": true,
       "Relationship": "elyanka",
       "Remote": true,

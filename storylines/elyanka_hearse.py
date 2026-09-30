@@ -431,13 +431,13 @@ DAERAN_TASTED = E + "daeran.bottle_tasted"
 
 visit(E + "beat.daeran_bottle", "A bottle older than she is", [
     nar("start", '''{n}There is a bottle on the trestle in the dead-house, black glass furred with the dust of a cellar, with a label so old it has gone the colour of tea, and a card propped against it in a hand of extravagant loops: *With the compliments of the house of Arendae, on the occasion of a funeral that has not yet happened. Do try not to enjoy it.*{/n}
-{n}Elyanka stands looking at it with her arms folded, as she looked at the King.{/n}''',
+{n}Elyanka is already turning the bottle to the candle to read the year, and her nostrils are flared like a hound's.{/n}''',
         c("Continue", "her")),
     el("her", '''"Your count sent this." {n}She does not touch it.{/n} "A count with a crypt full of relatives and a face like a spoiled cherub. He looked at me across the lane yesterday the way a cat looks at a bird it has already eaten in its mind."
-"He is trying to make me enjoy something. It is a trick. Mortals are always trying to make one enjoy things." {n}She unfolds her arms.{/n} "Open it."''',
+"He means it as a lesson. He thinks a woman from the Ustalav hills has never tasted anything older than her grandmother, and he wants to watch me learn." {n}Her mouth thins.{/n} "I will drink every drop of his lesson, and he will never hear that I liked it. Open it."''',
        c("[Open it and pour for both of you.]", "pour")),
-    nar("pour", '''{n}The cork crumbles. The wine is so dark it is almost black, and it smells of dust, and plums, and something underneath like the inside of an old church. She lifts her cup and looks at it against the candle, and smells it, and puts it to her lips, and her face does not change at all.{/n}
-{n}Then she drinks the whole cup, slowly, with her eyes shut, and holds it out to be filled again.{/n}''',
+    nar("pour", '''{n}The cork crumbles. The wine is so dark it is almost black, and it smells of dust, and plums, and something underneath like the inside of an old church. She breathes it in with her eyes shut, greedily, the way she eats, and drinks the whole cup slowly, and makes a low sound in her throat that is almost indecent.{/n}
+{n}Then she holds the cup out to be filled again, without opening her eyes.{/n}''',
         c("Continue", "verdict")),
     el("verdict", '''"It is older than I am," {n}she says, after the second cup.{/n} "It was made before my father was born, and it has outlived him, and it has been waiting in the dark all this time to be drunk by someone who deserved it. That is what my Lady promises. That is exactly it."
 {n}She sets the cup down very carefully.{/n} "Tell your count that it was mediocre and I did not finish it. Tell him in those words. Then bring me the rest of the case."''',
@@ -640,7 +640,7 @@ visit(E + "beat.ustalav", "Where they lock the shutters", [
     el("promise", '''"One day." {n}She turns her head and looks at you, the pale eyes very steady.{/n} "You will see it one day, Commander, whether you want to or not. You will go down that road in my hearse with the curtains drawn, and you will be the best-kept thing that has ever crossed the border."
 "But that is not what you meant." {n}Her mouth twitches.{/n} "You meant alive. Walking. Sweating up the hill with your sword on your back, and being refused bread in the villages." {n}She looks back south.{/n} "Very well. If you ever do, I will show you where the stags drink. I will not wait for it."''',
        c("[Look south with her until the watch changes.]", flags=(USTALAV_PROMISED,))),
-    el("refuse", '''"Good." {n}She sounds pleased.{/n} "Most crusaders pretend. They say they would love to see my country, and they mean they would love to burn it. You at least say what you mean, when you are not wearing a curtain."
+    el("refuse", '''"Good." {n}She sounds pleased.{/n} "Most crusaders pretend. They say they would love to see my country, and they mean they would love to burn it. You at least say what you mean, when it suits you."
 "You will see it anyway, of course. The body always goes home with the collector." {n}She pulls her robe closer.{/n} "Stay up here as long as you like. I am going in. Your walls are cold, and I have no desire to die of anything so stupid as a chill."''',
        c("[Stay on the wall alone.]", flags=(USTALAV_REFUSED,))),
 ], requires=(OWNED,), forbids=(USTALAV_PROMISED, USTALAV_REFUSED, USTALAV_WOODS), delay=84, last=5)
@@ -675,6 +675,40 @@ visit(E + "beat.night", "The collector at night", [
     el("woke_out", '''"As you like." {n}She rises without hurry, and smooths her robe.{/n} "It is your room. For now." {n}At the door she pauses.{/n} "You reached for your sword twice, and both times your hand came to the place where I was sitting. I do not think you meant to kill me. I think you meant to make sure I was still there. Good night, Commander."''',
        c("Continue", flags=(NIGHT_WOKE,))),
 ], requires=(BIER,), forbids=(NIGHT_WOKE, NIGHT_FEIGNED), delay=84, last=5)
+
+
+# --- 21. The paladin's questions (T, optional): Seelah asked the Commander to help find the Iz dead. --------------------
+
+INQUIRY_TRUTH = E + "inquiry.told_seelah"
+INQUIRY_MISLED = E + "inquiry.misled"
+INQUIRY_HERS = E + "inquiry.hers"
+
+visit(E + "beat.inquiry", "The paladin's questions", [
+    nar("start", '''{n}Elyanka is waiting for you at the dead-house door, which she never does. Inside, the long room is swept and empty, and on the clean floor where the sixty-one lay someone has chalked, very neatly, sixty-one small crosses.{/n}''',
+        c("Continue", "her")),
+    el("her", '''"Your paladin," {n}she says.{/n} "She came this morning with a lamp and a piece of chalk and did that. Then she went to every carter on the south road and asked who drove at midnight. Two of them remember my men. One of them remembers my hearse." {n}She looks at the crosses, not at you.{/n}
+"She will be at the gate of this yard by tomorrow, with her questions and her sword. She told you she would find out, and she asked for your help. Well, Commander. Whose help will she get?"''',
+       c('[Tell Seelah the truth yourself] "Mine. She\'ll hear it from me, not from a carter."', "truth"),
+       c('[Throw her off] "Grave-robbers from the lower town. I\'ll give her some to hang."', "mislead"),
+       c('[Leave it to Elyanka] "She\'s asking about your carts. Answer her yourself."', "hers")),
+    el("truth", '''{n}She looks at you for some time, and her face does not move at all.{/n}
+"You will tell a paladin of the Inheritor that you gave sixty-one of her crusade's dead to a priestess of Urgathoa, for nothing, on a whim, to see what I would do." {n}A dry breath.{/n} "She will never look at you the same way again. Neither will I."
+"Go and do it, then. I will stay out of her road. I have no wish to be struck by a woman praying." {n}At the door she adds, without turning round:{/n} "It was very stupid, and very honest. I do not know which I dislike more."''',
+       c("[Go and find Seelah.]", flags=(INQUIRY_TRUTH, "trickster.secret.elyanka_siege_dead.known.seelah"))),
+    nar("mislead", '''{n}It takes three days and a purse. The watch finds two resurrection men in the lower town who have sold bodies to a hedge-necromancer in Kenabres before, and one of them confesses to things he did and to several he did not, and swings for all of them at the south gate with a placard on his chest.{/n}
+{n}Seelah stands at the foot of the gallows with her chalk still in her pocket and watches him hang, and says nothing to you afterwards at all.{/n}''',
+        c("Continue", "mislead2")),
+    el("mislead2", '''"You hanged a man for my carts." {n}Elyanka does not sound shocked. She sounds interested, the way she was over the dead cultist's liver.{/n}
+"A thief, and a liar, and he would have died of something stupid in a year anyway. My Lady will have him, since your paladin's goddess will not." {n}She almost smiles.{/n} "Your paladin did not believe you, Commander. She simply could not prove it. Remember that she will go on not believing you, every day, for as long as you know each other."''',
+       c("[Let it lie.]", flags=(INQUIRY_MISLED,))),
+    el("hers", '''"Mine." {n}Something like approval.{/n} "Yes. It was my cart."
+{n}The next morning Seelah is at the gate of the yard with her lamp and her sword. Elyanka receives her standing by the hearse, and tells her, in plain words, that the sixty-one went to Ustalav, and that they will never be buried, and that the Knight Commander allowed it. She does not lie once.{/n}
+{n}Seelah does not draw. She looks at the hearse, and at the woman beside it, and then she turns and walks back up the lane without a word, and you hear later that she went straight to the chapel and stayed there until dark.{/n}''',
+        c("Continue", "hers2")),
+    el("hers2", '''"She did not strike me," {n}Elyanka says, that evening, sounding almost disappointed.{/n} "She asked me whether they had suffered. I told her the dead do not suffer; only the living, who bury them." {n}She pours wine.{/n}
+"She knows now, Commander. She knows it was your word that let my carts through the gate. What she does with that is between the two of you. I have never been so glad to be a stranger in a city."''',
+       c("Continue", flags=(INQUIRY_HERS, "trickster.secret.elyanka_siege_dead.known.seelah"))),
+], requires=(GAVE_DEAD, E + "react.seelah_rows"), forbids=(INQUIRY_TRUTH, INQUIRY_MISLED, INQUIRY_HERS), delay=48, last=5)
 
 
 # --- 7. Reaction: Regill, who reads law (the writ). ------------------------------------------------------------------------

@@ -213,7 +213,7 @@ internal static class ElyankaTricksterTests
         // Trk_Elyanka_Beats: the courtship spreads over Chapter 5 (and one Chapter 6 visit), optional, after the sale.
         var beats = own.Where(s => s.Id.StartsWith(P + "beat.", StringComparison.Ordinal)).ToArray();
         var ch6 = S(P + "ch6.collateral");
-        check(beats.Length >= 12 && beats.All(b => b.Optional && b.Remote && b.Requires.Any(f => f == Owned || f == Bier || f == P + "daeran_ally"))
+        check(beats.Length >= 18 && beats.All(b => b.Optional && b.Remote && b.Requires.Any(f => f == Owned || f == Bier || f == P + "daeran_ally" || f == P + "gave_dead"))
               && ch6.Chapters.SequenceEqual(new[] { 6 }) && Avail(ch6, World(story, 6, "trickster.ever", Owned)),
             "Trk_Elyanka_Beats: a courtship beat is not optional, not after the sale, or the Chapter 6 visit is missing.");
         check(Avail(S(P + "beat.king_bill"), World(story, 5, "trickster.ever", Owned, Bier, P + "mourners", "fool_king.crowned"))
@@ -280,7 +280,8 @@ internal static class ElyankaTricksterTests
         var withSeelah = Take(dead, World(story, 5, "trickster.ever", Owned, Bequeathed, Started, "seelah.in_party"), "give", 0, Tested);
         var seelahPara = Pg("claim").Nodes[0].Paragraphs.Single(pp => pp.Text.Contains("Seelah had counted"));
         check(!noSeelah.Has(P + "seelah_prayed") && withSeelah.Has(P + "seelah_prayed") && seelahPara.Requires.Contains(P + "seelah_prayed")
-              && Pg("claim").Nodes[0].Paragraphs.Where(pp => pp.Text.Contains("Seelah")).All(pp => pp.Requires.Contains(P + "seelah_prayed")),
+              && Pg("claim").Nodes[0].Paragraphs.Where(pp => pp.Text.Contains("Seelah")).All(pp => pp.Requires.Contains(P + "seelah_prayed") || pp.Requires.Any(f => f.StartsWith(P + "inquiry.", StringComparison.Ordinal)))
+              && S(P + "react.seelah_rows").Requires.Contains(P + "seelah_prayed") && S(P + "beat.inquiry").Requires.Contains(P + "react.seelah_rows"),
             "Trk_Elyanka_Continuity: the ending names Seelah at rows she never saw.");
         var cord = story.Scenes.Single(s => s.Id == "elyanka.lastcall.page").Nodes[0];
         check(!cord.Text.Contains("knotted") && cord.Paragraphs.Where(pp => pp.Text.Contains("knotted")).All(pp => pp.Requires.Contains(Bier)),
@@ -353,6 +354,7 @@ internal static class ElyankaTricksterTests
             (name: "bare-faced, committed, no night", flags: new[] { "trickster.ever", Owned, Bequeathed, Started, P + "straight", Tested, Committed, "trickster.secret.elyanka_rites" }),
             (name: "veiled, committed, night, no hunt", flags: new[] { "trickster.ever", Owned, Bequeathed, Started, P + "bluffed", P + "executor", Tested, Committed, Bier, "trickster.secret.elyanka_rites" }),
             (name: "caught, owned", flags: new[] { "trickster.ever", Owned, Bequeathed, Started, P + "exposed", P + "executor" }),
+            (name: "bare-faced, no King, gave the dead without Seelah, Daeran's ally", flags: new[] { "trickster.ever", Owned, Bequeathed, Started, P + "straight", Tested, P + "gave_dead", Committed, Bier, P + "daeran_ally", "trickster.secret.elyanka_rites" }),
         };
         foreach (var (hname, hflags) in histories)
             foreach (int chapter in new[] { 5, 6 })
@@ -366,7 +368,9 @@ internal static class ElyankaTricksterTests
                         if (!night && (text.Contains("the cord") || text.Contains("knotted cord") || text.Contains("with in the hearse") || text.Contains("I measured you"))) bad.Add("the hearse night");
                         if (text.Contains("stag's heart")) bad.Add("the hunt");
                         if (!caught && text.Contains("pulse under")) bad.Add("the failed con");
-                        if (!veiled && !caught && (text.Contains("in a curtain") || text.Contains("in crepe") || text.Contains("the veil came off"))) bad.Add("a veil");
+                        if (!veiled && !caught && (text.Contains("a curtain") || text.Contains("*curtain*") || text.Contains("in crepe") || text.Contains("the veil came off"))) bad.Add("a veil");
+                        if (!w.Has(P + "seelah_prayed") && (text.Contains("paladin of yours") || text.Contains("She knelt by every one"))) bad.Add("Seelah at the rows");
+                        if (!w.Has(P + "mourners") && text.Contains("as she looked at the King")) bad.Add("the King");
                         check(bad.Count == 0, "Trk_Elyanka_Recall: " + sc.Id + " recalls " + string.Join(", ", bad) + " in the history " + hname + " (Ch" + chapter + ").");
                     }
             }
