@@ -393,6 +393,13 @@ internal static class ElyankaTricksterTests
                 "Trk_Elyanka_Recall: the Last Call coda recalls the wake, a veil or the cord in the " + how + " history without the hearse night.");
         }
 
+        // Audit r7: her reason for the claims answers the whisper as it was (a lie is owed, not praised).
+        var liar = World(story, 5, "trickster.ever", Owned, Bequeathed, Started, Tested, P + "gave_dead", P + "beat.whisper", P + "whisper.lie");
+        var honest = World(story, 5, "trickster.ever", Owned, Bequeathed, Started, Tested, P + "gave_dead", P + "beat.whisper", P + "whisper.fear");
+        check(Reachable(claims, liar).Any(x => x.Contains("whispered me a lie")) && !Reachable(claims, liar).Any(x => x.Contains("whispered me something true"))
+              && Reachable(claims, honest).Any(x => x.Contains("whispered me something true")) && !Reachable(claims, honest).Any(x => x.Contains("whispered me a lie")),
+            "Trk_Elyanka_Claims: her proposal praises a truth the Commander lied about, or the reverse.");
+
         // Trk_Elyanka_LastCall: her coda needs the real commit; the bequest is a debt to a live power; it never keeps anyone alive.
         var coda = story.Scenes.Single(s => s.Id == "elyanka.lastcall.page");
         var call = story.Scenes.Single(s => s.Id == "elyanka.lastcall.call");

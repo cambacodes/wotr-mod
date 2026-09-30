@@ -69,7 +69,7 @@ visit(E + "beat.anatomy", "What the Abyss does to meat", [
        c("Continue", "knife2")),
     el("knife2", '''{n}She lets you cut alone for a while, and watches, and says nothing, which from her is praise.{/n}
 "You hold a knife like a butcher, not like a surgeon. Good. Surgeons are liars. They pretend they are saving something." {n}She takes the knife back and wipes it on the dead man's sheet.{/n}
-"When the time comes I shall do this to you myself. Very carefully. I will know my way already." {n}She says it as other women say they will write.{/n}''',
+"When the time comes I shall do this to you myself. Very carefully. I will know my way already." {n}She wipes the blade and lays it back in its loop in the leather.{/n}''',
        c("[Wash your hands in her wine.]", flags=(ANATOMY_KNIFE,))),
     el("watch", '''{n}You watch. She works quickly, lifting out what the Locust Lord's children have left, naming it, and dropping it into the brazier: the liver, pitted like a sponge; the lungs, half eaten; the heart, still whole, still red, the only honest thing left in him.{/n}
 "There. That was his. The rest belonged to his god, and his god did not even come to collect." {n}She lays the heart on a pewter plate, as if serving it.{/n}
@@ -247,7 +247,7 @@ visit(E + "ch6.collateral", "The collateral, inspected", [
     el("inspect", '''"Stand up. Take off your shirt." {n}She unwinds the cord.{/n} "I measured you in Drezen. I want to see what the march has done to the goods."
 {n}She measures you again, knot by knot: the shoulders, the span of the hands, the chest breathing in and breathing out. Her fingers are cold, and slower than they need to be.{/n} "Thinner. Two knots at the waist. A new cut on the forearm, badly stitched. Your quartermaster should be flogged." {n}She lets the cord fall.{/n}''',
        c("Continue", "tomorrow")),
-    el("inspect_debt", '''"Stand where the lamp is. I want to see what the march has done to the goods. I never did take your measure in Drezen; I shall have to do it by eye." {n}She looks you over from the camp bed, head on one side, as a buyer looks at a horse he has already paid for.{/n}
+    el("inspect_debt", '''"Stand where the lamp is. I want to see what the march has done to the goods. I never did take your measure in Drezen; I shall have to do it by eye." {n}She looks you over from the camp bed, head on one side.{/n}
 "Thinner. A new cut on the forearm, badly stitched. You carry your left shoulder higher than you did in Drezen." {n}She wrinkles her nose.{/n} "And you smell of the Wound. Everything here does. It gets into the meat."''',
        c("Continue", "tomorrow")),
     el("tomorrow", '''"Tomorrow, or the next day, you go into the Wound. If you die at the edge of it, I collect. That is what the Way paid for, and that is what I came north to see." {n}She sounds perfectly calm.{/n}
@@ -255,7 +255,7 @@ visit(E + "ch6.collateral", "The collateral, inspected", [
        c('"Are you afraid for me?"', "afraid"),
        c('[Tell her to stand at the rift\'s edge] "Somewhere you can see. If it falls due, collect."', "rift"),
        c('[Tell her to wait in Drezen] "In the dead-house. If I don\'t come back, you won\'t need to see it."', "drezen")),
-    el("afraid", '''"Afraid." {n}She says it as if it were a word in a language she once studied and did not keep up.{/n}
+    el("afraid", '''"Afraid." {n}She turns the word over.{/n}
 "I am afraid of losing what I bought. That is not the same thing. A merchant is afraid for the ship, not for the sailors." {n}She looks at the tent wall, toward the north, where the sky is the colour of a bruise.{/n} "The witch in there made you. I have read what she did at Kenabres. She will want you back whole, and she does not share."
 {n}Her hand, lying on her knee, has closed on a fold of her grey robe so hard that the knuckles have gone white.{/n} "Now answer my question, and do not ask me that again."''',
        c('[Tell her to stand at the rift\'s edge] "Somewhere you can see. If it falls due, collect."', "rift"),
@@ -598,7 +598,7 @@ GRAVE_DOWN = E + "grave.stone_down"
 GRAVE_KEPT = E + "grave.stone_kept"
 
 visit(E + "beat.grave", "The stone they raised", [
-    nar("start", '''{n}She wants to see your grave. She says so across the trestle, over breakfast, as another woman might ask to see the gardens, and she will not be put off.{/n}
+    nar("start", '''{n}She wants to see your grave. She says so across the trestle, over breakfast, and she will not be put off.{/n}
 {n}There is one. You had forgotten. When Drezen declared you dead, the garrison raised a stone for you in the burying ground under the east wall, since there was nothing to put under it, and nobody has thought to take it down. It stands at the end of a row of real graves, a slab of grey Mendevian granite with your name cut deep and a line of scripture under it, slightly misspelled.{/n}''',
         c("Continue", "stone")),
     el("stone", '''{n}She walks all round it, twice, reading every letter. Then she lays her palm flat on the top of it, the way a physician lays a palm on a fevered chest.{/n}
@@ -634,7 +634,7 @@ visit(E + "beat.ustalav", "Where they lock the shutters", [
 {n}Far down it, past the last campfires, there is nothing: no lights, no farms, only the black line of the hills where Mendev ends.{/n}''',
         c("Continue", "road")),
     el("road", '''"Four hundred miles," {n}she says.{/n} "And then the mist. You cannot see Ustalav from anywhere, Commander. It does not allow it."
-"It is a grim land. Everyone is afraid of us, and everyone plots against us, and so we are harsh by nature and trust no one. It is the place where they lock their shutters at night, where monsters walk the woods, and the cemeteries do not lie quiet." {n}She says it the way another woman would describe a view of the sea.{/n} "It is the most beautiful country in the world."''',
+"It is a grim land. Everyone is afraid of us, and everyone plots against us, and so we are harsh by nature and trust no one. It is the place where they lock their shutters at night, where monsters walk the woods, and the cemeteries do not lie quiet." {n}There is pride in it, and something close to hunger.{/n} "It is the most beautiful country in the world."''',
        c('"Tell me about your woods."', "woods"),
        c('"I\'ll see it one day."', "promise"),
        c('"It sounds like a country I\'d rather not see."', "refuse")),
@@ -677,7 +677,7 @@ visit(E + "beat.night", "The collector at night", [
 "I came to see the goods at rest. One likes to know how they will look." {n}Her head tilts.{/n} "You will look better. The dead do not grind their teeth."''',
        c('"Come here, then, and look closer."', "woke2"),
        c('"Get out of my room, Elyanka."', "woke_out")),
-    el("woke2", '''{n}She considers it, as she considers everything, as a price. Then she rises and comes and sits on the edge of your bed, fully dressed, and lays her cold hand flat on your chest over the heart, and leaves it there.{/n}
+    el("woke2", '''{n}She considers it. Then she rises and comes and sits on the edge of your bed, fully dressed, and lays her cold hand flat on your chest over the heart, and leaves it there.{/n}
 "No," {n}she says.{/n} "Not tonight. Tonight I only want to count." {n}And she does, silently, her lips moving, while your heart goes too fast under her palm and she watches it with the bird-bright attention of a moneylender over an abacus, until you fall asleep again in spite of yourself.{/n}
 {n}In the morning she is gone, and there is a white flower on the pillow.{/n}''',
        c("Continue", flags=(NIGHT_WOKE,))),

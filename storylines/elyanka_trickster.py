@@ -236,7 +236,7 @@ visit(E + "executor.haggle", "The executor", [
        c('"The wrong people?"', "wrong"),
        c('"Then speak. What does Ustalav offer?"', "offer")),
     el("wrong", '''"Demons, who would wear it. A certain witch in the Wound, who made it what it is, they say, and would like it back." {n}Her mouth thins.{/n}
-"And your priests. The priests are worst. They would wash it and mumble over it and put it in a hole to rot, for the grey old warden of the Boneyard, who never lifted a finger for it in life. Such waste." {n}She says the word as another woman might say *blasphemy*.{/n}''',
+"And your priests. The priests are worst. They would wash it and mumble over it and put it in a hole to rot, for the grey old warden of the Boneyard, who never lifted a finger for it in life. Such waste." {n}To her, plainly, the word is a blasphemy.{/n}''',
        c("Continue", "offer")),
     el("offer", '''"The Way pays for what it values, executor, and it values very little. For this it will pay well." {n}She counts on long fingers.{/n}
 "The remains leave Drezen with every honour a crusade could wish, in that carriage outside, and no hand but mine touches them on the road. No demon, no witch, no priest will ever have them. And for the estate, whatever the estate likes: gold, or the goodwill of the Way, which is rarer. Six of my escort swore your crusader's oath with me. They could be persuaded to take it seriously."''',
@@ -287,8 +287,8 @@ visit(E + "executor.haggle", "The executor", [
     el("refuse", '''"Then I have laughed more tonight than in the last ten years, and that is worth something." {n}She stands, and she is taller than you expected.{/n}
 "But you should not have let me say it. The Way does not like to be heard by people who will not deal. Go home, Knight Commander, and live as long as you like. I will not be there when you stop."''',
        c("Continue", flags=(CLOSED,))),
-    el("pulse", '''{n}She does not answer. She is looking at your hands. Somewhere in the argument you took off a glove to lift the cup she poured you, and you did not put it back.{/n}
-"The news of the death came to Caliphas with a description, executor. The Way buys nothing it cannot recognize. The height. The hair. A sword-hand callused across the second knuckle, and a white seam across the back of the left hand where a demon's claw went through." {n}She reaches across the table, quite unhurried, and lays two cold fingers against the side of your throat, just above the crepe, the way a physician does. Or an embalmer.{/n}
+    el("pulse", '''{n}You press the lie too hard. The estate has other buyers; the estate will not wait; the estate will not have your remains haggled over like a side of beef in a barn. She lets you finish.{/n}
+"*My* remains." {n}She says it back to you in your own cadence.{/n} "You said *my*, executor. Mourners grieve in the third person; it is the first thing an undertaker learns. Only one person at a wake ever says *my remains*." {n}She reaches across the table, quite unhurried, and lays two cold fingers against the side of your throat, just above the crepe, the way a physician does. Or an embalmer.{/n}
 "And the deceased has a pulse, Commander. It is in the throat, and it is racing."''',
        c("Continue", "pulse2")),
     el("pulse2", '''"Did you think I had never seen a man sit at his own funeral in a borrowed coat? I have seen a dozen, all of them debtors. My order has hidden in plain sight for six hundred years, and you came to me in a *curtain*." {n}She takes her hand back and wipes her fingers on a napkin, one by one.{/n}
@@ -314,7 +314,7 @@ visit(E + "straight.offer", "The corpse comes to supper", [
     nar("start", '''{n}The dead-house by the south gate smells of lime and cold stone. Candles burn along its rafters in black iron cups, and in the yard behind it a hearse stands with its shafts down and its glass sides shining. At a trestle laid for two, at the far end of the long room, a woman in grey sits waiting with her back very straight.{/n}
 {n}The sergeant announces you in the doorway, the way you told him to: the late Knight Commander of the Fifth Crusade.{/n}''',
         c("Continue", "her")),
-    el("her", '''{n}She looks at you for the space of three breaths: silver-grey hair drawn hard off a face as severe as a coin, strong dark brows, pale, unblinking, bird-like eyes. Then she wrinkles her nose, very slightly, the way a lady does in a crowded street.{/n}
+    el("her", '''{n}She looks at you for the space of three breaths: silver-grey hair drawn hard off a face as severe as a coin, strong dark brows, pale, unblinking, bird-like eyes. Then she wrinkles her nose, very slightly.{/n}
 "They told me in Caliphas that you were dead. I came four hundred miles for a corpse, and the corpse comes to supper, sweating." {n}She does not rise.{/n} "Elyanka Camilary. Priestess of Urgathoa, of the Immortal Principality of Ustalav. Sit, since you are here. What are you doing alive?"''',
        c('"Mostly fighting demons. Occasionally eating."', "sit"),
        c('"I was about to ask what you want with me dead."', "sit")),
@@ -341,7 +341,7 @@ visit(E + "straight.offer", "The corpse comes to supper", [
 
 visit(E + "test.the_dead", "Sixty-one under canvas", [
     nar("start", '''{n}The message is a sprig of white flower pushed under your door, nothing more, and you know where to go. The dead-house is full tonight. The carts came back from Iz with more dead than the chaplains can bury in a week, and the named ones went into the ground first. The rest lie in rows along the long room under grey canvas, sixty-one of them, waiting for the Lady of Graves' rites.{/n}
-{n}Elyanka walks between the rows with a lantern, lifting the canvas at the heads, one after another, and looking at faces as a buyer looks at fruit.{/n}''',
+{n}Elyanka walks between the rows with a lantern, lifting the canvas at the heads, one after another, reading each face and letting the canvas fall again.{/n}''',
         c("Continue", "exposed", requires=(EXPOSED,)),
         c("Continue", "bluffed", requires=(BLUFFED,)),
         c("Continue", "plain", forbids=(EXPOSED, BLUFFED))),
@@ -376,7 +376,7 @@ visit(E + "test.the_dead", "Sixty-one under canvas", [
     el("give3", '''"And that paladin of yours will count the rows in her head until she dies. She knelt by every one of them this morning. I would give a great deal to be there when she finishes counting."''',
        c("[Watch the carts go.]", flags=(TESTED, GAVE_DEAD, SECRET_DEAD))),
     el("carrion", '''{n}For a moment she only stares. Then her nostrils flare, as if you had put something rotten under her nose, which in a sense you have.{/n}
-"Carrion." {n}She says it the way a duchess says *tradesman*.{/n} "You would send my Lady a vrock from a ditch. You would feed the queen of feasts on meat the crows turned down." {n}She looks at you for a long breath, and then, against her will, the corner of her mouth goes up.{/n}''',
+"Carrion." "You would send my Lady a vrock from a ditch. You would feed the queen of feasts on meat the crows turned down." {n}She looks at you for a long breath, and then, against her will, the corner of her mouth goes up.{/n}''',
        c("Continue", "carrion2")),
     el("carrion2", '''"Well. You are not squeamish, only stingy, and a stingy {mf|man|woman} guards {mf|his|her} larder. I can respect a larder." {n}She lets the canvas fall on the young face with the split lip.{/n}
 "I will take the vrock's head. My wizards can do something with it, and it will amuse them. Your sixty-one may keep their pit." {n}A dry breath, not quite a laugh.{/n} "Carrion for cattle. I shall tell them in Caliphas that is how the Knight Commander haggles."''',
@@ -391,6 +391,11 @@ visit(E + "test.the_dead", "Sixty-one under canvas", [
 
 
 # --- 5. The exchange of claims (T): the commit. -------------------------------------------------------------------------
+
+WHISPERED = (
+    c("Continue", "lied_secret", requires=(E + "whisper.lie",)),
+    c("Continue", "true_secret", forbids=(E + "whisper.lie",)),
+)
 
 RITES_NOTE = '''"One thing more. While I am in your city my Lady's table will be laid in this house every seventh night, for those in Drezen who worship her and are careful. There are more of them than your priests would like." {n}Her eyes glitter.{/n} "You will know. You will say nothing. That is not a price, Commander. That is what it is to hold a claim on me."'''
 
@@ -424,11 +429,15 @@ visit(E + "commit.claims", "An exchange of claims", [
        c("Continue", "reason_carrion", requires=(CARRION,)),
        c("Continue", "reason_refused", requires=(REFUSED_DEAD,)),
        c("Continue", "claim", forbids=(GAVE_DEAD, CARRION, REFUSED_DEAD))),
-    el("reason_gave", '''"You gave me sixty-one strangers without asking what they would remember. A debtor as free with other people's bodies as that ought to know what it is to be handed one." {n}She wipes her fingers.{/n} "And you whispered me something true, in the dark, and kept my secret after. Nobody keeps my secrets. They sell them."''',
+    el("reason_gave", '''"You gave me sixty-one strangers without asking what they would remember. A debtor as free with other people's bodies as that ought to know what it is to be handed one." {n}She wipes her fingers.{/n}''',
+       *WHISPERED),
+    el("reason_carrion", '''"You offered my Lady carrion from a ditch. You are stingy, Commander, and a stingy debtor guards the larder. So I will put something of mine in your larder, and see whether you guard it." {n}She wipes her fingers.{/n}''',
+       *WHISPERED),
+    el("reason_refused", '''"You kept the grey warden's dead from me, though she will never thank you for it. You pay your debts, even the ones nobody can collect. I have decided I want to be one of your debts." {n}She wipes her fingers.{/n}''',
+       *WHISPERED),
+    el("true_secret", '''"And in the dark you whispered me something true, and kept my secret after. Nobody keeps my secrets. They sell them to the Way, a whisper at a time."''',
        c("Continue", "claim")),
-    el("reason_carrion", '''"You offered my Lady carrion from a ditch. You are stingy, Commander, and a stingy debtor guards the larder." {n}She wipes her fingers.{/n} "And you whispered me something in the dark, and kept my secret after. So I will put something of mine in your larder, and see whether you guard it."''',
-       c("Continue", "claim")),
-    el("reason_refused", '''"You kept the grey warden's dead from me, though she will never thank you for it. You pay your debts, even the ones nobody can collect." {n}She wipes her fingers.{/n} "And you whispered me something in the dark, and kept my secret after. I have decided I want to be one of your debts."''',
+    el("lied_secret", '''"And in the dark you whispered me a lie, and I paid you a true secret for it anyway. You owe me one. I have decided how you will pay it."''',
        c("Continue", "claim")),
     el("claim", '''"I tell you this so you know what I do with a claim, Commander. I have bought your death. It is only good manners to give you mine."
 {n}She leans across the table, as she did on the night of the sale, until her cheek is almost against yours.{/n} "When the Princess adopts me there will be nothing left of me to bury. She will take all of it, and I will never lie down anywhere. Take the claim anyway. Keep it. You will have bought nothing at all." {n}Her breath is cold and smells of cherries.{/n} "I adore a bad bargain made with open eyes."''',
