@@ -572,6 +572,22 @@ partner("terendelev", "terendelev", "terendelev.committed", "terendelev.closed",
         (PLAIN_CHOICE, (), (), ())),
     ledger=("Terendelev: a wound, guarded", "I opened my wound over her bones and it has never closed. She changes the dressing every morning at the same hour, and has sworn to stand watch over it until one of us is dust. I have never been so well guarded, or so thoroughly in anyone's debt, and she insists it is the other way round."))
 
+GA = "galfrey.trickster."
+partner("galfrey", "galfrey", GA + "partner", "galfrey.closed", "The Face in the Crowd",
+    """Whoever she was by the last night of the war, the Queen of Mendev or a knight of a minor order whom nobody saluted, she spent it on the walls of Drezen, in the crowd of soldiers who had not been sent to Threshold and would not be told what happened there until morning. She stood among them in plain armour with an old sword, and watched the sky over the Wound the way she had watched it for a hundred years, and for once in all those years she was not the one everybody else was watching.""",
+    (
+        page_p("""At the rift the Commander called her name, the only one of her names nobody else in the world had the right to call: "Kitrane!" Far off, on the walls of Drezen, a knight in a green surcoat turned her head as if somebody had spoken at her elbow, and said "Here," to nobody, and the soldiers beside her swore afterwards that she had smiled like a girl.""", requires=(called("galfrey"),)),
+        page_p("""The world buried the Commander. She stood at the graveside in the crowd, where she had asked to be, with her hood up. She had been buried once herself, in Nerosyan, with every bell in the city, and she knew exactly how little it meant. She waited.""", requires=(ON_RECORD,)),
+        page_p("""When the flask was opened in Drezen she was there, and said nothing at all, and took the Commander's hand and did not give it back for the rest of the evening.""", requires=(H2,)),
+        page_p("""Mendev had its Queen back after Threshold, and a scandal to go with her, and the Commander answered for it: at the Crossroads, whenever the talk turned to Iz, somebody always asked how it had been done, and the Commander always told them, and never once told it the same way twice.""", requires=(GA + "crown_reclaimed",)),
+        page_p("""She stayed Kitrane. There was a knight of the Green Crows at the Crossroads table for as long as there was a table, grey-haired in time, with a squire at her elbow and a very old sword, and nobody who sat down there ever learned who she had been.""", requires=(GA + "kitrane_forever",)),
+        page_p("""The Queen of Mendev kept her crown and her Commander both, and never once asked Mendev's leave for the second.""", requires=("galfrey.final",)),
+    ), deal=[[GA + "cost.eulogy"]],
+    call=call("""[Call her name] "Kitrane!\"""",
+        """{n}You gave her that name at a deathbed, and she took it, and wore it into a crowd. You call it now over the rift, at the top of your voice, the way a sentry calls a password into the dark. It goes out over the Wound and is swallowed, and then, very far off, over a city you cannot see, somebody who used to be a queen answers to it.{/n}""",
+        (PLAIN_CHOICE, (), (), ())),
+    ledger=("Galfrey: a eulogy, false", "I stood before the altar in Drezen and grieved for the Queen of Mendev in front of the whole city, knowing she was alive in a Crows' tent and that a knight called Sir Anselm Wray lay in her coffin. She owes me nothing for it. I owe him a name."))
+
 # Existing pages that must yield to Last Call (doc 04 backlog): Nocticula's favour page is called in on her Last Call page instead.
 FORBID_ACTIVE = ("nocticula.trickster.defeated.epilogue.favour",)
 
