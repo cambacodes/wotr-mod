@@ -66,6 +66,7 @@ from storylines import nidalynn_trickster, nidalynn_kiln, nidalynn_salt
 from storylines import shamira_trickster, shamira_mind, shamira_dream
 from storylines import jannah_trickster, jannah_circle
 from storylines import nenio_trickster, nenio_folios
+from storylines import herrax_trickster, herrax_house
 from storylines import rrt_ui
 from storylines import rrt_portraits
 from storylines import scene_kinds
@@ -483,6 +484,12 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(nenio_trickster.SCENES))
     payload["Scenes"].extend(copy.deepcopy(nenio_folios.SCENES))
     nenio_trickster.integrate(payload)
+    # Herrax: a new relationship (herrax.md; 11-ROSTER-PLAN-2 §2, R3 build sheet): the coup on her schedule, sold to
+    # Rokhorn on his own list; the night in her hall; her proposal at closing; the courtship in her house (herrax_house).
+    payload["Relationships"]["herrax"] = copy.deepcopy(herrax_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(herrax_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(herrax_house.SCENES))
+    herrax_trickster.integrate(payload)
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
     trickster_engine(payload)
