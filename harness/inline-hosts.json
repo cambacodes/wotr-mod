@@ -4,14 +4,14 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 898,
-  "resolved": 898,
-  "inlineOnlyScenes": 212,
-  "inlineOnlyResolved": 212,
-  "answerListScenesWithoutContact": 494,
-  "answerListScenesWithoutContactResolved": 494,
-  "lists": 92,
-  "listsWithReachableHost": 91
+  "entryTargetScenes": 909,
+  "resolved": 909,
+  "inlineOnlyScenes": 215,
+  "inlineOnlyResolved": 215,
+  "answerListScenesWithoutContact": 505,
+  "answerListScenesWithoutContactResolved": 505,
+  "lists": 94,
+  "listsWithReachableHost": 93
  },
  "scenes": {
   "a_crossing": {
@@ -10275,6 +10275,223 @@
     "list": "e41585da330233143b34ef64d7d62d69",
     "dialog": "8a38eeddc0215a84ca441439bb96b8f4",
     "dialogName": "DialogueWoljif_main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "horzalah.lastcall.call": {
+   "kind": "return-to-list",
+   "lists": [
+    "294126e3264796e488ce19bfb1851355",
+    "16994192cfa484744bd10852b8dc806f",
+    "b6bc1d5fb28e115499b8bcbbc0d541f9",
+    "3d3357c0474ce5a4bb13d68730faecb8",
+    "e77c405d6dde5804bb1f873f971958b8"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "294126e3264796e488ce19bfb1851355": "RRT_entry.horzalah.lastcall.call.294126e3264796e488ce19bfb1851355",
+    "16994192cfa484744bd10852b8dc806f": "RRT_entry.horzalah.lastcall.call.16994192cfa484744bd10852b8dc806f",
+    "b6bc1d5fb28e115499b8bcbbc0d541f9": "RRT_entry.horzalah.lastcall.call.b6bc1d5fb28e115499b8bcbbc0d541f9",
+    "3d3357c0474ce5a4bb13d68730faecb8": "RRT_entry.horzalah.lastcall.call.3d3357c0474ce5a4bb13d68730faecb8",
+    "e77c405d6dde5804bb1f873f971958b8": "RRT_entry.horzalah.lastcall.call.e77c405d6dde5804bb1f873f971958b8"
+   },
+   "resolved": true,
+   "host": {
+    "list": "294126e3264796e488ce19bfb1851355",
+    "dialog": "f125dc501dc6e984385332e67f324f01",
+    "dialogName": "GrandFinal_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "horzalah.trickster.ch4.scar": {
+   "kind": "return-cue",
+   "lists": [
+    "9652bd6d33d394a498bb7a1c28693cc6"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "9652bd6d33d394a498bb7a1c28693cc6": "RRT_entry.horzalah.trickster.ch4.scar"
+   },
+   "resolved": true,
+   "host": {
+    "list": "9652bd6d33d394a498bb7a1c28693cc6",
+    "dialog": "2a04b3146c872664fb7ce71e4adcd7ad",
+    "dialogName": "YozzDying_dialogue",
+    "cue": "Cue_0038",
+    "clicks": 5
+   }
+  },
+  "horzalah.trickster.mercy.gift": {
+   "kind": "return-cue",
+   "lists": [
+    "8373a8ede2c5483e9a734dfea046fe2d"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "8373a8ede2c5483e9a734dfea046fe2d": "RRT_entry.horzalah.trickster.mercy.gift"
+   },
+   "resolved": true,
+   "host": {
+    "list": "8373a8ede2c5483e9a734dfea046fe2d",
+    "dialog": "359f8f43049b9b64faa599cd35aadc70",
+    "dialogName": "Horzalah_Mercy_dialogue",
+    "cue": "Cue_0031",
+    "clicks": 2
+   }
+  },
+  "horzalah.trickster.react.greybor_amateur": {
+   "kind": "dialog",
+   "lists": [
+    "174d6c94b6725f44aad1d2a76993a926"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "174d6c94b6725f44aad1d2a76993a926": "RRT_entry.horzalah.trickster.react.greybor_amateur"
+   },
+   "resolved": true,
+   "host": {
+    "list": "174d6c94b6725f44aad1d2a76993a926",
+    "dialog": "40a79e99680bd8c4a8ba77413ec372d9",
+    "dialogName": "GrimborMainDialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "horzalah.trickster.react.greybor_ear": {
+   "kind": "dialog",
+   "lists": [
+    "174d6c94b6725f44aad1d2a76993a926"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "174d6c94b6725f44aad1d2a76993a926": "RRT_entry.horzalah.trickster.react.greybor_ear"
+   },
+   "resolved": true,
+   "host": {
+    "list": "174d6c94b6725f44aad1d2a76993a926",
+    "dialog": "40a79e99680bd8c4a8ba77413ec372d9",
+    "dialogName": "GrimborMainDialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "horzalah.trickster.react.greybor_morning": {
+   "kind": "dialog",
+   "lists": [
+    "174d6c94b6725f44aad1d2a76993a926"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "174d6c94b6725f44aad1d2a76993a926": "RRT_entry.horzalah.trickster.react.greybor_morning"
+   },
+   "resolved": true,
+   "host": {
+    "list": "174d6c94b6725f44aad1d2a76993a926",
+    "dialog": "40a79e99680bd8c4a8ba77413ec372d9",
+    "dialogName": "GrimborMainDialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "horzalah.trickster.react.greybor_witness": {
+   "kind": "dialog",
+   "lists": [
+    "174d6c94b6725f44aad1d2a76993a926"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "174d6c94b6725f44aad1d2a76993a926": "RRT_entry.horzalah.trickster.react.greybor_witness"
+   },
+   "resolved": true,
+   "host": {
+    "list": "174d6c94b6725f44aad1d2a76993a926",
+    "dialog": "40a79e99680bd8c4a8ba77413ec372d9",
+    "dialogName": "GrimborMainDialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "horzalah.trickster.react.wenduag_ally": {
+   "kind": "dialog",
+   "lists": [
+    "ced27e744d2dded40bbb5adf17816dbb"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "ced27e744d2dded40bbb5adf17816dbb": "RRT_entry.horzalah.trickster.react.wenduag_ally"
+   },
+   "resolved": true,
+   "host": {
+    "list": "ced27e744d2dded40bbb5adf17816dbb",
+    "dialog": "7383531c4dcf5f54d9d291e452bb84dd",
+    "dialogName": "Wenduag_dialogue_main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "horzalah.trickster.react.wenduag_cheek": {
+   "kind": "dialog",
+   "lists": [
+    "ced27e744d2dded40bbb5adf17816dbb"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "ced27e744d2dded40bbb5adf17816dbb": "RRT_entry.horzalah.trickster.react.wenduag_cheek"
+   },
+   "resolved": true,
+   "host": {
+    "list": "ced27e744d2dded40bbb5adf17816dbb",
+    "dialog": "7383531c4dcf5f54d9d291e452bb84dd",
+    "dialogName": "Wenduag_dialogue_main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "horzalah.trickster.react.wenduag_gift": {
+   "kind": "dialog",
+   "lists": [
+    "ced27e744d2dded40bbb5adf17816dbb"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "ced27e744d2dded40bbb5adf17816dbb": "RRT_entry.horzalah.trickster.react.wenduag_gift"
+   },
+   "resolved": true,
+   "host": {
+    "list": "ced27e744d2dded40bbb5adf17816dbb",
+    "dialog": "7383531c4dcf5f54d9d291e452bb84dd",
+    "dialogName": "Wenduag_dialogue_main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "horzalah.trickster.react.wenduag_morning": {
+   "kind": "dialog",
+   "lists": [
+    "ced27e744d2dded40bbb5adf17816dbb"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "ced27e744d2dded40bbb5adf17816dbb": "RRT_entry.horzalah.trickster.react.wenduag_morning"
+   },
+   "resolved": true,
+   "host": {
+    "list": "ced27e744d2dded40bbb5adf17816dbb",
+    "dialog": "7383531c4dcf5f54d9d291e452bb84dd",
+    "dialogName": "Wenduag_dialogue_main",
     "cue": "Cue_0001",
     "clicks": 0
    }
@@ -21762,6 +21979,53 @@
     }
    ]
   },
+  "8373a8ede2c5483e9a734dfea046fe2d": {
+   "list": "8373a8ede2c5483e9a734dfea046fe2d",
+   "listName": "AnswersList_0001",
+   "hosts": [
+    {
+     "dialog": "359f8f43049b9b64faa599cd35aadc70",
+     "dialogName": "Horzalah_Mercy_dialogue",
+     "cues": [
+      "acdebc2814d72e341ad274e6f3420cdb",
+      "a35657a1d785198479eb74b08470ffa3",
+      "7721fa4a3bf5a074da631da580e8a9b3",
+      "8f27a74bc4d97a84e908806619dd92e7",
+      "293aa452fbf5242478130d53e46f42cb",
+      "a893bf3403ef415ebccdbb28d3b15759",
+      "4a3f22ae70e441d9b27ce67974f632d5"
+     ],
+     "cueNames": [
+      "Cue_0031",
+      "Cue_0006",
+      "Cue_0013",
+      "Cue_0030",
+      "Cue_0034",
+      "Cue_2",
+      "Cue_4"
+     ],
+     "speaker": "f72bb7c48bb3e45458f866045448fb58",
+     "reachable": true,
+     "clicks": 2,
+     "path": [
+      {
+       "at": "Cue_0001",
+       "take": "continue",
+       "nextConditioned": true
+      },
+      {
+       "at": "Cue_0003",
+       "take": "continue"
+      }
+     ],
+     "answerDist": {
+      "274e61dbcadeef64ab0c28722e168373": 4,
+      "8863059ebf8d61941b8a18822344fcdf": 1,
+      "bd17f08923cb4c7abe5a7b437a09588f": 1
+     }
+    }
+   ]
+  },
   "871af36f2ab2b1f40b5de77976c54276": {
    "list": "871af36f2ab2b1f40b5de77976c54276",
    "listName": "AnswersList_0009",
@@ -21990,6 +22254,83 @@
       "5e916ec40a74c2f4ca6e40b226195fe7": 2,
       "73f857edb12933948b735e0364fcf1ca": 1,
       "ca62f08417e8cda4997288e9ee80d080": 1
+     }
+    }
+   ]
+  },
+  "9652bd6d33d394a498bb7a1c28693cc6": {
+   "list": "9652bd6d33d394a498bb7a1c28693cc6",
+   "listName": "AnswersList_0039",
+   "hosts": [
+    {
+     "dialog": "2a04b3146c872664fb7ce71e4adcd7ad",
+     "dialogName": "YozzDying_dialogue",
+     "cues": [
+      "224a100f47b2aa04e99c39055d2549c2",
+      "aa4b2f245f6cbba4390549d7e9af18d5",
+      "01b13874224ac43478cfb59151f0a47b",
+      "7dce8fddc72c85d49a9520a9bc1ac85f",
+      "fc5119d8d4a54e047b07338764beb346",
+      "80aed8ea7a79b5345b1cb04cf6bee112",
+      "c200758b370f62944a47e9ec671ffbc6",
+      "1a302027ad5c3e94ebbd2313cb3f1e6e",
+      "8dd73f42441f5d241876e32a4db46494"
+     ],
+     "cueNames": [
+      "Cue_0038",
+      "Cue_0047",
+      "Cue_0048",
+      "Cue_0049",
+      "Cue_0051",
+      "Cue_0056",
+      "Cue_0058",
+      "Cue_0059",
+      "Cue_0060"
+     ],
+     "speaker": "38f0acf8ba7c3b64b87369d478014fda",
+     "reachable": true,
+     "clicks": 5,
+     "path": [
+      {
+       "at": "Cue_0002",
+       "take": "Answer_0007",
+       "conditioned": true
+      },
+      {
+       "at": "Cue_0016",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0017",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0015",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0023",
+       "take": "Answer_0028"
+      }
+     ],
+     "answerDist": {
+      "0d313dee79e05da4994b7bfe481cb973": 6,
+      "1b9dbe6561222154494f13b75d02cbe3": 3,
+      "1dd339bfbd5a66c43a666cb4b7bb4f3b": 4,
+      "2bcfd19c1189d554abdd35e2149126f2": 7,
+      "4173a476b52b07f44b75654456f4f5bf": 2,
+      "42c414d3bf9bc854fbda7635b90d08de": 2,
+      "5e6e4baafff6a5d4da795553928f07a5": 6,
+      "7859bc042d846bc44ad8ca0489f3b4df": 1,
+      "7874480993c980d4fb7e07bcbe279651": 1,
+      "7ab3c5ba2241a3046b2a5be21c603680": 1,
+      "7adabbdf7a39a0f41a962c6d7327ee62": 2,
+      "ae3a61bbbc053484eb3117840d9455c0": 6,
+      "d90cfd9e814ec4946a39a3543bdf877f": 1,
+      "d9118a7fdc133b946b7ea9ea8f1ae5d8": 2,
+      "da63ff8f158beaf42825a5d821128a96": 5,
+      "e7372fb6f79d7184eafcc0cc68a82ef5": 2,
+      "e9809a22b94bdcd459f72ae880d77e4f": 1
      }
     }
    ]
