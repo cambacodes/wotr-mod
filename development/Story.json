@@ -361815,7 +361815,8 @@
               "Set": [
                 "horzalah.trickster.refused",
                 "horzalah.started",
-                "horzalah.trickster.came_herself"
+                "horzalah.trickster.came_herself",
+                "horzalah.trickster.let_go"
               ],
               "Requires": [],
               "Forbids": [],
@@ -361880,7 +361881,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She does not use the window. You wake because the air in the room has folded, the way it folded around her on the road when she left, and when it unfolds she is standing at the foot of your bed with a knife in her hand and three nights without sleep in her face.{/n}",
+          "Text": "{n}She does not use the window. You wake because the air in the room has folded, the way it folded around her when she left you last, and when it unfolds she is standing at the foot of your bed with a knife in her hand and three nights without sleep in her face.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -361888,6 +361889,31 @@
               "Set": [],
               "Requires": [
                 "horzalah.trickster.refused"
+              ],
+              "Forbids": [
+                "horzalah.trickster.came_herself"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "refused_offer",
+              "Set": [],
+              "Requires": [
+                "horzalah.trickster.refused",
+                "horzalah.trickster.came_herself"
+              ],
+              "Forbids": [
+                "horzalah.trickster.let_go"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "refused_room",
+              "Set": [],
+              "Requires": [
+                "horzalah.trickster.let_go"
               ],
               "Forbids": [],
               "Abort": false
@@ -361904,6 +361930,38 @@
             }
           ],
           "Portrait": ""
+        },
+        {
+          "Id": "refused_offer",
+          "Speaker": "Horzalah",
+          "Text": "\"You had me on the floor of this room with your blade under my chin,\" {n}she says,{/n} \"and you made me an offer, and I spat on it.\" {n}Her mouth twists.{/n}\n\"Father has said nothing since. Not a word, not a whisper, not a cultist at the door. And for three nights three of my own masters have followed me from room to room in my own hall, smiling. They heard before I was home that I went out alone to take one mortal's head and came back without it. They are waiting to see who says the word 'failure' first, and they are beginning to think it will not need to be Father.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "head",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "refused_room",
+          "Speaker": "Horzalah",
+          "Text": "\"You let me go,\" {n}she says.{/n} \"You sat me on the floor of this room with your blade under my chin, and then you let me walk out through the wall, and told me to take my chances.\" {n}Her mouth twists.{/n}\n\"I took them. Father has said nothing. Not a word, not a whisper, not a cultist at the door. And for three nights three of my own masters have followed me from room to room in my own hall, smiling. They heard before I was home that I went out alone to take one mortal's head and came back without it. They are waiting to see who says the word 'failure' first, and they are beginning to think it will not need to be Father.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "head",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
         },
         {
           "Id": "refused",
@@ -361940,16 +361998,18 @@
         {
           "Id": "head",
           "Speaker": "Horzalah",
-          "Text": "{n}The knife point comes up, not quite toward you.{/n}\n\"So I came back for your head. It is the only thing that would shut their mouths. I have been standing here long enough to take it twice.\" {n}She does not move.{/n} \"And I keep thinking that a woman who could not take it on the crossroads, with a dozen knives behind her, does not walk into her hall with it three days later. They would ask how. I would have to lie. They would smell it.\"",
+          "Text": "{n}The knife point comes up, not quite toward you.{/n}\n\"So I came back for your head. It is the only thing that would shut their mouths. I have been standing here long enough to take it twice.\" {n}She does not move.{/n} \"And I keep thinking that a woman who could not take it the first time, when she had every advantage, does not walk into her hall with it three days later. They would ask how. I would have to lie. They would smell it.\"",
           "Choices": [
             {
-              "Text": "[Offer it again] \"Then take the other thing. What I offered on the road. It's still on the table.\"",
+              "Text": "[Offer it again] \"Then take the other thing. What I offered you before. It's still on the table.\"",
               "Next": "take",
               "Set": [],
               "Requires": [
                 "horzalah.trickster.refused"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "horzalah.trickster.let_go"
+              ],
               "Abort": false
             },
             {
@@ -361967,6 +362027,16 @@
               "Next": "guard",
               "Set": [],
               "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Offer her a better story] \"They'd smell a head. They won't smell an ear. Take a piece of me home and tell them you let me live to wear the loss.\"",
+              "Next": "take",
+              "Set": [],
+              "Requires": [
+                "horzalah.trickster.let_go"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -362755,7 +362825,7 @@
         {
           "Id": "free",
           "Speaker": "Horzalah",
-          "Text": "{n}The dresser does not move. He looks at you, and then at her, and then at the cobbles again, as a man does who has been freed before, by someone who did not own him.{/n}\n{n}Horzalah has gone very still. Her face flushes dark, from the collar up. For a heartbeat her other hand is at the knife in her belt, and the Storyteller, behind her, puts a book down very carefully.{/n}\n\"You gave away my gift,\" {n}she says softly.{/n} \"In front of me. To *him*.\"",
+          "Text": "{n}The dresser does not move. He looks at you, and then at her, and then at the cobbles again, as a man does who has been freed before, by someone who did not own him.{/n}\n{n}Horzalah has gone very still. Her face flushes dark, from the collar up. For a heartbeat her other hand is at the knife in her belt, and the candle on your table gutters as if a door had opened somewhere.{/n}\n\"You gave away my gift,\" {n}she says softly.{/n} \"In front of me. To *him*.\"",
           "Choices": [
             {
               "Text": "\"It was mine to give. You said so.\"",
@@ -363160,7 +363230,7 @@
         {
           "Id": "look",
           "Speaker": "Horzalah",
-          "Text": "{n}She turns her face into the wind and unbuckles the high black collar, one strap and then the next, without hurrying. When it comes away, the scar is there: a band of pale, glossy skin all round her throat, two fingers wide, with the ghost of a buckle pressed into one side of it. It is the only mark left on her. Her father lifted everything else.{/n}\n\"The only thing on me he ever bothered to mark,\" {n}she says.{/n} \"Not to punish. Not to hurt. Just to say *mine*.\"\n\"I am letting you see it. Look. Do not touch until I say, or you are just another buyer.\"",
+          "Text": "{n}She turns her face to the dark window and unbuckles the high black collar, one strap and then the next, without hurrying. When it comes away, the scar is there: a band of pale, glossy skin all round her throat, two fingers wide, with the ghost of a buckle pressed into one side of it. It is the only mark left on her. Her father lifted everything else.{/n}\n\"The only thing on me he ever bothered to mark,\" {n}she says.{/n} \"Not to punish. Not to hurt. Just to say *mine*.\"\n\"I am letting you see it. Look. Do not touch until I say, or you are just another buyer.\"",
           "Choices": [
             {
               "Text": "[Wait for her word.]",
@@ -363192,7 +363262,7 @@
         {
           "Id": "word",
           "Speaker": "Narrator",
-          "Text": "{n}You wait. The wind comes over the wall and pulls at her hair and yours. Down in the yard a sergeant is shouting the same order over and over at a line of recruits who cannot get it right. She watches your hands, and then your face, and then your hands again, and your hands do nothing at all.{/n}\n{n}It takes a long time. She lets it.{/n}",
+          "Text": "{n}You wait. The candle burns down a finger's width. Somewhere below your window a sentry calls the hour, and later calls the next one. She watches your hands, and then your face, and then your hands again, and your hands do nothing at all.{/n}\n{n}It takes a long time. She lets it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -363473,7 +363543,7 @@
         {
           "Id": "move",
           "Speaker": "Horzalah",
-          "Text": "{n}She puts the book back on the shelf, spine out, exactly where it was. Then she turns and takes your hand, without asking, and draws it up under the edge of her collar, and holds it there against the band of smooth skin, where the Storyteller cannot see and everyone else can guess.{/n}\n\"That is how it is done,\" {n}she says.{/n} \"I choose. Then you may. Do you understand now, or shall I cut it into you?\"",
+          "Text": "{n}She puts your letter back on the pile, face down, exactly where it was. Then she stands, and takes your hand, without asking, and draws it up under the edge of her collar, and holds it there against the band of smooth skin.{/n}\n\"That is how it is done,\" {n}she says.{/n} \"I choose. Then you may. Do you understand now, or shall I cut it into you?\"",
           "Choices": [
             {
               "Text": "[Wait for her.]",
@@ -363787,7 +363857,7 @@
         {
           "Id": "morning2",
           "Speaker": "Horzalah",
-          "Text": "{n}Nobody speaks. Somebody drops a cup. At the top of the stair, a grey-bearded master you have never seen before puts down his quill and stands up, and then all of them are standing.{/n}\n\"Let them look,\" {n}she says, at the door, quietly enough that only you hear it.{/n} \"They know whose ear is in that box. Now they know whose the rest of you is. It will do them good.\" {n}She opens the door on the red light of the Lower City.{/n} \"Go back to your war, Knight Commander. I will come for you when I choose.\"",
+          "Text": "{n}Nobody speaks. Somebody drops a cup. At the top of the stair, a grey-bearded master you have never seen before puts down his quill and stands up, and then all of them are standing.{/n}\n\"Let them look,\" {n}she says, at the door, quietly enough that only you hear it.{/n} \"They know whose ear is in that box. Now they know whose the rest of you is. It will do them good.\" {n}She opens the door on the red light of the Middle City.{/n} \"Go back to your war, Knight Commander. I will come for you when I choose.\"",
           "Choices": [
             {
               "Text": "\"I'll be waiting.\"",
@@ -363814,7 +363884,7 @@
         {
           "Id": "doorway",
           "Speaker": "Horzalah",
-          "Text": "{n}She lets you. She even, for a moment, lets you hold her there, in her own doorway, in front of her whole Guild, with the Lower City going by in the street behind you and a demon in a litter craning its neck to stare.{/n}\n\"Showing off,\" {n}she says, when she has decided it is enough. Her eyes are very bright.{/n} \"That is my trade, mortal. Leave it to me. Go.\"",
+          "Text": "{n}She lets you. She even, for a moment, lets you hold her there, in her own doorway, in front of her whole Guild, with the Middle City going by in the street behind you and a demon in a litter craning its neck to stare.{/n}\n\"Showing off,\" {n}she says, when she has decided it is enough. Her eyes are very bright.{/n} \"That is my trade, mortal. Leave it to me. Go.\"",
           "Choices": [
             {
               "Text": "[Go.]",
@@ -363927,6 +363997,12 @@
               "AnyGroups": []
             },
             {
+              "Text": "{n}On the night before the Threshold there was a knife in the pole of the Commander's tent, above the Commander's head, pinning a sheet of black paper tied with a badly tied bow. The bets in her hall stood at eleven days, it said. She had placed none. She had bought up, through third parties, every wager that the Commander would not come back, so that she would be very rich and very angry, or a great many demons would owe her money and never know why. *Come back with everything else attached. I have one piece of you. I do not intend to settle for it.*{/n}",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
               "Text": "{n}She wore a white ribbon at her collar in her hall every day of her reign, tied in a bow that was very slightly lopsided. No master of the Guild ever mentioned it. The Commander tied it, when the Commander was there, and practised on the maps when not.{/n}",
               "Requires": [
                 "horzalah.trickster.beat.ribbon_tied"
@@ -363972,7 +364048,7 @@
       "DelayHours": 0,
       "Optional": false,
       "ForbidOverrides": {
-        "sacrifice": "trickster.cheated_death"
+        "sacrifice": "trickster.commander_back"
       },
       "Relationship": "horzalah"
     },
@@ -364000,6 +364076,12 @@
           ],
           "Portrait": "",
           "Paragraphs": [
+            {
+              "Text": "{n}Before the Threshold there had been a note, pinned to the pole of the Commander's tent by a knife: *I have not finished thinking about what I want. You are going to your war before I have finished. That is very inconsiderate of you. Come back, and I will tell you.* The Commander came back. She told.{/n}",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": []
+            },
             {
               "Text": "{n}The Commander never let a priest touch the side of that head. In later years people who had never been to the Abyss would stare at the puckered scar where an ear had been, and the Commander would tell them it was a gift, and let them decide whether that was a joke.{/n}",
               "Requires": [
@@ -364050,7 +364132,7 @@
       "DelayHours": 0,
       "Optional": false,
       "ForbidOverrides": {
-        "sacrifice": "trickster.cheated_death"
+        "sacrifice": "trickster.commander_back"
       },
       "Relationship": "horzalah"
     },
@@ -364126,7 +364208,7 @@
       "DelayHours": 0,
       "Optional": false,
       "ForbidOverrides": {
-        "sacrifice": "trickster.cheated_death"
+        "sacrifice": "trickster.commander_back"
       },
       "Relationship": "horzalah"
     },
@@ -364455,6 +364537,7 @@
       ],
       "Requires": [
         "trickster.ever",
+        "greybor.in_party",
         "horzalah.trickster.cost.ear",
         "horzalah.met_q3_a"
       ],
@@ -364497,6 +364580,7 @@
       ],
       "Requires": [
         "trickster.ever",
+        "greybor.in_party",
         "horzalah.trickster.cost.ear"
       ],
       "Forbids": [
@@ -364523,7 +364607,7 @@
         {
           "Id": "start",
           "Speaker": "Wenduag",
-          "Text": "{n}Wenduag watches the thin demon-woman by the Storyteller's shelves the way a hunter watches a wolf that has left its pack and not died of it.{/n}\n\"You went down into her den, {mf|master|mistress}, and she walked you out of the front door in front of all her killers. In the Darklands we did that with a captive we meant to keep. We showed the whole tribe, so no one would try to take it.\" {n}A grim, approving grin.{/n}\n\"Her own father threw her away. She took his leavings and made a knife of them. I know that walk.\" {n}Her eyes narrow.{/n} \"Do not turn your back on her. I would think less of her if she let you.\"",
+          "Text": "{n}Wenduag watches the thin demon-woman in the collar, whenever she appears in the citadel, the way a hunter watches a wolf that has left its pack and not died of it.{/n}\n\"You went down into her den, {mf|master|mistress}, and she walked you out of the front door in front of all her killers. In the Darklands we did that with a captive we meant to keep. We showed the whole tribe, so no one would try to take it.\" {n}A grim, approving grin.{/n}\n\"Her own father threw her away. She took his leavings and made a knife of them. I know that walk.\" {n}Her eyes narrow.{/n} \"Do not turn your back on her. I would think less of her if she let you.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -364539,6 +364623,7 @@
       ],
       "Requires": [
         "trickster.ever",
+        "wenduag.in_party",
         "horzalah.trickster.morning_seen"
       ],
       "Forbids": [
@@ -364564,7 +364649,7 @@
         {
           "Id": "start",
           "Speaker": "Wenduag",
-          "Text": "{n}Wenduag is sharpening a blade. She does not stop.{/n}\n\"The soldiers say you gave away a slave the demon brought you. Unchained him in the street, in front of her.\" {n}The whetstone scrapes.{/n} \"In the Darklands a gift is a test. If you give it away, you are saying the giver is weak.\"\n\"And she let you live.\" {n}She tests the edge on her thumb and looks at you with something like respect, and something like pity.{/n} \"Then she wants you very badly, {mf|master|mistress}. That is more dangerous than if she hated you. I would know.\"",
+          "Text": "{n}Wenduag is sharpening a blade. She does not stop.{/n}\n\"The soldiers say you gave away a slave the demon brought you. Unchained him in front of her.\" {n}The whetstone scrapes.{/n} \"In the Darklands a gift is a test. If you give it away, you are saying the giver is weak.\"\n\"And she let you live.\" {n}She tests the edge on her thumb and looks at you with something like respect, and something like pity.{/n} \"Then she wants you very badly, {mf|master|mistress}. That is more dangerous than if she hated you. I would know.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -364580,6 +364665,7 @@
       ],
       "Requires": [
         "trickster.ever",
+        "wenduag.in_party",
         "horzalah.trickster.cost.gift_freed"
       ],
       "Forbids": [
@@ -364621,6 +364707,7 @@
       ],
       "Requires": [
         "trickster.ever",
+        "greybor.in_party",
         "horzalah.trickster.morning_seen"
       ],
       "Forbids": [
@@ -364663,6 +364750,7 @@
       ],
       "Requires": [
         "trickster.ever",
+        "wenduag.in_party",
         "horzalah.trickster.ally"
       ],
       "Forbids": [
@@ -364704,6 +364792,7 @@
       ],
       "Requires": [
         "trickster.ever",
+        "greybor.in_party",
         "horzalah.trickster.came_herself"
       ],
       "Forbids": [
@@ -364747,6 +364836,7 @@
       ],
       "Requires": [
         "trickster.ever",
+        "wenduag.in_party",
         "horzalah.trickster.threatened"
       ],
       "Forbids": [
@@ -367765,7 +367855,7 @@
         {
           "Id": "whose",
           "Speaker": "Horzalah",
-          "Text": "\"The master who tried my chair. Old, from Yozz's time, very stupid; I wrote to you about him.\" {n}She nudges the box with her boot.{/n} \"He said, before the whole Guild, that a woman who came home from the crusade with an ear instead of a head had gone soft. So now there is a head in a box after all, and it is his, and everyone who heard him say it has stopped saying anything at all.\"\n\"Well, mortal? Do you like it?\"",
+          "Text": "\"The master who tried my chair. Old, from Yozz's time, very stupid; I told you about him.\" {n}She nudges the box with her boot.{/n} \"He said, before the whole Guild, that a woman who came home from the crusade with an ear instead of a head had gone soft. So now there is a head in a box after all, and it is his, and everyone who heard him say it has stopped saying anything at all.\"\n\"Well, mortal? Do you like it?\"",
           "Choices": [
             {
               "Text": "[Take it] \"It's very thoughtful. I'll have it buried.\"",
@@ -367852,7 +367942,8 @@
       "Requires": [
         "trickster.ever",
         "horzalah.trickster.wants_heard",
-        "horzalah.committed"
+        "horzalah.committed",
+        "horzalah.trickster.beat.masters_heard"
       ],
       "Forbids": [
         "horzalah.closed",
@@ -368565,7 +368656,7 @@
           "Choices": [
             {
               "Text": "[Draw her down onto the bed.]",
-              "Next": "cut",
+              "Next": "draw",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -368583,9 +368674,9 @@
           "Portrait": "Horzalah"
         },
         {
-          "Id": "wait",
+          "Id": "draw",
           "Speaker": "Narrator",
-          "Text": "{n}She stops. Her claws stop, halfway down your laces. She looks at you with an expression you have never seen on her: surprise, and then, slowly, something that is very nearly delight.{/n}\n{n}\"Oh,\" she says softly. \"Oh, you learn.\" And she stands there, perfectly still, with her hands at her sides and her pale throat bare in the candlelight, and waits for you, and you take a very long time about it, and she lets you.{/n}",
+          "Text": "{n}You take her by the hips and turn her, and she lets herself be turned, which she has never done, and you walk her back to the bed with her mouth still on yours. Her leathers come apart under your hands a lace at a time. She is lean and hot and hard as a drawn bow, and when the backs of her knees meet the edge of the bed she sits, and pulls you down after her by the front of your open shirt.{/n}\n{n}Her claws rake once, lightly, down your ribs. Her heels lock behind your thighs and draw you in against her.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -368597,6 +368688,38 @@
             }
           ],
           "Portrait": ""
+        },
+        {
+          "Id": "wait",
+          "Speaker": "Narrator",
+          "Text": "{n}She stops. Her claws stop, halfway down your laces. She looks at you with an expression you have never seen on her: surprise, and then, slowly, something that is very nearly delight.{/n}\n{n}\"Oh,\" she says softly. \"Oh, you learn.\" And she stands perfectly still, with her hands at her sides and her pale throat bare in the candlelight, and lets you undo her: every lace of the leathers, every buckle, the long line of her back under your palms, the scar under your mouth. She does not move. Her breath does. By the time the last of it is on the floor she is shaking with the effort of standing still.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "wait2",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "wait2",
+          "Speaker": "Horzalah",
+          "Text": "\"Enough,\" {n}she says, through her teeth, and it is not an order; it is a surrender, and she hates it, and she does not care.{/n} {n}She takes two fistfuls of your shirt and falls backwards onto the bed, and takes you with her, and rolls you under her, and settles her knees on either side of you in the candlelight.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "cut",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
         },
         {
           "Id": "cut",
@@ -368972,6 +369095,229 @@
       "InteractionHub": "horzalah.presence"
     },
     {
+      "Id": "horzalah.trickster.beat.masters",
+      "Title": "A vacancy",
+      "Owner": "Horzalah",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You look pleased with yourself.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Horzalah",
+          "Text": "\"I am.\" {n}She is cleaning under her claws with the point of a very thin knife, and she does not stop.{/n}\n\"One of my masters tried my chair the night before last. Not the one who got up when I came in with the box; that one is the most loyal knife I have ever owned. Another. An old one, from Yozz's time, who had decided that a woman who comes home with a piece of her enemy instead of his head has gone soft.\"",
+          "Choices": [
+            {
+              "Text": "\"And?\"",
+              "Next": "and",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Did you kill him?\"",
+              "Next": "kill",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "and",
+          "Speaker": "Horzalah",
+          "Text": "\"And he was wrong.\" {n}She holds the knife up to the light and inspects the edge.{/n} \"I will not describe what I did about it. You are squeamish, and it would spoil your dinner. I will only say that there is a vacancy on my council, and that the board at my door has one fewer contract on it, because the master who posted it is no longer in a position to pay.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "you",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "kill",
+          "Speaker": "Horzalah",
+          "Text": "\"Eventually.\" {n}She says it with the calm of a woman describing a long and satisfying afternoon's work.{/n} \"There is a vacancy on my council now. The board at my door has one fewer contract on it, because the master who posted it is no longer in a position to pay. The others watched. That was the point.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "you",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "you",
+          "Speaker": "Horzalah",
+          "Text": "\"I thought you should know. It was, in its way, about you.\" {n}She puts the knife away.{/n} \"Every master in that hall has now been reminded that the ear in the box was taken, not given, and that anyone who says otherwise will be joining it.\" {n}A thin smile.{/n} \"It is a lie. You and I know it is a lie. I have just made it the most expensive truth in Alushinyrra.\"",
+          "Choices": [
+            {
+              "Text": "\"Remind me never to call you soft.\"",
+              "Next": null,
+              "Set": [
+                "horzalah.trickster.beat.masters_heard"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"You enjoyed that.\"",
+              "Next": "enjoyed",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "enjoyed",
+          "Speaker": "Horzalah",
+          "Text": "\"Of course I did.\" {n}She looks at you as if you had remarked that water was wet.{/n} \"I am Baphomet's daughter, mortal. I enjoy almost everything I do with a knife. If you were hoping I would stop, you should have let the dwarf have me on the road.\"",
+          "Choices": [
+            {
+              "Text": "[Let it go.]",
+              "Next": null,
+              "Set": [
+                "horzalah.trickster.beat.masters_heard"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "horzalah.trickster.wants_heard",
+        "horzalah.trickster.tested"
+      ],
+      "Forbids": [
+        "horzalah.closed",
+        "horzalah.trickster.left_free",
+        "horzalah.trickster.beat.masters_heard",
+        "horzalah.trickster.ally"
+      ],
+      "DelayHours": 48,
+      "Optional": true,
+      "Relationship": "horzalah",
+      "Chapters": [
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "ContactUnit": "38f0acf8ba7c3b64b87369d478014fda",
+      "InteractionHub": "horzalah.presence"
+    },
+    {
+      "Id": "horzalah.trickster.beat.stood",
+      "Title": "They stood",
+      "Owner": "Horzalah",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Your masters stood up.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Horzalah",
+          "Text": "\"They did.\" {n}She says it as if she were still turning it over.{/n} \"They have not stopped talking about it. They have never stood up for anyone. Not for Yozz. Not for me. Not for the Lady's own emissary, who was very offended and has written to complain.\"\n\"I asked the oldest of them why. He said that no one had ever walked out of my chamber by the front door before, and they had not known what else to do.\"",
+          "Choices": [
+            {
+              "Text": "\"What did you tell him?\"",
+              "Next": "told",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "told",
+          "Speaker": "Horzalah",
+          "Text": "\"That it was the correct response.\" {n}Her eyes glint.{/n} \"That they will do it every time, and that I will have it written into the Guild's rules. Nobody will ask why. We do not care why.\" {n}She tilts her head.{/n}\n\"You understand what you have done, mortal? You have become a custom. In a Guild of assassins. They will be standing up for you when you are a hundred years dead and nobody remembers your name, and none of them will know the reason.\"",
+          "Choices": [
+            {
+              "Text": "\"That's the best kind of custom.\"",
+              "Next": null,
+              "Set": [
+                "horzalah.trickster.beat.stood_heard"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I'll try to come down the stairs more slowly, then.\"",
+              "Next": "slowly",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "slowly",
+          "Speaker": "Horzalah",
+          "Text": "\"Do.\" {n}Her mouth curves.{/n} \"Make them stand there. Make them wonder whether you are going to stop and speak to one of them. It will be the most frightening thing that happens in my hall all year, and I will be at the top of the stairs, enjoying it.\"",
+          "Choices": [
+            {
+              "Text": "[Promise to take your time.]",
+              "Next": null,
+              "Set": [
+                "horzalah.trickster.beat.stood_heard"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "horzalah.trickster.wants_heard",
+        "horzalah.trickster.chamber_seen"
+      ],
+      "Forbids": [
+        "horzalah.closed",
+        "horzalah.trickster.left_free",
+        "horzalah.trickster.beat.stood_heard"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "horzalah",
+      "Chapters": [
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "ContactUnit": "38f0acf8ba7c3b64b87369d478014fda",
+      "InteractionHub": "horzalah.presence"
+    },
+    {
       "Id": "horzalah.trickster.letter.first",
       "Title": "Pinned",
       "Owner": "Horzalah",
@@ -368998,7 +369344,23 @@
         {
           "Id": "read",
           "Speaker": "Horzalah",
-          "Text": "\"Mortal.\nYou have gone off to your war without saying goodbye, which is rude, and without telling me where, which is sensible. I found you anyway. You will have noticed.\nI do not write letters. I write contracts. This is not a contract. I have no idea what it is. I am sending it because I was standing in your street by the old elf's shelves and you were not in it, and I found that I minded, and I do not like minding things. It is very bad for business.\nDo not let anyone touch the side of your head. H.\"",
+          "Text": "\"Mortal.\nYou have gone off to your war without saying goodbye, which is rude, and without telling me where, which is sensible. I found you anyway. You will have noticed.\nI do not write letters. I write contracts. This is not a contract. I have no idea what it is. I am sending it because I was standing in your street by the old elf's shelves and you were not in it, and I found that I minded, and I do not like minding things. It is very bad for business.\"",
+          "Choices": [
+            {
+              "Text": "[Read on.]",
+              "Next": "board",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "board",
+          "Speaker": "Horzalah",
+          "Text": "\"You will want to know that your name is no longer on any board in Alushinyrra. Not mine, not the two lesser Guilds by the docks, not the one the Lady's court keeps for itself and pretends it does not. I had them taken down. The lesser Guilds took some persuading. One of them no longer exists.\nYou are not safe. Nobody is safe. But nobody in my city will take gold to kill you, and that is a thing no crusader has been able to say since the Wound opened. Stop eating breakfast with your back to the door.\nStill nothing from Father. I went down to the shrine in the Guild's cellar, where Yozz kept his offerings to the Lord of Beasts, and stood in front of it for an hour. I did not pray. I only wanted to see whether he would notice me standing there. He did not. I have never slept so well.\"",
           "Choices": [
             {
               "Text": "[Pull the knife out of the bedpost.]",
@@ -369014,10 +369376,26 @@
         {
           "Id": "knife",
           "Speaker": "Narrator",
-          "Text": "{n}It comes out with difficulty. It is a very good knife, better than anything in your armoury, with no maker's mark on it anywhere. You keep it. You suspect she meant you to.{/n}",
+          "Text": "{n}It comes out with difficulty. It is a very good knife, better than anything in your armoury, with no maker's mark anywhere, and the handle is hollow. When you unscrew the pommel, three small glass vials slide out into your palm, each stoppered with black wax and tied with a thread of white ribbon.{/n}",
           "Choices": [
             {
               "Text": "Continue",
+              "Next": "vials",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "vials",
+          "Speaker": "Horzalah",
+          "Text": "{n}There is a second sheet, rolled tight inside the handle.{/n}\n\"The Guild's own antidotes. One for the green, one for the black, one for the thing the Midnight Isles call *the lover's kiss*, which your priests do not know how to treat because they have never been kissed by anyone who meant it.\nDeskari's rabble do not use poison; they are too stupid. But you have people around you who are not stupid, and some of them are not yours. Do not waste these on your soldiers. If I hear you gave one away, I will send you six more. Do not let anyone touch the side of your head. H.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the knife, and the vials.]",
               "Next": null,
               "Set": [
                 "horzalah.trickster.letter.first_read"
@@ -369027,7 +369405,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "Horzalah"
         }
       ],
       "Requires": [
@@ -369040,142 +369418,6 @@
         "horzalah.trickster.ally"
       ],
       "DelayHours": 72,
-      "Optional": true,
-      "Relationship": "horzalah",
-      "Chapters": [
-        5
-      ],
-      "Remote": true,
-      "Kind": "letter",
-      "Sender": "Horzalah"
-    },
-    {
-      "Id": "horzalah.trickster.letter.masters",
-      "Title": "A master of the Guild",
-      "Owner": "Horzalah",
-      "MinChapter": 5,
-      "MaxChapter": 5,
-      "Entry": "",
-      "Nodes": [
-        {
-          "Id": "start",
-          "Speaker": "Horzalah",
-          "Text": "{n}This one is pinned to your map table, through the middle of the Worldwound.{/n}\n\"Mortal.\nOne of my masters tried my chair last night. Not the one who got up when I came in with the box; that one is the most loyal knife I have ever owned. Another. An old one, from Yozz's time, who had decided that a woman who comes home with a piece of her enemy instead of his head has gone soft.\nHe was wrong. I will not describe what I did about it, because you are squeamish and it would spoil your breakfast. I will only say that there is now a vacancy on my council, and that the board at my door has one fewer contract on it this morning, because the master who posted it is no longer in a position to pay.\nI thought you should know. It was, in its way, about you. H.\"",
-          "Choices": [
-            {
-              "Text": "[Burn it.]",
-              "Next": null,
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "[Keep it.]",
-              "Next": null,
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Horzalah"
-        }
-      ],
-      "Requires": [
-        "trickster.ever",
-        "horzalah.trickster.tested"
-      ],
-      "Forbids": [
-        "horzalah.closed",
-        "horzalah.trickster.ally"
-      ],
-      "DelayHours": 96,
-      "Optional": true,
-      "Relationship": "horzalah",
-      "Chapters": [
-        5
-      ],
-      "Remote": true,
-      "Kind": "letter",
-      "Sender": "Horzalah"
-    },
-    {
-      "Id": "horzalah.trickster.letter.silence",
-      "Title": "Still nothing",
-      "Owner": "Horzalah",
-      "MinChapter": 5,
-      "MaxChapter": 5,
-      "Entry": "",
-      "Nodes": [
-        {
-          "Id": "start",
-          "Speaker": "Horzalah",
-          "Text": "{n}A knife in your tent pole this time, at head height. The paper is black, the hand as sharp as ever, and the letter is very short.{/n}\n\"Still nothing from Father.\nI went down to the shrine in the Guild's cellar last night, where Yozz used to keep his offerings to the Lord of Beasts, and I stood in front of it for an hour. I did not pray. I only wanted to see whether he would notice me standing there.\nHe did not. I have never slept so well. H.\"",
-          "Choices": [
-            {
-              "Text": "[Fold it away.]",
-              "Next": null,
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Horzalah"
-        }
-      ],
-      "Requires": [
-        "trickster.ever",
-        "horzalah.trickster.wants_heard"
-      ],
-      "Forbids": [
-        "horzalah.closed",
-        "horzalah.trickster.ally"
-      ],
-      "DelayHours": 120,
-      "Optional": true,
-      "Relationship": "horzalah",
-      "Chapters": [
-        5
-      ],
-      "Remote": true,
-      "Kind": "letter",
-      "Sender": "Horzalah"
-    },
-    {
-      "Id": "horzalah.trickster.letter.after",
-      "Title": "The morning after",
-      "Owner": "Horzalah",
-      "MinChapter": 5,
-      "MaxChapter": 5,
-      "Entry": "",
-      "Nodes": [
-        {
-          "Id": "start",
-          "Speaker": "Horzalah",
-          "Text": "{n}Pinned to your pillow, the morning after you come back from Alushinyrra. The knife is the one she wore at her collar.{/n}\n\"Mortal.\nMy masters have not stopped talking. They stood up for you. They have never stood up for anyone; not for Yozz, not for me, not for the Lady's own emissary, who was very offended. I asked the oldest of them why. He said that no one had ever walked out of my chamber by the front door before, and they had not known what else to do.\nI have decided that this is the correct response and that they will do it every time. I will have it written into the Guild's rules. Nobody will ask why.\nCome back when I send for you. Or before. I have not decided which I prefer. H.\"",
-          "Choices": [
-            {
-              "Text": "[Keep the knife.]",
-              "Next": null,
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Horzalah"
-        }
-      ],
-      "Requires": [
-        "trickster.ever",
-        "horzalah.trickster.chamber_seen"
-      ],
-      "Forbids": [
-        "horzalah.closed"
-      ],
-      "DelayHours": 48,
       "Optional": true,
       "Relationship": "horzalah",
       "Chapters": [
@@ -369232,179 +369474,6 @@
       "Sender": "Horzalah"
     },
     {
-      "Id": "horzalah.trickster.letter.threshold",
-      "Title": "Before the Threshold",
-      "Owner": "Horzalah",
-      "MinChapter": 6,
-      "MaxChapter": 6,
-      "Entry": "",
-      "Nodes": [
-        {
-          "Id": "start",
-          "Speaker": "Horzalah",
-          "Text": "{n}The knife is in the pole of your tent in the last camp before the Threshold, above your head, and it pins a single sheet of black paper tied with a white ribbon in a bow that has been tied badly on purpose.{/n}\n\"Mortal.\nThe bets in my hall stand at eleven days. I have still not placed one. I have, however, bought up every wager that you will not come back, quietly, through third parties, so that if you die I will be very rich and very angry, and if you live, a great many demons will owe me a great deal of money and will not know why.\nCome back with everything else attached. I have one piece of you. I do not intend to settle for it.\nIf you see Deskari, tell him Baphomet's daughter wants his army. It will annoy him. H.\"",
-          "Choices": [
-            {
-              "Text": "[Tuck the ribbon inside your armour.]",
-              "Next": null,
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Horzalah"
-        }
-      ],
-      "Requires": [
-        "trickster.ever",
-        "horzalah.committed"
-      ],
-      "Forbids": [
-        "horzalah.closed"
-      ],
-      "DelayHours": 0,
-      "Optional": true,
-      "Relationship": "horzalah",
-      "Chapters": [
-        6
-      ],
-      "Remote": true,
-      "Kind": "letter",
-      "Sender": "Horzalah"
-    },
-    {
-      "Id": "horzalah.trickster.letter.later",
-      "Title": "When your war is done",
-      "Owner": "Horzalah",
-      "MinChapter": 6,
-      "MaxChapter": 6,
-      "Entry": "",
-      "Nodes": [
-        {
-          "Id": "start",
-          "Speaker": "Horzalah",
-          "Text": "{n}The knife is in the pole of your tent in the last camp before the Threshold. The note it pins is short.{/n}\n\"Mortal.\nI have not finished thinking about what I want. You are going to your war before I have finished. That is very inconsiderate of you.\nCome back, and I will tell you. H.\"",
-          "Choices": [
-            {
-              "Text": "[Keep it.]",
-              "Next": null,
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Horzalah"
-        }
-      ],
-      "Requires": [
-        "trickster.ever",
-        "horzalah.trickster.wants_heard"
-      ],
-      "Forbids": [
-        "horzalah.closed",
-        "horzalah.committed",
-        "horzalah.trickster.ally",
-        "horzalah.trickster.declined"
-      ],
-      "DelayHours": 0,
-      "Optional": true,
-      "Relationship": "horzalah",
-      "Chapters": [
-        6
-      ],
-      "Remote": true,
-      "Kind": "letter",
-      "Sender": "Horzalah"
-    },
-    {
-      "Id": "horzalah.trickster.letter.board",
-      "Title": "Off the board",
-      "Owner": "Horzalah",
-      "MinChapter": 5,
-      "MaxChapter": 5,
-      "Entry": "",
-      "Nodes": [
-        {
-          "Id": "start",
-          "Speaker": "Horzalah",
-          "Text": "{n}The knife is through the middle of your breakfast this time, pinning the letter to the table between the bread and the cheese. The cook screams. You read it anyway.{/n}\n\"Mortal.\nYou will want to know that your name is no longer on any board in Alushinyrra. Not mine, not the two lesser Guilds in the Lower City, not the one the Lady's court keeps for itself and pretends it does not. I had them taken down. The lesser Guilds took some persuading. One of them no longer exists.\nYou are not safe. Nobody is safe. But nobody in my city will take gold to kill you, and that is a thing no crusader has been able to say since the Wound opened.\nI do not want thanks. I want you to stop eating breakfast with your back to the door. H.\"",
-          "Choices": [
-            {
-              "Text": "[Move your chair.]",
-              "Next": null,
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Horzalah"
-        }
-      ],
-      "Requires": [
-        "trickster.ever",
-        "horzalah.trickster.wants_heard"
-      ],
-      "Forbids": [
-        "horzalah.closed",
-        "horzalah.trickster.ally"
-      ],
-      "DelayHours": 144,
-      "Optional": true,
-      "Relationship": "horzalah",
-      "Chapters": [
-        5
-      ],
-      "Remote": true,
-      "Kind": "letter",
-      "Sender": "Horzalah"
-    },
-    {
-      "Id": "horzalah.trickster.letter.antidote",
-      "Title": "For the field",
-      "Owner": "Horzalah",
-      "MinChapter": 5,
-      "MaxChapter": 5,
-      "Entry": "",
-      "Nodes": [
-        {
-          "Id": "start",
-          "Speaker": "Horzalah",
-          "Text": "{n}Pinned to your tent pole by a knife with a hollow handle. When you unscrew the pommel, three small glass vials slide out into your palm, each stoppered with black wax and tied with a thread of white ribbon.{/n}\n\"Mortal.\nThe Guild's own antidotes. One for the green, one for the black, one for the thing the Midnight Isles call *the lover's kiss*, which your priests do not know how to treat because they have never been kissed by anyone who meant it.\nDeskari's rabble do not use poison. They are too stupid. But you have people around you who are not stupid, and some of them are not yours.\nDo not waste them on your soldiers. They are for you. If I hear you gave one away, I will be very angry, and I will send you six more. H.\"",
-          "Choices": [
-            {
-              "Text": "[Keep the vials.]",
-              "Next": null,
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Horzalah"
-        }
-      ],
-      "Requires": [
-        "trickster.ever",
-        "horzalah.trickster.tested"
-      ],
-      "Forbids": [
-        "horzalah.closed",
-        "horzalah.trickster.ally"
-      ],
-      "DelayHours": 144,
-      "Optional": true,
-      "Relationship": "horzalah",
-      "Chapters": [
-        5
-      ],
-      "Remote": true,
-      "Kind": "letter",
-      "Sender": "Horzalah"
-    },
-    {
       "Id": "horzalah.trickster.letter.deciding",
       "Title": "Deciding",
       "Owner": "Horzalah",
@@ -369415,7 +369484,7 @@
         {
           "Id": "start",
           "Speaker": "Horzalah",
-          "Text": "{n}The knife is in the lintel of your door, high up, where you have to stand on a chair to reach it. The note is very short, and the pen has gone through the paper twice.{/n}\n\"I am deciding. Do not come to the old elf's shelves. Do not send anyone. Do not reach for anything.\nIf you are wondering whether I am angry, I am. If you are wondering whether that means no, it does not mean anything yet. It means I am deciding. H.\"",
+          "Text": "{n}The knife is in the lintel of your door, high up, where you have to stand on a chair to reach it. The note is very short, and the pen has gone through the paper twice.{/n}\n\"I am deciding. Do not come looking for me. Do not send anyone. Do not reach for anything.\nIf you are wondering whether I am angry, I am. If you are wondering whether that means no, it does not mean anything yet. It means I am deciding. H.\"",
           "Choices": [
             {
               "Text": "[Get down off the chair.]",
@@ -372984,6 +373053,7 @@
     "woljif.dead": "2df11d659d8f57846a6a3f16492adbb8",
     "wenduag.killed": "85ee36dae8f3317448fa5b950543b3ad",
     "wenduag.kicked_out": "9b1902a20e98aa94094741ef9c91d962",
+    "wenduag.in_party": "44266407bc1241e4bb108fc03a01d8df",
     "vellexia.slaves_freed": "89965a2b67b792f438bf935fdb6ab96b",
     "ulbrig.kicked_out": "3b31ef42338b4f83ab822fbcae79a41c",
     "ulbrig.in_party": "d70304f3d15343fca38e48da6027f89c",

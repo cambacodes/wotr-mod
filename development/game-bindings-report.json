@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-horzalah\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 3700,
-  "unique_targets": 795,
+  "binding_uses": 3705,
+  "unique_targets": 796,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -2372,6 +2372,10 @@
     },
     "3b31ef42338b4f83ab822fbcae79a41c": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/UlbrigCompanion/UlbrigNotInParty_KickedOut.jbp",
+      "type": "BlueprintEtude"
+    },
+    "44266407bc1241e4bb108fc03a01d8df": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/WenduagCompanion/WenduagInParty.jbp",
       "type": "BlueprintEtude"
     },
     "85ee36dae8f3317448fa5b950543b3ad": {

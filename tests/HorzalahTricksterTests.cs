@@ -63,12 +63,39 @@ internal static class HorzalahTricksterTests
         Scene S(string id) => story.Scenes.Single(s => s.Id == id);
         bool Avail(Scene s, Snapshot w) => Rules.Available(story, s, w);
         Choice Ch(Scene s, string node, int index) => s.Nodes.Single(n => n.Id == node).Choices[index];
+        // Every outcome of a scene with the exact edges taken to reach it: (node, choice index) pairs, walked the way the
+        // engine offers them (only choices whose Requires/Forbids hold at that point; a check branches to both outcomes).
+        List<(Snapshot state, List<(string node, int index)> path)> Paths(Scene scene, Snapshot initial)
+        {
+            var outcomes = new List<(Snapshot, List<(string, int)>)>();
+            void Visit(string id, Snapshot state, List<(string, int)> path)
+            {
+                var node = scene.Nodes.Single(n => n.Id == id);
+                for (int i = 0; i < node.Choices.Count; i++)
+                {
+                    var choice = node.Choices[i];
+                    if (!Rules.Match(choice.Requires, choice.Forbids, state)) continue;
+                    var next = Program.Copy(state);
+                    foreach (var effect in choice.Set)
+                        if (next.Flags.Add(effect)) next.Times[effect] = next.Hour;
+                    var edge = new List<(string, int)>(path) { (id, i) };
+                    if (choice.Next != null || choice.Check != null)
+                        foreach (var target in Rules.NextNodes(choice)) Visit(target, Program.Copy(next), edge);
+                    else
+                    {
+                        if (!choice.Abort) { next.Flags.Add(scene.Id); next.Times[scene.Id] = next.Hour; }
+                        outcomes.Add((next, edge));
+                    }
+                }
+            }
+            Visit(scene.Nodes[0].Id, initial, new List<(string, int)>());
+            return outcomes;
+        }
+        // Take: the scene must be available, and the outcome must have traversed exactly that choice.
         List<Snapshot> Through(Scene scene, Snapshot w, string node, int index)
         {
-            var chosen = Ch(scene, node, index);
-            var hits = new List<Snapshot>();
-            foreach (var r in Program.Walk(scene, w))
-                if (chosen.Set.All(r.Has) && (chosen.Set.Length > 0 || r.Has(scene.Id))) hits.Add(r);
+            check(Avail(scene, w), "Not available before taking " + scene.Id + "/" + node + "[" + index + "]");
+            var hits = Paths(scene, w).Where(o => o.path.Contains((node, index))).Select(o => o.state).ToList();
             check(hits.Count > 0, "No outcome through " + scene.Id + "/" + node + "[" + index + "]");
             return hits;
         }
@@ -291,10 +318,29 @@ internal static class HorzalahTricksterTests
               && reactions.All(s => s.AnswerLists.Length == 1 && s.Forbids.Length > 0),
             "Horzalah's reactions are not Greybor and Wenduag on their hubs, each with its guard.");
 
+        // Rest budget (spec §10: two Chapter 5 letters on the worst branch, none in Chapter 6): her first letter and the
+        // Guild's invoice are exclusive (an ally gets only the invoice); the third comes only while she decides after a soft no.
+        var first = letters.Single(s => s.Id == P + "letter.first");
+        var invoice = letters.Single(s => s.Id == P + "letter.invoice");
+        var deciding = letters.Single(s => s.Id == P + "letter.deciding");
+        check(first.Forbids.Contains(Ally) && invoice.Requires.Contains(Ally) && deciding.Requires.Contains(Declined) && deciding.Forbids.Contains(Committed)
+              && !own.Any(s => Rules.IsRemote(s) && s.Kind == "letter" && s.MaxChapter == 6),
+            "Horzalah's letters exceed two on the worst Chapter 5 branch, or one arrives in Chapter 6.");
+        // H2 (Last Call's bottle brings the Commander back with sacrifice held) keeps her romantic pages, as the native endings do.
+        var h2 = World(story, 6, "trickster.ever", Committed, Ear, "sacrifice", "trickster.lastcall.taken", "ending.wound_closed", "trickster.lastcall.pillar.bottle");
+        check(h2.Has("trickster.commander_back") && Avail(pg["epilogue.together"], h2)
+              && Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Wants, "sacrifice", "trickster.lastcall.taken", "ending.wound_closed", "trickster.lastcall.pillar.bottle"))
+              && !Avail(pg["epilogue.together"], World(story, 6, "trickster.ever", Committed, "sacrifice")),
+            "H2 survival suppresses her pages, or a Commander who stayed dead still gets them.");
+        // Reactors speak only while with the Commander: Wenduag and Greybor need their in-party states.
+        check(reactions.Where(s => s.Owner == "Wenduag").All(s => s.Requires.Contains("wenduag.in_party") && s.Forbids.Contains("wenduag.killed"))
+              && reactions.Where(s => s.Owner == "Greybor").All(s => s.Requires.Contains("greybor.in_party") && s.Forbids.Contains("greybor.dead")),
+            "A reactor speaks without being with the Commander, or after a native death.");
+
         // Courtship: every beat and letter is reachable on some road.
-        check(beats.Length == 25 && letters.Length == 10 && letters.All(s => Rules.IsRemote(s) && s.Kind == "letter")
+        check(beats.Length == 27 && letters.Length == 3 && letters.All(s => Rules.IsRemote(s) && s.Kind == "letter" && s.Chapters.SequenceEqual(new[] { 5 }))
               && beats.All(s => s.ContactUnit == Unit && s.InteractionHub == "horzalah.presence" && s.Optional),
-            "Horzalah's courtship is not twenty-five beats on her presence and ten letters.");
+            "Horzalah's courtship is not twenty-seven beats on her presence and three Chapter 5 letters.");
         var reachedIds = new HashSet<string>();
         void Play(Snapshot start, int chapter, int rounds, params string[] avoid)
         {

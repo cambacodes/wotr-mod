@@ -45,6 +45,8 @@ QUESTION = H + "beat.question_asked"
 SECOND_NIGHT = H + "beat.second_night"
 SENTRIES = H + "beat.sentries_walked"
 USED = H + "beat.used_heard"
+MASTERS = H + "beat.masters_heard"
+STOOD = H + "beat.stood_heard"
 
 GREY_DEAD = "greybor.dead"
 GREY_KICKED = "greybor.kicked_out"
@@ -538,7 +540,7 @@ beat(H + "beat.head", "Another gift", '"Is that another box?"', [
     hz("start", '''{n}It is. It sits at her feet on the cobbles by the Storyteller's shelves: bigger than the first, round, wrapped in black paper and tied with a white ribbon in a perfect bow. The ends are cut on the slant. Something inside it has soaked a dark patch through the bottom of the paper.{/n}
 "For you," {n}she says.{/n} "Every suitor in the Abyss brings a head in the end. It is the custom. I did not want you to think I had been raised badly."''',
        c('"Whose head?"', "whose")),
-    hz("whose", '''"The master who tried my chair. Old, from Yozz's time, very stupid; I wrote to you about him." {n}She nudges the box with her boot.{/n} "He said, before the whole Guild, that a woman who came home from the crusade with an ear instead of a head had gone soft. So now there is a head in a box after all, and it is his, and everyone who heard him say it has stopped saying anything at all."
+    hz("whose", '''"The master who tried my chair. Old, from Yozz's time, very stupid; I told you about him." {n}She nudges the box with her boot.{/n} "He said, before the whole Guild, that a woman who came home from the crusade with an ear instead of a head had gone soft. So now there is a head in a box after all, and it is his, and everyone who heard him say it has stopped saying anything at all."
 "Well, mortal? Do you like it?"''',
        c('[Take it] "It\'s very thoughtful. I\'ll have it buried."', "take"),
        c('[Refuse it] "Keep it. I don\'t collect heads either."', "refuse"),
@@ -552,7 +554,7 @@ beat(H + "beat.head", "Another gift", '"Is that another box?"', [
     hz("board", '''{n}For a heartbeat she only looks at you. Then she laughs, a real laugh, loud enough that the Storyteller jumps.{/n}
 "On the board. Among the contracts. Where every master in the Guild walks past it twice a day on the way to their dinner." {n}She picks up the box, delighted.{/n} "You have a very nasty mind for a crusader, mortal. I am going to do it tonight. I am going to put it next to your ear."''',
        c("[Watch her go, very pleased with herself.]", flags=(HEAD,))),
-], requires=(COMMITTED,), forbids=(HEAD,), delay=24)
+], requires=(COMMITTED, MASTERS), forbids=(HEAD,), delay=24)
 
 
 # --- 19. The ramparts at night. --------------------------------------------------------------------------------------------
@@ -666,11 +668,16 @@ beat(H + "beat.second_night", "Your turn", '"Come up tonight."', [
 {n}She does not wait to be asked this time, and she does not ask. She pushes you back against the wall with one hand flat on your chest and holds you there, looking at you in the light of the one candle, as if memorising the place.{/n}''',
         c("Continue", "night2")),
     hz("night2", '''"On my side of the Abyss you were my guest," {n}she says, against your mouth.{/n} "Here I am yours. That is the custom, is it not, among you mortals? The host is responsible for the guest's comfort." {n}Her claws find the laces of your shirt and do not hurry.{/n} "Be responsible, then. Be very responsible."''',
-       c("[Draw her down onto the bed.]", "cut"),
+       c("[Draw her down onto the bed.]", "draw"),
        c('"Your turn to wait."', "wait")),
-    nar("wait", '''{n}She stops. Her claws stop, halfway down your laces. She looks at you with an expression you have never seen on her: surprise, and then, slowly, something that is very nearly delight.{/n}
-{n}"Oh," she says softly. "Oh, you learn." And she stands there, perfectly still, with her hands at her sides and her pale throat bare in the candlelight, and waits for you, and you take a very long time about it, and she lets you.{/n}''',
+    nar("draw", '''{n}You take her by the hips and turn her, and she lets herself be turned, which she has never done, and you walk her back to the bed with her mouth still on yours. Her leathers come apart under your hands a lace at a time. She is lean and hot and hard as a drawn bow, and when the backs of her knees meet the edge of the bed she sits, and pulls you down after her by the front of your open shirt.{/n}
+{n}Her claws rake once, lightly, down your ribs. Her heels lock behind your thighs and draw you in against her.{/n}''',
         c("Continue", "cut")),
+    nar("wait", '''{n}She stops. Her claws stop, halfway down your laces. She looks at you with an expression you have never seen on her: surprise, and then, slowly, something that is very nearly delight.{/n}
+{n}"Oh," she says softly. "Oh, you learn." And she stands perfectly still, with her hands at her sides and her pale throat bare in the candlelight, and lets you undo her: every lace of the leathers, every buckle, the long line of her back under your palms, the scar under your mouth. She does not move. Her breath does. By the time the last of it is on the floor she is shaking with the effort of standing still.{/n}''',
+        c("Continue", "wait2")),
+    hz("wait2", '''"Enough," {n}she says, through her teeth, and it is not an order; it is a surrender, and she hates it, and she does not care.{/n} {n}She takes two fistfuls of your shirt and falls backwards onto the bed, and takes you with her, and rolls you under her, and settles her knees on either side of you in the candlelight.{/n}''',
+       c("Continue", "cut")),
     nar("cut", '''{n}The candle gutters. Her breath catches in the dark, once, and then again, and her claws find your back, and the guards outside your door hear something that they will argue about in the barracks for a month.{/n}''',
         c("Continue", "after")),
     nar("after", '''{n}When the morning bell rings she is sitting on the edge of your map table in nothing but her scar, buckling on her collar, with the Worldwound pressed flat under her thigh.{/n}
@@ -730,46 +737,58 @@ beat(H + "beat.used", "You served me well", '"In Yozz\'s hall you nearly said so
 ], requires=(YOZZ, MET_Q2), forbids=(USED,), delay=24)
 
 
-# --- 26. Letters, pinned by a knife. ---------------------------------------------------------------------------------------
+# --- 26. What she tells in person: a master who tried her chair, and the masters who stood. ------------------------------
+
+beat(H + "beat.masters", "A vacancy", '"You look pleased with yourself."', [
+    hz("start", '''"I am." {n}She is cleaning under her claws with the point of a very thin knife, and she does not stop.{/n}
+"One of my masters tried my chair the night before last. Not the one who got up when I came in with the box; that one is the most loyal knife I have ever owned. Another. An old one, from Yozz's time, who had decided that a woman who comes home with a piece of her enemy instead of his head has gone soft."''',
+       c('"And?"', "and"),
+       c('"Did you kill him?"', "kill")),
+    hz("and", '''"And he was wrong." {n}She holds the knife up to the light and inspects the edge.{/n} "I will not describe what I did about it. You are squeamish, and it would spoil your dinner. I will only say that there is a vacancy on my council, and that the board at my door has one fewer contract on it, because the master who posted it is no longer in a position to pay."''',
+       c("Continue", "you")),
+    hz("kill", '''"Eventually." {n}She says it with the calm of a woman describing a long and satisfying afternoon's work.{/n} "There is a vacancy on my council now. The board at my door has one fewer contract on it, because the master who posted it is no longer in a position to pay. The others watched. That was the point."''',
+       c("Continue", "you")),
+    hz("you", '''"I thought you should know. It was, in its way, about you." {n}She puts the knife away.{/n} "Every master in that hall has now been reminded that the ear in the box was taken, not given, and that anyone who says otherwise will be joining it." {n}A thin smile.{/n} "It is a lie. You and I know it is a lie. I have just made it the most expensive truth in Alushinyrra."''',
+       c('"Remind me never to call you soft."', flags=(MASTERS,)),
+       c('"You enjoyed that."', "enjoyed")),
+    hz("enjoyed", '''"Of course I did." {n}She looks at you as if you had remarked that water was wet.{/n} "I am Baphomet's daughter, mortal. I enjoy almost everything I do with a knife. If you were hoping I would stop, you should have let the dwarf have me on the road."''',
+       c("[Let it go.]", flags=(MASTERS,))),
+], requires=(TESTED,), forbids=(MASTERS, ALLY), delay=48)
+
+
+beat(H + "beat.stood", "They stood", '"Your masters stood up."', [
+    hz("start", '''"They did." {n}She says it as if she were still turning it over.{/n} "They have not stopped talking about it. They have never stood up for anyone. Not for Yozz. Not for me. Not for the Lady's own emissary, who was very offended and has written to complain."
+"I asked the oldest of them why. He said that no one had ever walked out of my chamber by the front door before, and they had not known what else to do."''',
+       c('"What did you tell him?"', "told")),
+    hz("told", '''"That it was the correct response." {n}Her eyes glint.{/n} "That they will do it every time, and that I will have it written into the Guild's rules. Nobody will ask why. We do not care why." {n}She tilts her head.{/n}
+"You understand what you have done, mortal? You have become a custom. In a Guild of assassins. They will be standing up for you when you are a hundred years dead and nobody remembers your name, and none of them will know the reason."''',
+       c('"That\'s the best kind of custom."', flags=(STOOD,)),
+       c('"I\'ll try to come down the stairs more slowly, then."', "slowly")),
+    hz("slowly", '''"Do." {n}Her mouth curves.{/n} "Make them stand there. Make them wonder whether you are going to stop and speak to one of them. It will be the most frightening thing that happens in my hall all year, and I will be at the top of the stairs, enjoying it."''',
+       c("[Promise to take your time.]", flags=(STOOD,))),
+], requires=(CHAMBER,), forbids=(STOOD,), delay=24)
+
+
+# --- 27. Letters, pinned by a knife (the worst branch reads two in Chapter 5, and none in Chapter 6). ----------------------
 
 letter(H + "letter.first", "Pinned", [
     nar("start", '''{n}You wake with a knife in the post of your bed, a hand's breadth above your head, so thin you did not hear it go in. It pins a folded sheet of black paper. The hand is as sharp as a row of nails.{/n}''',
         c("Continue", "read")),
     hz("read", '''"Mortal.
 You have gone off to your war without saying goodbye, which is rude, and without telling me where, which is sensible. I found you anyway. You will have noticed.
-I do not write letters. I write contracts. This is not a contract. I have no idea what it is. I am sending it because I was standing in your street by the old elf's shelves and you were not in it, and I found that I minded, and I do not like minding things. It is very bad for business.
-Do not let anyone touch the side of your head. H."''',
+I do not write letters. I write contracts. This is not a contract. I have no idea what it is. I am sending it because I was standing in your street by the old elf's shelves and you were not in it, and I found that I minded, and I do not like minding things. It is very bad for business."''',
+       c("[Read on.]", "board")),
+    hz("board", '''"You will want to know that your name is no longer on any board in Alushinyrra. Not mine, not the two lesser Guilds by the docks, not the one the Lady's court keeps for itself and pretends it does not. I had them taken down. The lesser Guilds took some persuading. One of them no longer exists.
+You are not safe. Nobody is safe. But nobody in my city will take gold to kill you, and that is a thing no crusader has been able to say since the Wound opened. Stop eating breakfast with your back to the door.
+Still nothing from Father. I went down to the shrine in the Guild's cellar, where Yozz kept his offerings to the Lord of Beasts, and stood in front of it for an hour. I did not pray. I only wanted to see whether he would notice me standing there. He did not. I have never slept so well."''',
        c("[Pull the knife out of the bedpost.]", "knife")),
-    nar("knife", '''{n}It comes out with difficulty. It is a very good knife, better than anything in your armoury, with no maker's mark on it anywhere. You keep it. You suspect she meant you to.{/n}''',
-        c("Continue", flags=(LETTER1,))),
+    nar("knife", '''{n}It comes out with difficulty. It is a very good knife, better than anything in your armoury, with no maker's mark anywhere, and the handle is hollow. When you unscrew the pommel, three small glass vials slide out into your palm, each stoppered with black wax and tied with a thread of white ribbon.{/n}''',
+        c("Continue", "vials")),
+    hz("vials", '''{n}There is a second sheet, rolled tight inside the handle.{/n}
+"The Guild's own antidotes. One for the green, one for the black, one for the thing the Midnight Isles call *the lover's kiss*, which your priests do not know how to treat because they have never been kissed by anyone who meant it.
+Deskari's rabble do not use poison; they are too stupid. But you have people around you who are not stupid, and some of them are not yours. Do not waste these on your soldiers. If I hear you gave one away, I will send you six more. Do not let anyone touch the side of your head. H."''',
+       c("[Keep the knife, and the vials.]", flags=(LETTER1,))),
 ], requires=(WANTS,), forbids=(LETTER1, ALLY), delay=72)
-
-letter(H + "letter.masters", "A master of the Guild", [
-    hz("start", '''{n}This one is pinned to your map table, through the middle of the Worldwound.{/n}
-"Mortal.
-One of my masters tried my chair last night. Not the one who got up when I came in with the box; that one is the most loyal knife I have ever owned. Another. An old one, from Yozz's time, who had decided that a woman who comes home with a piece of her enemy instead of his head has gone soft.
-He was wrong. I will not describe what I did about it, because you are squeamish and it would spoil your breakfast. I will only say that there is now a vacancy on my council, and that the board at my door has one fewer contract on it this morning, because the master who posted it is no longer in a position to pay.
-I thought you should know. It was, in its way, about you. H."''',
-       c("[Burn it.]"),
-       c("[Keep it.]")),
-], requires=(TESTED,), forbids=(ALLY,), delay=96)
-
-letter(H + "letter.silence", "Still nothing", [
-    hz("start", '''{n}A knife in your tent pole this time, at head height. The paper is black, the hand as sharp as ever, and the letter is very short.{/n}
-"Still nothing from Father.
-I went down to the shrine in the Guild's cellar last night, where Yozz used to keep his offerings to the Lord of Beasts, and I stood in front of it for an hour. I did not pray. I only wanted to see whether he would notice me standing there.
-He did not. I have never slept so well. H."''',
-       c("[Fold it away.]")),
-], requires=(WANTS,), forbids=(ALLY,), delay=120)
-
-letter(H + "letter.after", "The morning after", [
-    hz("start", '''{n}Pinned to your pillow, the morning after you come back from Alushinyrra. The knife is the one she wore at her collar.{/n}
-"Mortal.
-My masters have not stopped talking. They stood up for you. They have never stood up for anyone; not for Yozz, not for me, not for the Lady's own emissary, who was very offended. I asked the oldest of them why. He said that no one had ever walked out of my chamber by the front door before, and they had not known what else to do.
-I have decided that this is the correct response and that they will do it every time. I will have it written into the Guild's rules. Nobody will ask why.
-Come back when I send for you. Or before. I have not decided which I prefer. H."''',
-       c("[Keep the knife.]")),
-], requires=(CHAMBER,), delay=48)
 
 letter(H + "letter.invoice", "An invoice", [
     hz("start", '''{n}It comes by an ordinary courier, a tiefling in the Guild's grey, who waits at your door with his hand out until you have paid. That is how you know what it is before you open it.{/n}
@@ -779,46 +798,9 @@ The dresser sends his respects, and asks whether the Knight Commander would like
        c("[Pay the courier.]", crusade=("Finances", -150))),
 ], requires=(ALLY,), delay=96)
 
-letter(H + "letter.threshold", "Before the Threshold", [
-    hz("start", '''{n}The knife is in the pole of your tent in the last camp before the Threshold, above your head, and it pins a single sheet of black paper tied with a white ribbon in a bow that has been tied badly on purpose.{/n}
-"Mortal.
-The bets in my hall stand at eleven days. I have still not placed one. I have, however, bought up every wager that you will not come back, quietly, through third parties, so that if you die I will be very rich and very angry, and if you live, a great many demons will owe me a great deal of money and will not know why.
-Come back with everything else attached. I have one piece of you. I do not intend to settle for it.
-If you see Deskari, tell him Baphomet's daughter wants his army. It will annoy him. H."''',
-       c("[Tuck the ribbon inside your armour.]")),
-], requires=(COMMITTED,), delay=0, chapter=6)
-
-letter(H + "letter.later", "When your war is done", [
-    hz("start", '''{n}The knife is in the pole of your tent in the last camp before the Threshold. The note it pins is short.{/n}
-"Mortal.
-I have not finished thinking about what I want. You are going to your war before I have finished. That is very inconsiderate of you.
-Come back, and I will tell you. H."''',
-       c("[Keep it.]")),
-], requires=(WANTS,), forbids=(COMMITTED, ALLY, DECLINED), delay=0, chapter=6)
-
-
-letter(H + "letter.board", "Off the board", [
-    hz("start", '''{n}The knife is through the middle of your breakfast this time, pinning the letter to the table between the bread and the cheese. The cook screams. You read it anyway.{/n}
-"Mortal.
-You will want to know that your name is no longer on any board in Alushinyrra. Not mine, not the two lesser Guilds in the Lower City, not the one the Lady's court keeps for itself and pretends it does not. I had them taken down. The lesser Guilds took some persuading. One of them no longer exists.
-You are not safe. Nobody is safe. But nobody in my city will take gold to kill you, and that is a thing no crusader has been able to say since the Wound opened.
-I do not want thanks. I want you to stop eating breakfast with your back to the door. H."''',
-       c("[Move your chair.]")),
-], requires=(WANTS,), forbids=(ALLY,), delay=144)
-
-letter(H + "letter.antidote", "For the field", [
-    hz("start", '''{n}Pinned to your tent pole by a knife with a hollow handle. When you unscrew the pommel, three small glass vials slide out into your palm, each stoppered with black wax and tied with a thread of white ribbon.{/n}
-"Mortal.
-The Guild's own antidotes. One for the green, one for the black, one for the thing the Midnight Isles call *the lover's kiss*, which your priests do not know how to treat because they have never been kissed by anyone who meant it.
-Deskari's rabble do not use poison. They are too stupid. But you have people around you who are not stupid, and some of them are not yours.
-Do not waste them on your soldiers. They are for you. If I hear you gave one away, I will be very angry, and I will send you six more. H."''',
-       c("[Keep the vials.]")),
-], requires=(TESTED,), forbids=(ALLY,), delay=144)
-
-
 letter(H + "letter.deciding", "Deciding", [
     hz("start", '''{n}The knife is in the lintel of your door, high up, where you have to stand on a chair to reach it. The note is very short, and the pen has gone through the paper twice.{/n}
-"I am deciding. Do not come to the old elf's shelves. Do not send anyone. Do not reach for anything.
+"I am deciding. Do not come looking for me. Do not send anyone. Do not reach for anything.
 If you are wondering whether I am angry, I am. If you are wondering whether that means no, it does not mean anything yet. It means I am deciding. H."''',
        c("[Get down off the chair.]")),
 ], requires=(DECLINED,), forbids=(COMMITTED, LEFT_FREE), delay=18)
