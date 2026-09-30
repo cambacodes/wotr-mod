@@ -361,8 +361,8 @@ fortune(RIBBON, "A yellow ribbon", '"What\'s this for?"', [
 # --- 11. Sharing. ------------------------------------------------------------------------------------------------------
 
 fortune(SHARING, "Sharing", '"Something\'s on your mind."', [
-    ch("start", '''"Eritrice says you don't only sit at this table." {n}She says it lightly, plucking at a cushion.{/n} "She says it as if it were a motion out of order. Socothbenoth says it as if it were a joke. Alichino says it as if it were a price."
-"I don't mind." {n}She looks up.{/n} "I really don't. I'm an azata. Luck's for sharing, and so is everything good. If you've got enough of you to go round, then go round."''',
+    ch("start", '''"Eritrice says you are over-committed." {n}She says it lightly, plucking at a cushion.{/n} "She says it as if it were a motion out of order. Socothbenoth says it as if it were a joke. Alichino says it as if it were a price: the whole crusade holds a mortgage on you, he says, and I'm a very late creditor."
+"They're right about the numbers. Every one of them." {n}She looks up.{/n} "I don't care about the numbers."''',
       c('"Then what\'s on your mind?"', "mind")),
     ch("mind", '''{n}She hesitates, and the hesitation goes on for long enough that you understand it is serious.{/n}
 "I don't want to be last." {n}Small, and very clear.{/n} "Not first. I don't need first. First is for people who count. I just don't want to be the one you come to when there's nothing left of you. The crumbs at the bottom of the parcel."
@@ -383,7 +383,7 @@ fortune(SHARING, "Sharing", '"Something\'s on your mind."', [
 # --- 12. Paid back: the borrowed luck. ---------------------------------------------------------------------------------
 
 fortune(REPAID, "Paid back", '"You said you always pay back."', [
-    ch("start", '''"I do." {n}She sits up very straight, businesslike, which on her looks like a child playing shopkeeper.{/n} "The day of the coin I borrowed some of your luck and spent it on the Council. On believing."''',
+    ch("start", '''"I do." {n}She sits up very straight and folds her hands on the table, and for once she is every inch the patron whose priests keep her accounts in three temples.{/n} "The day of the coin I borrowed some of your luck and spent it on the Council. On believing."''',
       c("Continue", "owed", requires=(LUCK_OWED,)),
       c("Continue", "lent", requires=(LUCK_LENT,), forbids=(LUCK_OWED,)),
       c("Continue", "lent", forbids=(LUCK_LENT, LUCK_OWED))),

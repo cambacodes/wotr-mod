@@ -90,7 +90,7 @@ def letter(id, title, nodes, requires, forbids=(), delay=0, **extra):
 # --- 4.1 council_active: the coin lands on its edge (primer), inline on her private list. -------------------------
 
 SCENES.append(scene(P + "council.coin", "Heads or tails", "Chadali", 3, '"Before you go. Heads or tails?"', [
-    nar("start", '''{n}Chadali has a coin out before you can answer: an old Elysian piece, worn smooth, with a sun on one face and a moon on the other. She flicks it high over the Council table, bracelets clinking, and watches it turn in the lamplight with her mouth a little open, like a child at a fair.{/n}''',
+    nar("start", '''{n}Chadali has a coin out before you can answer: an old Elysian piece, worn smooth, with a sun on one face and a moon on the other. She flicks it high over the Council table, bracelets clinking, and watches it turn in the lamplight with her lips parted, as if no coin in the multiverse had ever been tossed before.{/n}''',
         c('[Call it in the air] "Heads, I\'m the Council\'s lucky charm. Tails, you\'re mine."', "edge",
           flags=(PRIMED, LUCK_LENT), mythic="Trickster", alignment=("Chaotic", 1)),
         c("Never mind.", abort=True)),
@@ -108,9 +108,11 @@ SCENES.append(scene(P + "council.coin", "Heads or tails", "Chadali", 3, '"Before
 
 SCENES.append(scene(P + "council.orange", "An orange! An orange!", "Chadali", 3, '"You kept the coin?"', [
     nar("open", '''{n}Chadali is waiting at the end of the Council table with both hands behind her back and the expression of someone who has been sitting on a secret for exactly as long as she could bear.{/n}''',
-        c("Continue", "start_orange", requires=(ORANGE_CALLED,)),
-        c("Continue", "start_edge", forbids=(ORANGE_CALLED,))),
-    ch("start_orange", '''{n}Cobblehoof's bag lies empty on the table, its cauldron handed over. When Chadali turns it out to fold it, an orange rolls across the wood: not a magical one, an ordinary orange with a Drezen market stall's chalk mark on the peel.{/n}
+        c("[Trickster] [While she fusses with the ribbon on her parcel, drop the market orange from your pocket into Cobblehoof's empty bag.]",
+          "start_orange", requires=(ORANGE_CALLED,)),
+        c("Continue", "start_edge", forbids=(ORANGE_CALLED,)),
+        c("[Leave the bag alone.]", "start_edge", requires=(ORANGE_CALLED,))),
+    ch("start_orange", '''{n}Cobblehoof's bag lies on the table where he left it when the cauldron was handed over. Chadali picks it up to fold it, feels the weight, and turns it out: an orange rolls across the wood. Not a magical one. An ordinary orange with a Drezen market stall's chalk mark on the peel, the one you bought for two coppers this morning.{/n}
 "An orange! An orange! I knew it!" {n}She holds it up to the light, turning it, delighted. Then she looks at you, and the dimples go away for a moment.{/n} "...You put it there."''',
       c('[Take the orange] "Half each. It\'s only fair: I lied about the bag."', "confession")),
     ch("start_edge", '''{n}The coin you called in the air is still standing on its edge in the middle of the Council table. A ring of cookie crumbs lies around it where someone has tried to knock it down with a biscuit and failed.{/n}
@@ -146,7 +148,7 @@ hall(P + "council.second_cookie", "The second cookie", '"You said there would be
     ch("yes", '''"Yes." {n}She says it at once, and then looks astonished at herself, and then laughs, a real laugh, loud enough to echo off the empty chairs.{/n}
 "Oh! You did it! You said it and it happened!" {n}She pushes the whole parcel into your hands and holds on to your wrists over it.{/n} "That's the luckiest thing I've ever seen. And it wasn't luck at all. I don't mind. I don't mind in the least."''',
       c("[Hold on to her.]")),
-], requires=("trickster.ever", STARTED, WAGERED), forbids=(COMMITTED, DECLINED), delay=48)
+], requires=("trickster.ever", STARTED, WAGERED, "chadali.wagers.bet_her"), forbids=(COMMITTED, DECLINED), delay=48)
 
 
 # --- The one priced second ask after her soft no. -----------------------------------------------------------------
@@ -232,13 +234,14 @@ SCENES.append(scene(P + "epilogue.commit", "", "ChadaliEpilogue", 6, "", [
             p("{n}She had kept the apology the herald read in the square; she took it out of the basket, folded very small, and put it on top of the cookies, where the Commander would see it.{/n}", requires=(APOLOGISED,)),
             p("{n}Before anything else she held out her hand, palm up, and waited until the Commander understood, and pricked a thumb on the brooch-pin she offered. \"The needle,\" she said. \"You promised. That's paid.\"{/n}", requires=(NEEDLE_OWED,)),
         )),
-    nar("stay", '''{n}"Yes," said Chadali, before the word was quite finished, and took off her sandals, and did not leave. The barracks lost at dice for a month. Nobody could prove anything.{/n}'''),
-    nar("half", '''{n}She peeled it with her thumbs, gave the Commander the larger half, and ate hers slowly. When she had finished she wiped her fingers on the yellow silk and said, "That's a yes, you know. You'll have to say it properly one day." The Commander did, in the end. It took most of a summer. She counted every day, and called each one lucky.{/n}'''),
+    nar("stay", '''{n}"Yes," said Chadali, before the word was quite finished. She took off her sandals and set them side by side under the Commander's table, the way a traveller does who means to stay. Then she pulled the white flower out of her hair, unpinned the yellow silk at her shoulder and let it fall to her waist, came round the table, and climbed into the Commander's lap as if she had been planning the route since the hall was sealed. "I bet you," she said against the Commander's mouth, both hands already busy at the Commander's belt, "that nobody comes through that door before morning."{/n}
+{n}Nobody did. In the morning the coin stood on its edge on the windowsill, she lay asleep across most of the bed with honey in her hair, and the barracks had lost at dice all night. They went on losing for a month. Nobody could prove anything.{/n}'''),
+    nar("half", '''{n}She peeled it with her thumbs, gave the Commander the larger half, and ate hers slowly. When she had finished she wiped her fingers on the yellow silk and said, "That's a yes, you know. You'll have to say it properly one day." The Commander did, in the end. It took most of a summer. She counted every day, and called each one lucky, and on the evening the Commander finally said it she latched the shutters herself, kicked her sandals across the room and pulled the Commander down onto the bed by both wrists, laughing, before the sentence was finished. She said afterwards it was the best bet she had ever won, and would not say what she had staked.{/n}'''),
     nar("coin", '''{n}She looked at the coin in her palm for a long time, turning it, sun and moon. Then she stood it on its edge on the table between them, where it stayed. "Keep it," she said. "I'll come and look at it sometimes." She did, every spring, and stayed a little longer each time, and never once said what she was waiting for.{/n}'''),
 ],
     requires=("trickster.ever",), forbids=(COMMITTED, CLOSED, DECLINED, "council.fought", "council.fought_nocta_allied", "sacrifice"),
     RequiresAnyGroups=[[STARTED, RETURNED]],
-    ForbidOverrides={"council.fought": RETURNED, "council.fought_nocta_allied": RETURNED, "sacrifice": "trickster.cheated_death"}, **EP))
+    ForbidOverrides={"council.fought": RETURNED, "council.fought_nocta_allied": RETURNED, "sacrifice": "trickster.commander_back"}, **EP))
 
 SCENES.append(scene(P + "epilogue.declined", "", "ChadaliEpilogue", 6, "", [
     nar("page", '''{n}Chadali never did get her proper question. Every year, on the anniversary of the Council's first session, a parcel of cookies arrived in Drezen, with a coin in it lying flat, heads up, and no note at all.{/n}''')],
@@ -255,9 +258,8 @@ SCENES.append(scene(P + "epilogue.lucky_night", "", "ChadaliEpilogue", 6, "", [
             p("{n}She never paid back the luck she had borrowed on the day of the coin. She said it was invested.{/n}", requires=(LUCK_LENT,), forbids=(LUCK_OWED,)),
             p("{n}She paid back the borrowed luck, with interest, a little at a time, for the rest of the Commander's life. The Commander never once rolled lower than a four.{/n}", requires=(LUCK_OWED,)),
         ))],
-    requires=("trickster.ever",), forbids=(CLOSED, DECLINED, "sacrifice"),
-    RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED]],
-    ForbidOverrides={DECLINED: COMMITTED, "sacrifice": "trickster.cheated_death"}, **EP))
+    requires=("trickster.ever", COMMITTED), forbids=(CLOSED, DECLINED, "sacrifice"),
+    ForbidOverrides={DECLINED: COMMITTED, "sacrifice": "trickster.commander_back"}, **EP))
 
 
 # --- Reactions (exactly two reactors: Eritrice and Ember, each behind its reactor's availability guard). -----------

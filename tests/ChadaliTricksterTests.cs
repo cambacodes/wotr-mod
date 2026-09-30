@@ -104,9 +104,11 @@ internal static class ChadaliTricksterTests
         check(Choice(coin, "start", 0).Mythic == "PlayerIsTrickster" && Choice(coin, "start", 0).Alignment?.Direction == "Chaotic"
               && Choice(coin, "start", 0).Alignment!.Value == 1 && Choice(coin, "start", 1).Abort,
             "The coin is not a Trickster answer (Chaotic 1) with a way back.");
-        check(orange.Nodes.Single(n => n.Id == "open").Choices.Count == 2
-              && Choice(orange, "open", 0).Requires.Contains("council.orange_called") && Choice(orange, "open", 1).Forbids.Contains("council.orange_called"),
-            "The payoff does not branch on the Commander's own orange (Council_5-1/Cue_0020).");
+        check(orange.Nodes.Single(n => n.Id == "open").Choices.Count == 3
+              && Choice(orange, "open", 0).Requires.Contains("council.orange_called") && Choice(orange, "open", 0).Next == "start_orange"
+              && Choice(orange, "open", 1).Forbids.Contains("council.orange_called")
+              && Choice(orange, "open", 2).Requires.Contains("council.orange_called") && Choice(orange, "open", 2).Next == "start_edge",
+            "The payoff does not let the Commander plant the orange on the page (Council_5-1/Cue_0020), or leave the bag alone.");
         foreach (var hall in own.Where(s => !Rules.IsRemote(s)))
             check(hall.AnswerLists.SequenceEqual(new[] { List }) && hall.ContactUnit == null
                   && hall.Chapters.All(c => c == 3 || c == 5) && hall.Forbids.Contains("chadali.lost_at_council"),
@@ -147,7 +149,13 @@ internal static class ChadaliTricksterTests
         check(Reaches(started, W + "the_real_wager") && Reaches(started, "chadali.committed"), "Trk_Chadali_Payoff: no road through the real wager to the commit.");
 
         // Trk_Chadali_Commit.
-        var ready = World(story, 5, "trickster.ever", "chadali.started", W + "the_real_wager");
+        var ready = World(story, 5, "trickster.ever", "chadali.started", W + "the_real_wager", W + "bet_her");
+        // Sol HOW (2026-09-30): postponing the wager does not consume it, and the question needs the bet itself.
+        var unbet = World(story, 5, "trickster.ever", "chadali.started", W + "so_gloomy", W + "a_free_space");
+        check(Choice(wager, "not_tonight", 0).Abort && Rules.Available(story, wager, unbet)
+              && !Rules.Available(story, second, Later(story, World(story, 5, "trickster.ever", "chadali.started", W + "the_real_wager"), 72)),
+            "Trk_Chadali_Commit: refusing to bet consumes the wager or still opens the question.");
+        check(After(wager, unbet, "bet", 0).All(r => r.Has(W + "bet_her")), "Trk_Chadali_Commit: staking does not record the bet.");
         check(Rules.Available(story, second, ready) && !Rules.Available(story, tree, ready), "Trk_Chadali_Commit: the second cookie is not available.");
         check(After(second, ready, "her_test", 0).All(r => r.Has("chadali.committed")), "Trk_Chadali_Commit: asking her does not commit.");
 
@@ -200,6 +208,27 @@ internal static class ChadaliTricksterTests
               && Rules.Available(story, pageNight, World(story, 6, "trickster.ever", P + "declined", "chadali.committed")),
             "The refusal page or the declined-then-committed override is wrong.");
         check(pageNight.Nodes[0].Paragraphs.Count >= 20, "The committed page is missing the courtship's consequences.");
+        // Sol INT (2026-09-30): the lucky night reads the real commit only, so the late page never overlaps it before an answer.
+        var lateOnly = World(story, 6, "trickster.ever", "chadali.started", P + "cost.late");
+        check(Rules.Available(story, pageCommit, lateOnly) && !Rules.Available(story, pageNight, lateOnly),
+            "The committed page shows beside the late page before the Commander has answered.");
+        // Ledger row 16: a Commander back from the sacrifice (the Last Call bottle) keeps her pages; a dead one does not.
+        var bottle = new[] { "sacrifice", "ending.wound_closed", "trickster.lastcall.taken", "trickster.lastcall.pillar.bottle" };
+        check(Rules.Available(story, pageNight, World(story, 6, new[] { "trickster.ever", "chadali.committed" }.Concat(bottle).ToArray()))
+              && Rules.Available(story, pageCommit, World(story, 6, new[] { "trickster.ever", "chadali.started" }.Concat(bottle).ToArray()))
+              && !Rules.Available(story, pageNight, World(story, 6, "trickster.ever", "chadali.committed", "sacrifice", "ending.wound_closed")),
+            "The romance pages do not follow trickster.commander_back.");
+        // Sol BEL: the curse lifted by her own hand shows only the restored-luck paragraph.
+        var cursed = pageNight.Nodes[0].Paragraphs.Single(p => p.Requires.Contains(W + "cobblehoof_left_cursed"));
+        check(cursed.Forbids.Contains(S + "cobblehoof_freed_by_her")
+              && pageNight.Nodes[0].Paragraphs.Any(p => p.Requires.Contains(S + "cobblehoof_freed_by_her")),
+            "The permanent curse paragraph prints after she lifted it.");
+        // Sol BEL: the sealed-hall yes is staged to its threshold, with a morning after.
+        var stay = pageCommit.Nodes.Single(n => n.Id == "stay").Text;
+        check(stay.Contains("climbed into the Commander's lap") && stay.Contains("In the morning"),
+            "The late yes has no staged threshold and aftermath.");
+        // Sol CAN: the Chapter 3 knucklebones recall no Abyss expedition.
+        check(!Sc(W + "knucklebones").Nodes.Any(n => n.Text.Contains("Abyss")), "Knucklebones (Chapters 3/5) recall the Chapter 4 Abyss.");
 
         // The courtship: every sitting reachable, the question only after the wager, the night only after the commit.
         foreach (var sitting in sittings)

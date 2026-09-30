@@ -70,7 +70,7 @@ def session(id, title, entry, nodes, requires, forbids=(), delay=24, chapters=(3
 # --- 1. What you said about me (to Alichino, or to Cobblehoof). -----------------------------------------------------
 
 session(OVERHEARD, "What you said about me", '"You look like you\'ve been told something."', [
-    nar("open", '''{n}There is no parcel. Chadali is sitting at the Council table with her hands flat on the wood, very straight, like a schoolgirl who has been sent for. In front of her lies a small black notebook that is not hers.{/n}''',
+    nar("open", '''{n}There is no parcel. Chadali is sitting at the Council table with her hands flat on the wood, very straight, like a petitioner who has come to hear a verdict. In front of her lies a small black notebook that is not hers.{/n}''',
         c("Continue", "alichino", requires=(SAID_BABBLING,)),
         c("Continue", "cobblehoof", requires=(SAID_CRAZY,), forbids=(SAID_BABBLING,))),
     ch("alichino", '''"Alichino left this for me. He said it was 'in my interest to be informed'." {n}She opens the little black book to a page marked with a cookie crumb and reads, in a careful, flat voice:{/n}
@@ -223,9 +223,9 @@ session(PATRONS, "Two beautiful ladies", '"You and Eritrice..."', [
     ch("know", '''"No! And she mustn't." {n}Horrified.{/n} "If Eritrice knew somebody would do anything for her, she'd feel she had to do something back, and she'd make a list, and it'd be very long, and she'd never sleep again."
 "Some things are better as a nice surprise. Kept for later." {n}She taps her nose.{/n} "That's the azata way. We keep good things in our sleeves until the right moment. Then: surprise!"''',
       c("Continue", "close")),
-    ch("side", '''{n}She looks at you with frank, open curiosity, and not a flicker of jealousy.{/n}
-"Then she'd be less lonely." {n}Simply.{/n} "That's good. That's the best thing. You'd have to be very patient. She argues about everything, even about things she wants."
-{n}And then, with a sly little smile:{/n} "Don't let her minute me out of your evenings, though. She'd try. She'd do it very politely, with a motion."''',
+    ch("side", '''{n}The bracelet stops turning. She looks at you for a while, and the look is not jealous, and not anything else you can put a name to either.{/n}
+"That isn't a cookie question." {n}Quietly.{/n} "That's a whole-parcel question, and I haven't baked it. Don't ask it at this table while there's a war eating everybody's evenings. I'll know what I think when there's time to think it. So will she."
+{n}And then, a little too brightly:{/n} "Anyway, she'd minute it. With a motion. Probably against."''',
       c("Continue", "close")),
     ch("close", '''"Two patrons. Debate and serendipity." {n}She pops a cookie into her mouth.{/n} "Between us we've got the whole Council covered. She makes sure it's true, and I make sure it's lucky. Somebody else can worry about whether it works."''',
       c("[Leave her smiling.]")),

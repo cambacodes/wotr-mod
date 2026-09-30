@@ -325,7 +325,7 @@ wager(KNUCKLEBONES, "Knucklebones", '"You brought dice?"', [
     nar("open", '''{n}Five small bones, yellowed and smooth, lie in a row on the Council table. Beside them, a cup of dark wood with a sun carved on the bottom, and a heap of cookies divided with great precision into two piles.{/n}''',
         c("Continue", "start")),
     ch("start", '''"Elysian knucklebones!" {n}She is bouncing, very slightly, in her chair.{/n} "You throw them, and you count the ones that land on their backs, and whoever has more wins a cookie. That's all. It's the silliest game in the multiverse. I love it more than anything."
-"I sent you good thoughts and positive vibrations the whole time you were in the Abyss last week. Now we find out if they worked." {n}She pushes the cup across.{/n} "You first. Don't do anything clever."''',
+"I've sent you good thoughts and positive vibrations every single time you rode out of Drezen. Now we find out if they worked." {n}She pushes the cup across.{/n} "You first. Don't do anything clever."''',
       c("[Throw them honestly.]", "honest"),
       c("[Trickster] [Load the throw. Openly, grinning, so she sees.]", "open_cheat"),
       c("[Trickster] [Load the throw so smoothly that nobody could see.]", "smooth", flags=(CHEATED_SMOOTHLY,))),
@@ -471,7 +471,7 @@ wager(REAL_WAGER, "The real wager", '"You wanted to make a proper bet?"', [
       c("[Go, and come back.]")),
     ch("not_tonight", '''"Then not tonight." {n}She nods, as if this too were fair.{/n}
 "The coin will keep standing. It's very patient. So am I, mostly." {n}She looks at the flower on the table, and leaves it there.{/n} "Come back when you'll bet."''',
-      c("[Go.]")),
+      c("[Go.]", abort=True)),
 ], requires=(GLOOMY, WOUND), forbids=(REAL_WAGER, COMMITTED), delay=24)
 
 
@@ -501,6 +501,7 @@ EPILOGUE_PARAGRAPHS = [
     (GUESSED, "{n}The recipe was never written down. The Commander was the only mortal who knew what the spice was, and never told, and grew very tired of being asked.{/n}"),
     (PRAYER_ANSWERED, "{n}A crossbowman who had scratched a prayer inside her helmet named her first child Chadali. The child grew up lucky at cards and could not be persuaded that this was not a coincidence.{/n}"),
     (COBBLE_MENDED, "{n}Every year a grey feather arrived at the Commander's door with no note. Chadali said it was from Cobblehoof, and that it meant thank you, and that he would never admit it.{/n}"),
+    # She later lifted the curse herself (chadali.sessions.the_old_fellow_again): then only the sessions' restored-luck paragraph shows.
     (COBBLE_CURSED, "{n}Cobblehoof's luck never came back. He said nothing about it, ever, to anyone. Chadali sent him cookies every year, and every year he sent them back, and every year she cried a little, and baked again.{/n}"),
     (TOLD_BRICK, "{n}On the anniversary of the fall of Kenabres she left a spoonful of honey on a cracked saucer on the windowsill, and the Commander never asked, and never moved it.{/n}"),
     (DICE_DENIED, "{n}She never again played knucklebones with the Commander. She never said why. Once, years later, she said \"Lucky you\" at a dice table, and the Commander heard it, and understood, and it was far too late to say anything.{/n}"),
@@ -519,4 +520,6 @@ def integrate(payload):
         payload["SeenCues"][key] = list(cues)
     by_id = {s["Id"]: s for s in payload["Scenes"]}
     page = by_id["chadali.trickster.epilogue.lucky_night"]["Nodes"][0]
-    page.setdefault("Paragraphs", []).extend(p(text, requires=(flag,)) for flag, text in EPILOGUE_PARAGRAPHS)
+    page.setdefault("Paragraphs", []).extend(
+        p(text, requires=(flag,), forbids=(("chadali.sessions.cobblehoof_freed_by_her",) if flag == COBBLE_CURSED else ()))
+        for flag, text in EPILOGUE_PARAGRAPHS)
