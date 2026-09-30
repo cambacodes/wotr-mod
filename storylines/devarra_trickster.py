@@ -233,7 +233,7 @@ letter(P + "dead.woken", "The hide splits", [
        c("Continue", "mother")),
     dv("threat", '''"You. The little parasite who told a room full of stone a story about me while I was still warm." {n}The new hide over the old wound is paler than the rest, a grey seam.{/n} "I was not quite gone. I heard every word, and then I heard the stone keep the saws off me for three days. A story buys a life from me, crusader, if it is good enough. It was. The life is yours. I pay what I charge, even dead."''',
        c("Continue", "mother")),
-    dv("mother", '''"I died a dragon and I got up a dragon. That is what my kind does when a fool leaves the body whole, and no fool ever has. You did, on a guess, with other people's money." {n}Her eye does not move from you.{/n} "The new hide is mine. The terms are yours: you paid for them before you knew whether there would be anyone to collect. I did not ask for either, and I will not thank you for them."''',
+    dv("mother", '''"I died a dragon and I got up a dragon. The new hide was growing under the old; it has done that all my life, a little at a time, and I have shed six. Whether it would finish in a dead thing, I did not know. Nobody knew. You guessed, with other people's money, and you had no right to be that lucky." {n}Her eye does not move from you.{/n} "The hide is mine. The terms are yours: you paid for them before you knew whether there would be anyone to collect. I did not ask for either, and I will not thank you for them."''',
        c("Continue", "failed", requires=(FAILED,)),
        c("Continue", "which_eggs", forbids=(FAILED,))),
     dv("failed", '''"Your little tricks have stopped working, I hear. My body never needed them, and my tariff has not."''',

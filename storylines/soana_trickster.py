@@ -159,7 +159,7 @@ SCENES.append(scene("soana.trickster.killed.knot", "The knot never checked", "So
     nar("spirit", """{n}Orso lies where he fell: a grey pelt stretched over bones. The brand is still on the pelt, darker than a dead thing's brand has any right to be, and the grass around the carcass has gone black in the shape of a knot. Something still lies in those bones: the spirit she bound, still bound, still alive after its fashion.{/n}""",
         c("Continue", "read")),
     nar("read", """{n}You remember what she told you, with her arms folded over her chest: she used the medallion to control a spirit of the Abyss after linking it to the sacred bear, and she forced the spirit to serve good by linking our lives together.{/n}
-{n}*Our* lives. She may have meant the bear's and the spirit's. She may have meant her own. Shamans are careless with pronouns and careful with knots, and the brand has not faded, though the woman who tied it is dead. Something is still holding the other end.{/n}
+{n}*Our* lives. She may have meant the bear's and the spirit's. She may have meant her own. The woman who tied the knot is dead, and the brand has not faded. When you put two fingers to it, it tugs back once, like a line with a fish on it, and then goes still and waits.{/n}
 {n}It is a guess. It is the kind of guess a Trickster makes for a living: that the knot is bigger than she said, and that whatever is on the far end of it can be bargained with.{/n}""",
         c('[Hold her clay medallion to the guardian\'s brand and bargain with what holds the other end] "Whatever you are: give her back, and pull on me instead."',
           "wake_clay", mythic="Trickster", alignment=("Chaotic", 1), requires=("soana.medallion_held",), remove_item=MEDALLION,
@@ -327,7 +327,8 @@ inline("soana.trickster.missed.late_luck", "Crooked luck, thrown late", 5,
     TricksterDevice=True, TricksterState="missed", EntryMythic="PlayerIsTrickster")
 
 inline("soana.trickster.missed.she_bear", "The she-bear", 5, '"How is your she-bear?"', [
-    n("start", "Soana", '''{n}Soana is sitting on a stump outside the cave with the she-bear's great head in her lap. Someone has sewn the bear's belly shut with sinew, badly; judging by the old woman's fingers, it was the old woman.{/n}
+    n("start", "Soana", '''{n}On the road up, your horse throws a shoe it was fitted with two days ago, and the dispatch that should have been waiting for you at the Wintersun camp has gone to Kenabres instead. You have stopped being surprised by that kind of thing.{/n}
+{n}Soana is sitting on a stump outside the cave with the she-bear's great head in her lap. Someone has sewn the bear's belly shut with sinew, badly; judging by the old woman's fingers, it was the old woman.{/n}
 "She went out again last night. She came back with a demon's hand in her mouth. The hand was still trying to get away."
 {n}She scratches the bear behind one ear. The bear sighs like a bellows.{/n}''', c("Continue", "question")),
     n("question", "Soana", '''"Your luck keeps her standing. My spirits keep her walking. Neither of us asked her. So I will ask you instead, since you are the one with the dice."

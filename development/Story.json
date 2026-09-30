@@ -168939,7 +168939,7 @@
         {
           "Id": "read",
           "Speaker": "Narrator",
-          "Text": "{n}You remember what she told you, with her arms folded over her chest: she used the medallion to control a spirit of the Abyss after linking it to the sacred bear, and she forced the spirit to serve good by linking our lives together.{/n}\n{n}*Our* lives. She may have meant the bear's and the spirit's. She may have meant her own. Shamans are careless with pronouns and careful with knots, and the brand has not faded, though the woman who tied it is dead. Something is still holding the other end.{/n}\n{n}It is a guess. It is the kind of guess a Trickster makes for a living: that the knot is bigger than she said, and that whatever is on the far end of it can be bargained with.{/n}",
+          "Text": "{n}You remember what she told you, with her arms folded over her chest: she used the medallion to control a spirit of the Abyss after linking it to the sacred bear, and she forced the spirit to serve good by linking our lives together.{/n}\n{n}*Our* lives. She may have meant the bear's and the spirit's. She may have meant her own. The woman who tied the knot is dead, and the brand has not faded. When you put two fingers to it, it tugs back once, like a line with a fish on it, and then goes still and waits.{/n}\n{n}It is a guess. It is the kind of guess a Trickster makes for a living: that the knot is bigger than she said, and that whatever is on the far end of it can be bargained with.{/n}",
           "Choices": [
             {
               "Text": "[Hold her clay medallion to the guardian's brand and bargain with what holds the other end] \"Whatever you are: give her back, and pull on me instead.\"",
@@ -170005,7 +170005,7 @@
         {
           "Id": "start",
           "Speaker": "Soana",
-          "Text": "{n}Soana is sitting on a stump outside the cave with the she-bear's great head in her lap. Someone has sewn the bear's belly shut with sinew, badly; judging by the old woman's fingers, it was the old woman.{/n}\n\"She went out again last night. She came back with a demon's hand in her mouth. The hand was still trying to get away.\"\n{n}She scratches the bear behind one ear. The bear sighs like a bellows.{/n}",
+          "Text": "{n}On the road up, your horse throws a shoe it was fitted with two days ago, and the dispatch that should have been waiting for you at the Wintersun camp has gone to Kenabres instead. You have stopped being surprised by that kind of thing.{/n}\n{n}Soana is sitting on a stump outside the cave with the she-bear's great head in her lap. Someone has sewn the bear's belly shut with sinew, badly; judging by the old woman's fingers, it was the old woman.{/n}\n\"She went out again last night. She came back with a demon's hand in her mouth. The hand was still trying to get away.\"\n{n}She scratches the bear behind one ear. The bear sighs like a bellows.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -176138,7 +176138,7 @@
         {
           "Id": "bier",
           "Speaker": "Narrator",
-          "Text": "{n}The chaplain of the Drezen chapel stands over the bier with a bowl of diamond dust that is not full, and a rite he cannot finish with it.{/n}\n\"Before she stands trial, Commander. A soul that has stood its trial cannot be raised, and nobody on this side of the Boneyard can tell you how long a soul waits before the Lady tries it. An hour. A week. I have never dared find out. Tonight, if the rite can be paid for tonight.\"\n{n}Seelah's purse lies beside her, its strings tied neatly by somebody who did not know her. She always tied them badly, so she could get them open fast.{/n}",
+          "Text": "{n}The chaplain of the Drezen chapel stands over the bier with a bowl of diamond dust that is not full, and a rite he cannot finish with it.{/n}\n\"Before she stands trial, Commander. A soul that has stood its trial cannot be raised, and nobody on this side of the Boneyard can tell you how long a soul waits before the Lady tries it. An hour. A week. I have never dared find out, and I would not make her wait to learn it.\"\n{n}Seelah's purse lies beside her, its strings tied neatly by somebody who did not know her. She always tied them badly, so she could get them open fast.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -176198,7 +176198,7 @@
         {
           "Id": "coin",
           "Speaker": "Narrator",
-          "Text": "{n}Her savings go into the chaplain's bowl coin by coin: coppers, a few silver, one gold piece she must have been keeping for something. It is not enough. It was never going to be enough. The rite wants five thousand gold in diamond dust, and a stone from your own coat would not cover a quarter of what is missing.{/n}\n{n}At the bottom of the purse is a square of paper folded very small. It is a list, in her hand, of every theft she can remember. Most lines are crossed out, each with a sum beside it and the word \"paid\". The first line is not: \"A mithral helm. Acemi.\" There is no sum beside it.{/n}\n{n}The last line is fresh ink: \"The relic-seller under the chapel steps. Sells 'saints' tears' to pilgrims. They are the Kenabres reliquary diamonds; I would know them anywhere, I used to steal the candles off those altars. Not mine to take back. I am a paladin now. Tell Irabeth.\"{/n}",
+          "Text": "{n}Her savings go into the chaplain's bowl coin by coin: coppers, a few silver, one gold piece she must have been keeping for something. It is not enough. It was never going to be enough. The rite wants five thousand gold in diamond dust, and a stone from your own coat would not cover a quarter of what is missing.{/n}\n{n}At the bottom of the purse is a square of paper folded very small. It is a list, in her hand, of every theft she can remember. Most lines are crossed out, each with a sum beside it and the word \"paid\". The first line is not: \"A mithral helm. Acemi.\" There is no sum beside it.{/n}\n{n}The last line is newer than the rest, the ink hardly a week old; she must have found him since she came to Drezen: \"The relic-seller under the chapel steps. Sells 'saints' tears' to pilgrims. They are the Kenabres reliquary diamonds; I would know them anywhere, I used to steal the candles off those altars. Not mine to take back. I am a paladin now. Tell Irabeth.\"{/n}",
           "Choices": [
             {
               "Text": "[Pick the dead thief's pocket] \"Old habits, Seelah. Whatever's in the purse is mine. Including that.\"",
@@ -176285,7 +176285,7 @@
         {
           "Id": "grabbed",
           "Speaker": "Narrator",
-          "Text": "{n}He feels it go. His hand closes on your wrist with the strings still in your fingers, and he draws breath to shout for the watch, and then he sees whose wrist it is.{/n}\n\"Commander.\" {n}He does not let go.{/n} \"Those are consecrated stones. Bought honestly.\"\n{n}You tell him, quietly, what a Kenabres reliquary looks like with its settings emptied, and whose altars they stood on, and what the Inheritor's knights do to a man who robs their dead. His hand opens.{/n}\n\"You'll pay for this.\" {n}He says it to your back. You believe him. He knows your face now, and he will tell the story to anyone who buys him a drink.{/n}",
+          "Text": "{n}He feels it go. His hand closes on your wrist with the strings still in your fingers, and he draws breath to shout for the watch, and then he sees whose wrist it is.{/n}\n\"Commander.\" {n}He does not let go.{/n} \"Those are consecrated stones. Bought honestly.\"\n{n}You tell him, quietly, what a Kenabres reliquary looks like with its settings emptied, and whose altars they stood on, and what the Inheritor's knights do to a man who robs their dead. He does not let go. He is a careful man, and he has done his sums.{/n}\n\"Then the Inheritor never hears my name. Not from you, and not from your dead paladin's little list.\" {n}His eyes go to your coat, where the paper is.{/n} \"Your word, Commander, in front of the saints. Or I shout, and we both hang.\"\n{n}You give it. His hand opens. It is the only thing you have bought tonight that you will have to keep, and it is the one line on her list she asked someone to finish: Tell Irabeth. He knows your face now, and he will tell the story to anyone who buys him a drink, everywhere but the Inheritor's door.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -176543,7 +176543,7 @@
         {
           "Id": "purse",
           "Speaker": "Narrator",
-          "Text": "{n}At the bottom of the purse is a square of paper folded very small: a list, in her hand, of every theft she can remember, most of them crossed out and marked \"paid\". The first line is not: \"A mithral helm. Acemi.\"{/n}\n{n}The last line is fresh ink: \"The relic-seller under the chapel steps. Sells 'saints' tears' to pilgrims. They are the Kenabres reliquary diamonds; I would know them anywhere, I used to steal the candles off those altars. Not mine to take back. I am a paladin now. Tell Irabeth.\"{/n}\n{n}The chaplain at the border hospital has written too. He has a bowl and nothing to put in it, and one rule: a soul that has stood its trial cannot be raised. Nobody can say how long a soul waits before the Lady tries it, he writes; he has never dared find out. A fast rider reaches him in two days.{/n}",
+          "Text": "{n}At the bottom of the purse is a square of paper folded very small: a list, in her hand, of every theft she can remember, most of them crossed out and marked \"paid\". The first line is not: \"A mithral helm. Acemi.\"{/n}\n{n}The last line is newer than the rest, the ink hardly a week old; she must have found him since she came to Drezen: \"The relic-seller under the chapel steps. Sells 'saints' tears' to pilgrims. They are the Kenabres reliquary diamonds; I would know them anywhere, I used to steal the candles off those altars. Not mine to take back. I am a paladin now. Tell Irabeth.\"{/n}\n{n}The chaplain at the border hospital has written too. He has a bowl and nothing to put in it, and one rule: a soul that has stood its trial cannot be raised. Nobody can say how long a soul waits before the Lady tries it, he writes; he has never dared find out. A fast rider reaches him in two days.{/n}",
           "Choices": [
             {
               "Text": "[Pick the dead thief's pocket] \"Old habits, Seelah. Whatever's in the purse is mine. Including that.\"",
@@ -176675,7 +176675,7 @@
         {
           "Id": "grabbed",
           "Speaker": "Narrator",
-          "Text": "{n}He feels it go. His hand closes on your wrist with the strings still in your fingers, and he draws breath to shout for the watch, and then he sees whose wrist it is.{/n}\n\"Commander.\" {n}He does not let go.{/n} \"Those are consecrated stones. Bought honestly.\"\n{n}You tell him, quietly, what a Kenabres reliquary looks like with its settings emptied, and whose altars they stood on, and what the Inheritor's knights do to a man who robs their dead. His hand opens.{/n}\n\"You'll pay for this.\" {n}He says it to your back. You believe him. He knows your face now, and he will tell the story to anyone who buys him a drink.{/n}",
+          "Text": "{n}He feels it go. His hand closes on your wrist with the strings still in your fingers, and he draws breath to shout for the watch, and then he sees whose wrist it is.{/n}\n\"Commander.\" {n}He does not let go.{/n} \"Those are consecrated stones. Bought honestly.\"\n{n}You tell him, quietly, what a Kenabres reliquary looks like with its settings emptied, and whose altars they stood on, and what the Inheritor's knights do to a man who robs their dead. He does not let go. He is a careful man, and he has done his sums.{/n}\n\"Then the Inheritor never hears my name. Not from you, and not from your dead paladin's little list.\" {n}His eyes go to your coat, where the paper is.{/n} \"Your word, Commander, in front of the saints. Or I shout, and we both hang.\"\n{n}You give it. His hand opens. It is the only thing you have bought tonight that you will have to keep, and it is the one line on her list she asked someone to finish: Tell Irabeth. He knows your face now, and he will tell the story to anyone who buys him a drink, everywhere but the Inheritor's door.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -176707,7 +176707,7 @@
         {
           "Id": "rider",
           "Speaker": "Narrator",
-          "Text": "{n}You send the rider south with her savings and the relic-seller's stones, and leave a diamond of your own on his plank, so that he has nothing left to complain of but his pride. You keep the list.{/n}\n{n}Four days later a note comes back in the chaplain's hand: \"She sat up and asked who had been in her purse. I told her, and I showed her a stone with gilt on it. She said a word I will not write. She will come to Drezen when she can walk that far.\"{/n}",
+          "Text": "{n}You send the rider south with her savings and the relic-seller's stones, and leave a diamond of your own on his plank, so that he has nothing left to complain of but his pride. He pockets it without a word. By morning the stall under the chapel steps is boarded up, and he has gone out by the east gate. You keep the list.{/n}\n{n}Four days later a note comes back in the chaplain's hand: \"She sat up and asked who had been in her purse. I told her, and I showed her a stone with gilt on it. She said a word I will not write. She will come to Drezen when she can walk that far.\"{/n}",
           "Choices": [
             {
               "Text": "\"Tell her I'll be at Fye's.\"",
@@ -177600,7 +177600,7 @@
     },
     {
       "Id": "seelah.trickster.dismissed.second_ask",
-      "Title": "My price",
+      "Title": "Her way",
       "Owner": "Seelah",
       "MinChapter": 3,
       "MaxChapter": 5,
@@ -177609,7 +177609,7 @@
         {
           "Id": "price",
           "Speaker": "Seelah",
-          "Text": "\"Better. All right.\" She stands and comes round the table. \"Here's my price. You stand still, and I rob you. I take whatever I want out of your coat, and you don't get to know what until I'm gone.\"\n{n}She stops close enough that you can smell the tavern smoke in her hair.{/n}\n\"That's fair. That's the fairest thing that's happened between us.\"",
+          "Text": "{n}She walked out of Fye's the night you first asked, on her own feet, and took the Sarkorian road. Four days later she walked back in the same way, and nobody sent for her. She is at the table by the door when you come in, and she does not pretend to be surprised.{/n}\n\"Better. All right.\" She stands and comes round the table. \"Here's how it goes. You stand still, and I rob you. I take whatever I want out of your coat, and you don't get to know what until I'm gone.\"\n{n}She stops close enough that you can smell the tavern smoke in her hair.{/n}\n\"That's fair. That's the fairest thing that's happened between us.\"",
           "Choices": [
             {
               "Text": "[Let her pick your pocket] \"Go on. Take it back. Whatever you like.\"",
@@ -178123,7 +178123,7 @@
         {
           "Id": "start",
           "Speaker": "Irabeth",
-          "Text": "{n}Irabeth puts down her pen, which is how you know she means it.{/n}\n\"You robbed a paladin's corpse, Commander. She got up. And she swore in my hearing, in the chapel, to rob you back for it.\"\n{n}She picks the pen up again.{/n}\n\"A relic-seller from under the chapel steps has asked to see me twice this week. He won't say what about. That tells me what about. I'm going to pray about this. Then I'm going to buy her a drink and pray about that.\"",
+          "Text": "{n}Irabeth puts down her pen, which is how you know she means it.{/n}\n\"You robbed a paladin's corpse, Commander. She got up. And she swore in my hearing, in the chapel, to rob you back for it.\"\n{n}She picks the pen up again.{/n}\n\"A relic-seller from under the chapel steps boarded up his stall this week and left by the east gate in a hurry. Seelah asked me why. I told her I didn't know. I'm asking you, and I can see you're not going to tell me. I'm going to pray about this. Then I'm going to buy her a drink and pray about that.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -254348,7 +254348,7 @@
         {
           "Id": "mother",
           "Speaker": "Devarra",
-          "Text": "\"I died a dragon and I got up a dragon. That is what my kind does when a fool leaves the body whole, and no fool ever has. You did, on a guess, with other people's money.\" {n}Her eye does not move from you.{/n} \"The new hide is mine. The terms are yours: you paid for them before you knew whether there would be anyone to collect. I did not ask for either, and I will not thank you for them.\"",
+          "Text": "\"I died a dragon and I got up a dragon. The new hide was growing under the old; it has done that all my life, a little at a time, and I have shed six. Whether it would finish in a dead thing, I did not know. Nobody knew. You guessed, with other people's money, and you had no right to be that lucky.\" {n}Her eye does not move from you.{/n} \"The hide is mine. The terms are yours: you paid for them before you knew whether there would be anyone to collect. I did not ask for either, and I will not thank you for them.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -255947,7 +255947,7 @@
         {
           "Id": "same",
           "Speaker": "conversant",
-          "Text": "\"The dragon who held me in the lair would have eaten you for the story you told about her. That dragon is lying in pieces on a floor somewhere, emptied out like a glove.\" {n}He considers.{/n} \"What came out of the glove listens more. She stopped outside the east gate last night and listened to the city for an hour. I have never heard her listen to anything that was not a story. I think she was counting the children.\"",
+          "Text": "\"The dragon who held me in the lair would have eaten you for the story you told about her. That dragon is lying in pieces on a floor somewhere, emptied out like a glove.\" {n}He considers.{/n} \"What came out of the glove listens more. She stopped outside the east gate last night and listened to the city for an hour. I have never heard her listen to anything that was not a story. I cannot tell you what she was counting. I did not ask. I would rather she told me than I guessed.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -261524,7 +261524,7 @@
         {
           "Id": "ask_her",
           "Speaker": "Devarra",
-          "Text": "\"Nobody has ever been given anything from my hoard.\" {n}She lays her head down beside the heap of gold.{/n} \"Taken, yes. Every coin there was taken. That one was given. It is the only one in the world.\" {n}Her eye closes.{/n} \"Do not spend it. I will know.\"",
+          "Text": "\"Nobody has ever been given anything from my hoard.\" {n}She lays her head down beside the heap of gold.{/n} \"Taken, yes. Every coin there was taken. That one was given. It is the only one in the world.\" {n}Her eye closes.{/n} \"Do not spend it. I will know. And one day I will ask for something out of your hoard, crusader, and before you answer you will remember that coin.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -261637,7 +261637,7 @@
         {
           "Id": "small",
           "Speaker": "Devarra",
-          "Text": "\"A bird.\" {n}She sounds pleased.{/n} \"A crow, from the gorge where I died. It was the only thing that came near the carcass in three days. I ate it the first morning I was alive again, because it had been waiting to eat me.\" {n}Her lip lifts.{/n} \"I kept the bones to remind me that everything waits for everything else to die. Even the little things. Especially the little things.\"",
+          "Text": "\"A bird.\" {n}She sounds pleased.{/n} \"A crow, from where I died. It sat by the carcass all three days, and it was the only thing your guards did not trouble to chase off. I ate it the first morning I was alive again, because it had been waiting to eat me.\" {n}Her lip lifts.{/n} \"I kept the bones to remind me that everything waits for everything else to die. Even the little things. Especially the little things.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -364378,8 +364378,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
