@@ -31,7 +31,8 @@ DECLINED = "jerribeth.trickster.declined"
 MET_BY_TOAST = "jerribeth.trickster.met_by_toast"
 TENANT = "jerribeth.trickster.cost.tenant"
 LATE = "jerribeth.trickster.cost.late"
-HOST = "jerribeth.trickster.cost.host"
+HOST = "jerribeth.trickster.cost.host"               # the host taken (his body is hers)
+HOST_PROMISED = "jerribeth.trickster.host_promised"  # the host promised at the Nexus, taken later in Drezen
 LODGER = "jerribeth.trickster.cost.lodger"
 STATUE = "jerribeth.trickster.body.statue"
 LOCUST = "jerribeth.trickster.body.locust"
@@ -73,7 +74,10 @@ SELECTED_ANSWERS = {
     "jerribeth.trickster.attack_bored": "807cc780b4bdcbe49a69aa179576857d",    # Greetings/Answer_0008 [Attack] "You're boring me"
     "jerribeth.trickster.attack_refused": "0149f56290ac8d540a83ec5e92f10c51",  # Greetings/Answer_0016 [Attack] "...Die!"
 }
-DERIVED = {KILLED: [[key] for key in SELECTED_ANSWERS]}
+SHORT_FAREWELL = "jerribeth.trickster.short_farewell"  # a Trickster short promise, settled: the farewell letter may come
+DERIVED = {KILLED: [[key] for key in SELECTED_ANSWERS],
+           SHORT_FAREWELL: [["trickster.ever", "jerribeth.short_future_chosen", "jerribeth.future_settled"]]}
+FATE_TERMS = "jerribeth.fate_terms"
 PERMANENT = (DEAD,)   # JER-11: a completed JerribethDead still counts as her death
 
 
@@ -184,47 +188,76 @@ TENANT_VARIANTS = [
     ("v_insulted", (INSULTED,), _variant("v_insulted", '''"And I told you I would remember. I am, as it happens, *inside* the remembering."''')),
     ("v_failed", ("trickster.failed",), _variant("v_failed", '''"Your little power is gone, I notice. The trick went out of you like air out of a bladder. My lease did not."''')),
 ]
-_TENANT_ENTRY, _TENANT_NODES = ladder(TENANT_VARIANTS, "house")
-
-SCENES.append(scene("jerribeth.trickster.dead.tenant", "The tenant", "Jerribeth", 3, "", [
-    nar("start", '''{n}Near dawn a thought arrives that is not yours. It is neat, it is patient, and it is counting.{/n}''',
-      c("Continue", "tenant")),
-    j("tenant", '''"Commander. You told me I could plant whatever I liked, and that you would charge rent. I planted. You charged."
+_TENANT_START = '''{n}Near dawn a thought arrives that is not yours. It is neat, it is patient, and it is counting.{/n}'''
+_TENANT_CLAIM = '''"Commander. You told me I could plant whatever I liked, and that you would charge rent. I planted. You charged."
 {n}The voice is exactly where it was in the Sanctum: behind your eyes, a little to the left.{/n}
 "When the sword went through me, the seed began to die, as my children do when I do. Then it found what my Wintersun ideas found: a house that had agreed to keep it. You gave it a room, and it paid its rent every month, the way I set it: one of your memories, taken and kept. A house that has been paid is a house that holds."
 {n}Laughter buzzes behind your eyes, high and abrasive.{/n}
-"I am in arrears. You are haunted. Which of us minds more, do you think?"''', *_TENANT_ENTRY),
-    *_TENANT_NODES,
-    j("house", '''"Do not make that face. You cannot see it; I can."
+"I am in arrears. You are haunted. Which of us minds more, do you think?"'''
+_HOUSE = '''"Do not make that face. You cannot see it; I can."
 {n}Something turns over in your memory, idly, the way a guest turns over the ornaments on a shelf.{/n}
-"A seed needs somewhere to grow, and I will not spend my second life as an itch. Choose where I live, or I will choose. I have already walked through your memories, and I know which of your officers sleeps soundly."''',
-      c('"The Lady of the Sun statue. You always liked being worshipped."', "statue_done", crusade=("Favors", -100),
-        flags=(RETURNED, TENANT, "jerribeth.started", STATUE)),
-      c('"One of Xanthir\'s locusts. You pinned them for a reason."', "locust_done", crusade=("Materials", -100),
-        flags=(RETURNED, TENANT, "jerribeth.started", LOCUST)),
-      c('[Give her a host] "Take a deserter from the stockade. Nobody will miss him."', "host_done", alignment=("Evil", 2),
-        flags=(RETURNED, TENANT, "jerribeth.started", HOST)),
-      c('"Stay where you are. Rent\'s due on the first of the month."', "lodger_done", alignment=("Chaotic", 1),
-        flags=(RETURNED, TENANT, "jerribeth.started", LODGER)),
-      c('"Not tonight."', abort=True)),
-    # CAN (Sol): the vessels are on Golarion, and this letter may be read at the Nexus. The order is written now and
-    # carried to Drezen by the first hand going there, or by the Commander; she waits behind the eye until it is done.
-    nar("statue_done", '''{n}You write the order before you sleep again and seal it for the quartermasters in Drezen: one Wintersun idol of the Lady of the Sun, carted down from the village that carved it, paid for in favours. It goes to Drezen by the first hand going that way, and if no hand is, it goes with you. The chaplains will want a favour for the room it takes up, and a second favour for the prayers they will have to say around it.{/n}
-{n}Until it stands in your quarters she stays where she is, behind your left eye, complaining about the furniture. She tells you, with relish, what you will find when you get there: a gilt face, a head taller than the carters who unload it, that turns at night, very slightly, toward your window.{/n}''',
-      c('"Goodnight, my lady."')),
-    nar("locust_done", '''{n}You write a second order for the quartermasters in Drezen: a salvage team, when one can be spared, back into the Ivory Sanctum for her pinning case, and timber to shore the stairs they will curse. The materials come out of the crusade's stores. The order goes to Drezen by the first hand going that way, and if no hand is, it goes with you.{/n}
-{n}She waits behind your left eye until the case is on your desk, and she describes, at length, what will happen then: one needle pulled, and a locust under a glass cleaning its face with its forelegs, slowly and very thoroughly, keeping every one of its eyes on you.{/n}''',
-      c('"Mind the papers."')),
+"A seed needs somewhere to grow, and I will not spend my second life as an itch. Choose where I live, or I will choose. I have already walked through your memories, and I know which of your officers sleeps soundly."'''
+_LODGER_DONE = '''{n}On the first night of the month you laugh at nothing, high and abrasive, and the aide bringing your dispatches drops one of them.{/n}
+{n}In the morning you cannot remember the name of your first horse. You look for it, the way you would feel for a missing tooth, and find only a neat, swept space where it used to be.{/n}'''
+
+
+def _tenant_scene(id, host_flag, statue_text, locust_text, host_node, chapters, areas):
+    entry, nodes = ladder(TENANT_VARIANTS, "house")
+    return scene(id, "The tenant", "Jerribeth", min(chapters), "", [
+        nar("start", _TENANT_START, c("Continue", "tenant")),
+        j("tenant", _TENANT_CLAIM, *entry),
+        *nodes,
+        j("house", _HOUSE,
+          c('"The Lady of the Sun statue. You always liked being worshipped."', "statue_done", crusade=("Favors", -100),
+            flags=(RETURNED, TENANT, "jerribeth.started", STATUE)),
+          c('"One of Xanthir\'s locusts. You pinned them for a reason."', "locust_done", crusade=("Materials", -100),
+            flags=(RETURNED, TENANT, "jerribeth.started", LOCUST)),
+          c('[Give her a host] "Take a deserter from the stockade. Nobody will miss him."', "host_done", alignment=("Evil", 2),
+            flags=(RETURNED, TENANT, "jerribeth.started", host_flag)),
+          c('"Stay where you are. Rent\'s due on the first of the month."', "lodger_done", alignment=("Chaotic", 1),
+            flags=(RETURNED, TENANT, "jerribeth.started", LODGER)),
+          c('"Not tonight."', abort=True)),
+        nar("statue_done", statue_text, c('"Goodnight, my lady."')),
+        nar("locust_done", locust_text, c('"Mind the papers."')),
+        host_node,
+        nar("lodger_done", _LODGER_DONE, c('"Paid in full."')),
+    ], requires=("trickster.ever", PRIMED, DEAD), forbids=(RETURNED, DECLINED), delay=48, last=5, optional=True,
+       Relationship="jerribeth", Remote=True, Chapters=list(chapters), Areas=list(areas), TricksterDevice=True,
+       TricksterState="dead")
+
+
+# In Drezen (Chapters 3 and 5) the vessels are at hand: the idol is carted in, the case is fetched, the host is taken.
+SCENES.append(_tenant_scene("jerribeth.trickster.dead.tenant", HOST,
+    '''{n}Four days later a Wintersun idol of the Lady of the Sun arrives in camp under canvas, gilt and serene and a head taller than the carters who unload it. The chaplains want a favour for the room it takes up, and a second favour for the prayers they will have to say around it.{/n}
+{n}At night its gilt face turns, very slightly, toward your window.{/n}''',
+    '''{n}A salvage team goes back into the Ivory Sanctum for her pinning case and brings it out whole, cursing the stairs. One needle has been pulled.{/n}
+{n}On your desk, under a glass, a locust cleans its face with its forelegs, slowly and very thoroughly, and keeps every one of its eyes on you.{/n}''',
     j("host_done", '''"*Now* you have taste."
-{n}She will take him the first night you sleep in Drezen, and not before: a seed, she says, crosses from one head to the next only at arm's length. Until then she waits behind your left eye and tells you, in detail, what she means to do with his hands.{/n}
-{n}When that night comes, the stockade reports one prisoner fewer in the morning, and a sentry who swears the man walked out past him at the change of watch, smiling, with his hands folded behind his back like a courtier. Nobody asks the man's name. Nobody ever will.{/n}''',
-      c('"Keep him clean."')),
-    nar("lodger_done", '''{n}On the first night of the month you laugh at nothing, high and abrasive, and the aide bringing your dispatches drops one of them.{/n}
-{n}In the morning you cannot remember the name of your first horse. You look for it, the way you would feel for a missing tooth, and find only a neat, swept space where it used to be.{/n}''',
-      c('"Paid in full."')),
-], requires=("trickster.ever", PRIMED, DEAD), forbids=(RETURNED, DECLINED), delay=48, last=5, optional=True,
-   Relationship="jerribeth", Remote=True, Chapters=[3, 4, 5], Areas=[DREZEN, NEXUS], TricksterDevice=True,
-   TricksterState="dead"))
+{n}In the morning the stockade reports one prisoner fewer, and a sentry who swears the man walked out past him at the change of watch, smiling, with his hands folded behind his back like a courtier.{/n}
+{n}Nobody asks the man's name. Nobody ever will.{/n}''', c('"Keep him clean."')),
+    (3, 5), (DREZEN,)))
+
+# CAN/BEL (Sol): at the Nexus (Chapter 4) the vessels are on another plane. The idol and the case are ordered and go to
+# Drezen by the first hand going that way; the host is only promised (host_promised). She takes him in Drezen, in
+# Chapter 5, on the page (host.taken), and until then no line claims his body. Exactly one of the two tenant letters plays.
+SCENES.append(_tenant_scene("jerribeth.trickster.dead.tenant_nexus", HOST_PROMISED,
+    '''{n}You write the order before you sleep again and seal it for the quartermasters in Drezen: one Wintersun idol of the Lady of the Sun, carted down from the village that carved it, paid for in favours. It goes to Drezen by the first hand going that way, and if no hand is, it goes with you. The chaplains will want a favour for the room it takes up, and a second favour for the prayers they will have to say around it.{/n}
+{n}Until it stands in your quarters she stays where she is, behind your left eye, complaining about the furniture. She tells you, with relish, what you will find when you get there: a gilt face, a head taller than the carters who unload it, that turns at night, very slightly, toward your window.{/n}''',
+    '''{n}You write a second order for the quartermasters in Drezen: a salvage team, when one can be spared, back into the Ivory Sanctum for her pinning case, and timber to shore the stairs they will curse. The materials come out of the crusade's stores. The order goes to Drezen by the first hand going that way, and if no hand is, it goes with you.{/n}
+{n}She waits behind your left eye until the case is on your desk, and she describes, at length, what will happen then: one needle pulled, and a locust under a glass cleaning its face with its forelegs, slowly and very thoroughly, keeping every one of its eyes on you.{/n}''',
+    j("host_done", '''"*Now* you have taste. Pity he is a plane away."
+{n}She will take him the first night you sleep in Drezen, and not before: a seed, she says, crosses from one head to the next only at arm's length. Until then she waits behind your left eye and tells you, in detail, what she means to do with his hands when she has them.{/n}''', c('"Keep your hands off him until we\'re home."')),
+    (4,), (NEXUS,)))
+
+# The fulfillment of the Nexus promise, on the first Drezen rest of Chapter 5. It is her only Chapter 5 device letter on
+# this branch (the tenant letter was read in Chapter 4), inside the tier B allowance of 2.
+SCENES.append(scene("jerribeth.trickster.host.taken", "The stockade, one fewer", "Jerribeth", 5, "", [
+    nar("start", '''{n}The first night you sleep in Drezen again, you dream of a corridor you have never walked, lit by a lantern you are not carrying, and of a lock that turns for you as if it had been waiting.{/n}
+{n}In the morning the stockade reports one prisoner fewer, and a sentry who swears the man walked out past him at the change of watch, smiling, with his hands folded behind his back like a courtier. Nobody asks the man's name. Nobody ever will.{/n}
+"Warm," {n}says the voice behind your left eye, and then, for the first time since the Sanctum, it says nothing else for a whole day, because it is busy.{/n}''',
+      c('"Keep him clean."', flags=(HOST,)))],
+    requires=("trickster.ever", HOST_PROMISED), forbids=(HOST, DECLINED), delay=0, last=5, optional=True,
+    Relationship="jerribeth", Remote=True, Chapters=[5], Areas=[DREZEN]))
 
 
 # --- State never_met: the toast (F05) ------------------------------------------------------------------------------
@@ -438,6 +471,14 @@ REACTIONS = [
 "Tell me that's a coincidence. Go on. Lie to me, I'll feel better."''',
              answer_list=WOLJIF_HUB, forbids=("woljif.dead", "woljif.kicked_out", LEVY), chapter=5, last=5,
              entry='"About that toast..."'),
+    # BEL (Sol r1): the living, previously met Jerribeth who countersigned in person has a witness too. Woljif keeps the
+    # night hours; exclusive with the device reactions (no return, no toast).
+    reaction("Woljif", "jerribeth.trickster.reaction.woljif_visitor", (FORFEIT, "jerribeth.committed"),
+             '''"Chief. Something knocked on your door last night. Three knocks, all the same length, like a bailiff. The lad on your corridor says it was a lady. He's got a nosebleed, he can't tell me what her face looked like, and he's been sick twice."
+{n}He glances at your collar, then very carefully away from it.{/n}
+"And word is you've pledged her a memory. One. Her pick. Chief, I've sold plenty of things I didn't own, but I never once let the buyer choose which. When she comes for it, you give her a boring one. The weather. A queue. Promise me."''',
+             answer_list=WOLJIF_HUB, forbids=("woljif.dead", "woljif.kicked_out", RETURNED, MET_BY_TOAST), chapter=5, last=5,
+             entry='"About my visitor last night..."'),
     reaction("Woljif", "jerribeth.trickster.reaction.woljif_levy", (MET_BY_TOAST, LEVY),
              '''"Chief. You drank to a demon's loyalty in front of half the Wintersun levy, and now my ears itch."
 {n}He scratches one, hard, and looks at his fingers as if he expects something to be on them.{/n}
@@ -459,6 +500,8 @@ RETURNING = ("jerribeth.ending_together", "jerribeth.ending_ascended", "jerribet
              "jerribeth.ending_unfinished", "jerribeth.counterfeit_guest", "jerribeth.counterfeit_hinge",
              "jerribeth.counterfeit_clerk", "jerribeth.counterfeit_audience", "jerribeth.counterfeit_spoil",
              "jerribeth.counterfeit_after", "jerribeth.fate_letter")
+CH4_DEFERRED = ("jerribeth.guise", "jerribeth.price", "jerribeth.evening", "jerribeth.commission", "jerribeth.collection")
+CH4_ONLY = ("jerribeth.patron", "jerribeth.refuge")
 EXAMINE = '[Examine the charm, then deliberately invite a conversation.]'
 
 INVITATION_NODES = [
@@ -715,7 +758,26 @@ def integrate(payload):
     _gate(keep, forbids=(OFFERED,))
     short_future["Choices"].append(c(keep["Text"], "arrival", requires=(OFFERED,), forbids=(RETURNED,), flags=(*keep["Set"], FORFEIT)))
     short_future["Choices"].append(c(keep["Text"], "tenant_room", requires=(OFFERED, RETURNED), flags=(*keep["Set"], FORFEIT)))
+    # INT (Sol r1): the live-Trickster answer "Fate may object" also on the shorter negotiation, the one a fresh Trickster
+    # history reaches (the long branch needs the settlement campaign, which JER-08 closes on the path).
+    short_future["Choices"].append(c('"Fate may object. As a Trickster, I would enjoy proving it wrong."', "fate_short",
+                                     requires=("trickster",)))
+    future["Nodes"].append(j("fate_short", '''"Then find me a loophole large enough for two, and find it before the war does. I have no intention of applauding you from the wrong side of a closed door."
+{n}Her amusement is bright and eager, and a little greedy.{/n}
+"An inevitable ending discovering that somebody has read the smaller print. I would pay to watch it. Tell me before you sign anything on my behalf. I choose which impossible arrangements I enter, and this one I have already chosen."''',
+        c(keep["Text"], "arrival", requires=(OFFERED,), forbids=(RETURNED,), flags=(*keep["Set"], FORFEIT, FATE_TERMS)),
+        c(keep["Text"], "tenant_room", requires=(OFFERED, RETURNED), flags=(*keep["Set"], FORFEIT, FATE_TERMS)),
+        c(keep["Text"], "short_end", forbids=(OFFERED,), flags=(*keep["Set"], FATE_TERMS))))
     future["Nodes"].extend(IN_PERSON)
+    # INT (Sol r1): on the path the settlement campaign never opens, so the commission's last answer asks for the shorter
+    # promise itself (short_future_requested was otherwise only a manual read); off the path the answer is unchanged.
+    commission = _scene(by_id, "jerribeth.commission")
+    stay = _node(commission, "keep")["Choices"]
+    _gate(stay[0], forbids=("trickster.ever",))
+    stay.append(c('"It is beautiful. Keep it for me, for after the war, and ask me then what I will pay for it."',
+                  requires=("trickster.ever",), flags=(*stay[0]["Set"], "jerribeth.short_future_requested")))
+    farewell = _scene(by_id, "jerribeth.farewell")
+    farewell["RequiresAny"] = [*farewell["RequiresAny"], SHORT_FAREWELL]
     _scene(by_id, TRICKSTER_CAMPAIGN_ENTRY)["Forbids"].append("trickster.ever")
     for id in LATE_ENTRY_CUT:
         _scene(by_id, id)["Forbids"].append(MET_BY_TOAST)
@@ -738,6 +800,12 @@ def integrate(payload):
         s = _scene(by_id, id)
         s["Chapters"] = [4, 5]
         s["MinChapter"] = 4
+    # COX (Sol r1, ledger R2-5): at most three Jerribeth letters in Chapter 4 on any branch. The courtship's first two
+    # letters may come at the Nexus; the rest are Drezen letters (Chapters 3 and 5). Her Chapter 4 story stays Chapter 4.
+    for id in CH4_DEFERRED:
+        _scene(by_id, id)["Chapters"] = [3, 5]
+    for id in CH4_ONLY:
+        _scene(by_id, id)["Chapters"] = [4]
 
     # G6(b), the late commit, and the Trickster paragraphs on the endings that close her story.
     for id in RETURNING:

@@ -321,24 +321,26 @@ s("ordinary", "A performance she abandoned", [
       c('"I have decided you may enjoy my company without adding me to a collection."', "contest", requires=("jerribeth.contests_possession",)),
       c('"You need not perform for me tonight."', "rest")),
     n("contest", "Jerribeth", '''"How generous. I shall endeavor to resist labeling the frame."
-{n}Her amusement sharpens, then softens into something less practiced.{/n}
-"I remember the argument. I also remember that you came back after it. You need not keep proving that you could have left."''', c('"Then enjoy the fact that I am here."', "rest")),
+{n}Her amusement sharpens, and stays sharp.{/n}
+"I remember the argument. I also remember that you came back after it, which is worth more to me than the argument. You need not keep proving that you could have left. I have already priced it."''', c('"Then enjoy the fact that I am here."', "rest")),
     n("work", "Jerribeth", '''{n}She shows you a bird made of shifting light. Its wings move incorrectly, then beautifully, then incorrectly again.{/n}
 "It should be impossible and convincing. At present it is merely irritating."
-{n}When you point out the moment that worked, she makes it happen again. Her pleasure in being understood lasts longer than the illusion.{/n}''', c('"Keep that version. Leave the rest until tomorrow."', "rest")),
+{n}You point out the moment that worked. She makes it happen again, and then again, and the third time she is not watching the bird at all. She is watching your face, and counting how long you look.{/n}
+"There. Now I know what holds you, and for how many heartbeats. You should not have shown me that. I shall use it."''', c('"Keep that version. Leave the rest until tomorrow."', "rest")),
     n("rest", "Jerribeth", '''"An evening without improving anything. How extravagant."
-{n}The backgrounds disappear. Her own form remains, and she settles into the conversation without turning it into a spectacle.{/n}
-"Tell me something you have not said to anybody else today. It need not be useful."''',
+{n}The backgrounds disappear. Her own form remains, antennae tilted toward the frame the way they tilt toward something under glass.{/n}
+"Tell me something you have not said to anybody else today. It need not be useful. I shall decide later whether it is."''',
       c('"I wanted to see you like this, without wondering how much was meant to impress me."', "known", requires=("jerribeth.wants_recognition",)),
       c('"I did not expect to enjoy discovering what you are like when you stop trying to surprise me."', "surprise", requires=("jerribeth.wants_surprise",)),
       c('"I was looking forward to this conversation."', "end")),
-    n("known", "Jerribeth", '''"Most of it usually is. I have chosen an exacting audience."
-{n}A faint chitter accompanies the admission.{/n}
-"Tonight you may have the part that has run out of good ideas."''', c('"That is the part I asked for."', "end")),
-    n("surprise", "Jerribeth", '''"Then I have managed it again by accident. How economical."
-{n}She lets the joke rest without trying to improve it.{/n}''', c('[Stay with her.]', "end")),
-    n("end", "Jerribeth", '''{n}The conversation wanders. At one point she forgets to keep the imagined lamplight steady, and you discover that neither of you particularly minds.{/n}
-"Come again tomorrow," she says at last. "I might still be short of good ideas."''', c('[Keep another evening for her.]', flags=("jerribeth.at_ease",))),
+    n("known", "Jerribeth", '''"Most of it usually is. I have chosen an exacting audience, and you have just told it where you keep your soft spot."
+{n}A faint chitter accompanies the words.{/n}
+"Tonight you may have the part that has run out of good ideas. Tomorrow I shall have one, and you will not see it coming."''', c('"That is the part I asked for."', "end")),
+    n("surprise", "Jerribeth", '''"Then I have managed it again by accident. How economical. I shall have to learn to do it on purpose."
+{n}She files the joke away instead of improving it, the way she files everything.{/n}''', c('[Stay with her.]', "end")),
+    n("end", "Jerribeth", '''{n}The conversation wanders. Twice she asks a question and does not wait for the whole answer, because the first half told her what she wanted. Once she lets the imagined lamplight slip, and when you do not look away from her into the dark, she notes that as well.{/n}
+{n}Near the end she tells you, idly, the name of a clerk in your own chancery who has been selling your dispatches for a month. She has known for weeks. She tells you now, she says, because a debt you owe her is worth more than a secret you lack, and because she would rather be the one who watches him ruined.{/n}
+"Come again tomorrow," she says at last. "I might still be short of good ideas. I am never short of information."''', c('[Keep another evening for her.]', flags=("jerribeth.at_ease",))),
 ], requires=("jerribeth.future", "jerribeth.committed"), chapter=5)
 
 s("farewell", "The frame she leaves open", [
