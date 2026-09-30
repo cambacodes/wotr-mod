@@ -1,0 +1,46 @@
+{
+ "cccccccccccccccccccccccccccccccc": {
+  "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+  "PrototypeLink": null,
+  "m_Overrides": [],
+  "ShowOnce": false,
+  "ShowOnceCurrentDialog": false,
+  "Conditions": {
+   "Operation": "And",
+   "Conditions": []
+  },
+  "Experience": "NoExperience",
+  "OnShow": {
+   "Actions": []
+  },
+  "OnStop": {
+   "Actions": []
+  },
+  "AlignmentShift": {
+   "Direction": "TrueNeutral",
+   "Value": 0
+  },
+  "Answers": [
+   "!bp_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  ],
+  "Continue": {
+   "Cues": [],
+   "Strategy": "First"
+  }
+ },
+ "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa": {
+  "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+  "PrototypeLink": null,
+  "m_Overrides": [],
+  "MythicRequirement": "None",
+  "AlignmentRequirement": "None",
+  "ShowOnce": false,
+  "Conditions": {
+   "Operation": "And",
+   "Conditions": []
+  },
+  "Answers": [
+   "!bp_bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  ]
+ }
+}

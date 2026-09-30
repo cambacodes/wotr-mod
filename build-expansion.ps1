@@ -28,6 +28,9 @@ try {
     # Static gate (GLOBAL-15): structure, dead gates, TypeIds, native bindings, released-save references.
     & $pythonPath tools/rrt_verify.py --strict --quiet --story development/Story.json --game $GameDir
     if ($LASTEXITCODE) { throw 'Static verification failed (tools/rrt_verify_report.txt)' }
+    # rrt_verify sections F2 (tools/return_safety.py: the Main.cs native return contract) and E2 (tools/gate_lint.py): fixtures
+    & $pythonPath -m unittest tests.test_return_safety tests.test_gate_lint
+    if ($LASTEXITCODE) { throw 'Return safety or gate lint tests failed' }
     # Pacing lint (handoff 13 section 6): REVIEW and WARN lines are advisory; a HARD violation or a bad availability map fails.
     & $pythonPath -m unittest tests.test_pacing_lint
     if ($LASTEXITCODE) { throw 'Pacing lint tests failed' }

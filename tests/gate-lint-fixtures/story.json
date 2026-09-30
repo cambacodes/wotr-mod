@@ -1,0 +1,77 @@
+{
+ "Scenes": [
+  {
+   "Id": "a_cup",
+   "Owner": "Anevia",
+   "Nodes": []
+  },
+  {
+   "Id": "x.scene",
+   "Relationship": "x",
+   "RequiresAnyGroups": [
+    [
+     "x.one",
+     "x.two"
+    ],
+    [
+     "x.three",
+     "x.two"
+    ]
+   ],
+   "Nodes": [
+    {
+     "Id": "n",
+     "Paragraphs": [
+      {
+       "Text": "p",
+       "Requires": [
+        "x.one"
+       ],
+       "AnyGroups": [
+        [
+         "x.one",
+         "x.two"
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "Presences": {
+  "x.presence": {
+   "RequiresAnyGroups": [
+    [
+     "x.one",
+     "x.two"
+    ]
+   ]
+  }
+ },
+ "Books": {
+  "x.book": {
+   "Entries": [
+    {
+     "Id": "e1",
+     "AnyGroups": [],
+     "Lines": [
+      {
+       "Text": "l",
+       "AnyGroups": [
+        [
+         "x.one",
+         "x.two"
+        ],
+        [
+         "x.two",
+         "x.three"
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ }
+}
