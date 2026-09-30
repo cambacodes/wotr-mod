@@ -194,7 +194,7 @@ internal static class JerribethTricksterTests
         // Registered edit 1: the invitation's variants.
         var invStart = invitation.Nodes[0].Choices;
         check(invStart[0].Next == "voice" && invStart[0].Forbids.Contains(Returned) && invStart[0].Forbids.Contains(Toasted)
-              && invStart.Skip(3).Select(ch => ch.Next).SequenceEqual(new[] { "voice_tenant", "voice_toast" }),
+              && invStart.Skip(3).Select(ch => ch.Next).SequenceEqual(new[] { "voice_tenant", "voice_toast", "voice_toast_levy" }),
             "Invitation variants were not appended.");
         check(!invitation.Requires.Contains("jerribeth.met") && invitation.RequiresAny.Contains(Toasted), "Invitation gate not widened.");
 
@@ -256,7 +256,7 @@ internal static class JerribethTricksterTests
                                                                           || r == "jerribeth.offered_signature" || r == "jerribeth.fate_note_prepared"))
             .Select(s => s.Id).OrderBy(x => x).ToArray();
         check(lateLetters.SequenceEqual(new[] { "jerribeth.commission", "jerribeth.evening", "jerribeth.future",
-                                               "jerribeth.guise", "jerribeth.invitation", "jerribeth.price", "jerribeth.question" }),
+                                               "jerribeth.guise", "jerribeth.invitation", "jerribeth.price", "jerribeth.question_late" }),
             "The toasted late entry has more than the core courtship: " + string.Join(",", lateLetters));
         var fe = future.Nodes.Single(n => n.Id == "future_entry").Choices;
         check(fe[0].Next == "start" && fe[1].Next == "short_future" && fe[2].Next == "her_terms" && fe[3].Next == "her_terms_short",
@@ -537,6 +537,103 @@ internal static class JerribethTricksterTests
             check(end5.Has("jerribeth.committed") && end5.Has("jerribeth.fate_terms") && ch5Tail.Count(x => !Device(x)) <= 8
                   && (!isDead || ch5Tail.Contains("jerribeth.trickster.host.taken") && end5.Has(Host) && ch5Tail.Count(Device) <= 2),
                 "The delayed correspondence does not finish in Chapter 5 within its allowance: " + string.Join(",", ch5Tail));
+        }
+
+        // --- Sol round 2 -----------------------------------------------------------------------------------------------
+        // CAN: the late commit dates itself by Threshold, never by a Wound that may have become the Crossroads.
+        check(!Words(epCommit).Contains("Worldwound closed") && Words(epCommit).Contains("after Threshold"), "The late commit claims the Wound closed.");
+
+        // VOI: the kept hands are a challenge she prices (the scale is a loan), set up by the scale the Commander took.
+        var freeMorning = future.Nodes.Single(n => n.Id == "morning_free").Text;
+        check(!freeMorning.Contains("Nobody keeps their hands") && !freeMorning.Contains("only one I have ever given away")
+              && freeMorning.Contains("loan") && future.Nodes.Single(n => n.Id == "threshold_free").Text.Contains("comes away in your fingers"),
+            "The free-hands morning is an exceptional-lover line instead of a bargain over the scale.");
+
+        // BEL: the tenant's payoff cites the single instalment taken when the lease was signed, never months of rent.
+        foreach (var primer in new[] { greeting, final, backdated })
+            check(Words(primer).Contains("the colour of the door of the house you grew up in"), "A lease is signed without its first instalment: " + primer.Id);
+        check(Words(tenant).Contains("first rent the night you signed") && !Words(tenant).Contains("paid its rent every month")
+              && Words(tenantNexus).Contains("first rent the night you signed"), "The tenant's payoff cites rent that was never paid.");
+
+        // BEL: each toast device keeps its own carrier through the invitation and the ending.
+        const string Levy = "jerribeth.trickster.toast_levy", ToastHost = "jerribeth.trickster.cost.toast_host";
+        const string Grudge = "jerribeth.trickster.cost.toast_grudge", Interest = "jerribeth.trickster.cost.toast_interest";
+        foreach (bool levy in new[] { false, true })
+        {
+            var toastSource = levy ? toast : king;
+            var toastStart = levy ? World(story, 5, "trickster") : World(story, 5, "trickster", "fool_king.crowned");
+            var met = Program.Walk(toastSource, toastStart).Single(r => r.Has(Toasted));
+            check(met.Has(Levy) == levy, "The toast device does not record its carrier.");
+            var pagesSeen = new List<string>();
+            var invOuts = Program.Walk(invitation, Later(story, met, 24), (page, _) => pagesSeen.Add(page));
+            string carrierText = string.Join(" ", pagesSeen.Distinct().Select(pg => invitation.Nodes.Single(n => n.Id == pg).Text));
+            check(carrierText.Contains(levy ? "sergeant" : "deserter") && !carrierText.Contains(levy ? "deserter" : "sergeant")
+                  && pagesSeen.Contains(levy ? "toast_price_levy" : "toast_price") && !pagesSeen.Contains(levy ? "toast_price" : "toast_price_levy"),
+                "The toast carrier changes between the toast and the invitation (levy " + levy + ").");
+            var given = invOuts.First(r => r.Has(ToastHost) && r.Has(invitation.Id));
+            var end = World(story, 6, given.Flags.Concat(new[] { "jerribeth.committed" }).ToArray());
+            var ending = together.Nodes.First(n => n.Paragraphs.Count > 0);
+            var hostLines = Rules.VisibleParagraphs(ending, end).Where(p => p.Text.Contains("served in the Commander's household")).ToList();
+            check(hostLines.Count == 1 && hostLines[0].Text.Contains(levy ? "sergeant" : "deserter"),
+                "The ending remembers the wrong toast carrier (levy " + levy + ").");
+            // INT: the refused toast is charged to the future and collected, visibly, before any promise; refusing to pay ends it.
+            check(invOuts.Any(r => r.Has(Grudge) && !r.Has(ToastHost) && !r.Has("jerribeth.trickster.cost.toast_memory")), "The refused toast records no grudge.");
+        }
+        foreach (string branch in new[] { "jerribeth.settlement_kept", "jerribeth.short_future_requested" })
+        {
+            var w = World(story, 5, "trickster", "jerribeth.trickster.met_by_toast", "jerribeth.commission", "jerribeth.lovers", branch, Grudge);
+            var pagesSeen = new HashSet<string>();
+            var outs = Program.Walk(future, w, (page, _) => pagesSeen.Add(page));
+            check(pagesSeen.Contains(branch.EndsWith("settlement_kept") ? "grudge" : "grudge_short")
+                  && pagesSeen.Contains(branch.EndsWith("settlement_kept") ? "interest" : "interest_short"), "The toast's interest is not demanded and collected on the page.");
+            check(outs.Where(r => r.Has("jerribeth.committed")).All(r => r.Has(Interest)) && outs.Any(r => r.Has("jerribeth.committed")),
+                "A promise is accepted before the toast's interest is paid.");
+            var refusedPay = outs.Where(r => r.Has("jerribeth.closed") && !r.Has(Interest) && !r.Has("jerribeth.trickster.no_forfeit")).ToList();
+            check(refusedPay.Count > 0, "Refusing to pay the interest has no exit.");
+            var apartEnd = World(story, 6, refusedPay[0].Flags.ToArray());
+            check(Rules.Available(story, apart, apartEnd) && Visible(apart, apartEnd, "still owed it") == 1, "The unpaid toast has no consequence.");
+            var plain = Program.Copy(w); plain.Flags.Remove(Grudge);
+            var plainPages = new HashSet<string>();
+            Program.Walk(future, plain, (page, _) => plainPages.Add(page));
+            check(!plainPages.Contains("grudge") && !plainPages.Contains("grudge_short"), "She charges interest on a toast that was paid.");
+        }
+
+        // COX (Sol r2): every fresh start stays within the letter allowances. Core letters: Ch3 <= 8, Ch4 <= 3 with the
+        // device letters, Ch5 <= 8; device letters: Ch3 <= 2, Ch5 <= 2. A late (Chapter 5) start folds the ordinary evening
+        // and the farewell into the promise, and the Xanthir talk rides inside price when the Commander knows of it.
+        foreach (string kind in new[] { "met", "returned", "toasted" })
+        foreach (int startCh in new[] { 3, 4, 5 })
+        foreach (bool knows in new[] { false, true })
+        {
+            if (kind == "toasted" && startCh != 5) continue;
+            var flags = new List<string> { "trickster" };
+            if (kind != "toasted") flags.Add("jerribeth.met");
+            if (kind == "returned") flags.AddRange(new[] { Dead, Primed });
+            if (knows) flags.AddRange(new[] { "jerribeth.xanthir_known", "jerribeth.wintersun_known" });
+            var s0 = World(story, startCh, flags.ToArray());
+            if (startCh == 4) s0.Area = Nexus;
+            var counts = new Dictionary<(int, bool), int>();
+            var all = new List<string>();
+            for (int chapter = startCh; chapter <= 5; chapter++)
+            {
+                s0.Chapter = chapter;
+                s0.Area = chapter == 4 ? Nexus : Drezen;
+                var (after, got) = Deliver(s0, 60);
+                foreach (var id in got) counts[(chapter, Device(id))] = counts.TryGetValue((chapter, Device(id)), out var k) ? k + 1 : 1;
+                all.AddRange(got);
+                s0 = after;
+            }
+            int C(int ch, bool dev) => counts.TryGetValue((ch, dev), out var v) ? v : 0;
+            string label = kind + " from Ch" + startCh + (knows ? " with knowledge" : "") + ": " + string.Join(",", all);
+            check(C(3, false) <= 8 && C(5, false) <= 8 && C(4, false) + C(4, true) <= 3 && C(3, true) <= 2 && C(5, true) <= 2,
+                "A fresh start breaks a letter allowance, " + label);
+            check(s0.Has("jerribeth.committed") && s0.Has("jerribeth.fate_terms"), "A fresh start does not reach the promise, " + label);
+            check(kind == "toasted" || s0.Has("jerribeth.farewell_kept"), "A fresh start never says farewell, " + label);
+            check(!all.Contains("jerribeth.collection") && s0.Has("jerribeth.collection") == (knows && kind != "toasted"), "The Xanthir talk is a separate letter, or lost, " + label);
+            bool isLate = startCh == 5 && kind != "toasted";
+            check(s0.Has("jerribeth.late_start") == (startCh == 5 && kind == "met" || startCh == 5 && kind == "returned")
+                  && (!isLate || !all.Contains("jerribeth.ordinary") && !all.Contains("jerribeth.farewell") && s0.Has("jerribeth.ordinary")),
+                "The late start is not folded into the promise, " + label);
         }
     }
 }

@@ -1397,8 +1397,8 @@ internal static class Program
             Check(state.Has("jerribeth.fate_terms") == trickster, "Jerribeth Trickster response is unreachable on a fresh Trickster history, or leaks off it.");
             Check(!trickster || state.Has("jerribeth.trickster.cost.forfeit"), "Jerribeth's fresh Trickster contract has no forfeit.");
             // COX (ledger R2-5, Sol r1): on the path, at most three Jerribeth letters in Chapter 4; the Chapter 3 core is at most eight.
-            Check((!trickster || letters.GetValueOrDefault(4) <= 3) && letters.GetValueOrDefault(3) <= 8, "Jerribeth chapter letter limit exceeded: Ch3 "
-                  + letters.GetValueOrDefault(3) + ", Ch4 " + letters.GetValueOrDefault(4) + " (start " + start + ", Trickster " + trickster + ").");
+            Check((!trickster || letters.GetValueOrDefault(4) <= 3 && letters.GetValueOrDefault(5) <= 8) && letters.GetValueOrDefault(3) <= 8, "Jerribeth chapter letter limit exceeded: Ch3 "
+                  + letters.GetValueOrDefault(3) + ", Ch4 " + letters.GetValueOrDefault(4) + ", Ch5 " + letters.GetValueOrDefault(5) + " (start " + start + ", Trickster " + trickster + ").");
             // COX edit (Trickster spec): the refuge gates on her own evidence; the patron loss is a variant of its text. Both are
             // Chapter 4 letters, so a correspondence begun at the Nexus or later never reaches them.
             Check(state.Has("jerribeth.refuge_acknowledged") == (start == 3), "Jerribeth refuge unreachable on her own evidence, or read outside Chapter 4.");

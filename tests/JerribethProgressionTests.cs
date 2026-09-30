@@ -49,7 +49,8 @@ internal static class JerribethProgressionTests
         {
             var state = new Snapshot { Chapter = chapter, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
             state.Flags.UnionWith(new[] { "jerribeth.met", "seelah.committed", "kiana.committed", "trickster" });
-            foreach (string id in new[] { "invitation", "question", "guise", "price", "evening", "commission" })
+            // Sol r2: in Chapter 5 the second letter is the question_late twin (the Trickster late-start fold; inert off the path).
+            foreach (string id in new[] { "invitation", chapter == 5 ? "question_late" : "question", "guise", "price", "evening", "commission" })
                 state = Play(id, state, queue: true);
             return state;
         }
