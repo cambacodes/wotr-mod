@@ -497,7 +497,7 @@ EPILOGUE_PARAGRAPHS = (
 )
 
 SCENES.append(scene("nurah.trickster.epilogue.commit", "The author herself", "Epilogue", 5, "", [
-    nar("start", '''{n}A book came out of the River Kingdoms the spring after the war: the crusade from the wrong side, told by a halfling who had been a slave, a traitor and a prisoner, and who had outlived all three. It was banned in several countries, and a bounty was put on its author's head. The inquisitors never found her. They never thought to look in the Commander's house.{/n}
+    nar("start", '''{n}Two years after the Threshold a book came out of the River Kingdoms: the crusade from the wrong side, told by a halfling who had been a slave, a traitor and a prisoner, and who had outlived all three. It was banned in several countries, and a bounty was put on its author's head. The inquisitors never found her. They never thought to look in the Commander's house.{/n}
 {n}She had finished the negotiation by herself, on her own terms, with no one's name above hers. The first bound copy reached the Commander wrapped in a sheet of paper with one line on it: "Now you may read it."{/n}''',
         c("[Read it that night, cover to cover.]", "read"),
         c("[Go to her before you have read a word.]", "went")),
@@ -509,12 +509,29 @@ SCENES.append(scene("nurah.trickster.epilogue.commit", "The author herself", "Ep
 {n}"Good. I'll read you the best parts myself." She climbed onto the table, which made her the taller, opened the book one-handed at a page she had marked with a hair ribbon, and read a sentence about the Commander aloud, slowly, against the Commander's mouth. With her free hand she was already working the buckle of the Commander's belt. When it gave she let the book fall shut on the table behind her, wrapped her legs round the Commander's waist, and pulled the Commander down with her among the loose proofs.{/n}
 {n}In the morning half the proofs were ruined, creased and smeared and one of them torn clean through. She sent the whole sheaf back to the printer anyway, with a note that the author approved every correction on them, and that he was on no account to ask how they had been made.{/n}''',
         c(), paragraphs=EPILOGUE_PARAGRAPHS)],
-    requires=("trickster.ever", LATE_COMMITTED), forbids=(COMPLETE, CLOSED), last=99, Relationship="nurah"))
+    requires=("trickster.ever", LATE_COMMITTED), forbids=(COMPLETE, CLOSED, *DEATHS), last=99, Relationship="nurah",
+    ForbidOverrides={d: RETURNED for d in DEATHS}))
+
+# The in-play commitment's own page (nurah.complete; the prison cell or the in-person terms), with or without Last Call. One
+# publication date throughout: her Last Call coda also publishes two years after the Threshold.
+SCENES.append(scene("nurah.trickster.epilogue.the_margin", "Author's terms", "Epilogue", 5, "", [
+    nar("start", '''{n}Two years after the Threshold a book came out of the River Kingdoms: "To the Abyss and Back: The Crusade Through the Eyes of a Former Cultist". It was banned in several countries, and a bounty was put on its author's head. The inquisitors never found her. She was writing the sequel at the Commander's desk, in the Commander's shirt, and complaining about the light.{/n}
+{n}The author's terms she had set held to the last page: her name on the cover, and nobody's above it. She read the Commander nothing until it was bound, and then read the whole of it aloud, in bed, over four nights, stopping to argue with her own sentences.{/n}''',
+        c(), paragraphs=EPILOGUE_PARAGRAPHS + (
+            p("Her name went on the cover next to the Commander's, in the same typeface. She told everyone it had been her idea.",
+              requires=("nurah.trickster.cost.coauthor",)),
+            p("The Drezen gaol kept her cell as she left it. She came back once, with the first bound copy, and left it on the "
+              "bunk for the next prisoner.", requires=(RELEASED,), forbids=(RETURNED, RAN_OFF)),
+            p("She never went back to the River Kingdoms pedlars. She said she had outgrown crates.", requires=(RAN_OFF,)),
+        ))],
+    requires=("trickster.ever", COMPLETE), forbids=(CLOSED, *DEATHS), last=99, Relationship="nurah",
+    ForbidOverrides={d: RETURNED for d in DEATHS}))
 
 SCENES.append(scene("nurah.trickster.epilogue.refused", "No review", "Epilogue", 5, "", [
     nar("start", '''{n}The last chapter never reached Drezen. Nurah Dendiwhar, who had been owned once and meant never to be again, published it under a name nobody could trace, and anyone who asked about the Commander was told that the Commander had wanted a name above hers, and that this was the whole of the review.{/n}''',
         c(), paragraphs=EPILOGUE_PARAGRAPHS)],
-    requires=("trickster.ever", PROOFS, CLOSED), forbids=(COMPLETE,), last=99, Relationship="nurah"))
+    requires=("trickster.ever", PROOFS, CLOSED), forbids=(COMPLETE, *DEATHS), last=99, Relationship="nurah",
+    ForbidOverrides={d: RETURNED for d in DEATHS}))
 
 
 # --- Reactions (ledger 05 section 3.1: exactly Irabeth and Camellia) --------------------------------------------------

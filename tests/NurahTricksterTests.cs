@@ -289,6 +289,30 @@ internal static class NurahTricksterTests
         var refusedLate = Program.Walk(terms, deadSeen).First(r => r.Has("nurah.closed"));
         var refusedEnd = Program.Copy(refusedLate); refusedEnd.Chapter = 6; Rules.Complete(story, refusedEnd);
         check(!refusedEnd.Has("nurah.trickster.late_coda") && !refusedEnd.Has("nurah.complete"), "A refusal reaches the coda key.");
+        // Sol round 2 (TRK): proofs seen in the cell and then an execution never commit her, unless she is bought back.
+        var executedAfterProofs = World(story, 6, "trickster.ever", "nurah.trickster.released", "nurah.trickster.accepted",
+                                        "nurah.trickster.proofs_seen", "nurah.dead_drezen", "nurah.killing_mechanism");
+        var epMargin = S("nurah.trickster.epilogue.the_margin");
+        check(!executedAfterProofs.Has("nurah.trickster.late_committed") && !Rules.Available(story, epCommit, executedAfterProofs)
+              && !Rules.Available(story, epRefused, World(story, 6, "trickster.ever", "nurah.trickster.proofs_seen", "nurah.closed", "nurah.dead_drezen")),
+            "An executed Nurah is narrated alive without the bargain.");
+        var boughtBack6 = World(story, 6, "trickster.ever", "nurah.trickster.proofs_seen", "nurah.dead_drezen", "nurah.killing_mechanism",
+                                "nurah.trickster.returned");
+        check(boughtBack6.Has("nurah.trickster.late_committed") && Rules.Available(story, epCommit, boughtBack6), "The bought-back Nurah loses her page.");
+        var cell6 = World(story, 6, "trickster.ever", "nurah.prison", "nurah.trickster.released", "nurah.trickster.proofs_seen");
+        check(cell6.Has("nurah.trickster.late_committed"), "The living prisoner's late commit is lost.");
+        // Sol round 2 (INT): an in-play commitment has its own page, without Last Call; one publication date throughout.
+        foreach (var w in new[] { World(story, 6, "trickster.ever", "nurah.complete", "nurah.trickster.released", "nurah.prison"),
+                                  World(story, 6, "trickster.ever", "nurah.complete", "nurah.ran_off"),
+                                  World(story, 6, "trickster.ever", "nurah.complete", "nurah.dead_drezen", "nurah.trickster.returned") })
+            check(Rules.Available(story, epMargin, w) && !Rules.Available(story, epCommit, w) && !w.Has("trickster.lastcall.active"),
+                "A committed Nurah has no page of her own.");
+        check(!Rules.Available(story, epMargin, World(story, 6, "trickster.ever", "nurah.complete", "nurah.dead_drezen")),
+            "The committed page narrates an executed Nurah.");
+        check(epCommit.Nodes[0].Text.Contains("Two years after the Threshold", StringComparison.Ordinal)
+              && epMargin.Nodes[0].Text.Contains("Two years after the Threshold", StringComparison.Ordinal)
+              && S("nurah.lastcall.page").Nodes[0].Text.Contains("two years after Threshold", StringComparison.Ordinal),
+            "Her book has two publication dates.");
         // Ramisa's call-in: a soul paid for in gold is no debt; the story (or the duplicate bill, sold on screen) is.
         var lcCall = S("nurah.lastcall.call");
         var owed = lcCall.RequiresAnyGroups.SelectMany(g => g).ToList();

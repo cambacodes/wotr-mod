@@ -60,10 +60,10 @@ DEBTS = [
          ledger_title="The Lady in Shadow: an answer owed",
          ledger_text="A favour of her choosing, or a stalemate of kept secrets. Either way she has an interest in my continued breathing, and Nocticula is a patient creditor.",
          page_called="The Lady in Shadow did not come in person; she seldom does. A note came instead, unsigned, smelling of night-blooming flowers, and it said only that the Lady in Shadow was pleased to find her debtor still in circulation, that a living debtor is worth a great deal more than a legend, and that she expected her return on the matter in person, and soon."),
-    dict(key="ramisa", groups=[["nurah.trickster.cost.ramisa_fee"], ["nurah.trickster.cost.ramisa_audience"], ["nurah.trickster.cost.bill_in_your_name"]],
+    dict(key="ramisa", groups=[["nurah.trickster.cost.ramisa_audience"], ["nurah.trickster.cost.bill_in_your_name"]],   # gold alone owes nothing
          called_by=[called("nurah")],
          ledger_title="Ramisa Shed-Skin: the only seat",
-         ledger_text="The marilith keeps a duplicate of every bill with my name on it, and I sold her the only seat at the last night of the war. She will want her performance.",
+         ledger_text="The marilith keeps the other copy of the bill I made out in her market. Either she already owns the only seat at the last night of the war, or she will want it in exchange for that copy. She will want her performance.",
          page_called="Ramisa Shed-Skin came to collect art. She had bought the only seat at the last night of the war and had watched all of it through a mirror in her market, and now she wanted the story set down in ink, with herself in the dedication. She got the story. She asked for the flask as well, prettily, and then again with more of her arms, and did not get it."),
     dict(key="herrax", groups=[[MC + "herrax_favor"]], called_by=[called("minagho_chivarro")],
          ledger_title="Herrax: the house special",
