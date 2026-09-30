@@ -11,7 +11,7 @@ Usage:
   python rrt_verify.py --matrix ../handoffs/trickster-matrix.json   # TT-20 roster matrix: entry / commit / coexist per character
 
 Sections: A producers | B reachability per mythic world | C chapter/delay traps | D cross-route forbid matrix
-          E lints | F native GUID bindings | G runtime-risk metrics | H Trickster roster matrix | I TypeId lint
+          E lints | F native GUID bindings | F2 native return safety | G runtime-risk metrics | H Trickster roster matrix | I TypeId lint
           E9 rest budget: Trickster full-roster simulation with the E8b mailbag (default) or E8 post bags (report only;
              --delivery, --rest-cadence, --chapter-days, --bag-size, --queue-cap, --sim-natives); also run per matrix supply
              profile in --matrix mode
@@ -20,6 +20,8 @@ import argparse, collections, difflib, hashlib, importlib, json, os, re, shutil,
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+import return_safety  # noqa: E402  (F2: the Main.cs native return contract)
 # The mod root is, in order: $RRT_ROOT, the repository this script lives in (tools/..), or the default checkout.
 MOD = Path(os.environ["RRT_ROOT"]) if os.environ.get("RRT_ROOT") else (
     HERE.parent if (HERE.parent / "expansion.py").exists() else Path(r"C:\Users\Z\Documents\Projects\RanRomanceTirabade"))
@@ -1408,6 +1410,11 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
         nonexit = {g: v for g, v in tails.items() if not v.startswith("exit-ok")}
         P("  Target answer lists: %d; lists whose LAST answer is not a plain exit (Count-1 insertion assumption): %d" % (len(tails), len(nonexit)))
         for g, v in list(nonexit.items())[:15]: P("     -", g, v)
+        # F2: every inline scene's NativeReturnCue meets the Main.cs return contract (tools/return_safety.py)
+        rs_fail, rs_known = return_safety.check(model.scenes, return_safety.ZipReader(game, idx),
+                                                return_safety.load_allowlist(return_safety.ALLOWLIST))
+        R["return_safety"] = dict(failures=rs_fail, known=rs_known)
+        return_safety.report(rs_fail, rs_known, sum(1 for s in model.scenes if s["NativeReturnCue"]), P)
     else:
         R["_typeids"] = set()
 
@@ -2071,7 +2078,8 @@ def main():
     R, text = run(a.story, Path(a.game), use_zip=not a.no_zip, drafts=a.drafts, out_json=a.json, quiet=a.quiet)
     Path(a.text).write_text(text, encoding="utf-8")
     hard = len(R["validate_errors"]) + len(R["no_producer_required"]) + len(R.get("typeid", {}).get("problems", [])) \
-        + len(R.get("bindings", {}).get("failures", [])) + len(R["runtime"]["duplicate_names"]) + len(R["runtime"]["retry_dups"])         + len(R.get("released_names_removed", []))
+        + len(R.get("bindings", {}).get("failures", [])) + len(R.get("return_safety", {}).get("failures", [])) \
+        + len(R["runtime"]["duplicate_names"]) + len(R["runtime"]["retry_dups"])         + len(R.get("released_names_removed", []))
     for x in R.get("released_names_removed", [])[:20]: print("SAVE BREAK (name from a released build no longer registered):", x)
     print("\nHARD FAILURES: %d  (report: %s)" % (hard, a.text))
     if a.strict and hard: sys.exit(1)
