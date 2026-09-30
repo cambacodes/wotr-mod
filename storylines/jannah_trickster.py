@@ -192,7 +192,10 @@ def visit(id, title, nodes, requires, forbids=(), delay=24, kind="visit", chapte
                         requires=tuple(dict.fromkeys(("trickster.ever", *requires))) if "trickster" not in requires
                         else tuple(dict.fromkeys(requires)),
                         forbids=tuple(dict.fromkeys((CLOSED, GONE, *forbids))), delay=delay, last=chapter,
-                        optional=optional, Relationship=REL, Remote=True, Kind=kind, Chapters=[chapter], **extra))
+                        optional=optional, Relationship=REL, Remote=True, Kind=kind, Chapters=[chapter],
+                        # Q6 r2 (COX): her Chapter 5 visits are manual reads (her book, "choose Read"); only the letter from the
+                        # cells arrives at a rest, which keeps her inside the ledger's Chapter 5 allocation.
+                        **({"ManualOnly": True} if kind == "visit" and chapter == 5 else {}), **extra))
 
 
 # --- Killed worlds, Chapter 3: the forms at the cage (inline, before the native [Attack]). -----------------------------
@@ -324,12 +327,16 @@ meet(P + "killed.yield", "An unclaimed yield", '"The turnkey says there\'s a dea
 
 visit(P + "alive.letter", "From the last cell", [
     nar("open", '''{n}The letter is folded small and sealed with candle wax, no signet. The hand is upright and exact, every stroke finished, like someone who was taught to write by the same master who taught her to cut.{/n}''',
-        c("Continue", "joined", requires=(JOINED,)),
+        c("Continue", "joined", requires=(JOINED, CONDEMNED)),
         c("Continue", "refused", requires=(REFUSED,), forbids=(JOINED,)),
         c("Continue", "condemned", requires=(CONDEMNED,), forbids=(JOINED, REFUSED)),
         c("Continue", "prison", requires=(PRISON,), forbids=(JOINED, REFUSED, CONDEMNED)),
         c("Continue", "free", requires=(FREE,), forbids=(JOINED, REFUSED, CONDEMNED, PRISON)),
-        c("Continue", "unmet", forbids=(JOINED, REFUSED, CONDEMNED, PRISON, FREE))),
+        c("Continue", "unmet", forbids=(JOINED, REFUSED, CONDEMNED, PRISON, FREE)),
+        c("Continue", "joined_free", requires=(JOINED,), forbids=(CONDEMNED,))),
+    jan("joined_free", '''"Commander. The jeweller is dead and the souls are home. I came to you on my own feet, nobody's prisoner, and I went down that hole with Seelah because I chose to. Now it's done I've chosen again. I've asked the Condemned for a place. The sergeant said yes before I'd finished asking, which I'm choosing to take as a compliment."
+"I didn't run. Not once, all the way into that hole and out again. I'd like that written down somewhere, and you're the only one who writes things down who might believe it."''',
+        c("Continue", "wagon")),
     jan("joined", '''"Commander. The jeweller is dead and the souls are home. When I came to you in Drezen I said that if you turned me away I'd go back to the Condemned. You didn't turn me away. I'm going back anyway. The hunt's over, and a deserter who stays on only because nobody sent her back hasn't settled anything."
 "I didn't run. Not once, all the way into that hole and out again. I'd like that written down somewhere, and you're the only one who writes things down who might believe it."''',
         c("Continue", "wagon")),
@@ -345,7 +352,7 @@ visit(P + "alive.letter", "From the last cell", [
     jan("free", '''"Commander. You let me go at the Molten Scar. I went to Kenabres and tried to be nobody. It didn't take. I'm bad at being nobody; I was raised to be looked at."
 "So I came back and gave the gaol my name, and they didn't know what to do with it, so they gave me a cell."''',
         c("Continue", "wagon")),
-    jan("unmet", '''"Commander. The last you saw of me I was running north from the Houndheart camp in the rain. The vrocks had me in a cage in the Molten Scar after that. When your army cleared the Scar, the sappers who came through behind you to burn the ritual pits found the cages. Everyone else in them was dead. They thought I was too, until I asked one of them for water."
+    jan("unmet", '''"Commander. You won't know my face. I'm Jannah Aldori, of Mivon, recruit of the Eagle Watch until the night I ran from the Houndheart camp in the rain. The vrocks had me in a cage in the Molten Scar after that. I got out the way you get out of anything: the night nobody was watching the cages. Everyone else in them was dead."
 "I walked here, and gave the gaol my name, and asked for a cell. They gave me one. I think they were too surprised to argue."''',
         c("Continue", "wagon")),
     jan("wagon", '''"The Condemned wagon goes north at the ninth bell of Oathday, and I mean to be on it. I'm writing so you'll hear it from me and not from a turnkey, and not think I ran again."''',
@@ -439,7 +446,7 @@ visit(P + "alive.stories", "Blood and tale", [
 
 
 visit(P + "alive.wagon", "The ninth bell, and after", [
-    nar("open", '''{n}Twelve days after the Condemned wagon went north, the gate sergeant sends up word that one of it has come back.{/n}
+    nar("open", '''{n}Six days after the Condemned wagon went north, the gate sergeant sends up word that one of it has come back.{/n}
 {n}She comes into your quarters grey with road dust, her gambeson slit along one sleeve and sewn shut again with a Condemned surgeon's black thread.{/n}''',
         c("Continue", "old_scar", requires=(JOINED,)),
         c("Continue", "old_scar", requires=(REFUSED,), forbids=(JOINED,)),

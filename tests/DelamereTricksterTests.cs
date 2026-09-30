@@ -148,7 +148,7 @@ internal static class DelamereTricksterTests
         check(reactions.Where(r => r.Owner != "Kyado").All(r => !Rules.Available(story, r, Later(story, anyReturned, 100))
                                                            && !Rules.Available(story, r, Later(story, World(story, 3, "trickster.ever", P + "returned", P + "cost.limp", "ulbrig.in_party"), 100))),
             "A retired reactor (Ulbrig, Woljif) still speaks.");
-        check(pages.Length == 6 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
+        check(pages.Length == 7 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
         check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "second_hunt_offered" })
               && story.Derived["delamere.harem.eligible"].Length == 2 && story.Derived.ContainsKey("delamere.harem.voice.a_village_not_a_city"),
@@ -338,6 +338,19 @@ internal static class DelamereTricksterTests
             "Old Deadeye's house still tells an invented history of answered pilgrims.");
         check(dy.ManualOnly && S(P + "woken.names").ManualOnly && S(P + "woken.poachers").ManualOnly && S(P + "woken.hide").ManualOnly,
             "An optional beat is still a rest delivery.");
+        // Q6 r2 (COX): only the wakings arrive at a rest; every courtship visit is a manual read.
+        check(own.Where(s => Rules.IsRemote(s) && !s.TricksterDevice).All(s => s.ManualOnly), "A courtship visit is still a rest delivery.");
+        // Q6 r2 (BEL): the limp is a kept cost the Commander can refuse; healing ends the hunt and has its own page.
+        var healed = After(crypt, visited, "healed", 0).First();
+        check(healed.Has(P + "leg_healed") && healed.Has("delamere.closed") && !healed.Has(P + "cost.limp") && !healed.Has(P + "cost.hunt_owed")
+              && Rules.Available(story, S(P + "epilogue.healed"), World(story, 6, healed.Flags.ToArray()))
+              && !Rules.Available(story, S(P + "epilogue.apart"), World(story, 6, healed.Flags.ToArray())),
+            "Healing the leg is not a real choice with its consequence.");
+        // Q6 r2 (BEL/CAN): nothing claims Kyado taught the call, and her scar is not from the canon ambush her armour turned.
+        check(!whiteStag.Nodes.Any(n => n.Text.Contains("The boy says", StringComparison.Ordinal))
+              && !S(P + "woken.old_deadeye").Nodes.Any(n => n.Text.Contains("The boy told you", StringComparison.Ordinal))
+              && !hunt.Nodes.Any(n => n.Text.Contains("With the knives", StringComparison.Ordinal)),
+            "A scene reports Kyado's lore the player may never have heard, or the knives that never pierced her armour.");
 
         // The beats around the fire: the god's answer over her seal, the names, the poachers, the brace.
         var deadeye = S(P + "woken.old_deadeye");

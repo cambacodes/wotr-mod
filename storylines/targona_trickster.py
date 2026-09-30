@@ -199,7 +199,8 @@ SCENES.append(scene(P + "dead.setup_sleep", "Her sleep", "Targona", 3, '"Before 
         c('[Keep her sleep for her] "Then lie back down in it, if you have to. Listen."', "plan", mythic="Trickster", alignment=("Chaotic", 1)),
         c('"Then we\'ll get you out of it."', abort=True)),
     nar("plan", '''{n}You tell her quietly, with your back to your company.{/n}
-{n}If this ends in blood, it ends in real blood. You will not pull a single blow, because they would see it, and so would she. When she falls, she falls at the ring, and she drags herself back over its line into Areelu's sleep, the way it took her the first time. Nothing living can follow her in there; Areelu built the fire to keep the living out. Your company will see an angel die and a ring of fire that will not give up her body, and they will leave her to it, because you will tell them to.{/n}
+{n}If you break the barrier, she walks out free, and Heaven calls her home to its finest healers, as the Hand has already promised it will; she will spend years being mended in the halls of Heaven while Drezen's wounded die in rows. Heaven does not call home an angel it believes dead.{/n}
+{n}So it ends in blood, and real blood. You will not pull a single blow, because your company would see it, and so would she. When she falls, she falls by the ring, and while your people are still turning to the door you roll her back over its line into Areelu's sleep, the way it took her the first time. Nothing living can follow her in there; Areelu built the fire to keep the living out. Your company will see an angel die and a ring of fire that will not give up her body, and they will leave her to it, because you will tell them to.{/n}
 {n}The Suture's key stays in your pack. In three nights you come back down alone, break the ring with it, and wake her.{/n}
 {n}"I can't promise the sleep will hold you twice," you tell her. "It held you once, from further down than I'll put you."{/n}''',
         c("Continue", "resist")),
@@ -211,6 +212,7 @@ SCENES.append(scene(P + "dead.setup_sleep", "Her sleep", "Targona", 3, '"Before 
         c('"Then I won\'t ask it of you."', abort=True)),
     t("chooses", '''{n}She is quiet. Somewhere below, in Areelu's cells, something is screaming, and she turns her head towards it the way a healer does, without thinking.{/n}
 "I believe this is a test for me," she says at last. "I did not think I would be the one setting it." {n}She looks back at you.{/n} "If I wake, I will not hide. I will go to the Hand first, and to my healers, and I will tell them what we did and why, and let them judge it, whatever it costs you."
+"Then hear my conditions. No fire on me, and no blow at my head; I will need it. When I go down, you stand over me and let no one finish me. And it is your hands that put me back in her fire. No one else's."
 "And if I do not wake, do not come back for the body. Leave me in her fire. I will have chosen it."
 {n}She lowers her head, as she did before, and waits for you to choose.{/n}''',
         c('[Accept her price] "Tell them everything."', flags=(PRIMED, LAB_LINE, TOLD, SLEEP))),
@@ -221,12 +223,12 @@ def ring_nodes():
     """Quality pass Q6: the laboratory as it happened, and the night the Commander went back down with the key."""
     return [
         nar("ring", '''{n}The laboratory. You have lived it again every night since:{/n}
-{n}You give the word, and she keeps her promise. She fights with everything she has and Iomedae's name in her mouth, and you do not pull a single blow. She falls at the edge of the ring. Before anyone reaches her she drags herself back over the purple line on her elbows, and the fire closes over her, and her breath stops the way it stopped for all those months before you came.{/n}
+{n}You give the word, and she keeps her promise. She fights with everything she has and Iomedae's name in her mouth, and you do not pull a single blow. She falls by the ring and lies still, the way the dead lie. You stand over her as she asked. While your company turns to the door and whatever Areelu has left waiting there, you kneel, and with your own hands roll her back over the purple line. The fire closes over her, and her breath stops the way it stopped for all those months before you came.{/n}
 {n}Your company sees an angel die. The first man who reaches in to carry her out is thrown back across the floor with his gauntlet smoking. "Leave her," you say. "Areelu's fire keeps its dead." Nobody argues. The Suture's key stays in your pack.{/n}''',
             c("Continue", "down")),
         nar("down", '''{n}On the third night you go back down alone, with a lantern and the key, and nobody asks where.{/n}
 {n}She lies inside the ring as you first found her, face tranquil, chest still. Where your company's blows went in, the skin has closed, the way the seams of the black wing closed the first time. The wing has shifted a finger's width from where it fell. Nothing else in the room has moved.{/n}
-{n}The key breaks the ring. The fire goes out. For three breaths nothing happens, and you have time to think of what you will say at her pyre. Then the angel awakens, as she did the first time you broke her out of it, and her first breath is a sob.{/n}''',
+{n}The key breaks the ring. The fire goes out. For three breaths nothing happens, and you have time to think of what you will say at her pyre. Then the angel awakens, as she woke the day you first came into her laboratory, and her first breath is a sob.{/n}''',
             c("Continue", "woken")),
         t("woken", '''"It held." {n}She says it to the ceiling, not to you.{/n}
 "I dreamed her dreams again. Hers, not mine." {n}She looks down at the black wing, which has folded itself against her side before she told it to.{/n} "And it has had three more nights to settle into me. I can feel it listening now."
@@ -276,7 +278,10 @@ letter(P + "dead.one_soul", "Read back in", [
         c("Continue", "quiet", forbids=(ECHO_SPENT, OPEN, PRIMED)),     # retired by gating (Q6; index kept)
         c("Continue", "open", requires=(OPEN,), forbids=(ECHO_SPENT, PRIMED)),   # retired (Q6)
         c("Continue", "cold", requires=(ECHO_SPENT,), forbids=(PRIMED,)),       # retired (Q6)
-        c("Continue", "ring")),
+        c("Continue", "ring", requires=(KEY_HELD,)),
+        c("Continue", "no_key", forbids=(KEY_HELD,))),
+    nar("no_key", '''{n}You reach into your pack for the Suture's key, as you have every night since the laboratory, and your fingers close on nothing. Without it the ring will not open for anyone living. You send the runner away with a coin and no answer, and go through every pack and chest you own.{/n}''',
+        c("[Find the key before you go down.]", abort=True)),
     nar("quiet", '''{n}The laboratory. You have lived it again every night since:{/n}
 {n}You give the word, and the fight goes the way the story always meant it to, and she falls. The room turns towards the door and whatever Areelu has left waiting there. You kneel beside her as if to close her eyes, and under your breath, no louder than a prayer for the dead, you read the scroll from your sleeve to its last word, with your other palm flat over her heart and her brother's light in it, turned down to the warmth of a hand. It crumbles to ash against your palm. For one breath the light under your hand stings the way it stung in the rock under Kenabres, when his sword went out at your touch and left its fire in you, and then it is only warm. Nobody turns round. Her chest does not move. You leave her there, as she asked.{/n}''',
         c("Continue", "news")),
@@ -303,11 +308,13 @@ letter(P + "dead.one_soul", "Read back in", [
 letter(P + "dead.long_sleep", "Months in her fire", [
     nar("start", '''{n}You meant to go back down on the third night. The Abyss took you first, and the key to Areelu's ring went into the Abyss with you, in your pack, and came out again with you, months later.{/n}
 {n}Nobody has been down to the laboratory since. The reports on your table still list her among the dead, and the one officer who asked what became of the body was told that Areelu's fire keeps its own. The ruin has had months to fill up with what crawls out of the Wound.{/n}''',
-        c('[Go back down for her] "Twelve volunteers to the ruin gate. I go in alone."', "ring", mythic="Trickster", crusade=("Favors", -300)),
-        c('"Not yet."', abort=True)),
+        c('[Go back down for her] "Twelve volunteers to the ruin gate. I go in alone."', "ring", mythic="Trickster", crusade=("Favors", -300),
+          requires=(KEY_HELD,)),
+        c('"Not yet."', abort=True),
+        c("[Look for the Suture's key first. Without it the ring will not open.]", abort=True, forbids=(KEY_HELD,))),
     nar("ring", '''{n}The volunteers hold the ruin gate for a night and a day and lose two men to what comes up the stair. You go down past them alone, with a lantern and the Suture's key.{/n}
 {n}The purple ring is burning as it burned the day you left it, and she lies inside it as you first found her, silver hair, one wing white and one wing black, her face tranquil, her chest still. Months. The wounds your company gave her are closed, as the wing's seams closed the first time. The black wing is not folded the way it fell. It has moved, in all those months, on its own.{/n}
-{n}The key breaks the ring the way it would have broken it the first day. The fire goes out. For three breaths nothing happens, and then the angel awakens, as she did the first time, and her first breath is a sob.{/n}''',
+{n}The key breaks the ring the way it would have broken it the first day. The fire goes out. For three breaths nothing happens, and then the angel awakens, as she woke the day you first came into her laboratory, and her first breath is a sob.{/n}''',
         c("Continue", "wake")),
     t("wake", '''"How long?" {n}You tell her. She lies still and takes it in.{/n}
 "I dreamed her dreams the whole time. Hers, not mine. Her grand experiment, her second opening, over and over." {n}She turns her head and looks at the black wing, which has folded itself against her side before she asked it to.{/n}
@@ -383,7 +390,7 @@ ward(P + "after.the_washing", "Wash him with me", '"Targona?"', [
 {n}When he is clean she folds his arms and lays the linen over him, and then she takes your wet hands in hers and dries them herself, finger by finger, longer than drying takes.{/n}''',
         c("Continue", "after")),
     t("after", '''"I wanted to see what they did near a body that could not stop them." {n}She does not let go.{/n} "They were careful. You closed his eyes before I asked."
-"I have been forgiving you for a week, Commander, because I said I would. Tonight is the first time I have wanted to know anything about you." {n}Her thumb moves once over your knuckles.{/n} "What do these do, when there is no war in them? No. Do not tell me now. Come back when the ward is quiet, and sit with whoever is dying, and I will watch."''',
+"I have been forgiving you for days, Commander, because I said I would. Tonight is the first time I have wanted to know anything about you." {n}Her thumb moves once over your knuckles.{/n} "What do these do, when there is no war in them? No. Do not tell me now. Come back when the ward is quiet, and sit with whoever is dying, and I will watch."''',
       c('[Let her keep your hands a moment longer.]', flags=(TESTED,))),
     t("chaplain", '''"They are on the wall, and he is here." {n}She takes the cloth back.{/n}
 "Go, then. I will wash him myself. I have done it alone before." {n}She turns down the blanket, and does not watch you leave.{/n}''',
@@ -410,11 +417,16 @@ letter(P + "free.spent_light", "The last wand", [
 ward(P + "free.furlough", "Greetings, my rescuer", '"There\'s an angel in the wards."', [
     nar("start", '''{n}Wilcer Garms clears his throat. "There's an angel in the wards, Commander. I didn't requisition her."{/n}
 {n}She has a basin of water, one wing black and twisted, the other folded tight. She is going down the same rows you went down last night, and she stops at each cot as if the man in it were the only one.{/n}''',
-        c("Continue", "greet_lab", requires=(LAB_LINE,), forbids=(TREATED,)),
+        c("Continue", "greet_lab", requires=(LAB_LINE,), forbids=(TREATED, SLEEP)),        # the legacy scroll primer only
+
         c("Continue", "greet", forbids=(LAB_LINE, TREATED)),
-        c("Continue", "greet_treated", requires=(TREATED,))),
+        c("Continue", "greet_treated", requires=(TREATED,)),
+        c("Continue", "greet_lab_sleep", requires=(LAB_LINE, SLEEP), forbids=(TREATED,))),
     t("greet_treated", '''"Commander. Greetings, my rescuer, and my physician." {n}She does not smile.{/n}
 "You have treated this wing, and argued with it, and sat with me while it was dressed. I thought I knew what kind of soul you were. Then someone worked these rows all night with a healer's wand and would not stop, and I felt it in the halls of Heaven like a hand on my shoulder, and I came down to see whether it was the same one."''',
+      c('[Explain] "They were dying. I had a light."', "why")),
+    t("greet_lab_sleep", '''"Commander. Greetings, my rescuer." {n}She does not smile.{/n}
+"Behind the barrier you asked me to lie back down in her sleep if it came to blood, and I said yes. Then you broke the barrier instead, and I went home to Heaven's healers after all. And then someone worked these rows all night with a healer's wand and would not stop. I came to see who would do such a thing, and why."''',
       c('[Explain] "They were dying. I had a light."', "why")),
     t("greet_lab", '''"Commander. Greetings, my rescuer." {n}She does not smile.{/n}
 "Behind the barrier you showed me a scroll up your sleeve and asked me to let everyone mourn me. I said yes. And then you did not need it: you broke the barrier instead. And then someone worked these rows all night with a healer's wand and would not stop. I came to see who would do such a thing, and why."''',

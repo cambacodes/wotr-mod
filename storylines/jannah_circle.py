@@ -48,6 +48,7 @@ TALE_SPENDS = C + "your_part.spends_people"
 RIDE_BESIDE = C + "houndhearts_camp.beside"
 YIELDED_CIRCLE = C + "yielded_the_circle"
 CURL = C + "curl"
+SOULS_HOME = "seelah.souls_returned"   # Q6 r2 (CAN): Curl came home with the souls (SeelahInDoubt/Cue_0005, Cue_0038)
 VROCKS = C + "the_ritual"
 MASTER = C + "the_old_man"
 RECRUITS = C + "recruits"
@@ -77,7 +78,7 @@ def visit(id, title, nodes, requires, forbids=(), delay=24, optional=True, **ext
     """A night in which she is there in person, delivered at a rest."""
     SCENES.append(scene(id, title, "Jannah", 5, "", nodes, requires=tuple(dict.fromkeys(("trickster.ever", *requires))),
                         forbids=tuple(dict.fromkeys((CLOSED, GONE, id, *forbids))), delay=delay, last=5,
-                        optional=optional, Relationship=REL, Remote=True, Kind="visit", Chapters=[5], **extra))
+                        optional=optional, Relationship=REL, Remote=True, Kind="visit", Chapters=[5], ManualOnly=True, **extra))   # Q6 r2 (COX)
 
 
 # --- 1. The forms (spine): what she keeps like a faith, taught properly. ---------------------------------------------------
@@ -340,7 +341,7 @@ meet(MIVON, "Home", '"Is that a letter?"', [
 "He misses the daughter he sent. The best blade on the river, who never lost. I don't know if he'd miss this one. He's never met her."''',
         c("Continue", "write")),
     jan("write", '''"That's the question." {n}She puts the letter on the bunk between you, as if it were a blade laid down between two fencers.{/n}
-"I can write him the truth: I ran, I was caged, I lost my first bout, I'm in a cell in Drezen by choice. Or I can write him a hero. He'd believe the hero. He'd tell the whole street. He'd die happy." {n}She looks at you.{/n} "What would you do?"''',
+"I can write him the truth: I ran, I was caged, I'm in a cell in Drezen by choice. Or I can write him a hero. He'd believe the hero. He'd tell the whole street. He'd die happy." {n}She looks at you.{/n} "What would you do?"''',
         c('"Write him the truth. He asked about his daughter, not about a legend."', "truth"),
         c('"Let him keep the daughter he believes in. The truth is yours; the legend is his."', "legend"),
         c('"It\'s your letter, and your father. I won\'t choose it for you."', "yours")),
@@ -429,7 +430,7 @@ meet(WATCH, "The blue tabard", '"The Watch sergeant was asking about you."', [
     nar("open", '''{n}There is a folded tabard on the end of the bunk, Eagle Watch blue, clean and pressed, with a recruit's eagle sewn on the breast. She's sitting as far from it as the cell allows.{/n}''',
         c("Continue", "start")),
     jan("start", '''"He brought it himself. The sergeant from the wall, the one who waved. He said the Watch is short of blades who don't run, and he'd sooner have one who ran once and came back than ten who never had the chance." {n}She doesn't touch it.{/n}
-"He said Irabeth would sign it if I asked. He said he'd already asked her for me."''',
+"He said the Knight-Commander of the Watch would sign it if I asked. He said he'd already asked for me."''',
         c('"Will you take it?"', "take"),
         c('"You earned it on the wall."', "earned")),
     jan("earned", '''"On the wall I earned not running. That's all I earned." {n}She looks at the tabard.{/n}
@@ -660,8 +661,8 @@ meet(IRABETH, "One question", '"Someone\'s been down here. There\'s a second sto
     jan("paper", '''"For my answer, when I have one. She said the Watch keeps records, and it'll keep mine, and I can write it in myself when I know." {n}Her mouth twists, not unhappily.{/n}
 "She's the only officer I've ever met who'd trust a deserter with her own paperwork. I think it's the cruellest thing she could think of."''',
         c("[Leave her with the paper.]")),
-    jan("forgive", '''"She doesn't forgive at all. She doesn't need to. She writes it down, and then she decides what you're worth today, and tomorrow she decides again."
-"I'd rather that than forgiveness. Forgiveness is something people do to you. Irabeth's paper is something you have to do yourself."''',
+    jan("forgive", '''"She doesn't forgive at all." {n}She scowls at the blank sheet.{/n} "And she asked it in front of the sergeant, which was low. 'Will you run again.' Like a quartermaster asking if a boot leaks."
+"I'm not writing on her paper until I've got something better than 'don't know' to put on it. She can wait. She's good at waiting. So am I, now."''',
         c("[Leave her with the paper.]")),
     jan("sergeant", '''"The Watch sergeant. The one from the wall." {n}She picks up the blank sheet.{/n}
 "He said Knight-Commander Irabeth used to do this, before Iz, when someone came back to the Watch who shouldn't have: bring her own stool, ask one question, leave a sheet of paper. He said somebody ought to keep doing it, and he'd drawn the short straw."
@@ -740,10 +741,10 @@ meet(REPLY, "Fate, again", '"Your father wrote back?"', [
         c("Continue", "truth", requires=(MIVON_TRUTH,)),
         c("Continue", "legend", requires=(MIVON_LEGEND,))),
     jan("truth", '''"He's furious." {n}She sounds delighted.{/n}
-"Four pages. Page one: how dare I run. Page two: how dare I let myself be cut. Page three: fate brought me to Mendev, and fate doesn't make mistakes, only daughters do, and he'll go on saying so until one of us is dead."''',
+"Four pages. Page one: how dare I run. Page two: how dare I let myself be caged. Page three: fate brought me to Mendev, and fate doesn't make mistakes, only daughters do, and he'll go on saying so until one of us is dead."''',
         c("Continue", "truth_end")),
     jan("truth_end", '''"Page four is his mother's recipe for a poultice for scars. He's underlined 'crooked' twice." {n}She folds the letter very carefully along its old creases.{/n}
-"He's never written me four pages in my life. Not when I left home, not when I won my first bout. I had to lose, and run, and nearly die, and tell him the truth, to get four pages out of him."''',
+"He's never written me four pages in my life. Not when I left home, not when I won my first bout. I had to run, and nearly die, and tell him the truth, to get four pages out of him."''',
         c("[Leave her with her father.]")),
     jan("legend", '''"He read it out in the square." {n}She doesn't sound delighted.{/n}
 "The whole street. The best blade on the river, holding the walls of Drezen single-handed against a demon lord. He's added the demon lord; I never wrote a demon lord. He's added a great many things."''',
@@ -790,10 +791,16 @@ meet(CURL, "The fourth of the League", '"You never talk about Curl."', [
         c('"It wouldn\'t matter if you had."', "matter")),
     jan("did", '''"I don't know." {n}She says it the way a fencer admits a touch she can't feel yet.{/n}
 "Some nights I'm sure I saw him smile at me across the fire, and it wasn't his smile, and that's what my legs understood before I did. Other nights I'm sure I made that up afterwards, in the cage, because it's easier to have run from a demon wearing a friend than from a fight."''',
-        c("Continue", "which")),
+        c("Continue", "which", forbids=(SOULS_HOME,)),
+        c("Continue", "which_home", requires=(SOULS_HOME,))),
     jan("matter", '''"It would to me." {n}She is quiet a moment.{/n}
-"If I saw it, then my legs knew something my head didn't, and I ran from the right thing at the wrong time. If I didn't, I just ran. I'd give a great deal to know which. I'd give my record, if I still had it."''',
-        c("Continue", "which")),
+"If I saw it, then my legs knew something my head didn't, and I ran from the right thing at the wrong time. If I didn't, I just ran. I'd give a great deal to know which."''',
+        c("Continue", "which", forbids=(SOULS_HOME,)),
+        c("Continue", "which_home", requires=(SOULS_HOME,))),
+    jan("which_home", '''"And I could ask him. That's the worst part. When Seelah brought the souls home, his came with them, they say. He's somewhere in this city with his own face on, being frightened out loud again." {n}She reaches up and turns the tankard round, so the four figures face the room.{/n}
+"I haven't gone. What would I say? 'You ran too'? He didn't run. He was taken. I'm the only one of the League who ran on her own legs." {n}She scowls at the tankard.{/n} "I'll go. When I've got something to say that isn't that."''',
+        c('"Keep him facing the room."', "room"),
+        c("[Say nothing.]", "quiet")),
     jan("which", '''"The worst part is I can't ask him. Whatever was wearing Curl took the rest of him with it when it went."
 {n}She reaches up and turns the tankard round, so the four figures face the room again.{/n} "I keep him facing the wall when I'm angry with him. I'm always angry with him. Then I remember he was frightened too, and he said so out loud, which is more than I ever did, and I turn him back."''',
         c('"Keep him facing the room."', "room"),
@@ -996,7 +1003,7 @@ meet(STAIRS, "The duelling stairs", '"You\'re planning something."', [
         c('"And what happens on the stairs?"', "what"),
         c('[Flirt] "In front of the whole street?"', "street")),
     jan("what", '''"I introduce you to my father. On the third step. Where everybody can hear." {n}She taps the drawing.{/n}
-"He'll want to know if you can fence. You can't. He'll want to know if you've ever lost to me. You have. He'll want to know whether you're the one who cut my face, and I'm going to tell him yes, and watch what he does." {n}She's smiling now.{/n} "I think he'll challenge you. I think I'll let him."''',
+"He'll want to know if you can fence. He'll want to know which of us has drawn blood on the other, and how often, and I'm going to tell him the truth, whatever it is, and watch what his face does." {n}She's smiling now.{/n} "I think he'll challenge you. I think I'll let him."''',
         c("Continue", "end")),
     jan("street", '''"Everything worth doing in Mivon is done in front of the whole street. That's the point of the balconies." {n}She tucks the charcoal behind her ear.{/n}
 "You've already lain in the sand for me in front of four hundred soldiers, or put me in it, one or the other. A street of dyers throwing fruit won't bother you."''',

@@ -29,7 +29,7 @@ internal static class TerendelevTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = chapter == 5 ? Drezen : "" };
+        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = chapter == 5 || chapter == 3 ? Drezen : "" };
         state.Flags.UnionWith(flags);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         state.AvailableContacts.Add(Human);
@@ -158,6 +158,7 @@ internal static class TerendelevTricksterTests
               && Rules.Available(story, where, World(story, 3, "trickster", "terendelev.voice_heard"))
               && !Rules.Available(story, where, World(story, 3, "trickster")),
             "Trk_Terendelev_Pacing: the Chapter 3 and 4 beats are shut.");
+        check(!Rules.Available(story, square, World(story, 4, "trickster")), "The Drezen memory plays in the Abyss (Q6 r2).");
         var tested = One(weeps, World(story, 4, "trickster", "terendelev.scale_held"), new[] { P + "blood_tested", P + "scale_warmed" });
         check(tested.Has(P + "blood_tested"), "Trk_Terendelev_Pacing: the blood is never tested in the Abyss.");
 
@@ -280,7 +281,8 @@ internal static class TerendelevTricksterTests
 
         // Reactions and pages.
         check(reactions.Length == 8 && reactions.All(s => s.Nodes.Count == 1)
-              && new[] { "Seelah", "Irabeth", "Anevia", "Storyteller", "Galfrey", "Daeran", "Regill" }.All(o => reactions.Any(s => s.Owner == o)),
+              && new[] { "Seelah", "Irabeth", "Anevia", "Storyteller", "Galfrey" }.All(o => reactions.Any(s => s.Owner == o))
+              && reactions.Where(s => s.Owner == "Daeran" || s.Owner == "Regill").All(s => s.Forbids.Contains("chapter_later")),
             "Terendelev's reactors are not Seelah (twice), Irabeth, Anevia, the Storyteller, Galfrey, Daeran and Regill.");
         check(pages.Length == 5 && pages.All(s => s.MinChapter == 6 && s.MaxChapter == 6 && s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0)),
             "Her epilogue pages are not five read-only Chapter 6 pages.");
@@ -304,8 +306,16 @@ internal static class TerendelevTricksterTests
         var queenBack = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen", "galfrey.dead", "galfrey.trickster.returned");
         var queenGone = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen", "galfrey.dead");
         check(PagesOf(galScene, queenBack).Contains("queen_back") && !PagesOf(galScene, queenBack).Contains("dead_late") && !PagesOf(galScene, queenBack).Contains("carry")
-              && PagesOf(galScene, queenGone).Contains("dead_late") && !PagesOf(galScene, queenGone).Contains("queen_back"),
+              && PagesOf(galScene, queenGone).Contains("dead_unknown") && !PagesOf(galScene, queenGone).Contains("queen_back")
+              && !PagesOf(galScene, queenGone).Contains("dead_late"),
             "A returned Queen is mourned as permanently dead.");
+        // Q6 r2 (CAN/COX): the Queen's death by its recorded cause.
+        var qEarly = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen", "galfrey.dead", "iz.left_early");
+        var qPriestess = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen", "galfrey.dead", "iz.manuscripts.live");
+        var qBackPriestess = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen", "galfrey.dead", "iz.manuscripts.live", "galfrey.trickster.returned");
+        check(PagesOf(galScene, qEarly).Contains("dead_late") && PagesOf(galScene, qPriestess).Contains("dead_priestess") && !PagesOf(galScene, qPriestess).Contains("dead_late")
+              && PagesOf(galScene, qBackPriestess).Contains("queen_back_priestess") && !PagesOf(galScene, qBackPriestess).Contains("queen_back"),
+            "Terendelev claims a killing the record gives to the priestess.");
         var galLetter = S(P + "react.galfrey.letter");
         check(galLetter.ForbidOverrides.TryGetValue("galfrey.dead", out var gback) && gback == "galfrey.trickster.returned"
               && Rules.Available(story, galLetter, Later(story, World(story, 5, "trickster.ever", Returned, "galfrey.dead", "galfrey.trickster.returned"), 60)),

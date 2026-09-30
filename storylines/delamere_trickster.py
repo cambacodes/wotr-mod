@@ -80,6 +80,7 @@ WOKE_DREZEN = P + "woke_in_drezen"
 SAID_AGAIN = P + "stag_said_again"
 SAID_MISSED = P + "stag_said_missed"
 SAID_FINISH = P + "stag_said_finish"
+LEG_HEALED = P + "leg_healed"                 # Q6 r2 (BEL): the Commander had a priest straighten the leg, ending the hunt
 # The courtship (delamere_woods) sets these; the epilogues and reactions read them.
 SECOND_HUNT = P + "second_hunt_offered"
 CAUGHT = P + "caught"
@@ -141,6 +142,10 @@ def temple(id, title, entry, nodes, requires, forbids=(), delay=0, into=None, **
 
 def visit(id, title, nodes, requires, forbids=(), delay=0, chapters=(3, 5), kind="visit", into=None, **extra):
     """A rest-delivered page: she comes to the Commander (visit), or a letter she sends (letter)."""
+    # Q6 r2 (COX): only the device pages (the wakings) arrive at a rest; every other visit is a manual read (her book,
+    # "choose Read"), so Delamere stays inside the ledger's rest allocation on every branch.
+    if not extra.get("TricksterDevice"):
+        extra.setdefault("ManualOnly", True)
     (SCENES if into is None else into).append(scene(
         id, title, "Delamere", min(chapters), "", nodes, requires=requires, forbids=forbids, delay=delay,
         last=max(chapters), Relationship="delamere", Chapters=sorted(set(chapters)), Remote=True, Kind=kind, **extra))
@@ -351,7 +356,11 @@ def waking(place):
         dl("right", '''{n}She binds the leg with a strip torn from her own shroud, and pulls the knot tight enough to make you see stars.{/n}
 "Hear me, because I will say it once. I did not finish you. That means the hunt is not over; it means only that I have let you go for now. A stag that has asked for another day owes the hunter that day. When I want it, I will come for it."''',
             c('"And until then?"', "until"),
-            c('"That sounds like a threat."', "until")),
+            c('"That sounds like a threat."', "until"),
+            c('"I\'ll have a priest straighten it. I need two good legs for this war."', "healed")),
+        dl("healed", '''{n}She looks at you for a while without any expression at all.{/n} "Then do it. Walk straight, and be glad of it; I would be." {n}She wipes the knife on the grass and gets up.{/n} "But a stag that lets the priests take my arrow out of it has ended the hunt itself. I will not come for a day nobody owes me. Live well, city-stag. I will hear about you."
+{n}She walks away into the dark, and does not look back.{/n}''',
+            c("[Let her go, and send for a priest in the morning.]", flags=(RETURNED, STARTED, CLOSED, LEG_HEALED))),
         dl("until", '''"Until then, you had better stay quick." {n}She sits back on her heels and wipes the knife on the grass, and looks about her at last: the dark, the trees, the cold.{/n}''',
             c("Continue", "home_" + place)),
     ]
@@ -474,13 +483,17 @@ epilogue("sacrifice", '''{n}The Commander did not come back from the Threshold. 
 
 epilogue("apart", '''{n}Delamere the Blessed kept to the woods below her temple after the war, and to the old law. The villages near her feared her and sent her their disputes, and she judged them as she had judged them in old Sarkoris, hard and without appeal.{/n}
 {n}The Commander went on walking crooked. She never came to claim the day she was owed. The hunters say she keeps it anyway, the way you keep an arrow you have not decided where to put.{/n}''',
-         requires=(RETURNED, CLOSED), forbids=(COMMITTED,), paragraphs=EPILOGUE_PARAGRAPHS + (
+         requires=(RETURNED, CLOSED), forbids=(COMMITTED, LEG_HEALED), paragraphs=EPILOGUE_PARAGRAPHS + (
              p('''{n}She prayed to Erastil every night of her second life, on her knees, and he never once answered her. The Commander had once told her he had. She did not forget which of them had lied.{/n}''', requires=(LIAR,)),
              p('''{n}"Caught, and so owned," she told the one bard who dared ask her about the Commander. "That is how a hunter thinks about a hind. I had thought better of that one." She did not say more, and the bard did not ask.{/n}''', requires=(CLAIMED,)),))
 
 epilogue("never", '''{n}The woman who woke in the Temple of Delamere walked away into the woods that night with her grave-dust still on her and was not seen again by anyone who could put a name to her. The Kellid villages that grew up below her temple after the war told stories of a huntress who judged their quarrels from the tree line and never came into the light.{/n}
 {n}The Commander walked crooked for the rest of their life, and never told anyone why.{/n}''',
          requires=(DECLINED, CLOSED), forbids=(RETURNED,))
+
+epilogue("healed", '''{n}Delamere the Blessed kept to the woods below her temple after the war, and to the old law, and the villages near her feared her and brought her their quarrels. The Commander walked straight for the rest of a long life, on a leg a chaplain had sung whole in a single evening.{/n}
+{n}She never came to the Commander's window at the first frost. The one time they met again, at a market in the lower town, she looked at the Commander's legs, and nodded once, as a hunter nods to a beast that got away clean, and went on with her business.{/n}''',
+         requires=(LEG_HEALED,), forbids=(COMMITTED,))
 
 epilogue("unfinished", '''{n}Delamere the Blessed kept to the woods below her temple after the war. Now and then, on a cold night, the sentries on Drezen's wall heard a stag roar in the hills, far too close to the city, and in the morning there were tracks under the Commander's window that no stag had made.{/n}''',
          requires=(RETURNED,), forbids=(COMMITTED, CLOSED, LATE_COMMITTED), paragraphs=EPILOGUE_PARAGRAPHS)

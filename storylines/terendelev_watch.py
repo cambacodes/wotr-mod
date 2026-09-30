@@ -33,6 +33,9 @@ DESKARI_VOW = P + "watch.deskari_vow"
 DESKARI_LET_GO = P + "watch.deskari_let_go"
 GALFREY_SPOKEN = P + "watch.galfrey_spoken"
 GALFREY_BACK = "galfrey.trickster.returned"         # Q6 (COX): the Queen brought back on her own Trickster route (read only)
+MANUSCRIPTS = "iz.manuscripts"                       # latched GalfreyGoesToManuscripts: the priestess's sorcery killed her (Cue_0072)
+QUEEN_KILLED = "galfrey.killed_by_commander"
+LEFT_EARLY_W = "iz.left_early"
 SCALE_KEPT = P + "watch.scale_kept"
 CLAW_RETURNED = P + "watch.claw_returned"
 NIGHT = P + "night.seen"                 # set on the night watch (either hub twin): the reactions and pages read it
@@ -215,8 +218,25 @@ watch(P + "watch.galfrey", "The Queen", '"The chaplain says you\'ve been in the 
     te("start", '''"The chaplain is right, and should mind his chaplaincy." {n}She rubs her eyes.{/n} "I go to think about the Queen. Somebody should."''',
        c("Continue", "alive", forbids=(QUEEN_FELL, "galfrey.dead")),
        c("Continue", "dead", requires=(QUEEN_FELL,), forbids=(GALFREY_BACK,)),
-       c("Continue", "dead_late", requires=("galfrey.dead",), forbids=(QUEEN_FELL, GALFREY_BACK)),
-       c("Continue", "queen_back", requires=(GALFREY_BACK,))),
+       c("Continue", "dead_late", requires=("galfrey.dead", LEFT_EARLY_W), forbids=(QUEEN_FELL, GALFREY_BACK, MANUSCRIPTS, QUEEN_KILLED)),
+       c("Continue", "queen_back", requires=(GALFREY_BACK,), forbids=(MANUSCRIPTS,)),
+       c("Continue", "dead_priestess", requires=("galfrey.dead", MANUSCRIPTS), forbids=(QUEEN_FELL, GALFREY_BACK)),
+       c("Continue", "dead_by_you", requires=(QUEEN_KILLED,), forbids=(QUEEN_FELL, GALFREY_BACK, MANUSCRIPTS)),
+       c("Continue", "dead_unknown", requires=("galfrey.dead",), forbids=(QUEEN_FELL, GALFREY_BACK, MANUSCRIPTS, QUEEN_KILLED, LEFT_EARLY_W)),
+       c("Continue", "queen_back_priestess", requires=(GALFREY_BACK, MANUSCRIPTS))),
+    te("dead_priestess", '''"She died at Iz. Not by my claws: the priestess's sorcery tore her out of her body while her knights were busy with what was left of me." {n}No tremor at all, which is how you know.{/n} "I have asked every knight who was there. They all say the same, and I believe them, and it does not help. I was the reason she was on that field."
+"So I go and I kneel, and I tell the Inheritor about her Queen. Somebody who was there should."''',
+       c("[Go with her to the chapel.]", flags=(GALFREY_SPOKEN,)),
+       c("[Leave her to it.]", flags=(GALFREY_SPOKEN,))),
+    te("dead_by_you", '''"She died at your hand." {n}She says it to the chapel door, not to you.{/n} "I have not asked you why. I will not, tonight. I was her friend for a hundred years, and I go and kneel for her because somebody should, and because you will not."''',
+       c("[Leave her to it.]", flags=(GALFREY_SPOKEN,))),
+    te("dead_unknown", '''"She is dead, and her knights will not tell me how, and I have stopped asking them." {n}She rubs her eyes again.{/n} "I was her friend for a hundred years. Somebody who was her friend should go and tell the Inheritor about her, every night, until it stops hurting or I stop going."''',
+       c("[Go with her to the chapel.]", flags=(GALFREY_SPOKEN,)),
+       c("[Leave her to it.]", flags=(GALFREY_SPOKEN,))),
+    te("queen_back_priestess", '''"She died at Iz. Not by my claws; the priestess's sorcery did it, while her knights were busy with my bones." {n}Then, very carefully:{/n} "And now she is alive. You would not let that stand either. I saw her cross the chapel yard last night, and she did not see me, and I stood behind a pillar like a thief."
+"I was the reason she was on that field. That much I will carry. The rest belongs to her." {n}The ghost of a smile.{/n} "One day I will go and kneel to her, and it will make her very uncomfortable."''',
+       c('"She\'ll forgive you. She\'s been dead too; she knows."', flags=(GALFREY_SPOKEN,)),
+       c("[Go with her as far as the chapel yard.]", flags=(GALFREY_SPOKEN,))),
     te("queen_back", '''"She died at Iz, fighting the thing he made of me. My claws. My sorcery. I felt her go, the way you feel a candle go out in the next room." {n}Then, very carefully, as if the words might break:{/n} "And now she is alive. You would not let that stand either. I saw her cross the chapel yard last night, with her knights around her, and she did not see me, and I stood behind a pillar like a thief."
 "It does not unmake it. She lives, and I still killed her. I will carry that, and you will not tell me it was his and not mine." {n}She looks toward the chapel.{/n} "One day I will go and kneel to her, and she will have to decide what to do with the dragon who killed her. I should like to see her face. I think it will be a very royal face."''',
        c('"She\'ll forgive you. She\'s been dead too; she knows."', flags=(GALFREY_SPOKEN,)),
@@ -254,7 +274,7 @@ watch(P + "watch.keepsakes", "Keepsakes", '"I\'ve been carrying something of you
     te("claw_kept", '''"Proof." {n}She seems surprised, and then oddly pleased.{/n} "Yes. I suppose it was. Keep it, then. Only do not show it to the Storyteller again; he looks at it the way a hungry man looks at bread."''',
        c("Continue", "scale", requires=(SCALE_HELD,)),
        c("[Put it away.]", forbids=(SCALE_HELD,))),
-    te("scale", '''{n}The scale lies on your palm, silver, untarnished. She touches it with one fingertip and draws her hand back as if it had spoken.{/n} "It is warm. It was never warm, was it? Not until you bled on it." {n}She shakes her head.{/n} "No. That one you keep. It still has a life in it, crusader; I can feel it. You carried it through the Abyss and never once spent it. One day you will need a life more than I need a scale, and when you do, I want it to be there."''',
+    te("scale", '''{n}The scale lies on your palm, silver, untarnished. She touches it with one fingertip and draws her hand back as if it had spoken.{/n} "It is warm. It was never warm, all the years it hung on me. Something of you has got into it." {n}She shakes her head.{/n} "No. That one you keep. It still has a life in it, crusader; I can feel it. You carried it through the Abyss and never once spent it. One day you will need a life more than I need a scale, and when you do, I want it to be there."''',
        c('"It\'s yours."', "scale_end", flags=(SCALE_KEPT,)),
        c("[Put it back in your pack.]", "scale_end", flags=(SCALE_KEPT,))),
     te("scale_end", '''"It was mine. I gave it to Kenabres, and you are what came out of Kenabres." {n}She closes your fingers over it with her own.{/n} "There. That is settled. Silver dragons like things settled."''',
@@ -485,7 +505,7 @@ watch(P + "watch.letter", "A letter to the mountains", '"Who are you writing to?
        c('"Tell him the true one. He sat at a cave for a year for you. He\'s earned it."', "true")),
     te("come", '''"He would come, and he would look at you, and he would look at me, and he would know exactly what you did at Iz and what it cost you." {n}She smiles, crookedly.{/n} "And then he would thank you. Formally. For an entire afternoon. Gold dragons are very thorough about gratitude; it is one of their worst qualities."''',
        c("Continue", "true")),
-    te("true", '''"The true one, then." {n}She dips the pen, and writes, slowly, saying it aloud as she goes.{/n} "'Teacher. I died at Kenabres, and I was used after, and I am not going to tell you how. A mortal came to the fire and asked me to come back, and opened a wound for it that will not close. I am made partly of that mortal now. I cannot fly. I cheat at cards. I am happier than I have been in a hundred years.'" {n}She stops.{/n} "What else should I tell him?"''',
+    te("true", '''"The true one, then." {n}She dips the pen, and writes, slowly, saying it aloud as she goes.{/n} "'Teacher. I died at Kenabres, and I was used after, and I am not going to tell you how. A mortal came to the fire and asked me to come back, and opened a wound for it that will not close. I am made partly of that mortal now. I cannot fly. I play cards with sentries. I am happier than I have been in a hundred years.'" {n}She stops.{/n} "What else should I tell him?"''',
        c('"Tell him you\'re keeping a watch again."', "watchline", flags=(LETTER,)),
        c('"Tell him thank you. From me. For the year at the cave."', "thanks", flags=(LETTER,)),
        c('"Tell him nothing else. Let him come and find out."', "nothing", flags=(LETTER,))),
@@ -555,11 +575,11 @@ def letter(id, title, nodes, requires, forbids=(), delay=72, **extra):
 
 letter(P + "letter.watch_report", "The north turret: a report", [
     te("start", '''{n}The letter is written in a large, square, careful hand on a page torn from a quartermaster's ledger, and it is headed, in capitals: REPORT OF THE NORTH TURRET WATCH.{/n}
-"Nights stood on the north turret: four. Alarms: none. Sentries reprimanded for sleeping: one, twice. Snow: a great deal. Dressings changed: none, the wound having failed to report to its post, which I have entered in the log as a dereliction."''',
+"Nights stood on the north turret: four. Alarms: none. Sentries reprimanded for sleeping: one, twice. Snow: a great deal. Dressings changed: four, at the proper hour. The wound complained each time, which I have entered in the log as insubordination."''',
        c("Continue", "more")),
     te("more", '''"Otherwise: the woman who fries bread by the lower gate asks after you. I have told her you are busy with crusade business, and she has decided that you are my husband, and gives me the burnt pieces out of pity. I have not corrected her.
 "The Worldwound's weather is loud this week. I feel it in my wrists. Keep the dressing clean. Change it at the proper hour, not whenever you remember. I will know.
-"Report to your post. The watch is very dull without its wound. T."''',
+"The watch is very dull between dressings. T."''',
        c("[Fold the letter into your coat.]")),
 ], requires=(NIGHT,), delay=96, ManualOnly=True)
 
@@ -590,7 +610,8 @@ SCENES.append(scene(P + "watch.third_bell", "The third bell", "Terendelev", 5, "
     te("talk", '''"In Kenabres I slept on the cathedral roof, most nights, in my true shape, curled round the bell-tower like a cat round a milk jug. The bell used to wake me every hour. I liked it. It meant the city was still there to ring it." {n}Her voice is drowsy now.{/n} "I have not slept a whole night since Iz. Talk to me, crusader. About anything. I do not care what. Only let there be a voice in the room that is not his."''',
        c('[Tell her about the Abyss: the red sky, the demons in good coats, the worst meal you ever ate.]', "abyss"),
        c('[Tell her about Kenabres, the day you came in through the gate, before any of it.]', "gate"),
-       c('[Tell her nothing. Hum instead, badly, the tune the fiddler played at the market.]', "hum")),
+       c('[Tell her nothing. Hum instead, badly, the tune the fiddler played at the market.]', "hum", requires=(MARKET,)),
+       c('[Tell her nothing. Hum instead, badly, a festival tune from Kenabres.]', "hum", forbids=(MARKET,))),
     nar("abyss", '''{n}You tell her about the Abyss: the red that never becomes night, the demons who dress for dinner, a stew in a tavern in Alushinyrra whose ingredients you still refuse to guess. She laughs, once or twice, sleepily, at the right places. At the stew she laughs properly, into your knee.{/n}''',
         c("Continue", "sleep")),
     nar("gate", '''{n}You tell her about the day you came to Kenabres: the long road, the bunting on the gate, the smell of the festival from a mile off, and how you thought you had never seen a city so glad to be a city. You do not tell her about what happened after. She knows. She was there.{/n}
@@ -604,10 +625,10 @@ SCENES.append(scene(P + "watch.third_bell", "The third bell", "Terendelev", 5, "
         c('[Flirt] "You\'re welcome in here any time. With or without the candle."', "end_flirt", flags=(SAT_UP,))),
     te("end", '''{n}She gets up, stiffly, and looks down at you in the chair.{/n} "That is a dangerous offer to make a dragon, crusader. We take things literally, and we come back." {n}At the door she stops.{/n} "Thank you. I will try the dark again tonight. Knowing where the light is may be enough."''',
        c("[Let her go.]")),
-    te("end_flirt", '''{n}She gets up, stiffly, and looks down at you in the chair with an expression that is not in the least drowsy any more.{/n} "With or without the candle." {n}She lets the words sit in the cold air between you.{/n} "I will remember you said that. Silver dragons remember everything that is said to them at the fifth bell. It is very inconvenient for everyone." {n}And she goes, and you hear her laughing on the stair.{/n}''',
+    te("end_flirt", '''{n}She gets up, stiffly, and looks down at you in the chair with an expression that is not in the least drowsy any more.{/n} "With or without the candle." {n}She lets the words sit in the cold air between you.{/n} "I will remember you said that. I remember everything anyone says to me after midnight. It is very inconvenient, mostly for me." {n}And she goes, and you hear her laughing on the stair.{/n}''',
        c("[Let her go.]")),
 ], requires=("trickster.ever", RETURNED, FIRST_NIGHT), forbids=(CLOSED, AEON, COMMITTED, DECLINED), delay=36, last=5,
-    Relationship=REL, Chapters=[5], Remote=True, Kind="visit", ManualOnly=True))
+    Relationship=REL, Chapters=[5], Areas=[DREZEN], Remote=True, Kind="visit", ManualOnly=True))
 
 
 # --- 19. The war table: the Wound's weather ------------------------------------------------------------------------------
@@ -680,12 +701,12 @@ letter(P + "letter.second_report", "The north turret: a second report", [
 
 SCENES.append(reaction("Daeran", P + "react.daeran.cousin", (RETURNED,),
     '''{n}Daeran is lounging in his chair with a glass, and he looks you over with his most delighted expression, the one that usually means somebody else is about to have a very bad day.{/n} "My dear Commander. You raised a dragon from a pyre with your own blood, in front of my cousin's knights, without so much as a chant. I have spent a small fortune on necromancers who could not raise a cat." {n}He swirls the glass.{/n} "And not a necromancer at all, apparently. She bleeds. She blushes. I checked, discreetly." {n}His smile thins.{/n} "My cousin came a very long way to give that creature rest. Do take care, my friend. Galfrey forgives nothing she has knelt over."''',
-    answer_list="4d978cbd2aa780d46874255282039f3f", relationship=REL, forbids=("daeran.dead", "daeran.kicked_out", "galfrey.dead", CLOSED),
+    answer_list="4d978cbd2aa780d46874255282039f3f", relationship=REL, forbids=("daeran.dead", "daeran.kicked_out", "galfrey.dead", CLOSED, "chapter_later"),   # retired (Q6 r2, COX)
     entry='"You look amused, Daeran."', chapter=5, last=5, delay=24, portrait="Daeran"))
 
 SCENES.append(reaction("Regill", P + "react.regill.unsanctioned", (RETURNED,),
     '''{n}Regill does not look up from his report.{/n} "An undead abomination of the Abyss, destroyed by crusade forces at Iz. And then restored, in the field, by the Commander, by an unsanctioned rite of the Commander's own devising, using the Commander's own blood." {n}He sets the pen down.{/n} "There is no article of any code I know that covers it. I have looked. The Order would call it imprudence bordering on criminality." {n}He turns the page over.{/n} "She stood the night watch on the north wall three times this week and reported two lapses among the sentries, both correct. I have noted it. That is all."''',
-    answer_list="2366a8db6481070439fee222c0c52e45", relationship=REL, forbids=("regill.dead", "regill.kicked_out", "regill.left_plot", CLOSED),
+    answer_list="2366a8db6481070439fee222c0c52e45", relationship=REL, forbids=("regill.dead", "regill.kicked_out", "regill.left_plot", CLOSED, "chapter_later"),   # retired (Q6 r2, COX)
     entry='"You have something to say, Regill."', chapter=5, last=5, delay=48, portrait="Regill"))
 
 # --- 22. The mountains: why she came down ------------------------------------------------------------------------------
@@ -731,8 +752,11 @@ SCENES.append(scene(P + "watch.at_the_gate", "At the gate", "Terendelev", 5, "",
         c("Continue", "angry")),
     te("angry", '''"I stood at the foot of that stair for three hours." {n}She is binding the wound again, very fast, very tight.{/n} "I have stood watches over the Wardstone in the dead of winter with demons in the snow, and I have never once been as frightened as I was on that stair. You sat at a table all afternoon bleeding into your shirt, and signed things, and told nobody. I cannot fly to you. I cannot even come into your council. I can only stand here and count the doors you might come out of." {n}The knot goes in hard.{/n} "Do not do that to me again."''',
        c('"I can\'t promise that. It\'s a war."', "war", flags=(QUARRELLED,)),
-       c('"I\'m sorry. I didn\'t think."', "sorry"),
-       c('[Take her hand, the one on the knot.]', "hand")),
+       c('"I\'m sorry. I didn\'t think."', "sorry", forbids=(FLOGGED,)),
+       c('[Take her hand, the one on the knot.]', "hand"),
+       c('"I\'m sorry. I didn\'t think."', "sorry_flogged", requires=(FLOGGED,))),
+    te("sorry_flogged", '''"You did not think. No." {n}The anger goes out of her, and something colder comes in behind it.{/n} "You think a great deal about some skins. You thought long enough about that boy's back in the infirmary to leave the order standing." {n}She pins the dressing.{/n} "You are careful with the people you have decided to be careful with, crusader. I have not yet worked out how you decide. I am not sure I want to."''',
+       c("[Let her help you up.]")),
     te("war", '''{n}She stops with her hands on the knot, and for a breath you think she will walk away from you, there in the gate, in front of the column.{/n} "No. It is a war. And you are the one who goes, and I am the one who waits, and I have done the going for three hundred years and I did not know the waiting was worse." {n}She finishes the knot, gently now.{/n} "Then come back. That is all. I will not ask for more than that. I will only be very unpleasant every time you are late."''',
        c("[Let her help you up.]")),
     te("sorry", '''"You did not think. No." {n}The anger goes out of her all at once, like a held breath.{/n} "You never do, when it is your own skin. You thought a great deal at Iz, with a knife in your hand and my bones in the fire. You are very careful with everyone but yourself." {n}She pins the dressing.{/n} "I know that kind of creature. I was one. Somebody had to stand at the mouth of a cave for a year before I learned better."''',
@@ -740,8 +764,8 @@ SCENES.append(scene(P + "watch.at_the_gate", "At the gate", "Terendelev", 5, "",
     te("hand", '''{n}She lets you. Her hand is shaking; you did not know dragons' hands could shake. She stands on the stair with your hand around hers and the whole yard crossing past pretending not to see, and does not say anything at all until the last of them has gone in.{/n}
 "Three hours," she says finally, very low. "Come inside. You are getting blood on the only coat that fits me."''',
        c("[Go inside with her.]")),
-], requires=("trickster.ever", RETURNED, FIRST_NIGHT), forbids=(CLOSED, AEON), delay=60, last=5, Relationship=REL, Chapters=[5],
-    Remote=True, Kind="visit", ManualOnly=True))
+], requires=("trickster.ever", RETURNED, FIRST_NIGHT, DRESSING), forbids=(CLOSED, AEON), delay=60, last=5, Relationship=REL, Chapters=[5],
+    Remote=True, Kind="visit", ManualOnly=True, Areas=[DREZEN]))
 
 # --- 24. Faith: the prayer that will not come ---------------------------------------------------------------------------
 

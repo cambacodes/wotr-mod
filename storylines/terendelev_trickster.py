@@ -188,7 +188,7 @@ page(P + "memory.square", "What she promised", [
     nar("end", '''{n}The candle gutters and goes out. In the dark the wound aches, dull and patient, the way it has ached every night since the square: the pain she pried loose, come back, exactly as she warned you it would.{/n}
 {n}She kept every other promise she made that day. She kept the city until it killed her.{/n}''',
         c("[Lie down. Sleep, if it comes.]")),
-], requires=("trickster",), forbids=(P + "memory.square", MONSTER_DEAD), delay=24, chapters=(3, 4), kind="memory",
+], requires=("trickster",), forbids=(P + "memory.square", MONSTER_DEAD), delay=24, chapters=(3,), kind="memory", Areas=[DREZEN],
     owner="Memory")
 
 
@@ -438,7 +438,7 @@ page(P + "late.the_wound_calls", "The fire at Iz", [
 {n}Nobody had gone near them. Nobody had looked.{/n}''',
         c("Continue", "absent_queen", requires=("galfrey.dead",)),
         c("Continue", "ride", forbids=("galfrey.dead",))),
-    nar("absent_queen", '''{n}And the Queen had died there, fighting it. The dragon's sorcery, her knights said, and would not say more, and went back to Mendev with her body on a cart. You have been thinking about that, too. About what it would mean, to bring back the thing that killed Galfrey, and whether you have the right, and whether you have the right not to.{/n}''',
+    nar("absent_queen", '''{n}And the Queen had died there. Her knights went back to Mendev with her body on a cart and would not say how, not to you. You have been thinking about that, too: about what it would mean to bring back the dragon whose bones were burning on the field where Galfrey fell, and whether you have the right, and whether you have the right not to.{/n}''',
         c("Continue", "ride")),
     nar("failed", '''{n}You looked into that fire and saw nothing, and turned away. You have been seeing it every night since: the one place at the heart of the skull where the flames did not move quite like flames. You did not see it then. You have not been able to stop seeing it now.{/n}''',
         c("Continue", "ride")),

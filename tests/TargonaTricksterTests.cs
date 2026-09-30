@@ -133,7 +133,7 @@ internal static class TargonaTricksterTests
         var primed = After(setup, lab, "chooses", 0);
         check(primed.Has(P + "primed") && primed.Has(P + "cost.she_told_heaven") && primed.Has(P + "cost.her_sleep")
               && !primed.Has(P + "cost.raised_openly"), "Trk_Targona_Setup: flags.");
-        check(Reaches(World(story, 3, "trickster", "trickster.ever", "targona.dead_lab", P + "primed", P + "told_in_lab", P + "cost.her_sleep"), Committed),
+        check(Reaches(World(story, 3, "trickster", "trickster.ever", "targona.dead_lab", P + "primed", P + "told_in_lab", P + "cost.her_sleep", "targona.abyss_key_held"), Committed),
             "Trk_Targona_Setup: the commit is unreachable after the blow.");
         // Both native outcomes after the primer: [Attack] leads to the payoff; [Destroy the barrier] opens the freed state.
         check(!Rules.Available(story, setup, primed), "The primer can be taken twice.");
@@ -147,8 +147,8 @@ internal static class TargonaTricksterTests
                 "The primer opens after the event: " + gone);
 
         // Trk_Targona_KilledPrimed: the ring. The fight, her crawl back into the sleep and the return with the key are on the page.
-        var killed = World(story, 3, "trickster.ever", "targona.dead_lab", P + "primed", P + "cost.her_sleep");
-        var killedFresh = World(story, 3, "trickster.ever", "targona.dead_lab", P + "cost.her_sleep");
+        var killed = World(story, 3, "trickster.ever", "targona.dead_lab", P + "primed", P + "cost.her_sleep", "targona.abyss_key_held");
+        var killedFresh = World(story, 3, "trickster.ever", "targona.dead_lab", P + "cost.her_sleep", "targona.abyss_key_held");
         killedFresh.Flags.Add(P + "primed"); killedFresh.Times[P + "primed"] = killedFresh.Hour;
         check(!Rules.Available(story, oneSoul, Later(story, killedFresh, 71)) && Rules.Available(story, oneSoul, Later(story, killedFresh, 72)),
             "Trk_Targona_KilledPrimed: the payoff ignores its three nights.");
@@ -158,9 +158,9 @@ internal static class TargonaTricksterTests
         check(ringPages.Contains("ring") && ringPages.Contains("down") && ringPages.Contains("woken") && ringPages.Contains("news_ring")
               && !ringPages.Contains("quiet") && !ringPages.Contains("open") && !ringPages.Contains("cold") && !ringPages.Contains("news"),
             "The ring is not shown, or a retired scroll memory still plays.");
-        check(oneSoul.Nodes.Single(n => n.Id == "ring").Text.Contains("drags herself back", StringComparison.Ordinal)
+        check(oneSoul.Nodes.Single(n => n.Id == "ring").Text.Contains("roll her back over the purple line", StringComparison.Ordinal)
               && oneSoul.Nodes.Single(n => n.Id == "down").Text.Contains("key breaks the ring", StringComparison.Ordinal),
-            "Her own crawl, or the key, is missing from the page.");
+            "The roll back into the sleep, or the key, is missing from the page.");
         var returned = After(oneSoul, killed, "news_ring", 0);
         check(returned.Has(P + "returned") && returned.Has(P + "cost.struck_down") && returned.Has("targona.started")
               && returned.Has(P + "cost.left_for_dead"), "Trk_Targona_KilledPrimed: flags.");
@@ -175,7 +175,7 @@ internal static class TargonaTricksterTests
         // Sol round 5 (INT/HOW): the three nights run from the observed laboratory death (its latch, timestamped by the runtime when
         // recorded), not from a primer taken long before the blow. Only runtime-persisted flags carry times here.
         var early = new Snapshot { Chapter = 3, Area = Drezen, Hour = 9000 };
-        early.Flags.UnionWith(new[] { "trickster.ever", "chapter_later", P + "primed", P + "cost.her_sleep", "targona.dead_lab" });
+        early.Flags.UnionWith(new[] { "trickster.ever", "chapter_later", P + "primed", P + "cost.her_sleep", "targona.dead_lab", "targona.abyss_key_held" });
         early.AvailableContacts.Add(Unit);
         Rules.Complete(story, early);
         early.Times[P + "primed"] = early.Hour - 300;              // the primer, days before the attack
@@ -197,7 +197,19 @@ internal static class TargonaTricksterTests
         }
 
         // Chapter 5 (Q6): the Abyss took the Commander before the third night. One delivery breaks the ring after months.
-        var killed5 = World(story, 5, "trickster.ever", "targona.dead_lab", P + "primed", P + "cost.her_sleep");
+        var killed5 = World(story, 5, "trickster.ever", "targona.dead_lab", P + "primed", P + "cost.her_sleep", "targona.abyss_key_held");
+        // Q6 r2 (INT): the key is read when it is used. Without it neither payoff goes down; both stay open.
+        var keyless = World(story, 3, "trickster.ever", "targona.dead_lab", P + "primed", P + "cost.her_sleep");
+        var keylessPages = new HashSet<string>(); Program.Walk(oneSoul, keyless, (page, _) => keylessPages.Add(page));
+        check(Rules.Available(story, oneSoul, keyless) && keylessPages.Contains("no_key") && !keylessPages.Contains("ring")
+              && Program.Walk(oneSoul, keyless).All(o => !o.Has(P + "returned")), "The ring opens without the Suture's key.");
+        var keyless5 = World(story, 5, "trickster.ever", "targona.dead_lab", P + "primed", P + "cost.her_sleep");
+        check(Program.Walk(longSleep, keyless5).All(o => !o.Has(P + "returned")), "The months-late ring opens without the key.");
+        // Q6 r2 (CAN): a freed angel who heard the sleep plan remembers that plan, not a scroll.
+        var freedAfterPlan = World(story, 5, "trickster", "trickster.ever", "targona.free", "trickster.umd_tier2", P + "told_in_lab", P + "cost.her_sleep", P + "cost.wand_unspent", P + "primed");
+        var fp = new HashSet<string>(); Program.Walk(freeFurlough, freedAfterPlan, (page, _) => fp.Add(page));
+        check(fp.Contains("greet_lab_sleep") && !fp.Contains("greet_lab") && !freeFurlough.Nodes.Single(n => n.Id == "greet_lab_sleep").Text.Contains("scroll", StringComparison.OrdinalIgnoreCase),
+            "The freed angel remembers a scroll she was never shown.");
         check(!Rules.Available(story, oneSoul, killed5) && Rules.Available(story, longSleep, killed5)
               && !Rules.Available(story, longSleep, World(story, 3, "trickster.ever", "targona.dead_lab", P + "primed", P + "cost.her_sleep"))
               && !Rules.Available(story, longSleep, World(story, 5, "trickster.ever", "targona.dead_lab", P + "primed")),

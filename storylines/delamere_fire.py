@@ -56,7 +56,7 @@ HIDE = P + "hide_brace"
 visit(P + "woken.white_stag", "The white stag", [
     nar("fire", '''{n}She has made a fire on the ridge above Drezen, in a fold of the hill where she can see the city's lamps and not smell its gutters, and there is a hare on a green stick over it. When you come limping up out of the dark she does not turn round. She moves over on her log to make room.{/n}''',
         c("[Sit.]", "owe")),
-    dl("owe", '''"Eat." {n}She tears the hare in two and gives you the bigger half, which from her is a speech.{/n} "The boy says you asked him what I was aiming at, before you blew that horn. You should hear it from the one who was doing the aiming. I owe you that, I think. For the leg."''',
+    dl("owe", '''"Eat." {n}She tears the hare in two and gives you the bigger half, which from her is a speech.{/n} "You blew that horn over me without knowing what I was aiming at. You should hear it from the one who was doing the aiming. I owe you that, I think. For the leg."''',
         c('"Tell me about the white stag."', "stag"),
         c('"You don\'t owe me anything."', "debt")),
     dl("debt", '''"Do not tell me what I owe. I have been keeping my own accounts since before your grandmother's grandmother was born." {n}She pokes the fire.{/n} "Listen, and eat, and do not interrupt me. I have not told this in a very long time, and I do not know how much of it is still where I left it."''',
@@ -279,7 +279,7 @@ visit(P + "woken.old_deadeye", "Old Deadeye's house", [
     dl("not_like", '''"No?" {n}She waits. The chapel waits.{/n} "Then tell me what it was like."''',
         c('"...Another time. Not in front of his priest."', "haddo_end")),
     dl("borrowed", '''{n}She looks at you, and there is something new in it: not suspicion, not quite. The look a tracker gives a set of prints she has been following for days, when she understands at last which way they are going.{/n}
-"You heard it too, before you went down. The boy told you what a stag sounds like, and you blew it on my horn, and I came." {n}Her mouth tightens.{/n} "You borrowed my god's voice, jester. Did you know?"''',
+"You blew a stag's call on my horn, and I came." {n}Her mouth tightens.{/n} "You borrowed my god's voice, jester. Did you know?"''',
         c('"Not until tonight. I\'m sorry if that spoils it."', "spoils"),
         c('"I\'d like to say it was all my own idea."', "own_idea")),
     dl("spoils", '''"Spoils it." {n}She shakes her head, slowly.{/n} "Nothing is spoiled. A snare is not less true because the hare did not set it. If my lord left his call lying over my grave, then a jester picked it up and blew it. That is how he always worked. He never did a thing himself if a fool would do it for him."''',
