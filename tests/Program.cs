@@ -481,6 +481,8 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "delamere.trickster.crypt.stag")) DelamereTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "kaylessa.trickster.dead.borrow")) KaylessaTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "mielarah.trickster.tavern.arithmetic")) MielarahTricksterTests.Run(story, Check);
+            // Sol quality pass: Mielarah's retired scenes (gated off with Forbids trickster.ever; ids kept for saves).
+            playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "mielarah" && s.Forbids.Contains("trickster.ever")).Select(s => s.Id));
             if (story.Scenes.Any(s => s.Id == "nidalynn.trickster.eggs.lamp_black")) NidalynnTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "shamira.trickster.killed.voice")) ShamiraTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "jannah.trickster.cage.terms")) JannahTricksterTests.Run(story, Check);

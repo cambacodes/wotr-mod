@@ -20,7 +20,7 @@ from storylines.mielarah_trickster import (
     CLOSED, COMMITTED, CONTACT, CHARTER, CORRECTED, DECLINED, DOCKED, DREZEN, FLOWN, FREED, HUB, HUB_FAILED, HUB_FB,
     KILLED, LANDFALL, LAUGHING, LIED, MEANT, MINDER, MORNING, NIGHT, NOTICED, OSKEL_DEAD, P, RECKONED, REL, RETURNED,
     SECRET_KNOWN, SHIP_LOST, TIGHTENED, TOLD, UNIT, KERZ, NOCTA, D, SAID_USE, CUT, DEAD_LATCH, LANN_GUARD, WOLJIF_GUARD,
-    STORM_OWNED, STORM_BLAMED, PAID, CUT_DOWN, ZYPHUS_MARK)
+    STORM_OWNED, STORM_BLAMED, PAID, CUT_DOWN, ZYPHUS_MARK, STORM)
 
 SCENES = []
 
@@ -292,7 +292,8 @@ deck(D + "correction", "Disciplinary thought-correction", '"I heard shouting on 
        c("Continue", "after")),
     mi("tightened", '''{n}For a moment she only looks at you, and you watch her decide that she heard what she heard.{/n}
 "Cargo." {n}She says it very evenly.{/n} "Yes. I did say that. I said it about Oskel, to stop you spending him, and you have turned it round and handed it back to me by the other end."
-{n}She opens the lacquered box, and takes out one of the amulets, and closes her fist on it.{/n} "It would work. That's the terrible thing. They would never shift again. They'd never mutiny, never quarrel, never laugh either." {n}Her knuckles are white.{/n} "You would make a very good pirate, Commander. I'm going to do it, because you asked me, and because I'm frightened, and I want you to know that I know both of those things."''',
+{n}She opens the lacquered box, and takes out one of the amulets, and closes her fist on it.{/n} "It would work. That's the terrible thing. They would never shift again. They'd never mutiny, never quarrel, never laugh either." {n}Her knuckles are white. Then she puts the amulet back and shuts the lid.{/n}
+"No. I am not going to fly a ship of dolls because a customer thinks it tidier. But I won't pretend I'm above it, either; the last crew I let alone hanged me." {n}She sets the box on the shelf over her bunk, where she can reach it without bending.{/n} "The box stays out. Any man who draws steel on my deck from tonight goes under the amulet on the spot, for one watch, in front of everyone, and his name goes in the log. That is my order, not yours. You would make a very good pirate, Commander. I have met a great many, and I have decided not to become one."''',
        c("Continue", "after")),
     mi("laughing", '''"Limericks." {n}She stares at you.{/n} "You are going to stand on my main deck and recite obscene verse to a crew of Midnight Isles cutthroats, and you think that will..."
 {n}She stops. Something is happening at the corner of her mouth, against her will.{/n} "Yes. All right. You did it to a mutiny once, didn't you, on someone's ship. I heard." She puts the lacquered box back under the bunk. "One evening. If anyone draws a knife, I'm going in with my head, and you will not say a word about it afterwards."
@@ -382,7 +383,13 @@ deck(D + "wheel", "Hold her", '"You said next time, the storm."', [
     nar("storm", '''{n}The storm takes the ship like a fist. Rain comes sideways, hard as gravel, and the deck goes up on its ear, and the rigging howls, and somewhere below a sailor is praying out loud to a god you don't recognise.{/n}
 {n}Mielarah flies it. She flies it the way she must have flown the First, before everything: bare-headed, soaked to the skin, laughing into the wind, the wheel spinning under her hands and coming back, the ship climbing and climbing through the dark. For a while it is the finest thing you have ever seen anyone do.{/n}
 {n}Then the lightning shows you her face, and it has gone the colour of the rain.{/n}''',
-        c("Continue", "spade")),
+        c("Continue", "spade", requires=(STORM,)),
+        c("Continue", "spade_first", forbids=(STORM,))),
+    mi("spade_first", '''"Do you hear it?" {n}She has to shout.{/n} "Tell me you hear it."
+{n}And you do: under the wind, patient and slow and very far down, the sound of a spade going into wet earth. Once. Again.{/n}
+"This is how the First went down. Weather like this, and that sound under it, and I walked away from her and nobody else did." {n}Her knuckles are white on the spokes. The ship is shuddering.{/n} "I have been afraid for six years that one day it will come up behind me at a wheel and my hands will open on their own. I can feel them wanting to."
+"So listen to me." {n}She turns her head, and her eyes are wide and very clear.{/n} "I'm going to let go. On purpose, before they do it for me. Take her. Hold her."''',
+        c("Continue", "letgo")),
     mi("spade", '''"Do you hear it?" {n}She has to shout.{/n} "Tell me you hear it."
 {n}And you do: under the wind, patient and slow and very far down, the sound of a spade going into wet earth. Once. Again.{/n}
 "This is where I let go." {n}Her knuckles are white on the spokes. The ship is shuddering.{/n} "The last time. I felt it come up behind me and I felt my hands open and I watched them do it. I am going to feel it again. I am feeling it now."
@@ -600,8 +607,9 @@ deck(D + "oskel", "What he was for", '"Oskel wants a word?"', [
 deck(D + "stern", "A name on the stern", '"You asked for a steady pair of hands?"', [
     nar("start", '''{n}She did. She is sitting in a bosun's chair slung over Starcatcher's stern, a hundred fathoms above Drezen, with a paint pot hooked to the rope beside her and a brush in her hand, and she wants somebody at the rail to pay out the line and not drop her.{/n}
 {n}"The crew won't do it," she calls up, over the wind. "They say it's bad luck to paint a dead man's name. They're sailors of the Midnight Isles. They say everything is bad luck. They are usually right."{/n}''',
-        c("[Take the line.]", "paint", forbids=(CUT_DOWN,)),
-        c("[Take the line.]", "paint_cut", requires=(CUT_DOWN,))),
+        c("[Take the line.]", "paint", forbids=(CUT_DOWN, STORM)),
+        c("[Take the line.]", "paint_cut", requires=(CUT_DOWN,)),
+        c("[Take the line.]", "paint_storm", requires=(STORM,), forbids=(CUT_DOWN,))),
     mi("paint_cut", '''{n}You pay out the line, and she goes down the stern a little at a time, and under the ship's name, in small white letters, she begins to paint another.{/n}
 "O. S. K." {n}She talks while she paints, not to you exactly, in the rasp the rope left her.{/n} "He could not read. I taught him his own name, the first year, with chalk on the capstan. He was so angry that it only had five letters. He'd thought it would be longer, a man that size."
 "He liked sweet things. He stole sugar from the galley and pretended he hadn't. He sang, badly, in the heads, where he thought nobody could hear." {n}The brush moves.{/n} "He stood at the rail at Vazglar and did nothing, and then he flew ashore for you, and went up to my yard and cut me down. He was nearest. Somebody sent him."''',
@@ -612,7 +620,12 @@ deck(D + "stern", "A name on the stern", '"You asked for a steady pair of hands?
        c("Continue", "done")),
     mi("paint", '''{n}You pay out the line, and she goes down the stern a little at a time, and under the ship's name, in small white letters, she begins to paint another.{/n}
 "O. S. K." {n}She talks while she paints, not to you exactly.{/n} "He could not read. I taught him his own name, the first year, with chalk on the capstan. He was so angry that it only had five letters. He'd thought it would be longer, a man that size."
-"He liked sweet things. He stole sugar from the galley and pretended he hadn't. He sang, badly, in the heads, where he thought nobody could hear." {n}The brush moves.{/n} "He held my wheel a whole minute in a hurricane once. Or he hauled a noose. It depends which world you're standing in. In both of them he was nearest, and in both of them somebody put him there."''',
+"He liked sweet things. He stole sugar from the galley and pretended he hadn't. He sang, badly, in the heads, where he thought nobody could hear." {n}The brush moves.{/n} "At Vazglar he had the noose on me before I'd finished a sentence, because he was nearest. He always was. Then the block split, and the line took him over the rail instead. He was nearest, and somebody put him there."''',
+       c('"I put him there."', "you"),
+       c("[Hold the line and say nothing.]", "quiet")),
+    mi("paint_storm", '''{n}You pay out the line, and she goes down the stern a little at a time, and under the ship's name, in small white letters, she begins to paint another.{/n}
+"O. S. K." {n}She talks while she paints, not to you exactly.{/n} "He could not read. I taught him his own name, the first year, with chalk on the capstan. He was so angry that it only had five letters. He'd thought it would be longer, a man that size."
+"He liked sweet things. He stole sugar from the galley and pretended he hadn't." {n}The brush moves.{/n} "When my hands came off the wheel in the hurricane, his went on. He held her a whole minute, head into the wind, all by himself. Then the mast came down across the helm. He was nearest, and somebody put him there."''',
        c('"I put him there."', "you"),
        c("[Hold the line and say nothing.]", "quiet")),
     mi("you", '''"You did." {n}She does not look up.{/n} "And I let you. I've put the brush in your hand, as it were, by asking you to hold this rope. I thought that was fair. You can let go any time, you know. The crew say I would survive the fall. They're probably right about that as well."

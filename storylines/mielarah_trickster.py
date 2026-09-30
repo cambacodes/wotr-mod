@@ -159,7 +159,7 @@ RELATIONSHIP = dict(
 
 DERIVED = {
     CONTACT: [[LANDFALL], [RETURNED], [CHARTER, KERZ], [CHARTER, NOCTA]],
-    LATE_COMMITTED: [["trickster.ever", FLOWN]],
+    LATE_COMMITTED: [["trickster.ever", COMMITTED]],     # Sol INT: a first flight is not a commitment; only the wheel is
     D + "oskel_settled": [[D + "stern"], [D + "oskel_spoke"]],
 }
 
@@ -565,10 +565,11 @@ remote(P + "raid.rope", "The man on the rope", [
        c("Continue", "block")),
     mi("block", '''"And the block at the yardarm split." {n}She says it with a kind of wonder.{/n} "Ironwood, three years old, rated for a ton. It came apart like a dropped plate. The yard swung down, the line went round his arm, and it took him over the rail."
 "He had wings, Commander. He was the one man on that ship who could not die of a fall. His wings fouled in the ratlines as he went over, and he hung there by one arm and one wing, and then the line ran out, and he didn't."
-{n}She is quiet.{/n} "The noose went slack. I was on the deck with my face in the tar, and I had exactly enough breath for the southern wind. So I called it. It blew all night."''',
+{n}She is quiet.{/n} "I had already called the southern wind, with the last breath the noose left me. After that there was nothing. The crew will tell you I died on that deck in a few seconds. They saw it. So did you. I think, for a while, it was true."
+"But the noose had gone slack when the block went, and nobody would come near enough to make sure of me. I woke in the scuppers after midnight with the wind still blowing and my face in the tar, and the whole crew at the far rail, watching me breathe as if I were a ghost."''',
        c("Continue", "crew")),
     mi("crew", '''"Nobody came near me after that. Not one of them. They stood at the far rail all night, watching me breathe, and in the morning they put their knives on the deck without being asked."
-"At Colyphyr I didn't come out of my cabin. I heard you disembark. I didn't trust myself to look at you." {n}Her hand tightens on the scarf.{/n} "After, I put the eleven men who had held that rope off on the first rock with water on it. My code says I never ignore those in distress." {n}A very thin smile.{/n} "They weren't in distress until I left them there. I have decided that counts."''',
+"I told them that if one word of it reached the passenger, I would go and stand next to them. Not one of them said a word. At Colyphyr I didn't come out of my cabin. I heard you disembark, believing what you had seen. I didn't trust myself to look at you." {n}Her hand tightens on the scarf.{/n} "After, I put the eleven men who had held that rope off on the first rock with water on it. My code says I never ignore those in distress." {n}A very thin smile.{/n} "They weren't in distress until I left them there. I have decided that counts."''',
        c("Continue", "told", requires=(TOLD,)),
        c("Continue", "lied", forbids=(TOLD,))),
     mi("told", '''"You told me why, at my own table. I told him, and I paid him his freedom, and he spent it sitting next to me." {n}She looks at you, and her eyes are perfectly dry.{/n} "So we did it together, the three of us. You chose him, I paid him, and he stayed. And he's dead, and I'm alive, and his wings are somewhere at the bottom of the Ishiar, with my gold in his shirt."''',
@@ -657,7 +658,8 @@ remote(P + "raid.elbow", "Nearest", [
 {n}Your knife was out before the line went taut. It parted the rope a hand above the knot, and she went down on the deck, and you went down with her, and the man on the other end of the line sat down hard with nothing to haul.{/n}''',
         c("Continue", "block")),
     nar("block", '''{n}Then the block at the end of the main yard, which had taken the line's first jerk, turned once, and its pin sheared, and it came down forty feet.{/n}
-{n}It took you across the shoulder instead of the skull, because you are what the Wound made you and a sailor is not, and the collarbone went with a sound like a snapped oar. You did not let go of her. With the breath the noose had left her she called the southern wind, and the ship leaned away from Vazglar, and nobody on that deck came within ten strides of either of you again.{/n}
+{n}It took you across the shoulder instead of the skull, because you are what the Wound made you and a sailor is not, and the collarbone went with a sound like a snapped oar. You did not let go of her. With the breath the noose had left her she called the southern wind, and the ship leaned away from Vazglar, and then she went still in your arms.{/n}
+{n}She did not breathe. For a count of ten the whole deck saw it, and so did you: the captain dead on her own quarterdeck in a few seconds, as the crew would tell it in every tavern afterwards. Then, under your hand, her throat worked, and she dragged in air like a woman coming up from deep water, and nobody on that deck came within ten strides of either of you again.{/n}
 {n}When the bruise came up, it came up grey, the grey of turned earth, in the shape of a spade's blade. It has not faded.{/n}''',
         c("Continue", "cabin")),
     mi("cabin", '''{n}She comes to you the next night, in the cabin they gave you, with a scarf wound high round her throat, and sits on your sea chest without asking. Her voice is a rasp, but it is hers.{/n}
@@ -833,15 +835,15 @@ remote(P + "storm.word", "Word at the Bad Luck", [
         c("[Let her go.]", "let_go")),
     nar("unknown", '''{n}You think about the story she told you in the Bad Luck: the Gravedragger, the curse, the two ships lost before this one. Starcatcher the First went down in a storm, and she walked away. Starcatcher the Second broke on the rocks, and she walked away from that too.{/n}
 {n}Everything near her died, and nothing happened to her. If you could be sure of why, you would know whether to look for her.{/n}''',
-        c('[Lore (Religion) DC 28] Work out what a herald of Zyphus would want with her.', requires=(TOLD_CURSE,),
+        c('[Lore (Religion) DC 28] Work out what a herald of Zyphus would want with her.', requires=(TOLD_CURSE, "trickster"),
           check=dict(Skill="SkillLoreReligion", DC=28, Success="reasoned", Failure="diviner", CommanderOnly=True)),
-        c("[Pay a diviner of the Midnight Isles to look for her.]", "paid", crusade=("Finances", -300)),
+        c("[Pay a diviner of the Midnight Isles to look for her.]", "paid", crusade=("Finances", -300), requires=("trickster",)),
         c("[Let her go.]", "let_go")),
     nar("reasoned", '''{n}Zyphus's priests hold that no death is written in advance; an accident does not aim, it collects. Her curse has never collected her. It collects whoever is standing nearest when trouble comes, and leaves her in the middle of the wreckage without a scratch, to count. She is alive. She is always alive.{/n}''',
         c("[Send word to every aeronauts' tavern in the Midnight Isles: the passenger lived, and is waiting for the captain.]",
           flags=(WORD, LATE, PATTERN))),
     nar("diviner", '''{n}You get as far as the Gravedragger and no further. What a herald of the god of pointless death wants with one woman is a question for priests you do not have.{/n}''',
-        c("[Pay a diviner of the Midnight Isles to look for her.]", "paid", crusade=("Finances", -300)),
+        c("[Pay a diviner of the Midnight Isles to look for her.]", "paid", crusade=("Finances", -300), requires=("trickster",)),
         c("[Let her go.]", "let_go")),
     nar("paid", '''{n}The diviner is a thing with too many eyes that works out of a teahouse in Alushinyrra and charges in advance. It looks into a bowl of seawater for a long time and then laughs, a wet little laugh.{/n}
 {n}"The Gravedragger's pet? Of course she's alive. Nothing near her lives, and nothing kills her. She's floating on a hatch cover two hundred miles south, cursing in three languages." It holds out a hand for the rest of the fee.{/n}''',
@@ -908,6 +910,36 @@ remote(P + "charter.letter", "Through the Worldwound", [
     RequiresAnyGroups=[[KERZ, NOCTA]])
 
 
+# --- 6a. The rumour (Chapter 5): for a live Trickster who missed her table and sailed with Kerz or Nocticula's captain. --
+# A real act now (a reading rolled, or a clerk paid), a fee paid in advance for the charter (the worse terms), cost.late.
+
+remote(P + "charter.rumour", "Six crew in two years", [
+    nar("start", '''{n}The Midnight Isles reach Drezen by strange roads. This one arrives as a bundle of Alushinyrra broadsheets that a portal-merchant in the lower town sells by weight, three weeks stale. On the back page, between a notice of a slave auction and a recipe for eel:{/n}
+{n}"MAGISTER MIELARAH of STARCATCHER, cursed by the Gravedragger (see our issue of last spring), seeks honest cargo for any sky. Six of her crew dead by misadventure in two years. The captain unharmed. Passengers are advised to stand well back."{/n}''',
+        c("[Lore (Religion) DC 22] Go back through the stack for every death near her ship, and where each man was standing.",
+          check=dict(Skill="SkillLoreReligion", DC=22, Success="rule", Failure="muddle", CommanderOnly=True)),
+        c("[Pay a Midnight Isles clerk in the lower town to copy out Starcatcher's rolls of the dead.]", "clerk",
+          crusade=("Finances", -200)),
+        c("[Put the broadsheet down.]", abort=True)),
+    nar("muddle", '''{n}The broadsheets disagree about everything but the count. One man fell from the yard, or was pushed, or was drunk; one choked, or was poisoned, or was cursed twice. You need the rolls, not the gossip.{/n}''',
+        c("[Pay the clerk for the rolls.]", "clerk", crusade=("Finances", -200)),
+        c("[Put the broadsheet down.]", abort=True)),
+    nar("clerk", '''{n}The clerk is a thin tiefling who keeps the Isles' shipping rolls in a cellar and charges by the line. Two days later he brings you six entries in a copying hand, with the watch, the weather and the station of every man.{/n}''',
+        c("Continue", "rule")),
+    nar("rule", '''{n}Stale news is still news. A steward with a tray, at her elbow. The mate beside her at the wheel. A girl selling apples across a counter from her. Every one of them the nearest living thing to the captain when the trouble came, and never once the captain.{/n}
+{n}The curse does not aim. It takes whoever stands nearest.{/n}''',
+        c("Continue", "write")),
+    nar("write", '''{n}You write to her care of the Bad Luck, by the portal-merchant's post, which costs more than his broadsheets: a charter to Drezen for an honest ship, cargo in and wounded out, at her rates, the whole voyage paid in advance. And one line more, because she will want to know what you are buying: "Your curse takes whoever stands nearest. I will see to who stands there."{/n}''',
+        c("[Seal it, with the fee.]", "reply", crusade=("Finances", -500)),
+        c("[Burn it instead.]", abort=True)),
+    mi("reply", '''{n}Her answer comes back through the same post in nine days, on the back of a bill of lading, in a small upright hand that has pressed hard enough in one place to tear the paper.{/n}
+"Commander. I have had a great many letters about my curse. Most come from priests offering to lift it for a fee; one came from a man in Nex who wanted to buy it. Yours is the first that told me something I did not know."
+"You went to Colyphyr with another captain. I hear you came back. I shan't ask what that was like; I can guess. Your gold is received and I have already spent some of it. Starcatcher comes north through the Worldwound when her holds are full. Keep the people nearest you sensible until then. M."''',
+        c("[Keep the letter.]", flags=(CHARTER, STARTED, PATTERN, LATE))),
+], requires=("trickster", "trickster.ever"), forbids=(PATTERN, CHARTER, HIRED, CLOSED), delay=24, chapters=(5,), kind="event",
+    RequiresAnyGroups=[[KERZ, NOCTA]])
+
+
 # --- 6b. The spade (Chapter 5, the Commander alone: the Gravedragger has noticed; the finale hook). ---------------
 
 DREAMT = P + "cost.dreamt"
@@ -934,12 +966,12 @@ remote(P + "spade.dream", "The spade", [
 
 SCENES.append(reaction("Woljif", P + "react.woljif_oskel", (OSKEL_DEAD,),
     '''"Chief. Word in the Midnight Isles is, you put the biggest, meanest sailor in the sky next to the cursed lady on purpose. So he'd be the one it got." {n}Woljif rubs the back of his neck.{/n}
-"That's the coldest thing I ever heard, and I grew up in Alushinyrra. Remind me never to stand next to you in a thunderstorm."''',
+"That's the coldest thing I ever heard, and I grew up in Kenabres, where the inquisitors'd hang a thiefling for a loaf and call it a sermon. Remind me never to stand next to you in a thunderstorm."''',
     answer_list=WOLJIF_HUB, forbids=(*WOLJIF_GUARD, CUT_DOWN), chapter=4, last=5, entry='"About Mielarah..."', portrait="Woljif"))
 
 SCENES.append(reaction("Woljif", P + "react.woljif_yard", (CUT_DOWN, OSKEL_DEAD),
     '''"Chief. Word in the Midnight Isles is, the cursed lady's crew strung her up off her own yard at Vazglar, and nobody'd go near, and then you come flyin' back off the raid and sent her big bosun up there with a knife. Knowin'." {n}Woljif rubs the back of his neck.{/n}
-"I grew up in Alushinyrra. I seen people do colder. I just never seen 'em do it so tidy. Remind me never to climb nothin' for you."''',
+"I grew up in Kenabres. Inquisitors there'd string a kid up for pickin' the wrong pocket. I seen colder. I just never seen it so tidy. Remind me never to climb nothin' for you."''',
     answer_list=WOLJIF_HUB, forbids=WOLJIF_GUARD, chapter=4, last=5, entry='"About Mielarah..."', portrait="Woljif"))
 
 SCENES.append(reaction("Lann", P + "react.lann_captain", (FLOWN,),
@@ -968,7 +1000,7 @@ SCENES.append(scene(P + "epilogue.committed", "", "MielarahEpilogue", 6, "", [
             p("{n}Oskel stayed aboard as bosun for eleven years and never once stood at her elbow again. When he retired to a quiet life on a quiet plane, it was on gold she paid him, and the last thing he said to the Commander was \"I know what I was for.\" It was not unkind. It was not kind either.{/n}", requires=(MEANT,), forbids=(OSKEL_DEAD,)),
             p("{n}Starcatcher the Fourth was an ugly sloop and stayed one. Her captain refused every offer to replace her. \"This one,\" she said, \"I keep.\"{/n}", requires=(SHIP_LOST,)),
             p("{n}Her crew served without amulets. Some of them deserted. Most of them stayed, and when they fought on deck it was over cards, and she let them.{/n}", requires=(FREED,)),
-            p("{n}Her crew served with the amulets, closer than ever, and never once mutinied, and never once laughed. The Commander had asked for that. Neither of them spoke about it afterwards.{/n}", requires=(TIGHTENED,)),
+            p("{n}She kept the lacquered box on the shelf over her bunk for the rest of her flying life, and used it on any sailor who drew steel on her deck: one watch under the amulet, in front of everyone, and his name in the log. Never more than that. She never let the Commander forget who had asked for more.{/n}", requires=(TIGHTENED,)),
             p("{n}On long night watches her crew recited limericks, badly and in rotation, and the worst offenders were made to climb the rigging to do it. Nobody on Starcatcher has stepped off the rail since.{/n}", requires=(LAUGHING,)),
             p("{n}Once a year, on the anniversary of Vazglar, she wore the scarf, and would not say why to anyone but the Commander.{/n}", requires=(RETURNED, DEAD_LATCH)),
             p("{n}The Commander carried a grey mark in the shape of a spade's blade on one shoulder for the rest of their life. Surgeons would not touch it. She would, sometimes, with two fingers, the way she corrected a helmsman.{/n}", requires=(ZYPHUS_MARK,)),
@@ -988,7 +1020,7 @@ SCENES.append(scene(P + "epilogue.committed", "", "MielarahEpilogue", 6, "", [
             p("{n}And somewhere far below the clouds, patient as a man with all the time in the world, a spade went on digging for the Commander. It is digging still. It has not yet been allowed to finish.{/n}", requires=(NOTICED,)),
         )),
 ], requires=("trickster.ever", COMMITTED), forbids=(CLOSED, "sacrifice"),
-    ForbidOverrides={"sacrifice": "trickster.cheated_death"}, **EP))
+    ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
 
 SCENES.append(scene(P + "epilogue.late", "", "MielarahEpilogue", 6, "", [
     nar("page", '''{n}The spring after Threshold, a ship with an anchor on her flag came down out of a clear sky over Drezen and hung there, a hundred feet up, while her captain let down a rope ladder and climbed to the bottom of it and did not step off.{/n}
@@ -999,11 +1031,21 @@ SCENES.append(scene(P + "epilogue.late", "", "MielarahEpilogue", 6, "", [
     nar("climb", '''{n}The ladder swung under both of you all the way up, and she laughed at you the whole time, and at the top she put your hands on the spokes and took hers away. Starcatcher went north that afternoon, over the healed ground where the Worldwound had been, and held her course the whole way.{/n}'''),
     nar("stay", '''{n}She looked down at you for a while, swinging gently on the ladder over the rooftops. Then she nodded, as if a column of figures had come out the way she expected, and climbed back up. Starcatcher was over the horizon by evening. Every spring after that, a bill of lading arrived in Drezen for one passenger, fare paid, berth unassigned.{/n}'''),
 ], requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED, "sacrifice"),
-    ForbidOverrides={"sacrifice": "trickster.cheated_death"}, **EP))
+    ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
+
+
+# Sol quality pass (TRK): the hanging with nobody posted was recovered inside a retrospective memory (the rescue the player
+# never chose, R2-2). After Cue_0482 no present act can answer it short of a raise, and the campaign's one raise is Irabeth's;
+# the raid is the Commander's own order over her protest (Answer_0404), so an unprepared hanging keeps canon fate, as the kill
+# at Colyphyr does. The prepared paths (the bosun, the Commander at her elbow) stay. Retired by gating, never deleted.
+RETIRED = (P + "raid.wind", P + "raid.whisper", P + "react.woljif_yard")
 
 
 def integrate(payload):
     """Register her presences, derived keys, world bindings and portrait fallback. Scenes are added by expansion.py."""
+    for s in payload["Scenes"]:
+        if s["Id"] in RETIRED:
+            s["Forbids"].append("trickster.ever")
     payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
     for key, groups in DERIVED.items():
         have = payload.setdefault("Derived", {}).get(key)
