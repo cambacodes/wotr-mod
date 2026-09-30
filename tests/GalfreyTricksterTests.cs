@@ -156,7 +156,7 @@ internal static class GalfreyTricksterTests
         foreach (var s in own)
             foreach (var key in s.Requires.Concat(s.RequiresAnyGroups.SelectMany(g => g)).Where(k => k.StartsWith(P, StringComparison.Ordinal)))
                 check(produced.Contains(key) || story.Derived.ContainsKey(key) || own.Any(o => o.Id == key), "A gate has no producer: " + s.Id + " requires " + key);
-        check(own.Where(s => s.Nodes.SelectMany(n => n.Choices).Any(c => c.Set.Contains(Committed))).All(s => s.Id.StartsWith(P + "commit", StringComparison.Ordinal)),
+        check(own.Where(s => s.Nodes.SelectMany(n => n.Choices).Any(c => c.Set.Contains(Committed))).All(s => s.Id.StartsWith(P + "commit", StringComparison.Ordinal) || s.Id == P + "alive.oath"),
             "Something other than the oath or its release commits her.");
 
         // Trk_Galfrey_Pacing: a beat in Chapters 2, 3 and 4 on every path.
@@ -278,9 +278,9 @@ internal static class GalfreyTricksterTests
         var crowsOrder = Later(story, morning, 30, null, P + "kitrane.squire_sworn");
         var hanged = One(ford, Later(story, crowsOrder, 30), new[] { P + "ride.refused_order", P + "ride.hanged" });
         check(!Rules.Available(story, oath, Later(story, hanged, 60)), "Trk_Galfrey_Ford: the oath is offered over six unanswered ropes.");
-        var promised = One(S(P + "kitrane.ford_after"), Later(story, hanged, 30), new[] { P + "ride.promised" }, P + "ride.answered");
-        check(!Rules.Available(story, oath, Later(story, promised, 60)), "Trk_Galfrey_Ford: a promise opens the oath before it is kept.");
-        var answered = One(S(P + "kitrane.tallow"), Later(story, promised, 20), new[] { P + "ride.answered" });
+        check(Program.Walk(S(P + "kitrane.ford_after"), Later(story, hanged, 30)).Any(r => !r.Has(P + "ride.answered")),
+            "Trk_Galfrey_Ford: refusing her terms is not a way out of the scene.");
+        var answered = One(S(P + "kitrane.ford_after"), Later(story, hanged, 30), new[] { P + "ride.answered" });
         check(Rules.Available(story, oath, Later(story, answered, 60)), "Trk_Galfrey_Ford: her terms met, the oath stays shut.");
         var hangedAfter = Later(story, yes, 1, null, P + "ride.hanged", P + "ride.refused_order");
         check(!Rules.Available(story, tent, Later(story, hangedAfter, 20)), "Trk_Galfrey_Ford: the tent opens over an unanswered hanging after the commit.");
@@ -290,9 +290,27 @@ internal static class GalfreyTricksterTests
         var native = World(story, 6, "trickster.ever", "iz.fought_with_galfrey", "galfrey.romance_active", "galfrey.romance_finished", "galfrey.final");
         check(!World(story, 6, "trickster.ever", "iz.fought_with_galfrey", "galfrey.romance_active", "galfrey.final").Has(P + "partner"),
             "Trk_Galfrey_NativeFirst: an unfinished native courtship counts as a partner.");
-        check(!own.Where(s => s.TricksterDevice || s.MinChapter == 5).Any(s => Rules.Available(story, s, World(story, 5, "trickster", "trickster.ever",
+        check(!own.Where(s => s.TricksterDevice).Any(s => Rules.Available(story, s, World(story, 5, "trickster", "trickster.ever",
                   "iz.fought_with_galfrey", "galfrey.romance_active", "galfrey.final", "coronation.after", "coronation.seen"))),
-            "Trk_Galfrey_NativeFirst: a Chapter 5 Galfrey scene opens where she lives.");
+            "Trk_Galfrey_NativeFirst: a Kitrane device opens where she lives.");
+        // Trk_Galfrey_Living: on the Trickster path her own Chapter 5 answer is "friendship is all I can offer you" (Cue_0041);
+        // the living courtship answers it as Kitrane, earned by one plan told and kept, and commits by the refused oath.
+        var living = World(story, 5, "trickster", "trickster.ever", "iz.fought_with_galfrey", "galfrey.final", "galfrey.native_refused",
+                           "coronation.after", "coronation.seen");
+        var livingKitrane = S(P + "alive.kitrane");
+        check(Rules.Available(story, livingKitrane, living) && livingKitrane.AnswerLists.SequenceEqual(new[] { "fed166af2f1d509478d18ea63a40339f" })
+              && livingKitrane.NativeReturnCue == "344bc63f6bbace64fab2a3e6c69561fe"
+              && !Rules.Available(story, livingKitrane, World(story, 5, "trickster", "trickster.ever", "galfrey.final", "galfrey.romance_active")),
+            "Trk_Galfrey_Living: the living courtship is shut after her native refusal, or opens while her native romance is active.");
+        var evening = One(livingKitrane, living, new[] { P + "alive.evening" });
+        var plan = S(P + "alive.plan");
+        check(Program.Walk(plan, Later(story, evening, 50)).Any(r => !r.Has(P + "alive.plan_kept")), "Trk_Galfrey_Living: a half-told plan still earns her.");
+        var planKept = One(plan, Later(story, evening, 50), new[] { P + "alive.plan_kept" });
+        var livingYes = One(S(P + "alive.oath"), Later(story, planKept, 50), new[] { Committed });
+        check(Program.Walk(S(P + "alive.oath"), Later(story, planKept, 50)).Any(r => !r.Has(Committed))
+              && Rules.Available(story, S(P + "epilogue.alive"), World(story, 6, livingYes.Flags.ToArray()))
+              && World(story, 6, livingYes.Flags.ToArray()).Has(P + "partner"),
+            "Trk_Galfrey_Living: the living commit has no no of hers, or no page, or no Last Call seat.");
         check(native.Has(P + "partner") && native.Has("galfrey.harem.eligible")
               && pages.Count(s => Rules.Available(story, s, native)) == 1 && Rules.Available(story, S(P + "epilogue.native"), native),
             "Trk_Galfrey_NativeFirst: the native world does not count her once, with exactly one page.");
@@ -305,7 +323,7 @@ internal static class GalfreyTricksterTests
             "Trk_Galfrey_Pages: the bottle-survival world does not get exactly the shared-life page.");
         // Carriers: Irabeth's firsthand accounts only where she carried the order; the Crows' version where they did.
         var byIrabeth = World(story, 5, back.Flags.Concat(new[] { P + "carried.irabeth" }).Where(f => f != P + "carried.crows").ToArray());
-        var byCrows = World(story, 5, back.Flags.Concat(new[] { P + "carried.crows" }).Where(f => f != P + "carried.irabeth").ToArray());
+        var byCrows = World(story, 5, back.Flags.Concat(new[] { P + "carried.crows", P + "carried.crows_drezen" }).Where(f => f != P + "carried.irabeth").ToArray());
         byIrabeth.Hour += 100; byCrows.Hour += 100;
         check(Rules.Available(story, S(P + "react.irabeth.carried"), byIrabeth) && !Rules.Available(story, S(P + "react.irabeth.carried"), byCrows)
               && Rules.Available(story, S(P + "react.irabeth.learned"), byCrows) && !Rules.Available(story, S(P + "react.irabeth.learned"), byIrabeth),
@@ -333,14 +351,14 @@ internal static class GalfreyTricksterTests
         }
 
         // Reactions and pages.
-        check(reactions.Length == 10 && reactions.All(s => s.Nodes.Count == 1)
+        check(reactions.Length == 11 && reactions.All(s => s.Nodes.Count == 1)
               && new[] { "Irabeth", "Seelah", "Hulrun", "Daeran", "Thaberdine" }.All(o => reactions.Any(s => s.Owner == o))
               && reactions.Where(s => s.Owner == "Irabeth").All(s => s.Forbids.Contains("irabeth_dead")
                   && s.ForbidOverrides.TryGetValue("irabeth_dead", out var r) && r == "irabeth.trickster.returned"),
             "Galfrey's reactors are not Irabeth (five), Seelah, Hulrun (two), Daeran and the King, or Irabeth's are unguarded.");
-        check(pages.Length == 6 && pages.All(s => s.MinChapter == 6 && s.MaxChapter == 6 && s.Requires.Contains("trickster.ever")
+        check(pages.Length == 7 && pages.All(s => s.MinChapter == 6 && s.MaxChapter == 6 && s.Requires.Contains("trickster.ever")
                   && s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0)),
-            "Her epilogue pages are not six read-only Trickster Chapter 6 pages.");
+            "Her epilogue pages are not seven read-only Trickster Chapter 6 pages.");
 
         Console.WriteLine("PASS: Galfrey Trickster (Trk_Galfrey_*): the Kitrane question in Chapters 2-4 on every path, the offer at the bed "
             + "read or blind, for Mendev refused and for her taken, the road, the eulogy, the letter from the rubble, the return, the oath refused "

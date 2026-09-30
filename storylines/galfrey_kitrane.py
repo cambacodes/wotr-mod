@@ -14,7 +14,7 @@ accepted, the tent in the field camp, the war table, and her last choice: Kitran
 import copy
 
 from story_format import c, n, scene
-from storylines.galfrey_trickster import (SEELAH_BED, MANU, CARRIED_CROWS, CARRIED_IRABETH,
+from storylines.galfrey_trickster import (SEELAH_BED, MANU, CROWS_DREZEN, NATIVE_REFUSED, FINAL, FINISHED, LET_DIE, CARRIED_CROWS, CARRIED_IRABETH,
     ALONE, BLIND, CLOSED, COFFIN, COMMITTED, CROWN, DEAD, DISGUISED, DRILL, DREZEN, EULOGY_SIGN, EULOGY_LEGEND, EULOGY_TRUE,
     FAREWELL, FOREVER, KEPT, LETTER_BURNED, LETTER_MOOTED, NAMED, OFFER_REFUSED, P, PLANTED, READ, REFUSED_ORDER, REL, RENT,
     RETURNED, ROMANCE, SWORN, TENT, TERENDELEV_BACK, tag)
@@ -105,7 +105,7 @@ beat(P + "after.first_morning", "Boots", '"Did you get your boots?"', [
         c("Continue", "morning")),
     ki("cheated", '''"Abominably." {n}She looks delighted.{/n} "By a man with one eye and a very sad story about his mother. I did not believe a word of it, and I paid him anyway, and he winked at me when he gave me my change. The Queen would have had him flogged, or given him a pension. Kitrane has been cheated at a market stall, like anybody." {n}She considers the boots.{/n} "They pinch. I intend to wear them until they do not."''',
         c("Continue", "morning")),
-    ki("morning", '''"I have been standing here since the sixth bell. Nobody has bowed. Nobody has asked me to decide anything." {n}She watches a woman go past with a basket of eels, a boy with a crate of chickens, two off-duty pikemen arguing about a girl.{/n} "A child sold me a pie. It was cold in the middle. I ate it standing up, in the street, with my fingers." {n}Something moves in her face, and is mastered.{/n} "I have eaten at every high table between Nerosyan and Absalom, Commander. I do not think I have ever enjoyed a meal so much."''',
+    ki("morning", '''"I have been standing here since the sixth bell. Nobody has bowed. Nobody has asked me to decide anything." {n}She watches a woman go past with a basket of eels, a boy with a crate of chickens, two off-duty pikemen arguing about a girl.{/n} "I have cut my hair with the sergeant's knife and I wear the Crows' old helm, and I find that nobody looks at the face under a minor order's helm; they look at the surcoat, and decide I am nobody, and look away. A child sold me a pie. It was cold in the middle. I ate it standing up, in the street, with my fingers." {n}Something moves in her face, and is mastered.{/n} "I have eaten at every high table between Nerosyan and Absalom, Commander. I do not think I have ever enjoyed a meal so much."''',
         c('"What will you do with the rest of the day?"', "day"),
         c('[Flirt] "You have pie on your chin, Kitrane."', "chin")),
     ki("chin", '''{n}Her hand goes to her chin before she can stop it. There is no pie on her chin. She looks at you for a long, flat second, with the whole century of her reign in it.{/n} "That," says Kitrane of the Green Crows, "was impudent." {n}Then she laughs, a real laugh, and a pikeman turns to look.{/n} "Nobody has lied to me for my own amusement in a hundred years. Do it again sometime. Not today."''',
@@ -220,8 +220,10 @@ beat(P + "kitrane.irabeth", "The Knight-Captain", '"You were watching the barrac
     ki("start", '''"I was." {n}She does not pretend otherwise.{/n}''',
         c("Continue", "alive", requires=(CARRIED_IRABETH,), forbids=("irabeth_dead",)),
         c("Continue", "alive", requires=(CARRIED_IRABETH, "irabeth_dead", "irabeth.trickster.returned")),
-        c("Continue", "drezen", forbids=(CARRIED_IRABETH, "irabeth_dead")),
-        c("Continue", "drezen", requires=("irabeth_dead", "irabeth.trickster.returned"), forbids=(CARRIED_IRABETH,)),
+        c("Continue", "drezen", requires=(CROWS_DREZEN,), forbids=("irabeth_dead",)),
+        c("Continue", "drezen", forbids=(CARRIED_IRABETH, CROWS_DREZEN, "irabeth_dead")),
+        c("Continue", "drezen", requires=(CROWS_DREZEN, "irabeth_dead", "irabeth.trickster.returned")),
+        c("Continue", "died_back", requires=("irabeth_dead", "irabeth.trickster.returned"), forbids=(CARRIED_IRABETH, CROWS_DREZEN)),
         c("Continue", "gone", requires=("irabeth_dead", CARRIED_IRABETH), forbids=("irabeth.trickster.returned",)),
         c("Continue", "gone_before", requires=("irabeth_dead",), forbids=("irabeth.trickster.returned", CARRIED_IRABETH))),
     ki("alive", '''"Knight Tirabade crossed the square an hour ago. She passed within ten feet of me. She did not look." {n}Galfrey's hands are folded on the pommel of her sword, very still.{/n} "She salutes the Queen's empty chair at the high table every evening, I am told. She has not missed once. And she has not looked at me once since Iz. I laid the Queen's last lie on the one knight in Mendev who cannot tell one, and she carried it, and she will carry it until she dies."''',
@@ -239,6 +241,8 @@ beat(P + "kitrane.irabeth", "The Knight-Captain", '"You were watching the barrac
     ki("drezen", '''"Knight Tirabade was in Drezen when I fell; the Queen had left her to hold the city. She does not know." {n}Galfrey's hands are folded on the pommel of her sword, very still.{/n} "She salutes the Queen's empty chair at the high table every evening, I am told. She wept for me in front of her whole company. And every day I stand in the same square as the most honest knight in Mendev and let her grieve a lie." {n}A breath.{/n} "The Crows carried me. They are old men and very discreet. She is neither, and she would never forgive them for it. So I keep my hood up."''',
         c('"She\'d want to know."', "ask"),
         c('"Do you want me to tell her?"', "talk")),
+    ki("died_back", '''"Knight Tirabade fell at Iz before I could give her anything to carry, and came back, I am told, on some errand of yours." {n}Galfrey's hands are folded on the pommel of her sword, very still.{/n} "She crosses the square every evening. She has not looked at me once. I cannot tell whether that is because she does not know, or because she does." {n}A breath.{/n} "Either way, it is her silence. I shall not take it from her."''',
+        c("Continue", "end")),
     ki("gone_before", '''"Knight Tirabade is dead." {n}Her voice does not change, which is how you know what it costs.{/n} "She fell at Iz before I could give her anything to carry. I called her name with my last command in my mouth, and two old Crows came instead." {n}Her hands tighten on the pommel.{/n} "I look at the barracks because I keep expecting her to come out of it. It is a habit. I have a great many habits I am going to have to break."''',
         c("Continue", "end")),
     ki("end", '''"Go on, Commander. I shall stand here a while longer. The barracks has a very interesting door."''',
@@ -344,28 +348,46 @@ beat(P + "kitrane.ford_after", "Six ropes", '"You haven\'t spoken to me since th
     ki("start", '''"No." {n}She is standing very straight by the curio stall, in full armour, as if on parade.{/n} "I have been deciding whether to leave. The Crows' sergeant has packed the mule twice. I unpacked it twice." {n}Her hand is white on the pommel of the old sword.{/n} "There was a boy of fifteen at that ford, Commander. He surrendered to a knight. I have hanged men, and signed for the hanging of more, and I have never once hanged a boy who had put his hands on his head for me."''',
         c("Continue", "terms")),
     ki("terms", '''"So. Terms." {n}The Queen's voice, the one that ended wars.{/n} "His name was Tobin; the Inquisition's clerk wrote it down before the rope. His mother sells tallow in the lower town. You will go to her yourself, and tell her who gave the order, and pay for his grave, and not send a clerk." {n}A breath.{/n} "And never again, under the Crows' colours or near them. That is all. It is not small. It is not meant to be."''',
-        c('"Agreed. All of it. I\'ll go today."', "agreed", flags=(FORD_PROMISED,)),
+        c('"Agreed. All of it. We go now."', "agreed"),
         c('"It was the right call. I won\'t apologise to a cultist\'s mother."', "refused")),
-    ki("agreed", '''{n}She looks at you for a long breath, and some of the parade goes out of her shoulders.{/n} "Then I shall unpack the mule a third time." {n}Quietly:{/n} "I will not forget the six of them, Commander. I do not ask you to. I ask you to remember them in the same place I do."''',
-        c("[Go to the lower town.]")),
+    ki("agreed", '''{n}She looks at you for a long breath.{/n} "Now. Yes." {n}She pulls her hood up.{/n} "I will walk behind you. It is your errand, not mine."''',
+        c("[Walk down to the lower town.]", "tallow")),
+    nar("tallow", '''{n}The tallow-seller's stall is two streets below, where the gutters run grey. She is a small woman with burned hands, and she knows who you are before you open your mouth. You tell her anyway: that her son Tobin surrendered at the eastern ford with his hands on his head, that a knight of the Green Crows refused to hang him, that you gave the order and it was carried out.{/n}
+{n}She does not weep. When you put the purse for the grave down beside her hands she looks at it a long while, and pushes it back an inch, and then, slowly, draws it to her. "You came yourself," she says. "The knights never come themselves." You buy two candles from her, and go.{/n}''',
+        c("Continue", "candle")),
+    ki("candle", '''{n}At the top of the street Kitrane takes one of the candles out of your hand without a word, and puts it inside her surcoat, next to the broadsheet about Sir Anselm.{/n} "I will not forget the six of them, Commander," {n}she says quietly.{/n} "I do not ask you to. I ask you to remember them in the same place I do. The mule stays unpacked."''',
+        c("[Stand beside her a while.]", flags=(FORD_ANSWERED,))),
     ki("refused", '''"Then I am your knight, and I shall do my duty, and there it will stay." {n}Without heat, which is worse.{/n} "The mule stays packed. When you are ready to walk down to the tallow-seller's, Commander, I shall still be here. I am old. I can wait." {n}She salutes.{/n}''',
         c("[Leave her.]", abort=True)),
-], requires=(FIRST, FORD_HANGED), forbids=(FORD_PROMISED, FORD_ANSWERED), delay=24)
+], requires=(FIRST, FORD_HANGED), forbids=(FORD_ANSWERED,), delay=24)
 
 
-# --- 9c. The tallow-seller (a visit: the terms kept) -------------------------------------------------------------------------------
+# --- 21. The herald from Nerosyan (a discovery by someone with no reason to keep it) ------------------------------------------
 
-page(P + "kitrane.tallow", "The tallow-seller", [
-    nar("start", '''{n}The tallow-seller's stall is two streets below the curio stall, in the part of the lower town where the gutters run grey. She is a small woman with burned hands, and she knows who you are before you open your mouth; everybody in Drezen knows the Commander's face.{/n}
-{n}You tell her anyway. That her son Tobin surrendered at the eastern ford with his hands on his head. That a knight of the Green Crows refused to hang him. That you gave the order, and it was carried out.{/n}''',
-        c("Continue", "mother")),
-    nar("mother", '''{n}She does not weep. She listens to the whole of it with her burned hands folded on the counter, and when you have finished and put the purse for the grave down beside them, she looks at it a long while and does not touch it.{/n}
-{n}"He was a fool," she says at last. "He went to the Locust men because they fed him. I told him he would hang." {n}She pushes the purse back an inch, and then, slowly, draws it to her.{/n} "You came yourself. The knights never come themselves." {n}That is all she says. You buy two candles from her, because it seems wrong to leave with nothing, and she wraps them, and you go.{/n}''',
-        c("Continue", "kitrane")),
-    nar("kitrane", '''{n}At the top of the street, by the curio stall, a knight in a green surcoat has been watching the whole time from under her hood. She does not come down. When you reach her she takes one of the candles out of your hand without a word, and puts it inside her surcoat, next to the broadsheet about Sir Anselm.{/n}''',
-        c("[Stand beside her a while.]", flags=(FORD_ANSWERED,))),
-], requires=("trickster.ever", RETURNED, FORD_PROMISED), forbids=(FORD_ANSWERED, CLOSED), delay=12, kind="visit", Areas=[DREZEN])
-tag(P + "kitrane.tallow", "T")
+ENVOY_PAID = P + "envoy.paid"
+ENVOY_FACED = P + "envoy.faced"
+ENVOY_SENT = P + "envoy.sent_home"
+
+beat(P + "kitrane.envoy", "The herald from Nerosyan", '"Who is the man in the regency\'s colours?"', [
+    nar("start", """{n}A herald in the blue and silver of the Mendevian regency is standing at the curio stall with his hat in his hand, and he is not buying anything. He is looking at the knight of the Green Crows, and he has gone the colour of tallow.{/n}
+{n}Kitrane has not moved. She has one hand on the pommel of Sir Anselm's sword and her other hand very still at her side, and she is looking at him the way she used to look at ambassadors who had forgotten who they were addressing.{/n}""",
+        c("Continue", "herald")),
+    n("herald", "Herald of the regency", """"Commander." {n}His voice is not steady.{/n} "I served at court nineteen years. I carried her train at the jubilee. I would know that jaw at the bottom of a well." {n}He swallows.{/n} "The regents sent me to count the crusade's lances. I think I have found something they would pay a great deal more to know. Or a great deal more not to.\"""",
+        c("[Pay him] \"Then take this, go home, and count lances.\"", "paid", flags=(ENVOY_PAID,), crusade=("Finances", -500)),
+        c("[Send him home under escort] \"You'll be riding back to Nerosyan tonight, with two of my knights and nothing to report.\"", "sent", flags=(ENVOY_SENT,)),
+        c("[Let her answer him] \"Ask her yourself.\"", "faced", flags=(ENVOY_FACED,))),
+    n("paid", "Herald of the regency", """{n}He takes the purse. He does not look at it; he looks at her, and something in his face collapses.{/n} "I would have kept it for nothing, Your Majesty," {n}he says, very low.{/n} "I wanted you to know that. I am taking the money because I have four children." {n}He bows to the knight of a minor order, too deep, and goes.{/n}""",
+        c("Continue", "after")),
+    n("sent", "Herald of the regency", """{n}He goes pale, then red.{/n} "Under escort. Like a prisoner." {n}He looks at her, and at you, and at your knights already stepping in on either side.{/n} "The regents will ask why their herald came home early with nothing in his book. I shall tell them the crusade was very busy." {n}A pause.{/n} "They will not believe me. They never do.\"""",
+        c("Continue", "after")),
+    ki("faced", """{n}Kitrane steps forward. Not far; just into his light.{/n} "Master Orwen. You carried the train at the jubilee and trod on it twice, and I told the court it was the wind." {n}Her voice is perfectly level.{/n} "The Queen of Mendev is dead. You were at her vigil; you wept. Go home and tell the regents what you saw here: a knight of a minor order who looked, for a moment, like someone you loved. It happens to everybody who has lost someone. It will not happen to you again.\"""",
+        c("Continue", "faced_after")),
+    n("faced_after", "Herald of the regency", """{n}He stares at her for a long breath. Then he bows, exactly as deep as a herald bows to a knight of a minor order, not a hair further, and his hands are shaking.{/n} "As you say, Dame Kitrane. A knight who looked like someone." {n}He puts his hat on.{/n} "I shall write it in my book so. I shall not burn the page.\"""",
+        c("Continue", "after")),
+    ki("after", """{n}When he has gone she lets out a breath she has been holding since he walked up.{/n} "That will happen again." {n}Quite calm.{/n} "Not often; people see the surcoat. But there are nine hundred people in Mendev who have stood close enough to see my face, and some of them will come to Drezen. Every one of them is a door." {n}She looks at you.{/n} "I chose this, Commander. I did not choose for it to be free.\"""",
+        c("[Stay beside her until her hand comes off the sword.]")),
+], requires=(FIRST,), forbids=(ENVOY_PAID, ENVOY_FACED, ENVOY_SENT), delay=48)
+
 
 # --- 10. Two false crowns (the Fool King) ------------------------------------------------------------------------------------
 
@@ -732,7 +754,7 @@ beat(P + "kitrane.storyteller", "A voice he knows", '"You look shaken."', [
 SERGEANT = P + "kitrane.sergeant"
 
 beat(P + "kitrane.sergeant", "What the sergeant remembers", '"Your sergeant was telling stories last night."', [
-    ki("start", '''"He always does, after the second cup. Tonight it was Sir Anselm." {n}She is sitting on an upturned crate by the stall, oiling the old sword with slow, careful strokes.{/n} "I have known the Crows six weeks, Commander, if one counts from the war camp, and forty years if one counts from when they first stood behind my chair at court. I found last night that I knew almost nothing about any of them."''',
+    ki("start", '''"He always does, after the second cup. Tonight it was Sir Anselm." {n}She is sitting on an upturned crate by the stall, oiling the old sword with slow, careful strokes.{/n} "I have known the Crows as Kitrane since the war camp, Commander, and as the Queen for forty years, since they first stood behind my chair at court. I found last night that I knew almost nothing about any of them."''',
         c('"What did he tell you?"', "told")),
     ki("told", '''"That Sir Anselm cheated at cards. Badly. That he kept a list of every demon he had killed, and lost it, and started a new one from memory, and that the second list was a good deal longer than the first." {n}Her mouth twitches.{/n} "That he used to say, whenever I rode out in front of the line, that the Queen of Mendev had the tactical sense of a charging goat, and that he said it loudly, being deaf, so that I would hear."''',
         c('"Did you?"', "heard")),
@@ -824,3 +846,73 @@ beat(P + "kitrane.squire", "The squire's question", '"Your squire looks as if sh
     ki("careful", '''"Perhaps not." {n}She does not bristle; she considers it, as she considers everything.{/n} "It is a risk. You would have lied to her, I think, kindly and well, and she would never have known." {n}She turns her head and looks at you.{/n} "But I will not start a knighthood with a lie to the only person who asked me for the truth. The Queen could afford that. Kitrane cannot. She has nothing else to offer anyone."''',
         c("[Leave her watching her squire.]", flags=(SQUIRE_ASKED,))),
 ], requires=(FIRST, CROWS_ORDER, LIKENESS), forbids=(SQUIRE_ASKED,), delay=36)
+
+
+# --- The living Queen (T): Kitrane by lamplight ----------------------------------------------------------------------------------
+# On the Trickster path the Queen's own answer in Chapter 5 is Cue_0041: "As the queen, you have my trust. But as Galfrey, I cannot
+# trust you." The native romance ends there (Cue_0039 completes it). These scenes answer that line: not as the Queen, and not as
+# Galfrey, but as the knight she once invented, and only if the Commander can prove a plan kept. Inline on her Chapter 5 hub
+# (AnswersList_0002), returning to her clean greeting Cue_0003 "Yes, Commander? Did you want something?".
+
+HUB5 = "fed166af2f1d509478d18ea63a40339f"
+HUB5_BACK = "344bc63f6bbace64fab2a3e6c69561fe"
+EVENING = P + "alive.evening"
+PLAN_TOLD = P + "alive.plan_told"
+PLAN_KEPT = P + "alive.plan_kept"
+
+
+def alive(id, title, entry, nodes, requires, forbids=(), delay=0):
+    SCENES.append(scene(id, title, "Galfrey", 5, entry, nodes, requires=("trickster", FINAL, *requires),
+                        forbids=(DEAD, CLOSED, FINISHED, "galfrey.romance_active", *forbids), delay=delay, last=5, Relationship=REL,
+                        Chapters=[5], AnswerLists=[HUB5], NativeReturnCue=HUB5_BACK))
+    tag(id, "T")
+
+
+def conv5(id, text, *choices):
+    return n(id, "conversant", text, *choices)
+
+
+alive(P + "alive.kitrane", "As Kitrane", '"You trust the Commander as the Queen. Would Kitrane?"', [
+    conv5("start", """{n}The Queen's eyebrows rise, very slowly.{/n} "Kitrane." {n}She glances past you at the hall, the clerks, the knights at the door, and lowers her voice.{/n}""",
+        c("Continue", "refused", requires=(NATIVE_REFUSED,)),
+        c("Continue", "never", forbids=(NATIVE_REFUSED,))),
+    conv5("refused", """"I told you I cannot trust you as Galfrey. I meant it. Your powers are unreliable, and so, I think, are you." {n}A pause.{/n} "And you answer by asking after a knight of a minor order who has not existed since the war camp. That is either very clever or very impudent.\"""",
+        c("Continue", "offer")),
+    conv5("never", """"A knight of a minor order who has not existed since the war camp. You ask after her as if she were a friend who had gone home on leave." {n}Her mouth twitches.{/n} "Very well. What would you say to her, that you will not say to me?\"""",
+        c("Continue", "offer")),
+    conv5("offer", """{n}She waits, arms folded, the prosecutor at her trial again.{/n}""",
+        c('"Come out tonight, in the Crows\' surcoat. Nobody will look twice. I\'ll tell you one plan of mine before I carry it out, and you can watch me keep it."', "accept", flags=(EVENING,)),
+        c('"Nothing. Forget I asked."', abort=True)),
+    conv5("accept", """{n}Something moves behind her eyes that has not moved there in a long while.{/n} "One plan, told in advance, and kept." {n}She says it like terms of surrender.{/n} "Very well. The Crows' tent, at the ninth bell. Kitrane will be there. If you are late, she will take it as your first broken promise, and she will not wait for a second.\"""",
+        c("[Bow to the Queen.]")),
+], requires=(), forbids=(EVENING,))
+
+alive(P + "alive.plan", "One plan, kept", '"About the plan I told you, Kitrane."', [
+    conv5("start", """{n}She does not smile, but the Queen's eyes go to the door, and back, and she lowers her voice to the pitch she used in the Crows' tent, over a table of bad cards she lost at on purpose.{/n} "The eastern supply road. You said you would send the empty wagons first, loudly, and the real column a day behind by the riverbed, and you would lose nothing but wagons." {n}A breath.{/n} "You did exactly that. Nobody died. Your quartermaster is furious about the wagons.\"""",
+        c('"I said I would. I did."', "kept", flags=(PLAN_KEPT,)),
+        c('[Trickster] "I also sent a third column you didn\'t know about."', "third")),
+    conv5("third", """{n}Her face goes still.{/n} "A third column." {n}Very quietly:{/n} "Then you told me a plan, and kept part of it, and kept the rest from me. That is what I cannot trust, Commander. Not the powers. That." {n}She turns away.{/n} "Tell me the whole of the next one. Then come back.\"""",
+        c("[Leave her.]", abort=True)),
+    conv5("kept", """{n}The Queen of Mendev looks at you for a long breath, and something in her shoulders comes down.{/n} "One plan, told and kept. It is a very small thing to be moved by. I have had ambassadors swear to me on their children and lie by supper." {n}Lower:{/n} "Kitrane would like to see you again. The Queen will pretend not to know.\"""",
+        c("[Bow to the Queen.]")),
+], requires=(EVENING,), forbids=(PLAN_KEPT,), delay=48)
+
+alive(P + "alive.oath", "The Crows' oath, by lamplight", '"The Crows\' sergeant says Kitrane has something to say to me."', [
+    conv5("start", """"She does." {n}The Queen does not look up from her dispatches, but her pen has stopped.{/n} "Not here. The Crows' tent, after the ninth bell." {n}She lets the pen fall.{/n} "Bring nothing. And do not dare salute.\"""",
+        c("[Go to the Crows' tent after the ninth bell.]", "tent")),
+    n("tent", "Narrator", """{n}She is waiting in the Crows' tent by one lantern, in the green surcoat with the three black birds, her hair loose for the first time you have seen it. Before you can speak she draws the old sword and goes down on one knee in the straw, and holds it out to you hilt-first across her forearm.{/n}
+{n}"Kitrane of the Green Crows offers her sword to the Commander of the Fifth Crusade," she says. "It is the only oath of hers that is not Mendev's to give."{/n}""",
+        c('[Refuse her oath; offer your hand] "No. I don\'t want your sword. Get up."', "refuse"),
+        c('"Not like this. Not as your Commander."', "not_yet")),
+    conv5("not_yet", """{n}She looks up at you for a long breath, and then, slowly, sheathes the sword.{/n} "No. Not like this." {n}She rises without your hand.{/n} "You are right, and I am annoyed that you are right. Ask me again when you know how.\"""",
+        c("[Leave her in the lamplight.]", abort=True)),
+    n("refuse", "Narrator", """{n}She stays on her knee a moment longer, looking at your hand as if it were a map of country she had never been allowed to ride through. Then she sheathes the sword, and takes it, and lets you pull her up out of the straw, and does not let go.{/n}
+{n}"Then I shall have to find something else to give you," says Kitrane, "and I have decided what." She kisses you like a commander taking a hill, slowly and then all at once, her hand hard on your jaw, and walks you backwards until the tent pole stops you, laughing against your mouth when the lantern swings.{/n}""",
+        c("Continue", "threshold")),
+    n("threshold", "Narrator", """{n}She undoes your buckles as if you were a problem in siegecraft, in a sensible order, quickly, and her own she will not let you touch until yours are done. The surcoat goes over her head. Under it the Queen of Mendev is all long, hard lines and old white scars in the lantern light, and she pulls you down onto the Crows' saddle-blankets by the collar of your shirt, and settles over you, knees at your hips, her loose hair falling around both your faces.{/n}
+{n}"Kitrane," you say. She answers it with her whole body, drawing your hand down between you, her eyes open on yours, and the lantern gutters, and steadies, and burns on.{/n}""",
+        c("Continue", "morning")),
+    n("morning", "Narrator", """{n}By first light she is gone. You find her at the Queen's table in the citadel an hour later, crowned, severe, signing dispatches in a clear unhurried hand, and she does not look up when you come in.{/n}
+{n}"Commander," says the Queen of Mendev. And then, without raising her eyes from the page, very low: "Kitrane slept very well, and she is not sorry."{/n}""",
+        c("[Bow to the Queen.]", flags=(COMMITTED, P + "alive.committed"))),
+], requires=(PLAN_KEPT,), forbids=(COMMITTED,), delay=48)
