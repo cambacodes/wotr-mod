@@ -314,12 +314,136 @@ internal static class JerribethTricksterTests
 
         // Reactions: Camellia and Woljif only.
         var reactions = story.Scenes.Where(s => s.Relationship == "jerribeth" && s.Reaction).ToArray();
-        check(reactions.Length == 4 && reactions.All(r => r.Owner == "Camellia" || r.Owner == "Woljif"), "Jerribeth reactions changed.");
+        check(reactions.Length == 6 && reactions.All(r => r.Owner == "Camellia" || r.Owner == "Woljif"), "Jerribeth reactions changed.");
         var hostWorld = World(story, 3, "trickster.ever", "jerribeth.met", Dead, Returned, "jerribeth.trickster.cost.host");
         check(Rules.Available(story, S("jerribeth.trickster.reaction.camellia_host"), hostWorld)
               && !Rules.Available(story, S("jerribeth.trickster.reaction.camellia"), hostWorld), "Camellia's host line misrouted.");
         var levyWorld = toastOut.Single(r => r.Has(Toasted));
         check(Rules.Available(story, S("jerribeth.trickster.reaction.woljif_levy"), levyWorld)
               && !Rules.Available(story, S("jerribeth.trickster.reaction.woljif"), levyWorld), "Woljif's levy line misrouted.");
+
+        // --- Sol quality pass (2026-09-30) ----------------------------------------------------------------------------
+        const string Forfeit = "jerribeth.trickster.cost.forfeit", Offered = "jerribeth.trickster.forfeit_named";
+        const string Saw = "jerribeth.camellia_spectacle_heard", Taken = "trickster.lastcall.taken";
+        string Words(Scene s) => string.Join(" ", s.Nodes.Select(n => n.Text).Concat(s.Nodes.SelectMany(n => n.Paragraphs).Select(p => p.Text)));
+        int Visible(Scene s, Snapshot w, string needle) =>
+            s.Nodes.SelectMany(n => Rules.VisibleParagraphs(n, w)).Count(p => p.Text.Contains(needle));
+        bool Shown(Choice ch, Snapshot w) => Rules.Match(ch.Requires, ch.Forbids, w);
+
+        // CAN: Camellia recalls her Sanctum remark only when the player heard it (SeenCues JerribetnFinal/Cue_0039).
+        check(story.SeenCues.TryGetValue(Saw, out var sawCues) && sawCues.SequenceEqual(new[] { "f52f61f9f2ada7045a3b7f2f89350b95" }),
+            "Camellia's Sanctum remark is not bound as a seen cue.");
+        foreach (bool heard in new[] { false, true })
+        foreach (bool host in new[] { false, true })
+        {
+            var w = World(story, 3, "trickster.ever", "jerribeth.met", Dead, Returned);
+            if (heard) w.Flags.Add(Saw);
+            if (host) w.Flags.Add("jerribeth.trickster.cost.host");
+            var open = reactions.Where(r => r.Owner == "Camellia" && Rules.Available(story, r, w)).ToList();
+            check(open.Count == 1 && Words(open[0]).Contains("repugnant spectacle") == heard && Words(open[0]).Contains("stockade") == host,
+                "Camellia's reaction claims a Sanctum memory the player never heard, or misses the one they did (heard " + heard + ", host " + host + ").");
+        }
+        foreach (var r in reactions.Where(x => x.Owner == "Camellia" && x.Forbids.Contains("camellia.dead")))
+            check(r.ForbidOverrides.TryGetValue("camellia.dead", out var lift) && lift == "camellia.trickster.returned",
+                "A Camellia reaction does not lift her retained death on her return: " + r.Id);
+
+        // CAN: at the Nexus the Golarion vessels are ordered, not delivered; every house choice works in Drezen and at the Nexus.
+        foreach (var node in new[] { "statue_done", "locust_done" })
+            check(tenant.Nodes.Single(n => n.Id == node).Text.Contains("first hand going that way")
+                  && !tenant.Nodes.Single(n => n.Id == node).Text.Contains("Four days later"),
+                "A Golarion vessel is delivered at once, wherever the letter is read: " + node);
+        check(tenant.Nodes.Single(n => n.Id == "host_done").Text.Contains("first night you sleep in Drezen"),
+            "The stockade host is taken at the Nexus.");
+        foreach (var area in new[] { Drezen, "7847c3e3537104f4694167af0b9fcd0e" })
+        {
+            var w = World(story, area == Drezen ? 3 : 4, "trickster", "trickster.ever", "jerribeth.met", Dead, Primed);
+            w.Area = area;
+            w = Later(story, w, 48);
+            var outs = Program.Walk(tenant, w);
+            check(Rules.Available(story, tenant, w) && new[] { "statue", "locust" }.All(b => outs.Any(r => r.Has("jerribeth.trickster.body." + b)))
+                  && new[] { "host", "lodger" }.All(b => outs.Any(r => r.Has("jerribeth.trickster.cost." + b))),
+                "A house choice is unreachable in " + area);
+        }
+
+        // INT: naming the forfeit only offers it; the contract exists at the committing answer. Declining after naming
+        // collects nothing on any ending.
+        foreach (string branch in new[] { "jerribeth.settlement_kept", "jerribeth.short_future_requested" })
+        {
+            var w = World(story, 5, "trickster", "trickster.ever", "jerribeth.met", "jerribeth.commission", "jerribeth.lovers", branch);
+            var outs = Program.Walk(future, w);
+            check(outs.Any(r => r.Has(Offered) && r.Has("jerribeth.closed")), "The name-then-decline negotiation is unreachable: " + branch);
+            check(outs.All(r => r.Has(Forfeit) == r.Has("jerribeth.committed")), "The forfeit is set without the contract, or the contract without it: " + branch);
+            foreach (var cancelled in outs.Where(r => r.Has(Offered) && !r.Has("jerribeth.committed")))
+            {
+                var end = World(story, 6, cancelled.Flags.ToArray());
+                check(!cancelled.Has(Forfeit) && Rules.Available(story, apart, end) && Visible(apart, end, "forfeit") == 0,
+                    "ending_apart collects a forfeit from a negotiation that never became a contract.");
+            }
+        }
+
+        // COX: exactly one forfeit collection per history. Last Call's coda owns it when it plays; otherwise the ending does.
+        var lcPage = S("jerribeth.lastcall.page");
+        var ascended = S("jerribeth.ending_ascended");
+        foreach (bool lastCall in new[] { false, true })
+        foreach (var vessel in new[] { "", "jerribeth.trickster.body.statue", "jerribeth.trickster.body.locust", "jerribeth.trickster.cost.host", "jerribeth.trickster.cost.lodger" })
+        {
+            var flags = new List<string> { "trickster.ever", "jerribeth.met", "jerribeth.committed", "jerribeth.lovers", Forfeit, "ending.trickster" };
+            if (vessel != "") flags.AddRange(new[] { Dead, Returned, "jerribeth.trickster.cost.tenant", vessel });
+            if (lastCall) flags.Add(Taken);
+            var w = World(story, 6, flags.ToArray());
+            check(w.Has("lastcall.active") == lastCall, "Last Call activity misread in the forfeit walk.");
+            // One ending page per history: count its paragraphed (terminal) node once, plus the coda when it plays.
+            int OnPage(Scene s) => Rules.Available(story, s, w)
+                ? Rules.VisibleParagraphs(s.Nodes.First(n => n.Paragraphs.Count > 0), w).Count(p => p.Text.Contains("forfeit")) : 0;
+            int collections = OnPage(together) + OnPage(ascended) + OnPage(lcPage);
+            check(Rules.Available(story, together, w) && collections == 1,
+                "The single forfeit is collected " + collections + " times (Last Call " + lastCall + ", vessel '" + vessel + "').");
+            if (!lastCall) continue;
+            check(Rules.Available(story, lcPage, w), "The committed coda is missing on Last Call.");
+            check((Visible(lcPage, w, "gilt idol") == 1) == (vessel == "jerribeth.trickster.body.statue"),
+                "The Last Call idol ignores the vessel she chose: '" + vessel + "'.");
+            check((Visible(lcPage, w, "her rent") > 0) == (vessel != ""), "Last Call charges rent to a Jerribeth who is no tenant.");
+        }
+        // The call-in answers what she is: a tenant, a toasted stranger, or a living demon holding a forfeit. One line each.
+        var callIn = S("jerribeth.lastcall.call");
+        foreach (var deal in new[] { new[] { "jerribeth.trickster.cost.tenant", "jerribeth.trickster.cost.lodger" },
+                                     new[] { "jerribeth.trickster.cost.tenant", "jerribeth.trickster.cost.host", Forfeit },
+                                     new[] { "jerribeth.trickster.cost.toast", Forfeit }, new[] { Forfeit } })
+        {
+            var w = World(story, 6, deal.Concat(new[] { "trickster.ever" }).ToArray());
+            var lines = callIn.Nodes[0].Choices.Where(ch => Shown(ch, w)).ToList();
+            bool tenantDeal = deal.Contains("jerribeth.trickster.cost.tenant");
+            check(lines.Count == 1 && lines[0].Text.Contains("tenant") == tenantDeal && lines[0].Text.Contains("toasted") == (!tenantDeal && deal.Contains("jerribeth.trickster.cost.toast")),
+                "The Last Call call-in assumes every deal made her a skull tenant: " + string.Join(",", deal));
+        }
+        check(!Words(callIn).Contains("back of your skull") && !Words(lcPage).Contains("succubus"), "The call-in or coda misstates what she is.");
+
+        // BEL: the late commit is staged by what she is, has its own intimate threshold (cut at the start of the act) and a
+        // morning, and keeps a nonsexual refusal. The tenant with no body never knocks, and the host never lends his body.
+        foreach (var vessel in new[] { "", "jerribeth.trickster.cost.host", "jerribeth.trickster.cost.lodger", "jerribeth.trickster.body.statue", "jerribeth.trickster.body.locust" })
+        {
+            var flags = new List<string> { "trickster.ever", "jerribeth.met", "jerribeth.attracted", "jerribeth.commission", "jerribeth.lovers" };
+            if (vessel != "") flags.AddRange(new[] { Dead, Returned, "jerribeth.trickster.cost.tenant", vessel });
+            var w = World(story, 6, flags.ToArray());
+            check(Rules.Available(story, epCommit, w), "The late commit is missing for vessel '" + vessel + "'.");
+            var pages = new HashSet<string>();
+            var outs = Program.Walk(epCommit, w, (page, _) => pages.Add(page));
+            bool mind = vessel != "" && vessel != "jerribeth.trickster.cost.host";
+            check(epCommit.Nodes[0].Paragraphs.Count(p => Rules.ParagraphVisible(p, w)) == 1
+                  && Rules.VisibleParagraphs(epCommit.Nodes.Single(n => n.Id == "collected"), w).Count(p => p.Text.Contains("muster")) == 1,
+                "The late commit's arrival or muster is not exactly one variant for vessel '" + vessel + "'.");
+            check(pages.Contains("collected") && (mind ? pages.Contains("torn_mind") && pages.Contains("signed_mind") && !pages.Contains("signed")
+                                                        : pages.Contains("torn") && pages.Contains("signed") && !pages.Contains("signed_mind")),
+                "The late commit's acceptance or refusal ignores what she is: '" + vessel + "'.");
+            string night = vessel == "" ? "night" : "night_mind";
+            string after = vessel == "" ? "night_after" : "night_mind_after";
+            check(pages.Contains(night) && pages.Contains(after) && (vessel == "jerribeth.trickster.cost.host") == pages.Contains("night_host")
+                  && (vessel == "") == pages.Contains("night"),
+                "The accepted late commit has no staged threshold and morning for vessel '" + vessel + "'.");
+            check(outs.Count >= 3, "The late commit lost its table-only or refusal branch: '" + vessel + "'.");
+        }
+        foreach (var id in new[] { "night", "night_mind" })
+            check(epCommit.Nodes.Single(n => n.Id == id).Text.Contains("lowered herself onto the Commander")
+                  && !epCommit.Nodes.Single(n => n.Id == id).Text.Contains("thrust"), "The late commit's cut misses the start of the act: " + id);
     }
 }

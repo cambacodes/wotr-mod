@@ -109,24 +109,24 @@ s("price", "The question she hoped to postpone", [
 {n}There is pride in the answer, and impatience with what she expects you to say next.{/n}
 "The people believed they understood their world. They loved and fought and made their choices inside it. I supplied the part they would have found inconvenient to question."''',
       c('"You made them kill people they would otherwise have welcomed. I will not admire that."', "refuse", flags=("jerribeth.condemned_wintersun",)),
-      c('"I understand the appeal of that power. I will not accept it being used to manufacture what happens between us."', "limit", flags=("jerribeth.claimed_limit",))),
+      c('"I understand the appeal. Plant nothing in me. Whatever happens between us will be my own bad idea."', "limit", flags=("jerribeth.claimed_limit",))),
     n("trust", "Jerribeth", '''"You shouldn't trust every part of it. I enjoy power. I enjoy discovering where somebody keeps a weakness. I have made those preferences remarkably clear."
 {n}Her antennae incline toward the image of you.{/n}
 "But I have also returned to a conversation I cannot force you to continue. You might ask why I keep doing that."''',
       c('"Because an answer you chose for me would tell you nothing about what I want."', "limit", flags=("jerribeth.claimed_limit",)),
       c('"You keep what interests you. On a needle, usually. Tell me what stops you doing that to me."', "refuse", flags=("jerribeth.asked_possession",))),
     n("refuse", "Jerribeth", '''{n}The silence lasts long enough for the projected room to fade at its edges.{/n}
-"You want a confession. I will not give you one I do not mean."
+"You want a confession. You will not get one. I would only perform it, and you would know, and then we should both be bored."
 {n}Her next words are colder.{/n}
-"I can leave your thoughts alone. I will use this charm only for what you invite me to show you. Do not mistake that agreement for a sudden discovery that I have spent my life being wicked."''',
+"I will sell you something instead. Your head stays yours. The charm shows what you invite, and nothing else. In exchange, you keep inviting me. Stop, and the terms lapse, and you have seen what I do in Wintersun when I have nothing better to amuse me. Do not mistake any of this for a sudden discovery that I have spent my life being wicked."''',
       c('"Then keep that agreement. I will judge what you do next."', "terms"),
       c('"That is not enough for me to continue this."', "end")),
-    n("limit", "Jerribeth", '''"Possession is familiar. This is becoming less so."
-{n}She says it as though unfamiliarity were an expensive indulgence.{/n}
-"I will leave your thoughts alone, and I will not use you as a way into somebody else's mind. If you want a miracle that turns me into somebody you can introduce without an explanation, find another demon."''', c('"I want you to keep that promise, not make a more impressive speech."', "terms")),
-    n("terms", "Jerribeth", '''"Then we understand one another well enough to disagree honestly. How tiresome. How unusual."
+    n("limit", "Jerribeth", '''"Possession is so much less trouble. It is why everyone in the Abyss prefers it."
+{n}She says it as though restraint were an expensive indulgence she has decided, this once, to charge to somebody else's account.{/n}
+"Very well. Terms. Your head stays yours, and I will not use you as a door into anyone else's. That is what I give. What I receive: you keep answering. If you want a miracle that turns me into somebody you can introduce at a feast without an explanation, find another demon."''', c('"Keep the terms. Speeches are cheap."', "terms")),
+    n("terms", "Jerribeth", '''"A demon and a crusader with terms and no witnesses. The Abyss would laugh. I intend to laugh first."
 {n}Some of the chill leaves her voice.{/n}
-"Will you invite me again? I would prefer that question answered before you invent a noble reason for doing it."''', c('"Yes. I still want to see you."', flags=("jerribeth.terms",))),
+"Will you invite me again? Answer before you invent a noble reason for it. I dislike noble reasons. They are always renegotiated."''', c('"Yes. I still want to see you."', flags=("jerribeth.terms",))),
     n("end", "Jerribeth", '''"Then close the frame."
 {n}She watches you without the courtesy of a farewell. The charm falls silent when you turn it over, exactly as promised.{/n}''', c('[End the private relationship.]', flags=("jerribeth.closed",))),
 ], requires=("jerribeth.guise",))
@@ -138,9 +138,9 @@ s("evening", "An invitation without witnesses", [
 "I would like your attention for a while. The part you do not distribute to supplicants."''',
       c('"You have it."', "want"),
       c('"I have other lovers. I will not make you a promise of exclusivity."', "others")),
-    n("others", "Jerribeth", '''"Good. I would distrust it."
+    n("others", "Jerribeth", '''"Good. Otherwise I should have had to find out how you were lying."
 {n}An amused chitter brushes the words.{/n}
-"I am asking for this evening. If I want another, I shall ask for that one. I have no intention of spending my time counting the people who enjoy you."''', c('"Then this evening is yours."', "want", flags=("jerribeth.open_terms",))),
+"I am not buying all of you, Commander. Only tonight. I have never once cared who else has handled a thing I mean to have for an evening. It is the evening I collect."''', c('"Then this evening is yours."', "want", flags=("jerribeth.open_terms",))),
     n("want", "Jerribeth", '''"Tell me what you wanted when you opened the frame. You have been quite brave about my answers. I should like to see how you manage your own."
 {n}She waits. For once, she does not supply an interpretation for you.{/n}''',
       c('"I wanted to hear that you had been waiting for me."', "waiting"),
@@ -164,18 +164,18 @@ s("evening", "An invitation without witnesses", [
 "I would like to kiss you. How inconvenient that I sent furniture."''',
       c('"The woman behind the face is the one I want closer."', "close"),
       c('"Then stay with me tonight, and we can be dissatisfied with the furniture together."', "close"), portrait="Jerribeth-Guise"),
-    n("close", "Jerribeth", '''{n}The image gives way to darkness, but her voice remains. For a moment she sounds almost uncertain what to do with an answer she has not manufactured.{/n}
-"I have been wanted before. I dislike how much I want to hear it from you."
-{n}A low, amused vibration follows the admission.{/n}
-"No. That is a lie. I dislike that you can tell."''',
+    n("close", "Jerribeth", '''{n}The image gives way to darkness, but her voice remains, closer than the frame should allow.{/n}
+"I have been wanted before. By cultists, mostly, who wanted whatever I could make them see. It is a cheap thing to be wanted for, and they paid cheap prices."
+{n}A low, amused vibration follows.{/n}
+"You keep asking for the thing that makes the pictures. I have not decided whether that is flattery or a threat to my business. Say it again, and I will decide."''',
       c('"I want you, Jerribeth. I would like you to remember hearing me say it."', "late"),
       c('"I have been waiting all evening to hear you admit it. Stay."', "late")),
-    n("late", "Jerribeth", '''"I will remember."
-{n}She stays. There is no image to admire now, and neither of you asks for one. The conversation becomes quieter and less guarded as the evening passes.{/n}
-{n}When you finally part, she asks when you will invite her again. She does not make the question sound like an afterthought.{/n}''', c('[Choose another evening together.]', flags=("jerribeth.lovers", "jerribeth.private_evening"))),
+    n("late", "Jerribeth", '''"I remember everything, Commander. It is my worst habit and my best stock in trade."
+{n}She stays. There is no image to admire now, and neither of you asks for one. She asks you questions she already knows the answers to, only to hear how you answer them, and she laughs, high and abrasive, each time you notice.{/n}
+{n}When you finally part, she names the evening she wants next, and the hour, as though it were already entered in a book and only your signature was missing.{/n}''', c('[Choose another evening together.]', flags=("jerribeth.lovers", "jerribeth.private_evening"))),
     n("slow", "Jerribeth", '''"Then I shall have to be good company. You do enjoy setting difficult tasks."
 {n}She tells you about a patron who commissioned an illusion of his own victory and objected because the defeated rival looked insufficiently devastated. By the third revision, the rival's grief had become so elaborate that nobody noticed the victor at all.{/n}
-{n}Her delight in the story is infectious. When the conversation ends, she admits she has been saving it for you.{/n}''', c('[Ask her to save another story.]', flags=("jerribeth.lovers", "jerribeth.slow_evening"))),
+{n}Her delight in the story is infectious. When the conversation ends, she informs you that she had been saving it, and that you now owe her one of equal quality.{/n}''', c('[Ask her to save another story.]', flags=("jerribeth.lovers", "jerribeth.slow_evening"))),
 ], requires=("jerribeth.price",))
 
 s("commission", "An audience of one", [
@@ -215,7 +215,7 @@ s("patron", "A name offered carefully", [
 "And I would dislike ending these conversations because you had become somebody else's diverting catastrophe."''',
       c('"Then keep telling me when you see danger. I will do the same."', "end"),
       c('"You could have said that you would miss me."', "end")),
-    n("end", "Jerribeth", '''"You seem quite capable of understanding how much I would dislike losing you. I shall expect you to remember it."
+    n("end", "Jerribeth", '''"I would dislike losing an investment this far along. You may take that as tenderly as you like; I shall deny it in any company."
 {n}The irritation in her voice is almost affectionate.{/n}
 "Now listen carefully. I am going to tell you something useful, and I expect you to remember it when being foolish would make a better story."''', c('[Listen to her warning.]', flags=("jerribeth.warned",))),
 ], requires=("jerribeth.commission", "jerribeth.refuge_known"), forbids=("jerribeth.patron_lost",), chapter=4, optional=True)
@@ -230,12 +230,12 @@ s("collection", "The amusement she remembers", [
 {n}There is no apology in the answer.{/n}
 "You saw it yourself. I would prefer you not to discover it anew whenever we have had a pleasant evening."''',
       c('"A pleasant evening does not make me forget it. I am asking what keeps this from ending the same way."', "difference"),
-      c('"I do not want a relationship in which I have to keep defending that memory."', "leave")),
+      c('"I will not spend my evenings making excuses for what you did to him."', "leave")),
     n("difference", "Jerribeth", '''{n}Her antennae incline, then hold still.{/n}
-"The fact that you can leave. The fact that you know what I am. The fact that I have begun to dislike the prospect of hearing a voice that only says what I arranged for it to say."
-{n}Her next words come more slowly.{/n}
-"That is an answer about us. It will not acquit me of what I enjoyed elsewhere."''',
-      c('"Then do not ask me to admire it. I want you to keep making that distinction."', "end", flags=("jerribeth.remembered_cruelty", "jerribeth.judges_actions")),
+"Nothing keeps it from ending the same way, except that it would bore me. Xanthir on a pin said only what I arranged for him to say. I heard every word of it before he did."
+{n}Her next words come more slowly, priced one at a time.{/n}
+"You say things I did not arrange. I have not yet found a needle that would keep that. When I find one, I shall tell you, and you may decide whether to run."''',
+      c('"Then never ask me to admire what you did to him."', "end", flags=("jerribeth.remembered_cruelty", "jerribeth.judges_actions")),
       c('"You have found something more difficult to collect. I intend to keep it that way."', "end", flags=("jerribeth.remembered_cruelty", "jerribeth.contests_possession"))),
     n("end", "Jerribeth", '''"I had hoped for an easier conversation tonight."
 {n}She considers the frame, then remains within it.{/n}
@@ -256,8 +256,8 @@ s("refuge", "The house she left behind", [
 {n}She moves one hand away from the other, making herself uncurl it.{/n}
 "I chose refuge among dangerous people. I knew what could happen. That does not oblige me to enjoy discovering which possibility has occurred."''', c('"Then tell me what you need now."', "need")),
     n("need", "Jerribeth", '''"Names. Introductions, if you have them. Information I can use without discovering that it has been sold to somebody else first."
-{n}She stops herself, and the pause is more revealing than the list.{/n}
-"And a conversation in which I do not have to pretend that all of this is an ingenious plan."''',
+{n}She stops, and does the sum in front of you.{/n}
+"And an evening with the one creature in two planes who is not working out what I am worth tonight. I find that refreshing. I am also deeply suspicious of it."''',
       c('"I can offer the conversation tonight. We can consider the rest carefully."', "stay"),
       c('"I will listen. I will not pretend to have a safe patron waiting for you."', "stay")),
     n("stay", "Jerribeth", '''"Good. I have had enough reassuring inventions for one day."
@@ -271,21 +271,21 @@ s("future", "A future she has not rehearsed", [
 {n}She puts aside the scenery before turning her whole attention to the frame.{/n}''',
       c('"We have made time for the work and what followed it. I want to keep making that time."', "start", requires=("jerribeth.settlement_kept",)),
       c('"We have not had those longer evenings. I still want this courtship to continue."', "short_future", requires=("jerribeth.short_future_requested",), forbids=("jerribeth.settlement_kept",))),
-    n("short_future", "Jerribeth", '''"Then continue it. Invite me when you can, and answer when I ask whether you mean to come back."
+    n("short_future", "Jerribeth", '''"Then continue it. Invite me when you can, and come when I ask. I do not ask twice; I send something that asks for me."
 {n}Her hands remain loosely linked.{/n}
-"There are things you have not seen me want badly enough to be unpleasant about. I would prefer you to discover them while you still remember that you wanted to know me."
+"There are things I want badly enough to be unpleasant about. You have not seen them yet. You will, and I am curious whether you will still be at the frame afterwards."
 {n}A small vibration of amusement enters her voice.{/n}
-"We can promise another evening without claiming to have lived the years after it."''',
+"An evening at a time, then. I have made worse bargains than that, all of them with princes."''',
       c('"I want those evenings. Keep expecting me."', "short_end", flags=("jerribeth.committed", "jerribeth.short_future_chosen")),
       c('"I cannot make that promise."', "part")),
     n("short_end", "Jerribeth", '''"I will. I have acquired an inconvenient preference for your answers."
 {n}The imperfect horizon returns behind her. It is something you have already made together, with room still left beyond it.{/n}
 "Come back when you can. You may yet discover what I have been trying to show you."''', c('[Keep the shorter courtship open.]', flags=("jerribeth.chosen_future", "jerribeth.future_settled"))),
     n("start", "Jerribeth", '''{n}Jerribeth answers without preparing a setting. The frame holds only her own form and the darkness around it.{/n}
-"I have been considering how easily an arrangement like this can end. A missed invitation. A changed allegiance. Somebody deciding that a familiar voice has become inconvenient."
+"An arrangement like this ends so easily. A missed invitation. A changed allegiance. A crusader who decides, one morning, that a demon's voice in the evenings would look very bad before an inquisitor."
 {n}Her antennae move once, then settle.{/n}
-"I would prefer to ask what you intend before I become clever about expecting nothing."''',
-      c('"I want this to continue. I intend to keep making time for you."', "promise"),
+"I served Lord Baphomet for exactly as long as it benefited me more than it cost me. I am told that is a vice. I call it bookkeeping. So: what does this pay, and for how long?"''',
+      c('"I want this to continue. More evenings, and more of me in them. That is the offer."', "promise"),
       c('"Fate may object. As a Trickster, I would enjoy proving it wrong."', "fate", requires=("trickster",)),
       c('"I cannot promise you a future together."', "part")),
     n("fate", "Jerribeth", '''"Find a loophole large enough for two, then. I refuse to spend eternity applauding you from the wrong side of a closed door."
@@ -293,9 +293,9 @@ s("future", "A future she has not rehearsed", [
 "I would enjoy helping. Imagine the indignity of being an inevitable ending and discovering that somebody has read the smaller print."
 {n}She pauses.{/n}
 "Tell me before you sign anything on my behalf. I prefer to choose which impossible arrangements I enter."''', c('"Then we will examine the arrangement together."', "promise", flags=("jerribeth.fate_terms",))),
-    n("promise", "Jerribeth", '''"I will keep answering. I will also tell you when I want more than you have offered, rather than arranging for you to discover it by accident."
+    n("promise", "Jerribeth", '''"Then here is what I want, since you so rarely ask. More than evenings. When I decide how much more, you will discover the price, and you will pay it, because by then you will already have had the goods."
 {n}A faint vibration of amusement returns.{/n}
-"This appears to be the part where I admit that you matter to me. I have considered several evasions. None improved the sentence."''',
+"This is the part where a mortal says that the other matters. I will not say it. I will tell you that I turned away two commissions this month to keep the frame free on your evenings, and that I do not turn away money. Draw your own conclusion. I already have."''',
       c('"You matter to me. Write that into whatever you are drafting, and read it as closely as you like."', "end", flags=("jerribeth.committed",)),
       c('"I want you in my life. Needles, small print and all."', "end", flags=("jerribeth.committed",))),
     n("end", "Jerribeth", '''{n}She lets the answer stand without testing it, which for her is a considerable concession, and then tests it anyway.{/n}
@@ -381,7 +381,7 @@ def ending(id, text, requires=(), forbids=(), owner="Epilogue"):
             c('[Remember the promise and the invitations still unanswered.]', "earlier", forbids=("jerribeth.developed_future",)), portrait="Jerribeth"))
         nodes.extend([
             n("earlier", "Narrator", '''{n}The promise was real, though much of the life it invited remained to be discovered. Jerribeth still wanted another evening, and made no attempt to disguise her impatience when arranging one became difficult.{/n}
-{n}She kept working on her illusions. The Commander had promised to keep answering, not become the admiring audience in every story she might tell about herself. What they made of the invitation would require more than the evenings they had already shared.{/n}''', c(), portrait="Jerribeth"),
+{n}She kept working on her illusions, and kept an account, in a hand nobody else could read, of every evening the Commander had promised and every evening the Commander had come. She never said what she meant to do with the difference. She enjoyed not saying.{/n}''', c(), portrait="Jerribeth"),
             n("settlement", "Narrator", "{n}The room Jerribeth wanted had begun with a bargain whose costs neither of them could forget.{/n}",
                 c('[Remember the account and the inspection.]', "account", requires=("jerribeth.counter_public_account",)),
                 c('[Remember the catalogue and its clients.]', "catalogue", requires=("jerribeth.counter_private_archive",), forbids=("jerribeth.counter_public_account",)), portrait="Jerribeth"),

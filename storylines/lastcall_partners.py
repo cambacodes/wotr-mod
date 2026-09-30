@@ -192,18 +192,24 @@ partner("arsinoe", "arsinoe", "arsinoe.committed", "arsinoe.closed", "Paid in Fu
         (PILLAR_CHOICE, (PILLAR,), (), ())))
 
 J = "jerribeth.trickster."
+# Sol COX: the coda owns the single forfeit when Last Call plays (her ordinary endings forbid lastcall.active); rent is
+# only a tenant's; the idol is read from body.statue; the call-in answers what she actually is (tenant, toasted, living).
 partner("jerribeth", "jerribeth", "jerribeth.committed", "jerribeth.closed", "Rent Day",
-    '''Jerribeth collected her rent on the first of the month after Threshold, as the terms said, and every first of the month after that. She never once let the Commander forget whose house {mf|he|she} was living in, or whose {mf|he|she} was living on. She was, in the opinion of everyone who met her, entirely too pleased with herself.''',
+    '''Jerribeth came to the victory feast uninvited, which she considered the only honest way to attend one, and stayed until the last candle, counting who had drunk to whom. She never once let the Commander forget who held paper on {mf|him|her}, or on what terms. She was, in the opinion of everyone who met her, entirely too pleased with herself.''',
     (
+        page_p('''She collected her rent on the first of the month after Threshold, as the lease said, and on every first of the month after that: one small memory, her choice, taken in lieu of repairs. She never let the Commander forget whose house she was living in.''', requires=(J + "cost.tenant",)),
         page_p('''She took her forfeit in the second year: one memory, hers to choose. She chose the rift. The Commander remembers everything about Threshold except the joke itself, and she tells it back, badly, on purpose, whenever {mf|he|she} asks.''', requires=(J + "cost.forfeit",)),
-        page_p('''She had worn a deserter from the stockade since the night the Commander gave him to her, and she wore him to the victory feast. Nobody missed him. She made a point of telling the Commander how right {mf|he|she} had been about that.''', requires=(J + "cost.host",)),
-        page_p('''The statue of the Lady of the Sun stood in the square at Drezen for years afterwards, and pilgrims who prayed to it went home oddly satisfied and slightly out of pocket.''', requires=(J + "cost.tenant",)),
+        page_p('''She had worn a deserter from the stockade since the first night the Commander slept in Drezen after giving him to her, and she wore him to the victory feast. Nobody missed him. She made a point of telling the Commander how right {mf|he|she} had been about that.''', requires=(J + "cost.host",)),
+        page_p('''The gilt idol of the Lady of the Sun was carried to the victory feast on a handcart, at her insistence, and set at the Commander's right hand. It did not eat. Everyone who sat near it lost a little money that night and could not afterwards say how.''', requires=(J + "body.statue",)),
+        page_p('''She sent the man she had taken in payment for the toast to pour the Commander's cup at the feast, smiling two finger-widths too wide. The toast had been paid for, she said, and she liked to see her property used.''', requires=(J + "cost.toast_host",)),
     ), declined=J + "declined",
     deal=[[J + "cost.tenant"], [J + "cost.lodger"], [J + "cost.host"], [J + "cost.toast"], [J + "cost.forfeit"]],
-    call=call('''[Call in the lease] "Rent's due, tenant. A house doesn't fall down while you're living in it."''',
-        '''{n}Something in the back of your skull laughs, low and delighted, and settles more comfortably into its lodgings.{/n}''',
-        (PLAIN_CHOICE, (), (), ())),
-    ledger=("Jerribeth: rent due on the first", "I let a succubus a room. The rent is due on the first of the month. She will collect it from me, or from my estate, and she prefers me."))
+    call=call('''[Call in Jerribeth's paper] "Lady of the Sun. You hold paper on me. Collect it from a living debtor, or not at all."''',
+        '''{n}For a moment nothing answers. Then a buzzing, very faint, like a fly against glass a long way off, and the smell of cold stone under the smoke of the rift.{/n}''',
+        ('''"Rent's due, tenant. A house doesn't fall down while you're living in it."''', (), (J + "cost.tenant",), ()),
+        ('"You were toasted, madam, by a stranger. A toast is a debt. Come and collect it after tonight."', (), (J + "cost.toast",), (J + "cost.tenant",)),
+        ('"One memory, your choice, when you choose. Choose after tonight. I want to have something worth taking."', (), (J + "cost.forfeit",), (J + "cost.tenant", J + "cost.toast"))),
+    ledger=("Jerribeth: paper held on me", "Jerribeth holds paper on me: a lease, a toast, or a forfeit clause. She reads small print better than I write it, and she collects in person."))
 
 K = "konomi.trickster."
 partner("konomi", "konomi", "konomi.committed", "konomi.closed", "Terms, Accepted",
