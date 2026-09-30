@@ -93,41 +93,41 @@ s("a_name_on_the_list", "A name she had written herself",
 {n}"That is not in the piece."{/n}
 {n}"It should be."{/n}
 {n}"I shall blame you if anyone remembers the original."{/n}''', c('"I will accept the accusation."', "interest")),
-    n("interest", "Irabeth", '''{n}She sits at last. The chair creaks beneath a movement she has not thought to make carefully.{/n}
-"I used to do that while walking. Recite things, I mean. It passed the time between one very similar stretch of road and the next. When I arrived in Kenabres I began remembering how every word might be repeated."
-{n}She stretches one leg and looks at the scuffed toe of her boot.{/n}
-"There were good reasons. A woman who has been called a stupid brute does not improve matters by performing a stupid brute in an inn. I learned that early. Then I discovered that being faultless was no protection either. They could always dislike how pleased I looked with myself."
+    n("interest", "Irabeth", '''{n}She sits at last. The chair creaks under her; she has never learned to sit carefully.{/n}
+"I used to do that on the march. Recite things. It passed the miles between one stretch of road and the next one just like it. Then I came to Kenabres and started weighing every word before I said it."
+{n}She stretches one leg out and scowls at the scuffed toe of her boot.{/n}
+"A half-orc who plays the brute in a taproom only proves what they already think. A half-orc who plays it straight gets called surly. You can't win that one, so I stopped playing."
 {n}She glances up.{/n}
-"I am not asking you to answer them for me. I signed the page. I would like the evening. I would particularly like the part where I have done it well and can enjoy being told so."
-{n}The admission brings color into her cheeks. She leaves it there.{/n}''',
+"I signed the page anyway. Don't ask me why. No, ask. Because I want them to laugh where I mean them to, and then clap, and I want to stand there and enjoy it like a recruit with a new sword. It's vanity. I've confessed it. Iomedae can take it up with me."
+{n}The admission brings colour into her cheeks. She leaves it there.{/n}''',
       c('"I would like to see that look on your face."', "flirt", forbids=("anevia_dead", "anevia_gone")),
       c('"I would like to see that look on your face."', "careful", requires=("anevia_dead",)),
       c('"I would like to see that look on your face."', "careful", requires=("anevia_gone",), forbids=("anevia_dead",)),
       c('"I like your company, Irabeth. I would like more of it."', "company"),
       c('"I hope the evening goes well. Let us keep this friendship."', "friend")),
-    n("flirt", "Irabeth", '''"You are looking at it already."
-{n}For a moment she lets the answer stand. Then her eyes fall to her ring.{/n}
-"I know what you mean. I am pleased by more than your opinion of my recitation."
-{n}She lays the list between you.{/n}
-"Anevia is my wife. I love her. Whatever you and I might decide, that is a person and a marriage, not a difficulty for us to solve in her absence."
+    n("flirt", "Irabeth", '''"You're looking at it already."
+{n}She lets that stand a breath too long. Then her eyes drop to her ring, and she turns it once with her thumb.{/n}
+"I know what you meant. And I liked it. That's the trouble."
+{n}She flattens the list on the table between you like a map before an advance.{/n}
+"Nevi is my wife. I love her. Whatever this is, it doesn't get settled behind her back like a supply dispute. I'm no good at sneaking, Commander. I clank."
 {n}Her thumb rests beside her written name.{/n}
-"I would like to see you again. Without making every pleasant minute into a concealed appointment. Let us begin there. If you mean something more, we will have to say it plainly when we have had time to consider what we are asking."''', c('"I mean the invitation. We can take the time."', "finish", flags=("irabeth.interest",))),
-    n("careful", "Irabeth", '''"You are looking at it already."
-{n}Her smile softens. Her gaze falls briefly to her ring.{/n}
-"I am pleased by your attention. I also have a great deal to think about before I could answer a more private invitation. Anevia belongs in that conversation. What has happened to us cannot be made simpler by my enjoying a compliment."
-{n}She looks back at you.{/n}
-"For now, come again because you enjoy my company. If we ask for more, we will have to speak plainly about the life I actually have."''', c('"I would like to come again."', "finish", flags=("irabeth.interest",))),
+"Come again. Come to the recitation. If you mean more than that, say it out loud one day, and I'll answer out loud. Not tonight."''', c('"I mean the invitation. We can take the time."', "finish", flags=("irabeth.interest",))),
+    n("careful", "Irabeth", '''"You're looking at it already."
+{n}The smile comes, and goes. Her eyes drop to her ring.{/n}
+"Don't. Not yet. I'm glad you said it, and I've no idea where to put it. Nevi is in any answer I give you, whether she's here to give it with me or not."
+{n}She looks back at you, jaw set.{/n}
+"Come again because you like my company. That much I can manage."''', c('"I would like to come again."', "finish", flags=("irabeth.interest",))),
     n("company", "Irabeth", '''"So would I."
-{n}Her answer comes promptly, followed by a small, pleased uncertainty about where to put her hands.{/n}
-"I have been imagining the audience. It keeps becoming a collection of people who look as though they have something more important to do. I should like to know one person came because the performance interested them."
+{n}She says it fast, then seems not to know what to do with her hands, and settles them on her knees like a recruit at inspection.{/n}
+"I keep picturing the audience as officers waiting for me to finish so they can give their reports. It'd be good to know one person came for the guard."
 {n}She reaches for the list and stops before folding it out of sight.{/n}
-"I can enjoy having another person to tell about something. I keep arranging my life as though everyone needs a clear military reason to stand beside me. Then I complain that I am never off duty."
-{n}She looks directly at you.{/n}
-"Come again. I would like the chance to discover what you talk about when I have finished talking about myself."''', c('"I will."', "finish")),
-    n("friend", "Irabeth", '''"Yes. I would like that."
-{n}She gives the list one final look before folding it. The crown disappears inside the paper.{/n}
-"You may still laugh at the performance. I will know which lines worked, and I shall blame you for the others."
-{n}When she stands, there is no apology in the movement. She has somewhere she wants to be, and a name already waiting for her there.{/n}''', c('[Keep this relationship as friendship.]', flags=("irabeth.closed",))),
+"Every hour of the day somebody needs the Knight-Captain for something. Then I complain nobody talks to me about anything else. Nevi says I built the cage myself and polish the bars on Sundays."
+{n}She looks straight at you.{/n}
+"Come again. Tell me what you talk about when you're not giving orders. I honestly don't know."''', c('"I will."', "finish")),
+    n("friend", "Irabeth", '''"Yes. Good."
+{n}She gives the list one last look before folding it. The crown disappears inside the paper.{/n}
+"You can still laugh at the performance. I'll know which lines worked, and I'll blame you for the rest."
+{n}When she stands there is no apology in it. She has somewhere to be, and a name already waiting for her there.{/n}''', c('[Keep this relationship as friendship.]', flags=("irabeth.closed",))),
     n("finish", "Irabeth", '''{n}A folded requisition waits beneath the list. She picks it up reluctantly, then frowns.{/n}
 "This arrived before you. A lieutenant has impounded a wagon of cold iron. There is a dispute about who owned the load when he took it."
 {n}She turns the page toward you. A small sketch shows a cart with one wheel drawn much larger than the other.{/n}
@@ -190,13 +190,13 @@ s("the_seized_wagon", "Iron that belonged to somebody",
 {n}Brena takes the bar back. Her fingers close over the old mark.{/n}
 {n}"I'd like that question asked before rain gets through your cloth."{/n}
 {n}Irabeth orders the wagon moved beneath the eaves. Hadran and two yard workers do it while Brena walks beside the smaller wheel, listening for a problem she can identify more readily than any of you.{/n}''', c('[Discuss the remaining evidence.]', "cost", flags=("irabeth.iron_read",))),
-    n("uncertain", "Narrator", '''{n}The stamp looks familiar. You begin to identify it, then notice a second impression crossing the first. Your explanation no longer fits what is on the metal.{/n}
+    n("uncertain", "Narrator", '''{n}The stamp looks familiar. You begin to name it, then notice a second impression crossing the first. Your explanation no longer fits what is on the metal.{/n}
 {n}Brena waits. Hadran looks from your face to Irabeth's.{/n}
 {n}"I cannot establish it from this," you say.{/n}
-{n}Irabeth nods. "Then we will use the forge."{/n}
-{n}The sample is carried under escort. You wait through the preparation of a small test piece, the heat and the repeated examination. Brena does not let anyone hurry the work. The material proves sound, with a factor's stamp struck over the maker's. By the time you return, the yard is in shadow and a crew has gone home without the hinges Brena meant to finish.{/n}
+{n}Irabeth nods. "Then we use the forge."{/n}
+{n}The sample goes under escort. You wait through the preparation of a small test piece, the heat and the repeated examination. Brena does not let anyone hurry the work. The material proves sound, with a factor's stamp struck over the maker's. By the time you return, the yard is in shadow and a crew has gone home without the hinges Brena meant to finish.{/n}
 {n}"Tomorrow," she tells the boy who came to collect them. "Tell your mother I know. Tomorrow."{/n}
-{n}Irabeth watches him leave. The failed shortcut has cost an afternoon. She puts that afternoon into her account without enlarging it into a confession.{/n}''', c('[Discuss what remains unsettled.]', "cost", flags=("irabeth.iron_uncertain",))),
+{n}Irabeth watches him go. Then she writes "one afternoon: the Commander's guess" in the margin of her report, and underlines it.{/n}''', c('[Discuss what remains unsettled.]', "cost", flags=("irabeth.iron_uncertain",))),
     n("assay", "Narrator", '''{n}You accompany the sample to the forge. Brena lays out what will be tested and lets Hadran mark the chosen piece. He records the process. This time he asks whether his description is correct before writing the next line.{/n}
 {n}Heat builds in the small room. Irabeth removes her gloves and stands out of Brena's working space. When the smith asks for the shorter tongs, Hadran passes them before anyone else can move.{/n}
 {n}"You know a forge?" Brena asks.{/n}
@@ -238,24 +238,24 @@ s("the_seized_wagon", "Iron that belonged to somebody",
 
 s("the_question_outside_duty", "The question she did not owe you",
   '"I want to court you, Irabeth. May we speak about what that would mean?"', [
-    n("start", "Irabeth", '''{n}Irabeth puts down the cup she was holding. She has heard you clearly. The pause belongs to her answer.{/n}
-"Yes. I have thought about asking you the same thing."
-{n}She moves a chair away from the desk and sits where she can face you without a report between you.{/n}
-"I enjoy being wanted. That sounds embarrassingly simple. I keep expecting to find a better reason for how pleased I am when you come looking for me."
-{n}Her ears darken. She does not look away.{/n}
-"I do not mean being useful to the Commander. I mean noticing that you are looking at my mouth and wanting to give you a reason to continue."
-{n}A smile interrupts the seriousness with which she has begun.{/n}
-"There. I have said something sufficiently reckless to make the rest easier."''',
+    n("start", "Irabeth", '''{n}Irabeth puts down the cup she was holding. She heard you. She is only making sure of it.{/n}
+"Yes. Iomedae help me, I've thought about asking you the same thing."
+{n}She drags a chair out from behind the desk and sits facing you, with no report between you. It looks like it costs her something.{/n}
+"I like being wanted. There. Embarrassingly simple. I kept looking for a nobler reason for how pleased I get when you come looking for me, and I didn't find one."
+{n}Her ears darken. She doesn't look away.{/n}
+"I don't mean useful to the Commander. I mean I've caught you looking at my mouth, and I want to give you a reason to keep doing it."
+{n}She blows out a breath that is nearly a laugh.{/n}
+"That's the reckless part said. The rest should be easier."''',
       c('"What do you want to keep separate from this?"', "rank"),
-      c('"I want that too. Tell me what you need before we begin."', "rank"),
+      c('"I want that too. Tell me what you want before we begin."', "rank"),
       c('"I have changed my mind. I value the friendship."', "friend")),
-    n("rank", "Irabeth", '''"My judgment. You know I serve under you. I cannot make that disappear by removing my sword belt."
-{n}She rests her forearms on her knees.{/n}
-"If I advise against a march, I need to know that you will hear the advice. If you reject it, I need to argue the question without wondering whether a private evening has given me the right to insist. That is a temptation on my side too."
+    n("rank", "Irabeth", '''"My judgment. I serve under you. Taking off my sword belt doesn't change that."
+{n}She rests her forearms on her knees, the way she sits with sergeants.{/n}
+"When I say don't march, you hear the Knight-Captain saying it. Not your lover sulking. And when you overrule me, I salute, and I still think you're wrong, and I leave it on the council table. I'll try to. I'm stubborn, Commander. You know that."
 "And away from council?"
-"I want to be able to disappoint you. Not as a test. Because one day I shall want sleep when you want company, or I shall have promised an hour to somebody else. I would rather endure your disappointment than spend the rest of the night performing pleasure I do not feel."
-{n}She straightens a little.{/n}
-"I am capable of wanting you very much. I am also capable of being tired, stubborn and convinced that my plan is excellent when it is merely mine. You ought to meet that woman before you promise anything to the one who salutes."''',
+"Some nights you'll want me and I'll want sleep. Some nights I'll have promised Nevi. Then it's no, and you grumble, and that's the end of it. I won't lie there pretending. I'm a bad liar in armour and a worse one out of it."
+{n}She straightens.{/n}
+"I can want you very badly. I can also be tired, pig-headed and sure my plan's the best one when it's only mine. Meet that woman before you promise anything to the one who salutes."''',
       c('"I want the woman who can refuse me. I will keep my own right to refuse."', "marriage"),
       c('"I expect a lover to support my decisions."', "refused")),
     n("marriage", "Irabeth", '''"Good. Then there is something more particular."
@@ -263,57 +263,57 @@ s("the_question_outside_duty", "The question she did not owe you",
       c('"We should speak about Anevia."', "wife", forbids=("anevia_dead", "anevia_gone")),
       c('"We should speak about what losing Anevia means for this."', "bereaved", requires=("anevia_dead",)),
       c('"Anevia is gone. I will not treat that as an answer from her."', "gone", requires=("anevia_gone",), forbids=("anevia_dead",))),
-    n("wife", "Irabeth", '''"I love her. I do not want to leave her."
-{n}The words are firm, without apology.{/n}
-"I can imagine loving another person and remaining her wife. Imagining it does not tell me what she wants, or what she would ask of me. I will speak to her first. Then I want you to speak with her yourself."
+    n("wife", "Irabeth", '''"I love her. I'm not leaving her. Get that out of your head first."
+{n}No apology in it. A flat fact, the way she gives a casualty count.{/n}
+"I can picture loving you and staying her wife. Picturing it doesn't tell me what Nevi will say. So I tell her first. Then you go and talk to her yourself."
 "Separately?"
-"Yes. She must be able to say something to you without watching me receive it. Afterward she and I will speak again. This is not an inquiry in which the first consistent account wins."
-{n}Irabeth's expression softens.{/n}
-"Do not go to her as though asking to borrow a sword. You are asking for a change that reaches into her life. She is allowed to dislike a part of it. I may dislike a part of what she asks. We are accustomed to surviving that."
-{n}She leans back, letting out a breath.{/n}
-"If she wants time, we give it. I would rather wait for a real answer than keep finding ways to pretend I already have one."''',
+"Yes. She'll say things to you she won't say with me in the room watching her face. Then she and I have it out again. It's not an inquiry. Nobody wins by getting their story in first."
+{n}Her mouth twitches.{/n}
+"And don't go to her like you're borrowing a sword. You're asking to walk into her house. She's allowed to hate part of it. So am I. We've survived worse than each other."
+{n}She leans back, and the breath goes out of her.{/n}
+"If she wants time, she gets it. I'll wait for a real answer before I pretend I've got one."''',
       c('"Speak with her. I will meet her when she wants that conversation."', "wait"),
       c('"I would rather leave this as friendship."', "friend")),
-    n("wait", "Irabeth", '''{n}Her hand moves toward yours, then settles on the chair between you.{/n}
-"I would like to kiss you now. I shall probably still want to when you leave."
+    n("wait", "Irabeth", '''{n}Her hand moves toward yours, then settles on the arm of the chair between you, as if she had posted it there.{/n}
+"I'd like to kiss you now. I'll probably still want to when you leave."
 "That sounds inconvenient."
-"Extremely. I have arranged it myself."
-{n}She laughs, briefly and without disguising the frustration beneath it.{/n}
-"Do not mistake waiting for a lack of interest. I am trying to make an invitation I can enjoy accepting. There are enough rooms in my life in which I look over my shoulder."
-{n}At the door she pauses, one hand against the wood.{/n}
-"You can still come to hear me recite. That invitation requires no secrecy. I have every intention of making the duke sound worse."''',
+"Very. And my own doing."
+{n}She laughs, short, not hiding the frustration under it.{/n}
+"Don't take the waiting for cold feet. I'm just not sneaking about in my own marriage. I did enough creeping through cellars in Kenabres to last me."
+{n}At the door she pauses, one hand flat on the wood.{/n}
+"You can still come and hear me recite. Nothing secret in that. I mean to make the duke even worse."''',
       c('[Give her time to speak with Anevia.]', flags=("irabeth.started", "irabeth.courtship_requested", "irabeth.spousal_conversation_requested"))),
     n("bereaved", "Irabeth", '''{n}Irabeth holds the ring still between finger and thumb.{/n}
-"I do not want you to become a replacement for the person I look for when I enter a room. I shall look. You may see me do it."
-{n}For a while she studies her own hand.{/n}
-"I also do not want every future pleasure measured against how much I miss her. She loved me alive. She was particularly insistent about it when I became solemn."
-{n}The effort to smile does not quite succeed.{/n}
-"You can ask me to spend an evening with you. I can answer for that evening. If I speak of her, let me finish. If I cannot, do not make me finish to prove I trust you."
-{n}She releases the ring.{/n}
-"I would like to begin slowly. An invitation, then another. I will not ask a dead woman to deliver the answer I am afraid to give."''',
+"You won't be her. Don't try. I'll still look for her when I walk into a room. You'll see me do it. Don't make a face about it."
+{n}She studies her own hand a while.{/n}
+"And I won't hold every good hour up against her either. Nevi loved me alive. She was very loud about it whenever I went solemn on her."
+{n}The smile doesn't quite hold.{/n}
+"Ask me for an evening. I can answer for an evening. If I start talking about her, let me finish. If I stop in the middle, don't make me go on."
+{n}She lets go of the ring.{/n}
+"Slowly, then. One evening, then another. And I won't pretend a dead woman gave me leave. She didn't. I'm giving it myself."''',
       c('"An evening, then. We can decide the next one when it comes."', "widow_yes"),
       c('"I cannot offer what you are asking. Let us remain friends."', "friend")),
     n("gone", "Irabeth", '''"Thank you."
-{n}The relief is brief. She looks down at her ring.{/n}
-"I cannot make her absence say what she would have said in this room. I will not invent a release from our marriage because it would let me kiss you with less to think about."
+{n}The relief doesn't last. She looks down at her ring.{/n}
+"I can't make her silence say what she'd have said in this room. And I won't forge her a release so I can kiss you with a clear head. That's deserter's paperwork."
 {n}She lifts her eyes.{/n}
-"I want your company. I can ask for that openly. I am not ready to make it a courtship while the answer I owe her remains beyond my reach."
-{n}Her hand closes around the arm of the chair, then relaxes.{/n}
-"You do not have to wait. I would dislike hearing that you had made loneliness into a service you performed for me."''',
+"Your company I'll take, openly. Anything more waits until I've had my answer from her. However long that is."
+{n}Her hand closes on the arm of the chair, then eases.{/n}
+"And don't stand guard over me while I wait. I'd hate that more than you going."''',
       c('[Leave the question open. Keep her company without making a romance promise.]', flags=("irabeth.started", "irabeth.absence_wait",)),
       c('[Keep this relationship as friendship.]', flags=("irabeth.closed",))),
-    n("widow_yes", "Irabeth", '''{n}She offers her hand. You take it, and she holds yours with a quiet firmness that asks for no interpretation beyond the touch itself.{/n}
-"There is a case I meant to show you. Afterward, I would like an hour that belongs to neither the case nor the war. I have put my name down to recite at a storehouse. A ridiculous little piece about a guard and a duke."
+    n("widow_yes", "Irabeth", '''{n}She holds out her hand as if closing a bargain. You take it. Her grip is hard and warm and in no hurry to let go.{/n}
+"There's a case I want to show you. After that, an hour with no case and no war in it. I've put my name down to recite at a storehouse. A ridiculous little piece about a guard and a duke."
 {n}Her thumb moves over your knuckles.{/n}
-"You may come because you want to hear it. I should like to look up and find you there."
-{n}She lets your hand go before returning to the desk. Her ring remains where it was. Nothing in the room has been cleared away to make the invitation possible.{/n}''',
+"Come because you want to hear it. I'd like to look up and find you there."
+{n}She lets go and goes back to her desk. The ring stays on her finger.{/n}''',
       c('[Accept the first evening she has offered.]', flags=("irabeth.started", "irabeth.courtship_requested", "irabeth.bereaved_courtship", "irabeth.lover", "irabeth.personal_ready"))),
-    n("refused", "Irabeth", '''{n}The warmth leaves her expression.{/n}
-"Then I have answered too soon. I will remain your officer. I will not add that condition to my bed."
-{n}She stands and moves the chair back to the desk. There is no further argument to win.{/n}''', c('[Accept her refusal.]', flags=("irabeth.closed",))),
-    n("friend", "Irabeth", '''"Yes. I would rather hear that now."
-{n}She takes a moment before rising. When she does, she offers her hand in farewell, without holding it out long enough to turn the gesture into another question.{/n}
-"I meant that I enjoy your company. We can keep what we have without pretending it was merely a prelude to something else."''', c('[Remain friends with Irabeth.]', flags=("irabeth.closed",))),
+    n("refused", "Irabeth", '''{n}The warmth goes out of her face.{/n}
+"Then I answered too soon. I'll stay your officer. That order doesn't follow me to bed."
+{n}She stands and puts the chair back behind the desk. There is nothing left to argue.{/n}''', c('[Accept her refusal.]', flags=("irabeth.closed",))),
+    n("friend", "Irabeth", '''"Yes. Better now than later."
+{n}She takes a moment before she gets up. When she does, she offers her hand like a sergeant closing a parley, brief and firm.{/n}
+"I like your company. That stands. It doesn't need to be the start of something to be worth having."''', c('[Remain friends with Irabeth.]', flags=("irabeth.closed",))),
 ], any_of=("irabeth.first_hour_kept", "irabeth.courtship_requested"),
     forbids=("i_affair", "trying", "committed", "irabeth.personal_ready", "irabeth.spousal_conversation_requested", "irabeth.absence_wait"))
 
@@ -339,13 +339,13 @@ s("one_truth_to_tell", "The affair they actually had",
 "I want you to say what is true of you. She will notice if we have rehearsed identical sentences. She deserves better than a polished pair of witnesses."
 {n}For the first time, Irabeth's mouth curves.{/n}
 "So do we, if there is to be anything left worth having."''', c('"What are you hoping she will say?"', "after")),
-    n("after", "Irabeth", '''"That she still wants to be my wife. That she believes I can tell her an unwelcome truth before she has to dig it out of me."
-{n}She pauses before the rest.{/n}
-"And that she might accept my loving you too. I have not earned that answer by admitting what I did. I am going to ask for it anyway."
-{n}Her gaze stays on yours.{/n}
-"You may decide that you do not want the work that follows an evening you enjoyed. I would rather know before I ask her to make room for us."
-{n}There is hurt in the possibility, but no effort to make it your punishment.{/n}
-"If we stop, I shall still tell her. If she refuses, I shall not describe her refusal as cruelty. If she agrees, I shall not begin behaving as though the agreement happened before the kiss."''',
+    n("after", "Irabeth", '''"That she still wants to be my wife. That she believes I'll bring her a bad truth myself, before she has to dig it out of me like a splinter."
+{n}She stops, then makes herself go on.{/n}
+"And that she'll let me go on loving you too. I haven't earned that by confessing. I'm going to ask anyway. I'm a paladin, not a saint."
+{n}She holds your gaze.{/n}
+"If you want out, say so now. I'd rather know before I stand in front of her asking her to make room."
+{n}Her jaw is tight, but none of it is aimed at you.{/n}
+"Either way, she hears it from me. All of it."''',
       c('"I want a relationship we can acknowledge. I will speak to her."', "agree"),
       c('"I will tell her the truth, but I do not want to continue as lovers."', "stop")),
     n("agree", "Irabeth", '''{n}Irabeth closes her eyes for a moment. When she opens them, she looks relieved and frightened in almost equal measure.{/n}
@@ -354,11 +354,11 @@ s("one_truth_to_tell", "The affair they actually had",
 "I am going to find something useful to do while I wait. Probably badly. If you see a requisition with three different totals, you may know why."
 {n}The joke makes a little room to breathe. She does not ask for a kiss before you leave.{/n}''',
       c('[Keep the promised conversation with Anevia.]', flags=("irabeth.started", "irabeth.courtship_requested", "irabeth.single_affair_disclosed", "irabeth.spousal_conversation_requested"))),
-    n("stop", "Irabeth", '''"Then that is what I shall tell her."
-{n}She takes the answer standing still. After a moment she looks toward the window.{/n}
-"I am sorry it has ended here. I am glad you did not let me speak of a future you had already decided against."
+    n("stop", "Irabeth", '''"Then that's what I'll tell her."
+{n}She takes it standing still. After a moment she looks toward the window.{/n}
+"I'm sorry it ends here. I'm glad you didn't let me talk about a future you'd already walked away from."
 {n}She turns back before you leave.{/n}
-"You do not need a romantic promise to answer her honestly. Please remember that when she asks."''',
+"She'll ask you things. Answer her straight. You don't need to be my lover to do that much."''',
       c('[End the affair as a romance; leave its history intact.]', flags=("irabeth.closed",))),
 ], requires=("i_affair", "i_morning", "i_will_tell"),
     forbids=("a_affair", "trying", "committed", "irabeth.spousal_conversation_requested", "irabeth.personal_ready", "anevia_dead", "anevia_gone"))
@@ -398,11 +398,11 @@ s("anevias_answer", "The answer only Anevia could give",
       c('"You and I have a relationship too. I will not ask you to answer as though we do not."', "lovers", requires=("anevia.lover",), forbids=("anevia.closed",)),
       c('"You and I were lovers. I will not pretend that history disappears because it ended."', "past", requires=("anevia.lover", "anevia.closed")),
       c('"You are not being asked to become my lover."', "separate", forbids=("anevia.lover",))),
-    n("past", "Anevia", '''"Good. I remember it. I remember why it ended too."
+    n("past", "Anevia", '''"Good. I remember it. I remember why it ended, too."
 {n}She leaves her chair where it is.{/n}
-"I'm answering about my marriage and Beth's invitation. I'm not offering to reopen ours. Those are different questions, even when the same people make them awkward."
-{n}She studies you for a moment.{/n}
-"I can be willing for her to see you without saying I want the same thing again. Don't ask me to prove I'm comfortable by making myself affectionate. I'll be honest. That's what I'm offering."''', c('"I understand. Tell me what you and Irabeth have discussed."', "terms")),
+"I'm answerin' about my marriage and Beth's invitation. I'm not offerin' to open ours back up. Different questions, even when the same people make 'em awkward."
+{n}She studies you a moment.{/n}
+"I can let her see you without wantin' you back myself. Don't expect me to be sweet about it to prove I've made my peace. I'll be civil. That's what's on offer."''', c('"I understand. Tell me what you and Irabeth have discussed."', "terms")),
     n("lovers", "Anevia", '''"Good. Because I'd noticed."
 {n}A little warmth returns to her face, but she keeps her chair where it is.{/n}
 "What we've chosen doesn't answer this for Beth. And what she wants doesn't make our evenings part of a bargain in which everybody has to do the same thing. I might want you alone one night. She might want me alone the next. Nobody gets a receipt to cash in against the other two."
@@ -417,14 +417,14 @@ s("anevias_answer", "The answer only Anevia could give",
 "Then you'll have the terrible burden of knowin' two married women without kissing both of them. People have survived worse."
 {n}The joke lets the room relax. Anevia does not use it to leave the question behind.{/n}
 "I mean it. Don't try to repay my agreement by flirtin' at me. A quiet thank-you will do."''', c('"Thank you. I would like to hear the terms you and Irabeth discussed."', "terms")),
-    n("terms", "Anevia", '''"She tells me when she's spending the evening with you. I don't want the private details. I do want to know whether to keep supper warm. We keep the time we've already promised each other. If the war takes it, we say so and find another day. We don't use the war to avoid sayin' we wanted something else."
-{n}Anevia reaches for a loose thread at her cuff, considers pulling it and leaves it alone.{/n}
-"You don't have to become exclusive to make me comfortable. Neither does she get to decide who else you love. But if somebody is waiting for you, tell them where you've gone. I have no use for the kind of freedom that depends on someone else not knowing when to stop waiting."
+    n("terms", "Anevia", '''"She tells me when she's with you. I don't want the details. I do want to know whether to keep supper warm or feed it to the dog. The nights we've promised each other stay ours. If the war eats one, we say so and pick another. Nobody hides behind the war to cover wantin' to be somewhere else."
+{n}Anevia finds a loose thread at her cuff, considers pulling it and leaves it alone.{/n}
+"You don't have to swear off everybody else to keep me sweet. And she doesn't get a say in who else you tumble. But if somebody's sittin' up waitin' for you, tell 'em where you've gone. I've done my share of waitin' up. I know what it tastes like."
 "And if this stops working?"
-"We talk before we've spent a month collecting grievances like spare arrows. Beth and I talk as wives. You and she talk as lovers. If a thing concerns all of us, we can find a room big enough for three people with opinions."
-{n}Her smile turns crooked.{/n}
-"Drezen has survived worse rooms."
-{n}She lets you consider the answer without filling the pause.{/n}''',
+"Then we have it out before we've spent a month collectin' grudges like spare arrows. Beth and I row as wives. You and she row as whatever you are. If it's all three of us, we find a room with enough chairs."
+{n}Her smile goes crooked.{/n}
+"Drezen's survived worse rooms."
+{n}She lets you chew on it without filling the pause.{/n}''',
       c('"I can agree to that. I will speak to her about the evening we actually want."', "yes"),
       c('"I cannot agree to those terms. I will not begin the relationship."', "no")),
     n("yes", "Anevia", '''{n}Anevia nods. The motion is small, but the conversation changes after it.{/n}
@@ -502,12 +502,12 @@ s("the_evening_she_chose", "An invitation in her own name",
 "I wanted to see whether you would kiss me if I stopped explaining myself. And I wanted to hear something you do not say in council. Something foolish you would like, perhaps. I have brought enough earnestness for two people. You need not supply more for my benefit."
 {n}She rests her hand on the edge of your chair.{/n}
 "What did you hope would happen when you said yes?"''', c('[Tell her what you wanted from the evening.]', "yours")),
-    n("yours", "Irabeth", '''{n}You tell her about wanting an hour in which you are neither a solution nor an explanation. She listens, occasionally asking a question instead of offering reassurance.{/n}
-"I may be poor company for that if you expect me never to notice who you are."
+    n("yours", "Irabeth", '''{n}You tell her you want an hour in which nobody needs you to solve anything. She listens with her chin on her fist, the way she listens to scouts, and asks one question about it. A good one.{/n}
+"You picked the wrong woman for that. I'll always know who you are. I know who you are when you're asleep in council."
 "I do not expect you to forget."
-"Good. I would like to tell you when you are making something unnecessarily difficult. I have several examples, but they can wait."
-{n}The laughter comes more easily now. Irabeth leans closer, then waits, letting the change in distance become a question.{/n}
-"I would like to kiss you. I have thought of it several times while you were talking. You may take that as a compliment to the talking or a confession of poor attention."''',
+"Good. Then I get to tell you when you're making something harder than it needs to be. I've got a list. It can wait."
+{n}The laughing comes easier now. She leans in, stops halfway, and doesn't pretend she stopped for any reason but nerve.{/n}
+"I want to kiss you. I've been thinking about it half the time you were talking. Take that as a compliment to the talking, or a confession of poor attention."''',
       c('[Meet her kiss.]', "kiss", flags=("irabeth.first_open_kiss",)),
       c('"Hold my hand tonight. I want to take this slowly."', "hand")),
     n("kiss", "Narrator", '''{n}Her hand rises to your cheek. She kisses you gently at first, then pauses close enough that you can feel her breath when she laughs.{/n}
@@ -518,11 +518,11 @@ s("the_evening_she_chose", "An invitation in her own name",
 {n}"The room has benches."{/n}
 {n}"On end. I am enthusiastic, not reckless."{/n}
 {n}She stands and offers her hand. You move to the window, where the sill gives her somewhere to lean while you come close again. This time there is no furniture to interrupt. When she finally rests her forehead against yours, she is smiling.{/n}''', c('[Stay with her until the hour is nearly gone.]', "end")),
-    n("hand", "Narrator", '''{n}She turns her palm toward yours and threads your fingers together.{/n}
-{n}"Then I can enjoy being asked for that."{/n}
-{n}She shifts her chair close enough that you can sit without stretching your arms. For a while you talk about the worst performances either of you has endured. Irabeth remembers a mercenary who sang an entire ballad in the wrong order and became angry when anyone died twice.{/n}
-{n}When the street grows noisier beneath the window, she leans toward you to finish the story. Her shoulder rests against yours. She does not try to turn the touch into something you did not ask for.{/n}
-{n}"Another evening," she says. "I would like another, at this pace if it suits us."{/n}''', c('[Enjoy the hour you chose.]', "end")),
+    n("hand", "Narrator", '''{n}She turns her palm up and laces her fingers through yours, carefully, as if your hand were kit she had been issued and meant to return in good order.{/n}
+{n}"All right. I can live with being asked for that."{/n}
+{n}She drags her chair close enough that neither of you has to stretch. For a while you trade the worst performances either of you has sat through. Irabeth remembers a mercenary who sang a whole ballad in the wrong order and got angry when anyone died twice.{/n}
+{n}When the street grows loud under the window, she leans in to finish the story. Her shoulder stays against yours after the punchline.{/n}
+{n}"Another evening," she says. "This one's been good. I want more of them."{/n}''', c('[Enjoy the hour you chose.]', "end")),
     n("end", "Irabeth", '''{n}Before leaving, Irabeth puts the chairs back where she found them. You open the door while she checks the window latch.{/n}
 "There is a disagreement over a wagon of cold iron I would like to hear properly. Come if you want to. It is work, and I shall not pretend otherwise."
 {n}She turns toward you.{/n}
@@ -552,13 +552,13 @@ s("a_day_of_our_own", "Something they had not done yet",
 "No. I signed the page myself. She found out afterward and looked so pleased that I briefly considered denying it."
 {n}Irabeth laughs.{/n}
 "She has plans for the day. I would like you to hear the piece before I face the audience. Then perhaps help me decide which parts deserve to survive."''', c('"I would like that."', "ours")),
-    n("ours", "Irabeth", '''"I know. I am trying to act as though I know."
+    n("ours", "Irabeth", '''"I know. I'm trying to act like I know."
 {n}She rests her hand against yours.{/n}
-"I have spoken with her about wanting this. She said she likes being my wife considerably more when it does not require attending every performance I rehearse. Then she made me do the duke twice."
+"I told Nevi I wanted this. She said she likes being my wife a great deal more when she doesn't have to sit through every rehearsal. Then she made me do the duke twice."
 {n}Her thumb moves over your knuckles.{/n}
-"I am not asking to withdraw the promises we made together. I am asking for a day within them. If we later decide the shared arrangement no longer suits us, we will have to say that honestly. A walk with you cannot do that work in secret."
-{n}She looks at you directly.{/n}
-"Would you like to spend the afternoon with me? We can hear the piece, then find something neither of us has rehearsed."''', c('"Yes. Show me what you have chosen."', "walk")),
+"I'm not taking back anything the three of us said. This is a day inside it. That's all it is."
+{n}She looks straight at you.{/n}
+"Spend the afternoon with me? Hear the piece, then find something neither of us has rehearsed."''', c('"Yes. Show me what you have chosen."', "walk")),
     n("walk", "Narrator", '''{n}You go to the storehouse where the recitation will take place. Dema, the woman arranging it, points out the standing place and warns Irabeth that the back of the room swallows quiet voices. Irabeth thanks her and waits until she has gone downstairs.{/n}
 {n}Then she stands where the performers will stand and begins. The first lines are too measured. You ask her what the guard wants. She answers, "His money," with such immediate conviction that the whole piece changes.{/n}
 {n}He wants his money. He wants a dry bed. He wants the duke to stop correcting the geography of a road the duke has never seen. Irabeth gives him a muttered complaint between the grand claims, and suddenly he is a man you can imagine sitting beside a fire.{/n}
@@ -647,17 +647,17 @@ s("the_sealed_account", "What the watch was protecting",
 "The boy?"
 "We will arrange somewhere he and his sister can go if the warehouse becomes unsafe. Keeping your name quiet does not excuse leaving them without a way out."
 {n}He nods. It is the first time he has looked at the decision as more than a reprieve for himself.{/n}''', c('[Stay while the terms are given to Brena.]', "answer_sealed")),
-    n("open", "Irabeth", '''{n}Irabeth studies the covered page for a long moment.{/n}
-"Then we move the boy and his sister before opening it. Ordel will have to arrange new work. I will explain why the watch has chosen this, and I will not tell him the consequences are imaginary because the choice is defensible."
+    n("open", "Irabeth", '''{n}Irabeth studies the covered page a while.{/n}
+"Then we move the boy and his sister before we open it. Ordel will need new work. I'll tell him why the watch chose this, and I won't tell him the cost is imaginary because the choice is defensible."
 {n}Ordel puts on his cap.{/n}
 "I don't thank you for it."
-"I did not expect you to."
+"I didn't expect you to."
 "I gave you good information."
-"You did. You have not been exposed for misconduct. That may make very little difference to the next person you ask to hire you."
-{n}He looks at her, anger giving way to an exhausted attention.{/n}
+"You did. You haven't been exposed for misconduct. That may make very little difference to the next man you ask to hire you."
+{n}He looks at her, the anger giving way to an exhausted attention.{/n}
 "You know that?"
-"Yes. I prefer the other course. I can still carry out this one properly."
-{n}She writes the relocation instruction, then a payment for Ordel's lost commission. She does not write a reward. When he leaves to make the arrangements, Irabeth remains beside the table, watching the door for a few seconds after it has closed.{/n}''', c('[Return when the witnesses are safe and Brena can inspect the account.]', "answer_open")),
+"Yes. I'd have chosen the other course. I can still carry this one out properly."
+{n}She writes the relocation order, then a payment for Ordel's lost commission. She does not write a reward. When he leaves to make the arrangements, Irabeth stays by the table, watching the closed door for a few seconds.{/n}''', c('[Return when the witnesses are safe and Brena can inspect the account.]', "answer_open")),
     n("answer_sealed", "Narrator", '''{n}Brena hears the offer with Ordel beside the door and Hadran standing opposite her. She checks the purchase figures aloud, making Irabeth repeat the repaired axle's value. Then she takes the compensation and asks for the wagon keys.{/n}
 {n}"Is that your agreement?" Hadran asks.{/n}
 {n}"That's my money. Don't make it say more."{/n}
@@ -753,35 +753,34 @@ s("ten_minutes_in_a_hall", "The applause she wanted",
 {n}"Probably."{/n}
 {n}"You might have lied a little."{/n}
 {n}She is still smiling when you turn toward headquarters.{/n}''', c('[Let the walk take the time you both want.]', "kiss_question")),
-    n("corner", "Irabeth", '''"That is a fair complaint against an evening in which I have been applauded."
-{n}She takes you to a sheltered doorway away from the departing audience. It is open to the lane, quiet enough that you do not have to compete with conversation.{/n}
-"Tell me what you wanted to say while I was describing myself so enthusiastically."
-{n}You begin with something that troubled you earlier in the day. Irabeth listens. Once, she opens her mouth to suggest a solution, then asks whether you want one. You tell her. She accepts the answer and stays with the part you actually wanted to say.{/n}
-{n}When you have finished, she touches your forearm.{/n}
-"I enjoyed being seen tonight. I do not want to become so absorbed in it that I forget to look at you. You may remind me before I have made an entire speech."
-{n}Her smile returns.{/n}
-"A small reminder. I have become dangerously fond of speeches."''', c('[Stay close in the quiet doorway.]', "kiss_question")),
-    n("kiss_question", "Irabeth", '''{n}She turns toward you. The merriment in her face has softened into something more intent.{/n}
-"May I kiss you before we go? I have wanted to since you told me about the clerk."
-{n}Her hand rests near yours. She has asked plainly and waits just as plainly for your answer.{/n}''',
+    n("corner", "Irabeth", '''"Fair. I've talked about myself for an hour. Somebody ought to court-martial me."
+{n}She pulls you into a sheltered doorway out of the stream of the departing audience. It is open to the lane and quiet enough to hear each other.{/n}
+"Go on. Whatever you were chewing on while I was busy being magnificent."
+{n}You tell her something that has sat badly with you all day. Irabeth listens. Once she opens her mouth with a plan already in it, shuts it again, and waits. When you have finished, all she says is, "That's a rotten thing to carry," and she grips your forearm.{/n}
+"There. I've looked at you. Kick me if I start another speech."
+{n}The grin comes back.{/n}
+"A small kick. I've grown fond of speeches."''', c('[Stay close in the quiet doorway.]', "kiss_question")),
+    n("kiss_question", "Irabeth", '''{n}She turns toward you. The laughter has gone out of her face, and what is left is more intent.{/n}
+"I've wanted to kiss you since you told me about the clerk. I'm going to, unless you've got a better idea."
+{n}Her hand is already fisted in your sleeve.{/n}''',
       c('[Kiss her and let the celebration linger.]', "kiss"),
       c('[Take her arm and walk back together.]', "arm")),
-    n("kiss", "Narrator", '''{n}Irabeth's kiss is warm and rather less careful than her first entrance into the hall. She draws you close, then eases her hold when you shift, letting you find the distance you want.{/n}
+    n("kiss", "Narrator", '''{n}Irabeth's kiss is warm and a good deal less careful than her entrance into the hall. She hauls you in by the coat, and for once she does not apologise for her strength.{/n}
 {n}When you part, she rests her cheek against yours for a moment.{/n}
-{n}"I am going to be very difficult to live with this evening."{/n}
+{n}"I'm going to be impossible to live with this evening."{/n}
 {n}"Only this evening?"{/n}
-{n}"You have become bold."{/n}
-{n}She kisses you once more, briefly, as though agreeing with the accusation.{/n}''', c('[Walk back with her.]', "end")),
+{n}"You've got bold."{/n}
+{n}She kisses you once more, briefly, as though conceding the point.{/n}''', c('[Walk back with her.]', "end")),
     n("arm", "Narrator", '''{n}She offers her arm with a little flourish borrowed from the guard. You take it, and she immediately complains that the guard would have charged a toll.{/n}
 {n}The joke lasts half the walk. Afterward, you fall into a quieter conversation about the song's unnecessary verses. Irabeth remembers a better ending, sings two lines under her breath and stops when she sees you listening.{/n}
 {n}"Another performance costs extra."{/n}
 {n}She does not move her arm away.{/n}''', c('[Enjoy the walk without asking for more.]', "end")),
     n("end", "Irabeth", '''{n}At headquarters she stops before the door.{/n}
-"Thank you for coming. I am trying to say that without suggesting your presence was a charitable act. I wanted you there because I wanted to share the evening."
+"Thank you for coming. Not as a kindness. I wanted you there. There's a difference, and I want it on the record."
 {n}She glances back toward the lane.{/n}
-"Tomorrow I have to answer what happened to the practice repairs and the warehouse inquiry. Tonight I would like to remember that a room full of people laughed when I intended them to."
-{n}Her smile broadens again.{/n}
-"I may even remember it while answering the difficult questions. That would be a useful improvement."''',
+"Tomorrow I answer for the practice repairs and the warehouse inquiry. Tonight a room full of people laughed where I meant them to. I'm keeping that."
+{n}Her grin widens.{/n}
+"I might even think of it while they're shouting at me. A useful improvement."''',
       c('[Keep the evening as something you did together.]', flags=("irabeth.performance_kept",))),
 ], requires=("irabeth.account_resolved",), delay=48)
 
@@ -807,15 +806,15 @@ s("the_cost_afterward", "The part the report did not finish",
 "She sent a message that was mostly unflattering. It ended with a price for new grips. A fair price. I have accepted it."
 {n}Her smile is small.{/n}
 "She may dislike me and still do good work. I have no intention of requiring affection from my suppliers."''', c('"And what do the officers say about your decision?"', "officers")),
-    n("open", "Irabeth", '''"Ordel has found work with a different carrier. The pay is worse. He brought the final account himself so that I could see the difference."
+    n("open", "Irabeth", '''"Ordel has found work with a different carrier. The pay is worse. He brought the final account himself so I could see the difference."
 {n}She folds her hands between her knees.{/n}
-"The warehouse has changed its delivery arrangements. The investigators have lost the easy trail. They have other methods. They are slower. I was asked whether clearing one smith was worth it."
+"The warehouse has changed its delivery arrangements. The investigators have lost the easy trail. They have other methods. Slower ones. I was asked whether clearing one smith was worth it."
 "What did you say?"
-"That if we intended to charge people the cost of being suspected, we should stop pretending our inquiries were protection. Then I returned to my room and became angry about how much more difficult the investigation had become."
-{n}She looks at you without asking you to repair the contradiction.{/n}
-"Brena has taken another watch order. She says she prefers knowing how to make us answer. Ordel says he prefers the wage he had before. The boy and his sister are safe with their aunt. None of those facts cancels the others."
+"That if we mean to charge people the cost of being suspected, we should stop calling our inquiries protection. Then I went back to my room and was furious about how much harder the investigation had got."
+{n}She says it flatly, and does not ask you to fix it.{/n}
+"Brena has taken another watch order. She says she prefers knowing how to make us answer. Ordel says he preferred his old wage. The boy and his sister are safe with their aunt. None of that cancels the rest."
 {n}She draws the damaged sword toward her and examines the grip.{/n}
-"I can defend the decision. I have not come to like every part of it."''', c('"What will you do when the next officer has to make the same choice?"', "officers")),
+"I can defend the decision. I don't have to like all of it."''', c('"What will you do when the next officer has to make the same choice?"', "officers")),
     n("officers", "Irabeth", '''"I have drafted an instruction. A seizure must name the grounds, record the owner's answer as given and have a review time attached to it. A missing document is a question to investigate. It is not permission to keep asking until the owner gives up."
 {n}She hands you the short page. The last paragraph concerns protected sources.{/n}
 "That part is harder. I can make an officer record that evidence has been withheld. I cannot make every source safe to expose. I want a second officer to review those cases, one who did not order the seizure."
@@ -826,12 +825,12 @@ s("the_cost_afterward", "The part the report did not finish",
       c('"Keep your name. Argue for it in the officers\' meeting."', "name", flags=("irabeth.instruction_her_name",)),
       c('"Send it as your instruction with my explicit support. Let them dispute the work instead of your authority."', "support", flags=("irabeth.instruction_supported",))),
     n("name", "Irabeth", '''"Then I will."
-{n}She sounds relieved, then annoyed at the relief.{/n}
-"I was about to thank you for allowing it. That is a habit I should notice more often. I have authority to issue this. I wanted somebody to tell me that enjoying the authority did not make the instruction suspect."
-{n}She folds the page along its existing crease.{/n}
-"I shall have to stand there while men who have never lost a night's sleep over their own names explain why mine is a distraction. Some will have useful objections. I will need to hear those too."
-{n}Her smile acquires a hard edge.{/n}
-"I intend to be unpleasantly well prepared. I may even enjoy that part."''', c('[Ask what help she actually wants.]', "help")),
+{n}She sounds relieved, and then annoyed at being relieved.{/n}
+"I nearly thanked you for permission. I don't need your permission. I'm Knight-Captain; I could issue this in my sleep. I wanted somebody to tell me it's all right to like issuing it. Iomedae forgive me, I do."
+{n}She folds the page along its old crease.{/n}
+"I'll have to stand there while men who've never lost a night's sleep over their own names explain why mine's a distraction. Some of them will have real objections. I'll have to hear those too."
+{n}Her smile gets an edge.{/n}
+"I mean to be unpleasantly well prepared. I may even enjoy that part."''', c('[Ask what help she actually wants.]', "help")),
     n("support", "Irabeth", '''"I would welcome the support. Leave the instruction in my name. I want the responsibility where I can answer for it."
 {n}She takes a clean sheet and writes a space for your endorsement beneath her signature.{/n}
 "They may say I obtained it because you enjoy my company. Some would say that about any woman you listened to. I will not make my work less effective to satisfy an accusation that changes shape whenever it is answered."
@@ -846,11 +845,11 @@ s("the_cost_afterward", "The part the report did not finish",
 {n}The directness makes her blush. It does not make her withdraw the invitation.{/n}''',
       c('"I would like that evening. Ask me when you are ready."', "end", flags=("irabeth.private_invitation",)),
       c('"I want time with you, but I would rather keep it gentle for now."', "gentle", flags=("irabeth.private_gentle",))),
-    n("gentle", "Irabeth", '''"Then gentle. I shall still want you there."
-{n}She offers her hand and lets you choose whether to take it.{/n}
-"I am learning that asking directly makes disappointment much simpler. I can be disappointed for a moment instead of constructing an entire explanation in which you were secretly unhappy all evening."
-{n}Her fingers settle comfortably around yours.{/n}
-"Do not look so concerned. I am pleased. I would like to keep finding out what we enjoy together."''', c('[Arrange the quieter evening.]', "end")),
+    n("gentle", "Irabeth", '''"Gentle, then. I'll still want you there."
+{n}She holds out her hand, palm up, the way she holds it out for a report.{/n}
+"Don't look so worried. I asked, you answered. That's quicker than a week of guessing."
+{n}Her fingers close around yours, comfortable.{/n}
+"I'm pleased. Honestly. We'll find out what we like as we go."''', c('[Arrange the quieter evening.]', "end")),
     n("end", "Narrator", '''{n}You leave the swords on the bench for the next inspection. Irabeth folds her instruction and puts it with the papers she will take to the meeting. Then she takes a separate scrap and writes the evening you have chosen.{/n}
 {n}She pins it where she will see it when reaching for the report.{/n}
 {n}"There. An order addressed to someone particularly difficult."{/n}
@@ -873,96 +872,94 @@ s("without_an_account", "No account of the day required",
       c('"How are you, apart from the work?"', "broken", requires=("broken",)),
       c('"How are you, apart from the work?"', "encouraged", requires=("encouraged",), forbids=("broken",)),
       c('"How are you, apart from the work?"', "ordinary", forbids=("broken", "encouraged",))),
-    n("broken", "Irabeth", '''"Tired. Pleased to be here. Both."
-{n}She keeps your hand, but looks toward the open window.{/n}
-"This morning I could not bear the sound of someone correcting a recruit in the yard. Nothing cruel was happening. I knew that. My body had already decided otherwise."
-{n}She draws a breath and lets it go slowly.{/n}
-"I did my work. I am not telling you that to make the rest unimportant. I know what I have said about myself on bad days. I still hear it when nobody else is speaking."
-{n}Her thumb moves against your knuckles.{/n}
-"Do not ask this evening to prove I am better. I would like to enjoy it even if tomorrow is difficult. I can tell you when I want to stop. I would like you to believe me about wanting to begin."''', c('"I believe you. Tell me what would feel good tonight."', "want")),
-    n("encouraged", "Irabeth", '''"Better able to answer that without looking for a reason I ought to be worse."
-{n}She smiles, then becomes thoughtful.{/n}
-"I still have days when every mistake feels like evidence in a case that has already been decided. The good days have begun to feel less like something I must preserve by refusing to notice them."
-{n}She lifts your joined hands and kisses your fingers.{/n}
-"Today I wanted the meeting to end because I had somewhere I wanted to go. That is a rather ordinary wish. I was pleased to discover how strong it was."
+    n("broken", "Irabeth", '''"Tired. Glad to be here. Both."
+{n}She keeps your hand, but her eyes go to the open window.{/n}
+"This morning a sergeant was chewing out a recruit in the yard. Nothing cruel. Ordinary. And my hands started shaking like I was back in the ruins of Kenabres. I finished the inspection with them behind my back."
+{n}She lets out a slow breath.{/n}
+"I did my work. I still hear the things I say about myself on the bad days. They're louder when it's quiet."
+{n}Her thumb moves against your knuckles, rough.{/n}
+"So don't make tonight a cure. It isn't one. I want it anyway."''', c('"I believe you. Tell me what you want tonight."', "want")),
+    n("encouraged", "Irabeth", '''"Better. I can say that now without looking over my shoulder for the reason it's wrong."
+{n}She smiles, then goes thoughtful.{/n}
+"Some days every mistake still reads like evidence at my own trial. Fewer of them. I've started letting the good days be good without checking them for cracks."
+{n}She lifts your joined hands and kisses your fingers, quick, the way a soldier kisses a holy symbol before a charge.{/n}
+"Today I wanted the meeting over because I had somewhere to be. That's all. An ordinary thing. It hit me like a warhorse, how much I wanted it."
 {n}Her eyes stay on yours.{/n}
-"I do not want to turn you into the explanation for all of it. You are the person I wanted to meet tonight. That is quite enough to make me happy to see you."''', c('"Then let us enjoy the evening we have."', "want")),
-    n("ordinary", "Irabeth", '''"Interested in seeing what happens when I stop preparing for the next question."
-{n}She smiles at the answer, as though it has surprised her.{/n}
-"I thought about this room during the meeting. That was unprofessional of me. I continued to hear the objections, so I believe the watch survived."
-{n}She turns your hand in hers, examining a small mark as though it deserves attention simply because it belongs to you.{/n}
-"I do not have a grand account of myself tonight. I wanted an evening with you. I made arrangements. Now you are here, and I would rather find out whether you are comfortable than explain why I deserve it."
-{n}She moves closer, leaving you room to choose the same distance or a different one.{/n}''', c('[Tell her what you want tonight.]', "want")),
-    n("want", "Irabeth", '''"I want to be touched because you like touching me. I want to hear if something is awkward, without having to guess from how politely you hold still."
-{n}The frankness brings warmth to her face. She brushes a stray strand of hair away from her temple.{/n}
-"I am stronger than some people expect and less certain than others assume. Neither tells you what I enjoy. You can ask. I can answer. We have been reasonably good at conversation when I remember to let you speak."
-{n}Her smile grows.{/n}
-"Would you like me to begin by being quiet?"''',
+"Don't let it go to your head."''', c('"Then let us enjoy the evening we have."', "want")),
+    n("ordinary", "Irabeth", '''"Curious what happens when I stop getting ready for the next question."
+{n}The answer seems to surprise her.{/n}
+"I thought about this room all through the meeting. Unprofessional. I still heard every objection, so the watch survived."
+{n}She turns your hand over in hers and frowns at a small scar on it, as if it were a breach in a wall she is answerable for.{/n}
+"No grand account of myself tonight. I wanted you. I made arrangements. Here you are."
+{n}She shifts along the bench until her knee is against yours, and leaves it there.{/n}''', c('[Tell her what you want tonight.]', "want")),
+    n("want", "Irabeth", '''"I want your hands on me because you like them there. Not because you're being kind to the half-orc."
+{n}The bluntness brings heat to her face. She shoves a strand of hair back from her temple and does not take the words back.{/n}
+"People think I'm made of iron or of glass, depending on who's looking. I'm neither. I'm a woman who's been thinking about your mouth all day and is sick of thinking."
+{n}The grin shows the tips of her tusks.{/n}
+"Should I stop talking? Nevi says it's my worst tactic."''',
       c('[Kiss her and draw her close.]', "close"),
       c('"Hold me. I want a quiet evening against you."', "rest"),
       c('"I want your company, but no touch tonight."', "space")),
-    n("close", "Narrator", '''{n}You kiss her. Irabeth leans into it, one hand warm at the back of your neck, the other braced beside you on the bench. When you touch the open collar of her shirt, she pauses and looks at you.{/n}
-{n}"Yes," she says, before you need to finish the question.{/n}
-{n}You smooth the cloth aside at her shoulder and kiss the warm skin there. Her breath catches. She laughs softly when you look up, then pulls you close enough to kiss you again.{/n}
-{n}The bench is narrow. You adjust, she moves the blanket, and both of you discover that enthusiasm does not improve the furniture. Irabeth rests her forehead against yours while the laughter passes.{/n}
-{n}"We could stand," she suggests.{/n}
-{n}You do. The window is cool against her back until she guides you a little farther into the room. Her hands settle at your waist. She watches your face as you find a comfortable closeness, then kisses the corner of your mouth with deliberate care.{/n}
-{n}"Better."{/n}''',
+    n("close", "Narrator", '''{n}You kiss her. Irabeth leans into it the way she leans into a shield wall, one hand hot at the back of your neck, the other braced on the bench. When your fingers find the open collar of her shirt she makes a low sound and yanks the laces loose herself, out of patience with them.{/n}
+{n}You push the cloth off her shoulder and put your mouth to the scarred skin there. Her breath goes ragged. She laughs, low, and drags you back up to kiss you again.{/n}
+{n}The bench groans under the two of you. Dema's warning was fair. Irabeth plants a boot, hauls you up with her in one motion and steers you backward across the room until the stacked benches knock against your shoulders.{/n}
+{n}"Better," she says against your mouth.{/n}''',
       c('[Keep the rest of the evening private together.]', "private", flags=("irabeth.private_night",)),
       c('"This is what I wanted. Let us stay here a while."', "held", flags=("irabeth.private_kissed",))),
-    n("private", "Narrator", '''{n}You close the window. Irabeth checks that the door is latched, then comes back to you without looking for another task. She asks what you want. You ask her. The answers are given in words and in the small, unmistakable ways you move toward one another.{/n}
-{n}Later, the blanket is around your shoulders and the bread has been reduced to an uneven heel. Irabeth sits close, her collar still loose. She looks at the empty space where she usually puts papers and begins to laugh.{/n}
-{n}"I have spent an entire evening without explaining a shortage."{/n}
-{n}"There is very little bread left."{/n}
-{n}"Then we must ration the final piece. I volunteer to conduct the inspection."{/n}
-{n}She breaks it in half and gives you the larger portion, then steals a bite from it when you begin to object. Her satisfaction makes the theft impossible to regard as accidental.{/n}''', c('[Stay until it is time to leave together.]', "end")),
-    n("held", "Narrator", '''{n}Irabeth settles her arms around you and rests her cheek against yours. There is no hurry in the way she holds you. When your position becomes uncomfortable, you tell her, and she shifts with a murmured complaint about architects who have never wanted to embrace anybody.{/n}
-{n}Eventually you return to the bench, sitting sideways beneath the blanket. You share the bread and talk about nothing that needs to be completed before leaving. Once she reaches to kiss you, then waits for your smile before closing the distance.{/n}
-{n}"I would like to remember this room for something besides its excessive supply of benches," she says.{/n}
-{n}You tell her it is improving its reputation.{/n}''', c('[Let the evening end at the pace you chose.]', "end")),
-    n("rest", "Narrator", '''{n}She puts an arm around you. You find a comfortable place against her shoulder, and she draws the blanket over both of you without making a ceremony of it.{/n}
-{n}For a while she watches the window. Then you feel her settle more fully beside you. Her hand rests open against your arm.{/n}
-{n}"I had a speech prepared about not being very good at this," she says.{/n}
+    n("private", "Narrator", '''{n}You shove the window shut. Irabeth kicks the blanket off the bench onto the floorboards, then turns back to you and drags her shirt over her head in one soldierly pull, as if it had been disobeying orders. Old scars run white across her ribs and shoulders. She watches your face while you look.{/n}
+{n}"Don't just inspect it, Commander."{/n}
+{n}Her hands go to your belt. She is quicker with buckles than anyone you have ever met; she does armour for a living. She sinks down onto the blanket, pulls you down after her with a grip that does not ask twice and rolls you under her, her weight settling over your hips as her mouth comes down on yours.{/n}
+{n}The bell for the night watch is ringing across the rooftops when she next lifts her head. Irabeth goes very still and listens to it the way other people listen for their names.{/n}
+{n}"That's the roll. I sign it. Every night for two years, I've signed it." She drops back onto the blanket. "Hadran will sign it. Hadran will enjoy signing it. Hadran will tell everyone."{/n}
+{n}She glares at the ceiling a moment longer. Then she reaches past you for the bread, tears off the heel and gives you the larger half.{/n}
+{n}"Let him."{/n}''', c('[Stay until it is time to leave together.]', "end")),
+    n("held", "Narrator", '''{n}Irabeth wraps both arms around you and props her chin on your shoulder, and it is plain she has no plans to move for some time. When the stacked benches start digging into your back she notices before you say anything, grumbles about carpenters who have never held anybody in their lives, and walks you three steps sideways without letting go.{/n}
+{n}Eventually you end up on the bench again, sideways under the blanket, sharing the bread and talking about nothing that needs finishing. Once she kisses you in the middle of a sentence, then finishes the sentence.{/n}
+{n}"I'd like this room remembered for something besides its benches," she says.{/n}
+{n}You tell her its reputation is improving.{/n}''', c('[Let the evening end where you left it.]', "end")),
+    n("rest", "Narrator", '''{n}She puts an arm around you. You find a place against her shoulder, and she drags the blanket over you both without making a ceremony of it.{/n}
+{n}For a while she watches the window. Then you feel her settle, all of her at once, like a soldier told to stand down. Her hand rests open against your arm.{/n}
+{n}"I had a speech ready about not being much good at this," she says.{/n}
 {n}"You may omit it."{/n}
-{n}"A merciful decision."{/n}
-{n}The street sounds drift in through the narrow opening. When you begin to grow cold, she asks before pulling you closer. Later you share the bread and remain on the bench until the room has grown dim enough that she must light the lamp to find her coat.{/n}
-{n}She looks rested when she turns back to you, without making the evening responsible for every tired morning still to come.{/n}''', c('[Thank her for the quiet company.]', "end", flags=("irabeth.private_rest",))),
-    n("space", "Irabeth", '''"Then I am glad you said so."
-{n}She gives you room on the bench, moving the bread between you where either can reach it.{/n}
-"I may look a little disappointed. I can survive that without making you repair it. I asked what you wanted because I wanted the answer."
-{n}She takes a piece of bread and considers it.{/n}
-"Would you prefer talk, or shall I attempt the remarkable discipline of sitting quietly?"
-{n}You choose. She follows your lead, sometimes speaking, sometimes content to share the room. By the time the loaf is nearly gone, she has stopped measuring the evening against whatever she imagined before you arrived.{/n}
-"I am pleased you came," she says when you rise. "That has remained true."''', c('[Leave with the affection you actually chose.]', "end", flags=("irabeth.private_space",))),
-    n("end", "Irabeth", '''{n}You fold the blanket together. Irabeth takes one end, you take the other, and the simple task takes longer than it should because she keeps finding reasons to look at you.{/n}
-"I would like to do this again. Some version of it. We need not preserve every detail as though we have found the only successful arrangement."
-{n}Downstairs, she returns the key and pauses at the open door.{/n}
-"Go where you promised to go next. I shall do the same. I would like our next meeting to begin with neither of us wondering who spent tonight waiting."
-{n}She smiles at you before stepping into the lane.{/n}
-"And I shall bring more bread."''',
+{n}"Merciful."{/n}
+{n}Street noise drifts in through the gap in the window. When you start to shiver she hauls you closer without a word and tucks the blanket in round you both like a quartermaster squaring a bunk. Later you share the bread and stay on the bench until the room is dim enough that she has to light the lamp to find her coat.{/n}
+{n}When she turns back to you she looks rested, which on Irabeth is rare enough to notice.{/n}''', c('[Thank her for the quiet company.]', "end", flags=("irabeth.private_rest",))),
+    n("space", "Irabeth", '''"Fine."
+{n}She shifts along the bench to give you room and sets the bread down between you like a border marker.{/n}
+"Disappointed? Yes. Don't look so stricken. Pass the knife."
+{n}She cuts the loaf, hands you the heel and considers her own piece.{/n}
+"Talk, or shall I attempt the remarkable discipline of sitting quietly?"
+{n}You choose. She follows your lead, sometimes talking, sometimes content to sit. By the time the loaf is gone she has stopped glancing at the blanket.{/n}
+"I'm glad you came," she says when you rise. "Still true."''', c('[Leave with the affection you actually chose.]', "end", flags=("irabeth.private_space",))),
+    n("end", "Irabeth", '''{n}You fold the blanket together. Irabeth takes one end and you take the other, and the simple job takes longer than it should because she keeps finding reasons to look at you.{/n}
+"Again. Some version of it. I'm not writing this one up as standing procedure."
+{n}Downstairs, she hangs the key back on its hook and stops at the open door.{/n}
+"Go where you said you'd go next. I'll do the same. Nobody sits up waiting on either of us tonight."
+{n}She grins at you before stepping into the lane.{/n}
+"And I'll bring more bread."''',
       c('[Part for the night with another invitation welcome.]', flags=("irabeth.private_evening_kept",))),
 ], requires=("irabeth.costs_kept",), delay=48)
 
 
 s("after_the_shared_answer", "The invitation that remained",
   '"You invited me to continue with you separately. I would like to answer."', [
-    n("start", "Irabeth", '''"I did. I have not changed my mind."
-{n}Irabeth gives you room to sit beside her. There is no effort to make the moment resemble a first confession.{/n}
-"We have been lovers. We have spoken with Anevia about what we could make together, and we have decided to continue separately. I will not pretend the decision was a return to the day before anything happened."
+    n("start", "Irabeth", '''"I did. I haven't changed my mind."
+{n}Irabeth makes room for you beside her. She does not try to make it look like a first confession.{/n}
+"We've been lovers. We sat down with Nevi about what the three of us could make, and we decided to go on separately. I won't pretend that took us back to the day before any of it."
 {n}She turns her ring once.{/n}
-"Anevia said she is willing for our marriage to include my continuing with you. She and I have spoken again about the time we want for ourselves. I want that time. I also want to see you."
-{n}Her expression becomes intent.{/n}
-"I am asking for our own relationship. No promise that it will quietly become a shared romance if we behave well enough. No pretending the things we enjoyed together were a mistake merely because we are choosing differently now."''',
+"Nevi says our marriage can hold me going on with you. She and I have sorted the time we keep for ourselves. I want that time. I want you, too."
+{n}She gets to the point, as she does with dispatches.{/n}
+"Just us. Not a trial run for the three of us, and not something to be ashamed of because we chose differently. Say yes or no. I can take either."''',
       c('"I want that too. What do you want us to keep?"', "terms"),
       c('"I do not want to continue as your lover."', "stop"),
       c('[Think about the invitation and return later.]', abort=True)),
-    n("terms", "Irabeth", '''"The ability to say where we are going. The private kindness. The right to argue without treating every disagreement as evidence that we should never have begun."
-{n}She rests her palm on the bench between you.{/n}
-"And I want more days we have actually chosen. I do not want this to become a conversation we repeat whenever we are afraid to make an appointment."
+    n("terms", "Irabeth", '''"Knowing where you are when you're not with me. Your hand on my back when nobody's looking. And a good row now and then without either of us deciding it means we never should have started."
+{n}She puts her palm flat on the bench between you.{/n}
+"And days with actual dates on them. I won't have this be a conversation we keep repeating instead of making appointments."
 "What about other people?"
-"You remain free to love them. I remain Anevia's wife. If you and she have a relationship of your own, this invitation neither grants it nor takes it away. I will answer for what I want with you."
-{n}Her smile returns, small and determined.{/n}
-"At present I want you to hear a rather ridiculous recitation I have volunteered to give. After that, I want your help with a dispute over a wagon of cold iron. They are separate invitations. I am trying to become less apologetic about having several interests."''', c('"I accept the relationship and the invitations."', "yes")),
+"Love who you like. I'm Nevi's wife; that doesn't change. If you and she have something of your own, that's between you two. I answer for me."
+{n}Her smile comes back, small and stubborn.{/n}
+"Right now I want you at a ridiculous recitation I volunteered for. After that, a dispute over a wagon of cold iron. Two invitations. I'm learning to have more than one interest without apologising for it."''', c('"I accept the relationship and the invitations."', "yes")),
     n("yes", "Narrator", '''{n}She takes your hand. The touch is familiar, the relief in her face less guarded than she probably intended.{/n}
 {n}"Good. I have spent enough time rehearsing the question."{/n}
 {n}You sit together while she describes the guard, the duke and the missing wool. She gives the duke an offended cough and laughs when you immediately recognize the sort of man she means.{/n}
@@ -985,13 +982,13 @@ s("before_the_unmapped_road", "The distance they could not schedule",
 "'I have survived three monsters on this road, my lord, and still the longest delay was a man asking whether I had filled the proper box.'"
 {n}The imitation falters into a smile.{/n}
 "There. Entirely impractical. I have been practicing."''', c('[Let the joke make room for the goodbye.]', "distance")),
-    n("distance", "Irabeth", '''"I do not know how long you will be gone. I am resisting a strong desire to turn that into a schedule anyway."
+    n("distance", "Irabeth", '''"I don't know how long you'll be gone. Every bone in me wants to draw up a schedule anyway."
 {n}She looks at her hands.{/n}
-"I can wait badly. I can become very busy, then resent a person who asks why I have not eaten. I know these things about myself. Knowing has not always prevented them."
+"I wait badly. I'll bury myself in work and bite the head off anyone who asks if I've eaten. Nevi's told me so. Knowing hasn't cured it."
 "What would help?"
-"An honest message, if there is a way to send one. No date invented to make me sleep. If you cannot send anything, I shall have to live with that. You do not need to carry the impossible task of making me unworried."
+"A true letter, if one can get through. Don't give me a date just to make me sleep. If nothing can get through, then nothing does, and I'll manage. I'm a soldier. I've managed before."
 {n}She takes your hand.{/n}
-"I will keep doing things here. Work, certainly. Some of the other things too. I do not want my account of the months to be only that I waited for you."''',
+"And I won't sit here counting days. There's work, and other things. I'll have stories of my own when you're back."''',
       c('"When I can write, I want to tell you ordinary things too."', "ordinary", flags=("irabeth.departure_ordinary",)),
       c('"I may not be able to write. I want you to have a life while I am gone."', "silence", flags=("irabeth.departure_silence",))),
     n("ordinary", "Irabeth", '''"Tell me something badly described. I have read enough precise reports."
@@ -1001,20 +998,20 @@ s("before_the_unmapped_road", "The distance they could not schedule",
 "I shall try to answer in kind. I cannot promise the letters will find you. I can promise not to fill them entirely with assurances that everything is well. You know too much about Drezen to believe that."
 {n}She leans closer.{/n}
 "And if I write that I miss you, you are not to take it as an instruction to abandon the road. It will mean I miss you."''', c('[Tell her what you will miss about these evenings.]', "touch")),
-    n("silence", "Irabeth", '''"I intend to. You may need to remind me when you return and find I have written an instruction longer than the city walls."
+    n("silence", "Irabeth", '''"I will. You may come back to an instruction longer than the city walls."
 {n}She studies your joined hands.{/n}
-"If you cannot send a word, I shall not decide that silence proves you have stopped caring. I may fear it. That is different from turning the fear into an accusation."
-{n}Her eyes rise to yours.{/n}
-"You may change. So may I. I would rather meet the person who returns than demand that you spend every dangerous day preserving the exact evening I liked best."
+"If no word comes, I'll think the courier's dead in a ditch, not that you've gone cold on me. I might be frightened. I'll keep it to myself."
+{n}Her eyes come up to yours.{/n}
+"And whoever walks back through that gate, I'll take them. You don't have to spend the road keeping yourself exactly the way I liked you."
 {n}She laughs quietly.{/n}
-"Though I reserve the right to remind you that the evening was very good."''', c('[Let her know what you want to return to.]', "touch")),
+"Though I reserve the right to remind you the evening was very good."''', c('[Let her know what you want to return to.]', "touch")),
     n("touch", "Irabeth", '''{n}She stands and holds out her arms, leaving the invitation clear.{/n}
 "I have said the sensible things. Some of them twice. I would like to hold you before I discover another."''',
       c('[Step into her embrace and kiss her goodbye.]', "kiss"),
       c('[Let her hold you quietly.]', "hold")),
-    n("kiss", "Narrator", '''{n}Irabeth gathers you close. Her kiss begins urgently, then slows when you rest your hand against her cheek. She stays with that touch for a moment, eyes closed, before kissing your palm.{/n}
-{n}"I would like you back," she says. "That is the whole unreasonable wish."{/n}
-{n}You hold her until neither of you is trying to make the goodbye shorter by making it sound easier. When she steps back, she keeps one hand in yours long enough to look at you properly.{/n}''', c('[Carry the goodbye you actually shared.]', "end")),
+    n("kiss", "Narrator", '''{n}Irabeth hauls you in. The kiss is urgent, and then it isn't: you put your hand to her cheek and she goes still under it, eyes shut, then turns her head to kiss your palm.{/n}
+{n}"I want you back," she says. "That's the whole unreasonable wish."{/n}
+{n}You hold her until the runner's boots have gone past the door twice. When she steps back she keeps one hand in yours long enough to look you over properly, the way she checks a recruit's straps before a march.{/n}''', c('[Carry the goodbye you actually shared.]', "end")),
     n("hold", "Narrator", '''{n}You step into her arms. She holds you firmly, adjusts when you shift and rests her cheek beside yours. For a while there are no words to arrange.{/n}
 {n}Footsteps pass outside. Irabeth hears them without moving away. Only when they have faded does she loosen her hold.{/n}
 {n}"Come and find me when you can," she says. "I would like the next conversation."{/n}''', c('[Keep the quiet goodbye.]', "end")),
@@ -1031,14 +1028,14 @@ s("an_unposted_line", "A line with nowhere to send it",
 {n}There is no reliable route by which this letter will reach Drezen. You write her name without pretending that ink can solve the distance.{/n}
 {n}The first sentence sounds like a report. You cross out the rank, start again and discover that describing an ordinary moment can be harder than naming a danger. You want to tell her something that belongs to the person who laughed at the guard, not only the officer who will ask whether the road is passable.{/n}''',
       c('[Describe a small absurdity that made you wish she were beside you.]', "absurd", flags=("irabeth.abyss_absurd",)),
-      c('[Write honestly about a moment when you were frightened.]', "fear", flags=("irabeth.abyss_fear",)),
+      c('[Write plainly about a time you were frightened.]', "fear", flags=("irabeth.abyss_fear",)),
       c('[Put the paper away for another rest.]', abort=True)),
     n("absurd", "Narrator", '''{n}You write about a conversation in which every answer made the next question less sensible. You cannot capture the speaker's expression, so you describe how Irabeth might have played it: a dignified pause, a wounded look, a refusal to admit that the wool had never been mentioned.{/n}
 {n}You hear her answering in your imagination. It is an answer made from memory, not a message crossing the planes. You leave room beside the paragraph for whatever she actually says if she ever reads it.{/n}
 {n}Then you write that you wanted her hand in yours afterward. It is the plainest sentence on the page. You resist improving it.{/n}''', c('[Finish the letter without inventing a delivery.]', "end")),
-    n("fear", "Narrator", '''{n}You describe the moment without making yourself either invulnerable or helpless. There was something you had to do. You were afraid. You did it, or chose another way, and the fear did not vanish merely because the decision had been made.{/n}
-{n}You remember that Irabeth has asked you for honesty, not a heroic account. You let this page contain a difficult moment without requiring the next paragraph to cure it.{/n}
-{n}At the end, you write that you would like to sit beside her without explaining every silence. You do not ask her to become responsible for carrying what happened here. You tell her what you miss.{/n}''', c('[Fold the page for a possible return.]', "end")),
+    n("fear", "Narrator", '''{n}You write it plainly. There was something you had to do. You were afraid. You did it, or found another way, and the fear stayed after the doing.{/n}
+{n}Irabeth would want it that way. She reads reports for a living and can smell a heroic one from across the room.{/n}
+{n}At the end you write that you want to sit beside her on the tack-store bench and eat her bad bread. You don't ask her to carry any of the rest. You tell her what you miss.{/n}''', c('[Fold the page for a possible return.]', "end")),
     n("end", "Narrator", '''{n}You fold the letter and keep it with your own belongings. Nobody comes with a letter from Drezen. You smooth the fold once more, then stop before the paper wears through.{/n}
 {n}The page is something you may choose to give her if you meet again. For now, it has let you say what the next interruption might otherwise have swallowed. You put it away and return to the place where you actually are.{/n}''', c('[Keep the unposted letter.]', flags=("irabeth.abyss_written",))),
 ], requires=("irabeth.departure_kept",), chapters=(4,), remote=True, owner="Rest", delay=0)
@@ -1056,61 +1053,61 @@ s("the_person_who_returns", "The person at the door",
       c('"We have an older relationship as well as these new days. I want to hear how you are now."', "older", requires=("irabeth.legacy_shared_history",), forbids=("irabeth.departure_kept", "irabeth.began_chapter_three")),
       c('"We have an older relationship as well as these new days. I want to hear how you are now."', "older", requires=("irabeth.legacy_separate_history",), forbids=("irabeth.departure_kept", "irabeth.began_chapter_three")),
       c('"We have an older relationship as well as these new days. I want to hear how you are now."', "older", requires=("irabeth.single_affair_disclosed",), forbids=("irabeth.departure_kept", "irabeth.began_chapter_three"))),
-    n("earlier", "Irabeth", '''"I missed you. We did not have to make a farewell for that to happen."
-{n}She lets the words stand before reaching for your hand.{/n}
-"I kept living here. I thought about the evenings we had, sometimes when I ought to have been thinking about something else. I wanted to know whether you would come back wanting another."
-{n}Her smile is a little uncertain.{/n}
-"I am glad you have. I will not demand an account of every silence between then and now. Tell me what you want me to know, and ask me the same. We can begin with the people actually in the room."''', c('[Begin the conversation you did not need a farewell to want.]', "history")),
-    n("older", "Irabeth", '''"Thank you for remembering that. I do not want our new appointments to make everything before them disappear."
-{n}She moves closer, giving you room to take her hand if you wish.{/n}
-"We have chosen things together before. We are choosing more now. I can be glad of a new day without pretending I met you for the first time at the storehouse."
-{n}She smiles at the thought.{/n}
-"I might have been less solemn if I had. Or more. I have never been particularly reliable about that."
+    n("earlier", "Irabeth", '''"I missed you. I didn't need a farewell for that."
+{n}She lets it stand, then reaches for your hand.{/n}
+"I kept on here. I thought about our evenings at times when I should have been thinking about grain. I wanted to know whether you'd come back wanting another."
+{n}The smile is not quite sure of itself.{/n}
+"You have. Good. I won't ask for a report on every week you were gone. Tell me what you want to. I'll do the same."''', c('[Begin the conversation you did not need a farewell to want.]', "history")),
+    n("older", "Irabeth", '''"Good. I'd hate for the new days to wipe out the old ones."
+{n}She shifts closer and puts her hand where you can take it.{/n}
+"We chose things before. We're choosing more now. I didn't meet you for the first time at the storehouse, and I won't pretend I did."
+{n}She snorts at the thought.{/n}
+"I might have been less solemn if I had. Or more. I've never been reliable on that."
 {n}Her attention settles on you.{/n}
-"Tell me what you want me to know about today. We need not make a complete history out of one afternoon."''', c('[Speak about the present without erasing the earlier relationship.]', "history")),
-    n("returned", "Irabeth", '''"So did I. I imagined it badly several times. You were always either in desperate need of comfort or inexplicably untouched by everything. Neither version gave you much room to speak."
-{n}She offers her hand, then waits for you to take it.{/n}
-"I am glad you are here. I have questions. I may ask the wrong one first. You may tell me to leave a thing alone."
+"Tell me about today. One afternoon. We don't need the whole history."''', c('[Speak about the present without erasing the earlier relationship.]', "history")),
+    n("returned", "Irabeth", '''"So did I. I pictured it badly, several ways. Either you came back in pieces and needed nursing, or you strolled in untouched and bored. Neither one let you get a word in."
+{n}She holds out her hand and waits for you to take it.{/n}
+"I'm glad you're here. I've got questions. I'll ask the wrong one first; I always do. Tell me to shut up if I do."
 {n}Her fingers close around yours when you sit.{/n}
-"I kept remembering the guard's complaint about the proper box. It became useful more often than I hoped. I wanted to tell you when it did."
-{n}She smiles, then grows quiet.{/n}
-"I will not put the whole time between us into one embrace. But I would like the embrace, if you would."''',
+"That line about the proper box. It came in useful more often than I'd like. I kept wanting to tell you."
+{n}She smiles, then goes quiet.{/n}
+"Come here first. The questions will keep."''',
       c('[Hold her before beginning the conversation.]', "history"),
       c('[Keep her hand and begin with words.]', "history")),
-    n("late", "Irabeth", '''"I am glad we found our way to these evenings."
-{n}She sits beside you, close enough to make the invitation clear without assuming you will want to take it.{/n}
-"I remember the uncertainty before we began meeting as lovers. We need not turn that waiting into a farewell we never made. I have enjoyed the days we have actually had, and I would like to hear how they have been for you."
+    n("late", "Irabeth", '''"I'm glad we found our way to these evenings."
+{n}She sits down beside you, close enough that her shoulder is against yours.{/n}
+"I remember how long we circled it before we started. No point turning that into some grand farewell we never had. I've liked the days we've actually had. Tell me how they've been for you."
 {n}She glances at the papers she left behind.{/n}
-"The city can make every new pleasure seem badly timed. There is always a list of people who need something first. I am trying to remain useful without requiring every evening to pass that test."
-{n}Her smile becomes warmer.{/n}
-"You have been a considerable distraction from the list. I would like to continue being distracted."''', c('[Talk about the days you have actually shared.]', "history")),
+"This city makes every pleasure look badly timed. There's always a list of people who need something first."
+{n}Her smile warms.{/n}
+"You've been a considerable distraction from the list. Keep it up."''', c('[Talk about the days you have actually shared.]', "history")),
     n("history", "Irabeth", '''{n}The conversation moves slowly enough for both of you to choose what to say. Some subjects ask for more care than others.{/n}''',
       c('[Give her the letter you wrote and kept.]', "letter", requires=("irabeth.abyss_written",)),
       c('"You told me about the Queen at Iz. I have not forgotten what you said."', "queen", requires=("irabeth.queen_loss_known",)),
-      c('"I want to speak once about the harm I did to you. You need not answer me."', "scar", requires=("irabeth.scar_known",)),
+      c('"I want to say one thing about what I did to you. You need not answer me."', "scar", requires=("irabeth.scar_known",)),
       c('"Tell me what you want from the days ahead."', "ahead")),
-    n("letter", "Narrator", '''{n}Irabeth takes the folded page. She sees the wear along its creases before reading the first line.{/n}
+    n("letter", "Narrator", '''{n}Irabeth takes the folded page. She sees the wear along its creases before she reads the first line.{/n}
 {n}"You kept it."{/n}
-{n}You tell her there was no reliable way to send it. She nods and reads without treating the absence of a delivery as another wound to be explained.{/n}
-{n}Halfway down, her thumb stops moving along the paper's edge. She finishes, folds it carefully and keeps it in her hand.{/n}
-{n}"I am glad to know this about the time I could not see," she says. "I do not have the answer I would have written then. I have the one I can give you now."{/n}
-{n}She takes your free hand. For a while that is the answer. Later she asks one question about the moment you described and listens to what you choose to add.{/n}''', c('[Let the letter become part of a real conversation.]', "ahead", flags=("irabeth.letter_given",))),
-    n("queen", "Irabeth", '''{n}Her face stills.{/n}
-"I said that people should not rely on me. I remember."
-{n}She looks toward the window, giving herself time before continuing.{/n}
-"I had been entrusted with something I did not keep safe. There is no clever sentence that makes me comfortable with it. I do not want you to find one because you would like me to smile at you."
-{n}She turns back.{/n}
-"I can want you here and still be angry with myself. I can hear that you care without letting it decide what I believe about Iz. Those things may remain beside each other for a long time."
+{n}You tell her there was no way to send it. She nods and reads it standing, like an order that arrived late and still stands.{/n}
+{n}Halfway down, her thumb stops on the paper's edge. She finishes, folds it along the old creases and keeps it in her fist.{/n}
+{n}"I couldn't see any of that from here," she says. "I haven't got the answer I'd have written then. I've got the one I can give you now."{/n}
+{n}She takes your free hand. For a while that is the answer. Later she asks one question about what you described, and listens to whatever you choose to add.{/n}''', c('[Let the letter become part of a real conversation.]', "ahead", flags=("irabeth.letter_given",))),
+    n("queen", "Irabeth", '''{n}Her face goes still.{/n}
+"I said nobody should rely on me. I remember."
+{n}She looks at the window a while.{/n}
+"I was given the Queen to guard, and I didn't bring her home. There's no clever way to say that. Don't go looking for one to make me smile at you."
+{n}She turns back, jaw set.{/n}
+"I'm glad you're here. I'm still angry at myself. Those will sit side by side a good long while, and neither of us is arguing them out of it tonight."
 {n}Her hand rests near yours.{/n}
-"Today I would like a conversation about something I can still do. I am not asking you to forget what I told you. I am asking to choose the next subject."''', c('"Choose it. I will listen."', "ahead")),
-    n("scar", "Irabeth", '''{n}Her hand rises toward her cheek, then lowers.{/n}
-"I have told myself that I deserved to be stopped. I do not want to spend tonight defending that thought or discussing the mark."
-{n}She holds your gaze.{/n}
-"I do not want a private evening spent persuading you that I bear it nobly. If you mean to acknowledge it, do so without asking me to make you feel forgiven."
+"Let me pick something I can still do something about. That's all I ask."''', c('"Choose it. I will listen."', "ahead")),
+    n("scar", "Irabeth", '''{n}Her hand starts toward her cheek, then drops.{/n}
+"I told myself I deserved to be stopped. I'm not arguing that with you tonight, and I'm not discussing the mark."
+{n}She holds your gaze, hard.{/n}
+"And I won't sit here playing the noble scarred knight so you can feel better about it. Say it if you mean to say it. Don't ask me to forgive you on the spot."
 "I hurt you. I will not call that proof that I knew what you needed."
-{n}She is silent for a while.{/n}
-"I have heard you. I do not want to discuss the mark tonight. And I do not want you to touch my face while we leave the subject."
-{n}You keep your hands where she can see them. She draws a breath and chooses what to say next herself.{/n}''', c('[Respect the boundary she has stated.]', "ahead", flags=("irabeth.harm_acknowledged",))),
+{n}She is quiet a while.{/n}
+"Heard. That's the end of it for tonight. And keep your hands off my face."
+{n}You keep your hands where she can see them. She draws a breath and picks the next subject herself.{/n}''', c('[Respect the line she has drawn.]', "ahead", flags=("irabeth.harm_acknowledged",))),
     n("ahead", "Irabeth", '''"I want the instruction to work when I am not standing over the officer using it. I also want to go somewhere after the war without being invited to inspect the defenses."
 {n}The second admission brings a little warmth back into her voice.{/n}
 "There is a route-maker in the city. Sella. She has a collection of old road drawings, some useful and some apparently intended to make travelers admire the artist. I asked whether she would show me how she chooses between them."
@@ -1258,34 +1255,34 @@ s("a_road_she_would_choose", "A road without an assignment",
 {n}You return, take the measured route and reach the arch considerably later. Irabeth puts an emphatic note beside the misleading passage. Then she looks at the time she has spent recovering the mistake and begins to laugh.{/n}
 {n}"A whole afternoon, and the only casualties are my dignity and the onions if I drop them."{/n}
 {n}You find a low step where she can put the onions down. She sits beside you, still smiling at the gate she has chosen not to conquer.{/n}''', c('[Enjoy having time to get something wrong.]', "want")),
-    n("want", "Irabeth", '''"I want a journey like this. Longer, with better views and fewer purchased onions."
-{n}She rests her hand beside yours on the step.{/n}
-"I want to choose some of it. I want to discover that I have chosen badly and be allowed to laugh before finding another road. I have spent so long treating mistakes as evidence about what sort of person I am. Sometimes a wrong passage is only a wrong passage."
+    n("want", "Irabeth", '''"I want a trip like this. Longer. Better views. Fewer onions."
+{n}She puts her hand down next to yours on the step.{/n}
+"I want to pick some of the road, pick it wrong, and laugh about it before we find another. A wrong turn's a wrong turn. It isn't a verdict on me."
 {n}She looks at the drawing in her lap.{/n}
-"I am not going to become a woman with no duties. I like some of my duties. I want a life in which leaving them for a while is an ordinary decision, not a dramatic betrayal of everyone who has relied on me."
-{n}Her gaze meets yours.{/n}
-"Would you like a place in that life? I do not mean promising to take every road I choose. I mean continuing to ask where we want to go."''',
+"I won't stop being a knight. I like most of it. But I want to be able to hand my post to someone for a fortnight without the whole citadel acting as if I'd deserted."
+{n}She looks up at you.{/n}
+"Would you come? Not every road. Just keep asking me where we're going."''',
       c('"Yes. I want a lasting relationship with you, with room for the other people we love."', "lasting", flags=("irabeth.future_lasting",)),
       c('"I want you in my life. I cannot promise a settled future, but I want to keep choosing our time."', "open", flags=("irabeth.future_open",)),
       c('"I care for you, but I want us to become friends rather than continue as lovers."', "friend", flags=("irabeth.future_friends",))),
     n("lasting", "Irabeth", '''"So do I."
-{n}She takes your hand and holds it while giving the answer time to become real.{/n}
-"There will be work, and other people with claims we have freely given them. I cannot promise that we will always live under one roof. I can promise that I want to keep making room for you, in days rather than only in speeches."
-{n}Her smile becomes unexpectedly shy.{/n}
-"I would like the journey. Afterward, I would like to come back and argue about which parts were worth the rain. I would like enough ordinary history with you that neither of us needs a war to explain why we stayed."
-{n}She leans toward you and waits for your answering movement before kissing you.{/n}''', c('[Make the continuing commitment you have both chosen.]', "end", flags=("irabeth.committed",))),
+{n}She takes your hand and holds on, as if that makes it official.{/n}
+"There'll be work. There'll be my marriage, and whoever else you've got. We may never share a roof, and I won't pretend otherwise. But I'll keep finding you days. Actual days, not speeches."
+{n}The smile comes out shy, which on her is startling.{/n}
+"I want that journey. And after, I want to come home and argue about which parts were worth the rain. I want enough plain history with you that nobody needs a war to explain why we stayed."
+{n}She leans in and kisses you, there on the step, and one of the onions rolls away down the lane.{/n}''', c('[Make the continuing commitment you have both chosen.]', "end", flags=("irabeth.committed",))),
     n("open", "Irabeth", '''"I can want that without pretending you offered more."
-{n}She studies your hand near hers, then takes it.{/n}
-"I would like another day. I would like the possibility of the road. If one of us begins wanting something the other cannot offer, we will have to say it before the disappointment becomes a private accusation."
+{n}She looks at your hand near hers a moment, then takes it.{/n}
+"Another day, then. Maybe the road. If one of us starts wanting more than the other can give, we say so. Out loud. I've no stomach for sulking."
 {n}She smiles.{/n}
-"For now, I am pleased to have someone with whom I can get lost near an onion seller. That is a less solemn foundation than some, but it has advantages."
-{n}She leans against you briefly, choosing the small closeness without asking it to become a larger promise.{/n}''', c('[Keep the open relationship as it was actually offered.]', "end")),
-    n("friend", "Irabeth", '''{n}She draws a breath and lets it go before answering.{/n}
-"I am sorry. I wanted another answer."
-{n}She looks at the drawing rather than turning the disappointment into a smile for your benefit.{/n}
-"I can keep the friendship. I may need a little time before the next private evening. That is not a punishment. I would like to arrive because I am ready, rather than because I think you require proof that I have accepted it gracefully."
-{n}After a moment she folds the drawing and looks back at you.{/n}
-"The afternoon was good. I would rather keep that true than ruin it trying to make it say something you no longer want."''', c('[Respect the change in the relationship.]', "end")),
+"For now I've got someone to get lost with near an onion seller. Worse foundations have held up houses."
+{n}She leans against you a moment, and asks nothing more of it than that.{/n}''', c('[Keep the open relationship as it was actually offered.]', "end")),
+    n("friend", "Irabeth", '''{n}She breathes in, and lets it go before she answers.{/n}
+"Damn. I wanted the other answer."
+{n}She looks at the drawing, not at you, and does not force a smile.{/n}
+"Friends, then. Give me a few weeks before I'm easy company. I'm not sulking. I'm regrouping."
+{n}After a while she folds the drawing and looks back at you.{/n}
+"It was a good afternoon. I'm keeping it."''', c('[Accept the change in where you stand.]', "end")),
     n("end", "Narrator", '''{n}You return the exercise to Sella. Irabeth describes the misleading passage in detail. Sella asks which clue finally made her trust the drawing or doubt it, and listens to the answer before returning the exercise to its place.{/n}
 {n}The real road drawing stays with Irabeth. She pays for the copy, places it inside her notebook and carries the onions home in the other hand. The afternoon has produced a plan, a mistake worth laughing at and an answer neither of you needs to improve before remembering.{/n}''',
       c('[Leave with the future you actually chose.]', flags=("irabeth.future_chosen",))),
@@ -1309,71 +1306,71 @@ s("the_hour_before_battle", "What she asked you to keep",
       c('"I mean the lasting relationship we chose."', "lasting", requires=("irabeth.future_lasting",)),
       c('"I mean the time we chose to keep, without pretending it was a settled household."', "open", requires=("irabeth.future_open",)),
       c('"I value the friendship we chose to keep."', "friends", requires=("irabeth.future_friends",))),
-    n("lasting", "Irabeth", '''"I mean it too. I am not asking the battle to decide whether I was sincere."
-{n}She unfolds the drawing enough to show the route.{/n}
-"If we have the days afterward, I want to begin with a visit we can actually keep. Then the journey, when our other commitments allow it. I would like us to continue choosing each other without turning every absence into a test."
+    n("lasting", "Irabeth", '''"I meant it too. I don't need a battle to prove it."
+{n}She unfolds the drawing far enough to show the road.{/n}
+"If we get the days after, we start with a visit we can keep. Then the journey, when duty lets us. And when you're gone, I won't be counting it against you."
 {n}Her fingers rest beside the inked road.{/n}
-"I will have work to do. You may have more than either of us can imagine. I am not promising to live on the edge of your life and call every scrap of time enough. I will ask for what I need. I want you to ask too."
-{n}She looks up, her expression warm and quite serious.{/n}
-"That is the promise I can make before a battle. A person who will keep speaking, if we are given the chance."''', c('[Confirm the commitment without promising survival.]', "wife")),
-    n("open", "Irabeth", '''"Good. I would have noticed if the goodbye suddenly supplied a house and a lifetime."
-{n}Her smile softens the words.{/n}
-"I want more time with you. I do not know how it will fit into every future. That was true when we sat beside the arch. It is still true while people sharpen swords downstairs."
+"I'll have work. You'll have more than either of us can guess. I won't live at the edge of your life grateful for scraps, either. When I want you, I'll come and take you by the collar. You'd best do the same."
+{n}She looks up, warm and very serious.{/n}
+"That's the promise I can make before a battle. That I'll still be talking to you after it, if we're both breathing."''', c('[Confirm the commitment without promising survival.]', "wife")),
+    n("open", "Irabeth", '''"Good. I'd have noticed if a goodbye suddenly came with a house and a lifetime."
+{n}The smile takes the edge off it.{/n}
+"I want more time with you. I don't know where it fits. That was true at the arch, and it's true with men sharpening swords downstairs."
 {n}She folds the drawing again.{/n}
-"I will not make the possibility of losing you an argument for obtaining a larger promise tonight. I would rather you return to an invitation you can accept honestly."
+"I'm not going to squeeze a bigger promise out of you because you might die. That's a recruiting sergeant's trick."
 {n}She lays the paper between you.{/n}
-"Come and find me, if you can. We will decide what the next day asks of us when there is a next day to choose."''', c('[Keep the invitation as open as you chose it.]', "wife")),
-    n("friends", "Irabeth", '''"So do I. I have had time to be disappointed without making you watch every moment of it."
+"Come find me after, if you can. We'll decide what the next day wants when there is one."''', c('[Keep the invitation as open as you chose it.]', "wife")),
+    n("friends", "Irabeth", '''"So do I. I've had my sulk. You were spared most of it."
 {n}She smiles with some of the ease you remember from the storehouse.{/n}
-"I still want you to survive. I still want to hear what you think of a road. I may take somebody else, or go alone, or discover that the inn is more interesting than the lake. You do not need to promise to stand in the same place in every version."
+"I still want you alive. I still want to hear what you think of a road. I might take someone else, or go alone, or find the inn's better than the lake. You don't have to stand in the same spot in every version."
 {n}She puts the drawing away.{/n}
-"The work mattered. The laughter mattered. I can keep them without asking the friendship to impersonate the romance."
+"The work mattered. The laughing mattered. That's enough to keep."
 {n}Her hand rests open on her knee.{/n}
-"Thank you for coming before the fighting. I wanted this conversation."''', c('[Stay for the friendship you both value.]', "wife")),
+"Thank you for coming before the fighting. I wanted this."''', c('[Stay for the friendship you both value.]', "wife")),
     n("wife", "Irabeth", '''{n}Her gaze falls briefly to the ring on her hand. The movement asks for its own moment in the conversation.{/n}''',
       c('"What do you want to say about Anevia tonight?"', "wife_living", forbids=("anevia_dead", "anevia_gone")),
       c('[Give her room to speak about Anevia\'s death.]', "wife_dead", requires=("anevia_dead",)),
       c('[Give her room to speak about Anevia\'s absence.]', "wife_gone", requires=("anevia_gone",), forbids=("anevia_dead",))),
-    n("wife_living", "Irabeth", '''"That I love her. That I have things to say to her which belong to us. I am glad I do not have to hide this hour from her to have it."
-{n}She turns the ring once, then leaves it alone.{/n}
-"We will have our own goodbye. I will probably try to make it too sensible. She will notice. We have had considerable practice."
-{n}The smile carries affection without asking you to step into it.{/n}
-"Whatever you and I have chosen, I will not make her part of this conversation by inventing an answer for her. She has always been very capable of supplying one herself."''', c('[Let her keep the goodbye that belongs to her marriage.]', "choice")),
-    n("wife_dead", "Irabeth", '''{n}She is silent long enough that you begin to hear the small sounds outside the room.{/n}
-"I wanted another goodbye with her. I do not know whether it would have been a better one. I wanted it anyway."
-{n}Her hand closes around the ring, then opens.{/n}
-"I can be here with you and miss her. I need neither feeling to defend itself against the other. I have become very tired of imagining a court in which every pleasure must answer for the dead."
+    n("wife_living", "Irabeth", '''"That I love her. That there are things I've got to say to her that are ours. And that I don't have to sneak this hour from her to have it."
+{n}She turns the ring once, and leaves it.{/n}
+"We'll have our own goodbye. I'll try to make it sensible. She'll laugh at me for it. We've had plenty of practice."
+{n}The smile is for someone else in this city, not for you, and she does not apologise for it.{/n}
+"And I won't speak for her. She's always been very capable of speaking for herself. Loudly."''', c('[Let her keep the goodbye that belongs to her marriage.]', "choice")),
+    n("wife_dead", "Irabeth", '''{n}She is quiet long enough that you start hearing the small noises outside the room.{/n}
+"I wanted one more goodbye with her. Maybe it'd have been no better than the last. I wanted it anyway."
+{n}Her hand closes on the ring, then opens.{/n}
+"I miss her, and I'm here with you. I'm done putting every good hour on trial for her sake. She'd have laughed at me for it."
 {n}She looks at you.{/n}
-"Tonight I would like to remember her laugh before I remember what I lost. You do not have to find the right thing to say. There may not be one."
-{n}You sit with her while she tells a small story about a pen Anevia insisted she had not stolen. It belongs to a marriage that has not been erased by the room you now share.{/n}''', c('[Stay while she finishes the story.]', "choice")),
-    n("wife_gone", "Irabeth", '''"I do not know what goodbye I am allowed to imagine. That is the honest answer."
+"Tonight I want to remember her laugh before I remember the rest. Don't try to say the right thing. There isn't one."
+{n}You sit with her while she tells a small story about a pen Anevia swore she had not stolen. The marriage in it is still hers, whatever this room now holds.{/n}''', c('[Stay while she finishes the story.]', "choice")),
+    n("wife_gone", "Irabeth", '''"I don't know what goodbye I'm allowed to picture. That's the truth."
 {n}She watches the ring on her hand.{/n}
-"I will not turn absence into death because death would let me finish a sentence. Nor will I tell you I know when she will return. I have neither answer."
+"I won't bury her to make things tidy. And I won't tell you I know when she's coming back. I don't."
 {n}She draws a breath.{/n}
-"I know what you and I have said. I know what she and I said when we could speak. I can keep those truths without filling the silence with something more convenient."
-{n}Her eyes rise to yours.{/n}
-"Thank you for leaving room for that. I would like the rest of this hour to belong to the people actually in it."''', c('[Let the uncertainty remain honest.]', "choice")),
+"I know what you and I said. I know what she and I said when we still could. That'll have to do."
+{n}Her eyes come up to yours.{/n}
+"Thank you for not pushing. The rest of this hour, I want it here."''', c('[Leave the uncertainty as it is.]', "choice")),
     n("choice", "Irabeth", '''{n}The room grows quieter as the traffic outside moves elsewhere. Irabeth looks toward the door, then back at you.{/n}
 "We still have a little time. What would you like?"''',
       c('[Kiss her, and keep the rest of the hour private.]', "night", forbids=("irabeth.future_friends",)),
       c('[Ask her to hold you.]', "hold", forbids=("irabeth.future_friends",)),
       c('[Stay and talk until it is time to leave.]', "talk")),
-    n("night", "Narrator", '''{n}Irabeth stands when you do. She meets your kiss with both hands warm against your back, then draws away just far enough to see your face.{/n}
-{n}"Yes?"{/n}
-{n}You answer. She latches the door and returns, letting the last few steps belong to anticipation rather than haste. The hour becomes private. Neither of you asks the closeness to promise an outcome beyond the room.{/n}
-{n}Later, she smooths your clothing where it has folded awkwardly and lets you do the same for her. The ordinary tenderness makes it harder to leave. You leave when you must, carrying the warmth of her hands rather than a claim that love has made the road safe.{/n}''', c('[Keep the goodbye you chose.]', "end", flags=("irabeth.farewell_private",))),
-    n("hold", "Narrator", '''{n}She draws you into her arms. The hold is firm, then gentler when you settle against her. For several minutes the only words are small adjustments, a question about comfort, an answer close to her ear.{/n}
-{n}When you step back, she keeps your hand long enough to press it between both of hers.{/n}
-{n}"I would like to do this on a day when leaving means only going across the street."{/n}
-{n}You tell her you would like that too. It remains a wish you share, without becoming a prediction.{/n}''', c('[Let her release you when it is time.]', "end", flags=("irabeth.farewell_held",))),
-    n("talk", "Narrator", '''{n}You remain by the window. The conversation moves from practical matters to the storehouse, then to a particularly implausible section of Sella's drawing. Irabeth gives the misleading passage a final offended description and makes you laugh.{/n}
-{n}When the hour has nearly gone, she falls quiet. You do not hurry to fill it. She looks at you as though taking the time to remember a person, without asking memory to become a defense against what comes next.{/n}
-{n}"I am glad we had the days," she says.{/n}
+    n("night", "Narrator", '''{n}Irabeth stands when you do. She takes your kiss with both hands flat against your back, hard, then pulls away just far enough to look at you.{/n}
+{n}"Yes," she says. It is not a question.{/n}
+{n}She is already working at her own buckles. The breastplate hits the floor with a clang the whole landing must hear, and she does not care. Vambraces, gambeson, shirt: all of it goes onto the chair that catches on the uneven stone. Then she has your clothes by the fistful, and they go the same way. She walks you back to the window seat, pushes you down onto it and straddles your lap, knees clamped either side of your hips, one hand knotted in your hair, and brings her mouth down on yours.{/n}
+{n}Later she arms you strap by strap, as if you were a squire she did not trust with buckles, and lets you do hers. On the way down she stops at the duty board, takes the chalk and writes her own name on the line beside yours for the morning's muster. The officer on duty watches her do it and says nothing. Neither does she.{/n}''', c('[Keep the goodbye you chose.]', "end", flags=("irabeth.farewell_private",))),
+    n("hold", "Narrator", '''{n}She pulls you into her arms. The hold is fierce at first, like a braced shield, then eases as you settle against her. For a while the only words are small ones, said into your hair.{/n}
+{n}When you step back she keeps your hand long enough to press it between both of hers.{/n}
+{n}"Next time I do this, I want it to be because you're only going across the street."{/n}
+{n}You tell her you would like that too. Neither of you calls it a promise.{/n}''', c('[Let her release you when it is time.]', "end", flags=("irabeth.farewell_held",))),
+    n("talk", "Narrator", '''{n}You stay by the window. The talk wanders from practical matters to the storehouse, then to an especially unlikely stretch of Sella's drawing. Irabeth gives the misleading passage a last offended description and makes you laugh.{/n}
+{n}When the hour is nearly gone she falls quiet. You don't hurry to fill it. She looks at you the way she looks at a map she means to carry in her head.{/n}
+{n}"I'm glad we had the days," she says.{/n}
 {n}You stay until it is time to stand.{/n}''', c('[Leave with the affection of the conversation.]', "end", flags=("irabeth.farewell_talked",))),
-    n("end", "Irabeth", '''{n}Irabeth opens the door. She stands beside it, giving you space to leave and one last unhurried look.{/n}
-"Go and do what you choose to do. I will do what is mine. If we have a road afterward, we will choose that too."
+    n("end", "Irabeth", '''{n}Irabeth opens the door and stands beside it, giving you room to go and one last unhurried look.{/n}
+"Go and do your part. I'll do mine. If there's a road afterward, we'll pick it then."
 {n}She smiles, with none of the guard's borrowed grandeur.{/n}
-"I shall be difficult about the inns. You have been warned."''',
+"I'll be difficult about the inns. You've been warned."''',
       c('[Finish the farewell you earned together.]', flags=("irabeth.campaign_kept",))),
 ], requires=("irabeth.future_chosen",), chapters=(5,), delay=24)
 
@@ -1459,28 +1456,28 @@ ending("aeon", "A history without its meeting", [
 
 s("after_the_answer_was_lost", "The answer grief could not supply",
   '"Anevia has died. I will not pretend that makes our unfinished conversation simple."', [
-    n("start", "Irabeth", '''{n}Irabeth sits very still. Her ring is visible on the hand resting against her knee.{/n}
-"No. It does not."
-{n}She gives herself time before continuing.{/n}
-"I remember what you and I said. I cannot ask her for another answer. I cannot turn what happened into permission she gave because she loved me."
-{n}Her gaze rises to yours.{/n}
-"I still have to decide what I want from the life I have. I want company. Sometimes I want to be left alone so strongly that the kindness of someone asking becomes difficult to bear. I will have to tell you which is true, and I may answer differently tomorrow."''',
+    n("start", "Irabeth", '''{n}Irabeth sits very still. The ring is on the hand resting on her knee.{/n}
+"No. It doesn't."
+{n}She takes her time.{/n}
+"I remember what we said. I can't ask her for another answer now. And I won't pretend she gave me leave because she loved me. She never got the chance."
+{n}Her eyes come up.{/n}
+"Some days I want company. Some days I want everyone out of my sight, you included. I'll tell you which. It may change by supper."''',
       c('"We were lovers before this loss. I remember what we chose, including what we concealed."', "affair", requires=("i_affair",)),
       c('"We had asked about a courtship. I will not turn that question into a promise you already made."', "question", forbids=("i_affair",))),
-    n("affair", "Irabeth", '''"So do I. I will not rewrite it into something easier to remember."
-{n}She touches the ring once, then leaves it alone.{/n}
-"I wanted you. I knew what I was doing. Whatever conversations followed, I cannot go back and begin with the honesty I should have had."
-{n}Her voice grows steadier.{/n}
-"I can decide whether I want to see you again. I do. Slowly. Without making every meeting an attempt to prove I have grieved correctly. If I speak about her, listen. If I need to stop, let me stop. I can offer no simple account in which the loss has made our path clear."''', c('"I can meet you as you are now."', "choice", flags=("irabeth.legacy_bereaved_history",))),
-    n("question", "Irabeth", '''"Thank you. I had begun hearing other people's assurances before anyone spoke them. She would want me happy. I deserve a future. All the things that might be true and still do nothing to tell me what I want this afternoon."
+    n("affair", "Irabeth", '''"So do I. I won't dress it up now to make it easier to carry."
+{n}She touches the ring once and leaves it be.{/n}
+"I wanted you. I knew what I was doing. Whatever came after, I can't go back and start honest."
+{n}Her voice steadies.{/n}
+"I want to see you again. Slowly. And I'm not grieving to anyone's schedule. If I talk about her, listen. If I stop, leave it. There's no neat story where losing her made the road clear. It didn't."''', c('"I can meet you as you are now."', "choice", flags=("irabeth.legacy_bereaved_history",))),
+    n("question", "Irabeth", '''"Thank you. I've been hearing everyone's comfort before they open their mouths. She'd want you happy. You deserve a future. Maybe it's all true. None of it tells me what I want this afternoon."
 {n}She looks toward the window.{/n}
-"I would like an evening with you. I would like the freedom to enjoy it and miss her in the same hour. I am not offering a replacement marriage or asking you to wait until grief has become convenient."
+"I want an evening with you. And I want to be able to enjoy it and miss her in the same hour. I'm not offering you her place, and I'm not asking you to wait until I'm done grieving. I don't know that I ever will be."
 {n}She turns back.{/n}
-"If that is an invitation you can accept, I would like to make it."''', c('"I can accept an evening without asking it to settle your grief."', "choice")),
-    n("choice", "Irabeth", '''{n}She holds out her hand, leaving the space between you open.{/n}
-"Then we can begin with a day. I have work I would like your help hearing, a dispute over cold iron. After that, something without a report attached. I have signed my name for a recitation. I would like to find out whether I can still enjoy making a room laugh."
-{n}Her mouth moves toward a smile without quite reaching it.{/n}
-"I may be disappointed by the answer. I would rather discover it than be told what the evening ought to mean."''',
+"If you can take that, I'm asking."''', c('"I can accept an evening without asking it to settle your grief."', "choice")),
+    n("choice", "Irabeth", '''{n}She holds out her hand and leaves it there between you.{/n}
+"Then we start with a day. I've a dispute over cold iron I'd like your help hearing. After that, something without a report attached. I've signed my name for a recitation. I want to find out whether I can still make a room laugh."
+{n}Her mouth moves toward a smile without quite getting there.{/n}
+"I might not like the answer. I'd still rather find out myself than be told what it ought to feel like."''',
       c('[Accept the slow courtship she has chosen herself.]', flags=("irabeth.started", "irabeth.lover", "irabeth.personal_ready", "irabeth.bereaved_courtship")),
       c('"I cannot offer that relationship. I would like to remain a friend."', flags=("irabeth.closed",))),
 ], requires=("anevia_dead",), any_of=("irabeth.courtship_requested", "i_affair", "tirabade.irabeth_continuation_invited"),

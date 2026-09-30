@@ -186,11 +186,13 @@ internal static class AneviaTricksterTests
         check(exposed.Count == 1 && exposed[0].Has(Returned), "Trk_Anevia_Confession_Lie: the lie is not exposed.");
 
         // Trk_Anevia_Gone_Commit / Trk_Anevia_Gone_Refusal: Beth first, her terms, her no.
-        foreach (bool bethBack in new[] { false, true })
+        foreach (int beth in new[] { 0, 1, 2 })   // 0 widow, 1 Beth back and has not asked, 2 Beth back and asked Anevia herself
         foreach (bool listening in new[] { false, true })
         {
+            bool bethBack = beth > 0, bethAsked = beth == 2;
             var ask = World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", Returned, "anevia.trickster.gate_seen");
             if (bethBack) ask.Flags.Add(IrabethReturned);
+            if (bethAsked) ask.Flags.Add("irabeth.trickster.asked_nevi");
             if (listening) ask.Flags.Add("anevia.trickster.cost.socoth_listening");
             ask.Times["anevia.trickster.gate_seen"] = ask.Hour - 96;
             check(Rules.Available(story, commit, ask) && !Rules.Available(story, second, ask), "Trk_Anevia_Gone_Commit: commit unavailable.");
@@ -199,8 +201,11 @@ internal static class AneviaTricksterTests
             var outcomes = Program.Walk(commit, ask, (page, _) => pages.Add(page));
             // Two openings ([Ask her to stay] / [Say nothing and wait]) lead to the same terms.
             check(outcomes.Count(r => r.Has("anevia.committed")) == (bethBack ? 4 : 2), "The kiss is offered in the widow world, or missing after Beth's return.");
-            check(pages.Contains("threshold") && pages.Contains(bethBack ? "morning_back" : "morning") && pages.Contains("coats") == listening
-                  && pages.Contains(bethBack ? "share" : "widow"), "Commit skips the intimate beat or a variant.");
+            check(pages.Contains("threshold") && pages.Contains(bethAsked ? "morning_back" : bethBack ? "morning_quiet" : "morning")
+                  && pages.Contains("coats") == listening
+                  && pages.Contains(bethAsked ? "share" : bethBack ? "share_quiet" : "widow"), "Commit skips the intimate beat or a variant.");
+            // Sol COX: Anevia never reports Beth's ask, or promises Beth's night, unless Beth has asked her herself.
+            check(bethAsked || !pages.Contains("share") && !pages.Contains("morning_back"), "Anevia answers for her wife.");
             var no = outcomes.Where(r => r.Has("anevia.trickster.declined")).ToList();
             check(no.Count == 4 && no.All(r => !r.Has("anevia.committed") && !r.Has("irabeth.closed") && !r.Has("tirabade.group_closed")),
                 "Trk_Anevia_Gone_Refusal: her no is missing from a branch, or it touches another route.");
@@ -253,6 +258,18 @@ internal static class AneviaTricksterTests
             if (pages.Count == 1)
                 check(Rules.VisibleParagraphs(pages[0].Nodes.Last(), end).Length >= 1, "Returned Anevia's page has none of her paragraphs: " + pages[0].Id);
         }
+        // Sol INT: the Commander killed Beth, Anevia came back and chose the Commander anyway; the closure page does not deny it.
+        var unforgiven = World(story, 6, "trickster.ever", "irabeth_dead", "anevia_gone", Returned, Killed, "anevia.lover", "anevia.committed",
+                               "anevia.trickster.terms_kept");
+        var unforgivenPages = story.Scenes.Where(s => s.Relationship == "anevia" && s.Owner == "Epilogue" && Rules.Available(story, s, unforgiven)).ToList();
+        check(unforgivenPages.Count == 1 && unforgivenPages[0].Id == "anevia.trickster.epilogue.nailed_wardrobe_unforgiven"
+              && Rules.VisibleParagraphs(unforgivenPages[0].Nodes.Last(), unforgiven).Any(t => t.Text.Contains("beside that grave")),
+            "The recommitted Anevia gets the ending that denies her night: " + string.Join(",", unforgivenPages.Select(s => s.Id)));
+        var closure = World(story, 6, "irabeth_dead", Killed, "anevia.lover");
+        check(Rules.Available(story, S("anevia.ending_wife_killed"), closure), "The closure page is gone for a lover who never came back.");
+        // The kept closet opens onto her room once: setup finds the room and does not open it.
+        check(!S("anevia.trickster.gone.setup").Nodes.Single(n => n.Id == "door_open").Text.Contains("swings inward"),
+            "The kept closet opens onto her room twice.");
         var stayed = World(story, 6, "anevia.lover", "anevia.committed", "anevia.developed");
         check(Rules.VisibleParagraphs(S("anevia.ending_kept").Nodes.Last(), stayed).Length == 0, "Trickster paragraphs leak onto an Anevia who stayed.");
         var widowed = World(story, 6, "irabeth_dead", "anevia_gone", "anevia.lover");

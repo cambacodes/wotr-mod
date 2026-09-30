@@ -11,6 +11,8 @@ internal static class IrabethTricksterTests
     private const string Contact = "280d4712dceb37f4a88e98f1f4c6e64f";
     private const string Returned = "irabeth.trickster.returned";
     private const string Killed = "anevia.irabeth_killed_by_commander";
+    private const string Vell = "irabeth.trickster.cost.vell";
+    private const string Dug = "irabeth.trickster.cost.dug_out";
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
@@ -42,6 +44,10 @@ internal static class IrabethTricksterTests
         var duty = S("irabeth.trickster.back_on_duty");
         var commit = S("irabeth.trickster.commit");
         var second = S("irabeth.trickster.second_ask");
+        var raiseList = S("irabeth.trickster.dead.raise_list");
+        var dig = S("irabeth.trickster.killed.dig");
+        var otherStory = S("irabeth.trickster.the_other_story");
+        var reply = S("irabeth.trickster.nevi_reply");
         var returns = new[] { relieved, blow };
         bool Any(Snapshot w, params Scene[] scenes) => scenes.Any(s => Rules.Available(story, s, w));
 
@@ -88,8 +94,19 @@ internal static class IrabethTricksterTests
             "Standing order sets the wrong flags.");
 
         // Trk_Irabeth_DeadAtIz_Primed: the deathbed line, then her report a day after the Coronation.
-        var primed = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", "irabeth.sacrificed", "irabeth.trickster.primed", "coronation.after");
-        primed.Times["irabeth.trickster.primed"] = primed.Hour - 48;
+        var listed = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", "irabeth.sacrificed", "irabeth.trickster.primed", "coronation.after");
+        listed.Times["irabeth.trickster.primed"] = listed.Hour - 48;
+        // Polish 9b: the order is why she answers; the chapel's one diamond, taken from Teodor Vell, is what calls her.
+        check(Rules.Available(story, raiseList, listed) && !Rules.Available(story, relieved, listed),
+            "Trk_Irabeth_RaiseList: the report opens before the chapel's list is struck.");
+        var lists = Program.Walk(raiseList, listed);
+        var struck = lists.Where(r => r.Has(Vell)).ToList();
+        check(struck.Count == 1 && lists.Any(r => r.Has("irabeth.trickster.declined") && !r.Has(Vell)), "Raise list: no strike, or no letting her rest.");
+        var call = raiseList.Nodes.Single(n => n.Id == "call").Choices.Single();
+        check(call.Crusade?.Resource == "Favors" && call.Crusade.Amount == -100, "Striking the boy's name is free.");
+        check(story.Scenes.Where(s => s.Id.StartsWith("irabeth.trickster.", StringComparison.Ordinal))
+                  .SelectMany(s => s.Nodes).All(n => !n.Choices.Any(ch => ch.Revive != null)), "A revive by fiat crept back in.");
+        var primed = Program.Copy(listed); primed.Flags.Add(Vell); primed.Times[Vell] = primed.Hour - 24; Rules.Complete(story, primed);
         check(Rules.Available(story, relieved, primed), "Trk_Irabeth_DeadAtIz_Primed: report unavailable.");
         check(!Any(primed, lateOrder, blow, lateStep), "Trk_Irabeth_DeadAtIz_Primed: a second device opened.");
         var early = Program.Copy(primed); early.Times["coronation.seen"] = early.Hour - 23;
@@ -102,7 +119,7 @@ internal static class IrabethTricksterTests
             if (order) start.Flags.Add("irabeth.trickster.standing_order");
             var pages = new HashSet<string>();
             var back = Program.Walk(relieved, start, (page, _) => pages.Add(page));
-            check(pages.Contains("torn") == torn && pages.Contains("standing") == order && !pages.Contains("toasted"),
+            check(pages.Contains("torn") == torn && pages.Contains("standing") == order && !pages.Contains("toasted") && pages.Contains("vell"),
                 "Report variants ignore the soul wound or the standing order.");
             check(back.All(r => r.Has(Returned) && r.Has("irabeth.trickster.cost.under_orders") && r.Has("irabeth.started")),
                 "Trk_Irabeth_DeadAtIz_Primed: the report does not return her.");
@@ -125,7 +142,8 @@ internal static class IrabethTricksterTests
         var toasts = Program.Walk(lateOrder, unprimed);
         var toasted = toasts.Single(r => r.Has("irabeth.trickster.primed"));
         check(toasted.Has("irabeth.trickster.cost.late"), "Late toast is free.");
-        var reported = World(story, 5, toasted.Flags.Concat(new[] { "coronation.after" }).ToArray());
+        check(Rules.Available(story, raiseList, Later(story, toasted, 12)), "The raise list is closed to the late toast.");
+        var reported = World(story, 5, toasted.Flags.Concat(new[] { "coronation.after", Vell }).ToArray());
         reported.Times["irabeth.trickster.primed"] = reported.Hour - 48;
         check(Rules.Available(story, relieved, reported), "Report unreachable after the late toast.");
         var discharge = relieved.Nodes.Single(n => n.Id == "discharge");
@@ -135,12 +153,20 @@ internal static class IrabethTricksterTests
         // Trk_Irabeth_Declined: the only way she stays dead on a live Trickster run.
         var declined = toasts.Single(r => r.Has("irabeth.trickster.declined"));
         var afterRest = Later(story, declined, 500); afterRest.Flags.Add("coronation.after"); Rules.Complete(story, afterRest);
-        check(!Any(afterRest, returns) && !Rules.Available(story, lateOrder, afterRest) && !declined.Has("anevia.trickster.primed")
+        check(!Any(afterRest, returns) && !Rules.Available(story, lateOrder, afterRest) && !Rules.Available(story, raiseList, afterRest)
+              && !declined.Has("anevia.trickster.primed")
               && !declined.Has("galfrey.closed"), "Trk_Irabeth_Declined: a return survives the decline, or it touched another route.");
 
         // Trk_Irabeth_Killed / _Lie / _BlowStands: the drill pays off at her hub.
-        var killed = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", Killed, "irabeth.trickster.drilled", "coronation.after");
+        var drilledKill = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", Killed, "irabeth.trickster.drilled", "coronation.after");
+        check(Rules.Available(story, dig, drilledKill) && !Any(drilledKill, blow, relieved, lateOrder, lateStep, raiseList),
+            "Trk_Irabeth_Killed_Dig: the step pays off without the Commander sending anyone back.");
+        var digs = Program.Walk(dig, drilledKill);
+        check(digs.Count(r => r.Has(Dug)) == 1 && digs.Any(r => r.Has("irabeth.trickster.declined") && !r.Has(Dug))
+              && dig.Nodes[0].Choices[0].Crusade?.Amount == -150, "Dig: no diggers, no price, or no letting the blow stand.");
+        var killed = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", Killed, "irabeth.trickster.drilled", Dug, "coronation.after");
         check(Rules.Available(story, blow, killed) && !Any(killed, relieved, lateOrder, lateStep), "Trk_Irabeth_Killed: wrong device.");
+        check(blow.Nodes.All(n => !n.Text.Contains("Both are true")), "The two pasts are back.");
         var blows = Program.Walk(blow, killed);
         var truth = blows.Where(r => r.Has("irabeth.trickster.accounting_truth")).ToList();
         var lie = blows.Where(r => r.Has("irabeth.trickster.cost.accounting_lied")).ToList();
@@ -152,14 +178,26 @@ internal static class IrabethTricksterTests
         check(stands[0].Has("irabeth.trickster.blow_stands") && presence.Forbids.Contains("irabeth.trickster.blow_stands"),
             "She stays on watch after the blow was let stand.");
 
-        // Trk_Irabeth_Killed_Late: no drill -> the chaplain's report, dictated at a price.
+        // Trk_Irabeth_Killed_Late: no drill -> the raise list, with the kill entered in the chapel's book in the Commander's words.
         var undrilled = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", Killed, "coronation.after");
-        check(Rules.Available(story, lateStep, undrilled) && !Rules.Available(story, blow, undrilled), "Trk_Irabeth_Killed_Late: wrong device.");
-        var dictated = Program.Walk(lateStep, undrilled).Single(r => r.Has("irabeth.trickster.drilled"));
+        check(Rules.Available(story, lateStep, undrilled) && !Rules.Available(story, blow, undrilled) && !Rules.Available(story, dig, undrilled),
+            "Trk_Irabeth_Killed_Late: wrong device.");
         var dictate = lateStep.Nodes[0].Choices[0];
-        check(dictated.Has("irabeth.trickster.cost.late") && dictate.Crusade?.Resource == "Favors" && dictate.Crusade.Amount == -200
-              && dictate.Alignment?.Direction == "Chaotic", "Dictated step is free.");
-        check(Rules.Available(story, blow, Later(story, dictated, 24)), "Blow unrecoverable after the dictated step.");
+        check(!Rules.Match(dictate.Requires, dictate.Forbids, undrilled), "The dictated step (a report that rewrites the blow) is still offered.");
+        var lateOutcomes = Program.Walk(lateStep, undrilled);
+        check(lateOutcomes.All(r => !r.Has("irabeth.trickster.drilled")), "The late report still teaches the step after the fact.");
+        var onRecord = lateOutcomes.Single(r => r.Has("irabeth.trickster.raised_on_record"));
+        var entered = lateStep.Nodes.Single(n => n.Id == "record").Choices.Single();
+        check(onRecord.Has("irabeth.trickster.cost.late") && onRecord.Has(Vell) && onRecord.Has("irabeth.trickster.cost.remembers_the_blow")
+              && entered.Crusade?.Resource == "Favors" && entered.Crusade.Amount == -200, "The raise on the record is free.");
+        var raisedBack = Later(story, onRecord, 24);
+        check(Rules.Available(story, blow, raisedBack), "Blow unrecoverable after the raise on the record.");
+        var raisedPages = new HashSet<string>();
+        var raisedOutcomes = Program.Walk(blow, raisedBack, (page, _) => raisedPages.Add(page));
+        check(raisedPages.Contains("raised") && !raisedPages.Contains("both") && !raisedPages.Contains("dug")
+              && raisedOutcomes.Any(r => r.Has(Returned) && r.Has("irabeth.trickster.accounting_truth"))
+              && raisedOutcomes.Any(r => r.Has("irabeth.trickster.blow_stands") && !r.Has(Returned)),
+            "The raised Irabeth is told she stepped, or cannot let the blow stand.");
 
         // Trk_Irabeth_Killed_PathFailed / Trk_Irabeth_PathFailed: canon fate stands once the path is lost.
         var failedKilled = World(story, 5, "trickster.was", "trickster.failed", "irabeth_dead", Killed, "irabeth.trickster.drilled", "coronation.after");
@@ -175,7 +213,7 @@ internal static class IrabethTricksterTests
         foreach (string answer in new[] { "irabeth.trickster.answered_her", "irabeth.trickster.answered_crusade" })
         foreach (bool lied in new[] { false, true })
         {
-            var ask = World(story, 5, "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.back_on_duty", answer);
+            var ask = World(story, 5, "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.back_on_duty", answer, "anevia_gone");
             if (lied) ask.Flags.Add("irabeth.trickster.cost.accounting_lied");
             ask.Times["irabeth.trickster.back_on_duty"] = ask.Hour - 72;
             check(Rules.Available(story, commit, ask) && !Rules.Available(story, second, ask), "Trk_Irabeth_Commit: commit unavailable.");
@@ -185,14 +223,51 @@ internal static class IrabethTricksterTests
             check(outcomes.All(r => !r.Has("irabeth.committed") && !r.Has("anevia.closed") && !r.Has("tirabade.group_closed")),
                 "Commit lands while Anevia is still gone.");
             var no = outcomes.Single(r => r.Has("irabeth.trickster.declined"));
-            check(!Rules.Available(story, commit, no) && !Rules.Available(story, second, Later(story, no, 95))
+            check(pages.Contains("no") && !pages.Contains("no_house"), "Her no forgets that Nevi is on the road.");
+            if (lied)
+            {
+                // Sol BEL: "Ask me again when you've told me the other one." The second ask waits for the other story.
+                check(!Rules.Available(story, second, Later(story, no, 200)), "The second ask forgives the lie by omission.");
+                check(!Rules.Available(story, otherStory, Later(story, no, 47)) && Rules.Available(story, otherStory, Later(story, no, 48)),
+                    "The other story is mistimed.");
+                var told = Program.Walk(otherStory, Later(story, no, 48));
+                check(told.Any(r => !r.Has(otherStory.Id)) && told.Count(r => r.Has("irabeth.trickster.told_the_other_story")) == 1,
+                    "The other story cannot be told, or cannot be put off.");
+                no = told.Single(r => r.Has("irabeth.trickster.told_the_other_story"));
+                check(no.Has("irabeth.trickster.cost.accounting_lied"), "Telling the truth erased the lie.");
+            }
+            check(!Rules.Available(story, commit, no) && (lied || !Rules.Available(story, second, Later(story, no, 95)))
                   && Rules.Available(story, second, Later(story, no, 96)), "Trk_Irabeth_Refusal: the priced second ask is mistimed.");
             var asked = new HashSet<string>();
             var finals = Program.Walk(second, Later(story, no, 96), (page, _) => asked.Add(page));
-            check(finals.Any(r => r.Has("irabeth.committed") && r.Has("irabeth.trickster.cost.signed_request") && r.Has("irabeth.trickster.nevi_answered"))
-                  && finals.Any(r => r.Has("irabeth.closed") && !r.Has("irabeth.committed")), "Second ask: no commit or no hard no.");
-            check(asked.Contains("threshold") && asked.Contains("morning"), "Signed request skips the intimate beat.");
+            check(finals.All(r => !r.Has("irabeth.committed")) && finals.Any(r => r.Has("irabeth.closed")), "Second ask: commits before the courier, or no hard no.");
+            // Sol HOW: the pen goes south; the answer is a separate scene, five days on.
+            var sent = finals.Single(r => r.Has("irabeth.trickster.pen_sent"));
+            check(sent.Has("irabeth.trickster.cost.signed_request") && asked.Contains("sent") && !asked.Contains("threshold"), "The pen does not go south.");
+            check(!Rules.Available(story, reply, Later(story, sent, 119)) && Rules.Available(story, reply, Later(story, sent, 120)),
+                "The courier's five days are not real hours.");
+            var replyPages = new HashSet<string>();
+            var replied = Program.Walk(reply, Later(story, sent, 120), (page, _) => replyPages.Add(page));
+            check(replied.All(r => r.Has("irabeth.committed") && r.Has("irabeth.trickster.nevi_answered") && r.Has("irabeth.trickster.asked_nevi"))
+                  && replyPages.Contains("threshold") && replyPages.Contains("morning"), "Nevi's answer skips the intimate beat.");
         }
+
+        // Sol INT: a wife who never left Drezen. Irabeth asks her in person, not by the south-road courier.
+        var home = World(story, 5, "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.back_on_duty", "irabeth.trickster.answered_her");
+        home.Times["irabeth.trickster.back_on_duty"] = home.Hour - 72;
+        var homePages = new HashSet<string>();
+        var homeNo = Program.Walk(commit, home, (page, _) => homePages.Add(page)).Single(r => r.Has("irabeth.trickster.declined"));
+        check(homePages.Contains("no_house") && !homePages.Contains("no"), "Irabeth sends a wife in Drezen out onto the road.");
+        var homeAsk = new HashSet<string>();
+        var homeFinals = Program.Walk(second, Later(story, homeNo, 96), (page, _) => homeAsk.Add(page));
+        check(homeFinals.Any(r => r.Has("irabeth.committed") && r.Has("irabeth.trickster.asked_nevi")) && homeAsk.Contains("sent_home")
+              && !homeAsk.Contains("sent") && homeAsk.Contains("morning_house") && !homeAsk.Contains("morning"),
+            "The pen goes south to a wife four streets away.");
+
+        // Sol COX: the shared finale's surviving Commander never gets the mourning page.
+        var survived = World(story, 6, "trickster.ever", "ending.trickster", "sacrifice", "irabeth.lover");
+        check(survived.Has("trickster.commander_back") && !Rules.Available(story, S("irabeth.ending_sacrifice"), survived)
+              && Rules.Available(story, S("irabeth.ending_unfinished"), survived), "A living Commander is mourned.");
 
         // back_on_duty: the test between return and commit; physical only after the return.
         var justBack = World(story, 5, "trickster.ever", "irabeth_dead", Returned);
@@ -210,11 +285,11 @@ internal static class IrabethTricksterTests
                                                  && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToList();
         var dead = World(story, 5, "trickster.ever", "irabeth_dead", Returned, "irabeth.lover", "irabeth.personal_ready");
         check(registered.All(s => !Rules.Available(story, s, dead)), "A pre-Iz scene reopens for the returned Irabeth.");
-        var end = World(story, 6, "trickster.ever", "irabeth_dead", Returned, "irabeth.lover", "irabeth.trickster.cost.under_orders");
+        var end = World(story, 6, "trickster.ever", "irabeth_dead", Returned, "irabeth.lover", "irabeth.trickster.cost.under_orders", Vell);
         check(Rules.Available(story, S("irabeth.ending_unfinished"), end) && !Rules.Available(story, S("irabeth.ending_loss"), end)
               && !Rules.Available(story, S("irabeth.trickster.epilogue.under_orders"), end), "G6 epilogue arbitration wrong for a lover.");
         check(Rules.VisibleParagraphs(S("irabeth.ending_unfinished").Nodes[0], end).Length == 1, "Under-orders paragraph missing on her ending.");
-        var endFriend = World(story, 6, "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.cost.under_orders");
+        var endFriend = World(story, 6, "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.cost.under_orders", Vell);
         check(Rules.Available(story, S("irabeth.trickster.epilogue.under_orders"), endFriend)
               && !story.Scenes.Where(s => s.Id.StartsWith("irabeth.ending_", StringComparison.Ordinal)).Any(s => Rules.Available(story, s, endFriend)),
             "Returned non-lover gets no page or two pages.");
@@ -234,7 +309,8 @@ internal static class IrabethTricksterTests
         const string AneviaReturned = "anevia.trickster.returned";
         Scene S(string id) => story.Scenes.Single(s => s.Id == id);
                 var relieved = S("irabeth.trickster.dead.relieved_not_dismissed");
-        var report = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", "irabeth.trickster.primed", "coronation.after", "anevia_gone", AneviaReturned);
+        var report = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", "irabeth.trickster.primed", "irabeth.trickster.cost.vell",
+                           "coronation.after", "anevia_gone", AneviaReturned);
         var reportPages = new HashSet<string>();
         check(Program.Walk(relieved, report, (page, _) => reportPages.Add(page)).Count == 1 && reportPages.Contains("gate") && !reportPages.Contains("south"),
             "Irabeth's report sends her south to a wife who is at the gate.");
@@ -252,6 +328,7 @@ internal static class IrabethTricksterTests
                 "Irabeth's commit ignores Nevi's return.");
             // Wait-for-her no longer commits by the answer: she decides in node decides, and after an exposed lie she says not tonight.
             check(outcomes.Count(r => r.Has("irabeth.committed")) == (lie ? 0 : 2), "Kiss offered after an exposed lie, or Kiss / Wait missing.");
+            check(outcomes.All(r => r.Has("irabeth.trickster.asked_nevi")), "Irabeth told the Commander she asked Nevi, and nothing recorded it.");
             check(!lie || pages.Contains("not_tonight"), "After an exposed lie, her decision is not her no.");
             check(outcomes.Any(r => r.Has("irabeth.trickster.declined") && !r.Has("irabeth.committed")), "Her no is gone once Nevi is home.");
         }

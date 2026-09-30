@@ -307,12 +307,13 @@ s("a_crossing", "A door left unlatched", "Anevia", 3,
 {n}She is not asking about the footsteps.{/n}''',
       c('"We can stop."', "stop"),
       c('[Stay with her. Let the evening pass in private.]', "night")),
-    n("night", "Anevia", '''{n}She returns to the door and lowers the latch. Before coming back, she stands with her hand against the wood, gathering herself. When she turns, the choice in her expression is unmistakable.{/n}
-"No speeches. Not tonight. Just don't lie to me while we're doing this."
-{n}You draw her into your arms. For once she lets someone else mind the distance to the door. The candle burns down while the room grows quiet, and the rest of the night belongs to neither reports nor orders.{/n}
+    n("night", "Anevia", '''{n}She goes back to the door. Her hand rests on the wood, not the latch, and she leaves it unbarred: anybody could walk in, and she wants you to know she knows it. When she turns round, whatever she was arguing with herself about has been settled.{/n}
+"No speeches. Not tonight. Just don't lie to me while we're doin' this."
+{n}She crosses the room in four steps and pulls the scarf from the chair to drop it on the floor, as though clearing the last piece of evidence. Her fingers are quick and not quite steady on your buckles; she swears at one, gives up on it and drags your shirt over your head instead. Her own laces she undoes herself, watching your face the whole time, and lets the dress fall.{/n}
+{n}She walks you backwards until the edge of the bed catches your knees, pushes you down onto it and follows, one knee either side of your hips. Her hands flatten on your chest. For a heartbeat she holds there, breathing hard, as if memorizing the moment for a report she will never file. Then she leans down, her hair falling around both your faces, and drags you up against her.{/n}
 {n}Later, she dresses in silence. She puts her scarf on twice before she is satisfied with how it sits. At the door she presses her forehead briefly to yours.{/n}
 "I wanted that. Whatever happens, I won't make you carry the lie that I didn't."
-{n}Then she leaves to return to the woman who trusts her.{/n}''', c('[Let her leave.]', flags=("a_affair",))),
+{n}Then she leaves to go home to the woman who trusts her.{/n}''', c('[Let her leave.]', flags=("a_affair",))),
     n("stop", "Anevia", '''{n}She keeps her hand against your face for a moment longer, then lowers it.{/n}
 "We should've said that ten minutes ago."
 {n}Her voice is soft, without blame. You have crossed a boundary even if you refuse to cross the next one. She does not ask you to pretend otherwise.{/n}

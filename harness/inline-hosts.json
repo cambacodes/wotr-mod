@@ -4,8 +4,8 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 923,
-  "resolved": 923,
+  "entryTargetScenes": 927,
+  "resolved": 927,
   "inlineOnlyScenes": 230,
   "inlineOnlyResolved": 230,
   "answerListScenesWithoutContact": 517,
@@ -11416,6 +11416,25 @@
     "clicks": 0
    }
   },
+  "irabeth.trickster.nevi_reply": {
+   "kind": "dialog",
+   "lists": [
+    "871af36f2ab2b1f40b5de77976c54276"
+   ],
+   "explicit": true,
+   "contact": "280d4712dceb37f4a88e98f1f4c6e64f",
+   "entry": {
+    "871af36f2ab2b1f40b5de77976c54276": "RRT_entry.irabeth.trickster.nevi_reply"
+   },
+   "resolved": true,
+   "host": {
+    "list": "871af36f2ab2b1f40b5de77976c54276",
+    "dialog": "20e94a828d4016d45a6b723765306522",
+    "dialogName": "Irabeth_Dialogue",
+    "cue": "Cue_0069",
+    "clicks": 0
+   }
+  },
   "irabeth.trickster.second_ask": {
    "kind": "dialog",
    "lists": [
@@ -11425,6 +11444,25 @@
    "contact": "280d4712dceb37f4a88e98f1f4c6e64f",
    "entry": {
     "871af36f2ab2b1f40b5de77976c54276": "RRT_entry.irabeth.trickster.second_ask"
+   },
+   "resolved": true,
+   "host": {
+    "list": "871af36f2ab2b1f40b5de77976c54276",
+    "dialog": "20e94a828d4016d45a6b723765306522",
+    "dialogName": "Irabeth_Dialogue",
+    "cue": "Cue_0069",
+    "clicks": 0
+   }
+  },
+  "irabeth.trickster.the_other_story": {
+   "kind": "dialog",
+   "lists": [
+    "871af36f2ab2b1f40b5de77976c54276"
+   ],
+   "explicit": true,
+   "contact": "280d4712dceb37f4a88e98f1f4c6e64f",
+   "entry": {
+    "871af36f2ab2b1f40b5de77976c54276": "RRT_entry.irabeth.trickster.the_other_story"
    },
    "resolved": true,
    "host": {
@@ -12854,6 +12892,25 @@
     "clicks": 0
    }
   },
+  "konomi.trickster.dismissed.a_season": {
+   "kind": "dialog",
+   "lists": [
+    "0dc8b8604bb33c846a63f3eb62443674"
+   ],
+   "explicit": true,
+   "contact": "ca2d58c5c65723945857e04fb85d30ce",
+   "entry": {
+    "0dc8b8604bb33c846a63f3eb62443674": "RRT_entry.konomi.trickster.dismissed.a_season"
+   },
+   "resolved": true,
+   "host": {
+    "list": "0dc8b8604bb33c846a63f3eb62443674",
+    "dialog": "a81655ed97277974e947c1aaf9e33525",
+    "dialogName": "Diplomacy_Officer_dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
   "konomi.trickster.dismissed.private": {
    "kind": "dialog",
    "lists": [
@@ -12920,6 +12977,25 @@
    "contact": "ca2d58c5c65723945857e04fb85d30ce",
    "entry": {
     "0dc8b8604bb33c846a63f3eb62443674": "RRT_entry.konomi.trickster.dismissed.recess"
+   },
+   "resolved": true,
+   "host": {
+    "list": "0dc8b8604bb33c846a63f3eb62443674",
+    "dialog": "a81655ed97277974e947c1aaf9e33525",
+    "dialogName": "Diplomacy_Officer_dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "konomi.trickster.dismissed.supper": {
+   "kind": "dialog",
+   "lists": [
+    "0dc8b8604bb33c846a63f3eb62443674"
+   ],
+   "explicit": true,
+   "contact": "ca2d58c5c65723945857e04fb85d30ce",
+   "entry": {
+    "0dc8b8604bb33c846a63f3eb62443674": "RRT_entry.konomi.trickster.dismissed.supper"
    },
    "resolved": true,
    "host": {

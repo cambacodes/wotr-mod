@@ -54,7 +54,7 @@ s("margin", "An alteration in the margin", 3, '"You wanted to discuss something 
       c('"Being contradicted by someone who still wants my company afterward."', "answer", flags=("konomi.wants_honesty",)),
       c('"A few hours in which I do not have to be impressive."', "answer", flags=("konomi.wants_rest",))),
     n("answer", "Konomi", '''{n}Konomi looks toward the closed door. A runner passes outside, footsteps quick on the stone.{/n}
-"I cannot promise to make you comfortable. I could promise not to repeat everything you say."
+"I will not pretend to be harmless company, Commander. I will offer you a concession instead: what you say to me tonight does not travel to Nerosyan. Consider it an opening position."
 {n}She takes a blank sheet from the stack and writes an address in Drezen, then a time.{/n}
 "A small reception. Attend after the formal speeches, if you would like to discover whether I can discuss something other than your administration."''', c('[Accept the invitation.]', flags=("konomi.invited",))),
     n("invitation", "Konomi", '''"You are inviting me before learning whether I am pleasant company."
@@ -101,7 +101,7 @@ s("reception", "After the speeches", 3, '"I have not forgotten your invitation."
     n("slow", "Konomi", '''{n}She nods, though her expression becomes more careful.{/n}
 "Then I will not announce that you have made up your mind. Nor will I pretend I am indifferent."
 {n}A burst of laughter comes through the door. She looks back at the reception with something close to reluctance.{/n}
-"Write to me if you would like another evening. I would rather receive an uncertain invitation than a confident one you do not mean."''', c('[Keep the invitation open.]', flags=("konomi.attracted",))),
+"Write to me if you want another evening. Keep it short and keep it truthful. I read forged enthusiasm for a living, and I bill for it."''', c('[Keep the invitation open.]', flags=("konomi.attracted",))),
 ], requires=("konomi.margin",), delay=24)
 
 s("letter", "A sentence she keeps", 3, '"Did my letter meet your standards?"', [
@@ -117,9 +117,11 @@ s("letter", "A sentence she keeps", 3, '"Did my letter meet your standards?"', [
 "For example, that I have been looking forward to this conversation all morning, and have resented every interruption."''', c('"Then let us make the next conversation harder to interrupt."', "alone")),
     n("alone", "Konomi", '''"I have a room where nobody will mistake your arrival for a summons."
 {n}She closes the writing case, leaving your letter outside it.{/n}
-"Before we become more entangled, there is something I would prefer to say plainly. I know that your affections may not begin and end with me. I am asking for honesty about the promises you make, not an inventory of every private conversation."
-{n}She considers her next words more carefully.{/n}
-"I want time that you have actually kept for me. I will not compete by making myself easier to please."''',
+"First, the articles. I negotiate nothing without them."
+{n}She taps the edge of the writing case with her closed fan, once for each point.{/n}
+"I know perfectly well I may not be the only name on your correspondence. I do not ask for a register of the others. I ask that any promise you make me be one you can keep, and that the evenings you give me are given, not left over from somebody else."
+{n}The fan comes to rest against her chin.{/n}
+"And I will not make myself cheaper to win the bidding. If that is what you came to buy, the shop is closed."''',
       c('"I can give you that, without promising to agree with you."', "terms", flags=("konomi.honest_terms",)),
       c('"I would like that. I also want us to keep this private for now."', "terms", flags=("konomi.private_first",)),
       c('"I cannot give this the care it deserves."', "stop")),
@@ -127,7 +129,7 @@ s("letter", "A sentence she keeps", 3, '"Did my letter meet your standards?"', [
 {n}She gives you the time for your next meeting. Then, with the arrangement settled, she turns your letter over and writes one sentence on its back.{/n}
 {n}You read it when you are alone: I have kept the evening free.{/n}''', c('[Keep the evening free yourself.]', flags=("konomi.terms",))),
     n("stop", "Konomi", '''{n}She folds the letter along its old crease.{/n}
-"Then we should stop before we begin using our duties as excuses for being careless with one another."
+"Then we close the negotiation before either of us signs something we cannot honour. It is the only clean way to end one."
 {n}She keeps the letter. You do not ask why.{/n}''', c('[End the courtship.]', flags=("konomi.closed",))),
 ], requires=("konomi.reception",), delay=24)
 
@@ -157,17 +159,18 @@ s("evening", "No business before morning", 3, '"You said you would keep this eve
       c('"We can leave the plants to their own devices tonight."', "stay"),
       c('[Kiss her again, then stay to talk until late.]', "quiet", flags=("konomi.kissed",))),
     n("stay", "Konomi", '''"Yes."
-{n}For once there is no qualification attached to her answer. She closes the door and returns to you, smiling at the unfamiliar pleasure of having nothing further to negotiate.{/n}
-{n}The candles burn low. Your next conversation is quiet enough that nobody beyond the door could make a useful report of it.{/n}
+{n}No qualification, no counter-offer. She shuts the door with her heel and comes back to you already working at the ties of her outer robe, as if she has been drafting this in her head all through supper.{/n}
+"I have wanted you across this table since the margin of that report. Do not make me wait while you hunt for the clasp. It is at the back."
+{n}You find it. The silk slides off her shoulders and she lets it fall where the papers usually go. Her fingers are quicker at your buttons than they are at anything in council, and when you are down to skin she pushes you back onto the cushions by the low table and follows, knees either side of your hips, hair spilling loose from the last of its pins. She takes your wrist, lays your hand flat against her bare waist, and bends down to take your mouth, her hips already moving against yours.{/n}
 {n}In the morning she borrows your comb, criticizes it, and uses it anyway. Before you leave, she catches you at the door for another kiss.{/n}
 "No business until after breakfast," she says. "I am making that a rule."''', c('[Agree to the rule.]', flags=("konomi.lovers", "konomi.private_night"))),
     n("quiet", "Konomi", '''"Then stay. We have been in a hurry about everything else."
 {n}She brings another lamp closer and settles beside you. At some point she stops trying to repair the impression made by the story of her disastrous guide, and tells you what happened to the luggage.{/n}
 {n}When you finally leave, she asks you to come again before either of you has accumulated a plausible official reason.{/n}''', c('[Promise another evening.]', flags=("konomi.lovers", "konomi.quiet_evening"))),
     n("changed", "Konomi", '''{n}Her gaze rests on the supper she prepared. She had arranged it from habit, then spent too long deciding whether removing it would be worse.{/n}
-"I imagined this evening rather carelessly," she says. "I should have asked what you would enjoy before ordering it."
+"I planned this supper for somebody else," she says. "An error in my intelligence. I dislike errors in my intelligence."
 {n}She moves the unused place setting aside and puts your letter there instead.{/n}
-"Tell me what is still pleasant for you. I would prefer an awkward answer to an evening spent congratulating myself for guessing badly."
+"So I shall do what I do with any new delegation. Tell me what you still take pleasure in, and I will arrange the next evening around it. I do not repeat a bad reception."
 {n}You talk until the lamp needs tending. She reads a few lines aloud at your request, and finds that the sound of your attention matters to her as much as an answer.{/n}''', c('[Stay with her through the quiet hours.]', flags=("konomi.lovers", "konomi.changed_closeness"))),
 ], requires=("konomi.letter",), delay=24)
 
@@ -191,9 +194,9 @@ s("disagreement", "The advice she will still give", 3, '"Your latest memorandum 
 "The recommendation stands. The insult can go. I would appreciate the same distinction when you answer."''', c('"You will have it."', "end")),
     n("frank", "Konomi", '''"You believe I am in danger of becoming too agreeable?"
 {n}She nearly smiles, then sees that you mean the question.{/n}
-"I am more likely to become needlessly severe to prove that I have not. That would be equally unfair."
+"I am far more likely to overcharge you to prove that I am not. Ask anyone I have ever been fond of."
 {n}She pushes the petition toward you.{/n}
-"We should both watch for it. Beginning with the people whose supper has become the subject of our argument."''', c('[Return to the petition with her.]', "end")),
+"So we do it the dull way. Figures on the table, both of us, and we fight over the grain, not over each other. Begin with the people whose supper this is."''', c('[Return to the petition with her.]', "end")),
     n("end", "Konomi", '''{n}You leave the recommendation in the ordinary channel for decisions. Konomi will not promise supplies she does not control, and you will not turn a private evening into an unrecorded council vote.{/n}
 {n}The argument is not entirely finished when she puts her papers away.{/n}
 "I am still expecting you tomorrow," she says. "Unless you intend to deprive us both of supper until I become less stubborn."''', c('"Tomorrow. We may need a larger supper."', flags=("konomi.argument_survived",))),
@@ -285,11 +288,13 @@ s("reckoning", "The copy she wanted them to read", 3, '"Has there been an answer
     n("repair", "Konomi", '''{n}She lets go of the papers.{/n}
 "Yes. You do. I keep remembering how quickly you offered to make me an invention."
 {n}She looks at the closed drawer that holds your letters.{/n}
-"I believe you were frightened. I would like to hear you say that next time, before you ask me to help you hide it."''',
+"You were frightened. Frightened people ask for forgeries. I have drafted enough of them for other people to know the smell."
+{n}Her fan opens a finger's width and closes again.{/n}
+"Next time you are frightened, come and say so. I can work with a frightened ally. I cannot work with one who hands me a lie to sign."''',
       c('"I was frightened. You deserved better from me, and I intend to give you better."', "repaired", flags=("konomi.apologized",))),
-    n("repaired", "Konomi", '''"Then give me a little time to believe that when I hear another rumor."
-{n}She moves the chair beside her closer. The space she leaves is an invitation, though she does not pretend the conversation has settled everything.{/n}
-"You may stay. I would like you to."''', c('[Stay with her.]', flags=("konomi.petition_resolved", "konomi.scandal_answered"))),
+    n("repaired", "Konomi", '''"Noted. I shall hold you to it the next time a rumour comes through my door."
+{n}She hooks the chair beside her with her foot and drags it closer. The argument is not closed; she is simply tabling it.{/n}
+"Sit. You are no use to me standing in the doorway looking penitent."''', c('[Stay with her.]', flags=("konomi.petition_resolved", "konomi.scandal_answered"))),
     n("close", "Konomi", '''{n}The compliment holds her attention longer than the letters did.{/n}
 "Come here, then. I have been very patient while you admired me from the other side of the desk."''',
       c('[Kiss her, and let her tell you the parts she left out.]', flags=("konomi.petition_resolved", "konomi.scandal_answered"), forbids=("inhuman",)),
@@ -314,7 +319,7 @@ SCENES.append(scene("konomi.unsent", "A letter with nowhere to go", "Konomi", 4,
 {n}The answer takes longer than the description of any danger.{/n}''',
       c('[Write that power might make agreement difficult to distinguish from obedience. Ask her to question one decision when you return.]', "fear_judgment", flags=("konomi.letter_question_me", "konomi.letter_judgment",)),
       c('[Write about that same risk, but ask her to hear your account before questioning it.]', "fear_judgment", flags=("konomi.letter_hear_me", "konomi.letter_judgment",)),
-      c('[Write that you fear ordinary pleasures will feel empty when you return.]', "fear_ordinary", flags=("konomi.letter_hear_me", "konomi.letter_ordinary",))),
+      c('[Write that you fear ordinary pleasures will taste of nothing when you return.]', "fear_ordinary", flags=("konomi.letter_hear_me", "konomi.letter_ordinary",))),
     n("fear_judgment", "Narrator", '''{n}"I do not want to become someone whose certainty comes from never hearing a refusal."{/n}
 {n}You read the sentence twice. It names a danger you want her to help you watch for. You add what you are asking of her when you return, then leave a little space for anything you decide to say in person.{/n}''', c('[Finish the letter.]', "write")),
     n("fear_ordinary", "Narrator", '''{n}"I want to come home and enjoy a ridiculous story without waiting for something dreadful to interrupt it. I am afraid I shall spend the whole evening waiting."{/n}
@@ -336,7 +341,7 @@ s("return", "An account for her alone", 5, '"There are things about the Abyss I 
     n("letter", "Konomi", '''{n}She reads the letter slowly. When she reaches the final question she looks toward the bare pot by the window.{/n}
 "No," she says. "But I have kept the pot. Apparently I remain hopeful."
 {n}She folds the sheet along its worn creases.{/n}
-"I am glad you kept this. I would rather have it late than receive a perfect account in which you never needed anything."''',
+"You kept it. Good. A letter written in the Abyss and carried home unposted is worth ten reports to the Council. I intend to keep it somewhere the Council will never think to look."''',
       c('[Tell her the rest in person.]', "talk", forbids=("konomi.letter_wonder", "konomi.letter_fear")),
       c('[Ask what she made of the sight you described.]', "wonder_reply", requires=("konomi.letter_wonder",), forbids=("konomi.letter_fear",)),
       c('[Let her answer the fear you put on the page.]', "fear_reply", requires=("konomi.letter_fear",), forbids=("konomi.letter_ordinary",)),
@@ -387,21 +392,21 @@ s("return", "An account for her alone", 5, '"There are things about the Abyss I 
 "What did you do?"
 "Asked one of the people who had stopped speaking. I did not enjoy the answer."
 {n}Her eyes return to you.{/n}
-"What would be useful now?"''',
+"You wrote me a request. I read requests closely, Commander. Which one am I answering?"''',
       c('"One question, as I asked in the letter. Let me finish answering it."', "fear_question", requires=("konomi.letter_question_me",)),
       c('"Hear me first. I asked for that because I do not yet have the account in order."', "fear_listen", requires=("konomi.letter_hear_me",)),
       c('"Ask me one question. I will try to answer it properly."', "fear_question", forbids=("konomi.letter_question_me", "konomi.letter_hear_me")),
       c('"Hear me first. I want to tell you what I meant in person."', "fear_listen", forbids=("konomi.letter_question_me", "konomi.letter_hear_me"))),
     n("ordinary_reply", "Konomi", '''"I have several. Choosing the worst will require some thought."
 {n}She leaves the letter open on her knee.{/n}
-"You need not laugh to justify the effort. I have endured enough polite laughter to recognize it, and it makes me less generous about the telling."
+"Do not laugh out of courtesy. I have been paid in polite laughter by three ambassadors and a margrave, and it is counterfeit coin."
 "That sounds like a threat."
-"A warning. I am trying to make this an honest invitation."
+"A term of trade. I tell the story; you pay in real laughter or none."
 {n}She begins with a dinner guest who spent several minutes complimenting an absent hostess's portrait before discovering that it depicted her grandmother. Konomi had watched him decide whether to make the mistake worse by pretending he had known.{/n}
 "He chose to continue," she says. "Courage is not always helpful."
 {n}You ask what she did. Her smile becomes distinctly less charitable.{/n}
 "Asked which resemblance he found most striking."
-{n}She waits for your answer with the letter still on her knee, ready to stay whether the story makes you laugh or merely gives you something else to ask about.{/n}''',
+{n}She waits for your answer with the letter still on her knee and the fan tapping the arm of her chair, entirely certain you will ask.{/n}''',
       c('"You enjoyed that far too much. Tell me what he said."', "guest_answer", flags=("konomi.fear_answered",)),
       c('"Stay a little. I want to hear it even if I am poor company tonight."', "talk", flags=("konomi.fear_answered",))),
     n("guest_answer", "Konomi", '''"He said the eyes. A sensible retreat. Then he added that he had always admired a woman who could command a room without raising her voice."
@@ -414,13 +419,13 @@ s("return", "An account for her alone", 5, '"There are things about the Abyss I 
 {n}She folds your letter at last and places it inside her writing case, apart from the official papers.{/n}''', c('[Stay and exchange the stories neither of you put in a report.]', "talk")),
     n("fear_question", "Konomi", '''"Whose objection have you kept thinking about?"
 {n}She gives you time to consider the question. Konomi reaches for her pen, notices what she is doing, and leaves it on the desk.{/n}
-"I am not taking minutes," she says. "Nor am I offering to keep a second set of official records in my head. Tell me what you can tell me here."
+"No minutes," she says. "This goes in no register, not even the one in my head. Speak."
 {n}You begin with the objection rather than your answer to it. She interrupts once to ask whether those were the words spoken or the meaning you gave them afterward. You start again.{/n}
 {n}When you finish, she does not supply a verdict.{/n}
 "You can ask that person whether you understood them. You may still disagree afterward."
 "And if I cannot ask?"
-"Then we should not invent their answer to make this evening easier."
-{n}She lays her hand beside yours, leaving the choice of taking it to you.{/n}''', c('[Stay and continue the account.]', "talk", flags=("konomi.fear_answered",))),
+"Then do not forge their answer so that you can sleep tonight. I would catch it. I catch everyone's."
+{n}Her hand comes to rest on the desk beside yours, close enough to touch, and she leaves it there.{/n}''', c('[Stay and continue the account.]', "talk", flags=("konomi.fear_answered",))),
     n("fear_listen", "Konomi", '''"Then begin badly. You may revise yourself aloud."
 {n}She settles back. You lose the thread once, return to something you said too confidently, and find that correcting it does not require starting the entire conversation again.{/n}
 {n}At one point Konomi draws breath to speak. You ask her to wait. Her expression tightens, but she nods.{/n}
@@ -428,7 +433,7 @@ s("return", "An account for her alone", 5, '"There are things about the Abyss I 
 "Some of it," you say.
 "A prudent limit. I have accumulated rather a lot."
 {n}The familiar dryness makes it easier to look at her.{/n}
-"I am glad you wrote," she says. "I would have disliked being protected from this until you could present it neatly. I do not promise that hearing the rest will leave me pleased."
+"You wrote it down before you could tidy it," she says. "Good. Tidy accounts are the ones I trust least. The rest may not please me. I will hear it anyway."
 "I know."
 "Good. Move the lamp toward you. I have been watching you pretend that the light is not in your eyes."''', c('[Move the lamp and hear her answer.]', "talk", flags=("konomi.fear_answered",))),
     n("hers", "Konomi", '''"Busy. Angry. Frequently misinformed."
@@ -436,17 +441,17 @@ s("return", "An account for her alone", 5, '"There are things about the Abyss I 
 "I learned which correspondents would admit to being frightened. They were generally more useful than the ones determined to sound certain."
 {n}She turns her chair toward yours.{/n}
 "Now tell me something true."''', c('[Give her an honest account.]', "talk")),
-    n("talk", "Konomi", '''{n}You talk until the light changes at the window. Konomi listens, interrupts when something frightens her, and apologizes only for the interruptions that did not help.{/n}
-"I cannot promise to like every answer," she says. "I can promise that I would rather know you than maintain a flattering description of you."
+    n("talk", "Konomi", '''{n}You talk until the light changes at the window. Konomi listens like a negotiator, interrupting when a detail does not add up and once, sharply, when something frightens her.{/n}
+"I will not like all of it," she says. "I would rather have the true file on you than the flattering one. The flattering one is what Nerosyan already has."
 {n}Before you leave, she asks when you can come again.{/n}''', c('[Choose another evening together.]', flags=("konomi.returned",))),
 ], requires=("konomi.reckoning",), delay=24)
 
-s("power", "The person beneath the title", 5, '"We should talk about what my power means for us."', [
+s("power", "The person beneath the title", 5, '"My power has grown. I expect you have an opinion about it."', [
     n("start", "Konomi", '''"Yes. We should."
 {n}Konomi has brought no memorandum. She watches the place where you stand as though expecting the room itself to take sides.{/n}
 "I have spent years learning what a promise can accomplish and what it cannot. You have acquired a talent for making the second category embarrassingly small."
 {n}She considers you steadily.{/n}
-"I would like to know whether I may still disappoint you without becoming a problem you decide to solve."''',
+"So I am asking the only question a diplomat asks a stronger party. When I refuse you, am I still a counterpart, or have I become an obstacle you remove?"''',
       c('"I could trick fate into giving us another chance. I would still have to ask you to take it."', "trickster", requires=("trickster",)),
       c('"My transformation has changed what we can share. It has not made your wishes irrelevant."', "transformed", requires=("inhuman",)),
       c('"My duties and loyalties are changing. I want us to make our own promises carefully."', "limits", forbids=("trickster", "inhuman"))),
@@ -455,16 +460,16 @@ s("power", "The person beneath the title", 5, '"We should talk about what my pow
 "If you reopen a door that circumstances shut, I may choose to walk through it. If you rewrite the woman who refused you, you have arranged a conversation with somebody else."
 {n}A little amusement returns to her expression.{/n}
 "You may, however, make an exception for whoever keeps losing my requests for a new roof. I would be delighted to discover that they had always been competent."''', c('"I will begin with the roof, and leave your opinions intact."', "choice", flags=("konomi.fate_terms",))),
-    n("transformed", "Konomi", '''"I will need you to tell me when something has ceased to be possible. I will also need you to believe me when I say that I still want your company."
+    n("transformed", "Konomi", '''"Then tell me what is no longer possible, and I will stop arranging suppers around it. I dislike wasting a good menu."
 {n}She looks toward the spare place beside her.{/n}
-"Sometimes I wish I could arrange an evening without having to ask which parts of it are possible. That is difficult to admit when I know how much more you have had to consider."
+"I miss some of what you were. I shall say so now and then, sharply, because I am not a saint and I will not pretend to be one for your comfort."
 {n}Her voice steadies.{/n}
-"But I am here. I would like that to count for something without making it an oath never to grieve."''', c('"It counts. We can discover what remains together."', "choice", flags=("konomi.transformed_terms",))),
-    n("limits", "Konomi", '''"Then I will make one now. I will not use affection to obtain a decision from you. I expect the same courtesy when my answer inconveniences you."
-{n}She gives you a wry look.{/n}
-"I may still make a persuasive argument. You would become suspicious if I stopped."
+"And I am still here. Do not mistake the complaint for a withdrawal. I withdraw formally or not at all."''', c('"It counts. We can discover what remains together."', "choice", flags=("konomi.transformed_terms",))),
+    n("limits", "Konomi", '''"Then here is a test case."
+{n}She takes a folded recommendation from her sleeve: the winter levy on the river villages, which you have refused twice.{/n}
+"I still think you are wrong about this. I will argue it in council, loudly, and I will lean on every Mendevian noble who owes me a favour to get it. What I will not do is bring it to your bed." {n}She tears the sheet once, neatly, and drops the halves in the grate.{/n} "That copy was for tonight. The real one goes before the council tomorrow."
 {n}Outside, a bell marks the hour. She ignores it.{/n}
-"And I want evenings like this to continue after we have run out of urgent reasons to meet."''', c('"So do I."', "choice", flags=("konomi.equal_terms",))),
+"Refuse me there, and I shall still be at this door the next evening. That is my offer. Do we have a deal, Commander?"''', c('"So do I."', "choice", flags=("konomi.equal_terms",))),
     n("choice", "Konomi", '''{n}For once she leaves the final question unspoken. Her writing case is closed, the hour has passed, and she is still waiting for your answer.{/n}''',
       c('"I want a life with you in it. We can decide its shape together."', "commit", flags=("konomi.committed",)),
       c('"I care for you, but I cannot promise a future together."', "part")),
@@ -473,7 +478,7 @@ s("power", "The person beneath the title", 5, '"We should talk about what my pow
 "I mean it. You will otherwise discover them wherever you intended to sit."
 {n}The plans that follow are incomplete, practical, and occasionally ridiculous. She objects to one of yours so vigorously that you both stop to laugh again.{/n}''', c('[Begin making those plans.]', flags=("konomi.chosen_future",))),
     n("part", "Konomi", '''{n}She closes her eyes for a moment, then nods.{/n}
-"I would have preferred another answer. I am glad you gave me the one you meant."
+"A pity. I had drafted rather a good future for us." {n}Her fan closes with a click.{/n} "Still, a clean refusal is worth more than a signature you meant to break."
 {n}She asks for a little time before your next private conversation. The work that still connects you will continue through the usual channels.{/n}''', c('[Accept the separation.]', flags=("konomi.closed", "konomi.parted_honestly",))),
 ], requires=("konomi.return",), delay=24)
 
@@ -572,7 +577,7 @@ s("hearing", "The page they are allowed to read", 3, '"When will the complaint a
       c('"Let them read it under those conditions. I want the buyer held responsible."', "whole", flags=("konomi.hearing_whole",)),
       c('"I want him held responsible too. I cannot bear giving more people those words. Cover the private passages."', "covered", flags=("konomi.hearing_covered",))),
     n("whole", "Konomi", '''{n}She nods and starts to fold the wrapper closed. Then she stops.{/n}
-"You may ask for it back before they begin. Agreeing now need not mean sitting there in misery because you have already said yes."
+"You hold it. If your nerve goes in there, it will be your hand that takes it off the table, not mine."
 {n}She hands you the packet. The top corner is soft from the number of times she has held it.{/n}
 "I should be pleased. Instead I am thinking of one sentence I particularly wish the registrar would skip."
 {n}You return to the workroom together.{/n}''', c('[Place the letter on the table.]', "acknowledge")),
@@ -622,17 +627,17 @@ s("hearing_after", "What came home with the letter", 3, '"How have you been sinc
       c('"Keep that one. I would like to write you something new."', "new_letter", flags=("konomi.hearing_new_letter",))),
     n("covered", "Konomi", '''"We do. I keep composing a better argument for the registrar. Every version requires the part of the page we did not show her."
 {n}She rubs at an ink mark on her finger, then stops.{/n}
-"I was angry on the walk back. You knew that. I do not want you spending the next week trying to discover whether you must reverse your answer before I will invite you here again."
+"I was angry on the walk back. You knew that. I am still angry, and I sent for you anyway, which should tell you how little the one has to do with the other."
 {n}She gestures toward the chair.{/n}
 "There is your invitation. I am still disappointed. Sit down."''',
       c('"I understood the cost. I would still keep those passages between us."', "still_disagree"),
-      c('"I am wondering whether I made the right choice. I am not ready to reopen it."', "uncertain")),
+      c('"I wonder whether I chose right. I am not ready to reopen it."', "uncertain")),
     n("still_disagree", "Konomi", '''"I know."
 {n}For a moment neither of you reaches for the safe subject waiting in the papers.{/n}
-"I have moved too quickly in some of my own decisions. I cannot complain that you thought this one through because you arrived somewhere inconvenient for me."
+"You weighed it and came down on the other side. I have done the same to better people than you and called it statecraft. I can hardly call it treachery when you do it to me."
 {n}She draws the decision toward her and folds it.{/n}
 "That sounded much more gracious than I feel. You may appreciate the effort."''', c('"I do. I also appreciate being invited."', "trust")),
-    n("uncertain", "Konomi", '''"Then do not reopen it tonight. If you decide to offer more evidence, tell me when you mean it. I will not take a difficult evening as permission."
+    n("uncertain", "Konomi", '''"Then do not reopen it tonight. If you change your mind, tell me in daylight, over a desk, where I can hold you to it. Nothing said after supper counts in my ledger."
 {n}She folds the finding and lays it aside.{/n}
 "I am capable of leaving an argument unfinished. I would prefer not to demonstrate by leaving you standing in the doorway."''', c('[Take the chair beside her.]', "trust")),
     n("together", "Konomi", '''{n}She looks relieved before she can arrange a more composed expression.{/n}
@@ -650,7 +655,7 @@ s("hearing_after", "What came home with the letter", 3, '"How have you been sinc
 {n}She looks directly at you.{/n}
 "I had been waiting for that question. I knew what you said when we first found out about the copy. I knew you had apologized. I was still waiting."
 {n}Her hand closes over yours briefly, then releases it.{/n}
-"I believed you this time. I wanted you to know."''', c('"I am glad I could give you a reason to."', "evening", flags=("konomi.hearing_trust_repaired",))),
+"I believed you this time. Do not squander it. I extend credit once."''', c('"I am glad I could give you a reason to."', "evening", flags=("konomi.hearing_trust_repaired",))),
     n("evening", "Konomi", '''{n}She takes a small parcel from a cupboard and sets it between you. Inside are two apple pastries, one visibly larger than the other.{/n}
 "I bought these this morning. I then spent an unreasonable amount of time deciding whether to offer you the larger one as a peace offering."
 {n}She takes the larger pastry.{/n}

@@ -44,7 +44,7 @@ s("lease_offer", "The name on the next agreement", [
 "I could finish the notices and accept now. Or I could wait until my client has had time to find somebody who will examine the arrangement solely for her. The owner will not hold the full fee open while I wait."''',
       c('"Honor the signed option, tell her about the change and take the work. She can choose her next adviser."', "accept", flags=("konomi.career_accepts_now",)),
       c('"Give her time to find that adviser. You negotiated the clause you would now be paid to work around."', "wait", flags=("konomi.career_waits",))),
-    n("accept", "Konomi", '''"That is what I want to do. I have been hoping you would say it, which is not the same as asking your opinion fairly."
+    n("accept", "Konomi", '''"That is what I want to do. I asked you as though I were weighing it. I was canvassing a vote I already had."
 {n}She unfolds the offer and reads the last lines again.{/n}
 "I will tell her myself before I sign. She may decide I have been looking beyond her business all week. I was not, but I doubt another excellent explanation will make her pleased for me."
 {n}She folds the paper carefully.{/n}
@@ -81,7 +81,7 @@ s("chosen_evening", "The evening she asked for", [
 "They will meet without me before I begin for the owner. I shall spend the interval making introductions in Nerosyan. I have managed to acquire both less money and more traveling. I still want the work."''',
       c('"You gave her the chance to protect her interests. That matters."', "heard"),
       c('"I hope the introductions prove worth the cost."', "heard")),
-    n("heard", "Konomi", '''"Thank you for listening. I have spent enough of today rehearsing what I should have said."
+    n("heard", "Konomi", '''"There. That is the whole account, and you did not interrupt it once. I may start billing you as a confessor."
 {n}She reaches for the food. You eat while she describes the names she hopes to approach, growing more animated as she explains which woman might answer an invitation from which other woman.{/n}
 {n}Halfway through an account of a profitable quarrel, she catches your expression and stops.{/n}
 "I left the papers behind. I appear to have brought their contents with me."''',
@@ -89,22 +89,21 @@ s("chosen_evening", "The evening she asked for", [
       c('"Finish the quarrel. Then I want your attention for myself."', "attention")),
     n("pleasure", "Konomi", '''"I am. Even after today."
 {n}She looks almost surprised to hear herself admit it.{/n}
-"For a while I thought I would have to become somebody with simpler ambitions before these evenings could feel like this. I would have resented you if I had tried."
+"When I lost the office I assumed I would have to pick: a smaller life with you in it, or the capital without. I dislike choosing between two poor offers. I have spent my career refusing to."
 {n}Her hand comes to rest beside yours.{/n}
 "I am glad I did not."''', c('[Stay with her after supper.]', "close")),
     n("attention", "Konomi", '''"Then the abbreviated version: neither woman will yield first, but each would be offended if I approached the other before approaching her. I intend to invite them both to the same breakfast. I shall eat beforehand."
 {n}She leans toward you, her smile deepening.{/n}
 "There. You have my attention. I hope you intend to make good use of it."''', c('[Stay with her after supper.]', "close")),
-    n("close", "Konomi", '''{n}After the dishes have been put aside, she draws her chair close enough for her knee to touch yours. She leaves her hand open beside yours, waiting.{/n}
-"I want to keep seeing you like this. I also want to kiss you. I thought I should say both before I became occupied with the second."''',
+    n("close", "Konomi", '''{n}After the dishes have been put aside, she draws her chair close enough for her knee to press against yours, and lays her fan on the table between the cups, closed.{/n}
+"Two items remain on the agenda. I intend to keep seeing you like this. And I intend to kiss you. I have put them in order of importance, and I am about to take them out of order."''',
       c('"Yes. I want this courtship, and I want you to stay tonight."', "night", flags=("konomi.private_night_chosen",)),
       c('"I want this too. Stay close, but let us keep the evening quiet."', "quiet", flags=("konomi.private_quiet_chosen",)),
       c('"I care for you, but I do not want a romance."', "friends")),
     n("night", "Konomi", '''{n}She takes your hand and rises with you. When you kiss her, she answers with an eagerness that makes the careful beginning of the evening seem very far away.{/n}
 {n}Her fingers close on your collar. She draws you back when you start to speak.{/n}
-"You may tell me afterward."
-{n}You have time to laugh before she kisses you again. Later, with the door closed and the evening's unfinished subjects left outside it, she asks you to stay near. You do.{/n}
-{n}The rest of the night belongs to the two of you.{/n}''', c('[Stay together through the night.]', "morning")),
+"You may tell me afterward. I have waited through an entire correspondence for this; I am not waiting through a speech."
+{n}She walks you backward to the bed without letting go of the collar, and only releases it to shrug the travelling coat off her shoulders and tug her sash free. The robe under it she lets you open yourself. She is warm and quick-breathing beneath it, and she laughs, low, when your hands are not fast enough, and finishes the last of your fastenings for you. Then she pushes you down, follows, and settles astride your hips with her loosened hair falling around you both, guiding your hands up her sides as she leans down, rocking her hips against you.{/n}''', c('[Stay together through the night.]', "morning")),
     n("quiet", "Konomi", '''"Gladly."
 {n}She settles beside you. At first she keeps finding reasons to speak; then she puts her head against your shoulder and lets one unfinished sentence remain unfinished.{/n}
 {n}You stay like that until a noise in the passage makes her lift her head. She looks toward the door, then settles back against you with a small, satisfied breath.{/n}
@@ -124,11 +123,11 @@ s("chosen_evening", "The evening she asked for", [
 "I can accept that you no longer want it. I cannot pretend that I had not been hoping to recover more of it with you."''', c('[Acknowledge what the relationship meant.]', "parting_finish")),
     n("first_parting", "Konomi", '''"I had hoped these evenings were becoming a courtship. I would have asked you here sooner if I had been less afraid of making that obvious."
 {n}She looks toward you again.{/n}
-"I am disappointed. You have not promised something merely because I wanted it, and I do know the difference."''', c('[Let her finish without arguing with her disappointment.]', "parting_finish")),
+"I am disappointed. I shall be disappointed at some length, in private. At least you did not sell me a promise you meant to default on. I have bought enough of those."''', c('[Let her finish without arguing with her disappointment.]', "parting_finish")),
     n("parting_finish", "Konomi", '''{n}She gathers herself before looking at you again.{/n}
-"I cannot promise to resume them as friendship tomorrow. I would like some time before I decide what I can offer."
-{n}You finish saying goodbye without asking her to make the answer easier for you.{/n}''',
-      c('[Respect her answer and end the courtship.]', flags=("konomi.closed", "konomi.private_parted", "konomi.private_future"))),
+"Do not ask me to be your friend by morning. I have never once signed a new treaty the same day the old one was torn up."
+{n}She picks up her fan and does not open it. You say goodbye, and she lets you see yourself out.{/n}''',
+      c('[Take her answer and end the courtship.]', flags=("konomi.closed", "konomi.private_parted", "konomi.private_future"))),
 ], requires=("konomi.career_decided",), delay=48)
 
 s("private_future_choice", "The journeys after this one", [
@@ -144,7 +143,7 @@ s("private_future_choice", "The journeys after this one", [
     n("commit", "Konomi", '''{n}She takes a breath, and for once does not turn it immediately into an answer.{/n}
 "Yes. I would like that."
 {n}Her hand finds yours.{/n}
-"When I arrange the next journey, I want you to be part of the plan before I purchase a place on the wagon. I want to know which evenings you can give me, and I want you to ask the same of me. There will be days when neither of us likes the answer."
+"Then here is the treaty. You are consulted before I buy a seat on any wagon. You name your evenings in advance and I name mine, and neither of us pleads the war afterward. When one of us breaks them, the other sends a very disagreeable letter."
 {n}She smiles at you.{/n}
 "There will also be days when I arrive earlier than expected. I have been thinking about those."''',
       c('"We will make those plans together, and keep our promises to the other people in our lives."', "kept", flags=("konomi.committed", "konomi.private_future_committed"))),

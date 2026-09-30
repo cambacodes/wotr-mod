@@ -111,14 +111,14 @@ s("before_road", "An evening before the road", [
       c('"I am glad you asked me here."', "new", forbids=("konomi.lovers",))),
     n("lovers", "Konomi", '''"I kept remembering the things I had planned to tell you. Very small things, mostly. I would think that you would be amused, then remember why I had not sent the note."
 {n}She looks at your hand resting beside the chair arm.{/n}
-"I am still angry about some of it. I did not want to discover that being right to feel angry required me to stop wanting your company."
+"I am still angry about some of it. I had hoped the anger would cure me of wanting your company. It has proved a very poor physician."
 {n}She lays her hand beside yours.{/n}
 "I wanted it."''',
       c('[Take her hand.]', "near", flags=("konomi.before_road_hand",)),
-      c('"You can have my company without having to settle every feeling tonight."', "talk")),
+      c('"You can have my company without settling every account tonight."', "talk")),
     n("new", "Konomi", '''"I nearly asked you to come earlier so that I could pretend this was an ordinary afternoon."
 {n}She gives a short laugh at herself.{/n}
-"I have become very accomplished at choosing what an invitation appears to mean. I would like to be less accomplished at it for a while."
+"At court I would have dressed this up as a farewell call and let you guess the rest. I have lost the court, so I may as well lose the costume."
 {n}She turns toward you.{/n}
 "I am attracted to you. I am leaving Drezen. I have not managed to make either fact conveniently smaller."''',
       c('"I am attracted to you too. May I come closer?"', "near", flags=("konomi.before_road_hand", "konomi.private_interest", "konomi.attracted")),
@@ -147,9 +147,9 @@ s("before_road", "An evening before the road", [
 "Ask when you want me there. I will answer when I can."''', c('[Agree to keep asking honestly.]', "finish")),
     n("others", "Konomi", '''"Then make the invitation you can keep."
 {n}She considers you for a moment.{/n}
-"I have never had exclusive possession of your time. I would like the part you offer me to be real. If you must change a plan, tell me before I have spent an evening inventing explanations for an empty chair."
+"I never held a monopoly on your time, and I do not bid for one now. What I buy, I expect delivered. If you must break an appointment, send word before I have spent the evening staring at an empty chair."
 {n}She touches your hand lightly.{/n}
-"I am choosing this with you. I am not asking you to make somebody else's affection disappear to improve the description."''', c('"You will have an honest answer from me."', "finish")),
+"The others are your affair. I am not so poor a trader that I need my rivals ruined to make a sale."''', c('"You will have an honest answer from me."', "finish")),
     n("finish", "Konomi", '''{n}The conversation lasts until the lamp needs tending. Konomi gets up to trim it, then returns to her chair.{/n}
 "I would like you here for a little longer."
 {n}The traveling case waits with its straps unfastened. She leaves it that way while you stay.{/n}''', c('[Stay for the rest of the evening.]', flags=("konomi.before_road_kept",))),
@@ -169,7 +169,7 @@ s("private_departure", "A place on the wagon", [
 "The capital will be less impressed by my arrival than I once imagined. That may be useful. I can find out who wants my judgment when I am no longer carrying an appointment from the council."''', c('"Whom will you approach first?"', "capital")),
     n("evening", "Konomi", '''"So do I. I am trying to avoid turning that into a reason to delay the wagon. Selis has already had to apologize for one impossible date."
 {n}She looks toward the driver's bench, then back at you.{/n}
-"I enjoyed the one we had. I would rather leave wanting another than stay until I resent the things I have put off to obtain it."''', c('"What are you hoping to do when you arrive?"', "capital")),
+"I enjoyed the one we had. A good negotiator leaves the table while the other side still wants more. I have never once managed to do it gracefully."''', c('"What are you hoping to do when you arrive?"', "capital")),
     n("capital", "Konomi", '''"I shall send three letters. One to a woman who used to ask for my advice and then present it at meetings as her own. One to a woman who disagreed with nearly everything I said but always read it. The third will depend on how those two answer."
 {n}She notices your expression.{/n}
 "Yes, the first may be pleased to hear from me. No, I have not forgotten. There is a difference between making use of a contact and mistaking her for a friend."

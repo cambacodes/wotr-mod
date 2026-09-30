@@ -40,6 +40,9 @@ internal static class KonomiTricksterTests
         var audience = S("konomi.trickster.never_arrived.audience");
         var epCommit = S("konomi.trickster.epilogue.commit");
         var epRefused = S("konomi.trickster.epilogue.refused");
+        var epEnvoy = S("konomi.trickster.epilogue.envoy");
+        var supper = S("konomi.trickster.dismissed.supper");
+        var season = S("konomi.trickster.dismissed.a_season");
         bool Any(Snapshot w, params Scene[] scenes) => scenes.Any(s => Rules.Available(story, s, w));
         bool Commits(Scene scene, Snapshot w) => Program.Walk(scene, w).Any(r => r.Has("konomi.committed"));
 
@@ -81,6 +84,12 @@ internal static class KonomiTricksterTests
         var shouted = Program.Walk(late, dismissed, (page, _) => pages.Add(page)).Where(r => r.Has(late.Id)).ToList();
         check(shouted.Count == 1 && shouted[0].Has("konomi.trickster.primed") && shouted[0].Has("konomi.trickster.cost.late")
               && !pages.Contains("queen"), "Trk_Konomi_Dismissed: the minute sets the wrong flags.");
+        // Polish 9b: no word made true. The minute goes to the Chancellor and the driver is bought, on the page, at a price.
+        var bought = late.Nodes.Single(n => n.Id == "driver").Choices[0];
+        check(pages.Contains("driver") && shouted[0].Has("konomi.trickster.cost.driver_paid") && bought.Crusade?.Resource == "Finances"
+              && bought.Crusade.Amount == -150, "The road loops by itself again.");
+        check(late.Nodes.Concat(recess.Nodes).All(n => !n.Text.Contains("proud of the others") && !n.Text.Contains("seam in your road")),
+            "The paving stone that was not there is back.");
         var crowned = Program.Copy(dismissed); crowned.Flags.Add("coronation.seen");
         var queenPages = new HashSet<string>();
         Program.Walk(late, crowned, (page, _) => queenPages.Add(page));
@@ -142,13 +151,33 @@ internal static class KonomiTricksterTests
         var threshold = priv.Nodes.Single(n => n.Id == "threshold");
         check(threshold.Choices.Single().Next == "morning" && priv.Nodes.Single(n => n.Id == "answer").Choices[0].Set.Contains("konomi.committed"),
             "The committing answer is not [Take her hand].");
-        var colleague = World(story, 5, "trickster.ever", "konomi.dismissed", "konomi.trickster.terms_settled");
-        var colleagueOut = Program.Walk(priv, colleague);
+        // Sol BEL: a Commander who never courted her is asked why, at supper, before the private beat can commit.
+        var colleague = World(story, 5, "trickster.ever", "konomi.dismissed", "konomi.trickster.terms_settled", "konomi.trickster.debt_paid");
+        var uncourted = new HashSet<string>();
+        var uncourtedOut = Program.Walk(priv, colleague, (page, _) => uncourted.Add(page));
+        check(!uncourted.Contains("courted") && uncourtedOut.All(r => !r.Has("konomi.committed")), "The non-lover shortcut still commits.");
+        check(Rules.Available(story, supper, colleague) && !Rules.Available(story, supper, lover), "The supper is mistimed or offered to a lover.");
+        var supperPages = new HashSet<string>();
+        var suppers = Program.Walk(supper, colleague, (page, _) => supperPages.Add(page));
+        check(supperPages.Contains("letter") && !supperPages.Contains("favour") && suppers.Count(r => r.Has("konomi.trickster.supper_asked")) == 2
+              && suppers.Any(r => r.Has(supper.Id) && !r.Has("konomi.trickster.supper_asked")), "The supper does not ask, or cannot be answered as a Commander.");
+        var favoured = World(story, 5, "trickster.ever", "konomi.dismissed", "konomi.trickster.terms_settled", "konomi.trickster.favour_owed");
+        var favourPages = new HashSet<string>();
+        Program.Walk(supper, favoured, (page, _) => favourPages.Add(page));
+        check(favourPages.Contains("favour") && !favourPages.Contains("letter"), "The supper bills a favour as a letter.");
+        var colleagueTested = Program.Copy(colleague); colleagueTested.Flags.Add("konomi.trickster.supper_asked");
         var colleaguePages = new HashSet<string>();
-        colleagueOut = Program.Walk(priv, colleague, (page, _) => colleaguePages.Add(page));
+        var colleagueOut = Program.Walk(priv, colleagueTested, (page, _) => colleaguePages.Add(page));
         check(colleaguePages.Contains("courted") && !colleaguePages.Contains("answer") && colleagueOut.Any(r => r.Has("konomi.trickster.envoy"))
               && colleagueOut.Any(r => r.Has("konomi.committed")) && colleagueOut.Any(r => r.Has("konomi.trickster.declined")),
             "A Commander who never courted her is not courted on the page, or cannot hear her no.");
+        // Sol INT: "Give me a season" has its later ask, on her price, and she can still hold to envoy.
+        check(!Rules.Available(story, season, no[0]) && Rules.Available(story, season, Later(story, no[0], 168)), "The season is mistimed.");
+        var seasonPages = new HashSet<string>();
+        var seasons = Program.Walk(season, Later(story, no[0], 168), (page, _) => seasonPages.Add(page));
+        check(seasons.Any(r => r.Has("konomi.committed") && r.Has("konomi.trickster.asked_again")) && seasonPages.Contains("council")
+              && seasons.Any(r => r.Has("konomi.trickster.envoy") && !r.Has("konomi.committed"))
+              && seasons.Any(r => !r.Has(season.Id)), "The second ask: no yes on her price, no no, or no waiting.");
 
         // Trk_Konomi_RevivedThenDismissed: an earlier return does not block the dismissal device.
         var revived = World(story, 5, "trickster", "trickster.ever", "konomi.dismissed", "konomi.office_completed",
@@ -172,6 +201,11 @@ internal static class KonomiTricksterTests
         var back = recalls.Where(r => r.Has(recalled.Id)).ToList();
         check(back.Count == 1 && back[0].Has("konomi.retained_return_confirmed") && back[0].Has("konomi.trickster.cost.consult_fee")
               && recallPages.Contains("refusal"), "Trk_Konomi_Dead: her soul does not refuse, then consent.");
+        // Polish 9b: the recall is a rite by her own people, found through her own ledger; a correction alone raises nobody.
+        check(back[0].Has("konomi.trickster.cost.her_people") && recallPages.Contains("ledger") && recallPages.Contains("rite"),
+            "The recall works without a rite.");
+        var bareCorrection = recalled.Nodes.Single(n => n.Id == "recall").Choices[0];
+        check(!Rules.Match(bareCorrection.Requires, bareCorrection.Forbids, dead), "The dispatch correction still raises her on its own.");
         check(recalled.Nodes.SelectMany(n => n.Choices).Count(ch => ch.Revive == "konomi") == 1, "More than one revive in the recall.");
         var halfway = recalls.First(r => !r.Has(recalled.Id) && r.Has("konomi.trickster.cost.recalled"));
         var retry = Program.Walk(recalled, halfway);
@@ -196,13 +230,16 @@ internal static class KonomiTricksterTests
 
         // Trk_Konomi_NeverArrived: the secretary's error on the page, then the audience in person.
         var never = World(story, 3, "trickster", "trickster.ever", "konomi.missed_contact_available");
+        check(accredited.Nodes[0].Text.IndexOf("A week ago", StringComparison.Ordinal) < 0, "The informer is caught off the page, a week before.");
+        check(audience.Nodes[0].Text.IndexOf("three months ago", StringComparison.Ordinal) < 0, "Arrears from before the register entry.");
         check(Rules.Available(story, accredited, never) && !Rules.Available(story, audience, never), "Trk_Konomi_NeverArrived: setup unavailable.");
         check(!Rules.Available(story, S("konomi.the_unintroduced_letter"), never), "The unintroduced letter still opens beside the jug.");
         var bowPages = new HashSet<string>();
         var bowed = Program.Walk(accredited, never, (page, _) => bowPages.Add(page)).Where(r => r.Has(accredited.Id)).ToList();
         // Two ways to use the chancery's informer (paid, or threatened with the rope); each sets the device flags and its cost.
         check(bowed.Count == 2 && bowed.All(r => r.Has("konomi.trickster.primed") && r.Has("konomi.trickster.cost.accredited")
-              && r.Has("konomi.missed_letter_sent")) && bowPages.Contains("nerosyan")
+              && r.Has("konomi.missed_letter_sent") && r.Has("konomi.trickster.slip_read")) && bowPages.Contains("nerosyan")
+              && bowPages.Contains("slip") && bowPages.Contains("bow")
               && bowed.Count(r => r.Has("konomi.trickster.cost.steward_paid")) == 1
               && bowed.Count(r => r.Has("konomi.trickster.cost.steward_burned")) == 1, "Trk_Konomi_NeverArrived: wrong flags.");
         var arrived = Later(story, bowed[0], 48);
@@ -229,7 +266,8 @@ internal static class KonomiTricksterTests
 
         // Epilogues: the late commit is the Commander's answer; her soft no is its own page; paragraphs on her endings.
         var lateCommit = World(story, 6, "trickster.ever", "konomi.dismissed", "konomi.trickster.recessed",
-                               "konomi.trickster.terms_settled", "konomi.trickster.debt_paid", "konomi.private_future", "konomi.attracted");
+                               "konomi.trickster.terms_settled", "konomi.trickster.debt_paid", "konomi.private_future", "konomi.attracted",
+                               "konomi.trickster.supper_asked");
         check(Rules.Available(story, epCommit, lateCommit) && !Rules.Available(story, S("konomi.ending_unfinished"), lateCommit),
             "Trk_Konomi_EpilogueCommit failed.");
         check(epCommit.Nodes[0].Choices.Count == 2 && epCommit.Nodes[0].Choices.All(ch => ch.Next != null),
@@ -238,6 +276,14 @@ internal static class KonomiTricksterTests
         check(!Rules.Available(story, epCommit, committedLate), "The late commit replays after a commit.");
         var soft = World(story, 6, "trickster.ever", "konomi.dismissed", "konomi.trickster.terms_settled", "konomi.trickster.declined");
         check(Rules.Available(story, epRefused, soft) && !Rules.Available(story, epCommit, soft), "Trk_Konomi_EpilogueRefused failed.");
+        // Sol INT: settled terms alone are not a romance; the envoy gets the envoy's page.
+        var businessOnly = World(story, 6, "trickster.ever", "konomi.dismissed", "konomi.trickster.terms_settled", "konomi.trickster.debt_paid");
+        check(!businessOnly.Has("konomi.trickster.late_committed") && !Rules.Available(story, epCommit, businessOnly),
+            "Settled terms read as a romance.");
+        var envoyEnd = World(story, 6, "trickster.ever", "konomi.dismissed", "konomi.trickster.terms_settled", "konomi.trickster.supper_asked",
+                             "konomi.trickster.envoy");
+        check(Rules.Available(story, epEnvoy, envoyEnd) && !Rules.Available(story, epCommit, envoyEnd) && !Rules.Available(story, epRefused, envoyEnd),
+            "The envoy gets a romance ending.");
         var distance = S("konomi.ending_distance");
         var endRecess = World(story, 6, "trickster.ever", "konomi.dismissed", "konomi.trickster.recessed", "konomi.trickster.cost.outfoxed",
                               "konomi.trickster.terms_settled", "konomi.private_future", "konomi.committed");
@@ -255,11 +301,10 @@ internal static class KonomiTricksterTests
         check(Rules.Available(story, S("konomi.fate_reply"),
                   World(story, 5, "trickster", "trickster.ever", "konomi.dismissed", "konomi.office_completed", "konomi.post_sent")),
             "A save already inside the post office loses its reply.");
-        check(Rules.Available(story, S("konomi.retained_attempt"),
-                  World(story, 3, "trickster", "trickster.ever", "konomi.retained_dead", "revive.konomi.available", "konomi.return_path_prepared"))
-              && !Rules.Available(story, recalled,
-                  World(story, 3, "trickster", "trickster.ever", "konomi.retained_dead", "revive.konomi.available", "konomi.return_path_prepared")),
-            "A save already inside the map attempt loses it, or gets two recalls.");
+        // Polish 9b: the map attempt (a revive by Trickster power alone) is retired too; a save that prepared it gets the recall.
+        var prepared = World(story, 3, "trickster", "trickster.ever", "konomi.retained_dead", "revive.konomi.available", "konomi.return_path_prepared");
+        check(!Rules.Available(story, S("konomi.retained_attempt"), prepared) && Rules.Available(story, recalled, prepared),
+            "The map attempt still revives her by power alone, or a prepared save has no recall.");
 
         // Reactions: Regill and Kyado only, one per state each; Kyado's road line needs his own canon observation.
         var reactions = story.Scenes.Where(s => s.Relationship == "konomi" && s.Reaction).ToArray();
