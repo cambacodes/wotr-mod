@@ -291,6 +291,36 @@ internal static class TerendelevTricksterTests
         check(Rules.Available(story, S(P + "epilogue.late"), epiLate), "The R2-6 late page does not carry an unanswered first night.");
         check(Rules.Available(story, S(P + "epilogue.rest"), World(story, 6, rested.Flags.ToArray())), "The rest page does not follow the rest granted.");
 
+        // Quality pass Q6.
+        HashSet<string> PagesOf(Scene scene, Snapshot w) { var seen = new HashSet<string>(); Program.Walk(scene, w, (page, _) => seen.Add(page)); return seen; }
+        // CAN: she remembers the Commander at the second death only when the Commander fought there.
+        var withQueen = World(story, 5, "trickster.ever", Returned, "terendelev.started");
+        var leftEarly = World(story, 5, "trickster.ever", Returned, "terendelev.started", "iz.left_early");
+        check(PagesOf(firstNight, withQueen).Contains("iz") && !PagesOf(firstNight, withQueen).Contains("iz_queen")
+              && PagesOf(firstNight, leftEarly).Contains("iz_queen") && !PagesOf(firstNight, leftEarly).Contains("iz"),
+            "She remembers the Commander at a battle the Commander left.");
+        // COX: a Queen brought back on her own route is alive in Terendelev's chapel talk, and still writes.
+        var galScene = S(P + "watch.galfrey");
+        var queenBack = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen", "galfrey.dead", "galfrey.trickster.returned");
+        var queenGone = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen", "galfrey.dead");
+        check(PagesOf(galScene, queenBack).Contains("queen_back") && !PagesOf(galScene, queenBack).Contains("dead_late") && !PagesOf(galScene, queenBack).Contains("carry")
+              && PagesOf(galScene, queenGone).Contains("dead_late") && !PagesOf(galScene, queenGone).Contains("queen_back"),
+            "A returned Queen is mourned as permanently dead.");
+        var galLetter = S(P + "react.galfrey.letter");
+        check(galLetter.ForbidOverrides.TryGetValue("galfrey.dead", out var gback) && gback == "galfrey.trickster.returned"
+              && Rules.Available(story, galLetter, Later(story, World(story, 5, "trickster.ever", Returned, "galfrey.dead", "galfrey.trickster.returned"), 60)),
+            "The Queen's letter ignores her return.");
+        // CAN: Seelah's orphan years were in Solku; nothing puts her childhood in Kenabres.
+        foreach (var s in story.Scenes.Where(x => x.Relationship == "terendelev"))
+            foreach (var node in s.Nodes)
+                check(!node.Text.Contains("street kid in Kenabres", StringComparison.Ordinal) && !node.Text.Contains("night before", StringComparison.Ordinal),
+                    "Invented history or the wrong prologue chronology: " + s.Id + "/" + node.Id);
+        // INT/COX: the reports and visits that assumed an absence or a battle are manual reads, and assume neither.
+        foreach (var id in new[] { "letter.watch_report", "letter.second_report", "watch.at_the_gate", "watch.road", "watch.third_bell" })
+            check(S(P + id).ManualOnly && !Rules.IsMailbagLetter(S(P + id))
+                  && !S(P + id).Nodes.Any(n => n.Text.Contains("departure", StringComparison.Ordinal) || n.Text.Contains("column comes back", StringComparison.Ordinal)),
+                "A Chapter 5 extra is still a rest delivery, or claims an absence: " + id);
+
         Console.WriteLine("PASS: Terendelev Trickster (Trk_Terendelev_*): the square and the Abyss, the bones on the Queen's list and the knight's, "
             + "the search and the gamble, the late page, the claim, the rest and the flinch, the first night and its debt, the release, "
             + "the watch and the turret, the road home to Kenabres, the keepsakes, " + reactions.Length + " reactions and " + pages.Length + " pages.");

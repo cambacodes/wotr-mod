@@ -122,8 +122,8 @@ DERIVED = {
 
 RELATIONSHIP = dict(
     Title="Restitution",
-    Description=("Terendelev healed me on the festival square in Kenabres, the night before the city fell, and promised "
-                 "I would recover. She died that night. Deskari raised what was left of her and set it to guard Iz. The "
+    Description=("Terendelev healed me on the festival square in Kenabres, on the day the city fell, and promised "
+                 "I would recover. She died before the day was out. Deskari raised what was left of her and set it to guard Iz. The "
                  "crusade came to Iz to give her rest. I mean to find out whether rest is all she has left."),
     Objective="Find out what is left of Terendelev",
     Guidance=("On the Trickster path, after the crusade puts down the monster made from her remains at Iz, go to the "
@@ -181,12 +181,12 @@ page(P + "memory.square", "What she promised", [
 {n}"Pry loose the grudging grip of pain," she said, and the pain went where it was told.{/n}''',
         c("[Remember what she said after.]", "promise")),
     nar("promise", '''{n}"You will recover, I promise you that. Tomorrow, come to the cathedral and say that you are expected by Terendelev, protector of Kenabres."{/n}
-{n}There was no tomorrow in Kenabres. That night the ground opened and Deskari came up out of it, and she went up to meet him, and she did not come down. You never went to the cathedral. There was nobody left there to expect you.{/n}''',
+{n}There was no tomorrow in Kenabres. Later that same day the ground opened and Deskari came up out of it, and she went up to meet him, and she did not come down. You never went to the cathedral. There was nobody left there to expect you.{/n}''',
         c('"I still haven\'t been to the cathedral."', "end", flags=(DEBT,)),
         c('[Raise the candle to her, like a cup] "Merriment is one of the best medicines. You said so."', "end", flags=(DEBT,)),
         c("[Say nothing. Pack the bag again.]", "end")),
     nar("end", '''{n}The candle gutters and goes out. In the dark the wound aches, dull and patient, the way it has ached every night since the square: the pain she pried loose, come back, exactly as she warned you it would.{/n}
-{n}She kept every other promise she made that night. She kept the city until it killed her.{/n}''',
+{n}She kept every other promise she made that day. She kept the city until it killed her.{/n}''',
         c("[Lie down. Sleep, if it comes.]")),
 ], requires=("trickster",), forbids=(P + "memory.square", MONSTER_DEAD), delay=24, chapters=(3, 4), kind="memory",
     owner="Memory")
@@ -205,7 +205,7 @@ SCENES.append(scene(P + "voice.where", "Somewhere she cannot leave", "Storytelle
     conv("pain", '''"Yes." {n}He says it simply.{/n} "And under the pain something I like less. Shame. She sounds like someone who has been made to do a thing she would have died rather than do, except that she has already died, and so she was not given the choice." {n}His hand tightens on the cup.{/n} "I have heard a great many dead people, Commander. I have not often heard one ashamed."''',
         c("Continue", "ask")),
     conv("ask", '''"You ask like someone who means to do something about it. May I ask why? Terendelev had a great many admirers. I do not recall that you were one of them."''',
-        c('"She healed me in the festival square, the night before Kenabres fell. She promised I\'d recover."', "square", flags=(VOICE_ASKED,)),
+        c('"She healed me in the festival square, the day Kenabres fell. She promised I\'d recover."', "square", flags=(VOICE_ASKED,)),
         c('[Trust your intuition] "If someone is holding on to her, then she can be taken off them."', "held", flags=(VOICE_ASKED,),
           mythic="Trickster"),
         c('"No reason. Curiosity."', "curious")),
@@ -363,7 +363,7 @@ def bones(host):
         fire("pitch_guess", '''{n}So say the scorch marks on your sheets, and the healers in Drezen, who stopped touching your dressings bare-handed. You never tested it. You do not know how fast it burns, or how much of it a fire would take. It is a guess, and you know it is a guess.{/n}''',
              c("Continue", "hook")),
         voice("hook", '''"And what would you do with it?" {n}The voice is flat with exhaustion.{/n} "Bleed on a pyre, and hope?"''',
-              c('[Trust your intuition] "He holds you by a promise. The promise is his, and my blood burns what\'s his. Burn the hook out of you, and what\'s left can take the rest."', "risk",
+              c('[Trust your intuition] "He holds you by what he put into you: his purpose, grown into your bones. That is his, and my blood burns what\'s his. Burn the hook out of you, and what\'s left of you can do the rest."', "risk",
                 mythic="Trickster"),
               c('"My blood for a body. If it burns what\'s his, whatever it leaves is yours. Make something of it."', "risk")),
         voice("risk", '''"And if it does not stop at what is his?" {n}The fire is very still.{/n} "If it burns me too, then I was his all through, and I would rather know it. And if it does not, you would be giving me flesh out of a wound the Abyss put in you. I might come out of that fire living. I might come out of it as another thing like the one you killed, with your blood in it instead of his."''',
@@ -376,7 +376,7 @@ def bones(host):
               c("Continue", "flinch_host")),
         conv("flinch_host", h["fail_line"], c(h["fail_exit"])),
         fire("cut", '''{n}You take out your knife. The wound has never closed; it has only ever been persuaded to stop. You unpersuade it. The blade goes in along the old seam, and the pain that Terendelev once pried loose comes back all at once, as though it had been waiting at the door.{/n}
-{n}You hold your arm out over the fire and let the blood run down your wrist.{/n}''',
+{n}You go down on your knees at the edge of the pyre and lean out over it, the cut side down, and let the blood run out from under your ribs into the fire.{/n}''',
              c("Continue", "measured", requires=(BLOOD_TESTED,)),
              c("Continue", "unmeasured", forbids=(BLOOD_TESTED,))),
         fire("measured", '''{n}You watched the vrock's hide in the Abyss and you know how fast it burns. So you count. You give the bones what they need to burn clean and not a drop more, and you keep your other hand pressed hard below the cut, the way a field surgeon taught you, so the blood goes where you send it.{/n}''',
@@ -452,7 +452,7 @@ page(P + "late.the_wound_calls", "The fire at Iz", [
 {n}The bones are still burning. Lower now: a long bed of white ash with the skull lying in it like a stone in a stream, and a small, stubborn flame at the heart of it that has not gone out.{/n}''',
         c("[Go to the skull.]", "voice")),
     te("voice", '''{n}This time you do not need to look. Whatever breathes in the skull breathes very slowly, and it has been listening for hoofbeats.{/n} "Someone came." {n}The voice is thinner than smoke.{/n} "Nobody comes to a pyre once it is lit. It is not done. Who are you, and what do you want?"''',
-        c('"The wounded one from the festival square. You healed me, the night before Kenabres fell. I\'ve come to ask you to come back."', "ask",
+        c('"The wounded one from the festival square. You healed me, the day Kenabres fell. I\'ve come to ask you to come back."', "ask",
           requires=(LEFT_EARLY,)),
         c('"The one who tried to claim you. I\'ve come to ask properly, this time."', "ask", requires=(REFUSED_CLAIM,), forbids=(LEFT_EARLY,)),
         c('"The one who lost nerve. I\'ve come to finish it, if you\'ll still have it."', "ask", requires=(FLINCHED,),
@@ -468,8 +468,8 @@ page(P + "late.the_wound_calls", "The fire at Iz", [
         c('[Let her rest] "Then rest. I won\'t make you."', "rest", flags=(RESTED, CLOSED))),
     te("choose", '''"Asking. Yes. You are." {n}The flame gathers itself.{/n} "Very well, wounded one. I have been cold for three days, listening for you. Open it."''',
         c("[Open the wound over the ash.]", "cut", mythic="Trickster")),
-    nar("cut", '''{n}The wound is already open. You open it further. The blood runs down your wrist onto the ash, and where it finds what is left of the ravener it burns white, and where it finds the small flame at the heart of the skull, the flame drinks.{/n}
-{n}It takes longer than you would have liked. You are on your knees in the ash by the end of it, and a woman is on her knees in front of you, naked and grey with cinders, holding your wrist in both hands as though it were the only warm thing in the world.{/n}''',
+    nar("cut", '''{n}The wound is already open. You open it further, and kneel over the ash with the cut side down, and the blood runs out from under your ribs onto it, and where it finds what is left of the ravener it burns white, and where it finds the small flame at the heart of the skull, the flame drinks.{/n}
+{n}It takes longer than you would have liked. You are on your knees in the ash by the end of it, and a woman is on her knees in front of you, naked and grey with cinders, holding your hand in both of hers as though it were the only warm thing in the world.{/n}''',
         c("Continue", "after")),
     te("after", '''"Cold," {n}she says, amazed, and then, looking at the blood on her own palm where the ash has cut it:{/n} "Red." {n}She tries to gather herself inward, the way a dragon does, and nothing comes; she does not seem surprised. She only looks at the ash where the wings would have been.{/n} "They are gone. I knew they would be. It does not matter. I have hands. Give me your cloak, and let us leave this place before it remembers us."''',
         c('[Wrap her in your cloak.] "Let\'s go home."', flags=(RETURNED, STARTED, WOUND_OPEN, GROUNDED, LATE))),
@@ -482,7 +482,7 @@ page(P + "late.the_wound_calls", "The fire at Iz", [
 # --- Reactions: companions and NPCs with a real stake in her ------------------------------------------------------------
 
 SCENES.append(reaction("Seelah", P + "react.seelah.watch", (P + "night.seen",),
-    '''{n}Seelah is sitting on the edge of the practice ring with a whetstone she is not using.{/n} "So. The north turret." {n}She grins, then doesn't.{/n} "When I was a street kid in Kenabres I used to work the festival crowds. She caught my wrist once, in her human shape, with my hand in a merchant's purse. She didn't call the watch. She asked me what I was going to buy with it, and when I said bread she laughed like bells and bought me the bread herself." {n}She turns the stone over.{/n} "The sentries say she came down off that turret this morning laughing like that again. Nobody else in Drezen had ever heard it. I had." {n}Her voice roughens.{/n} "Be good to her, Commander. She's been somebody's weapon. Don't let her be anybody's again. Not even yours."''',
+    '''{n}Seelah is sitting on the edge of the practice ring with a whetstone she is not using.{/n} "So. The north turret." {n}She grins, then doesn't.{/n} "My first festival in Kenabres, when I was still new to the order. Old habits: I caught my own hand halfway into a merchant's purse, and when I looked round she was standing right behind me in her human shape. She didn't call the watch. She asked whether the Inheritor paid her paladins so badly, and when I said yes, she laughed like bells and bought me a pie." {n}She turns the stone over.{/n} "The sentries say she came down off that turret this morning laughing like that again. Nobody else in Drezen had ever heard it. I had." {n}Her voice roughens.{/n} "Be good to her, Commander. She's been somebody's weapon. Don't let her be anybody's again. Not even yours."''',
     answer_list=SEELAH_HUB, relationship=REL, forbids=("seelah_dead", "seelah_gone", CLOSED),
     entry='"You look like you\'ve heard something, Seelah."', chapter=5, last=5, delay=12, portrait="Seelah"))
 
@@ -509,7 +509,9 @@ SCENES.append(reaction("Galfrey", P + "react.galfrey.letter", (RETURNED,),
 "She was our protector and our friend. See that you are hers."
 {n}It is signed with the one word, Galfrey, and nothing else: no title.{/n}''',
     remote=True, relationship=REL, forbids=("galfrey.dead", "galfrey.killed_by_commander", CLOSED),
-    title="A letter under the royal seal", chapter=5, last=5, delay=48, portrait="Galfrey", Kind="letter"))
+    ForbidOverrides={"galfrey.dead": "galfrey.trickster.returned"},     # Q6 (COX): a Queen brought back writes too
+    title="A letter under the royal seal", chapter=5, last=5, delay=48, portrait="Galfrey", Kind="letter",
+    ManualOnly=True))                                                    # Q6 (COX): a manual read, not a rest delivery
 
 
 # --- Epilogue pages (ordered siblings; read-only) ------------------------------------------------------------------------

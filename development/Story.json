@@ -208022,7 +208022,8 @@
         "targona.trickster.primed",
         "targona.free",
         "targona.dead_lab",
-        "targona.condemned"
+        "targona.condemned",
+        "chapter_later"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -208151,7 +208152,157 @@
         "targona.free",
         "targona.dead_lab",
         "targona.condemned",
-        "trickster.umd_tier2"
+        "trickster.umd_tier2",
+        "chapter_later"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "targona",
+      "AnswerLists": [
+        "2a75fbc8e86fd514e82117c99fc9e528"
+      ],
+      "EntryMythic": "PlayerIsTrickster"
+    },
+    {
+      "Id": "targona.trickster.dead.setup_sleep",
+      "Title": "Her sleep",
+      "Owner": "Targona",
+      "MinChapter": 3,
+      "MaxChapter": 3,
+      "Entry": "\"Before anything else. Look at me.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Behind the barrier the angel lifts her head. The black wing twitches, as if something in the room has startled it.{/n}\n\"You... carry something of my brother. I can feel it, like a lamp left burning in another room. Under Kenabres, in the rock where he died. It went into you.\" {n}Her voice does not break, but it thins.{/n} \"Lariel is gone. I felt him go.\"",
+          "Choices": [
+            {
+              "Text": "\"The Echo left you to die among your dead. How are you still alive?\"",
+              "Next": "sleep",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Nothing. Forget I spoke.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "sleep",
+          "Speaker": "Targona",
+          "Text": "\"Because she wanted me alive.\" {n}She does not say the name. She looks past you at the purple fire that rings her in.{/n}\n\"Areelu found me on that field with my wing torn off and brought me here from the brink of death. She put me to sleep in this ring. A healing sleep, she said, so that her wing could settle into me. I did not breathe in it, I think. I did not dream anything of my own. I have been in it until you came.\"\n{n}The black wing draws tight against her back.{/n} \"It is still there. I can feel it under me, like cold water waiting for me to lie back down.\"",
+          "Choices": [
+            {
+              "Text": "[Keep her sleep for her] \"Then lie back down in it, if you have to. Listen.\"",
+              "Next": "plan",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "\"Then we'll get you out of it.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "plan",
+          "Speaker": "Narrator",
+          "Text": "{n}You tell her quietly, with your back to your company.{/n}\n{n}If this ends in blood, it ends in real blood. You will not pull a single blow, because they would see it, and so would she. When she falls, she falls at the ring, and she drags herself back over its line into Areelu's sleep, the way it took her the first time. Nothing living can follow her in there; Areelu built the fire to keep the living out. Your company will see an angel die and a ring of fire that will not give up her body, and they will leave her to it, because you will tell them to.{/n}\n{n}The Suture's key stays in your pack. In three nights you come back down alone, break the ring with it, and wake her.{/n}\n{n}\"I can't promise the sleep will hold you twice,\" you tell her. \"It held you once, from further down than I'll put you.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "resist",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "resist",
+          "Speaker": "Targona",
+          "Text": "\"No.\" {n}She says it at once, and then she makes herself look at the fire properly.{/n}\n\"You are asking me to lie down again in the thing she made of me. In a room where even the goddess cannot hear me. I prayed every hour I was awake in here to be let out of it, and you want me to crawl back in with my own hands.\"\n\"And my healers in Heaven will mourn me. The Hand, who has already buried my brother. Everyone who ever prayed beside me.\" {n}The black wing shivers.{/n} \"Tell me why I should do that.\"",
+          "Choices": [
+            {
+              "Text": "[The wounded] \"Because Drezen's infirmary loses a man every hour, and none of them will ever reach Heaven's healers. They could reach you.\"",
+              "Next": "chooses",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[The truth] \"Because I want you alive. That's all. I won't dress it up.\"",
+              "Next": "chooses",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Then I won't ask it of you.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "chooses",
+          "Speaker": "Targona",
+          "Text": "{n}She is quiet. Somewhere below, in Areelu's cells, something is screaming, and she turns her head towards it the way a healer does, without thinking.{/n}\n\"I believe this is a test for me,\" she says at last. \"I did not think I would be the one setting it.\" {n}She looks back at you.{/n} \"If I wake, I will not hide. I will go to the Hand first, and to my healers, and I will tell them what we did and why, and let them judge it, whatever it costs you.\"\n\"And if I do not wake, do not come back for the body. Leave me in her fire. I will have chosen it.\"\n{n}She lowers her head, as she did before, and waits for you to choose.{/n}",
+          "Choices": [
+            {
+              "Text": "[Accept her price] \"Tell them everything.\"",
+              "Next": null,
+              "Set": [
+                "targona.trickster.primed",
+                "targona.trickster.told_in_lab",
+                "targona.trickster.cost.she_told_heaven",
+                "targona.trickster.cost.her_sleep"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "targona.abyss_key_held"
+      ],
+      "Forbids": [
+        "targona.trickster.primed",
+        "targona.free",
+        "targona.dead_lab",
+        "targona.condemned"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -208225,7 +208376,8 @@
       ],
       "Forbids": [
         "targona.trickster.primed",
-        "targona.trickster.returned"
+        "targona.trickster.returned",
+        "chapter_later"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -208326,7 +208478,8 @@
       ],
       "Forbids": [
         "targona.trickster.primed",
-        "targona.trickster.returned"
+        "targona.trickster.returned",
+        "chapter_later"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -208348,7 +208501,7 @@
       "Title": "Read back in",
       "Owner": "Targona",
       "MinChapter": 3,
-      "MaxChapter": 5,
+      "MaxChapter": 3,
       "Entry": "",
       "Nodes": [
         {
@@ -208363,7 +208516,8 @@
               "Requires": [],
               "Forbids": [
                 "targona.trickster.cost.raised_the_hard_way",
-                "targona.trickster.cost.raised_openly"
+                "targona.trickster.cost.raised_openly",
+                "targona.trickster.primed"
               ],
               "Abort": false
             },
@@ -208375,7 +208529,8 @@
                 "targona.trickster.cost.raised_openly"
               ],
               "Forbids": [
-                "targona.trickster.cost.raised_the_hard_way"
+                "targona.trickster.cost.raised_the_hard_way",
+                "targona.trickster.primed"
               ],
               "Abort": false
             },
@@ -208386,6 +208541,16 @@
               "Requires": [
                 "targona.trickster.cost.raised_the_hard_way"
               ],
+              "Forbids": [
+                "targona.trickster.primed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "ring",
+              "Set": [],
+              "Requires": [],
               "Forbids": [],
               "Abort": false
             }
@@ -208512,6 +208677,79 @@
             }
           ],
           "Portrait": "Targona"
+        },
+        {
+          "Id": "ring",
+          "Speaker": "Narrator",
+          "Text": "{n}The laboratory. You have lived it again every night since:{/n}\n{n}You give the word, and she keeps her promise. She fights with everything she has and Iomedae's name in her mouth, and you do not pull a single blow. She falls at the edge of the ring. Before anyone reaches her she drags herself back over the purple line on her elbows, and the fire closes over her, and her breath stops the way it stopped for all those months before you came.{/n}\n{n}Your company sees an angel die. The first man who reaches in to carry her out is thrown back across the floor with his gauntlet smoking. \"Leave her,\" you say. \"Areelu's fire keeps its dead.\" Nobody argues. The Suture's key stays in your pack.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "down",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "down",
+          "Speaker": "Narrator",
+          "Text": "{n}On the third night you go back down alone, with a lantern and the key, and nobody asks where.{/n}\n{n}She lies inside the ring as you first found her, face tranquil, chest still. Where your company's blows went in, the skin has closed, the way the seams of the black wing closed the first time. The wing has shifted a finger's width from where it fell. Nothing else in the room has moved.{/n}\n{n}The key breaks the ring. The fire goes out. For three breaths nothing happens, and you have time to think of what you will say at her pyre. Then the angel awakens, as she did the first time you broke her out of it, and her first breath is a sob.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "woken",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "woken",
+          "Speaker": "Targona",
+          "Text": "\"It held.\" {n}She says it to the ceiling, not to you.{/n}\n\"I dreamed her dreams again. Hers, not mine.\" {n}She looks down at the black wing, which has folded itself against her side before she told it to.{/n} \"And it has had three more nights to settle into me. I can feel it listening now.\"\n{n}She gets up on her own, and will not take your arm. At the stair she stops.{/n} \"Take me to your wounded, Commander. I lay down in her fire for them. I would like them to have the worth of it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "news_ring",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "news_ring",
+          "Speaker": "Narrator",
+          "Text": "{n}She goes to the field infirmary behind the quartermaster's stores before dawn and asks for water and a basin, and by first light she is washing wounds.{/n}\n{n}By noon Heaven's envoy to the crusade has heard it from the Commander's own officers: the angel they watched die in Areelu's laboratory is changing bandages in Drezen. Half of them saw the fight. None of them can say how. The envoy withholds his blessing from the next muster until someone gives him an answer he can carry back to Heaven.{/n}",
+          "Choices": [
+            {
+              "Text": "[Go to her] Go down to the infirmary.",
+              "Next": null,
+              "Set": [
+                "targona.trickster.returned",
+                "targona.started",
+                "targona.trickster.cost.struck_down",
+                "targona.trickster.cost.left_for_dead"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -150
+              }
+            }
+          ],
+          "Portrait": "Targona"
         }
       ],
       "Requires": [
@@ -208530,7 +208768,111 @@
         "2570015799edf594daf2f076f2f975d8"
       ],
       "Chapters": [
-        3,
+        3
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "targona.dead_lab",
+      "Kind": "visit",
+      "Sender": "Targona"
+    },
+    {
+      "Id": "targona.trickster.dead.long_sleep",
+      "Title": "Months in her fire",
+      "Owner": "Targona",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}You meant to go back down on the third night. The Abyss took you first, and the key to Areelu's ring went into the Abyss with you, in your pack, and came out again with you, months later.{/n}\n{n}Nobody has been down to the laboratory since. The reports on your table still list her among the dead, and the one officer who asked what became of the body was told that Areelu's fire keeps its own. The ruin has had months to fill up with what crawls out of the Wound.{/n}",
+          "Choices": [
+            {
+              "Text": "[Go back down for her] \"Twelve volunteers to the ruin gate. I go in alone.\"",
+              "Next": "ring",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -300
+              }
+            },
+            {
+              "Text": "\"Not yet.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "ring",
+          "Speaker": "Narrator",
+          "Text": "{n}The volunteers hold the ruin gate for a night and a day and lose two men to what comes up the stair. You go down past them alone, with a lantern and the Suture's key.{/n}\n{n}The purple ring is burning as it burned the day you left it, and she lies inside it as you first found her, silver hair, one wing white and one wing black, her face tranquil, her chest still. Months. The wounds your company gave her are closed, as the wing's seams closed the first time. The black wing is not folded the way it fell. It has moved, in all those months, on its own.{/n}\n{n}The key breaks the ring the way it would have broken it the first day. The fire goes out. For three breaths nothing happens, and then the angel awakens, as she did the first time, and her first breath is a sob.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "wake",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "wake",
+          "Speaker": "Targona",
+          "Text": "\"How long?\" {n}You tell her. She lies still and takes it in.{/n}\n\"I dreamed her dreams the whole time. Hers, not mine. Her grand experiment, her second opening, over and over.\" {n}She turns her head and looks at the black wing, which has folded itself against her side before she asked it to.{/n}\n\"It knows me better than it did. I can feel it listening to me.\" {n}She gets up on her own, and will not take your arm.{/n} \"Two men at the gate, you said. Then take me to the infirmary, Commander, and let me earn them.\"",
+          "Choices": [
+            {
+              "Text": "[Walk her up out of the ruin.]",
+              "Next": null,
+              "Set": [
+                "targona.trickster.returned",
+                "targona.started",
+                "targona.trickster.cost.struck_down",
+                "targona.trickster.cost.left_for_dead",
+                "targona.trickster.cost.slept_through_the_abyss"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -150
+              }
+            }
+          ],
+          "Portrait": "Targona"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "targona.trickster.primed",
+        "targona.trickster.cost.her_sleep",
+        "targona.dead_lab",
+        "targona.dead_lab.latched"
+      ],
+      "Forbids": [
+        "targona.trickster.returned"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "targona",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
         5
       ],
       "Remote": true,
@@ -208578,7 +208920,7 @@
         {
           "Id": "pikeman",
           "Speaker": "Targona",
-          "Text": "\"Commander. There was a pikeman in your infirmary last night with a fever that would not break. It broke at dawn. I thought you should know that first.\"\n{n}She nods at the two new cots.{/n} \"Those men went to the wall unblessed because of me. Heaven's envoy will not bless what he cannot explain, and he cannot explain me. I have told them I am sorry. They did not know what for.\"\n{n}The black wing folds against her back as if it too is listening.{/n}\n{n}She sets the basin down with both hands. It is only half full, and still it shakes.{/n}\n\"I remember your face when you gave the word. I remember the laboratory, and Areelu's glass, and the floor. Then nothing, and in the nothing, a light I made with my own hands, a long time ago, for my brother. I went towards it. Then I was breathing, and every breath hurt.\" {n}She flexes her fingers.{/n} \"The chaplains say resurrection gives the body back whole. It does. It does not give back the floor of that laboratory. I have lain on it every night since.\"\n\"I went to the Hand's chaplain before I came here, as I said I would. I told him what was done, and by whom. He let the candle burn down a finger's width before he spoke. Then he blessed me, and not you.\"",
+          "Text": "\"Commander. There was a pikeman in your infirmary last night with a fever that would not break. It broke at dawn. I thought you should know that first.\"\n{n}She nods at the two new cots.{/n} \"Those men went to the wall unblessed because of me. Heaven's envoy will not bless what he cannot explain, and he cannot explain me. I have told them I am sorry. They did not know what for.\"\n{n}The black wing folds against her back as if it too is listening.{/n}\n{n}She sets the basin down with both hands. It is only half full, and still it shakes.{/n}\n\"I remember your face when you gave the word. I remember every blow, and the floor, and the line of her fire under my hands. Then her sleep, cold, the way it was the first time, with her dreams in it instead of mine. Then your lantern.\" {n}She flexes her fingers.{/n} \"The wounds closed in there. The wing settled a little further into me. I still lie down in that ring every night when I close my eyes.\"\n\"I went to the Hand's chaplain before I came here, as I said I would. I told him what was done, and by whom. He let the candle burn down a finger's width before he spoke. Then he blessed me, and not you.\"",
           "Choices": [
             {
               "Text": "[Tell her the truth] \"I struck you. I'd rather you hear it from me than from Heaven.\"",
@@ -208610,7 +208952,7 @@
         {
           "Id": "pikeman_late",
           "Speaker": "Targona",
-          "Text": "\"Commander. There was a pikeman in your infirmary last night with a fever that would not break. It broke at dawn. I thought you should know that first.\"\n{n}She nods at the two new cots.{/n} \"Those men went to the wall unblessed because of me. Heaven's envoy will not bless what he cannot explain, and he cannot explain me. I have told them I am sorry. They did not know what for.\"\n{n}The black wing folds against her back as if it too is listening.{/n}\n{n}She sets the basin down with both hands. It is only half full, and still it shakes.{/n}\n\"I remember your face when you gave the word. I remember the laboratory, and Areelu's glass, and the floor. Then nothing, and in the nothing, a light I made with my own hands, a long time ago, for my brother. I went towards it. Then I was breathing, and every breath hurt.\" {n}She flexes her fingers.{/n} \"The chaplains say resurrection gives the body back whole. It does. It does not give back the floor of that laboratory. I have lain on it every night since.\"\n\"Before I would let them carry me to the cots, I sent for the Hand's chaplain. Nobody asked me to. I had not promised anyone. But I will not be raised on a lie, and I told him what was done, and by whom. He let the candle burn down a finger's width before he spoke. Then he blessed me, and not you.\"",
+          "Text": "\"Commander. There was a pikeman in your infirmary last night with a fever that would not break. It broke at dawn. I thought you should know that first.\"\n{n}She nods at the two new cots.{/n} \"Those men went to the wall unblessed because of me. Heaven's envoy will not bless what he cannot explain, and he cannot explain me. I have told them I am sorry. They did not know what for.\"\n{n}The black wing folds against her back as if it too is listening.{/n}\n{n}She sets the basin down with both hands. It is only half full, and still it shakes.{/n}\n\"I remember your face when you gave the word. I remember every blow, and the floor, and the line of her fire under my hands. Then her sleep, cold, the way it was the first time, with her dreams in it instead of mine. Then your lantern.\" {n}She flexes her fingers.{/n} \"The wounds closed in there. The wing settled a little further into me. I still lie down in that ring every night when I close my eyes.\"\n\"Before I would let them carry me to the cots, I sent for the Hand's chaplain. Nobody asked me to. I had not promised anyone. But I will not live on a lie, and I told him what was done, and by whom. He let the candle burn down a finger's width before he spoke. Then he blessed me, and not you.\"",
           "Choices": [
             {
               "Text": "[Tell her the truth] \"I struck you. I'd rather you hear it from me than from Heaven.\"",
@@ -209409,7 +209751,7 @@
         {
           "Id": "start",
           "Speaker": "Targona",
-          "Text": "{n}The ward is quiet. The sergeant has gone back to his company on the east wall. Targona is folding bandages, and she does not stop when you come in.{/n}\n\"Ask, then. But first promise me something. My brother's light, the part of him that is in you: do not spend it on death again. Not unnoticed, not for me, not for anyone. If I fall again, let me go. My brother went. I would rather be where he is than be the reason you keep cheating.\"",
+          "Text": "{n}The ward is quiet. The sergeant has gone back to his company on the east wall. Targona is folding bandages, and she does not stop when you come in.{/n}\n\"Ask, then. But first promise me something. My brother's light, the part of him that is in you: do not spend it on cheating death. Not unnoticed, not for me, not for anyone. If I fall, let me go. My brother went. I would rather be where he is than be the reason you keep cheating.\"",
           "Choices": [
             {
               "Text": "[Promise, and ask her] \"I promise. Stay with me.\"",
@@ -209556,17 +209898,19 @@
               "AnyGroups": []
             },
             {
-              "Text": "She came back the hard way, through the chapel and the crusade's last scroll of resurrection, and it took her a year to sleep through a night again. Four volunteers went into Areelu's ruin for her body. She learned their names, and tended the one who lost his arm there until the day he died, old, in his bed.",
+              "Text": "She never again slept where a purple light could reach her. She kept a lamp of plain yellow oil burning by her bed, and the black wing, which had settled into her in Areelu's sleep, learned to fold itself round her before she woke.",
               "Requires": [
-                "targona.trickster.cost.raised_the_hard_way"
+                "targona.trickster.cost.her_sleep"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "targona.trickster.cost.slept_through_the_abyss"
+              ],
               "AnyGroups": []
             },
             {
-              "Text": "She came back through the chaplains' crypt, on the scroll the crusade owed Heaven as its tithe. Heaven's envoy never blessed another muster of the Commander's, and Targona spent a year of feast days in his anteroom, asking him to, until he wrote her a letter she did not show anyone.",
+              "Text": "She had lain in Areelu's sleep through all the Commander's months in the Abyss, and dreamed the Architect's dreams the whole time. She learned the names of the two men who died holding the ruin gate for her, and prayed for them at every compline, and would not let anyone call the black wing hers, though it folded to her now like a hand.",
               "Requires": [
-                "targona.trickster.cost.raised_from_the_crypt"
+                "targona.trickster.cost.slept_through_the_abyss"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -209658,17 +210002,19 @@
               "AnyGroups": []
             },
             {
-              "Text": "She came back the hard way, through the chapel and the crusade's last scroll of resurrection, and it took her a year to sleep through a night again. Four volunteers went into Areelu's ruin for her body. She learned their names, and tended the one who lost his arm there until the day he died, old, in his bed.",
+              "Text": "She never again slept where a purple light could reach her. She kept a lamp of plain yellow oil burning by her bed, and the black wing, which had settled into her in Areelu's sleep, learned to fold itself round her before she woke.",
               "Requires": [
-                "targona.trickster.cost.raised_the_hard_way"
+                "targona.trickster.cost.her_sleep"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "targona.trickster.cost.slept_through_the_abyss"
+              ],
               "AnyGroups": []
             },
             {
-              "Text": "She came back through the chaplains' crypt, on the scroll the crusade owed Heaven as its tithe. Heaven's envoy never blessed another muster of the Commander's, and Targona spent a year of feast days in his anteroom, asking him to, until he wrote her a letter she did not show anyone.",
+              "Text": "She had lain in Areelu's sleep through all the Commander's months in the Abyss, and dreamed the Architect's dreams the whole time. She learned the names of the two men who died holding the ruin gate for her, and prayed for them at every compline, and would not let anyone call the black wing hers, though it folded to her now like a hand.",
               "Requires": [
-                "targona.trickster.cost.raised_from_the_crypt"
+                "targona.trickster.cost.slept_through_the_abyss"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -209778,17 +210124,19 @@
               "AnyGroups": []
             },
             {
-              "Text": "She came back the hard way, through the chapel and the crusade's last scroll of resurrection, and it took her a year to sleep through a night again. Four volunteers went into Areelu's ruin for her body. She learned their names, and tended the one who lost his arm there until the day he died, old, in his bed.",
+              "Text": "She never again slept where a purple light could reach her. She kept a lamp of plain yellow oil burning by her bed, and the black wing, which had settled into her in Areelu's sleep, learned to fold itself round her before she woke.",
               "Requires": [
-                "targona.trickster.cost.raised_the_hard_way"
+                "targona.trickster.cost.her_sleep"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "targona.trickster.cost.slept_through_the_abyss"
+              ],
               "AnyGroups": []
             },
             {
-              "Text": "She came back through the chaplains' crypt, on the scroll the crusade owed Heaven as its tithe. Heaven's envoy never blessed another muster of the Commander's, and Targona spent a year of feast days in his anteroom, asking him to, until he wrote her a letter she did not show anyone.",
+              "Text": "She had lain in Areelu's sleep through all the Commander's months in the Abyss, and dreamed the Architect's dreams the whole time. She learned the names of the two men who died holding the ruin gate for her, and prayed for them at every compline, and would not let anyone call the black wing hers, though it folded to her now like a hand.",
               "Requires": [
-                "targona.trickster.cost.raised_from_the_crypt"
+                "targona.trickster.cost.slept_through_the_abyss"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -209880,17 +210228,19 @@
               "AnyGroups": []
             },
             {
-              "Text": "She came back the hard way, through the chapel and the crusade's last scroll of resurrection, and it took her a year to sleep through a night again. Four volunteers went into Areelu's ruin for her body. She learned their names, and tended the one who lost his arm there until the day he died, old, in his bed.",
+              "Text": "She never again slept where a purple light could reach her. She kept a lamp of plain yellow oil burning by her bed, and the black wing, which had settled into her in Areelu's sleep, learned to fold itself round her before she woke.",
               "Requires": [
-                "targona.trickster.cost.raised_the_hard_way"
+                "targona.trickster.cost.her_sleep"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "targona.trickster.cost.slept_through_the_abyss"
+              ],
               "AnyGroups": []
             },
             {
-              "Text": "She came back through the chaplains' crypt, on the scroll the crusade owed Heaven as its tithe. Heaven's envoy never blessed another muster of the Commander's, and Targona spent a year of feast days in his anteroom, asking him to, until he wrote her a letter she did not show anyone.",
+              "Text": "She had lain in Areelu's sleep through all the Commander's months in the Abyss, and dreamed the Architect's dreams the whole time. She learned the names of the two men who died holding the ruin gate for her, and prayed for them at every compline, and would not let anyone call the black wing hers, though it folded to her now like a hand.",
               "Requires": [
-                "targona.trickster.cost.raised_from_the_crypt"
+                "targona.trickster.cost.slept_through_the_abyss"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -210010,8 +210360,8 @@
       "RequiresAnyGroups": [
         [
           "targona.committed",
-          "targona.trickster.late_committed",
-          "targona.trickster.parent_romanced"
+          "targona.trickster.parent_romanced",
+          "targona.trickster.late_committed"
         ]
       ]
     },
@@ -210209,7 +210559,7 @@
         {
           "Id": "start",
           "Speaker": "Ember",
-          "Text": "\"I've been rolling bandages for the angel with the sad wing. She showed me how. You roll them tight so they don't come undone in the bag.\"\n{n}Ember holds up a finished roll, a little lopsided, and looks at it with great seriousness.{/n}\n\"She says she was dead for a while. She doesn't seem to mind talking about it. She minds a lot about the bandages being tight.\"",
+          "Text": "\"I've been rolling bandages for the angel with the sad wing. She showed me how. You roll them tight so they don't come undone in the bag.\"\n{n}Ember holds up a finished roll, a little lopsided, and looks at it with great seriousness.{/n}\n\"She says she was asleep in a demon's fire and everybody thought she was dead. She doesn't seem to mind talking about it. She minds a lot about the bandages being tight.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -276411,7 +276761,7 @@
               "Next": "body_open",
               "Set": [],
               "Requires": [
-                "delamere.tomb_visited"
+                "delamere.tomb_opened"
               ],
               "Forbids": [],
               "Abort": false
@@ -276422,7 +276772,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "delamere.tomb_visited"
+                "delamere.tomb_opened"
               ],
               "Abort": false
             }
@@ -276432,7 +276782,7 @@
         {
           "Id": "body_open",
           "Speaker": "Narrator",
-          "Text": "{n}The lid stands aside where you left it. She lies as you last saw her: a tall woman gone to leather and bone, a dark mane of hair spread on the stone, the stag-hide breastplate laced over her ribs. Above her head the horn hangs on its iron peg, exactly where it has hung since the Kellids closed her in.{/n}",
+          "Text": "{n}You have looked on her once before. You set your shoulder to the lid until the whole of her lies open to the light, as you last saw her: a tall woman gone to leather and bone, a dark mane of hair spread on the stone, old grave-leathers laced over her ribs. Above her head the horn hangs on its iron peg, exactly where it has hung since the Kellids closed her in.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -276786,7 +277136,7 @@
         {
           "Id": "rise",
           "Speaker": "Narrator",
-          "Text": "{n}It is not how the dead get up in stories. There is no green fire in her eyes, no rattle of bone on stone. There is breath: one long, dragging breath, as if the whole crypt had been holding it for her. Her ribs lift under the stag-hide and do not fall back.{/n}\n{n}The leather of her face goes dark and soft, and then it is skin, grey with dust, and then it is not grey. Her eyes open. They are brown, and human, and they are looking straight at you over the lip of the stone.{/n}",
+          "Text": "{n}It is not how the dead get up in stories. There is no green fire in her eyes, no rattle of bone on stone. There is breath: one long, dragging breath, as if the whole crypt had been holding it for her. Her ribs lift under the old leather and do not fall back.{/n}\n{n}The leather of her face goes dark and soft, and then it is skin, grey with dust, and then it is not grey. Her eyes open. They are brown, and human, and they are looking straight at you over the lip of the stone.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -277211,7 +277561,7 @@
         {
           "Id": "cut",
           "Speaker": "Delamere",
-          "Text": "{n}She cuts the arrow out of you with the same knife, quickly and without apology, the way you would cut a barb out of a hound. The head has gone into the bone. When it comes free you hear it grate.{/n}\n\"You will walk crooked, stag. For the rest of your life.\" {n}She says it without pity, as a fact about weather.{/n} \"That is what a good run costs. Every beast I ever took paid more.\"",
+          "Text": "{n}She cuts the arrow out of you with the same knife, quickly and without apology, the way you would cut a barb out of a hound. The head has gone into the bone. When it comes free you hear it grate.{/n}\n\"You will walk crooked, stag.\" {n}She says it without pity, as a fact about weather.{/n} \"Your city priests can sing a leg straight, I am told. Let them, and you are no stag of mine, and the hunt is over, and I will know it the first time I see you run. Keep my mark, and I keep my day. That is what a good run costs. Every beast I ever took paid more.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -277350,7 +277700,7 @@
               "Next": "body_open",
               "Set": [],
               "Requires": [
-                "delamere.tomb_visited"
+                "delamere.tomb_opened"
               ],
               "Forbids": [],
               "Abort": false
@@ -277361,7 +277711,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "delamere.tomb_visited"
+                "delamere.tomb_opened"
               ],
               "Abort": false
             }
@@ -277371,7 +277721,7 @@
         {
           "Id": "body_open",
           "Speaker": "Narrator",
-          "Text": "{n}The lid stands aside where you left it. She lies as you last saw her: a tall woman gone to leather and bone, a dark mane of hair spread on the stone, the stag-hide breastplate laced over her ribs. Above her head the horn hangs on its iron peg, exactly where it has hung since the Kellids closed her in.{/n}",
+          "Text": "{n}You have looked on her once before. You set your shoulder to the lid until the whole of her lies open to the light, as you last saw her: a tall woman gone to leather and bone, a dark mane of hair spread on the stone, old grave-leathers laced over her ribs. Above her head the horn hangs on its iron peg, exactly where it has hung since the Kellids closed her in.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -277709,7 +278059,7 @@
         {
           "Id": "rise",
           "Speaker": "Narrator",
-          "Text": "{n}It is not how the dead get up in stories. There is no green fire in her eyes, no rattle of bone on stone. There is breath: one long, dragging breath, as if the whole crypt had been holding it for her. Her ribs lift under the stag-hide and do not fall back.{/n}\n{n}The leather of her face goes dark and soft, and then it is skin, grey with dust, and then it is not grey. Her eyes open. They are brown, and human, and they are looking straight at you over the lip of the stone.{/n}",
+          "Text": "{n}It is not how the dead get up in stories. There is no green fire in her eyes, no rattle of bone on stone. There is breath: one long, dragging breath, as if the whole crypt had been holding it for her. Her ribs lift under the old leather and do not fall back.{/n}\n{n}The leather of her face goes dark and soft, and then it is skin, grey with dust, and then it is not grey. Her eyes open. They are brown, and human, and they are looking straight at you over the lip of the stone.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -278134,7 +278484,7 @@
         {
           "Id": "cut",
           "Speaker": "Delamere",
-          "Text": "{n}She cuts the arrow out of you with the same knife, quickly and without apology, the way you would cut a barb out of a hound. The head has gone into the bone. When it comes free you hear it grate.{/n}\n\"You will walk crooked, stag. For the rest of your life.\" {n}She says it without pity, as a fact about weather.{/n} \"That is what a good run costs. Every beast I ever took paid more.\"",
+          "Text": "{n}She cuts the arrow out of you with the same knife, quickly and without apology, the way you would cut a barb out of a hound. The head has gone into the bone. When it comes free you hear it grate.{/n}\n\"You will walk crooked, stag.\" {n}She says it without pity, as a fact about weather.{/n} \"Your city priests can sing a leg straight, I am told. Let them, and you are no stag of mine, and the hunt is over, and I will know it the first time I see you run. Keep my mark, and I keep my day. That is what a good run costs. Every beast I ever took paid more.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -278273,7 +278623,7 @@
               "Next": "body_open",
               "Set": [],
               "Requires": [
-                "delamere.tomb_visited"
+                "delamere.tomb_opened"
               ],
               "Forbids": [],
               "Abort": false
@@ -278284,7 +278634,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "delamere.tomb_visited"
+                "delamere.tomb_opened"
               ],
               "Abort": false
             }
@@ -278294,7 +278644,7 @@
         {
           "Id": "body_open",
           "Speaker": "Narrator",
-          "Text": "{n}The lid stands aside where you left it. She lies as you last saw her: a tall woman gone to leather and bone, a dark mane of hair spread on the stone, the stag-hide breastplate laced over her ribs. Above her head the horn hangs on its iron peg, exactly where it has hung since the Kellids closed her in.{/n}",
+          "Text": "{n}You have looked on her once before. You set your shoulder to the lid until the whole of her lies open to the light, as you last saw her: a tall woman gone to leather and bone, a dark mane of hair spread on the stone, old grave-leathers laced over her ribs. Above her head the horn hangs on its iron peg, exactly where it has hung since the Kellids closed her in.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -278632,7 +278982,7 @@
         {
           "Id": "rise",
           "Speaker": "Narrator",
-          "Text": "{n}It is not how the dead get up in stories. There is no green fire in her eyes, no rattle of bone on stone. There is breath: one long, dragging breath, as if the whole crypt had been holding it for her. Her ribs lift under the stag-hide and do not fall back.{/n}\n{n}The leather of her face goes dark and soft, and then it is skin, grey with dust, and then it is not grey. Her eyes open. They are brown, and human, and they are looking straight at you over the lip of the stone.{/n}",
+          "Text": "{n}It is not how the dead get up in stories. There is no green fire in her eyes, no rattle of bone on stone. There is breath: one long, dragging breath, as if the whole crypt had been holding it for her. Her ribs lift under the old leather and do not fall back.{/n}\n{n}The leather of her face goes dark and soft, and then it is skin, grey with dust, and then it is not grey. Her eyes open. They are brown, and human, and they are looking straight at you over the lip of the stone.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -279057,7 +279407,7 @@
         {
           "Id": "cut",
           "Speaker": "Delamere",
-          "Text": "{n}She cuts the arrow out of you with the same knife, quickly and without apology, the way you would cut a barb out of a hound. The head has gone into the bone. When it comes free you hear it grate.{/n}\n\"You will walk crooked, stag. For the rest of your life.\" {n}She says it without pity, as a fact about weather.{/n} \"That is what a good run costs. Every beast I ever took paid more.\"",
+          "Text": "{n}She cuts the arrow out of you with the same knife, quickly and without apology, the way you would cut a barb out of a hound. The head has gone into the bone. When it comes free you hear it grate.{/n}\n\"You will walk crooked, stag.\" {n}She says it without pity, as a fact about weather.{/n} \"Your city priests can sing a leg straight, I am told. Let them, and you are no stag of mine, and the hunt is over, and I will know it the first time I see you run. Keep my mark, and I keep my day. That is what a good run costs. Every beast I ever took paid more.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -279204,7 +279554,7 @@
         {
           "Id": "body_drezen",
           "Speaker": "Narrator",
-          "Text": "{n}She lies as the crusade laid her, on her back, with the lid set aside so the pilgrims can see her face. A tall woman gone to leather and bone, a dark mane of hair spread on the stone, the stag-hide breastplate laced over her ribs and the antler bow still locked in her hands.{/n}",
+          "Text": "{n}She lies as the crusade laid her, on her back, with the lid set aside so the pilgrims can see her face. A tall woman gone to leather and bone, a dark mane of hair spread on the stone, old grave-leathers laced over her ribs and the antler bow still locked in her hands.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -279328,7 +279678,7 @@
         {
           "Id": "rise",
           "Speaker": "Narrator",
-          "Text": "{n}It is not how the dead get up in stories. There is no green fire in her eyes, no rattle of bone on stone. There is breath: one long, dragging breath, as if the whole crypt had been holding it for her. Her ribs lift under the stag-hide and do not fall back.{/n}\n{n}The leather of her face goes dark and soft, and then it is skin, grey with dust, and then it is not grey. Her eyes open. They are brown, and human, and they are looking straight at you over the lip of the stone.{/n}",
+          "Text": "{n}It is not how the dead get up in stories. There is no green fire in her eyes, no rattle of bone on stone. There is breath: one long, dragging breath, as if the whole crypt had been holding it for her. Her ribs lift under the old leather and do not fall back.{/n}\n{n}The leather of her face goes dark and soft, and then it is skin, grey with dust, and then it is not grey. Her eyes open. They are brown, and human, and they are looking straight at you over the lip of the stone.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -279753,7 +280103,7 @@
         {
           "Id": "cut",
           "Speaker": "Delamere",
-          "Text": "{n}She cuts the arrow out of you with the same knife, quickly and without apology, the way you would cut a barb out of a hound. The head has gone into the bone. When it comes free you hear it grate.{/n}\n\"You will walk crooked, stag. For the rest of your life.\" {n}She says it without pity, as a fact about weather.{/n} \"That is what a good run costs. Every beast I ever took paid more.\"",
+          "Text": "{n}She cuts the arrow out of you with the same knife, quickly and without apology, the way you would cut a barb out of a hound. The head has gone into the bone. When it comes free you hear it grate.{/n}\n\"You will walk crooked, stag.\" {n}She says it without pity, as a fact about weather.{/n} \"Your city priests can sing a leg straight, I am told. Let them, and you are no stag of mine, and the hunt is over, and I will know it the first time I see you run. Keep my mark, and I keep my day. That is what a good run costs. Every beast I ever took paid more.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -279963,7 +280313,8 @@
       ],
       "Forbids": [
         "ulbrig.dead",
-        "ulbrig.kicked_out"
+        "ulbrig.kicked_out",
+        "chapter_later"
       ],
       "DelayHours": 48,
       "Optional": false,
@@ -280004,7 +280355,8 @@
       ],
       "Forbids": [
         "woljif.dead",
-        "woljif.kicked_out"
+        "woljif.kicked_out",
+        "chapter_later"
       ],
       "DelayHours": 24,
       "Optional": false,
@@ -280150,11 +280502,15 @@
         "delamere.committed"
       ],
       "Forbids": [
-        "delamere.closed"
+        "delamere.closed",
+        "sacrifice"
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "delamere"
+      "Relationship": "delamere",
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      }
     },
     {
       "Id": "delamere.trickster.epilogue.late",
@@ -280285,11 +280641,157 @@
       ],
       "Forbids": [
         "delamere.committed",
-        "delamere.closed"
+        "delamere.closed",
+        "sacrifice"
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "delamere"
+      "Relationship": "delamere",
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      }
+    },
+    {
+      "Id": "delamere.trickster.epilogue.sacrifice",
+      "Title": "",
+      "Owner": "DelamereEpilogue",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander did not come back from the Threshold. Delamere heard it at her temple from a Mendevian runner, and sent him away with a hare for his trouble, and went down into the crypt alone.{/n}\n{n}She did not weep; she had used that up. At the first frost she took the old horn down from its peg and carried it up to the ridge above Drezen, where she had once made a fire and waited for a stag with a limp, and she sat there until dawn with the horn across her knees, and did not blow it. The hunters say she goes up every year. They say the day she was owed is the only debt she ever forgave.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Delamere",
+          "Paragraphs": [
+            {
+              "Text": "{n}The families she led out of Drezen's camps built their villages in the old Sarkorian clearings below her temple. None of them ever grew past fifty-three. When one did, she walked in at the next new moon and chose who would go and found the next, and the families went, and did not thank her, and did well.{/n}",
+              "Requires": [
+                "delamere.trickster.village.given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The families she drove out of Drezen's camps built their villages in the old Sarkorian clearings below her temple, the ones who lived to build them. They feared her, as her own people had feared her. They also never starved, and not one of their villages burned in the demon raids that followed the war. Their grandchildren still argue over which of those things matters more.{/n}",
+              "Requires": [
+                "delamere.trickster.village.forced"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Drezen kept its refugees behind its walls, as the Commander had wanted. She never forgave the city for it, and she never forgave the Commander, and she came to the city anyway, every market day, and sold her meat at the gate at a price that was an insult to everyone who paid it.{/n}",
+              "Requires": [
+                "delamere.trickster.village.refused"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Every barracks in Drezen had an elder after the war, chosen by her, and every elder knew the names of fifty-three people and no more. The city clerks thought it was a joke of the Commander's. It was, and it worked, and she never once admitted either.{/n}",
+              "Requires": [
+                "delamere.trickster.village.clans"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Kyado stayed on as prior of her temple, and swept, and was told every day that he swept badly, and grew old and grey there in the end, as he had once said he hoped to. When he died she buried him herself, under the stag carved on the crypt wall, and she did not let anyone else touch the spade.{/n}",
+              "Requires": [
+                "delamere.trickster.kyado.spoken_for"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Drezen never forgot the morning its Commander stood in the market and named her. Pilgrims came to her woods for the rest of her second life, and she hated every one of them, and fed every one of them, and sent them home with a hare and a scolding.{/n}",
+              "Requires": [
+                "delamere.trickster.proclaimed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Drezen never learned who the tall Kellid woman at the market was. The minstrels went on singing her wrong. She preferred it.{/n}",
+              "Requires": [
+                "delamere.trickster.kept_quiet"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The names on the crypt wall reached nine hundred before she was done. The last she cut was a farm boy's, three valleys over from her temple; she walked there the first spring after the war to ask it, and found an old woman who still remembered him, and carried the name home.{/n}",
+              "Requires": [
+                "delamere.trickster.names_cut"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The crusade's provost flogged three men for a doe in fawn in the spring of the war. It was the only time the crusade's law and hers agreed about anything, and she reminded the Commander of it at every quarrel after.{/n}",
+              "Requires": [
+                "delamere.trickster.poachers.provost"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Three Mendevian veterans settled below her temple after the war, in the village whose ditches they had dug. The one with the bad moustache married a cooper's widow there, and named his first daughter for the doe.{/n}",
+              "Requires": [
+                "delamere.trickster.poachers.her_law"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The soldiers' story of Erastil's own doe outlived the crusade. Hunters in Mendev still let a doe in fawn pass, and some of them still look over their shoulders when they do it. She never corrected the story. She said it was the most useful lie ever told in her lord's name, and that she would answer to him for it herself, since the jester would only make him laugh.{/n}",
+              "Requires": [
+                "delamere.trickster.poachers.tricked"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Kyado lived in the temple's stable for a year and said the prior's prayers from the doorway, as she had sentenced him to. On the first day of the second year she carried his bedroll back inside herself, and said nothing about it, then or ever.{/n}",
+              "Requires": [
+                "delamere.trickster.kyado.judged"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "sacrifice"
+      ],
+      "Forbids": [
+        "delamere.closed",
+        "trickster.commander_back",
+        "lastcall.active"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "delamere",
+      "RequiresAnyGroups": [
+        [
+          "delamere.committed",
+          "delamere.trickster.late_committed"
+        ]
+      ]
     },
     {
       "Id": "delamere.trickster.epilogue.apart",
@@ -280704,13 +281206,13 @@
       "Title": "Fifty-three",
       "Owner": "Delamere",
       "MinChapter": 3,
-      "MaxChapter": 5,
+      "MaxChapter": 3,
       "Entry": "",
       "Nodes": [
         {
           "Id": "gate",
           "Speaker": "Narrator",
-          "Text": "{n}The sergeant of the south gate sends for you in the middle of the afternoon, and will not say why except that it is \"a woman, Commander, with a bow, and she's counting.\"{/n}\n{n}She is standing on the wheel of a supply wagon at the edge of the refugee camp, where Sarkorian families and the last of the Kenabres wagons have been packed in under the wall since the city fell to you. She wears the stag-hide breastplate over a borrowed smock. Her lips are moving. Her eyes go from fire to fire to fire, and she does not look down when you limp up beside the wheel.{/n}",
+          "Text": "{n}The sergeant of the south gate sends for you in the middle of the afternoon, and will not say why except that it is \"a woman, Commander, with a bow, and she's counting.\"{/n}\n{n}She is standing on the wheel of a supply wagon at the edge of the refugee camp, where Sarkorian families and the last of the Kenabres wagons have been packed in under the wall since the city fell to you. She wears her old grave-leathers over a borrowed smock. Her lips are moving. Her eyes go from fire to fire to fire, and she does not look down when you limp up beside the wheel.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -280846,7 +281348,7 @@
         {
           "Id": "knives",
           "Speaker": "Delamere",
-          "Text": "\"His knives did not go through my breastplate. My arrows went through him.\" {n}She touches the stag-hide over her ribs, lightly, the way another woman would touch a ring.{/n} \"His brothers carried him home, and the next spring they came to me and asked where they should build. I told them. They built there. It is under the Wound now, I suppose. Everything is.\"",
+          "Text": "\"His knives did not find me. My arrows found him.\" {n}She touches her ribs, lightly, the way another woman would touch a ring.{/n} \"His brothers carried him home, and the next spring they came to me and asked where they should build. I told them. They built there. It is under the Wound now, I suppose. Everything is.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -281112,7 +281614,432 @@
       "Optional": false,
       "Relationship": "delamere",
       "Chapters": [
-        3,
+        3
+      ],
+      "Remote": true,
+      "Kind": "visit",
+      "Sender": "Delamere"
+    },
+    {
+      "Id": "delamere.trickster.woken.count_late",
+      "Title": "Fifty-three",
+      "Owner": "Delamere",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "gate",
+          "Speaker": "Narrator",
+          "Text": "{n}The sergeant of the south gate sends for you in the middle of the afternoon, and will not say why except that it is \"a woman, Commander, with a bow, and she's counting.\"{/n}\n{n}She is standing on the wheel of a supply wagon at the edge of the refugee camp, where Sarkorian families and the last of the Kenabres wagons have been packed in under the wall since the city fell to you. She wears her old grave-leathers over a borrowed smock. Her lips are moving. Her eyes go from fire to fire to fire, and she does not look down when you limp up beside the wheel.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "number",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Delamere"
+        },
+        {
+          "Id": "number",
+          "Speaker": "Delamere",
+          "Text": "\"Four hundred and eleven.\" {n}She says it the way a surgeon names a wound.{/n} \"Four hundred and eleven souls in the smoke of one another's fires, under one wall, and not one of them knows the name of the man sleeping next to him. I asked. I asked twenty of them. Not one.\"\n{n}She steps down off the wheel.{/n} \"This is what your crusade calls a refuge, stag. In my day we would have called it kindling.\"",
+          "Choices": [
+            {
+              "Text": "\"They lost their homes. This is what's left.\"",
+              "Next": "left",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"You walked all the way to Drezen to count my refugees?\"",
+              "Next": "walked",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Delamere"
+        },
+        {
+          "Id": "left",
+          "Speaker": "Delamere",
+          "Text": "\"I know what they lost. I lived in it. I walked those hills when they were Sarkoris and not a sore.\" {n}She looks north, toward where the sky is always the wrong colour.{/n} \"The demons took their villages. You have given them back a city instead. I am not sure that is the kinder gift.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "rule",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Delamere"
+        },
+        {
+          "Id": "walked",
+          "Speaker": "Delamere",
+          "Text": "\"I walked to Drezen because you live in it, and I said I would come and see what kind of animal lives in your walls.\" {n}Her nose wrinkles.{/n} \"The kind that lives in its own dung, it turns out. I have smelled bear dens that were more particular.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "rule",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Delamere"
+        },
+        {
+          "Id": "rule",
+          "Speaker": "Delamere",
+          "Text": "\"Hear me. When I was alive the first time, I walked the villages every season and I counted. Any village over fifty-three souls, I came to at the new moon, and I chose who would go and found the next one. Families wept. Some cursed me. One of them waited for me on the road with his brothers and knives.\"\n{n}She says it without apology, and without pride either.{/n} \"Not one village of mine ever rotted from the inside.\"",
+          "Choices": [
+            {
+              "Text": "\"Why fifty-three?\"",
+              "Next": "why",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"That sounds cruel.\"",
+              "Next": "cruel",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"What happened to the man with the knives?\"",
+              "Next": "knives",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Delamere"
+        },
+        {
+          "Id": "why",
+          "Speaker": "Delamere",
+          "Text": "\"Because a hunter can know fifty-three.\" {n}She holds up her scarred hand and closes it, finger by finger, as if around names.{/n} \"Their fathers. Their debts. What they did in the bad winter and who they did it to. Past that you are counting strangers, and a stranger can do anything, because nobody will know it was him. That is what a city is, stag. A place where nobody knows it was him.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "want",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Delamere"
+        },
+        {
+          "Id": "cruel",
+          "Speaker": "Delamere",
+          "Text": "\"It was.\" {n}She does not even pause over it.{/n} \"Cruel on the day, and kind for a lifetime. A child who is sent off with her family to clear a new field grows up knowing every face in her village. A child who stays grows up in a town, and learns to lock her door.\" {n}Her mouth tightens.{/n} \"I never locked a door in my life. I would have been ashamed to.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "want",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Delamere"
+        },
+        {
+          "Id": "knives",
+          "Speaker": "Delamere",
+          "Text": "\"His knives did not find me. My arrows found him.\" {n}She touches her ribs, lightly, the way another woman would touch a ring.{/n} \"His brothers carried him home, and the next spring they came to me and asked where they should build. I told them. They built there. It is under the Wound now, I suppose. Everything is.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "want",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Delamere"
+        },
+        {
+          "Id": "want",
+          "Speaker": "Delamere",
+          "Text": "\"So.\" {n}She jerks her chin at the camp.{/n} \"Give me the ones who will come. There are clearings below my temple where the Kellid villages stood before your crusade had a name. The soil is still good. The woods will feed a village if someone who knows the woods leads it, and I know them better than the deer do.\"",
+          "Choices": [
+            {
+              "Text": "\"There are demons in those woods.\"",
+              "Next": "demons",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"And the ones who won't come?\"",
+              "Next": "unwilling",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Delamere"
+        },
+        {
+          "Id": "demons",
+          "Speaker": "Delamere",
+          "Text": "\"There were marauders in my day, and trolls, and a winter wolf the size of a byre. I hunted them.\" {n}She shrugs one shoulder.{/n} \"Demons bleed. I have seen your soldiers make them do it. I am better with a bow than your soldiers.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "unwilling",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Delamere"
+        },
+        {
+          "Id": "unwilling",
+          "Speaker": "Delamere",
+          "Text": "\"The ones who will not come.\" {n}She considers the camp again, fire by fire.{/n} \"In my time I did not ask. I chose, at the new moon, and the ones I chose went, and they hated me for a year and blessed me for forty. I would do it again today. I would do it to this camp by morning, if you gave me the word.\"\n{n}She looks at you, and waits. It is not a request. It is the old law, standing in front of you in a borrowed smock, asking whether it still applies.{/n}",
+          "Choices": [
+            {
+              "Text": "[Give her the families who volunteer, with tools and seed from the stores] \"Take the ones who want to go. Not one family more.\"",
+              "Next": "given",
+              "Set": [
+                "delamere.trickster.counted",
+                "delamere.trickster.village.given",
+                "delamere.trickster.counted_after_the_abyss"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Materials",
+                "Amount": -100
+              }
+            },
+            {
+              "Text": "[Give her the word] \"Choose your fifty-three. The rest go where you send them.\"",
+              "Next": "forced",
+              "Set": [
+                "delamere.trickster.counted",
+                "delamere.trickster.village.forced",
+                "delamere.trickster.counted_after_the_abyss"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "\"No. They stay behind the walls. The woods aren't safe, and you're one bow.\"",
+              "Next": "refused",
+              "Set": [
+                "delamere.trickster.counted",
+                "delamere.trickster.village.refused",
+                "delamere.trickster.counted_after_the_abyss"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Persuasion: count them another way] \"Drezen isn't one city. It's forty villages sharing a wall. Give every barracks an elder who knows fifty-three names, and count it that way.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "CheckDiplomacy",
+                "DC": 24,
+                "Success": "clans",
+                "Failure": "clans_fail",
+                "CommanderOnly": true
+              }
+            }
+          ],
+          "Portrait": "Delamere"
+        },
+        {
+          "Id": "clans_fail",
+          "Speaker": "Delamere",
+          "Text": "\"Words.\" {n}She says it the way she would say \"mice\".{/n} \"You talk like a trader who has sold the same horse twice. A city is a city, whatever you call it at the gate.\" {n}She folds her arms.{/n} \"So, stag. The camp. What will it be?\"",
+          "Choices": [
+            {
+              "Text": "[Give her the families who volunteer, with tools and seed from the stores] \"Take the ones who want to go. Not one family more.\"",
+              "Next": "given",
+              "Set": [
+                "delamere.trickster.counted",
+                "delamere.trickster.village.given",
+                "delamere.trickster.counted_after_the_abyss"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Materials",
+                "Amount": -100
+              }
+            },
+            {
+              "Text": "[Give her the word] \"Choose your fifty-three. The rest go where you send them.\"",
+              "Next": "forced",
+              "Set": [
+                "delamere.trickster.counted",
+                "delamere.trickster.village.forced",
+                "delamere.trickster.counted_after_the_abyss"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "\"No. They stay behind the walls. The woods aren't safe, and you're one bow.\"",
+              "Next": "refused",
+              "Set": [
+                "delamere.trickster.counted",
+                "delamere.trickster.village.refused",
+                "delamere.trickster.counted_after_the_abyss"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Delamere"
+        },
+        {
+          "Id": "given",
+          "Speaker": "Delamere",
+          "Text": "\"Volunteers.\" {n}The word tastes strange to her.{/n} \"In my day nobody volunteered to leave a hearth. We shall see what kind of village volunteers make.\" {n}She watches your quartermaster's clerk being sent for, and the first family already gathering its bundles by the gate, and something in her face eases.{/n} \"Three families. Maybe four. It is enough to start a hearth. I will teach them the woods. The woods will teach them the rest.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "leave",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Delamere"
+        },
+        {
+          "Id": "forced",
+          "Speaker": "Delamere",
+          "Text": "\"Good.\" {n}No triumph in it. The satisfaction of a tool fitted to the hand it was made for.{/n} \"I will choose at the new moon. They will hate me. They will live.\" {n}She is already looking over the camp again, and you can see her choosing: this family, not that one; the widow with three boys, yes; the old man who coughs, no.{/n} \"You have not done an easy thing, stag. Nobody will thank you for it. That is how you know it was a real thing.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "leave",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Delamere"
+        },
+        {
+          "Id": "refused",
+          "Speaker": "Delamere",
+          "Text": "\"One bow.\" {n}She repeats it with something close to contempt, and then, slowly, something close to respect.{/n} \"You say no to me to my face, and you do not dress it up. Good. The last man who told me no had brothers and knives.\" {n}She looks at the wall, the camp, the smoke.{/n} \"Keep them, then. Keep your hive. But when the rot starts in it, and it will, remember who told you where to cut.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "leave",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Delamere"
+        },
+        {
+          "Id": "clans",
+          "Speaker": "Delamere",
+          "Text": "\"Forty villages.\" {n}She stares at you.{/n} \"Sharing a wall.\"\n{n}For a while she says nothing at all. You can see her walking it through: an elder to every barracks, a name to every face, a sin for every name.{/n} \"That is the most shameless thing I have heard a living soul say since I woke. You have taken Erastil's law and cut it to fit a city like a tailor cuts a dead man's coat.\" {n}Her mouth twitches.{/n} \"I will choose the elders. All forty. Myself.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "leave",
+              "Set": [
+                "delamere.trickster.counted",
+                "delamere.trickster.village.clans",
+                "delamere.trickster.counted_after_the_abyss"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            }
+          ],
+          "Portrait": "Delamere"
+        },
+        {
+          "Id": "leave",
+          "Speaker": "Delamere",
+          "Text": "{n}She picks up her bow from where it leans against the wagon wheel and slings it.{/n} \"I will come again, stag. Do not make me come looking for you. You leave a trail a child could follow.\" {n}She glances down at your leg.{/n} \"My doing, I know. I am not sorry. Walk on it. It heals crooked either way, but it heals stronger if you walk.\"",
+          "Choices": [
+            {
+              "Text": "[Watch her go out through the gate.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Delamere"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "delamere.trickster.returned"
+      ],
+      "Forbids": [
+        "delamere.closed",
+        "delamere.trickster.counted"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "delamere",
+      "Chapters": [
         5
       ],
       "Remote": true,
@@ -282233,7 +283160,9 @@
               "Next": "time",
               "Set": [],
               "Requires": [],
-              "Forbids": [],
+              "Forbids": [
+                "delamere.trickster.red_blood"
+              ],
               "Abort": false
             },
             {
@@ -282247,6 +283176,84 @@
             {
               "Text": "\"Go back to your woods, Delamere. Get some sleep.\"",
               "Next": "sleep",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Take your time deciding.\"",
+              "Next": "time_truth",
+              "Set": [],
+              "Requires": [
+                "delamere.trickster.told_truth"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Take your time deciding.\"",
+              "Next": "time_lie",
+              "Set": [],
+              "Requires": [
+                "delamere.trickster.lied_erastil"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Take your time deciding.\"",
+              "Next": "time_both",
+              "Set": [],
+              "Requires": [
+                "delamere.trickster.told_both"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Delamere"
+        },
+        {
+          "Id": "time_truth",
+          "Speaker": "Delamere",
+          "Text": "\"I am old, stag. Older than anyone you have met. I have spent a great deal of time already.\" {n}She takes her hand back, finally, and stands.{/n} \"But I will take a little more. Not much. Do not get comfortable.\" {n}At the door she stops.{/n} \"You did not lie to me about the horn. You could have, and I would have thanked you for it. Whatever else you are, you did not lie about that.\" {n}She goes.{/n}",
+          "Choices": [
+            {
+              "Text": "[Lie back and listen to her footsteps go.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Delamere"
+        },
+        {
+          "Id": "time_lie",
+          "Speaker": "Delamere",
+          "Text": "\"I am old, stag. Older than anyone you have met. I have spent a great deal of time already.\" {n}She takes her hand back, finally, and stands.{/n} \"But I will take a little more. Not much. Do not get comfortable.\" {n}At the door she stops, and looks back at you with a face that has not been so open since she was a girl.{/n} \"Thank you for bringing me his summons. I will not forget whose errand you ran.\" {n}She goes.{/n}\n{n}The small cold weight in your chest goes with you back to sleep, and is still there in the morning.{/n}",
+          "Choices": [
+            {
+              "Text": "[Lie back and listen to her footsteps go.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Delamere"
+        },
+        {
+          "Id": "time_both",
+          "Speaker": "Delamere",
+          "Text": "\"I am old, stag. Older than anyone you have met. I have spent a great deal of time already.\" {n}She takes her hand back, finally, and stands.{/n} \"But I will take a little more. Not much. Do not get comfortable.\" {n}At the door she stops.{/n} \"A door, and a fool, and a noise. I have not decided which of the three to thank. I will tell you when I have.\" {n}She goes.{/n}",
+          "Choices": [
+            {
+              "Text": "[Lie back and listen to her footsteps go.]",
+              "Next": null,
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -283129,7 +284136,7 @@
         {
           "Id": "hide",
           "Speaker": "Narrator",
-          "Text": "{n}The hide is still warm from the fire, and slick on the flesh side, and her weight is on you, and her hair comes down around both your faces like a tent. She pulls the lacing of the breastplate with one hand, impatient with it, as if she had never worn it at all; the stag-hide she has fought in for a lifetime slides off her shoulders onto the stag-hide you are lying on, and she laughs at that, too.{/n}\n{n}Under it she is lean and scarred and warm, all long muscle and old white marks, knife and claw and arrow, a map of forty winters on the roads of Sarkoris. She takes your hand and puts it on the worst of them, low on her side, and holds it there.{/n}",
+          "Text": "{n}The hide is still warm from the fire, and slick on the flesh side, and her weight is on you, and her hair comes down around both your faces like a tent. She pulls the lacing of her leathers with one hand, impatient with it, as if she had never worn them at all; the old hide slides off her shoulders onto the stag's hide you are lying on, and she laughs at that, too.{/n}\n{n}Under it she is lean and scarred and warm, all long muscle and old white marks, knife and claw and arrow, a map of forty winters on the roads of Sarkoris. She takes your hand and puts it on the worst of them, low on her side, and holds it there.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -283241,7 +284248,7 @@
         {
           "Id": "now",
           "Speaker": "Delamere",
-          "Text": "\"Now.\" {n}She considers.{/n} \"Now I go back to my temple and scrub it again, and you go back to your war, and at the new moon, if you want me, you know where the woods are.\" {n}She picks the breastplate up off the hide and shakes it out.{/n}\n\"I will not live in your city. Do not ask me. I will come to it when I choose, and I will leave it when it stinks, which will be always. And the day you owe me is still mine.\"",
+          "Text": "\"Now.\" {n}She considers.{/n} \"Now I go back to my temple and scrub it again, and you go back to your war, and at the new moon, if you want me, you know where the woods are.\" {n}She picks her leathers up off the hide and shakes them out.{/n}\n\"I will not live in your city. Do not ask me. I will come to it when I choose, and I will leave it when it stinks, which will be always. And the day you owe me is still mine.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -283680,7 +284687,7 @@
         {
           "Id": "hide",
           "Speaker": "Narrator",
-          "Text": "{n}The hide is still warm from the fire, and slick on the flesh side, and her weight is on you, and her hair comes down around both your faces like a tent. She pulls the lacing of the breastplate with one hand, impatient with it, as if she had never worn it at all; the stag-hide she has fought in for a lifetime slides off her shoulders onto the stag-hide you are lying on, and she laughs at that, too.{/n}\n{n}Under it she is lean and scarred and warm, all long muscle and old white marks, knife and claw and arrow, a map of forty winters on the roads of Sarkoris. She takes your hand and puts it on the worst of them, low on her side, and holds it there.{/n}",
+          "Text": "{n}The hide is still warm from the fire, and slick on the flesh side, and her weight is on you, and her hair comes down around both your faces like a tent. She pulls the lacing of her leathers with one hand, impatient with it, as if she had never worn them at all; the old hide slides off her shoulders onto the stag's hide you are lying on, and she laughs at that, too.{/n}\n{n}Under it she is lean and scarred and warm, all long muscle and old white marks, knife and claw and arrow, a map of forty winters on the roads of Sarkoris. She takes your hand and puts it on the worst of them, low on her side, and holds it there.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -283792,7 +284799,7 @@
         {
           "Id": "now",
           "Speaker": "Delamere",
-          "Text": "\"Now.\" {n}She considers.{/n} \"Now I go back to my temple and scrub it again, and you go back to your war, and at the new moon, if you want me, you know where the woods are.\" {n}She picks the breastplate up off the hide and shakes it out.{/n}\n\"I will not live in your city. Do not ask me. I will come to it when I choose, and I will leave it when it stinks, which will be always. And the day you owe me is still mine.\"",
+          "Text": "\"Now.\" {n}She considers.{/n} \"Now I go back to my temple and scrub it again, and you go back to your war, and at the new moon, if you want me, you know where the woods are.\" {n}She picks her leathers up off the hide and shakes them out.{/n}\n\"I will not live in your city. Do not ask me. I will come to it when I choose, and I will leave it when it stinks, which will be always. And the day you owe me is still mine.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -284231,7 +285238,7 @@
         {
           "Id": "hide",
           "Speaker": "Narrator",
-          "Text": "{n}The hide is still warm from the fire, and slick on the flesh side, and her weight is on you, and her hair comes down around both your faces like a tent. She pulls the lacing of the breastplate with one hand, impatient with it, as if she had never worn it at all; the stag-hide she has fought in for a lifetime slides off her shoulders onto the stag-hide you are lying on, and she laughs at that, too.{/n}\n{n}Under it she is lean and scarred and warm, all long muscle and old white marks, knife and claw and arrow, a map of forty winters on the roads of Sarkoris. She takes your hand and puts it on the worst of them, low on her side, and holds it there.{/n}",
+          "Text": "{n}The hide is still warm from the fire, and slick on the flesh side, and her weight is on you, and her hair comes down around both your faces like a tent. She pulls the lacing of her leathers with one hand, impatient with it, as if she had never worn them at all; the old hide slides off her shoulders onto the stag's hide you are lying on, and she laughs at that, too.{/n}\n{n}Under it she is lean and scarred and warm, all long muscle and old white marks, knife and claw and arrow, a map of forty winters on the roads of Sarkoris. She takes your hand and puts it on the worst of them, low on her side, and holds it there.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -284343,7 +285350,7 @@
         {
           "Id": "now",
           "Speaker": "Delamere",
-          "Text": "\"Now.\" {n}She considers.{/n} \"Now I go back to my temple and scrub it again, and you go back to your war, and at the new moon, if you want me, you know where the woods are.\" {n}She picks the breastplate up off the hide and shakes it out.{/n}\n\"I will not live in your city. Do not ask me. I will come to it when I choose, and I will leave it when it stinks, which will be always. And the day you owe me is still mine.\"",
+          "Text": "\"Now.\" {n}She considers.{/n} \"Now I go back to my temple and scrub it again, and you go back to your war, and at the new moon, if you want me, you know where the woods are.\" {n}She picks her leathers up off the hide and shakes them out.{/n}\n\"I will not live in your city. Do not ask me. I will come to it when I choose, and I will leave it when it stinks, which will be always. And the day you owe me is still mine.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -284631,7 +285638,8 @@
       ],
       "Forbids": [
         "delamere.closed",
-        "delamere.trickster.village_seen"
+        "delamere.trickster.village_seen",
+        "delamere.trickster.counted_after_the_abyss"
       ],
       "DelayHours": 24,
       "Optional": false,
@@ -284814,7 +285822,7 @@
         {
           "Id": "down",
           "Speaker": "Narrator",
-          "Text": "{n}You pull her down by the lacing of her breastplate, and she comes, laughing into your mouth, the knife clattering away down the tiles into somebody's gutter. For a while the frost does not matter at all.{/n}",
+          "Text": "{n}You pull her down by the lacing of her leathers, and she comes, laughing into your mouth, the knife clattering away down the tiles into somebody's gutter. For a while the frost does not matter at all.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -284965,7 +285973,7 @@
         {
           "Id": "lake",
           "Speaker": "Delamere",
-          "Text": "\"At a frozen lake, on the third dawn. It walked out onto the ice and turned and waited for me. I drew. It did not run. It looked at me the way you looked at me in the leaves: surprised that it was over.\"\n{n}She is quiet.{/n} \"I did not eat the meat. I gave all of it to Old Deadeye, every scrap, and went three more days hungry after the three days of chasing. The antlers I made into my bow over that winter. The hide I made into this.\" {n}She touches the breastplate.{/n}",
+          "Text": "\"At a frozen lake, on the third dawn. It walked out onto the ice and turned and waited for me. I drew. It did not run. It looked at me the way you looked at me in the leaves: surprised that it was over.\"\n{n}She is quiet.{/n} \"I did not eat the meat. I gave all of it to Old Deadeye, every scrap, and went three more days hungry after the three days of chasing. The antlers I made into my bow over that winter. The hide I made into armour, and wore it forty winters.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -284997,7 +286005,7 @@
         {
           "Id": "death",
           "Speaker": "Delamere",
-          "Text": "\"I was thirty-eight winters. Old, for a hunter on the roads.\" {n}She throws the bone into the fire.{/n} \"A wolf came down out of the north in a hungry winter. White, as the stag had been, and too big, and wrong somehow in the way it moved. It took children out of the byres. I tracked it eleven days into the passes. On the eleventh I had it below me in a gully, on the ice. I drew.\"\n{n}She stops.{/n} \"And then there is nothing. A rock came down, or the ice gave way under me, or my heart burst in my chest. I remember the draw. I remember the wolf's eyes. And then the dark.\"",
+          "Text": "\"I was fifty-nine winters. Old, for a hunter on the roads.\" {n}She throws the bone into the fire.{/n} \"A wolf came down out of the north in a hungry winter. White, as the stag had been, and too big, and wrong somehow in the way it moved. It took children out of the byres. I tracked it eleven days into the passes. On the eleventh I had it below me in a gully, on the ice. I drew.\"\n{n}She stops.{/n} \"And then there is nothing. A rock came down, or the ice gave way under me, or my heart burst in my chest. I remember the draw. I remember the wolf's eyes. And then the dark.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -285245,7 +286253,7 @@
         {
           "Id": "crowd",
           "Speaker": "Narrator",
-          "Text": "{n}The crowd has gone quiet. At the back, an old Sarkorian woman with a basket of turnips has put the basket down. She is staring at the stag-hide breastplate, and at the bow, and at the face above them, and her lips are moving.{/n}\n{n}Beyond her, by the steps of Iomedae's cathedral, a young priest in a white tabard has stopped to watch, frowning, with the look of a man about to say that there is no Saint Delamere in the calendar.{/n}",
+          "Text": "{n}The crowd has gone quiet. At the back, an old Sarkorian woman with a basket of turnips has put the basket down. She is staring at the old Kellid grave-leathers, and at the bow, and at the face above them, and her lips are moving.{/n}\n{n}Beyond her, by the steps of Iomedae's cathedral, a young priest in a white tabard has stopped to watch, frowning, with the look of a man about to say that there is no Saint Delamere in the calendar.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -285385,6 +286393,7 @@
       ],
       "Remote": true,
       "Kind": "visit",
+      "ManualOnly": true,
       "Sender": "Delamere"
     },
     {
@@ -285588,6 +286597,7 @@
       ],
       "Remote": true,
       "Kind": "visit",
+      "ManualOnly": true,
       "Sender": "Delamere"
     },
     {
@@ -285838,6 +286848,7 @@
       ],
       "Remote": true,
       "Kind": "visit",
+      "ManualOnly": true,
       "Sender": "Delamere"
     },
     {
@@ -286183,7 +287194,7 @@
           "Text": "\"Ten thousand fingers.\" {n}She says it the way she said \"kindling\" at the south gate.{/n} \"A hand with ten thousand fingers is not a hand. It is a thing in a jar in a sorcerer's cellar.\" {n}She rises, and the priest steps back without meaning to.{/n} \"Your seminary taught you well enough, bean-grower. You are not a fool, and the child lived. But you pray to a god I do not know. Mine counted.\"",
           "Choices": [
             {
-              "Text": "\"Yours still does. He answered you. Over your own grave.\"",
+              "Text": "\"Maybe yours still does.\"",
               "Next": "seal",
               "Set": [],
               "Requires": [],
@@ -286203,6 +287214,60 @@
               "Next": "stag",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "delamere.trickster.white_stag_told"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"When I knelt at your seal and asked him for help, a stag bellowed somewhere far off. Then the seal broke under my hands. I heard it.\"",
+              "Next": "stag_seen",
+              "Set": [],
+              "Requires": [
+                "delamere.erastil_answered"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Brother Haddo. A stag bellowing over a grave. What would your church make of that?\"",
+              "Next": "stag_haddo",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "delamere.erastil_answered"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Delamere"
+        },
+        {
+          "Id": "stag_seen",
+          "Speaker": "Delamere",
+          "Text": "{n}She goes very still.{/n} \"You knelt at my stone. You asked him.\" {n}Her eyes go over your face as if she were reading tracks in it.{/n} \"And he answered you. With a stag's voice.\" {n}It is not a question, and it is not quite a comfort either.{/n} \"He never once answered me with a voice, stag. Only with the one he sent.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "stag",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Delamere"
+        },
+        {
+          "Id": "stag_haddo",
+          "Speaker": "Narrator",
+          "Text": "{n}Brother Haddo turns his hat round in his soil-black hands.{/n} \"The stag is his, Commander. Old Deadeye's own beast. When the old books say a stag called at a holy place, they mean the god was listening.\" {n}He glances at the woman on the step, and then away.{/n} \"Or a stag was in rut, and somebody wanted it to mean something. I have been a priest thirty years and I have never learned to tell the two apart. But a stag called in that crypt, from what I hear, and she came up out of the stone. I would not presume to say which it was.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "stag",
+              "Set": [],
+              "Requires": [],
               "Forbids": [],
               "Abort": false
             }
@@ -286212,7 +287277,7 @@
         {
           "Id": "stag",
           "Speaker": "Delamere",
-          "Text": "{n}For a heartbeat she does not breathe. Then she sits down, hard, on the altar step, as if her knees had been cut.{/n} \"A stag.\"\n\"Over my grave.\" {n}Her hand goes to the stag-hide over her ribs.{/n} \"The only word he ever spoke to me with a mouth, he said with a stag's. 'Hunt me.' And all that time in the dark, he was saying it again, over the stone, to anyone who knelt. I could not hear it through the seal. I was holding the string.\"",
+          "Text": "{n}For a heartbeat she does not breathe. Then she sits down, hard, on the altar step, as if her knees had been cut.{/n} \"A stag.\"\n\"Over my grave.\" {n}Her hand goes to her breastbone, where the pilgrims said the arrow went in.{/n} \"The only word he ever spoke to me with a mouth, he said with a stag's. 'Hunt me.' If he said anything over the stone while I lay under it, I could not hear it through the seal. I was holding the string.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -286252,7 +287317,7 @@
         {
           "Id": "lied",
           "Speaker": "Delamere",
-          "Text": "{n}She looks up at you, and her face is so open that it hurts to see.{/n} \"Then it is as you told me. He sent you. He was calling all that while, and at last he found a stag loud enough.\" {n}She takes your hand and presses it, hard.{/n} \"I will not doubt you again. I swear it, here, in his house.\"\n{n}Somewhere in your chest, a small cold weight settles and does not move.{/n}",
+          "Text": "{n}She looks up at you, and her face is so open that it hurts to see.{/n} \"Then it is as you told me. He sent you. He called, and at last he found a stag loud enough.\" {n}She takes your hand and presses it, hard.{/n} \"I will not doubt you again. I swear it, here, in his house.\"\n{n}Somewhere in your chest, a small cold weight settles and does not move.{/n}",
           "Choices": [
             {
               "Text": "[Say nothing.]",
@@ -286295,7 +287360,7 @@
           "Text": "{n}She looks at you, and there is something new in it: not suspicion, not quite. The look a tracker gives a set of prints she has been following for days, when she understands at last which way they are going.{/n}\n\"You heard it too, before you went down. The boy told you what a stag sounds like, and you blew it on my horn, and I came.\" {n}Her mouth tightens.{/n} \"You borrowed my god's voice, jester. Did you know?\"",
           "Choices": [
             {
-              "Text": "\"Not until Kyado told me about the seal. I'm sorry if that spoils it.\"",
+              "Text": "\"Not until tonight. I'm sorry if that spoils it.\"",
               "Next": "spoils",
               "Set": [],
               "Requires": [],
@@ -286316,7 +287381,7 @@
         {
           "Id": "spoils",
           "Speaker": "Delamere",
-          "Text": "\"Spoils it.\" {n}She shakes her head, slowly.{/n} \"Nothing is spoiled. A snare is not less true because the hare did not set it. My lord left the call lying over my grave, and a jester picked it up and blew it. That is how he always worked. He never did a thing himself if a fool would do it for him.\"",
+          "Text": "\"Spoils it.\" {n}She shakes her head, slowly.{/n} \"Nothing is spoiled. A snare is not less true because the hare did not set it. If my lord left his call lying over my grave, then a jester picked it up and blew it. That is how he always worked. He never did a thing himself if a fool would do it for him.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -286364,7 +287429,7 @@
         {
           "Id": "out",
           "Speaker": "Narrator",
-          "Text": "{n}She walks out past the three women. One of them, the youngest, reaches out without thinking and touches the stag-hide as she goes by, the way you would touch a relic. Delamere stops, and looks at her, and puts a hand on her head for the space of a breath, and goes on.{/n}\n{n}Out in the street she waits for you to catch up, and matches her step to your limp.{/n} \"Tonight I will pray again,\" she says. \"Not louder. He is not deaf. I will only listen harder.\"",
+          "Text": "{n}She walks out past the three women. One of them, the youngest, reaches out without thinking and touches the hem of her grave-leathers as she goes by, the way you would touch a relic. Delamere stops, and looks at her, and puts a hand on her head for the space of a breath, and goes on.{/n}\n{n}Out in the street she waits for you to catch up, and matches her step to your limp.{/n} \"Tonight I will pray again,\" she says. \"Not louder. He is not deaf. I will only listen harder.\"",
           "Choices": [
             {
               "Text": "[Walk with her as far as the gate.]",
@@ -286397,6 +287462,7 @@
       ],
       "Remote": true,
       "Kind": "visit",
+      "ManualOnly": true,
       "Sender": "Delamere"
     },
     {
@@ -286683,6 +287749,7 @@
       ],
       "Remote": true,
       "Kind": "visit",
+      "ManualOnly": true,
       "Sender": "Delamere"
     },
     {
@@ -286736,7 +287803,7 @@
         {
           "Id": "what",
           "Speaker": "Delamere",
-          "Text": "\"The stag.\" {n}She unwraps the bundle. It is the hide from the blind, or a long strip of it, scraped and smoked and worked soft, the pale belly hair turned inward.{/n} \"I kept the best of him for this. A hunter does not let a good hide rot, and I could not think of anyone else I wanted to wear it.\"\n\"You walk on the outside of that foot now, the way I showed you, and it is too much for the ankle. It rolls. I have watched it roll on your stairs and on my hills. So.\" {n}She lays the hide against your shin.{/n} \"A brace. Lace it tight in the morning, loose at night. It will not make you walk straight. Nothing will. It will stop you falling on your face in front of your soldiers.\"",
+          "Text": "\"The stag.\" {n}She unwraps the bundle. It is the hide from the blind, or a long strip of it, scraped and smoked and worked soft, the pale belly hair turned inward.{/n} \"I kept the best of him for this. A hunter does not let a good hide rot, and I could not think of anyone else I wanted to wear it.\"\n\"You walk on the outside of that foot now, the way I showed you, and it is too much for the ankle. It rolls. I have watched it roll on your stairs and on my hills. So.\" {n}She lays the hide against your shin.{/n} \"A brace. Lace it tight in the morning, loose at night. It will not make you walk straight; you would not let the priests do that, and I would not have you let them. It will stop you falling on your face in front of your soldiers.\"",
           "Choices": [
             {
               "Text": "\"You made this yourself?\"",
@@ -286904,7 +287971,7 @@
         {
           "Id": "promise",
           "Speaker": "Delamere",
-          "Text": "\"And hear the rest, so you do not mistake me. Knowing them is not sitting down with them. When I have looked each of them in the face, I will decide whether I eat at your fire, or at mine, with you coming to me. That is mine to choose. Not yours, and not theirs.\" {n}She picks up the knotted cord from the floor, winds it round her hand, and puts it away inside the breastplate, over her heart, where a city woman would keep a letter.{/n} \"I will keep the measure. In case you grow.\" {n}She goes to the door, and stops, and looks at the brace on your leg with the small red arrow on it.{/n}\n\"You wear my mark on your leg and my hide on your mark. In the old days that would have meant something, in the hills. I will not tell you what. You would only laugh.\" {n}She goes.{/n}",
+          "Text": "\"And hear the rest, so you do not mistake me. Knowing them is not sitting down with them. When I have looked each of them in the face, I will decide whether I eat at your fire, or at mine, with you coming to me. That is mine to choose. Not yours, and not theirs.\" {n}She picks up the knotted cord from the floor, winds it round her hand, and puts it away inside her jerkin, over her heart, where a city woman would keep a letter.{/n} \"I will keep the measure. In case you grow.\" {n}She goes to the door, and stops, and looks at the brace on your leg with the small red arrow on it.{/n}\n\"You wear my mark on your leg and my hide on your mark. In the old days that would have meant something, in the hills. I will not tell you what. You would only laugh.\" {n}She goes.{/n}",
           "Choices": [
             {
               "Text": "[Lace it looser, for the night.]",
@@ -286937,6 +288004,7 @@
       ],
       "Remote": true,
       "Kind": "visit",
+      "ManualOnly": true,
       "Sender": "Delamere"
     },
     {
@@ -287256,6 +288324,7 @@
       ],
       "Remote": true,
       "Kind": "visit",
+      "ManualOnly": true,
       "Sender": "Delamere"
     },
     {
@@ -328171,7 +329240,7 @@
         {
           "Id": "joined",
           "Speaker": "Jannah",
-          "Text": "\"Commander. The jeweller is dead and the souls are home, and my parole was for the length of the hunt. I gave my word I'd go back to the Condemned when it ended. It's ended.\"\n\"I didn't run. Not once, all the way into that hole and out again. I'd like that written down somewhere, and you're the only one who writes things down who might believe it.\"",
+          "Text": "\"Commander. The jeweller is dead and the souls are home. When I came to you in Drezen I said that if you turned me away I'd go back to the Condemned. You didn't turn me away. I'm going back anyway. The hunt's over, and a deserter who stays on only because nobody sent her back hasn't settled anything.\"\n\"I didn't run. Not once, all the way into that hole and out again. I'd like that written down somewhere, and you're the only one who writes things down who might believe it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -329687,7 +330756,7 @@
         {
           "Id": "after",
           "Speaker": "Jannah",
-          "Text": "{n}Later, when the muster has been dismissed three times and still hasn't gone anywhere, she walks you round behind the barracks to the practice yard. There's nobody in it: sand, a trough, a rack of blunted blades.{/n}\n\"That was the bout. It decided what bouts decide.\" {n}She stops at the edge of the sand and turns to face you.{/n}\n\"This is the other thing. I've been deciding it for a long while, and a sword didn't decide it, and neither did you. I did.\"",
+          "Text": "{n}Later, when the muster has been dismissed three times and still hasn't gone anywhere, she walks you round behind the barracks to the practice yard. There's nobody in it: sand, a trough, a rack of blunted blades.{/n}\n\"That was the bout.\" {n}She stops at the edge of the sand and turns to face you. Her ears have gone pink at the points, and she is scowling about it.{/n}\n\"And this is me wanting you. I've wanted you since the cell. I'm sick of fencing round it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -329891,7 +330960,110 @@
         {
           "Id": "close",
           "Speaker": "Jannah",
-          "Text": "{n}She steps in, inside measure, where the old man taught her never to stand unless she meant to finish something.{/n}\n\"In Mivon I never let anyone this close. You don't, if you want to stay unbeaten.\" {n}Her breath is quick and she isn't hiding it.{/n} \"I'm not unbeaten any more. I find I don't mind.\"",
+          "Text": "{n}She steps in, inside measure, where the old man taught her never to stand unless she meant to finish something.{/n}\n\"In Mivon I never let anyone this close. You don't, if you want to stay unbeaten.\" {n}Her breath is quick and she isn't hiding it.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "mark_jaw",
+              "Set": [],
+              "Requires": [
+                "jannah.trickster.bout.her_first"
+              ],
+              "Forbids": [
+                "jannah.committed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "mark_arm",
+              "Set": [],
+              "Requires": [
+                "jannah.trickster.bout.commander_first"
+              ],
+              "Forbids": [
+                "jannah.committed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "mark_late",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "jannah.trickster.bout.her_first",
+                "jannah.trickster.bout.commander_first",
+                "jannah.committed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "record_lost",
+              "Set": [],
+              "Requires": [
+                "jannah.trickster.cost.first_loss"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "record_kept",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "jannah.trickster.cost.first_loss"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jannah"
+        },
+        {
+          "Id": "record_lost",
+          "Speaker": "Jannah",
+          "Text": "\"I'm not unbeaten any more. I find I don't mind.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "mark_jaw",
+              "Set": [],
+              "Requires": [
+                "jannah.trickster.bout.her_first"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "mark_arm",
+              "Set": [],
+              "Requires": [
+                "jannah.trickster.bout.commander_first"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "mark_late",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "jannah.trickster.bout.her_first",
+                "jannah.trickster.bout.commander_first"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jannah"
+        },
+        {
+          "Id": "record_kept",
+          "Speaker": "Jannah",
+          "Text": "\"I still am. Nobody's had my blood first, not the Scar, not you.\" {n}She takes one more step, so there is no measure left at all.{/n} \"I'm letting you in anyway. Don't make me regret it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -330455,7 +331627,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}Jannah Aldori, of Mivon, stayed at the Commander's side through the Threshold and after it. She never again wore the Eagle Watch's blue and never asked to; she said a tabard was a promise, and she had broken one already.{/n}\n{n}After the war she chalked a circle in a yard and taught the forms to anyone who would stand in it: soldiers, orphans, a one-armed priest, the children of people who had run. She taught the salute, the measure and the yield. She did not teach anyone to stay unbeaten. She said it was a bad habit, and that she was glad to be rid of it.{/n}\n{n}She was never cured of Houndheart. Some nights it came back and sat on the end of the bed, and she let it sit there, and did not run from it either.{/n}",
+          "Text": "{n}Jannah Aldori, of Mivon, stayed at the Commander's side through the Threshold and after it. She never again wore the Eagle Watch's blue and never asked to; she said a tabard was a promise, and she had broken one already.{/n}\n{n}After the war she chalked a circle in a yard and taught the forms to anyone who would stand in it: soldiers, orphans, a one-armed priest, the children of people who had run. She taught the salute, the measure and the yield. She did not teach anyone to stay unbeaten. She said it was a bad habit.{/n}\n{n}She was never cured of Houndheart. Some nights it came back and sat on the end of the bed, and she let it sit there, and did not run from it either.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -330519,7 +331691,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}Every year at the muster she challenged the Commander again, in front of whoever was watching, for no stake at all but the pleasure of it. The Commander never drew first blood in any of them. Nobody who had seen the first bout believed that was an accident, and nobody said so to her face.{/n}",
+              "Text": "{n}Every year at the muster she challenged the Commander again, in front of whoever was watching, for no stake at all but the pleasure of it. The Commander fought every one of them in earnest, because she would have known otherwise and never forgiven it, and lost most of them, and won a few, and she kept the tally of both on the inside of her scabbard.{/n}",
               "Requires": [
                 "jannah.trickster.cost.public_yield"
               ],
@@ -330615,7 +331787,7 @@
       "DelayHours": 0,
       "Optional": false,
       "ForbidOverrides": {
-        "sacrifice": "trickster.cheated_death"
+        "sacrifice": "trickster.commander_back"
       },
       "Relationship": "jannah"
     },
@@ -330675,7 +331847,7 @@
       "DelayHours": 0,
       "Optional": false,
       "ForbidOverrides": {
-        "sacrifice": "trickster.cheated_death"
+        "sacrifice": "trickster.commander_back"
       },
       "Relationship": "jannah"
     },
@@ -330690,7 +331862,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}Jannah Aldori stayed in Drezen until the war was over, in the last cell of the old gaol, with its door open. She trained with the Eagle Watch, fought where she was sent and never ran, and never once crossed blades with the Commander again.{/n}\n{n}When the crusade broke up she went home to Mivon. People who knew her there said she had come back quieter, and a better fencer than when she left, and that she would not talk about the man or woman who had beaten her with a lie.{/n}",
+          "Text": "{n}Jannah Aldori stayed in Drezen until the war was over, in the last cell of the old gaol, with its door open. She trained with the Eagle Watch, fought where she was sent and never ran, and never once crossed blades with the Commander again.{/n}\n{n}When the crusade broke up she went home to Mivon. People who knew her there said she had come back quieter, and a better fencer than when she left, and that there was one bout in Drezen she would not talk about.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -330701,7 +331873,41 @@
               "Abort": false
             }
           ],
-          "Portrait": "Jannah"
+          "Portrait": "Jannah",
+          "Paragraphs": [
+            {
+              "Text": "{n}It was the Commander she would not talk about, and the lie the Commander had held to in the muster yard with four hundred watching. She said a blade could be forgiven anything but that.{/n}",
+              "Requires": [
+                "jannah.trickster.held_the_lie"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}When someone in Mivon asked her once how she had come to lose her only bout in Mendev, she said she hadn't lost it; it had been handed to her, in front of the whole muster, like alms. She said that was worse than a cut, and would say no more.{/n}",
+              "Requires": [
+                "jannah.trickster.threw_the_bout"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She never repeated what the Commander had said over her in the sand, before four hundred soldiers. The soldiers repeated it for her, for years.{/n}",
+              "Requires": [
+                "jannah.trickster.shamed_her"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She had drawn first blood on the Commander at the muster, fairly, and the Commander would not lie down in the sand for it. She said a victor who has to beg for her yield has not won anything, and she did not ask twice.{/n}",
+              "Requires": [
+                "jannah.trickster.refused_the_yield"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -331344,7 +332550,7 @@
               "Abort": false
             },
             {
-              "Text": "\"I made it my business to know them before I ever came to that cage.\"",
+              "Text": "\"I read you through the bars before I opened my mouth. The rest I learned standing there.\"",
               "Next": "planned",
               "Set": [
                 "jannah.circle.forms.told_planned"
@@ -331399,7 +332605,7 @@
         {
           "Id": "planned",
           "Speaker": "Jannah",
-          "Text": "\"Before you ever came to the cage.\" {n}She stops moving.{/n}\n\"You knew there was a deserter in the Molten Scar. You knew she was from Mivon. You went and found out what a Mivon fencer would do with a blade in her hand and her pride in her throat, and then you walked in and did it.\"\n{n}Something moves behind her eyes, and she doesn't let it out.{/n} \"That's either the most flattering thing anybody has ever done for me, or the most frightening. I'll decide when I know you better.\"",
+          "Text": "\"Through the bars.\" {n}She stops moving.{/n}\n\"You stood outside that cage and read me. My feet. My hands. The way I hold my head when I'm frightened. Then you said the forms back to me in my master's words, and made the challenge he'd have made, and I rose to it like a trout to a fly.\"\n{n}Something moves behind her eyes, and she doesn't let it out.{/n} \"That's either the most flattering thing anybody has ever done for me, or the most frightening. I'll decide when I know you better.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -334272,7 +335478,7 @@
         {
           "Id": "cage_planned",
           "Speaker": "Jannah",
-          "Text": "\"You told me you'd made it your business to know Mivon before you ever came to the cage. So you knew where to put the question. You didn't know me. You didn't know whether I'd take them, or whether my pride had died in there with everything else.\"\n\"And you swung anyway.\"",
+          "Text": "\"You told me you read me through the bars before you said a word. So you knew where to put the question. You didn't know me. You didn't know whether I'd take them, or whether my pride had died in there with everything else.\"\n\"And you swung anyway.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -337070,7 +338276,8 @@
       "Requires": [
         "trickster.ever",
         "jannah.circle.one_question",
-        "jannah.circle.walls"
+        "jannah.circle.walls",
+        "jannah.trickster.challenge"
       ],
       "Forbids": [
         "jannah.closed",
@@ -361022,7 +362229,7 @@
         {
           "Id": "promise",
           "Speaker": "Narrator",
-          "Text": "{n}\"You will recover, I promise you that. Tomorrow, come to the cathedral and say that you are expected by Terendelev, protector of Kenabres.\"{/n}\n{n}There was no tomorrow in Kenabres. That night the ground opened and Deskari came up out of it, and she went up to meet him, and she did not come down. You never went to the cathedral. There was nobody left there to expect you.{/n}",
+          "Text": "{n}\"You will recover, I promise you that. Tomorrow, come to the cathedral and say that you are expected by Terendelev, protector of Kenabres.\"{/n}\n{n}There was no tomorrow in Kenabres. Later that same day the ground opened and Deskari came up out of it, and she went up to meet him, and she did not come down. You never went to the cathedral. There was nobody left there to expect you.{/n}",
           "Choices": [
             {
               "Text": "\"I still haven't been to the cathedral.\"",
@@ -361058,7 +362265,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}The candle gutters and goes out. In the dark the wound aches, dull and patient, the way it has ached every night since the square: the pain she pried loose, come back, exactly as she warned you it would.{/n}\n{n}She kept every other promise she made that night. She kept the city until it killed her.{/n}",
+          "Text": "{n}The candle gutters and goes out. In the dark the wound aches, dull and patient, the way it has ached every night since the square: the pain she pried loose, come back, exactly as she warned you it would.{/n}\n{n}She kept every other promise she made that day. She kept the city until it killed her.{/n}",
           "Choices": [
             {
               "Text": "[Lie down. Sleep, if it comes.]",
@@ -361161,7 +362368,7 @@
           "Text": "\"You ask like someone who means to do something about it. May I ask why? Terendelev had a great many admirers. I do not recall that you were one of them.\"",
           "Choices": [
             {
-              "Text": "\"She healed me in the festival square, the night before Kenabres fell. She promised I'd recover.\"",
+              "Text": "\"She healed me in the festival square, the day Kenabres fell. She promised I'd recover.\"",
               "Next": "square",
               "Set": [
                 "terendelev.trickster.voice.asked"
@@ -362017,7 +363224,7 @@
           "Text": "\"And what would you do with it?\" {n}The voice is flat with exhaustion.{/n} \"Bleed on a pyre, and hope?\"",
           "Choices": [
             {
-              "Text": "[Trust your intuition] \"He holds you by a promise. The promise is his, and my blood burns what's his. Burn the hook out of you, and what's left can take the rest.\"",
+              "Text": "[Trust your intuition] \"He holds you by what he put into you: his purpose, grown into your bones. That is his, and my blood burns what's his. Burn the hook out of you, and what's left of you can do the rest.\"",
               "Next": "risk",
               "Set": [],
               "Requires": [],
@@ -362126,7 +363333,7 @@
         {
           "Id": "cut",
           "Speaker": "Narrator",
-          "Text": "{n}You take out your knife. The wound has never closed; it has only ever been persuaded to stop. You unpersuade it. The blade goes in along the old seam, and the pain that Terendelev once pried loose comes back all at once, as though it had been waiting at the door.{/n}\n{n}You hold your arm out over the fire and let the blood run down your wrist.{/n}",
+          "Text": "{n}You take out your knife. The wound has never closed; it has only ever been persuaded to stop. You unpersuade it. The blade goes in along the old seam, and the pain that Terendelev once pried loose comes back all at once, as though it had been waiting at the door.{/n}\n{n}You go down on your knees at the edge of the pyre and lean out over it, the cut side down, and let the blood run out from under your ribs into the fire.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -362951,7 +364158,7 @@
           "Text": "\"And what would you do with it?\" {n}The voice is flat with exhaustion.{/n} \"Bleed on a pyre, and hope?\"",
           "Choices": [
             {
-              "Text": "[Trust your intuition] \"He holds you by a promise. The promise is his, and my blood burns what's his. Burn the hook out of you, and what's left can take the rest.\"",
+              "Text": "[Trust your intuition] \"He holds you by what he put into you: his purpose, grown into your bones. That is his, and my blood burns what's his. Burn the hook out of you, and what's left of you can do the rest.\"",
               "Next": "risk",
               "Set": [],
               "Requires": [],
@@ -363060,7 +364267,7 @@
         {
           "Id": "cut",
           "Speaker": "Narrator",
-          "Text": "{n}You take out your knife. The wound has never closed; it has only ever been persuaded to stop. You unpersuade it. The blade goes in along the old seam, and the pain that Terendelev once pried loose comes back all at once, as though it had been waiting at the door.{/n}\n{n}You hold your arm out over the fire and let the blood run down your wrist.{/n}",
+          "Text": "{n}You take out your knife. The wound has never closed; it has only ever been persuaded to stop. You unpersuade it. The blade goes in along the old seam, and the pain that Terendelev once pried loose comes back all at once, as though it had been waiting at the door.{/n}\n{n}You go down on your knees at the edge of the pyre and lean out over it, the cut side down, and let the blood run out from under your ribs into the fire.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -363573,7 +364780,7 @@
           "Text": "{n}This time you do not need to look. Whatever breathes in the skull breathes very slowly, and it has been listening for hoofbeats.{/n} \"Someone came.\" {n}The voice is thinner than smoke.{/n} \"Nobody comes to a pyre once it is lit. It is not done. Who are you, and what do you want?\"",
           "Choices": [
             {
-              "Text": "\"The wounded one from the festival square. You healed me, the night before Kenabres fell. I've come to ask you to come back.\"",
+              "Text": "\"The wounded one from the festival square. You healed me, the day Kenabres fell. I've come to ask you to come back.\"",
               "Next": "ask",
               "Set": [],
               "Requires": [
@@ -363701,7 +364908,7 @@
         {
           "Id": "cut",
           "Speaker": "Narrator",
-          "Text": "{n}The wound is already open. You open it further. The blood runs down your wrist onto the ash, and where it finds what is left of the ravener it burns white, and where it finds the small flame at the heart of the skull, the flame drinks.{/n}\n{n}It takes longer than you would have liked. You are on your knees in the ash by the end of it, and a woman is on her knees in front of you, naked and grey with cinders, holding your wrist in both hands as though it were the only warm thing in the world.{/n}",
+          "Text": "{n}The wound is already open. You open it further, and kneel over the ash with the cut side down, and the blood runs out from under your ribs onto it, and where it finds what is left of the ravener it burns white, and where it finds the small flame at the heart of the skull, the flame drinks.{/n}\n{n}It takes longer than you would have liked. You are on your knees in the ash by the end of it, and a woman is on her knees in front of you, naked and grey with cinders, holding your hand in both of hers as though it were the only warm thing in the world.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -363788,7 +364995,7 @@
         {
           "Id": "start",
           "Speaker": "Seelah",
-          "Text": "{n}Seelah is sitting on the edge of the practice ring with a whetstone she is not using.{/n} \"So. The north turret.\" {n}She grins, then doesn't.{/n} \"When I was a street kid in Kenabres I used to work the festival crowds. She caught my wrist once, in her human shape, with my hand in a merchant's purse. She didn't call the watch. She asked me what I was going to buy with it, and when I said bread she laughed like bells and bought me the bread herself.\" {n}She turns the stone over.{/n} \"The sentries say she came down off that turret this morning laughing like that again. Nobody else in Drezen had ever heard it. I had.\" {n}Her voice roughens.{/n} \"Be good to her, Commander. She's been somebody's weapon. Don't let her be anybody's again. Not even yours.\"",
+          "Text": "{n}Seelah is sitting on the edge of the practice ring with a whetstone she is not using.{/n} \"So. The north turret.\" {n}She grins, then doesn't.{/n} \"My first festival in Kenabres, when I was still new to the order. Old habits: I caught my own hand halfway into a merchant's purse, and when I looked round she was standing right behind me in her human shape. She didn't call the watch. She asked whether the Inheritor paid her paladins so badly, and when I said yes, she laughed like bells and bought me a pie.\" {n}She turns the stone over.{/n} \"The sentries say she came down off that turret this morning laughing like that again. Nobody else in Drezen had ever heard it. I had.\" {n}Her voice roughens.{/n} \"Be good to her, Commander. She's been somebody's weapon. Don't let her be anybody's again. Not even yours.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -363981,7 +365188,11 @@
       "Optional": false,
       "Relationship": "terendelev",
       "Reaction": true,
+      "ForbidOverrides": {
+        "galfrey.dead": "galfrey.trickster.returned"
+      },
       "Kind": "letter",
+      "ManualOnly": true,
       "Remote": true,
       "Sender": "Galfrey"
     },
@@ -365159,6 +366370,34 @@
               "Next": "iz",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "iz.left_early"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "iz_queen",
+              "Set": [],
+              "Requires": [
+                "iz.left_early"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Terendelev"
+        },
+        {
+          "Id": "iz_queen",
+          "Speaker": "Terendelev",
+          "Text": "{n}She turns on the crate and looks at you properly.{/n} \"The second death was the Queen's. Her knights, her lances, her chaplains singing. I remember every one of their faces. Not yours; you were not there.\" {n}A pause.{/n} \"Yours I saw afterwards, through the smoke over what was left of me, with a knife in your hand. That was the first kind face in a year.\" {n}Her hands tighten on the cloak.{/n} \"And between the two deaths it was not dark, exactly. It was being used. I would take the dark.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "sums",
+              "Set": [],
+              "Requires": [],
               "Forbids": [],
               "Abort": false
             }
@@ -365348,6 +366587,34 @@
             {
               "Text": "Continue",
               "Next": "iz",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "iz.left_early"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "iz_queen",
+              "Set": [],
+              "Requires": [
+                "iz.left_early"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Terendelev"
+        },
+        {
+          "Id": "iz_queen",
+          "Speaker": "Terendelev",
+          "Text": "{n}She turns on the crate and looks at you properly.{/n} \"The second death was the Queen's. Her knights, her lances, her chaplains singing. I remember every one of their faces. Not yours; you were not there.\" {n}A pause.{/n} \"Yours I saw afterwards, through the smoke over what was left of me, with a knife in your hand. That was the first kind face in a year.\" {n}Her hands tighten on the cloak.{/n} \"And between the two deaths it was not dark, exactly. It was being used. I would take the dark.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "sums",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -366365,7 +367632,7 @@
         {
           "Id": "names",
           "Speaker": "Terendelev",
-          "Text": "\"Tell me, then, and I will tell you whether I knew them.\" {n}She begins to count on her fingers, and it is clear she has been making this list all night.{/n} \"The Tirabade girl with the bad leg, who went over the roofs faster than the watch could run on the streets. The half-orc knight on the east wall who sang to her sword when she thought nobody could hear. The little thief who was always somewhere she should not be, and then one day took the Inheritor's oath and was always exactly where she should be.\" {n}Her fingers stop.{/n} \"Hulrun. The old goat.\"",
+          "Text": "\"Tell me, then, and I will tell you whether I knew them.\" {n}She begins to count on her fingers, and it is clear she has been making this list all night.{/n} \"The Tirabade girl with the bad leg, who went over the roofs faster than the watch could run on the streets. The half-orc knight on the east wall who sang to her sword when she thought nobody could hear. The young paladin of the Inheritor with a thief's quick hands, who laughed out loud in the cathedral and was forgiven for it.\" {n}Her fingers stop.{/n} \"Hulrun. The old goat.\"",
           "Choices": [
             {
               "Text": "\"Ask them yourself. They'd want to see you.\"",
@@ -366514,7 +367781,7 @@
         {
           "Id": "names",
           "Speaker": "Terendelev",
-          "Text": "\"Tell me, then, and I will tell you whether I knew them.\" {n}She begins to count on her fingers, and it is clear she has been making this list all night.{/n} \"The Tirabade girl with the bad leg, who went over the roofs faster than the watch could run on the streets. The half-orc knight on the east wall who sang to her sword when she thought nobody could hear. The little thief who was always somewhere she should not be, and then one day took the Inheritor's oath and was always exactly where she should be.\" {n}Her fingers stop.{/n} \"Hulrun. The old goat.\"",
+          "Text": "\"Tell me, then, and I will tell you whether I knew them.\" {n}She begins to count on her fingers, and it is clear she has been making this list all night.{/n} \"The Tirabade girl with the bad leg, who went over the roofs faster than the watch could run on the streets. The half-orc knight on the east wall who sang to her sword when she thought nobody could hear. The young paladin of the Inheritor with a thief's quick hands, who laughed out loud in the cathedral and was forgiven for it.\" {n}Her fingers stop.{/n} \"Hulrun. The old goat.\"",
           "Choices": [
             {
               "Text": "\"Ask them yourself. They'd want to see you.\"",
@@ -366991,7 +368258,9 @@
               "Requires": [
                 "terendelev.trickster.saw_the_queen_fall"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "galfrey.trickster.returned"
+              ],
               "Abort": false
             },
             {
@@ -367002,8 +368271,47 @@
                 "galfrey.dead"
               ],
               "Forbids": [
-                "terendelev.trickster.saw_the_queen_fall"
+                "terendelev.trickster.saw_the_queen_fall",
+                "galfrey.trickster.returned"
               ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "queen_back",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Terendelev"
+        },
+        {
+          "Id": "queen_back",
+          "Speaker": "Terendelev",
+          "Text": "\"She died at Iz, fighting the thing he made of me. My claws. My sorcery. I felt her go, the way you feel a candle go out in the next room.\" {n}Then, very carefully, as if the words might break:{/n} \"And now she is alive. You would not let that stand either. I saw her cross the chapel yard last night, with her knights around her, and she did not see me, and I stood behind a pillar like a thief.\"\n\"It does not unmake it. She lives, and I still killed her. I will carry that, and you will not tell me it was his and not mine.\" {n}She looks toward the chapel.{/n} \"One day I will go and kneel to her, and she will have to decide what to do with the dragon who killed her. I should like to see her face. I think it will be a very royal face.\"",
+          "Choices": [
+            {
+              "Text": "\"She'll forgive you. She's been dead too; she knows.\"",
+              "Next": null,
+              "Set": [
+                "terendelev.trickster.watch.galfrey_spoken"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Go with her as far as the chapel yard.]",
+              "Next": null,
+              "Set": [
+                "terendelev.trickster.watch.galfrey_spoken"
+              ],
+              "Requires": [],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -367187,7 +368495,9 @@
               "Requires": [
                 "terendelev.trickster.saw_the_queen_fall"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "galfrey.trickster.returned"
+              ],
               "Abort": false
             },
             {
@@ -367198,8 +368508,47 @@
                 "galfrey.dead"
               ],
               "Forbids": [
-                "terendelev.trickster.saw_the_queen_fall"
+                "terendelev.trickster.saw_the_queen_fall",
+                "galfrey.trickster.returned"
               ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "queen_back",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Terendelev"
+        },
+        {
+          "Id": "queen_back",
+          "Speaker": "Terendelev",
+          "Text": "\"She died at Iz, fighting the thing he made of me. My claws. My sorcery. I felt her go, the way you feel a candle go out in the next room.\" {n}Then, very carefully, as if the words might break:{/n} \"And now she is alive. You would not let that stand either. I saw her cross the chapel yard last night, with her knights around her, and she did not see me, and I stood behind a pillar like a thief.\"\n\"It does not unmake it. She lives, and I still killed her. I will carry that, and you will not tell me it was his and not mine.\" {n}She looks toward the chapel.{/n} \"One day I will go and kneel to her, and she will have to decide what to do with the dragon who killed her. I should like to see her face. I think it will be a very royal face.\"",
+          "Choices": [
+            {
+              "Text": "\"She'll forgive you. She's been dead too; she knows.\"",
+              "Next": null,
+              "Set": [
+                "terendelev.trickster.watch.galfrey_spoken"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Go with her as far as the chapel yard.]",
+              "Next": null,
+              "Set": [
+                "terendelev.trickster.watch.galfrey_spoken"
+              ],
+              "Requires": [],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -371494,7 +372843,7 @@
         {
           "Id": "start",
           "Speaker": "Terendelev",
-          "Text": "{n}The letter is written in a large, square, careful hand on a page torn from a quartermaster's ledger, and it is headed, in capitals: REPORT OF THE NORTH TURRET WATCH.{/n}\n\"Nights since the Commander's departure: four. Alarms: none. Sentries reprimanded for sleeping: one, twice. Snow: a great deal. Dressings changed: none, the wound being absent from its post, which I have entered in the log as a dereliction.\"",
+          "Text": "{n}The letter is written in a large, square, careful hand on a page torn from a quartermaster's ledger, and it is headed, in capitals: REPORT OF THE NORTH TURRET WATCH.{/n}\n\"Nights stood on the north turret: four. Alarms: none. Sentries reprimanded for sleeping: one, twice. Snow: a great deal. Dressings changed: none, the wound having failed to report to its post, which I have entered in the log as a dereliction.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -371510,7 +372859,7 @@
         {
           "Id": "more",
           "Speaker": "Terendelev",
-          "Text": "\"Otherwise: the woman who fries bread by the lower gate asks after you. I have told her you are away on crusade business and will be back soon, and she has decided that you are my husband, and gives me the burnt pieces out of pity. I have not corrected her.\n\"The Worldwound's weather is loud this week. I feel it in my wrists. Keep the dressing clean. Change it at the proper hour, not whenever you remember. I will know.\n\"Come back to your post. The watch is very dull without its wound. T.\"",
+          "Text": "\"Otherwise: the woman who fries bread by the lower gate asks after you. I have told her you are busy with crusade business, and she has decided that you are my husband, and gives me the burnt pieces out of pity. I have not corrected her.\n\"The Worldwound's weather is loud this week. I feel it in my wrists. Keep the dressing clean. Change it at the proper hour, not whenever you remember. I will know.\n\"Report to your post. The watch is very dull without its wound. T.\"",
           "Choices": [
             {
               "Text": "[Fold the letter into your coat.]",
@@ -371541,6 +372890,7 @@
       ],
       "Remote": true,
       "Kind": "letter",
+      "ManualOnly": true,
       "Sender": "Terendelev"
     },
     {
@@ -371554,7 +372904,7 @@
         {
           "Id": "start",
           "Speaker": "Terendelev",
-          "Text": "{n}The letter is short, and written in a large, square, very careful hand.{/n}\n\"Commander. Nights stood since your departure: four. The dressing linen is boiled and folded and waits in your rooms for your return. The debt stands at its full sum. I record it here so that you will know I have not forgotten it.\n\"I remain, as I undertook, your debtor. Terendelev.\"",
+          "Text": "{n}The letter is short, and written in a large, square, very careful hand.{/n}\n\"Commander. Nights stood on the turret since I undertook it: four. The dressing linen is boiled and folded and waits in your rooms. The debt stands at its full sum. I record it here so that you will know I have not forgotten it.\n\"I remain, as I undertook, your debtor. Terendelev.\"",
           "Choices": [
             {
               "Text": "[Read it again, looking for anything else in it.]",
@@ -371828,6 +373178,7 @@
       ],
       "Remote": true,
       "Kind": "visit",
+      "ManualOnly": true,
       "Sender": "Terendelev"
     },
     {
@@ -372469,7 +373820,7 @@
         {
           "Id": "start",
           "Speaker": "Terendelev",
-          "Text": "{n}Another page torn from the quartermaster's ledger, in the same large square hand. This one is not headed at all.{/n}\n\"The Wound was loud last night, loud as I have ever felt it, and then very suddenly quiet, and I stood at the parapet until the sixth bell waiting for it to be loud again. It was not. I do not know what that means. I do not like not knowing.\n\"I changed my own dressing this morning, at the proper hour, on the palm I cut in the proof, so that my hands would not forget the knot.\"",
+          "Text": "{n}Another page torn from the quartermaster's ledger, in the same large square hand. This one is not headed at all.{/n}\n\"The Wound was loud last night, loud as I have ever felt it, and then very suddenly quiet, and I stood at the parapet until the sixth bell waiting for it to be loud again. It was not. I do not know what that means. I do not like not knowing.\n\"I folded a fresh dressing this morning, at the proper hour, and tied the knot round my own bare wrist and untied it again, so that my hands would not forget it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -372485,7 +373836,7 @@
         {
           "Id": "end",
           "Speaker": "Terendelev",
-          "Text": "\"The woman with the honey has given me a whole loaf for you, which is on your table and going stale, and the ribbon-seller has given me a ribbon for you, which is blue, and which I am to tie on you personally when you come back, she says, for luck. I have agreed to do this. You will not fidget. That is an order from the watch.\n\"I have been careful for three hundred years and it has not once felt like this. Come home. T.\"",
+          "Text": "\"The woman with the honey has given me a whole loaf for you, which is on your table and going stale, and the ribbon-seller has given me a ribbon for you, which is blue, and which I am to tie on you personally the next time I see you, she says, for luck. I have agreed to do this. You will not fidget. That is an order from the watch.\n\"I have been careful for three hundred years and it has not once felt like this. Come up to the turret. T.\"",
           "Choices": [
             {
               "Text": "[Read it again.]",
@@ -372516,6 +373867,7 @@
       ],
       "Remote": true,
       "Kind": "letter",
+      "ManualOnly": true,
       "Sender": "Terendelev"
     },
     {
@@ -372972,7 +374324,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The column comes back through the gate of Drezen after dark, filthy and bleeding and too tired to be glad of being alive. You come in last, as you always do, with the wound soaked through under your armour and a fresh cut down your forearm from something you did not see coming.{/n}\n{n}She is standing in the gateway. She has been standing there, the gate-sergeant tells you later, since the scouts rode in with news of the fight, which was the middle of the afternoon.{/n}",
+          "Text": "{n}You come down into the citadel yard at dusk after a day of councils and drill, and some time in the afternoon the old wound in your side, the one she keeps dressed, opened under your coat without your noticing. You notice now: the shirt is stuck to it.{/n}\n{n}She is standing at the foot of the stair. She has been standing there, the stair-sentry tells you later, since a clerk mentioned on the turret that the Commander had been seen at the council table with a hand pressed to one side, which was the middle of the afternoon.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -372988,7 +374340,7 @@
         {
           "Id": "look",
           "Speaker": "Terendelev",
-          "Text": "{n}She looks at your arm. She looks at the dark wet patch spreading over your side where the dressing has given up. She takes one very long breath, and it smokes in the torchlight.{/n} \"Get down off that horse,\" says Terendelev, \"before you fall off it, and then I will decide whether to heal you or to kill you.\"",
+          "Text": "{n}She looks at your arm. She looks at the dark wet patch spreading over your side where the dressing has given up. She takes one very long breath, and it smokes in the torchlight.{/n} \"Sit down on that step,\" says Terendelev, \"before you fall down it, and then I will decide whether to heal you or to kill you.\"",
           "Choices": [
             {
               "Text": "\"It's a scratch.\"",
@@ -372999,7 +374351,7 @@
               "Abort": false
             },
             {
-              "Text": "[Get down off the horse.]",
+              "Text": "[Sit down on the step.]",
               "Next": "down",
               "Set": [],
               "Requires": [],
@@ -373012,7 +374364,7 @@
         {
           "Id": "scratch",
           "Speaker": "Terendelev",
-          "Text": "\"It is not a scratch. I can smell it from here, and so can every dog in the lower town.\" {n}She takes hold of your belt and pulls you down off the horse herself, not gently, and catches you when your knees go.{/n} \"You have a hole in you that I made a promise over, crusader. You do not get to take it into a fight and bring it back like this.\"",
+          "Text": "\"It is not a scratch. I can smell it from here, and so can every dog in the lower town.\" {n}She takes hold of your belt and sits you down on the step herself, not gently, and catches you when your knees go.{/n} \"You have a hole in you that I made a promise over, crusader. You do not get to take it into a fight and bring it back like this.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -373028,7 +374380,7 @@
         {
           "Id": "down",
           "Speaker": "Narrator",
-          "Text": "{n}She sits you on the mounting-block by the gate and cuts the dressing away with your own knife, in front of the whole returning column, and says the old words over the wound with her palm flat on it and her other hand gripping your wrist so hard it hurts. The pain goes quiet. The bleeding slows, and does not stop. She does the arm next, and that closes, clean, under her hand.{/n}",
+          "Text": "{n}She cuts the dressing away with your own knife, there on the stair, in front of the whole yard, and says the old words over the wound with her palm flat on it and her other hand gripping your wrist so hard it hurts. The pain goes quiet. The bleeding slows, and does not stop. It never does, for her; it only slows.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -373044,7 +374396,7 @@
         {
           "Id": "angry",
           "Speaker": "Terendelev",
-          "Text": "\"I stood in that gate for six hours.\" {n}She is binding the wound again, very fast, very tight.{/n} \"I have stood watches over the Wardstone in the dead of winter with demons in the snow, and I have never once been as frightened as I was in that gate. I cannot fly to you. I cannot even follow you. I can only stand here and count riders, and yours was the last horse.\" {n}The knot goes in hard.{/n} \"Do not do that to me again.\"",
+          "Text": "\"I stood at the foot of that stair for three hours.\" {n}She is binding the wound again, very fast, very tight.{/n} \"I have stood watches over the Wardstone in the dead of winter with demons in the snow, and I have never once been as frightened as I was on that stair. You sat at a table all afternoon bleeding into your shirt, and signed things, and told nobody. I cannot fly to you. I cannot even come into your council. I can only stand here and count the doors you might come out of.\" {n}The knot goes in hard.{/n} \"Do not do that to me again.\"",
           "Choices": [
             {
               "Text": "\"I can't promise that. It's a war.\"",
@@ -373110,7 +374462,7 @@
         {
           "Id": "hand",
           "Speaker": "Terendelev",
-          "Text": "{n}She lets you. Her hand is shaking; you did not know dragons' hands could shake. She stands in the gate of Drezen with your hand around hers and the whole column filing past pretending not to see, and does not say anything at all until the last of them has gone by.{/n}\n\"Six hours,\" she says finally, very low. \"Come inside. You are getting blood on the only coat that fits me.\"",
+          "Text": "{n}She lets you. Her hand is shaking; you did not know dragons' hands could shake. She stands on the stair with your hand around hers and the whole yard crossing past pretending not to see, and does not say anything at all until the last of them has gone in.{/n}\n\"Three hours,\" she says finally, very low. \"Come inside. You are getting blood on the only coat that fits me.\"",
           "Choices": [
             {
               "Text": "[Go inside with her.]",
@@ -373141,6 +374493,7 @@
       ],
       "Remote": true,
       "Kind": "visit",
+      "ManualOnly": true,
       "Sender": "Terendelev"
     },
     {
@@ -374342,7 +375695,7 @@
         {
           "Id": "sky",
           "Speaker": "Terendelev",
-          "Text": "{n}Later, when the column halts to water the horses and she has got down, with some difficulty and more dignity, she stands at the edge of the road looking back at Iz and the sky over it.{/n} \"I used to fly over this,\" she says. \"Not here; further east, at the edge of the Wound, when I was young and the crusades were new. From up there it looked like a burn on the world. From down here it looks like the whole world.\" {n}She is quiet.{/n} \"I did not know that. I should have. It would have made me kinder.\"",
+          "Text": "{n}Later, when the column halts to water the horses and she has got down, with some difficulty and more dignity, she stands at the edge of the road looking back at Iz and the sky over it.{/n} \"I used to fly over this,\" she says. \"Not here; further east, at the edge of the Wound, when I was young and the crusades were new. From up there it looked like a burn on the world. From down here it looks like the whole world.\" {n}She is quiet.{/n} \"I did not know that. I should have. It would have made me humbler.\"",
           "Choices": [
             {
               "Text": "\"You were kind enough. You knelt on the cobbles for a stranger.\"",
@@ -374366,7 +375719,7 @@
         {
           "Id": "kind",
           "Speaker": "Terendelev",
-          "Text": "\"I knelt on the cobbles for a stranger, and then I stood up, and I flew away over the roofs, and I did not think of them again until the next stranger.\" {n}Not bitterly; only exactly.{/n} \"A dragon's kindness is a very high, very distant thing, crusader. It comes down like weather. I would like to try the other kind, now that I am down here. The kind that stays.\"",
+          "Text": "\"I knelt on the cobbles for strangers for three hundred years, and I loved every one of them, crusader. I never once regretted them.\" {n}Not bitterly; only exactly.{/n} \"But I loved them the way a dragon loves a city: from above, all at once, with the whole of it in view. Now I am down among them with no wings, and I have to love them one door at a time, and knock, and wait to be let in. I should like to learn how. I think it is harder.\"",
           "Choices": [
             {
               "Text": "[Help her back up onto the mare.]",
@@ -374418,6 +375771,7 @@
       ],
       "Remote": true,
       "Kind": "visit",
+      "ManualOnly": true,
       "Sender": "Terendelev"
     },
     {
@@ -418224,8 +419578,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -418605,7 +419959,7 @@
       "Title": "What she carries out",
       "Description": "Targona has begun sending me pages she wants someone to read with her. Our earlier choices remain our own.",
       "Objective": "Read Targona's correspondence",
-      "Guidance": "After completing RanRomance's Angelic Treatment finale, read the correspondence in Drezen. Allow time for replies. On the Trickster path, a Commander who uses Lariel's light without spending it, in Areelu's laboratory or in Drezen's field infirmary, may find Targona at the cots behind the quartermaster's stores in Chapter 3 or Chapter 5.",
+      "Guidance": "After completing RanRomance's Angelic Treatment finale, read the correspondence in Drezen. Allow time for replies. On the Trickster path, a Commander who keeps Areelu's sleep for her in the laboratory (the Suture's key in hand, before the choice at her barrier), or who uses Lariel's light without spending it in Drezen's field infirmary, may find Targona at the cots behind the quartermaster's stores in Chapter 3 or Chapter 5.",
       "StartedFlag": "targona.started",
       "ClosedFlag": "targona.closed",
       "CommittedFlag": "targona.committed",
@@ -419516,7 +420870,7 @@
     },
     "terendelev": {
       "Title": "Restitution",
-      "Description": "Terendelev healed me on the festival square in Kenabres, the night before the city fell, and promised I would recover. She died that night. Deskari raised what was left of her and set it to guard Iz. The crusade came to Iz to give her rest. I mean to find out whether rest is all she has left.",
+      "Description": "Terendelev healed me on the festival square in Kenabres, on the day the city fell, and promised I would recover. She died before the day was out. Deskari raised what was left of her and set it to guard Iz. The crusade came to Iz to give her rest. I mean to find out whether rest is all she has left.",
       "Objective": "Find out what is left of Terendelev",
       "Guidance": "On the Trickster path, after the crusade puts down the monster made from her remains at Iz, go to the burning bones before you leave the Queen's camp. Hearing the Storyteller's vision of her, or his story of her corruption, will help you see what is there. If you miss it, the wound will not let you forget.",
       "StartedFlag": "terendelev.started",
@@ -420789,6 +422143,15 @@
     "chadali.needle_hurt": [
       "86822037eac848943abe4be795037ae7"
     ],
+    "delamere.erastil_answered": [
+      "a58f2095249a44549a4dfd2d60a9b6e1"
+    ],
+    "delamere.tomb_opened_forced": [
+      "a70275fb77f483847a68fe01586091ec"
+    ],
+    "delamere.tomb_opened_peaceful": [
+      "4a58ea0622eb9924abb1579306f5a395"
+    ],
     "kaylessa.anemora_told": [
       "c0fb6762c057bcc4894d1892a9eb22fc"
     ],
@@ -421997,6 +423360,20 @@
         "delamere.trickster.late_committed"
       ]
     ],
+    "delamere.tomb_opened": [
+      [
+        "delamere.erastil_answered"
+      ],
+      [
+        "delamere.tomb_opened_forced"
+      ],
+      [
+        "delamere.tomb_opened_peaceful"
+      ],
+      [
+        "delamere.relics_taken"
+      ]
+    ],
     "kaylessa.trickster.presence_on": [
       [
         "kaylessa.dead.latched",
@@ -422121,9 +423498,6 @@
       ]
     ],
     "jannah.trickster.alive.q3_settled": [
-      [
-        "jannah.joined"
-      ],
       [
         "jannah.refused_q3"
       ],
@@ -424368,6 +425742,7 @@
     "terendelev.claw_held": "66afc74ef27c7244eac8f8d376cd7947",
     "lastcall.flask_held": "f0641f67501a4084897d9bcbc00ddc99",
     "terendelev.scale_held": "816f244523b5455a85ae06db452d4330",
+    "targona.abyss_key_held": "b5b0214f3ce3ded42a62094b87a434dd",
     "soana.medallion_held": "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53",
     "seelah.diamond_held": "6a7cdeb14fc6ef44580cf639c5cdc113",
     "kiana.counterfeit_held": "3e4ce583dc71401588f33f8192c252cd",

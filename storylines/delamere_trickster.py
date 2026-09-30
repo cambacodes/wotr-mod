@@ -58,6 +58,11 @@ KYADO_DEAD = "kyado.dead"                          # UnlockableFlag KyadoDead
 RELICS_TAKEN = "delamere.relics_taken"             # UnlockableFlag GotDelamereLoot (Cue_0052 / Cue_0056 OnStop)
 RELICS_CURSED = "delamere.relics_taken_forced"     # SelectedAnswers TombOfDelamere/Answer_0048 (the forced tomb's relics)
 BOW_HELD = "delamere.bow_held"                     # InventoryItems DelameresBowItem
+# Quality pass Q6 (INT/CAN): the tomb's actual native outcomes, not mere contact with the book event.
+ERASTIL_ANSWERED = "delamere.erastil_answered"     # SeenCues TombOfDelamere_BookEvent/Cue_0067 a58f2095 (the Commander's own prayer)
+OPENED_FORCED = "delamere.tomb_opened_forced"      # SeenCues Cue_0053 a70275fb (the body seen in a forced tomb)
+OPENED_PEACEFUL = "delamere.tomb_opened_peaceful"  # SeenCues Cue_0057 4a58ea06 (the body seen in an opened tomb)
+TOMB_OPENED = "delamere.tomb_opened"               # Derived: any of the three
 CURSED_BOW_HELD = "delamere.cursed_bow_held"       # InventoryItems CursedDelameresBowItem
 
 RETURNED = P + "returned"
@@ -85,11 +90,14 @@ DERIVED = {
     # 05 §2.1: eligibility ("delamere.harem.eligible") is derived by household.py from PARTNERS (committed or late).
     # 05 §2.5 voice note: a household is a village she can count (fifty-three, everyone known by name), never a city.
     "delamere.harem.voice.a_village_not_a_city": [[COMMITTED], [LATE_COMMITTED]],
+    TOMB_OPENED: [[ERASTIL_ANSWERED], [OPENED_FORCED], [OPENED_PEACEFUL], [RELICS_TAKEN]],   # relics are taken only from an open stone
 }
 BINDINGS = {
     "UnlockableFlags": {RELICS_TAKEN: "3de8e7db06d4b9043bddfa77888ecfa5"},     # GotDelamereLoot
     "SelectedAnswers": {RELICS_CURSED: "3357022e6d1c5e047a0075a223606210"},    # TombOfDelamere_BookEvent/Answer_0048
     "InventoryItems": {BOW_HELD: BOW_ITEM, CURSED_BOW_HELD: CURSED_BOW_ITEM},
+    "SeenCues": {ERASTIL_ANSWERED: "a58f2095249a44549a4dfd2d60a9b6e1", OPENED_FORCED: "a70275fb77f483847a68fe01586091ec",
+                 OPENED_PEACEFUL: "4a58ea0622eb9924abb1579306f5a395"},
 }
 
 RELATIONSHIP = dict(
@@ -223,14 +231,14 @@ def waking(place):
     """The waking as nodes for one place. Only the Kyado place has conversant lines; the others are pages."""
     t = PLACES[place]
     crypt = place != "drezen"
-    nodes = [t["open"], nar("stair", t["stair"], c("Continue", "body_open", requires=(TOMB_VISITED,)),
-                            c("Continue", "body_sealed", forbids=(TOMB_VISITED,)))]
+    nodes = [t["open"], nar("stair", t["stair"], c("Continue", "body_open", requires=(TOMB_OPENED,)),
+                            c("Continue", "body_sealed", forbids=(TOMB_OPENED,)))]
     if not crypt:
         nodes[1] = nar("stair", t["stair"], c("Continue", "body_drezen"))
-        nodes.append(nar("body_drezen", '''{n}She lies as the crusade laid her, on her back, with the lid set aside so the pilgrims can see her face. A tall woman gone to leather and bone, a dark mane of hair spread on the stone, the stag-hide breastplate laced over her ribs and the antler bow still locked in her hands.{/n}''',
+        nodes.append(nar("body_drezen", '''{n}She lies as the crusade laid her, on her back, with the lid set aside so the pilgrims can see her face. A tall woman gone to leather and bone, a dark mane of hair spread on the stone, old grave-leathers laced over her ribs and the antler bow still locked in her hands.{/n}''',
                          c("Continue", "horn")))
     crypt_nodes = [
-        nar("body_open", '''{n}The lid stands aside where you left it. She lies as you last saw her: a tall woman gone to leather and bone, a dark mane of hair spread on the stone, the stag-hide breastplate laced over her ribs. Above her head the horn hangs on its iron peg, exactly where it has hung since the Kellids closed her in.{/n}''',
+        nar("body_open", '''{n}You have looked on her once before. You set your shoulder to the lid until the whole of her lies open to the light, as you last saw her: a tall woman gone to leather and bone, a dark mane of hair spread on the stone, old grave-leathers laced over her ribs. Above her head the horn hangs on its iron peg, exactly where it has hung since the Kellids closed her in.{/n}''',
             c("Continue", "in_hands", forbids=(RELICS_TAKEN,)),
             c("Continue", "given_back", requires=(RELICS_TAKEN, BOW_RETURNED)),
             c("Continue", "taken_held", requires=(RELICS_TAKEN, BOW_HELD), forbids=(BOW_RETURNED,)),
@@ -280,7 +288,7 @@ def waking(place):
 {n}It hits the walls and does not stop there. It goes up and out, and somewhere far off in the dark, over woods that have not heard that call in a very long time, something answers.{/n}
 {n}Then the silence. Then, very close, a breath.{/n}''',
             c("Continue", "rise")),
-        nar("rise", '''{n}It is not how the dead get up in stories. There is no green fire in her eyes, no rattle of bone on stone. There is breath: one long, dragging breath, as if the whole crypt had been holding it for her. Her ribs lift under the stag-hide and do not fall back.{/n}
+        nar("rise", '''{n}It is not how the dead get up in stories. There is no green fire in her eyes, no rattle of bone on stone. There is breath: one long, dragging breath, as if the whole crypt had been holding it for her. Her ribs lift under the old leather and do not fall back.{/n}
 {n}The leather of her face goes dark and soft, and then it is skin, grey with dust, and then it is not grey. Her eyes open. They are brown, and human, and they are looking straight at you over the lip of the stone.{/n}''',
             c("Continue", "draw_antler", forbids=(YEW_BOW,)),
             c("Continue", "draw_yew", requires=(YEW_BOW,))),
@@ -338,7 +346,7 @@ def waking(place):
         t["after"],
         t["not_grave"],
         dl("cut", '''{n}She cuts the arrow out of you with the same knife, quickly and without apology, the way you would cut a barb out of a hound. The head has gone into the bone. When it comes free you hear it grate.{/n}
-"You will walk crooked, stag. For the rest of your life." {n}She says it without pity, as a fact about weather.{/n} "That is what a good run costs. Every beast I ever took paid more."''',
+"You will walk crooked, stag." {n}She says it without pity, as a fact about weather.{/n} "Your city priests can sing a leg straight, I am told. Let them, and you are no stag of mine, and the hunt is over, and I will know it the first time I see you run. Keep my mark, and I keep my day. That is what a good run costs. Every beast I ever took paid more."''',
             c("Continue", "right")),
         dl("right", '''{n}She binds the leg with a strip torn from her own shroud, and pulls the knot tight enough to make you see stars.{/n}
 "Hear me, because I will say it once. I did not finish you. That means the hunt is not over; it means only that I have let you go for now. A stag that has asked for another day owes the hunter that day. When I want it, I will come for it."''',
@@ -382,8 +390,10 @@ visit(P + "drezen.stag", "The stag's call", waking("drezen"),
 
 # --- Reactions (Kyado, her prior; Ulbrig, a Kellid; Woljif, who once prayed to her in her temple, Cue_0146) ------------
 
-ULBRIG = dict(requires=("ulbrig.in_party",), forbids=("ulbrig.dead", "ulbrig.kicked_out"))
-WOLJIF = dict(forbids=("woljif.dead", "woljif.kicked_out"))
+# Quality pass Q6 (COX): the ledger allocates Delamere's reactions to Kyado alone; Ulbrig's and Woljif's lines are retired by
+# gating (they forbid chapter_later, which the runtime holds in every chapter >= 2), their ids kept for saves.
+ULBRIG = dict(requires=("ulbrig.in_party",), forbids=("ulbrig.dead", "ulbrig.kicked_out", "chapter_later"))
+WOLJIF = dict(forbids=("woljif.dead", "woljif.kicked_out", "chapter_later"))
 
 SCENES.append(reaction("Kyado", P + "react.kyado_woken", (RETURNED,),
     '''{n}Kyado is on his knees by the altar with a brush and a pail, scrubbing at a stain that is not there any more.{/n} "She eats everything, Commander. Everything. She ate the pilgrims' bread and the turnips and the candles, nearly. She says the dead don't get hungry. I looked it up in Rathimus's scrolls, and they don't." {n}He sits back and wipes his forehead with his wrist.{/n} "She told me I sweep like a man who expects to be forgiven for it. Then she took the broom and did it herself, and it's the cleanest it's ever been. I don't know if I'm the prior any more. I don't think I mind."''',
@@ -408,9 +418,12 @@ SCENES.append(reaction("Woljif", P + "react.woljif_limp", (RETURNED, LIMP),
 EPI = "DelamereEpilogue"
 
 
-def epilogue(id, text, requires, forbids=(), paragraphs=()):
+def epilogue(id, text, requires, forbids=(), paragraphs=(), **extra):
     SCENES.append(scene(P + "epilogue." + id, "", EPI, 6, "", [nar("page", text, paragraphs=paragraphs)],
-                        requires=("trickster.ever", *requires), forbids=forbids, last=6, Relationship="delamere"))
+                        requires=("trickster.ever", *requires), forbids=forbids, last=6, Relationship="delamere", **extra))
+
+
+SURVIVED = dict(ForbidOverrides={"sacrifice": "trickster.commander_back"})
 
 
 VILLAGE_GIVEN = P + "village.given"
@@ -447,12 +460,17 @@ EPILOGUE_PARAGRAPHS = (
 
 epilogue("caught", '''{n}Delamere the Blessed hunted the woods below her temple for years after the war, and the Worldwound's edge beyond them, and the demons that crossed into her woods learned what the marauders of old Sarkoris had learned before them.{/n}
 {n}She never lived in a city. The Commander never lived anywhere else for long. Once a year, at the first frost, she came for the day she was owed, and the Commander ran, limping, through the dark hills with a horn in one hand and a laugh that carried for a mile, and she caught them every time, and every time she let the hunt go on.{/n}''',
-         requires=(COMMITTED,), forbids=(CLOSED,), paragraphs=EPILOGUE_PARAGRAPHS + (
+         requires=(COMMITTED,), forbids=(CLOSED, "sacrifice"), **SURVIVED, paragraphs=EPILOGUE_PARAGRAPHS + (
              p('''{n}At the first frost after Threshold she came for her day in the middle of the Commander's own victory feast, through a window, and took them out over the rooftops in front of half the crusade. Nobody at that table ever forgot it.{/n}''', requires=(FIRST_FROST,)),))
 
 epilogue("late", '''{n}The war ended before she could run her second hunt, and she did not hold that against the war. In the first spring after Threshold she walked into the Commander's hall with her bow unstrung on her back and a haunch of venison over her shoulder, and dropped the meat on the table in front of the Commander's guests.{/n}
 "My woods," she said. "Tonight. I will not make it easy." {n}She did not. The Commander caught her all the same, a little before dawn, in a blind below her temple where the embers were still warm, and she let herself be caught, and after that nobody asked the Commander where they went at the first frost every year.{/n}''',
-         requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED), paragraphs=EPILOGUE_PARAGRAPHS)
+         requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED, "sacrifice"), paragraphs=EPILOGUE_PARAGRAPHS, **SURVIVED)
+
+epilogue("sacrifice", '''{n}The Commander did not come back from the Threshold. Delamere heard it at her temple from a Mendevian runner, and sent him away with a hare for his trouble, and went down into the crypt alone.{/n}
+{n}She did not weep; she had used that up. At the first frost she took the old horn down from its peg and carried it up to the ridge above Drezen, where she had once made a fire and waited for a stag with a limp, and she sat there until dawn with the horn across her knees, and did not blow it. The hunters say she goes up every year. They say the day she was owed is the only debt she ever forgave.{/n}''',
+         requires=("sacrifice",), forbids=(CLOSED, "trickster.commander_back"), paragraphs=EPILOGUE_PARAGRAPHS,
+         RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED]])
 
 epilogue("apart", '''{n}Delamere the Blessed kept to the woods below her temple after the war, and to the old law. The villages near her feared her and sent her their disputes, and she judged them as she had judged them in old Sarkoris, hard and without appeal.{/n}
 {n}The Commander went on walking crooked. She never came to claim the day she was owed. The hunters say she keeps it anyway, the way you keep an arrow you have not decided where to put.{/n}''',
@@ -477,6 +495,11 @@ def integrate(payload):
             if have is not None and have != guid:
                 raise ValueError("Conflicting binding: " + key)
             payload[kind][key] = guid
+    for key, guid in BINDINGS["SeenCues"].items():       # SeenCues values are lists of cue GUIDs
+        have = payload.setdefault("SeenCues", {}).get(key)
+        if have is not None and have != [guid]:
+            raise ValueError("Conflicting binding: " + key)
+        payload["SeenCues"][key] = [guid]
     for key, guid in BINDINGS["SelectedAnswers"].items():
         have = payload.setdefault("SelectedAnswers", {}).get(key)
         if have is not None and have != guid:

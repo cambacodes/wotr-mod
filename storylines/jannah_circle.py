@@ -89,7 +89,7 @@ meet(FORMS, "The forms", '"You\'re drawing circles again."', [
     jan("scar", '''"If you're going to keep coming down here, you're going to learn them properly." {n}She finishes the sequence before she looks at you.{/n}
 "You knew Mivon, in the Scar. Its founding, its duels, the Aldori way. You asked me how the old man ended his bouts, and then you used his answer on me. So tell me: where did you learn Mivon?"''',
         c('"From a book. A very dull one."', "book"),
-        c('"I made it my business to know them before I ever came to that cage."', "planned", flags=(TOLD_PLANNED,)),
+        c('"I read you through the bars before I opened my mouth. The rest I learned standing there."', "planned", flags=(TOLD_PLANNED,)),
         c('[Lie] "I\'ve crossed blades with Aldori before."', "lie")),
     jan("story", '''"If you're going to keep coming down here, you're going to learn them properly." {n}She finishes the sequence before she looks at you.{/n}
 "You caught me in a story. That isn't the same as catching me in a circle, and I'd hate for you to get the two confused. It could be fatal."''',
@@ -97,8 +97,8 @@ meet(FORMS, "The forms", '"You\'re drawing circles again."', [
     jan("book", '''"A book." {n}She looks personally offended.{/n} "Somebody wrote Mivon down. In a book. For anybody to read." {n}She shakes her head.{/n}
 "My master would have had him flogged with the binding. Well. It saved my life, so I suppose the flogging can wait."''',
         c("Continue", "salute")),
-    jan("planned", '''"Before you ever came to the cage." {n}She stops moving.{/n}
-"You knew there was a deserter in the Molten Scar. You knew she was from Mivon. You went and found out what a Mivon fencer would do with a blade in her hand and her pride in her throat, and then you walked in and did it."
+    jan("planned", '''"Through the bars." {n}She stops moving.{/n}
+"You stood outside that cage and read me. My feet. My hands. The way I hold my head when I'm frightened. Then you said the forms back to me in my master's words, and made the challenge he'd have made, and I rose to it like a trout to a fly."
 {n}Something moves behind her eyes, and she doesn't let it out.{/n} "That's either the most flattering thing anybody has ever done for me, or the most frightening. I'll decide when I know you better."''',
         c("Continue", "salute")),
     jan("lie", '''"No, you haven't." {n}She doesn't even break the sequence.{/n}
@@ -563,7 +563,7 @@ meet(YOUR_TALE, "Your part", '"You look like you\'re about to ask me something."
     jan("cage", '''"Not knowing." {n}She weighs the cup as if it were a blade.{/n}''',
         c("Continue", "cage_planned", requires=(TOLD_PLANNED,)),
         c("Continue", "cage_plain", forbids=(TOLD_PLANNED,))),
-    jan("cage_planned", '''"You told me you'd made it your business to know Mivon before you ever came to the cage. So you knew where to put the question. You didn't know me. You didn't know whether I'd take them, or whether my pride had died in there with everything else."
+    jan("cage_planned", '''"You told me you read me through the bars before you said a word. So you knew where to put the question. You didn't know me. You didn't know whether I'd take them, or whether my pride had died in there with everything else."
 "And you swung anyway."''',
         c("Continue", "cage_end")),
     jan("cage_plain", '''"You knew the words. You didn't know me. You didn't know whether I'd take them, or whether my pride had died in that cage with everything else."
@@ -1022,7 +1022,7 @@ meet(PAPER, "The answer", '"You\'ve written something."', [
 "'No, never.' That was the first one. Then 'Not while the Commander's watching', which was worse. Then a long bit about Houndheart that Irabeth doesn't need, and then a very rude line about the Watch's paper, which is too thin." {n}She folds it.{/n}
 "The three lines at the bottom are what was left when I'd crossed out everything I couldn't stand behind. That's how the old man taught us to write up a bout, too."''',
         c("[Leave her with her tally.]")),
-], requires=(IRABETH, WALLS), delay=24)
+], requires=(IRABETH, WALLS, "jannah.trickster.challenge"), delay=24)   # Q6 (BEL): after the muster she counts
 
 
 # Forty-two, the right way (after she drew first blood at the muster).

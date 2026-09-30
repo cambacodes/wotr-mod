@@ -354,6 +354,37 @@ internal static class JannahTricksterTests
         };
         foreach (var beat in courtship)
             check(deep.Any(w => Reaches(w, beat.Id)), "Courtship beat unreachable in every test world: " + beat.Id);
+
+        // Quality pass Q6 (INT): joining Q3 is not finishing it. The joined letter waits for the souls to come home.
+        var joinedOpen = World(story, 5, "trickster", "trickster.ever", "jannah.joined", "jannah.condemned", "seelah.q3_started");
+        check(!Avail(letter, joinedOpen) && Avail(letter, World(story, 5, "trickster", "trickster.ever", "jannah.joined", "jannah.condemned", "seelah.q3_started", "seelah.souls_returned")),
+            "The joined letter arrives while Q3 is unfinished.");
+        check(!letter.Nodes.Single(n => n.Id == "joined").Text.Contains("parole", StringComparison.Ordinal),
+            "The joined letter invents a parole term.");
+        // Quality pass Q6 (BEL): the night names a lost record only if she lost one.
+        var nightLost = World(story, 5, "trickster.ever", Returned, "jannah.started", Committed, P + "bout.commander_first", FirstLoss);
+        var nightKept = World(story, 5, "trickster.ever", Returned, "jannah.started", Committed, P + "bout.her_first", P + "cost.public_yield");
+        HashSet<string> NightPages(Snapshot w) { var seen = new HashSet<string>(); Program.Walk(night, w, (page, _) => seen.Add(page)); return seen; }
+        check(Avail(night, nightLost) && NightPages(nightLost).Contains("record_lost") && !NightPages(nightLost).Contains("record_kept")
+              && Avail(night, nightKept) && NightPages(nightKept).Contains("record_kept") && !NightPages(nightKept).Contains("record_lost")
+              && !night.Nodes.Single(n => n.Id == "close").Text.Contains("any more", StringComparison.Ordinal),
+            "The night tells an undefeated Jannah that she lost her record.");
+        // Quality pass Q6 (BEL): her answer to Irabeth counts the muster only after it.
+        var answer = S(C + "the_answer");
+        check(answer.Requires.Contains(P + "challenge"), "Her answer counts a muster she has not fought.");
+        // Quality pass Q6 (COX): the romance pages survive a Last Call return that is not a cheated death.
+        var fb = pages.Single(p => p.Id == P + "epilogue.first_blood");
+        var ec = pages.Single(p => p.Id == P + "epilogue.commit");
+        check(fb.ForbidOverrides["sacrifice"] == "trickster.commander_back" && ec.ForbidOverrides["sacrifice"] == "trickster.commander_back",
+            "A romance page keys survival on the retired cheated_death.");
+        check(!fb.Nodes.SelectMany(n => n.Paragraphs).Any(q => q.Text.Contains("accident", StringComparison.Ordinal)),
+            "The yearly bouts are thrown in secret.");
+        // Quality pass Q6 (BEL): the declined page names only the refusal that happened.
+        var dec = pages.Single(p => p.Id == P + "epilogue.declined");
+        check(!dec.Nodes[0].Text.Contains(" lie", StringComparison.Ordinal)
+              && new[] { P + "held_the_lie", P + "threw_the_bout", P + "shamed_her", P + "refused_the_yield" }
+                  .All(f => dec.Nodes[0].Paragraphs.Count(q => q.Requires.SequenceEqual(new[] { f })) == 1),
+            "The declined page blames a lie that may not have been told.");
         Console.WriteLine("PASS: Jannah Trickster (Trk_Jannah_*): the forms at the cage, the ash, the unclaimed yield, blood and tale in six living worlds, the false catch and the wagon, "
                           + "the forms, Houndheart, the wall, her challenge, the chalk circle, the night, the pages, the reactors, the secret, Seelah's word, and "
                           + courtship.Length + " courtship beats.");

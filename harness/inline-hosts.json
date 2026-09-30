@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 971,
-  "resolved": 971,
+  "entryTargetScenes": 972,
+  "resolved": 972,
   "inlineOnlyScenes": 241,
   "inlineOnlyResolved": 241,
-  "answerListScenesWithoutContact": 557,
-  "answerListScenesWithoutContactResolved": 557,
+  "answerListScenesWithoutContact": 558,
+  "answerListScenesWithoutContactResolved": 558,
   "lists": 100,
   "listsWithReachableHost": 99
  },
@@ -17459,6 +17459,25 @@
    "contact": null,
    "entry": {
     "2a75fbc8e86fd514e82117c99fc9e528": "RRT_entry.targona.trickster.dead.setup_open"
+   },
+   "resolved": true,
+   "host": {
+    "list": "2a75fbc8e86fd514e82117c99fc9e528",
+    "dialog": "dd37d85ad71aefa4db214bf40b051538",
+    "dialogName": "TargonaWings_AreeLab_dialog",
+    "cue": "Cue_0007",
+    "clicks": 0
+   }
+  },
+  "targona.trickster.dead.setup_sleep": {
+   "kind": "dialog",
+   "lists": [
+    "2a75fbc8e86fd514e82117c99fc9e528"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "2a75fbc8e86fd514e82117c99fc9e528": "RRT_entry.targona.trickster.dead.setup_sleep"
    },
    "resolved": true,
    "host": {

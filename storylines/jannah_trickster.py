@@ -161,7 +161,7 @@ DERIVED = {
     # of the story duel (or back from the wagon). The posting keeps her off the locator until she walks back in.
     PRESENCE_ON: [[DEAD_L, PRIMED], [RETURNED]],
     # A Seelah's Q3 in progress is left to finish before she writes from the cells.
-    Q3_SETTLED: [[JOINED], [REFUSED], [SOULS]],
+    Q3_SETTLED: [[REFUSED], [SOULS]],      # quality pass Q6 (INT): joining Q3 is not finishing it; the souls must be home
     # R2-6: the war can end between the wall and the muster; her page answers it after the Threshold.
     LATE_COMMITTED: [["trickster.ever", WALLS]],
     # 05 §2.5 voice note (morning after): she joins, but she will have it remembered who chalked the circle first.
@@ -330,7 +330,7 @@ visit(P + "alive.letter", "From the last cell", [
         c("Continue", "prison", requires=(PRISON,), forbids=(JOINED, REFUSED, CONDEMNED)),
         c("Continue", "free", requires=(FREE,), forbids=(JOINED, REFUSED, CONDEMNED, PRISON)),
         c("Continue", "unmet", forbids=(JOINED, REFUSED, CONDEMNED, PRISON, FREE))),
-    jan("joined", '''"Commander. The jeweller is dead and the souls are home, and my parole was for the length of the hunt. I gave my word I'd go back to the Condemned when it ended. It's ended."
+    jan("joined", '''"Commander. The jeweller is dead and the souls are home. When I came to you in Drezen I said that if you turned me away I'd go back to the Condemned. You didn't turn me away. I'm going back anyway. The hunt's over, and a deserter who stays on only because nobody sent her back hasn't settled anything."
 "I didn't run. Not once, all the way into that hole and out again. I'd like that written down somewhere, and you're the only one who writes things down who might believe it."''',
         c("Continue", "wagon")),
     jan("refused", '''"Commander. You told me to leave Drezen. I didn't. I've put myself in the old cells under the citadel instead."
@@ -579,8 +579,8 @@ meet(P + "challenge", "The rematch", '"You look like someone about to do somethi
 {n}Jannah doesn't follow. She stands in the middle of the circle with her blade lowered and says, quite clearly, so that everyone hears it: "Then it wasn't a bout. It was a brawl, and I don't give anything to brawlers."{/n}''',
         c("[Keep walking.]")),
     jan("after", '''{n}Later, when the muster has been dismissed three times and still hasn't gone anywhere, she walks you round behind the barracks to the practice yard. There's nobody in it: sand, a trough, a rack of blunted blades.{/n}
-"That was the bout. It decided what bouts decide." {n}She stops at the edge of the sand and turns to face you.{/n}
-"This is the other thing. I've been deciding it for a long while, and a sword didn't decide it, and neither did you. I did."''',
+"That was the bout." {n}She stops at the edge of the sand and turns to face you. Her ears have gone pink at the points, and she is scowling about it.{/n}
+"And this is me wanting you. I've wanted you since the cell. I'm sick of fencing round it."''',
         c("Continue", "yes", forbids=(HELD_LIE,)),
         c("Continue", "no_lie", requires=(HELD_LIE,))),
     jan("yes", '''{n}She takes your face in both hands, in the open yard, where anybody coming round the barracks could see, and kisses you: not quick, not careful, and not in any of the forms.{/n}
@@ -612,7 +612,17 @@ visit(P + "circle_night", "Inside the chalk", [
 "That's a salute too. The old man gave it once, to a student who'd beaten him. You just don't know it." {n}She lays her own sword across yours.{/n}''',
         c("Continue", "close")),
     jan("close", '''{n}She steps in, inside measure, where the old man taught her never to stand unless she meant to finish something.{/n}
-"In Mivon I never let anyone this close. You don't, if you want to stay unbeaten." {n}Her breath is quick and she isn't hiding it.{/n} "I'm not unbeaten any more. I find I don't mind."''',
+"In Mivon I never let anyone this close. You don't, if you want to stay unbeaten." {n}Her breath is quick and she isn't hiding it.{/n}''',
+        c("Continue", "mark_jaw", requires=(SHE_FIRST,), forbids=(COMMITTED,)),      # retired by gating (Q6; index kept)
+        c("Continue", "mark_arm", requires=(YOU_FIRST,), forbids=(COMMITTED,)),      # retired (Q6)
+        c("Continue", "mark_late", forbids=(SHE_FIRST, YOU_FIRST, COMMITTED)),       # retired (Q6)
+        c("Continue", "record_lost", requires=(FIRST_LOSS,)),
+        c("Continue", "record_kept", forbids=(FIRST_LOSS,))),
+    jan("record_lost", '''"I'm not unbeaten any more. I find I don't mind."''',
+        c("Continue", "mark_jaw", requires=(SHE_FIRST,)),
+        c("Continue", "mark_arm", requires=(YOU_FIRST,)),
+        c("Continue", "mark_late", forbids=(SHE_FIRST, YOU_FIRST))),
+    jan("record_kept", '''"I still am. Nobody's had my blood first, not the Scar, not you." {n}She takes one more step, so there is no measure left at all.{/n} "I'm letting you in anyway. Don't make me regret it."''',
         c("Continue", "mark_jaw", requires=(SHE_FIRST,)),
         c("Continue", "mark_arm", requires=(YOU_FIRST,)),
         c("Continue", "mark_late", forbids=(SHE_FIRST, YOU_FIRST))),
@@ -713,7 +723,7 @@ KEPT_PARAS = (
     p("{n}She liked to tell people that the Commander had released her from a yield once, which in her old salle was the highest honour one fencer could pay another, and that she had stayed anyway, which her old master would have called being a fool.{/n}", requires=(RELEASED,)),
     p("{n}Of the Condemned company she rode north with, half came home. She kept their names on a strip of leather wound under her sword's grip, and rewound it every spring.{/n}", requires=(POSTING,)),
     p("{n}She never let the Commander forget that she had won blood and tale in a gaol cell. When they argued, she would say, \"Drawn bouts go to the one who was challenged,\" and the argument would be over, whether or not anybody had been challenged.{/n}", requires=(STORY_LOST,)),
-    p("{n}Every year at the muster she challenged the Commander again, in front of whoever was watching, for no stake at all but the pleasure of it. The Commander never drew first blood in any of them. Nobody who had seen the first bout believed that was an accident, and nobody said so to her face.{/n}", requires=(PUBLIC_YIELD,)),
+    p("{n}Every year at the muster she challenged the Commander again, in front of whoever was watching, for no stake at all but the pleasure of it. The Commander fought every one of them in earnest, because she would have known otherwise and never forgiven it, and lost most of them, and won a few, and she kept the tally of both on the inside of her scabbard.{/n}", requires=(PUBLIC_YIELD,)),
     p("{n}Every year at the muster she challenged the Commander again, in front of whoever was watching, for no stake at all but the pleasure of it, and lost more often than she won, and enjoyed losing enormously, which in her old salle would have been a scandal.{/n}", requires=(YOU_FIRST,), forbids=(PUBLIC_YIELD,)),
     p("{n}The Commander said it at the next muster, out loud, to the same four hundred: that Jannah Aldori had fought like an Aldori, and that what had been said over her was a lie. She stood in the front rank and heard it with her chin up. Afterwards she said it was the second-best thing anyone had ever said to her in public.{/n}", requires=(SHAMED, LATE_YES)),
     p("{n}She wrote her father the truth about Houndheart. He wrote back that fate had brought her to Mendev, and she wrote back that fate had nothing to do with it. They kept up that argument by letter for the rest of his life, and neither of them ever gave an inch.{/n}", requires=(MIVON_TRUTH,)),
@@ -726,11 +736,11 @@ KEPT_PARAS = (
 )
 SCENES.append(scene(P + "epilogue.first_blood", "", "JannahEpilogue", 6, "", [
     nar("page", '''{n}Jannah Aldori, of Mivon, stayed at the Commander's side through the Threshold and after it. She never again wore the Eagle Watch's blue and never asked to; she said a tabard was a promise, and she had broken one already.{/n}
-{n}After the war she chalked a circle in a yard and taught the forms to anyone who would stand in it: soldiers, orphans, a one-armed priest, the children of people who had run. She taught the salute, the measure and the yield. She did not teach anyone to stay unbeaten. She said it was a bad habit, and that she was glad to be rid of it.{/n}
+{n}After the war she chalked a circle in a yard and taught the forms to anyone who would stand in it: soldiers, orphans, a one-armed priest, the children of people who had run. She taught the salute, the measure and the yield. She did not teach anyone to stay unbeaten. She said it was a bad habit.{/n}
 {n}She was never cured of Houndheart. Some nights it came back and sat on the end of the bed, and she let it sit there, and did not run from it either.{/n}''',
         paragraphs=KEPT_PARAS)],
     requires=("trickster.ever", COMMITTED), forbids=(CLOSED, "sacrifice"),
-    ForbidOverrides={"sacrifice": "trickster.cheated_death"}, **EP))
+    ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
 
 SCENES.append(scene(P + "epilogue.commit", "", "JannahEpilogue", 6, "", [
     nar("page", '''{n}The war ended before Jannah Aldori got her muster. She had the chalk in her pocket on the day of the Threshold, and she was angry about it for a month.{/n}
@@ -741,11 +751,17 @@ SCENES.append(scene(P + "epilogue.commit", "", "JannahEpilogue", 6, "", [
             p("{n}Of the Condemned company she rode north with, she kept the names under her sword's grip.{/n}", requires=(POSTING,)),
         ))],
     requires=("trickster.ever", LATE_COMMITTED), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice"),
-    ForbidOverrides={"sacrifice": "trickster.cheated_death"}, **EP))
+    ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
 
 SCENES.append(scene(P + "epilogue.declined", "", "JannahEpilogue", 6, "", [
     nar("page", '''{n}Jannah Aldori stayed in Drezen until the war was over, in the last cell of the old gaol, with its door open. She trained with the Eagle Watch, fought where she was sent and never ran, and never once crossed blades with the Commander again.{/n}
-{n}When the crusade broke up she went home to Mivon. People who knew her there said she had come back quieter, and a better fencer than when she left, and that she would not talk about the man or woman who had beaten her with a lie.{/n}''')],
+{n}When the crusade broke up she went home to Mivon. People who knew her there said she had come back quieter, and a better fencer than when she left, and that there was one bout in Drezen she would not talk about.{/n}''',
+        paragraphs=(
+            p("{n}It was the Commander she would not talk about, and the lie the Commander had held to in the muster yard with four hundred watching. She said a blade could be forgiven anything but that.{/n}", requires=(HELD_LIE,)),
+            p("{n}When someone in Mivon asked her once how she had come to lose her only bout in Mendev, she said she hadn't lost it; it had been handed to her, in front of the whole muster, like alms. She said that was worse than a cut, and would say no more.{/n}", requires=(THREW,)),
+            p("{n}She never repeated what the Commander had said over her in the sand, before four hundred soldiers. The soldiers repeated it for her, for years.{/n}", requires=(SHAMED,)),
+            p("{n}She had drawn first blood on the Commander at the muster, fairly, and the Commander would not lie down in the sand for it. She said a victor who has to beg for her yield has not won anything, and she did not ask twice.{/n}", requires=(REFUSED_YIELD,)),
+        ))],
     requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED), **EP))
 
 SCENES.append(scene(P + "epilogue.gone", "", "JannahEpilogue", 6, "", [
