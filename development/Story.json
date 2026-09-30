@@ -162446,7 +162446,7 @@
         {
           "Id": "start",
           "Speaker": "Camellia",
-          "Text": "{n}Fye brings a folded card to your table without being asked. It smells of lilies, and it was left, he says, by the lady at the far end of the bar, who has still not touched her wine.{/n}\n\"You gave the little traitor a pardon. How merciful of you. I have been dead, darling, so I know exactly what mercy is worth: it is worth what someone is willing to pay to take it back. I do hope nobody makes you an offer for her. I would hate to be outbid.\"",
+          "Text": "{n}A folded card comes up with the evening dispatches, sent over from Fye's tavern by his pot-boy. It smells of lilies. It was left, the boy says, by the lady at the far end of the bar, who has still not touched her wine.{/n}\n\"You gave the little traitor a pardon. How merciful of you. I have been dead, darling, so I know exactly what mercy is worth: it is worth what someone is willing to pay to take it back. I do hope nobody makes you an offer for her. I would hate to be outbid.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -162476,6 +162476,9 @@
         5
       ],
       "Kind": "letter",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
       "Remote": true,
       "Sender": "Camellia"
     },
@@ -162490,7 +162493,7 @@
         {
           "Id": "start",
           "Speaker": "Camellia",
-          "Text": "{n}Fye brings a folded card to your table without being asked. It smells of lilies, and it was left, he says, by the lady at the far end of the bar, who has still not touched her wine.{/n}\n\"You bought a soul from that marilith in the Fleshmarkets. The whole bar is saying so, very quietly, with its back to me. You and I have both come back from somewhere we were put, darling. Tell your halfling that the first thing one wants afterwards is to be looked at. The second is to be feared. She will work out the third herself.\"",
+          "Text": "{n}A folded card comes up with the evening dispatches, sent over from Fye's tavern by his pot-boy. It smells of lilies. It was left, the boy says, by the lady at the far end of the bar, who has still not touched her wine.{/n}\n\"You bought a soul from that marilith in the Fleshmarkets. The whole bar is saying so, very quietly, with its back to me. You and I have both come back from somewhere we were put, darling. Tell your halfling that the first thing one wants afterwards is to be looked at. The second is to be feared. She will work out the third herself.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -162521,6 +162524,9 @@
         5
       ],
       "Kind": "letter",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
       "Remote": true,
       "Sender": "Camellia"
     },
@@ -162535,7 +162541,7 @@
         {
           "Id": "start",
           "Speaker": "Camellia",
-          "Text": "{n}Fye brings a folded card to your table without being asked. It smells of lilies, and it was left, he says, by the lady at the far end of the bar, who has still not touched her wine.{/n}\n\"You bought my supper back from a marilith. You said she was mine, and then you killed me, and then you bought her back, and now we are all three of us sitting in the same city pretending to be alive. I do not think I have ever been given so many things and had them all taken back. It is... truly terrible. I have ordered a second glass.\"",
+          "Text": "{n}A folded card comes up with the evening dispatches, sent over from Fye's tavern by his pot-boy. It smells of lilies. It was left, the boy says, by the lady at the far end of the bar, who has still not touched her wine.{/n}\n\"You bought my supper back from a marilith. You said she was mine, and then you killed me, and then you bought her back, and now we are all three of us sitting in the same city pretending to be alive. I do not think I have ever been given so many things and had them all taken back. It is... truly terrible. I have ordered a second glass.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -162565,6 +162571,9 @@
         5
       ],
       "Kind": "letter",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
       "Remote": true,
       "Sender": "Camellia"
     },
@@ -162579,7 +162588,7 @@
         {
           "Id": "start",
           "Speaker": "Camellia",
-          "Text": "{n}Fye brings a folded card to your table without being asked. It smells of lilies, and it was left, he says, by the lady at the far end of the bar, who has still not touched her wine.{/n}\n\"Your runaway halfling's pamphlet is on the bar. Someone left it here for me, as a joke, I think. There is an insult to her on the first page, in her own hand. I read it three times. I would simply have eaten her, darling. Your way leaves so much more of her for later.\"",
+          "Text": "{n}A folded card comes up with the evening dispatches, sent over from Fye's tavern by his pot-boy. It smells of lilies. It was left, the boy says, by the lady at the far end of the bar, who has still not touched her wine.{/n}\n\"Your runaway halfling's pamphlet is on the bar. Someone left it here for me, as a joke, I think. There is an insult to her on the first page, in her own hand. I read it three times. I would simply have eaten her, darling. Your way leaves so much more of her for later.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -162609,6 +162618,9 @@
         5
       ],
       "Kind": "letter",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
       "Remote": true,
       "Sender": "Camellia"
     },
@@ -201314,8 +201326,8 @@
       "RequiresAnyGroups": [
         [
           "targona.committed",
-          "targona.trickster.late_committed",
-          "targona.trickster.parent_romanced"
+          "targona.trickster.parent_romanced",
+          "targona.trickster.late_committed"
         ]
       ]
     },
@@ -278928,7 +278940,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The Council hall is empty now. Shyka's seat is only a seat, and the dust on it has not been disturbed since the Eldest walked out of their own chair and into somewhere else.{/n}\n{n}But you remember how Shyka listened: to everything said in that hall, in every branch where it was said. So you say it three times, at the three hours the Council used to sit, into the dust on the empty seat. A branch for a branch. The drow who called everyone soldier.{/n}",
+          "Text": "{n}The Council hall is not what it was. Shyka's seat is only a seat now, and the dust on it has not been disturbed since the Eldest walked out of their own chair and into somewhere else.{/n}\n{n}But you remember how Shyka listened: to everything said in that hall, in every branch where it was said. So you say it three times, at the three hours the Council used to sit, into the dust on the empty seat. A branch for a branch. The drow who called everyone soldier.{/n}",
           "Choices": [
             {
               "Text": "[Wait until the third hour.]",
@@ -278997,18 +279009,22 @@
       ],
       "Requires": [
         "trickster",
-        "kaylessa.dead",
-        "shyka.gone"
+        "kaylessa.dead"
       ],
       "Forbids": [
-        "council.fought",
-        "council.fought_nocta_allied",
         "kaylessa.trickster.primed",
         "kaylessa.trickster.ending_kept",
         "kaylessa.trickster.returned"
       ],
       "DelayHours": 0,
       "Optional": true,
+      "RequiresAnyGroups": [
+        [
+          "shyka.gone",
+          "council.fought",
+          "council.fought_nocta_allied"
+        ]
+      ],
       "Relationship": "kaylessa",
       "Remote": true,
       "Kind": "sending",
@@ -279770,7 +279786,8 @@
               "Next": "met",
               "Set": [],
               "Requires": [
-                "kaylessa.met"
+                "kaylessa.met",
+                "kaylessa.trickster.warned_her"
               ],
               "Forbids": [],
               "Abort": false
@@ -279784,6 +279801,42 @@
                 "kaylessa.met"
               ],
               "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "met_doubted",
+              "Set": [],
+              "Requires": [
+                "kaylessa.met"
+              ],
+              "Forbids": [
+                "kaylessa.trickster.warned_her"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kaylessa"
+        },
+        {
+          "Id": "met_doubted",
+          "Speaker": "Kaylessa",
+          "Text": "\"Don't. I saw him leave your door, soldier. The elf with the bandage he doesn't need.\"\n\"We've met. I told you a man was hunting me, and you heard me out and didn't believe a word of it, or didn't say you did. So tell me why the man who wants my head was just bowing to you on your own doorstep.\"",
+          "Choices": [
+            {
+              "Text": "[Tell her everything] \"He wants you in the ravine below the south wall with the moon down, and me for bait. I said yes.\"",
+              "Next": "plan",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I promised him you. I didn't say which of us would keep the promise.\"",
+              "Next": "plan",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": "Kaylessa"
@@ -279791,7 +279844,7 @@
         {
           "Id": "met",
           "Speaker": "Kaylessa",
-          "Text": "\"Don't. I saw him leave your door, soldier. The elf with the bandage he doesn't need.\"\n\"Kenabres. The war camp. You let me walk away, and you believed me, or near enough. So tell me why the man who wants my head was just bowing to you on your own doorstep.\"",
+          "Text": "\"Don't. I saw him leave your door, soldier. The elf with the bandage he doesn't need.\"\n\"I told you once who was hunting me, and you believed me, or near enough. You told me where he was. So tell me why the man who wants my head was just bowing to you on your own doorstep.\"",
           "Choices": [
             {
               "Text": "[Tell her everything] \"He wants you in the ravine below the south wall with the moon down, and me for bait. I said yes.\"",
@@ -279915,7 +279968,7 @@
         {
           "Id": "swap",
           "Speaker": "Kaylessa",
-          "Text": "\"...On him.\" {n}Something moves in her face. It isn't a smile, but it used to be one.{/n}\n\"His marksmen will be up on the ridge with orders: the courier's face, first shot, don't let her speak. If the face is on him when they loose...\" {n}She turns the amulet in her fingers.{/n}\n\"You'd have to lift it off my neck and put it on his in the middle of a fight, with his knife out. It's an alley trick. We did things like it in Kyonin, in Calistria's name, when I was a wasp and not a drow. You'd have to be quick, soldier.\"",
+          "Text": "\"...On him.\" {n}Something moves in her face. It isn't a smile, but it used to be one.{/n}\n\"His marksmen will be up on the ridge with orders: the courier's face, first shot, don't let her speak. If the face is on him when they loose...\" {n}She turns the amulet in her fingers.{/n}\n\"You'd have to lift it off my neck and put it on his in the middle of a fight, with his knife out. It's an alley trick. We did things like it in Kyonin, in Calistria's name, when I was a wasp and not a drow. You'd have to be quick, soldier.\"\n\"And when it's done I go down on the stones beside him and I stay down, under the girl's cloak, with his blood on it. From the ridge, in the dark, with the lantern knocked out, they'll count two bodies. They'll want to count two.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -280199,7 +280252,7 @@
         {
           "Id": "after",
           "Speaker": "Kaylessa",
-          "Text": "{n}Up on the ridge somebody shouts a single word in Elven, and then there is the sound of men running the other way. Kaylessa gets up off the stones and stands over him without moving.{/n}\n\"No one in Kyonin will ever say this happened. They'll write that he died hunting me, and that I died with him, because the truth is worse than a lie to them. It's embarrassing.\" {n}She touches her throat where the cord was. There is nothing there now but her own dark skin.{/n}\n\"That was the last elf face I had, soldier. The only one I could have walked home in. Burnt out on him.\"",
+          "Text": "{n}Up on the ridge somebody shouts a single word in Elven, and then there is the sound of men running the other way. Kaylessa gets up off the stones and stands over him without moving.{/n}\n\"They counted two. I heard one of them say it, up there, before they ran: two down, the face burnt, the job done.\" {n}She wipes his blood off the courier's cloak with a handful of grass.{/n} \"No one in Kyonin will ever say otherwise. They'll write that he died hunting me, and that I died with him, because the men who saw it want it to be true and the truth is worse than a lie to them.\" {n}She touches her throat where the cord was. There is nothing there now but her own dark skin.{/n}\n\"That was the last elf face I had, soldier. The only one I could have walked home in. Burnt out on him.\"",
           "Choices": [
             {
               "Text": "[Say nothing.]",
@@ -387658,6 +387711,14 @@
       ],
       [
         "kaylessa.trickster.alive.swap_fumbled"
+      ]
+    ],
+    "kaylessa.trickster.warned_her": [
+      [
+        "kaylessa.warned_kenabres"
+      ],
+      [
+        "kaylessa.warned_camp"
       ]
     ],
     "mielarah.trickster.contact": [
