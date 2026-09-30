@@ -184,7 +184,7 @@ internal static class TargonaTricksterTests
             "The return is not priced by who saw the reading.");
         check(Rules.Available(story, furlough, returned), "Trk_Targona_KilledPrimed: the furlough does not open.");
         check(Reaches(returned, Committed), "Trk_Targona_KilledPrimed: the commit is unreachable.");
-        check(Reaches(After(oneSoul, killedOpen, "news", 1), Committed), "The open route cannot commit.");
+        check(Reaches(After(oneSoul, killedOpen, "news_open", 0), Committed), "The open route cannot commit.");
 
         // Sol round 5 (INT/HOW): the three days run from the observed laboratory death (its latch, timestamped by the runtime when
         // recorded), not from a primer taken long before the blow. Only runtime-persisted flags carry times here.
