@@ -114,6 +114,7 @@ BEAST_STOPPED = P + "beast_stopped"
 WASP_SENT = P + "wasp_sent_home"
 KNIFE_SHOWN = P + "knife_shown"
 TRUTH_OK = P + "truth_settled"                    # derived: no price lied about, or the lie confessed
+WARNED_ANY = P + "warned_her"                     # derived: she was believed, at Kenabres or at the camp (native answers)
 READY = "kaylessa.wasps.in_the_dark"               # the kiss after curfew: the played exchange of attraction before the proposal
 KNIFE_HELD = P + "knife_held"
 KNIFE_BACK = P + "knife_handed_back"
@@ -154,6 +155,7 @@ DERIVED = {
     LATE_COMMITTED: [["trickster.ever", KNIFE_SHOWN, READY, TRUTH_OK]],   # the last beats before her proposal (Sol quality pass, BEL)
     # Rule three: the dead worlds' return records the truth told or the lie; the living worlds never lied about a price.
     TRUTH_OK: [[TOLD], [CONFESSED], [SWAP_CLEAN], [SWAP_FUMBLED]],
+    WARNED_ANY: [[WARNED_KENABRES], [WARNED_CAMP]],
     # 05 §2.1: the stance hooks come from household.PARTNERS (kaylessa.harem.eligible = committed or late_committed).
 }
 
@@ -265,7 +267,7 @@ SCENES.append(scene(P + "dead.borrow", "A branch for a branch", "Shyka", 3,
 # Shyka gone from the Council (Sol quality pass, INT): the Eldest still exists, so the Trickster leaves an offer in the
 # empty hall the way Shyka hears things, and haggles on worse terms, on screen. Chapter 5; the same return follows.
 SCENES.append(scene(P + "dead.borrow_sending", "An offer left in an empty hall", "Kaylessa", 5, "", [
-    nar("start", '''{n}The Council hall is empty now. Shyka's seat is only a seat, and the dust on it has not been disturbed since the Eldest walked out of their own chair and into somewhere else.{/n}
+    nar("start", '''{n}The Council hall is not what it was. Shyka's seat is only a seat now, and the dust on it has not been disturbed since the Eldest walked out of their own chair and into somewhere else.{/n}
 {n}But you remember how Shyka listened: to everything said in that hall, in every branch where it was said. So you say it three times, at the three hours the Council used to sit, into the dust on the empty seat. A branch for a branch. The drow who called everyone soldier.{/n}''',
         c("[Wait until the third hour.]", "answer")),
     shy("answer", '''{n}At the third hour the dust on the seat is a face, and then a different one.{/n} "You come to our door after we have left it. How rude. How like you." {n}The face is a child's, and sulking.{/n}
@@ -275,7 +277,8 @@ SCENES.append(scene(P + "dead.borrow_sending", "An offer left in an empty hall",
         c('[Keep your futures] "Not at that price."', abort=True)),
     shy("close", '''"Paid." {n}The dust settles back into dust.{/n} "Give it a day. She will arrive where it is dark, because she prefers it. And she will be cross with you. We saw to that."''',
         c("[Leave the empty hall.]")),
-], requires=("trickster", DEAD, "shyka.gone"), forbids=("council.fought", "council.fought_nocta_allied", PRIMED, ENDING_KEPT, RETURNED),
+], requires=("trickster", DEAD), forbids=(PRIMED, ENDING_KEPT, RETURNED),
+    RequiresAnyGroups=[["shyka.gone", "council.fought", "council.fought_nocta_allied"]],
     last=5, optional=True, Relationship=REL, Remote=True, Kind="sending", Chapters=[5], TricksterDevice=True, TricksterState="dead"))
 
 
@@ -388,10 +391,15 @@ visit(P + "alive.hunter", "A courtesy between hunters", [
 
 visit(P + "alive.warning", "The face she wears", [
     nar("open", '''{n}The knife is at your throat before the lamp is lit. It is small, and very sharp, and the hand behind it does not shake. A voice by your ear, low, with the flat patience of someone who has done this before:{/n}''',
-        c("Continue", "met", requires=(MET,)),
-        c("Continue", "stranger", forbids=(MET,))),
+        c("Continue", "met", requires=(MET, WARNED_ANY)),
+        c("Continue", "stranger", forbids=(MET,)),
+        c("Continue", "met_doubted", requires=(MET,), forbids=(WARNED_ANY,))),
+    kay("met_doubted", '''"Don't. I saw him leave your door, soldier. The elf with the bandage he doesn't need."
+"We've met. I told you a man was hunting me, and you heard me out and didn't believe a word of it, or didn't say you did. So tell me why the man who wants my head was just bowing to you on your own doorstep."''',
+        c('[Tell her everything] "He wants you in the ravine below the south wall with the moon down, and me for bait. I said yes."', "plan"),
+        c('"I promised him you. I didn\'t say which of us would keep the promise."', "plan")),
     kay("met", '''"Don't. I saw him leave your door, soldier. The elf with the bandage he doesn't need."
-"Kenabres. The war camp. You let me walk away, and you believed me, or near enough. So tell me why the man who wants my head was just bowing to you on your own doorstep."''',
+"I told you once who was hunting me, and you believed me, or near enough. You told me where he was. So tell me why the man who wants my head was just bowing to you on your own doorstep."''',
         c('[Tell her everything] "He wants you in the ravine below the south wall with the moon down, and me for bait. I said yes."', "plan"),
         c('"I promised him you. I didn\'t say which of us would keep the promise."', "plan")),
     kay("stranger", '''"Don't. You don't know me, soldier. You've met the man who hunts me, which is worse for both of us."
@@ -412,7 +420,8 @@ visit(P + "alive.warning", "The face she wears", [
         c('"Could that amulet hang round another neck?"', "swap")),
     kay("swap", '''"...On him." {n}Something moves in her face. It isn't a smile, but it used to be one.{/n}
 "His marksmen will be up on the ridge with orders: the courier's face, first shot, don't let her speak. If the face is on him when they loose..." {n}She turns the amulet in her fingers.{/n}
-"You'd have to lift it off my neck and put it on his in the middle of a fight, with his knife out. It's an alley trick. We did things like it in Kyonin, in Calistria's name, when I was a wasp and not a drow. You'd have to be quick, soldier."''',
+"You'd have to lift it off my neck and put it on his in the middle of a fight, with his knife out. It's an alley trick. We did things like it in Kyonin, in Calistria's name, when I was a wasp and not a drow. You'd have to be quick, soldier."
+"And when it's done I go down on the stones beside him and I stay down, under the girl's cloak, with his blood on it. From the ridge, in the dark, with the lantern knocked out, they'll count two bodies. They'll want to count two."''',
         c("Continue", "terms")),
     kay("terms", '''"One more thing. If it goes wrong, I take the arrows. Not you. It's my face they're aiming at, and my death they're owed."''',
         c('"Your face. Your arrows."', "agreed", flags=(PLANNED,)),
@@ -453,7 +462,7 @@ visit(P + "alive.amulet_swap", "Kyonin's own arrows", [
 {n}The amulet at his throat sputters, flares white, and burns out. The girl's face runs off him like wax, and what slides down the stone is a Winter Council hunter who never gave his name, killed by Kyonin, in the same ravine his predecessor's work had led him to.{/n}''',
         c("Continue", "after")),
     kay("after", '''{n}Up on the ridge somebody shouts a single word in Elven, and then there is the sound of men running the other way. Kaylessa gets up off the stones and stands over him without moving.{/n}
-"No one in Kyonin will ever say this happened. They'll write that he died hunting me, and that I died with him, because the truth is worse than a lie to them. It's embarrassing." {n}She touches her throat where the cord was. There is nothing there now but her own dark skin.{/n}
+"They counted two. I heard one of them say it, up there, before they ran: two down, the face burnt, the job done." {n}She wipes his blood off the courier's cloak with a handful of grass.{/n} "No one in Kyonin will ever say otherwise. They'll write that he died hunting me, and that I died with him, because the men who saw it want it to be true and the truth is worse than a lie to them." {n}She touches her throat where the cord was. There is nothing there now but her own dark skin.{/n}
 "That was the last elf face I had, soldier. The only one I could have walked home in. Burnt out on him."''',
         c("[Say nothing.]", "end"),
         c('"It suited him."', "joke")),

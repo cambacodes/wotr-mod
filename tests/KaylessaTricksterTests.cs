@@ -287,7 +287,26 @@ internal static class KaylessaTricksterTests
         var sending = S(P + "dead.borrow_sending");
         var goneWorld = World(story, 5, "trickster", "trickster.ever", Dead, "shyka.gone");
         check(Avail(sending, goneWorld) && !Avail(borrow, goneWorld) && Rules.KindOf(sending) == "sending"
-              && !Avail(sending, World(story, 5, "trickster", "trickster.ever", Dead, "shyka.gone", "council.fought")), "Shyka's departure shuts the dead worlds.");
+              && !Avail(sending, World(story, 5, "trickster.ever", Dead, "shyka.gone")), "Shyka's departure shuts the dead worlds.");
+        // Round 6 (INT): the Council fights do not end Shyka (Shyka_Offer/Cue_0002): the sending answers after either fight too.
+        foreach (var fight in new[] { "council.fought", "council.fought_nocta_allied" })
+        {
+            var fought = World(story, 5, "trickster", "trickster.ever", Dead, fight);
+            check(Avail(sending, fought) && !Avail(borrow, fought), "A Council fight shuts the dead worlds: " + fight);
+            check(Reaches(Take(sending, fought, "answer", 0, P + "primed"), Committed), "No road from the sending after " + fight);
+        }
+        // Round 6 (INT): her recollection of being believed follows the native warning answers.
+        var hunted = Later(story, played, 12);
+        var metPagesW = new HashSet<string>(); var warnedPagesW = new HashSet<string>();
+        Program.Walk(warning, hunted, (page, _) => metPagesW.Add(page));
+        var warnedWorld = Program.Copy(hunted); warnedWorld.Flags.Add("kaylessa.warned_camp"); Rules.Complete(story, warnedWorld);
+        Program.Walk(warning, warnedWorld, (page, _) => warnedPagesW.Add(page));
+        check(metPagesW.Contains("met_doubted") && !metPagesW.Contains("met") && warnedPagesW.Contains("met") && !warnedPagesW.Contains("met_doubted")
+              && !warning.Nodes.Single(n => n.Id == "met").Text.Contains("Kenabres", StringComparison.Ordinal),
+            "She credits the Commander with a trust the native answers never gave.");
+        check(swap.Nodes.Single(n => n.Id == "after").Text.Contains("counted two", StringComparison.Ordinal)
+              && warning.Nodes.Single(n => n.Id == "swap").Text.Contains("count two", StringComparison.Ordinal),
+            "The Council records her dead with nothing on the ridge to see it.");
         var sent2 = Take(sending, goneWorld, "answer", 0, P + "primed", P + "cost.shyka_raised");
         check(Avail(soldier, Later(story, sent2, 12)) && Reaches(sent2, Committed), "The sending does not bring her back.");
         // Round 4 (CAN): Forn is the Winter Council's hunter, never a darkhunter.
