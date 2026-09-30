@@ -403786,7 +403786,9 @@
             {
               "Text": "Continue",
               "Next": "paladin",
-              "Set": [],
+              "Set": [
+                "elyanka.trickster.seelah_prayed"
+              ],
               "Requires": [
                 "seelah.in_party"
               ],
@@ -404731,7 +404733,7 @@
         {
           "Id": "start",
           "Speaker": "Daeran",
-          "Text": "{n}Daeran is examining his fingernails, as usual, and does not look up.{/n}\n\"There is a hearse in the yard of the dead-house by the south gate, Commander, lacquered, with glass sides, and a woman from Ustalav who tells anyone who asks that she has bought your corpse. In advance. At a very good price.\" {n}He turns his hand over and examines the other side.{/n}\n\"My family crypt is full of Arendaes who died without ever being worth a copper to anyone. I find I am terribly jealous. Nobody has ever made me an offer. If she wants a second body for the carriage, you will tell her I am available, and considerably better preserved.\"",
+          "Text": "{n}Daeran is examining his fingernails, as usual, and does not look up.{/n}\n\"There is a hearse in the yard of the dead-house by the south gate, Commander, lacquered, with glass sides, and a woman from Ustalav who tells anyone who asks that she has bought your corpse. In advance. At a very good price.\" {n}He turns his hand over and examines the other side.{/n}\n\"My family crypt is full of Arendaes who died without ever being worth a copper to anyone. Not one of them was ever made an offer. I find that I resent it on their behalf. If she wants a second body for the carriage, you will tell her I am available, and considerably better preserved.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404773,7 +404775,7 @@
         {
           "Id": "start",
           "Speaker": "Daeran",
-          "Text": "{n}Daeran regards you for some time over the rim of his cup before he speaks.{/n}\n\"You slept in a hearse.\" {n}He says it slowly, savouring it.{/n} \"With the undertaker. Who is a priestess of the Pallid Princess and has measured you for the table. I have never in my life been so jealous of anyone, and I have been jealous of a great many people.\"\n\"She will have no idea what to drink at a funeral that has not happened yet. Tell her the cellars of my house are at her disposal. Every year, on the day they feasted you dead in Drezen, I shall send her a bottle older than she is. I want to watch her taste it and pretend she is above such things.\"",
+          "Text": "{n}Daeran regards you for some time over the rim of his cup before he speaks.{/n}\n\"You slept in a hearse.\" {n}He says it slowly, savouring it.{/n} \"With the undertaker. Who is a priestess of the Pallid Princess and has measured you for the table.\" {n}He sips.{/n} \"In my family we buried eleven Arendaes in six years, Commander, and I can tell you the one rule of the funeral carriage that every one of them kept: one does not get into it before the service. It is considered pushing.\"\n\"She will have no idea what to drink at a funeral that has not happened yet. Tell her the cellars of my house are at her disposal. Every year, on the day they feasted you dead in Drezen, I shall send her a bottle older than she is. I want to watch her taste it and pretend she is above such things.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404888,9 +404890,20 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back, having nowhere to come back to. Seelah never stopped counting them.{/n}",
+              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back, having nowhere to come back to. The chaplains asked after them for a year, and were told nothing.{/n}",
               "Requires": [
                 "elyanka.trickster.gave_dead"
+              ],
+              "Forbids": [
+                "elyanka.trickster.seelah_prayed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back. Seelah had counted them, row by row, the morning before they went, and she kept the count.{/n}",
+              "Requires": [
+                "elyanka.trickster.gave_dead",
+                "elyanka.trickster.seelah_prayed"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -404920,7 +404933,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}There were men in the old granary by the north wall who died smiling, that winter, with a name on their lips the chaplains did not recognize. The Commander had let her in. The Commander never forgot it, and never pretended to be sorry.{/n}",
+              "Text": "{n}There were men in the old granary by the north wall who died smiling, that winter, with a name on their lips the chaplains did not recognize. The Commander had let her in.{/n}",
               "Requires": [
                 "elyanka.trickster.wards.let"
               ],
@@ -405169,7 +405182,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}Her Lady's table was laid in the dead-house by the south gate every seventh night for as long as she was in Drezen, for the Pallid Princess's worshippers in a crusader city, and nobody in authority ever came to the door. When somebody did at last, years later, the Commander's name was the reason they went away again. It was not a thing the Commander was proud of.{/n}",
+              "Text": "{n}Her Lady's table was laid in the dead-house by the south gate every seventh night for as long as she was in Drezen, for the Pallid Princess's worshippers in a crusader city, and nobody in authority ever came to the door. When somebody did at last, years later, the Commander's name was the reason they went away again, and the lower town knew it, and said so in the taverns.{/n}",
               "Requires": [
                 "trickster.secret.elyanka_rites"
               ],
@@ -405269,9 +405282,20 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back, having nowhere to come back to. Seelah never stopped counting them.{/n}",
+              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back, having nowhere to come back to. The chaplains asked after them for a year, and were told nothing.{/n}",
               "Requires": [
                 "elyanka.trickster.gave_dead"
+              ],
+              "Forbids": [
+                "elyanka.trickster.seelah_prayed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back. Seelah had counted them, row by row, the morning before they went, and she kept the count.{/n}",
+              "Requires": [
+                "elyanka.trickster.gave_dead",
+                "elyanka.trickster.seelah_prayed"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -405301,7 +405325,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}There were men in the old granary by the north wall who died smiling, that winter, with a name on their lips the chaplains did not recognize. The Commander had let her in. The Commander never forgot it, and never pretended to be sorry.{/n}",
+              "Text": "{n}There were men in the old granary by the north wall who died smiling, that winter, with a name on their lips the chaplains did not recognize. The Commander had let her in.{/n}",
               "Requires": [
                 "elyanka.trickster.wards.let"
               ],
@@ -405461,9 +405485,20 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back, having nowhere to come back to. Seelah never stopped counting them.{/n}",
+              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back, having nowhere to come back to. The chaplains asked after them for a year, and were told nothing.{/n}",
               "Requires": [
                 "elyanka.trickster.gave_dead"
+              ],
+              "Forbids": [
+                "elyanka.trickster.seelah_prayed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back. Seelah had counted them, row by row, the morning before they went, and she kept the count.{/n}",
+              "Requires": [
+                "elyanka.trickster.gave_dead",
+                "elyanka.trickster.seelah_prayed"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -405493,7 +405528,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}There were men in the old granary by the north wall who died smiling, that winter, with a name on their lips the chaplains did not recognize. The Commander had let her in. The Commander never forgot it, and never pretended to be sorry.{/n}",
+              "Text": "{n}There were men in the old granary by the north wall who died smiling, that winter, with a name on their lips the chaplains did not recognize. The Commander had let her in.{/n}",
               "Requires": [
                 "elyanka.trickster.wards.let"
               ],
@@ -405630,9 +405665,20 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back, having nowhere to come back to. Seelah never stopped counting them.{/n}",
+              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back, having nowhere to come back to. The chaplains asked after them for a year, and were told nothing.{/n}",
               "Requires": [
                 "elyanka.trickster.gave_dead"
+              ],
+              "Forbids": [
+                "elyanka.trickster.seelah_prayed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back. Seelah had counted them, row by row, the morning before they went, and she kept the count.{/n}",
+              "Requires": [
+                "elyanka.trickster.gave_dead",
+                "elyanka.trickster.seelah_prayed"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -405662,7 +405708,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}There were men in the old granary by the north wall who died smiling, that winter, with a name on their lips the chaplains did not recognize. The Commander had let her in. The Commander never forgot it, and never pretended to be sorry.{/n}",
+              "Text": "{n}There were men in the old granary by the north wall who died smiling, that winter, with a name on their lips the chaplains did not recognize. The Commander had let her in.{/n}",
               "Requires": [
                 "elyanka.trickster.wards.let"
               ],
@@ -405915,7 +405961,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "Elyanka Camilary spent the last night of the war the way a creditor ought to: as close to the collateral as she could get without lifting a finger for it. She had a knotted black cord wound round her hand, knot by knot the measure of the Commander, and a hearse with glass sides built in Caliphas for a mythic corpse, and six men in grey who did not breathe, and an appetite she had brought all the way from Ustalav. She waited to see whether the claim would fall due.",
+          "Text": "Elyanka Camilary spent the last night of the war the way a creditor ought to: as close to the collateral as she could get without lifting a finger for it. She had a hearse with glass sides built in Caliphas for a mythic corpse, and six men in grey who did not breathe, and an appetite she had brought all the way from Ustalav. She waited to see whether the claim would fall due.",
           "Choices": [
             {
               "Text": "Continue",
@@ -405974,6 +406020,14 @@
               "Text": "The world buried the Commander, and the chaplains asked the Ustalavic embalmer, very reluctantly, to prepare the body. She looked into the coffin for some time. Then she told them there was nothing in it but a joke, that she did not embalm jokes, and went back to her hearse, where the Commander was waiting.",
               "Requires": [
                 "lastcall.dead_on_record"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She had a knotted black cord wound round her hand all that night, knot by knot the measure of the Commander, taken in the velvet of the hearse. When it was over she found she had knotted it tighter.",
+              "Requires": [
+                "elyanka.trickster.bier_seen"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -406354,7 +406408,7 @@
         {
           "Id": "upheld2",
           "Speaker": "Elyanka",
-          "Text": "{n}Elyanka lets out a breath, slowly, through her teeth, as if she had been holding it since the asylum.{/n}\n\"You stood in front of your own priests for a priestess of my Lady. On the law. In daylight.\" {n}Her eyes are very bright.{/n} \"Do you understand what you have done? In Caliphas they will not believe it. In Nerosyan they will never forgive it. Those chaplains will pray for your soul every night until they die, and they will mean every word.\"\n\"I have never in my life been defended. I find it quite unbearable. Go away before I say something foolish.\"",
+          "Text": "{n}Elyanka lets out a breath, slowly, through her teeth, as if she had been holding it since the asylum.{/n}\n\"You stood in front of your own priests for a priestess of my Lady. On the law. In daylight.\" {n}Her eyes are very bright.{/n} \"Do you understand what you have done? In Caliphas they will not believe it. In Nerosyan they will never forgive it. Those chaplains will pray for your soul every night until they die, and they will mean every word.\"\n\"No crusader has stood up for my Lady's priesthood in a Mendevian yard since the Shining Crusade. I find it quite unbearable. Go away before I say something foolish.\"",
           "Choices": [
             {
               "Text": "[Go away.]",
@@ -406591,7 +406645,7 @@
         {
           "Id": "sang",
           "Speaker": "Elyanka",
-          "Text": "{n}She looks at you across the fire for a while, surprised.{/n}\n\"Nobody has ever asked me that.\" {n}She sets the knife down.{/n} \"Songs to her. Old songs, in the tongue they speak in the woods north of Caliphas, where the Camilary deer run. About eating, and drinking, and lying down, and never having to get up again.\"\n{n}Then, very quietly, and not well, in a voice gone rough from not being used for it, she sings one. It is short. You do not understand a word. You understand all of it. When it is finished she eats her half of the heart, and does not look at you, and her escort at the edge of the trees stand like posts and pretend to be deaf.{/n}",
+          "Text": "{n}She looks at you across the fire for a while, surprised.{/n}\n\"You want the words?\" {n}She sets the knife down.{/n} \"Songs to her. Old songs, in the tongue they speak in the woods north of Caliphas, where the Camilary deer run. About eating, and drinking, and lying down, and never having to get up again.\"\n{n}Then, quietly, she sings one. It is low and slow, and every line rises at the end like a question, and she cannot reach the high notes any more; her voice cracks on them and she sings straight through the cracks without stopping, as if the song mattered and the voice did not. When it is finished she scowls at the fire, angry with herself, and eats her half of the heart without looking at you. Her escort at the edge of the trees stand like posts and pretend to be deaf.{/n}",
           "Choices": [
             {
               "Text": "[Say nothing. Eat your half.]",
@@ -406609,7 +406663,7 @@
         {
           "Id": "watched",
           "Speaker": "Elyanka",
-          "Text": "{n}You get up and walk to the edge of the firelight and stand there with your back to her and your sword loose, watching the crooked trees. Somewhere out in the dark, toward the Wound, something that is not a stag is moving.{/n}\n\"You cannot help yourself.\" {n}Her voice behind you is amused, and something else.{/n} \"I bring you to my Lady's table in the woods, and you stand guard over it like a hound.\" {n}She is quiet a moment.{/n} \"Well. Guard it, then. Nobody ever has. I will keep your half warm.\"",
+          "Text": "{n}You get up and walk to the edge of the firelight and stand there with your back to her and your sword loose, watching the crooked trees. Somewhere out in the dark, toward the Wound, something that is not a stag is moving.{/n}\n\"You cannot help yourself.\" {n}Her voice behind you is amused, and something else.{/n} \"I bring you to my Lady's table in the woods, and you stand guard over it like a hound.\" {n}She is quiet a moment.{/n} \"Well. Guard it, then. I will keep your half warm.\"",
           "Choices": [
             {
               "Text": "[Keep watch until the fire is ash.]",
@@ -407053,14 +407107,14 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The army is two days' march from the Threshold, camped on black glass under a sky the colour of a bruise, and somewhere behind the baggage train a hearse with glass sides has been following it since Drezen. Nobody gave it leave. Nobody stopped it.{/n}\n{n}Tonight she walks into your tent without asking, in her grey robe, with the knotted cord wound round her hand, and sits down on the end of your camp bed as if it were hers.{/n}",
+          "Text": "{n}The army is two days' march from the Threshold, camped on black glass under a sky the colour of a bruise, and somewhere behind the baggage train a hearse with glass sides has been following it since Drezen. Nobody gave it leave. Nobody stopped it.{/n}\n{n}Tonight she walks into your tent without asking, in her grey robe, and sits down on the end of your camp bed as if it were hers.{/n}",
           "Choices": [
             {
               "Text": "Continue",
               "Next": "inspect",
               "Set": [],
               "Requires": [
-                "elyanka.committed"
+                "elyanka.trickster.bier_seen"
               ],
               "Forbids": [],
               "Abort": false
@@ -407071,7 +407125,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "elyanka.committed"
+                "elyanka.trickster.bier_seen"
               ],
               "Abort": false
             }
@@ -407097,7 +407151,7 @@
         {
           "Id": "inspect_debt",
           "Speaker": "Elyanka",
-          "Text": "\"Stand where the lamp is. I want to see what the march has done to the Way's property.\" {n}She looks you over from the camp bed, head on one side, as a buyer looks at a horse he has already paid for.{/n}\n\"Thinner. A new cut on the forearm, badly stitched. You carry your left shoulder higher than you did in Drezen.\" {n}She wrinkles her nose.{/n} \"And you smell of the Wound. Everything here does. It gets into the meat.\"",
+          "Text": "\"Stand where the lamp is. I want to see what the march has done to the goods. I never did take your measure in Drezen; I shall have to do it by eye.\" {n}She looks you over from the camp bed, head on one side, as a buyer looks at a horse he has already paid for.{/n}\n\"Thinner. A new cut on the forearm, badly stitched. You carry your left shoulder higher than you did in Drezen.\" {n}She wrinkles her nose.{/n} \"And you smell of the Wound. Everything here does. It gets into the meat.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -407566,7 +407620,7 @@
         {
           "Id": "first",
           "Speaker": "Elyanka",
-          "Text": "{n}She looks at you as if you had asked her to take off her face. Then, slowly, something like delight comes into her eyes.{/n}\n\"Nobody has ever dared.\" {n}She stands, and unlaces her boots, and steps up onto the trestle, and lies down in the red cloth with her grey robe settled around her and her hands folded on her breast, perfectly composed, like a queen on a tomb.{/n}\n\"Look, then. You wanted to see.\"",
+          "Text": "{n}She looks at you as if you had asked her to take off her face. Then, slowly, something like delight comes into her eyes.{/n}\n\"Impertinent.\" {n}She stands, and unlaces her boots, and steps up onto the trestle, and lies down in the red cloth with her grey robe settled around her and her hands folded on her breast, perfectly composed, like a queen on a tomb.{/n}\n\"Look, then. You wanted to see.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -408704,7 +408758,7 @@
         {
           "Id": "what",
           "Speaker": "Elyanka",
-          "Text": "{n}She closes the case, very gently, with both hands.{/n}\n\"Nothing. They are mine.\" {n}Her voice does not change at all.{/n} \"The servants carry them back from the churchyard every morning, wet with dew, and chain them in their beds, and every night they slip the chains and walk out again. I shall go on having them fetched until they learn to be grateful, or until the stars go out.\"\n{n}She looks at you then.{/n} \"You asked. Nobody asks. Now you know what I do with things that are mine and want to leave. Do not make a habit of wanting it.\"",
+          "Text": "{n}She closes the case, very gently, with both hands.{/n}\n\"Nothing. They are mine.\" {n}Her voice does not change at all.{/n} \"The servants carry them back from the churchyard every morning, wet with dew, and chain them in their beds, and every night they slip the chains and walk out again. I shall go on having them fetched until they learn to be grateful, or until the stars go out.\"\n{n}She looks at you then.{/n} \"You asked. Now you know what I do with things that are mine and want to leave. Do not make a habit of wanting it.\"",
           "Choices": [
             {
               "Text": "[Take her hand.]",
@@ -410679,7 +410733,7 @@
               ]
             },
             {
-              "Text": "The Whispering Way sent no collector after Threshold. It did not need to: its envoy had never left. Elyanka Camilary presented the claim herself, in a whisper, in the dead-house by the south gate, and was told that the debtor's death was in a flask, corked, in the debtor's pocket, and that the terms had said nothing about flasks. She agreed that they had not. In Caliphas the Way does not forgive a debtor who cheats it by the letter. It does, she let it be known, admire one.",
+              "Text": "The Whispering Way's collector came after Threshold as a man in grey who spoke in the voice of the envoy who had bought the claim. He presented it in a whisper, word for word as it had been sold, and was told that the debtor's death was in a flask, corked, in the debtor's pocket, and that the terms had said nothing about flasks. He agreed, in her voice, that they had not, and went away to repeat the answer to her. In Caliphas the Way does not forgive a debtor who cheats it by the letter. It does, she let it be known, admire one.",
               "Requires": [
                 "lastcall.debt.whispering_way"
               ],

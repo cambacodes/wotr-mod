@@ -103,7 +103,7 @@ visit(E + "beat.writ", "A writ from the chaplains", [
         c("Continue", "upheld2")),
     el("upheld2", '''{n}Elyanka lets out a breath, slowly, through her teeth, as if she had been holding it since the asylum.{/n}
 "You stood in front of your own priests for a priestess of my Lady. On the law. In daylight." {n}Her eyes are very bright.{/n} "Do you understand what you have done? In Caliphas they will not believe it. In Nerosyan they will never forgive it. Those chaplains will pray for your soul every night until they die, and they will mean every word."
-"I have never in my life been defended. I find it quite unbearable. Go away before I say something foolish."''',
+"No crusader has stood up for my Lady's priesthood in a Mendevian yard since the Shining Crusade. I find it quite unbearable. Go away before I say something foolish."''',
        c("[Go away.]", flags=(WRIT_UPHELD,))),
     nar("lied", '''{n}The grey chaplain looks at you, and at her, and at the six men in grey behind her who do not breathe as men should. He does not believe you. He is too old to believe anybody. But you are the Commander, and it is your seal, and after a while he rolls up his writ and goes, with his young colleague glaring back at the hearse all the way to the gate.{/n}''',
         c("Continue", "lied2")),
@@ -147,11 +147,11 @@ visit(E + "beat.hunt", "Venison", [
 "There," {n}she says.{/n} "Hungry and fed at once. Now you know what I have been looking for all these years." {n}She eats her own half slowly, with her eyes shut.{/n} "It turns out I needed a sweaty mortal to eat it with. My Lady has a vulgar sense of humour."''',
        c("[Sit with her by the fire until it burns down.]", flags=(HUNT_ATE,))),
     el("sang", '''{n}She looks at you across the fire for a while, surprised.{/n}
-"Nobody has ever asked me that." {n}She sets the knife down.{/n} "Songs to her. Old songs, in the tongue they speak in the woods north of Caliphas, where the Camilary deer run. About eating, and drinking, and lying down, and never having to get up again."
-{n}Then, very quietly, and not well, in a voice gone rough from not being used for it, she sings one. It is short. You do not understand a word. You understand all of it. When it is finished she eats her half of the heart, and does not look at you, and her escort at the edge of the trees stand like posts and pretend to be deaf.{/n}''',
+"You want the words?" {n}She sets the knife down.{/n} "Songs to her. Old songs, in the tongue they speak in the woods north of Caliphas, where the Camilary deer run. About eating, and drinking, and lying down, and never having to get up again."
+{n}Then, quietly, she sings one. It is low and slow, and every line rises at the end like a question, and she cannot reach the high notes any more; her voice cracks on them and she sings straight through the cracks without stopping, as if the song mattered and the voice did not. When it is finished she scowls at the fire, angry with herself, and eats her half of the heart without looking at you. Her escort at the edge of the trees stand like posts and pretend to be deaf.{/n}''',
        c("[Say nothing. Eat your half.]", flags=(HUNT_SANG,))),
     el("watched", '''{n}You get up and walk to the edge of the firelight and stand there with your back to her and your sword loose, watching the crooked trees. Somewhere out in the dark, toward the Wound, something that is not a stag is moving.{/n}
-"You cannot help yourself." {n}Her voice behind you is amused, and something else.{/n} "I bring you to my Lady's table in the woods, and you stand guard over it like a hound." {n}She is quiet a moment.{/n} "Well. Guard it, then. Nobody ever has. I will keep your half warm."''',
+"You cannot help yourself." {n}Her voice behind you is amused, and something else.{/n} "I bring you to my Lady's table in the woods, and you stand guard over it like a hound." {n}She is quiet a moment.{/n} "Well. Guard it, then. I will keep your half warm."''',
        c("[Keep watch until the fire is ash.]", flags=(HUNT_WATCHED,))),
 ], requires=(BIER,), forbids=(HUNT_ATE, HUNT_SANG, HUNT_WATCHED), delay=36, last=5)
 
@@ -230,13 +230,13 @@ visit(E + "beat.table", "Her Lady's table", [
 
 visit(E + "ch6.collateral", "The collateral, inspected", [
     nar("start", '''{n}The army is two days' march from the Threshold, camped on black glass under a sky the colour of a bruise, and somewhere behind the baggage train a hearse with glass sides has been following it since Drezen. Nobody gave it leave. Nobody stopped it.{/n}
-{n}Tonight she walks into your tent without asking, in her grey robe, with the knotted cord wound round her hand, and sits down on the end of your camp bed as if it were hers.{/n}''',
-        c("Continue", "inspect", requires=(COMMITTED,)),
-        c("Continue", "inspect_debt", forbids=(COMMITTED,))),
+{n}Tonight she walks into your tent without asking, in her grey robe, and sits down on the end of your camp bed as if it were hers.{/n}''',
+        c("Continue", "inspect", requires=(BIER,)),
+        c("Continue", "inspect_debt", forbids=(BIER,))),
     el("inspect", '''"Stand up. Take off your shirt." {n}She unwinds the cord.{/n} "I measured you in Drezen. I want to see what the march has done to the goods."
 {n}She measures you again, knot by knot: the shoulders, the span of the hands, the chest breathing in and breathing out. Her fingers are cold, and slower than they need to be.{/n} "Thinner. Two knots at the waist. A new cut on the forearm, badly stitched. Your quartermaster should be flogged." {n}She lets the cord fall.{/n}''',
        c("Continue", "tomorrow")),
-    el("inspect_debt", '''"Stand where the lamp is. I want to see what the march has done to the Way's property." {n}She looks you over from the camp bed, head on one side, as a buyer looks at a horse he has already paid for.{/n}
+    el("inspect_debt", '''"Stand where the lamp is. I want to see what the march has done to the goods. I never did take your measure in Drezen; I shall have to do it by eye." {n}She looks you over from the camp bed, head on one side, as a buyer looks at a horse he has already paid for.{/n}
 "Thinner. A new cut on the forearm, badly stitched. You carry your left shoulder higher than you did in Drezen." {n}She wrinkles her nose.{/n} "And you smell of the Wound. Everything here does. It gets into the meat."''',
        c("Continue", "tomorrow")),
     el("tomorrow", '''"Tomorrow, or the next day, you go into the Wound. If you die at the edge of it, I collect. That is what the Way paid for, and that is what I came north to see." {n}She sounds perfectly calm.{/n}
@@ -328,7 +328,7 @@ visit(E + "beat.fitting", "A box that pinches", [
 {n}She bends and puts her cold hand flat on your chest, over the heart, and leaves it there while it beats against her palm, as if she were counting what she is owed.{/n} "Get out of it. Now. Before I forget whose it is for, and close the lid."''',
        c("[Climb out.]", flags=(FIT_LAY,))),
     el("first", '''{n}She looks at you as if you had asked her to take off her face. Then, slowly, something like delight comes into her eyes.{/n}
-"Nobody has ever dared." {n}She stands, and unlaces her boots, and steps up onto the trestle, and lies down in the red cloth with her grey robe settled around her and her hands folded on her breast, perfectly composed, like a queen on a tomb.{/n}
+"Impertinent." {n}She stands, and unlaces her boots, and steps up onto the trestle, and lies down in the red cloth with her grey robe settled around her and her hands folded on her breast, perfectly composed, like a queen on a tomb.{/n}
 "Look, then. You wanted to see."''',
        c("Continue", "first2")),
     nar("first2", '''{n}It is too big for her. She lies in it like a child in her father's boots, and she knows it, and her mouth twists.{/n}
@@ -549,7 +549,7 @@ visit(E + "beat.sisters", "Six sisters", [
        c("[Say nothing. Leave her the case.]", "silence")),
     el("what", '''{n}She closes the case, very gently, with both hands.{/n}
 "Nothing. They are mine." {n}Her voice does not change at all.{/n} "The servants carry them back from the churchyard every morning, wet with dew, and chain them in their beds, and every night they slip the chains and walk out again. I shall go on having them fetched until they learn to be grateful, or until the stars go out."
-{n}She looks at you then.{/n} "You asked. Nobody asks. Now you know what I do with things that are mine and want to leave. Do not make a habit of wanting it."''',
+{n}She looks at you then.{/n} "You asked. Now you know what I do with things that are mine and want to leave. Do not make a habit of wanting it."''',
        c("[Take her hand.]", flags=(SISTERS_ASKED,))),
     el("silence", '''{n}You say nothing. After a while she closes the case herself, with both hands, gently, and puts it inside her robe against her breast.{/n}
 "You are learning," {n}she says.{/n} "Most people cannot bear a silence at a graveside. They fill it with something stupid." {n}She stands.{/n} "Come inside. I am hungry, and I would like to watch you eat."''',

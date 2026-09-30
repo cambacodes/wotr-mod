@@ -258,6 +258,34 @@ internal static class ElyankaTricksterTests
         check(new[] { dead, claims, move, hearse, S(P + "beat.night") }.All(x => x.MaxChapter == 5 && !Avail(x, late6)),
             "Trk_Elyanka_Continuity: a Drezen encounter plays in Chapter 6.");
 
+        // Sequential walks (audit r2): commit, then straight into Chapter 6 without the hearse night: the collateral visit never
+        // recalls a measuring; dismissal, then the creditor called: the Collectors paragraph does not bring her back in person;
+        // the dead given without Seelah at the rows: no Seelah in the ending.
+        var yesFirst = Take(claims, t, "rites", 0, Committed);
+        var marched = Program.Copy(yesFirst);
+        marched.Chapter = 6;
+        marched.Hour += 30;
+        Rules.Complete(story, marched);
+        var coll = S(P + "ch6.collateral");
+        check(!Avail(hearse, marched) && Avail(coll, marched) && Paths(coll, marched).All(o => !o.path.Contains(("start", 0)))
+              && Paths(coll, marched).Any(o => o.path.Contains(("start", 1))),
+            "Trk_Elyanka_Continuity: committed and marched before the hearse, the Chapter 6 visit still recalls the measuring.");
+        var sentHome = Take(move, nw, "home", 0, LeftFree);
+        var collectors = story.Scenes.Single(s => s.Id == "trickster.lastcall.page.collectors").Nodes[0].Paragraphs
+            .Where(pp => pp.Requires.Contains("lastcall.debt.whispering_way")).ToList();
+        check(sentHome.Has(Closed) && collectors.Count == 1 && !collectors[0].Text.Contains("never left") && collectors[0].Text.Contains("man in grey")
+              && collectors[0].AnyGroups.Length == 1 && collectors[0].AnyGroups[0].Contains("elyanka.lastcall.called"),
+            "Trk_Elyanka_Continuity: after a dismissal the creditor's collection reverses it (she presents the claim in person).");
+        var noSeelah = Take(dead, ow, "give", 0, Tested);
+        var withSeelah = Take(dead, World(story, 5, "trickster.ever", Owned, Bequeathed, Started, "seelah.in_party"), "give", 0, Tested);
+        var seelahPara = Pg("claim").Nodes[0].Paragraphs.Single(pp => pp.Text.Contains("Seelah had counted"));
+        check(!noSeelah.Has(P + "seelah_prayed") && withSeelah.Has(P + "seelah_prayed") && seelahPara.Requires.Contains(P + "seelah_prayed")
+              && Pg("claim").Nodes[0].Paragraphs.Where(pp => pp.Text.Contains("Seelah")).All(pp => pp.Requires.Contains(P + "seelah_prayed")),
+            "Trk_Elyanka_Continuity: the ending names Seelah at rows she never saw.");
+        var cord = story.Scenes.Single(s => s.Id == "elyanka.lastcall.page").Nodes[0];
+        check(!cord.Text.Contains("knotted") && cord.Paragraphs.Where(pp => pp.Text.Contains("knotted")).All(pp => pp.Requires.Contains(Bier)),
+            "Trk_Elyanka_Continuity: the coda's measuring cord does not wait for the hearse night.");
+
         // Trk_Elyanka_LastCall: her coda needs the real commit; the bequest is a debt to a live power; it never keeps anyone alive.
         var coda = story.Scenes.Single(s => s.Id == "elyanka.lastcall.page");
         var call = story.Scenes.Single(s => s.Id == "elyanka.lastcall.call");

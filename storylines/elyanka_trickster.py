@@ -351,7 +351,7 @@ visit(E + "test.the_dead", "Sixty-one under canvas", [
     el("rows", '''{n}She lifts the canvas from a young face with a split lip, looks, and lets it fall.{/n}
 "Your chaplains are very slow. The ones with names went into the earth two days ago, with prayers and mothers. These have no names. Nobody has come for them. Nobody will." {n}She moves to the next row.{/n}
 "In three days they go into a pit with lime on top, and the grey warden has sixty-one more souls in her queue, and the flesh rots in the dark for nothing. Nothing at all. It is the most wasteful custom in the world."''',
-       c("Continue", "paladin", requires=("seelah.in_party",)),
+       c("Continue", "paladin", requires=("seelah.in_party",), flags=(E + "seelah_prayed",)),
        c("Continue", "ask", forbids=("seelah.in_party",))),
     el("paladin", '''"Your paladin was here this morning. The one with a thief's hands." {n}She lifts another canvas.{/n} "Iomedae's girl, kneeling to pray for Pharasma's dead, row by row, until her knees were grey with lime. She did not see me in the yard. I watched her the whole time."
 "I would like to see her face when she learns what her Lady's crusade is built on. One day, perhaps. Not tonight."''',
@@ -515,14 +515,14 @@ visit(E + "visit.hearse", "The velvet in the hearse", [
 SCENES.append(reaction("Daeran", E + "react.daeran_door", ("trickster.ever", OWNED),
     '''{n}Daeran is examining his fingernails, as usual, and does not look up.{/n}
 "There is a hearse in the yard of the dead-house by the south gate, Commander, lacquered, with glass sides, and a woman from Ustalav who tells anyone who asks that she has bought your corpse. In advance. At a very good price." {n}He turns his hand over and examines the other side.{/n}
-"My family crypt is full of Arendaes who died without ever being worth a copper to anyone. I find I am terribly jealous. Nobody has ever made me an offer. If she wants a second body for the carriage, you will tell her I am available, and considerably better preserved."''',
+"My family crypt is full of Arendaes who died without ever being worth a copper to anyone. Not one of them was ever made an offer. I find that I resent it on their behalf. If she wants a second body for the carriage, you will tell her I am available, and considerably better preserved."''',
     answer_list=DAERAN_HUB, chapter=5, last=5, entry='"About the hearse at the south gate."', portrait="Daeran",
     forbids=(*DAERAN_GONE, BIER)))
 tag(E + "react.daeran_door", "T")
 
 SCENES.append(reaction("Daeran", E + "react.daeran_after", ("trickster.ever", BIER),
     '''{n}Daeran regards you for some time over the rim of his cup before he speaks.{/n}
-"You slept in a hearse." {n}He says it slowly, savouring it.{/n} "With the undertaker. Who is a priestess of the Pallid Princess and has measured you for the table. I have never in my life been so jealous of anyone, and I have been jealous of a great many people."
+"You slept in a hearse." {n}He says it slowly, savouring it.{/n} "With the undertaker. Who is a priestess of the Pallid Princess and has measured you for the table." {n}He sips.{/n} "In my family we buried eleven Arendaes in six years, Commander, and I can tell you the one rule of the funeral carriage that every one of them kept: one does not get into it before the service. It is considered pushing."
 "She will have no idea what to drink at a funeral that has not happened yet. Tell her the cellars of my house are at her disposal. Every year, on the day they feasted you dead in Drezen, I shall send her a bottle older than she is. I want to watch her taste it and pretend she is above such things."''',
     answer_list=DAERAN_HUB, chapter=5, last=6, entry='"You\'re staring, Daeran."', portrait="Daeran",
     flags=(DAERAN_ALLY,), forbids=DAERAN_GONE))
@@ -586,15 +586,17 @@ COMMON = (
       requires=(BLUFFED,)),
     p('''{n}She never once looked at the Commander's face when a question mattered. She watched the hands, and the pulse at the throat, and on the rare nights she was pleased with what she saw, she said so to the hands.{/n}''',
       requires=(EXPOSED,)),
-    p('''{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back, having nowhere to come back to. Seelah never stopped counting them.{/n}''',
-      requires=(GAVE_DEAD,)),
+    p('''{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back, having nowhere to come back to. The chaplains asked after them for a year, and were told nothing.{/n}''',
+      requires=(GAVE_DEAD,), forbids=(E + "seelah_prayed",)),
+    p('''{n}The sixty-one unnamed dead of Iz were never buried. Some went south to Ustalav in the Way's carts. Some walked north with the army, in step, and did not come back. Seelah had counted them, row by row, the morning before they went, and she kept the count.{/n}''',
+      requires=(GAVE_DEAD, E + "seelah_prayed")),
     p('''{n}The sixty-one unnamed dead of Iz went into the ground with lime and prayers. Elyanka attended the burial, at the back, in grey, and ate an apple all through the service, and told the Commander afterwards that it was the only honest debt she had ever seen a crusade pay.{/n}''',
       requires=(REFUSED_DEAD,)),
     p('''{n}The head of a vrock hung for years in a certain house in Caliphas, above a fireplace, with a card beneath it in no hand at all. Visitors from the Way who asked about it were told it was the Knight Commander's idea of an offering, and that the Knight Commander was not squeamish, only stingy.{/n}''',
       requires=(CARRION,)),
     p('''{n}She kept a drawing of the Commander's face, done in charcoal from everything about the Commander except the face, rolled in her sleeve. When she needed to know what the Commander really thought, she unrolled it and asked it. She said it had never once lied to her.{/n}''',
       requires=(E + "face.read",)),
-    p('''{n}There were men in the old granary by the north wall who died smiling, that winter, with a name on their lips the chaplains did not recognize. The Commander had let her in. The Commander never forgot it, and never pretended to be sorry.{/n}''',
+    p('''{n}There were men in the old granary by the north wall who died smiling, that winter, with a name on their lips the chaplains did not recognize. The Commander had let her in.{/n}''',
       requires=(E + "wards.let",)),
     p('''{n}The boy with one arm from the fever ward lived to be a baker in the lower town of Drezen. He never knew who had sat with him the night he did not die, or who had been sent away from his bed so that he could be sure of it.{/n}''',
       requires=(E + "wards.stopped",)),
@@ -655,7 +657,7 @@ HER_PARAGRAPHS = COMMON + LATER + UNPAID + (
       requires=(E + "courier.come_back_hungry",)),
     p('''{n}The lock of silver-grey hair bound in black thread stayed where the Commander kept it. She never asked where that was. She was sure, she said, that it was somewhere the Commander would see it every day, because otherwise she would have to be angry, and she was too patient a creditor to waste anger on a debtor's drawer.{/n}''',
       requires=(LOCK,)),
-    p('''{n}Her Lady's table was laid in the dead-house by the south gate every seventh night for as long as she was in Drezen, for the Pallid Princess's worshippers in a crusader city, and nobody in authority ever came to the door. When somebody did at last, years later, the Commander's name was the reason they went away again. It was not a thing the Commander was proud of.{/n}''',
+    p('''{n}Her Lady's table was laid in the dead-house by the south gate every seventh night for as long as she was in Drezen, for the Pallid Princess's worshippers in a crusader city, and nobody in authority ever came to the door. When somebody did at last, years later, the Commander's name was the reason they went away again, and the lower town knew it, and said so in the taverns.{/n}''',
       requires=(SECRET_RITES,)),
     p('''{n}The Commander sat at that table more than once, and ate what was put on it, and never asked. She said it was the most romantic thing a living person had ever done for her, and that if it were repeated to anyone she would poison them.{/n}''',
       requires=(TABLE_SAT,)),
