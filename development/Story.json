@@ -402693,7 +402693,7 @@
         {
           "Id": "kept",
           "Speaker": "Yaniel",
-          "Text": "{n}She looks down at Radiance in her own two hands. Her knuckles have gone white on the grip. The blade does not glow, not the way the songs say it did; it does not need to.{/n}\n\"I did,\" {n}she says.{/n} \"I did, didn't I.\"\n{n}A dry sound comes out of her that is nearly a laugh.{/n} \"Seventy-odd years in this pit, and the first thing I do with my hands is lie with them. I said I would never lift it again, and I was holding it up at your face like a torch.\" {n}She draws a long breath through her nose.{/n} \"Iomedae forgive me. I am out of practice at telling the truth. Nobody down here ever wanted it.\"",
+          "Text": "{n}She looks down at Radiance in her own two hands. Her knuckles have gone white on the grip. The blade does not glow, not the way the songs say it did; it does not need to.{/n}\n\"I did,\" {n}she says.{/n} \"I did, didn't I.\"\n{n}A dry sound comes out of her that is nearly a laugh.{/n} \"Lifting it is nothing. Any fool can lift a sword once, in a good light, with a stranger watching. Carrying it is a year of mornings. Another campaign. Another gate.\" {n}She draws a long breath through her nose and lets it go.{/n} \"I do not know that I have that in me. I will not know until I try. Iomedae help me, I suppose I am going to try.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -403239,12 +403239,12 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"The east tower's sentry says you're not on his roster.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The sentry on the east tower tells you, a little too loudly, that there is a woman on his wall who is not on his roster, and that she has been there since the bell before dawn and will not come down. She is standing at the old gate tower where the parapet is broken, looking out over the ash toward the Wound: a lean, gray-headed half-elf in a borrowed crusader's cloak, bareheaded in the wind, with a husk's iron cuff still on her left wrist and one sheared link of chain swinging from it.{/n}",
+          "Text": "{n}The sentry on the east tower has been complaining since the bell before dawn, a little too loudly, about a woman on his wall who is not on his roster and will not come down. She has come down now, as far as the street, and no further: a lean, gray-headed half-elf in a borrowed crusader's cloak, bareheaded in the wind, with a husk's iron cuff still on her left wrist and one sheared link of chain swinging from it. She does not look round when you speak. She jerks her head at the gate tower stair, the way a sentry does to anybody who wants something of her, and goes back up it without waiting to see whether you follow.{/n}\n{n}At the top, where the parapet of the old gate is broken, she stops and looks out over the ash toward the Wound.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -403830,23 +403830,22 @@
       ],
       "Forbids": [
         "yaniel.killed.latched",
-        "yaniel.trickster.swapped",
-        "yaniel.closed"
+        "yaniel.closed",
+        "yaniel.trickster.swapped"
       ],
       "DelayHours": 24,
       "Optional": false,
       "Relationship": "yaniel",
-      "Remote": true,
-      "Kind": "visit",
       "Chapters": [
         5
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence",
       "TricksterDevice": true,
-      "TricksterState": "late",
-      "Sender": "Yaniel"
+      "TricksterState": "late"
     },
     {
       "Id": "yaniel.trickster.ch5.found",
@@ -403854,12 +403853,12 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"You came to Drezen.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She is waiting in the corridor outside your rooms when you come back from the day's business, sitting on the bench where petitioners sit, with her back straight against the wall and her boots flat on the floor, as if the bench were a post she had been ordered to hold.{/n}",
+          "Text": "{n}She has been standing in the same place since the morning, the sentries say, with her back straight against the wall and her boots flat on the stones, as if the street were a post she had been ordered to hold.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -403900,7 +403899,7 @@
         {
           "Id": "judges_empty",
           "Speaker": "Yaniel",
-          "Text": "{n}She stands when she sees you, and her eyes go straight to your hip, and find nothing there, and come up to your face.{/n}\n\"Commander.\" {n}A nod, very correct, and cold.{/n} \"I came to watch your hands. I told you I would. They are empty. I have been watching every sword the smiths here sell, in case yours turned up on a table. It has not, yet.\"\n\"You swore. The oath is not due. I will be here when it is.\"",
+          "Text": "{n}She straightens when she sees you, and her eyes go straight to your hip, and find nothing there, and come up to your face.{/n}\n\"Commander.\" {n}A nod, very correct, and cold.{/n} \"I came to watch your hands. I told you I would. They are empty. I have been watching every sword the smiths here sell, in case yours turned up on a table. It has not, yet.\"\n\"You swore. The oath is not due. I will be here when it is.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -403941,7 +403940,7 @@
         {
           "Id": "carries",
           "Speaker": "Yaniel",
-          "Text": "{n}Radiance is across her knees, in a plain scabbard somebody has sewn for it out of an old saddle. She stands when she sees you, and the sword comes up with her as if it were part of her arm.{/n}\n\"Commander.\" {n}A nod, very correct.{/n} \"I held your wall with your sword while you were in the Abyss. The east wall, the night watches, the old gate. Twice things came over it that the sentries did not have names for. Radiance had names for them.\"\n\"I thought you should know where your sword was. And I wanted to see if your hands had grown back empty.\"",
+          "Text": "{n}Radiance is on her hip, in a plain scabbard somebody has sewn for it out of an old saddle. She straightens when she sees you, and her hand goes to the pommel as if it were part of her arm.{/n}\n\"Commander.\" {n}A nod, very correct.{/n} \"I held your wall with your sword while you were in the Abyss. The east wall, the night watches, the old gate. Twice things came over it that the sentries did not have names for. Radiance had names for them.\"\n\"I thought you should know where your sword was. And I wanted to see if your hands had grown back empty.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -403982,7 +403981,7 @@
         {
           "Id": "judges",
           "Speaker": "Yaniel",
-          "Text": "{n}She stands when she sees you, and her eyes go straight to your hip, and stay there until she has found the hilt.{/n}\n\"Commander.\" {n}A nod, very correct.{/n} \"I came to watch your hands. I told you I would. I have been watching the walls of this city while you were in the Abyss, which was less interesting, and I have been watching every sword the smiths here sell, in case yours turned up on a table. It did not.\"\n\"So. You still have it. That is one day of the oath kept. I will be here for the others.\"",
+          "Text": "{n}She straightens when she sees you, and her eyes go straight to your hip, and stay there until she has found the hilt.{/n}\n\"Commander.\" {n}A nod, very correct.{/n} \"I came to watch your hands. I told you I would. I have been watching the walls of this city while you were in the Abyss, which was less interesting, and I have been watching every sword the smiths here sell, in case yours turned up on a table. It did not.\"\n\"So. You still have it. That is one day of the oath kept. I will be here for the others.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404104,7 +404103,7 @@
         {
           "Id": "husk",
           "Speaker": "Yaniel",
-          "Text": "{n}You take it out of the pack and put it on the bench beside her: a second cuff, crude husk-iron, the pin hammered flat, not hers. She looks at it without touching it, the way she looked at her own wrist in the Fane.{/n}\n\"Where?\" {n}Her voice is very quiet.{/n}\n{n}You tell her. The Fleshmarkets of the Middle City, a block, a crier with a painted smile, genuine Fane stock broken up this season. A woman on a hook by one wrist, with a face that did not fit her.{/n}",
+          "Text": "{n}You take it out of the pack and hold it out on your open palm: a second cuff, crude husk-iron, the pin hammered flat, not hers. She looks at it without touching it, the way she looked at her own wrist in the Fane.{/n}\n\"Where?\" {n}Her voice is very quiet.{/n}\n{n}You tell her. The Fleshmarkets of the Middle City, a block, a crier with a painted smile, genuine Fane stock broken up this season. A woman on a hook by one wrist, with a face that did not fit her.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -404174,12 +404173,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Yaniel"
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "yaniel.trickster.ch5.found_late",
@@ -404187,12 +404185,12 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"Who is the boy?\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Two days after the wall, a boy from the gate guard brings you a message he has plainly been made to repeat until he could say it without looking at his feet.{/n}",
+          "Text": "{n}A day after the wall she has a boy from the gate guard in front of her, and is making him repeat a message until he can say it without looking at his feet. When she sees you she folds her arms. \"You may as well hear it,\" she says. \"He has worked hard on it.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -404208,7 +404206,7 @@
         {
           "Id": "msg",
           "Speaker": "Yaniel",
-          "Text": "\"The paladin says,\" {n}the boy recites,{/n} \"that she has taken the room in the old east gate tower, the one that floods, and that nobody is to try to move her to the cathedral close with the widows, and that she is not anybody's relic, and that if the Commander wants to see the iron she gave away, the Commander knows which wall she is on.\"\n{n}He takes a breath.{/n} \"And she said to say she has not been sick yet. She said you would know what that meant.\"\n{n}He hesitates.{/n} \"She also said, if the Commander asked how she was, to say she was standing up. I don't know what that means, my lord. She said you would.\"",
+          "Text": "\"The paladin says,\" {n}the boy recites, to you, with the paladin standing at his shoulder,{/n} \"that she has taken the room in the old east gate tower, the one that floods, and that nobody is to try to move her to the cathedral close with the widows, and that she is not anybody's relic, and that if the Commander wants to see the iron she gave away, the Commander knows which wall she is on.\"\n{n}He takes a breath.{/n} \"And she said to say she has not been sick yet. She said you would know what that meant.\"\n{n}He hesitates.{/n} \"She also said, if the Commander asked how she was, to say she was standing up. I don't know what that means, my lord. She said you would.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404262,10 +404260,10 @@
         {
           "Id": "carries_plain",
           "Speaker": "Narrator",
-          "Text": "{n}That night you see her from the citadel: a lean shape against the stars on the broken parapet of the east gate, with the sword you gave her across her shoulder like a sentry's pike, turning her head slowly from one end of the ash to the other.{/n}",
+          "Text": "{n}Behind him she stands with the sword you gave her on the wall across her shoulder like a sentry's pike, looking past you both at the ash, with the face of a woman who has had nothing to do with any of this.{/n}",
           "Choices": [
             {
-              "Text": "\"Tell her I know which wall.\"",
+              "Text": "[To the boy] \"Tell her I know which wall.\"",
               "Next": null,
               "Set": [
                 "yaniel.trickster.returned",
@@ -404281,10 +404279,10 @@
         {
           "Id": "judges_empty",
           "Speaker": "Narrator",
-          "Text": "{n}That night you see her from the citadel: a lean shape against the stars on the broken parapet of the east gate, standing her watch with a borrowed spear. Once, when you cross the courtyard, the shape on the wall turns to follow you, and you know without being told that she is looking at your empty hip.{/n}",
+          "Text": "{n}Behind him she stands with a borrowed spear, looking past you both at the ash, with the face of a woman who has had nothing to do with any of this. Once, while he is speaking, her eyes drop to your empty hip, and come back up.{/n}",
           "Choices": [
             {
-              "Text": "\"Tell her I know which wall.\"",
+              "Text": "[To the boy] \"Tell her I know which wall.\"",
               "Next": null,
               "Set": [
                 "yaniel.trickster.returned",
@@ -404300,10 +404298,10 @@
         {
           "Id": "carries",
           "Speaker": "Narrator",
-          "Text": "{n}That night you see her from the citadel: a lean shape against the stars on the broken parapet of the east gate, and every so often, when something moves out in the ash, a thin line of gold where she lifts the sword to look at it.{/n}",
+          "Text": "{n}Behind him she stands with Radiance across her shoulder like a sentry's pike, looking past you both at the ash, with the face of a woman who has had nothing to do with any of this. A thin line of gold lies along the blade, as if the sword were worse at pretending than she is.{/n}",
           "Choices": [
             {
-              "Text": "\"Tell her I know which wall.\"",
+              "Text": "[To the boy] \"Tell her I know which wall.\"",
               "Next": null,
               "Set": [
                 "yaniel.trickster.returned",
@@ -404319,10 +404317,10 @@
         {
           "Id": "judges",
           "Speaker": "Narrator",
-          "Text": "{n}That night you see her from the citadel: a lean shape against the stars on the broken parapet of the east gate, standing her watch with a borrowed spear. Once, when you cross the courtyard with Radiance on your hip, the shape on the wall turns to follow you until you are through the door.{/n}",
+          "Text": "{n}Behind him she stands with a borrowed spear, looking past you both at the ash, with the face of a woman who has had nothing to do with any of this. Once, while he is speaking, her eyes drop to Radiance on your hip, and stay there until he has finished.{/n}",
           "Choices": [
             {
-              "Text": "\"Tell her I know which wall.\"",
+              "Text": "[To the boy] \"Tell her I know which wall.\"",
               "Next": null,
               "Set": [
                 "yaniel.trickster.returned",
@@ -404351,12 +404349,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Yaniel"
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "yaniel.trickster.verdict.letter",
@@ -404535,12 +404532,12 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"Walk the wall with you?\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She is on the east wall when you come up, with the sword you put in her hands after Iz across her knees and a whetstone going along it in long, slow strokes. She does not look up.{/n}",
+          "Text": "{n}She takes you up to the east wall without a word and sits down on the broken parapet, with the sword you put in her hands after Iz across her knees, and sets a whetstone going along it in long, slow strokes. She does not look up.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -404618,12 +404615,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Yaniel"
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "yaniel.trickster.verdict.hands",
@@ -404631,12 +404627,12 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"I'm back from Iz.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She is on the stair of the citadel when you come back from Iz, sitting on the top step with the east-wall spear across her knees. She does not get up. She looks at your face, and then at your hip, and then at your hands, in that order, the way a quartermaster looks at a returned wagon.{/n}",
+          "Text": "{n}She is at her post when you come back from Iz, sitting on a mounting block by the wall with the east-wall spear across her knees. She does not get up. She looks at your face, and then at your hip, and then at your hands, in that order, the way a quartermaster looks at a returned wagon.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -405057,12 +405053,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Yaniel"
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "yaniel.trickster.commit.trade",
@@ -405580,8 +405575,7 @@
         "yaniel.closed",
         "yaniel.committed",
         "yaniel.trickster.declined",
-        "yaniel.trickster.oath_broken",
-        "yaniel.trickster.commit.trade_room"
+        "yaniel.trickster.oath_broken"
       ],
       "DelayHours": 24,
       "Optional": false,
@@ -405596,534 +405590,17 @@
       "InteractionHub": "yaniel.presence"
     },
     {
-      "Id": "yaniel.trickster.commit.trade_room",
-      "Title": "Your sword for my shackle",
-      "Owner": "Yaniel",
-      "MinChapter": 5,
-      "MaxChapter": 5,
-      "Entry": "",
-      "Nodes": [
-        {
-          "Id": "start",
-          "Speaker": "Narrator",
-          "Text": "{n}A boy from the gate guard brings the word: the paladin is in her room in the gate tower, and would the Commander come up.{/n}\n{n}The room in the old east gate tower is exactly as bad as she said. There is a camp bed that the damp has warped, a brazier, a pail under the place where the roof leaks, and one good thing: a window cut in the thickness of the wall that looks straight down the road the refugees took the day the city fell.{/n}\n{n}She is standing at the window with her back to you when you come up the stair. She turns round.{/n}",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "carries",
-              "Set": [],
-              "Requires": [
-                "yaniel.trickster.carries"
-              ],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
-              "Next": "judges",
-              "Set": [],
-              "Requires": [
-                "yaniel.trickster.oath_stands",
-                "yaniel.radiance_held"
-              ],
-              "Forbids": [
-                "yaniel.trickster.carries"
-              ],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
-              "Next": "judges_empty",
-              "Set": [],
-              "Requires": [
-                "yaniel.trickster.oath_stands"
-              ],
-              "Forbids": [
-                "yaniel.trickster.carries",
-                "yaniel.radiance_held"
-              ],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
-              "Next": "judges_open",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [
-                "yaniel.trickster.carries",
-                "yaniel.trickster.oath_stands"
-              ],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        },
-        {
-          "Id": "carries",
-          "Speaker": "Yaniel",
-          "Text": "{n}She unbuckles the saddle-leather scabbard from her hip, and holds Radiance out to you across the room, hilt first, the way she did in the Fane.{/n}\n\"Your sword for my shackle,\" {n}she says,{/n} \"and we are square.\"",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "carries_late",
-              "Set": [],
-              "Requires": [
-                "yaniel.trickster.handed_after_iz"
-              ],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
-              "Next": "carries_sang",
-              "Set": [],
-              "Requires": [
-                "yaniel.trickster.carries_holy"
-              ],
-              "Forbids": [
-                "yaniel.trickster.handed_after_iz"
-              ],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
-              "Next": "carries_quiet",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [
-                "yaniel.trickster.carries_holy",
-                "yaniel.trickster.handed_after_iz"
-              ],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Yaniel"
-        },
-        {
-          "Id": "carries_late",
-          "Speaker": "Yaniel",
-          "Text": "\"You gave me this after Iz, on my own wall, when the demon lord was already beaten. I have stood every watch since with it. Nothing that has come up out of the ash has got past it yet. That is a small thing, next to Iz. It is not a small thing to me. Take it back now, and give me my iron, and we are two soldiers who did each other a good turn in a bad place, and nobody owes anybody.\"",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "told",
-              "Set": [],
-              "Requires": [
-                "yaniel.trickster.minagho_told"
-              ],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
-              "Next": "hid",
-              "Set": [],
-              "Requires": [
-                "trickster.secret.yaniel_minagho"
-              ],
-              "Forbids": [
-                "yaniel.trickster.minagho_told"
-              ],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
-              "Next": "ask",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [
-                "yaniel.trickster.minagho_told",
-                "trickster.secret.yaniel_minagho"
-              ],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Yaniel"
-        },
-        {
-          "Id": "carries_sang",
-          "Speaker": "Yaniel",
-          "Text": "\"It sang for me at Iz. I have thought about that every night since. You gave me that, and it cost you the only song that sword will ever sing for you. I cannot give it back. I can give you the sword. Take it, and give me my iron, and we are two soldiers who did each other a good turn in a bad place, and nobody owes anybody.\"",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "told",
-              "Set": [],
-              "Requires": [
-                "yaniel.trickster.minagho_told"
-              ],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
-              "Next": "hid",
-              "Set": [],
-              "Requires": [
-                "trickster.secret.yaniel_minagho"
-              ],
-              "Forbids": [
-                "yaniel.trickster.minagho_told"
-              ],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
-              "Next": "ask",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [
-                "yaniel.trickster.minagho_told",
-                "trickster.secret.yaniel_minagho"
-              ],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Yaniel"
-        },
-        {
-          "Id": "carries_quiet",
-          "Speaker": "Yaniel",
-          "Text": "\"It did not sing at Iz. It did not need to. It went into the city in a rank of soldiers, in the hand of a soldier, and it came out again, and nobody made a song of it. You gave me that. Take it back now, and give me my iron, and we are two soldiers who did each other a good turn in a bad place, and nobody owes anybody.\"",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "told",
-              "Set": [],
-              "Requires": [
-                "yaniel.trickster.minagho_told"
-              ],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
-              "Next": "hid",
-              "Set": [],
-              "Requires": [
-                "trickster.secret.yaniel_minagho"
-              ],
-              "Forbids": [
-                "yaniel.trickster.minagho_told"
-              ],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
-              "Next": "ask",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [
-                "yaniel.trickster.minagho_told",
-                "trickster.secret.yaniel_minagho"
-              ],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Yaniel"
-        },
-        {
-          "Id": "judges",
-          "Speaker": "Yaniel",
-          "Text": "{n}She looks at the hilt on your hip, and then at the pouch where you keep her iron.{/n}\n\"Your sword for my shackle,\" {n}she says,{/n} \"and we are square.\"\n\"You carried it where you swore. I watched your hands all the way to Iz and back, and they did not drop it. The oath is done; the sword is yours, free and clear, and I will say so to any priest who asks. Give me my iron, and we are two soldiers who did each other a good turn in a bad place, and nobody owes anybody.\"",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "told",
-              "Set": [],
-              "Requires": [
-                "yaniel.trickster.minagho_told"
-              ],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
-              "Next": "hid",
-              "Set": [],
-              "Requires": [
-                "trickster.secret.yaniel_minagho"
-              ],
-              "Forbids": [
-                "yaniel.trickster.minagho_told"
-              ],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
-              "Next": "ask",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [
-                "yaniel.trickster.minagho_told",
-                "trickster.secret.yaniel_minagho"
-              ],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Yaniel"
-        },
-        {
-          "Id": "judges_empty",
-          "Speaker": "Yaniel",
-          "Text": "{n}She looks at your bare hip, and then at the pouch where you keep her iron.{/n}\n\"Your sword for my shackle,\" {n}she says,{/n} \"and we are square. It does not matter that you have not got it on you. It went where it had to go; what it does now is its own business, and yours.\"\n\"The oath is done. Give me my iron, and we are two soldiers who did each other a good turn in a bad place, and nobody owes anybody.\"",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "told",
-              "Set": [],
-              "Requires": [
-                "yaniel.trickster.minagho_told"
-              ],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
-              "Next": "hid",
-              "Set": [],
-              "Requires": [
-                "trickster.secret.yaniel_minagho"
-              ],
-              "Forbids": [
-                "yaniel.trickster.minagho_told"
-              ],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
-              "Next": "ask",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [
-                "yaniel.trickster.minagho_told",
-                "trickster.secret.yaniel_minagho"
-              ],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Yaniel"
-        },
-        {
-          "Id": "judges_open",
-          "Speaker": "Yaniel",
-          "Text": "{n}She looks at your hip, and then at the pouch where you keep her iron.{/n}\n\"Your sword for my shackle,\" {n}she says,{/n} \"and we are square. Not the oath. The oath waits for the Threshold, and it will wait whatever we do here. The rest of it.\"\n\"Give me my iron, and we are two soldiers who did each other a good turn in a bad place, and nobody owes anybody anything but that one walk into the Wound.\"",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "told",
-              "Set": [],
-              "Requires": [
-                "yaniel.trickster.minagho_told"
-              ],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
-              "Next": "hid",
-              "Set": [],
-              "Requires": [
-                "trickster.secret.yaniel_minagho"
-              ],
-              "Forbids": [
-                "yaniel.trickster.minagho_told"
-              ],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
-              "Next": "ask",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [
-                "yaniel.trickster.minagho_told",
-                "trickster.secret.yaniel_minagho"
-              ],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Yaniel"
-        },
-        {
-          "Id": "told",
-          "Speaker": "Yaniel",
-          "Text": "{n}She glances, without meaning to, out of the window and down into the city.{/n}\n\"And do not think I have forgotten your lilitu. I have not. Every morning when I come down off the wall I think about her, and about the knife in my boot.\" {n}Her jaw sets.{/n} \"You told me the truth about her. That is why I am standing here offering you a fair trade instead of throwing your iron out of the window. Do not make me regret it.\"",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "ask",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Yaniel"
-        },
-        {
-          "Id": "hid",
-          "Speaker": "Yaniel",
-          "Text": "{n}She glances, without meaning to, out of the window and down into the city.{/n}\n\"There is still a lilitu in your city's business, and you still have not told me why. I have stopped asking. I have not stopped watching your hands.\" {n}Her jaw sets.{/n} \"This is a fair trade, Commander. It is fair because it asks nothing about her. Take it, and neither of us has to find out what the other one is hiding.\"",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "ask",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Yaniel"
-        },
-        {
-          "Id": "ask",
-          "Speaker": "Yaniel",
-          "Text": "{n}She holds out her hand, palm up. It is steady. Her voice is not, quite.{/n}\n\"Well, Commander? It is a fair trade. It is the fairest one anybody has offered me since the city fell.\"",
-          "Choices": [
-            {
-              "Text": "[Keep the shackle] \"No. You keep what I gave you. I keep what I took. Nobody's square.\"",
-              "Next": "yes",
-              "Set": [
-                "yaniel.committed",
-                "yaniel.trickster.cost.shackle_kept"
-              ],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "[Give her the shackle back.]",
-              "Next": "given",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [
-                "yaniel.trickster.carries"
-              ],
-              "Abort": false
-            },
-            {
-              "Text": "[Give her the shackle back, and leave her the sword.]",
-              "Next": "given_carries",
-              "Set": [],
-              "Requires": [
-                "yaniel.trickster.carries"
-              ],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Yaniel"
-        },
-        {
-          "Id": "given_carries",
-          "Speaker": "Yaniel",
-          "Text": "{n}You put the iron in her palm. When she holds the sword out after it, you shake your head.{/n}\n\"Keep it,\" {n}you say.{/n} {n}She stares at you, and at the sword, and does not offer it again.{/n}\n\"Then it is not a trade,\" {n}she says slowly.{/n} \"It is two gifts, and nobody asked for either.\" {n}She turns the iron over. The sheared link swings.{/n} \"It is lighter than I remembered. Or I am stronger. One of us has changed.\"\n{n}She does not put it on. She hangs it from a nail by the window, where it can see the road, and stands looking at it with her back to you, with your sword still on her hip.{/n} \"Thank you, Commander. You had better go. I have a watch to stand.\"",
-          "Choices": [
-            {
-              "Text": "[Go.]",
-              "Next": null,
-              "Set": [
-                "yaniel.trickster.declined"
-              ],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Yaniel"
-        },
-        {
-          "Id": "yes",
-          "Speaker": "Yaniel",
-          "Text": "{n}She stares at you. Her hand stays out a moment longer, empty, and then she lets it drop.{/n}\n\"Nobody's square,\" {n}she repeats.{/n} \"That is not a trade. That is a debt, going both ways.\" {n}She crosses the room. Up close she smells of the wall, of cold stone and wind and the oil she uses on the sword.{/n}\n{n}She takes your face in both her hands. They are hard hands, callused in all the places a sword calluses a hand, and they are shaking.{/n} \"I would like very much to owe you something, and be owned by nothing,\" {n}she says, and kisses you.{/n}",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "yes2",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Yaniel"
-        },
-        {
-          "Id": "yes2",
-          "Speaker": "Yaniel",
-          "Text": "{n}It is not a gentle kiss. It is the kiss of somebody who has been told she is dead and has decided to argue. When she lets you go she does not step back; she leans her forehead on yours and breathes, hard, like a woman at the top of a stair.{/n}\n\"Tomorrow night,\" {n}she says.{/n} \"Not here. The pail is full, and I will not do this with a pail listening. I know a better place. Keep my iron, Commander. Keep it close.\"",
-          "Choices": [
-            {
-              "Text": "\"Close.\"",
-              "Next": null,
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Yaniel"
-        },
-        {
-          "Id": "given",
-          "Speaker": "Yaniel",
-          "Text": "{n}You put the iron in her palm. Her fingers close on it. For a moment she only holds it, weighing it, as she weighed the sword.{/n}\n\"There,\" {n}she says.{/n} \"Square.\" {n}She turns it over. The sheared link swings.{/n} \"It is lighter than I remembered. Or I am stronger. One of us has changed.\"\n{n}She does not put it on. She hangs it from a nail by the window, where it can see the road, and stands looking at it with her back to you.{/n} \"Thank you, Commander. You had better go. I have a watch to stand.\"",
-          "Choices": [
-            {
-              "Text": "[Go.]",
-              "Next": null,
-              "Set": [
-                "yaniel.trickster.declined"
-              ],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Yaniel"
-        }
-      ],
-      "Requires": [
-        "trickster.ever",
-        "yaniel.trickster.verdict",
-        "yaniel.trickster.drawn",
-        "yaniel.presence.failed"
-      ],
-      "Forbids": [
-        "yaniel.killed.latched",
-        "yaniel.closed",
-        "yaniel.committed",
-        "yaniel.trickster.declined",
-        "yaniel.trickster.oath_broken",
-        "yaniel.trickster.commit.trade"
-      ],
-      "DelayHours": 24,
-      "Optional": false,
-      "Relationship": "yaniel",
-      "Chapters": [
-        5
-      ],
-      "Remote": true,
-      "Kind": "visit",
-      "Areas": [
-        "2570015799edf594daf2f076f2f975d8"
-      ],
-      "Sender": "Yaniel"
-    },
-    {
       "Id": "yaniel.trickster.commit.vigil",
       "Title": "A vigil at the niche",
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"You look like you have something to say.\"",
       "Nodes": [
         {
           "Id": "start",
-          "Speaker": "Narrator",
-          "Text": "{n}A note under your door, in the square old-fashioned hand: \"Tonight. The niche under the east gate tower, where they have put the statue. Bring nothing. You will kneel on stone until the morning bell. I have not kept a vigil since the Fane. I would not like to keep this one alone.\"{/n}\n{n}The niche is at the foot of the gate tower, a hollow in the old wall where the chaplains have set up their ox-cart saint until the cathedral is ready for her: Yaniel of Drezen, the Holy Martyr, in painted stone, sword raised, eyes on heaven. The real one is already kneeling in front of her with a lamp at her knee. She does not look round.{/n}",
+          "Speaker": "Yaniel",
+          "Text": "{n}She does not greet you. She looks at your hands first, as she always does, and then at your face.{/n}\n\"Tonight,\" {n}she says.{/n} \"The niche under the east gate tower, where they have put the statue. Bring nothing. You will kneel on stone until the morning bell. I have not kept a vigil since the Fane. I would not like to keep this one alone.\"\n{n}The niche is at the foot of the gate tower, a hollow in the old wall where the chaplains have set up their ox-cart saint until the cathedral is ready for her: Yaniel of Drezen, the Holy Martyr, in painted stone, sword raised, eyes on heaven. The real one is already kneeling in front of her with a lamp at her knee. She does not look round.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -406148,7 +405625,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "Yaniel"
         },
         {
           "Id": "broken",
@@ -406326,18 +405803,17 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence",
       "RequiresAnyGroups": [
         [
           "yaniel.trickster.declined",
           "yaniel.trickster.oath_broken"
         ]
-      ],
-      "Areas": [
-        "2570015799edf594daf2f076f2f975d8"
-      ],
-      "Sender": "Yaniel"
+      ]
     },
     {
       "Id": "yaniel.trickster.visit.niche",
@@ -406345,12 +405821,12 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "[Go to her when the watch changes.]",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She is waiting at the foot of the gate tower when the watch changes, with a lamp in one hand and her cloak over her arm, and she does not say anything. She takes your wrist, as you took hers on the wall, and leads you into the niche.{/n}\n{n}The painted Yaniel of Drezen stands over the two of you with her stone sword raised and her stone eyes on heaven. The carver gave her the face of a girl of twenty with no scars and a mouth that has never said anything rude.{/n}",
+          "Text": "{n}She is waiting for you when the watch changes, with a lamp in one hand and her cloak over her arm, and she does not say anything. She takes your wrist, as you took hers on the wall, and leads you into the niche.{/n}\n{n}The painted Yaniel of Drezen stands over the two of you with her stone sword raised and her stone eyes on heaven. The carver gave her the face of a girl of twenty with no scars and a mouth that has never said anything rude.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -406691,12 +406167,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Yaniel"
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "yaniel.trickster.react.seelah_fane",
@@ -406800,7 +406275,7 @@
       "Id": "yaniel.trickster.react.sosiel_iron",
       "Title": "Sosiel's word",
       "Owner": "Sosiel",
-      "MinChapter": 3,
+      "MinChapter": 5,
       "MaxChapter": 5,
       "Entry": "\"What are you drawing?\"",
       "Nodes": [
@@ -406824,7 +406299,8 @@
       "Requires": [
         "trickster.ever",
         "yaniel.trickster.swapped",
-        "yaniel.sosiel_promised"
+        "yaniel.sosiel_promised",
+        "yaniel.trickster.returned"
       ],
       "Forbids": [
         "sosiel.dead",
@@ -406832,7 +406308,7 @@
         "yaniel.closed",
         "yaniel.killed.latched"
       ],
-      "DelayHours": 0,
+      "DelayHours": 168,
       "Optional": false,
       "Relationship": "yaniel",
       "Reaction": true,
@@ -406992,6 +406468,21 @@
             {
               "Text": "{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack beside the other, and never told anyone why there were two.{/n}",
               "Requires": [],
+              "Forbids": [
+                "yaniel.trickster.cuff_worn"
+              ],
+              "AnyGroups": [
+                [
+                  "yaniel.trickster.husk_freed",
+                  "yaniel.trickster.husk_bought"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack, and wore the other, and never told anyone why there were two.{/n}",
+              "Requires": [
+                "yaniel.trickster.cuff_worn"
+              ],
               "Forbids": [],
               "AnyGroups": [
                 [
@@ -407131,7 +406622,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}The war ended before Yaniel and the Commander had finished what they had to settle. She rode to the Threshold with the Mendevian foot, in the rank behind the shields, and came back down the road on a cart with a broken leg and the whole of her temper.{/n}\n{n}In the spring she came up the stair of the Commander's tower on crutches, with the iron cuff in one hand. She put it on the table between them. \"Your sword for my shackle,\" she said, \"and we are square. Or not. I have spent the winter on my back deciding which I would rather, and I will not tell you until you have told me.\"{/n}\n{n}The Commander pushed the cuff back across the table. She looked at it, and at the Commander, and laughed, and threw the crutches on the floor.{/n}\n{n}Afterwards she kept the flooded room in the gate tower, out of stubbornness, and slept there perhaps one night in three. The other nights she did not explain, and nobody in Drezen was fool enough to ask her.{/n}",
+          "Text": "{n}The war ended before Yaniel and the Commander had finished what they had to settle. She rode to the Threshold with the Mendevian foot, in the rank behind the shields, and came back down the road on a cart with a broken leg and the whole of her temper.{/n}\n{n}In the spring she came up the stair of the Commander's tower on crutches, and sat down across the table, and held out her hand, palm up. \"Your sword for my shackle,\" she said, \"and we are square. Or not. I have spent the winter on my back deciding which I would rather, and I will not tell you until you have told me.\"{/n}\n{n}The Commander left the iron where it was, in the pouch at the Commander's belt, and told her that nobody was square, and nobody was going to be. She looked at the empty palm of her own hand for a while, and then at the Commander, and laughed, and threw the crutches on the floor.{/n}\n{n}Afterwards she kept the flooded room in the gate tower, out of stubbornness, and slept there perhaps one night in three. The other nights she did not explain, and nobody in Drezen was fool enough to ask her.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -407272,6 +406763,21 @@
             {
               "Text": "{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack beside the other, and never told anyone why there were two.{/n}",
               "Requires": [],
+              "Forbids": [
+                "yaniel.trickster.cuff_worn"
+              ],
+              "AnyGroups": [
+                [
+                  "yaniel.trickster.husk_freed",
+                  "yaniel.trickster.husk_bought"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack, and wore the other, and never told anyone why there were two.{/n}",
+              "Requires": [
+                "yaniel.trickster.cuff_worn"
+              ],
               "Forbids": [],
               "AnyGroups": [
                 [
@@ -407456,6 +406962,21 @@
             {
               "Text": "{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack beside the other, and never told anyone why there were two.{/n}",
               "Requires": [],
+              "Forbids": [
+                "yaniel.trickster.cuff_worn"
+              ],
+              "AnyGroups": [
+                [
+                  "yaniel.trickster.husk_freed",
+                  "yaniel.trickster.husk_bought"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack, and wore the other, and never told anyone why there were two.{/n}",
+              "Requires": [
+                "yaniel.trickster.cuff_worn"
+              ],
               "Forbids": [],
               "AnyGroups": [
                 [
@@ -407636,6 +407157,21 @@
             {
               "Text": "{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack beside the other, and never told anyone why there were two.{/n}",
               "Requires": [],
+              "Forbids": [
+                "yaniel.trickster.cuff_worn"
+              ],
+              "AnyGroups": [
+                [
+                  "yaniel.trickster.husk_freed",
+                  "yaniel.trickster.husk_bought"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack, and wore the other, and never told anyone why there were two.{/n}",
+              "Requires": [
+                "yaniel.trickster.cuff_worn"
+              ],
               "Forbids": [],
               "AnyGroups": [
                 [
@@ -407819,6 +407355,21 @@
             {
               "Text": "{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack beside the other, and never told anyone why there were two.{/n}",
               "Requires": [],
+              "Forbids": [
+                "yaniel.trickster.cuff_worn"
+              ],
+              "AnyGroups": [
+                [
+                  "yaniel.trickster.husk_freed",
+                  "yaniel.trickster.husk_bought"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack, and wore the other, and never told anyone why there were two.{/n}",
+              "Requires": [
+                "yaniel.trickster.cuff_worn"
+              ],
               "Forbids": [],
               "AnyGroups": [
                 [
@@ -408001,6 +407552,21 @@
             {
               "Text": "{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack beside the other, and never told anyone why there were two.{/n}",
               "Requires": [],
+              "Forbids": [
+                "yaniel.trickster.cuff_worn"
+              ],
+              "AnyGroups": [
+                [
+                  "yaniel.trickster.husk_freed",
+                  "yaniel.trickster.husk_bought"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack, and wore the other, and never told anyone why there were two.{/n}",
+              "Requires": [
+                "yaniel.trickster.cuff_worn"
+              ],
               "Forbids": [],
               "AnyGroups": [
                 [
@@ -408259,7 +407825,7 @@
       "Title": "The tree by the town hall",
       "Owner": "Yaniel",
       "MinChapter": 3,
-      "MaxChapter": 4,
+      "MaxChapter": 3,
       "Entry": "",
       "Nodes": [
         {
@@ -408458,8 +408024,7 @@
       "Optional": false,
       "Relationship": "yaniel",
       "Chapters": [
-        3,
-        4
+        3
       ],
       "Remote": true,
       "Kind": "letter",
@@ -408474,7 +408039,7 @@
     {
       "Id": "yaniel.trickster.ch4.shackle",
       "Title": "Husk-iron",
-      "Owner": "Yaniel",
+      "Owner": "Memory",
       "MinChapter": 4,
       "MaxChapter": 4,
       "Entry": "",
@@ -408652,7 +408217,7 @@
           "Choices": [
             {
               "Text": "[Leave it on.]",
-              "Next": null,
+              "Next": "market",
               "Set": [
                 "yaniel.trickster.cuff_worn",
                 "yaniel.trickster.ch4_seen"
@@ -408671,10 +408236,214 @@
           "Choices": [
             {
               "Text": "[Sleep, if you can.]",
-              "Next": null,
+              "Next": "market",
               "Set": [
                 "yaniel.trickster.cuff_packed",
                 "yaniel.trickster.ch4_seen"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "market",
+          "Speaker": "Narrator",
+          "Text": "{n}The Fleshmarkets of the Middle City sell by the pound in the morning and by the piece in the afternoon. A few days after that night you are crossing them in the afternoon, on other business, when a lot on the block stops you.{/n}\n{n}It is a woman, or it was: gray, bone-thin, hanging from a hook by one wrist with her toes just brushing the boards, the way a side of meat hangs in a butcher's window. Her face does not quite fit her; it sits a little wrong, like a borrowed coat. On the wrist that holds her up is a manacle you would know in the dark: crude husk-iron, two fingers thick, the pin a lump of soft metal hammered flat.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "crier",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "crier",
+          "Speaker": "Narrator",
+          "Text": "{n}The crier is a tiefling with a painted smile. \"Collector's piece!\" he is calling, to a crowd that is mostly not listening. \"Genuine Fane stock, from the mistress's own racks, broken up this season! A face that can be any face you like, my lords! A shield that walks! Very obedient; the mistress trained it herself!\"{/n}\n{n}The husk's eyes are open. They move to you, and to your wrist, and stay there.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "wrist_worn",
+              "Set": [],
+              "Requires": [
+                "yaniel.trickster.cuff_worn"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "offer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "yaniel.trickster.cuff_worn"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "wrist_worn",
+          "Speaker": "Narrator",
+          "Text": "{n}Your sleeve has slid back. The iron on your own wrist, the one you closed there at night in this same city, is in plain view: the same crude metal, the same flattened pin, the same sheared link. The husk on the block is staring at it as if it were a word in a language she had forgotten she knew.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "offer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "offer",
+          "Speaker": "Narrator",
+          "Text": "{n}The crier sees you looking and his smile widens.{/n} \"Ah! A {mf|gentleman|lady} of discernment! Fifty in gold, my lord, or a crusader's note of hand; we are very modern here. Cheap at the price. The mistress's own work!\"",
+          "Choices": [
+            {
+              "Text": "[Pay him with a note on the crusade's war chest, and have her cut down.]",
+              "Next": "bought",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -50
+              }
+            },
+            {
+              "Text": "[Thievery] [Step up to inspect the lot, and work the pin while the crier talks.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "SkillThievery",
+                "DC": 18,
+                "Success": "picked",
+                "Failure": "fumbled",
+                "CommanderOnly": true
+              }
+            },
+            {
+              "Text": "[Walk on. You have a war to win.]",
+              "Next": "left",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "bought",
+          "Speaker": "Narrator",
+          "Text": "{n}He reads the note twice, holds it up to the light, and has his boy cut her down. She drops onto the boards like a sack. When you kneel beside her she does not flinch, and she does not look at your face; she looks at the iron on her wrist, and then at you, as if waiting to be told what she is for now.{/n}\n{n}You work the pin out yourself. It takes three twists. You know exactly how, now.{/n}\n\"Go,\" {n}you tell her.{/n} {n}She looks at you for a while longer, and then she goes, not quickly, into the crowd, with her bare wrist held against her chest like something newly born. You keep the iron. You do not quite know why.{/n}",
+          "Choices": [
+            {
+              "Text": "[Put it in the pack.]",
+              "Next": null,
+              "Set": [
+                "yaniel.trickster.husk_bought",
+                "yaniel.trickster.ch4_block_seen"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "picked",
+          "Speaker": "Narrator",
+          "Text": "{n}You step up onto the block to look at her teeth, as a buyer does, and while the crier is explaining to you at length how very fine they are, your fingers find the pin behind her wrist. Three twists. You know exactly how, now. The cuff opens with a sound like a knuckle cracking, and she drops.{/n}\n{n}The crier turns round at the thump, and his painted smile slides, and by then she is off the back of the block and into the crowd of the Middle City, running on legs that have not run in years, and you are shouting \"Thief! Stop her!\" as loudly as anybody, and pointing the wrong way.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "picked2",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "picked2",
+          "Speaker": "Narrator",
+          "Text": "{n}Nobody catches her. The crier tears at his hair. A demon in a litter laughs so hard at him it has to be carried away. You walk off the other side of the market with a second husk's iron in your pocket, still warm, and a feeling in your chest you do not have a word for.{/n}",
+          "Choices": [
+            {
+              "Text": "[Put it in the pack.]",
+              "Next": null,
+              "Set": [
+                "yaniel.trickster.husk_freed",
+                "yaniel.trickster.ch4_block_seen"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "fumbled",
+          "Speaker": "Narrator",
+          "Text": "{n}Your fingers find the pin behind her wrist, but the crier is sharper than he looks. He catches your wrist in a grip like a trap, and his painted smile does not move at all.{/n} \"Inspection is free, my lord. Liberation is fifty.\"\n{n}Behind him two hulking things with too many teeth have come to the edge of the block. You could fight them. You would win. The whole market would see the Commander of the crusade start a riot in the Fleshmarkets over a husk, and every trader in Alushinyrra would know your face by nightfall.{/n}",
+          "Choices": [
+            {
+              "Text": "[Pay him with a note on the crusade's war chest.]",
+              "Next": "bought",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -50
+              }
+            },
+            {
+              "Text": "[Walk away.]",
+              "Next": "left",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "left",
+          "Speaker": "Narrator",
+          "Text": "{n}You walk on. The crier's voice follows you across the market, calling the lot again, lower now: forty-five, genuine Fane stock, the mistress's own work.{/n}\n{n}That night the iron you carry is heavier than it was in the morning. It is not, of course. It is the same iron. You lie awake a long time anyway.{/n}",
+          "Choices": [
+            {
+              "Text": "[Try to sleep.]",
+              "Next": null,
+              "Set": [
+                "yaniel.trickster.husk_left",
+                "yaniel.trickster.ch4_block_seen"
               ],
               "Requires": [],
               "Forbids": [],
@@ -408709,12 +408478,12 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"You look like you want to hit something.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Yaniel does not come up to your rooms. She sends a boy to ask you to the east wall, and when you get there she is standing at the broken parapet of the gate tower with her back to the city, the way a sentry stands when she does not trust what is behind her.{/n}",
+          "Text": "{n}She does not answer. She takes you up to the east wall, and at the broken parapet of the gate tower she stops with her back to the city, the way a sentry stands when she does not trust what is behind her.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -408915,12 +408684,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Yaniel"
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "yaniel.trickster.beat.walls",
@@ -410013,7 +409781,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Juniper, burnt fat, something sharp and old-fashioned that nobody in Drezen has cooked in living memory. It is on her cloak and her hands. \"The Half Measure's roast,\" she says. \"Fye let me have her kitchen for a day, and a whole side of mutton, and her cook, who wept. Come up to the wall at the third bell. Bring bread. Bring nobody else.\"{/n}",
+          "Text": "{n}Juniper, burnt fat, something sharp and old-fashioned that nobody in Drezen has cooked in living memory. It is on her cloak and her hands. \"The Half Measure's roast,\" she says. \"Fye let me have his kitchen for a day, and a whole side of mutton, and his cook, who wept. Come up to the wall at the third bell. Bring bread. Bring nobody else.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -410029,7 +409797,7 @@
         {
           "Id": "wall",
           "Speaker": "Yaniel",
-          "Text": "{n}She has made a table of two barrels and a door on the broken parapet of the gate tower, and a brazier, and the roast is on the door in a pan, black at the edges and very nearly the right shape.{/n}\n\"The Half Measure's,\" {n}she says.{/n} \"Or near enough. The Half Measure is back on its old street, did you know? Fye Kito keeps it now; a relative of hers had it before the siege. Nobody there remembered the roast. I told her cook how it was done, as near as I remembered, and he wrote it on a slate and made a face, and in the end I made most of it myself.\" {n}She saws off a slab with her belt knife and puts it on your bread.{/n} \"Eat. Tell me it is terrible. It is. I want to hear somebody else say it.\"",
+          "Text": "{n}She has made a table of two barrels and a door on the broken parapet of the gate tower, and a brazier, and the roast is on the door in a pan, black at the edges and very nearly the right shape.{/n}\n\"The Half Measure's,\" {n}she says.{/n} \"Or near enough. The Half Measure is back on its old street, did you know? Fye Kito keeps it now; a relative of his had it before the siege. Nobody there remembered the roast. I told his cook how it was done, as near as I remembered, and he wrote it on a slate and made a face, and in the end I made most of it myself.\" {n}She saws off a slab with her belt knife and puts it on your bread.{/n} \"Eat. Tell me it is terrible. It is. I want to hear somebody else say it.\"",
           "Choices": [
             {
               "Text": "\"It's terrible.\"",
@@ -410187,12 +409955,12 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"You look like you haven't slept.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The sentry from the east tower is at your door an hour past midnight, not quite looking you in the eye. The paladin in the gate tower, he says. She is not hurt. She is sitting up with a knife. She told him to go away, and then she told him to fetch the Commander, and then she told him not to, and he has decided to fetch you anyway, because she frightens him less than the alternative.{/n}",
+          "Text": "{n}She has not. It is in her face, gray under the gray, and in the way she holds herself very straight, as a soldier does who knows that if she leans on anything she will be asleep. She looks at you for a while as if deciding something. Then she takes you up the tower stair to the flooded room without a word.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -410208,7 +409976,7 @@
         {
           "Id": "room",
           "Speaker": "Narrator",
-          "Text": "{n}She is on the floor of the flooded room with her back against the wall and her knees drawn up, in her shirt, with a husk-keeper's knife loose in one hand. The brazier has gone out. When your shadow comes into the doorway the knife comes up, fast, and then goes down again, slowly, as she sees who it is.{/n}",
+          "Text": "{n}The brazier has gone out. There is a husk-keeper's knife on the floor by the wall, where somebody has plainly sat all night with her back to the stone and her knees drawn up. She sits down there again, in the same place, as if it were a post, and picks up the knife, and holds it loosely in one hand.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -410224,7 +409992,7 @@
         {
           "Id": "talk",
           "Speaker": "Yaniel",
-          "Text": "\"I told him not to.\" {n}Her voice is hoarse.{/n} \"I am not a child. I do not need to be sat with.\"\n{n}She lets you sit anyway. After a while she says, to the dark window:{/n} \"Minagho used to wake me. Not every night. Just often enough that I never learned to sleep through it. She would come in with a lamp and sit on the edge of the hook-rack and talk. Pleasantly. As if we were two old friends.\"\n\"She would tell me things. That everyone had forgotten me. That the Church had struck my name from its books for a heretic. That Staunton had given her the city with his own hands. That my goddess had heard every prayer I ever said on that hook and laughed.\" {n}Her hand tightens on the knife.{/n} \"Some of it was lies. Some of it, I have since found out, was not. I never knew which. That was the point.\"",
+          "Text": "\"The sentry wanted to fetch you last night. Twice. I told him not to.\" {n}Her voice is hoarse.{/n} \"I am not a child. I do not need to be sat with.\"\n{n}She lets you sit anyway. After a while she says, to the window:{/n} \"Minagho used to wake me. Not every night. Just often enough that I never learned to sleep through it. She would come in with a lamp and sit on the edge of the hook-rack and talk. Pleasantly. As if we were two old friends.\"\n\"She would tell me things. That everyone had forgotten me. That the Church had struck my name from its books for a heretic. That Staunton had given her the city with his own hands. That my goddess had heard every prayer I ever said on that hook and laughed.\" {n}Her hand tightens on the knife.{/n} \"Some of it was lies. Some of it, I have since found out, was not. I never knew which. That was the point.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -410240,7 +410008,7 @@
         {
           "Id": "dream",
           "Speaker": "Yaniel",
-          "Text": "\"Tonight I dreamed she came in with the lamp, and I was so glad to see a light that I thanked her.\" {n}She says it very flatly.{/n} \"That is the part that woke me. Not her. The thanking.\"\n{n}She turns her head and looks at you in the dark.{/n} \"Tell me something true, Commander. Anything. I do not care what. Something nobody in this city has told me, that is not a song about me or a sermon or a lie to make me feel better. I want to hear something true in this room before it gets light.\"",
+          "Text": "\"Tonight I dreamed she came in with the lamp, and I was so glad to see a light that I thanked her.\" {n}She says it very flatly.{/n} \"That is the part that woke me. Not her. The thanking.\"\n{n}She turns her head and looks at you in the gray light from the window.{/n} \"Tell me something true, Commander. Anything. I do not care what. Something nobody in this city has told me, that is not a song about me or a sermon or a lie to make me feel better. I want to hear something true in this room before I try to sleep in it again.\"",
           "Choices": [
             {
               "Text": "\"I'm not sure I'm still entirely human. Nobody knows that but me.\"",
@@ -410255,7 +410023,9 @@
               "Next": "true_iron",
               "Set": [],
               "Requires": [],
-              "Forbids": [],
+              "Forbids": [
+                "yaniel.trickster.cost.late"
+              ],
               "Abort": false
             },
             {
@@ -410263,6 +410033,16 @@
               "Next": "true_war",
               "Set": [],
               "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"When I took your iron on the wall, I didn't know what I'd do with it. I still don't.\"",
+              "Next": "true_iron_late",
+              "Set": [],
+              "Requires": [
+                "yaniel.trickster.cost.late"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -410288,7 +410068,23 @@
         {
           "Id": "true_iron",
           "Speaker": "Yaniel",
-          "Text": "{n}A short laugh comes out of the dark.{/n} \"No. I did not think you did. You looked at it in the Fane the way a dog looks at a bone it has stolen off a table: very pleased, and not at all sure it was allowed.\" {n}She puts the knife down on the floor between you.{/n} \"Keep not knowing, Commander. I would rather you did not know what to do with it than that you knew exactly.\"",
+          "Text": "{n}A short laugh comes out of her.{/n} \"No. I did not think you did. You looked at it in the Fane the way a dog looks at a bone it has stolen off a table: very pleased, and not at all sure it was allowed.\" {n}She puts the knife down on the floor between you.{/n} \"Keep not knowing, Commander. I would rather you did not know what to do with it than that you knew exactly.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "sleep",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Yaniel"
+        },
+        {
+          "Id": "true_iron_late",
+          "Speaker": "Yaniel",
+          "Text": "{n}A short laugh comes out of her.{/n} \"No. I did not think you did. You looked at it on my wall the way a dog looks at a bone it has stolen off a table: very pleased, and not at all sure it was allowed.\" {n}She puts the knife down on the floor between you.{/n} \"Keep not knowing, Commander. I would rather you did not know what to do with it than that you knew exactly.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -410320,7 +410116,7 @@
         {
           "Id": "sleep",
           "Speaker": "Narrator",
-          "Text": "{n}Neither of you says anything after that. The sentry's boots go past on the wall above, and past again. Somewhere before the first bell her head comes down onto your shoulder, heavily, all at once, the way a soldier's does in a wagon after three days without sleep, and her breathing slows, and she is gone.{/n}\n{n}Your arm is going numb. Your back is against wet stone. The knife is on the floor where she put it, within her reach and not yours.{/n}",
+          "Text": "{n}Neither of you says anything after that. The sentry's boots go past on the wall above, and past again. Somewhere in the long afternoon her head comes down onto your shoulder, heavily, all at once, the way a soldier's does in a wagon after three days without sleep, and her breathing slows, and she is gone.{/n}\n{n}Your arm is going numb. Your back is against wet stone. The knife is on the floor where she put it, within her reach and not yours.{/n}",
           "Choices": [
             {
               "Text": "[Stay where you are until she wakes.]",
@@ -410344,7 +410140,7 @@
         {
           "Id": "stayed",
           "Speaker": "Narrator",
-          "Text": "{n}She wakes at the first gray light and does not move at once. Then she sits up, and looks at you, and at the knife on the floor, and at your arm, which you cannot feel.{/n}\n\"You stayed.\" {n}She rubs her face.{/n} \"On the floor. In the wet. With a knife in reach of a madwoman.\" {n}She picks up the knife, looks at it, and slides it into her boot.{/n} \"I slept. Do you know how long it has been since I slept past the second bell? Seventy years, Commander. Get out before I say something I will have to take back.\"",
+          "Text": "{n}She wakes when the evening bell goes and does not move at once. Then she sits up, and looks at you, and at the knife on the floor, and at your arm, which you cannot feel.{/n}\n\"You stayed.\" {n}She rubs her face.{/n} \"On the floor. In the wet. With a knife in reach of a madwoman.\" {n}She picks up the knife, looks at it, and slides it into her boot.{/n} \"I slept. With somebody in the room. Do you know how long it has been since I could do that? Seventy years, Commander. Get out before I say something I will have to take back.\"",
           "Choices": [
             {
               "Text": "[Get out, eventually.]",
@@ -410363,7 +410159,7 @@
         {
           "Id": "went",
           "Speaker": "Narrator",
-          "Text": "{n}She does not wake when you lift her. She is lighter than she looks, all hard muscle and bone, and she mutters something as you lay her down that might be a name, or a curse, or an order to a man long dead.{/n}\n{n}In the morning there is a note under your door in the square old hand: \"I woke in my bed and did not know how I got there. That has not happened to me since I was a child. Do not do it again without asking. Y.\" And under it, in smaller letters, pressed so hard the pen has torn the paper: \"Thank you.\"{/n}",
+          "Text": "{n}She does not wake when you lift her. She is lighter than she looks, all hard muscle and bone, and she mutters something as you lay her down that might be a name, or a curse, or an order to a man long dead.{/n}\n{n}The next morning there is a note under your door in the square old hand: \"I woke in my bed and did not know how I got there. That has not happened to me since I was a child. Do not do it again without asking. Y.\" And under it, in smaller letters, pressed so hard the pen has torn the paper: \"Thank you.\"{/n}",
           "Choices": [
             {
               "Text": "[Keep the note.]",
@@ -410395,12 +410191,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Yaniel"
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "yaniel.trickster.beat.church",
@@ -410408,12 +410203,12 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"Who are your visitors?\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The chaplain comes to your rooms in the middle of the morning with two acolytes and a letter bearing the sunburst seal of the Church of Iomedae in Nerosyan. He is a tall, grave, courteous man with ink on his fingers, and he is very sorry to trouble the Commander with a small matter of church property.{/n}",
+          "Text": "{n}A chaplain has found her before you did: a tall, grave, courteous man with ink on his fingers, two acolytes, and a letter bearing the sunburst seal of the Church of Iomedae in Nerosyan. She is standing with her back to the wall and her arms folded, letting him talk. When he sees you he turns with visible relief. He is very sorry to trouble the Commander with a small matter of church property.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -410441,7 +410236,7 @@
         {
           "Id": "carries",
           "Speaker": "Narrator",
-          "Text": "\"The sword Radiance,\" {n}he says,{/n} \"is a relic of the Church. It was held in trust in the Tower of Estrod, as the Commander knows, and lost when Kenabres burned, and recovered by the Commander, for which we are all grateful.\" {n}He clears his throat.{/n} \"It is now, we understand, being carried on the walls of this city by a woman of great holiness and uncertain standing, who was for seventy years in the power of a demon, and who has not yet been examined by the Church. The Church asks, with all respect, that the relic be returned to a reliquary until the examination is complete.\"",
+          "Text": "\"The sword Radiance,\" {n}he says,{/n} \"is a relic of the Church. It was held in trust in the Tower of Estrod, as the Commander knows, and lost when Kenabres burned, and recovered by the Commander, for which we are all grateful.\" {n}He clears his throat.{/n} \"It is now being carried on the walls of this city by the lady here, a woman of great holiness and, forgive me, my lady, uncertain standing, who was for seventy years in the power of a demon, and who has not yet been examined by the Church. The Church asks, with all respect, that the relic be returned to a reliquary until the examination is complete.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -410457,7 +410252,7 @@
         {
           "Id": "judges",
           "Speaker": "Narrator",
-          "Text": "\"The sword Radiance,\" {n}he says,{/n} \"is a relic of the Church. It was held in trust in the Tower of Estrod, as the Commander knows, and lost when Kenabres burned, and recovered by the Commander, for which we are all grateful.\" {n}He clears his throat.{/n} \"We understand the Commander has sworn an oath upon it, to a woman of great holiness and uncertain standing, who was for seventy years in the power of a demon, and who has not yet been examined by the Church. An oath on a relic, sworn to an unexamined witness, is irregular. The Church asks, with all respect, that the oath be reviewed, and the relic lodged in a reliquary until it is.\"",
+          "Text": "\"The sword Radiance,\" {n}he says,{/n} \"is a relic of the Church. It was held in trust in the Tower of Estrod, as the Commander knows, and lost when Kenabres burned, and recovered by the Commander, for which we are all grateful.\" {n}He clears his throat.{/n} \"We understand the Commander has sworn an oath upon it, to the lady here, a woman of great holiness and, forgive me, my lady, uncertain standing, who was for seventy years in the power of a demon, and who has not yet been examined by the Church. An oath on a relic, sworn to an unexamined witness, is irregular. The Church asks, with all respect, that the oath be reviewed, and the relic lodged in a reliquary until it is.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -410473,7 +410268,7 @@
         {
           "Id": "choose",
           "Speaker": "Narrator",
-          "Text": "{n}He waits. The acolytes wait. Out of the window, very small on the broken parapet of the east gate, a gray head is turned toward the citadel, as if she had seen the Church's seal go in at your door and has a fair idea what it is for.{/n}",
+          "Text": "{n}He waits. The acolytes wait. Yaniel waits too, with her arms folded, and she is not looking at the chaplain. She is looking at you.{/n}",
           "Choices": [
             {
               "Text": "[Intimidate] \"She was examined by Minagho every day of her captivity. The sword stays where it is. Tell Nerosyan the Commander said so.\"",
@@ -410484,7 +410279,7 @@
               "Abort": false
             },
             {
-              "Text": "\"Take it up with her. She's on the east wall. I'd bring the acolytes.\"",
+              "Text": "\"Why ask me? Ask her.\"",
               "Next": "sent",
               "Set": [],
               "Requires": [],
@@ -410509,10 +410304,10 @@
         {
           "Id": "defy",
           "Speaker": "Narrator",
-          "Text": "{n}The chaplain goes quite pale, and then quite red, and bows, and says that he will tell Nerosyan exactly that. He does not say it with any pleasure. The acolytes follow him out as if the floor were hot.{/n}\n{n}That evening there is a note under your door in the square old hand. It says: \"I saw the seal go in and the chaplain come out the color of a boiled beet. I am told the Commander raised {mf|his|her} voice. Nobody has stood in front of me since the day the city fell. I did not like it. Do it again. Y.\"{/n}",
+          "Text": "{n}The chaplain goes quite pale, and then quite red, and bows, and says that he will tell Nerosyan exactly that. He does not say it with any pleasure. The acolytes follow him away down the street as if the stones were hot.{/n}\n{n}Yaniel watches them go. When she turns back to you her face is doing something complicated.{/n} \"The color of a boiled beet,\" {n}she says.{/n} \"Nobody has stood in front of me since the day the city fell. I did not like it.\" {n}A pause.{/n} \"Do it again.\"",
           "Choices": [
             {
-              "Text": "[Keep the note.]",
+              "Text": "[Leave her to her watch.]",
               "Next": null,
               "Set": [
                 "yaniel.trickster.beat.church",
@@ -410528,7 +410323,7 @@
         {
           "Id": "sent",
           "Speaker": "Narrator",
-          "Text": "{n}The chaplain hesitates, and looks at the window, and at the small gray figure on the wall, and then gathers his acolytes and goes to do his duty, which you have to respect.{/n}\n{n}What happens on the east wall you hear about only from the sentries, in several versions. In all of them the chaplain climbs the gate tower stair and makes his request, very courteously, and the paladin hears him out, very courteously, and then tells him the name of the priest who heard her first confession, and the year, and what that priest said to her about relics and the hands that hold them, and asks whether the Church has changed its mind since. In most versions the chaplain laughs. In one he kneels. He comes down without the sword and writes to Nerosyan that evening, and nobody ever sees what he wrote.{/n}",
+          "Text": "{n}The chaplain hesitates, and looks at her, and at you, and then turns to her and makes his request again, very courteously, to her face, which you have to respect.{/n}\n{n}She hears him out, very courteously. Then she tells him the name of the priest who heard her first confession, and the year, and what that priest said to her about relics and the hands that hold them, and asks whether the Church has changed its mind since. The chaplain is quiet for a while. Then he laughs, a little helplessly, and bows to her, not to you, and goes away to write to Nerosyan. Nobody ever sees what he wrote.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -410544,10 +410339,10 @@
         {
           "Id": "sent2",
           "Speaker": "Yaniel",
-          "Text": "{n}She finds you on the citadel stair the next day.{/n} \"You sent him to me,\" {n}she says.{/n} \"You could have thrown him out. You could have given him the sword. You sent him up my stair to ask me himself.\" {n}She considers you.{/n} \"Nobody has let me answer for myself in a very long time, Commander. I had forgotten what it was like. It was like a cold bath.\"",
+          "Text": "{n}When he has gone she looks at you sidelong.{/n} \"You sent him to me,\" {n}she says.{/n} \"You could have thrown him out. You could have given him the sword. You made him ask me himself.\" {n}She considers you.{/n} \"Nobody has let me answer for myself in a very long time, Commander. I had forgotten what it was like. It was like a cold bath.\"",
           "Choices": [
             {
-              "Text": "[Let her go back up.]",
+              "Text": "[Leave her to her watch.]",
               "Next": null,
               "Set": [
                 "yaniel.trickster.beat.church",
@@ -410563,10 +410358,10 @@
         {
           "Id": "bought",
           "Speaker": "Narrator",
-          "Text": "{n}The chaplain blinks. A new reliquary, he says slowly, is a very generous thought. It would of course need to be worthy of the relic it was not going to contain. He will write to Nerosyan. He bows himself out with the air of a man who has just been paid to lose an argument and is trying to work out whether he minds.{/n}\n{n}That evening a note comes under your door in the square old hand: \"You bought the Church off with an empty box. I have known quartermasters with less nerve. I hope the box is very beautiful. Y.\"{/n}",
+          "Text": "{n}The chaplain blinks. A new reliquary, he says slowly, is a very generous thought. It would of course need to be worthy of the relic it was not going to contain. He will write to Nerosyan. He bows himself away with the air of a man who has just been paid to lose an argument and is trying to work out whether he minds.{/n}\n{n}Yaniel watches him go.{/n} \"You bought the Church off with an empty box,\" {n}she says.{/n} \"I have known quartermasters with less nerve. I hope the box is very beautiful.\"",
           "Choices": [
             {
-              "Text": "[Keep the note.]",
+              "Text": "[Leave her to her watch.]",
               "Next": null,
               "Set": [
                 "yaniel.trickster.beat.church",
@@ -410596,12 +410391,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Yaniel"
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "yaniel.trickster.beat.refugee",
@@ -410770,12 +410564,12 @@
       "Owner": "Yaniel",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"Mind if I stand the watch with you tonight?\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The alarm goes on the east wall a little after the third bell: the tower horn, three short blasts, the call for \"over the wall\". By the time you reach the gate tower stair with a sword in your hand the fighting has already moved up onto the parapet. Something came up out of the ash in the dark, a dozen gaunt gray shapes with too many joints, the kind of Wound-spawn that climbs, and they came up at the one place where the old stones are broken.{/n}",
+          "Text": "{n}She looks at your hip.{/n} \"Bring a sword,\" {n}she says.{/n}\n{n}A little after the third bell, halfway along the east wall with her, you hear the tower horn go: three short blasts, the call for \"over the wall\". Something has come up out of the ash in the dark, a dozen gaunt gray shapes with too many joints, the kind of Wound-spawn that climbs, and they have come up at the one place where the old stones are broken.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -410829,7 +410623,7 @@
         {
           "Id": "carries_plain",
           "Speaker": "Narrator",
-          "Text": "{n}She is in the middle of them. You see her before anything else, because she is the only thing on the wall that is not moving backward: a gray head in a borrowed cloak, Radiance going up and down in her hand like a flail on a threshing floor, plain steel, no light at all. She does not shout. She fights the way she talks, economically, without wasting anything, and every stroke finishes something.{/n}",
+          "Text": "{n}She is into them before you have your sword clear, and she is the only thing on the wall that is not moving backward: a gray head in a borrowed cloak, Radiance going up and down in her hand like a flail on a threshing floor, plain steel, no light at all. She does not shout. She fights the way she talks, economically, without wasting anything, and every stroke finishes something.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -410845,7 +410639,7 @@
         {
           "Id": "judges_empty",
           "Speaker": "Narrator",
-          "Text": "{n}She is in the middle of them with a borrowed spear, and they are all over her. She is holding the broken place in the parapet alone, the way she held the gate, and she sees you come up the stair with a plain sword from the rack in your hand, and her eyes go once to your hip, where something else ought to be, and then she shouts, \"Left, Commander! Left!\"{/n}",
+          "Text": "{n}She is into them with a borrowed spear, and they are all over her. She is holding the broken place in the parapet alone, the way she held the gate, and as you come up beside her with a plain sword in your hand her eyes go once to your hip, where something else ought to be, and then she shouts, \"Left, Commander! Left!\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -410861,7 +410655,7 @@
         {
           "Id": "carries",
           "Speaker": "Narrator",
-          "Text": "{n}She is in the middle of them. You see her before anything else, because Radiance is burning in her hand like a torch, and the gray things are going back from the light the way grease goes back from a hot pan. She does not shout. She fights the way she talks, economically, without wasting anything, and every stroke finishes something.{/n}",
+          "Text": "{n}She is into them before you have your sword clear, and Radiance is burning in her hand like a torch, and the gray things are going back from the light the way grease goes back from a hot pan. She does not shout. She fights the way she talks, economically, without wasting anything, and every stroke finishes something.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -410877,7 +410671,7 @@
         {
           "Id": "judges",
           "Speaker": "Narrator",
-          "Text": "{n}She is in the middle of them with a borrowed spear, and they are all over her, because she has no light and they have nothing to fear from a spear. She is holding the broken place in the parapet alone, the way she held the gate, and she sees you come up the stair with Radiance in your hand, and shouts, \"Left, Commander! Light them up!\"{/n}",
+          "Text": "{n}She is in the middle of them with a borrowed spear, and they are all over her, because she has no light and they have nothing to fear from a spear. She is holding the broken place in the parapet alone, the way she held the gate, and as you draw Radiance she shouts, \"Left, Commander! Light them up!\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -410984,12 +410778,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Yaniel"
+      "ContactUnit": "d914111e83e44194db99ab91d8c04632",
+      "InteractionHub": "yaniel.presence"
     },
     {
       "Id": "yaniel.trickster.beat.prayer",
@@ -411135,239 +410928,6 @@
       ],
       "ContactUnit": "d914111e83e44194db99ab91d8c04632",
       "InteractionHub": "yaniel.presence"
-    },
-    {
-      "Id": "yaniel.trickster.ch4.block",
-      "Title": "Another collector's item",
-      "Owner": "Yaniel",
-      "MinChapter": 4,
-      "MaxChapter": 4,
-      "Entry": "",
-      "Nodes": [
-        {
-          "Id": "start",
-          "Speaker": "Narrator",
-          "Text": "{n}The Fleshmarkets of the Middle City sell by the pound in the morning and by the piece in the afternoon. You are crossing it in the afternoon, on other business, when a lot on the block stops you.{/n}\n{n}It is a woman, or it was: gray, bone-thin, hanging from a hook by one wrist with her toes just brushing the boards, the way a side of meat hangs in a butcher's window. Her face does not quite fit her; it sits a little wrong, like a borrowed coat. On the wrist that holds her up is a manacle you would know in the dark: crude husk-iron, two fingers thick, the pin a lump of soft metal hammered flat.{/n}",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "crier",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        },
-        {
-          "Id": "crier",
-          "Speaker": "Narrator",
-          "Text": "{n}The crier is a tiefling with a painted smile. \"Collector's piece!\" he is calling, to a crowd that is mostly not listening. \"Genuine Fane stock, from the mistress's own racks, broken up this season! A face that can be any face you like, my lords! A shield that walks! Very obedient; the mistress trained it herself!\"{/n}\n{n}The husk's eyes are open. They move to you, and to your wrist, and stay there.{/n}",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "wrist_worn",
-              "Set": [],
-              "Requires": [
-                "yaniel.trickster.cuff_worn"
-              ],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
-              "Next": "choose",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [
-                "yaniel.trickster.cuff_worn"
-              ],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        },
-        {
-          "Id": "wrist_worn",
-          "Speaker": "Narrator",
-          "Text": "{n}Your sleeve has slid back. The iron on your own wrist, the one you closed there at night in this same city, is in plain view: the same crude metal, the same flattened pin, the same sheared link. The husk on the block is staring at it as if it were a word in a language she had forgotten she knew.{/n}",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "choose",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        },
-        {
-          "Id": "choose",
-          "Speaker": "Narrator",
-          "Text": "{n}The crier sees you looking and his smile widens.{/n} \"Ah! A {mf|gentleman|lady} of discernment! Fifty in gold, my lord, or a crusader's note of hand; we are very modern here. Cheap at the price. The mistress's own work!\"",
-          "Choices": [
-            {
-              "Text": "[Pay him with a note on the crusade's war chest, and have her cut down.]",
-              "Next": "bought",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false,
-              "Crusade": {
-                "Resource": "Finances",
-                "Amount": -50
-              }
-            },
-            {
-              "Text": "[Thievery] [Step up to inspect the lot, and work the pin while the crier talks.]",
-              "Next": null,
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false,
-              "Check": {
-                "Skill": "SkillThievery",
-                "DC": 18,
-                "Success": "picked",
-                "Failure": "fumbled",
-                "CommanderOnly": true
-              }
-            },
-            {
-              "Text": "[Walk on. You have a war to win.]",
-              "Next": "left",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        },
-        {
-          "Id": "bought",
-          "Speaker": "Narrator",
-          "Text": "{n}He reads the note twice, holds it up to the light, and has his boy cut her down. She drops onto the boards like a sack. When you kneel beside her she does not flinch, and she does not look at your face; she looks at the iron on her wrist, and then at you, as if waiting to be told what she is for now.{/n}\n{n}You work the pin out yourself. It takes three twists. You know exactly how, now.{/n}\n\"Go,\" {n}you tell her.{/n} {n}She looks at you for a while longer, and then she goes, not quickly, into the crowd, with her bare wrist held against her chest like something newly born. You keep the iron. You do not quite know why.{/n}",
-          "Choices": [
-            {
-              "Text": "[Put it in the pack with the other.]",
-              "Next": null,
-              "Set": [
-                "yaniel.trickster.husk_bought",
-                "yaniel.trickster.ch4_block_seen"
-              ],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        },
-        {
-          "Id": "picked",
-          "Speaker": "Narrator",
-          "Text": "{n}You step up onto the block to look at her teeth, as a buyer does, and while the crier is explaining to you at length how very fine they are, your fingers find the pin behind her wrist. Three twists. You know exactly how, now. The cuff opens with a sound like a knuckle cracking, and she drops.{/n}\n{n}The crier turns round at the thump, and his painted smile slides, and by then she is off the back of the block and into the crowd of the Middle City, running on legs that have not run in years, and you are shouting \"Thief! Stop her!\" as loudly as anybody, and pointing the wrong way.{/n}",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "picked2",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        },
-        {
-          "Id": "picked2",
-          "Speaker": "Narrator",
-          "Text": "{n}Nobody catches her. The crier tears at his hair. A demon in a litter laughs so hard at him it has to be carried away. You walk off the other side of the market with a second husk's iron in your pocket, still warm, and a feeling in your chest you do not have a word for.{/n}",
-          "Choices": [
-            {
-              "Text": "[Put it in the pack with the other.]",
-              "Next": null,
-              "Set": [
-                "yaniel.trickster.husk_freed",
-                "yaniel.trickster.ch4_block_seen"
-              ],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        },
-        {
-          "Id": "fumbled",
-          "Speaker": "Narrator",
-          "Text": "{n}Your fingers find the pin behind her wrist, but the crier is sharper than he looks. He catches your wrist in a grip like a trap, and his painted smile does not move at all.{/n} \"Inspection is free, my lord. Liberation is fifty.\"\n{n}Behind him two hulking things with too many teeth have come to the edge of the block. You could fight them. You would win. The whole market would see the Commander of the crusade start a riot in the Fleshmarkets over a husk, and every trader in Alushinyrra would know your face by nightfall.{/n}",
-          "Choices": [
-            {
-              "Text": "[Pay him with a note on the crusade's war chest.]",
-              "Next": "bought",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false,
-              "Crusade": {
-                "Resource": "Finances",
-                "Amount": -50
-              }
-            },
-            {
-              "Text": "[Walk away.]",
-              "Next": "left",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        },
-        {
-          "Id": "left",
-          "Speaker": "Narrator",
-          "Text": "{n}You walk on. The crier's voice follows you across the market, calling the lot again, lower now: forty-five, genuine Fane stock, the mistress's own work.{/n}\n{n}That night, when you take the pack off, the iron at the bottom of it is heavier than it was in the morning. It is not, of course. It is the same iron. You lie awake a long time anyway.{/n}",
-          "Choices": [
-            {
-              "Text": "[Try to sleep.]",
-              "Next": null,
-              "Set": [
-                "yaniel.trickster.husk_left",
-                "yaniel.trickster.ch4_block_seen"
-              ],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        }
-      ],
-      "Requires": [
-        "trickster.ever",
-        "yaniel.trickster.swapped",
-        "yaniel.trickster.ch4_seen"
-      ],
-      "Forbids": [
-        "yaniel.killed.latched",
-        "yaniel.closed",
-        "yaniel.trickster.ch4_block_seen"
-      ],
-      "DelayHours": 24,
-      "Optional": false,
-      "Relationship": "yaniel",
-      "Chapters": [
-        4
-      ],
-      "Remote": true,
-      "Kind": "memory",
-      "Sender": "Yaniel"
     },
     {
       "Id": "yaniel.trickster.after.watch",
@@ -420352,7 +419912,7 @@
       },
       "Requires": [
         "trickster.ever",
-        "yaniel.trickster.returned"
+        "yaniel.freed.latched"
       ],
       "Forbids": [
         "yaniel.closed",
