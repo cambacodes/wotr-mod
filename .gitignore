@@ -16,3 +16,4 @@ package/*.config
 tools/rrt_verify_report.*
 tools/scratch/
 harness/.runs/
+harness/probes/

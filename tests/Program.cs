@@ -363,6 +363,7 @@ internal static class Program
         SkillCheckTests.Run(Check);
         ForbidOverrideTests.Run(Check);
         TricksterLatchTests.Run(Check);
+        ChapterZeroTests.Run(Check);
         UnavailableOverrideTests.Run(Check);
         NativeForbidOverrideTests.Run(Check);
         DerivedFlagTests.Run(Check);

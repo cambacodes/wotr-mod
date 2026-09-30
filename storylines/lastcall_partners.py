@@ -293,9 +293,9 @@ S = "soana.trickster."
 partner("soana", "soana", "soana.committed", "soana.closed", "The Knot",
     '''Soana went back to the Wintersun wood when the war ended and did not ask the Commander to follow. {mf|He|She} followed anyway, and she let {mf|him|her} stay on the understanding that {mf|he|she} would make {mf|himself|herself} useful and keep out of her graves. {mf|He|She} was useful, and kept out of most of them.''',
     (
-        page_p('''The knot that bound her life to her guardian's still held, one end breathing in her and the other in Orso. The Commander learned to sleep through the bear's snoring, which Soana said was the most romantic thing anyone had ever done for her.''', requires=(S + "cost.guardian_paid",)),
+        page_p('''The knot still held, retied, one end in Soana and the other round the Commander's wrist where the gut strip had marked it. On hungry nights it pulled. The Commander learned to sleep through it, which Soana said was the most romantic thing anyone had ever done for her.''', requires=(S + "cost.guardian_paid",)),
         page_p('''The spirits came for their portion, and Soana stood between them and the Commander, and paid them in her own blood. She did not say it was for love. She said it was her wood and her debt, which is how Soana says it.''', requires=(called("soana"),)),
-        page_p('''She kept the die in the bowl by her hearth, the one the Commander had left there, and rolled it when she could not decide something. She never told the Commander what the numbers meant.''', requires=(S + "cost.die_in_her_bowl",)),
+        page_p('''She kept the die in the bowl by her hearth, the one the Commander had left there, and rolled it when she could not decide something. It only ever came up one way, which was the lead in it, and she said that was the point: it saved her the trouble of pretending she had not already decided.''', requires=(S + "cost.die_in_her_bowl",)),
     ), declined=S + "declined",
     deal=[[S + "cost.blood_given"], [S + "cost.guardian_paid"], [S + "cost.knot_bearer"], [S + "cost.leash_held"]],
     call=call('''[Call in the spirits' portion] "Wintersun spirits, you took a portion. The rest is mine to give. Later."''',
@@ -333,7 +333,7 @@ partner("gesmerha", "gesmerha", "gesmerha.committed", "gesmerha.closed", "The Co
 
 SE = "seelah.trickster."
 partner("seelah", "seelah", "seelah.committed", "seelah.closed", "The Thief's Promise",
-    '''Seelah did not go back to the order after the war. She said she had a debt to settle first, and she settled it the way she had settled things as a girl in the streets of Kenabres: quietly, with a hand in someone else's pocket, and an apology afterwards.''',
+    '''Seelah did not go back to the order after the war. She said she had a debt to settle first, and she settled it the way she had settled things as a girl in the streets of Solku: quietly, with a hand in someone else's pocket, and an apology afterwards.''',
     (
         page_p('''At the rift the Commander had called in her promise, and she kept it. The flask came out of the Commander's coat one evening in Drezen in her hand, as easily as a purse, and went back into it a moment later, heavier by one small coin. She never said which coin. She said the trick was not the hand, it was the apology.''', requires=(called("seelah"), BOTTLED)),
         page_p('''At the rift the Commander had called in her promise, and she kept it: she picked {mf|his|her} pocket the next evening in Drezen and took back what was hers, and would not say what else she took.''', requires=(called("seelah"),), forbids=(BOTTLED,)),
@@ -344,7 +344,7 @@ partner("seelah", "seelah", "seelah.committed", "seelah.closed", "The Thief's Pr
     call=call('''[Call in the thief's promise] "Seelah, you swore you'd steal it back. Now's the time. Pick my pocket."''',
         '''{n}You feel it before you understand it: a light touch at your coat, a thief's apology, from a woman who is not here.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
-    ledger=("Seelah: a coin to steal back", "I took something from Seelah's purse at her bier that she didn't earn. She swore she'd steal it back. A thief who hasn't collected won't let you die."))
+    ledger=("Seelah: a list to steal back", "At her bier I took Seelah's list of old thefts out of her purse, and robbed a grave-robber off its last line to pay for her. She swore she'd steal the list back. A thief who hasn't collected won't let you die."))
 
 T = "targona.trickster."
 partner("targona", "targona", "targona.committed", "targona.closed", "The Quiet Ward",

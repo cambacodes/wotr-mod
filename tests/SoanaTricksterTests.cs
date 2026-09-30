@@ -320,8 +320,9 @@ internal static class SoanaTricksterTests
         check(Endings(refused).SequenceEqual(new[] { epDeclined.Id }), "Her refusal ends on the wrong pages.");
         var lateBack = Pick(graveyard, back, P + "graveyard_kept");
         check(Endings(lateBack).SequenceEqual(new[] { epCommit.Id }), "A return never committed has no late page.");
-        check(Endings(Pick(sheBear, Later(story, lucky, 48), P + "luck_tested")).SequenceEqual(new[] { epCommit.Id }),
-            "A luck never committed has no late page.");
+        // Polish b9c: a living Soana whose luck was paid gets her own late page, never the killed branch's leash and graves.
+        check(Endings(Pick(sheBear, Later(story, lucky, 48), P + "luck_tested")).SequenceEqual(new[] { P + "epilogue.luck_late" }),
+            "A luck never committed has no late page, or gets the killed branch's.");
         check(Endings(walked).SequenceEqual(new[] { P + "epilogue.unbound" }), "Walking away from the grave leaves the loose spirit unresolved.");
         check(new[] { epKnot, epCommit, S(P + "epilogue.unbound") }.All(p => p.Nodes[0].Text.Contains("leash back"))
               && epDeclined.Nodes[0].Paragraphs.Any(x => x.Requires.Contains(P + "returned") && x.Text.Contains("leash back")),

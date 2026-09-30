@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 918,
-  "resolved": 918,
+  "entryTargetScenes": 919,
+  "resolved": 919,
   "inlineOnlyScenes": 230,
   "inlineOnlyResolved": 230,
-  "answerListScenesWithoutContact": 514,
-  "answerListScenesWithoutContactResolved": 514,
+  "answerListScenesWithoutContact": 515,
+  "answerListScenesWithoutContactResolved": 515,
   "lists": 93,
   "listsWithReachableHost": 92
  },
@@ -15211,6 +15211,25 @@
    "contact": null,
    "entry": {
     "129b55b8b5d50974f84f7c607d894fd0": "RRT_entry.seelah.trickster.dead.react_sosiel"
+   },
+   "resolved": true,
+   "host": {
+    "list": "129b55b8b5d50974f84f7c607d894fd0",
+    "dialog": "0ec4d9a0f5599a44c8a25f77da94bfd7",
+    "dialogName": "Dialogue_Sosiel_Main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "seelah.trickster.dead.react_sosiel_kept": {
+   "kind": "dialog",
+   "lists": [
+    "129b55b8b5d50974f84f7c607d894fd0"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "129b55b8b5d50974f84f7c607d894fd0": "RRT_entry.seelah.trickster.dead.react_sosiel_kept"
    },
    "resolved": true,
    "host": {
