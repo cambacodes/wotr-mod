@@ -50,6 +50,12 @@ internal static class EliandraTricksterTests
         return later;
     }
 
+    private sealed class SeqEq : IEqualityComparer<string[]>
+    {
+        public bool Equals(string[]? a, string[]? b) => a != null && b != null && a.SequenceEqual(b);
+        public int GetHashCode(string[] a) => a.Length;
+    }
+
     private static (float X, float Z) Spot(Presence p)
     {
         var d = p.At!.Distance;
@@ -248,12 +254,41 @@ internal static class EliandraTricksterTests
         check(reactions.Length == 5 && reactions.All(s => s.Nodes.Count == 1)
               && new[] { "Thaberdine", "Ulbrig", "Lann", "Daeran" }.All(o => reactions.Any(s => s.Owner == o)),
             "Eliandra's reactors are not the King, Ulbrig (twice), Lann and Daeran.");
-        check(pages.Length == 6 && pages.All(s => s.MinChapter == 6 && s.MaxChapter == 6 && s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0)),
-            "Her epilogue pages are not six read-only Chapter 6 pages.");
+        check(pages.Length == 7 && pages.All(s => s.MinChapter == 6 && s.MaxChapter == 6 && s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0)),
+            "Her epilogue pages are not seven read-only Chapter 6 pages.");
         check(Rules.Available(story, S(E + "epilogue.together"), World(story, 6, night.Flags.ToArray()))
               && !Rules.Available(story, S(E + "epilogue.late"), World(story, 6, night.Flags.ToArray())),
             "The committed page is not the only page of a committed route.");
-        check(Rules.Available(story, S(E + "epilogue.late"), World(story, 6, no.Flags.ToArray())), "The R2-6 late page does not answer the soft no.");
+        // The soft no alone is no romance: the late page needs the road letter kept with its answer promised (R2-6).
+        check(!Rules.Available(story, S(E + "epilogue.late"), World(story, 6, no.Flags.ToArray()))
+              && Rules.Available(story, S(E + "epilogue.declined"), World(story, 6, no.Flags.ToArray())),
+            "The soft no alone unlocks the late romance page, or has no ending of its own.");
+        var kept = One(letter, Later(story, no, 60), new[] { E + "letter_kept" }, Committed);
+        check(Rules.Available(story, S(E + "epilogue.late"), World(story, 6, kept.Flags.ToArray()))
+              && !Rules.Available(story, S(E + "epilogue.declined"), World(story, 6, kept.Flags.ToArray()))
+              && story.Derived[E + "late_committed"].SequenceEqual(new[] { new[] { "trickster.ever", E + "letter_kept" } }, new SeqEq()),
+            "The kept letter does not carry the R2-6 late yes.");
+        // A committed Commander who survived the finale by the bottle keeps her page (ledger row 16: commander_back).
+        var survived = World(story, 6, night.Flags.Concat(new[] { "sacrifice", "ending.trickster" }).ToArray());
+        check(survived.Has("trickster.commander_back") && Rules.Available(story, S(E + "epilogue.together"), survived),
+            "A committed Commander back from the sacrifice loses her page.");
+        // The hand behind the back is answered on the road: the truth leads to her question, a second lie to the soft no.
+        var cheated = One(rite, watched, new[] { NoLeave, E + "cost.tried_to_cheat" }, Leave);
+        var paidAfterCheat = One(self, Later(story, cheated, 60), new[] { Leave, Reward });
+        var road = Later(story, paidAfterCheat, 30);
+        One(mile, road, new[] { Committed }, E + "lied_about_hand");
+        var liedAgain = One(mile, road, new[] { E + "declined", E + "lied_about_hand" }, Committed);
+        check(Program.Walk(letter, Later(story, liedAgain, 60)).Any(r => r.Has(Committed)),
+            "The second lie leaves no reachable yes from the road.");
+        // What she misses follows the cost: only a woman who gave her strength back mourns it.
+        var miss = S(E + "drezen.questions").Nodes.Single(n => n.Id == "miss").Choices;
+        check(miss.Count == 2 && miss.Single(c => c.Next == "miss_slow").Requires.Contains(Reward)
+              && miss.Single(c => c.Next == "miss_strong").Forbids.Contains(Reward),
+            "Her answer about her strength does not follow the cost.");
+        // Rest-delivered pages in Chapter 5: the planning page, and the road letter on the soft no only.
+        var remote5 = own.Where(s => Rules.IsRemote(s) && s.Chapters.Contains(5) && s.Owner != "EliandraEpilogue").Select(s => s.Id).ToList();
+        check(remote5.OrderBy(x => x).SequenceEqual(new[] { E + "ch5.inventory", E + "ch5.road_letter" }),
+            "Chapter 5 delivers more than the planning page and the soft-no letter by rest: " + string.Join(",", remote5));
         var farewell = One(mile, Later(story, granted, 30), new[] { Closed });
         check(Rules.Available(story, S(E + "epilogue.closed"), World(story, 6, farewell.Flags.ToArray()))
               && !Rules.Available(story, S(E + "epilogue.together"), World(story, 6, farewell.Flags.ToArray())),

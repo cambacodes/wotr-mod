@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 919,
-  "resolved": 919,
-  "inlineOnlyScenes": 229,
-  "inlineOnlyResolved": 229,
-  "answerListScenesWithoutContact": 515,
-  "answerListScenesWithoutContactResolved": 515,
+  "entryTargetScenes": 923,
+  "resolved": 923,
+  "inlineOnlyScenes": 233,
+  "inlineOnlyResolved": 233,
+  "answerListScenesWithoutContact": 519,
+  "answerListScenesWithoutContactResolved": 519,
   "lists": 93,
   "listsWithReachableHost": 92
  },
@@ -7563,6 +7563,25 @@
     "clicks": 0
    }
   },
+  "eliandra.trickster.ch5.first_mile": {
+   "kind": "return-cue",
+   "lists": [
+    "6073e28cab0691542b85a24436ed919c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.first_mile"
+   },
+   "resolved": true,
+   "host": {
+    "list": "6073e28cab0691542b85a24436ed919c",
+    "dialog": "34cc47f0b730c3c4f8fbafb7e12c0475",
+    "dialogName": "PuluraLeaderSaved_c5_dialog",
+    "cue": "Cue_0003",
+    "clicks": 0
+   }
+  },
   "eliandra.trickster.ch5.first_words": {
    "kind": "return-cue",
    "lists": [
@@ -7648,6 +7667,25 @@
    "contact": null,
    "entry": {
     "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.maiden"
+   },
+   "resolved": true,
+   "host": {
+    "list": "6073e28cab0691542b85a24436ed919c",
+    "dialog": "34cc47f0b730c3c4f8fbafb7e12c0475",
+    "dialogName": "PuluraLeaderSaved_c5_dialog",
+    "cue": "Cue_0003",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.ch5.night_after": {
+   "kind": "return-cue",
+   "lists": [
+    "6073e28cab0691542b85a24436ed919c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.night_after"
    },
    "resolved": true,
    "host": {
@@ -7762,6 +7800,25 @@
    "contact": null,
    "entry": {
     "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.sarkoris"
+   },
+   "resolved": true,
+   "host": {
+    "list": "6073e28cab0691542b85a24436ed919c",
+    "dialog": "34cc47f0b730c3c4f8fbafb7e12c0475",
+    "dialogName": "PuluraLeaderSaved_c5_dialog",
+    "cue": "Cue_0003",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.ch5.self_offering": {
+   "kind": "return-cue",
+   "lists": [
+    "6073e28cab0691542b85a24436ed919c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.self_offering"
    },
    "resolved": true,
    "host": {
@@ -7921,6 +7978,25 @@
     "dialog": "20b70c9bb93940b9a21a488f1721f41c",
     "dialogName": "Shifter_CompanionDialogue",
     "cue": "Cue_0005",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.visit.star_heart": {
+   "kind": "return-cue",
+   "lists": [
+    "6073e28cab0691542b85a24436ed919c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.visit.star_heart"
+   },
+   "resolved": true,
+   "host": {
+    "list": "6073e28cab0691542b85a24436ed919c",
+    "dialog": "34cc47f0b730c3c4f8fbafb7e12c0475",
+    "dialogName": "PuluraLeaderSaved_c5_dialog",
+    "cue": "Cue_0003",
     "clicks": 0
    }
   },

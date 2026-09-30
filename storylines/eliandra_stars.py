@@ -264,7 +264,7 @@ drezen(E + "drezen.chart", "Your lights sit low in the north", '"What are you dr
        c("[Take the chart.]", "end")),
     el("plain", '''"It suits you. Things are always hiding at the edge of the sky, near the ground, where people have stopped looking up." {n}She rolls the chart, ties it, and holds it out.{/n} "Keep it. Correct it, if I have made mistakes. Do not cross anything out."''',
        c("[Take the chart.]", "end")),
-    el("end", '''"That is today's," she says. "Tomorrow's will be harder. I have been working up to the hard ones." {n}She looks, for a moment, like a girl of thirteen who has just been given something she did not know she was allowed to want.{/n} "Go away now. I want to watch you carry it."''',
+    el("end", '''"That is today's," she says. "Tomorrow's will be harder. I have been working up to the hard ones." {n}For a moment she loses the thread of her own calculation, and does not seem to mind.{/n} "Go away now. I want to watch you carry it."''',
        c("[Carry the chart away where she can see it.]", flags=(CHART,))),
 ], requires=(FIRST_QUESTION,), forbids=(CHART,), delay=24)
 
@@ -344,7 +344,12 @@ drezen(E + "drezen.questions", "Every morning", '"What is it today?"', [
        c("Continue", "end")),
     el("thirteen", '''"To see the sea." {n}She laughs, surprised at herself.{/n} "I had never seen it. Nobody in my clan had. A trader told us it was a lake with no other side, and I did not believe him, and I meant to go and see for myself when I was grown. Then I found my gift, and there was the vow, and there was always something more important than the sea."''',
        c("Continue", "end")),
-    el("miss", '''"The shrine, every evening at the hour of the reading. The strength, every time someone bleeds and I am slow. The vow..." {n}She considers it honestly, the way she considers everything.{/n} "No. I thought I would. I thought it was holding me up. It turns out it was only holding me still."''',
+    el("miss", '''"The shrine, every evening at the hour of the reading." {n}She considers it honestly, the way she considers everything.{/n}''',
+       c("Continue", "miss_slow", requires=(REWARD_RETURNED,)),
+       c("Continue", "miss_strong", forbids=(REWARD_RETURNED,))),
+    el("miss_slow", '''"The strength, every time someone bleeds and I am slow. The vow..." {n}A pause.{/n} "No. I thought I would. I thought it was holding me up. It turns out it was only holding me still."''',
+       c("Continue", "end")),
+    el("miss_strong", '''"Not the strength. My Lady left me that, and I use it every day, and every day it is heavier, because now I choose each time whom to spend it on. The vow chose for me. The vow..." {n}A pause.{/n} "No. I thought I would miss it. I thought it was holding me up. It turns out it was only holding me still."''',
        c("Continue", "end")),
     el("end", '''{n}She adds one more line to the paper and turns it so that you can read it: today's date, and beside it, "asked and answered, both ways".{/n}
 "Tomorrow," she says, "I am going to ask you something easy, as a rest. I have not decided what. Something about horses, perhaps. I know nothing whatever about horses."''',

@@ -116,8 +116,8 @@ BINDINGS = {
 }
 
 DERIVED = {
-    # R2-6: the Commander's soft no on the first mile keeps her question open; the page after Threshold answers it.
-    LATE_COMMITTED: [["trickster.ever", DECLINED]],
+    # R2-6: after the soft no, her letter from the fords kept and its answer promised for after the war; the late page answers it.
+    LATE_COMMITTED: [["trickster.ever", E + "letter_kept"]],
     # 05 §2.5 voice note: she joins asking, every morning, the thing she once never asked anyone.
     "eliandra.harem.voice.asks_every_morning": [[COMMITTED]],
 }
@@ -234,7 +234,7 @@ page(E + "ch4.red_sky", "A sky without them", [
 
 shrine(E + "ch5.first_words", "Who was lost", '"Who did you lose?"', [
     el("start", '''{n}Eliandra does not answer at once. She looks past you, down the corridor, to where the wardens are laying sheets over shapes on the floor.{/n}
-"Regnard. Taeriell. Vestari and Cristry." {n}She says the names the way one sets down stones, one after another, carefully, so that none of them rolls.{/n} "Regnard took up a sword against them. He had never held one in his life. He begged Katair for years to teach him, and Katair always said he was too young." {n}Her hand goes to her heart and stays there.{/n} "He was a hundred and twenty years old, Commander. He was too young."''',
+"Regnard. Taeriell. Vestari and Cristry." {n}She says the names the way one sets down stones, one after another, carefully, so that none of them rolls.{/n} "Regnard took up a sword against them. He had practised alone at night for years, badly, with no one to teach him; he begged Katair for lessons, and Katair always said he was too young." {n}Her hand goes to her heart and stays there.{/n} "He was a hundred and twenty years old, Commander. He was too young."''',
        c('"I\'m sorry. I should have come sooner."', "sooner"),
        c('"Where is Katair?"', "katair"),
        c('"How did they find you, after a hundred years?"', "found")),
@@ -384,14 +384,14 @@ shrine(E + "ch5.healer", "The strongest of her servants", '"You should rest. You
 
 shrine(E + "ch5.regnard", "Regnard's swords", '"Regnard\'s cell is full of swords."', [
     el("start", '''"Chiefs' swords." {n}Eliandra does not need to ask which cell you mean.{/n} "Regnard collected the history of Sarkoris. He said we all needed a way to escape the monotony of this place, or we would lose our minds, and his was the dead. The cultists of the Lord of Ghouls woke the chiefs we had sent to their rest below our falls, and the guards cut them down, and Regnard, who was never let outside the walls, begged the guards for whatever the chiefs had been buried with."
-{n}She is quiet.{/n} "He had a whole wall of them. He never once used one. Until yesterday."''',
+{n}She is quiet.{/n} "He had a whole wall of them. He never used one. He practised at night with a plain sword of his own, badly, where he thought no one could see. Until yesterday."''',
        c('"He wanted to fight?"', "fight"),
        c('"What will you do with them?"', "swords")),
     el("fight", '''"He wanted to change." {n}She says it as though the words had been waiting a long time.{/n} "He told me so once, in the ninetieth year. We don't get old, he said. We don't get sick. And we don't change. The same conversations, the same jokes, the same food, the same arguments. A guard cannot become a stargazer and a stargazer cannot become a guard. He said everything here had to stay as it was on the first day, and it was killing him slowly, and could I please let him out to fight."
 "I told him his talent was needed here." {n}Her hand goes to her heart.{/n} "It was true. It was also the answer I gave everyone, to everything, for a hundred years."''',
        c('"He got his fight in the end."', "end_fight"),
        c('"You kept him alive for a century. That counts."', "end_alive")),
-    el("end_fight", '''"He did. With his own sword, the plain one, not any of the chiefs'. He would not have thought himself worthy of a chief's." {n}She closes her eyes.{/n} "The wardens found him at the library door. Vestari was on the other side of it. I think he was trying to reach her."''',
+    el("end_fight", '''"He did. With his own sword, the plain one, not any of the chiefs'. He would not have thought himself worthy of a chief's." {n}She closes her eyes.{/n} "The wardens found him at the library door. Vestari was on the other side of it. I think he was trying to reach him."''',
        c("Continue", "swords")),
     el("end_alive", '''"Alive." {n}She weighs it.{/n} "Yes. I kept all of them alive, and kept them exactly as they were, and called that the same thing as keeping them well. Regnard knew better. He told me so. I did not listen." {n}A breath.{/n} "I am listening now. It is a poor time to begin."''',
        c("Continue", "swords")),
@@ -400,7 +400,7 @@ shrine(E + "ch5.regnard", "Regnard's swords", '"Regnard\'s cell is full of sword
        c('"Keep one. For him."', "keep")),
     el("hands", '''"Thank you." {n}She inclines her head, the full formal bow of the high priestess, and then, a little awkwardly, simply touches your arm.{/n} "Tell your soldiers to lay them with the blades pointing north, towards the lights. It is the old way. Regnard would have written down every one they got wrong, and been very happy."''',
        c("[Leave her with his wall of swords.]", flags=(E + "regnard_swords",))),
-    el("keep", '''{n}She is quiet a long while.{/n} "One," she says at last. "The plain one. The one he died with. I will carry it into Sarkoris and put it on the first wall we build, and tell every child who asks that the man who owned it wanted to change so badly that he learned to fight in a week." {n}She looks at you.{/n} "That is a better thing to tell children than that he obeyed me."''',
+    el("keep", '''{n}She is quiet a long while.{/n} "One," she says at last. "The plain one. The one he died with. I will carry it into Sarkoris and put it on the first wall we build, and tell every child who asks that the man who owned it wanted to change so badly that he practised with it every night for years, alone, with nobody to teach him, and then used it." {n}She looks at you.{/n} "That is a better thing to tell children than that he obeyed me."''',
        c("[Leave her with his wall of swords.]", flags=(E + "regnard_swords",))),
 ], requires=(DEAD_NAMED,), forbids=(E + "regnard_swords",))
 
@@ -427,7 +427,7 @@ shrine(E + "ch5.veil", "Seen from inside", '"How did your Lady hide this place? 
 ], requires=(DEAD_NAMED,), forbids=(E + "veil_known",))
 
 
-shrine(E + "ch5.thirteen", "What a girl of thirteen gave", '"How old were you, when you made your vow?"', [
+shrine(E + "ch5.thirteen", "What she gave at thirteen", '"How old were you, when you made your vow?"', [
     el("start", '''"Thirteen." {n}Eliandra answers at once, as though she has been asked it before, and then pauses, as though she has not.{/n} "I found my gift that year. A boy from the next clan fell through the lake ice in the spring thaw, and they pulled him out blue, and I put my hands on him because nobody else was doing anything, and he coughed up the lake and sat up and asked for his mother."
 "By the autumn every clan on the lake knew. By the winter I was in the temple of Pulura at Iz, with my hair cut short, making my vow."''',
        c('"What did you vow?"', "vow"),
@@ -439,7 +439,7 @@ shrine(E + "ch5.thirteen", "What a girl of thirteen gave", '"How old were you, w
 "And she answered. She has answered every day since. The strongest of her servants, they say."''',
        c('"Do you ever think about what you gave up?"', "gave"),
        c('"Would you make the same vow again?"', "again")),
-    el("gave", '''"Not often. It is not a thing one misses, if one never had it." {n}A pause.{/n} "That is what I used to say. I said it to Vestari and Cristry, the night I forbade them. I told them it was possible to live without it, because I had." {n}Her hands are very still in her lap.{/n} "I think now that I was a girl of thirteen telling two grown women what their hearts were for. I think they knew it. I think that is why they laughed, afterwards, when they thought I could not hear."''',
+    el("gave", '''"Not often. It is not a thing one misses, if one never had it." {n}A pause.{/n} "That is what I used to say. I said it to Vestari and Cristry, the night I forbade them. I told them it was possible to live without it, because I had." {n}Her hands are very still in her lap.{/n} "I think now that I was a woman who had given her own heart away before she knew what it was, telling two people who had kept theirs what hearts were for. I think they knew it. I think that is why they laughed, afterwards, when they thought I could not hear."''',
        c("Continue", "believe")),
     el("again", '''"Yes." {n}No hesitation.{/n} "Knowing what it would cost, yes. The shrine needed a priestess who would not leave it, and I was that, and a hundred people are alive because of it." {n}Then, more slowly:{/n} "But I would like to have been asked. Nobody asked me whether I was sure. They were so glad I was willing."''',
        c("Continue", "believe")),
@@ -668,9 +668,9 @@ shrine(E + "ch5.last_rite", "The last rite", '"Will you hold one last rite at th
     el("granted", '''"She has taken it," she says. Her voice is her own again, and it shakes. "She turned her veil on you. Her lights will stand over Sarkoris every winter for as long as there is a sky, and you will never see them again. Wherever you look for them, your eyes will look somewhere else." {n}She lets out a breath that is half a sob.{/n} "And she has let me go. I felt it. Like a knot I had forgotten was tied."''',
        c('"Then it was a fair price."', "fair"),
        c('"Describe them to me. Just once."', "describe")),
-    el("fair", '''"Fair." {n}She wipes her face with the heel of her hand, like a girl.{/n} "You gave her the one thing in her domain you loved, and you gave it for someone else. It was more than fair. It was the best offering anyone has made in this room in a hundred years, and it was not even yours to need."''',
+    el("fair", '''"Fair." {n}She wipes her face with the heel of her hand, without ceremony.{/n} "You gave her the one thing in her domain you loved, and you gave it for someone else. It was more than fair. It was the best offering anyone has made in this room in a hundred years, and it was not even yours to need."''',
        c("Continue", "after")),
-    el("describe", '''"Now?" {n}She wipes her face with the heel of her hand, like a girl, and looks up at the empty air.{/n} "Green at the edges, like new leaves held up to the sun. Rose in the folds. And at the heart a white so clean it hurts to look at, moving, always moving, as if the whole sky were breathing out." {n}She stops.{/n} "I will tell you every winter. I promise you that. I will be very tiresome about it."''',
+    el("describe", '''"Now?" {n}She wipes her face with the heel of her hand, without ceremony, and looks up at the empty air.{/n} "Green at the edges, like new leaves held up to the sun. Rose in the folds. And at the heart a white so clean it hurts to look at, moving, always moving, as if the whole sky were breathing out." {n}She stops.{/n} "I will tell you every winter. I promise you that. I will be very tiresome about it."''',
        c("Continue", "after")),
     el("after", '''"Go and sleep," she says. "I will put out the basin. I need to be alone with her a little while. I have never once thanked her for anything, either."''',
        c("[Leave her at the basin.]", flags=(LEAVE, LIGHTS_GIVEN), alignment=("Good", 1))),
@@ -705,174 +705,192 @@ shrine(E + "ch5.last_rite", "The last rite", '"Will you hold one last rite at th
     RequiresAnyGroups=[[TERMS_READ, OBSERVED]], TricksterDevice=True, TricksterState="vow")
 
 
-page(E + "ch5.self_offering", "Her own offering", [
-    pn("start", '''{n}The runner from Pulura's Fall is the scullion girl, with her arm still in its sling. She has walked all night and will not sit down. "The high priestess asks you to come," she says. "Tonight. She says you'll know where."{/n}''',
-       c("[Ride for the dry fall.]", "heart")),
-    pn("heart", '''{n}The shrine is almost empty. Crates line the corridors, roped and labelled in a small exact hand. The star-heart is bare to the rock, and the sky overhead burns on regardless, black and enormous.{/n}
-{n}She is kneeling at the basin when you come in. From the look of her, she has been kneeling there for some time.{/n}''',
-       c("Continue", "refused", requires=(REFUSED_FOR_HER,)),
-       c("Continue", "cheated", requires=(TRIED_TO_CHEAT,), forbids=(REFUSED_FOR_HER,)),
-       c("Continue", "walked", forbids=(REFUSED_FOR_HER, TRIED_TO_CHEAT))),
-    ep("refused", '''"You refused it for me," she says, without turning round. "You meant it kindly, and it was not yours to refuse. I have thought about that for two days. It is exactly what I did to Vestari and Cristry for a hundred years, and I did not see it until someone did it to me."''',
+shrine(E + "ch5.self_offering", "Her own offering", '"You sent for me?"', [
+    el("start", '''"I did. Come to the star-heart." {n}Eliandra does not wait for an answer. The shrine is almost empty now; crates line the corridors, roped and labelled in her small exact hand, and she walks between them without looking at any of them.{/n}''',
+       c("[Follow her.]", "heart")),
+    nar("heart", '''{n}The star-heart is bare to the rock, and the sky overhead burns on regardless, black and enormous. Only the basin is left, brimming.{/n}
+{n}She kneels at it without a word. From the marks on the stone floor, she has been kneeling there for much of the last two days.{/n}''',
+        c("Continue", "refused", requires=(REFUSED_FOR_HER,)),
+        c("Continue", "cheated", requires=(TRIED_TO_CHEAT,), forbids=(REFUSED_FOR_HER,)),
+        c("Continue", "walked", forbids=(REFUSED_FOR_HER, TRIED_TO_CHEAT))),
+    el("refused", '''"You refused it for me," she says, without turning round. "You meant it kindly, and it was not yours to refuse. I have thought about that for two days. It is exactly what I did to Vestari and Cristry for a hundred years, and I did not see it until someone did it to me."''',
        c("Continue", "mine")),
-    ep("cheated", '''"You tried to cheat her," she says, without turning. "In the heart of my shrine, with your hand behind your back." {n}She is quiet.{/n} "I was very angry. I am still angry. And then I understood why you did it: you could not bear to pay her for something you thought ought to be free. That is a very foolish reason. It is not a wicked one."''',
+    el("cheated", '''"You tried to cheat her," she says, without turning. "In the heart of my shrine, with your hand behind your back." {n}She is quiet.{/n} "I do not know why, and I am not going to guess on your behalf. That is between you and her, and between you and me, and neither of those is finished."
+"This is not for you. It is my vow, and I will not have my release bought with a lie. So I will pay for it myself, honestly, and you will stand by the door and watch it done properly."''',
+       c("[Stand by the door.]", "kneel")),
+    el("walked", '''"You walked away from the basin," she says, without turning. "At first I thought your nerve had failed. Then I thought that you had understood what you were about to give, and could not give it lightly. I have decided that I prefer the second."''',
        c("Continue", "mine")),
-    ep("walked", '''"You walked away from the basin," she says, without turning. "At first I thought your nerve had failed. Then I thought that you had understood what you were about to give, and could not give it lightly. I have decided that I prefer the second."''',
-       c("Continue", "mine")),
-    ep("mine", '''"So I will do it myself. Properly. Under the open stars, aloud, something I love, from her own domain." {n}She holds her right hand out over the water, palm down. The green shimmer lies on it, faint as breath.{/n} "She gave me this for what I gave her. I will give it back, and ask for nothing in return, and see what she does. It is the only offering I have that is truly mine."''',
+    el("mine", '''"So I will do it myself. Properly. Under the open stars, aloud, something I love, from her own domain." {n}She holds her right hand out over the water, palm down. The green shimmer lies on it, faint as breath.{/n} "She gave me this for what I gave her. I will give it back, and ask for nothing in return, and see what she does. It is the only offering I have that is truly mine."''',
        c("[Kneel beside her.]", "kneel"),
        c('"Eliandra, don\'t. Let me try again."', "again")),
-    ep("again", '''"No." {n}Very gentle, and not open to argument.{/n} "It is my vow. It should be my offering. I have let other people pay for my rules for a hundred years, Commander. Not this time."''',
+    el("again", '''"No." {n}Very gentle, and not open to argument.{/n} "It is my vow. It should be my offering. I have let other people pay for my rules for a hundred years, Commander. Not this time."''',
        c("[Kneel beside her.]", "kneel")),
-    pn("kneel", '''{n}She speaks to the water. You do not hear all of it; some of it is in no language you know, and some of it is only her name for her Lady, said over and over the way a child says a parent's name in the dark. Then, in plain words: "I give it back. Keep it. I am not the strongest of your servants any more. I am only yours."{/n}
+    nar("kneel", '''{n}She speaks to the water. You do not hear all of it; some of it is in no language you know, and some of it is only her name for her Lady, said over and over the way a child says a parent's name in the dark. Then, in plain words: "I give it back. Keep it. I am not the strongest of your servants any more. I am only yours."{/n}
 {n}The shimmer leaves her hand. It goes down into the basin like a coin into a well, slowly, turning, and the water closes over it. For a while nothing happens at all.{/n}
 {n}Then the stars in the basin move. Not a heartbeat behind the sky, as they always have: with it. Exactly with it, as though the water had stopped remembering and begun to see.{/n}''',
-       c("Continue", "free")),
-    ep("free", '''{n}Eliandra lets out a breath that goes on and on. She sits back on her heels and puts both hands over her face, and when she takes them away she is laughing and crying at once, and does not seem to know which.{/n}
-"She let me go," she says. "Just like that. For the asking, and a little light." {n}She looks at her empty hand.{/n} "Katair will say I have made a terrible bargain. He will be right about the bargain. He will be wrong about everything else."''',
+        c("Continue", "free")),
+    el("free", '''{n}Eliandra lets out a breath that goes on and on. She sits back on her heels and puts both hands over her face, and when she takes them away she is laughing and crying at once, and does not seem to know which.{/n}
+"She let me go," she says. "Just like that. For the giving, and a little light." {n}She looks at her empty hand.{/n} "Katair will say I have made a terrible bargain. He will be right about the bargain. He will be wrong about everything else."''',
        c("[Help her up.]", flags=(LEAVE, REWARD_RETURNED)),
        c("[Sit down on the floor beside her instead.]", flags=(LEAVE, REWARD_RETURNED))),
-], requires=("trickster.ever", NO_LEAVE), forbids=(LEAVE,), delay=48,
+], requires=(NO_LEAVE,), forbids=(LEAVE,), fit="T", delay=48,
    TricksterDevice=True, TricksterState="no_leave")
 
 
-# --- The night after the rite (T): the eyes that paid ----------------------------------------------------------------------
+# --- The night after the rite (T; inline): the eyes that paid ---------------------------------------------------------------
 
-page(E + "ch5.night_after", "The night after the rite", [
-    pn("start", '''{n}You cannot sleep in the guard room of Pulura's Fall. Your eyes sting, not badly, the way eyes sting after a long ride into the wind, and every time you shut them you see, very clearly, the colours in the basin going out. You are lying on your back on a hard cot with an arm over your face when the door opens.{/n}
-{n}Eliandra comes in without a lamp. She is carrying a bowl of water and a folded cloth, and she is still in the white robes of the rite, and her hair is still unbound.{/n}''',
-       c("Continue", "water")),
-    ep("water", '''"Your eyes," she says. "They will sting until morning. It was the same for my brothers, when they came back from the lake and saw my Lady's lights for the last time before the veil closed over us. It passes." {n}She kneels by the cot and wets the cloth.{/n} "Lie still. I have washed the eyes of the dying for a century. I can wash the eyes of one living fool."''',
+shrine(E + "ch5.night_after", "The night after the rite", '"My eyes are still stinging."', [
+    el("start", '''"They will, until morning." {n}Eliandra is still in the white robes of the rite, with her hair unbound; she has not slept either. She takes up a bowl of water and a folded cloth as if she had been waiting for you to say it.{/n} "It was the same for my brothers, when they saw my Lady's lights for the last time before the veil closed over us. It passes. Come to the guard room and sit down. I have washed the eyes of the dying for a century. I can wash the eyes of one living fool."''',
        c("[Let her.]", "wash"),
        c('"Fool?"', "fool")),
-    ep("fool", '''"Fool." {n}She sounds almost fond.{/n} "You knelt in a cave and gave a goddess something you loved, for a woman you have known a handful of days, who asked you for nothing. I have seen many offerings in a hundred years. I have never seen a more foolish one." {n}She wrings out the cloth.{/n} "Lie still."''',
-       c("[Lie still.]", "wash")),
-    pn("wash", '''{n}The cloth is cool. She lays it across your eyes and holds it there, lightly, with the flat of her hand, and does not speak. Through the cloth you can feel her fingers, and through her fingers something that might be a prayer, or might only be her pulse.{/n}
+    el("fool", '''"Fool." {n}She sounds almost fond.{/n} "You knelt in a cave and gave a goddess something you loved, for a woman you have known a handful of days, who asked you for nothing. I have seen many offerings in a hundred years. I have never seen a more foolish one." {n}She holds the door of the guard room.{/n} "Sit."''',
+       c("[Sit.]", "wash")),
+    nar("wash", '''{n}You sit on the edge of a guard's cot and she kneels in front of you and lays the wet cloth across your eyes, and holds it there, lightly, with the flat of her hand. She does not speak. Through the cloth you can feel her fingers, and through her fingers something that might be a prayer, or might only be her pulse.{/n}
 {n}After a while she lifts the cloth away. The stinging is less. The room is dark except for the starlight that comes, somehow, even here, through a crack in the rock overhead.{/n}''',
-       c("Continue", "kiss")),
-    ep("kiss", '''"I cannot ask you for anything yet," she says. "I have not learned how. I asked my Lady for nothing for a hundred years, and she has let me go, and I do not know what to do with my hands." {n}She looks at them, folded on the edge of the cot, and then at your face.{/n}
+        c("Continue", "kiss")),
+    el("kiss", '''"I cannot ask you for anything yet," she says. "I have not learned how. I asked my Lady for nothing for a hundred years, and she has let me go, and I do not know what to do with my hands." {n}She looks at them, folded on your knee, and then at your face.{/n}
 "So I will not ask. I will only do this, which I have wanted to do since you knelt at the basin, and you may tell me in the morning that I was wrong."''',
        c("Continue", "eyes")),
-    pn("eyes", '''{n}She bends and kisses your eyes: the left, and then the right, where the lights went in. Her lips are cool from the water and not at all steady. She stays there, bent over you, her unbound hair falling round both your faces like a curtain, her breath warm against your lashes.{/n}
-{n}Then she sits back on her heels, very straight, with the high colour of a girl in her face and the composure of a high priestess everywhere else.{/n}''',
-       c('"You weren\'t wrong."', "right"),
-       c("[Reach up and touch her face.]", "touch")),
-    ep("right", '''"No," she says. "I did not think so. But I have been wrong about so many things lately, Commander, that I have got into the habit of checking." {n}She rises, takes up the bowl.{/n} "Sleep. The column leaves soon, and I have a great deal to carry, and I would like you to be awake for it."''',
+    nar("eyes", '''{n}She rises on her knees and kisses your eyes: the left, and then the right, where the lights went in. Her lips are cool from the water and not at all steady. She stays there, close, her unbound hair falling round both your faces like a curtain, her breath warm against your lashes.{/n}
+{n}Then she sits back on her heels, very straight, with colour high in her face and the composure of a high priestess everywhere else.{/n}''',
+        c('"You weren\'t wrong."', "right"),
+        c("[Reach out and touch her face.]", "touch")),
+    el("right", '''"No," she says. "I did not think so. But I have been wrong about so many things lately, Commander, that I have got into the habit of checking." {n}She rises, takes up the bowl.{/n} "Sleep. The column leaves soon, and I have a great deal to carry, and I would like you to be awake for it."''',
        c("[Sleep.]", flags=(E + "eyes_kissed",))),
-    pn("touch", '''{n}Her skin is warm under your fingers. She goes very still, the way she went still over the lens in the star-heart, measuring something at the edge of what can be seen. Then she turns her face into your palm, briefly, and closes her eyes.{/n}
-{n}"Not tonight," she says against your hand. "Not in this place, with our dead so close. But I wanted you to know that I am counting." She rises, takes up the bowl, and at the door she stops. "Sleep. Before we leave, I am going to ask you something. I am practising."{/n}''',
-       c("[Sleep.]", flags=(E + "eyes_kissed",))),
-], requires=("trickster.ever", LEAVE, LIGHTS_GIVEN), forbids=(E + "eyes_kissed", COMMITTED, DECLINED), delay=4)
+    nar("touch", '''{n}Her skin is warm under your fingers. She goes very still, the way she went still over the lens in the star-heart, measuring something at the edge of what can be seen. Then she turns her face into your palm, briefly, and closes her eyes.{/n}
+"Not tonight," {n}she says against your hand.{/n} "Not in this place, with our dead so close. But I wanted you to know that I am counting." {n}She rises, takes up the bowl, and at the door she stops.{/n} "Sleep. Before we leave, I am going to ask you something. I am practising."''',
+        c("[Sleep.]", flags=(E + "eyes_kissed",))),
+], requires=(LEAVE, LIGHTS_GIVEN), forbids=(E + "eyes_kissed", COMMITTED, DECLINED), fit="T", delay=2)
 
 
-# --- The commit: she asks, on the first mile of the road (T) ------------------------------------------------------------
+# --- The commit: she asks, on the first mile of the road (T; inline on her hub while she is still at the shrine) ---------
 
-page(E + "ch5.first_mile", "The first mile", [
-    pn("start", '''{n}The stargazers leave Pulura's Fall at first light: two dozen people, three carts, a mule with a bad temper, and the great bronze basin roped on top of the last cart like a bell. You meet them where the path from the hidden door comes out onto the scrub below the dry fall, and fall in beside Eliandra at the head of the column.{/n}
+LIED_ABOUT_HAND = E + "lied_about_hand"   # asked on the road what the hidden hand meant, the Commander lied again
+LETTER_KEPT = E + "letter_kept"           # the road letter kept, its answer reserved for after the war (the R2-6 late yes)
+
+shrine(E + "ch5.first_mile", "The first mile", '"You leave at first light?"', [
+    nar("start", '''{n}They do. The stargazers leave Pulura's Fall in the grey before sunrise: two dozen people, three carts, a mule with a bad temper, and the great bronze basin roped on top of the last cart like a bell. You fall in beside Eliandra at the head of the column where the path from the hidden door comes out onto the scrub below the dry fall.{/n}
 {n}She has changed her white robes for a grey travelling cloak and pinned her hair up under the hood. She looks like any priestess on any road. She walks as if she has not set foot on open ground in a hundred years, which is the truth.{/n}''',
        c("Continue", "lights", requires=(LIGHTS_GIVEN,)),
        c("Continue", "tired", requires=(REWARD_RETURNED,), forbids=(LIGHTS_GIVEN,)),
        c("Continue", "road", forbids=(LIGHTS_GIVEN, REWARD_RETURNED))),
-    ep("lights", '''{n}She keeps glancing up. The sky is barely grey, and low in the north, over the Wound, there is a smear you cannot quite look at: your eyes slide off it to a cloud, a crow, a cart-wheel.{/n}
+    el("lights", '''{n}She keeps glancing up. The sky is barely grey, and low in the north, over the Wound, there is a smear you cannot quite look at: your eyes slide off it to a cloud, a crow, a cart-wheel.{/n}
 "They are still out," she says. "The last of them. Green, very pale, going rose at the edges where the sun is coming. They are always brightest just before they go." {n}She glances at you, and away.{/n} "I said I would be tiresome about it."''',
        c("Continue", "tired_too", requires=(REWARD_RETURNED,)),
        c("Continue", "road", forbids=(REWARD_RETURNED,))),
-    pn("tired_too", '''{n}She stumbles once on the stony path, and catches herself, and does not look at you. At the hidden door she stopped to see to the girl with the sling, whose arm had swollen in the night, and it took her a long time, and afterwards she leaned on the cart with her eyes shut. Nobody in the column said anything about it. All of them noticed.{/n}''',
-       c("Continue", "road")),
-    pn("tired", '''{n}She walks slowly. At the hidden door she stopped to see to the girl with the sling, whose arm had swollen in the night, and it took her far longer than it would have a week ago, and afterwards she leaned on the cart with her eyes shut. Nobody in the column said anything about it. All of them noticed.{/n}
+    nar("tired_too", '''{n}She stumbles once on the stony path, and catches herself, and does not look at you. At the hidden door she stopped to see to the girl with the sling, whose arm had swollen in the night, and it took her a long time, and afterwards she leaned on the cart with her eyes shut. Nobody in the column said anything about it. All of them noticed.{/n}''',
+        c("Continue", "road")),
+    nar("tired", '''{n}She walks slowly. At the hidden door she stopped to see to the girl with the sling, whose arm had swollen in the night, and it took her far longer than it would have a week ago, and afterwards she leaned on the cart with her eyes shut. Nobody in the column said anything about it. All of them noticed.{/n}
 {n}Low in the north, over the Wound, the last of the night's lights are fading. You can see them, pale green going rose. She looks at them once, and then at you, as if to be sure you still can.{/n}''',
+        c("Continue", "hand", requires=(TRIED_TO_CHEAT,)),
+        c("Continue", "road", forbids=(TRIED_TO_CHEAT,))),
+    el("hand", '''{n}Half a mile out she speaks without turning her head.{/n} "Before I ask you anything, you will answer me one thing, and you will answer it plainly, or I will ask you nothing at all." {n}Her voice is quite even.{/n}
+"In the heart of my shrine you knelt across the basin from me with your hand behind your back. What did you mean to do with it?"''',
+       c('[Tell her the truth] "Take the leave, then find a loophole later and get the lights back."', "owned"),
+       c('[Lie] "Nothing. A cramp. You read too much into it."', "lied", flags=(DECLINED, LIED_ABOUT_HAND))),
+    el("owned", '''{n}She walks on for a while.{/n} "Thank you," she says at last. "That is an ugly answer, and it is the true one. I would rather have the ugly true thing than a pretty lie, from you, every morning for the rest of my life." {n}She does not smile.{/n} "I have not forgiven it. I may. Walk with me to the milestone."''',
        c("Continue", "road")),
-    ep("road", '''{n}The first mile is not a long way. The column strings out behind you, the mule complaining, Odden singing something under his breath about a lake. At a milestone half-buried in ash Eliandra stops, lets the carts go past, and waits until you are alone with her at the side of the road.{/n}
+    el("lied", '''{n}She stops in the road. The column goes on past you both, carts and mule and Odden's tuneless humming.{/n}
+"My Lady saw your hand," she says. "I saw your hand. And you stand in the open road with her lights still in the sky and tell me it was a cramp." {n}She looks at you with no anger at all, which is worse.{/n} "I was going to ask you something. I will not, today. Go back to your war, Commander. If I ever know what to do with you, I will write."''',
+       c("[Let her go on.]")),
+    el("road", '''{n}The first mile is not a long way. The column strings out behind you, the mule complaining, Odden singing something under his breath about a lake. At a milestone half-buried in ash Eliandra stops, lets the carts go past, and waits until you are alone with her at the side of the road.{/n}
 "I have never asked anyone for anything," she says. "I told you that. It was true. I asked my Lady for nothing in a hundred years, and I asked nothing of my people but that they obey me, and they did." {n}She takes a breath.{/n} "So I am out of practice. Forgive me if I do it badly."''',
        c("Continue", "ask")),
-    ep("ask", '''"Drezen," she says, "or the road?" {n}She holds your eyes.{/n} "When your war is done. Will you have me in Drezen, in your city, with walls around us? Or will you walk the road with me into whatever is left of Sarkoris, and help me find out what it is?"
+    el("ask", '''"Drezen," she says, "or the road?" {n}She holds your eyes.{/n} "When your war is done. Will you have me in Drezen, in your city, with walls around us? Or will you walk the road with me into whatever is left of Sarkoris, and help me find out what it is?"
 "I am asking you, Commander. I want to be told."''',
        c('[Either. Ask me every morning.] "Either. Both. Ask me every morning, and I\'ll give you a different answer every day."', "yes",
          flags=(COMMITTED,)),
        c('[Tell her to leave the stargazers] "Drezen. Just you. Let Odden take them on."', "no", flags=(DECLINED,)),
        c('[Wish her well] "The road is yours, Eliandra. Go well."', "farewell", flags=(CLOSED,))),
-    ep("yes", '''{n}She laughs. It is not a high priestess's laugh. It is a girl's laugh, startled out of her, and three people in the column turn round to look.{/n}
-"Every morning," she says. "You will regret that. I have a hundred years of questions saved up." {n}She reaches out and takes your hand, as if it were something she had watched other people do and wanted to try. Her fingers are cold from the road. She does not let go.{/n}
+    el("yes", '''{n}She laughs: short, startled and entirely unguarded, not a sound the high priestess of Pulura has made in public in a century. Three people in the column turn round to look.{/n}
+"Every morning," she says. "You will regret that. I have a hundred years of questions saved up." {n}She reaches out and takes your hand, deliberately, the way she would set a lens to her eye. Her fingers are cold from the road. She does not let go.{/n}
 "The heart is still open," she says, more quietly. "I left it for last. The column can make camp without me tonight. Come back with me to the shrine, Commander, and help me close it."''',
        c("[Walk back with her.]")),
-    ep("no", '''{n}She takes it like a blow she saw coming.{/n}
+    el("no", '''{n}She takes it like a blow she saw coming.{/n}
 "You ask me to abandon the only people I have," she says. "The ones who are left. Odden, who has no one. The girl with the sling, who does not know how to be anywhere but a cave." {n}She is not angry. That would be easier.{/n} "I cannot. I will not. If that is the only way you will have me, then you will not have me, and I will have asked for nothing after all."
 {n}She steps back onto the road.{/n} "Go back to your war, Commander. I will write, when I know where we are."''',
        c("[Let her go on.]")),
-    ep("farewell", '''{n}Something moves across her face and is put away, neatly, the way she rolls a chart.{/n}
-"Thank you," she says. "For the rite. For the lights. For everything you gave that you did not have to." {n}She lays her hand on her heart and bows: the full bow of a high priestess to an honoured guest.{/n} "Farewell, Commander. Pulura's children will remember you."''',
+    el("farewell", '''{n}Something moves across her face and is put away, neatly, the way she rolls a chart.{/n}
+"Thank you," she says. "For the rite. For everything you gave that you did not have to." {n}She lays her hand on her heart and bows: the full bow of a high priestess to an honoured guest.{/n} "Farewell, Commander. Pulura's children will remember you."''',
        c("[Watch her go.]")),
-], requires=("trickster.ever", LEAVE), forbids=(COMMITTED, DECLINED), delay=24)
+], requires=(LEAVE,), forbids=(COMMITTED, DECLINED), fit="T", delay=24)
 
 
 page(E + "ch5.road_letter", "A letter from the fords", [
     ep("start", '''{n}The letter is written on the back of a star chart, in a small exact hand that has been corrected twice and nowhere crossed out.{/n}
-"Commander. We are four days from Pulura's Fall, on the old road to the Drezen fords, and the mule has bitten Odden again. I am writing because I said I would, and because I have not stopped thinking about what I asked you, or what you answered.
-"You were not wrong to want me alone. I think that is what wanting is, and I have not practised it. But I spent a century making rules about other people's hearts, and I will not make one now that says my people come second, or that you do. I have decided that I do not have to choose. It is a very new idea, and I am rather proud of it."''',
+"Commander. We are four days from Pulura's Fall, on the old road to the Drezen fords, and the mule has bitten Odden again. I am writing because I said I would, and because I have not stopped thinking about what I asked you, or what you answered."''',
+       c("[Read on.]", "alone", forbids=(LIED_ABOUT_HAND,)),
+       c("[Read on.]", "hand", requires=(LIED_ABOUT_HAND,))),
+    ep("alone", '''"You were not wrong to want me alone. I think that is what wanting is, and I have not practised it. But I spent a century making rules about other people's hearts, and I will not make one now that says my people come second, or that you do. I have decided that I do not have to choose. It is a very new idea, and I am rather proud of it."''',
+       c("[Read on.]", "ask")),
+    ep("hand", '''"You lied to me on the road about your hand. I have thought about it for four days, which is three more than it deserved and fewer than I needed. I have decided that a person who lies to protect a plan is not the same as a person who lies for pleasure, and that I would rather know which one I am dealing with than guess. So I am going to ask you, in writing, where you cannot see my face: what did you mean to do with it? And then the other question, the one I did not ask."''',
        c("[Read on.]", "ask")),
     ep("ask", '''"So I am asking again, which I have never done in my life. Drezen, or the road? I will not ask a third time, but I will not stop hoping, either; I find I have no talent for that yet.
 "One thing more. I did not close the heart of the shrine when we left. I told Odden I forgot. I did not forget. Write to me at the fords; the carrier knows the way. E."''',
-       c('[Write back: either] "Either. Both. Bring them all. Ask me every morning."', flags=(COMMITTED, LETTER_ANSWERED)),
-       c("[Fold the letter into your coat, unanswered for now.]")),
+       c('[Write back: either] "Either. Both. Bring them all. Ask me every morning."', flags=(COMMITTED, LETTER_ANSWERED),
+         forbids=(LIED_ABOUT_HAND,)),
+       c('[Write back the truth, and then: either] "I meant to cheat her and get the lights back. I\'m sorry. Either. Both. Ask me every morning."',
+         flags=(COMMITTED, LETTER_ANSWERED), requires=(LIED_ABOUT_HAND,)),
+       c('[Keep the letter. Write that you will answer when the war is done.]', flags=(LETTER_KEPT,))),
 ], requires=("trickster.ever", DECLINED), forbids=(COMMITTED,), delay=48, kind="letter")
 
 
 # --- The star-heart, the shrine's last night (T; Directive 12: desire, the threshold, the cut, the morning) ---------------
 
-page(E + "visit.star_heart", "The shrine's last night", [
-    pn("start", '''{n}Pulura's Fall, after dark.{/n}''',
-       c("Continue", "walk_back", forbids=(LETTER_ANSWERED,)),
-       c("Continue", "ride_back", requires=(LETTER_ANSWERED,))),
-    pn("walk_back", '''{n}The shrine is very quiet with everyone gone. Your boots echo in corridors that have heard nothing but soft slippers for a hundred years. Eliandra walks ahead of you with a lamp, touching the walls as she passes, the way one touches the shoulders of friends at a funeral.{/n}''',
-       c("Continue", "heart")),
-    pn("ride_back", '''{n}It is two days' ride to the dry fall, and she is waiting at the foot of it on a crate, alone, with a lamp at her feet and her hood down. She walked back from the fords by herself. She stands up when she sees you, and does not seem to know what to do with her hands.{/n}''',
-       c("Continue", "heart")),
-    pn("heart", '''{n}The star-heart is bare to the rock. The basin went with the carts; the long table did not, being too heavy to move, and her last charts lie on it half rolled, weighted with river stones. Overhead the sky burns, black and enormous, as it has burned for a century and will burn when there is nobody under it at all.{/n}
+shrine(E + "visit.star_heart", "The shrine's last night", '"Is the heart still open?"', [
+    nar("start", '''{n}Pulura's Fall, after dark.{/n}''',
+        c("Continue", "walk_back", forbids=(LETTER_ANSWERED,)),
+        c("Continue", "ride_back", requires=(LETTER_ANSWERED,))),
+    nar("walk_back", '''{n}The shrine is very quiet with everyone gone. Your boots echo in corridors that have heard nothing but soft slippers for a hundred years. Eliandra walks ahead of you with a lamp, touching the walls as she passes, the way one touches the shoulders of friends at a funeral.{/n}''',
+        c("Continue", "heart")),
+    nar("ride_back", '''{n}She walked back from the fords alone, two days on the old road, to meet you here. She has the lamp in one hand and her hood down, and at the hidden door she stops and does not seem to know what to do with the other hand. Then she gives it to you, and leads you in.{/n}''',
+        c("Continue", "heart")),
+    nar("heart", '''{n}The star-heart is bare to the rock. The basin went with the carts; the long table did not, being too heavy to move, and her last charts lie on it half rolled, weighted with river stones. Overhead the sky burns, black and enormous, as it has burned for a century and will burn when there is nobody under it at all.{/n}
 {n}Eliandra sets the lamp down and blows it out. There is enough light without it.{/n}''',
-       c("Continue", "her")),
-    ep("her", '''"I used to take the evening's reading here," she says. "Every evening, for a hundred years. I knew every star over this room. I never once looked at a living soul the way I looked at them." {n}She turns to face you.{/n}''',
+        c("Continue", "her")),
+    el("her", '''"I used to take the evening's reading here," she says. "Every evening, for a hundred years. I knew every star over this room. I never once looked at a living soul the way I looked at them." {n}She turns to face you.{/n}''',
        c("Continue", "look", requires=(LIGHTS_GIVEN,)),
        c("Continue", "look_up", forbids=(LIGHTS_GIVEN,))),
-    ep("look", '''"There are lights over the north tonight. You cannot see them. I can." {n}She steps closer, close enough that you can smell the road on her cloak, and cedar, and ink.{/n} "Look at me, then," she says. "I will look up for both of us."''',
+    el("look", '''"There are lights over the north tonight. You cannot see them. I can." {n}She steps closer, close enough that you can smell the road on her cloak, and cedar, and ink.{/n} "Look at me, then," she says. "I will look up for both of us."''',
        c("Continue", "want")),
-    ep("look_up", '''"You still have your eyes, and I have nothing of my Lady's left but her leave." {n}She steps closer, close enough that you can smell the road on her cloak, and cedar, and ink.{/n} "Look up, then, while I look at you. I have looked at the sky long enough."''',
+    el("look_up", '''"You still have your eyes, and I have nothing of my Lady's left but her leave." {n}She steps closer, close enough that you can smell the road on her cloak, and cedar, and ink.{/n} "Look up, then, while I look at you. I have looked at the sky long enough."''',
        c("Continue", "want")),
-    ep("want", '''"I have wanted things before," she says. "I was thirteen once. I gave all of it to her, and I did not miss it, because I did not know what it was." {n}Her hand comes up, slowly, and rests flat on your chest, the way she rests it on her own heart when she bows.{/n}
+    el("want", '''"I have wanted things before," she says. "I gave all of it to her before I knew what it was, and I did not miss it, because I did not know what I was missing." {n}Her hand comes up, slowly, and rests flat on your chest, the way she rests it on her own heart when she bows.{/n}
 "I know now. I want you, Commander. I have wanted you since the day you walked into my broken shrine with blood on your sleeves and asked me who I had lost. I have no idea at all what to do about it. I am told that is usual."''',
        c("[Kiss her.]", "robes"),
        c('[Flirt] "I\'ll show you. Slowly. We have all night."', "robes"),
        c('"I told you I wasn\'t watching the stars."', "robes", requires=(FLIRTED,))),
-    pn("robes", '''{n}She kisses like someone learning a language by immersion: clumsy for a breath, then with a sudden fierce aptitude that takes you both by surprise. Her hands are in your hair. Yours are at her waist, on the grey cloak, on the pin at her throat that will not come undone.{/n}
+    nar("robes", '''{n}She kisses like someone learning a language by immersion: clumsy for a breath, then with a sudden fierce aptitude that takes you both by surprise. Her hands are in your hair. Yours are at her waist, on the grey cloak, on the pin at her throat that will not come undone.{/n}
 {n}She takes your hands away from it. For a heartbeat you think she has changed her mind. Then she unpins it herself and lets the cloak fall, and beneath it the white robes of her office, and she loosens those too, tie by tie, with the same steady fingers that never once shook at the lens, looking at you the whole while.{/n}''',
-       c("Continue", "wrist")),
-    pn("wrist", '''{n}Her skin is paler where the robes have always covered it, and there is a scar on her shoulder you did not know about, old and white, from some fight a century gone. You put your mouth to it. She makes a sound nobody in this shrine has ever heard from her.{/n}
+        c("Continue", "wrist")),
+    nar("wrist", '''{n}Her skin is paler where the robes have always covered it, and there is a scar on her shoulder you did not know about, old and white, from some fight a century gone. You put your mouth to it. She makes a sound nobody in this shrine has ever heard from her.{/n}
 {n}You find her wrist, and the pulse beneath it, quick and hard: a heart that kept its steady time through a hundred years of evenings and is keeping no time at all now. You press your lips there and feel it race. Eliandra says your name, and then says it again, as if she were checking an observation, and pulls you close.{/n}''',
-       c("Continue", "learn")),
-    pn("learn", '''{n}Then she stops being careful. Your shirt goes, and she spreads her hands flat on your ribs and moves them slowly, north to south, the way she once moved a lens across a sky she meant to know by heart, and you feel her breath catch each time she finds something new: a scar, a pulse, the place where your breath goes ragged.{/n}
+        c("Continue", "learn")),
+    nar("learn", '''{n}Then she stops being careful. Your shirt goes, and she spreads her hands flat on your ribs and moves them slowly, north to south, the way she once moved a lens across a sky she meant to know by heart, and you feel her breath catch each time she finds something new: a scar, a pulse, the place where your breath goes ragged.{/n}
 {n}"I have watched things move for a hundred years," she says against your throat. "I want to feel something move." Her teeth close, lightly, on your shoulder. Her thigh is between yours. The white robes are round her hips now and she does not trouble to push them further; her hands are busy, and her mouth, and there is nothing of the high priestess left in either.{/n}''',
-       c("Continue", "charts")),
-    pn("charts", '''{n}The table is behind her. The charts are on the table. Neither fact turns out to matter. The river stones go over with a clatter, and the half-rolled charts slide off the edge in a slow white landslide, a hundred years of the northern sky spilling across the floor of the star-heart, and Eliandra, flat on her back on the bare wood with her hair loose over the Maiden's own constellations, laughs aloud and draws you down onto her.{/n}
+        c("Continue", "charts")),
+    nar("charts", '''{n}The table is behind her. The charts are on the table. Neither fact turns out to matter. The river stones go over with a clatter, and the half-rolled charts slide off the edge in a slow white landslide, a hundred years of the northern sky spilling across the floor of the star-heart, and Eliandra, flat on her back on the bare wood with her hair loose over the Maiden's own constellations, laughs aloud and draws you down onto her.{/n}
 {n}Overhead, the stars go on burning. For once, nobody in this room is looking at them.{/n}''',
-       c("Continue", "morning")),
-    pn("morning", '''{n}You wake on the floor of the star-heart under her cloak, with a star chart stuck to your back and the sky overhead gone pale with morning. Eliandra is already up and dressed, kneeling among the fallen charts, rolling them one by one and tying them with a concentration that suggests she has decided not to think about anything else just yet.{/n}
+        c("Continue", "morning")),
+    nar("morning", '''{n}You wake on the floor of the star-heart under her cloak, with a star chart stuck to your back and the sky overhead gone pale with morning. Eliandra is already up and dressed, kneeling among the fallen charts, rolling them one by one and tying them with a concentration that suggests she has decided not to think about anything else just yet.{/n}
 {n}Boots in the corridor. A man stops in the doorway: a military bearing, a face covered in old scars, a bow across his back. He looks at the empty shrine. He looks at the charts. He looks at you, and at her, and at the cloak, and at the obvious.{/n}''',
-       c("Continue", "katair")),
-    kt("katair", '''"I was beyond the walls," says Katair. "Three days. I came back to a sacked shrine and a column of carts on the ford road, and Odden told me you were here, and would not tell me why." {n}His voice is perfectly level. His hands are not, quite.{/n} "Regnard. Taeriell. The lovers."
+        c("Continue", "katair")),
+    nar("katair", '''"I was beyond the walls," {n}says Katair.{/n} "Three days. I came back to a sacked shrine and a column of carts on the ford road, and Odden told me you were here, and would not tell me why." {n}His voice is perfectly level. His hands are not, quite.{/n} "Regnard. Taeriell. The lovers."
 {n}It is not a question. Eliandra nods.{/n}
-"I was not here," he says.''',
-       c('"She was. She held the rest of them together."', "answer"),
-       c("[Say nothing. Let her answer him.]", "answer")),
-    ep("answer", '''"No," says Eliandra, "you were not, and you will carry that, and I cannot stop you." {n}She stands, with the charts in her arms.{/n} "I have let my Lady go, Katair. Or she has let me go. The Commander made an offering in my place, and I have made my choice." {n}She lifts her chin.{/n} "I am not going to be ashamed of it in front of you."''',
+"I was not here," {n}he says.{/n}''',
+        c('"She was. She held the rest of them together."', "answer"),
+        c("[Say nothing. Let her answer him.]", "answer")),
+    el("answer", '''"No," says Eliandra, "you were not, and you will carry that, and I cannot stop you." {n}She stands, with the charts in her arms.{/n} "I have let my Lady go, Katair. Or she has let me go. The Commander made an offering in my place, and I have made my choice." {n}She lifts her chin.{/n} "I am not going to be ashamed of it in front of you."''',
        c("Continue", "wrong")),
-    kt("wrong", '''{n}Katair is silent. Then he crosses the room, takes the charts out of her arms, and looks at them.{/n}
-"You have rolled these wrong," he says. "Every one. The north is on the outside." {n}He hands them back.{/n} "In a hundred years I never once saw you roll a chart wrong."
+    nar("wrong", '''{n}Katair is silent. Then he crosses the room, takes the charts out of her arms, and looks at them.{/n}
+"You have rolled these wrong," {n}he says.{/n} "Every one. The north is on the outside." {n}He hands them back.{/n} "In a hundred years I never once saw you roll a chart wrong."
 {n}Then, to you, with no change of tone:{/n} "If you are careless with her, Commander, I will know. Taeriell used to chart where I went, every time I left the walls. Seventy years of it. He thought I did not know." {n}He stops, as if he has walked into a wall.{/n} "He will not chart anything now."''',
-       c('"I\'ll take care of her."', "end"),
-       c('"She doesn\'t need taking care of. She needs asking."', "end")),
-    pn("end", '''{n}Katair goes out to see to the horses. Eliandra stands in the middle of the star-heart with an armful of wrongly rolled charts, looking at the doorway where he went.{/n}
-{n}"He will forgive me," she says. "Not today. He has other things to forgive himself first." She looks down at the charts and, astonishingly, smiles. "I am not going to reroll them."{/n}''',
-       c("[Help her carry them out.]", flags=(HEART_SEEN, CHARTS))),
-], requires=("trickster.ever", COMMITTED), forbids=(HEART_SEEN,), delay=12)
+        c('"I\'ll take care of her."', "end"),
+        c('"She doesn\'t need taking care of. She needs asking."', "end")),
+    nar("end", '''{n}Katair goes out to see to the horses. Eliandra stands in the middle of the star-heart with an armful of wrongly rolled charts, looking at the doorway where he went.{/n}
+"He will forgive me," {n}she says.{/n} "Not today. He has other things to forgive himself first." {n}She looks down at the charts and, astonishingly, smiles.{/n} "I am not going to reroll them."''',
+        c("[Help her carry them out.]", flags=(HEART_SEEN, CHARTS))),
+], requires=(COMMITTED,), forbids=(HEART_SEEN,), fit="T", delay=12)
 
 
 # --- Reactions (T): King Thaberdine (his one list entry), Ulbrig (the morning after), Lann (the veil), Daeran (the lights) ---
@@ -923,7 +941,7 @@ react(E + "react.daeran_lights", "Daeran", ("trickster.ever", LIGHTS_GIVEN),
 # --- Epilogue pages (Chapter 6; no page effects) ---------------------------------------------------------------------------
 
 EPI = "EliandraEpilogue"
-EP_GUARD = dict(forbids=("sacrifice",), ForbidOverrides={"sacrifice": "trickster.cheated_death"})
+EP_GUARD = dict(forbids=("sacrifice",), ForbidOverrides={"sacrifice": "trickster.commander_back"})
 
 
 def epilogue(id, text, requires, forbids=(), paragraphs=()):
@@ -965,7 +983,7 @@ EPILOGUE_PARAGRAPHS = (
       requires=(E + "drezen.katair_grave",)),
     p('''{n}The first spring, the Commander walked the road to Iz beside her, as asked and answered. It was ash most of the way, and green in places, and at the old meeting-ground of the elders she stopped and wept for a long time, and then set up a table and began, immediately, to argue with the local priests.{/n}''',
       requires=(E + "drezen.road_promised",)),
-    p('''{n}Regnard's plain sword hung on the first wall of the new temple at Iz. Every child who asked was told that its owner had wanted to change so badly that he learned to fight in a week.{/n}''',
+    p('''{n}Regnard's plain sword hung on the first wall of the new temple at Iz. Every child who asked was told that its owner had wanted to change so badly that he practised with it every night for years, alone, and then used it.{/n}''',
       requires=(E + "regnard_swords",)),
     p('''{n}There was always a lamp in her east window, wherever she was living. Lann saw it once, from the road, and did not mention it to anyone, and was seen afterwards on that road rather more often than his errands required.{/n}''',
       requires=(E + "drezen.lann_answered",)),
@@ -981,12 +999,12 @@ epilogue("together", '''{n}Eliandra, who had given almost her entire life over t
 {n}Some mornings she was in Drezen. Some mornings the Commander was on the road with her, in the ash and the new green. Every morning she asked one question, and never the same one twice, and the Commander was never once allowed to give the same answer.{/n}''',
          requires=(COMMITTED,), forbids=(CLOSED,), paragraphs=EPILOGUE_PARAGRAPHS)
 
-epilogue("late", '''{n}Her letter from the fords stayed in the Commander's coat through Threshold. The day after the war ended, the Commander wrote back: either, both, bring them all, ask me every morning.{/n}
+epilogue("late", '''{n}Her letter from the fords stayed in the Commander's coat through Threshold, as promised, with its answer owed. The day after the war ended, the Commander wrote it: either, both, bring them all, ask me every morning.{/n}
 {n}She came to Drezen a month later with Odden, the girl with the sling, and a mule that bit everyone. She said she had not asked a third time, as she had promised, and that she had not stopped hoping either, as she had also promised, and that she hoped the Commander appreciated how difficult it had been to keep both. Then she gave the rest of her life to Sarkoris, as she had meant to all along, and to the Commander, which she had not.{/n}''',
          requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED), paragraphs=EPILOGUE_PARAGRAPHS)
 
-epilogue("unasked", '''{n}The war moved faster than the stargazers' carts, and the question she had carried from the star-heart was never asked on any road. She asked it after Threshold instead, at the Commander's door in Drezen, with the hood of her travelling cloak thrown back and the dust of Sarkoris on her boots: Drezen, or the road?{/n}
-{n}The Commander said either. She said that would do to begin with, and that she would ask again every morning, and she did.{/n}''',
+epilogue("unasked", '''{n}The war moved faster than the stargazers' carts, and the question she had carried away from the star-heart was never asked on any road. The stargazers went to Drezen, and then into Sarkoris, and Eliandra gave herself to its revival, one ruined town at a time.{/n}
+{n}After Threshold she came once to the Commander's door, with the hood of her travelling cloak thrown back and the dust of Sarkoris on her boots, and stood there with a question in her face. What was asked, and what was answered, neither of them ever told anyone.{/n}''',
          requires=(LEAVE,), forbids=(COMMITTED, DECLINED, CLOSED), paragraphs=EPILOGUE_PARAGRAPHS)
 
 epilogue("own_offering", '''{n}The stargazers took the road still bound by their high priestess's vow, and she carried it as far as the fords. There, in the spring after Threshold, under the open stars and with no one to see it, she gave her Lady back the strength she had been given at thirteen, and asked for nothing in return, and was let go.{/n}
@@ -996,6 +1014,10 @@ epilogue("own_offering", '''{n}The stargazers took the road still bound by their
 epilogue("vowed", '''{n}Eliandra, who had given almost her entire life over to duty, devoted herself to the revival of the former lands of Sarkoris. The temples of Pulura and the old Sarkorian gods opened their doors again, and their priests went out to heal the wounds of the people and the land.{/n}
 {n}She remained the strongest of her Lady's priestesses to the end of her life, and she remained her Lady's alone. Once, near the end of it, a young stargazer asked her whether she had ever regretted her vow. She said that someone had asked her, once, what her Lady took in return, and that she had thought about the question for a great many years afterwards, and had never quite finished.{/n}''',
          requires=(STARTED,), forbids=(LEAVE, NO_LEAVE, CLOSED))
+
+epilogue("declined", '''{n}Eliandra led the stargazers to the fords and beyond, into what was left of Sarkoris, and gave herself to its revival. She had asked once, on the first mile, and had been answered with a demand she could not meet; she had asked again from the fords, and been answered with nothing. She did not ask a third time. She had said she would not.{/n}
+{n}She was an ordinary priestess now, or near enough, and a busy one. When travellers from Drezen came through her temples she asked after the Commander, briefly and exactly, the way she took an evening's reading, and wrote the answers down.{/n}''',
+         requires=(DECLINED,), forbids=(COMMITTED, CLOSED, E + "letter_kept"))
 
 epilogue("closed", '''{n}Eliandra led the last of the stargazers out of Pulura's Fall and into what was left of Sarkoris, and gave the rest of her life to its revival. Temples of Pulura opened their doors again in the ash, and in each of them, at the evening reading, the name of the Commander who had knelt at her basin was spoken among the names of those who had helped her people when no one else knew they existed.{/n}
 {n}Pulura's children remembered, as she had promised. So did she.{/n}''',
