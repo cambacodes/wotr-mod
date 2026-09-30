@@ -5,13 +5,17 @@ Canon: Camellia asks at camp to "turn her blood to a good cause" (Camelia/Cue_01
 Soana made Orso: "I forced the spirit to serve good by linking our lives together" (SoanaAfterBear/Cue_0015 396b1d46);
 the brand and the clay knot are one binding (SoanaBear/Cue_0016, Cue_0023). Her creed: "a true protector is the one who
 sacrifices themselves" (SoanaAfterBear/Cue_0012 353da9f2); "I serve the forest spirits. I don't serve you." (Cue_0029).
-In Chapter 5 the Wintersun beasts fight demons on the roads (KTC_WintersunHelp/Cue_0048 3c616e0b). The Trickster's dice
-turn a one into a twenty (TricksterKnowledgeWorldTier2Feature 8b6fe337). She is an old dwarf woman who looks carved from
-driftwood (SoanaBeforeBear/Cue_0001): proud, bitter, blunt, never grateful, and she names her own price.
+In Chapter 5 the Wintersun beasts fight demons on the roads (KTC_WintersunHelp/Cue_0048 3c616e0b). She is an old dwarf
+woman who looks carved from driftwood (SoanaBeforeBear/Cue_0001): proud, bitter, blunt, never grateful, and she names her
+own price.
+
+The missed window (polish b9c): no mythic power turns a die. The Commander's die is loaded, lead behind the one, and is
+pledged openly as a cheat's luck; her spirits take offerings (the Cue_0015 binding is hers), and Soana, not the die,
+feeds that pledge to her beasts at her bowl. They stand on it, paid in the Commander's small misfortunes and salt.
 
 Three states: the handover (Camellia is taken at her word before the kill), killed (the knot read in the other
 direction, a guardian's life for hers; the return is tested at her grave and committed on her terms), and the missed
-Chapter 3 window (a die planted in her bowl, paid for in Chapter 5, and a short courtship of its own).
+Chapter 3 window (a loaded die pledged in her bowl, paid for in Chapter 5, and a short courtship of its own).
 """
 from story_format import c, n, p, reaction, scene
 
@@ -286,20 +290,20 @@ inline("soana.trickster.handover.winter_portion", "The spirits' portion, again",
 # --- State 3, the missed window: crooked luck (F13) ---------------------------------------------------------------------
 
 inline("soana.trickster.missed.dice_bowl", "An offering", 3,
-    '[Drop a die into her offering bowl] "For your spirits. They look like they could use the luck."', [
-    n("start", "Soana", '''{n}The die rattles in the bone bowl and stops on a one. She looks at it, then at you. When she looks back, it shows a twenty.{/n}
-"Spirits take what is offered. They do not say thank you, and neither do I."
-{n}She does not take it out of the bowl. She does not touch it at all.{/n}''',
+    '[Drop your loaded die into her offering bowl] "For your spirits. It\'s weighted. It only ever lies in my favour."', [
+    n("start", "Soana", '''{n}The die rattles in the bone bowl and stops twenty up. She tips the bowl and lets it roll again: twenty. Again: twenty. She fishes it out between two fingers, weighs it, and presses her thumbnail to the face with the single pip, where the lead is.{/n}
+"Weighted. A cheat's luck, poured in lead, every throw you ever meant to win." {n}She drops it back into the bowl.{/n} "The spirits like a liar who says so. Spirits take what is offered. They do not say thank you, and neither do I."
+{n}After that she does not touch it at all.{/n}''',
         c('[Leave it where it landed]', flags=(DICE,)))],
     requires=("trickster", "soana.after_quest"), forbids=(*LOSS, CLOSED, DICE), RequiresAny=DEFENDER,
     EntryMythic="PlayerIsTrickster")
 
 inline("soana.trickster.missed.crooked_luck", "Crooked luck", 5,
     '[Look at the die in her bowl] "Still twenty up, shaman? I hear your beasts don\'t stay down."', [
-    n("start", "Soana", '''{n}A she-bear lies across the cave mouth with her belly opened by a demon's claws. As you come near she gets up, shakes herself and pads into the trees toward the road, bleeding as she goes.{/n}
-"That is the third time she has done that. Your die has been in my bowl since the snow. My beasts go out against the demons on the road and they do not stay down. I did not ask for that, bloody hunter."''',
+    n("start", "Soana", '''{n}A she-bear lies across the cave mouth with her belly opened by a demon's claws. Soana kneels by her head with the bone bowl, and salt, and a smear of her own blood on the rim, and says something to the trees in a language that is mostly breath. The bear gets up, shakes herself and pads into the trees toward the road, bleeding as she goes.{/n}
+"That is the third time she has done that. Your die has been in my bowl since the snow, and every night I have fed what is in it to the spirits, because an offering left unspent goes sour. My beasts go out against the demons on the road and they do not stay down. I did not ask for that, bloody hunter."''',
         c("Continue", "price")),
-    n("price", "Soana", '''"The spirits have been feeding my beasts on your luck, and luck is thin fare. They will go on eating it for as long as that die sits in my bowl, and it is your luck they eat, hunter, not mine. Every time a bear of mine gets up on the road, something of yours falls down: a girth snaps, a letter goes astray, a sword turns in your hand at the wrong moment. Small things. Every one of them paid to a beast that is still standing."
+    n("price", "Soana", '''"You pledged your luck, and the spirits took you at your pledge. They have been feeding my beasts on it, and luck is thin fare. They will go on eating it for as long as that die sits in my bowl, and it is your luck they eat, hunter, not mine. Every time a bear of mine gets up on the road, something of yours falls down: a girth snaps, a letter goes astray, a sword turns in your hand at the wrong moment. Small things. Every one of them paid to a beast that is still standing."
 "And send a cart of salt, so they have something besides your luck to chew. Leave the die, or take it and let them lie down."''',
         c('[Leave the die in her bowl] "Let them eat my luck."', crusade=("Materials", -50),
           flags=(LUCK_KEPT, CATCHUP, STARTED, "soana.trickster.cost.luck_fed")),
@@ -309,9 +313,10 @@ inline("soana.trickster.missed.crooked_luck", "Crooked luck", 5,
     TricksterDevice=True, TricksterState="missed")
 
 inline("soana.trickster.missed.late_luck", "Crooked luck, thrown late", 5,
-    '[Throw your special die at her feet] "Rolled a one. Watch it turn into a twenty."', [
-    n("start", "Soana", '''{n}The die stops on a one, then shows a twenty. Outside, a she-bear that has been dying across the cave mouth all morning gets up on three legs and limps toward the road.{/n}
-"You do not put a thing like that in front of my beasts without paying for it, hunter. They will go out on your luck now whether I send them or not, and they will come back hungry."''',
+    '[Throw your loaded die at her feet] "Weighted. It never rolls a one. Give it to your spirits."', [
+    n("start", "Soana", '''{n}The die skips across the cave floor and stops at her feet, twenty up. She does not pick it up at once. She looks at it, then out at the cave mouth, where a she-bear has been dying all morning, and then at you.{/n}
+{n}Then she takes it, weighs it, finds the lead with her thumbnail, and drops it into the bone bowl with salt and a smear of her own blood. She talks to the trees under her breath for a long time. Outside, the she-bear gets up on three legs and limps toward the road.{/n}
+"You do not throw a pledge like that in front of my beasts without paying for it, hunter. The spirits heard it land. They will send my beasts out on your luck now whether I want them to or not, and they will come back hungry."''',
         c("Continue", "price")),
     n("price", "Soana", '''"They will eat your luck now, not mine: every time a beast of mine gets up on the road, something of yours falls down. And because you threw it at my feet instead of offering it, they will be hungrier than they would have been. Two carts of salt, so they do not eat you to the bone. The die stays with me. You threw it; you do not get it back."''',
         c('[Leave the die where it fell] "Salt, and the die. Let them eat."', crusade=("Materials", -100),
@@ -357,7 +362,7 @@ BOWL_THRESHOLD = '''{n}She lets you undo her in turn: the belt of knotted cord, 
 {n}She kisses you with her whole small, heavy body behind it, and bites. When you gasp she laughs, low in her chest.{/n}
 "Soft. I thought so." {n}She bites again, harder, where it will show tomorrow.{/n}
 {n}Outside, the she-bear lies down across the cave mouth to keep the night off. Soana pushes you back into the furs, climbs over you with her knees sunk in the pelts on either side, and her hand closes on your hip like a root closing on a stone.{/n}'''
-BOWL_MORNING = '''{n}Grey light at the cave mouth, and the she-bear's place across it empty. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty. She keeps frowning at it.{/n}
+BOWL_MORNING = '''{n}Grey light at the cave mouth, and the she-bear's place across it empty. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty, because that is what lead does. She keeps frowning at it anyway.{/n}
 "The she-bear went out before dawn. She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves."'''
 
 inline("soana.trickster.missed.bowl", "The thing in her bowl", 5, '"You said you had been thinking."', [
@@ -487,7 +492,7 @@ ALIVE_PARAGRAPHS = (
     p("Some winters the spirits came to the Commander's door instead, wherever it was, and stood in the frost till dawn. The "
       "Commander learned to keep a knife by the threshold, and a rag, and to expect a letter from Wintersun a week later "
       "calling them stupid.", requires=("soana.trickster.cost.portion_shared",)),
-    p("She kept a die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
+    p("She kept a loaded die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
       requires=(DICE,), forbids=(LUCK_REFUSED,)),
 )
 ALIVE_ENDINGS = ("kept_life", "chosen_visits", "familiar_company", "sacrifice", "beyond_the_forest")
@@ -515,7 +520,7 @@ def integrate(payload):
     rel.setdefault("UnavailableOverrides", {}).update(RELATIONSHIP_PATCH["UnavailableOverrides"])
     rel["TricksterAccess"] = {k: dict(x) for k, x in RELATIONSHIP_PATCH["TricksterAccess"].items()}
     rel["Guidance"] += (" On the Trickster path, a Soana handed to Camellia may be taken at Camellia's word instead; a Soana "
-                        "who died may be held to her own; and one whose visits were missed may find a die in her bowl.")
+                        "who died may be held to her own; and one whose visits were missed may be offered a loaded die for her bowl.")
     payload.setdefault("Presences", {}).update({k: dict(x) for k, x in PRESENCES.items()})
     items = payload.setdefault("RemovableItems", [])
     if MEDALLION not in items:
