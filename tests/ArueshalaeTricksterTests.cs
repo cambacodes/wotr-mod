@@ -138,6 +138,26 @@ internal static class ArueshalaeTricksterTests
         check(vow.Has(P + "declined") && !vow.Has("arueshalae.closed") && !Avail(starving, Later(story, vow, 24)),
             "Trk_Arueshalae_DeadDeclined: the vow is not a soft decline that ends the diagnosis.");
 
+        // --- Polish batch 9: no mythic power lifts the death. The lore lowers a DC; the gift is prepared in life ------
+        check(Ch(starving, "treat", 0).Next == "work" && Ch(starving, "treat", 1).Next == "work"
+              && Ch(starving, "work", 0).Check?.Skill == "SkillLoreReligion" && Ch(starving, "work", 0).Check!.DC < 22
+              && Ch(starving, "wake", 0).Check!.DC == 22,
+            "Trk_Arueshalae_NoPowerLift: the lore path revives without a check, or does not lower the DC.");
+        check(!starving.Nodes.Any(n => n.Text.Contains("negative condition")), "Trk_Arueshalae_NoPowerLift: death is still read as a negative condition.");
+        var insurance = S(P + "insurance");
+        var aliveGift = Later(story, World(story, 3, "", "trickster", "trickster.ever"), 30);
+        check(Avail(insurance, aliveGift), "Trk_Arueshalae_Insurance: the gift cannot be asked for in life.");
+        var holding = First(insurance, aliveGift, "reason", 0);
+        check(holding.Has(P + "gift_held") && !Avail(insurance, Later(story, holding, 30)), "Trk_Arueshalae_Insurance: the gift is not kept.");
+        check(!Avail(insurance, dead), "Trk_Arueshalae_Insurance: the gift is asked of a corpse.");
+        var gifted = Later(story, World(story, 3, "", "trickster", "trickster.ever", P + "gift_held", "arueshalae_dead", "arueshalae_dead.latched", "revive.arueshalae.available"), 30);
+        var giftChoices = starving.Nodes.Single(n => n.Id == "start").Choices.Where(ch => Rules.Match(ch.Requires, ch.Forbids, gifted)).ToList();
+        check(giftChoices.Count(ch => ch.Next == "thread") == 1 && !giftChoices.Any(ch => ch.Next == "treat" || ch.Next == "wake")
+              && starving.Nodes.Single(n => n.Id == "thread").Choices.All(ch => ch.Check == null && ch.Set.Contains(P + "cost.gift_torn")),
+            "Trk_Arueshalae_Gift: the prepared thread is not the sure road, or it costs nothing.");
+        var threaded = First(starving, gifted, "plea", 0);
+        check(threaded.Has(P + "returned") && threaded.Has(P + "cost.gift_torn"), "Trk_Arueshalae_Gift: the thread does not return her.");
+
         // --- Aftertaste / Terms / TermsRefusal / TermsAgain --------------------------------------------------------
         var aftertaste = S(P + "returned.aftertaste");
         var returned3 = Later(story, World(story, 3, "", "trickster.ever", P + "returned", P + "cost.fed_on_you"), 30);
