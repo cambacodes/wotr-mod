@@ -388,7 +388,7 @@ s("arsinoe_hours_of_her_own", "When her work is finished", '"Have you time for o
 {n}She answers before you have quite finished speaking, then laughs at herself.{/n}
 "I have been sufficiently composed for one evening. You may know that I was hoping you would ask."
 {n}She takes a step nearer. The book presses lightly against her side as she lifts her free hand toward yours.{/n}
-"May I kiss you before I go?"''',
+"I intend to kiss you before I go. You may object now."''',
       c('[Kiss her.]', "kiss"),
       c('"Hold my hand a moment. I would like that tonight."', "hand")),
     n("kiss", "Narrator", '''{n}She comes close enough that you feel the warmth of her before her lips touch yours. The first kiss is brief. When you stay near, she smiles and kisses you again, less cautiously.{/n}
@@ -405,7 +405,7 @@ s("arsinoe_hours_of_her_own", "When her work is finished", '"Have you time for o
 "I would enjoy another walk. Or something you would like to show me. I know rather more about your patience with my interests than I do about your own."''', c('[Promise another conversation.]', flags=("arsinoe.opening_kept",))),
     n("friend_end", "Arsinoe", '''"And thank you for coming."
 {n}She offers you the book, opened to the place where the traveler finally leaves the inn.{/n}
-"Borrow it. I shall ask whether you agreed with him about the next city. You need not invent a favorable answer to be invited again."
+"Borrow it. I shall ask whether you agreed with him about the next city. Disagree if you like. I usually do."
 {n}She waits while you find a safe place for it, then wishes you a good night and turns toward her own door.{/n}''', c('[Leave with the borrowed book.]', flags=("arsinoe.opening_kept",))),
     n("parting", "Arsinoe", '''"Next time, something of yours. A place, a story, an argument you have been saving. I should like to know what occupies you when nobody has come to ask for a decision."
 {n}She releases your hand reluctantly enough for you to notice.{/n}

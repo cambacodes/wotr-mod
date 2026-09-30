@@ -156,11 +156,11 @@ def epilogue(id, title, text, requires, forbids=(), paragraphs=()):
 
 
 epilogue("arsinoe.trickster.epilogue.bill_to_threshold", "Consumed in the course of its intended use",
-    '''{n}The soul cauldron of the Treasury of Abadar did not come back from Threshold. It burst at the rift with everything else that was meant to change the world, and the world changed.{/n}
+    '''{n}The soul cauldron Arsinoe had leased to the Commander did not come back from Threshold. It burst at the rift with everything else that was meant to change the world, and the world changed. Absalom never did rule on whether the stone had been the Treasury's. It no longer mattered to anyone but the lessee, who owed for it either way.{/n}
 {n}Arsinoe entered it in the temple ledger as "leased property, consumed in the course of its intended use". Then she drew up the bill, addressed it to Threshold, attention of the Commander, and sent it by the ordinary post. It came back unopened, bearing a seal nobody in Drezen could identify. She filed it with evident satisfaction. To a priest of Abadar, an unpaid account is simply a relationship that has not yet ended.{/n}''',
     ("trickster.ever", LIEN, "arsinoe.siphon_burst"), paragraphs=COLLATERAL)
 epilogue("arsinoe.trickster.epilogue.pot_returned", "Returned at the end of the world",
-    '''{n}The soul cauldron came back from Threshold whole, which surprised everyone except Arsinoe. She had it crated for Absalom under temple seal, with a note in the lease's margin in her smallest, neatest hand: "Returned at the end of the world, as agreed. Rent in arrears: considerable."{/n}
+    '''{n}The soul cauldron came back from Threshold whole, which surprised everyone except Arsinoe. She locked it in the temple strongroom with the gold-wax tag still on the cradle, and wrote in the lease's margin in her smallest, neatest hand: "Returned at the end of the world, as agreed. Title: unproven, pending Absalom. Rent in arrears: considerable."{/n}
 {n}The Commander is still paying it. Arsinoe has never once suggested a discount.{/n}''',
     ("trickster.ever", LIEN), ("arsinoe.siphon_burst",), paragraphs=COLLATERAL)
 epilogue("arsinoe.trickster.epilogue.foreclosure", "A lien on one Worldwound, slightly used",

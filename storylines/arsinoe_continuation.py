@@ -171,7 +171,7 @@ She turns the cost calculation toward you.
     n("private_objection", "Arsinoe", '''"That I can understand. I came here to be useful. You cannot cross a courtyard without someone deciding how to make use of you."
 {n}She strikes your title from the notice.{/n}
 "I still want other company sometimes. People who are neither buying a scroll nor asking me to officiate. I am quite capable of being lonely in a place where everyone knows where to find me."
-Her admission is matter-of-fact, without an invitation to repair it by yourself.
+She says it the way she would report a leak: a fact, to be dealt with.
 "Will you come to an evening where you are one of the players, and I am one of the people who arranged it? Or would you prefer that we keep this first gathering small enough to know everyone we invite? Either is possible. I would rather choose one honestly than spend the evening regretting the other."''',
       c('"Let us settle the size and the price together."', "terms")),
     n("price_objection", "Arsinoe", '''"They may. And I do not want to pretend that a low price is no price."
@@ -325,12 +325,12 @@ She smiles, a little ruefully.
     n("alone", "Arsinoe", '''"Good. Then let us choose something before I decide it needs three lamps and a printed announcement."
 {n}She puts the account away and rests her hands on the table.{/n}
 "I want to hear you disagree with a story. Or watch you make a clever move and pretend not to be pleased with yourself. I have learned that I enjoy both."
-The words are lightly spoken, but she does not hide their personal meaning in a proposal for another gathering.
-"I am used to making plans for a place. It is easier than admitting that I want a particular person to come back on an ordinary day. You need not make that into a promise about the rest of your life. Another ordinary day will do."
+She says it lightly, and then does not smile, so that you will know she meant it.
+"I am used to making plans for a place. A place does not refuse. You might. So: come back on an ordinary day, Commander, and let me have you to myself."
 {n}She names an evening when her business can close at its usual hour.{/n}''',
       c('"Then I will come for that evening."', flags=("arsinoe.private_hour_invited",))),
     n("invitation", "Arsinoe", '''{n}Arsinoe considers the distinction, then inclines her head.{/n}
-"Very well. I want another evening with you. I want to stop being responsible for whether everybody in the room has a good time. I would like there to be only two people in it, both capable of saying what they want."
+"Very well. I want another evening with you. I want to stop being responsible for whether everybody in the room has a good time. Two people, one table, and neither of us a host."
 {n}A customer passes outside. She lets him continue toward the market without turning the invitation into business.{/n}
 "I also want to finish a story without being interrupted by a hammer. Or a courier. Or my own excellent ideas. I am willing to tolerate some interruption from you."
 Her smile returns, warmer now.
@@ -382,13 +382,12 @@ Her tone is dry, but there is no retreat from the affection in what she has said
 "I would like you to return when you can. I would like to have something to tell you when you do. That is as far as I need to look tonight."
 {n}Outside, the market's last voices have thinned to footsteps. Neither of you rises at once.{/n}''',
       c("Stay beside her a little longer.", "pace")),
-    n("pace", "Arsinoe", '''{n}Arsinoe lets the quiet settle without filling it with another plan. The choice of how to spend it remains between the two of you.{/n}''',
-      c('"May I kiss you?"', "kiss", requires=("arsinoe.courting",)),
+    n("pace", "Arsinoe", '''{n}Arsinoe lets the quiet settle. For once she has no plan for the next hour, and seems to enjoy the novelty.{/n}''',
+      c('[Kiss her.]', "kiss", requires=("arsinoe.courting",)),
       c("Offer her your hand and remain beside her.", "hand", requires=("arsinoe.courting",)),
       c('"I like finding our way slowly."', "slow", requires=("arsinoe.slow",)),
       c('"I am glad we made time for this, my friend."', "friend", requires=("arsinoe.friendship",))),
-    n("kiss", "Arsinoe", '''"Yes."
-{n}She says it without looking away. When you lean toward her, she meets you with one hand against your cheek. The kiss is unhurried, warm with the pleasure of an evening already shared. She draws back only far enough to look at you, then kisses you again of her own accord.{/n}
+    n("kiss", "Arsinoe", '''{n}She sees it coming and does not look away. When you lean toward her, she meets you with one hand against your cheek. The kiss is unhurried, warm with the pleasure of an evening already shared. She draws back only far enough to look at you, then kisses you again of her own accord.{/n}
 "I am pleased we kept this hour for ourselves."
 {n}Her hand slips from your cheek to your shoulder. You stay close, discovering the comfortable angle of two chairs that were never designed for this use. She laughs softly when one complains beneath you and pulls you toward the sturdier one.{/n}
 The rest of the hour needs little conversation. When it is time to leave, she retrieves her clasp but does not put it on until she has walked you to the door.

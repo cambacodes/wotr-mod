@@ -135,6 +135,25 @@ internal static class ArsinoeCampaignTests
                     check(endings.Count(e => e.Owner == "Epilogue" && Rules.Available(story, e, changed)) == 1,
                         "Arsinoe has conflicting exceptional endings: " + special);
                 }
+                // Sol INT/HOW (2026-09-30): the native Trickster punchline undoes the sacrifice (trickster.commander_back,
+                // GrandFinal Answer_0011 + Epilogues Cue_0564). A surviving Commander is never mourned, with or without Last Call.
+                foreach (string key in new[] { "ending.trickster", "ending.trickster_full", "ending.trickster_allplanes", "ending.trickster_allplanes_fw" })
+                foreach (bool lastCall in new[] { false, true })
+                {
+                    var back = Program.Copy(result);
+                    back.Flags.UnionWith(new[] { "sacrifice", "trickster.ever", key });
+                    if (lastCall) back.Flags.Add("lastcall.active");
+                    Rules.Complete(story, back);
+                    var open = endings.Where(e => e.Owner == "Epilogue" && Rules.Available(story, e, back)).ToArray();
+                    check(back.Has("trickster.commander_back") && open.Length == 1 && open[0].Id != "arsinoe_ending_sacrifice",
+                        "A Trickster back from the sacrifice is mourned, or has no single living ending: " + key + (lastCall ? " +Last Call" : ""));
+                }
+                var mourned = Program.Copy(result);
+                mourned.Flags.Add("sacrifice");
+                Rules.Complete(story, mourned);
+                var mourning = endings.Where(e => e.Owner == "Epilogue" && Rules.Available(story, e, mourned)).ToArray();
+                check(!mourned.Has("trickster.commander_back") && mourning.Length == 1 && mourning[0].Id == "arsinoe_ending_sacrifice",
+                    "A genuine sacrifice loses its mourning page.");
             }
             check(states.Any(s => !s.Has("arsinoe.night_shared")), "Campaign forces a night together.");
             if (pace != "arsinoe.friendship") check(states.Any(s => s.Has("arsinoe.night_shared")), "Romantic path cannot choose a night together.");

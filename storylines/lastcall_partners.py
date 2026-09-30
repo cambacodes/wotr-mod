@@ -182,7 +182,7 @@ AR = "arsinoe.trickster."
 partner("arsinoe", "arsinoe", "arsinoe.committed", "arsinoe.closed", "Paid in Full",
     '''Arsinoe of the First Vault closed the Commander's account on the morning after Threshold, in a counting-room that smelled of ink and scorched air. She checked every figure twice. Then she closed the book, put her hand flat on the cover, and said that it was the first ledger she had ever balanced that made her want to laugh.''',
     (
-        page_p('''The cauldron went back as leased. She was there when it did, with a receipt, and when the clerks of Abadar asked what the Worldwound was now worth as collateral, she told them "Slightly used," and would not be moved.''', requires=(called("arsinoe"),)),
+        page_p('''The cauldron went back across her counter as leased. She was there when it did, with a receipt, and when the clerks of Abadar asked what the Worldwound was now worth as collateral, she told them "Slightly used," and would not be moved.''', requires=(called("arsinoe"),)),
         page_p('''The Fool King's still had been pledged, a barrel baron and everything it guarded. The First Vault now holds a lien on the best-loved tap in Drezen. Arsinoe audits it in person on the first of every month, and has never once been seen to leave before the audit was complete, or sober.''', requires=(AR + "cost.collateral_still",)),
         page_p('''The Commander's word had been the collateral. Abadar's clerks entered it at face value, which amused them, and then found that it held, which did not.''', requires=(AR + "cost.collateral_word",)),
         page_p('''The First Vault does not recognize death as grounds for default. The account stayed open.''', requires=(ON_RECORD,)),

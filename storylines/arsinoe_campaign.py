@@ -131,9 +131,9 @@ s("arsinoe_two_doors", "The people on either side",
       c('"Let us work with what they can do."', "comparison")),
     n("comparison", "Arsinoe", '''{n}The alternatives take shape. Arsinoe can advance enough to let the crew finish the whole repair, accepting the trouble of collecting two modest debts. Or she can contribute a smaller gift toward the urgent work, leaving the upper paving for a later paid visit.{/n}
 {n}Both neighbors accept either arrangement. Orvena writes down what each includes, and what it leaves out. She refuses Senn's request to promise a completion date before she has lifted the rest of the stone.{/n}
-"I will choose with you," Arsinoe says quietly, while the others compare the two pages. "You have listened to more than my complaint about a wet foot. I should like your judgment now."
+"Well, Commander," Arsinoe says quietly, while the others compare the two pages. "You have listened to more than my complaint about a wet foot. Let me have your judgment."
 "And if we disagree?"
-"Then we shall have a smaller meeting afterward. I am willing to try either. I would not ask you to choose from a list containing an answer I secretly intend to punish."''',
+"I prefer the loan. A loan makes them keep their word, and a city runs on kept words. But I can afford either arrangement, and you have seen what each will leave unfinished."''',
       c('"Advance the repair cost. I will help you face the awkward conversations afterward."', "loan"),
       c('"Pay a neighbor\'s share and do the urgent work first. Leave the larger promise for later."', "staged")),
     n("loan", "Arsinoe", '''{n}Arsinoe names her maximum before the agreement is signed. Anything discovered beyond it will require another discussion. Orvena approves this more readily than the neighbors do.{/n}
@@ -264,33 +264,33 @@ s("arsinoe_the_first_cart", "What the repair leaves behind",
 "You have missed a date we agreed. I will hear a new proposal. I will not pretend the first one was merely a suggestion."
 {n}His new dates are smaller and closer together. She asks which delivery will pay the first. This time he gives a specific answer. Edris has paid her installment already, a fact Arsinoe carefully avoids using to humiliate him.{/n}
 {n}When he has gone, she opens her hand. Her fingers have left little crescents in her palm.{/n}
-"I was angry before he finished speaking. I wanted this to be the afternoon when the repair was finished and nobody needed another arrangement. He had scarcely opened his mouth before I resented the conversation."
+"I wanted to box his ears. Abadar frowns on it, and he is heavier than he looks. I wanted this to be the afternoon the account closed, and he came up the steps with his paper folded like an apology."
 {n}She looks up at you.{/n}
-"I heard him. I am still annoyed. You may tell me if you noticed something else."''',
-      c('"You gave him room to make a new promise. That mattered."', "heard"),
-      c('"You sounded as though you expected him to disappoint you before he spoke."', "expected")),
+"He will pay. I shall see to it. Tell me honestly, Commander: did I sound like a priestess just then, or a bailiff?"''',
+      c('"A priestess. You let him make a new promise."', "heard"),
+      c('"A bailiff. You had him convicted before he opened his mouth."', "expected")),
     n("staged", "Arsinoe", '''{n}The repaired drain is sound. The upper landing remains uneven, behind the narrower barrier Orvena described. Pedestrians can use the passage again; carts still take the longer road.{/n}
 {n}Edris brings the crew a jug of water. She has begun setting aside money for the second visit, but Senn will not give a date until another delivery has been paid for. He complains that the short route is still closed to his business.{/n}
 "It is open to your feet," Edris says. "Try delivering a smaller barrel."
 {n}Orvena intervenes before that becomes a discussion of each other's customers. She leaves them with a written price that will remain valid for a stated period, then gathers her tools.{/n}
 {n}Arsinoe watches a woman lead two laden companions carefully past the barrier.{/n}
-"This was the arrangement I accepted. I find myself wanting to apologize for the unfinished part. If I begin paying whenever I feel that way, our small gift will become a very different thing."
+"This is what I paid for. I keep wanting to pay for the rest, which is exactly how a gift becomes a habit and a habit becomes a tithe nobody agreed to."
 {n}She turns to you.{/n}
 "How did it look from where you stood?"''',
       c('"People can use a safe passage again. Let that be an improvement."', "heard"),
-      c('"You wanted the whole job finished. You chose a limit you find difficult."', "expected")),
-    n("heard", "Arsinoe", '''"Yes. I should allow the afternoon to contain something besides the part I would improve."
+      c('"You wanted the whole job done. You are sulking at a limit you set yourself."', "expected")),
+    n("heard", "Arsinoe", '''"Yes. Even a dry step deserves a moment's admiration before I begin on the landing."
 {n}She looks back at the dry tread. A child being led through by an adult hops over it, expecting the familiar splash, and looks disappointed when none comes.{/n}
 "There. We have ruined someone's entertainment."
 {n}Her smile returns. She waits for the family to pass before moving closer to you.{/n}
-"I wanted you here for more than an opinion on masonry. I do like being admired. It is pleasant, and I have never understood the virtue of pretending otherwise. But I would like to be known when I am difficult too."
+"I wanted you here for more than an opinion on masonry. I do like being admired. It is pleasant, and I have never understood the virtue of pretending otherwise. But I should like you to keep coming when I am difficult as well. I am difficult rather often."
 {n}She brushes dust from her cuff.{/n}
-"Perhaps with occasional admiration afterward. I would hate to discover that intimacy required giving it up entirely."''',
+"With admiration afterward, naturally. I have no intention of giving that up for anyone."''',
       c('"I can manage both."', "home")),
     n("expected", "Arsinoe", '''{n}Arsinoe is silent long enough that the sounds of the passage become conspicuous.{/n}
-"Yes. I wanted the reasonable choice to feel more comfortable than it does. I may have made other people carry some of that disappointment."
+"...Yes. That is unkind, and it is also accurate. I was ready to be disappointed in him, and I made him pay for my wet stocking as well as his debt."
 {n}She looks toward the cooper's door, then back at you.{/n}
-"I asked you because I hoped you would answer. That does not make the answer immediately pleasant. Give me a moment before you decide I regret asking."
+"I asked for that. I dislike it. Walk with me until I have finished disliking it."
 {n}You walk to the lower end of the passage together. By the time you reach it, she has stopped brushing at a mark on her cuff that disappeared several steps earlier.{/n}
 "I do want to go on being asked to supper after I have behaved foolishly," she says. "I am discovering that this is a rather personal ambition."
 "You have not lost your invitation."
@@ -299,7 +299,7 @@ s("arsinoe_the_first_cart", "What the repair leaves behind",
     n("home", "Arsinoe", '''{n}At her door, Arsinoe stops to free a length of thread caught in the fastening of her cloak. You wait while she pulls it loose. The small delay seems to settle the last of the day's irritation.{/n}
 "Come another evening. I have something I would like to tell you without a broken wall listening."
 {n}She gives the invitation plainly, then smiles at the expression it produces.{/n}
-"You need not prepare a defense. I have no estimate and no witnesses. I want to speak about us. If you would rather not, say so when you come. I should still prefer your answer to a week of ingenious guesses."
+"No estimate, no witnesses, no Senn. I mean to talk about you and me, and I intend to enjoy it. Come prepared to be asked things."
 {n}She names a time after closing. You agree before she turns inside.{/n}''',
       c('"I will come."', flags=("arsinoe.repair_seen",))),
 ], "arsinoe_a_stone_in_hand", delay=72)
@@ -312,43 +312,45 @@ s("arsinoe_what_she_asks", "A question after closing",
 {n}She closes the outer door and sits near you. There are drinks within reach, but she does not busy herself pouring them.{/n}
 "I have enjoyed these visits. I have also caught myself imagining the next one while I ought to be listening to somebody buying a scroll. That is a poor professional habit, and I suspect it will get worse."
 {n}She rests her hands loosely together.{/n}
-"I would like to know what you want from me now. We made an earlier choice about how to begin. I have not forgotten it. I would rather hear whether it still suits you than treat it as an answer to every future question."''',
+"So I shall ask you what I would ask anyone whose business I wanted. What are you offering me, Commander? On the roof you gave me one answer. Terms are revisited when the goods improve, and I believe they have."''',
       c('"I want a lasting courtship with you."', "lasting", forbids=("arsinoe.friendship",)),
       c('"I am ready to stop keeping our affection at a distance."', "lasting", requires=("arsinoe.slow",)),
       c('"I want affection, but I cannot promise a settled future."', "open", forbids=("arsinoe.friendship",)),
       c('"I still want to take our time. I am not ready to promise more."', "slow", requires=("arsinoe.slow",)),
       c('"Our friendship is what I want to keep."', "friend", requires=("arsinoe.friendship",)),
-      c('"I would rather end the courtship kindly than promise what I do not want."', "part", forbids=("arsinoe.friendship",)),
+      c('"I will not promise you more. Better to end it now, while it is still kind."', "part", forbids=("arsinoe.friendship",)),
       c('"I need time before I answer."', abort=True)),
     n("lasting", "Arsinoe", '''{n}Arsinoe's breath catches before she smiles. She takes a moment to enjoy your answer without immediately improving its terms.{/n}
-"Then I will tell you what I want. I want you to visit because you miss me. I want to be able to miss you without making it sound like a failure of discipline. I want us to speak when the shape of our lives changes."
-{n}She reaches for your hand, slowly enough to make the invitation clear.{/n}
-"I have made a life by leaving one place for another. I do not want to pretend I have become a woman who will never look at a road again. If I go somewhere, I want to discuss how we remain in each other's lives. I would expect the same of you."
-{n}Her fingers rest against yours.{/n}
-"Nor do I mean to make an unspoken claim on all your affection. If there are other people, I want to know what promises I am joining. Tell me what you can honestly offer."''',
-      c('"A lasting place in my life, with room for other freely chosen relationships."', "shared_terms"),
-      c('"I want to build this as my sole romantic partnership. I will honor my existing promises when I make that choice."', "sole_terms")),
-    n("shared_terms", "Arsinoe", '''"Then let us be precise enough to avoid being cruel by accident. I will not require you to discard someone else to prove that you want me. I will require you to make time that does not consist entirely of whatever remains after everyone else's invitations."
-{n}She gives your hand a small squeeze.{/n}
-"I shall make time for you as well. If either of us wants to change the arrangement, we speak. If somebody is being deceived, we do not call it a happy consequence of having so much affection."
+"Then here is what I want. I want you at my door because you missed me, not because you were passing. I want to miss you in return without calling it a failure of discipline. And I want to be told before you ride off to die somewhere. Not after."
+{n}She takes your hand across the table and keeps it.{/n}
+"I have made a life by leaving one city for the next. I will not pretend I have become a woman who never looks at a road. If I go, you will hear it from me first, at this table. I shall expect the same courtesy."
+{n}Her thumb moves once over your knuckles.{/n}
+"And you are the Commander. Half of Drezen would like an evening of you. I have audited too many houses with a second ledger in the drawer, so: are there others?"''',
+      c('"There are others. You would be one of them, and your evenings would be yours."', "shared_terms"),
+      c('"Only you. Whatever I owe elsewhere, I will settle honestly."', "sole_terms")),
+    n("shared_terms", "Arsinoe", '''"Then do not promise me an evening you have already promised elsewhere. I will not ask you to throw anyone out of your life to prove you want me in it. But I will not be the woman who gets the last hour, after the others have dined. When you come to me, you come to me."
+{n}She gives your hand a small, hard squeeze.{/n}
+"And no second ledger. If you lie to one of them, you have lied to me as well, and I bill for that."
 {n}Her composure softens into a smile.{/n}
-"That is what I can offer. It sounds rather severe until I add that I am already looking forward to the next evening, and would be disappointed if you ended this one early."
+"There. Severe terms. I am told I draft them well."
 {n}She moves her chair closer. The clasp at her wrist catches the light as she lifts her free hand to your cheek.{/n}
-"May I kiss you now? I have been admirably patient with my own explanation."''',
-      c('"Yes."', "promise_kiss"),
-      c('"Hold me instead. I want to be close to you."', "promise_hold")),
-    n("sole_terms", "Arsinoe", '''"Then do that honestly. I will not make another person disappear from your life by treating this room as though it contains the whole of it."
-{n}She keeps your hand while she considers her own answer.{/n}
-"I can choose that kind of partnership with you. I will not demand that you prove it by handing me a list of people you have disappointed. Tell the truth where a truth is owed, and tell me if your intention changes."
+"Now come here. I have talked for long enough, and you have been watching my mouth for most of it."''',
+      c('[Kiss her.]', "promise_kiss"),
+      c('[Draw her into your arms instead.]', "promise_hold")),
+    n("sole_terms", "Arsinoe", '''"Only me."
+{n}She turns the words over the way she turns a coin she suspects of being light.{/n}
+"That is a large promise from someone so many people want a piece of. I accept it. I shall also hold you to it, which you ought to have expected from a priestess of Abadar."
+{n}She keeps your hand while she considers the rest.{/n}
+"Settle what you owe elsewhere, and settle it honestly. I will not have my happiness built on somebody else being lied to. That sort of foundation ends with water under the step."
 {n}Her smile comes slowly.{/n}
-"I find that I have become much more interested in what happens after we have finished defining it. That may be a good sign. I should like to kiss you. Or be held, if that is what you would prefer tonight."
+"And now I have finished drafting. I should like to kiss you. I should also like to be held. You may decide the order."
 {n}She moves her chair nearer, leaving you enough room to turn toward her without the table between you.{/n}''',
       c('"Kiss her."', "sole_kiss"),
       c('"Draw close and hold her."', "sole_hold")),
     n("promise_kiss", "Narrator", '''{n}Arsinoe meets you without haste. Her hand rests along your cheek; when you draw back, she follows for one brief kiss more. She looks pleased enough to laugh at herself.{/n}
 "There. A very satisfactory beginning to a difficult promise."
 {n}You remain close while the drinks go untouched. Later she remembers them and pours, then discovers that she has given you her preferred cup. She considers asking for it back before deciding that you are worth the sacrifice.{/n}
-{n}The evening continues with smaller questions. When do you like to wake? What makes a room feel occupied by someone you want there? Arsinoe dislikes sleeping beneath a window that cannot be opened. She admits this as though it might be the most troublesome condition of all.{/n}''',
+{n}The evening continues with smaller questions. When do you like to wake? Which side of a bed do you take? Do you snore? She will not accept your answer without a witness. Arsinoe dislikes sleeping beneath a window that cannot be opened. She admits this as though it might be the most troublesome clause of all.{/n}''',
       c('"Stay until it is time to wish her good night."', flags=("arsinoe.committed", "arsinoe.campaign_lover", "arsinoe.shared_terms", "arsinoe.future_spoken"))),
     n("promise_hold", "Narrator", '''{n}Arsinoe leans into your embrace and rests there. At first she keeps one hand against your arm, as though deciding how much weight to let you take. Then her breath eases and the question seems to settle itself.{/n}
 "This too," she says. "I want evenings like this too."
@@ -359,36 +361,36 @@ s("arsinoe_what_she_asks", "A question after closing",
 "I should have asked sooner. No, that is untrue. I am glad we had the other evenings. I merely wish to have had this one as well."
 {n}She laughs at the impossibility and kisses you again. Later, when you sit together, she tells you something quite ordinary about her room: the window sticks in damp weather, and she prefers to sleep with it open. It is a small thing to learn after a large promise. You find yourself wanting to remember it.{/n}
 {n}At the door she touches your cheek once more before letting you go.{/n}''',
-      c('"Leave with the promise you both chose."', flags=("arsinoe.committed", "arsinoe.campaign_lover", "arsinoe.sole_intention", "arsinoe.future_spoken"))),
+      c('"Leave with her promise, and yours."', flags=("arsinoe.committed", "arsinoe.campaign_lover", "arsinoe.sole_intention", "arsinoe.future_spoken"))),
     n("sole_hold", "Narrator", '''{n}She comes into your embrace willingly. The first few moments are quiet. Then she notices the carved face watching from the window and begins to laugh against you.{/n}
 "I shall turn it around. Later. I am comfortable."
-{n}You remain together until the lamp needs adjusting. Arsinoe does it with one hand, reluctant to surrender the closeness for so small a task. There is no expectation that the evening must go farther to make the promise count.{/n}
+{n}You remain together until the lamp needs adjusting. Arsinoe does it with one hand, unwilling to surrender you for so small a task, and complains that the lamp was designed by a man who had never held anyone.{/n}
 {n}When you finally rise, she asks you to come again soon. Her voice is composed; her hand, holding yours at the door, is less willing to behave sensibly.{/n}''',
       c('"Promise another visit and wish her good night."', flags=("arsinoe.committed", "arsinoe.campaign_lover", "arsinoe.sole_intention", "arsinoe.future_spoken"))),
     n("open", "Arsinoe", '''"I can enjoy affection without pretending that we have settled the rest of our lives. I cannot enjoy being kept hopeful by an answer you have already decided never to give."
 {n}She watches you while you assure her that uncertainty is what you mean. Then she nods.{/n}
-"Very well. Let us keep seeing each other because we choose it. If that stops being enough for either of us, we say so. I would rather lose a pleasant arrangement than make it unpleasant by refusing to notice."
+"Very well. A running account, then, settled one evening at a time, with no note on the future. I have lent on worse terms. But if you ever mean to close it, you will tell me so to my face. I will not be the last woman in Drezen to hear it."
 {n}She pours the drinks at last and hands you one.{/n}
 "Stay tonight for the company. We have spent a great deal of it discussing a future we agreed not to promise. I should like to enjoy the part that is actually here."
 {n}You talk until the hour grows late. She listens when you speak about a place you would like to see, then names one of her own. Neither destination becomes an appointment.{/n}''',
-      c('"Keep the affection you can honestly offer."', flags=("arsinoe.campaign_lover", "arsinoe.open_future", "arsinoe.future_spoken"))),
-    n("slow", "Arsinoe", '''"Then we shall take our time. I asked because I wanted your answer, not because I have decided the answer is overdue."
+      c('"Stay for the evening."', flags=("arsinoe.campaign_lover", "arsinoe.open_future", "arsinoe.future_spoken"))),
+    n("slow", "Arsinoe", '''"Then we take our time. I serve the god of cities, Commander. I know how long it takes to build anything worth living in."
 {n}She pours for you and settles back, allowing the space between the chairs to remain as it is.{/n}
-"I am still interested. I also enjoy the evenings we have actually kept. If I find myself spending all of them impatient for a different one, I shall tell you. I would prefer you to hear that from me than discover it by becoming very good at reading a silence."
+"Do not mistake patience for indifference. If I tire of waiting, you will hear about it, loudly, very probably in front of a customer."
 {n}The conversation moves to her room and the things she has brought from other places. You ask about a small brass weight on the shelf. It belonged to a set she bought because she liked the case; the case broke almost immediately. She keeps the weight because it holds a page open very well.{/n}
 "There. An object that became useful after disappointing me. I should like to prevent you from drawing any conclusions about our evening from it."
 {n}You laugh together. The question has been answered, and there is still time to enjoy the company.{/n}''',
-      c('"Keep seeing each other at the pace you chose."', flags=("arsinoe.campaign_slow", "arsinoe.future_spoken"))),
-    n("friend", "Arsinoe", '''"Then we agree. I wanted to ask because people can make a friendship strangely difficult by behaving as though it is a question they failed to answer. I have enjoyed ours."
+      c('"Keep seeing each other, slowly."', flags=("arsinoe.campaign_slow", "arsinoe.future_spoken"))),
+    n("friend", "Arsinoe", '''"Then we agree. Good. A friend who knows the long way round a flooded stair is rarer in this city than a lover, and a great deal less trouble."
 {n}She pours for you, then settles into her chair with visible ease.{/n}
 "I shall still expect you to notice when I am becoming insufferable. You have had practice now. And I should like to be invited to things you enjoy, even if I am likely to complain about the chairs."
 {n}You talk about the repaired passage. Arsinoe soon abandons its practical merits for a description of Senn trying to appear knowledgeable while Orvena measured his wall. You supply his expression; she objects that you have made him too dignified.{/n}
 {n}The evening runs comfortably past the time she intended to stop. At the door she asks you to come again before the next broken drain provides an excuse.{/n}''',
       c('"Keep the friendship."', flags=("arsinoe.campaign_friend", "arsinoe.future_spoken"))),
     n("part", "Arsinoe", '''{n}Arsinoe draws her hands back into her lap. She looks disappointed, and does not disguise it by immediately assuring you that the answer has made everything easier.{/n}
-"Thank you for telling me. I would have preferred another answer. I shall need a little time before I can be gracious about how fortunate we are to understand each other."
+"Thank you for telling me to my face. I would have preferred another answer. I shall be gracious about it eventually. Not tonight."
 {n}She stands when you do. At the door she stops, as though deciding whether to add something, then speaks without looking away.{/n}
-"I enjoyed the evenings. I will not call them foolish because we have reached this one. But do let me decide when I want casual company again. I would rather not be asked to make the goodbye comfortable for both of us at once."
+"I enjoyed the evenings. I will not call them foolish because of this one. But do not come by next week to see whether I am well. When I want company again, I shall send for it."
 {n}You leave her with the room she had prepared. She closes the door gently after you.{/n}''',
       c('"Say goodbye."', flags=("arsinoe.closed", "arsinoe.parted", "arsinoe.future_spoken"))),
 ], "arsinoe_the_first_cart")
@@ -425,13 +427,13 @@ s("arsinoe_before_the_road", "Something that travels well",
 "You have traveled before. I know. I am having difficulty letting this visit end."
 {n}She stands with you a moment longer.{/n}
 "Come back if you can. I have work, company, and opinions enough to keep myself occupied. I shall still miss you. I see no reason to make one of those statements contradict the other."
-{n}You say goodbye with the closeness you have chosen together. She remains at the door until you turn the corner, then goes inside to finish her interrupted work.{/n}''',
+{n}You say goodbye at her door, and she makes it last. She remains at the door until you turn the corner, then goes inside to finish her interrupted work.{/n}''',
       c('"Leave with the cup."', flags=("arsinoe.departure_kept", "arsinoe.travel_cup"))),
     n("memory_parting", "Arsinoe", '''{n}Arsinoe accompanies you to the door. She begins to remind you of something practical, considers it, and lets the sentence go unfinished.{/n}
 "You know how to travel. I know how to remain here. We shall both have to do the things we know while wishing the circumstances were different."
 {n}She smiles at the dissatisfaction on your face.{/n}
 "Yes. It is a poor consolation. I would prefer another evening as well."
-{n}You say goodbye in the manner the two of you have chosen. When you begin to leave, she calls after you.{/n}
+{n}You say goodbye on her step. When you begin to leave, she calls after you.{/n}
 "Find something you like, even there. You may tell me about it when you can."
 {n}She waits until you turn the corner before closing the door.{/n}''',
       c('"Leave with her memory of Absalom."', flags=("arsinoe.departure_kept", "arsinoe.travel_memory"))),
@@ -450,15 +452,13 @@ s("arsinoe_where_she_stays", "The road she has not taken",
       c('"Is it the work you want, or the chance to begin again?"', "begin"),
       c('"What would you miss here?"', "miss"),
       c('"You asked me to return when I could. I wanted to find you here."', "departure", requires=("arsinoe.departure_kept",))),
-    n("departure", "Arsinoe", '''"And here I am. I have not arranged a farewell behind your back."
-{n}She answers gently, but without treating your expectation as a command.{/n}
-"I remember asking you to come back. I also remember saying that I had a life to keep while you were away. This invitation arrived in that life. I am showing it to you because you belong in the conversation."
+    n("departure", "Arsinoe", '''"And here I am, with a letter I have not answered. I did not slip off in the night. I should have had to leave the shop to Neral, and she would sell my stock at a loss out of spite."
 {n}She rests a hand against the dry stone at the side of the passage.{/n}
-"I do not want us to discover that a promise to return has become an instruction never to move. There may be times when I leave and you remain. I would want you to have something better to do than measure how faithfully I had kept you waiting."
-{n}She looks at you again.{/n}
-"Tell me what you want. I shall tell you what I want. We need not agree before either of us is allowed to speak."''',
+"You asked me to be here, and I was. I have also been living, and this arrived while I was. A promise to come home is a fine thing, Commander. It is not a lease on me. If one day I go and you stay, I shall expect you to find something better to do than count the days."
+{n}She looks at you again, and some of the briskness goes out of her.{/n}
+"Now ask me what tempts me about it. I have been wanting someone to ask."''',
       c('"Then tell me what attracts you to the invitation."', "begin")),
-    n("begin", "Arsinoe", '''"Both. I know how to arrive somewhere, examine what is lacking, and begin making myself useful. There is pleasure in it, beyond the duty. People remember the first person who repaired something they had stopped expecting to work."
+    n("begin", "Arsinoe", '''"Both. When the barony in the Stolen Lands grew strong enough to stand without me, I felt I had to go where Abadar's blessing was needed more. I have always trusted that feeling. I know how to arrive somewhere, examine what is lacking, and begin making myself useful. There is pleasure in it, beyond the duty. People remember the first person who repaired something they had stopped expecting to work."
 {n}She looks up the passage.{/n}
 "Remaining is less flattering. A good drain disappears beneath people's feet. They bring you the next complaint. You discover whether you like the place when it no longer congratulates you for being there."
 {n}Her smile is a little embarrassed.{/n}
@@ -469,7 +469,7 @@ s("arsinoe_where_she_stays", "The road she has not taken",
     n("miss", "Arsinoe", '''"The people. The view from a particular window. Neral's refusal to admire an idea before she knows who will carry the chairs."
 {n}She smiles as she names them.{/n}
 "You. In ways that are not conveniently replaced by having important work. I would miss knowing that an ordinary day might include your arrival."
-{n}The answer costs her less composure than it once might have. She lets you hear it without immediately asking for reassurance.{/n}
+{n}She says it plainly, the way she names a price she will not haggle.{/n}
 "I would also miss the little face by my window. I could pack it, of course. I have packed plenty of things I hoped would make a strange room feel like mine. Sometimes they did. Sometimes I simply had a familiar cup in an unfamiliar silence."
 {n}She turns toward the market again.{/n}
 "I think I want to remain, at least for the life we can actually see ahead. But I would like to take journeys that do not require abandoning one city to earn the next. A visit. A holiday. Such a shockingly modest use of a road."''',
@@ -482,11 +482,11 @@ s("arsinoe_where_she_stays", "The road she has not taken",
 "I am going to remain," she says. "I wanted to see whether saying it made the road seem to close. It does not."
 {n}She walks the rest of the way with an ease that has little to do with the repaired paving.{/n}''',
       c('"Keep the possibility of a journey together."', flags=("arsinoe.staying_chosen", "arsinoe.future_journey"))),
-    n("home", "Arsinoe", '''"I do. A room I arrange because I intend to enjoy it, without asking whether that is a sufficient justification for taking up the space."
+    n("home", "Arsinoe", '''"I do. A room arranged because I enjoy it, not because it can be packed in a morning."
 {n}She considers the idea as you walk.{/n}
-"I should like you to feel welcome there. I do not mean that you must move your life into my room. I mean that I want there to be a place where your arrival can be a pleasure before it becomes an occasion."
+"You will be welcome in it. Not the Commander, with a retinue and a crisis at the door. You, with muddy boots, which I shall make you take off."
 {n}She has someone in mind for the distant temple work, an acquaintance who has been looking for a new appointment. She will write an introduction and let them discover whether they suit each other.{/n}
-"Then I shall answer the first letter. I am remaining. I have work here, and I like my life here, and apparently I needed to hear myself say the second part without disguising it as the first."
+"Then I shall answer the first letter. I am remaining. I have work here, and I like my life here. Praise Abadar, I have said it aloud and the roof is still on."
 {n}At the market she stops to examine a plain window latch. It would fit the troublesome one in her room. She buys it before she can turn the purchase into another decision about the rest of her life.{/n}''',
       c('"Walk back with her and the new latch."', flags=("arsinoe.staying_chosen", "arsinoe.future_home"))),
 ], "arsinoe_what_she_asks", delay=72, chapters=(5,))
@@ -498,13 +498,13 @@ s("arsinoe_the_window_opens", "An evening she intends to keep",
 {n}Arsinoe has finished her work. She leads you to her room, where the window is open and the little stone face stands safely inside its recess. The air carries the smell of supper from another house.{/n}
 "The latch works now. I hired someone who understood it instead of giving the matter another evening of my valuable attention. I am trying to remember the principle for other occasions."
 {n}She sets a clean cushion on the wider chair. There is room beside her if you choose it, and another chair close enough for easy conversation.{/n}
-"I have been asked whether I mean to stay because of the Commander. I gave an answer far too long for the question. Next time I shall say that I am staying because I have chosen to, and allow people to be disappointed by the lack of a simpler explanation."
+"Half the market has asked whether I stay because of the Commander. I told them I stay because Drezen's accounts are a disgrace and somebody must put them in order. That is true. It is not the whole truth."
 {n}She looks at you with unmistakable warmth.{/n}
 "You are among my reasons. I hope you enjoy being one of them."''',
       c('"I would like a quiet evening with my friend."', "friend", requires=("arsinoe.campaign_friend",)),
       c('"Sit with her. You have kept an evening without needing to hurry it."', "slow", requires=("arsinoe.campaign_slow",)),
       c('"Sit close to her. Let the evening take its time."', "near", requires=("arsinoe.campaign_lover",)),
-      c('"I want to spend the night with you, if you want that too."', "night", requires=("arsinoe.campaign_lover",)),
+      c('"Then let me stay the night."', "night", requires=("arsinoe.campaign_lover",)),
       c('"I must postpone our evening."', abort=True)),
     n("near", "Arsinoe", '''{n}Arsinoe makes room for you and settles against your side. For a while you watch the light change on the opposite wall. She points out a repaired shutter, catches herself beginning an account of the repair, and asks what you have wanted to tell her instead.{/n}
 {n}You talk about something small that stayed with you during the day. She asks a question, then another. When you ask about hers, she admits that she spent an unreasonable amount of time choosing the cushion.{/n}
@@ -528,7 +528,7 @@ s("arsinoe_the_window_opens", "An evening she intends to keep",
     n("slow", "Arsinoe", '''{n}Arsinoe sits beside the open window and asks about your day. You tell her something you have been meaning to say, and find yourself adding another detail because she has asked the right question.{/n}
 {n}Later she tells you about the letter she wrote. She had expected refusing the distant appointment to feel like an ending. Instead, it has left her wanting to arrange things in the room she intends to keep. She asks your opinion of a shelf, and accepts your disagreement without immediately defending the wall against it.{/n}
 "I shall think about it. A remarkable concession, if you knew how much thought I had already given the matter."
-{n}You remain until the light fades. At the door she smiles, openly pleased with an evening that has not required either of you to pretend the affection is further along than it is.{/n}
+{n}You remain until the light fades. At the door she smiles, openly pleased, and straightens your collar as if she had some right to it.{/n}
 "Come again. We have not exhausted the subjects on which you are wrong about my furniture."
 {n}She waits for your answer, then laughs and lets you go.{/n}''',
       c('"Agree to another evening."', flags=("arsinoe.slow_developed", "arsinoe.last_evening_kept"))),
@@ -536,66 +536,68 @@ s("arsinoe_the_window_opens", "An evening she intends to keep",
 {n}You sit beside the window while she pours. The conversation begins with the letter and wanders through matters neither of you planned to discuss. Arsinoe tells you an unflattering story about a purchase she made in another city. You ask whether she has ever been persuaded by an honest description.{/n}
 "Frequently. Those make poorer stories. I am selecting for your entertainment."
 {n}When the light begins to fade, she admits that she has been worried about remaining somewhere after the novelty of being useful has passed. You remind her of the people who will happily find work for her. She throws a folded cloth at you, missing deliberately enough to preserve her dignity.{/n}
-{n}At the door she asks you to return before you acquire another important reason to do so. There is affection in the request, and no hidden condition waiting to turn it into a different kind of invitation.{/n}''',
+{n}At the door she asks you to return before you acquire another important reason to do so. "Friends," she says, "do not need an agenda. Only a free evening and tolerable wine."{/n}''',
       c('"Agree to visit your friend again."', flags=("arsinoe.friendship_developed", "arsinoe.last_evening_kept"))),
 ], "arsinoe_where_she_stays", chapters=(5,))
 
 
 def ending(id, title, text, requires, forbids=(), owner="Epilogue"):
+    # A Trickster whose sacrifice the native punchline undid (trickster.commander_back) is alive: the living endings
+    # ignore "sacrifice" for them, and the mourning page forbids commander_back (Sol INT, 2026-09-30).
+    extra = dict(ForbidOverrides={"sacrifice": "trickster.commander_back"}) if "sacrifice" in forbids else {}
     SCENES.append(scene(id, title, owner, 1, "",
         [n("end", "Narrator", text, portrait="Arsinoe")],
-        requires=requires, forbids=forbids, last=6, Relationship="arsinoe"))
+        requires=requires, forbids=forbids, last=6, Relationship="arsinoe", **extra))
 
 
 ORDINARY = ("arsinoe.closed", "swarm", "true_lich", "sacrifice", "ascended")
 ending("arsinoe_ending_kept", "A city with an open window", '''{n}Arsinoe remained in Drezen by choice. The work was plentiful, and she continued to disagree with those who assumed a priest of Abadar would be satisfied merely because a sum balanced. Some transactions were foolish at any price. Some improvements were worth making before anyone knew how to profit from them.{/n}
-{n}The Commander knew the room behind her working space, the little carved face, and the window Arsinoe preferred to leave open. There were invitations made with days to spare and visits that began with a knock when both happened to be free. Promises did not arrange those evenings for them. They arranged them, sometimes badly, and learned to say when they minded.{/n}
-{n}Arsinoe still looked up when someone described a city she had never seen. She wanted journeys, and a life that did not have to be packed away every time she took one. The Commander had heard that desire before making a place beside her. When roads were discussed, she expected to participate in choosing them.{/n}
+{n}The Commander knew the room behind her working space, the little carved face, and the window Arsinoe preferred to leave open. There were invitations made with days to spare and visits that began with a knock when both happened to be free. The war and its aftermath stole a good many evenings. Arsinoe entered each one in a small book by the bed, as owed, and never once collected.{/n}
+{n}Arsinoe still looked up when someone described a city she had never seen. She wanted journeys, and a life that did not have to be packed away every time she took one. Whenever a road was mentioned at supper, she had the maps out before anyone had finished the sentence.{/n}
 {n}The repaired passage became ordinary enough to go unnoticed. Arsinoe would occasionally pause on its third step and smile. When the Commander asked what had amused her, she sometimes answered with the whole story and sometimes with a kiss.{/n}''',
     ("arsinoe.committed", "arsinoe.campaign_developed"), ORDINARY)
-ending("arsinoe_ending_open", "The invitation she renewed", '''{n}Arsinoe and the Commander kept the affection they had chosen without turning it into a promise neither had made. An invitation could be accepted, postponed, or honestly refused. Arsinoe disliked a refusal less than a week spent preparing for someone who had never intended to come.{/n}
-{n}She remained in Drezen and made the room by the window increasingly her own. The Commander knew where to sit, which cup she preferred, and how quickly an innocent remark about a building could become an argument worth enjoying. Some visits ended at the door. Others lasted longer. She kept asking what they wanted, even after she had become good at guessing.{/n}
-{n}There were possibilities beyond the arrangement. Arsinoe did not pretend otherwise. For the time being, she liked the pleasure of hearing a familiar arrival and finding that she still wanted to open the door.{/n}''',
+ending("arsinoe_ending_open", "The invitation she renewed", '''{n}Arsinoe and the Commander kept each other's company without a contract, which she called the most expensive arrangement in Drezen and the only one she had never tried to renegotiate. An invitation could be accepted or put off. What she would not forgive was a week spent airing the good cushion for someone who had never meant to come.{/n}
+{n}She remained in Drezen and made the room by the window increasingly her own. The Commander knew where to sit, which cup she preferred, and how quickly an innocent remark about a building could become an argument worth enjoying. Some visits ended at the door. Others lasted until the shop opened late, and the queue outside drew its own conclusions.{/n}
+{n}Other cities still wrote to her, and she still read their letters with interest. For the time being, she liked hearing a familiar step on the repaired stair, and finding that she still wanted to open the door.{/n}''',
     ("arsinoe.open_future", "arsinoe.campaign_developed"), (*ORDINARY, "arsinoe.committed"))
-ending("arsinoe_ending_unfinished", "The evenings still to come", '''{n}Arsinoe and the Commander had chosen to keep seeing each other without promising a settled future. The campaign had left fewer opportunities than she wanted. She missed the company, and sometimes resented having to be reasonable about the reasons for another delay.{/n}
+ending("arsinoe_ending_unfinished", "The evenings still to come", '''{n}Arsinoe and the Commander had chosen to keep seeing each other without promising a settled future. The campaign had left fewer evenings than she wanted. She missed the company, said so, and was not gracious about the war's excuses.{/n}
 {n}One morning she began a note while waiting for a customer. She meant to offer an evening, but found herself describing something amusing that had happened in the street. By the time she reached the invitation, the page was nearly full.{/n}
 {n}Arsinoe read it over, crossed out an unnecessary apology for its length, and sent it. There were still things she wanted to hear from the Commander. She hoped the answer would include a day when they could sit together.{/n}''',
     ("arsinoe.open_future",), (*ORDINARY, "arsinoe.campaign_developed", "arsinoe.committed"))
-ending("arsinoe_ending_promised", "The promise before the next visit", '''{n}Arsinoe and the Commander had chosen a lasting courtship before the last campaign left them with arrangements still to make. She remembered the promise clearly. So, on difficult days, did the Commander. It did not provide a date for the next visit, but it gave the waiting a question they intended to answer together.{/n}
+ending("arsinoe_ending_promised", "The promise before the next visit", '''{n}Arsinoe and the Commander had chosen a lasting courtship before the last campaign left them with arrangements still to make. She remembered the promise clearly. So, on difficult days, did the Commander. It did not provide a date for the next visit, but it made the waiting a debt, and Arsinoe had never in her life let a debt go uncollected.{/n}
 {n}Arsinoe kept the small stone face by her window. Once, while dusting beneath it, she caught herself rehearsing what she would say when the Commander arrived. The conversation went exceptionally well in the empty room. She laughed, put the cloth away, and wrote a note that left room for an answer she had not supplied.{/n}
-{n}She wanted the next evening. She wanted the difficult conversations that would come after it, although she suspected she would occasionally need reminding of that ambition. For now she sent the invitation and went back to work, listening more closely than usual whenever someone approached.{/n}''',
+{n}She wanted the next evening, and the argument after it, and the one after that. For now she sent the invitation and went back to work, listening more closely than usual whenever someone came up the stair.{/n}''',
     ("arsinoe.committed", "arsinoe.campaign_lover"), (*ORDINARY, "arsinoe.campaign_developed"))
 ending("arsinoe_ending_friend_waiting", "A letter to a friend", '''{n}Arsinoe had enjoyed the Commander's friendship enough to want more of its ordinary visits. The campaign had not obliged her by providing all the time she requested. She complained about this in a letter, then supplied an account of the latest disagreement in the repaired passage.{/n}
 {n}She had work to do and decisions of her own still to make. It pleased her to have someone she wanted to tell about them. At the end of the letter she asked what had been occupying the Commander, adding that accounts of quite unimportant matters would be especially welcome.{/n}''',
     ("arsinoe.campaign_friend",), (*ORDINARY, "arsinoe.friendship_developed"))
 ending("arsinoe_ending_slow_waiting", "The question she left open", '''{n}Arsinoe had agreed to take her time with the Commander. The campaign made some of that patience harder than either had intended. She missed the evenings they had managed to keep, especially the pleasure of asking a question and listening as the answer became more interesting than she expected.{/n}
-{n}She wrote when she had something to say. Sometimes it was a small piece of news; sometimes she admitted that she would rather be talking in person. She did not make each invitation carry a demand for greater intimacy. She wanted another visit, and left the Commander room to want it too.{/n}''',
+{n}She wrote when she had something to say. Sometimes it was a small piece of news; sometimes she admitted that she would rather be talking in person. Every letter ended with an invitation and a complaint about the post, in that order.{/n}''',
     ("arsinoe.campaign_slow",), (*ORDINARY, "arsinoe.slow_developed"))
 ending("arsinoe_ending_friend", "A friend who knew the long way", '''{n}The Commander became someone Arsinoe could invite without finding an important reason first. She had friends in many places, but this one knew how she had acquired the skeptical stone face by her window and why she sometimes tested a perfectly dry step with unnecessary care.{/n}
 {n}Arsinoe enjoyed being able to tell an unflattering story about herself without having it treated as a surprising confession. She also enjoyed hearing the Commander's stories, especially the ones in which victory required less courage than admitting a mistake.{/n}
 {n}There were more afternoons to arrange, and more opinions to dispute. She looked forward to both.{/n}''',
     ("arsinoe.friendship_developed",), ORDINARY)
-ending("arsinoe_ending_slow", "Time they had chosen to take", '''{n}Arsinoe and the Commander had kept their affection at a pace they could honestly enjoy. There was warmth in the invitations, interest in the questions, and no promise that a later evening owed them an answer different from the one they had already given.{/n}
-{n}Arsinoe made a life in Drezen with work she valued and company she wanted to keep. The Commander had a place among those invitations. She sometimes found herself planning a visit before asking whether it was possible, then laughed and began with the question.{/n}
-{n}She still wanted to hear the answer. That was reason enough to send it.{/n}''',
+ending("arsinoe_ending_slow", "Time they had chosen to take", '''{n}Arsinoe and the Commander courted the way good cities are built: slowly, and with a great many arguments about the plans. There was warmth in the invitations, and she let the Commander choose the evening every second time, which in her was a remarkable concession.{/n}
+{n}Arsinoe made a life in Drezen with work she valued and company she wanted to keep. The Commander had a place among those invitations. She sometimes had a visit half planned before she had asked whether it was possible, and laughed, and sent the invitation anyway.{/n}''',
     ("arsinoe.slow_developed",), ORDINARY)
-ending("arsinoe_ending_parted", "The room after a goodbye", '''{n}Arsinoe let the courtship end. It took longer to stop expecting another private invitation than she would have liked, but she did not ask the Commander to supply one merely to make the disappointment easier.{/n}
-{n}The repaired passage remained useful. The little face remained by her window. Neither required her to pretend that every memory attached to them was pleasant, or that a pleasant memory made the goodbye a mistake.{/n}
-{n}In time she found herself wanting company for reasons that had nothing to do with proving she had recovered. She made an invitation of her own.{/n}''',
+ending("arsinoe_ending_parted", "The room after a goodbye", '''{n}Arsinoe let the courtship end. It took longer to stop expecting another private invitation than she would have liked. She did not send for one.{/n}
+{n}The repaired passage remained useful. The little face remained by her window, looking skeptical about the whole business.{/n}
+{n}In time she wanted company again, and sent for it, on her own terms and at her own table.{/n}''',
     ("arsinoe.parted",), ("swarm", "true_lich", "sacrifice", "ascended"))
 ending("arsinoe_ending_sacrifice", "The cup left on the table", '''{n}The Commander's sacrifice left Arsinoe with questions that could no longer be answered in the room where she had meant to ask them. She could understand the value of what had been won and still resent being expected to find that understanding sufficient.{/n}
 {n}She missed a particular arrival, a voice, the pleasure of explaining something and discovering that the Commander had noticed a detail she had missed. Her work continued. On some days it helped. On others she found herself setting out a second cup before remembering why there would be no visit.{/n}
 {n}Arsinoe did not throw the cup away. Eventually she used it for another guest, then felt foolish for crying while she washed it afterward.{/n}''',
-    ("arsinoe.campaign_lover", "sacrifice"), ("arsinoe.closed", "swarm", "true_lich", "ascended"))
-ending("arsinoe_ending_ascended", "An invitation on a different scale", '''{n}The Commander's ascension did not settle Arsinoe's future by enlarging it without her consent. She had chosen affection for a person she could speak to, disagree with, and ask to return. She remembered that choice without mistaking it for a vow to follow wherever power might lead.{/n}
+    ("arsinoe.campaign_lover", "sacrifice"), ("arsinoe.closed", "swarm", "true_lich", "ascended", "trickster.commander_back"))
+ending("arsinoe_ending_ascended", "An invitation on a different scale", '''{n}The Commander's ascension made a great many people very grand, and Arsinoe was not one of them. She had courted a person she could argue with over supper, not a power to be petitioned, and she said so to the first priest who suggested she ought to feel honored.{/n}
 {n}There was still a priest of Abadar with work to do, a city to live in, and a room whose window she preferred open. If the Commander could reach her across the distance that now separated their lives, there would be questions before there were promises.{/n}
 {n}She would want to know whether a visit was possible. She would also want to know whether the visitor still remembered how to spend an evening without improving the world.{/n}''',
     ("arsinoe.campaign_lover", "ascended"), ("arsinoe.closed", "swarm", "true_lich"))
-ending("arsinoe_ending_changed", "A history power did not preserve", '''{n}The Commander's transformation carried their life beyond the terms of Arsinoe's courtship. Earlier affection did not supply an answer to what had come afterward. Her willingness to serve a city, or to continue duties she believed her god required, could not be counted as a renewed romantic invitation.{/n}
-{n}There had been real evenings together. Remembering them could give the loss a shape. It could not make the woman who had chosen them agree to a different future without being asked.{/n}''',
+ending("arsinoe_ending_changed", "A history power did not preserve", '''{n}Whatever the Commander became, Arsinoe did not follow. She had lent her evenings to a living person, and a lich was not the same borrower. Abadar's law is plain on the point: a debt is owed to the name on the contract, and that name was dead.{/n}
+{n}There had been real evenings together. She kept the cup. She did not keep the door open.{/n}''',
     ("arsinoe.campaign_lover", "true_lich"))
-ending("arsinoe_ending_swarm", "A service that was never a vow", '''{n}Whatever duties kept Arsinoe at her work under the Swarm, they were not the answer she had given during an ordinary evening of courtship. Service did not renew intimacy. The Commander could possess the circumstances around her without thereby possessing her consent.{/n}
-{n}The affection that had once made another visit worth anticipating remained part of a different history. No remembered promise made the present arrangement its fulfillment.{/n}''',
+ending("arsinoe_ending_swarm", "A service that was never a vow", '''{n}Whatever duties kept Arsinoe at her work under the Swarm, she performed them the way a clerk counts coin for a thief: exactly, and without warmth.{/n}
+{n}The evenings she had once given the Commander belonged to someone who no longer came up her stair. She did not pretend otherwise, and she did not set out the second cup.{/n}''',
     ("arsinoe.campaign_lover", "swarm"), ("true_lich",))
 ending("arsinoe_ending_aeon", "A city outside their shared hours", '''{n}The rewritten world had no obligation to preserve the particular evenings in which Arsinoe and the Commander had learned to want each other's company. Their repair, their conversations, and the room they had known belonged to a history the change did not leave intact.{/n}
 {n}Arsinoe's life beyond it was her own. A different meeting might have become many things, but none could be claimed by reciting an invitation she had never made in that world.{/n}''',
