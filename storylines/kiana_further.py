@@ -240,7 +240,7 @@ s("unborrowed_evening", "What she asks of you", [
 "I can do that."
 "I believe you. You have listened to me here. That matters more than devising a perfect answer for someone we may not see again."
 {n}Her hand finds yours on the arm of the chair.{/n}
-"I will try not to make being loved require your becoming invisible."''', c('[Keep the distinction between defending her and speaking for her.]', "history")),
+"And if you ever do stand up in a room and tell it what I feel, I shall stand up after you and tell it what you feel. In detail. With gestures."''', c('[Keep the distinction between defending her and speaking for her.]', "history")),
     n("history", "Narrator", '''{n}She looks at your joined hands before speaking again.{/n}''',
       c('[Stay with the history that began by waiting.]', "waited", requires=("kiana.separated", "kiana.waited"), forbids=("kiana.affair", "kiana.bereaved", "seelah.elan_dead")),
       c('[Stay with the history that includes the undisclosed kiss.]', "affair", requires=("kiana.separated", "kiana.affair"), forbids=("kiana.bereaved", "seelah.elan_dead")),

@@ -266,7 +266,9 @@ STONE_PIVOT = (
     ('[Tell her everything] "All of it. Sunhammer, his price, and what I did about it."', "told_ransomed",
      dict(requires=(RANSOMED,), forbids=(Q3,))),
     ('[Tell her everything] "All of it. Sunhammer, his price, and what I did about it."', "told_late",
-     dict(requires=(Q3,))),
+     dict(requires=(Q3,), forbids=(RANSOMED,))),
+    ('[Tell her everything] "All of it. Sunhammer, his price, and what I did about it."', "told_ransomed_late",
+     dict(requires=(Q3, RANSOMED))),
 )
 
 
@@ -286,8 +288,16 @@ SCENES.append(scene("kiana.trickster.after.temple", "Behind the counter", "Kiana
         c("Continue", "ransomed_woke", requires=(SOUL_LOST, RANSOMED), forbids=(Q3,)),
         c("Continue", "dog", requires=(DOG,), forbids=(Q3,)),
         c("Continue", "ransomed_awake", requires=(RANSOMED,), forbids=(SOUL_LOST, Q3)),
-        c("Continue", "late", requires=(Q3,)),
-        c("Continue", "licence", requires=(H_BETROTHED,))),
+        c("Continue", "late", requires=(Q3,), forbids=(DOG, RANSOMED)),
+        c("Continue", "licence", requires=(H_BETROTHED,)),
+        c("Continue", "late_dog", requires=(Q3, DOG)),
+        c("Continue", "late_ransomed", requires=(Q3, RANSOMED), forbids=(DOG,))),
+    k("late_dog", '''{n}Kiana is at the back table with the dog asleep across her feet and a pile of get-well letters she is answering in a very bad temper. Seelah finished what she started: the stones came home, every one, and the ward behind the curtain is emptying bed by bed.{/n}
+"Seelah brought them all home. You brought the dog." {n}She scratches his ears; he groans.{/n} "I keep telling people the dog came first. Nobody believes me. I have started to find that funny."''',
+      c("Continue", "pivot")),
+    k("late_ransomed", '''{n}Kiana is at the back table, writing to the families on Arsinoe's list, one letter each. Everyone in the ward went home weeks ago, on your money. Then Seelah went to the shop on the square anyway, and the jeweller did not come out of it.{/n}
+"You paid him for all of us, and then Seelah killed him." {n}She blots a line.{/n} "Arsinoe says your favour died with him. She says it the way other people say a debt was forgiven, and then she looks at the ceiling for a long time."''',
+      c("Continue", "pivot")),
     k("robbed", '''{n}Kiana is sitting on the edge of a temple cot in a borrowed robe, with her wedding shoes on because nobody could find her others. She is waking properly this time: colour in her face, and a look in her eye that is going to cost somebody.{/n}
 "Arsinoe says only one stone came back from that apprentice. Mine." {n}She turns her wedding ring round and round on her finger.{/n} "Why only me? There's a boy out there who can't find his own ring. There's a dog. Commander, I want to know why only me."''',
       c("Continue", "pivot")),
@@ -324,6 +334,8 @@ SCENES.append(scene("kiana.trickster.after.temple", "Behind the counter", "Kiana
 "Then when he does, I want to be there. Somebody ought to laugh at him."''',
       c("Continue", "page")),
     k("told_late", '''"So you tricked a jeweller's boy, and Seelah did the rest the honest way." {n}She laughs, properly this time.{/n} "Between the two of you I don't know which one to write as the hero. I'll give Seelah the sword and you the good lines. She won't want them anyway."''',
+      c("Continue", "page")),
+    k("told_ransomed_late", '''"A thousand crowns and a favour, to a man who is dead now." {n}She repeats it slowly, the way you would repeat the price of a horse that died on the way home.{/n} "You bought us out of his cup, and Seelah went to his shop anyway, and I am glad she did. I shall put both in the play, and let the audience decide which one to cheer."''',
       c("Continue", "page")),
     k("spared", '''{n}She looks at you, and keeps looking.{/n}
 "That's kind." {n}A small, crooked smile.{/n} "It's also a speech, and I said no speeches. I'll let you off, once. It's been a very long month, and I've decided I'm owed a few things going my way."''',
