@@ -402806,7 +402806,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The camp is asleep when you take off your boots and go. You go alone, because thieves go alone, and because nobody you would bring would let you do this.{/n}\n{n}The cave is where the Queen said: a great wet mouth in the rock with a hole in its roof, and the rain coming through the hole in a grey column, straight down, as if the sky had been poured into a jug. Somewhere far off over the island, something very large is hunting. You can hear it now and then over the rain: a sound like a sail filling, and then nothing. The cave just stands there, empty.{/n}",
+          "Text": "{n}The camp is asleep when you take off your boots and go. You go alone. Whatever she finds beside the gift must smell of you and nobody else.{/n}\n{n}The cave is where the Queen said: a great wet mouth in the rock with a hole in its roof, and the rain coming through the hole in a grey column, straight down, as if the sky had been poured into a jug. Somewhere far off over the island, something very large is hunting. You can hear it now and then over the rain: a sound like a sail filling, and then nothing. The cave just stands there, empty.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -405281,7 +405281,7 @@
         {
           "Id": "why_takes",
           "Speaker": "Melazmera",
-          "Text": "\"You told me by your fire that everyone takes, and that you wanted to see what I would do with someone who did not.\" {n}She tilts her head, and the rock on it tilts.{/n} \"Now I know. I put him in my hoard. That is what I do with things.\"",
+          "Text": "\"You told me by your fire that everyone takes, and that you wanted to see what I would do with someone who did not.\" {n}She tilts her head, and the rock on it tilts.{/n} \"Now I know. I put {mf|him|her} in my hoard. That is what I do with things.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -406290,7 +406290,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}Melazmera kept her cave at the edge of the Wound after the war, when the Wound was a wound no longer and the rifts had gone cold. She liked the country. Nothing grew there, and nothing came there, and she could see anyone coming for a day in any direction, and eat them if she chose.{/n}\n{n}Her heap stayed forty-one stones and one seal, and the false treasure glittered at the mouth of the cave for any thief who wanted it. A great many thieves came, because the story went round. None of them ever came back. Every so often one of them was a crusader who had heard that the Knight Commander was in the habit of visiting, and thought the dragon might be soft. She was not.{/n}\n{n}The Commander visited when the Commander chose, and lay in the hollow of the heap, and was counted. She never once asked the Commander to stay, and she never once let the Commander leave without saying where the stone was. It was always in the same pocket.{/n}",
+          "Text": "{n}Melazmera kept her cave at the edge of the Wound after the war. She liked the country. Nothing grew there, and she could see anyone coming for a day in any direction, and eat them if she chose.{/n}\n{n}Her heap stayed forty-one stones and one seal, and the false treasure glittered at the mouth of the cave for any thief who wanted it. A great many thieves came, because the story went round. None of them ever came back. Every so often one of them was a crusader who had heard that the Knight Commander was in the habit of visiting, and thought the dragon might be soft. She was not.{/n}\n{n}The Commander visited when the Commander chose, and lay in the hollow of the heap, and was counted. She never once asked the Commander to stay, and she never once let the Commander leave without saying where the stone was. It was always in the same pocket.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -406303,6 +406303,22 @@
           ],
           "Portrait": "",
           "Paragraphs": [
+            {
+              "Text": "{n}When the Wound closed and the rifts went cold, nothing came up out of the ground any more, and she complained about it for a year, and then flew to the Midnight Isles and back every season to eat what the Abyss had to offer, and came home to her heap.{/n}",
+              "Requires": [
+                "ending.wound_closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The Wound did not close. The rifts along the northern edge stayed open, and things went on coming up out of them warm, and she went on eating them, and the pickets on the north road learned to sleep through the screaming.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "ending.wound_closed"
+              ],
+              "AnyGroups": []
+            },
             {
               "Text": "{n}The Knight Commander's orders went out under a new seal for the rest of the war and after it. The old one was on a dragon's claw, and every so often, on no particular day, a flat grey stone would arrive at the Commander's window with a smear of clay on one corner and the old seal pressed into the clay, sharp and clean, as if to say that it was still there, and still hers.{/n}",
               "Requires": [
@@ -406551,7 +406567,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}The little crown sat on the Commander's desk to the end of the war: a grey rock with a flake of mica on one side, that everyone who came into the room looked at and nobody asked about. The Commander never threw it away.{/n}\n{n}Melazmera hunted the edge of the Wound until the rifts went cold, and then she hunted what came out of them afterwards, and she did not come to the Commander's window. Once, years later, a traveller on the north road said he had seen a dragon lying on a heap of rocks in a crack in the ground, counting them aloud, and that she had stopped at forty-two and started again from the beginning, as if the number would not come out right.{/n}",
+          "Text": "{n}The little crown sat on the Commander's desk to the end of the war: a grey rock with a flake of mica on one side, that everyone who came into the room looked at and nobody asked about. The Commander never threw it away.{/n}\n{n}Melazmera hunted the edge of the Wound after the war, and she did not come to the Commander's window. Once, years later, a traveller on the north road said he had seen a dragon lying on a heap of rocks in a crack in the ground, counting them aloud, and that she had stopped at forty-two and started again from the beginning, as if the number would not come out right.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -407667,7 +407683,7 @@
         {
           "Id": "last",
           "Speaker": "Melazmera",
-          "Text": "{n}She considers that, and then she smiles, slowly, with all her teeth.{/n}\n\"Last,\" {n}she says.{/n} \"Yes. After everything else, when the war is over and I have eaten the hole in your world and everything that comes up out of it, I will go to the place with the boot on the door, and he will be old, and I will be exactly the same.\" {n}She sighs with pleasure.{/n} \"That is the nicest thing anyone has ever said to me.\"",
+          "Text": "{n}She considers that, and then she smiles, slowly, with all her teeth.{/n}\n\"Last,\" {n}she says.{/n} \"Yes. After everything else, when the war is over and I have eaten the hole in your world and everything that comes up out of it, I will go to the place with the boot on the door, and he will be old, and I will be exactly the same.\" {n}She sighs with pleasure.{/n} \"Let him grow old telling it. I want to hear the story from his own mouth, with all its lies in, before I eat him.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -407948,7 +407964,7 @@
         {
           "Id": "anyone",
           "Speaker": "Melazmera",
-          "Text": "\"To anyone,\" {n}she repeats.{/n} \"To get into *my* cave.\" {n}She puts down the last candle and looks at you in the dark.{/n} \"That is the nicest thing anyone has ever said about my cave. Everyone else wanted to get into it for my crown. You wanted to get into it for me.\" {n}She considers.{/n} \"And to put things in it. That is still very strange. I have not stopped finding it strange.\"",
+          "Text": "\"To anyone,\" {n}she repeats.{/n} \"To get into *my* cave.\" {n}She puts down the last candle and looks at you in the dark, and her eyes are the only light left.{/n} \"Then you are a liar and a thief, and you went into a dragon's cave on a puddle's word, and you did not even take the crown.\" {n}She licks tallow off her thumb.{/n} \"I am going to keep a very close watch on you.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -408309,7 +408325,7 @@
         {
           "Id": "lie",
           "Speaker": "Melazmera",
-          "Text": "{n}She opens both eyes, and looks at you, and then she laughs, low and long, until the roof trembles.{/n}\n\"That was a lie,\" {n}she says, pleased.{/n} \"I can taste lies. They taste of copper. You lied to me to make me happy.\" {n}She puts her head back down.{/n} \"Nobody has ever done that. They lie to me to stop me eating them. I am going to keep that lie. It is the second thing you have ever given me.\"",
+          "Text": "{n}She opens both eyes, and looks at you, and then she laughs, low and long, until the roof trembles.{/n}\n\"That was a lie,\" {n}she says, pleased.{/n} \"I can taste lies. They taste of copper. Everyone lies to me to stop me eating them. You lied to me so that I would be pleased.\" {n}She puts her head back down.{/n} \"I am going to keep that lie on the heap. It is the second thing you have ever given me, and the cheapest.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -408465,7 +408481,7 @@
         {
           "Id": "back",
           "Speaker": "Melazmera",
-          "Text": "{n}She pulls her hand back against her chest so fast that the window frame creaks, and for a heartbeat her fingers are claws and her eyes are all red, with no white in them at all.{/n}\n\"No.\" {n}She says it very softly.{/n} \"Things in my hoard do not leave. I told you on my island. I told you on my heap. You put it there, with your own hand, and now it is there.\"\n{n}Then, slowly, the claws are fingers again, and she looks at you with something like delight.{/n} \"You asked, though. You wanted it back and you *asked*. Nobody asks. They try to take. You are the strangest thief there has ever been.\"",
+          "Text": "{n}She pulls her hand back against her chest so fast that the window frame creaks, and for a heartbeat her fingers are claws and her eyes are all red, with no white in them at all.{/n}\n\"No.\" {n}She says it very softly.{/n} \"Things in my hoard do not leave. I told you on my island. You put it there, with your own hand, and now it is there.\"\n{n}Then, slowly, the claws are fingers again, and she looks at you with something like delight.{/n} \"You asked, though. You wanted it back and you *asked*, in my hearing, with my claw a foot from your throat.\" {n}She holds the ring up to the lamp.{/n} \"Ask again whenever you like. I enjoy saying no to you.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -409150,7 +409166,8 @@
       "Requires": [
         "trickster.ever",
         "melazmera.trickster.message",
-        "melazmera.committed"
+        "melazmera.committed",
+        "melazmera.trickster.heap_seen"
       ],
       "Forbids": [
         "melazmera.dead.latched",
@@ -409428,7 +409445,7 @@
         {
           "Id": "beside",
           "Speaker": "Melazmera",
-          "Text": "{n}You step into the column of rain. It is cold and heavy and it hits the top of your head like a flat hand. She opens one eye and looks at you standing in it, soaked in a breath, blinking.{/n}\n\"Nobody has ever stood in my rain before,\" {n}she says.{/n} \"It is supposed to be only mine.\" {n}She shuts the eye again.{/n} \"Stay there. I have not decided if I mind.\"",
+          "Text": "{n}You step into the column of rain. It is cold and heavy and it hits the top of your head like a flat hand. She opens one eye and looks at you standing in it, soaked in a breath, blinking.{/n}\n\"That is my rain,\" {n}she says.{/n} \"You are standing in it.\" {n}She shuts the eye again.{/n} \"Stay there. I have not decided if I mind.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -409672,7 +409689,7 @@
           "Choices": [
             {
               "Text": "\"What do you call a dragon who gives things away?\"",
-              "Next": "joke",
+              "Next": "riddle",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -409750,9 +409767,25 @@
           "Portrait": "Melazmera"
         },
         {
+          "Id": "riddle",
+          "Speaker": "Melazmera",
+          "Text": "\"I do not know.\" {n}She frowns at you, as if it were a riddle with a prize at the end and she meant to have the prize.{/n} \"A dragon who gives things away is not a dragon. So it is nothing. You call it nothing.\" {n}She folds her arms.{/n} \"That is not funny. What do you call it?\"",
+          "Choices": [
+            {
+              "Text": "\"A lizard. A very fat lizard.\"",
+              "Next": "joke",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Melazmera"
+        },
+        {
           "Id": "joke",
           "Speaker": "Melazmera",
-          "Text": "\"I do not know.\" {n}She waits. You tell her.{/n}\n{n}She does not laugh. She thinks about it with her whole face, frowning, as if it were a riddle with a prize at the end. Then she gets it, all at once, and she does not laugh then either: she looks at you with her mouth open, scandalised.{/n}\n\"That is not a joke,\" {n}she says.{/n} \"That is a *slander*.\" {n}And then she laughs, so hard she has to hold on to the arm of your chair, and four white scores appear in it that were not there before.{/n} \"Tell it again. Tell it to your soldiers. Tell it to the little man with the axe. I want everybody to know it and nobody to understand it.\"",
+          "Text": "{n}She stares at you with her mouth open. The fat lizard: the thing in the swamp's word for her, whined across a whole island for years.{/n}\n\"That is not a joke,\" {n}she says.{/n} \"That is a *slander*. That is the puddle's word.\" {n}And then she laughs, so hard she has to hold on to the arm of your chair, and four white scores appear in it that were not there before.{/n} \"Because I gave you a heart and a sack of drowned gold and my rain, and I *am* fat, and I am lying in your chair like a lizard on a warm rock. Oh, thief. Tell it to your soldiers. Tell it to the little man with the axe. If anybody tells it back to me, I will eat them.\"",
           "Choices": [
             {
               "Text": "Continue",

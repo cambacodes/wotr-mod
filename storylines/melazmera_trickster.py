@@ -205,7 +205,7 @@ def place(text, success, failure):
 
 
 SCENES.append(scene(M + "ch4.salt", "Salt the hoard", "Melazmera", 4, "", [
-    nar("start", '''{n}The camp is asleep when you take off your boots and go. You go alone, because thieves go alone, and because nobody you would bring would let you do this.{/n}
+    nar("start", '''{n}The camp is asleep when you take off your boots and go. You go alone. Whatever she finds beside the gift must smell of you and nobody else.{/n}
 {n}The cave is where the Queen said: a great wet mouth in the rock with a hole in its roof, and the rain coming through the hole in a grey column, straight down, as if the sky had been poured into a jug. Somewhere far off over the island, something very large is hunting. You can hear it now and then over the rain: a sound like a sail filling, and then nothing. The cave just stands there, empty.{/n}''',
         c("Continue", "seen", requires=(SEEN_THROUGH,)),
         c("Continue", "told", forbids=(SEEN_THROUGH,))),
@@ -545,7 +545,7 @@ SCENES.append(scene(M + "commit.stone", "What a thief takes", "Melazmera", 5, ""
         c("Continue", "why_meet", requires=(WHY_MEET,), forbids=(WHY_TAKES,)),
         c("Continue", "why_queen", requires=(WHY_QUEEN,), forbids=(WHY_TAKES, WHY_MEET)),
         c("Continue", "open", forbids=(WHY_TAKES, WHY_MEET, WHY_QUEEN))),
-    mz("why_takes", '''"You told me by your fire that everyone takes, and that you wanted to see what I would do with someone who did not." {n}She tilts her head, and the rock on it tilts.{/n} "Now I know. I put him in my hoard. That is what I do with things."''',
+    mz("why_takes", '''"You told me by your fire that everyone takes, and that you wanted to see what I would do with someone who did not." {n}She tilts her head, and the rock on it tilts.{/n} "Now I know. I put {mf|him|her} in my hoard. That is what I do with things."''',
         c("Continue", "open")),
     mz("why_meet", '''"You told me by your fire that you wanted to meet me and not over a corpse." {n}She tilts her head, and the rock on it tilts.{/n} "Well. You have met me, and nobody is a corpse, and you are sitting in my cave. That is further than anyone has ever got."''',
         c("Continue", "open")),
@@ -745,10 +745,12 @@ COMMON = (
 )
 
 SCENES.append(scene(M + "epilogue.together", "", "MelazmeraEpilogue", 6, "", [
-    nar("page", '''{n}Melazmera kept her cave at the edge of the Wound after the war, when the Wound was a wound no longer and the rifts had gone cold. She liked the country. Nothing grew there, and nothing came there, and she could see anyone coming for a day in any direction, and eat them if she chose.{/n}
+    nar("page", '''{n}Melazmera kept her cave at the edge of the Wound after the war. She liked the country. Nothing grew there, and she could see anyone coming for a day in any direction, and eat them if she chose.{/n}
 {n}Her heap stayed forty-one stones and one seal, and the false treasure glittered at the mouth of the cave for any thief who wanted it. A great many thieves came, because the story went round. None of them ever came back. Every so often one of them was a crusader who had heard that the Knight Commander was in the habit of visiting, and thought the dragon might be soft. She was not.{/n}
 {n}The Commander visited when the Commander chose, and lay in the hollow of the heap, and was counted. She never once asked the Commander to stay, and she never once let the Commander leave without saying where the stone was. It was always in the same pocket.{/n}''',
-        paragraphs=(*COMMON,
+        paragraphs=(p("{n}When the Wound closed and the rifts went cold, nothing came up out of the ground any more, and she complained about it for a year, and then flew to the Midnight Isles and back every season to eat what the Abyss had to offer, and came home to her heap.{/n}", requires=("ending.wound_closed",)),
+                    p("{n}The Wound did not close. The rifts along the northern edge stayed open, and things went on coming up out of them warm, and she went on eating them, and the pickets on the north road learned to sleep through the screaming.{/n}", forbids=("ending.wound_closed",)),
+                    *COMMON,
                     p("{n}The grey stone the size of a hen's egg lived in the Commander's pocket for the rest of the Commander's life. It was a sapphire from the crown of a drowned king, and it never once looked like anything but a boring rock, and it was never once cold.{/n}", requires=(STONE_KEPT,)),
                     p("{n}Greybor never took her coin again, though she offered it, several times, on the principle that a thing refused is a thing worth trying for. He said he had worked for worse clients. He said it at great length, to anyone who would listen, and he never once said who.{/n}", requires=(GREY_WARY,)),
                     p("{n}On the morning the Commander rode out to the last battle, there was a flat grey stone on the windowsill with four words scored into it: ONE PIECE. I COUNT.{/n}"),
@@ -766,7 +768,7 @@ tag(M + "epilogue.commit")
 
 SCENES.append(scene(M + "epilogue.declined", "", "MelazmeraEpilogue", 6, "", [
     nar("page", '''{n}The little crown sat on the Commander's desk to the end of the war: a grey rock with a flake of mica on one side, that everyone who came into the room looked at and nobody asked about. The Commander never threw it away.{/n}
-{n}Melazmera hunted the edge of the Wound until the rifts went cold, and then she hunted what came out of them afterwards, and she did not come to the Commander's window. Once, years later, a traveller on the north road said he had seen a dragon lying on a heap of rocks in a crack in the ground, counting them aloud, and that she had stopped at forty-two and started again from the beginning, as if the number would not come out right.{/n}''',
+{n}Melazmera hunted the edge of the Wound after the war, and she did not come to the Commander's window. Once, years later, a traveller on the north road said he had seen a dragon lying on a heap of rocks in a crack in the ground, counting them aloud, and that she had stopped at forty-two and started again from the beginning, as if the number would not come out right.{/n}''',
         paragraphs=COMMON)],
     requires=("trickster.ever", DECLINED), forbids=(COMMITTED, LEFT_FREE, CLOSED, DEAD, "sacrifice"), **SAC, **EP))
 tag(M + "epilogue.declined")

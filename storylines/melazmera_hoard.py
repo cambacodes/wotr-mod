@@ -181,7 +181,7 @@ visit(M + "beat.crew", "Salt", [
 {n}Then she hisses out a long breath, and the teeth go away.{/n} "Very well. He is in your hoard, and you are in mine, and so I suppose he is in mine too, the way a flea is in a dog." {n}She scowls.{/n} "I will not eat him. I will sit on the roof across the street from his drinking-house and look at him through the window every night until he dies of it."''',
         c("[Let her have that.]", flags=(CREW, CAPTAIN_SPARED))),
     mz("last", '''{n}She considers that, and then she smiles, slowly, with all her teeth.{/n}
-"Last," {n}she says.{/n} "Yes. After everything else, when the war is over and I have eaten the hole in your world and everything that comes up out of it, I will go to the place with the boot on the door, and he will be old, and I will be exactly the same." {n}She sighs with pleasure.{/n} "That is the nicest thing anyone has ever said to me."''',
+"Last," {n}she says.{/n} "Yes. After everything else, when the war is over and I have eaten the hole in your world and everything that comes up out of it, I will go to the place with the boot on the door, and he will be old, and I will be exactly the same." {n}She sighs with pleasure.{/n} "Let him grow old telling it. I want to hear the story from his own mouth, with all its lies in, before I eat him."''',
         c("Continue", flags=(CREW,))),
     mz("missed", '''"It got away from me." {n}She sounds aggrieved still.{/n} "Your sky-ship. Nothing gets away from me. I have been going over it and over it, every night: the clouds, the cliffs, the wind. It went down into the rocks where I do not fit, as if whoever was steering it knew exactly how big I am."
 "Who was steering it, thief? I want to know. I want to go and look at them."''',
@@ -218,7 +218,7 @@ visit(M + "beat.queen", "The thing in the swamp", [
         c("Continue", flags=(QUEEN,))),
     mz("rock", '''"A rock." {n}Her eyes light up like two coals blown on.{/n} "Yes. Send her a rock. Wrap it in something shiny. I will make it shine for you; I know how. She will wear it for a hundred years and tell everyone it is a crown, and everyone will see it is a rock, and nobody will tell her." {n}She sighs happily.{/n} "You are very cruel, thief. I did not know."''',
         c("Continue", flags=(QUEEN,))),
-    mz("anyone", '''"To anyone," {n}she repeats.{/n} "To get into *my* cave." {n}She puts down the last candle and looks at you in the dark.{/n} "That is the nicest thing anyone has ever said about my cave. Everyone else wanted to get into it for my crown. You wanted to get into it for me." {n}She considers.{/n} "And to put things in it. That is still very strange. I have not stopped finding it strange."''',
+    mz("anyone", '''"To anyone," {n}she repeats.{/n} "To get into *my* cave." {n}She puts down the last candle and looks at you in the dark, and her eyes are the only light left.{/n} "Then you are a liar and a thief, and you went into a dragon's cave on a puddle's word, and you did not even take the crown." {n}She licks tallow off her thumb.{/n} "I am going to keep a very close watch on you."''',
         c("Continue", flags=(QUEEN,)))],
     requires=(QUEEN_MET,), forbids=(QUEEN,))
 
@@ -273,7 +273,7 @@ visit(M + "beat.souls", "Even dead souls", [
     mz("no", '''"Where everyone's goes." {n}She snorts, and smoke curls up past the chimney.{/n} "To be weighed by a grey lady and sent to a place you did not choose. You would rather that than my heap." {n}She sounds more puzzled than hurt.{/n} "Very well. But I will be at the end of her line when you get there, thief, and I will watch you go past, and I will be very rude to her about it."''',
         c("Continue", flags=(SOULS, SOUL_REFUSED))),
     mz("lie", '''{n}She opens both eyes, and looks at you, and then she laughs, low and long, until the roof trembles.{/n}
-"That was a lie," {n}she says, pleased.{/n} "I can taste lies. They taste of copper. You lied to me to make me happy." {n}She puts her head back down.{/n} "Nobody has ever done that. They lie to me to stop me eating them. I am going to keep that lie. It is the second thing you have ever given me."''',
+"That was a lie," {n}she says, pleased.{/n} "I can taste lies. They taste of copper. Everyone lies to me to stop me eating them. You lied to me so that I would be pleased." {n}She puts her head back down.{/n} "I am going to keep that lie on the heap. It is the second thing you have ever given me, and the cheapest."''',
         c("Continue", flags=(SOULS, SOUL_LIED))),
     mz("later", '''"When the war is over." {n}She considers the Wound, glowing along the north like the cracks in a black loaf.{/n} "Your war will be over when you are at the bottom of that hole. You will be very busy. You will not remember to answer." {n}One eye rolls towards you.{/n} "I will remember for you. Dragons are good at waiting. We are the best in the world at it."''',
         c("Continue", flags=(SOULS,)))],
@@ -296,8 +296,8 @@ M."''',
 "I thought it was jewellery. It is a claw. You wore a claw on your hand and every time you pressed it into wax, somebody went and died on it somewhere." {n}Her eyes gleam.{/n} "And you gave it to me. You gave me your claw. Oh, thief. I did not know it was *that* kind of present."''',
         c("Continue", flags=(SEAL_LEFT,))),
     mz("back", '''{n}She pulls her hand back against her chest so fast that the window frame creaks, and for a heartbeat her fingers are claws and her eyes are all red, with no white in them at all.{/n}
-"No." {n}She says it very softly.{/n} "Things in my hoard do not leave. I told you on my island. I told you on my heap. You put it there, with your own hand, and now it is there."
-{n}Then, slowly, the claws are fingers again, and she looks at you with something like delight.{/n} "You asked, though. You wanted it back and you *asked*. Nobody asks. They try to take. You are the strangest thief there has ever been."''',
+"No." {n}She says it very softly.{/n} "Things in my hoard do not leave. I told you on my island. You put it there, with your own hand, and now it is there."
+{n}Then, slowly, the claws are fingers again, and she looks at you with something like delight.{/n} "You asked, though. You wanted it back and you *asked*, in my hearing, with my claw a foot from your throat." {n}She holds the ring up to the lamp.{/n} "Ask again whenever you like. I enjoy saying no to you."''',
         c("Continue", flags=(SEAL_ASKED,))),
     mz("keep", '''"Only for the clerks." {n}She considers the ring on her finger, and then you.{/n} "So the new one says what you tell it, and the old one says what I tell it." {n}She smiles, slowly.{/n} "I have been pressing it into every stone I send you. I have been pressing it into the goats before I eat them. I pressed it into a vrock on the Wound's edge. He did not like it."''',
         c("Continue", flags=(SEAL_LEFT,)))],
@@ -392,7 +392,7 @@ visit(M + "beat.war", "Not in anybody's lines", [
     mz("if", '''"Then I will come and get what is left and put it on the heap." {n}She does not even pause.{/n} "I told you that already. On the heap, in my cave, under my crown. I do not say things twice unless I want them to be true twice." {n}Her tail moves on the slates.{/n}
 "Do not make me do it, thief. I would do it. I would not like it. I would never forgive you, and I have a very long time not to forgive in."''',
         c("Continue", flags=(WAR,)))],
-    requires=(COMMITTED,), forbids=(WAR,), delay=36)
+    requires=(COMMITTED, HEAP), forbids=(WAR,), delay=36)
 
 
 # --- Chapter 4, on Colyphyr: the Queen asks, and the old cave by daylight. ------------------------------------------------
@@ -450,7 +450,7 @@ SCENES.append(scene(M + "ch4.old_hoard", "The cave with the hole in its roof", "
         c('"Show me the real treasure."', "heap"),
         c("[Step into the rain beside her.]", "beside")),
     mz("beside", '''{n}You step into the column of rain. It is cold and heavy and it hits the top of your head like a flat hand. She opens one eye and looks at you standing in it, soaked in a breath, blinking.{/n}
-"Nobody has ever stood in my rain before," {n}she says.{/n} "It is supposed to be only mine." {n}She shuts the eye again.{/n} "Stay there. I have not decided if I mind."''',
+"That is my rain," {n}she says.{/n} "You are standing in it." {n}She shuts the eye again.{/n} "Stay there. I have not decided if I mind."''',
         c("Continue", "heap")),
     mz("heap", '''{n}She takes you to the heap at the back and kneels by it, and begins to take stones off it, one at a time, and lay them on the floor in front of you in a row.{/n}
 "The eye of a statue from a temple that fell in the sea. A ruby that a lord in the Isles swallowed to keep it from his brother; I ate the lord. A lump of star." {n}She holds up something grey and pitted that is heavier than it should be; you can see it weigh down her hand.{/n} "It came down in the sea and a fisherman brought it up in his net, and I ate the net, and the fisherman, and then I had it."
@@ -494,7 +494,7 @@ visit(M + "beat.rain", "Rain over Drezen", [
 visit(M + "beat.joke", "The one who makes jokes", [
     nar("start", '''{n}She is sitting in your chair when you come in, with her feet up on your desk and one of your reports in her hand, upside down. She is not reading it. She is looking at the seal on it, the new one, with the expression of a woman who has found a hair in her soup.{/n}
 "Your soldiers say you are the one who makes jokes," {n}she says.{/n} "In the barracks. I listened at the window. They say the Knight Commander makes jokes in the worst places: on the walls, at the head of a charge, over a grave. They are all very frightened of you, and they laugh about it a great deal." {n}She puts the report down.{/n} "Tell me one."''',
-        c('"What do you call a dragon who gives things away?"', "joke"),
+        c('"What do you call a dragon who gives things away?"', "riddle"),
         c('"I\'m not the one who laughs. Other people do that."', "laughs")),
     mz("laughs", '''"Other people." {n}She tilts her head.{/n} "I do not laugh at jokes. I laugh when things are funny. A goat running the wrong way, into my mouth. A paladin who says *foul beast* and then touches my crown. The thing in the swamp." {n}She considers.{/n} "You are funny. You walked into my cave and left a thing. I laughed about it for three nights. Was that a joke?"''',
         c('"Yes."', "was"),
@@ -505,9 +505,10 @@ visit(M + "beat.joke", "The one who makes jokes", [
     mz("true", '''{n}She is quiet for a moment. Then she takes her feet off your desk, slowly, and looks at you the way she looked at the lump of clay in her heap: a thing that is not what it seems, and worth more.{/n}
 "The truest thing," {n}she repeats.{/n} "You are the one who makes jokes, and you did a true thing, in my cave, in the dark, where nobody could see you do it." {n}She looks at you as if you were a stone she had just turned over and found to be a ruby.{/n} "Your soldiers do not know you at all."''',
         c("Continue", flags=(M + "beat.joke_told",))),
-    mz("joke", '''"I do not know." {n}She waits. You tell her.{/n}
-{n}She does not laugh. She thinks about it with her whole face, frowning, as if it were a riddle with a prize at the end. Then she gets it, all at once, and she does not laugh then either: she looks at you with her mouth open, scandalised.{/n}
-"That is not a joke," {n}she says.{/n} "That is a *slander*." {n}And then she laughs, so hard she has to hold on to the arm of your chair, and four white scores appear in it that were not there before.{/n} "Tell it again. Tell it to your soldiers. Tell it to the little man with the axe. I want everybody to know it and nobody to understand it."''',
+    mz("riddle", '''"I do not know." {n}She frowns at you, as if it were a riddle with a prize at the end and she meant to have the prize.{/n} "A dragon who gives things away is not a dragon. So it is nothing. You call it nothing." {n}She folds her arms.{/n} "That is not funny. What do you call it?"''',
+        c('"A lizard. A very fat lizard."', "joke")),
+    mz("joke", '''{n}She stares at you with her mouth open. The fat lizard: the thing in the swamp's word for her, whined across a whole island for years.{/n}
+"That is not a joke," {n}she says.{/n} "That is a *slander*. That is the puddle's word." {n}And then she laughs, so hard she has to hold on to the arm of your chair, and four white scores appear in it that were not there before.{/n} "Because I gave you a heart and a sack of drowned gold and my rain, and I *am* fat, and I am lying in your chair like a lizard on a warm rock. Oh, thief. Tell it to your soldiers. Tell it to the little man with the axe. If anybody tells it back to me, I will eat them."''',
         c("Continue", flags=(M + "beat.joke_told",)))],
     requires=(FED,), forbids=(M + "beat.joke_told",))
 

@@ -337,6 +337,16 @@ internal static class MelazmeraTricksterTests
               && beats.Any(b => Avail(b, Later(story, won, 60))),
             "The night visits do not follow the commit (or the recovered commit), or play while she is tired.");
 
+        // Recollections never run ahead of play: the war visit remembers the heap only after it; the seal visit never does.
+        check(S(P + "beat.war").Requires.Contains(Heap) && !S(P + "beat.seal").Nodes.Any(n => n.Text.Contains("on my heap"))
+              && S(P + "beat.joke").Nodes.Single(n => n.Id == "riddle").Choices.Single().Text.Contains("lizard"),
+            "A night visit recalls an encounter the player may not have had, or the joke's punchline is not written.");
+        // The together page does not assume the Wound closed (Epilogues/Cue_0571): one opening paragraph per ending.
+        var together = S(P + "epilogue.together").Nodes[0].Paragraphs;
+        check(together.Count(pg => pg.Requires.Contains("ending.wound_closed")) == 1 && together.Count(pg => pg.Forbids.Contains("ending.wound_closed")) == 1
+              && !S(P + "epilogue.together").Nodes[0].Text.Contains("gone cold"),
+            "The together page states the Wound's fate unconditionally.");
+
         // Pages: one per outcome.
         string[] Shown(params string[] flags) => pages.Where(s => Avail(s, World(story, 6, Drezen, flags))).Select(s => s.Id).ToArray();
         check(Shown("trickster.ever", Returned, Committed, StoneKept, Seal).SequenceEqual(new[] { P + "epilogue.together" })
