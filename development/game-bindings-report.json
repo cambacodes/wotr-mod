@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-eliandra\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 3611,
-  "unique_targets": 779,
+  "binding_uses": 3713,
+  "unique_targets": 792,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -184,6 +184,14 @@
     },
     "bd0c4fe722aeef94b8495ac284b96bc8": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/MythicAzata_Ch3/Azata_Aranka_RankupSpeaker.jbp",
+      "type": "BlueprintUnit"
+    },
+    "cc50a88bbd8dd3e4da066d33d14fdfc8": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/MythicTrickster_Ch3/FoolKing.jbp",
+      "type": "BlueprintUnit"
+    },
+    "e349079a648cb15448a27f9049344bf1": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/PuluraFall/PuluraFall_Eliandra.jbp",
       "type": "BlueprintUnit"
     },
     "180b0eaa5dce387458d2ebf0ee943985": {
@@ -621,6 +629,10 @@
     "6dccfd39947ef4242a8afbe36b21a46c": {
       "path": "World/Dialogs/c3/Mythic_Trickster/FoolKing_Tavern/AnswersList_0054.jbp",
       "type": "BlueprintAnswersList"
+    },
+    "da3665f275b923d4ea5a77a8c39fb506": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/FoolKing_Tavern/Answer_0025.jbp",
+      "type": "BlueprintAnswer"
     },
     "814dd1a078a1c2849aefc85e2e15b2d2": {
       "path": "World/Dialogs/c3/Mythic_Trickster/FoolKing_Tavern/Cue_0008.jbp",
@@ -1358,6 +1370,38 @@
       "path": "World/Dialogs/c5/Mythic_Trickster/SocothInCloset/Cue_0002.jbp",
       "type": "BlueprintCue"
     },
+    "6073e28cab0691542b85a24436ed919c": {
+      "path": "World/Dialogs/c5/PuluraFallsC5/PuluraLeaderSaved/AnswersList_0008.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "860edc351f25b624296a572aa1f6c48f": {
+      "path": "World/Dialogs/c5/PuluraFallsC5/PuluraLeaderSaved/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "c7686ba702d6c5f4393d7483295c67a8": {
+      "path": "World/Dialogs/c5/PuluraFallsC5/PuluraLeaderSaved/Cue_0002.jbp",
+      "type": "BlueprintCue"
+    },
+    "e6fdaceb98f00f444bbf5a4b9d1ebf2f": {
+      "path": "World/Dialogs/c5/PuluraFallsC5/PuluraLeaderSaved/Cue_0003.jbp",
+      "type": "BlueprintCue"
+    },
+    "cb48db9773f775b428f0a5f20757145e": {
+      "path": "World/Dialogs/c5/PuluraFallsC5/PuluraLeaderSaved/Cue_0026.jbp",
+      "type": "BlueprintCue"
+    },
+    "7ca8fc49de894e94db63142f153a172a": {
+      "path": "World/Dialogs/c5/PuluraFallsC5/PuluraLeaderSaved/Cue_0029.jbp",
+      "type": "BlueprintCue"
+    },
+    "28e3b35d52e24fb4da16778f68b2b1c2": {
+      "path": "World/Dialogs/c5/PuluraFallsC5/PuluraLeaderSaved/Cue_0030.jbp",
+      "type": "BlueprintCue"
+    },
+    "cb2989159fadb0f48a7c5d0affdedfe2": {
+      "path": "World/Dialogs/c5/PuluraFallsC5/RamienPulura/Cue_0007.jbp",
+      "type": "BlueprintCue"
+    },
     "64af2f5bd9de92a469b6a8b63219206e": {
       "path": "World/Dialogs/c6/AreeluDemiplane/AreeluAllTruth/AnswersList_0020.jbp",
       "type": "BlueprintAnswersList"
@@ -1846,6 +1890,10 @@
       "path": "World/Etudes/Common/ImportantStates/StoryProjectsOutcome/DragonsInEducationFinished.jbp",
       "type": "BlueprintEtude"
     },
+    "caed5f67245242e596cf19c2166661c1": {
+      "path": "World/Etudes/Common/ImportantStates/StoryProjectsOutcome/NorthernLights_PuluraFinished.jbp",
+      "type": "BlueprintEtude"
+    },
     "a9a453f695924f99b4326f60b7c3753e": {
       "path": "World/Etudes/Common/ImportantStates/StoryProjectsOutcome/UnprecedentedOmeletFinished.jbp",
       "type": "BlueprintEtude"
@@ -1864,6 +1912,10 @@
     },
     "5b01aa690202e584888dfc600a4aac0a": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05.jbp",
+      "type": "BlueprintEtude"
+    },
+    "955329a8fc1d4d8e96d433d75d9a2ddd": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/EliandraDead.jbp",
       "type": "BlueprintEtude"
     },
     "b9cbdf8a2f0545f694366b87ae7d7d44": {

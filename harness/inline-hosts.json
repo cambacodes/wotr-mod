@@ -4,14 +4,14 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 898,
-  "resolved": 898,
-  "inlineOnlyScenes": 212,
-  "inlineOnlyResolved": 212,
-  "answerListScenesWithoutContact": 494,
-  "answerListScenesWithoutContactResolved": 494,
-  "lists": 92,
-  "listsWithReachableHost": 91
+  "entryTargetScenes": 919,
+  "resolved": 919,
+  "inlineOnlyScenes": 229,
+  "inlineOnlyResolved": 229,
+  "answerListScenesWithoutContact": 515,
+  "answerListScenesWithoutContactResolved": 515,
+  "lists": 93,
+  "listsWithReachableHost": 92
  },
  "scenes": {
   "a_crossing": {
@@ -7515,6 +7515,413 @@
     "dialogName": "Logistics_5_Dialogue",
     "cue": "Cue_0050",
     "clicks": 1
+   }
+  },
+  "eliandra.lastcall.call": {
+   "kind": "return-to-list",
+   "lists": [
+    "294126e3264796e488ce19bfb1851355",
+    "16994192cfa484744bd10852b8dc806f",
+    "b6bc1d5fb28e115499b8bcbbc0d541f9",
+    "3d3357c0474ce5a4bb13d68730faecb8",
+    "e77c405d6dde5804bb1f873f971958b8"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "294126e3264796e488ce19bfb1851355": "RRT_entry.eliandra.lastcall.call.294126e3264796e488ce19bfb1851355",
+    "16994192cfa484744bd10852b8dc806f": "RRT_entry.eliandra.lastcall.call.16994192cfa484744bd10852b8dc806f",
+    "b6bc1d5fb28e115499b8bcbbc0d541f9": "RRT_entry.eliandra.lastcall.call.b6bc1d5fb28e115499b8bcbbc0d541f9",
+    "3d3357c0474ce5a4bb13d68730faecb8": "RRT_entry.eliandra.lastcall.call.3d3357c0474ce5a4bb13d68730faecb8",
+    "e77c405d6dde5804bb1f873f971958b8": "RRT_entry.eliandra.lastcall.call.e77c405d6dde5804bb1f873f971958b8"
+   },
+   "resolved": true,
+   "host": {
+    "list": "294126e3264796e488ce19bfb1851355",
+    "dialog": "f125dc501dc6e984385332e67f324f01",
+    "dialogName": "GrandFinal_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.ch5.burial": {
+   "kind": "return-cue",
+   "lists": [
+    "6073e28cab0691542b85a24436ed919c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.burial"
+   },
+   "resolved": true,
+   "host": {
+    "list": "6073e28cab0691542b85a24436ed919c",
+    "dialog": "34cc47f0b730c3c4f8fbafb7e12c0475",
+    "dialogName": "PuluraLeaderSaved_c5_dialog",
+    "cue": "Cue_0003",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.ch5.first_words": {
+   "kind": "return-cue",
+   "lists": [
+    "6073e28cab0691542b85a24436ed919c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.first_words"
+   },
+   "resolved": true,
+   "host": {
+    "list": "6073e28cab0691542b85a24436ed919c",
+    "dialog": "34cc47f0b730c3c4f8fbafb7e12c0475",
+    "dialogName": "PuluraLeaderSaved_c5_dialog",
+    "cue": "Cue_0003",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.ch5.healer": {
+   "kind": "return-cue",
+   "lists": [
+    "6073e28cab0691542b85a24436ed919c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.healer"
+   },
+   "resolved": true,
+   "host": {
+    "list": "6073e28cab0691542b85a24436ed919c",
+    "dialog": "34cc47f0b730c3c4f8fbafb7e12c0475",
+    "dialogName": "PuluraLeaderSaved_c5_dialog",
+    "cue": "Cue_0003",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.ch5.last_rite": {
+   "kind": "return-cue",
+   "lists": [
+    "6073e28cab0691542b85a24436ed919c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.last_rite"
+   },
+   "resolved": true,
+   "host": {
+    "list": "6073e28cab0691542b85a24436ed919c",
+    "dialog": "34cc47f0b730c3c4f8fbafb7e12c0475",
+    "dialogName": "PuluraLeaderSaved_c5_dialog",
+    "cue": "Cue_0003",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.ch5.lovers": {
+   "kind": "return-cue",
+   "lists": [
+    "6073e28cab0691542b85a24436ed919c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.lovers"
+   },
+   "resolved": true,
+   "host": {
+    "list": "6073e28cab0691542b85a24436ed919c",
+    "dialog": "34cc47f0b730c3c4f8fbafb7e12c0475",
+    "dialogName": "PuluraLeaderSaved_c5_dialog",
+    "cue": "Cue_0003",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.ch5.maiden": {
+   "kind": "return-cue",
+   "lists": [
+    "6073e28cab0691542b85a24436ed919c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.maiden"
+   },
+   "resolved": true,
+   "host": {
+    "list": "6073e28cab0691542b85a24436ed919c",
+    "dialog": "34cc47f0b730c3c4f8fbafb7e12c0475",
+    "dialogName": "PuluraLeaderSaved_c5_dialog",
+    "cue": "Cue_0003",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.ch5.observe": {
+   "kind": "return-cue",
+   "lists": [
+    "6073e28cab0691542b85a24436ed919c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.observe"
+   },
+   "resolved": true,
+   "host": {
+    "list": "6073e28cab0691542b85a24436ed919c",
+    "dialog": "34cc47f0b730c3c4f8fbafb7e12c0475",
+    "dialogName": "PuluraLeaderSaved_c5_dialog",
+    "cue": "Cue_0003",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.ch5.packing": {
+   "kind": "return-cue",
+   "lists": [
+    "6073e28cab0691542b85a24436ed919c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.packing"
+   },
+   "resolved": true,
+   "host": {
+    "list": "6073e28cab0691542b85a24436ed919c",
+    "dialog": "34cc47f0b730c3c4f8fbafb7e12c0475",
+    "dialogName": "PuluraLeaderSaved_c5_dialog",
+    "cue": "Cue_0003",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.ch5.regnard": {
+   "kind": "return-cue",
+   "lists": [
+    "6073e28cab0691542b85a24436ed919c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.regnard"
+   },
+   "resolved": true,
+   "host": {
+    "list": "6073e28cab0691542b85a24436ed919c",
+    "dialog": "34cc47f0b730c3c4f8fbafb7e12c0475",
+    "dialogName": "PuluraLeaderSaved_c5_dialog",
+    "cue": "Cue_0003",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.ch5.remembrance": {
+   "kind": "return-cue",
+   "lists": [
+    "6073e28cab0691542b85a24436ed919c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.remembrance"
+   },
+   "resolved": true,
+   "host": {
+    "list": "6073e28cab0691542b85a24436ed919c",
+    "dialog": "34cc47f0b730c3c4f8fbafb7e12c0475",
+    "dialogName": "PuluraLeaderSaved_c5_dialog",
+    "cue": "Cue_0003",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.ch5.research": {
+   "kind": "return-cue",
+   "lists": [
+    "6073e28cab0691542b85a24436ed919c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.research"
+   },
+   "resolved": true,
+   "host": {
+    "list": "6073e28cab0691542b85a24436ed919c",
+    "dialog": "34cc47f0b730c3c4f8fbafb7e12c0475",
+    "dialogName": "PuluraLeaderSaved_c5_dialog",
+    "cue": "Cue_0003",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.ch5.sarkoris": {
+   "kind": "return-cue",
+   "lists": [
+    "6073e28cab0691542b85a24436ed919c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.sarkoris"
+   },
+   "resolved": true,
+   "host": {
+    "list": "6073e28cab0691542b85a24436ed919c",
+    "dialog": "34cc47f0b730c3c4f8fbafb7e12c0475",
+    "dialogName": "PuluraLeaderSaved_c5_dialog",
+    "cue": "Cue_0003",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.ch5.terms": {
+   "kind": "return-cue",
+   "lists": [
+    "6073e28cab0691542b85a24436ed919c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.terms"
+   },
+   "resolved": true,
+   "host": {
+    "list": "6073e28cab0691542b85a24436ed919c",
+    "dialog": "34cc47f0b730c3c4f8fbafb7e12c0475",
+    "dialogName": "PuluraLeaderSaved_c5_dialog",
+    "cue": "Cue_0003",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.ch5.thirteen": {
+   "kind": "return-cue",
+   "lists": [
+    "6073e28cab0691542b85a24436ed919c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.thirteen"
+   },
+   "resolved": true,
+   "host": {
+    "list": "6073e28cab0691542b85a24436ed919c",
+    "dialog": "34cc47f0b730c3c4f8fbafb7e12c0475",
+    "dialogName": "PuluraLeaderSaved_c5_dialog",
+    "cue": "Cue_0003",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.ch5.veil": {
+   "kind": "return-cue",
+   "lists": [
+    "6073e28cab0691542b85a24436ed919c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.veil"
+   },
+   "resolved": true,
+   "host": {
+    "list": "6073e28cab0691542b85a24436ed919c",
+    "dialog": "34cc47f0b730c3c4f8fbafb7e12c0475",
+    "dialogName": "PuluraLeaderSaved_c5_dialog",
+    "cue": "Cue_0003",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.react.daeran_lights": {
+   "kind": "dialog",
+   "lists": [
+    "4d978cbd2aa780d46874255282039f3f"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "4d978cbd2aa780d46874255282039f3f": "RRT_entry.eliandra.trickster.react.daeran_lights"
+   },
+   "resolved": true,
+   "host": {
+    "list": "4d978cbd2aa780d46874255282039f3f",
+    "dialog": "14aa0461f8564b042aee1f68c88de61b",
+    "dialogName": "Daeran_Main_dialog",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.react.king_stone": {
+   "kind": "return-cue",
+   "lists": [
+    "6dccfd39947ef4242a8afbe36b21a46c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "6dccfd39947ef4242a8afbe36b21a46c": "RRT_entry.eliandra.trickster.react.king_stone"
+   },
+   "resolved": true,
+   "host": {
+    "list": "6dccfd39947ef4242a8afbe36b21a46c",
+    "dialog": "ed8dabf271ef7ea4797bf7073c2e437a",
+    "dialogName": "FoolKing_Tavern_Dialogue",
+    "cue": "Cue_0052",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.react.lann_veil": {
+   "kind": "dialog",
+   "lists": [
+    "66385ad77fa743e4bb1234078dbd804c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "66385ad77fa743e4bb1234078dbd804c": "RRT_entry.eliandra.trickster.react.lann_veil"
+   },
+   "resolved": true,
+   "host": {
+    "list": "66385ad77fa743e4bb1234078dbd804c",
+    "dialog": "054c1b209de5c9042a02d6736cd3b2ac",
+    "dialogName": "Lann_Main_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.react.ulbrig_ordinary": {
+   "kind": "dialog",
+   "lists": [
+    "0a50c9c878844ed4a69b8d6131304c5e"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "0a50c9c878844ed4a69b8d6131304c5e": "RRT_entry.eliandra.trickster.react.ulbrig_ordinary"
+   },
+   "resolved": true,
+   "host": {
+    "list": "0a50c9c878844ed4a69b8d6131304c5e",
+    "dialog": "20b70c9bb93940b9a21a488f1721f41c",
+    "dialogName": "Shifter_CompanionDialogue",
+    "cue": "Cue_0005",
+    "clicks": 0
+   }
+  },
+  "eliandra.trickster.react.ulbrig_priestess": {
+   "kind": "dialog",
+   "lists": [
+    "0a50c9c878844ed4a69b8d6131304c5e"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "0a50c9c878844ed4a69b8d6131304c5e": "RRT_entry.eliandra.trickster.react.ulbrig_priestess"
+   },
+   "resolved": true,
+   "host": {
+    "list": "0a50c9c878844ed4a69b8d6131304c5e",
+    "dialog": "20b70c9bb93940b9a21a488f1721f41c",
+    "dialogName": "Shifter_CompanionDialogue",
+    "cue": "Cue_0005",
+    "clicks": 0
    }
   },
   "ember.a_late_afternoon": {
@@ -20963,6 +21370,80 @@
       "92de3c8fc255626468a19fd66e9023cc": 6,
       "a27e7e0e76e7d104e8c70549ba2ec40a": 3,
       "b597f6ec88270cc408469bfa6e38817d": 1
+     }
+    }
+   ]
+  },
+  "6073e28cab0691542b85a24436ed919c": {
+   "list": "6073e28cab0691542b85a24436ed919c",
+   "listName": "AnswersList_0008",
+   "hosts": [
+    {
+     "dialog": "34cc47f0b730c3c4f8fbafb7e12c0475",
+     "dialogName": "PuluraLeaderSaved_c5_dialog",
+     "cues": [
+      "e6fdaceb98f00f444bbf5a4b9d1ebf2f",
+      "860edc351f25b624296a572aa1f6c48f",
+      "c7686ba702d6c5f4393d7483295c67a8",
+      "e06571a5d20437045b9e9b232c7853c5",
+      "51ff108fafe40644f854f356b3a39c39",
+      "c1faa95c3472e4345a76829fbcac975e",
+      "066f5ceb33fdd234ba71e2b4cec582e6",
+      "1edf965f9bd717b448b1cafe6aa7dea3",
+      "a9d4b741f05ec8d4e81df206fb1233ec",
+      "176807344f5796643ba199465be1b8f4",
+      "0d52e0cc4db988a4da8e7d23ebe0ce4b",
+      "cb48db9773f775b428f0a5f20757145e",
+      "7ca8fc49de894e94db63142f153a172a",
+      "28e3b35d52e24fb4da16778f68b2b1c2",
+      "a13325cb50a14e4459ae7f43727ee2e0",
+      "19bd7a0d0d4be1b43a7c6d0d52124a70",
+      "7a1f4e4f33204f444b28a8d7ad59241b",
+      "9e397c61ba7514740b0d9d3267fe5ddb",
+      "4b66432853da40049a9b0b5e0eb5c16c",
+      "42c25e53432b3954c878eef838f01bb0",
+      "3b188fb26a57fc24c89a34b2c1689675",
+      "b9854b0ad03c30b4ba67094e355055ed",
+      "11e11f7eae85ea646b7daac139d6f67c"
+     ],
+     "cueNames": [
+      "Cue_0003",
+      "Cue_0001",
+      "Cue_0002",
+      "Cue_0004",
+      "Cue_0005",
+      "Cue_0006",
+      "Cue_0007",
+      "Cue_0012",
+      "Cue_0015",
+      "Cue_0021",
+      "Cue_0022",
+      "Cue_0026",
+      "Cue_0029",
+      "Cue_0030",
+      "Cue_0032",
+      "Cue_0033",
+      "Cue_0034",
+      "Cue_0035",
+      "Cue_0036",
+      "Cue_0037",
+      "SequenceExit_0046",
+      "SequenceExit_0054",
+      "SequenceExit_0057"
+     ],
+     "speaker": "4659d2d7a8bbbd342ab2e3cb6e2aaef9",
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "0690ce31508f0b04cb222352f57dcd6c": 4,
+      "661c5b230a424a24291d80457172b06b": 1,
+      "6a26110588752dd468614489fff51ad1": 1,
+      "936b65003470d484fb9984b2e274e033": 2,
+      "97ee30e2433908c408b8c35a42c75a24": 1,
+      "a38d9fc54f4d2264594c611cd4f64281": 3,
+      "cae55a55b8323b341a09bab0a70b99db": 1,
+      "fd419afa29e9cf146807aa3d91c3332e": 1
      }
     }
    ]
