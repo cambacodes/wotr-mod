@@ -162,11 +162,11 @@ visit(E + "beat.courier", "A man in grey", [
     nar("start", '''{n}One of her escort is standing in your doorway when you wake: a man in grey with a face like a closed shutter. He does not bow. He clears his throat, and when he speaks it is in her voice, exactly, the cadence and the chill and the faint Ustalavic roll of the r, coming out of a mouth that is not hers.{/n}
 "The priestess sends word. It is not written, because the Way writes nothing. I will say it once."''',
         c("[Listen.]", "message")),
-    n("message", "Man in grey", '''"*Commander. I have gone south to the border, to a house on the Ustalav road where the Way keeps rooms. A master of the Way has come up from Caliphas to ask me why my carriage is empty.*
-*I told him the goods are still ripening. He asked me whether I had grown fond of the goods. I told him I do not grow fond. I grow hungry. He did not believe me. Neither, when I lie awake in this house, do I.*"''',
+    n("message", "Man in grey", '''"*Commander. I have gone south to the border, to a house on the Ustalav road where the Way keeps rooms. A master of the Way has come up from Caliphas to ask me why my carriage is empty.*"
+"*I told him the goods are still ripening. He asked me whether I had grown fond of the goods. I told him I do not grow fond. I grow hungry. He did not believe me. Neither, when I lie awake in this house, do I.*"''',
       c("Continue", "message2")),
-    n("message2", "Man in grey", '''"*I will be back in four days. Do not die while I am gone. I would not be there to collect, and the master would, and he is not gentle with other people's property.*
-*Send your answer with this man. He will forget it the moment he has said it to me. He forgets everything. It is why I keep him.*"
+    n("message2", "Man in grey", '''"*I will be back in four days. Do not die while I am gone. I would not be there to collect, and the master would, and he is not gentle with other people's property.*"
+"*Send your answer with this man. He will forget it the moment he has said it to me. He forgets everything. It is why I keep him.*"
 {n}The man in grey stops. His face does not change. He waits.{/n}''',
       c('[Send back] "Tell her: come back hungry."', "hungry"),
       c('[Send back] "Tell her the goods are ripening nicely."', "ripening"),
@@ -175,7 +175,7 @@ visit(E + "beat.courier", "A man in grey", [
 {n}Four days later, to the hour, there is a sprig of white flower under your door. Wound round its stem is a single silver-grey hair.{/n}''',
         c("Continue", flags=(COURIER_HUNGRY,))),
     nar("ripening", '''{n}He says it back to you once, in your own voice, dry as dust, and goes.{/n}
-{n}Four days later, to the hour, he is back in your doorway. He clears his throat and says, in her voice, "*Ripening. You insolent sack of meat. The master laughed for the first time in forty years and gave me leave to stay. I hate you for making him laugh. I am coming back tonight.*" Then he goes, and forgets.{/n}''',
+{n}Four days later, to the hour, he is back in your doorway. He clears his throat and says, in her voice, "*Ripening. You insolent sack of meat. The master laughed. Nobody in the Way has heard him laugh in forty years. He gave me leave to stay. I hate you for making him laugh. I am coming back tonight.*" Then he goes, and forgets.{/n}''',
         c("Continue", flags=(COURIER_RIPENING,))),
     nar("silent", '''{n}He waits for a while longer, as if you might change your mind, and then he goes, and you hear his boots on the stair.{/n}
 {n}Four days later she is back in the dead-house. She does not mention the courier or the master or your silence. But she looks at you, the first time you meet, for rather longer than she needs to, with the look she gave the grey chaplain's cough, as if she were listening for something in you that she could name.{/n}''',
@@ -185,6 +185,12 @@ visit(E + "beat.courier", "A man in grey", [
 
 # --- 5. Her Lady's table (T, optional): the secret, kept. -----------------------------------------------------------------
 
+TABLE_CHOICES = (
+    c("[Sit at her right hand.]", "sit"),
+    c("[Keep the door.]", "door"),
+    c('"I wasn\'t here." [Leave before the wine.]', "left"),
+)
+
 visit(E + "beat.table", "Her Lady's table", [
     nar("start", '''{n}The seventh night. The dead-house has been hung with grey cloth, and the long room is full of candles and the smell of roasting fat. There are perhaps thirty people at the long table, masked in plain grey half-masks, in their ordinary clothes: a baker's apron, a sergeant's coat, the good wool of a merchant's wife. People of Drezen. People of your crusade.{/n}
 {n}At the head of the table, unmasked, in her grey robe, sits Elyanka. There is an empty chair at her right hand.{/n}''',
@@ -192,19 +198,16 @@ visit(E + "beat.table", "Her Lady's table", [
     el("welcome", '''"Commander." {n}Thirty masked faces turn toward you at once.{/n} "Do not look so surprised. Our church has more followers than it seems. It always has. They simply hide from the zealous eye of their enemies, and eat well when nobody is looking."
 "Our services to honour her are more luxurious than the most lavish feasts, the wildest orgies. This is a small one, a crusade one: the food is poor, and everyone goes home before the morning watch." {n}She gestures at the empty chair.{/n} "My Lady keeps a place for the one who holds my claim."''',
        c("Continue", "targona", requires=("targona.trickster.in_drezen",)),
-       c("Continue", "nidalynn", requires=("nidalynn.started",), forbids=("targona.trickster.in_drezen",)),
-       c("Continue", "choose", forbids=("targona.trickster.in_drezen", "nidalynn.started"))),
+       c("Continue", "choose", forbids=("targona.trickster.in_drezen",))),
     el("targona", '''"Before you choose." {n}Her voice drops, for you only.{/n} "Your angel came to the gate of the yard yesterday. The one whose wing was made in the witch's laboratory. She stood there a long time, smelling us, the way a hound smells a fox's earth, and then she went away without a word." {n}Her mouth tightens.{/n}
 "Everything that shines hates my Lady. It is the one thing I envy them: they are so certain."''',
-       c("Continue", "nidalynn", requires=("nidalynn.started",)),
-       c("Continue", "choose", forbids=("nidalynn.started",))),
-    el("nidalynn", '''"And the Sarkorian woman who waits by the tavern door. She passed my hearse in the street and looked at my horses as if she could breathe frost on them." {n}A dry breath through the nose.{/n} "She is no more a Sarkorian goodwife than I am. I do not know what she is. I know she would like to see this house burn."''',
        c("Continue", "choose")),
+    el("nidalynn", '''"The Sarkorian woman who waits by the tavern door. She passed my hearse in the street and looked at my horses as if she could breathe frost on them." {n}A dry breath through the nose.{/n} "She is no more a Sarkorian goodwife than I am. I do not know what she is. I know she would like to see this house burn." {n}She turns back to her guests.{/n} "It will not burn tonight. Choose."''',
+       *TABLE_CHOICES),
     el("choose", '''"Sit, and eat what my Lady's people have brought, and nobody here will ever forget it. Or stand at the door and keep it, as a crusader would. Or go home and pretend you were never here." {n}She pours wine into the cup at the empty place, dark and thick.{/n}
 "Each of those is an answer. I will remember which."''',
-       c("[Sit at her right hand.]", "sit"),
-       c("[Keep the door.]", "door"),
-       c('"I wasn\'t here." [Leave before the wine.]', "left")),
+       *TABLE_CHOICES,
+       c('[Ask] "Who else has been watching your door?"', "nidalynn", requires=("nidalynn.started",))),
     nar("sit", '''{n}You sit. Thirty grey masks watch you do it, and then the talk starts again, low, and the dishes go round: fat meat, black pudding, honeyed things, bread soaked in red wine. You do not ask what anything is. Elyanka tells you anyway, in your ear, dish by dish, and not all of it is venison.{/n}
 {n}At midnight they sing, softly, because there are sentries on the walls. The baker in the apron weeps openly. The sergeant holds his cup up to the rafters. Elyanka does not sing. She watches you listen, and her cold hand lies on the back of your neck under your hair, and stays there.{/n}''',
         c("Continue", "sit2")),
@@ -318,7 +321,7 @@ visit(E + "beat.fitting", "A box that pinches", [
        c("[Climb out.]", flags=(FIT_LAY,))),
     el("first", '''{n}She looks at you as if you had asked her to take off her face. Then, slowly, something like delight comes into her eyes.{/n}
 "Nobody has ever dared." {n}She stands, and unlaces her boots, and steps up onto the trestle, and lies down in the red cloth with her grey robe settled around her and her hands folded on her breast, perfectly composed, like a queen on a tomb.{/n}
-"Well? You wanted to see."''',
+"Look, then. You wanted to see."''',
        c("Continue", "first2")),
     nar("first2", '''{n}It is too big for her. She lies in it like a child in her father's boots, and she knows it, and her mouth twists.{/n}
 {n}You look at her there for a long while: the silver hair spread on the red, the pale throat, the strong hands folded and still. When she opens her eyes you are still looking, and she sees what is in your face, and for once she has nothing sharp to say about it.{/n}
@@ -358,7 +361,7 @@ visit(E + "beat.master", "A master from Caliphas", [
        c("Continue", "choice")),
     nar("choice", '''{n}The master looks from her to you, and his smile does not move. Then he rises, and bows, the precise bow of a man who has been insulted and has made a note of it.{/n}
 "The Way will consider its position," {n}he says,{/n} "on the road home." {n}And he goes out into the yard, where his own carriage is waiting.{/n}
-{n}Elyanka does not watch him go. She looks at you, for the first time tonight, and her eyes are perfectly calm.{/n} "He will not consider anything on the road home. He will write to the masters that I have gone soft, and they will send someone who is not a clerk. Unless he does not reach the border."''',
+{n}Elyanka does not watch him go. Only now does she look at you, and her eyes are perfectly calm.{/n} "He will not consider anything on the road home. He will write to the masters that I have gone soft, and they will send someone who is not a clerk. Unless he does not reach the border."''',
         c('[Give her the road] "Then he doesn\'t reach the border. It\'s a long road."', "kill"),
         c('[Give him an escort] "He came under your oath. He leaves under mine. Twelve crusaders to the border."', "escort"),
         c('[Leave it to her] "He\'s your master, and your order. You decide."', "hers")),
@@ -372,7 +375,7 @@ visit(E + "beat.master", "A master from Caliphas", [
 "You are a fool, Commander. He will reach Caliphas, and he will speak, and the Way will remember that you protected the man who came to hurry your death. That is the kind of thing the Way finds interesting."
 {n}Then, grudgingly:{/n} "It was also lawful, and I have been hiding behind your law for weeks, and I cannot very well complain when you hide behind it too. Go and give your orders. I will be here, being disappointed."''',
        c("[Give the orders.]", flags=(MASTER_ESCORTED,))),
-    el("hers", '''{n}She looks at you for a long moment, and something passes over her face that might, in another woman, be gratitude. In her it looks like hunger.{/n}
+    el("hers", '''{n}She studies you across the trestle, and something passes over her face that might, in another woman, be gratitude. In her it looks like hunger.{/n}
 "Then I will decide." {n}She rises, and takes the knife she has been holding all evening, and puts it in her sleeve.{/n} "Go to bed, Commander. Do not ask me in the morning what I decided. You gave it to me. It is mine."
 {n}In the morning she is in the dead-house as usual, eating. Her sleeve is clean. You do not ask, and you never learn, and a certain master of the Way is never seen in Caliphas again.{/n}''',
        c("[Do not ask.]", flags=(MASTER_HERS,))),
@@ -456,7 +459,7 @@ visit(E + "beat.wards", "Her Lady's mercy", [
        c('[Stop her] "Not here. These men are crusaders. They die as crusaders."', "stop"),
        c('[Let her] "If it eases them, whisper."', "let"),
        c('[Only the hopeless] "The ones the chaplains have given up on. Nobody else."', "hopeless")),
-    el("stop", '''{n}She looks at you for a long moment. Then she sets the cup down on the floor by the sergeant's cot, very precisely, and folds her hands in her sleeves.{/n}
+    el("stop", '''{n}She looks at you over the sergeant's cot. Then she sets the cup down on the floor by the sergeant's cot, very precisely, and folds her hands in her sleeves.{/n}
 "As crusaders. In lime, with prayers, in a queue." {n}No mockery; only a kind of weariness.{/n} "As you like. They are yours. I only came because nobody else was awake."
 {n}At the door she stops.{/n} "The boy with the arm will die before morning. He asked me to stay. I told him I would. Tell him yourself that I could not."''',
        c("Continue", "stop2")),
@@ -562,21 +565,11 @@ visit(E + "beat.face", "A liar's face", [
 "There," {n}she says.{/n} "That one I believe." {n}She unpins it and rolls it up and puts it in her sleeve.{/n} "I will talk to it when I need to know what you really think. You may keep the other one. It is no use to me."''',
        c("[Let her keep it.]", flags=(FACE_READ,))),
     el("look", '''{n}Her hand closes on the charcoal and on your fingers together. For a moment she does not lift her eyes; you can see her deciding not to.{/n}
-{n}Then she does. She looks at your face for the first time since the veil came off, for as long as it takes a candle to gutter and steady, with those pale unblinking eyes, and whatever she finds there she does not say.{/n}
+{n}Then she does. She looks at your face, as she has not once since the veil came off, for as long as it takes a candle to gutter and steady, with those pale unblinking eyes, and whatever she finds there she does not say.{/n}
 "Once," {n}she says, and lets go of the charcoal.{/n} "That was once. Do not ask again. I have to go on believing you are a liar, or I will start believing everything else."''',
        c("[Give her back the charcoal.]", flags=(FACE_READ,))),
 ], requires=(EXPOSED, BIER), forbids=(FACE_READ,), delay=48, last=5)
 
-
-# --- 17. Reaction: Woljif, who knows a con when he hears one (the wake). ---------------------------------------------------
-
-SCENES.append(reaction("Woljif", E + "react.woljif_wake", ("trickster.ever", E + "bluffed"),
-    '''{n}Woljif falls into step beside you with the look of a man who has heard something wonderful in a tavern and paid for it.{/n}
-"Boss. Boss. Tell me it's true. You went to your own wake. In a curtain. And haggled over your own corpse with a lady necromancer from Ustalav, and she didn't twig till you took the curtain off." {n}He presses a hand to his heart.{/n}
-"That's art, that is. I've talked my way out of a Kenabres cell, boss, and into a few worse ones, but I never once sold myself to anybody for more than I was worth." {n}A pause.{/n} "How much *were* you worth? No. Don't tell me. I'll only cry."''',
-    answer_list="e41585da330233143b34ef64d7d62d69", chapter=5, last=5, entry='"Something funny, Woljif?"', portrait="Woljif",
-    forbids=("woljif.dead", "woljif.kicked_out")))
-tag(E + "react.woljif_wake", "T")
 
 
 # --- 18. The stone they raised (T, optional): the grave from the funeral, empty. -----------------------------------------
@@ -682,5 +675,13 @@ SCENES.append(reaction("Regill", E + "react.regill_writ", ("trickster.ever", "re
 "The law does not require me to like her, and I do not. It does require me to note that you were right, and the chaplains were not. I have noted it." {n}His pen scratches.{/n} "I have also noted where she sleeps."''',
     answer_list=REGILL_HUB, chapter=5, last=5, entry='"About the Ustalavic priestess."', portrait="Regill",
     forbids=("regill.dead", "regill.kicked_out", "regill.plot_absent"),
-    RequiresAnyGroups=[[WRIT_UPHELD, WRIT_LIED, WRIT_HERS]]))
+    RequiresAnyGroups=[[WRIT_UPHELD, WRIT_HERS]]))
 tag(E + "react.regill_writ", "T")
+
+SCENES.append(reaction("Regill", E + "react.regill_lie", ("trickster.ever", "regill.in_party", WRIT_LIED),
+    '''{n}Regill does not look up from the report he is annotating.{/n}
+"You told the chaplains that the priestess in the dead-house is your embalmer, Commander. I went to Nerosyan's register afterwards. She is entered there as a noblewoman of Ustalav under the crusader's oath, with six men who do not appear to breathe. She is not entered as anybody's servant." {n}He turns a page.{/n}
+"Her oath would have held without your lie. You lied anyway, to two chaplains and a clerk of the court, about a matter the law had already settled." {n}His pen scratches.{/n} "I have noted it. I note everything. I simply want you to know which of the two of you I trust to tell the truth under oath, and it is not you."''',
+    answer_list=REGILL_HUB, chapter=5, last=5, entry='"About the Ustalavic priestess."', portrait="Regill",
+    forbids=("regill.dead", "regill.kicked_out", "regill.plot_absent")))
+tag(E + "react.regill_lie", "T")

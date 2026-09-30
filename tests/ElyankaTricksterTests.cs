@@ -198,7 +198,7 @@ internal static class ElyankaTricksterTests
               && hearse.Nodes.Single(n => n.Id == "threshold").Text.Contains("takes you in hand"),
             "Trk_Elyanka_Hearse: the night in the hearse (cut at the first motion) or its horse variant is missing.");
 
-        // Trk_Elyanka_Reactions: Daeran, Seelah, Regill and Woljif, each guarded against death or departure.
+        // Trk_Elyanka_Reactions: Daeran (twice), Seelah and Regill (twice), each guarded against death or departure.
         var after = S(P + "react.daeran_after");
         check(after.AnswerLists.SequenceEqual(new[] { "4d978cbd2aa780d46874255282039f3f" }) && after.Forbids.Contains("daeran.dead") && after.Forbids.Contains("daeran.kicked_out")
               && after.Nodes[0].Choices[0].Set.Contains(P + "daeran_ally") && Avail(after, World(story, 5, "trickster.ever", Bier))
@@ -207,7 +207,7 @@ internal static class ElyankaTricksterTests
         check(reactions.All(r => r.Forbids.Any(f => f.EndsWith(".dead") || f.EndsWith("_dead"))) && reactions.Length == 5,
             "Trk_Elyanka_Reactions: a reactor is not guarded against death, or a reactor is missing.");
         check(S(P + "react.seelah_rows").Requires.Contains("seelah.in_party") && S(P + "react.regill_writ").RequiresAnyGroups.Length == 1
-              && S(P + "react.regill_writ").RequiresAnyGroups[0].Length == 3,
+              && S(P + "react.regill_writ").RequiresAnyGroups[0].Length == 2 && S(P + "react.regill_lie").Requires.Contains(P + "writ.lied"),
             "Trk_Elyanka_Reactions: Seelah's or Regill's reaction reads the wrong state (any-of must be one group).");
 
         // Trk_Elyanka_Beats: the courtship spreads over Chapter 5 (and one Chapter 6 visit), optional, after the sale.

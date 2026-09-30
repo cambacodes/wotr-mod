@@ -402654,7 +402654,7 @@
         {
           "Id": "sergeant",
           "Speaker": "Gate sergeant",
-          "Text": "\"Came up the Ustalav road at noon, Commander. A hearse. Black lacquer, glass sides, four black horses in plumes, and six of hers walking behind in grey without a word out of any of them. She has the oath right enough. Sworn at Nerosyan last spring; I read it twice. By law she can come in, and she knows it. She told me so before I asked.\"\n{n}He turns the card over, and back.{/n} \"She asked for your executor, Commander. Not for you. I didn't tell her you were alive. I didn't tell her anything. I don't think she'd have heard me if I had.\"",
+          "Text": "\"Came up the Ustalav road at noon, Commander. A hearse. Black lacquer, glass sides, four black horses in plumes, and six of hers walking behind in grey without a word out of any of them. She has the oath right enough. Sworn at Nerosyan on her way north, not a month back; I read it twice. By law she can come in, and she knows it. She told me so before I asked.\"\n{n}He turns the card over, and back.{/n} \"She asked for your executor, Commander. Not for you. I didn't tell her you were alive. I didn't tell her anything. I don't think she'd have heard me if I had.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -403417,7 +403417,7 @@
         {
           "Id": "pulse2",
           "Speaker": "Elyanka",
-          "Text": "\"Did you think I had never seen a living thing play dead? I have seen hundreds. My order has hidden in plain sight for six hundred years, and you came to me in a *curtain*.\" {n}She takes her hand back and wipes her fingers on a napkin, one by one.{/n}\n\"I can guess why. You wanted my price before I had yours. Take that off. I will make the same offer to the owner, bare-faced, and the owner will answer it bare-faced, or leave.\"",
+          "Text": "\"Did you think I had never seen a living thing play dead? I have seen hundreds. My order has hidden in plain sight for six hundred years, and you came to me in a *curtain*.\" {n}She takes her hand back and wipes her fingers on a napkin, one by one.{/n}\n\"I can guess why. You wanted to know what I would pay before I knew what you were. Take that off. I will make the same offer to the owner, bare-faced, and the owner will answer it bare-faced, or leave.\"",
           "Choices": [
             {
               "Text": "[Take off the veil and hear her terms.]",
@@ -403781,7 +403781,7 @@
         {
           "Id": "rows",
           "Speaker": "Elyanka",
-          "Text": "{n}She lifts the canvas from a young face with a split lip, looks, and lets it fall.{/n}\n\"Your Pharasmin priests are very slow. The ones with names went into the earth two days ago, with prayers and mothers. These have no names. Nobody has come for them. Nobody will.\" {n}She moves to the next row.{/n}\n\"In three days they go into a pit with lime on top, and the grey warden has sixty-one more souls in her queue, and the flesh rots in the dark for nothing. Nothing at all. It is the most wasteful custom in the world.\"",
+          "Text": "{n}She lifts the canvas from a young face with a split lip, looks, and lets it fall.{/n}\n\"Your chaplains are very slow. The ones with names went into the earth two days ago, with prayers and mothers. These have no names. Nobody has come for them. Nobody will.\" {n}She moves to the next row.{/n}\n\"In three days they go into a pit with lime on top, and the grey warden has sixty-one more souls in her queue, and the flesh rots in the dark for nothing. Nothing at all. It is the most wasteful custom in the world.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404773,7 +404773,7 @@
         {
           "Id": "start",
           "Speaker": "Daeran",
-          "Text": "{n}Daeran regards you for some time over the rim of his cup before he speaks.{/n}\n\"You slept in a hearse.\" {n}He says it slowly, savouring it.{/n} \"With the undertaker. Who is a priestess of Lady Despair and has measured you for the table. I have never in my life been so jealous of anyone, and I have been jealous of a great many people.\"\n\"She will have no idea what to drink at a funeral that has not happened yet. Tell her the cellars of my house are at her disposal. Every year, on the day they feasted you dead in Drezen, I shall send her a bottle older than she is. I want to watch her taste it and pretend she is above such things.\"",
+          "Text": "{n}Daeran regards you for some time over the rim of his cup before he speaks.{/n}\n\"You slept in a hearse.\" {n}He says it slowly, savouring it.{/n} \"With the undertaker. Who is a priestess of the Pallid Princess and has measured you for the table. I have never in my life been so jealous of anyone, and I have been jealous of a great many people.\"\n\"She will have no idea what to drink at a funeral that has not happened yet. Tell her the cellars of my house are at her disposal. Every year, on the day they feasted you dead in Drezen, I shall send her a bottle older than she is. I want to watch her taste it and pretend she is above such things.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -406822,7 +406822,7 @@
         {
           "Id": "message",
           "Speaker": "Man in grey",
-          "Text": "\"*Commander. I have gone south to the border, to a house on the Ustalav road where the Way keeps rooms. A master of the Way has come up from Caliphas to ask me why my carriage is empty.*\n*I told him the goods are still ripening. He asked me whether I had grown fond of the goods. I told him I do not grow fond. I grow hungry. He did not believe me. Neither, when I lie awake in this house, do I.*\"",
+          "Text": "\"*Commander. I have gone south to the border, to a house on the Ustalav road where the Way keeps rooms. A master of the Way has come up from Caliphas to ask me why my carriage is empty.*\"\n\"*I told him the goods are still ripening. He asked me whether I had grown fond of the goods. I told him I do not grow fond. I grow hungry. He did not believe me. Neither, when I lie awake in this house, do I.*\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -406838,7 +406838,7 @@
         {
           "Id": "message2",
           "Speaker": "Man in grey",
-          "Text": "\"*I will be back in four days. Do not die while I am gone. I would not be there to collect, and the master would, and he is not gentle with other people's property.*\n*Send your answer with this man. He will forget it the moment he has said it to me. He forgets everything. It is why I keep him.*\"\n{n}The man in grey stops. His face does not change. He waits.{/n}",
+          "Text": "\"*I will be back in four days. Do not die while I am gone. I would not be there to collect, and the master would, and he is not gentle with other people's property.*\"\n\"*Send your answer with this man. He will forget it the moment he has said it to me. He forgets everything. It is why I keep him.*\"\n{n}The man in grey stops. His face does not change. He waits.{/n}",
           "Choices": [
             {
               "Text": "[Send back] \"Tell her: come back hungry.\"",
@@ -406888,7 +406888,7 @@
         {
           "Id": "ripening",
           "Speaker": "Narrator",
-          "Text": "{n}He says it back to you once, in your own voice, dry as dust, and goes.{/n}\n{n}Four days later, to the hour, he is back in your doorway. He clears his throat and says, in her voice, \"*Ripening. You insolent sack of meat. The master laughed for the first time in forty years and gave me leave to stay. I hate you for making him laugh. I am coming back tonight.*\" Then he goes, and forgets.{/n}",
+          "Text": "{n}He says it back to you once, in your own voice, dry as dust, and goes.{/n}\n{n}Four days later, to the hour, he is back in your doorway. He clears his throat and says, in her voice, \"*Ripening. You insolent sack of meat. The master laughed. Nobody in the Way has heard him laugh in forty years. He gave me leave to stay. I hate you for making him laugh. I am coming back tonight.*\" Then he goes, and forgets.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -406983,24 +406983,11 @@
             },
             {
               "Text": "Continue",
-              "Next": "nidalynn",
-              "Set": [],
-              "Requires": [
-                "nidalynn.started"
-              ],
-              "Forbids": [
-                "targona.trickster.in_drezen"
-              ],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
               "Next": "choose",
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "targona.trickster.in_drezen",
-                "nidalynn.started"
+                "targona.trickster.in_drezen"
               ],
               "Abort": false
             }
@@ -407014,22 +407001,10 @@
           "Choices": [
             {
               "Text": "Continue",
-              "Next": "nidalynn",
-              "Set": [],
-              "Requires": [
-                "nidalynn.started"
-              ],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
               "Next": "choose",
               "Set": [],
               "Requires": [],
-              "Forbids": [
-                "nidalynn.started"
-              ],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -407038,11 +407013,27 @@
         {
           "Id": "nidalynn",
           "Speaker": "Elyanka",
-          "Text": "\"And the Sarkorian woman who waits by the tavern door. She passed my hearse in the street and looked at my horses as if she could breathe frost on them.\" {n}A dry breath through the nose.{/n} \"She is no more a Sarkorian goodwife than I am. I do not know what she is. I know she would like to see this house burn.\"",
+          "Text": "\"The Sarkorian woman who waits by the tavern door. She passed my hearse in the street and looked at my horses as if she could breathe frost on them.\" {n}A dry breath through the nose.{/n} \"She is no more a Sarkorian goodwife than I am. I do not know what she is. I know she would like to see this house burn.\" {n}She turns back to her guests.{/n} \"It will not burn tonight. Choose.\"",
           "Choices": [
             {
-              "Text": "Continue",
-              "Next": "choose",
+              "Text": "[Sit at her right hand.]",
+              "Next": "sit",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the door.]",
+              "Next": "door",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I wasn't here.\" [Leave before the wine.]",
+              "Next": "left",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -407077,6 +407068,16 @@
               "Next": "left",
               "Set": [],
               "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask] \"Who else has been watching your door?\"",
+              "Next": "nidalynn",
+              "Set": [],
+              "Requires": [
+                "nidalynn.started"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -407657,7 +407658,7 @@
         {
           "Id": "first",
           "Speaker": "Elyanka",
-          "Text": "{n}She looks at you as if you had asked her to take off her face. Then, slowly, something like delight comes into her eyes.{/n}\n\"Nobody has ever dared.\" {n}She stands, and unlaces her boots, and steps up onto the trestle, and lies down in the red cloth with her grey robe settled around her and her hands folded on her breast, perfectly composed, like a queen on a tomb.{/n}\n\"Well? You wanted to see.\"",
+          "Text": "{n}She looks at you as if you had asked her to take off her face. Then, slowly, something like delight comes into her eyes.{/n}\n\"Nobody has ever dared.\" {n}She stands, and unlaces her boots, and steps up onto the trestle, and lies down in the red cloth with her grey robe settled around her and her hands folded on her breast, perfectly composed, like a queen on a tomb.{/n}\n\"Look, then. You wanted to see.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -407867,7 +407868,7 @@
         {
           "Id": "choice",
           "Speaker": "Narrator",
-          "Text": "{n}The master looks from her to you, and his smile does not move. Then he rises, and bows, the precise bow of a man who has been insulted and has made a note of it.{/n}\n\"The Way will consider its position,\" {n}he says,{/n} \"on the road home.\" {n}And he goes out into the yard, where his own carriage is waiting.{/n}\n{n}Elyanka does not watch him go. She looks at you, for the first time tonight, and her eyes are perfectly calm.{/n} \"He will not consider anything on the road home. He will write to the masters that I have gone soft, and they will send someone who is not a clerk. Unless he does not reach the border.\"",
+          "Text": "{n}The master looks from her to you, and his smile does not move. Then he rises, and bows, the precise bow of a man who has been insulted and has made a note of it.{/n}\n\"The Way will consider its position,\" {n}he says,{/n} \"on the road home.\" {n}And he goes out into the yard, where his own carriage is waiting.{/n}\n{n}Elyanka does not watch him go. Only now does she look at you, and her eyes are perfectly calm.{/n} \"He will not consider anything on the road home. He will write to the masters that I have gone soft, and they will send someone who is not a clerk. Unless he does not reach the border.\"",
           "Choices": [
             {
               "Text": "[Give her the road] \"Then he doesn't reach the border. It's a long road.\"",
@@ -407951,7 +407952,7 @@
         {
           "Id": "hers",
           "Speaker": "Elyanka",
-          "Text": "{n}She looks at you for a long moment, and something passes over her face that might, in another woman, be gratitude. In her it looks like hunger.{/n}\n\"Then I will decide.\" {n}She rises, and takes the knife she has been holding all evening, and puts it in her sleeve.{/n} \"Go to bed, Commander. Do not ask me in the morning what I decided. You gave it to me. It is mine.\"\n{n}In the morning she is in the dead-house as usual, eating. Her sleeve is clean. You do not ask, and you never learn, and a certain master of the Way is never seen in Caliphas again.{/n}",
+          "Text": "{n}She studies you across the trestle, and something passes over her face that might, in another woman, be gratitude. In her it looks like hunger.{/n}\n\"Then I will decide.\" {n}She rises, and takes the knife she has been holding all evening, and puts it in her sleeve.{/n} \"Go to bed, Commander. Do not ask me in the morning what I decided. You gave it to me. It is mine.\"\n{n}In the morning she is in the dead-house as usual, eating. Her sleeve is clean. You do not ask, and you never learn, and a certain master of the Way is never seen in Caliphas again.{/n}",
           "Choices": [
             {
               "Text": "[Do not ask.]",
@@ -408370,7 +408371,7 @@
         {
           "Id": "stop",
           "Speaker": "Elyanka",
-          "Text": "{n}She looks at you for a long moment. Then she sets the cup down on the floor by the sergeant's cot, very precisely, and folds her hands in her sleeves.{/n}\n\"As crusaders. In lime, with prayers, in a queue.\" {n}No mockery; only a kind of weariness.{/n} \"As you like. They are yours. I only came because nobody else was awake.\"\n{n}At the door she stops.{/n} \"The boy with the arm will die before morning. He asked me to stay. I told him I would. Tell him yourself that I could not.\"",
+          "Text": "{n}She looks at you over the sergeant's cot. Then she sets the cup down on the floor by the sergeant's cot, very precisely, and folds her hands in her sleeves.{/n}\n\"As crusaders. In lime, with prayers, in a queue.\" {n}No mockery; only a kind of weariness.{/n} \"As you like. They are yours. I only came because nobody else was awake.\"\n{n}At the door she stops.{/n} \"The boy with the arm will die before morning. He asked me to stay. I told him I would. Tell him yourself that I could not.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -408917,7 +408918,7 @@
         {
           "Id": "look",
           "Speaker": "Elyanka",
-          "Text": "{n}Her hand closes on the charcoal and on your fingers together. For a moment she does not lift her eyes; you can see her deciding not to.{/n}\n{n}Then she does. She looks at your face for the first time since the veil came off, for as long as it takes a candle to gutter and steady, with those pale unblinking eyes, and whatever she finds there she does not say.{/n}\n\"Once,\" {n}she says, and lets go of the charcoal.{/n} \"That was once. Do not ask again. I have to go on believing you are a liar, or I will start believing everything else.\"",
+          "Text": "{n}Her hand closes on the charcoal and on your fingers together. For a moment she does not lift her eyes; you can see her deciding not to.{/n}\n{n}Then she does. She looks at your face, as she has not once since the veil came off, for as long as it takes a candle to gutter and steady, with those pale unblinking eyes, and whatever she finds there she does not say.{/n}\n\"Once,\" {n}she says, and lets go of the charcoal.{/n} \"That was once. Do not ask again. I have to go on believing you are a liar, or I will start believing everything else.\"",
           "Choices": [
             {
               "Text": "[Give her back the charcoal.]",
@@ -408951,47 +408952,6 @@
         5
       ],
       "Sender": "Elyanka"
-    },
-    {
-      "Id": "elyanka.trickster.react.woljif_wake",
-      "Title": "Woljif's word",
-      "Owner": "Woljif",
-      "MinChapter": 5,
-      "MaxChapter": 5,
-      "Entry": "\"Something funny, Woljif?\"",
-      "Nodes": [
-        {
-          "Id": "start",
-          "Speaker": "Woljif",
-          "Text": "{n}Woljif falls into step beside you with the look of a man who has heard something wonderful in a tavern and paid for it.{/n}\n\"Boss. Boss. Tell me it's true. You went to your own wake. In a curtain. And haggled over your own corpse with a lady necromancer from Ustalav, and she didn't twig till you took the curtain off.\" {n}He presses a hand to his heart.{/n}\n\"That's art, that is. I've talked my way out of a Kenabres cell, boss, and into a few worse ones, but I never once sold myself to anybody for more than I was worth.\" {n}A pause.{/n} \"How much *were* you worth? No. Don't tell me. I'll only cry.\"",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": null,
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Woljif"
-        }
-      ],
-      "Requires": [
-        "trickster.ever",
-        "elyanka.trickster.bluffed"
-      ],
-      "Forbids": [
-        "woljif.dead",
-        "woljif.kicked_out"
-      ],
-      "DelayHours": 0,
-      "Optional": false,
-      "Relationship": "elyanka",
-      "Reaction": true,
-      "AnswerLists": [
-        "e41585da330233143b34ef64d7d62d69"
-      ]
     },
     {
       "Id": "elyanka.trickster.beat.grave",
@@ -409482,10 +409442,52 @@
       "RequiresAnyGroups": [
         [
           "elyanka.trickster.writ.upheld",
-          "elyanka.trickster.writ.lied",
           "elyanka.trickster.writ.hers"
         ]
       ],
+      "AnswerLists": [
+        "2366a8db6481070439fee222c0c52e45"
+      ]
+    },
+    {
+      "Id": "elyanka.trickster.react.regill_lie",
+      "Title": "Regill's word",
+      "Owner": "Regill",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About the Ustalavic priestess.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Regill",
+          "Text": "{n}Regill does not look up from the report he is annotating.{/n}\n\"You told the chaplains that the priestess in the dead-house is your embalmer, Commander. I went to Nerosyan's register afterwards. She is entered there as a noblewoman of Ustalav under the crusader's oath, with six men who do not appear to breathe. She is not entered as anybody's servant.\" {n}He turns a page.{/n}\n\"Her oath would have held without your lie. You lied anyway, to two chaplains and a clerk of the court, about a matter the law had already settled.\" {n}His pen scratches.{/n} \"I have noted it. I note everything. I simply want you to know which of the two of you I trust to tell the truth under oath, and it is not you.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Regill"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "regill.in_party",
+        "elyanka.trickster.writ.lied"
+      ],
+      "Forbids": [
+        "regill.dead",
+        "regill.kicked_out",
+        "regill.plot_absent"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "elyanka",
+      "Reaction": true,
       "AnswerLists": [
         "2366a8db6481070439fee222c0c52e45"
       ]
@@ -413208,8 +413210,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",

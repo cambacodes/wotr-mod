@@ -174,7 +174,7 @@ SCENES.append(scene(E + "door.hearse", "A hearse at the south gate", "Elyanka", 
     nar("start", '''{n}The sergeant of the south gate has been standing outside your door since the change of watch, and he has not once put down the card in his hand, as if it might go off. It is heavy grey paper edged in black, sealed with black wax and a pressed white flower, and it is addressed in a tall, sloping hand:{/n}
 *To the executor of the estate of the late Knight Commander of the Fifth Crusade. Elyanka Camilary, of the Immortal Principality of Ustalav, under the crusader's oath, asks leave to treat for the remains. Payment in hand.*''',
         c("Continue", "sergeant")),
-    n("sergeant", "Gate sergeant", '''"Came up the Ustalav road at noon, Commander. A hearse. Black lacquer, glass sides, four black horses in plumes, and six of hers walking behind in grey without a word out of any of them. She has the oath right enough. Sworn at Nerosyan last spring; I read it twice. By law she can come in, and she knows it. She told me so before I asked."
+    n("sergeant", "Gate sergeant", '''"Came up the Ustalav road at noon, Commander. A hearse. Black lacquer, glass sides, four black horses in plumes, and six of hers walking behind in grey without a word out of any of them. She has the oath right enough. Sworn at Nerosyan on her way north, not a month back; I read it twice. By law she can come in, and she knows it. She told me so before I asked."
 {n}He turns the card over, and back.{/n} "She asked for your executor, Commander. Not for you. I didn't tell her you were alive. I didn't tell her anything. I don't think she'd have heard me if I had."''',
       c("Continue", "king", requires=(FUNERAL_KING,)),
       c("Continue", "anevia", requires=(FUNERAL_PA,), forbids=(FUNERAL_KING,)),
@@ -289,7 +289,7 @@ visit(E + "executor.haggle", "The executor", [
 "Your executor has a pulse, Commander. It is in the throat, and it is racing."''',
        c("Continue", "pulse2")),
     el("pulse2", '''"Did you think I had never seen a living thing play dead? I have seen hundreds. My order has hidden in plain sight for six hundred years, and you came to me in a *curtain*." {n}She takes her hand back and wipes her fingers on a napkin, one by one.{/n}
-"I can guess why. You wanted my price before I had yours. Take that off. I will make the same offer to the owner, bare-faced, and the owner will answer it bare-faced, or leave."''',
+"I can guess why. You wanted to know what I would pay before I knew what you were. Take that off. I will make the same offer to the owner, bare-faced, and the owner will answer it bare-faced, or leave."''',
        c("[Take off the veil and hear her terms.]", "bare"),
        c('[See her out] "The owner isn\'t selling."', "seen_out")),
     el("bare", '''{n}She does not look at your face once you have uncovered it. She looks at your hands, and your throat, and the vein at your temple, as if those were the parts of you that could be trusted.{/n}
@@ -349,7 +349,7 @@ visit(E + "test.the_dead", "Sixty-one under canvas", [
     el("plain", '''"Commander." {n}She does not look up.{/n} "You are the only person in this room who is still sweating. Stand over there, by the door, where it does not carry."''',
        c("Continue", "rows")),
     el("rows", '''{n}She lifts the canvas from a young face with a split lip, looks, and lets it fall.{/n}
-"Your Pharasmin priests are very slow. The ones with names went into the earth two days ago, with prayers and mothers. These have no names. Nobody has come for them. Nobody will." {n}She moves to the next row.{/n}
+"Your chaplains are very slow. The ones with names went into the earth two days ago, with prayers and mothers. These have no names. Nobody has come for them. Nobody will." {n}She moves to the next row.{/n}
 "In three days they go into a pit with lime on top, and the grey warden has sixty-one more souls in her queue, and the flesh rots in the dark for nothing. Nothing at all. It is the most wasteful custom in the world."''',
        c("Continue", "paladin", requires=("seelah.in_party",)),
        c("Continue", "ask", forbids=("seelah.in_party",))),
@@ -522,7 +522,7 @@ tag(E + "react.daeran_door", "T")
 
 SCENES.append(reaction("Daeran", E + "react.daeran_after", ("trickster.ever", BIER),
     '''{n}Daeran regards you for some time over the rim of his cup before he speaks.{/n}
-"You slept in a hearse." {n}He says it slowly, savouring it.{/n} "With the undertaker. Who is a priestess of Lady Despair and has measured you for the table. I have never in my life been so jealous of anyone, and I have been jealous of a great many people."
+"You slept in a hearse." {n}He says it slowly, savouring it.{/n} "With the undertaker. Who is a priestess of the Pallid Princess and has measured you for the table. I have never in my life been so jealous of anyone, and I have been jealous of a great many people."
 "She will have no idea what to drink at a funeral that has not happened yet. Tell her the cellars of my house are at her disposal. Every year, on the day they feasted you dead in Drezen, I shall send her a bottle older than she is. I want to watch her taste it and pretend she is above such things."''',
     answer_list=DAERAN_HUB, chapter=5, last=6, entry='"You\'re staring, Daeran."', portrait="Daeran",
     flags=(DAERAN_ALLY,), forbids=DAERAN_GONE))
