@@ -279,6 +279,25 @@ internal static class NurahTricksterTests
         check(!Rules.Available(story, ranTerms, lateRanSeen), "The late runaway gets the in-person terms.");
         var lateRanEnd = Program.Copy(lateRanSeen); lateRanEnd.Chapter = 6; Rules.Complete(story, lateRanEnd);
         check(Rules.Available(story, epCommit, lateRanEnd), "The late runaway has no epilogue commit.");
+        // R2-6 (Sol round 1): both late branches reach the Last Call coda on their late key; a refusal never does.
+        var lcPage = S("nurah.lastcall.page");
+        check(lcPage.RequiresAnyGroups.Length == 1 && lcPage.RequiresAnyGroups[0].Contains("nurah.complete")
+              && lcPage.RequiresAnyGroups[0].Contains("nurah.trickster.late_coda") && !lcPage.Requires.Contains("nurah.complete"),
+            "The Last Call coda still requires the in-play commit only.");
+        check(lateRanEnd.Has("nurah.trickster.late_coda") && ending.Has("nurah.trickster.late_coda") && !lateRanEnd.Has("nurah.complete"),
+            "A late branch does not reach the coda key.");
+        var refusedLate = Program.Walk(terms, deadSeen).First(r => r.Has("nurah.closed"));
+        var refusedEnd = Program.Copy(refusedLate); refusedEnd.Chapter = 6; Rules.Complete(story, refusedEnd);
+        check(!refusedEnd.Has("nurah.trickster.late_coda") && !refusedEnd.Has("nurah.complete"), "A refusal reaches the coda key.");
+        // Ramisa's call-in: a soul paid for in gold is no debt; the story (or the duplicate bill, sold on screen) is.
+        var lcCall = S("nurah.lastcall.call");
+        var owed = lcCall.RequiresAnyGroups.SelectMany(g => g).ToList();
+        check(owed.Contains("nurah.trickster.cost.ramisa_audience") && owed.Contains("nurah.trickster.cost.bill_in_your_name")
+              && !owed.Contains("nurah.trickster.cost.ramisa_fee"), "Paying Ramisa in gold still leaves a story owed.");
+        var callChoices = lcCall.Nodes.Single().Choices;
+        check(callChoices.Single(c => c.Requires.Contains("nurah.trickster.cost.ramisa_audience")).Set.All(f => f != "trickster.lastcall.nurah_story_sold")
+              && callChoices.Single(c => c.Requires.Contains("nurah.trickster.cost.bill_in_your_name")).Set.Contains("trickster.lastcall.nurah_story_sold"),
+            "The duplicate bill's call-in does not sell the story on screen.");
         // Primed in Chapter 3, released too late for the Chapter 3 reply: the Chapter 5 reply picks it up.
         var primedRan5 = World(story, 5, "trickster.ever", "nurah.ran_off", "nurah.trickster.primed", "nurah.trickster.cost.ghostwritten");
         check(!Rules.Available(story, reply, primedRan5) && Rules.Available(story, replyLate, primedRan5), "A Chapter 3 dedication has no Chapter 5 reply.");

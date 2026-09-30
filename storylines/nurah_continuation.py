@@ -793,7 +793,9 @@ You kiss the corner of her mouth. She turns toward you and makes you begin again
 "We could move."
 "I was hoping you would think of that."
 {n}You lift her from the chair. She makes a small, affronted sound that turns into a laugh halfway through, and wraps an arm around your neck. On the way past the table she reaches down to extinguish the lamp. The old letter disappears into darkness with everything else.
-Later, when she retrieves it, she does so without hurrying. She folds it into her sleeve and steals the warmer side of the cover before you can object.{/n}''', c('[Let the work wait until the next appointment.]', flags=f("letter_faced"))),
+At the bed she twists out of your arms before you can set her down, lands on her knees on the cover, and hauls you after her by the collar she has already half unfastened.{/n}
+"You were slow," she says. "Trezbot's clerks were faster, and they were paid by the hour." {n}She pulls the pins out of her hair one at a time and drops them on the floor, and then her dress after them, and puts one ink-stained hand flat on your chest and pushes you down onto your back, and follows.{/n}
+{n}In the morning she retrieves the letter without hurrying, folds it into her sleeve, and steals the warmer side of the cover before you can object. When you reach for her she does not pretend to be asleep. From that night she stops knocking at your door; she simply comes in, and tells you what she has been writing, and sits where she likes.{/n}''', c('[Let the work wait until she comes up the stair again.]', flags=f("letter_faced"))),
 ], "papers_recovered")
 
 
@@ -1002,7 +1004,7 @@ He brings it. Vhal watches the tracing begin and says she would like to discuss 
 "Then you have had an unusually good view of its manufacture."
 {n}He closes his book. Vhal keeps repeating that the original remains available to a properly arranged inquiry. But when another subscriber asks whether his deposit purchased research or a performance, she cannot answer by blaming the Commander.
 Nurah takes your arm and walks toward the door. Vhal catches you before you leave, lowering her voice so the guests cannot hear the word settlement.
-Nurah makes her repeat it.{/n}''', c('[Take the offer without pretending the missing record was displayed.]', flags=f("reading_confronted"))),
+Nurah makes her repeat it.{/n}''', c('[Take the offer. The record stays missing.]', flags=f("reading_confronted"))),
 ], "evening_prepared")
 
 
@@ -1307,7 +1309,7 @@ Bressa's record sits in a smaller folder with the acquisition note. Nurah has se
 "Does everything become useful?" you ask.
 "No. Some things become expensive. I try to notice the difference before I acquire them."
 {n}Her gaze settles on you, warm and deliberately appraising.{/n}
-"You are making that calculation difficult. I resent it more attractively on some evenings than others."''', c('[Accept the profitable, coercive business she has chosen to build.]', "history", flags=f("outcome_collection"))),
+"You are making that calculation difficult. I resent it more attractively on some evenings than others."''', c('[Let her keep her collection, and name her own price for it.]', "history", flags=f("outcome_collection"))),
     n("distance", "Nurah", '''{n}The settlement releases Bressa's record and the evidence concerning Vhal's offer. The wider supplier list remains outside your joint undertaking. Nurah has copied the record for an inquiry and paid to have it carried to the purchaser's district.
 She gives you the account without mentioning the separate scrap she kept when you refused her larger plan.{/n}
 "You are waiting for me to ask," you say.
@@ -1318,8 +1320,8 @@ She gives you the account without mentioning the separate scrap she kept when yo
 "We worked rather well together until you began editing my ambitions."
 "We still obtained the record."
 "We did. I am capable of remembering a useful partner while being annoyed with one."
-{n}She puts the final inventory beside you and leans back in the chair. She has brought the completed work in person. The disagreement has changed what she shares, not made her vanish or recant what she wanted.
-When she reaches for your hand a few moments later, the gesture contains neither apology nor a request for one.{/n}''', c('[Keep the result and the disagreement without pretending either has disappeared.]', "history", flags=f("outcome_distance"))),
+{n}She puts the final inventory beside you and leans back in the chair. The scrap she kept stays folded in her sleeve, and she makes sure you see her not taking it out.
+When she reaches for your hand a few moments later, she does it without apologising, and without asking whether you would like her to.{/n}''', c('[Keep the record, and let her keep her scrap.]', "history", flags=f("outcome_distance"))),
     n("history", "Nurah", '''{n}Nurah rolls the wrapper into a narrow tube and looks through it at the finished pages.{/n}
 "There. A much more respectable distance from the subject. Historians should be issued these."
 {n}She lowers it when you laugh. The inquiry into Bressa has begun, but the present answer ends at a record, a purchaser, and a road someone still has to travel. Nurah has not written an ending for the woman simply because the edition needs one.

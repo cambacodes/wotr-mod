@@ -257,10 +257,17 @@ partner("nurah", "nurah", "nurah.complete", "nurah.closed", "The Last Chapter",
         page_p('''Her name went on the cover next to the Commander's. She had insisted. She was right to.''', requires=(NU + "cost.coauthor",)),
         page_p('''Her name went on the cover above the Commander's, in larger letters. She had insisted. The Commander had let her.''', requires=(NU + "cost.name_above",)),
         page_p('''She wrote the Commander's obituary herself, for a Nerosyan broadsheet. It was vicious, accurate and extremely popular.''', requires=(ON_RECORD,)),
-    ), deal=[[NU + "cost.ramisa_fee"], [NU + "cost.ramisa_audience"], [NU + "cost.bill_in_your_name"]],
+    # Sol quality pass (Nurah TRK/BEL): a soul paid for in gold leaves no debt, so the call-in is offered only on the story
+    # she sold (ramisa_audience) or on the duplicate bill Ramisa kept; for the bill alone the story is sold here, on screen,
+    # against that bill (trickster.lastcall.nurah_story_sold), and the page's first paragraph burns it.
+    ), deal=[[NU + "cost.ramisa_audience"], [NU + "cost.bill_in_your_name"]],
     call=call('''[Call in the custom order] "Madam Shed-Skin, you wanted art. I'm about to make some. Front row."''',
         '''{n}A mirror in a slave market somewhere in the Abyss clears, like breath wiped from glass, and something with a great many arms settles in to watch.{/n}''',
-        (PILLAR_CHOICE, (PILLAR,), (), ())))
+        (PILLAR_CHOICE, (PILLAR,), (NU + "cost.ramisa_audience",), ()),
+        ('''"Front row, for the duplicate bill with my name on it. You burn it when the curtain falls."''',
+         (PILLAR, "trickster.lastcall.nurah_story_sold"), (NU + "cost.bill_in_your_name",), (NU + "cost.ramisa_audience",))),
+    # R2-6: the late courier and the late pedlar commit on the epilogue page; their coda plays on the late key.
+    page_commit_groups=[["nurah.complete"], [NU + "late_coda"]])
 
 KI = "kiana.trickster."
 partner("kiana", "kiana", "kiana.committed", "kiana.closed", "Home by Spring",
@@ -360,7 +367,10 @@ partner("targona", "targona", "targona.committed", "targona.closed", "The Quiet 
         '''{n}Something warm and patient moves under your ribs: a light that belongs to someone's brother, lent to you in an infirmary and never quite given back.{/n}''',
         (PLAIN_CHOICE, (), (), (T + "cost.light_sealed",)),
         ('''[Break your promise to Targona] "Forgive me. I need it."''', (), (T + "cost.light_sealed",), ()),
-        ("[Keep your promise] Leave the light where it is.", None, (T + "cost.light_sealed",), ())))   # resolves, not called
+        ("[Keep your promise] Leave the light where it is.", None, (T + "cost.light_sealed",), ())),   # resolves, not called
+    # Sol quality pass (Targona INT): RanRomance's own Targona romance, completed through its Angelic Treatment on this
+    # path, is a commitment for the coda too (targona.trickster.parent_romanced; its correspondence never sets committed).
+    page_commit_groups=[["targona.committed"], [T + "parent_romanced"]])
 
 D = "dorgelinda.trickster."
 partner("dorgelinda", "dorgelinda", "dorgelinda.committed", "dorgelinda.closed", "The Open Line",

@@ -61,7 +61,8 @@ EVIL = "nurah.trickster.temper_evil"
 LATE_COMMITTED = "nurah.trickster.late_committed"
 PRINTER = "nurah.trickster.cost.printer_paid"          # the early dedication, with a purse sent to the presses (chosen)
 PRINTER_PAID = "nurah.trickster.printer_paid"          # derived: that purse, or a pedlar's run bought and its printer paid
-SECOND_EDITION = "nurah.trickster.cost.second_edition" # the pedlar met only in Chapter 5, after her first printing sold out
+P_LATE_CODA = "nurah.trickster.late_coda"             # derived: a late branch's commit (Last Call page)
+SECOND_EDITION = "nurah.trickster.cost.second_edition"# the pedlar met only in Chapter 5, after her first printing sold out
 DEATHS = ("nurah.dead_drezen", "nurah.dead_camellia", "nurah.killing_mechanism")
 CAMELLIA_KILL = "nurah.dead_camellia"
 
@@ -598,6 +599,12 @@ def integrate(payload):
     if derived.get(PRINTER_PAID, groups) != groups:
         raise ValueError("Conflicting derived key: " + PRINTER_PAID)
     derived[PRINTER_PAID] = groups
+    # The late branches (courier, both pedlars) commit on the epilogue page and can never reach a refusal after the proofs
+    # (the in-person terms forbid cost.late), so this is their Last Call coda key (lastcall_partners, R2-6).
+    coda = [["trickster.ever", PROOFS, LATE]]
+    if derived.get(P_LATE_CODA, coda) != coda:
+        raise ValueError("Conflicting derived key: " + P_LATE_CODA)
+    derived[P_LATE_CODA] = coda
     ours = {s["Id"] for s in SCENES}
     for s in payload["Scenes"]:
         if s.get("Relationship") != "nurah" or s["Id"] in ours:
