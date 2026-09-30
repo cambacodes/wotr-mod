@@ -237,32 +237,22 @@ s("the_long_way_with_company", "The weight on the road", '"Are the things ready 
 
 s("a_lesson_without_her", "The work someone else began", '"What did the learners make of the patterns?"', [
     n("start", "Gesmerha", '''{n}Gesmerha has arranged three small carvings on the chest. Each rests on its own scrap of cloth. She asks you to sit, then tells you which one has an edge that catches a careless finger.{/n}
-"I have stopped touching that side first," she says. "A valuable lesson. I hope its maker intended it."
+"I have stopped touching that side first," she says. "Its maker will not say whether he meant it. I think he did."
 {n}She lifts the middle piece and follows its broad curve with her thumb.{/n}
-"Elun brought these. His own, his cousin's and one made by a woman who insisted she was only watching until someone lent her a knife."
-"Did you hear their explanations?"
-"More than once. I am trying to decide which questions I asked because I wanted to know, and which because I wanted them to discover how much I knew already."''',
+"Elun brought these. His own, his cousin's, and one made by a woman who swore she was only watching until someone lent her a knife."''',
       c('"We reached them before the lesson. What did you keep thinking about afterward?"', "present", requires=("gesmerha.crossing_read",)),
       c('"Did Elun tell you how the lesson went without you?"', "absent", requires=("gesmerha.crossing_delayed",)),
       c('[Return when she has finished examining them.]', abort=True)),
-    n("present", "Gesmerha", '''"The woman who had meant only to watch. She would not ask me where to put the cut. She asked whether the shape had to turn inward at all."
-"Did it?"
-"Not for the thing she wanted to make. I had been preparing to explain how to turn it more neatly. She had already chosen something else."
+    n("present", "Gesmerha", '''"The woman who was only watching. She did not ask me where to put the cut. She asked whether the shape had to turn inward at all. It did not, for what she wanted. She cut it her way while I was still explaining mine."
 {n}Gesmerha puts the piece back on its cloth.{/n}
-"I enjoyed being there. I also spoke long enough that Elun had to ask whether there would still be time for everybody to work. He was polite. I managed to be polite in return before deciding how much I resented the interruption."
-"And afterward?"
-"I asked him to keep the time at the next lesson. He named a price in lessons of his own. Apparently he can learn administration from me without becoming unable to negotiate."
-{n}Her smile is fond and exasperated.{/n}
-"He will do well, if he stops trying to make every handle impressive enough for a feast."''', c('[Ask how their next lessons will work.]', "patterns")),
-    n("absent", "Gesmerha", '''"In great detail. They began by waiting for me. Then someone asked whether the wood would become easier to cut if they stared at it longer. I suspect Elun supplied that part of the story after discovering I could bear it."
+"And halfway through my demonstration Elun stood up and asked, in front of all of them, whether anyone else was going to get a knife in their hand before dark."
+"What did you say?"
+"Nothing I would repeat to his mother. Then I gave them the knives." {n}Her mouth twists.{/n} "He keeps the hour next time. He was right, and I will not say so twice."''', c('[Ask how their next lessons will work.]', "patterns")),
+    n("absent", "Gesmerha", '''"In great detail. They waited for me until someone asked whether the wood would cut easier if they stared at it longer. Then Elun handed out the knives."
 "They worked without you."
-"Yes. They made several mistakes I could have prevented. They also tried something I would have discouraged because I had failed at it years ago. It worked well enough to annoy me."
+"They made three mistakes I could have stopped, and tried a thing I failed at years ago. It worked. I have not forgiven it."
 {n}She turns the broad piece between her hands.{/n}
-"I apologized for not arriving when I said I would. He told me where they needed help now. I had expected to begin with the lesson I had prepared. The work had gone on without waiting for my explanation."
-"Was that difficult?"
-"For several embarrassing breaths. Then I had something interesting to do. I can survive being late to a discovery. I should prefer not to practice on every occasion."
-{n}She sets the piece down in its proper place.{/n}
-"Elun will begin the next lesson. I have asked him to leave me the difficult questions, rather than every question. He looked pleased until I told him I meant it."''', c('[Ask how their next lessons will work.]', "patterns")),
+"I came in with a lesson ready. Elun cut me off before the first sentence and put this in my hands instead, and asked where it was wrong." {n}Her thumb stops on a ridge.{/n} "It was wrong here. That was a better lesson than mine. He begins the next one. I get the hard questions."''', c('[Ask how their next lessons will work.]', "patterns")),
     n("patterns", "Narrator", '''{n}Gesmerha asks you to move the untouched cup away from the three pieces and say where you set it. She waits for your answer before spreading a clean cloth across her knees.{/n}''',
       c('[Ask whether the third teaching copy is finished.]', "copies", requires=("gesmerha.teaching_copies",)),
       c('[Ask whether Sella agreed to the requested loan.]', "loan", requires=("gesmerha.family_loan",))),
@@ -283,15 +273,13 @@ s("a_lesson_without_her", "The work someone else began", '"What did the learners
 "Yes. I enjoyed it. No argument about who ought to own the lesson afterward."
 {n}Her hand rests on the clean cloth.{/n}
 "The box is hers. If a loan comes at a bad time, we ask for another. I will not build my workshop around a box that lives under somebody else's roof."''', c('[Ask what she wants her own workshop to become.]', "hers")),
-    n("hers", "Gesmerha", '''"Smaller, for a while. That was not the answer I expected to want."
+    n("hers", "Gesmerha", '''"Smaller, for a while."
 {n}She folds the cloth into a narrower strip.{/n}
-"I want to teach people who will carry something away without requiring me to carry every tool after them. I want a morning when I can choose one piece of work and remain with it until I understand why it displeases me."
+"Learners who carry their own tools. And a morning with one piece of wood and nobody at the door, until I know why it displeases me."
 "Would you miss being needed?"
-"Yes. I expect to become inconvenient about it. You may remind me of this conversation if you first allow me to complain for a reasonable length of time."
-"How long is reasonable?"
-"We shall discover where we disagree."
-{n}Her smile lingers as she lays the folded strip aside.{/n}
-"The box has reached its owner. The work I promised is settled. There will be other questions, but I do not intend to borrow them merely because this one has finished."
+"Yes. I will be unbearable about it. Let me complain first, then remind me I said this."
+{n}She lays the folded strip aside.{/n}
+"The box has reached its owner. The work I promised is done. The next quarrel can find me on its own."
 {n}She turns toward your voice.{/n}
 "I would like an evening with you. An evening nobody has requested for the benefit of the clan. Would you come?"''',
       c('"Yes. Tell me where you would like to meet."', "invitation"),
@@ -426,9 +414,9 @@ s("the_work_left_finished", "A place in the days ahead", '"Is everything ready f
 "Have you chosen where to go?"
 "Not a new home for everyone. I know which people are traveling with me for the first stretch. I know what they have chosen to carry. After that we will have to ask questions of people who do not owe us comforting answers."
 {n}She rests her palm on the lid beside her.{/n}
-"I shall miss things I was tired of tending. I expect to complain about a new place by comparing it with something I disliked here. If you hear me doing that, ask for the rest of the comparison."
-"Will you tell me?"
-"After defending myself for a little while. I am trying to make the warning accurate."
+"I will miss things I was sick of tending. I will complain about the new place by comparing it to something I hated here. Laugh at me when I do."
+"Will you let me?"
+"Once."
 {n}Her smile fades gently.{/n}
 "I want you in that life. I cannot tell you which roof it will be under. I can tell you what I offer."''', c('[Ask her to say it.]', "offer")),
     n("shelter", "Gesmerha", '''"Yes. We can leave the houses without giving every part of this land to what has hurt us. I have not promised that we will return to these same rooms and find the old days waiting."

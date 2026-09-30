@@ -188,7 +188,7 @@ s("whose_mark", "A name on the underside", '"How is the game coming along?"', [
 "You could refuse the order."
 "I have not received an order. I have received a man explaining how fortunate I would be to receive one."
 {n}Her mouth tightens in a smile that is almost a grimace.{/n}
-"I was angry with him. Then I was angry with myself for wanting the plane. I am still deciding which anger is useful."
+"I was angry with him. Then with myself, for wanting the plane."
 "What would you put on the game?"
 "My maker's mark. Whoever buys it may add their own name to the wrapping. They need not carve it into my work."''',
       c('"Let the work travel under your mark. I can give an honest account if anyone asks."', "own"),

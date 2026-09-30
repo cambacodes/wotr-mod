@@ -69,7 +69,7 @@ PRESENCES = {
     # absent the anchor fails, gesmerha.presence.failed is raised and the epilogue page carries the commit (no letter twin:
     # the Chapter 5 letter cap).
     "gesmerha.presence": dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=SMITH, Side="left", Distance=2.5),
-                              Requires=["trickster.ever", RETURNED], Forbids=[CLOSED, COMMITTED],
+                              Requires=["trickster.ever", RETURNED], Forbids=[CLOSED],
                               MinChapter=3, MaxChapter=5, AnswerLists=[], Dialog="hub",
                               Greeting="{n}Gesmerha has taken the corner of the smith's yard farthest from the forge. "
                                        "She tilts her head toward the gate before you reach it.{/n} \"Your step, stranger. "
@@ -266,9 +266,13 @@ def footsteps(suffix, lists, areas, extra):
             c('"Never mind."', abort=True)),
         g("game", '''{n}You play. On the fourth move your hand goes to a square before she has named the rule, and her fingers close on your wrist.{/n}
 "There. You knew that. Nobody knows that; I have not told it to anyone." {n}She lets go slowly.{/n} "I don't believe your ten afternoons. I believe you will come back to lose the eleventh. The loser pays for the pieces, Commander. Count them."''',
-            c("[Pay for the pieces]", crusade=("Finances", -50), alignment=("Chaotic", 1), flags=("gesmerha.campaign_kept", CATCHUP, SLOW))),
+            # gesmerha.campaign_slow: the courtship the late chain reads (an unresolved romance, as the registered slow start);
+            # SLOW (cost.campaign_slow) marks only the trick itself.
+            c("[Pay for the pieces]", crusade=("Finances", -50), alignment=("Chaotic", 1),
+              flags=("gesmerha.campaign_kept", "gesmerha.campaign_slow", CATCHUP, SLOW))),
         g("honest", '''"Then you have one. Honest liars pay for the pieces too. Sit."''',
-            c("[Sit down]", flags=("gesmerha.campaign_kept", CATCHUP))),
+            c("[Pay for the pieces, and sit down]", crusade=("Finances", -50),
+              flags=("gesmerha.campaign_kept", "gesmerha.campaign_slow", CATCHUP))),
         ], requires=("trickster", "trickster.ever", "gesmerha.wintersun_resolved", "gesmerha.met", *extra),
         forbids=("gesmerha.campaign_kept", DEAD, CLOSED, CATCHUP, "inhuman"), delay=0, last=5, Relationship="gesmerha",
         Chapters=[5], RequiresAny=["gesmerha.truth", "gesmerha.illusions"], AnswerLists=lists, ContactUnit=UNIT,
@@ -299,9 +303,14 @@ def page(id, title, text, requires, forbids, paragraphs=(), **extra):
                         requires=requires, forbids=forbids, last=99, Relationship="gesmerha", **extra))
 
 
-page("bench", "What came after", '''{n}Gesmerha never carved on commission again. She kept the corner of the smith's yard for as long as the war lasted and a good while after, and it became the corner of the city where people came to have the truth cut out of wood for them, whether they liked it or not.{/n}
-{n}The Commander kept the oath about purses, which surprised everyone who knew the Commander. She could tell the Commander's step from anyone's, in any crowd, and she let it be known that she always heard it a long time before it reached the door.{/n}''',
-     requires=(RETURNED, COMMITTED), forbids=(CLOSED,), paragraphs=STATUE_PARAGRAPHS)
+page("bench", "What came after", '''{n}Gesmerha never carved on commission again. She kept the corner of the smith's yard for as long as the war lasted and a good while after, and it became the corner of the city where people came to have the truth cut out of wood for them, whether they liked it or not. She could tell the Commander's step from anyone's, in any crowd, and she let it be known that she always heard it a long time before it reached the door.{/n}''',
+     requires=(RETURNED, COMMITTED), forbids=(CLOSED,), paragraphs=(
+         p("The Commander kept the oath about purses, which surprised everyone who knew the Commander.", forbids=(HANDS,)),
+         p("The Commander never swore off buying things, and she never asked again. Three days in her yard with both hands on "
+           "the wood had been the price instead, and she held that it had been paid in full: when anyone in Drezen offered her "
+           "coin for the Commander's time, she told them the only currency she took for that had already been spent.",
+           requires=(HANDS,)),
+     ) + STATUE_PARAGRAPHS)
 
 page("commit", "The Commander's door", '''{n}Gesmerha finished the Commander's carving in the spring after Threshold, in a borrowed corner of a Drezen smithy, and then she walked the width of the city by ear to find out what came after. The smith swore she stopped at the Commander's door and listened for a long time before she knocked. She never said what she decided. She never carved on commission again.{/n}''',
      requires=("trickster.ever", RETURNED), forbids=(COMMITTED, CLOSED, DECLINED), paragraphs=STATUE_PARAGRAPHS,
@@ -415,6 +424,10 @@ def integrate(payload):
         _paragraphs(_scene(by_id, id), (COMMISSION_PARAGRAPH,))
     for id in LATE_LIVING:
         _paragraphs(_scene(by_id, id), (BORROWED_PARAGRAPH,))
+
+    court = _scene(by_id, "gesmerha.the_voice_at_court")
+    if CATCHUP not in court["Forbids"]:
+        court["Forbids"].append(CATCHUP)
 
     # The first late visit: a Commander who only claimed the afternoons is asked for one true thing before sitting. The
     # registered "too long since our last afternoon" answer is retired for that Commander by a gate, not removed.

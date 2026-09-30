@@ -4,7 +4,7 @@ The songs, apprentices and relationship are authored developments.
 The capital visit is restricted to the actual guest etude, actor and answer list.
 No revival, permanent guest, sight restoration or native outcome is written.
 """
-from story_format import c, n, reaction, scene
+from story_format import c, n, p, reaction, scene
 from storylines.gesmerha_opening import UNIT, AREA, ANSWER_LIST
 
 CAPITAL = "2570015799edf594daf2f076f2f975d8"
@@ -171,7 +171,7 @@ s("the_unfinished_verse", "Who may finish the song", '"Has Vesk brought his wint
 {n}When the others leave, she keeps her hand on the bench where Dera had been sitting.{/n}
 "My grandmother would have approved of the argument," she says. "Then she would have sung whatever she pleased. I am attempting a more difficult accomplishment."
 "Which?"
-"Listening to the answer without composing my next correction."''',
+"Keeping my mouth shut until she has finished."''',
       c('[Agree to return for the two songs.]', flags=("gesmerha.verse_kept", "gesmerha.song_answer"))),
     n("together", "Gesmerha", '''"A shorter song," Gesmerha says. "I can hear Runa calculating how much of hers will survive."
 "Most of it," Runa answers promptly.
@@ -458,11 +458,10 @@ s("the_voice_at_court", "The voice that came back", '"Before you go, may we spea
 "And you still want to return?"
 "I want to see what we can make there when it is possible to work without preparing to flee. I know what the old place cost us. I also know things I would not willingly hand over to the ruin."
 {n}She taps the bundle beside her with two fingers.{/n}
-"Not every person will want the same thing. Dera wants to sell work somewhere her mother was not already known. I told her that was a reasonable ambition. I managed to sound as though I meant it before I had quite caught up with the words."
+"Not every person will want the same thing. Dera wants to sell work somewhere her mother was not already known. I told her that was a fair ambition. It stuck in my throat on the way out."
 "Will you ask her to stay?"
-"I have asked her to help while we travel. I have not asked for the rest of her life. If I want her to return, I can make something worth returning to."
-{n}Gesmerha straightens the tie at her wrist.{/n}
-"That will take longer than an encouraging speech. I am trying to remember it when an encouraging speech seems easier."''', c('[Ask how she wants this meeting to end.]', "choice")),
+"I have asked her to help while we travel. Not for the rest of her life. If I want her back, I had better make something worth coming back to."
+{n}Gesmerha straightens the tie at her wrist.{/n}''', c('[Ask how she wants this meeting to end.]', "choice")),
     n("choice", "Gesmerha", '''"With a little time still belonging to us," she says. "I have given the report. I can spend a few more breaths deciding what I want to remember of your welcome."
 {n}She turns toward you, waiting for you to speak before reaching out.{/n}''',
       c('"I\'m still yours. Kiss me before you go."', "kiss", requires=("gesmerha.lover",)),
@@ -494,9 +493,9 @@ s("the_voice_at_court", "The voice that came back", '"Before you go, may we spea
 ], "gesmerha.campaign_kept", chapter=5)
 
 
-def ending(id, title, text, requires=(), forbids=(), owner="Epilogue", **extra):
+def ending(id, title, text, requires=(), forbids=(), owner="Epilogue", paragraphs=(), **extra):
     SCENES.append(scene("gesmerha.ending_" + id, title, owner, 0, "", [
-        n("start", "Narrator", text, portrait="Gesmerha")], Relationship="gesmerha", last=99,
+        n("start", "Narrator", text, portrait="Gesmerha", paragraphs=paragraphs)], Relationship="gesmerha", last=99,
         requires=("gesmerha.campaign_kept", *requires), forbids=forbids,
         **{k: dict(v) if isinstance(v, dict) else v for k, v in extra.items()}))
 
@@ -508,9 +507,26 @@ ending("living_reunion", "An answer kept", '''{n}Gesmerha carried the game away 
 {n}On the road she told Dera that the Commander had asked after the songs. She was smiling before she reached the end of it. When Dera asked for more, she refused, then gave one detail anyway, and made Dera swear not to put it in a verse.{/n}
 {n}No day had been fixed for another meeting. At night, when the fire was low, she said the Commander's name once to the spirits in the old way, so that they would know whose step to listen for.{/n}''',
     requires=("gesmerha.reunion_kept",), forbids=("gesmerha.dead", "gesmerha.closed", "inhuman", "demon", "devil", "ascended", "sacrifice"), **SURVIVED)
-ending("unmet_again", "The afternoon remembered", '''{n}The road did not bring the Commander back to Gesmerha's bench. There had been a woman laughing over a song about a caller at the door, a hard afternoon when she said what she wanted and made the Commander answer plainly, and a game neither of them finished often enough.{/n}
-{n}What she would have said at another meeting stayed hers. The Commander kept the last afternoon as it had been, the awkward parts included.{/n}''',
-    forbids=("gesmerha.reunion_kept", "gesmerha.dead", "gesmerha.closed", "inhuman", "demon", "devil", "ascended", "sacrifice"), **SURVIVED)
+# The recollection is of the afternoons actually played: the registered Chapter 3 route, or the one claimed afternoon of the
+# Trickster fallback (wrong footsteps: the trick and the lost game, or the confession).
+CATCHUP = "gesmerha.trickster.cost.catchup"
+TRICK = "gesmerha.trickster.cost.campaign_slow"
+ending("unmet_again", "The afternoon remembered", '''{n}The road did not bring the Commander back to Gesmerha's bench.{/n}''',
+    forbids=("gesmerha.reunion_kept", "gesmerha.dead", "gesmerha.closed", "inhuman", "demon", "devil", "ascended", "sacrifice"),
+    paragraphs=(
+        p("There had been a woman laughing over a song about a caller at the door, a hard afternoon when she said what she "
+          "wanted and made the Commander answer plainly, and a game neither of them finished often enough. What she would have "
+          "said at another meeting stayed hers. The Commander kept the last afternoon as it had been, the awkward parts "
+          "included.", forbids=(CATCHUP,)),
+        p("There had been one afternoon, and it began with a lie: ten afternoons at her board that had never happened. She "
+          "heard it in the Commander's feet, sat the liar down at her half-cut board anyway, and caught a hand going to a square "
+          "nobody should have known. The Commander lost the eleventh game and paid for the pieces. There was meant to be a "
+          "twelfth. The road did not bring it, and she kept the count at one.", requires=(CATCHUP, TRICK)),
+        p("There had been one afternoon, and it began with a lie about ten others, owned before she had finished calling it "
+          "one. Honest liars pay for the pieces too, she said, and the Commander paid, and sat. She had meant to count the "
+          "afternoons from that one. The road did not bring a second, and she kept the count at one.",
+          requires=(CATCHUP,), forbids=(TRICK,)),
+    ), **SURVIVED)
 ending("loss", "The answering voice", '''{n}Gesmerha died. Neither the game nor the songs could answer in her place. People who remembered her sometimes quarrelled over a line she had sung, and for a moment the quarrel left room for the correction that would not come.{/n}
 {n}The Commander's memories were less orderly than a tribute. Her temper at being interrupted. Her hand held out to be met. The exact pause before she said she wanted something, and then said it anyway.{/n}
 {n}Her line had never gone to its ancestors with work on the bench. The game was still on hers when she went.{/n}''', requires=("gesmerha.dead",))

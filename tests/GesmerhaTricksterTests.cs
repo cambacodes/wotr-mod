@@ -402,6 +402,97 @@ internal static class GesmerhaTricksterTests
                 "Ulbrig speaks when he is not with the Commander: " + r.Id);
         foreach (var r in reactions.Where(r => r.Owner == "Anevia"))
             check(r.Forbids.Contains("anevia_gone") && r.Forbids.Contains("anevia_dead"), "Anevia speaks after she is gone: " + r.Id);
+
+        // Sol round 1 (HOW/INT): the returned carver's contact is her spawned copy, so derive it from the presence lifecycle
+        // (PresenceWanted, PlanPresence) instead of granting it, and open the post-commit scene the way the runtime does.
+        var presenceSpec = story.Presences["gesmerha.presence"];
+        Snapshot Hub(Snapshot s)
+        {
+            var w = Program.Copy(s);
+            w.AvailableContacts.Remove(Unit);
+            bool wanted = Rules.PresenceWanted(presenceSpec, w);
+            var spawn = Rules.PlanPresence(presenceSpec, wanted, new PresenceObservation { AreaLoaded = true });
+            var kept = Rules.PlanPresence(presenceSpec, wanted, new PresenceObservation { AreaLoaded = true, CopyFound = true, CopyAlive = true, Recorded = true, Submitted = true });
+            if (wanted && spawn.SequenceEqual(new[] { PresenceStep.Spawn }) && kept.Length == 0) w.AvailableContacts.Add(Unit);
+            return w;
+        }
+        foreach (var (commitState, label) in new[] { (committed, "the vow"), (sat, "the sitting") })
+        {
+            var after48 = Hub(Later(story, commitState, 48));
+            check(Rules.PresenceWanted(presenceSpec, after48) && after48.AvailableContacts.Contains(Unit),
+                "The presence is removed after the commit (" + label + ").");
+            check(Rules.Available(story, likeness, after48)
+                  && story.Scenes.Any(s => s.InteractionHub == "gesmerha.presence" && Rules.Available(story, s, after48)),
+                "The second work cannot be opened through her hub after " + label + ".");
+            var afterFace = Hub(Later(story, Pick(likeness, after48, P + "cost.likeness_owed"), 1));
+            check(Rules.PresenceWanted(presenceSpec, afterFace), "The presence vanishes once the face is settled (" + label + ").");
+        }
+        var closedAfter = Program.Copy(committed); closedAfter.Flags.Add("gesmerha.closed");
+        check(!Rules.PresenceWanted(presenceSpec, closedAfter), "The presence outlives a closed route.");
+
+        // Sol round 1 (BEL): the bench page tells the promise actually made: the purse oath, or the three days of sitting.
+        var benchPage = S(P + "epilogue.bench");
+        Paragraph[] BenchText(Snapshot s) => Rules.VisibleParagraphs(benchPage.Nodes[0], End(s));
+        check(BenchText(committed).Any(x => x.Text.Contains("oath about purses")) && !BenchText(committed).Any(x => x.Text.Contains("Three days in her yard")),
+            "The vow's bench page forgets the oath, or tells the sitting.");
+        check(!BenchText(sat).Any(x => x.Text.Contains("oath about purses")) && BenchText(sat).Any(x => x.Text.Contains("Three days in her yard")),
+            "The second ask's bench page attributes the oath the Commander declined.");
+
+        // Sol round 1 (BEL/INT): the missed-window fallback, both branches, both locations. Both pay for the pieces; only the
+        // trick shifts the alignment and marks the trick; both leave an unresolved courtship the late chain reads.
+        foreach (var footstepsScene in new[] { home, capital })
+        {
+            var gameChoice = footstepsScene.Nodes.Single(x => x.Id == "game").Choices.Single();
+            var honestChoice = footstepsScene.Nodes.Single(x => x.Id == "honest").Choices.Single();
+            check(gameChoice.Crusade?.Resource == "Finances" && gameChoice.Crusade.Amount == -50
+                  && honestChoice.Crusade?.Resource == "Finances" && honestChoice.Crusade.Amount == -50,
+                "A footsteps branch does not pay for the pieces: " + footstepsScene.Id);
+            check(gameChoice.Alignment?.Direction == "Chaotic" && honestChoice.Alignment == null,
+                "The confession is charged the trick's alignment: " + footstepsScene.Id);
+            check(gameChoice.Set.Contains("gesmerha.campaign_slow") && gameChoice.Set.Contains(P + "cost.campaign_slow")
+                  && honestChoice.Set.Contains("gesmerha.campaign_slow") && !honestChoice.Set.Contains(P + "cost.campaign_slow"),
+                "A footsteps branch leaves no courtship, or marks the confession as the trick: " + footstepsScene.Id);
+        }
+        var guestTrick = Pick(capital, guest, P + "cost.campaign_slow");
+        var guestHonest = Play(capital, guest).First(r => r.Has(P + "cost.catchup") && !r.Has(P + "cost.campaign_slow"));
+        var lateChain = new[] { "gesmerha.the_things_still_here", "gesmerha.the_box_with_two_names", "gesmerha.the_long_way_with_company",
+                                "gesmerha.a_lesson_without_her", "gesmerha.the_room_she_chose" }.Select(S).ToArray();
+        foreach (var (start, label) in new[] { (played, "home trick"), (honestResult, "home confession"), (guestTrick, "capital trick"), (guestHonest, "capital confession") })
+        {
+            check(!start.Has("gesmerha.lover") && start.Has("gesmerha.campaign_slow"), "The footsteps fixture is not the played outcome: " + label);
+            var cur = Program.Copy(start); cur.Area = Wintersun; cur.Flags.Add("gesmerha.post_resolution_contact"); Rules.Complete(story, cur);
+            var reached = true;
+            foreach (var sc in lateChain)
+            {
+                cur = Later(story, cur, 48);
+                if (!Rules.Available(story, sc, cur)) { check(false, "The missed-window fallback cannot enter " + sc.Id + " (" + label + ")."); reached = false; break; }
+                var outs = Play(sc, cur).Where(r => !r.Has("gesmerha.closed") && !r.Has("gesmerha.evening_as_friends")
+                                                   && !r.Has("gesmerha.late_friends") && !r.Has("gesmerha.late_open")).ToList();
+                if (sc == lateChain.Last()) outs = outs.Where(r => r.Has("gesmerha.committed")).ToList();
+                if (outs.Count == 0) { check(false, "The missed-window fallback has no romantic way through " + sc.Id + " (" + label + ")."); reached = false; break; }
+                cur = outs[0];
+            }
+            if (reached)
+                check(cur.Has("gesmerha.committed") && cur.Has("gesmerha.late_lovers"), "The missed-window fallback cannot commit: " + label);
+        }
+
+        // Sol round 1 (BEL): the unmet ending recalls the afternoons actually played; the court reunion (songs, the answer
+        // left open) is not offered to a Commander whose only afternoon was the claimed one.
+        var unmet = S("gesmerha.ending_unmet_again");
+        Paragraph[] Unmet(Snapshot s)
+        {
+            var e = End(s);
+            check(Rules.Available(story, unmet, e), "The unmet ending does not play: " + string.Join(",", e.Flags.Where(f => f.StartsWith("gesmerha.", StringComparison.Ordinal))));
+            return Rules.VisibleParagraphs(unmet.Nodes[0], e);
+        }
+        check(Unmet(played).Count(x => x.Text.Contains("lost the eleventh game")) == 1 && Unmet(played).All(x => !x.Text.Contains("song")),
+            "The trick's unmet ending invents the Chapter 3 afternoons.");
+        check(Unmet(honestResult).Count(x => x.Text.Contains("owned before")) == 1 && Unmet(honestResult).All(x => !x.Text.Contains("song") && !x.Text.Contains("eleventh")),
+            "The confession's unmet ending invents the Chapter 3 afternoons or the game.");
+        var registeredCh3 = World(story, 6, Wintersun, "gesmerha.campaign_kept", "gesmerha.lover");
+        check(Unmet(registeredCh3).Count(x => x.Text.Contains("song")) == 1 && Unmet(registeredCh3).All(x => !x.Text.Contains("one afternoon")),
+            "The registered unmet ending loses its played recollection.");
+        check(S("gesmerha.the_voice_at_court").Forbids.Contains(P + "cost.catchup"), "The court reunion recalls songs a claimed afternoon never sang.");
         Console.WriteLine("PASS: Gesmerha Trickster (Trk_Gesmerha_*): commission, pyre, splinters, the yard, the bench and wrong footsteps.");
     }
 }
