@@ -140,7 +140,8 @@ internal static class ArsinoeTricksterTests
             foreach (string pledge in new[] { "arsinoe.trickster.cost.collateral_word", "arsinoe.trickster.cost.collateral_still" })
             {
                 var with = World(story, pledge); var without = World(story);
-                check(Rules.VisibleParagraphs(node, with).Length == 1 && Rules.VisibleParagraphs(node, without).Length == 0,
+                check(Rules.VisibleParagraphs(node, with).Count(p => p.Requires.Contains(pledge)) == 1
+                      && Rules.VisibleParagraphs(node, without).All(p => !p.Requires.Contains(pledge)),
                     "Pledge " + pledge + " is never collected on " + id);
             }
         }
@@ -191,6 +192,68 @@ internal static class ArsinoeTricksterTests
               && lateResults.All(r => r.Has("arsinoe.trickster.late_yes") != r.Has("arsinoe.trickster.late_declined")),
             "Late commitment lacks a yes and a refusal, or records both.");
         check(lateCommit.Nodes.Single(n => n.Id == "night").Choices.Single().Next == "morning", "Late night has no morning after.");
+
+        // Sol r2 INT: the late page never visits a dead or ascended Commander; a Commander brought back is visited.
+        foreach (var (extra, open, why) in new (string[], bool, string)[] {
+            (new[] { "sacrifice" }, false, "genuine death"),
+            (new[] { "sacrifice", "ending.wound_closed" }, false, "death at the closed Wound"),
+            (new[] { "sacrifice", "ending.trickster" }, true, "native Trickster return"),
+            (new[] { "sacrifice", "ending.wound_closed", "trickster.lastcall.taken", "trickster.lastcall.pillar.bottle" }, true, "Last Call return"),
+            (new[] { "ascended" }, false, "ascension") })
+        {
+            var end = Program.Copy(flirted); end.Flags.UnionWith(extra); Rules.Complete(story, end);
+            check(Rules.Available(story, lateCommit, end) == open, "Late page wrong after " + why);
+        }
+        var lateAscended = story.Scenes.Single(s => s.Id == "arsinoe.trickster.late.ascended");
+        var risen = Program.Copy(flirted); risen.Flags.Add("ascended");
+        check(Rules.Available(story, lateAscended, risen) && !Rules.Available(story, lateAscended, flirted), "Ascended late page wrong.");
+        check(lateCommit.MinChapter == 6 && lateCommit.MaxChapter == 6 && lateAscended.MinChapter == 6, "Late pages outside the epilogue chapter.");
+        // Sol r2 COX: an ordinary courtship begun on the roof, with no cauldron, also reaches the late page; friendship does not.
+        var roofOnly = World(story, "trickster.ever", "arsinoe.roof_shared", "arsinoe.courting", "arsinoe.opening_kept");
+        roofOnly.Chapter = 6;
+        check(roofOnly.Has("arsinoe.trickster.late_committed") && Rules.Available(story, lateCommit, roofOnly), "Roof courtship has no late commitment.");
+        var roofFriend = World(story, "trickster.ever", "arsinoe.roof_shared", "arsinoe.friendship");
+        roofFriend.Chapter = 6;
+        check(!Rules.Available(story, lateCommit, roofFriend), "Friendship is reopened as a late romance.");
+        var roofOffer = lateCommit.Nodes.Single(n => n.Id == "offer");
+        check(Rules.VisibleParagraphs(roofOffer, roofOnly).Length == 2 && Rules.VisibleParagraphs(roofOffer, flirted).Length == 2,
+            "Late offer does not tell the lease and the roof histories apart.");
+        // A Chapter 5 fresh entry reaches the roof within the post-Coronation budget (168 h).
+        int roofHours = new[] { "arsinoe_city_on_paper", "arsinoe_printers_view", "arsinoe_roofs" }.Sum(id => story.Scenes.Single(s => s.Id == id).DelayHours);
+        check(roofHours <= 168, "Post-Coronation entry cannot reach the late-commit beat in 168 h: " + roofHours);
+
+        // Sol r2 COX: the cauldron fate page agrees with Last Call (handed back at the rift, or the account closed at the table).
+        var bill = story.Scenes.Single(s => s.Id == "arsinoe.trickster.epilogue.bill_to_threshold").Nodes[0];
+        var potNode = story.Scenes.Single(s => s.Id == "arsinoe.trickster.epilogue.pot_returned").Nodes[0];
+        foreach (bool active in new[] { false, true })
+        foreach (bool called in new[] { false, true })
+        {
+            if (called && !active) continue;
+            var st = World(story, "trickster.ever", "arsinoe.trickster.cost.lien", "siphon.burst_council");
+            if (active) st.Flags.Add("lastcall.active");
+            if (called) st.Flags.Add("arsinoe.lastcall.called");
+            var shown = Rules.VisibleParagraphs(bill, st).Where(p => p.Requires.Length + p.Forbids.Length > 0 && !p.Requires.Any(r => r.Contains("collateral"))).ToArray();
+            check(shown.Length == 1, "Burst cauldron page has no single fate variant (active=" + active + ", called=" + called + ")");
+            check(shown.All(p => p.Text.Contains("unopened") == !active && p.Text.Contains("handed it") == called), "Burst page contradicts Last Call.");
+            var whole = World(story, "trickster.ever", "arsinoe.trickster.cost.lien");
+            if (active) whole.Flags.Add("lastcall.active");
+            check(Rules.VisibleParagraphs(potNode, whole).Count(p => p.Text.Contains("still paying")) == (active ? 0 : 1), "Returned cauldron page contradicts Last Call.");
+        }
+
+        // Sol r2 INT: the Kiana wedding line (added to this scene by kiana_trickster.integrate) reads her route's robbery,
+        // and is skipped once the guests are home (Q3 or her bought-back terms).
+        foreach (string restitution in new[] { "", "seelah.souls_returned", "kiana.trickster.guests_bought_back" })
+        foreach (bool recalled in new[] { false, true })
+        {
+            var st = World(story, "trickster", "arsinoe.capital", "arsinoe.trickster.primed", "arsinoe.trickster.cost.lien", Lease,
+                "kiana.trickster.cost.guests_robbed", "kiana.soul_lost");
+            if (restitution != "") st.Flags.Add(restitution);
+            if (recalled) st.Flags.Add("konomi.trickster.cost.recalled");
+            var seen = new HashSet<string>();
+            var res = Program.Walk(collection, st, (page, _) => seen.Add(page));
+            check(seen.Contains("wedding") == (restitution == ""), "Wedding line ignores restitution: " + restitution);
+            check(seen.Contains("rider") == recalled && seen.Contains("pledge") && res.All(r => r.Has(Collection)), "Wedding routing broken.");
+        }
 
         // Sol COX/HOW: the courtship spine fits the shared chain ceiling (ledger: 504 h) at its minimum delays.
         string[] spine = { "arsinoe_printers_view", "arsinoe_roofs", "arsinoe_first_impression", "arsinoe_hours_of_her_own",
