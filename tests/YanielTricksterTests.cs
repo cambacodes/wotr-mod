@@ -346,6 +346,13 @@ internal static class YanielTricksterTests
         var lateTrade = Later(story, Observe(story, wallVerdict, P + "drawn.walls"), 24);
         check(Through(trade, lateTrade, "carries_late", 2).Any() && !Paths(trade, lateTrade).Any(o => o.path.Any(e => e.node == "carries_sang" || e.node == "carries_quiet")),
             "The trade retells Iz for a sword she received after Iz.");
+        foreach (var page in pages)
+            foreach (var node in page.Nodes)
+            {
+                var lateEnd = World(story, 6, "trickster.ever", Started, Returned, Verdict, Committed, Shackle, Swapped, Carries, P + "carries_holy", Late, P + "handed_after_iz", "sacrifice", "trickster.commander_back");
+                check(!node.Paragraphs.Any(q => Rules.ParagraphVisible(q, lateEnd) && (q.Text.Contains("heard it for both of them") || q.Text.Contains("never sang for her"))),
+                    "A page tells the Iz song for a sword she received after Iz: " + page.Id);
+            }
         // The Threshold reckoning: a pending or unproven oath is answered on the pages by what the Commander brings home.
         var together = S(P + "epilogue.together").Nodes[0];
         foreach (var open in new[] { P + "oath_pending", P + "oath_unproven" })

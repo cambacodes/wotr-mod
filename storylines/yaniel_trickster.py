@@ -253,7 +253,7 @@ _fane(Y + "fane.swap", "Sword for shackle", DOUBT_CUE, DOUBT, [MW, P1],
              c("Continue", "kept_why")),
       ],
       '''{n}She does not move for the space of three breaths. Then, very carefully, as though it were made of thin glass, she lays the sword across your forearms and takes her hands away.{/n}
-"No. You are very quick, stranger, and very kind, and you are wrong. Hands that have been a demon's plaything do not get to hold that. Not yet. Perhaps not ever."
+"No. You are very quick, stranger, and very kind, and you are wrong. That sword is the best blade the crusade has left, and it belongs in a hand that can lift it every day for a year. Mine shook just now. You saw it shake." {n}She flexes the fingers.{/n} "And I do not know you yet. I want to see what you do with it before I decide what I think of you."
 {n}Her eyes drop to the iron in your fist, and something moves under her face and is put away again.{/n} "But you want that so badly, keep it. On one condition. Swear to me, here, on Radiance, that you will carry this sword to the black heart of Deskari, and not sell it on the way, and not hang it on a wall. Then the iron is yours. Otherwise give it back, and let me carry my own."''')
 
 _fane(Y + "fane.swap_hope", "Worthy hands", HOPE_CUE, HOPE, [HA4, P2],
@@ -269,7 +269,7 @@ _fane(Y + "fane.swap_hope", "Worthy hands", HOPE_CUE, HOPE, [HA4, P2],
              c("Continue", "kept_why")),
       ],
       '''{n}She does not move for the space of three breaths. The glow along the blade dims, as if the sword were listening. Then, very carefully, she lays it across your forearms and takes her hands away.{/n}
-"No. I said what I said, and I meant it. It is going to Deskari's heart, and it is going in hands that have not hung on a hook. Yours, stranger. Not mine. Not yet."
+"No. I said what I said, and I meant it. It is going to Deskari's heart, and it is going in a hand that can carry it the whole way. Mine shook just now; you saw them. Yours did not. Not mine, stranger. Not this year."
 {n}Her eyes drop to the iron in your fist, and something moves under her face and is put away again.{/n} "But you want that so badly, keep it. On one condition. Swear to me, here, on Radiance, that you will carry it to the black heart of Deskari, and not sell it on the way, and not hang it on a wall. Then the iron is yours. Otherwise give it back, and let me carry my own."''')
 
 # The hope branch's own reply to the swap: the sword has just woken for her.
@@ -312,7 +312,7 @@ late_nodes = [
        *removal("[Let go of the hilt.]", (SWAPPED, CARRIES, LATE), LATE_FORMS, forbids=(IZ,)),
        *removal("[Let go of the hilt.]", (SWAPPED, CARRIES, LATE, HANDED_LATE), LATE_FORMS, fallback="late_oath", requires=(IZ,))),
     yn("late_oath", '''{n}She holds it for the space of three breaths. Then she turns it, carefully, and puts it back across your hands.{/n}
-"No. That is a sword for someone who has not hung on a hook, and I will not have it said that the first thing Yaniel did on the walls of Drezen was take the crusade's best blade off its Commander." {n}Her eyes go to the cuff in your fist.{/n} "But keep that, since you are so fond of it. On one condition."''',
+"No. That is the crusade's best blade, and it belongs on its Commander's hip, and I will not have it said that the first thing Yaniel did on the walls of Drezen was take the crusade's best blade off its Commander." {n}Her eyes go to the cuff in your fist.{/n} "But keep that, since you are so fond of it. On one condition."''',
        c("Continue", "late_iz", forbids=(IZ,)),
        c("Continue", "late_rift", requires=(IZ,))),
     yn("late_iz", '''"Swear to me on Radiance that you will carry it to the black heart of Deskari. They say in the square the crusade marches for Iz; they say he is there. Take it there. Do not sell it on the way. Do not hang it on a wall. Then the iron is yours."''',
@@ -373,7 +373,7 @@ visit(Y + "ch5.found", "I held your wall", [
 "You wear it." {n}Her voice has gone odd.{/n} "In the Abyss. You walked around the Abyss with a husk's iron on." {n}She lets her hand fall.{/n} "Take it off in front of me one day, Commander, and let me see your wrist. I want to know if it leaves the same mark on a free person as it did on me."''',
        c("Continue", "stay")),
     yn("why_back", '''{n}Her eyes go to your belt pouch, the way a woman's go to a purse she has seen a pickpocket touch.{/n}
-"You told me in the Fane you kept it so that I would have to come and fetch it. Here I am. Fetching." {n}She does not hold out her hand.{/n} "Don't give it to me yet. I have not decided whether I want it."''',
+"You told me in the Fane you kept it so that I would have to come and fetch it. Here I am. Fetching." {n}She does not hold out her hand.{/n} "Don't give it to me yet. Keep it where you can reach it. I will tell you when."''',
        c("Continue", "stay")),
     yn("stay", '''"I have taken a room in the old east gate tower. Nobody wanted it; it floods. The chaplains here tried to put me in the cathedral close with the widows, to wait for my own statue." {n}Her lip curls.{/n} "They are bringing it up from Nerosyan, did you know? Carved in stone, sword in hand, eyes on heaven. It is on the same road I came up, a week behind me, on an ox-cart. I am being followed into Drezen by my own grave."
 "I will be on the east wall most nights. If you want me, that is where I am. If you do not, that is also where I am."''',
@@ -747,15 +747,16 @@ EP = dict(last=6, Relationship=REL)
 SAC = dict(ForbidOverrides={"sacrifice": "trickster.commander_back"})
 COMMON = (
     p("{n}The Commander carried a husk's iron cuff for the rest of a long life, crude and heavy, with one sheared link of chain still hanging from its eye. Nobody was ever allowed to clean it.{/n}", requires=(SHACKLE,)),
-    p("{n}Radiance stayed in Yaniel's hands. The Church of Iomedae asked for it back four times in the first year of the peace, politely, and then stopped asking. It never sang again, so far as anyone knew; she said once had been enough, and that she had heard it for both of them.{/n}", requires=(CARRIES, HOLY)),
-    p("{n}Radiance stayed in Yaniel's hands. The Church of Iomedae asked for it back four times in the first year of the peace, politely, and then stopped asking. It never sang for her, and she never asked it to; she said it was a sword, and she was a soldier, and that was enough for both of them.{/n}", requires=(CARRIES,), forbids=(HOLY,)),
+    p("{n}Radiance stayed in Yaniel's hands. The Church of Iomedae asked for it back four times in the first year of the peace, politely, and then stopped asking. It never sang again, so far as anyone knew; she said once had been enough, and that she had heard it for both of them.{/n}", requires=(CARRIES, HOLY), forbids=(HANDED_LATE,)),
+    p("{n}Radiance stayed in Yaniel's hands, given to her on her own wall after Iz. The Church of Iomedae asked for it back four times in the first year of the peace, politely, and then stopped asking. She never said whether it had ever sung. She said it had kept her wall, and that was the part she had been there for.{/n}", requires=(CARRIES, HANDED_LATE)),
+    p("{n}Radiance stayed in Yaniel's hands. The Church of Iomedae asked for it back four times in the first year of the peace, politely, and then stopped asking. It never sang for her, and she never asked it to; she said it was a sword, and she was a soldier, and that was enough for both of them.{/n}", requires=(CARRIES,), forbids=(HOLY, HANDED_LATE)),
     p("{n}Radiance hung in the Commander's hall afterwards, not on the wall, where Yaniel had said it must never hang, but on a peg by the door at the height of a hand, so that it could be taken down in a hurry. It was, twice.{/n}", requires=(JUDGES, HELD), forbids=(OATH_BROKEN,)),
     p("{n}When the Commander came back from the Threshold, Yaniel was at the gate, and she looked at the Commander's hip before she looked at anything else. Radiance was there. She said that was proof enough that it had gone into the Wound and come out again, which it was not quite, and she knew it, and she let it be enough anyway. She never asked about the oath again.{/n}", any_groups=((OATH_PENDING, OATH_UNPROVEN),), requires=(HELD,)),
     p("{n}When the Commander came back from the Threshold, Yaniel was at the gate, and she looked at the Commander's hip before she looked at anything else. Radiance was not there. She did not ask where it was. She said, to nobody in particular, that she had sworn a stranger to carry her sword into the Wound and did not know to this day whether it had gone, and that not knowing was a thing she would carry herself, since somebody had to.{/n}", any_groups=((OATH_PENDING, OATH_UNPROVEN),), forbids=(HELD,)),
     p("{n}The painted martyr went into the cathedral of Drezen at midsummer, as the chaplains had planned. The chaplains never did find out why the Commander's household laughed every time the procession went by it.{/n}", requires=(NICHE,)),
     p("{n}The Half Measure in Nerosyan put her roast back on its board, on the old recipe, and wrote her name beside it in chalk. She ate there every spring, under the old tree by the town hall, when it was in bloom.{/n}", requires=(B_ROAST,)),
     p("{n}An old merchant of Nerosyan with a crutch and a cloudy eye was carried up to Drezen once more before he died, to see the gate. She held his hand on the parapet for an afternoon, and afterwards she would never say what they talked about, except that it was mostly turnips.{/n}", requires=(B_REFUGEE,)),
-    p("{n}When the war was over she went to the place where Staunton Vhane was buried, as she had said she would, and shouted at the ground for most of an hour. Then she sat down on it and wept, which she had not done since the Fane, and the Commander stood between her and the road so that nobody would see.{/n}", requires=(B_STAUNTON,)),
+    p("{n}When the war was over she went to the place where Staunton Vhane was buried, as she had said she would, and shouted at the ground for most of an hour. Then she sat down on it and wept for him at last, and the Commander stood between her and the road so that nobody would see.{/n}", requires=(B_STAUNTON,)),
     p("{n}The Church of Iomedae never did examine her. The chaplain who had come to the Commander's door with the seal of Nerosyan wrote to his superiors that the relic was in the hands it was meant for, and that he would not be the one to take it out of them, and after that nobody else volunteered.{/n}", requires=(B_CHURCH, CARRIES)),
     p("{n}She stopped praying for things. She told her goddess about her days instead, out loud, on the wall, in the tone of a sergeant making a report, and she swore that on some nights the report was received.{/n}", requires=(B_PRAYER,)),
     p("{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack beside the other, and never told anyone why there were two.{/n}", any_groups=((HUSK_FREED, HUSK_BOUGHT),)),
@@ -792,7 +793,7 @@ tag(Y + "epilogue.commit")
 
 SCENES.append(scene(Y + "epilogue.broken", "", "YanielEpilogue", 6, "", [
     nar("page", '''{n}The oath stayed broken. Yaniel never spoke of it again, and she never let the Commander speak of it either. She stood the night watch on the east wall of Drezen until the war was over, and when the Commander came up the stair she would move over on the parapet to make room, and hand across a cup, and that was all.{/n}
-{n}She kept the flooded room in the gate tower. She never asked for her iron back. Once, years after the Threshold, she said to a young sentry who asked about the Commander that some people break their word and some people break their word and keep coming up the stair anyway, and that she had not yet decided which was worse. The sentry did not understand. She did not explain.{/n}''',
+{n}She kept the flooded room in the gate tower. She never asked for her iron back. Once, years after the Threshold, she said to a young sentry who asked about the Commander that some people break their word and some people break their word and keep coming up the stair anyway, and that the second kind were the ones you had to watch, because you could not stop watching them. The sentry did not understand. She did not explain.{/n}''',
         paragraphs=COMMON)],
     requires=("trickster.ever", OATH_BROKEN), forbids=(COMMITTED, LEFT_FREE, "sacrifice"), **SAC, **EP))
 tag(Y + "epilogue.broken")

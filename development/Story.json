@@ -402843,7 +402843,7 @@
         {
           "Id": "oath",
           "Speaker": "Yaniel",
-          "Text": "{n}She does not move for the space of three breaths. Then, very carefully, as though it were made of thin glass, she lays the sword across your forearms and takes her hands away.{/n}\n\"No. You are very quick, stranger, and very kind, and you are wrong. Hands that have been a demon's plaything do not get to hold that. Not yet. Perhaps not ever.\"\n{n}Her eyes drop to the iron in your fist, and something moves under her face and is put away again.{/n} \"But you want that so badly, keep it. On one condition. Swear to me, here, on Radiance, that you will carry this sword to the black heart of Deskari, and not sell it on the way, and not hang it on a wall. Then the iron is yours. Otherwise give it back, and let me carry my own.\"",
+          "Text": "{n}She does not move for the space of three breaths. Then, very carefully, as though it were made of thin glass, she lays the sword across your forearms and takes her hands away.{/n}\n\"No. You are very quick, stranger, and very kind, and you are wrong. That sword is the best blade the crusade has left, and it belongs in a hand that can lift it every day for a year. Mine shook just now. You saw it shake.\" {n}She flexes the fingers.{/n} \"And I do not know you yet. I want to see what you do with it before I decide what I think of you.\"\n{n}Her eyes drop to the iron in your fist, and something moves under her face and is put away again.{/n} \"But you want that so badly, keep it. On one condition. Swear to me, here, on Radiance, that you will carry this sword to the black heart of Deskari, and not sell it on the way, and not hang it on a wall. Then the iron is yours. Otherwise give it back, and let me carry my own.\"",
           "Choices": [
             {
               "Text": "[Lay your hand flat on the blade.] \"I swear it on Radiance. Deskari's heart, and nowhere short of it.\"",
@@ -403147,7 +403147,7 @@
         {
           "Id": "oath",
           "Speaker": "Yaniel",
-          "Text": "{n}She does not move for the space of three breaths. The glow along the blade dims, as if the sword were listening. Then, very carefully, she lays it across your forearms and takes her hands away.{/n}\n\"No. I said what I said, and I meant it. It is going to Deskari's heart, and it is going in hands that have not hung on a hook. Yours, stranger. Not mine. Not yet.\"\n{n}Her eyes drop to the iron in your fist, and something moves under her face and is put away again.{/n} \"But you want that so badly, keep it. On one condition. Swear to me, here, on Radiance, that you will carry it to the black heart of Deskari, and not sell it on the way, and not hang it on a wall. Then the iron is yours. Otherwise give it back, and let me carry my own.\"",
+          "Text": "{n}She does not move for the space of three breaths. The glow along the blade dims, as if the sword were listening. Then, very carefully, she lays it across your forearms and takes her hands away.{/n}\n\"No. I said what I said, and I meant it. It is going to Deskari's heart, and it is going in a hand that can carry it the whole way. Mine shook just now; you saw them. Yours did not. Not mine, stranger. Not this year.\"\n{n}Her eyes drop to the iron in your fist, and something moves under her face and is put away again.{/n} \"But you want that so badly, keep it. On one condition. Swear to me, here, on Radiance, that you will carry it to the black heart of Deskari, and not sell it on the way, and not hang it on a wall. Then the iron is yours. Otherwise give it back, and let me carry my own.\"",
           "Choices": [
             {
               "Text": "[Lay your hand flat on the blade.] \"I swear it on Radiance. Deskari's heart, and nowhere short of it.\"",
@@ -403590,7 +403590,7 @@
         {
           "Id": "late_oath",
           "Speaker": "Yaniel",
-          "Text": "{n}She holds it for the space of three breaths. Then she turns it, carefully, and puts it back across your hands.{/n}\n\"No. That is a sword for someone who has not hung on a hook, and I will not have it said that the first thing Yaniel did on the walls of Drezen was take the crusade's best blade off its Commander.\" {n}Her eyes go to the cuff in your fist.{/n} \"But keep that, since you are so fond of it. On one condition.\"",
+          "Text": "{n}She holds it for the space of three breaths. Then she turns it, carefully, and puts it back across your hands.{/n}\n\"No. That is the crusade's best blade, and it belongs on its Commander's hip, and I will not have it said that the first thing Yaniel did on the walls of Drezen was take the crusade's best blade off its Commander.\" {n}Her eyes go to the cuff in your fist.{/n} \"But keep that, since you are so fond of it. On one condition.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -403980,7 +403980,7 @@
         {
           "Id": "why_back",
           "Speaker": "Yaniel",
-          "Text": "{n}Her eyes go to your belt pouch, the way a woman's go to a purse she has seen a pickpocket touch.{/n}\n\"You told me in the Fane you kept it so that I would have to come and fetch it. Here I am. Fetching.\" {n}She does not hold out her hand.{/n} \"Don't give it to me yet. I have not decided whether I want it.\"",
+          "Text": "{n}Her eyes go to your belt pouch, the way a woman's go to a purse she has seen a pickpocket touch.{/n}\n\"You told me in the Fane you kept it so that I would have to come and fetch it. Here I am. Fetching.\" {n}She does not hold out her hand.{/n} \"Don't give it to me yet. Keep it where you can reach it. I will tell you when.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -406817,6 +406817,17 @@
                 "yaniel.trickster.carries",
                 "yaniel.trickster.carries_holy"
               ],
+              "Forbids": [
+                "yaniel.trickster.handed_after_iz"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Radiance stayed in Yaniel's hands, given to her on her own wall after Iz. The Church of Iomedae asked for it back four times in the first year of the peace, politely, and then stopped asking. She never said whether it had ever sung. She said it had kept her wall, and that was the part she had been there for.{/n}",
+              "Requires": [
+                "yaniel.trickster.carries",
+                "yaniel.trickster.handed_after_iz"
+              ],
               "Forbids": [],
               "AnyGroups": []
             },
@@ -406826,7 +406837,8 @@
                 "yaniel.trickster.carries"
               ],
               "Forbids": [
-                "yaniel.trickster.carries_holy"
+                "yaniel.trickster.carries_holy",
+                "yaniel.trickster.handed_after_iz"
               ],
               "AnyGroups": []
             },
@@ -406892,7 +406904,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}When the war was over she went to the place where Staunton Vhane was buried, as she had said she would, and shouted at the ground for most of an hour. Then she sat down on it and wept, which she had not done since the Fane, and the Commander stood between her and the road so that nobody would see.{/n}",
+              "Text": "{n}When the war was over she went to the place where Staunton Vhane was buried, as she had said she would, and shouted at the ground for most of an hour. Then she sat down on it and wept for him at last, and the Commander stood between her and the road so that nobody would see.{/n}",
               "Requires": [
                 "yaniel.trickster.beat.staunton"
               ],
@@ -407085,6 +407097,17 @@
                 "yaniel.trickster.carries",
                 "yaniel.trickster.carries_holy"
               ],
+              "Forbids": [
+                "yaniel.trickster.handed_after_iz"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Radiance stayed in Yaniel's hands, given to her on her own wall after Iz. The Church of Iomedae asked for it back four times in the first year of the peace, politely, and then stopped asking. She never said whether it had ever sung. She said it had kept her wall, and that was the part she had been there for.{/n}",
+              "Requires": [
+                "yaniel.trickster.carries",
+                "yaniel.trickster.handed_after_iz"
+              ],
               "Forbids": [],
               "AnyGroups": []
             },
@@ -407094,7 +407117,8 @@
                 "yaniel.trickster.carries"
               ],
               "Forbids": [
-                "yaniel.trickster.carries_holy"
+                "yaniel.trickster.carries_holy",
+                "yaniel.trickster.handed_after_iz"
               ],
               "AnyGroups": []
             },
@@ -407160,7 +407184,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}When the war was over she went to the place where Staunton Vhane was buried, as she had said she would, and shouted at the ground for most of an hour. Then she sat down on it and wept, which she had not done since the Fane, and the Commander stood between her and the road so that nobody would see.{/n}",
+              "Text": "{n}When the war was over she went to the place where Staunton Vhane was buried, as she had said she would, and shouted at the ground for most of an hour. Then she sat down on it and wept for him at last, and the Commander stood between her and the road so that nobody would see.{/n}",
               "Requires": [
                 "yaniel.trickster.beat.staunton"
               ],
@@ -407230,7 +407254,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}The oath stayed broken. Yaniel never spoke of it again, and she never let the Commander speak of it either. She stood the night watch on the east wall of Drezen until the war was over, and when the Commander came up the stair she would move over on the parapet to make room, and hand across a cup, and that was all.{/n}\n{n}She kept the flooded room in the gate tower. She never asked for her iron back. Once, years after the Threshold, she said to a young sentry who asked about the Commander that some people break their word and some people break their word and keep coming up the stair anyway, and that she had not yet decided which was worse. The sentry did not understand. She did not explain.{/n}",
+          "Text": "{n}The oath stayed broken. Yaniel never spoke of it again, and she never let the Commander speak of it either. She stood the night watch on the east wall of Drezen until the war was over, and when the Commander came up the stair she would move over on the parapet to make room, and hand across a cup, and that was all.{/n}\n{n}She kept the flooded room in the gate tower. She never asked for her iron back. Once, years after the Threshold, she said to a young sentry who asked about the Commander that some people break their word and some people break their word and keep coming up the stair anyway, and that the second kind were the ones you had to watch, because you could not stop watching them. The sentry did not understand. She did not explain.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -407257,6 +407281,17 @@
                 "yaniel.trickster.carries",
                 "yaniel.trickster.carries_holy"
               ],
+              "Forbids": [
+                "yaniel.trickster.handed_after_iz"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Radiance stayed in Yaniel's hands, given to her on her own wall after Iz. The Church of Iomedae asked for it back four times in the first year of the peace, politely, and then stopped asking. She never said whether it had ever sung. She said it had kept her wall, and that was the part she had been there for.{/n}",
+              "Requires": [
+                "yaniel.trickster.carries",
+                "yaniel.trickster.handed_after_iz"
+              ],
               "Forbids": [],
               "AnyGroups": []
             },
@@ -407266,7 +407301,8 @@
                 "yaniel.trickster.carries"
               ],
               "Forbids": [
-                "yaniel.trickster.carries_holy"
+                "yaniel.trickster.carries_holy",
+                "yaniel.trickster.handed_after_iz"
               ],
               "AnyGroups": []
             },
@@ -407332,7 +407368,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}When the war was over she went to the place where Staunton Vhane was buried, as she had said she would, and shouted at the ground for most of an hour. Then she sat down on it and wept, which she had not done since the Fane, and the Commander stood between her and the road so that nobody would see.{/n}",
+              "Text": "{n}When the war was over she went to the place where Staunton Vhane was buried, as she had said she would, and shouted at the ground for most of an hour. Then she sat down on it and wept for him at last, and the Commander stood between her and the road so that nobody would see.{/n}",
               "Requires": [
                 "yaniel.trickster.beat.staunton"
               ],
@@ -407425,6 +407461,17 @@
                 "yaniel.trickster.carries",
                 "yaniel.trickster.carries_holy"
               ],
+              "Forbids": [
+                "yaniel.trickster.handed_after_iz"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Radiance stayed in Yaniel's hands, given to her on her own wall after Iz. The Church of Iomedae asked for it back four times in the first year of the peace, politely, and then stopped asking. She never said whether it had ever sung. She said it had kept her wall, and that was the part she had been there for.{/n}",
+              "Requires": [
+                "yaniel.trickster.carries",
+                "yaniel.trickster.handed_after_iz"
+              ],
               "Forbids": [],
               "AnyGroups": []
             },
@@ -407434,7 +407481,8 @@
                 "yaniel.trickster.carries"
               ],
               "Forbids": [
-                "yaniel.trickster.carries_holy"
+                "yaniel.trickster.carries_holy",
+                "yaniel.trickster.handed_after_iz"
               ],
               "AnyGroups": []
             },
@@ -407500,7 +407548,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}When the war was over she went to the place where Staunton Vhane was buried, as she had said she would, and shouted at the ground for most of an hour. Then she sat down on it and wept, which she had not done since the Fane, and the Commander stood between her and the road so that nobody would see.{/n}",
+              "Text": "{n}When the war was over she went to the place where Staunton Vhane was buried, as she had said she would, and shouted at the ground for most of an hour. Then she sat down on it and wept for him at last, and the Commander stood between her and the road so that nobody would see.{/n}",
               "Requires": [
                 "yaniel.trickster.beat.staunton"
               ],
@@ -407596,6 +407644,17 @@
                 "yaniel.trickster.carries",
                 "yaniel.trickster.carries_holy"
               ],
+              "Forbids": [
+                "yaniel.trickster.handed_after_iz"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Radiance stayed in Yaniel's hands, given to her on her own wall after Iz. The Church of Iomedae asked for it back four times in the first year of the peace, politely, and then stopped asking. She never said whether it had ever sung. She said it had kept her wall, and that was the part she had been there for.{/n}",
+              "Requires": [
+                "yaniel.trickster.carries",
+                "yaniel.trickster.handed_after_iz"
+              ],
               "Forbids": [],
               "AnyGroups": []
             },
@@ -407605,7 +407664,8 @@
                 "yaniel.trickster.carries"
               ],
               "Forbids": [
-                "yaniel.trickster.carries_holy"
+                "yaniel.trickster.carries_holy",
+                "yaniel.trickster.handed_after_iz"
               ],
               "AnyGroups": []
             },
@@ -407671,7 +407731,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}When the war was over she went to the place where Staunton Vhane was buried, as she had said she would, and shouted at the ground for most of an hour. Then she sat down on it and wept, which she had not done since the Fane, and the Commander stood between her and the road so that nobody would see.{/n}",
+              "Text": "{n}When the war was over she went to the place where Staunton Vhane was buried, as she had said she would, and shouted at the ground for most of an hour. Then she sat down on it and wept for him at last, and the Commander stood between her and the road so that nobody would see.{/n}",
               "Requires": [
                 "yaniel.trickster.beat.staunton"
               ],
@@ -407766,6 +407826,17 @@
                 "yaniel.trickster.carries",
                 "yaniel.trickster.carries_holy"
               ],
+              "Forbids": [
+                "yaniel.trickster.handed_after_iz"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Radiance stayed in Yaniel's hands, given to her on her own wall after Iz. The Church of Iomedae asked for it back four times in the first year of the peace, politely, and then stopped asking. She never said whether it had ever sung. She said it had kept her wall, and that was the part she had been there for.{/n}",
+              "Requires": [
+                "yaniel.trickster.carries",
+                "yaniel.trickster.handed_after_iz"
+              ],
               "Forbids": [],
               "AnyGroups": []
             },
@@ -407775,7 +407846,8 @@
                 "yaniel.trickster.carries"
               ],
               "Forbids": [
-                "yaniel.trickster.carries_holy"
+                "yaniel.trickster.carries_holy",
+                "yaniel.trickster.handed_after_iz"
               ],
               "AnyGroups": []
             },
@@ -407841,7 +407913,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}When the war was over she went to the place where Staunton Vhane was buried, as she had said she would, and shouted at the ground for most of an hour. Then she sat down on it and wept, which she had not done since the Fane, and the Commander stood between her and the road so that nobody would see.{/n}",
+              "Text": "{n}When the war was over she went to the place where Staunton Vhane was buried, as she had said she would, and shouted at the ground for most of an hour. Then she sat down on it and wept for him at last, and the Commander stood between her and the road so that nobody would see.{/n}",
               "Requires": [
                 "yaniel.trickster.beat.staunton"
               ],
@@ -408938,7 +409010,7 @@
         {
           "Id": "flirt",
           "Speaker": "Yaniel",
-          "Text": "{n}She looks at you for a moment as if you had spoken in the tongue of the Abyss. Then she laughs, low, surprised, and puts her hand over her mouth, like a girl caught laughing in chapel.{/n}\n\"Since the Fane.\" {n}The hand comes down.{/n} \"You saw me on a hook, gray as a rat, stinking, with all of Minagho still on me, and you have been thinking about me since.\" {n}She shakes her head.{/n} \"Either you are a liar, Commander, or you have very strange taste. I have not decided which I would prefer.\"",
+          "Text": "{n}She looks at you for a moment as if you had spoken in the tongue of the Abyss. Then she laughs, low, surprised, and puts her hand over her mouth, like a girl caught laughing in chapel.{/n}\n\"Since the Fane.\" {n}The hand comes down.{/n} \"You saw me on a hook, gray as a rat, stinking, with all of Minagho still on me, and you have been thinking about me since.\" {n}She shakes her head.{/n} \"Then you can stand the middle watch with me tomorrow and think about me from closer. Bring a cloak. It is cold up here, and I am not lending you mine.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -411775,7 +411847,7 @@
         {
           "Id": "talk",
           "Speaker": "Yaniel",
-          "Text": "\"It does that every night,\" {n}she says.{/n} \"Something comes. It looks at the light. It goes away. I have not had to fight one of them in a week.\" {n}She turns the sword so that the last of the gold runs down the fuller.{/n} \"I wanted you to see it. You gave this away. I thought you should see what it does in the hands you gave it to.\"\n\"Every night I stand here and think: the Commander of the crusade could have this, and does not, because {mf|he|she} took an old woman's iron instead. I have not decided whether that is the wisest thing I have ever seen anybody do, or the stupidest.\"",
+          "Text": "\"It does that every night,\" {n}she says.{/n} \"Something comes. It looks at the light. It goes away. I have not had to fight one of them in a week.\" {n}She turns the sword so that the last of the gold runs down the fuller.{/n} \"I wanted you to see it. You gave this away. I thought you should see what it does in the hands you gave it to.\"\n\"Every night I stand here and think: the Commander of the crusade could have this, and does not, because {mf|he|she} took an old woman's iron instead. I think it is the stupidest thing I have ever seen a commander do. I think about it every night anyway.\"",
           "Choices": [
             {
               "Text": "\"Neither. It was a trade.\"",

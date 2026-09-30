@@ -161,7 +161,7 @@ visit(Y + "beat.walls", "The city as it was", [
 "That is how I found out what I was. On the way. Minagho found out on the way too; she found out I would not break, and it annoyed her very much." {n}Her mouth twitches.{/n} "Do not let anyone finish finding you out before you do, Commander. It is a great waste of a person."''',
        c("Continue", "end")),
     yn("flirt", '''{n}She looks at you for a moment as if you had spoken in the tongue of the Abyss. Then she laughs, low, surprised, and puts her hand over her mouth, like a girl caught laughing in chapel.{/n}
-"Since the Fane." {n}The hand comes down.{/n} "You saw me on a hook, gray as a rat, stinking, with all of Minagho still on me, and you have been thinking about me since." {n}She shakes her head.{/n} "Either you are a liar, Commander, or you have very strange taste. I have not decided which I would prefer."''',
+"Since the Fane." {n}The hand comes down.{/n} "You saw me on a hook, gray as a rat, stinking, with all of Minagho still on me, and you have been thinking about me since." {n}She shakes her head.{/n} "Then you can stand the middle watch with me tomorrow and think about me from closer. Bring a cloak. It is cold up here, and I am not lending you mine."''',
        c("Continue", "end")),
     nar("end", '''{n}She walks you back to the gate tower. At the foot of the stair she stops, and for a moment you think she is going to say something else. Instead she reaches out and touches your wrist, where the iron sits, or where your pack strap crosses it, with two fingers, the way you might touch a door to see if the fire behind it has gone out. Then she goes up the stair to her watch.{/n}''',
         c("[Go down into the city.]", flags=(B_WALLS,))),
@@ -566,7 +566,7 @@ visit(Y + "beat.light", "The light on the ash", [
 {n}She lowers the blade. The light goes down into the steel.{/n}''',
         c("Continue", "talk")),
     yn("talk", '''"It does that every night," {n}she says.{/n} "Something comes. It looks at the light. It goes away. I have not had to fight one of them in a week." {n}She turns the sword so that the last of the gold runs down the fuller.{/n} "I wanted you to see it. You gave this away. I thought you should see what it does in the hands you gave it to."
-"Every night I stand here and think: the Commander of the crusade could have this, and does not, because {mf|he|she} took an old woman's iron instead. I have not decided whether that is the wisest thing I have ever seen anybody do, or the stupidest."''',
+"Every night I stand here and think: the Commander of the crusade could have this, and does not, because {mf|he|she} took an old woman's iron instead. I think it is the stupidest thing I have ever seen a commander do. I think about it every night anyway."''',
         c('"Neither. It was a trade."', "trade"),
         c('"It looks better on you."', "better")),
     yn("trade", '''"A trade." {n}She snorts.{/n} "A trade is when both parties get something they want. I did not want this. I wanted to be left alone to be sorry for myself." {n}She looks out at the ash, where the thing went.{/n} "Perhaps that is what you got, then. Me, not sorry for myself. It is not much of a bargain for a sword like this, Commander. You ought to have haggled."''',
