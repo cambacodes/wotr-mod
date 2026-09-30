@@ -1136,11 +1136,10 @@ namespace Tirabade
             }
             foreach (var etude in etudes)
             {
-                bool permanent = story.PermanentEtudes.Contains(etude.Key) || etude.Key.EndsWith("_dead", StringComparison.Ordinal) || etude.Key.EndsWith("_gone", StringComparison.Ordinal)
-                    || etude.Key.StartsWith("ascend_", StringComparison.Ordinal) || etude.Key == "sacrifice" || etude.Key == "true_lich";
-                // Started etudes can be dormant until their activation conditions pass.
-                if (player.EtudesSystem.Etudes.GetFact(etude.Value)?.IsPlaying == true
-                    || permanent && player.EtudesSystem.EtudeIsCompleted(etude.Value)) state.Flags.Add(etude.Key);
+                // Started etudes can be dormant until their activation conditions pass (Rules.EtudeHeld: Playing, or Completed
+                // for PermanentEtudes and the suffix rule).
+                if (Rules.EtudeHeld(story, etude.Key, player.EtudesSystem.Etudes.GetFact(etude.Value)?.IsPlaying == true,
+                        Rules.EtudeReadsCompleted(story, etude.Key) && player.EtudesSystem.EtudeIsCompleted(etude.Value))) state.Flags.Add(etude.Key);
             }
             if (new[] { "irabeth_dead", "anevia_dead", "irabeth_gone", "anevia_gone", "sacrifice" }.Any(state.Has)) state.Flags.Add("loss");
             foreach (var quest in completedQuests)
@@ -1185,7 +1184,7 @@ namespace Tirabade
                 else if (Fate.CanRevive(revival.Value)) state.Flags.Add("revive." + revival.Key + ".available");
             if (new[] { "ascend_all", "ascend_alone", "ascend_areelu", "ascend_companions" }.Any(state.Has)) state.Flags.Add("ascended");
             if (state.Has("swarm") || state.Has("true_lich")) state.Flags.Add("inhuman");
-            state.Flags.Add(player.Chapter == 1 ? "chapter_one" : "chapter_later");
+            if (Rules.ChapterFlag(player.Chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
             // Latches and data-driven composites read the completed native picture.
             Rules.Complete(story, state);
             foreach (var relationship in degraded) state.Flags.Add(Rules.DegradedPrefix + relationship);

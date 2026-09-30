@@ -90,9 +90,16 @@ internal static class SeelahTricksterTests
         var paid = Choices(pick).Where(c => c.Revive == "seelah").ToList();
         check(paid.Count == 2 && paid.Count(c => c.RemoveItem == Diamond) == 1
               && paid.Count(c => c.Crusade?.Resource == "Favors" && c.Crusade.Amount == -100) == 1, "The rite's two prices are wrong.");
+        // Polish b9c: the bowl is filled by a lift on the relic-seller (her list's last line); the lift or the caught lift
+        // both fill it, and only the caught one leaves him knowing the Commander's face.
         var raised = Program.Walk(pick, dead).Where(r => r.Has(Returned)).ToList();
-        check(raised.Count == 1 && raised[0].Has("seelah.revived") && raised[0].Has("seelah.trickster.cost.holds_her_death")
-              && !raised[0].Has("seelah.trickster.cost.chaplains_word"), "Trk_Seelah_Dead: the diamond rite sets the wrong flags.");
+        check(raised.Count == 2 && raised.All(r => r.Has("seelah.revived") && r.Has("seelah.trickster.cost.holds_her_death")
+              && !r.Has("seelah.trickster.cost.chaplains_word")) && raised.Count(r => r.Has("seelah.trickster.cost.broker_knows")) == 1,
+            "Trk_Seelah_Dead: the diamond rite sets the wrong flags, or a failed lift closes the road.");
+        var liftDcs = Choices(pick).Where(c => c.Check != null).Select(c => (c.Check!.DC, lessoned: c.Requires.Contains("seelah.trickster.lift_lesson"))).ToList();
+        check(liftDcs.Count == 2 && liftDcs.Single(d => d.lessoned).DC == 15 && liftDcs.Single(d => !d.lessoned).DC == 25
+              && Choices(pick).Where(c => c.Check != null).All(c => c.Check!.Skill == "SkillThievery" && c.Mythic == null),
+            "The relic-seller lift is not her lesson's Thievery check, or a mythic power does it.");
         var standing = After(story, raised[0], 1, "seelah_dead", "revive.seelah.available");
         check(Rules.Available(story, wakes, standing) && !Rules.Available(story, S("seelah.fate_return"), standing),
             "Trk_Seelah_Dead: she does not wake into her own scene.");
@@ -102,7 +109,7 @@ internal static class SeelahTricksterTests
         // Trk_Seelah_Dead_NoDiamond: the chapel's reserve, on the Commander's word.
         var poor = World(story, 5, "trickster", "trickster.ever", "seelah_dead", "revive.seelah.available");
         var owed = Program.Walk(pick, poor).Where(r => r.Has(Returned)).ToList();
-        check(Rules.Available(story, pick, poor) && owed.Count == 1 && owed[0].Has("seelah.trickster.cost.chaplains_word"),
+        check(Rules.Available(story, pick, poor) && owed.Count == 2 && owed.All(r => r.Has("seelah.trickster.cost.chaplains_word")),
             "Trk_Seelah_Dead_NoDiamond failed.");
 
         // Trk_Seelah_Wakes: her price for getting up.
@@ -114,7 +121,7 @@ internal static class SeelahTricksterTests
         var nobody = World(story, 5, "trickster", "trickster.ever", "seelah_dead", "seelah.diamond_held");
         check(Rules.Available(story, effects, nobody) && !Any(nobody, pick, late, papers), "Trk_Seelah_Dead_NoBody: wrong device set.");
         var ridden = Program.Walk(effects, nobody).Where(r => r.Has(Returned)).ToList();
-        check(ridden.Count == 1 && ridden[0].Has("seelah.trickster.correspondent") && ridden[0].Has("seelah.trickster.cost.holds_her_death")
+        check(ridden.Count == 2 && ridden.All(r => r.Has("seelah.trickster.correspondent") && r.Has("seelah.trickster.cost.holds_her_death"))
               && Choices(effects).Count(c => c.RemoveItem == Diamond) == 1, "Trk_Seelah_Dead_NoBody: the rider rite sets the wrong flags.");
         var inTown = After(story, ridden[0], 30);
         check(inTown.Has("seelah.trickster.in_drezen") && Rules.Available(story, stay, inTown) && !Rules.Available(story, wakes, inTown),

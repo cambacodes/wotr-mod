@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-horzalah\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 3711,
-  "unique_targets": 801,
+  "binding_uses": 3624,
+  "unique_targets": 791,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -216,10 +216,6 @@
     },
     "a32a07903e428d34cb0e98a804d40569": {
       "path": "Units/NPC/Unique/Act_4_MidnightIsles/RaptureOfRupture/Vellexia_Default.jbp",
-      "type": "BlueprintUnit"
-    },
-    "38f0acf8ba7c3b64b87369d478014fda": {
-      "path": "Units/NPC/Unique/Act_5_HeraldOfTheIvoryLabyrinth/GreyborQ3/Horzalah.jbp",
       "type": "BlueprintUnit"
     },
     "78549b805f0a63e41805cfe3e02e2ea8": {
@@ -502,8 +498,40 @@
       "path": "World/Dialogs/c3/MoltenScar/Deserter/AnswersList_0021.jbp",
       "type": "BlueprintAnswersList"
     },
+    "83e788629a224ba7ad08da7e204685b4": {
+      "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0003.jbp",
+      "type": "BlueprintCue"
+    },
+    "a66a6e34e9aa8d749921acdc7a0ae938": {
+      "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0020.jbp",
+      "type": "BlueprintCue"
+    },
+    "4f92e80ae13d31f438b7e147340d568e": {
+      "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0024.jbp",
+      "type": "BlueprintCue"
+    },
+    "f24d118342fab1c4aa2a787697f2b496": {
+      "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0025.jbp",
+      "type": "BlueprintCue"
+    },
+    "199d4dbffb5a53a4cb73578307cbb4a9": {
+      "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0027.jbp",
+      "type": "BlueprintCue"
+    },
+    "f3a9f5da5f3aaee4dabf0fad5976e782": {
+      "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0029.jbp",
+      "type": "BlueprintCue"
+    },
     "8c909dc650b9dff408a0d144da24b920": {
       "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0059.jbp",
+      "type": "BlueprintCue"
+    },
+    "6ea88ed6d7ac02c42b1eb4d641db14ad": {
+      "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0060.jbp",
+      "type": "BlueprintCue"
+    },
+    "bc82d1f5215d468ea1d70d582a3b2de4": {
+      "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_3.jbp",
       "type": "BlueprintCue"
     },
     "5ff8a80442182f84e849b4281f98b9ca": {
@@ -1202,10 +1230,6 @@
       "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/Cue_0016.jbp",
       "type": "BlueprintCue"
     },
-    "0cdc1a24d29c77f4490900d3a9418afc": {
-      "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/Cue_0121.jbp",
-      "type": "BlueprintCue"
-    },
     "039978569cf79814899362d3f1b5b45b": {
       "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/Cue_0122.jbp",
       "type": "BlueprintCue"
@@ -1558,6 +1582,10 @@
       "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/Cue_0050.jbp",
       "type": "BlueprintCue"
     },
+    "166223b5a9284d34798dc42dcd4f7e1c": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/Cue_0105.jbp",
+      "type": "BlueprintCue"
+    },
     "129b55b8b5d50974f84f7c607d894fd0": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Sosiel/AnswersList_0002.jbp",
       "type": "BlueprintAnswersList"
@@ -1622,73 +1650,13 @@
       "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0029.jbp",
       "type": "BlueprintCue"
     },
-    "fc1030e8724b086479d7ec2a52aae2a5": {
-      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q2_Ch4_QuestionOfReputation/HorzalahFirst/Cue_0001.jbp",
-      "type": "BlueprintCue"
-    },
-    "f3ba94d6ca5f33d499b5ff0a11cda5df": {
-      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q2_Ch4_QuestionOfReputation/HorzalahFirst/Cue_0003.jbp",
-      "type": "BlueprintCue"
-    },
-    "0a2ac3e410a118142a40a12c678f82d2": {
-      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q2_Ch4_QuestionOfReputation/HorzalahFirst/Cue_0017.jbp",
-      "type": "BlueprintCue"
-    },
-    "9652bd6d33d394a498bb7a1c28693cc6": {
-      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q2_Ch4_QuestionOfReputation/YozzDying/AnswersList_0039.jbp",
-      "type": "BlueprintAnswersList"
-    },
-    "7dce8fddc72c85d49a9520a9bc1ac85f": {
-      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q2_Ch4_QuestionOfReputation/YozzDying/Cue_0049.jbp",
-      "type": "BlueprintCue"
-    },
-    "fc5119d8d4a54e047b07338764beb346": {
-      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q2_Ch4_QuestionOfReputation/YozzDying/Cue_0051.jbp",
-      "type": "BlueprintCue"
-    },
-    "65b730aabc12f344fb3fc779a8e8c53b": {
-      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q3_Ch5_PriceOfLoyalty/Horzalah_Ambush/Cue_0003.jbp",
-      "type": "BlueprintCue"
-    },
-    "bc0174e40cf066444a69785514bc6901": {
-      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q3_Ch5_PriceOfLoyalty/Horzalah_Ambush/Cue_0051.jbp",
-      "type": "BlueprintCue"
-    },
-    "8373a8ede2c5483e9a734dfea046fe2d": {
-      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q3_Ch5_PriceOfLoyalty/Horzalah_Mercy/AnswersList_0001.jbp",
-      "type": "BlueprintAnswersList"
-    },
     "5de3ea4370854d229e047d95980006c9": {
       "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q3_Ch5_PriceOfLoyalty/Horzalah_Mercy/Answer_0004.jbp",
-      "type": "BlueprintAnswer"
-    },
-    "86e984232083404ebb61832b0cd5778c": {
-      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q3_Ch5_PriceOfLoyalty/Horzalah_Mercy/Answer_0005.jbp",
       "type": "BlueprintAnswer"
     },
     "717a2f84c7dbfd24dbb474abd26211b3": {
       "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q3_Ch5_PriceOfLoyalty/Horzalah_Mercy/Answer_0022.jbp",
       "type": "BlueprintAnswer"
-    },
-    "a4e7f54ec0c0ccd42ba50cf216a1457c": {
-      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q3_Ch5_PriceOfLoyalty/Horzalah_Mercy/Answer_0023.jbp",
-      "type": "BlueprintAnswer"
-    },
-    "c12bda4e0a95464db71e9f9f79e765de": {
-      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q3_Ch5_PriceOfLoyalty/Horzalah_Mercy/Cue_0007.jbp",
-      "type": "BlueprintCue"
-    },
-    "ae22177b1bc76fc42a9d08dba83cccdc": {
-      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q3_Ch5_PriceOfLoyalty/Horzalah_Mercy/Cue_0011.jbp",
-      "type": "BlueprintCue"
-    },
-    "4a3f22ae70e441d9b27ce67974f632d5": {
-      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q3_Ch5_PriceOfLoyalty/Horzalah_Mercy/Cue_4.jbp",
-      "type": "BlueprintCue"
-    },
-    "e60797a42f8d33c4581cfe3bb37b5d2f": {
-      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q3_Ch5_PriceOfLoyalty/InterrogationAfterAssasination/Cue_0016.jbp",
-      "type": "BlueprintCue"
     },
     "5db28e499fd812848b92d6ac7b26e234": {
       "path": "World/Dialogs/Companions/CompanionQuests/Nenio/Q1MoreThanNothing/FoxReveal/Cue_0031.jbp",
@@ -1721,6 +1689,38 @@
     "4d812cb00e7ad794d907273f8db54b1e": {
       "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Additional_C3/After_Lab/Arueshalae_Romance_C3_After_Lab_Dialogue.jbp",
       "type": "BlueprintDialog"
+    },
+    "055f4dffcad30154aad432f4df0ff8cf": {
+      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Additional_C3/After_Wintersun/Cue_0023.jbp",
+      "type": "BlueprintCue"
+    },
+    "a446fc1d406f35843bc638ec2355a149": {
+      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Additional_C3/After_Wintersun/Cue_0028.jbp",
+      "type": "BlueprintCue"
+    },
+    "29edb646b22bc434eb92ecee5025e97f": {
+      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Main_C3/Arueshalae_Jailed/Cue_0056.jbp",
+      "type": "BlueprintCue"
+    },
+    "431e40e3ba586494eb47f857b4acdb58": {
+      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Main_C3/Arueshalae_Jailed/Cue_0059.jbp",
+      "type": "BlueprintCue"
+    },
+    "65a66f6dc8fcdeb4fb18ee13d222786b": {
+      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Main_C4/KTC_Arusha/Cue_0010.jbp",
+      "type": "BlueprintCue"
+    },
+    "5844d38b0f4fa0a4495e00439d76758e": {
+      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Main_C4/KTC_Arusha/Cue_0020.jbp",
+      "type": "BlueprintCue"
+    },
+    "f35d207b6a137bc44a2cd7c2d7d3eea8": {
+      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Main_C4/KTC_Arusha/Cue_0029.jbp",
+      "type": "BlueprintCue"
+    },
+    "4d032a72e7735434faec60f256587561": {
+      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Main_C4/Nightmares/Cue_0009.jbp",
+      "type": "BlueprintCue"
     },
     "86597ac9662ad35409f311a6b52c86b8": {
       "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Main_C4/Wakeup/Arueshalae_Romance_C4_Wakeup_Dialogue.jbp",
@@ -1932,10 +1932,6 @@
     },
     "5b01aa690202e584888dfc600a4aac0a": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05.jbp",
-      "type": "BlueprintEtude"
-    },
-    "41bf413e0fa2ea34b937d4445edd5f89": {
-      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter06.jbp",
       "type": "BlueprintEtude"
     },
     "b9cbdf8a2f0545f694366b87ae7d7d44": {
@@ -2182,10 +2178,6 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/ArueshalaeCompanion/ArueshalaeNotInParty_KickedOut.jbp",
       "type": "BlueprintEtude"
     },
-    "543a6e475aeb9bf4eafb43903e3e186b": {
-      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/ArueshalaeCompanion/ArueshalaeRomance/ArueshalaeRomance_Fail.jbp",
-      "type": "BlueprintEtude"
-    },
     "9104498b842e1584da9b3640cb9e4157": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/ArueshalaeCompanion/ArueshalaeStates/ArueshalaeIsEvil/EvilArushaKilled.jbp",
       "type": "BlueprintEtude"
@@ -2252,14 +2244,6 @@
     },
     "d21eb4b5e2164aeaa32e48234701c653": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberStates/EmberKilledInKenabres.jbp",
-      "type": "BlueprintEtude"
-    },
-    "bad3705ac7bb7bc43ba7e67db75c2245": {
-      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/GreyborCompanion/GreyborInParty.jbp",
-      "type": "BlueprintEtude"
-    },
-    "00715f05d727921438971fa32c02ceaf": {
-      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/GreyborCompanion/GreyborNotInParty_AccordingToThePlot.jbp",
       "type": "BlueprintEtude"
     },
     "10320ad437121a44eb629d5fa9a79c75": {
@@ -2338,24 +2322,8 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahNotInParty_KickedOut.jbp",
       "type": "BlueprintEtude"
     },
-    "f8129442feebb7c49b209c83b8ee6267": {
-      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/JannaDead_SeelahDoesntKnow.jbp",
-      "type": "BlueprintEtude"
-    },
-    "699b1ad898227c943b2ee9e0cfd355aa": {
-      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/JannaDead_SeelahKnows.jbp",
-      "type": "BlueprintEtude"
-    },
-    "d99770b13ebc47447881d33763209b03": {
-      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/JannaFree.jbp",
-      "type": "BlueprintEtude"
-    },
     "46f4524cec981c544964229e3e08c847": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/JannaInCondemned.jbp",
-      "type": "BlueprintEtude"
-    },
-    "59632e1775b2f7240af0f6d0db28e35b": {
-      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/JannaInPrison.jbp",
       "type": "BlueprintEtude"
     },
     "0d773e4f71ac38a4d917ed459f6a0d0b": {
@@ -2392,10 +2360,6 @@
     },
     "3b31ef42338b4f83ab822fbcae79a41c": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/UlbrigCompanion/UlbrigNotInParty_KickedOut.jbp",
-      "type": "BlueprintEtude"
-    },
-    "44266407bc1241e4bb108fc03a01d8df": {
-      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/WenduagCompanion/WenduagInParty.jbp",
       "type": "BlueprintEtude"
     },
     "85ee36dae8f3317448fa5b950543b3ad": {
@@ -2668,10 +2632,6 @@
     },
     "49b7496143daed149ab4557a9684dd53": {
       "path": "World/Quests/Companions/Ember/Q3_Worshipped/Ember_Q3_Worshipped_quest.jbp",
-      "type": "BlueprintQuest"
-    },
-    "6377e00508d4c9243a7b89d743d7914c": {
-      "path": "World/Quests/Companions/Grimbor/Q2_QuestionOfReputation/QuestionOfReputation.jbp",
       "type": "BlueprintQuest"
     },
     "a1024628f074e4d4f9d2b15956975459": {

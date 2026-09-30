@@ -474,7 +474,7 @@ s("before_the_far_road", "Before the far road", '"I came for the evening, before
 "You can save it."
 "No. This one was good. I shall recover it when you are least prepared."
 {n}Her laughter is low and close. The shawl has slipped from one shoulder; she lets it fall into her lap and asks how much of the night you can give her.{/n}''',
-        c('"I want to stay with you. Tell me when you want anything slower."', "night"),
+        c('"Keep me here, then. All night."', "night"),
         c('"I want the evening and your kisses. I need to leave before the night is over."', "kiss"),
         c('"Hold me for a while. That is what I want most tonight."', "hold")),
     n("night", "Narrator", '''{n}She pulls you close by the hand you have left in hers. You kiss her, and she answers with an eagerness that makes the careful waiting seem far away. The kiss is interrupted only because she laughs when her shawl catches beneath your knee. You free it together. She spreads it over the unused tools rather than returning it to its peg.{/n}

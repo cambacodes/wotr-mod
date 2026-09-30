@@ -363,6 +363,7 @@ internal static class Program
         SkillCheckTests.Run(Check);
         ForbidOverrideTests.Run(Check);
         TricksterLatchTests.Run(Check);
+        ChapterZeroTests.Run(Check);
         UnavailableOverrideTests.Run(Check);
         NativeForbidOverrideTests.Run(Check);
         DerivedFlagTests.Run(Check);
@@ -467,6 +468,8 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "dorgelinda.trickster.audit.open")) DorgelindaTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "targona.trickster.dead.setup")) TargonaTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "hepzamirah.trickster.ghost.body")) HepzamirahTricksterTests.Run(story, Check);
+            // 18-ETUDE-BINDING-AUDIT: each fixed native binding holds where its scenes are delivered.
+            if (story.Scenes.Any(s => s.Id == "terendelev.trickster.late.the_wound_calls")) EtudeBindingTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "camellia.trickster.killed.performance")) CamelliaTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "eritrice.trickster.council.motion")) EritriceTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "areelu.trickster.wager.struck")) AreeluTricksterTests.Run(story, Check);

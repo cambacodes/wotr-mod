@@ -176,7 +176,7 @@ internal static class TerendelevTricksterTests
         check(!Program.Walk(bones, prepared).Any(r => r.Has(P + "cost.bled_white")) && Program.Walk(bones, prepared).Any(r => r.Has(Returned)),
             "Trk_Terendelev_Bones: the Abyss test does not spare the Commander the unmeasured bleeding.");
         check(Rules.PresenceWanted(stall, back) && !Rules.PresenceWanted(awning, back), "Trk_Terendelev_Bones: her presence does not stand in Drezen.");
-        check(!Rules.Available(story, late, Later(story, World(story, 5, "trickster", "trickster.ever", "iz.monster_dead", Returned), 48)),
+        check(!Rules.Available(story, late, Later(story, World(story, 5, "trickster", "trickster.ever", "iz.monster_dead.live", Returned), 48)),
             "Trk_Terendelev_Bones: the late page follows a return.");
         check(Rules.Available(story, road, Later(story, back, 8)), "Trk_Terendelev_Bones: the road out of Iz never comes.");
         var failed = One(bones, battle, new[] { P + "search_failed" }, Returned);
@@ -192,7 +192,7 @@ internal static class TerendelevTricksterTests
         {
             var already = World(story, 5, "trickster", "trickster.ever", "iz.terendelev_battle", parent);
             check(!Rules.Available(story, bones, already) && !Rules.Available(story, bonesIrabeth, already)
-                  && !Rules.Available(story, late, World(story, 5, "trickster", "trickster.ever", "iz.monster_dead", "iz.left_early", parent))
+                  && !Rules.Available(story, late, World(story, 5, "trickster", "trickster.ever", "iz.monster_dead.live", "iz.left_early", parent))
                   && !Rules.Available(story, commit, World(story, 5, "trickster", "trickster.ever", Returned, P + "first_night_seen", parent))
                   && !Rules.PresenceWanted(stall, World(story, 5, "trickster", "trickster.ever", Returned, parent)),
                 "Trk_Terendelev_ParentReturn: a Trickster return opens after the parent romance has returned her (" + parent + ").");
@@ -210,17 +210,17 @@ internal static class TerendelevTricksterTests
         check(backIrabeth.Has("terendelev.started") && !backIrabeth.Has(Committed), "Trk_Terendelev_IrabethHost: the flags differ from the Queen's list.");
 
         // Trk_Terendelev_LateAndDecline: the Queen fought it alone; the late page, the debt, the release.
-        var alone = World(story, 5, "trickster", "trickster.ever", "iz.monster_dead", "iz.left_early");
+        var alone = World(story, 5, "trickster", "trickster.ever", "iz.monster_dead.live", "iz.left_early");   // the kill observed in Iz
         check(!Rules.Available(story, bones, alone), "Trk_Terendelev_LateAndDecline: the bones open without the battle.");
         check(Rules.Available(story, late, alone) && !Rules.Available(story, late, World(story, 5, "trickster", "trickster.ever"))
-              && !Rules.Available(story, late, World(story, 5, "trickster.ever", "iz.monster_dead")),
+              && !Rules.Available(story, late, World(story, 5, "trickster.ever", "iz.monster_dead.live")),
             "Trk_Terendelev_LateAndDecline: the late page is shut, or comes without the kill or the live path.");
         var lateBack = One(late, alone, new[] { Returned, P + "cost.late", P + "cost.wound_open", P + "grounded" });
         var lateRest = One(late, alone, new[] { P + "rested", Closed }, Returned);
         Snapshot Killed(Snapshot w)
         {
             var after = Program.Copy(w);
-            after.Flags.Add("iz.monster_dead");
+            after.Flags.Add("iz.monster_dead.live");
             Rules.Complete(story, after);
             foreach (var flag in after.Flags.ToList()) after.Times[flag] = after.Hour - 200;
             return after;

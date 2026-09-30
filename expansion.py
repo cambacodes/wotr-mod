@@ -122,7 +122,9 @@ def make_expansion(*, independent_tirabade=True):
         "jerribeth.patron_lost": "72e423c719ed9d44fa432a6b9629babd",
         "soana.after_quest": "fccdd316924af204da00c99f01c0e222",
         "soana.old_defender": "c97882cbc65c4c546aed1810627a5b81",
-        "soana.bear_dead": "995f0ac2951bbb041b062806c163fbf1",
+        # Playing only in WintersunOutdoor (area link): the raw reader is a latch source; soana.bear_dead is its latch (trickster_world), so
+        # her remote letters (soana.trickster.killed.knot) read the bear's death anywhere (18-ETUDE-BINDING-AUDIT follow-up).
+        "soana.bear_dead.live": "995f0ac2951bbb041b062806c163fbf1",
         "soana.forest_dead": "ff0d7227c56b2b0488b006893b96040e",
         "soana.dead": "d4b624463e52e21438da6f4870320fee",
         "soana.killed_by_camellia": "f102a4d0677148f4cab007f901a5ed3c",

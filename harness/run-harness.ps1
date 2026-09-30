@@ -31,6 +31,10 @@
   start, combat, Player faction, party group or missing Passive flag. It then removes them. Nothing is saved.
   ./harness/run-harness.ps1 -Build -Saves '<copy of a Ch3 Drezen save>' -Spike Presence -NoRoundTrip -TimeoutMinutes 15
 
+  -Probes installs the harness-only probe story (tools/build-harness-probes.py: development/Story.json plus
+  storylines/harness_probes.py, e.g. the E-new 0 Prologue probe pacing.e0.probe) and its inline hosts in place of the shipped
+  ones. Probes never ship. ./harness/run-harness.ps1 -Saves '<copy of a Prologue save>' -Probes -Inline -SceneFilter @('pacing.e0.')
+
 .NOTES
   Exit codes: 0 all checks passed, 1 tests failed, 2 harness/infrastructure failure (no report, timeout, crash),
   3 bad arguments or failed preflight.
@@ -58,6 +62,7 @@ param(
     [switch]$Inline,
     [int]$MaxInlineNavSteps = 40,
     [ValidateSet('Residence', 'Presence')][string]$Spike,
+    [switch]$Probes,
     [switch]$Build,
     [int]$TimeoutMinutes = 45,
     [string]$UserData = (Join-Path $env:USERPROFILE 'AppData\LocalLow\Owlcat Games\Pathfinder Wrath Of The Righteous'),
@@ -132,13 +137,27 @@ if ($Build -or (!(Test-Path -LiteralPath $harnessDll))) {
     }
 }
 
+# -Probes (E-new 0): install the harness-only probe story (development/Story.json + storylines/harness_probes.py) and its
+# inline hosts instead of the shipped ones, for this run only. Both are built into harness/probes/ (gitignored); the
+# shipped story never contains a probe, and the Mods folder is restored after the run as usual.
+$storySource = Join-Path $Repo 'development\Story.json'
+$inlineHosts = Join-Path $HarnessDir 'inline-hosts.json'
+if ($Probes) {
+    $probeDir = Join-Path $HarnessDir 'probes'
+    Say 'Building the harness-only probe story (harness/probes/, never shipped)...' Cyan
+    & (Get-Command python -ErrorAction Stop).Source (Join-Path $Repo 'tools/build-harness-probes.py') --hosts --game $GameDir
+    if ($LASTEXITCODE) { Say 'Probe story build failed.' Red; exit 3 }
+    $storySource = Join-Path $probeDir 'Story.json'
+    $inlineHosts = Join-Path $probeDir 'inline-hosts.json'
+}
+
 $copies = [Collections.Generic.List[object]]::new()
 function Add-Copy([string]$Source, [string]$Target, [bool]$Optional = $false) {
     $copies.Add([PSCustomObject]@{ Source = $Source; Target = $Target; Optional = $Optional })
 }
 Add-Copy (Join-Path $Repo 'package\Info.json') (Join-Path $RrtModDir 'Info.json')
 Add-Copy $rrtDll (Join-Path $RrtModDir 'RanRomance.Tirabade.dll')
-Add-Copy (Join-Path $Repo 'development\Story.json') (Join-Path $RrtModDir 'Story.json')
+Add-Copy $storySource (Join-Path $RrtModDir 'Story.json')
 foreach ($name in @('Tirabade.Narrator.exe', 'Tirabade.Narrator.exe.config')) {
     Add-Copy (Join-Path $Repo "package\$name") (Join-Path $RrtModDir $name) $true
 }
@@ -159,7 +178,6 @@ if (Test-Path -LiteralPath $artPortraits) {
 }
 Add-Copy $harnessDll (Join-Path $HarnessModDir 'RRT.TestHarness.dll')
 Add-Copy (Join-Path $HarnessDir 'Info.json') (Join-Path $HarnessModDir 'Info.json')
-$inlineHosts = Join-Path $HarnessDir 'inline-hosts.json'
 Add-Copy $inlineHosts (Join-Path $HarnessModDir 'inline-hosts.json') (-not $Inline)
 
 # ---------------------------------------------------------------------------------------------

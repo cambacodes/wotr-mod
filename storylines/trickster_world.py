@@ -31,7 +31,15 @@ BINDINGS = {
     'arueshalae.elysium': ('StartedDialogs', '3edf6ac1aefa1e3429ca04c60cb8565c', 'Arueshalae_Romance_BestEnding_Dialogue (native Ch5: flowers of Elysium, her touch no longer harms; variant read only)'),
     'arueshalae.evil_dead': ('Etudes', '9104498b842e1584da9b3640cb9e4157', 'EvilArushaKilled'),
     'arueshalae.evil_recruited': ('Etudes', '005c2284d7e5ac54c887bb3781e45d0c', 'EvilArushaRecruited'),
-    'arueshalae.failed': ('Etudes', '543a6e475aeb9bf4eafb43903e3e186b', 'ArueshalaeRomance_Fail'),
+    # 18-ETUDE-BINDING-AUDIT: ArueshalaeRomance_Fail is her one-strike WARNING (playing while the romance goes on), and the
+    # second strike completes its parent in the same dialog, so the etude never read "failed". Bind the cues that end the
+    # romance in failure instead (dialog history, held for good): After_Wintersun Cue_0023/0028 (second strike), Jailed
+    # Cue_0056/0059, KTC_Arusha Cue_0010/0020/0029, Nightmares Cue_0009. Not friendship answers, jealousy, lich or ascension.
+    'arueshalae.failed': ('SeenCues', ['055f4dffcad30154aad432f4df0ff8cf', 'a446fc1d406f35843bc638ec2355a149',
+                                       '29edb646b22bc434eb92ecee5025e97f', '431e40e3ba586494eb47f857b4acdb58',
+                                       '65a66f6dc8fcdeb4fb18ee13d222786b', '5844d38b0f4fa0a4495e00439d76758e',
+                                       'f35d207b6a137bc44a2cd7c2d7d3eea8', '4d032a72e7735434faec60f256587561'],
+                          'Arueshalae romance-failure cues (After_Wintersun, Jailed, KTC_Arusha, Nightmares)'),
     'arueshalae.lab_seen': ('StartedDialogs', '4d812cb00e7ad794d907273f8db54b1e', 'Arueshalae_Romance_C3_After_Lab_Dialogue (her desires shown to everyone in the Areelu lab; variant read only)'),
     'arueshalae.kicked_out': ('Etudes', '3d4cf05d72e552d4fa8490987a7fc7be', 'ArueshalaeNotInParty_KickedOut (+evil 5eb05139c8b621a44b47c540aa4957d1)'),
     'arueshalae.kicked_out_evil': ('Etudes', '5eb05139c8b621a44b47c540aa4957d1', 'Evil ArueshalaeNotInParty_KickedOut'),
@@ -142,6 +150,7 @@ BINDINGS = {
     'greybor.in_party': ('Etudes', 'bad3705ac7bb7bc43ba7e67db75c2245', 'Companions/GreyborCompanion/GreyborInParty (presence gate for his hub)'),
     'greybor.kicked_out': ('Etudes', 'dd138e723bf3dd94caddc127a23788ad', 'GreyborNotInParty_KickedOut'),
     'greybor.q2_done': ('CompletedQuests', '6377e00508d4c9243a7b89d743d7914c', 'QuestionOfReputation (GreyborQ3 2a3efdaf2c5b7f34f88be4895db6dec0 requires it)'),
+    # In PERMANENT below: the c4->c5 interchapter completes Chapter04 and cascades Completed onto this started child.
     'hepzamirah.dead': ('Etudes', 'd4657f5e560ea29408b0ba0f97f2e7bc', 'ColyphyrHepzamirahDead'),
     'hepzamirah.ghost_dispersed': ('SeenCues', 'a4011b00473994b4dadc6aed381cf504', "Prison_HepzamirahGhost/Cue_0016 'Howling madly, the ghost dissipates' (OnStop HideUnit onl"),
     'hepzamirah.ghost_seen': ('SeenCues', '5e4a94e4f9a58974583be0c79bfe8e55', 'Prison_HepzamirahGhost/Cue_0001 (ShowOnce; first meeting)'),
@@ -176,20 +185,29 @@ BINDINGS = {
     'item.ring_of_protection_1': ('InventoryItems', 'f333bf86cd122974792162cbcd27c9ed', 'Ring of Protection +1 (E10 reader; the E11 remove_item precondition)'),
     'item.ring_of_protection_2': ('InventoryItems', '254755ca73eb52a4d8ab1a663106659b', 'Ring of Protection +2 (E10 reader; the E11 remove_item precondition)'),
     'item.ring_of_protection_3': ('InventoryItems', '31315100c28e6a2418396fb152466fcd', 'Ring of Protection +3 (E10 reader; the E11 remove_item precondition)'),
-    'iz.anemora_dead': ('Etudes', '8c2fdd760cc54b4bb874d2832ff14695', 'Iz_Default/ManuscriptsAnemoraDead'),
+    # 18-ETUDE-BINDING-AUDIT: the Iz_Default etudes play only while the party is in Iz (area link) and are never completed.
+    # The raw readers are *.live (latch sources only); iz.anemora_dead / iz.left_early / iz.monster_dead are their records.
+    'iz.anemora_dead.live': ('Etudes', '8c2fdd760cc54b4bb874d2832ff14695', 'Iz_Default/ManuscriptsAnemoraDead (area Iz: latch source only)'),
     'iz.banner_lost': ('SeenCues', '710ed96131bbf4e42b930f87cfd6aa25', 'c5/Iz/Banner/Cue_0014 (kept)'),
     'iz.banner_saved': ('SeenCues', '1497ea96d54cf744e9f79f70c833a742', 'c5/Iz/Banner/Cue_0015 or Cue_0016 (kept)'),
     'iz.done': ('CompletedQuests', '95ff7d975689fcf44b085d10907e711d', 'Iz_quest (GreyborQ3 requires it)'),
     'iz.fought_with_galfrey': ('Etudes', 'caf51287bfd0152489d3a6fe4700060c', 'PlayerFoughtAlongsideWithGalfrey'),
-    'iz.left_early': ('Etudes', 'a583e4ab47544f5e928fc5b6b7c41e48', 'DidntVisitedEvents (Iz_Default)'),
-    'iz.monster_dead': ('Etudes', '42e220d5dadc4dfd8bb3ef23cae832eb', 'MonsterDead (Iz_Default)'),
+    'iz.left_early.live': ('Etudes', 'a583e4ab47544f5e928fc5b6b7c41e48', 'DidntVisitedEvents (Iz_Default; area Iz: latch source only)'),
+    'iz.monster_dead.live': ('Etudes', '42e220d5dadc4dfd8bb3ef23cae832eb', 'MonsterDead (Iz_Default; area Iz: latch source only)'),
     'iz.sock_raised': ('Etudes', 'b99cec06dab2bd24fa3124bad167028f', 'TricksterBanner (started by c5/Iz/Banner/Cue_0071 445c1729bfec07a4e8ac122c131411d4 after A'),
-    'jannah.condemned': ('Etudes', '46f4524cec981c544964229e3e08c847', 'JannaInCondemned'),
-    'jannah.dead': ('Etudes', 'f8129442feebb7c49b209c83b8ee6267', 'JannaDead_SeelahDoesntKnow'),
-    'jannah.dead_known': ('Etudes', '699b1ad898227c943b2ee9e0cfd355aa', 'JannaDead_SeelahKnows'),
-    'jannah.free': ('Etudes', 'd99770b13ebc47447881d33763209b03', 'JannaFree'),
+    # 18-ETUDE-BINDING-AUDIT: Jannah's fate etudes sit under SeelahInParty (ActivationCondition CompanionInParty(Seelah)),
+    # so with Seelah dead or dismissed a dead Jannah read as alive. Bind the Deserter/Seelah cues that start each fate
+    # (each StartEtude is unconditional in its cue); dialog history holds them regardless of Seelah. Condemned has no cue
+    # (Seelah_BeforeQ3 moves her from prison when Chapter 5 starts; area DrezenCapital), so it is a latch below.
+    'jannah.condemned.live': ('Etudes', '46f4524cec981c544964229e3e08c847', 'JannaInCondemned (area DrezenCapital, Seelah subtree: latch source only)'),
+    'jannah.dead': ('SeenCues', ['199d4dbffb5a53a4cb73578307cbb4a9'], 'c3/MoltenScar/Deserter/Cue_0027 (starts JannaDead_SeelahDoesntKnow)'),
+    'jannah.dead_known': ('SeenCues', ['166223b5a9284d34798dc42dcd4f7e1c'], 'Seelah/Cue_0105 (starts JannaDead_SeelahKnows)'),
+    'jannah.free': ('SeenCues', ['f24d118342fab1c4aa2a787697f2b496', 'f3a9f5da5f3aaee4dabf0fad5976e782',
+                                 '6ea88ed6d7ac02c42b1eb4d641db14ad', 'bc82d1f5215d468ea1d70d582a3b2de4'],
+                    'Deserter Cue_0025/0029/0060/Cue_3 (start JannaFree)'),
     'jannah.joined': ('SeenCues', '651ecf0cde0e1a54dbc93761d1751b43', 'ktc_DeserterJoins/Cue_0019'),
-    'jannah.prison': ('Etudes', '59632e1775b2f7240af0f6d0db28e35b', 'JannaInPrison'),
+    'jannah.prison': ('SeenCues', ['83e788629a224ba7ad08da7e204685b4', 'a66a6e34e9aa8d749921acdc7a0ae938',
+                                   '4f92e80ae13d31f438b7e147340d568e'], 'Deserter Cue_0003/0020/0024 (start JannaInPrison)'),
     'jannah.refused_q3': ('SelectedAnswers', 'e66c11e60b29b0d41afe36b7351d49c0', 'ktc_DeserterJoins/Answer_0017'),
     'jerribeth.betrays_vellexia': ('SeenCues', 'e0ee422a413a5f94ea90bede3096ee56', 'Velexia_Third_Date/Cue_0055 (node reads only)'),
     'jerribeth.egg_lore_heard': ('SeenCues', '93dfa9597191a6848b925d964d309fe4', "JerribethGreetings/Cue_0045 (Nenio: oolioddroo eggs 'influence the thought processes of th"),
@@ -508,6 +526,8 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
  'targona.trickster.late_committed': [['trickster.ever', 'targona.trickster.forgiven'],
                                       ['trickster.ever', 'targona.trickster.met']],
  'terendelev.ravener_dead': [['iz.monster_dead', 'trickster.ever']],
+ # The monster's death as history: its latch, recorded while the party is in Iz (save-compatible with earlier builds).
+ 'iz.monster_dead': [['iz.monster_dead.latched']],
  'trickster.cheated_death': [['sacrifice', 'trickster.ever', 'ending.trickster'],
                              ['sacrifice', 'trickster.ever', 'ending.trickster_full'],
                              ['sacrifice', 'trickster.ever', 'ending.trickster_allplanes'],
@@ -559,6 +579,10 @@ LATCHES = {'arueshalae.evil_dead.latched': ['arueshalae.evil_dead'],
  'horzalah.dismissed.latched': ['horzalah.dismissed', 'horzalah.dismissed_b'],
  'iomedae.key_dies_revealed.latched': ['iomedae.key_dies_revealed'],
  'irabeth.dead.latched': ['irabeth_dead'],
+ 'iz.anemora_dead': ['iz.anemora_dead.live'],
+ 'iz.left_early': ['iz.left_early.live'],
+ 'iz.monster_dead.latched': ['iz.monster_dead.live'],
+ 'jannah.condemned': ['jannah.condemned.live'],
  'jannah.dead.latched': ['jannah.dead', 'jannah.dead_known'],
  'kaylessa.dead.latched': ['kaylessa.dead'],
  'kiana.soul_lost': ['kiana.possessed', 'kiana.soul_stolen_seen'],
@@ -576,6 +600,7 @@ LATCHES = {'arueshalae.evil_dead.latched': ['arueshalae.evil_dead'],
  'seelah.dead.latched': ['seelah_dead'],
  'seelah.gone.latched': ['seelah_gone'],
  'shamira.cauldron_shown.latched': ['shamira.cauldron_shown'],
+ 'soana.bear_dead': ['soana.bear_dead.live'],   # WintersunOutdoor only (expansion.py binds the live reader)
  'trickster.ever': ['trickster', 'trickster.was'],
  'wenduag.kicked_out.latched': ['wenduag.kicked_out'],
  'wenduag.killed.latched': ['wenduag.killed'],
@@ -584,6 +609,10 @@ LATCHES = {'arueshalae.evil_dead.latched': ['arueshalae.evil_dead'],
  'yaniel.killed.latched': ['yaniel.killed'],
  'yaniel.never_freed.latched': ['chapter_later']}
 
+
+# Etude keys whose Completed state still means the event happened (Main.BuildState reads Playing OR Completed for them):
+# a parent completion cascades Completed onto every started child (18-ETUDE-BINDING-AUDIT).
+PERMANENT = ('hepzamirah.dead',)
 
 LIST_KINDS = {"SeenCues", "QuestObjectives"}
 
@@ -617,6 +646,7 @@ def integrate(payload):
                      | {k for p in (payload.get("Presences") or {}).values()
                         for k in [*(p.get("Requires") or []), *(p.get("Forbids") or []),
                                   *(k for g in p.get("RequiresAnyGroups") or [] for k in g)]})
+    routed = set()
     while pending:
         key = pending.pop()
         if key in BINDINGS:
@@ -633,3 +663,10 @@ def integrate(payload):
         elif key in LATCHES and not _bound(payload, key):
             payload.setdefault("Latches", {})[key] = list(LATCHES[key])
             pending.extend(LATCHES[key])
+        elif key in (payload.get("Latches") or {}) and key not in routed:
+            # A route bound this latch itself (e.g. iz.monster_dead.latched): its native sources still bind here.
+            routed.add(key)
+            pending.extend(payload["Latches"][key])
+    permanent = {k for k in PERMANENT if k in (payload.get("Etudes") or {})}
+    if permanent:
+        payload["PermanentEtudes"] = sorted(set(payload.get("PermanentEtudes", [])) | permanent)
