@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-qual-q6\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4076,
-  "unique_targets": 853,
+  "binding_uses": 4082,
+  "unique_targets": 857,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -725,6 +725,18 @@
     "3357022e6d1c5e047a0075a223606210": {
       "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Answer_0048.jbp",
       "type": "BlueprintAnswer"
+    },
+    "a70275fb77f483847a68fe01586091ec": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Cue_0053.jbp",
+      "type": "BlueprintCue"
+    },
+    "4a58ea0622eb9924abb1579306f5a395": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Cue_0057.jbp",
+      "type": "BlueprintCue"
+    },
+    "a58f2095249a44549a4dfd2d60a9b6e1": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Cue_0067.jbp",
+      "type": "BlueprintCue"
     },
     "96993dc62aebc38469f890b857173117": {
       "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/TombOfDelamere_BookEvent.jbp",
@@ -2080,6 +2092,10 @@
     },
     "1d5570f0d0d2b7b4ba805d48f492a749": {
       "path": "World/Encounters/AlushinyrraCity/Items/TeleportationMarks/TenThousandDelightsArk_Mark.jbp",
+      "type": "BlueprintItem"
+    },
+    "b5b0214f3ce3ded42a62094b87a434dd": {
+      "path": "World/Encounters/AreeluLab/Items/AbyssalKey.jbp",
       "type": "BlueprintItem"
     },
     "f0641f67501a4084897d9bcbc00ddc99": {
