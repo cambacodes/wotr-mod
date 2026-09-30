@@ -682,7 +682,7 @@ def epilogue(id, title, text, requires, forbids=(), paragraphs=()):
 KITRANE_PARAGRAPHS = (
     p('''{n}After Threshold she rode to Nerosyan in a green surcoat, walked into the cathedral in the middle of the spring vigil, and had the royal crypt opened in front of the bishops, the regents and half the court. She named the man inside it: Sir Anselm Wray, of the Green Crows, who had died beside her at Iz. Then she took off her hood. His daughter buried her father that summer with every honour Mendev had. The Queen stood at the graveside in plain armour, and nobody in Mendev ever forgot it.{/n}''',
       requires=(CROWN,)),
-    p('''{n}She took no more of the church's elixir. She refused it at the altar, in front of them all, and Mendev watched its Queen grow old for the first time in a century, one grey hair and one stiff winter at a time. When she was tired, she abdicated. She said she had always meant to try being a knight of some small order nobody had heard of.{/n}''',
+    p('''{n}She took no more of the church's elixir. She refused it at the altar, in front of them all, and Mendev watched its Queen grow old after a century of standing still, one grey hair and one stiff winter at a time. When she was tired, she abdicated. She said she had always meant to try being a knight of some small order nobody had heard of.{/n}''',
       requires=(CROWN,)),
     p('''{n}Mendev never forgave the Commander for it entirely. There were inquiries, and sermons, and one very long letter from the Inquisitor Hulrun. The Commander answered all of them, in person, for years.{/n}''',
       requires=(CROWN,)),

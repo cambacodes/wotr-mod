@@ -298,7 +298,7 @@ beat(P + "kitrane.ford", "The ford", '"I\'m riding out to clear the eastern ford
     ki("start", '''"The Crows will come." {n}She is already reaching for her helm.{/n} "All three of us, and the mule, and the squire, who will stay with the mule, whatever she says to the contrary."''',
         c("[Ride out.]", "ford")),
     nar("ford", '''{n}The eastern ford is a mile of reeds and brown water where a supply road crosses a stream, and a band of the Lord of Locusts' faithful has been cutting the throats of carters there for a week. They do not expect horses. They are wrong about a great many things, and that is the last of them.{/n}
-{n}Kitrane fights like what she is: a knight of a hundred years' practice, without a single wasted movement, without a guard at her back for the first time since she was a girl. When it is over she is splashed to the thighs and breathing hard, and she is laughing under her helm.{/n}''',
+{n}Kitrane fights like what she is: a knight of a hundred years' practice, without a single wasted movement, with no guard at her back, as she has not fought since she was a girl. When it is over she is splashed to the thighs and breathing hard, and she is laughing under her helm.{/n}''',
         c("Continue", "prisoners")),
     nar("prisoners", '''{n}There are six of them left alive, kneeling in the mud with their hands on their heads: four men, a woman with a locust burned into her cheek, and a boy of perhaps fifteen who will not stop shaking. Your soldiers are looking at you. So is the knight of the Green Crows, with her visor up and her sword still bare.{/n}''',
         *FORD_ORDERS,
@@ -677,7 +677,7 @@ beat(P + "kitrane.sergeant", "What the sergeant remembers", '"Your sergeant was 
         c("[Say nothing. Sit down beside her.]", "sit")),
     ki("fault", '''"No. It was a dragon's fault, and the Lord of Locusts', and the Worldwound's." {n}Very even.{/n} "I am a paladin, Commander. I know exactly how much blame to take and where to put it down. I have done it ten thousand times." {n}Her hands resume on the blade.{/n} "I am only finding it very hard to put this particular one down. It is shaped like a deaf old man."''',
         c("Continue", "end")),
-    ki("meant", '''{n}She is silent for a while.{/n} "Yes. He did. That is the only mercy in it." {n}She holds the sword up, and turns it, and you see for the first time the name scratched small and crooked near the hilt, under the Crows' mark.{/n} "This is his. Mine went with Kitrane, so his went on the coffin, and when the Crows brought me out I took his. I did not think about it at the time. I think about nothing else now."''',
+    ki("meant", '''{n}She is silent for a while.{/n} "Yes. He did. That is the only mercy in it." {n}She holds the sword up, and turns it, and you notice the name scratched small and crooked near the hilt, under the Crows' mark.{/n} "This is his. Mine went with Kitrane, so his went on the coffin, and when the Crows brought me out I took his. I did not think about it at the time. I think about nothing else now."''',
         c("Continue", "end")),
     nar("sit", '''{n}You sit down on the next crate. She goes on oiling the sword for a long time, stroke after stroke, until the steel shines, and neither of you says anything. When she has finished she lays the blade across her knees and rests both hands on it.{/n}
 {n}"Thank you," she says at last. "The Queen never had anyone who simply sat."{/n}''',
