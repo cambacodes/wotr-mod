@@ -320855,7 +320855,7 @@
         {
           "Id": "noct",
           "Speaker": "Shamira",
-          "Text": "\"Nocticula never dreams. She never has. She paints nightmares into murderers' heads for sport, but she has never had one of her own, and so she keeps people who do.\" {n}The sky has begun to darken at the edges, the way paper browns before it catches.{/n} \"I was the thing in her Harem that dreamed. That is what a chosen lover is, in the Abyss. A window.\"\n\"And now I am a draught behind a clown's eyes, walking through the clown's dreams, because they are the only fire I have left.\"",
+          "Text": "\"Nocticula never dreams. She never has. She paints nightmares into murderers' heads for sport, but she has never had one of her own, and so she keeps people who do.\" {n}The sky has begun to darken at the edges, the way paper browns before it catches.{/n} \"I was the thing in her Harem that brought her dreams: other people's, the best of them, carried up the stairs to her like wine. That is what a chosen lover is, in the Abyss. A window.\"\n\"And now I am a draught behind a clown's eyes, walking through the clown's dreams, because they are the only fire I have left.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -326008,8 +326008,40 @@
                 "shamira.threw_out",
                 "shamira.trickster.read",
                 "shamira.crystals_told",
+                "shamira.stripped",
+                "shamira.trickster.let_in"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "where_invited",
+              "Set": [],
+              "Requires": [
+                "shamira.trickster.let_in"
+              ],
+              "Forbids": [
+                "shamira.threw_out",
+                "shamira.trickster.read",
+                "shamira.crystals_told",
                 "shamira.stripped"
               ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Shamira"
+        },
+        {
+          "Id": "where_invited",
+          "Speaker": "Shamira",
+          "Text": "\"Here. This is where you opened your head to me the first time, in front of my whole court.\" {n}Her voice fills the empty room.{/n} \"I went in for what I wanted and came out again. I did not look at anything else in there. It did not occur to me that there was anything else worth looking at.\" {n}A small pause.{/n} \"More fool me. Stand where you stood then.\"",
+          "Choices": [
+            {
+              "Text": "[Stand where you stood.]",
+              "Next": "rules",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -327027,8 +327059,40 @@
                 "shamira.threw_out",
                 "shamira.trickster.read",
                 "shamira.crystals_told",
+                "shamira.stripped",
+                "shamira.trickster.let_in"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "where_invited",
+              "Set": [],
+              "Requires": [
+                "shamira.trickster.let_in"
+              ],
+              "Forbids": [
+                "shamira.threw_out",
+                "shamira.trickster.read",
+                "shamira.crystals_told",
                 "shamira.stripped"
               ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Shamira"
+        },
+        {
+          "Id": "where_invited",
+          "Speaker": "Shamira",
+          "Text": "\"Here. This is where you opened your head to me the first time, in front of my whole court.\" {n}Her voice fills the empty room.{/n} \"I went in for what I wanted and came out again. I did not look at anything else in there. It did not occur to me that there was anything else worth looking at.\" {n}A small pause.{/n} \"More fool me. Stand where you stood then.\"",
+          "Choices": [
+            {
+              "Text": "[Stand where you stood.]",
+              "Next": "rules",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -329280,7 +329344,7 @@
         {
           "Id": "chaplain",
           "Speaker": "Narrator",
-          "Text": "\"And the Hellknight's been round. The grey one with the notebook. He stood in our doorway the morning after, and counted the bunks, and then he looked up the hill at your door for a good while. He didn't write anything down, Commander. I've never known him not write something down.\"\n\"The chaplain's been asking questions too.\" {n}He says it low.{/n} \"Whether anything came through the north gate that night. Whether anybody saw a woman. One of the lads says he dreamed of a red-haired woman walking down the rows, and then he never dreamed again.\" {n}He looks at you, and he does not want to know, and he is going to ask anyway.{/n} \"Commander. Do you know anything about this?\"",
+          "Text": "\"And an inquisitor's been round. Grey coat, a notebook, no name given. He stood in our doorway the morning after, and counted the bunks, and then he looked up the hill at your door for a good while. He didn't write anything down, Commander. His sort always write something down.\"\n\"The chaplain's been asking questions too.\" {n}He says it low.{/n} \"Whether anything came through the north gate that night. Whether anybody saw a woman. One of the lads says he dreamed of a red-haired woman walking down the rows, and then he never dreamed again.\" {n}He looks at you, and he does not want to know, and he is going to ask anyway.{/n} \"Commander. Do you know anything about this?\"",
           "Choices": [
             {
               "Text": "\"Men break, surgeon. There's a war on. Write it up as the war.\"",
@@ -329418,7 +329482,7 @@
         {
           "Id": "chaplain",
           "Speaker": "Narrator",
-          "Text": "\"And the Hellknight's been round. The grey one with the notebook. He stood in our doorway the morning after, and counted the bunks, and then he looked up the hill at your door for a good while. He didn't write anything down, Commander. I've never known him not write something down.\"\n\"The chaplain's been asking questions too.\" {n}He says it low.{/n} \"Whether anything came through the north gate that night. Whether anybody saw a woman. One of the lads says he dreamed of a red-haired woman walking down the rows, and then he never dreamed again.\" {n}He looks at you, and he does not want to know, and he is going to ask anyway.{/n} \"Commander. Do you know anything about this?\"",
+          "Text": "\"And an inquisitor's been round. Grey coat, a notebook, no name given. He stood in our doorway the morning after, and counted the bunks, and then he looked up the hill at your door for a good while. He didn't write anything down, Commander. His sort always write something down.\"\n\"The chaplain's been asking questions too.\" {n}He says it low.{/n} \"Whether anything came through the north gate that night. Whether anybody saw a woman. One of the lads says he dreamed of a red-haired woman walking down the rows, and then he never dreamed again.\" {n}He looks at you, and he does not want to know, and he is going to ask anyway.{/n} \"Commander. Do you know anything about this?\"",
           "Choices": [
             {
               "Text": "\"Men break, surgeon. There's a war on. Write it up as the war.\"",
@@ -421699,8 +421763,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -427474,7 +427538,6 @@
         "shamira.trickster.cost.kept_captive",
         "shamira.trickster.cast_out",
         "shamira.trickster.ally",
-        "shamira.trickster.night_alone.asked",
         "shamira.presence.failed",
         "fool_king.gone"
       ],
@@ -427501,8 +427564,7 @@
         "shamira.closed",
         "shamira.trickster.cost.kept_captive",
         "shamira.trickster.cast_out",
-        "shamira.trickster.ally",
-        "shamira.trickster.night_alone.asked"
+        "shamira.trickster.ally"
       ],
       "MinChapter": 5,
       "MaxChapter": 5,

@@ -17,7 +17,7 @@ import copy
 
 from story_format import c, scene
 from storylines import shamira_mind
-from storylines.shamira_trickster import (ALLY, BARRACKS, BIRD, CAST_OUT, CITY, CLOSED, COMMITTED, CRYSTALS, EMBODIED, GAME, HID, NEVER_ALONE, NOCT_KNOWS, STRIPPED,
+from storylines.shamira_trickster import (ALLY, BARRACKS, BIRD, LET_IN, CAST_OUT, CITY, CLOSED, COMMITTED, CRYSTALS, EMBODIED, GAME, HID, NEVER_ALONE, NOCT_KNOWS, STRIPPED,
                                            RAMISA_STORY, KEPT, LIED_HER, LOST_GAME, NOCT_HIDING, NOT_NOCT, P, READ, REL,
                                            SOCOTH_GONE, STAND, THREW_OUT, THRONE, TORN, VISITED, WHISPER, nar, sh)
 from storylines.shamira_trickster import page as _page
@@ -49,7 +49,7 @@ ASKED_ALONE_ = P + "night_alone.asked"
 GREETING = ("{n}In the corner of the King's tavern, with her back to the wall and a cup of his worst wine, a tall red-haired "
             "woman in a borrowed coat is watching the room. The drinkers nearest her keep losing the thread of their own "
             "stories and cannot think why.{/n}")
-PRESENCE_FORBIDS = [CLOSED, KEPT, CAST_OUT, ALLY, ASKED_ALONE_]
+PRESENCE_FORBIDS = [CLOSED, KEPT, CAST_OUT, ALLY]   # Sol r6: the night alone no longer removes her (either outcome)
 PRESENCES = {
     HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=FOOL_KING, Side="right", Distance=2.5),
               Requires=["trickster.ever", EMBODIED], Forbids=PRESENCE_FORBIDS + [HUB_FAILED, KING_GONE], MinChapter=5,
@@ -279,7 +279,10 @@ hub(P + "harem", "Think of anything but me", '"You said you had a game."', [
         c("Continue", "where_read", requires=(READ,), forbids=(THREW_OUT,)),
         c("Continue", "where_crystals", requires=(CRYSTALS,), forbids=(THREW_OUT, READ)),
         c("Continue", "where_crystals", requires=(STRIPPED,), forbids=(THREW_OUT, READ, CRYSTALS)),
-        c("Continue", "where_first", forbids=(THREW_OUT, READ, CRYSTALS, STRIPPED))),
+        c("Continue", "where_first", forbids=(THREW_OUT, READ, CRYSTALS, STRIPPED, LET_IN)),
+        c("Continue", "where_invited", requires=(LET_IN,), forbids=(THREW_OUT, READ, CRYSTALS, STRIPPED))),
+    sh("where_invited", '''"Here. This is where you opened your head to me the first time, in front of my whole court." {n}Her voice fills the empty room.{/n} "I went in for what I wanted and came out again. I did not look at anything else in there. It did not occur to me that there was anything else worth looking at." {n}A small pause.{/n} "More fool me. Stand where you stood then."''',
+        c("[Stand where you stood.]", "rules")),
     sh("where_first", '''"Here. This is where you stood the first time, in front of my whole court." {n}Her voice fills the empty room.{/n} "I did not even trouble to go into your head that day. I looked at you and decided there was nothing in there worth the heat." {n}A small pause.{/n} "More fool me. Stand where you stood then."''',
         c("[Stand where you stood.]", "rules")),
     sh("where_duel", '''"Here. This is where you threw me out of your head." {n}Her voice fills the empty room.{/n} "In front of my whole court. I had not been beaten in public for centuries, and a Golarian did it with {mf|his|her} eyes shut, and the demons cheered. I have thought about that day more than I have thought about my own death." {n}A thin smile.{/n} "Stand where you stood then."''',

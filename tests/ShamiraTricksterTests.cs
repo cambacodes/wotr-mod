@@ -475,6 +475,14 @@ internal static class ShamiraTricksterTests
                                  && be.Choices[1].Next == "mask_stranger" && be.Choices[1].Forbids.Contains(P + "bird")),
                 "Trk_Shamira_Harem: the masked courtier is recognised without the bird: " + hs.Id);
         }
+        // Sol CAN/INT (r6): a native invitation (Answer_0008 etc.) is remembered as one; the night alone never removes her presence.
+        foreach (var hs in story.Scenes.Where(s => s.Id.StartsWith(P + "harem", StringComparison.Ordinal)))
+        {
+            var sits = hs.Nodes.Single(n => n.Id == "sits");
+            check(sits.Choices.Count == 6 && sits.Choices[4].Forbids.Contains(P + "let_in") && sits.Choices[5].Next == "where_invited"
+                  && sits.Choices[5].Requires.Contains(P + "let_in"), "Trk_Shamira_Harem: an invited Commander is told she never went in: " + hs.Id);
+        }
+        check(new[] { table, awning }.All(pr => !pr.Forbids.Contains(P + "night_alone.asked")), "Trk_Shamira_Presence: the night alone removes her from the table.");
         // Sol INT (G6(b)): an Arueshalae who died and came back on her own road reacts again; a dead one does not.
         var walking = S(P + "react.arueshalae_walking");
         var aw = World(story, 5, "trickster.ever", Embodied, "arueshalae_dead");
