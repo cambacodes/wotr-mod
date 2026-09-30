@@ -70,6 +70,7 @@ PARTNERS = {
     "nenio": ("Nenio", "Nenio"),
     "herrax": ("Herrax", "Herrax"),
     "terendelev": ("Terendelev", "Terendelev"),
+    "horzalah": ("Horzalah", "Horzalah"),
 }
 # Extra eligibility groups: a woman whose route has a second committed state (Nocticula's acquired harbour).
 EXTRA_ELIGIBLE = {"nocticula": [["noct.acq.renewed_agreement"]]}

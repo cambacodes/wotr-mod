@@ -68,6 +68,7 @@ from storylines import jannah_trickster, jannah_circle
 from storylines import nenio_trickster, nenio_folios
 from storylines import herrax_trickster, herrax_house
 from storylines import terendelev_trickster, terendelev_watch
+from storylines import horzalah_trickster, horzalah_guild
 from storylines import rrt_ui
 from storylines import rrt_portraits
 from storylines import scene_kinds
@@ -499,6 +500,13 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(terendelev_watch.SCENES))
     terendelev_trickster.integrate(payload)
     terendelev_watch.integrate(payload)
+    # Horzalah: a new relationship (trickster/horzalah.md; 11-ROSTER-PLAN-2 §2, R4 build sheet): the ear in the gift box, a
+    # con on her own Guild offered at the mercy node (or in the Greybor-less night, or when the Guild circles); the collar
+    # on her terms; the courtship on her presence by the Storyteller and her letters by knife (horzalah_guild).
+    payload["Relationships"]["horzalah"] = copy.deepcopy(horzalah_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(horzalah_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(horzalah_guild.SCENES))
+    horzalah_trickster.integrate(payload)
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
     trickster_engine(payload)
