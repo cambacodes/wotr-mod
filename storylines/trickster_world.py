@@ -436,7 +436,7 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
  'devarra.trickster.late_committed': [['trickster.ever', 'devarra.trickster.tested']],
  'dorgelinda.trickster.late_committed': [['trickster.ever', 'dorgelinda.trickster.methods_heard']],
  'eliandra.trickster.late_committed': [['trickster.ever', 'eliandra.trickster.heard']],
- 'elyanka.trickster.late_committed': [['trickster.ever', 'elyanka.trickster.audience_held']],
+ 'elyanka.trickster.late_committed': [['trickster.ever', 'elyanka.committed']],   # R5: no late romance (review r5 BEL)
  'ember.trickster.late_committed': [['trickster.ever', 'ember.trickster.visited']],
  'ember.trickster.visitor': [['ember.trickster.cost.correspondent'], ['ember.trickster.cost.errand_owed']],
  'eritrice.lost_at_council': [['council.fought'], ['council.fought_nocta_allied']],
