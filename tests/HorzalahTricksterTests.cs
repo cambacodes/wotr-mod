@@ -301,10 +301,12 @@ internal static class HorzalahTricksterTests
 
         // Pages.
         var pg = pages.ToDictionary(s => s.Id.Substring(P.Length));
-        check(pages.Length == 7 && pages.All(s => s.MinChapter == 6 && s.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.RemoveItem == null && c.Crusade == null))),
-            "Horzalah's pages are not seven effect-free Chapter 6 pages.");
+        check(pages.Length == 9 && pages.All(s => s.MinChapter == 6 && s.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.RemoveItem == null && c.Crusade == null))),
+            "Horzalah's pages are not nine effect-free Chapter 6 pages.");
         check(Avail(pg["epilogue.together"], World(story, 6, "trickster.ever", Committed, Ear))
-              && Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Wants)) && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Wants, Committed))
+              && Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Wants, Tested)) && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Wants, Tested, Committed))
+              && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Wants)) && Avail(pg["epilogue.unanswered"], World(story, 6, "trickster.ever", Wants))
+              && !Avail(pg["epilogue.unanswered"], World(story, 6, "trickster.ever", Wants, Tested))
               && Avail(pg["epilogue.decided"], World(story, 6, "trickster.ever", Wants, Declined)) && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Wants, Declined))
               && Avail(pg["epilogue.left_free"], World(story, 6, "trickster.ever", LeftFree))
               && Avail(pg["epilogue.ally"], World(story, 6, "trickster.ever", Ally))
@@ -312,7 +314,7 @@ internal static class HorzalahTricksterTests
               && Avail(pg["epilogue.closed"], World(story, 6, "trickster.ever", Started, Closed, P + "guard_called"))
               && !Avail(pg["epilogue.closed"], World(story, 6, "trickster.ever", Started, Closed, P + "threatened")),
             "Horzalah's pages do not follow the states (together, the late commit, her decision, free, ally, scarred, closed).");
-        check(story.Derived[P + "late_committed"].Any(g => g.Contains(Wants)) && story.Derived["horzalah.harem.eligible"].Any(g => g.Length == 1 && g[0] == P + "late_committed"),
+        check(story.Derived[P + "late_committed"].Any(g => g.Contains(Tested)) && story.Derived["horzalah.harem.eligible"].Any(g => g.Length == 1 && g[0] == P + "late_committed"),
             "The late commit is not the R2-6 late_committed key, or eligibility ignores it.");
 
         // Reactors: Greybor (whose contract she held) and Wenduag, on their own hubs.
@@ -341,11 +343,20 @@ internal static class HorzalahTricksterTests
         // The late page keeps the gift's history: offered only if it never was; the freed hatter and the declined gift remembered.
         var latePage = pages.Single(s => s.Id == P + "epilogue.commit").Nodes[0];
         int Shown(Snapshot st, string fragment) => latePage.Paragraphs.Count(q => Rules.ParagraphVisible(q, st) && q.Text.Contains(fragment));
-        var neverTested = World(story, 6, "trickster.ever", Wants);
+        var neverTested = World(story, 6, "trickster.ever", Wants, Tested);
         var freedLate = World(story, 6, "trickster.ever", Wants, Tested, P + "cost.gift_freed");
+        // A Commander who stayed dead gets the mourning page, never a page that assumes a long life; one brought back keeps them.
+        var dead = new[] { "trickster.ever", Started, "sacrifice" };
+        var back = new[] { "trickster.ever", Started, "sacrifice", "trickster.lastcall.taken", "ending.wound_closed", "trickster.lastcall.pillar.bottle" };
+        foreach (var (id, flags) in new[] { ("epilogue.left_free", new[] { LeftFree }), ("epilogue.ally", new[] { Ally }),
+                                            ("epilogue.scarred", new[] { P + "threatened", Closed }), ("epilogue.closed", new[] { Closed, P + "guard_called" }),
+                                            ("epilogue.together", new[] { Committed }) })
+            check(!Avail(pg[id], World(story, 6, dead.Concat(flags).ToArray())) && Avail(pg[id], World(story, 6, back.Concat(flags).ToArray()))
+                  && Avail(pg["epilogue.mourned"], World(story, 6, dead.Concat(flags).ToArray())) && !Avail(pg["epilogue.mourned"], World(story, 6, back.Concat(flags).ToArray())),
+                "A living-Commander page plays after a permanent sacrifice, or the mourning page does not: " + id);
         var declinedLate = World(story, 6, "trickster.ever", Wants, Tested);
-        check(Shown(neverTested, "thin gold chain") == 1 && Shown(freedLate, "thin gold chain") == 0 && Shown(freedLate, "sold hats") == 1
-              && Shown(declinedLate, "thin gold chain") == 0 && Shown(declinedLate, "made her collars") == 1 && Shown(freedLate, "made her collars") == 0,
+        check(!latePage.Text.Contains("thin gold chain") && Shown(freedLate, "sold hats") == 1
+              && Shown(declinedLate, "sold hats") == 0 && Shown(declinedLate, "made her collars") == 1 && Shown(freedLate, "made her collars") == 0,
             "The late page offers the gift again, or forgets how it went.");
         // The dwarf's three mistakes are remembered only where he told them (Horzalah_Mercy/Cue_0011).
         var dwarfStart = beats.Single(s => s.Id == P + "beat.dwarf").Nodes.Single(n => n.Id == "start").Choices;
@@ -369,7 +380,7 @@ internal static class HorzalahTricksterTests
         // H2 (Last Call's bottle brings the Commander back with sacrifice held) keeps her romantic pages, as the native endings do.
         var h2 = World(story, 6, "trickster.ever", Committed, Ear, "sacrifice", "trickster.lastcall.taken", "ending.wound_closed", "trickster.lastcall.pillar.bottle");
         check(h2.Has("trickster.commander_back") && Avail(pg["epilogue.together"], h2)
-              && Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Wants, "sacrifice", "trickster.lastcall.taken", "ending.wound_closed", "trickster.lastcall.pillar.bottle"))
+              && Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Wants, Tested, "sacrifice", "trickster.lastcall.taken", "ending.wound_closed", "trickster.lastcall.pillar.bottle"))
               && !Avail(pg["epilogue.together"], World(story, 6, "trickster.ever", Committed, "sacrifice")),
             "H2 survival suppresses her pages, or a Commander who stayed dead still gets them.");
         // Reactors speak only while with the Commander: Wenduag and Greybor need their in-party states.

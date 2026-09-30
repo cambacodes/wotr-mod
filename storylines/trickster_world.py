@@ -438,7 +438,7 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
                                      ['trickster.ever', 'herrax.trickster.cost.contract_unfinished']],
  'horzalah.dead': [['horzalah.killed'], ['horzalah.killed_b'], ['horzalah.trickster.killed_unmet']],
  'horzalah.q3_lapsed': [['greybor.dead'], ['greybor.kicked_out'], ['greybor.away'], ['greybor.q3_failed'], ['chapter.six']],
- 'horzalah.trickster.late_committed': [['trickster.ever', 'horzalah.trickster.wants_heard']],
+ 'horzalah.trickster.late_committed': [['trickster.ever', 'horzalah.trickster.tested']],
  'iomedae.appointment_kept': [['sacrifice', 'ending.wound_closed', 'trickster.ever', 'iomedae.trickster.primed']],
  'iomedae.b.scrap_owed': [['iomedae.trickster.banner.terms_kept']],
  'iomedae.courted': [['iomedae.trickster.terms_heard'], ['iomedae.trickster.oath_at_the_wound']],

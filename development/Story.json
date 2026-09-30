@@ -363921,14 +363921,6 @@
           "Portrait": "",
           "Paragraphs": [
             {
-              "Text": "{n}She brought a gift, as she had always meant to: a grey-haired man on a thin gold chain, Yozz's dresser, held out across the Commander's table. What the Commander did with the chain, she never told anyone. She only ever said that she had been bought once, and knew what a buyer looked like, and had not seen one.{/n}",
-              "Requires": [],
-              "Forbids": [
-                "horzalah.trickster.tested"
-              ],
-              "AnyGroups": []
-            },
-            {
               "Text": "{n}She did not bring a gift this time. The last one sold hats by the west gate of Drezen, with her gold still on his wrist, and she walked past his stall on her way in without looking at it, which was how the Commander knew she had noticed it.{/n}",
               "Requires": [
                 "horzalah.trickster.cost.gift_freed"
@@ -363996,6 +363988,84 @@
         "horzalah.trickster.declined",
         "horzalah.trickster.left_free",
         "horzalah.trickster.ally",
+        "horzalah.closed",
+        "sacrifice"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      },
+      "Relationship": "horzalah"
+    },
+    {
+      "Id": "horzalah.trickster.epilogue.unanswered",
+      "Title": "",
+      "Owner": "HorzalahEpilogue",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "{n}The war ended before Horzalah had finished deciding what the Commander was. She came to Drezen the spring after the Threshold, through no door at all, with a grey-haired man on a thin gold chain a step behind her: Yozz's dresser, a suitor's gift in the idiom of the Abyss.{/n}\n{n}She held out the end of the chain across the Commander's table and waited to see what the Commander would do with it, because what the Commander did with it would tell her everything: whether she had been dealing with an owner of people, who would own her too, or with something she had no word for.{/n}\n{n}What the Commander did, and what she did after, belongs to the years after the war. The Guild in Alushinyrra kept a small box with a white ribbon on its notice board all the same, and no master of the Guild ever took down a contract on the Commander's head, because none was ever accepted.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "{n}The Commander never let a priest touch the side of that head. In later years people who had never been to the Abyss would stare at the puckered scar where an ear had been, and the Commander would tell them it was a gift, and let them decide whether that was a joke.{/n}",
+              "Requires": [
+                "horzalah.trickster.cost.ear"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}In Drezen they still tell the story of the night a demon walked past every sentry in the citadel and out again with a piece of the Knight Commander, and in Alushinyrra they tell it better.{/n}",
+              "Requires": [
+                "horzalah.trickster.cost.late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Somewhere at the bottom of the Commander's pack, all through the war and long after it, there was an empty box tied with a white ribbon. Nobody was ever allowed to open it. There was nothing in it. That was, the Commander said, the whole point.{/n}",
+              "Requires": [
+                "horzalah.trickster.box_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}A hatter by the west gate of Drezen wore a gold cuff on his wrist to the end of his days, and sold very good hats, and never once said a word against the woman who had given him away.{/n}",
+              "Requires": [
+                "horzalah.trickster.cost.gift_freed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "horzalah.trickster.wants_heard"
+      ],
+      "Forbids": [
+        "horzalah.trickster.tested",
+        "horzalah.trickster.ally",
+        "horzalah.trickster.left_free",
+        "horzalah.committed",
         "horzalah.closed",
         "sacrifice"
       ],
@@ -364146,10 +364216,14 @@
         "horzalah.trickster.left_free"
       ],
       "Forbids": [
+        "sacrifice",
         "horzalah.committed"
       ],
       "DelayHours": 0,
       "Optional": false,
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      },
       "Relationship": "horzalah"
     },
     {
@@ -364216,11 +364290,15 @@
         "horzalah.trickster.ally"
       ],
       "Forbids": [
+        "sacrifice",
         "horzalah.closed",
         "horzalah.committed"
       ],
       "DelayHours": 0,
       "Optional": false,
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      },
       "Relationship": "horzalah"
     },
     {
@@ -364252,9 +364330,14 @@
         "trickster.ever",
         "horzalah.trickster.threatened"
       ],
-      "Forbids": [],
+      "Forbids": [
+        "sacrifice"
+      ],
       "DelayHours": 0,
       "Optional": false,
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      },
       "Relationship": "horzalah"
     },
     {
@@ -364298,9 +364381,102 @@
         "horzalah.closed"
       ],
       "Forbids": [
+        "sacrifice",
         "horzalah.committed",
         "horzalah.trickster.threatened",
         "horzalah.trickster.killed_unmet"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      },
+      "Relationship": "horzalah"
+    },
+    {
+      "Id": "horzalah.trickster.epilogue.mourned",
+      "Title": "",
+      "Owner": "HorzalahEpilogue",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "{n}Word came up the Wound roads to Alushinyrra that the Knight Commander had given everything at the Threshold and had not come back. The Guild's masters waited to see what their own master would do.{/n}\n{n}Horzalah did nothing at all for three days. On the fourth she took down the small box with the white ribbon from wherever she kept it, and looked at it, and put it back without untying the bow.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "{n}She did not wear black; she had never mourned anyone and did not mean to start in public. She wore the collar, buckled to the last hole, for a year and a day, and anyone who asked why was posted on the board at a very low rate.{/n}",
+              "Requires": [
+                "horzalah.committed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She had told the Commander once to come back with everything else attached. She never forgave the Commander for not doing it, and she never said so to anyone, and the ribbon on the box was retied every morning, badly.{/n}",
+              "Requires": [
+                "horzalah.trickster.tested"
+              ],
+              "Forbids": [
+                "horzalah.committed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She had sent the Commander away once, or been sent. It made no difference now. She kept the box.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "horzalah.committed",
+                "horzalah.trickster.threatened"
+              ],
+              "AnyGroups": [
+                [
+                  "horzalah.trickster.left_free",
+                  "horzalah.closed"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}She was paid to the last copper by the Commander's quartermaster, and she counted it twice, and then she sent it back, which nobody in the Guild had ever seen her do.{/n}",
+              "Requires": [
+                "horzalah.trickster.ally"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The scar she had left on the Commander's face went into the ground with the rest. She said, to nobody, that it had been a very clean cut, and that she was sorry for nothing.{/n}",
+              "Requires": [
+                "horzalah.trickster.threatened"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "horzalah.started",
+        "sacrifice"
+      ],
+      "Forbids": [
+        "trickster.commander_back",
+        "horzalah.trickster.killed_unmet",
+        "lastcall.active"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -365062,7 +365238,7 @@
         {
           "Id": "end_war",
           "Speaker": "Horzalah",
-          "Text": "\"The tyrant,\" {n}says the Storyteller, before she can answer.{/n} \"He had the other ear.\"\n{n}Horzalah considers him. Then she reaches out, very gently, and turns the book on his table round the right way up for him, though he cannot see it.{/n} \"I like him,\" {n}she says to you.{/n} \"Do not let anything happen to him. I would have to be upset, and I am very bad at it.\"",
+          "Text": "\"The tyrant,\" {n}says the Storyteller, before she can answer.{/n} \"He had the other ear.\"\n{n}Horzalah considers him. Then she reaches out, very gently, and turns the book on his table round the right way up for him, though he cannot see it.{/n} \"Keep him alive,\" {n}she says to you.{/n} \"He remembers the names of people everyone else has forgotten, and half of them owe me money.\"",
           "Choices": [
             {
               "Text": "[Leave them to argue.]",
@@ -366110,13 +366286,43 @@
             },
             {
               "Text": "Continue",
+              "Next": "projection",
+              "Set": [],
+              "Requires": [
+                "horzalah.greybor_met_q2"
+              ],
+              "Forbids": [
+                "horzalah.met_q3_a",
+                "horzalah.met_q3_b"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
               "Next": "never",
               "Set": [],
               "Requires": [],
               "Forbids": [
                 "horzalah.met_q3_a",
-                "horzalah.met_q3_b"
+                "horzalah.met_q3_b",
+                "horzalah.greybor_met_q2"
               ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Horzalah"
+        },
+        {
+          "Id": "projection",
+          "Speaker": "Horzalah",
+          "Text": "\"We have met, the dwarf and I, after a fashion. I congratulated him on Willodus over a heap of corpses in Alushinyrra, as a projection, and he asked whether I was too frightened to come and speak to him in the flesh.\" {n}Her lip curls.{/n} \"I was not frightened. I was busy. I want his head, mortal, for the principle of the thing, and for the tone.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "demand",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -366660,7 +366866,7 @@
         {
           "Id": "honest",
           "Speaker": "Horzalah",
-          "Text": "{n}She is quiet.{/n} \"Good. It should. Things that are given should hurt a little; it is how you know they were not stolen.\" {n}She touches the edge of it, very lightly.{/n} \"I will think of that. Every day, when it hurts you, I will think of that, in my hall, among my contracts. It will be very distracting. You are a terrible influence.\"",
+          "Text": "{n}She is quiet.{/n} \"Good. It should. Things that are given should hurt a little; it is how you know they were not stolen.\" {n}She touches the edge of it, very lightly.{/n} \"I will think of that. Every day, when it hurts you, I will think of that, in my hall, among my contracts. I will enjoy it.\"",
           "Choices": [
             {
               "Text": "[Let her touch it.]",
@@ -375484,6 +375690,9 @@
     "horzalah.greybor_explained": [
       "ae22177b1bc76fc42a9d08dba83cccdc"
     ],
+    "horzalah.greybor_met_q2": [
+      "f3ba94d6ca5f33d499b5ff0a11cda5df"
+    ],
     "vellexia.spared": [
       "58d69774dbe696e46a9232167e8d3479"
     ],
@@ -377671,7 +377880,7 @@
     "horzalah.trickster.late_committed": [
       [
         "trickster.ever",
-        "horzalah.trickster.wants_heard"
+        "horzalah.trickster.tested"
       ]
     ],
     "horzalah.harem.voice.keeps_what_she_takes": [

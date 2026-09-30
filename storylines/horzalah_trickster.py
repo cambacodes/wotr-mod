@@ -67,6 +67,7 @@ NAMED = "baphomet.named_horzalah"
 HEPZ_BACK = "hepzamirah.trickster.returned"           # node variants only (build sheet: no Requires/Forbids on hepzamirah.*)
 Q2_DONE = "greybor.q2_done"
 Q3_FAILED = "greybor.q3_failed"
+GREY_MET_Q2 = "horzalah.greybor_met_q2"  # HorzalahFirst/Cue_0003: her projection congratulates Greybor on Willodus (Ch4)
 EXPLAINED = "horzalah.greybor_explained"  # Horzalah_Mercy/Cue_0011: Greybor tells her three mistakes (optional, Answer_0010)
 SEALS_SEEN = "horzalah.seals_seen"    # HorzalahFirst/Cue_0001: the projection's "flaming seals of Baphomet" (Ch4)
 SPAWN_TOLD = "baphomet.spawn_told"     # Prison_Baph/Cue_0121: "I could spawn hundreds, thousands more"
@@ -101,7 +102,7 @@ MORNING = H + "morning_seen"
 P_KNIFE = H + "beat.knife_won"         # the Commander took her knife off her in the lesson: the one that cut the ear
 P_WHISTLE = H + "beat.whistle_taken"   # the dwarf's rune whistle (Horzalah_Ambush/Cue_0057), stolen for her in the street
 P_RIBBON = H + "beat.ribbon_tied"      # the Commander learned her bow, and ties it badly
-LATE_COMMITTED = H + "late_committed"  # R2-6: she said what she wants; the page after the Threshold answers it
+LATE_COMMITTED = H + "late_committed"  # R2-6: she passed her own test (her gift); the page after the Threshold answers it
 
 PRESENCE = "horzalah.presence"
 PRESENCE_FAILED = "horzalah.presence.failed"
@@ -128,7 +129,7 @@ DERIVED = {
     # 11 §2 build sheet: both extend the merged keys (trickster_world); a kill in the Greybor-less night is her death too.
     DEAD: [[KILLED], [KILLED_B], [KILLED_UNMET]],
     LAPSED: [["greybor.dead"], ["greybor.kicked_out"], ["greybor.away"], [Q3_FAILED], ["chapter.six"]],
-    LATE_COMMITTED: [["trickster.ever", WANTS]],
+    LATE_COMMITTED: [["trickster.ever", TESTED]],
     # 05 §2.5 voice note: she joins as an owner who keeps what she takes; the household is never her property's keeper.
     "horzalah.harem.voice.keeps_what_she_takes": [[COMMITTED]],
 }
@@ -136,7 +137,7 @@ DERIVED = {
 # failure is read from the cue that sets it: Greybor's "We've lost an important lead" after the assassin dies unquestioned.
 SEEN_CUES = {Q3_FAILED: [Q3_FAIL], RESCUE_TOLD: ["fc5119d8d4a54e047b07338764beb346"],
              SEALS_SEEN: ["fc1030e8724b086479d7ec2a52aae2a5"], SPAWN_TOLD: ["0cdc1a24d29c77f4490900d3a9418afc"],
-             EXPLAINED: ["ae22177b1bc76fc42a9d08dba83cccdc"]}
+             EXPLAINED: ["ae22177b1bc76fc42a9d08dba83cccdc"], GREY_MET_Q2: ["f3ba94d6ca5f33d499b5ff0a11cda5df"]}
 
 # Path fit (ROUTE-BRIEF-R 2026-09-29, v1): T = device or Trickster-only; N-all = any path; N-fit = the fitting paths.
 PATH_FIT = {}
@@ -716,13 +717,21 @@ SCENES.append(scene(H + "epilogue.commit", "", "HorzalahEpilogue", 6, "", [
 {n}She came to Drezen through no door at all, stood in the Commander's rooms until she was noticed, and unbuckled her collar. The Commander waited, as the Commander had learned to do around her, and she took the Commander's hand and put it on the scar herself.{/n}
 {n}That night she did not leave. She let the Commander unbuckle her collar, and every lace after it, and when the last of her leathers was on the floor she took two fistfuls of the Commander's shirt and fell back onto the bed and pulled the Commander down with her, and the candle went out.{/n}
 {n}After that she came and went as she pleased, and nobody in Drezen was ever quite sure whether she was a guest, a visitor or a threat, and nobody dared to ask her which. In the Guild's hall in Alushinyrra, a small box with a white ribbon hung on the notice board in a place of honour, and the masters who had known what was in it grew old and careful in her service.{/n}''',
-        paragraphs=(p('''{n}She brought a gift, as she had always meant to: a grey-haired man on a thin gold chain, Yozz's dresser, held out across the Commander's table. What the Commander did with the chain, she never told anyone. She only ever said that she had been bought once, and knew what a buyer looked like, and had not seen one.{/n}''', forbids=(TESTED,)),
-                    p("{n}She did not bring a gift this time. The last one sold hats by the west gate of Drezen, with her gold still on his wrist, and she walked past his stall on her way in without looking at it, which was how the Commander knew she had noticed it.{/n}", requires=(FREED,)),
+        paragraphs=(p("{n}She did not bring a gift this time. The last one sold hats by the west gate of Drezen, with her gold still on his wrist, and she walked past his stall on her way in without looking at it, which was how the Commander knew she had noticed it.{/n}", requires=(FREED,)),
                     p("{n}She did not bring a gift this time. The last one the Commander had refused, and the man still made her collars; she said a second offer would have been bad manners, and worse business.{/n}", requires=(TESTED,), forbids=(FREED,)),
                     p("{n}Before the Threshold there had been a note, pinned to the pole of the Commander's tent by a knife: *I have not finished thinking about what I want. You are going to your war before I have finished. That is very inconsiderate of you. Come back, and I will tell you.* The Commander came back. She told.{/n}"), *COMMON))],
     requires=("trickster.ever", LATE_COMMITTED),
     forbids=(COMMITTED, DECLINED, LEFT_FREE, ALLY, CLOSED, "sacrifice"), **SAC, **EP))
 tag(H + "epilogue.commit", "T")
+
+# She said what she wants, and the war ended before her gift could be answered: the page leaves the answer to the Commander.
+SCENES.append(scene(H + "epilogue.unanswered", "", "HorzalahEpilogue", 6, "", [
+    nar("page", '''{n}The war ended before Horzalah had finished deciding what the Commander was. She came to Drezen the spring after the Threshold, through no door at all, with a grey-haired man on a thin gold chain a step behind her: Yozz's dresser, a suitor's gift in the idiom of the Abyss.{/n}
+{n}She held out the end of the chain across the Commander's table and waited to see what the Commander would do with it, because what the Commander did with it would tell her everything: whether she had been dealing with an owner of people, who would own her too, or with something she had no word for.{/n}
+{n}What the Commander did, and what she did after, belongs to the years after the war. The Guild in Alushinyrra kept a small box with a white ribbon on its notice board all the same, and no master of the Guild ever took down a contract on the Commander's head, because none was ever accepted.{/n}''',
+        paragraphs=COMMON)],
+    requires=("trickster.ever", WANTS), forbids=(TESTED, ALLY, LEFT_FREE, COMMITTED, CLOSED, "sacrifice"), **SAC, **EP))
+tag(H + "epilogue.unanswered", "T")
 
 SCENES.append(scene(H + "epilogue.decided", "", "HorzalahEpilogue", 6, "", [
     nar("page", '''{n}Horzalah took a long time to decide whether the Commander could be taught. The war ended first. She went on deciding in Alushinyrra, in her own hall, among the contracts, with the ribboned box on the notice board where every master could see it.{/n}
@@ -737,28 +746,42 @@ SCENES.append(scene(H + "epilogue.left_free", "", "HorzalahEpilogue", 6, "", [
 {n}Once, years after the Threshold, a small box wrapped in black paper arrived in Drezen with no note. It was tied with a white ribbon in a perfect bow, the ends cut on the slant so they would not fray. Inside, on black silk, there was nothing at all.{/n}
 {n}The Commander understood it perfectly.{/n}''',
         paragraphs=COMMON)],
-    requires=("trickster.ever", LEFT_FREE), forbids=(COMMITTED,), **EP))
+    requires=("trickster.ever", LEFT_FREE), forbids=("sacrifice", COMMITTED,), **SAC, **EP))
 tag(H + "epilogue.left_free", "T")
 
 SCENES.append(scene(H + "epilogue.ally", "", "HorzalahEpilogue", 6, "", [
     nar("page", '''{n}Horzalah served the Commander to the end of the war at the Guild's rates, and not a day longer. Her knives were always where the Commander needed them, and her bills were always paid on time, and she never once came through a door without knocking.{/n}
 {n}The Commander kept Yozz's dresser, who was very good at his work and never looked up. Horzalah never asked after him. When the war was over she closed the account in person, took her last payment, and went back to Alushinyrra, and she never spoke to the Commander again. She had been bought once. She knew exactly what happened to things that were bought.{/n}''',
         paragraphs=COMMON)],
-    requires=("trickster.ever", ALLY), forbids=(CLOSED, COMMITTED), **EP))
+    requires=("trickster.ever", ALLY), forbids=("sacrifice", CLOSED, COMMITTED), **SAC, **EP))
 tag(H + "epilogue.ally", "T")
 
 SCENES.append(scene(H + "epilogue.scarred", "", "HorzalahEpilogue", 6, "", [
     nar("page", '''{n}The Commander carried two scars from Horzalah for the rest of a long life: the ruin of an ear, and a thin white line from the corner of the mouth to meet it. The first was a gift. The second was a receipt.{/n}
 {n}Nobody ever saw her again. The Guild in Alushinyrra went on under a master who never showed her face, and once, years later, a contract on the Commander's head appeared on its notice board, was taken down that same night, and never appeared again. Nobody knew what it meant. The Commander thought about it often.{/n}''')],
-    requires=("trickster.ever", THREATENED), **EP))
+    requires=("trickster.ever", THREATENED), forbids=("sacrifice",), **SAC, **EP))
 tag(H + "epilogue.scarred", "T")
 
 SCENES.append(scene(H + "epilogue.closed", "", "HorzalahEpilogue", 6, "", [
     nar("page", '''{n}Horzalah kept the Assassins' Guild of Alushinyrra, or it kept her; nobody in the Midnight Isles was ever quite sure which. The Commander never saw her again.{/n}
 {n}For years afterwards the sentries on the Commander's door were doubled every night, on the Commander's own order, and every night nothing came through it. The Commander said that was the point, and slept badly anyway.{/n}''',
         paragraphs=(p("{n}Somewhere in Alushinyrra, on a shelf in a master's chamber, a small box with a white ribbon sat unopened for a very long time. The Commander never asked what she had done with it.{/n}", requires=(EAR,)),))],
-    requires=("trickster.ever", STARTED, CLOSED), forbids=(COMMITTED, THREATENED, KILLED_UNMET), **EP))
+    requires=("trickster.ever", STARTED, CLOSED), forbids=("sacrifice", COMMITTED, THREATENED, KILLED_UNMET), **SAC, **EP))
 tag(H + "epilogue.closed", "T")
+
+
+SCENES.append(scene(H + "epilogue.mourned", "", "HorzalahEpilogue", 6, "", [
+    nar("page", '''{n}Word came up the Wound roads to Alushinyrra that the Knight Commander had given everything at the Threshold and had not come back. The Guild's masters waited to see what their own master would do.{/n}
+{n}Horzalah did nothing at all for three days. On the fourth she took down the small box with the white ribbon from wherever she kept it, and looked at it, and put it back without untying the bow.{/n}''',
+        paragraphs=(
+            p("{n}She did not wear black; she had never mourned anyone and did not mean to start in public. She wore the collar, buckled to the last hole, for a year and a day, and anyone who asked why was posted on the board at a very low rate.{/n}", requires=(COMMITTED,)),
+            p("{n}She had told the Commander once to come back with everything else attached. She never forgave the Commander for not doing it, and she never said so to anyone, and the ribbon on the box was retied every morning, badly.{/n}", requires=(TESTED,), forbids=(COMMITTED,)),
+            p("{n}She had sent the Commander away once, or been sent. It made no difference now. She kept the box.{/n}", any_groups=((LEFT_FREE, CLOSED),), forbids=(COMMITTED, THREATENED)),
+            p("{n}She was paid to the last copper by the Commander's quartermaster, and she counted it twice, and then she sent it back, which nobody in the Guild had ever seen her do.{/n}", requires=(ALLY,)),
+            p("{n}The scar she had left on the Commander's face went into the ground with the rest. She said, to nobody, that it had been a very clean cut, and that she was sorry for nothing.{/n}", requires=(THREATENED,)),
+        ))],
+    requires=("trickster.ever", STARTED, "sacrifice"), forbids=("trickster.commander_back", KILLED_UNMET), **EP))
+tag(H + "epilogue.mourned", "T")
 
 
 # --- 9. Reactions (named companions with a stake: Greybor, whose contract she held; Wenduag). ------------------------------

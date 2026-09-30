@@ -13,7 +13,7 @@ Every scene is Trickster-only (T in PATH_FIT): it follows the device.
 from story_format import c, n, scene
 from storylines.horzalah_trickster import (ALLY, CANARY, FREED, CHAMBER, CLOSED, COMMITTED, DECLINED, DREZEN, GREY_IN, HEPZ_BACK,
                                             LATE, LEFT_FREE, MET_A, MET_B, MET_Q2, NAMED, P_KNIFE, P_RIBBON, P_WHISTLE, PRESENCE, REL,
-                                            SCAR_NOTED, SEALS_SEEN, SPAWN_TOLD, EXPLAINED, TESTED, UNIT, WANTS, H, hz, nar, tag)
+                                            SCAR_NOTED, SEALS_SEEN, SPAWN_TOLD, EXPLAINED, GREY_MET_Q2, TESTED, UNIT, WANTS, H, hz, nar, tag)
 
 SCENES = []
 
@@ -127,7 +127,7 @@ beat(H + "beat.storyteller", "The only man who does not look", '"Is he bothering
 "You see? Too much about courage," {n}she says to him.{/n} "Put that in, then. That the Knight Commander gave away an ear to stop a war in a Guild of assassins. Nobody will believe it. That is how you will know it is a good story."''',
        c("[Leave them to argue.]", flags=(TOLD,))),
     hz("end_war", '''"The tyrant," {n}says the Storyteller, before she can answer.{/n} "He had the other ear."
-{n}Horzalah considers him. Then she reaches out, very gently, and turns the book on his table round the right way up for him, though he cannot see it.{/n} "I like him," {n}she says to you.{/n} "Do not let anything happen to him. I would have to be upset, and I am very bad at it."''',
+{n}Horzalah considers him. Then she reaches out, very gently, and turns the book on his table round the right way up for him, though he cannot see it.{/n} "Keep him alive," {n}she says to you.{/n} "He remembers the names of people everyone else has forgotten, and half of them owe me money."''',
        c("[Leave them to argue.]", flags=(TOLD,))),
 ], requires=(NAME,), forbids=(TOLD, ALLY), delay=24)
 
@@ -287,7 +287,10 @@ beat(H + "beat.dwarf", "The dwarf", '"You\'re watching Greybor."', [
        c("Continue", "betrayed", requires=(MET_A, EXPLAINED)),
        c("Continue", "betrayed_plain", requires=(MET_A,), forbids=(EXPLAINED,)),
        c("Continue", "betrayed_b", requires=(MET_B,), forbids=(MET_A,)),
-       c("Continue", "never", forbids=(MET_A, MET_B))),
+       c("Continue", "projection", requires=(GREY_MET_Q2,), forbids=(MET_A, MET_B)),
+       c("Continue", "never", forbids=(MET_A, MET_B, GREY_MET_Q2))),
+    hz("projection", '''"We have met, the dwarf and I, after a fashion. I congratulated him on Willodus over a heap of corpses in Alushinyrra, as a projection, and he asked whether I was too frightened to come and speak to him in the flesh." {n}Her lip curls.{/n} "I was not frightened. I was busy. I want his head, mortal, for the principle of the thing, and for the tone."''',
+       c("Continue", "demand")),
     hz("betrayed", '''"He took my contract on you, and my gold, and my confidence, and he led me to the Dry Crossroads by the nose, and at the end of it he stood over me and told me my three mistakes, in order, like a schoolmaster." {n}Her teeth show.{/n} "I have never been so humiliated in my life, and my life has been one long humiliation. I want his head, mortal."''',
        c("Continue", "demand")),
     hz("betrayed_plain", '''"He took my contract on you, and my gold, and my confidence, and at the Dry Crossroads he turned out to have been yours the whole time." {n}Her teeth show.{/n} "He barely looked at me. He stood there with his arms folded while I lay in the dust, as if I were a job that had come in under budget. I have never been so humiliated in my life, and my life has been one long humiliation. I want his head, mortal."''',
@@ -365,7 +368,7 @@ beat(H + "beat.ear", "Hers", '"Stop staring at my head."', [
        c('"I don\'t hear as well on that side."', "hear")),
     hz("flirt", '''"Like what?" {n}Her eyes narrow.{/n} "Like I own it? I do." {n}And then, before you can answer, she puts her mouth to the scar, briefly, in the middle of the street, and is gone back to her shelves before the soldier coming up the road has decided what he saw.{/n}''',
        c("[Stand there for a while.]", flags=(EAR_SEEN,))),
-    hz("honest", '''{n}She is quiet.{/n} "Good. It should. Things that are given should hurt a little; it is how you know they were not stolen." {n}She touches the edge of it, very lightly.{/n} "I will think of that. Every day, when it hurts you, I will think of that, in my hall, among my contracts. It will be very distracting. You are a terrible influence."''',
+    hz("honest", '''{n}She is quiet.{/n} "Good. It should. Things that are given should hurt a little; it is how you know they were not stolen." {n}She touches the edge of it, very lightly.{/n} "I will think of that. Every day, when it hurts you, I will think of that, in my hall, among my contracts. I will enjoy it."''',
        c("[Let her touch it.]", flags=(EAR_SEEN,))),
     hz("hear", '''"Then stand on my left," {n}she says, as if it were obvious.{/n} "I will be on your deaf side, and no one else will be able to get there without going round me. It is a very good place for a knife." {n}She moves, as she says it, so that she is standing exactly there.{/n} "See? You did not even hear me do it."''',
        c("[Leave her where she is.]", flags=(EAR_SEEN,))),
