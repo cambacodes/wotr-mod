@@ -382,7 +382,8 @@ internal static class YanielTricksterTests
                 "An open oath is remembered as kept, or an absent sword hangs in the hall (" + open + ").");
         }
         // The trade's yes and the vigil need one of the Commander's own reciprocal choices.
-        check(trade.Requires.Contains(P + "drawn") && vigil.Requires.Contains(P + "drawn")
+        var drawnSources = story.Derived[P + "drawn"].Select(g => g.Single()).ToArray();
+        check(trade.RequiresAnyGroups.Any(g => g.SequenceEqual(drawnSources)) && vigil.RequiresAnyGroups.Any(g => g.SequenceEqual(drawnSources))
               && !Avail(trade, Later(story, World(story, 5, "trickster", "trickster.ever", Swapped, Carries, Returned, Verdict), 24)),
             "The commit opens without any sign the Commander wanted her.");
 

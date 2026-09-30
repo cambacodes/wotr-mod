@@ -405567,8 +405567,7 @@
       ],
       "Requires": [
         "trickster.ever",
-        "yaniel.trickster.verdict",
-        "yaniel.trickster.drawn"
+        "yaniel.trickster.verdict"
       ],
       "Forbids": [
         "yaniel.killed.latched",
@@ -405579,6 +405578,16 @@
       ],
       "DelayHours": 24,
       "Optional": false,
+      "RequiresAnyGroups": [
+        [
+          "yaniel.trickster.drawn.walls",
+          "yaniel.trickster.drawn.bite",
+          "yaniel.trickster.drawn.tree",
+          "yaniel.trickster.raid_kiss",
+          "yaniel.trickster.statue_scars",
+          "yaniel.trickster.night_stayed"
+        ]
+      ],
       "Relationship": "yaniel",
       "Chapters": [
         5
@@ -405788,8 +405797,7 @@
         }
       ],
       "Requires": [
-        "trickster.ever",
-        "yaniel.trickster.drawn"
+        "trickster.ever"
       ],
       "Forbids": [
         "yaniel.killed.latched",
@@ -405812,6 +405820,14 @@
         [
           "yaniel.trickster.declined",
           "yaniel.trickster.oath_broken"
+        ],
+        [
+          "yaniel.trickster.drawn.walls",
+          "yaniel.trickster.drawn.bite",
+          "yaniel.trickster.drawn.tree",
+          "yaniel.trickster.raid_kiss",
+          "yaniel.trickster.statue_scars",
+          "yaniel.trickster.night_stayed"
         ]
       ]
     },

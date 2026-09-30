@@ -145,6 +145,9 @@ DERIVED = {
     # 05 §2.5 voice note: she joins the table as a soldier who keeps her own watch; she stands where she chooses.
     "yaniel.harem.voice.keeps_her_own_watch": [[COMMITTED]],
 }
+# The same "any of" as one RequiresAnyGroups group of its sources, for the scenes that gate on it: the gate then wakes on the
+# Commander's own choice itself (rrt_verify's reachability re-queues a waiting scene on a source flag, not on a composite).
+DRAWN_ANY = [g[0] for g in DERIVED[DRAWN]]
 LATCHES = {CH5: ["irabeth.chapter_five"]}             # the Chapter05 etude (5b01aa69), bound by irabeth_independent
 SEEN_CUES = {DOUBT: [DOUBT_CUE], HOPE: [HOPE_CUE], SANG: ["221a9592527d8b5498346c55549dd2be"],
              SEELAH_SISTER: ["fd994112dc80453a954e9486f4668d36"], UNMASKED: ["7418d421e3af812439ea312991c37147"],
@@ -637,7 +640,7 @@ SCENES.append(scene(Y + "commit.trade", "Your sword for my shackle", "Yaniel", 5
     nar("room", TRADE_ROOM + '''
 {n}She goes to the window and stands at it with her back to you for a while, looking down the road. Then she turns round.{/n}''', *TRADE_BRANCH),
     *copy.deepcopy(TRADE_BODY)],
-    requires=("trickster.ever", VERDICT, DRAWN), forbids=(KILLED, CLOSED, COMMITTED, DECLINED, OATH_BROKEN),
+    requires=("trickster.ever", VERDICT), forbids=(KILLED, CLOSED, COMMITTED, DECLINED, OATH_BROKEN), RequiresAnyGroups=[DRAWN_ANY],
     delay=24, last=5, Relationship=REL, Chapters=[5], Areas=[DREZEN], ContactUnit=UNIT, InteractionHub=PRESENCE))
 tag(Y + "commit.trade")
 
@@ -678,7 +681,7 @@ VIGIL_NODES = [
        c("[Go.]", flags=(LEFT_FREE, CLOSED))),
 ]
 hub(Y + "commit.vigil", "A vigil at the niche", '"You look like you have something to say."', VIGIL_NODES,
-    requires=("trickster.ever", DRAWN), forbids=(COMMITTED, LEFT_FREE), delay=24, RequiresAnyGroups=[[DECLINED, OATH_BROKEN]])
+    requires=("trickster.ever",), forbids=(COMMITTED, LEFT_FREE), delay=24, RequiresAnyGroups=[[DECLINED, OATH_BROKEN], DRAWN_ANY])
 
 
 # --- 6. The niche (T): the intimacy, the morning, the lamp ----------------------------------------------------------------
