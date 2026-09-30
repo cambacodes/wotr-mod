@@ -79416,7 +79416,7 @@
           "Text": "{n}Soana lifts a hand to your cheek. The pad of her thumb is rough from work; the touch is careful until you lean into it. Then she stops being tentative.{/n}\n\"There you are,\" she says softly.\n{n}She moves close enough that you can feel her breath, then waits. One loose strand of hair catches against her lip. You move it clear. Her hand closes gently around yours before you can lower it.{/n}\n\"I would like to kiss you. I would like to keep you here until the daylight makes us admit there is work beyond the entrance. I had a cleverer way of asking.\"\n\"You can save it.\"\n\"No. This one was good. I shall recover it when you are least prepared.\"\n{n}Her laughter is low and close. The shawl has slipped from one shoulder; she lets it fall into her lap and asks how much of the night you can give her.{/n}",
           "Choices": [
             {
-              "Text": "\"I want to stay with you. Tell me when you want anything slower.\"",
+              "Text": "\"Keep me here, then. All night.\"",
               "Next": "night",
               "Set": [],
               "Requires": [],
@@ -79607,7 +79607,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She kept a die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
+              "Text": "She kept a loaded die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
               "Requires": [
                 "soana.trickster.primed_dice"
               ],
@@ -79678,7 +79678,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She kept a die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
+              "Text": "She kept a loaded die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
               "Requires": [
                 "soana.trickster.primed_dice"
               ],
@@ -79750,7 +79750,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She kept a die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
+              "Text": "She kept a loaded die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
               "Requires": [
                 "soana.trickster.primed_dice"
               ],
@@ -79823,7 +79823,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She kept a die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
+              "Text": "She kept a loaded die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
               "Requires": [
                 "soana.trickster.primed_dice"
               ],
@@ -79894,7 +79894,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She kept a die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
+              "Text": "She kept a loaded die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
               "Requires": [
                 "soana.trickster.primed_dice"
               ],
@@ -168646,7 +168646,7 @@
       "Owner": "Soana",
       "MinChapter": 3,
       "MaxChapter": 3,
-      "Entry": "[Play a cruel trick on Camellia] \"My friend wants your blood turned to a good cause. Your forest is a good cause. Bleed for it first, and she can have what's left.\"",
+      "Entry": "[Play a cruel trick on Camellia] \"Camellia asked me at camp to turn your blood to a good cause. Your forest is a good cause. Bleed for it first, and she can have what's left.\"",
       "Nodes": [
         {
           "Id": "start",
@@ -168739,7 +168739,7 @@
         {
           "Id": "camellia",
           "Speaker": "Camellia",
-          "Text": "{n}Camellia watches the blood soak into the ground with the fixed attention of a cat at a closed door. Her smile does not move at all.{/n}\n\"How very generous of her. And of you, my friend. You have cheated me out of a perfectly good death in front of the one audience I cared about.\" {n}She wets her lips.{/n} \"I shall have to think of a way to thank you. I think about such things a great deal.\"",
+          "Text": "{n}Camellia watches the blood soak into the ground with the fixed attention of a cat at a closed door. Her smile does not move at all.{/n}\n\"How very generous of her. And of you, my friend. You have taken a death off my plate in front of the one audience I cared about.\" {n}She wets her lips.{/n} \"I do not forget who takes food off my plate. I shall be thinking of you, often, and very carefully.\"",
           "Choices": [
             {
               "Text": "[Leave before either of them decides otherwise]",
@@ -168817,7 +168817,7 @@
         {
           "Id": "camellia",
           "Speaker": "Camellia",
-          "Text": "{n}Camellia watches the blood soak into the ground with the fixed attention of a cat at a closed door. Her smile does not move at all.{/n}\n\"How very generous of her. And of you, my friend. You have cheated me out of a perfectly good death in front of the one audience I cared about.\" {n}She wets her lips.{/n} \"I shall have to think of a way to thank you. I think about such things a great deal.\"",
+          "Text": "{n}Camellia watches the blood soak into the ground with the fixed attention of a cat at a closed door. Her smile does not move at all.{/n}\n\"How very generous of her. And of you, my friend. You have taken a death off my plate in front of the one audience I cared about.\" {n}She wets her lips.{/n} \"I do not forget who takes food off my plate. I shall be thinking of you, often, and very carefully.\"",
           "Choices": [
             {
               "Text": "[Leave before either of them decides otherwise]",
@@ -168939,7 +168939,7 @@
         {
           "Id": "read",
           "Speaker": "Narrator",
-          "Text": "{n}You remember what she told you, with her arms folded over her chest: she used the medallion to control a spirit of the Abyss after linking it to the sacred bear, and she forced the spirit to serve good by linking our lives together.{/n}\n{n}*Our* lives. She may have meant the bear's and the spirit's. She may have meant her own. Shamans are careless with pronouns and careful with knots, and the brand has not faded, though the woman who tied it is dead. Something is still holding the other end.{/n}\n{n}It is a guess. It is the kind of guess a Trickster makes for a living: that the knot is bigger than she said, and that whatever is on the far end of it can be bargained with.{/n}",
+          "Text": "{n}You remember what she told you, with her arms folded over her chest: she used the medallion to control a spirit of the Abyss after linking it to the sacred bear, and she forced the spirit to serve good by linking our lives together.{/n}\n{n}*Our* lives. She may have meant the bear's and the spirit's. She may have meant her own. The woman who tied the knot is dead, and the brand has not faded. When you put two fingers to it, it tugs back once, like a line with a fish on it, and then goes still and waits.{/n}\n{n}It is a guess. It is the kind of guess a Trickster makes for a living: that the knot is bigger than she said, and that whatever is on the far end of it can be bargained with.{/n}",
           "Choices": [
             {
               "Text": "[Hold her clay medallion to the guardian's brand and bargain with what holds the other end] \"Whatever you are: give her back, and pull on me instead.\"",
@@ -169758,12 +169758,12 @@
       "Owner": "Soana",
       "MinChapter": 3,
       "MaxChapter": 3,
-      "Entry": "[Drop a die into her offering bowl] \"For your spirits. They look like they could use the luck.\"",
+      "Entry": "[Drop your loaded die into her offering bowl] \"For your spirits. It's weighted. It only ever lies in my favour.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Soana",
-          "Text": "{n}The die rattles in the bone bowl and stops on a one. She looks at it, then at you. When she looks back, it shows a twenty.{/n}\n\"Spirits take what is offered. They do not say thank you, and neither do I.\"\n{n}She does not take it out of the bowl. She does not touch it at all.{/n}",
+          "Text": "{n}The die rattles in the bone bowl and stops twenty up. She tips the bowl and lets it roll again: twenty. Again: twenty. She fishes it out between two fingers, weighs it, and presses her thumbnail to the face with the single pip, where the lead is.{/n}\n\"Weighted. A cheat's luck, poured in lead, every throw you ever meant to win.\" {n}She drops it back into the bowl.{/n} \"The spirits like a liar who says so. Spirits take what is offered. They do not say thank you, and neither do I.\"\n{n}After that she does not touch it at all.{/n}",
           "Choices": [
             {
               "Text": "[Leave it where it landed]",
@@ -169817,7 +169817,7 @@
         {
           "Id": "start",
           "Speaker": "Soana",
-          "Text": "{n}A she-bear lies across the cave mouth with her belly opened by a demon's claws. As you come near she gets up, shakes herself and pads into the trees toward the road, bleeding as she goes.{/n}\n\"That is the third time she has done that. Your die has been in my bowl since the snow. My beasts go out against the demons on the road and they do not stay down. I did not ask for that, bloody hunter.\"",
+          "Text": "{n}A she-bear lies across the cave mouth with her belly opened by a demon's claws. Soana kneels by her head with the bone bowl, and salt, and a smear of her own blood on the rim, and says something to the trees in a language that is mostly breath. The bear gets up, shakes herself and pads into the trees toward the road, bleeding as she goes.{/n}\n\"That is the third time she has done that. Your die has been in my bowl since the snow, and every night I have fed what is in it to the spirits, because an offering left unspent goes sour. My beasts go out against the demons on the road and they do not stay down. I did not ask for that, bloody hunter.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -169833,7 +169833,7 @@
         {
           "Id": "price",
           "Speaker": "Soana",
-          "Text": "\"The spirits have been feeding my beasts on your luck, and luck is thin fare. They will go on eating it for as long as that die sits in my bowl, and it is your luck they eat, hunter, not mine. Every time a bear of mine gets up on the road, something of yours falls down: a girth snaps, a letter goes astray, a sword turns in your hand at the wrong moment. Small things. Every one of them paid to a beast that is still standing.\"\n\"And send a cart of salt, so they have something besides your luck to chew. Leave the die, or take it and let them lie down.\"",
+          "Text": "\"You pledged your luck, and the spirits took you at your pledge. They have been feeding my beasts on it, and luck is thin fare. They will go on eating it for as long as that die sits in my bowl, and it is your luck they eat, hunter, not mine. Every time a bear of mine gets up on the road, something of yours falls down: a girth snaps, a letter goes astray, a sword turns in your hand at the wrong moment. Small things. Every one of them paid to a beast that is still standing.\"\n\"And send a cart of salt, so they have something besides your luck to chew. Leave the die, or take it and let them lie down.\"",
           "Choices": [
             {
               "Text": "[Leave the die in her bowl] \"Let them eat my luck.\"",
@@ -169904,12 +169904,12 @@
       "Owner": "Soana",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "[Throw your special die at her feet] \"Rolled a one. Watch it turn into a twenty.\"",
+      "Entry": "[Throw your loaded die at her feet] \"Weighted. It never rolls a one. Give it to your spirits.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Soana",
-          "Text": "{n}The die stops on a one, then shows a twenty. Outside, a she-bear that has been dying across the cave mouth all morning gets up on three legs and limps toward the road.{/n}\n\"You do not put a thing like that in front of my beasts without paying for it, hunter. They will go out on your luck now whether I send them or not, and they will come back hungry.\"",
+          "Text": "{n}The die skips across the cave floor and stops at her feet, twenty up. She does not pick it up at once. She looks at it, then out at the cave mouth, where a she-bear has been dying all morning, and then at you.{/n}\n{n}Then she takes it, weighs it, finds the lead with her thumbnail, and drops it into the bone bowl with salt and a smear of her own blood. She talks to the trees under her breath for a long time. Outside, the she-bear gets up on three legs and limps toward the road.{/n}\n\"You do not throw a pledge like that in front of my beasts without paying for it, hunter. The spirits heard it land. They will send my beasts out on your luck now whether I want them to or not, and they will come back hungry.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -170005,7 +170005,7 @@
         {
           "Id": "start",
           "Speaker": "Soana",
-          "Text": "{n}Soana is sitting on a stump outside the cave with the she-bear's great head in her lap. Someone has sewn the bear's belly shut with sinew, badly; judging by the old woman's fingers, it was the old woman.{/n}\n\"She went out again last night. She came back with a demon's hand in her mouth. The hand was still trying to get away.\"\n{n}She scratches the bear behind one ear. The bear sighs like a bellows.{/n}",
+          "Text": "{n}On the road up, your horse throws a shoe it was fitted with two days ago, and the dispatch that should have been waiting for you at the Wintersun camp has gone to Kenabres instead. You have stopped being surprised by that kind of thing.{/n}\n{n}Soana is sitting on a stump outside the cave with the she-bear's great head in her lap. Someone has sewn the bear's belly shut with sinew, badly; judging by the old woman's fingers, it was the old woman.{/n}\n\"She went out again last night. She came back with a demon's hand in her mouth. The hand was still trying to get away.\"\n{n}She scratches the bear behind one ear. The bear sighs like a bellows.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -170391,7 +170391,7 @@
         {
           "Id": "morning",
           "Speaker": "Soana",
-          "Text": "{n}Grey light at the cave mouth, and the she-bear's place across it empty. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty. She keeps frowning at it.{/n}\n\"The she-bear went out before dawn. She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves.\"",
+          "Text": "{n}Grey light at the cave mouth, and the she-bear's place across it empty. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty, because that is what lead does. She keeps frowning at it anyway.{/n}\n\"The she-bear went out before dawn. She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves.\"",
           "Choices": [
             {
               "Text": "[Go]",
@@ -170502,7 +170502,7 @@
         {
           "Id": "morning",
           "Speaker": "Soana",
-          "Text": "{n}Grey light at the cave mouth, and the she-bear's place across it empty. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty. She keeps frowning at it.{/n}\n\"The she-bear went out before dawn. She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves.\"",
+          "Text": "{n}Grey light at the cave mouth, and the she-bear's place across it empty. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty, because that is what lead does. She keeps frowning at it anyway.{/n}\n\"The she-bear went out before dawn. She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves.\"",
           "Choices": [
             {
               "Text": "[Go]",
@@ -170765,9 +170765,91 @@
         }
       ],
       "Requires": [
-        "soana.trickster.late_committed"
+        "soana.trickster.late_committed",
+        "soana.trickster.returned"
       ],
       "Forbids": [
+        "soana.committed",
+        "soana.closed",
+        "soana.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana"
+    },
+    {
+      "Id": "soana.trickster.epilogue.luck_late",
+      "Title": "The rattle in the bowl",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The war ended before Soana finished thinking. She finished afterwards, on her own terms. The year after the Worldwound closed she walked all the way to Drezen with the loaded die in her fist, found the Commander, and put it in their palm.{/n}\n\"Your luck. It has rattled in my bowl since the snow and I am sick of the noise. Bring it back to Wintersun and keep it where I can hear it, and we will see how much of it is left.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She took the Commander's half of the knot back only once, to retie it, and she pulled it tighter.",
+              "Requires": [
+                "soana.trickster.cost.second_ask"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Wintersun beasts kept going out against the demons on the roads until the last of them was gone, and they kept getting up. The scouts stopped reporting it. It had become ordinary.",
+              "Requires": [
+                "soana.trickster.cost.catchup"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The crusade's quartermasters never forgave the Commander for the Wintersun woods, and not one crusader ever took a hide from them.",
+              "Requires": [
+                "soana.trickster.cost.woods_sealed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "For as long as the die sat in her bowl, the Commander's girths snapped, letters went astray and blades turned at bad moments. Each time, somewhere on a Wintersun road, a bear that should have stayed down got up again.",
+              "Requires": [
+                "soana.trickster.cost.luck_fed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander fought the rest of the war on the luck they were born with. Soana said it was more than she had expected, and a good deal less than they deserved.",
+              "Requires": [
+                "soana.trickster.cost.pair_given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "soana.trickster.late_committed",
+        "soana.trickster.luck_kept"
+      ],
+      "Forbids": [
+        "soana.trickster.returned",
         "soana.committed",
         "soana.closed",
         "soana.trickster.declined"
@@ -170787,7 +170869,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She never asked again. The knot hung in her cave with one strand, and she bound nothing new into the Wintersun woods for as long as she lived. When travellers asked the old woman in the cave about the Commander, she said that she had met a hunter once who laughed at a knot, and that was all she said.{/n}",
+          "Text": "{n}She never asked again. When travellers asked the old woman in the cave about the Commander, she said that she had once met a hunter who could not make up their mind when it mattered, and that was all she said.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -170801,7 +170883,7 @@
           "Portrait": "",
           "Paragraphs": [
             {
-              "Text": "She took her leash back from the Commander's hand the day they parted, with a single strand and her own blood. It held, barely, for as long as she lived.",
+              "Text": "She took her leash back from the Commander's hand the day they parted, with a single strand and her own blood. It held, barely, for as long as she lived. The knot hung in her cave with one strand, and she bound nothing new into the Wintersun woods again.",
               "Requires": [
                 "soana.trickster.returned"
               ],
@@ -170885,7 +170967,7 @@
           "Portrait": "",
           "Paragraphs": [
             {
-              "Text": "The knot that bound her life to her guardian's still held, one end breathing in her and the other in Orso. The Commander learned to sleep through the bear's snoring, which Soana said was the most romantic thing anyone had ever done for her.",
+              "Text": "The knot still held, retied, one end in Soana and the other round the Commander's wrist where the gut strip had marked it. On hungry nights it pulled. The Commander learned to sleep through it, which Soana said was the most romantic thing anyone had ever done for her.",
               "Requires": [
                 "soana.trickster.cost.guardian_paid"
               ],
@@ -170901,7 +170983,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She kept the die in the bowl by her hearth, the one the Commander had left there, and rolled it when she could not decide something. She never told the Commander what the numbers meant.",
+              "Text": "She kept the die in the bowl by her hearth, the one the Commander had left there, and rolled it when she could not decide something. It only ever came up one way, which was the lead in it, and she said that was the point: it saved her the trouble of pretending she had not already decided.",
               "Requires": [
                 "soana.trickster.cost.die_in_her_bowl"
               ],
@@ -170937,7 +171019,7 @@
         {
           "Id": "start",
           "Speaker": "Camellia",
-          "Text": "\"You cheated me out of a perfectly good death, my friend. The old woman fed her trees and left me the smell of it.\" {n}Camellia smooths her skirt with both hands, very slowly.{/n} \"I shall have to think of a way to thank you. I have already thought of several.\"",
+          "Text": "\"You took a death off my plate, my friend. The old woman fed her trees and left me the smell of it.\" {n}Camellia smooths her skirt with both hands, very slowly.{/n} \"Someone will pay me for that meal. I have not decided who. I have decided it will not be quick.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -176138,7 +176220,7 @@
         {
           "Id": "bier",
           "Speaker": "Narrator",
-          "Text": "{n}The chaplain of the Drezen chapel stands over the bier with a bowl of diamond dust that is not full, and a rite he cannot finish with it.{/n}\n\"Before she stands trial, Commander. A soul that has stood its trial cannot be raised. After that, nothing comes back.\"\n{n}Seelah's purse lies beside her, its strings tied neatly by somebody who did not know her. She always tied them badly, so she could get them open fast.{/n}",
+          "Text": "{n}The chaplain of the Drezen chapel stands over the bier with a bowl of diamond dust that is not full, and a rite he cannot finish with it.{/n}\n\"Before she stands trial, Commander. A soul that has stood its trial cannot be raised, and nobody on this side of the Boneyard can tell you how long a soul waits before the Lady tries it. An hour. A week. I have never dared find out, and I would not make her wait to learn it.\"\n{n}Seelah's purse lies beside her, its strings tied neatly by somebody who did not know her. She always tied them badly, so she could get them open fast.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -176198,11 +176280,11 @@
         {
           "Id": "coin",
           "Speaker": "Narrator",
-          "Text": "{n}Her savings go into the chaplain's bowl coin by coin: coppers, a few silver, one gold piece she must have been keeping for something. It is not enough. It was never going to be enough.{/n}\n{n}At the bottom of the purse is one coin that is not a coin. It is cold, and too heavy, and stamped with nothing at all. It is the one thing in the purse she did not earn.{/n}",
+          "Text": "{n}Her savings go into the chaplain's bowl coin by coin: coppers, a few silver, one gold piece she must have been keeping for something. It is not enough. It was never going to be enough.{/n}\n\"Whatever killed her took the arm she swung with,\" the chaplain says. \"The lesser rite would give her back without it. The greater rite gives her back whole, and it wants two stones' worth of diamond dust. The chapel's own stone is promised to the next knight who falls.\"\n{n}At the bottom of the purse is a square of paper folded very small. It is a list, in her hand, of every theft she can remember. Most lines are crossed out, each with a sum beside it and the word \"paid\". The first line is not: \"A mithral helm. Acemi.\" There is no sum beside it.{/n}\n{n}The last line is newer than the rest, the ink hardly a week old; she must have found him since she came to Drezen: \"The relic-seller under the chapel steps. Sells 'saints' tears' to pilgrims. They are the Kenabres reliquary diamonds; I stood guard in that cathedral at the Armasse, the day the Wound came up under it, and I would know the settings anywhere. Not mine to take back. I am a paladin now. Tell Irabeth.\"{/n}",
           "Choices": [
             {
               "Text": "[Pick the dead thief's pocket] \"Old habits, Seelah. Whatever's in the purse is mine. Including that.\"",
-              "Next": "pocketed",
+              "Next": "stall",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -176225,12 +176307,88 @@
           "Portrait": "Seelah"
         },
         {
-          "Id": "pocketed",
+          "Id": "stall",
           "Speaker": "Narrator",
-          "Text": "{n}You pocket it before the chaplain looks up. It lies against your ribs like a stone from a winter river.{/n}\n{n}The chaplain frowns at the bowl, then at the body, then at you.{/n}\n\"Strange. It is as if she has nothing to present at the gate. As if someone has her death.\" He does not ask who. \"Then she has not stood trial, and I may begin. But the bowl is short, Commander.\"",
+          "Text": "{n}You fold the list into your coat and tell the chaplain to keep his candles lit.{/n}\n{n}The relic-seller's stall is a plank on two barrels under the chapel steps, shuttered for the night. He is still behind it, counting by a shielded lamp: a soft, careful man in pilgrim's grey, with a fat pouch at his belt that he touches every little while, the way a man touches a thing he loves.{/n}",
           "Choices": [
             {
-              "Text": "[Put a diamond from your own coat in the bowl] \"Now it isn't.\"",
+              "Text": "[Lift his pouch the way she taught you] \"Excuse me. So sorry.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [
+                "seelah.trickster.lift_lesson"
+              ],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "SkillThievery",
+                "DC": 15,
+                "Success": "lifted",
+                "Failure": "grabbed",
+                "CommanderOnly": true
+              }
+            },
+            {
+              "Text": "[Lift his pouch off his belt] \"Excuse me.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "seelah.trickster.lift_lesson"
+              ],
+              "Abort": false,
+              "Check": {
+                "Skill": "SkillThievery",
+                "DC": 25,
+                "Success": "lifted",
+                "Failure": "grabbed",
+                "CommanderOnly": true
+              }
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "lifted",
+          "Speaker": "Narrator",
+          "Text": "{n}You stumble into his lamp and catch it before it falls, and you are so sorry, what a clumsy fool, did it burn him? He watches your face the whole time you are apologising. Nobody watches your fingers.{/n}\n{n}Round the corner you open the pouch in your palm. Small, cloudy stones, a good many of them, some still with a crumb of gilt where somebody's knife prised them out of a setting.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "pocketed",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "grabbed",
+          "Speaker": "Narrator",
+          "Text": "{n}He feels it go. His hand closes on your wrist with the strings still in your fingers, and he draws breath to shout for the watch, and then he sees whose wrist it is.{/n}\n\"Commander.\" {n}He does not let go.{/n} \"Those are consecrated stones. Bought honestly.\"\n{n}You tell him, quietly, what a Kenabres reliquary looks like with its settings emptied, and whose altars they stood on, and what the Inheritor's knights do to a man who robs their dead. He does not let go. He is a careful man, and he has done his sums.{/n}\n\"Then the Inheritor never hears my name. Not from you, and not from your dead paladin's little list.\" {n}His eyes go to your coat, where the paper is.{/n} \"Your word, Commander, in front of the saints. Or I shout, and we both hang.\"\n{n}You give it. His hand opens. It is the only thing you have bought tonight that you will have to keep, and it is the one line on her list she asked someone to finish: Tell Irabeth. He knows your face now, and he will tell the story to anyone who buys him a drink, everywhere but the Inheritor's door.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "pocketed",
+              "Set": [
+                "seelah.trickster.cost.broker_knows"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "pocketed",
+          "Speaker": "Narrator",
+          "Text": "{n}The chaplain is still at the bier when you come back. You tip the pouch into his bowl, and the stones rattle down on top of her coppers.{/n}\n{n}He picks one out and turns it to the candle. There is gilt on it.{/n}\n\"These came off the Kenabres altars.\" {n}He does not ask how you came by them. He looks at the paper in your hand, and at her, and weighs the pouch in his palm.{/n} \"They were given to the dead of Kenabres, Commander. One stone's worth, near enough. Half the rite.\"",
+          "Choices": [
+            {
+              "Text": "[Put a diamond from your own coat in with them] \"She stood guard over those altars. That's both stones. Begin.\"",
               "Next": null,
               "Set": [
                 "seelah.trickster.returned",
@@ -176247,7 +176405,7 @@
               "RemoveItem": "6a7cdeb14fc6ef44580cf639c5cdc113"
             },
             {
-              "Text": "[Give him your word for the rest] \"The crusade will make it good. Begin.\"",
+              "Text": "[Give him your word for the other stone] \"She stood guard over those altars. Spend the chapel's stone; the crusade will make it good. Begin.\"",
               "Next": null,
               "Set": [
                 "seelah.trickster.returned",
@@ -176315,7 +176473,7 @@
           "Text": "\"You robbed my corpse.\"\n{n}She is sitting on the edge of the chapel cot in her shirt, turning her empty purse inside out. She laughs once, badly.{/n}\n\"The worst part is I'd have done the same. Every copper I had, Commander. Even the gold piece, and I've carried that one since Solku without ever spending it. Did She let me go, or did you buy me?\"",
           "Choices": [
             {
-              "Text": "\"The chaplain did the work. Your purse paid for it. Mostly.\"",
+              "Text": "\"The chaplain did the work. A grave-robber paid for half of it, and my coat for the rest.\"",
               "Next": "coin",
               "Set": [],
               "Requires": [],
@@ -176325,7 +176483,7 @@
               "Abort": false
             },
             {
-              "Text": "\"The chaplain did the work. His chapel paid for most of it, on my word.\"",
+              "Text": "\"The chaplain did the work. A grave-robber paid for half of it, and his chapel for the rest, on my word.\"",
               "Next": "coin_word",
               "Set": [],
               "Requires": [
@@ -176340,7 +176498,7 @@
         {
           "Id": "coin_word",
           "Speaker": "Seelah",
-          "Text": "\"On your word.\" She closes her eyes. \"So the whole chapel knows the Commander robbed a dead paladin and then asked the priests for credit. Wonderful. I'm going to be hearing about that at every mass until the Wound shuts.\"",
+          "Text": "\"On your word.\" She closes her eyes. \"So the whole chapel knows the Commander robbed a dead paladin, then robbed a grave-robber, and then asked the priests for credit. Wonderful. I'm going to be hearing about that at every mass until the Wound shuts.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -176356,10 +176514,10 @@
         {
           "Id": "coin",
           "Speaker": "Seelah",
-          "Text": "\"There's something else gone. I can feel where it was, the way you feel a tooth that's been pulled.\" She presses a hand flat under her collarbone. \"It isn't money. You're the one who took it.\"\n{n}She holds out her palm, and it is steady.{/n}\n\"That's my price for getting up. Give it back. Whatever it is. I want to know what it looks like.\"",
+          "Text": "\"He showed me one of the stones. Gilt still on it.\" She turns the empty purse over again, as if something might have grown in it overnight. \"Kenabres stones. I stood guard over those altars at the Armasse, the day the Wound came up under them. Now I'm walking round on them.\"\n\"And something else is gone. My list.\" {n}Her hand goes flat under her collarbone, where the purse hangs when she sleeps.{/n} \"You read it. Every line. You're the one who took it.\"\n{n}She holds out her palm, and it is steady.{/n}\n\"Give it back. Now, while I'm still too weak to take it off you.\"",
           "Choices": [
             {
-              "Text": "[Put the coin in her hand] \"Here. It's yours. I only borrowed it.\"",
+              "Text": "[Put the list in her hand] \"Here. It's yours. I only borrowed it.\"",
               "Next": "given",
               "Set": [
                 "seelah.trickster.woke",
@@ -176386,7 +176544,7 @@
         {
           "Id": "given",
           "Speaker": "Seelah",
-          "Text": "{n}She turns it over. It is stamped with nothing, on either side. She weighs it for a long time.{/n}\n\"Cold,\" she says. \"I thought it would be warmer.\"\n{n}She puts it in her purse and ties the strings badly, on purpose.{/n}\n\"Acemi never got her helm back. I'll get this one right. Thank you, Commander. I'm still angry.\"",
+          "Text": "{n}She unfolds it and reads the last line. Under it, in your hand, somebody has written \"Taken back.\" She looks at that for a long time.{/n}\n{n}Then she borrows the chaplain's pen and writes one more line beneath it, and does not cross it out: \"Kenabres stones. Stolen for me. Owed.\"{/n}\n{n}She folds the list very small, puts it in her purse and ties the strings badly, on purpose.{/n}\n\"Acemi never got her helm back. I'll get this one right, if it takes the rest of my life. Thank you, Commander. I'm still angry.\"",
           "Choices": [
             {
               "Text": "\"Be angry. You have time for it now.\"",
@@ -176467,11 +176625,11 @@
         {
           "Id": "purse",
           "Speaker": "Narrator",
-          "Text": "{n}At the bottom of the purse is one coin that is not a coin: cold, and too heavy, and stamped with nothing.{/n}\n{n}The chaplain at the border hospital has a bowl and nothing to put in it, and one rule: a soul that has stood its trial cannot be raised. Hers has not stood it. You are holding the one thing she would have to present there.{/n}",
+          "Text": "{n}At the bottom of the purse is a square of paper folded very small: a list, in her hand, of every theft she can remember, most of them crossed out and marked \"paid\". The first line is not: \"A mithral helm. Acemi.\"{/n}\n{n}The last line is newer than the rest, the ink hardly a week old; she must have found him since she came to Drezen: \"The relic-seller under the chapel steps. Sells 'saints' tears' to pilgrims. They are the Kenabres reliquary diamonds; I stood guard in that cathedral at the Armasse, the day the Wound came up under it, and I would know the settings anywhere. Not mine to take back. I am a paladin now. Tell Irabeth.\"{/n}\n{n}The chaplain at the border hospital has written too. The wound that killed her is one the lesser rite cannot close; the greater rite wants two stones' worth of diamond dust, and he has a bowl and nothing to put in it, and one rule: a soul that has stood its trial cannot be raised. Nobody can say how long a soul waits before the Lady tries it, he writes; he has never dared find out. A fast rider reaches him in two days.{/n}",
           "Choices": [
             {
               "Text": "[Pick the dead thief's pocket] \"Old habits, Seelah. Whatever's in the purse is mine. Including that.\"",
-              "Next": "rider",
+              "Next": "stall",
               "Set": [
                 "seelah.trickster.returned",
                 "seelah.trickster.cost.holds_her_death",
@@ -176492,7 +176650,7 @@
             },
             {
               "Text": "[Pick the dead thief's pocket] \"Old habits, Seelah. Whatever's in the purse is mine. Including that.\"",
-              "Next": "rider_word",
+              "Next": "stall",
               "Set": [
                 "seelah.trickster.returned",
                 "seelah.trickster.cost.holds_her_death",
@@ -176527,9 +176685,111 @@
           "Portrait": "Seelah"
         },
         {
+          "Id": "stall",
+          "Speaker": "Narrator",
+          "Text": "{n}You put the list in your coat and go down to the chapel steps before the lamps are out.{/n}\n{n}The relic-seller's stall is a plank on two barrels under the chapel steps, shuttered for the night. He is still behind it, counting by a shielded lamp: a soft, careful man in pilgrim's grey, with a fat pouch at his belt that he touches every little while, the way a man touches a thing he loves.{/n}",
+          "Choices": [
+            {
+              "Text": "[Lift his pouch the way she taught you] \"Excuse me. So sorry.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [
+                "seelah.trickster.lift_lesson"
+              ],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "SkillThievery",
+                "DC": 15,
+                "Success": "lifted",
+                "Failure": "grabbed",
+                "CommanderOnly": true
+              }
+            },
+            {
+              "Text": "[Lift his pouch off his belt] \"Excuse me.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "seelah.trickster.lift_lesson"
+              ],
+              "Abort": false,
+              "Check": {
+                "Skill": "SkillThievery",
+                "DC": 25,
+                "Success": "lifted",
+                "Failure": "grabbed",
+                "CommanderOnly": true
+              }
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "lifted",
+          "Speaker": "Narrator",
+          "Text": "{n}You stumble into his lamp and catch it before it falls, and you are so sorry, what a clumsy fool, did it burn him? He watches your face the whole time you are apologising. Nobody watches your fingers.{/n}\n{n}Round the corner you open the pouch in your palm. Small, cloudy stones, a good many of them, some still with a crumb of gilt where somebody's knife prised them out of a setting.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "rider",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "seelah.trickster.cost.chaplains_word"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "rider_word",
+              "Set": [],
+              "Requires": [
+                "seelah.trickster.cost.chaplains_word"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "grabbed",
+          "Speaker": "Narrator",
+          "Text": "{n}He feels it go. His hand closes on your wrist with the strings still in your fingers, and he draws breath to shout for the watch, and then he sees whose wrist it is.{/n}\n\"Commander.\" {n}He does not let go.{/n} \"Those are consecrated stones. Bought honestly.\"\n{n}You tell him, quietly, what a Kenabres reliquary looks like with its settings emptied, and whose altars they stood on, and what the Inheritor's knights do to a man who robs their dead. He does not let go. He is a careful man, and he has done his sums.{/n}\n\"Then the Inheritor never hears my name. Not from you, and not from your dead paladin's little list.\" {n}His eyes go to your coat, where the paper is.{/n} \"Your word, Commander, in front of the saints. Or I shout, and we both hang.\"\n{n}You give it. His hand opens. It is the only thing you have bought tonight that you will have to keep, and it is the one line on her list she asked someone to finish: Tell Irabeth. He knows your face now, and he will tell the story to anyone who buys him a drink, everywhere but the Inheritor's door.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "rider",
+              "Set": [
+                "seelah.trickster.cost.broker_knows"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "seelah.trickster.cost.chaplains_word"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "rider_word",
+              "Set": [
+                "seelah.trickster.cost.broker_knows"
+              ],
+              "Requires": [
+                "seelah.trickster.cost.chaplains_word"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
           "Id": "rider",
           "Speaker": "Narrator",
-          "Text": "{n}You send the rider south with her savings and a diamond from your own coat. You keep the coin.{/n}\n{n}Four days later a note comes back in the chaplain's hand: \"She sat up and asked who had been in her purse. I told her. She said a word I will not write. She will come to Drezen when she can walk that far.\"{/n}",
+          "Text": "{n}You send the rider south with her savings, the relic-seller's stones and a diamond from your own coat: two stones' worth. By morning the stall under the chapel steps is boarded up, and the relic-seller has gone out by the east gate without a word to anyone. You keep the list.{/n}\n{n}Four days later a note comes back in the chaplain's hand: \"She sat up and asked who had been in her purse. I told her, and I showed her a stone with gilt on it. She said a word I will not write. She will come to Drezen when she can walk that far.\"{/n}",
           "Choices": [
             {
               "Text": "\"Tell her I'll be at Fye's.\"",
@@ -176545,10 +176805,10 @@
         {
           "Id": "rider_word",
           "Speaker": "Narrator",
-          "Text": "{n}You send the rider south with her savings and your word, sealed, that the crusade will make good the rest. You keep the coin. The chaplain there spends his hospital's reserve of diamonds on a Commander's promise, and every priest on the border hears of it by the end of the week.{/n}\n{n}Four days later a note comes back: \"She sat up and asked who had been in her purse. I told her. She will come to Drezen when she can walk that far. So will my bill.\"{/n}",
+          "Text": "{n}You send the rider south with her savings, the relic-seller's stones, and your word, sealed, that the crusade will make good the other stone. You keep the list. The chaplain there knows Kenabres gilt when he sees it; he grinds the stones anyway, spends his hospital's own reserve on a Commander's promise for the rest, and every priest on the border hears of it by the end of the week.{/n}\n{n}Four days later a note comes back: \"She sat up and asked who had been in her purse. I told her. She will come to Drezen when she can walk that far. So, I expect, will the relic-seller's complaint.\"{/n}",
           "Choices": [
             {
-              "Text": "\"Pay him. Then tell her I'll be at Fye's.\"",
+              "Text": "\"Let him complain. Tell her I'll be at Fye's.\"",
               "Next": null,
               "Set": [],
               "Requires": [],
@@ -177191,7 +177451,9 @@
                 "seelah.started",
                 "seelah.romance"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "seelah.trickster.cost.holds_her_death"
+              ],
               "Abort": false
             },
             {
@@ -177203,7 +177465,9 @@
               "Requires": [
                 "seelah.romance"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "seelah.trickster.cost.holds_her_death"
+              ],
               "Abort": false
             },
             {
@@ -177245,6 +177509,111 @@
               "Requires": [
                 "seelah.trickster.cost.holds_her_death"
               ],
+              "Forbids": [
+                "seelah.trickster.death_returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Put her list on the table first] \"Yours. Every line. I only borrowed it.\"",
+              "Next": "list_back",
+              "Set": [
+                "seelah.trickster.death_returned"
+              ],
+              "Requires": [
+                "seelah.trickster.cost.holds_her_death",
+                "seelah.romance"
+              ],
+              "Forbids": [
+                "seelah.trickster.death_returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Kiss her] \"Stay. Not as a sword. As you.\"",
+              "Next": "threshold",
+              "Set": [
+                "seelah.committed"
+              ],
+              "Requires": [
+                "seelah.started",
+                "seelah.romance",
+                "seelah.trickster.cost.holds_her_death",
+                "seelah.trickster.death_returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Let her choose] \"You know where the coat is.\"",
+              "Next": "chooses",
+              "Set": [
+                "seelah.committed"
+              ],
+              "Requires": [
+                "seelah.romance",
+                "seelah.trickster.cost.holds_her_death",
+                "seelah.trickster.death_returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask what's wrong] \"You're not saying something.\"",
+              "Next": "no_stones",
+              "Set": [],
+              "Requires": [
+                "seelah.trickster.cost.holds_her_death",
+                "seelah.trickster.death_returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "no_stones",
+          "Speaker": "Seelah",
+          "Text": "{n}She puts her hand flat over the place in her tunic where the list is now.{/n}\n\"You read every line of this before you gave it back. You robbed a grave-robber for me with a trick I taught you, and you bought me back with stones off the altars I stood guard over. I owe that. I don't know yet whether I owe it to you.\" {n}She finishes her drink.{/n}\n\"Ask me again when I've paid the first coin of it back myself. Not before.\"",
+          "Choices": [
+            {
+              "Text": "[Let her keep it] \"Then I'll ask again, and I'll ask better.\"",
+              "Next": null,
+              "Set": [
+                "seelah.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "list_back",
+          "Speaker": "Seelah",
+          "Text": "{n}She does not touch it at once. Then she unfolds it and reads it from the top, Acemi first, the way you would count the money in a purse somebody had just given back to you. At the last line she stops.{/n}\n\"You never crossed it out.\" {n}She borrows the stub of pencil behind the tankards and writes a line under it, and does not cross that out either: \"Kenabres stones. Stolen for me. Owed.\"{/n}\n{n}She folds it small and puts it inside her tunic, flat against her ribs.{/n} \"All right. Now it's only you and me at this table. Now ask.\"",
+          "Choices": [
+            {
+              "Text": "[Kiss her] \"Stay. Not as a sword. As you.\"",
+              "Next": "threshold",
+              "Set": [
+                "seelah.committed"
+              ],
+              "Requires": [
+                "seelah.started"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Let her choose] \"You know where the coat is.\"",
+              "Next": "chooses",
+              "Set": [
+                "seelah.committed"
+              ],
+              "Requires": [],
               "Forbids": [],
               "Abort": false
             }
@@ -177270,7 +177639,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}She does not answer with words. She drags you up the tavern stairs by the belt, and on the landing you find the belt is in her hand and no longer round your waist.{/n}\n\"Ha. Got your belt. Old habits.\" Her breath is hot on your mouth. \"Now hold still. I'm taking the rest, and this time I'm not giving it back.\"\n{n}She kisses you laughing, then not laughing. Her armour is already off; she wriggles out of the gambeson in one practised motion, all freckles and sword-callus, and has your shirt over your head before you have reached the top step. The door of the little room slams behind you. She backs you into it, bare to the waist, fingers already at the lacing of your breeches, and tumbles you down onto the narrow bed. Then she swings a knee over your hips and straddles you, palms flat on your chest, hair falling round both your faces, and lowers herself onto you with a thief's grin, as if she has just got away with something.{/n}",
+          "Text": "{n}She does not answer with words. She drags you up the tavern stairs by the belt, and on the landing you find the belt is in her hand and no longer round your waist.{/n}\n\"Ha. Got your belt. Old habits.\" Her breath is hot on your mouth. \"Now hold still. I'm taking the rest, and this time I'm not giving it back.\"\n{n}She kisses you laughing, then not laughing. Her armour is already off; she wriggles out of the gambeson in one practised motion, all freckles and sword-callus, and has your shirt over your head before you have reached the top step. The door of the little room slams behind you. She backs you into it, bare to the waist, fingers already at the lacing of your breeches, and tumbles you down onto the narrow bed. Then she swings a knee over your hips and straddles you, palms flat on your chest, hair falling round both your faces, and grins down at you like a thief who has just got away with something.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -177380,7 +177749,7 @@
         {
           "Id": "no_death",
           "Speaker": "Seelah",
-          "Text": "{n}Her hand goes to the place under her collarbone, the way it does when she thinks nobody is watching.{/n}\n\"You've still got something of mine. In your coat. I can feel it from here.\" She is not angry. That is worse. \"I can't say yes to anyone with my death in their pocket. Give it back, or let me take it, and then ask me.\"",
+          "Text": "{n}Her hand goes to the place under her collarbone where her purse hangs, the way it does when she thinks nobody is watching.{/n}\n\"You've still got my list. In your coat. You've read every line of it, and you haven't given it back.\" She is not angry. That is worse. \"I can't say yes to someone who's carrying every theft I ever did. Give it back, or let me take it, and then ask me.\"",
           "Choices": [
             {
               "Text": "[Let her keep it] \"Then I'll ask again, and I'll ask better.\"",
@@ -177422,7 +177791,7 @@
     },
     {
       "Id": "seelah.trickster.dismissed.second_ask",
-      "Title": "My price",
+      "Title": "Her way",
       "Owner": "Seelah",
       "MinChapter": 3,
       "MaxChapter": 5,
@@ -177431,7 +177800,7 @@
         {
           "Id": "price",
           "Speaker": "Seelah",
-          "Text": "\"Better. All right.\" She stands and comes round the table. \"Here's my price. You stand still, and I rob you. I take whatever I want out of your coat, and you don't get to know what until I'm gone.\"\n{n}She stops close enough that you can smell the tavern smoke in her hair.{/n}\n\"That's fair. That's the fairest thing that's happened between us.\"",
+          "Text": "{n}She walked out of Fye's the night you first asked, on her own feet, and took the Sarkorian road. Four days later she walked back in the same way, and nobody sent for her. She is at the table by the door when you come in, and she does not pretend to be surprised.{/n}\n\"Better. All right.\" She stands and comes round the table. \"Here's how it goes. You stand still, and I rob you. I take whatever I want out of your coat, and you don't get to know what until I'm gone.\"\n{n}She stops close enough that you can smell the tavern smoke in her hair.{/n}\n\"That's fair. That's the fairest thing that's happened between us.\"",
           "Choices": [
             {
               "Text": "[Let her pick your pocket] \"Go on. Take it back. Whatever you like.\"",
@@ -177462,7 +177831,7 @@
         {
           "Id": "robbed",
           "Speaker": "Narrator",
-          "Text": "{n}You stand still. It is harder than it sounds. She takes her time, and she apologises the whole while, softly, for nothing in particular, and you do not watch her hands.{/n}\n{n}When she steps back, your coat is lighter by something. You do not know what. She is smiling.{/n}\n\"Now ask me,\" she says, and does not wait for you to finish.",
+          "Text": "{n}You stand still. It is harder than it sounds. She takes her time, and she apologises the whole while, softly, for nothing in particular, and you do not watch her hands.{/n}\n{n}When she steps back, your coat is lighter by something. You do not know what, except that if her list was still in it, it is not there now. She is smiling.{/n}\n\"Now ask me,\" she says, and does not wait for you to finish.",
           "Choices": [
             {
               "Text": "Continue",
@@ -177478,7 +177847,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}She does not answer with words. She drags you up the tavern stairs by the belt, and on the landing you find the belt is in her hand and no longer round your waist.{/n}\n\"Ha. Got your belt. Old habits.\" Her breath is hot on your mouth. \"Now hold still. I'm taking the rest, and this time I'm not giving it back.\"\n{n}She kisses you laughing, then not laughing. Her armour is already off; she wriggles out of the gambeson in one practised motion, all freckles and sword-callus, and has your shirt over your head before you have reached the top step. The door of the little room slams behind you. She backs you into it, bare to the waist, fingers already at the lacing of your breeches, and tumbles you down onto the narrow bed. Then she swings a knee over your hips and straddles you, palms flat on your chest, hair falling round both your faces, and lowers herself onto you with a thief's grin, as if she has just got away with something.{/n}",
+          "Text": "{n}She does not answer with words. She drags you up the tavern stairs by the belt, and on the landing you find the belt is in her hand and no longer round your waist.{/n}\n\"Ha. Got your belt. Old habits.\" Her breath is hot on your mouth. \"Now hold still. I'm taking the rest, and this time I'm not giving it back.\"\n{n}She kisses you laughing, then not laughing. Her armour is already off; she wriggles out of the gambeson in one practised motion, all freckles and sword-callus, and has your shirt over your head before you have reached the top step. The door of the little room slams behind you. She backs you into it, bare to the waist, fingers already at the lacing of your breeches, and tumbles you down onto the narrow bed. Then she swings a knee over your hips and straddles you, palms flat on your chest, hair falling round both your faces, and grins down at you like a thief who has just got away with something.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -177563,7 +177932,7 @@
         "inhuman",
         "seelah.committed"
       ],
-      "DelayHours": 48,
+      "DelayHours": 96,
       "Optional": true,
       "Relationship": "seelah",
       "Areas": [
@@ -177587,7 +177956,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}Seelah never learned exactly what the Commander took from her at the bier, beyond every coin she had. She spent some years trying to steal it back, and a good many more pretending she had stopped.{/n}",
+          "Text": "{n}Seelah never quite forgave the night at the bier: every coin she had, her list read without asking, and a grave-robber robbed in her name. She never said which of the three she minded most.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -177601,7 +177970,7 @@
           "Portrait": "Seelah",
           "Paragraphs": [
             {
-              "Text": "She kept her death in her purse for the rest of her life, stamped with nothing, tied in badly on purpose. She showed it to exactly two people, and one of them was the Commander.",
+              "Text": "She kept the list in her purse for the rest of her life, tied in badly on purpose. The last line was never crossed out. She showed it to exactly two people, and one of them was the Commander.",
               "Requires": [
                 "seelah.trickster.death_returned"
               ],
@@ -177617,9 +177986,17 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Drezen chapel never quite forgave the credit the Commander had asked of it. Seelah paid it off herself, a coin at a time, out of a paladin's stipend. It took her eleven years.",
+              "Text": "The chapel never quite forgave the credit the Commander had asked of it, or the stolen stones it had ground. Seelah paid back both herself, the chapel and the Kenabres reliquary, a coin at a time, out of a paladin's stipend. It took her eleven years.",
               "Requires": [
                 "seelah.trickster.cost.chaplains_word"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The relic-seller told the story of the night the Commander of the crusade robbed him in every tavern in Drezen, for years, and never told it the same way twice. Nobody bought him a drink for it twice either.",
+              "Requires": [
+                "seelah.trickster.cost.broker_knows"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -177705,6 +178082,14 @@
           ],
           "Portrait": "Seelah",
           "Paragraphs": [
+            {
+              "Text": "The relic-seller told the story of the night the Commander of the crusade robbed him in every tavern in Drezen, for years, and never told it the same way twice. Nobody bought him a drink for it twice either.",
+              "Requires": [
+                "seelah.trickster.cost.broker_knows"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
             {
               "Text": "Of the transfer papers she said only that they had come back to her, and that she now kept them somewhere no Commander would ever look.",
               "Requires": [
@@ -177852,7 +178237,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "Seelah did not go back to the order after the war. She said she had a debt to settle first, and she settled it the way she had settled things as a girl in the streets of Kenabres: quietly, with a hand in someone else's pocket, and an apology afterwards.",
+          "Text": "Seelah did not go back to the order after the war. She said she had a debt to settle first, and she settled it the way she had settled things as a girl in the streets of Solku: quietly, with a hand in someone else's pocket, and an apology afterwards.",
           "Choices": [
             {
               "Text": "Continue",
@@ -177929,7 +178314,7 @@
         {
           "Id": "start",
           "Speaker": "Irabeth",
-          "Text": "{n}Irabeth puts down her pen, which is how you know she means it.{/n}\n\"You robbed a paladin's corpse, Commander. She got up. And she swore in my hearing, in the chapel, to rob you back for it.\"\n{n}She picks the pen up again.{/n}\n\"I'm going to pray about this. Then I'm going to buy her a drink and pray about that.\"",
+          "Text": "{n}Irabeth puts down her pen, which is how you know she means it.{/n}\n\"You robbed a paladin's corpse, Commander. She got up. And she swore in my hearing, in the chapel, to rob you back for it.\"\n{n}She picks the pen up again.{/n}\n\"A relic-seller from under the chapel steps boarded up his stall this week and left by the east gate in a hurry. Seelah asked me why. I told her I didn't know. I'm asking you, and I can see you're not going to tell me. I'm going to pray about this. Then I'm going to buy her a drink and pray about that.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -177976,7 +178361,7 @@
         {
           "Id": "start",
           "Speaker": "Sosiel",
-          "Text": "{n}Sosiel is sketching, and he does not stop.{/n}\n\"She showed me a coin with nothing on it and asked if I'd ever seen one like it. I haven't. She said it was hers, and that she'd paid for it twice.\" He shades something. \"I believe her. I don't think I want to know what it buys.\"",
+          "Text": "{n}Sosiel is sketching, and he does not stop.{/n}\n\"She showed me a list. Old thefts, most of them crossed out, with what she paid back beside each one. The last line isn't crossed out, and it's new.\" He shades something. \"She said it's the most expensive thing she owns. I believe her. I didn't ask what it cost.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -177992,7 +178377,52 @@
       ],
       "Requires": [
         "seelah.trickster.returned",
-        "seelah.revived"
+        "seelah.revived",
+        "seelah.trickster.woke",
+        "seelah.trickster.death_returned"
+      ],
+      "Forbids": [
+        "sosiel.dead",
+        "sosiel.kicked_out"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "seelah",
+      "Reaction": true,
+      "AnswerLists": [
+        "129b55b8b5d50974f84f7c607d894fd0"
+      ]
+    },
+    {
+      "Id": "seelah.trickster.dead.react_sosiel_kept",
+      "Title": "Sosiel's word",
+      "Owner": "Sosiel",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Have you seen Seelah?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Sosiel",
+          "Text": "{n}Sosiel is sketching, and he does not stop.{/n}\n\"She asked me whether a paladin who steals something back from her Commander has to confess it. I said it depends on the Commander.\" He shades something. \"She said it depended on the thing, and that you know which thing. I think you should button your coat.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "seelah.trickster.returned",
+        "seelah.revived",
+        "seelah.trickster.woke",
+        "seelah.trickster.cost.keeps_it"
       ],
       "Forbids": [
         "sosiel.dead",
@@ -253564,17 +253994,58 @@
       "Entry": "[Speak from cover] \"I know a better ending.\"",
       "Nodes": [
         {
-          "Id": "story",
+          "Id": "hides",
           "Speaker": "Narrator",
-          "Text": "{n}Your voice carries from behind the rocks. The dragon does not turn yet. The old elf has stopped talking, and she is waiting to hear how a story ends, the way she has waited on every story in this lair: head low, one claw curled around the prisoner's ankle, as if he might get up and leave before the last line.{/n}\n{n}Beside you Greybor has gone completely still. He looks at you as though you have started singing in the middle of an ambush. Then he looks at the soft place under her wing, and waits too.{/n}",
+          "Text": "{n}She has heard you, and she waits for the rest; a dragon who sells lives for stories does not interrupt one. Behind the rocks, all the while the old elf was talking, you were looking at the walls. They are hung with hides: black, enormous, dry as old paper, each one split along the spine from the horns to the tail and left where it fell, like a snake's cast skin. There are six that you can count. The oldest is grey with dust. The one nearest the entrance has a hole low in the chest you could put your arm into, the edges ragged where a lance went in.{/n}\n{n}Whatever wore that hide took a wound that should have killed it, shed the wound with the skin, and is lying twenty paces away listening to a story. It is a guess, and nobody has ever tested it: that a thing which can shed a mortal wound might shed a death, if nobody cuts it open first.{/n}",
           "Choices": [
             {
-              "Text": "[Tell her the end of her own story] \"The hunters come. The dragon falls. Everyone swears she's a corpse. She isn't. Three nights later she sheds the dead hide like a snake and gets up a clutch-mother, in a new skin, hungrier than before.\"",
+              "Text": "[One whisper to Greybor first.]",
+              "Next": "greybor",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Never mind.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Devarra"
+        },
+        {
+          "Id": "greybor",
+          "Speaker": "Narrator",
+          "Text": "{n}Greybor does not take his eyes off the soft place under her wing.{/n} \"Whisper, then. I'm working.\"\n{n}You tell him: when she falls, she stays whole. No head, no heart, no hide off her. Nobody cuts her for three days; not him, not the quartermaster's renderers.{/n}\n\"The head's my proof and half my fee. The rest of her's worth more than the fee.\" {n}One eye swivels to you, flat and professional.{/n} \"You want to pay a dragon's worth to leave a dragon lying in a ditch, that's your coin. Double. From the war chest, not from you; I've seen your purse.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "story",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Devarra"
+        },
+        {
+          "Id": "story",
+          "Speaker": "Narrator",
+          "Text": "{n}Your voice carries from behind the rocks. The dragon does not turn yet. The old elf has stopped talking, and she is waiting to hear how a story ends, the way she has waited on every story in this lair: head low, one claw curled around the prisoner's ankle, as if he might get up and leave before the last line.{/n}\n{n}Beside you Greybor has gone completely still. He looks at you as though you have started singing in the middle of an ambush. Then he looks at the soft place under her wing, and waits too. You have bought her carcass. Now you pay her tariff, while she can still hear it, for the life she will want to take when she wakes.{/n}",
+          "Choices": [
+            {
+              "Text": "[Tell her the end of her own story, and pay Greybor double] \"The hunters come. The dragon falls. Everyone swears she's a corpse, and they want her hide. But one of the hunters counted the old skins on her wall, and keeps the knives off her for three nights. Whether she gets up is her own business. If she does, the first thing she sees is the one who told her this.\"",
               "Next": null,
               "Set": [
                 "devarra.trickster.primed",
                 "devarra.trickster.story_told",
-                "devarra.trickster.cost.ending_owed"
+                "devarra.trickster.cost.ending_owed",
+                "devarra.trickster.cost.kept_whole"
               ],
               "Requires": [],
               "Forbids": [],
@@ -253584,6 +254055,10 @@
               "Alignment": {
                 "Direction": "Chaotic",
                 "Value": 1
+              },
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -200
               }
             },
             {
@@ -253630,7 +254105,7 @@
         {
           "Id": "carcass",
           "Speaker": "Narrator",
-          "Text": "{n}The woundwyrm lies where she fell, across the chamber floor in front of the golems, one wing half open like a torn tent. Smoke still leaks from her nostrils. Her eyes are open and already clouding, and when your boots scrape on the stone one of them turns a hair's breadth toward the sound. Dragons die slowly. This one has always listened to the end of a story.{/n}\n{n}The nearest golem has not lowered its fist. It stands over the clutch exactly as Xanthir Vang taught it to stand, waiting for the lizard to get up and fight, because nobody ever told it what to do if she did not.{/n}",
+          "Text": "{n}The woundwyrm lies where she fell, across the chamber floor in front of the golems, one wing half open like a torn tent. Smoke still leaks from her nostrils. Her eyes are open and already clouding, and when your boots scrape on the stone one of them turns a hair's breadth toward the sound. Dragons die slowly. This one has always listened to the end of a story.{/n}\n{n}Where the fall split her hide along the spine, what shows through the crack is not meat. It is grey, and dry, and new, like the skin under a snake's in the week before it sheds. It might be a second hide, half grown. It might be the last thing a dying wyrm grows, and nothing under it at all. There is no way to know but to leave her whole and wait, and nobody who ever killed a woundwyrm has waited.{/n}\n{n}The nearest golem has not lowered its fist. It stands over the clutch exactly as Xanthir Vang taught it to stand, waiting for the lizard to get up and fight, because nobody ever told it what to do if she did not.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -253649,10 +254124,11 @@
           "Text": "{n}The magical mouth works, stops, and works again.{/n} \"Orders: fight. Or the eggs are destroyed. The lizard is not fighting. Clarify: is the lizard in breach?\"",
           "Choices": [
             {
-              "Text": "[Tell the golems her story, loud enough for the dying wyrm to hear] \"She's not a corpse. She's a clutch-mother, and she's hungry.\"",
+              "Text": "[Tell the golems she is moulting, loud enough for the dying wyrm to hear] \"She's not a corpse. She's a clutch-mother, and she's hungry. Not in breach: shedding. Stand over her until she gets up, and let nobody cut her.\"",
               "Next": null,
               "Set": [
-                "devarra.trickster.primed"
+                "devarra.trickster.primed",
+                "devarra.trickster.cost.kept_whole"
               ],
               "Requires": [],
               "Forbids": [],
@@ -253710,7 +254186,7 @@
           "Choices": [
             {
               "Text": "[Pay his price] \"Mine, then. Kenabres to tonight. Every trick.\"",
-              "Next": "climb",
+              "Next": "walls",
               "Set": [
                 "devarra.trickster.primed",
                 "devarra.trickster.cost.late",
@@ -253755,7 +254231,7 @@
           "Choices": [
             {
               "Text": "[Pay twice] \"Both. The one I'm proud of, and the one I'm not.\"",
-              "Next": "climb",
+              "Next": "walls",
               "Set": [
                 "devarra.trickster.primed",
                 "devarra.trickster.cost.late",
@@ -253785,9 +254261,31 @@
           "Portrait": ""
         },
         {
+          "Id": "walls",
+          "Speaker": "conversant",
+          "Text": "\"Before you begin, a thing you ought to know, since you are paying.\" {n}He turns his cup a quarter turn.{/n} \"I spent several days in that lair with nothing to do but feel the walls for a way out. They are not stone. They are hides. Her old ones, split down the back and dry as vellum, and one of them has a hole through the chest I could put my head through. She has died in a skin before, Commander, and left the skin behind.\"\n\"Nobody has ever let a dead woundwyrm lie long enough to find out whether she can do it twice. The crusade's renderers have been at her since she fell, a little at a time; your quartermaster has a price list. A woundwyrm's hide turns saws, and her meat does not rot, which is the other thing nobody has thought to ask about. The last I heard, they had the teeth and the wing-leather, and had not reached the spine. Whether anything under that hide can still finish what it started, I cannot tell you. Nobody can. Leave her whole three days and find out.\"",
+          "Choices": [
+            {
+              "Text": "[Call the renderers off her] \"Every saw off her tonight, and a guard on her till she gets up or rots. Put it on the quartermaster's account.\"",
+              "Next": "climb",
+              "Set": [
+                "devarra.trickster.cost.kept_whole"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Materials",
+                "Amount": -100
+              }
+            }
+          ],
+          "Portrait": ""
+        },
+        {
           "Id": "climb",
           "Speaker": "conversant",
-          "Text": "{n}You talk until the candle is a stub. He listens without interrupting, the way only a man who has been someone's dinner listens: all of him, and nothing moving but his breath.{/n}\n\"Good. It is a very impressive story, and most of it is lies. She will like that.\"\n{n}He takes his stick.{/n} \"I will go up to where she fell and tell it to her bones. If she is impressed, she will pay. She always pays. Whether you will enjoy what she pays with is not my affair.\"",
+          "Text": "{n}You send the runner, and then you talk until the candle is a stub. He listens without interrupting, the way only a man who has been someone's dinner listens: all of him, and nothing moving but his breath.{/n}\n\"Good. It is a very impressive story, and most of it is lies. She will like that.\"\n{n}He takes his stick.{/n} \"I will go up to where she fell and tell it to her, bones and all. Whether she gets up is her body's business and your saws'. If she does, she will wake owing a life to whoever paid her tariff, and she always pays. Whether you will enjoy what she pays with is not my affair.\"",
           "Choices": [
             {
               "Text": "\"Go.\"",
@@ -253834,7 +254332,7 @@
         {
           "Id": "wake",
           "Speaker": "Narrator",
-          "Text": "{n}Three days after the woundwyrm died, the reports from her carcass stopped making sense.{/n}",
+          "Text": "{n}For two days the reports from her carcass said what reports from carcasses say: that it stank, that it had not moved, that the quartermaster wished it minuted he had advised against paying good silver to guard meat. On the third day they stopped making sense.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -253843,7 +254341,10 @@
               "Requires": [
                 "devarra.dead_sanctum"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "devarra.trickster.cost.late",
+                "devarra.trickster.story_told"
+              ],
               "Abort": false
             },
             {
@@ -253852,7 +254353,31 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "devarra.dead_sanctum"
+                "devarra.dead_sanctum",
+                "devarra.trickster.cost.late"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "wake_late",
+              "Set": [],
+              "Requires": [
+                "devarra.trickster.cost.late"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "wake_sanctum_told",
+              "Set": [],
+              "Requires": [
+                "devarra.dead_sanctum",
+                "devarra.trickster.story_told"
+              ],
+              "Forbids": [
+                "devarra.trickster.cost.late"
               ],
               "Abort": false
             }
@@ -253862,7 +254387,7 @@
         {
           "Id": "wake_sanctum",
           "Speaker": "Narrator",
-          "Text": "{n}The golems had no order about clutch-mothers. They stood over the carcass for three days, fists raised over the eggs, waiting for a breach that never came. On the third night the hide split along the spine, the way a snake's does, from the horns to the tail.{/n}\n{n}What came out of it was wet, and grey as eggshell, and smaller in the shoulder than the thing that had died. It stepped over its own old face without looking down. The golems, having no order about that either, let it pass.{/n}",
+          "Text": "{n}The golems had their order now: the lizard is shedding, not in breach; stand over her; let nobody cut her. For as long as they stood, they did exactly what they had been told; when Xanthir's last apprentice came back for the heart with a bone-saw, they turned him out. Your own standing order and two pickets in the egg chamber did the rest, and the crusade's renderers left their wagon at the door. On the third night the hide split along the spine, the way a snake's does, from the horns to the tail.{/n}\n{n}What came out of it was wet, and grey as eggshell, and smaller in the shoulder than the thing that had died. It stepped over its own old face without looking down. The golems, having no order about that, let it pass.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -253878,7 +254403,39 @@
         {
           "Id": "wake_lair",
           "Speaker": "Narrator",
-          "Text": "{n}Grimwood trappers stopped going near the gorge where the woundwyrm fell. For three days the carcass did not rot. The crows would not land on it. On the third night something inside it began to push, slowly, the way a thing pushes that has all the time in the world and knows it.{/n}\n{n}By morning there were two dragons in the gorge. One of them was a split, empty hide. The other one was grey as eggshell, and hungry.{/n}",
+          "Text": "{n}Greybor took his double fee and left the head on. For three days two of your own pickets sat at the gorge mouth with orders nobody understood, and turned back the quartermaster's renderers, and a party of Grimwood trappers with a cart, and one very persistent alchemist. The carcass did not rot. The crows would not land on it. On the third night something inside it began to push, slowly, the way a thing pushes that has all the time in the world and knows it.{/n}\n{n}By morning there were two dragons in the gorge. One of them was a split, empty hide. The other one was grey as eggshell, and hungry.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "camp",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Devarra"
+        },
+        {
+          "Id": "wake_sanctum_told",
+          "Speaker": "Narrator",
+          "Text": "{n}She fell in the Sanctum, not in her gorge, but Greybor's bargain was for wherever she fell. He took his double fee and left the head on, and two of your pickets sat three days in the egg chamber with orders nobody understood, and turned back Xanthir's last apprentice and the crusade's renderers alike. On the third night the hide split along the spine, the way a snake's does, from the horns to the tail.{/n}\n{n}What came out of it was wet, and grey as eggshell, and smaller in the shoulder than the thing that had died. It stepped over its own old face without looking down.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "camp",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Devarra"
+        },
+        {
+          "Id": "wake_late",
+          "Speaker": "Narrator",
+          "Text": "{n}The renderers came down off the carcass with their saws still clean, cursing the Commander and the quartermaster's ledger in that order. A guard sat by what was left of her for three days. She had no teeth to speak of and one wing was bare bone, and on the third night the hide split along the spine anyway, from the horns to the tail.{/n}\n{n}What came out of it was wet, and grey as eggshell, and smaller in the shoulder than the thing that had died, and it came out with every tooth it had lost. The guard did not stay to see where it went.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -253962,7 +254519,7 @@
         {
           "Id": "threat_told",
           "Speaker": "Devarra",
-          "Text": "\"You told me my ending from behind a rock, and then your dwarf put his blade under my wing.\" {n}The new hide over the old wound is paler than the rest, a grey seam.{/n} \"I lay in the dark and listened for the rest of it. A story buys a life in my lair, crusader. I never said whose.\"",
+          "Text": "\"You told me my ending from behind a rock, and then your dwarf put his blade under my wing.\" {n}The new hide over the old wound is paler than the rest, a grey seam.{/n} \"And then you paid him not to cut me. I lay in the dark and listened for the rest of it. A story buys a life in my lair, crusader. I never said whose. It bought yours.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -253979,7 +254536,7 @@
         {
           "Id": "threat_sold",
           "Speaker": "Devarra",
-          "Text": "\"The blind elf came up the gorge with a lantern he did not need and told your story to my bones. Kenabres. The lies. All of it.\" {n}Her lip lifts off one tooth.{/n} \"It was impressive. I pay what I charge.\"",
+          "Text": "\"The blind elf came to where I lay with a lantern he did not need and told your story to my bones. Kenabres. The lies. All of it.\" {n}Her lip lifts off one tooth; it is new, and very white.{/n} \"It was impressive. And your butchers took my teeth. I pay what I charge, crusader, and I remember what I am charged.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -253996,7 +254553,7 @@
         {
           "Id": "threat_shame",
           "Speaker": "Devarra",
-          "Text": "\"The blind elf came up the gorge with a lantern he did not need and told your story to my bones. Kenabres. The lies. All of it. It was impressive. I pay what I charge.\"\n{n}The lip lifts a little further.{/n} \"He told the shameful part twice. I think he enjoyed it.\"",
+          "Text": "\"The blind elf came to where I lay with a lantern he did not need and told your story to my bones. Kenabres. The lies. All of it. It was impressive. I pay what I charge.\"\n{n}The lip lifts a little further.{/n} \"He told the shameful part twice. I think he enjoyed it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -254013,7 +254570,7 @@
         {
           "Id": "threat_escaped",
           "Speaker": "Devarra",
-          "Text": "\"You let me fly once. Xanthir's toys did not.\" {n}She breathes out through her nose, and the cart under her chin smokes.{/n} \"I will remember which of you was polite. And I heard what you told them over my body. It was a good story, and cruel, and about me. I pay what I charge.\"",
+          "Text": "\"You let me fly once. Xanthir's toys did not.\" {n}She breathes out through her nose, and the cart under her chin smokes.{/n} \"I will remember which of you was polite. And I heard what you told them over my body. It was a good story, and cruel, and about me, and you made them stand guard over me with it. I pay what I charge.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -254030,7 +254587,7 @@
         {
           "Id": "threat",
           "Speaker": "Devarra",
-          "Text": "\"You. The little parasite who told a room full of stone a story about me while I was still warm.\" {n}The new hide over the old wound is paler than the rest, a grey seam.{/n} \"I was not quite gone. I heard every word. A story buys a life from me, crusader, if it is good enough. It was. I pay what I charge, even dead.\"",
+          "Text": "\"You. The little parasite who told a room full of stone a story about me while I was still warm.\" {n}The new hide over the old wound is paler than the rest, a grey seam.{/n} \"I was not quite gone. I heard every word, and then I heard the stone keep the saws off me for three days. A story buys a life from me, crusader, if it is good enough. It was. The life is yours. I pay what I charge, even dead.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -254047,7 +254604,7 @@
         {
           "Id": "mother",
           "Speaker": "Devarra",
-          "Text": "\"I died a dragon. I got up a mother, because that was the story I was paid with, and I pay in the coin I am offered. I did not ask for the difference, and I will not thank you for it.\"",
+          "Text": "\"I died a dragon and I got up a dragon. The new hide was growing under the old; it has done that all my life, a little at a time, and I have shed six. Whether it would finish in a dead thing, I did not know. Nobody knew. You guessed, with other people's money, and you had no right to be that lucky.\" {n}Her eye does not move from you.{/n} \"The hide is mine. The terms are yours: you paid for them before you knew whether there would be anyone to collect. I did not ask for either, and I will not thank you for them.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -254076,7 +254633,7 @@
         {
           "Id": "failed",
           "Speaker": "Devarra",
-          "Text": "\"Your little tricks have stopped working, I hear. My tariff has not.\"",
+          "Text": "\"Your little tricks have stopped working, I hear. My body never needed them, and my tariff has not.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -255211,7 +255768,7 @@
         {
           "Id": "start",
           "Speaker": "Greybor",
-          "Text": "{n}Greybor does not look up from the whetstone.{/n} \"I was paid for that dragon. You sold her back her own life for a story, and she took the deal.\" {n}A shrug.{/n} \"Repeat work is billed at the full rate. Tell her that, if she asks who set the ambush. She will.\"",
+          "Text": "{n}Greybor does not look up from the whetstone.{/n} \"I was paid for that dragon. Then somebody kept the saws off her for three days and she climbed out of herself.\" {n}A shrug.{/n} \"Repeat work is billed at the full rate. Tell her that, if she asks who set the ambush. She will.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -255251,7 +255808,7 @@
         {
           "Id": "start",
           "Speaker": "Storyteller",
-          "Text": "\"She held me in that lair for days, deciding how I would taste. And you gave her a new body to be hungry in.\" {n}The blind elf turns his face toward the ridge.{/n} \"Some stories should be allowed to end, Commander. You have never once let one.\"",
+          "Text": "\"She held me in that lair for days, deciding how I would taste. I had my hands on those old hides the whole time and never once thought anyone would be fool enough to wait out a dead one.\" {n}The blind elf turns his face toward the ridge.{/n} \"Some stories should be allowed to end, Commander. You have never once let one.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -255291,7 +255848,7 @@
         {
           "Id": "start",
           "Speaker": "Storyteller",
-          "Text": "\"I told it the way you paid for. I did not promise to enjoy it.\" {n}The blind elf turns his face toward the ridge.{/n} \"She held me in that lair for days, deciding how I would taste. Now she has a new body to be hungry in, and I bought it for her with your life story. Some stories should be allowed to end, Commander. You have never once let one.\"",
+          "Text": "\"I told it the way you paid for. I did not promise to enjoy it.\" {n}The blind elf turns his face toward the ridge.{/n} \"She held me in that lair for days, deciding how I would taste. Now she has a new body to be hungry in, and I bought her terms with your life story, and you bought the three days. Some stories should be allowed to end, Commander. You have never once let one.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -255356,6 +255913,17 @@
               "Text": "{n}She followed the druids' trail into the hills every spring and came back every autumn, thinner and furious, with nothing. Once she came back with a single shed scale that was not her own, and would not say whose.{/n}",
               "Requires": [
                 "devarra.trickster.hunting_druids"
+              ],
+              "Forbids": [
+                "devarra.tower.trail_followed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Every spring she flew three rivers east to a valley with a white stone at the top, and lay on the ridge above it for a day, listening to children who were hers and had been raised by a gold dragon. She never went down. She came back each time in a temper that lasted a week, and never once said the gold one's name.{/n}",
+              "Requires": [
+                "devarra.trickster.hunting_druids",
+                "devarra.tower.trail_followed"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -255646,7 +256214,7 @@
         {
           "Id": "same",
           "Speaker": "conversant",
-          "Text": "\"The dragon who held me in the lair would have eaten you for the story you told about her. That dragon is lying in pieces on a floor somewhere, emptied out like a glove.\" {n}He considers.{/n} \"What came out of the glove listens more. She stopped outside the east gate last night and listened to the city for an hour. I have never heard her listen to anything that was not a story. I think she was counting the children.\"",
+          "Text": "\"The dragon who held me in the lair would have eaten you for the story you told about her. That dragon is lying in pieces on a floor somewhere, emptied out like a glove.\" {n}He considers.{/n} \"What came out of the glove listens more. She stopped outside the east gate last night and listened to the city for an hour. I have never heard her listen to anything that was not a story. I cannot tell you what she was counting. I did not ask. I would rather she told me than I guessed.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -255816,7 +256384,7 @@
         {
           "Id": "dying",
           "Speaker": "Devarra",
-          "Text": "\"Do you want to know what it was like?\" {n}She does not wait for an answer.{/n} \"Dark. Not the dark of a cave; I have slept in caves for three hundred years. The dark of a thing with nothing in it. And in that dark I could hear a story. About me. It was the only sound there was, so I listened to it to the end, the way I have listened to every story anyone ever told in my lair to buy a life.\"\n\"And then I was hungry. The dead are not hungry. So I knew the story had been good enough, and that I had paid for it, and I got up.\"",
+          "Text": "\"Do you want to know what it was like?\" {n}She does not wait for an answer.{/n} \"Dark. Not the dark of a cave; I have slept in caves for three hundred years. The dark of a thing with nothing in it. And in that dark I could hear a story. About me. It was the only sound there was, so I listened to it to the end, the way I have listened to every story anyone ever told in my lair to buy a life.\"\n\"And then I was hungry. The dead are not hungry. So I knew the new hide had taken, because nobody had cut me open to see what was under the old one; and I knew the story had been good enough, and what I owed the one who told it. I got up, and I did not eat you.\"",
           "Choices": [
             {
               "Text": "\"I didn't know it would work.\"",
@@ -255853,7 +256421,7 @@
         {
           "Id": "didnt_know",
           "Speaker": "Devarra",
-          "Text": "\"No. You did not.\" {n}She sounds pleased, as if you had confessed to a vice she approved of.{/n} \"You told it anyway, over a thing that was dead or nearly, for no reason but that you could. That is the thing about you, crusader. There is a mean streak beneath the laughter. I have been wondering how long you would keep making it apologise.\"",
+          "Text": "\"No. You did not.\" {n}She sounds pleased, as if you had confessed to a vice she approved of.{/n} \"You bet on it anyway, on a split in a hide and a wall of old skins, with other people's money, over a thing that was dead or nearly. That is the thing about you, crusader. There is a mean streak beneath the laughter. I have been wondering how long you would keep making it apologise.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -255972,7 +256540,7 @@
         {
           "Id": "protect_2",
           "Speaker": "Devarra",
-          "Text": "\"Once,\" she says, quite gently. \"I will let you say that once. You bought my life with a story, and I paid out. That does not make you my keeper. It makes you the one I will eat last.\"\n{n}The wing lifts. The Storyteller, at the door, has not moved at all.{/n}",
+          "Text": "\"Once,\" she says, quite gently. \"I will let you say that once. You kept the knives off my carcass and paid my tariff, and I paid out. That does not make you my keeper. It makes you the one I will eat last.\"\n{n}The wing lifts. The Storyteller, at the door, has not moved at all.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -257454,7 +258022,7 @@
         {
           "Id": "burn",
           "Speaker": "Devarra",
-          "Text": "{n}The eye narrows, then opens again. She breathes on the sack, and the head inside it finally stops moving.{/n} \"You do not need it to know what I am.\" {n}She lays her chin on her claws.{/n} \"No. You made what I am. You would know it in the dark. That is a very unpleasant thing to be known by, crusader. I am getting used to it.\"",
+          "Text": "{n}The eye narrows, then opens again. She breathes on the sack, and the head inside it finally stops moving.{/n} \"You do not need it to know what I am.\" {n}She lays her chin on her claws.{/n} \"No. You watched what I am climb out of what I was. You would know it in the dark. That is a very unpleasant thing to be known by, crusader. I am getting used to it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -257587,7 +258155,7 @@
         {
           "Id": "tasting",
           "Speaker": "Devarra",
-          "Text": "\"There,\" she says, very low, and the word goes through the coils and through you. \"Iron. Ink. Fear, a little; good. And under it the thing I tasted in the dark while I was dead. The story. You still taste of the story I was bought with.\"\n{n}The coils tighten, just enough.{/n} \"Look at me. I want you to watch.\"",
+          "Text": "\"There,\" she says, very low, and the word goes through the coils and through you. \"Iron. Ink. Fear, a little; good. And under it the thing I tasted in the dark while I was dead. The story. You still taste of the story you paid my tariff with.\"\n{n}The coils tighten, just enough.{/n} \"Look at me. I want you to watch.\"",
           "Choices": [
             {
               "Text": "[Look at her.]",
@@ -257717,7 +258285,7 @@
         {
           "Id": "worst",
           "Speaker": "conversant",
-          "Text": "\"And she says the worst things about you, all the time, with great enjoyment. That you climb like an ox. That you smell of other people's secrets. That you are the most dishonest creature she has met in three centuries, and that she has met demons.\" {n}He pauses.{/n} \"She says it the way I have heard old soldiers talk about the one comrade they would have died for. You know the tone. Every insult polished like a medal.\"",
+          "Text": "\"And she says the worst things about you, all the time, with great enjoyment. That you climb like an ox. That you smell of other people's secrets. That you are the most dishonest creature she has met in three centuries, and that she has met demons.\" {n}He pauses.{/n} \"Then she eats something, slowly, looking at the city, and does not speak again until I have gone. She does not do that after she talks about anyone else. I do not know what it means, Commander. I am only telling you what she does.\"",
           "Choices": [
             {
               "Text": "\"Tell her something from me.\"",
@@ -257854,7 +258422,7 @@
       "Id": "devarra.tower.what_happened_next",
       "Title": "The next part of the story",
       "Owner": "Devarra",
-      "MinChapter": 3,
+      "MinChapter": 5,
       "MaxChapter": 5,
       "Entry": "\"She wants the next part, doesn't she.\"",
       "Nodes": [
@@ -258064,7 +258632,6 @@
       "Optional": false,
       "Relationship": "devarra",
       "Chapters": [
-        3,
         5
       ],
       "AnswerLists": [
@@ -258170,7 +258737,7 @@
         {
           "Id": "not_yet",
           "Speaker": "Devarra",
-          "Text": "\"To see me.\" {n}Her face gives you nothing to read at all.{/n} \"Then look. Look as long as you like. You made me; you may as well look at what you made.\" {n}She turns back to the city.{/n} \"And then go, and come back when you have an answer. I am still hungry. I am always hungry now.\"",
+          "Text": "\"To see me.\" {n}Her face gives you nothing to read at all.{/n} \"Then look. Look as long as you like. You kept me whole for three days; you may as well look at what you kept.\" {n}She turns back to the city.{/n} \"And then go, and come back when you have an answer. I am still hungry. I am always hungry now.\"",
           "Choices": [
             {
               "Text": "[Go down the mountain.]",
@@ -258619,7 +259186,7 @@
         {
           "Id": "me",
           "Speaker": "Devarra",
-          "Text": "{n}She lowers her head until her eye is level with yours and stays there, breathing.{/n} \"You.\" {n}It is almost fond.{/n} \"Yes. It was always you, wasn't it? The dwarf was the blade. You were the hand. And then you were the voice, too, telling the story that bought me back.\" {n}She pulls back.{/n} \"You are very greedy, crusader. You wanted to kill me and name me both. I have never met anyone so greedy. It is nearly dragonish.\"",
+          "Text": "{n}She lowers her head until her eye is level with yours and stays there, breathing.{/n} \"You.\" {n}It is almost fond.{/n} \"Yes. It was always you, wasn't it? The dwarf was the blade. You were the hand. And then you were the voice, too, telling the story that paid my tariff, and then the one who kept the saws off me.\" {n}She pulls back.{/n} \"You are very greedy, crusader. You wanted to kill me and name me both. I have never met anyone so greedy. It is nearly dragonish.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -260162,7 +260729,7 @@
         {
           "Id": "mine_2",
           "Speaker": "Devarra",
-          "Text": "\"You would say that to me.\" {n}Her voice is very soft.{/n} \"After everything. You, of all things, who bought me back with a story about what I was.\" {n}The wing withdraws, slowly.{/n} \"I will let it pass, because I have decided I like your nerve better than your manners. But understand me: I am not yours. You are mine. You are the thing I have decided to keep. That is not the same, and one day it will matter which of us said it.\"",
+          "Text": "\"You would say that to me.\" {n}Her voice is very soft.{/n} \"After everything. You, of all things, who kept the saws off my carcass and paid for your life with a story about what I was.\" {n}The wing withdraws, slowly.{/n} \"I will let it pass, because I have decided I like your nerve better than your manners. But understand me: I am not yours. You are mine. You are the thing I have decided to keep. That is not the same, and one day it will matter which of us said it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -260223,7 +260790,7 @@
         {
           "Id": "why",
           "Speaker": "Devarra",
-          "Text": "\"Because you named me once already, in a story you told without asking, and I paid for it in that shape.\" {n}Her breath is hot on your face.{/n} \"It seemed only fair that you should know what you were naming. Next time, crusader, if there is a next time, you will know what you are doing.\" {n}She settles.{/n} \"Go down. I have said enough for one year.\"",
+          "Text": "\"Because you named me once already, in a story you told without asking, and I paid for it with your life, which I did not take.\" {n}Her breath is hot on your face.{/n} \"It seemed only fair that you should know what you were naming. Next time, crusader, if there is a next time, you will know what you are doing.\" {n}She settles.{/n} \"Go down. I have said enough for one year.\"",
           "Choices": [
             {
               "Text": "[Go down the mountain.]",
@@ -261124,7 +261691,7 @@
         {
           "Id": "honest",
           "Speaker": "Narrator",
-          "Text": "{n}It takes eleven trips and the whole of a day. You carry every coin, every spoon, the crown, the torcs, and the wooden horse last of all, and you set each sack down on the tower floor in front of her and go back for the next.{/n}\n{n}She counts it all when you have finished, with one claw, very slowly. Then she counts it again.{/n}",
+          "Text": "{n}She flies the hoard to the foot of the ridge in two loads, the sacks swinging from her claws; the ridge is your part. It takes eleven climbs and the whole of a day. You carry every coin, every spoon, the crown, the torcs, and the wooden horse last of all, and you set each sack down on the tower floor in front of her and go back for the next.{/n}\n{n}She counts it all when you have finished, with one claw, very slowly. Then she counts it again.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -261157,7 +261724,7 @@
         {
           "Id": "steal",
           "Speaker": "Narrator",
-          "Text": "{n}On the fourth trip you let one coin slip from the sack into your sleeve: a small gold piece from a kingdom that no longer exists, with a queen's head on it. You do it well. You have done it a thousand times.{/n}\n{n}She counts it all when you have finished, with one claw, very slowly. Then she looks at your sleeve.{/n}",
+          "Text": "{n}On the fourth climb you let one coin slip from the sack into your sleeve: a small gold piece from a kingdom that no longer exists, with a queen's head on it. You do it well. You have done it a thousand times.{/n}\n{n}She counts it all when you have finished, with one claw, very slowly. Then she looks at your sleeve.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -261207,7 +261774,7 @@
         {
           "Id": "ask_2",
           "Speaker": "Narrator",
-          "Text": "{n}It takes eleven trips and the whole of a day. She counts it all when you have finished, twice. Then she looks at the gold piece, which you have been carrying in your hand the whole time, turning it over.{/n}",
+          "Text": "{n}She flies the hoard to the foot of the ridge in two loads; the ridge is your part. It takes eleven climbs and the whole of a day. She counts it all when you have finished, twice. Then she looks at the gold piece, which you have been carrying in your hand the whole time, turning it over.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -261223,7 +261790,7 @@
         {
           "Id": "ask_her",
           "Speaker": "Devarra",
-          "Text": "\"Nobody has ever been given anything from my hoard.\" {n}She lays her head down beside the heap of gold.{/n} \"Taken, yes. Every coin there was taken. That one was given. It is the only one in the world.\" {n}Her eye closes.{/n} \"Do not spend it. I will know.\"",
+          "Text": "\"Nobody has ever been given anything from my hoard.\" {n}She lays her head down beside the heap of gold.{/n} \"Taken, yes. Every coin there was taken. That one was given. It is the only one in the world.\" {n}Her eye closes.{/n} \"Do not spend it. I will know. And one day I will ask for something out of your hoard, crusader, and before you answer you will remember that coin.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -261336,7 +261903,7 @@
         {
           "Id": "small",
           "Speaker": "Devarra",
-          "Text": "\"A bird.\" {n}She sounds pleased.{/n} \"A crow, from the gorge where I died. It was the only thing that came near the carcass in three days. I ate it the first morning I was alive again, because it had been waiting to eat me.\" {n}Her lip lifts.{/n} \"I kept the bones to remind me that everything waits for everything else to die. Even the little things. Especially the little things.\"",
+          "Text": "\"A bird.\" {n}She sounds pleased.{/n} \"A crow, from where I died. It sat by the carcass all three days, and it was the only thing your guards did not trouble to chase off. I ate it the first morning I was alive again, because it had been waiting to eat me.\" {n}Her lip lifts.{/n} \"I kept the bones to remind me that everything waits for everything else to die. Even the little things. Especially the little things.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -261551,10 +262118,10 @@
         {
           "Id": "wrong",
           "Speaker": "Devarra",
-          "Text": "\"The old man told me something, in the lair, before you came. That a trickster's last trick is always the one that does not land.\" {n}She is quiet a long time.{/n} \"I lie here and I think: I am a bargain. A story bought me, and the story is not finished. What happens when your tricks stop landing, crusader? Does the story end? Do I lie down at the end of it? Does the hide close back up over me?\" {n}Her claws flex against the stone.{/n} \"I was dead once. I do not want to be dead again. I did not know that until I had something to lose.\"",
+          "Text": "\"The old man told me something, in the lair, before you came. That a trickster's last trick is always the one that does not land.\" {n}She is quiet a long time.{/n} \"I lie here and I think: the hide is mine, but I am still a bargain. You paid my tariff with a story, and the story is not finished. What happens when your tricks stop landing, crusader? Does the story end? Do the terms end with it? Do I wake one morning hungry, with nothing in me that remembers why I have not eaten you?\" {n}Her claws flex against the stone.{/n} \"I was dead once. I do not want to be dead again, and I do not want to be what I was before it. I did not know that until I had something to lose.\"",
           "Choices": [
             {
-              "Text": "\"You're not a trick. You're what the trick made. It doesn't get to take you back.\"",
+              "Text": "\"You're not a trick. You got up on your own. All I did was keep the knives off. Nobody gets to take that back.\"",
               "Next": "made",
               "Set": [],
               "Requires": [],
@@ -261584,7 +262151,7 @@
         {
           "Id": "made",
           "Speaker": "Devarra",
-          "Text": "\"What the trick made.\" {n}She turns the words over, slowly.{/n} \"A clutch is what a dragon makes. It does not go back into the dragon when the dragon dies. It goes on.\" {n}She lifts her head a little.{/n} \"Yes. I will choose to believe that. Not because it is true. Because you said it, and the last story you told about me, I paid for with my own body.\" {n}She puts her head back down, and after days of watching she closes both eyes.{/n}",
+          "Text": "\"On my own.\" {n}She turns the words over, slowly.{/n} \"A clutch is what a dragon makes. It does not go back into the dragon when the dragon dies. It goes on. So, it seems, do I.\" {n}She lifts her head a little.{/n} \"Yes. I will choose to believe the rest. Not because it is true. Because you bet three days and a dragon's worth of hide on a guess, and nobody in three hundred years has waited three days for anything of mine but the carcass.\" {n}She puts her head back down, and after days of watching she closes both eyes.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -261601,7 +262168,7 @@
         {
           "Id": "dunno",
           "Speaker": "Devarra",
-          "Text": "{n}She does not answer. Then, unexpectedly, the laugh: small, rusty, the kiln door barely opening.{/n} \"That is the joke. Yes. Of course it is. You bought me with a story, and you do not know how it ends either.\" {n}She lays her head on your boots, heavily, deliberately.{/n} \"Then we will find out together. That is the only way anyone ever finds out the end of a story. I had forgotten. The old man would be disgusted with me.\"",
+          "Text": "{n}She does not answer. Then, unexpectedly, the laugh: small, rusty, the kiln door barely opening.{/n} \"That is the joke. Yes. Of course it is. You bought my terms with a story, and you do not know how it ends either.\" {n}She lays her head on your boots, heavily, deliberately.{/n} \"Then we will find out together. That is the only way anyone ever finds out the end of a story. I had forgotten. The old man would be disgusted with me.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -261861,7 +262428,7 @@
         {
           "Id": "braziers_her",
           "Speaker": "Devarra",
-          "Text": "\"Do not say anything.\" {n}Her teeth are very nearly chattering, which on a dragon is a sound like knives in a drawer.{/n} \"Three hundred years I have wintered in the Worldwound, and I never once felt the cold. The old hide was a hand thick. This one is paper.\" {n}She pulls a fleece closer with one claw.{/n} \"This is your fault. You said clutch-mother. You did not say warm.\"",
+          "Text": "\"Do not say anything.\" {n}Her teeth are very nearly chattering, which on a dragon is a sound like knives in a drawer.{/n} \"Three hundred years I have wintered in the Worldwound, and I never once felt the cold. The old hide was a hand thick. This one is paper.\" {n}She pulls a fleece closer with one claw.{/n} \"This is your fault. You kept the knives off me for three days in the snow while this grew. You did not think to keep me warm.\"",
           "Choices": [
             {
               "Text": "[Sit down inside the ring and lean against her.]",
@@ -261872,7 +262439,7 @@
               "Abort": false
             },
             {
-              "Text": "\"Next time I'll say both.\"",
+              "Text": "\"Next time you die, I'll bring braziers.\"",
               "Next": "both",
               "Set": [],
               "Requires": [],
@@ -261935,7 +262502,7 @@
         {
           "Id": "both",
           "Speaker": "Devarra",
-          "Text": "\"Both.\" {n}She considers this with narrowed eyes.{/n} \"Clutch-mother, and warm. Yes. Next time you tell a dead thing what it is, crusader, be thorough. Think of the winters.\" {n}She huffs a jet of flame at the snow on the sill, which hisses and vanishes.{/n} \"Now go and find more braziers. These are too small. Everything your crusade makes is too small.\"",
+          "Text": "\"Next time.\" {n}She considers this with narrowed eyes.{/n} \"Knives off, and braziers. Yes. Next time you sit up with a dead thing, crusader, be thorough. Think of the winters.\" {n}She huffs a jet of flame at the snow on the sill, which hisses and vanishes.{/n} \"Now go and find more braziers. These are too small. Everything your crusade makes is too small.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -364077,8 +364644,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -364215,7 +364782,7 @@
       "Title": "A place beside the fire",
       "Description": "Seelah has a talent for finding an evening worth keeping in the middle of a disastrous week. I have begun making excuses to join her.",
       "Objective": "Make time for Seelah",
-      "Guidance": "Speak to Seelah when she is with the crusade. Give her time between meetings and continue her personal quests. Her friends and convictions remain part of her life. On the Trickster path, a fallen Seelah may yet be robbed of her death, and a dismissed one may find her papers missing. Look for her at Fye's.",
+      "Guidance": "Speak to Seelah when she is with the crusade. Give her time between meetings and continue her personal quests. Her friends and convictions remain part of her life. On the Trickster path, a fallen Seelah's purse may name a richer thief to rob for her, and a dismissed one may find her papers missing. Look for her at Fye's.",
       "StartedFlag": "seelah.started",
       "ClosedFlag": "seelah.closed",
       "CommittedFlag": "seelah.committed",
@@ -364387,7 +364954,7 @@
       "Title": "At the edge of her forest",
       "Description": "Soana has allowed me another visit. She expects useful hands and a legible argument. I would like to discover what else she might welcome.",
       "Objective": "Return to Soana",
-      "Guidance": "Speak to Soana at her cave after resolving the bear quest while she remains alive and willing to talk. Allow time between visits. On the Trickster path, a Soana handed to Camellia may be taken at Camellia's word instead; a Soana who died may be held to her own; and one whose visits were missed may find a die in her bowl.",
+      "Guidance": "Speak to Soana at her cave after resolving the bear quest while she remains alive and willing to talk. Allow time between visits. On the Trickster path, a Soana handed to Camellia may be taken at Camellia's word instead; a Soana who died may be held to her own; and one whose visits were missed may be offered a loaded die for her bowl.",
       "StartedFlag": "soana.started",
       "ClosedFlag": "soana.closed",
       "CommittedFlag": "soana.committed",
@@ -365802,8 +366369,8 @@
         },
         {
           "Id": "owed.seelah",
-          "Title": "Seelah: a coin to steal back",
-          "Description": "I took something from Seelah's purse at her bier that she didn't earn. She swore she'd steal it back. A thief who hasn't collected won't let you die.",
+          "Title": "Seelah: a list to steal back",
+          "Description": "At her bier I took Seelah's list of old thefts out of her purse, and robbed a grave-robber off its last line to pay for her. She swore she'd steal the list back. A thief who hasn't collected won't let you die.",
           "OpenWhen": [
             [
               "seelah.trickster.cost.holds_her_death"
@@ -370341,8 +370908,8 @@
           "Id": "owed.seelah",
           "Section": "Debts",
           "Portrait": "Seelah",
-          "Title": "Seelah: a coin to steal back",
-          "Text": "{n}I took something from Seelah's purse at her bier that she didn't earn. She swore she'd steal it back. A thief who hasn't collected won't let you die.{/n}",
+          "Title": "Seelah: a list to steal back",
+          "Text": "{n}At her bier I took Seelah's list of old thefts out of her purse, and robbed a grave-robber off its last line to pay for her. She swore she'd steal the list back. A thief who hasn't collected won't let you die.{/n}",
           "Lines": [
             {
               "Text": "{n}Called in at the rift.{/n}",

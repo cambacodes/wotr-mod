@@ -5,13 +5,17 @@ Canon: Camellia asks at camp to "turn her blood to a good cause" (Camelia/Cue_01
 Soana made Orso: "I forced the spirit to serve good by linking our lives together" (SoanaAfterBear/Cue_0015 396b1d46);
 the brand and the clay knot are one binding (SoanaBear/Cue_0016, Cue_0023). Her creed: "a true protector is the one who
 sacrifices themselves" (SoanaAfterBear/Cue_0012 353da9f2); "I serve the forest spirits. I don't serve you." (Cue_0029).
-In Chapter 5 the Wintersun beasts fight demons on the roads (KTC_WintersunHelp/Cue_0048 3c616e0b). The Trickster's dice
-turn a one into a twenty (TricksterKnowledgeWorldTier2Feature 8b6fe337). She is an old dwarf woman who looks carved from
-driftwood (SoanaBeforeBear/Cue_0001): proud, bitter, blunt, never grateful, and she names her own price.
+In Chapter 5 the Wintersun beasts fight demons on the roads (KTC_WintersunHelp/Cue_0048 3c616e0b). She is an old dwarf
+woman who looks carved from driftwood (SoanaBeforeBear/Cue_0001): proud, bitter, blunt, never grateful, and she names her
+own price.
+
+The missed window (polish b9c): no mythic power turns a die. The Commander's die is loaded, lead behind the one, and is
+pledged openly as a cheat's luck; her spirits take offerings (the Cue_0015 binding is hers), and Soana, not the die,
+feeds that pledge to her beasts at her bowl. They stand on it, paid in the Commander's small misfortunes and salt.
 
 Three states: the handover (Camellia is taken at her word before the kill), killed (the knot read in the other
 direction, a guardian's life for hers; the return is tested at her grave and committed on her terms), and the missed
-Chapter 3 window (a die planted in her bowl, paid for in Chapter 5, and a short courtship of its own).
+Chapter 3 window (a loaded die pledged in her bowl, paid for in Chapter 5, and a short courtship of its own).
 """
 from story_format import c, n, p, reaction, scene
 
@@ -119,7 +123,7 @@ def portion(suffix, answer_list, return_cue, joke, requires, any_of, nodes):
 
 # After the quest: Camellia asked at camp; she need not be standing here, so Soana answers the joke alone.
 portion("after_quest", HER_LIST, HER_RETURN,
-    '"My friend wants your blood turned to a good cause. Your forest is a good cause. Bleed for it first, and she can have what\'s left."',
+    '"Camellia asked me at camp to turn your blood to a good cause. Your forest is a good cause. Bleed for it first, and she can have what\'s left."',
     ("trickster", "camellia.asked_for_soana"), None, [
     n("start", "Soana", '''{n}The old woman weighs you with her small black eyes, the way she would weigh a snare somebody else had set. Then she laughs, the cracked laugh from your first meeting, and draws her knife across her own palm. Blood runs off her knuckles into the moss. Somewhere in the trees, something answers: not a bird, not a wolf.{/n}
 "A good cause. There. The spirits have had their portion, bloody hunter, and a portion is all anyone is owed. Tell your hungry friend she can lick the moss."
@@ -139,7 +143,7 @@ for suffix, lst, nrc, nxt in (("after_bear_a", "001686714a5c2384ba09686b45bd033f
         n("start", "Soana", '''{n}The old woman barks a laugh at Camellia, not at you, and draws her knife across her own palm. Blood runs into the moss. Somewhere in the trees, something answers.{/n}
 "There, spirit talker. The spirits of this land have had their portion, from my own hand. That is all you get. That is all *anyone* gets."''', c("Continue", "camellia")),
         n("camellia", "Camellia", '''{n}Camellia watches the blood soak into the ground with the fixed attention of a cat at a closed door. Her smile does not move at all.{/n}
-"How very generous of her. And of you, my friend. You have cheated me out of a perfectly good death in front of the one audience I cared about." {n}She wets her lips.{/n} "I shall have to think of a way to thank you. I think about such things a great deal."''',
+"How very generous of her. And of you, my friend. You have taken a death off my plate in front of the one audience I cared about." {n}She wets her lips.{/n} "I do not forget who takes food off my plate. I shall be thinking of you, often, and very carefully."''',
             c('[Leave before either of them decides otherwise]', native_next=nxt, flags=(PRIMED, BLOOD)),
             speaker_unit=CAMELLIA)])
 
@@ -155,7 +159,7 @@ SCENES.append(scene("soana.trickster.killed.knot", "The knot never checked", "So
     nar("spirit", """{n}Orso lies where he fell: a grey pelt stretched over bones. The brand is still on the pelt, darker than a dead thing's brand has any right to be, and the grass around the carcass has gone black in the shape of a knot. Something still lies in those bones: the spirit she bound, still bound, still alive after its fashion.{/n}""",
         c("Continue", "read")),
     nar("read", """{n}You remember what she told you, with her arms folded over her chest: she used the medallion to control a spirit of the Abyss after linking it to the sacred bear, and she forced the spirit to serve good by linking our lives together.{/n}
-{n}*Our* lives. She may have meant the bear's and the spirit's. She may have meant her own. Shamans are careless with pronouns and careful with knots, and the brand has not faded, though the woman who tied it is dead. Something is still holding the other end.{/n}
+{n}*Our* lives. She may have meant the bear's and the spirit's. She may have meant her own. The woman who tied the knot is dead, and the brand has not faded. When you put two fingers to it, it tugs back once, like a line with a fish on it, and then goes still and waits.{/n}
 {n}It is a guess. It is the kind of guess a Trickster makes for a living: that the knot is bigger than she said, and that whatever is on the far end of it can be bargained with.{/n}""",
         c('[Hold her clay medallion to the guardian\'s brand and bargain with what holds the other end] "Whatever you are: give her back, and pull on me instead."',
           "wake_clay", mythic="Trickster", alignment=("Chaotic", 1), requires=("soana.medallion_held",), remove_item=MEDALLION,
@@ -286,20 +290,20 @@ inline("soana.trickster.handover.winter_portion", "The spirits' portion, again",
 # --- State 3, the missed window: crooked luck (F13) ---------------------------------------------------------------------
 
 inline("soana.trickster.missed.dice_bowl", "An offering", 3,
-    '[Drop a die into her offering bowl] "For your spirits. They look like they could use the luck."', [
-    n("start", "Soana", '''{n}The die rattles in the bone bowl and stops on a one. She looks at it, then at you. When she looks back, it shows a twenty.{/n}
-"Spirits take what is offered. They do not say thank you, and neither do I."
-{n}She does not take it out of the bowl. She does not touch it at all.{/n}''',
+    '[Drop your loaded die into her offering bowl] "For your spirits. It\'s weighted. It only ever lies in my favour."', [
+    n("start", "Soana", '''{n}The die rattles in the bone bowl and stops twenty up. She tips the bowl and lets it roll again: twenty. Again: twenty. She fishes it out between two fingers, weighs it, and presses her thumbnail to the face with the single pip, where the lead is.{/n}
+"Weighted. A cheat's luck, poured in lead, every throw you ever meant to win." {n}She drops it back into the bowl.{/n} "The spirits like a liar who says so. Spirits take what is offered. They do not say thank you, and neither do I."
+{n}After that she does not touch it at all.{/n}''',
         c('[Leave it where it landed]', flags=(DICE,)))],
     requires=("trickster", "soana.after_quest"), forbids=(*LOSS, CLOSED, DICE), RequiresAny=DEFENDER,
     EntryMythic="PlayerIsTrickster")
 
 inline("soana.trickster.missed.crooked_luck", "Crooked luck", 5,
     '[Look at the die in her bowl] "Still twenty up, shaman? I hear your beasts don\'t stay down."', [
-    n("start", "Soana", '''{n}A she-bear lies across the cave mouth with her belly opened by a demon's claws. As you come near she gets up, shakes herself and pads into the trees toward the road, bleeding as she goes.{/n}
-"That is the third time she has done that. Your die has been in my bowl since the snow. My beasts go out against the demons on the road and they do not stay down. I did not ask for that, bloody hunter."''',
+    n("start", "Soana", '''{n}A she-bear lies across the cave mouth with her belly opened by a demon's claws. Soana kneels by her head with the bone bowl, and salt, and a smear of her own blood on the rim, and says something to the trees in a language that is mostly breath. The bear gets up, shakes herself and pads into the trees toward the road, bleeding as she goes.{/n}
+"That is the third time she has done that. Your die has been in my bowl since the snow, and every night I have fed what is in it to the spirits, because an offering left unspent goes sour. My beasts go out against the demons on the road and they do not stay down. I did not ask for that, bloody hunter."''',
         c("Continue", "price")),
-    n("price", "Soana", '''"The spirits have been feeding my beasts on your luck, and luck is thin fare. They will go on eating it for as long as that die sits in my bowl, and it is your luck they eat, hunter, not mine. Every time a bear of mine gets up on the road, something of yours falls down: a girth snaps, a letter goes astray, a sword turns in your hand at the wrong moment. Small things. Every one of them paid to a beast that is still standing."
+    n("price", "Soana", '''"You pledged your luck, and the spirits took you at your pledge. They have been feeding my beasts on it, and luck is thin fare. They will go on eating it for as long as that die sits in my bowl, and it is your luck they eat, hunter, not mine. Every time a bear of mine gets up on the road, something of yours falls down: a girth snaps, a letter goes astray, a sword turns in your hand at the wrong moment. Small things. Every one of them paid to a beast that is still standing."
 "And send a cart of salt, so they have something besides your luck to chew. Leave the die, or take it and let them lie down."''',
         c('[Leave the die in her bowl] "Let them eat my luck."', crusade=("Materials", -50),
           flags=(LUCK_KEPT, CATCHUP, STARTED, "soana.trickster.cost.luck_fed")),
@@ -309,9 +313,10 @@ inline("soana.trickster.missed.crooked_luck", "Crooked luck", 5,
     TricksterDevice=True, TricksterState="missed")
 
 inline("soana.trickster.missed.late_luck", "Crooked luck, thrown late", 5,
-    '[Throw your special die at her feet] "Rolled a one. Watch it turn into a twenty."', [
-    n("start", "Soana", '''{n}The die stops on a one, then shows a twenty. Outside, a she-bear that has been dying across the cave mouth all morning gets up on three legs and limps toward the road.{/n}
-"You do not put a thing like that in front of my beasts without paying for it, hunter. They will go out on your luck now whether I send them or not, and they will come back hungry."''',
+    '[Throw your loaded die at her feet] "Weighted. It never rolls a one. Give it to your spirits."', [
+    n("start", "Soana", '''{n}The die skips across the cave floor and stops at her feet, twenty up. She does not pick it up at once. She looks at it, then out at the cave mouth, where a she-bear has been dying all morning, and then at you.{/n}
+{n}Then she takes it, weighs it, finds the lead with her thumbnail, and drops it into the bone bowl with salt and a smear of her own blood. She talks to the trees under her breath for a long time. Outside, the she-bear gets up on three legs and limps toward the road.{/n}
+"You do not throw a pledge like that in front of my beasts without paying for it, hunter. The spirits heard it land. They will send my beasts out on your luck now whether I want them to or not, and they will come back hungry."''',
         c("Continue", "price")),
     n("price", "Soana", '''"They will eat your luck now, not mine: every time a beast of mine gets up on the road, something of yours falls down. And because you threw it at my feet instead of offering it, they will be hungrier than they would have been. Two carts of salt, so they do not eat you to the bone. The die stays with me. You threw it; you do not get it back."''',
         c('[Leave the die where it fell] "Salt, and the die. Let them eat."', crusade=("Materials", -100),
@@ -322,7 +327,8 @@ inline("soana.trickster.missed.late_luck", "Crooked luck, thrown late", 5,
     TricksterDevice=True, TricksterState="missed", EntryMythic="PlayerIsTrickster")
 
 inline("soana.trickster.missed.she_bear", "The she-bear", 5, '"How is your she-bear?"', [
-    n("start", "Soana", '''{n}Soana is sitting on a stump outside the cave with the she-bear's great head in her lap. Someone has sewn the bear's belly shut with sinew, badly; judging by the old woman's fingers, it was the old woman.{/n}
+    n("start", "Soana", '''{n}On the road up, your horse throws a shoe it was fitted with two days ago, and the dispatch that should have been waiting for you at the Wintersun camp has gone to Kenabres instead. You have stopped being surprised by that kind of thing.{/n}
+{n}Soana is sitting on a stump outside the cave with the she-bear's great head in her lap. Someone has sewn the bear's belly shut with sinew, badly; judging by the old woman's fingers, it was the old woman.{/n}
 "She went out again last night. She came back with a demon's hand in her mouth. The hand was still trying to get away."
 {n}She scratches the bear behind one ear. The bear sighs like a bellows.{/n}''', c("Continue", "question")),
     n("question", "Soana", '''"Your luck keeps her standing. My spirits keep her walking. Neither of us asked her. So I will ask you instead, since you are the one with the dice."
@@ -357,7 +363,7 @@ BOWL_THRESHOLD = '''{n}She lets you undo her in turn: the belt of knotted cord, 
 {n}She kisses you with her whole small, heavy body behind it, and bites. When you gasp she laughs, low in her chest.{/n}
 "Soft. I thought so." {n}She bites again, harder, where it will show tomorrow.{/n}
 {n}Outside, the she-bear lies down across the cave mouth to keep the night off. Soana pushes you back into the furs, climbs over you with her knees sunk in the pelts on either side, and her hand closes on your hip like a root closing on a stone.{/n}'''
-BOWL_MORNING = '''{n}Grey light at the cave mouth, and the she-bear's place across it empty. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty. She keeps frowning at it.{/n}
+BOWL_MORNING = '''{n}Grey light at the cave mouth, and the she-bear's place across it empty. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty, because that is what lead does. She keeps frowning at it anyway.{/n}
 "The she-bear went out before dawn. She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves."'''
 
 inline("soana.trickster.missed.bowl", "The thing in her bowl", 5, '"You said you had been thinking."', [
@@ -432,13 +438,22 @@ SCENES.append(scene("soana.trickster.epilogue.commit", "Your end", "Epilogue", 5
     nar("start", '''{n}Soana took her leash back from the Commander's hand alone, with one strand and her own blood, and it nearly killed her. She buried the dead forest one grave a day. The year after the Worldwound closed she walked all the way to Drezen with the broken clay knot in her fist, found the Commander, and tied it to their wrist without asking.{/n}
 "Your end. I held it alone once. I will not do that twice."''',
         c(), paragraphs=EPILOGUE_PARAGRAPHS)],
-    requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED, DECLINED), last=99, Relationship="soana"))
+    requires=(LATE_COMMITTED, RETURNED), forbids=(COMMITTED, CLOSED, DECLINED), last=99, Relationship="soana"))
+
+# b9c: the living, missed-window Soana whose luck was paid but whose bowl was never answered gets her own late page (the
+# killed branch's leash and dead forest are not hers).
+SCENES.append(scene("soana.trickster.epilogue.luck_late", "The rattle in the bowl", "Epilogue", 5, "", [
+    nar("start", '''{n}The war ended before Soana finished thinking. She finished afterwards, on her own terms. The year after the Worldwound closed she walked all the way to Drezen with the loaded die in her fist, found the Commander, and put it in their palm.{/n}
+"Your luck. It has rattled in my bowl since the snow and I am sick of the noise. Bring it back to Wintersun and keep it where I can hear it, and we will see how much of it is left."''',
+        c(), paragraphs=EPILOGUE_PARAGRAPHS)],
+    requires=(LATE_COMMITTED, LUCK_KEPT), forbids=(RETURNED, COMMITTED, CLOSED, DECLINED), last=99, Relationship="soana"))
 
 UNBOUND = p("She took her leash back from the Commander's hand the day they parted, with a single strand and her own blood. "
-             "It held, barely, for as long as she lived.", requires=(RETURNED,))
+             "It held, barely, for as long as she lived. The knot hung in her cave with one strand, and she bound nothing new "
+             "into the Wintersun woods again.", requires=(RETURNED,))
 
 SCENES.append(scene("soana.trickster.epilogue.declined", "One strand", "Epilogue", 5, "", [
-    nar("start", '''{n}She never asked again. The knot hung in her cave with one strand, and she bound nothing new into the Wintersun woods for as long as she lived. When travellers asked the old woman in the cave about the Commander, she said that she had met a hunter once who laughed at a knot, and that was all she said.{/n}''',
+    nar("start", '''{n}She never asked again. When travellers asked the old woman in the cave about the Commander, she said that she had once met a hunter who could not make up their mind when it mattered, and that was all she said.{/n}''',
         c(), paragraphs=(UNBOUND,))],
     requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED), last=99, Relationship="soana"))
 
@@ -457,7 +472,7 @@ ULBRIG_GONE = ("ulbrig.dead", "ulbrig.kicked_out")
 
 REACTIONS = [
     reaction("Camellia", "soana.trickster.react.camellia_portion", (BLOOD,),
-             '''"You cheated me out of a perfectly good death, my friend. The old woman fed her trees and left me the smell of it." {n}Camellia smooths her skirt with both hands, very slowly.{/n} "I shall have to think of a way to thank you. I have already thought of several."''',
+             '''"You took a death off my plate, my friend. The old woman fed her trees and left me the smell of it." {n}Camellia smooths her skirt with both hands, very slowly.{/n} "Someone will pay me for that meal. I have not decided who. I have decided it will not be quick."''',
              answer_list=CAMELLIA_HUB, forbids=CAMELLIA_GONE, chapter=3, last=5, delay=24, entry='"About Soana..."'),
     reaction("Camellia", "soana.trickster.react.camellia_knot", (RETURNED, KILLED),
              '''"The old woman is walking again? I bled her myself. I felt her stop." {n}Camellia smiles, slowly, and does not blink.{/n} "How very interesting you make things. I wonder what else of mine you would take back, if I let you."''',
@@ -487,7 +502,7 @@ ALIVE_PARAGRAPHS = (
     p("Some winters the spirits came to the Commander's door instead, wherever it was, and stood in the frost till dawn. The "
       "Commander learned to keep a knife by the threshold, and a rag, and to expect a letter from Wintersun a week later "
       "calling them stupid.", requires=("soana.trickster.cost.portion_shared",)),
-    p("She kept a die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
+    p("She kept a loaded die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
       requires=(DICE,), forbids=(LUCK_REFUSED,)),
 )
 ALIVE_ENDINGS = ("kept_life", "chosen_visits", "familiar_company", "sacrifice", "beyond_the_forest")
@@ -515,7 +530,7 @@ def integrate(payload):
     rel.setdefault("UnavailableOverrides", {}).update(RELATIONSHIP_PATCH["UnavailableOverrides"])
     rel["TricksterAccess"] = {k: dict(x) for k, x in RELATIONSHIP_PATCH["TricksterAccess"].items()}
     rel["Guidance"] += (" On the Trickster path, a Soana handed to Camellia may be taken at Camellia's word instead; a Soana "
-                        "who died may be held to her own; and one whose visits were missed may find a die in her bowl.")
+                        "who died may be held to her own; and one whose visits were missed may be offered a loaded die for her bowl.")
     payload.setdefault("Presences", {}).update({k: dict(x) for k, x in PRESENCES.items()})
     items = payload.setdefault("RemovableItems", [])
     if MEDALLION not in items:
