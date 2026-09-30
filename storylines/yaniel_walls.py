@@ -13,7 +13,7 @@ citadel (FakeYaniel_First/Cue_0032 1ed1497d, FakeYaniel_ToAreelu/Cue_0001 7418d4
 from story_format import c, n
 from storylines import yaniel_trickster as yt
 from storylines.yaniel_trickster import (B_AREELU, B_BOUT, B_CHURCH, B_NIGHT, B_PRAYER, B_RAID, B_REFUGEE, B_ROAST,
-                                         B_STATUE, B_STAUNTON, B_WALLS, HELD, HUSK_BOUGHT, HUSK_FREED, HUSK_LEFT, NICHE, CARRIES, CLOSED,
+                                         B_STATUE, B_STAUNTON, B_WALLS, DRAWN_BITE, DRAWN_TREE, DRAWN_WALLS, HELD, HOLY, HUSK_BOUGHT, HUSK_FREED, HUSK_LEFT, NICHE, CARRIES, CLOSED,
                                          COMMITTED, CUFF_PACKED, CUFF_WORN, JUDGES, KILLED, MINAGHO_SECRET, MINAGHO_SEEN,
                                          MINAGHO_TOLD, RETURNED, STATUE_LIED, SWAPPED, TOLD_STATUE, TOLD_STAUNTON, UNMASKED,
                                          FAKE_FREED, FAKE_REFUSED, WHY_BACK, WHY_CANT, Y, nar, visit, yn)
@@ -121,7 +121,7 @@ visit(Y + "ch5.minagho", "The lilitu on the crate", [
 "Leave her to you." {n}She repeats it slowly.{/n} "That is what they told me in the Fane, the ones who came to feed us. 'Leave it to the mistress.' It is a thing people say when they know something they do not mean to tell you."
 {n}She turns back to the parapet.{/n} "Very well, Commander. I will leave her to you. I will not cross that courtyard. I will stand my watch, and I will watch your hands, and one day I will find out what they have been holding. Go on. I have work."''',
        c("[Go.]", flags=(MINAGHO_SEEN, MINAGHO_SECRET))),
-], requires=("trickster.ever", RETURNED, "minachiv.started", Y + "minagho_known"), forbids=(MINAGHO_SEEN,))
+], requires=("trickster.ever", RETURNED, "minagho_chivarro.started", Y + "minagho_known"), forbids=(MINAGHO_SEEN,))
 
 
 # --- Chapter 5 (T): the courtship, before the commit ------------------------------------------------------------------------
@@ -145,7 +145,7 @@ visit(Y + "beat.walls", "The city as it was", [
 "And you? Nobody on this wall knows anything about you that did not come out of a song. The sentries say you fell into a hole under Kenabres and came out something more than mortal, and that you laugh at gods. That is two facts and a rumour. I want a fourth thing."''',
        c('"I laughed at a god once. I\'m not sure it was a good idea."', "laugh"),
        c('"I don\'t know what I am. I\'m finding out on the way."', "way"),
-       c('[Flirt] "The fourth thing is that I\'ve been thinking about you since the Fane."', "flirt")),
+       c('[Flirt] "The fourth thing is that I\'ve been thinking about you since the Fane."', "flirt", flags=(DRAWN_WALLS,))),
     yn("laugh", '''"Once." {n}Her eyebrows go up.{/n} "Only once? The sentries have you down for three a week." {n}She shakes her head.{/n} "I prayed to mine every day on that hook, Commander, even the days I hated her. Especially those. I never once laughed at her. I think I would have liked to. I think she might have liked it too."''',
        c("Continue", "end")),
     yn("way", '''{n}She nods slowly, as though you had given the right answer in a drill.{/n}
@@ -194,7 +194,11 @@ visit(Y + "beat.staunton", "Joran's brand", [
        c("Continue", "brand")),
     yn("brand", '''"Joran made Radiance. Did you know that? He forged it with his own hands and put his brand on it, and he made the scabbard after, and fussed over the fit of it for a month. He was so proud of that sword he could not speak when he gave it to me. Staunton stood behind him and cried into his beard, and pretended it was the smoke."''',
        c("Continue", "carries", requires=(CARRIES,)),
-       c("Continue", "judges", forbids=(CARRIES,))),
+       c("Continue", "judges", requires=(HELD,), forbids=(CARRIES,)),
+       c("Continue", "judges_empty", forbids=(CARRIES, HELD))),
+    yn("judges_empty", '''{n}She looks at your bare hip, where the sword ought to be, and her mouth tightens, and she lets it go.{/n}
+"You have not got it on you. No matter. I know where the brand is; I watched him put it there." {n}She touches the side of her own hand, below the thumb, as if the mark were there.{/n} "You have been carrying Joran on your hip, when you carry it at all, and I have been carrying Staunton on my wrist, if you think about it. His lilitu's iron. Neither of us asked for it."''',
+       c("Continue", "grief")),
     yn("carries", '''{n}She draws the sword and holds it out to the firelight, blade flat, so that you can see the smith's brand near the hilt, worn nearly smooth.{/n}
 "I have been looking at it every night on the wall." {n}Her thumb moves over it.{/n} "I keep thinking I ought to have it ground off. I keep not doing it."''',
        c("Continue", "grief")),
@@ -213,7 +217,7 @@ visit(Y + "beat.staunton", "Joran's brand", [
     nar("silence", '''{n}You say nothing. You stand beside her with your back to the fire, the way she is standing, and look at the dark window, and after a while she leans, very slightly, so that her shoulder is against yours. She does not say anything either. The fire burns down. When she finally moves it is to put her hand on your arm, briefly, the way a soldier touches a comrade's arm in a line before the charge, to know where they are.{/n}''',
         c("Continue", "end")),
     yn("lie", '''{n}She turns her head and looks at you, and you know at once that she knows. Seventy years of being lied to by experts; a Commander's kind lie does not get past her.{/n}
-"No, they do not," {n}she says, gently.{/n} "But thank you. That is the second kind lie you have told me. I am beginning to keep a count." {n}She looks back at the fire.{/n} "Do not make a habit of it. I would like one person in this city to tell me the truth about the dead, even if it is you."''',
+"No, they do not," {n}she says, gently.{/n} "But thank you. That is a kind lie. I am beginning to keep a count." {n}She looks back at the fire.{/n} "Do not make a habit of it. I would like one person in this city to tell me the truth about the dead, even if it is you."''',
        c("Continue", "end")),
     nar("end", '''{n}She goes at last, up the stair to her wall. At the door she stops and says, without turning:{/n} "When the war is done, if I am alive, I am going to find where they buried him, and I am going to shout at him for an hour. Come with me. Somebody should stop me when I start to enjoy it."''',
         c('"I\'ll come."', flags=(B_STAUNTON,))),
@@ -244,7 +248,7 @@ visit(Y + "beat.areelu", "The masquerade", [
     yn("end", '''{n}She leans her head back against the stones of the stair and shuts her eyes.{/n}
 "Do you know what I thought, when I heard it?" {n}Her voice has gone quiet.{/n} "Not about Areelu. About you. I thought: the Commander has already met me once. A Yaniel who wept and was grateful and needed to be led by the hand. And then the real one came up out of the pit, gray and stinking and furious, and would not take her sword back." {n}She opens her eyes.{/n} "I wondered if you were disappointed."''',
        c('"No. The first one was a liar. You\'re the one I robbed."', "robbed"),
-       c('[Flirt] "The first one wept. You tried to bite me."', "bite")),
+       c('[Flirt] "The first one wept. You tried to bite me."', "bite", flags=(DRAWN_BITE,))),
     yn("robbed", '''{n}She laughs, a real one, short and startled out of her.{/n} "The one you robbed. Iomedae help me, that is the nicest thing anyone has said to me since I came back from the dead." {n}She gets up off the stair.{/n} "Go away, Commander. I have to stand a watch, and I cannot do it laughing."''',
        c("[Go.]", flags=(B_AREELU,))),
     yn("bite", '''"I did not try to bite you." {n}A pause.{/n} "I considered it." {n}She gets up off the stair and looks down at you from two steps up, which puts her eyes very nearly level with yours.{/n} "I am still considering it. Go away, Commander, before I decide."''',
@@ -283,13 +287,13 @@ visit(Y + "beat.roast", "The roast", [
        c('"It\'s the best thing I\'ve eaten in the Worldwound."', "best")),
     yn("terrible", '''{n}She laughs until she has to put her knife down.{/n} "It is. It is dreadful. The juniper is wrong and the mutton is old and I have burnt it on one side." {n}She eats a mouthful anyway, with her eyes shut.{/n} "And it tastes of the Half Measure. Of spring. Of the night before my first watch, when Staunton bought for the whole table and Joran fell asleep in the gravy."''',
        c("Continue", "tree")),
-    yn("best", '''"Liar." {n}She points her knife at you.{/n} "That is the third. I am keeping count." {n}She eats a mouthful herself, with her eyes shut.{/n} "But it is close. It is close enough to taste of the Half Measure. Of spring. Of the night before my first watch, when Staunton bought for the whole table and Joran fell asleep in the gravy."''',
+    yn("best", '''"Liar." {n}She points her knife at you.{/n} "I am keeping count." {n}She eats a mouthful herself, with her eyes shut.{/n} "But it is close. It is close enough to taste of the Half Measure. Of spring. Of the night before my first watch, when Staunton bought for the whole table and Joran fell asleep in the gravy."''',
        c("Continue", "tree")),
     yn("tree", '''{n}She looks out over the ash toward the Wound, where the sky is the color of an old bruise.{/n}
 "There is a tree by the town hall in Nerosyan. It was a sapling when I was a girl. The spring I took my vows I sat under it with a boy from the tannery and let him kiss me, and I felt very wicked, and he told everybody." {n}A dry sound.{/n} "It was in leaf when I went back. Not in bloom. I stood under it anyway, and it is ten times the height it was, and the boy from the tannery has been dead fifty years."
 "I want to see it bloom, Commander. That is what I want. It is a small thing, for a woman who has been a saint, and I want it more than I have wanted anything since the hook."''',
        c('"Then we\'ll go in spring."', "spring"),
-       c('[Flirt] "Will you let me kiss you under it? I won\'t tell everybody."', "kiss")),
+       c('[Flirt] "Will you let me kiss you under it? I won\'t tell everybody."', "kiss", flags=(DRAWN_TREE,))),
     yn("spring", '''"We." {n}She turns the word over.{/n} "You say that as if there is going to be a spring. As if there is going to be a we in it." {n}She looks at you, in the red light of the brazier, for a while.{/n} "The Commander of the crusade, eating my terrible roast on a door, making plans for the spring. The sentries will never believe it."''',
        c("Continue", "end")),
     yn("kiss", '''"You would tell everybody." {n}She leans across the door, over the ruins of the roast, until her face is a hand's breadth from yours, and her breath smells of juniper and burnt fat.{/n} "You would tell every sentry on this wall. It would be in the songs by summer." {n}She stays there a moment longer, looking at your mouth, and then sits back.{/n} "Ask me again under the tree. I will decide then. I have waited seventy years for that tree; you can wait a season."''',
@@ -388,8 +392,14 @@ visit(Y + "beat.refugee", "The last cart", [
 
 visit(Y + "beat.raid", "Over the wall", [
     nar("start", '''{n}The alarm goes on the east wall a little after the third bell: the tower horn, three short blasts, the call for "over the wall". By the time you reach the gate tower stair with a sword in your hand the fighting has already moved up onto the parapet. Something came up out of the ash in the dark, a dozen gaunt gray shapes with too many joints, the kind of Wound-spawn that climbs, and they came up at the one place where the old stones are broken.{/n}''',
-        c("Continue", "carries", requires=(CARRIES,)),
-        c("Continue", "judges", forbids=(CARRIES,))),
+        c("Continue", "carries", requires=(CARRIES, HOLY)),
+        c("Continue", "carries_plain", requires=(CARRIES,), forbids=(HOLY,)),
+        c("Continue", "judges", requires=(HELD,), forbids=(CARRIES,)),
+        c("Continue", "judges_empty", forbids=(CARRIES, HELD))),
+    nar("carries_plain", '''{n}She is in the middle of them. You see her before anything else, because she is the only thing on the wall that is not moving backward: a gray head in a borrowed cloak, Radiance going up and down in her hand like a flail on a threshing floor, plain steel, no light at all. She does not shout. She fights the way she talks, economically, without wasting anything, and every stroke finishes something.{/n}''',
+        c("Continue", "fight")),
+    nar("judges_empty", '''{n}She is in the middle of them with a borrowed spear, and they are all over her. She is holding the broken place in the parapet alone, the way she held the gate, and she sees you come up the stair with a plain sword from the rack in your hand, and her eyes go once to your hip, where something else ought to be, and then she shouts, "Left, Commander! Left!"{/n}''',
+        c("Continue", "fight")),
     nar("carries", '''{n}She is in the middle of them. You see her before anything else, because Radiance is burning in her hand like a torch, and the gray things are going back from the light the way grease goes back from a hot pan. She does not shout. She fights the way she talks, economically, without wasting anything, and every stroke finishes something.{/n}''',
         c("Continue", "fight")),
     nar("judges", '''{n}She is in the middle of them with a borrowed spear, and they are all over her, because she has no light and they have nothing to fear from a spear. She is holding the broken place in the parapet alone, the way she held the gate, and she sees you come up the stair with Radiance in your hand, and shouts, "Left, Commander! Light them up!"{/n}''',
@@ -401,7 +411,7 @@ visit(Y + "beat.raid", "Over the wall", [
 {n}She is very close. The sentries are still cheering. Nobody is looking at the two of you, and everybody is.{/n}''',
         c("[Kiss her, there on the wall, in front of the sentries.]", "kiss"),
         c('"Your back\'s my business now."', "business")),
-    nar("kiss", '''{n}She tastes of ichor and ash and the wall. She makes a sound against your mouth that might be outrage and might be a laugh, and her hand fists in your shirt, and for a heartbeat she kisses you back as if the war were over.{/n}
+    nar("kiss", '''{n}She tastes of ichor and ash and the wall. She makes a sound against your mouth that might be outrage and might be a laugh, and her hand closes on your shirt, and for a heartbeat she kisses you back as if the war were over.{/n}
 {n}Then she pushes you off, hard, with the flat of her hand, and says, loudly enough for the whole east wall to hear:{/n} "Not in front of the sentries, Commander!" {n}And, much more quietly, with her eyes very bright:{/n} "Not yet."''',
         c("[Go down, grinning like a fool.]", flags=(B_RAID, Y + "raid_kiss"))),
     yn("business", '''"My back." {n}She considers it.{/n} "That is a very forward thing to say to a woman on a wall." {n}She turns away, and bends to wipe her blade on a dead thing's hide, and says over her shoulder:{/n} "Very well. It is your business. Mind it. I have a great deal of back and most of it is scars."''',
@@ -434,7 +444,7 @@ visit(Y + "beat.prayer", "A silent goddess", [
 # --- Chapter 4 (T): a husk on a block in Alushinyrra (a real act, done with what her cuff taught the Commander) ----------------
 
 visit(Y + "ch4.block", "Another collector's item", [
-    nar("start", '''{n}The slave market in the Lower City sells by the pound in the morning and by the piece in the afternoon. You are crossing it in the afternoon, on other business, when a lot on the block stops you.{/n}
+    nar("start", '''{n}The Fleshmarkets of the Middle City sell by the pound in the morning and by the piece in the afternoon. You are crossing it in the afternoon, on other business, when a lot on the block stops you.{/n}
 {n}It is a woman, or it was: gray, bone-thin, hanging from a hook by one wrist with her toes just brushing the boards, the way a side of meat hangs in a butcher's window. Her face does not quite fit her; it sits a little wrong, like a borrowed coat. On the wrist that holds her up is a manacle you would know in the dark: crude husk-iron, two fingers thick, the pin a lump of soft metal hammered flat.{/n}''',
         c("Continue", "crier")),
     nar("crier", '''{n}The crier is a tiefling with a painted smile. "Collector's piece!" he is calling, to a crowd that is mostly not listening. "Genuine Fane stock, from the mistress's own racks, broken up this season! A face that can be any face you like, my lords! A shield that walks! Very obedient; the mistress trained it herself!"{/n}
@@ -453,12 +463,12 @@ visit(Y + "ch4.block", "Another collector's item", [
 "Go," {n}you tell her.{/n} {n}She looks at you for a while longer, and then she goes, not quickly, into the crowd, with her bare wrist held against her chest like something newly born. You keep the iron. You do not quite know why.{/n}''',
         c("[Put it in the pack with the other.]", flags=(HUSK_BOUGHT, Y + "ch4_block_seen"))),
     nar("picked", '''{n}You step up onto the block to look at her teeth, as a buyer does, and while the crier is explaining to you at length how very fine they are, your fingers find the pin behind her wrist. Three twists. You know exactly how, now. The cuff opens with a sound like a knuckle cracking, and she drops.{/n}
-{n}The crier turns round at the thump, and his painted smile slides, and by then she is off the back of the block and into the crowd of the Lower City, running on legs that have not run in years, and you are shouting "Thief! Stop her!" as loudly as anybody, and pointing the wrong way.{/n}''',
+{n}The crier turns round at the thump, and his painted smile slides, and by then she is off the back of the block and into the crowd of the Middle City, running on legs that have not run in years, and you are shouting "Thief! Stop her!" as loudly as anybody, and pointing the wrong way.{/n}''',
         c("Continue", "picked2")),
     nar("picked2", '''{n}Nobody catches her. The crier tears at his hair. A demon in a litter laughs so hard at him it has to be carried away. You walk off the other side of the market with a second husk's iron in your pocket, still warm, and a feeling in your chest you do not have a word for.{/n}''',
         c("[Put it in the pack with the other.]", flags=(HUSK_FREED, Y + "ch4_block_seen"))),
     nar("fumbled", '''{n}Your fingers find the pin behind her wrist, but the crier is sharper than he looks. He catches your wrist in a grip like a trap, and his painted smile does not move at all.{/n} "Inspection is free, my lord. Liberation is fifty."
-{n}Behind him two hulking things with too many teeth have come to the edge of the block. You could fight them. You would win. The whole market would see the Commander of the crusade start a riot in the Lower City over a husk, and every trader in Alushinyrra would know your face by nightfall.{/n}''',
+{n}Behind him two hulking things with too many teeth have come to the edge of the block. You could fight them. You would win. The whole market would see the Commander of the crusade start a riot in the Fleshmarkets over a husk, and every trader in Alushinyrra would know your face by nightfall.{/n}''',
         c("[Pay him with a note on the crusade's war chest.]", "bought", crusade=("Finances", -50)),
         c("[Walk away.]", "left")),
     nar("left", '''{n}You walk on. The crier's voice follows you across the market, calling the lot again, lower now: forty-five, genuine Fane stock, the mistress's own work.{/n}
@@ -481,11 +491,11 @@ visit(Y + "after.watch", "The night watch", [
         c('"It\'s the least you\'re owed."', "owed"),
         c('"It\'s a great deal. I\'ll see you get it anyway."', "anyway"),
         c('[Flirt] "You forgot to want me. I\'m wounded."', "forgot")),
-    yn("owed", '''"Owed." {n}She tastes the word.{/n} "Nobody owes me anything, Commander. That was the whole bargain, remember? Nobody is square. I owe you a sword, or you owe me one; I lose count." {n}She leans her shoulder against yours, very slightly, on the parapet.{/n} "I would rather have it given than owed. Owed things get collected. Minagho taught me that."''',
+    yn("owed", '''"Owed." {n}She snorts.{/n} "The Church says I am owed a statue. The Queen's people say I am owed a pension. The old knights say I am owed a seat at their dinners." {n}She leans her shoulder against yours, very slightly, on the parapet.{/n} "I will take the wine. You can keep the rest."''',
         c("Continue", "end")),
     yn("anyway", '''{n}She laughs under her breath.{/n} "Anyway. That is a Commander's word. 'It cannot be done; I will see it done anyway.'" {n}She leans her shoulder against yours, very slightly, on the parapet.{/n} "I used to say it myself, on this gate. I was usually wrong. I would like, for once, to be standing next to somebody who says it and is right."''',
         c("Continue", "end")),
-    yn("forgot", '''"I did not forget." {n}She does not look at you.{/n} "I left it off the list because it is not a thing I want. It is a thing I have. You do not put the things you have on a list of wants; that is how you lose them. Every soldier knows it." {n}She leans her shoulder against yours on the parapet, very slightly, and leaves it there.{/n} "Now be quiet. You are on watch."''',
+    yn("forgot", '''"I did not forget." {n}She does not look at you.{/n} "I left you off because you are standing here. I do not have to want the one who is on the next watch with me. I only have to hand them a cup." {n}She leans her shoulder against yours on the parapet, very slightly, and leaves it there.{/n} "Now be quiet. You are on watch."''',
         c("Continue", "end")),
     nar("end", '''{n}At the change of the watch the sentry who relieves you salutes her first and you second, and she pretends not to notice, and you pretend not to notice her pretending. Going down the stair in the dark she takes your hand for three steps, and lets it go before the bottom, where the torchlight is.{/n}''',
         c("[Go down.]", flags=(Y + "after.watch_stood",))),
@@ -556,7 +566,7 @@ visit(Y + "beat.light", "The light on the ash", [
         c("Continue", "end")),
     nar("end", '''{n}You stand the rest of her watch with her. Nothing else comes out of the ash that night. Once, near the end, she hands you the sword to hold while she re-ties her boot, and takes it back afterwards without looking, as if she had handed it to you every night of her life.{/n}''',
         c("[Go down at the bell.]", flags=(Y + "beat.light",))),
-], requires=("trickster.ever", RETURNED, CARRIES, B_WALLS), **BEAT)
+], requires=("trickster.ever", RETURNED, CARRIES, HOLY, B_WALLS), **BEAT)
 
 visit(Y + "beat.hunter", "A paladin who hunts alone", [
     nar("start", '''{n}She is in the guardroom at the foot of the gate tower when you find her, sitting on a bench across a table from a scout of the Eagle Watch who has just come in off the ash, and she is listening to him the way a hound listens at a door.{/n}''',
@@ -586,7 +596,9 @@ def integrate(payload):
     """Minagho's presence facts for the scene on the wall (read-only; the merged route's flags are never forbidden)."""
     derived = {
         MINAGHO_HERE: [[MC + "minagho_in"]],
-        Y + "minagho_known": [["minachiv.started", MC + "minagho_in"], ["minachiv.started", MC + "chivarro_in"]],
+        Y + "minagho_known": [["minagho_chivarro.started", MC + "minagho_in"], ["minagho_chivarro.started", MC + "chivarro_in"]],
+        # The ledger's canonical started key (05 §6 ruling), read-only alias of the merged route's own StartedFlag.
+        "minagho_chivarro.started": [["minachiv.started"]],
     }
     for key, groups in derived.items():
         have = payload.setdefault("Derived", {}).get(key)

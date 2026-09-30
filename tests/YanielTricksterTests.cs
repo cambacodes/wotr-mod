@@ -268,7 +268,7 @@ internal static class YanielTricksterTests
         var carried = Take(swap, World(story, 3, "trickster", "trickster.ever", "yaniel.fane_doubt", "yaniel.radiance_plus1"), "kept_back", 1, Swapped, Carries);
         var c5 = Later(story, Observe(story, Later(story, carried, 200, 5), "yaniel.freed", "irabeth.chapter_five"), 24);
         check(!Avail(wall, c5) && Avail(found, c5) && !Avail(foundLate, c5), "Trk_Yaniel_AllRomanceWalk: the Fane swap does not lead to her in Drezen.");
-        var home = Take(found, c5, "stay", 0, Returned, Started);
+        var home = Observe(story, Take(found, c5, "stay", 0, Returned, Started), P + "drawn.walls");
         check(!Avail(letter, Later(story, home, 24)) && !Avail(trade, Later(story, home, 24)), "The verdict or the trade comes before Iz.");
         var izDone = Observe(story, Later(story, home, 48), "iz.done");
         var afterLetter = Take(letter, Later(story, izDone, 24), "end_quiet", 0, Verdict);
@@ -283,7 +283,7 @@ internal static class YanielTricksterTests
             "The commit carries a test or a price, or the yes is not that neither trades.");
 
         // Trk_Yaniel_Oath: judges; the verdict reads the pack and the song; a broken oath goes straight to the vigil.
-        var judged = World(story, 5, "trickster", "trickster.ever", "yaniel.freed", Swapped, Judges, Oath, Returned, "iz.done");
+        var judged = World(story, 5, "trickster", "trickster.ever", "yaniel.freed", Swapped, Judges, Oath, Returned, "iz.done", P + "drawn.walls");
         var withSword = Later(story, Observe(story, judged, "yaniel.radiance_plus1"), 24);
         check(Through(hands, withSword, "held_believed", 0).All(o => o.Has(Stands)) && Through(hands, withSword, "held_unproven", 0).All(o => o.Has(P + "oath_unproven") && !o.Has(Stands) && !o.Has(Broken))
               && Ch(hands, "held_word", 0).Check?.DC == 15 && !Avail(letter, withSword),
@@ -330,9 +330,18 @@ internal static class YanielTricksterTests
         check(!Avail(found, Later(story, lateRoad, 24)) && Avail(foundLate, Later(story, lateRoad, 24)), "The late road does not reach her message.");
         var lateHome = Take(foundLate, Later(story, lateRoad, 24), "carries", 0, Returned, Started);
         check(Avail(letter, Later(story, Observe(story, lateHome, "iz.done"), 24)), "The late road does not reach the verdict.");
+        // A late swap made after Iz never claims she carried the sword there: her verdict is on the wall, not a letter from Iz.
+        var postIz = Take(wall, post, "late_kept", 8, Swapped, Carries, Late, P + "handed_after_iz");
+        var postHome = Take(foundLate, Later(story, postIz, 24), "carries", 0, Returned);
+        check(!Avail(letter, Later(story, postHome, 24)) && Avail(S(P + "verdict.wall"), Later(story, postHome, 24)),
+            "A sword handed over after Iz gets her letter about carrying it at Iz.");
+        // The trade's yes and the vigil need one of the Commander's own reciprocal choices.
+        check(trade.Requires.Contains(P + "drawn") && vigil.Requires.Contains(P + "drawn")
+              && !Avail(trade, Later(story, World(story, 5, "trickster", "trickster.ever", Swapped, Carries, Returned, Verdict), 24)),
+            "The commit opens without any sign the Commander wanted her.");
 
         // Trk_Yaniel_MinaghoCoexist: Minagho's route is read, never forbidden; both commits are reachable.
-        var mc = World(story, 5, "trickster", "trickster.ever", Swapped, Carries, Returned, "minachiv.started", "minagho_chivarro.trickster.minagho_in", "minachiv.complete");
+        var mc = World(story, 5, "trickster", "trickster.ever", Swapped, Carries, Returned, "minachiv.started", "minagho_chivarro.trickster.minagho_in", "minachiv.complete", P + "drawn.bite");
         check(Avail(minagho, Later(story, mc, 24)), "Trk_Yaniel_MinaghoCoexist: her scene about Minagho does not open.");
         var told = Take(minagho, Later(story, mc, 24), "truth_end", 0, P + "minagho_told");
         var hid = Take(minagho, Later(story, mc, 24), "hide", 0, "trickster.secret.yaniel_minagho");
@@ -373,10 +382,13 @@ internal static class YanielTricksterTests
 
         // Pages.
         var pg = pages.ToDictionary(s => s.Id.Substring(P.Length));
-        check(pages.Length == 6 && pages.All(s => s.MinChapter == 6 && s.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.RemoveItem == null && c.Crusade == null))),
-            "Yaniel's pages are not six effect-free Chapter 6 pages.");
+        check(pages.Length == 8 && pages.All(s => s.MinChapter == 6 && s.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.RemoveItem == null && c.Crusade == null))),
+            "Yaniel's pages are not eight effect-free Chapter 6 pages.");
         check(Avail(pg["epilogue.together"], World(story, 6, "trickster.ever", Committed, Shackle))
-              && Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Returned, Verdict)) && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Returned, Verdict, Committed))
+              && Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Returned, Verdict, P + "drawn.walls")) && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Returned, Verdict, P + "drawn.walls", Committed))
+              && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Returned, Verdict)) && Avail(pg["epilogue.unasked"], World(story, 6, "trickster.ever", Returned, Verdict))
+              && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Returned, Verdict, P + "drawn.walls", Broken)) && Avail(pg["epilogue.broken"], World(story, 6, "trickster.ever", Returned, Verdict, P + "drawn.walls", Broken))
+              && !Avail(pg["epilogue.broken"], World(story, 6, "trickster.ever", Returned, Verdict, Broken, Committed))
               && Avail(pg["epilogue.unsettled"], World(story, 6, "trickster.ever", Returned)) && !Avail(pg["epilogue.unsettled"], World(story, 6, "trickster.ever", Returned, Verdict))
               && Avail(pg["epilogue.declined"], World(story, 6, "trickster.ever", Returned, Verdict, Declined)) && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Returned, Verdict, Declined))
               && Avail(pg["epilogue.left_free"], World(story, 6, "trickster.ever", LeftFree, Closed))
@@ -394,7 +406,7 @@ internal static class YanielTricksterTests
                                                   && s.Chapters.SequenceEqual(new[] { 5 }) && s.Forbids.Contains(Committed)),
             "Yaniel's courtship is not fourteen optional Chapter 5 visits in Drezen before the commit.");
         var reached = new HashSet<string>();
-        foreach (var start in new[] { World(story, 5, "trickster", "trickster.ever", Swapped, Carries, Returned, "yaniel.areelu_unmasked", "yaniel.fake_freed"),
+        foreach (var start in new[] { World(story, 5, "trickster", "trickster.ever", Swapped, Carries, P + "carries_holy", Returned, "yaniel.areelu_unmasked", "yaniel.fake_freed"),
                                       World(story, 5, "trickster", "trickster.ever", Swapped, Judges, Oath, Returned, "yaniel.radiance_plus1", "yaniel.areelu_unmasked") })
         {
             var state = start;
