@@ -181,7 +181,7 @@ internal static class YanielTricksterTests
                 "Trk_Yaniel_Swap: the argument is not Diplomacy DC 20, or taking the sword back does not leave the swap open.");
             foreach (var reason in new[] { "kept_cannot", "kept_back" })
             {
-                var kept = Take(swap, w, reason, 0, Swapped, Carries);
+                var kept = Take(swap, w, reason, form == "yaniel.radiance_masterwork" ? 0 : 1, Swapped, Carries);
                 check(!kept.Has(form) && !kept.Has(Judges),
                     "Trk_Yaniel_Swap: success does not remove " + form + " for real (" + reason + ").");
             }
@@ -252,7 +252,7 @@ internal static class YanielTricksterTests
         check(!own.Any(s => Avail(s, never)), "Never freed: a Yaniel scene opens for a woman who was never cut down.");
 
         // Trk_Yaniel_AllRomanceWalk: carries (the letter from Iz) and judges (her hands), each to the commit and the niche.
-        var carried = Take(swap, World(story, 3, "trickster", "trickster.ever", "yaniel.fane_doubt", "yaniel.radiance_plus1"), "kept_back", 0, Swapped, Carries);
+        var carried = Take(swap, World(story, 3, "trickster", "trickster.ever", "yaniel.fane_doubt", "yaniel.radiance_plus1"), "kept_back", 1, Swapped, Carries);
         var c5 = Later(story, Observe(story, Later(story, carried, 200, 5), "yaniel.freed", "irabeth.chapter_five"), 24);
         check(!Avail(wall, c5) && Avail(found, c5) && !Avail(foundLate, c5), "Trk_Yaniel_AllRomanceWalk: the Fane swap does not lead to her in Drezen.");
         var home = Take(found, c5, "stay", 0, Returned, Started);
@@ -318,7 +318,7 @@ internal static class YanielTricksterTests
         check(Through(minagho, Later(story, mc, 24), "start", 0).Any()
               && Through(minagho, Later(story, World(story, 5, "trickster", "trickster.ever", Swapped, Carries, Returned, "minachiv.started", "minagho_chivarro.trickster.chivarro_in"), 24), "start", 1).Any()
               && !Avail(minagho, Later(story, World(story, 5, "trickster", "trickster.ever", Swapped, Carries, Returned, "minachiv.started"), 24))
-              && Ch(minagho, "ask", 1).Alignment?.Direction == "Chaotic",
+              && Ch(minagho, "ask", 2).Alignment?.Direction == "Chaotic" && Ch(minagho, "ask", 0).Requires.Contains("minachiv.complete") && Ch(minagho, "ask", 1).Forbids.Contains("minachiv.complete"),
             "Her Minagho scene does not follow what Drezen can show her (Minagho on her crate, or Chivarro asking after her).");
         check(story.Books["trickster.ledger"].Entries.Any(e => e.Id == "secret.yaniel_minagho" && e.Requires.SequenceEqual(new[] { "trickster.secret.yaniel_minagho" })),
             "The secret kept from her is not in the Ledger.");
@@ -357,20 +357,24 @@ internal static class YanielTricksterTests
             "Last Call or the household treats an uncommitted Yaniel as a partner.");
 
         // Courtship: every beat reachable; each is a Drezen visit in Chapter 5, optional, before the commit.
-        check(beats.Length == 6 && beats.All(s => s.Optional && Rules.IsRemote(s) && s.Kind == "visit" && s.Areas.SequenceEqual(new[] { Drezen })
+        check(beats.Length == 14 && beats.All(s => s.Optional && Rules.IsRemote(s) && s.Kind == "visit" && s.Areas.SequenceEqual(new[] { Drezen })
                                                   && s.Chapters.SequenceEqual(new[] { 5 }) && s.Forbids.Contains(Committed)),
-            "Yaniel's courtship is not six optional Chapter 5 visits in Drezen before the commit.");
+            "Yaniel's courtship is not fourteen optional Chapter 5 visits in Drezen before the commit.");
         var reached = new HashSet<string>();
-        var state = World(story, 5, "trickster", "trickster.ever", Swapped, Carries, Returned, "yaniel.areelu_unmasked", "yaniel.fake_freed");
-        for (int i = 0; i < 12; i++)
+        foreach (var start in new[] { World(story, 5, "trickster", "trickster.ever", Swapped, Carries, Returned, "yaniel.areelu_unmasked", "yaniel.fake_freed"),
+                                      World(story, 5, "trickster", "trickster.ever", Swapped, Judges, Oath, Returned, "yaniel.radiance_plus1", "yaniel.areelu_unmasked") })
         {
-            state = Later(story, state, 48);
-            foreach (var scene in beats.Where(s => Avail(s, state)).ToList())
+            var state = start;
+            for (int i = 0; i < 20; i++)
             {
-                var outcome = Program.Walk(scene, state).FirstOrDefault(r => r.Has(scene.Id));
-                if (outcome == null) continue;
-                reached.Add(scene.Id);
-                state = outcome;
+                state = Later(story, state, 48);
+                foreach (var scene in beats.Where(s => Avail(s, state)).ToList())
+                {
+                    var outcome = Program.Walk(scene, state).FirstOrDefault(r => r.Has(scene.Id));
+                    if (outcome == null) continue;
+                    reached.Add(scene.Id);
+                    state = outcome;
+                }
             }
         }
         foreach (var scene in beats)
@@ -381,7 +385,9 @@ internal static class YanielTricksterTests
         check(Avail(ch3, Later(story, World(story, 3, "trickster.ever", Swapped, Carries), 72)) && ch3.Kind == "letter"
               && Avail(ch3, Later(story, World(story, 3, "trickster.ever", Refused), 72))
               && Avail(ch4, Later(story, World(story, 4, "trickster.ever", Swapped), 48)) && ch4.Kind == "memory"
-              && Take(ch4, Later(story, World(story, 4, "trickster.ever", Swapped), 48), "worn", 0, P + "cuff_worn").Has(P + "ch4_seen"),
+              && Take(ch4, Later(story, World(story, 4, "trickster.ever", Swapped), 48), "worn", 0, P + "cuff_worn").Has(P + "ch4_seen")
+              && Avail(S(P + "ch4.block"), Later(story, World(story, 4, "trickster.ever", Swapped, P + "ch4_seen"), 24))
+              && Ch(S(P + "ch4.block"), "choose", 1).Check?.Skill == "SkillThievery" && Ch(S(P + "ch4.block"), "choose", 0).Crusade?.Amount == -50,
             "The Chapter 3 letter or the Chapter 4 memory does not arrive.");
         Console.WriteLine("PASS: Yaniel Trickster (Trk_Yaniel_*): the swap on both Fane branches, the walls at 24 h for every Radiance state, "
                           + "the kill that stands, the oath judged after Iz, Minagho, the trade and the vigil, the niche, the reactors, the pages, "

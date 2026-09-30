@@ -13,7 +13,7 @@ citadel (FakeYaniel_First/Cue_0032 1ed1497d, FakeYaniel_ToAreelu/Cue_0001 7418d4
 from story_format import c, n
 from storylines import yaniel_trickster as yt
 from storylines.yaniel_trickster import (B_AREELU, B_BOUT, B_CHURCH, B_NIGHT, B_PRAYER, B_RAID, B_REFUGEE, B_ROAST,
-                                         B_STATUE, B_STAUNTON, B_WALLS, HUSK_BOUGHT, HUSK_FREED, HUSK_LEFT, NICHE, CARRIES, CLOSED,
+                                         B_STATUE, B_STAUNTON, B_WALLS, HELD, HUSK_BOUGHT, HUSK_FREED, HUSK_LEFT, NICHE, CARRIES, CLOSED,
                                          COMMITTED, CUFF_PACKED, CUFF_WORN, JUDGES, KILLED, MINAGHO_SECRET, MINAGHO_SEEN,
                                          MINAGHO_TOLD, RETURNED, STATUE_LIED, SWAPPED, TOLD_STATUE, TOLD_STAUNTON, UNMASKED,
                                          FAKE_FREED, FAKE_REFUSED, WHY_BACK, WHY_CANT, Y, nar, visit, yn)
@@ -99,17 +99,25 @@ visit(Y + "ch5.minagho", "The lilitu on the crate", [
     yn("ask", '''{n}She turns round at last. Her face is quite calm. Her hand is on the parapet, and the knuckles are white.{/n}
 "She took Staunton. She took Drezen. She took me, and hung me up in her collection between a Sarkorian witch and a boy from Kenabres who screamed for his mother for eleven years. Minagho liked to wake me and tell me things. That everyone had forgotten me. That my goddess had given me up."
 "So I am asking you, Commander, since you are the one person in this city who has not lied to me yet. What is she to you?"''',
-       c('[Tell her the truth] "She\'s in my bed, Yaniel. And in my debt. That\'s what she is to me."', "truth"),
+       c('[Tell her the truth] "She\'s in my bed, Yaniel. And in my debt. That\'s what she is to me."', "truth",
+         requires=("minachiv.complete",)),
+       c('[Tell her the truth] "She\'s in my debt, and under my protection. And I mean to keep her close."', "truth_close",
+         forbids=("minachiv.complete",)),
        c('[Keep it from her] "Nothing you need to carry. Leave her to me."', "hide", alignment=("Chaotic", 1))),
     yn("truth", '''{n}She does not move. For a while the only thing that moves is the wind, pulling at her cloak.{/n}
 "In your bed." {n}She tastes it the way you might taste something to find out whether it has been poisoned.{/n} "And in your debt. So she is yours, the way I was hers." {n}A short, ugly laugh.{/n} "No. I do not believe that. Nobody owns Minagho. She owns things. I would know."
-"I will not ask you to choose. I watched a better soldier than me try to make someone choose between Minagho and everything else, and he chose her, and Drezen burned." {n}Her voice does not change.{/n} "I am telling you what I will do. I will stand my watch. I will not cross that courtyard by the quartermaster's stores. And if she ever touches me again, in any way, for any reason, I will kill her, Commander, and I will not ask your leave, and I will not be sorry."''',
+"I will not ask you to choose. Staunton had to choose once, between Minagho and everything else he was, and he chose her, and Drezen burned." {n}Her voice does not change.{/n} "I am telling you what I will do. I will stand my watch. I will not go where she is. And if she ever touches me again, in any way, for any reason, I will kill her, Commander, and I will not ask your leave, and I will not be sorry."''',
+       c('"That\'s fair."', "truth_end"),
+       c('"She won\'t touch you."', "truth_end")),
+    yn("truth_close", '''{n}She does not move. For a while the only thing that moves is the wind, pulling at her cloak.{/n}
+"Close." {n}She tastes the word the way you might taste something to find out whether it has been poisoned.{/n} "Under your protection. Minagho." {n}A short, ugly laugh.{/n} "She had me under hers for seventy years. It had hooks in it."
+"I will not ask you to choose. Staunton had to choose once, between Minagho and everything else he was, and he chose her, and Drezen burned. I am telling you what I will do. I will stand my watch. I will not go where she is. And if she ever lays a finger on me again, for any reason, I will kill her, Commander, and I will not ask your leave."''',
        c('"That\'s fair."', "truth_end"),
        c('"She won\'t touch you."', "truth_end")),
     yn("truth_end", '''{n}She looks at you for a while, the way she looks at the ash from the wall: as if something might come out of it, and she means to be ready.{/n}
 "Thank you for not lying," {n}she says at last.{/n} "It is the worst thing anyone has told me since I came up out of the pit, and you told it to my face. That counts for something. I am not yet sure what."''',
        c("[Leave her to her watch.]", flags=(MINAGHO_SEEN, MINAGHO_TOLD))),
-    yn("hide", '''{n}Her eyes stay on yours for a long time. You hold them. Whatever she is looking for, you do not give it to her.{/n}
+    yn("hide", '''{n}Her eyes stay on yours. You hold them. Whatever she is looking for, you do not give it to her.{/n}
 "Leave her to you." {n}She repeats it slowly.{/n} "That is what they told me in the Fane, the ones who came to feed us. 'Leave it to the mistress.' It is a thing people say when they know something they do not mean to tell you."
 {n}She turns back to the parapet.{/n} "Very well, Commander. I will leave her to you. I will not cross that courtyard. I will stand my watch, and I will watch your hands, and one day I will find out what they have been holding. Go on. I have work."''',
        c("[Go.]", flags=(MINAGHO_SEEN, MINAGHO_SECRET))),
@@ -169,7 +177,7 @@ visit(Y + "beat.statue", "Yaniel of Drezen, the Holy Martyr", [
     yn("truth", '''{n}She lets out a breath she seems to have been holding since the cart came through the gate.{/n}
 "No. It does not." {n}She looks up at the smooth stone face.{/n} "That girl never held anything. She would have dropped the gate and run, and she would have been right to. I did not have the sense." {n}A dry sound.{/n} "The chaplains keep telling me how moving it is. You are the first person in Drezen who has said it to my face. I think I could kiss you for it. I think I will not, in front of the chaplains."''',
        c("Continue", "end")),
-    yn("scars", '''{n}She turns her head and looks at you properly, under the hood, for the first time since the sheet came off. Her eyes are very pale in the shadow.{/n}
+    yn("scars", '''{n}She turns her head and looks at you properly, under the hood, as she has not since the sheet came off. Her eyes are very pale in the shadow.{/n}
 "The best part." {n}She lets the words sit.{/n} "Minagho gave me most of those. Areelu gave me the rest. You are standing in a crowd of pilgrims, in front of my holy image, telling me the best part of me is the part my torturers made." {n}She draws a long breath.{/n} "That is the most indecent thing anybody has said to me in seventy years, Commander, and I would like you to say it again somewhere with fewer candles."''',
        c("Continue", "end")),
     nar("end", '''{n}The chaplains carry the martyr into the niche and set her on her plinth with her stone sword raised toward the gate tower's ceiling, and a lamp at her feet. The real Yaniel watches them do it. When the crowd has gone she walks up to the niche alone, and stands in front of herself for a while, and then, very deliberately, turns her back on the statue and sits down on its plinth, and takes out a whetstone, and starts on her sword.{/n}''',
@@ -411,7 +419,7 @@ visit(Y + "beat.prayer", "A silent goddess", [
     yn("tell", '''{n}She looks at you for a while.{/n} "Tell her something." {n}She turns it over.{/n} "Every prayer I said on that hook was an asking. Let the last cart get through. Let Staunton not have done it. Let me die before I break. Let me out." {n}She looks up at the painted face above her.{/n} "I have never once just told Her anything. It would be like telling a sergeant about the weather."
 "Very well. I will try it. I will tell Her about the east wall, and the weather, and a thief who steals shackles. If She laughs, She laughs."''',
         c("Continue", "end")),
-    yn("stand", '''{n}She is quiet for a long while.{/n}
+    yn("stand", '''{n}She is quiet.{/n}
 "A way of standing up," {n}she says at last.{/n} "Yes. That is what it was on the hook. It was not a conversation. It was standing up, every day, in a place that wanted me on my knees." {n}She almost smiles.{/n} "Perhaps She is not silent. Perhaps I have been listening for the wrong thing. I was listening for an answer. Perhaps the praying was the answer."''',
         c("Continue", "end")),
     yn("me", '''{n}She laughs, short and sharp, the way she laughs at recruits.{/n} "You got me out. Yes. With a sword and a pin and a very poor bargain." {n}She shakes her head.{/n} "And who got you to the Fane, Commander, with that sword on your hip? Who kept that sword safe for seventy years in a tower in Kenabres, so that somebody would find it? Who put a thief in front of my hook and not a butcher?"
@@ -491,7 +499,7 @@ visit(Y + "after.wrist", "The mark it leaves", [
 {n}She holds out her hand, palm up.{/n} "Now, Commander. I want to know if it leaves the same mark on a free person."''',
         c("[Bend the pin straight and open the cuff for her.]", "mark")),
     nar("mark", '''{n}The pin you bent over in Alushinyrra fights you. She waits. When the cuff comes off, your wrist under it is red and rubbed raw at the bone, and there is a band of skin already paler than the rest, only a few months old.{/n}
-{n}She takes your wrist in both her hands and turns it to the light, the way she turned the sword in the Fane, and looks at it for a long time. Then she puts her own wrist beside it: the old white band, hard as a heel, seventy years deep.{/n}''',
+{n}She takes your wrist in both her hands and turns it to the light, the way she turned the sword in the Fane, and studies it. Then she puts her own wrist beside it: the old white band, hard as a heel, seventy years deep.{/n}''',
         c("Continue", "mark2")),
     yn("mark2", '''"It does," {n}she says quietly.{/n} "The same mark. Only shallower." {n}Her thumb moves over the red skin, very lightly.{/n} "I thought it would not. I thought it only marked people who were owned. I thought that was what the mark meant."
 {n}She lifts your wrist and puts her mouth to the raw place, briefly, the way a soldier kisses a medal or a wound, and then gives your hand back to you, and the iron with it.{/n} "Put it back on. Or do not. I do not care any more which. I only wanted to know."''',
@@ -507,6 +515,72 @@ visit(Y + "after.wrist", "The mark it leaves", [
     nar("end", '''{n}She stays for supper, which she has also never done, and eats with her elbows on the table, and tells you about a quartermaster in the old garrison who kept a pig in the armoury, and laughs so hard at her own story that she has to put her cup down.{/n}''',
         c("Continue", flags=(Y + "after.wrist_seen",))),
 ], requires=("trickster.ever", COMMITTED, NICHE, Y + "after.watch_stood"), **AFTER)
+
+visit(Y + "beat.drill", "Hold it properly", [
+    nar("start", '''{n}"Bring the sword," says the note under your door. "Not a practice blade. Mine. The court behind the gate tower, before the first bell." She is waiting there in the half-dark with her sleeves rolled and no weapon at all, and when you come through the arch she holds out her empty hand, not for the sword: for your wrist.{/n}''',
+        c("Continue", "grip")),
+    yn("grip", '''"You carry it like a quartermaster's stores," {n}she says, turning your hand over.{/n} "On the hip, in the scabbard, safe. That is not what I swore you to. I swore you to take it somewhere. Draw it."
+{n}You draw Radiance. She steps round behind you and puts her hands over yours on the grip, the right one first, then the left, and moves your fingers, one at a time, the way you moved hers in the Fane.{/n} "There. Joran made the grip for a hand that means it. Not tighter; that is fear. Not looser; that is pride. There."''',
+        c("Continue", "cut")),
+    yn("cut", '''{n}She walks you through the old cuts, the Mendevian ones, the ones they do not teach any more: the gate cut, the stair cut, the one she calls the widow's cut and will not explain. Her voice is quite even. Her hands on yours are not.{/n}
+"I used to do this every morning on the east wall," {n}she says, close behind your ear.{/n} "Two hundred cuts before the bell. Staunton said I would wear the sword out. On the hook I did them in my head. Every morning. Two hundred. I did not miss one in seventy years."''',
+        c('"Show me the two hundred."', "two"),
+        c('"You still want it back."', "want")),
+    yn("two", '''{n}She lets go of your hands and steps away and does them in the air, empty-handed, the way she did them in her head on the hook: two hundred cuts with a sword that is not there, fast and exact, her feet never moving off the one flagstone, her breath going in and out like a bellows.{/n}
+{n}When she stops, the first bell is ringing. She is not even flushed.{/n} "There," {n}she says.{/n} "Now you know what you are carrying. It is not a sword. It is the two hundred. Do not drop them."''',
+        c("Continue", "end")),
+    yn("want", '''{n}Her hands go still on yours.{/n}
+"Yes," {n}she says, after a while.{/n} "Every day. Every time I see it on your hip I want to take it off you and run. I told you in the Fane my hands were not fit for it. They are fit. I am the one who is not." {n}She lets go.{/n} "Carry it where you swore, Commander. Carry it well. And do not ever offer it to me again, because one day I will take it, and then we will both have to live with that."''',
+        c("Continue", "end")),
+    nar("end", '''{n}She makes you do the gate cut forty times before she lets you go, and at the fortieth she says nothing, which you have learned is the highest praise she gives.{/n}''',
+        c("[Sheathe the sword.]", flags=(Y + "beat.drill",))),
+], requires=("trickster.ever", RETURNED, JUDGES, HELD, B_WALLS), forbids=(COMMITTED, CARRIES), optional=True)
+
+visit(Y + "beat.light", "The light on the ash", [
+    nar("start", '''{n}The sentry says she wants you on the wall, now, and that she said to say it is not an alarm. When you come up she is at the broken place in the parapet with Radiance drawn, and she does not turn round.{/n}
+"Look," {n}she says.{/n}''',
+        c("Continue", "look")),
+    nar("look", '''{n}Out on the ash, a long bowshot from the wall, something is moving: low and slow and too many legs, feeling its way toward the city through the dark the way a hand feels along a table for a cup. The sentries have not seen it. The torches on the wall do not reach that far.{/n}
+{n}She lifts the sword. It does not flare; it is not the Fane, and nothing is singing. It only brightens, the way a coal brightens when somebody breathes on it, and the light goes out across the ash, thin and gold, and finds the thing.{/n}''',
+        c("Continue", "thing")),
+    nar("thing", '''{n}It stops. It turns what it has instead of a face toward the wall. For a moment it and the sword look at each other across a quarter-mile of ash. Then it goes back into the dark the way it came, quickly, and does not come again.{/n}
+{n}She lowers the blade. The light goes down into the steel.{/n}''',
+        c("Continue", "talk")),
+    yn("talk", '''"It does that every night," {n}she says.{/n} "Something comes. It looks at the light. It goes away. I have not had to fight one of them in a week." {n}She turns the sword so that the last of the gold runs down the fuller.{/n} "I wanted you to see it. You gave this away. I thought you should see what it does in the hands you gave it to."
+"Every night I stand here and think: the Commander of the crusade could have this, and does not, because {mf|he|she} took an old woman's iron instead. I have not decided whether that is the wisest thing I have ever seen anybody do, or the stupidest."''',
+        c('"Neither. It was a trade."', "trade"),
+        c('"It looks better on you."', "better")),
+    yn("trade", '''"A trade." {n}She snorts.{/n} "A trade is when both parties get something they want. I did not want this. I wanted to be left alone to be sorry for myself." {n}She looks out at the ash, where the thing went.{/n} "Perhaps that is what you got, then. Me, not sorry for myself. It is not much of a bargain for a sword like this, Commander. You ought to have haggled."''',
+        c("Continue", "end")),
+    yn("better", '''{n}She laughs, startled, and then does not.{/n} "It looks better on me." {n}She turns the blade in the torchlight, as if checking.{/n} "Seventy years nobody said anything looked better on me. Minagho used to say I looked best on a hook." {n}She slides the sword home in its saddle-leather scabbard.{/n} "Thank you, Commander. That is a very foolish thing to say to a woman on a wall, and I am going to remember it anyway."''',
+        c("Continue", "end")),
+    nar("end", '''{n}You stand the rest of her watch with her. Nothing else comes out of the ash that night. Once, near the end, she hands you the sword to hold while she re-ties her boot, and takes it back afterwards without looking, as if she had handed it to you every night of her life.{/n}''',
+        c("[Go down at the bell.]", flags=(Y + "beat.light",))),
+], requires=("trickster.ever", RETURNED, CARRIES, B_WALLS), **BEAT)
+
+visit(Y + "beat.hunter", "A paladin who hunts alone", [
+    nar("start", '''{n}She is in the guardroom at the foot of the gate tower when you find her, sitting on a bench across a table from a scout of the Eagle Watch who has just come in off the ash, and she is listening to him the way a hound listens at a door.{/n}''',
+        c("Continue", "scout")),
+    nar("scout", '''{n}The scout is telling a story he has plainly told before. Out past the old Sarkorian cairns, he says, there is a paladin who hunts alone. An old man, gray as a wolf, in armour nobody has made in fifty years. He has been out in the Wound longer than the scout has been alive. He comes and goes by paths nobody else knows, and where he has been the demons are fewer, and he will not come in to any fort, and he will not take a banner. Berenguer, they call him, the ones who have seen him. The ones who have tried to follow him mostly have not come back.{/n}''',
+        c("Continue", "her")),
+    yn("her", '''{n}When the scout has gone to find his supper she sits looking at the place where he was.{/n}
+"Berenguer," {n}she says.{/n} "I never knew him. He must have taken his vows after I was taken. A paladin who would not come in to any fort and would not take a banner." {n}Something moves at the corner of her mouth.{/n} "Seventy years ago they would have put him on a charge. Now they tell stories about him in guardrooms."
+"I have been thinking, Commander, since the scout started talking, that I could do that. Go out past the cairns with a spear and no banner and nobody's name on me but my own. Nobody would build me a statue. Nobody would want me to be anything."''',
+        c('"Then go, if you want it. I won\'t hold you."', "go"),
+        c('"Stay. I\'d rather have you on my wall than in a scout\'s story."', "stay"),
+        c('"When the war\'s done, I\'ll come with you. Find him, and see if he\'s any good."', "both")),
+    yn("go", '''{n}She looks at you for a while.{/n}
+"You would not hold me." {n}She says it as if testing a rope.{/n} "No. You would not. You would stand at the gate and watch me go down the road and say something clever to the sentry, and then you would go and win your war." {n}She gets up.{/n} "That is why I am not going yet, you understand. Because you would let me. Nobody has ever let me before. I want to find out what else you would let me do before I use that one up."''',
+        c("Continue", "end")),
+    yn("stay", '''"Your wall." {n}She snorts.{/n} "It is my wall. I held it before your grandmother was born." {n}But she does not get up.{/n} "Very well. I will stay on my wall, and you will come up it when you can, and some night when the war is done I will look out at the cairns and think about an old man who would not take a banner, and not go." {n}She looks at you sidelong.{/n} "Do not look so pleased. I have not promised which night."''',
+        c("Continue", "end")),
+    yn("both", '''{n}She laughs, loud enough that the sentry on the stair looks in.{/n}
+"You. In the Wound, past the cairns, with no banner and no army, following an old man nobody can follow." {n}She shakes her head.{/n} "You would talk the demons into fighting each other and steal their boots while they were at it. Berenguer would take one look at you and go back into the ash for another fifty years."
+{n}The laugh fades, but not all the way.{/n} "Yes. When the war is done. I would like that. I would like to see his face."''',
+        c("Continue", "end")),
+    nar("end", '''{n}She walks you to the foot of the stair. On the bottom step she stops, and looks out through the arch at the ash, the way the scout came in, and for a moment her face is the face on the statue, and then it is not.{/n}''',
+        c("[Go.]", flags=(Y + "beat.hunter",))),
+], requires=("trickster.ever", RETURNED, B_WALLS), **BEAT)
 
 def integrate(payload):
     """Minagho's presence facts for the scene on the wall (read-only; the merged route's flags are never forbidden)."""
