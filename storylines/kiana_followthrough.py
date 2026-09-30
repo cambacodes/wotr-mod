@@ -327,7 +327,8 @@ s("ink_after", "What she does with applause", [
 "I know."
 {n}Her next laugh is softer. She closes the space between you and leaves the pen, the accounts and the princess where they are. When you finally move away from the table, she reaches back only to cover the ink.{/n}
 "One practical thought. Then I intend to become a very bad example."
-{n}The lamp burns lower while the pages remain unread. Later, she finds the mark on your collar and refuses to look sorry for it.{/n}''', c('[Keep the evening with her.]', flags=("kiana.ink_evening_kept",))),
+{n}She lets the blue shawl fall over the back of the chair and goes to work on your collar with the ink-stained hand after all, button by button, watching your face to see whether you mind. You do not. She backs you against the edge of the desk, sets one knee on the chair beside your hip, and sweeps the princess's pages off the blotter with her forearm so that she can lean you back onto it. The lamp is left to burn itself down.{/n}
+{n}Later, she finds the mark on your collar and refuses to look sorry for it.{/n}''', c('[Keep the evening with her.]', flags=("kiana.ink_evening_kept",))),
     n("outside", "Kiana", '''"A bold proposal. We may discover we have legs."
 {n}She washes the ink from her hand before fastening the blue shawl. The water darkens, then clears beneath her fingers.{/n}
 "There is a woman near the market who sells little cakes after the stalls close. I have been meaning to find out whether they are as good as they smell."

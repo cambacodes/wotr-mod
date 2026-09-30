@@ -218,7 +218,7 @@ s("morning", "An ordinary difficulty", [
       c('[Listen.]', "settling", requires=("kiana.separated",))),
     n("bereaved", "Kiana", '''"I found an old letter from Elan. I had forgotten how bad his handwriting could be when he was in a hurry. He used to blame the horse."
 {n}She smiles, rubbing a thumb along the edge of the folded paper.{/n}
-"I wanted to read it again. I also wanted to see you tonight. I am getting better at letting both things be true."''',
+"I wanted to read it again. I also wanted to see you tonight. I threw it at the wall twice on the way here. It is a very sturdy letter."''',
       c('"Keep it somewhere you can find it again."', "work")),
     n("settling", "Kiana", '''"Elan and I have been sorting out what belongs to whom. We agreed about the furniture. Then neither of us wanted to be the first to take down a little picture we bought together."
 {n}She looks toward the wall, where the picture now hangs.{/n}

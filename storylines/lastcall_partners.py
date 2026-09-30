@@ -265,7 +265,7 @@ partner("kiana", "kiana", "kiana.committed", "kiana.closed", "Home by Spring",
     (
         page_p('''The wedding guests still in Sunhammer's keeping came home that spring. Kiana met every coach. She knew all their names, and she made the Commander learn them too.''', requires=(called("kiana"),)),
         page_p('''She never quite forgave the Commander the guests left behind in the pouch the first time, when {mf|he|she} was quicker to free her than to count the others. She said so once, plainly, and never needed to again.''', requires=(KI + "cost.guests_robbed",), forbids=(called("kiana"),)),
-        page_p('''The counterfeit that had stood in for her stone was never found. Kiana suspected the Commander of keeping it, and was right.''', requires=(KI + "cost.counterfeit_spent",)),
+        page_p('''The counterfeit that had stood in for her stone went back to Sunhammer's bench in his apprentice's hand. Kiana liked to imagine the day he put a loupe to it, and made the Commander imagine it with her.''', requires=(KI + "cost.counterfeit_spent",)),
     ), deal=[[KI + "cost.sunhammer_favour"], [KI + "cost.guests_robbed"], [KI + "cost.courier_marked"]],
     call=call('''[Call in the courier's account] "Sunhammer, you're owed. Collect now, while I've a pulse to collect from."''',
         '''{n}Far off, in a shop that smells of solder, a dwarf lays down a loupe and makes a note in the one ledger he keeps in his head.{/n}''',
