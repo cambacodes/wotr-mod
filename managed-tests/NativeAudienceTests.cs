@@ -89,6 +89,7 @@ internal static class NativeAudienceTests
                         && effects.Count(a => a is Kingmaker.Kingdom.Blueprints.AddCrusadeResources || a is Kingmaker.Kingdom.Blueprints.RemoveCrusadeResources) == (choice.Crusade != null ? 1 : 0)
                         && effects.All(a => a is Kingmaker.Kingdom.Blueprints.AddCrusadeResources || a is Kingmaker.Kingdom.Blueprints.RemoveCrusadeResources
                             || a is Kingmaker.Designers.EventConditionActionSystem.Actions.RemoveItemFromPlayer && choice.RemoveItem != null
+                            || a is Kingmaker.Designers.EventConditionActionSystem.Actions.StartEtude && choice.StartEtude != null
                             || a is Kingmaker.Designers.EventConditionActionSystem.Actions.IncrementFlagValue && choice.Mythic != null),
                         "Inline choice lost its sole authored RouteAction: " + answerKey);
                     var action = (Main.RouteAction)answer.OnSelect.Actions[0];

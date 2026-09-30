@@ -60,10 +60,10 @@ DEBTS = [
          ledger_title="The Lady in Shadow: an answer owed",
          ledger_text="A favour of her choosing, or a stalemate of kept secrets. Either way she has an interest in my continued breathing, and Nocticula is a patient creditor.",
          page_called="The Lady in Shadow did not come in person; she seldom does. A note came instead, unsigned, smelling of night-blooming flowers, and it said only that the Lady in Shadow was pleased to find her debtor still in circulation, that a living debtor is worth a great deal more than a legend, and that she expected her return on the matter in person, and soon."),
-    dict(key="ramisa", groups=[["nurah.trickster.cost.ramisa_fee"], ["nurah.trickster.cost.ramisa_audience"], ["nurah.trickster.cost.bill_in_your_name"]],
+    dict(key="ramisa", groups=[["nurah.trickster.cost.ramisa_audience"], ["nurah.trickster.cost.bill_in_your_name"]],   # gold alone owes nothing
          called_by=[called("nurah")],
          ledger_title="Ramisa Shed-Skin: the only seat",
-         ledger_text="The marilith keeps a duplicate of every bill with my name on it, and I sold her the only seat at the last night of the war. She will want her performance.",
+         ledger_text="The marilith keeps the other copy of the bill I made out in her market. Either she already owns the only seat at the last night of the war, or she will want it in exchange for that copy. She will want her performance.",
          page_called="Ramisa Shed-Skin came to collect art. She had bought the only seat at the last night of the war and had watched all of it through a mirror in her market, and now she wanted the story set down in ink, with herself in the dedication. She got the story. She asked for the flask as well, prettily, and then again with more of her arms, and did not get it."),
     dict(key="herrax", groups=[[MC + "herrax_favor"]], called_by=[called("minagho_chivarro")],
          ledger_title="Herrax: the house special",
@@ -264,10 +264,17 @@ partner("nurah", "nurah", "nurah.complete", "nurah.closed", "The Last Chapter",
         page_p('''Her name went on the cover next to the Commander's. She had insisted. She was right to.''', requires=(NU + "cost.coauthor",)),
         page_p('''Her name went on the cover above the Commander's, in larger letters. She had insisted. The Commander had let her.''', requires=(NU + "cost.name_above",)),
         page_p('''She wrote the Commander's obituary herself, for a Nerosyan broadsheet. It was vicious, accurate and extremely popular.''', requires=(ON_RECORD,)),
-    ), deal=[[NU + "cost.ramisa_fee"], [NU + "cost.ramisa_audience"], [NU + "cost.bill_in_your_name"]],
+    # Sol quality pass (Nurah TRK/BEL): a soul paid for in gold leaves no debt, so the call-in is offered only on the story
+    # she sold (ramisa_audience) or on the duplicate bill Ramisa kept; for the bill alone the story is sold here, on screen,
+    # against that bill (trickster.lastcall.nurah_story_sold), and the page's first paragraph burns it.
+    ), deal=[[NU + "cost.ramisa_audience"], [NU + "cost.bill_in_your_name"]],
     call=call('''[Call in the custom order] "Madam Shed-Skin, you wanted art. I'm about to make some. Front row."''',
         '''{n}A mirror in a slave market somewhere in the Abyss clears, like breath wiped from glass, and something with a great many arms settles in to watch.{/n}''',
-        (PILLAR_CHOICE, (PILLAR,), (), ())))
+        (PILLAR_CHOICE, (PILLAR,), (NU + "cost.ramisa_audience",), ()),
+        ('''"Front row, for the duplicate bill with my name on it. You burn it when the curtain falls."''',
+         (PILLAR, "trickster.lastcall.nurah_story_sold"), (NU + "cost.bill_in_your_name",), (NU + "cost.ramisa_audience",))),
+    # R2-6: the late courier and the late pedlar commit on the epilogue page; their coda plays on the late key.
+    page_commit_groups=[[NU + "coda_alive"]])
 
 KI = "kiana.trickster."
 partner("kiana", "kiana", "kiana.committed", "kiana.closed", "Home by Spring",
@@ -369,14 +376,18 @@ partner("targona", "targona", "targona.committed", "targona.closed", "The Quiet 
         page_p('''The Commander kept the promise at the rift. {mf|He|She} did not call on her brother's light, though it would have been the easiest thing in the world, and she heard afterwards that {mf|he|she} had not. She did not say anything. She put a second chair by her desk in the ward, and it was never empty for long.''', requires=(T + "cost.light_sealed",), forbids=(called("targona"),)),
         page_p('''At the rift the Commander called on Lariel's light, and broke the one promise she had asked of {mf|him|her}. She learned of it within the week. She stayed; an angel keeps her word even when others do not. But she sat at the other end of the ward's table for a year, and it was a year before she let the Commander carry a lamp for her again.''', requires=(called("targona"), T + "cost.light_sealed")),
         page_p('''She had told Heaven everything, as her price for coming back. Heaven, it seemed, had listened, and had not recalled her. She took that as an answer and did not ask for another.''', any_groups=[[T + "cost.she_told_heaven", T + "cost.raised_openly"]]),
-        page_p('''She never forgave the joke at her bier, and she never pretended to. She served beside the Commander for the rest of her long life, courteous, exact, and always at the far end of any room they shared.''', requires=(T + "cost.unforgiven",)),
+        page_p('''She never forgave the joke at her bier, and she never pretended to. She served beside the Commander for the rest of her long life, courteous, exact, and always at the far end of any room they shared.''', requires=(T + "cost.unforgiven",), forbids=(T + "forgiven",)),
+        page_p('''She forgave the joke at her bier in the end, when it had been apologised for properly, but she never forgot it. Some evenings she would bring it up at table, precisely, word for word, and watch the Commander wince, and then pour the wine.''', requires=(T + "cost.unforgiven", T + "forgiven")),
     ), declined=T + "declined",
     deal=[[T + "cost.raised_openly"], [T + "cost.she_told_heaven"], [T + "cost.raised_the_hard_way"], [T + "cost.light_sealed"]],
     call=call('''[Call on Lariel's light] "Lariel, whatever of you is left in me: one more quiet miracle."''',
-        '''{n}Something warm and patient moves under your ribs: a light that belongs to someone's brother, lent to you in an infirmary and never quite given back.{/n}''',
+        '''{n}Something warm and patient moves under your ribs: a light that belongs to someone's brother, that went into you in the rock under Kenabres and never quite became yours.{/n}''',
         (PLAIN_CHOICE, (), (), (T + "cost.light_sealed",)),
         ('''[Break your promise to Targona] "Forgive me. I need it."''', (), (T + "cost.light_sealed",), ()),
-        ("[Keep your promise] Leave the light where it is.", None, (T + "cost.light_sealed",), ())))   # resolves, not called
+        ("[Keep your promise] Leave the light where it is.", None, (T + "cost.light_sealed",), ())),   # resolves, not called
+    # Sol quality pass (Targona INT): RanRomance's own Targona romance, completed through its Angelic Treatment on this
+    # path, is a commitment for the coda too (targona.trickster.parent_romanced; its correspondence never sets committed).
+    page_commit_groups=[["targona.committed"], [T + "late_committed"], [T + "parent_romanced"]])
 
 D = "dorgelinda.trickster."
 partner("dorgelinda", "dorgelinda", "dorgelinda.committed", "dorgelinda.closed", "The Open Line",

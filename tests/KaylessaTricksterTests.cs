@@ -210,7 +210,7 @@ internal static class KaylessaTricksterTests
             "Trk_Kaylessa_Alive: without the Commander's oath, the arrow is not hers.");
 
         // Trk_Kaylessa_Spine: rules, the clock, the pivot, the dagger.
-        var home = World(story, 5, "trickster.ever", Returned, "kaylessa.started", P + "alive.swap_clean", P + "cost.amulet_burnt");
+        var home = World(story, 5, "trickster.ever", Returned, "kaylessa.started", P + "alive.swap_clean", P + "cost.amulet_burnt", W + "in_the_dark");
         check(Avail(rules, home) && !Avail(clock, home) && !Avail(commit, home), "Trk_Kaylessa_Spine: the rules are not first.");
         var ruled = Later(story, Take(rules, home, "rules", 0), 24);
         check(Avail(clock, ruled), "Trk_Kaylessa_Spine: the clock does not follow the rules.");
@@ -240,18 +240,117 @@ internal static class KaylessaTricksterTests
         check(!Avail(commit, Later(story, no, 96)) && Avail(table, Later(story, no, 72)), "Trk_Kaylessa_Declined: the knife is not put down later.");
         check(Through(table, Later(story, no, 72), "knife", 0).All(r => r.Has(Committed)) && Take(table, Later(story, no, 72), "knife", 2, Closed).Has(P + "left_free"),
             "Trk_Kaylessa_Declined: the knife on the table is not a yes (picked up) or a parting (left).");
-        var liar = World(story, 5, "trickster.ever", Returned, Dead, P + "lied_about_price", P + "knife_shown", P + "beast_met");
-        // No test: she names the unconfessed lie, but the knife is offered either way (the confession is a chance, not a toll).
-        var liarWalks = Program.Walk(commit, liar).Where(r => r.Has(Committed)).ToList();
-        check(Avail(commit, liar) && liarWalks.Any(r => r.Has(P + "confessed_price")) && liarWalks.Any(r => !r.Has(P + "confessed_price"))
-              && commit.Nodes.Single(n => n.Id == "truth_first").Choices.All(c => c.Set.All(f => f != P + "declined")),
-            "Trk_Kaylessa_Lie: the knife is priced on a confession (a test before yes).");
-        check(Avail(pages.Single(p => p.Id == P + "epilogue.commit"), World(story, 6, "trickster.ever", P + "clock_named")),
-            "Trk_Kaylessa_Late: the war's end has no late yes.");
+        var liar = World(story, 5, "trickster.ever", Returned, Dead, P + "lied_about_price", P + "knife_shown", P + "beast_met", W + "in_the_dark");
+        // Rule three (Sol quality pass, VOI): an unconfessed lie postpones her proposal, exactly as it ends the knife on the table;
+        // the confession or the table's scratched answer still reaches a yes, so the refusal is never final.
+        var liarWalks = Program.Walk(commit, liar).ToList();
+        check(Avail(commit, liar) && liarWalks.Where(r => r.Has(Committed)).All(r => r.Has(P + "confessed_price"))
+              && liarWalks.Any(r => r.Has(Committed)) && liarWalks.Any(r => r.Has(P + "declined") && !r.Has(Committed) && !r.Has(Closed)),
+            "Trk_Kaylessa_Lie: she hands her death to a Commander still lying to her, or the lie closes her for good.");
+        var liarNo = Later(story, liarWalks.First(r => r.Has(P + "declined") && !r.Has(P + "confessed_price")), 72);
+        check(Avail(table, liarNo) && Program.Walk(table, liarNo).Any(r => r.Has(Committed) && r.Has(P + "confessed_price")),
+            "Trk_Kaylessa_Lie: the postponed proposal has no road back through the truth.");
+        // The late page needs the dagger's disclosure (the last beat before her proposal); the clock alone is an ally's ending.
+        var epAlly = pages.Single(p => p.Id == P + "epilogue.ally");
+        check(Avail(pages.Single(p => p.Id == P + "epilogue.commit"), World(story, 6, "trickster.ever", P + "clock_named", P + "knife_shown", W + "in_the_dark", P + "alive.swap_clean"))
+              && !Avail(pages.Single(p => p.Id == P + "epilogue.commit"), World(story, 6, "trickster.ever", P + "clock_named"))
+              && Avail(epAlly, World(story, 6, "trickster.ever", P + "clock_named"))
+              && !Avail(epAlly, World(story, 6, "trickster.ever", P + "clock_named", P + "knife_shown", W + "in_the_dark", P + "alive.swap_clean"))
+              && Avail(epAlly, World(story, 6, "trickster.ever", P + "clock_named", P + "knife_shown"))
+              && !Avail(pages.Single(p => p.Id == P + "epilogue.commit"), World(story, 6, "trickster.ever", P + "clock_named", P + "knife_shown")),
+            "Trk_Kaylessa_Late: the war's end commits a mere acquaintance, or leaves the knife's disclosure without a late yes.");
+        check(!World(story, 6, "trickster.ever", P + "clock_named").Has(P + "late_committed"), "The clock alone makes her a household partner.");
+
+        // Location (Sol quality pass, CAN): every visit in Drezen needs the rest taken in Drezen.
+        foreach (var v in own.Where(s => Rules.IsRemote(s) && Rules.KindOf(s) == "visit"))
+            check(v.Areas.SequenceEqual(new[] { Drezen }), "A Drezen visit can arrive after a rest elsewhere: " + v.Id);
+        var outside = Program.Copy(alive); outside.Area = "ffffffffffffffffffffffffffffffff";
+        check(!Avail(hunter, outside) && Avail(hunter, alive), "Forn's antechamber visit arrives in the wilderness.");
+        // Histories the text must not invent: the living world never died; never-met is not greeted as an old meeting; the promise.
+        var lastWords = S(W + "last_words");
+        check(!lastWords.Nodes.Single(n => n.Id == "start").Text.Contains("died", StringComparison.Ordinal),
+            "The living Kaylessa remembers a death.");
+        var wantScene = S(W + "what_i_want");
+        var wantBase = World(story, 5, "trickster.ever", Returned, "kaylessa.started", P + "alive.swap_clean", W + "in_the_dark", P + "knife_shown");
+        var wantPages = new HashSet<string>();
+        Program.Walk(wantScene, wantBase, (page, _) => wantPages.Add(page));
+        var wantMet = Program.Copy(wantBase); wantMet.Flags.Add("kaylessa.first_words_seen");
+        var metPages = new HashSet<string>();
+        Program.Walk(wantScene, wantMet, (page, _) => metPages.Add(page));
+        check(wantPages.Contains("start_fresh") && !wantPages.Contains("start") && !wantPages.Contains("know")
+              && metPages.Contains("start") && !metPages.Contains("start_fresh") && !wantScene.Nodes.Any(n => n.Text.Contains("Kenabres", StringComparison.Ordinal)),
+            "Her first words are recalled for a Commander who never heard them.");
+        // Round 4 (BEL): the proposal follows one played exchange of attraction (the kiss after curfew); without it, no proposal.
+        check(commit.Requires.Contains(W + "in_the_dark") && !Avail(commit, World(story, 5, "trickster.ever", Returned, P + "knife_shown")),
+            "The proposal comes before any played attraction.");
+        // Round 4 (INT): Shyka gone from the Council still answers a sending, on worse terms, in Chapter 5.
+        var sending = S(P + "dead.borrow_sending");
+        var goneWorld = World(story, 5, "trickster", "trickster.ever", Dead, "shyka.gone");
+        check(Avail(sending, goneWorld) && !Avail(borrow, goneWorld) && Rules.KindOf(sending) == "sending"
+              && !Avail(sending, World(story, 5, "trickster.ever", Dead, "shyka.gone")), "Shyka's departure shuts the dead worlds.");
+        // Round 6 (INT): the Council fights do not end Shyka (Shyka_Offer/Cue_0002): the sending answers after either fight too.
+        foreach (var fight in new[] { "council.fought", "council.fought_nocta_allied" })
+        {
+            var fought = World(story, 5, "trickster", "trickster.ever", Dead, fight);
+            check(Avail(sending, fought) && !Avail(borrow, fought), "A Council fight shuts the dead worlds: " + fight);
+            check(Reaches(Take(sending, fought, "answer", 0, P + "primed"), Committed), "No road from the sending after " + fight);
+        }
+        // Round 6 (INT): her recollection of being believed follows the native warning answers.
+        var hunted = Later(story, played, 12);
+        var metPagesW = new HashSet<string>(); var warnedPagesW = new HashSet<string>();
+        Program.Walk(warning, hunted, (page, _) => metPagesW.Add(page));
+        var warnedWorld = Program.Copy(hunted); warnedWorld.Flags.Add("kaylessa.warned_camp"); Rules.Complete(story, warnedWorld);
+        Program.Walk(warning, warnedWorld, (page, _) => warnedPagesW.Add(page));
+        check(metPagesW.Contains("met_doubted") && !metPagesW.Contains("met") && warnedPagesW.Contains("met") && !warnedPagesW.Contains("met_doubted")
+              && !warning.Nodes.Single(n => n.Id == "met").Text.Contains("Kenabres", StringComparison.Ordinal),
+            "She credits the Commander with a trust the native answers never gave.");
+        check(swap.Nodes.Single(n => n.Id == "after").Text.Contains("counted two", StringComparison.Ordinal)
+              && warning.Nodes.Single(n => n.Id == "swap").Text.Contains("count two", StringComparison.Ordinal),
+            "The Council records her dead with nothing on the ridge to see it.");
+        var sent2 = Take(sending, goneWorld, "answer", 0, P + "primed", P + "cost.shyka_raised");
+        check(Avail(soldier, Later(story, sent2, 12)) && Reaches(sent2, Committed), "The sending does not bring her back.");
+        // Round 4 (CAN): Forn is the Winter Council's hunter, never a darkhunter.
+        check(!own.Concat(pages).SelectMany(x => x.Nodes).Any(n => n.Text.Contains("darkhunter", StringComparison.OrdinalIgnoreCase))
+              && !own.SelectMany(x => x.Nodes).Any(n => n.Text.Contains("You're blind", StringComparison.Ordinal)),
+            "Forn is called a darkhunter, or the Commander is declared blind.");
+        // Round 5 (INT): rule three reaches the late page too; an unconfessed liar gets the ally's ending, not the romance.
+        var lateLiar = World(story, 6, "trickster.ever", Dead, Returned, P + "clock_named", P + "knife_shown", W + "in_the_dark", P + "lied_about_price");
+        check(!lateLiar.Has(P + "late_committed") && !Avail(pages.Single(p => p.Id == P + "epilogue.commit"), lateLiar)
+              && Avail(pages.Single(p => p.Id == P + "epilogue.ally"), lateLiar) && !lateLiar.Has("kaylessa.harem.eligible"),
+            "An unconfessed liar gets the late romance.");
+        var lateConfessed = Program.Copy(lateLiar); lateConfessed.Flags.Add(P + "confessed_price"); Rules.Complete(story, lateConfessed);
+        check(lateConfessed.Has(P + "late_committed") && Avail(pages.Single(p => p.Id == P + "epilogue.commit"), lateConfessed),
+            "A confessed lie still blocks the late page.");
+        check(pages.Single(p => p.Id == P + "epilogue.commit").Nodes[0].Text.Contains("astride", StringComparison.Ordinal),
+            "The late romance has no threshold.");
+        // Round 5 (CAN/COX): no narration decides the Commander's night sight; Avennara's reply comes at the awning.
+        foreach (var x in own.Concat(pages))
+            foreach (var n in x.Nodes.Where(n => n.Speaker == "Narrator"))
+                check(!n.Text.Contains("You can't", StringComparison.Ordinal) && !n.Text.Contains("you can't", StringComparison.Ordinal)
+                      && !n.Text.Contains("you do,", StringComparison.Ordinal), "Narration declares the Commander blind: " + x.Id + "/" + n.Id);
+        check(Rules.IsPresenceHubScene(S(N + "avennara")), "Avennara's reply is a second Chapter 5 letter.");
+        var nightScene = S(N + "where_i_was_meant_to_die");
+        var desireNode = nightScene.Nodes.Single(n => n.Id == "desire");
+        check(desireNode.Choices.Single(c => c.Next == "like_met").Requires.Contains("kaylessa.first_words_seen")
+              && desireNode.Choices.Single(c => c.Next == "like_stranger").Forbids.Contains("kaylessa.first_words_seen"),
+            "The night recalls first words that a started dialogue does not prove.");
+        var commitPage = pages.Single(p => p.Id == P + "epilogue.commit");
+        check(commitPage.Nodes[0].Paragraphs.Single(q => q.Requires.Contains(P + "cost.dark_fate_stalled")).Forbids.Contains(P + "cost.beast_fed")
+              && commitPage.Nodes[0].Paragraphs.Any(q => q.Requires.Contains(P + "cost.beast_fed")), "The late page forgets the fed beast.");
+        var hunterParas = pages.Single(p => p.Id == P + "epilogue.no_lamb").Nodes[0].Paragraphs.Where(q => q.Requires.Contains(P + "cost.council_knows")).ToList();
+        check(hunterParas.Count == 2 && hunterParas.Single(q => q.Text.Contains("his own arrows")).Forbids.Contains(N + "hunter_turned_back")
+              && hunterParas.Any(q => q.AnyGroups.Any(g => g.Contains(N + "hunter_turned_back") && g.Contains(N + "hunter_hers"))),
+            "The page replaces the played hunter with an unplayed killing.");
+        check(!S(W + "trance").Nodes.Any(n => n.Text.Contains("trance", StringComparison.OrdinalIgnoreCase) && n.Text.Contains("Elves", StringComparison.Ordinal)),
+            "An invented elven trance is stated as canon.");
+        var nameScene = S(N + "once_when_it_counts");
+        var namePages = new HashSet<string>();
+        Program.Walk(nameScene, World(story, 5, "trickster.ever", Committed, P + "knife_held", N + "grey_light"), (page, _) => namePages.Add(page));
+        check(namePages.Contains("name_fresh") && !namePages.Contains("name"), "She keeps a promise from a conversation that never happened.");
 
         // Pages: effect-free Chapter 6 pages; no exclusivity stated as fact is linted by the house rules.
-        check(pages.Length == 4 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null && c.Mythic == null))),
-            "The pages are not four effect-free Chapter 6 pages.");
+        check(pages.Length == 5 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null && c.Mythic == null))),
+            "The pages are not five effect-free Chapter 6 pages.");
         check(Avail(pages.Single(p => p.Id == P + "epilogue.no_lamb"), World(story, 6, "trickster.ever", Committed))
               && !Avail(pages.Single(p => p.Id == P + "epilogue.commit"), World(story, 6, "trickster.ever", Committed, P + "clock_named")),
             "The committed page is not the committed ending.");
@@ -262,6 +361,71 @@ internal static class KaylessaTricksterTests
               && reactions.Where(r => r.Owner == "Woljif").All(r => r.Forbids.Contains("woljif.dead") && r.Forbids.Contains("woljif.kicked_out"))
               && reactions.Where(r => r.Owner == "Shyka").All(r => Rules.IsRemote(r) && r.Forbids.Contains("shyka.gone")),
             "The reactions are not exactly Anevia, Woljif and Shyka behind their guards.");
+
+        // Sol quality pass (CAN/INT/COX/BEL): the successor, the native outcome of the ravine, bottle survival, the morning seen.
+        const string FornIsDead = "7a6f0ef4dd004418aa613693dd9d280a";
+        check(story.Etudes["kaylessa.forn_dead"] == FornIsDead && story.StartableEtudes.Contains(FornIsDead),
+            "E17: FornIsDead is not both read and startable.");
+        // The original Forn: every ravine outcome starts FornIsDead (native Forn_Ambush/Cue_0040 would have), which removes his
+        // DrezenCapital spawner (Forn_m_spawnConditions requires it not playing) and hides him (DrezenCapital_DefaultMechanic).
+        var ravineEnds = swap.Nodes.SelectMany(n => n.Choices).Where(c => c.Next == null && c.Check == null && !c.Abort).ToList();
+        check(ravineEnds.Where(c => c.Forbids.Contains(P + "alive.successor")).All(c => c.StartEtude == FornIsDead)
+              && ravineEnds.Where(c => c.Requires.Contains(P + "alive.successor")).All(c => c.StartEtude == null)
+              && ravineEnds.Count(c => c.StartEtude == FornIsDead) == 3 && ravineEnds.Count(c => c.Requires.Contains(P + "alive.successor")) == 3,
+            "The ravine does not start FornIsDead for the original Forn only.");
+        var origPages = new HashSet<string>();
+        Program.Walk(swap, ready, (page, _) => origPages.Add(page));
+        check(origPages.Contains("forn") && origPages.Contains("volley") && !origPages.Contains("forn_s") && !origPages.Contains("volley_s"),
+            "The original ravine plays the successor's pages.");
+        // After the ravine the native etude plays: the later scenes must still remember the original Forn, not a successor.
+        var afterRavine = Program.Copy(clean); afterRavine.Flags.Add("kaylessa.forn_dead"); afterRavine.Times["kaylessa.forn_dead"] = afterRavine.Hour;
+        var cleanRuled = Later(story, Take(rules, Later(story, afterRavine, 24), "rules", 0), 24);
+        var clockPages = new HashSet<string>();
+        Program.Walk(clock, cleanRuled, (page, _) => clockPages.Add(page));
+        check(clockPages.Contains("clean") && !clockPages.Contains("clean_s"), "FornIsDead turns the original Forn into his successor afterwards.");
+        // Forn died in canon: a nameless successor, named nowhere as Forn, with Forn's face nowhere on the page.
+        var heirWorld = World(story, 5, "trickster", "trickster.ever", "kaylessa.met", "kaylessa.forn_dead");
+        var heirPages = new HashSet<string>();
+        Program.Walk(hunter, heirWorld, (page, _) => heirPages.Add(page));
+        check(heirPages.Contains("second") && heirPages.Contains("ask_s") && !heirPages.Contains("named") && !heirPages.Contains("ask"),
+            "The successor is introduced as Forn.");
+        var heirPlayed = Take(hunter, heirWorld, "seen_s", 0, P + "primed", P + "alive.successor");
+        var heirPlanned = Later(story, Take(warning, Later(story, heirPlayed, 12), "terms", 0, P + "alive.planned"), 24);
+        var heirWarnPages = new HashSet<string>(); var heirSwapPages = new HashSet<string>();
+        Program.Walk(warning, Later(story, heirPlayed, 12), (page, _) => heirWarnPages.Add(page));
+        Program.Walk(swap, heirPlanned, (page, _) => heirSwapPages.Add(page));
+        check(heirWarnPages.Contains("amulet_s") && !heirWarnPages.Contains("amulet") && heirSwapPages.Contains("forn_s")
+              && heirSwapPages.Contains("volley_s") && !heirSwapPages.Contains("forn") && !heirSwapPages.Contains("volley"),
+            "The successor's ambush plays Forn's pages.");
+        foreach (var id in heirSwapPages.Concat(heirPages).Distinct())
+        {
+            var node = swap.Nodes.Concat(hunter.Nodes).First(n => n.Id == id && (heirSwapPages.Contains(id) ? swap.Nodes.Contains(n) : hunter.Nodes.Contains(n)));
+            check(node.Speaker != "Forn" && node.Portrait != "Forn", "The successor speaks with Forn's name or face: " + id);
+        }
+        var heirClean = Take(swap, heirPlanned, "end", 1, Returned, P + "alive.swap_clean");
+        check(Program.Walk(swap, heirPlanned).All(r => !r.Has(Returned) || r.Has(P + "alive.successor")), "The successor's ravine forgets whose it was.");
+        var heirClock = new HashSet<string>();
+        Program.Walk(clock, Later(story, Take(rules, Later(story, heirClean, 24), "rules", 0), 24), (page, _) => heirClock.Add(page));
+        check(heirClock.Contains("clean_s") && !heirClock.Contains("clean"), "The clock remembers Forn going down in the successor's ravine.");
+        var noLamb = pages.Single(p => p.Id == P + "epilogue.no_lamb");
+        var swapPara = noLamb.Nodes[0].Paragraphs.Where(p => p.Requires.Contains(P + "alive.swap_clean")).ToList();
+        check(swapPara.Count == 2 && swapPara.Single(p => p.Forbids.Contains(P + "alive.successor")).Text.Contains("Forn Autumn Haze")
+              && swapPara.Single(p => p.Requires.Contains(P + "alive.successor")).Text.Contains("nameless"), "The page names the wrong dead hunter.");
+        // The living clock: no unprepared reversal, no promised long life; the knots continue.
+        var morning = S(N + "grey_light");
+        check(!morning.Nodes.Single(n => n.Id == "clean").Text.Contains("Back.", StringComparison.Ordinal)
+              && !noLamb.Nodes[0].Text.Contains("a long time", StringComparison.Ordinal)
+              && noLamb.Nodes[0].Paragraphs.Any(p => p.AnyGroups.Any(g => g.Contains(P + "alive.swap_clean") && g.Contains(P + "alive.swap_fumbled"))),
+            "The living world's curse is reversed or outlived without a cause.");
+        // Last Call: a Commander who came back from the sacrifice (bottle or not) keeps the ending; an unsurvived one does not.
+        foreach (var page in pages.Where(p => p.Forbids.Contains("sacrifice")))
+            check(page.ForbidOverrides["sacrifice"] == "trickster.commander_back", "A page ignores the Commander's return: " + page.Id);
+        check(Avail(noLamb, World(story, 6, "trickster.ever", Committed, "sacrifice", "ending.trickster"))
+              && !Avail(noLamb, World(story, 6, "trickster.ever", Committed, "sacrifice")), "Bottle-backed survival loses her ending.");
+        // Directive 12: the morning after, seen by Woljif.
+        var wMorning = S(P + "react.woljif_morning");
+        check(wMorning.Owner == "Woljif" && wMorning.Requires.Contains(N + "grey_light") && !Avail(wMorning, World(story, 5, "trickster.ever", Committed))
+              && Avail(wMorning, World(story, 5, "trickster.ever", Committed, N + "grey_light")), "Nobody notices the morning after.");
 
         // Camellia's oath: her kill that didn't take, now that this route returns her (ledger 05 row 12).
         var oathCamp = S("camellia.trickster.kills_answered.oath_camp");

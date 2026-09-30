@@ -514,7 +514,11 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
                                  ['noct.acq.audience_started']],
  'nocticula.trickster.late_committed': [['trickster.ever', 'nocticula.trickster.returned']],
  'nurah.native_fate': [['nurah.prison'], ['nurah.dead_drezen'], ['nurah.dead_camellia'], ['nurah.killing_mechanism']],
- 'nurah.trickster.late_committed': [['trickster.ever', 'nurah.trickster.proofs_seen']],
+ # Proofs seen by a Nurah who is alive now: raised, run off, or still in her cell (the prison etude stops playing on her
+ # death), so proofs followed by an execution never commit her (Sol quality pass, TRK).
+ # (Round 3) only the late branches, which can never reach her in-person terms: a proofs-only history elsewhere is her
+ # unanswered page, not a romance. The late courier is raised and both pedlars leave her alive.
+ 'nurah.trickster.late_committed': [['trickster.ever', 'nurah.trickster.proofs_seen', 'nurah.trickster.cost.late']],
  'seelah.trickster.in_drezen': [['seelah_gone', 'seelah.trickster.primed'],
                                 ['seelah_dead', 'seelah.trickster.correspondent']],
  'seelah.trickster.late_committed': [['trickster.ever', 'seelah.trickster.stay_decided']],
@@ -525,8 +529,12 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
  'storyteller.became_usher': [['storyteller.dead_delayed']],
  'storyteller.dead': [['storyteller.dead_main'], ['storyteller.dead_dlc']],
  'storyteller.pharasma_resolved': [['storyteller.rejected'], ['storyteller.dead_delayed'], ['storyteller.dead_main']],
- 'targona.trickster.in_drezen': [['targona.trickster.returned'], ['targona.trickster.met']],
- 'targona.trickster.late_committed': [['trickster.ever', 'targona.trickster.forgiven'],
+ # The freed state: she comes down to the cots the morning after the wand night (free.furlough), so her copy must stand
+ # there before `met` exists (Sol quality pass: `met` is produced only by talking to that copy).
+ 'targona.trickster.in_drezen': [['targona.trickster.returned'], ['targona.trickster.met'],
+                                 ['targona.free', 'targona.trickster.cost.wand_unspent']],
+ # Killed branch: the washing (after forgiveness) is the last beat before the vigil (Sol quality pass, BEL).
+ 'targona.trickster.late_committed': [['trickster.ever', 'targona.trickster.washed_the_dead'],
                                       ['trickster.ever', 'targona.trickster.met']],
  'terendelev.ravener_dead': [['iz.monster_dead', 'trickster.ever']],
  # The monster's death as history: its latch, recorded while the party is in Iz (save-compatible with earlier builds).
@@ -566,6 +574,8 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
                                    ['chapter_later', 'yaniel.trickster.primed_trophy']]}
 
 LATCHES = {'arueshalae.evil_dead.latched': ['arueshalae.evil_dead'],
+ # Targona's laboratory death, recorded when first observed (one_soul's three days run from it, not from the primer).
+ 'targona.dead_lab.latched': ['targona.dead_lab'],
  'arueshalae_dead.latched': ['arueshalae_dead'],
  'baphomet.parley.latched': ['baphomet.parley'],
  'chadali.lost_at_council.latched': ['council.fought', 'council.fought_nocta_allied'],

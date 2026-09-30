@@ -16,12 +16,20 @@ and raised by the crusade's chaplains on the name, hour and place the Commander 
 dedication forged into a whole edition by hand, and kept in the printer's forme by a quartermaster's purse.
 She sets her own terms, she can refuse, and ownership is the one thing she never forgives.
 """
+import copy
+
 from story_format import c, n, p, reaction, scene
 
 SCENES = []
 DREZEN = "2570015799edf594daf2f076f2f975d8"
 UNIT = "f999fc37ddb225640b7f98c0a05d6948"             # NurahCapital: the capital cell's actor (spawner c2b298fc)
 LOCATOR = "7b94948a-1954-428f-82d0-94b2adcb1380"       # the capital locator the parent meeting translocates her to
+# NurahInPrison_Locator, the cell itself. NurahInPrisonCapitalMechanic (child of NuraInPrisonAfterDrezen c922e0cb) unhides the
+# actor and moves her here only while Chapter 3 plays (it stands down while Chapter05_Extra 1bbeffed plays), so her native
+# Nurah-Prison lists cannot be reached in Chapter 5 although the prison etude still plays. The Chapter 5 cell beats are
+# therefore twins on an E12c hub at this locator (Sol quality pass).
+CELL_LOCATOR = "336980c3-ad90-4633-aad9-4ef3f40c13f6"
+CELL_HUB = "nurah.presence.cell"
 CELL_A = "01d00f006e0e16543b7507ff38e9fb8a"            # NPC_Common/Nurah-Prison/AnswersList_0003 (after Cue_0001)
 CELL_B = "6201570ac1b1d8c4b878f935a7b0160e"            # Nurah-Prison/AnswersList_0004 (after Cue_0002, recruited only)
 CELL = [CELL_A, CELL_B]
@@ -51,6 +59,11 @@ AUDIENCE = "nurah.trickster.cost.ramisa_audience"
 IN_YOUR_NAME = "nurah.trickster.cost.bill_in_your_name"
 EVIL = "nurah.trickster.temper_evil"
 LATE_COMMITTED = "nurah.trickster.late_committed"
+PRINTER = "nurah.trickster.cost.printer_paid"          # the early dedication, with a purse sent to the presses (chosen)
+PRINTER_PAID = "nurah.trickster.printer_paid"          # derived: that purse, or a pedlar's run bought and its printer paid
+P_CODA_ALIVE = "nurah.trickster.coda_alive"           # derived: committed and alive now (Last Call page)
+P_LATE_CODA = "nurah.trickster.late_coda"             # derived: a late branch's commit (Last Call page)
+SECOND_EDITION = "nurah.trickster.cost.second_edition"# the pedlar met only in Chapter 5, after her first printing sold out
 DEATHS = ("nurah.dead_drezen", "nurah.dead_camellia", "nurah.killing_mechanism")
 CAMELLIA_KILL = "nurah.dead_camellia"
 
@@ -79,6 +92,14 @@ PRESENCES = {
                                   Dialog="hub", Greeting="{n}The halfling in the chaplains' grey shift is sitting on the "
                                   "steps with a parcel of paper on her knees. She is eating an apple with enormous "
                                   "concentration, the way people do who have recently had no mouth.{/n}"),
+    # Chapter 5, still in the prison etude: the native actor, unhidden at her own cell locator. Exclusive with both presences
+    # above (they require ran_off or returned, which this one forbids).
+    CELL_HUB: dict(Unit=UNIT, Area=DREZEN, Mode="reuse-native", At=dict(Locator=CELL_LOCATOR, Offset=[0.0, 0.0]),
+                   Requires=["trickster.ever", "nurah.prison"],
+                   Forbids=[CLOSED, COMPLETE, RAN_OFF, RETURNED, *DEATHS, "nurah.parent_romance"], MinChapter=5, MaxChapter=5,
+                   Dialog="hub", Greeting="{n}The cell at the end of the gaol row has not been swept since the army went down "
+                   "into the Abyss. A halfling sits cross-legged on the bunk with her back to the wall, and beside her, scratched "
+                   "into the plaster in neat rows of five, is a tally of every day since it marched.{/n}"),
 }
 
 
@@ -95,10 +116,18 @@ def ramisa(id, text, *choices, **kw):
 
 
 def cell(id, title, entry, nodes, requires, forbids, delay, **extra):
-    """A beat at her cell: E13 devices on both native Nurah-Prison lists (non-inline: no NativeReturnCue)."""
+    """A beat at her cell: E13 devices on both native Nurah-Prison lists (non-inline: no NativeReturnCue). Chapter 3 only:
+    the native mechanic shows her at the cell only then (see CELL_LOCATOR); cell_late is the Chapter 5 twin."""
     SCENES.append(scene(id, title, "Nurah", 3, entry, nodes, requires=requires, forbids=(CLOSED, *forbids), delay=delay,
-                        last=5, optional=True, Relationship="nurah", AnswerLists=list(CELL), TricksterDevice=True,
-                        TricksterState="prison", **extra))
+                        last=3, optional=True, Relationship="nurah", AnswerLists=list(CELL), TricksterDevice=True,
+                        TricksterState="prison", Chapters=[3], **extra))
+
+
+def cell_late(id, title, entry, nodes, requires, forbids, delay):
+    """The Chapter 5 twin of a cell beat, on the E12c hub of her unhidden actor at the cell locator (CELL_HUB)."""
+    SCENES.append(scene(id, title, "Nurah", 5, entry, copy.deepcopy(nodes), requires=requires,
+                        forbids=(CLOSED, RAN_OFF, *forbids), delay=delay, last=5, optional=True, Relationship="nurah",
+                        Chapters=[5], ContactUnit=UNIT, InteractionHub=CELL_HUB, TricksterDevice=True, TricksterState="prison"))
 
 
 def letter(id, title, chapter, nodes, requires, forbids, delay, **extra):
@@ -120,18 +149,30 @@ def pardon(id, answer_list, return_cue, lead, requires, forbids):
         nu("read", PARDON_READ,
            c("[Leave her the paper.]", flags=(PRIMED, LEDGER, "nurah.started")),
            c('[Take it back.] "On second thought, the seal really is upside down."', abort=True)),
-    ], requires=requires, forbids=(CLOSED, *DEATHS, LEDGER, *forbids), last=5, optional=True, Relationship="nurah",
-        AnswerLists=[answer_list], NativeReturnCue=return_cue, EntryMythic="PlayerIsTrickster",
+    ], requires=requires, forbids=(CLOSED, *DEATHS, LEDGER, *forbids), last=3, optional=True, Relationship="nurah",
+        Chapters=[3], AnswerLists=[answer_list], NativeReturnCue=return_cue, EntryMythic="PlayerIsTrickster",
         EntryAlignment=dict(Direction="Chaotic", Value=1), TricksterDevice=True, TricksterState="prison"))
 
 
-pardon("nurah.trickster.prison.pardon", CELL_A, SHRUG,
-       '''{n}Nurah takes the paper without getting up from the bunk.{/n} "Come to watch the traitor rot? It's slow work, Commander. You should have brought a chair."''',
-       ("trickster", "nurah.prison"), (RECRUITED,))
-pardon("nurah.trickster.prison.pardon_recruited", CELL_B, ASK,
-       '''{n}Nurah rolls onto one elbow on the bunk and does not smile.{/n} "The pawn remembers the hand that put it back in the box. You came with a candle and that face, so either you've come to execute me or to cheat at cards."
-{n}Her eyes go to your sword hand, then to the paper in the other.{/n} "If it's cards, I'm dealing."''',
-       ("trickster", "nurah.prison", RECRUITED), ())
+PARDON_LEAD = '''{n}Nurah takes the paper without getting up from the bunk.{/n} "Come to watch the traitor rot? It's slow work, Commander. You should have brought a chair."'''
+PARDON_LEAD_RECRUITED = '''{n}Nurah rolls onto one elbow on the bunk and does not smile.{/n} "The pawn remembers the hand that put it back in the box. You came with a candle and that face, so either you've come to execute me or to cheat at cards."
+{n}Her eyes go to your sword hand, then to the paper in the other.{/n} "If it's cards, I'm dealing."'''
+pardon("nurah.trickster.prison.pardon", CELL_A, SHRUG, PARDON_LEAD, ("trickster", "nurah.prison"), (RECRUITED,))
+pardon("nurah.trickster.prison.pardon_recruited", CELL_B, ASK, PARDON_LEAD_RECRUITED, ("trickster", "nurah.prison", RECRUITED), ())
+
+# Chapter 5: the same forgery at the unhidden cell (the [Trickster] mark and the chaotic shift move onto the answer, since a
+# hub entry carries no entry effects).
+cell_late("nurah.trickster.prison.pardon_late", "A pardon in the off hand",
+          '[Slide a terrible forgery under the bars] "Your pardon, madam. I signed it with my off hand."', [
+    nar("open", '''{n}Nobody has moved her. The lamp in the passage has been let go out more nights than it was lit, and the tally on the wall runs to the edge of the plaster and starts again underneath. She watches your hand come through the bars with the paper in it.{/n}''',
+        c("Continue", "start", forbids=(RECRUITED,)), c("Continue", "start_recruited", requires=(RECRUITED,))),
+    nu("start", PARDON_LEAD + '''
+"You went down into the Abyss and came back up, and I've been counting. I'm told the Commander of the Fifth Crusade has been very busy. I wasn't consulted."''', c("Continue", "read")),
+    nu("start_recruited", PARDON_LEAD_RECRUITED, c("Continue", "read")),
+    nu("read", PARDON_READ,
+       c("[Leave her the paper.]", mythic="Trickster", alignment=("Chaotic", 1), flags=(PRIMED, LEDGER, "nurah.started")),
+       c('[Take it back.] "On second thought, the seal really is upside down."', abort=True)),
+], ("trickster", "nurah.prison"), (*DEATHS, LEDGER), 0)
 
 
 def tempers(extra):
@@ -180,8 +221,10 @@ TERMS_CHOICES = (
     c('"Put my name on the cover too. Next to yours."', "partners", requires=(EVIL,),
       flags=(COMPLETE, "nurah.trickster.cost.coauthor")),
     c('"Put my name on it too. Above yours."', "refused", flags=(CLOSED, "nurah.trickster.cost.name_above")))
-DONE = '''"Then we have a book." {n}She says it the way other people say a prayer, quickly, before anyone can take it back.{/n}'''
-PARTNERS = '''"Co-authors. Partners in crime, in print, in the same typeface." {n}She grins, all teeth.{/n} "Trezbot would choke on it. Do that again sometime."'''
+DONE = '''"Then we have a book." {n}She says it the way other people say a prayer, quickly, before anyone can take it back.{/n}
+"And now the part that isn't in the contract." {n}She looks you over, slowly, the way she looks at a page she means to cut.{/n} "You kept me when it would have been cheaper to hang me, and you never once pretended it was mercy. I have wanted to know what you're like when you're not being clever since the night you slid that dreadful pardon under my door. Don't answer. You'll only be clever, and I have had enough of clever for one book."'''
+PARTNERS = '''"Co-authors. Partners in crime, in print, in the same typeface." {n}She grins, all teeth.{/n} "Trezbot would choke on it. Do that again sometime."
+"And since we're sharing things now." {n}She hooks a finger in your collar.{/n} "You're the only person who ever read what I wrote about them and laughed in the right places. I've been wanting to find out where else you laugh. Don't answer that either. I can read it off you."'''
 REFUSED = '''"No." {n}Not angry. Final.{/n}
 "Lord Axilar Trezbot's name is on the cover of the best book I ever wrote. His name, his deeds, his glorious story for future generations, in my hand, every word. I did not climb out from under that name to climb under yours. Keep your joke, Commander. There's no book."'''
 
@@ -202,6 +245,20 @@ cell("nurah.trickster.prison.terms", "Author's terms", '"Is it finished?"', [
         c("[Let her sleep.]")),
     nu("refused", REFUSED, c("[Leave the cell.]")),
 ], requires=("trickster.ever", RELEASED, PROOFS), forbids=(RETURNED, RAN_OFF, COMPLETE), delay=72)
+
+
+def cell_twin(ch3_id, late_id, requires, forbids, delay):
+    """The Chapter 5 twin of a Chapter 3 cell beat: the same title, entry and pages, on the cell hub."""
+    source = next(s for s in SCENES if s["Id"] == ch3_id)
+    cell_late(late_id, source["Title"], source["Entry"], source["Nodes"], requires, forbids, delay)
+
+
+cell_twin("nurah.trickster.prison.night_out", "nurah.trickster.prison.night_out_late",
+          ("trickster.ever", LEDGER, "nurah.prison"), (*DEATHS, RELEASED), 24)
+cell_twin("nurah.trickster.prison.proofs", "nurah.trickster.prison.proofs_late",
+          ("trickster.ever", RELEASED, ACCEPTED, "nurah.prison"), (RETURNED, PROOFS), 72)
+cell_twin("nurah.trickster.prison.terms", "nurah.trickster.prison.terms_late",
+          ("trickster.ever", RELEASED, PROOFS, "nurah.prison"), (RETURNED, COMPLETE), 72)
 
 
 # --- The dead branch: the bill of sale (F24 secondary; a priced deal with Ramisa, in her own market) -----------------
@@ -300,7 +357,9 @@ cell("nurah.trickster.ran_off.dedication", "A dedication in her own hand",
     nu("start", '''{n}She hands it over with two fingers, as if it were already on fire.{/n} "If you so much as fold a corner, I will write you into chapter nine as a hunchback with a lisp."''',
        c("Continue", "write")),
     nar("write", '''{n}By candlelight, on the blank page after the title, you write in her own small stitched hand, practising the loops until they are hers: "To the Commander, who kept me because I had stopped being funny. N. D." You leave the manuscript on her bunk before the bell.{/n}''',
-        c("[Leave it on her bunk.]", flags=(PRIMED, GHOST, "nurah.started"))),
+        c("[Leave it on her bunk.]", flags=(PRIMED, GHOST, "nurah.started")),
+        c("[Leave it on her bunk, and send a quartermaster's purse to the one licensed press at Nerosyan, which every pamphlet south of the Worldwound goes through, with the line and a page of her hand to set it by.]",
+          crusade=("Finances", -250), flags=(PRIMED, GHOST, "nurah.started", PRINTER))),
 ], requires=("trickster", "nurah.prison"), forbids=(*DEATHS, RAN_OFF, GHOST), delay=0,
     EntryMythic="PlayerIsTrickster", EntryAlignment=dict(Direction="Chaotic", Value=1))
 
@@ -313,19 +372,54 @@ letter("nurah.trickster.ran_off.second_draft", "Two hundred copies", 3, [
         c("[Go to bed.]")),
 ], requires=("trickster", RAN_OFF), forbids=(*DEATHS, GHOST), delay=0, TricksterDevice=True, TricksterState="ran_off")
 
-letter("nurah.trickster.ran_off.terms_by_post", "I am extremely funny", 3, [
-    nar("start", '''{n}The envelope is addressed in a hand so furious the nib went through twice.{/n}''',
-        c("Continue", "pardoned", requires=(RELEASED,)), c("Continue", "letter", forbids=(RELEASED,))),
-    nu("pardoned", '''"You pardoned me, then opened the door, then followed me with THIS. Make up your mind."''', c("Continue", "letter")),
-    nu("letter", '''"I did not write that. I checked every copy. I wrote it in every copy, apparently, in my own hand, better than I write it. I burned an edition, and the next one came off the press with the same line, because somebody had paid my printer to keep it locked in the forme. He is a very bad liar. The purse had a crusade quartermaster's knot on it. It is an insult in my own handwriting, Commander, and you paid good money to make it outlive us both.
+# Chapter 5: a runaway first approached (or primed too late to answer) after the Abyss. Her first printing is gone; the
+# second is caught at the press, dearer, and she has had months on the road to get angry in.
+letter("nurah.trickster.ran_off.second_draft_late", "Second printing", 5, [
+    nar("start", '''{n}Months after Nurah walked out of your gaol, and weeks after the crusade climbed back out of the Abyss, a pedlar comes through the Drezen gate with a crate of pamphlets gone soft at the corners: "The Pawn Who Left the Board", by N. D., second printing. The first sold out on the south road; a printer in Tymon has already pirated it. The dedication page is still blank.{/n}
+{n}The pedlar is carrying the printer's own proof sheets for a third run, to be approved by the author when she sends word. He would very much like to sell them to somebody sooner.{/n}''',
+        c("[Buy the crate and the proof sheets, pay the Tymon printer for his silence, and write the dedication into every copy.]",
+          "forged", mythic="Trickster", crusade=("Finances", -400), flags=(PRIMED, GHOST, LATE, SECOND_EDITION, "nurah.started")),
+        c('"Let the pedlar go."', abort=True)),
+    nar("forged", '''{n}Three hundred copies and the proof sheets, two nights, a box of candles. The first hundred are hard going; her hand has changed on the road, grown quicker and meaner, and you have to learn it again from the pamphlet's own marginal corrections. By the second night you are forging her better than she writes: "To the Commander, who kept me because I had stopped being funny. N. D." The pedlar leaves with the crate and no idea. The Tymon printer gets the proof sheets back with the line set into them, and a quartermaster's purse heavy enough to make him forget who sent it.{/n}''',
+        c("[Go to bed.]")),
+], requires=("trickster", RAN_OFF), forbids=(*DEATHS, GHOST), delay=0, TricksterDevice=True, TricksterState="ran_off")
+
+
+def terms_by_post(id, chapter, opening, late=False):
+    letter(id, "I am extremely funny", chapter, [
+        nar("start", opening,
+            c("Continue", "pardoned", requires=(RELEASED,)), c("Continue", "letter", forbids=(RELEASED,), requires=(PRINTER_PAID,)),
+            c("Continue", "letter_one", forbids=(RELEASED, PRINTER_PAID))),
+        nu("pardoned", '''"You pardoned me, then opened the door, then followed me with THIS. Make up your mind."''',
+           c("Continue", "letter", requires=(PRINTER_PAID,)), c("Continue", "letter_one", forbids=(PRINTER_PAID,))),
+        nu("letter", '''"I did not write that. I checked every copy. I wrote it in every copy, apparently, in my own hand, better than I write it. I burned an edition, and the next one came off the press with the same line, because somebody had paid my printer to keep it locked in the forme. He is a very bad liar. The purse had a crusade quartermaster's knot on it. It is an insult in my own handwriting, Commander, and you paid good money to make it outlive us both.
 "And I am funny. I am extremely funny. So why would you even want to keep a woman you think isn't?"''',
-       *tempers(()),
-       c('"Because I wanted the last word in your book."', "refused", flags=(CLOSED, "nurah.trickster.cost.last_word"))),
-    nu("end", '''"Fine. Prove it wrong, then. I'll send you proofs. Don't make me regret the postage."''', c("[Fold the letter away.]")),
-    nu("refused", '''"You've had it. It's printed in every copy I will ever make. That is all the room in my life you get. Don't write again."''',
-       c("[Fold the letter away.]")),
-], requires=("trickster.ever", PRIMED, GHOST, RAN_OFF), forbids=(ACCEPTED,), delay=48, TricksterDevice=True,
-   TricksterState="ran_off")
+           *tempers(()),
+           c('"Because I wanted the last word in your book."', "refused", flags=(CLOSED, "nurah.trickster.cost.last_word"))),
+        nu("letter_one", '''"I did not write that. I found it on the road, by a ditch-fire, on the first page of my own manuscript, in my own hand, better than I write it. I read it forty times looking for the stroke where you gave yourself away. There isn't one. You borrowed it for one night, learned my loops by candle, put it back on my bunk before the bell, and did not even stay to watch me find it.
+"I could have scraped the page. I had the knife out. I didn't. It is an insult in my own handwriting, Commander, and it is the best forgery anyone has ever made of me, and I do not burn good work. It went to the printer as it stands.
+"And I am funny. I am extremely funny. So why would you even want to keep a woman you think isn't?"''',
+           *tempers(()),
+           c('"Because I wanted the last word in your book."', "refused", flags=(CLOSED, "nurah.trickster.cost.last_word"))),
+        *([nu("end", '''"Fine. Prove it wrong, then. I'll send you proofs. Don't make me regret the postage."''', c("[Fold the letter away.]"))]
+          if not late else [
+          # Chapter 5 (Sol quality pass, COX): the proofs travel in the same packet, so the late runaway costs two deliveries.
+          nu("end", '''"Fine. Prove it wrong, then. The post takes a month to find you, so chapter one is in with this: the war from the wrong side, forty pages in a hand so small it looks like stitching. There is a gap on the first page exactly one name wide, where you go. Fill it in and send it back, if you still think paper does what you tell it. Or leave it blank, and let me decide what you were."''',
+             *PROOFS_CHOICES),
+          nu("trusted", '''{n}Her answer comes back by the next courier, on the back of the returned proof sheet.{/n} "You left it blank. Trezbot never once left me a blank. I have been staring at your gap for two days and I don't know what to do with it."
+"That is a compliment. Don't get used to it."''', c("[Put the letter away.]")),
+          nu("signed", '''{n}Her answer comes back by the next courier, on the back of the returned proof sheet.{/n} "Your name sits in the gap as if the page had been cut to fit it. Of course. And it will say exactly that, in every copy. You are going to hate how accurate I am."''',
+             c("[Put the letter away.]"))]),
+        nu("refused", '''"You've had it. It's printed in every copy I will ever make. That is all the room in my life you get. Don't write again."''',
+           c("[Fold the letter away.]")),
+    ], requires=("trickster.ever", PRIMED, GHOST, RAN_OFF), forbids=(ACCEPTED,), delay=48, TricksterDevice=True,
+       TricksterState="ran_off")
+
+
+terms_by_post("nurah.trickster.ran_off.terms_by_post", 3,
+              '''{n}The envelope is addressed in a hand so furious the nib went through twice.{/n}''')
+terms_by_post("nurah.trickster.ran_off.terms_by_post_late", 5, late=True, opening=
+              '''{n}The envelope has been a long time on the road. It has been opened and resealed at least twice by people who were disappointed in it, and it is addressed in a hand so furious the nib went through twice.{/n}''')
 
 
 # --- The shared test and commit for the dead and ran-off branches ------------------------------------------------
@@ -336,22 +430,30 @@ letter("nurah.trickster.after.proofs", "Chapter one, by post", 5, [
     nar("raised", '''{n}They come wrapped in a chaplain's receipt: one resurrection, one halfling, name and hour and place as supplied. Someone has corrected the chaplain's spelling in the margin.{/n}''',
         c("Continue", "proofs")),
     nar("courier", '''{n}They come by a courier in no livery at all, who does not know what he carries and would rather not be told.{/n}''',
-        c("Continue", "proofs")),
+        c("Continue", "proofs_ran")),
     nu("proofs", '''"Chapter one. The war from the wrong side, which is the only side worth reading. I've been on both, and one of them had a larva's-eye view.
 "There is a gap on the first page exactly one name wide, where you go. Fill it in and send it back, if you still think paper does what you tell it. Or leave it blank, and let me decide what you were."''',
        *PROOFS_CHOICES),
-    *PROOFS_TAIL,
+    # The runaway was never a larva: her own introduction (Sol quality pass, CAN).
+    nu("proofs_ran", '''"Chapter one. The war from the wrong side, which is the only side worth reading. I've been on both, and I have written this one on the road, on a pedlar's cart, in the backs of inns where nobody has heard of the Commander and everybody has an opinion.
+"There is a gap on the first page exactly one name wide, where you go. Fill it in and send it back, if you still think paper does what you tell it. Or leave it blank, and let me decide what you were."''',
+       *PROOFS_CHOICES),
+    # By post (Sol quality pass, BEL): her answer comes back by the next courier; nobody watches her read.
+    nu("trusted", '''{n}Her answer comes back by the same courier two days later, on the back of the returned proof sheet.{/n} "You left it blank. Trezbot never once left me a blank. Every line of his book had him in it before I'd picked up the pen. I have been staring at your gap for two days and I don't know what to do with it."
+"That is a compliment. Don't get used to it."''', c("[Put the letter away.]")),
+    nu("signed", '''{n}Her answer comes back by the same courier two days later, on the back of the returned proof sheet.{/n} "Your name sits in the gap as if the page had been cut to fit it. Of course. And it will say exactly that, in every copy. You are going to hate how accurate I am."''',
+       c("[Put the letter away.]")),
 ], requires=("trickster.ever", ACCEPTED), forbids=(PROOFS,), delay=72, RequiresAnyGroups=[[RETURNED, RAN_OFF]])
 
 
-def terms_in_person(id, hub, arrival, threshold, morning, requires, forbids):
+def terms_in_person(id, hub, arrival, threshold, morning, requires, forbids, done, partners):
     SCENES.append(scene(id, "Author's terms", "Nurah", 5, '"You came yourself."', [
         nu("start", arrival + "\n" + TERMS_TEXT,
            c("Continue", "terms_signed", requires=(SIGNED,)), c("Continue", "terms", forbids=(SIGNED,))),
         nu("terms_signed", '''"You signed chapter one, so you're in it. You don't get to be in the title."''', *TERMS_CHOICES),
         nu("terms", '"Take them or leave them. Nobody has ever let me say that to anyone before, so do me the courtesy of pretending to think about it."', *TERMS_CHOICES),
-        nu("done", DONE, c("Continue", "threshold")),
-        nu("partners", PARTNERS, c("Continue", "threshold")),
+        nu("done", done, c("Continue", "threshold")),
+        nu("partners", partners, c("Continue", "threshold")),
         nar("threshold", threshold, c("Continue", "morning")),
         nar("morning", morning, c("[Let her write.]")),
         nu("refused", REFUSED, c("[Let her go.]")),
@@ -365,10 +467,14 @@ terms_in_person("nurah.trickster.terms", "nurah.presence.raised",
 {n}She holds up the parcel: the whole manuscript, tied with chapel string.{/n}''',
     '''{n}She takes you by the hand as if leading a mark to the card table, and she does not let go until your own door is shut behind you both. Then she climbs onto your writing desk, scattering your dispatches, so that she can look down at you.{/n}
 "I spent a season as a thing in a cage that could not touch anything. Author's terms: tonight I touch everything."
-{n}She means it. Her hands are everywhere at once, quick and ink-stained and greedy, learning you the way she learns a city, by getting lost in it on purpose. The chaplains' shift goes over her head and onto the floor. She is warm, warmer than she has any right to be, and when you lift her off the desk she wraps her legs around you and laughs against your throat as if she has just won a very large bet.{/n}''',
+{n}She means it. Her hands are quick and ink-stained and greedy, at your buckles, your ribs, the old scar under your arm, which she finds in the dark and presses with one thumb until you flinch. "Found you," she says, pleased, and files it away. The chaplains' shift goes over her head and onto the floor. She is warm, warmer than she has any right to be, and when you lift her off the desk she wraps her legs around you and laughs against your throat as if she has just won a very large bet.{/n}''',
     '''{n}Dawn finds her at your desk in your shirt, which comes to her knees, writing fast with your best pen.{/n} "Chapter nine," she says without looking up. "I'm taking out the hunchback. I'm putting in something much worse. You'll love it."
 {n}Two days later the chaplains send the rest of their account: one grey shift, not returned. It has been paid already, in a small, stitched hand, with money you are fairly sure used to be yours, and made out in a name that is not hers.{/n}''',
-    (RETURNED,), ())
+    (RETURNED,), (),
+    '''"Then we have a book." {n}She says it quickly, before anyone can take it back.{/n}
+"And now the part that isn't in the contract." {n}She looks you over the way she looks at a page she means to cut.{/n} "You had me killed, Commander. Or handed over; I've stopped caring which, it comes out the same on the page. And then you bought me back off a marilith with a forged bill and more than you'll ever admit to, and never once came to the chapel to be thanked. That is the most interesting thing anyone has ever done to me, and I have been owned by experts. Don't answer. I'm going to find out what else you do when nobody's looking."''',
+    '''"Co-authors. Partners in crime, in print, in the same typeface." {n}She grins, all teeth.{/n}
+"You killed me, and then you paid for the privilege of undoing it. I have never been so thoroughly edited. Don't answer that. I'm going to return the favour."''')
 
 terms_in_person("nurah.trickster.ran_off.terms", "nurah.presence",
     '''{n}She pushes the hood back just far enough for you to see her grin.{/n} "Came in on a pedlar's cart, under a crate of my own pamphlets. Nobody searches a crate of pamphlets. Nobody reads them either, which is a separate grievance.
@@ -379,7 +485,11 @@ terms_in_person("nurah.trickster.ran_off.terms", "nurah.presence",
 {n}She climbs onto the bed to be taller than you and kisses you as if she is trying to read what you meant by the dedication off your tongue. Her hands are ink-stained and quick and very sure of themselves. When you pull her down she comes gladly, laughing, and bites your shoulder hard enough to leave a mark she clearly intends to describe.{/n}''',
     '''{n}Dawn finds the bed empty and the window open. On your pillow is a single proof sheet: last night, in a hand so small it looks like stitching, with every name changed and not one detail missing.{/n}
 {n}Across the top she has written: "Research. Not for publication. Probably."{/n}''',
-    (RAN_OFF,), (RETURNED,))
+    (RAN_OFF,), (RETURNED,),
+    '''"Then we have a book." {n}She says it quickly, before anyone can take it back.{/n}
+"And now the part that isn't in the contract." {n}She taps the dedication on the first page with one inky finger.{/n} "I ran from you. I got as far as a ditch in the River Kingdoms before I found out you'd been in my book the whole time, in my own hand, better than my own hand. Nobody has ever bothered to forge me properly. I came back to see what else you'd bother with. Don't answer. I'd rather find out."''',
+    '''"Co-authors. Partners in crime, in print, in the same typeface." {n}She grins, all teeth.{/n}
+"You forged me so well I kept it. Let's see if you're as good at the original. Don't answer; I've read enough of you."''')
 
 
 # --- Epilogue: her own pages (R2-6) --------------------------------------------------------------------------------
@@ -392,35 +502,80 @@ EPILOGUE_PARAGRAPHS = (
       "of 'To the Abyss and Back' put another name on every copy, and the inquisitors who hunted her never once "
       "thought to look for a dead woman.", requires=("nurah.trickster.cost.chaplains_writ",)),
     p("Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me "
-      "because I had stopped being funny. N. D.' She never managed to remove it: every printer she went to had already "
-      "been paid to keep it. After a while she stopped trying, and began "
-      "adding a footnote to it instead, a different one in every edition.", requires=(GHOST,)),
+      "because I had stopped being funny. N. D.' The first printings carried it because a quartermaster's purse had paid "
+      "the printer to. After that she kept it herself, and began adding a footnote to it instead, a different one in "
+      "every edition.", requires=(GHOST, PRINTER_PAID)),
+    p("Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me "
+      "because I had stopped being funny. N. D.' She could have struck it from the forme any day she liked. She never "
+      "did. Instead she added a footnote to it, a different one in every edition.", requires=(GHOST,), forbids=(PRINTER_PAID,)),
     p("The Drezen gaol kept her cell exactly as she left it, plank desk and all. The turnkeys still tell new recruits that "
       "the prisoner in it forged her own pardon out of professional disgust, and that the Commander had counted on it.",
       requires=(LEDGER, RELEASED), forbids=(RETURNED,)),
     p("The Commander's name appeared once, on the first page, exactly where she had decided it should go.",
-      forbids=(SIGNED,)),
+      forbids=(SIGNED, "nurah.trickster.cost.coauthor")),
     p("The Commander's name appeared once, on the first page, in the Commander's own hand. She never let anyone forget "
-      "whose idea that had been.", requires=(SIGNED,)),
+      "whose idea that had been.", requires=(SIGNED,), forbids=("nurah.trickster.cost.coauthor",)),
+    p("The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, where it had "
+      "been since the proofs. She said the second one was the only one the Commander had earned.",
+      requires=("nurah.trickster.cost.coauthor", SIGNED)),
+    p("The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, which the "
+      "Commander had left blank and she had filled in herself, in the Commander's hand, better than the Commander's hand.",
+      requires=("nurah.trickster.cost.coauthor",), forbids=(SIGNED,)),
     p("Ramisa of the Fleshmarkets was seen, for one night only, in the front row of something. She never said what.",
       requires=(AUDIENCE,)),
 )
 
 SCENES.append(scene("nurah.trickster.epilogue.commit", "The author herself", "Epilogue", 5, "", [
-    nar("start", '''{n}A book came out of the River Kingdoms the spring after the war: the crusade from the wrong side, told by a halfling who had been a slave, a traitor, a prisoner and, for a season, worse. It was banned in several countries, and a bounty was put on its author's head. The inquisitors never found her. They never thought to look in the Commander's house.{/n}
+    nar("start", '''{n}Two years after the Threshold a book came out of the River Kingdoms: the crusade from the wrong side, told by a halfling who had been a slave, a traitor and a prisoner, and who had outlived all three. It was banned in several countries, and a bounty was put on its author's head. The inquisitors never found her. They never thought to look in the Commander's house.{/n}
 {n}She had finished the negotiation by herself, on her own terms, with no one's name above hers. The first bound copy reached the Commander wrapped in a sheet of paper with one line on it: "Now you may read it."{/n}''',
         c("[Read it that night, cover to cover.]", "read"),
         c("[Go to her before you have read a word.]", "went")),
-    nar("read", '''{n}She arrived at the last page, which is to say at dawn, and found the Commander still reading it. She took the book away, closed it with a snap, and climbed into the Commander's lap to deliver her review of the reader in person. It was a long review, and a thorough one, and she did not trouble to close the door first.{/n}''',
+    nar("read", '''{n}She arrived at the last page, which is to say at dawn, and found the Commander still reading it by a candle burnt to the dish. She took the book out of the Commander's hands, closed it with a snap, and put it face down on the floor, where no author puts a book she loves.{/n}
+{n}"Chapter eleven," she said, "is wrong about you. I've come to correct it." She climbed into the Commander's lap in the reading chair, a knee on either side, ink on her fingers and her hair still wet from the rain she had walked through, and set both small hands flat against the Commander's chest as if pinning down a page in a wind. "Author's terms. I lead." She pulled the laces of the Commander's shirt loose one by one, reading the Commander's face the way she read everything, for the part that would go in the next book, and when the last lace gave she kissed the Commander hard enough to leave ink on both their mouths, and dragged the shirt over the Commander's head, and did not trouble to close the door.{/n}
+{n}The next edition of the book had a new footnote to chapter eleven. It read, in full: "The author has since conducted further research. The chapter stands." Nobody outside the Commander's house understood it, and she refused every letter that asked.{/n}''',
         c(), paragraphs=EPILOGUE_PARAGRAPHS),
-    nar("went", '''{n}She opened her door with the book's twin in her other hand and looked at the Commander's empty hands.{/n} "You haven't read it." {n}She pulled the Commander inside by the sleeve.{/n} "Good. I'll read you the best parts myself. Slowly. With demonstrations."''',
+    nar("went", '''{n}She opened her door with the book's twin in her other hand and looked at the Commander's empty hands.{/n} "You haven't read it." {n}She pulled the Commander inside by the sleeve, kicked the door shut behind them, and backed the Commander up against her writing table until the inkwell rocked.{/n}
+{n}"Good. I'll read you the best parts myself." She climbed onto the table, which made her the taller, opened the book one-handed at a page she had marked with a hair ribbon, and read a sentence about the Commander aloud, slowly, against the Commander's mouth. With her free hand she was already working the buckle of the Commander's belt. When it gave she let the book fall shut on the table behind her, wrapped her legs round the Commander's waist, and pulled the Commander down with her among the loose proofs.{/n}
+{n}In the morning half the proofs were ruined, creased and smeared and one of them torn clean through. She sent the whole sheaf back to the printer anyway, with a note that the author approved every correction on them, and that he was on no account to ask how they had been made.{/n}''',
         c(), paragraphs=EPILOGUE_PARAGRAPHS)],
-    requires=("trickster.ever", LATE_COMMITTED), forbids=(COMPLETE, CLOSED), last=99, Relationship="nurah"))
+    requires=("trickster.ever", LATE_COMMITTED), forbids=(COMPLETE, CLOSED, *DEATHS, "sacrifice"), last=99, Relationship="nurah",
+    ForbidOverrides={**{d: RETURNED for d in DEATHS}, "sacrifice": "trickster.commander_back"}))
+
+# Proofs seen, her terms never answered (a presence missed, or the war moved on): a published book, not a romance.
+SCENES.append(scene("nurah.trickster.epilogue.unanswered", "Terms unanswered", "Epilogue", 5, "", [
+    nar("start", '''{n}Two years after the Threshold a book came out of the River Kingdoms: the crusade from the wrong side, told by a halfling who had been a slave, a traitor and a prisoner. The Commander's chapter was short and exact and not unkind. It ended with a sentence about terms that had been offered and never answered, and readers argued for years about whether that was a complaint.{/n}''',
+        c(), paragraphs=EPILOGUE_PARAGRAPHS)],
+    requires=("trickster.ever", PROOFS), forbids=(COMPLETE, CLOSED, LATE, *DEATHS), last=99, Relationship="nurah",
+    ForbidOverrides={d: RETURNED for d in DEATHS}))
+
+# The Commander's sacrifice with no way back (native Ending_PlayerSacrifice, Epilogues/Cue_0116): no reunion.
+SCENES.append(scene("nurah.trickster.epilogue.bereaved", "The last chapter, unread", "Epilogue", 5, "", [
+    nar("start", '''{n}The Commander did not come back from the Threshold. Nurah heard it from a sergeant who expected her to be glad, and she corrected his grammar and went home and did not write for a month.{/n}
+{n}Two years after the war her book came out of the River Kingdoms. The chapter on the Commander was the longest in it. It was also the only one she never read aloud to anyone, and the only one without a single joke.{/n}''',
+        c(), paragraphs=EPILOGUE_PARAGRAPHS)],
+    requires=("trickster.ever", "sacrifice"), forbids=(CLOSED, "trickster.commander_back", *DEATHS), last=99, Relationship="nurah",
+    RequiresAnyGroups=[[COMPLETE, LATE_COMMITTED]], ForbidOverrides={d: RETURNED for d in DEATHS}))
+
+# The in-play commitment's own page (nurah.complete; the prison cell or the in-person terms), with or without Last Call. One
+# publication date throughout: her Last Call coda also publishes two years after the Threshold.
+SCENES.append(scene("nurah.trickster.epilogue.the_margin", "Author's terms", "Epilogue", 5, "", [
+    nar("start", '''{n}Two years after the Threshold a book came out of the River Kingdoms: "To the Abyss and Back: The Crusade Through the Eyes of a Former Cultist". It was banned in several countries, and a bounty was put on its author's head. The inquisitors never found her. She was writing the sequel at the Commander's desk, in the Commander's shirt, and complaining about the light.{/n}
+{n}The author's terms she had set held to the last page: her name on the cover, and nobody's above it. She read the Commander nothing until it was bound, and then read the whole of it aloud, in bed, over four nights, stopping to argue with her own sentences.{/n}''',
+        c(), paragraphs=EPILOGUE_PARAGRAPHS + (
+            p("Her name went on the cover next to the Commander's, in the same typeface. She told everyone it had been her idea.",
+              requires=("nurah.trickster.cost.coauthor",)),
+            p("The Drezen gaol kept her cell as she left it. She came back once, with the first bound copy, and left it on the "
+              "bunk for the next prisoner.", requires=(RELEASED,), forbids=(RETURNED, RAN_OFF)),
+            p("She never went back to the River Kingdoms pedlars. She said she had outgrown crates.", requires=(RAN_OFF,)),
+        ))],
+    requires=("trickster.ever", COMPLETE), forbids=(CLOSED, *DEATHS, "sacrifice"), last=99, Relationship="nurah",
+    ForbidOverrides={**{d: RETURNED for d in DEATHS}, "sacrifice": "trickster.commander_back"}))
 
 SCENES.append(scene("nurah.trickster.epilogue.refused", "No review", "Epilogue", 5, "", [
     nar("start", '''{n}The last chapter never reached Drezen. Nurah Dendiwhar, who had been owned once and meant never to be again, published it under a name nobody could trace, and anyone who asked about the Commander was told that the Commander had wanted a name above hers, and that this was the whole of the review.{/n}''',
         c(), paragraphs=EPILOGUE_PARAGRAPHS)],
-    requires=("trickster.ever", PROOFS, CLOSED), forbids=(COMPLETE,), last=99, Relationship="nurah"))
+    requires=("trickster.ever", PROOFS, CLOSED), forbids=(COMPLETE, *DEATHS), last=99, Relationship="nurah",
+    ForbidOverrides={d: RETURNED for d in DEATHS}))
 
 
 # --- Reactions (ledger 05 section 3.1: exactly Irabeth and Camellia) --------------------------------------------------
@@ -461,6 +616,27 @@ REACTIONS = [
 {n}Camellia turns a page of one; she has a copy.{/n} "I would simply have eaten her. Your way is so much more... literary."''',
              answer_list=CAMELLIA_HUB, forbids=CAMELLIA_GONE, chapter=3, last=5, entry='"About Nurah..."'),
 ]
+# Camellia killed by the Commander and back on her own Trickster route (camellia_trickster: killed_by_commander -> returned)
+# is the veiled woman at the far end of Fye's bar, a spawned copy with an RRT hub that hosts only her own scenes; her
+# companion hub (CAMELLIA_HUB) never opens again, so no ForbidOverride can deliver the four lines above. She sends a card
+# instead (Sol quality pass, INT). A Camellia raised from a retained death is back on her companion hub (camellia_trickster
+# FOREIGN_REACTIONS lifts camellia.dead there), and keeps the originals.
+VEILED = ("camellia.killed", "camellia.trickster.returned")
+CARD = "{n}A folded card comes up with the evening dispatches, sent over from Fye's tavern by his pot-boy. It smells of lilies. It was left, the boy says, by the lady at the far end of the bar, who has still not touched her wine.{/n}\n"
+REACTIONS += [
+    reaction("Camellia", "nurah.trickster.react.camellia_veiled_pardon", (LEDGER, RELEASED, *VEILED),
+             CARD + '''"You gave the little traitor a pardon. How merciful of you. I have been dead, darling, so I know exactly what mercy is worth: it is worth what someone is willing to pay to take it back. I do hope nobody makes you an offer for her. I would hate to be outbid."''',
+             remote=True, chapter=3, last=5, Chapters=[3, 5], Kind="letter", portrait="Camellia", Areas=[DREZEN]),
+    reaction("Camellia", "nurah.trickster.react.camellia_veiled_market", (RETURNED, RUMOUR, *VEILED),
+             CARD + '''"You bought a soul from that marilith in the Fleshmarkets. The whole bar is saying so, very quietly, with its back to me. You and I have both come back from somewhere we were put, darling. Tell your halfling that the first thing one wants afterwards is to be looked at. The second is to be feared. She will work out the third herself."''',
+             remote=True, forbids=(CAMELLIA_KILL,), chapter=5, last=5, Chapters=[5], Kind="letter", portrait="Camellia", Areas=[DREZEN]),
+    reaction("Camellia", "nurah.trickster.react.camellia_veiled_supper", (RETURNED, RUMOUR, CAMELLIA_KILL, *VEILED),
+             CARD + '''"You bought my supper back from a marilith. You said she was mine, and then you killed me, and then you bought her back, and now we are all three of us sitting in the same city pretending to be alive. I do not think I have ever been given so many things and had them all taken back. It is... truly terrible. I have ordered a second glass."''',
+             remote=True, chapter=5, last=5, Chapters=[5], Kind="letter", portrait="Camellia", Areas=[DREZEN]),
+    reaction("Camellia", "nurah.trickster.react.camellia_veiled_draft", (GHOST, RAN_OFF, *VEILED),
+             CARD + '''"Your runaway halfling's pamphlet is on the bar. Someone left it here for me, as a joke, I think. There is an insult to her on the first page, in her own hand. I read it three times. I would simply have eaten her, darling. Your way leaves so much more of her for later."''',
+             remote=True, chapter=3, last=5, Chapters=[3, 5], Kind="letter", portrait="Camellia", Areas=[DREZEN]),
+]
 SCENES.extend(REACTIONS)
 
 
@@ -477,6 +653,25 @@ def integrate(payload):
                         "one may turn up for sale in the Fleshmarkets of Alushinyrra; and one who ran may find you have "
                         "written in her book.")
     payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
+    # A printer was paid to keep the dedication: the early purse (chosen at the cell), or a pedlar's run bought and its
+    # printer paid (both second drafts set the ghostwriting and the late cost together). Save-safe for runs before the flag.
+    derived = payload.setdefault("Derived", {})
+    groups = [[PRINTER], [GHOST, LATE, RAN_OFF]]
+    if derived.get(PRINTER_PAID, groups) != groups:
+        raise ValueError("Conflicting derived key: " + PRINTER_PAID)
+    derived[PRINTER_PAID] = groups
+    # The late branches (courier, both pedlars) commit on the epilogue page and can never reach a refusal after the proofs
+    # (the in-person terms forbid cost.late), so this is their Last Call coda key (lastcall_partners, R2-6).
+    coda = [["trickster.ever", PROOFS, LATE]]
+    if derived.get(P_LATE_CODA, coda) != coda:
+        raise ValueError("Conflicting derived key: " + P_LATE_CODA)
+    derived[P_LATE_CODA] = coda
+    # Her Last Call coda plays only for a Nurah alive now: committed and still in her cell (the prison etude stops on her
+    # death), run off, or bought back; or a late branch. G5: the framework page reads this key, never her death flags.
+    alive = [[COMPLETE, "nurah.prison"], [COMPLETE, RAN_OFF], [COMPLETE, RETURNED], [P_LATE_CODA]]
+    if derived.get(P_CODA_ALIVE, alive) != alive:
+        raise ValueError("Conflicting derived key: " + P_CODA_ALIVE)
+    derived[P_CODA_ALIVE] = alive
     ours = {s["Id"] for s in SCENES}
     for s in payload["Scenes"]:
         if s.get("Relationship") != "nurah" or s["Id"] in ours:

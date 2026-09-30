@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4049,
-  "unique_targets": 852,
+  "binding_uses": 4076,
+  "unique_targets": 853,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -1997,6 +1997,10 @@
     "9f98ffa7f2c71cb4c9e5da0c7a053876": {
       "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Answer_0068.jbp",
       "type": "BlueprintAnswer"
+    },
+    "2d7d6df431933024591e74d6dfd873e4": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Cue_0001.jbp",
+      "type": "BlueprintCue"
     },
     "462478faddd1eab45a4e55739d81e6f7": {
       "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Cue_0056.jbp",

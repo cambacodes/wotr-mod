@@ -80,26 +80,26 @@ The messenger shifts his weight. He tells you he was paid to wait until sunset. 
 Vhal proposes an authorial appearance before a small group of subscribers visiting Drezen. Nurah is to approve selected passages, authenticate a handful of documents, and permit her earlier biography to be republished with an additional dedication. There is money. There are introductions. There is a promise that the Commander's association with the project will be treated discreetly.
 Nurah has circled discreetly and written: She has already printed your name.
 The collector's local representative is an editor named Reth Carrow. He will receive revisions and arrange the subscribers' evening. Nurah proposes meeting you first, privately, to decide what to do with him. She has enclosed a smaller note for the courier to deliver if you agree.
-It gives no location yet. She wants a place in Drezen where she can arrive without being paraded past soldiers who remember the siege. She will inspect the approach before confirming it.
-"Do not send me an honor guard," she adds. "If I wanted a row of men discussing whether I deserve to live, I would attend a temple. A quiet appointment will do. We can keep using it while this business lasts, unless either of us says otherwise."
+It gives no place yet. She wants a way into Drezen that does not walk her past soldiers who remember the siege, and she means to walk it once herself before she trusts it.
+"Do not send me an honor guard," she adds. "If I wanted a row of men discussing whether I deserve to live, I would attend a temple. Name me a door nobody salutes. If I find a sentry on it, I shall assume you put him there to watch me, and I shall be right, and you will not see me again."
 {n}The courier has a blank sheet, a clean reed pen, and the patient look of a man determined not to ask why the author of the book hates it.{/n}''',
-      c('[Send a private invitation with a discreet approach and an ongoing appointment while the work lasts.]', "sent"),
-      c('[Keep the packet and postpone the answer.]', "later"),
-      c('[Decline this undertaking without ending the existing relationship.]', "decline")),
-    n("sent", "Narrator", '''{n}You give the courier a reply for Nurah to consider. It offers a quiet appointment in Drezen, continuing while you work together on the proposed edition. Either of you may withdraw from that arrangement. There will be no public announcement or claim that she has joined the Commander's retinue.
-You leave the question of a suitable approach to her answer. A description of somewhere she ought to be able to reach will not make her trust it.
+      c('[Send her a door nobody salutes, and an invitation to use it.]', "sent"),
+      c('[Keep the packet and put off your answer.]', "later"),
+      c('[Tell her you will have no part of Vhal\'s book.]', "decline")),
+    n("sent", "Narrator", '''{n}You write her the back stair that climbs from the kitchen yard to the private door of your chambers, which the clerks use to smuggle wine and nobody guards because nobody admits it exists. You add that she may come by it whenever the book gives her an excuse, and that you will not ask what she does with the excuse on the nights it doesn't.
+You do not describe the stair. She will not believe a description; she will want to find the loose step herself.
 The courier folds your reply into the wrapper and slips it beneath his coat. Before leaving, he asks whether the book should be delivered to the keep's shelves. You keep it beside you instead.
 Its first page bears a printed signature that imitates Nurah's. The N is too careful. Whoever wrote it had time to practise and no reason to hurry through the name.
 You turn back to the sentence about her exemplary obedience. The correction she wrote beneath it is almost small enough to miss, but the point of the pen has torn a hole through the final word.{/n}''', c('[Await her actual reply.]', flags=f("started", "invitation_sent"))),
     n("later", "Narrator", '''{n}You tell the courier that the reply must wait. He takes the empty wrapper and asks whether he should return for an answer another day. You tell him he may.
-The book remains on your table. No appointment has been made; the offer can be answered when you choose to take it up.
+The book stays on your table, open at the other page nine.
 Before the messenger leaves, he turns the volume facedown. Asked why, he points to the seal on its cover. It has left a dark circular stain on every other parcel he carried.
 "Fine ink," he says, with a look which suggests he has heard fine promises before.
 You put a spare sheet beneath it. Nurah's drawing of the little bird remains between the two copies of page nine.{/n}''', c('[Leave the invitation unanswered.]', abort=True)),
-    n("decline", "Narrator", '''{n}You return the offer with a clear refusal to take part in the publication scheme. The reply says nothing about ending the relationship you already have. You decline the new work and the standing appointment it would require.
+    n("decline", "Narrator", '''{n}You send the offer back with one line across the top of it: you will not put your name, or your door, anywhere near Istrene Vhal's book. You add a second line underneath, for Nurah, that has nothing to do with the book at all.
 The courier reads the address on the outside, carefully avoiding the words beneath, and secures it in his case. He has been paid to carry an answer, not obtain a favorable one.
-You keep the book long enough to remove the false signature from its opening page. The cut leaves an awkward gap below the title. It is less elegant than the forgery and more accurate.
-What Nurah does with Vhal's offer after this will be her affair. The unaccepted invitation gives you no account of it.{/n}''', c('[Decline the new appointment.]', flags=f("meeting_declined"))),
+You keep the book long enough to cut the false signature out of its opening page. The cut leaves an awkward gap below the title. It is less elegant than the forgery and more accurate.
+Whatever Nurah does to Vhal now, she will do it without you, and she will probably do it better out of spite.{/n}''', c('[Stay out of Vhal\'s book.]', flags=f("meeting_declined"))),
 ], None, delay=0, remote=True)
 
 
@@ -107,8 +107,8 @@ visit("invitation_reply", "The answer in the margin", [
     n("start", "Narrator", '''{n}The reply arrives in the hands of a different courier, an older woman carrying a basket of mended gloves. She produces Nurah's letter from beneath a patchwork mitten and waits while you check the seal.
 "She said you might be suspicious," the woman says. "I told her I would charge extra if the suspicion involved a search."
 Nurah has written on the back of your own invitation. She has struck out a sentence about discretion and replaced it with something more specific: nobody is to announce her name to a room full of strangers.
-"A cloak is not a miracle," the reply begins. "I have looked at the approach. I will use it if we agree about who is allowed to make the meeting into a spectacle. My answer is nobody. That includes you when you have had a very clever idea.
-"While we are doing this, you may expect me at the agreed private appointment when I have confirmed I can come. It is an arrangement for meetings, not permission to collect me from wherever you would prefer me to be. If I cannot get there, we try again after an actual new message. We do not assume that the last good idea has grown legs.
+"A cloak is not a miracle," the reply begins. "I have walked your stair. The fourth step from the top squeals; I have put candle-wax on it, and if it squeals again I shall know somebody scraped the wax off, and who. I will use your door on one condition: nobody makes the meeting into a spectacle. That includes you, on the evenings you have had a very clever idea.
+"I will come when I send word that I am coming, and not otherwise. If you ever send a man to fetch me, he will find a room with nobody in it and a very rude note on the pillow.
 "Now to the interesting part. Carrow sent me a sample of the dedication. It thanks my former master for discovering the talent that would otherwise have wasted itself in idleness. You may imagine the notes I have made in the margin.
 "I have decided to hear his offer. I have not decided to let him finish it. Come prepared to give me a reason."
 {n}Underneath she has added a postscript in a smaller hand.{/n}''',
@@ -120,36 +120,36 @@ Nurah has written on the back of your own invitation. She has struck out a sente
 "If your next thought was to tell me that at least people will hear her story, swallow it. They are being offered somebody else's lie with her name nailed to the front.
 "There. Now you know which part has spoiled my mood. You may bring something to improve it, provided the something does not rhyme with forgiveness."
 {n}The postscript ends with a scratched-out word. Beneath it, still legible, was please. Nurah has replaced it with an arrow directing your attention to the proposed meeting time.
-The courier asks whether there is a reply. Her gloves are intended for people who will notice their absence before they notice the finer points of literary ownership.{/n}''', c('[Read the appointment terms once more.]', "terms")),
+The courier asks whether there is a reply. Her gloves are intended for people who will notice their absence before they notice the finer points of literary ownership.{/n}''', c('[Turn to the last lines of her letter.]', "terms")),
     n("chaos", "Narrator", '''"Carrow expects an author terrified of losing her reputation. I cannot decide whether to send him one or let him meet me. The first would be easier to write. The second ought to be more educational.
 "Vhal has invited subscribers who want to hear that their ancestors were indispensable. There is probably no gathering in the city with more money and worse judgment. I would hate to waste it by giving them a simple scandal they can agree to suppress.
 "Bring whatever expression you use when deciding to do something entirely unwise. I want to see whether I can distinguish it from the expression you use when somebody else is watching.
 "And no, this is not a coronation. If we start handing out titles every time somebody pays for a drink, the titles will become less valuable than the drinks."
 {n}She has drawn an alternative seal beside Vhal's: a fat purse trying to swallow its own string. The detail is careful enough to suggest she spent more time on it than on the polite reply enclosed for Carrow.
-The courier turns the basket on her arm. Nurah has paid her for one return journey, and she intends to know where she is returning before she sets off.{/n}''', c('[Read the appointment terms once more.]', "terms")),
+The courier turns the basket on her arm. Nurah has paid her for one return journey, and she intends to know where she is returning before she sets off.{/n}''', c('[Turn to the last lines of her letter.]', "terms")),
     n("evil", "Narrator", '''"Do not arrive with a scheme to spend the money before I have stolen it. Vhal's offer is good. That is the insulting part. She thinks the right sum will make me grateful for another opportunity to write what a better-dressed fool tells me to write.
 "I may take the sum anyway. Gratitude costs extra.
 "Carrow has copies of papers I would like to possess. Vhal has a distribution business I would like to hurt until it becomes useful. You have a name that makes people mistake an invitation for an instruction. I think there is a pleasant evening somewhere among those advantages.
 "You may tell me I am being greedy. I will accept the observation as evidence that you have been paying attention. If you intend to tell me I have enough already, do us both a kindness and postpone it until I am holding a knife suitable for cutting the subject short."
 {n}The blade she has drawn in the margin pierces a little moneybag, and the coins falling out have faces. One looks very much like the printed portrait on Vhal's sample.
-The courier glances toward the door. The people waiting for her mended gloves are unlikely to enjoy the joke as much as its author did.{/n}''', c('[Read the appointment terms once more.]', "terms")),
-    n("terms", "Narrator", '''{n}The invitation has become an agreement you can accept: private meetings in Drezen while you and Nurah work on the proposed edition, with an approach she has inspected and the right for either of you to end the appointment arrangement.
-The courier waits while you consider the proposed time, turning her basket to keep its repaired gloves out of the draft.
+The courier glances toward the door. The people waiting for her mended gloves are unlikely to enjoy the joke as much as its author did.{/n}''', c('[Turn to the last lines of her letter.]', "terms")),
+    n("terms", "Narrator", '''{n}Her letter names a night, an hour, and your stair. Everything else in it is about Carrow.
+The courier waits while you consider it, turning her basket to keep its repaired gloves out of the draft.
 At the bottom of the sheet, below the business about discretion, Nurah has written one last sentence: I am looking forward to seeing whether you kiss me before asking about the book.
 She has left no space beneath it for a written answer.{/n}''',
-      c('[Confirm the standing private appointment.]', "accepted"),
-      c('[Postpone confirmation; the invitation remains open.]', "wait"),
-      c('[Withdraw the request before a meeting is attempted.]', "withdraw")),
-    n("accepted", "Narrator", '''{n}You confirm the arrangement and return the letter by its courier. She makes you place the reply beneath the correct glove so that she can produce it without emptying the basket.
-When she leaves, you are left with the book, Carrow's sample dedication, and the time at which the appointment may be attempted. There is nothing to do to Nurah's name on a roster. She has agreed to meet you, not enlisted.
+      c('[Write back: the night, the hour, and the stair.]', "accepted"),
+      c('[Ask for a later night; the war has this one.]', "wait"),
+      c('[Write back that you will not meet her over Vhal\'s book after all.]', "withdraw")),
+    n("accepted", "Narrator", '''{n}You write the night and the hour back under hers, and the one word "stair", and return it by the courier. She makes you place the reply beneath the correct glove so that she can produce it without emptying the basket.
+When she leaves, you are left with the book and Carrow's sample dedication. You do not put Nurah's name on any roster, any gate list or any sentry's orders. She would find out.
 You turn to the dedication again. Its printer has left a space for her approval beneath the sentence about talent rescued from idleness. Nurah's correction fills that space completely.
-The first word would have cost a soldier a reprimand. The rest would have earned a much more interesting conversation.{/n}''', c('[Wait for Nurah at the agreed appointment.]', flags=f("meeting_accepted"))),
-    n("wait", "Narrator", '''{n}You ask the courier to carry word that confirmation must wait. She accepts the message without asking for a reason.
-The letter remains with you. The standing appointment has not begun, and Nurah has not been asked to make the approach before you are ready to receive her.
+The first word would have cost a soldier a reprimand. The rest would have earned a much more interesting conversation.{/n}''', c('[Wait for her on the night she named.]', flags=f("meeting_accepted"))),
+    n("wait", "Narrator", '''{n}You ask the courier to carry word that the night she named belongs to the war, and that you want another. She accepts the message without asking for a reason.
+Nurah's letter stays on your desk, with the candle-wax on the fourth step still unscraped.
 The messenger secures the basket's cloth and goes back to her other deliveries. Under the book's loose cover, Vhal's portrait looks serenely unaware that its proposed author has drawn teeth on it.{/n}''', c('[Leave confirmation pending.]', abort=True)),
-    n("withdraw", "Narrator", '''{n}You withdraw the meeting request and make the limit clear: the new appointment is ending before it begins. Your earlier relationship is not the subject of this reply.
-The courier folds the message into a small square and places it beneath the patched mitten. There will be no reason for Nurah to attempt the agreed approach on your behalf.
-You close the book. Its binding makes a faint crack where the duplicate page has been forced against the spine. Someone tried to fit too much into a cover that had already been chosen.{/n}''', c('[Withdraw the new appointment.]', flags=f("meeting_withdrawn"))),
+    n("withdraw", "Narrator", '''{n}You write that you will not meet her over Vhal's book, and you scrape the candle-wax off the fourth step yourself so that she will know you meant it. You do not explain. She would only correct the explanation.
+The courier folds the message into a small square and places it beneath the patched mitten.
+You close the book. Its binding makes a faint crack where the duplicate page has been forced against the spine. Someone tried to fit too much into a cover that had already been chosen.{/n}''', c('[Send it.]', flags=f("meeting_withdrawn"))),
 ], "invitation_sent", remote=True)
 
 
@@ -793,7 +793,9 @@ You kiss the corner of her mouth. She turns toward you and makes you begin again
 "We could move."
 "I was hoping you would think of that."
 {n}You lift her from the chair. She makes a small, affronted sound that turns into a laugh halfway through, and wraps an arm around your neck. On the way past the table she reaches down to extinguish the lamp. The old letter disappears into darkness with everything else.
-Later, when she retrieves it, she does so without hurrying. She folds it into her sleeve and steals the warmer side of the cover before you can object.{/n}''', c('[Let the work wait until the next appointment.]', flags=f("letter_faced"))),
+At the bed she twists out of your arms before you can set her down, lands on her knees on the cover, and hauls you after her by the collar she has already half unfastened.{/n}
+"You were slow," she says. "Trezbot's clerks were faster, and they were paid by the hour." {n}She pulls the pins out of her hair one at a time and drops them on the floor, and then her dress after them, and puts one ink-stained hand flat on your chest and pushes you down onto your back, and follows.{/n}
+{n}In the morning she retrieves the letter without hurrying, folds it into her sleeve, and steals the warmer side of the cover before you can object. When you reach for her she does not pretend to be asleep. From that night she stops knocking at your door; she simply comes in, and tells you what she has been writing, and sits where she likes.{/n}''', c('[Let the work wait until she comes up the stair again.]', flags=f("letter_faced"))),
 ], "papers_recovered")
 
 
@@ -1002,7 +1004,7 @@ He brings it. Vhal watches the tracing begin and says she would like to discuss 
 "Then you have had an unusually good view of its manufacture."
 {n}He closes his book. Vhal keeps repeating that the original remains available to a properly arranged inquiry. But when another subscriber asks whether his deposit purchased research or a performance, she cannot answer by blaming the Commander.
 Nurah takes your arm and walks toward the door. Vhal catches you before you leave, lowering her voice so the guests cannot hear the word settlement.
-Nurah makes her repeat it.{/n}''', c('[Take the offer without pretending the missing record was displayed.]', flags=f("reading_confronted"))),
+Nurah makes her repeat it.{/n}''', c('[Take the offer. The record stays missing.]', flags=f("reading_confronted"))),
 ], "evening_prepared")
 
 
@@ -1307,7 +1309,7 @@ Bressa's record sits in a smaller folder with the acquisition note. Nurah has se
 "Does everything become useful?" you ask.
 "No. Some things become expensive. I try to notice the difference before I acquire them."
 {n}Her gaze settles on you, warm and deliberately appraising.{/n}
-"You are making that calculation difficult. I resent it more attractively on some evenings than others."''', c('[Accept the profitable, coercive business she has chosen to build.]', "history", flags=f("outcome_collection"))),
+"You are making that calculation difficult. I resent it more attractively on some evenings than others."''', c('[Let her keep her collection, and name her own price for it.]', "history", flags=f("outcome_collection"))),
     n("distance", "Nurah", '''{n}The settlement releases Bressa's record and the evidence concerning Vhal's offer. The wider supplier list remains outside your joint undertaking. Nurah has copied the record for an inquiry and paid to have it carried to the purchaser's district.
 She gives you the account without mentioning the separate scrap she kept when you refused her larger plan.{/n}
 "You are waiting for me to ask," you say.
@@ -1318,8 +1320,8 @@ She gives you the account without mentioning the separate scrap she kept when yo
 "We worked rather well together until you began editing my ambitions."
 "We still obtained the record."
 "We did. I am capable of remembering a useful partner while being annoyed with one."
-{n}She puts the final inventory beside you and leans back in the chair. She has brought the completed work in person. The disagreement has changed what she shares, not made her vanish or recant what she wanted.
-When she reaches for your hand a few moments later, the gesture contains neither apology nor a request for one.{/n}''', c('[Keep the result and the disagreement without pretending either has disappeared.]', "history", flags=f("outcome_distance"))),
+{n}She puts the final inventory beside you and leans back in the chair. The scrap she kept stays folded in her sleeve, and she makes sure you see her not taking it out.
+When she reaches for your hand a few moments later, she does it without apologising, and without asking whether you would like her to.{/n}''', c('[Keep the record, and let her keep her scrap.]', "history", flags=f("outcome_distance"))),
     n("history", "Nurah", '''{n}Nurah rolls the wrapper into a narrow tube and looks through it at the finished pages.{/n}
 "There. A much more respectable distance from the subject. Historians should be issued these."
 {n}She lowers it when you laugh. The inquiry into Bressa has begun, but the present answer ends at a record, a purchaser, and a road someone still has to travel. Nurah has not written an ending for the woman simply because the edition needs one.
@@ -1391,7 +1393,8 @@ You kiss the inside of her wrist. Her breath catches, briefly enough that she co
 "That was not in my order," she says.
 "A correction."
 "An impertinent one."
-{n}She leans forward to make another, and the rest of the sentence becomes impossible to finish.{/n}''', c('[Let the private argument continue without an audience.]', "morning", flags=f("private_night"))),
+{n}She settles her knees either side of you in the chair and makes a correction of her own, with her mouth, slowly, the way she strikes a line she means nobody to read again. Then she sits back far enough to take hold of the hem of her dress, and draws it up over her head in one motion, and drops it on the floor on top of Vhal's prospectus.{/n}
+"Now," she says, and takes your hands, and puts them on her bare waist, and leans down into you.''', c('[Let the private argument continue without an audience.]', "morning", flags=f("private_night"))),
     n("kiss", "Nurah", '''"I could ask someone to stand outside and become embarrassed at the appropriate moment."
 "You would charge admission."
 "Only if you insisted on being impressive."
@@ -1399,9 +1402,10 @@ You kiss the inside of her wrist. Her breath catches, briefly enough that she co
 The first kiss is brief. The second is her answer to its brevity. She pulls your collar open another inch and lets the cool air reach the place her mouth has warmed.{/n}
 "No difficult passage this time?" you ask.
 "I am considering the ending. Be quiet while I work."
-{n}You carry her the few steps to the bed. She keeps hold of your collar, laughing when the loose fastening catches in her sleeve. Untangling it takes longer than necessary. Neither of you makes a serious effort to hurry.
+{n}You carry her the few steps to the bed. She keeps hold of your collar, laughing when the loose fastening catches in her sleeve, and when you set her down she does not let go of it; she pulls, and you come down with her.
 Outside the room, someone passes without stopping. Nurah hears the footsteps, glances at the door, and turns back to you.{/n}
-"Much better," she says. "They have learned to miss the interesting part."''', c('[Close the evening around the two of you.]', "morning", flags=f("private_night"))),
+"Much better," she says. "They have learned to miss the interesting part."
+{n}She rolls you onto your back with a small grunt of effort that she will deny later, climbs astride you, and unlaces her bodice with the same quick, practised fingers that unpicked Carrow's lock. She lets it fall open and leans down until her hair closes round both your faces like a curtain.{/n}''', c('[Close the evening around the two of you.]', "morning", flags=f("private_night"))),
     n("stay", "Nurah", '''"That is a long time to leave you without assistance."
 {n}She says it softly. Her fingers leave your collar and rest against the side of your neck. You feel the small movement when she swallows.
 You draw her into an embrace. For a moment she stands still inside it, her face hidden against you. Then she reaches around your back and finds the seam she wants, pulling you closer by it.{/n}
@@ -1409,7 +1413,9 @@ You draw her into an embrace. For a moment she stands still inside it, her face 
 "Your letters are difficult company."
 "They have only ink to work with."
 {n}She lifts her head. The smile that follows is slow and very much aware of what she has to work with instead.
-When you kiss her, she takes her time answering. The lamp remains unlit. You know the way across the room without it, and Nurah discovers several reasons to delay you before you reach the bed.{/n}''', c('[Spend the night together.]', "morning", flags=f("private_night"))),
+When you kiss her, she takes her time answering. The lamp remains unlit. You know the way across the room without it, and Nurah discovers several reasons to delay you before you reach the bed: your belt, which she dislikes; your shirt, which she likes better on the floor; a kiss against the bedpost that she says is research.
+At the bed she stops you with one hand flat on your chest and pushes, and you sit. She stands between your knees, which puts her eyes level with yours for once, and unhooks her dress at the back without looking, and lets it go.{/n}
+"I am staying," she says again, quieter, and climbs into your lap, and takes your face in both inky hands and pulls you down onto the bed with her.''', c('[Spend the night together.]', "morning", flags=f("private_night"))),
     n("quiet", "Nurah", '''{n}Nurah leaves the fastening open, as though declining to surrender the small victory entirely.{/n}
 "A dangerous preference. I could talk until you regret it."
 "You have tried."
@@ -1420,12 +1426,12 @@ Later you read a page of her unfinished account aloud. She interrupts to change 
 She stays there after the laughter is over. The conversation wanders into less polished things, and neither of you reaches for a pen.{/n}''', c('[Keep the quiet night she chose to share.]', "morning", flags=f("private_quiet"))),
     n("morning", "Narrator", '''{n}Near morning, Nurah opens the drawer with the finished pages. She takes out the old letter and places it inside her own copy of the book. The rest remains where you left it.
 "That one travels with me," she says. "You can keep the improved edition."
-The standing appointments arranged for Vhal's business have reached their end. There is no further proof to examine and no courier waiting for an answer. Nurah has other schemes, and you have a crusade that has never developed much respect for private plans.
-She leans against the table, watching you. The old affection between you has acquired a book, an enemy, several evenings neither of you will describe honestly in public, and a disagreement or two worth remembering.
-What follows can be named without pretending it erases any of that.{/n}''',
+Vhal's book is finished, and so is Vhal. There is no proof left to fight over and no courier waiting on the stair. Nurah has other schemes, and you have a crusade that has never had much respect for anybody's private plans.
+She leans against the table in your shirt, watching you, with the candle-wax from the fourth step still under one thumbnail.
+"Well, Commander. The book is done. Say something I can quote."{/n}''',
       c('"Bring me the next scheme before you sell the interesting part to someone else."', "partners"),
       c('"Bring yourself. I would like some evenings that do not begin with a forged dedication."', "lovers"),
-      c('"Keep your freedom to appear when you choose. We do not need a new arrangement to keep what we had."', "old_bond")),
+      c('"Keep the stair. Use it when you like. I won\'t ask when."', "old_bond")),
     n("partners", "Nurah", '''"Before I sell it? That depends on the price."
 "Then give me the chance to make a better offer."
 {n}Nurah considers the proposal with entirely unnecessary seriousness. Her hand remains on the book containing the old letter.{/n}
@@ -1451,12 +1457,12 @@ At the door she looks back.{/n}
 "I was wondering when you would try to make the arrangement sound less like a meeting of editors."
 "You began with a book."
 "A necessary disguise. You are much easier to summon when somebody has misused your name."
-{n}She straightens the open fastening at your collar without closing it. The familiar affection in the gesture needs no new oath to identify it.{/n}
+{n}She straightens the open fastening at your collar without closing it, the way she would straighten a page she has decided to keep.{/n}
 "I will come when I choose and when we can make it possible," she says. "You may write if you miss me. Try to include something worth answering."
 "And if I merely say that I miss you?"
 "I will consider whether you have made it sound interesting."
 {n}She kisses your cheek before you can offer a revision. At the door she turns the book over in her hands, checking that the letter remains inside.
-The old relationship leaves with her in its accustomed shape, altered by what you have done together but not replaced by a new title. You keep the finished pages. She keeps the right to surprise you.{/n}''', c('[Finish the new work and keep the existing bond.]', flags=f("complete", "ending_old_bond"))),
+On the stair you hear the fourth step squeal. She has scraped off her own wax, so that you will always know when she is coming. You keep the finished pages. She keeps the stair.{/n}''', c('[Let her go down the stair.]', flags=f("complete", "ending_old_bond"))),
 ], "copies_settled")
 
 

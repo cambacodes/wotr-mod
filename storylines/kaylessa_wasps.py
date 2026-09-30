@@ -20,7 +20,7 @@ engages a canon anchor of hers:
 Acknowledgments of other women are in Kaylessa's voice only; no scene between partners.
 """
 from story_format import c, scene
-from storylines.kaylessa_trickster import (ANEMORA_TOLD, AMULET, BEGGED, CAM_KILLED, CAUGHT, CLOSED, COMMITTED, DREZEN,
+from storylines.kaylessa_trickster import (FIRST_WORDS, ANEMORA_TOLD, AMULET, BEGGED, CAM_KILLED, CAUGHT, CLOSED, COMMITTED, DREZEN,
                                            EMBER_MET, KNIFE_SHOWN, LEFT, NOTE_DESTROYED, NOTE_HELD, PRESENCE, REL, RETURNED,
                                            RULES, SHYKA_RAISED, STALLED, TOMB, UNIT, UNMASKED, kay, nar)
 
@@ -68,7 +68,7 @@ def visit(id, title, nodes, requires, forbids=(), delay=24, **extra):
     """A rest-delivered ride out of the city: she is there in person."""
     SCENES.append(scene(id, title, "Kaylessa", 3, "", nodes, requires=tuple(dict.fromkeys(("trickster.ever", *requires))),
                         forbids=tuple(dict.fromkeys((CLOSED, LEFT, id, *forbids))), delay=delay, last=5, optional=True,
-                        Relationship=REL, Remote=True, Kind="visit", Chapters=[3, 5], **extra))
+                        Relationship=REL, Remote=True, Kind="visit", Chapters=[3, 5], Areas=[DREZEN], **extra))
 
 
 # --- 1. The Savored Sting: who she was before. -------------------------------------------------------------------
@@ -127,7 +127,7 @@ meet(THE_WASP, "The Savored Sting", '"Who were you, before all this?"', [
 
 meet(LAST_WORDS, "Her story", '"You said you wanted to ask me something."', [
     kay("start", '''"I did. Sit." {n}She moves along the crate to make room, which she has never done before. The market is thin today; half the stalls are shut, because a supply column didn't come back from the north road and nobody wants to talk about why.{/n}
-"I died with one thing on my mind, soldier. Not the beast. Not Kyonin. My story. That somebody should know it after I was gone."''',
+"There's one thing I've had on my mind since Kyonin, soldier. Not the beast. Not the Council. My story. That somebody should know it when I'm gone."''',
         c("Continue", "held", requires=(STALLED, NOTE_HELD), forbids=(BEGGED,)),
         c("Continue", "destroyed", requires=(STALLED, NOTE_DESTROYED), forbids=(BEGGED, NOTE_HELD)),
         c("Continue", "lost", requires=(STALLED,), forbids=(BEGGED, NOTE_HELD, NOTE_DESTROYED)),
@@ -242,7 +242,7 @@ visit(HER_TOMB, "A very tasteful stone", [
 meet(SOLDIER, "Everyone's a soldier", '"You never use my name. Why is that?"', [
     nar("open", '''{n}A squad of recruits goes past under the awning at the double, too young, their mail borrowed and badly fitted, a sergeant bawling at their heels. Kaylessa watches them out of sight.{/n}''',
         c("Continue", "start")),
-    kay("start", '''"Your name?" {n}She considers it.{/n} "Everyone's a soldier in a war, generals and privates alike. I told you that once, or I told another you. I look at you and I see someone whose life is war and only war."
+    kay("start", '''"Your name?" {n}She considers it.{/n} "Everyone's a soldier in a war, generals and privates alike. I've been telling people that since Mendev. I look at you and I see someone whose life is war and only war."
 "Those boys there. Soldiers. The quartermaster with the ink on his fingers. Soldier. You." {n}She tips her cup at you.{/n} "Soldier."''',
         c('"And you?"', "you"),
         c('"I\'d like to hear you say my name."', "name"),
@@ -257,7 +257,7 @@ meet(SOLDIER, "Everyone's a soldier", '"You never use my name. Why is that?"', [
     kay("length", '''"Of course it is." {n}She doesn't bother to deny it.{/n} "Names are handles, soldier. Anemora learned every one of ours. She'd whisper them at night, very softly, when she wanted us to do something. I learned to hate the sound of my own."''',
         c('"I\'d still like to hear you say mine."', "name")),
     kay("name", '''{n}She studies you, deciding something.{/n}
-"No." {n}Not unkind. Quite gentle, for her.{/n} "Not yet. The day I say it, I'll mean it, and I've only got so much meaning left in me. I'm saving it."
+"No." {n}Not unkind. Quite gentle, for her.{/n} "Not yet. Names are for people who've lived through the winter. Ask me when the war's over."
 "Once. When it counts. You'll know."''',
         c('"I\'ll wait."', "wait"),
         c('[Flirt] "Then I\'ll have to make it count."', "count")),
@@ -280,7 +280,7 @@ meet(IN_THE_DARK, "After curfew", '"Walk with me. After the lamps go out."', [
     nar("open", '''{n}Drezen after curfew is a different city. The lamps are doused along the whole west side on account of the vrocks, which hunt by light, and the streets are rivers of black between darker walls.{/n}
 {n}Kaylessa takes your wrist at the edge of the market and keeps hold of it.{/n}''',
         c("Continue", "start")),
-    kay("start", '''"You're blind, aren't you? Completely. I can see the mortar between the bricks." {n}Her voice is close by your shoulder, and amused.{/n}
+    kay("start", '''"Whatever your eyes are, soldier, they aren't mine. I can see the mortar between the bricks." {n}Her voice is close by your shoulder, and amused.{/n}
 "Three steps down. Now left. There's a dead cat, don't be squeamish. This is my city, soldier. The one you all walk through at noon never sees it."''',
         c('"How far does it go? Your sight."', "sight"),
         c("[Let her lead you.]", "lead")),
@@ -300,9 +300,9 @@ meet(IN_THE_DARK, "After curfew", '"Walk with me. After the lamps go out."', [
     kay("sentry_her", '''"Sorry." {n}She doesn't move her hand straight away. When she does, it's to put it flat on your chest instead.{/n}
 "Habit. Two years of lanterns meaning somebody wants me dead." {n}Her voice is very low, and not quite steady.{/n} "You didn't fight me. You let me put you against a wall in the dark and you didn't reach for your sword once. Do you know how rare that is?"''',
         c("Continue", "stop")),
-    nar("stop", '''{n}She stops. You can't see why. You can hear her breathing, close, and feel the edge of her cloak against your hand, and the warmth coming off her through the cold.{/n}''',
+    nar("stop", '''{n}She stops. You don't know why. You can hear her breathing, close, and feel the edge of her cloak against your hand, and the warmth coming off her through the cold.{/n}''',
         c("Continue", "here")),
-    kay("here", '''"You're looking straight at me, soldier, and you can't see a thing. It's very strange. Nobody looks at me like that." {n}A breath.{/n} "As if they don't know what I am."''',
+    kay("here", '''"You're looking straight at me, soldier, and you're not looking at the fangs. It's very strange. Nobody looks at me like that." {n}A breath.{/n} "As if they don't know what I am."''',
         c("[Kiss her]", "kiss", flags=(KISSED,)),
         c("[Wait.]", "hers", flags=(KISSED,)),
         c('"I know exactly what you are."', "know", flags=(KISSED,))),
@@ -352,7 +352,7 @@ meet(THE_BOW, "Restringing", '"Is that a new string?"', [
         c("Continue", "close")),
     nar("miss", '''{n}The arrow goes somewhere into the dark. Nothing screams. Kaylessa takes the bow out of your hands, nocks, draws and looses in one movement, and something above the rooftops shrieks and goes flapping east.{/n}''',
         c("Continue", "miss_her")),
-    kay("miss_her", '''"Next time." {n}She doesn't sound disappointed. She sounds like she's already planning the next time.{/n} "Your hands are good. You just can't see. That's not your fault. That's the dark's."''',
+    kay("miss_her", '''"Next time." {n}She doesn't sound disappointed. She sounds like she's already planning the next time.{/n} "Your hands are good. You just don't see the way I do in the dark. That's not your fault. That's the dark's."''',
         c("Continue", "close")),
     kay("hers", '''"Coward." {n}But she takes it, and nocks, and draws, and looses in one movement, and something above the rooftops shrieks and goes flapping east.{/n}
 "There. That one's for the sentry it ate on Toilday."''',
@@ -632,8 +632,13 @@ meet(NOON, "Noon", '"You look like the sun\'s trying to kill you."', [
 
 meet(WHAT_I_WANT, "Like what you see?", '"You\'re not wearing the shawl."', [
     nar("open", '''{n}It's late. The market is shut, the awning's canvas creaking in a wind that smells of snow and the Worldwound's rot. She's sitting on the crate with the shawl in her lap and her face bare to the dark: slate skin, white cropped hair, the red eyes steady on you as you come in under the canvas.{/n}''',
-        c("Continue", "start")),
-    kay("start", '''"What are you looking at, soldier?" {n}She says it exactly as she said it in Kenabres, bleeding, with the city on fire. Then her mouth curves.{/n} "Like what you see?"
+        c("Continue", "start", requires=(FIRST_WORDS,)),
+        c("Continue", "start_fresh", forbids=(FIRST_WORDS,))),
+    kay("start_fresh", '''"What are you looking at, soldier?" {n}She lets it sit in the dark between you. Then her mouth curves.{/n} "Like what you see?"
+"I used to say that to scouts I meant to rob. I've been wanting to say it to somebody and mean it. I notice everything about you. I've been trying to stop."''',
+        c('"Yes."', "yes"),
+        c('[Flirt] "I\'m still deciding. Come closer."', "closer")),
+    kay("start", '''"What are you looking at, soldier?" {n}She says it exactly as she said it the day you met. Then her mouth curves.{/n} "Like what you see?"
 "You didn't answer that, the first time. I noticed. I notice everything about you. I've been trying to stop."''',
         c('"Yes."', "yes"),
         c('[Flirt] "I\'m still deciding. Come closer."', "closer"),
@@ -712,7 +717,7 @@ meet(GIRLS_FACE, "The courier's face", '"You keep touching your throat."', [
         c("Continue", "miss")),
     kay("miss", '''"Miss it?" {n}She thinks about it honestly, which is what she does with every question you give her.{/n}
 "I miss being looked at the way people looked at her. Politely. Like I was nobody in particular. That face could stand in a queue for the grain dole and nobody's hand went to a sword."
-"This one can't." {n}She touches her own cheek, dark as slate.{/n} "This one's the only face I'll ever have again, soldier. You burnt out the other one on Forn. I'm not complaining. I'm telling you what it cost."''',
+"This one can't." {n}She touches her own cheek, dark as slate.{/n} "This one's the only face I'll ever have again, soldier. You burnt out the other one on the hunter in the ravine. I'm not complaining. I'm telling you what it cost."''',
         c('"I\'d do it again."', "again"),
         c('"We could find out her name. Send it home."', "name"),
         c('"I like this one better."', "better")),
@@ -731,9 +736,9 @@ meet(GIRLS_FACE, "The courier's face", '"You keep touching your throat."', [
 
 meet(TRANCE, "Four hours", '"You look like you haven\'t slept."', [
     kay("start", '''"I haven't. I don't, not properly." {n}She has dark smudges under her eyes, visible even on her skin, and she's holding her tea with both hands. The bells for the night watch are ringing along the wall; somewhere north the sky flickers where the Wound is restless.{/n}
-"Elves don't sleep, soldier. Did you know? We trance. Four hours, sitting up, awake and not awake, remembering things in order. That's how you keep three hundred years straight in your head."''',
+"I used to sleep like a stone, soldier. In Kyonin, in the Wasps' loft, eight of us in a row and me snoring loudest, they said. I slept the night before every job. I slept the night before Anemora."''',
         c('"And now?"', "now")),
-    kay("now", '''"Now I sleep. Like you. Lying down, gone, and then back." {n}Her mouth twists.{/n} "The curse took the trance. I didn't notice at first. I just noticed that I'd started to dream."
+    kay("now", '''"Now I lie down and I'm gone for an hour, and then I'm back, and I'm awake till the bells." {n}Her mouth twists.{/n} "I didn't notice it at first. I just noticed that the dreams had started."
 "I dream about the Worldwound every night. The prisoners. Tessariel holding the lamp. The sound a person makes when you've found the right place." {n}She sips the tea without tasting it.{/n} "So I stay up, and sit under this awning, and watch your city not burn."''',
         c('"What do you dream when it isn\'t the Worldwound?"', "other"),
         c('"Sleep in the citadel. I\'ll sit up and watch."', "watch"),

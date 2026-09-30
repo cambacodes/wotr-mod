@@ -63,7 +63,8 @@ WARNED_KENABRES = "kaylessa.warned_kenabres"      # Kaylessa_main/Answer_0028 "I
 WARNED_CAMP = "kaylessa.warned_camp"              # Kaylessa_main/Answer_0058 "I believe you. Forn is in the camp, watch out for him."
 SELECTED_ANSWERS = {HEALED: "9f98ffa7f2c71cb4c9e5da0c7a053876", NOTE_DESTROYED: "30b5b35e84d649245b0fcba5e8d5cc02",
                     WARNED_KENABRES: "c3e2b86fef76ee441bc66c86ef5f071a", WARNED_CAMP: "8d741378ae169454f89a544029823135"}
-SEEN_CUES = {ANEMORA_TOLD: ["c0fb6762c057bcc4894d1892a9eb22fc"]}
+FIRST_WORDS = "kaylessa.first_words_seen"        # Kaylessa_main/Cue_0001 "What are you looking at, soldier? Like what you see?"
+SEEN_CUES = {ANEMORA_TOLD: ["c0fb6762c057bcc4894d1892a9eb22fc"], FIRST_WORDS: ["2d7d6df431933024591e74d6dfd873e4"]}
 INVENTORY = {NOTE_HELD: "c669b34a7b9c2cb42bf6deb5d8d1606f"}
 FACTS = {TRICKERY1: "90bc71f1d8482184a9ede0bda4773d94"}
 
@@ -94,6 +95,11 @@ COUNCIL_KNOWS = P + "cost.council_knows"
 ARROW = P + "cost.arrow_taken"
 HER_ARROW = P + "cost.her_collarbone"
 BEAST_SEEN = P + "beast_seen"
+# Sol quality pass: when Forn died in canon (kaylessa.forn_dead at the hunter's visit) the living chain is a nameless
+# successor's, latched at that visit; the swap's own FornIsDead start (E17) must never turn a later scene into his.
+SUCCESSOR = P + "alive.successor"
+FORN_IS_DEAD = "7a6f0ef4dd004418aa613693dd9d280a"   # FornIsDead, started exactly as native Forn_Ambush/Cue_0040 does
+SWAP_OUT = dict(start_etude=FORN_IS_DEAD)
 # The spine after her return.
 RULES = P + "after.rules"                         # scene ids double as flags once the scene completes
 CLOCK_SCENE = P + "after.dark_fate"
@@ -107,6 +113,9 @@ BEAST_FED = P + "cost.beast_fed"
 BEAST_STOPPED = P + "beast_stopped"
 WASP_SENT = P + "wasp_sent_home"
 KNIFE_SHOWN = P + "knife_shown"
+TRUTH_OK = P + "truth_settled"                    # derived: no price lied about, or the lie confessed
+WARNED_ANY = P + "warned_her"                     # derived: she was believed, at Kenabres or at the camp (native answers)
+READY = "kaylessa.wasps.in_the_dark"               # the kiss after curfew: the played exchange of attraction before the proposal
 KNIFE_HELD = P + "knife_held"
 KNIFE_BACK = P + "knife_handed_back"
 LATE_YES = P + "knife_picked_up"
@@ -143,7 +152,10 @@ PRESENCES = {
 DERIVED = {
     PRESENCE_ON: [[DEAD_L, PRIMED], [RETURNED]],
     # R2-6: the last beat before the knife; the epilogue answers a question the war left no time to ask.
-    LATE_COMMITTED: [["trickster.ever", CLOCK]],
+    LATE_COMMITTED: [["trickster.ever", KNIFE_SHOWN, READY, TRUTH_OK]],   # the last beats before her proposal (Sol quality pass, BEL)
+    # Rule three: the dead worlds' return records the truth told or the lie; the living worlds never lied about a price.
+    TRUTH_OK: [[TOLD], [CONFESSED], [SWAP_CLEAN], [SWAP_FUMBLED]],
+    WARNED_ANY: [[WARNED_KENABRES], [WARNED_CAMP]],
     # 05 §2.1: the stance hooks come from household.PARTNERS (kaylessa.harem.eligible = committed or late_committed).
 }
 
@@ -164,6 +176,11 @@ def forn(id, text, *choices, **kw):
     return n(id, "Forn", text, *choices, portrait="Forn", **kw)
 
 
+def hunter_s(id, text, *choices, **kw):
+    """Forn's nameless successor (Forn died in canon): never Forn's name, never Forn's face."""
+    return n(id, "Kyonin Hunter", text, *choices, portrait="", **kw)
+
+
 def meet(id, title, entry, nodes, requires, forbids=(), delay=24, optional=True, chapters=(3, 5), **extra):
     """A physical scene at her presence under the tailor's awning (Chapters 3 and 5; the market is gone in the Abyss)."""
     SCENES.append(scene(id, title, "Kaylessa", min(chapters), entry, nodes,
@@ -178,7 +195,9 @@ def visit(id, title, nodes, requires, forbids=(), delay=24, owner="Kaylessa", ki
     """A rest-delivered scene in which she (or the one named) is there in person: a night visit, a ride out of the city."""
     SCENES.append(scene(id, title, owner, chapter, "", nodes, requires=tuple(dict.fromkeys(("trickster.ever", *requires))),
                         forbids=tuple(dict.fromkeys((CLOSED, LEFT, *forbids))), delay=delay, last=5, optional=optional,
-                        Relationship=REL, Remote=True, Kind=kind, Chapters=[c for c in (3, 5) if c >= chapter], **extra))
+                        Relationship=REL, Remote=True, Kind=kind, Chapters=[c for c in (3, 5) if c >= chapter],
+                        # Sol quality pass (CAN): she is there in person, in Drezen, so the rest must be taken there.
+                        **(dict(Areas=[DREZEN]) if kind == "visit" else {}), **extra))
 
 
 # --- State dead_at_reveal_ch3: the optional primer at her plea (a variant read only; the native death is untouched). ----
@@ -245,6 +264,24 @@ SCENES.append(scene(P + "dead.borrow", "A branch for a branch", "Shyka", 3,
     EntryMythic="PlayerIsTrickster", TricksterDevice=True, TricksterState="dead"))
 
 
+# Shyka gone from the Council (Sol quality pass, INT): the Eldest still exists, so the Trickster leaves an offer in the
+# empty hall the way Shyka hears things, and haggles on worse terms, on screen. Chapter 5; the same return follows.
+SCENES.append(scene(P + "dead.borrow_sending", "An offer left in an empty hall", "Kaylessa", 5, "", [
+    nar("start", '''{n}The Council hall is not what it was. Shyka's seat is only a seat now, and the dust on it has not been disturbed since the Eldest walked out of their own chair and into somewhere else.{/n}
+{n}But you remember how Shyka listened: to everything said in that hall, in every branch where it was said. So you say it three times, at the three hours the Council used to sit, into the dust on the empty seat. A branch for a branch. The drow who called everyone soldier.{/n}''',
+        c("[Wait until the third hour.]", "answer")),
+    shy("answer", '''{n}At the third hour the dust on the seat is a face, and then a different one.{/n} "You come to our door after we have left it. How rude. How like you." {n}The face is a child's, and sulking.{/n}
+"We are not at your Council now, Commander, so we are not bound to your Council's manners. The price is the yes, meant, every word, and it is paid now, and one thing more: the drow will remember that you were late. We will make sure of it."''',
+        c('[Pay it] "Done. Yes, and meant. And she can remember whatever she likes."', "close",
+          flags=(PRIMED, SHYKA_PRICE, SHYKA_RAISED, STARTED), alignment=("Chaotic", 1), crusade=("Favors", -200)),
+        c('[Keep your futures] "Not at that price."', abort=True)),
+    shy("close", '''"Paid." {n}The dust settles back into dust.{/n} "Give it a day. She will arrive where it is dark, because she prefers it. And she will be cross with you. We saw to that."''',
+        c("[Leave the empty hall.]")),
+], requires=("trickster", DEAD), forbids=(PRIMED, ENDING_KEPT, RETURNED),
+    RequiresAnyGroups=[["shyka.gone", "council.fought", "council.fought_nocta_allied"]],
+    last=5, optional=True, Relationship=REL, Remote=True, Kind="sending", Chapters=[5], TricksterDevice=True, TricksterState="dead"))
+
+
 # The return: at her presence, a day after the trade.
 meet(P + "dead.soldier", "Slightly used", '"...Kaylessa?"', [
     nar("open", '''{n}She doesn't get up. She watches you come the whole length of the awning's shadow with the look of someone checking a face against a description.{/n}''',
@@ -307,11 +344,30 @@ meet(P + "dead.soldier", "Slightly used", '"...Kaylessa?"', [
 # --- The living world (Chapter 5; the ambush never came): Forn comes back, and the amulet swap. ------------------------
 
 visit(P + "alive.hunter", "A courtesy between hunters", [
-    nar("open", '''{n}There is an elf waiting in your antechamber when you come off the walls: tall, pale, with a bandaged forearm and a melancholy, courteous face. Forn Autumn Haze, darkhunter of Kyonin, rises and bows as if the war had left him nothing but his manners.{/n}''',
-        c("Continue", "ask", forbids=(FORN_DEAD,)),
+    nar("open", '''{n}There is an elf waiting in your antechamber when you come off the walls: tall, pale, in Kyonin grey with a leaf-shaped brooch at the throat, a bandaged forearm, and a melancholy, courteous face.{/n}''',
+        c("Continue", "named", forbids=(FORN_DEAD,)),
         c("Continue", "second", requires=(FORN_DEAD,))),
-    nar("second", '''{n}Not Forn; Forn is dead. This one wears the same grey, the same leaf-shaped brooch at the throat, and the same careful sorrow, as if the Winter Council issued it with the cloak. He gives no name. He says the name does not matter; the duty is the same one.{/n}''',
+    nar("named", '''{n}Forn Autumn Haze, hunter of Kyonin's Winter Council, rises and bows as if the war had left him nothing but his manners.{/n}''',
         c("Continue", "ask")),
+    nar("second", '''{n}He is not Forn Autumn Haze; Forn is dead. This one wears the same grey, the same brooch, and the same careful sorrow, as if the Winter Council issued it with the cloak. He rises and bows. He gives no name. He says the name does not matter; the duty is the same one.{/n}''',
+        c("Continue", "ask_s", flags=(SUCCESSOR,))),
+    hunter_s("ask_s", '''"Commander. Forgive the hour. The one I hunt is in Drezen. The man who hunted her before me did not come home, and the Council has sent me to finish his work. She came in under a courier's grey and a face that is not hers, and she has been watching your markets for a week."
+"I ask for nothing that would trouble your crusade. Only your leave, and one courtesy: a word, from you, that an elf lies wounded in the ravine below the south wall. She goes to the wounded. She cannot help it. It is the last thing about her that is still one of us."''',
+        c('[Play along] "Name the place and the hour. I\'ll send her to you."', "agreed_s", flags=(PRIMED, STARTED),
+          alignment=("Chaotic", 1)),
+        c("[Study the bandage while he talks]", check=dict(Skill="SkillPerception", DC=25, Success="seen_s", Failure="missed_s")),
+        c('[Send him away] "No hunting in my city."', abort=True)),
+    nar("seen_s", '''{n}The bandage is clean where it ought to be foul, and the arm under it moves too easily whenever he forgets it. There is no wound. He has learned his predecessor's trade to the letter. A man who fakes a wound to bring his prey into the open keeps friends with bows somewhere out of the light.{/n}''',
+        c('[Play along] "Name the place and the hour. I\'ll send her to you."', "agreed_s", flags=(PRIMED, STARTED, WOUND_SEEN),
+          alignment=("Chaotic", 1)),
+        c('[Send him away] "No hunting in my city."', abort=True)),
+    nar("missed_s", '''{n}The bandage is stained and tight, and he favours the arm the way a wounded man does. If it is theatre, it is good theatre.{/n}''',
+        c('[Play along] "Name the place and the hour. I\'ll send her to you."', "agreed_s", flags=(PRIMED, STARTED),
+          alignment=("Chaotic", 1)),
+        c('[Send him away] "No hunting in my city."', abort=True)),
+    hunter_s("agreed_s", '''"Two nights from now, in the ravine below the south wall, when the moon is down. She sees in the dark; we must give her every advantage, or she will suspect a trap." {n}He bows again, lower.{/n}
+"You do my people a service they will never be permitted to thank you for. My predecessor would have said that circumstances are stronger than our desires. I have found it simpler not to have desires."''',
+        c("[Watch him go.]")),
     forn("ask", '''"Commander. Forgive the hour. The one I hunt is in Drezen. She came in under a courier's grey and a face that is not hers, and she has been watching your markets for a week."
 "I ask for nothing that would trouble your crusade. Only your leave, and one courtesy: a word, from you, that an elf lies wounded in the ravine below the south wall. She goes to the wounded. She cannot help it. It is the last thing about her that is still one of us."''',
         c('[Play along] "Name the place and the hour. I\'ll send her to you."', "agreed", flags=(PRIMED, STARTED),
@@ -335,10 +391,15 @@ visit(P + "alive.hunter", "A courtesy between hunters", [
 
 visit(P + "alive.warning", "The face she wears", [
     nar("open", '''{n}The knife is at your throat before the lamp is lit. It is small, and very sharp, and the hand behind it does not shake. A voice by your ear, low, with the flat patience of someone who has done this before:{/n}''',
-        c("Continue", "met", requires=(MET,)),
-        c("Continue", "stranger", forbids=(MET,))),
+        c("Continue", "met", requires=(MET, WARNED_ANY)),
+        c("Continue", "stranger", forbids=(MET,)),
+        c("Continue", "met_doubted", requires=(MET,), forbids=(WARNED_ANY,))),
+    kay("met_doubted", '''"Don't. I saw him leave your door, soldier. The elf with the bandage he doesn't need."
+"We've met. I told you a man was hunting me, and you heard me out and didn't believe a word of it, or didn't say you did. So tell me why the man who wants my head was just bowing to you on your own doorstep."''',
+        c('[Tell her everything] "He wants you in the ravine below the south wall with the moon down, and me for bait. I said yes."', "plan"),
+        c('"I promised him you. I didn\'t say which of us would keep the promise."', "plan")),
     kay("met", '''"Don't. I saw him leave your door, soldier. The elf with the bandage he doesn't need."
-"Kenabres. The war camp. You let me walk away, and you believed me, or near enough. So tell me why the man who wants my head was just bowing to you on your own doorstep."''',
+"I told you once who was hunting me, and you believed me, or near enough. You told me where he was. So tell me why the man who wants my head was just bowing to you on your own doorstep."''',
         c('[Tell her everything] "He wants you in the ravine below the south wall with the moon down, and me for bait. I said yes."', "plan"),
         c('"I promised him you. I didn\'t say which of us would keep the promise."', "plan")),
     kay("stranger", '''"Don't. You don't know me, soldier. You've met the man who hunts me, which is worse for both of us."
@@ -347,14 +408,20 @@ visit(P + "alive.warning", "The face she wears", [
         c('"I promised him you. I didn\'t say which of us would keep the promise."', "plan")),
     nar("plan", '''{n}The knife stays a moment longer. Then it's gone, and she steps back into what light there is: a Kyonin girl in a courier's grey, freckled, sunburnt across the nose. The face is wrong for her voice. It is wrong for her eyes.{/n}
 {n}She touches the amulet at her throat, and the face goes out like a blown lamp. Under it she is dark as slate, fanged, red-eyed, and very tired.{/n}''',
-        c("Continue", "amulet")),
+        c("Continue", "amulet", forbids=(SUCCESSOR,)),
+        c("Continue", "amulet_s", requires=(SUCCESSOR,))),
+    kay("amulet_s", '''"Anemora's work. Her people wore faces like this round a campfire near your war camp, pretending to be your scouts. I took this one off a dead one in the fog."
+"It shows a courier of the Green Road. Some girl they killed on the way to Mendev; I never learned her name. Forn hunted that face across half the country. Forn's dead, and the Council sent the next one with the same cloak and the same list, and he's hunting it now. It's the only elf face I've got, soldier. It's how I buy bread."''',
+        c('"Then let him catch it. On somebody else."', "swap"),
+        c('"Could that amulet hang round another neck?"', "swap")),
     kay("amulet", '''"Anemora's work. Her people wore faces like this round a campfire near your war camp, pretending to be your scouts. I took this one off a dead one in the fog."
 "It shows a courier of the Green Road. Some girl they killed on the way to Mendev; I never learned her name. Forn has been hunting that face across half the country. It's the only elf face I've got, soldier. It's how I buy bread."''',
         c('"Then let him catch it. On somebody else."', "swap"),
         c('"Could that amulet hang round another neck?"', "swap")),
     kay("swap", '''"...On him." {n}Something moves in her face. It isn't a smile, but it used to be one.{/n}
 "His marksmen will be up on the ridge with orders: the courier's face, first shot, don't let her speak. If the face is on him when they loose..." {n}She turns the amulet in her fingers.{/n}
-"You'd have to lift it off my neck and put it on his in the middle of a fight, with his knife out. It's an alley trick. We did things like it in Kyonin, in Calistria's name, when I was a wasp and not a drow. You'd have to be quick, soldier."''',
+"You'd have to lift it off my neck and put it on his in the middle of a fight, with his knife out. It's an alley trick. We did things like it in Kyonin, in Calistria's name, when I was a wasp and not a drow. You'd have to be quick, soldier."
+"And when it's done I go down on the stones beside him and I stay down, under the girl's cloak, with his blood on it. From the ridge, in the dark, with the lantern knocked out, they'll count two bodies. They'll want to count two."''',
         c("Continue", "terms")),
     kay("terms", '''"One more thing. If it goes wrong, I take the arrows. Not you. It's my face they're aiming at, and my death they're owed."''',
         c('"Your face. Your arrows."', "agreed", flags=(PLANNED,)),
@@ -368,50 +435,63 @@ visit(P + "alive.warning", "The face she wears", [
 
 
 visit(P + "alive.amulet_swap", "Kyonin's own arrows", [
-    nar("open", '''{n}With the moon down, the ravine below the south wall is as black as the bottom of a well. Forn lies propped against a stone at the very bottom of it, a lantern turned low at his side, his bandaged arm across his knees: exactly where a wounded man would be found, exactly where a rescuer would have to stand in the light.{/n}''',
-        c("Continue", "forn")),
+    nar("open", '''{n}With the moon down, the ravine below the south wall is as black as the bottom of a well. The hunter lies propped against a stone at the very bottom of it, a lantern turned low at his side, his bandaged arm across his knees: exactly where a wounded man would be found, exactly where a rescuer would have to stand in the light.{/n}''',
+        c("Continue", "forn", forbids=(SUCCESSOR,)),
+        c("Continue", "forn_s", requires=(SUCCESSOR,))),
     forn("forn", '''"Commander. And the courier." {n}Kaylessa comes down the slope behind you in the Green Road girl's face, her bow unstrung on her back, like a woman who has been told a friend is hurt.{/n}
 "I am sorry it must be this way. I truly am. Come into the light, both of you. It will be quicker."''',
         c("Continue", "ridge")),
-    nar("ridge", '''{n}A pebble rolls somewhere on the ridge above. Then another, on the other side. Forn's good hand is already on his knife. Kaylessa's shoulder touches yours, once: the only signal you agreed on.{/n}''',
+    hunter_s("forn_s", '''"Commander. And the courier." {n}Kaylessa comes down the slope behind you in the Green Road girl's face, her bow unstrung on her back, like a woman who has been told a friend is hurt.{/n}
+"Forn Autumn Haze would have apologised to you both. I never learned how. Come into the light."''',
+        c("Continue", "ridge")),
+    nar("ridge", '''{n}A pebble rolls somewhere on the ridge above. Then another, on the other side. The hunter's good hand is already on his knife. Kaylessa's shoulder touches yours, once: the only signal you agreed on.{/n}''',
         c("[Unpick the glamour like a trap, and set it again on him]", requires=(TRICKERY1,),
           check=dict(Skill="SkillThievery", DC=24, Success="swap", Failure="fumble")),
         c("[Go for the arm you know is whole]", requires=(WOUND_SEEN,),
           check=dict(Skill="SkillThievery", DC=27, Success="swap", Failure="fumble")),
         c("[Lift the amulet off her and onto him]",
           check=dict(Skill="SkillThievery", DC=32, Success="swap", Failure="fumble"))),
-    nar("swap", '''{n}Kaylessa goes first, straight at him, the way she once went at a different trap on a different night. Forn's knife comes up for her throat. You are already inside his reach.{/n}
-{n}Two fingers under the cord at her neck, a turn of the wrist, and the cord is over his head before his arm finishes its stroke, the way a wasp's sting is in before the hand can slap. The glamour takes him like water takes dye. For a heartbeat there are two of her in the lamplight: a freckled Green Road girl with Forn's knife in her hand, and a drow woman throwing herself flat on the stones.{/n}''',
-        c("Continue", "volley")),
+    nar("swap", '''{n}Kaylessa goes first, straight at him, the way she once went at a different trap on a different night. His knife comes up for her throat. You are already inside his reach.{/n}
+{n}Two fingers under the cord at her neck, a turn of the wrist, and the cord is over his head before his arm finishes its stroke, the way a wasp's sting is in before the hand can slap. The glamour takes him like water takes dye. For a heartbeat there are two of her in the lamplight: a freckled Green Road girl with the hunter's knife in her hand, and a drow woman throwing herself flat on the stones.{/n}''',
+        c("Continue", "volley", forbids=(SUCCESSOR,)),
+        c("Continue", "volley_s", requires=(SUCCESSOR,))),
     nar("volley", '''{n}The ridge looses. Six bows, perhaps eight, every one at the face they were told to shoot before it could speak. Forn does not speak. He looks down at the fletching in his chest with an expression of courteous surprise, as if someone has broken a rule of etiquette he had believed was universal.{/n}
-{n}The amulet at his throat sputters, flares white, and burns out. The girl's face runs off him like wax, and what slides down the stone is only Forn Autumn Haze, darkhunter of Kyonin, killed by Kyonin.{/n}''',
+{n}The amulet at his throat sputters, flares white, and burns out. The girl's face runs off him like wax, and what slides down the stone is only Forn Autumn Haze, the Winter Council's hunter, killed by Kyonin.{/n}''',
         c("Continue", "after")),
-    kay("after", '''{n}Up on the ridge somebody shouts a single word in Elven, and then there is the sound of men running the other way. Kaylessa gets up off the stones and stands over Forn without moving.{/n}
-"No one in Kyonin will ever say this happened. They'll write that he died hunting me, and that I died with him, because the truth is worse than a lie to them. It's embarrassing." {n}She touches her throat where the cord was. There is nothing there now but her own dark skin.{/n}
+    nar("volley_s", '''{n}The ridge looses. Six bows, perhaps eight, every one at the face they were told to shoot before it could speak. He does not speak. He looks down at the fletching in his chest as though it were an error in a report he had signed without reading.{/n}
+{n}The amulet at his throat sputters, flares white, and burns out. The girl's face runs off him like wax, and what slides down the stone is a Winter Council hunter who never gave his name, killed by Kyonin, in the same ravine his predecessor's work had led him to.{/n}''',
+        c("Continue", "after")),
+    kay("after", '''{n}Up on the ridge somebody shouts a single word in Elven, and then there is the sound of men running the other way. Kaylessa gets up off the stones and stands over him without moving.{/n}
+"They counted two. I heard one of them say it, up there, before they ran: two down, the face burnt, the job done." {n}She wipes his blood off the courier's cloak with a handful of grass.{/n} "No one in Kyonin will ever say otherwise. They'll write that he died hunting me, and that I died with him, because the men who saw it want it to be true and the truth is worse than a lie to them." {n}She touches her throat where the cord was. There is nothing there now but her own dark skin.{/n}
 "That was the last elf face I had, soldier. The only one I could have walked home in. Burnt out on him."''',
         c("[Say nothing.]", "end"),
         c('"It suited him."', "joke")),
     kay("joke", '''"It did." {n}And then, horribly, she laughs: a short breath through her teeth, over a dead man, in a ravine.{/n} "It did. Gods. It really did."''',
         c("Continue", "end")),
     kay("end", '''"Take me somewhere with a roof, soldier. I'd like to sit down in a place where nobody is aiming at me."''',
-        c("[Take her back up the slope.]", flags=(RETURNED, AMULET, SWAP_CLEAN))),
-    nar("fumble", '''{n}Your fingers find the cord, and Forn finds your wrist. He is faster than a wounded man and stronger than a courteous one. The amulet comes off her neck and hangs in his fist between the three of you, blazing, half a face on it and half off.{/n}''',
+        c("[Take her back up the slope.]", flags=(RETURNED, AMULET, SWAP_CLEAN), forbids=(SUCCESSOR,), **SWAP_OUT),
+        c("[Take her back up the slope.]", flags=(RETURNED, AMULET, SWAP_CLEAN), requires=(SUCCESSOR,))),
+    nar("fumble", '''{n}Your fingers find the cord, and the hunter finds your wrist. He is faster than a wounded man and stronger than a courteous one. The amulet comes off her neck and hangs in his fist between the three of you, blazing, half a face on it and half off.{/n}''',
         c("Continue", "fumble_you", requires=(SHIELD,)),
         c("Continue", "fumble_her", forbids=(SHIELD,))),
     nar("fumble_you", '''{n}The ridge looses at the glare. You get your body between Kaylessa and the light, because you said you would, and the first arrow takes you high in the shoulder, and the second skips off your armour, and then she is past you.{/n}''',
         c("Continue", "beast")),
     nar("fumble_her", '''{n}The ridge looses at the glare. She puts herself in front of you, as she said she would. The arrow takes her low in the collarbone, and she makes a small, flat sound, as though she had been expecting it for years, and she does not fall.{/n}''',
         c("Continue", "beast")),
-    nar("beast", '''{n}What she does to Forn then, she does with her hands. The knife is somewhere on the stones and she doesn't look for it. You hear her, low, a sound that is nothing like her voice, and you see her face in the dying glare of the amulet, and it is delighted.{/n}
-{n}By the time the amulet burns out, Forn has stopped moving, and the ridge is empty. The marksmen have seen enough to carry home.{/n}''',
+    nar("beast", '''{n}What she does to him then, she does with her hands. The knife is somewhere on the stones and she doesn't look for it. You hear her, low, a sound that is nothing like her voice, and you see her face in the dying glare of the amulet, and it is delighted.{/n}
+{n}By the time the amulet burns out, he has stopped moving, and the ridge is empty. The marksmen have seen enough to carry home.{/n}''',
         c("Continue", "after_fumble")),
     kay("after_fumble", '''"Don't." {n}She's on her knees, holding her hands away from her body as though they belonged to someone else.{/n}
 "Don't look at me like that, and don't look away either. You saw it. That's what's in me. It liked that." {n}She draws a breath that shakes all the way down.{/n}
 "And they saw it too. They'll tell the Winter Council I'm alive and I'm everything Forn said I was. All of it true, in one night."''',
         c('[Help her up] "Come on. Somewhere with a roof."', flags=(RETURNED, AMULET, SWAP_FUMBLED, COUNCIL_KNOWS, BEAST_SEEN, ARROW),
-          requires=(SHIELD,)),
+          requires=(SHIELD,), forbids=(SUCCESSOR,), **SWAP_OUT),
         c('[Help her up] "Come on. Somewhere with a roof."', flags=(RETURNED, AMULET, SWAP_FUMBLED, COUNCIL_KNOWS, BEAST_SEEN, HER_ARROW),
-          forbids=(SHIELD,))),
+          forbids=(SHIELD, SUCCESSOR), **SWAP_OUT),
+        c('[Help her up] "Come on. Somewhere with a roof."', flags=(RETURNED, AMULET, SWAP_FUMBLED, COUNCIL_KNOWS, BEAST_SEEN, ARROW),
+          requires=(SHIELD, SUCCESSOR)),
+        c('[Help her up] "Come on. Somewhere with a roof."', flags=(RETURNED, AMULET, SWAP_FUMBLED, COUNCIL_KNOWS, BEAST_SEEN, HER_ARROW),
+          requires=(SUCCESSOR,), forbids=(SHIELD,))),
 ], requires=(PLANNED,), forbids=(DEAD, RETURNED), delay=24, chapter=5, optional=False,
     TricksterDevice=True, TricksterState="alive")
 
@@ -460,14 +540,19 @@ meet(RULES, "Soldier's rules", '"Still here?"', [
 meet(CLOCK_SCENE, "The clock", '"You\'re counting something."', [
     nar("open", '''{n}She has a strip of cloth tied round her wrist, knotted, and she keeps touching the knots with her thumb. There are seven of them.{/n}''',
         c("Continue", "stalled", requires=(STALLED,)),
-        c("Continue", "clean", requires=(SWAP_CLEAN,)),
-        c("Continue", "fumbled", requires=(SWAP_FUMBLED,))),
+        c("Continue", "clean", requires=(SWAP_CLEAN,), forbids=(SUCCESSOR,)),
+        c("Continue", "fumbled", requires=(SWAP_FUMBLED,)),
+        c("Continue", "clean_s", requires=(SWAP_CLEAN, SUCCESSOR))),
     kay("stalled", '''"Days. Since that thing at your Council put me down in your market." {n}She holds up the wrist.{/n}
 "Every morning I check. The beast, the Dark Fate, whatever you want to call it. Every morning in the Worldwound it was a little further in, like water through a boot. Now it's just sitting there. Same place. Seven mornings."
 "I keep waiting for the thumb to slip."''',
         c("Continue", "what")),
     kay("clean", '''"Days. Since the ravine." {n}She holds up the wrist.{/n}
 "Every morning I check. It moves, soldier. A little each week, like water through a boot. But I watched Forn go down with Kyonin's arrows in him, and I waited for it to howl, the way it did when I first saw him bleed in Mendev. It didn't. It didn't move at all."
+"I don't know what that means. I'm afraid to hope it means anything."''',
+        c("Continue", "what")),
+    kay("clean_s", '''"Days. Since the ravine." {n}She holds up the wrist.{/n}
+"Every morning I check. It moves, soldier. A little each week, like water through a boot. But I watched the Council's new man go down with Kyonin's arrows in him, in Forn's cloak, with Forn's list in his coat, and I waited for it to howl. It didn't. It didn't move at all."
 "I don't know what that means. I'm afraid to hope it means anything."''',
         c("Continue", "what")),
     kay("fumbled", '''"Days. Since the ravine." {n}She holds up the wrist, and her hand is not quite steady.{/n}
@@ -558,7 +643,7 @@ meet(KNIFE_SCENE, "The dagger she didn't draw", '"What have you got there?"', [
         c('"Keep it close, then."', "close", flags=(KNIFE_SHOWN,)),
         c('"When the time comes, you won\'t be the one holding it alone."', "alone", flags=(KNIFE_SHOWN,))),
     kay("hold", '''{n}She looks at your open hand without moving. Then she puts the dagger in it, hilt first, and keeps two fingers on the pommel the whole time, and takes it back.{/n}
-"Not yet." {n}It isn't a refusal. It's a date written down.{/n}''',
+"Not yet." {n}Her fingers stay on the pommel a moment longer than they need to.{/n}''',
         c("[Let her keep it.]")),
     kay("close", '''"Always." {n}She pats the boot.{/n} "It's the one thing I own that nobody gave me and nobody took. Anemora never found it. Forn never found it. Your people never found it, either, when they went through my things."''',
         c("[Let her keep it.]")),
@@ -576,14 +661,15 @@ meet(P + "commit", "Hilt first", '"You wanted to talk to me?"', [
         c("Continue", "truth_first", requires=(LIED,), forbids=(CONFESSED,)),
         c("Continue", "speech", forbids=(LIED,)),
         c("Continue", "speech", requires=(LIED, CONFESSED))),
-    kay("truth_first", '''"You still haven't told me what that thing at your Council took for me. You lied about it on the first day, and it's been sitting in my throat ever since." {n}Her grip on the hilt doesn't change.{/n}
-"I'm not asking it as a toll, soldier. What I'm about to do, I'll do either way. I'm telling you so you know I haven't forgotten, and so you can say it now if you want to be clean when I do it."''',
+    kay("truth_first", '''"Rule three, soldier. You still haven't told me what that thing at your Council took for me. You lied about it on the first day, and it's been sitting in my throat ever since." {n}Her grip on the hilt doesn't change.{/n}
+"Say it now. I'm not doing this with a lie still in the room."''',
         c('[Confess] "A branch where I say yes to Shyka. Where I become one of them."', "confessed", flags=(CONFESSED,)),
         c('"Not yet."', "not_yet")),
     kay("confessed", '''{n}She lets out a breath she seems to have been holding since the market.{/n} "There. That wasn't hard. That was only the truth."''',
         c("Continue", "speech")),
-    kay("not_yet", '''"Not yet." {n}She nods, slowly, the way she'd note a wind change.{/n} "Then carry it. You're good at carrying things." {n}She doesn't put the dagger away.{/n}''',
-        c("Continue", "speech")),
+    kay("not_yet", '''"Not yet." {n}She nods, slowly, the way she'd note a wind change, and slides the dagger back into her boot.{/n}
+"Then not tonight either. Rule three, soldier. I'm not handing my death to somebody who's still lying to me about my life." {n}She pulls the shawl up to her eyes.{/n} "I'll ask once more. Somewhere I choose. Have your answer ready."''',
+        c("[Let her go.]", flags=(DECLINED,))),
     kay("speech", '''"Anemora made me into this to prove a point. Kyonin wants me dead to hide the point. Forn came for me with a speech about duty." {n}She turns the dagger in her hand until the blade lies along her own wrist.{/n}
 "You're the first one in two years who wanted something from me that wasn't about the point. I don't know what it is yet. I think I want to find out."''',
         c("Continue", "fed", requires=(BEAST_FED,)),
@@ -593,7 +679,7 @@ meet(P + "commit", "Hilt first", '"You wanted to talk to me?"', [
     nar("offer", '''{n}She holds the dagger out to you, hilt first. Her hand is very steady.{/n}''',
         c("Continue", "ask")),
     kay("ask", '''"This is the knife I meant for the beast. For the night it comes the rest of the way. I couldn't use it on myself once, and I've been afraid ever since that I won't manage it the second time either."
-"So I'm giving it to you. Not because you've earned it. Not because you passed some test. I'm done with tests; I've been tested by better liars than you." {n}Her mouth twists.{/n} "Because I want to. That's all. Take it, soldier."''',
+"You took my rules without haggling. You heard about the clock and didn't leave. You went down into your own cells with me knowing what I might do there, and you came back up with me after." {n}Her mouth twists.{/n} "So it's yours. Take it, soldier."''',
         c('[Take the knife] "I\'ll hold it."', "took", flags=(COMMITTED, KNIFE_HELD)),
         c('[Close her fingers back around the hilt] "It\'s yours. So is the choice. I\'m staying either way."', "back",
           flags=(COMMITTED, KNIFE_BACK), forbids=(BEAST_FED,)),
@@ -604,15 +690,15 @@ meet(P + "commit", "Hilt first", '"You wanted to talk to me?"', [
           flags=(COMMITTED, KNIFE_HELD), requires=(BEAST_FED,))),
     kay("took", '''{n}You close your hand on the hilt. She lets go of it slowly, one finger at a time, as though she were letting go of a rope over a drop.{/n}
 "There." {n}She looks at her empty hand.{/n} "That's the lightest I've been since Kyonin."
-{n}Then she reaches up and pulls your face down to hers and kisses you, hard, with her fingers in your hair and her fangs careful, the way a soldier seals a bargain with the only thing she has left to give.{/n}''',
+{n}Then she reaches up and pulls your face down to hers and kisses you, hard, with her fingers in your hair and her fangs careful.{/n}''',
         c("Continue", "after")),
     kay("back", '''{n}Your fingers close over hers on the hilt, and push the knife gently back against her own palm.{/n}
-{n}She stares at your hand on hers. Something in her face breaks open, and she lets it.{/n} "You'd leave it with me. After everything you've seen." {n}Her voice has gone rough.{/n} "Nobody's ever trusted me with my own death, soldier. They all wanted to hold it for me."
+{n}She stares at your hand on hers. Something in her face breaks open, and she lets it.{/n} "You'd leave it with me. After everything you've seen." {n}Her voice has gone rough.{/n} "Nobody's ever left my death in my own hand, soldier. They take it off me, or they hold it for me."
 {n}She kisses you with the knife still between your joined hands, hard, her fangs careful, and doesn't let go of either.{/n}''',
         c("Continue", "after")),
     kay("not_after", '''"No." {n}She pulls her hand out from under yours and pushes the hilt into your palm, and holds your fingers closed round it with both of hers.{/n}
 "Not after the cells. I know what that hand does when it's left alone. Hold it for me, soldier. That's what I'm asking. That's all I'm asking."
-{n}And then she kisses you, hard, as if she were settling a debt.{/n}''',
+{n}And then she kisses you, hard, and doesn't let go of your fingers.{/n}''',
         c("Continue", "after")),
     kay("after", '''{n}When she lets you go she's breathing fast, and her eyes are very red in the dark of the awning.{/n}
 "Tomorrow night. Not here. Somewhere I choose." {n}She pulls the shawl back up to her eyes, and over it she looks younger than you've ever seen her.{/n} "Mind the rules, soldier."''',
@@ -624,7 +710,7 @@ meet(P + "commit", "Hilt first", '"You wanted to talk to me?"', [
     kay("road", '''"Kyonin." {n}She lowers the knife.{/n} "You'd send me home. With the truth. To the people who sent Forn."
 {n}She looks, for a heartbeat, as if she might say yes to something else. Then her face closes, the way a door closes on a lit room.{/n} "You're right. It's mine to tell. Nobody else's." {n}She sheathes the dagger.{/n} "Goodbye, soldier. Thank you for the choice. It's the second one you've given me."''',
         c("[Watch her go.]")),
-], requires=(KNIFE_SHOWN,), forbids=(COMMITTED, DECLINED), delay=24, optional=False)
+], requires=(KNIFE_SHOWN, READY), forbids=(COMMITTED, DECLINED), delay=24, optional=False)
 
 
 # The knife, put down somewhere: her answer to the Commander's no (and to an unconfessed lie), with no price attached.
@@ -636,7 +722,7 @@ visit(P + "after.knife_on_table", "Put down somewhere", [
     nar("lied", '''{n}Beside the blade there is a strip of cloth with its knots, and one word scratched into the wood of the table with the knife's point: PRICE.{/n}''',
         c('[Scratch the answer beside it] "A branch where I say yes to Shyka."', "knife", flags=(CONFESSED,)),
         c("[Leave the word unanswered.]", "leave_lie")),
-    nar("knife", '''{n}She's somewhere in the dark by the window. You can't see her. She can see you perfectly well.{/n}''',
+    nar("knife", '''{n}She's somewhere in the dark by the window. You can barely make her out. She can see you perfectly well.{/n}''',
         c("[Pick up the knife.]", "picked", flags=(COMMITTED, KNIFE_HELD, LATE_YES)),
         c("[Take it to the window and put it back in her hand.]", "handed", flags=(COMMITTED, KNIFE_BACK, LATE_YES),
           forbids=(BEAST_FED,)),
@@ -662,8 +748,13 @@ KEPT_PARAS = (
     p("{n}Somewhere, in a branch Shyka kept, the Commander said yes and meant it. She never let the Commander forget that they had haggled with the Eldest and lost, and she never said she was sorry they had.{/n}", requires=(SHYKA_RAISED,)),
     p("{n}The beast in her never took another step. It sat where it had stopped on the night she died in the Commander's world, and every morning of her life she checked it, and every morning it was there, and the Commander learned to wait until she had checked before saying good morning.{/n}", requires=(STALLED,), forbids=(BEAST_FED,)),
     p("{n}The beast had tasted something in the crusade's cells, and it did not forget. Some mornings the thumb on the clock slipped, a little. On those mornings she put the Kyonin dagger in the Commander's hand before breakfast and did not say why, and the Commander did not ask.{/n}", requires=(BEAST_FED,)),
-    p("{n}The Winter Council's records list the drow Kaylessa as dead in Mendev, killed in the same night as the darkhunter Forn Autumn Haze. The Council never asked who killed whom. It preferred not to know.{/n}", requires=(SWAP_CLEAN,)),
-    p("{n}The Winter Council knew she lived. Twice more it sent hunters. The first was found in the Drezen ravine with his own arrows in him. The second never arrived; the crusade's border patrol said he had turned for home, and would not say what they had told him.{/n}", requires=(COUNCIL_KNOWS,)),
+    p("{n}The Winter Council's records list the drow Kaylessa as dead in Mendev, killed in the same night as the Council's hunter Forn Autumn Haze. The Council never asked who killed whom. It preferred not to know.{/n}", requires=(SWAP_CLEAN,), forbids=(SUCCESSOR,)),
+    p("{n}The Winter Council's records list the drow Kaylessa as dead in Mendev, killed in the same night as the nameless hunter it sent after Forn Autumn Haze. The Council never asked who killed whom. It preferred not to know.{/n}", requires=(SWAP_CLEAN, SUCCESSOR)),
+    p("{n}In the living world the clock never stopped. Some seasons it moved and some it did not, and she tied a knot for every step it took and hung the strips on a nail by the door. The Commander learned to count them too, and never once said the number aloud. The Kyonin dagger hung on the next nail.{/n}", any_groups=((SWAP_CLEAN, SWAP_FUMBLED),)),
+    p("{n}The Winter Council knew she lived. Twice more it sent hunters. The first was found in the Drezen ravine with his own arrows in him. The second never arrived; the crusade's border patrol said he had turned for home, and would not say what they had told him.{/n}", requires=(COUNCIL_KNOWS,),
+      forbids=("kaylessa.clearing.hunter_turned_back", "kaylessa.clearing.hunter_hers")),
+    p("{n}The Winter Council knew she lived. The hunter it sent after the ravine walked back into Kyonin with both hands broken and a letter pinned to his coat in her writing, and the Council hid him as it had hidden everything else. It sent no one after him.{/n}", requires=(COUNCIL_KNOWS,),
+      any_groups=(("kaylessa.clearing.hunter_turned_back", "kaylessa.clearing.hunter_hers"),)),
     p("{n}She never again wore a face that was not her own. When she went among people she went wrapped to the eyes, or she went as she was, and let them stare.{/n}", requires=(AMULET,)),
     p("{n}The Commander carried a white scar high on one shoulder, from a Kyonin arrow meant for someone else. She would put her thumb on it sometimes, absently, in company, the way other women touch a ring.{/n}", requires=(ARROW,)),
     p("{n}In Kyonin a drow woman named Tessariel stood before the Winter Council with her own face on and told them where she had learned what she knew. The Council had her removed. It could not have the words removed. They went round the border forts for years.{/n}", requires=(WASP_SENT,)),
@@ -676,22 +767,31 @@ KEPT_PARAS = (
 SCENES.append(scene(P + "epilogue.no_lamb", "", "KaylessaEpilogue", 6, "", [
     nar("page", '''{n}The drow Kaylessa, once of the Sunset Wasps of Kyonin, stayed at the Commander's side through the Threshold and after it. She called the Commander "soldier" to the end of her days, in public and in private and in the middle of arguments, and nobody who heard it ever mistook it for anything but what it was.{/n}
 {n}She was never tame. She kept her rules and made the Commander keep them. She hunted, at night, the kind of men the law had missed, and came home before light, and some of the men were found and some were not.{/n}
-{n}She was not cured. There is no Light Fate. She lived with what was in her the way a soldier lives with a wound that will not close: carefully, angrily, and a long time.{/n}''',
+{n}She was not cured. There is no Light Fate. She lived with what was in her the way a soldier lives with a wound that will not close: carefully and angrily, one morning at a time, and she checked it every one of them.{/n}''',
         paragraphs=KEPT_PARAS)],
     requires=("trickster.ever", COMMITTED), forbids=(CLOSED, "sacrifice"),
-    ForbidOverrides={"sacrifice": "trickster.cheated_death"}, **EP))
+    ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
 
 SCENES.append(scene(P + "epilogue.commit", "", "KaylessaEpilogue", 6, "", [
     nar("page", '''{n}The drow Kaylessa did not answer the Commander's question until the war was over. The Commander had never quite asked it. She answered it anyway, one evening after the Threshold, by walking into the Commander's rooms with the shutters open and the lamp out, and laying a Kyonin dagger on the table between them, hilt towards the Commander's hand.{/n}
 {n}"Your choice, soldier," she said. "It always was. I only wanted to be sure you knew it."{/n}
-{n}Whatever the Commander chose, she stayed. She kept her rules, and she kept her knife where one of them could reach it, and she did not say which one, and she was never cured, and she lived a long time.{/n}''',
+{n}The Commander closed a hand round the hilt, and she let go of it one finger at a time, and then she put out the lamp. She took the Commander's wrist in the dark, the way she had in the streets after curfew, and walked backwards to the bed without once looking where she was going, and pulled the Commander down onto it by the collar, and knelt astride and unlaced the courier's grey at her own throat with quick soldier's fingers, and said the word she called everyone against the Commander's mouth.{/n}
+{n}In the morning the dagger hung on a nail by the door, where either of them could reach it, and the first thing she did on waking was check the clock, and the second was to tell the Commander that they snored.{/n}
+{n}She stayed. She kept her rules, and she kept her knife where one of them could reach it, and she did not say which one, and she was never cured, and she checked the clock every morning she had.{/n}''',
         paragraphs=(
-            p("{n}The beast in her never moved again from where it had stopped on the night of her death. She checked it every morning of her life.{/n}", requires=(STALLED,)),
+            p("{n}The beast in her never moved again from where it had stopped on the night of her death. She checked it every morning of her life.{/n}", requires=(STALLED,), forbids=(BEAST_FED,)),
+            p("{n}The beast had tasted something in the crusade's cells, and it did not forget. Some mornings the thumb on the clock slipped a little, and on those mornings she put the Kyonin dagger where the Commander could reach it before she said good morning.{/n}", requires=(BEAST_FED,)),
             p("{n}She never again wore a face that was not her own.{/n}", requires=(AMULET,)),
             p("{n}Tessariel's story reached every border fort in Kyonin before the Winter Council could bury it.{/n}", requires=(WASP_SENT,)),
+            p("{n}In the living world the clock never stopped. She tied a knot for every step it took, and hung the strips by the door beside the knife.{/n}", any_groups=((SWAP_CLEAN, SWAP_FUMBLED),)),
         ))],
-    requires=("trickster.ever", CLOCK), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice"),
-    ForbidOverrides={"sacrifice": "trickster.cheated_death"}, **EP))
+    requires=("trickster.ever", LATE_COMMITTED), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice"),
+    ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
+
+SCENES.append(scene(P + "epilogue.ally", "", "KaylessaEpilogue", 6, "", [
+    nar("page", '''{n}The drow Kaylessa stayed in Drezen until the war was over, under the tailor's awning, with her bow across her knees. She kept her rules, and the Commander kept them too, and when the Commander came to sit in the shade she moved along the crate to make room. That was as far as either of them ever took it.{/n}
+{n}She was not cured. She checked the clock every morning, and on the mornings it had moved she said so, plainly, and on the mornings it hadn't she said nothing, and bought the tailor's tea.{/n}''')],
+    requires=("trickster.ever", CLOCK), forbids=(LATE_COMMITTED, COMMITTED, CLOSED, DECLINED, LEFT), **EP))
 
 SCENES.append(scene(P + "epilogue.declined", "", "KaylessaEpilogue", 6, "", [
     nar("page", '''{n}Kaylessa left the Commander's city the week the Wound closed, with no letter and no goodbye. She left the crate under the tailor's awning turned over, with a wasp scratched on the bottom of it, and the tailor kept it for years because nobody would buy it.{/n}
@@ -741,6 +841,13 @@ SCENES.append(reaction("Woljif", P + "react.woljif_haggled", (RETURNED, BEGGED),
     answer_list=WOLJIF_HUB, forbids=WOLJIF_GONE, chapter=3, last=5, Chapters=[3, 5],
     entry='"Something on your mind?"', portrait="Woljif"))
 
+# Sol quality pass (BEL): the morning after the clearing, seen by the one companion who never misses a comings and goings.
+SCENES.append(reaction("Woljif", P + "react.woljif_morning", ("kaylessa.clearing.grey_light",),
+    '''"Chief. You rode in the east gate at the second horn with grass all down your back, and you got off that horse like a man who's been sat on a rock since dawn." {n}Woljif lowers his voice to what he believes is a whisper.{/n}
+"And the one at the tailor's has got her shawl down today. Down! I saw her whole face. She nodded at me. I didn't know what to do, so I nodded back, and now I think we're friends, and I'm scared." {n}He squints at you.{/n} "Don't tell me where you were. I don't want to know. I want to know a bit."''',
+    answer_list=WOLJIF_HUB, forbids=WOLJIF_GONE, chapter=3, last=5, Chapters=[3, 5],
+    entry='"Something you want to say?"', portrait="Woljif"))
+
 SCENES.append(reaction("Shyka", P + "react.shyka_note", (SHYKA_PRICE, RETURNED),
     '''{n}A note, folded into a shape that keeps changing when you are not looking at it, in three different handwritings, one of them yours.{/n}
 "The branch you paid with is keeping well. In it you said yes, and we are very happy there, or will be, or were. How does this one end? We forgot to ask. We are asking." {n}At the bottom, in a child's hand:{/n} "Does she still say soldier?"''',
@@ -762,6 +869,10 @@ def integrate(payload):
     _bind(payload, "SeenCues", SEEN_CUES)
     _bind(payload, "InventoryItems", INVENTORY)
     _bind(payload, "MainCharacterFacts", FACTS)
+    # E17: the ravine starts FornIsDead exactly as native Forn_Ambush/Cue_0040 would have (kaylessa.forn_dead reads it).
+    startable = payload.setdefault("StartableEtudes", [])
+    if FORN_IS_DEAD not in startable:
+        startable.append(FORN_IS_DEAD)
     for key, groups in DERIVED.items():
         have = payload.setdefault("Derived", {}).get(key)
         if have is not None and have != groups:

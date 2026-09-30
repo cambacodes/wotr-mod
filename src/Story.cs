@@ -38,6 +38,10 @@ namespace Tirabade
         public Dictionary<string, NativeEpilogueEditSpec> NativeEpilogueEdits = new Dictionary<string, NativeEpilogueEditSpec>();
         // E11: the only items a choice may remove (Choice.RemoveItem), each a native BlueprintItem GUID.
         public string[] RemovableItems = Array.Empty<string>();
+        // E17 (native outcome bridge): the only native etudes a choice may start (Choice.StartEtude), each a GUID the story
+        // already reads through Etudes. For an authored scene that replaces a native outcome (the Kaylessa ravine starts
+        // FornIsDead exactly as native Forn_Ambush/Cue_0040 does). Never a romance etude.
+        public string[] StartableEtudes = Array.Empty<string>();
         // E1: authored flags recorded forever the first time any native/derived source key is observed (TT-02).
         public Dictionary<string, string[]> Latches = new Dictionary<string, string[]>();
         // E4: data-driven composite flags, an OR of AND-groups over any known flag, computed in State() after latches.
@@ -380,6 +384,8 @@ namespace Tirabade
         // of one whitelisted item (native RemoveItemFromPlayer, quantity 1).
         public CrusadeChoice? Crusade;
         public string? RemoveItem;
+        // E17: start one whitelisted native etude (native StartEtude action) on select.
+        public string? StartEtude;
     }
 
     public sealed class CrusadeChoice
@@ -1225,6 +1231,10 @@ namespace Tirabade
             if (story.RemovableItems == null || story.RemovableItems.Any(guid => !Guid.TryParseExact(guid, "N", out var item) || item == Guid.Empty)
                 || story.RemovableItems.Distinct().Count() != story.RemovableItems.Length)
                 throw new InvalidOperationException("RemovableItems must be distinct native item GUIDs.");
+            if (story.StartableEtudes == null || story.StartableEtudes.Distinct().Count() != story.StartableEtudes.Length
+                || story.StartableEtudes.Any(guid => !Guid.TryParseExact(guid, "N", out var etude) || etude == Guid.Empty
+                    || !story.Etudes.ContainsValue(guid)))
+                throw new InvalidOperationException("StartableEtudes must be distinct native etude GUIDs the story reads through Etudes.");
             foreach (var key in story.PermanentEtudes)
                 if (!story.Etudes.ContainsKey(key)) throw new InvalidOperationException("Unknown permanent etude: " + key);
             var ids = new HashSet<string>();
@@ -1482,6 +1492,10 @@ namespace Tirabade
             if (choice.Crusade != null && (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.MinChapter < 3
                 || !CrusadeResources.Contains(choice.Crusade.Resource) || choice.Crusade.Amount == 0 || Math.Abs(choice.Crusade.Amount) > 100000))
                 throw new InvalidOperationException("Invalid crusade cost (Finances/Materials/Favors, non-zero, Chapter 3+): " + scene.Id + "/" + node.Id);
+            if (choice.StartEtude != null && (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
+                || !story.StartableEtudes.Contains(choice.StartEtude) || choice.Next != null || choice.Check != null || choice.Abort))
+                throw new InvalidOperationException("Invalid etude start (whitelisted in StartableEtudes, on a terminal non-abort choice): "
+                    + scene.Id + "/" + node.Id);
             if (choice.RemoveItem != null && (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                 || !story.RemovableItems.Contains(choice.RemoveItem)
                 || !choice.Requires.Concat(scene.Requires).Any(key => story.InventoryItems.TryGetValue(key, out var held) && held == choice.RemoveItem)))

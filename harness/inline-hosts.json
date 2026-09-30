@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 968,
-  "resolved": 968,
+  "entryTargetScenes": 971,
+  "resolved": 971,
   "inlineOnlyScenes": 241,
   "inlineOnlyResolved": 241,
-  "answerListScenesWithoutContact": 554,
-  "answerListScenesWithoutContactResolved": 554,
+  "answerListScenesWithoutContact": 557,
+  "answerListScenesWithoutContactResolved": 557,
   "lists": 100,
   "listsWithReachableHost": 99
  },
@@ -12854,6 +12854,25 @@
     "clicks": 0
    }
   },
+  "kaylessa.trickster.react.woljif_morning": {
+   "kind": "dialog",
+   "lists": [
+    "e41585da330233143b34ef64d7d62d69"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "e41585da330233143b34ef64d7d62d69": "RRT_entry.kaylessa.trickster.react.woljif_morning"
+   },
+   "resolved": true,
+   "host": {
+    "list": "e41585da330233143b34ef64d7d62d69",
+    "dialog": "8a38eeddc0215a84ca441439bb96b8f4",
+    "dialogName": "DialogueWoljif_main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
   "kaylessa.trickster.reveal.promise": {
    "kind": "return-cue",
    "lists": [
@@ -17447,6 +17466,44 @@
     "dialog": "dd37d85ad71aefa4db214bf40b051538",
     "dialogName": "TargonaWings_AreeLab_dialog",
     "cue": "Cue_0007",
+    "clicks": 0
+   }
+  },
+  "targona.trickster.react.ember_bandages": {
+   "kind": "dialog",
+   "lists": [
+    "f2a35965e9bc601449498bd022b04d9d"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "f2a35965e9bc601449498bd022b04d9d": "RRT_entry.targona.trickster.react.ember_bandages"
+   },
+   "resolved": true,
+   "host": {
+    "list": "f2a35965e9bc601449498bd022b04d9d",
+    "dialog": "62ac670f6d20fe44aab9084c6a232ff4",
+    "dialogName": "Dialogue_Ember_Main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "targona.trickster.react.ember_empty_wands": {
+   "kind": "dialog",
+   "lists": [
+    "f2a35965e9bc601449498bd022b04d9d"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "f2a35965e9bc601449498bd022b04d9d": "RRT_entry.targona.trickster.react.ember_empty_wands"
+   },
+   "resolved": true,
+   "host": {
+    "list": "f2a35965e9bc601449498bd022b04d9d",
+    "dialog": "62ac670f6d20fe44aab9084c6a232ff4",
+    "dialogName": "Dialogue_Ember_Main",
+    "cue": "Cue_0001",
     "clicks": 0
    }
   },

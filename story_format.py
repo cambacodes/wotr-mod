@@ -9,7 +9,7 @@ ALIGNMENT_DIRECTIONS = {"LawfulGood", "NeutralGood", "ChaoticGood", "LawfulNeutr
 
 
 def c(text="Continue", next=None, flags=(), requires=(), forbids=(), abort=False, revive=None, check=None,
-      mythic=None, native_next=None, alignment=None, crusade=None, remove_item=None):
+      mythic=None, native_next=None, alignment=None, crusade=None, remove_item=None, start_etude=None):
     """One answer. Native effects (E5), each validated again by Rules.Validate:
     mythic="Trickster"          native [Trickster] answer: MythicRequirement PlayerIsTrickster + the mythic-choice achievement counter
     native_next="<cue guid>"    terminal choice of an inline (NativeReturnCue) scene continues into that native cue of the same dialog
@@ -17,6 +17,7 @@ def c(text="Continue", next=None, flags=(), requires=(), forbids=(), abort=False
     crusade=("Finances", -500)  native crusade resource change (Finances/Materials/Favors; Chapter 3+ scenes)
     remove_item="<item guid>"   native removal of one item; the GUID must be in Story.RemovableItems and the choice or
                                 scene must Require an InventoryItems key bound to it
+    start_etude="<etude guid>"  E17 native StartEtude on select (terminal, non-abort); the GUID must be in Story.StartableEtudes
     """
     choice = dict(Text=text, Next=next, Set=list(flags), Requires=list(requires), Forbids=list(forbids), Abort=abort)
     if revive is not None:
@@ -44,6 +45,10 @@ def c(text="Continue", next=None, flags=(), requires=(), forbids=(), abort=False
         choice["Crusade"] = dict(Resource=resource, Amount=amount)
     if remove_item is not None:
         choice["RemoveItem"] = remove_item
+    if start_etude is not None:
+        if next is not None or check is not None or abort:
+            raise ValueError("start_etude belongs on a terminal, non-abort choice")
+        choice["StartEtude"] = start_etude
     return choice
 
 
