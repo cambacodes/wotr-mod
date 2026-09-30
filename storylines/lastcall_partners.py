@@ -340,7 +340,7 @@ partner("gesmerha", "gesmerha", "gesmerha.committed", "gesmerha.closed", "Work o
         page_p('''She kept the carved hands, the ones she had made while the Commander sat for her those three days. They stood on her bench for the rest of her life, and she worked with them facing her, and she would not say why.''', requires=(G + "cost.hands_carved",)),
         page_p('''The Commander had laughed at her grave. She delivered the work, and then she sat apart from the Commander at supper for a whole season, where she could hear {mf|his|her} footsteps and not {mf|his|her} voice. At the end of the season she moved her chair back, and told {mf|him|her} the footsteps had improved.''', requires=(G + "cost.laughed_at_grave",)),
         page_p('''She cut the marker for the Commander's empty grave, in oak. It said nothing untrue.''', requires=(ON_RECORD,)),
-    ), declined=G + "declined",
+    ), declined=G + "declined", page_forbids=("gesmerha.parted",),   # a committed lover who parted later (never her closed flag, G5)
     deal=[[G + "cost.advance_paid"], [G + "cost.ancestor_debt"]],
     call=call('''[Call in the work on her bench] "Carver, there's work of mine still on your bench. Leave it there until I come to collect."''',
         '''{n}Somewhere a long way off, a chisel stops over a block of wood on a woodshaper's bench. A Sarkorian carver's line does not go to its ancestors with work unfinished, and she has been listening for this step too.{/n}''',

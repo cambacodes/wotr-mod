@@ -51,6 +51,8 @@ DEBT = P + "cost.ancestor_debt"
 FLINCHED = P + "cost.flinched"
 HANDS = P + "cost.hands_carved"
 CATCHUP = P + "cost.catchup"
+FIRSTMET = P + "cost.first_meeting"      # a Commander who never met her before the resolution meets her on screen in Chapter 5
+NIGHT_YARD = P + "night_yard"            # a returned night in the smith's yard, recorded on the morning's terminal choice
 SLOW = P + "cost.campaign_slow"
 LIKENESS = P + "cost.likeness_owed"         # the Commander's face left unfinished on her bench, to be sat for after Threshold
 LIKENESS_DONE = P + "cost.likeness_cut"     # cut from memory before Threshold: a grave-post whether the Commander returns or not
@@ -131,11 +133,18 @@ SCENES.append(scene(P + "dead.unfinished_work", "Splinters", "Gesmerha", 3, "", 
     nar("start", "{n}A runner at the edge of camp: the same Wintersun boy, thinner than before, with ash still in the seams of his boots. He asks for you by name this time.{/n}",
         c("Continue", "late", requires=(LATE,)),
         c("Continue", "paid", forbids=(LATE,))),
-    nar("late", '''{n}They laid the block beside her as you asked, he says, with your coin driven into the grain. The fire went round it the way water goes round a stone, and round her with it. Three torches, and then the carvers stopped trying. On the second night every carver on the ground heard it in the crackle of the fire: three slow knocks, wood on wood, the old count a master raps on the bench to call an apprentice back to unfinished work. Nobody was holding a mallet. On the third dawn Gesmerha got off the pyre by herself, her palms full of splinters, the block under her arm, and her fingers would not open from around it until she had said aloud, to the empty air, that she would finish. The carvers pushed her away from the ground with poles, not hands. Old Yarvo, who taught half of them to hold a chisel, said aloud what they were all thinking: the last thing in Wintersun that would not stay dead was the Lady they had knelt to for a generation, and they were done kneeling to things that came back. She is at the Lady's statue now, and they will not have her back among the houses. She sent him with this, word for word.{/n}
+    nar("late", '''{n}They laid the block beside her as you asked, he says, with your coin driven into the grain. The fire went round it the way water goes round a stone, and round her with it. Three torches, and then the carvers stopped trying. On the second night every carver on the ground heard it in the crackle of the fire: three slow knocks, wood on wood, the old count a master raps on the bench to call an apprentice back to unfinished work. Nobody was holding a mallet. On the third dawn Gesmerha got off the pyre by herself, her palms full of splinters, the block under her arm, and her fingers would not open from around it until she had said aloud, to the empty air, that she would finish. The carvers pushed her away from the ground with poles, not hands. Old Yarvo, who taught half of them to hold a chisel, said aloud what they were all thinking: the last marvel Wintersun trusted was the Lady, who smiled at them for a generation while demons walked their streets, and they were done trusting anything they could not explain. She is at the Lady's statue now, and they will not have her back among the houses. She sent him with this, word for word.{/n}
 "Tell the stranger: you threw coin on my fire and a joke after it. The wood would not take either one."''',
         c("Continue", "terms_raised")),
-    nar("paid", '''{n}He will not stop looking at you while he tells it. Her apprentices laid her out with the birch block from her bench under her hands, the one with your coin in it, because nobody could get the coin out. On the second night the apprentices sitting up with her heard, from the empty workshop, three slow knocks, wood on wood, the old count a master raps on the bench to call an apprentice back to unfinished work. Nobody was in there. On the third morning, before anyone had lit a torch, Gesmerha sat up with her palms full of splinters and the block still in her grip, and her fingers would not open from around it until she had promised aloud, to nobody they could see, that she would finish it. Half the carvers ran. The ones who stayed went to old Yarvo, the eldest of them, and Yarvo shut his door: the last thing in Wintersun that would not stay dead was the Lady they had knelt to for a generation, and he would not have another under his roof. None of them will have her back among the houses. She is at the Lady's statue. She sent him with this, word for word.{/n}
-"Tell the stranger: you heard me say *hands*, in my own yard, among my own statues, and the next thing you did was pay for them. I swore I would never shame my ancestors. You knew that too, didn't you."''',
+    nar("paid", '''{n}He will not stop looking at you while he tells it. Her apprentices laid her out with the birch block from her bench under her hands, the one with your coin in it, because nobody could get the coin out. On the second night the apprentices sitting up with her heard, from the empty workshop, three slow knocks, wood on wood, the old count a master raps on the bench to call an apprentice back to unfinished work. Nobody was in there. On the third morning, before anyone had lit a torch, Gesmerha sat up with her palms full of splinters and the block still in her grip, and her fingers would not open from around it until she had promised aloud, to nobody they could see, that she would finish it. Half the carvers ran. The ones who stayed went to old Yarvo, the eldest of them, and Yarvo shut his door: the last marvel Wintersun trusted was the Lady, who smiled at them for a generation while demons walked their streets, and he would not have another marvel under his roof. None of them will have her back among the houses. She is at the Lady's statue. She sent him with this, word for word.{/n}''',
+        c("Continue", "paid_hands", requires=("gesmerha.feared_hands",)),
+        c("Continue", "paid_risk", forbids=("gesmerha.feared_hands",))),
+    nar("paid_hands", '"Tell the stranger: you heard me say *hands*, in my own yard, among my own statues, and the next thing you did was '
+        'pay for them. I swore I would never shame my ancestors. You knew that too, didn\'t you."',
+        c("Continue", "terms")),
+    nar("paid_risk", '"Tell the stranger: I told you Marhevok\'s anger was terrible to behold, and that I would risk it anyway, and the '
+        'next thing you did was pay me for work I might not live to finish. I swore I would never shame my ancestors. You knew '
+        'that too, didn\'t you."',
         c("Continue", "terms")),
     g("terms", '''"The ancestors came for me in the old tongue. I will not pretend I understood all of it; the dead are not tidy talkers. I understood this much. There was paid work on my bench, with your coin in its heart, and my line does not come home with work on the bench. So they sent me back to it.
 *Finish, daughter.* That is what they said. My hands are theirs until the last cut. If I put the chisel down for anything else, they take the hands back, and me with them. What they want with the finished thing, they did not say. I did not ask. You do not ask the dead for reasons."
@@ -144,7 +153,7 @@ SCENES.append(scene(P + "dead.unfinished_work", "Splinters", "Gesmerha", 3, "", 
         c("Continue", "answer")),
     g("terms_raised", '''"The ancestors came for me in the old tongue, and they were angry. I did not need every word for that. You paid for my work over my ashes, not before them, and the dead do not like a bargain struck at their own fire.
 *Finish, daughter.* My hands are theirs until the last cut, and because I was bought late there is more to cut: the journeymen's pretty Lady comes down first, by my hands, before anything new goes into the wood. If I put the chisel down for anything else, they take the hands back, and me with them. They did not say why. I did not ask."
-"And Yarvo shut his door on me. He is right to. The last thing that came back to Wintersun smiling was the Lady, and I will be the one to cut her down. I will not do it among the houses. I will do it where the one who paid can watch."''',
+"And Yarvo shut his door on me. He is right to. The last marvel Wintersun smiled back at was the Lady, and I will be the one to cut her down. I will not do it among the houses. I will do it where the one who paid can watch."''',
         c("Continue", "answer")),
     nar("answer", "{n}The boy waits for your answer. He has plainly been told to remember it exactly, and to bring it back whatever it is.{/n}",
         c('[Send for her] "Tell her to bring her chisels to Drezen. The smith there makes better ones than the ones she lost, and I want to see the work."',
@@ -184,6 +193,14 @@ NIGHT = '''{n}She dries her hands on her apron, slowly, and holds them out to yo
 {n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. She finds the laces at your throat by feel, undoes them the way she strips bark, and lays her palm flat over your heart to count it.{/n}
 "Fast. Like green wood when the wedge goes in." {n}Her palm does not move.{/n} "My hands found this grain in the yard, under the mallet, and they have gone back to it every night since. I let them. I will not be the only one who does."
 {n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. Her hands go on reading, lower and surer. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}'''
+# A Commander who flinched in the yard and then sat three days for the second ask: the opener recalls the sitting, not the mallet.
+NIGHT_FLINCHED = NIGHT.replace(
+    "Your hands stayed on the wood with the mallet coming down; let them stay at your sides a little longer. I am reading.",
+    "Three days your hands lay under mine and did not move once. In the yard they did; I have not forgotten it. Let them stay "
+    "at your sides a little longer. I am reading.").replace(
+    "My hands found this grain in the yard, under the mallet, and they have gone back to it every night since.",
+    "My hands have had three days of this grain, and they want more of it than wood can give them.")
+assert NIGHT_FLINCHED.count("mallet") == 0
 MORNING = '''{n}The forge is still banked when you wake, and there is sawdust in your hair and a curl of pine down your shirt. Gesmerha is already at the trestles, bare-armed in the cold, and on a new block in front of her a face is coming out of the wood: one you have seen in mirrors.{/n}
 "My hands remembered. Nobody paid them for last night, so what they make of it is mine. I will not sell it." {n}The corner of her mouth moves; she does not stop cutting.{/n} "Go and fight your war, stranger. Walk loudly when you come back. I like to hear it from the gate."'''
 
@@ -211,7 +228,7 @@ in_yard(P + "returned.bench", "What comes after", '"You said to ask you when it 
     g("flinch", '''"You pulled your hands away in this yard, stranger. I heard it; I cut by sound. The mallet came down on nothing, where your thumb had been. I cannot carve beside someone who flinches, and I cannot lie down beside one either. Ask me again when you won't."''',
         c("[Go]", flags=(DECLINED,))),
     g("night", NIGHT, c("Continue", "morning")),
-    g("morning", MORNING, c("[Go]")),
+    g("morning", MORNING, c("[Go]", flags=(NIGHT_YARD,))),
     ], requires=("trickster.ever", RETURNED, YARD), forbids=(COMMITTED, CLOSED, DECLINED), delay=72)
 
 # 4f. After her soft no she asks, in her own craft: not a price but a trade of hands. The Commander's war waits three days.
@@ -226,9 +243,11 @@ in_yard(P + "returned.second_ask", "A pair that were never for sale", '"About wh
         c("[Sit for her for three days]", "sat", crusade=("Favors", -100), flags=(COMMITTED, HANDS)),
         c('"Not like this."', flags=(CLOSED,))),
     nar("sat", '''{n}Three days. Couriers come to the yard gate and are sent away by the smith, who has decided which side he is on. Your hands ache, then stop aching, then stop feeling like yours. On the third evening she sets down the knife, runs her fingertips over the wooden pair and then over your real ones, back and forth, comparing, until she is satisfied with both.{/n}''',
-        c("Continue", "night")),
+        c("Continue", "night", forbids=(FLINCHED,)),
+        c("Continue", "night_flinched", requires=(FLINCHED,))),
     g("night", NIGHT, c("Continue", "morning")),
-    g("morning", MORNING, c("[Go]")),
+    g("morning", MORNING, c("[Go]", flags=(NIGHT_YARD,))),
+    g("night_flinched", NIGHT_FLINCHED, c("Continue", "morning")),
     ], requires=("trickster.ever", RETURNED, DECLINED), forbids=(COMMITTED, CLOSED), delay=96)
 
 # 4g. The second work (COX, Sol 2026-09-30): the ancestors' commission is finished on the bench before Threshold. The face
@@ -283,6 +302,33 @@ footsteps("home", [HOME_LIST], [WINTERSUN], ())
 footsteps("capital", [CAPITAL_LIST], [DREZEN], ("gesmerha.capital_guest",))
 
 
+def first_meeting(suffix, lists, areas, extra):
+    """Sol round 2 (INT): the footsteps need her one pre-resolution meeting (gesmerha.met). A live Trickster who resolved
+    Wintersun without ever speaking to her meets her here, for the first time, and invents no earlier visit."""
+    SCENES.append(scene(P + "missed.first_meeting_" + suffix, "A step she does not know", "Gesmerha", 5,
+        '"You are the woodshaper. I never came to your bench."', [
+        g("start", '''{n}Her hands stop on the wood as your step reaches the bench. She tilts her head toward it, the way she listens for a crack in the grain, and does not find what she is listening for.{/n}
+"A step I do not know. Heavy in the heel, in a hurry, and pretending not to be." {n}Her mouth tightens.{/n} "The clan says the Commander who tore the mask off our Lady walked through Wintersun and never once came near my bench. Is that you?"''',
+            c('"It is. I should have come sooner."', "board"),
+            c('"Never mind."', abort=True)),
+        g("board", '''"Sooner, later. The dead of Wintersun do not care which."
+{n}She pushes a half-cut board across the bench toward you: rows notched along one edge, pieces in a bowl.{/n}
+"I made this for two people and no army. Half the rules are mine, and half have been winning arguments with me for years. Sit. Play badly. I want to hear what a Commander's hands do when nobody is asking them for anything."''',
+            c("[Sit down and play]", "game")),
+        g("game", '''{n}You lose the first game in a dozen moves and the second in rather more. She makes you name every row before you move, and catches you once reaching for a corner she has already taken.{/n}
+"There. Now I know your step and your hands both. The loser pays for the pieces, Commander. That is the one rule nobody has ever argued with me about."''',
+            c("[Pay for the pieces]", crusade=("Finances", -50),
+              flags=("gesmerha.campaign_kept", "gesmerha.campaign_slow", FIRSTMET))),
+        ], requires=("trickster", "trickster.ever", "gesmerha.wintersun_resolved", *extra),
+        forbids=("gesmerha.campaign_kept", "gesmerha.met", DEAD, CLOSED, CATCHUP, FIRSTMET, "inhuman"), delay=0, last=5,
+        Relationship="gesmerha", Chapters=[5], RequiresAny=["gesmerha.truth", "gesmerha.illusions"], AnswerLists=lists,
+        ContactUnit=UNIT, Areas=areas, EntryMythic="PlayerIsTrickster", TricksterDevice=True, TricksterState="missed"))
+
+
+first_meeting("home", [HOME_LIST], [WINTERSUN], ())
+first_meeting("capital", [CAPITAL_LIST], [DREZEN], ("gesmerha.capital_guest",))
+
+
 # --- Epilogue pages (no mythic, alignment or crusade effects) ---------------------------------------------------------
 
 STATUE_PARAGRAPHS = (
@@ -304,7 +350,8 @@ def page(id, title, text, requires, forbids, paragraphs=(), **extra):
 
 
 page("bench", "What came after", '''{n}Gesmerha never carved on commission again. She kept the corner of the smith's yard for as long as the war lasted and a good while after, and it became the corner of the city where people came to have the truth cut out of wood for them, whether they liked it or not. She could tell the Commander's step from anyone's, in any crowd, and she let it be known that she always heard it a long time before it reached the door.{/n}''',
-     requires=(RETURNED, COMMITTED), forbids=(CLOSED,), paragraphs=(
+     requires=(RETURNED, COMMITTED), forbids=(CLOSED, "sacrifice"), ForbidOverrides={"sacrifice": "trickster.commander_back"},
+     paragraphs=(
          p("The Commander kept the oath about purses, which surprised everyone who knew the Commander.", forbids=(HANDS,)),
          p("The Commander never swore off buying things, and she never asked again. Three days in her yard with both hands on "
            "the wood had been the price instead, and she held that it had been paid in full: when anyone in Drezen offered her "
@@ -313,8 +360,17 @@ page("bench", "What came after", '''{n}Gesmerha never carved on commission again
      ) + STATUE_PARAGRAPHS)
 
 page("commit", "The Commander's door", '''{n}Gesmerha finished the Commander's carving in the spring after Threshold, in a borrowed corner of a Drezen smithy, and then she walked the width of the city by ear to find out what came after. The smith swore she stopped at the Commander's door and listened for a long time before she knocked. She never said what she decided. She never carved on commission again.{/n}''',
-     requires=("trickster.ever", RETURNED), forbids=(COMMITTED, CLOSED, DECLINED), paragraphs=STATUE_PARAGRAPHS,
-     RequiresAnyGroups=[[YARD, PRESENCE_FAILED]])
+     requires=("trickster.ever", RETURNED), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice"), paragraphs=STATUE_PARAGRAPHS,
+     RequiresAnyGroups=[[YARD, PRESENCE_FAILED]], ForbidOverrides={"sacrifice": "trickster.commander_back"})
+
+# The Commander genuinely died at Threshold (sacrifice without a Trickster return): the commission is resolved, and no
+# postwar meeting is implied.
+page("commit_mourned", "Paid work, delivered", '''{n}Gesmerha finished the Commander's carving in the spring after Threshold, in a borrowed corner of a Drezen smithy, for a patron who would not come to see it. Her ancestors had asked for finished work, not for anyone to admire it. She walked it by ear to the grave the crusade had dug, set it at the head, and went home to whatever was left of Wintersun. She never carved on commission again.{/n}''',
+     requires=("trickster.ever", RETURNED, "sacrifice"), forbids=(COMMITTED, CLOSED, DECLINED, "trickster.commander_back"),
+     paragraphs=STATUE_PARAGRAPHS, RequiresAnyGroups=[[YARD, PRESENCE_FAILED]])
+
+page("bench_mourned", "The face with its eyes", '''{n}Gesmerha kept the corner of the smith's yard through the last winter of the war. When word came from Threshold she did not ask how. She took the Commander's face down from the trestles, cut its eyes from memory in one night, and set it over the grave the crusade had dug. Then she went back to her bench, and she never carved on commission again.{/n}''',
+     requires=(RETURNED, COMMITTED, "sacrifice"), forbids=(CLOSED, "trickster.commander_back"), paragraphs=STATUE_PARAGRAPHS)
 
 page("unvisited", "The corner of the yard", '''{n}Gesmerha finished the carving her ancestors had sold her back for, alone, in a corner of a Drezen smith's yard that the Commander never once walked into. When it was done she put her hands in cold water for a long time, and then she took them out and went home to whatever was left of Wintersun. The smith said she stopped at the gate and listened, as if for a step, and then went on.{/n}''',
      requires=("trickster.ever", RETURNED), forbids=(YARD, PRESENCE_FAILED, COMMITTED, CLOSED, DECLINED),
@@ -339,6 +395,10 @@ REACTIONS = [
     reaction("Ulbrig", P + "react.ulbrig_return", (RETURNED, *ULBRIG["requires"]),
              '''"A Wintersun carver got up off the carvers' ground, they're saying, and went straight back to work." {n}Ulbrig sets his mug down, which he does not do lightly.{/n} "Where I come from, the dead don't come back for love. They come back for unfinished business, and they don't leave till it's done. Pray she finishes slow, warchief."''',
              answer_list=ULBRIG_HUB, forbids=ULBRIG["forbids"], chapter=3, last=5, delay=24, entry='"About the carver from Wintersun..."'),
+    reaction("Anevia", P + "react.anevia_yard_night", (NIGHT_YARD,),
+             '''"The smith came to me again. Not about his corner this time." {n}Anevia keeps a straight face for as long as she can manage it, which is not long.{/n} "He banked the forge, went home, came back at dawn, and found the Commander of the crusade asleep in his shavings with sawdust in places he wouldn't name to a married woman. He wants to know whether he can charge you rent. I told him to ask the carver. He went a very interesting colour."''',
+             answer_list=ANEVIA_HUB, forbids=("anevia_gone", "anevia_dead"), chapter=3, last=5, delay=24,
+             entry='"About the smith\'s yard, again..."', ForbidOverrides={"anevia_gone": "anevia.trickster.returned"}),
     reaction("Anevia", P + "react.anevia_return", (RETURNED,),
              '''"The smith came to me about a blind woman in his yard. Won't give his corner back, won't let his boys near her log, and says you owe her the good chisels." {n}Anevia shrugs.{/n} "I told him that sounded about right."''',
              answer_list=ANEVIA_HUB, forbids=("anevia_gone", "anevia_dead"), chapter=3, last=5, delay=24,
@@ -386,6 +446,14 @@ CATCHUP_NODE = g("catchup", '''{n}Her fingers become still against the wood.{/n}
     c('[Sit where she has made room.]', "work"))
 
 
+# The same trust step for a Commander who met her for the first time in Chapter 5 (one afternoon, two lost games).
+FIRST_MET_NODE = g("first_met", '''{n}Her fingers stop on the wood.{/n}
+"The Commander who loses at my board." {n}She does not move the blanket yet.{/n} "One afternoon, and now you walk into my hall as if you had a place in it. You paid for the pieces; that buys a hearing. Tell me one true thing about where you have been since, and you can sit."
+{n}You tell her. When you have finished she moves the folded blanket from the chest.{/n}
+"There. That is two afternoons. We will count from the first."''',
+    c('[Sit where she has made room.]', "work"))
+
+
 def _scene(by_id, id):
     if id not in by_id:
         raise ValueError("Gesmerha Trickster integration missing scene: " + id)
@@ -426,16 +494,21 @@ def integrate(payload):
         _paragraphs(_scene(by_id, id), (BORROWED_PARAGRAPH,))
 
     court = _scene(by_id, "gesmerha.the_voice_at_court")
-    if CATCHUP not in court["Forbids"]:
-        court["Forbids"].append(CATCHUP)
+    for key in (CATCHUP, FIRSTMET):
+        if key not in court["Forbids"]:
+            court["Forbids"].append(key)
 
     # The first late visit: a Commander who only claimed the afternoons is asked for one true thing before sitting. The
     # registered "too long since our last afternoon" answer is retired for that Commander by a gate, not removed.
     first = _scene(by_id, "gesmerha.the_things_still_here")
     start = next(x for x in first["Nodes"] if x["Id"] == "start")
     without = next(ch for ch in start["Choices"] if ch.get("Next") == "without_court")
-    if CATCHUP not in without["Forbids"]:
-        without["Forbids"].append(CATCHUP)
+    for key in (CATCHUP, FIRSTMET):
+        if key not in without["Forbids"]:
+            without["Forbids"].append(key)
     start["Choices"].append(c('"I came back to lose the eleventh game."', "catchup", requires=(CATCHUP,),
                               forbids=("gesmerha.reunion_kept",)))
     first["Nodes"].append(dict(CATCHUP_NODE, Portrait="Gesmerha"))
+    start["Choices"].append(c('"I came back, as I said I would."', "first_met", requires=(FIRSTMET,),
+                              forbids=("gesmerha.reunion_kept", CATCHUP)))
+    first["Nodes"].append(dict(FIRST_MET_NODE, Portrait="Gesmerha"))

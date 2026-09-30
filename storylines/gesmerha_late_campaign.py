@@ -197,7 +197,7 @@ s("the_long_way_with_company", "The weight on the road", '"Are the things ready 
 "Today we take the box back. No lesson secretly arranged at the destination. I am bringing tools because Sella asked me to look at a split in the handle of her grandmother's knife. I may be able to mend it. If not, I shall tell her."
 "You would like to mend it."
 "Very much. It would be pleasant to finish one useful thing without an audience debating what it means."''', c('[Take the carrying loop Halvek offers.]', "road")),
-    n("road", "Narrator", '''{n}You and Halvek carry the box between you. Gesmerha walks beside the load, keeping one hand on the loop near Halvek while her staff tests the uneven ground. She tells him when his pace begins to lengthen beyond hers; he shortens it without making a ceremony of the correction.{/n}
+    n("road", "Narrator", '''{n}You and Halvek carry the box between you. Gesmerha walks beside the load, keeping one hand on the loop near Halvek while her staff tests the uneven ground. She tells him when his pace begins to lengthen beyond hers; he shortens it.{/n}
 {n}Near the crossing, the water has risen over the stones usually used as a path. A branch turns slowly against the nearest one. Gesmerha hears it scrape.{/n}
 "That was not there yesterday," she says. "Set the box down on dry ground before anyone decides how brave to be."
 {n}Halvek points toward the higher path. It follows the bank before crossing farther upstream; the detour would bring you to Sella after the people gathering for a lesson have left.{/n}
@@ -219,7 +219,7 @@ s("the_long_way_with_company", "The weight on the road", '"Are the things ready 
 {n}You answer from the bank. One boot is full of cold water. It takes time to recover your balance, check the gravel under the box and explain exactly which stone moved.{/n}
 "The higher path," Halvek says.
 "Yes," Gesmerha answers. "After we have rested enough that nobody is carrying Sella's inheritance while your boot is full of water."
-{n}Your attempted shortcut has used the time that might have saved the appointment. Gesmerha unrolls her cloth for your wet boot. She asks you not to call the delay nothing; people did make time to hear her.{/n}''', c('[Acknowledge the mistake and take the safer way.]', "late")),
+{n}Gesmerha unrolls her cloth for your wet boot. She asks you not to call the delay nothing; people did make time to hear her.{/n}''', c('[Acknowledge the mistake and take the safer way.]', "late")),
     n("higher", "Gesmerha", '''"Then the higher path. I shall be disappointed about the lesson while remaining pleased that none of us has to fish for the box."
 {n}She asks Halvek to describe the first climb. He tells her about the roots and where the bank narrows. She shifts her tool roll to keep it from catching on the carrying loop.{/n}
 "We can send word if we meet anyone coming the other way," she says. "If not, I will apologize when we arrive. They can decide whether they want to give me another afternoon."
@@ -231,7 +231,7 @@ s("the_long_way_with_company", "The weight on the road", '"Are the things ready 
 {n}Halvek produces a parcel his sister gave him. Gesmerha laughs when he admits she supplied it because she expected him to choose an inconvenient route.{/n}
 "I shall ask her whether she wishes to take over the planning. I may even mean it."
 {n}You share the food before lifting the box again. By the time Sella receives it, the learners have gone. One has left a message: he showed the others his work without waiting, and would like Gesmerha to hear about it tomorrow.{/n}
-{n}She asks Sella to read the message once more. Then she says, with a care you recognize, that tomorrow will suit her very well.{/n}''',
+{n}She asks Sella to read the message once more. Then she says that tomorrow will suit her very well.{/n}''',
       c('[Leave the intact box with its owner and keep the changed appointment.]', flags=("gesmerha.delivery_kept", "gesmerha.crossing_delayed"))),
 ], "gesmerha.patterns_agreed")
 
@@ -464,7 +464,7 @@ s("the_work_left_finished", "A place in the days ahead", '"Is everything ready f
     n("open", "Gesmerha", '''"Then we shall keep knowing one another. I will not explain your answer to the people who would enjoy predicting what it must become."
 "Would they believe you?"
 "Some. Others would decide that I had become mysterious. That might improve several meetings I would otherwise have to attend."
-{n}Her laughter makes the parting easier without making it unimportant. She releases your hand and feels for the tie of her bundle.{/n}
+{n}She laughs, releases your hand and feels for the tie of her bundle.{/n}
 "Ask for me when you can. If I am elsewhere, let the message wait somewhere safe. I will answer when I have an answer to give."
 {n}You tell her where her staff lies. She stands, adjusts the bundle and waits while you describe the doorway. Before leaving she asks for another harmless story next time, including whatever unflattering detail you are tempted to leave out.{/n}
 {n}You promise the detail. Neither of you promises what it must become.{/n}''',
@@ -478,7 +478,7 @@ s("the_work_left_finished", "A place in the days ahead", '"Is everything ready f
 "I understand."
 "Good."
 {n}You tell her the way to the doorway. She lifts her bundle, waits until you say the path is clear and leaves the hall without asking you to make the parting easier by changing your answer.{/n}''',
-      c('[Respect the ending and the time she requested.]', flags=("gesmerha.late_complete", "gesmerha.closed"))),
+      c('[Respect the ending and the time she requested.]', flags=("gesmerha.late_complete", "gesmerha.closed", "gesmerha.parted"))),
 ], "gesmerha.private_evening_kept")
 
 

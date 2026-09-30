@@ -116,7 +116,7 @@ internal static class GesmerhaLateCampaignTests
         }
         // The Trickster catch-up page (a claimed, not kept, Chapter 3) is played by GesmerhaTricksterTests.
         foreach (var scene in late)
-        foreach (var page in scene.Nodes.Where(p => !(scene.Id == "gesmerha.the_things_still_here" && p.Id == "catchup")))
+        foreach (var page in scene.Nodes.Where(p => !(scene.Id == "gesmerha.the_things_still_here" && (p.Id == "catchup" || p.Id == "first_met"))))
             check(reached.Contains(scene.Id + "/" + page.Id), "Gesmerha unplayed page " + scene.Id + "/" + page.Id);
         foreach (var flag in groups.SelectMany(x => x)) check(outputs.Contains(flag), "Gesmerha unearned outcome " + flag);
         check(slowFriendWitness, "Gesmerha slow-to-friend evening was not actually played.");

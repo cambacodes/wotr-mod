@@ -157,7 +157,7 @@ s("the_unfinished_verse", "Who may finish the song", '"Has Vesk brought his wint
 "If you make me copy it exactly," Dera says, "you will hear me trying to sound like you."
 {n}Vesk rubs his forehead. The departing brother, it appears, would be satisfied with a song that ended before his cart left.{/n}
 "Two evenings from now," he says. "Whatever we do, I need it by then."
-{n}Gesmerha asks for your judgment. She is not giving you the song to dispose of. Runa and Dera are still listening, with opinions of their own.{/n}''',
+{n}Gesmerha asks for your judgment. Runa and Dera are still listening, with opinions of their own.{/n}''',
       c('"Sing the remembered version together. Let Dera answer it with her own ending afterward."', "answer"),
       c('"Make one version you can all sing. Keep the disputed endings for another evening."', "together")),
     n("answer", "Gesmerha", '''"Then I must leave her enough breath to answer," Gesmerha says.
@@ -202,14 +202,13 @@ s("the_evening_answer", "A voice among the others", '"Is there a place for me at
 "I could not make the roof rhyme," Dera confesses when she finishes.
 "Roofs seldom cooperate," Gesmerha says. "Keep it."
 {n}Runa asks about one line that sounds like a complaint against the people at home. Dera says it is. The answer unsettles the listeners more than the song did. Vesk's brother eventually remarks that he would rather send a complaint than be forbidden to send anything until he was happy.{/n}
-{n}The discussion continues over the unmusical business of his departure. Dera has been heard separately, and several people remember her version more readily than the older song. Runa notices. She does not pretend to be pleased.{/n}''', c('[Stay while the departing traveler says his goodbyes.]', "after")),
+{n}The discussion continues over the unmusical business of his departure. Dera has been heard separately, and several people remember her version more readily than the older song. Runa notices, and says nothing all the way home.{/n}''', c('[Stay while the departing traveler says his goodbyes.]', "after")),
     n("shared", "Narrator", '''{n}At the changed line, Runa hesitates. Dera keeps singing. Gesmerha comes in beside her, and the rest follow a little raggedly. The travelers know the road home; the song does not bring them back before they have chosen to return.{/n}
 {n}Vesk's brother sets the straps down to join the last verse. He sings the old words once, stops, and tries again. By the end he has learned enough to carry the new line with him.{/n}
 "That was shorter than I remember," he says.
 "You are welcome," Dera answers.
 {n}Runa objects that a song should not be praised for ending. Gesmerha asks whether she would prefer the departure delayed until they have performed every verse anybody can remember. Runa says she might.{/n}
-{n}The laughter is affectionate, but Dera grows quiet when two listeners praise Gesmerha for improving the song. Gesmerha corrects them by name. One apologizes; the other merely asks Dera to sing the changed line again. She does, without smiling.{/n}
-{n}They have a song the group can use. It will take more than a single correction for everybody to remember whose voice altered it.{/n}''', c('[Stay while the departing traveler says his goodbyes.]', "after")),
+{n}The laughter is affectionate, but Dera grows quiet when two listeners praise Gesmerha for improving the song. Gesmerha corrects them by name. One apologizes; the other merely asks Dera to sing the changed line again. She does, without smiling.{/n}''', c('[Stay while the departing traveler says his goodbyes.]', "after")),
     n("after", "Gesmerha", '''{n}After the others leave, Gesmerha stays where she is. She asks you whether Dera went with Runa or followed Vesk to the cart. You tell her what you saw. Dera and her mother left together, still arguing, with the empty cups divided between them.{/n}
 "Good. An argument is easier when neither person can make a grand exit without dropping something."
 "Did you enjoy it?"
@@ -242,7 +241,7 @@ s("the_evening_answer", "A voice among the others", '"Is there a place for me at
 "The eastern spoon. A place of great ancestral importance."
 {n}You dismiss the echo. The air falls quiet. When she sings the line again, the gap remains.{/n}
 "We shall ask Runa," she says. "And I shall tell her why. She deserves the pleasure."
-{n}The experiment has given you a joke, not a recovered account. Gesmerha sings the spoon into the verse once more, this time entirely with her own voice.{/n}''', c('[Offer your arm for the short walk back to her bench.]', "close")),
+{n}Gesmerha sings the spoon into the verse once more, in her own voice, and laughs again.{/n}''', c('[Offer your arm for the short walk back to her bench.]', "close")),
     n("close", "Gesmerha", '''{n}She rests her hand above your elbow. At the change in ground you tell her where the low step begins. She knows it, but asks whether the cups have all been moved out of the way. You check before answering.{/n}
 "I like having you here when other people are speaking," she says. "You sound different when you do not think you are being listened to."
 "What did I sound like?"
@@ -378,7 +377,7 @@ s("what_she_asks", "The question without a chorus", '"You wanted an afternoon wi
 s("the_voice_at_court", "The voice that came back", '"Before you go, may we speak about something of our own?"', [
     n("start", "Gesmerha", '''{n}Gesmerha has come to court with the road still on her clothes. You have heard what she intends for her people. At your question she turns toward you, and the careful formality of her voice gives way.{/n}
 "Yes. I hoped you would ask. There are a great many people in this room who appear to be waiting for permission to make you useful again."
-{n}You ask the nearest attendants for a little space. They withdraw far enough to leave the conversation to you. Gesmerha remains beside the place where she has given her report; no one needs to hurry her through an unfamiliar doorway.{/n}
+{n}You ask the nearest attendants for a little space. They withdraw far enough to leave the conversation to you. Gesmerha stays where she gave her report.{/n}
 "Tell me how near you are."
 {n}You answer and offer your hand. She takes it, drawing you a little closer.{/n}
 "There. I wanted something more convincing than a rumor. Your voice was a good beginning."
@@ -489,7 +488,7 @@ s("the_voice_at_court", "The voice that came back", '"Before you go, may we spea
 "I understand."
 "Good. Now let me finish what I came to say. The people waiting on me should not have to guess which silence is theirs."
 {n}You tell her where the attendants are. She turns toward them with her bundle in hand.{/n}''',
-      c('[Respect her request and return to the audience.]', flags=("gesmerha.reunion_kept", "gesmerha.closed"))),
+      c('[Respect her request and return to the audience.]', flags=("gesmerha.reunion_kept", "gesmerha.closed", "gesmerha.parted"))),
 ], "gesmerha.campaign_kept", chapter=5)
 
 
@@ -511,13 +510,14 @@ ending("living_reunion", "An answer kept", '''{n}Gesmerha carried the game away 
 # Trickster fallback (wrong footsteps: the trick and the lost game, or the confession).
 CATCHUP = "gesmerha.trickster.cost.catchup"
 TRICK = "gesmerha.trickster.cost.campaign_slow"
+FIRSTMET = "gesmerha.trickster.cost.first_meeting"
 ending("unmet_again", "The afternoon remembered", '''{n}The road did not bring the Commander back to Gesmerha's bench.{/n}''',
     forbids=("gesmerha.reunion_kept", "gesmerha.dead", "gesmerha.closed", "inhuman", "demon", "devil", "ascended", "sacrifice"),
     paragraphs=(
         p("There had been a woman laughing over a song about a caller at the door, a hard afternoon when she said what she "
           "wanted and made the Commander answer plainly, and a game neither of them finished often enough. What she would have "
           "said at another meeting stayed hers. The Commander kept the last afternoon as it had been, the awkward parts "
-          "included.", forbids=(CATCHUP,)),
+          "included.", forbids=(CATCHUP, FIRSTMET)),
         p("There had been one afternoon, and it began with a lie: ten afternoons at her board that had never happened. She "
           "heard it in the Commander's feet, sat the liar down at her half-cut board anyway, and caught a hand going to a square "
           "nobody should have known. The Commander lost the eleventh game and paid for the pieces. There was meant to be a "
@@ -526,6 +526,9 @@ ending("unmet_again", "The afternoon remembered", '''{n}The road did not bring t
           "one. Honest liars pay for the pieces too, she said, and the Commander paid, and sat. She had meant to count the "
           "afternoons from that one. The road did not bring a second, and she kept the count at one.",
           requires=(CATCHUP,), forbids=(TRICK,)),
+        p("There had been one afternoon, late in the war, at a bench the Commander had walked past before without stopping. "
+          "Two lost games, the pieces paid for, and a blind woman learning a new step. She had meant to count the afternoons "
+          "from that one. The road did not bring a second, and she kept the count at one.", requires=(FIRSTMET,)),
     ), **SURVIVED)
 ending("loss", "The answering voice", '''{n}Gesmerha died. Neither the game nor the songs could answer in her place. People who remembered her sometimes quarrelled over a line she had sung, and for a moment the quarrel left room for the correction that would not come.{/n}
 {n}The Commander's memories were less orderly than a tribute. Her temper at being interrupted. Her hand held out to be met. The exact pause before she said she wanted something, and then said it anyway.{/n}

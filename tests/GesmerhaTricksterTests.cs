@@ -271,7 +271,7 @@ internal static class GesmerhaTricksterTests
 
         // Reactions: exactly Ulbrig, Lann and Anevia, each with its availability guard.
         var reactions = story.Scenes.Where(s => s.Reaction && s.Id.StartsWith(P, StringComparison.Ordinal)).ToArray();
-        check(reactions.Length == 7 && reactions.Select(r => r.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Anevia", "Lann", "Ulbrig" }),
+        check(reactions.Length == 8 && reactions.Select(r => r.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Anevia", "Lann", "Ulbrig" }),
             "The reactors are not exactly Ulbrig, Lann and Anevia.");
         // Sol 2026-09-30 (BEL): the footsteps reactions tell the branch actually played. The trick (she caught the lie; the
         // Commander knew one rule and paid for the pieces as the loser) and the confession (the lie owned before the game).
@@ -493,6 +493,106 @@ internal static class GesmerhaTricksterTests
         check(Unmet(registeredCh3).Count(x => x.Text.Contains("song")) == 1 && Unmet(registeredCh3).All(x => !x.Text.Contains("one afternoon")),
             "The registered unmet ending loses its played recollection.");
         check(S("gesmerha.the_voice_at_court").Forbids.Contains(P + "cost.catchup"), "The court reunion recalls songs a claimed afternoon never sang.");
+
+        // Sol round 2 (INT/HOW): a Commander who never met her before the resolution (no gesmerha.met) and missed Chapter 3
+        // meets her on screen in Chapter 5, at home or at court, and can court her through the late chain to the commit.
+        var firstHome = S(P + "missed.first_meeting_home");
+        var firstCapital = S(P + "missed.first_meeting_capital");
+        Snapshot? WalkLateChain(Snapshot start, string label)
+        {
+            var w = Program.Copy(start); w.Area = Wintersun; w.Flags.Add("gesmerha.post_resolution_contact"); Rules.Complete(story, w);
+            foreach (var sc in lateChain)
+            {
+                w = Later(story, w, 48);
+                if (!Rules.Available(story, sc, w)) { check(false, "The first-meeting fallback cannot enter " + sc.Id + " (" + label + ")."); return null; }
+                var outs = Play(sc, w).Where(r => !r.Has("gesmerha.closed") && !r.Has("gesmerha.evening_as_friends")
+                                                 && !r.Has("gesmerha.late_friends") && !r.Has("gesmerha.late_open")).ToList();
+                if (sc == lateChain.Last()) outs = outs.Where(r => r.Has("gesmerha.committed")).ToList();
+                if (outs.Count == 0) { check(false, "The first-meeting fallback has no romantic way through " + sc.Id + " (" + label + ")."); return null; }
+                w = outs[0];
+            }
+            return w;
+        }
+        var neverMetHome = World(story, 5, Wintersun, "trickster", "trickster.ever", "gesmerha.wintersun_resolved", "gesmerha.truth");
+        var neverMetGuest = World(story, 5, Drezen, "trickster", "trickster.ever", "gesmerha.wintersun_resolved", "gesmerha.illusions", "gesmerha.capital_guest");
+        check(Rules.Available(story, firstHome, neverMetHome) && !Rules.Available(story, home, neverMetHome)
+              && Rules.Available(story, firstCapital, neverMetGuest) && !Rules.Available(story, capital, neverMetGuest),
+            "A never-met Commander has no Chapter 5 entry, or is offered the remembered step.");
+        check(!Rules.Available(story, firstHome, missed) && !Rules.Available(story, firstCapital, guest),
+            "A Commander she has met is treated as a stranger.");
+        check(!Rules.Available(story, firstHome, World(story, 5, Wintersun, "trickster.ever", "trickster.failed", "gesmerha.wintersun_resolved", "gesmerha.truth")),
+            "A lost path still gets the first meeting.");
+        foreach (var (entry, start, label) in new[] { (firstHome, neverMetHome, "home"), (firstCapital, neverMetGuest, "capital") })
+        {
+            var met = Pick(entry, start, "gesmerha.campaign_kept", "gesmerha.campaign_slow", P + "cost.first_meeting");
+            check(!met.Has(P + "cost.catchup") && !met.Has("gesmerha.lover") && Choices(entry).Any(c => c.Crusade?.Resource == "Finances" && c.Crusade.Amount == -50),
+                "The first meeting invents an earlier visit, or the loser does not pay: " + label);
+            var firstVisit = Later(story, met, 48); firstVisit.Area = Wintersun; firstVisit.Flags.Add("gesmerha.post_resolution_contact"); Rules.Complete(story, firstVisit);
+            var visitPagesFirst = Pages(S("gesmerha.the_things_still_here"), firstVisit);
+            check(visitPagesFirst.Contains("first_met") && !visitPagesFirst.Contains("catchup") && !visitPagesFirst.Contains("without_court"),
+                "The first late visit forgets the Chapter 5 first meeting: " + label);
+            var done = WalkLateChain(met, "first meeting " + label);
+            if (done != null) check(done.Has("gesmerha.committed") && done.Has("gesmerha.late_lovers"), "The first-meeting fallback cannot commit: " + label);
+            check(Unmet(met).Count(x => x.Text.Contains("walked past before")) == 1 && Unmet(met).All(x => !x.Text.Contains("song") && !x.Text.Contains("ten")),
+                "The first-meeting unmet ending invents afternoons: " + label);
+            check(!Rules.Available(story, S("gesmerha.the_voice_at_court"), Later(story, met, 1)), "The court reunion is offered after a first meeting: " + label);
+        }
+
+        // Sol round 2 (CAN): the paid letter recalls the conversation actually had (Cue_0028 hands, or Cue_0024 the risk),
+        // and Yarvo fears another marvel, not another resurrection.
+        var primedHands = World(story, 3, Wintersun, "trickster", "trickster.ever", "gesmerha.dead", "gesmerha.dead.latched", "gesmerha.feared_hands",
+            P + "primed", P + "commissioned", P + "cost.advance_paid");
+        var primedRisk = World(story, 3, Wintersun, "trickster", "trickster.ever", "gesmerha.dead", "gesmerha.dead.latched", "gesmerha.took_risk",
+            P + "primed", P + "commissioned", P + "cost.advance_paid");
+        check(Pages(payoff, primedHands).Contains("paid_hands") && !Pages(payoff, primedHands).Contains("paid_risk")
+              && Pages(payoff, primedRisk).Contains("paid_risk") && !Pages(payoff, primedRisk).Contains("paid_hands"),
+            "The paid letter recalls a conversation the Commander did not have.");
+        check(payoff.Nodes.Single(x => x.Id == "paid_risk").Text.Contains("anger") && !payoff.Nodes.Single(x => x.Id == "paid_risk").Text.Contains("*hands*"),
+            "The risk history's letter does not recall her warning about Marhevok's anger.");
+        check(payoff.Nodes.All(x => !x.Text.Contains("would not stay dead")) && payoff.Nodes.Count(x => x.Text.Contains("last marvel")) >= 2,
+            "The payoff invents a resurrection of the Lady.");
+
+        // Sol round 2 (INT): the returned pages yield to a native survival, and a genuine sacrifice resolves the commission
+        // without a postwar meeting.
+        Snapshot WithFlags(Snapshot s, params string[] flags) { var w = Program.Copy(s); w.Flags.UnionWith(flags); Rules.Complete(story, w); return w; }
+        check(Endings(WithFlags(seen, "sacrifice")).SequenceEqual(new[] { P + "epilogue.commit_mourned" })
+              && Endings(WithFlags(seen, "sacrifice", "ending.trickster")).SequenceEqual(new[] { P + "epilogue.commit" }),
+            "The returned late-commit pages misread the sacrifice: " + string.Join(",", Endings(WithFlags(seen, "sacrifice"))));
+        check(Endings(WithFlags(committed, "sacrifice")).SequenceEqual(new[] { P + "epilogue.bench_mourned" })
+              && Endings(WithFlags(committed, "sacrifice", "ending.trickster")).SequenceEqual(new[] { P + "epilogue.bench" }),
+            "The returned commit's pages misread the sacrifice: " + string.Join(",", Endings(WithFlags(committed, "sacrifice"))));
+        check(!S(P + "epilogue.commit_mourned").Nodes[0].Text.Contains("door") && !S(P + "epilogue.bench_mourned").Nodes[0].Text.Contains("step"),
+            "A mourning page implies a postwar meeting.");
+
+        // Sol round 2 (INT): an early commit followed by the late parting gets no Last Call coda.
+        var earlyThenLate = World(story, 5, Wintersun, "gesmerha.wintersun_resolved", "gesmerha.truth", "gesmerha.post_resolution_contact", "trickster.ever",
+            "gesmerha.campaign_kept", "gesmerha.lover", "gesmerha.committed", "gesmerha.late_arrived", "gesmerha.private_evening_kept", "gesmerha.late_lovers");
+        var parted = Pick(S("gesmerha.the_work_left_finished"), Later(story, earlyThenLate, 48), "gesmerha.closed", "gesmerha.parted");
+        var partedEnd = End(parted); partedEnd.Flags.Add("lastcall.active"); Rules.Complete(story, partedEnd);
+        check(partedEnd.Has("gesmerha.committed") && !Rules.Available(story, lcPage, partedEnd), "Last Call writes a coda for a lover who parted.");
+        var keptEnd = End(Pick(S("gesmerha.the_work_left_finished"), Later(story, earlyThenLate, 48), "gesmerha.future_lovers"));
+        keptEnd.Flags.Add("lastcall.active"); Rules.Complete(story, keptEnd);
+        check(Rules.Available(story, lcPage, keptEnd), "Last Call drops the coda for a lover who stayed.");
+
+        // Sol round 2 (BEL): the second ask's night tells the history lived (the three days after a flinch; the mallet only
+        // when the hands held), and both returned nights are recorded and answered by Anevia.
+        var flinchAsk = Later(story, flinchNo, 96);
+        var flinchPages = Pages(secondAsk, flinchAsk);
+        check(flinchPages.Contains("night_flinched") && !flinchPages.Contains("night"), "The flinched second ask plays the mallet night.");
+        check(!secondAsk.Nodes.Single(x => x.Id == "night_flinched").Text.Contains("mallet")
+              && secondAsk.Nodes.Single(x => x.Id == "night_flinched").Text.Contains("Three days"), "The flinched night does not recall the sitting.");
+        var heldPages = Pages(secondAsk, Later(story, declined, 96));
+        check(heldPages.Contains("night") && !heldPages.Contains("night_flinched") && declined.Has(P + "held_still"),
+            "The held second ask loses the mallet night.");
+        var flinchSat = Pick(secondAsk, flinchAsk, "gesmerha.committed", P + "cost.hands_carved");
+        var yardNight = S(P + "react.anevia_yard_night");
+        foreach (var (nightState, label) in new[] { (committed, "the vow"), (sat, "the held sitting"), (flinchSat, "the flinched sitting") })
+        {
+            check(nightState.Has(P + "night_yard"), "The returned night is not recorded: " + label);
+            var told = Later(story, nightState, 24); told.Area = Drezen;
+            check(Rules.Available(story, yardNight, told), "Anevia does not hear about the smith's yard night: " + label);
+        }
+        check(!Rules.Available(story, yardNight, Later(story, declined, 24)), "Anevia hears of a night that never happened.");
         Console.WriteLine("PASS: Gesmerha Trickster (Trk_Gesmerha_*): commission, pyre, splinters, the yard, the bench and wrong footsteps.");
     }
 }
