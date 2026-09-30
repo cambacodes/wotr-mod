@@ -4,14 +4,14 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 811,
-  "resolved": 811,
-  "inlineOnlyScenes": 164,
-  "inlineOnlyResolved": 164,
-  "answerListScenesWithoutContact": 430,
-  "answerListScenesWithoutContactResolved": 430,
-  "lists": 88,
-  "listsWithReachableHost": 87
+  "entryTargetScenes": 839,
+  "resolved": 839,
+  "inlineOnlyScenes": 166,
+  "inlineOnlyResolved": 166,
+  "answerListScenesWithoutContact": 435,
+  "answerListScenesWithoutContactResolved": 435,
+  "lists": 89,
+  "listsWithReachableHost": 88
  },
  "scenes": {
   "a_crossing": {
@@ -12077,6 +12077,546 @@
     "clicks": 0
    }
   },
+  "nenio.folio.architect": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.folio.architect"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.folio.demons": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.folio.demons"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.folio.dictation": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.folio.dictation"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.folio.edge": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.folio.edge"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.folio.inquisitors": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.folio.inquisitors"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.folio.longitudinal": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.folio.longitudinal"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.folio.page_one": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.folio.page_one"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.folio.point_five": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.folio.point_five"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.folio.pulse": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.folio.pulse"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.folio.rhymes": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.folio.rhymes"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.folio.slips": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.folio.slips"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.folio.sphinx_list": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.folio.sphinx_list"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.folio.tail": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.folio.tail"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.folio.teeth": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.folio.teeth"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.folio.void_days": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.folio.void_days"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.folio.volume_one": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.folio.volume_one"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.folio.who_are_you": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.folio.who_are_you"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.lastcall.call": {
+   "kind": "return-to-list",
+   "lists": [
+    "294126e3264796e488ce19bfb1851355",
+    "16994192cfa484744bd10852b8dc806f",
+    "b6bc1d5fb28e115499b8bcbbc0d541f9",
+    "3d3357c0474ce5a4bb13d68730faecb8",
+    "e77c405d6dde5804bb1f873f971958b8"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "294126e3264796e488ce19bfb1851355": "RRT_entry.nenio.lastcall.call.294126e3264796e488ce19bfb1851355",
+    "16994192cfa484744bd10852b8dc806f": "RRT_entry.nenio.lastcall.call.16994192cfa484744bd10852b8dc806f",
+    "b6bc1d5fb28e115499b8bcbbc0d541f9": "RRT_entry.nenio.lastcall.call.b6bc1d5fb28e115499b8bcbbc0d541f9",
+    "3d3357c0474ce5a4bb13d68730faecb8": "RRT_entry.nenio.lastcall.call.3d3357c0474ce5a4bb13d68730faecb8",
+    "e77c405d6dde5804bb1f873f971958b8": "RRT_entry.nenio.lastcall.call.e77c405d6dde5804bb1f873f971958b8"
+   },
+   "resolved": true,
+   "host": {
+    "list": "294126e3264796e488ce19bfb1851355",
+    "dialog": "f125dc501dc6e984385332e67f324f01",
+    "dialogName": "GrandFinal_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "nenio.trickster.after_enigma": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.trickster.after_enigma"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.trickster.commit.hypothesis": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.trickster.commit.hypothesis"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.trickster.commit.replication": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.trickster.commit.replication"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.trickster.commit.result": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.trickster.commit.result"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.trickster.dead.welcome_back": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.trickster.dead.welcome_back"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.trickster.morning": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.trickster.morning"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.trickster.react.anevia_gate": {
+   "kind": "dialog",
+   "lists": [
+    "33960c7f7af40cd43b7f801a76c87a0b"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "33960c7f7af40cd43b7f801a76c87a0b": "RRT_entry.nenio.trickster.react.anevia_gate"
+   },
+   "resolved": true,
+   "host": {
+    "list": "33960c7f7af40cd43b7f801a76c87a0b",
+    "dialog": "de4cc2dd71694b842be37b75d1705b83",
+    "dialogName": "Dialogue_AneviaMain",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "nenio.trickster.react.sosiel_no_name": {
+   "kind": "dialog",
+   "lists": [
+    "129b55b8b5d50974f84f7c607d894fd0"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "129b55b8b5d50974f84f7c607d894fd0": "RRT_entry.nenio.trickster.react.sosiel_no_name"
+   },
+   "resolved": true,
+   "host": {
+    "list": "129b55b8b5d50974f84f7c607d894fd0",
+    "dialog": "0ec4d9a0f5599a44c8a25f77da94bfd7",
+    "dialogName": "Dialogue_Sosiel_Main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "nenio.trickster.react.sosiel_point_five": {
+   "kind": "dialog",
+   "lists": [
+    "129b55b8b5d50974f84f7c607d894fd0"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "129b55b8b5d50974f84f7c607d894fd0": "RRT_entry.nenio.trickster.react.sosiel_point_five"
+   },
+   "resolved": true,
+   "host": {
+    "list": "129b55b8b5d50974f84f7c607d894fd0",
+    "dialog": "0ec4d9a0f5599a44c8a25f77da94bfd7",
+    "dialogName": "Dialogue_Sosiel_Main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "nenio.trickster.taken.riddle": {
+   "kind": "return-cue",
+   "lists": [
+    "d0eed6e4ca8dd5f478810c3ee59228de"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "d0eed6e4ca8dd5f478810c3ee59228de": "RRT_entry.nenio.trickster.taken.riddle"
+   },
+   "resolved": true,
+   "host": {
+    "list": "d0eed6e4ca8dd5f478810c3ee59228de",
+    "dialog": "00a9ed331ca80414eac82e0d7f3ffade",
+    "dialogName": "FoxMyself_dialogue",
+    "cue": "Cue_0011",
+    "clicks": 1
+   }
+  },
   "nidalynn.lastcall.call": {
    "kind": "return-to-list",
    "lists": [
@@ -20896,6 +21436,57 @@
       "7838168a231b2e342925825fb95e4862": 1,
       "cd0365522bc3ac24caf13964c979bfd3": 1,
       "d58f689b08d80a14095b83edc53402e7": 1
+     }
+    }
+   ]
+  },
+  "d0eed6e4ca8dd5f478810c3ee59228de": {
+   "list": "d0eed6e4ca8dd5f478810c3ee59228de",
+   "listName": "AnswersList_0004",
+   "hosts": [
+    {
+     "dialog": "00a9ed331ca80414eac82e0d7f3ffade",
+     "dialogName": "FoxMyself_dialogue",
+     "cues": [
+      "6d011886aa8d8344686028b36d801a06",
+      "cfae2454cb77dc8479ff0b044158e067",
+      "b02d89100c14f6442bc5b69d65f9bfc3",
+      "a2218c74cf317be459f986ecda3ac665",
+      "a87031705a195774ab64aa54616fb957",
+      "357224f06cf28804294c737124e66c29",
+      "8374418d8f8490445bbfdc0f6f6bc549",
+      "0bfb76b808bfc6348a9bac7d05dd237e"
+     ],
+     "cueNames": [
+      "Cue_0011",
+      "Cue_0002",
+      "Cue_0007",
+      "Cue_0015",
+      "Cue_0018",
+      "Cue_0019",
+      "Cue_0028",
+      "Cue_0030"
+     ],
+     "speaker": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+     "reachable": true,
+     "clicks": 1,
+     "path": [
+      {
+       "at": "Cue_0001",
+       "take": "continue"
+      }
+     ],
+     "answerDist": {
+      "15433189c1d339d48a6f7241f9ba8f26": 1,
+      "1be083587f58f704b833f2d32ca135aa": 1,
+      "3d5e67e04ceec3c48bc1ea12844d6d07": 1,
+      "8af40973311717541b9742966b31f693": 1,
+      "9763b3f979b4cce449e5ca1d28f50eed": 2,
+      "9ddb6ae82b944203b1203d4489a95bc1": 1,
+      "b047769c78bae764983d85946734522e": 2,
+      "c5e99794df05c774a9957d08dc733833": 1,
+      "d1bec57b5de9d61438ccc3be5c5bfb79": 2,
+      "fbda3ea2c92c34d4b8d37ae9b8f8c8ae": 2
      }
     }
    ]

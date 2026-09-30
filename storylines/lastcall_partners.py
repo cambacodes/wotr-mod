@@ -532,6 +532,21 @@ partner("jannah", "jannah", "jannah.committed", "jannah.closed", "The Front Rank
         '''{n}You have called it once before, on a wall, with wings coming out of the dark: her whole name and the old Mivon words. You give it everything you have left. It goes out over the rift and is swallowed, and then, very far off, over a city you cannot see, someone who never runs any more answers.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
     ledger=("Jannah: a rematch, owed", "An Aldori may always ask the one who beat her for a rematch, and I have beaten her, or she me, too often for the account ever to be square. She keeps the chalk in her pocket. I am to expect a circle wherever I go."))
+NE = "nenio.trickster."
+partner("nenio", "nenio", "nenio.committed", "nenio.closed", "The Last Observation",
+    '''Nenio spent the last night of the war on the roof of the citadel in Drezen with a spyglass, a stopwatch and a sheet headed THRESHOLD, OBSERVATIONS, because somebody had to write it down and she did not trust anybody else's handwriting except one, and that one was busy. When the rift closed, or failed to, she wrote down the time to the second. Then she sat with the pencil above the page for a long while and wrote nothing else at all, which in four thousand years she had never once done.''',
+    (
+        page_p('''At the rift the Commander shouted a question into the dark, the way {mf|he|she} had asked her things all year: "Nenio! Hypothesis!" Far off, on a roof in Drezen, a kitsune who never raised her voice stood up and shouted back, "Relevant!", loud enough that a sentry on the next tower dropped his spear, and was heard where it mattered.''', requires=(called("nenio"),)),
+        page_p('''The world buried the Commander. Nenio attended, took notes, and chalked a small ruled blank under the name on the stone, three fingers wide. The sexton scrubbed it off every week. It was back every morning. She said a name was only a label, and the stone was premature.''', requires=(ON_RECORD,)),
+        page_p('''When the flask was opened in Drezen she was there with the stopwatch, and timed it. She has never told anyone the number, and says she has forgotten it, and nobody believes her.''', requires=(H2,)),
+        page_p('''She did not have the Commander's name at the rift, or after. She shouted "follower" and it did perfectly well.''', requires=(NE + "cost.name_filed",)),
+        page_p('''Somewhere behind a white mask a question is still waiting to be asked. Nenio has the three hundred and six likeliest answers ready, rolled and tied with string, in the Commander's pack, next to volume one.''', requires=(NE + "cost.owes_an_answer",)),
+    ), declined=NE + "declined",
+    deal=[[NE + "cost.name_filed"], [NE + "cost.owes_an_answer"]],
+    call=call('''[Ask her a question] "Nenio! Hypothesis!"''',
+        '''{n}She asked you questions all through the war, with a pencil ready for the answer. You ask her one now, the only one you have, at the top of your voice, over the rift, into the dark where Drezen is. It is not a riddle. It has no stake. For a while there is nothing. Then, very far off, precise and indignant and entirely sure of itself, an answer comes back.{/n}''',
+        (PLAIN_CHOICE, (), (), ())),
+    ledger=("Nenio: a space, ruled", "She files what matters and forgets the rest. My name went into the Enigma on a riddle, or it never went anywhere and she only pretends; either way there is a space three fingers wide for me in every entry she writes. I am to answer all her questions, with numbers. The Sphinx is owed one answer too, if I bought Nenio back from her; Nenio has written three hundred and six of them for me in advance."))
 
 # Existing pages that must yield to Last Call (doc 04 backlog): Nocticula's favour page is called in on her Last Call page instead.
 FORBID_ACTIVE = ("nocticula.trickster.defeated.epilogue.favour",)

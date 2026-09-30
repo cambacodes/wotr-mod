@@ -65,6 +65,7 @@ from storylines import mielarah_trickster, mielarah_deck
 from storylines import nidalynn_trickster, nidalynn_kiln, nidalynn_salt
 from storylines import shamira_trickster, shamira_mind, shamira_dream
 from storylines import jannah_trickster, jannah_circle
+from storylines import nenio_trickster, nenio_folios
 from storylines import rrt_ui
 from storylines import rrt_portraits
 from storylines import scene_kinds
@@ -476,6 +477,12 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(jannah_trickster.SCENES))
     payload["Scenes"].extend(copy.deepcopy(jannah_circle.SCENES))
     jannah_trickster.integrate(payload)
+    # Nenio: a new relationship (nenio.md; 11-ROSTER-PLAN-2 §2 and its build sheet): the riddle in the Enigma, a name for a
+    # name; the Sphinx's servant and the field report in the loss worlds; the dictation (nenio_folios) and her own test.
+    payload["Relationships"]["nenio"] = copy.deepcopy(nenio_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(nenio_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(nenio_folios.SCENES))
+    nenio_trickster.integrate(payload)
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
     trickster_engine(payload)

@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 3225,
-  "unique_targets": 739,
+  "binding_uses": 3384,
+  "unique_targets": 750,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -72,6 +72,14 @@
     },
     "2779754eecffd044fbd4842dba55312c": {
       "path": "Units/Companions/Ember/Ember_Companion.jbp",
+      "type": "BlueprintUnit"
+    },
+    "1b893f7cf2b150e4f8bc2b3c389ba71d": {
+      "path": "Units/Companions/Nenio/Nenio_Companion.jbp",
+      "type": "BlueprintUnit"
+    },
+    "49e6676f68337114985a22bd548a8a4d": {
+      "path": "Units/Companions/Nenio/Nenio_NPC_Level1.jbp",
       "type": "BlueprintUnit"
     },
     "54be53f0b35bf3c4592a97ae335fe765": {
@@ -1006,8 +1014,32 @@
       "path": "World/Dialogs/c5/AreeluLabAgain/AreeluCell/Cue_0038.jbp",
       "type": "BlueprintCue"
     },
+    "d0eed6e4ca8dd5f478810c3ee59228de": {
+      "path": "World/Dialogs/c5/AreshkagalTomb/FoxMyself/AnswersList_0004.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "3d5e67e04ceec3c48bc1ea12844d6d07": {
+      "path": "World/Dialogs/c5/AreshkagalTomb/FoxMyself/Answer_0006.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "9763b3f979b4cce449e5ca1d28f50eed": {
+      "path": "World/Dialogs/c5/AreshkagalTomb/FoxMyself/Answer_0012.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "cfae2454cb77dc8479ff0b044158e067": {
+      "path": "World/Dialogs/c5/AreshkagalTomb/FoxMyself/Cue_0002.jbp",
+      "type": "BlueprintCue"
+    },
     "1543b97943fa553469f25be07210c868": {
       "path": "World/Dialogs/c5/AreshkagalTomb/FoxMyself/Cue_0003.jbp",
+      "type": "BlueprintCue"
+    },
+    "357224f06cf28804294c737124e66c29": {
+      "path": "World/Dialogs/c5/AreshkagalTomb/FoxMyself/Cue_0019.jbp",
+      "type": "BlueprintCue"
+    },
+    "e7831690d3ccf5f4594e842cb7b8af9e": {
+      "path": "World/Dialogs/c5/AreshkagalTomb/FoxMyself/Cue_0020.jbp",
       "type": "BlueprintCue"
     },
     "8a5d9a9b77b581b4f82ac7a06602fc7e": {
@@ -1422,6 +1454,14 @@
       "path": "World/Dialogs/Companions/CompanionDialogues/Nenio/AnswersList_0015.jbp",
       "type": "BlueprintAnswersList"
     },
+    "ece25c57e50c9e0458c6cd47a143d8fe": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Nenio/Answer_0061.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "b0a9f1ed31f114b42bb4abc8fbda29e3": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Nenio/Cue_0372.jbp",
+      "type": "BlueprintCue"
+    },
     "2366a8db6481070439fee222c0c52e45": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Regill/AnswersList_0002.jbp",
       "type": "BlueprintAnswersList"
@@ -1513,6 +1553,10 @@
     "717a2f84c7dbfd24dbb474abd26211b3": {
       "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q3_Ch5_PriceOfLoyalty/Horzalah_Mercy/Answer_0022.jbp",
       "type": "BlueprintAnswer"
+    },
+    "5db28e499fd812848b92d6ac7b26e234": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Nenio/Q1MoreThanNothing/FoxReveal/Cue_0031.jbp",
+      "type": "BlueprintCue"
     },
     "77a1253ff7aa8b24e865dc784db866b3": {
       "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0008.jbp",

@@ -126,8 +126,9 @@ internal static class ArankaTricksterTests
               && yard.At?.NearUnit == Quartermaster && yard.Dialog == "hub" && yard.Requires.Contains(FyeGone)
               && yard.Forbids.Contains(Closed) && yard.MinChapter == 3 && yard.MaxChapter == 5,
             "The yard presence for a Fye-less capital is missing or malformed.");
-        check(!story.Presences.Any(p => p.Key != "aranka.presence" && p.Value.At?.NearUnit == Market),
-            "Another presence shares Aranka's market stall.");
+        // 11-ROSTER-PLAN-2 §2 (Nenio's build sheet): a second copy may stand at the stall on the far side (behind, 5 m away).
+        check(!story.Presences.Any(p => p.Key != "aranka.presence" && p.Value.At?.NearUnit == Market && p.Value.At?.Side == presence.At?.Side),
+            "Another presence shares Aranka's side of the market stall.");
         check(!story.Presences.Any(p => p.Key == "aranka.presence" && p.Value.At?.NearUnit == Fye),
             "Aranka is back on Fye's crowded counter.");
 
