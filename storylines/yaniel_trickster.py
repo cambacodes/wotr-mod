@@ -176,12 +176,12 @@ def nar(id, text, *choices, **kw):
     return n(id, "Narrator", text, *choices, **kw)
 
 
-def visit(id, title, nodes, requires, forbids=(), delay=24, kind="visit", chapters=(5,), areas=(DREZEN,), **extra):
+def visit(id, title, nodes, requires, forbids=(), delay=24, kind="visit", chapters=(5,), areas=(DREZEN,), owner="Yaniel", **extra):
     """A rest-delivered scene: she is there (visit), or her letter is (letter). Drezen visits need the Commander in Drezen."""
     extra = dict(extra)
     if areas:
         extra["Areas"] = list(areas)
-    SCENES.append(scene(id, title, "Yaniel", min(chapters), "", nodes, requires=tuple(dict.fromkeys(requires)),
+    SCENES.append(scene(id, title, owner, min(chapters), "", nodes, requires=tuple(dict.fromkeys(requires)),
                         forbids=tuple(dict.fromkeys((KILLED, CLOSED) + tuple(forbids))), delay=delay, last=max(chapters),
                         Relationship=REL, Chapters=list(chapters), Remote=True, Kind=kind, **extra))
     tag(id)
@@ -256,7 +256,7 @@ _fane(Y + "fane.swap", "Sword for shackle", DOUBT_CUE, DOUBT, [MW, P1],
       [
           yi("kept", '''{n}She looks down at Radiance in her own two hands. Her knuckles have gone white on the grip. The blade does not glow, not the way the songs say it did; it does not need to.{/n}
 "I did," {n}she says.{/n} "I did, didn't I."
-{n}A dry sound comes out of her that is nearly a laugh.{/n} "Seventy-odd years in this pit, and the first thing I do with my hands is lie with them. I said I would never lift it again, and I was holding it up at your face like a torch." {n}She draws a long breath through her nose.{/n} "Iomedae forgive me. I am out of practice at telling the truth. Nobody down here ever wanted it."''',
+{n}A dry sound comes out of her that is nearly a laugh.{/n} "Lifting it is nothing. Any fool can lift a sword once, in a good light, with a stranger watching. Carrying it is a year of mornings. Another campaign. Another gate." {n}She draws a long breath through her nose and lets it go.{/n} "I do not know that I have that in me. I will not know until I try. Iomedae help me, I suppose I am going to try."''',
              c("Continue", "kept_why")),
       ],
       '''{n}She does not move for the space of three breaths. Then, very carefully, as though it were made of thin glass, she lays the sword across your forearms and takes her hands away.{/n}
@@ -289,13 +289,38 @@ for _node in SCENES[-1]["Nodes"]:
                          "fist.{/n} \"And you take a husk's cuff in trade for a holy sword that has just woken up. That is a thief's "
                          "bargain, stranger. I know a thief's bargain when I see one. What do you want with it?\"")
 
+# --- In person (ledger R2-3) ----------------------------------------------------------------------------------------------
+
+PRESENCE = "yaniel.presence"
+MARK = "0e8a0488-bd46-4115-be7a-6674b9358a71"        # her native DrezenCapital spawner (Yaniel_DefaultActor / Drezen_Yaniel_Ch5)
+GREETING = ("{n}Yaniel stands off the street with her back to a wall and her cloak pulled round her, the way a sentry stands "
+            "between watches. People passing give her room without knowing why. She watches their hands.{/n}")
+PRESENCES = {
+    PRESENCE: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(Locator=MARK, Offset=[0.0, 0.0]),
+                   Requires=["trickster.ever", FREED], Forbids=[CLOSED, LEFT_FREE, KILLED], MinChapter=5, MaxChapter=5,
+                   AnswerLists=[], Dialog="hub", Greeting=GREETING),
+}
+# Every Chapter 5 scene of hers but the letter from Iz is in person on this presence (ledger 05 §4.2: one Chapter 5 letter).
+# It stands from Chapter 5 for any woman freed in the Fane, at the Angel-path spawner that Drezen_Yaniel_Ch5 uses, so the walls
+# and her arrival are met there too. The Locator is her own mark, the terminal anchor (Eliandra's pattern): no letter twin.
+
+def hub(id, title, entry, nodes, requires, forbids=(), optional=False, delay=24, **fields):
+    """A scene on her presence at her own Drezen mark (Chapter 5): she is there in person, and walks the Commander where
+    the scene needs to be (the wall, her room, the niche)."""
+    SCENES.append(scene(id, title, "Yaniel", 5, entry, nodes, requires=tuple(dict.fromkeys(requires)),
+                        forbids=tuple(dict.fromkeys((KILLED, CLOSED) + tuple(forbids))), delay=delay, last=5, optional=optional,
+                        Relationship=REL, Chapters=[5], Areas=[DREZEN], ContactUnit=UNIT, InteractionHub=PRESENCE, **fields))
+    tag(id)
+
+
 # --- 2. The walls of Drezen (T): the late swap, Chapter 5, if the Fane passed without it ---------------------------------------
 
 LATE_FORMS = [HA6, HA4, P2, P1, MW]
 SWAP_LATE = '[Diplomacy] "You came up here to look at the city you held. Hold it again."'
 
 late_nodes = [
-    nar("start", '''{n}The sentry on the east tower tells you, a little too loudly, that there is a woman on his wall who is not on his roster, and that she has been there since the bell before dawn and will not come down. She is standing at the old gate tower where the parapet is broken, looking out over the ash toward the Wound: a lean, gray-headed half-elf in a borrowed crusader's cloak, bareheaded in the wind, with a husk's iron cuff still on her left wrist and one sheared link of chain swinging from it.{/n}''',
+    nar("start", '''{n}The sentry on the east tower has been complaining since the bell before dawn, a little too loudly, about a woman on his wall who is not on his roster and will not come down. She has come down now, as far as the street, and no further: a lean, gray-headed half-elf in a borrowed crusader's cloak, bareheaded in the wind, with a husk's iron cuff still on her left wrist and one sheared link of chain swinging from it. She does not look round when you speak. She jerks her head at the gate tower stair, the way a sentry does to anybody who wants something of her, and goes back up it without waiting to see whether you follow.{/n}
+{n}At the top, where the parapet of the old gate is broken, she stops and looks out over the ash toward the Wound.{/n}''',
         c("Continue", "tried", requires=(FANE_REFUSED,)),
         c("Continue", "struck", requires=(STRUCK,), forbids=(FANE_REFUSED,)),
         c("Continue", "fresh", requires=(RADIANCE_SEEN,), forbids=(FANE_REFUSED, STRUCK)),
@@ -350,33 +375,30 @@ late_nodes = [
          flags=(SWAPPED, JUDGES, OATH, LATE, SWORD_LOST, OATH_THRESHOLD), requires=(IZ,)),
        c("[Give her back the cuff.]", abort=True)),
 ]
-SCENES.append(scene(Y + "late.wall", "The gate she held", "Yaniel", 5, "", late_nodes,
-                    requires=("trickster", FREED, CH5), forbids=(KILLED, SWAPPED, CLOSED), delay=24, last=5,
-                    Relationship=REL, Remote=True, Kind="visit", Chapters=[5], Areas=[DREZEN],
-                    TricksterDevice=True, TricksterState="late"))
-tag(Y + "late.wall")
+hub(Y + "late.wall", "The gate she held", '"The east tower\'s sentry says you\'re not on his roster."', late_nodes,
+    requires=("trickster", FREED, CH5), forbids=(SWAPPED,), delay=24, TricksterDevice=True, TricksterState="late")
 
 
 # --- 3. Chapter 5 (T): she comes to stay -------------------------------------------------------------------------------------
 
-visit(Y + "ch5.found", "I held your wall", [
-    nar("start", '''{n}She is waiting in the corridor outside your rooms when you come back from the day's business, sitting on the bench where petitioners sit, with her back straight against the wall and her boots flat on the floor, as if the bench were a post she had been ordered to hold.{/n}''',
+hub(Y + "ch5.found", "I held your wall", '"You came to Drezen."', [
+    nar("start", '''{n}She has been standing in the same place since the morning, the sentries say, with her back straight against the wall and her boots flat on the stones, as if the street were a post she had been ordered to hold.{/n}''',
         c("Continue", "carries", requires=(CARRIES,)),
         c("Continue", "judges", requires=(HELD,), forbids=(CARRIES,)),
         c("Continue", "judges_empty", forbids=(CARRIES, HELD))),
-    yn("judges_empty", '''{n}She stands when she sees you, and her eyes go straight to your hip, and find nothing there, and come up to your face.{/n}
+    yn("judges_empty", '''{n}She straightens when she sees you, and her eyes go straight to your hip, and find nothing there, and come up to your face.{/n}
 "Commander." {n}A nod, very correct, and cold.{/n} "I came to watch your hands. I told you I would. They are empty. I have been watching every sword the smiths here sell, in case yours turned up on a table. It has not, yet."
 "You swore. The oath is not due. I will be here when it is."''',
        c("Continue", "cuff_seen", requires=(CUFF_WORN,)),
        c("Continue", "why_back", requires=(WHY_BACK,), forbids=(CUFF_WORN,)),
        c("Continue", "stay", forbids=(CUFF_WORN, WHY_BACK))),
-    yn("carries", '''{n}Radiance is across her knees, in a plain scabbard somebody has sewn for it out of an old saddle. She stands when she sees you, and the sword comes up with her as if it were part of her arm.{/n}
+    yn("carries", '''{n}Radiance is on her hip, in a plain scabbard somebody has sewn for it out of an old saddle. She straightens when she sees you, and her hand goes to the pommel as if it were part of her arm.{/n}
 "Commander." {n}A nod, very correct.{/n} "I held your wall with your sword while you were in the Abyss. The east wall, the night watches, the old gate. Twice things came over it that the sentries did not have names for. Radiance had names for them."
 "I thought you should know where your sword was. And I wanted to see if your hands had grown back empty."''',
        c("Continue", "cuff_seen", requires=(CUFF_WORN,)),
        c("Continue", "why_back", requires=(WHY_BACK,), forbids=(CUFF_WORN,)),
        c("Continue", "stay", forbids=(CUFF_WORN, WHY_BACK))),
-    yn("judges", '''{n}She stands when she sees you, and her eyes go straight to your hip, and stay there until she has found the hilt.{/n}
+    yn("judges", '''{n}She straightens when she sees you, and her eyes go straight to your hip, and stay there until she has found the hilt.{/n}
 "Commander." {n}A nod, very correct.{/n} "I came to watch your hands. I told you I would. I have been watching the walls of this city while you were in the Abyss, which was less interesting, and I have been watching every sword the smiths here sell, in case yours turned up on a table. It did not."
 "So. You still have it. That is one day of the oath kept. I will be here for the others."''',
        c("Continue", "cuff_seen", requires=(CUFF_WORN,)),
@@ -395,7 +417,7 @@ visit(Y + "ch5.found", "I held your wall", [
        c('"Try to sleep sometimes."', "sleep"),
        c("[Show her the second iron, from the block in Alushinyrra.]", "husk", requires=(HUSK_FREED,)),
        c("[Show her the second iron, from the block in Alushinyrra.]", "husk", requires=(HUSK_BOUGHT,), forbids=(HUSK_FREED,))),
-    yn("husk", '''{n}You take it out of the pack and put it on the bench beside her: a second cuff, crude husk-iron, the pin hammered flat, not hers. She looks at it without touching it, the way she looked at her own wrist in the Fane.{/n}
+    yn("husk", '''{n}You take it out of the pack and hold it out on your open palm: a second cuff, crude husk-iron, the pin hammered flat, not hers. She looks at it without touching it, the way she looked at her own wrist in the Fane.{/n}
 "Where?" {n}Her voice is very quiet.{/n}
 {n}You tell her. The Fleshmarkets of the Middle City, a block, a crier with a painted smile, genuine Fane stock broken up this season. A woman on a hook by one wrist, with a face that did not fit her.{/n}''',
        c("Continue", "husk2")),
@@ -406,24 +428,24 @@ visit(Y + "ch5.found", "I held your wall", [
        c("[Let her go.]", flags=(RETURNED, STARTED))),
 ], requires=("trickster.ever", SWAPPED, CH5), forbids=(RETURNED, LATE))
 
-visit(Y + "ch5.found_late", "A room that floods", [
-    nar("start", '''{n}Two days after the wall, a boy from the gate guard brings you a message he has plainly been made to repeat until he could say it without looking at his feet.{/n}''',
+hub(Y + "ch5.found_late", "A room that floods", '"Who is the boy?"', [
+    nar("start", '''{n}A day after the wall she has a boy from the gate guard in front of her, and is making him repeat a message until he can say it without looking at his feet. When she sees you she folds her arms. "You may as well hear it," she says. "He has worked hard on it."{/n}''',
         c("Continue", "msg")),
-    yn("msg", '''"The paladin says," {n}the boy recites,{/n} "that she has taken the room in the old east gate tower, the one that floods, and that nobody is to try to move her to the cathedral close with the widows, and that she is not anybody's relic, and that if the Commander wants to see the iron she gave away, the Commander knows which wall she is on."
+    yn("msg", '''"The paladin says," {n}the boy recites, to you, with the paladin standing at his shoulder,{/n} "that she has taken the room in the old east gate tower, the one that floods, and that nobody is to try to move her to the cathedral close with the widows, and that she is not anybody's relic, and that if the Commander wants to see the iron she gave away, the Commander knows which wall she is on."
 {n}He takes a breath.{/n} "And she said to say she has not been sick yet. She said you would know what that meant."
 {n}He hesitates.{/n} "She also said, if the Commander asked how she was, to say she was standing up. I don't know what that means, my lord. She said you would."''',
        c("Continue", "carries", requires=(CARRIES, HOLY)),
        c("Continue", "carries_plain", requires=(CARRIES,), forbids=(HOLY,)),
        c("Continue", "judges", requires=(HELD,), forbids=(CARRIES,)),
        c("Continue", "judges_empty", forbids=(CARRIES, HELD))),
-    nar("carries_plain", '''{n}That night you see her from the citadel: a lean shape against the stars on the broken parapet of the east gate, with the sword you gave her across her shoulder like a sentry's pike, turning her head slowly from one end of the ash to the other.{/n}''',
-        c('"Tell her I know which wall."', flags=(RETURNED, STARTED))),
-    nar("judges_empty", '''{n}That night you see her from the citadel: a lean shape against the stars on the broken parapet of the east gate, standing her watch with a borrowed spear. Once, when you cross the courtyard, the shape on the wall turns to follow you, and you know without being told that she is looking at your empty hip.{/n}''',
-        c('"Tell her I know which wall."', flags=(RETURNED, STARTED))),
-    nar("carries", '''{n}That night you see her from the citadel: a lean shape against the stars on the broken parapet of the east gate, and every so often, when something moves out in the ash, a thin line of gold where she lifts the sword to look at it.{/n}''',
-        c('"Tell her I know which wall."', flags=(RETURNED, STARTED))),
-    nar("judges", '''{n}That night you see her from the citadel: a lean shape against the stars on the broken parapet of the east gate, standing her watch with a borrowed spear. Once, when you cross the courtyard with Radiance on your hip, the shape on the wall turns to follow you until you are through the door.{/n}''',
-        c('"Tell her I know which wall."', flags=(RETURNED, STARTED))),
+    nar("carries_plain", '''{n}Behind him she stands with the sword you gave her on the wall across her shoulder like a sentry's pike, looking past you both at the ash, with the face of a woman who has had nothing to do with any of this.{/n}''',
+        c('[To the boy] "Tell her I know which wall."', flags=(RETURNED, STARTED))),
+    nar("judges_empty", '''{n}Behind him she stands with a borrowed spear, looking past you both at the ash, with the face of a woman who has had nothing to do with any of this. Once, while he is speaking, her eyes drop to your empty hip, and come back up.{/n}''',
+        c('[To the boy] "Tell her I know which wall."', flags=(RETURNED, STARTED))),
+    nar("carries", '''{n}Behind him she stands with Radiance across her shoulder like a sentry's pike, looking past you both at the ash, with the face of a woman who has had nothing to do with any of this. A thin line of gold lies along the blade, as if the sword were worse at pretending than she is.{/n}''',
+        c('[To the boy] "Tell her I know which wall."', flags=(RETURNED, STARTED))),
+    nar("judges", '''{n}Behind him she stands with a borrowed spear, looking past you both at the ash, with the face of a woman who has had nothing to do with any of this. Once, while he is speaking, her eyes drop to Radiance on your hip, and stay there until he has finished.{/n}''',
+        c('[To the boy] "Tell her I know which wall."', flags=(RETURNED, STARTED))),
 ], requires=("trickster.ever", LATE), forbids=(RETURNED,), delay=24)
 
 
@@ -457,8 +479,8 @@ visit(Y + "verdict.letter", "What Iz was like", [
        c("[Fold the letter away.]", flags=(VERDICT,))),
 ], requires=("trickster.ever", RETURNED, IZ, CARRIES), forbids=(VERDICT, HANDED_LATE), kind="letter", areas=())
 
-visit(Y + "verdict.wall", "After Iz", [
-    nar("start", '''{n}She is on the east wall when you come up, with the sword you put in her hands after Iz across her knees and a whetstone going along it in long, slow strokes. She does not look up.{/n}''',
+hub(Y + "verdict.wall", "After Iz", '"Walk the wall with you?"', [
+    nar("start", '''{n}She takes you up to the east wall without a word and sits down on the broken parapet, with the sword you put in her hands after Iz across her knees, and sets a whetstone going along it in long, slow strokes. She does not look up.{/n}''',
         c("Continue", "heard", requires=(SANG,)),
         c("Continue", "talk", forbids=(SANG,))),
     yn("heard", '''"The foot coming back down the road say it sang at Iz," {n}she says.{/n} "In your hand, with Deskari's voice going over the city. And then you came home and gave it to me on my wall." {n}The whetstone pauses.{/n} "I do not know whether that was the kindest thing anybody has done for me, or the strangest. It had already done the one thing it was made for. You gave me the rest."''',
@@ -468,8 +490,8 @@ visit(Y + "verdict.wall", "After Iz", [
        c('"Tomorrow."', flags=(VERDICT,))),
 ], requires=("trickster.ever", RETURNED, IZ, CARRIES, HANDED_LATE), forbids=(VERDICT,), delay=24)
 
-visit(Y + "verdict.hands", "Show me your hands", [
-    nar("start", '''{n}She is on the stair of the citadel when you come back from Iz, sitting on the top step with the east-wall spear across her knees. She does not get up. She looks at your face, and then at your hip, and then at your hands, in that order, the way a quartermaster looks at a returned wagon.{/n}''',
+hub(Y + "verdict.hands", "Show me your hands", '"I\'m back from Iz."', [
+    nar("start", '''{n}She is at her post when you come back from Iz, sitting on a mounting block by the wall with the east-wall spear across her knees. She does not get up. She looks at your face, and then at your hip, and then at your hands, in that order, the way a quartermaster looks at a returned wagon.{/n}''',
         c("Continue", "pending_held", requires=(OATH_THRESHOLD, HELD)),
         c("Continue", "pending_empty", requires=(OATH_THRESHOLD,), forbids=(HELD,)),
         c("Continue", "held", requires=(HELD,), forbids=(OATH_THRESHOLD,)),
@@ -530,26 +552,8 @@ visit(Y + "verdict.hands", "Show me your hands", [
 
 # --- 5. The commit (T): she proposes the trade-back; the yes is that neither trades ----------------------------------------
 # In person (ledger R2-3): on her presence at her own Drezen mark, the spawner the Angel path uses for her (Yaniel_DefaultActor,
-# scene 3e2b5ea0), and up the stair to her room. The room twin is the remote fallback when the presence cannot be placed.
+# scene 3e2b5ea0), and up the stair to her room.
 
-PRESENCE = "yaniel.presence"
-PRESENCE_FAILED = "yaniel.presence.failed"
-MARK = "0e8a0488-bd46-4115-be7a-6674b9358a71"        # her native DrezenCapital spawner (Yaniel_DefaultActor / Drezen_Yaniel_Ch5)
-GREETING = ("{n}Yaniel stands off the street with her back to a wall and her cloak pulled round her, the way a sentry stands "
-            "between watches. People passing give her room without knowing why. She watches their hands.{/n}")
-PRESENCES = {
-    PRESENCE: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(Locator=MARK, Offset=[0.0, 0.0]),
-                   Requires=["trickster.ever", RETURNED], Forbids=[CLOSED, LEFT_FREE, KILLED], MinChapter=5, MaxChapter=5,
-                   AnswerLists=[], Dialog="hub", Greeting=GREETING),
-}
-
-def hub(id, title, entry, nodes, requires, forbids=(), optional=False, delay=24):
-    """A scene on her presence at her own Drezen mark (Chapter 5): she is there in person, and walks the Commander where
-    the scene needs to be (the wall, her room, the niche)."""
-    SCENES.append(scene(id, title, "Yaniel", 5, entry, nodes, requires=tuple(dict.fromkeys(requires)),
-                        forbids=tuple(dict.fromkeys((KILLED, CLOSED) + tuple(forbids))), delay=delay, last=5, optional=optional,
-                        Relationship=REL, Chapters=[5], Areas=[DREZEN], ContactUnit=UNIT, InteractionHub=PRESENCE))
-    tag(id)
 
 
 TRADE_ROOM = '''{n}The room in the old east gate tower is exactly as bad as she said. There is a camp bed that the damp has warped, a brazier, a pail under the place where the roof leaks, and one good thing: a window cut in the thickness of the wall that looks straight down the road the refugees took the day the city fell.{/n}'''
@@ -633,19 +637,13 @@ SCENES.append(scene(Y + "commit.trade", "Your sword for my shackle", "Yaniel", 5
     nar("room", TRADE_ROOM + '''
 {n}She goes to the window and stands at it with her back to you for a while, looking down the road. Then she turns round.{/n}''', *TRADE_BRANCH),
     *copy.deepcopy(TRADE_BODY)],
-    requires=("trickster.ever", VERDICT, DRAWN), forbids=(KILLED, CLOSED, COMMITTED, DECLINED, OATH_BROKEN, Y + "commit.trade_room"),
+    requires=("trickster.ever", VERDICT, DRAWN), forbids=(KILLED, CLOSED, COMMITTED, DECLINED, OATH_BROKEN),
     delay=24, last=5, Relationship=REL, Chapters=[5], Areas=[DREZEN], ContactUnit=UNIT, InteractionHub=PRESENCE))
 tag(Y + "commit.trade")
 
-visit(Y + "commit.trade_room", "Your sword for my shackle", [
-    nar("start", '''{n}A boy from the gate guard brings the word: the paladin is in her room in the gate tower, and would the Commander come up.{/n}
-''' + TRADE_ROOM + '''
-{n}She is standing at the window with her back to you when you come up the stair. She turns round.{/n}''', *TRADE_BRANCH),
-    *copy.deepcopy(TRADE_BODY)],
-    requires=("trickster.ever", VERDICT, DRAWN, PRESENCE_FAILED), forbids=(COMMITTED, DECLINED, OATH_BROKEN, Y + "commit.trade"), delay=24)
-
 VIGIL_NODES = [
-    nar("start", '''{n}A note under your door, in the square old-fashioned hand: "Tonight. The niche under the east gate tower, where they have put the statue. Bring nothing. You will kneel on stone until the morning bell. I have not kept a vigil since the Fane. I would not like to keep this one alone."{/n}
+    yn("start", '''{n}She does not greet you. She looks at your hands first, as she always does, and then at your face.{/n}
+"Tonight," {n}she says.{/n} "The niche under the east gate tower, where they have put the statue. Bring nothing. You will kneel on stone until the morning bell. I have not kept a vigil since the Fane. I would not like to keep this one alone."
 {n}The niche is at the foot of the gate tower, a hollow in the old wall where the chaplains have set up their ox-cart saint until the cathedral is ready for her: Yaniel of Drezen, the Holy Martyr, in painted stone, sword raised, eyes on heaven. The real one is already kneeling in front of her with a lamp at her knee. She does not look round.{/n}''',
         c("Continue", "broken", requires=(OATH_BROKEN,)),
         c("Continue", "declined", requires=(DECLINED,), forbids=(OATH_BROKEN,))),
@@ -679,14 +677,14 @@ VIGIL_NODES = [
 {n}When you look back from the corner she has not moved: a gray head bowed in front of a painted one, and the lamp, and the long shadow of a raised stone sword going up the wall into the dark.{/n}''',
        c("[Go.]", flags=(LEFT_FREE, CLOSED))),
 ]
-visit(Y + "commit.vigil", "A vigil at the niche", VIGIL_NODES, requires=("trickster.ever", DRAWN),
-      forbids=(COMMITTED, LEFT_FREE), delay=24, RequiresAnyGroups=[[DECLINED, OATH_BROKEN]])
+hub(Y + "commit.vigil", "A vigil at the niche", '"You look like you have something to say."', VIGIL_NODES,
+    requires=("trickster.ever", DRAWN), forbids=(COMMITTED, LEFT_FREE), delay=24, RequiresAnyGroups=[[DECLINED, OATH_BROKEN]])
 
 
 # --- 6. The niche (T): the intimacy, the morning, the lamp ----------------------------------------------------------------
 
 NICHE_NODES = [
-    nar("start", '''{n}She is waiting at the foot of the gate tower when the watch changes, with a lamp in one hand and her cloak over her arm, and she does not say anything. She takes your wrist, as you took hers on the wall, and leads you into the niche.{/n}
+    nar("start", '''{n}She is waiting for you when the watch changes, with a lamp in one hand and her cloak over her arm, and she does not say anything. She takes your wrist, as you took hers on the wall, and leads you into the niche.{/n}
 {n}The painted Yaniel of Drezen stands over the two of you with her stone sword raised and her stone eyes on heaven. The carver gave her the face of a girl of twenty with no scars and a mouth that has never said anything rude.{/n}''',
         c("Continue", "statue", requires=(STATUE_LIED,)),
         c("Continue", "statue_true", requires=(Y + "statue_truth",), forbids=(STATUE_LIED,)),
@@ -731,7 +729,8 @@ NICHE_NODES = [
 {n}He looks at it through three strokes of the broom. Then he takes the cloak down, folds it, lays it on the bottom step, and sweeps round it. He never says a word to anyone. Yaniel says afterwards that it was the most Iomedaean thing she has seen a churchman do since she came up out of the pit.{/n}''',
         c("[Go up into the day.]", flags=(NICHE, MORNING))),
 ]
-visit(Y + "visit.niche", "In front of her", NICHE_NODES, requires=("trickster.ever", COMMITTED), forbids=(NICHE,), delay=24)
+hub(Y + "visit.niche", "In front of her", "[Go to her when the watch changes.]", NICHE_NODES, requires=("trickster.ever", COMMITTED),
+    forbids=(NICHE,), delay=24)
 
 
 # --- 7. Reactions (Seelah: a paladin of Iomedae, a thief before that, and the one who called her "Sister" in the Fane) --------
@@ -757,10 +756,10 @@ tag(Y + "react.seelah_after")
 
 
 SOSIEL_HUB = "129b55b8b5d50974f84f7c607d894fd0"      # CompanionDialogues/Sosiel/AnswersList_0002
-SCENES.append(reaction("Sosiel", Y + "react.sosiel_iron", ("trickster.ever", SWAPPED, SOSIEL_PROMISED),
+SCENES.append(reaction("Sosiel", Y + "react.sosiel_iron", ("trickster.ever", SWAPPED, SOSIEL_PROMISED, RETURNED),
     '''{n}Sosiel has a sketch half-finished on his knee: a woman's wrist, bare, with a pale band across it where something used to be.{/n} "Do you remember the woman in the citadel dungeon, when we took Drezen? The one who said she was Yaniel?" {n}He does not look up.{/n} "I told her we would heal her wounds. I meant it with my whole heart. She was Areelu Vorlesh, and she let me say it."
 "And the real one was on a hook in the Fane the whole time, and nobody promised her anything." {n}The charcoal stops.{/n} "Now she stands on the east wall, and you carry her iron, and I have been trying to draw her wrist without the cuff for a week and I cannot get it right. Shelyn would say the ugliest thing a person carries can be what makes them beautiful to someone willing to hold it. Hold it gently, Commander. I owe her a promise, and you are keeping it for me."''',
-    answer_list=SOSIEL_HUB, entry='"What are you drawing?"', chapter=3, last=5, portrait="Sosiel",
+    answer_list=SOSIEL_HUB, entry='"What are you drawing?"', chapter=5, last=5, delay=168, portrait="Sosiel",
     forbids=("sosiel.dead", "sosiel.kicked_out", CLOSED, KILLED)))
 tag(Y + "react.sosiel_iron")
 
@@ -783,7 +782,8 @@ COMMON = (
     p("{n}When the war was over she went to the place where Staunton Vhane was buried, as she had said she would, and shouted at the ground for most of an hour. Then she sat down on it and wept for him at last, and the Commander stood between her and the road so that nobody would see.{/n}", requires=(B_STAUNTON,)),
     p("{n}The Church of Iomedae never did examine her. The chaplain who had come to the Commander's door with the seal of Nerosyan wrote to his superiors that the relic was in the hands it was meant for, and that he would not be the one to take it out of them, and after that nobody else volunteered.{/n}", requires=(B_CHURCH, CARRIES)),
     p("{n}She stopped praying for things. She told her goddess about her days instead, out loud, on the wall, in the tone of a sergeant making a report, and she swore that on some nights the report was received.{/n}", requires=(B_PRAYER,)),
-    p("{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack beside the other, and never told anyone why there were two.{/n}", any_groups=((HUSK_FREED, HUSK_BOUGHT),)),
+    p("{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack beside the other, and never told anyone why there were two.{/n}", any_groups=((HUSK_FREED, HUSK_BOUGHT),), forbids=(CUFF_WORN,)),
+    p("{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack, and wore the other, and never told anyone why there were two.{/n}", any_groups=((HUSK_FREED, HUSK_BOUGHT),), requires=(CUFF_WORN,)),
 )
 
 SCENES.append(scene(Y + "epilogue.together", "", "YanielEpilogue", 6, "", [
@@ -808,8 +808,8 @@ tag(Y + "epilogue.together")
 
 SCENES.append(scene(Y + "epilogue.commit", "", "YanielEpilogue", 6, "", [
     nar("page", '''{n}The war ended before Yaniel and the Commander had finished what they had to settle. She rode to the Threshold with the Mendevian foot, in the rank behind the shields, and came back down the road on a cart with a broken leg and the whole of her temper.{/n}
-{n}In the spring she came up the stair of the Commander's tower on crutches, with the iron cuff in one hand. She put it on the table between them. "Your sword for my shackle," she said, "and we are square. Or not. I have spent the winter on my back deciding which I would rather, and I will not tell you until you have told me."{/n}
-{n}The Commander pushed the cuff back across the table. She looked at it, and at the Commander, and laughed, and threw the crutches on the floor.{/n}
+{n}In the spring she came up the stair of the Commander's tower on crutches, and sat down across the table, and held out her hand, palm up. "Your sword for my shackle," she said, "and we are square. Or not. I have spent the winter on my back deciding which I would rather, and I will not tell you until you have told me."{/n}
+{n}The Commander left the iron where it was, in the pouch at the Commander's belt, and told her that nobody was square, and nobody was going to be. She looked at the empty palm of her own hand for a while, and then at the Commander, and laughed, and threw the crutches on the floor.{/n}
 {n}Afterwards she kept the flooded room in the gate tower, out of stubbornness, and slept there perhaps one night in three. The other nights she did not explain, and nobody in Drezen was fool enough to ask her.{/n}''',
         paragraphs=COMMON)],
     requires=("trickster.ever", VERDICT, DRAWN), forbids=(COMMITTED, DECLINED, LEFT_FREE, CLOSED, OATH_BROKEN, "sacrifice"), **SAC, **EP))

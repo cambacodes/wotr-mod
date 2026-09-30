@@ -1,7 +1,7 @@
 """Yaniel's courtship on the Trickster path (11-ROSTER-PLAN-2 §2, Yaniel build sheet): her letter from Nerosyan (Chapter 3),
-the Commander alone with her iron in the Abyss (Chapter 4), and her Chapter 5 visits in Drezen, all rest-delivered because
-no chapel or presence anchor is free for her (10 §5.2). The device, the verdict, the commit, the niche, the pages and the
-reactions live in yaniel_trickster.
+the Commander alone with her iron in the Abyss (Chapter 4, one Memory page), and her Chapter 5 visits in Drezen, all in
+person on her presence at her own Drezen mark (ledger 05 §4.2: her one Chapter 5 letter is the verdict from Iz). The device,
+the verdict, the commit, the niche, the pages and the reactions live in yaniel_trickster.
 
 Canon anchors used here: the Half Measure's roast and the old tree by the town hall in Nerosyan (TrueYaniel/Cue_0035
 efb1ee54); the statue (Cue_0044 7c1becd8, and Seelah's "the hands of the Yaniel statue"); Staunton Vhane and his brother
@@ -17,7 +17,7 @@ from storylines.yaniel_trickster import (B_AREELU, B_BOUT, B_CHURCH, B_NIGHT, B_
                                          B_STATUE, B_STAUNTON, B_WALLS, DRAWN_BITE, DRAWN_TREE, DRAWN_WALLS, HELD, HOLY, HUSK_BOUGHT, HUSK_FREED, HUSK_LEFT, NICHE, CARRIES, CLOSED,
                                          COMMITTED, CUFF_PACKED, CUFF_WORN, JUDGES, KILLED, MINAGHO_SECRET, MINAGHO_SEEN,
                                          MINAGHO_TOLD, RETURNED, STATUE_LIED, SWAPPED, TOLD_STATUE, TOLD_STAUNTON, UNMASKED,
-                                         FAKE_FREED, FAKE_REFUSED, WHY_BACK, WHY_CANT, Y, nar, visit, yn)
+                                         FAKE_FREED, FAKE_REFUSED, LATE, WHY_BACK, WHY_CANT, Y, nar, visit, yn)
 
 SCENES = yt.SCENES   # appended in order: the route's rest delivery keeps authored order within a relationship
 
@@ -60,7 +60,7 @@ visit(Y + "ch3.nerosyan", "The tree by the town hall", [
     yn("statue_end", '''"The chaplains are taking it down next week and sending it up to Drezen on an ox-cart, because Drezen is ours again and the martyr ought to go home. I am going to Drezen too. I would like to get there before my statue does. I would like, if you are anywhere near the city, to see what you have done with my iron.
 "Y."''',
        c("[Fold the letter away.]", flags=(CH3_READ,))),
-], requires=("trickster.ever",), forbids=(CH3_READ,), delay=48, kind="letter", chapters=(3, 4), areas=(),
+], requires=("trickster.ever",), forbids=(CH3_READ,), delay=48, kind="letter", chapters=(3,), areas=(),
     RequiresAnyGroups=[[SWAPPED, yt.FANE_REFUSED]])
 
 
@@ -88,17 +88,47 @@ visit(Y + "ch4.shackle", "Husk-iron", [
         c("[Wrap it in a clean cloth and put it back at the bottom of the pack.]", "packed")),
     nar("worn", '''{n}It goes round your wrist the way it went round hers: badly. The edge bites. The pin will not go all the way in, because she hammered it too many nights, and in the end you bend the soft end over with the pommel of your knife and leave it like that.{/n}
 {n}In the morning your companions look at it, and at you, and one by one decide not to ask. In the market that afternoon a slaver with a jackal's head takes one look at your wrist and marks you up, loudly, as somebody's escaped property, and three of his cousins spend the rest of the day finding out that you are not.{/n}''',
-        c("[Leave it on.]", flags=(CUFF_WORN, CH4_SEEN))),
+        c("[Leave it on.]", "market", flags=(CUFF_WORN, CH4_SEEN))),
     nar("packed", '''{n}You fold it into a strip of clean linen, the way a chaplain folds a relic, and put it at the very bottom of your pack, under the maps and the spare boots, where you will know it is there every time you lift the pack and not otherwise.{/n}
 {n}It is a small thing to carry through the Abyss. It weighs more than you want it to. You have been given worse loads by better people, and none of them was ever warm from the hand.{/n}''',
-        c("[Sleep, if you can.]", flags=(CUFF_PACKED, CH4_SEEN))),
-], requires=("trickster.ever", SWAPPED), forbids=(CH4_SEEN,), delay=48, kind="memory", chapters=(4,), areas=())
+        c("[Sleep, if you can.]", "market", flags=(CUFF_PACKED, CH4_SEEN))),
+    nar("market", '''{n}The Fleshmarkets of the Middle City sell by the pound in the morning and by the piece in the afternoon. A few days after that night you are crossing them in the afternoon, on other business, when a lot on the block stops you.{/n}
+{n}It is a woman, or it was: gray, bone-thin, hanging from a hook by one wrist with her toes just brushing the boards, the way a side of meat hangs in a butcher's window. Her face does not quite fit her; it sits a little wrong, like a borrowed coat. On the wrist that holds her up is a manacle you would know in the dark: crude husk-iron, two fingers thick, the pin a lump of soft metal hammered flat.{/n}''',
+        c("Continue", "crier")),
+    nar("crier", '''{n}The crier is a tiefling with a painted smile. "Collector's piece!" he is calling, to a crowd that is mostly not listening. "Genuine Fane stock, from the mistress's own racks, broken up this season! A face that can be any face you like, my lords! A shield that walks! Very obedient; the mistress trained it herself!"{/n}
+{n}The husk's eyes are open. They move to you, and to your wrist, and stay there.{/n}''',
+        c("Continue", "wrist_worn", requires=(CUFF_WORN,)),
+        c("Continue", "offer", forbids=(CUFF_WORN,))),
+    nar("wrist_worn", '''{n}Your sleeve has slid back. The iron on your own wrist, the one you closed there at night in this same city, is in plain view: the same crude metal, the same flattened pin, the same sheared link. The husk on the block is staring at it as if it were a word in a language she had forgotten she knew.{/n}''',
+        c("Continue", "offer")),
+    nar("offer", '''{n}The crier sees you looking and his smile widens.{/n} "Ah! A {mf|gentleman|lady} of discernment! Fifty in gold, my lord, or a crusader's note of hand; we are very modern here. Cheap at the price. The mistress's own work!"''',
+        c("[Pay him with a note on the crusade's war chest, and have her cut down.]", "bought", crusade=("Finances", -50)),
+        c("[Thievery] [Step up to inspect the lot, and work the pin while the crier talks.]",
+          check=dict(Skill="SkillThievery", DC=18, Success="picked", Failure="fumbled", CommanderOnly=True)),
+        c("[Walk on. You have a war to win.]", "left")),
+    nar("bought", '''{n}He reads the note twice, holds it up to the light, and has his boy cut her down. She drops onto the boards like a sack. When you kneel beside her she does not flinch, and she does not look at your face; she looks at the iron on her wrist, and then at you, as if waiting to be told what she is for now.{/n}
+{n}You work the pin out yourself. It takes three twists. You know exactly how, now.{/n}
+"Go," {n}you tell her.{/n} {n}She looks at you for a while longer, and then she goes, not quickly, into the crowd, with her bare wrist held against her chest like something newly born. You keep the iron. You do not quite know why.{/n}''',
+        c("[Put it in the pack.]", flags=(HUSK_BOUGHT, Y + "ch4_block_seen"))),
+    nar("picked", '''{n}You step up onto the block to look at her teeth, as a buyer does, and while the crier is explaining to you at length how very fine they are, your fingers find the pin behind her wrist. Three twists. You know exactly how, now. The cuff opens with a sound like a knuckle cracking, and she drops.{/n}
+{n}The crier turns round at the thump, and his painted smile slides, and by then she is off the back of the block and into the crowd of the Middle City, running on legs that have not run in years, and you are shouting "Thief! Stop her!" as loudly as anybody, and pointing the wrong way.{/n}''',
+        c("Continue", "picked2")),
+    nar("picked2", '''{n}Nobody catches her. The crier tears at his hair. A demon in a litter laughs so hard at him it has to be carried away. You walk off the other side of the market with a second husk's iron in your pocket, still warm, and a feeling in your chest you do not have a word for.{/n}''',
+        c("[Put it in the pack.]", flags=(HUSK_FREED, Y + "ch4_block_seen"))),
+    nar("fumbled", '''{n}Your fingers find the pin behind her wrist, but the crier is sharper than he looks. He catches your wrist in a grip like a trap, and his painted smile does not move at all.{/n} "Inspection is free, my lord. Liberation is fifty."
+{n}Behind him two hulking things with too many teeth have come to the edge of the block. You could fight them. You would win. The whole market would see the Commander of the crusade start a riot in the Fleshmarkets over a husk, and every trader in Alushinyrra would know your face by nightfall.{/n}''',
+        c("[Pay him with a note on the crusade's war chest.]", "bought", crusade=("Finances", -50)),
+        c("[Walk away.]", "left")),
+    nar("left", '''{n}You walk on. The crier's voice follows you across the market, calling the lot again, lower now: forty-five, genuine Fane stock, the mistress's own work.{/n}
+{n}That night the iron you carry is heavier than it was in the morning. It is not, of course. It is the same iron. You lie awake a long time anyway.{/n}''',
+        c("[Try to sleep.]", flags=(HUSK_LEFT, Y + "ch4_block_seen"))),
+], requires=("trickster.ever", SWAPPED), forbids=(CH4_SEEN,), delay=48, kind="memory", chapters=(4,), areas=(), owner="Memory")
 
 
 # --- Chapter 5 (T): Minagho (the pivotal moral node: tell her, or keep it) ---------------------------------------------------
 
-visit(Y + "ch5.minagho", "The lilitu on the crate", [
-    nar("start", '''{n}Yaniel does not come up to your rooms. She sends a boy to ask you to the east wall, and when you get there she is standing at the broken parapet of the gate tower with her back to the city, the way a sentry stands when she does not trust what is behind her.{/n}''',
+hub(Y + "ch5.minagho", "The lilitu on the crate", '"You look like you want to hit something."', [
+    nar("start", '''{n}She does not answer. She takes you up to the east wall, and at the broken parapet of the gate tower she stops with her back to the city, the way a sentry stands when she does not trust what is behind her.{/n}''',
         c("Continue", "here", requires=(MINAGHO_HERE,)),
         c("Continue", "heard", forbids=(MINAGHO_HERE,))),
     yn("here", '''"There is a lilitu sitting on a crate by your quartermaster's stores." {n}Her voice is perfectly flat.{/n} "Eyeless. Pretty, if you like knives. I walked past her this morning on my way to the wall. She was turning one of the crusade's daggers over in her fingers, and she heard my boots, and she lifted her face the way she used to when she came into the room with the hooks, and she smiled."
@@ -289,10 +319,10 @@ hub(Y + "beat.bout", "Not all enemies", '"Those are practice swords."', [
 ], requires=("trickster.ever", RETURNED, B_WALLS), **BEAT)
 
 hub(Y + "beat.roast", "The roast", '"What is that smell?"', [
-    nar("start", '''{n}Juniper, burnt fat, something sharp and old-fashioned that nobody in Drezen has cooked in living memory. It is on her cloak and her hands. "The Half Measure's roast," she says. "Fye let me have her kitchen for a day, and a whole side of mutton, and her cook, who wept. Come up to the wall at the third bell. Bring bread. Bring nobody else."{/n}''',
+    nar("start", '''{n}Juniper, burnt fat, something sharp and old-fashioned that nobody in Drezen has cooked in living memory. It is on her cloak and her hands. "The Half Measure's roast," she says. "Fye let me have his kitchen for a day, and a whole side of mutton, and his cook, who wept. Come up to the wall at the third bell. Bring bread. Bring nobody else."{/n}''',
         c("Continue", "wall")),
     yn("wall", '''{n}She has made a table of two barrels and a door on the broken parapet of the gate tower, and a brazier, and the roast is on the door in a pan, black at the edges and very nearly the right shape.{/n}
-"The Half Measure's," {n}she says.{/n} "Or near enough. The Half Measure is back on its old street, did you know? Fye Kito keeps it now; a relative of hers had it before the siege. Nobody there remembered the roast. I told her cook how it was done, as near as I remembered, and he wrote it on a slate and made a face, and in the end I made most of it myself." {n}She saws off a slab with her belt knife and puts it on your bread.{/n} "Eat. Tell me it is terrible. It is. I want to hear somebody else say it."''',
+"The Half Measure's," {n}she says.{/n} "Or near enough. The Half Measure is back on its old street, did you know? Fye Kito keeps it now; a relative of his had it before the siege. Nobody there remembered the roast. I told his cook how it was done, as near as I remembered, and he wrote it on a slate and made a face, and in the end I made most of it myself." {n}She saws off a slab with her belt knife and puts it on your bread.{/n} "Eat. Tell me it is terrible. It is. I want to hear somebody else say it."''',
        c('"It\'s terrible."', "terrible"),
        c('"It\'s the best thing I\'ve eaten in the Worldwound."', "best")),
     yn("terrible", '''{n}She laughs until she has to put her knife down.{/n} "It is. It is dreadful. The juniper is wrong and the mutton is old and I have burnt it on one side." {n}She eats a mouthful anyway, with her eyes shut.{/n} "And it tastes of the Half Measure. Of spring. Of the night before my first watch, when Staunton bought for the whole table and Joran fell asleep in the gravy."''',
@@ -317,62 +347,65 @@ NIGHT_STAYED = Y + "night_stayed"
 CHURCH_DEFIED = Y + "church_defied"
 CHURCH_SENT = Y + "church_sent"
 
-visit(Y + "beat.night", "What Minagho told me", [
-    nar("start", '''{n}The sentry from the east tower is at your door an hour past midnight, not quite looking you in the eye. The paladin in the gate tower, he says. She is not hurt. She is sitting up with a knife. She told him to go away, and then she told him to fetch the Commander, and then she told him not to, and he has decided to fetch you anyway, because she frightens him less than the alternative.{/n}''',
+hub(Y + "beat.night", "What Minagho told me", '"You look like you haven\'t slept."', [
+    nar("start", '''{n}She has not. It is in her face, gray under the gray, and in the way she holds herself very straight, as a soldier does who knows that if she leans on anything she will be asleep. She looks at you for a while as if deciding something. Then she takes you up the tower stair to the flooded room without a word.{/n}''',
         c("Continue", "room")),
-    nar("room", '''{n}She is on the floor of the flooded room with her back against the wall and her knees drawn up, in her shirt, with a husk-keeper's knife loose in one hand. The brazier has gone out. When your shadow comes into the doorway the knife comes up, fast, and then goes down again, slowly, as she sees who it is.{/n}''',
+    nar("room", '''{n}The brazier has gone out. There is a husk-keeper's knife on the floor by the wall, where somebody has plainly sat all night with her back to the stone and her knees drawn up. She sits down there again, in the same place, as if it were a post, and picks up the knife, and holds it loosely in one hand.{/n}''',
         c("Continue", "talk")),
-    yn("talk", '''"I told him not to." {n}Her voice is hoarse.{/n} "I am not a child. I do not need to be sat with."
-{n}She lets you sit anyway. After a while she says, to the dark window:{/n} "Minagho used to wake me. Not every night. Just often enough that I never learned to sleep through it. She would come in with a lamp and sit on the edge of the hook-rack and talk. Pleasantly. As if we were two old friends."
+    yn("talk", '''"The sentry wanted to fetch you last night. Twice. I told him not to." {n}Her voice is hoarse.{/n} "I am not a child. I do not need to be sat with."
+{n}She lets you sit anyway. After a while she says, to the window:{/n} "Minagho used to wake me. Not every night. Just often enough that I never learned to sleep through it. She would come in with a lamp and sit on the edge of the hook-rack and talk. Pleasantly. As if we were two old friends."
 "She would tell me things. That everyone had forgotten me. That the Church had struck my name from its books for a heretic. That Staunton had given her the city with his own hands. That my goddess had heard every prayer I ever said on that hook and laughed." {n}Her hand tightens on the knife.{/n} "Some of it was lies. Some of it, I have since found out, was not. I never knew which. That was the point."''',
         c("Continue", "dream")),
     yn("dream", '''"Tonight I dreamed she came in with the lamp, and I was so glad to see a light that I thanked her." {n}She says it very flatly.{/n} "That is the part that woke me. Not her. The thanking."
-{n}She turns her head and looks at you in the dark.{/n} "Tell me something true, Commander. Anything. I do not care what. Something nobody in this city has told me, that is not a song about me or a sermon or a lie to make me feel better. I want to hear something true in this room before it gets light."''',
+{n}She turns her head and looks at you in the gray light from the window.{/n} "Tell me something true, Commander. Anything. I do not care what. Something nobody in this city has told me, that is not a song about me or a sermon or a lie to make me feel better. I want to hear something true in this room before I try to sleep in it again."''',
         c('"I\'m not sure I\'m still entirely human. Nobody knows that but me."', "true_power"),
-        c('"When I took your iron in the Fane, I didn\'t know what I\'d do with it. I still don\'t."', "true_iron"),
-        c('"I\'m afraid of the day the war ends. I don\'t know who I\'ll be without it."', "true_war")),
+        c('"When I took your iron in the Fane, I didn\'t know what I\'d do with it. I still don\'t."', "true_iron", forbids=(LATE,)),
+        c('"I\'m afraid of the day the war ends. I don\'t know who I\'ll be without it."', "true_war"),
+        c('"When I took your iron on the wall, I didn\'t know what I\'d do with it. I still don\'t."', "true_iron_late", requires=(LATE,))),
     yn("true_power", '''{n}She is quiet for a while.{/n} "No," {n}she says at last.{/n} "I did not think you were. Nobody who is entirely human looks at a gate the way you looked at mine: as if you could see where it was going to break." {n}She puts the knife down on the floor between you.{/n} "I was not entirely human either, when I came out. A husk is not a person. It is a thing a person used to live in. I am still finding out which rooms are mine."''',
         c("Continue", "sleep")),
-    yn("true_iron", '''{n}A short laugh comes out of the dark.{/n} "No. I did not think you did. You looked at it in the Fane the way a dog looks at a bone it has stolen off a table: very pleased, and not at all sure it was allowed." {n}She puts the knife down on the floor between you.{/n} "Keep not knowing, Commander. I would rather you did not know what to do with it than that you knew exactly."''',
+    yn("true_iron", '''{n}A short laugh comes out of her.{/n} "No. I did not think you did. You looked at it in the Fane the way a dog looks at a bone it has stolen off a table: very pleased, and not at all sure it was allowed." {n}She puts the knife down on the floor between you.{/n} "Keep not knowing, Commander. I would rather you did not know what to do with it than that you knew exactly."''',
+        c("Continue", "sleep")),
+    yn("true_iron_late", '''{n}A short laugh comes out of her.{/n} "No. I did not think you did. You looked at it on my wall the way a dog looks at a bone it has stolen off a table: very pleased, and not at all sure it was allowed." {n}She puts the knife down on the floor between you.{/n} "Keep not knowing, Commander. I would rather you did not know what to do with it than that you knew exactly."''',
         c("Continue", "sleep")),
     yn("true_war", '''"Ah." {n}She lets her head go back against the wall.{/n} "Yes. That is true. I can hear that it is true." {n}She puts the knife down on the floor between you.{/n} "I knew who I was on the day Drezen fell. I was the woman on the gate. Then I was nobody, on a hook, for longer than you have been alive. The war ended for me and I did not have anybody to be. I am still looking." {n}A pause.{/n} "It is not so bad, looking. It is only slow."''',
         c("Continue", "sleep")),
-    nar("sleep", '''{n}Neither of you says anything after that. The sentry's boots go past on the wall above, and past again. Somewhere before the first bell her head comes down onto your shoulder, heavily, all at once, the way a soldier's does in a wagon after three days without sleep, and her breathing slows, and she is gone.{/n}
+    nar("sleep", '''{n}Neither of you says anything after that. The sentry's boots go past on the wall above, and past again. Somewhere in the long afternoon her head comes down onto your shoulder, heavily, all at once, the way a soldier's does in a wagon after three days without sleep, and her breathing slows, and she is gone.{/n}
 {n}Your arm is going numb. Your back is against wet stone. The knife is on the floor where she put it, within her reach and not yours.{/n}''',
         c("[Stay where you are until she wakes.]", "stayed"),
         c("[Ease her down onto the camp bed and go.]", "went")),
-    nar("stayed", '''{n}She wakes at the first gray light and does not move at once. Then she sits up, and looks at you, and at the knife on the floor, and at your arm, which you cannot feel.{/n}
-"You stayed." {n}She rubs her face.{/n} "On the floor. In the wet. With a knife in reach of a madwoman." {n}She picks up the knife, looks at it, and slides it into her boot.{/n} "I slept. Do you know how long it has been since I slept past the second bell? Seventy years, Commander. Get out before I say something I will have to take back."''',
+    nar("stayed", '''{n}She wakes when the evening bell goes and does not move at once. Then she sits up, and looks at you, and at the knife on the floor, and at your arm, which you cannot feel.{/n}
+"You stayed." {n}She rubs her face.{/n} "On the floor. In the wet. With a knife in reach of a madwoman." {n}She picks up the knife, looks at it, and slides it into her boot.{/n} "I slept. With somebody in the room. Do you know how long it has been since I could do that? Seventy years, Commander. Get out before I say something I will have to take back."''',
         c("[Get out, eventually.]", flags=(B_NIGHT, NIGHT_STAYED))),
     nar("went", '''{n}She does not wake when you lift her. She is lighter than she looks, all hard muscle and bone, and she mutters something as you lay her down that might be a name, or a curse, or an order to a man long dead.{/n}
-{n}In the morning there is a note under your door in the square old hand: "I woke in my bed and did not know how I got there. That has not happened to me since I was a child. Do not do it again without asking. Y." And under it, in smaller letters, pressed so hard the pen has torn the paper: "Thank you."{/n}''',
+{n}The next morning there is a note under your door in the square old hand: "I woke in my bed and did not know how I got there. That has not happened to me since I was a child. Do not do it again without asking. Y." And under it, in smaller letters, pressed so hard the pen has torn the paper: "Thank you."{/n}''',
         c("[Keep the note.]", flags=(B_NIGHT,))),
 ], requires=("trickster.ever", RETURNED, B_WALLS), **BEAT)
 
-visit(Y + "beat.church", "The Church's sword", [
-    nar("start", '''{n}The chaplain comes to your rooms in the middle of the morning with two acolytes and a letter bearing the sunburst seal of the Church of Iomedae in Nerosyan. He is a tall, grave, courteous man with ink on his fingers, and he is very sorry to trouble the Commander with a small matter of church property.{/n}''',
+hub(Y + "beat.church", "The Church's sword", '"Who are your visitors?"', [
+    nar("start", '''{n}A chaplain has found her before you did: a tall, grave, courteous man with ink on his fingers, two acolytes, and a letter bearing the sunburst seal of the Church of Iomedae in Nerosyan. She is standing with her back to the wall and her arms folded, letting him talk. When he sees you he turns with visible relief. He is very sorry to trouble the Commander with a small matter of church property.{/n}''',
         c("Continue", "carries", requires=(CARRIES,)),
         c("Continue", "judges", forbids=(CARRIES,))),
-    nar("carries", '''"The sword Radiance," {n}he says,{/n} "is a relic of the Church. It was held in trust in the Tower of Estrod, as the Commander knows, and lost when Kenabres burned, and recovered by the Commander, for which we are all grateful." {n}He clears his throat.{/n} "It is now, we understand, being carried on the walls of this city by a woman of great holiness and uncertain standing, who was for seventy years in the power of a demon, and who has not yet been examined by the Church. The Church asks, with all respect, that the relic be returned to a reliquary until the examination is complete."''',
+    nar("carries", '''"The sword Radiance," {n}he says,{/n} "is a relic of the Church. It was held in trust in the Tower of Estrod, as the Commander knows, and lost when Kenabres burned, and recovered by the Commander, for which we are all grateful." {n}He clears his throat.{/n} "It is now being carried on the walls of this city by the lady here, a woman of great holiness and, forgive me, my lady, uncertain standing, who was for seventy years in the power of a demon, and who has not yet been examined by the Church. The Church asks, with all respect, that the relic be returned to a reliquary until the examination is complete."''',
         c("Continue", "choose")),
-    nar("judges", '''"The sword Radiance," {n}he says,{/n} "is a relic of the Church. It was held in trust in the Tower of Estrod, as the Commander knows, and lost when Kenabres burned, and recovered by the Commander, for which we are all grateful." {n}He clears his throat.{/n} "We understand the Commander has sworn an oath upon it, to a woman of great holiness and uncertain standing, who was for seventy years in the power of a demon, and who has not yet been examined by the Church. An oath on a relic, sworn to an unexamined witness, is irregular. The Church asks, with all respect, that the oath be reviewed, and the relic lodged in a reliquary until it is."''',
+    nar("judges", '''"The sword Radiance," {n}he says,{/n} "is a relic of the Church. It was held in trust in the Tower of Estrod, as the Commander knows, and lost when Kenabres burned, and recovered by the Commander, for which we are all grateful." {n}He clears his throat.{/n} "We understand the Commander has sworn an oath upon it, to the lady here, a woman of great holiness and, forgive me, my lady, uncertain standing, who was for seventy years in the power of a demon, and who has not yet been examined by the Church. An oath on a relic, sworn to an unexamined witness, is irregular. The Church asks, with all respect, that the oath be reviewed, and the relic lodged in a reliquary until it is."''',
         c("Continue", "choose")),
-    nar("choose", '''{n}He waits. The acolytes wait. Out of the window, very small on the broken parapet of the east gate, a gray head is turned toward the citadel, as if she had seen the Church's seal go in at your door and has a fair idea what it is for.{/n}''',
+    nar("choose", '''{n}He waits. The acolytes wait. Yaniel waits too, with her arms folded, and she is not looking at the chaplain. She is looking at you.{/n}''',
         c('[Intimidate] "She was examined by Minagho every day of her captivity. The sword stays where it is. Tell Nerosyan the Commander said so."', "defy"),
-        c('"Take it up with her. She\'s on the east wall. I\'d bring the acolytes."', "sent"),
+        c('"Why ask me? Ask her."', "sent"),
         c('"The crusade will pay for a new reliquary, and the sword stays out of it. Will that do?"', "bought",
           crusade=("Favors", -50))),
-    nar("defy", '''{n}The chaplain goes quite pale, and then quite red, and bows, and says that he will tell Nerosyan exactly that. He does not say it with any pleasure. The acolytes follow him out as if the floor were hot.{/n}
-{n}That evening there is a note under your door in the square old hand. It says: "I saw the seal go in and the chaplain come out the color of a boiled beet. I am told the Commander raised {mf|his|her} voice. Nobody has stood in front of me since the day the city fell. I did not like it. Do it again. Y."{/n}''',
-        c("[Keep the note.]", flags=(B_CHURCH, CHURCH_DEFIED))),
-    nar("sent", '''{n}The chaplain hesitates, and looks at the window, and at the small gray figure on the wall, and then gathers his acolytes and goes to do his duty, which you have to respect.{/n}
-{n}What happens on the east wall you hear about only from the sentries, in several versions. In all of them the chaplain climbs the gate tower stair and makes his request, very courteously, and the paladin hears him out, very courteously, and then tells him the name of the priest who heard her first confession, and the year, and what that priest said to her about relics and the hands that hold them, and asks whether the Church has changed its mind since. In most versions the chaplain laughs. In one he kneels. He comes down without the sword and writes to Nerosyan that evening, and nobody ever sees what he wrote.{/n}''',
+    nar("defy", '''{n}The chaplain goes quite pale, and then quite red, and bows, and says that he will tell Nerosyan exactly that. He does not say it with any pleasure. The acolytes follow him away down the street as if the stones were hot.{/n}
+{n}Yaniel watches them go. When she turns back to you her face is doing something complicated.{/n} "The color of a boiled beet," {n}she says.{/n} "Nobody has stood in front of me since the day the city fell. I did not like it." {n}A pause.{/n} "Do it again."''',
+        c("[Leave her to her watch.]", flags=(B_CHURCH, CHURCH_DEFIED))),
+    nar("sent", '''{n}The chaplain hesitates, and looks at her, and at you, and then turns to her and makes his request again, very courteously, to her face, which you have to respect.{/n}
+{n}She hears him out, very courteously. Then she tells him the name of the priest who heard her first confession, and the year, and what that priest said to her about relics and the hands that hold them, and asks whether the Church has changed its mind since. The chaplain is quiet for a while. Then he laughs, a little helplessly, and bows to her, not to you, and goes away to write to Nerosyan. Nobody ever sees what he wrote.{/n}''',
         c("Continue", "sent2")),
-    yn("sent2", '''{n}She finds you on the citadel stair the next day.{/n} "You sent him to me," {n}she says.{/n} "You could have thrown him out. You could have given him the sword. You sent him up my stair to ask me himself." {n}She considers you.{/n} "Nobody has let me answer for myself in a very long time, Commander. I had forgotten what it was like. It was like a cold bath."''',
-        c("[Let her go back up.]", flags=(B_CHURCH, CHURCH_SENT))),
-    nar("bought", '''{n}The chaplain blinks. A new reliquary, he says slowly, is a very generous thought. It would of course need to be worthy of the relic it was not going to contain. He will write to Nerosyan. He bows himself out with the air of a man who has just been paid to lose an argument and is trying to work out whether he minds.{/n}
-{n}That evening a note comes under your door in the square old hand: "You bought the Church off with an empty box. I have known quartermasters with less nerve. I hope the box is very beautiful. Y."{/n}''',
-        c("[Keep the note.]", flags=(B_CHURCH, CHURCH_DEFIED))),
+    yn("sent2", '''{n}When he has gone she looks at you sidelong.{/n} "You sent him to me," {n}she says.{/n} "You could have thrown him out. You could have given him the sword. You made him ask me himself." {n}She considers you.{/n} "Nobody has let me answer for myself in a very long time, Commander. I had forgotten what it was like. It was like a cold bath."''',
+        c("[Leave her to her watch.]", flags=(B_CHURCH, CHURCH_SENT))),
+    nar("bought", '''{n}The chaplain blinks. A new reliquary, he says slowly, is a very generous thought. It would of course need to be worthy of the relic it was not going to contain. He will write to Nerosyan. He bows himself away with the air of a man who has just been paid to lose an argument and is trying to work out whether he minds.{/n}
+{n}Yaniel watches him go.{/n} "You bought the Church off with an empty box," {n}she says.{/n} "I have known quartermasters with less nerve. I hope the box is very beautiful."''',
+        c("[Leave her to her watch.]", flags=(B_CHURCH, CHURCH_DEFIED))),
 ], requires=("trickster.ever", RETURNED, B_STATUE), **BEAT)
 
 hub(Y + "beat.refugee", "The last cart", '"Who is your friend?"', [
@@ -400,19 +433,20 @@ hub(Y + "beat.refugee", "The last cart", '"Who is your friend?"', [
         c("[Leave her there.]", flags=(B_REFUGEE,))),
 ], requires=("trickster.ever", RETURNED, B_WALLS), **BEAT)
 
-visit(Y + "beat.raid", "Over the wall", [
-    nar("start", '''{n}The alarm goes on the east wall a little after the third bell: the tower horn, three short blasts, the call for "over the wall". By the time you reach the gate tower stair with a sword in your hand the fighting has already moved up onto the parapet. Something came up out of the ash in the dark, a dozen gaunt gray shapes with too many joints, the kind of Wound-spawn that climbs, and they came up at the one place where the old stones are broken.{/n}''',
+hub(Y + "beat.raid", "Over the wall", '"Mind if I stand the watch with you tonight?"', [
+    nar("start", '''{n}She looks at your hip.{/n} "Bring a sword," {n}she says.{/n}
+{n}A little after the third bell, halfway along the east wall with her, you hear the tower horn go: three short blasts, the call for "over the wall". Something has come up out of the ash in the dark, a dozen gaunt gray shapes with too many joints, the kind of Wound-spawn that climbs, and they have come up at the one place where the old stones are broken.{/n}''',
         c("Continue", "carries", requires=(CARRIES, HOLY)),
         c("Continue", "carries_plain", requires=(CARRIES,), forbids=(HOLY,)),
         c("Continue", "judges", requires=(HELD,), forbids=(CARRIES,)),
         c("Continue", "judges_empty", forbids=(CARRIES, HELD))),
-    nar("carries_plain", '''{n}She is in the middle of them. You see her before anything else, because she is the only thing on the wall that is not moving backward: a gray head in a borrowed cloak, Radiance going up and down in her hand like a flail on a threshing floor, plain steel, no light at all. She does not shout. She fights the way she talks, economically, without wasting anything, and every stroke finishes something.{/n}''',
+    nar("carries_plain", '''{n}She is into them before you have your sword clear, and she is the only thing on the wall that is not moving backward: a gray head in a borrowed cloak, Radiance going up and down in her hand like a flail on a threshing floor, plain steel, no light at all. She does not shout. She fights the way she talks, economically, without wasting anything, and every stroke finishes something.{/n}''',
         c("Continue", "fight")),
-    nar("judges_empty", '''{n}She is in the middle of them with a borrowed spear, and they are all over her. She is holding the broken place in the parapet alone, the way she held the gate, and she sees you come up the stair with a plain sword from the rack in your hand, and her eyes go once to your hip, where something else ought to be, and then she shouts, "Left, Commander! Left!"{/n}''',
+    nar("judges_empty", '''{n}She is into them with a borrowed spear, and they are all over her. She is holding the broken place in the parapet alone, the way she held the gate, and as you come up beside her with a plain sword in your hand her eyes go once to your hip, where something else ought to be, and then she shouts, "Left, Commander! Left!"{/n}''',
         c("Continue", "fight")),
-    nar("carries", '''{n}She is in the middle of them. You see her before anything else, because Radiance is burning in her hand like a torch, and the gray things are going back from the light the way grease goes back from a hot pan. She does not shout. She fights the way she talks, economically, without wasting anything, and every stroke finishes something.{/n}''',
+    nar("carries", '''{n}She is into them before you have your sword clear, and Radiance is burning in her hand like a torch, and the gray things are going back from the light the way grease goes back from a hot pan. She does not shout. She fights the way she talks, economically, without wasting anything, and every stroke finishes something.{/n}''',
         c("Continue", "fight")),
-    nar("judges", '''{n}She is in the middle of them with a borrowed spear, and they are all over her, because she has no light and they have nothing to fear from a spear. She is holding the broken place in the parapet alone, the way she held the gate, and she sees you come up the stair with Radiance in your hand, and shouts, "Left, Commander! Light them up!"{/n}''',
+    nar("judges", '''{n}She is in the middle of them with a borrowed spear, and they are all over her, because she has no light and they have nothing to fear from a spear. She is holding the broken place in the parapet alone, the way she held the gate, and as you draw Radiance she shouts, "Left, Commander! Light them up!"{/n}''',
         c("Continue", "fight")),
     nar("fight", '''{n}It lasts a quarter of an hour and feels like a night. You fight back to back with her at the broken place, because it is the only place on that wall where two people can stand with a stone at each shoulder. Her back is against yours. You can feel her breathing through both your shirts, fast and steady, and every time she moves you move, as if you had drilled it for years.{/n}
 {n}When the last of them goes over the parapet into the dark the sentries start cheering, raggedly, and she turns round, streaked with gray ichor to the elbows, and looks at you.{/n}''',
@@ -449,43 +483,6 @@ hub(Y + "beat.prayer", "Nothing to ask", '"Where are you going?"', [
         c("[Go.]", flags=(B_PRAYER,))),
 ], requires=("trickster.ever", RETURNED, B_STATUE), **BEAT)
 
-
-
-# --- Chapter 4 (T): a husk on a block in Alushinyrra (a real act, done with what her cuff taught the Commander) ----------------
-
-visit(Y + "ch4.block", "Another collector's item", [
-    nar("start", '''{n}The Fleshmarkets of the Middle City sell by the pound in the morning and by the piece in the afternoon. You are crossing it in the afternoon, on other business, when a lot on the block stops you.{/n}
-{n}It is a woman, or it was: gray, bone-thin, hanging from a hook by one wrist with her toes just brushing the boards, the way a side of meat hangs in a butcher's window. Her face does not quite fit her; it sits a little wrong, like a borrowed coat. On the wrist that holds her up is a manacle you would know in the dark: crude husk-iron, two fingers thick, the pin a lump of soft metal hammered flat.{/n}''',
-        c("Continue", "crier")),
-    nar("crier", '''{n}The crier is a tiefling with a painted smile. "Collector's piece!" he is calling, to a crowd that is mostly not listening. "Genuine Fane stock, from the mistress's own racks, broken up this season! A face that can be any face you like, my lords! A shield that walks! Very obedient; the mistress trained it herself!"{/n}
-{n}The husk's eyes are open. They move to you, and to your wrist, and stay there.{/n}''',
-        c("Continue", "wrist_worn", requires=(CUFF_WORN,)),
-        c("Continue", "choose", forbids=(CUFF_WORN,))),
-    nar("wrist_worn", '''{n}Your sleeve has slid back. The iron on your own wrist, the one you closed there at night in this same city, is in plain view: the same crude metal, the same flattened pin, the same sheared link. The husk on the block is staring at it as if it were a word in a language she had forgotten she knew.{/n}''',
-        c("Continue", "choose")),
-    nar("choose", '''{n}The crier sees you looking and his smile widens.{/n} "Ah! A {mf|gentleman|lady} of discernment! Fifty in gold, my lord, or a crusader's note of hand; we are very modern here. Cheap at the price. The mistress's own work!"''',
-        c("[Pay him with a note on the crusade's war chest, and have her cut down.]", "bought", crusade=("Finances", -50)),
-        c("[Thievery] [Step up to inspect the lot, and work the pin while the crier talks.]",
-          check=dict(Skill="SkillThievery", DC=18, Success="picked", Failure="fumbled", CommanderOnly=True)),
-        c("[Walk on. You have a war to win.]", "left")),
-    nar("bought", '''{n}He reads the note twice, holds it up to the light, and has his boy cut her down. She drops onto the boards like a sack. When you kneel beside her she does not flinch, and she does not look at your face; she looks at the iron on her wrist, and then at you, as if waiting to be told what she is for now.{/n}
-{n}You work the pin out yourself. It takes three twists. You know exactly how, now.{/n}
-"Go," {n}you tell her.{/n} {n}She looks at you for a while longer, and then she goes, not quickly, into the crowd, with her bare wrist held against her chest like something newly born. You keep the iron. You do not quite know why.{/n}''',
-        c("[Put it in the pack with the other.]", flags=(HUSK_BOUGHT, Y + "ch4_block_seen"))),
-    nar("picked", '''{n}You step up onto the block to look at her teeth, as a buyer does, and while the crier is explaining to you at length how very fine they are, your fingers find the pin behind her wrist. Three twists. You know exactly how, now. The cuff opens with a sound like a knuckle cracking, and she drops.{/n}
-{n}The crier turns round at the thump, and his painted smile slides, and by then she is off the back of the block and into the crowd of the Middle City, running on legs that have not run in years, and you are shouting "Thief! Stop her!" as loudly as anybody, and pointing the wrong way.{/n}''',
-        c("Continue", "picked2")),
-    nar("picked2", '''{n}Nobody catches her. The crier tears at his hair. A demon in a litter laughs so hard at him it has to be carried away. You walk off the other side of the market with a second husk's iron in your pocket, still warm, and a feeling in your chest you do not have a word for.{/n}''',
-        c("[Put it in the pack with the other.]", flags=(HUSK_FREED, Y + "ch4_block_seen"))),
-    nar("fumbled", '''{n}Your fingers find the pin behind her wrist, but the crier is sharper than he looks. He catches your wrist in a grip like a trap, and his painted smile does not move at all.{/n} "Inspection is free, my lord. Liberation is fifty."
-{n}Behind him two hulking things with too many teeth have come to the edge of the block. You could fight them. You would win. The whole market would see the Commander of the crusade start a riot in the Fleshmarkets over a husk, and every trader in Alushinyrra would know your face by nightfall.{/n}''',
-        c("[Pay him with a note on the crusade's war chest.]", "bought", crusade=("Finances", -50)),
-        c("[Walk away.]", "left")),
-    nar("left", '''{n}You walk on. The crier's voice follows you across the market, calling the lot again, lower now: forty-five, genuine Fane stock, the mistress's own work.{/n}
-{n}That night, when you take the pack off, the iron at the bottom of it is heavier than it was in the morning. It is not, of course. It is the same iron. You lie awake a long time anyway.{/n}''',
-        c("[Try to sleep.]", flags=(HUSK_LEFT, Y + "ch4_block_seen"))),
-], requires=("trickster.ever", SWAPPED, CH4_SEEN), forbids=(Y + "ch4_block_seen",), delay=24, chapters=(4,), areas=(),
-    kind="memory")
 
 
 # --- Chapter 5 (T): after the niche, before the war ends ---------------------------------------------------------------------

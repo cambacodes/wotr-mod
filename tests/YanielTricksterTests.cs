@@ -166,14 +166,20 @@ internal static class YanielTricksterTests
         var presence = story.Presences["yaniel.presence"];
         check(presence.Unit == Unit && presence.Area == Drezen && presence.Mode == "spawn-copy" && presence.Dialog == "hub"
               && presence.At?.Locator == "0e8a0488-bd46-4115-be7a-6674b9358a71" && presence.At?.NearUnit == null
-              && presence.MinChapter == 5 && presence.MaxChapter == 5 && presence.Requires.Contains(Returned)
-              && presence.Forbids.Contains(Closed) && presence.Forbids.Contains(LeftFree),
-            "Her presence is not the spawn-copy at her own Drezen mark (Chapter 5, after she came to stay).");
-        var tradeRoom = S(P + "commit.trade_room");
+              && presence.MinChapter == 5 && presence.MaxChapter == 5 && presence.Requires.Contains(Freed) && !presence.Requires.Contains(Returned)
+              && presence.Forbids.Contains(Closed) && presence.Forbids.Contains(LeftFree) && presence.Forbids.Contains(Killed),
+            "Her presence is not the spawn-copy at her own Drezen mark (Chapter 5, for any woman freed in the Fane, before her arrival scene).");
         check(!Rules.IsRemote(trade) && trade.ContactUnit == Unit && trade.InteractionHub == "yaniel.presence"
-              && Rules.IsRemote(tradeRoom) && tradeRoom.Requires.Contains("yaniel.presence.failed")
-              && tradeRoom.Forbids.Contains(trade.Id) && trade.Forbids.Contains(tradeRoom.Id),
-            "R2-3: the commit is not in person on her presence, with the room twin only when the presence fails.");
+              && !story.Scenes.Any(s => s.Relationship == "yaniel" && s.Requires.Contains("yaniel.presence.failed")),
+            "R2-3: the commit is not in person on her presence (her own Locator is the terminal anchor; no letter twin).");
+        // Ledger 05 §4.2 (worst branch, every remote scene counted, exclusive twins included): Chapter 3 at most 2 letters,
+        // Chapter 4 only the Owner-Memory whitelist page, Chapter 5 one letter (tier A), Chapter 6 none.
+        int Remote(int chapter, Func<Scene, bool>? extra = null) => story.Scenes.Count(s => s.Relationship == "yaniel" && Rules.IsRemote(s)
+            && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && s.MinChapter <= chapter && s.MaxChapter >= chapter
+            && (s.Chapters == null || s.Chapters.Length == 0 || s.Chapters.Contains(chapter)) && (extra == null || extra(s)));
+        check(Remote(3) <= 2 && Remote(4) == Remote(4, s => s.Owner == "Memory") && Remote(4) <= 1 && Remote(5) <= 1 && Remote(6) == 0
+              && Remote(5, s => s.Id == P + "verdict.letter") == 1,
+            "Ledger 05 §4.2: Yaniel's rest delivery exceeds her caps (Ch3 " + Remote(3) + ", Ch4 " + Remote(4) + ", Ch5 " + Remote(5) + ", Ch6 " + Remote(6) + ").");
         check(!own.Any(s => s.Nodes.Any(n => n.Choices.Any(c => c.Set.Any(f => f.StartsWith("trickster.wmt.use.", StringComparison.Ordinal))))),
             "Yaniel's device spends a Word Made True.");
         check(own.Concat(reactions).Concat(pages).All(s => s.Requires.Contains("trickster") || s.Requires.Contains("trickster.ever")),
@@ -248,7 +254,8 @@ internal static class YanielTricksterTests
               && Through(wall, post, "late_rift", 0).Any() && !Paths(wall, post).Any(o => o.path.Contains(("late_iz", 0))),
             "Trk_Yaniel_LateWall: the late oath does not name Iz before Iz and the Threshold after it.");
         var refusedFane = Later(story, Observe(story, World(story, 5, "trickster", "trickster.ever", "yaniel.freed", Refused, "yaniel.radiance_plus1"), "irabeth.chapter_five"), 24);
-        check(Through(wall, refusedFane, "start", 0).Any() && Avail(wall, refusedFane) && wall.TricksterDevice && Rules.IsRemote(wall) && wall.Kind == "visit",
+        check(Through(wall, refusedFane, "start", 0).Any() && Avail(wall, refusedFane) && wall.TricksterDevice && !Rules.IsRemote(wall)
+              && wall.InteractionHub == "yaniel.presence" && wall.ContactUnit == Unit,
             "Trk_Yaniel_LateWall: a Commander who gave the cuff back at the Fane gets no second chance on the walls.");
         var struck = Later(story, Observe(story, World(story, 5, "trickster", "trickster.ever", "yaniel.freed", "yaniel.struck_test", "yaniel.radiance_plus1"), "irabeth.chapter_five"), 24);
         var sentOnly = Later(story, Observe(story, World(story, 5, "trickster", "trickster.ever", "yaniel.freed", "yaniel.radiance_plus1"), "irabeth.chapter_five"), 24);
@@ -412,12 +419,19 @@ internal static class YanielTricksterTests
         var sosiel = S(P + "react.sosiel_iron");
         check(reactions.Length == 3 && reactions.Where(s => s.Owner == "Seelah").All(s => s.AnswerLists.SequenceEqual(new[] { "417fa384f3250634bb71859fbc913453" }))
               && sosiel.AnswerLists.SequenceEqual(new[] { "129b55b8b5d50974f84f7c607d894fd0" }) && sosiel.Forbids.Contains("sosiel.dead") && sosiel.Forbids.Contains("sosiel.kicked_out")
-              && Avail(sosiel, World(story, 3, "trickster.ever", Swapped, "yaniel.sosiel_promised")) && !Avail(sosiel, World(story, 3, "trickster.ever", Swapped)) && !Avail(sosiel, World(story, 3, "trickster.ever", Swapped, "yaniel.sosiel_promised", "sosiel.dead")) && !Avail(fane, World(story, 5, "trickster.ever", Swapped, "yaniel.seelah_sister", Late))
+              && Avail(sosiel, World(story, 5, "trickster.ever", Swapped, Returned, "yaniel.sosiel_promised")) && !Avail(sosiel, World(story, 5, "trickster.ever", Swapped, Returned))
+              && !Avail(sosiel, World(story, 5, "trickster.ever", Swapped, Returned, "yaniel.sosiel_promised", "sosiel.dead")) && !Avail(fane, World(story, 5, "trickster.ever", Swapped, "yaniel.seelah_sister", Late))
               && Avail(after, World(story, 5, "trickster.ever", Niche)) && !Avail(after, World(story, 5, "trickster.ever", Niche, "seelah_dead"))
               && Avail(after, World(story, 5, "trickster.ever", Niche, "seelah_dead", "seelah.trickster.returned"))
               && Ch(after, "start", 0).Set.Contains(P + "seelah_blessed")
               && Avail(fane, World(story, 3, "trickster.ever", Swapped, "yaniel.seelah_sister")) && !Avail(fane, World(story, 3, "trickster.ever", Swapped)),
             "Seelah's reactions are not guarded, or speak without her stake (the Fane, the niche).");
+        // Sosiel speaks of her on the east wall and of a week of drawing: never right after the Fane, never the day she arrives.
+        var promisedFane = Observe(story, Take(swap, World(story, 3, "trickster", "trickster.ever", "yaniel.fane_doubt", "yaniel.radiance_plus1"), "kept_back", 1, Swapped), "yaniel.sosiel_promised");
+        var promisedHome = Observe(story, arrived, "yaniel.sosiel_promised");
+        check(sosiel.MinChapter == 5 && sosiel.DelayHours >= 168 && !Avail(sosiel, promisedFane) && !Avail(sosiel, Later(story, promisedFane, 400))
+              && !Avail(sosiel, promisedHome) && !Avail(sosiel, Later(story, promisedHome, 167)) && Avail(sosiel, Later(story, promisedHome, 168)),
+            "Sosiel's reaction describes her on the east wall before she has come to stay, or before a week of it.");
 
         // Pages.
         var pg = pages.ToDictionary(s => s.Id.Substring(P.Length));
@@ -441,12 +455,16 @@ internal static class YanielTricksterTests
             "Last Call or the household treats an uncommitted Yaniel as a partner.");
 
         // Courtship: every beat reachable; each is a Drezen visit in Chapter 5, optional, before the commit.
-        var nightBeats = new[] { P + "beat.night", P + "beat.church", P + "beat.raid" };
         check(beats.Length == 14 && beats.All(s => s.Optional && s.Areas.SequenceEqual(new[] { Drezen }) && s.Chapters.SequenceEqual(new[] { 5 }) && s.Forbids.Contains(Committed))
-              && beats.Where(s => !nightBeats.Contains(s.Id)).All(s => !Rules.IsRemote(s) && s.ContactUnit == Unit && s.InteractionHub == "yaniel.presence")
-              && beats.Where(s => nightBeats.Contains(s.Id)).All(s => Rules.IsRemote(s) && s.Kind == "visit")
-              && story.Scenes.Count(s => s.Relationship == "yaniel" && Rules.IsRemote(s) && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && s.MinChapter <= 5 && s.MaxChapter >= 5) <= 13,
-            "Yaniel's courtship is not eleven visits on her presence and three night summonses, or Chapter 5 rest delivery exceeds thirteen (exclusive twins included).");
+              && own.Where(s => s.MinChapter == 5 && s.Id != P + "verdict.letter").All(s => !Rules.IsRemote(s) && s.ContactUnit == Unit && s.InteractionHub == "yaniel.presence"),
+            "Yaniel's Chapter 5 is not in person on her presence (every scene but the letter from Iz).");
+        // The night after the dream remembers where the Commander took her iron: the Fane, or her wall.
+        var night = S(P + "beat.night");
+        var nightFane = Later(story, World(story, 5, "trickster", "trickster.ever", Swapped, Carries, Returned, P + "beat.walls"), 24);
+        var nightWall = Later(story, World(story, 5, "trickster", "trickster.ever", Swapped, Carries, Late, Returned, P + "beat.walls"), 24);
+        check(Through(night, nightFane, "true_iron", 0).Any() && !Paths(night, nightFane).Any(o => o.path.Any(e => e.node == "true_iron_late"))
+              && Through(night, nightWall, "true_iron_late", 0).Any() && !Paths(night, nightWall).Any(o => o.path.Any(e => e.node == "true_iron")),
+            "The night's true thing remembers the Fane for an iron taken on the wall, or the wall for one taken in the Fane.");
         var reached = new HashSet<string>();
         foreach (var start in new[] { World(story, 5, "trickster", "trickster.ever", Swapped, Carries, P + "carries_holy", Returned, "yaniel.areelu_unmasked", "yaniel.fake_freed"),
                                       World(story, 5, "trickster", "trickster.ever", Swapped, Judges, Oath, Returned, "yaniel.radiance_plus1", "yaniel.areelu_unmasked") })
@@ -470,12 +488,13 @@ internal static class YanielTricksterTests
         var ch3 = S(P + "ch3.nerosyan");
         var ch4 = S(P + "ch4.shackle");
         check(Avail(ch3, Later(story, World(story, 3, "trickster.ever", Swapped, Carries), 72)) && ch3.Kind == "letter"
-              && Avail(ch3, Later(story, World(story, 3, "trickster.ever", Refused), 72))
-              && Avail(ch4, Later(story, World(story, 4, "trickster.ever", Swapped), 48)) && ch4.Kind == "memory"
+              && Avail(ch3, Later(story, World(story, 3, "trickster.ever", Refused), 72)) && ch3.Chapters.SequenceEqual(new[] { 3 })
+              && !Avail(ch3, Later(story, World(story, 4, "trickster.ever", Swapped, Carries), 72))
+              && Avail(ch4, Later(story, World(story, 4, "trickster.ever", Swapped), 48)) && ch4.Kind == "memory" && ch4.Owner == "Memory"
               && Take(ch4, Later(story, World(story, 4, "trickster.ever", Swapped), 48), "worn", 0, P + "cuff_worn").Has(P + "ch4_seen")
-              && Avail(S(P + "ch4.block"), Later(story, World(story, 4, "trickster.ever", Swapped, P + "ch4_seen"), 24))
-              && Ch(S(P + "ch4.block"), "choose", 1).Check?.Skill == "SkillThievery" && Ch(S(P + "ch4.block"), "choose", 0).Crusade?.Amount == -50,
-            "The Chapter 3 letter or the Chapter 4 memory does not arrive.");
+              && Through(ch4, Later(story, World(story, 4, "trickster.ever", Swapped), 48), "packed", 0).All(o => o.Has(P + "ch4_block_seen"))
+              && Ch(ch4, "offer", 1).Check?.Skill == "SkillThievery" && Ch(ch4, "offer", 0).Crusade?.Amount == -50,
+            "The Chapter 3 letter or the Chapter 4 memory (one Owner-Memory page, the iron and the block) does not arrive.");
         // After she looks at the wrist, the ending follows what the Commander did with the iron.
         var wrist = S(P + "after.wrist");
         var wristW = Later(story, World(story, 5, "trickster", "trickster.ever", Swapped, Carries, Returned, Verdict, Committed, Shackle, Niche, P + "cuff_worn", P + "after.watch_stood"), 24);
