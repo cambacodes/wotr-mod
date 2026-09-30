@@ -1,0 +1,1639 @@
+{
+ "_schema": {
+  "description": "Per-woman canon chapter availability for tools/pacing_lint.py (Writer/handoffs/13-PACING-PASS.md section 6). One entry per roster character in trickster-matrix.json; keys starting with '_' are metadata. Validated by pacing_lint.validate_availability.",
+  "entry": {
+   "character": "exact roster name from trickster-matrix.json (exactly one entry each)",
+   "batch": "pacing batch (13 section 7): PP1..PP10, or when-written (built pacing-complete under ROUTE-BRIEF-R)",
+   "friendship": "true for friendship-only routes (Ember, Aivu): pacing goals are trust, play and protection, never romance",
+   "routes": "Story.json relationships whose non-epilogue scenes are her beats: [{relationship, owners?}]; owners filters a shared relationship by scene Owner (tirabade). Must include the matrix relationship_id.",
+   "present": "chapter '1'..'6' -> 'ip' (in person) or 'remote' (letters only); a missing chapter means absent. The Prologue folds into '1'.",
+   "exceptions": "chapter -> 'none: <reason>'; coordinator-approved only; allowed only for present chapters; silences that chapter's REVIEW",
+   "evidence": "first_met plus one entry per present chapter, each citing a native GUID (cue, dialog, etude or unit) that pins her presence",
+   "verify": "true when any claim is unverified in game data",
+   "verify_chapters": "the present chapters whose claim is unverified (requires verify: true)",
+   "sources": "files and blueprint paths the entry was derived from",
+   "notes": "first meeting, departures, death or path conditions"
+  }
+ },
+ "_sources": [
+  "Writer/handoffs/13-PACING-PASS.md section 0 (census findings: zero-beat chapters, native romances, Ch4 rule) and section 7 (batches, roster disposition)",
+  "Writer/handoffs/trickster/<character>.md section 1 'Canon' (verified against blueprints.zip and enGB)",
+  "Writer/handoffs/roster-candidates.json 'chapters' fields (Nenio, Eritrice, Horzalah, Chadali, Kaylessa, Dorgelinda)",
+  "Writer/handoffs/trickster-matrix.json (roster source of truth; relationship_id per character)",
+  "blueprints.zip: World/Dialogs/c0 (Prologue), c1, c2_vs, c3, c4, c5, c6, Companions, NPC_Common; World/Etudes/Common/WrathOfTheRighteous (0Prologue, Chapter01..06); every GUID in evidence was checked to exist",
+  "Prologue: the 0Prologue etude cee461e88e5d62b4ebdfc1f4cecc13c5 (Kenabres, Caves_1, Labyrinth, Neathholm) starts Chapter01 df17ab913c348644b9bd3fe3f9781a84 on completion, and only Chapter01's SwitchChapter sets Player.Chapter to 1, so Prologue presence (including Neathholm) is filed under '1'"
+ ],
+ "_roster": [
+  {
+   "character": "Anevia",
+   "relationship": "anevia"
+  },
+  {
+   "character": "Irabeth",
+   "relationship": "irabeth"
+  },
+  {
+   "character": "Seelah",
+   "relationship": "seelah"
+  },
+  {
+   "character": "Konomi",
+   "relationship": "konomi"
+  },
+  {
+   "character": "Jerribeth",
+   "relationship": "jerribeth"
+  },
+  {
+   "character": "Kiana",
+   "relationship": "kiana"
+  },
+  {
+   "character": "Vellexia",
+   "relationship": "vellexia"
+  },
+  {
+   "character": "Arsinoe",
+   "relationship": "arsinoe"
+  },
+  {
+   "character": "Gesmerha",
+   "relationship": "gesmerha"
+  },
+  {
+   "character": "Minagho",
+   "relationship": "minagho_chivarro"
+  },
+  {
+   "character": "Chivarro",
+   "relationship": "minagho_chivarro"
+  },
+  {
+   "character": "Nocticula",
+   "relationship": "nocticula"
+  },
+  {
+   "character": "Nurah",
+   "relationship": "nurah"
+  },
+  {
+   "character": "Targona",
+   "relationship": "targona"
+  },
+  {
+   "character": "Terendelev",
+   "relationship": "terendelev"
+  },
+  {
+   "character": "Aranka",
+   "relationship": "aranka"
+  },
+  {
+   "character": "Arueshalae",
+   "relationship": "arueshalae"
+  },
+  {
+   "character": "Camellia",
+   "relationship": "camellia"
+  },
+  {
+   "character": "Wenduag",
+   "relationship": "wenduag"
+  },
+  {
+   "character": "Galfrey",
+   "relationship": "galfrey"
+  },
+  {
+   "character": "Soana",
+   "relationship": "soana"
+  },
+  {
+   "character": "Areelu Vorlesh",
+   "relationship": "areelu"
+  },
+  {
+   "character": "Ember",
+   "relationship": "ember"
+  },
+  {
+   "character": "Aivu",
+   "relationship": "aivu"
+  },
+  {
+   "character": "Jannah",
+   "relationship": "jannah"
+  },
+  {
+   "character": "Yaniel",
+   "relationship": "yaniel"
+  },
+  {
+   "character": "Delamere",
+   "relationship": "delamere"
+  },
+  {
+   "character": "Elyanka Camilary",
+   "relationship": "elyanka"
+  },
+  {
+   "character": "Herrax",
+   "relationship": "herrax"
+  },
+  {
+   "character": "Mielarah",
+   "relationship": "mielarah"
+  },
+  {
+   "character": "Shamira",
+   "relationship": "shamira"
+  },
+  {
+   "character": "Hepzamirah",
+   "relationship": "hepzamirah"
+  },
+  {
+   "character": "Iomedae",
+   "relationship": "iomedae"
+  },
+  {
+   "character": "Eliandra",
+   "relationship": "eliandra"
+  },
+  {
+   "character": "Devarra",
+   "relationship": "devarra"
+  },
+  {
+   "character": "Melazmera",
+   "relationship": "melazmera"
+  },
+  {
+   "character": "Nidalynn",
+   "relationship": "nidalynn"
+  },
+  {
+   "character": "Nenio",
+   "relationship": "nenio"
+  },
+  {
+   "character": "Eritrice",
+   "relationship": "eritrice"
+  },
+  {
+   "character": "Chadali",
+   "relationship": "chadali"
+  },
+  {
+   "character": "Horzalah",
+   "relationship": "horzalah"
+  },
+  {
+   "character": "Kaylessa",
+   "relationship": "kaylessa"
+  },
+  {
+   "character": "Dorgelinda Stranglehold",
+   "relationship": "dorgelinda"
+  }
+ ],
+ "anevia": {
+  "character": "Anevia",
+  "batch": "PP1",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "anevia"
+   },
+   {
+    "relationship": "tirabade",
+    "owners": [
+     "Anevia",
+     "Together"
+    ]
+   }
+  ],
+  "present": {
+   "1": "ip",
+   "2": "ip",
+   "3": "ip",
+   "4": "remote",
+   "5": "ip",
+   "6": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "ecc3bd721f629654b9e40779f55868bb World/Dialogs/c0/CavesUnderKenabres/MeetSeelahAnevia/Cue_0003: Prologue caves, pinned ('My ankle's killin' me')",
+   "1": "56979000b02c85347b07a2455e02325a World/Dialogs/c1/DefendersHeart/AneviaWarning/Cue_0001: Ch1 Defender's Heart, Anevia speaks (unit AneviaTirabade_DH)",
+   "2": "d4c012127c00846429999f20c68e3564 World/Dialogs/c2_vs/GargoyleAttack/Start_Anevia/Cue_0001: Ch2 warcamp gargoyle attack, Anevia speaks",
+   "3": "b5e867e13503c6f41bb1316705efb4a2 Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/AneviaTirabade_DrezenCapital: her Drezen capital unit (hub NPC_Common/Anevia/AnswersList_0003 33960c7f7af40cd43b7f801a76c87a0b)",
+   "4": "637a57423a82b044f888677c92f5d6cb World/Etudes/Common/WrathOfTheRighteous/Chapter04: party in the Abyss; she stays in Drezen (capital unit b5e867e13503c6f41bb1316705efb4a2), letter only",
+   "5": "0d4b3161a3d69ea48812d682fc0560c6 World/Dialogs/c5/DrezenMain_C5/Coronation/Cue_0027: Ch5 Drezen, Anevia speaks",
+   "6": "23d4609379c31fb4a9ff6fe89ef83adc World/Dialogs/c6/ThresholdExterior/IrabethAnevia_Threshold/Cue_0003: Threshold exterior, Anevia speaks"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "4"
+  ],
+  "sources": [
+   "handoffs/trickster/anevia.md \u00a71",
+   "handoffs/anevia.md",
+   "handoffs/13-PACING-PASS.md \u00a70,\u00a72",
+   "World/Dialogs/c0/CavesUnderKenabres/MeetSeelahAnevia",
+   "World/Dialogs/c5/DrezenMain_C5/Coronation"
+  ],
+  "notes": "Met in the Prologue caves (folded into Ch1). If Irabeth is dead, Ch5 Coronation Cue_0421 (575f7925bbfe4e047bcd666ca27a8c80) makes her leave the crusade (AneviaGone 09f46662bcd14a03a0874267e16d6e6f), which removes her from Ch5-6 on that branch."
+ },
+ "irabeth": {
+  "character": "Irabeth",
+  "batch": "PP1",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "irabeth"
+   },
+   {
+    "relationship": "tirabade",
+    "owners": [
+     "Irabeth",
+     "Together"
+    ]
+   }
+  ],
+  "present": {
+   "1": "ip",
+   "2": "ip",
+   "3": "ip",
+   "4": "remote",
+   "5": "ip",
+   "6": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "79e42b8c35cd3ba4783a92e305b40bf1 World/Dialogs/c1/GreyGarrison_ChapterStart/Irabeth_FirstMeet/Cue_0001: Ch1 Grey Garrison first meeting",
+   "1": "4e6c988e81cd0da4a9b3d64408dee31f World/Dialogs/c1/DefendersHeart/AfterAttackIrabeth/Cue_0002: Ch1 Defender's Heart after the attack",
+   "2": "b0bfd48875993d74b8aea8cc08eb9313 World/Dialogs/c2_vs/LostChapel/IrabethRegill/Cue_0020: Ch2 Lost Chapel, on the hook",
+   "3": "2302cb7cdc2037a4396bfc758e85424f World/Dialogs/c3/Drezen_C3/Irabeth_C3_Intro/Cue_0124: Ch3 Drezen intro",
+   "4": "280d4712dceb37f4a88e98f1f4c6e64f Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/IrabethTirabade_DrezenCapital: Drezen capital unit; party in the Abyss during Ch4, letter only",
+   "5": "f7d10f44770ad3247bd65f1e426a8b3f World/Dialogs/c5/Iz/IrabethDies/Cue_0001: Ch5 Iz (also KTC_AneviaStart/Cue_0002 c9179da0909fcdb4d94508e189143205 in Drezen)",
+   "6": "fba43765b99d2b249a2da3ff34e5d3ed World/Dialogs/c6/ThresholdExterior/IrabethAnevia_Threshold/Cue_0001: Threshold exterior (unit IrabethTirabade_Iz), only if she survived Iz"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "4"
+  ],
+  "sources": [
+   "handoffs/trickster/irabeth.md \u00a71",
+   "handoffs/irabeth.md",
+   "handoffs/13-PACING-PASS.md \u00a70,\u00a72",
+   "World/Dialogs/c5/Iz/IrabethDies",
+   "World/Dialogs/c6/ThresholdExterior/IrabethAnevia_Threshold"
+  ],
+  "notes": "Met at the Grey Garrison in Ch1. She can die at Iz in Ch5 (IrabethSacrificedHerselfSavingGalfrey 518d91f94fb3a504a91571b7e75c68fc, or killed by the player), which removes her from Ch6."
+ },
+ "seelah": {
+  "character": "Seelah",
+  "batch": "PP1",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "seelah"
+   }
+  ],
+  "present": {
+   "1": "ip",
+   "2": "ip",
+   "3": "ip",
+   "4": "ip",
+   "5": "ip",
+   "6": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "deb9827da749a5246b0263578bd68560 World/Dialogs/c0/CavesUnderKenabres/MeetSeelahAnevia/Cue_0013: Prologue caves, joins the party",
+   "1": "e3f8950b97f014e4e95fac95c1be4b78 World/Dialogs/Companions/CompanionQuests/Seelah/Q1_LittleTroubles/Ch1_SeelahMeetsFriends/Cue_0058: Ch1 companion quest in Kenabres",
+   "2": "d68df6273bb2f0844831361e9d3cde4b World/Dialogs/c2_vs/Warcamp_IntroTour/Seelah/Cue_0002: Ch2 warcamp tour",
+   "3": "b82a10548fa150940833f570cfb5e0c1 World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/KTC_And_Timeline/SeelahCompanion_CapitalEvents/SeelahTimer_BeforeQ2_Wedding: her Q2 wedding runs in Ch3 Drezen",
+   "4": "1b4219f3418013948b982ab515f9a554 World/Dialogs/c4/BattleBliss/Zeklex_dialogue/Cue_0225: Ch4 Abyss, Seelah speaks in party",
+   "5": "6654b72a1869fc7479ba6c7081ff7baf World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/Ch5_KTC_and_Timeline/CH5_SeelahCompanion_CapitalEvents/SeelahTimer_BeforeQ3_JewelerHideout: her Q3 runs in Ch5",
+   "6": "597fee343fd19c7479b184008b317abb World/Dialogs/c6/ThresholdExterior/CompanionFarewells/SeelahFarewell/Cue_0001: Threshold farewell"
+  },
+  "verify": false,
+  "verify_chapters": [],
+  "sources": [
+   "handoffs/trickster/seelah.md \u00a71",
+   "handoffs/seelah.md",
+   "handoffs/13-PACING-PASS.md \u00a70,\u00a72",
+   "World/Dialogs/Companions/CompanionQuests/Seelah"
+  ],
+  "notes": "Companion from the Prologue caves through Ch6. She is absent after dismissal (SeelahNotInParty_KickedOut c33407f132b192643a438bd33797efa1) or final death (SeelahNotInParty_Dead 26ae0f50130942b4bb8dfe658e77b1c6)."
+ },
+ "konomi": {
+  "character": "Konomi",
+  "batch": "PP5",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "konomi"
+   }
+  ],
+  "present": {
+   "3": "ip",
+   "4": "remote",
+   "5": "ip",
+   "6": "remote"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "9ee914535aa169240b3a840465a43d55 World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0008: Ch3 Drezen, the kitsune attache introduces herself",
+   "3": "e14eb0fa8b4b4532ab8bbbaaabcf85d8 World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/Diplomacy_02_AskedAboutDiplomacy(A86): Ch3 capital diplomacy officer",
+   "4": "ca2d58c5c65723945857e04fb85d30ce Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/RankUpOfficer_Diplomacy: Drezen-based officer; party in the Abyss, letter only",
+   "5": "1e82759a8e6c45c3a775a7467efec287 World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/Ch5_Diplomacy_AboutNerosyan: Ch5 diplomacy content (dismissal Diplomacy_6/Cue_0075 384cd66452a61324cb484c661cd9573d)",
+   "6": "ca2d58c5c65723945857e04fb85d30ce Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/RankUpOfficer_Diplomacy: stays in Drezen if kept; Threshold is away from Drezen"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "4",
+   "6"
+  ],
+  "sources": [
+   "handoffs/trickster/konomi.md \u00a71",
+   "handoffs/konomi.md",
+   "World/Crusade/RankUps/Diplomacy/Diplomacy_2..Diplomacy_6",
+   "handoffs/13-PACING-PASS.md \u00a70,\u00a72"
+  ],
+  "notes": "Met at the first diplomacy rank-up in Ch3 Drezen. The Ch5 insult in Diplomacy_6 (Answer_0070) sends her to Nerosyan (Cue_0075), which closes the rest of Ch5 and Ch6."
+ },
+ "jerribeth": {
+  "character": "Jerribeth",
+  "batch": "PP4",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "jerribeth"
+   }
+  ],
+  "present": {
+   "3": "ip",
+   "4": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "8a632a5249b3c2541a1381111cae9e37 World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0001: Ch3 greeting in the Commander's head (the Wintersun reveal can come first)",
+   "3": "063d159af56b4c54292e6e2eaca8ca08 World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0008: Ch3 Wintersun reveal (unit Jerribeth_Wintersun fc8d7d07d716bee4499c9d17f6c43196)",
+   "4": "edeeb17ba4f3d124890d22bdd2d8901d World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0011: Ch4 Alushinyrra, the manor where she has taken refuge"
+  },
+  "verify": false,
+  "verify_chapters": [],
+  "sources": [
+   "handoffs/trickster/jerribeth.md \u00a71",
+   "handoffs/jerribeth.md",
+   "World/Dialogs/c3/IvorySanctum",
+   "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia"
+  ],
+  "notes": "Met in Ch3 (Wintersun and the Ivory Sanctum). JerribethDead (cd8666952065ce74d94d960a23482133) can end her in Ch3; otherwise she leaves for the Abyss and appears in Ch4 only. No canon contact in Ch5-6."
+ },
+ "kiana": {
+  "character": "Kiana",
+  "batch": "PP4",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "kiana"
+   }
+  ],
+  "present": {
+   "3": "ip",
+   "4": "remote",
+   "5": "ip",
+   "6": "remote"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "0bb8e464eb1a6aa458e8d5dba62f5413 World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0001: Ch3 Drezen wedding welcome (unit Kyana 180b0eaa5dce387458d2ebf0ee943985)",
+   "3": "b82a10548fa150940833f570cfb5e0c1 World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/KTC_And_Timeline/SeelahCompanion_CapitalEvents/SeelahTimer_BeforeQ2_Wedding: the wedding is a Ch3 Drezen event",
+   "4": "180b0eaa5dce387458d2ebf0ee943985 Units/NPC/Unique/Act_3_DemonsHerecy/Seelah_Q2/Kyana: Drezen resident; party in the Abyss, letter only",
+   "5": "aebbc1845e827dd4da4e28014e7b4162 World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0001: Ch5 Q3 aftermath, Kiana speaks (also ElandKianaAftermath/Cue_0007 df45181e1968f26459f9e8bc2b995a34)",
+   "6": "180b0eaa5dce387458d2ebf0ee943985 Units/NPC/Unique/Act_3_DemonsHerecy/Seelah_Q2/Kyana: stays in Drezen after Q3; Threshold is away"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "4",
+   "6"
+  ],
+  "sources": [
+   "handoffs/trickster/kiana.md \u00a71",
+   "handoffs/kiana.md",
+   "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart",
+   "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword"
+  ],
+  "notes": "Met at Seelah's Q2 wedding (Ch3). On the bad ending (WeddingEndingBad d983621f7b887b043acb0c43186bf824, KianaIsPosessed) her soul is stolen and her body lies in Arsinoe's hospital until Q3 (Ch5), so Ch4 contact exists only after the good ending. Her quest line needs Seelah in the party."
+ },
+ "vellexia": {
+  "character": "Vellexia",
+  "batch": "PP8",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "vellexia"
+   }
+  ],
+  "present": {
+   "4": "ip",
+   "5": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "3850d7abe56fba24fb5acb4b8e0767a6 World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0001: Ch4 Alushinyrra ('A new guest has arrived?')",
+   "4": "42429350764f92140b293b24039b89ef World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0079: Ch4 third date (Trickster mirror prank)",
+   "5": "a374159d10fceb24b81b9c917509041f World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Cue_0001: Ch5 Drezen, Demon path only"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "5"
+  ],
+  "sources": [
+   "handoffs/trickster/vellexia.md \u00a71",
+   "handoffs/vellexia.md",
+   "World/Dialogs/c4/RaptureOfRupture",
+   "World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord"
+  ],
+  "notes": "Present in Ch4 only on non-Demon paths. VellexiaKilled (72e423c719ed9d44fa432a6b9629babd) follows the sword kill, the early fight or the Trickster mirror. Her Ch5 presence is Demon-path only."
+ },
+ "arsinoe": {
+  "character": "Arsinoe",
+  "batch": "PP5",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "arsinoe"
+   }
+  ],
+  "present": {
+   "3": "ip",
+   "4": "remote",
+   "5": "ip",
+   "6": "remote"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "0e83a74392bf2bb4b9a7db87b6e158ea World/Dialogs/NPC_Common/VendorArsinoe/Cue_0001: Drezen vendor greeting (unit Arsinoe a609ed9b2205d034bb3bb04d2a255681, Act_3 Drezen)",
+   "3": "3f3fbb973a4ffee47956b4c7714c939a World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Arsinoe_Capital: her Drezen capital presence (also Q2 ArsinoeAtWedding/Cue_0001 1dddedb779416154c84609195b9bdfe5)",
+   "4": "3f3fbb973a4ffee47956b4c7714c939a World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Arsinoe_Capital: stays in Drezen; party in the Abyss, letter only",
+   "5": "2b133bf7ac66d6241a69a53dce2bf05f World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0030: Ch5 Q3, Arsinoe speaks (also KTC_Morta_Capital_Chapter05_Arsinoe 747275736b684db5a639d4ba31f4c83f)",
+   "6": "3f3fbb973a4ffee47956b4c7714c939a World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Arsinoe_Capital: Drezen resident; Threshold is away"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "4",
+   "6"
+  ],
+  "sources": [
+   "handoffs/trickster/arsinoe.md \u00a71",
+   "handoffs/arsinoe.md",
+   "World/Dialogs/NPC_Common/VendorArsinoe"
+  ],
+  "notes": "The Abadar priestess and vendor in Drezen from Ch3. VictimsRevived (6d3fb96f9b60c0449a01add4be5c4a49) makes her temporarily unavailable during Seelah's Q3."
+ },
+ "gesmerha": {
+  "character": "Gesmerha",
+  "batch": "PP7",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "gesmerha"
+   }
+  ],
+  "present": {
+   "3": "ip",
+   "4": "remote",
+   "5": "ip",
+   "6": "remote"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "1e9af5965b5da304c825817c89817c22 World/Dialogs/c3/Wintersun/BlindCarver/Cue_0001: Ch3 Wintersun first meeting ('I don't recognize your footsteps')",
+   "3": "13f2b37e28864ba4b882d13fad90f7c5 World/Dialogs/c3/Wintersun/BlindCarver/Cue_0028: Ch3 Wintersun, she speaks (unit BlindCarver_Wintersun 3ba3a0ff8575be8419159221177c1411)",
+   "4": "a4de2a8e1ce8a4843a69c9a37ceda701 World/Etudes/Common/WrathOfTheRighteous/Chapter03/WintersunStory/GesmeraWithUs: alive (not BlindCarver_Dead) in Wintersun near Drezen; party in the Abyss, letter only",
+   "5": "593d5a7f08b208b45b094c9a81380d6f World/Dialogs/c5/KTC_WintersunHelp/Cue_0009: Ch5 Drezen, she speaks (also PeacefulWoodCarver/Cue_0001 597b7e82dbec7804490f02048e4bf1ef)",
+   "6": "a4de2a8e1ce8a4843a69c9a37ceda701 World/Etudes/Common/WrathOfTheRighteous/Chapter03/WintersunStory/GesmeraWithUs: alive in Wintersun; Threshold is away"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "4",
+   "6"
+  ],
+  "sources": [
+   "handoffs/trickster/gesmerha.md \u00a71",
+   "handoffs/gesmerha.md",
+   "World/Dialogs/c3/Wintersun",
+   "World/Dialogs/c5/KTC_WintersunHelp"
+  ],
+  "notes": "Met in Wintersun in Ch3. She dies only by suicide in the Marhevok ambush after [Watch in silence] (BlindCarver_Dead 49839ba15f34bee469c4f093dace0811), which removes her from Ch4-6."
+ },
+ "minagho": {
+  "character": "Minagho",
+  "batch": "PP8",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "minagho_chivarro"
+   }
+  ],
+  "present": {
+   "1": "ip",
+   "2": "ip",
+   "3": "ip",
+   "4": "ip",
+   "5": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "64a6bc907e22cb94b8d5e3b6bb2dee65 World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_First/Cue_0001: Ch1 Grey Garrison ('Do we have guests?')",
+   "1": "14289b6f7a6fa574098876438546ec8b World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0001: Ch1 Grey Garrison finale",
+   "2": "fd23a479ace88ce4580aae0afafea054 World/Dialogs/c2_vs/LostChapel/Boss_Start/Cue_0002: Ch2 Lost Chapel (also DrezenSiege/Final_Battle_Before/Cue_0001 fc333566a0e8ac744b67bf0795f7f0c8)",
+   "3": "60906a72cb11d8641bcc594bb0cdd2fe World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Cue_0025: Ch3 Midnight Fane",
+   "4": "234795ef0b672624c804ad656a39dab6 World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0020: Ch4 hideout",
+   "5": "eb0d42923a0cf6c4281b0925337e8591 World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/ReturnToDrezen: places her unit in Ch5 Drezen for the Staunton fight (FreeGraveknightStaunton_Fallen/Cue_0031 09780c4296b211f40b3ef6e34fabffc3)"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "5"
+  ],
+  "sources": [
+   "handoffs/trickster/minagho.md \u00a71",
+   "handoffs/minagho-chivarro.md",
+   "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Minagho"
+  ],
+  "notes": "A hostile villain from Ch1. MinaghoDead (3b8c0801d5e9a694b848ee13564d2ad7) can fire in the Ch3 Fane, the Ch4 hideout or the Ch5 Staunton fight. Her Ch5 Drezen appearance is a fight with no dialog of her own, so she is present there but hardly talkable."
+ },
+ "chivarro": {
+  "character": "Chivarro",
+  "batch": "PP8",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "minagho_chivarro"
+   }
+  ],
+  "present": {
+   "4": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "58bbab04f3529a642930f02c54c424a7 World/Dialogs/c4/FleshMarket/MeatSlaver_dialogue/Cue_0002: Ch4 Alushinyrra, Chivarro speaks (unit Chivarro b7e819e2a9bb0804abcbffe8e7d91ba6)",
+   "4": "d8b51192f7ce23440bfb22b7d28e03d0 World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0097: Ch4 House of Ten Thousand Delights"
+  },
+  "verify": false,
+  "verify_chapters": [],
+  "sources": [
+   "handoffs/trickster/chivarro.md \u00a71",
+   "handoffs/minagho-chivarro.md",
+   "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States"
+  ],
+  "notes": "Present in Ch4 only. On non-Azata paths she is removed from power, exiled or killed (ChivarroKilled fd2ab9b67ce3e284184b1894c82c6c5d). The Azata happy end is an epilogue with no later scenes."
+ },
+ "nocticula": {
+  "character": "Nocticula",
+  "batch": "PP4",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "nocticula"
+   },
+   {
+    "relationship": "nocticula.acquisition"
+   }
+  ],
+  "present": {
+   "3": "ip",
+   "4": "ip",
+   "5": "ip",
+   "6": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "e9a8471fdce2791498242f2ce0f6ecb3 World/Dialogs/c4/Nocticula_main/Cue_0001: Ch4 audience in her palace (a Demon Commander meets her in Ch3)",
+   "3": "314ff1c433d2b21489829a3fa7c32b9f World/Dialogs/c3/Mythic_Demon/Nocticula_C3/Cue_0014: Ch3, Demon path only",
+   "4": "e0fe3f2b5b124c745afd94d695032529 World/Dialogs/c4/FinalDungeon_Colyphyr/NocticulaAfterBaph/Cue_0001: Ch4 finale",
+   "5": "114211469c9ffd149a73f1c853b2776f World/Dialogs/c5/Mythic_Trickster/Nocticula/Cue_0002: Ch5 Trickster audience (also Drezen_Under_Siedge/Goddesses_Summit/Cue_0033 b0e414c53feee354db0b83c4abc13b27)",
+   "6": "7d07492b12cf5bd4bb1c88113d5831ab World/Dialogs/c6/FirstFloor/NocticulaThreshold/Cue_0002: Threshold audience"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "3"
+  ],
+  "sources": [
+   "handoffs/trickster/nocticula.md \u00a71",
+   "handoffs/nocticula.md",
+   "World/Dialogs/c4/Nocticula_main",
+   "World/Dialogs/c6/FirstFloor/NocticulaThreshold"
+  ],
+  "notes": "Met in Ch4 on every path; only a Demon Commander meets her in Ch3. On Trickster, NocticulaDead after the Ch5 Council fight means she is defeated, projected and still alive, so she still appears at Threshold."
+ },
+ "nurah": {
+  "character": "Nurah",
+  "batch": "PP3",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "nurah"
+   }
+  ],
+  "present": {
+   "2": "ip",
+   "3": "ip",
+   "4": "remote",
+   "5": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "854d4cbff4acffa46b70712b90971064 World/Dialogs/c2_vs/Warcamp_IntroTour/Tour_End_Queen/Cue_0022: Ch2 warcamp (unit Nurah c44d5c157091e7e46af1f11a4c79303d)",
+   "2": "3e3e02b20d3e8da46802a0c9814fe6ba World/Dialogs/c2_vs/DrezenSiege/Nurah_After_Battle/Cue_0010: Ch2 after the Drezen battle",
+   "3": "255504a2d643baa468d17bcc0bdee9a3 World/Dialogs/NPC_Common/Nurah-Prison/Cue_0001: Drezen cell (NuraInPrisonAfterDrezen c922e0cbe25a0cf4dad4ce7a3ca81935)",
+   "4": "21a061de3610732438072d2b975b6f43 World/Etudes/Common/WrathOfTheRighteous/Chapter02_Extra/Nurah/NuraInPrisonAfterDrezen/NurahInPrisonCapitalMechanic: prisoner in Drezen; party in the Abyss, letter only",
+   "5": "e5c3183a2c6252f4ebe3551db6dfd9ed World/Dialogs/c5/PuluraFallsC5/Mutasafen/Cue_0005: Ch5, freed Nurah at Mutasafen (Trickster wink)"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "4",
+   "5"
+  ],
+  "sources": [
+   "handoffs/trickster/nurah.md \u00a71",
+   "handoffs/nurah.md",
+   "handoffs/13-PACING-PASS.md \u00a70,\u00a72",
+   "World/Etudes/Common/WrathOfTheRighteous/Chapter02_Extra/Nurah"
+  ],
+  "notes": "Met at the Ch2 warcamp. After Drezen she is jailed, executed (NurahKilledAfterDrezen a837c3bc9cbb4e846ab5565915165c91), killed by Camellia in Ch3, or freed (NuraRanOffAfterDrezen a86ab44f1a4d3f54fbeb51f5568bbb5c) to Mutasafen in Ch5. Whether the cell persists into Ch5 was not checked, and nothing places her in Ch6."
+ },
+ "targona": {
+  "character": "Targona",
+  "batch": "PP7",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "targona"
+   }
+  ],
+  "present": {
+   "3": "ip",
+   "4": "ip",
+   "5": "ip",
+   "6": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "733a9c94c2f9ea14f9e2734b0f180e40 World/Dialogs/c3/AreeluLaboratory/TargonaPrison/Cue_0001: Ch3 Areelu's lab, behind the barrier",
+   "3": "40db6d5fb81320444bdefd6631ea54e4 World/Dialogs/c3/AreeluLaboratory/TargonaWings/Cue_0023: Ch3 lab, she speaks",
+   "4": "e087c62e1e98a404486c220131b26c69 World/Dialogs/c4/Mythic_Angel/TargonaSearching/Cue_0001: Ch4, Angel path only",
+   "5": "5c61669584247dd4087c5ad2ddad62bc World/Dialogs/c5/Mythic_Angel/TargonaFinal/Cue_0003: Ch5, Angel path only",
+   "6": "1c1ed3f2f681b74428a05bb735838712 World/Dialogs/c6/Mythic_Angel/HeavensGate/Cue_0005: Ch6, Angel path only (AngelTargona speaker)"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "6"
+  ],
+  "sources": [
+   "handoffs/trickster/targona.md \u00a71",
+   "handoffs/targona.md",
+   "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Targona"
+  ],
+  "notes": "Met in Areelu's lab in Ch3. On non-Angel paths (Trickster included) she is either freed to Heaven there (TargonaIsFreeInAreeluLab 720af1f72f413354db3f4d41f76d5af6) or killed (3b8bd37108050a94b9be14e22501e090). Her Ch4-6 presence is therefore Angel-only, and TargonaDiedInMutasafenLair can end her in Ch5."
+ },
+ "terendelev": {
+  "character": "Terendelev",
+  "batch": "when-written",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "terendelev"
+   }
+  ],
+  "present": {
+   "1": "ip",
+   "5": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "f5651757bd720de4b98b5893152d504a World/Dialogs/c0/KenabresSquare/WelcomeDialogue/Cue_0039: Prologue festival ('My name is Terendelev')",
+   "1": "b50327805d1073c478ed9ceb4689d382 World/Dialogs/c0/KenabresSquare/WelcomeDialogue/Cue_0033: Prologue (folded into Ch1); her human form heals the Commander",
+   "5": "ed329e364ecc1f042a907e3f586251cf World/Dialogs/c5/Mythic_Aeon/TerendelevPresent/Cue_0001: Ch5, alive on the Aeon path (TerendelevWasNotKilled 6b98ec3e704599149b99fe70b5f793ab); Dragon and Lich meet her undead (TerendelevUndead/Cue_0010 21345c4088e583c4e9eb9fee455be839)"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "5"
+  ],
+  "sources": [
+   "handoffs/trickster/terendelev.md \u00a71",
+   "handoffs/terendelev.md",
+   "World/Dialogs/c0/KenabresSquare/WelcomeDialogue",
+   "World/Dialogs/c5/Mythic_Aeon"
+  ],
+  "notes": "Met only at the Prologue festival, and killed in the Kenabres attack. Her later canon presence is path-only, in Ch5: alive on Aeon, undead on Dragon or Lich. On Trickster she stays dead, and only the Ravener remains at Iz."
+ },
+ "aranka": {
+  "character": "Aranka",
+  "batch": "PP3",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "aranka"
+   }
+  ],
+  "present": {
+   "1": "ip",
+   "3": "ip",
+   "5": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "a4be5a15ae0695d468e3a339d8e49504 c1/KenabresBurning/DesnaTempleFinal/Cue_0007: Aranka_DesnaPriest speaks in the Ch1 Desna temple",
+   "1": "f21279d12e1c70449bd037e75d7fd4a7 c1/KenabresBurning/DesnaTempleFinal/Cue_0020: she gives the Commander 'Starward Gaze' (Ch1 Kenabres)",
+   "3": "ea9f80fde3f30f64b9f3bda0601c63d4 c3/Mythic_Azata/Island/DesnaAdepts dialog: Azata_Aranka_DesnaPriest speaks on the Azata island (Azata only)",
+   "5": "d8f1f265cc2b9e54ab743fa4a92020d2 c5/Mythic_Azata/ArankaExplains dialog (Azata only); also IslandTalk/Cue_0001 ca48abfe789ae0f4ba572bc95c5a1824 speaker Azata_Aranka_RankupSpeaker"
+  },
+  "verify": false,
+  "verify_chapters": [],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/aranka.md:1 Canon",
+   "World/Dialogs/c1/KenabresBurning/DesnaTempleFinal",
+   "World/Dialogs/c3/Mythic_Azata/Island/DesnaAdepts",
+   "World/Dialogs/c5/Mythic_Azata",
+   "ArankaDesnaPriest_DefaultActor 547921e48f8f2ac42b6a79be55ba6b2d"
+  ],
+  "notes": "Met Ch1 Kenabres (Desna temple). After Ch1 she exists only on the Azata path (island, Ch3 and Ch5); on Trickster and the other paths she is absent after Ch1. Pacing-doc host DesnaAdept2/Cue_0015 is the Commander's own voice failing, spoken by an unnamed adept, not Aranka's."
+ },
+ "arueshalae": {
+  "character": "Arueshalae",
+  "batch": "PP2",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "arueshalae"
+   }
+  ],
+  "present": {
+   "2": "ip",
+   "3": "ip",
+   "4": "ip",
+   "5": "ip",
+   "6": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "864b9edae71174249a3777bd6045c05c c2_vs/LostChapel/ArushaVision dialog (Ch2)",
+   "2": "c7c8cfb42140c554893d504a6ed4ee16 c2_vs/DrezenSiege/Arusha_DrezenPrison dialog; also Final_Battle_Before/Cue_0065 ad695bb92019e7a40ad284f2d8751786 speaker Arueshalae_Companion",
+   "3": "75ca56efc3ea4c4499c5014ddacbce70 c3/ArueshalaeRedoubt/Fortress_Arusha_Start dialog (recruitment)",
+   "4": "5a9506c7a54853746a149776c554ef8e CompanionRomances/Arueshalae/Main_C4/Nightmares dialog; ArenaHealer/Cue_0040 3c74efc87f137884581ce5c3279d95f7 speaker in c4",
+   "5": "102cdbf569be80d43bcd3f9b37c49f45 MeetEvilArusha_Dialogue (Ch5 evil variant); Opon/Cue_0062 32a01f37493241e46ab1fc434cbf2954 speaker (good variant, c5)",
+   "6": "cfc12a603374d0948950f8e604a6e139 c6/ThresholdExterior/CompanionFarewells/ArueshalaeFarewell"
+  },
+  "verify": false,
+  "verify_chapters": [],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/arueshalae.md:1 Canon",
+   "13-PACING-PASS.md \u00a70.4",
+   "World/Dialogs/c2_vs/DrezenSiege/Arusha_DrezenPrison",
+   "World/Dialogs/Companions/CompanionRomances/Arueshalae"
+  ],
+  "notes": "First seen Ch2 (Lost Chapel vision, Drezen prison); companion from Ch3 to Ch6. Can die, fail her redemption (evil in Ch5 lair) or be killed; native romance closes at Chapter04 if unreached."
+ },
+ "camellia": {
+  "character": "Camellia",
+  "batch": "PP2",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "camellia"
+   }
+  ],
+  "present": {
+   "1": "ip",
+   "2": "ip",
+   "3": "ip",
+   "4": "ip",
+   "5": "ip",
+   "6": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "e92a8b79aa9c02f4d9641eb9ef22495d c0/CavesUnderKenabres/MeetCamelia (Prologue, folded into ch1)",
+   "1": "3be99bac2dcc67e4592b3b5372bf5903 c1/AlarmSE/Dialogue/Cue_0025: Camelia_Companion speaks in Ch1",
+   "2": "32b50aedba117e848b1776ee0e8dc773 c2_vs/GargoyleAttack/Camelia dialog",
+   "3": "fc0d9b7eeac4baf4186e918226107592 c3/AreeluLaboratory/MinionFirst/Cue_0023 speaker Camelia_Companion",
+   "4": "74f68ad298c4af443ab392534fc0ba93 Camellia Q2 HeartsDesire dialog (Alushinyrra brothel); FulsomeQueen/Cue_0111 34dc267408ea76a44a230e038746468f speaker in c4",
+   "5": "4f1a912b26360cf47b9b672e6ae9f0b6 Q3 FinalTruth/Cue_0054: Q3 set 'as soon as we returned to Drezen' (Ch5)",
+   "6": "5de35467f16dd344297f901eb9298cc9 c6/ThresholdExterior/CompanionFarewells/CamelliaFarewell"
+  },
+  "verify": false,
+  "verify_chapters": [],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/camellia.md:1 Canon",
+   "13-PACING-PASS.md \u00a70.4-5",
+   "World/Dialogs/Companions/CompanionQuests/Camellia"
+  ],
+  "notes": "Met in the Prologue caves; companion through Ch6. Can be killed (Ch1 Horgus manor, Q1 Anevia order, hub attack, Q3 verdict in Ch5) or kicked out; native romance closes at Chapter04 if unreached."
+ },
+ "wenduag": {
+  "character": "Wenduag",
+  "batch": "when-written",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "wenduag"
+   }
+  ],
+  "present": {
+   "1": "ip",
+   "2": "ip",
+   "3": "ip",
+   "4": "ip",
+   "5": "ip",
+   "6": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "90cb0c19187fd5241ab271a17370cb78 c0/CavesUnderKenabres/MongrelLabyrinth/LannVenduChoose (Prologue, folded into ch1)",
+   "1": "e38959ec9123855419a94b237feedf06 c1/AlarmSE/Dialogue/Cue_0020 speaker Wenduag_Companion",
+   "2": "f8b7c5f1b6891404491775096ed68681 c2_vs/DrezenSiege/Council/Cue_0118_Wendu_IlikeYou",
+   "3": "6d17f0dee27a7a9449d0ee9a641f8266 Lann Q1 WenduagDefeated_dialogue (Ch3 Neathholm); BurnedWitch/Cue_0026 893a047aa149ab4419b4c994eb3cc6e6 speaker in c3",
+   "4": "46d3fea18ab6f60449df3a2a8511690c Wenduag Q2 SavaAndWendu dialog (Alushinyrra); ArenaHealer/Cue_0046 5c7a949d1bc86894d88bcc87c4a076bd speaker in c4",
+   "5": "4b616479a1f430f42b20bbd852e9ef07 Q3 WenduTraitor_DrezensStreet (Ch5 Drezen)",
+   "6": "0eca85091102af04f8366384d9bbfec4 c6/ThresholdExterior/CompanionFarewells/WenduagFarewell"
+  },
+  "verify": false,
+  "verify_chapters": [],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/wenduag.md:1 Canon",
+   "World/Dialogs/Companions/CompanionQuests/Wenduag",
+   "World/Dialogs/c0/CavesUnderKenabres/MongrelLabyrinth/LannVenduChoose"
+  ],
+  "notes": "Joins in the Prologue Labyrinth if chosen over Lann. Otherwise she turns up again in Lann's Q1 (Ch3), where she can be killed or recruited as a traitor. She can be exiled, or turn traitor in Ch5 on the Drezen street."
+ },
+ "galfrey": {
+  "character": "Galfrey",
+  "batch": "when-written",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "galfrey"
+   }
+  ],
+  "present": {
+   "1": "ip",
+   "2": "ip",
+   "3": "ip",
+   "4": "remote",
+   "5": "ip",
+   "6": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "419f7ae67920a2942a9abff47145b975 c1/DefendersHeart/ChapterEnd_QueenVisit/Cue_0026 speaker QueenGalfrey_DH (end of Ch1)",
+   "1": "419f7ae67920a2942a9abff47145b975 c1/DefendersHeart/ChapterEnd_QueenVisit/Cue_0026 (Defender's Heart)",
+   "2": "bb96de62b55d1bc4981582f37f7089b1 c2_vs/LostChapel/GalfreyInChurch; Warcamp_IntroTour/Tour_End_Queen/Cue_0002 25cdf36c22b360c479eb3a3ba549cd5b; incognito fff7565679c3a684686055653b3eba17",
+   "3": "06aada1320343504bb802205371cc2fe c3/Drezen_C3/GalfreyArrives (she comes to Drezen); FaneFinal/Cue_0001 d1391ecf28cfd3e4e9965b7aa93f453e",
+   "4": "06aada1320343504bb802205371cc2fe GalfreyArrives (based in Drezen); no c4 dialog has her as speaker, so letters only",
+   "5": "c9a9abe67c0363040a598b12c6ec786a c5/DrezenMain_C5/Galfrey dialog; GalfreyOnTheEdge 4c98dad90db2997428a41c2cdfc28a1e (Iz deathbed)",
+   "6": "d607326faceca024a933e2be6ecf2228 c6/ThresholdExterior/GalfreyThreshold (only if she survived Iz)"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "4",
+   "6"
+  ],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/galfrey.md:1 Canon",
+   "13-PACING-PASS.md \u00a70.4",
+   "World/Dialogs/c1/DefendersHeart/ChapterEnd_QueenVisit",
+   "World/Dialogs/c5/Iz/GalfreyOnTheEdge"
+  ],
+  "notes": "First appears at Defender's Heart at the end of Ch1. She is in Drezen for Ch3 and Ch5 and dies at Iz at the end of Ch5 on most runs (GalfreyDead). Ch6 needs her to survive (GalfreyThreshold; Lich zombie variant Galfrey_Zombie 7272404925b5363428e0fe9a9acf64b2)."
+ },
+ "soana": {
+  "character": "Soana",
+  "batch": "PP6",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "soana"
+   }
+  ],
+  "present": {
+   "3": "ip",
+   "4": "remote",
+   "5": "remote"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "856b97bf54e34384796883fa777e583c c3/Wintersun/SoanaBeforeBear dialog (Ch3 Wintersun)",
+   "3": "8d3b74ead4775034db1bc842d0db5df6 c3/Wintersun/SoanaAfterBear dialog; speaker Soana_Wintersun in SoanaBeforeBear/AfterBear/AfterQuest",
+   "4": "4ab63e86306ffdd48b41427c3248ad0f ImportantNPCs_fate/Soana etude (she stays in the Wintersun forest; no c4 unit)",
+   "5": "3c616e0be2622f94f8e6aff5ad537b28 KTC_WintersunHelp/Cue_0048: the living forest sends beasts against demons in Ch5 (she is alive there, no dialog)"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "4",
+   "5"
+  ],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/soana.md:1 Canon",
+   "World/Dialogs/c3/Wintersun",
+   "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Soana*"
+  ],
+  "notes": "Met in Ch3 at Wintersun. She dies if killed ([Attack]), handed to Camellia (SoanaKilledByCamellia) or bled by the forest quest (SoanaDead). Her only later contact is by courier to her forest. The Test/c5WintersunSoana dialog is test content, and DLC1 Iz is post-campaign."
+ },
+ "areelu": {
+  "character": "Areelu Vorlesh",
+  "batch": "PP8",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "areelu"
+   }
+  ],
+  "present": {
+   "2": "ip",
+   "4": "ip",
+   "5": "ip",
+   "6": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "7418d421e3af812439ea312991c37147 c2_vs/DrezenSiege/FakeYaniel_ToAreelu/Cue_0001: 'Forgive me this little masquerade', and the Yaniel illusion drops",
+   "2": "b44f15d9aee4b7f4989701afd9bd2aeb c2_vs/DrezenSiege/FakeYaniel_ToAreelu dialog (unmasked, end of Ch2)",
+   "4": "f07dc7568a829ba4bac9f07d05e86a65 c4/Palace/Audience_Areelu dialog; Nocticula_main/Cue_0096 787f3ea3ac0a57649b77c19906d19163 speaker Areelu",
+   "5": "0a43d63cf3c964c42869c0394d93dc18 c5/Iz/AreeluIntro dialog; Goddesses_Summit/Cue_0043 2a7e4c1dec2a26d439acbc3c39a2fe43 speaker Areelu",
+   "6": "ab4ff79866fd3a34987838a68da644f3 c6/ThresholdExterior/AreeluThresholdWelcome"
+  },
+  "verify": false,
+  "verify_chapters": [],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/areelu-vorlesh.md:1 Canon anchors",
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/yaniel.md:1 Canon (FakeYaniel)",
+   "World/Dialogs/c2_vs/DrezenSiege/FakeYaniel_*",
+   "World/Dialogs/c4/Palace/Audience_Areelu",
+   "World/Dialogs/c5/Iz/AreeluIntro"
+  ],
+  "notes": "Disguised as Yaniel through Ch2 (FakeYaniel_First 159869c7e83694a4ba0b49296e885d38, not counted); unmasked at the end of Ch2. Ch3 has only her lab projection (MagicProjector 1cb67f5b23e62c04297b1c7e6a9d41d9, AreeluCell in Ch5), so it is not counted. A Prologue unit AreeluDisguised cc999f2802d571543848539c73ccc318 exists but has no dialog. She dies or is sacrificed at Threshold."
+ },
+ "ember": {
+  "character": "Ember",
+  "batch": "PP3",
+  "friendship": true,
+  "routes": [
+   {
+    "relationship": "ember"
+   }
+  ],
+  "present": {
+   "1": "ip",
+   "2": "ip",
+   "3": "ip",
+   "4": "ip",
+   "5": "ip",
+   "6": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "8df6b05895c48d847b69d4caecb04c3d c1/KenabresBurning/MeetEmber (Ch1)",
+   "1": "8df6b05895c48d847b69d4caecb04c3d c1/KenabresBurning/MeetEmber; AlarmSE/Cue_0021 90b136405c38b6e44befb8ab897777ce speaker Ember_Companion",
+   "2": "560fa6730e513244daeffff97b711797 c2_vs/LostChapel/Companion_Ember dialog",
+   "3": "b7870bda1fdc1a545a7c5132b2cee7bd Ember Q1 KTC_EmberTaken (Ch3 Drezen); MinionFirst/Cue_0028 5d2bed73ea80edd4087982cb56249dbe speaker",
+   "4": "9a2d444909079fe4a84e3a16c0e54057 c4/BattleBliss/ArenaHealer_dialogue/Cue_0044 speaker Ember_Companion",
+   "5": "0ebf8ba2372698f46b335081d1651f7d c5/AreeluLabAgain/AreeluCell/Cue_0071 speaker Ember_Companion",
+   "6": "173618d43f51f114782eb49d2de774ff c6/ThresholdExterior/CompanionFarewells/EmberFarewell"
+  },
+  "verify": false,
+  "verify_chapters": [],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/ember.md:1 Canon",
+   "World/Dialogs/c1/KenabresBurning/MeetEmber",
+   "World/Dialogs/Companions/CompanionQuests/Ember"
+  ],
+  "notes": "Met in Ch1 Kenabres and a companion through Ch6. She dies in Kenabres only by the Commander's choice (EmberKilledInKenabres), and can be kicked out to Defender's Heart or the warcamp. Friendship only."
+ },
+ "aivu": {
+  "character": "Aivu",
+  "batch": "PP10",
+  "friendship": true,
+  "routes": [
+   {
+    "relationship": "aivu"
+   }
+  ],
+  "present": {
+   "3": "ip",
+   "4": "ip",
+   "5": "ip",
+   "6": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "f81644af34ba74045ba602bd55a2129a c3/Mythic_Azata/DracoshaIntro (Azata, Ch3)",
+   "3": "de63e66fbc4992e4caf70ed3e9584cbb c3/Mythic_Azata/Island/Dracosha dialog (AzataDragonUnit speaker)",
+   "4": "7f24da7dd3cfe9a4da8b087b62bf3991 c4/Mythic_Azata/Dracarys/Cue_0007 speaker AzataDragonUnit; PetDragonAzata_Nexus 8ec49bab42a211e4f85f593718ecc536; DracoshaKidnapped 89ba5c8fd20fe154b82f64f6e8382e3f",
+   "5": "367093e1cfcc5a64dbb84cd7ea1304b7 c5/Mythic_Azata/IslandTalk/Cue_0011 speaker AzataDragonUnit",
+   "6": "78e6fa369904b0444995667b91d5e8a5 c6/ThresholdExterior/CompanionFarewells/AivuFarewell; PetDragonAzata_ThresholdCamp 0269f7669ea74d18a0b16896385f8945"
+  },
+  "verify": false,
+  "verify_chapters": [],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/aivu.md:1 Canon",
+   "World/Dialogs/c3/Mythic_Azata",
+   "World/Etudes/Common/WrathOfTheRighteous/MythicAzata"
+  ],
+  "notes": "Azata-path pet only, hatched in Ch3. She can follow a Legend switch (AivuWithLegend 1ce861b6b2e110048b89d7d19fc52826), but a Trickster save has no Aivu unit. In Ch4 she can be kidnapped (DragonKidnap, NoDragon). The DLC6 festival is post-campaign. Friendship only."
+ },
+ "jannah": {
+  "character": "Jannah",
+  "batch": "PP3",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "jannah"
+   }
+  ],
+  "present": {
+   "1": "ip",
+   "2": "ip",
+   "3": "ip",
+   "4": "remote",
+   "5": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "71e631afb603f5949b13534a6cf8e1cc Seelah Q1 Ch1_CartRescue/Cue_0031 speaker CR4_DeserterJanna (Ch1 Kenabres)",
+   "1": "6428870ef6820f040b09f6403c2c7e76 Seelah Q1 Ch1_SeelahMeetsFriends/Cue_0038 speaker DH_SeelasFriend_DeserterJanna ('Am I lucky, or what?')",
+   "2": "4cce7d43deae97d419ce1bdabaa2b115 Seelah Q1 KnightCamp/Cue_0005 speaker CR4_DeserterJanna (Ch2 crusader camp)",
+   "3": "b81b22fc7a03d6248b4bebdb392ec6e2 c3/MoltenScar/Deserter dialog (the cage); JannaInPrison_Drezen 478931ef603c424aab14ca48e8ad0645 (shown only while Chapter03 plays)",
+   "4": "59632e1775b2f7240af0f6d0db28e35b JannaInPrison etude (held in Drezen); no c4 presence, so letters only",
+   "5": "189401b80979be0439f3e3cb9f053d1e Seelah Q3 ktc_DeserterJoins (Drezen, Ch5 timer SeelahTimer_BeforeQ3_JewelerHideout 6654b72a1869fc7479ba6c7081ff7baf)"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "4"
+  ],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/jannah.md:1 Canon",
+   "World/Dialogs/Companions/CompanionQuests/Seelah",
+   "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/Janna*"
+  ],
+  "notes": "Seelah's friend, met in Ch1 through Seelah's Q1. She deserts and is caged in the Ch3 Molten Scar, where she is freed, imprisoned or killed ([Attack] gives JannaDead). She returns in Ch5 in Seelah's Q3. The pacing doc's Ch1 host CartRescue/Cue_0020 ('too scared to leave') is spoken by Rimvi Curl, not Jannah."
+ },
+ "yaniel": {
+  "character": "Yaniel",
+  "batch": "when-written",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "yaniel"
+   }
+  ],
+  "present": {
+   "3": "ip",
+   "4": "ip",
+   "5": "ip",
+   "6": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "009a448c0c0dd6c488a4f1defa7292b9 c3/MidnightFane/TrueYaniel_MidnightFane_dialog (end of Ch3)",
+   "3": "009a448c0c0dd6c488a4f1defa7292b9 TrueYaniel_MidnightFane_dialog",
+   "4": "63c9e7be8e501ac4db60fb11676fdd38 AngelSpawnYaniel etude (Alushinyrra, Angel only); c4/Mythic_Angel/Yaniel dialog f0a115aa6ff4f18449efa22969178fa6; MinaghoAfterCombat/Cue_0048 7358cb6f7c447c542a66ac35a4dd7337 speaker Yaniel",
+   "5": "d13616f1351f4070bdad097eaabaf9c3 Drezen_Yaniel_Ch5 etude (Angel only)",
+   "6": "5b067eb171fe4d54ba53766a3136acf3 c6/Mythic_Angel/LetsGoAbyss/Cue_0010 speaker Yaniel (Angel only)"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "6"
+  ],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/yaniel.md:1 Canon",
+   "World/Dialogs/c3/MidnightFane/TrueYaniel",
+   "World/Dialogs/c4/Mythic_Angel/Yaniel",
+   "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Yaniel"
+  ],
+  "notes": "The true Yaniel is first met at the Midnight Fane at the end of Ch3; the Ch2 'Yaniel' is Areelu (not counted). Off the Angel path she leaves ('I will go to him now') or is killed (Yaniel_Killed), so Ch4 to Ch6 are Angel-only. The Ch1 GhostYaniel unit in Estrod Tower is a vision."
+ },
+ "delamere": {
+  "character": "Delamere",
+  "batch": "PP10",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "delamere"
+   }
+  ],
+  "present": {
+   "3": "ip",
+   "4": "ip",
+   "5": "ip",
+   "6": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "249716a599703674aae2511d0c9ce29d c3/TempleOfDelamere/DelamereInTomb (undead priestess, Ch3)",
+   "3": "249716a599703674aae2511d0c9ce29d DelamereInTomb dialog",
+   "4": "3792f0d30b59425293c6070bd9285412 LichDelamere_Nexus_EXRemotePassive (Lich companion Delamere_Companion 6b1f599497f5cfa42853d095bda6dafd at the Ch4 Nexus camp; Lich only)",
+   "5": "377f3cd8c00869e40b68891e053475de c5/PuluraFallsC5/DelamereDefeated ('It is you again', freed undead in Pulura; DelamereFreeInPulura 14ca2938a6f96954d801c5cbd2e28bdd)",
+   "6": "ea1e757b29c4c354b8ed9ce7e0043cb1 Threshold_WasInParty_Delamere etude (Lich companion at Threshold)"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "4",
+   "6"
+  ],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/delamere.md:1 Canon",
+   "World/Dialogs/c3/TempleOfDelamere",
+   "World/Dialogs/c5/PuluraFallsC5/DelamereDefeated",
+   "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/Delamere*"
+  ],
+  "notes": "An undead Erastil priestess met in her Ch3 tomb. She is destroyed, laid to rest (DelameresRemains to Drezen) or freed. Freed, she reappears as a skeleton at Pulura Falls in Ch5. On the Lich path she is raised as a companion (DelamereResurrected), which gives the Ch4 and Ch6 presence."
+ },
+ "elyanka": {
+  "character": "Elyanka Camilary",
+  "batch": "when-written",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "elyanka"
+   }
+  ],
+  "present": {
+   "3": "ip",
+   "4": "remote",
+   "5": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "959e379e655867a41af3119b98f9e261 c3/Drezen_C3/MythicLich_Chapter3_InDrezen/KTC_ElyankaComing/Cue_0001 (Lich only)",
+   "3": "af64ca5246a43f649af11734f1514bee Elyanka_MainDialogue (Drezen, Ch3, Lich)",
+   "4": "68a4497289b1b48489f3d97dcd00d5d7 KTC_ElyankaComing etude (the envoys settle in Lich Drezen); no c4 presence, so letters only",
+   "5": "34dcbffe64ffc3449b087d1811cec4da c5/Mythic_Lich/BecomeLich_AfterBattle/Cue_0005 speaker MythicLich_KTC_Elyanka"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "4"
+  ],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/elyanka-camilary.md:1 Who she is",
+   "World/Dialogs/c3/Drezen_C3/MythicLich_Chapter3_InDrezen",
+   "World/Dialogs/c5/Mythic_Lich/BecomeLich_AfterBattle"
+  ],
+  "notes": "Whispering Way envoy who reaches Drezen in Ch3, and only on the Lich path. All her native presence is Lich; on Trickster every appearance is authored. DLC1 ElyankaSeptimus is post-campaign."
+ },
+ "herrax": {
+  "character": "Herrax",
+  "batch": "when-written",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "herrax"
+   }
+  ],
+  "present": {
+   "4": "ip",
+   "5": "remote"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "044dc44d93e25bc4da8e244efc46ff9f c4/TenThousandDelights/Herraxa_dialogue/Cue_0300 ('I am the new madam here')",
+   "4": "b1a346ae168956b4a8b759845ab8d2de c4/TenThousandDelights/Herraxa_dialogue; FleshMarket MeatSlaver_dialogue/Cue_0003 d7a044226d7a1334c93a3c88e271678d speaker Herraxa",
+   "5": "b1a346ae168956b4a8b759845ab8d2de Herraxa_dialogue (she stays in Alushinyrra); she has no Ch5 unit, dialog or etude, so letters only"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "5"
+  ],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/herrax.md:1 Verified canon anchors",
+   "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue"
+  ],
+  "notes": "A succubus met in Ch4 at the Ten Thousand Delights. She is madam only once Chivarro is removed (ChivarroRemovedFormPower 065b611752b5c0045b6d1e0164b92bcc). She has no death etude, and there is no canon contact after Ch4."
+ },
+ "mielarah": {
+  "character": "Mielarah",
+  "batch": "PP9",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "mielarah"
+   }
+  ],
+  "present": {
+   "4": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "10a7f19529f4bed4d90de8e9029cb951 World/Dialogs/c4/TavernBadLuck/Tumberd/Cue_0001: first greeting by the sorceress-captain in the Bad Luck tavern (Alushinyrra)",
+   "4": "2437e93b015b82d47900667402e01a9c World/Dialogs/c4/TavernBadLuck/Tumberd/Cue_0002: repeat greeting hub; also Colyphyr hub Cue_0039 faf1191ec50a127449681f3f709c4838 and etude Chapter04_States/CaptainMielara 8d0fcb697a43a464fa7119e274bf9d7b"
+  },
+  "verify": false,
+  "verify_chapters": [],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/mielarah.md:#### 1. Canon",
+   "blueprints: World/Dialogs/c4/TavernBadLuck/Tumberd",
+   "blueprints: World/Dialogs/c4/AirAdventures (Cue_0482 dbec675b71e9d5f4d96055f4bb31762e, Cue_0426 1b4e78245cb3a244588f9ec0fda54ea8)",
+   "blueprints: World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/TumberdDead"
+  ],
+  "notes": "Ch4-only NPC (unit Mielara under Act_4 BadLuck; only c4 blueprints reference her). Met in Alushinyrra, captains the airship to Colyphyr; may die in the raid (TumberdDead), vanish in the storm crash, or be killed at Colyphyr; no canon contact after Ch4."
+ },
+ "shamira": {
+  "character": "Shamira",
+  "batch": "PP9",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "shamira"
+   }
+  ],
+  "present": {
+   "4": "ip",
+   "5": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "ab7955d6c7e01d9489f382d77572a9e1 World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue/Cue_0001: first audience in the Harem of Ardent Dream",
+   "4": "83a68feab84445d48ab6f622743a0002 World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue/Cue_0014: she speaks in her Ch4 audience",
+   "5": "e5a9d6bb7dbe3384eaef95fc05a3ec5c World/Dialogs/c5/Mythic_Trickster/SocothBriefing/Cue_0012: Trickster Ch5 target in Nocticula's bedchamber (etude ShamiraKilled dd6731e2cb230694f9c394fa32391ad5); Demon path she speaks in c5/Mythic_Demon/Shamira_IMadeMyDecision/Cue_0001 1040cb49670712e46bf57e6c234b40ea"
+  },
+  "verify": false,
+  "verify_chapters": [],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/shamira.md:## 1. Verified canon anchors",
+   "blueprints: World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue",
+   "blueprints: World/Dialogs/c5/Mythic_Demon/Shamira_*",
+   "blueprints: World/Dialogs/c5/Mythic_Trickster/SocothBriefing"
+  ],
+  "notes": "Met Ch4 in Alushinyrra. On Trickster the Ch5 quest compels killing her in Nocticula's boudoir (ShamiraKilled); Demon/Legend paths keep her alive in Ch5. No canon Ch6 presence (only her essence in the siphon, GrandFinal Cue_0092)."
+ },
+ "hepzamirah": {
+  "character": "Hepzamirah",
+  "batch": "PP9",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "hepzamirah"
+   }
+  ],
+  "present": {
+   "3": "ip",
+   "4": "ip",
+   "5": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "aaca8a65d2b1e6b49b868f13852516cd World/Dialogs/c3/Mythic_Demon/HepzamirahsTrap/HepzamirahTorture/Cue_0008: Demon path, she abducts and tortures the Commander (\"I am your new mistress\"); on other paths first met at Colyphyr in Ch4",
+   "3": "aaca8a65d2b1e6b49b868f13852516cd World/Dialogs/c3/Mythic_Demon/HepzamirahsTrap/HepzamirahTorture/Cue_0008: Demon path only",
+   "4": "d648693214b80cf4db864445c4d8c7f8 World/Dialogs/c4/FinalDungeon_Colyphyr/Hepzamirah_main/Cue_0001: confrontation at Colyphyr (unit bd2a925967b5f5f489f6da0b03236d03 under Act_4)",
+   "5": "5e4a94e4f9a58974583be0c79bfe8e55 World/Dialogs/c5/LabyrinthOfBaphometh/Prison_HepzamirahGhost/Cue_0001: talkable ghost in Baphomet's prison (dead since Ch4)"
+  },
+  "verify": false,
+  "verify_chapters": [],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/hepzamirah.md:## 1. Canon, verified",
+   "blueprints: World/Dialogs/c3/Mythic_Demon/HepzamirahsTrap",
+   "blueprints: World/Dialogs/c4/FinalDungeon_Colyphyr/Hepzamirah_main",
+   "blueprints: World/Dialogs/c5/LabyrinthOfBaphometh/Prison_HepzamirahGhost",
+   "blueprints: World/Dialogs/c2_vs/SummonFromHepzamirah (failed summon vision, not counted)"
+  ],
+  "notes": "Ch2 has only a failed summoning vision (not counted). Ch3 presence is Demon-path only; on other paths she is first met at Colyphyr (Ch4), where Baphomet kills her. Ch5 presence is as a ghost in the Ivory Labyrinth prison."
+ },
+ "iomedae": {
+  "character": "Iomedae",
+  "batch": "when-written",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "iomedae"
+   }
+  ],
+  "present": {
+   "5": "ip",
+   "6": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "e273e96dade33464ca349b84441f882e World/Dialogs/c5/Drezen_Under_Siedge/Goddesses_Summit/Cue_0002: Iomedae descends in person (speaker Iomedae 9a1443603c9353d4194a583a31228c8b)",
+   "5": "909f6c75bd0169047806f1493f971e8a World/Dialogs/c5/Drezen_Under_Siedge/Goddesses_Summit/Cue_0045: she speaks at the Summit, all paths",
+   "6": "7d25dae905c61ee4ba3b16f921479880 World/Dialogs/c6/SecondFloor/GrandFinal/Cue_0085: she speaks at the finale (walk-away branch); c6/FirstFloor/NocticulaThreshold also uses her as speaker"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "6"
+  ],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/iomedae.md:#### 1. Canon anchors",
+   "blueprints: World/Dialogs/c5/Drezen_Under_Siedge/Goddesses_Summit",
+   "blueprints: World/Dialogs/c5/Mythic_Angel/IomedaeSecondVisit",
+   "blueprints: World/Dialogs/c6/SecondFloor/GrandFinal",
+   "blueprints: World/Dialogs/c6/FirstFloor/NocticulaThreshold"
+  ],
+  "notes": "A goddess. No dialog before Ch5 uses her as speaker (reference scan of her unit). She appears in person at the Goddesses' Summit in Ch5 (all paths; Angel adds IomedaeSecondVisit). In Ch6 she speaks only on certain finale branches, so Ch6 needs checking."
+ },
+ "eliandra": {
+  "character": "Eliandra",
+  "batch": "when-written",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "eliandra"
+   }
+  ],
+  "present": {
+   "3": "ip",
+   "4": "ip",
+   "5": "ip",
+   "6": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "0bd02c57a78fd7f4e8b5b379d29280ec World/Dialogs/c3/Pulura_C3/Pulura_C3_main/ElyandraRanger_Intro/Cue_0001: first meeting at Pulura's Fall",
+   "3": "28e38ac2af7522a478d2b877eadefc30 World/Dialogs/c3/Pulura_C3/Pulura_C3_main/Elyandra_main/Cue_0001: her Ch3 hub",
+   "4": "3533c4dab7742604c8b46898cfbc90a2 World/Dialogs/c4/Mythic_Angel/Devastator/Cue_0005: Angel path, rescued in the Abyss (non-Angel: she stays at Pulura's Fall, reachable by letter at most)",
+   "5": "c7686ba702d6c5f4393d7483295c67a8 World/Dialogs/c5/PuluraFallsC5/PuluraLeaderSaved/Cue_0002: Ch5 at Pulura's Fall after Mutasafen's attack",
+   "6": "6b7de6fc50ab2ea45a2ee1fd1245b28b World/Dialogs/c6/Mythic_Angel/HolyWardens/Cue_0006: Angel path only"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "4",
+   "6"
+  ],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/eliandra.md:#### 1. Canon",
+   "blueprints: World/Dialogs/c3/Pulura_C3/Pulura_C3_main",
+   "blueprints: World/Dialogs/c4/Mythic_Angel (Devastator, EchoLair/Final, LarielSaved)",
+   "blueprints: World/Dialogs/c5/PuluraFallsC5/PuluraLeaderSaved",
+   "blueprints: World/Dialogs/c6/Mythic_Angel/HolyWardens"
+  ],
+  "notes": "Met Ch3 at Pulura's Fall. On non-Angel paths she is physically present only in Ch3 and Ch5, and in Ch5 the shrine is abandoned (Katair, Cue_0029). Ch4 and Ch6 presence is Angel-path only (she is stolen or can die only on Angel). On Trickster, treat Ch4 as remote and Ch6 as absent."
+ },
+ "devarra": {
+  "character": "Devarra",
+  "batch": "PP7",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "devarra"
+   }
+  ],
+  "present": {
+   "3": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "546738b439bbf064b9dc7499fde143dc World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0002: she speaks in her lair (Greybor's Ch3 dragon hunt)",
+   "3": "977818b761d048d49a0fe19a1c8fccc4 IvorySanctum_MainEtude (Chapter03_AreasDefault): spawns her in the Ivory Sanctum if not killed earlier; lair dialog Cue_0002 546738b439bbf064b9dc7499fde143dc"
+  },
+  "verify": false,
+  "verify_chapters": [],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/devarra.md:## 2. Canon",
+   "blueprints: World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair",
+   "blueprints: Units/Monsters/BlackDragon/WoundWormsLair (c540d81c08822c14da75761493427e4c)"
+  ],
+  "notes": "Hostile woundwyrm: her unit has no dialog, and she speaks only in the lair scene. Every canon path kills her in Ch3 (lair or Ivory Sanctum). After Ch3 only her eggs remain."
+ },
+ "melazmera": {
+  "character": "Melazmera",
+  "batch": "when-written",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "melazmera"
+   }
+  ],
+  "present": {
+   "4": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "e0dab46a6a2842c4ba0502e82f2981cf World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0024: the Fulsome Queen's contract names the dragon at Colyphyr",
+   "4": "fee0f0cf006c96f4f90f895ba8d73d97 ColyphyrStates/ColyphyrMelazmeraDead: Ch4 Colyphyr death state; unit 85c7a3fd80f93db43a3e588ba5f5f9bc (ColyphyrDungeon)"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "4"
+  ],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/melazmera.md:## 2. Canon",
+   "blueprints: Units/Monsters/UmbralDragon/ColyphyrDungeon/Melazmera",
+   "blueprints: World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen"
+  ],
+  "notes": "The umbral dragon of Colyphyr, Ch4 only. She is on the map but has no dialog of her own (a monster unit), so \"ip\" means present, not talkable. She is killed in Ch4 or left in the dungeon; no canon contact afterwards."
+ },
+ "nidalynn": {
+  "character": "Nidalynn",
+  "batch": "PP10",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "nidalynn"
+   }
+  ],
+  "present": {
+   "5": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "64b38b810f2f83e41a5d70ff90ac0962 World/Dialogs/c5/Mythic_Dragon/DragonStupidQuests/NidalynnQuest1/Cue_0001: disguised as a pregnant woman in Kenabres (Gold Dragon path)",
+   "5": "b3399115956f2bf43a4076ad1d280d80 World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0003: speaks as the silver dragon (unit NidalynnDragon c966ef14763c5e649beab50af6e22972, MythicDragon_Ch5)"
+  },
+  "verify": false,
+  "verify_chapters": [],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/nidalynn.md:#### 1. Canon",
+   "blueprints: World/Dialogs/c5/Mythic_Dragon/DragonStupidQuests/NidalynnQuest1",
+   "blueprints: World/Dialogs/c5/Mythic_Dragon/DragonsKenabres"
+  ],
+  "notes": "Canon presence is Ch5 on the Gold Dragon path only (all her dialogs and her unit are c5 Mythic_Dragon). She is absent from Trickster canon. Her Drezen presence in Ch3\u20135 is authored by RRT and not counted."
+ },
+ "nenio": {
+  "character": "Nenio",
+  "batch": "when-written",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "nenio"
+   }
+  ],
+  "present": {
+   "1": "ip",
+   "2": "ip",
+   "3": "ip",
+   "4": "ip",
+   "5": "ip",
+   "6": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "515084bb66021364c885b71ee13b009b World/Dialogs/c1/MeetNenioSE/MeetNenio/Cue_0001: met in Ch1, disguised during the cultist exam",
+   "1": "eaf5c479c9a05d945bee3f8c5d59e3bb World/Dialogs/c1/AlarmSE/Dialogue/Cue_0038: speaks as a party member in Ch1",
+   "2": "f35cd245dd2b15d428cdd1ef582b5802 World/Dialogs/c2_vs/DrezenSiege/Arusha_DrezenPrison/Cue_0062: speaks in Ch2",
+   "3": "2c8781f62a656b64bb471085cfa4b96c World/Dialogs/c3/AreeluLaboratory/HeartOfLab/Cue_0067: speaks in Ch3",
+   "4": "082d19f9cd0da254684a84d5c75dff03 World/Dialogs/c4/BattleBliss/ArenaHealer_dialogue/Cue_0065: speaks in Ch4 (Abyss party)",
+   "5": "f6e451adc1f0e654db7b6bdedda8ebb8 World/Dialogs/c5/AreshkagalTomb/AreshkaConfrontation/Cue_0015: her Ch5 Enigma arc",
+   "6": "240e6a0b130026a4d8558897b53e7f4d World/Dialogs/c6/ThresholdExterior/CompanionFarewells/NenioFarewell/Cue_0007: Threshold farewell"
+  },
+  "verify": false,
+  "verify_chapters": [],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/nenio.md:#### 1. Canon anchors",
+   "blueprints: Units/Companions/Nenio (1b893f7cf2b150e4f8bc2b3c389ba71d)",
+   "roster-candidates.json:Nenio.chapters"
+  ],
+  "notes": "Companion recruited in Ch1 Kenabres (not in the Prologue). In Ch4 she can travel with the party or stay in Drezen. She can be lost by the Ch1 kill or refusal, dismissal, or dissolution at FoxMyself in Ch5 (Cue_0003); otherwise she is present through Ch6."
+ },
+ "eritrice": {
+  "character": "Eritrice",
+  "batch": "PP6",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "eritrice"
+   }
+  ],
+  "present": {
+   "3": "ip",
+   "4": "ip",
+   "5": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "e4e7fdadc0818ca44b3415d7b0238f10 World/Dialogs/c3/Mythic_Trickster/Council_1/Cue_0002: first Council session (Trickster)",
+   "3": "ea54bde3967913141a7faa7023fa3b4a World/Dialogs/c3/Mythic_Trickster/Council_Eritrice/Cue_0010: her private hall dialog",
+   "4": "236aec24e8053ce4aa0af44c0f9965ef World/Dialogs/c4/Mythic_Trickster/Council_Lexicon2/Cue_0001: she chairs a Ch4 session; hall reachable from Alushinyrra (EnterPoint AlushinyrraCity_MediumCityFromTricksterCouncil 1b14857dcb26a1f4a8c881854856b43e)",
+   "5": "5e4fabec535443649ae82b668445e50a World/Dialogs/c5/Mythic_Trickster/Council_5-1/Cue_0002: Ch5 session"
+  },
+  "verify": false,
+  "verify_chapters": [],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/eritrice.md:#### 1. Canon anchors; #### 2",
+   "roster-candidates.json:Eritrice.chapters",
+   "blueprints: World/Dialogs/c3|c4|c5/Mythic_Trickster/Council_*",
+   "blueprints: World/Areas/Act_4_MidnightIsles/AlushinyrraMediumCity/EnterPoints/AlushinyrraCity_MediumCityFromTricksterCouncil"
+  ],
+  "notes": "Trickster path only. Met at Council_1 in Ch3. The hall is reachable in Ch3, in Ch4 via Alushinyrra, and in Ch5 until the Council fight. After 5-2 the Council stops convening (epilogue Cue_0568); no Ch6 presence."
+ },
+ "chadali": {
+  "character": "Chadali",
+  "batch": "PP6",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "chadali"
+   }
+  ],
+  "present": {
+   "3": "ip",
+   "4": "ip",
+   "5": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "f674c7cfeac2f364097f5479e810415d World/Dialogs/c3/Mythic_Trickster/Council_Chadali/Cue_0001: her private hall dialog (cookie offer)",
+   "3": "bd0307cf19804bb4fa7bf1ec8dc636c6 World/Dialogs/c3/Mythic_Trickster/Council_2/Cue_0013: speaks in a Ch3 session",
+   "4": "d2abdf1ded96b0a4994603c03fedb841 World/Dialogs/c4/Mythic_Trickster/Council_Lexicon2/Cue_0023: speaks in the Ch4 session",
+   "5": "dfd57a47e39fa1f4fa1f811f5fe02591 World/Dialogs/c5/Mythic_Trickster/Council_5-1/Cue_0001: the orange guess, Ch5"
+  },
+  "verify": false,
+  "verify_chapters": [],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/chadali.md:#### 1. Canon anchors",
+   "roster-candidates.json:Chadali.chapters",
+   "blueprints: World/Dialogs/c3|c4|c5/Mythic_Trickster/Council_*"
+  ],
+  "notes": "Trickster path only. First seen at Council_1 in Ch3. Present in Ch3\u20135 sessions, including Council_Lexicon2 in Ch4. The 5-2 fight leaves her unconscious with her essence extracted, not dead. The Council then disbands; no Ch6 presence."
+ },
+ "horzalah": {
+  "character": "Horzalah",
+  "batch": "when-written",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "horzalah"
+   }
+  ],
+  "present": {
+   "4": "ip",
+   "5": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "fc1030e8724b086479d7ec2a52aae2a5 World/Dialogs/Companions/CompanionQuests/Grimbor/Q2_Ch4_QuestionOfReputation/HorzalahFirst/Cue_0001: first sight at the Assassins' Guild",
+   "4": "fc1030e8724b086479d7ec2a52aae2a5 HorzalahFirst/Cue_0001 (Ch4 Greybor Q2; unit Act_4 AssassinsGuild/Horzalah_GreyborQ2 b7b3a7ce5bf8b4c49a2187e42e07a99a)",
+   "5": "c36f1402b4484824cbdcb83967b86823 World/Dialogs/Companions/CompanionQuests/Grimbor/Q3_Ch5_PriceOfLoyalty/Horzalah_Ambush/Cue_0053: in person, Ch5 ambush (unit Act_5 GreyborQ3 38f0acf8ba7c3b64b87369d478014fda)"
+  },
+  "verify": false,
+  "verify_chapters": [],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/horzalah.md:## 1. Canon, verified",
+   "roster-candidates.json:Horzalah.chapters"
+  ],
+  "notes": "Ch4 in Alushinyrra, as a projection at the Guild (Greybor Q2, or Demon-path Yozz_InTheGuild). Ch5 in person at the Greybor Q3 ambush, which needs Greybor. She is then killed or teleports away (Horzalah_Mercy Cue_0007); no Ch6 presence."
+ },
+ "kaylessa": {
+  "character": "Kaylessa",
+  "batch": "PP2",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "kaylessa"
+   }
+  ],
+  "present": {
+   "1": "ip",
+   "2": "ip",
+   "3": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "2d7d6df431933024591e74d6dfd873e4 World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Cue_0001: wounded elf in burning Kenabres (unit Act_1 KenabresBurning/Kaylessa dfa0d3a840181be4da6091bf0ca11806)",
+   "1": "2d7d6df431933024591e74d6dfd873e4 Kaylessa_main/Cue_0001: Ch1 Kenabres meeting",
+   "2": "3816ee74d38f4333b40847867b9df467 World/Etudes/Common/WrathOfTheRighteous/Chapter02/WarCamp_Default/WarCamp_DefaultPeaceful/WarCamp_Kaylessa: disguised at the Ch2 warcamp (unit KaylessaDisguised a1569a0739314d04cb8af1d47dcffbe0)",
+   "3": "8a508cc820c1be942b951465f3d7784c World/Areas/Random_Encounters/Special_Encounters/Chapter_3/SE_Kaylessa_FornAmbus: Ch3 ambush; Kaylessa_Reveal/Cue_0037 58f994154e180a147a4ab18381f9bc8c"
+  },
+  "verify": false,
+  "verify_chapters": [],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/kaylessa.md:## 1. Canon anchors",
+   "13-PACING-PASS.md:\u00a72 (Ch1 wound)",
+   "roster-candidates.json:Kaylessa.chapters",
+   "blueprints: World/Dialogs/NPC_Common/Kaylessa"
+  ],
+  "notes": "Met in Ch1 Kenabres and seen disguised at the Ch2 warcamp; Anevia can expose her there. The Ch3 Forn ambush ends in her death on every path (Kaylessa_Reveal: \"I never said you had a choice\"). She dies early if attacked in Ch1\u20132 (Kaylessa_dead). Absent from Ch4 on."
+ },
+ "dorgelinda": {
+  "character": "Dorgelinda Stranglehold",
+  "batch": "PP5",
+  "friendship": false,
+  "routes": [
+   {
+    "relationship": "dorgelinda"
+   }
+  ],
+  "present": {
+   "3": "ip",
+   "4": "remote",
+   "5": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "d94aa015becda004ea2484ea8a50fff7 World/Crusade/RankUps/Logistics/Logistics_2/Cue_0001: introduces herself as chair of the Logistics Council (Drezen, Ch3)",
+   "3": "7c5855fd836e8ce46b5104bffd3c8ca0 World/Crusade/RankUps/Logistics/Logistics_5/Cue_0001: Ch3 tribunal (the dialog increments Chapter3Rank5Counter)",
+   "4": "c6be8cc816ed47e6929735f877abb229 LogisticsOfficer_InDrezen: her office etude keeps her in Drezen while the party is in the Abyss",
+   "5": "e247ef321268e0f4da5f20edb24985f5 World/Crusade/RankUps/Logistics/Logistics_6/Cue_0001: \"You really did come back from the Abyss itself!\""
+  },
+  "verify": false,
+  "verify_chapters": [],
+  "sources": [
+   "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/dorgelinda-stranglehold.md:#### Canon facts",
+   "roster-candidates.json:Dorgelinda.chapters",
+   "blueprints: World/Crusade/RankUps/Logistics/*"
+  ],
+  "notes": "Drezen crusade officer from Ch3 (Logistics rank-ups 2\u20135). Remote in Ch4; back in person in Ch5 (Logistics_6, 8-1/8-2). The Locust path removes her office (swarm; never Trickster). No Ch6 presence."
+ }
+}

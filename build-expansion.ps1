@@ -28,6 +28,11 @@ try {
     # Static gate (GLOBAL-15): structure, dead gates, TypeIds, native bindings, released-save references.
     & $pythonPath tools/rrt_verify.py --strict --quiet --story development/Story.json --game $GameDir
     if ($LASTEXITCODE) { throw 'Static verification failed (tools/rrt_verify_report.txt)' }
+    # Pacing lint (handoff 13 section 6): REVIEW and WARN lines are advisory; a HARD violation or a bad availability map fails.
+    & $pythonPath -m unittest tests.test_pacing_lint
+    if ($LASTEXITCODE) { throw 'Pacing lint tests failed' }
+    & $pythonPath tools/pacing_lint.py --story development/Story.json --availability tools/pacing-availability.json
+    if ($LASTEXITCODE) { throw 'Pacing lint failed: a hard violation, or an invalid tools/pacing-availability.json' }
     & $dotnetPath build narrator/Narrator.csproj -c Release --nologo -v quiet
     if ($LASTEXITCODE) { throw 'Narrator build failed' }
     & $dotnetPath run --project tests/RulesTests.csproj -c Release -- development/Story.json

@@ -1,0 +1,16 @@
+{
+ "characters": [
+  {
+   "character": "Alpha",
+   "relationship_id": "alpha"
+  },
+  {
+   "character": "Beta",
+   "relationship_id": "beta"
+  },
+  {
+   "character": "Gamma",
+   "relationship_id": "gamma"
+  }
+ ]
+}

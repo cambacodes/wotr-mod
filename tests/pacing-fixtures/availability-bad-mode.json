@@ -1,0 +1,84 @@
+{
+ "_roster": [
+  {
+   "character": "Alpha",
+   "relationship": "alpha"
+  },
+  {
+   "character": "Beta",
+   "relationship": "beta"
+  },
+  {
+   "character": "Gamma",
+   "relationship": "gamma"
+  }
+ ],
+ "alpha": {
+  "character": "Alpha",
+  "routes": [
+   {
+    "relationship": "alpha"
+   }
+  ],
+  "present": {
+   "1": "ip",
+   "2": "ip",
+   "3": "ip",
+   "4": "ip",
+   "5": "ip"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "0123456789abcdef0123456789abcdef fixture cue",
+   "1": "0123456789abcdef0123456789abcdef fixture",
+   "2": "0123456789abcdef0123456789abcdef fixture",
+   "3": "0123456789abcdef0123456789abcdef fixture",
+   "4": "0123456789abcdef0123456789abcdef fixture",
+   "5": "0123456789abcdef0123456789abcdef fixture"
+  },
+  "verify": false
+ },
+ "beta": {
+  "character": "Beta",
+  "routes": [
+   {
+    "relationship": "beta"
+   }
+  ],
+  "present": {
+   "3": "ip",
+   "4": "ip",
+   "5": "ip"
+  },
+  "exceptions": {
+   "5": "none: fixture exception"
+  },
+  "evidence": {
+   "first_met": "0123456789abcdef0123456789abcdef fixture cue",
+   "3": "0123456789abcdef0123456789abcdef fixture",
+   "4": "0123456789abcdef0123456789abcdef fixture",
+   "5": "0123456789abcdef0123456789abcdef fixture"
+  },
+  "verify": true,
+  "verify_chapters": [
+   "4"
+  ]
+ },
+ "gamma": {
+  "character": "Gamma",
+  "routes": [
+   {
+    "relationship": "gamma"
+   }
+  ],
+  "present": {
+   "3": "letter"
+  },
+  "exceptions": {},
+  "evidence": {
+   "first_met": "0123456789abcdef0123456789abcdef fixture cue",
+   "3": "0123456789abcdef0123456789abcdef fixture"
+  },
+  "verify": false
+ }
+}
