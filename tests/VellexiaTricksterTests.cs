@@ -219,6 +219,17 @@ internal static class VellexiaTricksterTests
         check(Program.Walk(unmirror, failedReady, (page, _) => failedPages.Add(page)).Any(r => r.Has(P + "unmirrored"))
               && failedPages.Contains("no_sparks"), "Trk_Vellexia_PathFailedUnmirror: no sparkless telling.");
 
+        // Trk_Vellexia_NoPowerUnmaking (polish batch 9): no Trickster sparks or backwards spell does the unmaking or wakes the
+        // canvas; the Commander pays (the house through Vask, the painter's sitting) and she pays (bare walls, her hands).
+        foreach (var s in new[] { unmirror, unmirrorStores, likeness, likenessStores })
+            check(!s.Nodes.Any(n => n.Text.Contains("Sparks come off your fingers") || n.Text.Contains("You say her spell backwards")),
+                "Trk_Vellexia_NoPowerUnmaking: the Trickster's power still does the unmaking in " + s.Id);
+        check(unmirror.Nodes.Single(n => n.Id == "glass").Choices.Where(ch => ch.Next == "nice" || ch.Next == "no_sparks")
+                  .All(ch => ch.Crusade?.Resource == "Finances" && ch.Crusade.Amount < 0),
+            "Trk_Vellexia_NoPowerUnmaking: the house is not bought.");
+        check(likeness.Nodes.Single(n => n.Id == "spell").Choices.All(ch => ch.Set.Contains(P + "cost.sat_for_painter")),
+            "Trk_Vellexia_NoPowerUnmaking: the painter's sitting costs the Commander nothing.");
+
         // Trk_Vellexia_Sword: the portrait marked in the gallery, taken the night she died.
         var sword = World(story, 4, "trickster", "trickster.ever", "vellexia.greeted", "vellexia.final_fight", "vellexia.dead",
                           "vellexia.slaves_freed", P + "portrait_marked");
