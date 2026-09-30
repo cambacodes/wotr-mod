@@ -360,17 +360,18 @@ partner("targona", "targona", "targona.committed", "targona.closed", "The Quiet 
         page_p('''The Commander kept the promise at the rift. {mf|He|She} did not call on her brother's light, though it would have been the easiest thing in the world, and she heard afterwards that {mf|he|she} had not. She did not say anything. She put a second chair by her desk in the ward, and it was never empty for long.''', requires=(T + "cost.light_sealed",), forbids=(called("targona"),)),
         page_p('''At the rift the Commander called on Lariel's light, and broke the one promise she had asked of {mf|him|her}. She learned of it within the week. She stayed; an angel keeps her word even when others do not. But she sat at the other end of the ward's table for a year, and it was a year before she let the Commander carry a lamp for her again.''', requires=(called("targona"), T + "cost.light_sealed")),
         page_p('''She had told Heaven everything, as her price for coming back. Heaven, it seemed, had listened, and had not recalled her. She took that as an answer and did not ask for another.''', any_groups=[[T + "cost.she_told_heaven", T + "cost.raised_openly"]]),
-        page_p('''She never forgave the joke at her bier, and she never pretended to. She served beside the Commander for the rest of her long life, courteous, exact, and always at the far end of any room they shared.''', requires=(T + "cost.unforgiven",)),
+        page_p('''She never forgave the joke at her bier, and she never pretended to. She served beside the Commander for the rest of her long life, courteous, exact, and always at the far end of any room they shared.''', requires=(T + "cost.unforgiven",), forbids=(T + "forgiven",)),
+        page_p('''She forgave the joke at her bier in the end, when it had been apologised for properly, but she never forgot it. Some evenings she would bring it up at table, precisely, word for word, and watch the Commander wince, and then pour the wine.''', requires=(T + "cost.unforgiven", T + "forgiven")),
     ), declined=T + "declined",
     deal=[[T + "cost.raised_openly"], [T + "cost.she_told_heaven"], [T + "cost.raised_the_hard_way"], [T + "cost.light_sealed"]],
     call=call('''[Call on Lariel's light] "Lariel, whatever of you is left in me: one more quiet miracle."''',
-        '''{n}Something warm and patient moves under your ribs: a light that belongs to someone's brother, lent to you in an infirmary and never quite given back.{/n}''',
+        '''{n}Something warm and patient moves under your ribs: a light that belongs to someone's brother, that went into you in the rock under Kenabres and never quite became yours.{/n}''',
         (PLAIN_CHOICE, (), (), (T + "cost.light_sealed",)),
         ('''[Break your promise to Targona] "Forgive me. I need it."''', (), (T + "cost.light_sealed",), ()),
         ("[Keep your promise] Leave the light where it is.", None, (T + "cost.light_sealed",), ())),   # resolves, not called
     # Sol quality pass (Targona INT): RanRomance's own Targona romance, completed through its Angelic Treatment on this
     # path, is a commitment for the coda too (targona.trickster.parent_romanced; its correspondence never sets committed).
-    page_commit_groups=[["targona.committed"], [T + "parent_romanced"]])
+    page_commit_groups=[["targona.committed"], [T + "late_committed"], [T + "parent_romanced"]])
 
 D = "dorgelinda.trickster."
 partner("dorgelinda", "dorgelinda", "dorgelinda.committed", "dorgelinda.closed", "The Open Line",
