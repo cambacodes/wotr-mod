@@ -660,15 +660,15 @@ meet(P + "commit", "Hilt first", '"You wanted to talk to me?"', [
           flags=(COMMITTED, KNIFE_HELD), requires=(BEAST_FED,))),
     kay("took", '''{n}You close your hand on the hilt. She lets go of it slowly, one finger at a time, as though she were letting go of a rope over a drop.{/n}
 "There." {n}She looks at her empty hand.{/n} "That's the lightest I've been since Kyonin."
-{n}Then she reaches up and pulls your face down to hers and kisses you, hard, with her fingers in your hair and her fangs careful, the way a soldier seals a bargain with the only thing she has left to give.{/n}''',
+{n}Then she reaches up and pulls your face down to hers and kisses you, hard, with her fingers in your hair and her fangs careful.{/n}''',
         c("Continue", "after")),
     kay("back", '''{n}Your fingers close over hers on the hilt, and push the knife gently back against her own palm.{/n}
-{n}She stares at your hand on hers. Something in her face breaks open, and she lets it.{/n} "You'd leave it with me. After everything you've seen." {n}Her voice has gone rough.{/n} "Nobody's ever trusted me with my own death, soldier. They all wanted to hold it for me."
+{n}She stares at your hand on hers. Something in her face breaks open, and she lets it.{/n} "You'd leave it with me. After everything you've seen." {n}Her voice has gone rough.{/n} "Nobody's ever left my death in my own hand, soldier. They take it off me, or they hold it for me."
 {n}She kisses you with the knife still between your joined hands, hard, her fangs careful, and doesn't let go of either.{/n}''',
         c("Continue", "after")),
     kay("not_after", '''"No." {n}She pulls her hand out from under yours and pushes the hilt into your palm, and holds your fingers closed round it with both of hers.{/n}
 "Not after the cells. I know what that hand does when it's left alone. Hold it for me, soldier. That's what I'm asking. That's all I'm asking."
-{n}And then she kisses you, hard, as if she were settling a debt.{/n}''',
+{n}And then she kisses you, hard, and doesn't let go of your fingers.{/n}''',
         c("Continue", "after")),
     kay("after", '''{n}When she lets you go she's breathing fast, and her eyes are very red in the dark of the awning.{/n}
 "Tomorrow night. Not here. Somewhere I choose." {n}She pulls the shawl back up to her eyes, and over it she looks younger than you've ever seen her.{/n} "Mind the rules, soldier."''',
@@ -721,7 +721,10 @@ KEPT_PARAS = (
     p("{n}The Winter Council's records list the drow Kaylessa as dead in Mendev, killed in the same night as the darkhunter Forn Autumn Haze. The Council never asked who killed whom. It preferred not to know.{/n}", requires=(SWAP_CLEAN,), forbids=(SUCCESSOR,)),
     p("{n}The Winter Council's records list the drow Kaylessa as dead in Mendev, killed in the same night as the nameless darkhunter it sent after Forn Autumn Haze. The Council never asked who killed whom. It preferred not to know.{/n}", requires=(SWAP_CLEAN, SUCCESSOR)),
     p("{n}In the living world the clock never stopped. Some seasons it moved and some it did not, and she tied a knot for every step it took and hung the strips on a nail by the door. The Commander learned to count them too, and never once said the number aloud. The Kyonin dagger hung on the next nail.{/n}", any_groups=((SWAP_CLEAN, SWAP_FUMBLED),)),
-    p("{n}The Winter Council knew she lived. Twice more it sent hunters. The first was found in the Drezen ravine with his own arrows in him. The second never arrived; the crusade's border patrol said he had turned for home, and would not say what they had told him.{/n}", requires=(COUNCIL_KNOWS,)),
+    p("{n}The Winter Council knew she lived. Twice more it sent hunters. The first was found in the Drezen ravine with his own arrows in him. The second never arrived; the crusade's border patrol said he had turned for home, and would not say what they had told him.{/n}", requires=(COUNCIL_KNOWS,),
+      forbids=("kaylessa.clearing.hunter_turned_back", "kaylessa.clearing.hunter_hers")),
+    p("{n}The Winter Council knew she lived. The hunter it sent after the ravine walked back into Kyonin with both hands broken and a letter pinned to his coat in her writing, and the Council hid him as it had hidden everything else. It sent no one after him.{/n}", requires=(COUNCIL_KNOWS,),
+      any_groups=(("kaylessa.clearing.hunter_turned_back", "kaylessa.clearing.hunter_hers"),)),
     p("{n}She never again wore a face that was not her own. When she went among people she went wrapped to the eyes, or she went as she was, and let them stare.{/n}", requires=(AMULET,)),
     p("{n}The Commander carried a white scar high on one shoulder, from a Kyonin arrow meant for someone else. She would put her thumb on it sometimes, absently, in company, the way other women touch a ring.{/n}", requires=(ARROW,)),
     p("{n}In Kyonin a drow woman named Tessariel stood before the Winter Council with her own face on and told them where she had learned what she knew. The Council had her removed. It could not have the words removed. They went round the border forts for years.{/n}", requires=(WASP_SENT,)),
@@ -744,7 +747,8 @@ SCENES.append(scene(P + "epilogue.commit", "", "KaylessaEpilogue", 6, "", [
 {n}"Your choice, soldier," she said. "It always was. I only wanted to be sure you knew it."{/n}
 {n}The Commander closed a hand round the hilt. She stayed. She kept her rules, and she kept her knife where one of them could reach it, and she did not say which one, and she was never cured, and she checked the clock every morning she had.{/n}''',
         paragraphs=(
-            p("{n}The beast in her never moved again from where it had stopped on the night of her death. She checked it every morning of her life.{/n}", requires=(STALLED,)),
+            p("{n}The beast in her never moved again from where it had stopped on the night of her death. She checked it every morning of her life.{/n}", requires=(STALLED,), forbids=(BEAST_FED,)),
+            p("{n}The beast had tasted something in the crusade's cells, and it did not forget. Some mornings the thumb on the clock slipped a little, and on those mornings she put the Kyonin dagger where the Commander could reach it before she said good morning.{/n}", requires=(BEAST_FED,)),
             p("{n}She never again wore a face that was not her own.{/n}", requires=(AMULET,)),
             p("{n}Tessariel's story reached every border fort in Kyonin before the Winter Council could bury it.{/n}", requires=(WASP_SENT,)),
             p("{n}In the living world the clock never stopped. She tied a knot for every step it took, and hung the strips by the door beside the knife.{/n}", any_groups=((SWAP_CLEAN, SWAP_FUMBLED),)),

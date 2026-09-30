@@ -736,9 +736,9 @@ meet(GIRLS_FACE, "The courier's face", '"You keep touching your throat."', [
 
 meet(TRANCE, "Four hours", '"You look like you haven\'t slept."', [
     kay("start", '''"I haven't. I don't, not properly." {n}She has dark smudges under her eyes, visible even on her skin, and she's holding her tea with both hands. The bells for the night watch are ringing along the wall; somewhere north the sky flickers where the Wound is restless.{/n}
-"Elves don't sleep, soldier. Did you know? We trance. Four hours, sitting up, awake and not awake, remembering things in order. That's how you keep three hundred years straight in your head."''',
+"I used to sleep like a stone, soldier. In Kyonin, in the Wasps' loft, eight of us in a row and me snoring loudest, they said. I slept the night before every job. I slept the night before Anemora."''',
         c('"And now?"', "now")),
-    kay("now", '''"Now I sleep. Like you. Lying down, gone, and then back." {n}Her mouth twists.{/n} "The curse took the trance. I didn't notice at first. I just noticed that I'd started to dream."
+    kay("now", '''"Now I lie down and I'm gone for an hour, and then I'm back, and I'm awake till the bells." {n}Her mouth twists.{/n} "I didn't notice it at first. I just noticed that the dreams had started."
 "I dream about the Worldwound every night. The prisoners. Tessariel holding the lamp. The sound a person makes when you've found the right place." {n}She sips the tea without tasting it.{/n} "So I stay up, and sit under this awning, and watch your city not burn."''',
         c('"What do you dream when it isn\'t the Worldwound?"', "other"),
         c('"Sleep in the citadel. I\'ll sit up and watch."', "watch"),

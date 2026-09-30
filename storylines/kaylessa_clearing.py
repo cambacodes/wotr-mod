@@ -13,7 +13,7 @@ Intimacy (Directive 12): the clearing, by starlight she can see by and the Comma
 """
 from story_format import c, scene
 from storylines.kaylessa_wasps import SOLDIER
-from storylines.kaylessa_trickster import (AMULET, ARROW, BEAST_FED, BEGGED, CLOSED, COMMITTED, COUNCIL_KNOWS, DEAD_L,
+from storylines.kaylessa_trickster import (FIRST_WORDS, AMULET, ARROW, BEAST_FED, BEGGED, CLOSED, COMMITTED, COUNCIL_KNOWS, DEAD_L,
                                            DREZEN, HER_ARROW, KNIFE_BACK, KNIFE_HELD, LEFT, MET, PRESENCE, REL, SHYKA_RAISED,
                                            STALLED, SWAP_CLEAN, SWAP_FUMBLED, TOMB, UNIT, WASP_SENT, kay, nar)
 
@@ -83,8 +83,8 @@ away(NIGHT, "Where I was meant to die", [
 "It's his instead. I wanted to see it with you. I wanted to do something down here that isn't dying."''',
         c("Continue", "desire")),
     nar("desire", '''{n}She pulls the shawl down, and then the hood, and then, with quick soldier's fingers, the buckles of the courier's cloak. It drops round her boots. She kicks it flat onto the grass with one foot and stands on it, looking at you, chin up.{/n}''',
-        c("Continue", "like_met", requires=(MET,)),
-        c("Continue", "like_stranger", forbids=(MET,))),
+        c("Continue", "like_met", requires=(FIRST_WORDS,)),
+        c("Continue", "like_stranger", forbids=(FIRST_WORDS,))),
     kay("like_met", '''"Anemora made this body to prove a point." {n}Her voice is low and rough and not quite steady.{/n} "Kyonin wants it in the ground to hide the point. I've been hiding it under rags since the Worldwound. Tonight it's mine, and I want you to have it, and I want you to look at it while you do."
 "When we met, I asked you something. What are you looking at, soldier?" {n}Her mouth moves.{/n} "Like what you see?"''',
         c('[Flirt] "Very much. Show me the rest."', "rest"),

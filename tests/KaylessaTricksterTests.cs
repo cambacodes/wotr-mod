@@ -278,6 +278,20 @@ internal static class KaylessaTricksterTests
         check(wantPages.Contains("start_fresh") && !wantPages.Contains("start") && !wantPages.Contains("know")
               && metPages.Contains("start") && !metPages.Contains("start_fresh") && !wantScene.Nodes.Any(n => n.Text.Contains("Kenabres", StringComparison.Ordinal)),
             "Her first words are recalled for a Commander who never heard them.");
+        var nightScene = S(N + "where_i_was_meant_to_die");
+        var desireNode = nightScene.Nodes.Single(n => n.Id == "desire");
+        check(desireNode.Choices.Single(c => c.Next == "like_met").Requires.Contains("kaylessa.first_words_seen")
+              && desireNode.Choices.Single(c => c.Next == "like_stranger").Forbids.Contains("kaylessa.first_words_seen"),
+            "The night recalls first words that a started dialogue does not prove.");
+        var commitPage = pages.Single(p => p.Id == P + "epilogue.commit");
+        check(commitPage.Nodes[0].Paragraphs.Single(q => q.Requires.Contains(P + "cost.dark_fate_stalled")).Forbids.Contains(P + "cost.beast_fed")
+              && commitPage.Nodes[0].Paragraphs.Any(q => q.Requires.Contains(P + "cost.beast_fed")), "The late page forgets the fed beast.");
+        var hunterParas = pages.Single(p => p.Id == P + "epilogue.no_lamb").Nodes[0].Paragraphs.Where(q => q.Requires.Contains(P + "cost.council_knows")).ToList();
+        check(hunterParas.Count == 2 && hunterParas.Single(q => q.Text.Contains("his own arrows")).Forbids.Contains(N + "hunter_turned_back")
+              && hunterParas.Any(q => q.AnyGroups.Any(g => g.Contains(N + "hunter_turned_back") && g.Contains(N + "hunter_hers"))),
+            "The page replaces the played hunter with an unplayed killing.");
+        check(!S(W + "trance").Nodes.Any(n => n.Text.Contains("trance", StringComparison.OrdinalIgnoreCase) && n.Text.Contains("Elves", StringComparison.Ordinal)),
+            "An invented elven trance is stated as canon.");
         var nameScene = S(N + "once_when_it_counts");
         var namePages = new HashSet<string>();
         Program.Walk(nameScene, World(story, 5, "trickster.ever", Committed, P + "knife_held", N + "grey_light"), (page, _) => namePages.Add(page));
