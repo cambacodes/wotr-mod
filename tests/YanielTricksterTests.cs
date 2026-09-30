@@ -251,7 +251,8 @@ internal static class YanielTricksterTests
         check(Through(wall, refusedFane, "start", 0).Any() && Avail(wall, refusedFane) && wall.TricksterDevice && Rules.IsRemote(wall) && wall.Kind == "visit",
             "Trk_Yaniel_LateWall: a Commander who gave the cuff back at the Fane gets no second chance on the walls.");
 
-        // Trk_Yaniel_KillStands: the kill is the player's own choice; nothing of hers plays after it.
+        // Trk_Yaniel_KillStands (binding coordinator ruling R5, 2026-09-30: "Her Fane death stays canon ONLY if it is the player's own
+        // choice"; every native kill is a player answer): nothing of hers plays after it.
         foreach (var extra in new[] { new[] { "yaniel.fane_doubt", "yaniel.radiance_plus1" }, new[] { Swapped, Carries, Returned, "iz.done" } })
             foreach (var chapter in new[] { 3, 5 })
             {
@@ -262,7 +263,7 @@ internal static class YanielTricksterTests
             "Trk_Yaniel_KillStands: a page plays after the kill.");
         // Never freed is an entry condition: no Fane cue, no latch, nothing opens.
         var never = Later(story, Observe(story, World(story, 5, "trickster", "trickster.ever", "yaniel.radiance_plus1"), "irabeth.chapter_five"), 72);
-        check(!own.Any(s => Avail(s, never)), "Never freed: a Yaniel scene opens for a woman who was never cut down.");
+        check(!own.Any(s => Avail(s, never)), "Never freed (coordinator ruling R5: an accepted entry condition, a player-caused closed state): a Yaniel scene opens for a woman who was never cut down.");
 
         // Trk_Yaniel_AllRomanceWalk: carries (the letter from Iz) and judges (her hands), each to the commit and the niche.
         var carried = Take(swap, World(story, 3, "trickster", "trickster.ever", "yaniel.fane_doubt", "yaniel.radiance_plus1"), "kept_back", 1, Swapped, Carries);
@@ -458,6 +459,18 @@ internal static class YanielTricksterTests
               && Avail(S(P + "ch4.block"), Later(story, World(story, 4, "trickster.ever", Swapped, P + "ch4_seen"), 24))
               && Ch(S(P + "ch4.block"), "choose", 1).Check?.Skill == "SkillThievery" && Ch(S(P + "ch4.block"), "choose", 0).Crusade?.Amount == -50,
             "The Chapter 3 letter or the Chapter 4 memory does not arrive.");
+        // After she looks at the wrist, the ending follows what the Commander did with the iron.
+        var wrist = S(P + "after.wrist");
+        var wristW = Later(story, World(story, 5, "trickster", "trickster.ever", Swapped, Carries, Returned, Verdict, Committed, Shackle, Niche, P + "cuff_worn", P + "after.watch_stood"), 24);
+        var pocketed = Take(wrist, wristW, "mark2", 1, P + "cuff_pocketed", P + "after.wrist_seen");
+        var together6 = S(P + "epilogue.together").Nodes[0];
+        var end6 = World(story, 6, pocketed.Flags.Where(f => f.StartsWith("yaniel.", StringComparison.Ordinal) || f == "trickster.ever").ToArray());
+        check(!together6.Paragraphs.Any(q => Rules.ParagraphVisible(q, end6) && q.Text.Contains("never took the iron off"))
+              && together6.Paragraphs.Count(q => Rules.ParagraphVisible(q, end6) && q.Text.Contains("in a pocket")) == 1,
+            "The ending says the Commander never took the iron off after the Commander pocketed it.");
+        check(Avail(ch4, Later(story, World(story, 4, "trickster.ever", Swapped, "minagho.dead"), 48))
+              && Paths(ch4, Later(story, World(story, 4, "trickster.ever", Swapped, "minagho.dead"), 48)).All(o => o.path.Any(e => e.node == "city_dead")),
+            "The Chapter 4 memory places a dead Minagho somewhere in the city.");
         Console.WriteLine("PASS: Yaniel Trickster (Trk_Yaniel_*): the swap on both Fane branches, the walls at 24 h for every Radiance state, "
                           + "the kill that stands, the oath judged after Iz, Minagho, the trade and the vigil, the niche, the reactors, the pages, "
                           + beats.Length + " beats.");

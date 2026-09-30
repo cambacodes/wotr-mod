@@ -402995,7 +402995,7 @@
         {
           "Id": "kept",
           "Speaker": "Yaniel",
-          "Text": "{n}She looks at the sword in her hands for a long breath, and Radiance looks back, if a sword can: the glow gathers along the edge and lies there, warm and content.{/n}\n\"Mine were first,\" {n}she says.{/n} \"Mine were first, and then they were Minagho's, and then they were nothing's for seventy years.\" {n}She turns the blade so the light runs along it.{/n} \"It knew me. I told you it was an instinct that it would go to Deskari in your hands. It was an old woman's instinct, from a pit. The sword has a better one.\"\n{n}She swallows.{/n} \"Iomedae forgive me. I was giving it away because I was afraid to be the one who failed it twice.\"",
+          "Text": "{n}She looks at the sword in her hands for a long breath, and Radiance looks back, if a sword can: the glow gathers along the edge and lies there, warm and content.{/n}\n\"Mine were first,\" {n}she says.{/n} \"Mine were first, and then they were Minagho's, and then they were nothing's for a lifetime.\" {n}She turns the blade so the light runs along it.{/n} \"It knew me. I told you it was an instinct that it would go to Deskari in your hands. It was an old woman's instinct, from a pit. The sword has a better one.\"\n{n}She swallows.{/n} \"Iomedae forgive me. I was giving it away because I was afraid to be the one who failed it twice.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -403590,7 +403590,7 @@
         {
           "Id": "late_oath",
           "Speaker": "Yaniel",
-          "Text": "{n}She holds it for the space of three breaths. Then she turns it, carefully, and puts it back across your hands.{/n}\n\"No. That is a sword for someone who has not spent seventy years on a hook, and I will not have it said that the first thing Yaniel did on the walls of Drezen was take the crusade's best blade off its Commander.\" {n}Her eyes go to the cuff in your fist.{/n} \"But keep that, since you are so fond of it. On one condition.\"",
+          "Text": "{n}She holds it for the space of three breaths. Then she turns it, carefully, and puts it back across your hands.{/n}\n\"No. That is a sword for someone who has not hung on a hook, and I will not have it said that the first thing Yaniel did on the walls of Drezen was take the crusade's best blade off its Commander.\" {n}Her eyes go to the cuff in your fist.{/n} \"But keep that, since you are so fond of it. On one condition.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404081,7 +404081,7 @@
         {
           "Id": "sleep",
           "Speaker": "Yaniel",
-          "Text": "\"Sleep.\" {n}She considers the word.{/n} \"I slept on a hook for seventy years, Commander. It was never restful. I will try a bed when I have made sure nothing is coming over the wall to take it off me.\" {n}She turns to go, and stops.{/n} \"Come up anyway.\"",
+          "Text": "\"Sleep.\" {n}She considers the word.{/n} \"I slept on a hook, Commander. It was never restful. I will try a bed when I have made sure nothing is coming over the wall to take it off me.\" {n}She turns to go, and stops.{/n} \"Come up anyway.\"",
           "Choices": [
             {
               "Text": "[Let her go.]",
@@ -404771,7 +404771,7 @@
         {
           "Id": "held_unproven",
           "Speaker": "Yaniel",
-          "Text": "{n}She studies your face the way she studied the edge, and shakes her head, slowly.{/n}\n\"I cannot tell. Seventy years of liars, Commander, and I cannot tell with you. I will not condemn you on nothing, and I will not say the oath stands either.\" {n}She stands.{/n} \"Carry it to the Threshold. I will believe it there. That is one thing. There is another thing, and it is not about the sword.\"",
+          "Text": "{n}She studies your face the way she studied the edge, and shakes her head, slowly.{/n}\n\"I cannot tell. All those liars, Commander, and I cannot tell with you. I will not condemn you on nothing, and I will not say the oath stands either.\" {n}She stands.{/n} \"Carry it to the Threshold. I will believe it there. That is one thing. There is another thing, and it is not about the sword.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -404903,7 +404903,7 @@
         {
           "Id": "broken",
           "Speaker": "Yaniel",
-          "Text": "\"You swore.\" {n}Not loud. She stands up, and the spear stands up with her.{/n} \"On that blade, with my hand on yours, in a pit under the ground where I had not heard anyone swear anything true in seventy years. And you had it in your pack when you went to Iz, or you did not, and either way it is not on your hip now, and you cannot show me where it went.\"\n{n}She looks away, down the stair, over the courtyard.{/n} \"I am not going to curse you. I have not got the heart for it. But I am going to say it plainly, once, so that it has been said: the oath is broken, and I heard it break.\"",
+          "Text": "\"You swore.\" {n}Not loud. She stands up, and the spear stands up with her.{/n} \"On that blade, with my hand on yours, in a pit under the ground where I had not heard anyone swear anything true since the siege. And you had it in your pack when you went to Iz, or you did not, and either way it is not on your hip now, and you cannot show me where it went.\"\n{n}She looks away, down the stair, over the courtyard.{/n} \"I am not going to curse you. I have not got the heart for it. But I am going to say it plainly, once, so that it has been said: the oath is broken, and I heard it break.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -405406,7 +405406,7 @@
         {
           "Id": "ask",
           "Speaker": "Yaniel",
-          "Text": "{n}She holds out her hand, palm up. It is steady. Her voice is not, quite.{/n}\n\"Well, Commander? It is a fair trade. It is the fairest one anybody has offered me in seventy years.\"",
+          "Text": "{n}She holds out her hand, palm up. It is steady. Her voice is not, quite.{/n}\n\"Well, Commander? It is a fair trade. It is the fairest one anybody has offered me since the city fell.\"",
           "Choices": [
             {
               "Text": "[Keep the shackle] \"No. You keep what I gave you. I keep what I took. Nobody's square.\"",
@@ -405463,7 +405463,7 @@
         {
           "Id": "yes",
           "Speaker": "Yaniel",
-          "Text": "{n}She stares at you. Her hand stays out a moment longer, empty, and then she lets it drop.{/n}\n\"Nobody's square,\" {n}she repeats.{/n} \"That is not a trade. That is a debt. Two debts, going the wrong way.\" {n}She crosses the room. Up close she smells of the wall, of cold stone and wind and the oil she uses on the sword.{/n} \"Do you know what Minagho used to say to me? That a thing you owe is a thing that owns you. She said it the way other people say good night.\"\n{n}She takes your face in both her hands. They are hard hands, callused in all the places a sword calluses a hand, and they are shaking.{/n} \"I would like very much to owe you something, and be owned by nothing,\" {n}she says, and kisses you.{/n}",
+          "Text": "{n}She stares at you. Her hand stays out a moment longer, empty, and then she lets it drop.{/n}\n\"Nobody's square,\" {n}she repeats.{/n} \"That is not a trade. That is a debt, going both ways.\" {n}She crosses the room. Up close she smells of the wall, of cold stone and wind and the oil she uses on the sword.{/n}\n{n}She takes your face in both her hands. They are hard hands, callused in all the places a sword calluses a hand, and they are shaking.{/n} \"I would like very much to owe you something, and be owned by nothing,\" {n}she says, and kisses you.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -405479,7 +405479,7 @@
         {
           "Id": "yes2",
           "Speaker": "Yaniel",
-          "Text": "{n}It is not a gentle kiss. It is the kiss of somebody who has been told she is dead for seventy years and has decided to argue. When she lets you go she does not step back; she leans her forehead on yours and breathes, hard, like a woman at the top of a stair.{/n}\n\"Tomorrow night,\" {n}she says.{/n} \"Not here. The pail is full, and I will not do this with a pail listening. I know a better place. Keep my iron, Commander. Keep it close.\"",
+          "Text": "{n}It is not a gentle kiss. It is the kiss of somebody who has been told she is dead and has decided to argue. When she lets you go she does not step back; she leans her forehead on yours and breathes, hard, like a woman at the top of a stair.{/n}\n\"Tomorrow night,\" {n}she says.{/n} \"Not here. The pail is full, and I will not do this with a pail listening. I know a better place. Keep my iron, Commander. Keep it close.\"",
           "Choices": [
             {
               "Text": "\"Close.\"",
@@ -405921,7 +405921,7 @@
         {
           "Id": "ask",
           "Speaker": "Yaniel",
-          "Text": "{n}She holds out her hand, palm up. It is steady. Her voice is not, quite.{/n}\n\"Well, Commander? It is a fair trade. It is the fairest one anybody has offered me in seventy years.\"",
+          "Text": "{n}She holds out her hand, palm up. It is steady. Her voice is not, quite.{/n}\n\"Well, Commander? It is a fair trade. It is the fairest one anybody has offered me since the city fell.\"",
           "Choices": [
             {
               "Text": "[Keep the shackle] \"No. You keep what I gave you. I keep what I took. Nobody's square.\"",
@@ -405978,7 +405978,7 @@
         {
           "Id": "yes",
           "Speaker": "Yaniel",
-          "Text": "{n}She stares at you. Her hand stays out a moment longer, empty, and then she lets it drop.{/n}\n\"Nobody's square,\" {n}she repeats.{/n} \"That is not a trade. That is a debt. Two debts, going the wrong way.\" {n}She crosses the room. Up close she smells of the wall, of cold stone and wind and the oil she uses on the sword.{/n} \"Do you know what Minagho used to say to me? That a thing you owe is a thing that owns you. She said it the way other people say good night.\"\n{n}She takes your face in both her hands. They are hard hands, callused in all the places a sword calluses a hand, and they are shaking.{/n} \"I would like very much to owe you something, and be owned by nothing,\" {n}she says, and kisses you.{/n}",
+          "Text": "{n}She stares at you. Her hand stays out a moment longer, empty, and then she lets it drop.{/n}\n\"Nobody's square,\" {n}she repeats.{/n} \"That is not a trade. That is a debt, going both ways.\" {n}She crosses the room. Up close she smells of the wall, of cold stone and wind and the oil she uses on the sword.{/n}\n{n}She takes your face in both her hands. They are hard hands, callused in all the places a sword calluses a hand, and they are shaking.{/n} \"I would like very much to owe you something, and be owned by nothing,\" {n}she says, and kisses you.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -405994,7 +405994,7 @@
         {
           "Id": "yes2",
           "Speaker": "Yaniel",
-          "Text": "{n}It is not a gentle kiss. It is the kiss of somebody who has been told she is dead for seventy years and has decided to argue. When she lets you go she does not step back; she leans her forehead on yours and breathes, hard, like a woman at the top of a stair.{/n}\n\"Tomorrow night,\" {n}she says.{/n} \"Not here. The pail is full, and I will not do this with a pail listening. I know a better place. Keep my iron, Commander. Keep it close.\"",
+          "Text": "{n}It is not a gentle kiss. It is the kiss of somebody who has been told she is dead and has decided to argue. When she lets you go she does not step back; she leans her forehead on yours and breathes, hard, like a woman at the top of a stair.{/n}\n\"Tomorrow night,\" {n}she says.{/n} \"Not here. The pail is full, and I will not do this with a pail listening. I know a better place. Keep my iron, Commander. Keep it close.\"",
           "Choices": [
             {
               "Text": "\"Close.\"",
@@ -406425,7 +406425,7 @@
         {
           "Id": "lamp",
           "Speaker": "Narrator",
-          "Text": "{n}She sets the lamp at the statue's feet, so that the stone woman is lit from below and watches the two of you with her painted eyes, and laughs at her: a real laugh, low and delighted and a little cruel.{/n}\n\"Look at her,\" {n}she says.{/n} \"The Holy Martyr. Seventy years they prayed to her, and she never once wanted anything.\" {n}She turns to you.{/n} \"I have wanted things every day of my life. Even on the hook. Especially on the hook.\"",
+          "Text": "{n}She sets the lamp at the statue's feet, so that the stone woman is lit from below and watches the two of you with her painted eyes, and laughs at her: a real laugh, low and delighted and a little cruel.{/n}\n\"Look at her,\" {n}she says.{/n} \"The Holy Martyr. They prayed to her the whole time I was on the hook, and she never once wanted anything.\" {n}She turns to you.{/n} \"I have wanted things every day of my life. Even on the hook. Especially on the hook.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -406441,7 +406441,7 @@
         {
           "Id": "want",
           "Speaker": "Yaniel",
-          "Text": "{n}She takes your face in two sword-callused hands and kisses you like someone breaking out of somewhere: hard, and then harder, with her teeth, as if the kiss were a wall and she meant to be on the other side of it by morning.{/n}\n\"I spent seventy years with things that wanted me,\" {n}she says, against your mouth.{/n} \"Minagho wanted me on a shelf. Areelu wanted me on a table. I do not want to be wanted, Commander. I want.\"",
+          "Text": "{n}She takes your face in two sword-callused hands and kisses you like someone breaking out of somewhere: hard, and then harder, with her teeth, as if the kiss were a wall and she meant to be on the other side of it by morning.{/n}\n\"I spent a lifetime with things that wanted me,\" {n}she says, against your mouth.{/n} \"Minagho wanted me on a shelf. Areelu wanted me on a table. I do not want to be wanted, Commander. I want.\"",
           "Choices": [
             {
               "Text": "[Pull her in.]",
@@ -406790,7 +406790,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}Yaniel of Drezen, the Holy Martyr, came back from the dead and would not stay holy. She took the flooded room in the old east gate tower and kept it for the rest of her life, though she could have had any house in the city, and she stood the night watch on the east wall whenever she pleased, which was often, and nobody ever again put her name on a roster without asking her first.{/n}\n{n}She never took the Commander's name and never gave her own away. What there was between them had no word in the Church's books and she did not look for one. She said she had spent seventy years being called things, and that the Commander was the only person who had ever called her nothing at all and simply held out a hand.{/n}\n{n}Every year, on the night the Fane fell, she knelt a vigil in front of her own statue in the cathedral, and at the morning bell she got up and went home, and on the way she laughed.{/n}",
+          "Text": "{n}Yaniel of Drezen, the Holy Martyr, came back from the dead and would not stay holy. She took the flooded room in the old east gate tower and kept it for the rest of her life, though she could have had any house in the city, and she stood the night watch on the east wall whenever she pleased, which was often, and nobody ever again put her name on a roster without asking her first.{/n}\n{n}She never took the Commander's name and never gave her own away. What there was between them had no word in the Church's books and she did not look for one. She said she had spent long enough being called things, and that the Commander was the only person who had ever called her nothing at all and simply held out a hand.{/n}\n{n}Every year, on the night the Fane fell, she knelt a vigil in front of her own statue in the cathedral, and at the morning bell she got up and went home, and on the way she laughed.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -406931,6 +406931,26 @@
               "Text": "{n}The Commander never took the iron off. Yaniel said it looked ridiculous on a free wrist and was the only piece of jewellery she had ever given anyone, and that she would break the arm of whoever tried to remove it.{/n}",
               "Requires": [
                 "yaniel.trickster.cuff_worn"
+              ],
+              "Forbids": [
+                "yaniel.trickster.after.wrist_seen"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The Commander took the iron off once, so that Yaniel could look at the wrist under it, and put it back on the same day, and never took it off again. She said it looked ridiculous on a free wrist and that she would break the arm of whoever tried to remove it.{/n}",
+              "Requires": [
+                "yaniel.trickster.cuff_worn",
+                "yaniel.trickster.cuff_back_on"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}After the day Yaniel looked at the wrist under it, the Commander carried the iron in a pocket instead, where a hand could find it. She said she preferred that. She said it meant the Commander chose it every morning.{/n}",
+              "Requires": [
+                "yaniel.trickster.cuff_worn",
+                "yaniel.trickster.cuff_pocketed"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -408128,7 +408148,7 @@
         {
           "Id": "one",
           "Speaker": "Yaniel",
-          "Text": "\"Commander,\n\"The Hand of the Inheritor knew me. I did not expect that. I thought, after seventy years, that a herald would have to be told. He looked at me the way you look at a letter you have been waiting a long time for, and then he put his hand on my head, and I am not going to write down what I did then.\n\"They brought me up out of the Fane and put me on a cart for Nerosyan with the wounded, because I would not stay in a bed. I have been in Nerosyan since.\"",
+          "Text": "\"Commander,\n\"The Hand of the Inheritor knew me. I did not expect that. I thought, after so long, that a herald would have to be told. He looked at me the way you look at a letter you have been waiting a long time for, and then he put his hand on my head, and I am not going to write down what I did then.\n\"They brought me up out of the Fane and put me on a cart for Nerosyan with the wounded, because I would not stay in a bed. I have been in Nerosyan since.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -408336,7 +408356,60 @@
               "Next": "city",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "minagho.dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "city_dead",
+              "Set": [],
+              "Requires": [
+                "minagho.dead"
+              ],
               "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "city_dead",
+          "Speaker": "Narrator",
+          "Text": "{n}Minagho is dead in this city. You were there when it happened. Her collection is not: some of the things she collected are hanging in her lairs still, and some are on hooks in places nobody will tell you about, and one of them is standing a watch on the walls of Drezen because you took this off her wrist.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "why_cant",
+              "Set": [],
+              "Requires": [
+                "yaniel.trickster.why.cannot_put_back"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "why_back",
+              "Set": [],
+              "Requires": [
+                "yaniel.trickster.why.come_back"
+              ],
+              "Forbids": [
+                "yaniel.trickster.why.cannot_put_back"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "choose",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "yaniel.trickster.why.cannot_put_back",
+                "yaniel.trickster.why.come_back"
+              ],
               "Abort": false
             }
           ],
@@ -408536,7 +408609,7 @@
         {
           "Id": "here",
           "Speaker": "Yaniel",
-          "Text": "\"There is a lilitu sitting on a crate by your quartermaster's stores.\" {n}Her voice is perfectly flat.{/n} \"Eyeless. Pretty, if you like knives. I walked past her this morning on my way to the wall. She was turning one of the crusade's daggers over in her fingers, and she heard my boots, and she lifted her face the way she used to when she came into the room with the hooks, and she smiled.\"\n\"She knew my step, Commander. After seventy years she knew my step. And nobody in this city will tell me why she is sitting in the middle of it, untouched, with a crusade dagger in her hand, except that it is the Commander's business.\"",
+          "Text": "\"There is a lilitu sitting on a crate by your quartermaster's stores.\" {n}Her voice is perfectly flat.{/n} \"Eyeless. Pretty, if you like knives. I walked past her this morning on my way to the wall. She was turning one of the crusade's daggers over in her fingers, and she heard my boots, and she lifted her face the way she used to when she came into the room with the hooks, and she smiled.\"\n\"She knew my step, Commander. After all that time she knew my step. And nobody in this city will tell me why she is sitting in the middle of it, untouched, with a crusade dagger in her hand, except that it is the Commander's business.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -408632,7 +408705,7 @@
         {
           "Id": "truth_close",
           "Speaker": "Yaniel",
-          "Text": "{n}She does not move. For a while the only thing that moves is the wind, pulling at her cloak.{/n}\n\"Close.\" {n}She tastes the word the way you might taste something to find out whether it has been poisoned.{/n} \"Under your protection. Minagho.\" {n}A short, ugly laugh.{/n} \"She had me under hers for seventy years. It had hooks in it.\"\n\"I will not ask you to choose. Staunton had to choose once, between Minagho and everything else he was, and he chose her, and Drezen burned. I am telling you what I will do. I will stand my watch. I will not go where she is. And if she ever lays a finger on me again, for any reason, I will kill her, Commander, and I will not ask your leave.\"",
+          "Text": "{n}She does not move. For a while the only thing that moves is the wind, pulling at her cloak.{/n}\n\"Close.\" {n}She tastes the word the way you might taste something to find out whether it has been poisoned.{/n} \"Under your protection. Minagho.\" {n}A short, ugly laugh.{/n} \"She had me under hers. It had hooks in it.\"\n\"I will not ask you to choose. Staunton had to choose once, between Minagho and everything else he was, and he chose her, and Drezen burned. I am telling you what I will do. I will stand my watch. I will not go where she is. And if she ever lays a finger on me again, for any reason, I will kill her, Commander, and I will not ask your leave.\"",
           "Choices": [
             {
               "Text": "\"That's fair.\"",
@@ -408865,7 +408938,7 @@
         {
           "Id": "flirt",
           "Speaker": "Yaniel",
-          "Text": "{n}She looks at you for a moment as if you had spoken in the tongue of the Abyss. Then she laughs, low, surprised, and puts her hand over her mouth, like a girl caught laughing in chapel.{/n}\n\"Since the Fane.\" {n}The hand comes down.{/n} \"You saw me on a hook, gray as a rat, stinking, with seventy years of Minagho on me, and you have been thinking about me since.\" {n}She shakes her head.{/n} \"Either you are a liar, Commander, or you have very strange taste. I have not decided which I would prefer.\"",
+          "Text": "{n}She looks at you for a moment as if you had spoken in the tongue of the Abyss. Then she laughs, low, surprised, and puts her hand over her mouth, like a girl caught laughing in chapel.{/n}\n\"Since the Fane.\" {n}The hand comes down.{/n} \"You saw me on a hook, gray as a rat, stinking, with all of Minagho still on me, and you have been thinking about me since.\" {n}She shakes her head.{/n} \"Either you are a liar, Commander, or you have very strange taste. I have not decided which I would prefer.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -409028,7 +409101,7 @@
         {
           "Id": "lie",
           "Speaker": "Yaniel",
-          "Text": "{n}Her mouth twitches. She does not look at you.{/n}\n\"Liar,\" {n}she says, very softly, almost fondly.{/n} \"You are a terrible liar, Commander, which is strange, because I have been told you are a very good one. Perhaps you only lie badly when it does not matter.\" {n}She pulls her hood lower.{/n} \"Thank you. Nobody has lied to me kindly in seventy years. They only ever did it the other way.\"",
+          "Text": "{n}Her mouth twitches. She does not look at you.{/n}\n\"Liar,\" {n}she says, very softly, almost fondly.{/n} \"You are a terrible liar, Commander, which is strange, because I have been told you are a very good one. Perhaps you only lie badly when it does not matter.\" {n}She pulls her hood lower.{/n} \"Thank you. Nobody has lied to me kindly since the siege. They only ever did it the other way.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -409060,7 +409133,7 @@
         {
           "Id": "scars",
           "Speaker": "Yaniel",
-          "Text": "{n}She turns her head and looks at you properly, under the hood, as she has not since the sheet came off. Her eyes are very pale in the shadow.{/n}\n\"The best part.\" {n}She lets the words sit.{/n} \"Minagho gave me most of those. Areelu gave me the rest. You are standing in a crowd of pilgrims, in front of my holy image, telling me the best part of me is the part my torturers made.\" {n}She draws a long breath.{/n} \"That is the most indecent thing anybody has said to me in seventy years, Commander, and I would like you to say it again somewhere with fewer candles.\"",
+          "Text": "{n}She turns her head and looks at you properly, under the hood, as she has not since the sheet came off. Her eyes are very pale in the shadow.{/n}\n\"The best part.\" {n}She lets the words sit.{/n} \"Minagho gave me most of those. Areelu gave me the rest. You are standing in a crowd of pilgrims, in front of my holy image, telling me the best part of me is the part my torturers made.\" {n}She draws a long breath.{/n} \"That is the most indecent thing anybody has said to me in my life, Commander, and I would like you to say it again somewhere with fewer candles.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -409339,7 +409412,7 @@
         {
           "Id": "lie",
           "Speaker": "Yaniel",
-          "Text": "{n}She turns her head and looks at you, and you know at once that she knows. Seventy years of being lied to by experts; a Commander's kind lie does not get past her.{/n}\n\"No, they do not,\" {n}she says, gently.{/n} \"But thank you. That is a kind lie. I am beginning to keep a count.\" {n}She looks back at the fire.{/n} \"Do not make a habit of it. I would like one person in this city to tell me the truth about the dead, even if it is you.\"",
+          "Text": "{n}She turns her head and looks at you, and you know at once that she knows. Decades of being lied to by experts; a Commander's kind lie does not get past her.{/n}\n\"No, they do not,\" {n}she says, gently.{/n} \"But thank you. That is a kind lie. I am beginning to keep a count.\" {n}She looks back at the fire.{/n} \"Do not make a habit of it. I would like one person in this city to tell me the truth about the dead, even if it is you.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -409926,7 +409999,7 @@
         {
           "Id": "kiss",
           "Speaker": "Yaniel",
-          "Text": "\"You would tell everybody.\" {n}She leans across the door, over the ruins of the roast, until her face is a hand's breadth from yours, and her breath smells of juniper and burnt fat.{/n} \"You would tell every sentry on this wall. It would be in the songs by summer.\" {n}She stays there a moment longer, looking at your mouth, and then sits back.{/n} \"Ask me again under the tree. I will decide then. I have waited seventy years for that tree; you can wait a season.\"",
+          "Text": "\"You would tell everybody.\" {n}She leans across the door, over the ruins of the roast, until her face is a hand's breadth from yours, and her breath smells of juniper and burnt fat.{/n} \"You would tell every sentry on this wall. It would be in the songs by summer.\" {n}She stays there a moment longer, looking at your mouth, and then sits back.{/n} \"Ask me again under the tree. I will decide then. I have waited long enough for that tree; you can wait a season.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -410104,7 +410177,7 @@
         {
           "Id": "true_war",
           "Speaker": "Yaniel",
-          "Text": "\"Ah.\" {n}She lets her head go back against the wall.{/n} \"Yes. That is true. I can hear that it is true.\" {n}She puts the knife down on the floor between you.{/n} \"I knew who I was on the day Drezen fell. I was the woman on the gate. Then for seventy years I was nobody, on a hook. The war ended for me and I did not have anybody to be. I am still looking.\" {n}A pause.{/n} \"It is not so bad, looking. It is only slow.\"",
+          "Text": "\"Ah.\" {n}She lets her head go back against the wall.{/n} \"Yes. That is true. I can hear that it is true.\" {n}She puts the knife down on the floor between you.{/n} \"I knew who I was on the day Drezen fell. I was the woman on the gate. Then I was nobody, on a hook, for longer than you have been alive. The war ended for me and I did not have anybody to be. I am still looking.\" {n}A pause.{/n} \"It is not so bad, looking. It is only slow.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -410163,7 +410236,7 @@
         {
           "Id": "went",
           "Speaker": "Narrator",
-          "Text": "{n}She does not wake when you lift her. She is lighter than she looks, all hard muscle and bone, and she mutters something as you lay her down that might be a name, or a curse, or an order to a man seventy years dead.{/n}\n{n}In the morning there is a note under your door in the square old hand: \"I woke in my bed and did not know how I got there. That has not happened to me since I was a child. Do not do it again without asking. Y.\" And under it, in smaller letters, pressed so hard the pen has torn the paper: \"Thank you.\"{/n}",
+          "Text": "{n}She does not wake when you lift her. She is lighter than she looks, all hard muscle and bone, and she mutters something as you lay her down that might be a name, or a curse, or an order to a man long dead.{/n}\n{n}In the morning there is a note under your door in the square old hand: \"I woke in my bed and did not know how I got there. That has not happened to me since I was a child. Do not do it again without asking. Y.\" And under it, in smaller letters, pressed so hard the pen has torn the paper: \"Thank you.\"{/n}",
           "Choices": [
             {
               "Text": "[Keep the note.]",
@@ -410276,7 +410349,7 @@
           "Text": "{n}He waits. The acolytes wait. Out of the window, very small on the broken parapet of the east gate, a gray head is turned toward the citadel, as if she had seen the Church's seal go in at your door and has a fair idea what it is for.{/n}",
           "Choices": [
             {
-              "Text": "[Intimidate] \"She was examined for seventy years. The sword stays where it is. Tell Nerosyan the Commander said so.\"",
+              "Text": "[Intimidate] \"She was examined by Minagho every day of her captivity. The sword stays where it is. Tell Nerosyan the Commander said so.\"",
               "Next": "defy",
               "Set": [],
               "Requires": [],
@@ -410710,7 +410783,7 @@
         {
           "Id": "after",
           "Speaker": "Yaniel",
-          "Text": "\"You fight like a thief,\" {n}she says, breathless.{/n} \"You kept going for their knees.\" {n}She wipes her mouth with the back of her wrist and smears ichor across her cheek.{/n} \"I have not fought beside anyone in seventy years. I had forgotten how it goes. You stop thinking about your back. You just stop. As if somebody had taken a weight off it.\"\n{n}She is very close. The sentries are still cheering. Nobody is looking at the two of you, and everybody is.{/n}",
+          "Text": "\"You fight like a thief,\" {n}she says, breathless.{/n} \"You kept going for their knees.\" {n}She wipes her mouth with the back of her wrist and smears ichor across her cheek.{/n} \"I have not fought beside anyone since the siege. I had forgotten how it goes. You stop thinking about your back. You just stop. As if somebody had taken a weight off it.\"\n{n}She is very close. The sentries are still cheering. Nobody is looking at the two of you, and everybody is.{/n}",
           "Choices": [
             {
               "Text": "[Kiss her, there on the wall, in front of the sentries.]",
@@ -411198,7 +411271,7 @@
         {
           "Id": "talk",
           "Speaker": "Yaniel",
-          "Text": "\"When the war is over,\" {n}she says, after an hour,{/n} \"they will want me to be something. The Church will want a saint. The Queen's people will want a banner. The old knights who are left will want a story about how it was in the old days, and they will want me to tell it at dinners, in a clean dress, with that statue in the next room.\"\n{n}She shifts the spear on her shoulder.{/n} \"I do not want to be something. I want a wall, and a watch, and a cup of wine that is not very good, and somebody to stand the watch with who does not want me to be anything. Is that a great deal to want, Commander, after seventy years?\"",
+          "Text": "\"When the war is over,\" {n}she says, after an hour,{/n} \"they will want me to be something. The Church will want a saint. The Queen's people will want a banner. The old knights who are left will want a story about how it was in the old days, and they will want me to tell it at dinners, in a clean dress, with that statue in the next room.\"\n{n}She shifts the spear on her shoulder.{/n} \"I do not want to be something. I want a wall, and a watch, and a cup of wine that is not very good, and somebody to stand the watch with who does not want me to be anything. Is that a great deal to want, Commander, after the hook?\"",
           "Choices": [
             {
               "Text": "\"It's the least you're owed.\"",
@@ -411355,7 +411428,7 @@
         {
           "Id": "worn",
           "Speaker": "Yaniel",
-          "Text": "\"You said you would take it off in front of me one day,\" {n}she says,{/n} \"and let me see your wrist. I have been waiting. I am not good at waiting. I had seventy years of it and I used them all up.\"\n{n}She holds out her hand, palm up.{/n} \"Now, Commander. I want to know if it leaves the same mark on a free person.\"",
+          "Text": "\"You said you would take it off in front of me one day,\" {n}she says,{/n} \"and let me see your wrist. I have been waiting. I am not good at waiting. I had a lifetime of it and I used it all up.\"\n{n}She holds out her hand, palm up.{/n} \"Now, Commander. I want to know if it leaves the same mark on a free person.\"",
           "Choices": [
             {
               "Text": "[Bend the pin straight and open the cuff for her.]",
@@ -411392,7 +411465,9 @@
             {
               "Text": "[Put it back on.]",
               "Next": "end",
-              "Set": [],
+              "Set": [
+                "yaniel.trickster.cuff_back_on"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -411400,7 +411475,9 @@
             {
               "Text": "[Put it in your pocket.]",
               "Next": "end",
-              "Set": [],
+              "Set": [
+                "yaniel.trickster.cuff_pocketed"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -411541,7 +411618,7 @@
         {
           "Id": "cut",
           "Speaker": "Yaniel",
-          "Text": "{n}She walks you through the old cuts, the Mendevian ones, the ones they do not teach any more: the gate cut, the stair cut, the one she calls the widow's cut and will not explain. Her voice is quite even. Her hands on yours are not.{/n}\n\"I used to do this every morning on the east wall,\" {n}she says, close behind your ear.{/n} \"Two hundred cuts before the bell. Staunton said I would wear the sword out. On the hook I did them in my head. Every morning. Two hundred. I did not miss one in seventy years.\"",
+          "Text": "{n}She walks you through the old cuts, the Mendevian ones, the ones they do not teach any more: the gate cut, the stair cut, the one she calls the widow's cut and will not explain. Her voice is quite even. Her hands on yours are not.{/n}\n\"I used to do this every morning on the east wall,\" {n}she says, close behind your ear.{/n} \"Two hundred cuts before the bell. Staunton said I would wear the sword out. On the hook I did them in my head. Every morning. Two hundred. I did not miss one.\"",
           "Choices": [
             {
               "Text": "\"Show me the two hundred.\"",
@@ -411738,7 +411815,7 @@
         {
           "Id": "better",
           "Speaker": "Yaniel",
-          "Text": "{n}She laughs, startled, and then does not.{/n} \"It looks better on me.\" {n}She turns the blade in the torchlight, as if checking.{/n} \"Seventy years nobody said anything looked better on me. Minagho used to say I looked best on a hook.\" {n}She slides the sword home in its saddle-leather scabbard.{/n} \"Thank you, Commander. That is a very foolish thing to say to a woman on a wall, and I am going to remember it anyway.\"",
+          "Text": "{n}She laughs, startled, and then does not.{/n} \"It looks better on me.\" {n}She turns the blade in the torchlight, as if checking.{/n} \"Nobody in my whole captivity said anything looked better on me. Minagho used to say I looked best on a hook.\" {n}She slides the sword home in its saddle-leather scabbard.{/n} \"Thank you, Commander. That is a very foolish thing to say to a woman on a wall, and I am going to remember it anyway.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -411838,7 +411915,7 @@
         {
           "Id": "her",
           "Speaker": "Yaniel",
-          "Text": "{n}When the scout has gone to find his supper she sits looking at the place where he was.{/n}\n\"Berenguer,\" {n}she says.{/n} \"I never knew him. He must have taken his vows after I was taken. A paladin who would not come in to any fort and would not take a banner.\" {n}Something moves at the corner of her mouth.{/n} \"Seventy years ago they would have put him on a charge. Now they tell stories about him in guardrooms.\"\n\"I have been thinking, Commander, since the scout started talking, that I could do that. Go out past the cairns with a spear and no banner and nobody's name on me but my own. Nobody would build me a statue. Nobody would want me to be anything.\"",
+          "Text": "{n}When the scout has gone to find his supper she sits looking at the place where he was.{/n}\n\"Berenguer,\" {n}she says.{/n} \"I never knew him. He must have taken his vows after I was taken. A paladin who would not come in to any fort and would not take a banner.\" {n}Something moves at the corner of her mouth.{/n} \"In my day they would have put him on a charge. Now they tell stories about him in guardrooms.\"\n\"I have been thinking, Commander, since the scout started talking, that I could do that. Go out past the cairns with a spear and no banner and nobody's name on me but my own. Nobody would build me a statue. Nobody would want me to be anything.\"",
           "Choices": [
             {
               "Text": "\"Then go, if you want it. I won't hold you.\"",
