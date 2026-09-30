@@ -156,5 +156,48 @@ internal static class ArsinoeTricksterTests
         // Reactions: exactly the two allocated reactors, both reading the lien.
         var reactions = story.Scenes.Where(s => s.Relationship == "arsinoe" && s.Reaction).ToArray();
         check(reactions.Length == 2 && reactions.All(r => r.Requires.Contains("arsinoe.trickster.cost.lien")), "Arsinoe reactions changed.");
+
+        // Sol INT (2026-09-30): Konomi hears of the lien in her office only; her Trickster return reopens a dismissal.
+        var konomi = reactions.Single(r => r.Id == "arsinoe.trickster.cauldron_seen.react_konomi");
+        var office = World(story, "trickster", "arsinoe.trickster.cost.lien", "konomi.in_office");
+        check(Rules.Available(story, konomi, office), "Konomi's lien reaction is unreachable in her office.");
+        check(!Rules.Available(story, konomi, World(story, "trickster", "arsinoe.trickster.cost.lien")), "Konomi reacts without being in office.");
+        check(!Rules.Available(story, konomi, World(story, "trickster", "arsinoe.trickster.cost.lien", "konomi.in_office", "konomi.dismissed")),
+            "A dismissed Konomi reacts.");
+        check(Rules.Available(story, konomi, World(story, "trickster", "arsinoe.trickster.cost.lien", "konomi.in_office", "konomi.dismissed", "konomi.trickster.returned")),
+            "A Konomi returned by her Trickster route never hears of the lien.");
+        check(!Rules.Available(story, konomi, World(story, "trickster", "arsinoe.trickster.cost.lien", "konomi.in_office", "konomi.retained_dead")),
+            "A dead Konomi reacts.");
+
+        // Sol COX (2026-09-30), R2-6: the late commitment. A Trickster who flirted at the collection but never reached her
+        // commitment scene gets the rent-day page; it offers a staged night, a deferred yes and a refusal.
+        var lateCommit = story.Scenes.Single(s => s.Id == "arsinoe.trickster.late.commit");
+        check(lateCommit.Owner == "Epilogue" && lateCommit.Relationship == "arsinoe", "Arsinoe late page is not her epilogue.");
+        var flirted = World(story, "trickster.ever", "arsinoe.trickster.stays_to_collect", "arsinoe.started");
+        flirted.Chapter = 6;
+        check(flirted.Has("arsinoe.trickster.late_committed") && Rules.Available(story, lateCommit, flirted), "R2-6 late commitment unreachable.");
+        foreach (string spoken in new[] { "arsinoe.committed", "arsinoe.future_spoken", "arsinoe.closed" })
+        {
+            var already = Program.Copy(flirted); already.Flags.Add(spoken);
+            check(!Rules.Available(story, lateCommit, already), "Late page doubles an ordinary ending: " + spoken);
+        }
+        var business = World(story, "trickster.ever", "arsinoe.trickster.collection_closed");
+        business.Chapter = 6;
+        check(!Rules.Available(story, lateCommit, business), "A lease kept to business offers a late romance.");
+        var latePages = new HashSet<string>();
+        var lateResults = Program.Walk(lateCommit, flirted, (page, _) => latePages.Add(page));
+        check(latePages.SetEquals(lateCommit.Nodes.Select(n => n.Id)), "Unreached late-commit page.");
+        check(lateResults.Any(r => r.Has("arsinoe.trickster.late_yes")) && lateResults.Any(r => r.Has("arsinoe.trickster.late_declined"))
+              && lateResults.All(r => r.Has("arsinoe.trickster.late_yes") != r.Has("arsinoe.trickster.late_declined")),
+            "Late commitment lacks a yes and a refusal, or records both.");
+        check(lateCommit.Nodes.Single(n => n.Id == "night").Choices.Single().Next == "morning", "Late night has no morning after.");
+
+        // Sol COX/HOW: the courtship spine fits the shared chain ceiling (ledger: 504 h) at its minimum delays.
+        string[] spine = { "arsinoe_printers_view", "arsinoe_roofs", "arsinoe_first_impression", "arsinoe_hours_of_her_own",
+            "arsinoe_your_hours", "arsinoe_borrowed_court", "arsinoe_price_of_an_evening", "arsinoe_courtyard_company",
+            "arsinoe_another_hour", "arsinoe_the_unprofitable_hour", "arsinoe_after_rain", "arsinoe_two_doors",
+            "arsinoe_a_stone_in_hand", "arsinoe_the_first_cart", "arsinoe_what_she_asks", "arsinoe_where_she_stays", "arsinoe_the_window_opens" };
+        int spineHours = spine.Sum(id => story.Scenes.Single(s => s.Id == id).DelayHours);
+        check(spineHours <= 504, "Arsinoe's courtship spine exceeds the 504-hour chain ceiling: " + spineHours);
     }
 }

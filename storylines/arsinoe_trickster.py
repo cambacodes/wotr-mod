@@ -36,8 +36,8 @@ physical(LEASE, "Property of the Treasury", '"I have something a priestess of Ab
 "By the First Vault. *Treasury of Abadar, Absalom.*"
 {n}She straightens, frowning, and taps the loupe against her lip.{/n}
 "A soul cauldron, Commander, if I am any judge, and I am. Marks can be forged; I have forged a few, for training purposes. But if this one is genuine, then this stone was consecrated to my god and entered in his inventory, and it belongs in a vault in Absalom, not on a counter in a war camp. I will not ask how it came to you. I suspect the answer involves demons, and I suspect you enjoyed it."
-{n}You tell her what the lich on the Council said of it: likely from Abadar's coffers. She does not look up from the loupe.{/n}
-"Likely. A lich's guess and a worn stamp. That is not proof, Commander. It is, however, a very good start on a lawsuit."''',
+{n}You tell her what Shyka said of it at the Council: likely from Abadar's coffers. She does not look up from the loupe.{/n}
+"Likely. Shyka's guess and a worn stamp. That is not proof, Commander. It is, however, a very good start on a lawsuit."''',
       c("Continue", "shamira", requires=("shamira.killed",)),
       c("Continue", "terms", forbids=("shamira.killed",))),
     n("shamira", "Arsinoe", '''{n}She tilts the stone toward the lamp. Deep inside it something that is not light moves, slow and patient, like a fish under ice.{/n}
@@ -86,7 +86,7 @@ physical(LEASE, "Property of the Treasury", '"I have something a priestess of Ab
 
 physical(COLLECTION, "Collateral", '"You wanted to see me about the lease?"', [
     n("start", "Arsinoe", '''{n}A ledger lies open on the counter, and a stick of gold wax is softening over a candle.{/n}
-"Absalom has not answered." {n}She lays a letter on the ledger: her own, come back unopened, the seal broken by a Mendevian road warden who has written ROAD CLOSED across it in charcoal.{/n} "The roads south are shut, the Treasury's clerks are three countries away, and I hold a lease on a stone that may or may not be my god's, on the word of a worn stamp and a lich's guess. So the lease stands on its own clause. Until Absalom rules, the lessee answers for the stone as if it were the Treasury's, and the temple answers for the lease. The temple, in Drezen, is me. I have put my name beside yours on a guess, Commander. I do not do that. So.
+"Absalom has not answered." {n}She lays a letter on the ledger: her own, come back unopened, the seal broken by a Mendevian road warden who has written ROAD CLOSED across it in charcoal.{/n} "The roads south are shut, the Treasury's clerks are three countries away, and I hold a lease on a stone that may or may not be my god's, on the word of a worn stamp and Shyka's guess. So the lease stands on its own clause. Until Absalom rules, the lessee answers for the stone as if it were the Treasury's, and the temple answers for the lease. The temple, in Drezen, is me. I have put my name beside yours on a guess, Commander. I do not do that. So.
 {n}She turns the letter face down.{/n}
 "An inspection, Commander. I am told my lessee intends to carry the property to the place where the Worldwound was first opened, and then, I assume, to do something heroic with it. My ledger calls that 'unusual wear'. The temple requires collateral against total loss."''',
       c("Continue", "pledge", forbids=("konomi.trickster.cost.recalled",)),
@@ -179,13 +179,57 @@ REACTIONS = [
 "Darling. The priestess of Abadar has put a *lien* on our cauldron. On a Council artefact! Alichino is beside himself; he says Hell would have charged interest from the moment of theft, and he is quite right, and I have never loved you more. Do be careful. The next complaint may count as a prayer, and I should hate to share you with a god of banking."''',
              remote=True, forbids=("socot.gone", "council.fought", "council.fought_nocta_allied"),
              chapter=5, last=5, title="A perfumed note", Areas=[DREZEN], Chapters=[5]),
-    reaction("Konomi", "arsinoe.trickster.cauldron_seen.react_konomi", (LIEN,),
+    reaction("Konomi", "arsinoe.trickster.cauldron_seen.react_konomi", (LIEN, "konomi.in_office"),
              '''{n}Lady Konomi's smile is smug and faintly predatory.{/n}
 "An Abadaran lien on a planar artefact. Commander, the Royal Treasury of Mendev would give a great deal for a priestess who can invoice demons. Do tell her the Queen's accounts are open. To negotiation, naturally. Never to audit."''',
              answer_list=KONOMI_OFFICER, forbids=("konomi.dismissed", "konomi.retained_dead"),
+             # Sol INT (2026-09-30): she must be in her office, and a Konomi returned by her Trickster route hears it too.
+             # konomi.retained_dead is runtime-derived (it clears when she is raised), so it stays a plain Forbid.
+             ForbidOverrides={"konomi.dismissed": "konomi.trickster.returned"},
              chapter=5, last=5, entry='"The priestess of Abadar has leased me a Council artefact."'),
 ]
 SCENES.extend(REACTIONS)
+
+# --- R2-6 late commitment (Sol COX, 2026-09-30) ------------------------------------------------------------------------
+# A Trickster who flirted at the collection (stays_to_collect) but never reached her commitment scene still has a romance
+# to answer: the first rent day after Threshold. The derived key means "reached the last beat", as on every route.
+LATE_COMMITTED = "arsinoe.trickster.late_committed"
+LATE_YES = "arsinoe.trickster.late_yes"
+LATE_DECLINED = "arsinoe.trickster.late_declined"
+DERIVED = {LATE_COMMITTED: [["trickster.ever", STAYS]]}
+
+
+def late(id, text, *choices):
+    return n(id, "Narrator", text, *choices, portrait="Arsinoe")
+
+
+SCENES.append(scene("arsinoe.trickster.late.commit", "Interest on late payments", "Epilogue", 5, "", [
+    late("offer", '''{n}The first rent day after Threshold, Arsinoe collected in person. She had never once sent a clerk for the Commander's account, and she did not start now.{/n}
+{n}She laid the ledger on the Commander's table, open at the lease, and put a finger on the last line. The rent was paid. Beside it ran a second column in a smaller hand, headed with nothing at all, and every late payment of the war was entered there: a date, and a line through the date.{/n}
+"Eleven times late, Commander. I billed the crusade for ten of them. The eleventh I kept for myself."
+{n}She closed the book on her finger.{/n}
+"I told you once that I stayed in Drezen on business of my own choosing. I have chosen. That column is not the Treasury's, and I did not come as the temple. I came because I want you, and I have waited through a whole war to say so without a lien in the room."''',
+         c('[Close the ledger for her, and draw her in by the collar.]', "night"),
+         c('"Then collect. There is no war left to be late for."', "table"),
+         c('"The account is paid, Arsinoe. Business only."', "business")),
+    late("night", '''{n}She let you. She had come dressed for the temple, collar to hem, and she stood very still under your hands while you worked the collar open, her gold eyes on yours the way they rest on a buyer counting out coin. At the clasps of the robe she lost patience, pushed your hands aside and undid the rest herself, quickly, and let the whole weight of it fall.{/n}
+"You kept me waiting for a war," she said. "I will not wait for fastenings as well."
+{n}She walked you backward to the bed with one hand flat on your chest, pushed, and came down over you, a knee either side of your hips, her hair slipping its pins and falling around both your faces. She took your wrists and set your hands on her waist, exactly where she wanted them. Then she bent, and kissed you, and sank down.{/n}''',
+         c("Continue", "morning")),
+    late("morning", '''{n}The ledger was still on the table in the morning. She had opened it again while the Commander slept, ruled a line under the second column, and written beneath it in the same small hand: "Settled." Then, a little lower: "Reopened."{/n}
+"Interest accrues," she said, without looking up. "Go back to sleep, Commander. I have not finished the audit."
+{n}The next month she set a second cup on the shelf in the room behind her shop, and she never once charged for it.{/n}''',
+         c('[Stay.]', flags=(LATE_YES,))),
+    late("table", '''{n}She let you take her hand across the ledger. Then she leaned over the book and kissed you, hard, the way she presses a seal, and sat back to admire the impression.{/n}
+"Supper, then. Tonight. The rest on the next rent day, after I have had a month to look forward to it. I have waited through a war; I can afford four weeks, and I intend to enjoy every one of them at your expense."
+{n}She kept that appointment, and every rent day after it, and the queue outside her shop learned to expect it opened late.{/n}''',
+         c('[Keep the appointment.]', flags=(LATE_YES,))),
+    late("business", '''{n}Arsinoe looked at the Commander for a while. Then she opened the ledger again, drew one straight line through the second column, and blotted it.{/n}
+"Paid," she said. "Business only. May Abadar keep you, Commander."
+{n}She stayed in Drezen. The lien was hers, and she collected it to the copper, every season, in person, and never once sat down.{/n}''',
+         c('[Let her go.]', flags=(LATE_DECLINED,))),
+], requires=(LATE_COMMITTED,), forbids=("arsinoe.committed", "arsinoe.closed", "arsinoe.future_spoken"),
+   last=99, Relationship="arsinoe"))
 
 COLLECTOR = p("When people asked why a priestess who always moved on had stayed, Arsinoe said she had an outstanding "
               "account in Drezen. She never said which.", requires=(STAYS,))
@@ -194,6 +238,11 @@ COLLECTOR = p("When people asked why a priestess who always moved on had stayed,
 def integrate(payload):
     """Registered-route edit (save-safe: text only): the three kept endings gain the collector paragraph (E14c)
     instead of sibling pages, so the ordinary one-ending-per-history invariant holds unchanged."""
+    for key, groups in DERIVED.items():
+        have = payload.setdefault("Derived", {}).get(key)
+        if have is not None and have != [list(g) for g in groups]:
+            raise ValueError("Conflicting derived key: " + key)
+        payload["Derived"][key] = [list(g) for g in groups]
     for scene_ in payload["Scenes"]:
         if scene_["Id"] in ("arsinoe_ending_kept", "arsinoe_ending_open", "arsinoe_ending_promised"):
             scene_["Nodes"][0].setdefault("Paragraphs", []).append(dict(COLLECTOR))

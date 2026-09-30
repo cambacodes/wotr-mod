@@ -263,7 +263,7 @@ s("arsinoe_roofs", "An evening above the street", '"You offered to show me the v
 "Then I shall enjoy that. I am a little disappointed, but I have had a good evening. You need not make a poorer one of it by worrying over my expression."
 {n}She begins wrapping the cups.{/n}
 "I should still like your opinion of Tovin's next attempt. Friends may be put to work on matters of taste, I believe."''', c('[Help her pack the basket.]', flags=("arsinoe.roof_shared", "arsinoe.friendship"))),
-], requires=("arsinoe.printer_met",), delay=48)
+], requires=("arsinoe.printer_met",), delay=24)
 
 
 s("arsinoe_first_impression", "What the picture leaves out", '"Has Tovin brought his new work?"', [
@@ -333,7 +333,7 @@ s("arsinoe_first_impression", "What the picture leaves out", '"Has Tovin brought
 "I promised you a choice. There is a table in the shop after Tovin closes, and he is willing to lend it. Or we could walk while there is still light. I should enjoy either, although I warn you that I may have opinions about anything you point out."''',
       c('"Bring the book. I will meet you at the table."', flags=("arsinoe.next_table", "arsinoe.first_impression_kept")),
       c('"A walk. Show me the things you would keep as they are."', flags=("arsinoe.next_walk", "arsinoe.first_impression_kept"))),
-], requires=("arsinoe.roof_shared",), delay=72)
+], requires=("arsinoe.roof_shared",), delay=24)
 
 
 s("arsinoe_hours_of_her_own", "When her work is finished", '"Have you time for our evening?"', [
@@ -411,4 +411,4 @@ s("arsinoe_hours_of_her_own", "When her work is finished", '"Have you time for o
 {n}She releases your hand reluctantly enough for you to notice.{/n}
 "Good night."
 {n}After a few steps she looks back. Finding you still there, she smiles without trying to disguise it.{/n}''', c('[Wish her a good night.]', flags=("arsinoe.opening_kept",))),
-], requires=("arsinoe.first_impression_kept",), delay=48)
+], requires=("arsinoe.first_impression_kept",), delay=24)

@@ -11,7 +11,7 @@ CONTACT = "a609ed9b2205d034bb3bb04d2a255681"
 ANSWERS = "ecaf5cfe8087a4f45a2269974f4885c9"
 
 
-def s(id, title, entry, nodes, previous, delay=48, chapters=(3, 5), forbids=()):
+def s(id, title, entry, nodes, previous, delay=24, chapters=(3, 5), forbids=()):
     SCENES.append(scene(id, title, "Arsinoe", min(chapters), entry, nodes,
         requires=("arsinoe.capital", "arsinoe.continuation_kept", previous),
         forbids=("arsinoe.closed", *forbids), delay=delay, optional=True,
@@ -302,7 +302,7 @@ s("arsinoe_the_first_cart", "What the repair leaves behind",
 "No estimate, no witnesses, no Senn. I mean to talk about you and me, and I intend to enjoy it. Come prepared to be asked things."
 {n}She names a time after closing. You agree before she turns inside.{/n}''',
       c('"I will come."', flags=("arsinoe.repair_seen",))),
-], "arsinoe_a_stone_in_hand", delay=72)
+], "arsinoe_a_stone_in_hand", delay=24)
 
 
 s("arsinoe_what_she_asks", "A question after closing",
@@ -489,7 +489,7 @@ s("arsinoe_where_she_stays", "The road she has not taken",
 "Then I shall answer the first letter. I am remaining. I have work here, and I like my life here. Praise Abadar, I have said it aloud and the roof is still on."
 {n}At the market she stops to examine a plain window latch. It would fit the troublesome one in her room. She buys it before she can turn the purchase into another decision about the rest of her life.{/n}''',
       c('"Walk back with her and the new latch."', flags=("arsinoe.staying_chosen", "arsinoe.future_home"))),
-], "arsinoe_what_she_asks", delay=72, chapters=(5,))
+], "arsinoe_what_she_asks", delay=48, chapters=(5,))
 
 
 s("arsinoe_the_window_opens", "An evening she intends to keep",
