@@ -160,16 +160,23 @@ internal static class HerraxTricksterTests
         var stayed = Take(night, Later(story, withChiv, 24), "knife", 2, Declined, Lesson);
         check(!Avail(reachable, Later(story, stayed, 24)) && Avail(hilt, Later(story, stayed, 24)), "Trk_Herrax_StayedHand: her refusal does not hold, or the knife cannot go back.");
         var back = Take(hilt, Later(story, stayed, 24), "start", 0, Restored);
-        var yesAgain = Take(restored, Later(story, back, 24), "offer", 0, Committed);
+        // Sol INT: the closing follows the punishment the Commander watched, a day later (never the same evening).
+        var lateNight = S("herrax.house.a_night_late");
+        check(!Avail(restored, Later(story, back, 24)) && Avail(lateNight, Later(story, back, 13)), "Trk_Herrax_StayedHand: the closing comes before the punishment it recalls.");
+        var punished = Take(lateNight, Later(story, back, 13), "said", 0);
+        check(!Avail(restored, Later(story, punished, 1)) && Avail(restored, Later(story, punished, 24)), "Trk_Herrax_StayedHand: the closing does not wait a day after the punishment.");
+        var yesAgain = Take(restored, Later(story, punished, 24), "offer", 0, Committed);
         check(yesAgain.Has(Committed) && yesAgain.Has("minagho_chivarro.trickster.reunited") && yesAgain.Has("minagho_chivarro.committed")
               && !own.Any(s => s.Nodes.Any(n => n.Choices.Any(c => c.Set.Any(f => f.StartsWith("minagho_chivarro.", StringComparison.Ordinal))))),
             "Trk_Herrax_StayedHand_WithChivarro: no yes after the knife, or her route touches Minagho and Chivarro's flags.");
 
         // Trk_Herrax_NoMadam: never started in Chapter 4 (never met, or never told); the letter, and the page after the Threshold.
-        var unmet = World(story, 5, "trickster", "trickster.ever");
+        var unmet = World(story, 5, "trickster", "trickster.ever", "herrax.madam");
+        // Sol CAN: where Chivarro was never removed, Herrax is not the madam, and no courier of hers comes.
+        check(!Avail(S(P + "late.next_move"), World(story, 5, "trickster", "trickster.ever")), "Trk_Herrax_NoMadam: her courier comes from a madam who never took the chair.");
         check(Avail(nextMove, unmet) && nextMove.TricksterDevice && nextMove.TricksterState == "not_started" && !Avail(owed, unmet),
             "Trk_Herrax_NoMadam: her courier does not find a Commander who never started.");
-        var met5 = World(story, 5, "trickster", "trickster.ever", "herrax.met");
+        var met5 = World(story, 5, "trickster", "trickster.ever", "herrax.met", "herrax.madam");
         var route = nextMove.Nodes.Single(n => n.Id == "start").Choices;
         check(route.Single(c => Rules.Match(c.Requires, c.Forbids, unmet)).Next == "stranger" && route.Single(c => Rules.Match(c.Requires, c.Forbids, met5)).Next == "met",
             "Trk_Herrax_NoMadam: the courier does not speak to the met and unmet worlds.");
@@ -187,6 +194,7 @@ internal static class HerraxTricksterTests
             ("unsold", new[] { Primed }), ("sold", new[] { Primed, Bait }), ("blown", new[] { Primed, Blown }),
             ("lesson", new[] { Primed, Bait, Lesson, P + "knife_taken" }), ("knife", new[] { Primed, Bait, Lesson, Declined }),
             ("restored", new[] { Primed, Bait, Lesson, Declined, Restored }),
+            ("restored_watched", new[] { Primed, Bait, Lesson, Declined, Restored, "herrax.house.a_night_late" }),
         };
         foreach (var (node, flags) in states)
         {
@@ -326,7 +334,7 @@ internal static class HerraxTricksterTests
         foreach (var (name, flags) in new (string, string[])[] {
             ("committed", new[] { "trickster", "trickster.ever", "herrax.madam", "herrax.met", Started, Primed, Bait, Lesson, P + "knife_taken", Committed }),
             ("owed", new[] { "trickster", "trickster.ever", "herrax.met", Started, Primed }),
-            ("late", new[] { "trickster", "trickster.ever", "herrax.met" }) })
+            ("late", new[] { "trickster", "trickster.ever", "herrax.met", "herrax.madam" }) })
         {
             var count = Ch5Letters(World(story, 5, flags.Concat(chivWorlds).ToArray()));
             check(count == 1, "Trk_Herrax_OneCh5Letter_" + name + ": " + count + " Herrax letters delivered in Chapter 5 (cap 1, discovery included).");
@@ -378,6 +386,21 @@ internal static class HerraxTricksterTests
         Program.Walk(courier, World(story, 5, "trickster.ever", Committed, Lesson, P + "knife_taken"), (id, _) => toldNodes.Add(id));
         check(toldNodes.Contains("b_told_answer") && Program.WalkVia(courier, World(story, 5, "trickster.ever", Committed, Lesson, P + "knife_taken"), "b_offer2", 2).All(r => r.Has("herrax.letters.offer.told_her")),
             "Trk_Herrax_OfferTold: the reported offer has no answer.");
+
+        // Sol INT: Rokhorn's stitches remember the history the player made (trusted and robbed, or scratched and still cut).
+        var stitched = S("herrax.house.rokhorn.stitched");
+        foreach (var (hist, node) in new (string, string)[] { (Bait, "read"), (Blown, "read_blown") })
+        {
+            var sn = new HashSet<string>();
+            Program.Walk(stitched, World(story, 4, Base.Concat(new[] { Primed, hist, Lesson, P + "knife_taken" }).ToArray()), (id, _) => sn.Add(id));
+            check(sn.Contains(node) && sn.Count(x => x.StartsWith("read", StringComparison.Ordinal)) == 1, "Trk_Herrax_Stitched: Rokhorn misremembers the " + node + " history.");
+        }
+        // Sol BEL: the lost bet is collected in the packet.
+        var nightOut = S("herrax.house.a_night_out");
+        var lost = Take(nightOut, World(story, 4, Base.Concat(new[] { Committed }).ToArray()), "bet", 1, "herrax.house.arena.bet_lost");
+        var debtPaths = Program.Walk(courier, World(story, 5, lost.Flags.Where(f => f != "trickster").ToArray()));
+        check(debtPaths.All(r => r.Has("herrax.letters.arena.bet_collected")) && Take(nightOut, World(story, 4, Base.Concat(new[] { Committed }).ToArray()), "bet", 0).Flags.All(f => f != "herrax.house.arena.bet_lost"),
+            "Trk_Herrax_Bet: the lost bet is never collected, or a won bet is owed.");
 
         // Sol COX (ledger 05 row 2): after the Council the Lady is in hiding; the packet's court letter says so.
         var hidingSeen = new HashSet<string>();

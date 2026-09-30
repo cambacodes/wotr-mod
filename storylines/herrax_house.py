@@ -71,6 +71,8 @@ REPLY_WARM = L + "reply.warm"
 REPLY_COOL = L + "reply.cool"
 REPLY_CRUDE = L + "reply.crude"
 KNIFE_GIFT = L + "knife.kept"
+BET_LOST = B + "arena.bet_lost"              # the Commander picked the loser at the Battlebliss: a thousand owed
+BET_COLLECTED = L + "arena.bet_collected"    # she named the price in the packet
 
 
 def beat(id, title, entry, nodes, requires, forbids=(), delay=24, **extra):
@@ -612,11 +614,17 @@ The Glowworm drank a devil under the table on Thursday and he signed over his ho
        c("Continue", "b_news_empty", forbids=(WARNED, SENT))),
     hl("b_news_warned", '''"You'll want to know about the white room. You told me someday someone would come for them. Nobody has. But one of them came to me last week, of her own accord, the one who looked up when you were there, and asked me to teach her.
 I told you, lover. They walk back up the stairs once they've tasted the cold. Some of them never even need to go out in it."''',
-       c("Continue", "b_gift")),
+       c("Continue", "b_gift", forbids=(BET_LOST,)),
+       c("Continue", "b_debt", requires=(BET_LOST,))),
     hl("b_news_white", '''"The white room is coming along. One of the girls came to me last week of her own accord and asked to be taught, which is the first real lesson and the only one that matters. I was very, very careful with her. I always am."''',
-       c("Continue", "b_gift")),
+       c("Continue", "b_gift", forbids=(BET_LOST,)),
+       c("Continue", "b_debt", requires=(BET_LOST,))),
     hl("b_news_empty", '''"The white room is still empty. I've had an offer on it from a devil who wants it for a ledger room, which is an insult I'm saving to repay. It will have girls in it by the spring. It always does."''',
-       c("Continue", "b_gift")),
+       c("Continue", "b_gift", forbids=(BET_LOST,)),
+       c("Continue", "b_debt", requires=(BET_LOST,))),
+    hl("b_debt", '''"And you still owe me a thousand from the Battlebliss. I've thought of something.
+When you come up my stairs in the spring, you'll spend one night behind my bar, in an apron, pouring for my guests, and you'll smile at every one of them, and I'll keep the tips. I've already told the house. Morevet is selling places at the bar. You'd be flattered what they're fetching."''',
+       c("Continue", "b_gift", flags=(BET_COLLECTED,))),
     nar("b_gift", '''{n}The fifth letter is tied to the parcel. Inside the black silk is a knife in a sheath of worked bone: thin, curved, and so sharp that the silk has parted where the edge touched it. It is not her knife. It is its twin.{/n}''',
        c("Continue", "b_gift_letter")),
     hl("b_gift_letter", '''"Lover.
@@ -882,9 +890,14 @@ SCENES.append(scene(B + "rokhorn.stitched", "Stitches", "Herrax", 4, '"Rokhorn."
        c('"Does it hurt?"', "hurt"),
        c('"No hard feelings, Rokhorn."', "feelings")),
     rk("hurt", '''"Everything hurts, little bird. That's the secret. Pleasure, pain; it's the same shock, you just call it different names depending on who's holding the knife." {n}He touches the stitches with one claw.{/n} "This one I'll call pain. For a while. Then one day, I'll call it something else."''',
-       c("Continue", "read")),
+       c("Continue", "read", requires=(BAIT,)),
+       c("Continue", "read_blown", forbids=(BAIT,))),
     rk("feelings", '''{n}He laughs, and the stitches tug his laugh into a snarl.{/n} "Hard feelings are the only kind I have, hot stuff. I'm an incubus. Soft is for mortals and angels."''',
-       c("Continue", "read")),
+       c("Continue", "read", requires=(BAIT,)),
+       c("Continue", "read_blown", forbids=(BAIT,))),
+    rk("read_blown", '''"You know what I keep thinking?" {n}He leans in, and you can smell the house's wine on him, and blood under it.{/n} "I scratched you. The day you came to me with her night in your mouth. One taste, and I read it all, and I shouted it off every couch in the house." {n}He touches the stitches.{/n} "And she cut me anyway, in front of all of them. Knowing didn't save my face. Being right didn't save my face."
+"So now I know what the lesson was, hot stuff. It was never about the lie. She'd be so pleased."''',
+       c('"She would."')),
     rk("read", '''"You know what I keep thinking?" {n}He leans in, and you can smell the house's wine on him, and blood under it.{/n} "I should have scratched you. The day you first came to me. One little taste, and I'd have read it all: her night, her knife, her coin. I trusted you instead. A mortal." {n}He shakes his head.{/n}
 "I don't trust anyone now. So I suppose you taught me something too. She'd be so pleased."''',
        c('"She would."'))],
@@ -1014,7 +1027,7 @@ beat(B + "a_night_out", "Battlebliss", '"Come down to the arena with me."', [
        c("Continue", "home")),
     hx("big", '''{n}The big one loses. It takes him a long time and it is not pretty, and when it is over the crowd howls and Herrax turns to you with her good eye very bright.{/n}
 "Angrier." {n}She laughs.{/n} "Angry is how you lose in Alushinyrra, honey. The angry ones always think the fight is the point." {n}She taps your chest.{/n} "You owe me a thousand. I'll think of something."''',
-       c("Continue", "home")),
+       c("Continue", "home", flags=(BET_LOST,))),
     hx("home", '''{n}On the walk back up to the Delights through the lamplit streets, she keeps her arm through yours the whole way, and does not seem to notice she is doing it.{/n}
 "There. I've been to the arena," {n}she says at her own door.{/n} "It was loud, and it stank, and I enjoyed it." {n}She looks at you, accusing.{/n} "I told you I'd never forgive you."''',
        c('"I\'ll live with it."'))],

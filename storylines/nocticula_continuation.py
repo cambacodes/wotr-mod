@@ -1589,7 +1589,7 @@ Istrava departs alive. Her escort does not promise her an agreeable destination.
 {n}She lets the bell's shadow lengthen across the quay. The agreement remains, with the disagreement plainly inside it.{/n}''', c('[Accept the closure, its expense and Istrava\'s surviving hostility.]', "last", flags=f("lodge_payment_advanced"))),
     n("keep", "Nocticula", '''"A useful sentence. It will sound better to the people seeking protection than to the hostess required to provide it."
 {n}Nocticula appoints a supervisor whom Istrava cannot dismiss. Visitors may come and go without names. Those who want her protection pay for it in the only coin she wants from them: who frightened them, and where he sleeps. The old attendants are paid off and sent away with their possessions; people who know the rooms that well are more dangerous inside than out.
-Istrava keeps a share of the business and no authority over the gallery's exits. She accepts because the alternative is losing everything the house supplies. Neither you nor Nocticula describes the agreement as her willing transformation into a kinder woman.{/n}
+Istrava keeps a share of the business and no authority over the gallery's exits. She accepts because the alternative is losing everything the house supplies. Nocticula watches her sign with the expression of a cat that has been handed the mouse and asked to keep it alive.{/n}
 "She will look for a way around it," you say.
 "She already has. She asked whether private rooms were outside the gallery's rules. I told her the doors would be removed until she developed a better question."
 "You enjoyed that."
@@ -2009,7 +2009,7 @@ Later you find the lamp burning beside the couch. She has left one arm across yo
 "You want to read?"
 "I want to look at you. You have been awake long enough to stop arranging your expression."''', c('[Keep the invitation to further private company.]', "end", flags=f("chosen_company"))),
     n("power", "Nocticula", '''"Then let us avoid the common mistake of pretending an alliance becomes permanent merely because its first quarrel was enjoyable."
-{n}She wants no oath of obedience; obedient allies bore her within a year. Every new scheme will be bargained for fresh, and either of you may refuse one and still share a bed the same night. One rule she states flatly: nothing said in this room is ever sold. The first of you to sell a pillow confidence may expect the other to come collecting in person, and she tells you, with some relish, what she would collect.
+{n}She wants no oath of obedience; obedient allies bore her within a year. Every new scheme will be bargained for fresh, and she will take a refusal from you the way she takes a bad wine: with contempt, and then with you, in the same bed, the same night. One rule she states flatly: nothing said in this room is ever sold. The first of you to sell a pillow confidence may expect the other to come collecting in person, and she tells you, with some relish, what she would collect.
 It will not be an easy alliance. She would be insulted if you had expected one.{/n}
 "I may be angry when you refuse me."
 "I would be suspicious if you were always delighted."

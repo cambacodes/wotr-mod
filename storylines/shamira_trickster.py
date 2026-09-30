@@ -232,7 +232,7 @@ audience(P + "ch4.read", "An open mind", '[Open your mind to her] "Everyone in t
 "Stop that." {n}Her nails whiten on the arm of her throne.{/n} "Stop thinking about barley at me. Something is under there, I can feel it moving like a mouse under a rug."''',
         c("Continue", "idiot")),
     conv("idiot", '''{n}The heat pulls out of you all at once, like a hand out of cold water. She is smiling, and it is not a pleasant smile, and it is not an entirely unpleasant one either.{/n}
-"Either you are an idiot, or you have learned to hide from me. I have not decided which, and I dislike not deciding." {n}She points at the doors.{/n} "Leave. Come back when I have forgotten about you, which will be never. I will find out what was under the barley, Golarian. I always do."''',
+"Either you are an idiot, or you have learned to hide from me, and a mortal who can hide from me in my own Harem is a mortal I will have to kill one day, or keep." {n}She points at the doors.{/n} "Leave. Come back when I have forgotten about you, which will be never. I will find out what was under the barley, Golarian. I always do."''',
         c("[Bow, and leave her to her court.]")),
 ], requires=("trickster",), forbids=(READ,))
 
@@ -305,7 +305,7 @@ SCENES.append(scene(P + "killed.setup", "What's left of her", "Shamira", 5,
         c('"What if I open my head to her, and keep it open while I kill her? Somewhere for the rest of her to go."', "blind", flags=(PRIMED, STARTED, OPENED_BLIND)),
         c('[Keep it to yourself] "Just curious."', abort=True)),
     conv("blind", '''{n}For a moment the Silken Sin says nothing at all, which you did not know he could do.{/n}
-"Open your mind. To Shamira. Now, of all times. While you kill her." {n}He presses his hands to his chest.{/n} "Darling, she reads minds the way I read the tailors' bills. She will look in, and see the knife, and see the plan, and see you, and she will come in through that door with everything she has left, all at once, like a drowning woman up a rope. It may not be only the rest of her that comes in. It may be the whole of her, and angry." {n}He beams.{/n} "I have never been so jealous of anyone in my life."''',
+"Open your mind. To Shamira. Now, of all times. While you kill her." {n}He presses his hands to his chest.{/n} "Darling, she reads minds the way I read the tailors' bills. She will look in, and see the knife, and see the plan, and see you, and she will come in through that door with everything she has left, all at once, like a drowning woman up a rope. It may not be only the rest of her that comes in. It may be the whole of her, and angry." {n}He beams.{/n} "If she tears you open, darling, do try to keep your eyes open. I want the whole story."''',
         c("Continue", "carpets")),
     conv("open", '''{n}For a moment the Silken Sin says nothing at all, which you did not know he could do.{/n}
 "You'd let her in. On purpose. While she's dying, and furious, and knows exactly whose hand did it." {n}He presses his hands to his chest.{/n} "I send you to fetch my sister's favourite toy's heart in a cauldron, and you plan to bring the toy home as well, inside your own skull, for company. Oh, you are wasted on Golarion. You are wasted on the whole Material Plane."''',
@@ -454,6 +454,8 @@ page(P + "killed.drowning", "Someone drowning", [
 # own event, mind.barracks_after), never deleted. ------------------------------------------------------------------------------
 
 ARUESHALAE = ("arueshalae_dead", "arueshalae.evil_dead", "arueshalae.kicked_out", "arueshalae.kicked_out_evil")
+# G6(b): an Arueshalae who died and came back on her own Trickster road is present again (her death flag stays set).
+A_BACK = {"arueshalae_dead": "arueshalae.trickster.returned", "arueshalae.evil_dead": "arueshalae.trickster.returned"}
 DAERAN = ("daeran.dead", "daeran.kicked_out")
 WOLJIF = ("woljif.dead", "woljif.kicked_out")
 REGILL = ("regill.dead", "regill.kicked_out", "regill.left_plot")
@@ -467,13 +469,13 @@ SCENES.append(reaction("Shyka", P + "react.shyka", ("trickster.ever", RETURNED),
 SCENES.append(reaction("Arueshalae", P + "react.arueshalae_inside", ("trickster.ever", RETURNED),
     '''{n}Arueshalae will not meet your eyes across the fire. When you ask, she laughs, not very well.{/n}
 "You have Shamira in there. Behind your eyes. I can feel her looking out; every succubus in Alushinyrra knows that look. When she saw me with you in her throne room she told the whole court I'd fallen low." {n}She hugs her knees.{/n} "She isn't asleep in there. She's listening. She always listened hardest when she looked bored. Just... count your thoughts after you talk to her. All of them."''',
-    answer_list=ARUESHALAE_HUB, forbids=(EMBODIED, CLOSED) + ARUESHALAE, chapter=5, last=5,
+    answer_list=ARUESHALAE_HUB, forbids=(EMBODIED, CLOSED) + ARUESHALAE, chapter=5, last=5, ForbidOverrides=A_BACK,
     entry='"You won\'t look at me."'))
 
 SCENES.append(reaction("Arueshalae", P + "react.arueshalae_walking", ("trickster.ever", EMBODIED),
     '''"She's out. I can feel it." {n}Arueshalae touches the black pearl at her throat without seeming to notice.{/n} "Everyone who grew up in that city can feel it, the way you feel a storm in a bad knee. The Ardent Dream is walking around again in a body she didn't grow."
 {n}She looks at you, and her face does something complicated.{/n} "And she comes back every night, doesn't she. Into your sleep. I can smell her on you in the mornings." {n}She looks away.{/n} "I used to pray to be left alone in my dreams. I hope you didn't give that away cheaply."''',
-    answer_list=ARUESHALAE_HUB, forbids=ARUESHALAE, chapter=5, last=6, entry='"Something on your mind?"'))
+    answer_list=ARUESHALAE_HUB, forbids=ARUESHALAE, chapter=5, last=6, entry='"Something on your mind?"', ForbidOverrides=A_BACK))
 
 SCENES.append(reaction("Daeran", P + "react.daeran_sleep", ("trickster.ever", NEVER_ALONE),
     '''{n}Daeran swirls his wine and considers you over the rim with frank, delighted clinical interest.{/n}

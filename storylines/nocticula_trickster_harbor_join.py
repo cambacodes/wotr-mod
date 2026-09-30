@@ -73,7 +73,7 @@ You have no map complete enough to make every consequence obedient. You can name
       c('[Trickster] I may want a crossroads which serves my world. You would need a reason to prefer it to an invasion at your gates.', "crossroads", flags=f("crossroads_proposed")),
       c('[Evil] I will seek the outcome that leaves me strongest. Tell me what you would actually pay to make your preferred answer mine.', "power", flags=f("power_declared"))),
     p("closure", "Nocticula", '''"Every commander learns to call the people he spends a necessity. You wish to reserve the arithmetic for yourself."
-"I wish you to hear an objection before you count it as permission."
+"I want you to hear an objection before you start spending my name."
 "Then make it specific when the occasion comes. I have little patience for men who bring me a principle instead of an answer and expect the principle to finish their work."
 She does not offer a new Worldwound contract. She acknowledges that you have named an intention she can work with, and a limit she may contest.
 "For the harbor, you may ask what happened to the passengers. I shall ask what made the passage valuable. Try to provide answers useful to both questions."''', c('Accept that common work does not settle every disputed price.', "gift")),
@@ -92,8 +92,8 @@ You answer that you will not grant another party authority to speak for her whil
 She draws a narrow line across the coast.
 "Show me what you do with one profitable route before you ask me to value your ownership of every road."''', c('Keep her name out of other bargains and leave the larger price unagreed.', "gift", flags=f("endorsement_withheld"))),
     p("gift", "Nocticula", '''"There is also the question of how you propose to meet me. Do you intend to let an old source of power supply an answer you have not given?"''',
-      c('Your renewed gift is present. It is not permission for this new meeting.', "gift_present", requires=("noct.acq.gift_renewed",)),
-      c('Your original gift remains. I will still choose whether to receive this invitation.', "gift_present", requires=("noct.gift",), forbids=("noct.acq.gift_renewed",)),
+      c('Your renewed gift is still in me. I would rather you knocked.', "gift_present", requires=("noct.acq.gift_renewed",)),
+      c('Your old gift is still in me. Knock anyway. I like to hear it.', "gift_present", requires=("noct.gift",), forbids=("noct.acq.gift_renewed",)),
       c('No current gift supplies the passage. I want to know what you are offering to do instead.', "gift_absent", forbids=("noct.gift", "noct.acq.gift_renewed"))),
     p("gift_present", "Nocticula", '''"I could simply take the evening; the gift would let me. Where is the pleasure in that? I would rather watch you walk in on your own feet, knowing exactly what I am."
 "And I am capable of wanting you while objecting to the means of obtaining me."
@@ -107,7 +107,7 @@ She will prepare a single meeting, not repair the old aperture or supply a bless
     p("letters", "Nocticula", '''"Then keep the coast unfinished. It appears you prefer me at a distance which fits on a desk."
 "I prefer the agreement I made."
 "For now. Send me something worth reading within it."
-She takes back the drawing. The answering stroke remains on the wax. You have declined a larger meeting, not invented an acceptance by continuing to write.''', c('Keep the personal correspondence without entering the harbor work.')),
+She takes back the drawing, slowly, so that you can watch the coast leave your desk. The answering stroke stays on the wax, sulking.''', c('Keep the personal correspondence without entering the harbor work.')),
 ])
 
 
@@ -117,37 +117,40 @@ Nocticula tells you to keep the old fold flat. You are not to enlarge it, mend i
 You sit where the lamp illuminates your own hand. Beyond the window, a sentry strikes the last watch upon a rail. You count the blows before writing.{/n}''',
       c('The narrow fold is still mine to leave closed. Use only the invitation you have just made.', "prepare", requires=("noct.acq.channel_provisional",), forbids=("noct.acq.channel_letters_only",)),
       c('My ordinary letters remain closed. I am considering this separate hosted invitation.', "prepare", requires=("noct.acq.channel_letters_only",), forbids=("noct.acq.channel_exposed",)),
-      c('The exposed aperture stays broken, and you keep its sketch. Do not mistake this for permission to restore it.', "exposure", requires=("noct.acq.channel_letters_only", "noct.acq.channel_exposed", "noct.acq.channel_repaired", "noct.acq.sketch_surrendered"))),
+      c('The exposed aperture stays broken, and you keep its sketch. Leave both where they are.', "exposure", requires=("noct.acq.channel_letters_only", "noct.acq.channel_exposed", "noct.acq.channel_repaired", "noct.acq.sketch_surrendered"))),
     p("exposure", "Nocticula", '''"I remember the sketch. It has not improved while in my possession."
 "You have been looking at it?"
 "You gave me an error with an attractive idea inside it. Did you expect me to preserve only the error?"
 She keeps what you surrendered. The admission costs her nothing, and gives you a reason to remember that she does not stop being curious because you would prefer your mistake forgotten.
 The new stroke has no branching path to test. It answers from her side of the mark, and will vanish when she withdraws it.
-"You may refuse this as well," she writes. "I have not offered to make your former discretion look foolish."''', c('Keep the old exposure and surrendered sketch distinct from the invitation.', "prepare")),
+"Refuse this too, if you like," she writes. "I shall enjoy the refusal nearly as much as the evening. Not quite."''', c('Keep the old exposure and surrendered sketch distinct from the invitation.', "prepare")),
     p("prepare", "Nocticula", '''"Write where you mean to wake."
-You name your room in Drezen, the chair, and the lamp with a chipped blue foot. She asks for something the dream should not need to contain. You choose the sentry's watch signal.
-"When you wish to leave, remember that sound. I will end the room when you ask. I should like you to know that I can keep you there, and that I choose not to. We will test it before we discuss anything else."
-"You are promising to let me leave."
-"Yes. Not to become incapable of mistreating you. If you wanted a harmless hostess, you chose badly."
-You examine the words. The risk has a name and has not become smaller because she wrote it beautifully.
-She has asked for one trial evening. Even a pleasant result will require a separate answer before future sleep becomes an invitation.''',
-      c('Accept one trial meeting. Keep the lamp and the watch signal in mind.', "arrival", flags=f("trial_accepted")),
-      c('Decline the trial. Keep the letters and give her no permission to enter your sleep.', "refuse", flags=f("closed", "letters_retained"))),
+You name your room in Drezen, the chair, and the lamp with a chipped blue foot. You do not write the rest: that before you sat down you went out to the sentry on the wall below your window and paid him to strike the rail at the second bell, hard, whether or not he hears you snoring.
+She finds it anyway. The answering stroke goes still on the wax for a long breath.
+"You have hired a man to wake you from me."
+"I have hired a man to strike a rail. What I do when I hear it is my affair."
+"How insulting." The stroke curls. "And how sensible. I could hold a sleeper through a great deal louder than a rail, if I chose. We shall find out whether I choose."
+You read it twice. The risk has a name, and it has not become smaller because she wrote it beautifully.
+She has asked for one evening. What comes after it, she makes clear, will depend on how much she enjoys it.''',
+      c('Go to sleep, with the sentry paid to strike the rail at the second bell.', "arrival", flags=f("trial_accepted")),
+      c('Decline the evening. Keep the letters, and keep her out of your sleep.', "refuse", flags=f("closed", "letters_retained"))),
     p("arrival", "Narrator", '''{n}You leave the sheet beneath the lamp and close your eyes. Sleep brings a stone landing no larger than your room, with an open arch at one end. Beyond it hangs a red evening sky. There is no city beneath the sky, and no ground upon which to place one.
 Nocticula stands beside the arch. The light follows the edges of her wings, then loses itself in their shadow. She looks at your boots before meeting your eyes.{/n}
 "You brought those."
 "I was uncertain about the floor."
 "Practical. Disappointing, but practical."
 {n}You can see the familiar ease with which she lets a silence become someone else's difficulty. Her attention is less comfortable than her handwriting. It also makes the absurdly small landing seem worth the wait.
-You tell her so. She inclines her head, accepting the compliment without offering another in exchange.{/n}
-"The sound," she says. "Before you decide the view has answered that question for you."''', c('Ask to wake and remember the sentry striking the rail.', "waking")),
-    p("waking", "Narrator", '''{n}You hear one remembered blow. The arch loses its red light, and your chair presses against the back of your legs. The lamp is still burning. Nocticula's next words arrive on the sheet beneath it.{/n}
-"You left a remarkably promising evening."
-"You asked me to test the exit."
-"I have never claimed to enjoy every successful instruction."
-{n}You can put the wax away now. The new stroke is fading. She has ended the hosted place when asked; the room was not an entrance into her city, and waking has left no coast beneath your desk.
-She asks whether you would like another evening in which the first subject is not your departure.{/n}''',
-      c('Yes. Let us discuss a continuing invitation after both of us have had time to consider it.', flags=f("the_room_she_makes_done", "exit_demonstrated")),
+You tell her so. She steps close enough that you smell night-blooming flowers, and lifts one hand toward your collar.
+Far away and very loud, iron rings on iron. Once. Your sentry is punctual.{/n}
+"Your hired man," she says, without turning her head. Her hand has stopped an inch from your throat. "I could make you deaf to him. It would take less effort than this conversation."
+{n}The second blow is already on its way up the wall.{/n}''', c('[Let the second blow reach you.]', "waking")),
+    p("waking", "Narrator", '''{n}The second blow reaches you. The arch loses its red light, and your chair presses against the back of your legs. The lamp is still burning, and the sentry below the window is swearing at his stinging hands. Nocticula's next words are already on the sheet beneath the lamp.{/n}
+"Your sentry is a very punctual man. I have made a note of his face."
+"He was paid to be punctual."
+"Then he will understand that everything has a price."
+{n}You are not entirely sure she is joking. The new stroke is fading. The landing has gone, and nothing of her city has come back with you but the smell of flowers on your sleeve.
+Under it, one more line, smaller: "Next time, pay him to be late."{/n}''',
+      c('Write back that you will think about the sentry\'s wages.', flags=f("the_room_she_makes_done", "exit_demonstrated")),
       c('No. Keep the letters. I do not want further dream meetings.', flags=f("the_room_she_makes_done", "exit_demonstrated", "closed", "letters_retained"))),
     p("refuse", "Nocticula", '''"Then stay by your lamp."
 The second stroke disappears. The old answering mark remains.
@@ -202,7 +205,7 @@ You will keep the old correspondence as well. She does not ask about your other 
 "And if I decline the harbor after hearing the case?"
 "Then I shall have spent an evening arranging a particularly elaborate disappointment. I do not recommend making a habit of it."
 "That was almost an answer."
-"You may decline the undertaking. I may remain annoyed. Your letters will have to become better company."
+"Decline it, and I shall be annoyed, which I do beautifully and at length. Your letters would have to become very much better company."
 She has left you the clean final space again. No new stroke appears inside it.''',
       c('Accept recurring hosted invitations on those terms. Hear the harbor proposal before deciding whether to undertake it.', "yes", flags=f("recurring_dreams_accepted", "harbor_variant_ready")),
       c('Keep the letters and decline further dream invitations or harbor work.', "no", flags=f("closed", "letters_retained"))),

@@ -117144,7 +117144,7 @@
         {
           "Id": "keep",
           "Speaker": "Nocticula",
-          "Text": "\"A useful sentence. It will sound better to the people seeking protection than to the hostess required to provide it.\"\n{n}Nocticula appoints a supervisor whom Istrava cannot dismiss. Visitors may come and go without names. Those who want her protection pay for it in the only coin she wants from them: who frightened them, and where he sleeps. The old attendants are paid off and sent away with their possessions; people who know the rooms that well are more dangerous inside than out.\nIstrava keeps a share of the business and no authority over the gallery's exits. She accepts because the alternative is losing everything the house supplies. Neither you nor Nocticula describes the agreement as her willing transformation into a kinder woman.{/n}\n\"She will look for a way around it,\" you say.\n\"She already has. She asked whether private rooms were outside the gallery's rules. I told her the doors would be removed until she developed a better question.\"\n\"You enjoyed that.\"\n\"You helped give me the occasion. Do not become shy about your contribution now.\"\n{n}There is approval in the answer, and a demand. If you stand beside her while she acquires power, she will not let you attribute every uncomfortable part of the victory to her nature alone.\nThe address becomes one of her instruments. It may save somebody who would otherwise have nowhere to go. It will also tell her who is afraid of whom, and she intends to use what she learns.{/n}",
+          "Text": "\"A useful sentence. It will sound better to the people seeking protection than to the hostess required to provide it.\"\n{n}Nocticula appoints a supervisor whom Istrava cannot dismiss. Visitors may come and go without names. Those who want her protection pay for it in the only coin she wants from them: who frightened them, and where he sleeps. The old attendants are paid off and sent away with their possessions; people who know the rooms that well are more dangerous inside than out.\nIstrava keeps a share of the business and no authority over the gallery's exits. She accepts because the alternative is losing everything the house supplies. Nocticula watches her sign with the expression of a cat that has been handed the mouse and asked to keep it alive.{/n}\n\"She will look for a way around it,\" you say.\n\"She already has. She asked whether private rooms were outside the gallery's rules. I told her the doors would be removed until she developed a better question.\"\n\"You enjoyed that.\"\n\"You helped give me the occasion. Do not become shy about your contribution now.\"\n{n}There is approval in the answer, and a demand. If you stand beside her while she acquires power, she will not let you attribute every uncomfortable part of the victory to her nature alone.\nThe address becomes one of her instruments. It may save somebody who would otherwise have nowhere to go. It will also tell her who is afraid of whom, and she intends to use what she learns.{/n}",
           "Choices": [
             {
               "Text": "[Keep the useful house and accept responsibility for the information it will sell.]",
@@ -118287,7 +118287,7 @@
         {
           "Id": "power",
           "Speaker": "Nocticula",
-          "Text": "\"Then let us avoid the common mistake of pretending an alliance becomes permanent merely because its first quarrel was enjoyable.\"\n{n}She wants no oath of obedience; obedient allies bore her within a year. Every new scheme will be bargained for fresh, and either of you may refuse one and still share a bed the same night. One rule she states flatly: nothing said in this room is ever sold. The first of you to sell a pillow confidence may expect the other to come collecting in person, and she tells you, with some relish, what she would collect.\nIt will not be an easy alliance. She would be insulted if you had expected one.{/n}\n\"I may be angry when you refuse me.\"\n\"I would be suspicious if you were always delighted.\"\n{n}Her laugh is low and pleased. She kisses you, then keeps her hand against your cheek.{/n}\n\"I almost sent you another proposal tonight.\"\n\"Almost?\"\n\"A minor courtier has been selling introductions to me. I thought you might enjoy deciding what he ought to receive for his trouble.\"\n\"You decided I would prefer this?\"\n\"I decided I would. He can spend another night imagining how prosperous he is about to become.\"\n{n}She takes the glass from your hand and puts it well beyond reach. Her next kiss leaves you with very little interest in recovering it. She undresses you the way she dictates letters, quickly and without waste; when you reach for the laces at her back she turns in your arms so you can pull them, lets the gown fall to her hips, and drags you down with her onto the rug before the hearth. She rolls you under her. Her knees close on your ribs, her hair comes down around your face, and she sinks down onto you with a look that says some part of her is still, somewhere behind it, thinking about the courtier.\nThe curtains draw across the window. Much later, she asks what you would have proposed for the courtier.{/n}\n\"Send him an introduction to his creditors.\"\n{n}She lifts her head from your shoulder.{/n}\n\"I knew there was a reason I kept you.\"",
+          "Text": "\"Then let us avoid the common mistake of pretending an alliance becomes permanent merely because its first quarrel was enjoyable.\"\n{n}She wants no oath of obedience; obedient allies bore her within a year. Every new scheme will be bargained for fresh, and she will take a refusal from you the way she takes a bad wine: with contempt, and then with you, in the same bed, the same night. One rule she states flatly: nothing said in this room is ever sold. The first of you to sell a pillow confidence may expect the other to come collecting in person, and she tells you, with some relish, what she would collect.\nIt will not be an easy alliance. She would be insulted if you had expected one.{/n}\n\"I may be angry when you refuse me.\"\n\"I would be suspicious if you were always delighted.\"\n{n}Her laugh is low and pleased. She kisses you, then keeps her hand against your cheek.{/n}\n\"I almost sent you another proposal tonight.\"\n\"Almost?\"\n\"A minor courtier has been selling introductions to me. I thought you might enjoy deciding what he ought to receive for his trouble.\"\n\"You decided I would prefer this?\"\n\"I decided I would. He can spend another night imagining how prosperous he is about to become.\"\n{n}She takes the glass from your hand and puts it well beyond reach. Her next kiss leaves you with very little interest in recovering it. She undresses you the way she dictates letters, quickly and without waste; when you reach for the laces at her back she turns in your arms so you can pull them, lets the gown fall to her hips, and drags you down with her onto the rug before the hearth. She rolls you under her. Her knees close on your ribs, her hair comes down around your face, and she sinks down onto you with a look that says some part of her is still, somewhere behind it, thinking about the courtier.\nThe curtains draw across the window. Much later, she asks what you would have proposed for the courtier.{/n}\n\"Send him an introduction to his creditors.\"\n{n}She lifts her head from your shoulder.{/n}\n\"I knew there was a reason I kept you.\"",
           "Choices": [
             {
               "Text": "[Keep the ambitious alliance and the private company within it.]",
@@ -119534,7 +119534,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -119741,7 +119741,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -120144,7 +120144,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -120340,7 +120340,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -120770,7 +120770,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -121004,7 +121004,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -121438,7 +121438,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -121640,7 +121640,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -121842,7 +121842,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -122043,7 +122043,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -122245,7 +122245,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -122447,7 +122447,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -123288,7 +123288,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -123523,7 +123523,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -123991,7 +123991,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -124224,7 +124224,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -124662,7 +124662,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -124867,7 +124867,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -125303,7 +125303,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -125534,7 +125534,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -126005,7 +126005,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -126245,7 +126245,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -126701,7 +126701,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -126917,7 +126917,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -127420,7 +127420,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -127707,7 +127707,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -128276,7 +128276,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -128558,7 +128558,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -129094,7 +129094,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -129348,7 +129348,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -129786,7 +129786,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -129970,7 +129970,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -130364,7 +130364,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -130574,7 +130574,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -130990,7 +130990,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -131196,7 +131196,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -131641,7 +131641,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -131880,7 +131880,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -132435,7 +132435,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -132751,7 +132751,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -133250,7 +133250,7 @@
         {
           "Id": "keep",
           "Speaker": "Nocticula",
-          "Text": "\"A useful sentence. It will sound better to the people seeking protection than to the hostess required to provide it.\"\n{n}Nocticula appoints a supervisor whom Istrava cannot dismiss. Visitors may come and go without names. Those who want her protection pay for it in the only coin she wants from them: who frightened them, and where he sleeps. The old attendants are paid off and sent away with their possessions; people who know the rooms that well are more dangerous inside than out.\nIstrava keeps a share of the business and no authority over the gallery's exits. She accepts because the alternative is losing everything the house supplies. Neither you nor Nocticula describes the agreement as her willing transformation into a kinder woman.{/n}\n\"She will look for a way around it,\" you say.\n\"She already has. She asked whether private rooms were outside the gallery's rules. I told her the doors would be removed until she developed a better question.\"\n\"You enjoyed that.\"\n\"You helped give me the occasion. Do not become shy about your contribution now.\"\n{n}There is approval in the answer, and a demand. If you stand beside her while she acquires power, she will not let you attribute every uncomfortable part of the victory to her nature alone.\nThe address becomes one of her instruments. It may save somebody who would otherwise have nowhere to go. It will also tell her who is afraid of whom, and she intends to use what she learns.{/n}",
+          "Text": "\"A useful sentence. It will sound better to the people seeking protection than to the hostess required to provide it.\"\n{n}Nocticula appoints a supervisor whom Istrava cannot dismiss. Visitors may come and go without names. Those who want her protection pay for it in the only coin she wants from them: who frightened them, and where he sleeps. The old attendants are paid off and sent away with their possessions; people who know the rooms that well are more dangerous inside than out.\nIstrava keeps a share of the business and no authority over the gallery's exits. She accepts because the alternative is losing everything the house supplies. Nocticula watches her sign with the expression of a cat that has been handed the mouse and asked to keep it alive.{/n}\n\"She will look for a way around it,\" you say.\n\"She already has. She asked whether private rooms were outside the gallery's rules. I told her the doors would be removed until she developed a better question.\"\n\"You enjoyed that.\"\n\"You helped give me the occasion. Do not become shy about your contribution now.\"\n{n}There is approval in the answer, and a demand. If you stand beside her while she acquires power, she will not let you attribute every uncomfortable part of the victory to her nature alone.\nThe address becomes one of her instruments. It may save somebody who would otherwise have nowhere to go. It will also tell her who is afraid of whom, and she intends to use what she learns.{/n}",
           "Choices": [
             {
               "Text": "[Keep the useful house and accept responsibility for the information it will sell.]",
@@ -133287,7 +133287,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -133470,7 +133470,7 @@
         {
           "Id": "keep",
           "Speaker": "Nocticula",
-          "Text": "\"A useful sentence. It will sound better to the people seeking protection than to the hostess required to provide it.\"\n{n}Nocticula appoints a supervisor whom Istrava cannot dismiss. Visitors may come and go without names. Those who want her protection pay for it in the only coin she wants from them: who frightened them, and where he sleeps. The old attendants are paid off and sent away with their possessions; people who know the rooms that well are more dangerous inside than out.\nIstrava keeps a share of the business and no authority over the gallery's exits. She accepts because the alternative is losing everything the house supplies. Neither you nor Nocticula describes the agreement as her willing transformation into a kinder woman.{/n}\n\"She will look for a way around it,\" you say.\n\"She already has. She asked whether private rooms were outside the gallery's rules. I told her the doors would be removed until she developed a better question.\"\n\"You enjoyed that.\"\n\"You helped give me the occasion. Do not become shy about your contribution now.\"\n{n}There is approval in the answer, and a demand. If you stand beside her while she acquires power, she will not let you attribute every uncomfortable part of the victory to her nature alone.\nThe address becomes one of her instruments. It may save somebody who would otherwise have nowhere to go. It will also tell her who is afraid of whom, and she intends to use what she learns.{/n}",
+          "Text": "\"A useful sentence. It will sound better to the people seeking protection than to the hostess required to provide it.\"\n{n}Nocticula appoints a supervisor whom Istrava cannot dismiss. Visitors may come and go without names. Those who want her protection pay for it in the only coin she wants from them: who frightened them, and where he sleeps. The old attendants are paid off and sent away with their possessions; people who know the rooms that well are more dangerous inside than out.\nIstrava keeps a share of the business and no authority over the gallery's exits. She accepts because the alternative is losing everything the house supplies. Nocticula watches her sign with the expression of a cat that has been handed the mouse and asked to keep it alive.{/n}\n\"She will look for a way around it,\" you say.\n\"She already has. She asked whether private rooms were outside the gallery's rules. I told her the doors would be removed until she developed a better question.\"\n\"You enjoyed that.\"\n\"You helped give me the occasion. Do not become shy about your contribution now.\"\n{n}There is approval in the answer, and a demand. If you stand beside her while she acquires power, she will not let you attribute every uncomfortable part of the victory to her nature alone.\nThe address becomes one of her instruments. It may save somebody who would otherwise have nowhere to go. It will also tell her who is afraid of whom, and she intends to use what she learns.{/n}",
           "Choices": [
             {
               "Text": "[Keep the useful house and accept responsibility for the information it will sell.]",
@@ -133507,7 +133507,7 @@
         {
           "Id": "withdraw_undertaking",
           "Speaker": "Nocticula",
-          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. I will not pretend we never chose each other's company because you have ceased to enjoy this part of it.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
+          "Text": "For a moment she watches you without answering.\n\"You could have told me before I arranged the evening.\"\n\"I am telling you before I promise another.\"\nHer gaze sharpens. \"So you are. Do not mistake my willingness to hear an answer for pleasure in receiving it.\"\n{n}She turns one palm upward. The objects of the evening lose their edges, but she remains distinct against the darkness.{/n}\n\"I shall choose my next adviser more carefully. What you have already done is done. You will receive no further invitations concerning this harbor.\"\n\"The letters?\"\n\"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was.\"\n{n}She lowers her hand. The dream ends before you can decide whether she meant to dismiss you or spare herself another word.{/n}",
           "Choices": [
             {
               "Text": "[End these harbor meetings. Keep the personal correspondence without a new invitation.]",
@@ -133690,7 +133690,7 @@
         {
           "Id": "keep",
           "Speaker": "Nocticula",
-          "Text": "\"A useful sentence. It will sound better to the people seeking protection than to the hostess required to provide it.\"\n{n}Nocticula appoints a supervisor whom Istrava cannot dismiss. Visitors may come and go without names. Those who want her protection pay for it in the only coin she wants from them: who frightened them, and where he sleeps. The old attendants are paid off and sent away with their possessions; people who know the rooms that well are more dangerous inside than out.\nIstrava keeps a share of the business and no authority over the gallery's exits. She accepts because the alternative is losing everything the house supplies. Neither you nor Nocticula describes the agreement as her willing transformation into a kinder woman.{/n}\n\"She will look for a way around it,\" you say.\n\"She already has. She asked whether private rooms were outside the gallery's rules. I told her the doors would be removed until she developed a better question.\"\n\"You enjoyed that.\"\n\"You helped give me the occasion. Do not become shy about your contribution now.\"\n{n}There is approval in the answer, and a demand. If you stand beside her while she acquires power, she will not let you attribute every uncomfortable part of the victory to her nature alone.\nThe address becomes one of her instruments. It may save somebody who would otherwise have nowhere to go. It will also tell her who is afraid of whom, and she intends to use what she learns.{/n}",
+          "Text": "\"A useful sentence. It will sound better to the people seeking protection than to the hostess required to provide it.\"\n{n}Nocticula appoints a supervisor whom Istrava cannot dismiss. Visitors may come and go without names. Those who want her protection pay for it in the only coin she wants from them: who frightened them, and where he sleeps. The old attendants are paid off and sent away with their possessions; people who know the rooms that well are more dangerous inside than out.\nIstrava keeps a share of the business and no authority over the gallery's exits. She accepts because the alternative is losing everything the house supplies. Nocticula watches her sign with the expression of a cat that has been handed the mouse and asked to keep it alive.{/n}\n\"She will look for a way around it,\" you say.\n\"She already has. She asked whether private rooms were outside the gallery's rules. I told her the doors would be removed until she developed a better question.\"\n\"You enjoyed that.\"\n\"You helped give me the occasion. Do not become shy about your contribution now.\"\n{n}There is approval in the answer, and a demand. If you stand beside her while she acquires power, she will not let you attribute every uncomfortable part of the victory to her nature alone.\nThe address becomes one of her instruments. It may save somebody who would otherwise have nowhere to go. It will also tell her who is afraid of whom, and she intends to use what she learns.{/n}",
           "Choices": [
             {
               "Text": "[Keep the useful house and accept responsibility for the information it will sell.]",
@@ -136725,7 +136725,7 @@
         {
           "Id": "power",
           "Speaker": "Nocticula",
-          "Text": "\"Then let us avoid the common mistake of pretending an alliance becomes permanent merely because its first quarrel was enjoyable.\"\n{n}She wants no oath of obedience; obedient allies bore her within a year. Every new scheme will be bargained for fresh, and either of you may refuse one and still share a bed the same night. One rule she states flatly: nothing said in this room is ever sold. The first of you to sell a pillow confidence may expect the other to come collecting in person, and she tells you, with some relish, what she would collect.\nIt will not be an easy alliance. She would be insulted if you had expected one.{/n}\n\"I may be angry when you refuse me.\"\n\"I would be suspicious if you were always delighted.\"\n{n}Her laugh is low and pleased. She kisses you, then keeps her hand against your cheek.{/n}\n\"I almost sent you another proposal tonight.\"\n\"Almost?\"\n\"A minor courtier has sold the same balcony to three guests for an execution none of them arranged. After Salven, one might have hoped for a little imagination in choosing a fraud. I thought you might enjoy deciding who ought to receive the best view.\"\n\"You decided I would prefer this?\"\n\"I decided I would. He can spend another night imagining how prosperous he is about to become.\"\n{n}She takes the glass from your hand and puts it well beyond reach. Her next kiss leaves you with very little interest in recovering it. She undresses you the way she dictates letters, quickly and without waste; when you reach for the laces at her back she turns in your arms so you can pull them, lets the gown fall to her hips, and drags you down with her onto the rug before the hearth. She rolls you under her. Her knees close on your ribs, her hair comes down around your face, and she sinks down onto you with a look that says some part of her is still, somewhere behind it, thinking about the courtier.\nThe curtains draw across the window. Much later, she asks what you would have proposed for the courtier.{/n}\n\"Seat his creditors on the balcony. Let him explain why the entertainment has been canceled.\"\n{n}She lifts her head from your shoulder.{/n}\n\"I knew there was a reason I kept you.\"",
+          "Text": "\"Then let us avoid the common mistake of pretending an alliance becomes permanent merely because its first quarrel was enjoyable.\"\n{n}She wants no oath of obedience; obedient allies bore her within a year. Every new scheme will be bargained for fresh, and she will take a refusal from you the way she takes a bad wine: with contempt, and then with you, in the same bed, the same night. One rule she states flatly: nothing said in this room is ever sold. The first of you to sell a pillow confidence may expect the other to come collecting in person, and she tells you, with some relish, what she would collect.\nIt will not be an easy alliance. She would be insulted if you had expected one.{/n}\n\"I may be angry when you refuse me.\"\n\"I would be suspicious if you were always delighted.\"\n{n}Her laugh is low and pleased. She kisses you, then keeps her hand against your cheek.{/n}\n\"I almost sent you another proposal tonight.\"\n\"Almost?\"\n\"A minor courtier has sold the same balcony to three guests for an execution none of them arranged. After Salven, one might have hoped for a little imagination in choosing a fraud. I thought you might enjoy deciding who ought to receive the best view.\"\n\"You decided I would prefer this?\"\n\"I decided I would. He can spend another night imagining how prosperous he is about to become.\"\n{n}She takes the glass from your hand and puts it well beyond reach. Her next kiss leaves you with very little interest in recovering it. She undresses you the way she dictates letters, quickly and without waste; when you reach for the laces at her back she turns in your arms so you can pull them, lets the gown fall to her hips, and drags you down with her onto the rug before the hearth. She rolls you under her. Her knees close on your ribs, her hair comes down around your face, and she sinks down onto you with a look that says some part of her is still, somewhere behind it, thinking about the courtier.\nThe curtains draw across the window. Much later, she asks what you would have proposed for the courtier.{/n}\n\"Seat his creditors on the balcony. Let him explain why the entertainment has been canceled.\"\n{n}She lifts her head from your shoulder.{/n}\n\"I knew there was a reason I kept you.\"",
           "Choices": [
             {
               "Text": "[Keep the ambitious alliance and the private company within it.]",
@@ -136743,7 +136743,7 @@
         {
           "Id": "limited",
           "Speaker": "Nocticula",
-          "Text": "{n}She is still for a moment. Then she inclines her head.{/n}\n\"An answer I dislike. Not an answer I failed to offer.\"\n\"I enjoyed this.\"\n\"I know. That is part of what makes the limit interesting.\"\n{n}She puts the lens back on the table, lining its scratch up with the grain in the wood. She takes rather longer than necessary.{/n}\n\"Then the letters remain. I will not send another room and pretend that was what you asked to keep. I assume you will tell me if you decide to become more irritating.\"\n\"You may notice before I do.\"\n\"Almost certainly.\"\n{n}You share the drink. Nocticula asks about a Drezen merchant's attempt to sell winter clothing to an Abyssal buyer, and soon has three suggestions for improving his sales. The fourth makes you ask whether the customer is expected to survive the fitting. She looks offended that you needed to ask.\nWhen your glasses are empty, she places them together on the table and rises.{/n}",
+          "Text": "{n}She is still for a moment. Then she inclines her head.{/n}\n\"An answer I dislike. Not an answer I failed to offer.\"\n\"I enjoyed this.\"\n\"I know. That is part of what makes the limit interesting.\"\n{n}She puts the lens back on the table, lining its scratch up with the grain in the wood. She takes rather longer than necessary.{/n}\n\"Then the letters remain. The rooms I make are for guests who come to them. I assume you will tell me if you decide to become more irritating.\"\n\"You may notice before I do.\"\n\"Almost certainly.\"\n{n}You share the drink. Nocticula asks about a Drezen merchant's attempt to sell winter clothing to an Abyssal buyer, and soon has three suggestions for improving his sales. The fourth makes you ask whether the customer is expected to survive the fitting. She looks offended that you needed to ask.\nWhen your glasses are empty, she places them together on the table and rises.{/n}",
           "Choices": [
             {
               "Text": "[Keep the correspondence. Decline the larger invitation.]",
@@ -136998,7 +136998,7 @@
         {
           "Id": "power",
           "Speaker": "Nocticula",
-          "Text": "\"Then let us avoid the common mistake of pretending an alliance becomes permanent merely because its first quarrel was enjoyable.\"\n{n}She wants no oath of obedience; obedient allies bore her within a year. Every new scheme will be bargained for fresh, and either of you may refuse one and still share a bed the same night. One rule she states flatly: nothing said in this room is ever sold. The first of you to sell a pillow confidence may expect the other to come collecting in person, and she tells you, with some relish, what she would collect.\nIt will not be an easy alliance. She would be insulted if you had expected one.{/n}\n\"I may be angry when you refuse me.\"\n\"I would be suspicious if you were always delighted.\"\n{n}Her laugh is low and pleased. She kisses you, then keeps her hand against your cheek.{/n}\n\"I almost sent you another proposal tonight.\"\n\"Almost?\"\n\"A minor courtier has sold the same balcony to three guests for an execution none of them arranged. After Salven, one might have hoped for a little imagination in choosing a fraud. I thought you might enjoy deciding who ought to receive the best view.\"\n\"You decided I would prefer this?\"\n\"I decided I would. He can spend another night imagining how prosperous he is about to become.\"\n{n}She takes the glass from your hand and puts it well beyond reach. Her next kiss leaves you with very little interest in recovering it. She undresses you the way she dictates letters, quickly and without waste; when you reach for the laces at her back she turns in your arms so you can pull them, lets the gown fall to her hips, and drags you down with her onto the rug before the hearth. She rolls you under her. Her knees close on your ribs, her hair comes down around your face, and she sinks down onto you with a look that says some part of her is still, somewhere behind it, thinking about the courtier.\nThe curtains draw across the window. Much later, she asks what you would have proposed for the courtier.{/n}\n\"Seat his creditors on the balcony. Let him explain why the entertainment has been canceled.\"\n{n}She lifts her head from your shoulder.{/n}\n\"I knew there was a reason I kept you.\"",
+          "Text": "\"Then let us avoid the common mistake of pretending an alliance becomes permanent merely because its first quarrel was enjoyable.\"\n{n}She wants no oath of obedience; obedient allies bore her within a year. Every new scheme will be bargained for fresh, and she will take a refusal from you the way she takes a bad wine: with contempt, and then with you, in the same bed, the same night. One rule she states flatly: nothing said in this room is ever sold. The first of you to sell a pillow confidence may expect the other to come collecting in person, and she tells you, with some relish, what she would collect.\nIt will not be an easy alliance. She would be insulted if you had expected one.{/n}\n\"I may be angry when you refuse me.\"\n\"I would be suspicious if you were always delighted.\"\n{n}Her laugh is low and pleased. She kisses you, then keeps her hand against your cheek.{/n}\n\"I almost sent you another proposal tonight.\"\n\"Almost?\"\n\"A minor courtier has sold the same balcony to three guests for an execution none of them arranged. After Salven, one might have hoped for a little imagination in choosing a fraud. I thought you might enjoy deciding who ought to receive the best view.\"\n\"You decided I would prefer this?\"\n\"I decided I would. He can spend another night imagining how prosperous he is about to become.\"\n{n}She takes the glass from your hand and puts it well beyond reach. Her next kiss leaves you with very little interest in recovering it. She undresses you the way she dictates letters, quickly and without waste; when you reach for the laces at her back she turns in your arms so you can pull them, lets the gown fall to her hips, and drags you down with her onto the rug before the hearth. She rolls you under her. Her knees close on your ribs, her hair comes down around your face, and she sinks down onto you with a look that says some part of her is still, somewhere behind it, thinking about the courtier.\nThe curtains draw across the window. Much later, she asks what you would have proposed for the courtier.{/n}\n\"Seat his creditors on the balcony. Let him explain why the entertainment has been canceled.\"\n{n}She lifts her head from your shoulder.{/n}\n\"I knew there was a reason I kept you.\"",
           "Choices": [
             {
               "Text": "[Keep the ambitious alliance and the private company within it.]",
@@ -137016,7 +137016,7 @@
         {
           "Id": "limited",
           "Speaker": "Nocticula",
-          "Text": "{n}She is still for a moment. Then she inclines her head.{/n}\n\"An answer I dislike. Not an answer I failed to offer.\"\n\"I enjoyed this.\"\n\"I know. That is part of what makes the limit interesting.\"\n{n}She puts the lens back on the table, lining its scratch up with the grain in the wood. She takes rather longer than necessary.{/n}\n\"Then the letters remain. I will not send another room and pretend that was what you asked to keep. I assume you will tell me if you decide to become more irritating.\"\n\"You may notice before I do.\"\n\"Almost certainly.\"\n{n}You share the drink. Nocticula asks about a Drezen merchant's attempt to sell winter clothing to an Abyssal buyer, and soon has three suggestions for improving his sales. The fourth makes you ask whether the customer is expected to survive the fitting. She looks offended that you needed to ask.\nWhen your glasses are empty, she places them together on the table and rises.{/n}",
+          "Text": "{n}She is still for a moment. Then she inclines her head.{/n}\n\"An answer I dislike. Not an answer I failed to offer.\"\n\"I enjoyed this.\"\n\"I know. That is part of what makes the limit interesting.\"\n{n}She puts the lens back on the table, lining its scratch up with the grain in the wood. She takes rather longer than necessary.{/n}\n\"Then the letters remain. The rooms I make are for guests who come to them. I assume you will tell me if you decide to become more irritating.\"\n\"You may notice before I do.\"\n\"Almost certainly.\"\n{n}You share the drink. Nocticula asks about a Drezen merchant's attempt to sell winter clothing to an Abyssal buyer, and soon has three suggestions for improving his sales. The fourth makes you ask whether the customer is expected to survive the fitting. She looks offended that you needed to ask.\nWhen your glasses are empty, she places them together on the table and rises.{/n}",
           "Choices": [
             {
               "Text": "[Keep the correspondence. Decline the larger invitation.]",
@@ -137271,7 +137271,7 @@
         {
           "Id": "power",
           "Speaker": "Nocticula",
-          "Text": "\"Then let us avoid the common mistake of pretending an alliance becomes permanent merely because its first quarrel was enjoyable.\"\n{n}She wants no oath of obedience; obedient allies bore her within a year. Every new scheme will be bargained for fresh, and either of you may refuse one and still share a bed the same night. One rule she states flatly: nothing said in this room is ever sold. The first of you to sell a pillow confidence may expect the other to come collecting in person, and she tells you, with some relish, what she would collect.\nIt will not be an easy alliance. She would be insulted if you had expected one.{/n}\n\"I may be angry when you refuse me.\"\n\"I would be suspicious if you were always delighted.\"\n{n}Her laugh is low and pleased. She kisses you, then keeps her hand against your cheek.{/n}\n\"I almost sent you another proposal tonight.\"\n\"Almost?\"\n\"A minor courtier has sold the same balcony to three guests for an execution none of them arranged. After Salven, one might have hoped for a little imagination in choosing a fraud. I thought you might enjoy deciding who ought to receive the best view.\"\n\"You decided I would prefer this?\"\n\"I decided I would. He can spend another night imagining how prosperous he is about to become.\"\n{n}She takes the glass from your hand and puts it well beyond reach. Her next kiss leaves you with very little interest in recovering it. She undresses you the way she dictates letters, quickly and without waste; when you reach for the laces at her back she turns in your arms so you can pull them, lets the gown fall to her hips, and drags you down with her onto the rug before the hearth. She rolls you under her. Her knees close on your ribs, her hair comes down around your face, and she sinks down onto you with a look that says some part of her is still, somewhere behind it, thinking about the courtier.\nThe curtains draw across the window. Much later, she asks what you would have proposed for the courtier.{/n}\n\"Seat his creditors on the balcony. Let him explain why the entertainment has been canceled.\"\n{n}She lifts her head from your shoulder.{/n}\n\"I knew there was a reason I kept you.\"",
+          "Text": "\"Then let us avoid the common mistake of pretending an alliance becomes permanent merely because its first quarrel was enjoyable.\"\n{n}She wants no oath of obedience; obedient allies bore her within a year. Every new scheme will be bargained for fresh, and she will take a refusal from you the way she takes a bad wine: with contempt, and then with you, in the same bed, the same night. One rule she states flatly: nothing said in this room is ever sold. The first of you to sell a pillow confidence may expect the other to come collecting in person, and she tells you, with some relish, what she would collect.\nIt will not be an easy alliance. She would be insulted if you had expected one.{/n}\n\"I may be angry when you refuse me.\"\n\"I would be suspicious if you were always delighted.\"\n{n}Her laugh is low and pleased. She kisses you, then keeps her hand against your cheek.{/n}\n\"I almost sent you another proposal tonight.\"\n\"Almost?\"\n\"A minor courtier has sold the same balcony to three guests for an execution none of them arranged. After Salven, one might have hoped for a little imagination in choosing a fraud. I thought you might enjoy deciding who ought to receive the best view.\"\n\"You decided I would prefer this?\"\n\"I decided I would. He can spend another night imagining how prosperous he is about to become.\"\n{n}She takes the glass from your hand and puts it well beyond reach. Her next kiss leaves you with very little interest in recovering it. She undresses you the way she dictates letters, quickly and without waste; when you reach for the laces at her back she turns in your arms so you can pull them, lets the gown fall to her hips, and drags you down with her onto the rug before the hearth. She rolls you under her. Her knees close on your ribs, her hair comes down around your face, and she sinks down onto you with a look that says some part of her is still, somewhere behind it, thinking about the courtier.\nThe curtains draw across the window. Much later, she asks what you would have proposed for the courtier.{/n}\n\"Seat his creditors on the balcony. Let him explain why the entertainment has been canceled.\"\n{n}She lifts her head from your shoulder.{/n}\n\"I knew there was a reason I kept you.\"",
           "Choices": [
             {
               "Text": "[Keep the ambitious alliance and the private company within it.]",
@@ -139237,7 +139237,7 @@
         {
           "Id": "question",
           "Speaker": "Commander",
-          "Text": "You describe the incomplete reflection and ask her to add the part she withheld. You do not draw what you think it ought to be.\nBelow that, you write the real request: an evening in which either of you may end the conversation, without calling the interruption an attack or pretending that being admitted is a promise of affection.\nThe last sentence is less restrained. You tell her that you expect her to be difficult and would rather find out whether you can be interesting.\nYou consider crossing it out. The line remains.\nThe folded sheet goes dark from the center outward. When the shadow reaches the edge, it stops. Nothing in the room beyond it changes.",
+          "Text": "You describe the incomplete reflection and ask her to add the part she withheld. You do not draw what you think it ought to be.\nBelow that, you write the real request: an evening with her, on her side of the wax, with no brother in the room, no Council waiting and no report due at the end of it.\nThe last sentence is less restrained. You tell her that you expect her to be difficult and would rather find out whether you can be interesting.\nYou consider crossing it out. The line remains.\nThe folded sheet goes dark from the center outward. When the shadow reaches the edge, it stops. Nothing in the room beyond it changes.",
           "Choices": [
             {
               "Text": "Leave the request closed and wait for an answer.",
@@ -140375,7 +140375,7 @@
         {
           "Id": "rejected",
           "Speaker": "Nocticula",
-          "Text": "\"You were allowed to refuse the first offer. You seem determined to make me admire the exercise.\"\n\"I want you to understand why this answer would be different.\"\n\"Then give a different answer. Rehearsing the refusal has not made it more fascinating.\"\nYou cross out the next sentence, which had begun with an explanation she has already heard. Beneath it you write that you enjoy wanting something from her which she has not yet decided to give.\n\"A dangerous taste,\" she replies. \"You will find me exceedingly accomplished at prolonging it.\"\n\"I have noticed.\"\nShe leaves those words unanswered for several breaths before adding a small correction to your canceled sentence. Even your discarded defense, apparently, could have been better.",
+          "Text": "\"You refused the first offer. You seem determined to make me admire it.\"\n\"I want you to understand why this answer would be different.\"\n\"Then give a different answer. Rehearsing the refusal has not made it more fascinating.\"\nYou cross out the next sentence, which had begun with an explanation she has already heard. Beneath it you write that you enjoy wanting something from her which she has not yet decided to give.\n\"A dangerous taste,\" she replies. \"You will find me exceedingly accomplished at prolonging it.\"\n\"I have noticed.\"\nShe leaves those words unanswered for several breaths before adding a small correction to your canceled sentence. Even your discarded defense, apparently, could have been better.",
           "Choices": [
             {
               "Text": "Leave the old refusal intact and ask for a new invitation.",
@@ -140488,7 +140488,7 @@
           "Text": "{n}By the time the answering stroke moves, you have read the same paragraph of a supply report three times. You finish it before turning the sheet. Nocticula has written a question where your hand will rest.{/n}\n\"Did you choose the sentence?\"\n\"I chose several. Most became less impressive while I waited.\"\n\"Good. I have been spared the first draft.\"\n{n}You tell her that you wanted to stop imagining the answer in her voice long enough to hear the one she actually gives. The mark draws a slow curve beneath your words.{/n}\n\"You could have asked whether I wanted this evening.\"\n\"Do you?\"\n\"Yes. I have found you troublesome in a manner which survives my having something else to do. I would like to discover how long that remains entertaining.\"\n{n}The next line is smaller, as though she has brought the pen closer rather than raised her voice.{/n}\n\"You may call that an invitation. Do not spend it all congratulating yourself.\"",
           "Choices": [
             {
-              "Text": "I want continued private company with you, and I want us to know exactly what we are agreeing to.",
+              "Text": "I want more of your evenings. Tell me what they will cost me.",
               "Next": "terms",
               "Set": [],
               "Requires": [],
@@ -140512,7 +140512,7 @@
         {
           "Id": "terms",
           "Speaker": "Nocticula",
-          "Text": "\"You may send a personal request through the mark. I may answer it. Either of us may end an evening without turning the silence into permission to enter the other's room.\"\n\"And other company?\"\n\"Keep it interesting enough that you do not arrive here to complain about it. I am not offering to become the occupation of every hour you possess.\"\nYou ask whether she expects names.\n\"When somebody is involved in the business you bring me, accuracy is useful. When you wish to make me jealous, I suggest choosing a less predictable amusement.\"\n\"I was considering whether you would insist on exclusivity.\"\n\"I insist that an invitation intended for me should interest me. You will discover that this is work enough.\"\nHer next line returns to the seal. You have permission for chosen exchanges, no standing permission for sleep or possession, and no right to counterfeit her answer if she refuses one.\nShe retains the signed undertaking. Closing the private channel later will not erase the concession already made or prevent either of you speaking about an actual political dispute.",
+          "Text": "\"They will cost you waiting. Send me a request through the mark when you want me. I shall answer the ones that amuse me, and leave the rest lying on your desk until you are ashamed of them. Come knocking at my door uninvited, asleep or awake, and you will learn what I keep in the rooms I do not show guests.\"\n\"And other company?\"\n\"Keep it interesting enough that you do not arrive here to complain about it. I am not offering to become the occupation of every hour you possess.\"\nYou ask whether she expects names.\n\"When somebody is involved in the business you bring me, I expect the name, spelled correctly. When you wish to make me jealous, choose a less predictable amusement.\"\n\"I was considering whether you would insist on exclusivity.\"\n\"I insist that whatever you send me is worth my time. You will find that work enough for one mortal.\"\nShe presses the mark into the wax once more, harder, the way a seal-ring is pressed into a debtor's letter. She still holds your signed undertaking, and she lets you watch her fold it away somewhere you will never see.",
           "Choices": [
             {
               "Text": "Ask what the narrow fold permits now.",
@@ -140542,7 +140542,7 @@
         {
           "Id": "narrow",
           "Speaker": "Nocticula",
-          "Text": "\"It permits you to ask before turning it.\"\n{n}You leave the edge flat.{/n}\n\"May I?\"\n\"Not tonight.\"\n{n}The answer is prompt enough to make you laugh. You tell her she could have saved the explanation.{/n}\n\"I wanted to hear whether you would ask after receiving it. Now I have.\"\n\"And you enjoyed refusing.\"\n\"A little. You may decide whether the prospect of another evening survives that terrible injury.\"\n{n}You have still seen no part of her room. The paper remains a sheet of paper with a hand moving on its other side. Her last sentence leaves a broad blank beneath it.{/n}",
+          "Text": "\"It permits you to ask before turning it.\"\n{n}You leave the edge flat.{/n}\n\"May I?\"\n\"Not tonight.\"\n{n}The answer is prompt enough to make you laugh. You tell her she could have saved the explanation.{/n}\n\"I wanted to hear whether you would ask after receiving it. Now I have.\"\n\"And you enjoyed refusing.\"\n\"A little. Nurse the injury. I shall enjoy watching you decide whether it was worth it.\"\n{n}You have still seen no part of her room. The paper remains a sheet of paper with a hand moving on its other side. Her last sentence leaves a broad blank beneath it.{/n}",
           "Choices": [
             {
               "Text": "Continue negotiating without opening the fold.",
@@ -140622,7 +140622,7 @@
         {
           "Id": "decline",
           "Speaker": "Nocticula",
-          "Text": "\"Then you have your answer. So have I.\"\n{n}You ask whether she intends to treat the refusal as another debt. Her reply is precise.{/n}\n\"You offered an undertaking for the work we did. I still hold it. I offered you company, and you have declined. Do not make the first transaction an excuse to misunderstand the second.\"\n{n}The answering stroke draws itself out of the wax. No figure replaces it and no hand reaches through the sheet. You wait until the paper is still, then place it beside the business account.\nThere may be political business to conduct again. You have not retained a personal channel through which to pretend this answer was unfinished.{/n}",
+          "Text": "\"Declined.\" {n}The word sits alone on the page for a while, as if she were letting it cool.{/n}\n\"Nobody declines me twice in the same year, Commander. Choose your next refusal with more care than this one. I keep your undertaking; I keep everything that is signed to me. You may spend the rest of the war watching me not use it, and wondering why.\"\n{n}The answering stroke draws itself out of the wax. You wait until the paper is still, then place it beside the business account.\nThe political business will come round again, because it always does. Nothing else will.{/n}",
           "Choices": [
             {
               "Text": "Leave the personal invitation declined.",
@@ -140843,7 +140843,7 @@
         {
           "Id": "closure",
           "Speaker": "Nocticula",
-          "Text": "\"Every commander learns to call the people he spends a necessity. You wish to reserve the arithmetic for yourself.\"\n\"I wish you to hear an objection before you count it as permission.\"\n\"Then make it specific when the occasion comes. I have little patience for men who bring me a principle instead of an answer and expect the principle to finish their work.\"\nShe does not offer a new Worldwound contract. She acknowledges that you have named an intention she can work with, and a limit she may contest.\n\"For the harbor, you may ask what happened to the passengers. I shall ask what made the passage valuable. Try to provide answers useful to both questions.\"",
+          "Text": "\"Every commander learns to call the people he spends a necessity. You wish to reserve the arithmetic for yourself.\"\n\"I want you to hear an objection before you start spending my name.\"\n\"Then make it specific when the occasion comes. I have little patience for men who bring me a principle instead of an answer and expect the principle to finish their work.\"\nShe does not offer a new Worldwound contract. She acknowledges that you have named an intention she can work with, and a limit she may contest.\n\"For the harbor, you may ask what happened to the passengers. I shall ask what made the passage valuable. Try to provide answers useful to both questions.\"",
           "Choices": [
             {
               "Text": "Accept that common work does not settle every disputed price.",
@@ -140898,7 +140898,7 @@
           "Text": "\"There is also the question of how you propose to meet me. Do you intend to let an old source of power supply an answer you have not given?\"",
           "Choices": [
             {
-              "Text": "Your renewed gift is present. It is not permission for this new meeting.",
+              "Text": "Your renewed gift is still in me. I would rather you knocked.",
               "Next": "gift_present",
               "Set": [],
               "Requires": [
@@ -140908,7 +140908,7 @@
               "Abort": false
             },
             {
-              "Text": "Your original gift remains. I will still choose whether to receive this invitation.",
+              "Text": "Your old gift is still in me. Knock anyway. I like to hear it.",
               "Next": "gift_present",
               "Set": [],
               "Requires": [
@@ -140974,7 +140974,7 @@
         {
           "Id": "letters",
           "Speaker": "Nocticula",
-          "Text": "\"Then keep the coast unfinished. It appears you prefer me at a distance which fits on a desk.\"\n\"I prefer the agreement I made.\"\n\"For now. Send me something worth reading within it.\"\nShe takes back the drawing. The answering stroke remains on the wax. You have declined a larger meeting, not invented an acceptance by continuing to write.",
+          "Text": "\"Then keep the coast unfinished. It appears you prefer me at a distance which fits on a desk.\"\n\"I prefer the agreement I made.\"\n\"For now. Send me something worth reading within it.\"\nShe takes back the drawing, slowly, so that you can watch the coast leave your desk. The answering stroke stays on the wax, sulking.",
           "Choices": [
             {
               "Text": "Keep the personal correspondence without entering the harbor work.",
@@ -141056,7 +141056,7 @@
               "Abort": false
             },
             {
-              "Text": "The exposed aperture stays broken, and you keep its sketch. Do not mistake this for permission to restore it.",
+              "Text": "The exposed aperture stays broken, and you keep its sketch. Leave both where they are.",
               "Next": "exposure",
               "Set": [],
               "Requires": [
@@ -141074,7 +141074,7 @@
         {
           "Id": "exposure",
           "Speaker": "Nocticula",
-          "Text": "\"I remember the sketch. It has not improved while in my possession.\"\n\"You have been looking at it?\"\n\"You gave me an error with an attractive idea inside it. Did you expect me to preserve only the error?\"\nShe keeps what you surrendered. The admission costs her nothing, and gives you a reason to remember that she does not stop being curious because you would prefer your mistake forgotten.\nThe new stroke has no branching path to test. It answers from her side of the mark, and will vanish when she withdraws it.\n\"You may refuse this as well,\" she writes. \"I have not offered to make your former discretion look foolish.\"",
+          "Text": "\"I remember the sketch. It has not improved while in my possession.\"\n\"You have been looking at it?\"\n\"You gave me an error with an attractive idea inside it. Did you expect me to preserve only the error?\"\nShe keeps what you surrendered. The admission costs her nothing, and gives you a reason to remember that she does not stop being curious because you would prefer your mistake forgotten.\nThe new stroke has no branching path to test. It answers from her side of the mark, and will vanish when she withdraws it.\n\"Refuse this too, if you like,\" she writes. \"I shall enjoy the refusal nearly as much as the evening. Not quite.\"",
           "Choices": [
             {
               "Text": "Keep the old exposure and surrendered sketch distinct from the invitation.",
@@ -141090,10 +141090,10 @@
         {
           "Id": "prepare",
           "Speaker": "Nocticula",
-          "Text": "\"Write where you mean to wake.\"\nYou name your room in Drezen, the chair, and the lamp with a chipped blue foot. She asks for something the dream should not need to contain. You choose the sentry's watch signal.\n\"When you wish to leave, remember that sound. I will end the room when you ask. I should like you to know that I can keep you there, and that I choose not to. We will test it before we discuss anything else.\"\n\"You are promising to let me leave.\"\n\"Yes. Not to become incapable of mistreating you. If you wanted a harmless hostess, you chose badly.\"\nYou examine the words. The risk has a name and has not become smaller because she wrote it beautifully.\nShe has asked for one trial evening. Even a pleasant result will require a separate answer before future sleep becomes an invitation.",
+          "Text": "\"Write where you mean to wake.\"\nYou name your room in Drezen, the chair, and the lamp with a chipped blue foot. You do not write the rest: that before you sat down you went out to the sentry on the wall below your window and paid him to strike the rail at the second bell, hard, whether or not he hears you snoring.\nShe finds it anyway. The answering stroke goes still on the wax for a long breath.\n\"You have hired a man to wake you from me.\"\n\"I have hired a man to strike a rail. What I do when I hear it is my affair.\"\n\"How insulting.\" The stroke curls. \"And how sensible. I could hold a sleeper through a great deal louder than a rail, if I chose. We shall find out whether I choose.\"\nYou read it twice. The risk has a name, and it has not become smaller because she wrote it beautifully.\nShe has asked for one evening. What comes after it, she makes clear, will depend on how much she enjoys it.",
           "Choices": [
             {
-              "Text": "Accept one trial meeting. Keep the lamp and the watch signal in mind.",
+              "Text": "Go to sleep, with the sentry paid to strike the rail at the second bell.",
               "Next": "arrival",
               "Set": [
                 "noct.join.trial_accepted"
@@ -141103,7 +141103,7 @@
               "Abort": false
             },
             {
-              "Text": "Decline the trial. Keep the letters and give her no permission to enter your sleep.",
+              "Text": "Decline the evening. Keep the letters, and keep her out of your sleep.",
               "Next": "refuse",
               "Set": [
                 "noct.join.closed",
@@ -141119,10 +141119,10 @@
         {
           "Id": "arrival",
           "Speaker": "Narrator",
-          "Text": "{n}You leave the sheet beneath the lamp and close your eyes. Sleep brings a stone landing no larger than your room, with an open arch at one end. Beyond it hangs a red evening sky. There is no city beneath the sky, and no ground upon which to place one.\nNocticula stands beside the arch. The light follows the edges of her wings, then loses itself in their shadow. She looks at your boots before meeting your eyes.{/n}\n\"You brought those.\"\n\"I was uncertain about the floor.\"\n\"Practical. Disappointing, but practical.\"\n{n}You can see the familiar ease with which she lets a silence become someone else's difficulty. Her attention is less comfortable than her handwriting. It also makes the absurdly small landing seem worth the wait.\nYou tell her so. She inclines her head, accepting the compliment without offering another in exchange.{/n}\n\"The sound,\" she says. \"Before you decide the view has answered that question for you.\"",
+          "Text": "{n}You leave the sheet beneath the lamp and close your eyes. Sleep brings a stone landing no larger than your room, with an open arch at one end. Beyond it hangs a red evening sky. There is no city beneath the sky, and no ground upon which to place one.\nNocticula stands beside the arch. The light follows the edges of her wings, then loses itself in their shadow. She looks at your boots before meeting your eyes.{/n}\n\"You brought those.\"\n\"I was uncertain about the floor.\"\n\"Practical. Disappointing, but practical.\"\n{n}You can see the familiar ease with which she lets a silence become someone else's difficulty. Her attention is less comfortable than her handwriting. It also makes the absurdly small landing seem worth the wait.\nYou tell her so. She steps close enough that you smell night-blooming flowers, and lifts one hand toward your collar.\nFar away and very loud, iron rings on iron. Once. Your sentry is punctual.{/n}\n\"Your hired man,\" she says, without turning her head. Her hand has stopped an inch from your throat. \"I could make you deaf to him. It would take less effort than this conversation.\"\n{n}The second blow is already on its way up the wall.{/n}",
           "Choices": [
             {
-              "Text": "Ask to wake and remember the sentry striking the rail.",
+              "Text": "[Let the second blow reach you.]",
               "Next": "waking",
               "Set": [],
               "Requires": [],
@@ -141135,10 +141135,10 @@
         {
           "Id": "waking",
           "Speaker": "Narrator",
-          "Text": "{n}You hear one remembered blow. The arch loses its red light, and your chair presses against the back of your legs. The lamp is still burning. Nocticula's next words arrive on the sheet beneath it.{/n}\n\"You left a remarkably promising evening.\"\n\"You asked me to test the exit.\"\n\"I have never claimed to enjoy every successful instruction.\"\n{n}You can put the wax away now. The new stroke is fading. She has ended the hosted place when asked; the room was not an entrance into her city, and waking has left no coast beneath your desk.\nShe asks whether you would like another evening in which the first subject is not your departure.{/n}",
+          "Text": "{n}The second blow reaches you. The arch loses its red light, and your chair presses against the back of your legs. The lamp is still burning, and the sentry below the window is swearing at his stinging hands. Nocticula's next words are already on the sheet beneath the lamp.{/n}\n\"Your sentry is a very punctual man. I have made a note of his face.\"\n\"He was paid to be punctual.\"\n\"Then he will understand that everything has a price.\"\n{n}You are not entirely sure she is joking. The new stroke is fading. The landing has gone, and nothing of her city has come back with you but the smell of flowers on your sleeve.\nUnder it, one more line, smaller: \"Next time, pay him to be late.\"{/n}",
           "Choices": [
             {
-              "Text": "Yes. Let us discuss a continuing invitation after both of us have had time to consider it.",
+              "Text": "Write back that you will think about the sentry's wages.",
               "Next": null,
               "Set": [
                 "noct.join.the_room_she_makes_done",
@@ -141356,7 +141356,7 @@
         {
           "Id": "invitation",
           "Speaker": "Nocticula",
-          "Text": "\"Then I will show you the quay.\"\nYou ask whether she is offering further hosted meetings through the same mark.\n\"When you sleep with the answering sheet beside you. Put it in a drawer when you want your nights to yourself. I shall know which nights they are, and I shall wonder what you do with them.\"\nYou will keep the old correspondence as well. She does not ask about your other lovers. She has never needed to ask about anything she could find out for herself.\n\"And if I decline the harbor after hearing the case?\"\n\"Then I shall have spent an evening arranging a particularly elaborate disappointment. I do not recommend making a habit of it.\"\n\"That was almost an answer.\"\n\"You may decline the undertaking. I may remain annoyed. Your letters will have to become better company.\"\nShe has left you the clean final space again. No new stroke appears inside it.",
+          "Text": "\"Then I will show you the quay.\"\nYou ask whether she is offering further hosted meetings through the same mark.\n\"When you sleep with the answering sheet beside you. Put it in a drawer when you want your nights to yourself. I shall know which nights they are, and I shall wonder what you do with them.\"\nYou will keep the old correspondence as well. She does not ask about your other lovers. She has never needed to ask about anything she could find out for herself.\n\"And if I decline the harbor after hearing the case?\"\n\"Then I shall have spent an evening arranging a particularly elaborate disappointment. I do not recommend making a habit of it.\"\n\"That was almost an answer.\"\n\"Decline it, and I shall be annoyed, which I do beautifully and at length. Your letters would have to become very much better company.\"\nShe has left you the clean final space again. No new stroke appears inside it.",
           "Choices": [
             {
               "Text": "Accept recurring hosted invitations on those terms. Hear the harbor proposal before deciding whether to undertake it.",
@@ -155374,7 +155374,7 @@
           "Text": "{n}Past midnight the campfire throws one shadow too many against the wall of your tent. It belongs to nobody in the camp. It is slender, and very still, and it is waiting to see whether you have noticed.{/n}\n{n}Somewhere beyond the camp the Wound mutters in its sleep. Tomorrow you go down to meet Areelu.{/n}",
           "Choices": [
             {
-              "Text": "[Step on the stray shadow] \"There you are. I told them I only killed your shadow. Nobody believed me either.\"",
+              "Text": "[Step on the stray shadow] \"Only your shadow, then. Here it is.\"",
               "Next": "foot",
               "Set": [],
               "Requires": [],
@@ -155923,6 +155923,63 @@
               "Next": null,
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "nocticula.trickster.cost.late"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"...Flawless.\"",
+              "Next": "morning_late_paid",
+              "Set": [],
+              "Requires": [
+                "nocticula.trickster.cost.late",
+                "nocticula.trickster.cost.shade_paid"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"...Flawless.\"",
+              "Next": "morning_late",
+              "Set": [],
+              "Requires": [
+                "nocticula.trickster.cost.late"
+              ],
+              "Forbids": [
+                "nocticula.trickster.cost.shade_paid"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "morning_late_paid",
+          "Speaker": "Narrator",
+          "Text": "{n}You wake before the camp does, with the taste of night-blooming flowers in your mouth and four small crescents on your shoulder, where a projection's nails had no business reaching.{/n}\n{n}On the camp table, in the dust on your maps of the rift, someone has drawn a chair at the right hand of your own. Beneath it, in a hand you have never seen and know at once: \"Where I can see you.\" And under that, smaller, as an afterthought that is not one: \"The favour stands. I have not decided on it. I am enjoying not deciding.\"{/n}\n{n}Your companions are carefully not looking at your shoulder. Outside, the Wound is waiting.{/n}",
+          "Choices": [
+            {
+              "Text": "[Buckle your armour over the marks.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "morning_late",
+          "Speaker": "Narrator",
+          "Text": "{n}You wake before the camp does, with the taste of night-blooming flowers in your mouth and four small crescents on your shoulder, where a projection's nails had no business reaching.{/n}\n{n}On the camp table, in the dust on your maps of the rift, someone has drawn a chair at the right hand of your own. Beneath it, in a hand you have never seen and know at once: \"Where I can see you.\"{/n}\n{n}Your companions are carefully not looking at your shoulder. Outside, the Wound is waiting.{/n}",
+          "Choices": [
+            {
+              "Text": "[Buckle your armour over the marks.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
               "Forbids": [],
               "Abort": false
             }
@@ -155932,7 +155989,7 @@
         {
           "Id": "refusal",
           "Speaker": "Nocticula",
-          "Text": "\"Then no.\" {n}She is pleased with herself; she has been waiting all evening for someone to offer her the chance.{/n} \"Not tonight. Ask me again when Areelu is dead and you are not. If you are dead, I will have had my answer, and I will not have had to give one.\"",
+          "Text": "\"Then no.\" {n}She is pleased with herself; she has been waiting all evening for someone to offer her the chance.{/n} \"Not tonight. Ask me again when the Wound has finished trying to kill you. If you are dead, I will have had my answer, and I will not have had to give one.\"",
           "Choices": [
             {
               "Text": "[Let her keep her answer.]",
@@ -156084,7 +156141,9 @@
         "trickster.ever",
         "nocticula.trickster.said_yes"
       ],
-      "Forbids": [],
+      "Forbids": [
+        "nocticula.trickster.cost.late"
+      ],
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
@@ -156966,7 +157025,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}At Threshold she had told the Commander to ask again when Areelu was dead and the Commander was not. The Commander asked. She kept the Commander waiting eleven years for the answer, which was yes, and then pretended there had never been a question.{/n}",
+          "Text": "{n}At Threshold she had told the Commander to ask again when the Wound had finished trying to kill the Commander. The Commander asked. She kept the Commander waiting eleven years for the answer, which was yes, and then pretended there had never been a question.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -311835,7 +311894,7 @@
         {
           "Id": "idiot",
           "Speaker": "conversant",
-          "Text": "{n}The heat pulls out of you all at once, like a hand out of cold water. She is smiling, and it is not a pleasant smile, and it is not an entirely unpleasant one either.{/n}\n\"Either you are an idiot, or you have learned to hide from me. I have not decided which, and I dislike not deciding.\" {n}She points at the doors.{/n} \"Leave. Come back when I have forgotten about you, which will be never. I will find out what was under the barley, Golarian. I always do.\"",
+          "Text": "{n}The heat pulls out of you all at once, like a hand out of cold water. She is smiling, and it is not a pleasant smile, and it is not an entirely unpleasant one either.{/n}\n\"Either you are an idiot, or you have learned to hide from me, and a mortal who can hide from me in my own Harem is a mortal I will have to kill one day, or keep.\" {n}She points at the doors.{/n} \"Leave. Come back when I have forgotten about you, which will be never. I will find out what was under the barley, Golarian. I always do.\"",
           "Choices": [
             {
               "Text": "[Bow, and leave her to her court.]",
@@ -312418,7 +312477,7 @@
         {
           "Id": "blind",
           "Speaker": "conversant",
-          "Text": "{n}For a moment the Silken Sin says nothing at all, which you did not know he could do.{/n}\n\"Open your mind. To Shamira. Now, of all times. While you kill her.\" {n}He presses his hands to his chest.{/n} \"Darling, she reads minds the way I read the tailors' bills. She will look in, and see the knife, and see the plan, and see you, and she will come in through that door with everything she has left, all at once, like a drowning woman up a rope. It may not be only the rest of her that comes in. It may be the whole of her, and angry.\" {n}He beams.{/n} \"I have never been so jealous of anyone in my life.\"",
+          "Text": "{n}For a moment the Silken Sin says nothing at all, which you did not know he could do.{/n}\n\"Open your mind. To Shamira. Now, of all times. While you kill her.\" {n}He presses his hands to his chest.{/n} \"Darling, she reads minds the way I read the tailors' bills. She will look in, and see the knife, and see the plan, and see you, and she will come in through that door with everything she has left, all at once, like a drowning woman up a rope. It may not be only the rest of her that comes in. It may be the whole of her, and angry.\" {n}He beams.{/n} \"If she tears you open, darling, do try to keep your eyes open. I want the whole story.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -314203,7 +314262,7 @@
         {
           "Id": "n_l_crystals",
           "Speaker": "Shamira",
-          "Text": "\"And the crystals.\" {n}Bitterly amused.{/n} \"You gave me the secret of the crystals, in my Harem. I used it. It made me strong enough to nearly kill your friends in the boudoir. I remember the half-elf screaming.\" {n}A breath.{/n} \"It did not make me strong enough to live. Nothing a mortal gives a demon ever does. Remember that, Golarian. You will be giving me things.\"",
+          "Text": "\"And the crystals.\" {n}Bitterly amused.{/n} \"You gave me the secret of the crystals, in my Harem. I used it. It made me strong enough to nearly kill your friends in the boudoir. I remember exactly how close it came.\" {n}A breath.{/n} \"It did not make me strong enough to live. Nothing a mortal gives a demon ever does. Remember that, Golarian. You will be giving me things.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -315633,7 +315692,7 @@
         {
           "Id": "n_l_crystals",
           "Speaker": "Shamira",
-          "Text": "\"And the crystals.\" {n}Bitterly amused.{/n} \"You gave me the secret of the crystals, in my Harem. I used it. It made me strong enough to nearly kill your friends in the boudoir. I remember the half-elf screaming.\" {n}A breath.{/n} \"It did not make me strong enough to live. Nothing a mortal gives a demon ever does. Remember that, Golarian. You will be giving me things.\"",
+          "Text": "\"And the crystals.\" {n}Bitterly amused.{/n} \"You gave me the secret of the crystals, in my Harem. I used it. It made me strong enough to nearly kill your friends in the boudoir. I remember exactly how close it came.\" {n}A breath.{/n} \"It did not make me strong enough to live. Nothing a mortal gives a demon ever does. Remember that, Golarian. You will be giving me things.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -316429,6 +316488,10 @@
       "Optional": false,
       "Relationship": "shamira",
       "Reaction": true,
+      "ForbidOverrides": {
+        "arueshalae_dead": "arueshalae.trickster.returned",
+        "arueshalae.evil_dead": "arueshalae.trickster.returned"
+      },
       "AnswerLists": [
         "03ebad9587cbea0438d901a0f8df44f1"
       ]
@@ -316472,6 +316535,10 @@
       "Optional": false,
       "Relationship": "shamira",
       "Reaction": true,
+      "ForbidOverrides": {
+        "arueshalae_dead": "arueshalae.trickster.returned",
+        "arueshalae.evil_dead": "arueshalae.trickster.returned"
+      },
       "AnswerLists": [
         "03ebad9587cbea0438d901a0f8df44f1"
       ]
@@ -317970,7 +318037,7 @@
         {
           "Id": "l_crystals",
           "Speaker": "Shamira",
-          "Text": "\"And the crystals.\" {n}Bitterly amused.{/n} \"You gave me the secret of the crystals, in my Harem. I used it. It made me strong enough to nearly kill your friends in the boudoir. I remember the half-elf screaming.\" {n}A breath.{/n} \"It did not make me strong enough to live. Nothing a mortal gives a demon ever does. Remember that, Golarian. You will be giving me things.\"",
+          "Text": "\"And the crystals.\" {n}Bitterly amused.{/n} \"You gave me the secret of the crystals, in my Harem. I used it. It made me strong enough to nearly kill your friends in the boudoir. I remember exactly how close it came.\" {n}A breath.{/n} \"It did not make me strong enough to live. Nothing a mortal gives a demon ever does. Remember that, Golarian. You will be giving me things.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -318957,7 +319024,7 @@
         {
           "Id": "crystals",
           "Speaker": "Shamira",
-          "Text": "\"And the crystals.\" {n}Bitterly amused.{/n} \"You gave me the secret of the crystals, in my Harem. I used it. It made me strong enough to nearly kill your friends in the boudoir. I remember the half-elf screaming.\" {n}A breath.{/n} \"It did not make me strong enough to live. Nothing a mortal gives a demon ever does. Remember that, Golarian. You will be giving me things.\"",
+          "Text": "\"And the crystals.\" {n}Bitterly amused.{/n} \"You gave me the secret of the crystals, in my Harem. I used it. It made me strong enough to nearly kill your friends in the boudoir. I remember exactly how close it came.\" {n}A breath.{/n} \"It did not make me strong enough to live. Nothing a mortal gives a demon ever does. Remember that, Golarian. You will be giving me things.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -320677,7 +320744,7 @@
         {
           "Id": "f_only_mine",
           "Speaker": "Shamira",
-          "Text": "{n}For a moment she is silent, and you feel her anger go all through you like a fever, and pass.{/n}\n\"A candle, then.\" {n}Very quietly.{/n} \"You would rather keep two hundred strangers' sleep than have me blaze. That is either very good of you, or you simply don't want to share me with a barracks.\" {n}A breath.{/n} \"I have not decided which. I think I prefer the second. Tomorrow night, Golarian. Lie down beside me, and dream me awake.\"",
+          "Text": "{n}For a moment she is silent, and you feel her anger go all through you like a fever, and pass.{/n}\n\"A candle, then.\" {n}Very quietly.{/n} \"You would rather keep two hundred strangers' sleep than have me blaze. That is either very good of you, or you simply don't want to share me with a barracks.\" {n}A breath.{/n} \"It is the second. I have been in your head; I would know. Tomorrow night, Golarian. Lie down beside me, and dream me awake.\"",
           "Choices": [
             {
               "Text": "[Close the wardrobe.]",
@@ -321122,7 +321189,7 @@
         {
           "Id": "f_w_understand",
           "Speaker": "Shamira",
-          "Text": "\"No. You don't.\" {n}She is reading it off you, and whatever she finds there makes her close her eyes.{/n}\n\"I have walked into ten thousand sleepers' dreams and out again, and never once gone back to the same one. You have given me a hearth. Nobody has ever given me a hearth. I shall sit at it every night until one of us is dead, and you will never again close your eyes and be alone.\" {n}When she opens them again they are hard.{/n} \"It is a terrible thing to have done to you. I did it. I'd do it again. Get up off the floor, Golarian. You look like a corpse, and I have had enough of those.\"",
+          "Text": "\"No. You don't.\" {n}She is reading it off you, and whatever she finds there makes her close her eyes.{/n}\n\"I have walked into ten thousand sleepers' dreams and out again, and gone back only when there was something left to take. You have given me a hearth. Nobody has ever given me a hearth. I shall sit at it every night until one of us is dead, and you will never again close your eyes and be alone.\" {n}When she opens them again they are hard.{/n} \"It is a terrible thing to have done to you. I did it. I'd do it again. Get up off the floor, Golarian. You look like a corpse, and I have had enough of those.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -321869,7 +321936,7 @@
         {
           "Id": "only_mine",
           "Speaker": "Shamira",
-          "Text": "{n}For a moment she is silent, and you feel her anger go all through you like a fever, and pass.{/n}\n\"A candle, then.\" {n}Very quietly.{/n} \"You would rather keep two hundred strangers' sleep than have me blaze. That is either very good of you, or you simply don't want to share me with a barracks.\" {n}A breath.{/n} \"I have not decided which. I think I prefer the second. Tomorrow night, Golarian. Lie down beside me, and dream me awake.\"",
+          "Text": "{n}For a moment she is silent, and you feel her anger go all through you like a fever, and pass.{/n}\n\"A candle, then.\" {n}Very quietly.{/n} \"You would rather keep two hundred strangers' sleep than have me blaze. That is either very good of you, or you simply don't want to share me with a barracks.\" {n}A breath.{/n} \"It is the second. I have been in your head; I would know. Tomorrow night, Golarian. Lie down beside me, and dream me awake.\"",
           "Choices": [
             {
               "Text": "[Close the wardrobe.]",
@@ -322314,7 +322381,7 @@
         {
           "Id": "w_understand",
           "Speaker": "Shamira",
-          "Text": "\"No. You don't.\" {n}She is reading it off you, and whatever she finds there makes her close her eyes.{/n}\n\"I have walked into ten thousand sleepers' dreams and out again, and never once gone back to the same one. You have given me a hearth. Nobody has ever given me a hearth. I shall sit at it every night until one of us is dead, and you will never again close your eyes and be alone.\" {n}When she opens them again they are hard.{/n} \"It is a terrible thing to have done to you. I did it. I'd do it again. Get up off the floor, Golarian. You look like a corpse, and I have had enough of those.\"",
+          "Text": "\"No. You don't.\" {n}She is reading it off you, and whatever she finds there makes her close her eyes.{/n}\n\"I have walked into ten thousand sleepers' dreams and out again, and gone back only when there was something left to take. You have given me a hearth. Nobody has ever given me a hearth. I shall sit at it every night until one of us is dead, and you will never again close your eyes and be alone.\" {n}When she opens them again they are hard.{/n} \"It is a terrible thing to have done to you. I did it. I'd do it again. Get up off the floor, Golarian. You look like a corpse, and I have had enough of those.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -322913,7 +322980,7 @@
         {
           "Id": "understand",
           "Speaker": "Shamira",
-          "Text": "\"No. You don't.\" {n}She is reading it off you, and whatever she finds there makes her close her eyes.{/n}\n\"I have walked into ten thousand sleepers' dreams and out again, and never once gone back to the same one. You have given me a hearth. Nobody has ever given me a hearth. I shall sit at it every night until one of us is dead, and you will never again close your eyes and be alone.\" {n}When she opens them again they are hard.{/n} \"It is a terrible thing to have done to you. I did it. I'd do it again. Get up off the floor, Golarian. You look like a corpse, and I have had enough of those.\"",
+          "Text": "\"No. You don't.\" {n}She is reading it off you, and whatever she finds there makes her close her eyes.{/n}\n\"I have walked into ten thousand sleepers' dreams and out again, and gone back only when there was something left to take. You have given me a hearth. Nobody has ever given me a hearth. I shall sit at it every night until one of us is dead, and you will never again close your eyes and be alone.\" {n}When she opens them again they are hard.{/n} \"It is a terrible thing to have done to you. I did it. I'd do it again. Get up off the floor, Golarian. You look like a corpse, and I have had enough of those.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -323999,7 +324066,7 @@
         {
           "Id": "did",
           "Speaker": "Shamira",
-          "Text": "\"I am.\" {n}She does not take her finger away.{/n} \"I have been in thousands of heads. I have never once gone back to the same one twice. Nobody told me it would feel like...\" {n}She stops. She takes the finger away and looks at it.{/n} \"Like coming home. It feels like coming home. I am furious about it, and I do not know with whom.\"",
+          "Text": "\"I am.\" {n}She does not take her finger away.{/n} \"I have been in thousands of heads. I went back when I wanted something. Now I find myself coming here before I've decided what to take. Nobody told me it would feel like...\" {n}She stops. She takes the finger away and looks at it.{/n} \"Like coming home. It feels like coming home. I am furious about it, and I do not know with whom.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -324434,7 +324501,7 @@
         {
           "Id": "did",
           "Speaker": "Shamira",
-          "Text": "\"I am.\" {n}She does not take her finger away.{/n} \"I have been in thousands of heads. I have never once gone back to the same one twice. Nobody told me it would feel like...\" {n}She stops. She takes the finger away and looks at it.{/n} \"Like coming home. It feels like coming home. I am furious about it, and I do not know with whom.\"",
+          "Text": "\"I am.\" {n}She does not take her finger away.{/n} \"I have been in thousands of heads. I went back when I wanted something. Now I find myself coming here before I've decided what to take. Nobody told me it would feel like...\" {n}She stops. She takes the finger away and looks at it.{/n} \"Like coming home. It feels like coming home. I am furious about it, and I do not know with whom.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -325029,7 +325096,7 @@
         {
           "Id": "rules",
           "Speaker": "Shamira",
-          "Text": "\"Here is the game.\" {n}She leans forward.{/n} \"Think of anything but me. Anything at all: your war, your dragon, your bread, your Wound. I will go into that crowded house of yours and look in every room. If I find myself in any of them, anywhere, I win.\"\n\"If I don't, you win, and I will never ask you anything again, and we will be what we are. Allies. A clown and the woman he murdered and put back together.\" {n}A pause.{/n} \"And no words. Words are for liars and I will not have them in my Harem tonight. Only what you think.\"",
+          "Text": "\"Here is the game.\" {n}She leans forward.{/n} \"Think of anything but me. Anything at all: your war, your dragon, your bread, your Wound. I will go into that crowded house of yours and look in every room. If I find myself in any of them, anywhere, I win.\"\n\"If I don't, you win, and I will never ask you anything again, and we will be what we are. Allies. A clown and the woman he murdered and put back together.\" {n}A pause.{/n} \"And I look once. I do not dig through the same attic twice for anyone; that is for clerks and jealous husbands. Whatever you put in front of me, I walk round it once and no further. And no words. Words are for liars and I will not have them in my Harem tonight. Only what you think.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -325976,7 +326043,7 @@
         {
           "Id": "rules",
           "Speaker": "Shamira",
-          "Text": "\"Here is the game.\" {n}She leans forward.{/n} \"Think of anything but me. Anything at all: your war, your dragon, your bread, your Wound. I will go into that crowded house of yours and look in every room. If I find myself in any of them, anywhere, I win.\"\n\"If I don't, you win, and I will never ask you anything again, and we will be what we are. Allies. A clown and the woman he murdered and put back together.\" {n}A pause.{/n} \"And no words. Words are for liars and I will not have them in my Harem tonight. Only what you think.\"",
+          "Text": "\"Here is the game.\" {n}She leans forward.{/n} \"Think of anything but me. Anything at all: your war, your dragon, your bread, your Wound. I will go into that crowded house of yours and look in every room. If I find myself in any of them, anywhere, I win.\"\n\"If I don't, you win, and I will never ask you anything again, and we will be what we are. Allies. A clown and the woman he murdered and put back together.\" {n}A pause.{/n} \"And I look once. I do not dig through the same attic twice for anyone; that is for clerks and jealous husbands. Whatever you put in front of me, I walk round it once and no further. And no words. Words are for liars and I will not have them in my Harem tonight. Only what you think.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -327458,7 +327525,7 @@
         {
           "Id": "read",
           "Speaker": "Shamira",
-          "Text": "\"You looked at the fountain.\" {n}Her voice is hoarse.{/n} \"The whole night. You were alone, and you looked at the fountain.\" {n}She opens her eyes.{/n} \"My hands are cold. They'll stay a little cold now, I think, at the tips. I don't mind. I wanted to know if you would miss me.\" {n}A ragged breath.{/n} \"Tonight I'm coming back in. Try and stop me.\"",
+          "Text": "\"You looked at the fountain.\" {n}Her voice is hoarse.{/n} \"The whole night. You were alone, and you looked at the fountain.\" {n}She opens her eyes.{/n} \"My hands are cold. They'll stay a little cold now, at the tips. I shall wear them to court, and every fool who kisses them will know what it costs to be refused a night.\" {n}She flexes the white fingers, slowly, watching you watch them.{/n} \"And now I know how much of you is mine. You could not even be alone without looking for me. Tonight I'm coming back in, clown, and I'm taking a coal and a half. Try and stop me.\"",
           "Choices": [
             {
               "Text": "[Lift the blanket.]",
@@ -327677,7 +327744,7 @@
         {
           "Id": "read",
           "Speaker": "Shamira",
-          "Text": "\"You looked at the fountain.\" {n}Her voice is hoarse.{/n} \"The whole night. You were alone, and you looked at the fountain.\" {n}She opens her eyes.{/n} \"My hands are cold. They'll stay a little cold now, I think, at the tips. I don't mind. I wanted to know if you would miss me.\" {n}A ragged breath.{/n} \"Tonight I'm coming back in. Try and stop me.\"",
+          "Text": "\"You looked at the fountain.\" {n}Her voice is hoarse.{/n} \"The whole night. You were alone, and you looked at the fountain.\" {n}She opens her eyes.{/n} \"My hands are cold. They'll stay a little cold now, at the tips. I shall wear them to court, and every fool who kisses them will know what it costs to be refused a night.\" {n}She flexes the white fingers, slowly, watching you watch them.{/n} \"And now I know how much of you is mine. You could not even be alone without looking for me. Tonight I'm coming back in, clown, and I'm taking a coal and a half. Try and stop me.\"",
           "Choices": [
             {
               "Text": "[Lift the blanket.]",
@@ -354783,7 +354850,8 @@
         "trickster.ever",
         "herrax.madam",
         "herrax.met",
-        "herrax.trickster.knife_restored"
+        "herrax.trickster.knife_restored",
+        "herrax.house.a_night_late"
       ],
       "Forbids": [
         "herrax.closed",
@@ -355162,7 +355230,8 @@
         }
       ],
       "Requires": [
-        "trickster"
+        "trickster",
+        "herrax.madam"
       ],
       "Forbids": [
         "herrax.closed",
@@ -355261,6 +355330,19 @@
               "Requires": [
                 "herrax.trickster.knife_restored"
               ],
+              "Forbids": [
+                "herrax.house.a_night_late"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "restored_watched",
+              "Set": [],
+              "Requires": [
+                "herrax.trickster.knife_restored",
+                "herrax.house.a_night_late"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -355351,6 +355433,22 @@
           "Id": "restored",
           "Speaker": "Herrax",
           "Text": "\"You gave me my knife back, hilt first, in front of the Sinners. The house hasn't stopped telling it. And then you left before I'd decided about you. The night after, I put right what you'd stopped, and I looked for you at the back of the hall, and you were gone.\nI'd decided, lover. I don't like having decided at nobody.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Herrax"
+        },
+        {
+          "Id": "restored_watched",
+          "Speaker": "Herrax",
+          "Text": "\"You gave me my knife back, hilt first, in front of the Sinners, and the next night you stood at the back of my hall and watched me put right what you'd stopped. You didn't flinch. The house noticed.\nAnd then, before closing, before I'd said a word to you, you were gone up the road to your war. I'd decided, lover. I don't like having decided at nobody.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -355903,6 +356001,14 @@
               "Text": "{n}Rokhorn's offer in the rain, the Commander wrote to her the same night, and she never touched him for it. She kept him instead, bringing her wine with shaking hands, and said it was the finest punishment she had ever been taught.{/n}",
               "Requires": [
                 "herrax.letters.offer.told_her"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The Commander paid the Battlebliss debt the first spring after the war: one night behind her bar in an apron, pouring for her guests and smiling at every one of them. Morevet sold the places at the bar for a month beforehand. Herrax kept the tips, and the apron.{/n}",
+              "Requires": [
+                "herrax.letters.arena.bet_collected"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -359777,6 +359883,18 @@
               "Next": "b_gift",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "herrax.house.arena.bet_lost"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "b_debt",
+              "Set": [],
+              "Requires": [
+                "herrax.house.arena.bet_lost"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -359793,6 +359911,18 @@
               "Next": "b_gift",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "herrax.house.arena.bet_lost"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "b_debt",
+              "Set": [],
+              "Requires": [
+                "herrax.house.arena.bet_lost"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -359808,6 +359938,36 @@
               "Text": "Continue",
               "Next": "b_gift",
               "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "herrax.house.arena.bet_lost"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "b_debt",
+              "Set": [],
+              "Requires": [
+                "herrax.house.arena.bet_lost"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Herrax"
+        },
+        {
+          "Id": "b_debt",
+          "Speaker": "Herrax",
+          "Text": "\"And you still owe me a thousand from the Battlebliss. I've thought of something.\nWhen you come up my stairs in the spring, you'll spend one night behind my bar, in an apron, pouring for my guests, and you'll smile at every one of them, and I'll keep the tips. I've already told the house. Morevet is selling places at the bar. You'd be flattered what they're fetching.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "b_gift",
+              "Set": [
+                "herrax.letters.arena.bet_collected"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -361490,8 +361650,20 @@
               "Text": "Continue",
               "Next": "read",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "herrax.trickster.bait_taken"
+              ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "read_blown",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "herrax.trickster.bait_taken"
+              ],
               "Abort": false
             }
           ],
@@ -361506,6 +361678,35 @@
             {
               "Text": "Continue",
               "Next": "read",
+              "Set": [],
+              "Requires": [
+                "herrax.trickster.bait_taken"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "read_blown",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "herrax.trickster.bait_taken"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "SpeakerUnit": "25ad116e1f5008e488b13f9b968596d4"
+        },
+        {
+          "Id": "read_blown",
+          "Speaker": "Rokhorn",
+          "Text": "\"You know what I keep thinking?\" {n}He leans in, and you can smell the house's wine on him, and blood under it.{/n} \"I scratched you. The day you came to me with her night in your mouth. One taste, and I read it all, and I shouted it off every couch in the house.\" {n}He touches the stitches.{/n} \"And she cut me anyway, in front of all of them. Knowing didn't save my face. Being right didn't save my face.\"\n\"So now I know what the lesson was, hot stuff. It was never about the lie. She'd be so pleased.\"",
+          "Choices": [
+            {
+              "Text": "\"She would.\"",
+              "Next": null,
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -362336,7 +362537,9 @@
             {
               "Text": "Continue",
               "Next": "home",
-              "Set": [],
+              "Set": [
+                "herrax.house.arena.bet_lost"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -420254,8 +420457,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -421538,6 +421741,7 @@
         },
         "not_started": {
           "Detect": [
+            "herrax.madam",
             "!herrax.trickster.primed"
           ],
           "Device": "herrax.trickster.late.next_move",

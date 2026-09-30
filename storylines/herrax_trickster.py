@@ -113,7 +113,7 @@ RELATIONSHIP = dict(
     UnavailableFlags=[], FailureFlags=[], UnavailableOverrides={},
     TricksterAccess={
         "madam": dict(detect=[MADAM, MET, CONFESSED, COIN_HELD], device=H + "madam.schedule", returned=PRIMED),
-        "not_started": dict(detect=["!" + PRIMED], device=H + "late.next_move", returned=PRIMED),
+        "not_started": dict(detect=[MADAM, "!" + PRIMED], device=H + "late.next_move", returned=PRIMED),
     },
 )
 
@@ -435,7 +435,7 @@ hall(H + "madam.reachable_restored", "At closing", '"The house is closing."', [
     *_intimacy(),
     hx("no", '''"Then go down my stairs like anybody else." {n}She says it lightly, and her hand stays on the knife until you're gone.{/n} "You'll be welcome in my house. You'll pay at the door."''',
        c("[Go down the stairs.]"))],
-    requires=(RESTORED,), forbids=(COMMITTED,), delay=24)
+    requires=(RESTORED, "herrax.house.a_night_late"), forbids=(COMMITTED,), delay=24)
 
 
 # --- 6. Chapter 5 fallbacks: her courier finds the Commander (one of the two, never both). ------------------------------
@@ -525,7 +525,7 @@ When the Wound is shut, if you're alive, come back to the Isles and deliver it. 
          flags=(PRIMED, STARTED, PROMISED, COST_LATE, LATE_PAID)),
        c('"Then tell her I\'m not for sale."', "refused", flags=(CLOSED,))),
     *discovery()],
-    requires=("trickster",), forbids=(PRIMED, COMMITTED), delay=0,
+    requires=("trickster", MADAM), forbids=(PRIMED, COMMITTED), delay=0,
     TricksterDevice=True, TricksterState="not_started")
 
 OWED_VARIANTS = (
@@ -534,7 +534,8 @@ OWED_VARIANTS = (
     c("Continue", "blown", requires=(BLOWN,), forbids=(BAIT, LESSON)),
     c("Continue", "lesson", requires=(LESSON,), forbids=(DECLINED,)),
     c("Continue", "knife", requires=(DECLINED,), forbids=(RESTORED,)),
-    c("Continue", "restored", requires=(RESTORED,)),
+    c("Continue", "restored", requires=(RESTORED,), forbids=("herrax.house.a_night_late",)),
+    c("Continue", "restored_watched", requires=(RESTORED, "herrax.house.a_night_late")),
 )
 
 letter(H + "owed.night", "The night, owed", [
@@ -558,6 +559,9 @@ You took it off me in my own hall, in front of my house, and then you left the I
        c("Continue", "ask")),
     hl("restored", '''"You gave me my knife back, hilt first, in front of the Sinners. The house hasn't stopped telling it. And then you left before I'd decided about you. The night after, I put right what you'd stopped, and I looked for you at the back of the hall, and you were gone.
 I'd decided, lover. I don't like having decided at nobody."''',
+       c("Continue", "ask")),
+    hl("restored_watched", '''"You gave me my knife back, hilt first, in front of the Sinners, and the next night you stood at the back of my hall and watched me put right what you'd stopped. You didn't flinch. The house noticed.
+And then, before closing, before I'd said a word to you, you were gone up the road to your war. I'd decided, lover. I don't like having decided at nobody."''',
        c("Continue", "ask")),
     hl("ask", '''"So. When the Wound is shut, if you're alive, come back up my stairs. Whatever's owed between us is still owed; I don't close a book because the customer left town.
 Come in person. Not with a coin. You'll have to reach. H."''',
@@ -652,6 +656,7 @@ KEPT_PARAS = (
     p("{n}Nobody ever learned what had burned her eye. The Commander guessed once, aloud, and she never answered, and she never told any of the stories again where the Commander could hear.{/n}", requires=("herrax.house.eye.guessed",)),
     p("{n}The twin of her knife, made by a salamander in the Lower City who never sold to anyone twice, stayed at the Commander's belt through the rest of the war. It was never used on anyone. She said that was the point of it.{/n}", requires=("herrax.letters.knife.kept",)),
     p("{n}Rokhorn's offer in the rain, the Commander wrote to her the same night, and she never touched him for it. She kept him instead, bringing her wine with shaking hands, and said it was the finest punishment she had ever been taught.{/n}", requires=("herrax.letters.offer.told_her",)),
+    p("{n}The Commander paid the Battlebliss debt the first spring after the war: one night behind her bar in an apron, pouring for her guests and smiling at every one of them. Morevet sold the places at the bar for a month beforehand. Herrax kept the tips, and the apron.{/n}", requires=("herrax.letters.arena.bet_collected",)),
     p("{n}Rokhorn waited, as he had promised, for the Commander to sell her to him a second time. He waited the rest of his long life. It was, Herrax said, the only lesson he ever learned properly.{/n}", requires=("herrax.letters.offer.refused",)),
     p("{n}The favour Herrax held from the matter of Chivarro's body stayed on her books apart from everything else, at interest, and she collected it exactly once, as she had said she would.{/n}", requires=(MC_FAVOR,)),
 )

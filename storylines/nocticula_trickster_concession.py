@@ -211,7 +211,7 @@ You write the instruction while the answering stroke waits.
          c('I refused an earlier offer. I want to ask for your company on terms I can actually choose.', "rejected", requires=("noct.parent_rejected",)),
          c('We already made promises. I want a personal invitation which does not pretend the lost means of contact has returned.', "patronage", requires=("noct.parent_active",), forbids=("noct.parent_rejected",)),
          c('There was no agreement to resume. I want an evening that begins with what we have actually done.', "missed", forbids=("noct.parent_active", "noct.parent_rejected"))),
-    page("rejected", "Nocticula", '''"You were allowed to refuse the first offer. You seem determined to make me admire the exercise."
+    page("rejected", "Nocticula", '''"You refused the first offer. You seem determined to make me admire it."
 "I want you to understand why this answer would be different."
 "Then give a different answer. Rehearsing the refusal has not made it more fascinating."
 You cross out the next sentence, which had begun with an explanation she has already heard. Beneath it you write that you enjoy wanting something from her which she has not yet decided to give.
@@ -253,17 +253,16 @@ add("an_answer_of_her_own", "An answer of her own", "the_retained_copy_done", [
 "Yes. I have found you troublesome in a manner which survives my having something else to do. I would like to discover how long that remains entertaining."
 {n}The next line is smaller, as though she has brought the pen closer rather than raised her voice.{/n}
 "You may call that an invitation. Do not spend it all congratulating yourself."''',
-         c('I want continued private company with you, and I want us to know exactly what we are agreeing to.', "terms"),
+         c('I want more of your evenings. Tell me what they will cost me.', "terms"),
          c('I want the political exchange, but I will decline the personal invitation.', "decline", flags=f("personal_declined", "closed"))),
-    page("terms", "Nocticula", '''"You may send a personal request through the mark. I may answer it. Either of us may end an evening without turning the silence into permission to enter the other's room."
+    page("terms", "Nocticula", '''"They will cost you waiting. Send me a request through the mark when you want me. I shall answer the ones that amuse me, and leave the rest lying on your desk until you are ashamed of them. Come knocking at my door uninvited, asleep or awake, and you will learn what I keep in the rooms I do not show guests."
 "And other company?"
 "Keep it interesting enough that you do not arrive here to complain about it. I am not offering to become the occupation of every hour you possess."
 You ask whether she expects names.
-"When somebody is involved in the business you bring me, accuracy is useful. When you wish to make me jealous, I suggest choosing a less predictable amusement."
+"When somebody is involved in the business you bring me, I expect the name, spelled correctly. When you wish to make me jealous, choose a less predictable amusement."
 "I was considering whether you would insist on exclusivity."
-"I insist that an invitation intended for me should interest me. You will discover that this is work enough."
-Her next line returns to the seal. You have permission for chosen exchanges, no standing permission for sleep or possession, and no right to counterfeit her answer if she refuses one.
-She retains the signed undertaking. Closing the private channel later will not erase the concession already made or prevent either of you speaking about an actual political dispute.''',
+"I insist that whatever you send me is worth my time. You will find that work enough for one mortal."
+She presses the mark into the wax once more, harder, the way a seal-ring is pressed into a debtor's letter. She still holds your signed undertaking, and she lets you watch her fold it away somewhere you will never see.''',
          c('Ask what the narrow fold permits now.', "narrow", requires=f("channel_provisional"), forbids=f("channel_letters_only")),
          c('Keep the repaired or written channel limited to the letters already agreed.', "letters", requires=f("channel_letters_only"))),
     page("narrow", "Nocticula", '''"It permits you to ask before turning it."
@@ -273,7 +272,7 @@ She retains the signed undertaking. Closing the private channel later will not e
 {n}The answer is prompt enough to make you laugh. You tell her she could have saved the explanation.{/n}
 "I wanted to hear whether you would ask after receiving it. Now I have."
 "And you enjoyed refusing."
-"A little. You may decide whether the prospect of another evening survives that terrible injury."
+"A little. Nurse the injury. I shall enjoy watching you decide whether it was worth it."
 {n}You have still seen no part of her room. The paper remains a sheet of paper with a hand moving on its other side. Her last sentence leaves a broad blank beneath it.{/n}''', c('Continue negotiating without opening the fold.', "risk")),
     page("letters", "Nocticula", '''"Letters, then. No window because an evening has become personal."
 "You will have to imagine my expression."
@@ -301,11 +300,10 @@ Beneath her last line she has left a blank the width of a signature, and the wax
 {n}You ask her to stay while you tell her the discarded first sentence. She declines. Then she asks for the second.
 It is worse than you remembered. Halfway through writing it, you stop and cross out a word. Nocticula supplies a more dangerous one beneath it.
 You spend the next few minutes arguing about the difference. Neither of you opens a ledger. The lamp burns lower while the mark moves between your unfinished lines.{/n}''', c('Keep the agreed correspondence and spend the rest of this evening in it.', flags=f("an_answer_of_her_own_done"))),
-    page("decline", "Nocticula", '''"Then you have your answer. So have I."
-{n}You ask whether she intends to treat the refusal as another debt. Her reply is precise.{/n}
-"You offered an undertaking for the work we did. I still hold it. I offered you company, and you have declined. Do not make the first transaction an excuse to misunderstand the second."
-{n}The answering stroke draws itself out of the wax. No figure replaces it and no hand reaches through the sheet. You wait until the paper is still, then place it beside the business account.
-There may be political business to conduct again. You have not retained a personal channel through which to pretend this answer was unfinished.{/n}''', c('Leave the personal invitation declined.', flags=f("an_answer_of_her_own_done"))),
+    page("decline", "Nocticula", '''"Declined." {n}The word sits alone on the page for a while, as if she were letting it cool.{/n}
+"Nobody declines me twice in the same year, Commander. Choose your next refusal with more care than this one. I keep your undertaking; I keep everything that is signed to me. You may spend the rest of the war watching me not use it, and wondering why."
+{n}The answering stroke draws itself out of the wax. You wait until the paper is still, then place it beside the business account.
+The political business will come round again, because it always does. Nothing else will.{/n}''', c('Leave the personal invitation declined.', flags=f("an_answer_of_her_own_done"))),
 ])
 
 

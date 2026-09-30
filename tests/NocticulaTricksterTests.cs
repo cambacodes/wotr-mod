@@ -299,6 +299,12 @@ internal static class NocticulaTricksterTests
               && story.Scenes.Where(s => s.Id.StartsWith("noct.ending_sacrifice", StringComparison.Ordinal)).All(s => s.Forbids.Contains("trickster.commander_back"))
               && Rules.Available(story, S("noct.ending_company"), With(story, harborLoss, "noct.chosen_company", "trickster.commander_back")),
             "The harbor's sacrifice ending plays over a Commander who came back, or the living ending does not.");
+        // Sol COX: on the late road (one Chapter 6 rest) the morning after is inside the chair; the remote morning is not needed.
+        var lateChair = World(story, 6, "trickster.ever", Dead, Fight, Returned, Paid, Late);
+        var lateSeen = new HashSet<string>(); Program.Walk(chair, lateChair, (id, _) => lateSeen.Add(id));
+        check(lateSeen.Contains("morning_late_paid") && !Rules.Available(story, morning, With(story, lateChair, "nocticula.trickster.said_yes"))
+              && !chair.Nodes.Single(n => n.Id == "refusal").Text.Contains("Areelu"),
+            "The late road needs a second Chapter 6 rest for the morning, or her refusal waits on Areelu's death.");
         // Ledger 05 row 11: the fourth court (Horzalah), Nocticula's read of the Guild's box.
         var courtH = S("nocticula.trickster.court.horzalah");
         var hWorld = World(story, 6, "trickster.ever", "horzalah.trickster.returned");

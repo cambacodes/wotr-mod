@@ -449,6 +449,11 @@ internal static class ShamiraTricksterTests
                 "Trk_Shamira_Delivery_" + roadName + ": " + string.Join(",", got) + (r0.Has(Committed) ? "" : " (no commit)"));
         }
 
+        // Sol INT (G6(b)): an Arueshalae who died and came back on her own road reacts again; a dead one does not.
+        var walking = S(P + "react.arueshalae_walking");
+        var aw = World(story, 5, "trickster.ever", Embodied, "arueshalae_dead");
+        check(!Avail(walking, aw) && Avail(walking, World(story, 5, "trickster.ever", Embodied, "arueshalae_dead", "arueshalae.trickster.returned")),
+            "Trk_Shamira_Reactions: a returned Arueshalae is still treated as dead.");
         // Sol INT: the pages of a life after the war play only for a Commander who has one.
         var keptPage = S(P + "epilogue.kept");
         var mourned = S(P + "epilogue.mourned");

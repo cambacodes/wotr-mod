@@ -110,7 +110,7 @@ threshold("nocticula.trickster.defeated.shadow", "Only your shadow", '"Still hid
 SCENES.append(scene("nocticula.trickster.defeated.late_shadow", "One shadow too many", "Nocticula", 6, "", [
     nar("wall", '''{n}Past midnight the campfire throws one shadow too many against the wall of your tent. It belongs to nobody in the camp. It is slender, and very still, and it is waiting to see whether you have noticed.{/n}
 {n}Somewhere beyond the camp the Wound mutters in its sleep. Tomorrow you go down to meet Areelu.{/n}''',
-        c('[Step on the stray shadow] "There you are. I told them I only killed your shadow. Nobody believed me either."',
+        c('[Step on the stray shadow] "Only your shadow, then. Here it is."',
           "foot", mythic="Trickster"),
         c("[Let it go.]", abort=True)),
     nt("foot", '''{n}The shadow does not move. Your boot does not move either: it cannot. It is standing on something, and the something is laughing, very quietly, from a great way down.{/n}
@@ -180,8 +180,18 @@ threshold("nocticula.trickster.defeated.chair", "Beside me", '"One more question
 {n}Her fingers find the buckles of your armour before you feel them move: cold at first, then not cold at all. She strips you the way she prices things, piece by piece, watching your face to learn what each piece costs you. You reach for her and close your hands on nothing; she laughs against your throat. "Hands where I can see them. I said so."{/n}
 {n}So you keep them where she can see them. She pushes you back onto a throne that was not there a moment ago, settles astride your hips with a weight that is very real indeed, and leans down until her hair falls around you both like a second darkness.{/n}
 "I have wanted to do this since the Council," she murmurs against your mouth, amused at herself for saying it. "I want you undone, and I want to watch every step of it, and I want you to remember whose shadow did it." {n}The last fire in Threshold gutters and goes out.{/n}''',
-        c('"...Flawless."')),
-    nt("refusal", '''"Then no." {n}She is pleased with herself; she has been waiting all evening for someone to offer her the chance.{/n} "Not tonight. Ask me again when Areelu is dead and you are not. If you are dead, I will have had my answer, and I will not have had to give one."''',
+        c('"...Flawless."', forbids=(LATE,)),
+        c('"...Flawless."', "morning_late_paid", requires=(LATE, PAID)),
+        c('"...Flawless."', "morning_late", requires=(LATE,), forbids=(PAID,))),
+    nar("morning_late_paid", '''{n}You wake before the camp does, with the taste of night-blooming flowers in your mouth and four small crescents on your shoulder, where a projection's nails had no business reaching.{/n}
+{n}On the camp table, in the dust on your maps of the rift, someone has drawn a chair at the right hand of your own. Beneath it, in a hand you have never seen and know at once: "Where I can see you." And under that, smaller, as an afterthought that is not one: "The favour stands. I have not decided on it. I am enjoying not deciding."{/n}
+{n}Your companions are carefully not looking at your shoulder. Outside, the Wound is waiting.{/n}''',
+        c("[Buckle your armour over the marks.]")),
+    nar("morning_late", '''{n}You wake before the camp does, with the taste of night-blooming flowers in your mouth and four small crescents on your shoulder, where a projection's nails had no business reaching.{/n}
+{n}On the camp table, in the dust on your maps of the rift, someone has drawn a chair at the right hand of your own. Beneath it, in a hand you have never seen and know at once: "Where I can see you."{/n}
+{n}Your companions are carefully not looking at your shoulder. Outside, the Wound is waiting.{/n}''',
+        c("[Buckle your armour over the marks.]")),
+    nt("refusal", '''"Then no." {n}She is pleased with herself; she has been waiting all evening for someone to offer her the chance.{/n} "Not tonight. Ask me again when the Wound has finished trying to kill you. If you are dead, I will have had my answer, and I will not have had to give one."''',
         c("[Let her keep her answer.]", flags=(DECLINED,))),
 ], ("trickster.ever", RETURNED), ("noct.complete", "noct.closed", DECLINED), T_GREETING)
 
@@ -202,7 +212,7 @@ SCENES.append(scene("nocticula.trickster.defeated.morning", "Four crescents", "N
     nar("daeran", '''{n}Daeran reads the dust over your shoulder before you can wipe it. "An unnamed favour. To her." He sets his cup down very carefully.{/n}
 "Commander, I have signed some truly ruinous contracts in my life, and every one of them had a number in it."''',
         c("[Wipe the table.]")),
-], requires=("trickster.ever", SAID_YES), last=6, optional=True, Relationship="nocticula", Remote=True, Chapters=[6]))
+], requires=("trickster.ever", SAID_YES), forbids=(LATE,), last=6, optional=True, Relationship="nocticula", Remote=True, Chapters=[6]))
 
 
 # --- S2, in her palace, unannounced: her brother's voice (F01) ------------------------------------------------------
@@ -319,7 +329,7 @@ page("nocticula.trickster.epilogue.commit", "The chair nobody else sat in", "", 
     nar("inn", '''{n}The Commander went back to the inn, and slept, and dreamed of nothing in particular. She kept her word to the letter: the Queen of Shadows did not set one foot in that dream, and made sure the Commander noticed the absence. At breakfast a note waited beside the bread, in a hand the Commander had never seen and knew at once: "Twice. Do not get used to it."{/n}''', c()),
 ])
 page("nocticula.trickster.epilogue.declined", "Eleven years",
-    '''{n}At Threshold she had told the Commander to ask again when Areelu was dead and the Commander was not. The Commander asked. She kept the Commander waiting eleven years for the answer, which was yes, and then pretended there had never been a question.{/n}''',
+    '''{n}At Threshold she had told the Commander to ask again when the Wound had finished trying to kill the Commander. The Commander asked. She kept the Commander waiting eleven years for the answer, which was yes, and then pretended there had never been a question.{/n}''',
     ("trickster.ever", DECLINED), forbids=("noct.complete",), living=True)
 
 

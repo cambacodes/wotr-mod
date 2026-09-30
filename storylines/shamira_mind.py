@@ -154,7 +154,7 @@ page(P + "mind.her_lady", "What her lady said", [
 {n}The heat behind your eyes goes out, nearly, and comes back.{/n} "I think I would rather she had thanked you."''',
         c("Continue", "crystals", requires=(CRYSTALS,)),
         c("Continue", "throne", forbids=(CRYSTALS,))),
-    sh("crystals", '''"And the crystals." {n}Bitterly amused.{/n} "You gave me the secret of the crystals, in my Harem. I used it. It made me strong enough to nearly kill your friends in the boudoir. I remember the half-elf screaming." {n}A breath.{/n} "It did not make me strong enough to live. Nothing a mortal gives a demon ever does. Remember that, Golarian. You will be giving me things."''',
+    sh("crystals", '''"And the crystals." {n}Bitterly amused.{/n} "You gave me the secret of the crystals, in my Harem. I used it. It made me strong enough to nearly kill your friends in the boudoir. I remember exactly how close it came." {n}A breath.{/n} "It did not make me strong enough to live. Nothing a mortal gives a demon ever does. Remember that, Golarian. You will be giving me things."''',
         c("Continue", "throne")),
     sh("throne", '''"I wanted her chair. You know that; you caught me at it. I wanted it the way you want water. But I loved her, too, in the way we do down here, with our teeth." {n}Her voice has gone very quiet, and very cold.{/n} "Now I only want the chair."
 "Tell me one thing, and then I will stop talking about her for tonight. When you did it, the killing. Did you enjoy it?"''',
@@ -383,7 +383,7 @@ page(P + "mind.fuel", "What wakes a body", [
         c('"Mine, and the barracks. One night."', "barracks", flags=(FUEL, BARRACKS, SECRET), alignment=("Evil", 2)),
         c('"Not my dreams. There has to be another way."', "no_way")),
     sh("only_mine", '''{n}For a moment she is silent, and you feel her anger go all through you like a fever, and pass.{/n}
-"A candle, then." {n}Very quietly.{/n} "You would rather keep two hundred strangers' sleep than have me blaze. That is either very good of you, or you simply don't want to share me with a barracks." {n}A breath.{/n} "I have not decided which. I think I prefer the second. Tomorrow night, Golarian. Lie down beside me, and dream me awake."''',
+"A candle, then." {n}Very quietly.{/n} "You would rather keep two hundred strangers' sleep than have me blaze. That is either very good of you, or you simply don't want to share me with a barracks." {n}A breath.{/n} "It is the second. I have been in your head; I would know. Tomorrow night, Golarian. Lie down beside me, and dream me awake."''',
         c("[Close the wardrobe.]")),
     sh("barracks", '''{n}The heat behind your eyes flares so hot that the wardrobe swims.{/n}
 "There," {n}she breathes.{/n} "There it is. That's the thing under the barley. I knew there was something under there." {n}She is laughing, low and delighted and entirely without mercy.{/n} "One night. I'll go through them like a wind through wheat, and in the morning your sergeants will wonder why the men are so quiet at breakfast. Then tomorrow, you. And I will be myself again."''',
@@ -457,7 +457,7 @@ page(P + "mind.waking", "Dreams for a body", [
 "Still going like one. Good." {n}Then she reads the rest of you, and her face changes.{/n}''',
         c("Continue", "understand")),
     sh("understand", '''"No. You don't." {n}She is reading it off you, and whatever she finds there makes her close her eyes.{/n}
-"I have walked into ten thousand sleepers' dreams and out again, and never once gone back to the same one. You have given me a hearth. Nobody has ever given me a hearth. I shall sit at it every night until one of us is dead, and you will never again close your eyes and be alone." {n}When she opens them again they are hard.{/n} "It is a terrible thing to have done to you. I did it. I'd do it again. Get up off the floor, Golarian. You look like a corpse, and I have had enough of those."''',
+"I have walked into ten thousand sleepers' dreams and out again, and gone back only when there was something left to take. You have given me a hearth. Nobody has ever given me a hearth. I shall sit at it every night until one of us is dead, and you will never again close your eyes and be alone." {n}When she opens them again they are hard.{/n} "It is a terrible thing to have done to you. I did it. I'd do it again. Get up off the floor, Golarian. You look like a corpse, and I have had enough of those."''',
         c("Continue", "go")),
     sh("go", '''"Now. My city thinks I'm dead. My court will have eaten each other by now, trying to sit in my chair." {n}She pulls your coat tighter, and it does not suit her, and she wears it as if it were ermine.{/n} "I am going home to find out who. I can still walk between worlds. Barely. It will hurt."
 {n}She steps back into the wardrobe, among your coats, and closes the door on herself. When you open it again, there is nobody in it, and your good coat is gone.{/n}''',

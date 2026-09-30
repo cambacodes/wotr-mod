@@ -184,7 +184,7 @@ This way offers no view into her room, and no voice to interrupt. You must write
 There is space for a few lines. You leave the rest blank.{/n}''',
          c('Ask for her half of the authentication, and offer to account for your own.', "question")),
     page("question", "Commander", '''You describe the incomplete reflection and ask her to add the part she withheld. You do not draw what you think it ought to be.
-Below that, you write the real request: an evening in which either of you may end the conversation, without calling the interruption an attack or pretending that being admitted is a promise of affection.
+Below that, you write the real request: an evening with her, on her side of the wax, with no brother in the room, no Council waiting and no report due at the end of it.
 The last sentence is less restrained. You tell her that you expect her to be difficult and would rather find out whether you can be interesting.
 You consider crossing it out. The line remains.
 The folded sheet goes dark from the center outward. When the shadow reaches the edge, it stops. Nothing in the room beyond it changes.''',
