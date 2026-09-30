@@ -139499,10 +139499,10 @@
         {
           "Id": "offer",
           "Speaker": "Narrator",
-          "Text": "{n}The offer is from Istrene Vhal, a collector who has acquired papers from several Isgerian households and hopes to publish an account of their service in the crusades. She calls it a necessary correction to the fashionable ingratitude of former dependents.\nVhal proposes an authorial appearance before a small group of subscribers visiting Drezen. Nurah is to approve selected passages, authenticate a handful of documents, and permit her earlier biography to be republished with an additional dedication. There is money. There are introductions. There is a promise that the Commander's association with the project will be treated discreetly.\nNurah has circled discreetly and written: She has already printed your name.\nThe collector's local representative is an editor named Reth Carrow. He will receive revisions and arrange the subscribers' evening. Nurah proposes meeting you first, privately, to decide what to do with him. She has enclosed a smaller note for the courier to deliver if you agree.\nIt gives no location yet. She wants a place in Drezen where she can arrive without being paraded past soldiers who remember the siege. She will inspect the approach before confirming it.\n\"Do not send me an honor guard,\" she adds. \"If I wanted a row of men discussing whether I deserve to live, I would attend a temple. A quiet appointment will do. We can keep using it while this business lasts, unless either of us says otherwise.\"\n{n}The courier has a blank sheet, a clean reed pen, and the patient look of a man determined not to ask why the author of the book hates it.{/n}",
+          "Text": "{n}The offer is from Istrene Vhal, a collector who has acquired papers from several Isgerian households and hopes to publish an account of their service in the crusades. She calls it a necessary correction to the fashionable ingratitude of former dependents.\nVhal proposes an authorial appearance before a small group of subscribers visiting Drezen. Nurah is to approve selected passages, authenticate a handful of documents, and permit her earlier biography to be republished with an additional dedication. There is money. There are introductions. There is a promise that the Commander's association with the project will be treated discreetly.\nNurah has circled discreetly and written: She has already printed your name.\nThe collector's local representative is an editor named Reth Carrow. He will receive revisions and arrange the subscribers' evening. Nurah proposes meeting you first, privately, to decide what to do with him. She has enclosed a smaller note for the courier to deliver if you agree.\nIt gives no place yet. She wants a way into Drezen that does not walk her past soldiers who remember the siege, and she means to walk it once herself before she trusts it.\n\"Do not send me an honor guard,\" she adds. \"If I wanted a row of men discussing whether I deserve to live, I would attend a temple. Name me a door nobody salutes. If I find a sentry on it, I shall assume you put him there to watch me, and I shall be right, and you will not see me again.\"\n{n}The courier has a blank sheet, a clean reed pen, and the patient look of a man determined not to ask why the author of the book hates it.{/n}",
           "Choices": [
             {
-              "Text": "[Send a private invitation with a discreet approach and an ongoing appointment while the work lasts.]",
+              "Text": "[Send her a door nobody salutes, and an invitation to use it.]",
               "Next": "sent",
               "Set": [],
               "Requires": [],
@@ -139510,7 +139510,7 @@
               "Abort": false
             },
             {
-              "Text": "[Keep the packet and postpone the answer.]",
+              "Text": "[Keep the packet and put off your answer.]",
               "Next": "later",
               "Set": [],
               "Requires": [],
@@ -139518,7 +139518,7 @@
               "Abort": false
             },
             {
-              "Text": "[Decline this undertaking without ending the existing relationship.]",
+              "Text": "[Tell her you will have no part of Vhal's book.]",
               "Next": "decline",
               "Set": [],
               "Requires": [],
@@ -139531,7 +139531,7 @@
         {
           "Id": "sent",
           "Speaker": "Narrator",
-          "Text": "{n}You give the courier a reply for Nurah to consider. It offers a quiet appointment in Drezen, continuing while you work together on the proposed edition. Either of you may withdraw from that arrangement. There will be no public announcement or claim that she has joined the Commander's retinue.\nYou leave the question of a suitable approach to her answer. A description of somewhere she ought to be able to reach will not make her trust it.\nThe courier folds your reply into the wrapper and slips it beneath his coat. Before leaving, he asks whether the book should be delivered to the keep's shelves. You keep it beside you instead.\nIts first page bears a printed signature that imitates Nurah's. The N is too careful. Whoever wrote it had time to practise and no reason to hurry through the name.\nYou turn back to the sentence about her exemplary obedience. The correction she wrote beneath it is almost small enough to miss, but the point of the pen has torn a hole through the final word.{/n}",
+          "Text": "{n}You write her the back stair that climbs from the kitchen yard to the private door of your chambers, which the clerks use to smuggle wine and nobody guards because nobody admits it exists. You add that she may come by it whenever the book gives her an excuse, and that you will not ask what she does with the excuse on the nights it doesn't.\nYou do not describe the stair. She will not believe a description; she will want to find the loose step herself.\nThe courier folds your reply into the wrapper and slips it beneath his coat. Before leaving, he asks whether the book should be delivered to the keep's shelves. You keep it beside you instead.\nIts first page bears a printed signature that imitates Nurah's. The N is too careful. Whoever wrote it had time to practise and no reason to hurry through the name.\nYou turn back to the sentence about her exemplary obedience. The correction she wrote beneath it is almost small enough to miss, but the point of the pen has torn a hole through the final word.{/n}",
           "Choices": [
             {
               "Text": "[Await her actual reply.]",
@@ -139550,7 +139550,7 @@
         {
           "Id": "later",
           "Speaker": "Narrator",
-          "Text": "{n}You tell the courier that the reply must wait. He takes the empty wrapper and asks whether he should return for an answer another day. You tell him he may.\nThe book remains on your table. No appointment has been made; the offer can be answered when you choose to take it up.\nBefore the messenger leaves, he turns the volume facedown. Asked why, he points to the seal on its cover. It has left a dark circular stain on every other parcel he carried.\n\"Fine ink,\" he says, with a look which suggests he has heard fine promises before.\nYou put a spare sheet beneath it. Nurah's drawing of the little bird remains between the two copies of page nine.{/n}",
+          "Text": "{n}You tell the courier that the reply must wait. He takes the empty wrapper and asks whether he should return for an answer another day. You tell him he may.\nThe book stays on your table, open at the other page nine.\nBefore the messenger leaves, he turns the volume facedown. Asked why, he points to the seal on its cover. It has left a dark circular stain on every other parcel he carried.\n\"Fine ink,\" he says, with a look which suggests he has heard fine promises before.\nYou put a spare sheet beneath it. Nurah's drawing of the little bird remains between the two copies of page nine.{/n}",
           "Choices": [
             {
               "Text": "[Leave the invitation unanswered.]",
@@ -139566,10 +139566,10 @@
         {
           "Id": "decline",
           "Speaker": "Narrator",
-          "Text": "{n}You return the offer with a clear refusal to take part in the publication scheme. The reply says nothing about ending the relationship you already have. You decline the new work and the standing appointment it would require.\nThe courier reads the address on the outside, carefully avoiding the words beneath, and secures it in his case. He has been paid to carry an answer, not obtain a favorable one.\nYou keep the book long enough to remove the false signature from its opening page. The cut leaves an awkward gap below the title. It is less elegant than the forgery and more accurate.\nWhat Nurah does with Vhal's offer after this will be her affair. The unaccepted invitation gives you no account of it.{/n}",
+          "Text": "{n}You send the offer back with one line across the top of it: you will not put your name, or your door, anywhere near Istrene Vhal's book. You add a second line underneath, for Nurah, that has nothing to do with the book at all.\nThe courier reads the address on the outside, carefully avoiding the words beneath, and secures it in his case. He has been paid to carry an answer, not obtain a favorable one.\nYou keep the book long enough to cut the false signature out of its opening page. The cut leaves an awkward gap below the title. It is less elegant than the forgery and more accurate.\nWhatever Nurah does to Vhal now, she will do it without you, and she will probably do it better out of spite.{/n}",
           "Choices": [
             {
-              "Text": "[Decline the new appointment.]",
+              "Text": "[Stay out of Vhal's book.]",
               "Next": null,
               "Set": [
                 "nurah.meeting_declined"
@@ -139629,7 +139629,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The reply arrives in the hands of a different courier, an older woman carrying a basket of mended gloves. She produces Nurah's letter from beneath a patchwork mitten and waits while you check the seal.\n\"She said you might be suspicious,\" the woman says. \"I told her I would charge extra if the suspicion involved a search.\"\nNurah has written on the back of your own invitation. She has struck out a sentence about discretion and replaced it with something more specific: nobody is to announce her name to a room full of strangers.\n\"A cloak is not a miracle,\" the reply begins. \"I have looked at the approach. I will use it if we agree about who is allowed to make the meeting into a spectacle. My answer is nobody. That includes you when you have had a very clever idea.\n\"While we are doing this, you may expect me at the agreed private appointment when I have confirmed I can come. It is an arrangement for meetings, not permission to collect me from wherever you would prefer me to be. If I cannot get there, we try again after an actual new message. We do not assume that the last good idea has grown legs.\n\"Now to the interesting part. Carrow sent me a sample of the dedication. It thanks my former master for discovering the talent that would otherwise have wasted itself in idleness. You may imagine the notes I have made in the margin.\n\"I have decided to hear his offer. I have not decided to let him finish it. Come prepared to give me a reason.\"\n{n}Underneath she has added a postscript in a smaller hand.{/n}",
+          "Text": "{n}The reply arrives in the hands of a different courier, an older woman carrying a basket of mended gloves. She produces Nurah's letter from beneath a patchwork mitten and waits while you check the seal.\n\"She said you might be suspicious,\" the woman says. \"I told her I would charge extra if the suspicion involved a search.\"\nNurah has written on the back of your own invitation. She has struck out a sentence about discretion and replaced it with something more specific: nobody is to announce her name to a room full of strangers.\n\"A cloak is not a miracle,\" the reply begins. \"I have walked your stair. The fourth step from the top squeals; I have put candle-wax on it, and if it squeals again I shall know somebody scraped the wax off, and who. I will use your door on one condition: nobody makes the meeting into a spectacle. That includes you, on the evenings you have had a very clever idea.\n\"I will come when I send word that I am coming, and not otherwise. If you ever send a man to fetch me, he will find a room with nobody in it and a very rude note on the pillow.\n\"Now to the interesting part. Carrow sent me a sample of the dedication. It thanks my former master for discovering the talent that would otherwise have wasted itself in idleness. You may imagine the notes I have made in the margin.\n\"I have decided to hear his offer. I have not decided to let him finish it. Come prepared to give me a reason.\"\n{n}Underneath she has added a postscript in a smaller hand.{/n}",
           "Choices": [
             {
               "Text": "[Read the postscript about a name she refuses to print.]",
@@ -139679,7 +139679,7 @@
           "Text": "\"There is a name in the enclosed sample. A woman who carried Trezbot's accounts before I did. Istrene calls her a grateful retainer. I knew her as someone who could make half an onion last through a punishment.\n\"Do not look for a public appeal underneath this. I am not asking you to commission a monument to her suffering. I do not even know whether she is alive. I want to know who supplied her name and what they intend to sell with it.\n\"If your next thought was to tell me that at least people will hear her story, swallow it. They are being offered somebody else's lie with her name nailed to the front.\n\"There. Now you know which part has spoiled my mood. You may bring something to improve it, provided the something does not rhyme with forgiveness.\"\n{n}The postscript ends with a scratched-out word. Beneath it, still legible, was please. Nurah has replaced it with an arrow directing your attention to the proposed meeting time.\nThe courier asks whether there is a reply. Her gloves are intended for people who will notice their absence before they notice the finer points of literary ownership.{/n}",
           "Choices": [
             {
-              "Text": "[Read the appointment terms once more.]",
+              "Text": "[Turn to the last lines of her letter.]",
               "Next": "terms",
               "Set": [],
               "Requires": [],
@@ -139695,7 +139695,7 @@
           "Text": "\"Carrow expects an author terrified of losing her reputation. I cannot decide whether to send him one or let him meet me. The first would be easier to write. The second ought to be more educational.\n\"Vhal has invited subscribers who want to hear that their ancestors were indispensable. There is probably no gathering in the city with more money and worse judgment. I would hate to waste it by giving them a simple scandal they can agree to suppress.\n\"Bring whatever expression you use when deciding to do something entirely unwise. I want to see whether I can distinguish it from the expression you use when somebody else is watching.\n\"And no, this is not a coronation. If we start handing out titles every time somebody pays for a drink, the titles will become less valuable than the drinks.\"\n{n}She has drawn an alternative seal beside Vhal's: a fat purse trying to swallow its own string. The detail is careful enough to suggest she spent more time on it than on the polite reply enclosed for Carrow.\nThe courier turns the basket on her arm. Nurah has paid her for one return journey, and she intends to know where she is returning before she sets off.{/n}",
           "Choices": [
             {
-              "Text": "[Read the appointment terms once more.]",
+              "Text": "[Turn to the last lines of her letter.]",
               "Next": "terms",
               "Set": [],
               "Requires": [],
@@ -139711,7 +139711,7 @@
           "Text": "\"Do not arrive with a scheme to spend the money before I have stolen it. Vhal's offer is good. That is the insulting part. She thinks the right sum will make me grateful for another opportunity to write what a better-dressed fool tells me to write.\n\"I may take the sum anyway. Gratitude costs extra.\n\"Carrow has copies of papers I would like to possess. Vhal has a distribution business I would like to hurt until it becomes useful. You have a name that makes people mistake an invitation for an instruction. I think there is a pleasant evening somewhere among those advantages.\n\"You may tell me I am being greedy. I will accept the observation as evidence that you have been paying attention. If you intend to tell me I have enough already, do us both a kindness and postpone it until I am holding a knife suitable for cutting the subject short.\"\n{n}The blade she has drawn in the margin pierces a little moneybag, and the coins falling out have faces. One looks very much like the printed portrait on Vhal's sample.\nThe courier glances toward the door. The people waiting for her mended gloves are unlikely to enjoy the joke as much as its author did.{/n}",
           "Choices": [
             {
-              "Text": "[Read the appointment terms once more.]",
+              "Text": "[Turn to the last lines of her letter.]",
               "Next": "terms",
               "Set": [],
               "Requires": [],
@@ -139724,10 +139724,10 @@
         {
           "Id": "terms",
           "Speaker": "Narrator",
-          "Text": "{n}The invitation has become an agreement you can accept: private meetings in Drezen while you and Nurah work on the proposed edition, with an approach she has inspected and the right for either of you to end the appointment arrangement.\nThe courier waits while you consider the proposed time, turning her basket to keep its repaired gloves out of the draft.\nAt the bottom of the sheet, below the business about discretion, Nurah has written one last sentence: I am looking forward to seeing whether you kiss me before asking about the book.\nShe has left no space beneath it for a written answer.{/n}",
+          "Text": "{n}Her letter names a night, an hour, and your stair. Everything else in it is about Carrow.\nThe courier waits while you consider it, turning her basket to keep its repaired gloves out of the draft.\nAt the bottom of the sheet, below the business about discretion, Nurah has written one last sentence: I am looking forward to seeing whether you kiss me before asking about the book.\nShe has left no space beneath it for a written answer.{/n}",
           "Choices": [
             {
-              "Text": "[Confirm the standing private appointment.]",
+              "Text": "[Write back: the night, the hour, and the stair.]",
               "Next": "accepted",
               "Set": [],
               "Requires": [],
@@ -139735,7 +139735,7 @@
               "Abort": false
             },
             {
-              "Text": "[Postpone confirmation; the invitation remains open.]",
+              "Text": "[Ask for a later night; the war has this one.]",
               "Next": "wait",
               "Set": [],
               "Requires": [],
@@ -139743,7 +139743,7 @@
               "Abort": false
             },
             {
-              "Text": "[Withdraw the request before a meeting is attempted.]",
+              "Text": "[Write back that you will not meet her over Vhal's book after all.]",
               "Next": "withdraw",
               "Set": [],
               "Requires": [],
@@ -139756,10 +139756,10 @@
         {
           "Id": "accepted",
           "Speaker": "Narrator",
-          "Text": "{n}You confirm the arrangement and return the letter by its courier. She makes you place the reply beneath the correct glove so that she can produce it without emptying the basket.\nWhen she leaves, you are left with the book, Carrow's sample dedication, and the time at which the appointment may be attempted. There is nothing to do to Nurah's name on a roster. She has agreed to meet you, not enlisted.\nYou turn to the dedication again. Its printer has left a space for her approval beneath the sentence about talent rescued from idleness. Nurah's correction fills that space completely.\nThe first word would have cost a soldier a reprimand. The rest would have earned a much more interesting conversation.{/n}",
+          "Text": "{n}You write the night and the hour back under hers, and the one word \"stair\", and return it by the courier. She makes you place the reply beneath the correct glove so that she can produce it without emptying the basket.\nWhen she leaves, you are left with the book and Carrow's sample dedication. You do not put Nurah's name on any roster, any gate list or any sentry's orders. She would find out.\nYou turn to the dedication again. Its printer has left a space for her approval beneath the sentence about talent rescued from idleness. Nurah's correction fills that space completely.\nThe first word would have cost a soldier a reprimand. The rest would have earned a much more interesting conversation.{/n}",
           "Choices": [
             {
-              "Text": "[Wait for Nurah at the agreed appointment.]",
+              "Text": "[Wait for her on the night she named.]",
               "Next": null,
               "Set": [
                 "nurah.meeting_accepted"
@@ -139774,7 +139774,7 @@
         {
           "Id": "wait",
           "Speaker": "Narrator",
-          "Text": "{n}You ask the courier to carry word that confirmation must wait. She accepts the message without asking for a reason.\nThe letter remains with you. The standing appointment has not begun, and Nurah has not been asked to make the approach before you are ready to receive her.\nThe messenger secures the basket's cloth and goes back to her other deliveries. Under the book's loose cover, Vhal's portrait looks serenely unaware that its proposed author has drawn teeth on it.{/n}",
+          "Text": "{n}You ask the courier to carry word that the night she named belongs to the war, and that you want another. She accepts the message without asking for a reason.\nNurah's letter stays on your desk, with the candle-wax on the fourth step still unscraped.\nThe messenger secures the basket's cloth and goes back to her other deliveries. Under the book's loose cover, Vhal's portrait looks serenely unaware that its proposed author has drawn teeth on it.{/n}",
           "Choices": [
             {
               "Text": "[Leave confirmation pending.]",
@@ -139790,10 +139790,10 @@
         {
           "Id": "withdraw",
           "Speaker": "Narrator",
-          "Text": "{n}You withdraw the meeting request and make the limit clear: the new appointment is ending before it begins. Your earlier relationship is not the subject of this reply.\nThe courier folds the message into a small square and places it beneath the patched mitten. There will be no reason for Nurah to attempt the agreed approach on your behalf.\nYou close the book. Its binding makes a faint crack where the duplicate page has been forced against the spine. Someone tried to fit too much into a cover that had already been chosen.{/n}",
+          "Text": "{n}You write that you will not meet her over Vhal's book, and you scrape the candle-wax off the fourth step yourself so that she will know you meant it. You do not explain. She would only correct the explanation.\nThe courier folds the message into a small square and places it beneath the patched mitten.\nYou close the book. Its binding makes a faint crack where the duplicate page has been forced against the spine. Someone tried to fit too much into a cover that had already been chosen.{/n}",
           "Choices": [
             {
-              "Text": "[Withdraw the new appointment.]",
+              "Text": "[Send it.]",
               "Next": null,
               "Set": [
                 "nurah.meeting_withdrawn"
@@ -143249,7 +143249,7 @@
         {
           "Id": "teasing",
           "Speaker": "Nurah",
-          "Text": "\"You were using it badly.\"\n\"I was holding it.\"\n\"Exactly. Books should be opened. So should several other things you have made unnecessarily difficult.\"\n{n}The fastening gives. Nurah looks down at her success with exaggerated surprise, then catches your hand before you can reach for hers.{/n}\n\"Patience. I am revising the order of events.\"\n{n}She draws you toward the chair and climbs into your lap when you sit. For a while she seems content to examine the face of the person who helped her ruin an evening, acquire an enemy, and get an old letter back. Her thumb moves along your jaw, stopping where she wants your attention.\nYou kiss the inside of her wrist. Her breath catches, briefly enough that she could deny it, and her fingers curl against your cheek.{/n}\n\"That was not in my order,\" she says.\n\"A correction.\"\n\"An impertinent one.\"\n{n}She leans forward to make another, and the rest of the sentence becomes impossible to finish.{/n}",
+          "Text": "\"You were using it badly.\"\n\"I was holding it.\"\n\"Exactly. Books should be opened. So should several other things you have made unnecessarily difficult.\"\n{n}The fastening gives. Nurah looks down at her success with exaggerated surprise, then catches your hand before you can reach for hers.{/n}\n\"Patience. I am revising the order of events.\"\n{n}She draws you toward the chair and climbs into your lap when you sit. For a while she seems content to examine the face of the person who helped her ruin an evening, acquire an enemy, and get an old letter back. Her thumb moves along your jaw, stopping where she wants your attention.\nYou kiss the inside of her wrist. Her breath catches, briefly enough that she could deny it, and her fingers curl against your cheek.{/n}\n\"That was not in my order,\" she says.\n\"A correction.\"\n\"An impertinent one.\"\n{n}She settles her knees either side of you in the chair and makes a correction of her own, with her mouth, slowly, the way she strikes a line she means nobody to read again. Then she sits back far enough to take hold of the hem of her dress, and draws it up over her head in one motion, and drops it on the floor on top of Vhal's prospectus.{/n}\n\"Now,\" she says, and takes your hands, and puts them on her bare waist, and leans down into you.",
           "Choices": [
             {
               "Text": "[Let the private argument continue without an audience.]",
@@ -143267,7 +143267,7 @@
         {
           "Id": "kiss",
           "Speaker": "Nurah",
-          "Text": "\"I could ask someone to stand outside and become embarrassed at the appropriate moment.\"\n\"You would charge admission.\"\n\"Only if you insisted on being impressive.\"\n{n}Her teasing falters when you draw her closer. She rests a hand against your chest, feels the movement beneath it, and looks up without the harmless smile she used for the servant.\nThe first kiss is brief. The second is her answer to its brevity. She pulls your collar open another inch and lets the cool air reach the place her mouth has warmed.{/n}\n\"No difficult passage this time?\" you ask.\n\"I am considering the ending. Be quiet while I work.\"\n{n}You carry her the few steps to the bed. She keeps hold of your collar, laughing when the loose fastening catches in her sleeve. Untangling it takes longer than necessary. Neither of you makes a serious effort to hurry.\nOutside the room, someone passes without stopping. Nurah hears the footsteps, glances at the door, and turns back to you.{/n}\n\"Much better,\" she says. \"They have learned to miss the interesting part.\"",
+          "Text": "\"I could ask someone to stand outside and become embarrassed at the appropriate moment.\"\n\"You would charge admission.\"\n\"Only if you insisted on being impressive.\"\n{n}Her teasing falters when you draw her closer. She rests a hand against your chest, feels the movement beneath it, and looks up without the harmless smile she used for the servant.\nThe first kiss is brief. The second is her answer to its brevity. She pulls your collar open another inch and lets the cool air reach the place her mouth has warmed.{/n}\n\"No difficult passage this time?\" you ask.\n\"I am considering the ending. Be quiet while I work.\"\n{n}You carry her the few steps to the bed. She keeps hold of your collar, laughing when the loose fastening catches in her sleeve, and when you set her down she does not let go of it; she pulls, and you come down with her.\nOutside the room, someone passes without stopping. Nurah hears the footsteps, glances at the door, and turns back to you.{/n}\n\"Much better,\" she says. \"They have learned to miss the interesting part.\"\n{n}She rolls you onto your back with a small grunt of effort that she will deny later, climbs astride you, and unlaces her bodice with the same quick, practised fingers that unpicked Carrow's lock. She lets it fall open and leans down until her hair closes round both your faces like a curtain.{/n}",
           "Choices": [
             {
               "Text": "[Close the evening around the two of you.]",
@@ -143285,7 +143285,7 @@
         {
           "Id": "stay",
           "Speaker": "Nurah",
-          "Text": "\"That is a long time to leave you without assistance.\"\n{n}She says it softly. Her fingers leave your collar and rest against the side of your neck. You feel the small movement when she swallows.\nYou draw her into an embrace. For a moment she stands still inside it, her face hidden against you. Then she reaches around your back and finds the seam she wants, pulling you closer by it.{/n}\n\"I am staying,\" she says. \"You may stop looking as though you expect me to turn into a letter.\"\n\"Your letters are difficult company.\"\n\"They have only ink to work with.\"\n{n}She lifts her head. The smile that follows is slow and very much aware of what she has to work with instead.\nWhen you kiss her, she takes her time answering. The lamp remains unlit. You know the way across the room without it, and Nurah discovers several reasons to delay you before you reach the bed.{/n}",
+          "Text": "\"That is a long time to leave you without assistance.\"\n{n}She says it softly. Her fingers leave your collar and rest against the side of your neck. You feel the small movement when she swallows.\nYou draw her into an embrace. For a moment she stands still inside it, her face hidden against you. Then she reaches around your back and finds the seam she wants, pulling you closer by it.{/n}\n\"I am staying,\" she says. \"You may stop looking as though you expect me to turn into a letter.\"\n\"Your letters are difficult company.\"\n\"They have only ink to work with.\"\n{n}She lifts her head. The smile that follows is slow and very much aware of what she has to work with instead.\nWhen you kiss her, she takes her time answering. The lamp remains unlit. You know the way across the room without it, and Nurah discovers several reasons to delay you before you reach the bed: your belt, which she dislikes; your shirt, which she likes better on the floor; a kiss against the bedpost that she says is research.\nAt the bed she stops you with one hand flat on your chest and pushes, and you sit. She stands between your knees, which puts her eyes level with yours for once, and unhooks her dress at the back without looking, and lets it go.{/n}\n\"I am staying,\" she says again, quieter, and climbs into your lap, and takes your face in both inky hands and pulls you down onto the bed with her.",
           "Choices": [
             {
               "Text": "[Spend the night together.]",
@@ -143321,7 +143321,7 @@
         {
           "Id": "morning",
           "Speaker": "Narrator",
-          "Text": "{n}Near morning, Nurah opens the drawer with the finished pages. She takes out the old letter and places it inside her own copy of the book. The rest remains where you left it.\n\"That one travels with me,\" she says. \"You can keep the improved edition.\"\nThe standing appointments arranged for Vhal's business have reached their end. There is no further proof to examine and no courier waiting for an answer. Nurah has other schemes, and you have a crusade that has never developed much respect for private plans.\nShe leans against the table, watching you. The old affection between you has acquired a book, an enemy, several evenings neither of you will describe honestly in public, and a disagreement or two worth remembering.\nWhat follows can be named without pretending it erases any of that.{/n}",
+          "Text": "{n}Near morning, Nurah opens the drawer with the finished pages. She takes out the old letter and places it inside her own copy of the book. The rest remains where you left it.\n\"That one travels with me,\" she says. \"You can keep the improved edition.\"\nVhal's book is finished, and so is Vhal. There is no proof left to fight over and no courier waiting on the stair. Nurah has other schemes, and you have a crusade that has never had much respect for anybody's private plans.\nShe leans against the table in your shirt, watching you, with the candle-wax from the fourth step still under one thumbnail.\n\"Well, Commander. The book is done. Say something I can quote.\"{/n}",
           "Choices": [
             {
               "Text": "\"Bring me the next scheme before you sell the interesting part to someone else.\"",
@@ -143340,7 +143340,7 @@
               "Abort": false
             },
             {
-              "Text": "\"Keep your freedom to appear when you choose. We do not need a new arrangement to keep what we had.\"",
+              "Text": "\"Keep the stair. Use it when you like. I won't ask when.\"",
               "Next": "old_bond",
               "Set": [],
               "Requires": [],
@@ -143391,10 +143391,10 @@
         {
           "Id": "old_bond",
           "Speaker": "Nurah",
-          "Text": "{n}Nurah studies you for a moment, then slips the repaired glove into her pocket instead of putting it on.{/n}\n\"I was wondering when you would try to make the arrangement sound less like a meeting of editors.\"\n\"You began with a book.\"\n\"A necessary disguise. You are much easier to summon when somebody has misused your name.\"\n{n}She straightens the open fastening at your collar without closing it. The familiar affection in the gesture needs no new oath to identify it.{/n}\n\"I will come when I choose and when we can make it possible,\" she says. \"You may write if you miss me. Try to include something worth answering.\"\n\"And if I merely say that I miss you?\"\n\"I will consider whether you have made it sound interesting.\"\n{n}She kisses your cheek before you can offer a revision. At the door she turns the book over in her hands, checking that the letter remains inside.\nThe old relationship leaves with her in its accustomed shape, altered by what you have done together but not replaced by a new title. You keep the finished pages. She keeps the right to surprise you.{/n}",
+          "Text": "{n}Nurah studies you for a moment, then slips the repaired glove into her pocket instead of putting it on.{/n}\n\"I was wondering when you would try to make the arrangement sound less like a meeting of editors.\"\n\"You began with a book.\"\n\"A necessary disguise. You are much easier to summon when somebody has misused your name.\"\n{n}She straightens the open fastening at your collar without closing it, the way she would straighten a page she has decided to keep.{/n}\n\"I will come when I choose and when we can make it possible,\" she says. \"You may write if you miss me. Try to include something worth answering.\"\n\"And if I merely say that I miss you?\"\n\"I will consider whether you have made it sound interesting.\"\n{n}She kisses your cheek before you can offer a revision. At the door she turns the book over in her hands, checking that the letter remains inside.\nOn the stair you hear the fourth step squeal. She has scraped off her own wax, so that you will always know when she is coming. You keep the finished pages. She keeps the stair.{/n}",
           "Choices": [
             {
-              "Text": "[Finish the new work and keep the existing bond.]",
+              "Text": "[Let her go down the stair.]",
               "Next": null,
               "Set": [
                 "nurah.complete",
@@ -157769,7 +157769,7 @@
       "Title": "A pardon in the off hand",
       "Owner": "Nurah",
       "MinChapter": 3,
-      "MaxChapter": 5,
+      "MaxChapter": 3,
       "Entry": "[Slide a terrible forgery under the bars] \"Your pardon, madam. I signed it with my off hand.\"",
       "Nodes": [
         {
@@ -157832,6 +157832,9 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nurah",
+      "Chapters": [
+        3
+      ],
       "AnswerLists": [
         "01d00f006e0e16543b7507ff38e9fb8a"
       ],
@@ -157849,7 +157852,7 @@
       "Title": "A pardon in the off hand",
       "Owner": "Nurah",
       "MinChapter": 3,
-      "MaxChapter": 5,
+      "MaxChapter": 3,
       "Entry": "[Slide a terrible forgery under the bars] \"Your pardon, madam. I signed it with my off hand.\"",
       "Nodes": [
         {
@@ -157912,6 +157915,9 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nurah",
+      "Chapters": [
+        3
+      ],
       "AnswerLists": [
         "6201570ac1b1d8c4b878f935a7b0160e"
       ],
@@ -157925,11 +157931,136 @@
       "TricksterState": "prison"
     },
     {
+      "Id": "nurah.trickster.prison.pardon_late",
+      "Title": "A pardon in the off hand",
+      "Owner": "Nurah",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "[Slide a terrible forgery under the bars] \"Your pardon, madam. I signed it with my off hand.\"",
+      "Nodes": [
+        {
+          "Id": "open",
+          "Speaker": "Narrator",
+          "Text": "{n}Nobody has moved her. The lamp in the passage has been let go out more nights than it was lit, and the tally on the wall runs to the edge of the plaster and starts again underneath. She watches your hand come through the bars with the paper in it.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "start",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "nurah.trickster_recruited"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "start_recruited",
+              "Set": [],
+              "Requires": [
+                "nurah.trickster_recruited"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "start",
+          "Speaker": "Nurah",
+          "Text": "{n}Nurah takes the paper without getting up from the bunk.{/n} \"Come to watch the traitor rot? It's slow work, Commander. You should have brought a chair.\"\n\"You went down into the Abyss and came back up, and I've been counting. I'm told the Commander of the Fifth Crusade has been very busy. I wasn't consulted.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "read",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "start_recruited",
+          "Speaker": "Nurah",
+          "Text": "{n}Nurah rolls onto one elbow on the bunk and does not smile.{/n} \"The pawn remembers the hand that put it back in the box. You came with a candle and that face, so either you've come to execute me or to cheat at cards.\"\n{n}Her eyes go to your sword hand, then to the paper in the other.{/n} \"If it's cards, I'm dealing.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "read",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "read",
+          "Speaker": "Nurah",
+          "Text": "{n}She holds the paper up to the lamp by one corner, as if it might bite.{/n} \"Your 'Q' has a tail. Your seal is upside down. This is the worst forgery I have ever seen, and I have seen my own juvenilia.\"\n{n}She squints at the date, and something in her face sharpens.{/n} \"...And it's dated tomorrow. Clever. Nobody hangs a woman holding a pardon dated tomorrow. They'd have to wait a day and check.\"",
+          "Choices": [
+            {
+              "Text": "[Leave her the paper.]",
+              "Next": null,
+              "Set": [
+                "nurah.trickster.primed",
+                "nurah.trickster.cost.ledger_lie",
+                "nurah.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Take it back.] \"On second thought, the seal really is upside down.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Nurah"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "nurah.prison"
+      ],
+      "Forbids": [
+        "nurah.closed",
+        "nurah.ran_off",
+        "nurah.dead_drezen",
+        "nurah.dead_camellia",
+        "nurah.killing_mechanism",
+        "nurah.trickster.cost.ledger_lie"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "nurah",
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "f999fc37ddb225640b7f98c0a05d6948",
+      "InteractionHub": "nurah.presence.cell",
+      "TricksterDevice": true,
+      "TricksterState": "prison"
+    },
+    {
       "Id": "nurah.trickster.prison.night_out",
       "Title": "Professional disgust",
       "Owner": "Nurah",
       "MinChapter": 3,
-      "MaxChapter": 5,
+      "MaxChapter": 3,
       "Entry": "\"Sleep well, madam?\"",
       "Nodes": [
         {
@@ -158044,14 +158175,17 @@
         "6201570ac1b1d8c4b878f935a7b0160e"
       ],
       "TricksterDevice": true,
-      "TricksterState": "prison"
+      "TricksterState": "prison",
+      "Chapters": [
+        3
+      ]
     },
     {
       "Id": "nurah.trickster.prison.proofs",
       "Title": "Chapter one, from the wrong side",
       "Owner": "Nurah",
       "MinChapter": 3,
-      "MaxChapter": 5,
+      "MaxChapter": 3,
       "Entry": "\"What are you writing?\"",
       "Nodes": [
         {
@@ -158135,14 +158269,17 @@
         "6201570ac1b1d8c4b878f935a7b0160e"
       ],
       "TricksterDevice": true,
-      "TricksterState": "prison"
+      "TricksterState": "prison",
+      "Chapters": [
+        3
+      ]
     },
     {
       "Id": "nurah.trickster.prison.terms",
       "Title": "Author's terms",
       "Owner": "Nurah",
       "MinChapter": 3,
-      "MaxChapter": 5,
+      "MaxChapter": 3,
       "Entry": "\"Is it finished?\"",
       "Nodes": [
         {
@@ -158356,6 +158493,450 @@
         "01d00f006e0e16543b7507ff38e9fb8a",
         "6201570ac1b1d8c4b878f935a7b0160e"
       ],
+      "TricksterDevice": true,
+      "TricksterState": "prison",
+      "Chapters": [
+        3
+      ]
+    },
+    {
+      "Id": "nurah.trickster.prison.night_out_late",
+      "Title": "Professional disgust",
+      "Owner": "Nurah",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Sleep well, madam?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Nurah",
+          "Text": "{n}Nurah is sitting on the bunk exactly where you left her. There is rampart grit on her shoes, and the pardon lies across her knee, face up.{/n} \"I didn't sleep. I couldn't, with that thing in the room. Around the second bell I scraped the tail off your 'Q' with a bent nail. Then I lifted your seal with lamp-heat and set it back the right way up. Then I changed the date to today, because a pardon dated tomorrow is an insult to the profession.\"\n{n}She holds up her hands. The ink is under every nail.{/n} \"I forged my own pardon, Commander. Out of professional disgust. I suspect that was your whole plan.\"\n{n}She taps the gaol ledger's copy of her sentence, which still says: imprisoned.{/n} \"So I went for a walk. The door opens for a pardoned woman, it turns out, and nobody in Drezen looks at a halfling after dark. I read your casualty lists in the archive and came back before the guard changed, because I wanted to ask you one thing to your face.\n\"You could have just opened the door. I'd have run to the nearest demon with a library. You'd rather keep me. Why?\"",
+          "Choices": [
+            {
+              "Text": "\"Because you can still write this war properly.\"",
+              "Next": "end",
+              "Set": [
+                "nurah.trickster.released",
+                "nurah.trickster.accepted",
+                "nurah.trickster.temper_good"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Because it's funnier with you in it.\"",
+              "Next": "end",
+              "Set": [
+                "nurah.trickster.released",
+                "nurah.trickster.accepted",
+                "nurah.trickster.temper_chaos"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Because you'd sell them all again, and I'd like to watch.\"",
+              "Next": "end",
+              "Set": [
+                "nurah.trickster.released",
+                "nurah.trickster.accepted",
+                "nurah.trickster.temper_evil"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "\"Because you're mine now. The pardon says so.\"",
+              "Next": "refused",
+              "Set": [
+                "nurah.closed",
+                "nurah.trickster.cost.owned_line"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "end",
+          "Speaker": "Nurah",
+          "Text": "\"Hm. Good answer. Wrong, but good.\"\n{n}She folds the pardon into quarters and tucks it into her bodice, where a guard would have to be very brave to look for it.{/n} \"I'll keep the cell. It's the only room in Drezen where nobody thinks to look for me, and the rent is excellent.\"",
+          "Choices": [
+            {
+              "Text": "[Leave her to it.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "refused",
+          "Speaker": "Nurah",
+          "Text": "{n}She folds the pardon very small.{/n} \"Lord Trezbot said that. He had a paper too. It had a better seal.\"\n\"Keep your joke, Commander. I'll keep my cell, and you can have me executed any morning you like. I am done being anyone's property.\" {n}She turns to the wall, and she does not turn back.{/n}",
+          "Choices": [
+            {
+              "Text": "[Leave.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "nurah.trickster.cost.ledger_lie",
+        "nurah.prison"
+      ],
+      "Forbids": [
+        "nurah.closed",
+        "nurah.ran_off",
+        "nurah.dead_drezen",
+        "nurah.dead_camellia",
+        "nurah.killing_mechanism",
+        "nurah.trickster.released"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "nurah",
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "f999fc37ddb225640b7f98c0a05d6948",
+      "InteractionHub": "nurah.presence.cell",
+      "TricksterDevice": true,
+      "TricksterState": "prison"
+    },
+    {
+      "Id": "nurah.trickster.prison.proofs_late",
+      "Title": "Chapter one, from the wrong side",
+      "Owner": "Nurah",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"What are you writing?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Nurah",
+          "Text": "{n}The cell has become a scriptorium: candle ends, a plank across two buckets for a desk, and forty pages in a hand so small it looks like stitching.{/n} \"The war. From the wrong side, which is the only side worth reading. I've been on both. Proofs of chapter one.\"\n{n}She pushes them through the bars. Halfway down the first page, where your name should be, there is a gap exactly one name wide.{/n} \"Fill it in, if you still think paper does what you tell it. Or leave it blank, and let me decide what you were.\"",
+          "Choices": [
+            {
+              "Text": "[Leave the gap] \"Your book. You decide what I was.\"",
+              "Next": "trusted",
+              "Set": [
+                "nurah.trickster.proofs_seen"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Write your own name in the gap.]",
+              "Next": "signed",
+              "Set": [
+                "nurah.trickster.proofs_seen",
+                "nurah.trickster.cost.signed_proofs"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "trusted",
+          "Speaker": "Nurah",
+          "Text": "{n}She reads the blank twice, then turns the page over as if the name might be hiding on the back.{/n} \"Trezbot never once left me a blank. Every line of his book had him in it before I'd picked up the pen. I don't know what to do with one.\"\n\"That is a compliment. Don't get used to it.\"",
+          "Choices": [
+            {
+              "Text": "[Leave her the proofs.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "signed",
+          "Speaker": "Nurah",
+          "Text": "{n}The name sits in the gap as if the page had been cut to fit it.{/n} \"Of course. And it will say exactly that, in every copy. You are going to hate how accurate I am.\"",
+          "Choices": [
+            {
+              "Text": "[Leave her the proofs.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "nurah.trickster.released",
+        "nurah.trickster.accepted",
+        "nurah.prison"
+      ],
+      "Forbids": [
+        "nurah.closed",
+        "nurah.ran_off",
+        "nurah.trickster.returned",
+        "nurah.trickster.proofs_seen"
+      ],
+      "DelayHours": 72,
+      "Optional": true,
+      "Relationship": "nurah",
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "f999fc37ddb225640b7f98c0a05d6948",
+      "InteractionHub": "nurah.presence.cell",
+      "TricksterDevice": true,
+      "TricksterState": "prison"
+    },
+    {
+      "Id": "nurah.trickster.prison.terms_late",
+      "Title": "Author's terms",
+      "Owner": "Nurah",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Is it finished?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Nurah",
+          "Text": "{n}The manuscript is tied up with the string from her bunk. She sits on it, as if it might try to leave.{/n}\n\"Terms. Author's terms, which nobody in my life has ever let me set. My name on the cover. Yours nowhere unless I put it there, and I decide how. You don't touch a word, and you don't read it until it's bound.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "terms_signed",
+              "Set": [],
+              "Requires": [
+                "nurah.trickster.cost.signed_proofs"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "nurah.trickster.cost.signed_proofs"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "terms_signed",
+          "Speaker": "Nurah",
+          "Text": "\"You signed chapter one, so you're in it. You don't get to be in the title.\"",
+          "Choices": [
+            {
+              "Text": "\"Done.\"",
+              "Next": "done",
+              "Set": [
+                "nurah.complete"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Put my name on the cover too. Next to yours.\"",
+              "Next": "partners",
+              "Set": [
+                "nurah.complete",
+                "nurah.trickster.cost.coauthor"
+              ],
+              "Requires": [
+                "nurah.trickster.temper_evil"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Put my name on it too. Above yours.\"",
+              "Next": "refused",
+              "Set": [
+                "nurah.closed",
+                "nurah.trickster.cost.name_above"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "terms",
+          "Speaker": "Nurah",
+          "Text": "\"Take them or leave them. Nobody has ever let me say that to anyone before, so do me the courtesy of pretending to think about it.\"",
+          "Choices": [
+            {
+              "Text": "\"Done.\"",
+              "Next": "done",
+              "Set": [
+                "nurah.complete"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Put my name on the cover too. Next to yours.\"",
+              "Next": "partners",
+              "Set": [
+                "nurah.complete",
+                "nurah.trickster.cost.coauthor"
+              ],
+              "Requires": [
+                "nurah.trickster.temper_evil"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Put my name on it too. Above yours.\"",
+              "Next": "refused",
+              "Set": [
+                "nurah.closed",
+                "nurah.trickster.cost.name_above"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "done",
+          "Speaker": "Nurah",
+          "Text": "\"Then we have a book.\" {n}She says it the way other people say a prayer, quickly, before anyone can take it back.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "partners",
+          "Speaker": "Nurah",
+          "Text": "\"Co-authors. Partners in crime, in print, in the same typeface.\" {n}She grins, all teeth.{/n} \"Trezbot would choke on it. Do that again sometime.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "threshold",
+          "Speaker": "Narrator",
+          "Text": "{n}She sets the manuscript on the plank desk and squares its edges with both hands. Then she climbs onto the bunk, so that for once she is the taller of you.{/n}\n\"Author's terms cover the rest of the evening too. I lead. If you're very good, I'll let you think it was your idea.\"\n{n}Her fingers are black to the second knuckle with ink. She uses them to undo the hooks of your coat one at a time, as carefully as breaking the seal on someone else's letter, and she watches your face the whole while, the way she watches anything she means to describe later. She does not kiss carefully. She bites your lip, laughs into your mouth, and pulls you down onto a straw mattress built for one small prisoner. When the candle gutters, she pinches it out herself.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Narrator",
+          "Text": "{n}The turnkey on the dawn watch finds the cell door ajar, the prisoner asleep, and the Commander's cloak spread over her like a banner over a taken wall. He closes the door very quietly and writes nothing at all in the gaol ledger.{/n}\n{n}Nurah does not open her eyes.{/n} \"Chapter two. I've changed your name. Nobody will recognise you. Everybody will.\"",
+          "Choices": [
+            {
+              "Text": "[Let her sleep.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "refused",
+          "Speaker": "Nurah",
+          "Text": "\"No.\" {n}Not angry. Final.{/n}\n\"Lord Axilar Trezbot's name is on the cover of the best book I ever wrote. His name, his deeds, his glorious story for future generations, in my hand, every word. I did not climb out from under that name to climb under yours. Keep your joke, Commander. There's no book.\"",
+          "Choices": [
+            {
+              "Text": "[Leave the cell.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "nurah.trickster.released",
+        "nurah.trickster.proofs_seen",
+        "nurah.prison"
+      ],
+      "Forbids": [
+        "nurah.closed",
+        "nurah.ran_off",
+        "nurah.trickster.returned",
+        "nurah.complete"
+      ],
+      "DelayHours": 72,
+      "Optional": true,
+      "Relationship": "nurah",
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "f999fc37ddb225640b7f98c0a05d6948",
+      "InteractionHub": "nurah.presence.cell",
       "TricksterDevice": true,
       "TricksterState": "prison"
     },
@@ -159164,7 +159745,7 @@
       "Title": "A dedication in her own hand",
       "Owner": "Nurah",
       "MinChapter": 3,
-      "MaxChapter": 5,
+      "MaxChapter": 3,
       "Entry": "[Borrow her manuscript for the night] \"Your dedication page is blank. Allow me.\"",
       "Nodes": [
         {
@@ -159199,6 +159780,23 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "[Leave it on her bunk, and send a quartermaster's purse down the south road to every press she might use, with the line and a page of her hand to set it by.]",
+              "Next": null,
+              "Set": [
+                "nurah.trickster.primed",
+                "nurah.trickster.cost.ghostwritten",
+                "nurah.started",
+                "nurah.trickster.cost.printer_paid"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -250
+              }
             }
           ],
           "Portrait": "Nurah"
@@ -159225,6 +159823,9 @@
       ],
       "TricksterDevice": true,
       "TricksterState": "prison",
+      "Chapters": [
+        3
+      ],
       "EntryMythic": "PlayerIsTrickster",
       "EntryAlignment": {
         "Direction": "Chaotic",
@@ -159314,6 +159915,89 @@
       "Sender": "Nurah"
     },
     {
+      "Id": "nurah.trickster.ran_off.second_draft_late",
+      "Title": "Second printing",
+      "Owner": "Nurah",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Months after Nurah walked out of your gaol, and weeks after the crusade climbed back out of the Abyss, a pedlar comes through the Drezen gate with a crate of pamphlets gone soft at the corners: \"The Pawn Who Left the Board\", by N. D., second printing. The first sold out on the south road; a printer in Tymon has already pirated it. The dedication page is still blank.{/n}\n{n}The pedlar is carrying the printer's own proof sheets for a third run, to be approved by the author when she sends word. He would very much like to sell them to somebody sooner.{/n}",
+          "Choices": [
+            {
+              "Text": "[Buy the crate and the proof sheets, pay the Tymon printer for his silence, and write the dedication into every copy.]",
+              "Next": "forged",
+              "Set": [
+                "nurah.trickster.primed",
+                "nurah.trickster.cost.ghostwritten",
+                "nurah.trickster.cost.late",
+                "nurah.trickster.cost.second_edition",
+                "nurah.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -400
+              }
+            },
+            {
+              "Text": "\"Let the pedlar go.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "forged",
+          "Speaker": "Narrator",
+          "Text": "{n}Three hundred copies and the proof sheets, two nights, a box of candles. The first hundred are hard going; her hand has changed on the road, grown quicker and meaner, and you have to learn it again from the pamphlet's own marginal corrections. By the second night you are forging her better than she writes: \"To the Commander, who kept me because I had stopped being funny. N. D.\" The pedlar leaves with the crate and no idea. The Tymon printer gets the proof sheets back with the line set into them, and a quartermaster's purse heavy enough to make him forget who sent it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Go to bed.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "nurah.ran_off"
+      ],
+      "Forbids": [
+        "nurah.closed",
+        "nurah.dead_drezen",
+        "nurah.dead_camellia",
+        "nurah.killing_mechanism",
+        "nurah.trickster.cost.ghostwritten"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "nurah",
+      "Chapters": [
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "ran_off",
+      "Kind": "visit",
+      "Sender": "Nurah"
+    },
+    {
       "Id": "nurah.trickster.ran_off.terms_by_post",
       "Title": "I am extremely funny",
       "Owner": "Nurah",
@@ -159340,9 +160024,22 @@
               "Text": "Continue",
               "Next": "letter",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "nurah.trickster.printer_paid"
+              ],
               "Forbids": [
                 "nurah.trickster.released"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "letter_one",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "nurah.trickster.released",
+                "nurah.trickster.printer_paid"
               ],
               "Abort": false
             }
@@ -159358,8 +160055,20 @@
               "Text": "Continue",
               "Next": "letter",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "nurah.trickster.printer_paid"
+              ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "letter_one",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "nurah.trickster.printer_paid"
+              ],
               "Abort": false
             }
           ],
@@ -159369,6 +160078,62 @@
           "Id": "letter",
           "Speaker": "Nurah",
           "Text": "\"I did not write that. I checked every copy. I wrote it in every copy, apparently, in my own hand, better than I write it. I burned an edition, and the next one came off the press with the same line, because somebody had paid my printer to keep it locked in the forme. He is a very bad liar. The purse had a crusade quartermaster's knot on it. It is an insult in my own handwriting, Commander, and you paid good money to make it outlive us both.\n\"And I am funny. I am extremely funny. So why would you even want to keep a woman you think isn't?\"",
+          "Choices": [
+            {
+              "Text": "\"Because you can still write this war properly.\"",
+              "Next": "end",
+              "Set": [
+                "nurah.trickster.accepted",
+                "nurah.trickster.temper_good"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Because it's funnier with you in it.\"",
+              "Next": "end",
+              "Set": [
+                "nurah.trickster.accepted",
+                "nurah.trickster.temper_chaos"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Because you'd sell them all again, and I'd like to watch.\"",
+              "Next": "end",
+              "Set": [
+                "nurah.trickster.accepted",
+                "nurah.trickster.temper_evil"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "\"Because I wanted the last word in your book.\"",
+              "Next": "refused",
+              "Set": [
+                "nurah.closed",
+                "nurah.trickster.cost.last_word"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "letter_one",
+          "Speaker": "Nurah",
+          "Text": "\"I did not write that. I found it on the road, by a ditch-fire, on the first page of my own manuscript, in my own hand, better than I write it. I read it forty times looking for the stroke where you gave yourself away. There isn't one. You borrowed it for one night, learned my loops by candle, put it back on my bunk before the bell, and did not even stay to watch me find it.\n\"I could have scraped the page. I had the knife out. I didn't. It is an insult in my own handwriting, Commander, and it is the best forgery anyone has ever made of me, and I do not burn good work. It went to the printer as it stands.\n\"And I am funny. I am extremely funny. So why would you even want to keep a woman you think isn't?\"",
           "Choices": [
             {
               "Text": "\"Because you can still write this war properly.\"",
@@ -159477,6 +160242,250 @@
       "Sender": "Nurah"
     },
     {
+      "Id": "nurah.trickster.ran_off.terms_by_post_late",
+      "Title": "I am extremely funny",
+      "Owner": "Nurah",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The envelope has been a long time on the road. It has been opened and resealed at least twice by people who were disappointed in it, and it is addressed in a hand so furious the nib went through twice.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "pardoned",
+              "Set": [],
+              "Requires": [
+                "nurah.trickster.released"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "letter",
+              "Set": [],
+              "Requires": [
+                "nurah.trickster.printer_paid"
+              ],
+              "Forbids": [
+                "nurah.trickster.released"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "letter_one",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "nurah.trickster.released",
+                "nurah.trickster.printer_paid"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "pardoned",
+          "Speaker": "Nurah",
+          "Text": "\"You pardoned me, then opened the door, then followed me with THIS. Make up your mind.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "letter",
+              "Set": [],
+              "Requires": [
+                "nurah.trickster.printer_paid"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "letter_one",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "nurah.trickster.printer_paid"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "letter",
+          "Speaker": "Nurah",
+          "Text": "\"I did not write that. I checked every copy. I wrote it in every copy, apparently, in my own hand, better than I write it. I burned an edition, and the next one came off the press with the same line, because somebody had paid my printer to keep it locked in the forme. He is a very bad liar. The purse had a crusade quartermaster's knot on it. It is an insult in my own handwriting, Commander, and you paid good money to make it outlive us both.\n\"And I am funny. I am extremely funny. So why would you even want to keep a woman you think isn't?\"",
+          "Choices": [
+            {
+              "Text": "\"Because you can still write this war properly.\"",
+              "Next": "end",
+              "Set": [
+                "nurah.trickster.accepted",
+                "nurah.trickster.temper_good"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Because it's funnier with you in it.\"",
+              "Next": "end",
+              "Set": [
+                "nurah.trickster.accepted",
+                "nurah.trickster.temper_chaos"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Because you'd sell them all again, and I'd like to watch.\"",
+              "Next": "end",
+              "Set": [
+                "nurah.trickster.accepted",
+                "nurah.trickster.temper_evil"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "\"Because I wanted the last word in your book.\"",
+              "Next": "refused",
+              "Set": [
+                "nurah.closed",
+                "nurah.trickster.cost.last_word"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "letter_one",
+          "Speaker": "Nurah",
+          "Text": "\"I did not write that. I found it on the road, by a ditch-fire, on the first page of my own manuscript, in my own hand, better than I write it. I read it forty times looking for the stroke where you gave yourself away. There isn't one. You borrowed it for one night, learned my loops by candle, put it back on my bunk before the bell, and did not even stay to watch me find it.\n\"I could have scraped the page. I had the knife out. I didn't. It is an insult in my own handwriting, Commander, and it is the best forgery anyone has ever made of me, and I do not burn good work. It went to the printer as it stands.\n\"And I am funny. I am extremely funny. So why would you even want to keep a woman you think isn't?\"",
+          "Choices": [
+            {
+              "Text": "\"Because you can still write this war properly.\"",
+              "Next": "end",
+              "Set": [
+                "nurah.trickster.accepted",
+                "nurah.trickster.temper_good"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Because it's funnier with you in it.\"",
+              "Next": "end",
+              "Set": [
+                "nurah.trickster.accepted",
+                "nurah.trickster.temper_chaos"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Because you'd sell them all again, and I'd like to watch.\"",
+              "Next": "end",
+              "Set": [
+                "nurah.trickster.accepted",
+                "nurah.trickster.temper_evil"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "\"Because I wanted the last word in your book.\"",
+              "Next": "refused",
+              "Set": [
+                "nurah.closed",
+                "nurah.trickster.cost.last_word"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "end",
+          "Speaker": "Nurah",
+          "Text": "\"Fine. Prove it wrong, then. I'll send you proofs. Don't make me regret the postage.\"",
+          "Choices": [
+            {
+              "Text": "[Fold the letter away.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "refused",
+          "Speaker": "Nurah",
+          "Text": "\"You've had it. It's printed in every copy I will ever make. That is all the room in my life you get. Don't write again.\"",
+          "Choices": [
+            {
+              "Text": "[Fold the letter away.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "nurah.trickster.primed",
+        "nurah.trickster.cost.ghostwritten",
+        "nurah.ran_off"
+      ],
+      "Forbids": [
+        "nurah.closed",
+        "nurah.trickster.accepted"
+      ],
+      "DelayHours": 48,
+      "Optional": true,
+      "Relationship": "nurah",
+      "Chapters": [
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "ran_off",
+      "Kind": "letter",
+      "Sender": "Nurah"
+    },
+    {
       "Id": "nurah.trickster.after.proofs",
       "Title": "Chapter one, by post",
       "Owner": "Nurah",
@@ -159535,7 +160544,7 @@
           "Choices": [
             {
               "Text": "Continue",
-              "Next": "proofs",
+              "Next": "proofs_ran",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -159548,6 +160557,35 @@
           "Id": "proofs",
           "Speaker": "Nurah",
           "Text": "\"Chapter one. The war from the wrong side, which is the only side worth reading. I've been on both, and one of them had a larva's-eye view.\n\"There is a gap on the first page exactly one name wide, where you go. Fill it in and send it back, if you still think paper does what you tell it. Or leave it blank, and let me decide what you were.\"",
+          "Choices": [
+            {
+              "Text": "[Leave the gap] \"Your book. You decide what I was.\"",
+              "Next": "trusted",
+              "Set": [
+                "nurah.trickster.proofs_seen"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Write your own name in the gap.]",
+              "Next": "signed",
+              "Set": [
+                "nurah.trickster.proofs_seen",
+                "nurah.trickster.cost.signed_proofs"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "proofs_ran",
+          "Speaker": "Nurah",
+          "Text": "\"Chapter one. The war from the wrong side, which is the only side worth reading. I've been on both, and I have written this one on the road, on a pedlar's cart, in the backs of inns where nobody has heard of the Commander and everybody has an opinion.\n\"There is a gap on the first page exactly one name wide, where you go. Fill it in and send it back, if you still think paper does what you tell it. Or leave it blank, and let me decide what you were.\"",
           "Choices": [
             {
               "Text": "[Leave the gap] \"Your book. You decide what I was.\"",
@@ -160082,7 +161120,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}A book came out of the River Kingdoms the spring after the war: the crusade from the wrong side, told by a halfling who had been a slave, a traitor, a prisoner and, for a season, worse. It was banned in several countries, and a bounty was put on its author's head. The inquisitors never found her. They never thought to look in the Commander's house.{/n}\n{n}She had finished the negotiation by herself, on her own terms, with no one's name above hers. The first bound copy reached the Commander wrapped in a sheet of paper with one line on it: \"Now you may read it.\"{/n}",
+          "Text": "{n}A book came out of the River Kingdoms the spring after the war: the crusade from the wrong side, told by a halfling who had been a slave, a traitor and a prisoner, and who had outlived all three. It was banned in several countries, and a bounty was put on its author's head. The inquisitors never found her. They never thought to look in the Commander's house.{/n}\n{n}She had finished the negotiation by herself, on her own terms, with no one's name above hers. The first bound copy reached the Commander wrapped in a sheet of paper with one line on it: \"Now you may read it.\"{/n}",
           "Choices": [
             {
               "Text": "[Read it that night, cover to cover.]",
@@ -160106,7 +161144,7 @@
         {
           "Id": "read",
           "Speaker": "Narrator",
-          "Text": "{n}She arrived at the last page, which is to say at dawn, and found the Commander still reading it. She took the book away, closed it with a snap, and climbed into the Commander's lap to deliver her review of the reader in person. It was a long review, and a thorough one, and she did not trouble to close the door first.{/n}",
+          "Text": "{n}She arrived at the last page, which is to say at dawn, and found the Commander still reading it by a candle burnt to the dish. She took the book out of the Commander's hands, closed it with a snap, and put it face down on the floor, where no author puts a book she loves.{/n}\n{n}\"Chapter eleven,\" she said, \"is wrong about you. I've come to correct it.\" She climbed into the Commander's lap in the reading chair, a knee on either side, ink on her fingers and her hair still wet from the rain she had walked through, and set both small hands flat against the Commander's chest as if pinning down a page in a wind. \"Author's terms. I lead.\" She pulled the laces of the Commander's shirt loose one by one, reading the Commander's face the way she read everything, for the part that would go in the next book, and when the last lace gave she kissed the Commander hard enough to leave ink on both their mouths, and dragged the shirt over the Commander's head, and did not trouble to close the door.{/n}\n{n}The next edition of the book had a new footnote to chapter eleven. It read, in full: \"The author has since conducted further research. The chapter stands.\" Nobody outside the Commander's house understood it, and she refused every letter that asked.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -160138,9 +161176,20 @@
             {
               "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She never managed to remove it: every printer she went to had already been paid to keep it. After a while she stopped trying, and began adding a footnote to it instead, a different one in every edition.",
               "Requires": [
-                "nurah.trickster.cost.ghostwritten"
+                "nurah.trickster.cost.ghostwritten",
+                "nurah.trickster.printer_paid"
               ],
               "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She could have struck it from the forme any day she liked. She never did. Instead she added a footnote to it, a different one in every edition.",
+              "Requires": [
+                "nurah.trickster.cost.ghostwritten"
+              ],
+              "Forbids": [
+                "nurah.trickster.printer_paid"
+              ],
               "AnyGroups": []
             },
             {
@@ -160183,7 +161232,7 @@
         {
           "Id": "went",
           "Speaker": "Narrator",
-          "Text": "{n}She opened her door with the book's twin in her other hand and looked at the Commander's empty hands.{/n} \"You haven't read it.\" {n}She pulled the Commander inside by the sleeve.{/n} \"Good. I'll read you the best parts myself. Slowly. With demonstrations.\"",
+          "Text": "{n}She opened her door with the book's twin in her other hand and looked at the Commander's empty hands.{/n} \"You haven't read it.\" {n}She pulled the Commander inside by the sleeve, kicked the door shut behind them, and backed the Commander up against her writing table until the inkwell rocked.{/n}\n{n}\"Good. I'll read you the best parts myself.\" She climbed onto the table, which made her the taller, opened the book one-handed at a page she had marked with a hair ribbon, and read a sentence about the Commander aloud, slowly, against the Commander's mouth. With her free hand she was already working the buckle of the Commander's belt. When it gave she let the book fall shut on the table behind her, wrapped her legs round the Commander's waist, and pulled the Commander down with her among the loose proofs.{/n}\n{n}In the morning half the proofs were ruined, creased and smeared and one of them torn clean through. She sent the whole sheaf back to the printer anyway, with a note that the author approved every correction on them, and that he was on no account to ask how they had been made.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -160215,9 +161264,20 @@
             {
               "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She never managed to remove it: every printer she went to had already been paid to keep it. After a while she stopped trying, and began adding a footnote to it instead, a different one in every edition.",
               "Requires": [
-                "nurah.trickster.cost.ghostwritten"
+                "nurah.trickster.cost.ghostwritten",
+                "nurah.trickster.printer_paid"
               ],
               "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She could have struck it from the forme any day she liked. She never did. Instead she added a footnote to it, a different one in every edition.",
+              "Requires": [
+                "nurah.trickster.cost.ghostwritten"
+              ],
+              "Forbids": [
+                "nurah.trickster.printer_paid"
+              ],
               "AnyGroups": []
             },
             {
@@ -160313,9 +161373,20 @@
             {
               "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She never managed to remove it: every printer she went to had already been paid to keep it. After a while she stopped trying, and began adding a footnote to it instead, a different one in every edition.",
               "Requires": [
-                "nurah.trickster.cost.ghostwritten"
+                "nurah.trickster.cost.ghostwritten",
+                "nurah.trickster.printer_paid"
               ],
               "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She could have struck it from the forme any day she liked. She never did. Instead she added a footnote to it, a different one in every edition.",
+              "Requires": [
+                "nurah.trickster.cost.ghostwritten"
+              ],
+              "Forbids": [
+                "nurah.trickster.printer_paid"
+              ],
               "AnyGroups": []
             },
             {
@@ -160777,6 +161848,183 @@
       "ForbidOverrides": {
         "camellia.dead": "camellia.trickster.returned"
       }
+    },
+    {
+      "Id": "nurah.trickster.react.camellia_veiled_pardon",
+      "Title": "Camellia's word",
+      "Owner": "Camellia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Camellia",
+          "Text": "{n}Fye brings a folded card to your table without being asked. It smells of lilies, and it was left, he says, by the lady at the far end of the bar, who has still not touched her wine.{/n}\n\"You gave the little traitor a pardon. How merciful of you. I have been dead, darling, so I know exactly what mercy is worth: it is worth what someone is willing to pay to take it back. I do hope nobody makes you an offer for her. I would hate to be outbid.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        }
+      ],
+      "Requires": [
+        "nurah.trickster.cost.ledger_lie",
+        "nurah.trickster.released",
+        "camellia.killed",
+        "camellia.trickster.returned"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "nurah",
+      "Reaction": true,
+      "Chapters": [
+        3,
+        5
+      ],
+      "Kind": "letter",
+      "Remote": true,
+      "Sender": "Camellia"
+    },
+    {
+      "Id": "nurah.trickster.react.camellia_veiled_market",
+      "Title": "Camellia's word",
+      "Owner": "Camellia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Camellia",
+          "Text": "{n}Fye brings a folded card to your table without being asked. It smells of lilies, and it was left, he says, by the lady at the far end of the bar, who has still not touched her wine.{/n}\n\"You bought a soul from that marilith in the Fleshmarkets. The whole bar is saying so, very quietly, with its back to me. You and I have both come back from somewhere we were put, darling. Tell your halfling that the first thing one wants afterwards is to be looked at. The second is to be feared. She will work out the third herself.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        }
+      ],
+      "Requires": [
+        "nurah.trickster.returned",
+        "nurah.trickster.larva_rumour",
+        "camellia.killed",
+        "camellia.trickster.returned"
+      ],
+      "Forbids": [
+        "nurah.dead_camellia"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "nurah",
+      "Reaction": true,
+      "Chapters": [
+        5
+      ],
+      "Kind": "letter",
+      "Remote": true,
+      "Sender": "Camellia"
+    },
+    {
+      "Id": "nurah.trickster.react.camellia_veiled_supper",
+      "Title": "Camellia's word",
+      "Owner": "Camellia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Camellia",
+          "Text": "{n}Fye brings a folded card to your table without being asked. It smells of lilies, and it was left, he says, by the lady at the far end of the bar, who has still not touched her wine.{/n}\n\"You bought my supper back from a marilith. You said she was mine, and then you killed me, and then you bought her back, and now we are all three of us sitting in the same city pretending to be alive. I do not think I have ever been given so many things and had them all taken back. It is... truly terrible. I have ordered a second glass.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        }
+      ],
+      "Requires": [
+        "nurah.trickster.returned",
+        "nurah.trickster.larva_rumour",
+        "nurah.dead_camellia",
+        "camellia.killed",
+        "camellia.trickster.returned"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "nurah",
+      "Reaction": true,
+      "Chapters": [
+        5
+      ],
+      "Kind": "letter",
+      "Remote": true,
+      "Sender": "Camellia"
+    },
+    {
+      "Id": "nurah.trickster.react.camellia_veiled_draft",
+      "Title": "Camellia's word",
+      "Owner": "Camellia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Camellia",
+          "Text": "{n}Fye brings a folded card to your table without being asked. It smells of lilies, and it was left, he says, by the lady at the far end of the bar, who has still not touched her wine.{/n}\n\"Your runaway halfling's pamphlet is on the bar. Someone left it here for me, as a joke, I think. There is an insult to her on the first page, in her own hand. I read it three times. I would simply have eaten her, darling. Your way leaves so much more of her for later.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        }
+      ],
+      "Requires": [
+        "nurah.trickster.cost.ghostwritten",
+        "nurah.ran_off",
+        "camellia.killed",
+        "camellia.trickster.returned"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "nurah",
+      "Reaction": true,
+      "Chapters": [
+        3,
+        5
+      ],
+      "Kind": "letter",
+      "Remote": true,
+      "Sender": "Camellia"
     },
     {
       "Id": "kiana.trickster.aftermath.letter_waited",
@@ -197713,6 +198961,87 @@
       "Sender": "Targona"
     },
     {
+      "Id": "targona.trickster.dead.late_crypt",
+      "Title": "The crypt under the chapel",
+      "Owner": "Targona",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The chaplains of the Hand keep a crypt under the chapel for knights whose orders have not yet said where they are to be buried. Since Areelu's laboratory they have kept an angel in it, on a bier, under a Mendevian shroud, waiting for Heaven to answer a letter about her. Heaven has not answered.{/n}\n{n}You have come back up out of the Abyss with the war nearly over and her name still on a list of the dead. The crusade's last scroll of raise dead is locked in the chaplains' own reliquary, promised to the first knight of the Hand who falls at the Threshold.{/n}",
+          "Choices": [
+            {
+              "Text": "[Take the knight's scroll] \"Open the crypt. I'll read it myself, and you'll say nothing.\"",
+              "Next": "raise",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -500
+              }
+            },
+            {
+              "Text": "\"Let her rest.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "raise",
+          "Speaker": "Narrator",
+          "Text": "{n}The chaplain-captain opens the reliquary with a face like a shut door. Somewhere in the Threshold's first assault a knight of the Hand will fall with no scroll kept for him, and every chaplain in the chapel knows whose name to curse for it.{/n}\n{n}In the crypt you turn back the shroud. She looks as she did on the laboratory floor. The crypt is cold, and the chaplains have been careful with her. You read the scroll over her by one lamp, with your palm flat on her heart and her brother's light in it, and the chaplain-captain stands at the stair with his back to you and prays aloud for the knight who will not have it. Coming back from the dead is an ordeal. The breath goes into her like a blade.{/n}",
+          "Choices": [
+            {
+              "Text": "[Stay until she breathes.]",
+              "Next": null,
+              "Set": [
+                "targona.trickster.primed",
+                "targona.trickster.cost.late",
+                "targona.trickster.cost.raised_from_the_crypt"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "targona.dead_lab"
+      ],
+      "Forbids": [
+        "targona.trickster.primed",
+        "targona.trickster.returned"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "targona",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "targona.dead_lab",
+      "Kind": "letter",
+      "Sender": "Targona"
+    },
+    {
       "Id": "targona.trickster.dead.one_soul",
       "Title": "Read back in",
       "Owner": "Targona",
@@ -197723,7 +199052,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Three days after Areelu's laboratory, a runner comes up from the field infirmary behind the quartermaster's stores.{/n}",
+          "Text": "{n}A runner comes up from the field infirmary behind the quartermaster's stores, out of breath, with his cap in his hand.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -197732,7 +199061,8 @@
               "Requires": [],
               "Forbids": [
                 "targona.trickster.cost.raised_the_hard_way",
-                "targona.trickster.cost.raised_openly"
+                "targona.trickster.cost.raised_openly",
+                "targona.trickster.cost.raised_from_the_crypt"
               ],
               "Abort": false
             },
@@ -197744,7 +199074,8 @@
                 "targona.trickster.cost.raised_openly"
               ],
               "Forbids": [
-                "targona.trickster.cost.raised_the_hard_way"
+                "targona.trickster.cost.raised_the_hard_way",
+                "targona.trickster.cost.raised_from_the_crypt"
               ],
               "Abort": false
             },
@@ -197754,6 +199085,16 @@
               "Set": [],
               "Requires": [
                 "targona.trickster.cost.raised_the_hard_way"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "crypt",
+              "Set": [],
+              "Requires": [
+                "targona.trickster.cost.raised_from_the_crypt"
               ],
               "Forbids": [],
               "Abort": false
@@ -197797,6 +199138,22 @@
           "Id": "cold",
           "Speaker": "Narrator",
           "Text": "{n}You remember the chapel exactly: the scroll, the breath going into her like a blade, the chaplain praying with his eyes shut. She did not wake while you were there. The priests carried her down to the infirmary on a litter, as one more wounded thing.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "news",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "crypt",
+          "Speaker": "Narrator",
+          "Text": "{n}You remember the crypt exactly: the cold, the lamp, the shroud turned back, the second scroll ready in your other hand in case the first failed. It did not fail. The breath went into her like a blade after all those weeks, and she did not wake while you were there. The Hand's chaplains carried her up the crypt stair on a bier and down to the infirmary on a litter, and said nothing to anyone, as they had been paid to.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -197939,7 +199296,7 @@
         {
           "Id": "truth",
           "Speaker": "Targona",
-          "Text": "\"Yes. And now Heaven will hear that you said so without being asked.\" {n}She wrings out the cloth.{/n}\n\"My brother always said the truth was the hardest gift to give. He was wrong. It is the second hardest. The hardest is forgiving it.\" {n}She looks at the two unblessed soldiers, and then at you.{/n} \"I forgive you, Commander. For those men's sake I will not pretend it is easy.\"",
+          "Text": "\"Yes. And now Heaven will hear that you said so without being asked.\" {n}She wrings out the cloth, and her hands are not quite steady.{/n}\n\"I still see your face over me when I close my eyes. I saw it at the fourth bell last night, with this man's fever in my hands, and I had to stop and pray before I could go on.\" {n}She looks at the two unblessed soldiers, and then at you.{/n}\n\"Iomedae, give me the strength to mean this. I forgive you, Commander. Now hold his arm still while I bind it. For those men's sake I will not pretend it is easy.\"",
           "Choices": [
             {
               "Text": "[Promise] \"I'll try.\"",
@@ -198106,6 +199463,112 @@
       "InteractionHub": "targona.presence"
     },
     {
+      "Id": "targona.trickster.after.the_washing",
+      "Title": "Wash him with me",
+      "Owner": "Targona",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Targona?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Targona",
+          "Text": "{n}The man on the end cot died at the fourth bell. Targona has drawn the blanket up over his face and set a basin of warm water and a folded length of linen on the stool beside him. She does not look up when you come in.{/n}\n\"His company is on the east wall and the chaplains are with them. In Iomedae's orders a knight is washed for burial by his comrades, so that he goes to her clean and not alone. He has no comrades here.\" {n}She holds out the second cloth. Her hand is steady; she has made it steady.{/n}\n\"Help me, Commander.\"",
+          "Choices": [
+            {
+              "Text": "[Kneel and take the cloth.]",
+              "Next": "wash",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I'll send for a chaplain.\"",
+              "Next": "chaplain",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "wash",
+          "Speaker": "Narrator",
+          "Text": "{n}You wash him together, the way she shows you: the face first, then the hands, then the rest, and his ring left on. She sings under her breath, not a hymn you know. Twice she stops singing to watch your hands, the hands she last saw over her in Areelu's laboratory, as they move on a body that cannot fight them off, and twice she starts again.{/n}\n{n}When he is clean she folds his arms and lays the linen over him, and then she takes your wet hands in hers and dries them herself, finger by finger, longer than drying takes.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "after",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "after",
+          "Speaker": "Targona",
+          "Text": "\"I wanted to see what they did near a body that could not stop them.\" {n}She does not let go.{/n} \"They were careful. You closed his eyes before I asked.\"\n\"I have been forgiving you for a week, Commander, because I said I would. Tonight is the first time I have wanted to know anything about you.\" {n}Her thumb moves once over your knuckles.{/n} \"What do these do, when there is no war in them? No. Do not tell me now. Come back when the ward is quiet, and sit with whoever is dying, and I will watch.\"",
+          "Choices": [
+            {
+              "Text": "[Let her keep your hands a moment longer.]",
+              "Next": null,
+              "Set": [
+                "targona.trickster.washed_the_dead"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "chaplain",
+          "Speaker": "Targona",
+          "Text": "\"They are on the wall, and he is here.\" {n}She takes the cloth back.{/n}\n\"Go, then. I will wash him myself. I have done it alone before.\" {n}She turns down the blanket, and does not watch you leave.{/n}",
+          "Choices": [
+            {
+              "Text": "[Leave her to it.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Targona"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "targona.trickster.forgiven"
+      ],
+      "Forbids": [
+        "targona.closed",
+        "targona.committed",
+        "targona.trickster.washed_the_dead",
+        "targona.trickster.met"
+      ],
+      "DelayHours": 48,
+      "Optional": true,
+      "Relationship": "targona",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "81297c673b63b60448ef88a10db6bc78",
+      "InteractionHub": "targona.presence"
+    },
+    {
       "Id": "targona.trickster.free.spent_light",
       "Title": "The last wand",
       "Owner": "Targona",
@@ -198204,7 +199667,7 @@
       ],
       "Forbids": [
         "targona.trickster.cost.wand_unspent",
-        "targona.ran_treatment_completed",
+        "targona.trickster.parent_romanced",
         "targona.dead_lab"
       ],
       "DelayHours": 0,
@@ -198241,7 +199704,9 @@
               "Requires": [
                 "targona.trickster.told_in_lab"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "targona.ran_treatment_completed"
+              ],
               "Abort": false
             },
             {
@@ -198250,8 +199715,35 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "targona.trickster.told_in_lab"
+                "targona.trickster.told_in_lab",
+                "targona.ran_treatment_completed"
               ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "greet_treated",
+              "Set": [],
+              "Requires": [
+                "targona.ran_treatment_completed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "greet_treated",
+          "Speaker": "Targona",
+          "Text": "\"Commander. Greetings, my rescuer, and my physician.\" {n}She does not smile.{/n}\n\"You have treated this wing, and argued with it, and sat with me while it was dressed. I thought I knew what kind of soul you were. Then someone worked these rows all night with a healer's wand and would not stop, and I felt it in the halls of Heaven like a hand on my shoulder, and I came down to see whether it was the same one.\"",
+          "Choices": [
+            {
+              "Text": "[Explain] \"They were dying. I had a light.\"",
+              "Next": "why",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -198555,7 +200047,7 @@
       "InteractionHub": "targona.presence",
       "RequiresAnyGroups": [
         [
-          "targona.trickster.forgiven",
+          "targona.trickster.washed_the_dead",
           "targona.trickster.met"
         ]
       ]
@@ -198726,6 +200218,14 @@
               "AnyGroups": []
             },
             {
+              "Text": "She came back through the chaplains' crypt, on the scroll the Hand had kept for its own. A knight of the Hand fell at the Threshold with no scroll kept for him. She learned his name, and said it at every compline for the rest of her life, before the Commander's.",
+              "Requires": [
+                "targona.trickster.cost.raised_from_the_crypt"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
               "Text": "The Commander kept the promise made in the quiet ward. It was harder than any vow they had broken, and Targona knew it, and said so, once.",
               "Requires": [
                 "targona.trickster.cost.light_sealed"
@@ -198752,7 +200252,8 @@
       "Forbids": [
         "targona.committed",
         "targona.closed",
-        "targona.trickster.declined"
+        "targona.trickster.declined",
+        "sacrifice"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -198762,7 +200263,10 @@
           "targona.trickster.forgiven",
           "targona.trickster.met"
         ]
-      ]
+      ],
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      }
     },
     {
       "Id": "targona.trickster.epilogue.declined",
@@ -198859,6 +200363,14 @@
               "AnyGroups": []
             },
             {
+              "Text": "She came back through the chaplains' crypt, on the scroll the Hand had kept for its own. A knight of the Hand fell at the Threshold with no scroll kept for him. She learned his name, and said it at every compline for the rest of her life, before the Commander's.",
+              "Requires": [
+                "targona.trickster.cost.raised_from_the_crypt"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
               "Text": "The Commander kept the promise made in the quiet ward. It was harder than any vow they had broken, and Targona knew it, and said so, once.",
               "Requires": [
                 "targona.trickster.cost.light_sealed"
@@ -198884,7 +200396,8 @@
       ],
       "Forbids": [
         "targona.closed",
-        "targona.trickster.declined"
+        "targona.trickster.declined",
+        "sacrifice"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -198896,8 +200409,80 @@
         ]
       ],
       "ForbidOverrides": {
-        "targona.trickster.declined": "targona.committed"
+        "targona.trickster.declined": "targona.committed",
+        "sacrifice": "trickster.commander_back"
       }
+    },
+    {
+      "Id": "targona.trickster.epilogue.sacrifice",
+      "Title": "The name over the door",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander did not come back from the Threshold. Targona heard it in the infirmary, from a runner who did not know what he was telling her, and she finished binding the arm in front of her before she sat down.{/n}\n{n}She asked Heaven for no more furloughs, and Heaven, for once, did not argue. She kept the ward in Drezen with the Commander's name over the door until the last cot was folded, and prayed for the Commander at every compline, and when the Hand asked her where she wished to be sent next, she said: wherever the dying are, and nobody sits with them.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona",
+          "Paragraphs": [
+            {
+              "Text": "Heaven's lists still name her among the dead of Areelu's laboratory. Targona never asked to have the entry struck. She said it was the most honest thing anyone had written about her, and that the angel on that list had earned her rest.",
+              "Requires": [
+                "targona.trickster.cost.left_for_dead"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She came back the hard way, through the chapel and the raise dead scroll, and it took her a year to lift a full basin again. Four volunteers went into Areelu's ruin for her body. She learned their names, and tended the one who lost his arm there until the day he died, old, in his bed.",
+              "Requires": [
+                "targona.trickster.cost.raised_the_hard_way"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She came back through the chaplains' crypt, on the scroll the Hand had kept for its own. A knight of the Hand fell at the Threshold with no scroll kept for him. She learned his name, and said it at every compline for the rest of her life, before the Commander's.",
+              "Requires": [
+                "targona.trickster.cost.raised_from_the_crypt"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "sacrifice"
+      ],
+      "Forbids": [
+        "targona.closed",
+        "targona.trickster.declined",
+        "trickster.commander_back",
+        "lastcall.active"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "targona",
+      "RequiresAnyGroups": [
+        [
+          "targona.committed",
+          "targona.trickster.late_committed"
+        ]
+      ]
     },
     {
       "Id": "targona.lastcall.page",
@@ -199097,7 +200682,99 @@
         }
       ],
       "Requires": [
-        "targona.trickster.in_drezen"
+        "targona.trickster.in_drezen",
+        "targona.trickster.cost.wand_unspent"
+      ],
+      "Forbids": [
+        "ember_dead",
+        "ember_gone",
+        "targona.trickster.cost.charges_spent"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "targona",
+      "Reaction": true,
+      "Chapters": [
+        3,
+        5
+      ],
+      "AnswerLists": [
+        "f2a35965e9bc601449498bd022b04d9d"
+      ]
+    },
+    {
+      "Id": "targona.trickster.react.ember_empty_wands",
+      "Title": "Ember's word",
+      "Owner": "Ember",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"What have you been up to?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Ember",
+          "Text": "\"There are three empty wands on a nail by the angel's door. She says you used them all up in one night, on people you didn't know.\"\n{n}Ember touches the nail with one finger, very gently, as if it might still be warm.{/n}\n\"She keeps them there so nobody forgets. I think that's a nice thing to keep. Most people keep the full ones.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "targona.trickster.in_drezen",
+        "targona.trickster.cost.charges_spent"
+      ],
+      "Forbids": [
+        "ember_dead",
+        "ember_gone"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "targona",
+      "Reaction": true,
+      "Chapters": [
+        3,
+        5
+      ],
+      "AnswerLists": [
+        "f2a35965e9bc601449498bd022b04d9d"
+      ]
+    },
+    {
+      "Id": "targona.trickster.react.ember_bandages",
+      "Title": "Ember's word",
+      "Owner": "Ember",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"What have you been up to?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Ember",
+          "Text": "\"I've been rolling bandages for the angel with the sad wing. She showed me how. You roll them tight so they don't come undone in the bag.\"\n{n}Ember holds up a finished roll, a little lopsided, and looks at it with great seriousness.{/n}\n\"She says she was dead for a while. She doesn't seem to mind talking about it. She minds a lot about the bandages being tight.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "targona.trickster.in_drezen",
+        "targona.trickster.returned"
       ],
       "Forbids": [
         "ember_dead",
@@ -380104,8 +381781,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -383592,6 +385269,36 @@
       "Dialog": "hub",
       "Greeting": "{n}The halfling in the chaplains' grey shift is sitting on the steps with a parcel of paper on her knees. She is eating an apple with enormous concentration, the way people do who have recently had no mouth.{/n}"
     },
+    "nurah.presence.cell": {
+      "Unit": "f999fc37ddb225640b7f98c0a05d6948",
+      "Area": "2570015799edf594daf2f076f2f975d8",
+      "Mode": "reuse-native",
+      "At": {
+        "Locator": "336980c3-ad90-4633-aad9-4ef3f40c13f6",
+        "Offset": [
+          0.0,
+          0.0
+        ]
+      },
+      "Requires": [
+        "trickster.ever",
+        "nurah.prison"
+      ],
+      "Forbids": [
+        "nurah.closed",
+        "nurah.complete",
+        "nurah.ran_off",
+        "nurah.trickster.returned",
+        "nurah.dead_drezen",
+        "nurah.dead_camellia",
+        "nurah.killing_mechanism",
+        "nurah.parent_romance"
+      ],
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Dialog": "hub",
+      "Greeting": "{n}The cell at the end of the gaol row has not been swept since the army went down into the Abyss. A halfling sits cross-legged on the bunk with her back to the wall, and beside her, scratched into the plaster in neat rows of five, is a tally of every day since it marched.{/n}"
+    },
     "kiana.presence": {
       "Unit": "180b0eaa5dce387458d2ebf0ee943985",
       "Area": "2570015799edf594daf2f076f2f975d8",
@@ -384279,6 +385986,16 @@
         "vellexia.trickster.returned"
       ]
     ],
+    "nurah.trickster.printer_paid": [
+      [
+        "nurah.trickster.cost.printer_paid"
+      ],
+      [
+        "nurah.trickster.cost.ghostwritten",
+        "nurah.trickster.cost.late",
+        "nurah.ran_off"
+      ]
+    ],
     "minagho_chivarro.trickster.chivarro_cellar": [
       [
         "chivarro.removed"
@@ -384334,6 +386051,12 @@
       [
         "trickster.ever",
         "hepzamirah.trickster.courier_seen"
+      ]
+    ],
+    "targona.trickster.parent_romanced": [
+      [
+        "targona.ran_treatment_completed",
+        "targona.ran_romance"
       ]
     ],
     "camellia.kill_returned": [
