@@ -109460,7 +109460,7 @@
         {
           "Id": "minagho",
           "Speaker": "Minagho",
-          "Text": "{n}Minagho does not answer for a moment. Chivarro studies her, then reaches for the tray of stones.{/n}\n\"I have been meaning to return this,\" she says. \"I can be gone for an hour. If I come back to find you have resumed discussing the factor, I shall be offended on behalf of the evening.\"\n{n}After Chivarro leaves, Minagho moves to the seat beside you.{/n}\n\"She makes leaving sound like a threat. It is one of her better accomplishments.\"\n\"And what do you want?\"\n\"You. Here. Paying attention to something that is not about to kill either of us.\"\n{n}She rests a hand against your cheek. Her thumb traces a short, deliberate line before she lets her hand fall.{/n}\n\"If you have changed your mind since we last spoke about this, say so. If you haven't, you may still say what you want tonight. I have no intention of spending the hour pretending I can read you perfectly.\"",
+          "Text": "{n}Minagho does not answer for a moment. Chivarro studies her, then reaches for the tray of stones.{/n}\n\"I have been meaning to return this,\" she says. \"I can be gone for an hour. If I come back to find you have resumed discussing the factor, I shall be offended on behalf of the evening.\"\n{n}After Chivarro leaves, Minagho moves to the seat beside you.{/n}\n\"She makes leaving sound like a threat. It is one of her better accomplishments.\"\n\"And what do you want?\"\n\"You. Here. Paying attention to something that is not about to kill either of us.\"\n{n}She rests a hand against your cheek, and her thumb traces a short, deliberate line down to the corner of your mouth and presses there, the way a buyer presses fruit.{/n}\n\"One hour. She will time it to the grain of sand. I have waited for this through two cities and a demon lord's patience, and I am not going to spend it watching you think. Kiss me, or go and help her carry the tray.\"",
           "Choices": [
             {
               "Text": "\"Kiss me.\"",
@@ -109484,7 +109484,7 @@
         {
           "Id": "minagho_kiss",
           "Speaker": "Narrator",
-          "Text": "{n}Minagho leans close enough that her hair brushes your cheek, then stops.{/n}\n\"You say that very confidently. Has someone been encouraging you?\"\n\"You have been trying for most of the evening.\"\n\"Trying?\"\n{n}That earns you the kiss. Her hand tightens at your collar; the little triumphant sound she makes when you draw her closer is almost a laugh. She has forgotten the elegant position she meant to maintain. One knee strikes the table. A stone from the abandoned game falls, and she catches it without looking away from you.{/n}\n\"A witness. We should dispose of it.\"\n{n}You take the stone from her fingers and put it beside the others. When you turn back, the levity has thinned. She is waiting, mouth slightly parted, as if your returning were the uncertain part.\nYou kiss her again. This time she lets the waiting show before answering it.\nThe rest of the hour grows private. Later she steals your place on the cushion while you reach for the wine, then complains when you insist on sharing it. Her head settles against you halfway through the complaint.{/n}\n\"Next time, two hours. Chivarro negotiated very poorly on my behalf.\"",
+          "Text": "{n}Minagho leans close enough that her hair brushes your cheek, then stops.{/n}\n\"You say that very confidently. Has someone been encouraging you?\"\n\"You have been trying for most of the evening.\"\n\"Trying?\"\n{n}That earns you the kiss. Her hand tightens at your collar; the little triumphant sound she makes when you draw her closer is almost a laugh. She has forgotten the elegant position she meant to maintain. One knee strikes the table. A stone from the abandoned game falls, and she catches it without looking away from you.{/n}\n\"A witness. We should dispose of it.\"\n{n}You take the stone from her fingers and put it beside the others. When you turn back, the levity has thinned. She is waiting, mouth slightly parted, as if your returning were the uncertain part.\nYou kiss her again. This time she lets the waiting show before answering it, and then answers it all at once. She shoves the tray off the couch with her heel, stones and all, drags her dress off one shoulder and then the other without breaking the kiss, and climbs into your lap with a knee either side of your hips, pulling your hands up the bare length of her back. \"One hour,\" she says into your mouth, already working at your belt. \"Do not waste it being gentle.\"\nAfterwards she steals your place on the cushion while you reach for the wine, then complains when you insist on sharing it. Her head settles against you halfway through the complaint.{/n}\n\"Next time, two hours. Chivarro negotiated very poorly on my behalf.\"",
           "Choices": [
             {
               "Text": "\"Yes. Another hour, when we both want it.\"",
@@ -109523,7 +109523,7 @@
         {
           "Id": "chivarro",
           "Speaker": "Chivarro",
-          "Text": "\"I do.\"\n{n}She moves the empty tray away so you can sit close without balancing it between you. Minagho watches the two of you for a moment, then rises.{/n}\n\"I am going to discover whether the lower room still has anything worth drinking. If it does, I shall bring some back. If it doesn't, you will hear my opinion from here.\"\n{n}Chivarro waits until the door has closed.{/n}\n\"She can be considerate with an extraordinary amount of noise.\"\n\"Does this trouble you?\"\n\"Her leaving us an hour? No. The possibility that you will spend it asking me to explain her? Very much.\"\n{n}Her smile takes the sting out of the answer without withdrawing it.{/n}\n\"Ask me something you want to know about me. Or tell me what you want to do with this distance. I have left you very little of it.\"",
+          "Text": "\"I do.\"\n{n}She moves the empty tray away so you can sit close without balancing it between you. Minagho watches the two of you for a moment, then rises.{/n}\n\"I am going to discover whether the lower room still has anything worth drinking. If it does, I shall bring some back. If it doesn't, you will hear my opinion from here.\"\n{n}Chivarro waits until the door has closed.{/n}\n\"She can be considerate with an extraordinary amount of noise.\"\n\"Does this trouble you?\"\n\"Her leaving us an hour? No. The possibility that you will spend it asking me to explain her? Very much.\"\n{n}Her smile takes the sting out of the answer without withdrawing it.{/n}\n\"I have sold a thousand evenings like this one to other people, and I know exactly how every one of them begins. Surprise me. I have left you very little room to do it in.\"",
           "Choices": [
             {
               "Text": "\"I would like to kiss you.\"",
@@ -109547,7 +109547,7 @@
         {
           "Id": "chivarro_kiss",
           "Speaker": "Chivarro",
-          "Text": "\"Yes. Come here.\"\n{n}She meets you halfway. Her hand rests at the back of your neck, firm enough that you feel the decision in it. When you separate, she remains close, studying your answer before asking for another kiss.\nYou give it. This time she lets you set the pace. There is a quiet pleasure in the way she follows it, then a pleased, unmistakable insistence when she asks for something of her own.\nThe hour belongs to both of you. You speak when words are needed and stop when either asks. When Minagho returns and announces that the wine is appalling, Chivarro laughs against your shoulder before sitting up.{/n}\n\"Then leave it outside. I would like to preserve my opinion of the evening.\"",
+          "Text": "\"Yes. Come here.\"\n{n}She meets you halfway. Her hand rests at the back of your neck, firm enough that you feel the decision in it. When you separate, she remains close, studying your answer before asking for another kiss.\nYou give it. She lets you lead for exactly as long as it amuses her, and then it stops amusing her: she pushes you down along the couch with one palm flat on your chest, unlaces her bodice with the other hand without looking at it, a madam's quick, practised fingers, and lowers herself over you until her loosened hair closes around both your faces like a curtain. \"I have arranged this for other people all my life,\" she murmurs, settling her weight across your hips. \"This one I am arranging for me.\"\nMuch later, when Minagho returns and announces through the door that the wine is appalling, Chivarro laughs against your shoulder before sitting up.{/n}\n\"Then leave it outside. I would like to preserve my opinion of the evening.\"",
           "Choices": [
             {
               "Text": "[Ask Chivarro for another evening together.]",
@@ -109588,7 +109588,7 @@
         {
           "Id": "together",
           "Speaker": "Chivarro",
-          "Text": "\"I would want to be here because you want me, and because I want you. She already knows why I want her.\"\n{n}Minagho lifts an amused brow.{/n}\n\"I would tolerate hearing it again.\"\n\"Later. You have an answer of your own to give.\"\n{n}Minagho reaches for your hand.{/n}\n\"I want the evening. I want to see what makes you laugh when she has finished pretending to be severe. And I want her to stop looking at your mouth long enough to admit she has been doing it.\"\n\"I thought I had been admirably clear,\" Chivarro says.\n{n}She offers you her hand as well. Neither pulls you toward the other.{/n}\n\"There is room,\" she says. \"And there is time to say what you want. This evening need not become every evening. Nor does it require you to empty the rest of your life.\"",
+          "Text": "\"I would want to be here because you want me, and because I want you. She already knows why I want her.\"\n{n}Minagho lifts an amused brow.{/n}\n\"I would tolerate hearing it again.\"\n\"Later. You have an answer of your own to give.\"\n{n}Minagho reaches for your hand.{/n}\n\"I want the evening. I want to see what makes you laugh when she has finished pretending to be severe. And I want her to stop looking at your mouth long enough to admit she has been doing it.\"\n\"I thought I had been admirably clear,\" Chivarro says.\n{n}She offers you her hand as well. Neither pulls you toward the other.{/n}\n\"There is room,\" she says. \"There has always been room. She simply never learned to share a cushion without drawing blood over it.\"",
           "Choices": [
             {
               "Text": "\"I want to kiss each of you, and stay together tonight.\"",
@@ -109612,7 +109612,7 @@
         {
           "Id": "together_kiss",
           "Speaker": "Narrator",
-          "Text": "{n}Chivarro leans toward you and asks for the first kiss. Minagho watches with an attention that makes Chivarro smile against your mouth. When you turn to Minagho, she catches your chin with two fingers.{/n}\n\"I refuse to be compared on an inadequate sample.\"\n{n}She makes her case thoroughly. Chivarro's laugh is close to your ear. Then Chivarro draws Minagho toward her, and for a moment you see how little of their language requires you to translate it: a lifted hand, a familiar impatient look, the kiss that spoils the look.\nMinagho reaches back for you before they part.{/n}\n\"Do not become a spectator. She charges for those.\"\n\"You still owe me for the game,\" Chivarro says.\n{n}She gathers the stones and puts them safely on the floor. Minagho accuses her of planning this rearrangement from the beginning. Chivarro does not deny it. Instead she holds out both hands, one to each of you.\nTheir rivalry becomes warmer and more absurd as the night goes on. Minagho can distract Chivarro from almost anything until Chivarro murmurs something in her ear and leaves her, astonishingly, without an answer. You ask what she said.{/n}\n\"Something she asked me to repeat,\" Chivarro says.\n{n}Minagho pulls her close before she can prove it.\nWhen the lamps are low, Chivarro discovers that Minagho has kept the last sugared plum hidden in her hand all evening. The three-way argument over its division ends with none of you remembering who won.{/n}",
+          "Text": "{n}Chivarro leans toward you and asks for the first kiss. Minagho watches with an attention that makes Chivarro smile against your mouth. When you turn to Minagho, she catches your chin with two fingers.{/n}\n\"I refuse to be compared on an inadequate sample.\"\n{n}She makes her case thoroughly. Chivarro's laugh is close to your ear. Then Chivarro draws Minagho toward her, and for a moment you see how little of their language requires you to translate it: a lifted hand, a familiar impatient look, the kiss that spoils the look.\nMinagho reaches back for you before they part.{/n}\n\"Do not become a spectator. She charges for those.\"\n\"You still owe me for the game,\" Chivarro says.\n{n}She gathers the stones and puts them safely on the floor. Minagho accuses her of planning this rearrangement from the beginning. Chivarro does not deny it. Instead she holds out both hands, one to each of you, and when you take them she pulls.\nMinagho is already behind you, unhooking your collar with her teeth. Chivarro's dress comes off over her head in one practised motion; Minagho's does not so much come off as tear, and she does not care. Between them they bear you down onto the cushions, Chivarro astride your hips with her hands braced on your chest, Minagho's mouth at your throat and her hand sliding lower, and the last lamp but one goes over when somebody's foot finds it.\nMuch later, by the one lamp left, Chivarro discovers that Minagho has kept the last sugared plum hidden in her hand all evening. The three-way argument over its division ends with none of you remembering who won.{/n}",
           "Choices": [
             {
               "Text": "[Stay through the quiet end of the evening.]",
@@ -110790,7 +110790,7 @@
           "Text": "\"Company while the light lasts. Then whatever we agree before it goes.\"\n{n}She gives you a cup. The tea is too strong. She notices your first sip and removes the leaves, which have been steeping throughout your conversation.{/n}\n\"I could pretend I prefer it this way.\"\n\"Do you?\"\n\"No. Fortunately I invited someone who has already seen me make a more expensive mistake.\"\n{n}She dilutes both cups. The small failure seems to make the room easier to inhabit.\nFor a while you speak about the rehearsal. Chivarro is pleased that Sivane kept the participant's refusal in the scene. She is less pleased that the performer has begun treating every correction as a test of independence. You ask whether she has told her that.{/n}\n\"Tomorrow. Tonight I should like an hour without another woman discovering how much I need her to be brilliant.\"\n{n}Chivarro sits beside you, leaving a little space.{/n}",
           "Choices": [
             {
-              "Text": "\"May I put my arm around you?\"",
+              "Text": "[Put your arm around her.]",
               "Next": "close",
               "Set": [],
               "Requires": [
@@ -110800,7 +110800,7 @@
               "Abort": false
             },
             {
-              "Text": "\"I would like this to be a private date, if you want that too.\"",
+              "Text": "\"Forget the view. Come here.\"",
               "Next": "new_interest",
               "Set": [],
               "Requires": [],
@@ -110823,7 +110823,7 @@
         {
           "Id": "close",
           "Speaker": "Chivarro",
-          "Text": "\"Yes. I was beginning to wonder whether the space I left was too large.\"\n{n}She settles against you. The position is comfortable until one of the couch's cushions gives way beneath her elbow. She pauses, considers the insult, and moves the cushion to the floor.{/n}\n\"That will be the first thing I replace if the performance earns anything.\"\n\"Before the view?\"\n\"I like the view. Do listen.\"\n{n}You kiss her when she turns toward you. She draws you closer, then breaks the kiss long enough to ask whether you are comfortable. When you tell her the other cushion is attempting the same betrayal, she laughs and gets up to fetch a folded blanket.\nThe remedy works. You have no audience to appreciate the result and no need to make the interruption elegant.{/n}",
+          "Text": "\"Finally. I was beginning to think I had priced that space too high.\"\n{n}She settles against you. The position is comfortable until one of the couch's cushions gives way beneath her elbow. She pauses, considers the insult, and moves the cushion to the floor.{/n}\n\"That will be the first thing I replace if the performance earns anything.\"\n\"Before the view?\"\n\"I like the view. Do listen.\"\n{n}You kiss her when she turns toward you. She draws you closer, then breaks the kiss long enough to inform the couch that it is on notice. When the other cushion attempts the same betrayal, she laughs and gets up to fetch a folded blanket.\nThe remedy works. You have no audience to appreciate the result and no need to make the interruption elegant.{/n}",
           "Choices": [
             {
               "Text": "\"I would like to stay close like this for the evening.\"",
@@ -110834,7 +110834,7 @@
               "Abort": false
             },
             {
-              "Text": "\"I want to stay later. Tell me what you would enjoy.\"",
+              "Text": "\"I'm staying later.\"",
               "Next": "later",
               "Set": [],
               "Requires": [],
@@ -110847,7 +110847,7 @@
         {
           "Id": "new_interest",
           "Speaker": "Chivarro",
-          "Text": "{n}She considers the question without moving closer merely to make the answer easier.{/n}\n\"Yes. I have been wondering whether you would ask because you wanted it, or because we had spent enough pleasant hours together that you thought it was expected.\"\n\"I want it.\"\n\"Good. Then I can answer the question you meant. I would like you to stay beside me. I would like to find out how you kiss when neither of us has spent the evening performing certainty.\"\n{n}She offers her hand. You take it and move closer. When you ask if she wants the kiss now, she smiles.{/n}\n\"Very much.\"\n{n}The kiss begins carefully and becomes less cautious when you both return to it. Chivarro keeps your hand in hers afterward. She looks pleased in a way she has not arranged for anyone else to notice.{/n}",
+          "Text": "{n}She does not move closer to make it easier for you. She looks you over the way she once looked at a new face at the top of her stair: pricing it, and enjoying the pricing.{/n}\n\"I have been wondering how long you would sit there being tasteful.\"\n{n}She holds out her hand, palm up, the gesture of a madam naming a sum.{/n} \"Come and find out what I cost when I am not charging.\"\n{n}You take the hand and she pulls, not hard, only enough. The kiss begins as a negotiation and stops being one when she catches your lower lip between her teeth. Chivarro keeps your hand in hers afterward. She looks pleased in a way she has not arranged for anyone else to notice.{/n}",
           "Choices": [
             {
               "Text": "[Keep the date gentle and make time for another.]",
@@ -110886,7 +110886,7 @@
         {
           "Id": "later",
           "Speaker": "Narrator",
-          "Text": "{n}Chivarro looks at your mouth, then sets your cup deliberately out of reach.{/n}\n\"First, I would enjoy your undivided attention. You have been watching the curtain as though you expect an ambush.\"\n\"Minagho?\"\n\"Would knock. Once. For the pleasure of making me hear it.\"\n{n}The thought amuses her until your hand reaches her waist. For a heartbeat her clever answer disappears. You have seen her recover from threats more quickly.\nShe catches your wrist and draws you closer.{/n}\n\"There. You have discovered an effective interruption. Use it again.\"\n{n}You kiss her. The couch complains beneath the change in weight, and she closes her eyes with an expression of profound disgust.{/n}\n\"If you laugh, I shall remember it.\"\n\"For how long?\"\n\"Stay and find out.\"\n{n}You do. She lights one lamp, leaving the other cold, and hangs her outer robe on the chair she warned you not to trust. Its legs hold. When she returns, her composure is still there in the lifted chin, the measured approach. Then she bends to kiss you and forgets the line she had clearly prepared.\nMuch later, she points at the surviving chair.{/n}\n\"That one has earned another week.\"\n{n}You suggest the couch was equally obliging. Chivarro presses her lips to your wrist before answering.{/n}\n\"You have a weakness for damaged things that make an unreasonable amount of noise. I shall have to watch that.\"",
+          "Text": "{n}Chivarro looks at your mouth, then sets your cup deliberately out of reach.{/n}\n\"First, I would enjoy your undivided attention. You have been watching the curtain as though you expect an ambush.\"\n\"Minagho?\"\n\"Would knock. Once. For the pleasure of making me hear it.\"\n{n}The thought amuses her until your hand reaches her waist. For a heartbeat her clever answer disappears. You have seen her recover from threats more quickly.\nShe catches your wrist and draws you closer.{/n}\n\"There. You have discovered an effective interruption. Use it again.\"\n{n}You kiss her. The couch complains beneath the change in weight, and she closes her eyes with an expression of profound disgust.{/n}\n\"If you laugh, I shall remember it.\"\n\"For how long?\"\n\"Stay and find out.\"\n{n}You do. She lights one lamp, leaving the other cold, and hangs her outer robe on the chair she warned you not to trust. Its legs hold. When she returns, her composure is still there in the lifted chin, the measured approach. Then she bends to kiss you and forgets the line she had clearly prepared, pushes you down onto the complaining couch, and straddles you there with her knees sunk into the blanket, working your shirt open from the collar down, one button to a breath.\nMuch later, she points at the surviving chair.{/n}\n\"That one has earned another week.\"\n{n}You suggest the couch was equally obliging. Chivarro presses her lips to your wrist before answering.{/n}\n\"You have a weakness for damaged things that make an unreasonable amount of noise. I shall have to watch that.\"",
           "Choices": [
             {
               "Text": "[Stay until you are both ready to part.]",
@@ -112429,7 +112429,7 @@
           "Text": "\"Then tell me something you disliked.\"\n{n}She hears herself and begins laughing.{/n}\n\"No. Not about the performance. About your day. Something small enough that you have not already been given advice about it.\"\n{n}You tell her. She listens, supplies one thoroughly impractical remedy, and accepts your objection without defending it. When you ask for something from her day, she shows you the faint line where a fastening pressed her wrist during the welcome.{/n}\n\"I noticed it before the first guest arrived. I could have moved it. Instead I decided that a woman who had arranged the room could tolerate a little discomfort. By the third guest I was imagining the fastening's destruction in considerable detail.\"\n\"Did you move it?\"\n\"Eventually. It took less time than resenting it. I remain annoyed by that discovery.\"\n{n}The room grows easier around the shared complaint. Chivarro rests her head against the couch and lets her eyes close in the mortal guise she wore through the streets. After a moment she lets the disguise go, keeping her own face here with you.{/n}",
           "Choices": [
             {
-              "Text": "[Offer her your hand and ask whether she wants you closer.]",
+              "Text": "[Hold out your hand.]",
               "Next": "affection",
               "Set": [],
               "Requires": [
@@ -112439,7 +112439,7 @@
               "Abort": false
             },
             {
-              "Text": "\"Would you like me to stay nearby while you rest, without turning it into a conversation?\"",
+              "Text": "\"Rest. I'll stay, and I won't talk.\"",
               "Next": "quiet",
               "Set": [],
               "Requires": [],
@@ -112471,7 +112471,7 @@
               "Abort": false
             },
             {
-              "Text": "\"I would like to spend the night, if you want that too.\"",
+              "Text": "\"I'm staying the night.\"",
               "Next": "night",
               "Set": [],
               "Requires": [],
@@ -112503,7 +112503,7 @@
         {
           "Id": "night",
           "Speaker": "Chivarro",
-          "Text": "\"I do. Take that pin out before it makes a hole in either of us.\"\n{n}Chivarro turns her shoulder toward you. The small silver fastening that looked so effortless beneath the lamps resists your first attempt. She reaches back to guide your fingers, then withdraws her hand when you find the catch.\nThe ornament comes free. She exhales with such pleasure that you laugh.{/n}\n\"Do not flatter yourself. It has been tormenting me since the overture.\"\n\"I shall try to deserve the next one.\"\n{n}She turns, tired amusement sharpening into interest.{/n}\n\"An ambitious evening after all.\"\n{n}The kiss tastes faintly of the wine she barely had time to drink. She makes you wait through a second one before taking your hand toward the inner room. On the way she stops to put the silver pin into an empty bowl. You ask whether it has been condemned.{/n}\n\"Sentenced. I may pardon it when I see how it looks with another dress.\"\n{n}That is the last business she attends to. In the dark she is less composed, sometimes impatient, and inclined to laugh at the precise moment you expect another devastating remark. Once she says your name without anything attached to it. You answer by drawing her closer.\nNear dawn, a cart rattles beneath the window. She lifts her head, listens as if she might have it arrested, then drops back against you.{/n}\n\"If you are leaving, lie convincingly. I should like another hour before I begin believing it.\"",
+          "Text": "\"You are. Take that pin out before it makes a hole in either of us.\"\n{n}Chivarro turns her shoulder toward you. The small silver fastening that looked so effortless beneath the lamps resists your first attempt. She reaches back to guide your fingers, then withdraws her hand when you find the catch.\nThe ornament comes free. She exhales with such pleasure that you laugh.{/n}\n\"Do not flatter yourself. It has been tormenting me since the overture.\"\n\"I shall try to deserve the next one.\"\n{n}She turns, tired amusement sharpening into interest.{/n}\n\"An ambitious evening after all.\"\n{n}The kiss tastes faintly of the wine she barely had time to drink. She makes you wait through a second one before taking your hand toward the inner room. On the way she stops to put the silver pin into an empty bowl. You ask whether it has been condemned.{/n}\n\"Sentenced. I may pardon it when I see how it looks with another dress.\"\n{n}That is the last business she attends to. In the inner room she lets the dress fall where she stands and steps out of it, pushes you back onto the bed with both hands, and follows you down, a knee either side of you, her loosened hair falling across your face and her fingers already at your belt. \"Now,\" she says, \"the part I have not rehearsed.\"\nNear dawn, a cart rattles beneath the window. She lifts her head, listens as if she might have it arrested, then drops back against you.{/n}\n\"If you are leaving, lie convincingly. I should like another hour before I begin believing it.\"",
           "Choices": [
             {
               "Text": "[Stay together through the quiet night.]",
@@ -112522,7 +112522,7 @@
         {
           "Id": "quiet",
           "Speaker": "Narrator",
-          "Text": "{n}Chivarro agrees. She settles at one end of the couch while you take the other. Neither of you fills the first silence. The room has its own small sounds: a footstep outside, the settling of the lamp, a draught touching the hanging cloth.\nAt first she opens her mouth whenever something occurs to her. Then she begins letting thoughts pass without asking you to receive them. You see the effort become easier.\nWhen she finally speaks, it is to ask whether you are comfortable. You are. She accepts the answer without rearranging the room.\nLater, she walks you to the door.{/n}\n\"I had forgotten that company could make a room quieter. Thank you for reminding me without claiming credit for an important discovery.\"\n{n}Her hand rests on your arm for a moment. Then she lets you go.{/n}",
+          "Text": "{n}Chivarro agrees. She settles at one end of the couch while you take the other. Neither of you fills the first silence. The room has its own small sounds: a footstep outside, the settling of the lamp, a draught touching the hanging cloth.\nAt first she opens her mouth whenever something occurs to her. Then she begins letting thoughts pass without asking you to receive them. You see the effort become easier.\nWhen she finally speaks, it is to complain about the lamp, and then, visibly, to decide not to get up and fix it.\nLater, she walks you to the door.{/n}\n\"I had forgotten that company could make a room quieter. Thank you for reminding me without claiming credit for an important discovery.\"\n{n}Her hand rests on your arm for a moment. Then she lets you go.{/n}",
           "Choices": [
             {
               "Text": "[Leave her the rest she wanted.]",
@@ -176367,7 +176367,7 @@
           "Text": "{n}Herrax lifts one scarred brow.{/n} \"Cold feet, lover? She's a bitch in a cellar. It's hardly a siege.\"",
           "Choices": [
             {
-              "Text": "[Put a deposit on the house special] \"You want her gone forever? Then she's on the menu. Write it down: 'One Chivarro, forever.' I'm paying in advance.\"",
+              "Text": "[Put a deposit on the house special] \"You want her gone forever? Then sell her to me, and send her double down to that cellar to die in her place. Write it down: 'One Chivarro, forever.' I'm paying in advance.\"",
               "Next": "ink",
               "Set": [],
               "Requires": [],
@@ -176389,18 +176389,23 @@
         {
           "Id": "ink",
           "Speaker": "Herrax",
-          "Text": "\"Paying for a corpse before it's a corpse?\" {n}She counts something behind her eyes, and whatever the sum is, it pleases her.{/n} \"Lover, that's the most romantic thing anyone has ever done in this house.\"\n{n}She writes the line herself and blows on the ink.{/n} \"One thing is not negotiable, lover. My boys take the house's proof from every job: the rings, and whatever the rings are on. The price is a favour. When I call. You won't ask what.\"",
+          "Text": "\"Paying for a corpse before it's a corpse?\" {n}She counts something behind her eyes, and whatever the sum is, it pleases her.{/n} \"Oh, lover. You've read my menu. Of course there's a Chivarro on it: Sael, my prettiest boy, who wears her face for the guests who could never afford the original. He does her voice better than she does these days.\"\n\"So. Tonight my boys lift the real one out of her cellar and into mine, and Sael goes down in her rings and her scent to wait for you. You go in, and you kill him, and the whole Lower City hears that Chivarro died at a crusader's hand. Dead to the city, gone from it forever, in a mortal's pocket: that's everything I asked you for, and I get paid twice.\" {n}She writes the line herself and blows on the ink.{/n} \"He won't know what he's for until the knife. That's the part you're buying. My boys take the house's proof from every job: the rings, and whatever the rings are on. And the price is a favour. When I call. You won't ask what.\"",
           "Choices": [
             {
               "Text": "\"Put it on my bill.\"",
               "Next": null,
               "Set": [
                 "minagho_chivarro.trickster.chivarro_deposit",
-                "minagho_chivarro.trickster.cost.herrax_favor"
+                "minagho_chivarro.trickster.cost.herrax_favor",
+                "trickster.secret.chivarro_double"
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
             },
             {
               "Text": "\"No. No favours with no name.\"",
@@ -176444,7 +176449,7 @@
         {
           "Id": "start",
           "Speaker": "Herrax",
-          "Text": "{n}The letter smells of the Delights: incense, coin and something under both. The hand is round and unhurried.{/n}\n\"Honey. My boys fetched her out of that cellar and took the house's proof, as I told you they would: her rings, and the fingers that wore them. I sent word she was dead. The proof was true. The rest of her is downstairs, breathing, and why she is still breathing is a matter of house law. What will it be?\"\n{n}Pinned under the letter is a scrap in another hand, sharp and slanted and shaking:{/n} \"If you buy me, buy all of it. What is left of my hands, and the part of me that will hate you for the receipt. I will not be grateful. I will be *priced*.\"",
+          "Text": "{n}The letter smells of the Delights: incense, coin and something under both. The hand is round and unhurried.{/n}\n\"Honey. It went as ordered. The Lower City watched Chivarro die at a crusader's hand, and my tray has her rings to prove it, with Sael's fingers still in them. He did her voice to the very end, poor lamb, and never knew. The real one has been in my cellar since the night before you went down, breathing, furious, and dead in law. What will it be?\"\n{n}Pinned under the letter is a scrap in another hand, sharp and slanted and shaking:{/n} \"If you buy me, buy all of it. A woman with no name in her own city, no house, no chair, and the part of me that will hate you for the receipt. You killed a boy wearing my face to get me. I will not be grateful. I will be *priced*.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -176484,7 +176489,7 @@
               "Mythic": "PlayerIsTrickster"
             },
             {
-              "Text": "\"Nothing. Leave her dead.\"",
+              "Text": "\"Nothing. Keep her. Let the dead stay dead.\"",
               "Next": null,
               "Set": [
                 "minagho_chivarro.trickster.chivarro_declined"
@@ -176501,7 +176506,7 @@
         {
           "Id": "told",
           "Speaker": "Herrax",
-          "Text": "\"Everyone thinks she is dead, lover. You told them so. So did I. We are both liars, and now you want to buy the lie back from me. I *adore* you.\"",
+          "Text": "\"Everyone thinks she is dead, lover. You told me so yourself, with his blood still on your sleeve. We are both liars, and now you want to collect the lie. I *adore* you.\"",
           "Choices": [
             {
               "Text": "[Order from the house menu] \"One Chivarro. Forever. My pockets are deep enough.\"",
@@ -176528,7 +176533,7 @@
               "Mythic": "PlayerIsTrickster"
             },
             {
-              "Text": "\"Nothing. Leave her dead.\"",
+              "Text": "\"Nothing. Keep her. Let the dead stay dead.\"",
               "Next": null,
               "Set": [
                 "minagho_chivarro.trickster.chivarro_declined"
@@ -176543,7 +176548,7 @@
         {
           "Id": "paid",
           "Speaker": "Herrax",
-          "Text": "\"'One Chivarro, forever. Deposit paid.' My own hand, lover. I laughed while I wrote it. Then my boys brought her in and my clerk read the order back to me, and I stopped laughing. *Forever*. A corpse is not forever, honey; a corpse is a fortnight, and then it is a smell. My house does not deliver short on a paid order. So I had to keep her breathing.\" {n}Under it, in the same round hand: \"Out-lawyered in my own house. I adore you. Delivered, less the proof.\"{/n}\n\"The favour stands. When I call.\"",
+          "Text": "\"'One Chivarro, forever. Deposit paid.' My own hand, lover. I laughed while I wrote it. I stopped laughing when my clerk read it back and I understood you'd meant every word of it, the boy included. My house does not deliver short on a paid order.\" {n}Under it, in the same round hand: \"Out-lawyered in my own house. I adore you. Delivered, less the proof.\"{/n}\n\"The favour stands. When I call.\"",
           "Choices": [
             {
               "Text": "\"Deal.\"",
@@ -176600,7 +176605,7 @@
         {
           "Id": "sale",
           "Speaker": "Chivarro",
-          "Text": "{n}The last page is in another hand, sharp and slanted, written by someone who has just learned to hold a pen again with the fingers she has left.{/n}\n\"Sold. In my own house. To *you*. Under 'goods'.\" {n}The pen has gone through the paper twice.{/n}\n\"Here is my price, since nobody asked it. The bill. Burn it, and I come to Drezen owing you nothing and hating you for the favour. Keep it, and I come anyway, and you sleep with one eye open for the rest of your short life.\"",
+          "Text": "{n}The last page is in another hand, sharp and slanted, written by someone who has had a month in the dark with nothing to do but compose it.{/n}\n\"Sold. In my own house. To *you*. Under 'goods'.\" {n}The pen has gone through the paper twice.{/n}\n\"Here is my price, since nobody asked it. The bill. Burn it, and I come to Drezen owing you nothing and hating you for the favour. Keep it, and I come anyway, and you sleep with one eye open for the rest of your short life.\"",
           "Choices": [
             {
               "Text": "[Burn the bill] \"Nothing. Get dressed.\"",
@@ -176662,7 +176667,8 @@
       "Requires": [
         "trickster.ever",
         "chivarro.dead",
-        "chivarro.dead.latched"
+        "chivarro.dead.latched",
+        "minagho_chivarro.trickster.chivarro_deposit"
       ],
       "Forbids": [
         "minagho_chivarro.trickster.returned_chivarro",
@@ -176674,12 +176680,6 @@
       "Remote": true,
       "Chapters": [
         5
-      ],
-      "RequiresAnyGroups": [
-        [
-          "minagho_chivarro.trickster.chivarro_deposit",
-          "trickster"
-        ]
       ],
       "TricksterDevice": true,
       "TricksterState": "chivarro_dead",
@@ -177552,7 +177552,9 @@
             {
               "Text": "Continue",
               "Next": null,
-              "Set": [],
+              "Set": [
+                "minagho_chivarro.trickster.night.pair"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -177609,7 +177611,7 @@
           "Choices": [
             {
               "Text": "\"Your terms. Agreed.\"",
-              "Next": null,
+              "Next": "came",
               "Set": [
                 "minachiv.complete",
                 "minachiv.future_two",
@@ -177641,6 +177643,42 @@
             }
           ],
           "Portrait": "Minagho"
+        },
+        {
+          "Id": "came",
+          "Speaker": "Narrator",
+          "Text": "{n}You write two words and send the runner down before the ink is dry. They come up at midnight, through the door, not the wardrobe, and nobody on the stair is fool enough to ask where they are going.{/n}\n{n}Chivarro takes the letter off your desk, reads your two words aloud as if pricing them, and drops it in the grate. Minagho does not bother with reading. She has your shirt open before the paper catches, her nails dragging down your ribs, and Chivarro, behind you, unbuckles your belt with a madam's quick, bored fingers and lets it fall. \"Ink,\" Minagho says against your mouth, walking you back towards the bed. \"You answered us in *ink*.\" Then the backs of your knees meet the mattress, and they bear you down onto it between them, Chivarro already astride you and Minagho's teeth at your throat.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [
+                "minagho_chivarro.trickster.night.pair"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Narrator",
+          "Text": "{n}In the morning the grate is cold and the letter is ash, and both of them are still there, which neither will admit was a decision. Chivarro leaves a bill on the pillow for the night, itemised, with a kiss printed on the total. Minagho binds your palm when it opens at dawn, too tightly, and tells you that next time you will come down to the stores yourself, like someone who means it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Pay the bill.]",
+              "Next": null,
+              "Set": [
+                "minagho_chivarro.trickster.cost.morning_after"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
         }
       ],
       "Requires": [
@@ -177765,7 +177803,9 @@
             {
               "Text": "Continue",
               "Next": null,
-              "Set": [],
+              "Set": [
+                "minagho_chivarro.trickster.night.chivarro"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -177823,7 +177863,7 @@
           "Choices": [
             {
               "Text": "\"Your terms.\"",
-              "Next": null,
+              "Next": "came",
               "Set": [
                 "minachiv.complete",
                 "minachiv.future_chivarro",
@@ -177846,6 +177886,42 @@
             }
           ],
           "Portrait": "Chivarro"
+        },
+        {
+          "Id": "came",
+          "Speaker": "Narrator",
+          "Text": "{n}Her answer is an address below the citadel and an hour: tonight. The room above the chandler's shop is lit by one candle, and she is sitting on the end of the bed with the lease across her knees.{/n}\n{n}\"Sign,\" she says. You sign. She folds the lease, sets it on the candle-shelf where the wax cannot reach it, and only then stands and lets the gown slide from her shoulders to the floor, stepping out of it towards you the way she once walked the Delights' hall, knowing every eye in the room is on her. She takes your collar in both fists and falls back onto the bed, and pulls you down after her, and hooks one leg round yours so you cannot get up again.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [
+                "minagho_chivarro.trickster.night.chivarro"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Narrator",
+          "Text": "{n}In the morning the rent is gone from your purse and there is a receipt in its place, in her hand, for \"one night, paid in full, interest to follow\". She is asleep across the whole of the bed, and does not wake when you go.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the receipt.]",
+              "Next": null,
+              "Set": [
+                "minagho_chivarro.trickster.cost.morning_after"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
         }
       ],
       "Requires": [
@@ -177896,11 +177972,12 @@
           "Text": "\"You keep looking at the gate as if someone else is coming through it.\" {n}She does not look at it herself.{/n}",
           "Choices": [
             {
-              "Text": "\"She's dead, and the house wants too much for her. Stay.\"",
+              "Text": "\"She's in Herrax's cellar, and the house wants too much for her. Stay.\"",
               "Next": "terms",
               "Set": [],
               "Requires": [
-                "chivarro.dead.latched"
+                "chivarro.dead.latched",
+                "minagho_chivarro.trickster.chivarro_deposit"
               ],
               "Forbids": [],
               "Abort": false
@@ -177913,6 +177990,34 @@
               "Forbids": [
                 "chivarro.dead.latched"
               ],
+              "Abort": false
+            },
+            {
+              "Text": "\"I killed her. You know I did. Stay anyway.\"",
+              "Next": "killer",
+              "Set": [],
+              "Requires": [
+                "chivarro.dead.latched"
+              ],
+              "Forbids": [
+                "minagho_chivarro.trickster.chivarro_deposit"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Minagho"
+        },
+        {
+          "Id": "killer",
+          "Speaker": "Minagho",
+          "Text": "\"I know.\" {n}Her lip peels back from her teeth.{/n} \"Herrax sang it all over the Lower City: the crusader who cut Chivarro down in her own cellar for a madam's favour. I heard it in Drezen before your blade was clean.\"\n{n}She is very still.{/n} \"I have killed for less. I have lain down with worse. I have not decided which of those you are, and I will take a very long time deciding, and you will feel every day of it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -177983,7 +178088,9 @@
             {
               "Text": "Continue",
               "Next": null,
-              "Set": [],
+              "Set": [
+                "minagho_chivarro.trickster.night.minagho"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -178040,11 +178147,12 @@
           "Text": "\"You keep looking at the gate as if someone else is coming through it.\" {n}She does not look at it herself.{/n}",
           "Choices": [
             {
-              "Text": "\"She's dead, and the house wants too much for her. Stay.\"",
+              "Text": "\"She's in Herrax's cellar, and the house wants too much for her. Stay.\"",
               "Next": "terms",
               "Set": [],
               "Requires": [
-                "chivarro.dead.latched"
+                "chivarro.dead.latched",
+                "minagho_chivarro.trickster.chivarro_deposit"
               ],
               "Forbids": [],
               "Abort": false
@@ -178057,6 +178165,34 @@
               "Forbids": [
                 "chivarro.dead.latched"
               ],
+              "Abort": false
+            },
+            {
+              "Text": "\"I killed her. You know I did. Stay anyway.\"",
+              "Next": "killer",
+              "Set": [],
+              "Requires": [
+                "chivarro.dead.latched"
+              ],
+              "Forbids": [
+                "minagho_chivarro.trickster.chivarro_deposit"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Minagho"
+        },
+        {
+          "Id": "killer",
+          "Speaker": "Minagho",
+          "Text": "\"I know.\" {n}Her lip peels back from her teeth.{/n} \"Herrax sang it all over the Lower City: the crusader who cut Chivarro down in her own cellar for a madam's favour. I heard it in Drezen before your blade was clean.\"\n{n}She is very still.{/n} \"I have killed for less. I have lain down with worse. I have not decided which of those you are, and I will take a very long time deciding, and you will feel every day of it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -178127,7 +178263,9 @@
             {
               "Text": "Continue",
               "Next": null,
-              "Set": [],
+              "Set": [
+                "minagho_chivarro.trickster.night.minagho"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -178187,7 +178325,7 @@
           "Choices": [
             {
               "Text": "\"Your price.\"",
-              "Next": null,
+              "Next": "came",
               "Set": [
                 "minachiv.complete",
                 "minachiv.future_minagho",
@@ -178210,6 +178348,42 @@
             }
           ],
           "Portrait": "Minagho"
+        },
+        {
+          "Id": "came",
+          "Speaker": "Narrator",
+          "Text": "{n}She does not answer the letter. She answers the door, the same night: you open it and she is already on the other side of it, as if she had been standing there since she sent it.{/n}\n{n}\"Your price,\" she says, \"paid,\" and comes in without waiting to be asked, and kicks the door shut behind her. She takes your bleeding hand, opens it, and presses her mouth to the cut until you feel her teeth; then she shoves you back against the bar of the door and strips your shirt over your head, and when you reach for her she catches both your wrists and walks you backwards to the bed, and pushes you down onto it, and climbs astride you with your wrists pinned in one of her hands.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [
+                "minagho_chivarro.trickster.night.minagho"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Narrator",
+          "Text": "{n}At dawn your palm opens, as it does every dawn now. She is awake before it does, watching, and binds it with a strip of your own sheet, too tightly, without a word. When she goes, she takes the rest of the sheet with her.{/n}",
+          "Choices": [
+            {
+              "Text": "[Let her.]",
+              "Next": null,
+              "Set": [
+                "minagho_chivarro.trickster.cost.morning_after"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
         }
       ],
       "Requires": [
@@ -178337,7 +178511,8 @@
         "minagho_chivarro.trickster.committed",
         "minachiv.future_two",
         "minagho_chivarro.trickster.chivarro_in",
-        "minagho_chivarro.trickster.minagho_in"
+        "minagho_chivarro.trickster.minagho_in",
+        "minagho_chivarro.trickster.night.pair"
       ],
       "Forbids": [
         "minagho_chivarro.trickster.cost.morning_after",
@@ -178428,7 +178603,8 @@
         "minachiv.complete",
         "minagho_chivarro.trickster.committed",
         "minachiv.future_chivarro",
-        "minagho_chivarro.trickster.chivarro_in"
+        "minagho_chivarro.trickster.chivarro_in",
+        "minagho_chivarro.trickster.night.chivarro"
       ],
       "Forbids": [
         "minagho_chivarro.trickster.cost.morning_after",
@@ -178532,6 +178708,7 @@
         "minagho_chivarro.trickster.committed",
         "minachiv.future_minagho",
         "minagho_chivarro.trickster.minagho_in",
+        "minagho_chivarro.trickster.night.minagho",
         "minagho_chivarro.trickster.returned_minagho"
       ],
       "Forbids": [
@@ -178636,6 +178813,7 @@
         "minagho_chivarro.trickster.committed",
         "minachiv.future_minagho",
         "minagho_chivarro.trickster.minagho_in",
+        "minagho_chivarro.trickster.night.minagho",
         "minagho.spared.latched"
       ],
       "Forbids": [
@@ -178847,11 +179025,23 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}She never forgave the house that wanted too much for Chivarro. Some nights she went down to the Lower City and made it pay the difference.{/n}",
+              "Text": "{n}She never forgave the house that kept Chivarro in its cellar and wanted too much for her. Some nights she went down to the Lower City and made it pay the difference.{/n}",
+              "Requires": [
+                "chivarro.dead.latched",
+                "minagho_chivarro.trickster.chivarro_deposit"
+              ],
+              "Forbids": [
+                "minagho_chivarro.trickster.returned_chivarro"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She never forgave the Commander for Chivarro, and never pretended to. Every year, on the night of the cellar, she sat at the foot of the bed and sharpened a dagger until dawn, and every year she put it away unused, and never said why.{/n}",
               "Requires": [
                 "chivarro.dead.latched"
               ],
               "Forbids": [
+                "minagho_chivarro.trickster.chivarro_deposit",
                 "minagho_chivarro.trickster.returned_chivarro"
               ],
               "AnyGroups": []
@@ -178987,7 +179177,7 @@
           "Choices": [
             {
               "Text": "[Go.]",
-              "Next": "went",
+              "Next": "went_alone",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -179007,7 +179197,23 @@
         {
           "Id": "went",
           "Speaker": "Narrator",
-          "Text": "{n}The Commander went. The door was barred from the inside with a chair, and opened anyway. The Commander went every year after that.{/n}",
+          "Text": "{n}The Commander went. The door was barred from the inside with a chair, and opened anyway. Chivarro took the Commander's sword belt off on the threshold as if collecting a coat; Minagho took the rest, less politely, walking the Commander backwards across a room neither of them had bothered to light, and between them they bore the Commander down onto a bed that Chivarro announced had been built for exactly three.{/n}\n{n}The Commander went every year after that, and some years did not leave until spring.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "went_alone",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander went. Chivarro opened the door herself, in a dressing gown and nothing else, and looked the Commander over the way she had once looked over the Delights' new stock. \"Late,\" she said. \"Everything costs more when it is late.\" She pulled the Commander in by the collar, shut the door with her heel, and let the gown fall on the way to the bed.{/n}\n{n}The Commander went every year after that. The rent went up every time.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -179107,7 +179313,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "Minagho and Chivarro kept house in Drezen after the war, in a building nobody else would rent, on terms neither of them would ever write down. It was not a romance. It was a contract, renegotiated nightly, and the Commander was a party to it, and they never let {mf|him|her} forget which clauses were {mf|his|hers}.",
+          "Text": "The house the Commander's demons kept in Drezen after the war stood in a building nobody else would rent, on terms nobody would ever write down. It was not a romance. It was a contract, renegotiated nightly, and the Commander was a party to it, and was never allowed to forget which clauses were {mf|his|hers}.",
           "Choices": [
             {
               "Text": "Continue",
@@ -179121,7 +179327,31 @@
           "Portrait": "",
           "Paragraphs": [
             {
-              "Text": "Baphomet's seal was cheated on his own wording, and Minagho's palm still bled on the anniversary. She chose, that first spring, which side of the Lord of Beasts' ledger she would stand on for the rest of her life. She chose the side with the Commander on it, and said it was only because the other side had worse food.",
+              "Text": "Minagho and Chivarro both lived there, and fought over the lease every spring, and signed it together every spring, in two hands that took turns with the pen.",
+              "Requires": [
+                "minachiv.future_two"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Chivarro held the lease, and the rent, and the key. Whoever else came to her door came on her terms.",
+              "Requires": [
+                "minachiv.future_chivarro"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Minagho held it alone, with a dagger by the door and the Goat's mark dry on her brow, and nobody bargained for her again.",
+              "Requires": [
+                "minachiv.future_minagho"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Baphomet's seal was cheated on his own wording, and the Commander's palm still opened at dawn, as it had every dawn since the seal moved, while the mark on Minagho's brow stayed dry. She chose, that first spring, which side of the Lord of Beasts' ledger she would stand on for the rest of her life. She chose the side with the Commander on it, and said it was only because the other side had worse food.",
               "Requires": [
                 "minagho_chivarro.lastcall.called",
                 "minagho_chivarro.trickster.cost.baphomet_debtor"
@@ -179139,7 +179369,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Commander had knelt to Baphomet once, in front of her. Minagho never forgot it. She stood at the other side of every room after that, and watched the Commander across it with an expression that those who knew her described as a very private kind of respect.",
+              "Text": "The Commander had knelt to Baphomet once, for her, while she lay dead in his cells. She learned of it when she woke, and never forgot it. She stood at the other side of every room after that, and watched the Commander across it with an expression that those who knew her described as a very private kind of respect.",
               "Requires": [
                 "minagho_chivarro.trickster.cost.baphomet_knelt"
               ],
@@ -179330,12 +179560,12 @@
       "Optional": false,
       "Relationship": "minagho_chivarro",
       "Reaction": true,
-      "AnswerLists": [
-        "589d83230bbbfd04bb1220ee4fef1ce1"
-      ],
       "ForbidOverrides": {
         "camellia.dead": "camellia.trickster.returned"
-      }
+      },
+      "AnswerLists": [
+        "589d83230bbbfd04bb1220ee4fef1ce1"
+      ]
     },
     {
       "Id": "soana.trickster.handover.after_quest",
@@ -230403,7 +230633,7 @@
         {
           "Id": "aye",
           "Speaker": "Narrator",
-          "Text": "{n}The reply came back within the week: \"The chair votes aye. Minuted.\" Eritrice arrived in person three days later, with the scroll, to make sure the minutes were accurate, and did not leave for a long time.{/n}",
+          "Text": "{n}The reply came back within the week: \"The chair votes aye. Minuted.\" Eritrice arrived in person three days later, with the scroll, to make sure the minutes were accurate. She read all forty letters aloud in the Commander's study, standing, as if to a full session, and conceded nothing in any of them. At the forty-first she stopped, rolled the scroll shut and set it at the far end of the desk, out of harm's way. Then she unpinned her robe at the shoulder and let it fall, pushed the Commander back against the desk with one broad hand, and climbed after, claws sheathed only just, a growl rolling in her chest. \"The floor has voted,\" she said against the Commander's mouth, and pulled the Commander's shirt open down the front.{/n}\n{n}The minutes of that night are one word long: \"Carried.\" She did not leave for a long time, and when she did, it was only to fetch more ink.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -230471,7 +230701,7 @@
       "ForbidOverrides": {
         "council.fought": "eritrice.trickster.returned",
         "council.fought_nocta_allied": "eritrice.trickster.returned",
-        "sacrifice": "trickster.cheated_death"
+        "sacrifice": "trickster.commander_back"
       },
       "Relationship": "eritrice"
     },
@@ -230529,10 +230759,10 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}The Council's members pretended ever after that they had never met. Its chair kept minutes anyway. The later volumes are much concerned with a standing debate between the chair and a certain Commander, conducted point by point, and every entry ends the same way: \"Carried.\"{/n}",
+          "Text": "{n}Whatever became of the Council, its chair kept minutes. The later volumes are much concerned with a standing debate between the chair and a certain Commander, conducted point by point, and every entry ends the same way: \"Carried.\"{/n}",
           "Choices": [
             {
-              "Text": "[Move that the record be corrected] \"I move that the Council did, in fact, meet. Twice nightly. All in favour?\"",
+              "Text": "[Move that the record be amended] \"I move that the minutes show the chair and the Commander met. Twice nightly. All in favour?\"",
               "Next": null,
               "Set": [],
               "Requires": [],
@@ -230543,7 +230773,7 @@
           "Portrait": "Eritrice",
           "Paragraphs": [
             {
-              "Text": "{n}She never admitted in public that the Council had met, which was the only lie anyone ever caught her telling. The minutes, which were not public, admitted everything.{/n}",
+              "Text": "{n}The Council's members pretended ever after that they had never met. She never admitted in public that the Council had met, which was the only lie anyone ever caught her telling. The minutes, which were not public, admitted everything.{/n}",
               "Requires": [
                 "council.epilogue_ceased"
               ],
@@ -230712,7 +230942,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}At one session the Commander told the Council a lie on the chair's behalf, and Chadali's essence was spared. The chair minuted, in her own hand, that she had asked for the lie. Chadali never read that page. The chair made sure of it.{/n}",
+              "Text": "{n}The chair once asked the Commander for a lie on Chadali's behalf, and was promised it. Whether it was ever told, and whether anyone believed it, the minutes do not say; the Council took what it took. What the chair did minute, in her own hand, was that she had asked. Chadali never read that page. The chair made sure of it.{/n}",
               "Requires": [
                 "eritrice.council.lied_for_her"
               ],
@@ -230755,7 +230985,7 @@
         "eritrice.trickster.declined": "eritrice.committed",
         "council.fought": "eritrice.trickster.returned",
         "council.fought_nocta_allied": "eritrice.trickster.returned",
-        "sacrifice": "trickster.cheated_death"
+        "sacrifice": "trickster.commander_back"
       },
       "Relationship": "eritrice"
     },
@@ -230912,6 +231142,12 @@
         3,
         5
       ],
+      "ForbidOverrides": {
+        "nenio.dead": "nenio.trickster.returned",
+        "nenio.killed_by_commander": "nenio.trickster.returned",
+        "nenio.sent_away": "nenio.trickster.returned",
+        "nenio.kicked_out": "nenio.trickster.returned"
+      },
       "AnswerLists": [
         "1ab909cc3a6194840b1475b99547c263"
       ]
@@ -230958,6 +231194,12 @@
       "Chapters": [
         5
       ],
+      "ForbidOverrides": {
+        "nenio.dead": "nenio.trickster.returned",
+        "nenio.killed_by_commander": "nenio.trickster.returned",
+        "nenio.sent_away": "nenio.trickster.returned",
+        "nenio.kicked_out": "nenio.trickster.returned"
+      },
       "AnswerLists": [
         "1ab909cc3a6194840b1475b99547c263"
       ]
@@ -233224,10 +233466,10 @@
         {
           "Id": "look",
           "Speaker": "Eritrice",
-          "Text": "{n}For once she says nothing at all. Her amethyst eyes are very dark, and her breathing is the only sound in the hall. She pulls the belt of her gown loose with one claw, and it falls open, and she watches your face, not the gown, while it does.{/n}\n\"Well, Commander?\"",
+          "Text": "{n}For once she says nothing at all. Her amethyst eyes are very dark, and her breathing is the only sound in the hall. She pulls the belt of her gown loose with one claw, and it falls open, and she watches your face, not the gown, while it does.{/n}\n\"The floor has the question, Commander.\"",
           "Choices": [
             {
-              "Text": "[Answer her.]",
+              "Text": "[Pull her down to you by the open gown.]",
               "Next": "cut",
               "Set": [
                 "eritrice.minutes.night"
@@ -233242,7 +233484,7 @@
         {
           "Id": "cut",
           "Speaker": "Eritrice",
-          "Text": "{n}You answer her. She reaches past you, without taking her eyes from yours, and turns the lamp down to nothing; and in the last of its light you see her other hand move the second reading's scroll to safety at the far end of the table, even now, even then.{/n}",
+          "Text": "{n}She comes the whole way: one knee on the table beside your hip and then the other, until she is astride you among the inkwells and her weight settles onto your thighs, and she pushes you flat on your back on the Council's table with one hand spread on your chest. She reaches past you, without taking her eyes from yours, and turns the lamp down to nothing; and in the last of its light you see her other hand move the second reading's scroll to safety at the far end of the table, even now, even then.{/n}",
           "Choices": [
             {
               "Text": "[...]",
@@ -234305,13 +234547,69 @@
               "Text": "\"Both. That's the kind of thing Shyka means.\"",
               "Next": "both",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "eritrice.minutes.the_cipher"
+              ],
               "Forbids": [],
               "Abort": false
             },
             {
               "Text": "\"You don't like them.\"",
               "Next": "like",
+              "Set": [],
+              "Requires": [
+                "eritrice.shyka_dull_future"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Both. That's the kind of thing Shyka means.\"",
+              "Next": "both_early",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eritrice.minutes.the_cipher"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"You don't like them.\"",
+              "Next": "like_early",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eritrice.shyka_dull_future"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eritrice"
+        },
+        {
+          "Id": "like_early",
+          "Speaker": "Eritrice",
+          "Text": "\"I do not like anyone on this Council. Liking is not required.\" {n}A pause.{/n}\n\"But Shyka frightens me, and I do not say that of anyone. Ask them a plain question and they answer the one you ought to have asked, in a future you have not reached yet, and then they laugh at your face while you work out which.\" {n}Her claws dig into the table.{/n}\n\"Every other member of this Council wants something, and a want can be debated. Shyka wants to be entertained. That is the only position at this table I cannot debate, because it does not care whether it is right.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "you",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eritrice"
+        },
+        {
+          "Id": "both_early",
+          "Speaker": "Eritrice",
+          "Text": "\"Both.\" {n}She tastes the word as if it were an unfamiliar vintage.{/n}\n\"Yes. That is exactly what they mean. You understand them better than I do.\" {n}She looks at you with something close to suspicion.{/n} \"I sometimes think you understand everything at this table better than I do, and simply choose to let me chair it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "you",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -234403,7 +234701,7 @@
         {
           "Id": "them",
           "Speaker": "Eritrice",
-          "Text": "{n}She is quiet for a moment, and then she laughs, low and surprised, the way she did at the orange.{/n}\n\"A trickster who would not choose a dull future for me. That is the most frightening thing anyone has said to me since the Council was convened.\" {n}She writes it down, in full, and underlines \"for me\".{/n}",
+          "Text": "{n}She is quiet for a moment, and then she laughs, low and surprised, as if the sound had got out before the chair could rule on it.{/n}\n\"A trickster who would not choose a dull future for me. That is the most frightening thing anyone has said to me since the Council was convened.\" {n}She writes it down, in full, and underlines \"for me\".{/n}",
           "Choices": [
             {
               "Text": "[Leave her to her underlining.]",
@@ -235519,7 +235817,7 @@
         {
           "Id": "carried",
           "Speaker": "Eritrice",
-          "Text": "\"Carried.\" {n}She blows out the candle.{/n}\n{n}In the dark you hear the minutes slide off the table, and she does not reach for them, which is the second time in her existence she has let a record fall. Her last words before the chair stops chairing are a promise to write it all down in the morning, every word, and a warning that you had better give her a great deal to write.{/n}",
+          "Text": "\"Carried.\" {n}She pushes the scroll off her knees, swings one leg across you, and settles astride your lap on the edge of the Council's table, with a creak of old wood and a rumble in her chest that is very nearly a purr. She takes your hands and sets them on the belt at her waist, and holds them there until you pull it loose. Only then, with her mouth already on yours and her gown sliding off one shoulder, does she reach back and pinch out the candle.{/n}\n{n}In the dark you hear the minutes slide off the table, and she does not reach for them, which is the second time in her existence she has let a record fall. Her last words before the chair stops chairing are a promise to write it all down in the morning, every word, and a warning that you had better give her a great deal to write.{/n}",
           "Choices": [
             {
               "Text": "[Give her a great deal to write.]",
@@ -246447,7 +246745,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Chadali has a coin out before you can answer: an old Elysian piece, worn smooth, with a sun on one face and a moon on the other. She flicks it high over the Council table, bracelets clinking, and watches it turn in the lamplight with her mouth a little open, like a child at a fair.{/n}",
+          "Text": "{n}Chadali has a coin out before you can answer: an old Elysian piece, worn smooth, with a sun on one face and a moon on the other. She flicks it high over the Council table, bracelets clinking, and watches it turn in the lamplight with her lips parted, as if no coin in the multiverse had ever been tossed before.{/n}",
           "Choices": [
             {
               "Text": "[Call it in the air] \"Heads, I'm the Council's lucky charm. Tails, you're mine.\"",
@@ -246543,7 +246841,7 @@
           "Text": "{n}Chadali is waiting at the end of the Council table with both hands behind her back and the expression of someone who has been sitting on a secret for exactly as long as she could bear.{/n}",
           "Choices": [
             {
-              "Text": "Continue",
+              "Text": "[Trickster] [While she fusses with the ribbon on her parcel, drop the market orange from your pocket into Cobblehoof's empty bag.]",
               "Next": "start_orange",
               "Set": [],
               "Requires": [
@@ -246561,6 +246859,16 @@
                 "council.orange_called"
               ],
               "Abort": false
+            },
+            {
+              "Text": "[Leave the bag alone.]",
+              "Next": "start_edge",
+              "Set": [],
+              "Requires": [
+                "council.orange_called"
+              ],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": "Chadali"
@@ -246568,7 +246876,7 @@
         {
           "Id": "start_orange",
           "Speaker": "Chadali",
-          "Text": "{n}Cobblehoof's bag lies empty on the table, its cauldron handed over. When Chadali turns it out to fold it, an orange rolls across the wood: not a magical one, an ordinary orange with a Drezen market stall's chalk mark on the peel.{/n}\n\"An orange! An orange! I knew it!\" {n}She holds it up to the light, turning it, delighted. Then she looks at you, and the dimples go away for a moment.{/n} \"...You put it there.\"",
+          "Text": "{n}Cobblehoof's bag lies on the table where he left it when the cauldron was handed over. Chadali picks it up to fold it, feels the weight, and turns it out: an orange rolls across the wood. Not a magical one. An ordinary orange with a Drezen market stall's chalk mark on the peel, the one you bought for two coppers this morning.{/n}\n\"An orange! An orange! I knew it!\" {n}She holds it up to the light, turning it, delighted. Then she looks at you, and the dimples go away for a moment.{/n} \"...You put it there.\"",
           "Choices": [
             {
               "Text": "[Take the orange] \"Half each. It's only fair: I lied about the bag.\"",
@@ -246778,7 +247086,8 @@
       "Requires": [
         "trickster.ever",
         "chadali.started",
-        "chadali.wagers.the_real_wager"
+        "chadali.wagers.the_real_wager",
+        "chadali.wagers.bet_her"
       ],
       "Forbids": [
         "chadali.closed",
@@ -247270,7 +247579,7 @@
         {
           "Id": "stay",
           "Speaker": "Narrator",
-          "Text": "{n}\"Yes,\" said Chadali, before the word was quite finished, and took off her sandals, and did not leave. The barracks lost at dice for a month. Nobody could prove anything.{/n}",
+          "Text": "{n}\"Yes,\" said Chadali, before the word was quite finished. She took off her sandals and set them side by side under the Commander's table, the way a traveller does who means to stay. Then she pulled the white flower out of her hair, unpinned the yellow silk at her shoulder and let it fall to her waist, came round the table, and climbed into the Commander's lap as if she had been planning the route since the hall was sealed. \"I bet you,\" she said against the Commander's mouth, both hands already busy at the Commander's belt, \"that nobody comes through that door before morning.\"{/n}\n{n}Nobody did. In the morning the coin stood on its edge on the windowsill, she lay asleep across most of the bed with honey in her hair, and the barracks had lost at dice all night. They went on losing for a month. Nobody could prove anything.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -247286,7 +247595,7 @@
         {
           "Id": "half",
           "Speaker": "Narrator",
-          "Text": "{n}She peeled it with her thumbs, gave the Commander the larger half, and ate hers slowly. When she had finished she wiped her fingers on the yellow silk and said, \"That's a yes, you know. You'll have to say it properly one day.\" The Commander did, in the end. It took most of a summer. She counted every day, and called each one lucky.{/n}",
+          "Text": "{n}She peeled it with her thumbs, gave the Commander the larger half, and ate hers slowly. When she had finished she wiped her fingers on the yellow silk and said, \"That's a yes, you know. You'll have to say it properly one day.\" The Commander did, in the end. It took most of a summer. She counted every day, and called each one lucky, and on the evening the Commander finally said it she latched the shutters herself, kicked her sandals across the room and pulled the Commander down onto the bed by both wrists, laughing, before the sentence was finished. She said afterwards it was the best bet she had ever won, and would not say what she had staked.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -247338,7 +247647,7 @@
       "ForbidOverrides": {
         "council.fought": "chadali.trickster.returned",
         "council.fought_nocta_allied": "chadali.trickster.returned",
-        "sacrifice": "trickster.cheated_death"
+        "sacrifice": "trickster.commander_back"
       },
       "Relationship": "chadali"
     },
@@ -247488,7 +247797,9 @@
               "Requires": [
                 "chadali.wagers.cobblehoof_left_cursed"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "chadali.sessions.cobblehoof_freed_by_her"
+              ],
               "AnyGroups": []
             },
             {
@@ -247751,7 +248062,8 @@
         }
       ],
       "Requires": [
-        "trickster.ever"
+        "trickster.ever",
+        "chadali.committed"
       ],
       "Forbids": [
         "chadali.closed",
@@ -247760,15 +248072,9 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "RequiresAnyGroups": [
-        [
-          "chadali.committed",
-          "chadali.trickster.late_committed"
-        ]
-      ],
       "ForbidOverrides": {
         "chadali.trickster.declined": "chadali.committed",
-        "sacrifice": "trickster.cheated_death"
+        "sacrifice": "trickster.commander_back"
       },
       "Relationship": "chadali"
     },
@@ -249319,7 +249625,7 @@
         {
           "Id": "start",
           "Speaker": "Chadali",
-          "Text": "\"Elysian knucklebones!\" {n}She is bouncing, very slightly, in her chair.{/n} \"You throw them, and you count the ones that land on their backs, and whoever has more wins a cookie. That's all. It's the silliest game in the multiverse. I love it more than anything.\"\n\"I sent you good thoughts and positive vibrations the whole time you were in the Abyss last week. Now we find out if they worked.\" {n}She pushes the cup across.{/n} \"You first. Don't do anything clever.\"",
+          "Text": "\"Elysian knucklebones!\" {n}She is bouncing, very slightly, in her chair.{/n} \"You throw them, and you count the ones that land on their backs, and whoever has more wins a cookie. That's all. It's the silliest game in the multiverse. I love it more than anything.\"\n\"I've sent you good thoughts and positive vibrations every single time you rode out of Drezen. Now we find out if they worked.\" {n}She pushes the cup across.{/n} \"You first. Don't do anything clever.\"",
           "Choices": [
             {
               "Text": "[Throw them honestly.]",
@@ -250105,7 +250411,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": true
             }
           ],
           "Portrait": "Chadali"
@@ -251822,7 +252128,7 @@
         {
           "Id": "start",
           "Speaker": "Chadali",
-          "Text": "\"Eritrice says you don't only sit at this table.\" {n}She says it lightly, plucking at a cushion.{/n} \"She says it as if it were a motion out of order. Socothbenoth says it as if it were a joke. Alichino says it as if it were a price.\"\n\"I don't mind.\" {n}She looks up.{/n} \"I really don't. I'm an azata. Luck's for sharing, and so is everything good. If you've got enough of you to go round, then go round.\"",
+          "Text": "\"Eritrice says you are over-committed.\" {n}She says it lightly, plucking at a cushion.{/n} \"She says it as if it were a motion out of order. Socothbenoth says it as if it were a joke. Alichino says it as if it were a price: the whole crusade holds a mortgage on you, he says, and I'm a very late creditor.\"\n\"They're right about the numbers. Every one of them.\" {n}She looks up.{/n} \"I don't care about the numbers.\"",
           "Choices": [
             {
               "Text": "\"Then what's on your mind?\"",
@@ -251927,7 +252233,7 @@
         {
           "Id": "start",
           "Speaker": "Chadali",
-          "Text": "\"I do.\" {n}She sits up very straight, businesslike, which on her looks like a child playing shopkeeper.{/n} \"The day of the coin I borrowed some of your luck and spent it on the Council. On believing.\"",
+          "Text": "\"I do.\" {n}She sits up very straight and folds her hands on the table, and for once she is every inch the patron whose priests keep her accounts in three temples.{/n} \"The day of the coin I borrowed some of your luck and spent it on the Council. On believing.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -252085,7 +252391,7 @@
         {
           "Id": "open",
           "Speaker": "Narrator",
-          "Text": "{n}There is no parcel. Chadali is sitting at the Council table with her hands flat on the wood, very straight, like a schoolgirl who has been sent for. In front of her lies a small black notebook that is not hers.{/n}",
+          "Text": "{n}There is no parcel. Chadali is sitting at the Council table with her hands flat on the wood, very straight, like a petitioner who has come to hear a verdict. In front of her lies a small black notebook that is not hers.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -252932,7 +253238,7 @@
         {
           "Id": "side",
           "Speaker": "Chadali",
-          "Text": "{n}She looks at you with frank, open curiosity, and not a flicker of jealousy.{/n}\n\"Then she'd be less lonely.\" {n}Simply.{/n} \"That's good. That's the best thing. You'd have to be very patient. She argues about everything, even about things she wants.\"\n{n}And then, with a sly little smile:{/n} \"Don't let her minute me out of your evenings, though. She'd try. She'd do it very politely, with a motion.\"",
+          "Text": "{n}The bracelet stops turning. She looks at you for a while, and the look is not jealous, and not anything else you can put a name to either.{/n}\n\"That isn't a cookie question.\" {n}Quietly.{/n} \"That's a whole-parcel question, and I haven't baked it. Don't ask it at this table while there's a war eating everybody's evenings. I'll know what I think when there's time to think it. So will she.\"\n{n}And then, a little too brightly:{/n} \"Anyway, she'd minute it. With a motion. Probably against.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -428468,6 +428774,9 @@
     "eritrice.aid_moved": [
       "6cc3a4f0d7dc4c949b62a80dc81cabc0"
     ],
+    "eritrice.shyka_dull_future": [
+      "1d1c4855bacf5a94fb1e84b7ae8424a3"
+    ],
     "eritrice.nocticula_named": [
       "f2022cc8f6117df4c9418824428c592a"
     ],
@@ -435711,6 +436020,20 @@
           "Forbids": [],
           "AnyGroups": [],
           "Tooltip": "RRT_WordMadeTrueUses"
+        },
+        {
+          "Id": "secret.chivarro_double",
+          "Section": "Secrets",
+          "Portrait": "Chivarro",
+          "Title": "The boy in her rings",
+          "Text": "{n}Herrax sold me Chivarro's double before I went down to kill her: Sael, an incubus of the Delights who wore her face for guests who could not afford her. He went into her cellar in her rings, and I killed him there, knowing, so that the Lower City would bury her and I could buy her. He never knew what he was for. The house still has his fingers on its tray. {g|RRT_SecretRisk}Risk: medium.{/g}{/n}",
+          "Lines": [],
+          "Requires": [
+            "trickster.secret.chivarro_double"
+          ],
+          "Forbids": [],
+          "AnyGroups": [],
+          "Tooltip": "RRT_Secret"
         },
         {
           "Id": "secret.mielarah_oskel",

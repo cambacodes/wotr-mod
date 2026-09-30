@@ -646,8 +646,8 @@ When they turn toward you, neither makes a demand of the silence.{/n}''',
 "She makes leaving sound like a threat. It is one of her better accomplishments."
 "And what do you want?"
 "You. Here. Paying attention to something that is not about to kill either of us."
-{n}She rests a hand against your cheek. Her thumb traces a short, deliberate line before she lets her hand fall.{/n}
-"If you have changed your mind since we last spoke about this, say so. If you haven't, you may still say what you want tonight. I have no intention of spending the hour pretending I can read you perfectly."''',
+{n}She rests a hand against your cheek, and her thumb traces a short, deliberate line down to the corner of your mouth and presses there, the way a buyer presses fruit.{/n}
+"One hour. She will time it to the grain of sand. I have waited for this through two cities and a demon lord's patience, and I am not going to spend it watching you think. Kiss me, or go and help her carry the tray."''',
       c('"Kiss me."', "minagho_kiss"),
       c('"Stay close. I want the hour, without going further tonight."', "minagho_close")),
     n("minagho_kiss", "Narrator", '''{n}Minagho leans close enough that her hair brushes your cheek, then stops.{/n}
@@ -657,8 +657,8 @@ When they turn toward you, neither makes a demand of the silence.{/n}''',
 {n}That earns you the kiss. Her hand tightens at your collar; the little triumphant sound she makes when you draw her closer is almost a laugh. She has forgotten the elegant position she meant to maintain. One knee strikes the table. A stone from the abandoned game falls, and she catches it without looking away from you.{/n}
 "A witness. We should dispose of it."
 {n}You take the stone from her fingers and put it beside the others. When you turn back, the levity has thinned. She is waiting, mouth slightly parted, as if your returning were the uncertain part.
-You kiss her again. This time she lets the waiting show before answering it.
-The rest of the hour grows private. Later she steals your place on the cushion while you reach for the wine, then complains when you insist on sharing it. Her head settles against you halfway through the complaint.{/n}
+You kiss her again. This time she lets the waiting show before answering it, and then answers it all at once. She shoves the tray off the couch with her heel, stones and all, drags her dress off one shoulder and then the other without breaking the kiss, and climbs into your lap with a knee either side of your hips, pulling your hands up the bare length of her back. "One hour," she says into your mouth, already working at your belt. "Do not waste it being gentle."
+Afterwards she steals your place on the cushion while you reach for the wine, then complains when you insist on sharing it. Her head settles against you halfway through the complaint.{/n}
 "Next time, two hours. Chivarro negotiated very poorly on my behalf."''', c('"Yes. Another hour, when we both want it."', flags=done("evening_kept", "minagho_chosen"))),
     n("minagho_close", "Minagho", '''"Then I shall have to be interesting while dressed. A terrible hardship."
 {n}She settles against your side. You ask what she enjoyed before she learned to make pleasure useful. At first she offers an answer so extravagant that it is plainly a deflection. When you wait, she tries again.{/n}
@@ -674,13 +674,13 @@ The rest of the hour grows private. Later she steals your place on the cushion w
 "Does this trouble you?"
 "Her leaving us an hour? No. The possibility that you will spend it asking me to explain her? Very much."
 {n}Her smile takes the sting out of the answer without withdrawing it.{/n}
-"Ask me something you want to know about me. Or tell me what you want to do with this distance. I have left you very little of it."''',
+"I have sold a thousand evenings like this one to other people, and I know exactly how every one of them begins. Surprise me. I have left you very little room to do it in."''',
       c('"I would like to kiss you."', "chivarro_kiss"),
       c('"Take my hand. Tell me something you have never needed a guest to like."', "chivarro_close")),
     n("chivarro_kiss", "Chivarro", '''"Yes. Come here."
 {n}She meets you halfway. Her hand rests at the back of your neck, firm enough that you feel the decision in it. When you separate, she remains close, studying your answer before asking for another kiss.
-You give it. This time she lets you set the pace. There is a quiet pleasure in the way she follows it, then a pleased, unmistakable insistence when she asks for something of her own.
-The hour belongs to both of you. You speak when words are needed and stop when either asks. When Minagho returns and announces that the wine is appalling, Chivarro laughs against your shoulder before sitting up.{/n}
+You give it. She lets you lead for exactly as long as it amuses her, and then it stops amusing her: she pushes you down along the couch with one palm flat on your chest, unlaces her bodice with the other hand without looking at it, a madam's quick, practised fingers, and lowers herself over you until her loosened hair closes around both your faces like a curtain. "I have arranged this for other people all my life," she murmurs, settling her weight across your hips. "This one I am arranging for me."
+Much later, when Minagho returns and announces through the door that the wine is appalling, Chivarro laughs against your shoulder before sitting up.{/n}
 "Then leave it outside. I would like to preserve my opinion of the evening."''', c('[Ask Chivarro for another evening together.]', flags=done("evening_kept", "chivarro_chosen"))),
     n("chivarro_close", "Chivarro", '''{n}She takes your hand and considers the question.{/n}
 "I dislike being congratulated on remembering people. They think it is kindness. Sometimes it is simply an excellent memory and a wish not to be deceived twice."
@@ -699,7 +699,7 @@ The hour belongs to both of you. You speak when words are needed and stop when e
 "I want the evening. I want to see what makes you laugh when she has finished pretending to be severe. And I want her to stop looking at your mouth long enough to admit she has been doing it."
 "I thought I had been admirably clear," Chivarro says.
 {n}She offers you her hand as well. Neither pulls you toward the other.{/n}
-"There is room," she says. "And there is time to say what you want. This evening need not become every evening. Nor does it require you to empty the rest of your life."''',
+"There is room," she says. "There has always been room. She simply never learned to share a cushion without drawing blood over it."''',
       c('"I want to kiss each of you, and stay together tonight."', "together_kiss"),
       c('"Let us stay close without taking the evening further."', "together_close")),
     n("together_kiss", "Narrator", '''{n}Chivarro leans toward you and asks for the first kiss. Minagho watches with an attention that makes Chivarro smile against your mouth. When you turn to Minagho, she catches your chin with two fingers.{/n}
@@ -708,11 +708,9 @@ The hour belongs to both of you. You speak when words are needed and stop when e
 Minagho reaches back for you before they part.{/n}
 "Do not become a spectator. She charges for those."
 "You still owe me for the game," Chivarro says.
-{n}She gathers the stones and puts them safely on the floor. Minagho accuses her of planning this rearrangement from the beginning. Chivarro does not deny it. Instead she holds out both hands, one to each of you.
-Their rivalry becomes warmer and more absurd as the night goes on. Minagho can distract Chivarro from almost anything until Chivarro murmurs something in her ear and leaves her, astonishingly, without an answer. You ask what she said.{/n}
-"Something she asked me to repeat," Chivarro says.
-{n}Minagho pulls her close before she can prove it.
-When the lamps are low, Chivarro discovers that Minagho has kept the last sugared plum hidden in her hand all evening. The three-way argument over its division ends with none of you remembering who won.{/n}''', c('[Stay through the quiet end of the evening.]', flags=done("evening_kept", "minagho_chosen", "chivarro_chosen", "together_chosen"))),
+{n}She gathers the stones and puts them safely on the floor. Minagho accuses her of planning this rearrangement from the beginning. Chivarro does not deny it. Instead she holds out both hands, one to each of you, and when you take them she pulls.
+Minagho is already behind you, unhooking your collar with her teeth. Chivarro's dress comes off over her head in one practised motion; Minagho's does not so much come off as tear, and she does not care. Between them they bear you down onto the cushions, Chivarro astride your hips with her hands braced on your chest, Minagho's mouth at your throat and her hand sliding lower, and the last lamp but one goes over when somebody's foot finds it.
+Much later, by the one lamp left, Chivarro discovers that Minagho has kept the last sugared plum hidden in her hand all evening. The three-way argument over its division ends with none of you remembering who won.{/n}''', c('[Stay through the quiet end of the evening.]', flags=done("evening_kept", "minagho_chosen", "chivarro_chosen", "together_chosen"))),
     n("together_close", "Narrator", '''{n}Chivarro arranges the cushions with more authority than the task requires. Minagho objects until she discovers that the result gives her a place against both of you. Then she becomes suspiciously cooperative.
 You sit together and talk. Chivarro asks a question she has been saving about something you said at your first meeting. Minagho answers a different one, realizes what she has done, and laughs when Chivarro tells her to wait her turn.
 The closeness becomes easier as the hour passes. Chivarro's fingers rest loosely through yours. Minagho leans against your shoulder and grows quiet without leaving. When you eventually move, both women let you go, then make room for you to return.{/n}''', c('[Keep this pace for the three of you.]', flags=done("evening_kept", "minagho_chosen", "chivarro_chosen", "together_chosen", "gentle_evening"))),
@@ -1109,25 +1107,22 @@ She opens the door herself. Inside are a low couch, a table with one sound drawe
 For a while you speak about the rehearsal. Chivarro is pleased that Sivane kept the participant's refusal in the scene. She is less pleased that the performer has begun treating every correction as a test of independence. You ask whether she has told her that.{/n}
 "Tomorrow. Tonight I should like an hour without another woman discovering how much I need her to be brilliant."
 {n}Chivarro sits beside you, leaving a little space.{/n}''',
-      c('"May I put my arm around you?"', "close", requires=done("chivarro_chosen")),
-      c('"I would like this to be a private date, if you want that too."', "new_interest", forbids=done("chivarro_chosen")),
+      c('[Put your arm around her.]', "close", requires=done("chivarro_chosen")),
+      c('"Forget the view. Come here."', "new_interest", forbids=done("chivarro_chosen")),
       c('"Then let us spend it as friends. Tell me something you have done badly on purpose."', "friends")),
-    n("close", "Chivarro", '''"Yes. I was beginning to wonder whether the space I left was too large."
+    n("close", "Chivarro", '''"Finally. I was beginning to think I had priced that space too high."
 {n}She settles against you. The position is comfortable until one of the couch's cushions gives way beneath her elbow. She pauses, considers the insult, and moves the cushion to the floor.{/n}
 "That will be the first thing I replace if the performance earns anything."
 "Before the view?"
 "I like the view. Do listen."
-{n}You kiss her when she turns toward you. She draws you closer, then breaks the kiss long enough to ask whether you are comfortable. When you tell her the other cushion is attempting the same betrayal, she laughs and gets up to fetch a folded blanket.
+{n}You kiss her when she turns toward you. She draws you closer, then breaks the kiss long enough to inform the couch that it is on notice. When the other cushion attempts the same betrayal, she laughs and gets up to fetch a folded blanket.
 The remedy works. You have no audience to appreciate the result and no need to make the interruption elegant.{/n}''',
       c('"I would like to stay close like this for the evening."', "warmth"),
-      c('"I want to stay later. Tell me what you would enjoy."', "later")),
-    n("new_interest", "Chivarro", '''{n}She considers the question without moving closer merely to make the answer easier.{/n}
-"Yes. I have been wondering whether you would ask because you wanted it, or because we had spent enough pleasant hours together that you thought it was expected."
-"I want it."
-"Good. Then I can answer the question you meant. I would like you to stay beside me. I would like to find out how you kiss when neither of us has spent the evening performing certainty."
-{n}She offers her hand. You take it and move closer. When you ask if she wants the kiss now, she smiles.{/n}
-"Very much."
-{n}The kiss begins carefully and becomes less cautious when you both return to it. Chivarro keeps your hand in hers afterward. She looks pleased in a way she has not arranged for anyone else to notice.{/n}''', c('[Keep the date gentle and make time for another.]', flags=done("room_kept", "chivarro_date_earned"))),
+      c('"I\'m staying later."', "later")),
+    n("new_interest", "Chivarro", '''{n}She does not move closer to make it easier for you. She looks you over the way she once looked at a new face at the top of her stair: pricing it, and enjoying the pricing.{/n}
+"I have been wondering how long you would sit there being tasteful."
+{n}She holds out her hand, palm up, the gesture of a madam naming a sum.{/n} "Come and find out what I cost when I am not charging."
+{n}You take the hand and she pulls, not hard, only enough. The kiss begins as a negotiation and stops being one when she catches your lower lip between her teeth. Chivarro keeps your hand in hers afterward. She looks pleased in a way she has not arranged for anyone else to notice.{/n}''', c('[Keep the date gentle and make time for another.]', flags=done("room_kept", "chivarro_date_earned"))),
     n("warmth", "Narrator", '''{n}Chivarro stays against you while the strip of daylight climbs the wall outside. She tells you about a room she once disliked so intensely that she rearranged its furniture every time its owner left. Eventually he began crediting her with a theory of design. She let him.
 You ask what was wrong with the room. She describes a chair that forced every guest to look up at its owner, a lamp that shone into their eyes, and a door placed where no one could see who was listening outside.
 Then she stops.{/n}
@@ -1145,7 +1140,7 @@ She catches your wrist and draws you closer.{/n}
 "If you laugh, I shall remember it."
 "For how long?"
 "Stay and find out."
-{n}You do. She lights one lamp, leaving the other cold, and hangs her outer robe on the chair she warned you not to trust. Its legs hold. When she returns, her composure is still there in the lifted chin, the measured approach. Then she bends to kiss you and forgets the line she had clearly prepared.
+{n}You do. She lights one lamp, leaving the other cold, and hangs her outer robe on the chair she warned you not to trust. Its legs hold. When she returns, her composure is still there in the lifted chin, the measured approach. Then she bends to kiss you and forgets the line she had clearly prepared, pushes you down onto the complaining couch, and straddles you there with her knees sunk into the blanket, working your shirt open from the collar down, one button to a breath.
 Much later, she points at the surviving chair.{/n}
 "That one has earned another week."
 {n}You suggest the couch was equally obliging. Chivarro presses her lips to your wrist before answering.{/n}
@@ -1732,8 +1727,8 @@ When she sees you, she steps aside at once.{/n}
 "Did you move it?"
 "Eventually. It took less time than resenting it. I remain annoyed by that discovery."
 {n}The room grows easier around the shared complaint. Chivarro rests her head against the couch and lets her eyes close in the mortal guise she wore through the streets. After a moment she lets the disguise go, keeping her own face here with you.{/n}''',
-      c('[Offer her your hand and ask whether she wants you closer.]', "affection", requires=done("chivarro_affection")),
-      c('"Would you like me to stay nearby while you rest, without turning it into a conversation?"', "quiet"),
+      c('[Hold out your hand.]', "affection", requires=done("chivarro_affection")),
+      c('"Rest. I\'ll stay, and I won\'t talk."', "quiet"),
       c('"I have a small, unreasonable question. What would you have done with a completely empty house tonight?"', "empty")),
     n("affection", "Chivarro", '''"Closer."
 {n}She moves first, settling beside you before you have to decide how much space the invitation means. Her hand finds yours. She is warm from the room and entirely unhurried.{/n}
@@ -1744,12 +1739,12 @@ When she sees you, she steps aside at once.{/n}
 "That. I would like more of that, with fewer people waiting for me to count them afterward."
 {n}Her thumb moves over your knuckles while she waits for your answer.{/n}''',
       c('"Then let tonight be quiet and close."', "held"),
-      c('"I would like to spend the night, if you want that too."', "night")),
+      c('"I\'m staying the night."', "night")),
     n("held", "Narrator", '''{n}You remain together on the couch. Chivarro adjusts the blanket so neither of you has to keep rescuing it from the floor. When she becomes quiet, you let the quiet continue.
 After a while she tells you that she has begun recognizing the sound of your arrival. She lists the details with a hostess's precision, then becomes annoyed with herself for making affection sound like surveillance.
 You tell her what you have begun recognizing about her. That earns a laugh, an objection to one detail, and finally a kiss that ends the argument before either of you has won it.
 The drawer remains closed. At the door, later, she asks you to keep the hour in mind when you decide what you want after the fighting is done. She does not ask for the answer while you are still warm from being held.{/n}''', c('[Keep the quiet evening as something you chose together.]', flags=done("after_lamps_kept", "after_lamps_close"))),
-    n("night", "Chivarro", '''"I do. Take that pin out before it makes a hole in either of us."
+    n("night", "Chivarro", '''"You are. Take that pin out before it makes a hole in either of us."
 {n}Chivarro turns her shoulder toward you. The small silver fastening that looked so effortless beneath the lamps resists your first attempt. She reaches back to guide your fingers, then withdraws her hand when you find the catch.
 The ornament comes free. She exhales with such pleasure that you laugh.{/n}
 "Do not flatter yourself. It has been tormenting me since the overture."
@@ -1758,12 +1753,12 @@ The ornament comes free. She exhales with such pleasure that you laugh.{/n}
 "An ambitious evening after all."
 {n}The kiss tastes faintly of the wine she barely had time to drink. She makes you wait through a second one before taking your hand toward the inner room. On the way she stops to put the silver pin into an empty bowl. You ask whether it has been condemned.{/n}
 "Sentenced. I may pardon it when I see how it looks with another dress."
-{n}That is the last business she attends to. In the dark she is less composed, sometimes impatient, and inclined to laugh at the precise moment you expect another devastating remark. Once she says your name without anything attached to it. You answer by drawing her closer.
+{n}That is the last business she attends to. In the inner room she lets the dress fall where she stands and steps out of it, pushes you back onto the bed with both hands, and follows you down, a knee either side of you, her loosened hair falling across your face and her fingers already at your belt. "Now," she says, "the part I have not rehearsed."
 Near dawn, a cart rattles beneath the window. She lifts her head, listens as if she might have it arrested, then drops back against you.{/n}
 "If you are leaving, lie convincingly. I should like another hour before I begin believing it."''', c('[Stay together through the quiet night.]', flags=done("after_lamps_kept", "after_lamps_close"))),
     n("quiet", "Narrator", '''{n}Chivarro agrees. She settles at one end of the couch while you take the other. Neither of you fills the first silence. The room has its own small sounds: a footstep outside, the settling of the lamp, a draught touching the hanging cloth.
 At first she opens her mouth whenever something occurs to her. Then she begins letting thoughts pass without asking you to receive them. You see the effort become easier.
-When she finally speaks, it is to ask whether you are comfortable. You are. She accepts the answer without rearranging the room.
+When she finally speaks, it is to complain about the lamp, and then, visibly, to decide not to get up and fix it.
 Later, she walks you to the door.{/n}
 "I had forgotten that company could make a room quieter. Thank you for reminding me without claiming credit for an important discovery."
 {n}Her hand rests on your arm for a moment. Then she lets you go.{/n}''', c('[Leave her the rest she wanted.]', flags=done("after_lamps_kept", "after_lamps_rest"))),

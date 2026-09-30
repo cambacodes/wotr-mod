@@ -296,11 +296,15 @@ partner("kiana", "kiana", "kiana.committed", "kiana.closed", "Home by Spring",
 
 MCR = "minagho_chivarro.trickster."
 partner("minachiv", "minagho_chivarro", "minachiv.complete", "minachiv.closed", "The House of Two",
-    '''Minagho and Chivarro kept house in Drezen after the war, in a building nobody else would rent, on terms neither of them would ever write down. It was not a romance. It was a contract, renegotiated nightly, and the Commander was a party to it, and they never let {mf|him|her} forget which clauses were {mf|his|hers}.''',
+    '''The house the Commander's demons kept in Drezen after the war stood in a building nobody else would rent, on terms nobody would ever write down. It was not a romance. It was a contract, renegotiated nightly, and the Commander was a party to it, and was never allowed to forget which clauses were {mf|his|hers}.''',
     (
-        page_p('''Baphomet's seal was cheated on his own wording, and Minagho's palm still bled on the anniversary. She chose, that first spring, which side of the Lord of Beasts' ledger she would stand on for the rest of her life. She chose the side with the Commander on it, and said it was only because the other side had worse food.''', requires=(called("minagho_chivarro"), MC + "baphomet_debtor")),
+        # Sol COX (2026-09-30): the coda names the women the Commander actually committed to.
+        page_p('''Minagho and Chivarro both lived there, and fought over the lease every spring, and signed it together every spring, in two hands that took turns with the pen.''', requires=("minachiv.future_two",)),
+        page_p('''Chivarro held the lease, and the rent, and the key. Whoever else came to her door came on her terms.''', requires=("minachiv.future_chivarro",)),
+        page_p('''Minagho held it alone, with a dagger by the door and the Goat's mark dry on her brow, and nobody bargained for her again.''', requires=("minachiv.future_minagho",)),
+        page_p('''Baphomet's seal was cheated on his own wording, and the Commander's palm still opened at dawn, as it had every dawn since the seal moved, while the mark on Minagho's brow stayed dry. She chose, that first spring, which side of the Lord of Beasts' ledger she would stand on for the rest of her life. She chose the side with the Commander on it, and said it was only because the other side had worse food.''', requires=(called("minagho_chivarro"), MC + "baphomet_debtor")),
         page_p('''Herrax collected her favour. Chivarro paid part of it herself, without being asked, and left the rest of the bill on the Commander's pillow with a kiss printed on the total.''', requires=(called("minagho_chivarro"), MC + "herrax_favor")),
-        page_p('''The Commander had knelt to Baphomet once, in front of her. Minagho never forgot it. She stood at the other side of every room after that, and watched the Commander across it with an expression that those who knew her described as a very private kind of respect.''', requires=(MC + "baphomet_knelt",)),
+        page_p('''The Commander had knelt to Baphomet once, for her, while she lay dead in his cells. She learned of it when she woke, and never forgot it. She stood at the other side of every room after that, and watched the Commander across it with an expression that those who knew her described as a very private kind of respect.''', requires=(MC + "baphomet_knelt",)),
         page_p('''The Commander's left palm never quite closed over the scar. Minagho said it was the best-looking thing about {mf|him|her}.''', requires=(MC + "palm_scar",)),
     ), declined=MCR + "declined",
     deal=[[MC + "baphomet_debtor"], [MC + "baphomet_terms"], [MC + "baphomet_knelt"], [MC + "baphomet_branded"], [MC + "herrax_favor"],
