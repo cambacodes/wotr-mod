@@ -218,8 +218,10 @@ beat(P + "kitrane.hulrun", "The Inquisitor at prayer", '"Where were you last nig
 
 beat(P + "kitrane.irabeth", "The Knight-Captain", '"You were watching the barracks."', [
     ki("start", '''"I was." {n}She does not pretend otherwise.{/n}''',
-        c("Continue", "alive", forbids=("irabeth_dead",)),
-        c("Continue", "alive", requires=("irabeth_dead", "irabeth.trickster.returned")),
+        c("Continue", "alive", requires=(CARRIED_IRABETH,), forbids=("irabeth_dead",)),
+        c("Continue", "alive", requires=(CARRIED_IRABETH, "irabeth_dead", "irabeth.trickster.returned")),
+        c("Continue", "drezen", forbids=(CARRIED_IRABETH, "irabeth_dead")),
+        c("Continue", "drezen", requires=("irabeth_dead", "irabeth.trickster.returned"), forbids=(CARRIED_IRABETH,)),
         c("Continue", "gone", requires=("irabeth_dead", CARRIED_IRABETH), forbids=("irabeth.trickster.returned",)),
         c("Continue", "gone_before", requires=("irabeth_dead",), forbids=("irabeth.trickster.returned", CARRIED_IRABETH))),
     ki("alive", '''"Knight Tirabade crossed the square an hour ago. She passed within ten feet of me. She did not look." {n}Galfrey's hands are folded on the pommel of her sword, very still.{/n} "She salutes the Queen's empty chair at the high table every evening, I am told. She has not missed once. And she has not looked at me once since Iz. I laid the Queen's last lie on the one knight in Mendev who cannot tell one, and she carried it, and she will carry it until she dies."''',
@@ -234,6 +236,9 @@ beat(P + "kitrane.irabeth", "The Knight-Captain", '"You were watching the barrac
         c("Continue", "end")),
     ki("gone", '''"Knight Tirabade is dead." {n}Her voice does not change, which is how you know what it costs.{/n} "She carried my last command out of Iz and then she did not come home. The Crows who carried me say she was quiet all the way to the gate. She had the order in her ears and nothing else." {n}Her hands tighten on the pommel.{/n} "I look at the barracks because I keep expecting her to come out of it. It is a habit. I have a great many habits I am going to have to break."''',
         c("Continue", "end")),
+    ki("drezen", '''"Knight Tirabade was in Drezen when I fell; the Queen had left her to hold the city. She does not know." {n}Galfrey's hands are folded on the pommel of her sword, very still.{/n} "She salutes the Queen's empty chair at the high table every evening, I am told. She wept for me in front of her whole company. And every day I stand in the same square as the most honest knight in Mendev and let her grieve a lie." {n}A breath.{/n} "The Crows carried me. They are old men and very discreet. She is neither, and she would never forgive them for it. So I keep my hood up."''',
+        c('"She\'d want to know."', "ask"),
+        c('"Do you want me to tell her?"', "talk")),
     ki("gone_before", '''"Knight Tirabade is dead." {n}Her voice does not change, which is how you know what it costs.{/n} "She fell at Iz before I could give her anything to carry. I called her name with my last command in my mouth, and two old Crows came instead." {n}Her hands tighten on the pommel.{/n} "I look at the barracks because I keep expecting her to come out of it. It is a habit. I have a great many habits I am going to have to break."''',
         c("Continue", "end")),
     ki("end", '''"Go on, Commander. I shall stand here a while longer. The barracks has a very interesting door."''',
@@ -354,7 +359,7 @@ page(P + "kitrane.tallow", "The tallow-seller", [
         c("Continue", "kitrane")),
     nar("kitrane", '''{n}At the top of the street, by the curio stall, a knight in a green surcoat has been watching the whole time from under her hood. She does not come down. When you reach her she takes one of the candles out of your hand without a word, and puts it inside her surcoat, next to the broadsheet about Sir Anselm.{/n}''',
         c("[Stand beside her a while.]", flags=(FORD_ANSWERED,))),
-], requires=("trickster.ever", RETURNED, FORD_PROMISED), forbids=(FORD_ANSWERED, CLOSED), delay=12, kind="visit")
+], requires=("trickster.ever", RETURNED, FORD_PROMISED), forbids=(FORD_ANSWERED, CLOSED), delay=12, kind="visit", Areas=[DREZEN])
 tag(P + "kitrane.tallow", "T")
 
 # --- 10. Two false crowns (the Fool King) ------------------------------------------------------------------------------------
@@ -451,12 +456,19 @@ beat(P + "kitrane.mendev", "News from Nerosyan", '"More broadsheets?"', [
         c('"Then go. Mendev needs you."', "go"),
         c('"Let them learn. It\'s the last thing you can teach them."', "learn"),
         c('"Could you really walk back in?"', "could")),
-    ki("go", '''"Mendev has needed me for a hundred years." {n}Not unkindly.{/n} "That is rather the trouble, Commander. You of all people should understand what it is to be needed so much that nobody asks what you want." {n}She folds the papers.{/n} "Not yet. Perhaps not ever. But thank you for saying it plainly. The regents never did."''',
-        c("[Leave her with her papers.]", flags=(MENDEV,))),
+    ki("go", '''"Mendev has needed me for a hundred years." {n}Not unkindly.{/n} "That is rather the trouble, Commander. You of all people should understand what it is to be needed so much that wanting becomes a luxury." {n}She folds the papers.{/n} "Not yet. Perhaps not ever. But thank you for saying it plainly. The regents never did."''',
+        c("Continue", "orders")),
     ki("learn", '''{n}She looks up at last, and something like gratitude moves across her face and is put carefully away.{/n} "Yes. That is what I have been telling myself since dawn, and it sounds a great deal better in your voice than in mine." {n}She folds the broadsheets into a neat square.{/n} "Let them quarrel. They will learn, or they will not, and either way it will be theirs."''',
-        c("[Leave her with her papers.]", flags=(MENDEV,))),
+        c("Continue", "orders")),
     ki("could", '''"Easily." {n}At once.{/n} "That is what frightens me. The crown is not a weight, Commander. It is a shape, and I have been that shape so long that I could step back into it without a stumble." {n}She touches the green surcoat at her breast.{/n} "This is the first thing in a century I have had to learn to wear. I should like to learn it properly before I decide whether to take it off."''',
-        c("[Leave her with her papers.]", flags=(MENDEV,))),
+        c("Continue", "orders")),
+    ki("orders", '''{n}She taps one broadsheet, then another, with the precision of a woman reading a muster roll.{/n} "The Eagle Watch are staying. The Order of the Crimson Bridle and the knights of the Southern March are going: two hundred lances, and their paymaster's reason is that nobody has paid them since Iz." {n}Very drily:{/n} "Nobody has, because I used to, out of the privy purse, and I am dead. That is my doing, Commander, and I shall not pretend otherwise."''',
+        c("[Pay the two orders' arrears out of the crusade's coffers.]", "paid", flags=(MENDEV, P + "mendev.paid"), crusade=("Finances", -400)),
+        c('"Let them go home. Mendev\'s border needs them too."', "let_go", flags=(MENDEV, P + "mendev.let_go"))),
+    ki("paid", '''"Four hundred in gold, for two hundred lances." {n}She nods once, the way she used to nod at a treasurer.{/n} "It is a fair price. It is also the price of my holiday, and I shall remember that every time I buy boots." {n}She folds the broadsheets away.{/n} "Thank you. Do not tell them where the idea came from."''',
+        c("[Leave her with her papers.]")),
+    ki("let_go", '''"Yes." {n}After a moment.{/n} "Yes, they do. The border was always thin; I kept it thin to feed the crusade. They will be of more use at home than sulking in Drezen." {n}She does not sound as if she believes all of it.{/n} "Two hundred lances fewer at Threshold. I shall stand in one of the gaps myself. It seems only fair."''',
+        c("[Leave her with her papers.]")),
 ], requires=(FIRST,), forbids=(MENDEV,), delay=48)
 
 
@@ -545,7 +557,7 @@ beat(P + "commit.release", "Released", '"I have something to say to my knight."'
     ki("yes", '''{n}She steps in close, closer than any knight stands to her Commander, and puts her hand flat on your chest.{/n} "I choose you. Not your service. Not your army. You." {n}Very low:{/n} "The Crows' tent, at the end of the minor orders' row. After the ninth bell. Bring nothing, and do not dare salute me."''',
         c('"I\'ll be there."', flags=(COMMITTED,)),
         c('[Kiss her] "Consider it an order refused."', flags=(COMMITTED,))),
-], requires=(SWORN,), forbids=(COMMITTED,), delay=48)
+], requires=(SWORN,), forbids=(COMMITTED, FORD_HANGED), delay=48, ForbidOverrides={FORD_HANGED: FORD_ANSWERED})
 
 
 # --- The Crows' tent (a visit: the night, the threshold, the cut, and the morning drill) ----------------------------------------
@@ -554,7 +566,7 @@ page(P + "visit.tent", "The Crows' tent", [
     nar("start", '''{n}The field camp outside Drezen is dark but for cookfires, and the minor orders' row is the darkest part of it. At its far end a tent sags a little to the left, and a mule tethered by the flap lays back its ears at you as you pass. From somewhere inside the next tent a sergeant of sixty is snoring, pointedly.{/n}
 {n}A single lantern is burning inside the Crows' tent. Kitrane is standing beside it in full plain armour, as if for inspection.{/n}''',
         c("Continue", "armour")),
-    ki("armour", '''"I kept it on." {n}Before you can say anything.{/n} "I have been armoured and unarmoured by squires every day of my life since I was fifteen. Some of them were very good. None of them were you." {n}She lifts her chin, and her eyes are very dark in the lantern light.{/n} "A hundred years, Commander, and not one night that belonged to me. This one does. I want to be taken out of this armour by someone I chose."''',
+    ki("armour", '''"I kept it on." {n}Before you can say anything.{/n} "I have been armoured and unarmoured by squires every day of my life since I was fifteen. Some of them were very good. None of them were you." {n}She lifts her chin, and her eyes are very dark in the lantern light.{/n} "I have put this night off since the war camp, Commander, for good reasons, every one of them Mendev's. I am done putting it off. I want to be taken out of this armour by someone I chose."''',
         c("[Start with the gauntlets.]", "buckles"),
         c('[Flirt] "Your Majesty\'s armourer, at your service."', "majesty")),
     ki("majesty", '''"Don't." {n}But she is laughing, low in her throat.{/n} "Or do. There is nobody here to hear it but the mule, and I am told the mule has no politics." {n}She holds out her hands.{/n} "Gauntlets first. Then I shall instruct you, since you clearly need it."''',
@@ -565,7 +577,7 @@ page(P + "visit.tent", "The Crows' tent", [
     nar("mail", '''{n}The cuirass comes away, and the tassets, and the mail she shrugs off herself with a soldier's practised twist. Underneath she is in a padded arming doublet, dark with sweat at the collar, and she stops laughing.{/n}
 {n}She unlaces the doublet herself, slowly, watching you the whole time, her fingers very sure. Under it the linen is thin and old. At her collarbone the pale seam of Iz runs down beneath the cloth, and she does not try to hide it. She takes your hand and lays it there, over the scar, and holds it.{/n}''',
         c("Continue", "want")),
-    ki("want", '''"There." {n}Her voice has gone low and rough.{/n} "That is where the Queen ended. Everything below it is Kitrane's, and Kitrane has been waiting a hundred years to be touched by someone who was not asking her for anything." {n}Her hand tightens over yours.{/n} "I am not asking you for anything either. I am telling you. I want you, Commander, and I intend to be thorough about it."''',
+    ki("want", '''"There." {n}Her voice has gone low and rough.{/n} "That is where the Queen ended. Everything below it is Kitrane's, and Kitrane knows exactly what she wants and has decided to have it." {n}Her hand tightens over yours.{/n} "I am not asking you for anything either. I am telling you. I want you, Commander, and I intend to be thorough about it."''',
         c("[Kiss the scar.]", "scar"),
         c("[Let her lead.]", "lead")),
     nar("scar", '''{n}You bend your head and put your mouth to the seam of it, and she draws a breath like a woman surfacing from deep water. Her hands go into your hair, and pull, and hold you there, and then drag you up to her mouth.{/n}''',
@@ -591,7 +603,7 @@ page(P + "visit.tent", "The Crows' tent", [
 {n}"Nobody saluted," she tells you afterwards, sheathing her sword. "I have been saluted every morning of my life. I did not know how heavy it was until this one."{/n}''',
         c('"Get used to it."', flags=(TENT, DRILL)),
         c("[Salute her, very badly.]", flags=(TENT, DRILL))),
-], requires=("trickster.ever", COMMITTED), forbids=(TENT, CLOSED, FORD_HANGED), delay=8, ForbidOverrides={FORD_HANGED: FORD_ANSWERED})
+], requires=("trickster.ever", COMMITTED), forbids=(TENT, CLOSED, FORD_HANGED), delay=8, ForbidOverrides={FORD_HANGED: FORD_ANSWERED}, Areas=[DREZEN])
 tag(P + "visit.tent", "T")
 
 
@@ -632,7 +644,7 @@ beat(P + "kitrane.crown", "The crown or the crow", '"You wanted to walk the wall
     ki("kitrane", '''"Kitrane will not end. She will have a crown on again, that is all, and know the difference between the woman and the hat." {n}She turns to you at last.{/n} "I shall take no more elixir. The church may offer it; I shall refuse it at the altar, in front of them all. The Queen of Mendev will grow old like anybody, and when she is tired, she will abdicate, and go and be a knight of some small order that nobody has heard of."''',
         c('"I\'ll stand beside you in the cathedral."', "end_crown", flags=(CROWN,)),
         c('"You don\'t have to do this."', "must", flags=(CROWN,))),
-    ki("must", '''"No. I do not have to. That is why I can." {n}Quite gently.{/n} "For a hundred years everything I did, I had to. This I choose. You taught me the difference, at Iz, with a name. Do not try to unteach it now."''',
+    ki("must", '''"No. I do not have to. That is why I can." {n}Quite gently.{/n} "For a hundred years I chose for Mendev, and chose well. This I choose for myself. You taught me the difference, at Iz, with a name. Do not try to unteach it now."''',
         c("Continue", "end_crown")),
     ki("end_crown", '''"After Threshold, then." {n}She looks back out at the Wound.{/n} "Until then I am Kitrane of the Green Crows, and I have a squire to drill, and a mule who bites. Do not tell anyone, Commander. I should like to enjoy the last of it."''',
         c("[Stand with her on the wall until the light goes.]")),

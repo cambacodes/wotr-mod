@@ -185,6 +185,10 @@ internal static class GalfreyTricksterTests
         var taken = One(offer, bed, new[] { Taken, P + "sorcery_read", "galfrey.started" }, P + "cost.rent_scar");
         var takenBlind = One(offer, bed, new[] { Taken, P + "blind", P + "cost.rent_scar" });
         var died = Died(taken);
+        check(Program.Walk(offer, Later(story, bed, 0, null, "galfrey.kc_after_fane")).Where(r => r.Has(Taken)).All(r => r.Has(P + "carried.crows") && !r.Has(P + "carried.irabeth")),
+            "Trk_Galfrey_Kitrane: Irabeth carries the order while she was left in Drezen (the title kept after the Fane).");
+        var awayRest = Later(story, died, 40); awayRest.Area = "";
+        check(!Rules.Available(story, eulogy, awayRest), "Trk_Galfrey_Kitrane: the Drezen vigil plays at a rest outside Drezen.");
         check(Rules.Available(story, road, Later(story, died, 12)) && Rules.Available(story, eulogy, Later(story, died, 40)),
             "Trk_Galfrey_Kitrane: the road or the eulogy does not follow the taken offer.");
         var roaded = One(road, Later(story, died, 12), new[] { P + "cost.coffin" });
@@ -228,7 +232,12 @@ internal static class GalfreyTricksterTests
             "Trk_Galfrey_RefusedThenYes: letting her die as the Queen does not close her route and give her page.");
 
         // Trk_Galfrey_Offscreen: the Commander never came; planted, she writes; unplanted, canon stands.
-        var offscreen = World(story, 5, "trickster", "trickster.ever", "iz.left_early", Dead, P + "crows_mooted");
+        var offscreen = World(story, 5, "trickster", "trickster.ever", "iz.left_early", Dead, P + "crows_mooted", P + "crows_briefed");
+        check(!Rules.Available(story, alone, World(story, 5, "trickster", "trickster.ever", "iz.left_early", Dead, P + "crows_mooted")),
+            "Trk_Galfrey_Offscreen: her letter comes without the Commander's standing orders to the Crows.");
+        check(Rules.Available(story, S(P + "ch3.standing_orders"), World(story, 3, "trickster", P + "crows_mooted"))
+              && !Rules.Available(story, S(P + "ch3.standing_orders"), World(story, 3, P + "crows_mooted")),
+            "Trk_Galfrey_Offscreen: the standing orders are not a Trickster preparation in Chapter 3.");
         var wrote = One(alone, offscreen, new[] { Taken, P + "cost.rent_scar", P + "cost.alone", P + "cost.coffin" });
         check(!Rules.Available(story, retScarred, Later(story, Later(story, wrote, 10, null, "coronation.after", "coronation.seen"), 100))
               && Rules.Available(story, retScarred, Later(story, One(eulogy, Later(story, wrote, 40, null, "coronation.after", "coronation.seen"), new[] { P + "cost.eulogy" }), 100))
@@ -246,6 +255,10 @@ internal static class GalfreyTricksterTests
         check(!Rules.Available(story, release, Later(story, sworn, 20)) && Rules.Available(story, release, Later(story, sworn, 50)),
             "Trk_Galfrey_Sworn: the release is not 48 hours after the oath.");
         One(release, Later(story, sworn, 50), new[] { Committed });
+        var swornHanged = Later(story, sworn, 1, null, P + "ride.hanged", P + "ride.refused_order");
+        check(!Rules.Available(story, release, Later(story, swornHanged, 60))
+              && Rules.Available(story, release, Later(story, swornHanged, 60, null, P + "ride.answered")),
+            "Trk_Galfrey_Sworn: the release ignores an unanswered hanging, or stays shut after the terms are kept.");
         check(Program.Walk(release, Later(story, sworn, 50)).Any(r => !r.Has(Committed)),
             "Trk_Galfrey_Sworn: the release has no refusal of hers (an order dressed as a release).");
         check(Rules.Available(story, S(P + "epilogue.sworn"), World(story, 6, sworn.Flags.ToArray())),
@@ -280,6 +293,9 @@ internal static class GalfreyTricksterTests
             "Trk_Galfrey_NativeFirst: the native world does not count her once, with exactly one page.");
         check(!World(story, 6, "trickster.ever", "galfrey.romance_active", Dead).Has(P + "partner"),
             "Trk_Galfrey_NativeFirst: a dead Queen counts as a partner through the native romance.");
+        var lost = World(story, 6, night.Flags.Concat(new[] { "trickster.ever", Dead, "sacrifice" }).ToArray());
+        check(Rules.Available(story, S(P + "epilogue.widow"), lost) && !Rules.Available(story, S(P + "epilogue.kitrane"), lost),
+            "Trk_Galfrey_Pages: a Commander lost at Threshold still gets the shared-life page.");
         foreach (var w in new[] { night, sworn, letDie })
         {
             var epi = World(story, 6, w.Flags.Concat(new[] { "trickster.ever", Dead }).ToArray());
@@ -292,9 +308,9 @@ internal static class GalfreyTricksterTests
               && reactions.Where(s => s.Owner == "Irabeth").All(s => s.Forbids.Contains("irabeth_dead")
                   && s.ForbidOverrides.TryGetValue("irabeth_dead", out var r) && r == "irabeth.trickster.returned"),
             "Galfrey's reactors are not Irabeth (three), Seelah, Hulrun (two), Daeran and the King, or Irabeth's are unguarded.");
-        check(pages.Length == 5 && pages.All(s => s.MinChapter == 6 && s.MaxChapter == 6 && s.Requires.Contains("trickster.ever")
+        check(pages.Length == 6 && pages.All(s => s.MinChapter == 6 && s.MaxChapter == 6 && s.Requires.Contains("trickster.ever")
                   && s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0)),
-            "Her epilogue pages are not five read-only Trickster Chapter 6 pages.");
+            "Her epilogue pages are not six read-only Trickster Chapter 6 pages.");
 
         Console.WriteLine("PASS: Galfrey Trickster (Trk_Galfrey_*): the Kitrane question in Chapters 2-4 on every path, the offer at the bed "
             + "read or blind, for Mendev refused and for her taken, the road, the eulogy, the letter from the rubble, the return, the oath refused "

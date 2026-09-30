@@ -87,7 +87,9 @@ LETTER_BURNED = P + "letter_burned"
 PLANTED = P + "kitrane_planted"
 ADDRESS = P + "address_heard"             # Ch4: a hag of the Midnight Isles says a curse is an address (a market saying, labelled)
 CARRIED_IRABETH = P + "carried.irabeth"   # who took the Queen's last command: Irabeth
-CARRIED_CROWS = P + "carried.crows"       # ...or the Crows, Irabeth being already dead           # Derived: she mooted Kitrane once, in Chapter 2, 3 or 4
+CARRIED_CROWS = P + "carried.crows"       # ...or the Crows (Irabeth dead, or left in Drezen: PlayerIsKnightCommanderAfterFane)
+BRIEFED_ID = P + "ch3.standing_orders"
+BRIEFED = P + "crows_briefed"             # T, Chapter 3: the Commander gave the Crows standing orders (the offscreen escape needs it)
 # Authored: the device (T).
 OFFER = P + "iz.offer"
 READ = P + "sorcery_read"                 # the dark light in the wound answered the title, and stilled at "Kitrane"
@@ -265,6 +267,26 @@ SCENES.append(scene(CROWS, "The Green Crows", "Galfrey", 3, '"Did Kitrane come w
 tag(CROWS, "N-all")
 
 
+# --- Chapter 3 (T, a visit): standing orders for the Crows ----------------------------------------------------------------------
+# The Trickster's preparation for the worst case (a death the Commander is not there for): orders, gold and a plan, given to the
+# old sergeant of her bodyguard. Planned, not magical; the offscreen escape needs it.
+
+page(BRIEFED_ID, "Standing orders", [
+    nar("start", '''{n}The Green Crows who ride with the Queen keep a tent at the edge of the Drezen camp, apart from the grand orders, where nobody asks what three old knights and a squire are guarding. The sergeant is sixty, grey as a badger, and sharpening a sword that does not need it.{/n}
+{n}He knows who you are. He knows, you suspect, exactly why you have come alone after dark.{/n}''',
+        c('"If the Queen ever falls where I cannot reach her, I want the Crows to have orders."', "orders")),
+    n("orders", "Crows' sergeant", '''"Orders." {n}He does not stop sharpening.{/n} "The Crows have one order, Commander. Stand next to her. We do it very badly; she will ride in front." {n}The stone stops.{/n} "Go on, then. What orders?"''',
+        c('"If she is dying, and she calls herself Kitrane, you carry out Kitrane. Not the Queen. Whatever it costs, and whoever asks."', "why")),
+    n("why", "Crows' sergeant", '''{n}He looks at you for some while.{/n} "She told us about that. The name. In the war camp. She said it like a woman says she would like to see the sea." {n}He sets the sword across his knees.{/n} "You want me to carry off the Queen of Mendev under a false name if she asks for it, and lie to every knight in the crusade." {n}A breath.{/n} "No. You want me to be ready to. She would have to ask. That is different."''',
+        c("[Put a purse on his knee.] \"For a cart, a cloak, and a surgeon who does not know her face.\"", "take", flags=(BRIEFED,)),
+        c('"She would have to ask. I want you ready if she does."', "take", flags=(BRIEFED,)),
+        c('"Forget I came."', abort=True)),
+    n("take", "Crows' sergeant", '''{n}He does not touch the purse, if there is one; he nods at it, the way a man nods at a debt he means to pay.{/n} "If she asks, it will be done. If she does not, I never saw you." {n}He goes back to his sword.{/n} "Sir Anselm will want to know. He is deaf. He will make me shout it. I shall tell him you came to buy a horse."''',
+        c("[Leave the Crows to their tent.]")),
+], requires=("trickster",), forbids=(BRIEFED, DEAD), delay=24, chapters=(3,), kind="visit", RequiresAnyGroups=[[E_MOOTED, CROWS_MOOTED, PRESSED]])
+tag(BRIEFED_ID, "T")
+
+
 # --- Chapter 4 (N-all, a memory in the Abyss): another face in the crowd ------------------------------------------------------
 
 page(P + "ch4.crowd", "Another face in the crowd", [
@@ -408,8 +430,11 @@ SCENES.append(scene(OFFER, "The Queen's last hour", "Galfrey", 5, "[Kneel beside
     n("command_romance", "conversant", '''{n}Her thumb moves once across your knuckles.{/n} "We never had our conversation. I kept putting it off until after the next battle. There was always a next battle." {n}Very low:{/n} "If this works, Commander, Kitrane will want it. She is much less patient than I am."''',
       c("Continue", "command")),
     n("command", "conversant", '''{n}She lifts her head a finger's breadth, and her voice changes. It is the voice she uses on parade grounds, and it carries.{/n} "Knight Tirabade. To me."''',
-      c("Continue", "irabeth", forbids=("irabeth_dead",), flags=(CARRIED_IRABETH,)),
-      c("Continue", "crows", requires=("irabeth_dead",), flags=(CARRIED_CROWS,))),
+      c("Continue", "irabeth", forbids=("irabeth_dead", KC_KEPT), flags=(CARRIED_IRABETH,)),
+      c("Continue", "crows", requires=("irabeth_dead",), flags=(CARRIED_CROWS,)),
+      c("Continue", "crows_drezen", requires=(KC_KEPT,), forbids=("irabeth_dead",), flags=(CARRIED_CROWS,))),
+    n("crows_drezen", "Narrator", '''{n}Nobody answers to the name. The Queen remembers, a heartbeat late: Knight Tirabade is in Drezen, where the Queen left her to hold the city. Her mouth tightens. "The Crows, then." Two knights in green surcoats with three black birds on the breast come through the ring and kneel, the older of them bleeding from the scalp and not troubling to wipe it.{/n}''',
+      c("Continue", "order")),
     n("irabeth", "Narrator", '''{n}Irabeth comes through the ring of knights like a woman walking into a gale, her face grey, her blade still in her hand because she has forgotten it is there. She kneels on the Queen's other side. She does not look at you.{/n}''',
       c("Continue", "order")),
     n("crows", "Narrator", '''{n}Nobody answers to the name. The Queen remembers, a heartbeat late, and her mouth tightens. "The Crows, then. Whoever of them still stands." Two knights in green surcoats with three black birds on the breast come through the ring and kneel, the older of them bleeding from the scalp and not troubling to wipe it.{/n}''',
@@ -437,8 +462,8 @@ tag(OFFER, "T")
 page(ROAD, "The road out of Iz", [
     nar("start", '''{n}The column goes out of Iz at a walking pace, because the wounded cannot go faster. Behind the Queen's banner, furled now and bound with black, a cart carries a coffin of plain Mendevian oak, sealed with lead at every seam. Knights ride on either side of it with their visors down.{/n}
 {n}Three carts back, among the wounded, a knight of the Green Crows lies under a green cloak with three black birds on the breast. Nobody gives her a second look. There are a great many wounded knights.{/n}''',
-        c("[Ride up beside the coffin.]", "irabeth", forbids=("irabeth_dead",)),
-        c("[Ride up beside the coffin.]", "sergeant", requires=("irabeth_dead",)),
+        c("[Ride up beside the coffin.]", "irabeth", requires=(CARRIED_IRABETH,)),
+        c("[Ride up beside the coffin.]", "sergeant", requires=(CARRIED_CROWS,)),
         c("[Drop back to the wounded.]", "cart")),
     n("irabeth", "Irabeth", '''{n}Irabeth rides at the coffin's head. She lifts her visor when you come alongside, and her face under it is the colour of old ash.{/n} "Commander." {n}She looks straight ahead.{/n} "I have told eleven people since dawn that the Queen fell at Iz. It was true every time. I watched her fall." {n}Her jaw works.{/n} "I have never told a lie in my life. I have just found out that I did not need to. I do not know what that makes me."''',
         c('"It makes you the only person she trusted with it."', "irabeth2"),
@@ -519,15 +544,15 @@ page(P + "iz.eulogy", "The Queen lies in state", [
     nar("done", '''{n}Afterwards, alone in your quarters, you find that your hands are shaking, and that you are not certain whether it is from what you have done or from how well you did it.{/n}
 {n}Half of Drezen will remember that eulogy for the rest of their lives. You will remember that it was a lie, and who it was for, and that somebody in that chapel may have heard it for what it was.{/n}''',
         c("[Put out the lamp.]")),
-], requires=("trickster.ever", TAKEN, DEAD), forbids=(RETURNED, CLOSED), delay=30, kind="event", owner="Commander",
+], requires=("trickster.ever", TAKEN, DEAD), forbids=(RETURNED, CLOSED), delay=30, kind="event", owner="Commander", Areas=[DREZEN],
     TricksterDevice=True, TricksterState="dead")
 tag(P + "iz.eulogy", "T")
 
 household.secret(
     SECRET_KEY, "The Queen's eulogy",
     "I stood before the altar in Drezen and grieved for the Queen of Mendev in front of the whole city, knowing she was alive "
-    "in a Crows' tent outside the walls, and that the coffin held a knight called Sir Anselm Wray. Irabeth knows; she carried "
-    "the order. The Inquisitor prays for the Queen every night, and he was in the chapel when I spoke.",
+    "in a Crows' tent outside the walls, and that the coffin held a knight called Sir Anselm Wray. The knights who carried "
+    "her out know. The Inquisitor prays for the Queen every night, and he was in the chapel when I spoke.",
     portrait="Galfrey", witnesses=("irabeth", "seelah"), risk="medium")
 
 
@@ -543,12 +568,13 @@ page(P + "iz.alone", "A letter sealed in green", [
 "I fought the dragon without you. Its sorcery went into me like a hook into a fish. My knights bound the wound three times. I lay in the rubble with Pharasma's door in front of me and I thought, quite calmly: so this is how the Queen ends."''',
         c("Continue", "letter2")),
     ga("letter2", '''"And then, because I am an old woman and my mind wanders, I thought of a knight of a minor order who had her boots stolen twice in the war camp. You once told me she could outlive the Queen. I said some days I envied her.
-"So I tried it. Nobody offered. I offered it to myself, which is a thing I have never done in a hundred years, and I do not recommend it; it is very lonely."''',
-        c("Continue", "irabeth", forbids=("irabeth_dead",), flags=(CARRIED_IRABETH,)),
-        c("Continue", "crows", requires=("irabeth_dead",), flags=(CARRIED_CROWS,))),
-    ga("irabeth", '''"I gave Knight Tirabade the last command of her Queen. The Queen fell at Iz; the wounded knight Kitrane goes to the rear; Sir Anselm Wray, who died beside me, goes home to Nerosyan in my coffin, under my name. She obeyed. She will not lie for me, and she will not have to. She saw me fall."''',
+"So I tried it. Nobody offered; you were not there to. But your old sergeant had his orders and his cart and his purse, and he knelt in the rubble and waited for me to say the word. I offered it to myself. I do not recommend it; it is very lonely."''',
+        c("Continue", "irabeth", forbids=("irabeth_dead", KC_KEPT), flags=(CARRIED_IRABETH,)),
+        c("Continue", "crows", requires=("irabeth_dead",), flags=(CARRIED_CROWS,)),
+        c("Continue", "crows", requires=(KC_KEPT,), forbids=("irabeth_dead",), flags=(CARRIED_CROWS,))),
+    ga("irabeth", '''"The old sergeant of the Crows had your orders; he told me so, kneeling in the rubble, as if confessing. I gave Knight Tirabade the last command of her Queen. The Queen fell at Iz; the wounded knight Kitrane goes to the rear; Sir Anselm Wray, who died beside me, goes home to Nerosyan in my coffin, under my name. She obeyed. She will not lie for me, and she will not have to. She saw me fall."''',
         c("Continue", "letter3")),
-    ga("crows", '''"I gave the last command of the Queen to the two Crows who still stood. The Queen fell at Iz; the wounded knight Kitrane goes to the rear; Sir Anselm Wray, who died beside me, goes home to Nerosyan in my coffin, under my name. They obeyed. They are very discreet men."''',
+    ga("crows", '''"I gave the last command of the Queen to the two Crows who still stood, as you had arranged with them. The Queen fell at Iz; the wounded knight Kitrane goes to the rear; Sir Anselm Wray, who died beside me, goes home to Nerosyan in my coffin, under my name. They obeyed. They are very discreet men."''',
         c("Continue", "letter3")),
     ga("letter3", '''"It has not let go. It has loosened, the way a hand loosens when its owner is listening for something. I think it is waiting to hear the Queen's death proclaimed where she was loved. I have no way to make that happen. You do.
 "If this reaches you, Commander, I am alive, and nobody. If it does not, then I tried, and that will have to do.
@@ -558,7 +584,7 @@ page(P + "iz.alone", "A letter sealed in green", [
         c('[Write back at once] "Hold on. I\'m coming back to Drezen, and I\'ll make sure it\'s said."',
           flags=(TAKEN, RENT, ALONE, STARTED, COFFIN)),
         c("[Fold the letter away, and start planning the vigil.]", flags=(TAKEN, RENT, ALONE, STARTED, COFFIN))),
-], requires=("trickster", LEFT_EARLY, DEAD, PLANTED), forbids=(DYING, KILLED, TAKEN, CLOSED), delay=24, kind="letter",
+], requires=("trickster", LEFT_EARLY, DEAD, PLANTED, BRIEFED), forbids=(DYING, KILLED, TAKEN, CLOSED), delay=24, kind="letter",
     TricksterDevice=True, TricksterState="dead")
 tag(P + "iz.alone", "T")
 
@@ -620,10 +646,10 @@ def return_nodes(scarred):
 
 page(P + "return.kitrane", "A knight of the Green Crows", return_nodes(False),
      requires=("trickster.ever", TAKEN, DEAD, CORONATION, EULOGY), forbids=(RETURNED, CLOSED, RENT, P + "return.kitrane_scarred"),
-     delay=48, TricksterDevice=True, TricksterState="dead")
+     delay=48, TricksterDevice=True, TricksterState="dead", Areas=[DREZEN])
 page(P + "return.kitrane_scarred", "A knight of the Green Crows", return_nodes(True),
      requires=("trickster.ever", TAKEN, DEAD, CORONATION, RENT, EULOGY), forbids=(RETURNED, CLOSED, P + "return.kitrane"),
-     delay=96, TricksterDevice=True, TricksterState="dead")
+     delay=96, TricksterDevice=True, TricksterState="dead", Areas=[DREZEN])
 tag(P + "return.kitrane", "T")
 tag(P + "return.kitrane_scarred", "T")
 
@@ -684,9 +710,12 @@ for rid in (P + "react.irabeth.carried", P + "react.irabeth.alone", P + "react.i
 EPI = "GalfreyEpilogue"
 
 
-def epilogue(id, title, text, requires, forbids=(), paragraphs=()):
+def epilogue(id, title, text, requires, forbids=(), paragraphs=(), survived=True):
+    """survived: the page is a shared life, so it waits for the Commander to have lived (or cheated death)."""
+    extra = dict(ForbidOverrides={"sacrifice": "trickster.cheated_death"}) if survived else {}
     SCENES.append(scene(P + "epilogue." + id, title, EPI, 6, "", [nar("page", text, paragraphs=paragraphs)],
-                        requires=("trickster.ever", *requires), forbids=forbids, last=6, Relationship=REL))
+                        requires=("trickster.ever", *requires), forbids=tuple(forbids) + (("sacrifice",) if survived else ()),
+                        last=6, Relationship=REL, **extra))
     tag(P + "epilogue." + id, "T")
 
 
@@ -710,7 +739,9 @@ KITRANE_PARAGRAPHS = (
     p('''{n}The Green Crows grew, slowly. The girl from the eel stall was knighted in the third year after the war, by a knight of the order in plain armour, in a field, with nobody watching but a mule. She was the first Crow in a century who had never lied about anything.{/n}''',
       requires=(P + "kitrane.squire_sworn",)),
     p('''{n}At the eastern ford she had refused an order of the Commander's, and six people hanged anyway. She never pretended afterwards that she had forgiven it. Every year on that day she and the Commander walked down to a grave in the lower town of Drezen with a tallow candle, and stood there together, and neither of them ever said it was enough.{/n}''',
-      requires=(REFUSED_ORDER,)),
+      requires=(REFUSED_ORDER, P + "ride.answered")),
+    p('''{n}At the eastern ford she had refused an order of the Commander's, and six people hanged anyway, and the Commander never went down to the tallow-seller's. She served to the end all the same. She never once spoke of the ford again, and never once, afterwards, rode where the Commander could order her to stand beside a rope.{/n}''',
+      requires=(REFUSED_ORDER,), forbids=(P + "ride.answered",)),
     p('''{n}Every morning of the rest of her life she drilled at first light, and nobody saluted. She said it was the best part of the day.{/n}''',
       requires=(DRILL,)),
     p('''{n}The Inquisitor Hulrun never turned round at the chapel door. After the war he came to the Crows' tent one evening with his ledger under his arm, sat down on the mule's feed-box, and said nothing at all for an hour. Then he said, "Your Majesty," once, very quietly, and went away. Neither of them ever mentioned it again.{/n}''',
@@ -734,6 +765,11 @@ epilogue("sworn", "Kitrane, sworn", '''{n}Queen Galfrey of Mendev died at Iz and
 epilogue("late", "Kitrane, late", '''{n}Queen Galfrey of Mendev died at Iz and was buried with honours in Nerosyan.{/n}
 {n}The war ended before the knight of the Green Crows had sworn her sword to anyone. On the evening after Threshold she found the Commander on the citadel wall, and stood beside them for a long time without speaking, and then asked, as herself and nobody else, whether there was room in the Commander's crowd for one more face. She said it was the first question she had ever asked for her own sake. She did not seem to mind the answer being slow.{/n}''',
          requires=(P + "late_committed",), forbids=(COMMITTED, SWORN, CLOSED), paragraphs=KITRANE_PARAGRAPHS)
+
+epilogue("widow", "Kitrane, after", '''{n}Queen Galfrey of Mendev died at Iz and was buried with honours in Nerosyan.{/n}
+{n}The Commander of the Fifth Crusade did not come back from Threshold. A knight of the Green Crows named Kitrane kept the walls of Drezen that night, as she had asked to, and was there when the news came in the morning. She did not weep where anyone could see. She walked down to the chapel, and stood at the back, as she had once stood for her own vigil, and stayed until the candles went out.{/n}
+{n}She lived a long time after, as nobody in particular, and grew old without a third cup of the church's elixir. Every year on the day of Threshold she went up onto the walls of Drezen at dusk and stood in the crowd, and looked, out of old habit, for a face that was not there.{/n}''',
+         requires=(RETURNED, COMMITTED, "sacrifice"), forbids=("trickster.cheated_death", "lastcall.active", CLOSED), survived=False)
 
 epilogue("native", "The Queen and the Trickster", '''{n}Queen Galfrey of Mendev did not die at Iz. She came home from the Worldwound with her crown on her head and her Commander at her side, and Mendev, which had expected to bury her, did not quite know what to do with her alive.{/n}
 {n}What she and the Commander were to each other was her own affair, and she made sure everyone understood it. At court she was the Queen, severe and exact. In the Fool King's tavern, on the rare evenings she could be persuaded there, she held her cup like somebody who was used to being watched, and spilled some early, on purpose, so that everybody could stop waiting for it. The Commander's strange court of jesters and drunkards took her in without a word, the way it took in everyone, and she found, to her lasting surprise, that she liked it there.{/n}''',
