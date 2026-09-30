@@ -267,7 +267,7 @@ partner("nurah", "nurah", "nurah.complete", "nurah.closed", "The Last Chapter",
         ('''"Front row, for the duplicate bill with my name on it. You burn it when the curtain falls."''',
          (PILLAR, "trickster.lastcall.nurah_story_sold"), (NU + "cost.bill_in_your_name",), (NU + "cost.ramisa_audience",))),
     # R2-6: the late courier and the late pedlar commit on the epilogue page; their coda plays on the late key.
-    page_commit_groups=[["nurah.complete"], [NU + "late_coda"]])
+    page_commit_groups=[[NU + "coda_alive"]])
 
 KI = "kiana.trickster."
 partner("kiana", "kiana", "kiana.committed", "kiana.closed", "Home by Spring",

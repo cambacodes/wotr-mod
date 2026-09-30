@@ -123,7 +123,7 @@ internal static class LastCallTests
 
         // 8. LastCall_AllCommitted: one coda per committed partner; the canon pair plays instead of Anevia's and Irabeth's own.
         var commits = new[] { "anevia.committed", "irabeth.committed", "committed", "arsinoe.committed", "jerribeth.committed", "konomi.committed",
-            "noct.complete", "vellexia.committed", "nurah.complete", "kiana.committed", "minachiv.complete", "soana.committed", "aranka.extension_kept",
+            "noct.complete", "vellexia.committed", "nurah.complete", "nurah.ran_off" /* her coda needs a living Nurah */, "kiana.committed", "minachiv.complete", "soana.committed", "aranka.extension_kept",
             "gesmerha.committed", "seelah.committed", "targona.committed", "dorgelinda.committed", "hepzamirah.committed", "eritrice.committed",
             "areelu.committed", "chadali.committed", "camellia.committed", "arueshalae.committed", "delamere.committed", "nidalynn.committed", "shamira.committed", "jannah.committed", "nenio.committed", "herrax.committed", "terendelev.committed", "eliandra.committed" };
         var all = World(story, 6, new[] { "trickster.ever", Taken, "ending.trickster", "sacrifice", Bottle }.Concat(commits).ToArray());

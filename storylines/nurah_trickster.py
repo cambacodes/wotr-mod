@@ -61,6 +61,7 @@ EVIL = "nurah.trickster.temper_evil"
 LATE_COMMITTED = "nurah.trickster.late_committed"
 PRINTER = "nurah.trickster.cost.printer_paid"          # the early dedication, with a purse sent to the presses (chosen)
 PRINTER_PAID = "nurah.trickster.printer_paid"          # derived: that purse, or a pedlar's run bought and its printer paid
+P_CODA_ALIVE = "nurah.trickster.coda_alive"           # derived: committed and alive now (Last Call page)
 P_LATE_CODA = "nurah.trickster.late_coda"             # derived: a late branch's commit (Last Call page)
 SECOND_EDITION = "nurah.trickster.cost.second_edition"# the pedlar met only in Chapter 5, after her first printing sold out
 DEATHS = ("nurah.dead_drezen", "nurah.dead_camellia", "nurah.killing_mechanism")
@@ -384,7 +385,7 @@ letter("nurah.trickster.ran_off.second_draft_late", "Second printing", 5, [
 ], requires=("trickster", RAN_OFF), forbids=(*DEATHS, GHOST), delay=0, TricksterDevice=True, TricksterState="ran_off")
 
 
-def terms_by_post(id, chapter, opening):
+def terms_by_post(id, chapter, opening, late=False):
     letter(id, "I am extremely funny", chapter, [
         nar("start", opening,
             c("Continue", "pardoned", requires=(RELEASED,)), c("Continue", "letter", forbids=(RELEASED,), requires=(PRINTER_PAID,)),
@@ -400,7 +401,15 @@ def terms_by_post(id, chapter, opening):
 "And I am funny. I am extremely funny. So why would you even want to keep a woman you think isn't?"''',
            *tempers(()),
            c('"Because I wanted the last word in your book."', "refused", flags=(CLOSED, "nurah.trickster.cost.last_word"))),
-        nu("end", '''"Fine. Prove it wrong, then. I'll send you proofs. Don't make me regret the postage."''', c("[Fold the letter away.]")),
+        *([nu("end", '''"Fine. Prove it wrong, then. I'll send you proofs. Don't make me regret the postage."''', c("[Fold the letter away.]"))]
+          if not late else [
+          # Chapter 5 (Sol quality pass, COX): the proofs travel in the same packet, so the late runaway costs two deliveries.
+          nu("end", '''"Fine. Prove it wrong, then. The post takes a month to find you, so chapter one is in with this: the war from the wrong side, forty pages in a hand so small it looks like stitching. There is a gap on the first page exactly one name wide, where you go. Fill it in and send it back, if you still think paper does what you tell it. Or leave it blank, and let me decide what you were."''',
+             *PROOFS_CHOICES),
+          nu("trusted", '''{n}Her answer comes back by the next courier, on the back of the returned proof sheet.{/n} "You left it blank. Trezbot never once left me a blank. I have been staring at your gap for two days and I don't know what to do with it."
+"That is a compliment. Don't get used to it."''', c("[Put the letter away.]")),
+          nu("signed", '''{n}Her answer comes back by the next courier, on the back of the returned proof sheet.{/n} "Your name sits in the gap as if the page had been cut to fit it. Of course. And it will say exactly that, in every copy. You are going to hate how accurate I am."''',
+             c("[Put the letter away.]"))]),
         nu("refused", '''"You've had it. It's printed in every copy I will ever make. That is all the room in my life you get. Don't write again."''',
            c("[Fold the letter away.]")),
     ], requires=("trickster.ever", PRIMED, GHOST, RAN_OFF), forbids=(ACCEPTED,), delay=48, TricksterDevice=True,
@@ -409,7 +418,7 @@ def terms_by_post(id, chapter, opening):
 
 terms_by_post("nurah.trickster.ran_off.terms_by_post", 3,
               '''{n}The envelope is addressed in a hand so furious the nib went through twice.{/n}''')
-terms_by_post("nurah.trickster.ran_off.terms_by_post_late", 5,
+terms_by_post("nurah.trickster.ran_off.terms_by_post_late", 5, late=True, opening=
               '''{n}The envelope has been a long time on the road. It has been opened and resealed at least twice by people who were disappointed in it, and it is addressed in a hand so furious the nib went through twice.{/n}''')
 
 
@@ -657,6 +666,12 @@ def integrate(payload):
     if derived.get(P_LATE_CODA, coda) != coda:
         raise ValueError("Conflicting derived key: " + P_LATE_CODA)
     derived[P_LATE_CODA] = coda
+    # Her Last Call coda plays only for a Nurah alive now: committed and still in her cell (the prison etude stops on her
+    # death), run off, or bought back; or a late branch. G5: the framework page reads this key, never her death flags.
+    alive = [[COMPLETE, "nurah.prison"], [COMPLETE, RAN_OFF], [COMPLETE, RETURNED], [P_LATE_CODA]]
+    if derived.get(P_CODA_ALIVE, alive) != alive:
+        raise ValueError("Conflicting derived key: " + P_CODA_ALIVE)
+    derived[P_CODA_ALIVE] = alive
     ours = {s["Id"] for s in SCENES}
     for s in payload["Scenes"]:
         if s.get("Relationship") != "nurah" or s["Id"] in ours:

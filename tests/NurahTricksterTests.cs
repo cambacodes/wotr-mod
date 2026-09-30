@@ -272,23 +272,41 @@ internal static class NurahTricksterTests
         check(Rules.Available(story, replyLate, lateReplyWorld) && !Rules.Available(story, reply, lateReplyWorld)
               && lateReplyWorld.Has("nurah.trickster.printer_paid"), "The late reply does not follow the late pedlar.");
         var lateAccepted = Program.Walk(replyLate, lateReplyWorld).Where(r => r.Has("nurah.trickster.accepted")).ToList();
-        check(lateAccepted.Count == 3 && Program.Walk(replyLate, lateReplyWorld).Any(r => r.Has("nurah.closed")), "The late reply's outcomes.");
-        var lateRanProofs = Later(story, lateAccepted[0], 72);
-        check(Rules.Available(story, proofs, lateRanProofs), "No proofs after the late reply.");
-        var lateRanSeen = Later(story, After(proofs, lateRanProofs, "proofs_ran", 0), 72);
+        check(lateAccepted.Count == 6 && Program.Walk(replyLate, lateReplyWorld).Any(r => r.Has("nurah.closed")), "The late reply's outcomes.");
+        // Round 5 (COX): the late reply carries the proofs itself, so the missed-primer runaway uses two Chapter 5 deliveries.
+        check(lateAccepted.All(r => r.Has("nurah.trickster.proofs_seen")) && !Rules.Available(story, proofs, Later(story, lateAccepted[0], 72)),
+            "The late reply does not carry the proofs, or the proofs arrive twice.");
+        var ch5Remote = new HashSet<string>();
+        var budgetWalk = ranLate;
+        foreach (var step in new[] { pedlarLate, replyLate })
+        {
+            var w = Later(story, budgetWalk, 72);
+            foreach (var s in story.Scenes.Where(s => s.Relationship == "nurah" && Rules.IsRemote(s) && !s.Reaction && Rules.Available(story, s, w)))
+                ch5Remote.Add(s.Id);
+            budgetWalk = Program.Walk(step, w).First(r => r.Has("nurah.trickster.accepted") || r.Has("nurah.trickster.cost.ghostwritten"));
+        }
+        foreach (var s in story.Scenes.Where(s => s.Relationship == "nurah" && Rules.IsRemote(s) && !s.Reaction && Rules.Available(story, s, Later(story, budgetWalk, 72))))
+            ch5Remote.Add(s.Id);
+        check(ch5Remote.Count <= 2, "The late runaway spends more than two Chapter 5 deliveries: " + string.Join(", ", ch5Remote));
+        var lateRanSeen = Later(story, lateAccepted[0], 72);
         check(!Rules.Available(story, ranTerms, lateRanSeen), "The late runaway gets the in-person terms.");
         var lateRanEnd = Program.Copy(lateRanSeen); lateRanEnd.Chapter = 6; Rules.Complete(story, lateRanEnd);
         check(Rules.Available(story, epCommit, lateRanEnd), "The late runaway has no epilogue commit.");
         // R2-6 (Sol round 1): both late branches reach the Last Call coda on their late key; a refusal never does.
         var lcPage = S("nurah.lastcall.page");
-        check(lcPage.RequiresAnyGroups.Length == 1 && lcPage.RequiresAnyGroups[0].Contains("nurah.complete")
-              && lcPage.RequiresAnyGroups[0].Contains("nurah.trickster.late_coda") && !lcPage.Requires.Contains("nurah.complete"),
-            "The Last Call coda still requires the in-play commit only.");
-        check(lateRanEnd.Has("nurah.trickster.late_coda") && ending.Has("nurah.trickster.late_coda") && !lateRanEnd.Has("nurah.complete"),
+        check(lcPage.RequiresAnyGroups.Length == 1 && lcPage.RequiresAnyGroups[0].SequenceEqual(new[] { "nurah.trickster.coda_alive" })
+              && !lcPage.Requires.Contains("nurah.complete"), "The Last Call coda does not read her living commitment.");
+        check(lateRanEnd.Has("nurah.trickster.coda_alive") && ending.Has("nurah.trickster.coda_alive") && !lateRanEnd.Has("nurah.complete"),
             "A late branch does not reach the coda key.");
+        // Round 5 (INT): committed in the cell, then executed natively: no living coda; bought back: the coda again.
+        var wedThenExecuted = World(story, 6, "trickster.ever", "nurah.complete", "nurah.trickster.released", "nurah.dead_drezen", "nurah.killing_mechanism");
+        check(!wedThenExecuted.Has("nurah.trickster.coda_alive"), "An executed Nurah gets the Last Call coda.");
+        var wedThenBought = Program.Copy(wedThenExecuted); wedThenBought.Flags.Add("nurah.trickster.returned"); Rules.Complete(story, wedThenBought);
+        check(wedThenBought.Has("nurah.trickster.coda_alive")
+              && World(story, 6, "trickster.ever", "nurah.complete", "nurah.prison").Has("nurah.trickster.coda_alive"), "A living committed Nurah loses the coda.");
         var refusedLate = Program.Walk(terms, deadSeen).First(r => r.Has("nurah.closed"));
         var refusedEnd = Program.Copy(refusedLate); refusedEnd.Chapter = 6; Rules.Complete(story, refusedEnd);
-        check(!refusedEnd.Has("nurah.trickster.late_coda") && !refusedEnd.Has("nurah.complete"), "A refusal reaches the coda key.");
+        check(!refusedEnd.Has("nurah.trickster.coda_alive") && !refusedEnd.Has("nurah.complete"), "A refusal reaches the coda key.");
         // Sol round 2 (TRK): proofs seen in the cell and then an execution never commit her, unless she is bought back.
         var executedAfterProofs = World(story, 6, "trickster.ever", "nurah.trickster.released", "nurah.trickster.accepted",
                                         "nurah.trickster.proofs_seen", "nurah.dead_drezen", "nurah.killing_mechanism");
