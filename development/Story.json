@@ -112882,7 +112882,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Sleep brings you to a quay without a sea. The mooring ropes hang into darkness, pulled taut by something the dream has not bothered to supply. Nocticula sits on a bollard with one knee crossed over the other. Her dress is black, its hem quite dry despite the rain that falls several yards away.\nShe watches you notice the missing water. Then she uncrosses her legs and stands.{/n}\n\"Before you ask: no, you have not drowned. And this is not an improvement to the accommodation I promised you. I require your opinion.\"\n\"About a harbor?\"\n\"About a man who has been selling passage through one. He claims to act with my permission. Three of his passengers have disappeared, two have returned richer, and the sixth has offered to sell me his account of the journey.\"\n{n}She passes you a scrap of sailcloth. A black flower has been worked into its edge with exceptionally fine thread. When you turn it over, the reverse is unfinished.{/n}\n\"This is my recollection of the sample. The original is in Alushinyrra. Your dream is not a window through which we can watch the owner scratch himself. I prefer to establish that before you suggest a brilliant plan requiring it.\"\n\"You could simply seize him.\"\n\"I could seize everyone on the quay. Then I would possess a quay full of frightened liars and no explanation for the two profitable journeys. I want the route. I also want to know who believes I am too distracted to notice it.\"",
+          "Text": "{n}Sleep brings you to a quay without a sea. The mooring ropes hang into darkness, pulled taut by something the dream has not bothered to supply. Nocticula sits on a bollard with one knee crossed over the other. Her dress is black, its hem quite dry despite the rain that falls several yards away.\nShe watches you notice the missing water. Then she uncrosses her legs and stands.{/n}\n\"Before you ask: no, you have not drowned. And this is not an improvement to the accommodation I promised you. I require your opinion.\"\n\"About a harbor?\"\n\"About a man who has been selling passage through one. He claims to act with my permission. Three of his passengers have disappeared, two have returned richer, and the sixth has offered to sell me his account of the journey.\"\n{n}She passes you a scrap of sailcloth. A black flower has been worked into its edge with exceptionally fine thread. When you turn it over, the reverse is unfinished.{/n}\n\"My memory of it. The original is in my vault, and my memory is the only one of my rooms you are invited into. Ask me what I did not notice and I shall charge you for the insult.\"\n\"You could simply seize him.\"\n\"I could seize everyone on the quay. Then I would possess a quay full of frightened liars and no explanation for the two profitable journeys. I want the route. I also want to know who believes I am too distracted to notice it.\"",
           "Choices": [
             {
               "Text": "\"You already have servants. What do you want from me?\"",
@@ -116017,14 +116017,56 @@
         {
           "Id": "purpose",
           "Speaker": "Nocticula",
-          "Text": "\"Then we have an object. We still need a way into a house whose owner expects my temper to arrive ahead of me.\"\n{n}She removes the mask from the chair and offers it to you by its unbroken edge. The paint is cool against your thumb. Nothing behind its eyeholes resembles a face.\nYou turn it over. On the reverse, a little hook has been sewn into the ribbon. It is meant to catch when the wearer tries to pull the mask away.{/n}\n\"An economical hostess,\" you say.\n\"And an unimaginative one. She has mistaken difficulty in leaving for a reason to stay.\"\n\"You sound personally offended.\"\n\"I have spent a great deal of effort learning the difference.\"\n{n}She holds out her hand. You return the mask; she places it on the table, facedown. Tonight, at last, she sits beside you rather than behind the arrangement.\nTogether you examine Edris's sketch until you can describe both stairways without looking. Nocticula corrects the width of a landing, then admits the correction is her guess and removes it. The missing measurement remains missing.\nBefore she lets you wake, she asks you to name the one thing she should not promise on your behalf. You answer that she must not put a living person at risk under the claim that you have already agreed to it.\nShe considers that longer than you expected.{/n}\n\"Then return with a plan before I grow fond of my own. I have had a head start.\"\n\"I noticed the furniture.\"\n{n}This time her laugh is real.{/n}",
+          "Text": "\"Then we have an object. We still need a way into a house whose owner expects my temper to arrive ahead of me.\"\n{n}She removes the mask from the chair and offers it to you by its unbroken edge. The paint is cool against your thumb. Nothing behind its eyeholes resembles a face.\nYou turn it over. On the reverse, a little hook has been sewn into the ribbon. It is meant to catch when the wearer tries to pull the mask away.{/n}\n\"An economical hostess,\" you say.\n\"And an unimaginative one. She has mistaken difficulty in leaving for a reason to stay.\"\n\"You sound personally offended.\"\n\"I have spent a great deal of effort learning the difference.\"\n{n}She holds out her hand. You return the mask; she places it on the table, facedown. Tonight, at last, she sits beside you rather than behind the arrangement.\nTogether you examine Edris's sketch until you can describe both stairways without looking. Nocticula corrects the width of a landing, then admits the correction is her guess and removes it. The missing measurement remains missing.\nBefore she lets you wake, she asks you to name the one thing she should not promise on your behalf.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Don't put a living person at risk and tell them I agreed to it.\"",
+              "Next": "vow_guard",
+              "Set": [
+                "noct.lodge_proposed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Promise what you like in my name. I want to approve which lives you spend.\"",
+              "Next": "vow_ledger",
+              "Set": [
+                "noct.lodge_proposed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "vow_guard",
+          "Speaker": "Nocticula",
+          "Text": "{n}She considers that longer than you expected.{/n}\n\"A conscience with a clause in it. How lawyerly of you.\" {n}Her mouth curves.{/n} \"Very well. Then return with a plan before I grow fond of my own. I have had a head start.\"\n\"I noticed the furniture.\"\n{n}This time her laugh is real.{/n}",
           "Choices": [
             {
               "Text": "[Prepare a plan for the lodge from the information actually available.]",
               "Next": null,
-              "Set": [
-                "noct.lodge_proposed"
-              ],
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "vow_ledger",
+          "Speaker": "Nocticula",
+          "Text": "{n}Her eyes go very bright.{/n}\n\"You want the list. Who goes down the stairs first, who holds the door, who is left in the gallery if the bell rings early.\" {n}She leans closer.{/n} \"Most of my generals want to be told afterwards, so they can mourn with a clear heart. You want to sign it.\" {n}A slow smile.{/n} \"I shall send you the list, then. Every name. You will learn how heavy paper can be.\"",
+          "Choices": [
+            {
+              "Text": "[Prepare a plan for the lodge from the information actually available.]",
+              "Next": null,
+              "Set": [],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -118742,7 +118784,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Sleep brings you to a quay without a sea. The mooring ropes hang into darkness, pulled taut by something the dream has not bothered to supply. Nocticula sits on a bollard with one knee crossed over the other. Her dress is black, its hem quite dry despite the rain that falls several yards away.\nShe watches you notice the missing water. Then she uncrosses her legs and stands.{/n}\n\"Before you ask: no, you have not drowned. And this is not a palace door hidden inside the invitation you accepted. I require your opinion.\"\n\"About a harbor?\"\n\"About a man who has been selling passage through one. He claims to act with my permission. Three of his passengers have disappeared, two have returned richer, and the sixth has offered to sell me his account of the journey.\"\n{n}She passes you a scrap of sailcloth. A black flower has been worked into its edge with exceptionally fine thread. When you turn it over, the reverse is unfinished.{/n}\n\"This is my recollection of the sample. The original is in Alushinyrra. Your dream is not a window through which we can watch the owner scratch himself. I prefer to establish that before you suggest a brilliant plan requiring it.\"\n\"You could simply seize him.\"\n\"I could seize everyone on the quay. Then I would possess a quay full of frightened liars and no explanation for the two profitable journeys. I want the route. I also want to know who believes I am too distracted to notice it.\"",
+          "Text": "{n}Sleep brings you to a quay without a sea. The mooring ropes hang into darkness, pulled taut by something the dream has not bothered to supply. Nocticula sits on a bollard with one knee crossed over the other. Her dress is black, its hem quite dry despite the rain that falls several yards away.\nShe watches you notice the missing water. Then she uncrosses her legs and stands.{/n}\n\"Before you ask: no, you have not drowned. And this is not a palace door hidden inside the invitation you accepted. I require your opinion.\"\n\"About a harbor?\"\n\"About a man who has been selling passage through one. He claims to act with my permission. Three of his passengers have disappeared, two have returned richer, and the sixth has offered to sell me his account of the journey.\"\n{n}She passes you a scrap of sailcloth. A black flower has been worked into its edge with exceptionally fine thread. When you turn it over, the reverse is unfinished.{/n}\n\"My memory of it. The original is in my vault, and my memory is the only one of my rooms you are invited into. Ask me what I did not notice and I shall charge you for the insult.\"\n\"You could simply seize him.\"\n\"I could seize everyone on the quay. Then I would possess a quay full of frightened liars and no explanation for the two profitable journeys. I want the route. I also want to know who believes I am too distracted to notice it.\"",
           "Choices": [
             {
               "Text": "\"I asked who profits. Have you brought a price or a man who thinks he can name one?\"",
@@ -118960,7 +119002,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Sleep brings you to a quay without a sea. The mooring ropes hang into darkness, pulled taut by something the dream has not bothered to supply. Nocticula sits on a bollard with one knee crossed over the other. Her dress is black, its hem quite dry despite the rain that falls several yards away.\nShe watches you notice the missing water. Then she uncrosses her legs and stands.{/n}\n\"Before you ask: no, you have not drowned. And this is not a palace door hidden inside the invitation you accepted. I require your opinion.\"\n\"About a harbor?\"\n\"About a man who has been selling passage through one. He claims to act with my permission. Three of his passengers have disappeared, two have returned richer, and the sixth has offered to sell me his account of the journey.\"\n{n}She passes you a scrap of sailcloth. A black flower has been worked into its edge with exceptionally fine thread. When you turn it over, the reverse is unfinished.{/n}\n\"This is my recollection of the sample. The original is in Alushinyrra. Your dream is not a window through which we can watch the owner scratch himself. I prefer to establish that before you suggest a brilliant plan requiring it.\"\n\"You could simply seize him.\"\n\"I could seize everyone on the quay. Then I would possess a quay full of frightened liars and no explanation for the two profitable journeys. I want the route. I also want to know who believes I am too distracted to notice it.\"",
+          "Text": "{n}Sleep brings you to a quay without a sea. The mooring ropes hang into darkness, pulled taut by something the dream has not bothered to supply. Nocticula sits on a bollard with one knee crossed over the other. Her dress is black, its hem quite dry despite the rain that falls several yards away.\nShe watches you notice the missing water. Then she uncrosses her legs and stands.{/n}\n\"Before you ask: no, you have not drowned. And this is not a palace door hidden inside the invitation you accepted. I require your opinion.\"\n\"About a harbor?\"\n\"About a man who has been selling passage through one. He claims to act with my permission. Three of his passengers have disappeared, two have returned richer, and the sixth has offered to sell me his account of the journey.\"\n{n}She passes you a scrap of sailcloth. A black flower has been worked into its edge with exceptionally fine thread. When you turn it over, the reverse is unfinished.{/n}\n\"My memory of it. The original is in my vault, and my memory is the only one of my rooms you are invited into. Ask me what I did not notice and I shall charge you for the insult.\"\n\"You could simply seize him.\"\n\"I could seize everyone on the quay. Then I would possess a quay full of frightened liars and no explanation for the two profitable journeys. I want the route. I also want to know who believes I am too distracted to notice it.\"",
           "Choices": [
             {
               "Text": "\"I asked who profits. Have you brought a price or a man who thinks he can name one?\"",
@@ -119178,7 +119220,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Sleep brings you to a quay without a sea. The mooring ropes hang into darkness, pulled taut by something the dream has not bothered to supply. Nocticula sits on a bollard with one knee crossed over the other. Her dress is black, its hem quite dry despite the rain that falls several yards away.\nShe watches you notice the missing water. Then she uncrosses her legs and stands.{/n}\n\"Before you ask: no, you have not drowned. And this is not a palace door hidden inside the invitation you accepted. I require your opinion.\"\n\"About a harbor?\"\n\"About a man who has been selling passage through one. He claims to act with my permission. Three of his passengers have disappeared, two have returned richer, and the sixth has offered to sell me his account of the journey.\"\n{n}She passes you a scrap of sailcloth. A black flower has been worked into its edge with exceptionally fine thread. When you turn it over, the reverse is unfinished.{/n}\n\"This is my recollection of the sample. The original is in Alushinyrra. Your dream is not a window through which we can watch the owner scratch himself. I prefer to establish that before you suggest a brilliant plan requiring it.\"\n\"You could simply seize him.\"\n\"I could seize everyone on the quay. Then I would possess a quay full of frightened liars and no explanation for the two profitable journeys. I want the route. I also want to know who believes I am too distracted to notice it.\"",
+          "Text": "{n}Sleep brings you to a quay without a sea. The mooring ropes hang into darkness, pulled taut by something the dream has not bothered to supply. Nocticula sits on a bollard with one knee crossed over the other. Her dress is black, its hem quite dry despite the rain that falls several yards away.\nShe watches you notice the missing water. Then she uncrosses her legs and stands.{/n}\n\"Before you ask: no, you have not drowned. And this is not a palace door hidden inside the invitation you accepted. I require your opinion.\"\n\"About a harbor?\"\n\"About a man who has been selling passage through one. He claims to act with my permission. Three of his passengers have disappeared, two have returned richer, and the sixth has offered to sell me his account of the journey.\"\n{n}She passes you a scrap of sailcloth. A black flower has been worked into its edge with exceptionally fine thread. When you turn it over, the reverse is unfinished.{/n}\n\"My memory of it. The original is in my vault, and my memory is the only one of my rooms you are invited into. Ask me what I did not notice and I shall charge you for the insult.\"\n\"You could simply seize him.\"\n\"I could seize everyone on the quay. Then I would possess a quay full of frightened liars and no explanation for the two profitable journeys. I want the route. I also want to know who believes I am too distracted to notice it.\"",
           "Choices": [
             {
               "Text": "\"I asked who profits. Have you brought a price or a man who thinks he can name one?\"",
@@ -129767,13 +129809,58 @@
         {
           "Id": "purpose",
           "Speaker": "Nocticula",
-          "Text": "\"Then we have an object. We still need a way into a house whose owner expects my temper to arrive ahead of me.\"\n{n}She removes the mask from the chair and offers it to you by its unbroken edge. The paint is cool against your thumb. Nothing behind its eyeholes resembles a face.\nYou turn it over. On the reverse, a little hook has been sewn into the ribbon. It is meant to catch when the wearer tries to pull the mask away.{/n}\n\"An economical hostess,\" you say.\n\"And an unimaginative one. She has mistaken difficulty in leaving for a reason to stay.\"\n\"You sound personally offended.\"\n\"I have spent a great deal of effort learning the difference.\"\n{n}She holds out her hand. You return the mask; she places it on the table, facedown. Tonight, at last, she sits beside you rather than behind the arrangement.\nTogether you examine Edris's sketch until you can describe both stairways without looking. Nocticula corrects the width of a landing, then admits the correction is her guess and removes it. The missing measurement remains missing.\nBefore she lets you wake, she asks you to name the one thing she should not promise on your behalf. You answer that she must not put a living person at risk under the claim that you have already agreed to it.\nShe considers that longer than you expected.{/n}\n\"Then return with a plan before I grow fond of my own. I have had a head start.\"\n\"I noticed the furniture.\"\n{n}This time her laugh is real.{/n}",
+          "Text": "\"Then we have an object. We still need a way into a house whose owner expects my temper to arrive ahead of me.\"\n{n}She removes the mask from the chair and offers it to you by its unbroken edge. The paint is cool against your thumb. Nothing behind its eyeholes resembles a face.\nYou turn it over. On the reverse, a little hook has been sewn into the ribbon. It is meant to catch when the wearer tries to pull the mask away.{/n}\n\"An economical hostess,\" you say.\n\"And an unimaginative one. She has mistaken difficulty in leaving for a reason to stay.\"\n\"You sound personally offended.\"\n\"I have spent a great deal of effort learning the difference.\"\n{n}She holds out her hand. You return the mask; she places it on the table, facedown. Tonight, at last, she sits beside you rather than behind the arrangement.\nTogether you examine Edris's sketch until you can describe both stairways without looking. Nocticula corrects the width of a landing, then admits the correction is her guess and removes it. The missing measurement remains missing.\nBefore she lets you wake, she asks you to name the one thing she should not promise on your behalf.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Don't put a living person at risk and tell them I agreed to it.\"",
+              "Next": "vow_guard",
+              "Set": [
+                "noct.lodge_proposed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Promise what you like in my name. I want to approve which lives you spend.\"",
+              "Next": "vow_ledger",
+              "Set": [
+                "noct.lodge_proposed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "vow_guard",
+          "Speaker": "Nocticula",
+          "Text": "{n}She considers that longer than you expected.{/n}\n\"A conscience with a clause in it. How lawyerly of you.\" {n}Her mouth curves.{/n} \"Very well. Then return with a plan before I grow fond of my own. I have had a head start.\"\n\"I noticed the furniture.\"\n{n}This time her laugh is real.{/n}",
           "Choices": [
             {
               "Text": "[Prepare a plan for the lodge from the information actually available.]",
               "Next": null,
               "Set": [
-                "noct.lodge_proposed",
+                "noct.empty_chair"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "vow_ledger",
+          "Speaker": "Nocticula",
+          "Text": "{n}Her eyes go very bright.{/n}\n\"You want the list. Who goes down the stairs first, who holds the door, who is left in the gallery if the bell rings early.\" {n}She leans closer.{/n} \"Most of my generals want to be told afterwards, so they can mourn with a clear heart. You want to sign it.\" {n}A slow smile.{/n} \"I shall send you the list, then. Every name. You will learn how heavy paper can be.\"",
+          "Choices": [
+            {
+              "Text": "[Prepare a plan for the lodge from the information actually available.]",
+              "Next": null,
+              "Set": [
                 "noct.empty_chair"
               ],
               "Requires": [],
@@ -129951,13 +130038,58 @@
         {
           "Id": "purpose",
           "Speaker": "Nocticula",
-          "Text": "\"Then we have an object. We still need a way into a house whose owner expects my temper to arrive ahead of me.\"\n{n}She removes the mask from the chair and offers it to you by its unbroken edge. The paint is cool against your thumb. Nothing behind its eyeholes resembles a face.\nYou turn it over. On the reverse, a little hook has been sewn into the ribbon. It is meant to catch when the wearer tries to pull the mask away.{/n}\n\"An economical hostess,\" you say.\n\"And an unimaginative one. She has mistaken difficulty in leaving for a reason to stay.\"\n\"You sound personally offended.\"\n\"I have spent a great deal of effort learning the difference.\"\n{n}She holds out her hand. You return the mask; she places it on the table, facedown. Tonight, at last, she sits beside you rather than behind the arrangement.\nTogether you examine Edris's sketch until you can describe both stairways without looking. Nocticula corrects the width of a landing, then admits the correction is her guess and removes it. The missing measurement remains missing.\nBefore she lets you wake, she asks you to name the one thing she should not promise on your behalf. You answer that she must not put a living person at risk under the claim that you have already agreed to it.\nShe considers that longer than you expected.{/n}\n\"Then return with a plan before I grow fond of my own. I have had a head start.\"\n\"I noticed the furniture.\"\n{n}This time her laugh is real.{/n}",
+          "Text": "\"Then we have an object. We still need a way into a house whose owner expects my temper to arrive ahead of me.\"\n{n}She removes the mask from the chair and offers it to you by its unbroken edge. The paint is cool against your thumb. Nothing behind its eyeholes resembles a face.\nYou turn it over. On the reverse, a little hook has been sewn into the ribbon. It is meant to catch when the wearer tries to pull the mask away.{/n}\n\"An economical hostess,\" you say.\n\"And an unimaginative one. She has mistaken difficulty in leaving for a reason to stay.\"\n\"You sound personally offended.\"\n\"I have spent a great deal of effort learning the difference.\"\n{n}She holds out her hand. You return the mask; she places it on the table, facedown. Tonight, at last, she sits beside you rather than behind the arrangement.\nTogether you examine Edris's sketch until you can describe both stairways without looking. Nocticula corrects the width of a landing, then admits the correction is her guess and removes it. The missing measurement remains missing.\nBefore she lets you wake, she asks you to name the one thing she should not promise on your behalf.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Don't put a living person at risk and tell them I agreed to it.\"",
+              "Next": "vow_guard",
+              "Set": [
+                "noct.lodge_proposed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Promise what you like in my name. I want to approve which lives you spend.\"",
+              "Next": "vow_ledger",
+              "Set": [
+                "noct.lodge_proposed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "vow_guard",
+          "Speaker": "Nocticula",
+          "Text": "{n}She considers that longer than you expected.{/n}\n\"A conscience with a clause in it. How lawyerly of you.\" {n}Her mouth curves.{/n} \"Very well. Then return with a plan before I grow fond of my own. I have had a head start.\"\n\"I noticed the furniture.\"\n{n}This time her laugh is real.{/n}",
           "Choices": [
             {
               "Text": "[Prepare a plan for the lodge from the information actually available.]",
               "Next": null,
               "Set": [
-                "noct.lodge_proposed",
+                "noct.empty_chair"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "vow_ledger",
+          "Speaker": "Nocticula",
+          "Text": "{n}Her eyes go very bright.{/n}\n\"You want the list. Who goes down the stairs first, who holds the door, who is left in the gallery if the bell rings early.\" {n}She leans closer.{/n} \"Most of my generals want to be told afterwards, so they can mourn with a clear heart. You want to sign it.\" {n}A slow smile.{/n} \"I shall send you the list, then. Every name. You will learn how heavy paper can be.\"",
+          "Choices": [
+            {
+              "Text": "[Prepare a plan for the lodge from the information actually available.]",
+              "Next": null,
+              "Set": [
                 "noct.empty_chair"
               ],
               "Requires": [],
@@ -130135,13 +130267,58 @@
         {
           "Id": "purpose",
           "Speaker": "Nocticula",
-          "Text": "\"Then we have an object. We still need a way into a house whose owner expects my temper to arrive ahead of me.\"\n{n}She removes the mask from the chair and offers it to you by its unbroken edge. The paint is cool against your thumb. Nothing behind its eyeholes resembles a face.\nYou turn it over. On the reverse, a little hook has been sewn into the ribbon. It is meant to catch when the wearer tries to pull the mask away.{/n}\n\"An economical hostess,\" you say.\n\"And an unimaginative one. She has mistaken difficulty in leaving for a reason to stay.\"\n\"You sound personally offended.\"\n\"I have spent a great deal of effort learning the difference.\"\n{n}She holds out her hand. You return the mask; she places it on the table, facedown. Tonight, at last, she sits beside you rather than behind the arrangement.\nTogether you examine Edris's sketch until you can describe both stairways without looking. Nocticula corrects the width of a landing, then admits the correction is her guess and removes it. The missing measurement remains missing.\nBefore she lets you wake, she asks you to name the one thing she should not promise on your behalf. You answer that she must not put a living person at risk under the claim that you have already agreed to it.\nShe considers that longer than you expected.{/n}\n\"Then return with a plan before I grow fond of my own. I have had a head start.\"\n\"I noticed the furniture.\"\n{n}This time her laugh is real.{/n}",
+          "Text": "\"Then we have an object. We still need a way into a house whose owner expects my temper to arrive ahead of me.\"\n{n}She removes the mask from the chair and offers it to you by its unbroken edge. The paint is cool against your thumb. Nothing behind its eyeholes resembles a face.\nYou turn it over. On the reverse, a little hook has been sewn into the ribbon. It is meant to catch when the wearer tries to pull the mask away.{/n}\n\"An economical hostess,\" you say.\n\"And an unimaginative one. She has mistaken difficulty in leaving for a reason to stay.\"\n\"You sound personally offended.\"\n\"I have spent a great deal of effort learning the difference.\"\n{n}She holds out her hand. You return the mask; she places it on the table, facedown. Tonight, at last, she sits beside you rather than behind the arrangement.\nTogether you examine Edris's sketch until you can describe both stairways without looking. Nocticula corrects the width of a landing, then admits the correction is her guess and removes it. The missing measurement remains missing.\nBefore she lets you wake, she asks you to name the one thing she should not promise on your behalf.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Don't put a living person at risk and tell them I agreed to it.\"",
+              "Next": "vow_guard",
+              "Set": [
+                "noct.lodge_proposed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Promise what you like in my name. I want to approve which lives you spend.\"",
+              "Next": "vow_ledger",
+              "Set": [
+                "noct.lodge_proposed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "vow_guard",
+          "Speaker": "Nocticula",
+          "Text": "{n}She considers that longer than you expected.{/n}\n\"A conscience with a clause in it. How lawyerly of you.\" {n}Her mouth curves.{/n} \"Very well. Then return with a plan before I grow fond of my own. I have had a head start.\"\n\"I noticed the furniture.\"\n{n}This time her laugh is real.{/n}",
           "Choices": [
             {
               "Text": "[Prepare a plan for the lodge from the information actually available.]",
               "Next": null,
               "Set": [
-                "noct.lodge_proposed",
+                "noct.empty_chair"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "vow_ledger",
+          "Speaker": "Nocticula",
+          "Text": "{n}Her eyes go very bright.{/n}\n\"You want the list. Who goes down the stairs first, who holds the door, who is left in the gallery if the bell rings early.\" {n}She leans closer.{/n} \"Most of my generals want to be told afterwards, so they can mourn with a clear heart. You want to sign it.\" {n}A slow smile.{/n} \"I shall send you the list, then. Every name. You will learn how heavy paper can be.\"",
+          "Choices": [
+            {
+              "Text": "[Prepare a plan for the lodge from the information actually available.]",
+              "Next": null,
+              "Set": [
                 "noct.empty_chair"
               ],
               "Requires": [],
@@ -156508,7 +156685,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}The Lady in Shadow never named the favour. The Commander had paid for her protection with it at Threshold and then declined her chair, and she let the debt stand exactly as it was: unnamed, unasked, and in the Abyss's books under the Commander's name. Nobody who wanted her secret out of the Commander ever got close enough to try. The Commander spent the rest of a long life waiting for a knock that never came, which, she let it be known, was the whole of the price.{/n}",
+          "Text": "{n}In the eleven years she kept the Commander waiting for an answer, the Lady in Shadow never named the favour. The Commander had bought her protection with it at Threshold and then declined her chair, and she let the debt stand exactly as it was: unnamed, unasked, and in the Abyss's books under the Commander's name. Nobody who wanted her secret out of the Commander ever got close enough to try. When she finally named it, it was the chair.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -156524,7 +156701,8 @@
       ],
       "Requires": [
         "trickster.ever",
-        "nocticula.trickster.cost.shade_paid"
+        "nocticula.trickster.cost.shade_paid",
+        "nocticula.trickster.declined"
       ],
       "Forbids": [
         "noct.complete",
@@ -157009,7 +157187,7 @@
         {
           "Id": "after_paid",
           "Speaker": "Narrator",
-          "Text": "{n}In the morning she was gone, and so was the Commander's chair from the head of the palace's long table: moved, overnight, to her right hand, by no servant anyone could name. The steward who tried to move it back found his fingers would not close on it. On the mirror, in lipstick, in a hand the Commander knew: \"The favour stands. So do you. Where I can see you.\"{/n}\n{n}The Commander's own household, when the Commander came home to Drezen, found a place already laid at the right hand of the Commander's chair, and did not ask for whom. They had learned.{/n}",
+          "Text": "{n}In the morning she was gone, and so was the Commander's chair from the head of the palace's long table: moved, overnight, to her right hand, by no servant anyone could name. The steward who tried to move it back found his fingers would not close on it. On the mirror, in lipstick, in a hand the Commander knew: \"My favour. The chair at your right hand, at every table you will ever sit at. I have just collected the first night of it.\"{/n}\n{n}The Commander's own household, when the Commander came home to Drezen, found a place already laid at the right hand of the Commander's chair, and did not ask for whom. They had learned.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -314173,11 +314351,67 @@
         {
           "Id": "n_c_heard",
           "Speaker": "Shamira",
-          "Text": "{n}Shamira's voice whispers inside your mind,{/n} \"So that is his Council.\" {n}Contempt, and under the contempt, something like awe she would never admit.{/n} \"I always wondered where he went when he vanished into wardrobes. I pictured something grand. It is a room full of has-beens voting on a joke.\" {n}A pause.{/n} \"Your diamond is full of them now. I could feel them in it, the whole time, next to my fire. Axis and Elysium and Hell and my lady's Abyss, all in one stone, and my Nirvana in the middle, like the stone in a peach.\"",
+          "Text": "{n}Shamira's voice whispers inside your mind,{/n} \"So that is his Council.\" {n}Contempt, and under the contempt, something like awe she would never admit.{/n} \"I always wondered where he went when he vanished into wardrobes. I pictured something grand. It is a room full of has-beens voting on a joke.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "n_c_full",
+              "Set": [],
+              "Requires": [
+                "shamira.council_donated"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "n_c_nirvana",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "shamira.council_donated"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Shamira"
+        },
+        {
+          "Id": "n_c_full",
+          "Speaker": "Shamira",
+          "Text": "\"Your diamond is full of them now. I could feel them in it, the whole time, next to my fire. Axis and Elysium and Hell and my lady's Abyss, all in one stone, and my Nirvana in the middle, like the stone in a peach.\"",
           "Choices": [
             {
               "Text": "Continue",
               "Next": "n_c_shyka",
+              "Set": [],
+              "Requires": [
+                "shamira.shyka_offer_seen"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "n_c_socoth",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "shamira.shyka_offer_seen"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Shamira"
+        },
+        {
+          "Id": "n_c_nirvana",
+          "Speaker": "Shamira",
+          "Text": "\"And not one of them gave. I felt them not giving, round the whole table, like a draught under a door. So your diamond holds my Nirvana and nothing else.\" {n}A thin, cold laugh.{/n} \"He will pour me into his Wound alone, for his joke. I was always the part of this that was meant to burn.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "n_c_socoth",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -315603,11 +315837,67 @@
         {
           "Id": "n_c_heard",
           "Speaker": "Shamira",
-          "Text": "{n}Shamira's voice whispers inside your mind,{/n} \"So that is his Council.\" {n}Contempt, and under the contempt, something like awe she would never admit.{/n} \"I always wondered where he went when he vanished into wardrobes. I pictured something grand. It is a room full of has-beens voting on a joke.\" {n}A pause.{/n} \"Your diamond is full of them now. I could feel them in it, the whole time, next to my fire. Axis and Elysium and Hell and my lady's Abyss, all in one stone, and my Nirvana in the middle, like the stone in a peach.\"",
+          "Text": "{n}Shamira's voice whispers inside your mind,{/n} \"So that is his Council.\" {n}Contempt, and under the contempt, something like awe she would never admit.{/n} \"I always wondered where he went when he vanished into wardrobes. I pictured something grand. It is a room full of has-beens voting on a joke.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "n_c_full",
+              "Set": [],
+              "Requires": [
+                "shamira.council_donated"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "n_c_nirvana",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "shamira.council_donated"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Shamira"
+        },
+        {
+          "Id": "n_c_full",
+          "Speaker": "Shamira",
+          "Text": "\"Your diamond is full of them now. I could feel them in it, the whole time, next to my fire. Axis and Elysium and Hell and my lady's Abyss, all in one stone, and my Nirvana in the middle, like the stone in a peach.\"",
           "Choices": [
             {
               "Text": "Continue",
               "Next": "n_c_shyka",
+              "Set": [],
+              "Requires": [
+                "shamira.shyka_offer_seen"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "n_c_socoth",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "shamira.shyka_offer_seen"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Shamira"
+        },
+        {
+          "Id": "n_c_nirvana",
+          "Speaker": "Shamira",
+          "Text": "\"And not one of them gave. I felt them not giving, round the whole table, like a draught under a door. So your diamond holds my Nirvana and nothing else.\" {n}A thin, cold laugh.{/n} \"He will pour me into his Wound alone, for his joke. I was always the part of this that was meant to burn.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "n_c_socoth",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -316584,11 +316874,62 @@
       ],
       "Requires": [
         "trickster.ever",
+        "shamira.trickster.returned",
+        "shamira.saw_arueshalae"
+      ],
+      "Forbids": [
+        "shamira.trickster.embodied",
+        "shamira.closed",
+        "arueshalae_dead",
+        "arueshalae.evil_dead",
+        "arueshalae.kicked_out",
+        "arueshalae.kicked_out_evil"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "shamira",
+      "Reaction": true,
+      "ForbidOverrides": {
+        "arueshalae_dead": "arueshalae.trickster.returned",
+        "arueshalae.evil_dead": "arueshalae.trickster.returned"
+      },
+      "AnswerLists": [
+        "03ebad9587cbea0438d901a0f8df44f1"
+      ]
+    },
+    {
+      "Id": "shamira.trickster.react.arueshalae_inside_unseen",
+      "Title": "Arueshalae's word",
+      "Owner": "Arueshalae",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You won't look at me.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Arueshalae",
+          "Text": "{n}Arueshalae will not meet your eyes across the fire. When you ask, she laughs, not very well.{/n}\n\"You have Shamira in there. Behind your eyes. I can feel her looking out; every succubus in Alushinyrra knows that look. I grew up under her court. She had girls flayed for looking at her too long.\" {n}She hugs her knees.{/n} \"She isn't asleep in there. She's listening. She always listened hardest when she looked bored. Just... count your thoughts after you talk to her. All of them.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
         "shamira.trickster.returned"
       ],
       "Forbids": [
         "shamira.trickster.embodied",
         "shamira.closed",
+        "shamira.saw_arueshalae",
         "arueshalae_dead",
         "arueshalae.evil_dead",
         "arueshalae.kicked_out",
@@ -316792,7 +317133,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}The chroniclers of the Fifth Crusade agree that Shamira the Ardent Dream died in the Lady in Shadow's own bedchamber, at the hand of the Commander, and that her essence burned in the syphon at Threshold with everything else it held. The chroniclers did not look behind the Commander's eyes.{/n}\n{n}Nobody could say, afterwards, when a red-haired woman had first been seen in the Harem of Ardent Dream again. Only that she wore the room as if it had never been emptied, and that the light around her throne was dimmer than it had been, and did not wither anyone who looked at it.{/n}",
+          "Text": "{n}The chroniclers of the Fifth Crusade agree that Shamira the Ardent Dream died in the Lady in Shadow's own bedchamber, at the hand of the Commander, and that her essence burned in the syphon at Threshold with everything else it held. The chroniclers did not look behind the Commander's eyes.{/n}\n{n}Nobody could say, afterwards, when a red-haired woman had first been seen in the Harem of Ardent Dream again. Only that she wore the room as if it had never been emptied.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -316841,6 +317182,14 @@
                 "shamira.trickster.cost.late"
               ],
               "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The light around her throne was dimmer than it had been, and did not wither anyone who looked at it. Her court learned to look.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "shamira.trickster.cost.barracks"
+              ],
               "AnyGroups": []
             },
             {
@@ -316906,7 +317255,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The captain of the north postern lived out the war, and a long life after it, a dull, loyal, careful man who never dreamed and never wondered why. Shamira wore his daughter's face in his dreams for a while, then got bored of it and put it away.{/n}",
+              "Text": "{n}The captain of the north postern lived out the war, and a long life after it, a dull, loyal, careful man who never dreamed and never wondered why.{/n}",
               "Requires": [
                 "shamira.trickster.spy.fed"
               ],
@@ -317497,7 +317846,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}On the night the rift took the Commander, the coal of the Commander in her went out before morning, as she had said it would, and there was no hearth to go back to.{/n}\n{n}She sat her throne in the Harem of Ardent Dream with the court sent away until the stolen body went cold at the fingertips, and then at the wrists, and then she got up and had the Harem's lamps lit, every one, and walked into every sleeper's dream in Alushinyrra that night, looking. She did not find what she was looking for. She was cruel to her court for a century afterwards, and nobody in the city could say why.{/n}",
+          "Text": "{n}On the night the rift took the Commander, the coal of the Commander in her went out before morning, as she had said it would, and there was no hearth to go back to.{/n}\n{n}She sat her throne in the Harem of Ardent Dream with the court sent away until the stolen body went cold at the fingertips, and then at the wrists. Then she had every lamp in the Harem lit and went out into her city, into every sleeper's dream in Alushinyrra, one after another, looking for a fire the body would take. It would take none of them; she had said so herself, on the wardrobe floor.{/n}\n{n}They found the shell three streets from the Harem at dawn, sitting in a doorway, faceless again, with a thin white frost on its long hands. Of the rest of her the Abyss says nothing. It is a mouth.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -317948,11 +318297,67 @@
         {
           "Id": "c_heard",
           "Speaker": "Shamira",
-          "Text": "{n}Shamira's voice whispers inside your mind,{/n} \"So that is his Council.\" {n}Contempt, and under the contempt, something like awe she would never admit.{/n} \"I always wondered where he went when he vanished into wardrobes. I pictured something grand. It is a room full of has-beens voting on a joke.\" {n}A pause.{/n} \"Your diamond is full of them now. I could feel them in it, the whole time, next to my fire. Axis and Elysium and Hell and my lady's Abyss, all in one stone, and my Nirvana in the middle, like the stone in a peach.\"",
+          "Text": "{n}Shamira's voice whispers inside your mind,{/n} \"So that is his Council.\" {n}Contempt, and under the contempt, something like awe she would never admit.{/n} \"I always wondered where he went when he vanished into wardrobes. I pictured something grand. It is a room full of has-beens voting on a joke.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "c_full",
+              "Set": [],
+              "Requires": [
+                "shamira.council_donated"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "c_nirvana",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "shamira.council_donated"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Shamira"
+        },
+        {
+          "Id": "c_full",
+          "Speaker": "Shamira",
+          "Text": "\"Your diamond is full of them now. I could feel them in it, the whole time, next to my fire. Axis and Elysium and Hell and my lady's Abyss, all in one stone, and my Nirvana in the middle, like the stone in a peach.\"",
           "Choices": [
             {
               "Text": "Continue",
               "Next": "c_shyka",
+              "Set": [],
+              "Requires": [
+                "shamira.shyka_offer_seen"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "c_socoth",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "shamira.shyka_offer_seen"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Shamira"
+        },
+        {
+          "Id": "c_nirvana",
+          "Speaker": "Shamira",
+          "Text": "\"And not one of them gave. I felt them not giving, round the whole table, like a draught under a door. So your diamond holds my Nirvana and nothing else.\" {n}A thin, cold laugh.{/n} \"He will pour me into his Wound alone, for his joke. I was always the part of this that was meant to burn.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "c_socoth",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -318886,11 +319291,67 @@
         {
           "Id": "heard",
           "Speaker": "Shamira",
-          "Text": "{n}Shamira's voice whispers inside your mind,{/n} \"So that is his Council.\" {n}Contempt, and under the contempt, something like awe she would never admit.{/n} \"I always wondered where he went when he vanished into wardrobes. I pictured something grand. It is a room full of has-beens voting on a joke.\" {n}A pause.{/n} \"Your diamond is full of them now. I could feel them in it, the whole time, next to my fire. Axis and Elysium and Hell and my lady's Abyss, all in one stone, and my Nirvana in the middle, like the stone in a peach.\"",
+          "Text": "{n}Shamira's voice whispers inside your mind,{/n} \"So that is his Council.\" {n}Contempt, and under the contempt, something like awe she would never admit.{/n} \"I always wondered where he went when he vanished into wardrobes. I pictured something grand. It is a room full of has-beens voting on a joke.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "full",
+              "Set": [],
+              "Requires": [
+                "shamira.council_donated"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "nirvana",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "shamira.council_donated"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Shamira"
+        },
+        {
+          "Id": "full",
+          "Speaker": "Shamira",
+          "Text": "\"Your diamond is full of them now. I could feel them in it, the whole time, next to my fire. Axis and Elysium and Hell and my lady's Abyss, all in one stone, and my Nirvana in the middle, like the stone in a peach.\"",
           "Choices": [
             {
               "Text": "Continue",
               "Next": "shyka",
+              "Set": [],
+              "Requires": [
+                "shamira.shyka_offer_seen"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "socoth",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "shamira.shyka_offer_seen"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Shamira"
+        },
+        {
+          "Id": "nirvana",
+          "Speaker": "Shamira",
+          "Text": "\"And not one of them gave. I felt them not giving, round the whole table, like a draught under a door. So your diamond holds my Nirvana and nothing else.\" {n}A thin, cold laugh.{/n} \"He will pour me into his Wound alone, for his joke. I was always the part of this that was meant to burn.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "socoth",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -325792,7 +326253,7 @@
         {
           "Id": "morning",
           "Speaker": "Narrator",
-          "Text": "{n}There is no morning in the Abyss. There is only the purple light through the high windows changing its mind about how bright to be.{/n}\n{n}You wake on the steps of the dais, under her gown, with a dream of her still warm behind your eyes, as always now. She is sitting on the top step with her knees drawn up, awake, watching you, the way she watched you sleep in Drezen. Demons do not sleep. She has been watching the whole night.{/n}",
+          "Text": "{n}There is no morning in the Abyss. There is only the purple light through the high windows changing its mind about how bright to be.{/n}\n{n}You wake on the steps of the dais, under her gown, with a dream of her still warm behind your eyes, as always now. She is sitting on the top step with her knees drawn up, awake, watching you, the way she watched you sleep in Drezen. She has not slept. She has been watching the whole night.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -326767,7 +327228,7 @@
         {
           "Id": "morning",
           "Speaker": "Narrator",
-          "Text": "{n}There is no morning in the Abyss. There is only the purple light through the high windows changing its mind about how bright to be.{/n}\n{n}You wake on the steps of the dais, under her gown, with a dream of her still warm behind your eyes, as always now. She is sitting on the top step with her knees drawn up, awake, watching you, the way she watched you sleep in Drezen. Demons do not sleep. She has been watching the whole night.{/n}",
+          "Text": "{n}There is no morning in the Abyss. There is only the purple light through the high windows changing its mind about how bright to be.{/n}\n{n}You wake on the steps of the dais, under her gown, with a dream of her still warm behind your eyes, as always now. She is sitting on the top step with her knees drawn up, awake, watching you, the way she watched you sleep in Drezen. She has not slept. She has been watching the whole night.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -327312,7 +327773,7 @@
         {
           "Id": "chair",
           "Speaker": "Shamira",
-          "Text": "\"I have been thinking about my lady's chair.\" {n}She turns your cup in her long fingers.{/n} \"I have been thinking about it for as long as I have served her; I thought about it the night she came out across the water for me. You know that. You caught me at it, in my own Harem, the day I told you about the birds.\"\n\"Now I have your fire and a body nobody grew for a queen, and I am thinking about it again.\"",
+          "Text": "\"I have been thinking about my lady's chair.\" {n}She turns your cup in her long fingers.{/n} \"I have been thinking about it for as long as I have served her; I thought about it the night she came out across the water for me. Every demon in my court knew it. Now you do.\"\n\"Now I have your fire and a body nobody grew for a queen, and I am thinking about it again.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -327615,7 +328076,7 @@
         {
           "Id": "chair",
           "Speaker": "Shamira",
-          "Text": "\"I have been thinking about my lady's chair.\" {n}She turns your cup in her long fingers.{/n} \"I have been thinking about it for as long as I have served her; I thought about it the night she came out across the water for me. You know that. You caught me at it, in my own Harem, the day I told you about the birds.\"\n\"Now I have your fire and a body nobody grew for a queen, and I am thinking about it again.\"",
+          "Text": "\"I have been thinking about my lady's chair.\" {n}She turns your cup in her long fingers.{/n} \"I have been thinking about it for as long as I have served her; I thought about it the night she came out across the water for me. Every demon in my court knew it. Now you do.\"\n\"Now I have your fire and a body nobody grew for a queen, and I am thinking about it again.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -353910,7 +354371,7 @@
         {
           "Id": "named",
           "Speaker": "conversant",
-          "Text": "\"The night after tomorrow. The arena crowd goes down to the Battlebliss after dark, and every guest who can walk goes with it.\" {n}She holds out a hand, palm up, and does not take the coin; she only looks at it, and then at you.{/n}\n\"Go to him when you like. He's on my list; ask for him as any guest would. Pay him for his night first, if you want him soft. He's always softest with people who've paid him.\"\n\"The coin goes with the sale, and you won't have it back. I don't give the same gift twice.\" {n}A beat.{/n} \"And if he smells it on you, don't run. Running is how you tell a demon you were lying.\"",
+          "Text": "\"The first arena night after he says yes. The arena crowd goes down to the Battlebliss after dark, and every guest who can walk goes with it.\" {n}She holds out a hand, palm up, and does not take the coin; she only looks at it, and then at you.{/n}\n\"Go to him when you like. He's on my list; ask for him as any guest would. Pay him for his night first, if you want him soft. He's always softest with people who've paid him.\"\n\"The coin goes with the sale, and you won't have it back. I don't give the same gift twice.\" {n}A beat.{/n} \"And if he smells it on you, don't run. Running is how you tell a demon you were lying.\"",
           "Choices": [
             {
               "Text": "\"I don't run.\"",
@@ -354006,7 +354467,7 @@
           "Text": "\"And lost. And paid. The healers who did my jaw still brag about it in the Upper City.\" {n}His smile doesn't move, but his eyes do: to the stair, to the girls at the far couch, to the door. Nobody is listening. He checks anyway.{/n}\n\"You say her name the way a man says the name of a horse he means to sell. Careful. In this house, walls have ears, and the ears are hers.\"",
           "Choices": [
             {
-              "Text": "[Bluff] \"Because the night after next she'll be alone on the private floor, with her boys sent down to the arena. Here is her coin. Bring it to her arch after midnight and her girls will take you up the back stair as her favoured guest. I want a quarter of the house when you hold it.\"",
+              "Text": "[Bluff] \"Because on the next arena night she'll be alone on the private floor, with her boys sent down to the arena. Here is her coin. Bring it to her arch after midnight and her girls will take you up the back stair as her favoured guest. I want a quarter of the house when you hold it.\"",
               "Next": null,
               "Set": [],
               "Requires": [],
@@ -354022,7 +354483,7 @@
               }
             },
             {
-              "Text": "[Bluff] \"Because the night after next she'll be alone on the private floor, with her boys sent down to the arena. Here is her coin. Bring it to her arch after midnight and her girls will take you up the back stair as her favoured guest. I want a quarter of the house when you hold it.\"",
+              "Text": "[Bluff] \"Because on the next arena night she'll be alone on the private floor, with her boys sent down to the arena. Here is her coin. Bring it to her arch after midnight and her girls will take you up the back stair as her favoured guest. I want a quarter of the house when you hold it.\"",
               "Next": null,
               "Set": [],
               "Requires": [
@@ -354176,7 +354637,7 @@
         {
           "Id": "bait_end",
           "Speaker": "Rokhorn",
-          "Text": "{n}He closes his fist on the coin. When he opens it again it is gone, somewhere under the belt of his loincloth.{/n}\n\"The night after next. While her boys are down at the arena.\" {n}He rolls his neck.{/n} \"Now go and look innocent somewhere, crusader. You're terrible at it.\"",
+          "Text": "{n}He closes his fist on the coin. When he opens it again it is gone, somewhere under the belt of his loincloth.{/n}\n\"The next arena night, then. While her boys are down at the Battlebliss.\" {n}He rolls his neck.{/n} \"Now go and look innocent somewhere, crusader. You're terrible at it.\"",
           "Choices": [
             {
               "Text": "[Let him keep the coin.]",
@@ -355428,7 +355889,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The courier comes to the citadel gate at dusk and will not give the guard a name, only a smile that makes the guard take a step back. He is an incubus, tall and bare-chested under a traveller's cloak gone grey with Worldwound ash, and he came up the roads out of the rift the way demons come to Golarion these days. He hands you a letter sealed in black wax with a gold coin pressed into it.{/n}\n\"Her coin in her wax.\" {n}He says it before you can ask, and sounds aggrieved about it.{/n} \"She presses one into every seal she sends by me, and counts the coins when I come home. Lift the wax and the coin comes away with it, and then I'd have to explain the coin. Three weeks on the Wound road with that in my pocket, and I couldn't so much as warm it.\" {n}He leans on your doorframe and waits.{/n}",
+          "Text": "{n}The courier comes to the citadel gate at dusk and will not give the guard a name, only a smile that makes the guard take a step back. He is an incubus, tall and bare-chested under a traveller's cloak gone grey with Worldwound ash, and he came up the roads out of the rift the way demons come to Golarion these days. He hands you a letter sealed in black wax with a gold coin pressed into it.{/n}\n\"Her coin in her wax.\" {n}He says it before you can ask, and holds up his right thumb: blistered white across the pad.{/n} \"She paid a hedge-witch in the Lower City the price of a night with one of the Sinners to ward her seals. Open one with anything but the hand it's meant for and the wax bites, and whatever's under it burns. I tried. Once. On the first night out of the Isles.\" {n}He leans on your doorframe and waits, and does not look at the letter.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -355444,14 +355905,59 @@
               "Text": "Continue",
               "Next": "stranger",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "herrax.madam"
+              ],
               "Forbids": [
                 "herrax.met"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "stranger_house",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "herrax.met",
+                "herrax.madam"
               ],
               "Abort": false
             }
           ],
           "Portrait": ""
+        },
+        {
+          "Id": "stranger_house",
+          "Speaker": "Herrax",
+          "Text": "\"We haven't met. I'm Herrax. I work the Ten Thousand Delights, in Alushinyrra, under a madam who pays me less than I'm worth and sleeps better than she should. The Isles still talk about you: the mortal the Lady in Shadow let walk out of her palace with all ten fingers. I like a guest with all ten fingers. They tip.\nCome and be my guest when your war is done. Ask for me by name, not for the madam. My boy will see you down the Wound road, if you ask him nicely. H.\"\n{n}That is all the letter says. Then you turn the coin in the broken wax, and find a second sheet pressed flat beneath it, folded to the size of a thumbnail, in a smaller hand.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "ask_house",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Herrax"
+        },
+        {
+          "Id": "ask_house",
+          "Speaker": "Herrax",
+          "Text": "\"The house's incubus wants my rooms. Rokhorn. He tried for them once and lost, and paid the healers of three circles to forget it. Now he's circling again: smiling at my guests, counting my girls, telling the madam I'm getting old and the best rooms on the private floor would earn more with him in them. I don't get old, honey. I get even.\nI want him sold a night he won't forget. My night, in my rooms, with my girls waiting in the dark. I pick the night; a seller he doesn't know is mine sells it to him; I do the cutting. The madam won't stop me. She'll watch, and she'll learn something about who holds what in her house.\nHe'll try to buy you on your doorstep before he's had a cup of your wine; that's what he's for. Let him. Make him pay something on account. When the Wound is shut, if you're alive, come back to the Isles and deliver it. Burn this. H.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "door",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Herrax"
         },
         {
           "Id": "met",
@@ -355782,8 +356288,7 @@
         }
       ],
       "Requires": [
-        "trickster",
-        "herrax.madam"
+        "trickster"
       ],
       "Forbids": [
         "herrax.closed",
@@ -355813,7 +356318,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The courier is an incubus in a traveller's cloak grey with Worldwound ash, and you know him. He leans in your doorway in Drezen as if he owned it, and holds out a letter sealed in black wax with a gold coin pressed into the seal.{/n}\n\"She counts the coins when I come home,\" {n}Rokhorn says, before you can ask.{/n} \"Lift the wax, the coin comes with it. So I haven't read it, and I'd like it noted that I haven't read it.\" {n}He sounds as though it has cost him.{/n}",
+          "Text": "{n}The courier is an incubus in a traveller's cloak grey with Worldwound ash, and you know him. He leans in your doorway in Drezen as if he owned it, and holds out a letter sealed in black wax with a gold coin pressed into the seal.{/n}\n\"Warded,\" {n}Rokhorn says, before you can ask, and shows you the blistered pad of his thumb.{/n} \"A hedge-witch's work; she paid a Sinner's night for it. Open it with any hand but yours and it burns. So I haven't read it, and I'd like it noted that I haven't read it.\" {n}He sounds as though it has cost him.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -356610,7 +357115,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}The spring after the Threshold, the Commander went back to the Midnight Isles, walked up the stairs of the Ten Thousand Delights like any other guest, and asked for the madam by name.{/n}",
+          "Text": "{n}The spring after the Threshold, the Commander went back to the Midnight Isles, walked up the stairs of the Ten Thousand Delights like any other guest, and asked for Herrax by name.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -356688,18 +357193,28 @@
             },
             {
               "Text": "{n}At closing, in the empty hall, with the lamps burning, she offered the one thing her role forbade: to be reachable, by one person. The Commander said yes.{/n}",
+              "Requires": [
+                "herrax.madam"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Chivarro watched it from her own dais, and was very polite to Herrax for the rest of the season. At closing, in Herrax's rooms, with the lamps burning, she offered the one thing a girl of the Delights never gives: to be reachable, by one person, without a price. The Commander said yes.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "herrax.madam"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She did not wait for the stairs. She took the Commander by the belt, her claws through the leather, and walked backwards up the steps with it, and sat down on the cushions and pulled until the Commander stood between her knees. \"Everyone else pays to be this close,\" she said, and set the Commander's thumb on the seam in her lip, and opened her mouth under it. Buckles went down onto the tiles one by one. Her gown had one clasp, and she broke it herself. The ragged wings came round them both like a cloak with holes in it, and with every breath she drew a little warmth out of the Commander, a little more than she gave back, exactly as she had warned. Then she hooked a leg round the Commander's hips and rolled them down into the cushions, came up astride, and sank down, and the lamps burned on over the empty hall.{/n}",
               "Requires": [],
               "Forbids": [],
               "AnyGroups": []
             },
             {
-              "Text": "{n}She did not wait for the stairs. She took the Commander by the belt, her claws through the leather, and walked backwards up the dais steps with it, and sat down on Chivarro's old cushions and pulled until the Commander stood between her knees. \"Everyone else pays to be this close,\" she said, and set the Commander's thumb on the seam in her lip, and opened her mouth under it. Buckles went down onto the tiles one by one. Her gown had one clasp, and she broke it herself. The ragged wings came round them both like a cloak with holes in it, and with every breath she drew a little warmth out of the Commander, a little more than she gave back, exactly as she had warned. Then she hooked a leg round the Commander's hips and rolled them down into the cushions, came up astride, and sank down, and the lamps burned on over the empty hall.{/n}",
-              "Requires": [],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "{n}In the morning Rokhorn brought the breakfast up the dais steps with his mouth shut. The whole house knew by noon, because she made sure it did.{/n}",
+              "Text": "{n}In the morning Rokhorn brought the breakfast up the steps with his mouth shut. The whole house knew by noon, because she made sure it did.{/n}",
               "Requires": [],
               "Forbids": [],
               "AnyGroups": []
@@ -358381,7 +358896,7 @@
         {
           "Id": "caught",
           "Speaker": "conversant",
-          "Text": "{n}Her good eye widens with what might be delight.{/n} \"Was it? Then that's the one I tell to paladins.\" {n}She doesn't blush; succubi don't. She tops up your cup instead.{/n}\n\"You were listening. Nobody listens to me, lover. They look.\" {n}She sets down the jug.{/n} \"Now I'll have to be more careful with you.\"",
+          "Text": "{n}Her good eye widens with what might be delight.{/n} \"Was it? Then that's the one I tell to paladins.\" {n}She tops up your cup without the slightest embarrassment.{/n}\n\"You were listening. Nobody listens to me, lover. They look.\" {n}She sets down the jug.{/n} \"Now I'll have to be more careful with you.\"",
           "Choices": [
             {
               "Text": "\"Please don't be.\"",
@@ -421009,8 +421524,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -422273,7 +422788,7 @@
       "Title": "The keeper's night",
       "Description": "Herrax keeps the Ten Thousand Delights, and keeps herself beyond anyone's reach. Her incubus still wants her chair. She means to teach him otherwise, in front of the whole house, and she wants me to sell him the lesson.",
       "Objective": "Sell Rokhorn her night",
-      "Guidance": "On the Trickster path, in Chapter 4, once Herrax rules the Ten Thousand Delights. Ask her incubus Rokhorn why he obeys her, keep the golden coin she gave you, and tell her what he still wants. If Chivarro fell and Herrax took the chair but you left the Midnight Isles before it was finished, or never met her there, her courier will find you in Chapter 5.",
+      "Guidance": "On the Trickster path, in Chapter 4, once Herrax rules the Ten Thousand Delights. Ask her incubus Rokhorn why he obeys her, keep the golden coin she gave you, and tell her what he still wants. If you left the Midnight Isles before it was finished, or never met her there, her courier will find you in Chapter 5.",
       "StartedFlag": "herrax.started",
       "ClosedFlag": "herrax.closed",
       "CommittedFlag": "herrax.committed",
@@ -422293,7 +422808,6 @@
         },
         "not_started": {
           "Detect": [
-            "herrax.madam",
             "!herrax.trickster.primed"
           ],
           "Device": "herrax.trickster.late.next_move",
@@ -423598,6 +424112,13 @@
     ],
     "shamira.saw_arueshalae": [
       "fbf3cccaa03787d49a882efa0cfe5c5b"
+    ],
+    "shamira.council_donated": [
+      "f4a908e91c5c447418fa52ddc589184f",
+      "c3b8e7f1537c7cb4d839b2cff532cbb6"
+    ],
+    "shamira.shyka_offer_seen": [
+      "c3b8e7f1537c7cb4d839b2cff532cbb6"
     ],
     "nenio.fox_argued": [
       "357224f06cf28804294c737124e66c29"

@@ -33,7 +33,11 @@ def page(*args, **kw):
 
 
 SAW_ARUESHALAE = "shamira.saw_arueshalae"   # SeenCue Shamira_dialogue/Cue_0188: she mocked Arueshalae in her throne room
-SEEN_CUES = {SAW_ARUESHALAE: ["fbf3cccaa03787d49a882efa0cfe5c5b"]}
+DONATED = "shamira.council_donated"          # SeenCues: the Council's essences went into the diamond (either road)
+SHYKA_MET = "shamira.shyka_offer_seen"        # SeenCues Shyka_Offer/Cue_0002: Shyka's extraction
+SEEN_CUES = {SAW_ARUESHALAE: ["fbf3cccaa03787d49a882efa0cfe5c5b"],
+             DONATED: ["f4a908e91c5c447418fa52ddc589184f", "c3b8e7f1537c7cb4d839b2cff532cbb6"],
+             SHYKA_MET: ["c3b8e7f1537c7cb4d839b2cff532cbb6"]}
 WANT_STEWARD = P + "want.steward"
 WANT_HER = P + "want.her"
 WANT_NOTHING = P + "want.nothing"
@@ -113,8 +117,14 @@ page(P + "mind.council", "Through your eyes", [
     nar("start", '''{n}You go straight from Socothbenoth's closet to his Council, with the cauldron in your hands and her behind your eyes, and you sit through all of it: the speeches, the votes, the essences passed round the long table like a loving cup. You keep your thoughts on carpets. She does not need your thoughts to listen.{/n}
 {n}That night the second heartbeat is loud long before you lie down.{/n}''',
         c("Continue", "heard")),
-    sh("heard", WHISPER + '''"So that is his Council." {n}Contempt, and under the contempt, something like awe she would never admit.{/n} "I always wondered where he went when he vanished into wardrobes. I pictured something grand. It is a room full of has-beens voting on a joke." {n}A pause.{/n} "Your diamond is full of them now. I could feel them in it, the whole time, next to my fire. Axis and Elysium and Hell and my lady's Abyss, all in one stone, and my Nirvana in the middle, like the stone in a peach."''',
-        c("Continue", "shyka")),
+    sh("heard", WHISPER + '''"So that is his Council." {n}Contempt, and under the contempt, something like awe she would never admit.{/n} "I always wondered where he went when he vanished into wardrobes. I pictured something grand. It is a room full of has-beens voting on a joke."''',
+        c("Continue", "full", requires=(DONATED,)),
+        c("Continue", "nirvana", forbids=(DONATED,))),
+    sh("full", '''"Your diamond is full of them now. I could feel them in it, the whole time, next to my fire. Axis and Elysium and Hell and my lady's Abyss, all in one stone, and my Nirvana in the middle, like the stone in a peach."''',
+        c("Continue", "shyka", requires=(SHYKA_MET,)),
+        c("Continue", "socoth", forbids=(SHYKA_MET,))),
+    sh("nirvana", '''"And not one of them gave. I felt them not giving, round the whole table, like a draught under a door. So your diamond holds my Nirvana and nothing else." {n}A thin, cold laugh.{/n} "He will pour me into his Wound alone, for his joke. I was always the part of this that was meant to burn."''',
+        c("Continue", "socoth")),
     sh("shyka", '''"And that thing. The one that is many people." {n}Her voice drops, as if Shyka might hear her across the planes.{/n} "It looked at me. Through your eyes, from the outside in. Nobody has looked at me like that since my masters in Heaven: as if it had already read the end of me and thought it was rather sweet." {n}The warmth behind your eyes shrinks, like a hand pulled back from a stove.{/n} "I did not like it. I do not want to talk about it."''',
         c('"It seemed to like you."', "liked"),
         c("[Leave it.]", "socoth")),

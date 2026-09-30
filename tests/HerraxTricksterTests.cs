@@ -173,7 +173,13 @@ internal static class HerraxTricksterTests
         // Trk_Herrax_NoMadam: never started in Chapter 4 (never met, or never told); the letter, and the page after the Threshold.
         var unmet = World(story, 5, "trickster", "trickster.ever", "herrax.madam");
         // Sol CAN: where Chivarro was never removed, Herrax is not the madam, and no courier of hers comes.
-        check(!Avail(S(P + "late.next_move"), World(story, 5, "trickster", "trickster.ever")), "Trk_Herrax_NoMadam: her courier comes from a madam who never took the chair.");
+        // Sol COX: where Chivarro never fell, Herrax is a senior girl of the house, not the madam: her courier still comes,
+        // with her own rooms at stake, and the page after the Threshold reads her place (Minagho/Chivarro untouched).
+        var neverFell = World(story, 5, "trickster", "trickster.ever", "minagho_chivarro.committed");
+        var nfNodes = new HashSet<string>(); Program.Walk(S(P + "late.next_move"), neverFell, (id, _) => nfNodes.Add(id));
+        check(Avail(S(P + "late.next_move"), neverFell) && nfNodes.Contains("stranger_house") && !nfNodes.Contains("stranger")
+              && Program.Walk(S(P + "late.next_move"), neverFell).Where(r => r.Has(P + "promised")).All(r => r.Flags.Where(f => f.StartsWith("minagho_chivarro.", StringComparison.Ordinal)).SequenceEqual(new[] { "minagho_chivarro.committed" })),
+            "Trk_Herrax_NeverMadam: no courier where Chivarro never fell, or the courier treats her as the madam.");
         check(Avail(nextMove, unmet) && nextMove.TricksterDevice && nextMove.TricksterState == "not_started" && !Avail(owed, unmet),
             "Trk_Herrax_NoMadam: her courier does not find a Commander who never started.");
         var met5 = World(story, 5, "trickster", "trickster.ever", "herrax.met", "herrax.madam");

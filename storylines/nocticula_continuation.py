@@ -75,7 +75,7 @@ She watches you notice the missing water. Then she uncrosses her legs and stands
 "About a harbor?"
 "About a man who has been selling passage through one. He claims to act with my permission. Three of his passengers have disappeared, two have returned richer, and the sixth has offered to sell me his account of the journey."
 {n}She passes you a scrap of sailcloth. A black flower has been worked into its edge with exceptionally fine thread. When you turn it over, the reverse is unfinished.{/n}
-"This is my recollection of the sample. The original is in Alushinyrra. Your dream is not a window through which we can watch the owner scratch himself. I prefer to establish that before you suggest a brilliant plan requiring it."
+"My memory of it. The original is in my vault, and my memory is the only one of my rooms you are invited into. Ask me what I did not notice and I shall charge you for the insult."
 "You could simply seize him."
 "I could seize everyone on the quay. Then I would possess a quay full of frightened liars and no explanation for the two profitable journeys. I want the route. I also want to know who believes I am too distracted to notice it."''',
       c('"You already have servants. What do you want from me?"', "offer"),
@@ -1200,11 +1200,15 @@ You turn it over. On the reverse, a little hook has been sewn into the ribbon. I
 "I have spent a great deal of effort learning the difference."
 {n}She holds out her hand. You return the mask; she places it on the table, facedown. Tonight, at last, she sits beside you rather than behind the arrangement.
 Together you examine Edris's sketch until you can describe both stairways without looking. Nocticula corrects the width of a landing, then admits the correction is her guess and removes it. The missing measurement remains missing.
-Before she lets you wake, she asks you to name the one thing she should not promise on your behalf. You answer that she must not put a living person at risk under the claim that you have already agreed to it.
-She considers that longer than you expected.{/n}
-"Then return with a plan before I grow fond of my own. I have had a head start."
+Before she lets you wake, she asks you to name the one thing she should not promise on your behalf.{/n}''',
+      c('"Don\'t put a living person at risk and tell them I agreed to it."', "vow_guard", flags=f("lodge_proposed")),
+      c('"Promise what you like in my name. I want to approve which lives you spend."', "vow_ledger", flags=f("lodge_proposed"))),
+    n("vow_guard", "Nocticula", '''{n}She considers that longer than you expected.{/n}
+"A conscience with a clause in it. How lawyerly of you." {n}Her mouth curves.{/n} "Very well. Then return with a plan before I grow fond of my own. I have had a head start."
 "I noticed the furniture."
-{n}This time her laugh is real.{/n}''', c('[Prepare a plan for the lodge from the information actually available.]', flags=f("lodge_proposed"))),
+{n}This time her laugh is real.{/n}''', c('[Prepare a plan for the lodge from the information actually available.]')),
+    n("vow_ledger", "Nocticula", '''{n}Her eyes go very bright.{/n}
+"You want the list. Who goes down the stairs first, who holds the door, who is left in the gallery if the bell rings early." {n}She leans closer.{/n} "Most of my generals want to be told afterwards, so they can mourn with a clear heart. You want to sign it." {n}A slow smile.{/n} "I shall send you the list, then. Every name. You will learn how heavy paper can be."''', c('[Prepare a plan for the lodge from the information actually available.]')),
 ], "buyer_answered")
 
 s("mask_and_bell", "A mask with its mouth shut", [

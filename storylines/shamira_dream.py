@@ -333,7 +333,7 @@ hub(P + "harem", "Think of anything but me", '"You said you had a game."', [
 {n}Above you both, the light around the empty throne burns higher than it has burned since she came home, and the fountains go on running in the dark, and nobody in Alushinyrra is watching.{/n}''',
         c("Continue", "morning")),
     nar("morning", '''{n}There is no morning in the Abyss. There is only the purple light through the high windows changing its mind about how bright to be.{/n}
-{n}You wake on the steps of the dais, under her gown, with a dream of her still warm behind your eyes, as always now. She is sitting on the top step with her knees drawn up, awake, watching you, the way she watched you sleep in Drezen. Demons do not sleep. She has been watching the whole night.{/n}''',
+{n}You wake on the steps of the dais, under her gown, with a dream of her still warm behind your eyes, as always now. She is sitting on the top step with her knees drawn up, awake, watching you, the way she watched you sleep in Drezen. She has not slept. She has been watching the whole night.{/n}''',
         c("Continue", "watch")),
     sh("watch", '''"You dreamed of me all night." {n}Softly.{/n} "I was in there; I'm always in there. But you were dreaming of me before I came in, and in all my long life I have never once walked into a dream that was already about me and been made welcome in it." {n}She puts one finger on your forehead, the old place.{/n} "It was like a house after a party. Everyone else gone, and the lamps still warm."
 "I sit in your sleep every night. You will never be alone in there again. That is the arrangement, and it is not fair, and I will never give you your solitude back."''',
@@ -404,7 +404,7 @@ hub(P + "after.throne", "The chair she wants", '"You have that look. The one fro
     nar("start", '''{n}She has your usual cup at her corner table, in something plain and dark that does not suit her, and she is drinking your wine out of it without asking.{/n}
 {n}She has a look you know from the Harem: the look of a woman who has decided to say something dangerous and is enjoying the moment before she says it.{/n}''',
         c("Continue", "chair")),
-    sh("chair", '''"I have been thinking about my lady's chair." {n}She turns your cup in her long fingers.{/n} "I have been thinking about it for as long as I have served her; I thought about it the night she came out across the water for me. You know that. You caught me at it, in my own Harem, the day I told you about the birds."
+    sh("chair", '''"I have been thinking about my lady's chair." {n}She turns your cup in her long fingers.{/n} "I have been thinking about it for as long as I have served her; I thought about it the night she came out across the water for me. Every demon in my court knew it. Now you do."
 "Now I have your fire and a body nobody grew for a queen, and I am thinking about it again."''',
         c("Continue", "hiding", requires=(NOCT_HIDING,)),
         c("Continue", "not_hiding", requires=(NOCT_KNOWS,), forbids=(NOCT_HIDING,)),

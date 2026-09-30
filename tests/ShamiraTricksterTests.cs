@@ -380,7 +380,7 @@ internal static class ShamiraTricksterTests
         // 05 §3.1 row 37: exactly Shyka, Socothbenoth (inside the setup and the first words) and Arueshalae. The Daeran, Regill
         // and Woljif reactions of the first build are retired by gating: none is ever available beside the flag that triggers it.
         var retiredReactions = reactions.Where(r => r.Owner == "Daeran" || r.Owner == "Regill" || r.Owner == "Woljif").ToArray();
-        check(reactions.Length == 6 && reactions.All(r => r.Nodes.Count == 1) && retiredReactions.Length == 3
+        check(reactions.Length == 7 && reactions.All(r => r.Nodes.Count == 1) && retiredReactions.Length == 3
               && retiredReactions.All(r => !Avail(r, World(story, 5, new[] { "trickster.ever", Returned, Heard, Embodied, NeverAlone, P + "fuel_set", P + "cost.barracks" })))
               && retiredReactions.All(r => !Avail(r, World(story, 5, new[] { "trickster.ever", Returned, Heard })))
               && reactions.Except(retiredReactions).Select(r => r.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Arueshalae", "Shyka" }),
@@ -449,6 +449,15 @@ internal static class ShamiraTricksterTests
                 "Trk_Shamira_Delivery_" + roadName + ": " + string.Join(",", got) + (r0.Has(Committed) ? "" : " (no commit)"));
         }
 
+        // Sol CAN/HOW: the diamond as the Council actually left it: Nirvana only, the Council's essences, or Shyka's taking.
+        foreach (var (extra, want, not) in new (string[], string, string)[] {
+            (new string[0], "c_nirvana", "c_full"), (new[] { "shamira.council_donated" }, "c_full", "c_shyka"),
+            (new[] { "shamira.council_donated", "shamira.shyka_offer_seen" }, "c_shyka", "c_nirvana") })
+        {
+            var cw = World(story, 5, new[] { "trickster", "trickster.ever", Killed, Primed, "shamira.started", "shamira.cauldron_shown.latched", Returned, Heard }.Concat(extra).ToArray());
+            var cn = new HashSet<string>(); Program.Walk(night, cw, (id, _) => cn.Add(id));
+            check(cn.Contains(want) && !cn.Contains(not), "Trk_Shamira_Council: the diamond's contents are misremembered (" + string.Join(",", extra) + ").");
+        }
         // Sol INT (G6(b)): an Arueshalae who died and came back on her own road reacts again; a dead one does not.
         var walking = S(P + "react.arueshalae_walking");
         var aw = World(story, 5, "trickster.ever", Embodied, "arueshalae_dead");

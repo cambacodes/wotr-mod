@@ -138,7 +138,7 @@ internal static class NocticulaTricksterTests
         var paid = lateOutcomes.First(r => r.Has(Paid));
         // Ledger row 11: the favour page is a relationship page (committed); a debt outside the romance has its own page.
         check(Rules.Available(story, chair, paid) && Rules.Available(story, b1, paid) && !Rules.Available(story, favour, paid)
-              && Rules.Available(story, favour, With(story, paid, "noct.complete")) && Rules.Available(story, S("nocticula.trickster.defeated.epilogue.debt"), paid)
+              && Rules.Available(story, favour, With(story, paid, "noct.complete")) && !Rules.Available(story, S("nocticula.trickster.defeated.epilogue.debt"), paid) && Rules.Available(story, S("nocticula.trickster.defeated.epilogue.debt"), With(story, paid, Declined))
               && !Rules.Available(story, S("nocticula.trickster.defeated.epilogue.debt"), With(story, paid, "noct.complete"))
               && !Rules.Available(story, stalemate, paid), "Trk_Nocticula_CallInLate: continuations.");
 

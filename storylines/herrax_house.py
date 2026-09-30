@@ -264,7 +264,7 @@ beat(EYE_TWO, "The eye, twice", '"You never did tell me about the eye."', [
     hx("start", '''"Didn't I?" {n}Herrax looks surprised, and then fond, the way she looks at a guest who has come back.{/n} "Chivarro did it. The night she lost the chair. She threw her perfume bottle at me, and the perfume had something in it she'd been saving for Minagho. It burned for a week." {n}She laughs.{/n} "I still smell it when it rains. You'd think I'd hate the scent. I sleep on her cushions."''',
        c('"Last time it was a priestess of Shelyn with holy water."', "caught"),
        c('"That sounds like her."', "end")),
-    hx("caught", '''{n}Her good eye widens with what might be delight.{/n} "Was it? Then that's the one I tell to paladins." {n}She doesn't blush; succubi don't. She tops up your cup instead.{/n}
+    hx("caught", '''{n}Her good eye widens with what might be delight.{/n} "Was it? Then that's the one I tell to paladins." {n}She tops up your cup without the slightest embarrassment.{/n}
 "You were listening. Nobody listens to me, lover. They look." {n}She sets down the jug.{/n} "Now I'll have to be more careful with you."''',
        c('"Please don\'t be."')),
     hx("end", '''"Doesn't it? She had style, that one. Bad taste, and style." {n}She sips.{/n} "I'd have liked her, if I hadn't wanted her chair so much."''',
