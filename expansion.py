@@ -71,6 +71,7 @@ from storylines import terendelev_trickster, terendelev_watch
 from storylines import eliandra_trickster, eliandra_stars
 from storylines import galfrey_trickster, galfrey_kitrane
 from storylines import horzalah_trickster, horzalah_guild
+from storylines import melazmera_trickster, melazmera_hoard
 from storylines import rrt_ui
 from storylines import rrt_portraits
 from storylines import scene_kinds
@@ -529,6 +530,13 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(horzalah_trickster.SCENES))
     payload["Scenes"].extend(copy.deepcopy(horzalah_guild.SCENES))
     horzalah_trickster.integrate(payload)
+    # Melazmera: a new relationship (trickster/melazmera.md; 11-ROSTER-PLAN-2 §2, R5 build sheet): salt the hoard, the
+    # Knight Commander's seal left disguised as one of her boring rocks; a theft she allows at her new lair on the Wound's
+    # edge; the Colyphyr rest pages, her letters in stone and her night visits (melazmera_hoard); Greybor as her courier.
+    payload["Relationships"]["melazmera"] = copy.deepcopy(melazmera_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(melazmera_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(melazmera_hoard.SCENES))
+    melazmera_trickster.integrate(payload)
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
     trickster_engine(payload)

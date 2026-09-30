@@ -4125,6 +4125,29 @@
     "hold"
    ]
   },
+  "fee0f0cf006c96f4f90f895ba8d73d97": {
+   "ancestors_completed": [
+    "Chapter04"
+   ],
+   "areas": {
+    "c876d5303f4a19f4a80b0cc9b313db6f": "c876d5303f4a19f4a80b0cc9b313db6f"
+   },
+   "cascade_chapter": 5,
+   "chain": [
+    "ColyphyrMelazmeraDead",
+    "ColyphyrStates",
+    "ColyphyrStory",
+    "Chapter04",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "ColyphyrMelazmeraDead",
+   "traits": [
+    "area",
+    "cascade"
+   ]
+  },
   "ff0d7227c56b2b0488b006893b96040e": {
    "ancestors_completed": [],
    "areas": {},
