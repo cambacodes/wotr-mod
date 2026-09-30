@@ -170869,7 +170869,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She never asked again. The knot hung in her cave with one strand, and she bound nothing new into the Wintersun woods for as long as she lived. When travellers asked the old woman in the cave about the Commander, she said that she had met a hunter once who laughed at a knot, and that was all she said.{/n}",
+          "Text": "{n}She never asked again. When travellers asked the old woman in the cave about the Commander, she said that she had once met a hunter who could not make up their mind when it mattered, and that was all she said.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -170883,7 +170883,7 @@
           "Portrait": "",
           "Paragraphs": [
             {
-              "Text": "She took her leash back from the Commander's hand the day they parted, with a single strand and her own blood. It held, barely, for as long as she lived.",
+              "Text": "She took her leash back from the Commander's hand the day they parted, with a single strand and her own blood. It held, barely, for as long as she lived. The knot hung in her cave with one strand, and she bound nothing new into the Wintersun woods again.",
               "Requires": [
                 "soana.trickster.returned"
               ],
@@ -177560,12 +177560,30 @@
             },
             {
               "Text": "[Ask what's wrong] \"You're not saying something.\"",
-              "Next": "no",
+              "Next": "no_stones",
               "Set": [],
               "Requires": [
                 "seelah.trickster.cost.holds_her_death",
                 "seelah.trickster.death_returned"
               ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "no_stones",
+          "Speaker": "Seelah",
+          "Text": "{n}She puts her hand flat over the place in her tunic where the list is now.{/n}\n\"You read every line of this before you gave it back. You robbed a grave-robber for me with a trick I taught you, and you bought me back with stones off the altars I stood guard over. I owe that. I don't know yet whether I owe it to you.\" {n}She finishes her drink.{/n}\n\"Ask me again when I've paid the first coin of it back myself. Not before.\"",
+          "Choices": [
+            {
+              "Text": "[Let her keep it] \"Then I'll ask again, and I'll ask better.\"",
+              "Next": null,
+              "Set": [
+                "seelah.trickster.declined"
+              ],
+              "Requires": [],
               "Forbids": [],
               "Abort": false
             }
@@ -178359,7 +178377,52 @@
       ],
       "Requires": [
         "seelah.trickster.returned",
-        "seelah.revived"
+        "seelah.revived",
+        "seelah.trickster.woke",
+        "seelah.trickster.death_returned"
+      ],
+      "Forbids": [
+        "sosiel.dead",
+        "sosiel.kicked_out"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "seelah",
+      "Reaction": true,
+      "AnswerLists": [
+        "129b55b8b5d50974f84f7c607d894fd0"
+      ]
+    },
+    {
+      "Id": "seelah.trickster.dead.react_sosiel_kept",
+      "Title": "Sosiel's word",
+      "Owner": "Sosiel",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Have you seen Seelah?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Sosiel",
+          "Text": "{n}Sosiel is sketching, and he does not stop.{/n}\n\"She asked me whether a paladin who steals something back from her Commander has to confess it. I said it depends on the Commander.\" He shades something. \"She said it depended on the thing, and that you know which thing. I think you should button your coat.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "seelah.trickster.returned",
+        "seelah.revived",
+        "seelah.trickster.woke",
+        "seelah.trickster.cost.keeps_it"
       ],
       "Forbids": [
         "sosiel.dead",
@@ -364591,8 +364654,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",

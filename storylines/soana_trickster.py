@@ -449,10 +449,11 @@ SCENES.append(scene("soana.trickster.epilogue.luck_late", "The rattle in the bow
     requires=(LATE_COMMITTED, LUCK_KEPT), forbids=(RETURNED, COMMITTED, CLOSED, DECLINED), last=99, Relationship="soana"))
 
 UNBOUND = p("She took her leash back from the Commander's hand the day they parted, with a single strand and her own blood. "
-             "It held, barely, for as long as she lived.", requires=(RETURNED,))
+             "It held, barely, for as long as she lived. The knot hung in her cave with one strand, and she bound nothing new "
+             "into the Wintersun woods again.", requires=(RETURNED,))
 
 SCENES.append(scene("soana.trickster.epilogue.declined", "One strand", "Epilogue", 5, "", [
-    nar("start", '''{n}She never asked again. The knot hung in her cave with one strand, and she bound nothing new into the Wintersun woods for as long as she lived. When travellers asked the old woman in the cave about the Commander, she said that she had met a hunter once who laughed at a knot, and that was all she said.{/n}''',
+    nar("start", '''{n}She never asked again. When travellers asked the old woman in the cave about the Commander, she said that she had once met a hunter who could not make up their mind when it mattered, and that was all she said.{/n}''',
         c(), paragraphs=(UNBOUND,))],
     requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED), last=99, Relationship="soana"))
 

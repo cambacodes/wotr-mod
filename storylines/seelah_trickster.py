@@ -366,7 +366,11 @@ tavern("seelah.trickster.dismissed.commit", "Not as a sword", '"Seelah. Stay a w
         flags=("seelah.committed",)),
       c('[Let her choose] "You know where the coat is."', "chooses", requires=(ROMANCE, HOLDS, GIVEN_BACK),
         flags=("seelah.committed",)),
-      c('[Ask what\'s wrong] "You\'re not saying something."', "no", requires=(HOLDS, GIVEN_BACK))),
+      c('[Ask what\'s wrong] "You\'re not saying something."', "no_stones", requires=(HOLDS, GIVEN_BACK))),
+    s_("no_stones", '''{n}She puts her hand flat over the place in her tunic where the list is now.{/n}
+"You read every line of this before you gave it back. You robbed a grave-robber for me with a trick I taught you, and you bought me back with stones off the altars I stood guard over. I owe that. I don't know yet whether I owe it to you." {n}She finishes her drink.{/n}
+"Ask me again when I've paid the first coin of it back myself. Not before."''',
+      c('[Let her keep it] "Then I\'ll ask again, and I\'ll ask better."', flags=(DECLINED,))),
     s_("list_back", '''{n}She does not touch it at once. Then she unfolds it and reads it from the top, Acemi first, the way you would count the money in a purse somebody had just given back to you. At the last line she stops.{/n}
 "You never crossed it out." {n}She borrows the stub of pencil behind the tankards and writes a line under it, and does not cross that out either: "Kenabres stones. Stolen for me. Owed."{/n}
 {n}She folds it small and puts it inside her tunic, flat against her ribs.{/n} "All right. Now it's only you and me at this table. Now ask."''',
@@ -475,9 +479,14 @@ REACTIONS = [
 "A relic-seller from under the chapel steps boarded up his stall this week and left by the east gate in a hurry. Seelah asked me why. I told her I didn't know. I'm asking you, and I can see you're not going to tell me. I'm going to pray about this. Then I'm going to buy her a drink and pray about that."''',
              answer_list=IRABETH_HUB, forbids=IRABETH_GONE, chapter=3, last=5, entry='"Seelah is back."',
              Chapters=[3, 5], ForbidOverrides=dict(IRABETH_BACK)),
-    reaction("Sosiel", "seelah.trickster.dead.react_sosiel", (RETURNED, REVIVED),
+    reaction("Sosiel", "seelah.trickster.dead.react_sosiel", (RETURNED, REVIVED, WOKE, GIVEN_BACK),
              '''{n}Sosiel is sketching, and he does not stop.{/n}
 "She showed me a list. Old thefts, most of them crossed out, with what she paid back beside each one. The last line isn't crossed out, and it's new." He shades something. "She said it's the most expensive thing she owns. I believe her. I didn't ask what it cost."''',
+             answer_list=SOSIEL_HUB, forbids=SOSIEL_GONE, chapter=3, last=5, entry='"Have you seen Seelah?"'),
+    # b9c: the list kept at her waking; Sosiel hears the other half of it.
+    reaction("Sosiel", "seelah.trickster.dead.react_sosiel_kept", (RETURNED, REVIVED, WOKE, KEEPS),
+             '''{n}Sosiel is sketching, and he does not stop.{/n}
+"She asked me whether a paladin who steals something back from her Commander has to confess it. I said it depends on the Commander." He shades something. "She said it depended on the thing, and that you know which thing. I think you should button your coat."''',
              answer_list=SOSIEL_HUB, forbids=SOSIEL_GONE, chapter=3, last=5, entry='"Have you seen Seelah?"'),
     reaction("Irabeth", "seelah.trickster.dead_no_unit.react_irabeth", (RETURNED, CORRESPONDENT, HOLDS),
              '''"A letter from your paladin came across my desk. First line: 'Tell the Commander I'm counting my coins.' Second line's a list."
