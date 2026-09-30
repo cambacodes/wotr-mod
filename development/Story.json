@@ -254536,7 +254536,7 @@
         {
           "Id": "threat_sold",
           "Speaker": "Devarra",
-          "Text": "\"The blind elf came up the gorge with a lantern he did not need and told your story to my bones. Kenabres. The lies. All of it.\" {n}Her lip lifts off one tooth; it is new, and very white.{/n} \"It was impressive. And your butchers took my teeth. I pay what I charge, crusader, and I remember what I am charged.\"",
+          "Text": "\"The blind elf came to where I lay with a lantern he did not need and told your story to my bones. Kenabres. The lies. All of it.\" {n}Her lip lifts off one tooth; it is new, and very white.{/n} \"It was impressive. And your butchers took my teeth. I pay what I charge, crusader, and I remember what I am charged.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -254553,7 +254553,7 @@
         {
           "Id": "threat_shame",
           "Speaker": "Devarra",
-          "Text": "\"The blind elf came up the gorge with a lantern he did not need and told your story to my bones. Kenabres. The lies. All of it. It was impressive. I pay what I charge.\"\n{n}The lip lifts a little further.{/n} \"He told the shameful part twice. I think he enjoyed it.\"",
+          "Text": "\"The blind elf came to where I lay with a lantern he did not need and told your story to my bones. Kenabres. The lies. All of it. It was impressive. I pay what I charge.\"\n{n}The lip lifts a little further.{/n} \"He told the shameful part twice. I think he enjoyed it.\"",
           "Choices": [
             {
               "Text": "Continue",

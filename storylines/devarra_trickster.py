@@ -229,9 +229,9 @@ letter(P + "dead.woken", "The hide splits", [
         c("Continue", "threat", forbids=(STORY_TOLD, STORY_SOLD, ESCAPED))),
     dv("threat_told", '''"You told me my ending from behind a rock, and then your dwarf put his blade under my wing." {n}The new hide over the old wound is paler than the rest, a grey seam.{/n} "And then you paid him not to cut me. I lay in the dark and listened for the rest of it. A story buys a life in my lair, crusader. I never said whose. It bought yours."''',
        c("Continue", "mother")),
-    dv("threat_sold", '''"The blind elf came up the gorge with a lantern he did not need and told your story to my bones. Kenabres. The lies. All of it." {n}Her lip lifts off one tooth; it is new, and very white.{/n} "It was impressive. And your butchers took my teeth. I pay what I charge, crusader, and I remember what I am charged."''',
+    dv("threat_sold", '''"The blind elf came to where I lay with a lantern he did not need and told your story to my bones. Kenabres. The lies. All of it." {n}Her lip lifts off one tooth; it is new, and very white.{/n} "It was impressive. And your butchers took my teeth. I pay what I charge, crusader, and I remember what I am charged."''',
        c("Continue", "mother")),
-    dv("threat_shame", '''"The blind elf came up the gorge with a lantern he did not need and told your story to my bones. Kenabres. The lies. All of it. It was impressive. I pay what I charge."
+    dv("threat_shame", '''"The blind elf came to where I lay with a lantern he did not need and told your story to my bones. Kenabres. The lies. All of it. It was impressive. I pay what I charge."
 {n}The lip lifts a little further.{/n} "He told the shameful part twice. I think he enjoyed it."''',
        c("Continue", "mother")),
     dv("threat_escaped", '''"You let me fly once. Xanthir's toys did not." {n}She breathes out through her nose, and the cart under her chin smokes.{/n} "I will remember which of you was polite. And I heard what you told them over my body. It was a good story, and cruel, and about me, and you made them stand guard over me with it. I pay what I charge."''',
