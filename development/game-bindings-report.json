@@ -1,8 +1,8 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-pol-b9a\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 3611,
+  "binding_uses": 3618,
   "unique_targets": 779,
   "failures": [],
   "targets": {
@@ -1650,13 +1650,13 @@
       "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0019.jbp",
       "type": "BlueprintCue"
     },
-    "4d812cb00e7ad794d907273f8db54b1e": {
-      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Additional_C3/After_Lab/Arueshalae_Romance_C3_After_Lab_Dialogue.jbp",
-      "type": "BlueprintDialog"
+    "fb47ae9136f1be0409ceb396d2614fe5": {
+      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Additional_C3/After_Lab/Answer_0022.jbp",
+      "type": "BlueprintAnswer"
     },
-    "86597ac9662ad35409f311a6b52c86b8": {
-      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Main_C4/Wakeup/Arueshalae_Romance_C4_Wakeup_Dialogue.jbp",
-      "type": "BlueprintDialog"
+    "86c0ddfdcc23a4a46b8d19400ca70e39": {
+      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Main_C4/Nightmares/Answer_0006.jbp",
+      "type": "BlueprintAnswer"
     },
     "3edf6ac1aefa1e3429ca04c60cb8565c": {
       "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Main_C5/BestEnding/Arueshalae_Romance_BestEnding_Dialogue.jbp",
