@@ -6,7 +6,8 @@ end under Kenabres, and when his sword vanished at the Commander's touch "a part
 (glossary). The Trickster's own unlock, TricksterUseMagicDeviceTier2Feature 1383f215, lets the Commander "use items so
 delicately that their use is completely unnoticed. Wands you use no longer lose charges from use". The device is the
 Trickster answering a scripted fate with the one remedy the game allows after a death, prepared before the blow: the
-crusade's Scroll of Raise Dead (a43d2960; "Coming back from the dead is an ordeal", 3355d508), read over her body in
+crusade's Scroll of Resurrection (6169a9e1; Resurrection 80a1a388 restores "life and complete strength to any deceased
+creature", which in Wrath's own rules covers an outsider as raise dead does not), read over her body in
 Areelu's laboratory by a Commander who is no cleric, unnoticed (the chosen Use Magic Device Tier 2 trick, read
 natively). A Trickster without the trick reads it aloud in front of everyone and pays for the witnesses. Her price is
 that she will tell Heaven what was done. The late fallback is the same rite, days later, after her body is carried out
@@ -115,8 +116,8 @@ FREED_JOKE = '[Spend it again, quietly] "Lariel left me a light in Kenabres. I\'
 
 # The native death is a scripted fate: TargonaIsWasKilledInAreeluLab starts from the [Attack] branch and nothing native
 # interrupts it. The Trickster does not claim to stop it. The Commander prepares, before the blow, the one thing the
-# game itself allows after a death: raise dead ("You restore life to a deceased party member... Coming back from the dead
-# is an ordeal", SpellsRaiseDead 3355d508), from the crusade's own Scroll of Raise Dead (a43d2960). The Trickster's Use
+# game itself allows after a death for any creature, an outsider included: resurrection ("restore life and complete strength
+# to any deceased creature", Resurrection 80a1a388), from the crusade's own Scroll of Resurrection (6169a9e1). The Trickster's Use
 # Magic Device trick is what makes it a trick: "use items so delicately that their use is completely unnoticed ... and
 # ... equip any magical items possible, regardless of requirements" (TricksterUseMagicDeviceTier2Feature 1383f215, read
 # natively as trickster.umd_tier2). A Commander who took the trick reads a cleric's scroll over her body and nobody sees;
@@ -133,7 +134,7 @@ def lab_primer(id, joke, scroll_text, flags, requires, forbids):
             c('"Nothing. Forget I spoke."', abort=True)),
         nar("scroll", scroll_text, c("Continue", "resist")),
         t("resist", '''"No." {n}She says it at once, and then she makes herself look at the scroll properly.{/n}
-"Raise dead is not mercy, Commander. I have watched chaplains use it. It takes something out of whoever it brings back, and it does not give it back. And you are asking me to let them mourn me. My healers in Heaven. The Hand, who has already buried my brother. Everyone who ever prayed beside me."
+"Resurrection is not mercy, Commander. I have watched chaplains use it. It gives back the body whole, every hair of it, and nothing of what the dying was like. And you are asking me to let them mourn me. My healers in Heaven. The Hand, who has already buried my brother. Everyone who ever prayed beside me."
 {n}The black wing draws tight against her back.{/n} "Tell me why I should let you make liars of all of them."''',
           c('[The wounded] "Because Drezen\'s infirmary loses a man every hour, and none of them will ever reach Heaven\'s healers. They could reach you."', "chooses"),
           c('[The truth] "Because I want you alive. That\'s all. I won\'t dress it up."', "chooses"),
@@ -148,25 +149,25 @@ def lab_primer(id, joke, scroll_text, flags, requires, forbids):
 
 lab_primer(P + "dead.setup",
            '[Spend it again, quietly] "Whatever strikes you in this room, I\'ll read you back in before anyone reaches the ending."',
-           '''{n}You show her what is inside your sleeve: a scroll of raise dead from the crusade's chaplains, signed out against your name for next month's relic tithe. It is a cleric's scroll, and you are no cleric. Your hands have learned to use any made thing as if it had been made for them, and so lightly that nobody ever sees them do it.{/n}
-{n}"If you fall," you tell her, "I will read it over you before they carry anyone out, and nobody in this room will know. And I'll have my hand on you while I read, with his light in it. You made the sword it came from. Whatever you are when the scroll finds you, you'll know that. You will wake alone, and you will wake weaker. Stay down until we are gone."{/n}''',
+           '''{n}You show her what is inside your sleeve: a scroll of resurrection from the crusade's reliquary, signed out against your name for next month's relic tithe. It is a cleric's scroll, and you are no cleric. Your hands have learned to use any made thing as if it had been made for them, and so lightly that nobody ever sees them do it.{/n}
+{n}"If you fall," you tell her, "I will read it over you before they carry anyone out, and nobody in this room will know. And I'll have my hand on you while I read, with his light in it. You made the sword it came from. Whatever you are when the scroll finds you, you'll know that. You will wake alone, and whole, and you will remember all of it. Stay down until we are gone."{/n}''',
            (PRIMED, LAB_LINE, TOLD), ("trickster", UMD2), (PRIMED, FREE, DEAD, CONDEMNED))
 
 lab_primer(P + "dead.setup_open",
            '[Spend it again, openly] "Whatever strikes you in this room, I\'ll read you back in. In front of everyone, if I have to."',
-           '''{n}You show her what is inside your sleeve: a scroll of raise dead from the crusade's chaplains, signed out against your name for next month's relic tithe. You have no gift for hiding the use of a thing. If you read it, you will read it on your knees over her body, aloud, with every soul in this room watching.{/n}
-{n}"If you fall," you tell her, "I will bring you back where you fell, with my hand on you and his light in it. You made the sword it came from; you'll know it. They will see me do it. You will wake weaker, and they will know why."{/n}''',
+           '''{n}You show her what is inside your sleeve: a scroll of resurrection from the crusade's reliquary, signed out against your name for next month's relic tithe. You have no gift for hiding the use of a thing. If you read it, you will read it on your knees over her body, aloud, with every soul in this room watching.{/n}
+{n}"If you fall," you tell her, "I will bring you back where you fell, with my hand on you and his light in it. You made the sword it came from; you'll know it. They will see me do it. You will wake whole, and they will know why."{/n}''',
            (PRIMED, LAB_LINE, TOLD, OPEN), ("trickster",), (PRIMED, FREE, DEAD, CONDEMNED, UMD2))
 
 # R2-2 late fallback: no scroll was prepared. The act is performed now and paid for: her body is carried out of the ruin
-# and raised the hard way, days late (Scroll of Raise Dead a43d2960; SpellsRaiseDead 3355d508, "an ordeal").
+# and brought back the hard way, days late, on the crusade's last Scroll of Resurrection (6169a9e1).
 letter(P + "dead.late_light", "The hard way back", [
     nar("start", '''{n}You did not think of it in the laboratory. You think of it now, with a report on your table that lists her among the dead and says her body was left where she fell.{/n}
 {n}Somewhere under the city a demon army is regrouping. Going back into Areelu's ruin for one body will cost blood and favours you cannot spare.{/n}''',
         c('[Send them back for her] "Bring her out. I\'ll read it myself."', "raise", mythic="Trickster", crusade=("Favors", -300)),
         c('"Let her rest."', abort=True)),
-    nar("raise", '''{n}Four volunteers go back into the ruin and come out with her wrapped in a Mendevian cloak. All four come out. One of them leaves an arm down there, and the other three do not speak of what is still down there. At the chapel you read a scroll of raise dead over her yourself, at the hour the priests call the thin one, while the chaplain kneeling at the altar keeps his eyes shut.{/n}
-{n}Coming back from the dead is an ordeal. The breath goes into her like a blade. Whatever she was before the laboratory, she will be less of it for a long while.{/n}''',
+    nar("raise", '''{n}Four volunteers go back into the ruin and come out with her wrapped in a Mendevian cloak. All four come out. One of them leaves an arm down there, and the other three do not speak of what is still down there. At the chapel you read the reliquary's scroll of resurrection over her yourself, at the hour the priests call the thin one, while the chaplain kneeling at the altar keeps his eyes shut. It is the last one the crusade has, and the treasurer will want to know why.{/n}
+{n}The breath goes into her like a blade. The scroll gives her body back whole, the black wing and all, and gives her nothing back of the days she lay in the ruin.{/n}''',
         c('[Stay until she breathes.]', flags=(PRIMED, LATE, ECHO_SPENT))),
 ], requires=("trickster", DEAD), forbids=(PRIMED, RETURNED), delay=0, chapters=(3,),
    TricksterDevice=True, TricksterState=DEAD)
@@ -176,12 +177,12 @@ letter(P + "dead.late_light", "The hard way back", [
 # kept her in the chapel crypt while Heaven decides where an angel is buried (authored).
 letter(P + "dead.late_crypt", "The crypt under the chapel", [
     nar("start", '''{n}The crusade's chaplains keep a crypt under the chapel for the dead whose orders have not yet said where they are to be buried. Since Areelu's laboratory they have kept an angel in it, on a bier, under a Mendevian shroud, waiting for Heaven to answer a letter about her. Heaven has not answered.{/n}
-{n}You have come back up out of the Abyss with the war nearly over and her name still on a list of the dead. There is one scroll of raise dead left in Drezen: the chaplains' reliquary holds it as the crusade's relic tithe, sealed and promised to Heaven's envoy, who is to carry it back to the Upper Planes after the Threshold as proof that the crusade kept faith.{/n}''',
+{n}You have come back up out of the Abyss with the war nearly over and her name still on a list of the dead. There is one scroll of resurrection left in Drezen: the chaplains' reliquary holds it as the crusade's relic tithe, sealed and promised to Heaven's envoy, who is to carry it back to the Upper Planes after the Threshold as proof that the crusade kept faith.{/n}''',
         c('[Break the tithe seal] "Open the crypt. I\'ll read it myself, and the envoy can take it up with me."', "raise",
           mythic="Trickster", crusade=("Favors", -500)),
         c('"Let her rest."', abort=True)),
     nar("raise", '''{n}The chaplain-captain opens the reliquary with a face like a shut door and makes you break the envoy's seal with your own thumb. By nightfall the envoy will know whose thumb it was, and he will take his blessing off the Threshold muster, and every officer in Drezen will know why.{/n}
-{n}In the crypt you turn back the shroud. She looks as she did on the laboratory floor. The crypt is cold, and the chaplains have been careful with her. You read the scroll over her by one lamp, with your palm flat on her heart and her brother's light in it, and it goes to ash in your hand at the last word. Coming back from the dead is an ordeal. The breath goes into her like a blade, and she opens her eyes on a stone ceiling and your face.{/n}''',
+{n}In the crypt you turn back the shroud. She looks as she did on the laboratory floor. The crypt is cold, and the chaplains have been careful with her. You read the scroll over her by one lamp, with your palm flat on her heart and her brother's light in it, and it goes to ash in your hand at the last word. The breath goes into her like a blade, and she opens her eyes on a stone ceiling and your face.{/n}''',
         c("Continue", "wake")),
     t("wake", '''{n}It is a long time before she can speak, and when she can, it is only a whisper.{/n}
 "Whose scroll?" {n}She hears the answer out. The black wing moves once against the bier.{/n}
@@ -204,7 +205,7 @@ letter(P + "dead.one_soul", "Read back in", [
         c("Continue", "news")),
     nar("cold", '''{n}You remember the chapel exactly: the scroll, the breath going into her like a blade, the chaplain praying with his eyes shut. She did not wake while you were there. The priests carried her down to the infirmary on a litter, as one more wounded thing.{/n}''',
         c("Continue", "news")),
-    nar("news", '''{n}The runner says that an angel with one black wing is up and washing wounds. She can barely lift the basin. She has not said her name. She asked whether the Knight-Commander was awake.{/n}
+    nar("news", '''{n}The runner says that an angel with one black wing is up and washing wounds. Her hands shake on the basin. She has not said her name. She asked whether the Knight-Commander was awake.{/n}
 {n}By noon Heaven's envoy to the crusade has heard, and by evening the Queen's chaplains have: an angel the lists call dead is changing bandages in Drezen, and nobody can say by whose hand. The envoy withholds his blessing from the next muster until someone explains it.{/n}''',
         c('[Go to her] Go down to the infirmary.', forbids=(OPEN,), crusade=("Favors", -150), flags=(RETURNED, STARTED, STRUCK, SHARD)),
         c('[Go to her] Go down to the infirmary, past the soldiers who saw.', requires=(OPEN,), crusade=("Favors", -300),
@@ -222,7 +223,7 @@ ward(P + "dead.furlough", "A fever that broke at dawn", '"Targona."', [
 {n}She nods at the two new cots.{/n} "Those men went to the wall unblessed because of me. Heaven's envoy will not bless what he cannot explain, and he cannot explain me. I have told them I am sorry. They did not know what for."
 {n}The black wing folds against her back as if it too is listening.{/n}
 {n}She sets the basin down with both hands. It is only half full, and still it shakes.{/n}
-"I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. Then nothing, and in the nothing, a light I made with my own hands, a long time ago, for my brother. I went towards it. Then I was breathing, and every breath hurt." {n}She flexes her fingers.{/n} "I cannot lift what I lifted a week ago. That is what raising costs. I knew it would."
+"I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. Then nothing, and in the nothing, a light I made with my own hands, a long time ago, for my brother. I went towards it. Then I was breathing, and every breath hurt." {n}She flexes her fingers.{/n} "The chaplains say resurrection gives the body back whole. It does. It does not give back the floor of that laboratory. I have lain on it every night since."
 "I went to the Hand's chaplain before I came here, as I said I would. I told him what was done, and by whom. He let the candle burn down a finger's width before he spoke. Then he blessed me, and not you."''',
       c('[Tell her the truth] "I struck you. I\'d rather you hear it from me than from Heaven."', "truth"),
       c('[Make light of it] "It was a joke. You\'re alive. That\'s the punchline."', "joke"),
@@ -231,7 +232,7 @@ ward(P + "dead.furlough", "A fever that broke at dawn", '"Targona."', [
 {n}She nods at the two new cots.{/n} "Those men went to the wall unblessed because of me. Heaven's envoy will not bless what he cannot explain, and he cannot explain me. I have told them I am sorry. They did not know what for."
 {n}The black wing folds against her back as if it too is listening.{/n}
 {n}She sets the basin down with both hands. It is only half full, and still it shakes.{/n}
-"I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. Then nothing, and in the nothing, a light I made with my own hands, a long time ago, for my brother. I went towards it. Then I was breathing, and every breath hurt." {n}She flexes her fingers.{/n} "I cannot lift what I lifted before the laboratory. That is what raising costs. The chaplains told me so while I was still on the litter."
+"I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. Then nothing, and in the nothing, a light I made with my own hands, a long time ago, for my brother. I went towards it. Then I was breathing, and every breath hurt." {n}She flexes her fingers.{/n} "The chaplains say resurrection gives the body back whole. It does. It does not give back the floor of that laboratory. I have lain on it every night since."
 "Before I would let them carry me to the cots, I sent for the Hand's chaplain. Nobody asked me to. I had not promised anyone. But I will not be raised on a lie, and I told him what was done, and by whom. He let the candle burn down a finger's width before he spoke. Then he blessed me, and not you."''',
       c('[Tell her the truth] "I struck you. I\'d rather you hear it from me than from Heaven."', "truth"),
       c('[Make light of it] "It was a joke. You\'re alive. That\'s the punchline."', "joke"),
@@ -398,8 +399,8 @@ LIGHT_PARAGRAPHS = (
     p("Heaven's lists still name her among the dead of Areelu's laboratory. Targona never asked to have the entry "
       "struck. She said it was the most honest thing anyone had written about her, and that the angel on that list had "
       "earned her rest.", requires=(SHARD,)),
-    p("She came back the hard way, through the chapel and the raise dead scroll, and it took her a year to lift a full "
-      "basin again. Four volunteers went into Areelu's ruin for her body. She learned their names, and tended the one "
+    p("She came back the hard way, through the chapel and the crusade's last scroll of resurrection, and it took her a year "
+      "to sleep through a night again. Four volunteers went into Areelu's ruin for her body. She learned their names, and tended the one "
       "who lost his arm there until the day he died, old, in his bed.", requires=(ECHO_SPENT,)),
     p("She came back through the chaplains' crypt, on the scroll the crusade owed Heaven as its tithe. Heaven's envoy "
       "never blessed another muster of the Commander's, and Targona spent a year of feast days in his anteroom, asking "

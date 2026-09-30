@@ -56,9 +56,16 @@ internal static class TargonaTricksterTests
         var epFurlough = S(P + "epilogue.furlough");
         Snapshot After(Scene scene, Snapshot w, string node, int choice)
         {
+            // Edge-exact (Sol quality pass, HOW): reach the node, then take exactly this choice from the state held there.
             var target = scene.Nodes.Single(n => n.Id == node).Choices[choice];
-            var hit = Program.Walk(scene, w).FirstOrDefault(o => target.Set.All(o.Has));
-            check(hit != null && target.Set.Length > 0, "No outcome through " + scene.Id + "/" + node + "/" + choice);
+            Snapshot? at = null;
+            Program.Walk(scene, w, (page, st) => { if (at == null && page == node && Rules.Match(target.Requires, target.Forbids, st)) at = Program.Copy(st); });
+            check(at != null, "Node not reached with its choice open: " + scene.Id + "/" + node + "/" + choice);
+            if (at == null) return w;
+            var edge = new Scene { Id = scene.Id, Relationship = scene.Relationship, Owner = scene.Owner,
+                                   Nodes = new[] { new Node { Id = "__edge", Choices = new List<Choice> { target } } }.Concat(scene.Nodes).ToList() };
+            var hit = Program.Walk(edge, at).FirstOrDefault();
+            check(hit != null && target.Set.All(hit.Has), "No outcome through " + scene.Id + "/" + node + "/" + choice);
             return hit ?? w;
         }
         bool Reaches(Snapshot w, string flag, int depth = 6)
@@ -118,7 +125,7 @@ internal static class TargonaTricksterTests
                   && j.Crusade?.Resource == "Favors" && j.Crusade.Amount == -100 && j.Text.StartsWith("[Spend it again,", StringComparison.Ordinal),
                 "A primer lost its joke or its price: " + primer.Id);
             var scroll = primer.Nodes.Single(n => n.Id == "scroll").Text;
-            check(scroll.Contains("scroll of raise dead", StringComparison.Ordinal) && scroll.Contains("signed out", StringComparison.Ordinal),
+            check(scroll.Contains("scroll of resurrection", StringComparison.Ordinal) && scroll.Contains("signed out", StringComparison.Ordinal),
                 "A primer does not put the signed-out scroll on the page: " + primer.Id);
             var pages = new HashSet<string>();
             Program.Walk(primer, primer == setup ? lab : noTrick, (page, _) => pages.Add(page));
@@ -370,6 +377,14 @@ internal static class TargonaTricksterTests
         check(lcTargona.RequiresAnyGroups.Length == 1 && lcTargona.RequiresAnyGroups[0].Contains("targona.committed")
               && lcTargona.RequiresAnyGroups[0].Contains(P + "parent_romanced") && treatedRomance.Has(P + "parent_romanced"),
             "The parent romance never reaches Targona's coda.");
+        check(lcTargona.RequiresAnyGroups[0].Contains(P + "late_committed"), "The late commitment (met, or washed) never reaches Targona's coda.");
+        var lcParas = lcTargona.Nodes[0].Paragraphs;
+        check(lcParas.Single(q => q.Requires.Contains(P + "cost.unforgiven") && !q.Requires.Contains(P + "forgiven")).Forbids.Contains(P + "forgiven")
+              && lcParas.Any(q => q.Requires.Contains(P + "cost.unforgiven") && q.Requires.Contains(P + "forgiven")),
+            "A forgiven Targona is still at the far end of every room.");
+        check(!story.Scenes.Where(x => x.Relationship == "targona" || x.Id.StartsWith("targona.", StringComparison.Ordinal))
+                  .SelectMany(x => x.Nodes).Any(n => n.Text.Contains("raise dead", StringComparison.OrdinalIgnoreCase)),
+            "An outsider is raised with raise dead (it restores party members; resurrection restores any creature).");
         var eligibleGroups = story.Derived["targona.harem.eligible"];
         check(eligibleGroups.Any(g => g.Length == 1 && g[0] == P + "parent_romanced"), "The parent romance is not a household partner.");
         // The laboratory death: TargonaIsWasKilledInAreeluLab starts at the [Attack] cue, and the native game itself reads it as her
