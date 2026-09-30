@@ -202,7 +202,25 @@ internal static class MelazmeraTricksterTests
               && !found.Nodes.Any(n => n.Choices.Any(c => c.Requires.Contains("hepzamirah.dead"))),
             "Trk_Melazmera_Found: the hunt does not find a Commander who left Colyphyr (Chapter 4, off the island's etudes).");
 
-        // Trk_Melazmera_KillStands: the canon kill (latched on Colyphyr) closes everything.
+        // Trk_Melazmera_Window: salted in Chapter 4 and never met there: she comes to the window in Drezen in Chapter 5.
+        var window = S(P + "ch5.hunt_window");
+        var ch5salted = World(story, 5, Drezen, "trickster.ever", Salted, Seal, Ch5);
+        ch5salted.Times[Ch5] = ch5salted.Hour;
+        check(!Avail(window, ch5salted) && Avail(window, Later(story, ch5salted, 40)) && !Avail(window, Later(story, ch5salted, 40, "abyss"))
+              && Take(window, Later(story, ch5salted, 40), "leaves", 0, Returned).Has(Started)
+              && !window.Nodes.Any(n => n.Text.Contains("camp") || n.Text.Contains("cook-pot")),
+            "Trk_Melazmera_Window: a salted Commander who reaches Chapter 5 unmet is not found at the window in Drezen.");
+        var afterWindow = Take(window, Later(story, ch5salted, 40), "leaves", 0, Returned);
+        var viaWindow = Take(msgB, Later(story, World(story, 5, Drezen, "trickster.ever", Returned, "greybor.in_party", Ch5), 1), "start", 0, Carried);
+        check(afterWindow.Has(Returned) && viaWindow.Has(Carried),
+            "Trk_Melazmera_Window: the window meeting does not lead into her Chapter 5 message.");
+        // Chapter 5 night visits stage the citadel: never at a rest outside Drezen.
+        check(own.Where(s => s.Chapters.SequenceEqual(new[] { 5 }) && Rules.IsRemote(s) && s.Id != P + "ch5.message_read")
+                  .All(s => s.Areas.SequenceEqual(new[] { Drezen })),
+            "A Chapter 5 visit or window stone can arrive at a rest outside Drezen.");
+
+        // Trk_Melazmera_KillStands: the canon kill (latched on Colyphyr) closes everything. The kill is the player's own
+        // choice at the lair (11 §5 ruling #2, §5.1; matrix user_decision killed_at_colyphyr), not a fate to defy.
         var killed = World(story, 4, Colyphyr, "trickster", "trickster.ever", Told, "melazmera_dead");
         check(killed.Has(Dead) && !own.Any(s => Avail(s, killed))
               && !own.Any(s => Avail(s, World(story, 5, Drezen, "trickster.ever", Returned, Message, Fed, Dead)))

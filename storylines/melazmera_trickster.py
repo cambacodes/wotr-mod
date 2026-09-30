@@ -374,11 +374,56 @@ SCENES.append(scene(M + "ch4.hunt_found", "The thief who gave", "Melazmera", 4, 
 tag(M + "ch4.hunt_found")
 
 
+def _drezen_body():
+    """The hunt restaged at the Commander's window in Drezen (Chapter 5): the same meeting, the room instead of the camp."""
+    body = _found_body()
+    subs = [
+        ("arrive", "She sits down by your fire without being asked, folding herself onto a rock the way a heron folds onto one leg, and the fire leans away from her.",
+         "She climbs down off the sill without being asked and sits on the stone of your hearth, folding herself onto it the way a heron folds onto one leg, and the fire leans away from her."),
+        ("arrive", "Behind her, across the camp and up the rocks beyond it, her shadow goes on and on.",
+         "Behind her, up the wall and across the ceiling and out through the open window, her shadow goes on and on."),
+        ("speech", "She reaches into your cook-pot with two fingers", "She reaches into the supper tray on your desk with two fingers"),
+        ("queen", "all along the rocks above the camp her shadow's jaws open with it", "all along your ceiling her shadow's jaws open with it"),
+        ("crew_missed", "her shadow's wings shift along the rocks", "her shadow's wings shift along the ceiling"),
+        ("name", "The shadow on the rocks stands with her", "The shadow on the ceiling stands with her"),
+        ("rent", "far up the cliffs a flock of something shrieks and scatters", "out on the wall a sentry drops his spear"),
+        ("truce", "a whole sea of the Abyss away", "a whole world away, through the hole"),
+        ("mistake", "She walks out of the firelight, and does not come back into it.", "She goes out over the sill, and does not come back to it."),
+    ]
+    for node_id, old, new in subs:
+        node = next(x for x in body if x["Id"] == node_id)
+        if node["Text"].count(old) != 1:
+            raise ValueError("Drezen restaging must hit exactly once: " + old)
+        node["Text"] = node["Text"].replace(old, new)
+    leaves = next(x for x in body if x["Id"] == "leaves")
+    leaves["Text"] = '''{n}She goes out over the sill the way she came, and something enormous drops past the window and does not hit the ground. A moment later every dog in the citadel starts barking at once, and goes on barking until the second bell.{/n}
+{n}In the morning there is a scorched ring on the stone of your hearth where she sat, and your supper tray is empty, and the pork was not all she took from it. The spoon is gone too.{/n}'''
+    return body
+
+
+SCENES.append(scene(M + "ch5.hunt_window", "The thief who gave", "Melazmera", 5, "", [
+    nar("start", '''{n}Drezen is asleep under its own smoke. You wake in your quarters in the citadel because the shutters have been opened from outside, three storeys up, and the night air is coming in, and something is crouched on your windowsill, blotting out the stars.{/n}''',
+        c("Continue", "known", requires=(GREY_HAND,)),
+        c("Continue", "stranger", forbids=(GREY_HAND,))),
+    nar("known", '''{n}Your hand knows before you do. The two grey fingers, which have felt nothing since the cave, prickle as if they were waking from sleep, and then go cold again.{/n}
+{n}The thing on the sill unfolds, and it is a woman.{/n}''',
+        c("Continue", "arrive_known")),
+    arrive_known("So I came through the hole in your world to look at you again."),
+    nar("stranger", '''{n}The thing on the sill unfolds, and it is a woman, tall and dark, with a rock pressed into her hair like a crown.{/n}''',
+        c("Continue", "far")),
+    mz("far", '''"You ran away," {n}she says.{/n} "You put a thing in my hoard, and then you ran off, all the way to your own world, as if I would not be able to smell my own property on your hand." {n}She sounds more amused than offended.{/n} "There is a hole in your world, thief. I came up through it after you. It was warm."''',
+        c("Continue", "arrive")),
+    *_drezen_body()],
+    requires=("trickster.ever", SALTED, CH5_LATCHED), forbids=(DEAD, RETURNED, CLOSED, M + "ch4.hunt", M + "ch4.hunt_found"),
+    delay=36, last=5, Relationship=REL, Remote=True, Kind="visit", Chapters=[5], Areas=[DREZEN]))
+tag(M + "ch5.hunt_window")
+
+
 # --- 4. Chapter 5 (T): the message. Greybor carries it, paid in advance; or it comes through the window. --------------------
 
 GREY_MESSAGE = '''{n}Greybor sets a flat grey stone on the table between you, wrapped in oilcloth and tied with string, and does not take his hand off it at once.{/n}
 "A woman came to the north gate last night after curfew, Commander. Tall. Very tall. She wore a rock on her head, which I noticed, because I am paid to notice things. She asked the watch for the sellsword who takes monster contracts. The watch sent her to me, which I will be discussing with the watch."
-"She wanted this carried to you. I told her I do not carry letters; I am not a pigeon. So she paid me." {n}He lays a coin beside the stone: thick, old, square-holed gold from no mint you know.{/n} "In advance. In real coin. I bit it. In thirty years not one client has paid me before the work."
+"She wanted this carried to you. I told her I do not carry letters; I am not a pigeon. So she paid me." {n}He lays a coin beside the stone: thick, old, square-holed gold from no mint you know.{/n} "In advance, as I require. She knew my terms before I named them, and she did not haggle. Nobody who has not been in the trade a very long time pays a sellsword before the work without haggling. I bit it. It is real."
 {n}He taps the lump of clay pressed over the knot. In it, sharp and clean, is your old seal.{/n} "It is sealed with *your* seal, Commander. The one you lost in the Abyss. '''
 
 SCENES.append(reaction("Greybor", M + "ch5.message", ("trickster.ever", RETURNED, GREY_IN, GREY_DECLINED),
@@ -421,7 +466,7 @@ SCENES.append(scene(M + "ch5.message_letter", "A stone through the shutter", "Me
         c("[Put it with her other stones.]", flags=(MESSAGE,), requires=(M + "stone.first_read",)),
         c("[Nail the shutter back up.]", flags=(MESSAGE,)))],
     requires=("trickster.ever", RETURNED, CH5_LATCHED), forbids=(MESSAGE, GREY_CARRIED, CLOSED), delay=72, last=5,
-    Relationship=REL, Remote=True, Kind="letter", Chapters=[5]))
+    Relationship=REL, Remote=True, Kind="letter", Chapters=[5], Areas=[DREZEN]))
 tag(M + "ch5.message_letter")
 
 
@@ -452,7 +497,7 @@ SCENES.append(scene(M + "ch5.hunger", "When the moon is thin", "Melazmera", 5, "
     nar("cultists_after", '''{n}In the morning the gaoler reports seven cells empty, the locks whole, the grating in its place, and a cold in the cellar that will not come out of the stones for a week. He is a sensible man. He writes "escaped" in his book, and looks at you when he says the word, and does not say anything else.{/n}
 {n}There is one stone on your windowsill, small and round, with a single word scored into it: FAT.{/n}''',
         c("Continue", flags=(FED, FED_CULTISTS, SECRET))),
-    mz("demons", '''"Demons." {n}She makes a face like a child offered turnips.{/n} "They taste of the Abyss. I have been eating the Abyss for a very long time, thief. I know what it tastes like. It tastes like being bored."
+    mz("demons", '''"Demons." {n}Her lip curls off her teeth.{/n} "They taste of the Abyss. I have been eating the Abyss for a very long time, thief. I know what it tastes like. It tastes like being bored."
 {n}She considers you, and the dark on the ceiling considers you with her.{/n} "But you gave me a thing, and I have not given you anything, so I will do what you say this once and see what it feels like." {n}She goes to the window.{/n} "If it feels bad, I will come back and eat your priests' prisoners anyway, and tell them it was your idea."''',
         c("Continue", "demons_after")),
     nar("demons_after", '''{n}For three nights afterwards the pickets on the north road report the same thing: a noise out over the Wound's edge like a ship's sail filling, then screaming, then nothing, and in the morning, scattered across the scorched ground where the rifts open, pieces of things that came up out of the earth in the night and did not get any further.{/n}
@@ -466,7 +511,7 @@ SCENES.append(scene(M + "ch5.hunger", "When the moon is thin", "Melazmera", 5, "
 {n}He wants to know what the Knight Commander means to do about it. He wants to know it in writing. You write something. It is not the truth.{/n}''',
         c("Continue", flags=(FED, FED_HERD), crusade=("Favors", -50)))],
     requires=("trickster.ever", MESSAGE), forbids=(FED, CLOSED), delay=48, last=5, Relationship=REL, Remote=True,
-    Kind="visit", Chapters=[5]))
+    Kind="visit", Chapters=[5], Areas=[DREZEN]))
 tag(M + "ch5.hunger")
 
 household.secret(
@@ -492,7 +537,7 @@ SCENES.append(scene(M + "commit.stone", "What a thief takes", "Melazmera", 5, ""
         c("Continue", "cave")),
     nar("cave", '''{n}It is not the cave on Colyphyr. There is no hole in the roof and no rain; there is a crack in the world with a warm floor, and a smell of hot stone, and a red light coming up from very far below. But she has made it into the same thing.{/n}
 {n}At the mouth, laid out on a shelf of rock where the light catches them, are the staff with the golden bird, the gown sewn with stones, the fat coins in a careless spill, and on a ledge of its own the little crown. At the back, in a hollow she has already worn smooth, is the heap: grey, lumpy, dull, nine mouthfuls of it, carried across a world.{/n}
-{n}She slides off the illusion of the dragon as if taking off a coat, and it is the woman who walks up the heap and sits on the top of it, with the rock on her head and your ring rattling on her smallest finger.{/n}''',
+{n}She folds herself down, the way she folds herself to come through your window, and it is the woman who walks up the heap and sits on the top of it, with the rock on her head and your ring rattling on her smallest finger.{/n}''',
         c("Continue", "count")),
     mz("count", '''"Forty-one real stones," {n}she says.{/n} "I have counted them every night since I was the size of a horse. Forty-one. Some are rubies, some are the eyes of statues, one is a lump of star that fell into the sea and came up in a net. I ate the net. I ate the fishermen." {n}She lifts her hand.{/n} "And one seal. Forty-two."
 {n}She looks down at you from the heap. The red light from the rift is under her chin, and her eyes are two more coals.{/n} "And one Commander. I have put you in my hoard, thief. I decided it on the way here, somewhere over the burned country. I do not know when it happened. Things in my hoard do not leave."''',
@@ -535,12 +580,12 @@ SCENES.append(scene(M + "commit.stone", "What a thief takes", "Melazmera", 5, ""
         c("[Take your rock and go.]", flags=(DECLINED,))),
     mz("nothing", '''{n}You stand at the foot of the heap with your hands at your sides and take nothing at all.{/n}
 {n}She looks at you, and at your empty hands, and something in her face goes out as the crown goes out when you touch it.{/n}
-"Nothing," {n}she says.{/n} "You came into my cave the first time and took nothing, and you left a thing. You come into my cave now and take nothing, and you leave *nothing*." {n}She pulls her knees up and wraps her arms round them, on top of her heap, like a girl on a wall.{/n} "Then you are not a thief. You were only a guest. Guests go home. Go home, guest."''',
+"Nothing," {n}she says.{/n} "You came into my cave the first time and took nothing, and you left a thing. You come into my cave now and take nothing, and you leave *nothing*." {n}She pulls her knees up on top of her heap and looks at you over them, and her eyes have gone as dull as the stones.{/n} "Then you are not a thief. You were only a guest. Guests go home. Go home, guest."''',
         c("Continue", "nothing2")),
     mz("nothing2", '''"I will fly you back. I am not rude. And I will keep your ring, because it is in my hoard, and things in my hoard do not leave." {n}She turns the ring on her finger.{/n} "But I will not come to your window again. I have a whole hole in the world to eat, and it will keep me busy for a very long time."''',
         c("[Go home.]", flags=(LEFT_FREE, CLOSED)))],
     requires=("trickster.ever", FED), forbids=(COMMITTED, DECLINED, CLOSED), delay=48, last=5, Relationship=REL,
-    Remote=True, Kind="visit", Chapters=[5]))
+    Remote=True, Kind="visit", Chapters=[5], Areas=[DREZEN]))
 tag(M + "commit.stone")
 
 
@@ -587,7 +632,7 @@ SCENES.append(scene(M + "hunt.shared", "What is real on this side", "Melazmera",
 "Then you are not a thief," {n}she says.{/n} "You were only a guest. Guests go home." {n}She flies you back without another word, and puts you down on the roof of the keep, and is gone north before you have your feet under you. She does not come to your window again.{/n}''',
         c("[Go down into the keep.]", flags=(LEFT_FREE, CLOSED)))],
     requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED), delay=24, last=5, Relationship=REL,
-    Remote=True, Kind="visit", Chapters=[5]))
+    Remote=True, Kind="visit", Chapters=[5], Areas=[DREZEN]))
 tag(M + "hunt.shared")
 
 
@@ -640,13 +685,14 @@ SCENES.append(scene(M + "visit.heap", "On the heap", "Melazmera", 5, "", [
         c("Continue", "home", flags=(MORNING_STAYED,))),
     mz("go", '''"In one piece," {n}she agrees.{/n} "I do not want the pieces. I want the whole thing, with the talking still in it." {n}She lifts her head at last, and yawns, and it is like looking into a furnace full of knives.{/n} "Get on. I will take you back before your castle notices you are gone. Your castle notices everything. It is the most frightened building I have ever seen."''',
         c("Continue", "home")),
-    nar("home", '''{n}She puts you down on the roof of the keep with the sun barely up. You go down the stairs with your shirt on inside out and a stone in the pocket of it, a lumpy grey stone the size of a hen's egg, warm from lying against you all night, and it stays warm all morning, long after it should have cooled.{/n}''',
+    nar("home", '''{n}She puts you down on the roof of the keep with the sun barely up. You go down the stairs with your shirt on inside out and a stone in the pocket of it, a lumpy grey stone the size of a hen's egg, warm from lying against you all night, and it stays warm all morning, long after it should have cooled.{/n}
+{n}There is another stone on your windowsill when you get there, small and round, the clay on its corner still wet, the old seal pressed into it very carefully and very straight: FORTY-ONE. ONE SEAL. ONE COMMANDER. YOU LEFT A SHIRT ON THE HEAP. IT IS MINE NOW.{/n}''',
         c("Continue", "dogs", requires=(GREY_ABSENT,)),
         c("[Go about your day.]", flags=(HEAP,), forbids=(GREY_ABSENT,))),
     nar("dogs", '''{n}When you cross the stable yard, every dog in it gets up and goes somewhere else. The old wolfhound that sleeps by the forge, who has never moved for anyone, crawls under the feed trough on his belly and will not come out, and whines, and the grooms look from him to you and back again and say nothing at all.{/n}''',
         c("[Go about your day.]", flags=(HEAP,)))],
     requires=("trickster.ever", COMMITTED), forbids=(HEAP, CLOSED), delay=24, last=5, Relationship=REL, Remote=True,
-    Kind="visit", Chapters=[5]))
+    Kind="visit", Chapters=[5], Areas=[DREZEN]))
 tag(M + "visit.heap")
 
 
