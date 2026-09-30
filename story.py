@@ -353,7 +353,7 @@ s("i_crossing", "No order given", "Irabeth", 3,
       c('"This is enough for tonight."', "gentle")),
     n("night", "Irabeth", '''{n}Irabeth takes off her gloves and sets them carefully together. Then she laughs at the absurdity of being orderly at such a moment. The laughter loosens something in both of you.{/n}
 "Come here."
-{n}There is no command in it. You go to her willingly. She kisses you again, and this time she lets the unfinished sentence between you remain unfinished. The lamp is put out. You discover a quiet in which she does not have to be brave for anyone watching.{/n}
+{n}There is no command in it. You go to her. She kisses you again, harder, and her hands go to her own buckles: the sword belt onto the chair, the breastplate onto the floor with a noise that makes her wince and then laugh. She hauls her shirt over her head, catches you by the collar and pulls you down onto the bed with her, her weight rolling over yours and her knee sliding between your thighs.{/n}
 {n}Later, before she leaves, she sits beside you in the darkness. Her hand finds yours without searching.{/n}
 "It mattered to me. I do not know what I am going to do with that. But it mattered."
 {n}She does not ask for absolution, and you do not offer it.{/n}''', c('[Say good night.]', flags=("i_affair",))),

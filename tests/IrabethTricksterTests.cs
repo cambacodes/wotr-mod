@@ -245,18 +245,23 @@ internal static class IrabethTricksterTests
                 no = told.Single(r => r.Has("irabeth.trickster.told_the_other_story"));
                 check(no.Has("irabeth.trickster.cost.accounting_lied"), "Telling the truth erased the lie.");
             }
-            check(!Rules.Available(story, commit, no) && (lied || !Rules.Available(story, second, Later(story, no, 47)))
-                  && Rules.Available(story, second, Later(story, no, 48)), "Trk_Irabeth_Refusal: the priced second ask is mistimed.");
+            check(!Rules.Available(story, commit, no) && (lied || !Rules.Available(story, second, Later(story, no, 23)))
+                  && Rules.Available(story, second, Later(story, no, 24)), "Trk_Irabeth_Refusal: the priced second ask is mistimed.");
             var asked = new HashSet<string>();
-            var finals = Program.Walk(second, Later(story, no, 48), (page, _) => asked.Add(page));
+            var finals = Program.Walk(second, Later(story, no, 24), (page, _) => asked.Add(page));
             check(finals.All(r => !r.Has("irabeth.committed")) && finals.Any(r => r.Has("irabeth.closed")), "Second ask: commits before the courier, or no hard no.");
             // Sol HOW: the pen goes south; the answer is a separate scene, five days on.
             var sent = finals.Single(r => r.Has("irabeth.trickster.pen_sent"));
             check(sent.Has("irabeth.trickster.cost.signed_request") && asked.Contains("sent") && !asked.Contains("threshold"), "The pen does not go south.");
-            check(!Rules.Available(story, reply, Later(story, sent, 119)) && Rules.Available(story, reply, Later(story, sent, 120)),
-                "The courier's five days are not real hours.");
+            check(!Rules.Available(story, reply, Later(story, sent, 71)) && Rules.Available(story, reply, Later(story, sent, 72)),
+                "The courier's three days are not real hours.");
             var replyPages = new HashSet<string>();
-            var replied = Program.Walk(reply, Later(story, sent, 120), (page, _) => replyPages.Add(page));
+            var replied = Program.Walk(reply, Later(story, sent, 72), (page, _) => replyPages.Add(page));
+            // Sol r2 INT: a Trickster commit without the registered lover history gets a romantic page of its own.
+            var sixth = World(story, 6, replied[0].Flags.ToArray());
+            var sixthPages = story.Scenes.Where(s => s.Relationship == "irabeth" && s.Owner == "Epilogue" && Rules.Available(story, s, sixth)).ToList();
+            check(sixthPages.Count == 1 && sixthPages[0].Id == "irabeth.trickster.epilogue.off_the_record",
+                "The committed Irabeth gets no page, or the non-lover page: " + string.Join(",", sixthPages.Select(s => s.Id)));
             check(replied.All(r => r.Has("irabeth.committed") && r.Has("irabeth.trickster.nevi_answered") && r.Has("irabeth.trickster.asked_nevi"))
                   && replyPages.Contains("threshold") && replyPages.Contains("morning"), "Nevi's answer skips the intimate beat.");
         }
@@ -269,6 +274,10 @@ internal static class IrabethTricksterTests
         check(!Rules.Available(story, commit, struckDown) && Rules.Available(story, watch, struckDown), "A yes after the blow without her test.");
         var watched = Program.Walk(watch, struckDown).Where(r => r.Has("irabeth.trickster.slept_under_her_sword")).ToList();
         check(watched.Count == 1 && Rules.Available(story, commit, watched[0]), "Her test cannot be passed, or passing it does not reopen the ask.");
+        var blowPages = new HashSet<string>();
+        Program.Walk(commit, watched[0], (page, _) => blowPages.Add(page));
+        check(!blowPages.Contains("no") || blowPages.Contains("reasons") || !blowPages.Contains("threshold"), "The killed history borrows the rescue's threshold.");
+        check(!blowPages.Contains("threshold"), "The killed history reaches the rescue's threshold.");
 
         // Sol INT: a wife who never left Drezen. Irabeth asks her in person, not by the south-road courier.
         var home = World(story, 5, "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.back_on_duty", "irabeth.trickster.answered_her");
@@ -289,7 +298,7 @@ internal static class IrabethTricksterTests
 
         // back_on_duty: the test between return and commit; physical only after the return.
         var justBack = World(story, 5, "trickster.ever", "irabeth_dead", Returned);
-        justBack.Times[Returned] = justBack.Hour - 47;
+        justBack.Times[Returned] = justBack.Hour - 23;
         check(!Rules.Available(story, duty, justBack) && Rules.Available(story, duty, Later(story, justBack, 1)), "Test beat mistimed.");
         check(Program.Walk(duty, Later(story, justBack, 1)).All(r => r.Has("irabeth.trickster.back_on_duty")), "Test beat does not record.");
         var dutyPages = new HashSet<string>();

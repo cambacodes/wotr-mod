@@ -142,7 +142,7 @@ internal static class AneviaTricksterTests
             Program.Walk(commit, ask, (page, _) => commitPages.Add(page));
             var killerOutcomes = Program.Walk(commit, ask, (page, _) => commitPages.Add(page));
             check(commitPages.Contains("widow_killed") && commitPages.Contains("said") && !commitPages.Contains("widow"), "The commit forgets whose sword it was.");
-            check(killerOutcomes.Count(r => r.Has("anevia.committed")) == 1, "The killer reaches the commitment without saying it.");
+            check(killerOutcomes.All(r => !r.Has("anevia.committed")), "The killer reaches the commitment before the muster.");
         }
 
         // Trk_Anevia_Coexistence_*: at most one return; Irabeth's state never gates the wardrobe.
@@ -272,17 +272,30 @@ internal static class AneviaTricksterTests
         check(widowPages.Count == 1 && widowPages[0].Id == "anevia.trickster.epilogue.nailed_wardrobe_widow",
             "The renewed widow gets a page that denies her night: " + string.Join(",", widowPages.Select(s => s.Id)));
         // Sol r1 BEL: after the Commander killed Beth, the door has a price paid in public, and the second ask cannot skip it.
-        var penanceWorld = World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", Killed, Returned, "anevia.trickster.gate_seen");
+        var penanceWorld = World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", Killed, Returned, "anevia.trickster.gate_seen",
+                                 "anevia.lover");
         penanceWorld.Times["anevia.trickster.gate_seen"] = penanceWorld.Hour - 96;
         var penancePages = new HashSet<string>();
         var penanceOut = Program.Walk(commit, penanceWorld, (page, _) => penancePages.Add(page));
-        check(penancePages.Contains("penance") && penanceOut.Where(r => r.Has("anevia.committed")).All(r => r.Has("anevia.trickster.said_it")),
-            "She commits to her wife's killer without the price.");
+        check(penancePages.Contains("penance") && penancePages.Contains("promise") && penanceOut.All(r => !r.Has("anevia.committed")),
+            "She commits to her wife's killer before the muster.");
+        var promised = penanceOut.Single(r => r.Has("anevia.trickster.said_it"));
+        var muster = S("anevia.trickster.gone.muster");
+        check(!Rules.Available(story, muster, Later(story, promised, 11)) && Rules.Available(story, muster, Later(story, promised, 12)), "The muster is mistimed.");
+        var musterPages = new HashSet<string>();
+        var mustered = Program.Walk(muster, Later(story, promised, 12), (page, _) => musterPages.Add(page));
+        check(musterPages.Contains("yard") && mustered.Any(r => r.Has("anevia.committed") && r.Has("anevia.trickster.cost.muster_confession"))
+              && mustered.Any(r => !r.Has("anevia.committed")), "The public confession is not played, or it forces the yes.");
         var killedNo = penanceOut.First(r => r.Has("anevia.trickster.declined") && !r.Has("anevia.trickster.said_it"));
         var sayPages = new HashSet<string>();
         var sayOut = Program.Walk(second, Later(story, killedNo, 96), (page, _) => sayPages.Add(page));
-        check(sayPages.Contains("say_it") && sayOut.Where(r => r.Has("anevia.committed")).All(r => r.Has("anevia.trickster.said_it")),
-            "The second ask trades the murder for an unrelated secret.");
+        check(sayPages.Contains("say_it") && sayOut.All(r => !r.Has("anevia.committed")), "The second ask trades the murder for an unrelated secret.");
+        // A Commander who was never her lover and killed her wife gets no door (the stranger branch).
+        var stranger = Program.Copy(penanceWorld); stranger.Flags.Remove("anevia.lover");
+        var strangerPages = new HashSet<string>();
+        var strangerOut = Program.Walk(commit, stranger, (page, _) => strangerPages.Add(page));
+        check(strangerPages.Contains("stranger") && !strangerPages.Contains("penance") && strangerOut.All(r => !r.Has("anevia.committed")),
+            "A stranger who killed her wife is offered her door.");
         var closure = World(story, 6, "irabeth_dead", Killed, "anevia.lover");
         check(Rules.Available(story, S("anevia.ending_wife_killed"), closure), "The closure page is gone for a lover who never came back.");
         // The kept closet opens onto her room once: setup finds the room and does not open it.

@@ -98,7 +98,12 @@ internal static class KonomiTricksterTests
         queenPages.Clear();
         Program.Walk(late, crowned, (page, _) => queenPages.Add(page));
         check(!queenPages.Contains("queen"), "A dead Queen raises an eyebrow.");
-        var afterShout = Later(story, shouted[0], 48);
+        // Sol r2 INT: she is placed in her office only when she is back, not while the carriage is on the road.
+        var dismArrival = S("konomi.trickster.dismissed.arrival");
+        check(!shouted[0].Has("konomi.trickster.presence_on") && !Later(story, shouted[0], 47).Has("konomi.trickster.presence_on")
+              && !Rules.Available(story, dismArrival, Later(story, shouted[0], 47)) && Rules.Available(story, dismArrival, Later(story, shouted[0], 48)),
+            "Konomi placed while the carriage is still on the road.");
+        var afterShout = Later(story, Program.Walk(dismArrival, Later(story, shouted[0], 48)).Single(r => r.Has("konomi.trickster.arrived")), 0);
         check(Rules.Available(story, recess, afterShout) && !Rules.Available(story, late, afterShout), "Trk_Konomi_Dismissed: no recess.");
         check(!Rules.Available(story, recess, Later(story, shouted[0], 47)), "The recess ignores the three days on the road.");
         check(afterShout.Has("konomi.trickster.presence_on"), "Konomi not placed after the loop.");
@@ -106,7 +111,7 @@ internal static class KonomiTricksterTests
 
         // Trk_Konomi_Recess: the fox contest; a failed bluff costs her own terms.
         var primed = World(story, 5, "trickster.ever", "konomi.dismissed", "konomi.office_completed", "konomi.trickster.primed",
-                           "konomi.trickster.cost.late");
+                           "konomi.trickster.cost.late", "konomi.trickster.arrived");
         check(Rules.Available(story, recess, primed) && !Rules.Available(story, late, primed), "Trk_Konomi_Recess: recess unavailable.");
         var recesses = Program.Walk(recess, primed);
         check(recesses.All(r => r.Has("konomi.trickster.recessed") && r.Has("konomi.trickster.cost.debt_owed")
@@ -242,7 +247,10 @@ internal static class KonomiTricksterTests
               && bowPages.Contains("slip") && bowPages.Contains("bow")
               && bowed.Count(r => r.Has("konomi.trickster.cost.steward_paid")) == 1
               && bowed.Count(r => r.Has("konomi.trickster.cost.steward_burned")) == 1, "Trk_Konomi_NeverArrived: wrong flags.");
-        var arrived = Later(story, bowed[0], 48);
+        var neverArrival = S("konomi.trickster.never_arrived.arrival");
+        check(!Later(story, bowed[0], 47).Has("konomi.trickster.presence_on") && !Rules.Available(story, audience, Later(story, bowed[0], 47))
+              && Rules.Available(story, neverArrival, Later(story, bowed[0], 48)), "The never-arrived Konomi is placed before she arrives.");
+        var arrived = Later(story, Program.Walk(neverArrival, Later(story, bowed[0], 48)).Single(r => r.Has("konomi.trickster.arrived")), 0);
         check(Rules.Available(story, audience, arrived) && arrived.Has("konomi.trickster.presence_on"), "Trk_Konomi_NeverArrived: no audience.");
         check(!Rules.Available(story, S("konomi.the_answer_she_addressed"), arrived), "The carrier's answer opens beside the audience.");
         var received = Program.Walk(audience, arrived);
@@ -272,6 +280,11 @@ internal static class KonomiTricksterTests
             "Trk_Konomi_EpilogueCommit failed.");
         check(epCommit.Nodes[0].Choices.Count == 2 && epCommit.Nodes[0].Choices.All(ch => ch.Next != null),
             "The late commit gives the Commander no answer.");
+        // Sol r2 INT: a dead Commander (sacrifice without the shared finale's return) is given no living future.
+        var diedLate = World(story, 6, lateCommit.Flags.Concat(new[] { "sacrifice", "ending.wound_closed" }).ToArray());
+        check(!diedLate.Has("trickster.commander_back") && !Rules.Available(story, epCommit, diedLate), "A dead Commander rides to Nerosyan.");
+        var backLate = World(story, 6, lateCommit.Flags.Concat(new[] { "sacrifice", "ending.trickster" }).ToArray());
+        check(backLate.Has("trickster.commander_back") && Rules.Available(story, epCommit, backLate), "The surviving Commander loses the late commit.");
         var committedLate = Program.Copy(lateCommit); committedLate.Flags.Add("konomi.committed");
         check(!Rules.Available(story, epCommit, committedLate), "The late commit replays after a commit.");
         var soft = World(story, 6, "trickster.ever", "konomi.dismissed", "konomi.trickster.terms_settled", "konomi.trickster.declined");

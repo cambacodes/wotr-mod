@@ -173,7 +173,7 @@ letter("anevia.trickster.gone.wardrobe", "A live drop", [
       *to_beth("beth_back", "beth_dead", killer="killer")),
     nar("stolen", '''{n}The closet door sighs shut behind you. It will not open onto this room a second time; you know it the way you know the cold.{/n}''',
       *to_beth("beth_back", "beth_dead", killer="killer")),
-    a("beth_back", '''"And don't tell me about Beth. I've had a letter. In her hand, sayin' she's back on watch in Drezen with a sword she's sworn not to put down. I read it eleven times, and I still think it's a forgery."
+    a("beth_back", '''"And don't tell me about Beth. I've had a letter. In her hand, sayin' she's back on watch in Drezen with a sword she's sworn to keep by her. I read it eleven times, and I still think it's a forgery."
 {n}She looks at the knife as if she has only just noticed it.{/n}
 "It's not a forgery. Is it."''',
       c('[Sit until the candle\'s done] "Till the candle\'s done, then."', "named", forbids=(LISTEN,),
@@ -237,14 +237,14 @@ letter("anevia.trickster.gone.fetched", "Two letters and a bootlace", [
 "Found her. Kenabres, over what's left of the Heart. She threw a boot at me. Then the other boot. Coming home by the long road. Don't send anyone. I.T."''',
       c("Continue", "nevi"), portrait="Irabeth"),
     a("nevi", '''{n}The second is in Anevia's hand, and it isn't addressed to anyone.{/n}
-"She walked into the Heart with a sword still in her hand. Wouldn't put it down to hold me. Held me anyway, one-armed, like an idiot, in front of the whole taproom. Said it was your fault."''',
+"She walked into the Heart with a sword on her hip and her hand on it. Wouldn't take the hand off it to hold me. Held me anyway, one-armed, like an idiot, in front of the whole taproom. Said it was your fault."''',
       c("Continue", "bargain", requires=(I_UNDER,), forbids=(KILLED,)), c("Continue", "close", forbids=(I_UNDER, KILLED)),
       c("Continue", "killer_back", requires=(KILLED,))),
     a("killer_back", '''"She told me the rest on the road, 'cause I made her. You put your sword through her at Iz. Then you had the chaplain write it in his book in your own words, and spent some boy's diamond callin' her back to read it."
 {n}The ink is heavier on the next line.{/n}
 "I don't know what you are. I know she's alive, and it's your doin' both ways. I'm gonna need a while with that."''',
       c("Continue", "bargain", requires=(I_UNDER,)), c("Continue", "close", forbids=(I_UNDER,))),
-    a("bargain", '''"She says the chaplain called her 'cause you told him she was still on your roster, and she came 'cause she was. She says somebody paid for it, and she's told me who, and I'm not puttin' it in a letter. She swore at the altar before she came up to you. Won't put it down, not to eat, not to sleep, not to hold her wife with both arms. Not till the Wound's shut. She says it's cheap. She's lyin', and she knows I know."
+    a("bargain", '''"She says the chaplain called her 'cause you told him she was still on your roster, and she came 'cause she was. She says somebody paid for it, and she's told me who, and I'm not puttin' it in a letter. She swore at the altar before she came up to you. Won't let it out of reach, not to eat, not to sleep, not to hold her wife with both arms. Not till the Wound's shut. She says it's cheap. She's lyin', and she knows I know."
 {n}The ink is heavier on the next line.{/n}
 "I'm grateful. Gods, I'm grateful. I'm also never lettin' you give me an order. Not one. Not even 'pass the salt'."''',
       c("Continue", "close")),
@@ -352,12 +352,20 @@ physical("anevia.trickster.gone.commit", "A real door", '"Same gate. Same line."
 {n}She sets the lantern down on her side of the line.{/n}
 "I'm not forgivin' you. Not tonight. Maybe not ever. But you said it to my face, and I'm still standin' here, so I'd better hear the rest."''',
       c("Continue", "terms", forbids=(KILLED,)),          # retired by gating (index kept): her penance comes first
-      c("Continue", "penance")),
+      c("Continue", "penance", requires=("anevia.lover",)),
+      c("Continue", "stranger", forbids=("anevia.lover",))),
+    a("stranger", '''"Here's the rest. Tomorrow at muster you say it again, in front of her knights. And that's all you'll ever have from me: a widow who knows what you did and says it back to you whenever she likes. You were never anythin' to me before Iz, Commander. You don't get to be somethin' now 'cause you climbed out of a wardrobe."''',
+      c('[Accept it] "Then that\'s what I am to you."', flags=(FRIENDS,)),
+      c('[Refuse] "Not in front of them."', "no")),
     a("penance", '''"Here's the rest. Tomorrow, at muster, in the yard, in front of every knight who carried her out of Iz, you say it again. Same words. Your mouth, not a clerk's. Then you stand there while they look at you."
 {n}She lifts the lantern an inch, so she can see all of your face.{/n}
 "And don't ask me why I still want you after. I've asked myself every mile of that road. You're the only one in Drezen who don't look at me like a widow. You look at me like somebody who could still hurt you. I'd rather be that."''',
-      c('[Agree] "Tomorrow, at muster. My mouth."', "terms", flags=(SAID, PENANCE)),
-      c('[Refuse] "Not in front of them."', "no")),
+      c('[Agree] "Tomorrow, at muster. My mouth."', "terms", flags=(SAID, PENANCE), forbids=(KILLED,)),   # retired
+      c('[Refuse] "Not in front of them."', "no"),
+      c('[Agree] "Tomorrow, at muster. My mouth."', "promise", flags=(SAID,))),
+    a("promise", '''"Then say it. After, come out to the gate. Not before, and not instead."
+{n}She picks up the lantern and walks back down the road without looking round.{/n}''',
+      c('"After muster."')),
     a("share", '''"Beth asked me. Like I said she had to: to my face, in the gatehouse, with her helmet under her arm like she was reportin' a fire. I said yes. Then she went red and walked into a door."
 {n}She lets that sit.{/n}
 "So."''',
@@ -432,12 +440,20 @@ physical("anevia.trickster.gone.second_ask", "Something true", '"I knocked."', [
 "You knocked. On the guardhouse door, like an idiot, in front of half the watch. All right. I heard you."''',
       c("Continue", "price", forbids=(KILLED,)),
       c("Continue", "price", requires=(KILLED, I_RET)),
-      c("Continue", "price", requires=(KILLED, SAID), forbids=(I_RET,)),
-      c("Continue", "say_it", requires=(KILLED,), forbids=(I_RET, SAID))),
+      c("Continue", "price", requires=(KILLED, PENANCE), forbids=(I_RET,)),
+      c("Continue", "say_it", requires=(KILLED, "anevia.lover"), forbids=(I_RET, SAID)),
+      c("Continue", "no_door", requires=(KILLED,), forbids=(I_RET, "anevia.lover"))),
+    a("no_door", '''"No. Not you. You were never anythin' to me before Iz, and you put your sword through my wife. Go home, Commander."
+{n}She does not wait to see whether you go.{/n}''',
+      c('"Goodbye, Anevia."', flags=("anevia.closed",))),
+    a("promise_again", '''"Then go and say it where her knights can hear. After, come out to the gate."''',
+      c('"After muster."')),
     a("say_it", '''"No. Not a secret. I don't want somethin' nobody knows. I want the thing everybody knows and you won't say."
 {n}She holds up the lantern, the way she did at the gate.{/n}
 "Say what you did at Iz. Then tomorrow you say it at muster, in front of her knights. Then we'll talk about doors."''',
-      c('[Say it] "I killed her. At Iz. With my own hand. Tomorrow, at muster, I\'ll say it again."', "price", flags=(SAID, PENANCE)),
+      c('[Say it] "I killed her. At Iz. With my own hand. Tomorrow, at muster, I\'ll say it again."', "price", flags=(SAID, PENANCE),
+        forbids=(KILLED,)),                                # retired by gating (index kept): the muster comes first
+      c('[Say it] "I killed her. At Iz. With my own hand. Tomorrow, at muster, I\'ll say it again."', "promise_again", flags=(SAID,)),
       c('[Keep it] "Some things stay mine."', "kept", flags=("anevia.closed",))),
     a("price", '''"Door's paid for. Now you pay for me. Tell me somethin' true about you that nobody in Drezen knows. Not your mythic nonsense. Somethin' that'd cost you if I sold it."
 {n}She holds out her hand, palm up, the way a fence waits for a coin.{/n}
@@ -461,6 +477,26 @@ physical("anevia.trickster.gone.second_ask", "Something true", '"I knocked."', [
 ], requires=("trickster.ever", RETURNED, DECLINED), forbids=("anevia.committed",), delay=96)
 
 
+# Sol r2 BEL: the public confession is played, the knights answer it, and only then does she open a door.
+physical("anevia.trickster.gone.muster", "Muster", '"After muster. You said."', [
+    nar("yard", '''{n}Muster, in the citadel yard, in the grey before the bell. You stand on the step where the orders of the day are read and say it in the same words: "I killed Irabeth Tirabade. At Iz. With my own hand."{/n}
+{n}Nobody moves. Then a knight of Irabeth's old company takes off his helmet and holds it under his arm, the way a man stands at a grave. Another turns her back on you and stays that way until the bell. A third spits on the step, precisely, and walks off without being dismissed. Nobody stops him. You don't either.{/n}''',
+      c("Continue", "gate")),
+    a("gate", '''{n}She is at the gate afterwards, on her side of the line, with the lantern. She was on the wall for all of it; you saw her there.{/n}
+"You didn't say it sideways. Not once." {n}She sets the lantern down on your side of the line.{/n} "I'm still not forgivin' you. I don't think I'm built for it. But I asked for a thing, and you paid it where it cost. Come here."''',
+      c('[Kiss her] "I\'m knocking. See?"', "threshold", flags=("anevia.committed", TERMS, PENANCE)),
+      c('[Take her hand and wait] "Your call, Nevi."', "threshold", flags=("anevia.committed", TERMS, PENANCE)),
+      c('[Step back] "Not tonight."', flags=(PENANCE, DECLINED))),
+    a("threshold", THRESHOLD, c("Continue", "morning")),
+    a("morning", '''{n}Grey light. She is already dressed and lacing her boots. On the table, face down, is the little portrait of Beth she carries everywhere; she turned it over last night and has not turned it back.{/n}
+"Don't look at that. I'll turn it up when you've gone. Every time."
+{n}She stands, and taps the door twice with her knuckles on the way out.{/n}
+"Same door. Knock."''',
+      c('"Same door."')),
+], requires=("trickster.ever", RETURNED, KILLED, SAID, "anevia.lover"),
+   forbids=(PENANCE, "anevia.committed"), delay=12)
+
+
 # --- The shared route: three at the table again ---------------------------------------------------------------------
 
 def table(id, title, nodes, requires, forbids, delay, **extra):
@@ -475,7 +511,7 @@ CHAIRS = (c('[Pull out the third chair] "Three. I\'ve already stolen the third o
 table("tirabade.trickster.table_again", "Two chairs or three", [
     n("start", "Irabeth", '''{n}A camp table has appeared on the road side of the Drezen gate, where the cartwheels have worn a line into the mud. Somebody has carried three chairs out of the guardhouse and set two of them.{/n}
 "Nevi says you walked out of her wardrobe. I told her that's not possible."
-{n}Irabeth sets the sword across her knees, because she has sworn not to set it anywhere else.{/n}
+{n}Irabeth sets the sword across her knees, because she has sworn to keep it within reach.{/n}
 "She says neither am I."''',
       c("Continue", "accounting", requires=(I_REWRITTEN,), forbids=(ACCOUNT,)),
       c("Continue", "chairs", forbids=(I_REWRITTEN,)),
@@ -490,7 +526,7 @@ table("tirabade.trickster.table_again", "Two chairs or three", [
     a("refused", '''"Then it's two chairs."
 {n}She pulls the third one away from the table and sits on it herself, with her back to you.{/n}''',
       c('"Two chairs."')),
-    a("chairs", '''"Two chairs or three, Commander. And think before you answer, 'cause she's got a sword she's not allowed to put down."''',
+    a("chairs", '''"Two chairs or three, Commander. And think before you answer, 'cause she's got a sword she's sworn to keep by her."''',
       *CHAIRS),
 ], requires=("trickster.ever", I_RET, RETURNED), forbids=(), delay=24)
 
@@ -577,7 +613,7 @@ FATES = ("sacrifice", "ascended", "inhuman")
 epilogue("anevia.trickster.epilogue.nailed_wardrobe", (RETURNED,), ("anevia.lover",))
 epilogue("anevia.trickster.epilogue.nailed_wardrobe_lover", (RETURNED, "anevia.lover", "anevia.committed"),
          ("anevia.future_chosen", "anevia.developed", "anevia.survivor_continues", "irabeth_dead", *FATES),
-         ForbidOverrides={"irabeth_dead": I_RET})
+         ForbidOverrides={"irabeth_dead": I_RET, "anevia.survivor_continues": I_RET})
 epilogue("anevia.trickster.epilogue.nailed_wardrobe_closed", (RETURNED, "anevia.lover", "anevia.closed"),
          ("anevia.parted", "anevia.committed", *FATES))
 # Sol INT: the registered "wife killed" ending denies the night she chose after her return; this history gets its own

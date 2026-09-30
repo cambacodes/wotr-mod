@@ -50,6 +50,7 @@ LAMP = "konomi.trickster.cost.her_people"                # polish 9b: her people
 TESTED = "konomi.trickster.supper_asked"                 # Sol BEL: a non-lover is asked why, before any commit
 ASKED_AGAIN = "konomi.trickster.asked_again"             # Sol INT: the season she asked for, and the second ask
 SLIP = "konomi.trickster.slip_read"                      # Sol TRK: the informer's slip, caught on the page
+ARRIVED = "konomi.trickster.arrived"                     # Sol r2 INT: she is placed in her office only once she is back
 GALFREY_GONE = ("galfrey.dead", "galfrey.killed_by_commander")
 REGILL_GONE = ("regill.dead", "regill.kicked_out", "regill.left_plot")
 OWN = ("konomi.closed", "konomi.farewell", "inhuman")
@@ -130,7 +131,7 @@ letter("konomi.trickster.dismissed.late", "Mind the step", [
 
 READ_TERMS = '''"Tricks are my people's prerogative, Commander, and they are never free. You have played one on me without asking. Very well, let us talk price."
 {n}She opens the fan and looks at you over the top of it.{/n}
-"You have kept an attaché from her capital in the middle of a revolt. You dismissed her from a council table and adjourned her from a wall, in front of the watch, and sent the Chancellor a minute that says so. How very public. I do not walk out of an audience that stands adjourned in a crusade's minute; my court would not forgive it, and I would forgive it less. So I stay until it is concluded. Nerosyan will want to know why I am late, and I shall want something to tell them."'''
+"You have kept an attaché from her capital in the middle of a revolt. You dismissed her from a council table and adjourned her from a wall, in front of the watch, and sent the Chancellor a minute that says so. How very public. I could leave again tonight, and the capital would thank me for it. But you have put yourself in Nerosyan's debt in front of your own watch, with a minute that says so in your hand, and a Commander in the Crown's debt is worth more to my Chancellor than one more attaché in a burning capital. So I stay until I have collected. Nerosyan will want to know why I am late, and I shall want something to tell them."'''
 
 # Dorgelinda's audit is read, never required (doc 03 §2.11).
 DORGELINDA_PRIMED = "dorgelinda.trickster.primed"
@@ -138,7 +139,7 @@ LEDGER_TERMS = '''{n}She lets the fan fall shut against her palm.{/n}
 "Your quartermaster tells me a warehouse walked into your personal account. You and she keep books the same way, Commander: one line for the Crusade, and one for what the Crusade does not know it has paid."'''
 
 physical("konomi.trickster.dismissed.recess", "The third morning", '"Lady Konomi."', [
-    nar("start", '''{n}Lady Konomi's carriage left Drezen by the east gate at dawn. Two days later, at noon, it came back in by the east gate. The driver swears on his mother and on Erastil that he never turned the horses, and it is perfectly true: the charcoal road turned for him.{/n}
+    nar("start", '''{n}Lady Konomi's carriage left Drezen by the east gate at dawn. Two days later, at noon, it came back in by the east gate. The driver swears on his mother and on Erastil that he never turned the horses, and it is perfectly true: the charcoal road did the turning for him.{/n}
 {n}On the third morning she is standing in her old office in front of the swept desk, fan closed, travelling cloak still on. On the desk lies the clerk's copy of the minute, where somebody took care that she would find it: 'Audience with the attaché of Nerosyan: adjourned.' When you come in she steps back over the threshold and forward over it again, very deliberately, watching her own feet.{/n}
 {n}She does not look pleased about it. She looks, if anything, interested, which is worse.{/n}''',
       c("Continue", "price")),
@@ -169,8 +170,14 @@ physical("konomi.trickster.dismissed.recess", "The third morning", '"Lady Konomi
       c('[Hear her terms] "Name them."', flags=(RECESSED, DEBT))),
     k("read_outfoxed_ledger", LEDGER_TERMS,
       c('[Hear her terms] "Name them."', flags=(RECESSED, DEBT, OUTFOXED))),
-], requires=("trickster.ever", "konomi.dismissed", "konomi.office_completed", LATE),
-   forbids=(RECESSED,), delay=48)
+], requires=("trickster.ever", "konomi.dismissed", "konomi.office_completed", LATE, ARRIVED),
+   forbids=(RECESSED,), delay=0)
+
+# Sol r2 INT: her actor is placed only when she is back in Drezen, two days after the road (and the letter says so).
+letter("konomi.trickster.dismissed.arrival", "The east gate at noon", [
+    nar("start", '''{n}A note from the gate sergeant, in a hand that has plainly been laughing: the Nerosyan carriage came back in by the east gate at noon, the attaché in it. She asked for her old office. The driver asked for a priest.{/n}''',
+      c("Continue", flags=(ARRIVED,))),
+], requires=("trickster.ever", "konomi.dismissed", LATE), forbids=(ARRIVED, RECESSED), delay=48)
 
 physical("konomi.trickster.dismissed.terms", "Terms", '"You said you would name your terms."', [
     k("price", '''{n}She has had the desk polished. There is a single sheet on it, and her pen, and nothing else.{/n}
@@ -212,12 +219,12 @@ physical("konomi.trickster.dismissed.private", "Off the record", '"Business conc
       c('[Ask her to stay as envoy] "Stay as Nerosyan\'s envoy. The chair is yours."', "envoy")),
     k("answer", '''{n}She does not answer at once. She opens the fan, and closes it, and sets it on her closed ledger as if it were a paperweight.{/n}
 "Three days on your road, and you wait until the business is sealed to say it. You did the same at the council table: the price first, the thing you actually wanted afterwards, when there was nobody left to bargain with but me."
-"Very well, let us talk price. I stay. I keep my own rooms, my own correspondents and my own opinions, and I shall give you all three at breakfast. And you never again dismiss me in front of a council. You may dismiss me in private. I shall enjoy watching you try."''',
+"I stay. On my own account, not Nerosyan's. I keep my own rooms, my own correspondents and my own opinions, and you shall have all three at breakfast. And you never again dismiss me in front of a council. In private you may try. I shall enjoy watching."''',
       c('[Take her hand] "Then name the next evening."', "threshold", flags=("konomi.committed",)),
       c('[Ask what she wants] "What do you want, Konomi? Not the capital. You."', "no")),
     k("courted", '''{n}She studies you over the closed fan, as if you had put a clause in front of her in a language she reads well and did not expect to see here.{/n}
 "You dismissed me in front of a council. You bought my driver. Then you sat through a supper with no clerk and answered my question like a person, which I did not expect, and I have been annoyed about it since."
-"In my trade, the difference between a courtship and an insult is usually the seal. I have had a road and a supper to read yours." {n}The corner of her mouth moves.{/n} "It is both, and I will take it anyway. So. Let us talk price."
+"In my trade, the difference between a courtship and an insult is usually the seal. I have had a road and a supper to read yours." {n}The corner of her mouth moves.{/n} "It is both, and I will take it anyway."
 "I keep my own rooms, my own correspondents and my own opinions, and I shall give you all three at breakfast. And you never again dismiss me in front of a council. You may dismiss me in private. I shall enjoy watching you try."''',
       c('[Take her hand] "Then name the next evening."', "threshold", flags=("konomi.committed",)),
       c('[Ask what she wants] "What do you want, Konomi? Not the capital. You."', "no")),
@@ -274,7 +281,7 @@ physical("konomi.trickster.dismissed.a_season", "A season, abridged", '"You aske
 "You were told to ask as someone who could be told no. So. Ask."''',
       c('"Stay, Konomi. Not the envoy. You. And you may say no."', "price", flags=(ASKED_AGAIN,)),
       c('"Not yet. I haven\'t earned the question."', abort=True)),
-    k("price", '''"Very well, let us talk price. Mine is small, and you will hate it."
+    k("price", '''"Then hear what I want. It is small, and you will hate it."
 "Once, at the council table, in front of every lord who watched you dismiss me, you will put a recommendation to me, and I will refuse it, and you will take the refusal and move to the next business. No joke. No road. You will sit in your chair and be told no by the woman you dismissed, and everyone will see you bear it."''',
       c('[Agree] "Refuse me in front of all of them. I\'ll bear it."', "yes", flags=("konomi.committed",)),
       c('[Balk] "Not in front of the council."', "no")),
@@ -409,8 +416,14 @@ physical("konomi.trickster.never_arrived.audience", "Late for her own audience",
 "How refreshing. Most people in Mendev argue with the second figure."
 "I have taken rooms in the lower town while I decide what you are. You may write to me there, and I shall choose whether to answer."''',
       c('"I\'ll write."', flags=(RETURNED, "konomi.missed_appointment", JOURNEY))),
-], requires=("trickster.ever", PRIMED, ACCREDITED, "konomi.missed_letter_sent"),
-   forbids=("konomi.present", RETURNED, "konomi.missed_contact_invalidated", CONFIRMED), delay=48, chapters=(3, 5))
+], requires=("trickster.ever", PRIMED, ACCREDITED, "konomi.missed_letter_sent", ARRIVED),
+   forbids=("konomi.present", RETURNED, "konomi.missed_contact_invalidated", CONFIRMED), delay=0, chapters=(3, 5))
+
+letter("konomi.trickster.never_arrived.arrival", "A stranger in the attaché's office", [
+    nar("start", '''{n}A note from the chancery clerk: a kitsune in travelling silks came in by the east gate at noon with Nerosyan's seal on her papers, walked into the attaché's office as if she had the key, and has been there since. She has asked for tea and for you, in that order.{/n}''',
+      c("Continue", flags=(ARRIVED,))),
+], requires=("trickster.ever", ACCREDITED, "konomi.missed_letter_sent"), forbids=(ARRIVED, RETURNED), delay=48,
+   chapters=(3, 5))
 
 
 # --- Epilogue: paragraphs on her registered endings, and her own pages (R2-6) ---------------------------------------
@@ -445,20 +458,22 @@ SCENES.append(scene("konomi.trickster.epilogue.commit", "Accepted in advance", "
 "That," she said, "is the first sensible thing you have ever written me."
 {n}She stayed. She was never recalled by anyone again.{/n}''',
       c(), paragraphs=TRICKSTER_PARAGRAPHS)],
-    requires=("trickster.ever", LATE_COMMITTED), forbids=("konomi.committed", "konomi.closed", DECLINED, ENVOY), last=99,
-    Relationship="konomi"))
+    requires=("trickster.ever", LATE_COMMITTED), forbids=("konomi.committed", "konomi.closed", DECLINED, ENVOY, "sacrifice"),
+    last=99, Relationship="konomi", ForbidOverrides={"sacrifice": "trickster.commander_back"}))
 
 # Sol INT: the envoy she agreed to be, and nothing she did not.
 SCENES.append(scene("konomi.trickster.epilogue.envoy", "Envoy, in triplicate", "Epilogue", 5, "", [
     nar("start", '''{n}Lady Konomi sat in the envoy's chair at the Commander's table until the Wound was closed, and after it, until Nerosyan ran out of reasons to recall her and she ran out of patience with its reasons. She regretted nothing in writing. She made the Commander regret the offer every week, in triplicate, with the capital copied in, exactly as promised.{/n}
-{n}They never once dined alone. She said it kept the accounts clean. The Commander, reading the weekly triplicate, suspected it kept her amused.{/n}''',
+{n}After the chair was agreed, they never dined alone again. She said it kept the accounts clean. The Commander, reading the weekly triplicate, suspected it kept her amused.{/n}''',
       c(), paragraphs=TRICKSTER_PARAGRAPHS)],
-    requires=("trickster.ever", ENVOY), forbids=("konomi.committed", "konomi.closed"), last=99, Relationship="konomi"))
+    requires=("trickster.ever", ENVOY), forbids=("konomi.committed", "konomi.closed", "sacrifice"), last=99, Relationship="konomi",
+    ForbidOverrides={"sacrifice": "trickster.commander_back"}))
 
 SCENES.append(scene("konomi.trickster.epilogue.refused", "Still negotiating", "Epilogue", 5, "", [
     nar("start", '''{n}Lady Konomi was never recalled by anyone again. She saw to that. Every spring the Commander received one dispatch from Nerosyan, correct in every particular and signed in her own hand, and every spring it ended the same way: 'Still negotiating.'{/n}''',
       c(), paragraphs=TRICKSTER_PARAGRAPHS)],
-    requires=("trickster.ever", DECLINED), forbids=("konomi.committed", ENVOY), last=99, Relationship="konomi"))
+    requires=("trickster.ever", DECLINED), forbids=("konomi.committed", ENVOY, "sacrifice"), last=99, Relationship="konomi",
+    ForbidOverrides={"sacrifice": "trickster.commander_back"}))
 
 
 # --- Reactions (05 section 3.1: exactly Regill and Kyado) ---------------------------------------------------------
@@ -510,7 +525,7 @@ ENDINGS = ("konomi.ending_public", "konomi.ending_private", "konomi.ending_chang
            "konomi.ending_distance_open_lived")
 AUDIENCE_ANSWER = '"You chose a better room than the attaché\'s office."'
 COURTYARD_NODES = [
-    k("again_audience", '''"I did. The office has a jug in it now, on a shelf, with a label. The steward will not let anyone move it."
+    k("again_audience", '''"I did. The office has a jug in it now, on a shelf, with a label. The chancery will not let anyone move it."
 {n}She settles into her chair and arranges her sleeves.{/n}
 "I have been received, Commander. I have presented my credentials twice, which is once more than any court has ever required of me. This afternoon I should like to find out what you are like when you are not bowing to crockery."''',
       c('"Then tell me about the work you chose."', "work"),

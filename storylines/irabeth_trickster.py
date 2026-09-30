@@ -7,7 +7,7 @@ word and not one word further: relieved of duty, never dismissed. Polish 9b (no 
 why her soul answers, never what raises her. After Iz the chapel has diamond for one raise, and the Commander strikes a
 young knight's name off the chaplain's list and writes hers above it (`dead.raise_list`); the chaplain calls her once,
 and she answers because she is still on the roster. The boy stays dead; she swears at his bier to carry his share of the
-war, sword in hand, until the Wound is shut (her own vow, the Trickster echo of DLC1 Anevia Cue_0037 f397cfe1, where
+war, sword never out of reach, until the Wound is shut (her own vow, the Trickster echo of DLC1 Anevia Cue_0037 f397cfe1, where
 Iomedae binds her sword; here nobody binds it but her). If the Commander struck her down at Iz, the Mobility step drilled
 before Iz (her hub; TricksterMobilityTier3Feature 6db3651d is only the lesson's source) turns the blade under the ribs,
 and the Commander sends diggers and a healer back to the ruin (`killed.dig`). Undrilled, the only way back is the same
@@ -265,11 +265,11 @@ physical("irabeth.trickster.dead.relieved_not_dismissed", "Reporting in person",
       c("Continue", "vell", forbids=(BOUGHT,)), c("Continue", "vell_bought", requires=(BOUGHT,))),
     i("vell", '''"And the chaplain told me whose diamond it was. He said you told him to."
 {n}She does not raise her voice. That is worse.{/n}
-"Teodor Vell. Nineteen. He held a stair at Iz with half a shield. I went and stood at his bier before I came up here, and I swore on his sword, since he won't be needing it: his share of this war and mine, and it doesn't leave my hand until the Wound is shut. Not to eat. Not to sleep. That's what I cost, Commander. I want you to see it every time you look at me."''',
+"Teodor Vell. Nineteen. He held a stair at Iz with half a shield. I went and stood at his bier before I came up here, and I swore on his sword, since he won't be needing it: his share of this war and mine, and it doesn't leave arm's reach until the Wound is shut. Not to eat. Not to sleep. That's what I cost, Commander. I want you to see it every time you look at me."''',
       c("Continue", "discharge")),
     i("vell_bought", '''"And the chaplain told me what I cost. A diamond from the Queen's own jeweller, so the boy at the top of the list got his too. Teodor Vell. Nineteen. He sat up an hour before I did, asking about his stair."
 {n}She does not raise her voice. That is worse.{/n}
-"That's a winter's bread for a company, Commander, spent on one knight's answer. I swore at the altar before I came up here: I fight the rest of this war for what I cost, and this sword doesn't leave my hand until the Wound is shut. Not to eat. Not to sleep. I want you to see it every time you look at me."''',
+"That's a winter's bread for a company, Commander, spent on one knight's answer. I swore at the altar before I came up here: I fight the rest of this war for what I cost, and this sword doesn't leave arm's reach until the Wound is shut. Not to eat. Not to sleep. I want you to see it every time you look at me."''',
       c("Continue", "discharge")),
     nar("discharge", '''{n}She holds out her hand, palm up, for the paper that would let her go. She does not look at it. She looks at you.{/n}''',
       c('[Hold out the unsigned discharge] "Your discharge needs my signature. I\'ve misplaced my pen. For two days."',
@@ -285,12 +285,12 @@ physical("irabeth.trickster.dead.relieved_not_dismissed", "Reporting in person",
       c('"At the gate. Outside the walls. She won\'t come in."', "gate", requires=("anevia_gone", A_RET))),
     nar("south", '''{n}She hears it standing at attention, and she stays that way after you have finished.{/n}
 "South. Of course south. She never could sit in a house with a draught in it."
-{n}She is gone before noon on a borrowed horse, riding south after her wife with the sword still in her hand. She does not say when she will be back, and nobody is fool enough to ask.{/n}''',
+{n}She is gone before noon on a borrowed horse, riding south after her wife with the sword at her hip. She does not say when she will be back, and nobody is fool enough to ask.{/n}''',
       c('"Welcome back, Knight-Captain."')),
-    nar("home", '''{n}She is out of the throne room before you finish the sentence, burial whites and all, with the sword in her fist because she has sworn not to put it down.{/n}
+    nar("home", '''{n}She is out of the throne room before you finish the sentence, burial whites and all, with the sword at her hip, where she has sworn to keep it.{/n}
 {n}Nobody in the citadel sees that meeting. The guard at the stair reports only that the Knight-Captain's wife said one word, loudly, and that it was not a word for a chapel.{/n}''',
       c('"Welcome back, Knight-Captain."')),
-    nar("gate", '''{n}She doesn't ride anywhere. Anevia is at the gate, on the road side of the line the cartwheels have worn into the mud. Irabeth walks out to her in her burial whites, without her helmet, holding the sword she has sworn not to put down well out to one side.{/n}
+    nar("gate", '''{n}She doesn't ride anywhere. Anevia is at the gate, on the road side of the line the cartwheels have worn into the mud. Irabeth walks out to her in her burial whites, without her helmet, with the sword she has sworn to keep by her slung across her back.{/n}
 {n}The watch on the gate finds something very interesting to look at in the other direction, and goes on looking at it for some time.{/n}''',
       c('"Welcome back, Knight-Captain."')),
 ], requires=("trickster.ever", "irabeth_dead", PRIMED, VELL, "coronation.seen"), forbids=(RETURNED, KILLED), delay=24,
@@ -369,20 +369,20 @@ physical("irabeth.trickster.killed.blow_missed", "The step she learned", '"Knigh
         flags=(RETURNED, "irabeth.started", "irabeth.trickster.blow_rewritten", BLOW, LIED))),
     i("truth", '''{n}She takes it like a blow she saw coming. She does not step away from it.{/n}
 "Good. I'd have known if you lied. I've questioned cultists who lied better than you, and I hanged them."
-{n}She lifts the sword an inch. She has not sheathed it since the ruin.{/n}
-"I swore something down there with a lintel on my chest. This stays in my hand until the Wound is shut. The next time you swing at me, I'll be holding it. I'm back on duty. Don't mistake that for forgiveness."''',
+{n}She rests her hand on the sword at her hip. It has not been out of her reach since the ruin.{/n}
+"I swore something down there with a lintel on my chest. This stays within reach until the Wound is shut. The next time you swing at me, I'll have it. I'm back on duty. Don't mistake that for forgiveness."''',
       c('"Understood, Knight-Captain."')),
     i("lie", '''{n}Something shuts behind her eyes, the way a gate shuts.{/n}
 "The dragon. Of course."
-{n}She lifts the sword an inch. She has not sheathed it since the ruin, and she does not now.{/n}
-"I'm back on duty, Commander. I'll serve. This stays in my hand until the Wound is shut, and you can work out for yourself who it's for. Don't ask me for more than that."''',
+{n}She rests her hand on the sword at her hip. It has not been out of her reach since the ruin.{/n}
+"I'm back on duty, Commander. I'll serve. This stays within reach until the Wound is shut, and you can work out for yourself who it's for. Don't ask me for more than that."''',
       c('"Dismissed."')),
     nar("salute", '''{n}She salutes. It is a perfect salute, the one she gives the Queen.{/n}
 {n}Before noon her request for a posting on the southern wall is on your desk, in her square hand, with a space left for your seal. It is the only paper she has ever asked you to sign. You sign it. When you look up from it, the throne room is empty.{/n}''',
       c('"...Goodbye, Irabeth."')),
     i("raised", '''"I remember your blade going in. I remember the cold. Then a voice calling me by my rank, once, and yours behind it, and I thought: I'm not finished with that one."
 {n}She has a sword in her hand that is not hers.{/n}
-"You killed me, Commander. Then you had a priest write it down and bought a diamond from the Queen's jeweller to fetch me back to read it. I swore at the altar with the chaplain for witness: this sword doesn't leave my hand until the Wound is shut. You'll never again find me without it."
+"You killed me, Commander. Then you had a priest write it down and bought a diamond from the Queen's jeweller to fetch me back to read it. I swore at the altar with the chaplain for witness: this sword doesn't leave my reach until the Wound is shut. You'll never again find me without it."
 {n}She takes one very precise step closer.{/n}
 "So I'll ask once. Which did you mean? Iz, or the list?"''',
       c('"I meant it. At Iz, I meant it. I don\'t now."', "truth_raised",
@@ -413,17 +413,17 @@ physical("irabeth.trickster.killed.the_watch", "Under her sword", '"Knight-Capta
    forbids=(TRUSTED, BLOW_STANDS, "irabeth.committed"), delay=24)
 
 physical("irabeth.trickster.back_on_duty", "Back on duty", '"Knight-Captain. A word."', [
-    nar("start", '''{n}She is at her post in the throne room as if she never left it. The sword is in her hand. It has been in her hand since she came back.{/n}''',
+    nar("start", '''{n}She is at her post in the throne room as if she never left it. The sword is at her hip. It has been within her reach every hour since she came back.{/n}''',
       c("Continue", "hymn", forbids=(BLOW,)), c("Continue", "blow", requires=(BLOW,))),
     i("hymn", '''"They sang for me, Commander. The whole hall. I'm not walking back in there to tell them they wasted a good hymn, so I'm standing here instead."''',
       c("Continue", "sword")),
     nar("blow", '''{n}She keeps the sword between you, point down, and does not pretend otherwise.{/n}''', c("Continue", "sword")),
-    i("sword", '''"I won't put this down. I tried, the first morning, to shave, and my hand wouldn't do it, because I'd sworn it wouldn't. So I shave with it in my fist now. I've cut myself twice. The chaplain says Iomedae asks for no such thing. I told him I wasn't asking Her."
-{n}She lifts it an inch: steel, and a hand that has decided not to open.{/n}
+    i("sword", '''"It doesn't leave my reach. I sleep with it on the chair by the bed and I shave with it propped against the basin. The chaplain says Iomedae asks for no such thing. I told him I wasn't asking Her."
+{n}She sets her palm on the pommel, the way another woman might touch a wedding ring.{/n}
 "Until the Wound is shut. Your joke had fine print, Commander, and I'm the one who wrote it. I'd still like to have read yours first."''',
       c("Continue", "question"),
       c('[Offer to sign her discharge now] "Then I\'ll sign it. You\'re free."', "unsigned")),
-    i("unsigned", '''"And do what? Go home and sit in a chair with a sword in my fist until the Wound shuts without me? I swore to see it shut. A discharge doesn't unswear anything, Commander. It just takes my post away."
+    i("unsigned", '''"And do what? Go home and sit in a chair with a sword across my knees until the Wound shuts without me? I swore to see it shut. A discharge doesn't unswear anything, Commander. It just takes my post away."
 {n}She holds out her free hand for the pen anyway, palm up, perfectly steady, to see whether you will. You put it in her palm. She weighs it, then tucks it back into your coat pocket herself.{/n}
 "No. Your call. It's always been your call, and I'll not have it said I took it off you the first week I was back. That's the part I can't forgive."''',
       c("Continue", "question")),
@@ -434,29 +434,29 @@ physical("irabeth.trickster.back_on_duty", "Back on duty", '"Knight-Captain. A w
         flags=("irabeth.trickster.back_on_duty", "irabeth.trickster.answered_crusade")),
       c('"Because I needed you back. Not the crusade. Me."',
         flags=("irabeth.trickster.back_on_duty", "irabeth.trickster.answered_her"))),
-], requires=("trickster.ever", RETURNED), forbids=("irabeth.trickster.back_on_duty",), delay=48)
+], requires=("trickster.ever", RETURNED), forbids=("irabeth.trickster.back_on_duty",), delay=24)
 
-THRESHOLD = '''{n}She starts to set the sword down on the throne-room step and stops with the blade an inch off the stone, because she swore. She swears again instead, short and furious, and holds the blade out to the side, point to the floor, the way you would hold a torch you cannot drop.{/n}
+THRESHOLD = '''{n}She unbuckles the sword belt and hangs it on the corner of the roster-room door, a hand's width from where she stands, because she swore it would be there. Then she swears again, short and furious, at nothing in particular.{/n}
 "I've wanted this since Iz, and I've been ashamed of it since Iz. I'm done being ashamed. Take the rest off me, Commander. One-handed is all I've got. Slowly. I want to remember it."
-{n}Gauntlet, then vambrace, one arm at a time around a hilt she will not let go. Her free hand stops working on the breastplate buckles and she lets you do it. Under the arming coat she is scar and muscle and heat. She kisses you hard enough that her tusks graze your lip, then drags you through the side door into her roster room, where nobody sits at the desk but her. She sweeps the duty lists off it with her free arm. Her sword arm stays flung out over the edge, the point grinding on the flagstones, and with the other she pulls you down onto the desk with her and hooks a leg behind yours.{/n}'''
+{n}Gauntlet, then vambrace. Her hands stop working on the breastplate buckles and she lets you do it. Under the arming coat she is scar and muscle and heat. She kisses you hard enough that her tusks graze your lip, then drags you through the side door into her roster room, where nobody sits at the desk but her. She sweeps the duty lists off it with one arm, pulls you down onto the desk with her, and hooks a leg behind yours, and her hand goes to your belt.{/n}'''
 
-MORNING_NOTE = '''{n}The watch changes under the window. She is back in armour, all but the gauntlet that will not go on over the hilt without help. She holds that hand out to you without a word. There is a white groove across her palm where the grip lay all night.{/n}
+MORNING_NOTE = '''{n}The watch changes under the window. She is back in armour, all but one gauntlet, and the sword belt is on the door where she hung it, a hand's width from her head all night. She holds out the bare hand to you without a word.{/n}
 "Nevi will know. Nevi always knows. I'll write to her myself before breakfast, before anyone else can."
-{n}You buckle it for her. She flexes the hand inside the steel, around the sword, and does not thank you.{/n}
+{n}You buckle it for her. She takes the sword belt down and buckles that herself, and does not thank you.{/n}
 "Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard."'''
 
-MORNING_HOME = '''{n}The watch changes under the window. She is back in armour, all but the gauntlet that will not go on over the hilt without help. She holds that hand out to you without a word. There is a white groove across her palm where the grip lay all night.{/n}
+MORNING_HOME = '''{n}The watch changes under the window. She is back in armour, all but one gauntlet, and the sword belt is on the door where she hung it, a hand's width from her head all night. She holds out the bare hand to you without a word.{/n}
 "Nevi will know. Nevi always knows. She'll laugh at me. Then she'll want to know every detail, and she'll get most of them."
-{n}You buckle it for her. She flexes the hand inside the steel, around the sword, and does not thank you.{/n}
+{n}You buckle it for her. She takes the sword belt down and buckles that herself, and does not thank you.{/n}
 "Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard."'''
 
-MORNING_HOUSE = '''{n}The watch changes under the window. She is back in armour, all but the gauntlet that will not go on over the hilt without help. She holds that hand out to you without a word. There is a white groove across her palm where the grip lay all night.{/n}
+MORNING_HOUSE = '''{n}The watch changes under the window. She is back in armour, all but one gauntlet, and the sword belt is on the door where she hung it, a hand's width from her head all night. She holds out the bare hand to you without a word.{/n}
 "Nevi will know the second I walk into the kitchen. She'll laugh at me, and then she'll put me to work on the bread and ask questions until it's proved."
-{n}You buckle it for her. She flexes the hand inside the steel, around the sword, and does not thank you.{/n}
+{n}You buckle it for her. She takes the sword belt down and buckles that herself, and does not thank you.{/n}
 "Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard."'''
 
 physical("irabeth.trickster.commit", "Off the record", '"Knight-Captain. Off the record."', [
-    i("start", '''{n}Late. The throne room is empty but for the two of you and the sword she still will not put down.{/n}
+    i("start", '''{n}Late. The throne room is empty but for the two of you and the sword she will not let out of reach.{/n}
 "You're going to say something I'll have to answer. I can see it on you. Go on, then."''',
       c("Continue", "her", requires=("irabeth.trickster.answered_her",)),
       c("Continue", "crusade", requires=("irabeth.trickster.answered_crusade",))),
@@ -487,15 +487,15 @@ physical("irabeth.trickster.commit", "Off the record", '"Knight-Captain. Off the
 "Ask me when she's home, and ask me like a person, not like a Commander. Until then I'm your knight, and that's all I am."''',
       c('[Step back] "Then I\'ll ask again. Not as your Commander."', flags=(DECLINED,))),
     i("no_home", '''"It isn't Nevi. Nevi said her piece; I asked her to her face and she said yes before I'd finished."
-{n}She turns the sword a quarter-turn in her fist, the only fidget she allows herself.{/n}
+{n}She turns the sword a quarter-turn in its scabbard at her hip, the only fidget she allows herself.{/n}
 "It's me. I was a name on the list of the dead, Commander. Give me time to be alive before you ask me to be anything else."''',
       c('[Step back] "Then I\'ll ask again. Not as your Commander."', flags=(DECLINED,))),
     i("no_house", '''"Nevi. She's four streets off, in the house on the corner, making up a bed I haven't slept in since Iz. I haven't asked her. I'm not doing this behind her back, and I'm not doing it by letter when I could walk there before the bell."
-{n}She turns the sword a quarter-turn in her fist, the only fidget she allows herself.{/n}
+{n}She turns the sword a quarter-turn in its scabbard at her hip, the only fidget she allows herself.{/n}
 "I'll ask her. To her face. Then you can ask me again, and I'll know what I'm answering."''',
       c('[Step back] "Then I\'ll ask again. Not as your Commander."', flags=(DECLINED,))),
     i("no_gate", '''"Nevi's at the gate, and she hasn't said a word to me about you. Not one. She's a spy; that silence is a message, and I haven't read it yet."
-{n}She shifts her grip on the sword.{/n}
+{n}She rests her hand on the hilt at her hip.{/n}
 "I'm not doing this behind her back. When she's said her piece to me, to my face, ask me again."''',
       c('[Step back] "Then I\'ll ask again. Not as your Commander."', flags=(DECLINED,))),
     i("decides", '''{n}She reads you the way she reads an order: twice, to be sure of it.{/n}
@@ -507,16 +507,25 @@ physical("irabeth.trickster.commit", "Off the record", '"Knight-Captain. Off the
 {n}She says it evenly, the way she reports a loss.{/n}
 "You told me a story about Iz, and I let you, because I wanted to be alive more than I wanted to be right. I'm not deciding anything else on a story. Ask me again when you've told me the other one."''',
       c('[Step back] "Then I\'ll ask again. Not as your Commander."', flags=(DECLINED,))),
-    i("reckon", '''{n}She doesn't move yet. The sword is still in her hand; it is always in her hand.{/n}
+    i("reckon", '''{n}She doesn't move yet. The sword is at her hip; it is always at her hip.{/n}
 "Before anything. I came back to a vow I can't set down and a wife who'd already buried me. Some of that's your fault, and I'm not thanking you for it."
 {n}She looks at her sword hand, then at you, and her mouth goes crooked.{/n}
 "This isn't thanks. Don't you dare take it for thanks."''',
       c("Continue", "reckon_blow", requires=(BLOW,)), c("Continue", "threshold", forbids=(BLOW,))),
     i("reckon_blow", '''"And I remember your blade going in. I'll remember it tomorrow, and the day after. I'm here anyway. Work out what that says about me on your own time."''',
-      c("Continue", "threshold")),
+      c("Continue", "threshold", forbids=(BLOW,)),          # retired by gating (index kept): the blow has its own approach
+      c("Continue", "reasons")),
+    i("reasons", '''"You want reasons. Here's what I've got. You slept under my sword and didn't lie in your sleep; I've watched men who did. You're still the one who can shut the Wound, and the Queen's gone or near it, and somebody who knows what you're capable of has to stand close enough to stop you."
+{n}Her jaw sets.{/n}
+"And I wanted you before Iz. I buried it under the duty lists and it didn't stay buried. That's the part I can't forgive either of us for."''',
+      c("Continue", "threshold_blow")),
+    nar("threshold_blow", '''{n}She unbuckles the sword belt and hangs it on the corner of the roster-room door, where she can reach it from anywhere in the room, and looks at you while she does it so that you understand exactly why.{/n}
+"Take the rest off me, Commander. Slowly. If your hands go anywhere near that door, I'll know."
+{n}Gauntlet, then vambrace. Under the arming coat she is scar and muscle and heat, and the newest scar is under her ribs, where your blade went in. She puts your palm flat over it and holds it there, and kisses you like a dare. Then she drags you through the side door into her roster room, sweeps the duty lists off the desk with one arm, pulls you down onto it with her and hooks a leg behind yours, and her hand goes to your belt.{/n}''',
+      c("Continue", "morning")),
     nar("threshold", THRESHOLD, c("Continue", "morning")),
     i("morning", MORNING_HOME, c('"Dismissed, Knight-Captain."')),
-], requires=("trickster.ever", "irabeth.trickster.back_on_duty"), forbids=("irabeth.committed", DECLINED, BLOW), delay=72,
+], requires=("trickster.ever", "irabeth.trickster.back_on_duty"), forbids=("irabeth.committed", DECLINED, BLOW), delay=24,
    ForbidOverrides={BLOW: TRUSTED})
 
 physical("irabeth.trickster.second_ask", "The pen", '"Knight-Captain. I\'m asking again."', [
@@ -536,10 +545,10 @@ physical("irabeth.trickster.second_ask", "The pen", '"Knight-Captain. I\'m askin
 {n}She salutes, exactly as the regulations describe, and goes back to her post. The pen stays in your pocket. So does every order you ever gave her.{/n}''',
       c('"Understood."')),
     i("sent", '''{n}She wraps the pen in a strip of oilcloth, seals it with her own seal, and walks it down to the south-road courier herself. She makes him learn a message by heart, and she will not tell you what it says.{/n}
-"Five days there and back, if the road's clear. Don't ask me in the meantime. I'll know which way it went when he's standing in front of me."''',
+"Three days there and back, if the rider changes horses at Kenabres. Don't ask me in the meantime. I'll know which way it went when he's standing in front of me."''',
       c("Continue", "threshold", flags=("irabeth.committed", "irabeth.trickster.nevi_answered"),
         forbids=("irabeth.trickster.back_on_duty",)),   # retired by gating (index kept): the reply is its own scene now
-      c('"Five days, then."', flags=(PEN_SENT,))),
+      c('"Three days, then."', flags=(PEN_SENT,))),
     nar("threshold", THRESHOLD, c("Continue", "morning", requires=("anevia_gone",), forbids=(A_RET,)),
         c("Continue", "morning_home", requires=(A_RET,)), c("Continue", "morning_house", forbids=("anevia_gone",))),
     i("morning", MORNING_NOTE, c('"Dismissed, Knight-Captain."')),
@@ -561,7 +570,7 @@ physical("irabeth.trickster.second_ask", "The pen", '"Knight-Captain. I\'m askin
       c("Continue", "threshold", flags=("irabeth.committed", "irabeth.trickster.nevi_answered", ASKED))),
     i("morning_house", MORNING_HOUSE, c('"Dismissed, Knight-Captain."')),
 ], requires=("trickster.ever", DECLINED, "irabeth.trickster.back_on_duty"), forbids=("irabeth.committed", LIED),
-   delay=48, ForbidOverrides={LIED: CONFESSED})
+   delay=24, ForbidOverrides={LIED: CONFESSED})
 
 # Sol BEL: a lie about Iz is not forgiven by omission. She said "Ask me again when you've told me the other one."
 physical("irabeth.trickster.the_other_story", "The other story", '"Knight-Captain. About Iz."', [
@@ -579,20 +588,20 @@ physical("irabeth.trickster.the_other_story", "The other story", '"Knight-Captai
 
 # Sol HOW: the courier's five days are real hours, not a line of narration inside one scene.
 physical("irabeth.trickster.nevi_reply", "Keeping it", '"The south-road courier is back."', [
-    i("start", '''{n}It is five days before she finds you again. The courier from the south road brought nothing back: no pen, no packet. Only a message he had been made to learn by heart and would not say until the Knight-Captain was standing in front of him.{/n}
+    i("start", '''{n}It is three days before she finds you again. The courier from the south road brought nothing back: no pen, no packet. Only a message he had been made to learn by heart and would not say until the Knight-Captain was standing in front of him.{/n}
 "'Keeping it. Ask me to my face next time, Beth.'"
 {n}She repeats it to you word for word, the way she repeats every report. Then she smiles, and you realise you have not seen it since Iz.{/n}''',
       c("Continue", "threshold", flags=("irabeth.committed", "irabeth.trickster.nevi_answered", ASKED))),
     nar("threshold", THRESHOLD, c("Continue", "morning")),
     i("morning", MORNING_NOTE, c('"Dismissed, Knight-Captain."')),
-], requires=("trickster.ever", PEN_SENT), forbids=("irabeth.committed",), delay=120)
+], requires=("trickster.ever", PEN_SENT), forbids=("irabeth.committed",), delay=72)
 
 
 # --- Epilogue: one page, or paragraphs on her registered ending ----------------------------------------------------
 
 UNDER_ORDERS_PARAGRAPHS = (
     p("She had come back because she was still on the Drezen roster, and she stayed under a vow she had sworn over "
-      "Teodor Vell's bier. His sword never left her hand until the Wound was shut. Then she carried it to his mother in "
+      "Teodor Vell's bier. His sword never left her side until the Wound was shut. Then she carried it to his mother in "
       "Nerosyan herself, and stood in the doorway with her helmet under her arm until she was let in.", requires=(VELL,),
       forbids=(BOUGHT,)),
     p("She had come back because she was still on the Drezen roster, on a diamond the crusade could not spare. Teodor "
@@ -633,8 +642,17 @@ UNDER_ORDERS_PARAGRAPHS = (
 SCENES.append(scene("irabeth.trickster.epilogue.under_orders", "Until the Wound is shut", "Epilogue", 0, "", [
     n("end", "Narrator", '''{n}Irabeth Tirabade served the crusade until the Worldwound was closed. She could not have stopped sooner if she had wanted to, and she complained about it at length, in writing, to anyone who would file it.{/n}''',
       portrait="Irabeth", paragraphs=UNDER_ORDERS_PARAGRAPHS)],
-    requires=(RETURNED,), forbids=("irabeth.lover", "trying", "committed"), last=99, Relationship="irabeth",
+    requires=(RETURNED,), forbids=("irabeth.lover", "irabeth.committed", "trying", "committed"), last=99, Relationship="irabeth",
     ForbidOverrides={"trying": "tirabade.group_closed", "committed": "tirabade.group_closed"}))
+
+SCENES.append(scene("irabeth.trickster.epilogue.off_the_record", "Off the record", "Epilogue", 0, "", [
+    n("end", "Narrator", '''{n}Irabeth Tirabade served the crusade until the Worldwound was closed, and the Commander's bed when she was off duty, and she never once confused the two in front of the guard. She kept her own quarters, her own roster and her own counsel, and she argued with the Commander in council exactly as hard as before, which was very hard.{/n}
+{n}When the war was over she did not ask for a title or a manor. She asked for a week, the three of them or the two of them as the house on the corner saw fit, with no duty lists in it, and she got it.{/n}''',
+      portrait="Irabeth", paragraphs=UNDER_ORDERS_PARAGRAPHS)],
+    requires=(RETURNED, "irabeth.committed"), forbids=("irabeth.lover", "trying", "committed", "sacrifice"), last=99,
+    Relationship="irabeth",
+    ForbidOverrides={"trying": "tirabade.group_closed", "committed": "tirabade.group_closed",
+                     "sacrifice": "trickster.commander_back"}))
 
 
 REACTIONS = [

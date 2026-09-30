@@ -4,8 +4,8 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 928,
-  "resolved": 928,
+  "entryTargetScenes": 929,
+  "resolved": 929,
   "inlineOnlyScenes": 230,
   "inlineOnlyResolved": 230,
   "answerListScenesWithoutContact": 517,
@@ -924,6 +924,25 @@
    "contact": "b5e867e13503c6f41bb1316705efb4a2",
    "entry": {
     "33960c7f7af40cd43b7f801a76c87a0b": "RRT_entry.anevia.trickster.gone.gate"
+   },
+   "resolved": true,
+   "host": {
+    "list": "33960c7f7af40cd43b7f801a76c87a0b",
+    "dialog": "de4cc2dd71694b842be37b75d1705b83",
+    "dialogName": "Dialogue_AneviaMain",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "anevia.trickster.gone.muster": {
+   "kind": "dialog",
+   "lists": [
+    "33960c7f7af40cd43b7f801a76c87a0b"
+   ],
+   "explicit": true,
+   "contact": "b5e867e13503c6f41bb1316705efb4a2",
+   "entry": {
+    "33960c7f7af40cd43b7f801a76c87a0b": "RRT_entry.anevia.trickster.gone.muster"
    },
    "resolved": true,
    "host": {
