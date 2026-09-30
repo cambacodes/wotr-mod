@@ -220,9 +220,26 @@ internal static class EliandraTricksterTests
         }
         check(story.Presences.Values.Where(p => p.Unit == Unit).All(p => p.At?.NearUnit != Fye && p.At?.NearUnit != Wilcer && p.At?.NearUnit != Smith),
             "Trk_Eliandra_NoLeaveAndKingList: a presence of hers stands at Fye, the yard or the smith.");
-        check(presenceBeats.All(s => s.ContactUnit == Unit && s.Areas.SequenceEqual(new[] { Drezen }) && s.Requires.Contains(E + "heart_seen")
-                                     && (s.InteractionHub == "eliandra.presence" || s.InteractionHub == "eliandra.presence.mark")),
-            "Trk_Eliandra_NoLeaveAndKingList: a Drezen beat is not on her presence after the star-heart.");
+        check(presenceBeats.All(s => s.ContactUnit == Unit && s.Areas.SequenceEqual(new[] { Drezen })
+                                     && (s.InteractionHub == "eliandra.presence" || s.InteractionHub == "eliandra.presence.mark"))
+              && presenceBeats.Where(s => s.Id.StartsWith(E + "drezen.", StringComparison.Ordinal)).All(s => s.Requires.Contains(E + "heart_seen")),
+            "Trk_Eliandra_NoLeaveAndKingList: a Drezen beat is not on her presence, or a courtship beat comes before the star-heart.");
+        // Native lifecycle (audit r4): her shrine unit is in the captive pool that Pulura_Chapter05_Mechanics destroys once
+        // C5_MutasafenFall_quest completes (her greeting completes it). The delayed beats never wait on the shrine: her own
+        // offering, the first mile and the star-heart are hosted on her Drezen presence, which stands from the meeting on, and
+        // the terms and the rite have Drezen twins for a Commander who left the shrine before asking.
+        var metOnly = World(story, 5, "trickster", "trickster.ever", Met);
+        check(Rules.PresenceWanted(tavern, metOnly) && tavern.Requires.SequenceEqual(new[] { "trickster.ever", Met }),
+            "Lifecycle: her presence does not stand in Drezen from the meeting on.");
+        check(new[] { self, mile, heart }.All(s => s.InteractionHub == "eliandra.presence" && s.AnswerLists.Length == 0 && s.NativeReturnCue == null)
+              && shrine.All(s => s.DelayHours == 0),
+            "Lifecycle: a delayed beat waits on the shrine, whose unit is destroyed after the quest.");
+        var riteTwin = S(E + "ch5.last_rite_drezen");
+        var termsTwin = S(E + "ch5.terms_drezen");
+        check(riteTwin.InteractionHub == "eliandra.presence" && riteTwin.TricksterDevice && riteTwin.Forbids.Contains(rite.Id) && rite.Forbids.Contains(riteTwin.Id)
+              && Rules.Available(story, termsTwin, metOnly)
+              && Program.Walk(riteTwin, One(termsTwin, metOnly, new[] { E + "terms_read" })).Any(r => r.Has(Leave)),
+            "Lifecycle: a Commander who left the shrine before asking cannot reach the terms and the rite in Drezen.");
         foreach (var s in presenceBeats.Where(s => s.InteractionHub == "eliandra.presence.mark"))
             check(s.Id.EndsWith("_mark", StringComparison.Ordinal) && s.Forbids.Contains(s.Id.Substring(0, s.Id.Length - 5))
                   && S(s.Id.Substring(0, s.Id.Length - 5)).Forbids.Contains(s.Id), "A mark twin does not shut its tavern twin: " + s.Id);
