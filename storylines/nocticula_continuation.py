@@ -1920,7 +1920,7 @@ When she steps back, the unfinished room has a second doorway. A breeze passes b
 "Come back with another answer I have not already considered," she says. "And occasionally with no answer at all. I do not wish to discover that the only thing we can enjoy together is being correct."''', c('[Choose the difficult company of a woman who remains formidable.]', flags=f("ambition_discussed", "future_rivals"))),
     n("power", "Nocticula", '''"There. An appetite you have not dressed as a sacrifice."
 {n}She comes close, studying you with an attention more intimate than the room's earlier invitations.{/n}
-"Then understand mine. I will not become your proof that powerful people can be made safe by loving them. I will want things which inconvenience you. I will sometimes pursue them before asking whether you approve."
+"Then understand mine. Try to tame me, Commander, and discover which of us leaves the cage. I will want things which inconvenience you, and I will take them first and tell you afterwards, if I remember."
 "And if I do the same?"
 "We discover whether our agreements were specific enough."
 {n}She takes your hand and presses it flat against the unbuilt wall. For an instant you feel cold stone. Then the wall disappears, leaving your palm against hers.{/n}

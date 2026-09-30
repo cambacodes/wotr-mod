@@ -125,7 +125,7 @@ threshold("nocticula.trickster.defeated.call_in", "The price of a shadow", '"You
     nt("price", '''"No. I said you had spent too much time with my brother. A clown who knows where my shadow ends and I begin is a clown I have to price."
 "Think what my death is worth. I am told the Abyss is in mourning; I intend to believe it. My rivals will have stopped counting my armies by now, and my dear brother, I hope, has stopped sending me perfume. Every one of them believes I am gone, and while they believe it I am free to do as I please. That silence is worth more than your crusade, and you are carrying it around in your mouth."
 {n}She smiles. It does not reach the projection's eyes, because the projection has none.{/n}
-"So. What will you take to keep it there?"''',
+"So. You think you will name a price for keeping it there. You won't. Every lord of the Abyss would open you up like a letter to read what you are carrying, and only my name on you keeps their knives out. My protection is not free." {n}She lets that settle.{/n} "Silence you give me. Safety I sell you."''',
         c('"Name your price, then."', "terms", forbids=(LATE,)),
         c('"Name your price, then."', "terms_late", requires=(LATE,)),
         c('"Nothing. You keep my secrets, I keep yours."', native_next=T_WHATEVER, flags=(RETURNED, REFUSED)),
@@ -271,11 +271,14 @@ page("nocticula.trickster.defeated.epilogue.punchline", "The most fashionable th
 page("nocticula.trickster.defeated.epilogue.favour", "The favour",
     '''{n}The Queen of Shadows named her favour in the second spring after Threshold, in a sealed note that smelled of night-blooming flowers. Not a temple, not a war, not a soul. A chair.{/n}
 {n}The chair at the Commander's right hand, at every table the Commander would ever sit at, and nobody was to ask whose. Nobody did. The Commander paid it for the rest of a long life, and was never once sure which of them was being watched.{/n}''',
-    ("trickster.ever", PAID), living=True)   # Last Call (doc 04): add Forbids lastcall.active when the finale lands (backlog).
+    ("trickster.ever", PAID, "noct.complete"), living=True)   # Last Call (doc 04): add Forbids lastcall.active when the finale lands (backlog).
+page("nocticula.trickster.defeated.epilogue.debt", "An unnamed favour",
+    '''{n}The Lady in Shadow never named the favour. The Commander had paid for her protection with it at Threshold and then declined her chair, and she let the debt stand exactly as it was: unnamed, unasked, and in the Abyss's books under the Commander's name. Nobody who wanted her secret out of the Commander ever got close enough to try. The Commander spent the rest of a long life waiting for a knock that never came, which, she let it be known, was the whole of the price.{/n}''',
+    ("trickster.ever", PAID), forbids=("noct.complete",), living=True)
 page("nocticula.trickster.defeated.epilogue.stalemate", "Places set",
     '''{n}Twice, agents of the Lady in Shadow were found in the Commander's household: a cook who could not cook, a steward who counted the wrong things. Twice, the Commander sent them home with a joke pinned to their sleeves.{/n}
 {n}They stayed on anyway, a third and a fourth and a fifth, and after a while the household simply set places for them.{/n}''',
-    ("trickster.ever", REFUSED), living=True)
+    ("trickster.ever", REFUSED, "noct.complete"), living=True)
 page("nocticula.trickster.defeated.epilogue.unpriced", "An answer owed",
     '''{n}The Commander left Threshold without hearing her price. Nocticula did not send it after. She let it be known in Alushinyrra that the Crusade's Commander owed her an answer, and let the city decide what that meant; the city decided for her, generously, for years.{/n}''',
     ("trickster.ever", PRIMED), forbids=(RETURNED,), living=True)
@@ -289,6 +292,7 @@ page("nocticula.trickster.defeated.epilogue.unjoked", "Among the many",
 
 # R2-6: the late commit, for a Commander who had her price and never asked the question.
 OFFER_PAGE = (c("Continue", "yes_page"),)
+AFTER_PAGE = (c("Continue", "after_paid", requires=(PAID,)), c("Continue", "after_refused", forbids=(PAID,)))
 WHY_LATE_PAGE = (c("Continue", "m_late", requires=(LATE,)),
                  c("Continue", "m_floor", requires=(PRIMED_SHADOW,), forbids=(LATE,)),
                  c("Continue", "m_dress", requires=("noct.fooled",), forbids=(LATE, PRIMED_SHADOW)),
@@ -319,13 +323,17 @@ page("nocticula.trickster.epilogue.commit", "The chair nobody else sat in", "", 
         c("[Kiss her.]", "kissed"),
         c("[Kneel.]", "knelt"),
         c("[Step back from the chair.]", "refused_page")),
-    nar("kissed", '''{n}Her mouth was warm, which the Commander had not expected; the projection at Threshold had been cold. She pulled the Commander down into the chair and rose over them, astride, one hand flat on the Commander's chest to keep them exactly where she wanted them, and the lamps of her palace went out one by one, in no hurry at all.{/n}''', c()),
-    nar("knelt", '''{n}"Better," said the Queen of Shadows, and let her robe fall open over the Commander's head like a tent. Her fingers closed in the Commander's hair, holding them exactly where she wanted them, and the lamps of her palace went out one by one, in no hurry at all.{/n}''', c()),
+    nar("kissed", '''{n}Her mouth was warm, which the Commander had not expected; the projection at Threshold had been cold. She pulled the Commander down into the chair and rose over them, astride, one hand flat on the Commander's chest to keep them exactly where she wanted them, and the lamps of her palace went out one by one, in no hurry at all.{/n}''', *AFTER_PAGE),
+    nar("knelt", '''{n}"Better," said the Queen of Shadows, and let her robe fall open over the Commander's head like a tent. Her fingers closed in the Commander's hair, holding them exactly where she wanted them, and the lamps of her palace went out one by one, in no hurry at all.{/n}''', *AFTER_PAGE),
+    nar("after_paid", '''{n}In the morning she was gone, and so was the Commander's chair from the head of the palace's long table: moved, overnight, to her right hand, by no servant anyone could name. The steward who tried to move it back found his fingers would not close on it. On the mirror, in lipstick, in a hand the Commander knew: "The favour stands. So do you. Where I can see you."{/n}
+{n}The Commander's own household, when the Commander came home to Drezen, found a place already laid at the right hand of the Commander's chair, and did not ask for whom. They had learned.{/n}''', c()),
+    nar("after_refused", '''{n}In the morning she was gone, and so was every other chair in the room but two. On the mirror, in lipstick: "You refused my price. You did not refuse me. Do not confuse them again."{/n}
+{n}The Commander's household, when the Commander came home, found two of her people already in it, a cook who could not cook and a steward who counted the wrong things, and set places for them without being told.{/n}''', c()),
     nar("twice", '''{n}"You heard me," said the Lady in Shadow, and the lamps in the room dimmed, and a great many things in Alushinyrra shivered for no reason anyone could name.{/n}
 {n}Then, very softly, so that nobody in her city would ever be able to swear to it: "Yes." She rose from the chair, took the Commander's wrists in her cool hands and set them on her hips. "There. Where I can see them. Now walk me to the bed, or go back to your inn and dream about it."{/n}''',
         c("[Walk her to the bed.]", "walked"),
         c("[Go back to the inn.]", "inn")),
-    nar("walked", '''{n}The Commander walked her backwards, step by step, while she watched. At the bed she turned them both, pushed, and followed the Commander down, and settled astride, and the last lamp went out while she was still smiling.{/n}''', c()),
+    nar("walked", '''{n}The Commander walked her backwards, step by step, while she watched. At the bed she turned them both, pushed, and followed the Commander down, and settled astride, and the last lamp went out while she was still smiling.{/n}''', *AFTER_PAGE),
     nar("inn", '''{n}The Commander went back to the inn, and slept, and dreamed of nothing in particular. She kept her word to the letter: the Queen of Shadows did not set one foot in that dream, and made sure the Commander noticed the absence. At breakfast a note waited beside the bread, in a hand the Commander had never seen and knew at once: "Twice. Do not get used to it."{/n}''', c()),
 ])
 page("nocticula.trickster.epilogue.declined", "Eleven years",

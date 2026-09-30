@@ -130,7 +130,7 @@ beat(LABYRINTH, "Behind every door", '"Show me your house."', [
     nar("doors", '''{n}She walks you through the Delights at a madam's pace, never hurrying, never quite stopping. A room of mirrors, where a guest who paid for the privilege is watching himself be adored. A room of smoke so thick you taste it for an hour. A room where a harpist is playing to nobody, because nobody is the client.{/n}
 {n}Deeper in, behind a door with no handle on the outside, a dozen men and women in rotting finery lie on cushions in a sweet brown haze, too far gone to look up.{/n}''',
        c('"Who are they?"', "cultists")),
-    hx("cultists", '''"Leftovers. There used to be a madam here before Chivarro, a mad thing who spun nightmares, and when she moved on to Golarion she left her little cult behind for our amusement." {n}She lifts the lamp so they can see her. None of them does.{/n}
+    hx("cultists", '''"Leftovers. Long before my time, a mad thing who spun nightmares kept a few rooms in this house for her own. Her refuge, she called it. When she moved on to Golarian she left her little cult behind for our amusement." {n}She lifts the lamp so they can see her. None of them does.{/n}
 "They were useful for a while. Now they're furniture that breathes. Every so often a guest pays to try something on one of them that he wouldn't try on anyone who'd be missed." {n}She lowers the lamp.{/n} "Nothing in my house is wasted, lover. That's the whole art."''',
        c("[Walk on.]", "asset", requires=(SENT,)),
        c("[Walk on.]", "asset_empty", forbids=(SENT,))),
@@ -456,7 +456,7 @@ beat(MEANS, "What reachable means", '"What does \'reachable\' mean, exactly?"', 
 {n}Now she looks up.{/n} "The only thing I'd mind is if someone else ever charged you for what I give you free. Then I'd want her name, and her address, and a very sharp knife."''',
        c("Continue", "end")),
     hx("owe", '''"Nothing." {n}She says it flatly.{/n} "That's the whole point, lover. The moment you owe me, you're a customer, and I have plenty of those. You'd go on the books like everybody else, and I'd charge you interest, and one day I'd sell your debt to Rokhorn for the fun of it."
-"So owe me nothing. Come up my stairs empty-handed. It's the most expensive thing anyone's ever done for me, and it doesn't cost you a copper."''',
+"So owe me nothing. Come up my stairs empty-handed." {n}She turns a page, and a boy by the stair who has been hovering with a purse goes white.{/n} "Not you, Lissar. You owe me eleven silver and a finger, and I'm feeling generous about the finger until midnight."''',
        c("Continue", "end")),
     hx("end", '''{n}She closes the ledger.{/n} "And when you go back to your war, you'll hear from me. Not every day. I'm not a lovesick girl with a quill. But you'll hear."
 "Rokhorn will carry my letters." {n}The torn side of her mouth curls.{/n} "It's a humiliation, and he'll do it beautifully. He does everything beautifully that he can't get out of."''',
@@ -676,10 +676,8 @@ P.S. Don't let anyone scratch you."''',
     rl("b_told", '''"You'll..." {n}For a moment his face goes entirely still around the scar.{/n} "You would. Of course you would. Every word of it true."
 {n}He laughs, a short, ugly sound in the rain.{/n} "Then tell her I said it. Tell her everything. Let her take the other side. At least then they'll match."''',
        c("[Watch him go.]", "b_told_answer")),
-    hl("b_told_answer", '''{n}Her answer comes back a month later, by a girl from the Delights with frightened eyes, because Rokhorn does not carry this one:{/n}
-"Your letter came. So I know what my boy offered you in the rain, and I know what you did with it.
-I haven't touched him. I told him I knew, and then I asked him to bring me my wine, and he did, and his hands shook the whole way up the stair. He brings it every night now. His hands shake every night. That's worth more than the other side of his face, lover. You taught me that, and I'll deny it to anyone who asks. H."''',
-       c("[Keep the letter.]")),
+    nar("b_told_answer", '''{n}You write to her that night, every word he said in the rain, and seal it, and give it to the next courier going south. Not to Rokhorn. He watches it go from the gate with his hood up, and does not whistle.{/n}''',
+       c("[Go back inside.]")),
     *discovery("b_", "b_offer")],
     requires=(COMMITTED,), delay=0)
 
@@ -852,7 +850,7 @@ beat(B + "what_she_wants", "What the keeper wants", '"What do you want, Herrax? 
 "Rokhorn wants the whole world on its knees, lover. He'll tell anyone. He wants to fill it up and wring it out and make it his." {n}She waves a hand.{/n} "Incubi. They have one idea, and they think it's a philosophy."
 "I don't want the world. The world is a very bad investment; it's always on fire somewhere. I want this house."''',
        c('"You have this house."', "have")),
-    hx("have", '''"I have it tonight." {n}She taps the arm of the dais.{/n} "Chivarro had it for a very long time. Before her, a mad thing who spun nightmares. Before her, I don't know. The house was here before all of us, and every one of us thought she'd keep it forever."
+    hx("have", '''"I have it tonight." {n}She taps the arm of the dais.{/n} "Chivarro had it for a very long time. Before her, I don't know. The house was here before all of us, and every one of us thought she'd keep it forever."
 "I want to be the one who does. I want the Lady in Shadow to fall, and the next queen after her, and some new Lady to come up my stairs one day and find me still sitting here, with the same face, pouring the same wine." {n}She smiles.{/n} "I want to be the last thing in Alushinyrra that can't be bought."''',
        c('"That\'s a long time to sit in one chair."', "long"),
        c('"Then I hope you get it."', "hope")),

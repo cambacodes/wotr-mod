@@ -136,13 +136,16 @@ internal static class NocticulaTricksterTests
         check(pages.Contains("terms_late") && !pages.Contains("terms") && lateOutcomes.Any(r => r.Has(Paid) && r.Has(Returned)),
             "Trk_Nocticula_CallInLate failed.");
         var paid = lateOutcomes.First(r => r.Has(Paid));
-        check(Rules.Available(story, chair, paid) && Rules.Available(story, b1, paid) && Rules.Available(story, favour, paid)
+        // Ledger row 11: the favour page is a relationship page (committed); a debt outside the romance has its own page.
+        check(Rules.Available(story, chair, paid) && Rules.Available(story, b1, paid) && !Rules.Available(story, favour, paid)
+              && Rules.Available(story, favour, With(story, paid, "noct.complete")) && Rules.Available(story, S("nocticula.trickster.defeated.epilogue.debt"), paid)
+              && !Rules.Available(story, S("nocticula.trickster.defeated.epilogue.debt"), With(story, paid, "noct.complete"))
               && !Rules.Available(story, stalemate, paid), "Trk_Nocticula_CallInLate: continuations.");
 
         // Trk_Nocticula_CallInRefused: mutual blackmail.
         var onTime = World(story, 6, "trickster.ever", Dead, Fight, Primed);
         var refused = Program.Walk(callIn, onTime).Single(r => r.Has(Refused));
-        check(refused.Has(Returned) && Rules.Available(story, stalemate, refused) && !Rules.Available(story, favour, refused),
+        check(refused.Has(Returned) && !Rules.Available(story, stalemate, refused) && Rules.Available(story, stalemate, With(story, refused, "noct.complete")) && !Rules.Available(story, favour, refused),
             "Trk_Nocticula_CallInRefused failed.");
         check(Program.Walk(callIn, onTime).Any(r => !r.Has(callIn.Id) && !r.Has(Returned)), "The call-in cannot be left for later.");
 

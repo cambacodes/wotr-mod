@@ -19,7 +19,7 @@ import copy
 
 from story_format import c
 from storylines import household
-from storylines.shamira_trickster import (BARRACKS, CAST_OUT, CLOSED, CRYSTALS, DREAM2, EMBODIED, FOUND, FUEL,
+from storylines.shamira_trickster import (BARRACKS, BIRD, CAST_OUT, CLOSED, CRYSTALS, DREAM2, EMBODIED, FOUND, FUEL,
                                            HANDED, KEPT, KILLED, MASSACRE, NEVER_ALONE, NIGHT1,
                                            NOCT_KNOWS, P, PRIMED, RAMISA_FOOLED, RAMISA_STORY, READ_ALL, REFUSED_BARRACKS, RETURNED, SECRET, SHELL,
                                            SOCOTH_GONE, STEALTH1, TASTED, TORN, VEIL, WHISPER, nar, sh)
@@ -276,8 +276,11 @@ page(P + "mind.dream", "Where you sleep", [
 {n}She has not waited on the fountain tonight. She is walking the square as if she owns it, stepping over the dead with her skirts lifted, reading the burning buildings the way a scholar reads a shelf. The ash still falls on her. She has stopped shivering.{/n}''',
         c("Continue", "tour")),
     sh("tour", '''"Every night. The same dragon, the same square. You have the most repetitive head I have ever been inside, Golarian." {n}She stops by a collapsed cart and pokes a burning wheel with her toe.{/n} "Do you know what this is? This is a man who dreams with his reins on. Something bad happened to you here, and every night you ride it round the same ring, so it can't get loose."''',
-        c('"It did get loose. That\'s the problem."', "loose"),
-        c('"Show me what you\'d do with it, then."', "show")),
+        c('"It did get loose. That\'s the problem."', "loose", requires=(BIRD,)),
+        c('"Show me what you\'d do with it, then."', "show"),
+        c('"It did get loose. That\'s the problem."', "loose_first", forbids=(BIRD,))),
+    sh("loose_first", '''"No. It got loose once, and you have been catching it every night since." {n}She comes close. In the dream she smells of cinnamon and something burnt.{/n} "A dream is a bird, Golarian, not a horse. You can't restrain it. You can only hurt it with your reins." {n}Her mouth curls.{/n} "Let me show you what I used to do with birds."''',
+        c("Continue", "show")),
     sh("loose", '''"No. It got loose once, and you have been catching it every night since." {n}She comes close. In the dream she smells of cinnamon and something burnt.{/n} "I told you in my Harem. A dream is a bird, not a horse. You can't restrain it. You can only hurt it with your reins." {n}Her mouth curls.{/n} "Let me show you what I used to do with birds."''',
         c("Continue", "show")),
     nar("show", '''{n}She lifts her hands, and Kenabres comes apart.{/n}

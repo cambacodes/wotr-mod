@@ -107,8 +107,9 @@ RELATIONSHIP = dict(
                  "the lesson."),
     Objective="Sell Rokhorn her night",
     Guidance=("On the Trickster path, in Chapter 4, once Herrax rules the Ten Thousand Delights. Ask her incubus Rokhorn why "
-              "he obeys her, keep the golden coin she gave you, and tell her what he still wants. If you leave the Midnight "
-              "Isles before it is finished, or never reach her there, her courier will find you in Chapter 5."),
+              "he obeys her, keep the golden coin she gave you, and tell her what he still wants. If Chivarro fell and Herrax "
+              "took the chair but you left the Midnight Isles before it was finished, or never met her there, her courier "
+              "will find you in Chapter 5."),
     StartedFlag=STARTED, ClosedFlag=CLOSED, CommittedFlag=COMMITTED,
     UnavailableFlags=[], FailureFlags=[], UnavailableOverrides={},
     TricksterAccess={
@@ -265,7 +266,7 @@ hall(H + "madam.the_night", "The night", '"Is it time?"', [
        c("Continue", "arch", requires=(BAIT,)),
        c("Continue", "hall", requires=(BLOWN,), forbids=(BAIT,))),
     nar("arch", '''{n}Her rooms are at the heart of the labyrinth, three doors past any door a guest has seen. Tonight every lamp in them is out. The house lines the walls in the dark: the three Sinners, arm in arm; Morevet Honeyed Tongue with her lips parted; the Mad Glowworm cross-legged on a sideboard; a dozen of the boys with knives and no shirts. Nobody whispers.{/n}
-{n}Herrax sits on the dais at the far end. It was Chivarro's once; the cushions still smell of her perfume, and Herrax has kept them for exactly that reason.{/n}
+{n}Herrax sits in the one chair at the far end, with her curved knife across her knees.{/n}
 {n}Near midnight a lamp moves on the back stair. The girl who keeps the arch comes up it with her ring of keys, opening the three doors one after another, as she has opened them for favoured guests since Chivarro's time, and Rokhorn climbs behind her with the madam's coin hanging on his belt and his best smile already on. At the last door the girl steps aside to let him pass, and closes it behind him, and turns the key. The lamps come up all at once. The smile stays where it is for a heartbeat too long.{/n}''',
        c("Continue", "arch2")),
     nar("arch2", '''{n}Four of the boys have him on his knees before he gets his claws out. He doesn't struggle long. He looks round the room at every face that has come to watch him, and last of all at you, and he laughs, because there is nothing else left to do with his mouth.{/n}
@@ -273,7 +274,8 @@ hall(H + "madam.the_night", "The night", '"Is it time?"', [
        c("Continue", "arch3")),
     hx("arch3", '''{n}Herrax comes down one step from the dais, no more. Her voice is warm, and carries to every wall.{/n}
 "You bought my night, sweet. You paid with my own coin, and you came up my own stair behind my own girl, because a stranger told you I'd be alone." {n}She tilts her head.{/n} "I'm never alone. And my girls take nobody up those stairs I haven't told them to. You've lived in this house for years. How did you forget that?"
-{n}Rokhorn says nothing. There is nothing he could say in this room that would not be bought and sold by morning, and he knows it.{/n}''',
+{n}Rokhorn says nothing. There is nothing he could say in this room that would not be bought and sold by morning, and he knows it.{/n}
+{n}She nods to the boys. They walk him down through all three doors and the long stair into the great hall, where the lamps are lit and every guest still awake has been waiting, and they put him on his knees at the foot of Chivarro's old dais. Herrax climbs it and sits on the cushions, which still smell of the other woman's perfume.{/n}''',
        c("Continue", "knife")),
     nar("hall", '''{n}She does it in the great hall, under the lamps, where every guest and girl and boy in the Delights can see. Rokhorn is already on his knees at the foot of the old dais, held by four of the boys. Nobody has hurt him yet. They are saving it.{/n}
 {n}Every head turns when you come in, and every eye goes to the claw mark on your cheek. The whole house heard what he shouted: the favoured guest offered the madam's floor. Herrax lets them look at you for as long as it takes to be sure they have.{/n}''',
@@ -463,9 +465,9 @@ def discovery(prefix="", next=None):
              flags=(CONTRACT, KEPT_OUT)),
            c('"Tell her Chivarro goes where she likes. So do I."', prefix + "chiv_stood", flags=(CONTRACT, STOOD),
              alignment=("Chaotic", 1))),
-        hl(prefix + "chiv_kept", '''{n}Her answer comes back by the same hand three weeks later, one line in the round script:{/n} "Your word, then. I'll take it the way I take a stranger's coin, lover: I'll bite it first. If she sets one foot on my stairs, I'll finish what you didn't, and send you the bill."''',
+        rl(prefix + "chiv_kept", '''"Your word." {n}Rokhorn weighs it the way she would, like a coin on a counter.{/n} "She'll bite it first. She bites everything. And if the lilitu ever sets one foot on her stairs, she'll finish what you didn't and send you the bill; I'd put money on it." {n}He tucks your answer away.{/n}''',
            c("Continue", next)),
-        hl(prefix + "chiv_stood", '''{n}Her answer comes back by the same hand three weeks later, one line in the round script, and the pen has gone through the paper once:{/n} "Then I'll keep a knife for her the way I keep a room for you. Both of them ready. Neither of them used, if you're clever."''',
+        rl(prefix + "chiv_stood", '''"Goes where she likes." {n}Rokhorn's grin comes slow.{/n} "Then she'll keep a knife for the lilitu the way she keeps a room for you, hot stuff. Both ready. I'd stay out of the way of both, if I were you. I'm going to."''',
            c("Continue", next)),
     ]
 
@@ -737,8 +739,8 @@ SCENES.append(reaction("Regill", H + "react.regill_wrist", ("trickster.ever", DE
     answer_list=REGILL_HUB, chapter=4, last=5, entry='"About the Delights..."', portrait="Regill", **RE_GUARD))
 
 SCENES.append(reaction("Woljif", H + "react.woljif_con", ("trickster.ever", BAIT),
-    '''"Chief. Chief." {n}Woljif grabs your sleeve.{/n} "You sold a demon a night alone with his boss. You told him everything true. Every single thing. And the only lie was who'd be in the room." {n}He shakes his head in something close to worship.{/n}
-"You know how hard that is? Anyone can lie. Telling a mark the whole truth and still robbing him blind, that's art. And he paid you with her own coin!" {n}He sobers.{/n} "Don't ever do that to me, all right? I'd never see it coming."''',
+    '''"Chief. Chief." {n}Woljif grabs your sleeve.{/n} "You sold a demon a night alone with his boss. Every word true, except who'd be in the room. Nice. Old trick. My uncle did it to a fence in Kenabres." {n}He squints.{/n}
+"Except my uncle got paid. You gave the incubus her gold coin, the one that gets you in anywhere, for a quarter of a house he was never going to hold. So what did you get? A seat at a haircut?" {n}He shakes his head.{/n} "Chief, I love you, but you're a terrible businessman. Next time bring me. I'll make the demon pay for his own ambush."''',
     answer_list=WOLJIF_HUB, chapter=4, last=5, entry='"You look pleased with yourself."', portrait="Woljif", **WO_GUARD))
 
 SCENES.append(reaction("Woljif", H + "react.woljif_cheek", ("trickster.ever", CHEEK),
