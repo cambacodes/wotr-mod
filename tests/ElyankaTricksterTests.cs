@@ -327,6 +327,65 @@ internal static class ElyankaTricksterTests
         check(!secretDead.Text.Contains("prayed over every row") && secretDead.Requires.SequenceEqual(new[] { "trickster.secret.elyanka_siege_dead" }),
             "Trk_Elyanka_Rendered: the Ledger's secret names a witness at the rows who may never have been there.");
 
+        // Trk_Elyanka_Recall (audit r4): no scene or ending recalls an event the world never had. Every node reachable in each
+        // history (bare-faced / veiled / caught; with or without the hearse night and the hunt; kept, stationed, dismissed) is
+        // read against the facts it could remember.
+        IEnumerable<string> Reachable(Scene scene, Snapshot initial)
+        {
+            var seen = new HashSet<string>();
+            var stack = new Stack<(string, Snapshot)>();
+            stack.Push((scene.Nodes[0].Id, initial));
+            while (stack.Count > 0)
+            {
+                var (id, st) = stack.Pop();
+                if (!seen.Add(id)) continue;
+                foreach (var choice in scene.Nodes.Single(nn => nn.Id == id).Choices.Where(ch => Rules.Match(ch.Requires, ch.Forbids, st)))
+                {
+                    var next = Program.Copy(st);
+                    foreach (var f in choice.Set) next.Flags.Add(f);
+                    foreach (var target in Rules.NextNodes(choice)) stack.Push((target, next));
+                }
+            }
+            return seen.Select(id => scene.Nodes.Single(nn => nn.Id == id).Text);
+        }
+        var histories = new[] {
+            (name: "bare-faced, no night", flags: new[] { "trickster.ever", Owned, Bequeathed, Started, P + "straight" }),
+            (name: "bare-faced, committed, no night", flags: new[] { "trickster.ever", Owned, Bequeathed, Started, P + "straight", Tested, Committed, "trickster.secret.elyanka_rites" }),
+            (name: "veiled, committed, night, no hunt", flags: new[] { "trickster.ever", Owned, Bequeathed, Started, P + "bluffed", P + "executor", Tested, Committed, Bier, "trickster.secret.elyanka_rites" }),
+            (name: "caught, owned", flags: new[] { "trickster.ever", Owned, Bequeathed, Started, P + "exposed", P + "executor" }),
+        };
+        foreach (var (hname, hflags) in histories)
+            foreach (int chapter in new[] { 5, 6 })
+            {
+                var w = World(story, chapter, hflags);
+                bool night = w.Has(Bier), caught = w.Has(P + "exposed"), veiled = w.Has(P + "bluffed");
+                foreach (var sc in own.Where(x => x.Id != P + "visit.hearse" && Avail(x, w)))
+                    foreach (var text in Reachable(sc, w))
+                    {
+                        var bad = new List<string>();
+                        if (!night && (text.Contains("the cord") || text.Contains("knotted cord") || text.Contains("with in the hearse") || text.Contains("I measured you"))) bad.Add("the hearse night");
+                        if (text.Contains("stag's heart")) bad.Add("the hunt");
+                        if (!caught && text.Contains("pulse under")) bad.Add("the failed con");
+                        if (!veiled && !caught && (text.Contains("in a curtain") || text.Contains("in crepe") || text.Contains("the veil came off"))) bad.Add("a veil");
+                        check(bad.Count == 0, "Trk_Elyanka_Recall: " + sc.Id + " recalls " + string.Join(", ", bad) + " in the history " + hname + " (Ch" + chapter + ").");
+                    }
+            }
+        foreach (var where in new[] { new string[0], new[] { P + "collateral.at_rift" }, new[] { P + "collateral.in_drezen" }, new[] { Declined, LeftFree, Closed } })
+        {
+            var gone = World(story, 6, new[] { "trickster.ever", Owned, Bequeathed, Started, Tested, "sacrifice", P + "straight" }.Concat(where).ToArray());
+            var text = Render(Pg("eaten"), gone) + " " + Pg("eaten").Nodes[0].Text;
+            int places = new[] { "last ridge above the rift", "where she had waited with one candle", "reached Elyanka Camilary in Ustalav", "from a sergeant who did not know" }.Count(text.Contains);
+            check(Avail(Pg("eaten"), gone) && places == 1 && !text.Contains("knotted cord"),
+                "Trk_Elyanka_Recall: the Wound's news finds her in " + places + " places, or with the cord, in " + string.Join("+", where));
+        }
+        foreach (var how in new[] { P + "straight", P + "bluffed", P + "exposed" })
+        {
+            var h1w = World(story, 6, "trickster.ever", Owned, Committed, how, "trickster.lastcall.taken", "ending.trickster");
+            var coda1 = Render(story.Scenes.Single(x => x.Id == "elyanka.lastcall.page"), h1w);
+            check(!coda1.Contains("veil") && !coda1.Contains("at the wake") && !coda1.Contains("knotted"),
+                "Trk_Elyanka_Recall: the Last Call coda recalls the wake, a veil or the cord in the " + how + " history without the hearse night.");
+        }
+
         // Trk_Elyanka_LastCall: her coda needs the real commit; the bequest is a debt to a live power; it never keeps anyone alive.
         var coda = story.Scenes.Single(s => s.Id == "elyanka.lastcall.page");
         var call = story.Scenes.Single(s => s.Id == "elyanka.lastcall.call");

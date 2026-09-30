@@ -524,7 +524,7 @@ tag(E + "react.daeran_door", "T")
 
 SCENES.append(reaction("Daeran", E + "react.daeran_after", ("trickster.ever", BIER),
     '''{n}Daeran regards you for some time over the rim of his cup before he speaks.{/n}
-"You slept in a hearse." {n}He says it slowly, savouring it.{/n} "With the undertaker. Who is a priestess of the Pallid Princess and has measured you for the table." {n}He sips.{/n} "In my family we buried eleven Arendaes in six years, Commander, and I can tell you the one rule of the funeral carriage that every one of them kept: one does not get into it before the service. It is considered pushing."
+"You slept in a hearse." {n}He says it slowly, savouring it.{/n} "With the undertaker. Who is a priestess of the Pallid Princess and has measured you for the table." {n}He sips.{/n} "After Heaven's Edge my family required rather a lot of funeral arrangements at once, Commander, and I learned the one rule of the funeral carriage that every Arendae kept to the letter: one does not get into it before the service. It is considered pushing."
 "She will have no idea what to drink at a funeral that has not happened yet. Tell her the cellars of my house are at her disposal. Every year, on the day they feasted you dead in Drezen, I shall send her a bottle older than she is. I want to watch her taste it and pretend she is above such things."''',
     answer_list=DAERAN_HUB, chapter=5, last=6, entry='"You\'re staring, Daeran."', portrait="Daeran",
     flags=(DAERAN_ALLY,), forbids=DAERAN_GONE))
@@ -674,7 +674,7 @@ HER_PARAGRAPHS = COMMON + LATER + UNPAID + (
 
 page("claim", "A claim, held", '''{n}Elyanka Camilary did not go home to Ustalav when the war was over. The Way had sent her to collect, she said, and a creditor who goes home before the debt falls due does not deserve to be paid. She kept the dead-house by the south gate of Drezen, and the hearse in its yard, and her Lady's appetites, all of them.{/n}
 {n}The Pallid Princess did not adopt her that year, or the next. She stayed mortal, and useful, and furious about it, and she whispered her reports to Caliphas into the ears of couriers who forgot them by morning, all but the parts meant for the Way.{/n}
-{n}When the Commander came to the dead-house she wrinkled her nose at the smell of warm living skin, every time, and pulled the Commander into the hearse by the belt anyway, every time. What each of them held of the other stayed where it was, whispered and unwritten.{/n}''',
+{n}When the Commander came to the dead-house she wrinkled her nose at the smell of warm living skin, every time, and pulled the Commander close anyway, every time. What each of them held of the other stayed where it was, whispered and unwritten.{/n}''',
      requires=(COMMITTED,), paragraphs=(
          p('''{n}Hers was a claim on a corpse that would one day be hers; the Commander's, a claim on a corpse that would never be anybody's.{/n}''',
            forbids=(ACTIVE,)),
@@ -687,7 +687,7 @@ page("debt", "A claim, outstanding", '''{n}The war ended before Elyanka Camilary
      requires=(OWNED,), forbids=(COMMITTED, DECLINED, CLOSED), paragraphs=COMMON + UNPAID + (
          p('''{n}Once, in the fourth spring, she stayed a second week. Nobody could say why, least of all the Commander. She did not explain.{/n}''',
            requires=(TESTED,)),
-         p('''{n}She never gave the Commander her own claim. Once, late, over the dregs of a bottle, she said that she had meant to, in the spring of the Threshold, and that the war had simply ended too soon. Then she said she had been joking, and wrinkled her nose at the smell of the Commander's life, and left the next morning as usual.{/n}''',
+         p('''{n}Once, late, over the dregs of a bottle, she said that she had meant to give the Commander her own claim, in the spring of the Threshold, and that the war had simply ended too soon. Then she said she had been joking, and wrinkled her nose at the smell of the Commander's life, and left the next morning as usual.{/n}''',
            requires=(TESTED,)),
          p('''{n}The terms were never repeated aloud. They did not need to be. On the day the Commander died, whenever that was, a woman in grey would be at the graveside, and would take what she had bought.{/n}''',
            forbids=(ACTIVE,)),
@@ -711,10 +711,18 @@ page("left_free", "Sent home", '''{n}Elyanka Camilary went home to Ustalav with 
            forbids=("sacrifice", ACTIVE)),
      ))
 
-page("eaten", "The Wound ate my claim", '''{n}Word came to Drezen that the Commander of the Fifth Crusade had given everything at the Threshold, and that the Wound had closed on what was given. There was no body to carry home. The Wound had taken it with everything else.{/n}
-{n}Elyanka Camilary heard the news in the dead-house yard, with her knotted cord wound round her hand. She sat on the shaft of the hearse for a day and a night without eating, which nobody who knew her would have believed. On the second morning she said, to nobody, "The Wound ate my claim," and harnessed the horses herself, and drove the hearse that had been built for the Commander's corpse home to Ustalav, empty. She did not weep. She was hungry, and she stayed hungry.{/n}''',
+page("eaten", "The Wound ate my claim", '''{n}Word came to Drezen that the Commander of the Fifth Crusade had given everything at the Threshold, and that the Wound had closed on what was given. There was no body to carry home. The Wound had taken it with everything else.{/n}''',
      requires=(OWNED, "sacrifice"), forbids=(BACK,), survived=False, paragraphs=(
-         p('''{n}In Caliphas she laid the lock of hair she had cut for the Commander on her father's grave, where she visits, and left it there to rot, like a peasant. It was the only thing she ever buried.{/n}''',
+         p('''{n}Elyanka Camilary had watched it happen from the last ridge above the rift, where the Commander had told her to stand, with her hearse and her six. When it was over there was nothing to go down and fetch. She stood on the ridge for a day and a night without eating, which nobody who knew her would have believed. On the second morning she said, to nobody, "The Wound ate my claim," and turned the hearse that had been built for the Commander's corpse south, empty.{/n}''',
+           requires=(E + "collateral.at_rift",)),
+         p('''{n}Elyanka Camilary heard it in the dead-house by the south gate of Drezen, where she had waited with one candle, as the Commander had told her to. She sat on the shaft of the hearse for a day and a night without eating, which nobody who knew her would have believed. On the second morning she said, to nobody, "The Wound ate my claim," and harnessed the horses herself, and drove the hearse home to Ustalav, empty.{/n}''',
+           requires=(E + "collateral.in_drezen",)),
+         p('''{n}The news reached Elyanka Camilary in Ustalav, months late, by a man in grey. She had gone home when she was sent, with a claim and nothing else. She heard him out, and said, to nobody, "The Wound ate my claim," and did not eat for a day and a night, which nobody who knew her would have believed.{/n}''',
+           requires=(LEFT_FREE,)),
+         p('''{n}Elyanka Camilary heard it in the dead-house by the south gate of Drezen, from a sergeant who did not know what else to do with the news. She sat on the shaft of the hearse for a day and a night without eating. On the second morning she said, to nobody, "The Wound ate my claim," and drove the hearse that had been built for the Commander's corpse home to Ustalav, empty.{/n}''',
+           forbids=(E + "collateral.at_rift", E + "collateral.in_drezen", LEFT_FREE)),
+         p('''{n}She did not weep. She was hungry, and she stayed hungry.{/n}'''),
+         p('''{n}She asked for the lock of hair she had cut for the Commander back from the Commander's effects, and in Caliphas she laid it on her father's grave, where she visits, and left it there to rot, like a peasant. It was the only thing she ever buried.{/n}''',
            requires=(LOCK,)),
          p('''{n}Somewhere she kept a claim on her own corpse that nobody would ever collect. She said, once, that the Commander had got the better bargain after all: the only debtor she had ever heard of who cheated the Way by dying properly.{/n}''',
            requires=(COMMITTED,)),

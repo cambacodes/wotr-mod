@@ -130,7 +130,7 @@ visit(E + "beat.hunt", "Venison", [
 {n}She is waiting in a clearing, in her grey robe, with a knife in her hand and nothing else. Two of her escort stand at the edge of the trees like posts.{/n}''',
         c("Continue", "stag")),
     el("stag", '''"There is a stag in these woods. A real one, not one of your Wound's things with too many eyes. My people have been driving him toward this clearing since sundown." {n}She tests the knife's edge with her thumb.{/n}
-"Nobody in Drezen gave me leave to kill him. Nobody in Drezen owns him. That is how venison tastes best. I told you once." {n}She tilts her head, listening.{/n} "Here he comes. Be still, or be quick. Not both."''',
+"Nobody in Drezen gave me leave to kill him. Nobody in Drezen owns him. That is how venison tastes best." {n}She tilts her head, listening.{/n} "Here he comes. Be still, or be quick. Not both."''',
        c("[Be still.]", "kill"),
        c("[Be quick. Get between the stag and the trees.]", "kill_quick")),
     nar("kill", '''{n}He comes out of the dark at a run, a big grey hart with a heavy neck, and her escort close in behind him without a sound, and he turns, and turns again, and there is nowhere left. She walks up to him while he is still deciding. She does not hurry.{/n}
@@ -248,10 +248,10 @@ visit(E + "ch6.collateral", "The collateral, inspected", [
        c('[Tell her to wait in Drezen] "In the dead-house. If I don\'t come back, you won\'t need to see it."', "drezen")),
     el("afraid", '''"Afraid." {n}She says it as if it were a word in a language she once studied and did not keep up.{/n}
 "I am afraid of losing what I bought. That is not the same thing. A merchant is afraid for the ship, not for the sailors." {n}She looks at the tent wall, toward the north, where the sky is the colour of a bruise.{/n} "The witch in there made you. I have read what she did at Kenabres. She will want you back whole, and she does not share."
-{n}Her hand, lying on her knee, has closed on the knotted cord so hard that the knots have marked her palm.{/n} "Now answer my question, and do not ask me that again."''',
+{n}Her hand, lying on her knee, has closed on a fold of her grey robe so hard that the knuckles have gone white.{/n} "Now answer my question, and do not ask me that again."''',
        c('[Tell her to stand at the rift\'s edge] "Somewhere you can see. If it falls due, collect."', "rift"),
        c('[Tell her to wait in Drezen] "In the dead-house. If I don\'t come back, you won\'t need to see it."', "drezen")),
-    el("rift", '''"Where I can see." {n}She winds the cord round her hand again, slowly.{/n} "I will stand on the last ridge before the rift with my hearse and my six, and I will not lift a finger for you, Commander, not one. I will watch my collateral. If it falls, I will go down and fetch it before the demons do."
+    el("rift", '''"Where I can see." {n}She stands, and smooths her robe.{/n} "I will stand on the last ridge before the rift with my hearse and my six, and I will not lift a finger for you, Commander, not one. I will watch my collateral. If it falls, I will go down and fetch it before the demons do."
 "And if it does not fall, I will have come all this way to watch a debtor live." {n}She stands.{/n} "It would not be the first time you disappointed me."''',
        c("Continue", "rift2", requires=(COMMITTED,)),
        c("[Let her go back to her hearse.]", flags=(AT_RIFT,), forbids=(COMMITTED,))),
@@ -592,7 +592,7 @@ visit(E + "beat.grave", "The stone they raised", [
     nar("start", '''{n}She wants to see your grave. She says so across the trestle, over breakfast, as another woman might ask to see the gardens, and she will not be put off.{/n}
 {n}There is one. You had forgotten. When Drezen declared you dead, the garrison raised a stone for you in the burying ground under the east wall, since there was nothing to put under it, and nobody has thought to take it down. It stands at the end of a row of real graves, a slab of grey Mendevian granite with your name cut deep and a line of scripture under it, slightly misspelled.{/n}''',
         c("Continue", "stone")),
-    el("stone", '''{n}She walks all round it, twice, reading every letter. Then she lays her palm flat on the top of it, the way she laid it on your chest in the hearse.{/n}
+    el("stone", '''{n}She walks all round it, twice, reading every letter. Then she lays her palm flat on the top of it, the way a physician lays a palm on a fevered chest.{/n}
 "The only grave in the world with your name on it, and nothing in it." {n}She sounds almost tender.{/n} "Do you know how rare that is? A grave that has been dug and wept over and prayed at, and is still waiting? In Ustalav we would make a shrine of it. People would come from Caliphas to sit here."
 "This is what I bought, Commander. Not you. This." {n}She pats the stone.{/n} "The hole under it."''',
        c("[Lie down on your own grave.]", "lay"),
@@ -629,7 +629,7 @@ visit(E + "beat.ustalav", "Where they lock the shutters", [
        c('"Tell me about your woods."', "woods"),
        c('"I\'ll see it one day."', "promise"),
        c('"It sounds like a country I\'d rather not see."', "refuse")),
-    el("woods", '''{n}Something in her face loosens, for a moment, as it did over the stag's heart.{/n}
+    el("woods", '''{n}Something in her face loosens, for a moment, as it does over good meat.{/n}
 "Birch, mostly, and black pine higher up. In autumn the stags come down to the river to drink, and the mist lies so thick in the hollows that you can walk through a herd of them and they do not know you are there until you have your hand on one." {n}She looks down at her own hand on the parapet.{/n}
 "There is a clearing where the priests made their fire. The grass never grew back where it burned. I go there when I am home. I sit in the black circle and eat whatever I have brought, and I am sixteen again, and hungry, and nobody has come yet with dogs."''',
        c("[Put your hand over hers on the stone.]", "woods2"),
@@ -680,18 +680,18 @@ visit(E + "beat.night", "The collector at night", [
 # --- 7. Reaction: Regill, who reads law (the writ). ------------------------------------------------------------------------
 
 SCENES.append(reaction("Regill", E + "react.regill_writ", ("trickster.ever", "regill.in_party"),
-    '''{n}Regill does not look up from the report he is annotating.{/n}
-"The priestess of Urgathoa in the dead-house. I read the register the chaplains' clerk carried to the dead-house, Commander, the copy from Nerosyan. Her oath is in it. So are the oaths of six men who do not appear to breathe. Every seal is correct. Every witness is real." {n}He turns a page.{/n}
-"The law does not require me to like her, and I do not. It does require me to note that you were right, and the chaplains were not. I have noted it." {n}His pen scratches.{/n} "I have also noted where she sleeps."''',
+    '''{n}Regill is cleaning his blade, with the thoroughness of a man who expects to need it.{/n}
+"The priestess of Urgathoa in the dead-house. I read the register the chaplains' clerk carried, Commander. Her oath is valid. So are the oaths of six men in grey who do not breathe. You were right to hold to it: an oath you enforce only when you like the one who swore it is not law, it is weather."
+"But understand what you have in that yard. Six sworn soldiers of this crusade who answer to her and not to any officer of ours. If she gives them an order you do not like, they will obey her, and the law will be on their side." {n}He sheathes the blade.{/n} "I have put two of my own on the south gate. Not to watch her. To watch them."''',
     answer_list=REGILL_HUB, chapter=5, last=5, entry='"About the Ustalavic priestess."', portrait="Regill",
     forbids=("regill.dead", "regill.kicked_out", "regill.plot_absent"),
     RequiresAnyGroups=[[WRIT_UPHELD, WRIT_HERS]]))
 tag(E + "react.regill_writ", "T")
 
 SCENES.append(reaction("Regill", E + "react.regill_lie", ("trickster.ever", "regill.in_party", WRIT_LIED),
-    '''{n}Regill does not look up from the report he is annotating.{/n}
-"You told the chaplains that the priestess in the dead-house is your embalmer, Commander. I read the register the chaplains' clerk carried, the copy from Nerosyan. She is entered there as a noblewoman of Ustalav under the crusader's oath, with six men who do not appear to breathe. She is not entered as anybody's servant." {n}He turns a page.{/n}
-"Her oath would have held without your lie. You lied anyway, to two chaplains and a clerk of the court, about a matter the law had already settled." {n}His pen scratches.{/n} "I have noted it. I note everything. I simply want you to know which of the two of you I trust to tell the truth under oath, and it is not you."''',
+    '''{n}Regill is cleaning his blade, with the thoroughness of a man who expects to need it.{/n}
+"You told the chaplains that the priestess in the dead-house is your embalmer, Commander. The register says otherwise: a noblewoman of Ustalav under the crusader's oath, with six sworn men in grey who do not breathe. Her oath would have held without your lie."
+"Now nobody knows who commands those six. The chaplains think you do. The register says she does. When they are ordered to do something ugly, and they will be, every sergeant in this city will look to you for the order you never gave." {n}He sheathes the blade.{/n} "Put them under an officer of ours, or tell the chaplains the truth. A lie about the chain of command gets soldiers killed."''',
     answer_list=REGILL_HUB, chapter=5, last=5, entry='"About the Ustalavic priestess."', portrait="Regill",
     forbids=("regill.dead", "regill.kicked_out", "regill.plot_absent")))
 tag(E + "react.regill_lie", "T")
