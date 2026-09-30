@@ -27,9 +27,16 @@ internal static class Program
     internal static IEnumerable<string> Prerequisites(Scene scene) => scene.Requires.Concat(scene.RequiresAnyGroups.Select(group => group[0]));
 
     internal static List<Snapshot> Walk(Scene scene, Snapshot initial, Action<string, Snapshot>? visit = null)
+        => WalkPaths(scene, initial, visit, null).Select(r => r.state).ToList();
+
+    // The outcomes of the paths that actually take choice [index] of node `nodeId` (not merely end with its flags).
+    internal static List<Snapshot> WalkVia(Scene scene, Snapshot initial, string nodeId, int index)
+        => WalkPaths(scene, initial, null, (nodeId, index)).Where(r => r.via).Select(r => r.state).ToList();
+
+    private static List<(Snapshot state, bool via)> WalkPaths(Scene scene, Snapshot initial, Action<string, Snapshot>? visit, (string node, int index)? via)
     {
-        var outcomes = new List<Snapshot>();
-        void Visit(string id, Snapshot state, HashSet<string> path)
+        var outcomes = new List<(Snapshot, bool)>();
+        void Visit(string id, Snapshot state, HashSet<string> path, bool passed)
         {
             Check(path.Add(id), "Cycle without a terminal answer: " + scene.Id + "/" + id);
             var node = scene.Nodes.Single(n => n.Id == id);
@@ -38,6 +45,7 @@ internal static class Program
             Check(choices.Count > 0, "Page has no selectable answers: " + scene.Id + "/" + id);
             foreach (var choice in choices)
             {
+                bool took = passed || (via != null && via.Value.node == id && node.Choices.IndexOf(choice) == via.Value.index);
                 var next = Copy(state);
                 foreach (var effect in choice.Set)
                     if (next.Flags.Add(effect)) next.Times[effect] = next.Hour;
@@ -46,15 +54,15 @@ internal static class Program
                     foreach (var held in story.InventoryItems.Where(e => e.Value == choice.RemoveItem).Select(e => e.Key))
                         next.Flags.Remove(held);
                 if (choice.Next != null || choice.Check != null)
-                    foreach (var target in Rules.NextNodes(choice)) Visit(target, Copy(next), new HashSet<string>(path));
+                    foreach (var target in Rules.NextNodes(choice)) Visit(target, Copy(next), new HashSet<string>(path), took);
                 else
                 {
                     if (!choice.Abort) { next.Flags.Add(scene.Id); next.Times[scene.Id] = next.Hour; }
-                    outcomes.Add(next);
+                    outcomes.Add((next, took));
                 }
             }
         }
-        Visit(scene.Nodes[0].Id, initial, new HashSet<string>());
+        Visit(scene.Nodes[0].Id, initial, new HashSet<string>(), false);
         return outcomes;
     }
 

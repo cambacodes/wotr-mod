@@ -165,7 +165,7 @@ threshold("nocticula.trickster.defeated.chair", "Beside me", '"One more question
     # What she actually saw of this Commander, by the road taken (Sol BEL: never a clue the player did not witness).
     nt("why_late", '''"You missed me at the door, clown. You walked past my projection and talked about the scenery. And then, the night before the Wound, you found me anyway: one shadow among a camp full of them, on your own tent wall, and you put your boot on the right one." {n}Her mouth curves.{/n} "I have been wondering since what else you notice when you are not trying."''',
         c("Continue", "yes")),
-    nt("why_floor", '''"You killed me, clown, and then you looked at the floor instead of at the corpse. Nobody looks at the floor. I have been wondering since what else you notice."''',
+    nt("why_floor", '''"You killed me, clown, and then you looked at the floor while my brother was drinking. Nobody looks at the floor. I have been wondering since what else you notice."''',
         c("Continue", "yes")),
     nt("why_dress", '''"You made me walk into a war council in what your pranks had left me, with my brother's clowns braying, and you killed me before the braying stopped. Nobody has humiliated me that thoroughly in an age. Nobody has ever done it and then stood in front of what was left, asking to be let closer." {n}She savours it.{/n} "I want to see what else you will dare."''',
         c("Continue", "yes")),
@@ -188,13 +188,17 @@ threshold("nocticula.trickster.defeated.chair", "Beside me", '"One more question
 # The morning after the chair, delivered at the next rest before the descent.
 SCENES.append(scene("nocticula.trickster.defeated.morning", "Four crescents", "Nocticula", 6, "", [
     nar("start", '''{n}You wake before the camp does, with the taste of night-blooming flowers in your mouth and four small crescents on your shoulder, where a projection's nails had no business reaching.{/n}
-{n}On the camp table, in the dust on your maps of the rift, someone has drawn a chair at the right hand of your own. Beneath it, in a hand you have never seen and know at once: "Where I can see you." And under that, smaller, as an afterthought that is not one: "The favour stands. I have not decided on it. I am enjoying not deciding."{/n}
+{n}On the camp table, in the dust on your maps of the rift, someone has drawn a chair at the right hand of your own. Beneath it, in a hand you have never seen and know at once: "Where I can see you."{/n}
 {n}Your companions are carefully not looking at your shoulder. Outside, the Wound is waiting.{/n}''',
-        # Save-safe: choice 0 keeps its slot; the favour-paid reader with Daeran present is an appended choice.
+        # Save-safe: every choice keeps its slot (choice 0 unchanged); a paid price reads the favour under the chair.
         c("[Buckle your armour over the marks.]", forbids=(PAID,)),
-        c("[Buckle your armour over the marks.]", "daeran", requires=(PAID,), forbids=("daeran.dead", "daeran.kicked_out")),
-        c("[Buckle your armour over the marks.]", requires=(PAID, "daeran.dead")),
-        c("[Buckle your armour over the marks.]", requires=(PAID, "daeran.kicked_out"), forbids=("daeran.dead",))),
+        c("[Read the rest of the dust.]", "note_paid", requires=(PAID,), forbids=("daeran.dead", "daeran.kicked_out")),
+        c("[Read the rest of the dust.]", "note_paid_alone", requires=(PAID, "daeran.dead")),
+        c("[Read the rest of the dust.]", "note_paid_alone", requires=(PAID, "daeran.kicked_out"), forbids=("daeran.dead",))),
+    nar("note_paid", '''{n}Under it, smaller, as an afterthought that is not one: "The favour stands. I have not decided on it. I am enjoying not deciding."{/n}''',
+        c("[Buckle your armour over the marks.]", "daeran")),
+    nar("note_paid_alone", '''{n}Under it, smaller, as an afterthought that is not one: "The favour stands. I have not decided on it. I am enjoying not deciding."{/n}''',
+        c("[Buckle your armour over the marks.]")),
     nar("daeran", '''{n}Daeran reads the dust over your shoulder before you can wipe it. "An unnamed favour. To her." He sets his cup down very carefully.{/n}
 "Commander, I have signed some truly ruinous contracts in my life, and every one of them had a number in it."''',
         c("[Wipe the table.]")),
@@ -229,16 +233,22 @@ SCENES.append(scene("nocticula.trickster.palace.brothers_voice", "Is that you, b
 # --- Epilogue pages (S1). Ordered siblings; no page sets a flag or requires another page's id -----------------------
 
 # MinChapter 1, like the other routes' pages: the ending sequence alone decides when a page plays.
-def page(id, title, text, requires, forbids=(), paragraphs=(), nodes=None):
+ALIVE_AFTER = "trickster.commander_back"   # native Trickster survival or Last Call's bottle (sacrifice is overridden by it)
+
+
+def page(id, title, text, requires, forbids=(), paragraphs=(), nodes=None, living=False):
+    """living=True: the page promises a future with the Commander, so it Forbids sacrifice unless the Commander came back."""
     body = nodes or [nar("end", text, paragraphs=paragraphs)]
-    SCENES.append(scene(id, title, "Epilogue", 1, "", body, requires=requires, forbids=forbids, last=99,
-                        Relationship="nocticula"))
+    extra = dict(ForbidOverrides={"sacrifice": ALIVE_AFTER}) if living else {}
+    SCENES.append(scene(id, title, "Epilogue", 1, "", body, requires=requires,
+                        forbids=tuple(forbids) + (("sacrifice",) if living else ()), last=99,
+                        Relationship="nocticula", **extra))
 
 
 page("nocticula.trickster.defeated.epilogue", "A queen does not come back",
     '''{n}What the Abyss buried after the Council was a shadow. Nocticula let Alushinyrra wear black, let every lord of the Abyss believe the Midnight Isles were ripe, and walked out of her own funeral into a quiet she had never been allowed before.{/n}
 {n}When the Commander asked her, years later, whether she had ever meant to come back, she said a queen does not come back. She simply stops pretending to be gone.{/n}''',
-    ("trickster.ever", RETURNED), paragraphs=(
+    ("trickster.ever", RETURNED), living=True, paragraphs=(
         p("She kept the promise she had made at Threshold, and kept it the way she kept everything: jealously, "
           "expensively, and with the lamps lit. At every table the Commander sat at afterwards, the chair at the right "
           "hand was hers, and she was always in it before anyone else arrived.", requires=(SAID_YES,)),))
@@ -251,29 +261,54 @@ page("nocticula.trickster.defeated.epilogue.punchline", "The most fashionable th
 page("nocticula.trickster.defeated.epilogue.favour", "The favour",
     '''{n}The Queen of Shadows named her favour in the second spring after Threshold, in a sealed note that smelled of night-blooming flowers. Not a temple, not a war, not a soul. A chair.{/n}
 {n}The chair at the Commander's right hand, at every table the Commander would ever sit at, and nobody was to ask whose. Nobody did. The Commander paid it for the rest of a long life, and was never once sure which of them was being watched.{/n}''',
-    ("trickster.ever", PAID))   # Last Call (doc 04): add Forbids lastcall.active when the finale lands (backlog).
+    ("trickster.ever", PAID), living=True)   # Last Call (doc 04): add Forbids lastcall.active when the finale lands (backlog).
 page("nocticula.trickster.defeated.epilogue.stalemate", "Places set",
     '''{n}Twice, agents of the Lady in Shadow were found in the Commander's household: a cook who could not cook, a steward who counted the wrong things. Twice, the Commander sent them home with a joke pinned to their sleeves.{/n}
 {n}They stayed on anyway, a third and a fourth and a fifth, and after a while the household simply set places for them.{/n}''',
-    ("trickster.ever", REFUSED))
+    ("trickster.ever", REFUSED), living=True)
 page("nocticula.trickster.defeated.epilogue.unpriced", "An answer owed",
     '''{n}The Commander left Threshold without hearing her price. Nocticula did not send it after. She let it be known in Alushinyrra that the Crusade's Commander owed her an answer, and let the city decide what that meant; the city decided for her, generously, for years.{/n}''',
-    ("trickster.ever", PRIMED), forbids=(RETURNED,))
+    ("trickster.ever", PRIMED), forbids=(RETURNED,), living=True)
+page("nocticula.trickster.defeated.epilogue.unanswered", "What went down with the Commander",
+    '''{n}The Commander went down into the Wound carrying the one secret in the Abyss the Lady in Shadow could not afford loose, and did not come back up with it. The Abyss went on believing her dead. She let it.{/n}
+{n}For a year she kept the chair at her right hand empty at every table she sat at, and had anyone who asked whose it was put out of the Midnight Isles. Then she had the chair burned, and went back to being a rumour. It was the only debt she ever let go uncollected, and she never forgave the Wound for collecting it first.{/n}''',
+    ("trickster.ever", PRIMED, "sacrifice"), forbids=(ALIVE_AFTER,))
 page("nocticula.trickster.defeated.epilogue.unjoked", "Among the many",
     '''{n}After her defeat at the Council, the Lady in Shadow lay low. The Commander was among the many who believed she was dead, and among the few she let go on believing it. It is the only kindness anyone has ever been able to prove against her.{/n}''',
     ("trickster.ever", DEAD, FIGHT), forbids=(PRIMED,))
 
 # R2-6: the late commit, for a Commander who had her price and never asked the question.
+OFFER_PAGE = (c("Continue", "yes_page"),)
+WHY_LATE_PAGE = (c("Continue", "m_late", requires=(LATE,)),
+                 c("Continue", "m_floor", requires=(PRIMED_SHADOW,), forbids=(LATE,)),
+                 c("Continue", "m_dress", requires=("noct.fooled",), forbids=(LATE, PRIMED_SHADOW)),
+                 c("Continue", "m_voice", requires=(MOCKED,), forbids=(LATE, PRIMED_SHADOW, "noct.fooled")),
+                 c("Continue", "m_base", forbids=(LATE, PRIMED_SHADOW, "noct.fooled", MOCKED)))
 page("nocticula.trickster.epilogue.commit", "The chair nobody else sat in", "", ("trickster.ever", RETURNED),
-    forbids=("noct.complete", "noct.closed", DECLINED), nodes=[
-    nar("offer", '''{n}The Commander never asked the question at Threshold. Nocticula answered it anyway, the first night the Commander slept in Alushinyrra after the war, from the chair nobody else was allowed to sit in.{/n}
-"Yes. Beside me, where I can see your hands. Do not make me say it twice. I will deny it."''',
+    forbids=("noct.complete", "noct.closed", DECLINED), living=True, nodes=[
+    # Sol BEL: her test and her road-specific reason come first; the Commander may refuse on every branch. The two opening
+    # choices of the first build are retired by gating (never selectable on a page that requires RETURNED).
+    nar("offer", '''{n}The Commander never asked the question at Threshold. Nocticula asked her own instead, the first night the Commander slept in Alushinyrra after the war, from the chair nobody else was allowed to sit in.{/n}
+"Tell me why I should let a clown who knows where my shadow ends sit anywhere near me." {n}She did not wait for an answer. She had had a year to decide what it was.{/n}''',
+        c("[Cross the room to her chair.]", "crossed", forbids=(RETURNED,)),
+        c("[Make her say it twice.] \"I didn't hear you.\"", "twice", forbids=(RETURNED,)),
+        *WHY_LATE_PAGE),
+    nt("m_late", '''"You missed me at the door, and then you found me anyway, one shadow on a tent wall in a camp full of them, and put your boot on the right one. I have been wondering since what else you notice."''', *OFFER_PAGE),
+    nt("m_floor", '''"You looked at the floor while my brother was drinking. Nobody looks at the floor. I have been wondering since what else you notice."''', *OFFER_PAGE),
+    nt("m_dress", '''"You made me walk into a war council in what your pranks had left me, and you never once apologised. I have been waiting an age for someone that rude."''', *OFFER_PAGE),
+    nt("m_voice", '''"You carried my secret through my murder in my brother's voice and never spent it. I want to see what else you can carry."''', *OFFER_PAGE),
+    nt("m_base", '''"You told a queen's ghost you had killed her shadow. It was the only true thing anyone said to me that year, and you said it as a joke."''', *OFFER_PAGE),
+    nt("yes_page", '''"So. Yes. Beside me, where I can see your hands. Do not make me say it twice. I will deny it."''',
         c("[Cross the room to her chair.]", "crossed"),
-        c("[Make her say it twice.] \"I didn't hear you.\"", "twice")),
+        c("[Make her say it twice.] \"I didn't hear you.\"", "twice"),
+        c("[Leave the chair beside her empty.]", "refused_page")),
+    nar("refused_page", '''{n}The Commander did not cross the room. Nocticula watched the refusal arrive, all the way to the door, and laughed, low, the way she laughed at a card played well against her.{/n}
+"Then keep your hands where I cannot see them," she said. "I shall find out what they do anyway." The chair beside hers stayed empty for the rest of the Commander's life, and nobody else was ever allowed to sit in it.{/n}''', c()),
     nar("crossed", '''{n}She did not rise. She let the Commander come to her, all the way across a room built to make petitioners feel the distance, and watched every step of it the way she watched the Abyss: as something that would one day belong to her.{/n}
 {n}At the chair she laid one fingertip on the Commander's breastbone and held it there, not pressing, her mouth a breath away. "Kneel, or kiss me. Choose quickly. I bore easily."{/n}''',
         c("[Kiss her.]", "kissed"),
-        c("[Kneel.]", "knelt")),
+        c("[Kneel.]", "knelt"),
+        c("[Step back from the chair.]", "refused_page")),
     nar("kissed", '''{n}Her mouth was warm, which the Commander had not expected; the projection at Threshold had been cold. She pulled the Commander down into the chair and rose over them, astride, one hand flat on the Commander's chest to keep them exactly where she wanted them, and the lamps of her palace went out one by one, in no hurry at all.{/n}''', c()),
     nar("knelt", '''{n}"Better," said the Queen of Shadows, and let her robe fall open over the Commander's head like a tent. Her fingers closed in the Commander's hair, holding them exactly where she wanted them, and the lamps of her palace went out one by one, in no hurry at all.{/n}''', c()),
     nar("twice", '''{n}"You heard me," said the Lady in Shadow, and the lamps in the room dimmed, and a great many things in Alushinyrra shivered for no reason anyone could name.{/n}
@@ -285,7 +320,7 @@ page("nocticula.trickster.epilogue.commit", "The chair nobody else sat in", "", 
 ])
 page("nocticula.trickster.epilogue.declined", "Eleven years",
     '''{n}At Threshold she had told the Commander to ask again when Areelu was dead and the Commander was not. The Commander asked. She kept the Commander waiting eleven years for the answer, which was yes, and then pretended there had never been a question.{/n}''',
-    ("trickster.ever", DECLINED), forbids=("noct.complete",))
+    ("trickster.ever", DECLINED), forbids=("noct.complete",), living=True)
 
 
 # --- Reactions (05 section 3.1: exactly Daeran and Nenio) -----------------------------------------------------------
@@ -368,6 +403,16 @@ def integrate(payload):
                 s["ForbidOverrides"][FIGHT] = RETURNED
     for id in HARBOR_ONLY_ENDINGS:
         _scene(by_id, id)["Forbids"].append(SAID_YES)
+    # Sol COX: sacrifice with trickster.commander_back (native Trickster survival, or Last Call's bottle) is a living
+    # Commander. The permanent-loss pages (and their acquired copies) Forbid it; the living pages that Forbid sacrifice
+    # accept it back.
+    for s in payload["Scenes"]:
+        if s.get("Relationship") not in ("nocticula", "nocticula.acquisition") or not s["Owner"].endswith("Epilogue") or s["Id"] in ours:
+            continue
+        if "sacrifice" in s["Requires"] and ALIVE_AFTER not in s["Forbids"]:
+            s["Forbids"].append(ALIVE_AFTER)
+        elif "sacrifice" in s["Forbids"]:
+            s.setdefault("ForbidOverrides", {})["sacrifice"] = ALIVE_AFTER
 
     # NOC-02: any native answer at the audience earns the channel; the fixed pair of keys is dropped from both letters.
     line = _scene(by_id, "noct.acq.the_missing_line")
@@ -421,6 +466,36 @@ threshold("nocticula.trickster.court.vellexia", "Black for Vellexia", "\"Lady Ve
        "\"Then a little bird told me my first lady spent those months as a piece of furniture in a mortal's house, and came "
        "out of it in a very bad temper.\" " + COURT_UNDECIDED, *COURT_CHOICES),
 ], ("trickster.ever", V_PRESUMED), (SECRET_VELLEXIA, FIGHT), T_DOING_WELL, ForbidOverrides={FIGHT: RETURNED})
+
+# Horzalah (ledger row 11, the fourth court): Nocticula's own read of what her city's Guild did with the Commander's ear
+# (horzalah_trickster guild.kept sets horzalah.trickster.returned). Canon: Yozz ran "my city's assassins' guild" (Demon-path
+# Nocticula_C3/Cue_0014, the lore holds on every path); Baphomet did not answer his daughter (Prison_Baph/Cue_0122). The
+# variants read Horzalah's own outcome flags in text only; nothing here gates on her closure.
+H_RETURNED = "horzalah.trickster.returned"
+H_FREE = "horzalah.trickster.left_free"
+H_THREAT = "horzalah.trickster.threatened"
+SECRET_HORZALAH = "nocticula.trickster.secret_known.horzalah"
+COURT_H_CHOICES = (c('"She would rather have a knife than your patience, Lady."', flags=(SECRET_HORZALAH,)),
+                   c("[Say nothing.]", abort=True))
+COURT_H = ('"I heard. Yozz\'s girl walked into my city\'s Guild in the middle of the evening, pinned a box over your '
+           'contract and untied the ribbon, and my assassins passed a piece of you from hand to hand and bowed to it." '
+           '{n}The projection\'s smile is slow.{/n} "Her father said nothing. He never does, for her. One day I will collect '
+           'the rent on that silence from him."')
+
+threshold("nocticula.trickster.court.horzalah", "An ear in my city", '"The Guild in your city has a new story, Lady."', [
+    nar("start", "{n}At the word Guild the projection's attention sharpens, and the fires of Threshold lean in to listen.{/n}",
+        c("Continue", "threat", requires=(H_THREAT,)),
+        c("Continue", "free", requires=(H_FREE,), forbids=(H_THREAT,)),
+        c("Continue", "kept", forbids=(H_THREAT, H_FREE))),
+    nt("kept", COURT_H + "\n\"From her I will collect nothing. A guildmaster who can make my knives kneel to a clown\'s ear is "
+       "worth more to me alive, and owing her chair to you, than she would be owing it to me. Debts to you are so much more "
+       "amusing to watch.\"", *COURT_H_CHOICES),
+    nt("free", COURT_H + "\n\"And then you gave her the door, she tells people. She has not stopped telling people. A "
+       "Baphomet\'s brat who cannot stop saying the word door is either in love or planning a murder, and in my city those are "
+       "the same errand.\"", *COURT_H_CHOICES),
+    nt("threat", COURT_H + "\n{n}Her eyes go to the scar on your cheek.{/n} \"And then you put a knife to her lie, and she opened "
+       "your face for it. Good. I would have taken the other ear.\"", *COURT_H_CHOICES),
+], ("trickster.ever", H_RETURNED), (SECRET_HORZALAH, FIGHT), T_DOING_WELL, ForbidOverrides={FIGHT: RETURNED})
 
 # b6/b7 belong before the favour page (b8) in the spec's sibling order: appended here, then moved into place.
 page("nocticula.trickster.defeated.epilogue.mirror", "A season as furniture",

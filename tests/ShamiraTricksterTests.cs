@@ -127,7 +127,7 @@ internal static class ShamiraTricksterTests
               && awning.RequiresAnyGroups[0].Contains("fool_king.gone"),
             "Trk_Shamira_Presence: her presence is not at the King's corner table with the awning as its fallback.");
         var hubScenes = own.Where(s => s.InteractionHub == "shamira.presence").ToArray();
-        check(hubScenes.Select(s => s.Id).OrderBy(x => x).SequenceEqual(new[] { P + "after.city", P + "after.night_alone", P + "after.throne", P + "after.visit", P + "harem" }.OrderBy(x => x))
+        check(hubScenes.Select(s => s.Id).OrderBy(x => x).SequenceEqual(new[] { P + "after.city", P + "after.night_alone", P + "after.throne", P + "after.visit", P + "harem", P + "mind.barracks_after" }.OrderBy(x => x))
               && hubScenes.All(s => !Rules.IsRemote(s) && s.Entry.Length > 0 && s.ContactUnit == Unit && s.Areas.SequenceEqual(new[] { Drezen })),
             "Trk_Shamira_Presence: the courtship after the waking is not played at her table.");
         foreach (var s in hubScenes)
@@ -143,7 +143,7 @@ internal static class ShamiraTricksterTests
         var read = S(P + "ch4.read");
         var bird = S(P + "ch4.bird");
         foreach (var s in new[] { read, bird })
-            check(s.AnswerLists.SequenceEqual(new[] { Hub4 }) && s.NativeReturnCue == Hub4Return && s.Chapters.SequenceEqual(new[] { 4 })
+            check(s.AnswerLists.SequenceEqual(new[] { Hub4 }) && (s == bird ? s.ReturnToList && s.NativeReturnCue == null : s.NativeReturnCue == Hub4Return) && s.Chapters.SequenceEqual(new[] { 4 })
                   && s.Forbids.Contains(Killed) && s.Forbids.Contains("shamira.no_more_ch4") && !Rules.IsRemote(s),
                 "A Chapter 4 beat is not on her own audience list, behind her death and the closed audience: " + s.Id);
         var setup = S(P + "killed.setup");
@@ -163,7 +163,7 @@ internal static class ShamiraTricksterTests
         {
             var keys = s.Requires.Concat(s.Forbids).Concat(s.RequiresAnyGroups.SelectMany(g => g))
                 .Concat(s.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Requires.Concat(c.Forbids).Concat(c.Set)));
-            check(!keys.Any(k => k.StartsWith("lastcall.", StringComparison.Ordinal) || k.StartsWith("trickster.lastcall.", StringComparison.Ordinal))
+            check(!keys.Any(k => k != "lastcall.active" && k.StartsWith("lastcall.", StringComparison.Ordinal) || k.StartsWith("trickster.lastcall.", StringComparison.Ordinal))
                   && s.Nodes.SelectMany(n => n.Choices).All(c => c.RemoveItem != SoulJar),
                 "Trk_Shamira_FlaskUntouched: a Shamira scene reads, fills or removes Areelu's flask: " + s.Id);
         }
@@ -179,8 +179,8 @@ internal static class ShamiraTricksterTests
             "Trk_Shamira_Seed: hiding under the barley is not the Trickster's answer.");
         check(Avail(bird, Later(story, hid, 9)), "Trk_Shamira_Seed: the bird does not follow the open mind.");
         var taste = S(P + "ch4.first_taste");
-        check(Avail(taste, Later(story, Through(bird, Later(story, hid, 9), "chair", 0).First(), 13))
-              && Avail(taste, Later(story, Through(bird, Later(story, hid, 9), "chair", 1).First(), 13)),
+        check(Through(bird, Later(story, hid, 9), "chair", 0).All(r => r.Has(P + "tasted")) && Through(bird, Later(story, hid, 9), "chair", 1).All(r => r.Has(P + "tasted"))
+              && !Avail(taste, Later(story, Through(bird, Later(story, hid, 9), "chair", 0).First(), 13)) && !Rules.IsRemote(bird),
             "Trk_Shamira_Seed: she does not walk the dream, invited or not.");
         check(!Avail(read, World(story, 4, "trickster", "trickster.ever", "shamira.no_more_ch4")),
             "Trk_Shamira_Seed: her audience is offered after it closed natively.");
@@ -188,9 +188,14 @@ internal static class ShamiraTricksterTests
         // Trk_Shamira_Door: the door she knows, left open (earned natively or by the open mind), or opened blind.
         var known = World(story, 5, "trickster", "trickster.ever", "shamira.plan_known", "shamira.let_in.submitted");
         check(known.Has(P + "let_in") && Avail(setup, known), "Trk_Shamira_Door: submitting to her in her Harem does not count as letting her in.");
-        var primed = Through(setup, known, "her_words", 0).First();
+        var primed = Through(setup, known, "her_native", 0).First();
+        // Sol CAN: only the authored open mind heard her explain the Abyss's mouth; native let-ins guess it.
+        var seenNative = new HashSet<string>(); Program.Walk(setup, known, (id, _) => seenNative.Add(id));
+        var seenRead = new HashSet<string>(); Program.Walk(setup, World(story, 5, "trickster", "trickster.ever", "shamira.plan_known", P + "read"), (id, _) => seenRead.Add(id));
+        check(seenNative.Contains("her_native") && !seenNative.Contains("her_words") && seenRead.Contains("her_words") && !seenRead.Contains("her_native"),
+            "Trk_Shamira_Door: a native let-in recalls the open mind's lesson, or the open mind does not.");
         check(primed.Has(Primed) && !primed.Has(P + "cost.opened_blind") && !primed.Has(Returned), "Trk_Shamira_Door: the known door is not left open.");
-        check(Ch(setup, "her_words", 1).Abort && Ch(setup, "never_in", 1).Abort, "Trk_Shamira_Door: the question cannot be let go.");
+        check(Ch(setup, "her_words", 1).Abort && Ch(setup, "never_in", 1).Abort && Ch(setup, "her_native", 1).Abort, "Trk_Shamira_Door: the question cannot be let go.");
         var never = World(story, 5, "trickster", "trickster.ever", "shamira.plan_known", "shamira.threw_out");
         var blind = Through(setup, never, "never_in", 0).First();
         check(blind.Has(Primed) && blind.Has(P + "cost.opened_blind"), "Trk_Shamira_Blind: a Commander who never let her in cannot open the door blind.");
@@ -240,9 +245,11 @@ internal static class ShamiraTricksterTests
         var fuel = S(P + "mind.fuel");
         var waking = S(P + "mind.waking");
         check(Avail(night, Later(story, heard, 13)) && !Avail(heist, Later(story, heard, 13)), "The first night does not come first.");
+        check(night.Nodes.Any(n => n.Id == "wt_start") && night.Nodes.Any(n => n.Id == "h_start"), "The war council and the theft are not folded into the first night's page.");
         var n1 = Through(night, Later(story, heard, 13), "want", 0).First();
         check(n1.Has(P + "first_night") && n1.Has(P + "want.steward"), "The first night does not ask what she was kept for.");
-        check(Avail(heist, Later(story, n1, 25)) && Avail(dream, Later(story, n1, 25)), "The theft or the second night does not follow the first.");
+        check(n1.Has(P + "shell") && !Avail(heist, Later(story, n1, 25)) && !Avail(S(P + "mind.war_table"), Later(story, n1, 25)) && Avail(dream, Later(story, n1, 25)),
+            "The theft is not on the first night's page, or the second night does not follow.");
         var checks = heist.Nodes.SelectMany(n => n.Choices).Where(c => c.Check != null).Select(c => c.Check!).ToArray();
         check(checks.Count(k => k.Skill == "SkillStealth") == 3 && checks.Count(k => k.Skill == "SkillThievery") == 1
               && checks.Count(k => k.Skill == "CheckBluff") == 1
@@ -255,7 +262,11 @@ internal static class ShamiraTricksterTests
         check(stolen.All(r => r.Has(P + "shell")) && stolen.Any(r => r.Has(P + "cost.shell_torn")) && stolen.Any(r => r.Has(P + "cost.ramisa_story"))
               && stolen.Any(r => r.Has(P + "ramisa_fooled")), "Every road through the vats does not end with a shell, or a cost is missing.");
         var alone = World(story, 5, "trickster", "trickster.ever", Primed, P + "veil");
-        check(Avail(heistAlone, Later(story, alone, 13)) && heistAlone.Forbids.Contains(Killed) && heistAlone.Kind == "event",
+        Snapshot With(Snapshot s, string f) { var t = Program.Copy(s); t.Flags.Add(f); return t; }
+        var planned = World(story, 5, "trickster", "trickster.ever", "shamira.plan_known", "shamira.let_in.submitted");
+        var alonePaths = Program.WalkVia(setup, planned, "veil", 1);
+        check(!Avail(heistAlone, Later(story, With(alone, "shamira.plan_known"), 13)) && !Avail(heistAlone, Later(story, planned, 13)) && alonePaths.Count > 0
+              && alonePaths.All(r => r.Has(P + "shell") && r.Has(P + "veil")) && alonePaths.Any(r => r.Has(P + "shell_chosen_alone")),
             "Trk_Shamira_Prepared: the body cannot be stolen before the kill, on Socothbenoth's veil.");
         var d2 = Through(dream, Later(story, n1, 25), "choice", 0).First();
         check(d2.Has(P + "dreamed") && d2.Has(P + "dream_burned") && Through(dream, Later(story, n1, 25), "choice", 1).First().Has(P + "dream_kept"),
@@ -263,7 +274,8 @@ internal static class ShamiraTricksterTests
         var withShell = Later(story, d2, 25);
         withShell.Flags.Add(P + "shell");
         withShell.Times[P + "shell"] = d2.Hour;
-        check(Avail(fuel, Later(story, withShell, 25)) && !Avail(fuel, Later(story, d2, 25)), "The fuel does not wait for the body.");
+        check(d2.Has(P + "almost") && d2.Has(P + "fuel_set") && d2.Has(Embodied) && d2.Has(P + "first_company") && !Avail(fuel, Later(story, d2, 25))
+              && !Avail(S(P + "mind.almost"), Later(story, d2, 25)), "The third night, the fuel and the waking are not folded into the dreams' page.");
         var fw = Later(story, withShell, 25);
         var mineOnly = Through(fuel, fw, "choose", 0).First();
         var barracks = Through(fuel, fw, "choose", 1).First();
@@ -281,7 +293,7 @@ internal static class ShamiraTricksterTests
             "Trk_Shamira_Waking: the waking does not leave the Commander never dreaming alone.");
         check(barracks.Has(Embodied) && !Avail(waking, Later(story, mineOnly, 25)) && !Avail(S(P + "after.first_company"), Later(story, mineOnly, 25)),
             "Trk_Shamira_Waking: the folded pages are still delivered after the fuel page.");
-        check(own.Where(s => s.Id != waking.Id && s.Id != fuel.Id).SelectMany(s => s.Nodes).SelectMany(n => n.Choices).All(c => !c.Set.Contains(NeverAlone)),
+        check(own.Where(s => s.Id != waking.Id && s.Id != fuel.Id && s.Id != dream.Id).SelectMany(s => s.Nodes).SelectMany(n => n.Choices).All(c => !c.Set.Contains(NeverAlone)),
             "Something other than the waking sets the cost.");
 
         // Trk_Shamira_Commit: the game in her Harem.
@@ -327,7 +339,7 @@ internal static class ShamiraTricksterTests
         check(Avail(S(P + "after.throne"), Later(story, committed, 73)), "The throne does not follow the commit.");
         var throned = Program.Walk(S(P + "after.throne"), Later(story, committed, 73)).First();
         check(Avail(S(P + "after.night_alone"), Later(story, throned, 73)), "The night alone does not follow the throne.");
-        check(Avail(S(P + "after.favour"), Later(story, Through(harem, hw, "search", 1).First(), 73)), "The ally never pays a favour.");
+        check(Through(harem, hw, "search", 1).All(r => r.Has(P + "ally.favour")) && !Avail(S(P + "after.favour"), Later(story, Through(harem, hw, "search", 1).First(), 73)), "The ally never pays a favour, or it comes again as a page.");
         check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "game_proposed" })
               && story.Derived["shamira.harem.eligible"].Length == 2 && story.Derived.ContainsKey("shamira.harem.voice.keeps_a_harem"),
             "The late commit or the household eligibility is not declared.");
@@ -336,7 +348,7 @@ internal static class ShamiraTricksterTests
         var bottleAlone = S("trickster.lastcall.bottle.alone");
         var threshold = S("trickster.lastcall.threshold");
         var lc = new[] { "trickster", "trickster.ever", "lastcall.flask_taken", "lastcall.flask_held", "shamira.plan_known", "shamira.let_in.thought" };
-        var run = Through(setup, World(story, 5, lc), "her_words", 0).First();
+        var run = Through(setup, World(story, 5, lc), "her_native", 0).First();
         check(Avail(bottleAlone, Later(story, run, 1)), "Trk_Shamira_AllRomance: Last Call's bottle is shut by the door left open.");
         run.Flags.Add(Killed); run.Times[Killed] = run.Hour;
         run = Through(voice, Later(story, run, 1), "choose", 0).First();
@@ -373,10 +385,11 @@ internal static class ShamiraTricksterTests
               && retiredReactions.All(r => !Avail(r, World(story, 5, new[] { "trickster.ever", Returned, Heard })))
               && reactions.Except(retiredReactions).Select(r => r.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Arueshalae", "Shyka" }),
             "The live reactions are not Shyka and Arueshalae, or a retired reactor still speaks.");
-        check(pages.Length == 10 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null && c.Alignment == null))),
+        check(pages.Length == 11 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null && c.Alignment == null))),
             "The epilogue pages carry effects or are missing.");
         // The pages folded into others (05 §4.2) are never delivered on a new road; every other page opens.
-        var folded = new[] { P + "mind.council", P + "mind.her_lady", P + "mind.almost", P + "mind.waking", P + "after.first_company", P + "after.eve" };
+        var folded = new[] { P + "mind.council", P + "mind.her_lady", P + "mind.almost", P + "mind.waking", P + "after.first_company", P + "after.eve",
+                             P + "mind.heist", P + "mind.war_table", P + "mind.fuel", P + "ch4.first_taste", P + "after.favour" };
         foreach (var s in own.Where(x => Rules.IsRemote(x) && !x.TricksterDevice && x.Id != P + "mind.heist_alone" && !folded.Contains(x.Id)))
         {
             var needs = s.Requires.Concat(s.RequiresAnyGroups.Select(g => g[0])).ToArray();
@@ -409,8 +422,50 @@ internal static class ShamiraTricksterTests
         check(deliveredIds.Count > 0 && deliveredIds[0] == P + "mind.first_night" && road.Has(P + "council_heard")
               && !deliveredIds.Intersect(folded).Any() && !deliveredIds.Contains(P + "mind.council"),
             "Trk_Shamira_Delivery: the Council beat is lost to delivery order, or a folded page arrives (" + string.Join(",", deliveredIds) + ").");
-        var required = deliveredIds.Where(id => id != P + "mind.war_table" && id != P + "mind.barracks_after").ToList();
-        check(required.Count <= 4, "Trk_Shamira_Delivery: more than four Chapter 5 pages on the way to the commit (" + string.Join(",", required) + ").");
+        check(deliveredIds.Count <= 2, "Trk_Shamira_Delivery: more than two Chapter 5 pages on the way to the commit (" + string.Join(",", deliveredIds) + ").");
+        // The same cap on the letter road (her first words by letter) and the late road (she drowns), all pages counted.
+        foreach (var (roadName, startFlags, entry) in new (string, string[], string)[] {
+            ("letter", new[] { "trickster", "trickster.ever", Killed, Primed, "shamira.started", "shamira.cauldron_shown.latched" }, P + "killed.voice_letter"),
+            ("late", new[] { "trickster", "trickster.ever", Killed }, P + "killed.drowning") })
+        {
+            var r0 = World(story, 5, startFlags);
+            var got = new List<string>();
+            for (int rest = 0; rest < 30 && !r0.Has(Committed); rest++)
+            {
+                r0 = AtHerTable(story, Later(story, r0, 26));
+                foreach (var letter in Rules.MailbagArrivals(story, r0).Where(s => s.Relationship == "shamira").ToList())
+                {
+                    var outcome = Program.Walk(letter, r0).Where(r => r.Has(letter.Id) && !r.Has(Closed)).OrderByDescending(r => r.Flags.Count).FirstOrDefault();
+                    if (outcome == null) continue;
+                    got.Add(letter.Id); r0 = AtHerTable(story, outcome);
+                }
+                foreach (var beat in own.Where(s => s.InteractionHub == "shamira.presence" && Avail(s, r0)).ToList())
+                {
+                    var outcome = Program.Walk(beat, r0).Where(r => r.Has(beat.Id) && !r.Has(Closed) && !r.Has(P + "ally")).OrderByDescending(r => r.Has(Committed)).FirstOrDefault();
+                    if (outcome != null) r0 = AtHerTable(story, outcome);
+                }
+            }
+            check(r0.Has(Committed) && got.Count <= 2 && got.FirstOrDefault() == entry,
+                "Trk_Shamira_Delivery_" + roadName + ": " + string.Join(",", got) + (r0.Has(Committed) ? "" : " (no commit)"));
+        }
+
+        // Sol INT: the pages of a life after the war play only for a Commander who has one.
+        var keptPage = S(P + "epilogue.kept");
+        var mourned = S(P + "epilogue.mourned");
+        var livingEnd = new[] { "trickster.ever", Embodied, Committed };
+        check(Avail(keptPage, World(story, 6, livingEnd)) && !Avail(keptPage, World(story, 6, livingEnd.Concat(new[] { "sacrifice" }).ToArray()))
+              && Avail(keptPage, World(story, 6, livingEnd.Concat(new[] { "sacrifice", "trickster.commander_back" }).ToArray()))
+              && Avail(mourned, World(story, 6, livingEnd.Concat(new[] { "sacrifice" }).ToArray()))
+              && !Avail(mourned, World(story, 6, livingEnd.Concat(new[] { "sacrifice", "trickster.commander_back" }).ToArray())),
+            "Trk_Shamira_Survival: the surviving pages play over a death, or the dead Commander has no page.");
+
+        // Sol INT: the Harem remembers the crystals only where she took them; the awning twins stage no absent King.
+        var whereSeen = new HashSet<string>();
+        Program.Walk(harem, World(story, 5, "trickster.ever", Embodied, P + "visited", P + "game_proposed"), (id, _) => whereSeen.Add(id));
+        check(whereSeen.Contains("where_first") && !whereSeen.Contains("where_crystals"), "Trk_Shamira_Harem: a crystal interrogation is recalled that never happened.");
+        foreach (var twinScene in own.Where(s => s.InteractionHub == "shamira.presence.awning"))
+            check(!twinScene.Nodes.Any(n => n.Text.Contains("King's") || n.Text.Contains("tavern table") || n.Text.Contains("back door")),
+                "Trk_Shamira_Awning: the fallback stages the King's tavern: " + twinScene.Id);
         Console.WriteLine("PASS: Shamira Trickster (Trk_Shamira_*): the door left open or opened blind, the drowning, the vats, " + own.Count(s => !s.TricksterDevice)
             + " courtship beats, the fuel and the waking, the game and its no's, Nocticula's court, Areelu's flask left to Last Call in one run, "
             + reactions.Length + " reactions and " + pages.Length + " pages.");

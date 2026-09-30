@@ -144,12 +144,12 @@ Your new arrangement begins with a creditor, a room and a man who will lie when 
 "You omitted the most troublesome proprietor," she answers.
 You add your own name.
 "Better."
-Neris prepares a different notice. There is no guaranteed protection, no purchased favor and no promise that a reply will arrive. There is an office willing to receive a request, whose keeper must copy it before refusing it.
+Neris prepares a different notice: an office that receives requests, and a keeper who copies every one before she refuses it. Nocticula reads the copies. Nobody who writes to that office is told so.
 Nocticula receives the first ledger page before you close the room for the night. It contains the merchant's account and your correction of it. She now knows which contacts you obtained and which escaped.
 The false flourish stays in a sealed drawer. Using it outside this one forwarding arrangement would contradict the signed undertaking she holds.''', c('Retain the limited pattern and give her the first required report.', flags=f("the_paid_address_done", "concession_delivered", "pattern_retained", "first_report_delivered"))),
     page("withdraw", "Narrator", '''{n}You tell Nocticula that the remaining inquiries will go through your officers. Her answering mark lifts from the paper.
 "Keep your undertaking," she writes before the last line vanishes. "I have mine."
-The correspondence ends. The signature you gave her does not follow it out of the world.{/n}''', c('Close the channel without pretending to recover the signed undertaking.')),
+The correspondence ends. The signature you gave her does not follow it out of the world.{/n}''', c('Close the channel. She keeps your signature.')),
 ])
 
 
@@ -287,11 +287,11 @@ You fold down the corner of the sheet before it can brush the lamp. The mark wai
 "While keeping it private suits me. You gave it because it was worth something. Do not now ask me to make it worthless as proof of affection."
 "I could be asked why I placed my name in your keeping."
 "You might answer. I should be interested to hear which part you omit."
-You put your palm beside the wax. She cannot see the movement through the closed sheet; it helps you resist reaching for a reassurance she has not offered.
+You put your palm flat beside the wax. The mark on the paper stops moving, as if it had felt the weight of your hand and is deciding whether to bite.
 You tell her that the same applies to you. An enemy might one day make it useful to say that she answered.
 "Then give an accurate account," she writes. "Inaccurate ones attract tedious corrections."
-She has offered company without making either of you safe. You still have the blank beneath her invitation. There is room for an answer and no completed sentence waiting to be signed.''',
-         c('I accept. Private invitations, chosen answers, and the political consequences we have actually earned. I want you as well as the argument.', "accept", flags=f("renewed_agreement", "personal_risk_accepted")),
+Beneath her last line she has left a blank the width of a signature, and the wax beside it has gone warm, the way skin goes warm.''',
+         c('I accept. The letters, the danger that comes with them, and you. Mostly you.', "accept", flags=f("renewed_agreement", "personal_risk_accepted")),
          c('I will keep the concession, but I do not want this personal arrangement. Close the private channel.', "decline", flags=f("personal_declined", "closed"))),
     page("accept", "Nocticula", '''"An ambitious evening. We shall see how much of it you can sustain."
 {n}Below your answer she writes her own name. The answering mark crosses its last letter and returns to the broken edge of the wax. It has sealed this page, not joined the two halves.{/n}

@@ -59,6 +59,8 @@ WILLODUS = "herrax.willodus_told"               # SeenCues Cue_0299 (node varian
 ASKED_KILL = "herrax.asked_kill_chivarro"       # SeenCues Cue_0045_KillChivarro (trickster_world)
 TOLD_DEAD = "herrax.told_chivarro_dead"         # SelectedAnswers Answer_0046 (the Commander's "Chivarro is dead.")
 HAGGLED = "herrax.haggled"                      # Etudes HerraxaSlaveHaggling (node variant, Chapter 4 only)
+SENT = "herrax.aasimars_sent"                   # SelectedAnswers MeatSlaver_dialogue/Answer_0039 2bfaec78: the Commander sent
+                                                # Dyunk's aasimar girls "to the Ten Thousand Delights" (starts AasimarsBrothel)
 
 # The chain.
 PRIMED = H + "primed"                           # she set the night; the Commander agreed to sell it
@@ -91,7 +93,8 @@ MC_DEPOSIT = MC + "chivarro_deposit"
 MC_FAVOR = MC + "cost.herrax_favor"
 MC_OWNED = MC + "chivarro_owned"
 
-SELECTED_ANSWERS = {CONFESSED: "c60613dca14bf0943a428246cf51bb3a", CLIENT: "33447e2dcba529f4ba678688db744411"}
+SELECTED_ANSWERS = {CONFESSED: "c60613dca14bf0943a428246cf51bb3a", CLIENT: "33447e2dcba529f4ba678688db744411",
+                    SENT: "2bfaec7837a9a4a40a43e73f06b3cf51"}
 SEEN_CUES = {WILLODUS: ["2e9aa440f006fc44ba3e34bf1a28de91"],
              "herrax.sermon_heard": ["2948da80165901a4ea1078f5ec441af3"],    # Cue_0321 (Arueshalae in her hall; variant)
              "herrax.sosiel_admired": ["e56632b9824273d4e89804db52ad7210"]}  # Cue_0303 (Sosiel on her scars; variant)
@@ -303,7 +306,7 @@ hall(H + "madam.the_night", "The night", '"Is it time?"', [
 {n}To you, lower, while the boys drag him out:{/n} "You gave the knife back. Most people keep a knife they're handed, lover. They can't help it."''',
        *AFTER_CUT),
     nar("stayed", '''{n}She takes the knife back from you, since you do not use it, and steps down to Rokhorn with it raised, and your hand closes on her wrist.{/n}
-{n}The hall goes silent the way a hall goes silent before a fight. She is stronger than you, and you both know it; she could tear free and open your face instead of his, and half the house is waiting to see her do it. She doesn't move. She looks at your hand on her wrist, in her own hall, in front of everyone.{/n}
+{n}The hall goes silent the way a hall goes silent before a fight. Along the walls a dozen of her boys have come off the plaster with their knives out, and one word from her would bring every one of them down on you; half the house is waiting to hear her say it. She doesn't say it. She looks at your hand on her wrist, in her own hall, in front of everyone.{/n}
 {n}Then she opens her fingers, and the knife drops into your palm.{/n}''',
        c("Continue", "stayed2")),
     hx("stayed2", '''"Let him go." {n}The boys let him go. Rokhorn gets up with his face whole and doesn't laugh; he's not fool enough to laugh now. He goes out of the hall fast.{/n}
@@ -571,22 +574,64 @@ Come in person. Not with a coin. You'll have to reach. H."''',
 
 # --- 7. The one discovery (ledger 05 row 13): the woman she asked the Commander to finish is alive, at the Commander's side.
 
-letter(H + "chivarro_seen", "An unfinished request", [
-    hl("start", '''{n}Rokhorn brings the letter, with the smile he always brings to your door.{/n}
-"Rokhorn had a drink in Drezen, lover. At a table I'm told is yours, with a lilitu in borrowed wool and a voice like velvet, who told him the Delights' wine had gone off since she left.
-I asked you for her. 'Can you take care of her for me, my love?' And here she is, taken care of, in your city, drinking your wine. I don't say you lied. You never said you would. But I asked, and my gratitude would have known no bounds, and instead I have this letter to write." {n}The ink presses harder here.{/n}
-"I don't want her dead any more; I have her chair. I want her out of my house, and out of my business, forever. Give me that."''',
-       c('"She stays out of your house and out of your business. You have my word."', "kept_out", flags=(CONTRACT, KEPT_OUT)),
-       c('"She goes where she likes. So do I."', "stood", flags=(CONTRACT, STOOD), alignment=("Chaotic", 1))),
-    hl("kept_out", '''{n}The reply comes three weeks later, one line in the round hand:{/n} "Your word, then. I'll take it the way I take a stranger's coin, lover: I'll bite it first. If she sets one foot on my stairs, I'll finish what you didn't, and send you the bill."''',
-       c("Continue")),
-    hl("stood", '''{n}The reply comes three weeks later, one line in the round hand, and the pen has gone through the paper once:{/n} "Then I'll keep a knife for her the way I keep a room for you. Both of them ready. Neither of them used, if you're clever."''',
-       c("Continue"))],
-    # Chapter 5 carries one Herrax letter on any branch (05 §4.2): the discovery rides inside whichever route letter is
-    # sent (DISCOVERY below), and this standalone page stays only for a Commander who never received one.
-    requires=(STARTED, ASKED_KILL), forbids=(CONTRACT, MC_DEPOSIT, MC_FAVOR, H + "late.next_move", H + "owed.night",
-                                              "herrax.letters.the_courier", COMMITTED), delay=24,
-    RequiresAnyGroups=[[MC_REUNITED, MC_RETURNED]], optional=True)
+# Physical since the Q4 Sol pass: after the one Chapter 5 letter (whichever was sent) Rokhorn stays in Drezen, drinking at
+# the Fool King's bar (front of the King, 2.5 m: Eliandra left 2.5 and Shamira right 2.5 are 3.5 m away; the tiefling
+# trader's left side when the King is gone or cannot be found). He is there only while the discovery is pending: Chivarro
+# alive at the Commander's side, Herrax's request on record, no answer yet, no sale. The letters still carry the discovery
+# when Chivarro is already back when they arrive; this scene carries it when she comes back later. Spawn-copy of his own
+# unit (no dialog of its own) with a click-to-talk hub (ERRATA, Presence.Dialog "hub").
+DREZEN = "2570015799edf594daf2f076f2f975d8"
+FOOL_KING = "cc50a88bbd8dd3e4da066d33d14fdfc8"
+TIEFLING = "23eabf5b6364d4a4e86202dc5d27600b"   # Vendor_Tiefling (the lower town; Terendelev front, Galfrey's stall right, Mielarah behind)
+ROK_HUB = "herrax.presence.rokhorn"
+ROK_HUB_ALT = "herrax.presence.rokhorn_stall"
+ROK_FAILED = ROK_HUB + ".failed"
+KING_GONE = "fool_king.gone"
+LETTER_SENT = [H + "late.next_move", H + "owed.night", "herrax.letters.the_courier"]
+PENDING = [[MC_REUNITED, MC_RETURNED], LETTER_SENT]
+ROK_FORBIDS = [CLOSED, CONTRACT, MC_DEPOSIT, MC_FAVOR]
+PRESENCES = {
+    ROK_HUB: dict(Unit=ROK_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=FOOL_KING, Side="front", Distance=2.5),
+                  Requires=["trickster.ever", STARTED, ASKED_KILL], Forbids=ROK_FORBIDS + [ROK_FAILED, KING_GONE],
+                  RequiresAnyGroups=[list(g) for g in PENDING], MinChapter=5, MaxChapter=5, AnswerLists=[], Dialog="hub",
+                  Greeting=("{n}Rokhorn has the whole end of the King's bar to himself. The regulars have decided, without "
+                            "discussing it, that a bare-chested incubus in a cloak grey with Worldwound ash is best left the "
+                            "far end of anything. He raises his cup to you with two claws.{/n}")),
+    ROK_HUB_ALT: dict(Unit=ROK_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TIEFLING, Side="left", Distance=2.5),
+                      Requires=["trickster.ever", STARTED, ASKED_KILL], Forbids=list(ROK_FORBIDS),
+                      RequiresAnyGroups=[list(g) for g in PENDING] + [[ROK_FAILED, KING_GONE]], MinChapter=5, MaxChapter=5,
+                      AnswerLists=[], Dialog="hub",
+                      Greeting=("{n}Rokhorn is leaning on the tiefling trader's stall in the lower town, turning a string of "
+                                "cheap glass beads through his claws as if pricing them for a girl he dislikes. The trader has "
+                                "stopped trying to sell him anything.{/n}")),
+}
+DISCOVERY_WHERE = {
+    ROK_HUB: "{n}He has been drinking the King's wine for a week, waiting on your answers, because he was told to wait. Tonight he is not smiling.{/n}",
+    ROK_HUB_ALT: "{n}He has been loitering in your lower town for a week, waiting on your answers, because he was told to wait. Tonight he is not smiling.{/n}",
+}
+
+
+def _discovery_scene(hub, suffix):
+    twin = H + "chivarro_seen" + ("_stall" if not suffix else "")
+    groups = [list(g) for g in PENDING] + ([[ROK_FAILED, KING_GONE]] if suffix else [])
+    SCENES.append(scene(H + "chivarro_seen" + suffix, "An unfinished request", "Herrax", 5,
+                        '"Why are you still in Drezen, Rokhorn?"', [
+        rl("start", DISCOVERY_WHERE[hub] + '''
+"I saw who came in with you, hot stuff." {n}He tips his cup toward the door.{/n} "Chivarro. In borrowed wool, drinking your wine, telling your cook the Delights' vintages have gone off since she left. My mistress asked you for that one. 'Can you take care of her for me, my love?' I was standing behind the dais when she said it. And here she is. Taken care of."
+"I don't say you lied. Neither will she. You never said you would. But she asked, and her gratitude would have known no bounds, and now I'm to carry home your answer instead." {n}He puts the cup down.{/n} "She doesn't want the lilitu dead any more; she has the chair. She wants her out of the house, and out of the business, forever. What do I tell her?"''',
+           c('"She stays out of your mistress\'s house and out of her business. She has my word."', "kept_out", flags=(CONTRACT, KEPT_OUT)),
+           c('"She goes where she likes. So do I."', "stood", flags=(CONTRACT, STOOD), alignment=("Chaotic", 1))),
+        hl("kept_out", '''{n}Rokhorn leaves the city that night. The reply comes three weeks later, by another courier, one line in the round hand:{/n} "Your word, then. I'll take it the way I take a stranger's coin, lover: I'll bite it first. If she sets one foot on my stairs, I'll finish what you didn't, and send you the bill."''',
+           c("Continue")),
+        hl("stood", '''{n}Rokhorn leaves the city that night. The reply comes three weeks later, by another courier, one line in the round hand, and the pen has gone through the paper once:{/n} "Then I'll keep a knife for her the way I keep a room for you. Both of them ready. Neither of them used, if you're clever."''',
+           c("Continue"))],
+        requires=("trickster.ever", STARTED, ASKED_KILL), forbids=(CLOSED, CONTRACT, MC_DEPOSIT, MC_FAVOR, twin), delay=0,
+        last=5, optional=True, Relationship=REL, Chapters=[5], Areas=[DREZEN], ContactUnit=ROK_UNIT, InteractionHub=hub,
+        RequiresAnyGroups=groups))
+
+
+_discovery_scene(ROK_HUB, "")
+_discovery_scene(ROK_HUB_ALT, "_stall")
 
 
 # --- 8. Epilogue pages (Owner HerraxEpilogue; appended in authored order; no effects). ---------------------------------
@@ -657,11 +702,18 @@ ARUESHALAE_HUB = "03ebad9587cbea0438d901a0f8df44f1"   # CompanionDialogues/Arues
 REGILL_HUB = "2366a8db6481070439fee222c0c52e45"       # CompanionDialogues/Regill/AnswersList_0002
 WOLJIF_HUB = "e41585da330233143b34ef64d7d62d69"       # CompanionDialogues/Woljif/AnswersList_0003
 
-SCENES.append(reaction("Arueshalae", H + "react.arueshalae_morning", ("trickster.ever", MORNING),
+SCENES.append(reaction("Arueshalae", H + "react.arueshalae_morning", ("trickster.ever", MORNING, "herrax.sermon_heard"),
     '''{n}Arueshalae has her arms wrapped round herself, though it isn't cold.{/n}
 "I lived in that house. Years. I told you what it is, standing in her hall: pain, filth and lies. The pleasures leave scabs." {n}She makes herself look at you.{/n}
 "And you slept on the madam's dais, and the man she cut carried you breakfast with the stitches still wet, and the whole house watched him do it. That's not a love story in the Delights. That's a lesson in who owns whom." {n}Quieter:{/n} "I hope you know which one you were in."''',
     answer_list=ARUESHALAE_HUB, chapter=4, last=5, entry='"You\'re very quiet this morning."', portrait="Arueshalae", **AR_GUARD))
+
+SCENES.append(reaction("Arueshalae", H + "react.arueshalae_morning_unheard", ("trickster.ever", MORNING),
+    '''{n}Arueshalae has her arms wrapped round herself, though it isn't cold.{/n}
+"I lived in that house. Years. Before her time on the dais, under Chivarro. I know what it sells: pain, filth and lies, and the pleasures leave scabs." {n}She makes herself look at you.{/n}
+"And you slept on the madam's dais, and the man she cut carried you breakfast with the stitches still wet, and the whole house watched him do it. That's not a love story in the Delights. That's a lesson in who owns whom." {n}Quieter:{/n} "I hope you know which one you were in."''',
+    answer_list=ARUESHALAE_HUB, chapter=4, last=5, entry='"You\'re very quiet this morning."', portrait="Arueshalae",
+    **dict(AR_GUARD, forbids=(*AR_GUARD["forbids"], "herrax.sermon_heard"))))
 
 SCENES.append(reaction("Arueshalae", H + "react.arueshalae_knife", ("trickster.ever", KNIFE_TAKEN),
     '''"You cut his face because she told you where." {n}Arueshalae's voice is very level.{/n}
@@ -707,6 +759,11 @@ def integrate(payload):
     _bind(payload, "SelectedAnswers", SELECTED_ANSWERS)
     _bind(payload, "SeenCues", SEEN_CUES)
     _bind(payload, "InventoryItems", INVENTORY)
+    for key, value in PRESENCES.items():
+        have = payload.setdefault("Presences", {}).get(key)
+        if have is not None and have != value:
+            raise ValueError("Conflicting presence: " + key)
+        payload["Presences"][key] = dict(value)
     items = payload.setdefault("RemovableItems", [])
     if COIN not in items:
         items.append(COIN)

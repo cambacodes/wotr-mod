@@ -63,7 +63,7 @@ The empty coast acquires one sharp rock. You ask whether it represents you.
 "Frequently. You possess an unfortunate gift for finding reasons to dislike a privilege after making use of it."
 You ask whether this harbor is another installment of the older price.
 "No. If I ask you for something concerning the Worldwound, I will not disguise it as a discussion of ropes. You are perfectly capable of disappointing me in more than one matter. I prefer to know which we are discussing."
-You leave the earlier terms written in your own account. She neither tears them out nor offers to forget them for the pleasure of another evening.''', c('Preserve the existing terms and ask about the separate harbor work.', "politics", flags=f("history_prior"))),
+You leave the earlier terms written in your own account. When the sheet comes back, she has underlined them, twice, in a darker ink.''', c('Preserve the existing terms and ask about the separate harbor work.', "politics", flags=f("history_prior"))),
     p("politics", "Commander", '''You ask what she expects when your ambitions reach beyond a private trade route.
 "I expect you to remember that my city is not a convenient collection of pieces for you to rearrange."
 "I could say the same of my world."
@@ -172,12 +172,12 @@ You put the letter down, laughing. When you pick it up again she has added a que
     p("closure", "Nocticula", '''"Nor will your interest in the passengers purchase my indifference to what they found."
 "I would find you less interesting if you were indifferent to a profitable mystery."
 "Be careful. You are making it difficult for me to charge you for my patience."
-She asks whether you want your first advice to concern the passengers' safety or the means of securing the passage. She has not offered enough of the case to make either answer a plan.
-You tell her which question you intend to ask first. She will still decide what to reveal, and you will still have to hear the facts before proposing a solution.''', c('Choose the first question without pretending it settles the harbor.', "purpose")),
+She asks whether you want your first advice to concern the passengers' safety or the means of securing the passage, and holds back the rest of the case the way a card player holds back the last trick.
+You tell her which question you mean to ask first. Her answering mark curls on the page, amused, and gives you nothing more.''', c('Choose the first question.', "purpose")),
     p("unagreed", "Nocticula", '''"Good. I have declined far more impressive attempts to make an acquaintance sound like an alliance."
 "You would dislike finding your name on something you had not examined."
 "I would dislike finding it there unsuccessfully. Do not omit the more expensive possibility merely because you disapprove of it."
-She has not endorsed a crossroads or named her price for your strongest possible future. You copy that answer beside the proposal, where neither of you can later describe the silence as agreement.
+She has endorsed nothing and named no price. You copy her answer beside the proposal, and the mark follows your pen along the line with a patience that suggests she is learning your hand for later use.
 "The harbor," she writes. "Show me an ambition which can bear being questioned while it is still small enough to inspect."''', c('Choose what you would investigate first.', "purpose")),
     p("purpose", "Commander", '''You could begin by asking whom the trade leaves behind. You could begin by asking who is foolish enough to profit from a road under Nocticula's gaze without sharing it with her.
 The two questions may lead to the same person. They will not flatter that person in the same way.
@@ -187,17 +187,17 @@ Nocticula has left space beneath her unfinished drawing. This time she means you
     p("people", "Nocticula", '''"You have chosen the answer most likely to make me listen to an inconvenient witness."
 "You have chosen the adviser most likely to find one."
 "Yes. I am attempting to remember why I considered this an advantage."
-She writes that she will retain the accounts of missing and returned travelers for the first discussion. She will not promise to regard every passenger as innocent, or every dangerous passage as something that ought to be destroyed.
-You accept the distinction. She has agreed to bring the evidence, not to let your preferred conclusion sit in judgment before it arrives.''', c('Keep the request for the travelers\' accounts in the invitation.', "invitation")),
+She writes that she will bring the accounts of the missing and the returned. Some of them, she adds, lied to her agents, and she has not yet decided what a liar costs in her harbor.
+She underlines the word liar.''', c('Keep the request for the travelers\' accounts in the invitation.', "invitation")),
     p("profit", "Nocticula", '''"You expect to be paid before discovering whether your advice is worth taking?"
 "I expect to be heard before you decide that my only reward should be proximity to you."
 "An ambitious complaint from a man who requested precisely that."
 You admit the difficulty. It does not make the two questions identical.
-She agrees to discuss a specific return for a useful result when you know what the route can do. She promises neither ownership nor a share merely for appearing.
-"Bring the appetite," she writes. "We shall see whether it develops manners when the thing it wants belongs to somebody who can refuse it."''', c('Keep payment open for an actual result rather than an invented entitlement.', "invitation")),
+She agrees to name a return for a useful result once you know what the route can do. For appearing, she writes, you have already been paid: she has let you watch her work.
+"Bring the appetite," she writes. "We shall see whether it develops manners when the thing it wants belongs to somebody who can refuse it."''', c('Keep payment open until there is a result to pay for.', "invitation")),
     p("invitation", "Nocticula", '''"Then I will show you the quay."
 You ask whether she is offering further hosted meetings through the same mark.
-"When you choose to sleep with the answering sheet beside you. Put it away when you want a night of your own. In the room, you may ask to leave as you did before. I will hear the answer even when I dislike its timing."
+"When you sleep with the answering sheet beside you. Put it in a drawer when you want your nights to yourself. I shall know which nights they are, and I shall wonder what you do with them."
 You will keep the old correspondence as well. She does not ask about your other lovers. She has never needed to ask about anything she could find out for herself.
 "And if I decline the harbor after hearing the case?"
 "Then I shall have spent an evening arranging a particularly elaborate disappointment. I do not recommend making a habit of it."

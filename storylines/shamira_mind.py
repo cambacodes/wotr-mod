@@ -141,7 +141,7 @@ page(P + "mind.her_lady", "What her lady said", [
         c("Continue", "reported", requires=(REPORTED,), forbids=(PERMITTED,)),
         c("Continue", "silent", forbids=(PERMITTED, REPORTED))),
     sh("permitted", '''{n}She finds it before you can decide whether to say it. You feel her find it.{/n}
-"You told her. Before. You walked into her chamber and told her you had come to kill me, and she said..." {n}Her voice goes very flat, reciting.{/n} "'I'll let you kill her. Or at least, I'll let you try. She covets my throne.'"
+"You told her. Before. You walked into her chamber and told her you had come to kill me, and she said..." {n}Her voice goes very flat, reciting.{/n} "'I'll let you kill her... or at least, I'll let you try.' And then, as if it were the weather: 'She covets my throne instead.'"
 {n}Silence, for so long that the lamp gutters.{/n} "She gave you leave. Before. She knew where I was, three doors away, and she gave a mortal leave, and went back to her cushions."''',
         c("Continue", "crystals", requires=(CRYSTALS,)),
         c("Continue", "throne", forbids=(CRYSTALS,))),
@@ -266,7 +266,7 @@ page(P + "mind.heist", "The hothouse", heist(True),
      requires=("trickster.ever", RETURNED, FOUND, NIGHT1), forbids=(SHELL, EMBODIED) + LIVE, delay=24)
 
 page(P + "mind.heist_alone", "The hothouse", heist(False),
-     requires=("trickster", "trickster.ever", PRIMED, VEIL), forbids=(SHELL, KILLED), delay=12, kind="event")
+     requires=("trickster", "trickster.ever", PRIMED, VEIL), forbids=(SHELL, KILLED, "shamira.plan_known"), delay=12, kind="event")
 
 
 # --- The second night: where the Commander sleeps -------------------------------------------------------------------------
@@ -579,6 +579,54 @@ _night["Nodes"] += fold(_scene(P + "mind.her_lady"), "l_", skip=("start",), exit
 for _want in ("steward", "you", "nothing"):
     _node(_night, _want)["Choices"][1]["Next"] = "l_ask"
 _node(_night, "noct")["Choices"][0]["Next"] = "l_throne"
+# Two days later, the council of war (her first use of other people's heads); the next night, the theft.
+for _in in ("in", "in_again"):
+    _node(_night, _in)["Choices"][0]["Next"] = "wt_start"
+_night["Nodes"] += fold(_scene(P + "mind.war_table"), "wt_", texts={
+    "start": '''{n}Two days later the council of war runs late. Baphomet's templars have been probing the walls for a week: a gate here, a postern there, never twice in the same place, always where the watch is thinnest. Your officers stand round the map table and argue about it with the particular bitterness of tired men who all suspect each other.{/n}
+{n}The second heartbeat behind your eyes has quickened. You have learned to feel when she is paying attention.{/n}'''})
+_after = _node(_night, "wt_after")
+_after["Choices"][0]["Next"] = "h_start"
+_after["Choices"][0]["Forbids"] = [*_after["Choices"][0]["Forbids"], SHELL]
+_after["Choices"].append(c("[Put your hand over your heart.]", requires=(SHELL,)))
+_night["Nodes"] += fold(_scene(P + "mind.heist"), "h_", texts={
+    "start": '''{n}The next night she tells you the way herself, in the small hours, as if she were giving directions to a tailor.{/n} ''' + WHISPER +
+             '''"Your wardrobe. His Council. His house. The Fleshmarkets. I have seen him use those doors a hundred times; I read them out of his head one night he came sniffing at my lady's bedchamber. He dragged a closet round my city for years and thought nobody noticed."'''})
+
+# Chapter 4: the dream that night follows "A dream is a bird" on her audience list (no Chapter 4 page for her, 05 §4.2);
+# the page returns to her list the next evening (E14b), not to the native line it used to replay.
+from storylines import shamira_trickster as _st
+_bird = next(s for s in _st.SCENES if s["Id"] == P + "ch4.bird")
+_bird.pop("NativeReturnCue", None)
+_bird["ReturnToList"] = True
+_bird["ReturnText"] = "{n}The next evening she does not mention the dream. She does not need to.{/n}"
+for _b in ("invite", "warned"):
+    _node(_bird, _b)["Choices"][0]["Next"] = "t_sleep"
+_bird["Nodes"] += fold(next(s for s in _st.SCENES if s["Id"] == P + "ch4.first_taste"), "t_", texts={
+    "sleep": '''{n}That night you dream of Kenabres again. You always dream of Kenabres: the square, the smoke, the dragon coming down out of the sky with her wings on fire, and your own legs refusing to run.{/n}
+{n}Tonight there is someone else in the square. A red-haired woman sits on the lip of the dry fountain with her legs crossed, watching the dragon fall the way a noblewoman watches a play she has paid too much for.{/n}'''})
+
+# The planner's theft before the kill is offered at Socothbenoth's briefing, when he lends the veil; the night out ends with
+# him still waiting in the Commander's quarters, which is where his native line about closets picks up.
+from storylines import shamira_trickster as _st
+_setup = next(s for s in _st.SCENES if s["Id"] == P + "killed.setup")
+_setup["Nodes"][[x["Id"] for x in _setup["Nodes"]].index("veil")]["Choices"].append(
+    c("[Go down to the Fleshmarkets tonight, before the kill.]", "ha_start", flags=(VEIL,)))
+_alone = {"Id": "alone", "Nodes": heist(False)}
+_setup["Nodes"] += fold(_alone, "ha_", texts={
+    "home": '''{n}Back up through the trapdoor. Back through Socothbenoth's side door, past the rows of listening wardrobes. Through the purple door behind his chair, through the empty Council with its candles burning for nobody, and out of your own wardrobe in Drezen, into your own quarters, a little before morning.{/n}
+{n}You hang her in the wardrobe, between your good coat and your spare cloak, and close the door on her. There is nobody in her yet. There is nobody anywhere, yet. You still have a woman to kill.{/n}
+{n}Socothbenoth is sitting on your bed, swinging his feet. He wants to hear everything. First, he says, he wants to talk about closets.{/n}'''})
+
+# The first night (with the Council, her lady, the war council and the theft) also follows her first words when they
+# come as a letter, and follows the late road, so every road has the same two pages (05 §4.2, tier B).
+from storylines import shamira_trickster as _st
+for _sid, _node_id in ((P + "killed.voice_letter", "after"), (P + "killed.drowning", "in_end")):
+    _sc = next(s for s in _st.SCENES if s["Id"] == _sid)
+    _node(_sc, _node_id)["Choices"][0]["Next"] = "n_start"
+    _sc["Nodes"] += fold(_night, "n_", texts={
+        "start": '''{n}The next evening you sit at the camp table, among the maps and the dirty cups, and for a while the second heartbeat behind your eyes only keeps time with yours. Outside, the sentries change. Somebody laughs too loudly by the cookfires and is told to shut up.{/n}
+{n}Then the air in the tent goes warm and close, the way it does before a storm.{/n}'''})
 
 # The third night ("Almost") follows the second ("Where you sleep") on the same page.
 _dream = _scene(P + "mind.dream")

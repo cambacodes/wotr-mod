@@ -289,10 +289,15 @@ SCENES.append(scene(P + "killed.setup", "What's left of her", "Shamira", 5,
     '[Touch your temple] "Her essence goes in your cauldron. What happens to the rest of her?"', [
     conv("rest", '''{n}Socothbenoth blinks his black eyes at you, twice, as if you had asked him where the sun goes at night.{/n}
 "The rest? The rest of Shamira? Oh, darling. Nothing happens to the rest of her. That is rather the point." {n}He waves a hand, and his rings clatter.{/n} "Demons who die at home stay dead. The Abyss is a mouth; it chews and it swallows and it does not give back. The Nirvana goes in my cauldron, the rest goes down the Abyss's throat, and my sister sleeps alone for once in an age. Delicious."''',
-        c("Continue", "her_words", requires=(LET_IN,)),
-        c("Continue", "never_in", forbids=(LET_IN,))),
+        c("Continue", "her_words", requires=(LET_IN, READ)),
+        c("Continue", "never_in", forbids=(LET_IN,)),
+        c("Continue", "her_native", requires=(LET_IN,), forbids=(READ,))),
     n("her_words", "Narrator", '''{n}"The Abyss is a mouth, and it swallows its own." You have heard it before, or something very like it, in her Harem, with the heat of her behind your forehead and the whole court watching.{/n}
 {n}And you have felt it since: something left at the back of your head where she was, fine as a hair. On bad nights it tugs, the way a line tugs when something on the far end turns over in its sleep. She has been in your head. There is a thread in you tied to her. A dying thing goes for the nearest door it knows, and holds on to whatever line it has.{/n}''',
+        c('"She\'s been inside my head, Socothbenoth. She knows the way. What if I leave that door open while I kill her?"', "open", flags=(PRIMED, STARTED)),
+        c('[Keep it to yourself] "Just curious."', abort=True)),
+    n("her_native", "Narrator", '''{n}She has been in your head. You let her in, in her Harem, in front of her court: she went through you like a hand through a drawer, and took what she came for, and went.{/n}
+{n}Not all of her went. On bad nights something tugs at the back of your head, fine as a hair, the way a line tugs when something on the far end turns over in its sleep. Nobody has told you what it is. You can guess. And if the Abyss swallows its own, a thing that dying might reach for the nearest door it already knows; that is your guess too, and nothing more.{/n}''',
         c('"She\'s been inside my head, Socothbenoth. She knows the way. What if I leave that door open while I kill her?"', "open", flags=(PRIMED, STARTED)),
         c('[Keep it to yourself] "Just curious."', abort=True)),
     n("never_in", "Narrator", '''{n}She has never been in your head. Not freely. You kept her out, or she never asked, or she took what she wanted by force and went away again. There is no door in you that she knows.{/n}
@@ -490,9 +495,15 @@ SCENES.append(reaction("Woljif", P + "react.woljif_voice", ("trickster.ever", RE
 EPI = "ShamiraEpilogue"
 
 
-def epilogue(id, text, requires, forbids=(), paragraphs=()):
+ALIVE_AFTER = "trickster.commander_back"   # native Trickster survival or Last Call's bottle
+
+
+def epilogue(id, text, requires, forbids=(), paragraphs=(), living=True):
+    """living: the page narrates the Commander's life after the war, so it Forbids sacrifice unless the Commander came back."""
+    extra = dict(ForbidOverrides={"sacrifice": ALIVE_AFTER}) if living else {}
     SCENES.append(scene(P + "epilogue." + id, "", EPI, 6, "", [nar("page", text, paragraphs=paragraphs)],
-                        requires=("trickster.ever", *requires), forbids=forbids, last=6, Relationship=REL))
+                        requires=("trickster.ever", *requires), forbids=tuple(forbids) + (("sacrifice",) if living else ()),
+                        last=6, Relationship=REL, **extra))
 
 
 SHELL_PARAGRAPHS = (
@@ -524,7 +535,7 @@ epilogue("kept", '''{n}The chroniclers of the Fifth Crusade agree that Shamira t
     ))
 
 epilogue("late", '''{n}The war ended before the Ardent Dream could finish her game. She came to the Commander's window a month after Threshold with her red hair full of the smell of the Abyss and sat on the sill with her legs crossed, and said that she was owed a round, and that she had come to win it.{/n}
-{n}She did not win it. She had never intended to. Afterwards nobody asked the Commander why a chair in the corner of the bedroom was always turned to face the wardrobe.{/n}''',
+{n}She won it. The Commander did not even try to hide her; she went through that head room by room and found herself in every one, and said afterwards that it was the least sporting victory of her long life, and the best. Nobody asked the Commander why a chair in the corner of the bedroom was always turned to face the wardrobe.{/n}''',
     requires=(LATE_COMMITTED, EMBODIED), forbids=(COMMITTED, CLOSED, ALLY), paragraphs=SHELL_PARAGRAPHS)
 
 epilogue("ally", '''{n}Shamira the Ardent Dream went back to her city after the war in a body the Commander had stolen for her, and sat her throne in the Harem of Ardent Dream as if she had never been dead.{/n}
@@ -560,6 +571,10 @@ epilogue("walked", '''{n}Shamira the Ardent Dream walked out of a wardrobe in Dr
 epilogue("unhoused", '''{n}The war ended with the Ardent Dream still behind the Commander's eyes, waiting for a body that never came. She talked, at first. Then she sulked. Then, for long stretches, she only listened, and the second heartbeat went on beside the Commander's own, patient as a cat at a mousehole.{/n}
 {n}Nobody else ever heard her. Everyone who stood too close to the Commander, though, found themselves thinking of her.{/n}''',
     requires=(FOUND,), forbids=(EMBODIED, KEPT, CAST_OUT, CLOSED))
+
+epilogue("mourned", '''{n}On the night the rift took the Commander, the coal of the Commander in her went out before morning, as she had said it would, and there was no hearth to go back to.{/n}
+{n}She sat her throne in the Harem of Ardent Dream with the court sent away until the stolen body went cold at the fingertips, and then at the wrists, and then she got up and had the Harem's lamps lit, every one, and walked into every sleeper's dream in Alushinyrra that night, looking. She did not find what she was looking for. She was cruel to her court for a century afterwards, and nobody in the city could say why.{/n}''',
+    requires=(EMBODIED, "sacrifice"), forbids=(ALIVE_AFTER, CLOSED), living=False)
 
 
 def integrate(payload):

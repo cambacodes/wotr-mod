@@ -276,7 +276,36 @@ internal static class NocticulaTricksterTests
         check(new[] { b1, fooledPage, favour, stalemate, unpriced, unjoked, epCommit, epDeclined }
                   .All(s => s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0 && c.Alignment == null)),
             "An epilogue page sets a flag.");
-        check(epCommit.Nodes[0].Choices.Count == 2, "The late commit gives the Commander no choice.");
+        check(epCommit.Nodes[0].Choices.Count == 7 && epCommit.Nodes.Single(n => n.Id == "yes_page").Choices.Count == 3,
+            "The late commit gives the Commander no choice, or no refusal.");
+        // Sol BEL: the late commit carries her test and this road's reason before her yes, and the Commander may refuse.
+        foreach (var (road, flag) in new (string, string?)[] { ("m_floor", PrimedShadow), ("m_late", Late), ("m_base", null) })
+        {
+            var seen = new HashSet<string>();
+            var w6 = World(story, 6, "trickster.ever", Returned, Paid);
+            Program.Walk(epCommit, flag == null ? w6 : With(story, w6, flag), (id, _) => seen.Add(id));
+            check(seen.Contains(road) && seen.Count(x => x.StartsWith("m_", StringComparison.Ordinal)) == 1 && seen.Contains("refused_page"),
+                "The late commit's reason on the " + road + " road is not its own, or there is no refusal.");
+        }
+        // Sol INT/COX: pages of a life after the war only for a Commander who has one; the harbor's permanent loss never over one.
+        var dead6 = World(story, 6, "trickster.ever", Returned, Paid, Primed, "sacrifice");
+        var back6 = With(story, dead6, "trickster.commander_back");
+        check(!Rules.Available(story, b1, dead6) && Rules.Available(story, b1, back6) && !Rules.Available(story, epCommit, dead6)
+              && Rules.Available(story, S("nocticula.trickster.defeated.epilogue.unanswered"), dead6)
+              && !Rules.Available(story, S("nocticula.trickster.defeated.epilogue.unanswered"), back6),
+            "Nocticula's pages ignore the Commander's death or survival.");
+        var harborLoss = World(story, 6, "trickster.ever", "noct.complete", "sacrifice");
+        check(Rules.Available(story, S("noct.ending_sacrifice"), harborLoss) && !Rules.Available(story, S("noct.ending_sacrifice"), With(story, harborLoss, "trickster.commander_back"))
+              && story.Scenes.Where(s => s.Id.StartsWith("noct.ending_sacrifice", StringComparison.Ordinal)).All(s => s.Forbids.Contains("trickster.commander_back"))
+              && Rules.Available(story, S("noct.ending_company"), With(story, harborLoss, "noct.chosen_company", "trickster.commander_back")),
+            "The harbor's sacrifice ending plays over a Commander who came back, or the living ending does not.");
+        // Ledger 05 row 11: the fourth court (Horzalah), Nocticula's read of the Guild's box.
+        var courtH = S("nocticula.trickster.court.horzalah");
+        var hWorld = World(story, 6, "trickster.ever", "horzalah.trickster.returned");
+        check(Rules.Available(story, courtH, hWorld) && !Rules.Available(story, courtH, World(story, 6, "trickster.ever"))
+              && !Rules.Available(story, courtH, With(story, hWorld, Fight)) && Rules.Available(story, courtH, With(story, hWorld, Fight, Returned))
+              && courtH.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Set).All(f => f.StartsWith("nocticula.", StringComparison.Ordinal)),
+            "Nocticula's Horzalah court is missing, speaks between the Council and Threshold, or touches Horzalah's flags.");
 
         // Trk_Nocticula_CourtVellexiaKept / court variants (ledger row 11): Nocticula learns of Vellexia's season at Threshold.
         var court = S("nocticula.trickster.court.vellexia");
@@ -320,7 +349,7 @@ internal static class NocticulaTricksterTests
         }
         pages.Clear();
         Program.Walk(morning, World(story, 6, "trickster.ever", "nocticula.trickster.said_yes", Refused), (page, _) => pages.Add(page));
-        check(!pages.Contains("daeran"), "Daeran reads a favour that was refused.");
+        check(!pages.Contains("daeran") && !pages.Contains("note_paid") && !pages.Contains("note_paid_alone"), "Daeran or the note reads a favour that was refused.");
         check(morning.Nodes[0].Choices[0].Text == "[Buckle your armour over the marks.]" && morning.Nodes[0].Choices[0].Next == null,
             "The morning's choice 0 moved (save slot).");
         var order = story.Scenes.Select(s => s.Id).ToList();

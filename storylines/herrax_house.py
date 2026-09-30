@@ -22,7 +22,7 @@ from story_format import c, n, scene
 from storylines.herrax_trickster import (ASKED_KILL, BAIT, BLOWN, CHEEK, CLIENT, CLOSED, COMMITTED, CONFESSED, DECLINED,
                                          H, HAGGLED, HANDED, HUB, KNIFE_TAKEN, LESSON, LIE_GREED, LIE_HUNGER, LIE_SPITE, MADAM,
                                          MC_FAVOR, MET, MORNING, PRIMED, REL, RESTORED, RET, ROK_LIST, ROK_RET, TOLD_DEAD,
-                                         WILLODUS, COIN_HELD, COIN_LOST, discovery, discovery_entry, hl, hx, nar, rk, rl)
+                                         WILLODUS, COIN_HELD, COIN_LOST, SENT, discovery, discovery_entry, hl, hx, nar, rk, rl)
 
 SCENES = []
 B = "herrax.house."
@@ -130,13 +130,17 @@ beat(LABYRINTH, "Behind every door", '"Show me your house."', [
        c('"Who are they?"', "cultists")),
     hx("cultists", '''"Leftovers. There used to be a madam here before Chivarro, a mad thing who spun nightmares, and when she moved on to Golarion she left her little cult behind for our amusement." {n}She lifts the lamp so they can see her. None of them does.{/n}
 "They were useful for a while. Now they're furniture that breathes. Every so often a guest pays to try something on one of them that he wouldn't try on anyone who'd be missed." {n}She lowers the lamp.{/n} "Nothing in my house is wasted, lover. That's the whole art."''',
-       c("[Walk on.]", "asset")),
+       c("[Walk on.]", "asset", requires=(SENT,)),
+       c("[Walk on.]", "asset_empty", forbids=(SENT,))),
     hx("asset", '''{n}The next door opens on a clean room, whitewashed, almost a convent cell. Four girls sit on a bench in plain white shifts. They are aasimar; you would know it anywhere, the faint light under the skin. They are very still.{/n}
 "And these are my future." {n}Herrax speaks softly, the way one speaks around sleeping children.{/n} "Pure and innocent. An asset to the Delights. It takes a long time to train them up, and the most important thing is never to tarnish them. I know how to be very, very careful."''',
-       c("Continue", "asset_yours", requires=(HAGGLED,)),
-       c("Continue", "asset_choice", forbids=(HAGGLED,))),
-    hx("asset_yours", '''{n}She glances at you, and her mouth curves.{/n} "You'll recognise them, of course. You sold them to me. Thirty thousand, and you haggled. I've never enjoyed a purchase more."''',
+       c("Continue", "asset_yours", requires=(SENT,)),
+       c("Continue", "asset_choice", forbids=(SENT,))),
+    hx("asset_yours", '''{n}She glances at you, and her mouth curves.{/n} "You'll recognise them, of course. You sent them to me yourself, out of the butcher Dyunk's pens: 'Go to the Ten Thousand Delights.' They wept all the way up my stairs. I've never had stock delivered so cheaply."''',
        c("Continue", "asset_choice")),
+    hx("asset_empty", '''{n}The next door opens on a clean room, whitewashed, almost a convent cell, with a bench along one wall and nobody on it.{/n}
+"My white room." {n}Herrax lifts the lamp, and looks at the empty bench the way another woman might look at an empty jewel case.{/n} "The butcher Dyunk had a pen of aasimar girls in the Fleshmarkets this season. I meant them to sit there. They went elsewhere." {n}She lowers the lamp.{/n} "The room waits. Rooms in my house always get filled, lover. The only question is what with."''',
+       c("[Walk on.]", "dais")),
     hx("asset_choice", '''{n}One of the girls looks up at the sound of a new voice. Herrax meets her eyes, gently, and the girl looks down again.{/n}''',
        c('"You\'re going to break them."', "break"),
        c('"Someday someone will come for them."', "warn", flags=(WARNED,)),
@@ -604,11 +608,14 @@ I sent a girl to the palace with a question of my own. She came back with it uno
 Morevet has invented a word for you. I won't write it down. It's very clever and very filthy and every girl in the house uses it now, even the Sinners, who are too expensive to use anyone's words but their own. When you come back, someone will say it to your face, and you'll know it's you.
 The Glowworm drank a devil under the table on Thursday and he signed over his house to her by mistake. We're all very proud."''',
        c("Continue", "b_news_warned", requires=(WARNED,)),
-       c("Continue", "b_news_white", forbids=(WARNED,))),
+       c("Continue", "b_news_white", requires=(SENT,), forbids=(WARNED,)),
+       c("Continue", "b_news_empty", forbids=(WARNED, SENT))),
     hl("b_news_warned", '''"You'll want to know about the white room. You told me someday someone would come for them. Nobody has. But one of them came to me last week, of her own accord, the one who looked up when you were there, and asked me to teach her.
 I told you, lover. They walk back up the stairs once they've tasted the cold. Some of them never even need to go out in it."''',
        c("Continue", "b_gift")),
     hl("b_news_white", '''"The white room is coming along. One of the girls came to me last week of her own accord and asked to be taught, which is the first real lesson and the only one that matters. I was very, very careful with her. I always am."''',
+       c("Continue", "b_gift")),
+    hl("b_news_empty", '''"The white room is still empty. I've had an offer on it from a devil who wants it for a ledger room, which is an insult I'm saving to repay. It will have girls in it by the spring. It always does."''',
        c("Continue", "b_gift")),
     nar("b_gift", '''{n}The fifth letter is tied to the parcel. Inside the black silk is a knife in a sheath of worked bone: thin, curved, and so sharp that the silk has parted where the edge touched it. It is not her knife. It is its twin.{/n}''',
        c("Continue", "b_gift_letter")),
@@ -660,7 +667,11 @@ P.S. Don't let anyone scratch you."''',
        c("[Watch him go.]")),
     rl("b_told", '''"You'll..." {n}For a moment his face goes entirely still around the scar.{/n} "You would. Of course you would. Every word of it true."
 {n}He laughs, a short, ugly sound in the rain.{/n} "Then tell her I said it. Tell her everything. Let her take the other side. At least then they'll match."''',
-       c("[Watch him go.]")),
+       c("[Watch him go.]", "b_told_answer")),
+    hl("b_told_answer", '''{n}Her answer comes back a month later, by a girl from the Delights with frightened eyes, because Rokhorn does not carry this one:{/n}
+"Your letter came. So I know what my boy offered you in the rain, and I know what you did with it.
+I haven't touched him. I told him I knew, and then I asked him to bring me my wine, and he did, and his hands shook the whole way up the stair. He brings it every night now. His hands shake every night. That's worth more than the other side of his face, lover. You taught me that, and I'll deny it to anyone who asks. H."''',
+       c("[Keep the letter.]")),
     *discovery("b_", "b_offer")],
     requires=(COMMITTED,), delay=0)
 
@@ -837,7 +848,7 @@ beat(B + "what_she_wants", "What the keeper wants", '"What do you want, Herrax? 
 "I want to be the one who does. I want the Lady in Shadow to fall, and the next queen after her, and some new Lady to come up my stairs one day and find me still sitting here, with the same face, pouring the same wine." {n}She smiles.{/n} "I want to be the last thing in Alushinyrra that can't be bought."''',
        c('"That\'s a long time to sit in one chair."', "long"),
        c('"Then I hope you get it."', "hope")),
-    hx("long", '''"Demons live a long time, honey. We have to do something with it." {n}She stretches, and the wings creak.{/n} "Most of us spend it wanting things we can take. I've spent mine learning to want the one thing nobody can take. It's much harder. It's much more satisfying."''',
+    hx("long", '''"Demons live a long time, honey. We have to do something with it." {n}She stretches, and the wings creak.{/n} "Chivarro kept this chair until a mortal walked up her stairs and knocked her off it. I mean to keep it until the next boy who comes up mine with six friends and a patron at court takes one look at my face on the landing, and turns round, and goes back down. And tells his friends why."''',
        c("Continue", "end")),
     hx("hope", '''{n}She laughs, surprised.{/n} "Hope. From a crusader, for a demon madam. My girls would charge you extra for that sort of thing." {n}She looks at you a moment longer.{/n} "Don't say it again. I might start to rely on it."''',
        c("Continue", "end")),

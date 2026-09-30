@@ -104,7 +104,7 @@ Nocticula turns her half over before you finish studying it.{/n}
          c('[Keep the marked half and return to the Council conversation.]', flags=f("requested", "seal_received"))),
     page("decline", "Nocticula", '''{n}Nocticula lowers her hand and waits until you have finished speaking.{/n}
 "Then we have finished that question. You may yet have something interesting to say about the business which brought you here."
-{n}Her attention returns to the audience. She has neither promised a private meeting nor demanded that you invent a better reason for wanting one.{/n}''',
+{n}She turns back to the audience as if you had already left it, and lifts two fingers. A servant who was not there a moment ago steps out of the shadow by her couch with her cup.{/n}''',
          c('[Leave the request unmade.]', flags=f("closed"))),
 ]
 
@@ -124,7 +124,7 @@ def request_variant(history, text, requires=(), forbids=(), groups=()):
 
 
 request_variant("missed", '''"Another question? You have arrived with a generous estimate of my patience."
-{n}Nocticula waits. She does not supply a shared evening or a promise to make the silence easier for you.{/n}
+{n}Nocticula waits, one nail tapping the arm of her couch, and lets the silence grow expensive.{/n}
 "I would like to know you when neither of us is performing for your brother."
 "You believe I have stopped performing because he cannot hear me?"
 "I believe you might enjoy a different audience."
@@ -157,7 +157,7 @@ def add_remote(id, title, nodes, previous, delay=12):
 
 add_remote("the_missing_line", "The missing line", [
     page("start", "Narrator", '''{n}In Drezen, the half-seal leaves a cold mark on the sheet beneath it. You have written Nocticula's name twice and crossed it out twice. The instructions required your own.
-Her answer about the Council returns to you. She had heard enough to promise a reward. She had not promised that every further intrusion would become one.
+Her answer about the Council returns to you, and the look that came with it: the look she gives a debt she has not yet decided how to collect.
 You write your name. Nothing happens.
 When you fold the paper around the wax, the crossed-out letters become visible through its back. They do not shine. They cast a small shadow toward a light which is not in your room.
 The opening is narrow enough to examine without sleeping. Something could follow the reflection back if you gave it the rest of the room. You draw the lamp closer and move the papers bearing your officers' names out of its light.{/n}''',
