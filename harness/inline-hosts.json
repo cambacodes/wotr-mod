@@ -7545,14 +7545,14 @@
    }
   },
   "eliandra.trickster.ch5.burial": {
-   "kind": "return-cue",
+   "kind": "return-to-list",
    "lists": [
     "6073e28cab0691542b85a24436ed919c"
    ],
    "explicit": true,
    "contact": null,
    "entry": {
-    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.burial"
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.burial.6073e28cab0691542b85a24436ed919c"
    },
    "resolved": true,
    "host": {
@@ -7564,14 +7564,14 @@
    }
   },
   "eliandra.trickster.ch5.first_words": {
-   "kind": "return-cue",
+   "kind": "return-to-list",
    "lists": [
     "6073e28cab0691542b85a24436ed919c"
    ],
    "explicit": true,
    "contact": null,
    "entry": {
-    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.first_words"
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.first_words.6073e28cab0691542b85a24436ed919c"
    },
    "resolved": true,
    "host": {
@@ -7583,14 +7583,14 @@
    }
   },
   "eliandra.trickster.ch5.healer": {
-   "kind": "return-cue",
+   "kind": "return-to-list",
    "lists": [
     "6073e28cab0691542b85a24436ed919c"
    ],
    "explicit": true,
    "contact": null,
    "entry": {
-    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.healer"
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.healer.6073e28cab0691542b85a24436ed919c"
    },
    "resolved": true,
    "host": {
@@ -7621,14 +7621,14 @@
    }
   },
   "eliandra.trickster.ch5.lovers": {
-   "kind": "return-cue",
+   "kind": "return-to-list",
    "lists": [
     "6073e28cab0691542b85a24436ed919c"
    ],
    "explicit": true,
    "contact": null,
    "entry": {
-    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.lovers"
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.lovers.6073e28cab0691542b85a24436ed919c"
    },
    "resolved": true,
    "host": {
@@ -7640,14 +7640,14 @@
    }
   },
   "eliandra.trickster.ch5.maiden": {
-   "kind": "return-cue",
+   "kind": "return-to-list",
    "lists": [
     "6073e28cab0691542b85a24436ed919c"
    ],
    "explicit": true,
    "contact": null,
    "entry": {
-    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.maiden"
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.maiden.6073e28cab0691542b85a24436ed919c"
    },
    "resolved": true,
    "host": {
@@ -7659,14 +7659,14 @@
    }
   },
   "eliandra.trickster.ch5.night_after": {
-   "kind": "return-cue",
+   "kind": "return-to-list",
    "lists": [
     "6073e28cab0691542b85a24436ed919c"
    ],
    "explicit": true,
    "contact": null,
    "entry": {
-    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.night_after"
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.night_after.6073e28cab0691542b85a24436ed919c"
    },
    "resolved": true,
    "host": {
@@ -7678,14 +7678,14 @@
    }
   },
   "eliandra.trickster.ch5.observe": {
-   "kind": "return-cue",
+   "kind": "return-to-list",
    "lists": [
     "6073e28cab0691542b85a24436ed919c"
    ],
    "explicit": true,
    "contact": null,
    "entry": {
-    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.observe"
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.observe.6073e28cab0691542b85a24436ed919c"
    },
    "resolved": true,
    "host": {
@@ -7697,14 +7697,14 @@
    }
   },
   "eliandra.trickster.ch5.packing": {
-   "kind": "return-cue",
+   "kind": "return-to-list",
    "lists": [
     "6073e28cab0691542b85a24436ed919c"
    ],
    "explicit": true,
    "contact": null,
    "entry": {
-    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.packing"
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.packing.6073e28cab0691542b85a24436ed919c"
    },
    "resolved": true,
    "host": {
@@ -7716,14 +7716,14 @@
    }
   },
   "eliandra.trickster.ch5.regnard": {
-   "kind": "return-cue",
+   "kind": "return-to-list",
    "lists": [
     "6073e28cab0691542b85a24436ed919c"
    ],
    "explicit": true,
    "contact": null,
    "entry": {
-    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.regnard"
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.regnard.6073e28cab0691542b85a24436ed919c"
    },
    "resolved": true,
    "host": {
@@ -7735,14 +7735,14 @@
    }
   },
   "eliandra.trickster.ch5.remembrance": {
-   "kind": "return-cue",
+   "kind": "return-to-list",
    "lists": [
     "6073e28cab0691542b85a24436ed919c"
    ],
    "explicit": true,
    "contact": null,
    "entry": {
-    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.remembrance"
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.remembrance.6073e28cab0691542b85a24436ed919c"
    },
    "resolved": true,
    "host": {
@@ -7754,14 +7754,14 @@
    }
   },
   "eliandra.trickster.ch5.research": {
-   "kind": "return-cue",
+   "kind": "return-to-list",
    "lists": [
     "6073e28cab0691542b85a24436ed919c"
    ],
    "explicit": true,
    "contact": null,
    "entry": {
-    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.research"
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.research.6073e28cab0691542b85a24436ed919c"
    },
    "resolved": true,
    "host": {
@@ -7773,14 +7773,14 @@
    }
   },
   "eliandra.trickster.ch5.sarkoris": {
-   "kind": "return-cue",
+   "kind": "return-to-list",
    "lists": [
     "6073e28cab0691542b85a24436ed919c"
    ],
    "explicit": true,
    "contact": null,
    "entry": {
-    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.sarkoris"
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.sarkoris.6073e28cab0691542b85a24436ed919c"
    },
    "resolved": true,
    "host": {
@@ -7811,14 +7811,14 @@
    }
   },
   "eliandra.trickster.ch5.thirteen": {
-   "kind": "return-cue",
+   "kind": "return-to-list",
    "lists": [
     "6073e28cab0691542b85a24436ed919c"
    ],
    "explicit": true,
    "contact": null,
    "entry": {
-    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.thirteen"
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.thirteen.6073e28cab0691542b85a24436ed919c"
    },
    "resolved": true,
    "host": {
@@ -7830,14 +7830,14 @@
    }
   },
   "eliandra.trickster.ch5.veil": {
-   "kind": "return-cue",
+   "kind": "return-to-list",
    "lists": [
     "6073e28cab0691542b85a24436ed919c"
    ],
    "explicit": true,
    "contact": null,
    "entry": {
-    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.veil"
+    "6073e28cab0691542b85a24436ed919c": "RRT_entry.eliandra.trickster.ch5.veil.6073e28cab0691542b85a24436ed919c"
    },
    "resolved": true,
    "host": {

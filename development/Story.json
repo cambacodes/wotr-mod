@@ -361723,7 +361723,8 @@
       "AnswerLists": [
         "6073e28cab0691542b85a24436ed919c"
       ],
-      "NativeReturnCue": "cb48db9773f775b428f0a5f20757145e"
+      "ReturnToList": true,
+      "ReturnText": "{n}Eliandra folds her hands and waits, tired and patient, for whatever you mean to ask next.{/n}"
     },
     {
       "Id": "eliandra.trickster.ch5.lovers",
@@ -361926,7 +361927,8 @@
       "AnswerLists": [
         "6073e28cab0691542b85a24436ed919c"
       ],
-      "NativeReturnCue": "cb48db9773f775b428f0a5f20757145e"
+      "ReturnToList": true,
+      "ReturnText": "{n}Eliandra folds her hands and waits, tired and patient, for whatever you mean to ask next.{/n}"
     },
     {
       "Id": "eliandra.trickster.ch5.observe",
@@ -362119,7 +362121,8 @@
       "AnswerLists": [
         "6073e28cab0691542b85a24436ed919c"
       ],
-      "NativeReturnCue": "cb48db9773f775b428f0a5f20757145e"
+      "ReturnToList": true,
+      "ReturnText": "{n}Eliandra folds her hands and waits, tired and patient, for whatever you mean to ask next.{/n}"
     },
     {
       "Id": "eliandra.trickster.ch5.sarkoris",
@@ -362285,7 +362288,8 @@
       "AnswerLists": [
         "6073e28cab0691542b85a24436ed919c"
       ],
-      "NativeReturnCue": "cb48db9773f775b428f0a5f20757145e"
+      "ReturnToList": true,
+      "ReturnText": "{n}Eliandra folds her hands and waits, tired and patient, for whatever you mean to ask next.{/n}"
     },
     {
       "Id": "eliandra.trickster.ch5.remembrance",
@@ -362437,7 +362441,8 @@
       "AnswerLists": [
         "6073e28cab0691542b85a24436ed919c"
       ],
-      "NativeReturnCue": "cb48db9773f775b428f0a5f20757145e"
+      "ReturnToList": true,
+      "ReturnText": "{n}Eliandra folds her hands and waits, tired and patient, for whatever you mean to ask next.{/n}"
     },
     {
       "Id": "eliandra.trickster.ch5.healer",
@@ -362571,7 +362576,8 @@
       "AnswerLists": [
         "6073e28cab0691542b85a24436ed919c"
       ],
-      "NativeReturnCue": "cb48db9773f775b428f0a5f20757145e"
+      "ReturnToList": true,
+      "ReturnText": "{n}Eliandra folds her hands and waits, tired and patient, for whatever you mean to ask next.{/n}"
     },
     {
       "Id": "eliandra.trickster.ch5.regnard",
@@ -362747,7 +362753,8 @@
       "AnswerLists": [
         "6073e28cab0691542b85a24436ed919c"
       ],
-      "NativeReturnCue": "cb48db9773f775b428f0a5f20757145e"
+      "ReturnToList": true,
+      "ReturnText": "{n}Eliandra folds her hands and waits, tired and patient, for whatever you mean to ask next.{/n}"
     },
     {
       "Id": "eliandra.trickster.ch5.veil",
@@ -362921,7 +362928,8 @@
       "AnswerLists": [
         "6073e28cab0691542b85a24436ed919c"
       ],
-      "NativeReturnCue": "cb48db9773f775b428f0a5f20757145e"
+      "ReturnToList": true,
+      "ReturnText": "{n}Eliandra folds her hands and waits, tired and patient, for whatever you mean to ask next.{/n}"
     },
     {
       "Id": "eliandra.trickster.ch5.thirteen",
@@ -363111,7 +363119,8 @@
       "AnswerLists": [
         "6073e28cab0691542b85a24436ed919c"
       ],
-      "NativeReturnCue": "cb48db9773f775b428f0a5f20757145e"
+      "ReturnToList": true,
+      "ReturnText": "{n}Eliandra folds her hands and waits, tired and patient, for whatever you mean to ask next.{/n}"
     },
     {
       "Id": "eliandra.trickster.ch5.packing",
@@ -363316,7 +363325,8 @@
       "AnswerLists": [
         "6073e28cab0691542b85a24436ed919c"
       ],
-      "NativeReturnCue": "cb48db9773f775b428f0a5f20757145e"
+      "ReturnToList": true,
+      "ReturnText": "{n}Eliandra folds her hands and waits, tired and patient, for whatever you mean to ask next.{/n}"
     },
     {
       "Id": "eliandra.trickster.ch5.burial",
@@ -363513,7 +363523,8 @@
       "AnswerLists": [
         "6073e28cab0691542b85a24436ed919c"
       ],
-      "NativeReturnCue": "cb48db9773f775b428f0a5f20757145e"
+      "ReturnToList": true,
+      "ReturnText": "{n}Eliandra folds her hands and waits, tired and patient, for whatever you mean to ask next.{/n}"
     },
     {
       "Id": "eliandra.trickster.ch5.research",
@@ -363624,7 +363635,8 @@
       "AnswerLists": [
         "6073e28cab0691542b85a24436ed919c"
       ],
-      "NativeReturnCue": "cb48db9773f775b428f0a5f20757145e"
+      "ReturnToList": true,
+      "ReturnText": "{n}Eliandra folds her hands and waits, tired and patient, for whatever you mean to ask next.{/n}"
     },
     {
       "Id": "eliandra.trickster.ch5.maiden",
@@ -363758,7 +363770,8 @@
       "AnswerLists": [
         "6073e28cab0691542b85a24436ed919c"
       ],
-      "NativeReturnCue": "cb48db9773f775b428f0a5f20757145e"
+      "ReturnToList": true,
+      "ReturnText": "{n}Eliandra folds her hands and waits, tired and patient, for whatever you mean to ask next.{/n}"
     },
     {
       "Id": "eliandra.trickster.ch5.terms",
@@ -365005,7 +365018,8 @@
       "AnswerLists": [
         "6073e28cab0691542b85a24436ed919c"
       ],
-      "NativeReturnCue": "cb48db9773f775b428f0a5f20757145e"
+      "ReturnToList": true,
+      "ReturnText": "{n}Eliandra folds her hands and waits, tired and patient, for whatever you mean to ask next.{/n}"
     },
     {
       "Id": "eliandra.trickster.ch5.road_letter",
@@ -378687,8 +378701,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",

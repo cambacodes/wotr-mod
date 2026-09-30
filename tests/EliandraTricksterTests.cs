@@ -96,7 +96,8 @@ internal static class EliandraTricksterTests
               && rel.TricksterAccess.Keys.OrderBy(k => k).SequenceEqual(new[] { "no_leave", "vow" })
               && rel.TricksterAccess["vow"].Device == rite.Id && rel.TricksterAccess["vow"].Detect.SequenceEqual(new[] { Met }) && rel.TricksterAccess["no_leave"].Device == self.Id,
             "Trk_Eliandra_Bindings: the relationship does not match the build sheet.");
-        check(shrine.Length >= 12 && shrine.All(s => s.NativeReturnCue == Ret && s.Chapters.SequenceEqual(new[] { 5 })
+        check(shrine.Length >= 12 && shrine.All(s => (s.NativeReturnCue == Ret) != s.ReturnToList && s.Chapters.SequenceEqual(new[] { 5 })
+                  && (s.NativeReturnCue == null) == !s.Nodes.SelectMany(n => n.Choices).Any(c => c.Check != null)
                   && s.Requires.Contains(Met) && s.Forbids.Contains(Closed) && s.Forbids.Contains("eliandra.dead") && s.ContactUnit == null),
             "Trk_Eliandra_Bindings: a shrine beat is not inline on her Ch5 hub with its clean return.");
         check(story.SeenCues[ShrineLeft].Contains("7ca8fc49de894e94db63142f153a172a") && story.SeenCues[ShrineLeft].Contains("28e3b35d52e24fb4da16778f68b2b1c2"),

@@ -59,6 +59,7 @@ ODDEN_PORTRAIT = "bbfb558ba59741b687279c0f6afddc1b"  # BCT_Pulura_Odden (PuluraF
 DREZEN = "2570015799edf594daf2f076f2f975d8"          # DrezenCapital
 HUB = "6073e28cab0691542b85a24436ed919c"             # c5/PuluraFallsC5/PuluraLeaderSaved/AnswersList_0008
 RET = "cb48db9773f775b428f0a5f20757145e"             # PuluraLeaderSaved/Cue_0026 "This is Pulura's Fall..." (clean return)
+RETURN_TEXT = "{n}Eliandra folds her hands and waits, tired and patient, for whatever you mean to ask next.{/n}"
 
 STARTED = "eliandra.started"
 CLOSED = "eliandra.closed"
@@ -174,10 +175,15 @@ def shrine(id, title, entry, nodes, requires, forbids=(), fit="N-fit", delay=0, 
     gate = ("trickster",) if fit == "T" else ()
     shut = UNFIT if fit != "T" else ()
     PATH_FIT[id] = fit
+    # Cue_0026 (her "This is Pulura's Fall..." exposition) is engine-safe but reads oddly replayed after grief or the rite's
+    # aftermath, so scenes without a check return to her list with a short line instead (E14b); scenes with a check, which
+    # ReturnToList cannot carry, keep the clean native return.
+    has_check = any(ch.get("Check") for nd in nodes for ch in nd["Choices"])
+    back = dict(NativeReturnCue=RET) if has_check else dict(ReturnToList=True, ReturnText=RETURN_TEXT)
     SCENES.append(scene(id, title, "Eliandra", 5, entry, nodes,
                         requires=tuple(dict.fromkeys((*gate, MET, *requires))),
                         forbids=tuple(dict.fromkeys((CLOSED, DEAD, *shut, *forbids))), delay=delay, last=5,
-                        Relationship=REL, Chapters=[5], AnswerLists=[HUB], NativeReturnCue=RET, **extra))
+                        Relationship=REL, Chapters=[5], AnswerLists=[HUB], **back, **extra))
 
 
 def page(id, title, nodes, requires, forbids=(), delay=24, chapters=(5,), kind="visit", owner="Eliandra", fit="T", **extra):
