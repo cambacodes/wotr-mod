@@ -544,6 +544,10 @@ namespace Tirabade
         // Set by Main.Build when a relationship's native dependencies are missing; never authored.
         public const string DegradedPrefix = "rrt.degraded.";
 
+        // E-new 0: the Prologue is chapter 0 (Player.Chapter stays 0 until SetChapter(1)). It is neither "chapter_one" nor
+        // "chapter_later", so a Chapter 1+ gate on either never opens early; Available admits MinChapter 0 / Chapters [0] as is.
+        public static string? ChapterFlag(int chapter) => chapter == 1 ? "chapter_one" : chapter > 1 ? "chapter_later" : null;
+
         public static bool Available(Story story, Scene scene, Snapshot state)
         {
             if (state.Has(DegradedPrefix + scene.Relationship)) return false;

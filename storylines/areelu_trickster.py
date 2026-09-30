@@ -793,8 +793,10 @@ def page(id, title, nodes, requires, forbids=(), any_groups=(), after=None, sequ
 
 def report(id, title, nodes, after, any_group=None):
     """A page of her report after Threshold: the romance survived, by the rewrite (mortal) or by the punchline (the witch)."""
-    groups = (COMMITTED_ANY,) + ((tuple(any_group),) if any_group else ())
-    page(id, title, nodes, requires=("trickster.ever", STRUCK, ON_SCREEN, SURVIVES), forbids=ROMANCE_FORBIDS,
+    # A one-flag any_group is a plain requirement (gate lint E2a): it joins Requires rather than becoming a group.
+    single = tuple(any_group) if any_group and len(any_group) == 1 else ()
+    groups = (COMMITTED_ANY,) + ((tuple(any_group),) if any_group and not single else ())
+    page(id, title, nodes, requires=("trickster.ever", STRUCK, ON_SCREEN, SURVIVES) + single, forbids=ROMANCE_FORBIDS,
          any_groups=groups, after=after, overrides=ROMANCE_OVERRIDES)
 
 

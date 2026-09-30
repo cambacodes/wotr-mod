@@ -612,7 +612,7 @@ def run_rules_tests(matrix, story):
 def execute_test(model, t, where):
     out = []
     flags, chapter = parse_world(t.get("world"))
-    state = rv.SimState(chapter or 1, 100000)
+    state = rv.SimState(1 if chapter is None else chapter, 100000)   # "chapter:0" is the Prologue (E-new 0)
     state.flags = set(flags)
     rv.sim_complete(model, state)
 

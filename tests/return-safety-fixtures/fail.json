@@ -1,0 +1,65 @@
+{
+ "cccccccccccccccccccccccccccccccc": {
+  "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+  "PrototypeLink": null,
+  "m_Overrides": [],
+  "ShowOnce": true,
+  "ShowOnceCurrentDialog": true,
+  "Conditions": {
+   "Operation": "And",
+   "Conditions": [
+    {
+     "$type": "x, FlagUnlocked"
+    }
+   ]
+  },
+  "Experience": "Normal",
+  "OnShow": {
+   "Actions": [
+    {
+     "$type": "x, StartEtude"
+    }
+   ]
+  },
+  "OnStop": {
+   "Actions": [
+    {
+     "$type": "x, StartEtude"
+    }
+   ]
+  },
+  "AlignmentShift": {
+   "Direction": "Good",
+   "Value": 1
+  },
+  "Answers": [
+   "!bp_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+   "!bp_bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  ],
+  "Continue": {
+   "Cues": [
+    "!bp_dddddddddddddddddddddddddddddddd"
+   ],
+   "Strategy": "First"
+  }
+ },
+ "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa": {
+  "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+  "PrototypeLink": null,
+  "m_Overrides": [],
+  "MythicRequirement": "Trickster",
+  "AlignmentRequirement": "Good",
+  "ShowOnce": true,
+  "Conditions": {
+   "Operation": "And",
+   "Conditions": [
+    {
+     "$type": "x, FlagUnlocked"
+    }
+   ]
+  },
+  "Answers": [
+   "!bp_bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  ]
+ }
+}
