@@ -160433,10 +160433,55 @@
         {
           "Id": "end",
           "Speaker": "Nurah",
-          "Text": "\"Fine. Prove it wrong, then. I'll send you proofs. Don't make me regret the postage.\"",
+          "Text": "\"Fine. Prove it wrong, then. The post takes a month to find you, so chapter one is in with this: the war from the wrong side, forty pages in a hand so small it looks like stitching. There is a gap on the first page exactly one name wide, where you go. Fill it in and send it back, if you still think paper does what you tell it. Or leave it blank, and let me decide what you were.\"",
           "Choices": [
             {
-              "Text": "[Fold the letter away.]",
+              "Text": "[Leave the gap] \"Your book. You decide what I was.\"",
+              "Next": "trusted",
+              "Set": [
+                "nurah.trickster.proofs_seen"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Write your own name in the gap.]",
+              "Next": "signed",
+              "Set": [
+                "nurah.trickster.proofs_seen",
+                "nurah.trickster.cost.signed_proofs"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "trusted",
+          "Speaker": "Nurah",
+          "Text": "{n}Her answer comes back by the next courier, on the back of the returned proof sheet.{/n} \"You left it blank. Trezbot never once left me a blank. I have been staring at your gap for two days and I don't know what to do with it.\"\n\"That is a compliment. Don't get used to it.\"",
+          "Choices": [
+            {
+              "Text": "[Put the letter away.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nurah"
+        },
+        {
+          "Id": "signed",
+          "Speaker": "Nurah",
+          "Text": "{n}Her answer comes back by the next courier, on the back of the returned proof sheet.{/n} \"Your name sits in the gap as if the page had been cut to fit it. Of course. And it will say exactly that, in every copy. You are going to hate how accurate I am.\"",
+          "Choices": [
+            {
+              "Text": "[Put the letter away.]",
               "Next": null,
               "Set": [],
               "Requires": [],
@@ -162064,8 +162109,7 @@
       "Relationship": "lastcall",
       "RequiresAnyGroups": [
         [
-          "nurah.complete",
-          "nurah.trickster.late_coda"
+          "nurah.trickster.coda_alive"
         ]
       ]
     },
@@ -199208,7 +199252,7 @@
         {
           "Id": "scroll",
           "Speaker": "Narrator",
-          "Text": "{n}You show her what is inside your sleeve: a scroll of resurrection from the crusade's reliquary, signed out against your name for next month's relic tithe. It is a cleric's scroll, and you are no cleric. Your hands have learned to use any made thing as if it had been made for them, and so lightly that nobody ever sees them do it.{/n}\n{n}\"If you fall,\" you tell her, \"I will read it over you before they carry anyone out, and nobody in this room will know. And I'll have my hand on you while I read, with his light in it. You made the sword it came from. Whatever you are when the scroll finds you, you'll know that. You will wake alone, and whole, and you will remember all of it. Stay down until we are gone.\"{/n}",
+          "Text": "{n}You show her what is inside your sleeve: a scroll of resurrection from the crusade's reliquary, signed out against your name for next month's relic tithe. It was written for a chaplain's hands. Your hands have learned to use any made thing as if it had been made for them, and so lightly that nobody ever sees them do it.{/n}\n{n}\"If you fall,\" you tell her, \"I will read it over you before they carry anyone out, and nobody in this room will know. And I'll have my hand on you while I read, with his light in it. You made the sword it came from. Whatever you are when the scroll finds you, you'll know that. You will wake alone, and whole, and you will remember all of it. Stay down until we are gone.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -199336,7 +199380,7 @@
         {
           "Id": "scroll",
           "Speaker": "Narrator",
-          "Text": "{n}You show her what is inside your sleeve: a scroll of resurrection from the crusade's reliquary, signed out against your name for next month's relic tithe. You have no gift for hiding the use of a thing. If you read it, you will read it on your knees over her body, aloud, with every soul in this room watching.{/n}\n{n}\"If you fall,\" you tell her, \"I will bring you back where you fell, with my hand on you and his light in it. You made the sword it came from; you'll know it. They will see me do it. You will wake whole, and they will know why.\"{/n}",
+          "Text": "{n}You show her what is inside your sleeve: a scroll of resurrection from the crusade's reliquary, signed out against your name for next month's relic tithe. You have no gift for hiding the use of a thing, and no right to read a chaplain's scroll at all: the old chaplain who signed it out has come down into the ruin with your company for exactly this, and if it comes to it he will read it on his knees over her body, aloud, with every soul in this room watching.{/n}\n{n}\"If you fall,\" you tell her, \"he will bring you back where you fell, and my hand will be on you with his light in it. You made the sword it came from; you'll know it. They will see me do it. You will wake whole, and they will know why.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -199655,7 +199699,7 @@
         {
           "Id": "quiet",
           "Speaker": "Narrator",
-          "Text": "{n}The laboratory. You have lived it again every night since:{/n}\n{n}Your blade goes in. She falls, the way the story always meant her to. The room turns towards the door and whatever Areelu has left waiting there. You kneel beside her as if to close her eyes, and under your breath, no louder than a prayer for the dead, you read the scroll from your sleeve to its last word, with your other palm flat over her heart and her brother's light in it, turned down to the warmth of a hand. It crumbles to ash against your palm. For one breath the light under your hand stings the way it stung in the rock under Kenabres, when his sword went out at your touch and left its fire in you, and then it is only warm. Nobody turns round. Her chest does not move. You leave her there, as she asked.{/n}",
+          "Text": "{n}The laboratory. You have lived it again every night since:{/n}\n{n}You give the word, and the fight goes the way the story always meant it to, and she falls. The room turns towards the door and whatever Areelu has left waiting there. You kneel beside her as if to close her eyes, and under your breath, no louder than a prayer for the dead, you read the scroll from your sleeve to its last word, with your other palm flat over her heart and her brother's light in it, turned down to the warmth of a hand. It crumbles to ash against your palm. For one breath the light under your hand stings the way it stung in the rock under Kenabres, when his sword went out at your touch and left its fire in you, and then it is only warm. Nobody turns round. Her chest does not move. You leave her there, as she asked.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -199671,15 +199715,42 @@
         {
           "Id": "open",
           "Speaker": "Narrator",
-          "Text": "{n}The laboratory. You have lived it again every night since:{/n}\n{n}Your blade goes in. She falls, the way the story always meant her to. You are on your knees beside her before anyone can move, the scroll open, reading aloud, your other hand on her heart, and her brother's light coming out through your fingers white and plain as day. Every face in the room turns to you. Someone by the door says your name like a question. The last word, and the scroll goes to ash, and her chest does not move, and you stand up and say, \"Leave her. She'll come,\" and walk out past all of them. Nobody asks you what they saw. They will ask each other for months.{/n}",
+          "Text": "{n}The laboratory. You have lived it again every night since:{/n}\n{n}You give the word, and the fight goes the way the story always meant it to, and she falls. You are on your knees beside her before anyone can move, your hand on her heart and her brother's light coming out through your fingers white and plain as day, and the old chaplain is kneeling on her other side with the scroll open, reading aloud. Every face in the room turns to you. Someone by the door says your name like a question. The last word, and the scroll goes to ash in his hands, and her chest does not move, and you stand up and say, \"Leave her. She'll come,\" and walk out past all of them. Nobody asks you what they saw. They will ask each other for months.{/n}",
           "Choices": [
             {
               "Text": "Continue",
-              "Next": "news",
+              "Next": "news_open",
               "Set": [],
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "news_open",
+          "Speaker": "Narrator",
+          "Text": "{n}The runner says that an angel with one black wing is up and washing wounds. Her hands shake on the basin. She asked whether the Knight-Commander was awake.{/n}\n{n}Half the officers in Drezen already know whose hand was on her heart; they were in the room. By noon Heaven's envoy has heard it from three of them, and he does not ask by whose hand. He asks why the crusade's relic tithe was spent on an angel the Commander had just ordered cut down, and he withholds his blessing from the next muster until someone gives him an answer he can carry back to Heaven.{/n}",
+          "Choices": [
+            {
+              "Text": "[Go to her] Go down to the infirmary, past the soldiers who saw.",
+              "Next": null,
+              "Set": [
+                "targona.trickster.returned",
+                "targona.started",
+                "targona.trickster.cost.struck_down",
+                "targona.trickster.cost.left_for_dead"
+              ],
+              "Requires": [
+                "targona.trickster.cost.raised_openly"
+              ],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -300
+              }
             }
           ],
           "Portrait": "Targona"
@@ -199811,7 +199882,7 @@
         {
           "Id": "pikeman",
           "Speaker": "Targona",
-          "Text": "\"Commander. There was a pikeman in your infirmary last night with a fever that would not break. It broke at dawn. I thought you should know that first.\"\n{n}She nods at the two new cots.{/n} \"Those men went to the wall unblessed because of me. Heaven's envoy will not bless what he cannot explain, and he cannot explain me. I have told them I am sorry. They did not know what for.\"\n{n}The black wing folds against her back as if it too is listening.{/n}\n{n}She sets the basin down with both hands. It is only half full, and still it shakes.{/n}\n\"I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. Then nothing, and in the nothing, a light I made with my own hands, a long time ago, for my brother. I went towards it. Then I was breathing, and every breath hurt.\" {n}She flexes her fingers.{/n} \"The chaplains say resurrection gives the body back whole. It does. It does not give back the floor of that laboratory. I have lain on it every night since.\"\n\"I went to the Hand's chaplain before I came here, as I said I would. I told him what was done, and by whom. He let the candle burn down a finger's width before he spoke. Then he blessed me, and not you.\"",
+          "Text": "\"Commander. There was a pikeman in your infirmary last night with a fever that would not break. It broke at dawn. I thought you should know that first.\"\n{n}She nods at the two new cots.{/n} \"Those men went to the wall unblessed because of me. Heaven's envoy will not bless what he cannot explain, and he cannot explain me. I have told them I am sorry. They did not know what for.\"\n{n}The black wing folds against her back as if it too is listening.{/n}\n{n}She sets the basin down with both hands. It is only half full, and still it shakes.{/n}\n\"I remember your face when you gave the word. I remember the laboratory, and Areelu's glass, and the floor. Then nothing, and in the nothing, a light I made with my own hands, a long time ago, for my brother. I went towards it. Then I was breathing, and every breath hurt.\" {n}She flexes her fingers.{/n} \"The chaplains say resurrection gives the body back whole. It does. It does not give back the floor of that laboratory. I have lain on it every night since.\"\n\"I went to the Hand's chaplain before I came here, as I said I would. I told him what was done, and by whom. He let the candle burn down a finger's width before he spoke. Then he blessed me, and not you.\"",
           "Choices": [
             {
               "Text": "[Tell her the truth] \"I struck you. I'd rather you hear it from me than from Heaven.\"",
@@ -199843,7 +199914,7 @@
         {
           "Id": "pikeman_late",
           "Speaker": "Targona",
-          "Text": "\"Commander. There was a pikeman in your infirmary last night with a fever that would not break. It broke at dawn. I thought you should know that first.\"\n{n}She nods at the two new cots.{/n} \"Those men went to the wall unblessed because of me. Heaven's envoy will not bless what he cannot explain, and he cannot explain me. I have told them I am sorry. They did not know what for.\"\n{n}The black wing folds against her back as if it too is listening.{/n}\n{n}She sets the basin down with both hands. It is only half full, and still it shakes.{/n}\n\"I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. Then nothing, and in the nothing, a light I made with my own hands, a long time ago, for my brother. I went towards it. Then I was breathing, and every breath hurt.\" {n}She flexes her fingers.{/n} \"The chaplains say resurrection gives the body back whole. It does. It does not give back the floor of that laboratory. I have lain on it every night since.\"\n\"Before I would let them carry me to the cots, I sent for the Hand's chaplain. Nobody asked me to. I had not promised anyone. But I will not be raised on a lie, and I told him what was done, and by whom. He let the candle burn down a finger's width before he spoke. Then he blessed me, and not you.\"",
+          "Text": "\"Commander. There was a pikeman in your infirmary last night with a fever that would not break. It broke at dawn. I thought you should know that first.\"\n{n}She nods at the two new cots.{/n} \"Those men went to the wall unblessed because of me. Heaven's envoy will not bless what he cannot explain, and he cannot explain me. I have told them I am sorry. They did not know what for.\"\n{n}The black wing folds against her back as if it too is listening.{/n}\n{n}She sets the basin down with both hands. It is only half full, and still it shakes.{/n}\n\"I remember your face when you gave the word. I remember the laboratory, and Areelu's glass, and the floor. Then nothing, and in the nothing, a light I made with my own hands, a long time ago, for my brother. I went towards it. Then I was breathing, and every breath hurt.\" {n}She flexes her fingers.{/n} \"The chaplains say resurrection gives the body back whole. It does. It does not give back the floor of that laboratory. I have lain on it every night since.\"\n\"Before I would let them carry me to the cots, I sent for the Hand's chaplain. Nobody asked me to. I had not promised anyone. But I will not be raised on a lie, and I told him what was done, and by whom. He let the candle burn down a finger's width before he spoke. Then he blessed me, and not you.\"",
           "Choices": [
             {
               "Text": "[Tell her the truth] \"I struck you. I'd rather you hear it from me than from Heaven.\"",
@@ -200642,7 +200713,7 @@
         {
           "Id": "start",
           "Speaker": "Targona",
-          "Text": "{n}The ward is quiet. The sergeant has gone back to his company on the east wall. Targona is folding bandages, and she does not stop when you come in.{/n}\n\"Ask, then. But first promise me something. Whatever you keep up your sleeve, do not use it on death again. Not unnoticed, not for me, not for anyone. If I fall again, let me go. My brother went. I would rather be where he is than be the reason you keep cheating.\"",
+          "Text": "{n}The ward is quiet. The sergeant has gone back to his company on the east wall. Targona is folding bandages, and she does not stop when you come in.{/n}\n\"Ask, then. But first promise me something. My brother's light, the part of him that is in you: do not spend it on death again. Not unnoticed, not for me, not for anyone. If I fall again, let me go. My brother went. I would rather be where he is than be the reason you keep cheating.\"",
           "Choices": [
             {
               "Text": "[Promise, and ask her] \"I promise. Stay with me.\"",
@@ -282193,7 +282264,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}The drow Kaylessa did not answer the Commander's question until the war was over. The Commander had never quite asked it. She answered it anyway, one evening after the Threshold, by walking into the Commander's rooms with the shutters open and the lamp out, and laying a Kyonin dagger on the table between them, hilt towards the Commander's hand.{/n}\n{n}\"Your choice, soldier,\" she said. \"It always was. I only wanted to be sure you knew it.\"{/n}\n{n}The Commander closed a hand round the hilt. She stayed. She kept her rules, and she kept her knife where one of them could reach it, and she did not say which one, and she was never cured, and she checked the clock every morning she had.{/n}",
+          "Text": "{n}The drow Kaylessa did not answer the Commander's question until the war was over. The Commander had never quite asked it. She answered it anyway, one evening after the Threshold, by walking into the Commander's rooms with the shutters open and the lamp out, and laying a Kyonin dagger on the table between them, hilt towards the Commander's hand.{/n}\n{n}\"Your choice, soldier,\" she said. \"It always was. I only wanted to be sure you knew it.\"{/n}\n{n}The Commander closed a hand round the hilt, and she let go of it one finger at a time, and then she put out the lamp. She took the Commander's wrist in the dark, the way she had in the streets after curfew, and walked backwards to the bed without once looking where she was going, and pulled the Commander down onto it by the collar, and knelt astride and unlaced the courier's grey at her own throat with quick soldier's fingers, and said the word she called everyone against the Commander's mouth.{/n}\n{n}In the morning the dagger hung on a nail by the door, where either of them could reach it, and the first thing she did on waking was check the clock, and the second was to tell the Commander that they snored.{/n}\n{n}She stayed. She kept her rules, and she kept her knife where one of them could reach it, and she did not say which one, and she was never cured, and she checked the clock every morning she had.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -287105,7 +287176,7 @@
         {
           "Id": "open",
           "Speaker": "Narrator",
-          "Text": "{n}She comes for you after the last bell, wrapped to the eyes, with no lantern. She doesn't say where you're going. She doesn't need a light; you do, and she takes your wrist instead and leads you.{/n}",
+          "Text": "{n}She comes for you after the last bell, wrapped to the eyes, with no lantern. She doesn't say where you're going. She carries no light and wants none. She takes your wrist and leads you.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -287205,7 +287276,7 @@
         {
           "Id": "ravine",
           "Speaker": "Narrator",
-          "Text": "{n}Not far. Out of the south gate and down into the ravine below the wall, where the stones are still stained dark in places and someone has swept away the lantern glass. It's black as the bottom of a well with the moon down. She can see. You can't.{/n}\n{n}She walks you to the stone where the hunter lay and stops there, with your wrist still in her hand.{/n}",
+          "Text": "{n}Not far. Out of the south gate and down into the ravine below the wall, where the stones are still stained dark in places and someone has swept away the lantern glass. It's black as the bottom of a well with the moon down, and she knows every stone of it.{/n}\n{n}She walks you to the stone where the hunter lay and stops there, with your wrist still in her hand.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -287471,7 +287542,7 @@
         {
           "Id": "cut",
           "Speaker": "Narrator",
-          "Text": "{n}She goes down onto the courier's cloak and pulls you down after her with both hands knotted in your hair, and says the word she calls everyone against your mouth. It has never once sounded like that. Above you the stars she can see and you can't burn on over the place where she was meant to die.{/n}",
+          "Text": "{n}She goes down onto the courier's cloak and pulls you down after her with both hands knotted in your hair, and says the word she calls everyone against your mouth. It has never once sounded like that. Above you the stars she has been naming to you one by one burn on over the place where she was meant to die.{/n}",
           "Choices": [
             {
               "Text": "[...]",
@@ -287569,7 +287640,7 @@
         {
           "Id": "back",
           "Speaker": "Narrator",
-          "Text": "{n}The Kyonin dagger is back in her left boot. She is turning its empty sheath on her knee, round and round, a habit she hasn't noticed she has.{/n}",
+          "Text": "{n}The Kyonin dagger is back in her left boot, sheathed. Her fingers keep going to the hilt where it sticks up past the leather, round and round the worn wood, a habit she hasn't noticed she has.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -288600,7 +288671,7 @@
       "Owner": "Kaylessa",
       "MinChapter": 3,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"You've got a letter.\"",
       "Nodes": [
         {
           "Id": "open",
@@ -288721,22 +288792,21 @@
       "DelayHours": 72,
       "Optional": true,
       "Relationship": "kaylessa",
-      "Remote": true,
-      "Kind": "visit",
       "Chapters": [
         3,
         5
       ],
+      "ContactUnit": "a1569a0739314d04cb8af1d47dcffbe0",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
+      "InteractionHub": "kaylessa.presence",
       "RequiresAnyGroups": [
         [
           "kaylessa.trickster.knife_held",
           "kaylessa.trickster.knife_handed_back"
         ]
-      ],
-      "Sender": "Kaylessa"
+      ]
     },
     {
       "Id": "kaylessa.clearing.how_it_ends",
@@ -387359,6 +387429,23 @@
         "nurah.trickster.cost.late"
       ]
     ],
+    "nurah.trickster.coda_alive": [
+      [
+        "nurah.complete",
+        "nurah.prison"
+      ],
+      [
+        "nurah.complete",
+        "nurah.ran_off"
+      ],
+      [
+        "nurah.complete",
+        "nurah.trickster.returned"
+      ],
+      [
+        "nurah.trickster.late_coda"
+      ]
+    ],
     "minagho_chivarro.trickster.chivarro_cellar": [
       [
         "chivarro.removed"
@@ -387555,7 +387642,22 @@
       [
         "trickster.ever",
         "kaylessa.trickster.knife_shown",
-        "kaylessa.wasps.in_the_dark"
+        "kaylessa.wasps.in_the_dark",
+        "kaylessa.trickster.truth_settled"
+      ]
+    ],
+    "kaylessa.trickster.truth_settled": [
+      [
+        "kaylessa.trickster.told_borrowed"
+      ],
+      [
+        "kaylessa.trickster.confessed_price"
+      ],
+      [
+        "kaylessa.trickster.alive.swap_clean"
+      ],
+      [
+        "kaylessa.trickster.alive.swap_fumbled"
       ]
     ],
     "mielarah.trickster.contact": [
