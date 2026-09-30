@@ -19,6 +19,7 @@ Acknowledgments of other women are in Nenio's voice only; no scene between partn
 """
 from story_format import c
 from storylines.nenio_trickster import (ARCH_AGREED, ARCH_DEAD, ARCH_TRICK, CLOSED, COMMITTED, FOX_REVEALED, FRIEND_DONE,
+                                        ENIGMA_RESOLVED,
                                         MANUSCRIPT, NAME_FILED, P, RECREATED, RIDDLE_DONE, SCRIBE, STARTED, UNREMEMBERED,
                                         SENT_AWAY, VISITOR, F, KENABRES_LIED, KENABRES_SECRET, KENABRES_TOLD, OWES,
                                         meet, nar, nen, twin_ids, visit)
@@ -140,10 +141,10 @@ m(ARCHITECT, "Names worth remembering", '"Which letter today?"', [
         c("Continue", "reading")),
     nen("reading", '''"Kenabres, which is ours, and which is not in Sarkoris, and which she also hurt. Very well. Sarkoris. Iz. Undarin. Storasta, where the library was..." {n}She reads them flat, one after another, like a quartermaster reading a list of stores.{/n}
 {n}Somewhere after thirty she slows. Somewhere after fifty she stops, with her finger on a town whose name nobody can say, and looks at it.{/n}
-"I had forgotten these," she says. "On purpose. All of them. Every name on this map. I decided they were irrelevant, a long time ago, when I first read about her." {n}She looks at you.{/n} "I do not like that I did that. I shall have to think about why I do not like it."''',
+"I had forgotten these," she says. "On purpose. All of them. I decided they were irrelevant a long time ago, when I first read about her, and I was right; they do not change the result." {n}She looks at you, and her chin comes up.{/n} "They change the length of the entry. That is not the same thing, and I will not have you pretend it is."''',
         c("Continue", "both")),
-    nen("both", '''"It is possible, I think, to admire an experiment and loathe the experimenter. I have never tried. It sounds exhausting." {n}She folds the map.{/n}
-"Put the list after the entry. All of it. It will make the entry twice as long and three times as dull, and the students of Absalom will skip it." {n}Her mouth goes thin.{/n} "Let them try. I shall set it in the examination."''',
+    nen("both", '''"The entry stands. 'Altar of science' stands. She did what nobody believed possible, and I will say so to every paladin who throws a boot at me." {n}She folds the map.{/n}
+"But an altar has a price list, and I had left it off, which is sloppy. Put the list after the entry. All of it. It will make the entry twice as long and three times as dull, and the students of Absalom will skip it." {n}Her mouth goes thin.{/n} "Let them try. I shall set it in the examination. A scholar who cannot recite what a breakthrough cost does not understand the breakthrough."''',
         c("[Write the list.]")),
     nen("agreed", '''"Exactly!" {n}She beams at you, the warm, delighted beam of a scholar who has found a colleague.{/n} "Nobody on this crusade will say that to me. They go red, or they reach for their swords. A paladin threw a boot at me once. It was not even her boot."
 "You understand. The experiment is what matters. The rest is weather." {n}She takes the pencil from you and underlines "altar of science" twice, herself, in a line that goes through the paper.{/n} "I am very pleased with you, follower. I did not expect to be."''',
@@ -314,11 +315,17 @@ v(REPORT, "A report from the capital", [
 m(PAGE_ONE, "Page one", '"You\'ve got a clean sheet. That\'s a bad sign."', [
     nen("open", '''"It is an extremely bad sign." {n}She is sitting very straight at @DESK@ with a single clean sheet in front of her and her hands folded on top of it, like a pupil waiting for an examination to begin.{/n}
 "There is one entry I have never written. In four thousand years I have described kings and bees and the correct way to kick a linnorm, and I have never written one line about the author." {n}She pushes the sheet toward you.{/n} "It would be vanity. So I shall dictate it, and you will write it, and then it will be your vanity and not mine."''',
-        c("Continue", "pre", forbids=(RIDDLE_DONE, VISITOR)),
+        c("Continue", "pre", requires=(FOX_REVEALED,), forbids=(RIDDLE_DONE, VISITOR, ENIGMA_RESOLVED)),
         c("Continue", "post", requires=(RIDDLE_DONE,)),
-        c("Continue", "visiting", requires=(VISITOR,), forbids=(RIDDLE_DONE,))),
+        c("Continue", "visiting", requires=(VISITOR,), forbids=(RIDDLE_DONE,)),
+        c("Continue", "unvisited", forbids=(FOX_REVEALED, RIDDLE_DONE, VISITOR, ENIGMA_RESOLVED)),
+        c("Continue", "resolved", requires=(ENIGMA_RESOLVED,), forbids=(RIDDLE_DONE, VISITOR))),
     nen("pre", '''"You know why. We are going to the Enigma. The masks are nearly found, and the entity that asked me who I was is going to ask again, and this time I intend to answer it with something better than my name." {n}Her ears are flat, and she is making no attempt to stand them up.{/n}
 "It will be my triumph. The experiment of the millennium. Or it will be my downfall, a complete fiasco. Those are the only two outcomes I can calculate." {n}She taps the sheet.{/n} "If it gobbles me up, run while it is distracted, and tell Golarion about the heroic death of its greatest daughter. You will need the entry. Write."''',
+        c("Continue", "entry")),
+    nen("unvisited", '''"You know why. Somewhere in this country there are ruins that ask the people who walk into them who they are. I have read about them. I intend to walk into them, and people who walk into ruins ought to leave an entry behind." {n}She taps the sheet.{/n} "It is not morbid. It is filing. Write."''',
+        c("Continue", "entry")),
+    nen("resolved", '''"You know why. I went into the Enigma as nothing and argued my way out with my name, with some help, and I thanked the help, which I do not usually do." {n}She does not look at you.{/n} "A thing that was very nearly lost should be written down. Otherwise one forgets how nearly, and then one is careless with it."''',
         c("Continue", "entry")),
     nen("post", '''"You know why. I went into the Enigma as nothing and came out with my name. Somebody paid for it." {n}She does not look at you.{/n} "A thing that has been paid for should be written down. Otherwise one forgets what it cost, and then one spends it carelessly."''',
         c("Continue", "entry")),
@@ -377,13 +384,15 @@ m(VOLUME_ONE, "Volume one", '"You\'re packing."', [
 
 
 m(LONG, "Longitudinal", '"How is the study going?"', [
-    nen("open", '''"Badly." {n}She is at @DESK@ with a sheet headed LONGITUDINAL STUDY, SUBJECT [          ], and under the heading there are three lines of her writing, and all three of them are crossed out, which you have never seen her do.{/n}
-"I cannot write it up. Every time I describe what I have observed, it turns into something that is not an observation. It becomes an adjective." {n}She holds the sheet out to you at arm's length, like a dead mouse.{/n} "Look. That word was 'warm'. That one was, I think, 'mine'. That one I do not know and I refuse to find out."''',
-        c('"You crossed them out."', "crossed"),
-        c('[Flirt] "Read me the adjectives."', "adjectives")),
-    nen("crossed", '''"Yes." {n}She says it the way a person admits to a crime.{/n} "Four thousand years. I have never crossed anything out. A thing observed is observed. And here I am, crossing out 'warm' as if it were a lie." {n}She puts the sheet down.{/n} "It was not a lie. It was true. That is the trouble. It was true and it was not science, and I do not know which drawer to put it in."''',
+    nen("open", '''"Productively." {n}She is at @DESK@ with a sheet headed LONGITUDINAL STUDY, SUBJECT [          ], and under the heading three columns of figures in a hand that is, for once, nearly legible.{/n}
+"Sleep: four hours and some minutes on an ordinary night; fewer before a battle and more after one, which is the wrong way round, and I intend to find out why. You wake at doors. Not trumpets. Not screams; there were screams on the second night and you slept through them. Doors." {n}She makes a mark.{/n} "I have been opening and shutting mine at intervals of an hour since the morning after, to be sure."''',
+        c('"You\'ve been opening doors all night to wake me?"', "crossed"),
+        c('[Flirt] "What\'s in the third column?"', "adjectives")),
+    nen("crossed", '''"To test you. Waking you was a side effect." {n}She does not look up.{/n} "I do not know why doors, and you will not tell me, so I shall have to find out the long way. Three more nights. A result from four nights is an anecdote."
+{n}You tell her what you think of the method. She writes that down too, under a heading of its own.{/n} "Objection from the subject, noted. Overruled. The subject is not on the ethics committee. There is no ethics committee. I have checked."''',
         c("Continue", "question")),
-    nen("adjectives", '''"No." {n}Then, after a while, in a lower voice, reading from the crossed-out lines as if they belonged to someone else:{/n} "'Subject warm. Subject persistent. Subject stands to one side of doors and it is unbearably dear.'" {n}She puts the sheet face down.{/n} "That last one is not an adjective. That is a whole clause. I do not know where it came from. I suspect you."''',
+    nen("adjectives", '''"Things that serve no purpose." {n}She turns the sheet round and reads it to you, flatly, like an inventory.{/n} "You stand to one side of doors. You eat the crust of your bread first and give the soft part to whoever is nearest. You say 'good' to horses. You hum when you are lying, the same four notes."
+"Every scientist keeps such a column, for what does not fit. Mine was empty for four thousand years. Yours is on its second sheet." {n}She taps it.{/n} "I intend to find out what the column measures. I am not going to guess. Guessing is how people end up writing poetry."''',
         c("Continue", "question")),
     nen("question", '''"I am going to ask you a question. I mean to ask this one. I have drafted it." {n}She takes a slip of paper from her sleeve and reads it.{/n}
 "When this war is over, what do you want?"
@@ -491,11 +500,16 @@ m(EDGE, "The edge of the Wound", '"You want to go where?"', [
         c('"The maps are enough. We should go."', "maps"),
         c("[Say nothing, and let her look.]", "look")),
     nen("read", '''{n}You read them. A hand and a sword. A white horse. Three stars on blue. A badge you do not know, and she does, and says it without being asked. She writes them all down, one to a line, with the distance from the edge beside each, and the list goes over onto the back of the page.{/n}
-"This is not science," she says, halfway down the second side. "This is a list of the dead. I do not do lists of the dead. I did Sarkoris, once, because somebody made me, and I have not forgiven them." {n}She writes the next badge anyway.{/n} "It turns out the dead are also data. Everything is. It is extremely inconvenient."''',
+"This is not science," she says, halfway down the second side. "This is a list of the dead. I do not do lists of the dead."''',
+        c("Continue", "sarkoris", requires=(ARCH_DEAD,)),
+        c("Continue", "read_first", forbids=(ARCH_DEAD,))),
+    nen("read_first", '''"I have never kept one. A number does the work of a list and takes less paper." {n}She writes the next badge anyway, and the next.{/n} "The number for this line is somewhere past two hundred. I have written every name so far to arrive at it. It is a very inefficient way to count, and I find I cannot stop, and I do not like finding things out about myself on a battlefield."''',
         c("Continue", "home")),
     nen("maps", '''"The maps are not enough." {n}She says it sharply, and then seems surprised at herself.{/n} "The maps say three miles. The shields say three miles of people. I did not know that until I stood here. I should have known it. I am supposed to know everything." {n}She takes one more measurement and gets up.{/n} "Very well. We go. But I am coming back with a longer chain."''',
         c("Continue", "home")),
     nar("look", '''{n}You let her look. She looks for a long while, and then she takes the pencil from behind her ear and writes something at the bottom of the chapter on the Worldwound's expansion, in capitals, slowly, so that anyone could read it: "SEE SHIELDS."{/n}''',
+        c("Continue", "home")),
+    nen("sarkoris", '''"I did Sarkoris once, because you made me read it aloud. It did not change my opinion of the Architect. It has not left me either." {n}She writes the next badge anyway.{/n} "It turns out the dead are also data. Everything is. It is extremely inconvenient."''',
         c("Continue", "home")),
     nen("home", '''{n}On the ride back she sits behind you, because she says the horse dislikes her, and holds the jars in her lap and her other arm around your waist, for balance.{/n}
 "Thank you for coming," she says to your back, somewhere near the picket line. "I would have gone alone. I would have measured the shields and written down the numbers and come home and not felt anything, and then in a hundred years I would have wondered why that chapter was wrong." {n}Her arm tightens, briefly.{/n} "It is less wrong now. That is your fault."''',
