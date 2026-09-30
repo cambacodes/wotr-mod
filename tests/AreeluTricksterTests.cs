@@ -358,17 +358,39 @@ internal static class AreeluTricksterTests
         check(burned.Has(P + "commander_burned") && !burned.Has("trickster.cheated_death") && Available(priorLien, burned)
               && !Available(survived, burned) && !report.Any(s => Available(s, burned)), "Trk_Areelu_PriorLien failed.");
         check(!Available(priorLien, punchline) && !Available(priorLien, rewriteWorld), "The prior-lien page plays when the Commander lived.");
+        // Sol r3 COX: Last Call H2 returns the Commander from the Wound-closed sacrifice; the permanent-loss page yields.
+        var bottled = World(story, 6, "trickster.ever", "sacrifice", "ending.wound_closed", "trickster.lastcall.taken", "trickster.lastcall.pillar.bottle",
+            Struck, Bet, Committed, Named, Drawn);
+        var lienBottled = S(P + "finale.lien_bottled");
+        check(bottled.Has("trickster.commander_back") && !Available(priorLien, bottled) && Available(lienBottled, bottled) && !Available(lienBottled, burned),
+            "Sol r3 COX: Areelu's prior lien ignores Last Call H2 (or the H2 page plays in a permanent loss).");
+        var h2Nodes = new HashSet<string>();
+        Program.Walk(lienBottled, bottled, (node, _) => h2Nodes.Add(node));
+        check(h2Nodes.Contains("across") && h2Nodes.Contains("morning") && h2Nodes.Contains("stopped")
+              && !lienBottled.Nodes.SelectMany(n => new[] { n.Text }.Concat(n.Paragraphs.Select(pp => pp.Text))).Any(t => t.Contains("empty flask")),
+            "Sol r4 BEL/COX: the H2 romance has no night, or the flask leaves the Commander.");
+        // Sol r3 INT: the native Trickster sacrifice also starts Ending_AreeluDead (areelu.dead_fight); the collected
+        // rewrite lifts both, and the report (with its intimate beat) continues. A bare combat death stays canon.
+        var fullRewrite = With(story, rewriteWorld, "areelu.dead_fight");
+        check(Available(report.Single(s => s.Id.EndsWith(".rooms")), fullRewrite) && Available(report.Single(s => s.Id.EndsWith(".participation")), fullRewrite)
+              && !Available(report.Single(s => s.Id.EndsWith(".rooms")), World(story, 6, "trickster.ever", "areelu.dead_fight", "ending.trickster", Struck, Bet, Committed, Named, Drawn)),
+            "Sol r3 INT: the native sacrifice's general death key blocks the rewritten report.");
+        // Sol r3 CAN: the Crossroads of Worlds is the all-planes outcome only.
+        var crossroads = report.Single(s => s.Id.EndsWith(".crossroads"));
+        check(!Available(crossroads, rewriteWorld) && !Available(crossroads, punchline)
+              && Available(crossroads, World(story, 6, "trickster.ever", "sacrifice", "ending.trickster_allplanes", Struck, Bet, Committed)),
+            "Sol r3 CAN: the Crossroads page plays on the Nirvana-only ending.");
         check(!Available(report.Single(s => s.Id.EndsWith(".wound")), World(story, 6, "trickster.ever", "areelu.sacrifice_wound", Struck, Bet, Committed, Named)),
             "The wound page plays after the Wound was closed.");
 
         // The intimate beat and its refusal are reachable on both survivals; the morning after follows the yes.
         var participation = report.Single(s => s.Id.EndsWith(".participation"));
-        foreach (var world in new[] { rewriteWorld, punchline, lateCommit })
+        foreach (var world in new[] { rewriteWorld, With(story, rewriteWorld, "areelu.dead_fight"), punchline, lateCommit })
         {
             var visited = new HashSet<string>();
             var ends = Program.Walk(participation, world, (node, _) => visited.Add(node));
             check(ends.Count > 0 && visited.Contains("morning") && visited.Contains("morning_after") && visited.Contains("closed")
-                  && (world == punchline ? visited.Contains("in_witch_2") : visited.Contains("in_mortal_2")),
+                  && (ReferenceEquals(world, punchline) ? visited.Contains("in_witch_2") : visited.Contains("in_mortal_2")),
                 "The night, its morning after or its refusal is unreachable.");
         }
         // Every page of the report walks to the end on both survivals without a dead end.
