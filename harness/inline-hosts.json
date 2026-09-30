@@ -10307,14 +10307,14 @@
    }
   },
   "horzalah.trickster.ch4.scar": {
-   "kind": "return-cue",
+   "kind": "return-to-list",
    "lists": [
     "9652bd6d33d394a498bb7a1c28693cc6"
    ],
    "explicit": true,
    "contact": null,
    "entry": {
-    "9652bd6d33d394a498bb7a1c28693cc6": "RRT_entry.horzalah.trickster.ch4.scar"
+    "9652bd6d33d394a498bb7a1c28693cc6": "RRT_entry.horzalah.trickster.ch4.scar.9652bd6d33d394a498bb7a1c28693cc6"
    },
    "resolved": true,
    "host": {

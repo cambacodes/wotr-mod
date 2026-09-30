@@ -360726,7 +360726,8 @@
       "AnswerLists": [
         "9652bd6d33d394a498bb7a1c28693cc6"
       ],
-      "NativeReturnCue": "7dce8fddc72c85d49a9520a9bc1ac85f"
+      "ReturnToList": true,
+      "ReturnText": "{n}The projection's hand has gone back to her throat. She waits, with no patience at all, for your next question.{/n}"
     },
     {
       "Id": "horzalah.trickster.ch5.nothing",

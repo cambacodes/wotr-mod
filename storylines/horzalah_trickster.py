@@ -193,7 +193,9 @@ SCENES.append(scene(H + "ch4.scar", "The collar-shaped scar", "Horzalah", 4, "[L
 "When Yozz grew tired of walking me through his parties on a chain, the collar came off. It left that." {n}Her mouth twists.{/n} "Nothing that was taken from me has ever come back whole, mortal. Not even my own neck. Look at the seals. They are prettier, and they are none of your business either."''',
          c("[Let her go back to her questions.]", flags=(SCAR_NOTED,)))],
     requires=(SCAR_SEEN,), forbids=(SCAR_NOTED,), last=4, Relationship=REL,
-    AnswerLists=[YOZZ_LIST], NativeReturnCue=SCAR_CUE))
+    # Back to her list, not to Cue_0049: replaying that cue would repeat her answer about her sister.
+    AnswerLists=[YOZZ_LIST], ReturnToList=True,
+    ReturnText="{n}The projection's hand has gone back to her throat. She waits, with no patience at all, for your next question.{/n}"))
 tag(H + "ch4.scar", "N-all")
 
 BOX_NODES = [

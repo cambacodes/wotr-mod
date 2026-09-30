@@ -179,9 +179,9 @@ internal static class HorzalahTricksterTests
 
         // Chapter 4 (N-all): the scar in Yozz's hall and the box after Colyphyr.
         var ch4 = World(story, 4, "horzalah.scar_seen");
-        check(Avail(scar, ch4) && scar.AnswerLists.SequenceEqual(new[] { YozzList }) && scar.NativeReturnCue == ScarCue
+        check(Avail(scar, ch4) && scar.AnswerLists.SequenceEqual(new[] { YozzList }) && scar.ReturnToList && scar.NativeReturnCue == null
               && Take(scar, ch4, "who", 0, P + "scar_noted").Has(P + "scar_noted") && Ch(scar, "look", 2).Abort,
-            "The Chapter 4 scar beat is not inline on YozzDying's list, returning to Cue_0049, with a silent abort.");
+            "The Chapter 4 scar beat is not inline on YozzDying's list, returning to the list (not replaying Cue_0049), with a silent abort.");
         check(Avail(box5, World(story, 5, "horzalah.met_q2")) && Rules.IsRemote(box5) && box5.Kind == "letter" && box5.MinChapter == 5
               && !Avail(box5, World(story, 5, "horzalah.met_q2", "horzalah.met_q3_a")) && !Avail(box5, World(story, 5, "horzalah.met_q2", Primed))
               && !story.Scenes.Any(s => s.Relationship == "horzalah" && Rules.IsRemote(s) && s.MinChapter <= 4),
