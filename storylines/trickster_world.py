@@ -470,6 +470,7 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
                                     'irabeth.trickster.cost.dug_out',
                                     'coronation.seen',
                                     'anevia.irabeth_killed_by_commander'],
+                                   ['irabeth_dead', 'irabeth.trickster.raised_on_record', 'coronation.seen'],
                                    ['irabeth.trickster.returned']],
  'irabeth.trickster.vigil_ready': [['irabeth.trickster.cost.vell', 'coronation.seen'],
                                    ['irabeth.trickster.cost.dug_out',

@@ -179,7 +179,7 @@ s("private_last_visit", "The visit before you leave", [
       c('[Leave this farewell for the day you are ready to make it.]', abort=True)),
     n("business", "Konomi", '''"The first tenant paid for her option. Her adviser sent the receipt. The owner and I have signed the arrangement we discussed, and I have been paid under it. I will keep working from both cities."
 {n}Konomi sits on the edge of the bed, leaving space beside her.{/n}
-"There. The account is closed, and I did not have to be dismissed for it this time. There will always be another applicant. I refuse to spend tonight on any of them."
+"There. That is done, and I did not have to be dismissed for it this time. There will always be another applicant. I refuse to spend tonight on any of them."
 {n}She looks toward the book, then back at you.{/n}''',
       c('[Ask about the applicants whose first hearing she now controls.]', "exclusive", requires=("konomi.private_career_exclusive",)),
       c('[Ask whether the applicant paid for an independent search.]', "portfolio", requires=("konomi.private_career_portfolio",))),

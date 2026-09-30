@@ -45,7 +45,7 @@ s("return_request", "An order without an officer", [
         c('[Explain how questioning the supplier before showing the records could expose an accomplice.]', "trap"),
         c('[Put the letter aside without sending it.]', abort=True)),
     n("public", "Narrator", '''{n}You write that she owes Drezen no signature on this account. You would nevertheless value her judgment about the use of her name. She can answer by letter, name someone else to examine the papers, or meet you privately.{/n}
-{n}The next line takes longer. You would like to speak to her, beyond the account. You have not forgotten that she left. You are asking whether she will hear you, not announcing that the disagreement has ended.{/n}''',
+{n}The next line takes longer. You would like to speak to her, beyond the account. You have not forgotten that she left. You ask whether she will hear you. You do not pretend the argument is over.{/n}''',
         c('[Send the inquiry and personal request together.]', flags=("irabeth.return_request_sent", "irabeth.return_public_case"))),
     n("trap", "Narrator", '''{n}You outline the questions the supplier should receive, in order. First ask who witnessed the delivery. Let the reply acquire a signature. Only then produce the departure record.{/n}
 {n}You offer Irabeth the copies and invite her to find the flaw in your plan. Beneath that, you admit the second purpose of the letter. You want a conversation with her. Giving her a problem worth your time is your way of asking for some of hers.{/n}
@@ -97,7 +97,7 @@ s("return_first_words", "An hour outside the chain of command", [
 {n}Her tone is dry.{/n}
 "I considered returning the papers with someone else's recommendation. I nearly did."
 {n}She waits for your reaction before continuing.{/n}
-"Then I read the part where you admitted what you wanted. I preferred that to a summons pretending to be a courtesy. It did not oblige me to come. I came because I wanted to hear the rest."''',
+"Then I read the part where you admitted what you wanted. I preferred that to a summons dressed up as a courtesy. I'm not here because you asked. I'm here because I want the rest of it."''',
         c('"Then I had better offer you something worth the hour."', "personal"),
         c('"I would have used your recommendation. I would also have tried to write a better letter."', "personal")),
     n("personal", "Irabeth", '''"What do you want from me?"
@@ -132,5 +132,5 @@ s("return_first_words", "An hour outside the chain of command", [
 {n}She takes her papers. Yours remain covered in her precise corrections.{/n}
 "You may write," she says. "I am not promising that you will always like the reply."
 {n}There is enough of a smile in the warning to make it worth remembering. She leaves without asking anyone to return her to a post.{/n}''',
-        c('[Keep the correspondence personal and the account under investigation.]', flags=("irabeth.return_private_hour_kept",))),
+        c('[Write to her. Leave the account to the quartermaster.]', flags=("irabeth.return_private_hour_kept",))),
 ], requires=("irabeth.return_reply",), delay=12, physical=True)

@@ -4,8 +4,8 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 927,
-  "resolved": 927,
+  "entryTargetScenes": 928,
+  "resolved": 928,
   "inlineOnlyScenes": 230,
   "inlineOnlyResolved": 230,
   "answerListScenesWithoutContact": 517,
@@ -11413,6 +11413,25 @@
     "dialog": "ed7b39d0716d25c439f2b93c409da883",
     "dialogName": "Seelah_Main_dialog",
     "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "irabeth.trickster.killed.the_watch": {
+   "kind": "dialog",
+   "lists": [
+    "871af36f2ab2b1f40b5de77976c54276"
+   ],
+   "explicit": true,
+   "contact": "280d4712dceb37f4a88e98f1f4c6e64f",
+   "entry": {
+    "871af36f2ab2b1f40b5de77976c54276": "RRT_entry.irabeth.trickster.killed.the_watch"
+   },
+   "resolved": true,
+   "host": {
+    "list": "871af36f2ab2b1f40b5de77976c54276",
+    "dialog": "20e94a828d4016d45a6b723765306522",
+    "dialogName": "Irabeth_Dialogue",
+    "cue": "Cue_0069",
     "clicks": 0
    }
   },

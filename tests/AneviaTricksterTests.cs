@@ -265,6 +265,24 @@ internal static class AneviaTricksterTests
         check(unforgivenPages.Count == 1 && unforgivenPages[0].Id == "anevia.trickster.epilogue.nailed_wardrobe_unforgiven"
               && Rules.VisibleParagraphs(unforgivenPages[0].Nodes.Last(), unforgiven).Any(t => t.Text.Contains("beside that grave")),
             "The recommitted Anevia gets the ending that denies her night: " + string.Join(",", unforgivenPages.Select(s => s.Id)));
+        // Sol r1 INT: the renewed widow (Beth dead, not by the Commander) keeps her night too.
+        var widowRenewed = World(story, 6, "trickster.ever", "irabeth_dead", "anevia_gone", Returned, "anevia.lover", "anevia.committed",
+                                 "anevia.trickster.terms_kept");
+        var widowPages = story.Scenes.Where(s => s.Relationship == "anevia" && s.Owner == "Epilogue" && Rules.Available(story, s, widowRenewed)).ToList();
+        check(widowPages.Count == 1 && widowPages[0].Id == "anevia.trickster.epilogue.nailed_wardrobe_widow",
+            "The renewed widow gets a page that denies her night: " + string.Join(",", widowPages.Select(s => s.Id)));
+        // Sol r1 BEL: after the Commander killed Beth, the door has a price paid in public, and the second ask cannot skip it.
+        var penanceWorld = World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", Killed, Returned, "anevia.trickster.gate_seen");
+        penanceWorld.Times["anevia.trickster.gate_seen"] = penanceWorld.Hour - 96;
+        var penancePages = new HashSet<string>();
+        var penanceOut = Program.Walk(commit, penanceWorld, (page, _) => penancePages.Add(page));
+        check(penancePages.Contains("penance") && penanceOut.Where(r => r.Has("anevia.committed")).All(r => r.Has("anevia.trickster.said_it")),
+            "She commits to her wife's killer without the price.");
+        var killedNo = penanceOut.First(r => r.Has("anevia.trickster.declined") && !r.Has("anevia.trickster.said_it"));
+        var sayPages = new HashSet<string>();
+        var sayOut = Program.Walk(second, Later(story, killedNo, 96), (page, _) => sayPages.Add(page));
+        check(sayPages.Contains("say_it") && sayOut.Where(r => r.Has("anevia.committed")).All(r => r.Has("anevia.trickster.said_it")),
+            "The second ask trades the murder for an unrelated secret.");
         var closure = World(story, 6, "irabeth_dead", Killed, "anevia.lover");
         check(Rules.Available(story, S("anevia.ending_wife_killed"), closure), "The closure page is gone for a lover who never came back.");
         // The kept closet opens onto her room once: setup finds the room and does not open it.

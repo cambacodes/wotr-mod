@@ -138,7 +138,7 @@ s("unborrowed_hour", "An hour she had not promised", [
 "I liked the afternoon."
 "So did I. We'll keep that bit."
 {n}She gives you the last pear and keeps the knife. On the walk back she finds something to complain about, a loose cobble, a rude pigeon. You let her have it.{/n}''',
-      c('[Keep the friendship. Decline romance with Anevia only.]', flags=("anevia.closed", "anevia.local_declined"))),
+      c('[Shake your head.] "Friends, Anevia. Nothing more."', flags=("anevia.closed", "anevia.local_declined"))),
 ], forbids=("a_affair", "trying", "committed", "anevia.courtship_requested", "irabeth_dead", "irabeth_gone"), delay=0)
 
 
@@ -175,28 +175,28 @@ s("a_question_at_home", "The question before the answer", [
 {n}She looks at you over the mug.{/n}
 "This here's about you and me. If it goes near whatever you had with her, she'll tell you so. Loudly. Probably in front of the guard."
 "I can live with that."
-"You'll have to. Didn't marry a quiet woman."''', c('[Keep the new question separate from the ended romance.]', "time")),
+"You'll have to. Didn't marry a quiet woman."''', c('"That was then. Ask me what you came to ask."', "time")),
     n("her_marriage", "Anevia", '''"Good. Saves me makin' a speech about it."
 {n}Her smile is small and a little nervous, which on Anevia is a rare thing to see.{/n}
 "I know what you and Beth have got. Don't mean I know what you and I would be. I want my own go at findin' out. My own evenings. With my name on 'em."
 "And if all three of us want an evening?"
 "Then somebody asks. Out loud. Not tonight, and not by sneakin' it in sideways while we talk about somethin' else."
 {n}She wraps both hands around the mug.{/n}
-"I'm glad she's got you. Doesn't stop me bein' greedy."''', c('[Answer Anevia for herself.]', "time")),
+"I'm glad she's got you. Doesn't stop me bein' greedy."''', c('"I am answering you, Anevia. Not her."', "time")),
     n("separate", "Anevia", '''"Then tell her exactly that. Beth'll hear 'he wants all of us' in a weather report if she's nervous enough."
 {n}Anevia leans back, considering you.{/n}
 "I'd like you two able to sit in one room without either of you thinkin' the other's come to collect me. Argue about somethin' stupid. The way I carry a basket. Somethin' like that."
 "You would take her side."
 "Depends if she's right. And whether you just dropped the basket."
 {n}She grins, then lets it go.{/n}
-"She don't have to want you. You don't have to want her. That's the only way this works without somebody sulkin' in a corner for a year."''', c('[Ask what would make the arrangement worthwhile to her.]', "time")),
+"She don't have to want you. You don't have to want her. That's the only way this works without somebody sulkin' in a corner for a year."''', c('"And what do you get out of it?"', "time")),
     n("possible", "Anevia", '''"Keep that 'could' where it is. Don't polish it."
 {n}She says it kindly, then gives you a sharper look.{/n}
 "My wife ain't the second half of a bargain. Might be she fancies you. Might be she'd rather see you across a council table. I haven't asked her, and I won't ask for her."
 "I would not want that."
 "Then don't turn up with a plan for three when one of us said yes to a cup of tea. If there's somethin' between you and her, you grow it with her. I can't lend you my years with Beth."
 {n}She taps the table.{/n}
-"Right now it's you and me. I'm enjoyin' that more than I figured. Let me have it."''', c('[Keep this conversation about Anevia.]', "time")),
+"Right now it's you and me. I'm enjoyin' that more than I figured. Let me have it."''', c('"Then let us talk about you."', "time")),
     n("other", "Anevia", '''"Then tell me which of your nights have already got somebody's name on 'em. I don't need the gossip. Just the dates."
 {n}She listens while you describe what you can offer. Once she cuts you off when the answer starts sounding grander than it is.{/n}
 "One evenin' you actually turn up for beats a month you promise and don't."
@@ -222,20 +222,20 @@ s("a_question_at_home", "The question before the answer", [
 "That may go badly."
 "Might be the best evenin' we've had."
 {n}Her hand starts across the table toward yours. She stops it halfway and leaves it there, palm up, which is almost worse.{/n}
-"Soon. I ain't patient. I'm doin' an impression of patient. It's slippin'."''', c('[Tell her you want to make the effort too.]', "finish")),
+"Soon. I ain't patient. I'm doin' an impression of patient. It's slippin'."''', c('"I will not make you do all the work."', "finish")),
     n("finish", "Anevia", '''"I'll tell Beth you'll see her. Find her when she's got a free hour. Not in the middle of drill, she'll bite your head off out of reflex."
 {n}She rises with you, then stops by the door.{/n}
 "And after, don't come back and explain my marriage to me. Tell me what she said to your face and what you thought of it. I'll tell you where you've got it wrong."
 {n}You agree. She grins, still nervous under it.{/n}
 "Good. That's the hard bit done. Knew we'd get somethin' done if we sat here long enough."''',
-      c('[Arrange the conversation with Irabeth.]', flags=("anevia.spousal_conversation_requested",))),
+      c('"Then we talk to Irabeth. Together."', flags=("anevia.spousal_conversation_requested",))),
     n("stop", "Anevia", '''{n}Anevia does not answer at once.{/n}
 "That stings. Not gonna pretend it doesn't."
 {n}She moves your mug back from the edge of the table without looking at it.{/n}
 "Glad you said it here, though, and not after I'd made a fool of myself somewhere public. I'll tell Beth the question's off. Don't go explainin' yourself to her, she'll only feel sorry for you."
 "I did want the afternoons."
 "Me too. Give me a week before the next one. I'm gonna be very grown-up about this, right after I've been childish for a bit."''',
-      c('[End only Anevia\'s romantic courtship.]', flags=("anevia.closed", "anevia.local_declined"))),
+      c('"I cannot, Anevia. Not like this."', flags=("anevia.closed", "anevia.local_declined"))),
 ], requires=("anevia.courtship_requested",), forbids=("a_affair", "trying", "committed", "irabeth_dead", "irabeth_gone"))
 
 
@@ -253,7 +253,7 @@ s("one_truth", "The person who was not told", [
       c('"I will tell her the truth. I will not ask you to make it easier for me."', "account"),
       c('"Do you still want me?"', "want"),
       c('"Then perhaps we should keep our distance and let this disappear."', "disappear"),
-      c('[Postpone the conversation without changing the history.]', abort=True)),
+      c('"Not today. Ask me again."', abort=True)),
     n("want", "Anevia", '''"Yes. That's the whole bloody problem."
 {n}She meets your eyes.{/n}
 "I ain't gonna tell her you meant nothin' so I look better. And I ain't gonna tell you she matters less so you feel safe. You'd both smell it on me."
@@ -277,13 +277,13 @@ s("one_truth", "The person who was not told", [
 "No more sneakin'. After that, we see what's left standin'. Don't know yet."
 {n}She picks up her coat from the back of the chair.{/n}
 "I want there to be somethin'. Thought you ought to know that before you go in there."''',
-      c('[Agree to speak with Irabeth about this actual affair.]', flags=("anevia.spousal_conversation_requested", "anevia.single_affair_disclosed"))),
+      c('"We tell Irabeth. All of it."', flags=("anevia.spousal_conversation_requested", "anevia.single_affair_disclosed"))),
     n("stop", "Anevia", '''{n}Anevia shuts her eyes for a moment.{/n}
 "Right. I'll tell her."
 {n}When she opens them, she looks at you straight.{/n}
 "Don't call it a kindness. Might be right. Still hurts like a kick. And don't stand there tryin' to work out what face I ought to be makin'."
 {n}You leave her to go home and have the conversation alone. What happened between you is not undone because it has ended.{/n}''',
-      c('[End only Anevia\'s romance, retaining the actual affair history.]', flags=("anevia.closed", "anevia.local_declined"))),
+      c('"It happened. It ends here."', flags=("anevia.closed", "anevia.local_declined"))),
 ], requires=("a_affair", "a_morning", "a_will_tell"), forbids=("i_affair", "trying", "committed", "anevia.spousal_conversation_requested", "irabeth_dead", "irabeth_gone"), delay=0)
 
 
@@ -296,7 +296,7 @@ s("beths_question", "An answer that is hers", [
 "Before anything else. You outrank me in the field, in council and on every piece of paper in Drezen. You do not outrank me in my own marriage. Tell me you know that, or we stop here."''',
       c('"You are free to disagree with me. It will not affect your command."', "history"),
       c('"Of course. I expect you to remain loyal despite this."', "rank"),
-      c('[Ask to speak when you can give the conversation your full attention.]', abort=True)),
+      c('"Not now. When I can hear you properly."', abort=True)),
     n("rank", "Irabeth", '''"Then I heard you wrong. Or I heard you right."
 {n}She stands. It is a controlled movement, and there is nothing uncertain in it.{/n}
 "I will do my duty until the Wound is shut. That duty does not come with my wife attached to it."
@@ -344,21 +344,21 @@ s("beths_question", "An answer that is hers", [
 "What should I do?"
 "Be clear. Do not use her door to walk back through mine. And when I object to something, do not decide it is the old quarrel in a new coat. Sometimes I will simply be right."
 {n}She glances at the gloves.{/n}
-"New question. We will answer it straight, or not at all."''', c('[Discuss the present request and its actual terms.]', "practical")),
+"New question. We will answer it straight, or not at all."''', c('"Then ask it straight."', "practical")),
     n("already_lovers", "Irabeth", '''"No. It does not."
 {n}The look she gives you is warm and does not let you off anything.{/n}
 "I want our time. I want my marriage. And now Anevia wants something with you that is hers. Fine. I can picture the three of us at one table, some night. Picturing it is not the same as promising it."
 "We can keep the questions apart."
 "We will. I will not wake up one morning to find I promised a shared house because I liked seeing you make my wife laugh. When somebody wants the bigger thing, they ask for it. Out loud."
 {n}Her hand covers yours for a moment, rough and warm, then goes back to her knee.{/n}
-"I am answering as your lover and as her wife. I can do both. I have done harder drills."''', c('[Discuss the actual plans without presuming a triad.]', "practical")),
+"I am answering as your lover and as her wife. I can do both. I have done harder drills."''', c('"Then tell me what you will and won\'t have."', "practical")),
     n("not_courtship", "Irabeth", '''"Good. I was beginning to wonder if I would be expected to be grateful for being left out."
 {n}She gives you a level look and lets the awkwardness sit there for both of you.{/n}
 "I can like you without courting you. I can love Anevia without wanting everything she wants. I would like that to be allowed to be dull."
 "It will be."
 "Then keep arguing with me about patrols. If every quarrel over a watch rota turns into a private message about my wife, I will resign my commission and take up goats."
 {n}The smile is short, and real.{/n}
-"I know this household. That is not a joke. It is a forecast."''', c('[Discuss the actual visits and promises.]', "practical")),
+"I know this household. That is not a joke. It is a forecast."''', c('"Then let us talk evenings, not forecasts."', "practical")),
     n("refusal", "Irabeth", '''"Then I would tell her no. She would decide what she could live with, and I would decide what I could. You would not get a vote."
 {n}She does not make it sound easy.{/n}
 "I do not want to leave her. I am not saying it so someone will run to reassure me. But if there is no answer I could refuse, you have not come to ask. You have come to inform me, and politely."
@@ -373,12 +373,12 @@ s("beths_question", "An answer that is hers", [
 "You caught it before it was somebody else's problem. Good."
 {n}She leaves the scrap on the sill.{/n}
 "I will speak with Anevia. Give us some days. Then I will tell you my answer, myself."''',
-      c('[Give them time, with no promised romantic outcome.]', flags=("anevia.spouse_heard",))),
+      c('[Stand.] "Take your time, both of you."', flags=("anevia.spouse_heard",))),
     n("refused", "Irabeth", '''"Then I will tell Anevia exactly what you said. Word for word. I have a very good memory for words."
 {n}Irabeth opens the door and holds it, as for an officer leaving a court-martial.{/n}
 "She asked me to hear you. I have. I will keep serving the crusade. Do not mistake that for anything else."
-{n}The courtship ends here. She does not punish either of you with her command. She does not have to.{/n}''',
-      c('[Accept the end of Anevia\'s independent courtship.]', flags=("anevia.closed", "anevia.authority_refused"))),
+{n}She does not punish either of you with her command. She does not have to.{/n}''',
+      c('[Nod.] "Understood, Knight-Captain."', flags=("anevia.closed", "anevia.authority_refused"))),
 ], requires=("anevia.spousal_conversation_requested",), forbids=("irabeth_dead", "irabeth_gone"), owner="Irabeth")
 
 
@@ -394,7 +394,7 @@ s("beths_answer", "What she can agree to", [
       c('"Are you agreeing because you want to try, or because you fear losing her?"', "choice"),
       c('"I can keep those terms. I want your home to remain yours."', "history"),
       c('"I have reconsidered. I should not begin this relationship."', "decline"),
-      c('[Leave the decision unrecorded and continue another day.]', abort=True)),
+      c('"Sleep on it. Both of you."', abort=True)),
     n("choice", "Irabeth", '''"Both. I would not trust a woman who told you fear had nothing to do with it."
 {n}She considers how to go on.{/n}
 "Anevia asked what I would say if I knew she would stay whatever I said. I was angry she asked me something I could not answer on the spot. Then she said she would wait while I tried."
@@ -404,8 +404,8 @@ s("beths_answer", "What she can agree to", [
 "And I can still refuse. I refused her first idea, moving our evenings about at the last moment. She thought about it and agreed. I have not handed in my right to say no."''', c('"Then I will take the answer you have chosen to give."', "history")),
     n("history", "Irabeth", '''{n}Irabeth rests one hand on the back of her chair.{/n}
 "One more thing. I want it said before we are done."''',
-      c('[Hear what remains after the affair.]', "hurt", requires=("a_affair",)),
-      c('[Hear what remains uncertain about the new arrangement.]', "uncertain", forbids=("a_affair",))),
+      c('"Say the rest of it."', "hurt", requires=("a_affair",)),
+      c('"What are you still unsure of?"', "uncertain", forbids=("a_affair",))),
     n("hurt", "Irabeth", '''"This agreement does not mean I agreed to the lying. I am still angry about it. Anevia knows."
 {n}Her voice stays level.{/n}
 "Some nights I can take her hand without thinking of the question I did not know to ask. Some nights I cannot. Neither kind of night is the verdict on my marriage. We have agreed on that much."
@@ -432,7 +432,7 @@ s("beths_answer", "What she can agree to", [
 {n}She pauses.{/n}
 "You may change your mind. She may be hurt by it. Do not either of you hide behind me."
 {n}You agree to tell Anevia yourself. Irabeth does not thank you for it.{/n}''',
-      c('[End only the proposed romance with Anevia.]', flags=("anevia.closed", "anevia.local_declined"))),
+      c('"Then I won\'t ask it of either of you."', flags=("anevia.closed", "anevia.local_declined"))),
 ], requires=("anevia.spouse_heard",), forbids=("irabeth_dead", "irabeth_gone"), delay=72, owner="Irabeth")
 
 
@@ -447,7 +447,7 @@ s("her_own_answer", "The invitation she kept", [
 "Still want you. Figured I'd say so before I found somethin' clever to do with my hands."''',
       c('"I want you too. What were you planning for the box?"', "box"),
       c('"I have been thinking about kissing you all the way here."', "want"),
-      c('[Ask to postpone the evening without changing the agreement.]', abort=True)),
+      c('"Another evening. I will keep it."', abort=True)),
     n("box", "Anevia", '''"Growin' somethin'. Killin' it first, probably. Then askin' somebody what I did wrong."
 {n}She turns the box so its rough edge catches the light.{/n}
 "Woman at the market's got cuttin's of a herb she puts in soup. Smells better than our cook's whole cupboard. Said I could have one once I had somewhere for it."
@@ -493,7 +493,7 @@ s("her_own_answer", "The invitation she kept", [
 {n}She takes the place beside you. At first your shoulders touch only when somebody moves. Then she leans in properly and leaves her weight there.{/n}
 "You want the kiss later, you know where I am. I'll be right here, bein' charmin'."
 {n}You ask whether the box will survive the plant. She says the woman with the cuttings is more worried about the plant surviving the box, and the account turns into a long argument about which of them has less faith in Anevia, with Anevia arguing both sides and enjoying herself enormously.{/n}
-{n}She stays pressed against your side the whole time.{/n}''', c('[Enjoy the closeness she chose.]', "evening")),
+{n}She stays pressed against your side the whole time.{/n}''', c('[Lean into her.]', "evening")),
     n("evening", "Anevia", '''"Tell me somethin' you thought today and didn't say 'cause it wasn't important."
 {n}She props her chin on her fist.{/n}
 "Not a confession. Somethin' that got up your nose. Or made you laugh. Or made you wish you'd gone down the other street."
@@ -503,13 +503,13 @@ s("her_own_answer", "The invitation she kept", [
 "Couldn't afford to be that inconspicuous."
 {n}Later she taps the back of your hand and asks when she gets you again. You name a day you can actually keep. She checks it against her own promises, and nods.{/n}
 "Good. Somethin' to look forward to that ain't an intercepted letter."''',
-      c('[Choose this relationship with Anevia, with her marriage and other lives intact.]', flags=("anevia.lover", "anevia.personal_ready"))),
+      c('[Kiss her.] "Yes. You, and everything you come with."', flags=("anevia.lover", "anevia.personal_ready"))),
     n("stop", "Anevia", '''{n}Anevia takes her hand back and sits down in the other chair.{/n}
 "Then say it now. Before I start rememberin' tonight as somethin' it wasn't."
 {n}You tell her as well as you can. She listens, asks one question, and takes the answer without making it easy for either of you.{/n}
 "Go on. I'll be fine. Just don't want company while I work out how disappointed I am."
 {n}You go. Behind you, she shoves the other chair back under the table.{/n}''',
-      c('[End only Anevia\'s romance.]', flags=("anevia.closed", "anevia.local_declined"))),
+      c('"I can\'t, Nevi. I\'m sorry."', flags=("anevia.closed", "anevia.local_declined"))),
 ], requires=("anevia.marital_terms_agreed",), forbids=("anevia.personal_ready", "irabeth_dead", "irabeth_gone"))
 
 
@@ -529,7 +529,7 @@ s("a_place_of_our_own", "A date that belongs to two people", [
 "I did not mean to suggest otherwise."
 "I know. I can turn a night out into a council meetin' if nobody stops me. Stop me."
 {n}She pushes the empty chair back under the table.{/n}
-"No council tonight. Two people, some food, and I find out if you tell the same stories when there's only one person interruptin'."''', c('[Accept the individual invitation within the actual existing relationship.]', "history")),
+"No council tonight. Two people, some food, and I find out if you tell the same stories when there's only one person interruptin'."''', c('[Take her hand.] "Then tonight is ours."', "history")),
     n("history", "Anevia", '''"And we don't pretend the bad bits happened to somebody else, neither."
 {n}She looks you over, then shrugs.{/n}
 "Not askin' you for penance. Just a good night. Don't need it to prove everythin' was always easy."
@@ -543,7 +543,7 @@ s("a_place_of_our_own", "A date that belongs to two people", [
     n("quiet", "Narrator", '''{n}She pulls her chair in until your shoulders touch and leaves the next silence alone. The room has its own small noises: wind at the window, feet on the floor below, the box knocking on the uneven sill.{/n}
 {n}After a while you tell her something too small to have mentioned in daylight. She asks about it without trying to fix it. Her answer wanders into a room she once hated, and the one noise that made her fond of it years later.{/n}
 "There. Whole story, not a scrap of use in it. You're a terrible influence."
-{n}She kisses your cheek and settles against you again.{/n}''', c('[Keep the quiet evening with her.]', "end")),
+{n}She kisses your cheek and settles against you again.{/n}''', c('[Stay where you are.]', "end")),
     n("ordinary", "Anevia", '''"Then help me work out if that box is crooked or the sill is."
 {n}You investigate together. Turning the box changes which corner lifts; sliding it along the sill fixes nothing. Anevia finally wedges a scrap of cloth under one edge and declares victory.{/n}
 "Practical knowledge beats architecture. Again."
@@ -554,7 +554,7 @@ s("a_place_of_our_own", "A date that belongs to two people", [
 {n}She says it before either of you stands. You pick a day, check it against the promises already sitting on it, and settle on an hour that is nobody's apology and nobody's emergency.{/n}
 {n}At the door she kisses you, slow, like she has all the time in the world and means to spend it here.{/n}
 "I like you when there's nobody else about. Was gonna put that in writin'. This was better."''',
-      c('[Continue the earned personal relationship with Anevia.]', flags=("anevia.lover", "anevia.personal_ready"))),
+      c('"Same time next week. I\'ll bring the wine."', flags=("anevia.lover", "anevia.personal_ready"))),
 ], any_of=("trying", "committed"), forbids=("anevia.personal_ready", "irabeth_dead", "irabeth_gone", "tirabade.group_closed"), delay=0)
 
 
@@ -563,8 +563,8 @@ s("an_invitation_afterward", "The question she asked separately", [
 "You came. Good. Was tryin' not to make the invitation a test."
 {n}She nods at the chair beside hers.{/n}
 "Let's say what we're after now. Without pretendin' that last talk never happened, and without lettin' it answer for us."''',
-      c('[Acknowledge the shared relationship that has ended.]', "ended", requires=("trying",)),
-      c('[Acknowledge the shared arrangement you did not begin.]', "declined", forbids=("trying",)),
+      c('"The three of us is over. I know."', "ended", requires=("trying",)),
+      c('"The three of us never started. I know."', "declined", forbids=("trying",)),
       c('[Leave the invitation for another day.]', abort=True)),
     n("ended", "Anevia", '''"We tried the three of us. Then we couldn't keep it. Both of those happened. I ain't sweepin' either one under the rug."
 {n}She looks at you straight.{/n}
@@ -578,7 +578,7 @@ s("an_invitation_afterward", "The question she asked separately", [
 "Nor do I."
 "Good. Then we ask the new thing without usin' it to run from the old one. Beth knows I asked you here. You've heard her answer from her own mouth."
 {n}She rests her hand on the empty chair beside her.{/n}
-"This one's from me."''', c('[Hear her separate invitation.]', "own")),
+"This one's from me."''', c('"Go on, then."', "own")),
     n("own", "Anevia", '''"I want to see you. For a walk. To moan at you about somethin'. To kiss you without the night endin' right after."
 {n}Her grin is small and nervous.{/n}
 "And Beth and me stay real. We ain't stopped bein' married 'cause a plan for everybody's evenin's fell over. I won't make it sound nicer for you at her cost."
@@ -590,12 +590,12 @@ s("an_invitation_afterward", "The question she asked separately", [
     n("date", "Narrator", '''{n}You pick an evening and stay for part of this one. Anevia tells you about a wooden box she has been forcing to fit a badly made sill. She wants to grow a herb in it and has already collected several rude opinions about her chances.{/n}
 {n}She shows you the crooked edge with her hands and argues when you suggest cutting it shorter. Then she stops arguing, takes your face in both hands and kisses you like she has been waiting all evening to shut you up.{/n}
 {n}When you leave, the next night has an hour attached to it. She makes you repeat the hour back to her, like a password.{/n}''',
-      c('[Keep the evening you have arranged with Anevia.]', flags=("anevia.lover", "anevia.personal_ready"))),
+      c('"Thursday, then. Yours."', flags=("anevia.lover", "anevia.personal_ready"))),
     n("stop", "Anevia", '''"Then I'm glad I asked, and didn't just assume."
 {n}She takes her hand off the chair and folds it with the other in her lap.{/n}
 "It hurts. Don't go fixin' it by sayin' somethin' you don't mean. Give me some room. We'll work out later how to be decent to each other."
 {n}You go when she asks. You both know exactly what has ended, and what has not.{/n}''',
-      c('[End only Anevia\'s romantic relationship.]', flags=("anevia.closed", "anevia.parted"))),
+      c('"I can\'t keep it, Nevi."', flags=("anevia.closed", "anevia.parted"))),
 ], requires=("tirabade.group_closed", "tirabade.anevia_continuation_invited"),
    forbids=("anevia.personal_ready", "irabeth_dead", "irabeth_gone"), delay=0)
 
@@ -611,7 +611,7 @@ s("borrowed_signature", "A name used without asking", [
 "I didn't come here to be the woman who accused half the street. I came because I don't know where the names go."''',
       c('"You have brought a specific concern. We can investigate it without calling everyone guilty."', "paper"),
       c('"Who delivered the paper?"', "courier"),
-      c('[Postpone the interview without recording its outcome.]', abort=True)),
+      c('"Let her come back when she\'s ready."', abort=True)),
     n("courier", "Ressa", '''"A woman in a brown coat. She came with a little board to write on. Asked whether my landlord had mentioned the inspection. When I said no, she said landlords always forget the things tenants have to pay for."
 {n}Ressa's mouth tightens.{/n}
 "I laughed. I knew exactly what she meant. That made her seem more real than the paper did."
@@ -656,12 +656,12 @@ s("borrowed_signature", "A name used without asking", [
     n("kept", "Narrator", '''{n}She slides the notice under a weight, tells the nearest aide where to find her if Ressa comes back, and waits until you are both outside the working rooms before she takes your hand.{/n}
 "There. I'm gonna remember three other things I ought to be doin' before we hit the street. When I do, you remind me I picked this."
 {n}You find something to eat and a place to sit. Anevia starts describing the paper seller, catches herself, and asks about your morning instead. You can see what it costs her.{/n}
-{n}When you part she kisses you, and does not apologize for enjoying it. The paper waits where she left it.{/n}''', c('[Keep the afternoon and the appointment to investigate.]', flags=("anevia.case_open",))),
+{n}When you part she kisses you, and does not apologize for enjoying it. The paper waits where she left it.{/n}''', c('"Tomorrow, the paper. Tonight was ours."', flags=("anevia.case_open",))),
     n("rescheduled", "Anevia", '''"Fair. I'd be annoyed if you'd just sat there waitin' on me."
 {n}She picks another time and makes you check it before she writes it down. When you agree, she pins the note where she will see it before she can promise the hour to anyone else.{/n}
 "Wanted you to stay. Not arguin'. Just sayin'."
 {n}You kiss her quickly before you go. She keeps hold of your hand a moment longer, then lets go.{/n}
-"Tomorrow for the paper. And the night we just picked, for us. Two different promises. Watch me keep both."''', c('[Leave with two distinct appointments.]', flags=("anevia.case_open",))),
+"Tomorrow for the paper. And the night we just picked, for us. Two different promises. Watch me keep both."''', c('"Two promises. I\'ll keep both."', flags=("anevia.case_open",))),
 ], requires=("anevia.personal_ready", "anevia.lover"), forbids=("irabeth_dead", "irabeth_gone"))
 
 
@@ -720,7 +720,7 @@ s("the_paper_seller", "What the impression leaves out", [
 {n}Tovra gives you directions to Dema's collection place. She also tells you which woman at the dye yard will answer a question directly and which will insist on telling you the history of the whole street first.{/n}
 "Either may know something useful," she adds. "I am merely warning you about the time."
 {n}Anevia thanks her. This approach leaves the impression unread and the meeting time unknown. It gives you a willing local introduction instead.{/n}''',
-      c('[Use the introduction without claiming a result from the paper.]', "cost", flags=("anevia.trace_asked",))),
+      c('[Take Tovra\'s name for Dema and go.]', "cost", flags=("anevia.trace_asked",))),
     n("cost", "Tovra", '''"You gonna put my name on the warnin'?"
 {n}The question comes after the work is done, when it is harder to pretend it is for somebody else's sake.{/n}
 "People will hear the paper came from here. I'd like 'em to hear I helped. I'd also like 'em not to put a brick through my window before they work out which way round it was."
@@ -739,7 +739,7 @@ s("the_paper_seller", "What the impression leaves out", [
 "This time. You catch me forgettin', kick me. Before I've built a whole case for bein' an ass."
 {n}She checks the sun and turns toward the street where Dema collects the washing.{/n}
 "Come on. Somebody to ask, and I'm told she bites if you volunteer her. Think I'm gonna like her."''',
-      c('[Go on with what the evidence actually supports.]', flags=("anevia.paper_examined",))),
+      c('"Then we go where the paper points."', flags=("anevia.paper_examined",))),
 ], requires=("anevia.case_open", "anevia.lover"), forbids=("irabeth_dead", "irabeth_gone"))
 
 
@@ -775,7 +775,7 @@ s("the_woman_with_the_basket", "What Dema chooses to carry", [
 "Names. Not enough to make a list for you. Enough that I remembered Ressa's street when she told me what happened."
 {n}Dema considers the door.{/n}
 "I could carry the next bundle and see whether the basket is still there. I could also tell you to stand outside until Cale comes out. The second option would give me a quieter evening."
-"Then let's discuss both," Anevia says.''', c('[Hear the choices without treating her help as owed.]', "choice")),
+"Then let's discuss both," Anevia says.''', c('"Tell us what you\'ll do, and what you won\'t."', "choice")),
     n("choice", "Dema", '''"If I help, I want to know what happens when she notices. I work here. I can't run back to headquarters and get a man on my door."
 {n}Anevia takes a slow breath before answering.{/n}
 "You tell us if the basket's there, and you leave. You don't take it, you don't keep her talkin'. She asks why you came, you're deliverin' the washin' you were gonna deliver anyway. We watch the door. Not you playin' spy."
@@ -795,12 +795,12 @@ s("the_woman_with_the_basket", "What Dema chooses to carry", [
 {n}Anevia asks whether Dema saw a weapon. She says no, then corrects herself: she saw none; that is not the same thing.{/n}
 "Go on, then. That's the answer I agreed to give."
 {n}Anevia thanks her once. Dema returns to the washing. She does not remain as a convenient witness for the confrontation that follows.{/n}''',
-      c('[Approach with knowledge of the basket and two occupants.]', "approach", flags=("anevia.basket_located",))),
+      c('[Go in knowing there are two of them and a basket.]', "approach", flags=("anevia.basket_located",))),
     n("watch", "Narrator", '''{n}You and Anevia wait where you can see the entrance. A woman carries a basket into the counting room, but the angle gives you no view beneath its cover. Dema does not approach the building again.{/n}
 {n}The wait gives the occupants time to move things. Once Anevia points to a thin drift of smoke from a side window. Someone has lit a brazier inside. It may be for warmth or dye work. It may not.{/n}
 "We know enough to question the false collection," she says. "If we wait for the room to explain itself from here, we may lose the papers."
 {n}You have chosen not to place another task on Dema. That choice protects her involvement and leaves you less certain about the evidence inside.{/n}''',
-      c('[Proceed with the false notice as the basis for the questions.]', "approach", flags=("anevia.basket_unconfirmed",))),
+      c('[Go in with the false notice in your hand.]', "approach", flags=("anevia.basket_unconfirmed",))),
     n("approach", "Anevia", '''{n}Anevia stops you before you turn into the passage.{/n}
 "I want the names back. I want to know who was buyin'. If I start chasin' the buyer while somebody's burnin' the names, grab my collar."
 "What will you do?"
@@ -809,7 +809,7 @@ s("the_woman_with_the_basket", "What Dema chooses to carry", [
 "And if you think I'm doin' it wrong, say so now, while it can still change somethin'. Not after, over wine."
 {n}She squeezes your hand once, hard, and lets it go.{/n}
 "And don't call me fearless after. Dema asked for somethin' sensible. I'm tryin' to be worth trustin' with it."''',
-      c('[Agree on the immediate priority and prepare to act.]', flags=("anevia.dema_terms_kept",))),
+      c('"Names first. Then the buyer."', flags=("anevia.dema_terms_kept",))),
 ], requires=("anevia.paper_examined", "anevia.lover"), forbids=("irabeth_dead", "irabeth_gone"), delay=0)
 
 
@@ -825,7 +825,7 @@ s("the_counting_room", "The names and the person leaving", [
 {n}The woman with the case stops fastening it. Her attention shifts to the side door.{/n}''',
       c('[Keep the woman with the case in view while Anevia questions Cale.]', "account"),
       c('[Ask Cale to put the basket on the desk.]', "basket"),
-      c('[Withdraw before beginning the confrontation and resume later.]', abort=True)),
+      c('[Back off. Come back later.]', abort=True)),
     n("basket", "Anevia", '''"The covered one. You know which."
 {n}Cale hesitates, then lifts it by the handle. A corner of paper shows beneath the cloth. The woman with the case looks at it once, too quickly, then returns her attention to the door.{/n}
 "Customer records," Cale says.
@@ -834,7 +834,7 @@ s("the_counting_room", "The names and the person leaving", [
 "Who is your colleague?"
 "A buyer."
 "Of roof assessments?"
-{n}Nobody answers that question immediately.{/n}''', c('[Hear the account before choosing the next move.]', "account")),
+{n}Nobody answers that question immediately.{/n}''', c('"Talk, Cale."', "account")),
     n("account", "Cale", '''"People sell information. Your friend knows that."
 {n}She looks at Anevia rather than you when she says it.{/n}
 "Names of people looking for work. Empty rooms. Who has a relative outside the city. There are merchants who pay for that. Not everything you don't like is a cult."
@@ -884,7 +884,7 @@ s("the_counting_room", "The names and the person leaving", [
 "Right now I could argue it either way and win. That's the relief talkin'. I don't trust it."
 {n}She turns to you.{/n}
 "Come find me in a day or two. Not for a report, I'll do the report at headquarters like a good girl. For the other talk."''',
-      c('[Agree to hear her judgment after the immediate relief.]', flags=("anevia.counting_room_settled",))),
+      c('"Tell me later. Breathe first."', flags=("anevia.counting_room_settled",))),
 ], requires=("anevia.dema_terms_kept", "anevia.lover"), forbids=("irabeth_dead", "irabeth_gone"), delay=0)
 
 
@@ -927,7 +927,7 @@ s("what_the_warning_cost", "After the names were returned", [
 "Even if we disagree now?"
 "Specially then. Long as you don't remind me who commands the army."
 {n}The grin comes back, faint and fond.{/n}
-"Don't make that face. You didn't. I'm allowed to be pleased about it."''', c('[Let the disagreement stand without ending the evening.]', "dema")),
+"Don't make that face. You didn't. I'm allowed to be pleased about it."''', c('"We disagree. Pour me another."', "dema")),
     n("reconsider", "Anevia", '''"Then remember it. Just don't turn it into a hair shirt you pull on every time the case comes up."
 {n}She reaches across and touches your fingers.{/n}
 "I made calls too. Could've shut up sooner. Could've kicked that brazier over before Cale got to it. I've got a whole list of ways that room could've gone smoother if I'd known the endin'."
@@ -963,7 +963,7 @@ s("what_the_warning_cost", "After the names were returned", [
 {n}The plant has put out one new leaf. Anevia points at it with pride out of all proportion to its size, then laughs when she sees you noticing. You ask if it is going in a report.{/n}
 "No. This one's mine."
 {n}She leans back against you when she says it. Out in the city the case is still making trouble for people. On the sill, the leaf is doing fine.{/n}''',
-      c('[Remember the work, its cost and the evening afterward.]', flags=("anevia.case_consequence_kept",))),
+      c('[Kiss her goodnight.]', flags=("anevia.case_consequence_kept",))),
 ], requires=("anevia.counting_room_settled", "anevia.lover"), forbids=("irabeth_dead", "irabeth_gone"), delay=48)
 
 
@@ -1010,7 +1010,7 @@ s("the_evening_without_a_case", "Something she did not have to solve", [
 "And sat there lookin' fond. Disgraceful."
 {n}She turns toward you, close enough that the teasing goes quiet without stopping.{/n}
 "Nobody catches me when I ain't picked my best angle. You keep doin' it. It's very rude."
-{n}Her palm rests against your cheek, warm, in no hurry to leave.{/n}''', c('[Ask what closeness she would like tonight.]', "desire")),
+{n}Her palm rests against your cheek, warm, in no hurry to leave.{/n}''', c('"What do you want tonight?"', "desire")),
     n("different", "Anevia", '''"You'd be bored stiff with somebody who agreed with you. I'd be bored tryin'."
 {n}She comes round the table and sits next to you.{/n}
 "Caught myself savin' up arguments 'cause I thought you'd enjoy 'em. Either that's love or it's a very long con."
@@ -1024,7 +1024,7 @@ s("the_evening_without_a_case", "Something she did not have to solve", [
 "It wasn't. Settin' up this room was easy. Waitin' for you to walk through that door nearly killed me."
 {n}You kiss her. She answers hard and eager, pulling you in until the chair is in the way of everything either of you wants. When you break for breath she keeps her forehead against yours and laughs, low.{/n}
 "The goats can see us. Say somethin' before I shock 'em."''',
-      c('[Stay the night with her, letting the evening become private.]', "night"),
+      c('[Stay the night.]', "night"),
       c('[Stay close for a while, then keep your promise to return elsewhere.]', "leave"),
       c('[Ask for a quiet night of sleep and company.]', "sleep")),
     n("night", "Narrator", '''{n}She puts the little pieces into their parcel without caring which way they face. The crooked goat remains beside the lamp until she notices it watching, laughs and turns it toward the wall.{/n}
@@ -1033,13 +1033,13 @@ s("the_evening_without_a_case", "Something she did not have to solve", [
 "There," she murmurs against your mouth. "That's what I'd like."
 {n}She pulls you down onto the bed after her by a fistful of whatever you are still wearing, laughing once, low, and then not laughing at all. Her knee draws up along your hip; her hand spreads flat between your shoulders and holds you there, exactly where she wants you.{/n}
 {n}In the morning Anevia wakes with one arm across you and a complaint about the window already forming. She abandons it when you turn toward her. For a while neither of you gets up to discover whether the complaint was justified.{/n}''',
-      c('[Keep the morning as part of the invitation.]', "morning", flags=("anevia.private_night",))),
+      c('[Stay for breakfast.]', "morning", flags=("anevia.private_night",))),
     n("sleep", "Anevia", '''"I'd like that. I'm very quiet once somebody's shut me up."
 {n}She puts the game away, digs out another blanket and asks which side of the bed you want. The plain little questions make her smile; she had clearly imagined needing something much grander to say.{/n}
 {n}You settle together while the room cools. Anevia tells you one last thing, then another, then apologizes into your shoulder for having lied about her talent for silence. You laugh, and she finally goes still.{/n}
 {n}In the morning she wakes first and lies there enjoying having nowhere to be. When you open your eyes she is watching the light on the ceiling, not the door.{/n}
 "Could get used to this. Not every mornin'. Enough to miss it when I don't get it."''',
-      c('[Enjoy the unhurried beginning of the day.]', "morning", flags=("anevia.quiet_night",))),
+      c('[Stay for breakfast.]', "morning", flags=("anevia.quiet_night",))),
     n("leave", "Anevia", '''"Then go keep it. I like that you turn up when you say you will. Somebody else is allowed to like that too."
 {n}She kisses you again, and does not rush it to prove she doesn't mind. At the door she straightens a fold in your collar, notices she is doing it and snorts at herself.{/n}
 "Look at me. Domesticated. Don't you dare put that in a report."
@@ -1051,7 +1051,7 @@ s("the_evening_without_a_case", "Something she did not have to solve", [
 {n}She takes your hand across the table.{/n}
 "And I want another one here. All of it at once. Greedy woman, you knew that."
 {n}You settle on the next visit. She goes off pleased, the folded game under her arm, the crooked goat still standing by your lamp.{/n}''',
-      c('[Choose another evening without claiming all her time.]', flags=("anevia.ordinary_life_kept",))),
+      c('"Friday? If Beth hasn\'t got it."', flags=("anevia.ordinary_life_kept",))),
 ], requires=("anevia.case_consequence_kept", "anevia.lover"), forbids=("irabeth_dead", "irabeth_gone"), delay=48)
 
 
@@ -1175,7 +1175,7 @@ s("the_life_she_lived", "The answer you could not guess", [
 {n}She moves in close enough to kiss you, then leans against you while the light changes in the window. Outside someone drops a bucket. She laughs at the string of curses that follows, each fouler than the last.{/n}
 "So what're you doin' tomorrow," she says, "that I ain't already guessed?"
 {n}You tell her. She looks delighted by the part she didn't see coming.{/n}''',
-      c('[Keep making room for the people you are now.]', flags=("anevia.return_ready",))),
+      c('"Then let\'s meet the new ones."', flags=("anevia.return_ready",))),
 ], requires=("anevia.ordinary_life_kept", "anevia.lover"), forbids=("irabeth_dead", "irabeth_gone"), chapters=(5,))
 
 
@@ -1231,12 +1231,12 @@ s("a_key_that_is_hers", "What she wants to keep", [
 {n}Her smile is warm and deliberately wicked. She catches the front of your shirt and draws you closer, and waits, not very long, to see what you'll do about it.{/n}
 "We could begin investigating the second possibility."''',
       c('[Kiss her and stay for the evening she has chosen.]', "night"),
-      c('[Hold her close and enjoy the future taking an ordinary shape.]', "end"),
+      c('[Hold her and listen to the street.]', "end"),
       c('"I would like to help with the bread. Tell me which part you want company for."', "bread"),
       c('"I would rather share the table than pretend I know how to bake."', "table")),
     n("night", "Anevia", '''{n}You kiss her. She makes a pleased, impatient sound against your mouth and walks you backwards the two steps to the bed, which is as far as the room goes. The key's cord is still round her finger; she flicks it onto the hook by the door without looking.{/n}
 "Landlady's deaf in one ear. Let's find out about the other."
-{n}She has your shirt open before you have her laces loose, and then she has to help with those as well, swearing at the knots she tied that morning. The dress goes over her head and onto the chair. She pushes you down onto the lumpy mattress, climbs astride you with her bad knee braced against the frame, and pulls your hands to her hips.{/n}''',
+{n}She has your shirt open before you have her laces loose, and then she has to help with those as well, swearing at the knots she tied that morning. The dress goes over her head and onto the chair. She pushes you down onto the lumpy mattress, climbs astride you with one knee braced against the frame, and pulls your hands to her hips.{/n}''',
       c("Continue", "end")),
     n("bread", "Anevia", '''"Measuring. Apparently guessing is a privilege you earn after you know what you're doing."
 {n}She draws a rough circle in a patch of dust on the table, then divides it badly.{/n}
@@ -1264,7 +1264,7 @@ s("a_key_that_is_hers", "What she wants to keep", [
 "I can agree to that."
 "Agree 'cause you want it. Not 'cause I made it easy. It stings a bit. I'm takin' it anyway."
 {n}She takes your hand. What she feels is real, and so is the part you did not promise.{/n}''',
-      c('[Continue openly without claiming a settled lifelong commitment.]', flags=("anevia.open_future", "anevia.future_chosen"))),
+      c('"Keep askin\' me. I\'ll keep comin\'."', flags=("anevia.open_future", "anevia.future_chosen"))),
     n("part", "Anevia", '''{n}She closes her hand round the key and keeps it there.{/n}
 "Right. Can't argue it wasn't clear."
 {n}The joke falls flat. She does not try another.{/n}
@@ -1272,7 +1272,7 @@ s("a_key_that_is_hers", "What she wants to keep", [
 "I understand."
 "You don't. Keep away anyway."
 {n}You leave her with the key and the room she wanted. She is still gripping the key when you look back from the doorway.{/n}''',
-      c('[End Anevia\'s romance without closing Irabeth\'s or changing their marriage.]', flags=("anevia.closed", "anevia.parted"))),
+      c('"This is where I stop, Nevi."', flags=("anevia.closed", "anevia.parted"))),
 ], requires=("anevia.return_ready", "anevia.case_consequence_kept", "anevia.lover"), forbids=("irabeth_dead", "irabeth_gone"), chapters=(5,), delay=48)
 
 
@@ -1306,7 +1306,7 @@ s("the_last_ordinary_thing", "Before the next road", [
 {n}You stay together while the room darkens. There are kisses, a complaint about the tea going cold and a fight about where the game should be kept. Anevia insists the fight counts toward her promise to say things plainly. You tell her she is making suspiciously good progress.{/n}
 {n}When it is time, she walks you to the door. She does not ask the road to promise anything.{/n}
 "Come back if you can. I'll have stuff to tell you."''',
-      c('[Keep the farewell and the life that gives it meaning.]', flags=("anevia.developed",))),
+      c('[Kiss her goodbye.]', flags=("anevia.developed",))),
 ], requires=("anevia.future_chosen", "anevia.case_consequence_kept", "anevia.ordinary_life_kept", "anevia.lover"),
    forbids=("irabeth_dead", "irabeth_gone"), chapters=(5,), delay=24)
 
@@ -1346,7 +1346,7 @@ s("a_grief_with_a_name", "The person she is missing", [
 {n}Anevia presses the heel of her hand into one eye.{/n}
 "If one more person tells me I can still learn to bake, I'll put 'em through a wall. I know I can. That ain't what I lost."
 {n}You wait. She lowers her hand and looks at you.{/n}
-"And don't you go standin' in that kitchen doorway to finish the picture for me. Sit here. I asked you here."''', c('[Let the memory remain hers.]', "us")),
+"And don't you go standin' in that kitchen doorway to finish the picture for me. Sit here. I asked you here."''', c('[Stay quiet and let her have it.]', "us")),
     n("silence", "Narrator", '''{n}She leans back and lets the cloth lie still. Out in the corridor the work of the citadel goes on without asking her leave. Once she seems about to snap at a raised voice outside, then shakes her head and lets it go.{/n}
 {n}After a while her hand comes to rest beside yours. Then, without looking, she takes it and holds on hard.{/n}
 {n}Eventually she turns toward you. She is no less sad. She has stopped minding being watched.{/n}''', c('[Stay while she finds the words she wants.]', "us")),
@@ -1363,13 +1363,13 @@ s("a_grief_with_a_name", "The person she is missing", [
 {n}She sets the cloth by the chair, close, but no longer clenched in her fists.{/n}
 "Not every visit's gotta be about her. Some will. My pick."
 {n}You stay until she asks for the room to herself. She stands first, tired enough to lean on the table. At the door she remembers your cloak and hands it over. Her hands are steadier now.{/n}''',
-      c('[Stay with her until she asks for the evening to herself.]', flags=("anevia.bereavement_heard", "anevia.survivor_continues"))),
+      c('[Stay until she sends you home.]', flags=("anevia.bereavement_heard", "anevia.survivor_continues"))),
     n("part", "Anevia", '''{n}Anevia listens without looking away.{/n}
 "Wish it was different. Glad you didn't make out it was my doin'."
 {n}She pulls the cloth back into her lap.{/n}
 "Go on, then. Keep your distance a bit. I've got people I can send for. Don't stay with me out of pity so I ain't alone tonight. I'd know."
 {n}You leave when she asks. Behind you, a chair scrapes.{/n}''',
-      c('[End only Anevia\'s romance.]', flags=("anevia.closed", "anevia.parted"))),
+      c('"I can\'t, Nevi. I\'m sorry."', flags=("anevia.closed", "anevia.parted"))),
 ], requires=("anevia.lover", "irabeth_dead"), forbids=("anevia.irabeth_killed_by_commander",), chapters=(5,), delay=0)
 
 

@@ -44,6 +44,8 @@ I_LIED = "irabeth.trickster.cost.accounting_lied"
 I_UNDER = "irabeth.trickster.cost.under_orders"
 I_ASKED = "irabeth.trickster.asked_nevi"         # Irabeth asked Anevia herself (her commit's "talked", or the pen)
 KILLED = "anevia.irabeth_killed_by_commander"
+SAID = "anevia.trickster.said_it"                # Sol r1 BEL: the murder named to her face, and her penance paid
+PENANCE = "anevia.trickster.cost.muster_confession"
 OUTLIVED = ("socot.gone", "council.fought", "council.fought_nocta_allied")
 OWN = ("anevia.closed",)
 
@@ -122,7 +124,7 @@ letter("anevia.trickster.gone.setup", "Don't", [
 "And since you've haggled with me in my own closet, I choose which wardrobe opens first. Consider it a small tour of the sillier bedrooms of Mendev."''',
       c('"...Fine."')),
     nar("door", '''{n}You knock. Nobody answers. The Silken Sin's closets have been quiet since he quit the Council.{/n}
-{n}But the closet he gave you is still yours. "You have earned the right to use this closet," he said, and patted its door like a favourite horse. It opens only onto rooms you have stood in. You stood in every room of the Defender's Heart the night Kenabres burned, and her letter to the quartermaster, the one she thinks nobody read, is addressed from there.{/n}
+{n}But the closet he gave you is still yours. "You have earned the right to use this closet," he said, and patted its door like a favourite horse. It opens only onto rooms you have stood in. Her letter to the quartermaster, the one she thinks nobody read, is addressed "the Heart, upstairs, the room the Commander slept in, since nobody else will take it": the room over the taproom where you slept the night the crusaders held the Defender's Heart.{/n}
 {n}Stepping through will cost you the war council tomorrow. Lady Konomi will have to explain your absence to people who do not believe in closets.{/n}''',
       c('[Open the closet Socothbenoth gave you] "He said I\'d earned it. Let\'s find out what for."', "door_open",
         mythic="Trickster", crusade=("Favors", -100), requires=("closets.door_kept", "trickster"),
@@ -242,7 +244,7 @@ letter("anevia.trickster.gone.fetched", "Two letters and a bootlace", [
 {n}The ink is heavier on the next line.{/n}
 "I don't know what you are. I know she's alive, and it's your doin' both ways. I'm gonna need a while with that."''',
       c("Continue", "bargain", requires=(I_UNDER,)), c("Continue", "close", forbids=(I_UNDER,))),
-    a("bargain", '''"She says the chaplain called her 'cause you told him she was still on your roster, and she came 'cause she was. She says you struck a boy off his list to pay for it. Teodor Vell. She's carryin' his sword now; swore it at his bier. Won't put it down, not to eat, not to sleep, not to hold her wife with both arms. Not till the Wound's shut. She says it's cheap. She's lyin', and she knows I know."
+    a("bargain", '''"She says the chaplain called her 'cause you told him she was still on your roster, and she came 'cause she was. She says somebody paid for it, and she's told me who, and I'm not puttin' it in a letter. She swore at the altar before she came up to you. Won't put it down, not to eat, not to sleep, not to hold her wife with both arms. Not till the Wound's shut. She says it's cheap. She's lyin', and she knows I know."
 {n}The ink is heavier on the next line.{/n}
 "I'm grateful. Gods, I'm grateful. I'm also never lettin' you give me an order. Not one. Not even 'pass the salt'."''',
       c("Continue", "close")),
@@ -323,7 +325,7 @@ TERMS_TEXT = '''"Here's how it goes. I don't come inside. You come out. No close
 "And the first time you lie to me, I'm gone. And this time I'll be better at it."'''
 THRESHOLD = '''{n}She doesn't wait for you to decide. She kisses you before the lantern stops swinging, both hands flat on your chest as if she were checking you for a knife, like someone who has been rationing it all the way up the road. Round the side of the gatehouse there is a real door. She raps on it twice with her knuckles, for form's sake, then kicks it shut behind you.{/n}
 "Real door. I knocked. Now shut up and get that shirt off before I lose my nerve. And I never lose my nerve."
-{n}Her fingers find every buckle on the first try, a spy's hands, and your coat hits the floor. She kicks your cloak out flat across the gatehouse floor, under the lantern hook, and takes the lantern down so she can see your face. Her breath is warm and ragged against your neck, her bad leg hooks hard round yours, and she drags you down onto the cloak with a sound that is half a laugh and half something she has not let herself say since the Coronation.{/n}'''
+{n}Her fingers find every buckle on the first try, a spy's hands, and your coat hits the floor. She kicks your cloak out flat across the gatehouse floor, under the lantern hook, and takes the lantern down so she can see your face. Her breath is warm and ragged against your neck, one leg hooks hard round yours, and she drags you down onto the cloak with a sound that is half a laugh and half something she has not let herself say since the Coronation.{/n}'''
 
 physical("anevia.trickster.gone.commit", "A real door", '"Same gate. Same line."', [
     a("start", '''{n}Same gate, same mud line, a colder night. She has brought a lantern and set it down on her side.{/n}
@@ -349,7 +351,13 @@ physical("anevia.trickster.gone.commit", "A real door", '"Same gate. Same line."
 "Nobody's said it to me like that. Everybody else says it sideways, like it's somethin' that fell on her."
 {n}She sets the lantern down on her side of the line.{/n}
 "I'm not forgivin' you. Not tonight. Maybe not ever. But you said it to my face, and I'm still standin' here, so I'd better hear the rest."''',
-      c("Continue", "terms")),
+      c("Continue", "terms", forbids=(KILLED,)),          # retired by gating (index kept): her penance comes first
+      c("Continue", "penance")),
+    a("penance", '''"Here's the rest. Tomorrow, at muster, in the yard, in front of every knight who carried her out of Iz, you say it again. Same words. Your mouth, not a clerk's. Then you stand there while they look at you."
+{n}She lifts the lantern an inch, so she can see all of your face.{/n}
+"And don't ask me why I still want you after. I've asked myself every mile of that road. You're the only one in Drezen who don't look at me like a widow. You look at me like somebody who could still hurt you. I'd rather be that."''',
+      c('[Agree] "Tomorrow, at muster. My mouth."', "terms", flags=(SAID, PENANCE)),
+      c('[Refuse] "Not in front of them."', "no")),
     a("share", '''"Beth asked me. Like I said she had to: to my face, in the gatehouse, with her helmet under her arm like she was reportin' a fire. I said yes. Then she went red and walked into a door."
 {n}She lets that sit.{/n}
 "So."''',
@@ -422,7 +430,15 @@ Don't make me wait too long. I'm a spy, not a saint."''',
 physical("anevia.trickster.gone.second_ask", "Something true", '"I knocked."', [
     a("start", '''{n}She is at the gate again, four nights later, as if she never left it.{/n}
 "You knocked. On the guardhouse door, like an idiot, in front of half the watch. All right. I heard you."''',
-      c("Continue", "price")),
+      c("Continue", "price", forbids=(KILLED,)),
+      c("Continue", "price", requires=(KILLED, I_RET)),
+      c("Continue", "price", requires=(KILLED, SAID), forbids=(I_RET,)),
+      c("Continue", "say_it", requires=(KILLED,), forbids=(I_RET, SAID))),
+    a("say_it", '''"No. Not a secret. I don't want somethin' nobody knows. I want the thing everybody knows and you won't say."
+{n}She holds up the lantern, the way she did at the gate.{/n}
+"Say what you did at Iz. Then tomorrow you say it at muster, in front of her knights. Then we'll talk about doors."''',
+      c('[Say it] "I killed her. At Iz. With my own hand. Tomorrow, at muster, I\'ll say it again."', "price", flags=(SAID, PENANCE)),
+      c('[Keep it] "Some things stay mine."', "kept", flags=("anevia.closed",))),
     a("price", '''"Door's paid for. Now you pay for me. Tell me somethin' true about you that nobody in Drezen knows. Not your mythic nonsense. Somethin' that'd cost you if I sold it."
 {n}She holds out her hand, palm up, the way a fence waits for a coin.{/n}
 "I'll never use it. Probably. But you'll never again be sure what I know about you. That's how I've felt every night since that wardrobe opened."''',
@@ -528,6 +544,13 @@ PARAGRAPHS = (
       "knocks, and Beth's name said out loud every time she came through it. Whatever the two of them had, they built it "
       "beside that grave and not over it, and she would not let either of them forget which side of it they stood on.",
       requires=(RETURNED, KILLED), forbids=(I_RET,), any_groups=([TERMS, KEY],)),
+    p("Beth stayed dead. Anevia kept her side of the bed cold on purpose for a year, and said so, and then one winter "
+      "night she didn't, and said that too. She never once let the Commander pretend the two things were the same "
+      "kind of love, and never once let either of them be ashamed of the second.",
+      requires=(RETURNED, "irabeth_dead"), forbids=(I_RET, KILLED), any_groups=([TERMS, KEY],)),
+    p("At muster the morning after the gate, the Commander said it in the yard, in front of Beth's knights, in the same "
+      "words: \"I killed her. At Iz. With my own hand.\" Nobody in Drezen ever said it sideways again.",
+      requires=(RETURNED, PENANCE)),
     ret("She kept her word and never came inside. Letters reached the Commander now and then from towns on the road "
       "south, unsigned, in a hand nobody else could read. None of them was a yes. None of them was quite a no.",
       requires=(DECLINED,), forbids=("anevia.committed", "anevia.closed")),
@@ -559,6 +582,8 @@ epilogue("anevia.trickster.epilogue.nailed_wardrobe_closed", (RETURNED, "anevia.
          ("anevia.parted", "anevia.committed", *FATES))
 # Sol INT: the registered "wife killed" ending denies the night she chose after her return; this history gets its own
 # page (the registered ending Forbids her renewed terms instead).
+epilogue("anevia.trickster.epilogue.nailed_wardrobe_widow", (RETURNED, "anevia.lover", "irabeth_dead"),
+         (I_RET, KILLED, "anevia.closed", "ascended", "inhuman"), RequiresAnyGroups=[[TERMS, KEY]])
 epilogue("anevia.trickster.epilogue.nailed_wardrobe_unforgiven", (RETURNED, "anevia.lover", KILLED, "irabeth_dead"),
          (I_RET, "anevia.closed", "ascended", "inhuman"), RequiresAnyGroups=[[TERMS, KEY]])
 
@@ -631,6 +656,7 @@ WITH_PARAGRAPHS = ("anevia.ending_kept", "anevia.ending_open", "anevia.ending_un
                    "anevia.ending_wife_killed", "anevia.ending_sacrifice", "anevia.ending_ascended",
                    "anevia.ending_changed_power")
 TIRABADE_ENDINGS = ("ending_promised", "ending_ascend_promised")
+LIVING_ENDINGS = ("anevia.ending_kept", "anevia.ending_open", "anevia.ending_unfinished", "anevia.ending_promised")
 TIRABADE_PARAGRAPH = p("They had both been lost once, one to Iz and one to the road south, and both had come back by "
                        "routes that did not bear close inspection. At the Tirabade table there were three chairs, and "
                        "Anevia's rule for the third was the same as for every door: knock first.",
@@ -645,6 +671,7 @@ def integrate(payload):
     rel["Guidance"] += (" On the Trickster path, an Anevia who has left the crusade can still be reached, though not by "
                         "any ordinary door. After her return, look for her outside the Drezen gate, by the smithy.")
     payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
+    ours = {s["Id"] for s in SCENES}
     tirabade = payload["Relationships"]["tirabade"]
     tirabade.setdefault("UnavailableOverrides", {}).update({"irabeth_dead": I_RET, "anevia_gone": RETURNED})
     for s in payload["Scenes"]:
@@ -656,8 +683,16 @@ def integrate(payload):
             s["Forbids"].append(I_RET)
         if s["Id"] == "anevia.ending_gone":
             s["Forbids"].append(RETURNED)
-        if s["Id"] == "anevia.ending_wife_killed":
+        if s["Id"] in ("anevia.ending_wife_killed", "anevia.ending_grief_unanswered", "anevia.ending_survivor"):
             s["Forbids"].extend((TERMS, KEY))
+        # Sol COX: the shared finale's surviving Commander is not mourned (as Irabeth, Dorgelinda and Eliandra).
+        if s["Id"] == "anevia.ending_sacrifice":
+            s["Forbids"].append("trickster.commander_back")
+        if s["Id"] in LIVING_ENDINGS:
+            s.setdefault("ForbidOverrides", {})["sacrifice"] = "trickster.commander_back"
+        # Sol INT: a returned Anevia resumes her physical scenes although the native absence (AneviaNotInDrezen) holds.
+        if s.get("Relationship") == "anevia" and "anevia_away" in s.get("Forbids", ()) and s["Id"] not in ours:
+            s.setdefault("ForbidOverrides", {})["anevia_away"] = RETURNED
         if s["Id"] in WITH_PARAGRAPHS:
             for node in s["Nodes"]:
                 if all(ch.get("Next") is None for ch in node["Choices"]):

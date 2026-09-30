@@ -228,11 +228,11 @@ physical("konomi.trickster.dismissed.private", "Off the record", '"Business conc
     k("no", '''{n}She sets the pen down and squares it with the edge of the ledger, exactly, before she answers.{/n}
 "What I want is not to be recalled by anyone. Not by Nerosyan. Not by you, from a wall, with a joke that turns roads round." {n}She picks up the fan again. It steadies her hand.{/n} "Give me a season, Commander. Then ask me again, and do not ask as a Trickster. Ask as someone who could be told no."''',
       c('[Let her decide] "Your call."', flags=(DECLINED,))),
-    nar("threshold", '''{n}She looks at your hand in hers as if it were a clause she had drafted herself and was only now reading in fair copy.{/n}
+    nar("threshold", '''{n}She looks at your hand in hers for a moment, and her thumb moves once across your knuckles.{/n}
 "The next evening," she says, "is this one."
 {n}The fan closes with a snap. She rises, and the manners she has worn since the day she walked into your council with a scroll under the Queen's seal come off all at once: the ears she keeps so correctly upright at the table tip back, pleased, and the tail she holds in a careful curl through every audience comes loose and sweeps out behind her in the lamplight, slow, russet and pale-tipped, like a banner let down from a wall.{/n}
-"Agreed. Now take this robe off me, Commander. Slowly. I bill by the minute, and tonight I intend to be very expensive."
-{n}You do it slowly. She lets the outer robe slide from one shoulder, then the other, and stands in the lamplight with nothing on but her rings and her smile, and lets you look for exactly as long as she has decided you may. Then she kisses you, with a politician's patience and none of a politician's restraint, her nails light at the back of your neck, her tail curling round the backs of your knees as if it had its own opinion about where you should stand.{/n}
+"I have wanted this since you shouted at my carriage. Take this robe off me. Slowly. I want to watch your hands."
+{n}You do it slowly. She lets the outer robe slide from one shoulder, then the other, and stands in the lamplight with nothing on but her rings, and lets you look for exactly as long as she has decided you may. Then she kisses you, hard, her nails light at the back of your neck, her tail curling round the backs of your knees as if it had its own opinion about where you should stand.{/n}
 {n}She walks you backwards to the desk. A week of Nerosyan's dispatches goes to the floor in a slither of wax and ribbon. She pushes you down across the place where they lay, climbs over you with her knees either side of your hips, catches both your wrists in one hand and pins them above your head, and settles astride your hips, and reaches down between you with her free hand, watching your face the whole time to see what it costs you.{/n}''',
       c("Continue", "morning")),
     nar("morning", '''{n}Morning. She is at your desk in your shirt, composing a dispatch, tail curled round the leg of the chair. The dispatches are stacked again, in order. One of them has a heel print on it.{/n}
@@ -313,20 +313,22 @@ letter("konomi.trickster.dead.recalled", "For consultations", [
       c('[Go down to the chancery steps yourself]', "lamp")),
     nar("lamp", '''{n}The lamp-seller is an old woman with a tray of cheap oil and very bright eyes, who has sat on the chancery steps every day that you can remember and whom you have never once looked at. She looks at the ledger in your hand, and then at you, and the smile she gives you is Konomi's, older.{/n}
 "We live everywhere, Commander. You are not supposed to be aware of it. She told you so herself." {n}She stands and shoulders her tray.{/n} "We will call her. Our way, with our words and your diamonds. What she says when she hears us is hers. And our price is that you never ask who we are, and never write one of us down."''',
-      c('[Pay their price] "I never saw you. Bring her home."', "rite", flags=(LAMP,)),
+      c('[Pay their price, and the diamonds] "I never saw you. Bring her home."', "rite", flags=(LAMP,),
+        crusade=("Finances", -500)),
       c('[Let them be.] "..."', abort=True)),
-    nar("rite", '''{n}They come at midnight: the lamp-seller and three others you have walked past a hundred times, a scribe, a laundress and a boy who holds horses at the gate. They send the clerk out. They grind the diamonds in a bowl of Nerosyan lacquer, and burn the dust in the oil of a lamp from the tray, and then the old woman speaks Konomi's name, and her rank, and the name of her post, the way one court informs another that an envoy is not lost, only detained.{/n}
+    nar("rite", '''{n}They come at midnight: the lamp-seller and three others you have walked past a hundred times, a scribe, a laundress and a boy who holds horses at the gate. They send the clerk out. They grind the diamonds you bought them in a bowl of Nerosyan lacquer, and burn the dust in the oil of a lamp from the tray, and then the old woman speaks Konomi's name, and her rank, and the name of her post, the way one court informs another that an envoy is not lost, only detained.{/n}
 {n}You speak last, in the same form. They let you.{/n}''',
       c('[Correct the dispatch] "Lady Konomi isn\'t dead. She has been recalled for consultations. With me."', "refusal",
         mythic="Trickster")),
     nar("refusal", '''{n}The hand on the fan does not move. The lamp gutters, as if a door has opened somewhere that is not in this room. Out of the old woman's mouth, faint and very dry, in a voice that is not the old woman's, comes a voice you know:{/n}
-"Recalled? Only Nerosyan recalls me, Commander. And you killed me. I see no reason whatever to consult."''',
+"Recalled? Only Nerosyan recalls me, Commander. I died at my post in your war, on your business. I see no reason whatever to consult."''',
       c('[Name the terms] "Consultations at your rate, then. Name it."', "fee", flags=(FEE,)),
       c('[Let her go] "...Then rest, Lady Konomi."', abort=True)),
     nar("fee", '''{n}A silence long enough to be a negotiating position.{/n}
-"...Triple the standard rate for consultations. In advance. And the recall is entered as my decision. Not yours. Mine. I will not be the woman who came back because a Commander with a joke told her to."
+"...Triple the standard rate for consultations. In advance: now, into my drawer, before I open my eyes. And the recall is entered as my decision. Not yours. Mine. I will not be the woman who came back because a Commander with a joke told her to."
 {n}The old woman's eyes are closed. The others have not breathed for some time.{/n}''',
-      c('[Agree to her fee] "Triple. In advance. Your decision, on the record."', "record", alignment=("Chaotic", 1))),
+      c('[Agree to her fee] "Triple. In advance. Your decision, on the record."', "record", alignment=("Chaotic", 1),
+        crusade=("Finances", -300))),
     nar("record", '''{n}The old woman opens her eyes and blows out the lamp. In the dark, a dead woman's hand turns on the folded fan, very slightly, palm-up, the way an attaché receives a sealed dispatch.{/n}
 {n}In the morning the clerk crosses out DECEASED. Above it, in his best hand, at the dictation of the Commander, he writes: FOR CONSULTATIONS, AT HER OWN REQUEST. There is nobody on the chancery steps. There never was.{/n}''',
       c('[Let her come back.]', revive="konomi", flags=(CONFIRMED,))),
@@ -335,20 +337,20 @@ letter("konomi.trickster.dead.recalled", "For consultations", [
 
 physical("konomi.trickster.dead.consultation", "Triple, in advance", '"You asked for consultations."', [
     k("start", '''{n}She is at her desk, alive and very displeased about the manner of it. There is colour in her face and ink on her fingers. The dispatch with the crossed-out word is pinned to the wall behind her, where she can see it and so can everyone who comes in.{/n}
-"'Recalled for consultations.' You have committed a diplomatic impertinence on my corpse, Commander, and I accepted it on terms, which I shall now enforce."
+"'Recalled for consultations.' You have committed a diplomatic impertinence on my corpse, Commander, and I accepted it on terms, which you have met. I counted."
 {n}She opens the fan. Her hand is not quite steady; she lets you see that, and dares you to mention it.{/n}
-"The fee is triple. In advance. Then we consult. I have a great many questions about the afterlife and very few of them are theological."''',
-      c('[Consult] "You asked for consultations. I\'m here to consult."', "unpaid"),
-      c('[Pay the fee first] "The fee, as agreed. In advance."', "paid", crusade=("Finances", -300))),
+"The fee was triple, in advance, and it is in my drawer. Now we consult. I have a great many questions about the afterlife and very few of them are theological."''',
+      c('[Consult] "You asked for consultations. I\'m here to consult."', "unpaid", forbids=(CONFIRMED,)),     # retired
+      c('[Pay the fee first] "The fee, as agreed. In advance."', "paid", crusade=("Finances", -300), forbids=(CONFIRMED,)),
+      c('"The fee was paid before you came back. Ask your questions."', "paid")),
     k("unpaid", '''"Without paying first. Naturally."
 {n}She writes a figure in the margin of the dispatch and underlines it twice.{/n}
-"It will accrue. Sit down, Commander. We shall begin with why you killed me, and we shall end, if you are fortunate, with whether I intend to hold it against you. I have not decided. I am enjoying not having decided."
+"It will accrue. Sit down, Commander. We shall begin with why I died at my post, and we shall end, if you are fortunate, with whether I intend to hold it against you. I have not decided. I am enjoying not having decided."
 {n}She taps the dispatch on the wall.{/n} "That stays there while I hold this office. Every envoy who sits in that chair will read it and ask. I shall tell each of them the truth."''',
       c('"Then let\'s begin."', flags=(RETURNED,))),
-    k("paid", '''{n}She counts it. All of it, twice, while you watch.{/n}
-"...Paid. How unexpectedly honest of you. I shall have to recalculate you."
-{n}She sweeps the coin into a drawer and locks it.{/n}
-"Sit down. We shall begin with why you killed me. You may take as long as you like; I am billing by the hour."
+    k("paid", '''{n}She unlocks the drawer, so that you can see the coin is still there, and locks it again.{/n}
+"...Paid, before I would open my eyes. How unexpectedly honest of you. I shall have to recalculate you."
+"Sit down. We shall begin with why I died at my post in your war. You may take as long as you like; I am billing by the hour."
 {n}She taps the dispatch on the wall.{/n} "That stays there while I hold this office. Every envoy who sits in that chair will read it and ask. I shall tell each of them the truth."''',
       c('"Then let\'s begin."', flags=(RETURNED, FEE_PAID))),
 ], requires=("trickster.ever", PRIMED, CONFIRMED, RECALLED),
@@ -420,9 +422,10 @@ TRICKSTER_PARAGRAPHS = (
       "nobody else was shown.", requires=(RECESSED, OUTFOXED)),
     p("She kept the unnamed favour for years, and mentioned it only when the Commander seemed in danger of forgetting it.",
       requires=(FAVOUR,)),
-    p("Nerosyan's archive holds one dispatch with a word crossed out and six words added at a dead woman's dictation. Lady Konomi had "
+    p("Nerosyan's archive holds one dispatch with a word crossed out and six words added at a dead woman's request. Lady Konomi had "
       "it framed, and billed the crown for the frame. Every envoy who ever sat across from her read it, and asked, and was "
-      "told plainly that the Commander had killed her. None of them ever again quite trusted a treaty the Commander signed.",
+      "told plainly that she had died at her post and come back on her own fee. None of them ever again quite trusted a "
+      "Commander who could afford it.",
       requires=(RETURNED, RECALLED)),
     p("In the Royal Council's register for that year, column four still reads 'credentials presented, Drezen', entered from "
       "a dovecote's report two days before anyone left the capital. Auditors query it every spring. Lady Konomi signs the "

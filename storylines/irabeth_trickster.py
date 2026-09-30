@@ -47,6 +47,9 @@ K_RAISED = "irabeth.trickster.raised_on_record"  # polish 9b: undrilled; raised 
 ASKED = "irabeth.trickster.asked_nevi"           # Irabeth asked Anevia herself (read by Anevia's route)
 CONFESSED = "irabeth.trickster.told_the_other_story"
 PEN_SENT = "irabeth.trickster.pen_sent"
+BOUGHT = "irabeth.trickster.cost.second_diamond"  # Sol r1: the boy is called too; the crusade pays for her diamond
+HEALER = "irabeth.trickster.cost.hired_healer"     # Sol r1: the column keeps a healer; the treasury pays for it
+TRUSTED = "irabeth.trickster.slept_under_her_sword" # Sol r1: after a deliberate blow, her trust test before any yes
 OWN = ("irabeth.closed",)
 
 RELATIONSHIP_PATCH = dict(
@@ -142,6 +145,42 @@ SCENES.append(scene("irabeth.trickster.dead.setup", "Relieved", "Irabeth", 5,
    Relationship="irabeth", Chapters=[5], AnswerLists=[DEATHBED], NativeReturnCue=DEATHBED_RETURN,
    EntryMythic="PlayerIsTrickster", TricksterDevice=True, TricksterState="dead"))
 
+# Polish 9b: the decisive act. The order does not raise her; a chaplain does, with the crusade's diamond. The Commander
+# either takes the one diamond from the boy at the top of the list, or buys a second at a price the treasury feels. Her
+# soul still has to answer (a raise calls, it does not drag). Sol r1: the boy's death is never the compulsory price.
+RAISE_LIST_START = '''{n}The chapel keeps a list after every battle. After Iz it is eleven names long: the fallen whose bodies came home whole enough to call back, in the order the chaplains mean to call them. Beside it lies the crusade's strongbox, open. There is diamond enough in it for one.{/n}
+{n}The first name is Teodor Vell, nineteen, knighted in the mud at Iz for holding a stair with a broken shield. Irabeth Tirabade is fourth. The chaplain has already ground the first diamond; the bowl is on the altar, and he is waiting for dark.{/n}'''
+CALL_TEXT = '''"I will call her. Once. A raise is a summons, not a leash; if she went to the Inheritor with a clear conscience she will not come back for a general's convenience, and I will not ask twice. If she answers, the diamond was hers. If she does not, you will have wasted it."
+{n}At the door he stops.{/n}
+"She will ask whose it was. I will not lie to her."'''
+BOUGHT_TEXT = '''{n}The Queen's household keeps a jeweller in Drezen for the crown's use. He does not keep diamonds of that size for anyone else's, and he names a price for the one he has that makes the treasurer sit down.{/n}
+"Two, then," the chaplain says, when it is on the altar beside the first. "The boy first, as the list says. Then her, if she will come." {n}He looks at the second stone, and then at you.{/n} "That is a great deal of the crusade's bread, Commander, for one knight's answer."'''
+
+
+def list_nodes(p, argue):
+    """The chapel's list as nodes (prefix p): strike the boy, buy a second diamond, or let the list stand. argue: the
+    Continue choices from the struck page to the page that argues she is still on duty."""
+    return [
+        nar(p + "list", RAISE_LIST_START,
+            c('[Strike Vell\'s name and write hers above it] "She was never dismissed. Call her first."', p + "struck"),
+            c('[Leave the list as it stands] "Call the boy."', p + "boy", flags=(DECLINED,)),
+            c('[Buy a second diamond from the Queen\'s jeweller] "Call them both. The crusade will find the money."',
+              p + "bought")),
+        nar(p + "struck", '''{n}The chaplain does not take the pen from you. He watches you use it.{/n}
+"Sir Teodor has a mother in Nerosyan, Commander. I wrote to her this morning that he would be home by the spring."''',
+            *argue),
+        nar(p + "call", CALL_TEXT,
+            c('"Don\'t. Tell her his name."', flags=(VELL, "irabeth.started"), crusade=("Favors", -100))),
+        nar(p + "bought", BOUGHT_TEXT,
+            c('"Call them both."', p + "call_both")),
+        nar(p + "call_both", CALL_TEXT,
+            c('"Tell her. Tell her the price too."', flags=(VELL, BOUGHT, "irabeth.started"), crusade=("Finances", -600))),
+        nar(p + "boy", '''{n}The chaplain nods, once, as if you had passed something. At midnight Teodor Vell sits up on the altar coughing grave-dust, asks whether they held the stair, and weeps when they tell him.{/n}
+{n}Irabeth's name stays fourth. The strongbox is empty by morning.{/n}''',
+            c('"Goodbye, Irabeth."')),
+    ]
+
+
 letter("irabeth.trickster.dead.late_order", "An empty bunk", [
     nar("start", '''{n}Her bunk in the barracks has been stripped to the ropes. Someone has set her boots under it anyway, toes to the wall, the way she always left them.{/n}
 {n}The knights on watch have a bottle between them and are not drinking it.{/n}''',
@@ -159,21 +198,23 @@ letter("irabeth.trickster.dead.late_order", "An empty bunk", [
       c('[Let her rest] "...No. She earned it."', "rest", flags=(DECLINED,))),
     nar("toast", '''{n}The knights stare at you. Then one of them, very slowly, answers for her: "Present." Another laughs, badly, and stops.{/n}
 {n}The chaplain sets down his cup untouched and writes something in his own ledger. By morning the whole citadel has heard that the Commander took a roll call of the dead as a joke. The priests of Iomedae will not forget it soon.{/n}''',
-      c('"Dawn, Knight-Captain."')),
+      c('"Dawn, Knight-Captain."', forbids=("irabeth_dead",)),     # retired by gating (index kept): the list follows
+      c('[Follow the chaplain back to his chapel] "Dawn, Knight-Captain. Chaplain, a word."', "l_list")),
     nar("rest", '''{n}You drink. The knights drink. Nobody says anything clever, and the boots stay under the bunk until morning, when the quartermaster takes them away.{/n}''',
       c('"Goodbye, Irabeth."')),
+    # Sol r1 COX (letter budget): the late toast and the chapel's list are one delivery.
+    *list_nodes("l_", (c("Continue", "l_argue"),)),
+    nar("l_argue", '''"And you will tell me she is still on duty because a drunk knight answered 'present' for her at your toast."
+{n}You tell him exactly that. You also tell him who signs the chapel's requisitions.{/n}''',
+      c("Continue", "l_call")),
 ], requires=("trickster", "irabeth_dead", "irabeth.dead.latched"), forbids=(PRIMED, RETURNED, DECLINED, KILLED), delay=24,
    TricksterDevice=True, TricksterState="dead")
-
-# Polish 9b: the decisive act. The order does not raise her; a chaplain does, with the crusade's one diamond, because the
-# Commander takes it from somebody else. Her soul still has to answer (a raise calls, it does not drag).
-RAISE_LIST_START = '''{n}The chapel keeps a list after every battle. After Iz it is eleven names long: the fallen whose bodies came home whole enough to call back, in the order the chaplains mean to call them. Beside it lies the crusade's strongbox, open. There is diamond enough in it for one.{/n}
-{n}The first name is Teodor Vell, nineteen, knighted in the mud at Iz for holding a stair with a broken shield. Irabeth Tirabade is fourth. The chaplain has already ground the first diamond; the bowl is on the altar, and he is waiting for dark.{/n}'''
 
 letter("irabeth.trickster.dead.raise_list", "Diamond for one", [
     nar("start", RAISE_LIST_START,
       c('[Strike Vell\'s name and write hers above it] "She was never dismissed. Call her first."', "struck"),
-      c('[Leave the list as it stands] "Call the boy."', "boy", flags=(DECLINED,))),
+      c('[Leave the list as it stands] "Call the boy."', "boy", flags=(DECLINED,)),
+      c('[Buy a second diamond from the Queen\'s jeweller] "Call them both. The crusade will find the money."', "bought")),
     nar("struck", '''{n}The chaplain does not take the pen from you. He watches you use it.{/n}
 "Sir Teodor has a mother in Nerosyan, Commander. I wrote to her this morning that he would be home by the spring."''',
       c("Continue", "roster", requires=(STANDING,)),
@@ -187,13 +228,14 @@ letter("irabeth.trickster.dead.raise_list", "Diamond for one", [
       c("Continue", "call")),
     nar("salute", '''"You refused her salute at Iz. I heard of it. The whole column heard of it." {n}He looks at the name you have written, and at the one you have struck through.{/n} "That is not a reason, Commander. It is a wager."''',
       c("Continue", "call")),
-    nar("call", '''"I will call her. Once. A raise is a summons, not a leash; if she went to the Inheritor with a clear conscience she will not come back for a general's convenience, and I will not ask twice. If she answers, the diamond was hers. If she does not, it was Sir Teodor's, and you will have wasted it."
-{n}He grinds no second diamond. There is none. At the door he stops.{/n}
-"She will ask whose it was. I will not lie to her."''',
+    nar("call", CALL_TEXT,
       c('"Don\'t. Tell her his name."', flags=(VELL, "irabeth.started"), crusade=("Favors", -100))),
     nar("boy", '''{n}The chaplain nods, once, as if you had passed something. At midnight Teodor Vell sits up on the altar coughing grave-dust, asks whether they held the stair, and weeps when they tell him.{/n}
 {n}Irabeth's name stays fourth. The strongbox is empty by morning.{/n}''',
       c('"Goodbye, Irabeth."')),
+    nar("bought", BOUGHT_TEXT, c('"Call them both."', "call_both")),
+    nar("call_both", CALL_TEXT,
+      c('"Tell her. Tell her the price too."', flags=(VELL, BOUGHT, "irabeth.started"), crusade=("Finances", -600))),
 ], requires=("trickster", "irabeth_dead", PRIMED), forbids=(RETURNED, DECLINED, KILLED, VELL), delay=12,
    TricksterDevice=True, TricksterState="dead")
 
@@ -207,20 +249,27 @@ physical("irabeth.trickster.dead.relieved_not_dismissed", "Reporting in person",
       c("Continue", "torn", requires=(SOUL_TORN,)),
       c("Continue", "standing", requires=(STANDING,), forbids=(SOUL_TORN,)),
       c("Continue", "toasted", requires=(LATE,), forbids=(SOUL_TORN, STANDING)),
-      c("Continue", "vell", forbids=(SOUL_TORN, STANDING, LATE))),
+      c("Continue", "vell", forbids=(BOUGHT, SOUL_TORN, STANDING, LATE)),
+      c("Continue", "vell_bought", requires=(BOUGHT,), forbids=(SOUL_TORN, STANDING, LATE))),
     i("torn", '''"Whatever they threw at me at Iz went through my soul like a saw. I told you so. I felt it come apart."
 {n}She flexes her sword hand. The knuckles are white.{/n}
 "The chaplain says it knits. Slowly, like a bone. I can feel exactly where the break was."''',
       c("Continue", "standing", requires=(STANDING,)),
       c("Continue", "toasted", requires=(LATE,), forbids=(STANDING,)),
-      c("Continue", "vell", forbids=(STANDING, LATE))),
+      c("Continue", "vell", forbids=(BOUGHT, STANDING, LATE)),
+      c("Continue", "vell_bought", requires=(BOUGHT,), forbids=(STANDING, LATE))),
     i("standing", '''"I wrote that order into the roster myself. 'In person.' I thought you were being sentimental. You were being a lawyer. The chaplain read it out over me, the fool, and I heard it, wherever I was, and I thought: that's my hand. I'm on watch."''',
-      c("Continue", "toasted", requires=(LATE,)), c("Continue", "vell", forbids=(LATE,))),
+      c("Continue", "toasted", requires=(LATE,)), c("Continue", "vell", forbids=(LATE, BOUGHT)),
+      c("Continue", "vell_bought", requires=(BOUGHT,), forbids=(LATE,))),
     i("toasted", '''"And somebody toasted my empty bunk and called it a roll call. The chaplains are still complaining. I'd complain too, if I weren't standing here."''',
-      c("Continue", "vell")),
+      c("Continue", "vell", forbids=(BOUGHT,)), c("Continue", "vell_bought", requires=(BOUGHT,))),
     i("vell", '''"And the chaplain told me whose diamond it was. He said you told him to."
 {n}She does not raise her voice. That is worse.{/n}
 "Teodor Vell. Nineteen. He held a stair at Iz with half a shield. I went and stood at his bier before I came up here, and I swore on his sword, since he won't be needing it: his share of this war and mine, and it doesn't leave my hand until the Wound is shut. Not to eat. Not to sleep. That's what I cost, Commander. I want you to see it every time you look at me."''',
+      c("Continue", "discharge")),
+    i("vell_bought", '''"And the chaplain told me what I cost. A diamond from the Queen's own jeweller, so the boy at the top of the list got his too. Teodor Vell. Nineteen. He sat up an hour before I did, asking about his stair."
+{n}She does not raise her voice. That is worse.{/n}
+"That's a winter's bread for a company, Commander, spent on one knight's answer. I swore at the altar before I came up here: I fight the rest of this war for what I cost, and this sword doesn't leave my hand until the Wound is shut. Not to eat. Not to sleep. I want you to see it every time you look at me."''',
       c("Continue", "discharge")),
     nar("discharge", '''{n}She holds out her hand, palm up, for the paper that would let her go. She does not look at it. She looks at you.{/n}''',
       c('[Hold out the unsigned discharge] "Your discharge needs my signature. I\'ve misplaced my pen. For two days."',
@@ -266,12 +315,14 @@ letter("irabeth.trickster.killed.late_step", "The report of the day", [
       c('"Remember what you like. File what I said."')),
     nar("stands", '''{n}He finishes the line in your words. He does not soften them. When he is done he looks at the page, then at you, and nods once, as if you had passed something.{/n}''',
       c('"File it."')),
-    nar("record", '''{n}He writes "the Commander" in a steady hand and underlines it. Then he looks at the list beside the report: eleven names, the fallen of Iz whose bodies came home whole enough to call back, and diamond in the strongbox for one. The first name is Teodor Vell, nineteen, knighted in the mud at Iz for holding a stair with half a shield.{/n}
-"You want me to spend the crusade's last diamond on the woman you killed, ahead of a boy who died for the Queen."
+    nar("record", '''{n}He writes "the Commander" in a steady hand and underlines it. Then he looks at the list beside the report: eleven names, the fallen of Iz whose bodies came home whole enough to call back, and diamond in the strongbox for one, promised to the boy at the top of it.{/n}
+"You want the woman you killed called back. The crusade's diamond is the boy's. You will buy her one of your own from the Queen's jeweller, at his price, and I will not strike a name to save you the money."
 {n}He sets the pen down. He is not a young man, and his hands are very steady.{/n}
-"Very well. A knight struck down by her own Commander is called first, if I have any say, because somebody must be alive to testify against you. That will be the entry, in your words. I will call her once. If she will not come back to serve under you, I would not blame her, and neither will the Inheritor."''',
+"And a knight struck down by her own Commander is called before her Commander may ask anything of her, because somebody must be alive to testify against you. That will be the entry, in your words. I will call her once. If she will not come back to serve under you, I would not blame her, and neither will the Inheritor."''',
       c('[Let him write it] "Write every word. Then call her."', mythic="Trickster", crusade=("Favors", -200),
-        flags=(K_RAISED, VELL, LATE, BLOW, "irabeth.started"))),
+        flags=(K_RAISED, VELL, LATE, BLOW, "irabeth.started"), forbids=("irabeth_dead",)),   # retired by gating
+      c('[Let him write it, and pay the jeweller] "Write every word. Then call her."', mythic="Trickster",
+        crusade=("Finances", -600), flags=(K_RAISED, LATE, BLOW, "irabeth.started"))),
 ], requires=("trickster", "irabeth_dead", KILLED, "irabeth.dead.latched"), forbids=(DRILLED, RETURNED, DECLINED), delay=24,
    TricksterDevice=True, TricksterState="killed")
 
@@ -282,7 +333,12 @@ letter("irabeth.trickster.killed.dig", "Half a pace left", [
 {n}You taught her to step inside a blade. At Iz you felt where your own blade went, and it was not where you aimed it.{/n}''',
       c('[Send two sappers and the column\'s best healer back to the ruin] "She stepped. I taught her to. Dig."', "dig",
         crusade=("Favors", -150), flags=(DUG, "irabeth.started")),
-      c('[Let the blow stand] "No. It happened. I did it."', "stands", flags=(DECLINED,))),
+      c('[Let the blow stand] "No. It happened. I did it."', "stands", flags=(DECLINED,)),
+      c('[Buy the column a surgeon from the Mendevian baggage train first, then send the sappers and the healer] "She stepped. I taught her to. Dig."',
+        "dig_paid", crusade=("Finances", -400), flags=(DUG, HEALER, "irabeth.started"))),
+    nar("dig_paid", '''{n}The Mendevian baggage master has a surgeon to spare and a price for him that he does not bother to make polite. You pay it. The column keeps its healing; the healer goes back to the ruin with two sappers and their picks.{/n}
+{n}On the second morning a rider catches the column up. They found the Knight-Captain in a cellar of the lower ruin, under a fallen lintel, alive, with the wound packed with her own tabard and her sword in her fist. Your blade went in under the ribs and out again. It missed her heart by the width of half a pace.{/n}''',
+      c('"Bring her home."')),
     nar("dig", '''{n}The healer argues. There are forty wounded in the wagons, and she is the one who keeps them breathing on the road. You send her anyway, with two sappers and their picks, and the column marches without them. Two men in the wagons die on the road who would have lived with her beside them. Nobody offers you their names. You ask for them.{/n}
 {n}On the second morning a rider catches the column up. They found the Knight-Captain in a cellar of the lower ruin, under a fallen lintel, alive, with the wound packed with her own tabard and her sword in her fist. Your blade went in under the ribs and out again. It missed her heart by the width of half a pace.{/n}''',
       c('"Bring her home."')),
@@ -326,7 +382,7 @@ physical("irabeth.trickster.killed.blow_missed", "The step she learned", '"Knigh
       c('"...Goodbye, Irabeth."')),
     i("raised", '''"I remember your blade going in. I remember the cold. Then a voice calling me by my rank, once, and yours behind it, and I thought: I'm not finished with that one."
 {n}She has a sword in her hand that is not hers.{/n}
-"You killed me, Commander. Then you had a priest write it down and spend Teodor Vell's diamond fetching me back to read it. The chaplain told me whose it was. I swore on the boy's sword at his bier: his share of this war and mine, and it doesn't leave my hand until the Wound is shut."
+"You killed me, Commander. Then you had a priest write it down and bought a diamond from the Queen's jeweller to fetch me back to read it. I swore at the altar with the chaplain for witness: this sword doesn't leave my hand until the Wound is shut. You'll never again find me without it."
 {n}She takes one very precise step closer.{/n}
 "So I'll ask once. Which did you mean? Iz, or the list?"''',
       c('"I meant it. At Iz, I meant it. I don\'t now."', "truth_raised",
@@ -343,6 +399,19 @@ physical("irabeth.trickster.killed.blow_missed", "The step she learned", '"Knigh
 
 # --- After the return: the test, the commit, her no ---------------------------------------------------------------
 
+# Sol r1 BEL: after the Commander's own blade, no yes without a test she sets and the Commander passes.
+physical("irabeth.trickster.killed.the_watch", "Under her sword", '"Knight-Captain. You wanted me?"', [
+    i("start", '''{n}She is in the guardroom off the throne room, where the night watch sleeps in shifts. One cot is made up. Beside it is a stool, and she is sitting on the stool with the sword across her knees.{/n}
+"You want something from me. I can see it on you. Before you ask it, you're going to sleep here. Tonight. Unarmed. And I'm going to sit on this stool with this until the bell, and you're going to find out whether you can close your eyes."
+"I did, at Iz. I closed them for one breath, and you put steel in me. Your turn."''',
+      c('[Unbuckle your sword belt, hand it to her, and lie down]', "night", flags=(TRUSTED,)),
+      c('"Not tonight."', abort=True)),
+    nar("night", '''{n}You lie down. She does not move. The lamp burns low; the watch changes twice beyond the door. Every time you open your eyes she is exactly where she was, the blade across her knees, watching you the way she watches a road at night.{/n}
+{n}Near dawn you sleep, properly, for an hour. When you wake she has laid your sword belt across your chest and gone. On the stool is a scrap of duty roster with one line on it, in her square hand: "Slept. Didn't die. Neither did I."{/n}''',
+      c('"Neither did I."')),
+], requires=("trickster.ever", RETURNED, BLOW, "irabeth.trickster.back_on_duty"),
+   forbids=(TRUSTED, BLOW_STANDS, "irabeth.committed"), delay=24)
+
 physical("irabeth.trickster.back_on_duty", "Back on duty", '"Knight-Captain. A word."', [
     nar("start", '''{n}She is at her post in the throne room as if she never left it. The sword is in her hand. It has been in her hand since she came back.{/n}''',
       c("Continue", "hymn", forbids=(BLOW,)), c("Continue", "blow", requires=(BLOW,))),
@@ -355,9 +424,8 @@ physical("irabeth.trickster.back_on_duty", "Back on duty", '"Knight-Captain. A w
       c("Continue", "question"),
       c('[Offer to sign her discharge now] "Then I\'ll sign it. You\'re free."', "unsigned")),
     i("unsigned", '''"And do what? Go home and sit in a chair with a sword in my fist until the Wound shuts without me? I swore to see it shut. A discharge doesn't unswear anything, Commander. It just takes my post away."
-{n}She holds out her free hand for the pen anyway, palm up, perfectly steady, to see whether you will.{/n}
-"Your call. It's always been your call. That's the part I can't forgive."
-{n}You do not give her the pen. After a while she lowers the hand.{/n}''',
+{n}She holds out her free hand for the pen anyway, palm up, perfectly steady, to see whether you will. You put it in her palm. She weighs it, then tucks it back into your coat pocket herself.{/n}
+"No. Your call. It's always been your call, and I'll not have it said I took it off you the first week I was back. That's the part I can't forgive."''',
       c("Continue", "question")),
     i("question", '''"One question, and you answer it straight. Did you do it for the crusade, or for me?"
 {n}She waits.{/n}
@@ -448,12 +516,13 @@ physical("irabeth.trickster.commit", "Off the record", '"Knight-Captain. Off the
       c("Continue", "threshold")),
     nar("threshold", THRESHOLD, c("Continue", "morning")),
     i("morning", MORNING_HOME, c('"Dismissed, Knight-Captain."')),
-], requires=("trickster.ever", "irabeth.trickster.back_on_duty"), forbids=("irabeth.committed", DECLINED), delay=72)
+], requires=("trickster.ever", "irabeth.trickster.back_on_duty"), forbids=("irabeth.committed", DECLINED, BLOW), delay=72,
+   ForbidOverrides={BLOW: TRUSTED})
 
 physical("irabeth.trickster.second_ask", "The pen", '"Knight-Captain. I\'m asking again."', [
     i("price", '''"You want to ask again. Not while you're holding that."
 {n}She nods at your coat, at the inside pocket where the pen has lived since Iz. The pen you misplaced for two days, so her discharge could not be signed.{/n}
-"As long as you've got it, I'm under orders whether I like it or not, and so is anything I say to you. Give it to me. I'll send it to Nevi. If she sends it back, the answer's no. If she keeps it, ask me."''',
+"You asked me once as my Commander, and I said no to my Commander. Ask twice with my discharge in your pocket and it stops being a question. Give it to me. I'll send it to Nevi. If she sends it back, the answer's no. If she keeps it, ask me."''',
       c('[Hand her the pen] "It\'s yours. So is the discharge. Nevi decides."', "sent",
         requires=("anevia_gone",), forbids=(A_RET,), flags=(SIGNED,)),
       c('"Some things I keep."', "refused", flags=("irabeth.closed",)),
@@ -492,7 +561,7 @@ physical("irabeth.trickster.second_ask", "The pen", '"Knight-Captain. I\'m askin
       c("Continue", "threshold", flags=("irabeth.committed", "irabeth.trickster.nevi_answered", ASKED))),
     i("morning_house", MORNING_HOUSE, c('"Dismissed, Knight-Captain."')),
 ], requires=("trickster.ever", DECLINED, "irabeth.trickster.back_on_duty"), forbids=("irabeth.committed", LIED),
-   delay=96, ForbidOverrides={LIED: CONFESSED})
+   delay=48, ForbidOverrides={LIED: CONFESSED})
 
 # Sol BEL: a lie about Iz is not forgiven by omission. She said "Ask me again when you've told me the other one."
 physical("irabeth.trickster.the_other_story", "The other story", '"Knight-Captain. About Iz."', [
@@ -524,7 +593,11 @@ physical("irabeth.trickster.nevi_reply", "Keeping it", '"The south-road courier 
 UNDER_ORDERS_PARAGRAPHS = (
     p("She had come back because she was still on the Drezen roster, and she stayed under a vow she had sworn over "
       "Teodor Vell's bier. His sword never left her hand until the Wound was shut. Then she carried it to his mother in "
-      "Nerosyan herself, and stood in the doorway with her helmet under her arm until she was let in.", requires=(VELL,)),
+      "Nerosyan herself, and stood in the doorway with her helmet under her arm until she was let in.", requires=(VELL,),
+      forbids=(BOUGHT,)),
+    p("She had come back because she was still on the Drezen roster, on a diamond the crusade could not spare. Teodor "
+      "Vell, called back the same night, served in her company for the rest of the war and never learned what the second "
+      "stone had cost; she saw to that, and saw to it that the company ate.", requires=(BOUGHT,)),
     p("She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the "
       "first had not happened. She taught the step to every recruit who would hold their ground long enough to learn it.", requires=(BLOW,),
       forbids=(LIED, K_RAISED)),
@@ -540,7 +613,14 @@ UNDER_ORDERS_PARAGRAPHS = (
     p("When the Wound closed, Irabeth Tirabade put her sword down at last, flexed the hand, and asked the Commander "
       "the question she had been saving: not as a knight, and not under orders. She asked it out loud, in the kitchen "
       "of the house on the corner, with Anevia leaning in the doorway to hear it first.", requires=("irabeth.trickster.late_committed",),
+      forbids=("irabeth.committed", "irabeth.closed", DECLINED, "irabeth.trickster.friends", "anevia_gone")),
+    p("When the Wound closed, Irabeth Tirabade put her sword down at last, walked out of the gate to where her wife was "
+      "waiting on the road side of the line, and came back with an answer from both of them. She asked the Commander "
+      "the question she had been saving: not as a knight, and not under orders.", requires=("irabeth.trickster.late_committed", A_RET),
       forbids=("irabeth.committed", "irabeth.closed", DECLINED, "irabeth.trickster.friends")),
+    p("The south-road courier caught her up after the Wound was closed, with the answer she had sent him for. Nevi had "
+      "kept the pen. Irabeth read the message twice, the way she read every order, and went to find the Commander "
+      "without her sword.", requires=(PEN_SENT,), forbids=("irabeth.committed", "irabeth.closed")),
     p("She stayed the Commander's knight until the Wound was closed: loyal, exact, and never once off the record.",
       requires=(DECLINED,), forbids=("irabeth.committed", "irabeth.closed")),
     p("She stayed the Commander's knight, and that was all. When the discharge was finally signed she saluted, took "
@@ -560,8 +640,8 @@ SCENES.append(scene("irabeth.trickster.epilogue.under_orders", "Until the Wound 
 REACTIONS = [
     reaction("Seelah", "irabeth.trickster.dead.react_seelah", (RETURNED, "irabeth.trickster.seelah_prayed"),
              '''{n}Seelah does not sit down. She stands with her arms folded, and her holy symbol is in her fist.{/n}
-"I asked the Inheritor to take her. I knelt in the mud at Iz and asked Her to welcome my sister into Her army. And you told the chaplain Irabeth was still on shift, and struck a boy off his list to prove it."
-{n}Her voice cracks on the last word. She knows Teodor Vell's name; she prayed over him too.{/n}
+"I asked the Inheritor to take her. I knelt in the mud at Iz and asked Her to welcome my sister into Her army. And you told the chaplain Irabeth was still on shift."
+{n}Her voice cracks on the last word.{/n}
 "I'm going to be angry with you for a week, Commander. Then I'm going to hug her until she complains."''',
              answer_list=SEELAH_HUB, forbids=("seelah_dead", "seelah_gone", KILLED), chapter=5, last=5,
              entry='"Irabeth is back."'),

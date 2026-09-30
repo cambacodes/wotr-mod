@@ -13,7 +13,7 @@ SCENES = []
 
 SCENES.append(scene("konomi.private_absence", "The address in your keeping", "Konomi", 4, "", [
     n("start", "Narrator", '''{n}The fastening on a small pouch gives way while you are sorting your belongings. Nothing valuable falls far. You catch a folded sheet before it reaches the ground, recognize Konomi's handwriting on the outside, and remain crouched with it in your hand.{/n}
-{n}The receiving agent's address is still perfectly legible. Knowing where a letter ought to go has become a different matter from being able to send one. There is no reason to believe that the impossible clerk who once accepted your invitation owes you another delivery, least of all from here.{/n}
+{n}The receiving agent's address is still perfectly legible. Knowing where a letter ought to go has become a different matter from being able to send one. No courier crosses the Abyss, whatever route once carried your word to her, and nothing you would trust down here offers to try.{/n}
 {n}You gather the pouch's contents and set them beside you. Somebody else has the watch for now. You have time to mend a fastening, and nobody waiting to hear what your decision means for the crusade.{/n}''',
       c('[Sit down and repair the fastening.]', "repair"),
       c('[Keep the address safe. Leave the repair and the recollection for another time.]', abort=True)),
@@ -117,10 +117,10 @@ def reply_nodes(final_flags=()):
 "I was not there. I cannot forge that. But bring me the next one, and the one after, and I shall hold you to every detail. I had things of my own to tell you, and nowhere to post them."''', c('[Ask what she wants you to understand about her life now.]', "absence_now")),
       n("absence_oldfear", "Konomi", '''"I have read what you were afraid of. One evening will not tell me how much of it came home with you. I shall find out the way I find out anything: by asking rude questions until someone slips."
 {n}She holds the letter against her knee.{/n}
-"You may have changed. I have not stood still either, and I will not pretend I have to spare your feelings. You will get the true file on me, and I expect the true file on you."
+"You may have changed. I have not stood still either, and I will not pretend I have to spare your feelings. You will get the truth about me, and I expect the same of you."
 "I know."
 "Good. Everyone promises that nothing will be different. I have watched three alliances die of that promise."
-{n}She takes your hand in her free one, firmly, like a woman sealing a bargain.{/n}
+{n}She takes your hand in her free one, firmly, and does not let go.{/n}
 "Now. You first, and then me. I have a great deal to report and I intend to be tedious about it."''', c('[Listen to what changed for her.]', "absence_now")),
       n("absence_already", "Konomi", '''"I remember. You need not begin as though you had only just arrived to tell me there is more to say."
 {n}She turns toward you, leaving the things between you alone.{/n}
@@ -129,9 +129,9 @@ def reply_nodes(final_flags=()):
 "So ask me about the woman you have invited here now. She is not the attaché who used to sit at your council table, and she charges differently."''', c('[Ask what she wants from these visits now.]', "absence_now")),
       n("absence_unrecorded", "Konomi", '''"Then we shall talk now. There need not be a page to prove you thought of me."
 {n}She takes a moment before continuing.{/n}
-"We have made arrangements and kept them. That is more than most treaties manage. It is also rather dull."
+"We have made arrangements and kept them. It is also rather dull."
 {n}She looks directly at you.{/n}
-"Some evenings I shall arrive with nothing worth reporting and a temper. Some evenings I should like you to cut my account short because you would rather kiss me. I did not leave the council table to sit across another one from you exchanging courtesies."''',
+"Some evenings I shall arrive with nothing worth reporting and a temper. Some evenings I should like you to stop me mid-sentence because you would rather kiss me. I did not leave the council table to sit across another one from you exchanging courtesies."''',
         c('"I would like an invitation that does not require us to have something impressive to tell one another."', "absence_present_wanted"),
         c('"Tell me what has been hardest to fit into the arrangements."', "absence_now")),
       n("absence_present_wanted", "Konomi", '''"Then come without one. Send word that you want to see me. I may name a different evening; I will not ask for your reasons. I read enough pretexts at work."
@@ -223,7 +223,7 @@ def reply_nodes(final_flags=()):
 {n}Her hand is warm against yours, and she does not move back.{/n}''',
         c('"Yes. I have wanted that too."', "absence_kiss"),
         c('"Stay close. I would rather keep talking for a while."', "absence_quiet")),
-      n("absence_kiss", "Narrator", '''{n}Her first kiss is careful, the way she opens a sealed dispatch. When you draw her nearer, the care goes: her hand at the back of your neck, her teeth at your lip, the small impatient breath when you move away too soon.{/n}
+      n("absence_kiss", "Narrator", '''{n}Her first kiss is careful, almost polite. When you draw her nearer, the care goes: her hand at the back of your neck, her teeth at your lip, the small impatient breath when you move away too soon.{/n}
 {n}"Again," she says, and this time you do not make her ask twice.{/n}
 {n}Afterward she rests her forehead briefly against yours. She has a hand on your sleeve and you are both smiling, a little unsteadily, at how much more difficult it is to speak now that you no longer need to.{/n}
 {n}When she finally leans back, she keeps your hand. There will be more to tell each other. You begin with the evening still available, and the things each of you would like to do before it ends.{/n}''',
