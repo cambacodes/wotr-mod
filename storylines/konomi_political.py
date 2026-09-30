@@ -54,7 +54,7 @@ def pages(private):
 {n}She stops herself from unfolding the letter.{/n}
 "I have a great many opinions about that. You know several of them already. Tonight I wanted to tell you why I will not promise to become less interested when our conversations become more personal."
 "I have not asked you to."
-"No. I would like to avoid discovering that either of us assumed it. I want a future in a country capable of governing itself. There are evenings when wanting that makes me very poor company."
+"No. You have not. People generally stop asking and start assuming, and I prefer to shut that door before anyone walks through it. I want a country capable of governing itself. There are evenings when wanting it makes me very poor company."
 {n}Her glance toward you is dry.{/n}
 "You are permitted to say so. Preferably with a better argument than that I would look prettier if I smiled."''', c('[Ask how she sees her work continuing.]', "council")),
         n("uncertain", "Konomi", '''"I will not give you a convenient ending to a dispute merely because it would make this conversation easier. There are accounts I would need to check before attaching my name to one."
@@ -63,7 +63,7 @@ def pages(private):
 "You can make those questions sound like accusations."
 "Sometimes they are. I try to discover which before sending them."
 {n}A slight smile escapes her.{/n}
-"You need not agree with my eventual answer in order to hear why the question matters to me."''', c('[Ask what she wants to do with those answers.]', "council")),
+"You may dislike my eventual answer. I shall send it anyway, with a copy to you, so you can dislike it in comfort."''', c('[Ask what she wants to do with those answers.]', "council")),
         n("council", "Narrator", '''{n}Konomi draws her writing case closer, then leaves it shut. She seems to be deciding which part of the answer belongs in this room.{/n}''',
           c('"You said the Diplomatic Council had served its purpose. What comes after that?"', "concluded", requires=("konomi.council_conclusion_seen",)),
           c('"What part of that work do you want for yourself?"', "unconcluded", forbids=("konomi.council_conclusion_seen",))),

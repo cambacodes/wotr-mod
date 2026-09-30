@@ -113,9 +113,9 @@ s("private_reunion", "What the letters left out", [
 {n}She tastes the bread.{/n}
 "I also want more of this than letters. I found that out by writing them."''',
       c('"So did I. I want us to keep making these visits possible."', "want", flags=("konomi.distance_wants_visits", "konomi.private_interest", "konomi.attracted")),
-      c('"I want to spend this visit with you. Let us see how it feels before we plan the next one."', "visit_only", flags=("konomi.distance_taking_time",))),
+      c('"I want to spend this visit with you. Let us see how it goes before we plan the next one."', "visit_only", flags=("konomi.distance_taking_time",))),
     n("want", "Konomi", '''"Good. I had a much longer explanation ready, and I am pleased not to need it."
-{n}She reaches for your hand, stopping where you can meet her halfway.{/n}
+{n}She reaches across the paper and takes your hand as if it had been on her list of purchases.{/n}
 "I missed you. There were occasions when I missed the idea of you and suspected the real person might have been more difficult. It is a relief to have the real person here."''',
       c('[Take her hand and kiss her.]', "kiss", flags=("konomi.reunion_kissed",)),
       c('[Take her hand and stay beside her.]', "partners")),
@@ -149,7 +149,7 @@ s("private_reunion", "What the letters left out", [
 {n}A wry smile touches her mouth.{/n}
 "There is a woman in Nerosyan who still will not dine with me. She does answer my letters now. I have had to be satisfied with that."
 {n}She looks back at you.{/n}
-"If there is something you still want to say, I would say it while the person can hear you. You need not spend our evening composing it. I would like to keep some of your attention for myself."''', c('[Thank her, and return to the meal.]', "schedule")),
+"If you have something left to say to her, send it by an ordinary post while she can still read it. Not tonight. Tonight I have paid for the journey, and I intend to have the whole of your attention for the fare."''', c('[Thank her, and return to the meal.]', "schedule")),
     n("sooner", "Konomi", '''"Then tell me the version you have been rehearsing. I reserve the right to defend the absent party if you have made her conveniently foolish."
 {n}You give her the argument. She stops you once to ask what the other person actually said, rather than what you now suspect she meant. By the time you answer, you are smiling despite yourself.{/n}
 "There. A more formidable opponent. If you are going to lose sleep, you may as well earn a respectable victory."
@@ -169,9 +169,9 @@ s("private_reunion", "What the letters left out", [
       c('[Tell her how you have made room for this visit among your other relationships.]', "others", requires=("konomi.private_other_promises",)),
       c('[Ask what she most wants to do while she is here.]', "plans", forbids=("konomi.private_other_promises",))),
     n("others", "Konomi", '''{n}She listens, asking once when you need to be elsewhere. When you answer, she nods.{/n}
-"Then we know how much of the evening we have. I would rather enjoy it than spend it asking you to prove that you should have given me more."
+"Then we know how many hours I have bought. I shall spend them, not audit them."
 {n}She brushes a crumb from the edge of her plate.{/n}
-"I hope your other plans go well. I would like you pleased to see me when we meet again, rather than exhausted by apologies to everybody you love."''', c('[Ask what she most wants to do while she is here.]', "plans")),
+"Keep your other appointments. Only do not come to my door next time worn thin from making excuses at everyone else's. I want you at full value."''', c('[Ask what she most wants to do while she is here.]', "plans")),
     n("plans", "Konomi", '''"I want to finish the lease without it occupying every hour until I leave. I want to find the woman who sold me those pears and discover whether choosing good ones was skill or luck. And I want another evening with you."
 {n}She smiles at the last admission without trying to take it back.{/n}
 "We can arrange that before I go. Have the last pear. I want to know whether you think I chose well."''',

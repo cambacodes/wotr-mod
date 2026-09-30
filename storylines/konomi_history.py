@@ -81,12 +81,12 @@ SCENES = [scene("konomi.private_history", "What was left unanswered", "Konomi", 
 {n}She takes her hands from the case.{/n}
 "We have discussed the dismissal. This is another thing. I will not let the larger argument swallow it merely because we would both rather enjoy the afternoon."''',
       c('"I was frightened of what they would do with it. I asked you to make our relationship a lie instead of admitting that fear. I am sorry."', "accepted", flags=("konomi.apologized",)),
-      c('"I am not willing to give you the acknowledgment you need."', "part")),
-    n("accepted", "Konomi", '''"Thank you. I needed to hear which part you regretted."
+      c('"I will not give you the acknowledgment you want."', "part")),
+    n("accepted", "Konomi", '''"There. That is the clause I was waiting for. Not a general sorrow; the specific item."
 {n}She exhales slowly.{/n}
-"I would like to believe I will not have to argue for the existence of our evenings the next time somebody reads a page that was meant for me. I cannot promise that this conversation will prevent the thought from returning."
-{n}She leaves room for you beside her.{/n}
-"You may stay while I decide what to do with it."''', c('[Stay without asking her to declare the hurt over.]', "hearing")),
+"The next time somebody waves a page of mine at you, I shall remember this afternoon, and I shall remember the other one too. I do not forget debts, paid or unpaid. It is a professional failing."
+{n}She moves the case off the bench beside her.{/n}
+"Sit. I have not decided what to do with you yet. You may as well be comfortable while I think."''', c('[Stay without asking her to declare the hurt over.]', "hearing")),
     n("remember", "Konomi", '''"I remember it too. I do not need you to deliver it again as though I had mislaid the first version."
 {n}She moves the case aside.{/n}
 "I want to know that the next private letter will not become something you are prepared to disown when it is inconvenient. That will take more than one good answer from either of us."''', c('[Agree to let later conduct answer that.]', "hearing")),

@@ -22,7 +22,7 @@ SCENES = [scene(ID, "A turn for herself", "Konomi", 3,
 {n}She crosses the empty floor, turns, and comes back with a small, precise lift of her heel. Her skirt follows the turn without catching. The pleasure on her face appears before she notices you watching.{/n}
 "There. That is the part I wanted. A room full of conversation is apt to swallow it."
 {n}She marks a rhythm with her fingertips against the chair, then hums a few bars. Without accompaniment, her voice is low and rather practical.{/n}
-"The tune repeats. I can supply it, provided you do not expect singing worth paying for. We can stop whenever we wish."
+"The tune repeats. I can supply it, provided you do not expect singing worth paying for. I was trained to dance at a court where a missed step cost a family its seat. Nobody here is keeping score."
 {n}She offers her hand.{/n}''',
       c('"Let me follow you. I spend enough of my day deciding where everyone goes."', "follow"),
       c('"I would enjoy leading. Tell me if I am pulling you where you do not want to go."', "lead"),
@@ -32,7 +32,7 @@ SCENES = [scene(ID, "A turn for herself", "Konomi", 3,
 "You need not anticipate me. I am enjoying choosing. Let me have that part."
 {n}On the next attempt you wait for the pressure of her hand. She brings you through the turn and smiles with unmistakable satisfaction.{/n}
 "Again. This time I should like the whole figure."''',
-      c('[Let her set the pace through the next figure.]', "listen", flags=("konomi.dance_followed",))),
+      c('[Let her lead you through the next figure.]', "listen", flags=("konomi.dance_followed",))),
     n("lead", "Konomi", '''"I will tell you. You may find that reassuring or rather inconvenient."
 {n}She shows you the opening, then places her hand in yours. At your first turn she follows readily. At the second she stops and looks down at the narrowing space between her skirt and the chair.{/n}
 "If you want a larger circle, move the chair. Do not make me dance around it while you enjoy the view."
@@ -56,7 +56,7 @@ SCENES = [scene(ID, "A turn for herself", "Konomi", 3,
     n("quiet", "Konomi", '''{n}She closes the shutter. A thin stripe of daylight remains beneath it.{/n}
 "I had a maid once who learned to knock so softly that I never heard her. I thought I wanted silence. What I wanted was to decide when I answered. She could not possibly have guessed that from my instructions."
 {n}Konomi leaves the shutter fastened and comes back to you.{/n}
-"Nobody has been told to bring us messages here. If you want to finish early, say so. I would rather know than watch you pretend not to hear something."
+"Nobody has been told where to find us. I arranged that. I am rather good at arranging that."
 {n}She begins the rhythm again, quietly, giving you the first few beats before moving.{/n}
 "And if you stay, I would like your attention for the turn. I have been looking forward to doing it properly with you."''',
       c('"I can give you this figure. Begin again."', "quiet_end")),
@@ -116,7 +116,7 @@ def integrate(payload):
     for key, answer, text in (
         ("quiet", '"I liked the quiet you made room for when we danced."', '''"I remember. The shutter here closes properly, and nobody has been asked to bring us messages."
 {n}Konomi gets up to fasten it, then returns to her place beside you.{/n}
-"Tell me if you want it open. I have no intention of turning one afternoon into an instruction you must live with forever."'''),
+"I bribed the landlord's boy to keep the stair clear. It cost less than you would think, and I have enjoyed telling you that more than I should."'''),
         ("street", '"I liked dancing while the city went on outside. Could we open the window?"', '''"Yes. Though if somebody begins singing, I shall expect you to defend your preference."
 {n}She opens the window. Voices rise from below, and she pauses to listen before returning to you.{/n}
 "There. Nobody seems to require us. I am glad you are here."'''),

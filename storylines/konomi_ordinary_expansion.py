@@ -289,9 +289,9 @@ s("the_trial_day", "An improvement with a bill attached", '"How is the trial goi
 "You invited me to."
 "I invited you to hear a proposal. I discovered afterward that I cared rather more about what you saw while I was defending it."
 {n}She looks at you directly. The small composed smile has gone.{/n}
-"I don't want to become agreeable in private because I have made so many demands in public. I also don't want you to spend every evening admiring how difficult I am. There must be some less exhausting arrangement."
+"In council I would have had that plank in my report and Oselda's name in a footnote. I nearly did it here. You watched me decide not to, and I found I wanted you to see it. That is a weakness, Commander, and I am telling you so you cannot sell it to anyone."
 "You could tell me what you would enjoy."
-"At present? Taking off this glove. Having you stay close enough that I need not decide whether asking for a kiss would sound like another proposal."
+"At present? Taking off this glove. And not having to draft the next part as a proposal. I have written enough proposals today."
 {n}She begins working at the fastening. You wait until she has freed her hand, then take it.{/n}""",
       c('[Kiss her, and let the unhurried moment last.]', "kiss"),
       c('[Draw her beside you and stay with her in the shelter.]', "rest")),
@@ -319,7 +319,7 @@ s("a_name_beside_hers", "The readers she wanted", '"Has Varine answered about th
 {n}Konomi shifts the glass to an empty patch of table.{/n}
 "I know what you are about to say."
 "Do you?"
-"No. I am practicing being less certain. It is irritating work."
+"No. But I like you to believe I do. It saves us both time."
 {n}A knock saves her from further practice. Oselda enters carrying the draft they sent together. She has made notes in a different color, leaving very little margin unused.{/n}""",
       c('[Make room for her draft.]', "offer"),
       c('[Ask to postpone the discussion until you can remain.]', abort=True)),
@@ -412,7 +412,7 @@ s("the_evening_she_kept", "After the answer arrived", '"You asked me to come to 
 {n}You tell her something small from your day. She asks a question about the person involved, then another about what you said. When you reach the part where you were less certain of yourself, she stops eating to listen.{/n}
 "Would you like an opinion?"
 "You have one."
-"Several. I have learned that possessing them does not answer my question."
+"Several. I am withholding them until you have finished, which you will recognise as a painful concession."
 {n}You choose one detail to explain more carefully. She changes her first opinion, keeps the second, and admits the third was mainly an opportunity to say something clever. By then the covering has gone soft beneath the sauce. Neither of you complains.{/n}
 {n}When you reach for the last slice, she lays her hand over yours.{/n}
 "A negotiation. Half in exchange for your company while I clear the table."
@@ -423,7 +423,7 @@ s("the_evening_she_kept", "After the answer arrived", '"You asked me to come to 
     n("plans", "Konomi", """{n}The dishes take less time than the conversation about where they ought to go. Konomi has a strong opinion about a shelf you have never noticed. You discover that it is based on having dropped a cup from it last month, and suggest moving the cups.{/n}
 "An excellent proposal. I should have invited you sooner."
 {n}She puts the last one safely down. When she turns, you are close enough that she does not have to raise her voice.{/n}
-"I want one evening that we decide about before the rest of the week takes it. If work truly takes it afterward, we choose another. I do not want us both to be too considerate to ask."
+"One evening a week, Commander, entered in both our books before the week begins. If the war takes it, the war owes us another, and I shall collect. I have collected from worse debtors than a crusade."
 "Which evening?"
 {n}She names two possibilities and tells you where her writing will fall. You choose a time you can offer. She asks what you would like to do and waits through your first, overly generous answer.{/n}
 "Something you want. I have spent several evenings being extremely specific. It would be discourteous to let you remain mysterious."
@@ -434,9 +434,9 @@ s("the_evening_she_kept", "After the answer arrived", '"You asked me to come to 
       c('[Kiss her, then ask for a little air together before you leave.]', "air")),
     n("night", "Narrator", """{n}Konomi meets the kiss with a quick intake of breath. Her hand tightens at your neck. The next kiss is less careful, and she laughs when the edge of the table catches you both by surprise.{/n}
 "We have discussed this room's furniture quite enough."
-{n}She takes your hand and leads you past it. At the inner door she turns back, touches your cheek, and kisses you again without the small distance she had left before.{/n}
-{n}The lamp stays on the outer table. Her papers remain beneath their glass weight, beyond any obligation you have agreed to tonight.{/n}
-{n}Later, she lies beside you with one hand resting loosely against your chest. When you move, her fingers close for a moment, then relax.{/n}
+{n}She takes your hand and leads you past it. At the inner door she turns back and starts on your collar herself, briskly, as if she has been wanting to all evening. "I have been sitting across from you all evening pretending to care about mushrooms. Get this off."{/n}
+{n}Her own sash comes loose under your hands; the silk beneath it is warm from the stove and then gone. She pushes you down onto the bed by the shoulders, climbs astride you with her hair falling forward around both your faces, and catches your hands to set them on her hips. "There," she says, very low, and leans down to kiss you, pressing her hips to yours.{/n}
+{n}Afterward, she lies beside you with one hand resting loosely against your chest. When you move, her fingers close for a moment, then relax.{/n}
 "I had a better answer about the waiting yard," she murmurs.
 "Now?"
 "No. Tomorrow. I wished you to know that I was heroically withholding it."

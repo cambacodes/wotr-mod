@@ -13,7 +13,7 @@ SCENES = []
 
 SCENES.append(scene("konomi.private_absence", "The address in your keeping", "Konomi", 4, "", [
     n("start", "Narrator", '''{n}The fastening on a small pouch gives way while you are sorting your belongings. Nothing valuable falls far. You catch a folded sheet before it reaches the ground, recognize Konomi's handwriting on the outside, and remain crouched with it in your hand.{/n}
-{n}The receiving agent's address is still perfectly legible. Knowing where a letter ought to go has become a different matter from being able to send one. There is no reason to believe that the impossible clerk who once accepted your invitation owes you another delivery, least of all from here.{/n}
+{n}The receiving agent's address is still perfectly legible. Knowing where a letter ought to go has become a different matter from being able to send one. No courier crosses the Abyss, whatever route once carried your word to her, and nothing you would trust down here offers to try.{/n}
 {n}You gather the pouch's contents and set them beside you. Somebody else has the watch for now. You have time to mend a fastening, and nobody waiting to hear what your decision means for the crusade.{/n}''',
       c('[Sit down and repair the fastening.]', "repair"),
       c('[Keep the address safe. Leave the repair and the recollection for another time.]', abort=True)),
@@ -35,7 +35,7 @@ SCENES.append(scene("konomi.private_absence", "The address in your keeping", "Ko
       c('[Keep the page with the address. Send neither through an untrusted bargain.]', flags=("konomi.private_absence_kept", "konomi.absence_page", "konomi.absence_wanted"))),
     n("waiting_page", "Narrator", '''{n}"I have been imagining that, if I reach you, we can continue from the last thing we said. I know that is not fair. You will have had days I have not even attempted to imagine."{/n}
 {n}You begin a question about her work, then realize you are asking for a report you can put into order. What would be harder to hear? That she found something she preferred doing to waiting for news? That she had a good evening you were not part of? Or that she needed you once and learned how to manage without an answer?{/n}
-{n}"Tell me one thing that changed while I was away. Something you chose, if there is one you want to tell me. I want to hear it without asking you to make it smaller so that I can fit back into the room."{/n}
+{n}"Tell me one thing that changed while I was away. Something you chose, if there is one you want to tell me. Tell it to me whole. I have been gone too long to complain that the room was rearranged."{/n}
 {n}You read the question again before folding the page. For once, you have left most of the space beneath it empty.{/n}''',
       c('[Keep the page with the address. It will travel only when you do.]', flags=("konomi.private_absence_kept", "konomi.absence_page", "konomi.absence_changed"))),
     n("remember", "Narrator", '''{n}You smooth the fold of the address rather than write on it. Her directions deserve to remain legible.{/n}
@@ -75,7 +75,7 @@ def reply_nodes(final_flags=()):
     '''The same acknowledgement can be offered at reunion or through explicit old-save catch-up.'''
     return [
       n("absence_open", "Konomi", '''{n}Konomi gives you her attention. When you hesitate, she does not supply an opening for you.{/n}
-"You do not have to begin at the beginning. Choose the part you wanted me to hear."
+"Skip the preamble. I have sat through a thousand preambles. Give me the clause you came to deliver."
 {n}There is something unfamiliar about saying it now that she can answer. The account you kept is no longer yours alone to arrange.{/n}''',
         c('[Give her the account you kept with her address.]', "absence_page", requires=("konomi.absence_page",)),
         c('[Tell her about repairing the pouch and remembering her departure.]', "absence_memory", requires=("konomi.absence_memory",)),
@@ -110,40 +110,40 @@ def reply_nodes(final_flags=()):
         c('[Ask about the beautiful sight you tried to describe.]', "absence_oldwonder", requires=("konomi.letter_wonder",), forbids=("konomi.letter_fear",)),
         c('[Let her answer the fear you wrote down.]', "absence_oldfear", requires=("konomi.letter_fear",)),
         c('[Tell her what you most want to say now.]', "absence_unrecorded", forbids=("konomi.letter_wonder", "konomi.letter_fear",))),
-      n("absence_oldwonder", "Konomi", '''"I would have wanted to see it. You need not persuade me to approve of the Abyss before I can want to have stood beside you for a moment."
+      n("absence_oldwonder", "Konomi", '''"I would have wanted to see it. I do not have to approve of the Abyss to envy you one view of it."
 {n}She asks you to describe the light again. This time you can show its direction with your hands, stop when she has misunderstood, and hear the question that makes you remember another detail.{/n}
 "There," she says at last. "I have something I can imagine."
 {n}She looks pleased, then rueful.{/n}
-"I cannot give you a memory of my being there. I can listen when you bring the memory here. I wanted that too, when something happened to me and there was no useful address for you."''', c('[Ask what she wants you to understand about her life now.]', "absence_now")),
-      n("absence_oldfear", "Konomi", '''"I have read what you were afraid of. I do not know whether I can tell, from one evening, how much of it came home with you."
+"I was not there. I cannot forge that. But bring me the next one, and the one after, and I shall hold you to every detail. I had things of my own to tell you, and nowhere to post them."''', c('[Ask what she wants you to understand about her life now.]', "absence_now")),
+      n("absence_oldfear", "Konomi", '''"I have read what you were afraid of. One evening will not tell me how much of it came home with you. I shall find out the way I find out anything: by asking rude questions until someone slips."
 {n}She holds the letter against her knee.{/n}
-"I would rather ask when I do not understand than pretend to recognize every change because I knew you before. You may have to explain things I once guessed correctly. I may dislike some of the answers."
+"You may have changed. I have not stood still either, and I will not pretend I have to spare your feelings. You will get the truth about me, and I expect the same of you."
 "I know."
-"I wanted to say it while you were listening. It is easy to promise that nothing will be different when the person concerned cannot answer."
-{n}She offers you her free hand.{/n}
-"I would like to hear what helps now. I also have things to tell you that will not fit into the person you remember. Let us make room for both."''', c('[Listen to what changed for her.]', "absence_now")),
+"Good. Everyone promises that nothing will be different. I have watched three alliances die of that promise."
+{n}She takes your hand in her free one, firmly, and does not let go.{/n}
+"Now. You first, and then me. I have a great deal to report and I intend to be tedious about it."''', c('[Listen to what changed for her.]', "absence_now")),
       n("absence_already", "Konomi", '''"I remember. You need not begin as though you had only just arrived to tell me there is more to say."
 {n}She turns toward you, leaving the things between you alone.{/n}
 "We spoke after you came back. We have also had the dismissal to discuss, and the business of deciding whether we wanted to meet without an office between us. The first conversation did not settle all the later ones."
 "No."
-"I am glad we are having this one. Ask me about the person you have invited here now."''', c('[Ask what she wants from these visits now.]', "absence_now")),
+"So ask me about the woman you have invited here now. She is not the attaché who used to sit at your council table, and she charges differently."''', c('[Ask what she wants from these visits now.]', "absence_now")),
       n("absence_unrecorded", "Konomi", '''"Then we shall talk now. There need not be a page to prove you thought of me."
 {n}She takes a moment before continuing.{/n}
-"We have made arrangements and kept them. I am pleased about that. It does not mean I have found a graceful way to tell you everything I want from the visits."
+"We have made arrangements and kept them. It is also rather dull."
 {n}She looks directly at you.{/n}
-"Sometimes I would like to come without having a particularly good account of my day. Sometimes I should like you to interrupt the account because you would rather kiss me. I do not want either of us spending an entire evening being an agreeable correspondent in person."''',
+"Some evenings I shall arrive with nothing worth reporting and a temper. Some evenings I should like you to stop me mid-sentence because you would rather kiss me. I did not leave the council table to sit across another one from you exchanging courtesies."''',
         c('"I would like an invitation that does not require us to have something impressive to tell one another."', "absence_present_wanted"),
         c('"Tell me what has been hardest to fit into the arrangements."', "absence_now")),
-      n("absence_present_wanted", "Konomi", '''"Come anyway, then. Tell me you would like to see me. I may have to suggest a different evening. I do not need you to invent a better reason."
+      n("absence_present_wanted", "Konomi", '''"Then come without one. Send word that you want to see me. I may name a different evening; I will not ask for your reasons. I read enough pretexts at work."
 {n}She holds out her hand. When you take it, she draws you nearer.{/n}
-"I have wanted to ask you the same thing. There are days when I am tired, or cross, and have not yet learned anything worth explaining from either condition. I would like some company before I become interesting again."
+"The same terms apply to me. Some days I shall be tired, or cross, and entirely uninteresting. You will receive me anyway and pour the wine."
 "I might find you interesting then."
 "You may discover how repetitive my complaints become. I am prepared to risk it if you are."''', c('[Stay near and ask what she has been making room for.]', "absence_now")),
       n("absence_now", "Konomi", '''"I am still learning how much of my time to promise before I know what an assignment will require. There is always someone who wants an answer before telling me how much work the question contains. I find it particularly difficult to refuse when the question interests me."
 {n}She looks briefly exasperated, then returns her attention to you.{/n}
 "This is part of the life I am making after the dismissal. You have seen some of it. I still want influence. Having something worth doing makes it tempting to give it the next evening as well, and the one after that. I can make a very persuasive case for each evening separately."
 "Including this one?"
-"I kept this one for you. I want to keep doing that. I would rather tell you what it competes with than arrive pretending I never wanted anything else."
+"I kept this one for you. I turned down a supper with a very rich woman to do it, and I want that entered on your side of the ledger."
 {n}She rests her hand beside yours.{/n}
 "And what should I understand about the future you want now?"''',
         c('"I gave up the power that once found a door for my invitation. I chose to become Legend."', "absence_legend", requires=("legend",)),
@@ -155,14 +155,14 @@ def reply_nodes(final_flags=()):
 {n}She leans forward.{/n}
 "I cannot promise never to ask you for anything. There will be things you can do that I cannot, and I will sometimes think you should do them. You already know how pleasant I am when I think that."
 "I am not asking you to stop."
-"Then believe the invitation as well. Do not make me disguise every difficulty in my life so that you can be certain I invited you for yourself."
+"Then take the invitation at face value. When I want your help, I shall say so and name the price. When I invite you to supper, it is supper. I do not smuggle petitions into the soup."
 {n}She waits for you to answer. This is the part you could not finish alone.{/n}''',
         c('"Tell me when you want help. I will try not to hear a task in every invitation."', "absence_her_days"),
         c('"Tonight I want to be wanted. Tomorrow you may bring me the most inconvenient question you have."', "absence_tonight")),
       n("absence_tonight", "Konomi", '''{n}Konomi studies you, then nods.{/n}
 "Tonight, then. I can ask a question another day."
 {n}She reaches for your hand and leaves her palm open between you.{/n}
-"Come closer if you wish. You need not earn the place."
+"Closer. I have been sitting across tables from people all season."
 {n}You take her hand. Her fingers tighten around yours before she lets them rest. For a little while she seems as relieved as you are not to be explaining something.{/n}
 "I have missed touching you," she says. "Even when the conversation I imagined was a quarrel. That was annoying."
 {n}The admission makes her smile, but she does not use the smile to withdraw it.{/n}''', c('[Stay near and ask how she spent the days you could not hear about.]', "absence_her_days")),
@@ -175,11 +175,11 @@ def reply_nodes(final_flags=()):
 "I enjoyed it. Someone asked for my opinion and wrote down the answer. For a while I was not the person who ought to know whether you were coming back. I do not want to apologize for being relieved."''',
         c('"I am glad you went. I wanted your life to have room for things I could not give you."', "absence_her_days"),
         c('"Part of me wishes you had missed me every moment. I know that is unfair. I am glad you did not have to."', "absence_honest")),
-      n("absence_honest", "Konomi", '''"Thank you for telling me which part you know is unfair."
+      n("absence_honest", "Konomi", '''"How flattering. You wanted me to pine in a garret. I have been in garrets. The pay is terrible."
 {n}There is affection in her voice, and a limit to it.{/n}
-"I will not offer to have been more miserable. I was miserable often enough. I also wanted work, and company, and an evening when I did not have to be tactful about somebody else's consoling remark."
-{n}She shifts nearer, without taking your hand for you.{/n}
-"I am pleased to be here now. I would like that to be allowed to matter on its own."
+"I will not pretend I was more miserable than I was. I was miserable often enough. I also wanted work, and company, and an evening when nobody patted my hand about you."
+{n}She shifts nearer on the bench, until her shoulder is against yours.{/n}
+"I am here now because I chose to come. Count that, and stop counting the rest."
 "It does."
 "Then stay for what I actually have to tell you. There is quite a lot of it. Some of it may even interest you."''', c('[Listen without asking her to revise the missing days.]', "absence_her_days")),
       n("absence_her_days", "Konomi", '''"That reception gave me two invitations to submit proposals. Neither was an offer of a position. I wrote both proposals. One received an answer. I remember trying to decide how often to remind the other woman that she had asked. It occupied much more of my attention than I should like to admit."
@@ -192,7 +192,7 @@ def reply_nodes(final_flags=()):
         c('"I gave up the power that once found a door for my invitation. I chose to become Legend."', "absence_legend", requires=("legend",)),
         c('"I can still bend a rule. I cannot turn the days we missed into days we spent together."', "absence_trickster", requires=("trickster",), forbids=("legend",)),
         c('"I want to make the next invitation without pretending I can promise every part of the future."', "absence_mortal", forbids=("legend", "trickster"))),
-      n("absence_legend", "Konomi", '''{n}Konomi looks at you for a long moment.{/n}
+      n("absence_legend", "Konomi", '''{n}Konomi closes her fan against her palm and studies you as if you were a treaty with an unexpected clause.{/n}
 "Was it a relief?"
 {n}You answer as well as you can. She lets you finish before giving her own.{/n}
 "I will not pretend the power meant nothing to me. It frightened people I could not persuade, and made people listen who would have discarded a request from either of us. There were uses I would have liked to put it to. You can probably name several arguments we would have had."
@@ -217,13 +217,13 @@ def reply_nodes(final_flags=()):
 "You make it sound possible."
 "It is possible. It is not already done. I would rather begin than ask you for a better description of the future."''', c('[Take her offered hand.]', "absence_close")),
       n("absence_close", "Konomi", '''{n}Konomi moves close enough that you can feel her breath when she speaks.{/n}
-"I wanted to hear what you had kept for me. I am glad you told me."
+"There. You delivered it in person, which is the only way I accept anything that matters."
 {n}She glances at your mouth, then meets your eyes again.{/n}
-"May I kiss you? I should like to stop finding new ways to describe missing you."
-{n}She stays close, waiting, her hand warm against yours.{/n}''',
+"I have described missing you in every register I know, including two I learned in Tian Xia. I am tired of all of them. Must I put the next part in writing?"
+{n}Her hand is warm against yours, and she does not move back.{/n}''',
         c('"Yes. I have wanted that too."', "absence_kiss"),
         c('"Stay close. I would rather keep talking for a while."', "absence_quiet")),
-      n("absence_kiss", "Narrator", '''{n}Her first kiss is careful. When you draw her nearer, that care becomes attention of a different kind: her hand at the back of your neck, the pause in which she lets you return the kiss, the small impatient breath when you move away too soon.{/n}
+      n("absence_kiss", "Narrator", '''{n}Her first kiss is careful, almost polite. When you draw her nearer, the care goes: her hand at the back of your neck, her teeth at your lip, the small impatient breath when you move away too soon.{/n}
 {n}"Again," she says, and this time you do not make her ask twice.{/n}
 {n}Afterward she rests her forehead briefly against yours. She has a hand on your sleeve and you are both smiling, a little unsteadily, at how much more difficult it is to speak now that you no longer need to.{/n}
 {n}When she finally leans back, she keeps your hand. There will be more to tell each other. You begin with the evening still available, and the things each of you would like to do before it ends.{/n}''',
@@ -250,21 +250,21 @@ CATCHUP = scene("konomi.private_absence_catchup", "What we have not said yet", "
 # Append earned recollections without moving any original answer or replaying a decision.
 def add_career_recollections(item):
     moments = [
-        ("decision_now", "We chose to take the owner's work without waiting. I wanted it. I still do. That does not entitle me to the tenant's good opinion as part of the fee. You heard me admit both things. I am glad I did not have to pretend to want less before you would stay beside me.",
+        ("decision_now", "We chose to take the owner's work without waiting. I wanted it. I still do. That does not entitle me to the tenant's good opinion as part of the fee. You heard me admit both things. I did not shrink the appetite to keep you at my side, and you stayed anyway. I have noted it.",
          ("konomi.career_decided", "konomi.career_accepts_now"), ("konomi.private_terms_sent",)),
-        ("decision_wait", "We chose to give the tenant time to find another adviser. I agreed to a smaller fee, not to become someone who no longer notices money. I still want the owner's work. You know what waiting cost me, and you have not required me to sound delighted about the cost every time I mention it.",
+        ("decision_wait", "We chose to give the tenant time to find another adviser. I agreed to a smaller fee, not to become someone who no longer notices money. I still want the owner's work. You know what waiting cost me to the copper, and I shall go on complaining about it at supper for years.",
          ("konomi.career_decided",), ("konomi.career_accepts_now", "konomi.private_terms_sent")),
         ("terms_exclusive", "I sent the seasonal terms we discussed. First sight of the applicants, a guaranteed payment, a limit on how long that claim lasts. I am waiting for the owner's answer to those terms. I am not waiting to discover whether I want the work. You were there while I decided how expensive I meant to be.",
          ("konomi.private_terms_sent", "konomi.private_career_exclusive"), ("konomi.private_hours_kept",)),
         ("terms_portfolio", "I sent the smaller guarantee we discussed, with the freedom to approach other owners. I am waiting for her answer. I still remember the larger figure. It has not grown less attractive merely because I crossed it out. I chose the room to maneuver, and I liked having you beside me while I chose it.",
          ("konomi.private_terms_sent", "konomi.private_career_portfolio"), ("konomi.private_hours_kept",)),
-        ("paid_exclusive", "She accepted the seasonal arrangement and paid me. You heard what the applicant thought of losing my help, and what I thought of finally choosing which proposals the owner hears. Neither account has become false. I want to be able to tell you when I enjoy this work without first proving that everyone enjoyed my getting it.",
+        ("paid_exclusive", "She accepted the seasonal arrangement and paid me. You heard what the applicant thought of losing my help, and what I thought of finally choosing which proposals the owner hears. Neither account has become false. I enjoy the work. Not everyone enjoyed my getting it. I refuse to apologise for either.",
          ("konomi.private_hours_kept", "konomi.private_career_exclusive"), ("konomi.private_consequence_complete",)),
-        ("paid_portfolio", "The smaller guarantee was accepted. It keeps my room in Nerosyan paid for, and leaves me free to approach another landlord. It also leaves the owner free to ask another negotiator. You heard how much less appealing I found that part. I still want the independence. I am glad I can tell you when it is inconvenient.",
+        ("paid_portfolio", "The smaller guarantee was accepted. It keeps my room in Nerosyan paid for, and leaves me free to approach another landlord. It also leaves the owner free to ask another negotiator. You heard how much less appealing I found that part. I still want the independence. You will hear me curse it regularly.",
          ("konomi.private_hours_kept", "konomi.private_career_portfolio"), ("konomi.private_consequence_complete",)),
-        ("settled_exclusive", "The tenant paid for her option. The seasonal agreement is signed, and I have been paid. You also heard about the applicant the owner listened to because I put her forward. I liked being able to do that. I have work worth returning to, and someone I want to tell about it. Our farewell did not make either thing smaller.",
+        ("settled_exclusive", "The tenant paid for her option. The seasonal agreement is signed, and I have been paid. You also heard about the applicant the owner listened to because I put her forward. I liked being able to do that. I have work worth returning to, and someone to boast to about it. I intend to keep both.",
          ("konomi.private_consequence_complete", "konomi.private_career_exclusive"), ()),
-        ("settled_portfolio", "The tenant paid for her option. The other applicant chose the second place I found, and paid the agreed fee. The narrower terms held when the owner questioned them. You heard how pleased I was, even after paying for all those letters. Our farewell did not leave that business unfinished. I want more of that work, and more evenings in which to tell you about it.",
+        ("settled_portfolio", "The tenant paid for her option. The other applicant chose the second place I found, and paid the agreed fee. The narrower terms held when the owner questioned them. You heard how pleased I was, even after paying for all those letters. The business is closed and the fee is in my purse. I want more of that work, and more evenings in which to be smug about it to you.",
          ("konomi.private_consequence_complete", "konomi.private_career_portfolio"), ()),
     ]
     now = next(node for node in item["Nodes"] if node["Id"] == "absence_now")
@@ -275,7 +275,7 @@ def add_career_recollections(item):
         for origin in (now, days):
             origin["Choices"].append(c('[Ask about the work she chose, and what she wants from it now.]', identity,
                 requires=requires, forbids=forbids))
-        item["Nodes"].append(n(identity, "Konomi", '"' + words + '"\n{n}She rests her hand beside yours, leaving you room to take it.{/n}',
+        item["Nodes"].append(n(identity, "Konomi", '"' + words + '"\n{n}She lays her hand over yours, as if pinning a document in a wind.{/n}',
             c('[Take her hand and tell her what you want her to understand about your own future.]', "absence_career_future")))
     item["Nodes"].append(n("absence_career_future", "Konomi", '"There. That is the woman you have invited. What should I understand about the person sitting beside her?"', *future_choices))
 

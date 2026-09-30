@@ -136,7 +136,7 @@ visit("return_first_words", "The first unfinished answer", [
       c('"I am glad we can have this conversation."', "introduction", forbids=(*CLOSED, "konomi.lovers", "konomi.missed_private_access", "konomi.private_meeting", "konomi.margin"))),
     n("boundary", "Konomi", '''"I remember. I did not imagine you had forgotten."
 {n}She rests both hands on the chair arms.{/n}
-"I am glad you have said it plainly. I have had too many people today speaking as though my life has become a story they know how to finish."
+"Good. Say it plainly and I can file it. I have had people at my bedside all day drafting the rest of my life for me, and they all write badly."
 {n}The tension at the corner of her mouth eases.{/n}
 "Thank you for coming. And for what you attempted before there was an answer. We need not turn that into a different answer to an older question."''',
       c('[Let the visit remain a visit of recovery.]', "water")),
@@ -200,9 +200,9 @@ visit("return_second_visit", "A day she has left partly empty", [
       c('[Keep official appointments separate from this visit.]', "unappointed", forbids=("konomi.present", "konomi.dismissed"))),
     n("office", "Konomi", '''"My work has not become a love letter because you brought me back to it."
 {n}The familiar firmness returns to her voice.{/n}
-"There will still be matters on which I advise you to do something you dislike. If I need time before resuming a particular task, I shall say so. I will not turn a disagreement into a test of whether I am sufficiently grateful."
+"I shall still advise you to do things you dislike, and I shall still report it to the capital when you refuse. Do not expect gratitude to soften the memoranda. Gratitude is not a line item."
 {n}She presses the fold out of the paper with her palm.{/n}
-"Outside that work, we may have a conversation because we both wish to have it. I should like that to remain an ordinary possibility."''', c('[Let her official decisions remain her own.]', "next")),
+"Outside the council room, you may call on me because you want to. That is a separate account, and I keep my accounts separate."''', c('[Let her official decisions remain her own.]', "next")),
     n("dismissed", "Konomi", '''"I remember being dismissed. I have had no difficulty retaining my opinion of it."
 {n}Her expression permits you a small smile, though she does not join it immediately.{/n}
 "This visit is not a return to that office. There would be decisions to make if either of us wished to discuss such a thing. We have not made them by discussing my health."
