@@ -204,7 +204,7 @@ drezen(E + "drezen.katair", "A name on a tombstone", '"Katair wants a word with 
     kt("warn", '''"No." {n}Something almost like humour crosses his face and is gone.{/n} "She has not been warned off anything since she was thirteen, and it has done her no good at all. I am not going to start now." {n}He glances towards the bar.{/n} "I am telling you what a sacrifice weighs, because she will never tell you what hers weighed. She will say it was nothing. It was not nothing."''',
        c("Continue", "her")),
     kt("her", '''"She gave her whole life to my Lady at thirteen. She never once asked for any of it back, and she held the rest of us together for a century while I went out to stand over my own grave. She deserves one thing that is hers."
-{n}He looks at you directly for the first time.{/n} "You gave her that. I do not like the way you did it, and I do not understand you, and I am grateful. Do not make me regret it."''',
+{n}He looks at you directly now, and holds it.{/n} "You gave her that. I do not like the way you did it, and I do not understand you, and I am grateful. Do not make me regret it."''',
        c('"I won\'t."', "end"),
        c('[Offer your hand] "Come and drink with us at the Stone Tree, when the war\'s over."', "tree")),
     kt("tree", '''{n}Katair looks at your hand as if it were a strange animal. Then he takes it, briefly, hard.{/n}
