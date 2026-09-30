@@ -312226,7 +312226,7 @@
         {
           "Id": "start",
           "Speaker": "conversant",
-          "Text": "{n}Shamira considers the question for so long that the courtiers nearest the throne begin to edge away, in case the answer is them.{/n}\n\"Want? Nothing. I have a queen who dreams of nothing at all, and a court that dreams of nothing but me. I am fed very well, thank you.\" {n}She examines her nails.{/n} \"But you ask what they are. That, I will tell you, because it is the one thing in this city nobody else can.\"",
+          "Text": "{n}Shamira considers the question for so long that the courtiers nearest the throne begin to edge away, in case the answer is them.{/n}\n\"Want? Nothing. I have a queen who wants nothing she cannot take, a court that wants nothing but my chair, and a city full of sleeping mortals under my windows. I am fed very well, thank you.\" {n}She examines her nails.{/n} \"But you ask what they are. That, I will tell you, because it is the one thing in this city nobody else can.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -312282,7 +312282,94 @@
         {
           "Id": "eat",
           "Speaker": "conversant",
-          "Text": "\"Now I taste. There is a difference.\" {n}She wets her lips, slowly, to show you the difference.{/n} \"The demons in this room dream of my throne every night. I can taste it on them when they bow. Envy tastes of iron. Lust tastes of salt. Yours...\" {n}Her eyes narrow.{/n} \"Yours tasted of burning barley and a dragon falling. I haven't decided if I liked it.\"",
+          "Text": "\"Now I taste. There is a difference.\" {n}She wets her lips, slowly, to show you the difference.{/n} \"The demons in this room want my throne every hour they are awake. I read it on them when they bow; that is manners, not a meal. Demons do not dream. The meal is in mortal heads, asleep. Envy tastes of iron. Lust tastes of salt. Yours...\" {n}Her eyes narrow.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "eat_barley",
+              "Set": [],
+              "Requires": [
+                "shamira.trickster.hid"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "eat_war",
+              "Set": [],
+              "Requires": [
+                "shamira.trickster.thought_war"
+              ],
+              "Forbids": [
+                "shamira.trickster.hid"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "eat_her",
+              "Set": [],
+              "Requires": [
+                "shamira.trickster.thought_her"
+              ],
+              "Forbids": [
+                "shamira.trickster.hid",
+                "shamira.trickster.thought_war"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "chair",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "shamira.trickster.hid",
+                "shamira.trickster.thought_war",
+                "shamira.trickster.thought_her"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "eat_barley",
+          "Speaker": "conversant",
+          "Text": "\"Yours tasted of burning barley and a dragon falling. I haven't decided if I liked it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "chair",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "eat_war",
+          "Speaker": "conversant",
+          "Text": "\"Yours tasted of smoke and a dragon falling, over and over, like a man chewing the same crust. One chair, Golarian. I told you.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "chair",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "eat_her",
+          "Speaker": "conversant",
+          "Text": "\"Yours tasted of me.\" {n}She says it lightly, and does not quite manage it.{/n} \"Too hot. Much too bright. I haven't decided if I liked it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -312314,7 +312401,7 @@
         {
           "Id": "chair",
           "Speaker": "conversant",
-          "Text": "{n}A courtier drifts too close to the dais, a thin smiling thing in a silver mask, and Shamira does not look at him. She does not need to. He drifts away again with his hands pressed to his temples.{/n}\n\"There. That one dreams of my chair, and so, sometimes, do I. Of hers.\" {n}She says it lightly and watches whether you catch it. When you do, her face does something small and dangerous, a crack in a mask, and closes again.{/n}\n\"You heard nothing. Nobody hears anything in the Harem.\"",
+          "Text": "{n}A courtier drifts too close to the dais, a thin smiling thing in a silver mask, and Shamira does not look at him. She does not need to. He drifts away again with his hands pressed to his temples.{/n}\n\"There. That one wants my chair, and so, sometimes, do I. Hers.\" {n}She says it lightly and watches whether you catch it. When you do, her face does something small and dangerous, a crack in a mask, and closes again.{/n}\n\"You heard nothing. Nobody hears anything in the Harem.\"",
           "Choices": [
             {
               "Text": "[Flirt] \"Walk in my dreams, then. Tonight. See if you like them better from inside.\"",
@@ -314055,7 +314142,7 @@
         {
           "Id": "n_look",
           "Speaker": "Shamira",
-          "Text": "{n}Shamira's voice whispers inside your mind,{/n} \"Look at this.\" {n}You feel her looking: through your eyes, around the tent, with a disgust so intimate it itches.{/n} \"A tent. A cot. Maps with wine on them. All my long existence, and I am spending my first night of death behind the eyes of a clown, in a tent that smells of feet.\"\n\"In my Harem there are forty rooms. I have never once slept in the same one twice. Do you know why?\"",
+          "Text": "{n}Shamira's voice whispers inside your mind,{/n} \"Look at this.\" {n}You feel her looking: through your eyes, around the tent, with a disgust so intimate it itches.{/n} \"A tent. A cot. Maps with wine on them. All my long existence, and I am spending my first night of death behind the eyes of a clown, in a tent that smells of feet.\"\n\"In my Harem there are forty rooms. I never sleep in the same one two nights running. Do you know why?\"",
           "Choices": [
             {
               "Text": "\"Because you don't sleep.\"",
@@ -315541,7 +315628,7 @@
         {
           "Id": "n_look",
           "Speaker": "Shamira",
-          "Text": "{n}Shamira's voice whispers inside your mind,{/n} \"Look at this.\" {n}You feel her looking: through your eyes, around the tent, with a disgust so intimate it itches.{/n} \"A tent. A cot. Maps with wine on them. All my long existence, and I am spending my first night of death behind the eyes of a clown, in a tent that smells of feet.\"\n\"In my Harem there are forty rooms. I have never once slept in the same one twice. Do you know why?\"",
+          "Text": "{n}Shamira's voice whispers inside your mind,{/n} \"Look at this.\" {n}You feel her looking: through your eyes, around the tent, with a disgust so intimate it itches.{/n} \"A tent. A cot. Maps with wine on them. All my long existence, and I am spending my first night of death behind the eyes of a clown, in a tent that smells of feet.\"\n\"In my Harem there are forty rooms. I never sleep in the same one two nights running. Do you know why?\"",
           "Choices": [
             {
               "Text": "\"Because you don't sleep.\"",
@@ -317846,7 +317933,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}On the night the rift took the Commander, the coal of the Commander in her went out before morning, as she had said it would, and there was no hearth to go back to.{/n}\n{n}She sat her throne in the Harem of Ardent Dream with the court sent away until the stolen body went cold at the fingertips, and then at the wrists. Then she had every lamp in the Harem lit and went out into her city, into every sleeper's dream in Alushinyrra, one after another, looking for a fire the body would take. It would take none of them; she had said so herself, on the wardrobe floor.{/n}\n{n}They found the shell three streets from the Harem at dawn, sitting in a doorway, faceless again, with a thin white frost on its long hands. Of the rest of her the Abyss says nothing. It is a mouth.{/n}",
+          "Text": "{n}On the night the rift took the Commander, the coal of the Commander in her went out before morning, as she had said it would, and there was no hearth to go back to.{/n}\n{n}She sat her throne in the Harem of Ardent Dream with the court sent away until the stolen body went cold at the fingertips, and then at the wrists. Then she had every lamp in the Harem lit and went out into her city, into every mortal sleeper's dream in Alushinyrra, one after another, looking for a fire the body would take. It would take none of them; she had said so herself, on the wardrobe floor.{/n}\n{n}They found the shell three streets from the Harem at dawn, sitting in a doorway, faceless again, with a thin white frost on its long hands. Of the rest of her the Abyss says nothing. It is a mouth.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -318001,7 +318088,7 @@
         {
           "Id": "look",
           "Speaker": "Shamira",
-          "Text": "{n}Shamira's voice whispers inside your mind,{/n} \"Look at this.\" {n}You feel her looking: through your eyes, around the tent, with a disgust so intimate it itches.{/n} \"A tent. A cot. Maps with wine on them. All my long existence, and I am spending my first night of death behind the eyes of a clown, in a tent that smells of feet.\"\n\"In my Harem there are forty rooms. I have never once slept in the same one twice. Do you know why?\"",
+          "Text": "{n}Shamira's voice whispers inside your mind,{/n} \"Look at this.\" {n}You feel her looking: through your eyes, around the tent, with a disgust so intimate it itches.{/n} \"A tent. A cot. Maps with wine on them. All my long existence, and I am spending my first night of death behind the eyes of a clown, in a tent that smells of feet.\"\n\"In my Harem there are forty rooms. I never sleep in the same one two nights running. Do you know why?\"",
           "Choices": [
             {
               "Text": "\"Because you don't sleep.\"",
@@ -324149,7 +324236,7 @@
         {
           "Id": "chair",
           "Speaker": "Shamira",
-          "Text": "\"My Harem was dark. My court had split in three. And in my chair, on my throne, in my light that withers fools, sat a glabrezu I once made kneel for a whole year because he looked at me without asking.\" {n}She sounds delighted.{/n} \"He had my crown on. He had had it cut down to fit his horns.\"\n\"I let him talk for a while, in his head, about how he'd always known I'd fall. Then I went in and took his dreams too. He is sitting in the Lower City now, beside Ziforian, and he cannot remember his own name. It suits him.\"",
+          "Text": "\"My Harem was dark. My court had split in three. And in my chair, on my throne, in my light that withers fools, sat a glabrezu I once made kneel for a whole year because he looked at me without asking.\" {n}She sounds delighted.{/n} \"He had my crown on. He had had it cut down to fit his horns.\"\n\"I let him talk for a while, in his head, about how he'd always known I'd fall. Then I went into his head, where a demon keeps his wants instead of dreams, and took his name out of it, and everything he had hung on it. He is sitting in the Lower City now, beside Ziforian, and he cannot remember his own name. It suits him.\"",
           "Choices": [
             {
               "Text": "\"You were meant to be dead. People will talk.\"",
@@ -324507,7 +324594,7 @@
         {
           "Id": "chair",
           "Speaker": "Shamira",
-          "Text": "\"My Harem was dark. My court had split in three. And in my chair, on my throne, in my light that withers fools, sat a glabrezu I once made kneel for a whole year because he looked at me without asking.\" {n}She sounds delighted.{/n} \"He had my crown on. He had had it cut down to fit his horns.\"\n\"I let him talk for a while, in his head, about how he'd always known I'd fall. Then I went in and took his dreams too. He is sitting in the Lower City now, beside Ziforian, and he cannot remember his own name. It suits him.\"",
+          "Text": "\"My Harem was dark. My court had split in three. And in my chair, on my throne, in my light that withers fools, sat a glabrezu I once made kneel for a whole year because he looked at me without asking.\" {n}She sounds delighted.{/n} \"He had my crown on. He had had it cut down to fit his horns.\"\n\"I let him talk for a while, in his head, about how he'd always known I'd fall. Then I went into his head, where a demon keeps his wants instead of dreams, and took his name out of it, and everything he had hung on it. He is sitting in the Lower City now, beside Ziforian, and he cannot remember his own name. It suits him.\"",
           "Choices": [
             {
               "Text": "\"You were meant to be dead. People will talk.\"",
@@ -326161,7 +326248,7 @@
         {
           "Id": "lost",
           "Speaker": "Narrator",
-          "Text": "{n}You stop.{/n}\n{n}You stop holding the Wound up in front of everything, and let the house be what it is, and she walks into it. She finds herself behind your eyes, where she lived for a week. She finds herself on the lip of the fountain in Kenabres, where nobody sat before her. She finds herself in the square under the burning spire, and in the barracks' silence, and in the wardrobe, and in the dark on the floor of it among your boots. She finds herself at the edge of every dream you have had since, warming her hands.{/n}\n{n}Neither of you says anything. There is nothing to say. She has already heard it.{/n}",
+          "Text": "{n}You stop.{/n}\n{n}You stop holding the Wound up in front of everything, and let the house be what it is, and she walks into it. She finds herself behind your eyes, where she lived for a week. She finds herself on the lip of the fountain in Kenabres, where nobody sat before her. She finds herself in the square under the burning spire, and in the wardrobe, and in the dark on the floor of it among your boots. She finds herself at the edge of every dream you have had since, warming her hands.{/n}\n{n}Neither of you says anything. There is nothing to say. She has already heard it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -326269,7 +326356,7 @@
         {
           "Id": "watch",
           "Speaker": "Shamira",
-          "Text": "\"You dreamed of me all night.\" {n}Softly.{/n} \"I was in there; I'm always in there. But you were dreaming of me before I came in, and in all my long life I have never once walked into a dream that was already about me and been made welcome in it.\" {n}She puts one finger on your forehead, the old place.{/n} \"It was like a house after a party. Everyone else gone, and the lamps still warm.\"\n\"I sit in your sleep every night. You will never be alone in there again. That is the arrangement, and it is not fair, and I will never give you your solitude back.\"",
+          "Text": "\"You dreamed of me all night.\" {n}Softly.{/n} \"I was in there; I'm always in there. But you were dreaming of me before I came in, and I walked into it, and was made welcome in it, and stayed until it ended. I did not steal a thing. I did not have to.\" {n}She puts one finger on your forehead, the old place.{/n} \"It was like a house after a party. Everyone else gone, and the lamps still warm.\"\n\"I sit in your sleep every night. You will never be alone in there again. That is the arrangement, and it is not fair, and I will never give you your solitude back.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -326541,7 +326628,51 @@
         {
           "Id": "bell_end",
           "Speaker": "Narrator",
-          "Text": "{n}The music starts again. The court flows back to its couches and its quarrels, and pretends not to look at you, and looks at nothing else.{/n}\n{n}When you leave, through the black arch, a demon in a silver mask falls into step beside you for a few paces and murmurs, without turning his head, that he has always admired the Lady Shamira and would be very glad to be of service to her friends. You recognise him. He dreamed of her chair, once, in front of you, with his hands pressed to his temples.{/n}",
+          "Text": "{n}The music starts again. The court flows back to its couches and its quarrels, and pretends not to look at you, and looks at nothing else.{/n}\n{n}When you leave, through the black arch, a demon in a silver mask falls into step beside you for a few paces and murmurs, without turning his head, that he has always admired the Lady Shamira and would be very glad to be of service to her friends.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "mask_known",
+              "Set": [],
+              "Requires": [
+                "shamira.trickster.bird"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "mask_stranger",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "shamira.trickster.bird"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Shamira"
+        },
+        {
+          "Id": "mask_known",
+          "Speaker": "Narrator",
+          "Text": "{n}You recognise him. He wanted her chair, once, in front of you, and walked away from the dais with his hands pressed to his temples.{/n}",
+          "Choices": [
+            {
+              "Text": "[Go home through the arch.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Shamira"
+        },
+        {
+          "Id": "mask_stranger",
+          "Speaker": "Narrator",
+          "Text": "{n}You have never seen him before. His mask is very well made, and his hands, folded behind his back, are very still. He leaves you at the arch and does not look round.{/n}",
           "Choices": [
             {
               "Text": "[Go home through the arch.]",
@@ -327136,7 +327267,7 @@
         {
           "Id": "lost",
           "Speaker": "Narrator",
-          "Text": "{n}You stop.{/n}\n{n}You stop holding the Wound up in front of everything, and let the house be what it is, and she walks into it. She finds herself behind your eyes, where she lived for a week. She finds herself on the lip of the fountain in Kenabres, where nobody sat before her. She finds herself in the square under the burning spire, and in the barracks' silence, and in the wardrobe, and in the dark on the floor of it among your boots. She finds herself at the edge of every dream you have had since, warming her hands.{/n}\n{n}Neither of you says anything. There is nothing to say. She has already heard it.{/n}",
+          "Text": "{n}You stop.{/n}\n{n}You stop holding the Wound up in front of everything, and let the house be what it is, and she walks into it. She finds herself behind your eyes, where she lived for a week. She finds herself on the lip of the fountain in Kenabres, where nobody sat before her. She finds herself in the square under the burning spire, and in the wardrobe, and in the dark on the floor of it among your boots. She finds herself at the edge of every dream you have had since, warming her hands.{/n}\n{n}Neither of you says anything. There is nothing to say. She has already heard it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -327244,7 +327375,7 @@
         {
           "Id": "watch",
           "Speaker": "Shamira",
-          "Text": "\"You dreamed of me all night.\" {n}Softly.{/n} \"I was in there; I'm always in there. But you were dreaming of me before I came in, and in all my long life I have never once walked into a dream that was already about me and been made welcome in it.\" {n}She puts one finger on your forehead, the old place.{/n} \"It was like a house after a party. Everyone else gone, and the lamps still warm.\"\n\"I sit in your sleep every night. You will never be alone in there again. That is the arrangement, and it is not fair, and I will never give you your solitude back.\"",
+          "Text": "\"You dreamed of me all night.\" {n}Softly.{/n} \"I was in there; I'm always in there. But you were dreaming of me before I came in, and I walked into it, and was made welcome in it, and stayed until it ended. I did not steal a thing. I did not have to.\" {n}She puts one finger on your forehead, the old place.{/n} \"It was like a house after a party. Everyone else gone, and the lamps still warm.\"\n\"I sit in your sleep every night. You will never be alone in there again. That is the arrangement, and it is not fair, and I will never give you your solitude back.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -327516,7 +327647,51 @@
         {
           "Id": "bell_end",
           "Speaker": "Narrator",
-          "Text": "{n}The music starts again. The court flows back to its couches and its quarrels, and pretends not to look at you, and looks at nothing else.{/n}\n{n}When you leave, through the black arch, a demon in a silver mask falls into step beside you for a few paces and murmurs, without turning his head, that he has always admired the Lady Shamira and would be very glad to be of service to her friends. You recognise him. He dreamed of her chair, once, in front of you, with his hands pressed to his temples.{/n}",
+          "Text": "{n}The music starts again. The court flows back to its couches and its quarrels, and pretends not to look at you, and looks at nothing else.{/n}\n{n}When you leave, through the black arch, a demon in a silver mask falls into step beside you for a few paces and murmurs, without turning his head, that he has always admired the Lady Shamira and would be very glad to be of service to her friends.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "mask_known",
+              "Set": [],
+              "Requires": [
+                "shamira.trickster.bird"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "mask_stranger",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "shamira.trickster.bird"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Shamira"
+        },
+        {
+          "Id": "mask_known",
+          "Speaker": "Narrator",
+          "Text": "{n}You recognise him. He wanted her chair, once, in front of you, and walked away from the dais with his hands pressed to his temples.{/n}",
+          "Choices": [
+            {
+              "Text": "[Go home through the arch.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Shamira"
+        },
+        {
+          "Id": "mask_stranger",
+          "Speaker": "Narrator",
+          "Text": "{n}You have never seen him before. His mask is very well made, and his hands, folded behind his back, are very still. He leaves you at the arch and does not look round.{/n}",
           "Choices": [
             {
               "Text": "[Go home through the arch.]",
@@ -327951,7 +328126,7 @@
         {
           "Id": "socoth",
           "Speaker": "Shamira",
-          "Text": "\"And his Council?\" {n}She waves a hand at your maps, at the war, at everything.{/n} \"Socothbenoth wanted my essence for his great joke. He has it; it's in that diamond of yours, with the Nirvana and the Abyss and all the rest. He'll pour it into the Wound for you.\" {n}A pause.{/n}",
+          "Text": "\"And his Council?\" {n}She waves a hand at your maps, at the war, at everything.{/n} \"Socothbenoth wanted my essence for his great joke. He has it; it's in that diamond of yours, burning. He'll pour it into the Wound for you.\" {n}A pause.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -328254,7 +328429,7 @@
         {
           "Id": "socoth",
           "Speaker": "Shamira",
-          "Text": "\"And his Council?\" {n}She waves a hand at your maps, at the war, at everything.{/n} \"Socothbenoth wanted my essence for his great joke. He has it; it's in that diamond of yours, with the Nirvana and the Abyss and all the rest. He'll pour it into the Wound for you.\" {n}A pause.{/n}",
+          "Text": "\"And his Council?\" {n}She waves a hand at your maps, at the war, at everything.{/n} \"Socothbenoth wanted my essence for his great joke. He has it; it's in that diamond of yours, burning. He'll pour it into the Wound for you.\" {n}A pause.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -328474,7 +328649,7 @@
         {
           "Id": "offered",
           "Speaker": "Shamira",
-          "Text": "{n}She stares at you. Then something in her face goes very soft and very dangerous at once.{/n}\n\"You came all the way through Socothbenoth's closets and knelt in front of my court to hear me offer.\" {n}She shakes her head, slowly.{/n} \"You are the stupidest creature in the Abyss, and I have met the whole Abyss.\" {n}She pulls you down beside her on the step, and puts her forehead against yours, the old place.{/n} \"I'll be there tonight. Dream of the kitchen. I like the kitchen.\"",
+          "Text": "{n}She stares at you. Then something in her face goes very soft and very dangerous at once.{/n}\n\"You came all the way through Socothbenoth's closets and walked the length of my Harem, in front of my court, to hear me offer.\" {n}She shakes her head, slowly.{/n} \"You are the stupidest creature in the Abyss, and I have met the whole Abyss.\" {n}She pulls you down beside her on the step, and puts her forehead against yours, the old place.{/n} \"I'll be there tonight. Dream of the kitchen. I like the kitchen.\"",
           "Choices": [
             {
               "Text": "[Stay on the steps with her a while.]",
@@ -328693,7 +328868,7 @@
         {
           "Id": "offered",
           "Speaker": "Shamira",
-          "Text": "{n}She stares at you. Then something in her face goes very soft and very dangerous at once.{/n}\n\"You came all the way through Socothbenoth's closets and knelt in front of my court to hear me offer.\" {n}She shakes her head, slowly.{/n} \"You are the stupidest creature in the Abyss, and I have met the whole Abyss.\" {n}She pulls you down beside her on the step, and puts her forehead against yours, the old place.{/n} \"I'll be there tonight. Dream of the kitchen. I like the kitchen.\"",
+          "Text": "{n}She stares at you. Then something in her face goes very soft and very dangerous at once.{/n}\n\"You came all the way through Socothbenoth's closets and walked the length of my Harem, in front of my court, to hear me offer.\" {n}She shakes her head, slowly.{/n} \"You are the stupidest creature in the Abyss, and I have met the whole Abyss.\" {n}She pulls you down beside her on the step, and puts her forehead against yours, the old place.{/n} \"I'll be there tonight. Dream of the kitchen. I like the kitchen.\"",
           "Choices": [
             {
               "Text": "[Stay on the steps with her a while.]",
@@ -421524,8 +421699,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",

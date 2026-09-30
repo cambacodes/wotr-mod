@@ -66,7 +66,7 @@ page(P + "mind.first_night", "The first night", [
 {n}Then the air in the tent goes warm and close, the way it does before a storm.{/n}''',
         c("Continue", "look")),
     sh("look", WHISPER + '''"Look at this." {n}You feel her looking: through your eyes, around the tent, with a disgust so intimate it itches.{/n} "A tent. A cot. Maps with wine on them. All my long existence, and I am spending my first night of death behind the eyes of a clown, in a tent that smells of feet."
-"In my Harem there are forty rooms. I have never once slept in the same one twice. Do you know why?"''',
+"In my Harem there are forty rooms. I never sleep in the same one two nights running. Do you know why?"''',
         c('"Because you don\'t sleep."', "sleep", forbids=(READ_ALL,)),
         c('"Because someone might be waiting."', "sleep", forbids=(READ_ALL,)),
         c("Continue", "drowned", requires=(READ_ALL,))),

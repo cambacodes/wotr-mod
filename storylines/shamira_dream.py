@@ -17,7 +17,7 @@ import copy
 
 from story_format import c, scene
 from storylines import shamira_mind
-from storylines.shamira_trickster import (ALLY, BARRACKS, CAST_OUT, CITY, CLOSED, COMMITTED, CRYSTALS, EMBODIED, GAME, HID, NEVER_ALONE, NOCT_KNOWS, STRIPPED,
+from storylines.shamira_trickster import (ALLY, BARRACKS, BIRD, CAST_OUT, CITY, CLOSED, COMMITTED, CRYSTALS, EMBODIED, GAME, HID, NEVER_ALONE, NOCT_KNOWS, STRIPPED,
                                            RAMISA_STORY, KEPT, LIED_HER, LOST_GAME, NOCT_HIDING, NOT_NOCT, P, READ, REL,
                                            SOCOTH_GONE, STAND, THREW_OUT, THRONE, TORN, VISITED, WHISPER, nar, sh)
 from storylines.shamira_trickster import page as _page
@@ -172,7 +172,7 @@ hub(P + "after.city", "Who sat in my chair", '"You look well, for a dead woman."
     sh("home", '''"I have been home." {n}Her voice is rich with a satisfaction so deep it is almost sleepy.{/n} "I came out of a wardrobe in Socothbenoth's house, naked except for your coat, and walked through my own city at the hour when the demons are drunkest, and nobody knew me. Nobody. They were all too busy wearing black for me."''',
         c("Continue", "chair")),
     sh("chair", '''"My Harem was dark. My court had split in three. And in my chair, on my throne, in my light that withers fools, sat a glabrezu I once made kneel for a whole year because he looked at me without asking." {n}She sounds delighted.{/n} "He had my crown on. He had had it cut down to fit his horns."
-"I let him talk for a while, in his head, about how he'd always known I'd fall. Then I went in and took his dreams too. He is sitting in the Lower City now, beside Ziforian, and he cannot remember his own name. It suits him."''',
+"I let him talk for a while, in his head, about how he'd always known I'd fall. Then I went into his head, where a demon keeps his wants instead of dreams, and took his name out of it, and everything he had hung on it. He is sitting in the Lower City now, beside Ziforian, and he cannot remember his own name. It suits him."''',
         c('"You were meant to be dead. People will talk."', "talk"),
         c('"You\'re cruel, Shamira."', "cruel")),
     sh("talk", '''"People will talk to me. That is a different thing." {n}A soft laugh.{/n} "I have not told anyone my name. I am simply sitting in my Harem again, in a face they know, and letting them wonder. Nobody in Alushinyrra will ask a woman on that throne who she is. It's much too dangerous to know."''',
@@ -315,7 +315,7 @@ hub(P + "harem", "Think of anything but me", '"You said you had a game."', [
         c("[Think of the Wound. Only the Wound. Until she stops looking.]", "won", flags=(ALLY, ARCH)),
         c("[Throw her out of your head.]", "thrown", flags=(CLOSED, ARCH))),
     nar("lost", '''{n}You stop.{/n}
-{n}You stop holding the Wound up in front of everything, and let the house be what it is, and she walks into it. She finds herself behind your eyes, where she lived for a week. She finds herself on the lip of the fountain in Kenabres, where nobody sat before her. She finds herself in the square under the burning spire, and in the barracks' silence, and in the wardrobe, and in the dark on the floor of it among your boots. She finds herself at the edge of every dream you have had since, warming her hands.{/n}
+{n}You stop holding the Wound up in front of everything, and let the house be what it is, and she walks into it. She finds herself behind your eyes, where she lived for a week. She finds herself on the lip of the fountain in Kenabres, where nobody sat before her. She finds herself in the square under the burning spire, and in the wardrobe, and in the dark on the floor of it among your boots. She finds herself at the edge of every dream you have had since, warming her hands.{/n}
 {n}Neither of you says anything. There is nothing to say. She has already heard it.{/n}''',
         c("Continue", "rise")),
     nar("rise", '''{n}She stands up from her throne.{/n}
@@ -335,7 +335,7 @@ hub(P + "harem", "Think of anything but me", '"You said you had a game."', [
     nar("morning", '''{n}There is no morning in the Abyss. There is only the purple light through the high windows changing its mind about how bright to be.{/n}
 {n}You wake on the steps of the dais, under her gown, with a dream of her still warm behind your eyes, as always now. She is sitting on the top step with her knees drawn up, awake, watching you, the way she watched you sleep in Drezen. She has not slept. She has been watching the whole night.{/n}''',
         c("Continue", "watch")),
-    sh("watch", '''"You dreamed of me all night." {n}Softly.{/n} "I was in there; I'm always in there. But you were dreaming of me before I came in, and in all my long life I have never once walked into a dream that was already about me and been made welcome in it." {n}She puts one finger on your forehead, the old place.{/n} "It was like a house after a party. Everyone else gone, and the lamps still warm."
+    sh("watch", '''"You dreamed of me all night." {n}Softly.{/n} "I was in there; I'm always in there. But you were dreaming of me before I came in, and I walked into it, and was made welcome in it, and stayed until it ended. I did not steal a thing. I did not have to." {n}She puts one finger on your forehead, the old place.{/n} "It was like a house after a party. Everyone else gone, and the lamps still warm."
 "I sit in your sleep every night. You will never be alone in there again. That is the arrangement, and it is not fair, and I will never give you your solitude back."''',
         c("Continue", "last_home", requires=(LAST_HOME,)),
         c("Continue", "last_peace", requires=(LAST_PEACE,)),
@@ -376,7 +376,12 @@ hub(P + "harem", "Think of anything but me", '"You said you had a game."', [
     sh("steward", '''"You wanted a steward for Alushinyrra who owed you her life, the first night. I remember." {n}Very dry, in your head.{/n} "Now you are standing where a steward stands. Look at the pair of us. Nocticula would be sick with laughter."''',
         c("Continue", "bell_end")),
     nar("bell_end", '''{n}The music starts again. The court flows back to its couches and its quarrels, and pretends not to look at you, and looks at nothing else.{/n}
-{n}When you leave, through the black arch, a demon in a silver mask falls into step beside you for a few paces and murmurs, without turning his head, that he has always admired the Lady Shamira and would be very glad to be of service to her friends. You recognise him. He dreamed of her chair, once, in front of you, with his hands pressed to his temples.{/n}''',
+{n}When you leave, through the black arch, a demon in a silver mask falls into step beside you for a few paces and murmurs, without turning his head, that he has always admired the Lady Shamira and would be very glad to be of service to her friends.{/n}''',
+        c("Continue", "mask_known", requires=(BIRD,)),
+        c("Continue", "mask_stranger", forbids=(BIRD,))),
+    nar("mask_known", '''{n}You recognise him. He wanted her chair, once, in front of you, and walked away from the dais with his hands pressed to his temples.{/n}''',
+        c("[Go home through the arch.]")),
+    nar("mask_stranger", '''{n}You have never seen him before. His mask is very well made, and his hands, folded behind his back, are very still. He leaves you at the arch and does not look round.{/n}''',
         c("[Go home through the arch.]")),
     sh("won", '''{n}You think of the Wound. Only the Wound. You hold it up in front of everything, the whole violet weight of it, the pull on your scar, the rift, the fire, and you keep it there, and keep it there.{/n}
 {n}She looks for a long time. Then the heat goes out of your head, all at once, like a hand out of cold water.{/n}
@@ -430,7 +435,7 @@ hub(P + "after.throne", "The chair she wants", '"You have that look. The one fro
 "Oh, you thought 'never' so loudly I nearly went deaf. You thought it in capitals. And you said 'of course' with your mouth, like a man selling a lame horse to a blind woman." {n}She wipes her eyes.{/n} "Nobody in the Abyss has ever lied to me so badly. They wouldn't dare. You lie to me the way other people bring flowers."
 "Keep doing it. Never once get better at it."''',
         c("Continue", "socoth")),
-    sh("socoth", '''"And his Council?" {n}She waves a hand at your maps, at the war, at everything.{/n} "Socothbenoth wanted my essence for his great joke. He has it; it's in that diamond of yours, with the Nirvana and the Abyss and all the rest. He'll pour it into the Wound for you." {n}A pause.{/n}''',
+    sh("socoth", '''"And his Council?" {n}She waves a hand at your maps, at the war, at everything.{/n} "Socothbenoth wanted my essence for his great joke. He has it; it's in that diamond of yours, burning. He'll pour it into the Wound for you." {n}A pause.{/n}''',
         c("Continue", "socoth_gone", requires=(SOCOTH_GONE,)),
         c("Continue", "socoth_here", forbids=(SOCOTH_GONE,))),
     sh("socoth_gone", '''"Where is he now, I wonder? Not in his house; I've been there. His wardrobes are all shut." {n}She smiles, very slowly.{/n} "I hope he is somebody's guest, somewhere very dark, for a very long time. I hope his hostess has hideous carpets."''',
@@ -470,7 +475,7 @@ hub(P + "after.night_alone", "One night alone", '"One night alone. You said I co
         c('"One night. I want to know what it\'s like again."', "take", flags=(TOOK_NIGHT, COLD_NIGHT)),
         c('"No. I only wanted to hear you offer it."', "offered", flags=(GAVE_BACK,))),
     sh("offered", '''{n}She stares at you. Then something in her face goes very soft and very dangerous at once.{/n}
-"You came all the way through Socothbenoth's closets and knelt in front of my court to hear me offer." {n}She shakes her head, slowly.{/n} "You are the stupidest creature in the Abyss, and I have met the whole Abyss." {n}She pulls you down beside her on the step, and puts her forehead against yours, the old place.{/n} "I'll be there tonight. Dream of the kitchen. I like the kitchen."''',
+"You came all the way through Socothbenoth's closets and walked the length of my Harem, in front of my court, to hear me offer." {n}She shakes her head, slowly.{/n} "You are the stupidest creature in the Abyss, and I have met the whole Abyss." {n}She pulls you down beside her on the step, and puts her forehead against yours, the old place.{/n} "I'll be there tonight. Dream of the kitchen. I like the kitchen."''',
         c("[Stay on the steps with her a while.]")),
     sh("take", '''{n}She is quiet for a while. Then she nods, once, like a merchant accepting a bad price.{/n}
 "Go home, then. Sleep. I won't come." {n}Her voice is perfectly level.{/n} "Don't look for me in it. If you look for me, it isn't alone, and you'll have wasted it."''',

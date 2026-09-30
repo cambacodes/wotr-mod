@@ -238,7 +238,7 @@ audience(P + "ch4.read", "An open mind", '[Open your mind to her] "Everyone in t
 
 audience(P + "ch4.bird", "A dream is a bird", '"You said my dreams were loud. What does a demon want with a mortal\'s dreams?"', [
     conv("start", '''{n}Shamira considers the question for so long that the courtiers nearest the throne begin to edge away, in case the answer is them.{/n}
-"Want? Nothing. I have a queen who dreams of nothing at all, and a court that dreams of nothing but me. I am fed very well, thank you." {n}She examines her nails.{/n} "But you ask what they are. That, I will tell you, because it is the one thing in this city nobody else can."''',
+"Want? Nothing. I have a queen who wants nothing she cannot take, a court that wants nothing but my chair, and a city full of sleeping mortals under my windows. I am fed very well, thank you." {n}She examines her nails.{/n} "But you ask what they are. That, I will tell you, because it is the one thing in this city nobody else can."''',
         c("Continue", "sower")),
     conv("sower", '''"Before I was this, I was a sower. I carried dreams down out of Heaven on my wings and dropped them into sleeping heads the way a farmer throws seed: a song into a girl who could not sing yet, a city into a boy who had never seen one. I lit fires in people. That is what I was for."
 {n}Her voice has gone quieter. The light around her throne dims with it, as if it were listening too.{/n} "Some of the fires burned too hot. I let them. It was very beautiful to watch."''',
@@ -247,12 +247,21 @@ audience(P + "ch4.bird", "A dream is a bird", '"You said my dreams were loud. Wh
 "Nocticula found me afterwards, blazing on the black water like a shipwreck. She came out across the sea for me and wrapped me in her shadows, and I have been cool ever since."''',
         c('"And now you eat what you used to sow."', "eat"),
         c('"You miss it."', "miss")),
-    conv("eat", '''"Now I taste. There is a difference." {n}She wets her lips, slowly, to show you the difference.{/n} "The demons in this room dream of my throne every night. I can taste it on them when they bow. Envy tastes of iron. Lust tastes of salt. Yours..." {n}Her eyes narrow.{/n} "Yours tasted of burning barley and a dragon falling. I haven't decided if I liked it."''',
+    conv("eat", '''"Now I taste. There is a difference." {n}She wets her lips, slowly, to show you the difference.{/n} "The demons in this room want my throne every hour they are awake. I read it on them when they bow; that is manners, not a meal. Demons do not dream. The meal is in mortal heads, asleep. Envy tastes of iron. Lust tastes of salt. Yours..." {n}Her eyes narrow.{/n}''',
+        c("Continue", "eat_barley", requires=(HID,)),
+        c("Continue", "eat_war", requires=(THOUGHT_WAR,), forbids=(HID,)),
+        c("Continue", "eat_her", requires=(THOUGHT_HER,), forbids=(HID, THOUGHT_WAR)),
+        c("Continue", "chair", forbids=(HID, THOUGHT_WAR, THOUGHT_HER))),
+    conv("eat_barley", '''"Yours tasted of burning barley and a dragon falling. I haven't decided if I liked it."''',
+        c("Continue", "chair")),
+    conv("eat_war", '''"Yours tasted of smoke and a dragon falling, over and over, like a man chewing the same crust. One chair, Golarian. I told you."''',
+        c("Continue", "chair")),
+    conv("eat_her", '''"Yours tasted of me." {n}She says it lightly, and does not quite manage it.{/n} "Too hot. Much too bright. I haven't decided if I liked it."''',
         c("Continue", "chair")),
     conv("miss", '''"Miss it?" {n}The light around her flares, hot enough that you feel it on your face, and dies back.{/n} "I have not dreamed since I fell, Golarian. Demons don't. We live on other people's. Do not ever again ask me if I miss something. It is the kind of question that ends with me pulling out your tongue to see how it was attached."''',
         c("Continue", "chair")),
     conv("chair", '''{n}A courtier drifts too close to the dais, a thin smiling thing in a silver mask, and Shamira does not look at him. She does not need to. He drifts away again with his hands pressed to his temples.{/n}
-"There. That one dreams of my chair, and so, sometimes, do I. Of hers." {n}She says it lightly and watches whether you catch it. When you do, her face does something small and dangerous, a crack in a mask, and closes again.{/n}
+"There. That one wants my chair, and so, sometimes, do I. Hers." {n}She says it lightly and watches whether you catch it. When you do, her face does something small and dangerous, a crack in a mask, and closes again.{/n}
 "You heard nothing. Nobody hears anything in the Harem."''',
         c('[Flirt] "Walk in my dreams, then. Tonight. See if you like them better from inside."', "invite", flags=(BIRD, INVITED)),
         c('"Stay out of my head, Shamira. I mean it."', "warned", flags=(BIRD, WARNED_OFF))),
@@ -582,7 +591,7 @@ epilogue("unhoused", '''{n}The war ended with the Ardent Dream still behind the 
     requires=(FOUND,), forbids=(EMBODIED, KEPT, CAST_OUT, CLOSED))
 
 epilogue("mourned", '''{n}On the night the rift took the Commander, the coal of the Commander in her went out before morning, as she had said it would, and there was no hearth to go back to.{/n}
-{n}She sat her throne in the Harem of Ardent Dream with the court sent away until the stolen body went cold at the fingertips, and then at the wrists. Then she had every lamp in the Harem lit and went out into her city, into every sleeper's dream in Alushinyrra, one after another, looking for a fire the body would take. It would take none of them; she had said so herself, on the wardrobe floor.{/n}
+{n}She sat her throne in the Harem of Ardent Dream with the court sent away until the stolen body went cold at the fingertips, and then at the wrists. Then she had every lamp in the Harem lit and went out into her city, into every mortal sleeper's dream in Alushinyrra, one after another, looking for a fire the body would take. It would take none of them; she had said so herself, on the wardrobe floor.{/n}
 {n}They found the shell three streets from the Harem at dawn, sitting in a doorway, faceless again, with a thin white frost on its long hands. Of the rest of her the Abyss says nothing. It is a mouth.{/n}''',
     requires=(EMBODIED, "sacrifice"), forbids=(ALIVE_AFTER, CLOSED), living=False)
 

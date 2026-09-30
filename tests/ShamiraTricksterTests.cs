@@ -458,6 +458,23 @@ internal static class ShamiraTricksterTests
             var cn = new HashSet<string>(); Program.Walk(night, cw, (id, _) => cn.Add(id));
             check(cn.Contains(want) && !cn.Contains(not), "Trk_Shamira_Council: the diamond's contents are misremembered (" + string.Join(",", extra) + ").");
         }
+        // Sol INT/CAN (r5): the bird's taste follows what the Commander actually thought; demons are read, not eaten asleep.
+        var birdScene = S(P + "ch4.bird");
+        foreach (var (thought, want) in new[] { (P + "hid", "eat_barley"), (P + "thought_war", "eat_war"), (P + "thought_her", "eat_her") })
+        {
+            var bn = new HashSet<string>(); Program.Walk(birdScene, World(story, 4, "trickster", P + "read", thought), (id, _) => bn.Add(id));
+            check(bn.Contains(want) && new[] { "eat_barley", "eat_war", "eat_her" }.Count(bn.Contains) == 1, "Trk_Shamira_Bird: the taste of " + thought + " is misremembered.");
+        }
+        check(!birdScene.Nodes.Any(n => n.Text.Contains("dream of my throne")), "Trk_Shamira_Bird: her courtiers dream (demons do not).");
+        // Sol INT (r5): the game's lost node never credits the barracks; the masked courtier is known only after the bird.
+        foreach (var hs in story.Scenes.Where(s => s.Id.StartsWith(P + "harem", StringComparison.Ordinal)))
+        {
+            check(!hs.Nodes.Any(n => n.Id == "lost" && n.Text.Contains("barracks")), "Trk_Shamira_Harem: the lost game credits a refused barracks: " + hs.Id);
+            var be = hs.Nodes.FirstOrDefault(n => n.Id == "bell_end");
+            check(be == null || (be.Choices.Count == 2 && be.Choices[0].Next == "mask_known" && be.Choices[0].Requires.Contains(P + "bird")
+                                 && be.Choices[1].Next == "mask_stranger" && be.Choices[1].Forbids.Contains(P + "bird")),
+                "Trk_Shamira_Harem: the masked courtier is recognised without the bird: " + hs.Id);
+        }
         // Sol INT (G6(b)): an Arueshalae who died and came back on her own road reacts again; a dead one does not.
         var walking = S(P + "react.arueshalae_walking");
         var aw = World(story, 5, "trickster.ever", Embodied, "arueshalae_dead");
