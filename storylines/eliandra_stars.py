@@ -210,9 +210,16 @@ drezen_pre(E + "visit.star_heart", "The shrine's last night", '"Is the heart sti
        c("Continue", "look", requires=(LIGHTS_GIVEN,)),
        c("Continue", "look_up", forbids=(LIGHTS_GIVEN,))),
     el("look", '''"There are lights over the north tonight. You cannot see them. I can." {n}She steps closer, close enough that you can smell the road on her cloak, and cedar, and ink.{/n} "Look at me, then," she says. "I will look up for both of us."''',
-       c("Continue", "want")),
+       c("Continue", "want", requires=(E + "dead_named",)),
+       c("Continue", "want_rite", forbids=(E + "dead_named",))),
     el("look_up", '''"You still have your eyes, and I have nothing of my Lady's left but her leave." {n}She steps closer, close enough that you can smell the road on her cloak, and cedar, and ink.{/n} "Look up, then, while I look at you. I have looked at the sky long enough."''',
-       c("Continue", "want")),
+       c("Continue", "want", requires=(E + "dead_named",)),
+       c("Continue", "want_rite", forbids=(E + "dead_named",))),
+    el("want_rite", '''"I have wanted things before," she says. "I gave all of it to her before I knew what it was, and I did not miss it, because I did not know what I was missing." {n}Her hand comes up, slowly, and rests flat on your chest, the way she rests it on her own heart when she bows.{/n}
+"I know now. I want you, Commander. I have wanted you since you came to me with a question nobody had asked me in a hundred years: what my Lady takes, and what I might ask her for. I have no idea at all what to do about it. I am told that is usual."''',
+       c("[Kiss her.]", "robes"),
+       c('[Flirt] "I\'ll show you. Slowly. We have all night."', "robes"),
+       c('"I told you I wasn\'t watching the stars."', "robes", requires=(FLIRTED,))),
     el("want", '''"I have wanted things before," she says. "I gave all of it to her before I knew what it was, and I did not miss it, because I did not know what I was missing." {n}Her hand comes up, slowly, and rests flat on your chest, the way she rests it on her own heart when she bows.{/n}
 "I know now. I want you, Commander. I have wanted you since the day you walked into my broken shrine with blood on your sleeves and asked me who I had lost. I have no idea at all what to do about it. I am told that is usual."''',
        c("[Kiss her.]", "robes"),
@@ -290,7 +297,8 @@ drezen(E + "drezen.stone", "The stone under the cloth", '"You\'ve been looking a
 "I watched you carry it away from behind my Lady's veil, and I have wondered ever since what a crusader wanted with a chief's stone. And here it is, in a tavern, holding up a king." {n}She is quiet.{/n} "He asked me whether his ancestors were buried under it. I said probably. I thought it kinder than the truth."''',
        c('"What is the truth?"', "truth"),
        c('"He needed it more than the dead did."', "needed")),
-    el("truth", '''"That nobody knows whose it is." {n}She looks at the cloth.{/n} "The chiefs of the clans went to their rest on barges, down the river and over our falls, and the stones were set up afterwards by whoever loved them. Most had no names. Sarkoris did not believe a chief belonged to a stone, or a stone to a chief. It believed in the arguing afterwards." {n}She almost smiles.{/n} "In a way, your King is very Sarkorian. He has a stone, and a great many opinions about what it means, and no evidence at all."''',
+    el("truth", '''"I read it. He lifted the cloth for me, and I read it twice." {n}She looks at the cloth.{/n} "The letters are older than the fall of Sarkoris. The moss is older than that. It says what he says it says, word for word, and it bears his crest. I do not know how, and I will not pretend it is a forgery. It is not."
+"But I remember that ground. The chiefs went to their rest on barges, down the river and over our falls, and the stones were set up afterwards by whoever loved them. Most had no names. Sarkoris did not believe a chief belonged to a stone, or a stone to a chief." {n}She almost smiles.{/n} "So there are two histories under that cloth now: the one I remember, and the one your trickery made true. I have decided to keep both. Sarkoris always did like an argument."''',
        c("Continue", "choice")),
     el("needed", '''"Perhaps." {n}She does not argue.{/n} "The dead are patient. They have been lying under that slope for a hundred years while cultists walked them about on strings, and nobody gave them anything but the edge of a sword. A king who drinks to them every night may be the best thing that has happened to them in a century." {n}A pause.{/n} "I did not say it was a good king."''',
        c("Continue", "choice")),
@@ -352,7 +360,7 @@ drezen(E + "drezen.ordinary", "One wound at a time", '"You look exhausted. What 
        c("[Take her hands and look at the blood under the nails.]", "hands")),
     el("regret", '''"No." {n}She answers at once, and then, being who she is, checks the answer.{/n} "No. I regret that the boy waited an hour in pain. I regret that the next one will wait longer. I do not regret the bargain." {n}She looks at you.{/n} "I was the strongest of my Lady's priestesses because I gave her everything and kept nothing. Now I keep something. It is a smaller strength. It is mine."''',
        c("Continue", "end")),
-    el("brave", '''"Ordinary." {n}She repeats it as though it were a word in a language she is learning, and a pleasant one.{/n} "Priestesses all over Golarion do exactly what I did today, every day, and go to bed exhausted, and nobody thinks them saints. I have been a saint for a hundred years, Commander. It was lonely. This is better."''',
+    el("brave", '''"Ordinary." {n}She does not like the word, and does not argue with it either.{/n} "The boy will walk. That is what matters, and I will not pretend otherwise because it took me an hour." {n}Her jaw sets, the high priestess for a breath.{/n} "But I will be quicker next time. My Lady took back her gift; she did not take back a century of knowing where the blood runs. I have been lazy, Commander. The strength did my thinking for me. Now I shall have to do it myself."''',
        c("Continue", "end")),
     nar("hands", '''{n}Her hands are cold and not quite steady. You turn them palm up. The blood under the nails is the boy's, and the ink stain on the second finger of the right hand is a hundred years old, and there is no shimmer on either palm, none at all, only the lines anyone has.{/n}
 {n}Eliandra lets you look. Then she closes her fingers round yours. "They will learn," she says. "They learned to hold a lens. They can learn to be tired."{/n}''',
@@ -539,26 +547,7 @@ drezen(E + "drezen.questions", "Every morning", '"What is it today?"', [
 ], requires=(CHART,), forbids=(QUESTIONS,), delay=24)
 
 
-# --- 11. Lann's question (after his word on the veil) ----------------------------------------------------------------------
-
-LANN_ANSWERED = E + "drezen.lann_answered"
-
-drezen(E + "drezen.lann", "Somebody looking at the sky", '"Lann asked me to ask you something."', [
-    el("start", '''"Lann." {n}Eliandra sets down her pen.{/n} "The young archer with the Wound in his bones. He watches me across the yard as though I owed him money." {n}She folds her hands.{/n} "Ask."''',
-       c('"Whether anyone behind the veil ever looked out and thought about his people. The ones in the caves."', "ask")),
-    el("ask", '''{n}She does not answer quickly. When she does, it is in the voice of the evening reading, slow and exact.{/n}
-"Yes. Every winter, at the solstice, Odden set a lamp in the east window of the library, where it could not be seen through the veil but could be seen from inside by anyone who looked east. It was for the ones outside. All of them. The clans who would not run, the crusaders who came too late, and the children in the caves who were born into the Wound and never knew there had been anything else."
-"It did them no good at all. We knew that. We lit it anyway, for a hundred years."''',
-       c('"I\'ll tell him."', "tell"),
-       c('"Tell him yourself."', "yourself")),
-    el("tell", '''"Tell him also that I am sorry, and that I know it is not enough, and that I do not expect him to forgive a veil for doing what veils do." {n}She pauses.{/n} "And tell him that there is a lamp in my window in Drezen now, at the east side. It is not for anyone in particular. He may take it personally, if he likes."''',
-       c("[Take her message to Lann.]", flags=(LANN_ANSWERED,))),
-    el("yourself", '''{n}Something shifts in her face: fear, very briefly, and then a decision.{/n} "Yes," she says. "You are right. I have sent other people to say hard things for me for a hundred years." {n}She stands, and smooths her robe, and looks across the room towards the door as though it were a long way off.{/n} "Where does he keep himself? I will find him before the evening reading, and I will say it to his face, and he may be as angry with me as he likes. I have earned it."''',
-       c("[Tell her where to find him.]", flags=(LANN_ANSWERED,))),
-], requires=(E + "react.lann_veil",), forbids=(LANN_ANSWERED,), delay=12)
-
-
-# --- 12. Ramien's dream (read only if the Desnan saw his dream come true at Pulura's Fall) --------------------------------
+# --- 11. Ramien's dream (read only if the Desnan saw his dream come true at Pulura's Fall) --------------------------------
 
 RAMIEN_DREAM = "eliandra.ramien_dream"   # SeenCues RamienPulura/Cue_0007 cb298915: the northern lights and a priestess
 RAMIEN_TALKED = E + "drezen.ramien"

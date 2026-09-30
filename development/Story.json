@@ -362136,7 +362136,8 @@
               "Text": "[Leave her with his wall of swords.]",
               "Next": null,
               "Set": [
-                "eliandra.trickster.regnard_swords"
+                "eliandra.trickster.regnard_swords",
+                "eliandra.trickster.regnard_swords_home"
               ],
               "Requires": [],
               "Forbids": [],
@@ -362154,7 +362155,8 @@
               "Text": "[Leave her with his wall of swords.]",
               "Next": null,
               "Set": [
-                "eliandra.trickster.regnard_swords"
+                "eliandra.trickster.regnard_swords",
+                "eliandra.trickster.regnard_sword_kept"
               ],
               "Requires": [],
               "Forbids": [],
@@ -363172,220 +363174,6 @@
       "NativeReturnCue": "cb48db9773f775b428f0a5f20757145e"
     },
     {
-      "Id": "eliandra.trickster.ch5.inventory",
-      "Title": "An inventory",
-      "Owner": "Commander",
-      "MinChapter": 5,
-      "MaxChapter": 5,
-      "Entry": "",
-      "Nodes": [
-        {
-          "Id": "start",
-          "Speaker": "Narrator",
-          "Text": "{n}The guard room of Pulura's Fall has one table, one lamp and a century of other people's graffiti scratched into the stone above the cots. The others are asleep. There is paper on the table, and a pencil.{/n}",
-          "Choices": [
-            {
-              "Text": "[Write down what you have to give, and what it would cost.]",
-              "Next": "list",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "[Leave the paper blank. Some things are not planned.]",
-              "Next": "blank",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Eliandra"
-        },
-        {
-          "Id": "blank",
-          "Speaker": "Narrator",
-          "Text": "{n}You leave the paper blank and lie down on a cot that is too short for anyone, and listen to the shrine settle round you: a door, a cough, the far-off tapping of someone nailing a crate shut in the dark. Whatever you offer at the basin, you will find it there.{/n}",
-          "Choices": [
-            {
-              "Text": "[Sleep.]",
-              "Next": null,
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Eliandra"
-        },
-        {
-          "Id": "list",
-          "Speaker": "Narrator",
-          "Text": "{n}It is not a long list. Everything you own of any value is either the crusade's, or borrowed, or already promised to somebody.{/n}",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "rules_read",
-              "Set": [],
-              "Requires": [
-                "eliandra.trickster.terms_read"
-              ],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
-              "Next": "rules_guessed",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [
-                "eliandra.trickster.terms_read"
-              ],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Eliandra"
-        },
-        {
-          "Id": "rules_read",
-          "Speaker": "Narrator",
-          "Text": "{n}Under it you write her rules, the way she told them to you. Under the open stars. Named aloud, once. Something the giver loves. Of the Maiden's own domain: light, the night sky, the far north, the sight of her lights.{/n}\n{n}Then you cross things off. Gold: not hers, and not yours either, strictly. The crusade's luck, such as it is: not hers. Your name, your voice, a year of your life: yours, but not of her domain, and you suspect a goddess of the northern lights has no use for a Trickster's voice. You sit and look at what is left for some time.{/n}",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "left",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Eliandra"
-        },
-        {
-          "Id": "rules_guessed",
-          "Speaker": "Narrator",
-          "Text": "{n}Under it you write what you remember of her rules, which is not much: something about the open sky, and naming a thing aloud, and gold. Gold, certainly; gold always works. You write down the crusade's treasury and underline it twice.{/n}\n{n}And then you go back over the conversation in your head and find a line you had skated over: she has no use for what you would throw away. You look at the treasury. You would throw it at almost anything. You leave the underline, but you add a question mark.{/n}",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "left",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Eliandra"
-        },
-        {
-          "Id": "left",
-          "Speaker": "Narrator",
-          "Text": "{n}What is left is a memory, and you did not expect it to be on the list at all.{/n}",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "cairn",
-              "Set": [],
-              "Requires": [
-                "eliandra.trickster.lights_seen"
-              ],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "Continue",
-              "Next": "mendev",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [
-                "eliandra.trickster.lights_seen"
-              ],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Eliandra"
-        },
-        {
-          "Id": "cairn",
-          "Speaker": "Narrator",
-          "Text": "{n}A dead chieftain's cairn below a dry fall. A sword across your knees. Green, then rose, then a white like frost on a blade, moving over a cliff your eyes would not stay on. You never told anyone. You looked for them under the red sky of the Abyss and found nothing, and minded.{/n}\n{n}It is the only thing you own that is truly yours and truly hers at the same time. That is not an accident, you think. That is what she meant by the rules.{/n}",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "decide",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Eliandra"
-        },
-        {
-          "Id": "mendev",
-          "Speaker": "Narrator",
-          "Text": "{n}You have seen them, as everyone in the north has seen them: some cold night, from some wall or some road, a sky that moved, green and rose and white, and you stopped, as everyone stops, until your feet were numb. You have not thought about it in a long time. It surprises you how clearly you remember it.{/n}\n{n}It is the only thing you own that is truly yours and truly hers at the same time. That is not an accident, you think. That is what she meant.{/n}",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "decide",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Eliandra"
-        },
-        {
-          "Id": "decide",
-          "Speaker": "Narrator",
-          "Text": "{n}A careful planner does not make an offering without knowing the price. You write it out plainly, the way you would write the cost of an assault: never to see them again. Not once. Not over Sarkoris in winter, not over whatever is left of the world when the war is done. You read it three times.{/n}\n{n}Then you look at it the way a buyer looks at a contract. A goddess who turns eyes aside can take a sight without breaking anything: she need only turn one more pair of eyes. It costs her nothing to collect, and it costs you everything to pay, and that is exactly the kind of price a power accepts. You would ask it yourself, in her place.{/n}\n{n}You fold the paper and hold it over the lamp until it catches, because some plans should not exist in writing, and go to bed.{/n}",
-          "Choices": [
-            {
-              "Text": "[Sleep on it.]",
-              "Next": null,
-              "Set": [
-                "eliandra.trickster.planned"
-              ],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Eliandra"
-        }
-      ],
-      "Requires": [
-        "trickster",
-        "eliandra.met_ch5"
-      ],
-      "Forbids": [
-        "eliandra.closed",
-        "eliandra.dead",
-        "eliandra.trickster.leave_granted",
-        "eliandra.trickster.no_leave",
-        "eliandra.trickster.planned"
-      ],
-      "DelayHours": 8,
-      "Optional": false,
-      "Relationship": "eliandra",
-      "Chapters": [
-        5
-      ],
-      "Remote": true,
-      "Kind": "event",
-      "RequiresAnyGroups": [
-        [
-          "eliandra.trickster.terms_read",
-          "eliandra.trickster.terms_guessed",
-          "eliandra.trickster.observed"
-        ]
-      ]
-    },
-    {
       "Id": "eliandra.trickster.ch5.terms",
       "Title": "What the Maiden takes",
       "Owner": "Eliandra",
@@ -363577,6 +363365,152 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "[That night, work out on paper what you could give, and what it would cost.]",
+              "Next": "list",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "list",
+          "Speaker": "Narrator",
+          "Text": "{n}That night you sit down with a lamp, a sheet of paper and a pencil, and write down what you have. It is not a long list. Everything you own of any value is either the crusade's, or borrowed, or already promised to somebody.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "rules_read",
+              "Set": [],
+              "Requires": [
+                "eliandra.trickster.terms_read"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "rules_guessed",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.terms_read"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "rules_read",
+          "Speaker": "Narrator",
+          "Text": "{n}Under it you write her rules, the way she told them to you. Under the open stars. Named aloud, once. Something the giver loves. Of the Maiden's own domain: light, the night sky, the far north, the sight of her lights.{/n}\n{n}Then you cross things off. Gold: not hers, and not yours either, strictly. The crusade's luck, such as it is: not hers. Your name, your voice, a year of your life: yours, but not of her domain, and you suspect a goddess of the northern lights has no use for a Trickster's voice. You sit and look at what is left for some time.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "left",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "rules_guessed",
+          "Speaker": "Narrator",
+          "Text": "{n}Under it you write what you remember of her rules, which is not much: something about the open sky, and naming a thing aloud, and gold. Gold, certainly; gold always works. You write down the crusade's treasury and underline it twice.{/n}\n{n}And then you go back over the conversation in your head and find a line you had skated over: she has no use for what you would throw away. You look at the treasury. You would throw it at almost anything. You leave the underline, but you add a question mark.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "left",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "left",
+          "Speaker": "Narrator",
+          "Text": "{n}What is left is a memory, and you did not expect it to be on the list at all.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "cairn",
+              "Set": [],
+              "Requires": [
+                "eliandra.trickster.lights_seen"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "mendev",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.lights_seen"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "cairn",
+          "Speaker": "Narrator",
+          "Text": "{n}A dead chieftain's cairn below a dry fall. A sword across your knees. Green, then rose, then a white like frost on a blade, moving over a cliff your eyes would not stay on. You never told anyone.{/n}\n{n}It is the only thing you own that is truly yours and truly hers at the same time. That is not an accident, you think. That is what she meant by the rules.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "decide",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "mendev",
+          "Speaker": "Narrator",
+          "Text": "{n}You have seen them, as everyone in the north has seen them: some cold night, from some wall or some road, a sky that moved, green and rose and white, and you stopped, as everyone stops, until your feet were numb. You have not thought about it in a long time. It surprises you how clearly you remember it.{/n}\n{n}It is the only thing you own that is truly yours and truly hers at the same time. That is not an accident, you think. That is what she meant.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "decide",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "decide",
+          "Speaker": "Narrator",
+          "Text": "{n}A careful planner does not make an offering without knowing the price. You write it out plainly, the way you would write the cost of an assault: never to see them again. Not once. Not over Sarkoris in winter, not over whatever is left of the world when the war is done. You read it three times.{/n}\n{n}Then you look at it the way a buyer looks at a contract. A goddess who turns eyes aside can take a sight without breaking anything: she need only turn one more pair of eyes. It costs her nothing to collect, and it costs you everything to pay, and that is exactly the kind of price a power accepts. You would ask it yourself, in her place.{/n}\n{n}You fold the paper and hold it over the lamp until it catches, because some plans should not exist in writing, and go to bed.{/n}",
+          "Choices": [
+            {
+              "Text": "[Sleep on it.]",
+              "Next": null,
+              "Set": [
+                "eliandra.trickster.planned"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": ""
@@ -363752,7 +363686,7 @@
         {
           "Id": "planned",
           "Speaker": "Narrator",
-          "Text": "{n}You kneel. The paper you burned in the guard room is still in your head, every line of it, the price written out plain the way you would write the cost of an assault. You know what you are going to say. You have known since the lamp caught. That does not make it easier; it only makes it yours.{/n}",
+          "Text": "{n}You kneel. The paper you burned over the lamp is still in your head, every line of it, the price written out plain the way you would write the cost of an assault. You know what you are going to say. You have known since the lamp caught. That does not make it easier; it only makes it yours.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -363939,7 +363873,35 @@
         {
           "Id": "remember",
           "Speaker": "Narrator",
-          "Text": "{n}You know them. You watched them from a dead chieftain's cairn with your sword across your knees; you looked for them under the red sky of the Abyss. You look at them now as hard as you can, because you understand, a heartbeat before it happens, that this is the last time.{/n}",
+          "Text": "{n}You know them. You watched them from a dead chieftain's cairn with your sword across your knees. You look at them now as hard as you can, because you understand, a heartbeat before it happens, that this is the last time.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "abyss",
+              "Set": [],
+              "Requires": [
+                "eliandra.trickster.abyss_dark"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "veil",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.abyss_dark"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "abyss",
+          "Speaker": "Narrator",
+          "Text": "{n}You looked for them once under the red sky of the Abyss, and found nothing, and minded. You will mind for the rest of your life. You knew that when you named them.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -364696,90 +364658,6 @@
       ]
     },
     {
-      "Id": "eliandra.trickster.react.lann_veil",
-      "Title": "Lann's word",
-      "Owner": "Lann",
-      "MinChapter": 5,
-      "MaxChapter": 5,
-      "Entry": "\"About Pulura's Fall...\"",
-      "Nodes": [
-        {
-          "Id": "start",
-          "Speaker": "Lann",
-          "Text": "\"A hidden temple. At the edge of the Wound. For a hundred years.\" {n}Lann is fletching an arrow and does not look up.{/n}\n\"We were in the caves the whole time, you know. My people. Not so far from that dry fall, eating whatever didn't eat us first. They could see out through that veil of theirs, I hear.\" {n}He finishes the fletching and sights down the shaft.{/n} \"I'm not angry. I'd have hidden too. I'd just have liked to know somebody out there was looking at the sky and thinking about us. Maybe they were. Ask her for me, sometime.\"",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": null,
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        }
-      ],
-      "Requires": [
-        "trickster.ever",
-        "eliandra.trickster.dead_named"
-      ],
-      "Forbids": [
-        "lann.dead",
-        "lann.kicked_out",
-        "eliandra.closed"
-      ],
-      "DelayHours": 24,
-      "Optional": false,
-      "Relationship": "eliandra",
-      "Reaction": true,
-      "AnswerLists": [
-        "66385ad77fa743e4bb1234078dbd804c"
-      ]
-    },
-    {
-      "Id": "eliandra.trickster.react.daeran_lights",
-      "Title": "Daeran's word",
-      "Owner": "Daeran",
-      "MinChapter": 5,
-      "MaxChapter": 5,
-      "Entry": "\"You're looking at me strangely, Daeran.\"",
-      "Nodes": [
-        {
-          "Id": "start",
-          "Speaker": "Daeran",
-          "Text": "{n}Daeran is lying on a divan with a glass balanced on his chest, and does not trouble to sit up.{/n}\n\"My dear, the whole citadel is talking. You knelt in a cave and gave a goddess your eyes. Not all of them: only the part that sees pretty lights. Which, I would point out, is the only part worth having in this part of the world.\" {n}He raises the glass an inch.{/n} \"For a priestess sworn off all of it since she was thirteen, I understand. Tell me she was worth an aurora. No, don't. I would so hate to be disappointed in you.\"",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": null,
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        }
-      ],
-      "Requires": [
-        "trickster.ever",
-        "eliandra.trickster.cost.lights_given"
-      ],
-      "Forbids": [
-        "daeran.dead",
-        "daeran.kicked_out",
-        "eliandra.closed"
-      ],
-      "DelayHours": 24,
-      "Optional": false,
-      "Relationship": "eliandra",
-      "Reaction": true,
-      "AnswerLists": [
-        "4d978cbd2aa780d46874255282039f3f"
-      ]
-    },
-    {
       "Id": "eliandra.trickster.epilogue.together",
       "Title": "",
       "Owner": "EliandraEpilogue",
@@ -364942,15 +364820,15 @@
             {
               "Text": "{n}Regnard's plain sword hung on the first wall of the new temple at Iz. Every child who asked was told that its owner had wanted to change so badly that he practised with it every night for years, alone, and then used it.{/n}",
               "Requires": [
-                "eliandra.trickster.regnard_swords"
+                "eliandra.trickster.regnard_sword_kept"
               ],
               "Forbids": [],
               "AnyGroups": []
             },
             {
-              "Text": "{n}There was always a lamp in her east window, wherever she was living. Lann saw it once, from the road, and did not mention it to anyone, and was seen afterwards on that road rather more often than his errands required.{/n}",
+              "Text": "{n}The chiefs' swords lay on their cairns below the dry fall, blades to the north, every one where Regnard's record said it belonged. The crusaders who laid them had got four wrong. Katair corrected them the next spring, and wrote the corrections in the margin of Regnard's record, and crossed nothing out.{/n}",
               "Requires": [
-                "eliandra.trickster.drezen.lann_answered"
+                "eliandra.trickster.regnard_swords_home"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -365171,15 +365049,15 @@
             {
               "Text": "{n}Regnard's plain sword hung on the first wall of the new temple at Iz. Every child who asked was told that its owner had wanted to change so badly that he practised with it every night for years, alone, and then used it.{/n}",
               "Requires": [
-                "eliandra.trickster.regnard_swords"
+                "eliandra.trickster.regnard_sword_kept"
               ],
               "Forbids": [],
               "AnyGroups": []
             },
             {
-              "Text": "{n}There was always a lamp in her east window, wherever she was living. Lann saw it once, from the road, and did not mention it to anyone, and was seen afterwards on that road rather more often than his errands required.{/n}",
+              "Text": "{n}The chiefs' swords lay on their cairns below the dry fall, blades to the north, every one where Regnard's record said it belonged. The crusaders who laid them had got four wrong. Katair corrected them the next spring, and wrote the corrections in the margin of Regnard's record, and crossed nothing out.{/n}",
               "Requires": [
-                "eliandra.trickster.drezen.lann_answered"
+                "eliandra.trickster.regnard_swords_home"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -365401,15 +365279,15 @@
             {
               "Text": "{n}Regnard's plain sword hung on the first wall of the new temple at Iz. Every child who asked was told that its owner had wanted to change so badly that he practised with it every night for years, alone, and then used it.{/n}",
               "Requires": [
-                "eliandra.trickster.regnard_swords"
+                "eliandra.trickster.regnard_sword_kept"
               ],
               "Forbids": [],
               "AnyGroups": []
             },
             {
-              "Text": "{n}There was always a lamp in her east window, wherever she was living. Lann saw it once, from the road, and did not mention it to anyone, and was seen afterwards on that road rather more often than his errands required.{/n}",
+              "Text": "{n}The chiefs' swords lay on their cairns below the dry fall, blades to the north, every one where Regnard's record said it belonged. The crusaders who laid them had got four wrong. Katair corrected them the next spring, and wrote the corrections in the margin of Regnard's record, and crossed nothing out.{/n}",
               "Requires": [
-                "eliandra.trickster.drezen.lann_answered"
+                "eliandra.trickster.regnard_swords_home"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -365948,6 +365826,152 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "[That night, work out on paper what you could give, and what it would cost.]",
+              "Next": "list",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "list",
+          "Speaker": "Narrator",
+          "Text": "{n}That night you sit down with a lamp, a sheet of paper and a pencil, and write down what you have. It is not a long list. Everything you own of any value is either the crusade's, or borrowed, or already promised to somebody.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "rules_read",
+              "Set": [],
+              "Requires": [
+                "eliandra.trickster.terms_read"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "rules_guessed",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.terms_read"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "rules_read",
+          "Speaker": "Narrator",
+          "Text": "{n}Under it you write her rules, the way she told them to you. Under the open stars. Named aloud, once. Something the giver loves. Of the Maiden's own domain: light, the night sky, the far north, the sight of her lights.{/n}\n{n}Then you cross things off. Gold: not hers, and not yours either, strictly. The crusade's luck, such as it is: not hers. Your name, your voice, a year of your life: yours, but not of her domain, and you suspect a goddess of the northern lights has no use for a Trickster's voice. You sit and look at what is left for some time.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "left",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "rules_guessed",
+          "Speaker": "Narrator",
+          "Text": "{n}Under it you write what you remember of her rules, which is not much: something about the open sky, and naming a thing aloud, and gold. Gold, certainly; gold always works. You write down the crusade's treasury and underline it twice.{/n}\n{n}And then you go back over the conversation in your head and find a line you had skated over: she has no use for what you would throw away. You look at the treasury. You would throw it at almost anything. You leave the underline, but you add a question mark.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "left",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "left",
+          "Speaker": "Narrator",
+          "Text": "{n}What is left is a memory, and you did not expect it to be on the list at all.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "cairn",
+              "Set": [],
+              "Requires": [
+                "eliandra.trickster.lights_seen"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "mendev",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.lights_seen"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "cairn",
+          "Speaker": "Narrator",
+          "Text": "{n}A dead chieftain's cairn below a dry fall. A sword across your knees. Green, then rose, then a white like frost on a blade, moving over a cliff your eyes would not stay on. You never told anyone.{/n}\n{n}It is the only thing you own that is truly yours and truly hers at the same time. That is not an accident, you think. That is what she meant by the rules.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "decide",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "mendev",
+          "Speaker": "Narrator",
+          "Text": "{n}You have seen them, as everyone in the north has seen them: some cold night, from some wall or some road, a sky that moved, green and rose and white, and you stopped, as everyone stops, until your feet were numb. You have not thought about it in a long time. It surprises you how clearly you remember it.{/n}\n{n}It is the only thing you own that is truly yours and truly hers at the same time. That is not an accident, you think. That is what she meant.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "decide",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "decide",
+          "Speaker": "Narrator",
+          "Text": "{n}A careful planner does not make an offering without knowing the price. You write it out plainly, the way you would write the cost of an assault: never to see them again. Not once. Not over Sarkoris in winter, not over whatever is left of the world when the war is done. You read it three times.{/n}\n{n}Then you look at it the way a buyer looks at a contract. A goddess who turns eyes aside can take a sight without breaking anything: she need only turn one more pair of eyes. It costs her nothing to collect, and it costs you everything to pay, and that is exactly the kind of price a power accepts. You would ask it yourself, in her place.{/n}\n{n}You fold the paper and hold it over the lamp until it catches, because some plans should not exist in writing, and go to bed.{/n}",
+          "Choices": [
+            {
+              "Text": "[Sleep on it.]",
+              "Next": null,
+              "Set": [
+                "eliandra.trickster.planned"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": ""
@@ -366170,6 +366194,152 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "[That night, work out on paper what you could give, and what it would cost.]",
+              "Next": "list",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "list",
+          "Speaker": "Narrator",
+          "Text": "{n}That night you sit down with a lamp, a sheet of paper and a pencil, and write down what you have. It is not a long list. Everything you own of any value is either the crusade's, or borrowed, or already promised to somebody.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "rules_read",
+              "Set": [],
+              "Requires": [
+                "eliandra.trickster.terms_read"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "rules_guessed",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.terms_read"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "rules_read",
+          "Speaker": "Narrator",
+          "Text": "{n}Under it you write her rules, the way she told them to you. Under the open stars. Named aloud, once. Something the giver loves. Of the Maiden's own domain: light, the night sky, the far north, the sight of her lights.{/n}\n{n}Then you cross things off. Gold: not hers, and not yours either, strictly. The crusade's luck, such as it is: not hers. Your name, your voice, a year of your life: yours, but not of her domain, and you suspect a goddess of the northern lights has no use for a Trickster's voice. You sit and look at what is left for some time.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "left",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "rules_guessed",
+          "Speaker": "Narrator",
+          "Text": "{n}Under it you write what you remember of her rules, which is not much: something about the open sky, and naming a thing aloud, and gold. Gold, certainly; gold always works. You write down the crusade's treasury and underline it twice.{/n}\n{n}And then you go back over the conversation in your head and find a line you had skated over: she has no use for what you would throw away. You look at the treasury. You would throw it at almost anything. You leave the underline, but you add a question mark.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "left",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "left",
+          "Speaker": "Narrator",
+          "Text": "{n}What is left is a memory, and you did not expect it to be on the list at all.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "cairn",
+              "Set": [],
+              "Requires": [
+                "eliandra.trickster.lights_seen"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "mendev",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.lights_seen"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "cairn",
+          "Speaker": "Narrator",
+          "Text": "{n}A dead chieftain's cairn below a dry fall. A sword across your knees. Green, then rose, then a white like frost on a blade, moving over a cliff your eyes would not stay on. You never told anyone.{/n}\n{n}It is the only thing you own that is truly yours and truly hers at the same time. That is not an accident, you think. That is what she meant by the rules.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "decide",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "mendev",
+          "Speaker": "Narrator",
+          "Text": "{n}You have seen them, as everyone in the north has seen them: some cold night, from some wall or some road, a sky that moved, green and rose and white, and you stopped, as everyone stops, until your feet were numb. You have not thought about it in a long time. It surprises you how clearly you remember it.{/n}\n{n}It is the only thing you own that is truly yours and truly hers at the same time. That is not an accident, you think. That is what she meant.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "decide",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "decide",
+          "Speaker": "Narrator",
+          "Text": "{n}A careful planner does not make an offering without knowing the price. You write it out plainly, the way you would write the cost of an assault: never to see them again. Not once. Not over Sarkoris in winter, not over whatever is left of the world when the war is done. You read it three times.{/n}\n{n}Then you look at it the way a buyer looks at a contract. A goddess who turns eyes aside can take a sight without breaking anything: she need only turn one more pair of eyes. It costs her nothing to collect, and it costs you everything to pay, and that is exactly the kind of price a power accepts. You would ask it yourself, in her place.{/n}\n{n}You fold the paper and hold it over the lamp until it catches, because some plans should not exist in writing, and go to bed.{/n}",
+          "Choices": [
+            {
+              "Text": "[Sleep on it.]",
+              "Next": null,
+              "Set": [
+                "eliandra.trickster.planned"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": ""
@@ -366352,7 +366522,7 @@
         {
           "Id": "planned",
           "Speaker": "Narrator",
-          "Text": "{n}You kneel. The paper you burned in the guard room is still in your head, every line of it, the price written out plain the way you would write the cost of an assault. You know what you are going to say. You have known since the lamp caught. That does not make it easier; it only makes it yours.{/n}",
+          "Text": "{n}You kneel. The paper you burned over the lamp is still in your head, every line of it, the price written out plain the way you would write the cost of an assault. You know what you are going to say. You have known since the lamp caught. That does not make it easier; it only makes it yours.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -366539,7 +366709,35 @@
         {
           "Id": "remember",
           "Speaker": "Narrator",
-          "Text": "{n}You know them. You watched them from a dead chieftain's cairn with your sword across your knees; you looked for them under the red sky of the Abyss. You look at them now as hard as you can, because you understand, a heartbeat before it happens, that this is the last time.{/n}",
+          "Text": "{n}You know them. You watched them from a dead chieftain's cairn with your sword across your knees. You look at them now as hard as you can, because you understand, a heartbeat before it happens, that this is the last time.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "abyss",
+              "Set": [],
+              "Requires": [
+                "eliandra.trickster.abyss_dark"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "veil",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.abyss_dark"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "abyss",
+          "Speaker": "Narrator",
+          "Text": "{n}You looked for them once under the red sky of the Abyss, and found nothing, and minded. You will mind for the rest of your life. You knew that when you named them.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -367011,7 +367209,7 @@
         {
           "Id": "planned",
           "Speaker": "Narrator",
-          "Text": "{n}You kneel. The paper you burned in the guard room is still in your head, every line of it, the price written out plain the way you would write the cost of an assault. You know what you are going to say. You have known since the lamp caught. That does not make it easier; it only makes it yours.{/n}",
+          "Text": "{n}You kneel. The paper you burned over the lamp is still in your head, every line of it, the price written out plain the way you would write the cost of an assault. You know what you are going to say. You have known since the lamp caught. That does not make it easier; it only makes it yours.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -367198,7 +367396,35 @@
         {
           "Id": "remember",
           "Speaker": "Narrator",
-          "Text": "{n}You know them. You watched them from a dead chieftain's cairn with your sword across your knees; you looked for them under the red sky of the Abyss. You look at them now as hard as you can, because you understand, a heartbeat before it happens, that this is the last time.{/n}",
+          "Text": "{n}You know them. You watched them from a dead chieftain's cairn with your sword across your knees. You look at them now as hard as you can, because you understand, a heartbeat before it happens, that this is the last time.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "abyss",
+              "Set": [],
+              "Requires": [
+                "eliandra.trickster.abyss_dark"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "veil",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.abyss_dark"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "abyss",
+          "Speaker": "Narrator",
+          "Text": "{n}You looked for them once under the red sky of the Abyss, and found nothing, and minded. You will mind for the rest of your life. You knew that when you named them.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -368756,8 +368982,20 @@
               "Text": "Continue",
               "Next": "want",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "eliandra.trickster.dead_named"
+              ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "want_rite",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.dead_named"
+              ],
               "Abort": false
             }
           ],
@@ -368772,7 +369010,53 @@
               "Text": "Continue",
               "Next": "want",
               "Set": [],
+              "Requires": [
+                "eliandra.trickster.dead_named"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "want_rite",
+              "Set": [],
               "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.dead_named"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eliandra"
+        },
+        {
+          "Id": "want_rite",
+          "Speaker": "Eliandra",
+          "Text": "\"I have wanted things before,\" she says. \"I gave all of it to her before I knew what it was, and I did not miss it, because I did not know what I was missing.\" {n}Her hand comes up, slowly, and rests flat on your chest, the way she rests it on her own heart when she bows.{/n}\n\"I know now. I want you, Commander. I have wanted you since you came to me with a question nobody had asked me in a hundred years: what my Lady takes, and what I might ask her for. I have no idea at all what to do about it. I am told that is usual.\"",
+          "Choices": [
+            {
+              "Text": "[Kiss her.]",
+              "Next": "robes",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Flirt] \"I'll show you. Slowly. We have all night.\"",
+              "Next": "robes",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I told you I wasn't watching the stars.\"",
+              "Next": "robes",
+              "Set": [],
+              "Requires": [
+                "eliandra.trickster.flirted"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -369165,8 +369449,20 @@
               "Text": "Continue",
               "Next": "want",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "eliandra.trickster.dead_named"
+              ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "want_rite",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.dead_named"
+              ],
               "Abort": false
             }
           ],
@@ -369181,7 +369477,53 @@
               "Text": "Continue",
               "Next": "want",
               "Set": [],
+              "Requires": [
+                "eliandra.trickster.dead_named"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "want_rite",
+              "Set": [],
               "Requires": [],
+              "Forbids": [
+                "eliandra.trickster.dead_named"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eliandra"
+        },
+        {
+          "Id": "want_rite",
+          "Speaker": "Eliandra",
+          "Text": "\"I have wanted things before,\" she says. \"I gave all of it to her before I knew what it was, and I did not miss it, because I did not know what I was missing.\" {n}Her hand comes up, slowly, and rests flat on your chest, the way she rests it on her own heart when she bows.{/n}\n\"I know now. I want you, Commander. I have wanted you since you came to me with a question nobody had asked me in a hundred years: what my Lady takes, and what I might ask her for. I have no idea at all what to do about it. I am told that is usual.\"",
+          "Choices": [
+            {
+              "Text": "[Kiss her.]",
+              "Next": "robes",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Flirt] \"I'll show you. Slowly. We have all night.\"",
+              "Next": "robes",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I told you I wasn't watching the stars.\"",
+              "Next": "robes",
+              "Set": [],
+              "Requires": [
+                "eliandra.trickster.flirted"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -369878,7 +370220,7 @@
         {
           "Id": "truth",
           "Speaker": "Eliandra",
-          "Text": "\"That nobody knows whose it is.\" {n}She looks at the cloth.{/n} \"The chiefs of the clans went to their rest on barges, down the river and over our falls, and the stones were set up afterwards by whoever loved them. Most had no names. Sarkoris did not believe a chief belonged to a stone, or a stone to a chief. It believed in the arguing afterwards.\" {n}She almost smiles.{/n} \"In a way, your King is very Sarkorian. He has a stone, and a great many opinions about what it means, and no evidence at all.\"",
+          "Text": "\"I read it. He lifted the cloth for me, and I read it twice.\" {n}She looks at the cloth.{/n} \"The letters are older than the fall of Sarkoris. The moss is older than that. It says what he says it says, word for word, and it bears his crest. I do not know how, and I will not pretend it is a forgery. It is not.\"\n\"But I remember that ground. The chiefs went to their rest on barges, down the river and over our falls, and the stones were set up afterwards by whoever loved them. Most had no names. Sarkoris did not believe a chief belonged to a stone, or a stone to a chief.\" {n}She almost smiles.{/n} \"So there are two histories under that cloth now: the one I remember, and the one your trickery made true. I have decided to keep both. Sarkoris always did like an argument.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -370528,7 +370870,7 @@
         {
           "Id": "brave",
           "Speaker": "Eliandra",
-          "Text": "\"Ordinary.\" {n}She repeats it as though it were a word in a language she is learning, and a pleasant one.{/n} \"Priestesses all over Golarion do exactly what I did today, every day, and go to bed exhausted, and nobody thinks them saints. I have been a saint for a hundred years, Commander. It was lonely. This is better.\"",
+          "Text": "\"Ordinary.\" {n}She does not like the word, and does not argue with it either.{/n} \"The boy will walk. That is what matters, and I will not pretend otherwise because it took me an hour.\" {n}Her jaw sets, the high priestess for a breath.{/n} \"But I will be quicker next time. My Lady took back her gift; she did not take back a century of knowing where the blood runs. I have been lazy, Commander. The strength did my thinking for me. Now I shall have to do it myself.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -370718,7 +371060,7 @@
         {
           "Id": "brave",
           "Speaker": "Eliandra",
-          "Text": "\"Ordinary.\" {n}She repeats it as though it were a word in a language she is learning, and a pleasant one.{/n} \"Priestesses all over Golarion do exactly what I did today, every day, and go to bed exhausted, and nobody thinks them saints. I have been a saint for a hundred years, Commander. It was lonely. This is better.\"",
+          "Text": "\"Ordinary.\" {n}She does not like the word, and does not argue with it either.{/n} \"The boy will walk. That is what matters, and I will not pretend otherwise because it took me an hour.\" {n}Her jaw sets, the high priestess for a breath.{/n} \"But I will be quicker next time. My Lady took back her gift; she did not take back a century of knowing where the blood runs. I have been lazy, Commander. The strength did my thinking for me. Now I shall have to do it myself.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -373090,228 +373432,6 @@
         "eliandra.trickster.drezen.questions"
       ],
       "DelayHours": 24,
-      "Optional": false,
-      "Relationship": "eliandra",
-      "Chapters": [
-        5
-      ],
-      "Areas": [
-        "2570015799edf594daf2f076f2f975d8"
-      ],
-      "ContactUnit": "e349079a648cb15448a27f9049344bf1",
-      "InteractionHub": "eliandra.presence.mark",
-      "RequiresAnyGroups": [
-        [
-          "eliandra.presence.failed",
-          "fool_king.gone"
-        ]
-      ]
-    },
-    {
-      "Id": "eliandra.trickster.drezen.lann",
-      "Title": "Somebody looking at the sky",
-      "Owner": "Eliandra",
-      "MinChapter": 5,
-      "MaxChapter": 5,
-      "Entry": "\"Lann asked me to ask you something.\"",
-      "Nodes": [
-        {
-          "Id": "start",
-          "Speaker": "Eliandra",
-          "Text": "\"Lann.\" {n}Eliandra sets down her pen.{/n} \"The young archer with the Wound in his bones. He watches me across the yard as though I owed him money.\" {n}She folds her hands.{/n} \"Ask.\"",
-          "Choices": [
-            {
-              "Text": "\"Whether anyone behind the veil ever looked out and thought about his people. The ones in the caves.\"",
-              "Next": "ask",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Eliandra"
-        },
-        {
-          "Id": "ask",
-          "Speaker": "Eliandra",
-          "Text": "{n}She does not answer quickly. When she does, it is in the voice of the evening reading, slow and exact.{/n}\n\"Yes. Every winter, at the solstice, Odden set a lamp in the east window of the library, where it could not be seen through the veil but could be seen from inside by anyone who looked east. It was for the ones outside. All of them. The clans who would not run, the crusaders who came too late, and the children in the caves who were born into the Wound and never knew there had been anything else.\"\n\"It did them no good at all. We knew that. We lit it anyway, for a hundred years.\"",
-          "Choices": [
-            {
-              "Text": "\"I'll tell him.\"",
-              "Next": "tell",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "\"Tell him yourself.\"",
-              "Next": "yourself",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Eliandra"
-        },
-        {
-          "Id": "tell",
-          "Speaker": "Eliandra",
-          "Text": "\"Tell him also that I am sorry, and that I know it is not enough, and that I do not expect him to forgive a veil for doing what veils do.\" {n}She pauses.{/n} \"And tell him that there is a lamp in my window in Drezen now, at the east side. It is not for anyone in particular. He may take it personally, if he likes.\"",
-          "Choices": [
-            {
-              "Text": "[Take her message to Lann.]",
-              "Next": null,
-              "Set": [
-                "eliandra.trickster.drezen.lann_answered"
-              ],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Eliandra"
-        },
-        {
-          "Id": "yourself",
-          "Speaker": "Eliandra",
-          "Text": "{n}Something shifts in her face: fear, very briefly, and then a decision.{/n} \"Yes,\" she says. \"You are right. I have sent other people to say hard things for me for a hundred years.\" {n}She stands, and smooths her robe, and looks across the room towards the door as though it were a long way off.{/n} \"Where does he keep himself? I will find him before the evening reading, and I will say it to his face, and he may be as angry with me as he likes. I have earned it.\"",
-          "Choices": [
-            {
-              "Text": "[Tell her where to find him.]",
-              "Next": null,
-              "Set": [
-                "eliandra.trickster.drezen.lann_answered"
-              ],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Eliandra"
-        }
-      ],
-      "Requires": [
-        "trickster.ever",
-        "eliandra.trickster.heart_seen",
-        "eliandra.trickster.react.lann_veil"
-      ],
-      "Forbids": [
-        "eliandra.closed",
-        "eliandra.dead",
-        "eliandra.trickster.drezen.lann_mark",
-        "eliandra.trickster.drezen.lann_answered"
-      ],
-      "DelayHours": 12,
-      "Optional": false,
-      "Relationship": "eliandra",
-      "Chapters": [
-        5
-      ],
-      "Areas": [
-        "2570015799edf594daf2f076f2f975d8"
-      ],
-      "ContactUnit": "e349079a648cb15448a27f9049344bf1",
-      "InteractionHub": "eliandra.presence"
-    },
-    {
-      "Id": "eliandra.trickster.drezen.lann_mark",
-      "Title": "Somebody looking at the sky",
-      "Owner": "Eliandra",
-      "MinChapter": 5,
-      "MaxChapter": 5,
-      "Entry": "\"Lann asked me to ask you something.\"",
-      "Nodes": [
-        {
-          "Id": "start",
-          "Speaker": "Eliandra",
-          "Text": "\"Lann.\" {n}Eliandra sets down her pen.{/n} \"The young archer with the Wound in his bones. He watches me across the yard as though I owed him money.\" {n}She folds her hands.{/n} \"Ask.\"",
-          "Choices": [
-            {
-              "Text": "\"Whether anyone behind the veil ever looked out and thought about his people. The ones in the caves.\"",
-              "Next": "ask",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Eliandra"
-        },
-        {
-          "Id": "ask",
-          "Speaker": "Eliandra",
-          "Text": "{n}She does not answer quickly. When she does, it is in the voice of the evening reading, slow and exact.{/n}\n\"Yes. Every winter, at the solstice, Odden set a lamp in the east window of the library, where it could not be seen through the veil but could be seen from inside by anyone who looked east. It was for the ones outside. All of them. The clans who would not run, the crusaders who came too late, and the children in the caves who were born into the Wound and never knew there had been anything else.\"\n\"It did them no good at all. We knew that. We lit it anyway, for a hundred years.\"",
-          "Choices": [
-            {
-              "Text": "\"I'll tell him.\"",
-              "Next": "tell",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "\"Tell him yourself.\"",
-              "Next": "yourself",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Eliandra"
-        },
-        {
-          "Id": "tell",
-          "Speaker": "Eliandra",
-          "Text": "\"Tell him also that I am sorry, and that I know it is not enough, and that I do not expect him to forgive a veil for doing what veils do.\" {n}She pauses.{/n} \"And tell him that there is a lamp in my window in Drezen now, at the east side. It is not for anyone in particular. He may take it personally, if he likes.\"",
-          "Choices": [
-            {
-              "Text": "[Take her message to Lann.]",
-              "Next": null,
-              "Set": [
-                "eliandra.trickster.drezen.lann_answered"
-              ],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Eliandra"
-        },
-        {
-          "Id": "yourself",
-          "Speaker": "Eliandra",
-          "Text": "{n}Something shifts in her face: fear, very briefly, and then a decision.{/n} \"Yes,\" she says. \"You are right. I have sent other people to say hard things for me for a hundred years.\" {n}She stands, and smooths her robe, and looks across the room towards the door as though it were a long way off.{/n} \"Where does he keep himself? I will find him before the evening reading, and I will say it to his face, and he may be as angry with me as he likes. I have earned it.\"",
-          "Choices": [
-            {
-              "Text": "[Tell her where to find him.]",
-              "Next": null,
-              "Set": [
-                "eliandra.trickster.drezen.lann_answered"
-              ],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Eliandra"
-        }
-      ],
-      "Requires": [
-        "trickster.ever",
-        "eliandra.trickster.heart_seen",
-        "eliandra.trickster.react.lann_veil"
-      ],
-      "Forbids": [
-        "eliandra.closed",
-        "eliandra.dead",
-        "eliandra.trickster.drezen.lann",
-        "eliandra.trickster.drezen.lann_answered"
-      ],
-      "DelayHours": 12,
       "Optional": false,
       "Relationship": "eliandra",
       "Chapters": [

@@ -401,9 +401,9 @@ shrine(E + "ch5.regnard", "Regnard's swords", '"Regnard\'s cell is full of sword
        c('"I\'ll lend you hands. The crusade can spare a day."', "hands"),
        c('"Keep one. For him."', "keep")),
     el("hands", '''"Thank you." {n}She inclines her head, the full formal bow of the high priestess, and then, a little awkwardly, simply touches your arm.{/n} "Tell your soldiers to lay them with the blades pointing north, towards the lights. It is the old way. Regnard would have written down every one they got wrong, and been very happy."''',
-       c("[Leave her with his wall of swords.]", flags=(E + "regnard_swords",))),
+       c("[Leave her with his wall of swords.]", flags=(E + "regnard_swords", E + "regnard_swords_home"))),
     el("keep", '''{n}She is quiet a long while.{/n} "One," she says at last. "The plain one. The one he died with. I will carry it into Sarkoris and put it on the first wall we build, and tell every child who asks that the man who owned it wanted to change so badly that he practised with it every night for years, alone, with nobody to teach him, and then used it." {n}She looks at you.{/n} "That is a better thing to tell children than that he obeyed me."''',
-       c("[Leave her with his wall of swords.]", flags=(E + "regnard_swords",))),
+       c("[Leave her with his wall of swords.]", flags=(E + "regnard_swords", E + "regnard_sword_kept"))),
 ], requires=(DEAD_NAMED,), forbids=(E + "regnard_swords",))
 
 
@@ -543,40 +543,7 @@ shrine(E + "ch5.maiden", "The Shimmering Maiden", '"Tell me about your Lady. Not
 ], requires=(DEAD_NAMED,), forbids=(E + "maiden_told",))
 
 
-# --- The Commander's inventory (T): planning the offering, on the page ---------------------------------------------------
-
 PLANNED = E + "planned"
-
-page(E + "ch5.inventory", "An inventory", [
-    pn("start", '''{n}The guard room of Pulura's Fall has one table, one lamp and a century of other people's graffiti scratched into the stone above the cots. The others are asleep. There is paper on the table, and a pencil.{/n}''',
-       c("[Write down what you have to give, and what it would cost.]", "list"),
-       c("[Leave the paper blank. Some things are not planned.]", "blank")),
-    pn("blank", '''{n}You leave the paper blank and lie down on a cot that is too short for anyone, and listen to the shrine settle round you: a door, a cough, the far-off tapping of someone nailing a crate shut in the dark. Whatever you offer at the basin, you will find it there.{/n}''',
-       c("[Sleep.]")),
-    pn("list", '''{n}It is not a long list. Everything you own of any value is either the crusade's, or borrowed, or already promised to somebody.{/n}''',
-       c("Continue", "rules_read", requires=(TERMS_READ,)),
-       c("Continue", "rules_guessed", forbids=(TERMS_READ,))),
-    pn("rules_read", '''{n}Under it you write her rules, the way she told them to you. Under the open stars. Named aloud, once. Something the giver loves. Of the Maiden's own domain: light, the night sky, the far north, the sight of her lights.{/n}
-{n}Then you cross things off. Gold: not hers, and not yours either, strictly. The crusade's luck, such as it is: not hers. Your name, your voice, a year of your life: yours, but not of her domain, and you suspect a goddess of the northern lights has no use for a Trickster's voice. You sit and look at what is left for some time.{/n}''',
-       c("Continue", "left")),
-    pn("rules_guessed", '''{n}Under it you write what you remember of her rules, which is not much: something about the open sky, and naming a thing aloud, and gold. Gold, certainly; gold always works. You write down the crusade's treasury and underline it twice.{/n}
-{n}And then you go back over the conversation in your head and find a line you had skated over: she has no use for what you would throw away. You look at the treasury. You would throw it at almost anything. You leave the underline, but you add a question mark.{/n}''',
-       c("Continue", "left")),
-    pn("left", '''{n}What is left is a memory, and you did not expect it to be on the list at all.{/n}''',
-       c("Continue", "cairn", requires=(LIGHTS_SEEN,)),
-       c("Continue", "mendev", forbids=(LIGHTS_SEEN,))),
-    pn("cairn", '''{n}A dead chieftain's cairn below a dry fall. A sword across your knees. Green, then rose, then a white like frost on a blade, moving over a cliff your eyes would not stay on. You never told anyone. You looked for them under the red sky of the Abyss and found nothing, and minded.{/n}
-{n}It is the only thing you own that is truly yours and truly hers at the same time. That is not an accident, you think. That is what she meant by the rules.{/n}''',
-       c("Continue", "decide")),
-    pn("mendev", '''{n}You have seen them, as everyone in the north has seen them: some cold night, from some wall or some road, a sky that moved, green and rose and white, and you stopped, as everyone stops, until your feet were numb. You have not thought about it in a long time. It surprises you how clearly you remember it.{/n}
-{n}It is the only thing you own that is truly yours and truly hers at the same time. That is not an accident, you think. That is what she meant.{/n}''',
-       c("Continue", "decide")),
-    pn("decide", '''{n}A careful planner does not make an offering without knowing the price. You write it out plainly, the way you would write the cost of an assault: never to see them again. Not once. Not over Sarkoris in winter, not over whatever is left of the world when the war is done. You read it three times.{/n}
-{n}Then you look at it the way a buyer looks at a contract. A goddess who turns eyes aside can take a sight without breaking anything: she need only turn one more pair of eyes. It costs her nothing to collect, and it costs you everything to pay, and that is exactly the kind of price a power accepts. You would ask it yourself, in her place.{/n}
-{n}You fold the paper and hold it over the lamp until it catches, because some plans should not exist in writing, and go to bed.{/n}''',
-       c("[Sleep on it.]", flags=(PLANNED,))),
-], requires=("trickster", MET), forbids=(LEAVE, NO_LEAVE, PLANNED), delay=8, kind="event", owner="Commander",
-    RequiresAnyGroups=[[TERMS_READ, TERMS_GUESSED, OBSERVED]])
 
 
 # --- The device: the terms, the last rite, her own offering (T) ----------------------------------------------------------
@@ -608,7 +575,30 @@ shrine(E + "ch5.terms", "What the Maiden takes", '"What does your Lady take, in 
 "Perhaps," she says. "My Lady has surprised me before."''',
        c("Continue", "warn")),
     el("warn", '''"If you mean to try her, Commander, try her honestly. She has turned aside the eyes of demons for a century. She will see a cheat coming a very long way off."''',
-       c("[Leave it there.]")),
+       c("[Leave it there.]"),
+       c("[That night, work out on paper what you could give, and what it would cost.]", "list")),
+    nar("list", '''{n}That night you sit down with a lamp, a sheet of paper and a pencil, and write down what you have. It is not a long list. Everything you own of any value is either the crusade's, or borrowed, or already promised to somebody.{/n}''',
+       c("Continue", "rules_read", requires=(TERMS_READ,)),
+       c("Continue", "rules_guessed", forbids=(TERMS_READ,))),
+    nar("rules_read", '''{n}Under it you write her rules, the way she told them to you. Under the open stars. Named aloud, once. Something the giver loves. Of the Maiden's own domain: light, the night sky, the far north, the sight of her lights.{/n}
+{n}Then you cross things off. Gold: not hers, and not yours either, strictly. The crusade's luck, such as it is: not hers. Your name, your voice, a year of your life: yours, but not of her domain, and you suspect a goddess of the northern lights has no use for a Trickster's voice. You sit and look at what is left for some time.{/n}''',
+       c("Continue", "left")),
+    nar("rules_guessed", '''{n}Under it you write what you remember of her rules, which is not much: something about the open sky, and naming a thing aloud, and gold. Gold, certainly; gold always works. You write down the crusade's treasury and underline it twice.{/n}
+{n}And then you go back over the conversation in your head and find a line you had skated over: she has no use for what you would throw away. You look at the treasury. You would throw it at almost anything. You leave the underline, but you add a question mark.{/n}''',
+       c("Continue", "left")),
+    nar("left", '''{n}What is left is a memory, and you did not expect it to be on the list at all.{/n}''',
+       c("Continue", "cairn", requires=(LIGHTS_SEEN,)),
+       c("Continue", "mendev", forbids=(LIGHTS_SEEN,))),
+    nar("cairn", '''{n}A dead chieftain's cairn below a dry fall. A sword across your knees. Green, then rose, then a white like frost on a blade, moving over a cliff your eyes would not stay on. You never told anyone.{/n}
+{n}It is the only thing you own that is truly yours and truly hers at the same time. That is not an accident, you think. That is what she meant by the rules.{/n}''',
+       c("Continue", "decide")),
+    nar("mendev", '''{n}You have seen them, as everyone in the north has seen them: some cold night, from some wall or some road, a sky that moved, green and rose and white, and you stopped, as everyone stops, until your feet were numb. You have not thought about it in a long time. It surprises you how clearly you remember it.{/n}
+{n}It is the only thing you own that is truly yours and truly hers at the same time. That is not an accident, you think. That is what she meant.{/n}''',
+       c("Continue", "decide")),
+    nar("decide", '''{n}A careful planner does not make an offering without knowing the price. You write it out plainly, the way you would write the cost of an assault: never to see them again. Not once. Not over Sarkoris in winter, not over whatever is left of the world when the war is done. You read it three times.{/n}
+{n}Then you look at it the way a buyer looks at a contract. A goddess who turns eyes aside can take a sight without breaking anything: she need only turn one more pair of eyes. It costs her nothing to collect, and it costs you everything to pay, and that is exactly the kind of price a power accepts. You would ask it yourself, in her place.{/n}
+{n}You fold the paper and hold it over the lamp until it catches, because some plans should not exist in writing, and go to bed.{/n}''',
+       c("[Sleep on it.]", flags=(PLANNED,))),
 ], requires=(), forbids=(TERMS_READ, TERMS_GUESSED), fit="T")
 
 
@@ -638,7 +628,7 @@ shrine(E + "ch5.last_rite", "The last rite", '"Will you hold one last rite at th
 "Shimmering Maiden, mistress of the lights of the north. Your servant has never asked you for anything. She does not ask now. Someone else has come to ask for her." {n}The water in the basin shivers, though nothing has touched it.{/n}''',
        c("[Kneel across the basin from her.]", "planned", requires=(PLANNED,)),
        c("[Kneel across the basin from her.]", "name", forbids=(PLANNED,))),
-    nar("planned", '''{n}You kneel. The paper you burned in the guard room is still in your head, every line of it, the price written out plain the way you would write the cost of an assault. You know what you are going to say. You have known since the lamp caught. That does not make it easier; it only makes it yours.{/n}''',
+    nar("planned", '''{n}You kneel. The paper you burned over the lamp is still in your head, every line of it, the price written out plain the way you would write the cost of an assault. You know what you are going to say. You have known since the lamp caught. That does not make it easier; it only makes it yours.{/n}''',
         c("Continue", "name")),
     nar("name", '''{n}Eliandra's eyes are open and fixed on the water, and very far away. When she speaks again her voice is her own, but slow, as if she were reading from a page that turned as she read it.{/n}
 {n}"She is here," she says. "She is listening. Name it."{/n}''',
@@ -666,7 +656,10 @@ shrine(E + "ch5.last_rite", "The last rite", '"Will you hold one last rite at th
 {n}Then the water moves. Light runs across it from rim to rim: green first, then rose, then a white like frost on a blade. It rises out of the basin in a slow curtain and hangs in the air of the chamber between you and her, rippling, the northern lights brought indoors.{/n}''',
         c("Continue", "remember", requires=(LIGHTS_SEEN,)),
         c("Continue", "veil", forbids=(LIGHTS_SEEN,))),
-    nar("remember", '''{n}You know them. You watched them from a dead chieftain's cairn with your sword across your knees; you looked for them under the red sky of the Abyss. You look at them now as hard as you can, because you understand, a heartbeat before it happens, that this is the last time.{/n}''',
+    nar("remember", '''{n}You know them. You watched them from a dead chieftain's cairn with your sword across your knees. You look at them now as hard as you can, because you understand, a heartbeat before it happens, that this is the last time.{/n}''',
+        c("Continue", "abyss", requires=(ABYSS_DARK,)),
+        c("Continue", "veil", forbids=(ABYSS_DARK,))),
+    nar("abyss", '''{n}You looked for them once under the red sky of the Abyss, and found nothing, and minded. You will mind for the rest of your life. You knew that when you named them.{/n}''',
         c("Continue", "veil")),
     nar("veil", '''{n}The lights draw together, and turn, and come towards you. You do not flinch. They pass over your face like cool water, and your eyes sting, and then there is a feeling you know: the slide, the gentle wrongness of a gaze that has been told to look elsewhere. The same veil that hid her shrine from every unfriendly eye for a century, turned now on one pair of eyes.{/n}
 {n}When you look up again the stars are still there. The lights are not. Eliandra is staring at the air above the basin where they must, for her, still be hanging, and there are tears on her face.{/n}''',
@@ -762,13 +755,11 @@ page(E + "ch5.road_letter", "A letter from the fords", [
 ], requires=("trickster.ever", DECLINED), forbids=(COMMITTED,), delay=48, kind="letter")
 
 
-# --- Reactions (T): King Thaberdine (his one list entry), Ulbrig (the morning after), Lann (the veil), Daeran (the lights) ---
+# --- Reactions (T; ledger 05 §3.1 row 13, exactly King Thaberdine and Ulbrig): the King's one list entry, Ulbrig after ---
 
 KING_C5 = "6dccfd39947ef4242a8afbe36b21a46c"          # FoolKing_Tavern/AnswersList_0054 (Chapter 5; shared with the Table)
 KING_C5_RETURN = "7b050ba0745bf144e815632e39b34853"   # FoolKing_Tavern/Cue_0065 "Beer is a noble drink!"
 ULBRIG_HUB = "0a50c9c878844ed4a69b8d6131304c5e"       # DLC4_Shifter/Shifter_CompanionDialogue/AnswersList_0001
-LANN_HUB = "66385ad77fa743e4bb1234078dbd804c"         # CompanionDialogues/Lann/AnswersList_0003
-DAERAN_HUB = "4d978cbd2aa780d46874255282039f3f"       # CompanionDialogues/Daeran/AnswersList_0003
 
 
 def react(id, *args, **kw):
@@ -793,19 +784,6 @@ react(E + "react.ulbrig_ordinary", "Ulbrig", ("trickster.ever", HEART_SEEN, "ulb
 "She healed a lad of ours with a split hand yesterday. Took her an age. Had to sit on the step after, grey as a stone." {n}He drinks.{/n} "My gran used to say the Shimmering One gives nothing for nothing. That one gave something back, warchief, and folk round the fires say it was so she could have you. I've known Kellid women to give up a good deal less for a good deal worse." {n}A grin, slow.{/n} "Mind you're worth the walk to her."''',
     answer_list=ULBRIG_HUB, forbids=("ulbrig.dead", "ulbrig.kicked_out", CLOSED, LIGHTS_GIVEN), chapter=5, last=5, delay=24,
     entry="\"You look like you've heard something, Ulbrig.\"")
-
-react(E + "react.lann_veil", "Lann", ("trickster.ever", DEAD_NAMED),
-    '''"A hidden temple. At the edge of the Wound. For a hundred years." {n}Lann is fletching an arrow and does not look up.{/n}
-"We were in the caves the whole time, you know. My people. Not so far from that dry fall, eating whatever didn't eat us first. They could see out through that veil of theirs, I hear." {n}He finishes the fletching and sights down the shaft.{/n} "I'm not angry. I'd have hidden too. I'd just have liked to know somebody out there was looking at the sky and thinking about us. Maybe they were. Ask her for me, sometime."''',
-    answer_list=LANN_HUB, forbids=("lann.dead", "lann.kicked_out", CLOSED), chapter=5, last=5, delay=24,
-    entry='"About Pulura\'s Fall..."')
-
-react(E + "react.daeran_lights", "Daeran", ("trickster.ever", LIGHTS_GIVEN),
-    '''{n}Daeran is lying on a divan with a glass balanced on his chest, and does not trouble to sit up.{/n}
-"My dear, the whole citadel is talking. You knelt in a cave and gave a goddess your eyes. Not all of them: only the part that sees pretty lights. Which, I would point out, is the only part worth having in this part of the world." {n}He raises the glass an inch.{/n} "For a priestess sworn off all of it since she was thirteen, I understand. Tell me she was worth an aurora. No, don't. I would so hate to be disappointed in you."''',
-    answer_list=DAERAN_HUB, forbids=("daeran.dead", "daeran.kicked_out", CLOSED), chapter=5, last=5, delay=24,
-    entry='"You\'re looking at me strangely, Daeran."')
-
 
 # --- Epilogue pages (Chapter 6; no page effects) ---------------------------------------------------------------------------
 
@@ -855,9 +833,9 @@ EPILOGUE_PARAGRAPHS = (
     p('''{n}She asked again, the first spring, as she had said she would. The war had decided by then; what it decided, and whether the Commander walked the road to Iz with her, the chroniclers do not agree. She did not ask a third time. She never needed to.{/n}''',
       requires=(E + "drezen.road_open",), forbids=(E + "drezen.road_promised",)),
     p('''{n}Regnard's plain sword hung on the first wall of the new temple at Iz. Every child who asked was told that its owner had wanted to change so badly that he practised with it every night for years, alone, and then used it.{/n}''',
-      requires=(E + "regnard_swords",)),
-    p('''{n}There was always a lamp in her east window, wherever she was living. Lann saw it once, from the road, and did not mention it to anyone, and was seen afterwards on that road rather more often than his errands required.{/n}''',
-      requires=(E + "drezen.lann_answered",)),
+      requires=(E + "regnard_sword_kept",)),
+    p('''{n}The chiefs' swords lay on their cairns below the dry fall, blades to the north, every one where Regnard's record said it belonged. The crusaders who laid them had got four wrong. Katair corrected them the next spring, and wrote the corrections in the margin of Regnard's record, and crossed nothing out.{/n}''',
+      requires=(E + "regnard_swords_home",)),
     p('''{n}She saw the sea at last, the second summer after the war: a lake with no other side, exactly as the trader had promised. She stood in it to her knees in her grey robe and would not come out, and said that she had been right not to believe him, because he had not described it properly at all.{/n}''',
       requires=(E + "drezen.sea",)),
     p('''{n}Whatever the demon had carried off from Pulura's Fall, the Commander burned where it was found, every page, as promised. Eliandra never asked what it had cost to find. She only asked, every year on that day, whether it had all burned. It had.{/n}''',

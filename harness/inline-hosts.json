@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 920,
-  "resolved": 920,
+  "entryTargetScenes": 918,
+  "resolved": 918,
   "inlineOnlyScenes": 230,
   "inlineOnlyResolved": 230,
-  "answerListScenesWithoutContact": 516,
-  "answerListScenesWithoutContactResolved": 516,
+  "answerListScenesWithoutContact": 514,
+  "answerListScenesWithoutContactResolved": 514,
   "lists": 93,
   "listsWithReachableHost": 92
  },
@@ -7848,25 +7848,6 @@
     "clicks": 0
    }
   },
-  "eliandra.trickster.react.daeran_lights": {
-   "kind": "dialog",
-   "lists": [
-    "4d978cbd2aa780d46874255282039f3f"
-   ],
-   "explicit": true,
-   "contact": null,
-   "entry": {
-    "4d978cbd2aa780d46874255282039f3f": "RRT_entry.eliandra.trickster.react.daeran_lights"
-   },
-   "resolved": true,
-   "host": {
-    "list": "4d978cbd2aa780d46874255282039f3f",
-    "dialog": "14aa0461f8564b042aee1f68c88de61b",
-    "dialogName": "Daeran_Main_dialog",
-    "cue": "Cue_0001",
-    "clicks": 0
-   }
-  },
   "eliandra.trickster.react.king_stone": {
    "kind": "return-cue",
    "lists": [
@@ -7883,25 +7864,6 @@
     "dialog": "ed8dabf271ef7ea4797bf7073c2e437a",
     "dialogName": "FoolKing_Tavern_Dialogue",
     "cue": "Cue_0052",
-    "clicks": 0
-   }
-  },
-  "eliandra.trickster.react.lann_veil": {
-   "kind": "dialog",
-   "lists": [
-    "66385ad77fa743e4bb1234078dbd804c"
-   ],
-   "explicit": true,
-   "contact": null,
-   "entry": {
-    "66385ad77fa743e4bb1234078dbd804c": "RRT_entry.eliandra.trickster.react.lann_veil"
-   },
-   "resolved": true,
-   "host": {
-    "list": "66385ad77fa743e4bb1234078dbd804c",
-    "dialog": "054c1b209de5c9042a02d6736cd3b2ac",
-    "dialogName": "Lann_Main_dialog",
-    "cue": "Cue_0002",
     "clicks": 0
    }
   },

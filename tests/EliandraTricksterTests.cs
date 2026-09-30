@@ -268,9 +268,17 @@ internal static class EliandraTricksterTests
                 check(produced.Contains(key) || story.Derived.ContainsKey(key) || story.Scenes.Any(o => o.Id == key), "A gate has no producer: " + s.Id + " requires " + key);
 
         // Reactions and pages.
-        check(reactions.Length == 5 && reactions.All(s => s.Nodes.Count == 1)
-              && new[] { "Thaberdine", "Ulbrig", "Lann", "Daeran" }.All(o => reactions.Any(s => s.Owner == o)),
-            "Eliandra's reactors are not the King, Ulbrig (twice), Lann and Daeran.");
+        check(reactions.Length == 3 && reactions.All(s => s.Nodes.Count == 1)
+              && reactions.Select(s => s.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Thaberdine", "Ulbrig" }),
+            "Eliandra's reactors are not exactly the allocated King Thaberdine and Ulbrig (twice) (ledger 05 §3.1 row 13).");
+        var swords = S(E + "ch5.regnard");
+        check(swords.Nodes.Single(n => n.Id == "hands").Choices.Single().Set.Contains(E + "regnard_swords_home")
+              && swords.Nodes.Single(n => n.Id == "keep").Choices.Single().Set.Contains(E + "regnard_sword_kept")
+              && S(E + "epilogue.together").Nodes.Single().Paragraphs.Count(p => p.Requires.Contains(E + "regnard_sword_kept") || p.Requires.Contains(E + "regnard_swords_home")) == 2,
+            "Regnard's swords do not end as the player chose.");
+        check(!story.Scenes.Any(s => s.Id == E + "ch5.inventory") && terms.Nodes.Any(n => n.Id == "decide")
+              && terms.Nodes.Single(n => n.Id == "decide").Choices.Single().Set.Contains(E + "planned"),
+            "The planning is not the player's choice inside the terms.");
         check(pages.Length == 7 && pages.All(s => s.MinChapter == 6 && s.MaxChapter == 6 && s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0)),
             "Her epilogue pages are not seven read-only Chapter 6 pages.");
         check(Rules.Available(story, S(E + "epilogue.together"), World(story, 6, night.Flags.ToArray()))
@@ -327,8 +335,8 @@ internal static class EliandraTricksterTests
         check(chiefs.Chapters.SequenceEqual(new[] { 3 }), "The chiefs' ground page can arrive in the Abyss with its Drezen frame.");
         // Rest-delivered pages in Chapter 5: the planning page, and the road letter on the soft no only.
         var remote5 = own.Where(s => Rules.IsRemote(s) && s.Chapters.Contains(5) && s.Owner != "EliandraEpilogue").Select(s => s.Id).ToList();
-        check(remote5.OrderBy(x => x).SequenceEqual(new[] { E + "ch5.inventory", E + "ch5.road_letter" }),
-            "Chapter 5 delivers more than the planning page and the soft-no letter by rest: " + string.Join(",", remote5));
+        check(remote5.SequenceEqual(new[] { E + "ch5.road_letter" }),
+            "Chapter 5 delivers more than the one soft-no letter by rest (ledger §4.2): " + string.Join(",", remote5));
         var farewell = One(mile, Later(story, granted, 30), new[] { Closed });
         check(Rules.Available(story, S(E + "epilogue.closed"), World(story, 6, farewell.Flags.ToArray()))
               && !Rules.Available(story, S(E + "epilogue.together"), World(story, 6, farewell.Flags.ToArray())),
