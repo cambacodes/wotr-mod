@@ -19,6 +19,25 @@
     "hold"
    ]
   },
+  "00715f05d727921438971fa32c02ceaf": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "GreyborNotInParty_AccordingToThePlot",
+    "GreyborCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "GreyborNotInParty_AccordingToThePlot: CompanionInParty, EtudeStatus"
+   ],
+   "name": "GreyborNotInParty_AccordingToThePlot",
+   "traits": [
+    "conditional"
+   ]
+  },
   "007c4990584473046ac29666a235efb3": {
    "ancestors_completed": [],
    "areas": {},
@@ -1232,6 +1251,21 @@
     "hold"
    ]
   },
+  "41bf413e0fa2ea34b937d4445edd5f89": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Chapter06",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Chapter06",
+   "traits": [
+    "hold"
+   ]
+  },
   "42e220d5dadc4dfd8bb3ef23cae832eb": {
    "ancestors_completed": [],
    "areas": {
@@ -1266,6 +1300,25 @@
     "PlayerIsLocust: UnitClass"
    ],
    "name": "PlayerIsLocust",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "44266407bc1241e4bb108fc03a01d8df": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "WenduagInParty",
+    "WenduagCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "WenduagInParty: CompanionInParty"
+   ],
+   "name": "WenduagInParty",
    "traits": [
     "conditional"
    ]
@@ -3032,6 +3085,25 @@
    "ruling": "reviewed",
    "traits": [
     "self_completed"
+   ]
+  },
+  "bad3705ac7bb7bc43ba7e67db75c2245": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "GreyborInParty",
+    "GreyborCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "GreyborInParty: CompanionInParty"
+   ],
+   "name": "GreyborInParty",
+   "traits": [
+    "conditional"
    ]
   },
   "bbe7d7dbb92a4923a1ca4433e626a5ec": {

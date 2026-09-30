@@ -578,6 +578,20 @@ partner("terendelev", "terendelev", "terendelev.committed", "terendelev.closed",
         '''{n}The wound is still open. It has been open since the fire at Iz, and it answers your hand the way it answers hers every morning: warm, and a little wet, and quiet. You say her name into it, the way a sentry gives the word. It goes out over the rift and is swallowed, and then, very far off, on a wall you cannot see, someone who has sworn to stand between you and whatever comes stands to.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
     ledger=("Terendelev: a wound, guarded", "I opened my wound over her bones and it has never closed. She changes the dressing every morning at the same hour, and has sworn to stand watch over it until one of us is dust. I have never been so well guarded, or so thoroughly in anyone's debt, and she insists it is the other way round."))
+HZ = "horzalah.trickster."
+partner("horzalah", "horzalah", "horzalah.committed", "horzalah.closed", "The Box on the Shelf",
+    '''Horzalah did not come to the Threshold. She had said she would not stand in lines. On the night the rift took the Commander, or failed to, she sat in the Guild master's chamber in Alushinyrra with the door barred and every contract in the strongboxes unread, and the small box with the white ribbon on her knees. Her masters listened at the door all night. None of them heard a sound. In the morning the ribbon had been untied and tied again, very carefully, in a bow that was slightly lopsided.''',
+    (
+        page_p('''The world buried the Commander. Horzalah took down every wager in her hall that had been placed on it, paid them all out of her own strongbox, and then had each of the winners killed, one by one, over the following year, at the Guild's usual rates, which she paid to herself. Nobody in Alushinyrra understood it. She did not explain.''', requires=(ON_RECORD,)),
+        page_p('''When the flask was opened in Drezen she was already standing in the room, though nobody had seen her come. She did not say anything. She walked round the Commander once, slowly, checking that everything else was still attached, and then she took the Commander's hand and put it on her throat, where the scar was, and held it there.''', requires=(H2,)),
+        page_p('''At the rift the Commander turned the deaf side of that head to the dark and said her name into it. Far away, in a hall full of knives, a woman stopped in the middle of a sentence and put her hand to her collar, and the master she had been sentencing lived, and never knew why.''', requires=(called("horzalah"),)),
+        page_p('''The sentries of Drezen still told each other about the night a demon walked past all of them to take a piece of the Knight Commander. After the rift they told it differently. In the new version she had come to take the rest, and changed her mind.''', requires=(HZ + "cost.late",)),
+    ), declined=HZ + "declined",
+    deal=[[HZ + "cost.ear"]],
+    call=call('''[Turn your deaf side to the rift] "Horzalah. Listen."''',
+        '''{n}The side of your head where the ear was hears nothing now, not the wind off the rift, not the screaming. The rest of that ear is on a shelf in Alushinyrra, in a box with a white ribbon, in a room full of other people's deaths. You turn that side to the dark and say her name into it, where nobody but you can hear, which is a very stupid thing to do at the end of the world. For a while there is nothing at all. Then, far off, very faint, you would swear you hear a knife being put down.{/n}''',
+        (PLAIN_CHOICE, (), (), ())),
+    ledger=("Horzalah: an ear, on a shelf", "My left ear is in a box with a white ribbon on a shelf in the Assassins' Guild of Alushinyrra. It is not a debt; it is hers. No priest is to touch the side of my head, ever, or every knife in the Abyss will learn that she lied, and she will learn that I let them."))
 
 EL = "eliandra.trickster."
 partner("eliandra", "eliandra", "eliandra.committed", "eliandra.closed", "The Maiden's Lights",

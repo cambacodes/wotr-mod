@@ -29,8 +29,8 @@ internal static class HouseholdTests
         // routes and the frameworks have none. any_eligible opens the King's offer.
         var partners = story.Derived.Keys.Where(k => k.EndsWith(".harem.eligible", StringComparison.Ordinal))
             .Select(k => k.Substring(0, k.Length - ".harem.eligible".Length)).ToList();
-        check(partners.Count == 35 && !partners.Contains("ember") && !partners.Contains("aivu") && !partners.Contains("lastcall")
-            && !partners.Contains("household"), "Household eligibility is not exactly the 35 romance routes: " + string.Join(",", partners));
+        check(partners.Count == 36 && !partners.Contains("ember") && !partners.Contains("aivu") && !partners.Contains("lastcall")
+            && !partners.Contains("household"), "Household eligibility is not exactly the 36 romance routes: " + string.Join(",", partners));
         check(partners.All(rel => story.Derived[rel + ".harem.eligible"].Any(g => g.Length == 1 && g[0] == Committed(rel))),
             "A partner's eligibility does not follow her committed flag.");
         var none = State(story, 3, "trickster");
@@ -116,7 +116,7 @@ internal static class HouseholdTests
         List<string> Lines(string id, Snapshot state) =>
             ledger.Entries.Single(e => e.Id == id).Lines.Where(p => Rules.ParagraphVisible(p, state)).Select(p => p.Text).ToList();
         bool Visible(string id, Snapshot state) => Rules.BookVisible(ledger, state).Any(e => e.Id == id);
-        check(ledger.Entries.Count(e => e.Section == "Guest List") == 35, "The Guest List does not have one entry per partner.");
+        check(ledger.Entries.Count(e => e.Section == "Guest List") == 36, "The Guest List does not have one entry per partner.");
         check(!Visible("guest.seelah", none) && Visible("guest.seelah", seelah), "A Guest List entry does not follow eligibility.");
         check(Lines("guest.seelah", seelah).SequenceEqual(new[] { "{n}Not yet at the table.{/n}" }), "An unstanced guest is not 'not yet at the table'.");
         check(Lines("guest.seelah", State(story, 3, Committed("seelah"), "seelah.harem.stance.joined")).SequenceEqual(new[] { "{n}At the table.{/n}" }),
