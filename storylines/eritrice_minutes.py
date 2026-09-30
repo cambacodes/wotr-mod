@@ -198,8 +198,16 @@ minutes(QUILL, "The quill", '"Can I ask about the quill?"', [
       c("Continue", "held")),
     e("held", '''"No one." {n}She says it too quickly, and hears herself say it too quickly, and her whiskers flatten.{/n}
 "Alichino asked once. To 'correct a clerical error'. Socothbenoth asked, often, for reasons he made very clear. Chadali asked to draw a flower in the margin." {n}Something almost like a laugh.{/n} "I let her dictate the flower to me. I drew it myself. It was a very poor flower."''',
-      c('[Hold out your hand for the quill.]', "hand"),
-      c('"I wouldn\'t ask. It\'s yours."', "wouldnt")),
+      c('[Hold out your hand for the quill.]', "hand", requires=(CAUGHT,)),
+      c('"I wouldn\'t ask. It\'s yours."', "wouldnt"),
+      c('[Hold out your hand for the quill.]', "hand_honest", forbids=(CAUGHT,))),
+    e("hand_honest", '''{n}She looks at your open hand as if it were a motion she had not expected on the agenda.{/n}
+"You are asking the chair to hand the record to the Commander. The Commander who raised one hand in an empty hall, counted it as the whole Council, and made the chair write 'carried' on a motion with no floor."
+{n}Her claws turn the quill over, once. Then she lays it across your palm, and her fingers stay on it a moment longer than the quill needs.{/n}
+"One line. True. I will be watching."''',
+      c("[Write: \"The chair is not what I expected.\"]", "wrote", flags=(WROTE,)),
+      c("[Write: \"The Commander concedes nothing.\"]", "wrote_joke", flags=(WROTE,)),
+      c("[Hand it back, unused.]", "unused")),
     e("hand", '''{n}She looks at your open hand as if it were a motion she had not expected on the agenda.{/n}
 "You are asking the chair to hand the record to the Commander. The Commander who once carried a vote by pretending to be six people, and who made the chair write 'carried' on a motion with no floor."
 {n}Her claws turn the quill over, once. Then she lays it across your palm, and her fingers stay on it a moment longer than the quill needs.{/n}
@@ -223,7 +231,7 @@ minutes(QUILL, "The quill", '"Can I ask about the quill?"', [
       c("Continue", "close", flags=(CONCEDED,))),
     e("unused", '''{n}You hand it back. She takes it, and does not write anything for a while.{/n}
 {n}At last:{/n} "You could have written anything. Anything at all, and I would have had to keep it, because I promised to keep the minutes true, and a line in your hand would be a true record of what you wrote." {n}She turns the quill over.{/n}
-"You gave it back. That is the most honest thing anyone has done at this table since I convened it."''',
+"You gave it back." {n}Her whiskers twitch.{/n} "I had a rule ready for whatever impertinence you wrote. You have left the chair holding an unused rule. I resent it, and I respect it, and I am minuting both."''',
       c("Continue", "close")),
     e("close", '''{n}She rolls the scroll up, slowly, and does not look at you while she does it.{/n}
 "I have been debating you because you are the only one at this table who argues with me as if the argument mattered more than winning. The others want my vote. You wanted it too, and said so, and then argued with me anyway." {n}A breath.{/n}
@@ -401,7 +409,7 @@ minutes(CIPHERED, "What the truth could not read", '"You looked at the Lexicon p
 KEY_CHOICES = (
     c('"You were honest. That\'s all I\'ve ever asked of you."', "forgive", flags=(KEY_FORGIVEN,)),
     c('"Then I\'ll remember it. Every time you vote."', "held", flags=(KEY_HELD,)),
-    c('"Then you owe me. At the next session, you vote the way I tell you."', "used", flags=(KEY_USED,),
+    c('"Then you owe me. One vote, cast the way I tell you. Tonight."', "used", flags=(KEY_USED,),
       alignment=("Evil", 1)),
 )
 
@@ -430,7 +438,7 @@ minutes(AT_WORST, "At worst", '"About the key. \'At worst, you\'ll die.\'"', [
     e("used", '''{n}Her ears go flat. For a heartbeat you think she is going to reach across the table.{/n}
 "You are trading on my guilt." {n}Very quietly.{/n} "That is what Alichino would do."
 {n}She writes. You can read it upside down, and she lets you: "The chair agrees to vote once as the Commander instructs. The chair records that the Commander asked it, and why."{/n}
-"There. It is minuted, Commander. I will pay it. And every time anyone opens this scroll, they will see exactly what you charged me."''',
+"There. It is minuted, Commander. Name the motion." {n}You name it on the spot: that the chair's minutes of this war record the key as a volunteer, and not as a sacrifice. She looks at the motion for a long time. Then she casts her vote where she sits, aloud, to an empty hall, "Aye", and writes it down, and her claws go through the paper beside the Commander's name.{/n} "Paid. And every time anyone opens this scroll, they will see exactly what you charged me."''',
       c("[Take the vote.]")),
 ], requires=(POINT_ONE, PROPOSED_KEY), forbids=(AT_WORST,), chapters=(5,))
 
@@ -560,9 +568,14 @@ minutes(RECORD, "The record", '"You\'re writing already?"', [
 minutes(STANDING, "A standing item", '"You\'ve added something to the agenda."', [
     e("start", '''"A standing item. It will appear on every agenda from now on, until the chair or the floor removes it." {n}She turns the scroll so you can read it:{/n} "Item: what the Commander intends to do after the war."
 "You do not have to answer tonight. Standing items are carried over. But you will have to answer eventually, because I will keep asking, and I do not get tired."''',
-      c('"Honestly? I don\'t know if there is an after. The Worldwound might have me first."', "honest"),
+      c('"Honestly? I don\'t know if there is an after. The Worldwound might have me first."', "honest", requires=(PROPOSED_KEY,)),
       c('"Build your crossroads. Sit at your table. Argue with you until one of us concedes."', "table"),
-      c('[Flirt] "Keep adjourning your meetings for you."', "tease")),
+      c('[Flirt] "Keep adjourning your meetings for you."', "tease"),
+      c('"Honestly? I don\'t know if there is an after. The Worldwound might have me first."', "honest_early", forbids=(PROPOSED_KEY,))),
+    e("honest_early", '''{n}She is quiet for a while. When she speaks it is without any of the chair in her voice at all.{/n}
+"I know. I have read every report you have sent this Council, and some you did not send. I know what the Wound does to the ones who go nearest it." {n}She puts her hand flat over yours on the table.{/n}
+"If the Worldwound has you, I will write down that it was a theft. I will write it down in every plane that keeps records, and I will keep writing it."''',
+      c("Continue", "close")),
     e("honest", '''{n}She is quiet for a while. When she speaks it is without any of the chair in her voice at all.{/n}
 "I know. I have read the Lexicon. I know what it says about keys and wounds and mortal bodies." {n}She puts her hand flat over yours on the table.{/n}
 "I proposed you once as a sacrifice and called it a great deed. I will not do it again. If the Worldwound has you, I will write down that it was a theft. I will write it down in every plane that keeps records, and I will keep writing it."''',

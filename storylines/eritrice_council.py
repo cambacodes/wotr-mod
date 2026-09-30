@@ -106,7 +106,7 @@ sitting(AID, "A sound proposition", '"About my motion for material aid..."', [
 "The chair rules that the Commander's motion is placed first on the agenda of the next session, above the demon taxes, above the Wardstones, above everything. If anyone walks out before it is voted, the chair will vote it alone, and minute that she did so, and why."''',
       c("[Thank her.]", "close", flags=(K + "aid_first",))),
     e("forget", '''{n}Her ears flick forward.{/n} "That is not true. Nobody forgets aid when soldiers are starving."
-"But it is true that they listen to you. I have minuted it: when you speak, Cobblehoof stops snorting." {n}She considers.{/n} "The chair will not withdraw a sound proposition merely because the mover has grown sentimental. It stays on the agenda. You will have your aid, Commander, whether you want it or not."''',
+"But it is true that they listen to you. I have minuted it: when you speak, Cobblehoof stops snorting." {n}She considers.{/n} "The chair will not withdraw a sound proposition merely because the mover has grown sentimental. It stays on the agenda, and it will be read out at every session until it is voted. Whether this Council will ever vote you a single copper, I cannot promise you. I can promise you they will have to hear it."''',
       c("[Let her keep it on the agenda.]", "close")),
     e("close", '''"The war does not wait for the agenda. I know that. I have always known it." {n}She rolls the old scroll.{/n}
 "I have simply never before had someone at the table whose soldiers were dying while I found the right wording. It concentrates the mind." {n}A pause.{/n} "It is unpleasant. Do not stop."''',
@@ -480,7 +480,7 @@ sitting(HOME, "Where the chair goes home", '"Where do you go, when the Council a
       c('"Would you show me? Nirvana. After the war."', "show"),
       c('"You\'d be bored with me there too, eventually."', "bored")),
     e("show", '''{n}She is quiet.{/n}
-"Mortals do not visit Nirvana. They arrive, after, if they have lived well enough. You know this." {n}Her voice is careful.{/n} "I will not tell you that I can bring you. I do not know if it is true. But I will tell you this, and it is true: the window in my study has room for two chairs, and I have only ever set one."
+"Living mortals come to Nirvana seldom, and most who come are never let past the first gate. My study is a long way from the first gate." {n}Her voice is careful.{/n} "I will not tell you that I can bring you there safely. I do not know if it is true. But I will tell you this, and it is true: the window in my study has room for two chairs, and I have only ever set one."
 {n}She writes nothing. She only looks at you, in the lamplight, as if memorising a record she does not intend to keep on paper.{/n}''',
       c("[Hold her gaze.]", flags=(K + "second_chair",))),
     e("bored", '''"Yes. Probably." {n}No hesitation.{/n} "And then you would say something outrageous, and I would growl, and you would carry a motion you had no right to carry, and I would not be bored any longer."

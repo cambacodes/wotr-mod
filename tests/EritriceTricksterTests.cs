@@ -290,6 +290,20 @@ internal static class EritriceTricksterTests
               && pageCommit.Nodes.Single(n => n.Id == "aye").Text.Contains("pulled the Commander's shirt open")
               && pageCommit.Nodes.Single(n => n.Id == "aye").Text.Contains("The minutes of that night"),
             "An intimate beat fades before the initiating motion.");
+        // Sol r2. CAN: the sacrifice recollection waits for the native key proposal; a living visit to Nirvana is possible.
+        var standing = S(M + "a_standing_item");
+        check(Choice(standing, "start", 0).Requires.Contains("eritrice.proposed_key") && Choice(standing, "start", 3).Forbids.Contains("eritrice.proposed_key")
+              && Choice(standing, "start", 3).Next == "honest_early" && !standing.Nodes.Single(n => n.Id == "honest_early").Text.Contains("sacrifice")
+              && !S(K + "where_the_chair_goes_home").Nodes.Any(n => n.Text.Contains("Mortals do not visit Nirvana")),
+            "A standing item recalls the key proposal before it happened, or Nirvana is closed to the living.");
+        // INT: only a Commander caught lying is accused of the six voices; the owed vote is cast on the page.
+        check(Choice(quill, "held", 0).Requires.Contains(P + "cost.caught_lying") && Choice(quill, "held", 2).Forbids.Contains(P + "cost.caught_lying")
+              && !quill.Nodes.Single(n => n.Id == "hand_honest").Text.Contains("six people")
+              && S(M + "at_worst").Nodes.Single(n => n.Id == "used").Text.Contains("\"Aye\""),
+            "The quill accuses an honest Commander, or the owed vote is never cast.");
+        // BEL: the late surety is the sealed truth, and the late aye has its morning.
+        check(!late.Nodes.Any(n => n.Text.Contains("money behind it")) && pageCommit.Nodes.Single(n => n.Id == "aye").Text.Contains("In the morning"),
+            "The late motion recalls a money surety, or the late aye has no morning.");
         Console.WriteLine("PASS: Eritrice Trickster (Trk_Eritrice_*): motion, minutes, second and third readings, the sealed hall's letters, the tabled grudge and the standing debate.");
     }
 }
