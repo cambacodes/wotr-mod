@@ -57661,7 +57661,7 @@
         {
           "Id": "walk",
           "Speaker": "Narrator",
-          "Text": "{n}You take the path around the courtyard and up onto the wall, where the city noise thins and the evening air reaches the open edge of her wing.{/n}\nYou ask if the wing hurts today. She answers without apology: sometimes, and not now. Then she asks what you would have done if she had not come.\n\"Waited,\" you say. \"Possibly complained to the nearest statue.\"\n\"Pray for patience instead. It works on commanders too, I am told, though slowly.\" {n}Her mouth curves.{/n} \"I prayed for it all day. It did not take.\"\nThe joke has reached its mark, but not its end.\n\"Everyone looks at me as a sign,\" she says. \"Heaven's healers look at the wing and see Areelu's work. The soldiers look at the other one and see a promise. In that laboratory I was proof of something.\" {n}She stops walking.{/n} \"You are looking at me as if I were a woman. I do not know yet what to do with that. I think I like it.\"\n{n}She turns to face you. The black wing lifts a little, the way it does when she is startled, and she does not fold it down.{/n}\n\"Commander. You have looked at me like that the whole length of the wall. Are you going to do anything about it?\"",
+          "Text": "{n}You take the path around the courtyard and up onto the wall, where the city noise thins and the evening air reaches the open edge of her wing.{/n}\nYou ask if the wing hurts today. She answers without apology: sometimes, and not now. Then she asks what you would have done if she had not come.\n\"Waited,\" you say. \"Possibly complained to the nearest statue.\"\n\"Pray for patience instead. It works on commanders too, I am told, though slowly.\" {n}Her mouth curves.{/n} \"I prayed for it all day. It did not take.\"\nThe joke has reached its mark, but not its end.\n\"Everyone looks at me as a sign,\" she says. \"Heaven's healers look at the wing and see Areelu's work. The soldiers look at the other one and see a promise. In that laboratory I was proof of something.\" {n}She stops walking.{/n} \"You look at me the way you did before the last letter, before the kiss I wrote to you about and the one I did not. I have missed being looked at like that more than I will ever admit to a chaplain. Three days on the eastern road, with eleven men to change dressings for, and every one of them I thought: the Commander would be doing this badly, and would ask me to show how, and would not listen.\"\n{n}She turns to face you. The black wing lifts a little, the way it does when she is startled, and she does not fold it down.{/n}\n\"Commander. You have looked at me like that the whole length of the wall. Are you going to do anything about it?\"",
           "Choices": [
             {
               "Text": "Ask her again, and wait for her answer.",
@@ -158397,7 +158397,7 @@
         {
           "Id": "done",
           "Speaker": "Nurah",
-          "Text": "\"Then we have a book.\" {n}She says it the way other people say a prayer, quickly, before anyone can take it back.{/n}\n\"And now the part that isn't in the contract.\" {n}She looks you over, slowly, the way she looks at a page she means to cut.{/n} \"You kept me when it would have been cheaper to hang me, and you never once pretended it was mercy. I have wanted to know what you're like when you're not being clever since the night you slid that dreadful pardon under my door. Say no now, Commander, and the book still happens. Say nothing, and I'll take it as the best review I've had.\"",
+          "Text": "\"Then we have a book.\" {n}She says it the way other people say a prayer, quickly, before anyone can take it back.{/n}\n\"And now the part that isn't in the contract.\" {n}She looks you over, slowly, the way she looks at a page she means to cut.{/n} \"You kept me when it would have been cheaper to hang me, and you never once pretended it was mercy. I have wanted to know what you're like when you're not being clever since the night you slid that dreadful pardon under my door. Don't answer. You'll only be clever, and I have had enough of clever for one book.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -158413,7 +158413,7 @@
         {
           "Id": "partners",
           "Speaker": "Nurah",
-          "Text": "\"Co-authors. Partners in crime, in print, in the same typeface.\" {n}She grins, all teeth.{/n} \"Trezbot would choke on it. Do that again sometime.\"\n\"And since we're sharing things now.\" {n}She hooks a finger in your collar.{/n} \"You're the only person who ever read what I wrote about them and laughed in the right places. I've been wanting to find out where else you laugh. Say no and we're still partners. Say nothing, and I'll take it as a signature.\"",
+          "Text": "\"Co-authors. Partners in crime, in print, in the same typeface.\" {n}She grins, all teeth.{/n} \"Trezbot would choke on it. Do that again sometime.\"\n\"And since we're sharing things now.\" {n}She hooks a finger in your collar.{/n} \"You're the only person who ever read what I wrote about them and laughed in the right places. I've been wanting to find out where else you laugh. Don't answer that either. I can read it off you.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -158839,7 +158839,7 @@
         {
           "Id": "done",
           "Speaker": "Nurah",
-          "Text": "\"Then we have a book.\" {n}She says it the way other people say a prayer, quickly, before anyone can take it back.{/n}\n\"And now the part that isn't in the contract.\" {n}She looks you over, slowly, the way she looks at a page she means to cut.{/n} \"You kept me when it would have been cheaper to hang me, and you never once pretended it was mercy. I have wanted to know what you're like when you're not being clever since the night you slid that dreadful pardon under my door. Say no now, Commander, and the book still happens. Say nothing, and I'll take it as the best review I've had.\"",
+          "Text": "\"Then we have a book.\" {n}She says it the way other people say a prayer, quickly, before anyone can take it back.{/n}\n\"And now the part that isn't in the contract.\" {n}She looks you over, slowly, the way she looks at a page she means to cut.{/n} \"You kept me when it would have been cheaper to hang me, and you never once pretended it was mercy. I have wanted to know what you're like when you're not being clever since the night you slid that dreadful pardon under my door. Don't answer. You'll only be clever, and I have had enough of clever for one book.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -158855,7 +158855,7 @@
         {
           "Id": "partners",
           "Speaker": "Nurah",
-          "Text": "\"Co-authors. Partners in crime, in print, in the same typeface.\" {n}She grins, all teeth.{/n} \"Trezbot would choke on it. Do that again sometime.\"\n\"And since we're sharing things now.\" {n}She hooks a finger in your collar.{/n} \"You're the only person who ever read what I wrote about them and laughed in the right places. I've been wanting to find out where else you laugh. Say no and we're still partners. Say nothing, and I'll take it as a signature.\"",
+          "Text": "\"Co-authors. Partners in crime, in print, in the same typeface.\" {n}She grins, all teeth.{/n} \"Trezbot would choke on it. Do that again sometime.\"\n\"And since we're sharing things now.\" {n}She hooks a finger in your collar.{/n} \"You're the only person who ever read what I wrote about them and laughed in the right places. I've been wanting to find out where else you laugh. Don't answer that either. I can read it off you.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -159782,7 +159782,7 @@
               "Abort": false
             },
             {
-              "Text": "[Leave it on her bunk, and send a quartermaster's purse down the south road to every press she might use, with the line and a page of her hand to set it by.]",
+              "Text": "[Leave it on her bunk, and send a quartermaster's purse to the one licensed press at Nerosyan, which every pamphlet south of the Worldwound goes through, with the line and a page of her hand to set it by.]",
               "Next": null,
               "Set": [
                 "nurah.trickster.primed",
@@ -160614,10 +160614,10 @@
         {
           "Id": "trusted",
           "Speaker": "Nurah",
-          "Text": "{n}She reads the blank twice, then turns the page over as if the name might be hiding on the back.{/n} \"Trezbot never once left me a blank. Every line of his book had him in it before I'd picked up the pen. I don't know what to do with one.\"\n\"That is a compliment. Don't get used to it.\"",
+          "Text": "{n}Her answer comes back by the same courier two days later, on the back of the returned proof sheet.{/n} \"You left it blank. Trezbot never once left me a blank. Every line of his book had him in it before I'd picked up the pen. I have been staring at your gap for two days and I don't know what to do with it.\"\n\"That is a compliment. Don't get used to it.\"",
           "Choices": [
             {
-              "Text": "[Leave her the proofs.]",
+              "Text": "[Put the letter away.]",
               "Next": null,
               "Set": [],
               "Requires": [],
@@ -160630,10 +160630,10 @@
         {
           "Id": "signed",
           "Speaker": "Nurah",
-          "Text": "{n}The name sits in the gap as if the page had been cut to fit it.{/n} \"Of course. And it will say exactly that, in every copy. You are going to hate how accurate I am.\"",
+          "Text": "{n}Her answer comes back by the same courier two days later, on the back of the returned proof sheet.{/n} \"Your name sits in the gap as if the page had been cut to fit it. Of course. And it will say exactly that, in every copy. You are going to hate how accurate I am.\"",
           "Choices": [
             {
-              "Text": "[Leave her the proofs.]",
+              "Text": "[Put the letter away.]",
               "Next": null,
               "Set": [],
               "Requires": [],
@@ -160791,7 +160791,7 @@
         {
           "Id": "done",
           "Speaker": "Nurah",
-          "Text": "\"Then we have a book.\" {n}She says it the way other people say a prayer, quickly, before anyone can take it back.{/n}\n\"And now the part that isn't in the contract.\" {n}She looks you over, slowly, the way she looks at a page she means to cut.{/n} \"You kept me when it would have been cheaper to hang me, and you never once pretended it was mercy. I have wanted to know what you're like when you're not being clever since the night you slid that dreadful pardon under my door. Say no now, Commander, and the book still happens. Say nothing, and I'll take it as the best review I've had.\"",
+          "Text": "\"Then we have a book.\" {n}She says it quickly, before anyone can take it back.{/n}\n\"And now the part that isn't in the contract.\" {n}She looks you over the way she looks at a page she means to cut.{/n} \"You had me killed, Commander. Or handed over; I've stopped caring which, it comes out the same on the page. And then you bought me back off a marilith with a forged bill and more than you'll ever admit to, and never once came to the chapel to be thanked. That is the most interesting thing anyone has ever done to me, and I have been owned by experts. Don't answer. I'm going to find out what else you do when nobody's looking.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -160807,7 +160807,7 @@
         {
           "Id": "partners",
           "Speaker": "Nurah",
-          "Text": "\"Co-authors. Partners in crime, in print, in the same typeface.\" {n}She grins, all teeth.{/n} \"Trezbot would choke on it. Do that again sometime.\"\n\"And since we're sharing things now.\" {n}She hooks a finger in your collar.{/n} \"You're the only person who ever read what I wrote about them and laughed in the right places. I've been wanting to find out where else you laugh. Say no and we're still partners. Say nothing, and I'll take it as a signature.\"",
+          "Text": "\"Co-authors. Partners in crime, in print, in the same typeface.\" {n}She grins, all teeth.{/n}\n\"You killed me, and then you paid for the privilege of undoing it. I have never been so thoroughly edited. Don't answer that. I'm going to return the favour.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -161011,7 +161011,7 @@
         {
           "Id": "done",
           "Speaker": "Nurah",
-          "Text": "\"Then we have a book.\" {n}She says it the way other people say a prayer, quickly, before anyone can take it back.{/n}\n\"And now the part that isn't in the contract.\" {n}She looks you over, slowly, the way she looks at a page she means to cut.{/n} \"You kept me when it would have been cheaper to hang me, and you never once pretended it was mercy. I have wanted to know what you're like when you're not being clever since the night you slid that dreadful pardon under my door. Say no now, Commander, and the book still happens. Say nothing, and I'll take it as the best review I've had.\"",
+          "Text": "\"Then we have a book.\" {n}She says it quickly, before anyone can take it back.{/n}\n\"And now the part that isn't in the contract.\" {n}She taps the dedication on the first page with one inky finger.{/n} \"I ran from you. I got as far as a ditch in the River Kingdoms before I found out you'd been in my book the whole time, in my own hand, better than my own hand. Nobody has ever bothered to forge me properly. I came back to see what else you'd bother with. Don't answer. I'd rather find out.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -161027,7 +161027,7 @@
         {
           "Id": "partners",
           "Speaker": "Nurah",
-          "Text": "\"Co-authors. Partners in crime, in print, in the same typeface.\" {n}She grins, all teeth.{/n} \"Trezbot would choke on it. Do that again sometime.\"\n\"And since we're sharing things now.\" {n}She hooks a finger in your collar.{/n} \"You're the only person who ever read what I wrote about them and laughed in the right places. I've been wanting to find out where else you laugh. Say no and we're still partners. Say nothing, and I'll take it as a signature.\"",
+          "Text": "\"Co-authors. Partners in crime, in print, in the same typeface.\" {n}She grins, all teeth.{/n}\n\"You forged me so well I kept it. Let's see if you're as good at the original. Don't answer; I've read enough of you.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -161174,7 +161174,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She never managed to remove it: every printer she went to had already been paid to keep it. After a while she stopped trying, and began adding a footnote to it instead, a different one in every edition.",
+              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' The first printings carried it because a quartermaster's purse had paid the printer to. After that she kept it herself, and began adding a footnote to it instead, a different one in every edition.",
               "Requires": [
                 "nurah.trickster.cost.ghostwritten",
                 "nurah.trickster.printer_paid"
@@ -161225,9 +161225,20 @@
             {
               "Text": "The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, where it had been since the proofs. She said the second one was the only one the Commander had earned.",
               "Requires": [
-                "nurah.trickster.cost.coauthor"
+                "nurah.trickster.cost.coauthor",
+                "nurah.trickster.cost.signed_proofs"
               ],
               "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, which the Commander had left blank and she had filled in herself, in the Commander's hand, better than the Commander's hand.",
+              "Requires": [
+                "nurah.trickster.cost.coauthor"
+              ],
+              "Forbids": [
+                "nurah.trickster.cost.signed_proofs"
+              ],
               "AnyGroups": []
             },
             {
@@ -161273,7 +161284,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She never managed to remove it: every printer she went to had already been paid to keep it. After a while she stopped trying, and began adding a footnote to it instead, a different one in every edition.",
+              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' The first printings carried it because a quartermaster's purse had paid the printer to. After that she kept it herself, and began adding a footnote to it instead, a different one in every edition.",
               "Requires": [
                 "nurah.trickster.cost.ghostwritten",
                 "nurah.trickster.printer_paid"
@@ -161324,9 +161335,20 @@
             {
               "Text": "The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, where it had been since the proofs. She said the second one was the only one the Commander had earned.",
               "Requires": [
-                "nurah.trickster.cost.coauthor"
+                "nurah.trickster.cost.coauthor",
+                "nurah.trickster.cost.signed_proofs"
               ],
               "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, which the Commander had left blank and she had filled in herself, in the Commander's hand, better than the Commander's hand.",
+              "Requires": [
+                "nurah.trickster.cost.coauthor"
+              ],
+              "Forbids": [
+                "nurah.trickster.cost.signed_proofs"
+              ],
               "AnyGroups": []
             },
             {
@@ -161403,7 +161425,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She never managed to remove it: every printer she went to had already been paid to keep it. After a while she stopped trying, and began adding a footnote to it instead, a different one in every edition.",
+              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' The first printings carried it because a quartermaster's purse had paid the printer to. After that she kept it herself, and began adding a footnote to it instead, a different one in every edition.",
               "Requires": [
                 "nurah.trickster.cost.ghostwritten",
                 "nurah.trickster.printer_paid"
@@ -161454,9 +161476,20 @@
             {
               "Text": "The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, where it had been since the proofs. She said the second one was the only one the Commander had earned.",
               "Requires": [
-                "nurah.trickster.cost.coauthor"
+                "nurah.trickster.cost.coauthor",
+                "nurah.trickster.cost.signed_proofs"
               ],
               "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, which the Commander had left blank and she had filled in herself, in the Commander's hand, better than the Commander's hand.",
+              "Requires": [
+                "nurah.trickster.cost.coauthor"
+              ],
+              "Forbids": [
+                "nurah.trickster.cost.signed_proofs"
+              ],
               "AnyGroups": []
             },
             {
@@ -161532,7 +161565,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She never managed to remove it: every printer she went to had already been paid to keep it. After a while she stopped trying, and began adding a footnote to it instead, a different one in every edition.",
+              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' The first printings carried it because a quartermaster's purse had paid the printer to. After that she kept it herself, and began adding a footnote to it instead, a different one in every edition.",
               "Requires": [
                 "nurah.trickster.cost.ghostwritten",
                 "nurah.trickster.printer_paid"
@@ -161583,9 +161616,20 @@
             {
               "Text": "The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, where it had been since the proofs. She said the second one was the only one the Commander had earned.",
               "Requires": [
-                "nurah.trickster.cost.coauthor"
+                "nurah.trickster.cost.coauthor",
+                "nurah.trickster.cost.signed_proofs"
               ],
               "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, which the Commander had left blank and she had filled in herself, in the Commander's hand, better than the Commander's hand.",
+              "Requires": [
+                "nurah.trickster.cost.coauthor"
+              ],
+              "Forbids": [
+                "nurah.trickster.cost.signed_proofs"
+              ],
               "AnyGroups": []
             },
             {
@@ -161667,7 +161711,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She never managed to remove it: every printer she went to had already been paid to keep it. After a while she stopped trying, and began adding a footnote to it instead, a different one in every edition.",
+              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' The first printings carried it because a quartermaster's purse had paid the printer to. After that she kept it herself, and began adding a footnote to it instead, a different one in every edition.",
               "Requires": [
                 "nurah.trickster.cost.ghostwritten",
                 "nurah.trickster.printer_paid"
@@ -161718,9 +161762,20 @@
             {
               "Text": "The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, where it had been since the proofs. She said the second one was the only one the Commander had earned.",
               "Requires": [
-                "nurah.trickster.cost.coauthor"
+                "nurah.trickster.cost.coauthor",
+                "nurah.trickster.cost.signed_proofs"
               ],
               "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, which the Commander had left blank and she had filled in herself, in the Commander's hand, better than the Commander's hand.",
+              "Requires": [
+                "nurah.trickster.cost.coauthor"
+              ],
+              "Forbids": [
+                "nurah.trickster.cost.signed_proofs"
+              ],
               "AnyGroups": []
             },
             {
@@ -161823,7 +161878,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She never managed to remove it: every printer she went to had already been paid to keep it. After a while she stopped trying, and began adding a footnote to it instead, a different one in every edition.",
+              "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' The first printings carried it because a quartermaster's purse had paid the printer to. After that she kept it herself, and began adding a footnote to it instead, a different one in every edition.",
               "Requires": [
                 "nurah.trickster.cost.ghostwritten",
                 "nurah.trickster.printer_paid"
@@ -161874,9 +161929,20 @@
             {
               "Text": "The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, where it had been since the proofs. She said the second one was the only one the Commander had earned.",
               "Requires": [
-                "nurah.trickster.cost.coauthor"
+                "nurah.trickster.cost.coauthor",
+                "nurah.trickster.cost.signed_proofs"
               ],
               "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, which the Commander had left blank and she had filled in herself, in the Commander's hand, better than the Commander's hand.",
+              "Requires": [
+                "nurah.trickster.cost.coauthor"
+              ],
+              "Forbids": [
+                "nurah.trickster.cost.signed_proofs"
+              ],
               "AnyGroups": []
             },
             {
@@ -199369,7 +199435,7 @@
           "Text": "{n}You did not think of it in the laboratory. You think of it now, with a report on your table that lists her among the dead and says her body was left where she fell.{/n}\n{n}Somewhere under the city a demon army is regrouping. Going back into Areelu's ruin for one body will cost blood and favours you cannot spare.{/n}",
           "Choices": [
             {
-              "Text": "[Send them back for her] \"Bring her out. I'll read it myself.\"",
+              "Text": "[Send them back for her] \"Bring her out. The chaplain reads; I hold her.\"",
               "Next": "raise",
               "Set": [],
               "Requires": [],
@@ -199395,7 +199461,7 @@
         {
           "Id": "raise",
           "Speaker": "Narrator",
-          "Text": "{n}Four volunteers go back into the ruin and come out with her wrapped in a Mendevian cloak. All four come out. One of them leaves an arm down there, and the other three do not speak of what is still down there. At the chapel you read the reliquary's scroll of resurrection over her yourself, at the hour the priests call the thin one, while the chaplain kneeling at the altar keeps his eyes shut. It is the last one the crusade has, and the treasurer will want to know why.{/n}\n{n}The breath goes into her like a blade. The scroll gives her body back whole, the black wing and all, and gives her nothing back of the days she lay in the ruin.{/n}",
+          "Text": "{n}Four volunteers go back into the ruin and come out with her wrapped in a Mendevian cloak. All four come out. One of them leaves an arm down there, and the other three do not speak of what is still down there. At the chapel the old chaplain reads the reliquary's scroll of resurrection over her, at the hour the priests call the thin one, with his eyes shut on the hard words, while you kneel on the other side of the bier with your palm flat on her heart and her brother's light in it. It is the last scroll the crusade has, and the treasurer will want to know why.{/n}\n{n}The breath goes into her like a blade. The scroll gives her body back whole, the black wing and all, and gives her nothing back of the days she lay in the ruin.{/n}",
           "Choices": [
             {
               "Text": "[Stay until she breathes.]",
@@ -199450,7 +199516,7 @@
           "Text": "{n}The crusade's chaplains keep a crypt under the chapel for the dead whose orders have not yet said where they are to be buried. Since Areelu's laboratory they have kept an angel in it, on a bier, under a Mendevian shroud, waiting for Heaven to answer a letter about her. Heaven has not answered.{/n}\n{n}You have come back up out of the Abyss with the war nearly over and her name still on a list of the dead. There is one scroll of resurrection left in Drezen: the chaplains' reliquary holds it as the crusade's relic tithe, sealed and promised to Heaven's envoy, who is to carry it back to the Upper Planes after the Threshold as proof that the crusade kept faith.{/n}",
           "Choices": [
             {
-              "Text": "[Break the tithe seal] \"Open the crypt. I'll read it myself, and the envoy can take it up with me.\"",
+              "Text": "[Break the tithe seal] \"Open the crypt. You read, I hold her, and the envoy can take it up with me.\"",
               "Next": "raise",
               "Set": [],
               "Requires": [],
@@ -199476,7 +199542,7 @@
         {
           "Id": "raise",
           "Speaker": "Narrator",
-          "Text": "{n}The chaplain-captain opens the reliquary with a face like a shut door and makes you break the envoy's seal with your own thumb. By nightfall the envoy will know whose thumb it was, and he will take his blessing off the Threshold muster, and every officer in Drezen will know why.{/n}\n{n}In the crypt you turn back the shroud. She looks as she did on the laboratory floor. The crypt is cold, and the chaplains have been careful with her. You read the scroll over her by one lamp, with your palm flat on her heart and her brother's light in it, and it goes to ash in your hand at the last word. The breath goes into her like a blade, and she opens her eyes on a stone ceiling and your face.{/n}",
+          "Text": "{n}The chaplain-captain opens the reliquary with a face like a shut door and makes you break the envoy's seal with your own thumb. By nightfall the envoy will know whose thumb it was, and he will take his blessing off the Threshold muster, and every officer in Drezen will know why.{/n}\n{n}In the crypt you turn back the shroud. She looks as she did on the laboratory floor. The crypt is cold, and the chaplains have been careful with her. He reads the scroll over her by one lamp, because he is sworn to and you are not able, and you kneel at her side with your palm flat on her heart and her brother's light in it. It goes to ash in his hands at the last word. The breath goes into her like a blade, and she opens her eyes on a stone ceiling and your face.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -199684,7 +199750,8 @@
       "Requires": [
         "trickster.ever",
         "targona.trickster.primed",
-        "targona.dead_lab"
+        "targona.dead_lab",
+        "targona.dead_lab.latched"
       ],
       "Forbids": [
         "targona.trickster.returned"
@@ -200700,7 +200767,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}Targona did not go back to Heaven when the war ended. She stayed in Drezen's field infirmary until the last cot was folded, and on the morning the tents came down she found the Commander and asked the question herself, because, she said, she had waited for the ward to be quiet, and it finally was.{/n}",
+          "Text": "{n}Targona did not go back to Heaven when the war ended. She stayed in Drezen's field infirmary until the last cot was folded, and on the morning the tents came down she found the Commander and asked the question herself, because, she said, she had waited for the ward to be quiet, and it finally was.{/n}\n{n}She did not wait for the answer in words. She took the Commander up the ladder into the empty drying loft, where the last of the bandages still hung in rows from the rafters, and said, \"I have tended every body in this city. I want one that is mine to want.\" She pulled the plain smock over her head and let it fall, and opened both wings, the white and the black, so that the linen swayed all down the row, and drew the Commander down onto the blanket under them and settled astride, and bent to kiss the Commander with her hair falling round both their faces.{/n}\n{n}In the morning Wilcer Garms found a black feather on the ladder and wrote something in his ledger. When the new infirmary opened, in a street near the Commander's house, she hung that feather over the door.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -278780,6 +278847,108 @@
       "TricksterState": "dead"
     },
     {
+      "Id": "kaylessa.trickster.dead.borrow_sending",
+      "Title": "An offer left in an empty hall",
+      "Owner": "Kaylessa",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The Council hall is empty now. Shyka's seat is only a seat, and the dust on it has not been disturbed since the Eldest walked out of their own chair and into somewhere else.{/n}\n{n}But you remember how Shyka listened: to everything said in that hall, in every branch where it was said. So you say it three times, at the three hours the Council used to sit, into the dust on the empty seat. A branch for a branch. The drow who called everyone soldier.{/n}",
+          "Choices": [
+            {
+              "Text": "[Wait until the third hour.]",
+              "Next": "answer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kaylessa"
+        },
+        {
+          "Id": "answer",
+          "Speaker": "Shyka",
+          "Text": "{n}At the third hour the dust on the seat is a face, and then a different one.{/n} \"You come to our door after we have left it. How rude. How like you.\" {n}The face is a child's, and sulking.{/n}\n\"We are not at your Council now, Commander, so we are not bound to your Council's manners. The price is the yes, meant, every word, and it is paid now, and one thing more: the drow will remember that you were late. We will make sure of it.\"",
+          "Choices": [
+            {
+              "Text": "[Pay it] \"Done. Yes, and meant. And she can remember whatever she likes.\"",
+              "Next": "close",
+              "Set": [
+                "kaylessa.trickster.primed",
+                "kaylessa.trickster.cost.shyka_price",
+                "kaylessa.trickster.cost.shyka_raised",
+                "kaylessa.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              },
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -200
+              }
+            },
+            {
+              "Text": "[Keep your futures] \"Not at that price.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Shyka"
+        },
+        {
+          "Id": "close",
+          "Speaker": "Shyka",
+          "Text": "\"Paid.\" {n}The dust settles back into dust.{/n} \"Give it a day. She will arrive where it is dark, because she prefers it. And she will be cross with you. We saw to that.\"",
+          "Choices": [
+            {
+              "Text": "[Leave the empty hall.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Shyka"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "kaylessa.dead",
+        "shyka.gone"
+      ],
+      "Forbids": [
+        "council.fought",
+        "council.fought_nocta_allied",
+        "kaylessa.trickster.primed",
+        "kaylessa.trickster.ending_kept",
+        "kaylessa.trickster.returned"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "kaylessa",
+      "Remote": true,
+      "Kind": "sending",
+      "Chapters": [
+        5
+      ],
+      "TricksterDevice": true,
+      "TricksterState": "dead",
+      "Sender": "Kaylessa"
+    },
+    {
       "Id": "kaylessa.trickster.dead.soldier",
       "Title": "Slightly used",
       "Owner": "Kaylessa",
@@ -279206,7 +279375,7 @@
         {
           "Id": "named",
           "Speaker": "Narrator",
-          "Text": "{n}Forn Autumn Haze, darkhunter of Kyonin, rises and bows as if the war had left him nothing but his manners.{/n}",
+          "Text": "{n}Forn Autumn Haze, hunter of Kyonin's Winter Council, rises and bows as if the war had left him nothing but his manners.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -279239,7 +279408,7 @@
         },
         {
           "Id": "ask_s",
-          "Speaker": "Darkhunter",
+          "Speaker": "Kyonin Hunter",
           "Text": "\"Commander. Forgive the hour. The one I hunt is in Drezen. The man who hunted her before me did not come home, and the Council has sent me to finish his work. She came in under a courier's grey and a face that is not hers, and she has been watching your markets for a week.\"\n\"I ask for nothing that would trouble your crusade. Only your leave, and one courtesy: a word, from you, that an elf lies wounded in the ravine below the south wall. She goes to the wounded. She cannot help it. It is the last thing about her that is still one of us.\"",
           "Choices": [
             {
@@ -279347,7 +279516,7 @@
         },
         {
           "Id": "agreed_s",
-          "Speaker": "Darkhunter",
+          "Speaker": "Kyonin Hunter",
           "Text": "\"Two nights from now, in the ravine below the south wall, when the moon is down. She sees in the dark; we must give her every advantage, or she will suspect a trap.\" {n}He bows again, lower.{/n}\n\"You do my people a service they will never be permitted to thank you for. My predecessor would have said that circumstances are stronger than our desires. I have found it simpler not to have desires.\"",
           "Choices": [
             {
@@ -279785,7 +279954,7 @@
         {
           "Id": "open",
           "Speaker": "Narrator",
-          "Text": "{n}With the moon down, the ravine below the south wall is as black as the bottom of a well. The darkhunter lies propped against a stone at the very bottom of it, a lantern turned low at his side, his bandaged arm across his knees: exactly where a wounded man would be found, exactly where a rescuer would have to stand in the light.{/n}",
+          "Text": "{n}With the moon down, the ravine below the south wall is as black as the bottom of a well. The hunter lies propped against a stone at the very bottom of it, a lantern turned low at his side, his bandaged arm across his knees: exactly where a wounded man would be found, exactly where a rescuer would have to stand in the light.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -279828,7 +279997,7 @@
         },
         {
           "Id": "forn_s",
-          "Speaker": "Darkhunter",
+          "Speaker": "Kyonin Hunter",
           "Text": "\"Commander. And the courier.\" {n}Kaylessa comes down the slope behind you in the Green Road girl's face, her bow unstrung on her back, like a woman who has been told a friend is hurt.{/n}\n\"Forn Autumn Haze would have apologised to you both. I never learned how. Come into the light.\"",
           "Choices": [
             {
@@ -279845,7 +280014,7 @@
         {
           "Id": "ridge",
           "Speaker": "Narrator",
-          "Text": "{n}A pebble rolls somewhere on the ridge above. Then another, on the other side. The darkhunter's good hand is already on his knife. Kaylessa's shoulder touches yours, once: the only signal you agreed on.{/n}",
+          "Text": "{n}A pebble rolls somewhere on the ridge above. Then another, on the other side. The hunter's good hand is already on his knife. Kaylessa's shoulder touches yours, once: the only signal you agreed on.{/n}",
           "Choices": [
             {
               "Text": "[Unpick the glamour like a trap, and set it again on him]",
@@ -279899,7 +280068,7 @@
         {
           "Id": "swap",
           "Speaker": "Narrator",
-          "Text": "{n}Kaylessa goes first, straight at him, the way she once went at a different trap on a different night. His knife comes up for her throat. You are already inside his reach.{/n}\n{n}Two fingers under the cord at her neck, a turn of the wrist, and the cord is over his head before his arm finishes its stroke, the way a wasp's sting is in before the hand can slap. The glamour takes him like water takes dye. For a heartbeat there are two of her in the lamplight: a freckled Green Road girl with the darkhunter's knife in her hand, and a drow woman throwing herself flat on the stones.{/n}",
+          "Text": "{n}Kaylessa goes first, straight at him, the way she once went at a different trap on a different night. His knife comes up for her throat. You are already inside his reach.{/n}\n{n}Two fingers under the cord at her neck, a turn of the wrist, and the cord is over his head before his arm finishes its stroke, the way a wasp's sting is in before the hand can slap. The glamour takes him like water takes dye. For a heartbeat there are two of her in the lamplight: a freckled Green Road girl with the hunter's knife in her hand, and a drow woman throwing herself flat on the stones.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -279927,7 +280096,7 @@
         {
           "Id": "volley",
           "Speaker": "Narrator",
-          "Text": "{n}The ridge looses. Six bows, perhaps eight, every one at the face they were told to shoot before it could speak. Forn does not speak. He looks down at the fletching in his chest with an expression of courteous surprise, as if someone has broken a rule of etiquette he had believed was universal.{/n}\n{n}The amulet at his throat sputters, flares white, and burns out. The girl's face runs off him like wax, and what slides down the stone is only Forn Autumn Haze, darkhunter of Kyonin, killed by Kyonin.{/n}",
+          "Text": "{n}The ridge looses. Six bows, perhaps eight, every one at the face they were told to shoot before it could speak. Forn does not speak. He looks down at the fletching in his chest with an expression of courteous surprise, as if someone has broken a rule of etiquette he had believed was universal.{/n}\n{n}The amulet at his throat sputters, flares white, and burns out. The girl's face runs off him like wax, and what slides down the stone is only Forn Autumn Haze, the Winter Council's hunter, killed by Kyonin.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -279943,7 +280112,7 @@
         {
           "Id": "volley_s",
           "Speaker": "Narrator",
-          "Text": "{n}The ridge looses. Six bows, perhaps eight, every one at the face they were told to shoot before it could speak. He does not speak. He looks down at the fletching in his chest as though it were an error in a report he had signed without reading.{/n}\n{n}The amulet at his throat sputters, flares white, and burns out. The girl's face runs off him like wax, and what slides down the stone is a darkhunter of Kyonin who never gave his name, killed by Kyonin, in the same ravine his predecessor's work had led him to.{/n}",
+          "Text": "{n}The ridge looses. Six bows, perhaps eight, every one at the face they were told to shoot before it could speak. He does not speak. He looks down at the fletching in his chest as though it were an error in a report he had signed without reading.{/n}\n{n}The amulet at his throat sputters, flares white, and burns out. The girl's face runs off him like wax, and what slides down the stone is a Winter Council hunter who never gave his name, killed by Kyonin, in the same ravine his predecessor's work had led him to.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -280036,7 +280205,7 @@
         {
           "Id": "fumble",
           "Speaker": "Narrator",
-          "Text": "{n}Your fingers find the cord, and the darkhunter finds your wrist. He is faster than a wounded man and stronger than a courteous one. The amulet comes off her neck and hangs in his fist between the three of you, blazing, half a face on it and half off.{/n}",
+          "Text": "{n}Your fingers find the cord, and the hunter finds your wrist. He is faster than a wounded man and stronger than a courteous one. The amulet comes off her neck and hangs in his fist between the three of you, blazing, half a face on it and half off.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -281175,7 +281344,7 @@
         {
           "Id": "hold",
           "Speaker": "Kaylessa",
-          "Text": "{n}She looks at your open hand without moving. Then she puts the dagger in it, hilt first, and keeps two fingers on the pommel the whole time, and takes it back.{/n}\n\"Not yet.\" {n}It isn't a refusal. It's a date written down.{/n}",
+          "Text": "{n}She looks at your open hand without moving. Then she puts the dagger in it, hilt first, and keeps two fingers on the pommel the whole time, and takes it back.{/n}\n\"Not yet.\" {n}Her fingers stay on the pommel a moment longer than they need to.{/n}",
           "Choices": [
             {
               "Text": "[Let her keep it.]",
@@ -281584,7 +281753,8 @@
       ],
       "Requires": [
         "trickster.ever",
-        "kaylessa.trickster.knife_shown"
+        "kaylessa.trickster.knife_shown",
+        "kaylessa.wasps.in_the_dark"
       ],
       "Forbids": [
         "kaylessa.closed",
@@ -281683,7 +281853,7 @@
         {
           "Id": "knife",
           "Speaker": "Narrator",
-          "Text": "{n}She's somewhere in the dark by the window. You can't see her. She can see you perfectly well.{/n}",
+          "Text": "{n}She's somewhere in the dark by the window. You can barely make her out. She can see you perfectly well.{/n}",
           "Choices": [
             {
               "Text": "[Pick up the knife.]",
@@ -281877,7 +282047,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The Winter Council's records list the drow Kaylessa as dead in Mendev, killed in the same night as the darkhunter Forn Autumn Haze. The Council never asked who killed whom. It preferred not to know.{/n}",
+              "Text": "{n}The Winter Council's records list the drow Kaylessa as dead in Mendev, killed in the same night as the Council's hunter Forn Autumn Haze. The Council never asked who killed whom. It preferred not to know.{/n}",
               "Requires": [
                 "kaylessa.trickster.alive.swap_clean"
               ],
@@ -281887,7 +282057,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The Winter Council's records list the drow Kaylessa as dead in Mendev, killed in the same night as the nameless darkhunter it sent after Forn Autumn Haze. The Council never asked who killed whom. It preferred not to know.{/n}",
+              "Text": "{n}The Winter Council's records list the drow Kaylessa as dead in Mendev, killed in the same night as the nameless hunter it sent after Forn Autumn Haze. The Council never asked who killed whom. It preferred not to know.{/n}",
               "Requires": [
                 "kaylessa.trickster.alive.swap_clean",
                 "kaylessa.trickster.alive.successor"
@@ -282086,7 +282256,7 @@
       ],
       "Requires": [
         "trickster.ever",
-        "kaylessa.trickster.knife_shown"
+        "kaylessa.trickster.late_committed"
       ],
       "Forbids": [
         "kaylessa.committed",
@@ -282131,7 +282301,7 @@
         "kaylessa.trickster.clock_named"
       ],
       "Forbids": [
-        "kaylessa.trickster.knife_shown",
+        "kaylessa.trickster.late_committed",
         "kaylessa.committed",
         "kaylessa.closed",
         "kaylessa.trickster.declined",
@@ -283670,7 +283840,7 @@
         {
           "Id": "name",
           "Speaker": "Kaylessa",
-          "Text": "{n}She studies you, deciding something.{/n}\n\"No.\" {n}Not unkind. Quite gentle, for her.{/n} \"Not yet. The day I say it, I'll mean it, and I've only got so much meaning left in me. I'm saving it.\"\n\"Once. When it counts. You'll know.\"",
+          "Text": "{n}She studies you, deciding something.{/n}\n\"No.\" {n}Not unkind. Quite gentle, for her.{/n} \"Not yet. Names are for people who've lived through the winter. Ask me when the war's over.\"\n\"Once. When it counts. You'll know.\"",
           "Choices": [
             {
               "Text": "\"I'll wait.\"",
@@ -283805,7 +283975,7 @@
         {
           "Id": "start",
           "Speaker": "Kaylessa",
-          "Text": "\"You're blind, aren't you? Completely. I can see the mortar between the bricks.\" {n}Her voice is close by your shoulder, and amused.{/n}\n\"Three steps down. Now left. There's a dead cat, don't be squeamish. This is my city, soldier. The one you all walk through at noon never sees it.\"",
+          "Text": "\"Whatever your eyes are, soldier, they aren't mine. I can see the mortar between the bricks.\" {n}Her voice is close by your shoulder, and amused.{/n}\n\"Three steps down. Now left. There's a dead cat, don't be squeamish. This is my city, soldier. The one you all walk through at noon never sees it.\"",
           "Choices": [
             {
               "Text": "\"How far does it go? Your sight.\"",
@@ -283917,7 +284087,7 @@
         {
           "Id": "stop",
           "Speaker": "Narrator",
-          "Text": "{n}She stops. You can't see why. You can hear her breathing, close, and feel the edge of her cloak against your hand, and the warmth coming off her through the cold.{/n}",
+          "Text": "{n}She stops. You don't know why. You can hear her breathing, close, and feel the edge of her cloak against your hand, and the warmth coming off her through the cold.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -283933,7 +284103,7 @@
         {
           "Id": "here",
           "Speaker": "Kaylessa",
-          "Text": "\"You're looking straight at me, soldier, and you can't see a thing. It's very strange. Nobody looks at me like that.\" {n}A breath.{/n} \"As if they don't know what I am.\"",
+          "Text": "\"You're looking straight at me, soldier, and you're not looking at the fangs. It's very strange. Nobody looks at me like that.\" {n}A breath.{/n} \"As if they don't know what I am.\"",
           "Choices": [
             {
               "Text": "[Kiss her]",
@@ -284266,7 +284436,7 @@
         {
           "Id": "miss_her",
           "Speaker": "Kaylessa",
-          "Text": "\"Next time.\" {n}She doesn't sound disappointed. She sounds like she's already planning the next time.{/n} \"Your hands are good. You just can't see. That's not your fault. That's the dark's.\"",
+          "Text": "\"Next time.\" {n}She doesn't sound disappointed. She sounds like she's already planning the next time.{/n} \"Your hands are good. You just don't see the way I do in the dark. That's not your fault. That's the dark's.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -287035,7 +287205,7 @@
         {
           "Id": "ravine",
           "Speaker": "Narrator",
-          "Text": "{n}Not far. Out of the south gate and down into the ravine below the wall, where the stones are still stained dark in places and someone has swept away the lantern glass. It's black as the bottom of a well with the moon down. She can see. You can't.{/n}\n{n}She walks you to the stone where the darkhunter lay and stops there, with your wrist still in her hand.{/n}",
+          "Text": "{n}Not far. Out of the south gate and down into the ravine below the wall, where the stones are still stained dark in places and someone has swept away the lantern glass. It's black as the bottom of a well with the moon down. She can see. You can't.{/n}\n{n}She walks you to the stone where the hunter lay and stops there, with your wrist still in her hand.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -287191,7 +287361,7 @@
         {
           "Id": "see",
           "Speaker": "Kaylessa",
-          "Text": "\"No. You can't, can you?\" {n}She laughs under her breath, pleased with herself, the way a hunter is pleased with a good wind.{/n} \"I can see every hair on your arms standing up, soldier. It's only fair one of us gets to.\"\n{n}She takes your hands and puts them on the laces of her leathers.{/n} \"Then find it the other way.\"",
+          "Text": "\"Not the way I can.\" {n}She laughs under her breath, pleased with herself, the way a hunter is pleased with a good wind.{/n} \"I can see every hair on your arms standing up, soldier. It's only fair one of us gets to.\"\n{n}She takes your hands and puts them on the laces of her leathers.{/n} \"Then find it the other way.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -387384,7 +387554,8 @@
     "kaylessa.trickster.late_committed": [
       [
         "trickster.ever",
-        "kaylessa.trickster.knife_shown"
+        "kaylessa.trickster.knife_shown",
+        "kaylessa.wasps.in_the_dark"
       ]
     ],
     "mielarah.trickster.contact": [
@@ -388760,6 +388931,9 @@
     "trickster.ever": [
       "trickster",
       "trickster.was"
+    ],
+    "targona.dead_lab.latched": [
+      "targona.dead_lab"
     ],
     "soana.bear_dead": [
       "soana.bear_dead.live"
