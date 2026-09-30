@@ -186,6 +186,26 @@ internal static class TargonaTricksterTests
         check(Reaches(returned, Committed), "Trk_Targona_KilledPrimed: the commit is unreachable.");
         check(Reaches(After(oneSoul, killedOpen, "news", 1), Committed), "The open route cannot commit.");
 
+        // Sol round 5 (INT/HOW): the three days run from the observed laboratory death (its latch, timestamped by the runtime when
+        // recorded), not from a primer taken long before the blow. Only runtime-persisted flags carry times here.
+        var early = new Snapshot { Chapter = 3, Area = Drezen, Hour = 9000 };
+        early.Flags.UnionWith(new[] { "trickster.ever", "chapter_later", P + "primed", "targona.dead_lab" });
+        early.AvailableContacts.Add(Unit);
+        Rules.Complete(story, early);
+        early.Times[P + "primed"] = early.Hour - 300;              // the primer, days before the attack
+        early.Times["targona.dead_lab.latched"] = early.Hour;      // the runtime records the latch when it sees the death
+        check(oneSoul.Requires.Contains("targona.dead_lab.latched") && early.Has("targona.dead_lab.latched")
+              && !Rules.Available(story, oneSoul, Later(story, early, 71)) && Rules.Available(story, oneSoul, Later(story, early, 72)),
+            "The payoff's three days run from the primer, not from the laboratory death.");
+        // An untrained Commander never reads a cleric's scroll unaided: the chaplain reads, the Commander holds her.
+        foreach (var id in new[] { "dead.late_light", "dead.late_crypt" })
+            check(S(P + id).Nodes.Single(n => n.Id == "raise").Text.Contains("chaplain", StringComparison.Ordinal)
+                  && !S(P + id).Nodes.Single(n => n.Id == "raise").Text.Contains("you read", StringComparison.OrdinalIgnoreCase),
+                "An untrained Commander reads the scroll: " + id);
+        // The late romance ending stages its own threshold (Directive 12) for a met-only or washed history that never played the ward.
+        check(epCommit.Nodes[0].Text.Contains("settled astride", StringComparison.Ordinal) && epCommit.Nodes[0].Text.Contains("smock", StringComparison.Ordinal),
+            "The late romance ending has no intimate beat.");
+
         // Trk_Targona_KilledUnprimed: the late light, dearer and spent for good.
         var unprimed = World(story, 3, "trickster", "trickster.ever", "targona.dead_lab");
         check(Rules.Available(story, lateLight, unprimed) && !Rules.Available(story, oneSoul, unprimed),

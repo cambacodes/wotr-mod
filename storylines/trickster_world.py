@@ -571,6 +571,8 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
                                    ['chapter_later', 'yaniel.trickster.primed_trophy']]}
 
 LATCHES = {'arueshalae.evil_dead.latched': ['arueshalae.evil_dead'],
+ # Targona's laboratory death, recorded when first observed (one_soul's three days run from it, not from the primer).
+ 'targona.dead_lab.latched': ['targona.dead_lab'],
  'arueshalae_dead.latched': ['arueshalae_dead'],
  'baphomet.parley.latched': ['baphomet.parley'],
  'chadali.lost_at_council.latched': ['council.fought', 'council.fought_nocta_allied'],

@@ -65,6 +65,7 @@ OPEN = P + "cost.raised_openly"     # the no-trick prepared route: the scroll re
 TOLD = P + "cost.she_told_heaven"   # her price at the barrier: she tells the Hand and her healers what was done
 CRYPT = P + "cost.raised_from_the_crypt"   # Chapter 5 fallback: no primer, no Chapter 3 retrieval; raised from the Hand's crypt
 TESTED = P + "washed_the_dead"      # death branch: she asked the Commander's hands to wash a dead man with her, and they did
+DEAD_SEEN = "targona.dead_lab.latched"   # the laboratory death, latched when first observed: one_soul's three days run from it
 PARENT_ROMANCED = P + "parent_romanced"    # derived: RanRomance's Angelic Treatment completed as a romance (its own route runs)
 SACRIFICE_GUARD = dict(ForbidOverrides={"sacrifice": "trickster.commander_back"})
 
@@ -164,9 +165,9 @@ lab_primer(P + "dead.setup_open",
 letter(P + "dead.late_light", "The hard way back", [
     nar("start", '''{n}You did not think of it in the laboratory. You think of it now, with a report on your table that lists her among the dead and says her body was left where she fell.{/n}
 {n}Somewhere under the city a demon army is regrouping. Going back into Areelu's ruin for one body will cost blood and favours you cannot spare.{/n}''',
-        c('[Send them back for her] "Bring her out. I\'ll read it myself."', "raise", mythic="Trickster", crusade=("Favors", -300)),
+        c('[Send them back for her] "Bring her out. The chaplain reads; I hold her."', "raise", mythic="Trickster", crusade=("Favors", -300)),
         c('"Let her rest."', abort=True)),
-    nar("raise", '''{n}Four volunteers go back into the ruin and come out with her wrapped in a Mendevian cloak. All four come out. One of them leaves an arm down there, and the other three do not speak of what is still down there. At the chapel you read the reliquary's scroll of resurrection over her yourself, at the hour the priests call the thin one, while the chaplain kneeling at the altar keeps his eyes shut. It is the last one the crusade has, and the treasurer will want to know why.{/n}
+    nar("raise", '''{n}Four volunteers go back into the ruin and come out with her wrapped in a Mendevian cloak. All four come out. One of them leaves an arm down there, and the other three do not speak of what is still down there. At the chapel the old chaplain reads the reliquary's scroll of resurrection over her, at the hour the priests call the thin one, with his eyes shut on the hard words, while you kneel on the other side of the bier with your palm flat on her heart and her brother's light in it. It is the last scroll the crusade has, and the treasurer will want to know why.{/n}
 {n}The breath goes into her like a blade. The scroll gives her body back whole, the black wing and all, and gives her nothing back of the days she lay in the ruin.{/n}''',
         c('[Stay until she breathes.]', flags=(PRIMED, LATE, ECHO_SPENT))),
 ], requires=("trickster", DEAD), forbids=(PRIMED, RETURNED), delay=0, chapters=(3,),
@@ -178,11 +179,11 @@ letter(P + "dead.late_light", "The hard way back", [
 letter(P + "dead.late_crypt", "The crypt under the chapel", [
     nar("start", '''{n}The crusade's chaplains keep a crypt under the chapel for the dead whose orders have not yet said where they are to be buried. Since Areelu's laboratory they have kept an angel in it, on a bier, under a Mendevian shroud, waiting for Heaven to answer a letter about her. Heaven has not answered.{/n}
 {n}You have come back up out of the Abyss with the war nearly over and her name still on a list of the dead. There is one scroll of resurrection left in Drezen: the chaplains' reliquary holds it as the crusade's relic tithe, sealed and promised to Heaven's envoy, who is to carry it back to the Upper Planes after the Threshold as proof that the crusade kept faith.{/n}''',
-        c('[Break the tithe seal] "Open the crypt. I\'ll read it myself, and the envoy can take it up with me."', "raise",
+        c('[Break the tithe seal] "Open the crypt. You read, I hold her, and the envoy can take it up with me."', "raise",
           mythic="Trickster", crusade=("Favors", -500)),
         c('"Let her rest."', abort=True)),
     nar("raise", '''{n}The chaplain-captain opens the reliquary with a face like a shut door and makes you break the envoy's seal with your own thumb. By nightfall the envoy will know whose thumb it was, and he will take his blessing off the Threshold muster, and every officer in Drezen will know why.{/n}
-{n}In the crypt you turn back the shroud. She looks as she did on the laboratory floor. The crypt is cold, and the chaplains have been careful with her. You read the scroll over her by one lamp, with your palm flat on her heart and her brother's light in it, and it goes to ash in your hand at the last word. The breath goes into her like a blade, and she opens her eyes on a stone ceiling and your face.{/n}''',
+{n}In the crypt you turn back the shroud. She looks as she did on the laboratory floor. The crypt is cold, and the chaplains have been careful with her. He reads the scroll over her by one lamp, because he is sworn to and you are not able, and you kneel at her side with your palm flat on her heart and her brother's light in it. It goes to ash in his hands at the last word. The breath goes into her like a blade, and she opens her eyes on a stone ceiling and your face.{/n}''',
         c("Continue", "wake")),
     t("wake", '''{n}It is a long time before she can speak, and when she can, it is only a whisper.{/n}
 "Whose scroll?" {n}She hears the answer out. The black wing moves once against the bier.{/n}
@@ -210,7 +211,7 @@ letter(P + "dead.one_soul", "Read back in", [
         c('[Go to her] Go down to the infirmary.', forbids=(OPEN,), crusade=("Favors", -150), flags=(RETURNED, STARTED, STRUCK, SHARD)),
         c('[Go to her] Go down to the infirmary, past the soldiers who saw.', requires=(OPEN,), crusade=("Favors", -300),
           flags=(RETURNED, STARTED, STRUCK, SHARD))),
-], requires=("trickster.ever", PRIMED, DEAD), forbids=(RETURNED,), delay=72, TricksterDevice=True, TricksterState=DEAD)
+], requires=("trickster.ever", PRIMED, DEAD, DEAD_SEEN), forbids=(RETURNED,), delay=72, TricksterDevice=True, TricksterState=DEAD)
 
 
 ward(P + "dead.furlough", "A fever that broke at dawn", '"Targona."', [
@@ -432,7 +433,9 @@ def page(id, title, text, requires, forbids=(), paragraphs=(), **extra):
 
 
 page(P + "epilogue.commit", "When the ward was quiet",
-     '''{n}Targona did not go back to Heaven when the war ended. She stayed in Drezen's field infirmary until the last cot was folded, and on the morning the tents came down she found the Commander and asked the question herself, because, she said, she had waited for the ward to be quiet, and it finally was.{/n}''',
+     '''{n}Targona did not go back to Heaven when the war ended. She stayed in Drezen's field infirmary until the last cot was folded, and on the morning the tents came down she found the Commander and asked the question herself, because, she said, she had waited for the ward to be quiet, and it finally was.{/n}
+{n}She did not wait for the answer in words. She took the Commander up the ladder into the empty drying loft, where the last of the bandages still hung in rows from the rafters, and said, "I have tended every body in this city. I want one that is mine to want." She pulled the plain smock over her head and let it fall, and opened both wings, the white and the black, so that the linen swayed all down the row, and drew the Commander down onto the blanket under them and settled astride, and bent to kiss the Commander with her hair falling round both their faces.{/n}
+{n}In the morning Wilcer Garms found a black feather on the ladder and wrote something in his ledger. When the new infirmary opened, in a street near the Commander's house, she hung that feather over the door.{/n}''',
      requires=("trickster.ever",), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice"), paragraphs=LIGHT_PARAGRAPHS,
      RequiresAnyGroups=[[TESTED, MET]], **SACRIFICE_GUARD)
 

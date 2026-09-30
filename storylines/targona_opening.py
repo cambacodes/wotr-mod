@@ -326,7 +326,7 @@ You ask if the wing hurts today. She answers without apology: sometimes, and not
 "Waited," you say. "Possibly complained to the nearest statue."
 "Pray for patience instead. It works on commanders too, I am told, though slowly." {n}Her mouth curves.{/n} "I prayed for it all day. It did not take."
 The joke has reached its mark, but not its end.
-"Everyone looks at me as a sign," she says. "Heaven's healers look at the wing and see Areelu's work. The soldiers look at the other one and see a promise. In that laboratory I was proof of something." {n}She stops walking.{/n} "You are looking at me as if I were a woman. I do not know yet what to do with that. I think I like it."
+"Everyone looks at me as a sign," she says. "Heaven's healers look at the wing and see Areelu's work. The soldiers look at the other one and see a promise. In that laboratory I was proof of something." {n}She stops walking.{/n} "You look at me the way you did before the last letter, before the kiss I wrote to you about and the one I did not. I have missed being looked at like that more than I will ever admit to a chaplain. Three days on the eastern road, with eleven men to change dressings for, and every one of them I thought: the Commander would be doing this badly, and would ask me to show how, and would not listen."
 {n}She turns to face you. The black wing lifts a little, the way it does when she is startled, and she does not fold it down.{/n}
 "Commander. You have looked at me like that the whole length of the wall. Are you going to do anything about it?"''',
       c("Ask her again, and wait for her answer.", "kiss"),
