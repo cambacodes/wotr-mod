@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 923,
-  "resolved": 923,
+  "entryTargetScenes": 929,
+  "resolved": 929,
   "inlineOnlyScenes": 230,
   "inlineOnlyResolved": 230,
-  "answerListScenesWithoutContact": 517,
-  "answerListScenesWithoutContactResolved": 517,
+  "answerListScenesWithoutContact": 523,
+  "answerListScenesWithoutContactResolved": 523,
   "lists": 93,
   "listsWithReachableHost": 92
  },
@@ -9272,6 +9272,44 @@
     "clicks": 0
    }
   },
+  "gesmerha.react.lann_afternoon": {
+   "kind": "dialog",
+   "lists": [
+    "66385ad77fa743e4bb1234078dbd804c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "66385ad77fa743e4bb1234078dbd804c": "RRT_entry.gesmerha.react.lann_afternoon"
+   },
+   "resolved": true,
+   "host": {
+    "list": "66385ad77fa743e4bb1234078dbd804c",
+    "dialog": "054c1b209de5c9042a02d6736cd3b2ac",
+    "dialogName": "Lann_Main_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "gesmerha.react.ulbrig_night": {
+   "kind": "dialog",
+   "lists": [
+    "0a50c9c878844ed4a69b8d6131304c5e"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "0a50c9c878844ed4a69b8d6131304c5e": "RRT_entry.gesmerha.react.ulbrig_night"
+   },
+   "resolved": true,
+   "host": {
+    "list": "0a50c9c878844ed4a69b8d6131304c5e",
+    "dialog": "20b70c9bb93940b9a21a488f1721f41c",
+    "dialogName": "Shifter_CompanionDialogue",
+    "cue": "Cue_0005",
+    "clicks": 0
+   }
+  },
   "gesmerha.the_box_with_two_names": {
    "kind": "dialog",
    "lists": [
@@ -9519,6 +9557,25 @@
     "clicks": 0
    }
   },
+  "gesmerha.trickster.react.anevia_confessed": {
+   "kind": "dialog",
+   "lists": [
+    "33960c7f7af40cd43b7f801a76c87a0b"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "33960c7f7af40cd43b7f801a76c87a0b": "RRT_entry.gesmerha.trickster.react.anevia_confessed"
+   },
+   "resolved": true,
+   "host": {
+    "list": "33960c7f7af40cd43b7f801a76c87a0b",
+    "dialog": "de4cc2dd71694b842be37b75d1705b83",
+    "dialogName": "Dialogue_AneviaMain",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
   "gesmerha.trickster.react.anevia_footsteps": {
    "kind": "dialog",
    "lists": [
@@ -9554,6 +9611,25 @@
     "dialog": "de4cc2dd71694b842be37b75d1705b83",
     "dialogName": "Dialogue_AneviaMain",
     "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "gesmerha.trickster.react.lann_confessed": {
+   "kind": "dialog",
+   "lists": [
+    "66385ad77fa743e4bb1234078dbd804c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "66385ad77fa743e4bb1234078dbd804c": "RRT_entry.gesmerha.trickster.react.lann_confessed"
+   },
+   "resolved": true,
+   "host": {
+    "list": "66385ad77fa743e4bb1234078dbd804c",
+    "dialog": "054c1b209de5c9042a02d6736cd3b2ac",
+    "dialogName": "Lann_Main_dialog",
+    "cue": "Cue_0002",
     "clicks": 0
    }
   },
@@ -11859,6 +11935,44 @@
    "contact": null,
    "entry": {
     "589d83230bbbfd04bb1220ee4fef1ce1": "RRT_entry.jerribeth.trickster.reaction.camellia_host"
+   },
+   "resolved": true,
+   "host": {
+    "list": "589d83230bbbfd04bb1220ee4fef1ce1",
+    "dialog": "ee686e5c551c67840946f9a87592470a",
+    "dialogName": "Dialgoue_CameliaMain",
+    "cue": "Cue_0054",
+    "clicks": 0
+   }
+  },
+  "jerribeth.trickster.reaction.camellia_host_saw": {
+   "kind": "dialog",
+   "lists": [
+    "589d83230bbbfd04bb1220ee4fef1ce1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "589d83230bbbfd04bb1220ee4fef1ce1": "RRT_entry.jerribeth.trickster.reaction.camellia_host_saw"
+   },
+   "resolved": true,
+   "host": {
+    "list": "589d83230bbbfd04bb1220ee4fef1ce1",
+    "dialog": "ee686e5c551c67840946f9a87592470a",
+    "dialogName": "Dialgoue_CameliaMain",
+    "cue": "Cue_0054",
+    "clicks": 0
+   }
+  },
+  "jerribeth.trickster.reaction.camellia_saw": {
+   "kind": "dialog",
+   "lists": [
+    "589d83230bbbfd04bb1220ee4fef1ce1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "589d83230bbbfd04bb1220ee4fef1ce1": "RRT_entry.jerribeth.trickster.reaction.camellia_saw"
    },
    "resolved": true,
    "host": {
