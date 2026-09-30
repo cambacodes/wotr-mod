@@ -131,7 +131,7 @@ TRICK_WAKE = '''{n}She sits up too fast, grabs the edge of the cot, and laughs a
 letter("kiana.trickster.possessed.fake_gem", "Paste", [
     ars("start", '''{n}The hospital for Darek Sunhammer's victims smells of lamp oil, tallow and three kinds of incense. The churches of Iomedae, Torag and Abadar share its roof and have agreed on nothing else. The bodies lie in rows under clean blankets, breathing, empty. Two Houndhearts keep the door.{/n}
 {n}At the end of the last row, beside the cot where Kiana lies in what is left of her wedding dress, a young man in a jeweller's leather apron is holding a pale stone up to the lamp, turning it the way his master must have taught him. Arsinoe stands between him and the cot. From the set of her shoulders she has been standing there for some time.{/n}
-"Commander. He says this is Kiana." {n}She does not take her eyes off the stone.{/n} "Abadar forgive me, I have checked. He is not lying." {n}Her voice drops.{/n} "I audit jewellers for the temple, Commander. I cannot tell you how his stones hold what they hold. I can tell you two things. A soul shut in a stone goes free when the stone breaks, to the nearest thing that will hold it. And every stone has a grain, even his. Strike along it, and the finest diamond in Mendev comes apart in your hand." {n}Her fingers rest on the leather case at her belt, where an auditor of jewellers keeps her loupe and her cleaving chisel.{/n} "He will not let it out of his hand for me. I have asked."''',
+"Commander. He says this is Kiana." {n}She does not take her eyes off the stone.{/n} "Abadar forgive me, I have checked. He is not lying." {n}Her voice drops.{/n} "I audit jewellers for the temple, Commander. I cannot tell you how his stones hold what they hold. I can tell you two things. A soul shut in a stone goes free when the stone breaks, and every body in this ward lies under a ward of Abadar's that I laid myself, so that what comes loose comes home to its own flesh and nowhere else. And every stone has a grain, even his. Strike along it, and the finest diamond in Mendev comes apart in your hand." {n}Her fingers rest on the leather case at her belt, where an auditor of jewellers keeps her loupe and her cleaving chisel.{/n} "He will not let it out of his hand for me. I have asked."''',
       c("Continue", "terms")),
     nar("terms", '''{n}The apprentice bows to you exactly as low as a shopkeeper bows to a customer who has not yet paid.{/n}
 "Master Sunhammer sends his compliments, Commander, and his terms. A craftsman honours every commission. The bride's stone is the sample; the rest of the wedding party is in here." {n}He touches the pouch at his belt. It is heavy, and it does not chink like coin.{/n} "The lot, for a thousand crowns in crusade gold and one small favour, to be named when it pleases him. He sells them all, or none."
@@ -148,7 +148,7 @@ letter("kiana.trickster.possessed.fake_gem", "Paste", [
 {n}It is the finest stone in the room, and he knows it, and you are insulting the only thing he is proud of. His face goes red to the ears. "Paste scratches," he says. "Paste chips. Try it, Commander, if you know a tool from a teaspoon." And he holds it out to you, flat on his palm, the way a craftsman holds out his work to a customer who is about to be made a fool of.{/n}
 {n}You take it. You turn it to the lamp as if you meant to scratch it, and Arsinoe, who has understood you a sentence ago, has her case open and her cleaving chisel in your other hand before the apprentice has seen her move. You find the grain the way she told you, a faint line of light along the table. You set the edge on it. You strike it once with the heel of your hand.{/n}
 {n}The stone comes apart in two clean halves, and out of the break, slow as oil, runs a pale light that beads on your fingers and falls, not to the floor, but toward the cot. Arsinoe steps sideways, easily, into the apprentice's line of sight, and says under her breath, to you or to her god: "Let it be her."{/n}
-{n}The apprentice stares at the two halves on your palm. Craftsmen's stones do not split at one blow. Paste does.{/n}''',
+{n}The apprentice stares at the two halves on your palm. Now that there is nothing in them they have gone dull and milky all the way through, like the glass a sutler sells to homesick soldiers.{/n}''',
       c('[Keep a straight face] "...Paste."',
         check=dict(Skill="CheckBluff", DC=20, Success="sold", Failure="bolted", CommanderOnly=True), forbids=(ARCANA,)),
       c('[Keep a straight face; you know stones better than he does] "...Paste. Look at the grain."',
@@ -236,8 +236,8 @@ letter("kiana.trickster.no_wedding.postponed", "Postponed", [
       c("Continue", "complaint_king")),
     nar("order", '''{n}You read it into the minutes of the war council, in front of every officer at the table: *Standing order. Every marriage licence pledged with a ring from the Sunhammer shop is held until the shop and its stock have been searched.* The officers look at one another. Three licences, a jeweller nobody has complained about, and no evidence you are willing to name. The council backs it anyway, because it is the Commander's word and it costs the crusade nothing, and because nobody at that table wants to be the one who argued for a jeweller and was wrong.{/n}
 {n}By evening the other two couples are outside the chancery, still in their good clothes. A baker and a crossbowman ask you to your face what their ring has done. You have no answer for them that isn't a hunch.{/n}
-{n}The search takes four days, turns the shop on the square inside out, and finds nothing but flawless stones and a very offended jeweller's boy. The council minutes it without comment. The crusade pays both couples' forfeited deposits out of its own purse, and every officer at the table remembers whose word cost it.{/n}
-{n}The clerk stamps the licence POSTPONED and sands it. Nobody in Drezen argues with a stamp that has the war council behind it.{/n}''',
+{n}The search takes four days and turns the shop on the square inside out. The stock is flawless. The ledger is not: the baker's ring and the crossbowman's are entered, priced and paid for, and the ring pledged on Kiana's licence is not in it at all. The shop's boy says it was a gift from the master, to the bride, with his compliments. Nobody on the council can remember the last time a jeweller gave a bride a stone for nothing.{/n}
+{n}The council releases the other two licences and minutes it without comment. The crusade pays both couples' forfeited deposits out of its own purse, and every officer at the table remembers whose word cost it. The third licence stays held until someone can say what the master's compliments were for. The clerk stamps it POSTPONED and sands it.{/n}''',
       c("Continue", "complaint_order")),
     k("complaint_king", '''{n}Two days later a letter comes, written so hard that the nib has gone through the paper twice.{/n}
 "So I'm not a wife. I am *betrothed*. Again. Because the KING has banned our wedding until he is SOBER. Which, as his herald was kind enough to tell the entire square, is NEVER."
@@ -246,8 +246,8 @@ letter("kiana.trickster.no_wedding.postponed", "Postponed", [
 "...I laughed. I didn't want to. Come and explain yourself. Bring no speeches."''',
       c('[Write back] "I heard. Which is never."', flags=(PRIMED, RETURNED, POSTPONED, KING, H_BETROTHED))),
     k("complaint_order", '''{n}Two days later a letter comes, written so hard that the nib has gone through the paper twice.{/n}
-"So I'm not a wife. I am *betrothed*. Again. Because the Commander of the crusade has had the war council hold every licence with a Sunhammer ring on it, and ours has the prettiest ring in Drezen. Nobody will tell me when the searching will be done. I asked a sergeant. He laughed until he cried, and then he just cried; he was supposed to be married on Sunday."
-"Elan wants to challenge you to a duel. I told him to get in line behind the other two grooms. The priestess of Abadar has returned our deposit with a note of condolence."
+"So I'm not a wife. I am *betrothed*. Again. Because the Commander of the crusade had the war council hold every licence with a Sunhammer ring on it, and the other two got theirs back on Thursday, and ours did not, because our ring is *not in his ledger*. It was a gift. The master gave it to me himself, with compliments. Apparently that is suspicious now. I asked a sergeant what it meant. He looked at my hand for a very long time and would not say."
+"Elan wants to challenge you to a duel. I told him the baker and the crossbowman already tried, and got their licences back instead. The priestess of Abadar has returned our deposit with a note of condolence."
 {n}The next line has been crossed out and rewritten three times.{/n}
 "...I laughed. It was only half a joke. Come and explain yourself. Bring no speeches."''',
       c('[Write back] "I heard. Which is never."', flags=(PRIMED, RETURNED, POSTPONED, H_BETROTHED))),
@@ -424,12 +424,16 @@ PARAGRAPHS = (
       "last name, she looked up.", requires=(MET, VOW), forbids=(Q3, LASTCALL_CALLED)),
     p("Somewhere in Mendev a dwarf remembered the cold of the Commander's palm on his, and three words that went with it: "
       "One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched "
-      "the Commander's face while they answered.", requires=(MET, FAVOUR), forbids=(LASTCALL_CALLED,)),
+      "the Commander's face while they answered.", requires=(MET, FAVOUR), forbids=(LASTCALL_CALLED, Q3)),
+    p("Darek Sunhammer died with the Commander's favour still owed him, and nobody else ever came to collect it. Kiana "
+      "said it was the only debt she had ever seen cancelled by a funeral, and that she approved.", requires=(MET, FAVOUR, Q3),
+      forbids=(LASTCALL_CALLED,)),
     p("Elan and Kiana stayed friends, which surprised everyone but Elan.", requires=(MET, H_MARRIED),
       forbids=("kiana.widowed",)),
     p("The marriage licence stayed postponed. Kiana had it framed.", requires=(MET, H_BETROTHED)),
-    p("The hold on the Sunhammer licences was lifted the day the Wound closed. Three weddings went ahead that week, all "
-      "of them long overdue, all with plain silver rings. Kiana went to every one, cried at all of them, and laughed at most.",
+    p("The hold on Kiana's licence was lifted the day the Wound closed. Her wedding went ahead that week with a plain silver "
+      "ring; the gift ring went to Arsinoe's temple, to be broken on an auditor's bench. The baker brought the cake, the "
+      "crossbowman stood at the door, and Kiana cried through all of it and laughed at most.",
       requires=(POSTPONED,), forbids=(KING,)),
     p("The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King "
       "was sober. He was not. Three weddings went ahead that week anyway, and Kiana went to every one.",

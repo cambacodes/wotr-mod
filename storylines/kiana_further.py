@@ -236,7 +236,7 @@ s("unborrowed_evening", "What she asks of you", [
 "I will try to find a tactful moment."
 "Please do. Immediately afterward may be unwise."''', c('[Stay with the agreement you have actually made.]', "history")),
     n("object", "Kiana", '''{n}She considers that longer than you expect.{/n}
-"Then say you object. Do not tell them what I feel. And if I ask you to stop, stop."
+"Then object. Loudly, if you like; you have the voice for it. But the next time you tell a room what I feel, I shall tell it what you look like asleep, and I shall not be kind."
 "I can do that."
 "I believe you. You have listened to me here. That matters more than devising a perfect answer for someone we may not see again."
 {n}Her hand finds yours on the arm of the chair.{/n}

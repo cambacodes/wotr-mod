@@ -61,7 +61,7 @@ s("guest_table", "Enough bowls for everyone", [
 "I like being with the Commander. I liked being with you before that. I don't want every good evening weighed against the bad ones to see whether I've recovered enough."
 {n}Lenna holds her cup with both hands.{/n}
 "I didn't mean it that way."
-"I know. I'm telling you how I heard it."
+"I know. I heard it anyway, with half the table listening, and I have been composing replies since the soup."
 {n}Kiana looks toward you. You stay with her gaze, and her shoulders ease a little.{/n}''',
       c('[Stay with the conversation.]', "history")),
     n("history", "Narrator", '''{n}Odrin places the opened jar in the middle of the table. Nobody reaches for it.{/n}
