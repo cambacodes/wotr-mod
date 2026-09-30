@@ -557,6 +557,20 @@ partner("herrax", "herrax", "herrax.committed", "herrax.closed", "The Keeper's N
         page_p('''The arches of Alushinyrra still did not know the Commander. Nothing had changed about that, and Herrax liked it that way. When the Commander came back, it was up the stairs, all of them, like everyone else, and without paying, like no one else.''', requires=(HX + "cost.coin_lost",)),
         page_p('''She traced the thin white line on the Commander's cheek, the one an incubus had once read a lie in, and said it was the only mark in the Delights she had not made herself, and the only one she would have kept anyway.''', requires=(HX + "cost.clawed_cheek",)),
     ), declined=HX + "declined")
+TE = "terendelev.trickster."
+partner("terendelev", "terendelev", "terendelev.committed", "terendelev.closed", "The Night Watch",
+    '''Terendelev did not go to Threshold. She could not fly there, and she would not have been let. She stood the night watch on the north turret above the Commander's empty rooms, with a pike and a brazier and a roll of clean linen in her pocket, and when the Worldwound's weather turned in her blood that night, the way an old break feels the rain, she did not sit down. She stood her post until the sixth bell, and then past it.''',
+    (
+        page_p('''At the rift the Commander pressed a hand to the wound that had been opened for her, and said her name into it the way a sentry gives the word at a gate. Far off, on a turret in Drezen, a silver-haired woman put her own hand flat over her breastbone, where the Commander's blood ran in her, and said "Here," to nobody, and the sentry beside her swore afterwards that the brazier flared white.''', requires=(called("terendelev"),)),
+        page_p('''The world buried the Commander. Terendelev stood a watch over the grave in plain sight of the whole citadel, three nights running, with the pike, and when the chaplain asked her gently what she thought she was guarding, she said: a wound. Nobody understood her. She did not explain.''', requires=(ON_RECORD,)),
+        page_p('''When the flask was opened in Drezen she was already there with clean linen, and changed the dressing before anyone else could speak, because it was the hour for it.''', requires=(H2,)),
+        page_p('''Whatever the Worldwound did that night, the wound she was made from stayed open. She said that was all the proof she needed of anything, and went back to her turret.''', requires=(TE + "cost.wound_open",)),
+    ), declined=TE + "declined",
+    deal=[[TE + "cost.wound_open"]],
+    call=call('''[Put your hand on the wound] "Terendelev. Stand to."''',
+        '''{n}The wound is still open. It has been open since the fire at Iz, and it answers your hand the way it answers hers every morning: warm, and a little wet, and quiet. You say her name into it, the way a sentry gives the word. It goes out over the rift and is swallowed, and then, very far off, on a wall you cannot see, someone who has sworn to stand between you and whatever comes stands to.{/n}''',
+        (PLAIN_CHOICE, (), (), ())),
+    ledger=("Terendelev: a wound, guarded", "I opened my wound over her bones and it has never closed. She changes the dressing every morning at the same hour, and has sworn to stand watch over it until one of us is dust. I have never been so well guarded, or so thoroughly in anyone's debt, and she insists it is the other way round."))
 
 # Existing pages that must yield to Last Call (doc 04 backlog): Nocticula's favour page is called in on her Last Call page instead.
 FORBID_ACTIVE = ("nocticula.trickster.defeated.epilogue.favour",)

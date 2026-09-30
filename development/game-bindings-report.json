@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 3484,
-  "unique_targets": 760,
+  "binding_uses": 3611,
+  "unique_targets": 779,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -25,6 +25,10 @@
     "3e4ce583dc71401588f33f8192c252cd": {
       "path": "Items/NewTrashLoot/NewJewelery/DarekSunhammersFake.jbp",
       "type": "BlueprintItemEquipmentNeck"
+    },
+    "816f244523b5455a85ae06db452d4330": {
+      "path": "Items/UsableSlotItem/TerendelevScaleItem.jbp",
+      "type": "BlueprintItemEquipmentUsable"
     },
     "32a037e97c3d5c54b85da8f639616c57": {
       "path": "Mythic/Azata/AzataDragon/AzataDragonUnit.jbp",
@@ -96,6 +100,10 @@
     },
     "e24a8cb4f83960748b5bead99d58a36e": {
       "path": "Units/NPC/Commoners/Act_1_WorldwoundIncursion/DefendersHeart/Refugees/Commoner_Noble_Female_Refugee2.jbp",
+      "type": "BlueprintUnit"
+    },
+    "9e8401e7703907e4d94189d5992dd13e": {
+      "path": "Units/NPC/Unique/Act_0_Prologue/Prologue_Kenabres/TerendelevHuman.jbp",
       "type": "BlueprintUnit"
     },
     "da4c28dd01413694f82b08b728a8c6e5": {
@@ -874,6 +882,10 @@
       "path": "World/Dialogs/c4/Palace/Audience_Areelu/Cue_0029.jbp",
       "type": "BlueprintCue"
     },
+    "af5d0b6be337672478f086357442cd15": {
+      "path": "World/Dialogs/c4/Palace/Audience_Areelu/Cue_0095.jbp",
+      "type": "BlueprintCue"
+    },
     "19786fae9c29f9d439e374bb857c2e84": {
       "path": "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
@@ -1114,6 +1126,18 @@
       "path": "World/Dialogs/c5/Iz/AreeluIntro/Cue_0014.jbp",
       "type": "BlueprintCue"
     },
+    "c132e5e4fabc68d49aad76af3f447eb6": {
+      "path": "World/Dialogs/c5/Iz/GalfreyAfter/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "4323895e05091eb40a206bcfb1394b6f": {
+      "path": "World/Dialogs/c5/Iz/GalfreyAfter/Cue_0028.jbp",
+      "type": "BlueprintCue"
+    },
+    "c37c6235f1748b144903529f78462c50": {
+      "path": "World/Dialogs/c5/Iz/GalfreyOnTheEdge/Cue_0005.jbp",
+      "type": "BlueprintCue"
+    },
     "09b65ca563cc63141aebf70b7abe7270": {
       "path": "World/Dialogs/c5/Iz/IrabethDies/AnswersList_0005.jbp",
       "type": "BlueprintAnswersList"
@@ -1141,6 +1165,14 @@
     "48a3a4ff8955b7045bac0ea06092e085": {
       "path": "World/Dialogs/c5/Iz/IrabethDies/IrabethDies_Iz_c5_dialog.jbp",
       "type": "BlueprintDialog"
+    },
+    "d0905746a5a015949ac39891ab4e5339": {
+      "path": "World/Dialogs/c5/Iz/IrabethSurvives/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "2a2a1beb1f22986499798b8e094d46f6": {
+      "path": "World/Dialogs/c5/Iz/IrabethSurvives/Cue_0010.jbp",
+      "type": "BlueprintCue"
     },
     "fb3a88e8ed751214c9136f87891ec07b": {
       "path": "World/Dialogs/c5/KTC_WintersunHelp/AnswersList_0027.jbp",
@@ -1193,6 +1225,10 @@
     "a4011b00473994b4dadc6aed381cf504": {
       "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_HepzamirahGhost/Cue_0016.jbp",
       "type": "BlueprintCue"
+    },
+    "66afc74ef27c7244eac8f8d376cd7947": {
+      "path": "World/Dialogs/c5/Mythic_Dragon/Items/TerendelevClaw.jbp",
+      "type": "BlueprintItem"
     },
     "c9e89c3d2d39ada4a85211f9be9733fd": {
       "path": "World/Dialogs/c5/Mythic_Trickster/Council_5-1/Answer_0051.jbp",
@@ -1758,6 +1794,18 @@
       "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/AnswersList_0004.jbp",
       "type": "BlueprintAnswersList"
     },
+    "71fbdd5c766802f4eac6dfe0612a2d46": {
+      "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Cue_0778.jbp",
+      "type": "BlueprintCue"
+    },
+    "fabb0f4a300ac7b4389c7bee48b07c77": {
+      "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Cue_0779.jbp",
+      "type": "BlueprintCue"
+    },
+    "ca71b79bc9a45b741bcc6599ef017fe7": {
+      "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Cue_0785.jbp",
+      "type": "BlueprintCue"
+    },
     "34a0d078b4ac51547a8f5e0e1c8e1e2c": {
       "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Cue_0880.jbp",
       "type": "BlueprintCue"
@@ -2008,6 +2056,10 @@
     },
     "8c2fdd760cc54b4bb874d2832ff14695": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/Chapter05_AreasDefault/Iz_Default/ManuscriptsAnemoraDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "42e220d5dadc4dfd8bb3ef23cae832eb": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/Chapter05_AreasDefault/Iz_Default/MonsterDead.jbp",
       "type": "BlueprintEtude"
     },
     "936af39436c74953b43a4165bfbcc9f9": {
@@ -2384,6 +2436,10 @@
     },
     "3a040afde22f4b742a2f607354ab17e7": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAeon/PlayerIsAeon.jbp",
+      "type": "BlueprintEtude"
+    },
+    "6b98ec3e704599149b99fe70b5f793ab": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAeon/AeonStates/TerendelevWasNotKilled.jbp",
       "type": "BlueprintEtude"
     },
     "3a82aba4de71b89458ac82949ed957c4": {
@@ -3295,6 +3351,36 @@
     "5a06af413442436a88c2362c9e9dcbd0": {
       "type": "BlueprintCue",
       "path": "RanRomance.Nura.NuraBook05Page002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "bbe7d7dbb92a4923a1ca4433e626a5ec": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Tere.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "8bf0fdc74bae4ef79dcfe04036e813ab": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Tere.TereBook05End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "4791f49d19624dafa2ea1ae6dd18c588": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Tere.TereBook05End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "30b3341acced4fa793dcc92dfe3587a9": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Tere.TereBook05End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "10fe0c7bd80d441c8688c37babc19f66": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Tere.TereBook05End.Configure",
       "provenance": "reviewed-parent-source",
       "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
     }

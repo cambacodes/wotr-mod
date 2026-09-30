@@ -17,6 +17,7 @@ try {
         'reference/canon-review/expansion-parent-bindings.json'
         'reference/canon-review/nurah-parent-bindings.json'
         'reference/canon-review/nurah-parent-runtime-cue-bindings.json'
+        'reference/canon-review/terendelev-parent-bindings.json'
     ) | ForEach-Object { Join-Path $PSScriptRoot $_ } | Where-Object { Test-Path -LiteralPath $_ }) -join [IO.Path]::PathSeparator
 
     & $pythonPath expansion.py

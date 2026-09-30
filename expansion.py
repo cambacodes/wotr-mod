@@ -67,6 +67,7 @@ from storylines import shamira_trickster, shamira_mind, shamira_dream
 from storylines import jannah_trickster, jannah_circle
 from storylines import nenio_trickster, nenio_folios
 from storylines import herrax_trickster, herrax_house
+from storylines import terendelev_trickster, terendelev_watch
 from storylines import rrt_ui
 from storylines import rrt_portraits
 from storylines import scene_kinds
@@ -490,6 +491,14 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(herrax_trickster.SCENES))
     payload["Scenes"].extend(copy.deepcopy(herrax_house.SCENES))
     herrax_trickster.integrate(payload)
+    # Terendelev: a new relationship (trickster/terendelev.md; 11-ROSTER-PLAN-2 §2, R3 build sheet): restitution in the
+    # Wound's blood at her burning bones at Iz (inline on Galfrey's or Irabeth's post-battle list), a late page, and the
+    # courtship on her presence in Drezen (terendelev_watch). Distinct from the unregistered terendelev_continuation draft.
+    payload["Relationships"]["terendelev"] = copy.deepcopy(terendelev_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(terendelev_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(terendelev_watch.SCENES))
+    terendelev_trickster.integrate(payload)
+    terendelev_watch.integrate(payload)
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
     trickster_engine(payload)
