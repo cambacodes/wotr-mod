@@ -630,7 +630,7 @@ def return_nodes(scarred):
             c("Continue", "why")),
         ga("e_legend", '''"The Queen of the chronicles. Chosen of the Inheritor, never doubted, never slept." {n}Dry as dust.{/n} "The knights wept. I expect half of them will name daughters after that woman. I should very much like to meet her. She sounds exhausting." {n}A pause.{/n} "It was well done, Commander. It was what Drezen needed. Do not ever do it to me again."''',
             c("Continue", "why")),
-        ga("e_sign", '''"And I heard the line about the boots." {n}Something happens at the corner of her mouth that she does not permit to become a smile.{/n} "A knight of a minor order, who slept under canvas. In front of the Inquisitor. In front of the altar of the Inheritor." {n}She shakes her head slowly.{/n} "You are a very dangerous person to be dead near, Commander. I laughed. I am told that is not what one does at one's own vigil."''',
+        ga("e_sign", '''"And the line about the boots." {n}Something happens at the corner of her mouth that she does not permit to become a smile.{/n} "A knight of a minor order, who slept under canvas. Before the altar of the Inheritor and half of Drezen." {n}She shakes her head slowly.{/n} "You are a very dangerous person to be dead near, Commander. I laughed when I heard it. I am told that is not what one does about one's own vigil."''',
             c("Continue", "why")),
         ga("e_none", '''"Drezen rang every bell it had. They could hear it in the field camp; they could hear it in Kenabres, I should think." {n}She is quiet.{/n} "I stood outside the walls with a Crows' squire and listened to a city grieve for me. I do not recommend it either. It is very hard to know what to do with one's hands."''',
             c("Continue", "why")),
@@ -702,6 +702,7 @@ SCENES.append(reaction("Irabeth", P + "react.irabeth.drill", (DRILL, P + "kitran
 SCENES.append(reaction("Seelah", P + "react.seelah.majesty", (RETURNED, SEELAH_BED),
     '''{n}Seelah is sitting on the edge of the practice ring, spinning a copper on her knuckle and not catching it.{/n} "I said it. At Iz. 'Your Majesty!' I shouted it like an idiot, the way you'd shout at somebody about to fall off a roof." {n}The copper drops. She leaves it.{/n} "And I saw the wound move when I said it, Commander, and I told myself I didn't." {n}She looks up.{/n} "I was a street thief before I was a paladin. I know a disguise when I see one buying boots in the market. I'm not going to say anything. I'm just going to pray very hard that the Inheritor thinks what you did was mercy, because I've decided that I do."''',
     answer_list=SEELAH_HUB, relationship=REL, forbids=("seelah_dead", "seelah_gone", CLOSED),
+    ForbidOverrides={"seelah_dead": "seelah.trickster.returned", "seelah_gone": "seelah.trickster.returned"},
     entry='"You look like you\'ve seen a ghost, Seelah."', chapter=5, last=5, delay=24, portrait="Seelah"))
 
 SCENES.append(reaction("Hulrun", P + "react.hulrun.door", (RETURNED,),
@@ -843,4 +844,4 @@ def integrate(payload):
         payload["Derived"][key] = [list(g) for g in groups]
     payload.setdefault("PortraitFallbacks", {}).setdefault("Galfrey", PORTRAIT_GUID)
     # A completed native romance and the Iz branch taken stay true once observed.
-    payload["PermanentEtudes"] = sorted(set(payload.get("PermanentEtudes", [])) | {FINISHED, MANU})
+    payload["PermanentEtudes"] = sorted(set(payload.get("PermanentEtudes", [])) | {FINISHED, MANU, KC_KEPT})

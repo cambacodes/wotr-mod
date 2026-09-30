@@ -322,6 +322,14 @@ internal static class GalfreyTricksterTests
         Program.Walk(S(P + "kitrane.iz"), manuIz, (id, _) => seen.Add(id));
         check(seen.Contains("priestess") && !seen.Contains("dragon") && !seen.Contains("hate") && seen.Contains("hate_manu"),
             "Trk_Galfrey_Manuscripts: the priestess's branch recalls the dragon's claw.");
+        // A returned Seelah is in Drezen: the pie is hers, and her reaction plays.
+        var seelahBack = World(story, 5, back.Flags.Concat(new[] { "galfrey.seelah_at_bed", "seelah_dead", "seelah.trickster.returned", P + "first_morning" }).ToArray());
+        seelahBack.Hour += 100;
+        var pie = new List<string>();
+        Program.Walk(S(P + "kitrane.seelah"), seelahBack, (id, _) => pie.Add(id));
+        check(pie.Contains("seelah") && !pie.Contains("stranger") && !pie.Contains("stranger_absent")
+              && Rules.Available(story, S(P + "react.seelah.majesty"), seelahBack),
+            "Trk_Galfrey_Coexistence: a returned Seelah is written as absent.");
         check(native.Has(P + "partner") && native.Has("galfrey.harem.eligible")
               && pages.Count(s => Rules.Available(story, s, native)) == 1 && Rules.Available(story, S(P + "epilogue.native"), native),
             "Trk_Galfrey_NativeFirst: the native world does not count her once, with exactly one page.");

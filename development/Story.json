@@ -363429,7 +363429,7 @@
         {
           "Id": "e_sign",
           "Speaker": "Galfrey",
-          "Text": "\"And I heard the line about the boots.\" {n}Something happens at the corner of her mouth that she does not permit to become a smile.{/n} \"A knight of a minor order, who slept under canvas. In front of the Inquisitor. In front of the altar of the Inheritor.\" {n}She shakes her head slowly.{/n} \"You are a very dangerous person to be dead near, Commander. I laughed. I am told that is not what one does at one's own vigil.\"",
+          "Text": "\"And the line about the boots.\" {n}Something happens at the corner of her mouth that she does not permit to become a smile.{/n} \"A knight of a minor order, who slept under canvas. Before the altar of the Inheritor and half of Drezen.\" {n}She shakes her head slowly.{/n} \"You are a very dangerous person to be dead near, Commander. I laughed when I heard it. I am told that is not what one does about one's own vigil.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -363885,7 +363885,7 @@
         {
           "Id": "e_sign",
           "Speaker": "Galfrey",
-          "Text": "\"And I heard the line about the boots.\" {n}Something happens at the corner of her mouth that she does not permit to become a smile.{/n} \"A knight of a minor order, who slept under canvas. In front of the Inquisitor. In front of the altar of the Inheritor.\" {n}She shakes her head slowly.{/n} \"You are a very dangerous person to be dead near, Commander. I laughed. I am told that is not what one does at one's own vigil.\"",
+          "Text": "\"And the line about the boots.\" {n}Something happens at the corner of her mouth that she does not permit to become a smile.{/n} \"A knight of a minor order, who slept under canvas. Before the altar of the Inheritor and half of Drezen.\" {n}She shakes her head slowly.{/n} \"You are a very dangerous person to be dead near, Commander. I laughed when I heard it. I am told that is not what one does about one's own vigil.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -364414,6 +364414,10 @@
       "Optional": false,
       "Relationship": "galfrey",
       "Reaction": true,
+      "ForbidOverrides": {
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
+      },
       "AnswerLists": [
         "417fa384f3250634bb71859fbc913453"
       ]
@@ -367309,6 +367313,20 @@
                 "galfrey.trickster.carried.crows_drezen"
               ],
               "Forbids": [
+                "irabeth_dead",
+                "galfrey.trickster.react.irabeth.learned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "drezen_knows",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.carried.crows_drezen",
+                "galfrey.trickster.react.irabeth.learned"
+              ],
+              "Forbids": [
                 "irabeth_dead"
               ],
               "Abort": false
@@ -367333,6 +367351,21 @@
                 "galfrey.trickster.carried.crows_drezen",
                 "irabeth_dead",
                 "irabeth.trickster.returned"
+              ],
+              "Forbids": [
+                "galfrey.trickster.react.irabeth.learned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "drezen_knows",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.carried.crows_drezen",
+                "irabeth_dead",
+                "irabeth.trickster.returned",
+                "galfrey.trickster.react.irabeth.learned"
               ],
               "Forbids": [],
               "Abort": false
@@ -367492,6 +367525,22 @@
             {
               "Text": "\"Do you want me to tell her?\"",
               "Next": "talk",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
+          "Id": "drezen_knows",
+          "Speaker": "Galfrey",
+          "Text": "\"Knight Tirabade was holding Drezen when I fell, and the Crows' sergeant has told her, drunk, which he never is.\" {n}Galfrey's hands are folded on the pommel of her sword, very still.{/n} \"She knows. She crosses the square every evening and does not look at me, and now it is a choice she makes, not a thing she does not see.\" {n}A breath.{/n} \"I find I would rather be refused by her with her eyes open than grieved by her with them shut. It is a very small mercy. It is hers.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -367618,6 +367667,20 @@
                 "galfrey.trickster.carried.crows_drezen"
               ],
               "Forbids": [
+                "irabeth_dead",
+                "galfrey.trickster.react.irabeth.learned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "drezen_knows",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.carried.crows_drezen",
+                "galfrey.trickster.react.irabeth.learned"
+              ],
+              "Forbids": [
                 "irabeth_dead"
               ],
               "Abort": false
@@ -367642,6 +367705,21 @@
                 "galfrey.trickster.carried.crows_drezen",
                 "irabeth_dead",
                 "irabeth.trickster.returned"
+              ],
+              "Forbids": [
+                "galfrey.trickster.react.irabeth.learned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "drezen_knows",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.carried.crows_drezen",
+                "irabeth_dead",
+                "irabeth.trickster.returned",
+                "galfrey.trickster.react.irabeth.learned"
               ],
               "Forbids": [],
               "Abort": false
@@ -367810,6 +367888,22 @@
           "Portrait": "Galfrey"
         },
         {
+          "Id": "drezen_knows",
+          "Speaker": "Galfrey",
+          "Text": "\"Knight Tirabade was holding Drezen when I fell, and the Crows' sergeant has told her, drunk, which he never is.\" {n}Galfrey's hands are folded on the pommel of her sword, very still.{/n} \"She knows. She crosses the square every evening and does not look at me, and now it is a choice she makes, not a thing she does not see.\" {n}A breath.{/n} \"I find I would rather be refused by her with her eyes open than grieved by her with them shut. It is a very small mercy. It is hers.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        },
+        {
           "Id": "died_back",
           "Speaker": "Galfrey",
           "Text": "\"Knight Tirabade fell at Iz before I could give her anything to carry, and came back, I am told, on some errand of yours.\" {n}Galfrey's hands are folded on the pommel of her sword, very still.{/n} \"She crosses the square every evening. She has not looked at me once. I cannot tell whether that is because she does not know, or because she does.\" {n}A breath.{/n} \"Either way, it is her silence. I shall not take it from her.\"",
@@ -367922,7 +368016,7 @@
         {
           "Id": "read",
           "Speaker": "Galfrey",
-          "Text": "\"It let go on the road, as you said it might. At the second milestone. I felt it open like a hand.\" {n}She fastens the collar again.{/n} \"I have thought about it a great deal since. You saw it flinch at my title. You wagered my life on what you saw. You were right, and you did not know that you were right, and you did it anyway.\"",
+          "Text": "\"It let go when the sergeant hammered the seal onto the Queen's coffin, with her name on the lid, after an hour in which I had no heartbeat at all. I felt it open like a hand.\" {n}She fastens the collar again.{/n} \"I have thought about it a great deal since. You saw it flinch at my title. You wagered my life on what you saw. You were right, and you did not know that you were right, and you did it anyway.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -368197,7 +368291,7 @@
         {
           "Id": "read",
           "Speaker": "Galfrey",
-          "Text": "\"It let go on the road, as you said it might. At the second milestone. I felt it open like a hand.\" {n}She fastens the collar again.{/n} \"I have thought about it a great deal since. You saw it flinch at my title. You wagered my life on what you saw. You were right, and you did not know that you were right, and you did it anyway.\"",
+          "Text": "\"It let go when the sergeant hammered the seal onto the Queen's coffin, with her name on the lid, after an hour in which I had no heartbeat at all. I felt it open like a hand.\" {n}She fastens the collar again.{/n} \"I have thought about it a great deal since. You saw it flinch at my title. You wagered my life on what you saw. You were right, and you did not know that you were right, and you did it anyway.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -368480,7 +368574,7 @@
               "Abort": false
             },
             {
-              "Text": "\"Is it fair to make her a Crow? The Crows are a lie.\"",
+              "Text": "\"Is it fair to make her a Crow? Kitrane is a lie.\"",
               "Next": "lie",
               "Set": [],
               "Requires": [],
@@ -368525,7 +368619,7 @@
         {
           "Id": "lie",
           "Speaker": "Galfrey",
-          "Text": "{n}She is quiet.{/n} \"Yes. They are. They were a lie I told in a war camp, and three good men wore it for me, and one of them is in my tomb.\" {n}She looks at the girl.{/n} \"But a lie that people keep, and bleed for, and teach the sword under, becomes something else in time. I have seen it happen to kingdoms.\" {n}A dry note.{/n} \"Mendev was a lie once. A handful of knights and a grudge. Ask any Sarkorian.\"",
+          "Text": "{n}She is quiet.{/n} \"Kitrane is. The Crows are real enough: an old order of the Queen's guard, too small for anyone to check. But I made myself one of them in a war camp, and three good men wore my lie with me, and one of them is in my tomb.\" {n}She looks at the girl.{/n} \"But a lie that people keep, and bleed for, and teach the sword under, becomes something else in time. I have seen it happen to kingdoms.\" {n}A dry note.{/n} \"Mendev was a lie once. A handful of knights and a grudge. Ask any Sarkorian.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -368651,7 +368745,7 @@
               "Abort": false
             },
             {
-              "Text": "\"Is it fair to make her a Crow? The Crows are a lie.\"",
+              "Text": "\"Is it fair to make her a Crow? Kitrane is a lie.\"",
               "Next": "lie",
               "Set": [],
               "Requires": [],
@@ -368696,7 +368790,7 @@
         {
           "Id": "lie",
           "Speaker": "Galfrey",
-          "Text": "{n}She is quiet.{/n} \"Yes. They are. They were a lie I told in a war camp, and three good men wore it for me, and one of them is in my tomb.\" {n}She looks at the girl.{/n} \"But a lie that people keep, and bleed for, and teach the sword under, becomes something else in time. I have seen it happen to kingdoms.\" {n}A dry note.{/n} \"Mendev was a lie once. A handful of knights and a grudge. Ask any Sarkorian.\"",
+          "Text": "{n}She is quiet.{/n} \"Kitrane is. The Crows are real enough: an old order of the Queen's guard, too small for anyone to check. But I made myself one of them in a war camp, and three good men wore my lie with me, and one of them is in my tomb.\" {n}She looks at the girl.{/n} \"But a lie that people keep, and bleed for, and teach the sword under, becomes something else in time. I have seen it happen to kingdoms.\" {n}A dry note.{/n} \"Mendev was a lie once. A handful of knights and a grudge. Ask any Sarkorian.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -370820,7 +370914,7 @@
               "Abort": false
             },
             {
-              "Text": "\"Then let's take it slowly. We have time now.\"",
+              "Text": "[Flirt] \"Then I'll court you properly. With flowers, and a very bad poem.\"",
               "Next": "slow",
               "Set": [
                 "galfrey.trickster.kitrane.conversation"
@@ -370867,7 +370961,7 @@
         {
           "Id": "slow",
           "Speaker": "Galfrey",
-          "Text": "\"Slowly.\" {n}She looks at you as if you had offered her something rare.{/n} \"I have done very little slowly since the Worldwound opened. There was always a war, or a council, or a bishop at the door.\" {n}She nods.{/n} \"Very well. Slowly. Do not mistake it for reluctance, Commander. It is appetite, taking its time.\"",
+          "Text": "\"A poem.\" {n}She looks at you as if you had offered her something rare and slightly alarming.{/n} \"I have had odes written to me by three court poets and a prince of Taldor who rhymed 'Galfrey' with 'palfrey' for eleven stanzas.\" {n}The corner of her mouth goes.{/n} \"Make it worse than his. I shall know if you do not try.\"",
           "Choices": [
             {
               "Text": "[Leave her with that.]",
@@ -370994,7 +371088,7 @@
               "Abort": false
             },
             {
-              "Text": "\"Then let's take it slowly. We have time now.\"",
+              "Text": "[Flirt] \"Then I'll court you properly. With flowers, and a very bad poem.\"",
               "Next": "slow",
               "Set": [
                 "galfrey.trickster.kitrane.conversation"
@@ -371041,7 +371135,7 @@
         {
           "Id": "slow",
           "Speaker": "Galfrey",
-          "Text": "\"Slowly.\" {n}She looks at you as if you had offered her something rare.{/n} \"I have done very little slowly since the Worldwound opened. There was always a war, or a council, or a bishop at the door.\" {n}She nods.{/n} \"Very well. Slowly. Do not mistake it for reluctance, Commander. It is appetite, taking its time.\"",
+          "Text": "\"A poem.\" {n}She looks at you as if you had offered her something rare and slightly alarming.{/n} \"I have had odes written to me by three court poets and a prince of Taldor who rhymed 'Galfrey' with 'palfrey' for eleven stanzas.\" {n}The corner of her mouth goes.{/n} \"Make it worse than his. I shall know if you do not try.\"",
           "Choices": [
             {
               "Text": "[Leave her with that.]",
@@ -371252,7 +371346,11 @@
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -150
+              }
             }
           ],
           "Portrait": "Galfrey"
@@ -371485,7 +371583,11 @@
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -150
+              }
             }
           ],
           "Portrait": "Galfrey"
@@ -373998,6 +374100,32 @@
             },
             {
               "Text": "Continue",
+              "Next": "seelah",
+              "Set": [],
+              "Requires": [
+                "galfrey.seelah_at_bed",
+                "seelah_dead",
+                "seelah.trickster.returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "seelah",
+              "Set": [],
+              "Requires": [
+                "galfrey.seelah_at_bed",
+                "seelah_gone",
+                "seelah.trickster.returned"
+              ],
+              "Forbids": [
+                "seelah_dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
               "Next": "seelah_drezen",
               "Set": [],
               "Requires": [],
@@ -374010,13 +374138,42 @@
             },
             {
               "Text": "Continue",
+              "Next": "seelah_drezen",
+              "Set": [],
+              "Requires": [
+                "seelah_dead",
+                "seelah.trickster.returned"
+              ],
+              "Forbids": [
+                "galfrey.seelah_at_bed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "seelah_drezen",
+              "Set": [],
+              "Requires": [
+                "seelah_gone",
+                "seelah.trickster.returned"
+              ],
+              "Forbids": [
+                "galfrey.seelah_at_bed",
+                "seelah_dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
               "Next": "stranger",
               "Set": [],
               "Requires": [
                 "seelah_dead",
                 "galfrey.seelah_at_bed"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "seelah.trickster.returned"
+              ],
               "Abort": false
             },
             {
@@ -374027,7 +374184,8 @@
                 "seelah_dead"
               ],
               "Forbids": [
-                "galfrey.seelah_at_bed"
+                "galfrey.seelah_at_bed",
+                "seelah.trickster.returned"
               ],
               "Abort": false
             },
@@ -374040,7 +374198,8 @@
                 "galfrey.seelah_at_bed"
               ],
               "Forbids": [
-                "seelah_dead"
+                "seelah_dead",
+                "seelah.trickster.returned"
               ],
               "Abort": false
             },
@@ -374053,7 +374212,8 @@
               ],
               "Forbids": [
                 "seelah_dead",
-                "galfrey.seelah_at_bed"
+                "galfrey.seelah_at_bed",
+                "seelah.trickster.returned"
               ],
               "Abort": false
             }
@@ -374243,6 +374403,32 @@
             },
             {
               "Text": "Continue",
+              "Next": "seelah",
+              "Set": [],
+              "Requires": [
+                "galfrey.seelah_at_bed",
+                "seelah_dead",
+                "seelah.trickster.returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "seelah",
+              "Set": [],
+              "Requires": [
+                "galfrey.seelah_at_bed",
+                "seelah_gone",
+                "seelah.trickster.returned"
+              ],
+              "Forbids": [
+                "seelah_dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
               "Next": "seelah_drezen",
               "Set": [],
               "Requires": [],
@@ -374255,13 +374441,42 @@
             },
             {
               "Text": "Continue",
+              "Next": "seelah_drezen",
+              "Set": [],
+              "Requires": [
+                "seelah_dead",
+                "seelah.trickster.returned"
+              ],
+              "Forbids": [
+                "galfrey.seelah_at_bed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "seelah_drezen",
+              "Set": [],
+              "Requires": [
+                "seelah_gone",
+                "seelah.trickster.returned"
+              ],
+              "Forbids": [
+                "galfrey.seelah_at_bed",
+                "seelah_dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
               "Next": "stranger",
               "Set": [],
               "Requires": [
                 "seelah_dead",
                 "galfrey.seelah_at_bed"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "seelah.trickster.returned"
+              ],
               "Abort": false
             },
             {
@@ -374272,7 +374487,8 @@
                 "seelah_dead"
               ],
               "Forbids": [
-                "galfrey.seelah_at_bed"
+                "galfrey.seelah_at_bed",
+                "seelah.trickster.returned"
               ],
               "Abort": false
             },
@@ -374285,7 +374501,8 @@
                 "galfrey.seelah_at_bed"
               ],
               "Forbids": [
-                "seelah_dead"
+                "seelah_dead",
+                "seelah.trickster.returned"
               ],
               "Abort": false
             },
@@ -374298,7 +374515,8 @@
               ],
               "Forbids": [
                 "seelah_dead",
-                "galfrey.seelah_at_bed"
+                "galfrey.seelah_at_bed",
+                "seelah.trickster.returned"
               ],
               "Abort": false
             }
@@ -375886,7 +376104,7 @@
         {
           "Id": "heard",
           "Speaker": "Galfrey",
-          "Text": "\"She heard it.\" {n}Quietly.{/n} \"She is a Crow now. She will carry it the way the others carry it, and she will never have to say a false word, because every word I gave her was true. Knight Tirabade taught me that, at Iz, without meaning to.\" {n}She watches the girl scour.{/n} \"I have learned more from knights these last weeks than in a century of being served by them.\"",
+          "Text": "\"She heard it.\" {n}Quietly.{/n} \"She is a Crow now. She will carry it the way the others carry it, and she will never have to say a false word, because every word I gave her was true. The knights who carried me out of Iz taught me that, without meaning to.\" {n}She watches the girl scour.{/n} \"I have learned more from knights these last weeks than in a century of being served by them.\"",
           "Choices": [
             {
               "Text": "[Leave her watching her squire.]",
@@ -376045,7 +376263,7 @@
         {
           "Id": "heard",
           "Speaker": "Galfrey",
-          "Text": "\"She heard it.\" {n}Quietly.{/n} \"She is a Crow now. She will carry it the way the others carry it, and she will never have to say a false word, because every word I gave her was true. Knight Tirabade taught me that, at Iz, without meaning to.\" {n}She watches the girl scour.{/n} \"I have learned more from knights these last weeks than in a century of being served by them.\"",
+          "Text": "\"She heard it.\" {n}Quietly.{/n} \"She is a Crow now. She will carry it the way the others carry it, and she will never have to say a false word, because every word I gave her was true. The knights who carried me out of Iz taught me that, without meaning to.\" {n}She watches the girl scour.{/n} \"I have learned more from knights these last weeks than in a century of being served by them.\"",
           "Choices": [
             {
               "Text": "[Leave her watching her squire.]",
@@ -380048,8 +380266,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -385691,6 +385909,7 @@
     "ending.trickster_allplanes",
     "ending.trickster_allplanes_fw",
     "ending.trickster_full",
+    "galfrey.kc_after_fane",
     "galfrey.romance_finished",
     "iz.manuscripts",
     "jerribeth.unavailable",
