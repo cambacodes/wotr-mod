@@ -31,11 +31,11 @@ AREELU_COURTED = "areelu.started"      # node variant only: the Commander is kee
 # --- Chapter 3 (T): a letter from Nerosyan -------------------------------------------------------------------------------
 
 visit(Y + "ch3.nerosyan", "The Half Measure", [
-    nar("start", '''{n}A letter finds you three days after the Fane, carried up from the south by a Mendevian courier who says the woman who gave it to him paid him in advance, in old coin, and told him the Commander would know her by her hand. The hand is square and upright, pressed hard into the paper, as if its owner did not trust ink to stay where it was put.{/n}''',
+    nar("start", '''{n}A letter finds you, travel-stained and much handled, carried by the crusade's couriers from Nerosyan. The last of them, a Mendevian sergeant, says the woman who gave it to him paid him in advance, in old coin, and told him the Commander would know her by her hand. The hand is square and upright, pressed hard into the paper, as if its owner did not trust ink to stay where it was put.{/n}''',
         c("[Read it.]", "one")),
     yn("one", '''"Commander,
 "The Hand of the Inheritor knew me. I did not expect that. I thought, after seventy years, that a herald would have to be told. He looked at me the way you look at a letter you have been waiting a long time for, and then he put his hand on my head, and I am not going to write down what I did then.
-"They brought me up out of the Fane and put me on a cart for Nerosyan with the wounded, because I would not stay in a bed. I have been in Nerosyan four days."''',
+"They brought me up out of the Fane and put me on a cart for Nerosyan with the wounded, because I would not stay in a bed. I have been in Nerosyan since."''',
        c("Continue", "carries", requires=(CARRIES,)),
        c("Continue", "judges", requires=(JUDGES,), forbids=(CARRIES,)),
        c("Continue", "refused", forbids=(CARRIES, JUDGES))),
@@ -55,7 +55,7 @@ visit(Y + "ch3.nerosyan", "The Half Measure", [
 "The chaplains are taking it down next week and sending it up to Drezen on an ox-cart, because Drezen is ours again and the martyr ought to go home. I am going to Drezen too. I would like to get there before my statue does. I would like, if you are anywhere near the city, to see what you have done with my iron.
 "Y."''',
        c("[Fold the letter away.]", flags=(CH3_READ,))),
-], requires=("trickster.ever",), forbids=(CH3_READ,), delay=72, kind="letter", chapters=(3,), areas=(),
+], requires=("trickster.ever",), forbids=(CH3_READ,), delay=48, kind="letter", chapters=(3, 4), areas=(),
     RequiresAnyGroups=[[SWAPPED, yt.FANE_REFUSED]])
 
 

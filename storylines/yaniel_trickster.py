@@ -398,8 +398,14 @@ visit(Y + "ch5.found_late", "A room that floods", [
     yn("msg", '''"The paladin says," {n}the boy recites,{/n} "that she has taken the room in the old east gate tower, the one that floods, and that nobody is to try to move her to the cathedral close with the widows, and that she is not anybody's relic, and that if the Commander wants to see the iron she gave away, the Commander knows which wall she is on."
 {n}He takes a breath.{/n} "And she said to say she has not been sick yet. She said you would know what that meant."
 {n}He hesitates.{/n} "She also said, if the Commander asked how she was, to say she was standing up. I don't know what that means, my lord. She said you would."''',
-       c("Continue", "carries", requires=(CARRIES,)),
-       c("Continue", "judges", forbids=(CARRIES,))),
+       c("Continue", "carries", requires=(CARRIES, HOLY)),
+       c("Continue", "carries_plain", requires=(CARRIES,), forbids=(HOLY,)),
+       c("Continue", "judges", requires=(HELD,), forbids=(CARRIES,)),
+       c("Continue", "judges_empty", forbids=(CARRIES, HELD))),
+    nar("carries_plain", '''{n}That night you see her from the citadel: a lean shape against the stars on the broken parapet of the east gate, with the sword you gave her across her shoulder like a sentry's pike, turning her head slowly from one end of the ash to the other.{/n}''',
+        c('"Tell her I know which wall."', flags=(RETURNED, STARTED))),
+    nar("judges_empty", '''{n}That night you see her from the citadel: a lean shape against the stars on the broken parapet of the east gate, standing her watch with a borrowed spear. Once, when you cross the courtyard, the shape on the wall turns to follow you, and you know without being told that she is looking at your empty hip.{/n}''',
+        c('"Tell her I know which wall."', flags=(RETURNED, STARTED))),
     nar("carries", '''{n}That night you see her from the citadel: a lean shape against the stars on the broken parapet of the east gate, and every so often, when something moves out in the ash, a thin line of gold where she lifts the sword to look at it.{/n}''',
         c('"Tell her I know which wall."', flags=(RETURNED, STARTED))),
     nar("judges", '''{n}That night you see her from the citadel: a lean shape against the stars on the broken parapet of the east gate, standing her watch with a borrowed spear. Once, when you cross the courtyard with Radiance on your hip, the shape on the wall turns to follow you until you are through the door.{/n}''',
@@ -439,8 +445,11 @@ visit(Y + "verdict.letter", "What Iz was like", [
 
 visit(Y + "verdict.wall", "After Iz", [
     nar("start", '''{n}She is on the east wall when you come up, with the sword you put in her hands after Iz across her knees and a whetstone going along it in long, slow strokes. She does not look up.{/n}''',
-        c("Continue", "talk")),
-    yn("talk", '''"You gave me this after the demon lord was already beaten," {n}she says.{/n} "I noticed. I am not a fool. Whatever it was going to do at Iz, it did not do it for me, and it did not do it for you either. It hung on your hip in a wagon, or it stayed in Drezen, and the war went on without it."
+        c("Continue", "heard", requires=(SANG,)),
+        c("Continue", "talk", forbids=(SANG,))),
+    yn("heard", '''"The foot coming back down the road say it sang at Iz," {n}she says.{/n} "In your hand, with Deskari's voice going over the city. And then you came home and gave it to me on my wall." {n}The whetstone pauses.{/n} "I do not know whether that was the kindest thing anybody has done for me, or the strangest. It had already done the one thing it was made for. You gave me the rest."''',
+       c("Continue", "talk")),
+    yn("talk", '''"You gave me this after the demon lord was already beaten," {n}she says.{/n} "I noticed. I am not a fool. Where it was that day is between you and it; I was not there, and I will not guess."
 "So I have been taking it out on the ash every night. The things that come up out of the Wound do not know it was late." {n}The whetstone stops.{/n} "We are not square, Commander. Come up to my room tomorrow. I want to settle it."''',
        c('"Tomorrow."', flags=(VERDICT,))),
 ], requires=("trickster.ever", RETURNED, IZ, CARRIES, HANDED_LATE), forbids=(VERDICT,), delay=24)
@@ -525,8 +534,13 @@ TRADE_ROOM = '''{n}The room in the old east gate tower is exactly as bad as she 
 TRADE_BODY = [
     yn("carries", '''{n}She unbuckles the saddle-leather scabbard from her hip, and holds Radiance out to you across the room, hilt first, the way she did in the Fane.{/n}
 "Your sword for my shackle," {n}she says,{/n} "and we are square."''',
-       c("Continue", "carries_sang", requires=(HOLY,)),
-       c("Continue", "carries_quiet", forbids=(HOLY,))),
+       c("Continue", "carries_late", requires=(HANDED_LATE,)),
+       c("Continue", "carries_sang", requires=(HOLY,), forbids=(HANDED_LATE,)),
+       c("Continue", "carries_quiet", forbids=(HOLY, HANDED_LATE))),
+    yn("carries_late", '''"You gave me this after Iz, on my own wall, when the demon lord was already beaten. I have stood every watch since with it. Nothing that has come up out of the ash has got past it yet. That is a small thing, next to Iz. It is not a small thing to me. Take it back now, and give me my iron, and we are two soldiers who did each other a good turn in a bad place, and nobody owes anybody."''',
+       c("Continue", "told", requires=(MINAGHO_TOLD,)),
+       c("Continue", "hid", requires=(MINAGHO_SECRET,), forbids=(MINAGHO_TOLD,)),
+       c("Continue", "ask", forbids=(MINAGHO_TOLD, MINAGHO_SECRET))),
     yn("carries_sang", '''"It sang for me at Iz. I have thought about that every night since. You gave me that, and it cost you the only song that sword will ever sing for you. I cannot give it back. I can give you the sword. Take it, and give me my iron, and we are two soldiers who did each other a good turn in a bad place, and nobody owes anybody."''',
        c("Continue", "told", requires=(MINAGHO_TOLD,)),
        c("Continue", "hid", requires=(MINAGHO_SECRET,), forbids=(MINAGHO_TOLD,)),
@@ -724,6 +738,8 @@ COMMON = (
     p("{n}Radiance stayed in Yaniel's hands. The Church of Iomedae asked for it back four times in the first year of the peace, politely, and then stopped asking. It never sang again, so far as anyone knew; she said once had been enough, and that she had heard it for both of them.{/n}", requires=(CARRIES, HOLY)),
     p("{n}Radiance stayed in Yaniel's hands. The Church of Iomedae asked for it back four times in the first year of the peace, politely, and then stopped asking. It never sang for her, and she never asked it to; she said it was a sword, and she was a soldier, and that was enough for both of them.{/n}", requires=(CARRIES,), forbids=(HOLY,)),
     p("{n}Radiance hung in the Commander's hall afterwards, not on the wall, where Yaniel had said it must never hang, but on a peg by the door at the height of a hand, so that it could be taken down in a hurry. It was, twice.{/n}", requires=(JUDGES,), forbids=(OATH_BROKEN,)),
+    p("{n}When the Commander came back from the Threshold, Yaniel was at the gate, and she looked at the Commander's hip before she looked at anything else. Radiance was there. She said that was proof enough that it had gone into the Wound and come out again, which it was not quite, and she knew it, and she let it be enough anyway. She never asked about the oath again.{/n}", any_groups=((OATH_PENDING, OATH_UNPROVEN),), requires=(HELD,)),
+    p("{n}When the Commander came back from the Threshold, Yaniel was at the gate, and she looked at the Commander's hip before she looked at anything else. Radiance was not there. She did not ask where it was. She said, to nobody in particular, that she had sworn a stranger to carry her sword into the Wound and did not know to this day whether it had gone, and that not knowing was a thing she would carry herself, since somebody had to.{/n}", any_groups=((OATH_PENDING, OATH_UNPROVEN),), forbids=(HELD,)),
     p("{n}The painted martyr went into the cathedral of Drezen at midsummer, as the chaplains had planned. The chaplains never did find out why the Commander's household laughed every time the procession went by it.{/n}", requires=(NICHE,)),
     p("{n}The Half Measure in Nerosyan put her roast back on its board, on the old recipe, and wrote her name beside it in chalk. She ate there every spring, under the old tree by the town hall, when it was in bloom.{/n}", requires=(B_ROAST,)),
     p("{n}An old merchant of Nerosyan with a crutch and a cloudy eye was carried up to Drezen once more before he died, to see the gate. She held his hand on the parapet for an afternoon, and afterwards she would never say what they talked about, except that it was mostly turnips.{/n}", requires=(B_REFUGEE,)),

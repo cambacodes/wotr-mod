@@ -328,13 +328,27 @@ internal static class YanielTricksterTests
         var lateRoad = Take(wall, Later(story, Observe(story, World(story, 5, "trickster", "trickster.ever", "yaniel.freed", "yaniel.radiance_plus1"), "irabeth.chapter_five"), 24),
             "late_kept", 3, Swapped, Carries, Late);
         check(!Avail(found, Later(story, lateRoad, 24)) && Avail(foundLate, Later(story, lateRoad, 24)), "The late road does not reach her message.");
-        var lateHome = Take(foundLate, Later(story, lateRoad, 24), "carries", 0, Returned, Started);
+        var lateHome = Take(foundLate, Later(story, lateRoad, 24), "carries_plain", 0, Returned, Started);
         check(Avail(letter, Later(story, Observe(story, lateHome, "iz.done"), 24)), "The late road does not reach the verdict.");
         // A late swap made after Iz never claims she carried the sword there: her verdict is on the wall, not a letter from Iz.
         var postIz = Take(wall, post, "late_kept", 8, Swapped, Carries, Late, P + "handed_after_iz");
-        var postHome = Take(foundLate, Later(story, postIz, 24), "carries", 0, Returned);
+        var postHome = Take(foundLate, Later(story, postIz, 24), "carries_plain", 0, Returned);
         check(!Avail(letter, Later(story, postHome, 24)) && Avail(S(P + "verdict.wall"), Later(story, postHome, 24)),
             "A sword handed over after Iz gets her letter about carrying it at Iz.");
+        var wallVerdict = Take(S(P + "verdict.wall"), Later(story, postHome, 24), "talk", 0, Verdict);
+        var lateTrade = Later(story, Observe(story, wallVerdict, P + "drawn.walls"), 24);
+        check(Through(trade, lateTrade, "carries_late", 2).Any() && !Paths(trade, lateTrade).Any(o => o.path.Any(e => e.node == "carries_sang" || e.node == "carries_quiet")),
+            "The trade retells Iz for a sword she received after Iz.");
+        // The Threshold reckoning: a pending or unproven oath is answered on the pages by what the Commander brings home.
+        var together = S(P + "epilogue.together").Nodes[0];
+        foreach (var open in new[] { P + "oath_pending", P + "oath_unproven" })
+        {
+            var home6 = World(story, 6, "trickster.ever", Committed, Shackle, Judges, open, "yaniel.radiance_plus1");
+            var empty6 = World(story, 6, "trickster.ever", Committed, Shackle, Judges, open);
+            check(together.Paragraphs.Count(q => Rules.ParagraphVisible(q, home6) && q.Text.Contains("Radiance was there")) == 1
+                  && together.Paragraphs.Count(q => Rules.ParagraphVisible(q, empty6) && q.Text.Contains("Radiance was not there")) == 1,
+                "The open oath (" + open + ") is never answered after the Threshold.");
+        }
         // The trade's yes and the vigil need one of the Commander's own reciprocal choices.
         check(trade.Requires.Contains(P + "drawn") && vigil.Requires.Contains(P + "drawn")
               && !Avail(trade, Later(story, World(story, 5, "trickster", "trickster.ever", Swapped, Carries, Returned, Verdict), 24)),
