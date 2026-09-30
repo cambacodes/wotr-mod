@@ -63,7 +63,8 @@ WARNED_KENABRES = "kaylessa.warned_kenabres"      # Kaylessa_main/Answer_0028 "I
 WARNED_CAMP = "kaylessa.warned_camp"              # Kaylessa_main/Answer_0058 "I believe you. Forn is in the camp, watch out for him."
 SELECTED_ANSWERS = {HEALED: "9f98ffa7f2c71cb4c9e5da0c7a053876", NOTE_DESTROYED: "30b5b35e84d649245b0fcba5e8d5cc02",
                     WARNED_KENABRES: "c3e2b86fef76ee441bc66c86ef5f071a", WARNED_CAMP: "8d741378ae169454f89a544029823135"}
-SEEN_CUES = {ANEMORA_TOLD: ["c0fb6762c057bcc4894d1892a9eb22fc"]}
+FIRST_WORDS = "kaylessa.first_words_seen"        # Kaylessa_main/Cue_0001 "What are you looking at, soldier? Like what you see?"
+SEEN_CUES = {ANEMORA_TOLD: ["c0fb6762c057bcc4894d1892a9eb22fc"], FIRST_WORDS: ["2d7d6df431933024591e74d6dfd873e4"]}
 INVENTORY = {NOTE_HELD: "c669b34a7b9c2cb42bf6deb5d8d1606f"}
 FACTS = {TRICKERY1: "90bc71f1d8482184a9ede0bda4773d94"}
 
@@ -148,7 +149,7 @@ PRESENCES = {
 DERIVED = {
     PRESENCE_ON: [[DEAD_L, PRIMED], [RETURNED]],
     # R2-6: the last beat before the knife; the epilogue answers a question the war left no time to ask.
-    LATE_COMMITTED: [["trickster.ever", CLOCK]],
+    LATE_COMMITTED: [["trickster.ever", KNIFE_SHOWN]],   # the last beat before her proposal (Sol quality pass, BEL)
     # 05 §2.1: the stance hooks come from household.PARTNERS (kaylessa.harem.eligible = committed or late_committed).
 }
 
@@ -188,7 +189,9 @@ def visit(id, title, nodes, requires, forbids=(), delay=24, owner="Kaylessa", ki
     """A rest-delivered scene in which she (or the one named) is there in person: a night visit, a ride out of the city."""
     SCENES.append(scene(id, title, owner, chapter, "", nodes, requires=tuple(dict.fromkeys(("trickster.ever", *requires))),
                         forbids=tuple(dict.fromkeys((CLOSED, LEFT, *forbids))), delay=delay, last=5, optional=optional,
-                        Relationship=REL, Remote=True, Kind=kind, Chapters=[c for c in (3, 5) if c >= chapter], **extra))
+                        Relationship=REL, Remote=True, Kind=kind, Chapters=[c for c in (3, 5) if c >= chapter],
+                        # Sol quality pass (CAN): she is there in person, in Drezen, so the rest must be taken there.
+                        **(dict(Areas=[DREZEN]) if kind == "visit" else {}), **extra))
 
 
 # --- State dead_at_reveal_ch3: the optional primer at her plea (a variant read only; the native death is untouched). ----
@@ -629,13 +632,14 @@ meet(P + "commit", "Hilt first", '"You wanted to talk to me?"', [
         c("Continue", "speech", forbids=(LIED,)),
         c("Continue", "speech", requires=(LIED, CONFESSED))),
     kay("truth_first", '''"Rule three, soldier. You still haven't told me what that thing at your Council took for me. You lied about it on the first day, and it's been sitting in my throat ever since." {n}Her grip on the hilt doesn't change.{/n}
-"Say it now, or carry it. I'd rather you were clean for this. I'm doing it anyway."''',
+"Say it now. I'm not doing this with a lie still in the room."''',
         c('[Confess] "A branch where I say yes to Shyka. Where I become one of them."', "confessed", flags=(CONFESSED,)),
         c('"Not yet."', "not_yet")),
     kay("confessed", '''{n}She lets out a breath she seems to have been holding since the market.{/n} "There. That wasn't hard. That was only the truth."''',
         c("Continue", "speech")),
-    kay("not_yet", '''"Not yet." {n}She nods, slowly, the way she'd note a wind change.{/n} "Then carry it. You're good at carrying things." {n}She doesn't put the dagger away.{/n}''',
-        c("Continue", "speech")),
+    kay("not_yet", '''"Not yet." {n}She nods, slowly, the way she'd note a wind change, and slides the dagger back into her boot.{/n}
+"Then not tonight either. Rule three, soldier. I'm not handing my death to somebody who's still lying to me about my life." {n}She pulls the shawl up to her eyes.{/n} "I'll ask once more. Somewhere I choose. Have your answer ready."''',
+        c("[Let her go.]", flags=(DECLINED,))),
     kay("speech", '''"Anemora made me into this to prove a point. Kyonin wants me dead to hide the point. Forn came for me with a speech about duty." {n}She turns the dagger in her hand until the blade lies along her own wrist.{/n}
 "You're the first one in two years who wanted something from me that wasn't about the point. I don't know what it is yet. I think I want to find out."''',
         c("Continue", "fed", requires=(BEAST_FED,)),
@@ -645,7 +649,7 @@ meet(P + "commit", "Hilt first", '"You wanted to talk to me?"', [
     nar("offer", '''{n}She holds the dagger out to you, hilt first. Her hand is very steady.{/n}''',
         c("Continue", "ask")),
     kay("ask", '''"This is the knife I meant for the beast. For the night it comes the rest of the way. I couldn't use it on myself once, and I've been afraid ever since that I won't manage it the second time either."
-"You've sat under this awning with me in the heat and the rain, and you never once asked me to take the shawl down. You kept my rules when breaking them was easier. You're the only one in two years who's looked at me like something that might still get better, instead of something to be put down." {n}Her mouth twists.{/n} "So it's yours. Take it, soldier."''',
+"You took my rules without haggling. You heard about the clock and didn't leave. You went down into your own cells with me knowing what I might do there, and you came back up with me after." {n}Her mouth twists.{/n} "So it's yours. Take it, soldier."''',
         c('[Take the knife] "I\'ll hold it."', "took", flags=(COMMITTED, KNIFE_HELD)),
         c('[Close her fingers back around the hilt] "It\'s yours. So is the choice. I\'m staying either way."', "back",
           flags=(COMMITTED, KNIFE_BACK), forbids=(BEAST_FED,)),
@@ -738,15 +742,20 @@ SCENES.append(scene(P + "epilogue.no_lamb", "", "KaylessaEpilogue", 6, "", [
 SCENES.append(scene(P + "epilogue.commit", "", "KaylessaEpilogue", 6, "", [
     nar("page", '''{n}The drow Kaylessa did not answer the Commander's question until the war was over. The Commander had never quite asked it. She answered it anyway, one evening after the Threshold, by walking into the Commander's rooms with the shutters open and the lamp out, and laying a Kyonin dagger on the table between them, hilt towards the Commander's hand.{/n}
 {n}"Your choice, soldier," she said. "It always was. I only wanted to be sure you knew it."{/n}
-{n}Whatever the Commander chose, she stayed. She kept her rules, and she kept her knife where one of them could reach it, and she did not say which one, and she was never cured, and she checked the clock every morning she had.{/n}''',
+{n}The Commander closed a hand round the hilt. She stayed. She kept her rules, and she kept her knife where one of them could reach it, and she did not say which one, and she was never cured, and she checked the clock every morning she had.{/n}''',
         paragraphs=(
             p("{n}The beast in her never moved again from where it had stopped on the night of her death. She checked it every morning of her life.{/n}", requires=(STALLED,)),
             p("{n}She never again wore a face that was not her own.{/n}", requires=(AMULET,)),
             p("{n}Tessariel's story reached every border fort in Kyonin before the Winter Council could bury it.{/n}", requires=(WASP_SENT,)),
             p("{n}In the living world the clock never stopped. She tied a knot for every step it took, and hung the strips by the door beside the knife.{/n}", any_groups=((SWAP_CLEAN, SWAP_FUMBLED),)),
         ))],
-    requires=("trickster.ever", CLOCK), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice"),
+    requires=("trickster.ever", KNIFE_SHOWN), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice"),
     ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
+
+SCENES.append(scene(P + "epilogue.ally", "", "KaylessaEpilogue", 6, "", [
+    nar("page", '''{n}The drow Kaylessa stayed in Drezen until the war was over, under the tailor's awning, with her bow across her knees. She kept her rules, and the Commander kept them too, and when the Commander came to sit in the shade she moved along the crate to make room. That was as far as either of them ever took it.{/n}
+{n}She was not cured. She checked the clock every morning, and on the mornings it had moved she said so, plainly, and on the mornings it hadn't she said nothing, and bought the tailor's tea.{/n}''')],
+    requires=("trickster.ever", CLOCK), forbids=(KNIFE_SHOWN, COMMITTED, CLOSED, DECLINED, LEFT), **EP))
 
 SCENES.append(scene(P + "epilogue.declined", "", "KaylessaEpilogue", 6, "", [
     nar("page", '''{n}Kaylessa left the Commander's city the week the Wound closed, with no letter and no goodbye. She left the crate under the tailor's awning turned over, with a wasp scratched on the bottom of it, and the tailor kept it for years because nobody would buy it.{/n}

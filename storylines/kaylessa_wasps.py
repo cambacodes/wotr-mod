@@ -20,7 +20,7 @@ engages a canon anchor of hers:
 Acknowledgments of other women are in Kaylessa's voice only; no scene between partners.
 """
 from story_format import c, scene
-from storylines.kaylessa_trickster import (ANEMORA_TOLD, AMULET, BEGGED, CAM_KILLED, CAUGHT, CLOSED, COMMITTED, DREZEN,
+from storylines.kaylessa_trickster import (FIRST_WORDS, ANEMORA_TOLD, AMULET, BEGGED, CAM_KILLED, CAUGHT, CLOSED, COMMITTED, DREZEN,
                                            EMBER_MET, KNIFE_SHOWN, LEFT, NOTE_DESTROYED, NOTE_HELD, PRESENCE, REL, RETURNED,
                                            RULES, SHYKA_RAISED, STALLED, TOMB, UNIT, UNMASKED, kay, nar)
 
@@ -68,7 +68,7 @@ def visit(id, title, nodes, requires, forbids=(), delay=24, **extra):
     """A rest-delivered ride out of the city: she is there in person."""
     SCENES.append(scene(id, title, "Kaylessa", 3, "", nodes, requires=tuple(dict.fromkeys(("trickster.ever", *requires))),
                         forbids=tuple(dict.fromkeys((CLOSED, LEFT, id, *forbids))), delay=delay, last=5, optional=True,
-                        Relationship=REL, Remote=True, Kind="visit", Chapters=[3, 5], **extra))
+                        Relationship=REL, Remote=True, Kind="visit", Chapters=[3, 5], Areas=[DREZEN], **extra))
 
 
 # --- 1. The Savored Sting: who she was before. -------------------------------------------------------------------
@@ -127,7 +127,7 @@ meet(THE_WASP, "The Savored Sting", '"Who were you, before all this?"', [
 
 meet(LAST_WORDS, "Her story", '"You said you wanted to ask me something."', [
     kay("start", '''"I did. Sit." {n}She moves along the crate to make room, which she has never done before. The market is thin today; half the stalls are shut, because a supply column didn't come back from the north road and nobody wants to talk about why.{/n}
-"I died with one thing on my mind, soldier. Not the beast. Not Kyonin. My story. That somebody should know it after I was gone."''',
+"There's one thing I've had on my mind since Kyonin, soldier. Not the beast. Not the Council. My story. That somebody should know it when I'm gone."''',
         c("Continue", "held", requires=(STALLED, NOTE_HELD), forbids=(BEGGED,)),
         c("Continue", "destroyed", requires=(STALLED, NOTE_DESTROYED), forbids=(BEGGED, NOTE_HELD)),
         c("Continue", "lost", requires=(STALLED,), forbids=(BEGGED, NOTE_HELD, NOTE_DESTROYED)),
@@ -632,8 +632,13 @@ meet(NOON, "Noon", '"You look like the sun\'s trying to kill you."', [
 
 meet(WHAT_I_WANT, "Like what you see?", '"You\'re not wearing the shawl."', [
     nar("open", '''{n}It's late. The market is shut, the awning's canvas creaking in a wind that smells of snow and the Worldwound's rot. She's sitting on the crate with the shawl in her lap and her face bare to the dark: slate skin, white cropped hair, the red eyes steady on you as you come in under the canvas.{/n}''',
-        c("Continue", "start")),
-    kay("start", '''"What are you looking at, soldier?" {n}She says it exactly as she said it in Kenabres, bleeding, with the city on fire. Then her mouth curves.{/n} "Like what you see?"
+        c("Continue", "start", requires=(FIRST_WORDS,)),
+        c("Continue", "start_fresh", forbids=(FIRST_WORDS,))),
+    kay("start_fresh", '''"What are you looking at, soldier?" {n}She lets it sit in the dark between you. Then her mouth curves.{/n} "Like what you see?"
+"I used to say that to scouts I meant to rob. I've been wanting to say it to somebody and mean it. I notice everything about you. I've been trying to stop."''',
+        c('"Yes."', "yes"),
+        c('[Flirt] "I\'m still deciding. Come closer."', "closer")),
+    kay("start", '''"What are you looking at, soldier?" {n}She says it exactly as she said it the day you met. Then her mouth curves.{/n} "Like what you see?"
 "You didn't answer that, the first time. I noticed. I notice everything about you. I've been trying to stop."''',
         c('"Yes."', "yes"),
         c('[Flirt] "I\'m still deciding. Come closer."', "closer"),

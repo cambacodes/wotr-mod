@@ -241,17 +241,51 @@ internal static class KaylessaTricksterTests
         check(Through(table, Later(story, no, 72), "knife", 0).All(r => r.Has(Committed)) && Take(table, Later(story, no, 72), "knife", 2, Closed).Has(P + "left_free"),
             "Trk_Kaylessa_Declined: the knife on the table is not a yes (picked up) or a parting (left).");
         var liar = World(story, 5, "trickster.ever", Returned, Dead, P + "lied_about_price", P + "knife_shown", P + "beast_met");
-        // No test: she names the unconfessed lie, but the knife is offered either way (the confession is a chance, not a toll).
-        var liarWalks = Program.Walk(commit, liar).Where(r => r.Has(Committed)).ToList();
-        check(Avail(commit, liar) && liarWalks.Any(r => r.Has(P + "confessed_price")) && liarWalks.Any(r => !r.Has(P + "confessed_price"))
-              && commit.Nodes.Single(n => n.Id == "truth_first").Choices.All(c => c.Set.All(f => f != P + "declined")),
-            "Trk_Kaylessa_Lie: the knife is priced on a confession (a test before yes).");
-        check(Avail(pages.Single(p => p.Id == P + "epilogue.commit"), World(story, 6, "trickster.ever", P + "clock_named")),
-            "Trk_Kaylessa_Late: the war's end has no late yes.");
+        // Rule three (Sol quality pass, VOI): an unconfessed lie postpones her proposal, exactly as it ends the knife on the table;
+        // the confession or the table's scratched answer still reaches a yes, so the refusal is never final.
+        var liarWalks = Program.Walk(commit, liar).ToList();
+        check(Avail(commit, liar) && liarWalks.Where(r => r.Has(Committed)).All(r => r.Has(P + "confessed_price"))
+              && liarWalks.Any(r => r.Has(Committed)) && liarWalks.Any(r => r.Has(P + "declined") && !r.Has(Committed) && !r.Has(Closed)),
+            "Trk_Kaylessa_Lie: she hands her death to a Commander still lying to her, or the lie closes her for good.");
+        var liarNo = Later(story, liarWalks.First(r => r.Has(P + "declined") && !r.Has(P + "confessed_price")), 72);
+        check(Avail(table, liarNo) && Program.Walk(table, liarNo).Any(r => r.Has(Committed) && r.Has(P + "confessed_price")),
+            "Trk_Kaylessa_Lie: the postponed proposal has no road back through the truth.");
+        // The late page needs the dagger's disclosure (the last beat before her proposal); the clock alone is an ally's ending.
+        var epAlly = pages.Single(p => p.Id == P + "epilogue.ally");
+        check(Avail(pages.Single(p => p.Id == P + "epilogue.commit"), World(story, 6, "trickster.ever", P + "clock_named", P + "knife_shown"))
+              && !Avail(pages.Single(p => p.Id == P + "epilogue.commit"), World(story, 6, "trickster.ever", P + "clock_named"))
+              && Avail(epAlly, World(story, 6, "trickster.ever", P + "clock_named"))
+              && !Avail(epAlly, World(story, 6, "trickster.ever", P + "clock_named", P + "knife_shown")),
+            "Trk_Kaylessa_Late: the war's end commits a mere acquaintance, or leaves the knife's disclosure without a late yes.");
+        check(!World(story, 6, "trickster.ever", P + "clock_named").Has(P + "late_committed"), "The clock alone makes her a household partner.");
+
+        // Location (Sol quality pass, CAN): every visit in Drezen needs the rest taken in Drezen.
+        foreach (var v in own.Where(s => Rules.IsRemote(s) && Rules.KindOf(s) == "visit"))
+            check(v.Areas.SequenceEqual(new[] { Drezen }), "A Drezen visit can arrive after a rest elsewhere: " + v.Id);
+        var outside = Program.Copy(alive); outside.Area = "ffffffffffffffffffffffffffffffff";
+        check(!Avail(hunter, outside) && Avail(hunter, alive), "Forn's antechamber visit arrives in the wilderness.");
+        // Histories the text must not invent: the living world never died; never-met is not greeted as an old meeting; the promise.
+        var lastWords = S(W + "last_words");
+        check(!lastWords.Nodes.Single(n => n.Id == "start").Text.Contains("died", StringComparison.Ordinal),
+            "The living Kaylessa remembers a death.");
+        var wantScene = S(W + "what_i_want");
+        var wantBase = World(story, 5, "trickster.ever", Returned, "kaylessa.started", P + "alive.swap_clean", W + "in_the_dark", P + "knife_shown");
+        var wantPages = new HashSet<string>();
+        Program.Walk(wantScene, wantBase, (page, _) => wantPages.Add(page));
+        var wantMet = Program.Copy(wantBase); wantMet.Flags.Add("kaylessa.first_words_seen");
+        var metPages = new HashSet<string>();
+        Program.Walk(wantScene, wantMet, (page, _) => metPages.Add(page));
+        check(wantPages.Contains("start_fresh") && !wantPages.Contains("start") && !wantPages.Contains("know")
+              && metPages.Contains("start") && !metPages.Contains("start_fresh") && !wantScene.Nodes.Any(n => n.Text.Contains("Kenabres", StringComparison.Ordinal)),
+            "Her first words are recalled for a Commander who never heard them.");
+        var nameScene = S(N + "once_when_it_counts");
+        var namePages = new HashSet<string>();
+        Program.Walk(nameScene, World(story, 5, "trickster.ever", Committed, P + "knife_held", N + "grey_light"), (page, _) => namePages.Add(page));
+        check(namePages.Contains("name_fresh") && !namePages.Contains("name"), "She keeps a promise from a conversation that never happened.");
 
         // Pages: effect-free Chapter 6 pages; no exclusivity stated as fact is linted by the house rules.
-        check(pages.Length == 4 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null && c.Mythic == null))),
-            "The pages are not four effect-free Chapter 6 pages.");
+        check(pages.Length == 5 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null && c.Mythic == null))),
+            "The pages are not five effect-free Chapter 6 pages.");
         check(Avail(pages.Single(p => p.Id == P + "epilogue.no_lamb"), World(story, 6, "trickster.ever", Committed))
               && !Avail(pages.Single(p => p.Id == P + "epilogue.commit"), World(story, 6, "trickster.ever", Committed, P + "clock_named")),
             "The committed page is not the committed ending.");

@@ -12,6 +12,7 @@ Every scene here Requires the commit (the late yes of "Put down somewhere" count
 Intimacy (Directive 12): the clearing, by starlight she can see by and the Commander cannot; the cut lands at the start.
 """
 from story_format import c, scene
+from storylines.kaylessa_wasps import SOLDIER
 from storylines.kaylessa_trickster import (AMULET, ARROW, BEAST_FED, BEGGED, CLOSED, COMMITTED, COUNCIL_KNOWS, DEAD_L,
                                            DREZEN, HER_ARROW, KNIFE_BACK, KNIFE_HELD, LEFT, MET, PRESENCE, REL, SHYKA_RAISED,
                                            STALLED, SWAP_CLEAN, SWAP_FUMBLED, TOMB, UNIT, WASP_SENT, kay, nar)
@@ -49,7 +50,7 @@ def away(id, title, nodes, requires, forbids=(), delay=24, owner="Kaylessa", kin
     """A rest-delivered scene: she comes for the Commander at night, or they are out past the walls together."""
     SCENES.append(scene(id, title, owner, 3, "", nodes, requires=tuple(dict.fromkeys(("trickster.ever", COMMITTED, *requires))),
                         forbids=tuple(dict.fromkeys((CLOSED, LEFT, id, *forbids))), delay=delay, last=5, optional=True,
-                        Relationship=REL, Remote=True, Kind=kind, Chapters=[3, 5],
+                        Relationship=REL, Remote=True, Kind=kind, Chapters=[3, 5], **(dict(Areas=[DREZEN]) if kind == "visit" else {}),
                         RequiresAnyGroups=[[KNIFE_HELD, KNIFE_BACK]] + [list(g) for g in any_groups]))
 
 
@@ -217,7 +218,12 @@ here(NAME, "Once, when it counts", '"The bells..."', [
         c("Continue", "start")),
     kay("start", '''"Vescavors. A swarm. They go for the eyes and the soft places." {n}She checks the arrows in her quiver with one pass of her fingers, counting by touch.{/n}
 "Your people need you on the wall, and I'll be better off on a roof where nobody's standing on my feet." {n}She's already moving. At the edge of the awning she stops, and turns, and looks at you.{/n}''',
-        c("Continue", "name")),
+        c("Continue", "name", requires=(SOLDIER,)),
+        c("Continue", "name_fresh", forbids=(SOLDIER,))),
+    kay("name_fresh", '''"{name}."
+{n}She says it once, quite clearly, as if she were laying a coin on a table where you would find it later.{/n}
+"There. You never asked, so I never used it. Now I have. Don't get used to it, soldier." {n}And she's gone, up a drainpipe and over a gutter onto the roofs, fast as a thrown knife.{/n}''',
+        c("[Go to the wall.]", "after")),
     kay("name", '''"{name}."
 {n}She says it once, quite clearly, as if she were laying a coin on a table where you would find it later.{/n}
 "There. I said I'd use it once, when it counted. Don't get used to it, soldier." {n}And she's gone, up a drainpipe and over a gutter onto the roofs, fast as a thrown knife.{/n}''',
