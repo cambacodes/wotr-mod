@@ -150,7 +150,7 @@ internal static class NenioTricksterTests
         // farewell has been seen: cost.name_filed is Derived [riddle_done, enigma_resolved], and no choice sets it.
         check(!riddle.Nodes.Any(n => n.Choices.Any(c => c.Set.Contains(NameFiled)))
               && story.Scenes.Where(s => s.Relationship == "nenio").Where(s => s.Nodes.Any(n => n.Choices.Any(c => c.Set.Contains(NameFiled)))).All(s => s.Id.StartsWith(P + "after_enigma", StringComparison.Ordinal))
-              && story.Derived[P + "name_gone"].Length == 2 && story.Derived[P + "name_gone"][1].OrderBy(f => f).SequenceEqual(new[] { "nenio.enigma_resolved", P + "riddle_done" })
+              && story.Derived[P + "name_gone"].Length == 1 && story.Derived[P + "name_gone"][0].SequenceEqual(new[] { NameFiled })
               && story.SeenCues["nenio.enigma_resolved"].SequenceEqual(new[] { FoxFarewell }),
             "The name is filed before her native farewell, which still says it.");
         check(!story.Scenes.Where(s => s.Relationship == "nenio").Any(s => s.Nodes.Any(n => n.Choices.Any(c => c.Set.Any(f => f.StartsWith("trickster.wmt.use.", StringComparison.Ordinal))))),
@@ -167,7 +167,7 @@ internal static class NenioTricksterTests
         var afterEnigma = S(P + "after_enigma");
         var agedStake = Later(story, staked, 200);
         var farewellSeen = Later(story, With(staked, "nenio.enigma_resolved"), 13);
-        check(!agedStake.Has(P + "name_gone") && !Avail(afterEnigma, agedStake) && farewellSeen.Has(P + "name_gone") && Avail(afterEnigma, farewellSeen)
+        check(!agedStake.Has(P + "name_gone") && !Avail(afterEnigma, agedStake) && !farewellSeen.Has(P + "name_gone") && Avail(afterEnigma, farewellSeen)
               && Program.Walk(afterEnigma, farewellSeen).Where(r => r.Has(afterEnigma.Id)).All(r => r.Has(NameFiled)),
             "The name is filed without her farewell, or the talk after the Enigma does not follow it.");
         var told = Take(riddle, fox, "told", 0, P + "riddle_declined");
@@ -236,8 +236,10 @@ internal static class NenioTricksterTests
         check(Ch(price, "raised", 0).Revive == "nenio" && Reaches(Later(story, revived, 1), Committed), "Trk_Nenio_Dead: no revive, or no road to the commit.");
         check(Take(price, dead, "terms", 1, P + "let_rest").Has(P + "let_rest") && !Avail(price, Take(price, dead, "terms", 1, P + "let_rest")),
             "Trk_Nenio_Dead: refusing the price does not let her rest.");
-        var noBody = World(story, 4, "trickster", "trickster.ever", "nenio.dead");
+        var noBody = World(story, 5, "trickster", "trickster.ever", "nenio.dead");
         check(!Avail(price, noBody) && Avail(priceRecreated, noBody), "Trk_Nenio_Dead: with no body the new vessel is not offered.");
+        check(!Avail(priceRecreated, World(story, 4, "trickster", "trickster.ever", "nenio.dead")) && priceRecreated.Chapters.SequenceEqual(new[] { 3, 5 }),
+            "Sol r3 COX: the new vessel is delivered in the Abyss (R2-5).");
         var remade = Take(priceRecreated, noBody, "terms", 0, Returned, P + "cost.recreated");
         check(Later(story, remade, 1).Has(P + "visitor") && Reaches(Later(story, remade, 1), Committed), "Trk_Nenio_Recreated: she is not a visitor, or cannot be reached.");
         var killed = World(story, 3, "trickster", "trickster.ever", "nenio.killed_by_commander");
@@ -321,17 +323,37 @@ internal static class NenioTricksterTests
             "A Commander who burned closing the Wound still gets the article.");
 
         // Sol TRK: the Sphinx's servant collects in person in Chapter 5, in front of her: paid, paid in the Sphinx's own coin
-        // (prepared: the Commander answered the void with silence), or defaulted. No rest delivery.
+        // (prepared: the Sphinx's axiom bargained into the terms, Sol r3), or defaulted. No rest delivery; after night one.
         var debt = S(P + "debt.collected");
-        var owing = World(story, 5, "trickster", "trickster.ever", Returned, Owes, Started, Scribe);
-        check(!Rules.IsRemote(debt) && debt.AnswerLists.Contains(Hub) && Avail(debt, Later(story, owing, 49)) && !Avail(debt, World(story, 6, "trickster", "trickster.ever", Returned, Owes, Started, Scribe)),
+        check(!Avail(debt, Later(story, World(story, 5, "trickster", "trickster.ever", Returned, Owes, Started, Scribe), 49)),
+            "Sol r3 BEL: the Sphinx can collect (and take volume one) before night one.");
+        var owing = World(story, 5, "trickster", "trickster.ever", Returned, Owes, Started, Scribe, P + "night");
+        check(!Rules.IsRemote(debt) && debt.AnswerLists.Contains(Hub) && Avail(debt, Later(story, owing, 49)) && !Avail(debt, World(story, 6, "trickster", "trickster.ever", Returned, Owes, Started, Scribe, P + "night")),
             "The Sphinx does not come to collect in person in Chapter 5.");
         var debts = Program.Walk(debt, owing).Where(r => r.Has(debt.Id)).ToList();
         check(debts.Any(r => r.Has(P + "debt.paid")) && debts.Any(r => r.Has(P + "debt.defaulted")) && !debts.Any(r => r.Has(P + "debt.evaded")),
             "The collection offers the Sphinx's coin without the prepared silence, or lacks payment or default.");
-        check(Program.Walk(debt, With(owing, F + "who_are_you.silent")).Any(r => r.Has(P + "debt.evaded"))
-              && !Program.Walk(debt, With(owing, "nenio.fox_revealed")).Any(r => r.Has(P + "debt.evaded")),
-            "The loophole is not gated on the chosen silence in the void.");
+        check(Program.Walk(debt, With(owing, P + "cost.silence_clause")).Any(r => r.Has(P + "debt.evaded"))
+              && !Program.Walk(debt, With(owing, F + "who_are_you.silent", "nenio.fox_revealed")).Any(r => r.Has(P + "debt.evaded")),
+            "Sol r3 TRK: the loophole is not gated on the clause bargained into the terms.");
+        var clauseWorld = Take(price, dead, "terms", 2, P + "cost.silence_clause");
+        check(clauseWorld.Has(P + "cost.silence_clause") && Ch(price, "clause", 0).Next == "raised",
+            "Sol r3 TRK: the silence clause is not bargained at the Sphinx's price, or does not raise her.");
+        // Sol r3 BEL: the preparation list is for an open debt only.
+        check(new[] { "debt.paid", "debt.evaded", "debt.defaulted" }.All(k => story.Scenes.Where(sc => sc.Id.StartsWith(F + "sphinx_list", StringComparison.Ordinal)).All(sc => sc.Forbids.Contains(P + k))),
+            "Sol r3 BEL: Nenio prepares for a debt already settled.");
+        // Sol r3 INT: the native dissolution is never overridden by a happy page.
+        foreach (var epPage in new[] { "epilogue.article", "epilogue.commit", "epilogue.void" })
+            check(S(P + epPage).Forbids.Contains("nenio.dissolved"), "Sol r3 INT: " + epPage + " ignores nenio.dissolved.");
+        check(!Avail(S(P + "epilogue.article"), World(story, 6, "trickster.ever", Started, Committed, "nenio.dissolved")),
+            "Sol r3 INT: committed-then-dissolved gets the living article.");
+        foreach (var loss in new[] { "nenio.dead", "nenio.killed_by_commander", "nenio.sent_away", "nenio.kicked_out" })
+            check(!Avail(S(P + "epilogue.article"), World(story, 6, "trickster.ever", Started, Committed, loss))
+                  && Avail(S(P + "epilogue.article"), World(story, 6, "trickster.ever", Started, Committed, loss, Returned))
+                  && !Avail(S(P + "epilogue.commit"), World(story, 6, "trickster.ever", Started, loss))
+                  && !Avail(S(P + "epilogue.closed"), World(story, 6, "trickster.ever", Started, Closed, loss)),
+                "Sol r4 INT: a living epilogue plays over an unrecovered loss: " + loss);
+        check(!Avail(S(P + "epilogue.closed"), World(story, 6, "trickster.ever", Started, Closed, "nenio.dissolved")), "Sol r4 INT: the closed page after the dissolution.");
         check(!Avail(debt, With(owing, P + "debt.paid")), "The debt can be collected twice.");
         var article = S(P + "epilogue.article");
         var owedPara = article.Nodes[0].Paragraphs.Single(pp => pp.Requires.SequenceEqual(new[] { Owes }));
