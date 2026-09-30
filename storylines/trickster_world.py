@@ -522,7 +522,10 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
  'storyteller.became_usher': [['storyteller.dead_delayed']],
  'storyteller.dead': [['storyteller.dead_main'], ['storyteller.dead_dlc']],
  'storyteller.pharasma_resolved': [['storyteller.rejected'], ['storyteller.dead_delayed'], ['storyteller.dead_main']],
- 'targona.trickster.in_drezen': [['targona.trickster.returned'], ['targona.trickster.met']],
+ # The freed state: she comes down to the cots the morning after the wand night (free.furlough), so her copy must stand
+ # there before `met` exists (Sol quality pass: `met` is produced only by talking to that copy).
+ 'targona.trickster.in_drezen': [['targona.trickster.returned'], ['targona.trickster.met'],
+                                 ['targona.free', 'targona.trickster.cost.wand_unspent']],
  'targona.trickster.late_committed': [['trickster.ever', 'targona.trickster.forgiven'],
                                       ['trickster.ever', 'targona.trickster.met']],
  'terendelev.ravener_dead': [['iz.monster_dead', 'trickster.ever']],

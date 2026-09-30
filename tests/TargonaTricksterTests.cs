@@ -17,12 +17,15 @@ internal static class TargonaTricksterTests
     private const string Committed = "targona.committed";
     private const string Closed = "targona.closed";
 
-    private static Snapshot World(Story story, int chapter, params string[] flags)
+    private static Snapshot World(Story story, int chapter, params string[] flags) => World(story, chapter, true, flags);
+
+    // contact false: the runtime's view before her copy has spawned (Sol quality pass: the contact is produced by the presence).
+    private static Snapshot World(Story story, int chapter, bool contact, params string[] flags)
     {
         var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000 };
         state.Flags.UnionWith(flags);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
-        if (chapter == 3 || chapter == 5) state.AvailableContacts.Add(Unit);
+        if (contact && (chapter == 3 || chapter == 5)) state.AvailableContacts.Add(Unit);
         Rules.Complete(story, state);
         foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 200;
         return state;
@@ -264,6 +267,53 @@ internal static class TargonaTricksterTests
         var toldFree = Program.Copy(night); toldFree.Flags.Add(P + "told_in_lab");
         Program.Walk(freeFurlough, toldFree, (page, _) => labPages.Add(page));
         check(labPages.Contains("greet_lab") && !labPages.Contains("greet"), "She forgets the barrier.");
+
+        // Sol quality pass (INT 58): the freed state reaches her with no contact supplied by the fixture. The wand night
+        // alone must make her copy wanted and spawnable; only then does the contact exist, and the hub walks to the commit.
+        foreach (var trick in new[] { true, false })
+        {
+            var bare = trick ? World(story, 5, false, "trickster", "trickster.ever", "targona.free", "trickster.umd_tier2")
+                             : World(story, 5, false, "trickster", "trickster.ever", "targona.free");
+            check(!bare.AvailableContacts.Contains(Unit) && !Rules.PresenceWanted(presence, bare),
+                "Freed state: her copy stands in the ward before the wand night.");
+            var wandNight = Program.Copy(After(spent, bare, trick ? "night" : "night_spent", 0));
+            Rules.Complete(story, wandNight);
+            check(Rules.PresenceWanted(presence, wandNight), "Freed state: the wand night does not bring her copy to the cots.");
+            check(Rules.PlanPresence(presence, true, new PresenceObservation { AreaLoaded = true, AnchorResolved = true })
+                      .SequenceEqual(new[] { PresenceStep.Spawn }), "Freed state: the wanted copy is not spawned at Wilcer's anchor.");
+            check(!Rules.Available(story, freeFurlough, wandNight), "Freed state: the arrival opens without her copy.");
+            var spawned = Program.Copy(wandNight);
+            spawned.AvailableContacts.Add(Unit);
+            Rules.Complete(story, spawned);
+            check(Rules.Available(story, freeFurlough, spawned)
+                  && story.Scenes.Any(s => s.InteractionHub == "targona.presence" && Rules.Available(story, s, spawned)),
+                "Freed state: the spawned copy's hub offers no arrival (Main.CanOpenPresenceHub would refuse the click).");
+            var arrived = Program.Copy(After(freeFurlough, spawned, "why", 0));
+            Rules.Complete(story, arrived);
+            check(arrived.Has(P + "met") && Rules.PresenceWanted(presence, arrived), "Freed state: the arrival does not keep her at the cots.");
+            var wardNight = Later(story, arrived, 96);
+            check(Rules.Available(story, ward, wardNight), "Freed state: the ward does not follow the arrival.");
+            var freePages = new HashSet<string>();
+            Program.Walk(ward, wardNight, (page, _) => freePages.Add(page));
+            check(freePages.Contains("yes_free") && !freePages.Contains("yes") && freePages.Contains("refused_dawn"),
+                "Freed state: the ward's yes remembers the death branch, or the dawn question has no answer of its own.");
+            check(Program.Walk(ward, wardNight).Any(o => o.Has(Committed) && o.Has(P + "night_kept")), "Freed state: no commit and night.");
+        }
+        var deathPages = new HashSet<string>();
+        Program.Walk(ward, ready, (page, _) => deathPages.Add(page));
+        check(deathPages.Contains("yes") && !deathPages.Contains("yes_free"), "Death branch: the freed yes plays after a raise.");
+        var wardNodes = ward.Nodes.ToDictionary(n => n.Id);
+        check(wardNodes["dawn"].Choices[1].Next == "refused_dawn" && wardNodes["start"].Choices[1].Next == "refused"
+              && wardNodes["refused_dawn"].Text.Contains("asleep", StringComparison.Ordinal)
+              && !wardNodes["refused_dawn"].Text.Contains("still dying", StringComparison.Ordinal),
+            "The dawn question's refusal contradicts the sleeping sergeant.");
+        check(!wardNodes["yes_free"].Text.Contains("unblessed", StringComparison.Ordinal)
+              && !wardNodes["yes_free"].Text.Contains("laboratory", StringComparison.Ordinal)
+              && !wardNodes["yes_free"].Text.Contains("chaplain", StringComparison.Ordinal),
+            "The freed yes recalls death-branch history.");
+        // The Chapter 3 laboratory memory holds nothing from a later chapter or another mythic path (the Angel Nexus).
+        foreach (var node in oneSoul.Nodes)
+            check(!node.Text.Contains("Nexus", StringComparison.Ordinal), "The laboratory flashback remembers the Nexus: " + node.Id);
 
         // Trk_Targona_TreatmentDone: the parent Angelic Treatment route runs instead.
         var treated = World(story, 5, "trickster", "trickster.ever", "targona.free", "targona.ran_treatment_completed");
