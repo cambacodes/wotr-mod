@@ -257,7 +257,7 @@ meet(SOLDIER, "Everyone's a soldier", '"You never use my name. Why is that?"', [
     kay("length", '''"Of course it is." {n}She doesn't bother to deny it.{/n} "Names are handles, soldier. Anemora learned every one of ours. She'd whisper them at night, very softly, when she wanted us to do something. I learned to hate the sound of my own."''',
         c('"I\'d still like to hear you say mine."', "name")),
     kay("name", '''{n}She studies you, deciding something.{/n}
-"No." {n}Not unkind. Quite gentle, for her.{/n} "Not yet. The day I say it, I'll mean it, and I've only got so much meaning left in me. I'm saving it."
+"No." {n}Not unkind. Quite gentle, for her.{/n} "Not yet. Names are for people who've lived through the winter. Ask me when the war's over."
 "Once. When it counts. You'll know."''',
         c('"I\'ll wait."', "wait"),
         c('[Flirt] "Then I\'ll have to make it count."', "count")),
@@ -280,7 +280,7 @@ meet(IN_THE_DARK, "After curfew", '"Walk with me. After the lamps go out."', [
     nar("open", '''{n}Drezen after curfew is a different city. The lamps are doused along the whole west side on account of the vrocks, which hunt by light, and the streets are rivers of black between darker walls.{/n}
 {n}Kaylessa takes your wrist at the edge of the market and keeps hold of it.{/n}''',
         c("Continue", "start")),
-    kay("start", '''"You're blind, aren't you? Completely. I can see the mortar between the bricks." {n}Her voice is close by your shoulder, and amused.{/n}
+    kay("start", '''"Whatever your eyes are, soldier, they aren't mine. I can see the mortar between the bricks." {n}Her voice is close by your shoulder, and amused.{/n}
 "Three steps down. Now left. There's a dead cat, don't be squeamish. This is my city, soldier. The one you all walk through at noon never sees it."''',
         c('"How far does it go? Your sight."', "sight"),
         c("[Let her lead you.]", "lead")),
@@ -300,9 +300,9 @@ meet(IN_THE_DARK, "After curfew", '"Walk with me. After the lamps go out."', [
     kay("sentry_her", '''"Sorry." {n}She doesn't move her hand straight away. When she does, it's to put it flat on your chest instead.{/n}
 "Habit. Two years of lanterns meaning somebody wants me dead." {n}Her voice is very low, and not quite steady.{/n} "You didn't fight me. You let me put you against a wall in the dark and you didn't reach for your sword once. Do you know how rare that is?"''',
         c("Continue", "stop")),
-    nar("stop", '''{n}She stops. You can't see why. You can hear her breathing, close, and feel the edge of her cloak against your hand, and the warmth coming off her through the cold.{/n}''',
+    nar("stop", '''{n}She stops. You don't know why. You can hear her breathing, close, and feel the edge of her cloak against your hand, and the warmth coming off her through the cold.{/n}''',
         c("Continue", "here")),
-    kay("here", '''"You're looking straight at me, soldier, and you can't see a thing. It's very strange. Nobody looks at me like that." {n}A breath.{/n} "As if they don't know what I am."''',
+    kay("here", '''"You're looking straight at me, soldier, and you're not looking at the fangs. It's very strange. Nobody looks at me like that." {n}A breath.{/n} "As if they don't know what I am."''',
         c("[Kiss her]", "kiss", flags=(KISSED,)),
         c("[Wait.]", "hers", flags=(KISSED,)),
         c('"I know exactly what you are."', "know", flags=(KISSED,))),
@@ -352,7 +352,7 @@ meet(THE_BOW, "Restringing", '"Is that a new string?"', [
         c("Continue", "close")),
     nar("miss", '''{n}The arrow goes somewhere into the dark. Nothing screams. Kaylessa takes the bow out of your hands, nocks, draws and looses in one movement, and something above the rooftops shrieks and goes flapping east.{/n}''',
         c("Continue", "miss_her")),
-    kay("miss_her", '''"Next time." {n}She doesn't sound disappointed. She sounds like she's already planning the next time.{/n} "Your hands are good. You just can't see. That's not your fault. That's the dark's."''',
+    kay("miss_her", '''"Next time." {n}She doesn't sound disappointed. She sounds like she's already planning the next time.{/n} "Your hands are good. You just don't see the way I do in the dark. That's not your fault. That's the dark's."''',
         c("Continue", "close")),
     kay("hers", '''"Coward." {n}But she takes it, and nocks, and draws, and looses in one movement, and something above the rooftops shrieks and goes flapping east.{/n}
 "There. That one's for the sentry it ate on Toilday."''',

@@ -71,7 +71,7 @@ away(NIGHT, "Where I was meant to die", [
     nar("branch", '''{n}An hour's ride out of the gate, to a clearing among dead trees where, she tells you, Forn meant to spring his trap on you. "In my branch I came out of those trees and took his arrow for you, here." She touches her collarbone. "In yours I was already dead, so you met him alone, or you never met him at all. I can't tell. I remember both."{/n}''',
         c("Continue", "why_branch")),
     nar("ravine", '''{n}Not far. Out of the south gate and down into the ravine below the wall, where the stones are still stained dark in places and someone has swept away the lantern glass. It's black as the bottom of a well with the moon down. She can see. You can't.{/n}
-{n}She walks you to the stone where the darkhunter lay and stops there, with your wrist still in her hand.{/n}''',
+{n}She walks you to the stone where the hunter lay and stops there, with your wrist still in her hand.{/n}''',
         c("Continue", "why_ravine")),
     kay("why", '''"This is where I'm supposed to be, soldier. Under that." {n}She nods at the ground as if it had insulted her.{/n}
 "I asked you for it. I got it, for a night. And then I got this instead, all of it, the market and the tea and you." {n}She turns round.{/n} "I wanted to do something here that isn't dying."''',
@@ -95,7 +95,7 @@ away(NIGHT, "Where I was meant to die", [
         c('[Flirt] "Very much. Show me the rest."', "rest"),
         c('"I can\'t see a thing."', "see"),
         c("[Kiss her.]", "kiss")),
-    kay("see", '''"No. You can't, can you?" {n}She laughs under her breath, pleased with herself, the way a hunter is pleased with a good wind.{/n} "I can see every hair on your arms standing up, soldier. It's only fair one of us gets to."
+    kay("see", '''"Not the way I can." {n}She laughs under her breath, pleased with herself, the way a hunter is pleased with a good wind.{/n} "I can see every hair on your arms standing up, soldier. It's only fair one of us gets to."
 {n}She takes your hands and puts them on the laces of her leathers.{/n} "Then find it the other way."''',
         c("Continue", "kiss")),
     kay("rest", '''"Greedy." {n}She says it with deep approval.{/n} "Good."
