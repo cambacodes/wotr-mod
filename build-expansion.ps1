@@ -31,6 +31,9 @@ try {
     # rrt_verify sections F2 (tools/return_safety.py: the Main.cs native return contract) and E2 (tools/gate_lint.py): fixtures
     & $pythonPath -m unittest tests.test_return_safety tests.test_gate_lint
     if ($LASTEXITCODE) { throw 'Return safety or gate lint tests failed' }
+    # E3 (tools/etude_lifecycle.py, 18-ETUDE-BINDING-AUDIT): a Playing-only etude binding read outside its window fails the gate.
+    & $pythonPath -m unittest tests.test_etude_lifecycle
+    if ($LASTEXITCODE) { throw 'Etude lifecycle tests failed' }
     # Pacing lint (handoff 13 section 6): REVIEW and WARN lines are advisory; a HARD violation or a bad availability map fails.
     & $pythonPath -m unittest tests.test_pacing_lint
     if ($LASTEXITCODE) { throw 'Pacing lint tests failed' }

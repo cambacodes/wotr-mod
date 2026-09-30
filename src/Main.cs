@@ -1136,11 +1136,10 @@ namespace Tirabade
             }
             foreach (var etude in etudes)
             {
-                bool permanent = story.PermanentEtudes.Contains(etude.Key) || etude.Key.EndsWith("_dead", StringComparison.Ordinal) || etude.Key.EndsWith("_gone", StringComparison.Ordinal)
-                    || etude.Key.StartsWith("ascend_", StringComparison.Ordinal) || etude.Key == "sacrifice" || etude.Key == "true_lich";
-                // Started etudes can be dormant until their activation conditions pass.
-                if (player.EtudesSystem.Etudes.GetFact(etude.Value)?.IsPlaying == true
-                    || permanent && player.EtudesSystem.EtudeIsCompleted(etude.Value)) state.Flags.Add(etude.Key);
+                // Started etudes can be dormant until their activation conditions pass (Rules.EtudeHeld: Playing, or Completed
+                // for PermanentEtudes and the suffix rule).
+                if (Rules.EtudeHeld(story, etude.Key, player.EtudesSystem.Etudes.GetFact(etude.Value)?.IsPlaying == true,
+                        Rules.EtudeReadsCompleted(story, etude.Key) && player.EtudesSystem.EtudeIsCompleted(etude.Value))) state.Flags.Add(etude.Key);
             }
             if (new[] { "irabeth_dead", "anevia_dead", "irabeth_gone", "anevia_gone", "sacrifice" }.Any(state.Has)) state.Flags.Add("loss");
             foreach (var quest in completedQuests)

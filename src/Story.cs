@@ -548,6 +548,16 @@ namespace Tirabade
         // "chapter_later", so a Chapter 1+ gate on either never opens early; Available admits MinChapter 0 / Chapters [0] as is.
         public static string? ChapterFlag(int chapter) => chapter == 1 ? "chapter_one" : chapter > 1 ? "chapter_later" : null;
 
+        // Main.BuildState's native etude read. A Story.Etudes key is held while its etude IsPlaying; PermanentEtudes and the
+        // suffix rule also read Completed (a parent's completion cascades Completed onto every started child, so for these
+        // keys Completed still means the event happened; 18-ETUDE-BINDING-AUDIT). Opt-in per key: most bindings are live.
+        public static bool EtudeReadsCompleted(Story story, string key) =>
+            story.PermanentEtudes.Contains(key) || key.EndsWith("_dead", StringComparison.Ordinal) || key.EndsWith("_gone", StringComparison.Ordinal)
+            || key.StartsWith("ascend_", StringComparison.Ordinal) || key == "sacrifice" || key == "true_lich";
+
+        public static bool EtudeHeld(Story story, string key, bool playing, bool completed) =>
+            playing || completed && EtudeReadsCompleted(story, key);
+
         public static bool Available(Story story, Scene scene, Snapshot state)
         {
             if (state.Has(DegradedPrefix + scene.Relationship)) return false;

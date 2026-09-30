@@ -1,0 +1,3899 @@
+{
+ "etudes": {
+  "005c2284d7e5ac54c887bb3781e45d0c": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "EvilArushaRecruited",
+    "ArueshalaeIsEvil",
+    "ArueshalaeStates",
+    "ArueshalaeCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "EvilArushaRecruited",
+   "traits": [
+    "hold"
+   ]
+  },
+  "007c4990584473046ac29666a235efb3": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "SocotGone",
+    "TricksterStates",
+    "MythicTrickster",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "SocotGone",
+   "traits": [
+    "hold"
+   ]
+  },
+  "0216030c2e687594aa9de45f2e32fc7c": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "MinaghoFleeFromFane",
+    "Minagho",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "MinaghoFleeFromFane",
+   "traits": [
+    "hold"
+   ]
+  },
+  "02ea801d75381dd48ae15c6c93c5f1dc": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "DragonEggsProjectGained",
+    "Chapter03_Outcomes",
+    "Chapter03_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "DragonEggsProjectGained",
+   "traits": [
+    "hold"
+   ]
+  },
+  "0383369136fadc247b7d6ff99110fa55": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "TakeNotProfaneGift",
+    "Chapter04_Outcomes",
+    "Chapter04_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "TakeNotProfaneGift",
+   "traits": [
+    "hold"
+   ]
+  },
+  "056ba61e04cca104a9c95ac2d4658c67": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "RedDragonKilledInIvorySanctum",
+    "DragonHunt_Q1",
+    "GreyborStates",
+    "GreyborCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "RedDragonKilledInIvorySanctum",
+   "traits": [
+    "hold"
+   ]
+  },
+  "065b611752b5c0045b6d1e0164b92bcc": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "ChivarroRemovedFormPower",
+    "TenThousandsDelight",
+    "Chapter04_States",
+    "Chapter04_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "ChivarroRemovedFormPower",
+   "traits": [
+    "hold"
+   ]
+  },
+  "07ad18ffb08145b69522f8eee0230857": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "TE_AscendAll",
+    "TrueEnding",
+    "ImportantStates",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "TE_AscendAll",
+   "traits": [
+    "hold"
+   ]
+  },
+  "08190b43ca1b76447890752f6d8167f3": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "SosielNotInParty_Dead",
+    "SosielCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "SosielNotInParty_Dead: CompanionInParty"
+   ],
+   "name": "SosielNotInParty_Dead",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "08e47548e25945e286fe77b896884b32": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "TE_AscendAlone",
+    "TrueEnding",
+    "ImportantStates",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "TE_AscendAlone",
+   "traits": [
+    "hold"
+   ]
+  },
+  "09f46662bcd14a03a0874267e16d6e6f": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "AneviaGone",
+    "Anevia",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "AneviaGone: EtudeStatus"
+   ],
+   "name": "AneviaGone",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "0b129925567b68d4fb712b4bee6c0f9a": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "AzataDevilDecision_Deception",
+    "AzataDevilDecision",
+    "AzataStates",
+    "MythicAzata",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "AzataDevilDecision_Deception",
+   "traits": [
+    "hold"
+   ]
+  },
+  "0c1695f4a362f0243a4afcfd1957eb0d": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "ProfaneGift",
+    "Chapter04_Outcomes",
+    "Chapter04_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "Cue_0019",
+    "Cue_0030",
+    "Cue_0036",
+    "Cue_0057",
+    "Cue_0099",
+    "Cue_0113",
+    "Cue_0160",
+    "PlayerWithShamira"
+   ],
+   "conditional": [],
+   "name": "ProfaneGift",
+   "traits": [
+    "self_completed"
+   ]
+  },
+  "0d773e4f71ac38a4d917ed459f6a0d0b": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "KianaIsPosessed",
+    "SeelahFriendsFate",
+    "SeelahInParty",
+    "SeelahCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "SeelahInParty: CompanionInParty"
+   ],
+   "name": "KianaIsPosessed",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "0ece5844b86deb44ea9d54190de1463e": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "AzataIsland_DevilDetachDragon",
+    "AzataStates",
+    "MythicAzata",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "AzataIsland_DevilDetachDragon",
+   "traits": [
+    "hold"
+   ]
+  },
+  "10320ad437121a44eb629d5fa9a79c75": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "GreyborNotInParty_Dead",
+    "GreyborCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "GreyborNotInParty_Dead: CompanionInParty"
+   ],
+   "name": "GreyborNotInParty_Dead",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "10cf0442f31a4796af8b28281f35e944": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Ending_WoundClosed",
+    "Endings",
+    "Chapter06_Outcomes",
+    "Chapter06_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Ending_WoundClosed",
+   "traits": [
+    "hold"
+   ]
+  },
+  "10f5e03534e6fe74fbc8a94dc2e2c15c": {
+   "ancestors_completed": [],
+   "areas": {
+    "2570015799edf594daf2f076f2f975d8": "2570015799edf594daf2f076f2f975d8"
+   },
+   "cascade_chapter": null,
+   "chain": [
+    "FoolKingGone",
+    "FoolKing",
+    "TricksterStates",
+    "MythicTrickster",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "FoolKingGone: EtudeStatus"
+   ],
+   "name": "FoolKingGone",
+   "note": "FoolKingGone: every use is a Chapter 5 King's-list or capital-area scene, where it plays (area DrezenCapital, Chapter05 playing, Trickster lost)",
+   "ruling": "reviewed",
+   "traits": [
+    "area",
+    "conditional"
+   ]
+  },
+  "11fc5662e0ce8074ea145a022282b879": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "PlayerIsLich",
+    "MythicLich",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "Cue_0066",
+    "DevilExAeon",
+    "DevilExAzata",
+    "PlayerIsDragon",
+    "PlayerIsLocust"
+   ],
+   "conditional": [
+    "PlayerIsLich: UnitClass"
+   ],
+   "name": "PlayerIsLich",
+   "traits": [
+    "conditional",
+    "self_completed"
+   ]
+  },
+  "148423f1d35917946a5ebeeb4f19246c": {
+   "ancestors_completed": [],
+   "areas": {
+    "2570015799edf594daf2f076f2f975d8": "2570015799edf594daf2f076f2f975d8"
+   },
+   "cascade_chapter": null,
+   "chain": [
+    "Elan_Dead",
+    "Elan_Knight",
+    "Seelah_Friends",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "Elan_Dead: EtudeStatus"
+   ],
+   "name": "Elan_Dead",
+   "traits": [
+    "area",
+    "conditional"
+   ]
+  },
+  "14a0d1887eeab174dbe3a77382123899": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "ShamiraKnowsAboutCrystalls",
+    "Shamira",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "ShamiraKnowsAboutCrystalls",
+   "traits": [
+    "hold"
+   ]
+  },
+  "15e0048c7daf0ac4999c2313b58df0e3": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Chapter03",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "ToNexus"
+   ],
+   "conditional": [],
+   "name": "Chapter03",
+   "traits": [
+    "self_completed"
+   ]
+  },
+  "1705b9de18d59eb4bb5bffb1f3a07cee": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "CaptainKerz",
+    "AirAdventurers",
+    "Chapter04_States",
+    "Chapter04_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "CaptainKerz",
+   "traits": [
+    "hold"
+   ]
+  },
+  "18affced672d4c56a52bf6ffc00601b9": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "19e5d6f04b9b4483b2e2979baf8736e4": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "1aaee57d670b0494e9d8662bffbf4f6a": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "TargonaCondemnedAreeluLab",
+    "Targona",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "TargonaCondemnedAreeluLab",
+   "traits": [
+    "hold"
+   ]
+  },
+  "1e6ca1514807446ea2fddd65e4f5bcc8": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "1fd9e6e1b5440ac469d5466a9b3d6814": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Illusions_removed",
+    "WintersunStory",
+    "Chapter03_AreasDefault",
+    "Chapter03_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Illusions_removed",
+   "traits": [
+    "hold"
+   ]
+  },
+  "2046d985bbc28a04188efa5fb06b6004": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "WoljifNotInParty_KickedOut",
+    "WoljifCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "WoljifNotInParty_KickedOut: CompanionInParty"
+   ],
+   "name": "WoljifNotInParty_KickedOut",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "20927a9471c00814b808fd69e88879c7": {
+   "ancestors_completed": [],
+   "areas": {
+    "2570015799edf594daf2f076f2f975d8": "2570015799edf594daf2f076f2f975d8"
+   },
+   "cascade_chapter": null,
+   "chain": [
+    "NurahKilledInDrezen",
+    "NurahKilledAfterDrezen",
+    "Nurah",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "NurahKilledInDrezen",
+   "note": "Nurah's killing mechanism: every use sits beside its stable parent nurah.dead_drezen (UnavailableFlags, the same Forbids list or RequiresAnyGroup)",
+   "ruling": "reviewed",
+   "traits": [
+    "area"
+   ]
+  },
+  "23983059575fff749ae1446eba539260": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "AreeluIncinerated",
+    "Areelu",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "AreeluIncinerated",
+   "traits": [
+    "hold"
+   ]
+  },
+  "23a7a6020a500004daa8e2c2f47b75a2": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Illusions_upgrade",
+    "WintersunStory",
+    "Chapter03_AreasDefault",
+    "Chapter03_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Illusions_upgrade",
+   "traits": [
+    "hold"
+   ]
+  },
+  "23bea0045d007fc4db834476012eed58": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "RedDragonEscaped",
+    "DragonHunt_Q1",
+    "GreyborStates",
+    "GreyborCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "RedDragonEscaped",
+   "traits": [
+    "hold"
+   ]
+  },
+  "24505150d0cf493c936f2c50b1c94468": {
+   "ancestors_completed": [],
+   "areas": {
+    "0a5654e7dc18f074d9356009d55eb51b": "0a5654e7dc18f074d9356009d55eb51b"
+   },
+   "cascade_chapter": null,
+   "chain": [
+    "WinterSunAfterFinalDIalog_Leader",
+    "WintersunStory",
+    "Chapter03_AreasDefault",
+    "Chapter03_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "WinterSunAfterFinalDIalog_Leader",
+   "traits": [
+    "area"
+   ]
+  },
+  "256f3c081f21ed84fb3612465a76944b": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "TricksterMythicPathFailed",
+    "TricksterStates",
+    "MythicTrickster",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "TricksterMythicPathFailed: EtudeStatus"
+   ],
+   "name": "TricksterMythicPathFailed",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "260454e5186fbd34694a0393097f77b5": {
+   "ancestors_completed": [
+    "IrabethWithGalfreyCh5"
+   ],
+   "areas": {
+    "2570015799edf594daf2f076f2f975d8": "2570015799edf594daf2f076f2f975d8"
+   },
+   "cascade_chapter": null,
+   "chain": [
+    "IrabethNotInDrezenCh5_WithGalfrey",
+    "IrabethWithGalfreyCh5",
+    "Irabeth",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "IrabethNotInDrezenCh5_WithGalfrey: OrAndLogic",
+    "IrabethWithGalfreyCh5: EtudeStatus"
+   ],
+   "name": "IrabethNotInDrezenCh5_WithGalfrey",
+   "note": "IrabethNotInDrezenCh5_WithGalfrey: live-intended (away now); the Coronation completion means she is back; users are capital scenes or Anevia's capital contact",
+   "ruling": "reviewed",
+   "traits": [
+    "area",
+    "conditional",
+    "event_cascade"
+   ]
+  },
+  "2660c0d29eaf4dce9de52b3994462df1": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "2667b0fda8704432bc35ace995e8022e": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Ending_AreeluSacrificeBefore",
+    "Endings",
+    "Chapter06_Outcomes",
+    "Chapter06_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Ending_AreeluSacrificeBefore",
+   "traits": [
+    "hold"
+   ]
+  },
+  "26ae0f50130942b4bb8dfe658e77b1c6": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "SeelahNotInParty_Dead",
+    "SeelahCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "SeelahNotInParty_Dead: CompanionInParty"
+   ],
+   "name": "SeelahNotInParty_Dead",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "29c5c64462384fa3b8aae34e4c9ebce9": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Ending_AreeluSacrificeTrickster",
+    "Endings",
+    "Chapter06_Outcomes",
+    "Chapter06_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Ending_AreeluSacrificeTrickster",
+   "traits": [
+    "hold"
+   ]
+  },
+  "2b2cfaa1727070c43b10729920112730": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "RegillNotInParty_KickedOut",
+    "RegillCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "RegillNotInParty_KickedOut: CompanionInParty"
+   ],
+   "name": "RegillNotInParty_KickedOut",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "2bb1f6f30ca9bb1408f720d6f10c5c05": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Seelah_ModerateEnding",
+    "SeelahStates",
+    "SeelahCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "Seelah_ModerateEnding: EtudeStatus"
+   ],
+   "name": "Seelah_ModerateEnding",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "2c4abd2b51e4307469e034d9919850c2": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "SosielNotInParty_KickedOut",
+    "SosielCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "SosielNotInParty_KickedOut: CompanionInParty"
+   ],
+   "name": "SosielNotInParty_KickedOut",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "2df11d659d8f57846a6a3f16492adbb8": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "WoljifNotInParty_Dead",
+    "WoljifCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "WoljifNotInParty_Dead: CompanionInParty"
+   ],
+   "name": "WoljifNotInParty_Dead",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "2e98dbe685f045cdabf88b66e4cde9ff": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "2edcb6e5a1c3439fa9b9e0b3b96a49fb": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "381a296094804761af0893d2e70dc2df": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Ending_PlayerSacrifice",
+    "Endings",
+    "Chapter06_Outcomes",
+    "Chapter06_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Ending_PlayerSacrifice",
+   "traits": [
+    "hold"
+   ]
+  },
+  "383cc2c9ea3f47c4a71982cb06535118": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "39008f5a372a6dc42bddfcf4f334bd95": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "NoDragon",
+    "AzataStates",
+    "MythicAzata",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "CommandAction 1"
+   ],
+   "conditional": [],
+   "name": "NoDragon",
+   "traits": [
+    "self_completed"
+   ]
+  },
+  "3944d299c18b7174bb2d6820aa5dc336": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "DaeranNotInParty_KickedOut",
+    "DaeranCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "DaeranNotInParty_KickedOut: CompanionInParty"
+   ],
+   "name": "DaeranNotInParty_KickedOut",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "395aad049186445f9f474d0a769ec8ff": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "IrabethGone",
+    "Irabeth",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "IrabethGone: EtudeStatus"
+   ],
+   "name": "IrabethGone",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "3a040afde22f4b742a2f607354ab17e7": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "PlayerIsAeon",
+    "MythicAeon",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "DevilExAeon",
+    "DevilExAzata",
+    "PlayerIsDragon",
+    "PlayerIsLocust"
+   ],
+   "conditional": [
+    "PlayerIsAeon: UnitClass"
+   ],
+   "name": "PlayerIsAeon",
+   "traits": [
+    "conditional",
+    "self_completed"
+   ]
+  },
+  "3a708ad53771a2d44ac506361fb7aafc": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "EmberInParty",
+    "EmberCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "EmberInParty: CompanionInParty"
+   ],
+   "name": "EmberInParty",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "3a82aba4de71b89458ac82949ed957c4": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "PlayerIsAngel",
+    "MythicAngel",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "DevilExAeon",
+    "DevilExAzata",
+    "PlayerIsDragon",
+    "PlayerIsLocust"
+   ],
+   "conditional": [
+    "PlayerIsAngel: UnitClass"
+   ],
+   "name": "PlayerIsAngel",
+   "traits": [
+    "conditional",
+    "self_completed"
+   ]
+  },
+  "3b31ef42338b4f83ab822fbcae79a41c": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "UlbrigNotInParty_KickedOut",
+    "UlbrigCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "UlbrigNotInParty_KickedOut: CompanionInParty",
+    "UlbrigCompanion: IsDLCEnabled"
+   ],
+   "name": "UlbrigNotInParty_KickedOut",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "3b8bd37108050a94b9be14e22501e090": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "TargonaIsWasKilledInAreeluLab",
+    "Targona",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "TargonaIsWasKilledInAreeluLab",
+   "traits": [
+    "hold"
+   ]
+  },
+  "3b8c0801d5e9a694b848ee13564d2ad7": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "MinaghoDead",
+    "Minagho",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "MinaghoDead",
+   "traits": [
+    "hold"
+   ]
+  },
+  "3c1405201bec99f4db67371f41a3c32a": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "StorytellerDead",
+    "Storyteller",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "StorytellerDead",
+   "traits": [
+    "hold"
+   ]
+  },
+  "3d21fa8120d040338ec1d4b8461fa536": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "3d2d02611cd24f579e7b7b411b94263e": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "3d4cf05d72e552d4fa8490987a7fc7be": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "ArueshalaeNotInParty_KickedOut",
+    "ArueshalaeCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "ArueshalaeNotInParty_KickedOut: CompanionInParty"
+   ],
+   "name": "ArueshalaeNotInParty_KickedOut",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "3f1a8be9cc6d082469d17da642655f53": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "HerraxaSlaveHaggling",
+    "TenThousandsDelight",
+    "Chapter04_States",
+    "Chapter04_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "HerraxaSlaveHaggling",
+   "traits": [
+    "hold"
+   ]
+  },
+  "3f3fbb973a4ffee47956b4c7714c939a": {
+   "ancestors_completed": [],
+   "areas": {
+    "2570015799edf594daf2f076f2f975d8": "2570015799edf594daf2f076f2f975d8"
+   },
+   "cascade_chapter": null,
+   "chain": [
+    "Arsinoe_Capital",
+    "Arsinoe",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "Arsinoe_Capital: EtudeStatus"
+   ],
+   "name": "Arsinoe_Capital",
+   "traits": [
+    "area",
+    "conditional"
+   ]
+  },
+  "4069e7378d38fc4488f5347e4d2e84e9": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "CaptainNocticula",
+    "AirAdventurers",
+    "Chapter04_States",
+    "Chapter04_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "CaptainNocticula",
+   "traits": [
+    "hold"
+   ]
+  },
+  "40fb6c123ced9ed45a305e0feec010ae": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "NenioNotInParty_Dead",
+    "NenioCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "NenioNotInParty_Dead: CompanionInParty"
+   ],
+   "name": "NenioNotInParty_Dead",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "418c4031658541909066be68b6e1fc22": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "DelameresRemainsFinished",
+    "StoryProjectsOutcomes",
+    "ImportantStates",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "DelameresRemainsFinished",
+   "traits": [
+    "hold"
+   ]
+  },
+  "42e220d5dadc4dfd8bb3ef23cae832eb": {
+   "ancestors_completed": [],
+   "areas": {
+    "2ccc6731787b6ec41ab5adc13f1b9ce9": "2ccc6731787b6ec41ab5adc13f1b9ce9"
+   },
+   "cascade_chapter": null,
+   "chain": [
+    "MonsterDead",
+    "Iz_Default",
+    "Chapter05_AreasDefault",
+    "Chapter05_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "MonsterDead",
+   "traits": [
+    "area"
+   ]
+  },
+  "439e63fed37f52048887d98f99255e40": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "PlayerIsLocust",
+    "MythicLocust",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "PlayerIsLocust: UnitClass"
+   ],
+   "name": "PlayerIsLocust",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "46f4524cec981c544964229e3e08c847": {
+   "ancestors_completed": [],
+   "areas": {
+    "2570015799edf594daf2f076f2f975d8": "2570015799edf594daf2f076f2f975d8"
+   },
+   "cascade_chapter": null,
+   "chain": [
+    "JannaInCondemned",
+    "SeelahFriendsFate",
+    "SeelahInParty",
+    "SeelahCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "SeelahInParty: CompanionInParty"
+   ],
+   "name": "JannaInCondemned",
+   "traits": [
+    "area",
+    "conditional"
+   ]
+  },
+  "4774e38b267c47f2b5f6c0975ec486f0": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "480fead956f24022930a83d4457a377c": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "4863a2dfe7f847e588df50710ebf2a3f": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "UlbrigNotInParty_Dead",
+    "UlbrigCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "UlbrigNotInParty_Dead: CompanionIsDead",
+    "UlbrigCompanion: IsDLCEnabled"
+   ],
+   "name": "UlbrigNotInParty_Dead",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "49839ba15f34bee469c4f093dace0811": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "BlindCarver_Dead",
+    "WintersunStory",
+    "Chapter03_AreasDefault",
+    "Chapter03_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "BlindCarver_Dead",
+   "traits": [
+    "hold"
+   ]
+  },
+  "4a29c758798d47a1a32f506d1ca6081b": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "4bb966e7df502394cba4b650a54ce92f": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "DaeranNotInParty_Dead",
+    "DaeranCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "DaeranNotInParty_Dead: CompanionInParty"
+   ],
+   "name": "DaeranNotInParty_Dead",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "4c3565d1f0f9fb24981b510da246ef2f": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "RegillNotInParty_Dead",
+    "RegillCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "RegillNotInParty_Dead: CompanionInParty"
+   ],
+   "name": "RegillNotInParty_Dead",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "4dd373d7c9954b6419adf920cca9231f": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Kaylessa_dead",
+    "Kaylessa",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Kaylessa_dead",
+   "traits": [
+    "hold"
+   ]
+  },
+  "5169dbc60a1ad854493f7ba44c27a0d8": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "KyadoTraderInDrezen",
+    "Kyado",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "KyadoTraderInDrezen",
+   "traits": [
+    "hold"
+   ]
+  },
+  "53fa4f1c1655c3c41b0280b3a8e4d8c9": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "ShykaIsGone",
+    "TricksterStates",
+    "MythicTrickster",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "ShykaIsGone",
+   "traits": [
+    "hold"
+   ]
+  },
+  "543a6e475aeb9bf4eafb43903e3e186b": {
+   "ancestors_completed": [
+    "ArueshalaeRomance"
+   ],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "ArueshalaeRomance_Fail",
+    "ArueshalaeRomance",
+    "ArueshalaeCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "ArueshalaeRomance: EtudeStatus"
+   ],
+   "name": "ArueshalaeRomance_Fail",
+   "note": "ArueshalaeRomance_Fail is the one-strike warning; the second strike completes ArueshalaeRomance in the same dialog, so it never reads 'failed'",
+   "ruling": "never_reads",
+   "traits": [
+    "conditional",
+    "event_cascade"
+   ]
+  },
+  "580a89c5fe6e6a64a908bbccfc18f4c8": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "ArueshalaeNotInParty_Dead",
+    "ArueshalaeCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "ArueshalaeNotInParty_Dead: CompanionInParty"
+   ],
+   "name": "ArueshalaeNotInParty_Dead",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "581521b398fb9dd4eb52bbfffb3b5c43": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "RedDragonDead",
+    "DragonHunt_Q1",
+    "GreyborStates",
+    "GreyborCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "RedDragonDead",
+   "traits": [
+    "hold"
+   ]
+  },
+  "58557969a797441983022c8ba0400400": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "592dcdccbef043f58031fa234faf137a": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "59632e1775b2f7240af0f6d0db28e35b": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "JannaInPrison",
+    "SeelahFriendsFate",
+    "SeelahInParty",
+    "SeelahCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "PF-541261",
+    "Seelah_BeforeQ3"
+   ],
+   "conditional": [
+    "JannaInPrison: EtudeStatus",
+    "SeelahInParty: CompanionInParty"
+   ],
+   "name": "JannaInPrison",
+   "traits": [
+    "conditional",
+    "self_completed"
+   ]
+  },
+  "5b01aa690202e584888dfc600a4aac0a": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Chapter05",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "ThresholdEnter"
+   ],
+   "conditional": [],
+   "name": "Chapter05",
+   "traits": [
+    "self_completed"
+   ]
+  },
+  "5eb05139c8b621a44b47c540aa4957d1": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "ArueshalaeEvilNotInParty_KickedOut",
+    "ArueshalaeEvilCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "ArueshalaeEvilNotInParty_KickedOut: CompanionInParty"
+   ],
+   "name": "ArueshalaeEvilNotInParty_KickedOut",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "5f63f6d43c9b465f822db70af7d69b92": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Ending_Trickster_AllPlanesAndFW",
+    "Ending_TricksterFull",
+    "Endings",
+    "Chapter06_Outcomes",
+    "Chapter06_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Ending_Trickster_AllPlanesAndFW",
+   "traits": [
+    "hold"
+   ]
+  },
+  "5f72b252bd7fa8d48bd04c27982a4f9c": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "AzataDevilDecision_Contract",
+    "AzataDevilDecision",
+    "AzataStates",
+    "MythicAzata",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "AzataDevilDecision_Contract",
+   "traits": [
+    "hold"
+   ]
+  },
+  "5fe7b9ab3aab4d045b3acabfd0e638a6": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "KilledByPlayer",
+    "NenioStates",
+    "NenioCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "KilledByPlayer",
+   "traits": [
+    "hold"
+   ]
+  },
+  "6125c10886d6465091f4e092618ca55a": {
+   "ancestors_completed": [],
+   "areas": {
+    "2570015799edf594daf2f076f2f975d8": "2570015799edf594daf2f076f2f975d8"
+   },
+   "cascade_chapter": null,
+   "chain": [
+    "AneviaNotInDrezen",
+    "Anevia",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "AneviaNotInDrezen: OrAndLogic"
+   ],
+   "name": "AneviaNotInDrezen",
+   "traits": [
+    "area",
+    "conditional"
+   ]
+  },
+  "61b07b3511bb71646a717c2b3c0f3bf6": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Nocticula_GiftBroken",
+    "Chapter04_Outcomes",
+    "Chapter04_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Nocticula_GiftBroken",
+   "traits": [
+    "hold"
+   ]
+  },
+  "63279a971792474ba0439b9f75795a7a": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "TE_AscendAreelu",
+    "TrueEnding",
+    "ImportantStates",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "TE_AscendAreelu",
+   "traits": [
+    "hold"
+   ]
+  },
+  "64e2b82829694b8fac652ea06f4dc8a7": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "6596f51f8e640384189c6708bd55ed50": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "RegillNotInParty_AccordingToThePlot",
+    "RegillCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "RegillNotInParty_AccordingToThePlot: CompanionInParty, EtudeStatus"
+   ],
+   "name": "RegillNotInParty_AccordingToThePlot",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "699b1ad898227c943b2ee9e0cfd355aa": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "JannaDead_SeelahKnows",
+    "SeelahFriendsFate",
+    "SeelahInParty",
+    "SeelahCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "SeelahInParty: CompanionInParty"
+   ],
+   "name": "JannaDead_SeelahKnows",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "6b98ec3e704599149b99fe70b5f793ab": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "TerendelevWasNotKilled",
+    "AeonStates",
+    "MythicAeon",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "TerendelevWasNotKilled",
+   "traits": [
+    "hold"
+   ]
+  },
+  "6ba14669a2a74dfbb308f66fecda8f6e": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "6d3fb96f9b60c0449a01add4be5c4a49": {
+   "ancestors_completed": [],
+   "areas": {
+    "b8583f39adb1c0141b5d95825e23ce6f": "b8583f39adb1c0141b5d95825e23ce6f"
+   },
+   "cascade_chapter": null,
+   "chain": [
+    "VictimsRevived",
+    "SeelahQ3",
+    "SeelahInParty",
+    "SeelahCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "Cue_0017",
+    "Cue_0018",
+    "Cue_0019"
+   ],
+   "conditional": [
+    "SeelahInParty: CompanionInParty"
+   ],
+   "name": "VictimsRevived",
+   "note": "VictimsRevived: live-intended; native Arsinoe_Dialogue_Conditions gates her own dialogue on NOT Playing, and she is in the Temple (its area) while it plays",
+   "ruling": "reviewed",
+   "traits": [
+    "area",
+    "conditional",
+    "self_completed"
+   ]
+  },
+  "6f8232943eadc914da5d60121e6ce612": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "CamelliaNotInParty_KickedOut",
+    "CamelliaCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "CamelliaNotInParty_KickedOut: CompanionInParty"
+   ],
+   "name": "CamelliaNotInParty_KickedOut",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "6ff418aeda24e6e48be844e6258e3c5a": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Ending_TricksterFull",
+    "Endings",
+    "Chapter06_Outcomes",
+    "Chapter06_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Ending_TricksterFull",
+   "traits": [
+    "hold"
+   ]
+  },
+  "71f85264d9064074f9cf74999ecbffa9": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "ChivarroHappyEnd",
+    "Chivarro",
+    "TenThousandsDelight",
+    "Chapter04_States",
+    "Chapter04_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "ChivarroHappyEnd",
+   "traits": [
+    "hold"
+   ]
+  },
+  "720af1f72f413354db3f4d41f76d5af6": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "TargonaIsFreeInAreeluLab",
+    "Targona",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "TargonaIsFreeInAreeluLab",
+   "traits": [
+    "hold"
+   ]
+  },
+  "72e423c719ed9d44fa432a6b9629babd": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "VellexiaKilled",
+    "Vellexia",
+    "Chapter04_States",
+    "Chapter04_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "VellexiaKilled",
+   "traits": [
+    "hold"
+   ]
+  },
+  "739b9fe9b8998c641b4b3dfed40bc217": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "NurahKilledByCamellia",
+    "Nurah",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "NurahKilledByCamellia",
+   "traits": [
+    "hold"
+   ]
+  },
+  "761ca3572c1145ebb755032d613bff46": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "787273d702a87884e9f14cfb7ef91180": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "EmberNotInParty_KickedOut",
+    "EmberCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "EmberNotInParty_KickedOut: CompanionInParty"
+   ],
+   "name": "EmberNotInParty_KickedOut",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "78fb64bf32f3f194ab077315650adf10": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "KaylessaTomb",
+    "Kaylessa",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "KaylessaTomb",
+   "traits": [
+    "hold"
+   ]
+  },
+  "79519b75e04ffc744b9bb72a2b369786": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "EmberNotInParty_AccordingToThePlot",
+    "EmberCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "EmberNotInParty_AccordingToThePlot: CompanionInParty, EtudeStatus"
+   ],
+   "name": "EmberNotInParty_AccordingToThePlot",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "7a038ff7b70e91844954407b18e8feb6": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "IrabethBroken_Chapter03",
+    "Irabeth",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "IrabethBroken_Chapter03",
+   "traits": [
+    "hold"
+   ]
+  },
+  "7a6f0ef4dd004418aa613693dd9d280a": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "FornIsDead",
+    "Kaylessa",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "FornIsDead",
+   "traits": [
+    "hold"
+   ]
+  },
+  "7afa470738d309649bea253eb167fbc1": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "LannNotInParty_KickedOut",
+    "LannCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "LannNotInParty_KickedOut: CompanionInParty"
+   ],
+   "name": "LannNotInParty_KickedOut",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "7efcde13580d70648896ee8ae33b26f2": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "LannNotInParty_AccordingToThePlot",
+    "LannCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "LannNotInParty_AccordingToThePlot: CompanionInParty, EtudeStatus"
+   ],
+   "name": "LannNotInParty_AccordingToThePlot",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "806ece7bcf18a374e9ad1f7b9e3bc580": {
+   "ancestors_completed": [],
+   "areas": {
+    "4f849f5683145d0489db4077e0d7eccf": "4f849f5683145d0489db4077e0d7eccf"
+   },
+   "cascade_chapter": null,
+   "chain": [
+    "ChivarroWasTeleportedAway",
+    "AlushinyrraLowerCity_DefaultEtude",
+    "Chapter04_AreasDefault",
+    "Chapter04_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "ChivarroWasTeleportedAway",
+   "note": "ChivarroWasTeleportedAway: only an OR branch beside the stable chivarro.removed, which the same cue starts",
+   "ruling": "reviewed",
+   "traits": [
+    "area"
+   ]
+  },
+  "80cb9c6f466b4eaaaa9561ca56c5f348": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "813cc79c053d4b3e869a0d0ca2f3d85d": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "84b4471249a48d84c822d38396c698d9": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "SeelahInParty",
+    "SeelahCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "SeelahInParty: CompanionInParty"
+   ],
+   "name": "SeelahInParty",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "857c9366224c4b278fcc4ba3273b4b6b": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "85ee36dae8f3317448fa5b950543b3ad": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "WenduagKilled",
+    "WenduagStates",
+    "WenduagCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "WenduagKilled",
+   "traits": [
+    "hold"
+   ]
+  },
+  "89965a2b67b792f438bf935fdb6ab96b": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "VellexiasSlavesFreed",
+    "Vellexia",
+    "Chapter04_States",
+    "Chapter04_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "VellexiasSlavesFreed",
+   "traits": [
+    "hold"
+   ]
+  },
+  "89d57f73e41040f0ab527d6e83478a64": {
+   "ancestors_completed": [],
+   "areas": {
+    "2570015799edf594daf2f076f2f975d8": "2570015799edf594daf2f076f2f975d8"
+   },
+   "cascade_chapter": null,
+   "chain": [
+    "KTC_WintersunHelp_BlindCarver",
+    "KTC_WintersunHelp",
+    "Ch5_CommonCapitalEvents",
+    "Ch5_KTC_and_Timeline",
+    "CapitalMechanic",
+    "Chapter03_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "KTC_WintersunHelp_BlindCarver: EtudeStatus",
+    "Ch5_KTC_and_Timeline: EtudeStatus"
+   ],
+   "name": "KTC_WintersunHelp_BlindCarver",
+   "traits": [
+    "area",
+    "conditional"
+   ]
+  },
+  "89f8c2f1a7a8ea24794bf4af231e89a1": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "CamelliaRomance",
+    "CamelliaCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "Answer_0001",
+    "Answer_0024",
+    "Answer_0025",
+    "Answer_0026",
+    "Answer_0027",
+    "Answer_0028",
+    "Answer_0030",
+    "Answer_0031"
+   ],
+   "conditional": [
+    "CamelliaRomance: EtudeStatus"
+   ],
+   "name": "CamelliaRomance",
+   "note": "CamelliaRomance: current romance is the intended meaning (dance branch)",
+   "ruling": "reviewed",
+   "traits": [
+    "conditional",
+    "self_completed"
+   ]
+  },
+  "8a28bbd82568486bb757d00a2087a6cf": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "8b0924efc23df3540b4d8b5fbffd522f": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "IrabethEncouraged_Chapter03",
+    "Irabeth",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "IrabethEncouraged_Chapter03",
+   "traits": [
+    "hold"
+   ]
+  },
+  "8c2fdd760cc54b4bb874d2832ff14695": {
+   "ancestors_completed": [],
+   "areas": {
+    "2ccc6731787b6ec41ab5adc13f1b9ce9": "2ccc6731787b6ec41ab5adc13f1b9ce9"
+   },
+   "cascade_chapter": null,
+   "chain": [
+    "ManuscriptsAnemoraDead",
+    "Iz_Default",
+    "Chapter05_AreasDefault",
+    "Chapter05_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "ManuscriptsAnemoraDead",
+   "traits": [
+    "area"
+   ]
+  },
+  "8ee3df5466722b94091a3b867b33063a": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "NoctaWillAttendTheCouncil",
+    "TricksterStates",
+    "MythicTrickster",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "NoctaWillAttendTheCouncil",
+   "traits": [
+    "hold"
+   ]
+  },
+  "90f2e0f1cdc263b41b2e625bf228b226": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "TumberdDead",
+    "Tumberd",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "TumberdDead",
+   "traits": [
+    "hold"
+   ]
+  },
+  "9104498b842e1584da9b3640cb9e4157": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "EvilArushaKilled",
+    "ArueshalaeIsEvil",
+    "ArueshalaeStates",
+    "ArueshalaeCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "EvilArushaKilled",
+   "traits": [
+    "hold"
+   ]
+  },
+  "91f7abac0d8e46e19ce8fc45fa3df58e": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "936af39436c74953b43a4165bfbcc9f9": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Ending_AreeluDead",
+    "Endings",
+    "Chapter06_Outcomes",
+    "Chapter06_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Ending_AreeluDead",
+   "traits": [
+    "hold"
+   ]
+  },
+  "94bc04d1ed474feaab54af2f77a94574": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "9591c34df22b4d518a059cf608255458": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "96ca61bbf4a54228be37a4a95fa0704d": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "DLC1_StorytellerDead",
+    "DLC1_Storyteller",
+    "DLC1_Threshold_Outdoor_States",
+    "DLC1_Threshold_Outdoor",
+    "DLC1_Megaepic",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "DLC1_StorytellerDead",
+   "traits": [
+    "hold"
+   ]
+  },
+  "9772be00ff3505440bb4937198c19c06": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "ShamiraNoMoreDialogues",
+    "Shamira",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "ShamiraNoMoreDialogues",
+   "traits": [
+    "hold"
+   ]
+  },
+  "978762feac7873d4e925d85202e2c89c": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "MinaghoSetFreeInC4",
+    "Minagho",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "MinaghoSetFreeInC4",
+   "traits": [
+    "hold"
+   ]
+  },
+  "995f0ac2951bbb041b062806c163fbf1": {
+   "ancestors_completed": [],
+   "areas": {
+    "0a5654e7dc18f074d9356009d55eb51b": "0a5654e7dc18f074d9356009d55eb51b"
+   },
+   "cascade_chapter": null,
+   "chain": [
+    "BearDead",
+    "Wintersun_ForestQuest_Start",
+    "Wintersun_Default",
+    "Chapter03_AreasDefault",
+    "Chapter03_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "BearDead",
+   "traits": [
+    "area"
+   ]
+  },
+  "9a3739370f84b0b4196d0e4d326ea3a8": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "PlayerIsDemon",
+    "MythicDemon",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "DevilExAeon",
+    "DevilExAzata",
+    "PlayerIsDragon",
+    "PlayerIsLocust"
+   ],
+   "conditional": [
+    "PlayerIsDemon: UnitClass"
+   ],
+   "name": "PlayerIsDemon",
+   "traits": [
+    "conditional",
+    "self_completed"
+   ]
+  },
+  "9b1902a20e98aa94094741ef9c91d962": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "WenduagNotInParty_KickedOut",
+    "WenduagCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "WenduagNotInParty_KickedOut: CompanionInParty"
+   ],
+   "name": "WenduagNotInParty_KickedOut",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "9b193d30c89a20b409fd3dda9bd109bf": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "PlayerIsDragon",
+    "MythicDragon",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "PlayerIsDragon: UnitClass"
+   ],
+   "name": "PlayerIsDragon",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "9b2af5f30ebd0c544b973c69a9c4dc39": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "NoctaFooled",
+    "TricksterStates",
+    "MythicTrickster",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "NoctaFooled",
+   "traits": [
+    "hold"
+   ]
+  },
+  "9f486a9c0c9abfc4a952bb22e88a7e96": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "PlayerIsTrickster",
+    "MythicTrickster",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "Chapter04",
+    "DevilExAeon",
+    "DevilExAzata",
+    "PF-296564",
+    "PlayerIsDragon",
+    "PlayerIsLocust"
+   ],
+   "conditional": [
+    "PlayerIsTrickster: UnitClass"
+   ],
+   "name": "PlayerIsTrickster",
+   "traits": [
+    "conditional",
+    "self_completed"
+   ]
+  },
+  "9f655e252d334f04884f10188b0d8928": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "9fc5161813f1497f8eaad1563ac54211": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "TE_AscendCompanions",
+    "TrueEnding",
+    "ImportantStates",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "TE_AscendCompanions",
+   "traits": [
+    "hold"
+   ]
+  },
+  "a1db9daf676b36f4d99c6a788a0fe1af": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "PlayerIsDevil",
+    "MythicDevil",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "PlayerIsDevil: UnitClass"
+   ],
+   "name": "PlayerIsDevil",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "a4f20ae9f6a6c3d4ba204721589470a2": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "GalfreyDead",
+    "Galfrey",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "GalfreyDead",
+   "traits": [
+    "hold"
+   ]
+  },
+  "a583e4ab47544f5e928fc5b6b7c41e48": {
+   "ancestors_completed": [],
+   "areas": {
+    "2ccc6731787b6ec41ab5adc13f1b9ce9": "2ccc6731787b6ec41ab5adc13f1b9ce9"
+   },
+   "cascade_chapter": null,
+   "chain": [
+    "DidntVisitedEvents",
+    "Iz_Default",
+    "Chapter05_AreasDefault",
+    "Chapter05_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "DidntVisitedEvents",
+   "traits": [
+    "area"
+   ]
+  },
+  "a837c3bc9cbb4e846ab5565915165c91": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "NurahKilledAfterDrezen",
+    "Nurah",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "NurahKilledAfterDrezen",
+   "traits": [
+    "hold"
+   ]
+  },
+  "a86ab44f1a4d3f54fbeb51f5568bbb5c": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "NuraRanOffAfterDrezen",
+    "Nurah",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "NuraRanOffAfterDrezen",
+   "traits": [
+    "hold"
+   ]
+  },
+  "a879a3a637a7eeb43b40677e4a8c4450": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "NurahRecruitedByTrickster",
+    "Nurah",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "NurahRecruitedByTrickster",
+   "traits": [
+    "hold"
+   ]
+  },
+  "a87da83417ff4be28c9ccfaf9b154e96": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "a9a453f695924f99b4326f60b7c3753e": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "UnprecedentedOmeletFinished",
+    "StoryProjectsOutcomes",
+    "ImportantStates",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "UnprecedentedOmeletFinished",
+   "traits": [
+    "hold"
+   ]
+  },
+  "b02cb06ba219ef9419a1b37cad576afa": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "CamelliaNotInParty_Dead",
+    "CamelliaCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "CamelliaNotInParty_Dead: CompanionInParty, UnitIsDead"
+   ],
+   "name": "CamelliaNotInParty_Dead",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "b0c1344ae8267c94998ca27ad4288c01": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "DragonEggsDestroyed",
+    "Chapter03_Outcomes",
+    "Chapter03_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "DragonEggsDestroyed",
+   "traits": [
+    "hold"
+   ]
+  },
+  "b14e13f9359585e498fcd81ab95d4d7e": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "IrabethDead",
+    "Irabeth",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "IrabethDead",
+   "traits": [
+    "hold"
+   ]
+  },
+  "b1d0c45e438c2ae458466ed56de99a9d": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "EmberEnd_Evil",
+    "EmberStates",
+    "EmberCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "EmberEnd_Evil: LessThan, QuestStatus"
+   ],
+   "name": "EmberEnd_Evil",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "b5c19cd01e364df99f6c946c7da14751": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "b5ed357e0f654a6bbd45ef9f74b10f00": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Vellexia_FightOnThirdDate",
+    "Vellexia",
+    "Chapter04_States",
+    "Chapter04_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Vellexia_FightOnThirdDate",
+   "traits": [
+    "hold"
+   ]
+  },
+  "b5f301fbc4c44535a6309d610d5bd28a": {
+   "ancestors_completed": [],
+   "areas": {
+    "2570015799edf594daf2f076f2f975d8": "2570015799edf594daf2f076f2f975d8"
+   },
+   "cascade_chapter": null,
+   "chain": [
+    "DiplomacyOfficer_InDrezen",
+    "RankUpOfficers",
+    "RankUps",
+    "CommonCapitalKTC",
+    "CapitalMechanic",
+    "Chapter03_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "Diplomacy_6_Dialogue",
+    "Drezen_SecondState_Locust",
+    "PF-360384"
+   ],
+   "conditional": [
+    "DiplomacyOfficer_InDrezen: EtudeStatus"
+   ],
+   "name": "DiplomacyOfficer_InDrezen",
+   "note": "Konomi's office: the out-of-capital use is konomi.private_absence, which Requires konomi.private_departed (she has left the office), so a false read there is the true state",
+   "ruling": "reviewed",
+   "traits": [
+    "area",
+    "conditional",
+    "self_completed"
+   ]
+  },
+  "b6b0399039dbdbf43bf8946f7e686469": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "MythicLich_TrueLich",
+    "LichStates",
+    "MythicLich",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "MythicLich_TrueLich: DialogSeen, EtudeStatus, ObjectiveStatus, OrAndLogic"
+   ],
+   "name": "MythicLich_TrueLich",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "b80a81e97e26167489c439caf34888f8": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "FightAgainstCouncil",
+    "TricksterStates",
+    "MythicTrickster",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "FightAgainstCouncil",
+   "traits": [
+    "hold"
+   ]
+  },
+  "b981026a5be6a9a49bf1f7ab57f9e1bb": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "EmberEnd_Good",
+    "EmberStates",
+    "EmberCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "EmberEnd_Good: LessThan, QuestStatus"
+   ],
+   "name": "EmberEnd_Good",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "b9cbdf8a2f0545f694366b87ae7d7d44": {
+   "ancestors_completed": [
+    "Chapter05"
+   ],
+   "areas": {},
+   "cascade_chapter": 6,
+   "chain": [
+    "KTCs_AfterCoronation",
+    "Chapter05",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "KTCs_AfterCoronation",
+   "traits": [
+    "cascade"
+   ]
+  },
+  "ba365d0ae03c414a8f6f906837a4fe91": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "AneviaDead",
+    "Anevia",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "AneviaDead",
+   "traits": [
+    "hold"
+   ]
+  },
+  "baa4820ac052d664bbaa261d17ce9b08": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Marhevok_StayLeader",
+    "WintersunStory",
+    "Chapter03_AreasDefault",
+    "Chapter03_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "Cue_0050",
+    "PF-414893"
+   ],
+   "conditional": [],
+   "name": "Marhevok_StayLeader",
+   "note": "Marhevok rules: current leadership is the intended meaning ('while Marhevok rules')",
+   "ruling": "reviewed",
+   "traits": [
+    "self_completed"
+   ]
+  },
+  "bbe7d7dbb92a4923a1ca4433e626a5ec": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "bc65b234df544a718afc4856eb7f33fc": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "TargonaDiedInMutasafenLair",
+    "Targona",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "TargonaDiedInMutasafenLair",
+   "traits": [
+    "hold"
+   ]
+  },
+  "bee15cff021828c4c92f09e8f771dbb2": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "FleshMarketMassacre",
+    "FleshMarket",
+    "Chapter04_States",
+    "Chapter04_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "FleshMarketMassacre",
+   "traits": [
+    "hold"
+   ]
+  },
+  "c0f261c4a259da741ab0052f0100c2a0": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "IrabethKilledByPlayer",
+    "IrabethDead",
+    "Irabeth",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "IrabethKilledByPlayer",
+   "traits": [
+    "hold"
+   ]
+  },
+  "c27a359a6e4e44b9b9cd9c0e54a1dd41": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "c33407f132b192643a438bd33797efa1": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "SeelahNotInParty_KickedOut",
+    "SeelahCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "SeelahNotInParty_KickedOut: CompanionInParty"
+   ],
+   "name": "SeelahNotInParty_KickedOut",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "c6165efcd5571c442ae38d7c0601f2df": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "PlayerIsLegend",
+    "MythicLegend",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "PlayerIsLegend: UnitClass"
+   ],
+   "name": "PlayerIsLegend",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "c6be8cc816ed47e6929735f877abb229": {
+   "ancestors_completed": [],
+   "areas": {
+    "2570015799edf594daf2f076f2f975d8": "2570015799edf594daf2f076f2f975d8"
+   },
+   "cascade_chapter": null,
+   "chain": [
+    "LogisticsOfficer_InDrezen",
+    "RankUpOfficers",
+    "RankUps",
+    "CommonCapitalKTC",
+    "CapitalMechanic",
+    "Chapter03_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "Drezen_SecondState_Locust"
+   ],
+   "conditional": [
+    "LogisticsOfficer_InDrezen: EtudeStatus"
+   ],
+   "name": "LogisticsOfficer_InDrezen",
+   "traits": [
+    "area",
+    "conditional",
+    "self_completed"
+   ]
+  },
+  "c6e9a69f602a48e18424f4b6d71062b4": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "ApprovedHelpFromAnotherCountryDiplomacy7(A8A0103)",
+    "RankUp_Outcomes",
+    "RankUps",
+    "CommonCapitalKTC",
+    "CapitalMechanic",
+    "Chapter03_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "ApprovedHelpFromAnotherCountryDiplomacy7(A8A0103)",
+   "traits": [
+    "hold"
+   ]
+  },
+  "c820b3788f967e14f8bde3c17447157f": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "PlayerWasTrickster",
+    "TricksterStates",
+    "MythicTrickster",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "PlayerWasTrickster",
+   "traits": [
+    "hold"
+   ]
+  },
+  "c922e0cbe25a0cf4dad4ce7a3ca81935": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "NuraInPrisonAfterDrezen",
+    "Nurah",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "NuraRanOffAfterDrezen"
+   ],
+   "conditional": [
+    "NuraInPrisonAfterDrezen: OrAndLogic"
+   ],
+   "name": "NuraInPrisonAfterDrezen",
+   "traits": [
+    "conditional",
+    "self_completed"
+   ]
+  },
+  "c97882cbc65c4c546aed1810627a5b81": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Wintersun_OldDefender",
+    "WintersunStory",
+    "Chapter03_AreasDefault",
+    "Chapter03_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "Wintersun_ForestDead"
+   ],
+   "conditional": [],
+   "name": "Wintersun_OldDefender",
+   "traits": [
+    "self_completed"
+   ]
+  },
+  "ca3799e579c3eaa48a6625aa456d1840": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "LannNotInParty_Dead",
+    "LannCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "LannNotInParty_Dead: CompanionInParty, OrAndLogic"
+   ],
+   "name": "LannNotInParty_Dead",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "cc76b7abcda591f438d0f24972dafddc": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "FoolKingCoronated",
+    "FoolKing",
+    "TricksterStates",
+    "MythicTrickster",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "FoolKingCoronated",
+   "traits": [
+    "hold"
+   ]
+  },
+  "cd8666952065ce74d94d960a23482133": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "JerribethDead",
+    "Jerribeth",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "JerribethDead",
+   "traits": [
+    "hold"
+   ]
+  },
+  "cf3639c5cf057034fa766dd5f421d2ed": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "CamelliaState_Killed",
+    "CamelliaStates",
+    "CamelliaCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "CamelliaState_Killed",
+   "traits": [
+    "hold"
+   ]
+  },
+  "d21eb4b5e2164aeaa32e48234701c653": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "EmberKilledInKenabres",
+    "EmberStates",
+    "EmberCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "EmberKilledInKenabres",
+   "traits": [
+    "hold"
+   ]
+  },
+  "d3b47e973d65c6c46af1cce815d1f6ce": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "PlayerIsAzata",
+    "MythicAzata",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "DevilExAeon",
+    "DevilExAzata",
+    "PlayerIsDragon",
+    "PlayerIsLocust"
+   ],
+   "conditional": [
+    "PlayerIsAzata: UnitClass"
+   ],
+   "name": "PlayerIsAzata",
+   "traits": [
+    "conditional",
+    "self_completed"
+   ]
+  },
+  "d4657f5e560ea29408b0ba0f97f2e7bc": {
+   "ancestors_completed": [
+    "Chapter04"
+   ],
+   "areas": {
+    "c876d5303f4a19f4a80b0cc9b313db6f": "c876d5303f4a19f4a80b0cc9b313db6f"
+   },
+   "cascade_chapter": 5,
+   "chain": [
+    "ColyphyrHepzamirahDead",
+    "ColyphyrStates",
+    "ColyphyrStory",
+    "Chapter04",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "ColyphyrHepzamirahDead",
+   "traits": [
+    "area",
+    "cascade"
+   ]
+  },
+  "d4b624463e52e21438da6f4870320fee": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "SoanaDead",
+    "Soana",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "SoanaDead",
+   "traits": [
+    "hold"
+   ]
+  },
+  "d4dd8a50613e4d528913d0a24d06fca1": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "d70304f3d15343fca38e48da6027f89c": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "UlbrigInParty",
+    "UlbrigCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "UlbrigInParty: CompanionInParty",
+    "UlbrigCompanion: IsDLCEnabled"
+   ],
+   "name": "UlbrigInParty",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "d99770b13ebc47447881d33763209b03": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "JannaFree",
+    "SeelahFriendsFate",
+    "SeelahInParty",
+    "SeelahCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "SeelahInParty: CompanionInParty"
+   ],
+   "name": "JannaFree",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "db5375333382d044089475d256f19582": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Ending_Trickster",
+    "Endings",
+    "Chapter06_Outcomes",
+    "Chapter06_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Ending_Trickster",
+   "traits": [
+    "hold"
+   ]
+  },
+  "dbc267b73c168f345bc192b5eeffabb2": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Nenio_GoAway",
+    "NenioStates",
+    "NenioCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Nenio_GoAway",
+   "traits": [
+    "hold"
+   ]
+  },
+  "dc908c2490d6f4c4393ff26967aa6566": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "LannInParty",
+    "LannCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "LannInParty: CompanionInParty"
+   ],
+   "name": "LannInParty",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "dd138e723bf3dd94caddc127a23788ad": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "GreyborNotInParty_KickedOut",
+    "GreyborCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "GreyborNotInParty_KickedOut: CompanionInParty"
+   ],
+   "name": "GreyborNotInParty_KickedOut",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "dd6731e2cb230694f9c394fa32391ad5": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "ShamiraKilled",
+    "Shamira",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "ShamiraKilled",
+   "traits": [
+    "hold"
+   ]
+  },
+  "df70df5cb6824ff5a9776a2478eee6c6": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "e1837a6b241f4095a4312e0115988721": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "e303c58d307849cd892fa5810124da92": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "e4374a1783c74f68ae46bb5db22e0c58": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "DragonsInEducationFinished",
+    "StoryProjectsOutcomes",
+    "ImportantStates",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "DragonsInEducationFinished",
+   "traits": [
+    "hold"
+   ]
+  },
+  "e438007efc4f1474eb447031d4b5a60e": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Seelah_BadEnding",
+    "SeelahStates",
+    "SeelahCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "Seelah_BadEnding: EtudeStatus"
+   ],
+   "name": "Seelah_BadEnding",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "e581f609dc0f44a481e7e88824ac39da": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "NocticulaDead",
+    "Nocticula",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "NocticulaDead",
+   "traits": [
+    "hold"
+   ]
+  },
+  "e9efc34083d087941bf9242388c258c3": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "NenioNotInParty_KickedOut",
+    "NenioCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "NenioNotInParty_KickedOut: CompanionInParty"
+   ],
+   "name": "NenioNotInParty_KickedOut",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "eb30187696a04f99aa194859b13a629e": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "GalfreyKilledByCommander",
+    "Galfrey",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "GalfreyKilledByCommander",
+   "traits": [
+    "hold"
+   ]
+  },
+  "ecdddd77ad964561b38ad1848cb4553f": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "ed5d1dfa2402bed4cb7a59a21c14a1a4": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "FightAgaintsNoctaCouncilAllied",
+    "TricksterStates",
+    "MythicTrickster",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "FightAgaintsNoctaCouncilAllied",
+   "traits": [
+    "hold"
+   ]
+  },
+  "eef93f5400704a0fa3e4820cc62282b3": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Vellexia_FightBeforeThirdDate",
+    "Vellexia",
+    "Chapter04_States",
+    "Chapter04_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Vellexia_FightBeforeThirdDate",
+   "traits": [
+    "hold"
+   ]
+  },
+  "eff0ca2318f96c049b5c9e6785eac196": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "MinaghoTerrified",
+    "MinaghoAlushinyrra",
+    "Minagho",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "MinaghoTerrified",
+   "traits": [
+    "hold"
+   ]
+  },
+  "f102a4d0677148f4cab007f901a5ed3c": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "SoanaKilledByCamellia",
+    "Soana",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "SoanaKilledByCamellia",
+   "traits": [
+    "hold"
+   ]
+  },
+  "f18391398cb5470c94f8932e9d8d2fd7": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "f4004d2687004c646bbe3a047d15f78f": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "FightAgainstCouncilNoctaAllied",
+    "TricksterStates",
+    "MythicTrickster",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "FightAgainstCouncilNoctaAllied",
+   "traits": [
+    "hold"
+   ]
+  },
+  "f455dbe5ddfbc454380ce27bc93795d5": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Ending_AreeluSacrifice",
+    "Endings",
+    "Chapter06_Outcomes",
+    "Chapter06_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Ending_AreeluSacrifice",
+   "traits": [
+    "hold"
+   ]
+  },
+  "f55fcc7bf5fd0c14384cb15dce345c8e": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "EmberEnd_Law",
+    "EmberStates",
+    "EmberCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "EmberEnd_Law: LessThan, QuestStatus"
+   ],
+   "name": "EmberEnd_Law",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "f5be7095af9d43779ce79a52ec27425d": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "ProfaneGiftNew",
+    "Chapter04_Outcomes",
+    "Chapter04_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "Cue_0030",
+    "PlayerWithShamira"
+   ],
+   "conditional": [],
+   "name": "ProfaneGiftNew",
+   "traits": [
+    "self_completed"
+   ]
+  },
+  "f7343e290a8d4ed887af8f04d1b3446b": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Ending_Trickster_AllPlanes",
+    "Ending_TricksterFull",
+    "Endings",
+    "Chapter06_Outcomes",
+    "Chapter06_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Ending_Trickster_AllPlanes",
+   "traits": [
+    "hold"
+   ]
+  },
+  "f74eaab69b3d49d0a222eb1b2834777e": {
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [],
+   "completed_by": [],
+   "conditional": [],
+   "name": "(parent mod / not in blueprints.zip)",
+   "traits": [
+    "parent_mod"
+   ]
+  },
+  "f8129442feebb7c49b209c83b8ee6267": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "JannaDead_SeelahDoesntKnow",
+    "SeelahFriendsFate",
+    "SeelahInParty",
+    "SeelahCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "Cue_0105"
+   ],
+   "conditional": [
+    "SeelahInParty: CompanionInParty"
+   ],
+   "name": "JannaDead_SeelahDoesntKnow",
+   "traits": [
+    "conditional",
+    "self_completed"
+   ]
+  },
+  "fa3406f9d21cac247b4181a41027787d": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "RegillInParty",
+    "RegillCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "RegillInParty: CompanionInParty"
+   ],
+   "name": "RegillInParty",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "fcbd1ad00e1c7044b8485d7feda8b9b7": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "EmberNotInParty_Dead",
+    "EmberCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "EmberNotInParty_Dead: CompanionInParty, UnitIsDead"
+   ],
+   "name": "EmberNotInParty_Dead",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "fccdd316924af204da00c99f01c0e222": {
+   "ancestors_completed": [],
+   "areas": {
+    "0a5654e7dc18f074d9356009d55eb51b": "0a5654e7dc18f074d9356009d55eb51b"
+   },
+   "cascade_chapter": null,
+   "chain": [
+    "SoanaAfterQuest",
+    "Wintersun_ForestQuest_Start",
+    "Wintersun_Default",
+    "Chapter03_AreasDefault",
+    "Chapter03_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "SoanaAfterQuest",
+   "traits": [
+    "area"
+   ]
+  },
+  "fd2ab9b67ce3e284184b1894c82c6c5d": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "ChivarroKilled",
+    "Chivarro",
+    "TenThousandsDelight",
+    "Chapter04_States",
+    "Chapter04_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "ChivarroKilled",
+   "traits": [
+    "hold"
+   ]
+  },
+  "ff0d7227c56b2b0488b006893b96040e": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Wintersun_ForestDead",
+    "WintersunStory",
+    "Chapter03_AreasDefault",
+    "Chapter03_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Wintersun_ForestDead",
+   "traits": [
+    "hold"
+   ]
+  }
+ },
+ "source": "blueprints.zip + 18-ETUDE-BINDING-AUDIT rulings (tools/etude_lifecycle.py)"
+}
