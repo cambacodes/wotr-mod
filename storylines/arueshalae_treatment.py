@@ -22,8 +22,8 @@ from storylines.arueshalae_trickster import (AFTERTASTE, CHAPLAIN, CLAIMED, CLOS
 SCENES = []
 T = "arueshalae.treatment."
 CURE = "trickster.religion_tier1"          # MainCharacterFacts: the chosen Lore (Religion) rank 1 trick
-LAB = "arueshalae.lab_seen"                # StartedDialogs: After_Lab (her desires shown to everyone), variant read
-DREAM = "arueshalae.dream_woken"           # StartedDialogs: the native Ch4 dream (her kiss not deadly there), variant read
+LAB = "arueshalae.lab_seen"                # SelectedAnswers After_Lab/Answer_0022 (the supportive answer), variant read
+DREAM = "arueshalae.dream_woken"           # SelectedAnswers Nightmares/Answer_0006 (the dream kiss itself), variant read
 ELYSIUM = "arueshalae.elysium"             # StartedDialogs: the native Ch5 best ending (her touch no longer harms)
 
 INTAKE = T + "intake"
@@ -400,9 +400,13 @@ session(NIGHT, "Under the Tender of Dreams", 5, '"Where are we going?"', [
     nar("undress", '''{n}She knows how to undress a person. She was taught in the Upper City, and the teaching is the worst thing in her. Her hands begin that way, quick and certain, and then she hears how quietly the buckles are coming loose, the way they did for the guests who did not wake, and she stops. When she begins again she is slow, and clumsy, and has to try your belt twice, and she does not let herself get better at it. Her wings unfold and curve round you both against the wind off the Worldwound; she apologises for them; you tell her not to.{/n}
 {n}She lays you down on her cloak on the old bell-floor, under the whole wheel of the stars, and follows you down, her hair falling round both your faces, her skin cool and then not cool at all. She settles astride your hips, braces one hand on the stone beside your head, and draws one long breath that she does not need.{/n}
 "I want you." {n}It comes out rough, and far too loud for a bell tower, and she does not take it back.{/n} "Not the way I was taught to want. Mine. Look at me while I do this."''',
-        c("Continue", "morning_after")),
+        c("Continue", "morning_after", requires=(ELYSIUM,)),
+        c("Continue", "morning_after_paid", forbids=(ELYSIUM,))),
     a("morning_after", '''{n}Much later, she lies with her head on your chest, listening to your heart with the concentration of someone taking a pulse, while the stars turn overhead.{/n}
 "Still beating." {n}She sounds amazed.{/n} "Still going. I'm lying here, and you're still here, and nobody is any less than they were." {n}She presses her ear closer.{/n} "Don't talk. I'm taking notes. Desna's watching. Let her."''',
+        c("[Let her listen.]", flags=(NIGHT,))),
+    a("morning_after_paid", '''{n}Much later, she lies with her head on your chest, listening to your heart with the concentration of someone taking a pulse, while the stars turn overhead.{/n}
+"Still beating. Slower than it was." {n}You feel her count it against her cheek.{/n} "I took some of it. I felt myself take it, and I didn't stop, because you told me not to, and because I didn't want to. You'll be grey tomorrow, and I'll have done that, and I'll look at it all day." {n}She does not lift her head.{/n} "Don't talk. I'm taking notes. Desna's watching. Let her see what it cost."''',
         c("[Let her listen.]", flags=(NIGHT,))),
 ], (COMMITTED, "trickster.ever"), forbids=(NIGHT,), delay=24, chapters=(5,))
 
