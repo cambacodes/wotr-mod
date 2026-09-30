@@ -24,7 +24,9 @@ K = "eritrice.council."
 
 AID_MOVED = "eritrice.aid_moved"          # Council_2/Cue_0030: the Commander's motion for material aid, put on her agenda
 ORANGE = "council.orange_called"          # Council_5-1/Cue_0020 "An orange! An orange! I knew it!" (bound by trickster_world)
-SEEN_CUES = {AID_MOVED: ["6cc3a4f0d7dc4c949b62a80dc81cabc0"]}
+DULL_FUTURE = "eritrice.shyka_dull_future"  # Council_Lexicon2/Cue_0054 (c4 folder): Shyka will not read the hidden pages out
+SEEN_CUES = {AID_MOVED: ["6cc3a4f0d7dc4c949b62a80dc81cabc0"], DULL_FUTURE: ["1d1c4855bacf5a94fb1e84b7ae8424a3"]}
+CIPHER_TAUGHT = "eritrice.minutes.the_cipher"  # her own sitting "What the truth could not read" (Chapter 5)
 
 FIRST = K + "celestials_and_beasts"
 AID = K + "a_sound_proposition"
@@ -178,8 +180,17 @@ sitting(ELDEST, "The Eldest's version", '"Does Shyka ever tell you the truth?"',
     e("start", '''"Shyka tells me many truths. That is the difficulty." {n}She rubs the bridge of her nose, where the fur is shortest.{/n}
 "They are an Eldest of the First World, and they walk the ways between what was and what may be. Every sentence they speak is true of some future. The trouble is that they choose which future to live in according to which one amuses them most." {n}She looks at Shyka's empty chair, which, of all the chairs, is somehow the one that looks occupied.{/n}
 "They laughed at your idea of the crossroads for a very long time. Then they said that moment alone was worth all our endless debates. I have not decided whether that was a compliment to you or an insult to me."''',
-      c('"Both. That\'s the kind of thing Shyka means."', "both"),
-      c('"You don\'t like them."', "like")),
+      c('"Both. That\'s the kind of thing Shyka means."', "both", requires=(CIPHER_TAUGHT,)),
+      c('"You don\'t like them."', "like", requires=(DULL_FUTURE,)),
+      c('"Both. That\'s the kind of thing Shyka means."', "both_early", forbids=(CIPHER_TAUGHT,)),
+      c('"You don\'t like them."', "like_early", forbids=(DULL_FUTURE,))),
+    e("like_early", '''"I do not like anyone on this Council. Liking is not required." {n}A pause.{/n}
+"But Shyka frightens me, and I do not say that of anyone. Ask them a plain question and they answer the one you ought to have asked, in a future you have not reached yet, and then they laugh at your face while you work out which." {n}Her claws dig into the table.{/n}
+"Every other member of this Council wants something, and a want can be debated. Shyka wants to be entertained. That is the only position at this table I cannot debate, because it does not care whether it is right."''',
+      c("Continue", "you")),
+    e("both_early", '''"Both." {n}She tastes the word as if it were an unfamiliar vintage.{/n}
+"Yes. That is exactly what they mean. You understand them better than I do." {n}She looks at you with something close to suspicion.{/n} "I sometimes think you understand everything at this table better than I do, and simply choose to let me chair it."''',
+      c("Continue", "you")),
     e("like", '''"I do not like anyone on this Council. Liking is not required." {n}A pause.{/n}
 "But Shyka frightens me, and I do not say that of anyone. When you showed us the Lexicon's hidden pages, they read them, and refused to read them out. They said it would lead to a dull future. Not the worst one. Only dull." {n}Her claws dig into the table.{/n}
 "They would rather let a true thing stay hidden than let the future be boring. That is the only position at this table I cannot debate, because it does not care whether it is right."''',
@@ -194,7 +205,7 @@ sitting(ELDEST, "The Eldest's version", '"Does Shyka ever tell you the truth?"',
       c('"Neither. I\'m the one who makes you both argue."', "neither")),
     e("me", '''"You do lie better. Anyone would." {n}Something like a smile.{/n} "I will accept the comparison. A liar at least knows which side of the truth they are standing on. Most of this Council does not."''',
       c("[Leave her to her finding.]")),
-    e("them", '''{n}She is quiet for a moment, and then she laughs, low and surprised, the way she did at the orange.{/n}
+    e("them", '''{n}She is quiet for a moment, and then she laughs, low and surprised, as if the sound had got out before the chair could rule on it.{/n}
 "A trickster who would not choose a dull future for me. That is the most frightening thing anyone has said to me since the Council was convened." {n}She writes it down, in full, and underlines "for me".{/n}''',
       c("[Leave her to her underlining.]")),
     e("neither", '''"The floor." {n}She nods slowly.{/n} "Yes. The one who makes the Council argue instead of posture. That is what a floor is for." {n}She writes: "Motion from the floor: that the floor is neither the Eldest nor the chair. Carried, with the chair's grudging concurrence."{/n}''',
@@ -401,7 +412,7 @@ sitting(TWICE, "Twice nightly", '"Is the chair in session?"', [
     e("move", '''"I move that the debate be held twice nightly." {n}She says it with perfect solemnity, and then ruins it by purring at the end.{/n}
 "Seconded?" {n}She turns her head, and her whiskers brush your jaw, and her breath is warm on your throat.{/n} "The chair notes that the floor is taking a very long time to second a simple motion. The chair will count to three. The chair has never counted to three for anyone. One."''',
       c("[Second it before she reaches two.]", "carried")),
-    e("carried", '''"Carried." {n}She blows out the candle.{/n}
+    e("carried", '''"Carried." {n}She pushes the scroll off her knees, swings one leg across you, and settles astride your lap on the edge of the Council's table, with a creak of old wood and a rumble in her chest that is very nearly a purr. She takes your hands and sets them on the belt at her waist, and holds them there until you pull it loose. Only then, with her mouth already on yours and her gown sliding off one shoulder, does she reach back and pinch out the candle.{/n}
 {n}In the dark you hear the minutes slide off the table, and she does not reach for them, which is the second time in her existence she has let a record fall. Her last words before the chair stops chairing are a promise to write it all down in the morning, every word, and a warning that you had better give her a great deal to write.{/n}''',
       c("[Give her a great deal to write.]", flags=(K + "twice_nightly_carried",))),
 ], requires=(RECORD,), forbids=(TWICE,), delay=24)
@@ -775,7 +786,7 @@ EPILOGUE_PARAGRAPHS = [
     (K + "crossroads_drafted", "{n}The standing orders of the Crossroads of Worlds were nine rules long, and the first copy, the one with two signatures at its foot, was never filed with any archive. It hung in the chair's study, beside the window with room for two chairs.{/n}"),
     (K + "dagger_laid_down", "{n}She walked into the first session at the Crossroads unarmed, as the rules required. The dagger stayed on a shelf in her study, where the Commander had seen her lay it down, and she did not take it up again.{/n}"),
     (K + "fair_copy_read", "{n}The Commander kept a short scroll bound in amethyst silk for the rest of their life, and read its last line more often than anyone knew.{/n}"),
-    (LIED_FOR_HER, "{n}At one session the Commander told the Council a lie on the chair's behalf, and Chadali's essence was spared. The chair minuted, in her own hand, that she had asked for the lie. Chadali never read that page. The chair made sure of it.{/n}"),
+    (LIED_FOR_HER, "{n}The chair once asked the Commander for a lie on Chadali's behalf, and was promised it. Whether it was ever told, and whether anyone believed it, the minutes do not say; the Council took what it took. What the chair did minute, in her own hand, was that she had asked. Chadali never read that page. The chair made sure of it.{/n}"),
     (K + "counting_stopped", "{n}She never again calculated how long she would have the Commander. She kept the minutes instead, every night, and when the time came, the record was very long.{/n}"),
     (K + "no_one_given_up", "{n}One rule in her private minutes was never amended, not once, in all the years after: nobody at her table would ever be asked to give anyone up.{/n}"),
 ]

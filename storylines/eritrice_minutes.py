@@ -523,9 +523,9 @@ minutes(ADJOURNED, "Adjourned", '"The chair called for an adjournment?"', [
 {n}When the last of it is on the floor she pushes you back until you are sitting on the edge of the Council's long table, among the inkwells, and stands between your knees, and looks at you in the lamplight, unhurried, the way she reads a motion twice before she votes.{/n}''',
       c("Continue", "look")),
     e("look", '''{n}For once she says nothing at all. Her amethyst eyes are very dark, and her breathing is the only sound in the hall. She pulls the belt of her gown loose with one claw, and it falls open, and she watches your face, not the gown, while it does.{/n}
-"Well, Commander?"''',
-      c('[Answer her.]', "cut", flags=(M + "night",))),
-    e("cut", '''{n}You answer her. She reaches past you, without taking her eyes from yours, and turns the lamp down to nothing; and in the last of its light you see her other hand move the second reading's scroll to safety at the far end of the table, even now, even then.{/n}''',
+"The floor has the question, Commander."''',
+      c('[Pull her down to you by the open gown.]', "cut", flags=(M + "night",))),
+    e("cut", '''{n}She comes the whole way: one knee on the table beside your hip and then the other, until she is astride you among the inkwells and her weight settles onto your thighs, and she pushes you flat on your back on the Council's table with one hand spread on your chest. She reaches past you, without taking her eyes from yours, and turns the lamp down to nothing; and in the last of its light you see her other hand move the second reading's scroll to safety at the far end of the table, even now, even then.{/n}''',
       c("[...]")),
 ], requires=(COMMITTED,), forbids=(ADJOURNED,), delay=12)
 

@@ -265,34 +265,37 @@ SCENES.append(scene(P + "epilogue.commit", "", "EritriceEpilogue", 6, "", [
             p("{n}Every letter opened with the grudge, read into the record in full.{/n}", requires=(ON_AGENDA,)),
             p("{n}The apology the Commander had made before the reconvened Council was bound into the front of her scroll, where she could find it quickly.{/n}", requires=(APOLOGISED,)),
         )),
-    nar("aye", '''{n}The reply came back within the week: "The chair votes aye. Minuted." Eritrice arrived in person three days later, with the scroll, to make sure the minutes were accurate, and did not leave for a long time.{/n}'''),
+    nar("aye", '''{n}The reply came back within the week: "The chair votes aye. Minuted." Eritrice arrived in person three days later, with the scroll, to make sure the minutes were accurate. She read all forty letters aloud in the Commander's study, standing, as if to a full session, and conceded nothing in any of them. At the forty-first she stopped, rolled the scroll shut and set it at the far end of the desk, out of harm's way. Then she unpinned her robe at the shoulder and let it fall, pushed the Commander back against the desk with one broad hand, and climbed after, claws sheathed only just, a growl rolling in her chest. "The floor has voted," she said against the Commander's mouth, and pulled the Commander's shirt open down the front.{/n}
+{n}The minutes of that night are one word long: "Carried." She did not leave for a long time, and when she did, it was only to fetch more ink.{/n}'''),
     nar("nay", '''{n}The chair minuted the motion as lost, by one vote, and did not move it again. She did keep writing. The correspondence ran on for the rest of the Commander's life, point by point, the only debate either of them ever looked forward to; and it never once touched the question that had been answered.{/n}'''),
     nar("silence", '''{n}The forty-first letter was never answered. In the minutes Eritrice kept for the rest of her long life it stands as the only unanswered item, carried from agenda to agenda, marked neither aye nor nay: "Awaiting the floor."{/n}'''),
 ],
     requires=("trickster.ever",), forbids=(COMMITTED, CLOSED, DECLINED, "council.fought", "council.fought_nocta_allied", "sacrifice"),
-    RequiresAnyGroups=[[STARTED, RETURNED]], ForbidOverrides={"council.fought": RETURNED, "council.fought_nocta_allied": RETURNED, "sacrifice": "trickster.cheated_death"}, **EP))
+    RequiresAnyGroups=[[STARTED, RETURNED]], ForbidOverrides={"council.fought": RETURNED, "council.fought_nocta_allied": RETURNED, "sacrifice": "trickster.commander_back"}, **EP))
 
 SCENES.append(scene(P + "epilogue.declined", "", "EritriceEpilogue", 6, "", [
     nar("page", '''{n}The motion was never moved a third time. In the minutes Eritrice kept for the rest of her long life there is a standing item, carried over from session to session and never called: "Motion: that the chair and the Commander be..." The rest of the line is blank.{/n}''')],
     requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED, "council.fought", "council.fought_nocta_allied"), ForbidOverrides={"council.fought": RETURNED, "council.fought_nocta_allied": RETURNED}, **EP))
 
 SCENES.append(scene(P + "epilogue.we_did_meet", "", "EritriceEpilogue", 6, "", [
-    nar("page", '''{n}The Council's members pretended ever after that they had never met. Its chair kept minutes anyway. The later volumes are much concerned with a standing debate between the chair and a certain Commander, conducted point by point, and every entry ends the same way: "Carried."{/n}''',
-        c('[Move that the record be corrected] "I move that the Council did, in fact, meet. Twice nightly. All in favour?"'),
+    nar("page", '''{n}Whatever became of the Council, its chair kept minutes. The later volumes are much concerned with a standing debate between the chair and a certain Commander, conducted point by point, and every entry ends the same way: "Carried."{/n}''',
+        c('[Move that the record be amended] "I move that the minutes show the chair and the Commander met. Twice nightly. All in favour?"'),
         paragraphs=(
-            p("{n}She never admitted in public that the Council had met, which was the only lie anyone ever caught her telling. The minutes, which were not public, admitted everything.{/n}", requires=("council.epilogue_ceased",)),
+            p("{n}The Council's members pretended ever after that they had never met. She never admitted in public that the Council had met, which was the only lie anyone ever caught her telling. The minutes, which were not public, admitted everything.{/n}", requires=("council.epilogue_ceased",)),
             p("{n}At the Council's victory feast the members could not shake the feeling they had forgotten to invite someone. The chair had not forgotten. The chair had simply declined to share.{/n}", requires=("council.epilogue_feast",)),
             p("{n}The Council went on convening, and went on arguing about the Worldwound. Its chair adjourned every session on time, which the members found suspicious, and went home early, which they found more suspicious still.{/n}", requires=("council.epilogue_convened",)),
             p("{n}The grudge stayed on the agenda. She read it aloud at every session the Commander attended, and then, in the minutes, noted the Commander's reply. The replies grew shorter over the years, and warmer, and in the last volumes they are only one word long.{/n}", requires=(ON_AGENDA,)),
             p("{n}She never quoted a word of the case against that the Commander had made at the third reading. But in later years, whenever the Commander lied to anyone at all in her hearing, she went quiet at the table, and waited, and the Commander would remember the third reading, and correct it.{/n}", requires=(ON_RECORD,)),
         ))],
     requires=("trickster.ever", COMMITTED), forbids=(CLOSED, DECLINED, "council.fought", "council.fought_nocta_allied", "sacrifice"),
-    ForbidOverrides={DECLINED: COMMITTED, "council.fought": RETURNED, "council.fought_nocta_allied": RETURNED, "sacrifice": "trickster.cheated_death"}, **EP))
+    ForbidOverrides={DECLINED: COMMITTED, "council.fought": RETURNED, "council.fought_nocta_allied": RETURNED, "sacrifice": "trickster.commander_back"}, **EP))
 
 
 # --- Reactions (exactly two reactors: Chadali and Nenio, each behind its reactor's availability guard). -----------
 
 NENIO_GUARD = ("nenio.dead", "nenio.killed_by_commander", "nenio.sent_away", "nenio.kicked_out", "nenio.dissolved")
+# Her own route's return (nenio.trickster.returned) resolves every loss but the dissolution, as her UnavailableOverrides do.
+NENIO_BACK = {flag: "nenio.trickster.returned" for flag in NENIO_GUARD if flag != "nenio.dissolved"}
 
 SCENES.append(reaction("Chadali", P + "react.chadali_motion", (PRIMED,),
     '''"Can I second it? I want to second it! Is it too late?" {n}Chadali cranes over the table to read the scroll, and her whole face lights up.{/n}
@@ -303,13 +306,13 @@ SCENES.append(reaction("Chadali", P + "react.chadali_motion", (PRIMED,),
 SCENES.append(reaction("Nenio", P + "react.nenio_motion", (STARTED,),
     '''"I have measured the chair. Sessions chaired: all of them. Votes carried: all of them. Votes contested before you: none. Conclusion: she is not a chairwoman, she is a weather system, and you have changed the weather."
 {n}Nenio holds out a ruler.{/n} "I require one whisker. For scale."''',
-    answer_list=NENIO_HUB, forbids=NENIO_GUARD, chapter=3, last=5, Chapters=[3, 5],
+    answer_list=NENIO_HUB, forbids=NENIO_GUARD, chapter=3, last=5, Chapters=[3, 5], ForbidOverrides=NENIO_BACK,
     entry='"About Eritrice..."', portrait="Nenio"))
 
 SCENES.append(reaction("Nenio", P + "react.nenio_tabled", (RETURNED,),
     '''"How much essence does a lion-headed empyreal lord yield? Does it regrow? At what rate?" {n}Nenio flips a page.{/n}
 "Put me on her agenda. Item seven: measurements. Item eight: whether a grudge that is read aloud every session gets heavier or lighter. I have a hypothesis. It is 'heavier'."''',
-    answer_list=NENIO_HUB, forbids=NENIO_GUARD, chapter=5, last=5, Chapters=[5],
+    answer_list=NENIO_HUB, forbids=NENIO_GUARD, chapter=5, last=5, Chapters=[5], ForbidOverrides=NENIO_BACK,
     entry='"Eritrice tabled her grudge."', portrait="Nenio"))
 
 

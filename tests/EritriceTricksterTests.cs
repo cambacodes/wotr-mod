@@ -249,6 +249,47 @@ internal static class EritriceTricksterTests
             "The reactions are not exactly Chadali and Nenio behind their guards.");
         check(letter.Nodes.Any(n => n.Id == "postscript") && late.Nodes.Any(n => n.Id == "postscript"),
             "Chadali's postscript is missing from the letters.");
+
+        // Sol r1 (2026-09-30). CAN: the Lexicon recollection waits for the native Cue_0054, the cipher callback for her lesson;
+        // a Chapter 3 world gets the early variants.
+        var eldest = S(K + "the_eldests_version");
+        check(story.SeenCues["eritrice.shyka_dull_future"].SequenceEqual(new[] { "1d1c4855bacf5a94fb1e84b7ae8424a3" })
+              && Choice(eldest, "start", 1).Requires.Contains("eritrice.shyka_dull_future") && Choice(eldest, "start", 1).Next == "like"
+              && Choice(eldest, "start", 3).Forbids.Contains("eritrice.shyka_dull_future") && Choice(eldest, "start", 3).Next == "like_early"
+              && Choice(eldest, "start", 0).Requires.Contains(M + "the_cipher") && Choice(eldest, "start", 2).Forbids.Contains(M + "the_cipher")
+              && !eldest.Nodes.Single(n => n.Id == "like_early").Text.Contains("Lexicon")
+              && !eldest.Nodes.Single(n => n.Id == "both_early").Text.Contains("cipher"),
+            "The Eldest's version recalls the second Lexicon or the cipher before they happen.");
+        // CAN: the committed page opens outcome-neutral; the denial of acquaintance is only the ceased ending's.
+        check(!pageMet.Nodes[0].Text.Contains("never met")
+              && pageMet.Nodes[0].Paragraphs.Where(p => p.Text.Contains("never met")).All(p => p.Requires.Contains("council.epilogue_ceased")),
+            "The committed page imports the ceased-Council ending into every outcome.");
+        // INT: the promised lie is not reported as a rescue no scene performs.
+        check(pageMet.Nodes[0].Paragraphs.Where(p => p.Requires.Contains(K + "lied_for_her")).All(p => !p.Text.Contains("was spared")),
+            "The epilogue reports a Chadali rescue that nothing performs.");
+        // INT (ledger row 16): the Last Call bottle survival keeps both romance pages; a Commander who stayed dead does not.
+        var bottle = new[] { "sacrifice", "ending.wound_closed", "trickster.lastcall.taken", "trickster.lastcall.pillar.bottle" };
+        check(Rules.Available(story, pageMet, World(story, 6, new[] { "trickster.ever", "eritrice.committed" }.Concat(bottle).ToArray()))
+              && Rules.Available(story, pageCommit, World(story, 6, new[] { "trickster.ever", "eritrice.started" }.Concat(bottle).ToArray()))
+              && !Rules.Available(story, pageMet, World(story, 6, "trickster.ever", "eritrice.committed", "sacrifice", "ending.wound_closed")),
+            "The romance pages do not follow trickster.commander_back.");
+        // INT: a returned Nenio reacts; a dissolved one never does.
+        foreach (var r in reactions.Where(r => r.Owner == "Nenio"))
+            check(r.ForbidOverrides.TryGetValue("nenio.dead", out var o1) && o1 == "nenio.trickster.returned"
+                  && r.ForbidOverrides.TryGetValue("nenio.sent_away", out var o2) && o2 == "nenio.trickster.returned"
+                  && !r.ForbidOverrides.ContainsKey("nenio.dissolved"),
+                "A Nenio reaction ignores her return: " + r.Id);
+        var nenioMotion = S(P + "react.nenio_motion");
+        var nenioBack = World(story, 3, "trickster.ever", "eritrice.started", "nenio.dead", "nenio.trickster.returned");
+        check(Rules.Available(story, nenioMotion, nenioBack)
+              && !Rules.Available(story, nenioMotion, World(story, 3, "trickster.ever", "eritrice.started", "nenio.dead")),
+            "A returned Nenio is still barred from reacting.");
+        // BEL: the cuts land at the initiating motion, and the late aye has its own threshold and aftermath.
+        check(night.Nodes.Single(n => n.Id == "cut").Text.Contains("astride")
+              && S(K + "twice_nightly").Nodes.Single(n => n.Id == "carried").Text.Contains("astride")
+              && pageCommit.Nodes.Single(n => n.Id == "aye").Text.Contains("pulled the Commander's shirt open")
+              && pageCommit.Nodes.Single(n => n.Id == "aye").Text.Contains("The minutes of that night"),
+            "An intimate beat fades before the initiating motion.");
         Console.WriteLine("PASS: Eritrice Trickster (Trk_Eritrice_*): motion, minutes, second and third readings, the sealed hall's letters, the tabled grudge and the standing debate.");
     }
 }
