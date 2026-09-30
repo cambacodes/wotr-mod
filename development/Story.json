@@ -364566,7 +364566,7 @@
     "jerribeth.patron_lost": "72e423c719ed9d44fa432a6b9629babd",
     "soana.after_quest": "fccdd316924af204da00c99f01c0e222",
     "soana.old_defender": "c97882cbc65c4c546aed1810627a5b81",
-    "soana.bear_dead": "995f0ac2951bbb041b062806c163fbf1",
+    "soana.bear_dead.live": "995f0ac2951bbb041b062806c163fbf1",
     "soana.forest_dead": "ff0d7227c56b2b0488b006893b96040e",
     "soana.dead": "d4b624463e52e21438da6f4870320fee",
     "soana.killed_by_camellia": "f102a4d0677148f4cab007f901a5ed3c",
@@ -364644,8 +364644,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -364702,14 +364702,10 @@
     "kaylessa.tomb": "78fb64bf32f3f194ab077315650adf10",
     "kaylessa.forn_dead": "7a6f0ef4dd004418aa613693dd9d280a",
     "kaylessa.dead": "4dd373d7c9954b6419adf920cca9231f",
-    "jannah.prison": "59632e1775b2f7240af0f6d0db28e35b",
-    "jannah.free": "d99770b13ebc47447881d33763209b03",
-    "jannah.dead_known": "699b1ad898227c943b2ee9e0cfd355aa",
-    "jannah.dead": "f8129442feebb7c49b209c83b8ee6267",
-    "jannah.condemned": "46f4524cec981c544964229e3e08c847",
-    "iz.monster_dead": "42e220d5dadc4dfd8bb3ef23cae832eb",
-    "iz.left_early": "a583e4ab47544f5e928fc5b6b7c41e48",
-    "iz.anemora_dead": "8c2fdd760cc54b4bb874d2832ff14695",
+    "jannah.condemned.live": "46f4524cec981c544964229e3e08c847",
+    "iz.monster_dead.live": "42e220d5dadc4dfd8bb3ef23cae832eb",
+    "iz.left_early.live": "a583e4ab47544f5e928fc5b6b7c41e48",
+    "iz.anemora_dead.live": "8c2fdd760cc54b4bb874d2832ff14695",
     "coronation.after": "b9cbdf8a2f0545f694366b87ae7d7d44",
     "herrax.madam": "065b611752b5c0045b6d1e0164b92bcc",
     "herrax.haggled": "3f1a8be9cc6d082469d17da642655f53",
@@ -364742,7 +364738,6 @@
     "arueshalae_dead": "580a89c5fe6e6a64a908bbccfc18f4c8",
     "arueshalae.kicked_out_evil": "5eb05139c8b621a44b47c540aa4957d1",
     "arueshalae.kicked_out": "3d4cf05d72e552d4fa8490987a7fc7be",
-    "arueshalae.failed": "543a6e475aeb9bf4eafb43903e3e186b",
     "arueshalae.evil_recruited": "005c2284d7e5ac54c887bb3781e45d0c",
     "arueshalae.evil_dead": "9104498b842e1584da9b3640cb9e4157",
     "areelu.sacrifice_trickster": "29c5c64462384fa3b8aae34e4c9ebce9",
@@ -367168,8 +367163,25 @@
     "jerribeth.egg_lore_heard": [
       "93dfa9597191a6848b925d964d309fe4"
     ],
+    "jannah.prison": [
+      "83e788629a224ba7ad08da7e204685b4",
+      "a66a6e34e9aa8d749921acdc7a0ae938",
+      "4f92e80ae13d31f438b7e147340d568e"
+    ],
     "jannah.joined": [
       "651ecf0cde0e1a54dbc93761d1751b43"
+    ],
+    "jannah.free": [
+      "f24d118342fab1c4aa2a787697f2b496",
+      "f3a9f5da5f3aaee4dabf0fad5976e782",
+      "6ea88ed6d7ac02c42b1eb4d641db14ad",
+      "bc82d1f5215d468ea1d70d582a3b2de4"
+    ],
+    "jannah.dead_known": [
+      "166223b5a9284d34798dc42dcd4f7e1c"
+    ],
+    "jannah.dead": [
+      "199d4dbffb5a53a4cb73578307cbb4a9"
     ],
     "horzalah.gift_delivered": [
       "49356164c129c784b9ffc28888132245"
@@ -367278,6 +367290,16 @@
     ],
     "arueshalae.nocticula_claimed": [
       "b84ef61b070e9cb4e84f142dc8c04cdb"
+    ],
+    "arueshalae.failed": [
+      "055f4dffcad30154aad432f4df0ff8cf",
+      "a446fc1d406f35843bc638ec2355a149",
+      "29edb646b22bc434eb92ecee5025e97f",
+      "431e40e3ba586494eb47f857b4acdb58",
+      "65a66f6dc8fcdeb4fb18ee13d222786b",
+      "5844d38b0f4fa0a4495e00439d76758e",
+      "f35d207b6a137bc44a2cd7c2d7d3eea8",
+      "4d032a72e7735434faec60f256587561"
     ],
     "siphon.burst_areelu_b": [
       "8a50fd9c430a80c498da5c09366ff5fc"
@@ -369590,6 +369612,11 @@
         "jerribeth.commission"
       ]
     ],
+    "iz.monster_dead": [
+      [
+        "iz.monster_dead.latched"
+      ]
+    ],
     "irabeth.trickster.presence_on": [
       [
         "irabeth_dead",
@@ -370115,6 +370142,7 @@
     "ending.trickster_allplanes",
     "ending.trickster_allplanes_fw",
     "ending.trickster_full",
+    "hepzamirah.dead",
     "jerribeth.unavailable",
     "trickster.was"
   ],
@@ -370193,11 +370221,14 @@
   },
   "Latches": {
     "iz.monster_dead.latched": [
-      "iz.monster_dead"
+      "iz.monster_dead.live"
     ],
     "trickster.ever": [
       "trickster",
       "trickster.was"
+    ],
+    "soana.bear_dead": [
+      "soana.bear_dead.live"
     ],
     "shamira.cauldron_shown.latched": [
       "shamira.cauldron_shown"
@@ -370251,6 +370282,15 @@
     "jannah.dead.latched": [
       "jannah.dead",
       "jannah.dead_known"
+    ],
+    "jannah.condemned": [
+      "jannah.condemned.live"
+    ],
+    "iz.left_early": [
+      "iz.left_early.live"
+    ],
+    "iz.anemora_dead": [
+      "iz.anemora_dead.live"
     ],
     "coronation.seen": [
       "coronation.after"

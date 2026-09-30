@@ -108,7 +108,7 @@ BINDINGS = {
     "Etudes": {PARENT_LICH: "bbe7d7dbb92a4923a1ca4433e626a5ec"},
     "InventoryItems": {CLAW_HELD: CLAW},
     "MainCharacterFacts": {SIGHT: "8bc2f9b88a0cf704ea72d86c2a3e2aef"},
-    "Latches": {MONSTER_LATCH: [MONSTER_DEAD]},
+    "Latches": {MONSTER_LATCH: [MONSTER_DEAD + ".live"]},   # the raw Iz reader; MONSTER_DEAD is its Derived record (trickster_world)
 }
 
 DERIVED = {

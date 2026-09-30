@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-eng-etudefix\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 3612,
-  "unique_targets": 779,
+  "binding_uses": 3624,
+  "unique_targets": 791,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -498,8 +498,40 @@
       "path": "World/Dialogs/c3/MoltenScar/Deserter/AnswersList_0021.jbp",
       "type": "BlueprintAnswersList"
     },
+    "83e788629a224ba7ad08da7e204685b4": {
+      "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0003.jbp",
+      "type": "BlueprintCue"
+    },
+    "a66a6e34e9aa8d749921acdc7a0ae938": {
+      "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0020.jbp",
+      "type": "BlueprintCue"
+    },
+    "4f92e80ae13d31f438b7e147340d568e": {
+      "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0024.jbp",
+      "type": "BlueprintCue"
+    },
+    "f24d118342fab1c4aa2a787697f2b496": {
+      "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0025.jbp",
+      "type": "BlueprintCue"
+    },
+    "199d4dbffb5a53a4cb73578307cbb4a9": {
+      "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0027.jbp",
+      "type": "BlueprintCue"
+    },
+    "f3a9f5da5f3aaee4dabf0fad5976e782": {
+      "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0029.jbp",
+      "type": "BlueprintCue"
+    },
     "8c909dc650b9dff408a0d144da24b920": {
       "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0059.jbp",
+      "type": "BlueprintCue"
+    },
+    "6ea88ed6d7ac02c42b1eb4d641db14ad": {
+      "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0060.jbp",
+      "type": "BlueprintCue"
+    },
+    "bc82d1f5215d468ea1d70d582a3b2de4": {
+      "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_3.jbp",
       "type": "BlueprintCue"
     },
     "5ff8a80442182f84e849b4281f98b9ca": {
@@ -1550,6 +1582,10 @@
       "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/Cue_0050.jbp",
       "type": "BlueprintCue"
     },
+    "166223b5a9284d34798dc42dcd4f7e1c": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/Cue_0105.jbp",
+      "type": "BlueprintCue"
+    },
     "129b55b8b5d50974f84f7c607d894fd0": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Sosiel/AnswersList_0002.jbp",
       "type": "BlueprintAnswersList"
@@ -1653,6 +1689,38 @@
     "4d812cb00e7ad794d907273f8db54b1e": {
       "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Additional_C3/After_Lab/Arueshalae_Romance_C3_After_Lab_Dialogue.jbp",
       "type": "BlueprintDialog"
+    },
+    "055f4dffcad30154aad432f4df0ff8cf": {
+      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Additional_C3/After_Wintersun/Cue_0023.jbp",
+      "type": "BlueprintCue"
+    },
+    "a446fc1d406f35843bc638ec2355a149": {
+      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Additional_C3/After_Wintersun/Cue_0028.jbp",
+      "type": "BlueprintCue"
+    },
+    "29edb646b22bc434eb92ecee5025e97f": {
+      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Main_C3/Arueshalae_Jailed/Cue_0056.jbp",
+      "type": "BlueprintCue"
+    },
+    "431e40e3ba586494eb47f857b4acdb58": {
+      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Main_C3/Arueshalae_Jailed/Cue_0059.jbp",
+      "type": "BlueprintCue"
+    },
+    "65a66f6dc8fcdeb4fb18ee13d222786b": {
+      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Main_C4/KTC_Arusha/Cue_0010.jbp",
+      "type": "BlueprintCue"
+    },
+    "5844d38b0f4fa0a4495e00439d76758e": {
+      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Main_C4/KTC_Arusha/Cue_0020.jbp",
+      "type": "BlueprintCue"
+    },
+    "f35d207b6a137bc44a2cd7c2d7d3eea8": {
+      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Main_C4/KTC_Arusha/Cue_0029.jbp",
+      "type": "BlueprintCue"
+    },
+    "4d032a72e7735434faec60f256587561": {
+      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Main_C4/Nightmares/Cue_0009.jbp",
+      "type": "BlueprintCue"
     },
     "86597ac9662ad35409f311a6b52c86b8": {
       "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Main_C4/Wakeup/Arueshalae_Romance_C4_Wakeup_Dialogue.jbp",
@@ -2110,10 +2178,6 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/ArueshalaeCompanion/ArueshalaeNotInParty_KickedOut.jbp",
       "type": "BlueprintEtude"
     },
-    "543a6e475aeb9bf4eafb43903e3e186b": {
-      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/ArueshalaeCompanion/ArueshalaeRomance/ArueshalaeRomance_Fail.jbp",
-      "type": "BlueprintEtude"
-    },
     "9104498b842e1584da9b3640cb9e4157": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/ArueshalaeCompanion/ArueshalaeStates/ArueshalaeIsEvil/EvilArushaKilled.jbp",
       "type": "BlueprintEtude"
@@ -2258,24 +2322,8 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahNotInParty_KickedOut.jbp",
       "type": "BlueprintEtude"
     },
-    "f8129442feebb7c49b209c83b8ee6267": {
-      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/JannaDead_SeelahDoesntKnow.jbp",
-      "type": "BlueprintEtude"
-    },
-    "699b1ad898227c943b2ee9e0cfd355aa": {
-      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/JannaDead_SeelahKnows.jbp",
-      "type": "BlueprintEtude"
-    },
-    "d99770b13ebc47447881d33763209b03": {
-      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/JannaFree.jbp",
-      "type": "BlueprintEtude"
-    },
     "46f4524cec981c544964229e3e08c847": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/JannaInCondemned.jbp",
-      "type": "BlueprintEtude"
-    },
-    "59632e1775b2f7240af0f6d0db28e35b": {
-      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/JannaInPrison.jbp",
       "type": "BlueprintEtude"
     },
     "0d773e4f71ac38a4d917ed459f6a0d0b": {
