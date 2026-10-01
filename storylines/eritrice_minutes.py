@@ -317,14 +317,14 @@ minutes(NARROWED, "A narrow outlook", '"Point of order. About mortals."', [
     e("start", '''"Very well. The point." {n}She folds her hands.{/n} "You are going to tell me that the chair looks down on mortals. It is true. I do. Not because you are small. Because you are brief." {n}Her claws tap the dispatches.{/n}
 "You live sixty years if the demons allow it. You forget what you promised in a decade. Your crusades are numbered because each one forgets the last. I have watched it four times now. How am I to trust a debate with someone who will not be here to hear the answer?"''',
       c('"That\'s why we argue harder. We don\'t have time to be wrong slowly."', "harder"),
-      c('"You\'re the one who took three hundred years and got nowhere. I took a month to give you a crossroads."', "month"),
+      c('"You\'ve had a century of sessions and got nowhere. I took a month to give you a crossroads."', "month"),
       c('"Then trust me for as long as I\'m here. I\'ll try to make it long."', "long")),
     e("harder", '''{n}She opens her mouth to answer, and closes it, and opens it again.{/n}
 "'Wrong slowly.'" {n}She tastes the phrase.{/n} "That is my whole Council, Commander. That is every session I have ever chaired. Wrong slowly, with minutes." {n}She writes, and her quill digs into the scroll hard enough to catch.{/n}
 "Point conceded. The chair concedes that the mortal brain has, on this occasion, conceived an idea she would rather not have heard."''',
       c("[Leave her with the concession.]", flags=(CONCEDED,))),
-    e("month", '''"I did not say three hundred years." {n}Her ears have gone flat against her skull.{/n} "I have never told anyone how long I have been at this."
-{n}And then, unwillingly, something like a laugh, low in her chest.{/n} "You guessed. You guessed, and you guessed too low, and you are still right. A month. One mortal. A crossroads." {n}She writes it down, and underlines "one mortal" twice.{/n}
+    e("month", '''"A century is not 'nowhere'." {n}Her ears have gone flat against her skull.{/n} "A century of sessions is a century of minutes, and minutes are how the truth is..."
+{n}She stops. And then, unwillingly, something like a laugh, low in her chest.{/n} "No. You are right. A century. And a month. One mortal. A crossroads." {n}She writes it down, and underlines "one mortal" twice.{/n}
 "That is not a refutation. It is worse. It is an example."''',
       c("[Leave her with the example.]", flags=(CONCEDED,))),
     e("long", '''{n}She does not answer at once. Her eyes go to the dispatches, to the casualty lists at the bottom of the stack, to the names on them she has read and you have not.{/n}
@@ -427,7 +427,7 @@ minutes(AT_WORST, "At worst", '"About the key. \'At worst, you\'ll die.\'"', [
 {n}She lifts her head.{/n} "Yes. I meant it. If the truth about the Worldwound had required your death, I would have minuted it, and grieved, and considered it well spent. That is what I am. I am the thing that would rather be right than kind."
 {n}Her hands are flat on the table, and she does not take them away, and she does not look down.{/n} "Now you know what I am. Tell me what you are going to do with it."''', *KEY_CHOICES),
     e("forgive", '''{n}She stares at you as if you had spoken in a language she did not know she understood.{/n}
-"That is not a refutation." {n}Her voice has gone rough.{/n} "That is a pardon. Nobody has ever pardoned me. I did not know it was a thing that could be done to me."
+"That is not a refutation." {n}Her voice has gone rough.{/n} "That is a pardon. I did not ask for one, and I do not need one: the proposal was sound, and I would make it again. You have pardoned me anyway, as if you had the standing to."
 {n}She writes it down, and her hand shakes so badly the line runs downhill across the scroll. She does not rewrite it.{/n}
 "I told you the worst thing about me. On the record. And you stayed at the table." {n}She looks at the crooked line as if it were a wound that had closed wrong and would have to stay that way.{/n} "I will remember it for longer than you will live. I am sorry for that. I am not sorry for anything else."''',
       c("[Stay at the table.]")),
@@ -504,7 +504,7 @@ minutes(ESSENCE, "A very serious matter", '"The cauldron. The essences."', [
 "I think so too. I have thought so since they walked out. I have been hoping, which is not the same as thinking, and I have been letting the hope chair the session." {n}She looks at her own hands.{/n}
 "If they betray this table, and I draw my claws anyway, it will be in the minutes that you told me not to. That is the worst punishment I know how to give myself. Write it."''',
       c("[Write it.]")),
-], requires=(CONVENING, "council.cauldron_given"), forbids=(ESSENCE,), chapters=(5,))
+], requires=(CONVENING, "council.cauldron_given"), forbids=(ESSENCE, ESSENCE_GIVEN, "council.walked_out"), chapters=(5,))
 
 
 # --- 12. Adjourned: the night after the vote (heat up to the cut). --------------------------------------------------
@@ -584,7 +584,7 @@ minutes(STANDING, "A standing item", '"You\'ve added something to the agenda."',
 {n}She does not wait for an answer.{/n} "Then we will need a very long debate, and a very good record, so that when you are gone, the argument is not." {n}Her voice falters on "gone", and she refuses to let it, and goes on.{/n}
 "I will keep the minutes. That is what I can do for you that no one else can."''',
       c("Continue", "close")),
-    e("tease", '''"You will do no such thing." {n}And then, because it is her rule, and she keeps her rules:{/n} "...One meeting in three. On the sign."
+    e("tease", '''"You will do no such thing." {n}And then, because it is her rule, and she keeps her rules:{/n} "...One meeting in three. And you ask the chair first."
 {n}She taps the scroll twice with a claw, watching you. Then, more quietly:{/n} "That was not an answer, Commander. That was a very charming refusal to answer. The item stands."''',
       c('"...Build your crossroads. Sit at your table. Argue with you."', "table")),
     e("close", '''"The item is answered. For now." {n}She writes, and then does something you have never seen her do: she reads the item back aloud, in the voice she uses for the full Council, to a hall with nobody in it but you.{/n}
@@ -621,7 +621,7 @@ EPILOGUE_PARAGRAPHS = [
     (OMITTED, "{n}Among thousands of pages of minutes there is one entry that reads only \"The chair was otherwise occupied.\" It is the only evasion ever found in her records, and she annotated it, in her smallest hand: \"Learned from the Commander. Not regretted.\"{/n}"),
     (AFTER_WAR, "{n}The standing item remained on every agenda for as long as there were agendas: what the Commander intends to do after the war. The answer was entered anew every session, in two hands. It never changed much.{/n}"),
     ((URGED, ESSENCE_GIVEN), "{n}She gave her essence to the cauldron, and afterwards she told the Commander that it had been excruciating, because she had promised to say so.{/n}"),
-    (PROMISED, "{n}The Commander's promise that nobody would take anything from her by force was entered in her minutes the week before the cauldron came. She kept the page folded down.{/n}"),
+    (PROMISED, "{n}The Commander's promise that nobody would take anything from her by force was entered in her minutes the week the cauldron came. She kept the page folded down.{/n}"),
     (M + "temper_warned", "{n}In the Commander's hand, in the margin of a session that ended in overturned chairs: \"The Commander warned the chair.\" She read it more often than anyone knew.{/n}"),
 ]
 

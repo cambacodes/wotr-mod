@@ -228,11 +228,17 @@ internal static class EritriceTricksterTests
                                    K + "the_eldests_version", K + "a_certain_book", K + "the_casualty_lists", K + "the_dagger",
                                    K + "where_the_chair_goes_home", K + "a_motion_to_expel", K + "personal_privilege" })
             check(Reaches(debateStart, id, 3), "Sitting unreachable in Chapter 3: " + id);
+        // Sol r2 INT: the essence and eve sittings close once the Council has walked out; the walk-out has its own sitting.
         var chapterFive = World(story, 5, "trickster.ever", "eritrice.started", P + "minutes_read", "council.cauldron_given",
-            "eritrice.proposed_key", "eritrice.cipher_unread", "eritrice.council_walked_out", "eritrice.nocticula_named", "council.walked_out");
+            "eritrice.proposed_key", "eritrice.cipher_unread", "eritrice.council_walked_out", "eritrice.nocticula_named");
         foreach (var id in new[] { M + "at_worst", M + "the_cipher", M + "stay_in_your_seats", M + "a_serious_matter",
-                                   K + "a_lie_for_the_chair", K + "the_lady_in_shadow", K + "so_many_years", K + "just_imagine" })
+                                   K + "a_lie_for_the_chair", K + "the_lady_in_shadow", K + "just_imagine" })
             check(Reaches(chapterFive, id), "Sitting unreachable in Chapter 5: " + id);
+        var walkedOut = World(story, 5, "trickster.ever", "eritrice.started", P + "minutes_read", "council.cauldron_given",
+            "eritrice.proposed_key", "eritrice.council_walked_out", "council.walked_out");
+        check(Reaches(walkedOut, K + "so_many_years") && !Reaches(walkedOut, M + "a_serious_matter") && !Reaches(walkedOut, K + "just_imagine")
+              && S(M + "a_serious_matter").Forbids.Contains("eritrice.essence_given"),
+            "A preparatory sitting outlives the walk-out or her given essence.");
         var committed5 = World(story, 5, "trickster.ever", "eritrice.started", "eritrice.committed", M + "quill", M + "the_convening");
         foreach (var id in new[] { M + "the_record", M + "a_standing_item", K + "his_eyes", K + "accurate_minutes", K + "the_mortal_clock",
                                    K + "twice_nightly", K + "the_fair_copy", K + "rules_of_the_crossroads", K + "the_six_hundred_and_thirteenth" })
@@ -304,6 +310,20 @@ internal static class EritriceTricksterTests
         // BEL: the late surety is the sealed truth, and the late aye has its morning.
         check(!late.Nodes.Any(n => n.Text.Contains("money behind it")) && pageCommit.Nodes.Single(n => n.Id == "aye").Text.Contains("In the morning"),
             "The late motion recalls a money surety, or the late aye has no morning.");
+        // Sol r2. CAN: the Council's age is a century; TRK: the point of order only for a Commander who heard her threat.
+        check(!S(M + "a_narrow_outlook").Nodes.Any(n => n.Text.Contains("three hundred")), "The Council's age is invented.");
+        check(story.SeenCues["eritrice.threatened_by_force"].SequenceEqual(new[] { "b138a1a41f4128e43822bb8f3bdc1b4c" })
+              && Choice(tabled, "stranger", 0).Requires.Contains("eritrice.threatened_by_force")
+              && Choice(tabled, "stranger", 1).Forbids.Contains("eritrice.threatened_by_force") && Choice(tabled, "lover", 1).Next == "ruling_betrayal",
+            "The point of order cites a threat the Commander never heard.");
+        var alliedNoThreat = World(story, 5, "trickster", "trickster.ever", "council.fought_nocta_allied", "eritrice.lost_at_council.latched");
+        check(Program.Walk(tabled, alliedNoThreat).Any(r => r.Has(P + "returned") && r.Has(P + "cost.apologised")),
+            "The allied betrayal has no priced reconciliation.");
+        // BEL: the motion to expel is resolved for each approach.
+        var voted = S(K + "the_motion_to_expel_voted");
+        foreach (var flag in new[] { K + "alichino_handled", K + "argued_own_case", K + "chair_recused" })
+            check(Rules.Available(story, voted, World(story, 3, "trickster.ever", "eritrice.started", P + "minutes_read", M + "point_one", K + "a_motion_to_expel", flag)),
+                "The motion to expel is never resolved: " + flag);
         Console.WriteLine("PASS: Eritrice Trickster (Trk_Eritrice_*): motion, minutes, second and third readings, the sealed hall's letters, the tabled grudge and the standing debate.");
     }
 }

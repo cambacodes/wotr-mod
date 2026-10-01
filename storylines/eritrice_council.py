@@ -24,8 +24,10 @@ K = "eritrice.council."
 
 AID_MOVED = "eritrice.aid_moved"          # Council_2/Cue_0030: the Commander's motion for material aid, put on her agenda
 ORANGE = "council.orange_called"          # Council_5-1/Cue_0020 "An orange! An orange! I knew it!" (bound by trickster_world)
+THREAT_HEARD = "eritrice.threatened_by_force"  # Council_5-2/Cue_0035: "if you don't offer it up willingly, I'll take it by force!"
 DULL_FUTURE = "eritrice.shyka_dull_future"  # Council_Lexicon2/Cue_0054 (c4 folder): Shyka will not read the hidden pages out
-SEEN_CUES = {AID_MOVED: ["6cc3a4f0d7dc4c949b62a80dc81cabc0"], DULL_FUTURE: ["1d1c4855bacf5a94fb1e84b7ae8424a3"]}
+SEEN_CUES = {AID_MOVED: ["6cc3a4f0d7dc4c949b62a80dc81cabc0"], DULL_FUTURE: ["1d1c4855bacf5a94fb1e84b7ae8424a3"],
+             THREAT_HEARD: ["b138a1a41f4128e43822bb8f3bdc1b4c"]}
 CIPHER_TAUGHT = "eritrice.minutes.the_cipher"  # her own sitting "What the truth could not read" (Chapter 5)
 
 FIRST = K + "celestials_and_beasts"
@@ -392,7 +394,7 @@ sitting(EVE, "Just imagine", '"Tomorrow\'s session..."', [
 "I have chaired a very long time, Commander. I know what it means when the floor will not say how it will vote. It means the floor is afraid of the chair's face when it hears." {n}She reaches across and touches your cheek, once, with the back of her claws.{/n}
 "Whatever you do tomorrow, it will be minuted truly. That is the only promise I can make that I know I can keep."''',
       c("[Stay with her tonight.]")),
-], requires=(CONVENING, ESSENCE), forbids=(EVE,), chapters=(5,))
+], requires=(CONVENING, ESSENCE), forbids=(EVE, "eritrice.essence_given", "council.walked_out"), chapters=(5,))
 
 
 # --- Twice nightly: the standing debate, in private. ----------------------------------------------------------------
@@ -438,7 +440,7 @@ sitting(FEELINGS, "A point of personal privilege", '"You look like you have a po
       c('[Flirt] "Both, I hope."', "both"),
       c('"You could have just told me."', "told"),
       c('[Reach across and still her tapping claws.]', "still")),
-    e("both", '''"You hope." {n}Her ears flatten and lift and flatten again.{/n} "You come into my hall, and carry my motions, and correct my ciphers, and adjourn my meetings, and then you sit there and hope that I cannot write the word 'Worldwound' without thinking of you." {n}A breath.{/n}
+    e("both", '''"You hope." {n}Her ears flatten and lift and flatten again.{/n} "You come into my hall, and carry my motions, and read my minutes upside down, and adjourn my meetings, and then you sit there and hope that I cannot write the word 'Worldwound' without thinking of you." {n}A breath.{/n}
 "It is working. Minute that. No. I will minute it myself. It is my privilege, and I am exercising it."''',
       c("Continue", "close")),
     e("told", '''"I have just told you. This is how I tell things. In order, with a procedure, on the record, so that I cannot pretend afterwards that I said something else." {n}Her breath has gone short.{/n}
@@ -734,6 +736,26 @@ sitting(EXPEL, "A motion to expel", '"You look like you\'ve had a letter from He
 "It will be very long. It will be the best thing I have ever written. Alichino will have to read all of it, because the rules require it."''',
       c("[Leave her drafting the dissent in advance.]")),
 ], requires=(POINT_ONE,), forbids=(EXPEL,))
+
+
+# --- The motion to expel, resolved (Sol r2 BEL): each approach the Commander chose, and what came of it. ---------------
+
+sitting(K + "the_motion_to_expel_voted", "The motion to expel", '"About Alichino\'s motion..."', [
+    nar("start", '''{n}The black-sealed letter lies on the Council table, answered. Beside it the agenda of the last session is open at its first item.{/n}''',
+        c("Continue", "handled", requires=(K + "alichino_handled",)),
+        c("Continue", "argued", requires=(K + "argued_own_case",)),
+        c("Continue", "recused", requires=(K + "chair_recused",))),
+    e("handled", '''"Alichino withdrew his motion." {n}She says it to the agenda.{/n} "In writing, freely, the day before the session. His letter of withdrawal is three lines long and gives no reason. The chair did not inquire. The chair notes that the devil's handwriting was, for the first time in the history of this Council, not quite neat."
+{n}She strikes the item through, once, precisely.{/n} "Whatever you did, Commander, he will remember it. So will I. I am not asking."''',
+      c("[Say nothing.]")),
+    e("argued", '''"The motion failed." {n}She lets herself say it plainly, once, before she says it properly.{/n} "His proxy spoke for an hour, and spoke well. You spoke for ten minutes, not well, and then said the thing about the floor, and Shyka laughed at exactly the moment that did him the most harm. Cobblehoof abstained, loudly. Chadali voted twice and was ruled out of order once."
+"Minuted: the motion to expel the mortal member fails. The chair's dissent, drafted in advance, was not required." {n}Her claws rest on a thick roll of paper at her elbow.{/n} "The chair has kept it anyway."''',
+      c("[Ask to read the dissent.]")),
+    e("recused", '''"Cobblehoof chaired it." {n}Her ears go back at the memory.{/n} "It was the longest session in the history of the multiverse, as I said it would be. He snorted at every speaker. The motion failed on a tie, broken by the chair, who was, for one vote, a hippogriff who dislikes devils rather more than he dislikes mortals."
+"I was not permitted to vote. I sat at the side of my own hall with my hands in my lap and watched my Council decide about you without me." {n}She looks at her hands.{/n} "It was correct procedure. I will not do it again."''',
+      c("[Take her hands.]")),
+], requires=(EXPEL,), forbids=(K + "the_motion_to_expel_voted",), delay=48)
+SCENES[-1]["RequiresAnyGroups"] = [[K + "alichino_handled", K + "argued_own_case", K + "chair_recused"]]   # one approach was chosen
 
 
 # --- The rules of the Crossroads (Chapter 5): the forum she dreamed of, drafted with the Commander. -----------------

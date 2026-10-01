@@ -48,6 +48,7 @@ GRUDGE = P + "cost.grudge"
 ESSENCE = P + "cost.essence_taken"
 APOLOGISED = P + "cost.apologised"
 ON_AGENDA = P + "cost.grudge_on_agenda"
+THREAT = "eritrice.threatened_by_force"          # SeenCues Council_5-2/Cue_0035 (bound in eritrice_council): her threat, heard
 LATE_COMMITTED = P + "late_committed"
 # The standing debate's last pre-commit point (eritrice_minutes): the second reading is heard only after it.
 DEBATED = "eritrice.minutes.quill"
@@ -230,13 +231,24 @@ letter(P + "fought.tabled", "Point of order", [
     nar("start", '''{n}The letter is three lines long, sealed in amethyst wax pressed so hard the lion's head has cracked.{/n}''',
         c("Continue", "lover", requires=(COMMITTED,)),
         c("Continue", "stranger", forbids=(COMMITTED,))),
-    e("stranger", '''"You struck the chair of this Council unconscious and let its members be bled of their essence. The chair has not forgotten that it was the chair who threatened it first. The chair is not interested in your apology unless it is on the record. State your business."''',
+    e("stranger", '''"You struck the chair of this Council unconscious and let its members be bled of their essence. The chair is not interested in your apology unless it is on the record. State your business."''',
       c('[Raise a point of order] "Point of order: \'contribute your essence or I\'ll take it by force\' was the chair\'s own motion. I seconded it. I move we table the grudge."',
-        "ruling", mythic="Trickster", alignment=("Chaotic", 1))),
+        "ruling", mythic="Trickster", alignment=("Chaotic", 1), requires=(THREAT,)),
+      c('[Answer her plainly] "No point of order. I chose the Lady in Shadow over your Council, and I would choose it again. I am asking what it costs."',
+        "ruling_betrayal", forbids=(THREAT,))),
     e("lover", '''"You struck the chair of this Council unconscious. You, who had her vote. The chair woke on the floor of her own hall with her essence gone and your name in her mouth, and she has not decided which was worse."
-"The chair has not forgotten that it was the chair who threatened you first. The chair is not interested in your apology unless it is on the record. State your business."''',
+"The chair is not interested in your apology unless it is on the record. State your business."''',
       c('[Raise a point of order] "Point of order: \'contribute your essence or I\'ll take it by force\' was the chair\'s own motion. I seconded it. I move we table the grudge."',
-        "ruling", mythic="Trickster", alignment=("Chaotic", 1))),
+        "ruling", mythic="Trickster", alignment=("Chaotic", 1), requires=(THREAT,)),
+      c('[Answer her plainly] "No point of order. I chose the Lady in Shadow over your Council, and I would choose it again. I am asking what it costs."',
+        "ruling_betrayal", forbids=(THREAT,))),
+    e("ruling_betrayal", '''{n}The answer is longer, and written with a steadier hand.{/n} "No point of order. The chair notes it, because it is the first letter in this correspondence that has not tried to be clever. You chose the Lady in Shadow over this Council and would again. That is a true statement, and the chair does not strike true statements."
+"It is not an apology. It is, however, admissible. The chair rules that the grudge may be tabled on the same terms as any other: a formal apology, entered in the minutes and read aloud at a special session the chair will convene for that one purpose, or the grudge on every agenda for as long as there is an agenda, read aloud whenever you are present. Choose."''',
+      c('[Make the formal apology before the reconvened Council] "Convene your session. I\'ll say it."', crusade=("Favors", -200),
+        flags=(RETURNED, GRUDGE, ESSENCE, APOLOGISED)),
+      c('[Let the grudge stand on every agenda] "Read it every time. I\'ll be there to hear it."',
+        flags=(RETURNED, GRUDGE, ESSENCE, ON_AGENDA)),
+      c('[Move to strike the grudge] "Then I move the grudge be struck from the record."', "struck")),
     e("ruling", '''{n}The answer is longer, and written with a steadier hand.{/n} "Point of order noted. It is, regrettably, correct: 'contribute your essence or I'll take it by force' was the chair's own motion. The chair rules that the grudge may be tabled. Tabled, Commander, not withdrawn."
 "The chair imposes terms. Either you make a formal apology, entered in the minutes and read aloud at a special session the chair will convene for that one purpose, or the grudge stands on every agenda for as long as there is an agenda, and the chair reads it aloud whenever you are present. Choose."''',
       c('[Make the formal apology before the reconvened Council] "Convene your session. I\'ll say it."', crusade=("Favors", -200),
