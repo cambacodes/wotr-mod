@@ -63,7 +63,10 @@ RELATIONSHIP = dict(
     TricksterAccess={LOST: dict(detect=[LOST], device=P + "fought.lucky", returned=RETURNED)},
 )
 
-DERIVED = {LATE_COMMITTED: [["trickster.ever", STARTED], ["trickster.ever", RETURNED]]}
+HALL_SEALED = P + "hall_sealed"
+DERIVED = {LATE_COMMITTED: [["trickster.ever", STARTED], ["trickster.ever", RETURNED]],
+           # The hall no longer opens: the Council's debrief closed it, it was fought, or the path was lost.
+           HALL_SEALED: [["council.debrief_motion"], ["council.fought"], ["council.fought_nocta_allied"], ["trickster.failed"]]}
 
 
 def ch(id, text, *choices, **kw):
@@ -90,7 +93,7 @@ def letter(id, title, nodes, requires, forbids=(), delay=0, **extra):
 # --- 4.1 council_active: the coin lands on its edge (primer), inline on her private list. -------------------------
 
 SCENES.append(scene(P + "council.coin", "Heads or tails", "Chadali", 3, '"Before you go. Heads or tails?"', [
-    nar("start", '''{n}Chadali has a coin out before you can answer: an old Elysian piece, worn smooth, with a sun on one face and a moon on the other. She flicks it high over the Council table, bracelets clinking, and watches it turn in the lamplight with her mouth a little open, like a child at a fair.{/n}''',
+    nar("start", '''{n}Chadali has a coin out before you can answer: an old Elysian piece, worn smooth, with a sun on one face and a moon on the other. She flicks it high over the Council table, bracelets clinking, and watches it turn in the lamplight with her lips parted, as if no coin in the multiverse had ever been tossed before.{/n}''',
         c('[Call it in the air] "Heads, I\'m the Council\'s lucky charm. Tails, you\'re mine."', "edge",
           flags=(PRIMED, LUCK_LENT), mythic="Trickster", alignment=("Chaotic", 1)),
         c("Never mind.", abort=True)),
@@ -108,16 +111,19 @@ SCENES.append(scene(P + "council.coin", "Heads or tails", "Chadali", 3, '"Before
 
 SCENES.append(scene(P + "council.orange", "An orange! An orange!", "Chadali", 3, '"You kept the coin?"', [
     nar("open", '''{n}Chadali is waiting at the end of the Council table with both hands behind her back and the expression of someone who has been sitting on a secret for exactly as long as she could bear.{/n}''',
-        c("Continue", "start_orange", requires=(ORANGE_CALLED,)),
-        c("Continue", "start_edge", forbids=(ORANGE_CALLED,))),
-    ch("start_orange", '''{n}Cobblehoof's bag lies empty on the table, its cauldron handed over. When Chadali turns it out to fold it, an orange rolls across the wood: not a magical one, an ordinary orange with a Drezen market stall's chalk mark on the peel.{/n}
+        c("[Trickster] [While she fusses with the ribbon on her parcel, drop the market orange from your pocket into Cobblehoof's empty bag.]",
+          "start_orange", requires=(ORANGE_CALLED,)),
+        c("Continue", "start_edge", forbids=(ORANGE_CALLED,)),
+        c("[Leave the bag alone.]", "start_edge", requires=(ORANGE_CALLED,))),
+    ch("start_orange", '''{n}Cobblehoof's bag lies on the table where he left it when the cauldron was handed over. Chadali picks it up to fold it, feels the weight, and turns it out: an orange rolls across the wood. Not a magical one. An ordinary orange with a Drezen market stall's chalk mark on the peel, the one you bought for two coppers this morning.{/n}
 "An orange! An orange! I knew it!" {n}She holds it up to the light, turning it, delighted. Then she looks at you, and the dimples go away for a moment.{/n} "...You put it there."''',
       c('[Take the orange] "Half each. It\'s only fair: I lied about the bag."', "confession")),
     ch("start_edge", '''{n}The coin you called in the air is still standing on its edge in the middle of the Council table. A ring of cookie crumbs lies around it where someone has tried to knock it down with a biscuit and failed.{/n}
 "It's still standing! Alichino tried twice and pretended he hadn't. Socothbenoth blew on it. Cobblehoof said 'Phrr' at it, which I think was a spell." {n}She beams.{/n} "I bet all of them a cookie apiece that it would stay up. Now they all owe me cookies."''',
       c('[Tip the coin over] "Chance had nothing to do with it. I balanced it."', "confession")),
     ch("confession", '''"I know." {n}She says it without any sulking at all, which is somehow worse.{/n} "I'm chance. I know what I did and what I didn't. That one was you."
-"And now I have to tell you something, because cleaning up after oneself is mandatory." {n}She turns the coin over in her fingers.{/n} "When it stood up, I felt your luck go into it. A great deal of luck, all at once, just lying there. So I borrowed a little. I spent it on the Council, on believing we'll win. I'll pay it back. I always pay back."''',
+"And now I have to tell you something, because cleaning up after oneself is mandatory." {n}She turns the coin over in her fingers.{/n} "When it stood up, I felt your luck go into it. A great deal of luck, all at once, just lying there. So I borrowed a little. I spent it on the Council, on believing we'll win. I'll pay it back. I always pay back."
+{n}Then she sets the coin back on its edge between you, with one finger, and takes the finger away, and it stays. It stays because she wants it to; you can see her wanting it.{/n}''',
       c('[Let her keep the luck] "Keep it. Bet it on me."', flags=(STARTED, COURTED)),
       c('[Ask for it back] "I\'ll want that back. With interest."', flags=(STARTED, LUCK_OWED))),
 ], requires=("trickster.ever", PRIMED), forbids=(STARTED, LOST), delay=24, last=5, Relationship="chadali", Chapters=[3, 5],
@@ -130,7 +136,7 @@ hall(P + "council.second_cookie", "The second cookie", '"You said there would be
     nar("open", '''{n}She has baked again. The parcel is wrapped in yellow silk and tied with a ribbon, and the smell of it reaches you from the far end of the hall: honey, and something like cardamom, and something that is not like anything at all.{/n}''',
         c("Continue", "start")),
     ch("start", '''{n}She holds the parcel out, then pulls it back before you can take a cookie.{/n}
-"No. First a question, and you have to answer without flipping anything. The coin, the orange, every lucky thing that's happened since you walked in here." {n}Her bracelets are quite still.{/n} "Was it luck? Or did you make it happen?"''',
+"No. First a question, and you have to answer without flipping anything. The coin, every lucky thing that's happened since you walked in here." {n}Her bracelets are quite still.{/n} "Was it luck? Or did you make it happen?"''',
       c('[Tell her the truth] "It was me. It was always me."', "her_test"),
       c('[Flatter her] "It was luck. Yours."', "luck")),
     ch("her_test", '''"So you've been cheating chance on my account." {n}She folds her arms. She isn't smiling. You have never once seen her not smiling, and without the dimples she looks every bit the empyreal lord: old, and patient, and not at all soft.{/n}
@@ -146,14 +152,14 @@ hall(P + "council.second_cookie", "The second cookie", '"You said there would be
     ch("yes", '''"Yes." {n}She says it at once, and then looks astonished at herself, and then laughs, a real laugh, loud enough to echo off the empty chairs.{/n}
 "Oh! You did it! You said it and it happened!" {n}She pushes the whole parcel into your hands and holds on to your wrists over it.{/n} "That's the luckiest thing I've ever seen. And it wasn't luck at all. I don't mind. I don't mind in the least."''',
       c("[Hold on to her.]")),
-], requires=("trickster.ever", STARTED, WAGERED), forbids=(COMMITTED, DECLINED), delay=48)
+], requires=("trickster.ever", STARTED, WAGERED, "chadali.wagers.bet_her"), forbids=(COMMITTED, DECLINED), delay=48)
 
 
 # --- The one priced second ask after her soft no. -----------------------------------------------------------------
 
 hall(P + "after.orange_tree", "The seed from Axis", '"You came back."', [
     ch("start", '''{n}She does not offer a cookie. She offers a seed: pale, striped, warm as a coin that has been in a pocket.{/n}
-"From the tree at the top of Axis. There is one, you know. Eritrice says there isn't, but Eritrice has never been up there." {n}She presses it into your palm and folds your fingers over it.{/n}
+"From the tree at the top of Axis. There is one, you know. Nobody believes me, which is entirely their loss." {n}She presses it into your palm and folds your fingers over it.{/n}
 "Plant it in your city. A real one, with a gardener and a wall, not a trick. If it takes, ask me again and I'll say yes. If you won't spend a single stone on it, then it was only ever a game."''',
       c('[Plant the tree] "It gets the best corner of the citadel garden."', "planted", crusade=("Materials", -100),
         flags=(COMMITTED, ORANGE_TREE)),
@@ -167,20 +173,34 @@ hall(P + "after.orange_tree", "The seed from Axis", '"You came back."', [
 ], requires=("trickster.ever", DECLINED), forbids=(COMMITTED,), delay=72)
 
 
+# A live Trickster who never called her coin before the hall sealed peacefully: a wager by post (Sol r3 INT).
+LATE_WAGER = P + "cost.late_wager"
+letter(P + "council.late_wager", "A penny by post", [
+    nar("start", '''{n}The Council's hall is sealed, and you never once called a coin for her in it. So you call one now, by post: a Drezen silver penny, worn smooth, wrapped in a note that names a wager and a stake.{/n}''',
+        c('[Send the wager] "Heads, you write back. Tails, you write back anyway. The stake: a hundred crowns to your shrine by the grain market, whichever way it falls."',
+          "reply", crusade=("Finances", -100), mythic="Trickster", alignment=("Chaotic", 1)),
+        c("[Keep the penny.]", abort=True)),
+    ch("reply", '''{n}The answer comes in a round, happy hand with a great many underlinings, and a cookie in the envelope, somewhat broken.{/n} "That's not a bet! Both faces are the same! That's cheating where I can see it, which is allowed, but only just."
+"I'm keeping the penny. The shrine is keeping the hundred crowns; its roof leaks. And I'm writing back, which means you win, which I hate." {n}Further down, smaller:{/n} "Next time send me something true instead of something clever. Then I'll decide whether you're lucky."''',
+      c('[Write back] "Something true, then. I missed you at the table."', flags=(STARTED, COURTED, LATE_WAGER)),
+      c("[Let it rest there.]")),
+], requires=("trickster", "trickster.ever", "council.debrief_motion"), forbids=(PRIMED, STARTED, CLOSED, LOST), delay=24)
+
+
 # --- 4.2 Hall lost before the payoff (primed): the orange by courier. --------------------------------------------
 
 ERITRICE_PS = nar("postscript", '''{n}Folded inside the silk is a second slip, in a stern, upright hand.{/n} "For the record: the chair opened this parcel, as all correspondence of a dissolved Council remains Council business. The chair ate one cookie. The chair regrets nothing. E."''',
                   c("[Fold the slips away.]"))
 
 LETTER_CHOICES = (
-    ('[Eat the orange] "It\'s an orange. You were right."', (STARTED, LATE)),
+    ('[Eat the orange] "It\'s a good orange."', (STARTED, LATE)),
     ('[Write back and send the coin home] "Keep the coin standing. I\'ll come for it."', (STARTED, LATE, COURTED)),
 )
 
 letter(P + "council.orange_letter", "The orange by courier", [
     nar("start", '''{n}A parcel comes up from the Drezen gate with the rest of the post: yellow silk, knotted twice. Inside are cookies, one bruised orange, and the coin you called in the air. It is standing on its edge in a nest of crumbs, and it has not fallen over on the road.{/n}''',
         c("Read on.", "letter")),
-    ch("letter", '''{n}The note is in a round, happy hand with a great many underlinings.{/n} "The door to the hall doesn't open any more, so the luck had to travel. I'm sorry about the orange. It got bruised on the way; the road is not as lucky as I am. It is an orange, though. You were right. Don't tell Eritrice. C."''',
+    ch("letter", '''{n}The note is in a round, happy hand with a great many underlinings.{/n} "The door to the hall doesn't open any more, so the luck had to travel. I'm sorry about the orange. It got bruised on the way; the road is not as lucky as I am. It is an orange, though. A real one. Don't tell Eritrice. C."''',
       *[c(text, "postscript", flags=flags, forbids=("eritrice.lost_at_council",)) for text, flags in LETTER_CHOICES],
       *[c(text, flags=flags, requires=("eritrice.lost_at_council",)) for text, flags in LETTER_CHOICES]),
     ERITRICE_PS,
@@ -194,7 +214,7 @@ letter(P + "fought.lucky", "Lucky you", [
     nar("start", '''{n}The letter smells of honey and antiseptic. The round hand has pressed so hard that the nib has torn the paper twice.{/n}''',
         c("Continue", "coin", requires=(PRIMED,)),
         c("Continue", "hurt", forbids=(PRIMED,))),
-    nar("coin", '''{n}Your coin is in the envelope. It is lying flat, heads up. It has not lain flat since you called it in the air.{/n}''',
+    nar("coin", '''{n}Your coin is in the envelope. It is lying flat, heads up, the way nobody has been allowed to leave it since the day you called it.{/n}''',
         c("Read the letter.", "hurt")),
     ch("hurt", '''"You're so mean. You knocked me down and let them stick me with that needle. It hurt so, so much. Chance doesn't always bring you honey cookies. Sometimes you get sharp needles, and sometimes the needle is your lucky charm's fault."
 "I don't want to see you." {n}Three lines further down, smaller:{/n} "...Why did you write?"''',
@@ -229,35 +249,42 @@ SCENES.append(scene(P + "epilogue.commit", "", "ChadaliEpilogue", 6, "", [
         c("[Give her back the coin.]", "coin"),
         paragraphs=(
             p("{n}The orange was bruised on one side, the way the first one had been, on the road from the sealed hall.{/n}", requires=(LATE,)),
+            p("{n}She wore a Drezen silver penny on a string round her neck, and tapped it, once, as she sat down.{/n}", requires=(LATE_WAGER,)),
+            p("{n}She had said no once, in the hall, and had meant it at the time. The hall was sealed now, and the seed she had meant to bring was still in her sleeve. She had come up the road anyway, to find out whether she still meant it.{/n}", requires=(DECLINED,)),
+            p("{n}She had felt the coin fall at the rift, the night the Commander called in the luck she had borrowed, and had paid it all back at once, the way she did everything. She had come up the road, she said, to see what it had bought.{/n}", requires=("chadali.lastcall.called",)),
             p("{n}She had kept the apology the herald read in the square; she took it out of the basket, folded very small, and put it on top of the cookies, where the Commander would see it.{/n}", requires=(APOLOGISED,)),
-            p("{n}Before anything else she held out her hand, palm up, and waited until the Commander understood, and pricked a thumb on the brooch-pin she offered. \"The needle,\" she said. \"You promised. That's paid.\"{/n}", requires=(NEEDLE_OWED,)),
+            p("{n}Before anything else she held out a brooch-pin, point first, and then, while the Commander was still reaching for it, put it away again. \"No. The needle you owe me isn't a pin in a kitchen,\" she said. \"It's the next real one, the next time somebody comes for something you love with a needle in their hand. It stays on the books until then. I never forget a bet.\"{/n}", requires=(NEEDLE_OWED,)),
         )),
-    nar("stay", '''{n}"Yes," said Chadali, before the word was quite finished, and took off her sandals, and did not leave. The barracks lost at dice for a month. Nobody could prove anything.{/n}'''),
-    nar("half", '''{n}She peeled it with her thumbs, gave the Commander the larger half, and ate hers slowly. When she had finished she wiped her fingers on the yellow silk and said, "That's a yes, you know. You'll have to say it properly one day." The Commander did, in the end. It took most of a summer. She counted every day, and called each one lucky.{/n}'''),
+    nar("stay", '''{n}"Yes," said Chadali, before the word was quite finished. She took off her sandals and set them side by side under the Commander's table, the way a traveller does who means to stay. Then she pulled the white flower out of her hair, unpinned the yellow silk at her shoulder and let it fall to her waist, came round the table, and climbed into the Commander's lap as if she had been planning the route since the hall was sealed. "I bet you," she said against the Commander's mouth, both hands already busy at the Commander's belt, "that nobody comes through that door before morning."{/n}
+{n}Nobody did. In the morning the coin stood on its edge on the windowsill, she lay asleep across most of the bed with honey in her hair, and the barracks had lost at dice all night. They went on losing for a month. Nobody could prove anything.{/n}'''),
+    nar("half", '''{n}She peeled it with her thumbs, gave the Commander the larger half, and ate hers slowly. When she had finished she wiped her fingers on the yellow silk and said, "That's a yes, you know. You'll have to say it properly one day." The Commander did, in the end. It took most of a summer. She counted every day, and called each one lucky, and on the evening the Commander finally said it she latched the shutters herself, kicked her sandals across the room and pulled the Commander down onto the bed by both wrists, laughing, before the sentence was finished. She said afterwards it was the best bet she had ever won, and would not say what she had staked.{/n}'''),
     nar("coin", '''{n}She looked at the coin in her palm for a long time, turning it, sun and moon. Then she stood it on its edge on the table between them, where it stayed. "Keep it," she said. "I'll come and look at it sometimes." She did, every spring, and stayed a little longer each time, and never once said what she was waiting for.{/n}'''),
 ],
     requires=("trickster.ever",), forbids=(COMMITTED, CLOSED, DECLINED, "council.fought", "council.fought_nocta_allied", "sacrifice"),
     RequiresAnyGroups=[[STARTED, RETURNED]],
-    ForbidOverrides={"council.fought": RETURNED, "council.fought_nocta_allied": RETURNED, "sacrifice": "trickster.cheated_death"}, **EP))
+    # A soft no whose hall sealed before the seed could come keeps its later ask here (R2-1; Sol r3 INT).
+    ForbidOverrides={"council.fought": RETURNED, "council.fought_nocta_allied": RETURNED, "sacrifice": "trickster.commander_back",
+                     DECLINED: HALL_SEALED}, **EP))
 
 SCENES.append(scene(P + "epilogue.declined", "", "ChadaliEpilogue", 6, "", [
     nar("page", '''{n}Chadali never did get her proper question. Every year, on the anniversary of the Council's first session, a parcel of cookies arrived in Drezen, with a coin in it lying flat, heads up, and no note at all.{/n}''')],
-    requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED, "council.fought", "council.fought_nocta_allied"),
+    requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED, "council.fought", "council.fought_nocta_allied", HALL_SEALED),
     ForbidOverrides={"council.fought": RETURNED, "council.fought_nocta_allied": RETURNED}, **EP))
 
 SCENES.append(scene(P + "epilogue.lucky_night", "", "ChadaliEpilogue", 6, "", [
-    nar("page", '''{n}The coin never fell. It stood on its edge on a shelf in the Commander's quarters for the rest of their life together, and on the nights Chadali stayed, she would flick it with one finger on her way to bed, just to watch it refuse.{/n}''',
+    nar("page", '''{n}The coin stood on its edge on a shelf in the Commander's quarters for the rest of their life together, and on the nights Chadali stayed, she would flick it with one finger on her way to bed, just to watch it refuse to fall.{/n}''',
         paragraphs=(
+            p("{n}It had fallen once, at the rift, the night the Commander called in her luck. She stood it back up herself the next morning, and would never say which face it had shown.{/n}", requires=("chadali.lastcall.called",)),
             p("{n}The Council went on meeting without her for a while, and then stopped. \"They pretend they never met,\" she said. \"I don't. I remember every one of them. I send them all cookies. Cobblehoof sends them back.\"{/n}", requires=("council.epilogue_ceased",)),
             p("{n}At the Council's victory feast she sat at the head of the table beside the Commander, which nobody had voted for, and handed round cookies until Eritrice gave up and minuted it.{/n}", requires=("council.epilogue_feast",)),
             p("{n}The Council went on convening, and she went on bringing cookies to it, and every session she left a chair empty beside her with a coin standing on its edge on the seat.{/n}", requires=("council.epilogue_convened",)),
-            p("{n}The tree from the top of Axis took in the best corner of the citadel garden, and bore fruit in its third year. The gardener swore the oranges were ordinary. Nobody who ate one believed him.{/n}", requires=(ORANGE_TREE,)),
-            p("{n}She never paid back the luck she had borrowed on the day of the coin. She said it was invested.{/n}", requires=(LUCK_LENT,), forbids=(LUCK_OWED,)),
-            p("{n}She paid back the borrowed luck, with interest, a little at a time, for the rest of the Commander's life. The Commander never once rolled lower than a four.{/n}", requires=(LUCK_OWED,)),
+            p("{n}The tree she swore came from the top of Axis took in the best corner of the citadel garden, and bore fruit in its second year. The gardener swore the oranges were ordinary. Nobody who ate one believed him.{/n}", requires=(ORANGE_TREE,)),
+            p("{n}She never paid back the luck she had borrowed on the day of the coin. She said it was invested.{/n}", requires=(LUCK_LENT,), forbids=(LUCK_OWED, "chadali.lastcall.called")),
+            p("{n}She paid back the borrowed luck, with interest, a little at a time, for the rest of the Commander's life. The Commander never once rolled lower than a four.{/n}", requires=(LUCK_OWED,), forbids=("chadali.fortunes.paid_back", "chadali.lastcall.called")),
+            p("{n}She had paid back the borrowed luck all at once, with interest, in the hall, before the end. The Commander never once rolled lower than a four afterwards, and she said that was only the interest.{/n}", requires=(LUCK_OWED, "chadali.fortunes.paid_back"), forbids=("chadali.lastcall.called",)),
         ))],
-    requires=("trickster.ever",), forbids=(CLOSED, DECLINED, "sacrifice"),
-    RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED]],
-    ForbidOverrides={DECLINED: COMMITTED, "sacrifice": "trickster.cheated_death"}, **EP))
+    requires=("trickster.ever", COMMITTED), forbids=(CLOSED, DECLINED, "sacrifice"),
+    ForbidOverrides={DECLINED: COMMITTED, "sacrifice": "trickster.commander_back"}, **EP))
 
 
 # --- Reactions (exactly two reactors: Eritrice and Ember, each behind its reactor's availability guard). -----------
@@ -272,7 +299,7 @@ SCENES.append(reaction("Eritrice", P + "react.eritrice_coin", (PRIMED,),
 
 SCENES.append(reaction("Ember", P + "react.ember_orange", (STARTED,),
     '''"The lady with the bracelets gave me two cookies and said one was for luck and one was for you. I ate yours. I think that was lucky for me." {n}Ember licks honey off her thumb.{/n}
-"She told me you made an orange come true. Can you make one for me?"''',
+"She told me you made a coin stand up on its edge and stay. Can you make one stand for me?"''',
     answer_list=EMBER_LIST, forbids=EMBER_GUARD, chapter=3, last=5, Chapters=[3, 5],
     entry='"Did you meet Chadali?"', portrait="Ember"))
 

@@ -102,8 +102,8 @@ hour(EARRING, "An unlucky day", '"Are you... crawling under the table?"', [
 
 hour(FIRST, "Our new friend", '"Do you remember the first session?"', [
     ch("start", '''"Of course I do! I remember everything that makes me happy, and it made me very happy." {n}She settles in, like someone about to tell a favourite story.{/n}
-"Socothbenoth brought you in, and everyone looked at you as if you were a new kind of beetle. Eritrice asked you questions. Alichino made notes. Cobblehoof said 'Phrr'."
-"And then they started being rude about you. Mortals, short lives, narrow outlook, all that." {n}Her eyes gleam.{/n} "So I said, don't be so tough on our new friend! They're our lucky charm! And everyone stopped."''',
+"Socothbenoth brought you in, and everyone looked at you as if you were a new kind of beetle. Eritrice asked you questions. Shyka laughed at something nobody else could see. Cobblehoof said 'Phrr'."
+"And I looked at you and said, just look how cute they are! They'll be our lucky charm!" {n}Her eyes gleam.{/n} "And everyone laughed. And I was right."''',
       c('"Why did you defend me? You\'d never met me."', "why"),
       c('"You decided that fast?"', "fast")),
     ch("fast", '''"Faster!" {n}She claps.{/n} "I decided before you'd sat down. You came through the door and stood there looking at all of us, a demon lord and a devil and a hippogriff and the Eldest and two empyreal lords, and you weren't frightened at all. You were counting the exits."
@@ -113,7 +113,7 @@ hour(FIRST, "Our new friend", '"Do you remember the first session?"', [
 "You looked like someone who'd been unlucky for a very long time and had decided to do something about it." {n}Softly.{/n}
 "I know that look. I see it on the faces of the people who pray to me the hardest. The ones who don't expect anything, and pray anyway." {n}She looks up.{/n} "I've never been able to help most of them. I thought, maybe this one I can. So I called you our lucky charm. It's the best thing I know how to call anyone."''',
       c('"You did help. You still do."', "helped", flags=(FIRST_SIGHT,)),
-      c('"You couldn\'t even give me votes, in the second session."', "votes")),
+      c('"You couldn\'t even give me votes, in the second session."', "votes", requires=("chadali.aid_regretted",))),
     ch("votes", '''"I know!" {n}She covers her face.{/n} "You asked for material aid and I said I'd be happy to help even without the votes, and I was sorry I couldn't. I was so sorry. I sent you good wishes instead." {n}Through her fingers:{/n} "That's a terrible thing to send an army."
 {n}She lowers her hands.{/n} "But I meant them. Every one. That's all I had that day. Now I have cookies, and you." {n}She beams.{/n} "I'm much better equipped."''',
       c("Continue", "helped", flags=(FIRST_SIGHT,))),
@@ -200,14 +200,14 @@ hour(WAITING, "Not today", '"You\'re very quiet."', [
 "...You really think so?" {n}And then, before you can answer:{/n} "No, don't answer. If you answer I'll believe you, and then I'll want you to ask, and I've got dough under my nails."''',
       c('"Are you nervous?"', "nervous")),
     ch("nervous", '''{n}She is quiet, her floury hands gone still in the bowl.{/n}
-"I've never been nervous before," she says at last. "I didn't know it felt like this. Like knowing the odds of everything except one thing, and that one thing is the only one that matters."
+"I don't get nervous," she says at last. "I'm getting nervous. I don't care for it. Like knowing the odds of everything except one thing, and that one thing is the only one that matters."
 {n}She looks up at you.{/n} "I'm chance, and I don't know what I'll say. Isn't that silly? I know what I'll say. I don't know if I'll be brave enough to say it."''',
       c('"I\'ll ask when you\'re ready. Not before."', "ready"),
       c('"You\'ll be brave enough. You were born in a meteor shower."', "brave")),
     ch("ready", '''"When I'm yellow." {n}She nods, and goes back to kneading, more gently.{/n} "And when I've stopped shaking. Probably not at the same time. You'll have to pick one."''',
       c("[Leave her to her dough.]")),
     ch("brave", '''{n}She laughs, a little shakily.{/n} "That wasn't brave. That was just arriving. Anybody can arrive." {n}She thinks about it.{/n}
-"This is the first brave thing I've ever had to do on purpose." {n}She shoos you with a floury hand.{/n} "Go on. Not today. Soon."''',
+"I'm brave all the time. This is different. This is being brave where you can watch me do it, and I hate it." {n}She shoos you with a floury hand.{/n} "Go on. Not today. Soon."''',
       c("[Leave her to her dough.]")),
 ], requires=(REAL_WAGER,), forbids=(WAITING, COMMITTED, DECLINED))
 
@@ -259,7 +259,7 @@ hour(NUMBER, "Zero", '"What are you writing?"', [
       c("[Don't argue.]", "half", flags=(LUCK_GIVEN_BACK,))),
     ch("half", """{n}She crosses out the nought beside her name, and writes a one, small and crooked, as if she were not sure it was allowed.{/n}
 "There. One. That's Eritrice's number. She'll be furious." {n}A wet little laugh.{/n}
-"Nobody ever made me keep anything before. It feels very strange. It feels like being looked after." {n}She folds the list into her sleeve.{/n} "I don't know if I like it. I think I might." """,
+"I'm keeping one because I decided to, not because you told me to. Write that down somewhere." {n}She folds the list into her sleeve.{/n} "One is a perfectly respectable number. Eritrice has built a whole Council on it." """,
       c("[Leave her with her one.]")),
     ch("keep", """{n}You say nothing. She watches you say nothing, and understands it, and nods once.{/n}
 "All right." {n}Brightly, and it costs her.{/n} "You need it more. You're at the front. That's true."
@@ -276,7 +276,7 @@ hour(SEAT, "The seat beside her", '"You saved me a seat."', [
     nar("open", '''{n}The session has ended and the others have gone, but the evidence is still there: two chairs pushed so close together at the end of the table that their arms touch, and a single cookie on the seat of one of them, exactly where someone would have to move it to sit down.{/n}''',
         c("Continue", "start")),
     ch("start", '''"I did!" {n}Utterly unrepentant.{/n} "Eritrice said seating is by precedence. I said my precedence is that I got here first and put a cookie on it. She said that's not a rule. I said it is now."
-"And then you held my hand under the table for the entire debate about the essences." {n}She goes pink.{/n} "Did you know Shyka could see? Shyka can always see. They laughed at exactly the wrong moment, and everybody looked at me, and I had to pretend I'd been thinking of something funny."''',
+"And then I held your hand under the table for the entire session, and you let me." {n}She goes pink.{/n} "Did you know Shyka could see? Shyka can always see. They laughed at exactly the wrong moment, and everybody looked at me, and I had to pretend I'd been thinking of something funny."''',
       c('"What were you thinking of?"', "thinking"),
       c('"Should we be more careful?"', "careful")),
     ch("thinking", '''"Your thumb." {n}Instantly, and then she claps both hands over her mouth.{/n}
@@ -337,4 +337,5 @@ def integrate(payload):
     from story_format import p
     by_id = {s["Id"]: s for s in payload["Scenes"]}
     page = by_id["chadali.trickster.epilogue.lucky_night"]["Nodes"][0]
-    page.setdefault("Paragraphs", []).extend(p(text, requires=(flag,)) for flag, text in EPILOGUE_PARAGRAPHS)
+    page.setdefault("Paragraphs", []).extend(
+        p(text, requires=(flag, "council.epilogue_ceased") if flag == REMEMBERED else (flag,)) for flag, text in EPILOGUE_PARAGRAPHS)

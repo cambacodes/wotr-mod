@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1003,
-  "resolved": 1003,
+  "entryTargetScenes": 1004,
+  "resolved": 1004,
   "inlineOnlyScenes": 250,
   "inlineOnlyResolved": 250,
-  "answerListScenesWithoutContact": 585,
-  "answerListScenesWithoutContactResolved": 585,
+  "answerListScenesWithoutContact": 586,
+  "answerListScenesWithoutContactResolved": 586,
   "lists": 103,
   "listsWithReachableHost": 102
  },
@@ -8796,6 +8796,25 @@
    "contact": null,
    "entry": {
     "d07bffc320b9127459c40869ab3e8ee4": "RRT_entry.eritrice.council.the_mortal_clock"
+   },
+   "resolved": true,
+   "host": {
+    "list": "d07bffc320b9127459c40869ab3e8ee4",
+    "dialog": "6c1137a4d91b4804c9702d453c931170",
+    "dialogName": "Council_Eritrice_Dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "eritrice.council.the_motion_to_expel_voted": {
+   "kind": "dialog",
+   "lists": [
+    "d07bffc320b9127459c40869ab3e8ee4"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "d07bffc320b9127459c40869ab3e8ee4": "RRT_entry.eritrice.council.the_motion_to_expel_voted"
    },
    "resolved": true,
    "host": {

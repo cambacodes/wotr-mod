@@ -41,6 +41,8 @@ SEEN_CUES = {
     DEVIL_EXCUSED: ["169e409dbf64fc14cbaa4fb3ad2121a7"],
     ODIOUS: ["12bb8e9afd0788c4a864e29d4add775f"],
     FREE_SPACE: ["2889c1e9b792f2c4e95a8cc551971063"],
+    "chadali.aid_regretted": ["30f2736de45fe584f95ef461b91db9ef"],                                       # Council_2/Cue_0031
+    "chadali.lexicon_found": ["805e49b56b678a145891d30f5a5b30f6", "331665d02ccb36a4ba8ad2568a333947"],   # Council_3/Cue_0005, Cue_0016
 }
 
 RECIPE = W + "the_recipe"
@@ -161,7 +163,7 @@ wager(PRAYERS, "A prayer in Drezen", '"Do people in Drezen pray to you?"', [
 "So I'll make you a bet. You can see the walls. You're the Commander. You could put her brother somewhere safe tomorrow with one word, and she'd think I did it." {n}Her eyes come up.{/n} "Would you? And would you let me have the credit?"''',
       c('[Trickster] "I\'ll move him. You keep the credit. She\'ll never know it was me."', "moved", flags=(PRAYER_ANSWERED,)),
       c('"No. I don\'t move soldiers because someone prayed. I move them because the war needs it."', "refused", flags=(PRAYER_LEFT,)),
-      c('"I\'ll move him. And I\'ll tell her it was me."', "told", flags=(PRAYER_ANSWERED,))),
+      c('"I\'ll move him. And I\'ll tell her it was me."', "told", flags=(PRAYER_ANSWERED, W + "prayer_credited"))),
     ch("moved", '''{n}She claps, and then catches herself, and looks at the paper with sudden, sharp unease.{/n}
 "That's a trick, isn't it. That's you making it true, and me getting thanked." {n}She is quiet.{/n} "She'll pray to me harder next time. For the next brother. And next time you won't be there."
 {n}She folds the paper into a very small square.{/n} "I'm going to let you do it. And I'm going to remember that I let you. Both of those are true."''',
@@ -183,14 +185,14 @@ wager(PRAYERS, "A prayer in Drezen", '"Do people in Drezen pray to you?"', [
 
 wager(CHARM, "Our lucky charm", '"You keep calling me your lucky charm."', [
     ch("start", '''"Because you are!" {n}She says it the way other people say the sky is up.{/n}
-"The very first time you walked into this hall, I said, 'Just look how cute they are! They'll be our lucky charm,' and everyone laughed, and I was right. You found the Lexicon. You found the way in. You make things go well just by standing near them."
+"The very first time you walked into this hall, I said, 'Just look how cute they are! They'll be our lucky charm,' and everyone laughed, and I was right. You walk into a room and things start going well. You make things go well just by standing near them."
 {n}She reaches over and pats your cheek, twice, as if you were a very good dog.{/n}''',
       c('"I\'m not a charm. I\'m a person. I bleed, and I choose."', "person"),
       c('"I don\'t mind being cute. I mind being an ornament."', "ornament"),
       c('[Flirt] "Whose charm, exactly?"', "whose")),
     ch("person", '''{n}The hand stops on your cheek. She takes it back, slowly, and folds it with the other in her lap.{/n}
 "I know you bleed." {n}Her voice has gone quiet.{/n} "I've seen the lists. Eritrice reads them out. I cover my ears, and she reads them louder."
-"I call you lucky because if I stop calling you lucky, I'll have to think about you bleeding. And I'm not good at that. I'm good at believing. It's the only thing I'm good at." {n}She looks at her hands.{/n} "Is it very rude? It feels rude, now you've said it."''',
+"I call you lucky because if I stop calling you lucky, I'll have to think about you bleeding. And I don't want to. I'm chance; I make the odds better, I heal what I can reach, I make people stronger, and I can't do any of it while I'm counting your wounds." {n}She looks at her hands.{/n} "Is it very rude? It feels rude, now you've said it."''',
       c('"It\'s rude. Keep doing it anyway."', "anyway", flags=(CHARMED,)),
       c('"Think about it. The bleeding. I need you to."', "think", flags=(NOT_A_CHARM,))),
     ch("ornament", '''"An ornament!" {n}She is scandalised.{/n} "Ornaments sit on shelves! You've never sat on anything in your life except a horse and my good chair, which you didn't ask about."
@@ -325,7 +327,7 @@ wager(KNUCKLEBONES, "Knucklebones", '"You brought dice?"', [
     nar("open", '''{n}Five small bones, yellowed and smooth, lie in a row on the Council table. Beside them, a cup of dark wood with a sun carved on the bottom, and a heap of cookies divided with great precision into two piles.{/n}''',
         c("Continue", "start")),
     ch("start", '''"Elysian knucklebones!" {n}She is bouncing, very slightly, in her chair.{/n} "You throw them, and you count the ones that land on their backs, and whoever has more wins a cookie. That's all. It's the silliest game in the multiverse. I love it more than anything."
-"I sent you good thoughts and positive vibrations the whole time you were in the Abyss last week. Now we find out if they worked." {n}She pushes the cup across.{/n} "You first. Don't do anything clever."''',
+"I've sent you good thoughts and positive vibrations every single time you rode out of Drezen. Now we find out if they worked." {n}She pushes the cup across.{/n} "You first. Don't do anything clever."''',
       c("[Throw them honestly.]", "honest"),
       c("[Trickster] [Load the throw. Openly, grinning, so she sees.]", "open_cheat"),
       c("[Trickster] [Load the throw so smoothly that nobody could see.]", "smooth", flags=(CHEATED_SMOOTHLY,))),
@@ -360,14 +362,14 @@ wager(WOUND, "A free space", '"What would you do with the Worldwound, if we clos
 "A free space, through which happy vibrations flow, permeating the entirety of existence. Luck, to each and every one, for free. The most amazing thing on Golarion!"''',
       c("Continue", "challenge")),
     ch("dream", '''"A free space. Where the wound was." {n}She draws a circle on the table with one finger, in cookie dust.{/n}
-"All the planes touch it, now. That's why it hurts. But if the hurt came out, the touching would still be there, and then everybody could come and go, and good things could flow through, and luck. Luck, to each and every one, for free!"''',
+"The Abyss touches it now. That's why it hurts. But if the hurt came out, and the other planes could touch it too, then everybody could come and go, and good things could flow through, and luck. Luck, to each and every one, for free!"''',
       c("Continue", "challenge")),
     ch("challenge", '''{n}She beams at you, waiting for you to love it.{/n}''',
       c('"If everyone gets luck, nobody\'s lucky. Luck is being ahead of someone."', "ahead"),
       c('"Who decides who gets it? You?"', "who"),
       c('"It\'s beautiful. I don\'t believe it for a moment. I want it anyway."', "want")),
     ch("ahead", '''{n}The beam dims.{/n} "That's Alichino's kind of luck. That's winning. Winning isn't luck, it's just the other person losing."
-"Real luck is when something good happens and nobody had to lose for it. A coin landing on its edge. An orange in a bag." {n}She looks at you pointedly.{/n}
+"Real luck is when something good happens and nobody had to lose for it. A coin landing on its edge." {n}She looks at you pointedly.{/n}
 "You're thinking like a general. That's all right, you have to. But you asked me what I'd do. I'd make the kind of luck nobody pays for." {n}She sniffs.{/n} "And you'd tell me it can't be done, and I'd do it anyway."''',
       c("Continue", "close")),
     ch("who", '''"Me?" {n}She laughs, and then stops laughing, because you are not.{/n}
@@ -389,7 +391,7 @@ wager(GLOOMY, "So gloomy", '"Not today, Chadali."', [
     nar("open", '''{n}You did not mean to come here. The field reports were bad, and the walk from the war room to your quarters passes the door to the hall, and somehow you are standing at the end of the long table in the dark, with your gauntlets still on.{/n}''',
         c("Continue", "start")),
     ch("start", '''"Oh." {n}She has seen your face. She gets up at once, cookies forgotten.{/n}
-"How can you be so gloomy?" {n}She said it once to Cobblehoof, in the first session, as a joke. She does not say it like a joke now.{/n} "Who was it? Don't tell me the number. Tell me the name. One name."''',
+"How can you be so gloomy?" {n}It is the kind of thing she says across the Council table to tease. She does not say it like a tease now.{/n} "Who was it? Don't tell me the number. Tell me the name. One name."''',
       c("[Tell her a name.]", "name"),
       c('"There are too many names."', "many"),
       c('"I don\'t want to be cheered up."', "no_cheer")),
@@ -404,7 +406,7 @@ wager(GLOOMY, "So gloomy", '"Not today, Chadali."', [
 "I'm just going to sit here. You can be gloomy. I'll be here while you do it." {n}She sits. She does not offer a cookie. After a while, without any comment at all, she starts unbuckling your gauntlet.{/n}''',
       c("Continue", "hope")),
     ch("hope", '''{n}When your hands are bare she holds them between hers. Her palms are warm and a little floury.{/n}
-"In the first session I said we'll definitely win, I just don't know how yet. Everyone laughed." {n}Her thumbs move over your knuckles.{/n}
+"I always say we'll definitely win, I just don't know how yet. Socothbenoth rolls his eyes every time." {n}Her thumbs move over your knuckles.{/n}
 "I need you to say something hopeful. Out loud. It doesn't have to be true. It just has to be said, by you, in here. I'll hold it for you until it is."''',
       c('"We\'ll win. I don\'t know how yet."', "hoped", flags=(HOPED_ALOUD,)),
       c('"I can\'t. Not tonight."', "cant")),
@@ -447,7 +449,7 @@ wager(LOADED, "Loaded dice", '"You\'ve been quiet with me since the knucklebones
 # --- 12. The real wager: the last beat before the question. --------------------------------------------------------
 
 wager(REAL_WAGER, "The real wager", '"You wanted to make a proper bet?"', [
-    nar("open", '''{n}There are no cookies tonight. The Council table is bare except for the coin, still standing on its edge where it has stood since the day you called it, and one white flower from her hair laid beside it.{/n}''',
+    nar("open", '''{n}There are no cookies tonight. The Council table is bare except for the coin, standing on its edge where she keeps it, and one white flower from her hair laid beside it.{/n}''',
         c("Continue", "start")),
     ch("start", '''"A proper one." {n}She has her hands folded in her lap, very still, which is not like her.{/n}
 "We've made lots of little bets. Cookies and trays and devils coming to meetings. You win most of them, because you make them happen." {n}She looks at the coin.{/n}
@@ -471,7 +473,7 @@ wager(REAL_WAGER, "The real wager", '"You wanted to make a proper bet?"', [
       c("[Go, and come back.]")),
     ch("not_tonight", '''"Then not tonight." {n}She nods, as if this too were fair.{/n}
 "The coin will keep standing. It's very patient. So am I, mostly." {n}She looks at the flower on the table, and leaves it there.{/n} "Come back when you'll bet."''',
-      c("[Go.]")),
+      c("[Go.]", abort=True)),
 ], requires=(GLOOMY, WOUND), forbids=(REAL_WAGER, COMMITTED), delay=24)
 
 
@@ -480,7 +482,7 @@ wager(REAL_WAGER, "The real wager", '"You wanted to make a proper bet?"', [
 FLAT = W + "a_coin_lying_flat"
 
 wager(FLAT, "A coin lying flat", '"Is the question still open?"', [
-    nar("open", '''{n}The coin is lying flat on the Council table. It is the first time you have seen it lying down. Heads up: the sun.{/n}''',
+    nar("open", '''{n}The coin is lying flat on the Council table, and nobody has stood it back up. Heads up: the sun.{/n}''',
         c("Continue", "start")),
     ch("start", '''"I knocked it over." {n}She is not looking at it.{/n} "On purpose. I wanted to see if it would stand up again by itself, if I believed very hard. It didn't. I believed very hard for a whole night."
 "That's how I know it was you. All of it. Every time." {n}She turns her bracelet.{/n} "I said no. Not today. I meant it. I still mean it today."''',
@@ -501,6 +503,7 @@ EPILOGUE_PARAGRAPHS = [
     (GUESSED, "{n}The recipe was never written down. The Commander was the only mortal who knew what the spice was, and never told, and grew very tired of being asked.{/n}"),
     (PRAYER_ANSWERED, "{n}A crossbowman who had scratched a prayer inside her helmet named her first child Chadali. The child grew up lucky at cards and could not be persuaded that this was not a coincidence.{/n}"),
     (COBBLE_MENDED, "{n}Every year a grey feather arrived at the Commander's door with no note. Chadali said it was from Cobblehoof, and that it meant thank you, and that he would never admit it.{/n}"),
+    # She later lifted the curse herself (chadali.sessions.the_old_fellow_again): then only the sessions' restored-luck paragraph shows.
     (COBBLE_CURSED, "{n}Cobblehoof's luck never came back. He said nothing about it, ever, to anyone. Chadali sent him cookies every year, and every year he sent them back, and every year she cried a little, and baked again.{/n}"),
     (TOLD_BRICK, "{n}On the anniversary of the fall of Kenabres she left a spoonful of honey on a cracked saucer on the windowsill, and the Commander never asked, and never moved it.{/n}"),
     (DICE_DENIED, "{n}She never again played knucklebones with the Commander. She never said why. Once, years later, she said \"Lucky you\" at a dice table, and the Commander heard it, and understood, and it was far too late to say anything.{/n}"),
@@ -519,4 +522,6 @@ def integrate(payload):
         payload["SeenCues"][key] = list(cues)
     by_id = {s["Id"]: s for s in payload["Scenes"]}
     page = by_id["chadali.trickster.epilogue.lucky_night"]["Nodes"][0]
-    page.setdefault("Paragraphs", []).extend(p(text, requires=(flag,)) for flag, text in EPILOGUE_PARAGRAPHS)
+    page.setdefault("Paragraphs", []).extend(
+        p(text, requires=(flag,), forbids=(("chadali.sessions.cobblehoof_freed_by_her",) if flag == COBBLE_CURSED else ()))
+        for flag, text in EPILOGUE_PARAGRAPHS)

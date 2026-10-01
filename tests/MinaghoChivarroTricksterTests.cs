@@ -70,15 +70,17 @@ internal static class MinaghoChivarroTricksterTests
         var wonBack = S(P + "after.won_back");
         var house = S(P + "after.who_keeps_the_house");
 
-        // Polish pass: the killed-Chivarro device is her house's canon (the kill faked, the proof real, the stock kept alive),
-        // not a raise. The deposit plants it, the letter pays it off, and no priestess raise may come back.
+        // Sol CAN (2026-09-30): the native fight kills a real unit (ChivarroKilled on the death trigger), so the return is prepared
+        // before it: the deposit sends Herrax's double (Sael) down in her rings, and only a deposit returns her. No raise, no
+        // survival invented after the fact; the double's death is a Ledger secret.
         var boughtText = string.Join(" ", bought.Nodes.Select(n => n.Text));
         check(!boughtText.Contains("raises what the house sells", StringComparison.Ordinal) && !boughtText.Contains("priestess", StringComparison.Ordinal)
-              && boughtText.Contains("A corpse is not forever", StringComparison.Ordinal)
-              && boughtText.Contains("the fingers that wore them", StringComparison.Ordinal) && boughtText.Contains("buy all of it", StringComparison.Ordinal),
-            "Chivarro's return is a generic raise again, or has lost its price (memory rrt-unique-devices).");
-        check(deposit.Nodes.Any(n => n.Text.Contains("the rings, and whatever the rings are on", StringComparison.Ordinal)),
-            "The deposit no longer plants the proof the house takes (the price of her return).");
+              && !boughtText.Contains("A corpse is not forever", StringComparison.Ordinal) && boughtText.Contains("Sael", StringComparison.Ordinal)
+              && boughtText.Contains("buy all of it", StringComparison.Ordinal) && bought.Requires.Contains(Deposit),
+            "Chivarro's return is not the prepared double, or a raise came back (memory rrt-unique-devices).");
+        check(deposit.Nodes.Any(n => n.Text.Contains("the rings, and whatever the rings are on", StringComparison.Ordinal) && n.Text.Contains("Sael", StringComparison.Ordinal))
+              && deposit.Nodes.Single(n => n.Id == "ink").Choices[0].Set.Contains("trickster.secret.chivarro_double"),
+            "The deposit no longer plans the double before the kill, or its secret is not kept.");
         var road = S(P + "after.before_the_last_road");
         var roadLetter = S(P + "after.before_the_last_road_letter");
         var aloneChiv = S(P + "alone.chivarro");
@@ -122,7 +124,7 @@ internal static class MinaghoChivarroTricksterTests
         var shove = wardrobe.Nodes.SelectMany(n => n.Choices).Where(c => c.Text.Contains("Mind the corsets")).ToList();
         check(shove.Count > 0 && shove.All(c => c.Mythic == "PlayerIsTrickster" && c.Alignment?.Direction == "Chaotic"), "The shove lost its [Trickster] answer or its price.");
         foreach (var commit in new[] { road, aloneChiv, aloneMin, aloneMinSpared })
-            check(commit.Nodes.Any(n => n.Id == "threshold") && commit.Nodes.SelectMany(n => n.Choices).Where(c => c.Set.Contains(Complete)).All(c => c.Next == "threshold" && c.Set.Contains(Chain)),
+            check(commit.Nodes.Any(n => n.Id == "threshold") && commit.Nodes.SelectMany(n => n.Choices).Where(c => c.Set.Contains(Complete)).All(c => (c.Next == "threshold" || c.Next == "threshold_clean") && c.Set.Contains(Chain)),
                 "A physical commit skips the threshold or the chain marker: " + commit.Id);
         check(story.Scenes.Where(s => s.Relationship == "minagho_chivarro").SelectMany(s => s.Nodes).SelectMany(n => n.Choices)
                   .Where(c => c.Set.Contains(Complete)).All(c => c.Set.Contains(Chain) || !c.Set.Any(f => f.StartsWith(P, StringComparison.Ordinal))),
@@ -191,7 +193,7 @@ internal static class MinaghoChivarroTricksterTests
             "A primer taken as a Trickster no longer pays off after the path failed.");
 
         // Trk_Minagho_BothDead: the shared-flag blocker is gone.
-        var bothDead = World(story, 5, "trickster", "trickster.ever", "minagho.dead", "chivarro.dead", Primed, Debt, Terms, Delivered);
+        var bothDead = World(story, 5, "trickster", "trickster.ever", "minagho.dead", "chivarro.dead", Primed, Debt, Terms, Delivered, Deposit, Favor);
         check(Av(brand, bothDead) && Av(bought, bothDead) && !Av(wardrobe, With(bothDead, "closets.known")), "Trk_Minagho_BothDead failed.");
 
         // Trk_Minagho_SparedPrimed / _FledUnprimed.
@@ -206,6 +208,36 @@ internal static class MinaghoChivarroTricksterTests
         check(Pages(spared, With(sparedWorld, "minagho.terrified")).Contains("terrified"), "The terrified variant is missing.");
         check(Av(sparedLetter, With(sparedWorld, "minagho_chivarro.presence.minagho_spared.failed")) && !Av(sparedLetter, sparedWorld),
             "The spared letter twin misfires.");
+        // Sol INT/HOW (r1): an unprimed spared Minagho whose presence failed is reached in person from her note, and the transfer is
+        // made on the page (no opening claims a dry brand before it).
+        var unprimedFailed = World(story, 5, "trickster", "trickster.ever", "minagho.fled_fane", "minagho_chivarro.presence.minagho_spared.failed");
+        unprimedFailed.AvailableContacts.Remove(MinUnit);
+        check(!Av(spared, unprimedFailed) && Av(sparedLetter, unprimedFailed)
+              && Done(sparedLetter, unprimedFailed).Any(r => r.Has(MinIn) && r.Has(Primed) && r.Has(Debt) && r.Has(LateClaim))
+              && Pages(sparedLetter, unprimedFailed).Contains("late")
+              && !spared.Nodes.Single(n => n.Id == "start").Text.Contains("It stopped", StringComparison.Ordinal)
+              && !sparedLetter.Nodes.Single(n => n.Id == "start").Text.Contains("It stopped", StringComparison.Ordinal),
+            "An unprimed spared Minagho has no reachable transfer when her presence fails, or an opening precedes its act.");
+
+        // Sol r2 INT: Baphomet's one parley notices Horzalah's escape as it notices Hepzamirah's (a node variant, no debt).
+        check(Pages(parley, With(aliveCell0(), "horzalah.trickster.returned")).Contains("weaker")
+              && !Pages(parley, aliveCell0()).Contains("weaker"), "The parley ignores Horzalah's escape.");
+        // Sol r2 INT: a soft no keeps its priced second ask, for the pair and for each woman alone.
+        var pairNo = World(story, 5, "trickster.ever", Reunited, ChIn, MinIn, "minagho.spared_c4", P + "tprev.house", Declined);
+        var scars = S(P + "after.when_it_scars");
+        var scarOut = Done(scars, pairNo);
+        check(Av(scars, pairNo) && scarOut.Any(r => r.Has(Complete) && r.Has("minachiv.future_two") && r.Has(P + "night.pair") && r.Has(P + "cost.morning_after"))
+              && scarOut.Any(r => r.Has(Closed)) && !Av(scars, With(pairNo, Complete)), "The pair's soft no has no second ask.");
+        var minNo = World(story, 5, "trickster.ever", "chivarro.dead", MinIn, "minagho.spared_c4", DeclC, Declined);
+        check(Done(S(P + "alone.minagho_when_it_scars"), minNo).Any(r => r.Has(Complete) && r.Has("minachiv.future_minagho")),
+            "Minagho's soft no has no second ask.");
+        var chivNo = World(story, 5, "trickster.ever", "minagho.dead", ChIn, Waiting, Declined);
+        check(Done(S(P + "alone.chivarro_when_it_scars"), chivNo).Any(r => r.Has(Complete) && r.Has("minachiv.future_chivarro")),
+            "Chivarro's soft no has no second ask.");
+        // Sol r2 BEL: the red silk earns a meeting; the name is priced at it, with the hand on her table.
+        var wonBackOut = Done(wonBack, World(story, 5, "trickster.ever", P + "chivarro_walked", ChIn));
+        check(Pages(wonBack, World(story, 5, "trickster.ever", P + "chivarro_walked", ChIn)).Contains("hand")
+              && wonBackOut.Where(r => r.Has(P + "tprev.name")).All(r => r.Has(P + "cost.palm_on_table")), "The red silk buys the name without the hand.");
 
         // Trk_Minagho_SparedParleyAlive.
         var aliveCell = World(story, 5, "trickster.ever", "minagho.spared_c4", Primed);
@@ -244,7 +276,7 @@ internal static class MinaghoChivarroTricksterTests
         check(named.Has(P + "cost.palm_on_table") && walked.Count == 2, "Her refusal gate is not on every branch of the price.");
         check(Av(wonBack, Later(story, walked[0])) && !Av(house, Later(story, walked[0])), "Trk_Chivarro_PriceWalked failed.");
         var won = Done(wonBack, Later(story, walked[0]));
-        check(won.Single(r => r.Has(P + "tprev.name")).Has(P + "cost.won_back") && won.Any(r => r.Has(SentBack)), "The priced second ask is missing.");
+        check(won.Where(r => r.Has(P + "tprev.name")).All(r => r.Has(P + "cost.won_back")) && won.Count(r => r.Has(P + "tprev.name")) == 2 && won.Any(r => r.Has(SentBack)), "The priced second ask is missing.");
         check(Av(house, Later(story, named)), "The house does not follow the price.");
         var housed = Done(house, Later(story, named));
         check(housed.Count == 2 && housed.All(r => r.Has(P + "tprev.house")), "Who keeps the house: flags.");
@@ -273,12 +305,17 @@ internal static class MinaghoChivarroTricksterTests
         check(!Av(aloneChiv, Later(story, bothIn)) && Av(offer, Later(story, bothIn)), "A reunited pair still sees the alone commit.");
 
         // Trk_Chivarro_BothDead / _Killed / _Deposit / _KilledNoDepositLate / _DepositSurvivesFailure / _KilledNoDepositFailed / _KeptBill.
-        var bd = World(story, 5, "trickster", "trickster.ever", "chivarro.dead", "minagho.dead");
+        var bd = World(story, 5, "trickster", "trickster.ever", "chivarro.dead", "minagho.dead", Deposit, Favor);
         check(Av(bought, bd) && Av(parley, With(bd, "baphomet.parley")) && !Av(wardrobe, With(bd, "closets.known")), "Trk_Chivarro_BothDead failed.");
-        var killed = World(story, 5, "trickster", "trickster.ever", "chivarro.dead");
+        var killed = World(story, 5, "trickster", "trickster.ever", "chivarro.dead", Deposit, Favor);
         var boughtOut = Done(bought, killed);
         check(boughtOut.Any(r => r.Has(RetC) && r.Has(ChIn) && r.Has(P + "bill_burned")) && !Av(wardrobe, With(killed, "closets.known")), "Trk_Chivarro_Killed failed.");
-        check(boughtOut.Where(r => r.Has(RetC)).All(r => r.Has(Favor) && r.Has(Late)), "Trk_Chivarro_KilledNoDepositLate failed.");
+        // Trk_Chivarro_KilledNoDeposit: nothing was prepared, the Commander killed her, and the death stands; Minagho knows.
+        var killedBare = World(story, 5, "trickster", "trickster.ever", "chivarro.dead");
+        check(!Av(bought, killedBare) && boughtOut.Where(r => r.Has(RetC)).All(r => !r.Has(Late)), "Trk_Chivarro_KilledNoDeposit failed: a witnessed death is undone.");
+        var killerWorld = World(story, 5, "trickster.ever", "chivarro.dead", MinIn, "minagho.spared_c4");
+        check(Pages(aloneMinSpared, killerWorld).Contains("killer") && !Pages(aloneMinSpared, With(killerWorld, Deposit, DeclC)).Contains("killer"),
+            "Minagho does not face the Commander who killed Chivarro.");
         var herrax = World(story, 4, "trickster", "trickster.ever", "herrax.asked_kill_chivarro");
         check(Av(deposit, herrax) && Done(deposit, herrax).Single().Has(Deposit) && Done(deposit, herrax).Single().Has(Favor), "Trk_Chivarro_Deposit failed.");
         var depositFailed = World(story, 5, "trickster.ever", "trickster.failed", "chivarro.dead", Deposit, Favor);
@@ -302,6 +339,18 @@ internal static class MinaghoChivarroTricksterTests
         check(!Av(road, Later(story, service)) && !Av(epCommit, service) && !Av(epPair, service) && Av(epOwned, service),
             "The kept bill is treated as a romance.");
         check(Av(billLetter, With(ownedReady, "minagho_chivarro.presence.chivarro.failed")), "The bill's letter twin misfires.");
+        // Sol r3 INT/HOW: Minagho first, then Chivarro bought, by every burn (at once, after keeping the bill, or by letter): the pair
+        // is reunited and its chain opens; nothing seeds the reunion.
+        var minFirst = World(story, 5, "trickster", "trickster.ever", "minagho.spared_c4", MinIn, Primed, Debt, "chivarro.dead", Deposit, Favor);
+        var minFirstOut = Done(bought, minFirst);
+        check(minFirstOut.Where(r => r.Has(P + "bill_burned")).All(r => r.Has(Reunited)) && minFirstOut.Any(r => r.Has(P + "bill_burned"))
+              && Av(offer, Later(story, minFirstOut.First(r => r.Has(P + "bill_burned")))), "A Chivarro bought after Minagho is not reunited with her.");
+        var keptFirst = Later(story, minFirstOut.First(r => r.Has(Owned)));
+        var releasedOut = Done(bill, keptFirst);
+        var releasedByLetter = Done(billLetter, With(keptFirst, "minagho_chivarro.presence.chivarro.failed"));
+        check(releasedOut.Where(r => r.Has(P + "bill_burned")).All(r => r.Has(Reunited)) && releasedOut.Any(r => r.Has(P + "bill_burned"))
+              && releasedByLetter.Where(r => r.Has(P + "bill_burned")).All(r => r.Has(Reunited))
+              && Av(offer, Later(story, releasedOut.First(r => r.Has(P + "bill_burned")))), "Burning a kept bill strands a pair whose Minagho came first.");
         check(Pages(price, Later(story, With(burned, P + "tprev.offer"))).Contains("owned"), "The owned variant of the price is missing.");
 
         // Trk_Chivarro_MinaghoAlone (spared presence copy of the beat) and the dead-returned beat.
@@ -337,6 +386,54 @@ internal static class MinaghoChivarroTricksterTests
         check(lateOutcomes.Count == 2 && Pages(epCommit, lateHouse).Contains("pair") && !Pages(epCommit, lateHouse).Contains("waiting"),
             "The late-commit page does not let the Commander choose.");
         check(Pages(epCommit, World(story, 5, "trickster.ever", ChIn, Waiting, "minagho.dead")).Contains("waiting"), "The late page names two women when one is waiting.");
+        // Sol INT/BEL: each late acceptance is its own ending, staged to the threshold; regrets is not a romance, and the Last
+        // Call coda (played for the rift's committed partners) never reads a late page.
+        check(Pages(epCommit, lateHouse).Contains("went") && !Pages(epCommit, lateHouse).Contains("went_alone")
+              && Pages(epCommit, World(story, 5, "trickster.ever", ChIn, Waiting, "minagho.dead")).Contains("went_alone")
+              && epCommit.Nodes.Single(n => n.Id == "went").Text.Contains("bore the Commander down")
+              && epCommit.Nodes.Single(n => n.Id == "went_alone").Text.Contains("climbed astride") && epCommit.Nodes.Single(n => n.Id == "went_alone").Text.Contains("In the morning")
+              && !epCommit.Nodes.Single(n => n.Id == "regrets").Text.Contains("bed"),
+            "The late acceptances are not distinct, staged endings.");
+        // Sol r4: the endings do not outlive an unreturned sacrifice; the owned page brings no dead Minagho; Chivarro alone assumes no palm wound.
+        foreach (var ep in new[] { epPair, epChiv, epMin, epCommit })
+            check(ep.Forbids.Contains("sacrifice") && ep.ForbidOverrides.TryGetValue("sacrifice", out var back) && back == "trickster.commander_back",
+                "A living ending plays for a Commander who stayed dead: " + ep.Id);
+        check(!epOwned.Nodes[0].Text.Contains("Minagho visited") && epOwned.Nodes[0].Paragraphs.Any(p => p.Requires.Contains(MinIn)),
+            "The owned page brings an unreturned Minagho to visit.");
+        check(aloneChiv.Nodes.Any(n => n.Id == "threshold_clean" && !n.Text.Contains("cut")), "Chivarro alone assumes the Goat's wound.");
+        // Coordinator rulings (r5): the deposit is offered on Herrax's list as a plain question; an unprepared kill is told plainly
+        // (Herrax's letter, the Ledger's secret) and never undone; the red-silk meeting settles the house (no ninth letter).
+        check(deposit.Entry.Contains("what does your house sell") && rel.Guidance.Contains("ask Herrax what her house sells"), "The deposit is not discoverable.");
+        var unbought = S(P + "chivarro_dead.unbought");
+        var bareKill = World(story, 5, "trickster", "trickster.ever", "chivarro.dead", "herrax.asked_kill_chivarro");
+        check(Av(unbought, bareKill) && Done(unbought, bareKill).All(r => r.Has("trickster.secret.chivarro_lost"))
+              && !Av(unbought, With(bareKill, Deposit)) && !Av(bought, bareKill), "The unprepared kill is not told plainly, or is undone.");
+        var wonWorld = World(story, 5, "trickster.ever", P + "chivarro_walked", ChIn);
+        check(Done(wonBack, wonWorld).Where(r => r.Has(P + "tprev.name")).All(r => r.Has(P + "tprev.house"))
+              && !Av(house, Later(story, Done(wonBack, wonWorld).First(r => r.Has(P + "tprev.name")))), "The red-silk path still sends the house letter.");
+        var coda = S("minachiv.lastcall.page");
+        check(coda.Requires.Contains(Complete) && !Av(coda, With(lateHouse, "trickster.lastcall.taken")),
+            "The Last Call coda plays for a late page's Commander.");
+        // Sol COX: the coda bleeds the debtor's palm, and names the women the Commander committed to.
+        var codaText = string.Join(" ", coda.Nodes.SelectMany(n => new[] { n.Text }.Concat(n.Paragraphs.Select(p => p.Text))));
+        check(!codaText.Contains("Minagho's palm", StringComparison.Ordinal) && codaText.Contains("the Commander's palm still opened at dawn", StringComparison.Ordinal)
+              && coda.Nodes.SelectMany(n => n.Paragraphs).Any(p => p.Requires.Contains("minachiv.future_chivarro"))
+              && coda.Nodes.SelectMany(n => n.Paragraphs).Any(p => p.Requires.Contains("minachiv.future_minagho"))
+              && coda.Nodes.SelectMany(n => n.Paragraphs).Any(p => p.Requires.Contains("minachiv.future_two"))
+              && !coda.Nodes[0].Text.Contains("Minagho and Chivarro", StringComparison.Ordinal),
+            "The Last Call coda contradicts the debt or the committed partners.");
+        // Sol BEL: a letter commit brings them in person to a threshold and its own morning; the physical morning needs its night.
+        var letterYes = Done(roadLetter, World(story, 5, "trickster.ever", Reunited, ChIn, MinIn, "minagho.spared_c4", P + "tprev.house",
+                                               "minagho_chivarro.presence.chivarro.failed")).Where(r => r.Has(Complete)).ToList();
+        check(letterYes.Count == 1 && letterYes[0].Has(P + "night.pair") && letterYes[0].Has(P + "cost.morning_after")
+              && Pages(roadLetter, World(story, 5, "trickster.ever", Reunited, ChIn, MinIn, "minagho.spared_c4", P + "tprev.house",
+                                         "minagho_chivarro.presence.chivarro.failed")).Contains("came")
+              && S(P + "after.the_morning_after").Requires.Contains(P + "night.pair")
+              && S(P + "alone.chivarro_morning").Requires.Contains(P + "night.chivarro")
+              && S(P + "alone.minagho_morning").Requires.Contains(P + "night.minagho"),
+            "A letter commit has no night, or a morning plays without one.");
+        foreach (var id in new[] { "alone.chivarro_letter", "alone.minagho_letter" })
+            check(S(P + id).Nodes.Any(n => n.Id == "came") && S(P + id).Nodes.Any(n => n.Id == "morning"), "A letter commit has no staged night: " + id);
 
         // Reactions.
         foreach (var id in new[] { "react.daeran", "react.wenduag", "react.socoth_fee", "react.camellia_bill" })
@@ -347,6 +444,12 @@ internal static class MinaghoChivarroTricksterTests
               && !Av(S(P + "react.socoth_fee"), World(story, 5, "trickster.ever", P + "cost.socoth_owed", "socot.gone")), "Socothbenoth's fee outlives him.");
         check(Av(S(P + "react.camellia_bill"), World(story, 5, "trickster.ever", RetC, "chivarro.dead"))
               && !Av(S(P + "react.camellia_bill"), World(story, 5, "trickster.ever", RetC, "chivarro.dead", "camellia.dead")), "Camellia's reaction guard.");
+        // A returned Camellia whose body died otherwise reacts on her hub; a killed one returns veiled at Fye's, with no hub to react on.
+        var camellia = S(P + "react.camellia_bill");
+        check(Av(camellia, World(story, 5, "trickster.ever", RetC, "chivarro.dead", "camellia.dead", "camellia.trickster.returned"))
+              && !camellia.ForbidOverrides.ContainsKey("camellia.killed")
+              && !Av(camellia, World(story, 5, "trickster.ever", RetC, "chivarro.dead", "camellia.killed", "camellia.dead", "camellia.trickster.returned")),
+            "Camellia's reaction ignores her return, or claims the veiled Camellia's missing hub.");
 
         // The registered route (save-safe edits only): lost pages never play for a returned woman; the chain has its own endings.
         foreach (var s in story.Scenes.Where(s => s.Relationship == "minagho_chivarro" && !s.Id.StartsWith(P, StringComparison.Ordinal)))
@@ -358,6 +461,7 @@ internal static class MinaghoChivarroTricksterTests
         check(S("minachiv.ending_minagho_lost_completed").Forbids.Contains(RetM) && S("minachiv.ending_chivarro_lost").Forbids.Contains(RetC)
               && S("minachiv.ending_both_lost").Forbids.Contains(RetM) && S("minachiv.ending_both_lost").Forbids.Contains(RetC), "G6(a) missing on a lost page.");
 
+        Snapshot aliveCell0() => World(story, 5, "trickster.ever", "minagho.spared_c4", Primed);
         Snapshot With(Snapshot w, params string[] flags)
         {
             var next = Program.Copy(w);

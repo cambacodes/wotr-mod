@@ -214,7 +214,7 @@ internal static class EritriceTricksterTests
             "The refusal page or the declined-then-carried override is wrong.");
 
         // The standing debate: every sitting reachable, the night only after the commit, and it is the one heated beat.
-        var debateStart = World(story, 3, "trickster.ever", "eritrice.started", P + "minutes_read", "council.session_minuted");
+        var debateStart = World(story, 3, "trickster.ever", "eritrice.started", P + "minutes_read", "council.session_minuted", "eritrice.certain_book_said");
         foreach (var sitting in sittings)
             check(sitting.Optional && sitting.Requires.Contains("trickster.ever"), "A sitting is not an optional Trickster-path beat: " + sitting.Id);
         check(sittings.Length >= 30, "The standing debate is missing sittings.");
@@ -228,11 +228,17 @@ internal static class EritriceTricksterTests
                                    K + "the_eldests_version", K + "a_certain_book", K + "the_casualty_lists", K + "the_dagger",
                                    K + "where_the_chair_goes_home", K + "a_motion_to_expel", K + "personal_privilege" })
             check(Reaches(debateStart, id, 3), "Sitting unreachable in Chapter 3: " + id);
+        // Sol r2 INT: the essence and eve sittings close once the Council has walked out; the walk-out has its own sitting.
         var chapterFive = World(story, 5, "trickster.ever", "eritrice.started", P + "minutes_read", "council.cauldron_given",
-            "eritrice.proposed_key", "eritrice.cipher_unread", "eritrice.council_walked_out", "eritrice.nocticula_named", "council.walked_out");
+            "eritrice.proposed_key", "eritrice.cipher_unread", "eritrice.council_walked_out", "eritrice.nocticula_named");
         foreach (var id in new[] { M + "at_worst", M + "the_cipher", M + "stay_in_your_seats", M + "a_serious_matter",
-                                   K + "a_lie_for_the_chair", K + "the_lady_in_shadow", K + "so_many_years", K + "just_imagine" })
+                                   K + "a_lie_for_the_chair", K + "the_lady_in_shadow", K + "just_imagine" })
             check(Reaches(chapterFive, id), "Sitting unreachable in Chapter 5: " + id);
+        var walkedOut = World(story, 5, "trickster.ever", "eritrice.started", P + "minutes_read", "council.cauldron_given",
+            "eritrice.proposed_key", "eritrice.council_walked_out", "council.walked_out");
+        check(Reaches(walkedOut, K + "so_many_years") && !Reaches(walkedOut, M + "a_serious_matter") && !Reaches(walkedOut, K + "just_imagine")
+              && S(M + "a_serious_matter").Forbids.Contains("eritrice.essence_given"),
+            "A preparatory sitting outlives the walk-out or her given essence.");
         var committed5 = World(story, 5, "trickster.ever", "eritrice.started", "eritrice.committed", M + "quill", M + "the_convening");
         foreach (var id in new[] { M + "the_record", M + "a_standing_item", K + "his_eyes", K + "accurate_minutes", K + "the_mortal_clock",
                                    K + "twice_nightly", K + "the_fair_copy", K + "rules_of_the_crossroads", K + "the_six_hundred_and_thirteenth" })
@@ -249,6 +255,100 @@ internal static class EritriceTricksterTests
             "The reactions are not exactly Chadali and Nenio behind their guards.");
         check(letter.Nodes.Any(n => n.Id == "postscript") && late.Nodes.Any(n => n.Id == "postscript"),
             "Chadali's postscript is missing from the letters.");
+
+        // Sol r1 (2026-09-30). CAN: the Lexicon recollection waits for the native Cue_0054, the cipher callback for her lesson;
+        // a Chapter 3 world gets the early variants.
+        var eldest = S(K + "the_eldests_version");
+        check(story.SeenCues["eritrice.shyka_dull_future"].SequenceEqual(new[] { "1d1c4855bacf5a94fb1e84b7ae8424a3" })
+              && Choice(eldest, "start", 1).Requires.Contains("eritrice.shyka_dull_future") && Choice(eldest, "start", 1).Next == "like"
+              && Choice(eldest, "start", 3).Forbids.Contains("eritrice.shyka_dull_future") && Choice(eldest, "start", 3).Next == "like_early"
+              && Choice(eldest, "start", 0).Requires.Contains(M + "the_cipher") && Choice(eldest, "start", 2).Forbids.Contains(M + "the_cipher")
+              && !eldest.Nodes.Single(n => n.Id == "like_early").Text.Contains("Lexicon")
+              && !eldest.Nodes.Single(n => n.Id == "both_early").Text.Contains("cipher"),
+            "The Eldest's version recalls the second Lexicon or the cipher before they happen.");
+        // CAN: the committed page opens outcome-neutral; the denial of acquaintance is only the ceased ending's.
+        check(!pageMet.Nodes[0].Text.Contains("never met")
+              && pageMet.Nodes[0].Paragraphs.Where(p => p.Text.Contains("never met")).All(p => p.Requires.Contains("council.epilogue_ceased")),
+            "The committed page imports the ceased-Council ending into every outcome.");
+        // INT: the promised lie is not reported as a rescue no scene performs.
+        check(pageMet.Nodes[0].Paragraphs.Where(p => p.Requires.Contains(K + "lied_for_her")).All(p => !p.Text.Contains("was spared")),
+            "The epilogue reports a Chadali rescue that nothing performs.");
+        // INT (ledger row 16): the Last Call bottle survival keeps both romance pages; a Commander who stayed dead does not.
+        var bottle = new[] { "sacrifice", "ending.wound_closed", "trickster.lastcall.taken", "trickster.lastcall.pillar.bottle" };
+        check(Rules.Available(story, pageMet, World(story, 6, new[] { "trickster.ever", "eritrice.committed" }.Concat(bottle).ToArray()))
+              && Rules.Available(story, pageCommit, World(story, 6, new[] { "trickster.ever", "eritrice.started" }.Concat(bottle).ToArray()))
+              && !Rules.Available(story, pageMet, World(story, 6, "trickster.ever", "eritrice.committed", "sacrifice", "ending.wound_closed")),
+            "The romance pages do not follow trickster.commander_back.");
+        // INT: a returned Nenio reacts; a dissolved one never does.
+        foreach (var r in reactions.Where(r => r.Owner == "Nenio"))
+            check(r.ForbidOverrides.TryGetValue("nenio.dead", out var o1) && o1 == "nenio.trickster.returned"
+                  && r.ForbidOverrides.TryGetValue("nenio.sent_away", out var o2) && o2 == "nenio.trickster.returned"
+                  && !r.ForbidOverrides.ContainsKey("nenio.dissolved"),
+                "A Nenio reaction ignores her return: " + r.Id);
+        var nenioMotion = S(P + "react.nenio_motion");
+        var nenioBack = World(story, 3, "trickster.ever", "eritrice.started", "nenio.dead", "nenio.trickster.returned");
+        check(Rules.Available(story, nenioMotion, nenioBack)
+              && !Rules.Available(story, nenioMotion, World(story, 3, "trickster.ever", "eritrice.started", "nenio.dead")),
+            "A returned Nenio is still barred from reacting.");
+        // BEL: the cuts land at the initiating motion, and the late aye has its own threshold and aftermath.
+        check(night.Nodes.Single(n => n.Id == "cut").Text.Contains("astride")
+              && S(K + "twice_nightly").Nodes.Single(n => n.Id == "carried").Text.Contains("astride")
+              && pageCommit.Nodes.Single(n => n.Id == "aye").Text.Contains("pulled the Commander's shirt open")
+              && pageCommit.Nodes.Single(n => n.Id == "aye").Text.Contains("The minutes of that night"),
+            "An intimate beat fades before the initiating motion.");
+        // Sol r2. CAN: the sacrifice recollection waits for the native key proposal; a living visit to Nirvana is possible.
+        var standing = S(M + "a_standing_item");
+        check(Choice(standing, "start", 0).Requires.Contains("eritrice.proposed_key") && Choice(standing, "start", 3).Forbids.Contains("eritrice.proposed_key")
+              && Choice(standing, "start", 3).Next == "honest_early" && !standing.Nodes.Single(n => n.Id == "honest_early").Text.Contains("sacrifice")
+              && !S(K + "where_the_chair_goes_home").Nodes.Any(n => n.Text.Contains("Mortals do not visit Nirvana")),
+            "A standing item recalls the key proposal before it happened, or Nirvana is closed to the living.");
+        // INT: only a Commander caught lying is accused of the six voices; the owed vote is cast on the page.
+        check(Choice(quill, "held", 0).Requires.Contains(P + "cost.caught_lying") && Choice(quill, "held", 2).Forbids.Contains(P + "cost.caught_lying")
+              && !quill.Nodes.Single(n => n.Id == "hand_honest").Text.Contains("six people")
+              && S(M + "at_worst").Nodes.Single(n => n.Id == "used").Text.Contains("\"Aye\""),
+            "The quill accuses an honest Commander, or the owed vote is never cast.");
+        // BEL: the late surety is the sealed truth, and the late aye has its morning.
+        check(!late.Nodes.Any(n => n.Text.Contains("money behind it")) && pageCommit.Nodes.Single(n => n.Id == "aye").Text.Contains("In the morning"),
+            "The late motion recalls a money surety, or the late aye has no morning.");
+        // Sol r2. CAN: the Council's age is a century; TRK: the point of order only for a Commander who heard her threat.
+        check(!S(M + "a_narrow_outlook").Nodes.Any(n => n.Text.Contains("three hundred")), "The Council's age is invented.");
+        check(story.SeenCues["eritrice.threatened_by_force"].SequenceEqual(new[] { "b138a1a41f4128e43822bb8f3bdc1b4c" })
+              && Choice(tabled, "stranger", 0).Requires.Contains("eritrice.threatened_by_force")
+              && Choice(tabled, "stranger", 1).Forbids.Contains("eritrice.threatened_by_force") && Choice(tabled, "lover", 1).Next == "ruling_betrayal",
+            "The point of order cites a threat the Commander never heard.");
+        var alliedNoThreat = World(story, 5, "trickster", "trickster.ever", "council.fought_nocta_allied", "eritrice.lost_at_council.latched");
+        check(Program.Walk(tabled, alliedNoThreat).Any(r => r.Has(P + "returned") && r.Has(P + "cost.apologised")),
+            "The allied betrayal has no priced reconciliation.");
+        // Sol r3. CAN: the late surety is her condition for this petition, not Council law; the Lexicon's wound waits for the key
+        // proposal; Socothbenoth flirts only while he attends. BEL/COX: no lovers asserted as fact; a sole partner is believed.
+        check(!late.Nodes.Any(n => n.Text.Contains("rules, which she wrote")), "The late surety cites an invented Council rule.");
+        var clock = S(K + "the_mortal_clock");
+        check(Choice(clock, "start", 0).Requires.Contains("eritrice.proposed_key") && Choice(clock, "start", 3).Next == "smaller_early"
+              && !clock.Nodes.Single(n => n.Id == "smaller_early").Text.Contains("Lexicon"), "The mortal clock recalls the key before it is proposed.");
+        var eyes = S(K + "his_eyes");
+        check(eyes.Forbids.Contains("socot.gone") && eyes.Forbids.Contains("council.walked_out"), "A departed Socothbenoth still flirts at the session.");
+        var accurate = S(K + "accurate_minutes");
+        check(!accurate.Nodes.Any(n => n.Text.Contains("I know there are others")) && accurate.Nodes.Single(n => n.Id == "lie").Choices.Any(c => c.Next == "only")
+              && !Choice(accurate, "start", 2).Text.Contains("[Lie]"), "Other lovers are asserted as fact, or a sole partner cannot say so.");
+        check(!S(K + "twice_nightly").Nodes.Any(n => n.Text.Contains("never counted to three")), "The countdown is an unprecedented event again.");
+        // BEL: the motion to expel is resolved for each approach.
+        // Sol r4 INT: the session that unlocks the private debate is any of the three minuted sessions (spec binding).
+        check(story.SeenCues["council.session_minuted"].Length == 3 && story.SeenCues["council.session_minuted"].Contains("fd991da9cb8bb4a4f9576adbf51de6fd"),
+            "The private debate waits on one optional cue.");
+
+        var voted = S(K + "the_motion_to_expel_voted");
+        foreach (var flag in new[] { K + "alichino_handled", K + "argued_own_case", K + "chair_recused" })
+            check(Rules.Available(story, voted, World(story, 3, "trickster.ever", "eritrice.started", P + "minutes_read", M + "point_one", K + "a_motion_to_expel", flag)),
+                "The motion to expel is never resolved: " + flag);
+        // Sol verify sweep (r5): the book line only if she said it; the Crossroads paragraphs only where the Crossroads was made;
+        // the grudge and Alichino's absence at sessions only while the Council convenes.
+        check(S(K + "a_certain_book").Requires.Contains("eritrice.certain_book_said")
+              && story.SeenCues["eritrice.certain_book_said"].Contains("07c13d2efd8a90b45824a79873b62108"), "The certain book is recalled unheard.");
+        var metParas = pageMet.Nodes[0].Paragraphs;
+        check(metParas.Where(p => p.Requires.Contains(K + "crossroads_drafted") && p.Text.Contains("Crossroads of Worlds")).All(p => p.AnyGroups.Any(g => g.Contains("ending.trickster_full")))
+              && metParas.Where(p => p.Text.Contains("every session the Commander attended")).All(p => p.Requires.Contains("council.epilogue_convened"))
+              && metParas.Where(p => p.Text.Contains("not seen at the Council for a decade")).All(p => p.Requires.Contains("council.epilogue_convened")),
+            "An epilogue paragraph assumes a Crossroads or a convening Council that the ending did not produce.");
         Console.WriteLine("PASS: Eritrice Trickster (Trk_Eritrice_*): motion, minutes, second and third readings, the sealed hall's letters, the tabled grudge and the standing debate.");
     }
 }

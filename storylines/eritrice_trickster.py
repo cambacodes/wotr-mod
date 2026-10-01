@@ -48,6 +48,7 @@ GRUDGE = P + "cost.grudge"
 ESSENCE = P + "cost.essence_taken"
 APOLOGISED = P + "cost.apologised"
 ON_AGENDA = P + "cost.grudge_on_agenda"
+THREAT = "eritrice.threatened_by_force"          # SeenCues Council_5-2/Cue_0035 (bound in eritrice_council): her threat, heard
 LATE_COMMITTED = P + "late_committed"
 # The standing debate's last pre-commit point (eritrice_minutes): the second reading is heard only after it.
 DEBATED = "eritrice.minutes.quill"
@@ -122,7 +123,7 @@ SCENES.append(scene(P + "council.motion", "Motion carried", "Eritrice", 3, '"Mad
 # --- The payoff: the private debate, once a Council session has been minuted. ------------------------------------
 
 SCENES.append(scene(P + "council.private_debate", "The minutes stand", "Eritrice", 3, '"About my motion, Madam Chair."', [
-    nar("start", '''{n}She unrolls the scroll and turns it so you can read it. Among the Council's business, in her own upright hand: "Motion from the floor, the Commander: that the chair is in dire need of a private debate. Declared carried by the mover, acting as chair without appointment. The chair did not object in time." The censure beneath it has been read into the Council's record since, and there is a small neat tick beside it that is not in her hand.{/n}''',
+    nar("start", '''{n}She unrolls the scroll and turns it so you can read it. Among the Council's business, in her own upright hand: "Motion from the floor, the Commander: that the chair is in dire need of a private debate. Declared carried by the mover, acting as chair without appointment. The chair did not object in time." The censure beneath it is entered in full, and there is a small neat tick beside it that is not in her hand.{/n}''',
         c("Continue", "record")),
     e("record", '''"Alichino's tick. He reads everything that might one day be useful." {n}Her claws tap the scroll, once for each word.{/n}
 "I have read that line every night since, asking myself why I did not object. My element is truth, the truth that only honest debate can reach, and the truth is the one I gave you: I wanted to hear the debate."
@@ -155,7 +156,7 @@ hall(P + "council.second_reading", "The second reading", '"You called for a seco
 {n}She does not look up from the blank line.{/n} "The chair will hear the case for. Then the chair will vote. The chair votes last, and the chair is not bound to agree with the floor. Proceed."''', *READING),
     e("start_lied", '''"The chair calls a second reading. The minutes of the first also record that you lied to carry it."
 {n}She reads the line aloud, flatly, the way she reads Alichino's apologies for absence.{/n} "'The Commander attempted to carry a vote by acclamation of the Commander.' The case for will have to overcome that. Proceed."''', *READING),
-    e("case", '''{n}She listens without writing, which you have never seen her do. When you finish, she is quiet. Her claws rest on the blank line and do not tap.{/n}
+    e("case", '''{n}She listens with the quill laid flat beside the scroll, as if she had put down a weapon. When you finish, she is quiet. Her claws rest on the blank line and do not tap.{/n}
 "The truth shines through the endless lies. I said that to you the day we met. I did not expect to be the one it shone on."''',
       c('[Call the question] "Then call the question."', "carried", flags=(COMMITTED,)),
       c('[Ask her to vote for you] "You decide. For both of us."', "refused")),
@@ -210,12 +211,12 @@ letter(P + "council.minutes_letter", "The minutes by courier", [
 # --- 5.3 Allied, hall lost, no primer: a motion filed with surety (late fallback). -------------------------------
 
 letter(P + "council.late_motion", "A motion filed with surety", [
-    nar("start", '''{n}The Council's last circular reaches Drezen: its hall is sealed, and "any business still pending before this body may be filed with the chair in writing, with surety, for the record". You have no motion pending. You write one now. The Council's rules, which she wrote, say what surety a member posts: "a thing of the mover's own, forfeit to the chair if the motion is frivolous." Money is not the mover's own. It is the crusade's.{/n}
+    nar("start", '''{n}The Council's last circular reaches Drezen: its hall is sealed, and "any business still pending before this body may be filed with the chair in writing, with surety, for the record". You have no motion pending. You write one now. Under it, in her own upright hand, plainly added for this one occasion: the chair will hear a late motion only if the mover stakes "a thing of the mover's own, forfeit to the chair if the motion is frivolous." Money is not the mover's own. It is the crusade's.{/n}
 {n}So you write out the one true thing you have never told anyone, all of it, seal it under your own wax, and put it in with the motion.{/n}''',
         c('[File the motion, with the sealed truth as surety] "I move that the chair is in dire need of a private debate. Surety enclosed."', "reply",
           flags=(SEALED,)),
         c("Let the Council lie.", abort=True)),
-    e("reply", '''{n}The reply comes back within the week, in an upright hand.{/n} "A motion filed after adjournment, with money behind it. Irregular. Also, the chair notes, sincere: nobody stakes a secret on a joke. The motion is admitted, and the surety is held, unopened. The chair has not decided whether she will ever break the seal. The debate will be held by correspondence. The chair notes the delay."''',
+    e("reply", '''{n}The reply comes back within the week, in an upright hand.{/n} "A motion filed after adjournment, with a sealed secret behind it. Irregular. Also, the chair notes, sincere: nobody stakes a secret on a joke. The motion is admitted, and the surety is held, unopened. The chair has not decided whether she will ever break the seal. The debate will be held by correspondence. The chair notes the delay."''',
       c('[Begin the debate by post] "Received. My opening argument follows."', "postscript",
         flags=(PRIMED, STARTED, MINUTES_READ, LATE), forbids=("chadali.lost_at_council",)),
       c('[Begin the debate by post] "Received. My opening argument follows."',
@@ -230,13 +231,24 @@ letter(P + "fought.tabled", "Point of order", [
     nar("start", '''{n}The letter is three lines long, sealed in amethyst wax pressed so hard the lion's head has cracked.{/n}''',
         c("Continue", "lover", requires=(COMMITTED,)),
         c("Continue", "stranger", forbids=(COMMITTED,))),
-    e("stranger", '''"You struck the chair of this Council unconscious and let its members be bled of their essence. The chair has not forgotten that it was the chair who threatened it first. The chair is not interested in your apology unless it is on the record. State your business."''',
+    e("stranger", '''"You struck the chair of this Council unconscious and let its members be bled of their essence. The chair is not interested in your apology unless it is on the record. State your business."''',
       c('[Raise a point of order] "Point of order: \'contribute your essence or I\'ll take it by force\' was the chair\'s own motion. I seconded it. I move we table the grudge."',
-        "ruling", mythic="Trickster", alignment=("Chaotic", 1))),
+        "ruling", mythic="Trickster", alignment=("Chaotic", 1), requires=(THREAT,)),
+      c('[Answer her plainly] "No point of order. I chose the Lady in Shadow over your Council, and I would choose it again. I am asking what it costs."',
+        "ruling_betrayal", forbids=(THREAT,))),
     e("lover", '''"You struck the chair of this Council unconscious. You, who had her vote. The chair woke on the floor of her own hall with her essence gone and your name in her mouth, and she has not decided which was worse."
-"The chair has not forgotten that it was the chair who threatened you first. The chair is not interested in your apology unless it is on the record. State your business."''',
+"The chair is not interested in your apology unless it is on the record. State your business."''',
       c('[Raise a point of order] "Point of order: \'contribute your essence or I\'ll take it by force\' was the chair\'s own motion. I seconded it. I move we table the grudge."',
-        "ruling", mythic="Trickster", alignment=("Chaotic", 1))),
+        "ruling", mythic="Trickster", alignment=("Chaotic", 1), requires=(THREAT,)),
+      c('[Answer her plainly] "No point of order. I chose the Lady in Shadow over your Council, and I would choose it again. I am asking what it costs."',
+        "ruling_betrayal", forbids=(THREAT,))),
+    e("ruling_betrayal", '''{n}The answer is longer, and written with a steadier hand.{/n} "No point of order. The chair notes it, because it is the first letter in this correspondence that has not tried to be clever. You chose the Lady in Shadow over this Council and would again. That is a true statement, and the chair does not strike true statements."
+"It is not an apology. It is, however, admissible. The chair rules that the grudge may be tabled on the same terms as any other: a formal apology, entered in the minutes and read aloud at a special session the chair will convene for that one purpose, or the grudge on every agenda for as long as there is an agenda, read aloud whenever you are present. Choose."''',
+      c('[Make the formal apology before the reconvened Council] "Convene your session. I\'ll say it."', crusade=("Favors", -200),
+        flags=(RETURNED, GRUDGE, ESSENCE, APOLOGISED)),
+      c('[Let the grudge stand on every agenda] "Read it every time. I\'ll be there to hear it."',
+        flags=(RETURNED, GRUDGE, ESSENCE, ON_AGENDA)),
+      c('[Move to strike the grudge] "Then I move the grudge be struck from the record."', "struck")),
     e("ruling", '''{n}The answer is longer, and written with a steadier hand.{/n} "Point of order noted. It is, regrettably, correct: 'contribute your essence or I'll take it by force' was the chair's own motion. The chair rules that the grudge may be tabled. Tabled, Commander, not withdrawn."
 "The chair imposes terms. Either you make a formal apology, entered in the minutes and read aloud at a special session the chair will convene for that one purpose, or the grudge stands on every agenda for as long as there is an agenda, and the chair reads it aloud whenever you are present. Choose."''',
       c('[Make the formal apology before the reconvened Council] "Convene your session. I\'ll say it."', crusade=("Favors", -200),
@@ -265,34 +277,38 @@ SCENES.append(scene(P + "epilogue.commit", "", "EritriceEpilogue", 6, "", [
             p("{n}Every letter opened with the grudge, read into the record in full.{/n}", requires=(ON_AGENDA,)),
             p("{n}The apology the Commander had made before the reconvened Council was bound into the front of her scroll, where she could find it quickly.{/n}", requires=(APOLOGISED,)),
         )),
-    nar("aye", '''{n}The reply came back within the week: "The chair votes aye. Minuted." Eritrice arrived in person three days later, with the scroll, to make sure the minutes were accurate, and did not leave for a long time.{/n}'''),
+    nar("aye", '''{n}The reply came back within the week: "The chair votes aye. Minuted." Eritrice arrived in person three days later, with the scroll, to make sure the minutes were accurate. She read all forty letters aloud in the Commander's study, standing, as if to a full session, and conceded nothing in any of them. At the forty-first she stopped, rolled the scroll shut and set it at the far end of the desk, out of harm's way. Then she unpinned her robe at the shoulder and let it fall, pushed the Commander back against the desk with one broad hand, and climbed after, claws sheathed only just, a growl rolling in her chest. "The floor has voted," she said against the Commander's mouth, and pulled the Commander's shirt open down the front.{/n}
+{n}The minutes of that night are one word long: "Carried." In the morning she read them back to the Commander over breakfast, in full, as the rules require, and then amended them in her own upright hand: "The chair moves that the floor attend in person hereafter, and not by post." It was carried. She did not wait for a second, and she did not leave for a long time, and when she did, it was only to fetch more ink.{/n}'''),
     nar("nay", '''{n}The chair minuted the motion as lost, by one vote, and did not move it again. She did keep writing. The correspondence ran on for the rest of the Commander's life, point by point, the only debate either of them ever looked forward to; and it never once touched the question that had been answered.{/n}'''),
     nar("silence", '''{n}The forty-first letter was never answered. In the minutes Eritrice kept for the rest of her long life it stands as the only unanswered item, carried from agenda to agenda, marked neither aye nor nay: "Awaiting the floor."{/n}'''),
 ],
     requires=("trickster.ever",), forbids=(COMMITTED, CLOSED, DECLINED, "council.fought", "council.fought_nocta_allied", "sacrifice"),
-    RequiresAnyGroups=[[STARTED, RETURNED]], ForbidOverrides={"council.fought": RETURNED, "council.fought_nocta_allied": RETURNED, "sacrifice": "trickster.cheated_death"}, **EP))
+    RequiresAnyGroups=[[STARTED, RETURNED]], ForbidOverrides={"council.fought": RETURNED, "council.fought_nocta_allied": RETURNED, "sacrifice": "trickster.commander_back"}, **EP))
 
 SCENES.append(scene(P + "epilogue.declined", "", "EritriceEpilogue", 6, "", [
     nar("page", '''{n}The motion was never moved a third time. In the minutes Eritrice kept for the rest of her long life there is a standing item, carried over from session to session and never called: "Motion: that the chair and the Commander be..." The rest of the line is blank.{/n}''')],
     requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED, "council.fought", "council.fought_nocta_allied"), ForbidOverrides={"council.fought": RETURNED, "council.fought_nocta_allied": RETURNED}, **EP))
 
 SCENES.append(scene(P + "epilogue.we_did_meet", "", "EritriceEpilogue", 6, "", [
-    nar("page", '''{n}The Council's members pretended ever after that they had never met. Its chair kept minutes anyway. The later volumes are much concerned with a standing debate between the chair and a certain Commander, conducted point by point, and every entry ends the same way: "Carried."{/n}''',
-        c('[Move that the record be corrected] "I move that the Council did, in fact, meet. Twice nightly. All in favour?"'),
+    nar("page", '''{n}Whatever became of the Council, its chair kept minutes. The later volumes are much concerned with a standing debate between the chair and a certain Commander, conducted point by point, and every entry ends the same way: "Carried."{/n}''',
+        c('[Move that the record be amended] "I move that the minutes show the chair and the Commander met. Twice nightly. All in favour?"'),
         paragraphs=(
-            p("{n}She never admitted in public that the Council had met, which was the only lie anyone ever caught her telling. The minutes, which were not public, admitted everything.{/n}", requires=("council.epilogue_ceased",)),
+            p("{n}The Council's members pretended ever after that they had never met. She never admitted in public that the Council had met, which was the only lie anyone ever caught her telling. The minutes, which were not public, admitted everything.{/n}", requires=("council.epilogue_ceased",)),
             p("{n}At the Council's victory feast the members could not shake the feeling they had forgotten to invite someone. The chair had not forgotten. The chair had simply declined to share.{/n}", requires=("council.epilogue_feast",)),
             p("{n}The Council went on convening, and went on arguing about the Worldwound. Its chair adjourned every session on time, which the members found suspicious, and went home early, which they found more suspicious still.{/n}", requires=("council.epilogue_convened",)),
-            p("{n}The grudge stayed on the agenda. She read it aloud at every session the Commander attended, and then, in the minutes, noted the Commander's reply. The replies grew shorter over the years, and warmer, and in the last volumes they are only one word long.{/n}", requires=(ON_AGENDA,)),
+            p("{n}The grudge stayed on the agenda. She read it aloud at every session the Commander attended, and then, in the minutes, noted the Commander's reply. The replies grew shorter over the years, and warmer, and in the last volumes they are only one word long.{/n}", requires=(ON_AGENDA, "council.epilogue_convened")),
+            p("{n}The grudge stayed on her private agenda, though the Council no longer met. She read it aloud at the head of every letter and every private sitting, and noted the Commander's reply. The replies grew shorter over the years, and warmer, and in the last volumes they are only one word long.{/n}", requires=(ON_AGENDA,), forbids=("council.epilogue_convened",)),
             p("{n}She never quoted a word of the case against that the Commander had made at the third reading. But in later years, whenever the Commander lied to anyone at all in her hearing, she went quiet at the table, and waited, and the Commander would remember the third reading, and correct it.{/n}", requires=(ON_RECORD,)),
         ))],
     requires=("trickster.ever", COMMITTED), forbids=(CLOSED, DECLINED, "council.fought", "council.fought_nocta_allied", "sacrifice"),
-    ForbidOverrides={DECLINED: COMMITTED, "council.fought": RETURNED, "council.fought_nocta_allied": RETURNED, "sacrifice": "trickster.cheated_death"}, **EP))
+    ForbidOverrides={DECLINED: COMMITTED, "council.fought": RETURNED, "council.fought_nocta_allied": RETURNED, "sacrifice": "trickster.commander_back"}, **EP))
 
 
 # --- Reactions (exactly two reactors: Chadali and Nenio, each behind its reactor's availability guard). -----------
 
 NENIO_GUARD = ("nenio.dead", "nenio.killed_by_commander", "nenio.sent_away", "nenio.kicked_out", "nenio.dissolved")
+# Her own route's return (nenio.trickster.returned) resolves every loss but the dissolution, as her UnavailableOverrides do.
+NENIO_BACK = {flag: "nenio.trickster.returned" for flag in NENIO_GUARD if flag != "nenio.dissolved"}
 
 SCENES.append(reaction("Chadali", P + "react.chadali_motion", (PRIMED,),
     '''"Can I second it? I want to second it! Is it too late?" {n}Chadali cranes over the table to read the scroll, and her whole face lights up.{/n}
@@ -301,15 +317,15 @@ SCENES.append(reaction("Chadali", P + "react.chadali_motion", (PRIMED,),
     entry='"Eritrice passed my motion."', portrait="Chadali"))
 
 SCENES.append(reaction("Nenio", P + "react.nenio_motion", (STARTED,),
-    '''"I have measured the chair. Sessions chaired: all of them. Votes carried: all of them. Votes contested before you: none. Conclusion: she is not a chairwoman, she is a weather system, and you have changed the weather."
+    '''"I have measured the chair. Sessions chaired: all of them. Votes contested: several, including the Council's own name, which was carried or was a tie depending on whom you ask. Times she yielded the chair before you: none. Conclusion: she is not a chairwoman, she is a weather system, and you have changed the weather."
 {n}Nenio holds out a ruler.{/n} "I require one whisker. For scale."''',
-    answer_list=NENIO_HUB, forbids=NENIO_GUARD, chapter=3, last=5, Chapters=[3, 5],
+    answer_list=NENIO_HUB, forbids=NENIO_GUARD, chapter=3, last=5, Chapters=[3, 5], ForbidOverrides=NENIO_BACK,
     entry='"About Eritrice..."', portrait="Nenio"))
 
 SCENES.append(reaction("Nenio", P + "react.nenio_tabled", (RETURNED,),
     '''"How much essence does a lion-headed empyreal lord yield? Does it regrow? At what rate?" {n}Nenio flips a page.{/n}
 "Put me on her agenda. Item seven: measurements. Item eight: whether a grudge that is read aloud every session gets heavier or lighter. I have a hypothesis. It is 'heavier'."''',
-    answer_list=NENIO_HUB, forbids=NENIO_GUARD, chapter=5, last=5, Chapters=[5],
+    answer_list=NENIO_HUB, forbids=NENIO_GUARD, chapter=5, last=5, Chapters=[5], ForbidOverrides=NENIO_BACK,
     entry='"Eritrice tabled her grudge."', portrait="Nenio"))
 
 

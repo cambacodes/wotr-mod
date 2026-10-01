@@ -79,7 +79,7 @@ BINDINGS = {
     'council.fought': ('Etudes', 'b80a81e97e26167489c439caf34888f8', 'FightAgainstCouncil'),
     'council.fought_nocta_allied': ('Etudes', 'f4004d2687004c646bbe3a047d15f78f', 'FightAgainstCouncilNoctaAllied'),
     'council.orange_called': ('SeenCues', '53e715f39ea70d249ae916610e5bf340', "Council_5-1/Cue_0020 'An orange! An orange! I knew it!' - reached ONLY by the Commander's "),
-    'council.session_minuted': ('SeenCues', '55eecf755f351b147a265f40d1db09a5', "any of: Council_3/Cue_0040 'Passed unanimously.' 55eecf755f351b147a265f40d1db09a5; Council"),
+    'council.session_minuted': ('SeenCues', ['55eecf755f351b147a265f40d1db09a5', '979aec11b61ec9949a5c0bdfa2b552a3', 'fd991da9cb8bb4a4f9576adbf51de6fd'], "any of: Council_3/Cue_0040 'Passed unanimously.' 55eecf755f351b147a265f40d1db09a5; Council"),
     'council.walked_out': ('SeenCues', '3108154bf2ca3414e83ca4db4eb790da', 'Council_5-2/Cue_0040 (Socothbenoth leaves; SocotGone; no fight, hall stays open)'),
     'daeran.dead': ('Etudes', '4bb966e7df502394cba4b650a54ce92f', 'DaeranNotInParty_Dead'),
     'daeran.kicked_out': ('Etudes', '3944d299c18b7174bb2d6820aa5dc336', 'DaeranNotInParty_KickedOut'),
