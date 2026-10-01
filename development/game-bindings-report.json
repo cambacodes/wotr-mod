@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4701,
-  "unique_targets": 1026,
+  "binding_uses": 4721,
+  "unique_targets": 1039,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -290,6 +290,10 @@
       "path": "Weapons/Items/UniqueUpgradableArtifacts/Yaniel_Longsword6HolyAvenger.jbp",
       "type": "BlueprintItemWeapon"
     },
+    "61fcf2a352daa394ebae399b1348ba62": {
+      "path": "World/Areas/Act_0_Prologue/Prologue_Neathholm/Prologue_Neathholm.jbp",
+      "type": "BlueprintArea"
+    },
     "31bab5549f7ea384186159a238360c8d": {
       "path": "World/Areas/Act_3_DemonsHerecy/AzataIsland/AzataIsland.jbp",
       "type": "BlueprintArea"
@@ -454,6 +458,34 @@
       "path": "World/Crusade/RankUps/Logistics/Logistics_Officer/Answer_0008.jbp",
       "type": "BlueprintAnswer"
     },
+    "da6ca50574b6c714f9166f37b64b7b59": {
+      "path": "World/Dialogs/c0/CavesUnderKenabres/MeetSeelahAnevia/AnswersList_0018.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "deb9827da749a5246b0263578bd68560": {
+      "path": "World/Dialogs/c0/CavesUnderKenabres/MeetSeelahAnevia/Cue_0013.jbp",
+      "type": "BlueprintCue"
+    },
+    "843c7cf25f27714439e8dbb6cab06074": {
+      "path": "World/Dialogs/c0/CavesUnderKenabres/MeetSeelahAnevia/Cue_0017.jbp",
+      "type": "BlueprintCue"
+    },
+    "d94978ee21c6af642ad95578c3e2f8ea": {
+      "path": "World/Dialogs/c0/CavesUnderKenabres/MeetSeelahAnevia/Cue_0054.jbp",
+      "type": "BlueprintCue"
+    },
+    "65395d8277d3b9b4f82f068616de8a56": {
+      "path": "World/Dialogs/c0/CavesUnderKenabres/NeathholmVillage/HorgusAnevia/AnswersList_0006.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "3103585f1550def4c98fbc731ccb3ebc": {
+      "path": "World/Dialogs/c0/CavesUnderKenabres/NeathholmVillage/HorgusAnevia/Cue_0032.jbp",
+      "type": "BlueprintCue"
+    },
+    "4c756b62bc1fcda42b8122f215a9ddd4": {
+      "path": "World/Dialogs/c1/DefendersHeart/AfterAttackIrabeth/AnswersList_0006.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "91a0b72bdcd5809409760cb25ad7d8c3": {
       "path": "World/Dialogs/c1/GreyGarrison_ChapterEnd/Wardstone_BookEvent/Answer_0021.jbp",
       "type": "BlueprintAnswer"
@@ -485,6 +517,10 @@
     "fc57e59b63872994089e92771068f3ad": {
       "path": "World/Dialogs/c2_vs/DrezenSiege/Nurah_After_Battle/Cue_0034.jbp",
       "type": "BlueprintCue"
+    },
+    "b6f914354ceddbf4db19747f12ea4f0d": {
+      "path": "World/Dialogs/c2_vs/LostChapel/IrabethRegill/AnswersList_0019.jbp",
+      "type": "BlueprintAnswersList"
     },
     "dbf6695999d744747aeb2d4f20b21b50": {
       "path": "World/Dialogs/c3/AreeluLaboratory/SoulJar/Answer_0006.jbp",
@@ -2110,6 +2146,14 @@
       "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/AnswersList_0046.jbp",
       "type": "BlueprintAnswersList"
     },
+    "73260c45aa315c0419fc625f6fcb957d": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/AnswersList_0118.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "829801b14a4b2b344a60ba43cb60821a": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/Answer_0119.jbp",
+      "type": "BlueprintAnswer"
+    },
     "3a2c9f56a58b5c1478746c3ebc456986": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/Cue_0043.jbp",
       "type": "BlueprintCue"
@@ -2349,6 +2393,10 @@
     "5db28e499fd812848b92d6ac7b26e234": {
       "path": "World/Dialogs/Companions/CompanionQuests/Nenio/Q1MoreThanNothing/FoxReveal/Cue_0031.jbp",
       "type": "BlueprintCue"
+    },
+    "f1e7b7a6740caaa44a3762033c5f0a5a": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q1_LittleTroubles/Ch1_SeelahMeetsFriends/AnswersList_0007.jbp",
+      "type": "BlueprintAnswersList"
     },
     "2100f41ae724734418dc74b15719543e": {
       "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q1_LittleTroubles/KnightCamp/Cue_0011.jbp",
@@ -2772,6 +2820,10 @@
     },
     "b9cbdf8a2f0545f694366b87ae7d7d44": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/KTCs_AfterCoronation.jbp",
+      "type": "BlueprintEtude"
+    },
+    "ec82016fa7508e94aae33cd8be84c8b2": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/0Prologue/Neathholm/FreeTime.jbp",
       "type": "BlueprintEtude"
     },
     "285ae03094c379045b7cb3106e3f8abf": {

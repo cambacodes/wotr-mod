@@ -76,6 +76,7 @@ from storylines import melazmera_trickster, melazmera_hoard
 from storylines import yaniel_trickster, yaniel_walls  # noqa: F401 (yaniel_walls appends to yaniel_trickster.SCENES)
 from storylines import wenduag_trickster, wenduag_cairn
 from storylines import iomedae_trickster, iomedae_banner
+from storylines import pacing_pp1
 from storylines import rrt_ui
 from storylines import rrt_portraits
 from storylines import scene_kinds
@@ -573,6 +574,11 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(iomedae_trickster.SCENES))
     payload["Scenes"].extend(copy.deepcopy(iomedae_banner.SCENES))
     iomedae_trickster.integrate(payload)
+    # Pacing pass PP1 (13-PACING-PASS): Anevia's, Irabeth's and Seelah's early beats and Seelah's Chapter 4 night, path-
+    # neutral; their consequences are appended to the reading scenes (a_cup, i_hands, i_respite, seelah.wager, seelah.souls).
+    if all(rel in payload["Relationships"] for rel in ("anevia", "irabeth", "seelah")):
+        payload["Scenes"].extend(copy.deepcopy(pacing_pp1.SCENES))
+        pacing_pp1.integrate(payload)
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
     iomedae_trickster.integrate_joint(payload)     # ledger row 6: the Appointment empties the flask (after Last Call's pages)

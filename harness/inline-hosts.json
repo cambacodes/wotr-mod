@@ -4,14 +4,14 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1068,
-  "resolved": 1068,
-  "inlineOnlyScenes": 276,
-  "inlineOnlyResolved": 276,
-  "answerListScenesWithoutContact": 641,
-  "answerListScenesWithoutContactResolved": 641,
-  "lists": 116,
-  "listsWithReachableHost": 115
+  "entryTargetScenes": 1074,
+  "resolved": 1074,
+  "inlineOnlyScenes": 282,
+  "inlineOnlyResolved": 282,
+  "answerListScenesWithoutContact": 647,
+  "answerListScenesWithoutContactResolved": 647,
+  "lists": 122,
+  "listsWithReachableHost": 121
  },
  "scenes": {
   "a_crossing": {
@@ -715,6 +715,25 @@
     "dialogName": "Dialogue_AneviaMain",
     "cue": "Cue_0001",
     "clicks": 0
+   }
+  },
+  "anevia.early.watch": {
+   "kind": "return-cue",
+   "lists": [
+    "65395d8277d3b9b4f82f068616de8a56"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "65395d8277d3b9b4f82f068616de8a56": "RRT_entry.anevia.early.watch"
+   },
+   "resolved": true,
+   "host": {
+    "list": "65395d8277d3b9b4f82f068616de8a56",
+    "dialog": "10970595ad8ef054ab1664cc8998bee3",
+    "dialogName": "HorgusAnevia_Dialogue",
+    "cue": "Cue_0005",
+    "clicks": 1
    }
   },
   "anevia.her_own_answer": {
@@ -12470,6 +12489,44 @@
     "clicks": 0
    }
   },
+  "irabeth.early.hands": {
+   "kind": "return-to-list",
+   "lists": [
+    "4c756b62bc1fcda42b8122f215a9ddd4"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "4c756b62bc1fcda42b8122f215a9ddd4": "RRT_entry.irabeth.early.hands.4c756b62bc1fcda42b8122f215a9ddd4"
+   },
+   "resolved": true,
+   "host": {
+    "list": "4c756b62bc1fcda42b8122f215a9ddd4",
+    "dialog": "1b938dbb1221a8b419922079defcab65",
+    "dialogName": "AfterAttackIrabeth_Dialogue",
+    "cue": "Cue_0004",
+    "clicks": 1
+   }
+  },
+  "irabeth.early.hook": {
+   "kind": "return-to-list",
+   "lists": [
+    "b6f914354ceddbf4db19747f12ea4f0d"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "b6f914354ceddbf4db19747f12ea4f0d": "RRT_entry.irabeth.early.hook.b6f914354ceddbf4db19747f12ea4f0d"
+   },
+   "resolved": true,
+   "host": {
+    "list": "b6f914354ceddbf4db19747f12ea4f0d",
+    "dialog": "324521dcea04b3e408c99e5de6d2ce48",
+    "dialogName": "IrabethRegill_Dialogue",
+    "cue": "Cue_0029",
+    "clicks": 8
+   }
+  },
   "irabeth.lastcall.call": {
    "kind": "return-to-list",
    "lists": [
@@ -16834,6 +16891,25 @@
     "clicks": 0
    }
   },
+  "seelah.abyss.night": {
+   "kind": "return-to-list",
+   "lists": [
+    "73260c45aa315c0419fc625f6fcb957d"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "73260c45aa315c0419fc625f6fcb957d": "RRT_entry.seelah.abyss.night.73260c45aa315c0419fc625f6fcb957d"
+   },
+   "resolved": true,
+   "host": {
+    "list": "73260c45aa315c0419fc625f6fcb957d",
+    "dialog": "ed7b39d0716d25c439f2b93c409da883",
+    "dialogName": "Seelah_Main_dialog",
+    "cue": "Cue_0117",
+    "clicks": 0
+   }
+  },
   "seelah.boots": {
    "kind": "dialog",
    "lists": [
@@ -16908,6 +16984,44 @@
     "dialogName": "Seelah_Main_dialog",
     "cue": "Cue_0002",
     "clicks": 0
+   }
+  },
+  "seelah.early.drill": {
+   "kind": "return-to-list",
+   "lists": [
+    "f1e7b7a6740caaa44a3762033c5f0a5a"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "f1e7b7a6740caaa44a3762033c5f0a5a": "RRT_entry.seelah.early.drill.f1e7b7a6740caaa44a3762033c5f0a5a"
+   },
+   "resolved": true,
+   "host": {
+    "list": "f1e7b7a6740caaa44a3762033c5f0a5a",
+    "dialog": "0cfe2725333dad944b2113413520f241",
+    "dialogName": "SeelahMeetsFriends_dialog",
+    "cue": "Cue_0006",
+    "clicks": 2
+   }
+  },
+  "seelah.early.pack": {
+   "kind": "return-cue",
+   "lists": [
+    "da6ca50574b6c714f9166f37b64b7b59"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "da6ca50574b6c714f9166f37b64b7b59": "RRT_entry.seelah.early.pack"
+   },
+   "resolved": true,
+   "host": {
+    "list": "da6ca50574b6c714f9166f37b64b7b59",
+    "dialog": "2c5241474f3e16d40ab3f48e33921bcd",
+    "dialogName": "MeetSeelahAnevia_Dialogue",
+    "cue": "Cue_0017",
+    "clicks": 8
    }
   },
   "seelah.farewell": {
@@ -23834,6 +23948,46 @@
     }
    ]
   },
+  "4c756b62bc1fcda42b8122f215a9ddd4": {
+   "list": "4c756b62bc1fcda42b8122f215a9ddd4",
+   "listName": "AnswersList_0006",
+   "hosts": [
+    {
+     "dialog": "1b938dbb1221a8b419922079defcab65",
+     "dialogName": "AfterAttackIrabeth_Dialogue",
+     "cues": [
+      "5687ef84574ef60408e20d5d53bee099",
+      "94c9fbcd1aeb2f54cb9ad7e9435a6db9",
+      "a8b62fa565d27f54cadcb823ce590795",
+      "16941e463e4d42a49948a0069cdc87b5",
+      "d0421fc2ad1646debb25b9de5e452280",
+      "f8f119e03ed54360b3dd26287e239496"
+     ],
+     "cueNames": [
+      "Cue_0004",
+      "Cue_0016",
+      "Cue_0017",
+      "Cue_0019",
+      "Cue_4",
+      "Cue_6"
+     ],
+     "speaker": "48cc2d6daf65f014781f6ea76c2565bc",
+     "reachable": true,
+     "clicks": 1,
+     "path": [
+      {
+       "at": "Cue_0002",
+       "take": "continue"
+      }
+     ],
+     "answerDist": {
+      "439de3c4b88949eeb3468a1031c481fb": 1,
+      "bb28951495f591441bca5d4cd82fe59d": 1,
+      "f37c450e4b5bd9d4f91f2b4fe8f6006a": 1
+     }
+    }
+   ]
+  },
   "4d978cbd2aa780d46874255282039f3f": {
    "list": "4d978cbd2aa780d46874255282039f3f",
    "listName": "AnswersList_0003",
@@ -24920,6 +25074,55 @@
     }
    ]
   },
+  "65395d8277d3b9b4f82f068616de8a56": {
+   "list": "65395d8277d3b9b4f82f068616de8a56",
+   "listName": "AnswersList_0006",
+   "hosts": [
+    {
+     "dialog": "10970595ad8ef054ab1664cc8998bee3",
+     "dialogName": "HorgusAnevia_Dialogue",
+     "cues": [
+      "b8f381e3ce934664192f2ab5c3f03707",
+      "a94c5691bb3ea794e9dc73c6843cf393",
+      "e035baaff8d3dda4785715d4bbb7f33f",
+      "8c6512c7b8030f344a2deaa25b3519da",
+      "a6d19bbefc2221548a0ed4086f27de9e",
+      "8c28cb31f92f9764b94a45cd16f5f74e",
+      "377de2648a0f24d42864709080f850b9",
+      "691df61c91d5c2243acc42446d4e3c08",
+      "3103585f1550def4c98fbc731ccb3ebc"
+     ],
+     "cueNames": [
+      "Cue_0005",
+      "Cue_0004",
+      "Cue_0011",
+      "Cue_0015",
+      "Cue_0017",
+      "Cue_0022",
+      "Cue_0024",
+      "Cue_0030",
+      "Cue_0032"
+     ],
+     "speaker": "c02e641bf8cf0984fb49604afa224563",
+     "reachable": true,
+     "clicks": 1,
+     "path": [
+      {
+       "at": "Cue_0002",
+       "take": "continue"
+      }
+     ],
+     "answerDist": {
+      "4a5479f838b88c242b4aee2da05b91e3": 3,
+      "a1dcb72e5b021ea4ebc84ab7f6feb11d": 4,
+      "bad76488b65003249812803ec94bddfc": 2,
+      "bae1194bb06a7454cb0f4b519779e2a1": 2,
+      "dc2f463d0cf513141961386cba2ab9ee": 2,
+      "fce0fe8cd8183f7439eefc5483503db8": 1
+     }
+    }
+   ]
+  },
   "66385ad77fa743e4bb1234078dbd804c": {
    "list": "66385ad77fa743e4bb1234078dbd804c",
    "listName": "AnswersList_0003",
@@ -25210,6 +25413,31 @@
       "e5051e07f2c7d734aba726d15e250a44": 6,
       "eb84ef62475a0324aae01bb5758a3deb": 7,
       "fb42776ee410415438b1400b644a0203": 8
+     }
+    }
+   ]
+  },
+  "73260c45aa315c0419fc625f6fcb957d": {
+   "list": "73260c45aa315c0419fc625f6fcb957d",
+   "listName": "AnswersList_0118",
+   "hosts": [
+    {
+     "dialog": "ed7b39d0716d25c439f2b93c409da883",
+     "dialogName": "Seelah_Main_dialog",
+     "cues": [
+      "4cf48800271aa5d43b30aad20ea9a49c",
+      "1b5f5780f8c6f6045907897deebe5b4c"
+     ],
+     "cueNames": [
+      "Cue_0117",
+      "Cue_0123"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "829801b14a4b2b344a60ba43cb60821a": 2
      }
     }
    ]
@@ -26553,6 +26781,77 @@
     }
    ]
   },
+  "b6f914354ceddbf4db19747f12ea4f0d": {
+   "list": "b6f914354ceddbf4db19747f12ea4f0d",
+   "listName": "AnswersList_0019",
+   "hosts": [
+    {
+     "dialog": "324521dcea04b3e408c99e5de6d2ce48",
+     "dialogName": "IrabethRegill_Dialogue",
+     "cues": [
+      "0b2ed20866c311744a16f356d22ee840",
+      "16cbc0b48212a3a40894886798060fe4",
+      "1b0741f23533b094b93685b889148b76",
+      "515e55ef14fcd7447ba978e75bd9ed68",
+      "4b0b3cdbb4f94f9469250deb378cd18d",
+      "46e803aec9973ba4fae972d9504e9240"
+     ],
+     "cueNames": [
+      "Cue_0029",
+      "Cue_0015",
+      "Cue_0027",
+      "Cue_0028",
+      "SequenceExit_0040",
+      "SequenceExit_0058"
+     ],
+     "speaker": "68d4a5b150c7c2c42aeea6f24044113a",
+     "reachable": true,
+     "clicks": 8,
+     "path": [
+      {
+       "at": "Cue_0001",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0002",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0003",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0004",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0005",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0006",
+       "take": "Answer_0017"
+      },
+      {
+       "at": "Cue_0018",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0020",
+       "take": "continue"
+      }
+     ],
+     "answerDist": {
+      "0e083fd5328be0047b7d91a1fafa1b6e": 3,
+      "1820ae1675ad7ea47ad5b7f6553e448f": 2,
+      "201cfe3e3a311464bb01195aaeea9f5a": 4,
+      "4398625e02265774dab53aa637a9242d": 3,
+      "e19518c1ad0c6624bbbf29b2928ef770": 1,
+      "f8ca387fbf08bf94a97b3305be802fec": 2
+     }
+    }
+   ]
+  },
   "bb3528754c7e741438acef95ec3b6430": {
    "list": "bb3528754c7e741438acef95ec3b6430",
    "listName": "AnswersList_0002",
@@ -27702,6 +28001,71 @@
     }
    ]
   },
+  "da6ca50574b6c714f9166f37b64b7b59": {
+   "list": "da6ca50574b6c714f9166f37b64b7b59",
+   "listName": "AnswersList_0018",
+   "hosts": [
+    {
+     "dialog": "2c5241474f3e16d40ab3f48e33921bcd",
+     "dialogName": "MeetSeelahAnevia_Dialogue",
+     "cues": [
+      "843c7cf25f27714439e8dbb6cab06074"
+     ],
+     "cueNames": [
+      "Cue_0017"
+     ],
+     "speaker": "ea562adea1736874c9c5616d140fe773",
+     "reachable": true,
+     "clicks": 8,
+     "path": [
+      {
+       "at": "Cue_0001",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0002",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0003",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0004",
+       "take": "Answer_0007",
+       "conditioned": true
+      },
+      {
+       "at": "Check_0010",
+       "take": "auto"
+      },
+      {
+       "at": "Cue_0012",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0015",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0016",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0041",
+       "take": "continue"
+      }
+     ],
+     "answerDist": {
+      "7ce19f7c9cce54d458833a5d98f77e62": 6,
+      "99d18ab52a1e3a84f9e4b787eb02a743": 6,
+      "9cd8308b0fc6506459bf1e98456b94bf": 5,
+      "ac8a98a286c2d664fbf93297bc1d557a": 5,
+      "b082a1f17a3219e4a8f842f87bed0be3": 5
+     }
+    }
+   ]
+  },
   "db7f69fa013c7ec49b651e7ad26c67de": {
    "list": "db7f69fa013c7ec49b651e7ad26c67de",
    "listName": "AnswersList_0003",
@@ -28382,6 +28746,36 @@
       "f1d46c8ad051d644ea9527a727ed6211": 2,
       "f837deee8e902634ab80e0654d44e538": 3
      }
+    }
+   ]
+  },
+  "f1e7b7a6740caaa44a3762033c5f0a5a": {
+   "list": "f1e7b7a6740caaa44a3762033c5f0a5a",
+   "listName": "AnswersList_0007",
+   "hosts": [
+    {
+     "dialog": "0cfe2725333dad944b2113413520f241",
+     "dialogName": "SeelahMeetsFriends_dialog",
+     "cues": [
+      "a3d0b31d35fc785418c78ded53cb278d"
+     ],
+     "cueNames": [
+      "Cue_0006"
+     ],
+     "speaker": "54be53f0b35bf3c4592a97ae335fe765",
+     "reachable": true,
+     "clicks": 2,
+     "path": [
+      {
+       "at": "Cue_0001",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0058",
+       "take": "continue"
+      }
+     ],
+     "answerDist": {}
     }
    ]
   },

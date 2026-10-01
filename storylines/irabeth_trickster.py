@@ -429,11 +429,11 @@ physical("irabeth.trickster.killed.the_roll", "The roll of the dead", '"I\'ll re
 physical("irabeth.trickster.killed.the_watch", "Under her sword", '"Knight-Captain. You wanted me?"', [
     i("start", '''{n}She is in the guardroom off the throne room, where the night watch sleeps in shifts. One cot is made up. Beside it is a stool, and she is sitting on the stool with the sword across her knees.{/n}
 "You want something from me. I can see it on you. Before you ask it, you're going to sleep here. Tonight. Unarmed. And I'm going to sit on this stool with this until the bell, and you're going to find out whether you can close your eyes."
-"I did, at Iz. I closed them for one breath, and you put steel in me. Your turn."''',
+"I did, at Iz. I closed them for one breath, and you struck. Your turn."''',
       c('[Unbuckle your sword belt, hand it to her, and lie down]', "night", flags=(TRUSTED,)),
       c('"Not tonight."', abort=True)),
     nar("night", '''{n}You lie down. She does not move. The lamp burns low; the watch changes twice beyond the door. Every time you open your eyes she is exactly where she was, the blade across her knees, watching you the way she watches a road at night.{/n}
-{n}Near dawn you sleep, properly, for an hour. When you wake she has laid your sword belt across your chest and gone. On the stool is a scrap of duty roster with one line on it, in her square hand: "Slept. Didn't die. Neither did I."{/n}''',
+{n}Near dawn you sleep, properly, for an hour. When you wake she has laid your belt and its gear across your chest and gone. On the stool is a scrap of duty roster with one line on it, in her square hand: "Slept. Didn't die. Neither did I."{/n}''',
       c('"Neither did I."')),
 ], requires=("trickster.ever", RETURNED, BLOW, "irabeth.trickster.back_on_duty"),
    forbids=(TRUSTED, BLOW_STANDS, "irabeth.committed"), delay=24, RequiresAnyGroups=[["irabeth.lover", DRAWN]])
@@ -708,7 +708,7 @@ UNDER_ORDERS_PARAGRAPHS = (
 )
 
 SCENES.append(scene("irabeth.trickster.epilogue.under_orders", "Until the Wound is shut", "Epilogue", 0, "", [
-    n("end", "Narrator", '''{n}Irabeth Tirabade served the crusade until the Worldwound was closed. She could not have stopped sooner if she had wanted to, and she complained about it at length, in writing, to anyone who would file it.{/n}''',
+    n("end", "Narrator", '''{n}Irabeth Tirabade served the crusade until the Worldwound was closed. She had sworn not to stop sooner, and she kept her word to the letter, complaining about it at length, in writing, to anyone who would file it.{/n}''',
       portrait="Irabeth", paragraphs=UNDER_ORDERS_PARAGRAPHS)],
     requires=(RETURNED,), forbids=("irabeth.lover", "irabeth.committed", "trying", "committed"), last=99, Relationship="irabeth",
     ForbidOverrides={"trying": "tirabade.group_closed", "committed": "tirabade.group_closed"}))

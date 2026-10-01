@@ -16,7 +16,9 @@ namespace Tirabade
             var commander = player?.MainCharacter.Value;
             if (game?.CurrentlyLoadedArea == null || game.IsLoadingSave || game.IsUnloading || player == null || commander == null
                 || player.IsInCombat || !commander.State.IsConscious) return false;
-            var matches = game.State.Units.Where(unit => unit.Blueprint == blueprint).Take(2).ToArray();
+            // A PretendUnit blueprint (Seelah_NPC_Level1 -> Seelah_Companion) reports the pretended Blueprint once its facts
+            // activate; match OriginalBlueprint too, as GuestPresence does (Rules.IsPresenceUnit).
+            var matches = game.State.Units.Where(unit => unit.Blueprint == blueprint || unit.OriginalBlueprint == blueprint).Take(2).ToArray();
             if (matches.Length != 1) return false;
             var actor = matches[0];
             var area = game.State.LoadedAreaState;

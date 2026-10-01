@@ -221,7 +221,7 @@
    "5": "ip",
    "6": "ip"
   },
-  "exceptions": {},
+  "exceptions": {"6": "none: Threshold carries Last Call only (coordinator, 2026-10-01)"},
   "evidence": {
    "first_met": "ecc3bd721f629654b9e40779f55868bb World/Dialogs/c0/CavesUnderKenabres/MeetSeelahAnevia/Cue_0003: Prologue caves, pinned ('My ankle's killin' me')",
    "1": "56979000b02c85347b07a2455e02325a World/Dialogs/c1/DefendersHeart/AneviaWarning/Cue_0001: Ch1 Defender's Heart, Anevia speaks (unit AneviaTirabade_DH)",
@@ -268,7 +268,7 @@
    "5": "ip",
    "6": "ip"
   },
-  "exceptions": {},
+  "exceptions": {"6": "none: Threshold carries Last Call only (coordinator, 2026-10-01)"},
   "evidence": {
    "first_met": "79e42b8c35cd3ba4783a92e305b40bf1 World/Dialogs/c1/GreyGarrison_ChapterStart/Irabeth_FirstMeet/Cue_0001: Ch1 Grey Garrison first meeting",
    "1": "4e6c988e81cd0da4a9b3d64408dee31f World/Dialogs/c1/DefendersHeart/AfterAttackIrabeth/Cue_0002: Ch1 Defender's Heart after the attack",
@@ -308,7 +308,7 @@
    "5": "ip",
    "6": "ip"
   },
-  "exceptions": {},
+  "exceptions": {"6": "none: Threshold carries Last Call only (coordinator, 2026-10-01)"},
   "evidence": {
    "first_met": "deb9827da749a5246b0263578bd68560 World/Dialogs/c0/CavesUnderKenabres/MeetSeelahAnevia/Cue_0013: Prologue caves, joins the party",
    "1": "e3f8950b97f014e4e95fac95c1be4b78 World/Dialogs/Companions/CompanionQuests/Seelah/Q1_LittleTroubles/Ch1_SeelahMeetsFriends/Cue_0058: Ch1 companion quest in Kenabres",

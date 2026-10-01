@@ -4054,6 +4054,28 @@
     "hold"
    ]
   },
+  "ec82016fa7508e94aae33cd8be84c8b2": {
+   "ancestors_completed": [],
+   "areas": {
+    "61fcf2a352daa394ebae399b1348ba62": "61fcf2a352daa394ebae399b1348ba62"
+   },
+   "cascade_chapter": null,
+   "chain": [
+    "FreeTime",
+    "Neathholm",
+    "0Prologue",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "SleepInteraction_Actions"
+   ],
+   "conditional": [],
+   "name": "FreeTime",
+   "traits": [
+    "area",
+    "self_completed"
+   ]
+  },
   "ecdddd77ad964561b38ad1848cb4553f": {
    "areas": {},
    "cascade_chapter": null,
