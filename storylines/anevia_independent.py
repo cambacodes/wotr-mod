@@ -590,7 +590,7 @@ s("an_invitation_afterward", "The question she asked separately", [
     n("date", "Narrator", '''{n}You pick an evening and stay for part of this one. Anevia tells you about a wooden box she has been forcing to fit a badly made sill. She wants to grow a herb in it and has already collected several rude opinions about her chances.{/n}
 {n}She shows you the crooked edge with her hands and argues when you suggest cutting it shorter. Then she stops arguing, takes your face in both hands and kisses you like she has been waiting all evening to shut you up.{/n}
 {n}When you leave, the next night has an hour attached to it. She makes you repeat the hour back to her, like a password.{/n}''',
-      c('"Thursday, then. Yours."', flags=("anevia.lover", "anevia.personal_ready"))),
+      c('"Oathday, then. Yours."', flags=("anevia.lover", "anevia.personal_ready"))),
     n("stop", "Anevia", '''"Then I'm glad I asked, and didn't just assume."
 {n}She takes her hand off the chair and folds it with the other in her lap.{/n}
 "It hurts. Don't go fixin' it by sayin' somethin' you don't mean. Give me some room. We'll work out later how to be decent to each other."
@@ -1043,7 +1043,7 @@ s("the_evening_without_a_case", "Something she did not have to solve", [
 {n}She takes your hand across the table.{/n}
 "And I want another one here. All of it at once. Greedy woman, you knew that."
 {n}You settle on the next visit. She goes off pleased, the folded game under her arm, the crooked goat still standing by your lamp.{/n}''',
-      c('"Friday? If Beth hasn\'t got it."', flags=("anevia.ordinary_life_kept",))),
+      c('"Fireday? If Beth hasn\'t got it."', flags=("anevia.ordinary_life_kept",))),
 ], requires=("anevia.case_consequence_kept", "anevia.lover"), forbids=("irabeth_dead", "irabeth_gone"), delay=48)
 
 
@@ -1159,11 +1159,11 @@ s("the_life_she_lived", "The answer you could not guess", [
 "Did you stay?"
 "Yeah. Dirt under my nails. Learned which roots you don't pull apart. She asked if I wanted another cuttin' when it's ready. Said yes before I could invent a reason I was too busy."
 {n}Anevia rests her hand on the wooden box.{/n}
-"Want more of that. Dirt, and an old woman who don't want a single secret off me. I'm goin' back Tuesday."
-{n}She waits to see what you make of Tuesday.{/n}''',
+"Want more of that. Dirt, and an old woman who don't want a single secret off me. I'm goin' back Toilday."
+{n}She waits to see what you make of Toilday.{/n}''',
       c('"Tell me about it. You don\'t have to take me along to all of it."', "end"),
       c('"I\'ll sulk when you spend an afternoon somewhere else. Go anyway."', "end")),
-    n("end", "Anevia", '''"Tuesdays I'm in the dirt, then. Come and hold a pot. Badly. She'll love you."
+    n("end", "Anevia", '''"Toildays I'm in the dirt, then. Come and hold a pot. Badly. She'll love you."
 {n}She moves in close enough to kiss you, then leans against you while the light changes in the window. Outside someone drops a bucket. She laughs at the string of curses that follows, each fouler than the last.{/n}
 "So what're you doin' tomorrow," she says, "that I ain't already guessed?"
 {n}You tell her. She looks delighted by the part she didn't see coming.{/n}''',
@@ -1398,7 +1398,7 @@ ending("ending_unfinished", "A question they had not finished", '''{n}Anevia and
        requires=("anevia.lover",), forbids=(*LIVING_END, "anevia.developed", "anevia.committed"))
 ending("ending_promised", "The next visit they had chosen", '''{n}Before the last campaign was over, Anevia and the Commander had said out loud that this was for keeps. What they had not yet had was the years to find out if they could keep it.{/n}
 {n}Anevia kept the key on its green cord. Sometimes she wound it round a finger while she wrote a note, scratched out a perfectly good opening and started instead with the thing she actually wanted.{/n}
-{n}Her home with Irabeth stayed her home. The room she'd taken for herself still needed fixing. Neither surprised the Commander. There would be missed nights and bad rows. The first time the Commander stood her up, she sent the note back with the spelling corrected and one word underneath: Tuesday.{/n}
+{n}Her home with Irabeth stayed her home. The room she'd taken for herself still needed fixing. Neither surprised the Commander. There would be missed nights and bad rows. The first time the Commander stood her up, she sent the note back with the spelling corrected and one word underneath: Toilday.{/n}
 {n}She waited for the next visit with an impatience that embarrassed her. It never stopped her sending the note.{/n}''',
        requires=("anevia.lover", "anevia.committed", "anevia.future_chosen"), forbids=(*LIVING_END, "anevia.developed"))
 ending("ending_parted", "What remained after the goodbye", '''{n}Anevia never called it a mistake just because it ended. There were things she had wanted and got, and things she would have done differently knowing what she knew after. The Commander was part of that, and had no say in what she chose next.{/n}
@@ -1444,7 +1444,7 @@ ending("ending_sacrifice", "The answer she could not receive", '''{n}The Command
        requires=("anevia.lover", "sacrifice"), forbids=("anevia_dead", "anevia_gone", "inhuman", "ascended", "anevia.irabeth_killed_by_commander"))
 ending("ending_changed_power", "An answer power could not supply", '''{n}Whatever the Commander became, Anevia took one look at it and packed a bag. She left the key on its green cord hanging from the doorknob, where the thing that had been the Commander would find it.{/n}
 {n}It sent for her once. She sent the messenger back with his boots tied together.{/n}
-{n}She kept the goat game. She played it with Beth, badly, on Tuesdays, and she did not say who had taught her the house rule.{/n}''',
+{n}She kept the goat game. She played it with Beth, badly, on Toildays, and she did not say who had taught her the house rule.{/n}''',
        requires=("anevia.lover", "inhuman"), forbids=())
 ending("ending_ascended", "The scale of an ordinary invitation", '''{n}Ascension changed what the Commander could become. Anevia, told about it by a very nervous herald, asked whether it was catching and whether the herald wanted tea.{/n}
 {n}There had been a woman who liked an ordinary invitation and could find something to tease the Commander about even at a funeral. The Commander had known her at that size. Remembering her that way mattered more than giving what they'd had a grander name.{/n}

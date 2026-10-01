@@ -850,7 +850,7 @@ KITRANE_PARAGRAPHS = (
       requires=(DRILL,)),
     p('''{n}The Inquisitor Hulrun never turned round at the chapel door. After the war he came to the Crows' tent one evening with his ledger under his arm, sat down on the mule's feed-box, and said nothing at all for an hour. Then he said, "Your Majesty," once, very quietly, and went away. Neither of them ever mentioned it again.{/n}''',
       requires=(P + "kitrane.hulrun_seen",), forbids=("hulrun.dead",)),
-    p('''{n}On Thursdays she played dice in the Fool King's tavern and lost, loudly, to a drunkard in a paper crown, and was, the tavern agreed, the worst knight the kingdom of the tavern had ever sausaged.{/n}''',
+    p('''{n}On Oathdays she played dice in the Fool King's tavern and lost, loudly, to a drunkard in a paper crown, and was, the tavern agreed, the worst knight the kingdom of the tavern had ever sausaged.{/n}''',
       requires=(P + "kitrane.king_seen",)),
     p('''{n}A treatise on the campaign for Threshold, written in Absalom a decade later, devoted a chapter to "the unknown knight of the Green Crows" whose advice, the author claimed, had sent the baggage up the road as bait and the army by the dry riverbed. She read it aloud to the Commander in bed, in a variety of silly voices.{/n}''',
       requires=(P + "kitrane.war_table", P + "kitrane.table_credited")),

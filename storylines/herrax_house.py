@@ -608,7 +608,7 @@ I sent a girl to the palace with a question of my own. She came back with it uno
     hl("b_news", '''{n}The fourth is three pages in the round, unhurried hand.{/n}
 "The house news, since you never ask for it and always read it.
 Morevet has invented a word for you. I won't write it down. It's very clever and very filthy and every girl in the house uses it now, even the Sinners, who are too expensive to use anyone's words but their own. When you come back, someone will say it to your face, and you'll know it's you.
-The Glowworm drank a devil under the table on Thursday and he signed over his house to her by mistake. We're all very proud."''',
+The Glowworm drank a devil under the table on Oathday and he signed over his house to her by mistake. We're all very proud."''',
        c("Continue", "b_news_warned", requires=(WARNED,)),
        c("Continue", "b_news_white", requires=(SENT,), forbids=(WARNED,)),
        c("Continue", "b_news_empty", forbids=(WARNED, SENT))),
@@ -762,7 +762,7 @@ post(HOUSE_NEWS, "News from the Delights", [
     hl("letter", '''"Lover.
 The house news, since you never ask for it and always read it.
 Morevet has invented a word for you. I won't write it down. It's very clever and very filthy and every girl in the house uses it now, even the Sinners, who are too expensive to use anyone's words but their own. When you come back, someone will say it to your face, and you'll know it's you.
-The Glowworm drank a devil under the table on Thursday and he signed over his house to her by mistake. We're all very proud."''',
+The Glowworm drank a devil under the table on Oathday and he signed over his house to her by mistake. We're all very proud."''',
        c("Continue", "aasimar_warned", requires=(WARNED,)),
        c("Continue", "aasimar", forbids=(WARNED,))),
     hl("aasimar_warned", '''"You'll want to know about the white room. You told me someday someone would come for them. Nobody has. But one of them came to me last week, of her own accord, the one who looked up when you were there, and asked me to teach her.

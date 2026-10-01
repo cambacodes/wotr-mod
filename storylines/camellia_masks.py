@@ -111,10 +111,10 @@ living(MIREYA, "A name for a spirit", '"Who are you talking to?"', [
         c('"And her name?"', "name")),
     cam("name", '''"I don't know her real name. She was too broken to tell me. So I call her Mireya. It was the name of a girl in a book I liked, when I was small. She was very beautiful and very sad and she drowned herself in the third chapter, and I read that chapter every night for a year." {n}Camellia smiles fondly.{/n}
 "Do you think she minds? Being named by a stranger? I've always wondered. Names are such intimate things to give. Like a collar."''',
-        c('[Offer a name] "Call her Tuesday. Nobody\'s afraid of a Tuesday."', "tuesday"),
+        c('[Offer a name] "Call her Toilday. Nobody\'s afraid of a Toilday."', "tuesday"),
         c('[Trickster] "I had a friend like that once. Sergeant Barnaby Quill. He never answered me either."', "barnaby"),
         c('"Keep the one you gave her. It\'s yours."', "keep")),
-    cam("tuesday", '''"Tuesday!" {n}She laughs so suddenly that the amulet swings on its cord.{/n} "Oh, that's dreadful. Tuesday. She would never forgive me."
+    cam("tuesday", '''"Toilday!" {n}She laughs so suddenly that the amulet swings on its cord.{/n} "Oh, that's dreadful. Toilday. She would never forgive me."
 {n}She holds the snake up to her ear, as if listening, and her face goes grave.{/n} "No. She says she is Mireya, and she would like you to know that she is taking it very personally." {n}Her eyes glitter.{/n} "Now you've done it. Now she knows your voice."''',
         c("Continue", "after", flags=(NAMED,))),
     cam("barnaby", '''"Sergeant Barnaby Quill," {n}she repeats, slowly, testing the weight of it.{/n} "Tell me about him."
@@ -151,7 +151,7 @@ living(FLIES, "Flies at a window", '"You\'ve gone pale. Is it the spirits?"', [
         c('[Trickster] Tell her the longest, most outrageous lie you know, and don\'t stop until she laughs.', "story"),
         c("[Sit beside her and take her hands off her ears]", "hands"),
         c('"There\'s a demon camp an hour east. Go and bleed some of them. Quiet it the usual way."', "fed")),
-    cam("story", '''{n}So you tell her how you once sold a vrock its own left wing and charged it rent on the right. You tell her about the court of the Tyrant of Tuesdays, and the war of the three spoons. It gets worse. It gets much worse. Somewhere around the ambassador made entirely of cheese she snorts, very unbecomingly, and puts a hand over her mouth.{/n}
+    cam("story", '''{n}So you tell her how you once sold a vrock its own left wing and charged it rent on the right. You tell her about the court of the Tyrant of Toildays, and the war of the three spoons. It gets worse. It gets much worse. Somewhere around the ambassador made entirely of cheese she snorts, very unbecomingly, and puts a hand over her mouth.{/n}
 "Stop. Stop, that's not fair, I was trying to be tragic." {n}She is shaking with laughter now, and when it passes, her shoulders have come down.{/n} "That was dreadful. Do tell me another."''',
         c("Continue", "quiet", flags=(QUIET,))),
     cam("hands", '''{n}Her hands are cold and damp and very strong. She lets you take them. She lets you hold them in her lap. For a long time neither of you says anything, and the warm rock breathes against your backs.{/n}

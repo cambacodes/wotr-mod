@@ -414,7 +414,7 @@ beat(P + "kitrane.king", "Two false crowns", '"I hear you\'ve been drinking with
         c('"I made him king, you know."', "made")),
     ki("made", '''"I know. The whole tavern told me, at length, with gestures." {n}Her eyes rest on you, amused and something else.{/n} "You found a drunkard and a forged stone and made a king of him, and he is happy. You found a queen dying in the rubble and made a knight of her, and she is..." {n}She stops, and considers it with great care.{/n} "I had better not finish that sentence in a public market. You collect crowns, Commander, and give people the wrong ones, and somehow they fit."''',
         c("Continue", "end")),
-    ki("end", '''"If the Queen of Mendev had ever drunk in that tavern she would have closed it by morning. Kitrane intends to go back on Thursday. He owes her a rematch at dice, and she suspects he cheats worse than she does."''',
+    ki("end", '''"If the Queen of Mendev had ever drunk in that tavern she would have closed it by morning. Kitrane intends to go back on Oathday. He owes her a rematch at dice, and she suspects he cheats worse than she does."''',
         c("[Leave her smiling.]", flags=(KING_SEEN,))),
 ], requires=(FIRST, "fool_king.available"), forbids=(KING_SEEN,), delay=24)
 
