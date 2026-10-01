@@ -76,8 +76,8 @@ internal static class KonomiTricksterTests
         // Trk_Konomi_Dismissed: the joke on the page, a day after the insult.
         var dismissed = World(story, 5, "trickster", "trickster.ever", "konomi.dismissed", "konomi.office_completed");
         check(Rules.Available(story, late, dismissed) && !Rules.Available(story, recess, dismissed), "Trk_Konomi_Dismissed: setup unavailable.");
-        var fresh = Program.Copy(dismissed); fresh.Times["konomi.dismissed.latched"] = fresh.Hour - 23;
-        check(!Rules.Available(story, late, fresh), "The shout ignores the day after the insult.");
+        var fresh = Program.Copy(dismissed); fresh.Times["konomi.dismissed.latched"] = fresh.Hour - 71;
+        check(!Rules.Available(story, late, fresh), "The setup is read before the road is behind her (PP5: 72 hours).");
         check(!Rules.Available(story, late, World(story, 3, "trickster", "trickster.ever", "konomi.dismissed", "konomi.office_completed")),
             "The dismissal setup outside Chapter 5.");
         var pages = new HashSet<string>();
@@ -85,9 +85,12 @@ internal static class KonomiTricksterTests
         check(shouted.Count == 1 && shouted[0].Has("konomi.trickster.primed") && shouted[0].Has("konomi.trickster.cost.late")
               && !pages.Contains("queen"), "Trk_Konomi_Dismissed: the minute sets the wrong flags.");
         // Polish 9b: no word made true. The minute goes to the Chancellor and the driver is bought, on the page, at a price.
-        var bought = late.Nodes.Single(n => n.Id == "driver").Choices[0];
+        var bought = late.Nodes.Single(n => n.Id == "driver").Choices[2];
         check(pages.Contains("driver") && shouted[0].Has("konomi.trickster.cost.driver_paid") && bought.Crusade?.Resource == "Finances"
-              && bought.Crusade.Amount == -150, "The road loops by itself again.");
+              && bought.Crusade.Amount == -150 && bought.Next == "gate", "The road loops by itself again.");
+        var driverChoices = late.Nodes.Single(n => n.Id == "driver").Choices;
+        check(driverChoices.Count == 4 && driverChoices[0].Forbids.Contains("konomi.dismissed") && driverChoices[1].Forbids.Contains("konomi.dismissed")
+              && driverChoices[3].Abort, "PP5: the driver's choices were reordered instead of retired and appended.");
         check(late.Nodes.Concat(recess.Nodes).All(n => !n.Text.Contains("proud of the others") && !n.Text.Contains("seam in your road")),
             "The paving stone that was not there is back.");
         var crowned = Program.Copy(dismissed); crowned.Flags.Add("coronation.seen");
@@ -98,18 +101,23 @@ internal static class KonomiTricksterTests
         queenPages.Clear();
         Program.Walk(late, crowned, (page, _) => queenPages.Add(page));
         check(!queenPages.Contains("queen"), "A dead Queen raises an eyebrow.");
-        // Sol r2 INT: she is placed in her office only when she is back, not while the carriage is on the road.
+        // PP5 (tier-A Ch5 budget, one delivery): the gate sergeant's note is the setup's last page. The setup waits until the road
+        // is behind her (72 hours after the insult), so she is placed only when everything it tells has happened (Sol r2 INT).
         var dismArrival = S("konomi.trickster.dismissed.arrival");
-        check(!shouted[0].Has("konomi.trickster.presence_on") && !Later(story, shouted[0], 47).Has("konomi.trickster.presence_on")
-              && !Rules.Available(story, dismArrival, Later(story, shouted[0], 47)) && Rules.Available(story, dismArrival, Later(story, shouted[0], 48)),
-            "Konomi placed while the carriage is still on the road.");
-        var afterShout = Later(story, Program.Walk(dismArrival, Later(story, shouted[0], 48)).Single(r => r.Has("konomi.trickster.back_from_the_road")), 0);
+        check(late.DelayHours == 72 && pages.Contains("gate") && shouted[0].Has("konomi.trickster.back_from_the_road")
+              && Later(story, shouted[0], 0).Has("konomi.trickster.presence_on") && !Rules.Available(story, dismArrival, Later(story, shouted[0], 48)),
+            "PP5: the arrival is still a second Chapter 5 delivery.");
+        // A save already on the road (cost.late without back_from_the_road) keeps the old note, and is not placed before it.
+        var onRoad = World(story, 5, "trickster.ever", "konomi.dismissed", "konomi.office_completed", "konomi.trickster.primed",
+                           "konomi.trickster.cost.late");
+        check(!onRoad.Has("konomi.trickster.presence_on") && Rules.Available(story, dismArrival, onRoad) && !Rules.Available(story, recess, onRoad),
+            "A save on the road lost its arrival, or was placed before it.");
+        var afterShout = Later(story, shouted[0], 0);
         // Sol r5 INT: an earlier arrival (the jug's) is not proof of this journey.
-        var jugThenDismissed = Program.Copy(shouted[0]); jugThenDismissed.Flags.Add("konomi.trickster.arrived"); Rules.Complete(story, jugThenDismissed);
+        var jugThenDismissed = Program.Copy(onRoad); jugThenDismissed.Flags.Add("konomi.trickster.arrived"); Rules.Complete(story, jugThenDismissed);
         check(!jugThenDismissed.Has("konomi.trickster.presence_on") && !Rules.Available(story, recess, Later(story, jugThenDismissed, 47)),
             "An earlier arrival places her while the carriage is on the road.");
         check(Rules.Available(story, recess, afterShout) && !Rules.Available(story, late, afterShout), "Trk_Konomi_Dismissed: no recess.");
-        check(!Rules.Available(story, recess, Later(story, shouted[0], 47)), "The recess ignores the three days on the road.");
         check(afterShout.Has("konomi.trickster.presence_on"), "Konomi not placed after the loop.");
         check(!dismissed.Has("konomi.trickster.presence_on"), "Konomi placed before the loop.");
 
@@ -245,6 +253,9 @@ internal static class KonomiTricksterTests
         check(accredited.Nodes[0].Text.IndexOf("A week ago", StringComparison.Ordinal) < 0, "The informer is caught off the page, a week before.");
         check(audience.Nodes[0].Text.IndexOf("three months ago", StringComparison.Ordinal) < 0, "Arrears from before the register entry.");
         check(Rules.Available(story, accredited, never) && !Rules.Available(story, audience, never), "Trk_Konomi_NeverArrived: setup unavailable.");
+        // PP5: the setup waits until its own account (the bow, two days to Nerosyan, two days back) is over.
+        var neverFresh = Program.Copy(never); neverFresh.Times["konomi.missed_contact_available"] = neverFresh.Hour - 95;
+        check(accredited.DelayHours == 96 && !Rules.Available(story, accredited, neverFresh), "PP5: the jug's account is read before its four days are over.");
         check(!Rules.Available(story, S("konomi.the_unintroduced_letter"), never), "The unintroduced letter still opens beside the jug.");
         var bowPages = new HashSet<string>();
         var bowed = Program.Walk(accredited, never, (page, _) => bowPages.Add(page)).Where(r => r.Has(accredited.Id)).ToList();
@@ -254,10 +265,16 @@ internal static class KonomiTricksterTests
               && bowPages.Contains("slip") && bowPages.Contains("bow")
               && bowed.Count(r => r.Has("konomi.trickster.cost.steward_paid")) == 1
               && bowed.Count(r => r.Has("konomi.trickster.cost.steward_burned")) == 1, "Trk_Konomi_NeverArrived: wrong flags.");
+        // PP5 (tier-A Ch5 budget): the chancery clerk's note is the setup's last page, not a second letter.
         var neverArrival = S("konomi.trickster.never_arrived.arrival");
-        check(!Later(story, bowed[0], 47).Has("konomi.trickster.presence_on") && !Rules.Available(story, audience, Later(story, bowed[0], 47))
-              && Rules.Available(story, neverArrival, Later(story, bowed[0], 48)), "The never-arrived Konomi is placed before she arrives.");
-        var arrived = Later(story, Program.Walk(neverArrival, Later(story, bowed[0], 48)).Single(r => r.Has("konomi.trickster.arrived")), 0);
+        check(bowPages.Contains("clerk") && bowed.All(r => r.Has("konomi.trickster.arrived") && Later(story, r, 0).Has("konomi.trickster.presence_on"))
+              && !Rules.Available(story, neverArrival, Later(story, bowed[0], 48)), "PP5: the jug's arrival is still a second delivery.");
+        // A save between the bow and her arrival keeps the old note, and is not placed before it.
+        var bowedOld = World(story, 3, "trickster.ever", "konomi.missed_contact_available", "konomi.trickster.primed",
+                             "konomi.trickster.cost.accredited", "konomi.missed_letter_sent");
+        check(!bowedOld.Has("konomi.trickster.presence_on") && Rules.Available(story, neverArrival, bowedOld) && !Rules.Available(story, audience, bowedOld),
+            "A save between the bow and the arrival lost its note, or was placed early.");
+        var arrived = Later(story, bowed[0], 0);
         check(Rules.Available(story, audience, arrived) && arrived.Has("konomi.trickster.presence_on"), "Trk_Konomi_NeverArrived: no audience.");
         check(!Rules.Available(story, S("konomi.the_answer_she_addressed"), arrived), "The carrier's answer opens beside the audience.");
         var received = Program.Walk(audience, arrived);
