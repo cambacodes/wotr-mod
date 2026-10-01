@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4818,
-  "unique_targets": 1094,
+  "binding_uses": 4831,
+  "unique_targets": 1102,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -1118,6 +1118,22 @@
       "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Answer_0048.jbp",
       "type": "BlueprintAnswer"
     },
+    "cab33f23f9c1f284eab13e33fbdc3df0": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Cue_0034.jbp",
+      "type": "BlueprintCue"
+    },
+    "202dc8ba3e8715840af76156384bea2e": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Cue_0037.jbp",
+      "type": "BlueprintCue"
+    },
+    "f0a9e958a349a3147b6e441d0ce21699": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Cue_0038.jbp",
+      "type": "BlueprintCue"
+    },
+    "ce518077ca8432b4583e0240bbd797f7": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Cue_0039.jbp",
+      "type": "BlueprintCue"
+    },
     "a70275fb77f483847a68fe01586091ec": {
       "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Cue_0053.jbp",
       "type": "BlueprintCue"
@@ -1334,6 +1350,10 @@
       "path": "World/Dialogs/c4/FleshMarket/MeatSlaver_dialogue/Answer_0039_AasimarsBrothel.jbp",
       "type": "BlueprintAnswer"
     },
+    "a3ca33a66c286b24493176d00a9a7527": {
+      "path": "World/Dialogs/c4/GoodSamaritan_SideQuest/Latverk_Final/Cue_0039.jbp",
+      "type": "BlueprintCue"
+    },
     "d138954fd7cdb2d4e90bb28cbd76235e": {
       "path": "World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
@@ -1388,6 +1408,10 @@
     },
     "0aa00bcf3121a694dbf306bea0f62153": {
       "path": "World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0025.jbp",
+      "type": "BlueprintCue"
+    },
+    "507a2a7cccb1c26449838fbf28f2e3af": {
+      "path": "World/Dialogs/c4/Mythic_Trickster/Council_Lexicon2/Cue_0033.jbp",
       "type": "BlueprintCue"
     },
     "979aec11b61ec9949a5c0bdfa2b552a3": {
@@ -2778,6 +2802,10 @@
       "path": "World/Dialogs/Epilogues/Cue_0569.jbp",
       "type": "BlueprintCue"
     },
+    "fb1347793c15a9342af9eaf03060056d": {
+      "path": "World/Dialogs/Epilogues/Cue_0570.jbp",
+      "type": "BlueprintCue"
+    },
     "684c56330c5a4db4d80b99150a308c69": {
       "path": "World/Dialogs/Epilogues/Cue_0571.jbp",
       "type": "BlueprintCue"
@@ -2925,6 +2953,10 @@
     "2f5b7e0b76d3c5a42a431e1e33a8db09": {
       "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/AnswersList_0004.jbp",
       "type": "BlueprintAnswersList"
+    },
+    "459bf324a71c81c4ba5f3eead9ba42bb": {
+      "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Cue_0629.jbp",
+      "type": "BlueprintCue"
     },
     "71fbdd5c766802f4eac6dfe0612a2d46": {
       "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Cue_0778.jbp",

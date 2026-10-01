@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1107,
-  "resolved": 1107,
+  "entryTargetScenes": 1108,
+  "resolved": 1108,
   "inlineOnlyScenes": 309,
   "inlineOnlyResolved": 309,
-  "answerListScenesWithoutContact": 676,
-  "answerListScenesWithoutContactResolved": 676,
+  "answerListScenesWithoutContact": 677,
+  "answerListScenesWithoutContactResolved": 677,
   "lists": 143,
   "listsWithReachableHost": 142
  },
@@ -5068,6 +5068,25 @@
    "contact": null,
    "entry": {
     "e649f211c6b002a49a0c633061877927": "RRT_entry.chadali.fortunes.the_meadows"
+   },
+   "resolved": true,
+   "host": {
+    "list": "e649f211c6b002a49a0c633061877927",
+    "dialog": "670057962cd27464298f8a5f3f5e26f6",
+    "dialogName": "Council_Chadali_Dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "chadali.fortunes.what_he_went_for": {
+   "kind": "dialog",
+   "lists": [
+    "e649f211c6b002a49a0c633061877927"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "e649f211c6b002a49a0c633061877927": "RRT_entry.chadali.fortunes.what_he_went_for"
    },
    "resolved": true,
    "host": {

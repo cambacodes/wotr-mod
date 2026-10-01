@@ -510,7 +510,7 @@
    "5": "ip",
    "6": "remote"
   },
-  "exceptions": {},
+  "exceptions": {"6": "none: Threshold carries Last Call only (coordinator, 2026-10-01)"},
   "evidence": {
    "first_met": "1e9af5965b5da304c825817c89817c22 World/Dialogs/c3/Wintersun/BlindCarver/Cue_0001: Ch3 Wintersun first meeting ('I don't recognize your footsteps')",
    "3": "13f2b37e28864ba4b882d13fad90f7c5 World/Dialogs/c3/Wintersun/BlindCarver/Cue_0028: Ch3 Wintersun, she speaks (unit BlindCarver_Wintersun 3ba3a0ff8575be8419159221177c1411)",
@@ -682,7 +682,7 @@
    "5": "ip",
    "6": "ip"
   },
-  "exceptions": {},
+  "exceptions": {"6": "none: Threshold carries Last Call only (coordinator, 2026-10-01)"},
   "evidence": {
    "first_met": "733a9c94c2f9ea14f9e2734b0f180e40 World/Dialogs/c3/AreeluLaboratory/TargonaPrison/Cue_0001: Ch3 Areelu's lab, behind the barrier",
    "3": "40db6d5fb81320444bdefd6631ea54e4 World/Dialogs/c3/AreeluLaboratory/TargonaWings/Cue_0023: Ch3 lab, she speaks",
@@ -1132,7 +1132,7 @@
    "5": "ip",
    "6": "ip"
   },
-  "exceptions": {},
+  "exceptions": {"6": "none: Threshold carries Last Call only (coordinator, 2026-10-01)"},
   "evidence": {
    "first_met": "249716a599703674aae2511d0c9ce29d c3/TempleOfDelamere/DelamereInTomb (undead priestess, Ch3)",
    "3": "249716a599703674aae2511d0c9ce29d DelamereInTomb dialog",
