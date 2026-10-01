@@ -260,7 +260,7 @@ hub(T + "the_clutch", "What she wants from you", '"She asked about the eggs agai
        c('[Let her in, once, under guard] "Tonight. After the city sleeps. My guards, my terms."', "vault_yes", flags=(VAULT_OPENED,)),
        c('"No. Not while they\'re Drezen\'s."', "vault_no", flags=(VAULT_REFUSED,))),
     nar("vault_yes", '''{n}She comes down the ridge at the dead hour, grey against a grey sky, and folds herself through the old siege breach in the vault wall with the care of something ten times smaller. Your guards stand with their spears levelled and their faces white. She does not look at them once.{/n}
-{n}She lies down among the eggs and puts her face against them, one after another, and makes a sound you have never heard a dragon make and will never hear again. It is not a song. It is the thing a song is built on.{/n}''',
+{n}She lies down among the eggs and puts her face against them, one after another, and makes a sound too low to hear, that you feel in the shells under your hand and in your back teeth. The guards at the door tighten their grip on their spears and do not know why.{/n}''',
         c("Continue", "vault_yes_2")),
     dv("vault_yes_2", '''{n}At dawn she gets up and leaves the way she came. At the breach she stops.{/n} "You let a woundwyrm into your vault, crusader, and the eggs are all still there." {n}It is almost a question.{/n} "Remember that I could have taken them. Remember that I did not. We will both remember it, and it will be the only kindness either of us ever does the other. Do not spend it."''',
        c("Continue", "end")),
@@ -426,7 +426,7 @@ hub(T + "back_up_the_mountain", "She is still hungry", '"Is she still up there?"
     dv("her", '''"You came back. I said you would." {n}Now she looks.{/n} "Have you come to say yes, or to tell me another story about why not? I warn you, crusader: my tariff has not changed. Once a year. Where I choose. A small bite."''',
         c('[Bare your forearm] "Once a year. Not the sword arm."', "yes", flags=(COMMITTED, BITTEN)),
         c('"Not yet. I just came to see you."', "not_yet"),
-        c('"No bites. I came to tell you that."', "no", flags=(CLOSED,))),
+        c('"No bites. I came to tell you that."', "no", flags=(CLOSED, "devarra.trickster.refused"))),
     dv("yes", '''"Not the sword arm." {n}She says it the way a judge says 'so ordered'.{/n} "You kept me waiting, crusader. You will pay interest. I have not yet decided in what." {n}She lays her head back on the sill, facing the city, and at last she closes both eyes.{/n}''',
         c("[Go down the mountain.]")),
     dv("not_yet", '''"To see me." {n}Her face gives you nothing to read at all.{/n} "Then look. Look as long as you like. You kept me whole for three days; you may as well look at what you kept." {n}She turns back to the city.{/n} "And then go, and come back when you have an answer. I am still hungry. I am always hungry now."''',
@@ -476,10 +476,10 @@ hub(T + "first_message", "A message up the ridge", '"Can you take a message up t
 hub(T + "the_old_hide", "Her old face", '"What happened to the old hide?"', [
     teller("start", '''"It is still where she left it. Nobody will touch it." {n}He tilts his head.{/n} "A merchant from Nerosyan has offered your treasurer a great deal of money for it: dragon hide, three hundred years old, no holes but one. The treasurer came to ask me whether the dragon who used to be in it would mind. I said I would ask you. I prefer not to ask her questions whose answers are fire."''',
         c("Continue", "ride")),
-    nar("ride", '''{n}You ride out to see it. It lies exactly where she fell, split along the spine from horns to tail, dry and dark as an old saddle, with the shape of her still in it. The face is the worst part: the empty eyes, the jaw hanging a little open, as though it had been about to say something when the thing inside it stood up and walked away.{/n}
+    nar("ride", '''{n}You go to see it. Nobody has moved it. It lies exactly where she fell, split along the spine from horns to tail, dry and dark as an old saddle, with the shape of her still in it. The face is the worst part: the empty eyes, the jaw hanging a little open, as though it had been about to say something when the thing inside it stood up and walked away.{/n}
 {n}You are still looking at it when the shadow comes over you, and she lands on the far side of her own body.{/n}''',
         c("Continue", "her")),
-    dv("her", '''{n}She does not look at the hide. She looks at you looking at it.{/n} "The old man told me there was a buyer. He told me very politely, from a great distance." {n}Her claws sink into the earth.{/n} "Well, crusader? That was me, for three hundred years. It is not me now. Tell me what you intend to do with what you killed."''',
+    dv("her", '''{n}She does not look at the hide. She looks at you looking at it.{/n} "The old man told me there was a buyer. He told me very politely, from a great distance." {n}Her claws scrape on stone.{/n} "Well, crusader? That was me, for three hundred years. It is not me now. Tell me what you intend to do with what you killed."''',
         c('[Sell it to Nerosyan] "The crusade needs the gold more than you need a keepsake."', "sell",
           crusade=("Finances", 150), flags=(HIDE_DEALT, HIDE_SOLD)),
         c('[Burn it] "Nobody wears you. Not even as a coat."', "burn", flags=(HIDE_DEALT, HIDE_BURNED)),
@@ -487,12 +487,12 @@ hub(T + "the_old_hide", "Her old face", '"What happened to the old hide?"', [
     dv("sell", '''"Gold." {n}She glances at the hide at last, and then back at you, and something like approval moves in her eye.{/n} "Yes. That is what I would have done. Sell the dead thing to the fool who wants it, and eat well on the money." {n}She lifts her head.{/n} "When they make it into a coat, crusader, find out who wears it. I would like to know which of your nobles is walking around inside my old face. I would like to visit."''',
        c("Continue", "end")),
     dv("burn", '''{n}She goes very still.{/n} "Nobody wears me." {n}She repeats it as though tasting a new spice.{/n} "Very well. Stand back."
-{n}She breathes on her old body. It takes a long time to catch; dragon hide does not burn easily, even when the dragon wants it to. When it does, she watches it the whole way down, and she does not say anything at all until there is nothing but a black shape on the grass.{/n}''',
+{n}She breathes on her old body. It takes a long time to catch; dragon hide does not burn easily, even when the dragon wants it to. When it does, she watches it the whole way down, and she does not say anything at all until there is nothing but a black shape on the stones.{/n}''',
        c("Continue", "burn_2")),
     dv("burn_2", '''"There." {n}Her voice is rough with smoke.{/n} "Now I am the only one." {n}She turns her head and looks at you.{/n} "You burned good hide, crusader. A merchant in Nerosyan would have paid you a hoard for it." {n}She licks the ash off her teeth.{/n} "Bring me something worth that fire. I am going to eat something now. Do not watch."''',
        c("Continue", "end")),
     dv("give", '''"Mine." {n}She looks down at it at last, at her own dead face, for a very long time.{/n} "I will keep it, then. I will drag it up the ridge and lay it across the door of the tower, so that anyone who comes to kill me has to walk through the last one who tried."
-{n}She takes the hide in her jaws, gently, the way she would lift an egg, and does not look at you again. At the edge of the field she stops.{/n} "You might have sold it. I know what it was worth. Remember that you did not. I will."''',
+{n}She takes the hide in her jaws, gently, the way she would lift an egg, and does not look at you again. At the way out she stops.{/n} "You might have sold it. I know what it was worth. Remember that you did not. I will."''',
        c("Continue", "end")),
     teller("end", '''{n}Back in Drezen, the Storyteller listens to your account without interrupting.{/n} "I was in the lair when she was still wearing it. I could not see her face, of course. But I could hear it, when she spoke; the old hide creaked around the jaw. The new one does not."''',
         c('"Maybe not."')),
@@ -788,7 +788,7 @@ hub(T + "the_soft_place", "Where the blade went in", '"She sent for me again. No
     dv("her", '''"There." {n}Her voice is flat and quiet.{/n} "The one soft place. Steel found it. I have spent three hundred years making certain nobody else ever could, and now it is there again, on a new body, in the same place, because that is where you killed me and the moult remembered." {n}A long breath.{/n} "Put your hand on it."''',
        c("[Put your hand on it.]", "touch"),
        c('"Why are you showing me this?"', "why")),
-    dv("why", '''"Because you know where it is. You were there when it was found. If you ever want to kill me again, you will not need to look for it." {n}She still does not look at you.{/n} "So I am showing you, in daylight, with my wing up, and your sword at the bottom of the mountain, and my teeth a length from your neck. Put your hand on it. Then we will see which of us is quicker."''',
+    dv("why", '''"Because now you know where it is, because I am showing you. If you ever want to kill me again, you will not need to look for it." {n}She still does not look at you.{/n} "So I am showing you, in daylight, with my wing up, and your sword at the bottom of the mountain, and my teeth a length from your neck. Put your hand on it. Then we will see which of us is quicker."''',
        c("[Put your hand on it.]", "touch")),
     nar("touch", '''{n}The seam is hot under your palm, hotter than the rest of her, and softer: soft enough that you can feel her heartbeat through it, huge and slow and very steady, the heartbeat of something that could crush you by rolling over in its sleep.{/n}
 {n}Under your hand it speeds up. Only a little. Only for a moment. Then she makes it slow down again, deliberately, and you feel her do it.{/n}''',
@@ -991,7 +991,7 @@ hub(T + "first_snow", "Snow on the ridge", '"It snowed on the ridge last night. 
     nar("braziers", '''{n}It takes six carts and a great deal of swearing from the teamsters to get the braziers up the ridge. You go up with the last one.{/n}
 {n}She has lain down in a ring of them around the tower floor like a cat around a hearth, her wings wrapped tight about herself, her breath coming out in white plumes, glaring at the snow on the sill as though it had insulted her personally. The fleeces you sent are heaped under her chin.{/n}''',
         c("Continue", "braziers_her")),
-    dv("braziers_her", '''"Do not say anything." {n}Her teeth are very nearly chattering, which on a dragon is a sound like knives in a drawer.{/n} "Three hundred winters in the mountains of the north, the last hundred of them in the Wound, and I never once felt the cold. The old hide was a hand thick. This one is paper." {n}She pulls a fleece closer with one claw.{/n} "This is your fault. You kept the knives off me for three days in the snow while this grew. You did not think to keep me warm."''',
+    dv("braziers_her", '''"Do not say anything." {n}Her teeth are very nearly chattering, which on a dragon is a sound like knives in a drawer.{/n} "Three hundred winters in the mountains of the north, the last hundred of them in the Wound, and I never once felt the cold. The old hide was a hand thick. This one is paper." {n}She pulls a fleece closer with one claw.{/n} "This is your fault. You kept the knives off me for three days while this grew. You did not think to keep me warm."''',
        c('[Sit down inside the ring and lean against her.]', "lean"),
        c('"Next time you die, I\'ll bring braziers."', "both")),
     teller("city", '''{n}He goes up and comes back before noon, looking both shocked and delighted.{/n} "She said: 'Tell the Commander that if I come down into its city to get warm, I will not come back up, and the city will not be warm for very long afterwards.'" {n}He folds his hands.{/n} "And then she said, 'Send the braziers.' I have taken the liberty of ordering them in your name."''',

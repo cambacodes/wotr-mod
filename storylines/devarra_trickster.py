@@ -315,7 +315,7 @@ storyteller(P + "after.tithe", "What a woundwyrm eats", '"You have been up the r
           alignment=("Evil", 2), crusade=("Materials", -100), flags=(RUTHLESS,)),
         c('"She\'s the bane of the Worldwound. Let her hunt it. Feed her from the outer farms until she finds her first demon."', "ending",
           crusade=("Materials", -200), flags=(HUNTS,)),
-        c('"She\'ll eat when I say so."', "owned", flags=(CLOSED,))),
+        c('"She\'ll eat when I say so."', "owned", flags=(CLOSED, "devarra.trickster.refused"))),
     teller("owned", '''{n}The Storyteller sets down his cup.{/n} "I will carry that up, because you have asked me to, and because I would like to see her face, and cannot."
 {n}He comes back at dusk without his lantern.{/n} "She said: a woundwyrm does not come back to a keeper. The tower is empty. The oxen are safe. I do not think you will see her again, Commander, unless she decides to be the last thing you see."''',
         c('"So be it."')),
@@ -344,7 +344,7 @@ letter(P + "after.lair", "A tower above Drezen", [
        c("Continue", "flattered", requires=(FLATTERED,)),
        c("Continue", "kept_back", requires=(KEPT_BACK,)),
        c("Continue", "terms", forbids=(TRUE, FLATTERED, KEPT_BACK))),
-    dv("true", '''"A true story. You did not know the end, and you said so, to my face, inside the reach of my teeth." {n}Her lip lifts.{/n} "That impressed me. Do not make a habit of it."''',
+    dv("true", '''"A true story. You did not know the end, and you said so, knowing it would come to me and that I bite." {n}Her lip lifts.{/n} "That impressed me. Do not make a habit of it."''',
        c("Continue", "hunted", requires=(HUNTS,)), c("Continue", "cultists", requires=(RUTHLESS,), forbids=(HUNTS,)),
        c("Continue", "terms", forbids=(HUNTS, RUTHLESS))),
     dv("flattered", '''"You lied to me about my own ending, and you lied in my favour. The first liar I have met with manners. Keep doing it."''',
@@ -360,7 +360,7 @@ letter(P + "after.lair", "A tower above Drezen", [
     dv("terms", '''"My tariff, then; you know I keep one. The tower is mine; nobody climbs it but you. My eggs, wherever they are, are my business before they are yours. And once a year, where I choose, I take one bite. A small one."
 {n}Her breath is very hot, and smells of the forge and of the Worldwound.{/n} "I do love to play with my food, crusader, and you have made yourself very interesting food."''',
        c('[Bare your forearm] "Once a year. Not the sword arm."', "bitten", flags=(COMMITTED, BITTEN)),
-       c('"No bites."', "no", flags=(CLOSED,)),
+       c('"No bites."', "no", flags=(CLOSED, "devarra.trickster.refused")),
        c("[Leave her the tower, and her memory.]", "left", flags=(LEFT_HUNGRY,))),
     dv("bitten", '''"Not the sword arm. I am not a savage." {n}She looks at your bare arm the way a jeweller looks at a stone she has already decided to buy, and then, deliberately, she looks away from it, back at the lamps of Drezen.{/n}
 "Not tonight. I have waited three days in a dead thing for this. I can wait a little longer, and so can you. Go down the mountain. Come back when I send for you."''',
