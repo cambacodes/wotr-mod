@@ -169,17 +169,23 @@ fortune(MEAN, "Worthless", '"You said no one needs my essence."', [
       c('"You weren\'t wrong. Nobody wants mine."', "wrong")),
     ch("frightened", '''"I was frightened." {n}She nods, too many times.{/n} "I was so frightened that I went looking for the meanest thing in the room, and it was me." {n}She holds the grey parcel out, stiffly.{/n}
 "Everybody thinks I'm only nice. I'm not. I'm nice the way a sunny day is nice: because nothing's gone wrong yet. When something goes wrong, I can be as mean as Alichino. Meaner. He at least means it on purpose."''',
-      c('"Everyone has a worst moment. That was yours."', "forgive", flags=(FORGAVE_MEAN,)),
-      c('"Then don\'t do it again."', "again")),
+      c('"Everyone has a worst moment. That was yours."', "forgive", flags=(FORGAVE_MEAN,), requires=(MORNING,)),
+      c('"Then don\'t do it again."', "again"),
+      c('"Everyone has a worst moment. That was yours."', "forgive_early", flags=(FORGAVE_MEAN,), forbids=(MORNING,))),
     ch("hurt", '''{n}She flinches as if you had thrown something.{/n}
 "Good," she says, and then, horrified: "No. Not good. I meant... good that you told me. Not good that it hurt." {n}She presses the grey parcel against her chest.{/n}
 "I'm not used to hurting people. I'm used to hurting for them. I don't know what to do with this. I baked. I burnt them. They're in here."''',
-      c("[Take the burnt cookies, and eat one.]", "forgive", flags=(FORGAVE_MEAN,))),
+      c("[Take the burnt cookies, and eat one.]", "forgive", flags=(FORGAVE_MEAN,), requires=(MORNING,)),
+      c("[Take the burnt cookies, and eat one.]", "forgive_early", flags=(FORGAVE_MEAN,), forbids=(MORNING,))),
     ch("wrong", '''"Don't." {n}The flat no, the raised finger.{/n} "Don't say that. I said it to be cruel, and you're saying it to agree with me, and both of those are lies."
 "Your essence is the only one in this whole hall that isn't for sale. That's what makes it worth something." {n}Her finger trembles.{/n} "I knew that when I said it. That's what made it so mean."''',
-      c('"Then we\'re even. Your worst moment, and my agreeing with it."', "forgive", flags=(FORGAVE_MEAN,))),
+      c('"Then we\'re even. Your worst moment, and my agreeing with it."', "forgive", flags=(FORGAVE_MEAN,), requires=(MORNING,)),
+      c('"Then we\'re even. Your worst moment, and my agreeing with it."', "forgive_early", flags=(FORGAVE_MEAN,), forbids=(MORNING,))),
     ch("again", '''"I won't." {n}Instantly, fiercely.{/n} "I'll try not to. I'll be frightened again, I know I will, and when I am, I'll eat a cookie and say something nice about the weather instead."
 {n}Her mouth wobbles.{/n} "That's a promise. I don't know if I can keep it. I'm telling you that too, because that's fair."''',
+      c("Continue", "close")),
+    ch("forgive_early", '''{n}The cookies are very burnt. You eat one anyway. She watches you with enormous wet eyes.{/n}
+"You ate one." {n}Her voice cracks.{/n} "They're horrible. They're burnt all the way through, and I made them while I was being mean, and you ate one anyway." {n}She sets the grey parcel down and puts both her hands over her face.{/n} "That's the worst cookie I've ever baked, and you ate it for me."''',
       c("Continue", "close")),
     ch("forgive", '''{n}The cookies are very burnt. You eat one anyway. She watches you with enormous wet eyes.{/n}
 "You ate the burnt one." {n}Her voice cracks.{/n} "I told you about the burnt ones. I told you I eat them myself, alone, so nobody knows." {n}She sets the grey parcel down and puts both her hands over her face.{/n} "Now somebody knows."''',

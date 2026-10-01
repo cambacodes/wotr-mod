@@ -115,7 +115,7 @@ internal static class ChadaliTricksterTests
                 "A hall scene is not on her private list in Chapters 3/5 behind the sealed-hall guard: " + hall.Id);
         foreach (var remote in new[] { letter, lucky })
             check(Rules.IsRemote(remote) && remote.MinChapter == 5 && remote.MaxChapter == 5, "A sealed-hall letter is not a Chapter 5 letter: " + remote.Id);
-        check(own.Count(Rules.IsRemote) == 2, "Chadali has letters beyond the spec's one-per-branch budget.");
+        check(own.Count(Rules.IsRemote) == 3, "Chadali has letters beyond the spec's one-per-branch budget (orange, 'Lucky you', the sealed-hall seed).");
         check(lucky.TricksterDevice && lucky.TricksterState == "chadali.lost_at_council" && lucky.Requires.Contains("trickster")
               && lucky.Requires.Contains("chadali.lost_at_council.latched"),
             "'Lucky you' is not the ER-2 device of the lost-at-council state.");
@@ -249,6 +249,18 @@ internal static class ChadaliTricksterTests
               && paras.Single(p => p.Requires.Contains(P + "cost.luck_owed") && !p.Requires.Contains(F + "paid_back")).Forbids.Contains(F + "paid_back")
               && pageCommit.Nodes[0].Paragraphs.Any(p => p.Requires.Contains("chadali.lastcall.called")),
             "The romance pages contradict the Last Call call-in or the repaid loan.");
+        // Sol r2 INT: a soft no followed by the hall's closing and her reconciliation keeps the priced second ask (by letter).
+        var seedLetter = Sc(P + "after.orange_tree_letter");
+        var noThenFought = World(story, 5, "trickster.ever", "chadali.started", P + "declined", "council.fought", "chadali.lost_at_council.latched", P + "returned");
+        check(Rules.IsRemote(seedLetter) && Rules.Available(story, seedLetter, noThenFought) && !Rules.Available(story, tree, noThenFought)
+              && After(seedLetter, noThenFought, "start", 0).All(r => r.Has("chadali.committed") && r.Has(P + "cost.orange_tree"))
+              && Choice(seedLetter, "start", 0).Crusade?.Amount == -100 && First(seedLetter, noThenFought, "start", 1).Has("chadali.closed")
+              && seedLetter.Nodes.Single(n => n.Id == "came").Text.Contains("climbs over you"),
+            "A soft no is locked out when the hall closes before the second ask.");
+        // Sol r2 CAN/BEL: no Chapter 5 essence debate in a Chapter 3 sitting; the burnt-cookie secret is recalled only after it was told.
+        check(!Sc(H + "the_seat_beside_her").Nodes.Any(n => n.Text.Contains("essences"))
+              && Choice(Sc(F + "worthless"), "frightened", 0).Requires.Contains(F + "burnt_edges") && Choice(Sc(F + "worthless"), "frightened", 2).Next == "forgive_early",
+            "A sitting recalls an event or a secret the player has not reached.");
 
         // The courtship: every sitting reachable, the question only after the wager, the night only after the commit.
         foreach (var sitting in sittings)

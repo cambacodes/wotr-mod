@@ -447,7 +447,7 @@ wager(LOADED, "Loaded dice", '"You\'ve been quiet with me since the knucklebones
 # --- 12. The real wager: the last beat before the question. --------------------------------------------------------
 
 wager(REAL_WAGER, "The real wager", '"You wanted to make a proper bet?"', [
-    nar("open", '''{n}There are no cookies tonight. The Council table is bare except for the coin, still standing on its edge where it has stood since the day you called it, and one white flower from her hair laid beside it.{/n}''',
+    nar("open", '''{n}There are no cookies tonight. The Council table is bare except for the coin, standing on its edge where she keeps it, and one white flower from her hair laid beside it.{/n}''',
         c("Continue", "start")),
     ch("start", '''"A proper one." {n}She has her hands folded in her lap, very still, which is not like her.{/n}
 "We've made lots of little bets. Cookies and trays and devils coming to meetings. You win most of them, because you make them happen." {n}She looks at the coin.{/n}
@@ -480,7 +480,7 @@ wager(REAL_WAGER, "The real wager", '"You wanted to make a proper bet?"', [
 FLAT = W + "a_coin_lying_flat"
 
 wager(FLAT, "A coin lying flat", '"Is the question still open?"', [
-    nar("open", '''{n}The coin is lying flat on the Council table. It is the first time you have seen it lying down. Heads up: the sun.{/n}''',
+    nar("open", '''{n}The coin is lying flat on the Council table, and nobody has stood it back up. Heads up: the sun.{/n}''',
         c("Continue", "start")),
     ch("start", '''"I knocked it over." {n}She is not looking at it.{/n} "On purpose. I wanted to see if it would stand up again by itself, if I believed very hard. It didn't. I believed very hard for a whole night."
 "That's how I know it was you. All of it. Every time." {n}She turns her bracelet.{/n} "I said no. Not today. I meant it. I still mean it today."''',

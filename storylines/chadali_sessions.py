@@ -354,7 +354,7 @@ session(FRIENDS, "We are friends, right?", '"About what I asked you in session..
 # --- 11. The last evening (Chapter 5, after the yes): she gives the coin away. ---------------------------------------
 
 session(LAST_EVENING, "The last evening", '"The hall feels different tonight."', [
-    nar("open", '''{n}It does. The other chairs have been pushed in more neatly than usual, as if someone had been tidying without meaning to. On the Council table, on a small cracked saucer, the coin you called in the air is standing on its edge, where it has stood since the day you called it.{/n}''',
+    nar("open", '''{n}It does. The other chairs have been pushed in more neatly than usual, as if someone had been tidying without meaning to. On the Council table, on a small cracked saucer, the coin you called in the air is standing on its edge, where she keeps it standing.{/n}''',
         c("Continue", "start")),
     ch("start", '''"The door won't open for much longer." {n}She says it lightly.{/n} "I can feel it. The Council's nearly done, one way or another. Everything's lining up. I know the feeling; I was born in it."
 "So I want you to take the coin. Still standing. On the saucer. All the way to your quarters, without letting it fall." {n}She pushes the saucer across the table.{/n} "If it falls, I'll know. If it doesn't, I'll know that too."''',

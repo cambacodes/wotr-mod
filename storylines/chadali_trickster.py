@@ -119,7 +119,8 @@ SCENES.append(scene(P + "council.orange", "An orange! An orange!", "Chadali", 3,
 "It's still standing! Alichino tried twice and pretended he hadn't. Socothbenoth blew on it. Cobblehoof said 'Phrr' at it, which I think was a spell." {n}She beams.{/n} "I bet all of them a cookie apiece that it would stay up. Now they all owe me cookies."''',
       c('[Tip the coin over] "Chance had nothing to do with it. I balanced it."', "confession")),
     ch("confession", '''"I know." {n}She says it without any sulking at all, which is somehow worse.{/n} "I'm chance. I know what I did and what I didn't. That one was you."
-"And now I have to tell you something, because cleaning up after oneself is mandatory." {n}She turns the coin over in her fingers.{/n} "When it stood up, I felt your luck go into it. A great deal of luck, all at once, just lying there. So I borrowed a little. I spent it on the Council, on believing we'll win. I'll pay it back. I always pay back."''',
+"And now I have to tell you something, because cleaning up after oneself is mandatory." {n}She turns the coin over in her fingers.{/n} "When it stood up, I felt your luck go into it. A great deal of luck, all at once, just lying there. So I borrowed a little. I spent it on the Council, on believing we'll win. I'll pay it back. I always pay back."
+{n}Then she sets the coin back on its edge between you, with one finger, and takes the finger away, and it stays. It stays because she wants it to; you can see her wanting it.{/n}''',
       c('[Let her keep the luck] "Keep it. Bet it on me."', flags=(STARTED, COURTED)),
       c('[Ask for it back] "I\'ll want that back. With interest."', flags=(STARTED, LUCK_OWED))),
 ], requires=("trickster.ever", PRIMED), forbids=(STARTED, LOST), delay=24, last=5, Relationship="chadali", Chapters=[3, 5],
@@ -169,6 +170,21 @@ hall(P + "after.orange_tree", "The seed from Axis", '"You came back."', [
 ], requires=("trickster.ever", DECLINED), forbids=(COMMITTED,), delay=72)
 
 
+# The same second ask when the hall has closed after her soft no and she has reconciled (Sol r2 INT): by letter, then in person.
+letter(P + "after.orange_tree_letter", "The seed from Axis", [
+    ch("start", '''{n}A seed comes up from the Drezen gate in a twist of yellow silk: pale, striped, warm as a coin that has been in a pocket. The note is in the round hand, with fewer underlinings than usual.{/n}
+"The door to the hall doesn't open any more, and I said no to you once, in it. I'm still cross about the needle. I'm also still waiting for my proper question. This is from the tree at the top of Axis. Plant it in your city: a real one, with a gardener and a wall, not a trick. If it takes, ask me again and I'll say yes. If you won't spend a single stone on it, then it was only ever a game. C."''',
+      c('[Plant the tree] "It gets the best corner of the citadel garden."', "came", crusade=("Materials", -100),
+        flags=(COMMITTED, ORANGE_TREE)),
+      c('[Send the seed back] "I don\'t garden."', flags=(CLOSED,))),
+    nar("came", '''{n}She comes herself, the week the wall goes up, in yellow silk with a basket on her arm, and inspects the seedling on her knees in the mud of the citadel garden before she will look at you at all. Then she stands, wipes her hands down your tabard, and says, "Yes. There. You don't even have to ask again."{/n}
+{n}That night she kicks her sandals off inside the door of your quarters and does not bother with the lamp. She pulls the flower from her hair and the silk from her shoulders, pushes you down onto the bed with both hands, and climbs over you, laughing, a knee either side of your hips. "I bet you," she says against your mouth, "that the tree takes."{/n}''',
+        c("Continue", "morning")),
+    nar("morning", '''{n}In the morning there is garden soil on the sheets and honey on the pillow, and she is out by the wall before you wake, telling the gardener exactly how deep. The seedling has put out one new leaf overnight. She swears it was not her.{/n}''',
+        c("[Go and look at the leaf.]")),
+], requires=("trickster.ever", DECLINED, RETURNED), forbids=(COMMITTED, CLOSED, P + "after.orange_tree"), delay=72)
+
+
 # --- 4.2 Hall lost before the payoff (primed): the orange by courier. --------------------------------------------
 
 ERITRICE_PS = nar("postscript", '''{n}Folded inside the silk is a second slip, in a stern, upright hand.{/n} "For the record: the chair opened this parcel, as all correspondence of a dissolved Council remains Council business. The chair ate one cookie. The chair regrets nothing. E."''',
@@ -196,7 +212,7 @@ letter(P + "fought.lucky", "Lucky you", [
     nar("start", '''{n}The letter smells of honey and antiseptic. The round hand has pressed so hard that the nib has torn the paper twice.{/n}''',
         c("Continue", "coin", requires=(PRIMED,)),
         c("Continue", "hurt", forbids=(PRIMED,))),
-    nar("coin", '''{n}Your coin is in the envelope. It is lying flat, heads up. It has not lain flat since you called it in the air.{/n}''',
+    nar("coin", '''{n}Your coin is in the envelope. It is lying flat, heads up, the way nobody has been allowed to leave it since the day you called it.{/n}''',
         c("Read the letter.", "hurt")),
     ch("hurt", '''"You're so mean. You knocked me down and let them stick me with that needle. It hurt so, so much. Chance doesn't always bring you honey cookies. Sometimes you get sharp needles, and sometimes the needle is your lucky charm's fault."
 "I don't want to see you." {n}Three lines further down, smaller:{/n} "...Why did you write?"''',

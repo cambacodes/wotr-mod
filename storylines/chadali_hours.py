@@ -207,7 +207,7 @@ hour(WAITING, "Not today", '"You\'re very quiet."', [
     ch("ready", '''"When I'm yellow." {n}She nods, and goes back to kneading, more gently.{/n} "And when I've stopped shaking. Probably not at the same time. You'll have to pick one."''',
       c("[Leave her to her dough.]")),
     ch("brave", '''{n}She laughs, a little shakily.{/n} "That wasn't brave. That was just arriving. Anybody can arrive." {n}She thinks about it.{/n}
-"This is the first brave thing I've ever had to do on purpose." {n}She shoos you with a floury hand.{/n} "Go on. Not today. Soon."''',
+"I'm brave all the time. This is different. This is being brave where you can watch me do it, and I hate it." {n}She shoos you with a floury hand.{/n} "Go on. Not today. Soon."''',
       c("[Leave her to her dough.]")),
 ], requires=(REAL_WAGER,), forbids=(WAITING, COMMITTED, DECLINED))
 
@@ -276,7 +276,7 @@ hour(SEAT, "The seat beside her", '"You saved me a seat."', [
     nar("open", '''{n}The session has ended and the others have gone, but the evidence is still there: two chairs pushed so close together at the end of the table that their arms touch, and a single cookie on the seat of one of them, exactly where someone would have to move it to sit down.{/n}''',
         c("Continue", "start")),
     ch("start", '''"I did!" {n}Utterly unrepentant.{/n} "Eritrice said seating is by precedence. I said my precedence is that I got here first and put a cookie on it. She said that's not a rule. I said it is now."
-"And then you held my hand under the table for the entire debate about the essences." {n}She goes pink.{/n} "Did you know Shyka could see? Shyka can always see. They laughed at exactly the wrong moment, and everybody looked at me, and I had to pretend I'd been thinking of something funny."''',
+"And then I held your hand under the table for the entire session, and you let me." {n}She goes pink.{/n} "Did you know Shyka could see? Shyka can always see. They laughed at exactly the wrong moment, and everybody looked at me, and I had to pretend I'd been thinking of something funny."''',
       c('"What were you thinking of?"', "thinking"),
       c('"Should we be more careful?"', "careful")),
     ch("thinking", '''"Your thumb." {n}Instantly, and then she claps both hands over her mouth.{/n}
