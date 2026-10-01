@@ -658,6 +658,8 @@ LATCHES = {'arueshalae.evil_dead.latched': ['arueshalae.evil_dead'],
  'nenio.dead.latched': ['nenio.dead'],
  'nenio.killed.latched': ['nenio.killed_by_commander'],
  'nidalynn.trickster.eggs_crated': ['eggs.project'],
+ # PP10: the druids took the clutch (the straw door's 12 hours run from it).
+ 'nidalynn.trickster.eggs_given': ['eggs.druids'],
  'seelah.dead.latched': ['seelah_dead'],
  'seelah.gone.latched': ['seelah_gone'],
  'shamira.cauldron_shown.latched': ['shamira.cauldron_shown'],

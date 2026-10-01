@@ -105,7 +105,7 @@ internal static class NidalynnTricksterTests
         // Shape: the relationship, her two access states, her presences.
         var rel = story.Relationships["nidalynn"];
         check(rel.StartedFlag == "nidalynn.started" && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed && rel.UnavailableFlags.Length == 0
-              && rel.TricksterAccess.Keys.OrderBy(k => k).SequenceEqual(new[] { "golems", "vault" })
+              && rel.TricksterAccess.Keys.OrderBy(k => k).SequenceEqual(new[] { "golems", "straw", "vault" })
               && rel.TricksterAccess["golems"].Device == device.Id && rel.TricksterAccess["vault"].Device == vault.Id
               && rel.TricksterAccess.Values.All(a => a.Returned == P + "met"),
             "Nidalynn's relationship does not match 11 §2.");
@@ -188,7 +188,8 @@ internal static class NidalynnTricksterTests
         // Trk_Nidalynn_Confess: the crowd at the kiln; the truth costs Favors and the claim question follows.
         var lane = Later(story, fired, 49);
         var her = hatching.Nodes.Single(n => n.Id == "her").Choices;
-        check(her.Count == 4 && her[0].Set.Contains(P + "confessed") && her[0].Crusade?.Resource == "Favors"
+        check(her.Count == 5 && her[0].Set.Contains(P + "confessed") && her[0].Crusade?.Resource == "Favors"
+              && her[0].Forbids.Contains(P + "egg.straw") && her[4].Requires.Contains(P + "cost.slate") && her[4].Set.Contains(P + "confessed")
               && her[1].Set.Contains(P + "lied_at_kiln") && her[2].Set.Contains(Closed) && her[2].Set.Contains(P + "given_to_the_crowd")
               && her[3].Set.Contains(P + "confessed") && her[3].Requires.Contains(P + "egg.vault") && her[0].Forbids.Contains(P + "egg.vault"),
             "Trk_Nidalynn_Confess: the kiln's pivot is not confess, lie or burn.");
@@ -272,11 +273,22 @@ internal static class NidalynnTricksterTests
 
         // Reactors, pages, household.
         check(reactions.Length == 4 && reactions.All(r => r.Nodes.Count == 1)
-              && reactions.Select(r => r.Owner).OrderBy(o => o).SequenceEqual(new[] { "Greybor", "Ulbrig", "Ulbrig", "Woljif" }),
-            "The reactions are not Greybor, Ulbrig and Woljif.");
+              && reactions.Select(r => r.Owner).OrderBy(o => o).SequenceEqual(new[] { "Greybor", "Ulbrig", "Ulbrig", "Woljif" })
+              && S(P + "react.woljif.small_one").Forbids.Contains("chapter_later"),   // PP10 (Sol COX): Woljif retired by gating
+            "The reactions are not Greybor and Ulbrig, with Woljif's retired.");
+        // PP10 (Sol COX): the Chapter 4 kiln letter travels with the Storyteller's portal supplies, once he has offered them.
+        var kilnLetter = S(P + "letter.from_the_kiln");
+        check(kilnLetter.Requires.Contains("storyteller.supplies") && story.SeenCues["storyteller.supplies"].SequenceEqual(new[] { "459bf324a71c81c4ba5f3eead9ba42bb" })
+              && !Avail(kilnLetter, Later(story, World(story, 4, "trickster.ever", P + "met", "nidalynn.started", P + "kiln"), 25))
+              && Avail(kilnLetter, Later(story, World(story, 4, "trickster.ever", P + "met", "nidalynn.started", P + "kiln", "storyteller.supplies"), 25))
+              && kilnLetter.Nodes[0].Text.Contains("Storyteller"),
+            "Trk_Nidalynn_Letter: the kiln letter reaches the Abyss with no carrier.");
         check(pages.Length == 9 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
-        check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "form_chosen" })
+        check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "kissed" })
+              && !World(story, 6, "trickster.ever", P + "met", P + "form_chosen").Has(P + "late_committed")
+              && !World(story, 6, "trickster.ever", P + "met", P + "form_chosen").Has("nidalynn.harem.eligible")
+              && World(story, 6, "trickster.ever", P + "met", P + "form_chosen", P + "kissed").Has(P + "late_committed")
               && story.Derived["nidalynn.harem.eligible"].Length == 2 && story.Derived.ContainsKey("nidalynn.harem.voice.fed_at_the_fire"),
             "The late commit or the household eligibility is not declared.");
         var produced = new HashSet<string>(mine.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set).Concat(mine.Select(s => s.Id)));
@@ -366,6 +378,77 @@ internal static class NidalynnTricksterTests
               && S("nidalynn.lastcall.page").Forbids.Contains(P + "goat.lie_kept"),
             "Trk_Nidalynn_Goat: leaving over the wolves story has no page, or the Last Call coda still plays.");
 
+        // PP10 (Trk_Nidalynn_Straw): the druids took the clutch after both devices were missed. They carry eleven; the twelfth,
+        // left in the straw for dead, is kept by a lie on the stores' slate. It opens the same hearth and the same widow, with
+        // its own words at each, and never Devarra's count (which reads PRIMED and tells of an egg carried out of the chamber
+        // or the vault). Letting it go out with the bedding is the Commander's no: her door never opens.
+        var straw = S(P + "eggs.straw");
+        check(rel.TricksterAccess["straw"].Device == straw.Id && straw.TricksterDevice && Rules.IsRemote(straw) && straw.Kind == "event"
+              && straw.Requires.Contains("trickster") && straw.Requires.Contains(P + "eggs_given") && straw.Chapters.SequenceEqual(new[] { 3, 5 })
+              && story.Latches[P + "eggs_given"].SequenceEqual(new[] { "eggs.druids" }) && straw.DelayHours == 12,
+            "Trk_Nidalynn_Straw: the straw is not a Trickster's page after the druids' decree.");
+        var druidsTook = World(story, 3, "trickster", "trickster.ever", "eggs.seen", "eggs.project", "eggs.druids");
+        check(druidsTook.Has(P + "eggs_given") && Avail(straw, Later(story, druidsTook, 13)) && !Avail(vault, Later(story, druidsTook, 25))
+              && !Avail(device, druidsTook),
+            "Trk_Nidalynn_Straw: the druids' world has no door, or still offers the golems or the vault.");
+        foreach (var shut in new[] { "eggs.omelet", "eggs.destroyed", P + "primed", P + "egg_crushed" })
+            check(!Avail(straw, Later(story, World(story, 3, "trickster", "trickster.ever", "eggs.project", "eggs.druids", shut), 13)),
+                "Trk_Nidalynn_Straw: the straw opens in a world it does not belong to: " + shut);
+        check(!Avail(straw, Later(story, World(story, 3, "trickster.ever", "trickster.failed", "eggs.project", "eggs.druids"), 13))
+              && !Avail(straw, Later(story, World(story, 4, "trickster", "trickster.ever", "eggs.project", "eggs.druids"), 13))
+              && Avail(straw, Later(story, World(story, 5, "trickster", "trickster.ever", "eggs.project", "eggs.druids"), 13)),
+            "Trk_Nidalynn_Straw: a lost Trickster keeps the straw's egg, the straw plays in the Abyss, or a decree finished late has no door.");
+        check(Reaches(Program.Walk(straw, Later(story, World(story, 5, "trickster", "trickster.ever", "eggs.project", "eggs.druids", "irabeth.chapter_five"), 13))
+                      .First(r => r.Has(P + "egg.straw")), Committed),
+            "Trk_Nidalynn_Straw: a Chapter 5 straw egg has no road to the commit.");
+        var strawRuns = Program.Walk(straw, Later(story, druidsTook, 13));
+        var strawKept = strawRuns.Where(r => r.Has(P + "egg.straw")).ToList();
+        check(strawKept.Count == 2 && strawKept.All(r => r.Has(P + "cost.slate")) && strawKept.Any(r => r.Has(P + "quartermaster_knew")) && strawKept.Any(r => !r.Has(P + "quartermaster_knew"))
+              && strawKept.All(r => !r.Has(P + "primed")) && Ch(straw, "vault", 0).Check?.Skill == "CheckBluff" && Ch(straw, "vault", 0).Mythic == "PlayerIsTrickster"
+              && Ch(straw, "chit", 1).Abort && S("devarra.tower.one_short").Requires.Contains(P + "primed"),
+            "Trk_Nidalynn_Straw: the slate's lie, the quartermaster who saw or the deferral is missing, or the straw's egg reaches Devarra's count.");
+        var burnt = strawRuns.Single(r => r.Has(P + "straw.burned"));
+        check(!burnt.Has(P + "egg.straw") && !Reaches(burnt, "nidalynn.started") && !Avail(straw, Later(story, burnt, 48)),
+            "Trk_Nidalynn_Straw: the egg sent out with the bedding still opens her door, or the page plays again.");
+        var strawEgg = strawKept.First(r => !r.Has(P + "quartermaster_knew"));
+        check(Avail(stone, Later(story, strawEgg, 13)), "Trk_Nidalynn_Straw: the straw's egg never reaches the hearth.");
+        var strawStep = Later(story, After(stone, Later(story, strawEgg, 13), "end", 0).First(), 25);
+        check(Avail(widow, strawStep) && Visited(widow, strawStep).Contains("straw") && !Visited(widow, strawStep).Contains("druids")
+              && Program.WalkVia(widow, strawStep, "rock", 4).Count > 0 && Program.WalkVia(widow, strawStep, "rock", 4).All(r => r.Has(P + "told_egg"))
+              && Program.WalkVia(widow, strawStep, "rock", 1).Count == 0 && Program.WalkVia(widow, strawStep, "rock", 3).Count == 0,
+            "Trk_Nidalynn_Straw: the widow tells the straw's Commander about the golems or the vault, or never says she was a druid.");
+        check(!Visited(widow, Later(story, World(story, 3, "trickster", "trickster.ever", P + "primed", P + "hearth.grey_stone", P + "egg.vault", "eggs.project", "eggs.druids"), 25)).Contains("straw"),
+            "Trk_Nidalynn_Straw: the vault's Commander hears the straw.");
+        var strawHearth = Later(story, Program.Walk(widow, strawStep).First(r => r.Has(P + "met")), 25);
+        check(Visited(hearth, strawHearth).Contains("why_straw") && !Visited(hearth, strawHearth).Contains("why") && !Visited(hearth, strawHearth).Contains("why_vault")
+              && Program.Walk(hearth, strawHearth).Any(r => r.Has(P + "kiln_agreed")),
+            "Trk_Nidalynn_Straw: the hearth asks the straw's Commander about the golems or the vault, or never reaches the kiln.");
+        var strawLane = Later(story, World(story, 3, "trickster.ever", P + "egg.straw", P + "cost.slate", P + "hearth.grey_stone", P + "met", "nidalynn.started", P + "kiln", P + "quartermaster_knew"), 49);
+        var strawConfessions = Visited(hatching, strawLane);
+        check(strawConfessions.Contains("confess_straw") && !strawConfessions.Contains("confess") && !strawConfessions.Contains("confess_vault")
+              && strawConfessions.Contains("quartermaster") && !strawConfessions.Contains("clerk")
+              && Program.Walk(hatching, strawLane).Any(r => r.Has(P + "confessed") && r.Has(P + "hatched")),
+            "Trk_Nidalynn_Straw: the lane hears the wrong confession, or the quartermaster who saw keeps quiet.");
+        check(!Visited(hatching, lane).Contains("quartermaster") && !Visited(hatching, lane).Contains("confess_straw"),
+            "Trk_Nidalynn_Straw: the golems' Commander hears the quartermaster or confesses the straw.");
+        var strawWhose = Later(story, World(story, 3, "trickster.ever", P + "egg.straw", P + "met", "nidalynn.started", P + "confessed", P + "hatched"), 25);
+        check(Visited(whose, strawWhose).Contains("whose_straw") && !Visited(whose, strawWhose).Contains("whose")
+              && Program.WalkVia(whose, strawWhose, "choose", 2).Count == 0 && Program.WalkVia(whose, strawWhose, "choose", 3).All(r => r.Has(P + "claimed"))
+              && Program.WalkVia(whose, strawWhose, "choose", 3).Count > 0 && !Visited(whose, Later(story, confessed, 25)).Contains("whose_straw"),
+            "Trk_Nidalynn_Straw: whose she is says the straw's Commander stole her, or the others hear the straw.");
+        check(Reaches(strawEgg, Committed) && Reaches(strawKept.First(r => r.Has(P + "quartermaster_knew")), Committed),
+            "Trk_Nidalynn_Straw: no road to the commit from the straw.");
+
+        // PP10 (Sol COX): the grey dragon's bill on her page agrees with Devarra's Last Call coda: standing, or named at the rift.
+        var saltNode = S(P + "epilogue.salt").Nodes.Last();
+        var billWorld = World(story, 6, "trickster.ever", Committed, Bill);
+        var calledWorld = World(story, 6, "trickster.ever", Committed, Bill, "devarra.lastcall.called");
+        check(Rules.VisibleParagraphs(saltNode, billWorld).Any(t => t.Text.Contains("never paid"))
+              && !Rules.VisibleParagraphs(saltNode, billWorld).Any(t => t.Text.Contains("named her bill"))
+              && Rules.VisibleParagraphs(saltNode, calledWorld).Any(t => t.Text.Contains("named her bill"))
+              && !Rules.VisibleParagraphs(saltNode, calledWorld).Any(t => t.Text.Contains("never paid")),
+            "Trk_Nidalynn_Bill: her page says the bill was never paid after Devarra named it at the rift.");
+
         // Every page beat opens from its own gates.
         foreach (var s in own.Where(x => Rules.IsRemote(x) && !x.TricksterDevice))
         {
@@ -373,7 +456,7 @@ internal static class NidalynnTricksterTests
             var w = World(story, s.Chapters[0], new[] { "trickster", "trickster.ever", P + "primed", P + "met", "nidalynn.started" }.Concat(needs).ToArray());
             check(Avail(s, Later(story, w, s.DelayHours + 1)), "A Nidalynn page never opens: " + s.Id);
         }
-        Console.WriteLine("PASS: Nidalynn Trickster (Trk_Nidalynn_*): the golems' count and the vault, the widow and her own face, the kiln, "
+        Console.WriteLine("PASS: Nidalynn Trickster (Trk_Nidalynn_*): the golems' count, the vault and the druids' straw, the widow and her own face, the kiln, "
             + "the crowd (confess, lie, burn), the claim, the salt and the heel, the snowfield, Devarra's bill, "
             + reactions.Length + " reactions and " + pages.Length + " pages.");
     }

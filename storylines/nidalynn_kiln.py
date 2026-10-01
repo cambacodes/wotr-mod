@@ -15,6 +15,7 @@ from storylines.nidalynn_trickster import (
     GIVEN_UP, GOAT_CORRECTED, GOAT_STANDS, GOLEM, HAND, HAND_SET, HATCHED, KILN, KILN_AGREED, LEFT_WITH_IT, LIE_KEPT, LIED, MET, NAME_NONE, NAME_PEBBLE,
     NAME_SOOT, P, PALMS, REL, RENOUNCED, REVEALED, ROCK_JOKE, TOLD_EGG, TOLD_NOTHING, TOLD_ROCK, TORC_BOUGHT, TORC_LEFT,
     TORC_LIFTED, VAULT, WHY_COULD, WHY_DUNNO, WHY_SMALL, WHY_USE, nar, nd)
+from storylines.nidalynn_trickster import QUARTERMASTER, SLATE, STORYTELLER_SUPPLIES, STRAW   # PP10: the egg the druids left in the straw
 from storylines.nidalynn_trickster import steps as _steps, visit as _visit
 
 SCENES = []
@@ -76,14 +77,17 @@ visit(P + "hearth.listening", "Nobody's widow", [
         c('"I knew there was something wrong with the belly."', "belly", flags=(REVEALED,)),
         c('"You\'re the second-best liar in this room."', "second", flags=(REVEALED,))),
     nd("dragon", '''"On your hearthstone, in your good chair, drinking your wine, presently." {n}She is already reaching for the jug.{/n} "Don't look like that. We've been walking among you since before your crusades had names. Somebody has to keep an eye on you. You're so short-lived; you get into such trouble."''',
-        c("Continue", "why", forbids=(VAULT,)),
-        c("Continue", "why_vault", requires=(VAULT,))),
+        c("Continue", "why", forbids=(VAULT, STRAW)),
+        c("Continue", "why_vault", requires=(VAULT,)),
+        c("Continue", "why_straw", requires=(STRAW,))),
     nd("belly", '''"Did you." {n}She looks down at it with something like pride.{/n} "It's a good belly. It's got me through three sieges and a plague year. Soldiers step round it, and the women feed it, and nobody asks it hard questions." {n}She pours herself your wine.{/n} "Tell me what was wrong with it, so I can fix it. No; don't. You'll only say it's too round, and it isn't."''',
-        c("Continue", "why", forbids=(VAULT,)),
-        c("Continue", "why_vault", requires=(VAULT,))),
+        c("Continue", "why", forbids=(VAULT, STRAW)),
+        c("Continue", "why_vault", requires=(VAULT,)),
+        c("Continue", "why_straw", requires=(STRAW,))),
     nd("second", '''{n}She laughs, a real laugh, big and warm and a little too loud for the room, and it fills your quarters and does not quite fit in them.{/n} "Second! You've got a Sanctum egg in your fire and the whole citadel calling it a rock, and you say second." {n}She wipes her eyes.{/n} "Well. Maybe. I've had longer to practise."''',
-        c("Continue", "why", forbids=(VAULT,)),
-        c("Continue", "why_vault", requires=(VAULT,))),
+        c("Continue", "why", forbids=(VAULT, STRAW)),
+        c("Continue", "why_vault", requires=(VAULT,)),
+        c("Continue", "why_straw", requires=(STRAW,))),
     nd("why", '''{n}She settles into your chair, with a hand under the belly, pours herself a cup of your wine, and turns it without drinking.{/n} "Now you. I've told you what I am. You tell me why you did it."
 "You stood in that chamber with Xanthir Vang's golems over you, and you went in under their fists for the smallest egg of a dragon who tried to burn your army out of the sky. Why?"''',
         c('"It was the smallest. The golems had already given up on it."', "small", flags=(WHY_SMALL,)),
@@ -94,6 +98,13 @@ visit(P + "hearth.listening", "Nobody's widow", [
 "The clutch was crated in your own vault. The druids wanted it, and your cooks wanted it, and you'd only to wait and let somebody else decide. Instead you went down at night with a coal bucket, past your own clerk, and carried the smallest egg of a dragon who tried to burn your army out of the sky up four flights in your bare hands. Why?"''',
         c('"It was the smallest. Nobody was going to miss it."', "small", flags=(WHY_SMALL,)),
         c('"Because the cooks or the druids were going to have it, and I could stop them."', "could", flags=(WHY_COULD,)),
+        c('"A dragon on the crusade\'s side could be useful."', "useful", flags=(WHY_USE,)),
+        c('"I don\'t know. I still don\'t."', "dunno", flags=(WHY_DUNNO,))),
+    # PP10: the straw's Commander kept what four "druids" gave up for dead, and signed it off the stores in chalk.
+    nd("why_straw", '''{n}She settles into your chair, with a hand under the belly, pours herself a cup of your wine, and turns it without drinking.{/n} "Now you. I've told you what I am. You tell me why you did it."
+"We let our eldest call it dead, and I should have stayed with it. Your quartermaster wanted it out with the bedding, and every soldier in this city would have cheered the cart. You had only to nod. Instead you signed a lie on your own stores' slate, and carried the smallest egg of a dragon who tried to burn your army out of the sky up to your own fire, cold, with nothing in it anybody could hear. Why?"''',
+        c('"It was the smallest. Nobody was going to miss it."', "small", flags=(WHY_SMALL,)),
+        c('"Because everybody said it was finished, and I could still try."', "could", flags=(WHY_COULD,)),
         c('"A dragon on the crusade\'s side could be useful."', "useful", flags=(WHY_USE,)),
         c('"I don\'t know. I still don\'t."', "dunno", flags=(WHY_DUNNO,))),
     nd("small", '''"Yes." {n}She nods slowly, as though you have handed her something she was expecting and is glad to have.{/n} "My grandfather used to say the runt of any litter is the one that remembers who fed it. He was talking about foals. He was usually right about foals."''',
@@ -249,17 +260,26 @@ visit(P + "kiln.hatching", "What came out of the rock", [
     nar("crowd", '''{n}The sergeant with the squint pushes to the front and stands there, spear grounded, looking from the kiln to you, very unhappy.{/n} "Commander." {n}He wets his lips.{/n} "They're saying it came out of your rock."
 {n}Behind him a woman in a Kenabres shawl says, not loudly, that a woundwyrm burned her husband's wagon on the Kenabres road with him in it. A soldier with a burn-scarred jaw says the mother came down on his company at the ford. The chaplain says that he has burned Wound-spawn before and will burn this, and the torch in his fist says he means now.{/n}''',
         c("Continue", "clerk", requires=(CLERK,)),
-        c("Continue", "her", forbids=(CLERK,))),
+        c("Continue", "her", forbids=(CLERK, QUARTERMASTER)),
+        c("Continue", "quartermaster", requires=(QUARTERMASTER,))),
+    nar("quartermaster", '''{n}And at the back, still in his stores apron, the quartermaster is telling anyone who will listen that the druids left that egg in his straw for dead, and the Commander said it would be buried, and signed it off his slate as disposed of; and that he knew it for a lie when he chalked it, and chalked it anyway, and he'll not pretend otherwise now.{/n}''',
+        c("Continue", "her")),
     nar("clerk", '''{n}And at the back, a young man with ink on his cuffs, the vault clerk, is saying to anyone who will listen that he saw the Commander in the vault at night with a bucket of coal, and that he counted eleven and wrote twelve, and that he has been sick about it ever since.{/n}''',
         c("Continue", "her")),
     nar("her", '''{n}Nidalynn has got to her feet. She has the hatchling bundled against her, under the shawl, over the swell of the widow's belly, and it is still growling. She stands in the kiln's mouth with the heat at her back, between the fire and the torches, and she does not say anything.{/n}
 {n}She is looking at you. Not pleading. Waiting. Whatever is said to this lane tonight, she is not going to be the one to say it.{/n}''',
         c('[Tell them the truth] "It did. I took it out of the Ivory Sanctum from under the golems, and brought it into this city in my pack, and called it a rock. I lied to every one of you. It\'s mine to answer for."',
-          "confess", flags=(CONFESSED,), crusade=("Favors", -100), forbids=(VAULT,)),
+          "confess", flags=(CONFESSED,), crusade=("Favors", -100), forbids=(VAULT, STRAW)),
         c('[Lie] "Nonsense. It came down out of the hills in the snow. I\'ll have it caged and sent north."', "lied", flags=(LIED,)),
         c('[Give it to them] "Then burn it."', "given", flags=(GIVEN_UP, CLOSED)),
         c('[Tell them the truth] "It did. I took it out of the citadel vault in a coal bucket, past my own clerk, and carried it up the stairs in my hands, and called it a rock. I lied to every one of you. It\'s mine to answer for."',
-          "confess_vault", flags=(CONFESSED,), crusade=("Favors", -100), requires=(VAULT,))),
+          "confess_vault", flags=(CONFESSED,), crusade=("Favors", -100), requires=(VAULT,)),
+        # PP10: the egg the druids left in the straw.
+        c('[Tell them the truth] "It did. The druids left it in my vault for dead, and I signed it off the stores\' slate as disposed of, and carried it up to my own fire, and called it a rock. I lied to every one of you. It\'s mine to answer for."',
+          "confess_straw", flags=(CONFESSED,), crusade=("Favors", -100), requires=(SLATE,))),
+    nar("confess_straw", '''{n}The lane goes quiet in a way that is worse than shouting.{/n}
+{n}You tell them the rest of it, because once you have started there is no sense stopping. The druids and their handcart. The twelfth egg on the straw heap, cold, that four of them gave up for dead. The slate, and the lie on it with your mark beside it. The hearth. The "rock". You tell them your steward did not know, and the sergeant did not know, and the widow is a widow who knows eggs. You tell them that if it ever burns a wagon or a barn or a man, they are to bring the bill to the citadel, and it will be paid, by you, in whatever coin is owed.{/n}''',
+        c("Continue", "chaplain")),
     nar("confess_vault", '''{n}The lane goes quiet in a way that is worse than shouting.{/n}
 {n}You tell them the rest of it, because once you have started there is no sense stopping. The vault. The soot. The lump of coal in the straw where the egg had been, and the clerk who wrote down twelve. The stairs, and your palms. The hearth. The "rock". You tell them your steward did not know, and the sergeant did not know, and the widow is a widow who knows eggs. You tell them that if it ever burns a wagon or a barn or a man, they are to bring the bill to the citadel, and it will be paid, by you, in whatever coin is owed.{/n}''',
         c("Continue", "chaplain")),
@@ -304,7 +324,7 @@ visit(P + "kiln.truth_owed", "Hills in the north", [
         c('"You didn\'t say anything either."', "silent")),
     nd("kept", '''"It did." {n}She puts the mending down.{/n} "And the truth would have too, if you'd stood there long enough. I watched their faces. They were ready to be ashamed of themselves. You didn't give them the chance."''',
         c("Continue", "salt")),
-    nd("silent", '''"No. I didn't." {n}She meets your eyes.{/n} "It wasn't mine to say. You stole her; I'd only have been telling on you. And you'd have let me, I think. You'd have let an old widow take the torches for you, and felt clever about it after."''',
+    nd("silent", '''"No. I didn't." {n}She meets your eyes.{/n} "It wasn't mine to say. You hid her; I'd only have been telling on you. And you'd have let me, I think. You'd have let an old widow take the torches for you, and felt clever about it after."''',
         c("Continue", "salt")),
     nd("salt", '''"I'm not going to bargain with you, Commander. I'm too old, and it's beneath us both." {n}She folds her hands on the belly.{/n} "I'll tell you how it is with me, and you'll do what you like."
 "Reudger wouldn't eat salt with a man who lied to him about what he loved. It wasn't a rule. He said it only wouldn't go down. I've found he was right." {n}She looks at the hatchling.{/n} "You love this ugly little thing. I've seen you look at her. And you stood in that lane and told the whole city she was a stray from the hills. I can't eat at your fire while that's the story. The salt won't go down."''',
@@ -330,17 +350,24 @@ visit(WHOSE, "Whose she is", [
         c("Continue", "eat")),
     nd("eat", '''"Eat first. Then I'm going to ask you something, and I'd rather you weren't hungry when I do. Hungry people say whatever gets them to the next meal." {n}She waits until you have eaten half of it.{/n}
 "Whose is she?"''',
-        c("Continue", "whose")),
+        c("Continue", "whose", forbids=(STRAW,)),
+        c("Continue", "whose_straw", requires=(STRAW,))),
+    # PP10: the straw's Commander kept what everybody else, Nidalynn included, had given up.
+    nd("whose_straw", '''"I'm not being clever. It's a real question, and I don't know the answer." {n}The hatchling butts her head against Nidalynn's knee and is ignored.{/n} "You kept her fair, if there's such a thing. Everybody else had given her up, me with them, and you put your mark to a lie on your own stores' slate to keep her. The crusade could say she's its own, a war-prize out of the Sanctum that the druids left behind, and there's not a court in Mendev would argue. A dragon on your side of the Wound. There are generals who'd sell their mothers for that."
+"I'm only an old woman with a kiln. I can't take what isn't given me. So I'm asking."''',
+        c("Continue", "mother", requires=(DV_RETURNED,)),
+        c("Continue", "choose", forbids=(DV_RETURNED,))),
     nd("whose", '''"I'm not being clever. It's a real question, and I don't know the answer." {n}The hatchling butts her head against Nidalynn's knee and is ignored.{/n} "You stole her fair, if there's such a thing. You took her when nobody else would have, and paid for it. The crusade could say she's its own, a war-prize out of the Sanctum, and there's not a court in Mendev would argue. A dragon on your side of the Wound. There are generals who'd sell their mothers for that."
 "I'm only an old woman with a kiln. I can't take what isn't given me. So I'm asking."''',
         c("Continue", "mother", requires=(DV_RETURNED,)),
         c("Continue", "choose", forbids=(DV_RETURNED,))),
-    nd("mother", '''"And her mother's alive. She'll come for her. Not tomorrow, maybe, but dragons have long memories and she has a long reason." {n}She says it without fear, as she might say that the river floods in spring.{/n} "When she comes, she'll be told the truth, by me. That you stole her child, and I kept it. And she'll send the bill for it to you, Commander, not to me. That's only fair. I'd do the same."''',
+    nd("mother", '''"And her mother's alive. She'll come for her. Not tomorrow, maybe, but dragons have long memories and she has a long reason." {n}She says it without fear, as she might say that the river floods in spring.{/n} "When she comes, she'll be told the truth, by me. That you took her child, and I kept it. And she'll send the bill for it to you, Commander, not to me. That's only fair. I'd do the same."''',
         c("Continue", "choose")),
     nd("choose", '''{n}The hatchling has found your boot and is chewing the lace with great concentration.{/n}''',
         c('"She\'s yours to raise. I\'ve no claim on her, and I won\'t make one."', "given", flags=(RENOUNCED,)),
         c('"She\'s the crusade\'s. A dragon on our side of the Wound is worth an army."', "crusade", flags=(CLAIMED,)),
-        c('"She\'s mine. I stole her fair."', "mine", flags=(CLAIMED,))),
+        c('"She\'s mine. I stole her fair."', "mine", flags=(CLAIMED,), forbids=(STRAW,)),
+        c('"She\'s mine. I kept her fair, when nobody else would."', "mine", flags=(CLAIMED,), requires=(STRAW,))),
     nd("given", '''{n}She lets out a breath.{/n} "Just like that."
 "You know what you're giving away? At the rate she's growing she'll be the size of a barn before long, and one day a thing that could take a city. You could have had her at your heel." {n}She puts her hand on the hatchling's back, and the hatchling, for once, allows it.{/n} "And you'd have been a worse Commander for it, and she'd have been a worse dragon."
 "Thank you. I don't say it for show. I'm grateful, and I'll stay grateful, and you'll find that's a heavy thing to have a dragon feel toward you."''',
@@ -387,7 +414,7 @@ visit(FEEDING, "What she eats", [
 {n}The hatchling is on the warm step with her tail around her feet, looking pleased with herself. She is bigger every time you see her, and hungrier.{/n}''',
         c("Continue", "meat")),
     nd("meat", '''"She needs meat. A great deal of it, and often, and alive when she can get it; she has to learn to kill or she'll never learn to hunt." {n}Nidalynn sits down with a grunt.{/n} "And what she learns to hunt now is what she'll go looking for when she's grown, if I've any say in it. Her mother learned on whatever came through the Wound, and look what she hunted: your army."
-"So. You stole her. You'll help me choose."''',
+"So. You took her. You'll help me choose."''',
         c('[Have the provosts send her what they kill at the rift] "Demons. Let her grow up hating the taste of them."', "demons", flags=(FED_DEMONS,)),
         c('[Send down goats from the crusade\'s stores] "Goats. A dragon that hunts goats is somebody\'s problem, not everybody\'s."', "goats",
           flags=(FED_GOATS,), crusade=("Materials", -50)),
@@ -414,7 +441,7 @@ visit(FEEDING, "What she eats", [
 # --- 10. A letter to the Abyss (Chapter 4, optional): from the kiln ------------------------------------------------------
 
 visit(ABYSS_LETTER, "From the kiln", [
-    nd("letter", '''{n}The letter is on the back of a quartermaster's requisition for lamp oil, folded small, in a big, round, old-fashioned hand. It smells of woodsmoke. Nobody can tell you how it reached you here.{/n}
+    nd("letter", '''{n}The letter is on the back of a quartermaster's requisition for lamp oil, folded small, in a big, round, old-fashioned hand. It smells of woodsmoke. It came through the Storyteller's portal with the supplies he fetches from Golarion: a Sarkorian woman was waiting at his door in Drezen with it, he says, and would not go away until he had put it in his satchel.{/n}
 "Commander. I hope you are eating. I don't know what grows where you are. Whatever it is, don't eat that. Eat what you brought."''',
         c("Continue", "hatched", requires=(HATCHED,)),
         c("Continue", "egg", forbids=(HATCHED,))),
@@ -433,7 +460,8 @@ visit(ABYSS_LETTER, "From the kiln", [
 "Come back whole. I have been setting other people's bones since you left, and I am tired of it."
 {n}At the bottom, in the same hand, smaller, as if written afterwards and nearly scratched out:{/n} "N. Of the kiln."''',
         c("[Fold the letter away.]")),
-], requires=(KILN,), forbids=(ABYSS_LETTER, LIE_KEPT), delay=24, chapters=(4, 4), kind="letter", optional=True)
+], requires=(KILN, STORYTELLER_SUPPLIES), forbids=(ABYSS_LETTER, LIE_KEPT), delay=24, chapters=(4, 4), kind="letter",
+    optional=True)   # PP10 (Sol COX): carried by the Storyteller's portal supplies, once he has offered them
 
 
 # --- 11. The spear (after the confession): the man whose company her mother burned (pivotal) ---------------------------
