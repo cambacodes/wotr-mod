@@ -121,16 +121,16 @@ hub(BAD_DAY, "Symptoms", 3, '"Arueshalae?"', [
 # --- After the yes: a first quarrel ---------------------------------------------------------------------------
 
 hub(QUARREL, "Second opinion", 5, '"You\'re angry with me."', [
-    a("start", '''"Yes. I am. You walked into that arrow as if it were weather, and I had to stand there and smell you bleed." {n}She has her arms folded and her chin up.{/n}
-"You went into the siege lines alone yesterday. Without telling anyone. Without telling me. You came back with an arrow in your shoulder and a joke about it." {n}Her voice shakes.{/n} "I have spent this whole war learning how not to take a life from anybody. And you walk out and offer yours to the first demon with a bow, as if it were a cheap thing."''',
+    a("start", '''"Yes. I am." {n}She has her arms folded and her chin up, and the quartermaster's ledger under one of them.{/n}
+"I counted the seals. I went through his book line by line, the way I used to go through a mark's letters. Since the procedure you've bought more scrolls of death ward than the shrine buys in a season, and every one of them so that I could hold your hand for seven minutes." {n}Her voice shakes.{/n} "I have spent this whole war learning how not to take anything from anybody. And you've been paying for me by the minute, out of the same purse that buys arrows, and you never once told me the sum."''',
         c("Continue", "fear")),
-    a("fear", '''"Do you know what I thought, when they brought you in? Not 'will they live'. I thought: if they die, I'll have to learn how to be without them, and I'm so bad at learning, I've been learning for years, I haven't got the time." {n}She is crying now, and furious about it.{/n}
-"So yes. I'm angry. I'm going to be angry for at least a day. And you're going to let me, and you're not going to make a joke about it, and tomorrow you're going to tell me before you do something stupid."''',
+    a("fear", '''"Do you know what I thought, when I added it up? Not 'how kind'. I thought: that's a sergeant's pay, gone in the time it takes a candle to drip. That's bread for the refugee quarter. That's what Lady Vellexia's guests spent to sit at her table, and she ate them anyway." {n}She is crying now, and furious about it.{/n}
+"So yes. I'm angry. I'm going to be angry for at least a day. And you're going to let me, and you're not going to make a joke about it, and from now on you're going to tell me before you buy another, so that I can say no."''',
         c('"I\'ll tell you. Before. Every time."', "promise", flags=(QUARREL,)),
-        c('"I can\'t promise that. It\'s a war, and I\'m the Commander."', "cant", flags=(QUARREL,))),
-    a("promise", '''"Every time." {n}She glares at you through her tears.{/n} "You say that about everything. Every time. It's the most frightening thing you say." {n}Then she sits down next to you, hard, and leans her head on your good shoulder.{/n} "I'm still angry. This is me being angry. Don't move."''', c()),
-    a("cant", '''"No. I know you can't." {n}She wipes her face.{/n} "That's what makes it a real quarrel, I suppose. In the Upper City we never quarrelled. We just waited until someone was asleep." {n}She sits down, not next to you, but not far.{/n} "I'm going to be angry for two days, then. And afterwards I'll still be here. That's new too."''', c()),
-], (MORNING,), delay=48, chapters=(5,))
+        c('"No. It\'s my coin, and it\'s my hand. I\'ll spend both as I like."', "cant", flags=(QUARREL,))),
+    a("promise", '''"Every time." {n}She glares at you through her tears.{/n} "You say that about everything. Every time. It's the most frightening thing you say." {n}Then she sits down next to you, hard, and leans her head on your shoulder, on the cloth, the careful way.{/n} "I'm still angry. This is me being angry. Don't move."''', c()),
+    a("cant", '''"No. I know you won't." {n}She wipes her face.{/n} "That's what makes it a real quarrel, I suppose. In the Upper City we never quarrelled. We just waited until someone was asleep." {n}She sits down, not next to you, but not far.{/n} "I'm going to be angry for two days, then. And afterwards I'll still be here, and I'll still take your hand when you've paid for it, and I'll hate that I do. That's new too."''', c()),
+], (MORNING, CURED), delay=48, chapters=(5,))   # Sol r1 BEL: the quarrel is over the scrolls the player actually bought
 
 
 # --- The chaplain: a wedding ----------------------------------------------------------------------------

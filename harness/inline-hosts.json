@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1073,
-  "resolved": 1073,
+  "entryTargetScenes": 1077,
+  "resolved": 1077,
   "inlineOnlyScenes": 282,
   "inlineOnlyResolved": 282,
-  "answerListScenesWithoutContact": 646,
-  "answerListScenesWithoutContactResolved": 646,
+  "answerListScenesWithoutContact": 649,
+  "answerListScenesWithoutContactResolved": 649,
   "lists": 120,
   "listsWithReachableHost": 119
  },
@@ -2505,6 +2505,25 @@
     "clicks": 0
    }
   },
+  "arueshalae.treatment.freed_hands": {
+   "kind": "dialog",
+   "lists": [
+    "03ebad9587cbea0438d901a0f8df44f1"
+   ],
+   "explicit": true,
+   "contact": "a352873d37ec6c54c9fa8f6da3a6b3e1",
+   "entry": {
+    "03ebad9587cbea0438d901a0f8df44f1": "RRT_entry.arueshalae.treatment.freed_hands"
+   },
+   "resolved": true,
+   "host": {
+    "list": "03ebad9587cbea0438d901a0f8df44f1",
+    "dialog": "a718e45e4ea8f8a45acde516d72b6584",
+    "dialogName": "Dialogue_Arueshalae_Main",
+    "cue": "Cue_0004",
+    "clicks": 0
+   }
+  },
   "arueshalae.treatment.intake": {
    "kind": "dialog",
    "lists": [
@@ -3455,6 +3474,44 @@
     "clicks": 0
    }
   },
+  "arueshalae.trickster.react.lann_fallen_hungry": {
+   "kind": "dialog",
+   "lists": [
+    "66385ad77fa743e4bb1234078dbd804c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "66385ad77fa743e4bb1234078dbd804c": "RRT_entry.arueshalae.trickster.react.lann_fallen_hungry"
+   },
+   "resolved": true,
+   "host": {
+    "list": "66385ad77fa743e4bb1234078dbd804c",
+    "dialog": "054c1b209de5c9042a02d6736cd3b2ac",
+    "dialogName": "Lann_Main_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "arueshalae.trickster.react.lann_fallen_prisoner": {
+   "kind": "dialog",
+   "lists": [
+    "66385ad77fa743e4bb1234078dbd804c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "66385ad77fa743e4bb1234078dbd804c": "RRT_entry.arueshalae.trickster.react.lann_fallen_prisoner"
+   },
+   "resolved": true,
+   "host": {
+    "list": "66385ad77fa743e4bb1234078dbd804c",
+    "dialog": "054c1b209de5c9042a02d6736cd3b2ac",
+    "dialogName": "Lann_Main_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
   "arueshalae.trickster.react.lann_prisoner": {
    "kind": "dialog",
    "lists": [
@@ -3502,6 +3559,25 @@
    "contact": null,
    "entry": {
     "129b55b8b5d50974f84f7c607d894fd0": "RRT_entry.arueshalae.trickster.react.sosiel_evil"
+   },
+   "resolved": true,
+   "host": {
+    "list": "129b55b8b5d50974f84f7c607d894fd0",
+    "dialog": "0ec4d9a0f5599a44c8a25f77da94bfd7",
+    "dialogName": "Dialogue_Sosiel_Main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "arueshalae.trickster.react.sosiel_fallen": {
+   "kind": "dialog",
+   "lists": [
+    "129b55b8b5d50974f84f7c607d894fd0"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "129b55b8b5d50974f84f7c607d894fd0": "RRT_entry.arueshalae.trickster.react.sosiel_fallen"
    },
    "resolved": true,
    "host": {

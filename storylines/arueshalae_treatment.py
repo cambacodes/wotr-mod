@@ -220,7 +220,7 @@ session(TOUCHED, "The procedure", 3, '"I want to try something. Give me your han
         c('"You\'re right. Not yet."', abort=True),
         c('[Spend a Scroll of Death Ward: have the shrine\'s chaplain read it over you, then hold out your hand] "Seven minutes. Let\'s not waste them."',
           "ward_try", requires=(WARD_HELD,), remove_item=SCROLL),
-        c("[Reach into your satchel for the scroll.]", "no_scroll", forbids=(WARD_HELD,))),
+        c("[Not yet: there is no ward read on you.]", "no_scroll")),
     nar("ward_try", '''{n}You walk her across the yard to the chapel. The shrine's chaplain breaks the seal for you at the altar rail and reads the scroll over you, every word, without asking why, and you feel it settle on your skin like a coat of cold water, and then like nothing at all. The parchment goes to ash in his fingers. She watches it fall from the doorway, and does not come in.{/n}
 {n}Then she takes your hand. Her fingers are cool and very light. You wait for the draught under the door, the cold in the middle of you that every soldier in the crusade has heard about. It does not come. She is waiting for it too; you can see her waiting, braced, the way a woman braces on ice.{/n}''',
         c("Continue", "cured")),
@@ -229,7 +229,7 @@ session(TOUCHED, "The procedure", 3, '"I want to try something. Give me your han
 "Seven minutes," you tell her. "Then the ward's spent, and so is the scroll. Every time, a new one. That's the treatment."
 {n}She holds on while you count. At the sixth minute she lets go herself, carefully, before the ward can let go of you, and holds the hand you held against her chest, and begins to cry, silently.{/n} "I've never held anyone's hand before without killing a little of them. Not once." {n}A wet, startled laugh.{/n} "Seven minutes, at the price of a horse. Gods help your purse, doctor. I'll take it."''',
         c("[Keep your hand where she can see it.]", flags=(TOUCHED, CURED))),
-    nar("no_scroll", '''{n}You reach into your satchel for the scroll case and find it empty. She sees it before you do; she sees everything before you do.{/n}
+    nar("no_scroll", '''{n}She looks at your bare hand, and then at your face, and sees the answer before you give it; she sees everything before you do.{/n}
 "No ward." {n}She puts her hands behind her back, quite gently, the way she puts them away in a crowd.{/n} "Then no hand. Not tonight, and not on a promise. Buy it, and have it read, and come back, and I'll be braver than this. I swear by the road I will."''',
         c("[Go and find the scroll-sellers.]", abort=True)),
     nar("cure_try", RETIRED_TEXT, c("Continue", "cured")),   # retired with its answers (2026-10-01): the candle and the lore
@@ -287,7 +287,7 @@ session(QUEEN, "Only because I allow it", 4, '"You\'ve been quiet since the Midn
     a("promise", '''"Thank you." {n}She lets out a long breath, and some of the rigidity goes out of her.{/n} "I know it's a lot to ask of a Trickster. Promising not to bargain is like promising not to breathe." {n}She almost smiles.{/n} "Which, now I think of it, is something I'm very good at, so I'll keep you company."''', c()),
     a("refuse", '''{n}She watches you in silence, and then, very slowly, she nods.{/n}
 "No. Of course you can't. If you could, you wouldn't be you, and she'd have one less thing to fear in the whole of the Abyss." {n}She looks away, towards the violet horizon of the Midnight Isles.{/n} "Just... if you ever do it, don't tell me what you paid. I don't want to have to carry that as well."''', c()),
-], (CLAIMED, INTAKE, "trickster.ever"), forbids=(QUEEN,), delay=24, chapters=(4, 5), optional=True)
+], (CLAIMED, INTAKE, "trickster.ever"), forbids=(QUEEN,), delay=24, chapters=(4,), optional=True)   # Sol r1 CAN: told in the Isles
 
 
 # --- The kitchen (Chapter 5): the meal someone made -----------------------------------------------------------------
@@ -427,10 +427,10 @@ session(NIGHT, "Under the Tender of Dreams", 5, '"Where are we going?"', [
           requires=(WARD_HELD,), forbids=(ELYSIUM,), remove_item=SCROLL),
         # 2026-10-01: no scroll, no touch. Released from the Abyss she needs none (her touch no longer drains).
         c("Continue", "tower", requires=(ELYSIUM,)),
-        c("Continue", "no_ward", forbids=(WARD_HELD, ELYSIUM))),
+        c("[Tell her there is no ward on you tonight.]", "no_ward", forbids=(ELYSIUM,))),
     nar("stair", '''{n}You make her wait at the foot of the old bell tower while the shrine's chaplain comes down the lane with his lantern, breaks the seal and reads the ward over you by its light. He does not ask what it is for. He looks at her once, and at you, and goes back to his bed. The ward settles on your skin like cold water, and then like nothing. She has already started counting under her breath.{/n}''',
         c("Continue", "tower", flags=(T + "night.warded",))),
-    a("no_ward", '''{n}Her hands are on your belt, ready to lift, when she stops. She has felt the satchel against her hip, and it is too light; she knows the weight of a scroll case by now the way a quartermaster knows a short sack.{/n}
+    a("no_ward", '''{n}Her hands are on your belt, ready to lift, when you tell her. She stops, and looks at your bare wrist, where the chaplain's ink would be.{/n}
 "There's no ward in there." {n}She lets go of you, finger by finger.{/n} "Not tonight, then. I won't take you up a tower and spend the whole night counting what I've taken. I've done that, before the goddess. I won't do it to you." {n}She touches your cheek through a fold of her cloak, the only way she trusts herself to.{/n} "Buy it, and have it read. I'll still be here. I'll still want to go."''',
         c("[Go and find the scroll-sellers.]", abort=True)),
     nar("tower", '''{n}Drezen falls away under you. The lamps, the wall, the long dark scar of the siege lines. She sets you down at the top of the old bell tower above the citadel, where the bells were melted for arrows years ago and nothing is left but a ring of broken stone open to the sky. The stars are very close. Desna's stars; the ones travellers steer by.{/n}
@@ -443,7 +443,7 @@ session(NIGHT, "Under the Tender of Dreams", 5, '"Where are we going?"', [
     a("stars", '''"I know how to make a mortal want me. I learned it in the Upper City, and I hate remembering how." {n}She is standing with her back to the stars, and her hands have found each other behind her back again.{/n} "And every one of those ways ends with me counting what I took. I'm afraid that halfway through I'll start counting. I'm afraid I'll be good at this, the way I was good at it then." {n}She swallows.{/n} "So I brought us somewhere I've never done anything at all. Nothing here remembers me being good at it."''',
         c("Continue", "cure", requires=(CURE,), forbids=(CURE,)),   # retired 2026-10-01 (the lore protects nothing)
         c("Continue", "uncured", requires=(CURE, CURED), forbids=(CURE, CURED)),   # retired 2026-10-01 (no unwarded night)
-        c("[Take the scroll case out of your coat and break the seal]", "cure", requires=(WARD_HELD, CURE), forbids=(WARD_HELD, CURE),
+        c("[Take the scroll case out of your coat and break the seal]", "cure", requires=(WARD_HELD, CURE), forbids=(CURE,),
           remove_item=SCROLL),   # retired (2026-10-01): the ward is read at the foot of the stair, before the flight
         c("Continue", "cure", requires=(T + "night.warded",))),
     nar("cure", '''{n}The ward the chaplain read at the foot of the stair is on you still: cold water, and then nothing. The flight took one of its seven minutes. She does not need to be told how many are left. She has been counting under her breath since the lantern went back down the lane.{/n}
@@ -508,6 +508,23 @@ session(DISCHARGED, "Discharged", 5, '"You look different. You keep touching thi
     a("later", '''"Not yet." {n}She squeezes your hand, hard, because she can.{/n} "All right. I've got a great deal of time now, and two hands to fill it. Ask me again when you've worked out what you're waiting for."''', c(abort=True)),
     a("no", '''{n}She lets go of your hand. She looks at her own for a moment, as if surprised it still works.{/n} "Then I'll go and touch something else," she says, and does not cry until she is out of the tent.''', c()),
 ], (INTAKE, ELYSIUM, "trickster.ever"), forbids=(COMMITTED, AFTERTASTE, CHAPLAIN, FAILED, DISCHARGED), delay=24,
+    chapters=(5,))
+
+# Sol r1 (INT, 2026-10-01): an Arueshalae released from the Abyss before the Commander ever opened the treatment still has
+# a way in. Positive evidence only: her release (arueshalae.changed: BackToReality Cue_0018 / Cue_0025, or BestEnding).
+FREED = T + "freed_hands"
+session(FREED, "Bare hands", 5, '"You keep looking at your hands."', [
+    a("start", '''{n}She is turning her bare hands over in the lamplight as if they belonged to someone she had just been introduced to.{/n}
+"I do, don't I. You were there when the Abyss let go of me; you heard me say it. I'm not a monster any more." {n}She laughs, unsteadily.{/n} "I keep waiting for somebody to tell me it was a trick. This morning I touched the quartermaster's sleeve, and then his hand, on purpose, and nothing happened to him at all except that he went red and dropped his ledger."''',
+        c("Continue", "ask")),
+    a("ask", '''"I've been saving something. A thing I wanted to do on the day it was safe, when I didn't believe there would ever be such a day." {n}She holds out her hand, palm up, the way a person offers a hand to be taken, and waits, and does not take it back.{/n} "Take it. And then tell me whether you'd take the rest of me."''',
+        c('[Take her hand] "All of you."', "yes", flags=(FREED, COMMITTED)),
+        c('"Not yet."', "later", abort=True),
+        c('"No."', "no", flags=(FREED, CLOSED, REFUSED))),
+    a("yes", '''{n}She closes her fingers on yours and holds on, and nothing happens, except that she holds on.{/n} "Warm," she says, surprised. "You're warm. I never noticed. I never dared stay long enough to notice." {n}She does not let go.{/n} "All of me. I'll hold you to that. I'll hold you to it with both hands, now I can."''', c()),
+    a("later", '''"Not yet." {n}She curls her fingers closed and puts the hand away, but not behind her back.{/n} "All right. I've a great deal of time now, and two hands to fill it. I'll ask again."''', c(abort=True)),
+    a("no", '''{n}She lets her hand fall. She looks at it for a moment, as if surprised it still works.{/n} "Then I'll go and hold somebody else's," she says, quite steadily, and does not cry until she is out of the lamplight.''', c()),
+], ("trickster", "trickster.ever", ELYSIUM), forbids=(INTAKE, COMMITTED, AFTERTASTE, CHAPLAIN, FAILED, FREED), delay=24,
     chapters=(5,))
 
 

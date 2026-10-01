@@ -629,13 +629,13 @@ evil_hub(FALLEN_MET, "House call", '[Take her wrist through her sleeve before sh
     a("terms", '''"Now. Terms, since you like them." {n}She counts on her fingers, the way she used to count days.{/n} "I fight for you because killing demons is fun and you're winning. Don't confuse that with love. I won't wear your colours, I won't bless anything, and I won't sit and wait while you read your little scrolls. I'll come to your bed when I'm hungry, and you'll open the door, and you'll pay what it costs, and you won't ask me to be sorry."''',
       c("Continue", "ask")),
     *FALLEN_ASK,
-], forbids=(FALLEN_MET, COMMITTED), EntryMythic="PlayerIsTrickster")
+], forbids=(FALLEN_MET, COMMITTED), EntryMythic="PlayerIsTrickster", Areas=[DREZEN])   # Sol r1 CAN: the map table, the chapel
 
 evil_hub(P + "fallen.lock", "The lock", '"You\'ve been at my door."', [
     a("start", '''"Every night since you said 'not tonight'." {n}She does not even pretend otherwise. She holds up a thin hooked wire, the kind a Kenabres housebreaker carries in his collar.{/n} "I could have opened it the first night. I didn't. I stood outside and listened to you not sleeping, and it was delicious, and I wanted to see how long you'd last." {n}She tucks the wire away.{/n} "Longer than most. Not as long as you think."''',
       c("Continue", "ask")),
     *[dict(nd) for nd in FALLEN_ASK],
-], requires=(FALLEN_MET,), forbids=(COMMITTED, P + "fallen.lock"), delay=72)
+], requires=(FALLEN_MET,), forbids=(COMMITTED, P + "fallen.lock"), delay=72, Areas=[DREZEN])   # her nights at your Drezen door
 
 # A second 'not tonight' leaves the lock replayable: her promise to come back keeps a reachable yes.
 for _node in SCENES[-1]["Nodes"]:
@@ -649,7 +649,7 @@ FALLEN_NIGHT_NODES = [
 "Do you know how many doors have been left unlocked for me? Thousands. Do you know how many I walked through twice?"''',
       c('[Spend a Scroll of Death Ward: "Wait." Go down to the chapel, have the ward read over you, and come back up]', "warded_up",
         requires=(WARD_HELD,), remove_item=SCROLL, flags=(FALLEN_WARDED,)),
-      c('[You have no ward on you] "Not tonight."', "no_ward", forbids=(WARD_HELD,))),
+      c('[No ward on you tonight] "Not tonight."', "no_ward")),
     a("warded_up", '''{n}She waits. She does not wait for anyone, and she waits for you, on the sill in the rain, and when you come back up the stair with the ward cold on your skin she breathes in as you come close, and smiles with too many teeth.{/n}
 "Chaplain's ink. You went to a priest before you came to me." {n}She sounds delighted.{/n} "Seven minutes of armour. I can count too."''',
       c("Continue", "up")),
@@ -755,6 +755,16 @@ SCENES.extend([
     reaction("Sosiel", P + "react.sosiel_gift", (RETURNED, GIFT_TORN),
              '''"Your voice." {n}Sosiel says it before you have finished your first sentence, and puts his cup down.{/n} "It's gone thin, like a man's after a fever. She told me what she gave you, and what came back down it." {n}He looks at your wrist, and then, carefully, not at it.{/n} "It comes back with time, they say, slowly. The scar won't. I'd have warned you, if you'd asked me first. I think you knew that. I think that's why you didn't ask."''',
              chapter=3, last=5, entry='"About Arueshalae..."', **SOSIEL),
+    # Sol r1 (BEL): the living fallen arrangement has its witnesses too (recruited at the lair, never dead).
+    reaction("Sosiel", P + "react.sosiel_fallen", (RECRUITED, FALLEN_MET),
+             '''"She's back with us, and she isn't her." {n}Sosiel turns his cup in his hands and does not drink from it.{/n} "She asked me last night whether Shelyn forgives a woman for eating well. I said yes. She laughed at me, and then she asked again, as if she'd only wanted to hear it twice." {n}He sets the cup down.{/n} "I'm still praying for her. I'll keep praying while she laughs. Don't you dare stop me."''',
+             chapter=5, last=5, entry='"About Arueshalae..."', **SOSIEL),
+    reaction("Lann", P + "react.lann_fallen_hungry", (RECRUITED, HUNGRY),
+             '''"The red-bearded sergeant from the third company fell asleep at the back of Fye's at noon, and nobody could wake him till supper." {n}Lann doesn't look up from his fletching.{/n} "He's telling everyone he had the best dream of his life. I know whose dinner he was, Commander. So do you. If he doesn't wake up one of these days, I'll put an arrow in her, and then you'll have to decide what to do about me."''',
+             chapter=5, last=5, entry='"About Arueshalae..."', **LANN),
+    reaction("Lann", P + "react.lann_fallen_prisoner", (RECRUITED, FED_ON_PRISONER),
+             '''"The east cells are emptying faster than the assizes fill them." {n}Lann sights down an arrow shaft, and does not look at you.{/n} "I'm not weeping for cultists. I just want it said, once, out loud, by somebody: you're feeding her people. She isn't taking them. You're handing them over."''',
+             chapter=5, last=5, entry='"About Arueshalae..."', **LANN),
     reaction("Lann", P + "react.lann_chaplain", (CHAPLAIN,),
              '''"She blessed my bow this morning. It didn't catch fire." {n}Lann holds it up as evidence.{/n} "I checked twice. Then I went back and asked her to do the arrows. Don't tell her I said so."''',
              chapter=3, last=5, entry='"About Arueshalae..."', **LANN),

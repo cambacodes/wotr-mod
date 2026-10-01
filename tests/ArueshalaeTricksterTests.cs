@@ -57,9 +57,8 @@ internal static class ArueshalaeTricksterTests
         Choice Ch(Scene scene, string node, int index) => scene.Nodes.Single(n => n.Id == node).Choices[index];
         List<Snapshot> After(Scene scene, Snapshot w, string node, int index)
         {
-            var chosen = Ch(scene, node, index);
-            var hits = Program.Walk(scene, w).Where(r => chosen.Set.All(r.Has) && (chosen.Set.Length > 0 || r.Has(scene.Id))
-                                                          && chosen.Forbids.All(f => !r.Has(f) || chosen.Set.Contains(f))).ToList();
+            // Sol r1 (HOW): follow the indexed choice itself (two answers can set the same flags), not a flag filter.
+            var hits = Program.WalkVia(scene, w, node, index).Where(r => !Ch(scene, node, index).Abort).ToList();
             check(hits.Count > 0, "No outcome through " + scene.Id + "/" + node + "[" + index + "]");
             return hits;
         }
@@ -257,9 +256,12 @@ internal static class ArueshalaeTricksterTests
             foreach (var ch in sc.Nodes.SelectMany(n => n.Choices).Where(ch => ch.RemoveItem != null))
                 check(ch.RemoveItem == Scroll && (ch.Requires.Contains(Ward) || sc.Requires.Contains(Ward)),
                     "Trk_Arueshalae_DeathWard: a removal that is not the scroll, or not gated on holding one: " + sc.Id);
+        check(story.Scenes.SelectMany(sc => sc.Nodes).SelectMany(n => n.Choices).All(ch => !ch.Forbids.Contains(Ward))
+              && story.Scenes.All(sc => !sc.Forbids.Contains(Ward)),
+            "Trk_Arueshalae_DeathWard: an answer forbids holding a scroll (the rest simulation then cannot model the purchase).");
         check(new[] { 0, 1 }.All(i => Ch(touch, "explain", i).Requires.Intersect(Ch(touch, "explain", i).Forbids).Any())
               && Ch(touch, "explain", 3).RemoveItem == Scroll && Ch(touch, "explain", 3).Requires.Contains(Ward)
-              && Ch(touch, "explain", 4).Forbids.Contains(Ward),
+              && Ch(touch, "explain", 4).Next == "no_scroll" && !Ch(touch, "explain", 4).Forbids.Contains(Ward),
             "Trk_Arueshalae_DeathWard: the procedure still offers the candle or the lore, or the scroll answer is not appended.");
         var touchW = Later(story, World(story, 3, Drezen, "trickster", "trickster.ever", T + "intake", T + "relapse", Ward), 60);
         var wardedTouch = Program.WalkVia(touch, touchW, "explain", 3);
@@ -302,7 +304,7 @@ internal static class ArueshalaeTricksterTests
         // No scroll, no night (it aborts and stays replayable); with one, the ward is read on the tower and spent.
         check(Program.Walk(night, yesHere).All(r => !r.Has(T + "night")), "Trk_Arueshalae_NightWard: the tower night plays with no ward.");
         var yesWarded = Program.Copy(yesHere); yesWarded.Flags.Add(Ward);
-        var nightWarded = Program.Walk(night, yesWarded);
+        var nightWarded = Program.WalkVia(night, yesWarded, "start", 0);
         check(nightWarded.Count > 0 && nightWarded.All(r => r.Has(T + "night") && !r.Has(Ward)) && Ch(night, "start", 0).RemoveItem == Scroll,
             "Trk_Arueshalae_NightWard: the warded night does not spend its scroll.");
         var released = Program.Copy(yesHere); released.Flags.Add("arueshalae.back_to_reality");
@@ -431,6 +433,20 @@ internal static class ArueshalaeTricksterTests
         Program.Walk(againChap, chapReleased, (page, _) => yesPages.Add(page));
         check(Avail(againChap, chapReleased) && yesPages.Contains("yes_e") && !yesPages.Contains("yes"),
             "Trk_Arueshalae_ChaplainReleased: the released chaplain still accepts on her hunger.");
+        // Sol r1: Drezen-only fallen house call; the Isles-staged queen talk stays in Chapter 4; released before the treatment
+        // still has an entry; the fallen arrangement has witnesses; the quarrel needs the scrolls it counts.
+        check(S(P + "fallen.house_call").Areas.SequenceEqual(new[] { Drezen }) && S(P + "fallen.lock").Areas.SequenceEqual(new[] { Drezen })
+              && S(T + "queen").Chapters.SequenceEqual(new[] { 4 }),
+            "Trk_Arueshalae_Places: the fallen house call plays at the lair, or the Isles conversation plays in Drezen.");
+        var freedW = Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", "arueshalae.back_to_reality"), 30);
+        var freed = S(T + "freed_hands");
+        check(Avail(freed, freedW) && !Avail(S(T + "intake"), freedW)
+              && Program.WalkVia(freed, freedW, "ask", 0).All(r => r.Has("arueshalae.committed"))
+              && Avail(S(T + "epilogue.freed"), Later(story, Program.WalkVia(freed, freedW, "ask", 0)[0], 50, 6)),
+            "Trk_Arueshalae_ReleasedEntry: a released Arueshalae with no treatment has no commit or ending.");
+        check(new[] { "react.sosiel_fallen", "react.lann_fallen_hungry", "react.lann_fallen_prisoner" }.All(id => S(P + id).Requires.Contains("arueshalae.evil_recruited")),
+            "Trk_Arueshalae_FallenWitnesses: the living fallen arrangement has no companion witnesses.");
+        check(S(T + "first_quarrel").Requires.Contains(T + "cure_works"), "The quarrel over the scrolls can play before any scroll was spent.");
         Console.WriteLine("PASS: Arueshalae Trickster (Trk_Arueshalae_*): the Death Ward, the retired returns, the lair kill's closure, the chaplain, the treatment and her proposal, the arcade, and the retired court.");
     }
 }

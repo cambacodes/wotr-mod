@@ -535,7 +535,7 @@ partner("arueshalae", "arueshalae", "arueshalae.committed", "arueshalae.closed",
         # 2026-10-01 (device redesign, ruling 6): the redeemed and the fallen opening each read her positive state.
         page_p('''She was sitting very straight on the edge of the bed with her hands behind her back, the way she had sat through every bad hour of the war. She did not ask whether the Commander was alive. She had decided not to ask anyone anything until she could take a pulse herself.''',
                forbids=("arueshalae.evil_recruited",),
-               any_groups=[["arueshalae.treatment.intake", AU + "cost.chaplain", AU + "aftertaste"]]),
+               any_groups=[["arueshalae.treatment.intake", "arueshalae.treatment.freed_hands", AU + "cost.chaplain", AU + "aftertaste"]]),
         page_p('''She was sitting on the windowsill with one knee drawn up, eating the Commander's grapes, and she did not get up. She did not ask whether the Commander was alive. She had decided she would know when she saw the face, and she had decided not to be seen caring either way.''',
                any_groups=[["arueshalae.evil_recruited", AU + "reunited"]]),
         page_p('''When the summons came she went, as she had promised, and came back before dawn with the pearl at her throat gone cold. She never said what she had chosen. The window was never locked again.''',

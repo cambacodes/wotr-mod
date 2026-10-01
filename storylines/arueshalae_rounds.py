@@ -241,12 +241,12 @@ session(NIGHTMARE, "The other kind of dream", 5, '"I\'m sorry I woke you."', [
     nar("sit", '''{n}You sit on the end of the bedroll with your back against the tent pole, and after a while she leans against your shoulder, not touching skin, only cloth, and after a longer while she falls asleep again. You stay until the window goes grey. She doesn't dream again, or if she does, she doesn't scream.{/n}''', c()),
 ], (MORNING,), delay=48, chapters=(5,))
 
-session(EVE, "Before Threshold", 5, '"Tomorrow, then."', [
-    a("start", '''{n}The camp before the last march is very quiet. Everybody who has anything to say is saying it, in low voices, in the dark, and she has found you on the edge of the lines with a lantern and the daybook, which is nearly full now.{/n}
+session(EVE, "Before Threshold", 5, '"When it comes, then."', [
+    a("start", '''{n}The camp is very quiet tonight. Everyone knows the end of this war is out there somewhere ahead of the column, and everybody who has anything to say about it is saying it, in low voices, in the dark. She has found you on the edge of the lines with a lantern and the daybook, which is nearly full now.{/n}
 "I've been reading it back. From the beginning. 'Watch people eat. Three times a day.'" {n}She laughs softly.{/n} "It seems a very long time ago. I was so sure it was a joke."''',
         c("Continue", "fear")),
-    a("fear", '''"I'm afraid of tomorrow." {n}She says it simply, the way she used to name a mark's weakness to her sisters: a fact, laid on the table.{/n} "Not only of dying. Of what's at the bottom of the Wound. Of the Abyss seeing me come back and remembering what I am, and calling, and me answering." {n}She closes the book.{/n}
-"So I want to ask you something, and not as your patient. If it calls me, tomorrow, and I start to go, what's the treatment?"''',
+    a("fear", '''"I'm afraid of the end of it." {n}She says it simply, the way she used to name a mark's weakness to her sisters: a fact, laid on the table.{/n} "Not only of dying. Of what's at the bottom of the Wound. Of the Abyss seeing me come back and remembering what I am, and calling, and me answering." {n}She closes the book.{/n}
+"So I want to ask you something, and not as your patient. If it calls me, when we get there, and I start to go, what's the treatment?"''',
         c('"Look for me. I\'ll be the one making a bad joke."', "joke", flags=(EVE,)),
         c('"Burnt onions. Your list. The night you walked out of Fye\'s and kept walking."', "list", flags=(EVE,))),
     a("joke", '''"Of course you will." {n}She laughs, and it catches in her throat.{/n} "In the middle of the end of the world, you'll be making a joke, and I'll hear it, and I'll be so annoyed I'll forget to fall." {n}She puts the book in your hands.{/n} "Keep this for me until after. I'll want to write the ending."''', c()),
@@ -275,6 +275,13 @@ SCENES.append(scene(T + "epilogue.together", "", "ArueshalaeEpilogue", 6, "", [
         ))],
     requires=("trickster.ever", COMMITTED, INTAKE), forbids=(CLOSED, EVIL_DEAD, RECRUITED, "sacrifice"), last=6, Relationship="arueshalae",
     ForbidOverrides={"sacrifice": "trickster.commander_back"}))
+
+
+# Sol r1 (INT): the released-entry commit (treatment.freed_hands) has its own ending; she was never a patient.
+SCENES.append(scene(T + "epilogue.freed", "", "ArueshalaeEpilogue", 6, "", [
+    nar("page", '''{n}After the Worldwound was closed, Arueshalae spent a year touching things. Door-latches, horses, bread still hot from the oven, the rough heads of children who ran at her in the street, the Commander's hand under the table at every feast, on purpose, where everyone could see. She kept a daybook of it, in a careful hand, and on the first page she wrote only: "Warm."{/n}''')],
+    requires=("trickster.ever", COMMITTED, T + "freed_hands"), forbids=(CLOSED, EVIL_DEAD, RECRUITED, "sacrifice"), last=6,
+    Relationship="arueshalae", ForbidOverrides={"sacrifice": "trickster.commander_back"}))
 
 
 # --- Companion lines for the treatment (exactly Sosiel and Lann, each behind its reactor's guard) ---------------
