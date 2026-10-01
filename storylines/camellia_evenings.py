@@ -176,7 +176,7 @@ SCENES.append(scene(WIDOW, "The widow from Nerosyan", "Camellia", 3, '"Mireya. S
     cam("wont", '''"Won't I?" {n}She looks at you, and under the lace her smile is very fond and not reassuring at all.{/n} "You say that as if you'd decided it for me. That's very sweet. It's also very like you." {n}She pats your hand.{/n} "Don't worry. I'm waiting for you. I'm not in the mood for anyone else just now."''',
         c("Continue", "close")),
     cam("credit", '''{n}She stares at you. Then she laughs, genuinely, too loudly for a widow, and two of the laundry girls look round.{/n}
-"Oh, that's true," {n}she whispers, when they've looked away.{/n} "That's horribly true. A murder nobody knows is mine is just... weather. What a dreadful thing to point out." {n}She shakes her head.{/n} "You've quite spoiled my evening. I'm going to have to be good now out of sheer vanity."''',
+"Oh, that's true," {n}she whispers, when they've looked away.{/n} "That's horribly true. A widow who laughs too loudly is remembered, and a remembered widow is the first person the watch asks about the next body." {n}She shakes her head.{/n} "You've quite spoiled my evening. I shall have to be very dull in public for a month, and save all my interesting habits for my friends."''',
         c("Continue", "close")),
     cam("close", '''"Go on. You're drawing looks. Commanders don't usually sit with widows." {n}She lowers her veil completely.{/n} "Come back soon. I like being invisible with you. You're the only one who knows where to look."''',
         c("[Leave her at the end of the bar]")),
@@ -354,3 +354,5 @@ met(MIRROR, "The mirror", '"You\'ve been at that mirror for an hour."', [
 
 from storylines.camellia_trickster import city  # noqa: E402 (Q8)
 city(BREAKFAST, GIFT, PRISONER, MIRROR)
+from storylines.camellia_trickster import in_drezen  # noqa: E402 (Q8)
+in_drezen(STRANGERS)

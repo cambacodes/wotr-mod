@@ -245,6 +245,15 @@ def met(id, title, entry, nodes, requires, forbids=(), delay=24, optional=False,
                             Relationship=REL, AnswerLists=[HUB_LIST], ContactUnit=UNIT, **lextra))
 
 
+def in_drezen(*ids):
+    """Q8 (Sol CAN): a living-courtship scene staged in Drezen (the funeral below the citadel, the tavern by the gate) is
+    kept to Drezen in Chapters 3 and 5; her companion hub travels with the party."""
+    for s in SCENES:
+        if s["Id"] in ids:
+            s["Areas"] = [DREZEN]
+            s["Chapters"] = [ch for ch in (s.get("Chapters") or [3, 5]) if ch != 4] or [5]
+
+
 def city(*ids):
     """Q8 (Sol CAN/INT): scenes staged in Drezen (her quarters, the citadel, the lower city) keep their hub twins (_camp,
     _alive) to Drezen in Chapters 3 and 5, as the veiled twin already is: the companion hub travels with the party."""
@@ -589,6 +598,8 @@ met(P + "kills_answered.oath", "The kill that didn't take", '"You look like some
 EP = dict(last=6, Relationship=REL)
 KEPT_PARAS = (
     p("{n}The crusade's chroniclers wrote that once the war had ended Camellia grew bored, and on a moonless night simply vanished. She read the line over the Commander's shoulder and was enormously pleased with it. She had vanished from the chroniclers, which was all she had ever wanted from them, and she went on vanishing every evening into the Commander's rooms.{/n}", forbids=(KILLED,)),
+    p("{n}The same chroniclers wrote that years later she came back, and left again, because she was afraid of what she wanted to do to the one she loved. The Commander read that page aloud to her at breakfast. She said it was the only true line in the book, and that the leaving was a detail.{/n}", requires=(ROMANCE,), forbids=(KILLED,)),
+    p("{n}Once a year she named a date, and the Commander found her a stranger nobody would miss, as promised over a glass of wine a lifetime ago. Neither of them ever said who.{/n}", requires=(OATH_FED,)),
     p("{n}She kept the Commander's name as her price, and said so at dinner parties, and everyone laughed, and she did not.{/n}", requires=(MARKED,)),
     p("{n}The Commander wore long sleeves in every season, and never said why. Under them, along the inside of one wrist, ran a ladder of fine white scars, one for every time she had asked.{/n}", requires=(BLED,)),
     p("{n}Somewhere in Drezen a body was found, one year, with no wounds but one, very neat, right where a friend would stand. The report said deserters. It was in the Commander's hand.{/n}", requires=(COVERED,)),
@@ -613,23 +624,25 @@ SCENES.append(scene(P + "epilogue.kept", "", "CamelliaEpilogue", 6, "", [
 {n}She took no new friends, or said she took none. Once a year, on a date she would never explain, she brought the Commander breakfast on the point of a knife, and the Commander ate it without looking, and she watched, and neither of them ever grew tired of it.{/n}
 {n}People who dined with the two of them in later years said it was the most courteous evening they had ever sat through, and that they could never afterwards remember what either of them had said, only that both of them had been smiling, and that neither had once looked away from the other.{/n}''',
         paragraphs=KEPT_PARAS)],
-    requires=("trickster.ever", COMMITTED), forbids=("sacrifice", CLOSED),
-    ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
+    requires=("trickster.ever", COMMITTED), forbids=("sacrifice", CLOSED, KILLED, DEAD, KICKED),
+    ForbidOverrides={"sacrifice": "trickster.commander_back", KILLED: RET, DEAD: RET}, **EP))   # Q8: and she is still with us
 
 SCENES.append(scene(P + "epilogue.kept_on_record", "", "CamelliaEpilogue", 6, "", [
     nar("page", '''{n}When the Commander was entered among the dead of the Threshold, a veiled woman came to the memorial with lilies, the wrong ones, and stood at the back, and did not weep. Afterwards the chaplain found her knife laid on the altar, point towards the door. Those who knew Camellia said it was the only time she ever gave anything back.{/n}''')],
-    requires=("trickster.ever", COMMITTED, "sacrifice"), forbids=("trickster.commander_back", CLOSED), **EP))
+    requires=("trickster.ever", COMMITTED, "sacrifice"), forbids=("trickster.commander_back", CLOSED, KILLED, DEAD, KICKED),
+    ForbidOverrides={KILLED: RET, DEAD: RET}, **EP))
 
 SCENES.append(scene(P + "epilogue.commit", "The knife, returned", "CamelliaEpilogue", 6, "", [
     nar("page", '''{n}The war ended before Camellia finished her test. She finished it anyway. On one moonless night the next spring she let herself into the Commander's rooms, laid a small clean knife on the pillow, point towards the door, and sat down to wait. She was still there in the morning. She said she had decided, on her own terms, that the Commander was more interesting alive. She did not say for how long.{/n}
 {n}She stayed. She kept the knife on the pillow between them, point towards the door, every night of her life, and every morning she was surprised to find that it was still there, and so was she.{/n}''')],
-    requires=("trickster.ever", TERMS), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice"),
-    ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
+    requires=("trickster.ever", TERMS), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice", KILLED, DEAD, KICKED),
+    ForbidOverrides={"sacrifice": "trickster.commander_back", KILLED: RET, DEAD: RET}, **EP))
 
 # Q8 (Sol INT): her test was never finished, and the Commander stayed dead.
 SCENES.append(scene(P + "epilogue.commit_on_record", "The knife, unreturned", "CamelliaEpilogue", 6, "", [
     nar("page", '''{n}The war ended before Camellia finished her test, and the Commander was entered among the dead of the Threshold before she could set it. She came to the memorial veiled, with lilies, the wrong ones, and stood at the back through every prayer. The chaplain said afterwards that she had been the only mourner in the hall with dry eyes, and the only one who stayed until the candles were out. Nobody ever saw her in Drezen again. A small clean knife was found on the Commander's empty pillow, point towards the door, and nobody could say who had left it.{/n}''')],
-    requires=("trickster.ever", TERMS, "sacrifice"), forbids=(COMMITTED, CLOSED, DECLINED, "trickster.commander_back"), **EP))
+    requires=("trickster.ever", TERMS, "sacrifice"), forbids=(COMMITTED, CLOSED, DECLINED, "trickster.commander_back", KILLED, DEAD, KICKED),
+    ForbidOverrides={KILLED: RET, DEAD: RET}, **EP))
 
 SCENES.append(scene(P + "epilogue.refused", "Lace on the sill", "CamelliaEpilogue", 6, "", [
     nar("page", '''{n}Camellia never came back. Each year, on the day she left, someone laid lilies on the Commander's step: the wrong ones, for a wedding. The guards stopped asking who.{/n}''',

@@ -408,6 +408,13 @@ internal static class CamelliaTricksterTests
                 if (twin == null) continue;
                 check(twin.Areas.SequenceEqual(new[] { Drezen }) && !twin.Chapters.Contains(4), "A Drezen scene travels with the companion hub: " + twin.Id);
             }
+        foreach (var id in new[] { "masks.the_funeral_i_would_like", "evening.a_table_for_strangers" })
+            check(S(P + id).Areas.SequenceEqual(new[] { Drezen }), "A Drezen courtship scene travels with the companion hub: " + id);
+        // Q8 (Sol INT): a commitment followed by her native death or dismissal, with no return, has no kept page.
+        check(!Avail(S(P + "epilogue.kept"), World(story, 6, "trickster.ever", Committed, Killed))
+              && !Avail(S(P + "epilogue.kept"), World(story, 6, "trickster.ever", Committed, "camellia.kicked_out"))
+              && Avail(S(P + "epilogue.kept"), World(story, 6, "trickster.ever", Committed, Killed, Returned)),
+            "The kept page outlives her death or dismissal.");
         // Q8 (Sol BEL): "you caught it" plays only when the Commander did win the first game.
         var again = S(P + "cards.two_lies_again");
         check(Ch(again, "two", 0).Requires.Contains(P + "masks.out_lied") && Ch(again, "two", 1).Forbids.Contains(P + "masks.out_lied"),

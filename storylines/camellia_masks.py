@@ -299,7 +299,7 @@ met(P + "beat.lesson", "Where a friend would stand", '"You said you wanted to te
 "Not here. Everybody goes for here. It's a soldier's mistake. The ribs are in the way." {n}She moves it an inch to the side, under her own breastbone.{/n} "Here. Up and in. And you must be close. As close as a friend. Close enough that they don't see it coming, because they're looking at your face."''',
         c("Continue", "heart")),
     cam("heart", '''"Did you know that blood only flows while the heart is still beating? I didn't, until I watched. Beat. Beat. Beat. And then nothing, and it simply lies there, like a dropped glove." {n}She says it dreamily, as if describing a sunset.{/n}
-"The heart is the last honest thing in anyone. It can't lie. It can only stop."''',
+"I should know. I have looked. People do insist on looking at one's face instead, which is so convenient."''',
         c("Continue", "throat")),
     cam("throat", '''{n}She lifts your hand, and the knife in it, and lays the edge against her own throat, just under the jaw where the pulse is. Then she lets go.{/n}
 "Now," {n}she says, and her eyes are very wide, and very bright, and fixed on yours.{/n} "Tell me what you feel. Don't lie. I'll know."''',
@@ -426,3 +426,5 @@ met(P + "bond.not_today", "Not today", '"You\'re very quiet tonight."', [
 
 from storylines.camellia_trickster import city  # noqa: E402 (Q8)
 city(P + "bond.shelf", P + "bond.witness", P + "bond.not_today")
+from storylines.camellia_trickster import in_drezen  # noqa: E402 (Q8)
+in_drezen(FUNERAL_SCENE)
