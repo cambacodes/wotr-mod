@@ -343,7 +343,7 @@ storyteller("vellexia.trickster.sword.likeness", "The unfinished likeness",
 
 stores("vellexia.trickster.sword.likeness_stores", "Paint that watches",
     '[Ask about the portrait against the wall] "That portrait. Turn it round."', [
-    nar("start", '''"She's been staring at the boys for a week, Commander." {n}Wilcer Garms has stood the portrait against the wall of the stores, frame and all, with its face to the bricks; the back of the frame, where a pale stone sits in silver wire, is warm enough to dry socks on, and the boys have stopped doing so.{/n} "The eyes follow you. The hands don't. I'd take it kindly if you did whatever you're going to do with it somewhere else."
+    nar("start", '''"She's been staring at the boys since she came in, Commander." {n}Wilcer Garms has stood the portrait against the wall of the stores, frame and all, with its face to the bricks; the back of the frame, where a pale stone sits in silver wire, is warm enough to dry socks on, and the boys have stopped doing so.{/n} "The eyes follow you. The hands don't. I'd take it kindly if you did whatever you're going to do with it somewhere else."
 {n}There is nobody left in Drezen who reads the stories in things. You will have to trust your own guess.{/n}''',
         *LIKENESS_CHOICES,
         c('[Leave it facing the bricks] "Not yet."', abort=True)),
@@ -539,7 +539,7 @@ def visit_nodes(place_text, where):
 
 
 SCENES.append(scene("vellexia.trickster.after.visit", "Among the shelves", "Vellexia", 5,
-    '"Lady Vellexia. You look well, for a dead woman."', visit_nodes(
+    '"Lady Vellexia. Drezen suits you better than I expected."', visit_nodes(
         '''{n}She is sitting among the Storyteller's shelves in the middle of a siege as if they were her salon, in a borrowed cloak with the lining turned out to show the silk, a book open face-down on her knee. Every soldier who passes the door is pretending not to look at her. The Storyteller has put a clean cup at her elbow and is standing as far from it as his shelves allow.{/n}''',
         "shelves"),
     requires=("trickster.ever",), forbids=(*OWN, KEPT, VISITED), delay=24, last=5, optional=True, Relationship="vellexia",
@@ -625,10 +625,10 @@ stores("vellexia.trickster.after.night", "Less glass", '"Anything I should know 
 {n}The night before the march. The wind off the Worldwound rattles the shutters of your quarters, and when you turn from the lamp she is already inside, standing by your bed in a dress the colour of a fresh bruise.{/n}''',
       c("Continue", "hands", requires=(DIMINISHED,)),
       c("Continue", "arrived", forbids=(DIMINISHED,))),
-    v("arrived", '''"You said the next part might be difficult to come back from. I dislike waiting to find out whether I shall be bored by your corpse." {n}She takes the lamp out of your hand and sets it down.{/n}
+    v("arrived", '''"You march in the morning, into something nobody comes back from twice. I dislike waiting to find out whether I shall be bored by your corpse." {n}She takes the lamp out of your hand and sets it down.{/n}
 "You asked me to come. I said you would not know the night. So I came through three portals and a rift camp that smells of mules, and here you are, not knowing it. Less glass between us, sweetheart."''',
       c("Continue", "threshold")),
-    v("hands", '''"You said the next part might be difficult to come back from. I dislike waiting to find out whether I shall be bored by your corpse." {n}She holds up her unfinished hands.{/n}
+    v("hands", '''"You march in the morning, into something nobody comes back from twice. I dislike waiting to find out whether I shall be bored by your corpse." {n}She holds up her unfinished hands.{/n}
 "These still do nothing. So you will have to do the undressing, sweetheart. All of it. I shall watch, and I shall tell you when you are doing it wrong."''',
       c("Continue", "threshold")),
     nar("threshold", '''{n}She is warm the way a banked fire is warm. When she kisses you it is slow and thorough and completely without mercy, and her teeth find the corner of your mouth, sharp enough to make you understand they are not a human woman's.{/n}
@@ -777,6 +777,17 @@ def _paragraphs(scene_, paragraphs):
     for node in scene_["Nodes"]:
         if all(ch.get("Next") is None for ch in node["Choices"]):
             node.setdefault("Paragraphs", []).extend(dict(x) for x in paragraphs)
+
+
+# --- Path fit (13 directive update 2026-09-29 / ROUTE-BRIEF-R §2; recorded in PP8). --------------------------------------
+# Every scene here stands on the Trickster device (the mirror let go, the likeness woken) or on a flag only the device
+# sets (the Storyteller, Finnean and Daeran reactions read unmirrored/likeness/entry), so all are T. Her non-Trickster
+# courtship is the registered route (vellexia_opening, vellexia_campaign), path-neutral; 14-PATH-FIT §3 fits it on Demon
+# (Y; her Ch5 Drezen presence is Demon-only) and maybe Devil and Lich. Canon fate off Trickster: killed or spared in Ch4.
+# Pacing (PP8): Ch4 8 in person + 3 remote, Ch5 18 + 14; she is absent before Ch4, so there is no early beat. T5
+# (Vellexia via Arueshalae) is deferred to the household pass (15b).
+PATH_FIT = {s["Id"]: "T" for s in SCENES}
+PATH_FIT_V2 = {}
 
 
 def integrate(payload):
