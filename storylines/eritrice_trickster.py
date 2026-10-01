@@ -156,7 +156,7 @@ hall(P + "council.second_reading", "The second reading", '"You called for a seco
 {n}She does not look up from the blank line.{/n} "The chair will hear the case for. Then the chair will vote. The chair votes last, and the chair is not bound to agree with the floor. Proceed."''', *READING),
     e("start_lied", '''"The chair calls a second reading. The minutes of the first also record that you lied to carry it."
 {n}She reads the line aloud, flatly, the way she reads Alichino's apologies for absence.{/n} "'The Commander attempted to carry a vote by acclamation of the Commander.' The case for will have to overcome that. Proceed."''', *READING),
-    e("case", '''{n}She listens without writing, which you have never seen her do. When you finish, she is quiet. Her claws rest on the blank line and do not tap.{/n}
+    e("case", '''{n}She listens with the quill laid flat beside the scroll, as if she had put down a weapon. When you finish, she is quiet. Her claws rest on the blank line and do not tap.{/n}
 "The truth shines through the endless lies. I said that to you the day we met. I did not expect to be the one it shone on."''',
       c('[Call the question] "Then call the question."', "carried", flags=(COMMITTED,)),
       c('[Ask her to vote for you] "You decide. For both of us."', "refused")),
@@ -211,7 +211,7 @@ letter(P + "council.minutes_letter", "The minutes by courier", [
 # --- 5.3 Allied, hall lost, no primer: a motion filed with surety (late fallback). -------------------------------
 
 letter(P + "council.late_motion", "A motion filed with surety", [
-    nar("start", '''{n}The Council's last circular reaches Drezen: its hall is sealed, and "any business still pending before this body may be filed with the chair in writing, with surety, for the record". You have no motion pending. You write one now. The Council's rules, which she wrote, say what surety a member posts: "a thing of the mover's own, forfeit to the chair if the motion is frivolous." Money is not the mover's own. It is the crusade's.{/n}
+    nar("start", '''{n}The Council's last circular reaches Drezen: its hall is sealed, and "any business still pending before this body may be filed with the chair in writing, with surety, for the record". You have no motion pending. You write one now. Under it, in her own upright hand, plainly added for this one occasion: the chair will hear a late motion only if the mover stakes "a thing of the mover's own, forfeit to the chair if the motion is frivolous." Money is not the mover's own. It is the crusade's.{/n}
 {n}So you write out the one true thing you have never told anyone, all of it, seal it under your own wax, and put it in with the motion.{/n}''',
         c('[File the motion, with the sealed truth as surety] "I move that the chair is in dire need of a private debate. Surety enclosed."', "reply",
           flags=(SEALED,)),

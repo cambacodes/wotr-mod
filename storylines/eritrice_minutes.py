@@ -469,7 +469,7 @@ minutes(SEATS, "Stay in your seats", '"They walked out on you."', [
 "Go. Before I ask you to say it again."''',
       c("[Go.]", flags=(M + "temper_fed",))),
     e("hand", '''{n}Her claws close around your fingers. They do not cut. It is a near thing, and you both know it, and neither of you lets go.{/n}
-{n}At last:{/n} "You are the only one who ever comes back after a session. Did you know that? Every one of them leaves, and you come back." {n}The claws draw in, slowly, until it is only a hand.{/n}
+{n}At last:{/n} "Every one of them leaves after a session, and you come back. I have noticed. I notice everything; it is a fault." {n}The claws draw in, slowly, until it is only a hand.{/n}
 "I will remember that. I am not writing it down. Some things are not for the record, and I did not know until tonight that I had any."''',
       c("[Stay a while.]")),
 ], requires=(POINT_ONE, WALKED_OUT), forbids=(SEATS,), chapters=(5,))

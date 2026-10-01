@@ -319,6 +319,18 @@ internal static class EritriceTricksterTests
         var alliedNoThreat = World(story, 5, "trickster", "trickster.ever", "council.fought_nocta_allied", "eritrice.lost_at_council.latched");
         check(Program.Walk(tabled, alliedNoThreat).Any(r => r.Has(P + "returned") && r.Has(P + "cost.apologised")),
             "The allied betrayal has no priced reconciliation.");
+        // Sol r3. CAN: the late surety is her condition for this petition, not Council law; the Lexicon's wound waits for the key
+        // proposal; Socothbenoth flirts only while he attends. BEL/COX: no lovers asserted as fact; a sole partner is believed.
+        check(!late.Nodes.Any(n => n.Text.Contains("rules, which she wrote")), "The late surety cites an invented Council rule.");
+        var clock = S(K + "the_mortal_clock");
+        check(Choice(clock, "start", 0).Requires.Contains("eritrice.proposed_key") && Choice(clock, "start", 3).Next == "smaller_early"
+              && !clock.Nodes.Single(n => n.Id == "smaller_early").Text.Contains("Lexicon"), "The mortal clock recalls the key before it is proposed.");
+        var eyes = S(K + "his_eyes");
+        check(eyes.Forbids.Contains("socot.gone") && eyes.Forbids.Contains("council.walked_out"), "A departed Socothbenoth still flirts at the session.");
+        var accurate = S(K + "accurate_minutes");
+        check(!accurate.Nodes.Any(n => n.Text.Contains("I know there are others")) && accurate.Nodes.Single(n => n.Id == "lie").Choices.Any(c => c.Next == "only")
+              && !Choice(accurate, "start", 2).Text.Contains("[Lie]"), "Other lovers are asserted as fact, or a sole partner cannot say so.");
+        check(!S(K + "twice_nightly").Nodes.Any(n => n.Text.Contains("never counted to three")), "The countdown is an unprecedented event again.");
         // BEL: the motion to expel is resolved for each approach.
         var voted = S(K + "the_motion_to_expel_voted");
         foreach (var flag in new[] { K + "alichino_handled", K + "argued_own_case", K + "chair_recused" })

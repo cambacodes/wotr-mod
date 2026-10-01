@@ -111,7 +111,7 @@ sitting(AID, "A sound proposition", '"About my motion for material aid..."', [
 "But it is true that they listen to you. I have minuted it: when you speak, Cobblehoof stops snorting." {n}She considers.{/n} "The chair will not withdraw a sound proposition merely because the mover has grown sentimental. It stays on the agenda, and it will be read out at every session until it is voted. Whether this Council will ever vote you a single copper, I cannot promise you. I can promise you they will have to hear it."''',
       c("[Let her keep it on the agenda.]", "close")),
     e("close", '''"The war does not wait for the agenda. I know that. I have always known it." {n}She rolls the old scroll.{/n}
-"I have simply never before had someone at the table whose soldiers were dying while I found the right wording. It concentrates the mind." {n}A pause.{/n} "It is unpleasant. Do not stop."''',
+"I have had members at this table whose cities were burning. I have not had one who made me feel it while I found the right wording. It concentrates the mind." {n}A pause.{/n} "It is unpleasant. Do not stop."''',
       c("[Leave her with the agenda.]")),
 ], requires=(POINT_ONE,), forbids=(AID,))
 
@@ -285,7 +285,7 @@ sitting(DAGGER, "The dagger", '"You wear a dagger to a debate."', [
       c("[Let it frighten you.]", flags=(K + "dagger_feared",))),
     e("hand", '''{n}Her fingers are warm and very still under yours. Neither of you moves.{/n}
 {n}At last she speaks.{/n} "If I ever draw it at this table, I want your hand to be there. Exactly there. Not to stop me. So that I have to feel it, and decide."
-{n}She lifts her hand from the hilt, and leaves yours there a moment longer, and then takes it and holds it, which she has never done.{/n}''',
+{n}She lifts her hand from the hilt, and leaves yours there a moment longer, and then takes it and holds it, hard, as if it might be called to order.{/n}''',
       c("[Hold on.]", flags=(K + "dagger_held",))),
 ], requires=(CONVENING,), forbids=(DAGGER,))
 
@@ -307,7 +307,7 @@ sitting(JEALOUS, "Undressing you with his eyes", '"Something wrong, Madam Chair?
     e("plain", '''"He did it again. At the session. Alichino once remarked that Socothbenoth was undressing you with his eyes, and I did not rebuke him, because it was accurate." {n}Her claws are in the chair's back.{/n} "It is still accurate. It is accurate at every session. I have minuted it as 'Socothbenoth attended'."''',
       c("Continue", "confess")),
     e("confess", '''{n}She lets go of the chair, and looks at the marks her claws have left, and seems for a moment genuinely shocked by them.{/n}
-"The chair is jealous." {n}She says it like the reading of a verdict.{/n} "The chair has never been jealous. The chair did not know that she could be. It is a very stupid feeling. It argues with itself and loses both sides."''',
+"The chair is jealous." {n}She says it like the reading of a verdict.{/n} "It is a very stupid feeling, and I resent having it about a demon lord with scented sleeves. It argues with itself and loses both sides."''',
       c('"You\'ve got nothing to be jealous of."', "nothing"),
       c('[Flirt] "I like it on you."', "like"),
       c('"Then minute it. Accurately."', "minute")),
@@ -320,7 +320,7 @@ sitting(JEALOUS, "Undressing you with his eyes", '"Something wrong, Madam Chair?
     e("minute", '''"Accurately." {n}She sits, and pulls the scroll toward her, and writes, and reads it aloud as she goes:{/n} "'Socothbenoth attended. He looked at the Commander. The chair wished to remove his eyes. The chair refrained.'"
 {n}She sands it.{/n} "There. It is true, and it is terrible, and it is on the record. I feel much better. That is also terrible."''',
       c("[Kiss the top of her head.]")),
-], requires=(COMMITTED,), forbids=(JEALOUS,), delay=48)
+], requires=(COMMITTED,), forbids=(JEALOUS, "socot.gone", "council.walked_out"), delay=48)
 
 
 # --- Accurate minutes: the other lovers, after the commit. ---------------------------------------------------------
@@ -331,7 +331,7 @@ sitting(ACCURATE, "Accurate minutes", '"You wanted to discuss... other matters?"
 "I would like to hear it from you. Accurately. I do not want anyone's minutes of my own life but my own."''',
       c("[Tell her the truth: every name.]", "truth"),
       c('"There are others. I won\'t name them. They\'re not yours to minute."', "private"),
-      c('[Lie] "There\'s no one else."', "lie")),
+      c('"There\'s no one else."', "lie")),
     e("truth", '''{n}You tell her. She listens, and does not write, and when you are finished she is quiet until the lamp wants trimming.{/n}
 "Thank you." {n}She means it; you can hear that it has cost her.{/n} "A Council is not a household. I have never required that my allies have no other allies. I do not require it now." {n}Her ears go back, very slightly.{/n}
 "I require that you do not lie to me about it. You have not. That is all the chair asks. The lion asks more, and the lion will be growled at until it stops."''',
@@ -341,9 +341,13 @@ sitting(ACCURATE, "Accurate minutes", '"You wanted to discuss... other matters?"
       c("Continue", "rule")),
     e("lie", '''{n}She does not write it down. She looks at you, and her face goes flat and formal, the chair's face, the way it did the first time you lied to her at this table.{/n}
 {n}Very quietly:{/n} "Rule two. A point is answered honestly or not at all." {n}She waits.{/n}
-"I know there are others. I did not ask so that you could protect me from it. I asked so that you would not have to. Try again."''',
-      c("[Tell her the truth.]", "truth"),
-      c('"...There are others. I won\'t name them."', "private")),
+"Three members of this Council have told me otherwise, and they agree on nothing else. They may all be wrong; it would not be the first time. If they are, say it again, plainly, and I will minute it and believe it. If they are not, I did not ask so that you could protect me. Try again."''',
+      c("[Tell her the truth: every name.]", "truth"),
+      c('"...There are others. I won\'t name them."', "private"),
+      c('"They\'re wrong. There is no one else."', "only")),
+    e("only", '''{n}She looks at you for a long time, the way she reads a motion twice before she votes. Then she writes, in the private hand: "The Commander sits at one table."{/n}
+"Then the Council is wrong, which it frequently is. Chadali will be disappointed; she had hoped for a crowd." {n}Her ears tilt.{/n} "If that changes, I expect to be told before Chadali is."''',
+      c("Continue", "rule")),
     e("rule", '''"I will make one rule, and I will write it down, so that neither of us can pretend later that it was otherwise." {n}She dips the quill.{/n}
 "Nobody at this table is asked to give anyone up. Not now, not later. If one day it comes to a vote, I will vote against making you choose." {n}She writes it, and raises her own hand, and waits for yours.{/n} "I have seen what happens at tables where people are made to choose. Crusades happen. Worldwounds."''',
       c("[Raise your hand. Aye.]", flags=(K + "no_one_given_up",))),
@@ -412,7 +416,7 @@ sitting(TWICE, "Twice nightly", '"Is the chair in session?"', [
 "What happens afterwards is that the one who lost wants to debate again. Immediately. On any subject. At length." {n}Her voice has gone low and warm.{/n} "I have drafted a motion. I would like to move it now, while the Council is not here to be scandalised."''',
       c('"Move it."', "move")),
     e("move", '''"I move that the debate be held twice nightly." {n}She says it with perfect solemnity, and then ruins it by purring at the end.{/n}
-"Seconded?" {n}She turns her head, and her whiskers brush your jaw, and her breath is warm on your throat.{/n} "The chair notes that the floor is taking a very long time to second a simple motion. The chair will count to three. The chair has never counted to three for anyone. One."''',
+"Seconded?" {n}She turns her head, and her whiskers brush your jaw, and her breath is warm on your throat.{/n} "The floor is taking a very long time to second a simple motion. I want you, and I am not a patient lion. I will count to three. One."''',
       c("[Second it before she reaches two.]", "carried")),
     e("carried", '''"Carried." {n}She pushes the scroll off her knees, swings one leg across you, and settles astride your lap on the edge of the Council's table, with a creak of old wood and a rumble in her chest that is very nearly a purr. She takes your hands and sets them on the belt at her waist, and holds them there until you pull it loose. Only then, with her mouth already on yours and her gown sliding off one shoulder, does she reach back and pinch out the candle.{/n}
 {n}In the dark you hear the minutes slide off the table, and she does not reach for them, which is the second time in her existence she has let a record fall. Her last words before the chair stops chairing are a promise to write it all down in the morning, every word, and a warning that you had better give her a great deal to write.{/n}''',
@@ -533,14 +537,18 @@ CLOCK = K + "the_mortal_clock"
 sitting(CLOCK, "The mortal clock", '"You\'re counting something."', [
     e("start", '''"Years." {n}She does not pretend otherwise. There is a sheet of figures at her elbow, in the small private hand, with some of the numbers struck out and rewritten.{/n}
 "I have been calculating. It is a habit. I calculate how long a debate will last, how long a Council will hold, how long before the truth comes out." {n}She turns the sheet face down.{/n} "I have been calculating how long I will have you. I did not want to. I did it anyway. It is a very small number."''',
-      c('"The Worldwound might make it smaller."', "smaller"),
+      c('"The Worldwound might make it smaller."', "smaller", requires=("eritrice.proposed_key",)),
       c('"Then don\'t waste any of it counting."', "waste"),
-      c('[Turn the sheet back over and read it.]', "read")),
+      c('[Turn the sheet back over and read it.]', "read"),
+      c('"The Worldwound might make it smaller."', "smaller_early", forbids=("eritrice.proposed_key",))),
+    e("smaller_early", '''"Yes. I included it." {n}Very quietly.{/n} "I have read every report you have sent this Council, and some you did not send. I know what the war does to the ones who go nearest the Wound. I put that in the figures. And then I put in the chance that you do something no one has predicted, which with you is very high." {n}A breath.{/n}
+"The figures do not agree with each other. I am considering disciplining them."''',
+      c("Continue", "close")),
     e("smaller", '''"Yes. I included it." {n}Very quietly.{/n} "I have read the Lexicon. I know what the wound does to the one who carries it. I put that in the figures too. And then I put in the crossroads, and the chance that it heals you, and the chance that it does not, and the chance that you do something no one has predicted, which with you is very high." {n}A breath.{/n}
 "The figures do not agree with each other. My own arithmetic has never before refused to come to a conclusion."''',
       c("Continue", "close")),
     e("waste", '''"Counting is not waste. Counting is how I know what a thing is worth." {n}But she does not turn the sheet back over.{/n}
-"You will die, Commander. Soon, as I measure things. I will not. Every one of your crusades has been a single breath to me. I have watched four of them draw in and let out." {n}Her claws rest on the back of the sheet.{/n} "I have never before minded."''',
+"You will die, Commander. Soon, as I measure things. I will not. Every one of your crusades has been a single breath to me. I have watched four of them draw in and let out." {n}Her claws rest on the back of the sheet.{/n} "I mind this one."''',
       c("Continue", "close")),
     e("read", '''{n}She lets you. Down the left side, in her small hand, a column of numbers, each one smaller than the last, each one struck out. At the bottom, not a number at all but a single line, underlined, and then struck out, and then written again beneath: "Not enough."{/n}
 "I wrote that as a finding. Then I struck it out, because it is a feeling, not a finding. Then I wrote it again, because it is also true."''',
@@ -721,18 +729,18 @@ sitting(EXPEL, "A motion to expel", '"You look like you\'ve had a letter from He
       c('"Put it on the agenda. I\'ll argue my own case."', "argue"),
       c('"Recuse yourself. You can\'t chair a vote on me."', "recuse")),
     e("trick", '''"I do not want to know how." {n}At once.{/n} "If you tell me how, I will have to minute it, and if it is what I suspect, I will have to minute it with a very specific word."
-{n}She weighs you, the way she weighs an amendment.{/n} "If Alichino withdraws his own motion, freely, in writing, the chair will accept the withdrawal. The chair will not inquire into his reasons. The chair notes that she has never before declined to inquire into anything." {n}She looks, for a moment, almost smug.{/n} "Go. Before I change my mind."''',
+{n}She weighs you, the way she weighs an amendment.{/n} "If Alichino withdraws his own motion, freely, in writing, the chair will accept the withdrawal. The chair will not inquire into his reasons. The chair notes that she is declining to inquire, and that she will enjoy not knowing." {n}She looks, for a moment, almost smug.{/n} "Go. Before I change my mind."''',
       c("[Go and find a devil's weak spot.]", "close", flags=(K + "alichino_handled",))),
     e("argue", '''{n}She looks at you with an expression very close to pride.{/n}
 "Yes. That is what I hoped you would say, and I did not dare suggest it." {n}She draws the agenda toward her and writes it in, first item, above the Worldwound.{/n}
 "You will stand at my table and argue your own place at it, and I will chair the debate as if I did not care how it ended. I will care very much. No one will know. That is what it is to be the chair." {n}She blots the line.{/n} "Prepare. He will send a proxy. It will be a very good proxy."''',
       c("[Prepare your case.]", "close", flags=(K + "argued_own_case",))),
     e("recuse", '''"Recuse myself." {n}She tastes the word the way she tasted "both".{/n}
-"Hand the chair to someone else. For one vote. Because I cannot be impartial about you." {n}A long silence.{/n} "That is correct procedure. It is also the first time anyone has ever suggested that I am not impartial, and the first time it has been true."
+"Hand the chair to someone else. For one vote. Because I cannot be impartial about you." {n}A long silence.{/n} "That is correct procedure. It is also an insult to the chair, and a true one, which is the worst kind."
 {n}She writes: "The chair recuses herself from the motion to expel the Commander, on grounds of partiality, which she declares." She signs it hard enough to tear the scroll.{/n}
 "Cobblehoof will chair it. He will snort at everything. It will be the longest session in the history of the multiverse."''',
       c("[Thank her.]", "close", flags=(K + "chair_recused",))),
-    e("close", '''{n}As you turn to go:{/n} "Whatever happens at that session, it will be minuted truly. If they expel you, I will write it down. And then I will write a dissent, in my own name, as the chair, which I have never done." {n}She looks at the black seal.{/n}
+    e("close", '''{n}As you turn to go:{/n} "Whatever happens at that session, it will be minuted truly. If they expel you, I will write it down. And then I will write a dissent, in my own name, as the chair, and I will enjoy every line of it." {n}She looks at the black seal.{/n}
 "It will be very long. It will be the best thing I have ever written. Alichino will have to read all of it, because the rules require it."''',
       c("[Leave her drafting the dissent in advance.]")),
 ], requires=(POINT_ONE,), forbids=(EXPEL,))
