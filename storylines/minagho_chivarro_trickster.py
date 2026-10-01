@@ -553,13 +553,18 @@ ALONE_CHIV_NODES = [
        c('"Stay anyway. Keep the house with me instead."', "terms"),
        c('"Go back through the press. There\'s nothing here for you."', flags=(CLOSED,))),
     cv("terms", '''"Then I keep my own house, in your city, on my terms, and you pay the rent. If she walks back in, the terms change, and you do not get a say."''',
-       c('"Your terms."', "threshold", flags=(COMPLETE, "minachiv.future_chivarro", HALF, CHAIN)),
-       c('"Not those terms."', "refuse")),
+       c('"Your terms."', "threshold", flags=(COMPLETE, "minachiv.future_chivarro", HALF, CHAIN), requires=(DEBT,)),
+       c('"Not those terms."', "refuse"),
+       c('"Your terms."', "threshold_clean", flags=(COMPLETE, "minachiv.future_chivarro", HALF, CHAIN), forbids=(DEBT,))),
     cv("refuse", '''"Then wait. You are good at making demons wait."''',
        c('"Then wait. I\'ll ask again."', flags=(DECLINED,))),
     nar("threshold", '''{n}She does not take you to your quarters. She takes you to hers, a rented room above a chandler's shop below the citadel, and bars the door with a chair, and turns.{/n}
 {n}"Rent," she says, and holds out her hand. When you put yours in it she does not take it; she inspects it, turns it palm up, runs one nail along the old cut until you draw breath, and smiles at the sound as if she has just been quoted a price she likes. Then she undresses you the way she once dressed the Delights' best rooms: without hurry, piece by piece, setting each thing exactly where she wants it. Her own gown she leaves for last and lets fall without ceremony, because she knows precisely what it costs you to watch.{/n}
 {n}"Ten thousand nights I sold," she murmurs, walking you backwards to a bed too narrow for anything she has in mind. "This one is mine, and I am going to collect every copper of it." She pushes you down with two fingers, climbs astride you in one practiced motion, and leans down until her breath is on your mouth, and there, holding you exactly where she wants you, she stops talking.{/n}''',
+        c("Continue", flags=(NIGHT_CHIV,))),
+    nar("threshold_clean", '''{n}She does not take you to your quarters. She takes you to hers, a rented room above a chandler's shop below the citadel, and bars the door with a chair, and turns.{/n}
+{n}"Rent," she says, and holds out her hand, and when you put a purse in it she weighs it without looking, drops it on the floor, and takes your hand instead. She undresses you the way she once dressed the Delights' best rooms: without hurry, piece by piece, setting each thing exactly where she wants it, and lets her own gown fall last, because she knows precisely what it costs you to watch.{/n}
+{n}"A room of my own, in a crusader's city, and a tenant who pays," she murmurs, walking you backwards to a bed too narrow for anything she has in mind. "I have come down in the world. Let us see how far." She pushes you down with two fingers, climbs astride you in one practised motion, and leans down until her breath is on your mouth, and there, holding you exactly where she wants you, she stops talking.{/n}''',
         c("Continue", flags=(NIGHT_CHIV,))),
 ]
 physical(P + "alone.chivarro", "The house she keeps now", "Chivarro", PRES_CHIV, CHIV_UNIT, ALONE_CHIV_NODES,
@@ -692,7 +697,7 @@ CHIV_MORNING = [
 "Rent," she says, before you can speak. "And interest. I charge interest, honey; I was a madam, not a saint." {n}She snaps the purse shut and looks at you properly for the first time.{/n} "You were better than I expected and worse than you think. Both go on the bill."''',
        c('"Put it on my bill, then."', flags=(MORNING,), crusade=("Finances", -100)),
        c('[Take back one coin] "The interest is too high."', "haggle", crusade=("Finances", -100))),
-    cv("haggle", '''{n}She lets you take it. Then she takes your wrist, turns your hand over, puts the coin back in your palm, right on the cut, and closes your fingers on it until it hurts.{/n} "Now it is a keepsake. Keepsakes are free. Everything else goes on the bill."''',
+    cv("haggle", '''{n}She lets you take it. Then she takes your wrist, turns your hand over, puts the coin back in your palm, presses it into the hollow of it with her thumb, and closes your fingers on it until it hurts.{/n} "Now it is a keepsake. Keepsakes are free. Everything else goes on the bill."''',
        c("[Keep the coin.]", flags=(MORNING, P + "morning_coin"))),
 ]
 physical(P + "alone.chivarro_morning", "Interest", "Chivarro", PRES_CHIV, CHIV_UNIT, CHIV_MORNING,
@@ -742,7 +747,7 @@ page(P + "epilogue.pair", "Two runaway lilitu", [
                       requires=(DOOR,)),
                     p("{n}The Commander never once knocked. Chivarro billed for every visit through the wardrobe, and Minagho kept the accounts.{/n}",
                       requires=(P + "morning_wardrobe",))))],
-    requires=("trickster.ever", COMPLETE, CHAIN, "minachiv.future_two"))
+    requires=("trickster.ever", COMPLETE, CHAIN, "minachiv.future_two"), forbids=("sacrifice",), overrides={"sacrifice": "trickster.commander_back"})
 page(P + "epilogue.chivarro", "Rent", [
     nar("end", '''{n}Chivarro kept her own house in Drezen after the war and never once let the Commander forget whose name was on the lease. The rent was collected in person, at her convenience, and it went up every year.{/n}''',
         paragraphs=(p("{n}Minagho never came back from Baphomet's ledger. Chivarro kept a second chair at her table anyway, and nobody, not even the Commander, was allowed to sit in it.{/n}",
@@ -752,7 +757,7 @@ page(P + "epilogue.chivarro", "Rent", [
                     PALM_P,
                     p("{n}The Commander kept the coin. Chivarro never charged for it, and never let anyone else touch it.{/n}",
                       requires=(P + "morning_coin",))))],
-    requires=("trickster.ever", COMPLETE, CHAIN, "minachiv.future_chivarro"))
+    requires=("trickster.ever", COMPLETE, CHAIN, "minachiv.future_chivarro"), forbids=("sacrifice",), overrides={"sacrifice": "trickster.commander_back"})
 page(P + "epilogue.minagho", "His, every morning", [
     nar("end", '''{n}Minagho stayed in Drezen with the Goat's mark still on her brow, dry for the first time since Kenabres, and kept the Commander's debt the way other women keep a lover's letters: close, and bitterly, and read over and over. Nobody bargained for her again. She saw to that.{/n}''',
         paragraphs=(PALM_P, KNELT_P,
@@ -764,9 +769,10 @@ page(P + "epilogue.minagho", "His, every morning", [
                       requires=(RET_C,)),
                     p("{n}Every dawn, for the rest of the Commander's life, Minagho bound the palm herself, too tightly, and never once called it kindness.{/n}",
                       requires=(P + "morning_bound",))))],
-    requires=("trickster.ever", COMPLETE, CHAIN, "minachiv.future_minagho"))
+    requires=("trickster.ever", COMPLETE, CHAIN, "minachiv.future_minagho"), forbids=("sacrifice",), overrides={"sacrifice": "trickster.commander_back"})
 page(P + "epilogue.owned", "Goods", [
-    nar("end", '''{n}Chivarro stayed in Drezen, owned, on paper, at the Commander's door, and never once let it be mistaken for anything else. She was never seen to smile at the Commander again. She was never seen to leave. Minagho visited her there, and did not speak to the Commander at all.{/n}''')],
+    nar("end", '''{n}Chivarro stayed in Drezen, owned, on paper, at the Commander's door, and never once let it be mistaken for anything else. She was never seen to smile at the Commander again. She was never seen to leave.{/n}''',
+        paragraphs=(p("{n}Minagho visited her there, and did not speak to the Commander at all.{/n}", requires=(MIN_IN,)),))],
     requires=("trickster.ever", KEPT))
 # R2-6: a late commit for a Commander whose chain stopped before the question.
 page(P + "epilogue.commit", "One invitation a year", [
@@ -784,8 +790,8 @@ page(P + "epilogue.commit", "One invitation a year", [
     nar("went_alone", '''{n}The Commander went. Chivarro opened the door herself, in a dressing gown and nothing else, and looked the Commander over the way she had once looked over the Delights' new stock. "Late," she said. "Everything costs more when it is late." She pulled the Commander in by the collar, shut the door with her heel, and let the gown fall on the way to the bed. At the bed she did not stop: she pushed the Commander down onto it with one hand flat on the chest, climbed astride, and pinned the Commander's wrists to the pillow above. "Late," she said again, against the Commander's mouth, lowering her hips. "Now you pay the interest."{/n}
 {n}In the morning there was a bill on the pillow, itemised, with the interest compounded by the hour, and her signature across the total. The Commander went every year after that. The rent went up every time.{/n}'''),
     nar("regrets", '''{n}The Commander sent regrets. The next year's invitation came anyway, and the year after that. They were patient in the way demons are patient: badly, and with knives.{/n}'''),
-], requires=("trickster.ever",), forbids=(COMPLETE, CLOSED, DECLINED, KEPT, OWNED), any_groups=[[T_HOUSE, WAITING]],
-   overrides=UNOWNED)
+], requires=("trickster.ever",), forbids=(COMPLETE, CLOSED, DECLINED, KEPT, OWNED, "sacrifice"), any_groups=[[T_HOUSE, WAITING]],
+   overrides={**UNOWNED, "sacrifice": "trickster.commander_back"})
 page(P + "epilogue.declined", "When it scars", [
     nar("end", '''{n}They waited to be asked again, as demons wait: badly, and with knives.{/n}''',
         paragraphs=(p("{n}The Commander's palm never scarred.{/n}", forbids=(SCARRED,)),

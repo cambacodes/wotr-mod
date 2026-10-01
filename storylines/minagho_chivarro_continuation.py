@@ -259,7 +259,7 @@ The address is a room above a shuttered gaming house. You find Minagho there aft
 {n}Her answer comes quickly. A little too quickly for indifference.{/n}
 "There are other uses for your company. You know what happened to me. Chivarro knows what happened before you. Veyr will find it harder to sell each of us a different version if we are in the same room."
 "And afterward?"
-"We can discover whether conversation alone is as exhausting as I remember. You are allowed to surprise me without changing your answer."''', c('"A meeting, then."', "agreement")),
+"We can discover whether conversation alone is as exhausting as I remember. If you surprise me, I shall pretend I expected it."''', c('"A meeting, then."', "agreement")),
     n("agreement", "Minagho", '''{n}Minagho writes the agreed hour on the back of Chivarro's reply. She folds it into a narrow packet and pockets it.{/n}
 "She will come by a route she chose. No procession, no announcement, and no one escorting her through the city as proof that I have been rewarded for good behavior."
 "You were worried I would arrange a procession?"
@@ -659,7 +659,7 @@ When they turn toward you, both are plainly waiting to see what you will bid.{/n
 {n}You take the stone from her fingers and put it beside the others. When you turn back, the levity has thinned. She is waiting, mouth slightly parted, as if your returning were the uncertain part.
 You kiss her again. This time she lets the waiting show before answering it, and then answers it all at once. She shoves the tray off the couch with her heel, stones and all, drags her dress off one shoulder and then the other without breaking the kiss, and climbs into your lap with a knee either side of your hips, pulling your hands up the bare length of her back. "One hour," she says into your mouth, already working at your belt. "Do not waste it being gentle."
 Afterwards she steals your place on the cushion while you reach for the wine, then complains when you insist on sharing it. Her head settles against you halfway through the complaint.{/n}
-"Next time, two hours. Chivarro negotiated very poorly on my behalf."''', c('"Yes. Another hour, when we both want it."', flags=done("evening_kept", "minagho_chosen"))),
+"Next time, two hours. Chivarro negotiated very poorly on my behalf."''', c('"Two hours, next time. I\'ll bring the plums."', flags=done("evening_kept", "minagho_chosen"))),
     n("minagho_close", "Minagho", '''"Then I shall have to be interesting while dressed. A terrible hardship."
 {n}She settles against your side. You ask what she enjoyed before she learned to make pleasure useful. At first she offers an answer so extravagant that it is plainly a deflection. When you wait, she tries again.{/n}
 "Being the first person to know something. Not because I could sell it. Because everyone else's certainty looked ridiculous for a moment."

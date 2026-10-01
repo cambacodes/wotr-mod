@@ -124,7 +124,7 @@ internal static class MinaghoChivarroTricksterTests
         var shove = wardrobe.Nodes.SelectMany(n => n.Choices).Where(c => c.Text.Contains("Mind the corsets")).ToList();
         check(shove.Count > 0 && shove.All(c => c.Mythic == "PlayerIsTrickster" && c.Alignment?.Direction == "Chaotic"), "The shove lost its [Trickster] answer or its price.");
         foreach (var commit in new[] { road, aloneChiv, aloneMin, aloneMinSpared })
-            check(commit.Nodes.Any(n => n.Id == "threshold") && commit.Nodes.SelectMany(n => n.Choices).Where(c => c.Set.Contains(Complete)).All(c => c.Next == "threshold" && c.Set.Contains(Chain)),
+            check(commit.Nodes.Any(n => n.Id == "threshold") && commit.Nodes.SelectMany(n => n.Choices).Where(c => c.Set.Contains(Complete)).All(c => (c.Next == "threshold" || c.Next == "threshold_clean") && c.Set.Contains(Chain)),
                 "A physical commit skips the threshold or the chain marker: " + commit.Id);
         check(story.Scenes.Where(s => s.Relationship == "minagho_chivarro").SelectMany(s => s.Nodes).SelectMany(n => n.Choices)
                   .Where(c => c.Set.Contains(Complete)).All(c => c.Set.Contains(Chain) || !c.Set.Any(f => f.StartsWith(P, StringComparison.Ordinal))),
@@ -394,6 +394,13 @@ internal static class MinaghoChivarroTricksterTests
               && epCommit.Nodes.Single(n => n.Id == "went_alone").Text.Contains("climbed astride") && epCommit.Nodes.Single(n => n.Id == "went_alone").Text.Contains("In the morning")
               && !epCommit.Nodes.Single(n => n.Id == "regrets").Text.Contains("bed"),
             "The late acceptances are not distinct, staged endings.");
+        // Sol r4: the endings do not outlive an unreturned sacrifice; the owned page brings no dead Minagho; Chivarro alone assumes no palm wound.
+        foreach (var ep in new[] { epPair, epChiv, epMin, epCommit })
+            check(ep.Forbids.Contains("sacrifice") && ep.ForbidOverrides.TryGetValue("sacrifice", out var back) && back == "trickster.commander_back",
+                "A living ending plays for a Commander who stayed dead: " + ep.Id);
+        check(!epOwned.Nodes[0].Text.Contains("Minagho visited") && epOwned.Nodes[0].Paragraphs.Any(p => p.Requires.Contains(MinIn)),
+            "The owned page brings an unreturned Minagho to visit.");
+        check(aloneChiv.Nodes.Any(n => n.Id == "threshold_clean" && !n.Text.Contains("cut")), "Chivarro alone assumes the Goat's wound.");
         var coda = S("minachiv.lastcall.page");
         check(coda.Requires.Contains(Complete) && !Av(coda, With(lateHouse, "trickster.lastcall.taken")),
             "The Last Call coda plays for a late page's Commander.");

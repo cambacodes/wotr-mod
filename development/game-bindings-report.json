@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-qual-q7\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4119,
-  "unique_targets": 861,
+  "binding_uses": 4121,
+  "unique_targets": 863,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -926,6 +926,10 @@
       "path": "World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0025.jbp",
       "type": "BlueprintCue"
     },
+    "979aec11b61ec9949a5c0bdfa2b552a3": {
+      "path": "World/Dialogs/c4/Mythic_Trickster/Council_Lexicon2/Cue_0035.jbp",
+      "type": "BlueprintCue"
+    },
     "c455162655e5aa74fa10d6445315c7a3": {
       "path": "World/Dialogs/c4/Mythic_Trickster/Council_Lexicon2/Cue_0040.jbp",
       "type": "BlueprintCue"
@@ -1376,6 +1380,10 @@
     },
     "53e715f39ea70d249ae916610e5bf340": {
       "path": "World/Dialogs/c5/Mythic_Trickster/Council_5-1/Cue_0020.jbp",
+      "type": "BlueprintCue"
+    },
+    "fd991da9cb8bb4a4f9576adbf51de6fd": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Council_5-1/Cue_0029.jbp",
       "type": "BlueprintCue"
     },
     "b936cf96571c0354fb7a57f4987fea5c": {

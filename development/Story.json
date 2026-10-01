@@ -108407,7 +108407,7 @@
         {
           "Id": "refusal",
           "Speaker": "Minagho",
-          "Text": "\"I heard you the first time.\"\n{n}Her answer comes quickly. A little too quickly for indifference.{/n}\n\"There are other uses for your company. You know what happened to me. Chivarro knows what happened before you. Veyr will find it harder to sell each of us a different version if we are in the same room.\"\n\"And afterward?\"\n\"We can discover whether conversation alone is as exhausting as I remember. You are allowed to surprise me without changing your answer.\"",
+          "Text": "\"I heard you the first time.\"\n{n}Her answer comes quickly. A little too quickly for indifference.{/n}\n\"There are other uses for your company. You know what happened to me. Chivarro knows what happened before you. Veyr will find it harder to sell each of us a different version if we are in the same room.\"\n\"And afterward?\"\n\"We can discover whether conversation alone is as exhausting as I remember. If you surprise me, I shall pretend I expected it.\"",
           "Choices": [
             {
               "Text": "\"A meeting, then.\"",
@@ -109487,7 +109487,7 @@
           "Text": "{n}Minagho leans close enough that her hair brushes your cheek, then stops.{/n}\n\"You say that very confidently. Has someone been encouraging you?\"\n\"You have been trying for most of the evening.\"\n\"Trying?\"\n{n}That earns you the kiss. Her hand tightens at your collar; the little triumphant sound she makes when you draw her closer is almost a laugh. She has forgotten the elegant position she meant to maintain. One knee strikes the table. A stone from the abandoned game falls, and she catches it without looking away from you.{/n}\n\"A witness. We should dispose of it.\"\n{n}You take the stone from her fingers and put it beside the others. When you turn back, the levity has thinned. She is waiting, mouth slightly parted, as if your returning were the uncertain part.\nYou kiss her again. This time she lets the waiting show before answering it, and then answers it all at once. She shoves the tray off the couch with her heel, stones and all, drags her dress off one shoulder and then the other without breaking the kiss, and climbs into your lap with a knee either side of your hips, pulling your hands up the bare length of her back. \"One hour,\" she says into your mouth, already working at your belt. \"Do not waste it being gentle.\"\nAfterwards she steals your place on the cushion while you reach for the wine, then complains when you insist on sharing it. Her head settles against you halfway through the complaint.{/n}\n\"Next time, two hours. Chivarro negotiated very poorly on my behalf.\"",
           "Choices": [
             {
-              "Text": "\"Yes. Another hour, when we both want it.\"",
+              "Text": "\"Two hours, next time. I'll bring the plums.\"",
               "Next": null,
               "Set": [
                 "minachiv.evening_kept",
@@ -177949,7 +177949,9 @@
                 "minagho_chivarro.trickster.cost.half_the_pair",
                 "minagho_chivarro.trickster.committed"
               ],
-              "Requires": [],
+              "Requires": [
+                "minagho_chivarro.trickster.cost.baphomet_debtor"
+              ],
               "Forbids": [],
               "Abort": false
             },
@@ -177959,6 +177961,21 @@
               "Set": [],
               "Requires": [],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Your terms.\"",
+              "Next": "threshold_clean",
+              "Set": [
+                "minachiv.complete",
+                "minachiv.future_chivarro",
+                "minagho_chivarro.trickster.cost.half_the_pair",
+                "minagho_chivarro.trickster.committed"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "minagho_chivarro.trickster.cost.baphomet_debtor"
+              ],
               "Abort": false
             }
           ],
@@ -177986,6 +178003,24 @@
           "Id": "threshold",
           "Speaker": "Narrator",
           "Text": "{n}She does not take you to your quarters. She takes you to hers, a rented room above a chandler's shop below the citadel, and bars the door with a chair, and turns.{/n}\n{n}\"Rent,\" she says, and holds out her hand. When you put yours in it she does not take it; she inspects it, turns it palm up, runs one nail along the old cut until you draw breath, and smiles at the sound as if she has just been quoted a price she likes. Then she undresses you the way she once dressed the Delights' best rooms: without hurry, piece by piece, setting each thing exactly where she wants it. Her own gown she leaves for last and lets fall without ceremony, because she knows precisely what it costs you to watch.{/n}\n{n}\"Ten thousand nights I sold,\" she murmurs, walking you backwards to a bed too narrow for anything she has in mind. \"This one is mine, and I am going to collect every copper of it.\" She pushes you down with two fingers, climbs astride you in one practiced motion, and leans down until her breath is on your mouth, and there, holding you exactly where she wants you, she stops talking.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "minagho_chivarro.trickster.night.chivarro"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "threshold_clean",
+          "Speaker": "Narrator",
+          "Text": "{n}She does not take you to your quarters. She takes you to hers, a rented room above a chandler's shop below the citadel, and bars the door with a chair, and turns.{/n}\n{n}\"Rent,\" she says, and holds out her hand, and when you put a purse in it she weighs it without looking, drops it on the floor, and takes your hand instead. She undresses you the way she once dressed the Delights' best rooms: without hurry, piece by piece, setting each thing exactly where she wants it, and lets her own gown fall last, because she knows precisely what it costs you to watch.{/n}\n{n}\"A room of my own, in a crusader's city, and a tenant who pays,\" she murmurs, walking you backwards to a bed too narrow for anything she has in mind. \"I have come down in the world. Let us see how far.\" She pushes you down with two fingers, climbs astride you in one practised motion, and leans down until her breath is on your mouth, and there, holding you exactly where she wants you, she stops talking.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -179169,7 +179204,7 @@
         {
           "Id": "haggle",
           "Speaker": "Chivarro",
-          "Text": "{n}She lets you take it. Then she takes your wrist, turns your hand over, puts the coin back in your palm, right on the cut, and closes your fingers on it until it hurts.{/n} \"Now it is a keepsake. Keepsakes are free. Everything else goes on the bill.\"",
+          "Text": "{n}She lets you take it. Then she takes your wrist, turns your hand over, puts the coin back in your palm, presses it into the hollow of it with her thumb, and closes your fingers on it until it hurts.{/n} \"Now it is a keepsake. Keepsakes are free. Everything else goes on the bill.\"",
           "Choices": [
             {
               "Text": "[Keep the coin.]",
@@ -179497,10 +179532,15 @@
         "minagho_chivarro.trickster.committed",
         "minachiv.future_two"
       ],
-      "Forbids": [],
+      "Forbids": [
+        "sacrifice"
+      ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "minagho_chivarro"
+      "Relationship": "minagho_chivarro",
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      }
     },
     {
       "Id": "minagho_chivarro.trickster.epilogue.chivarro",
@@ -179567,10 +179607,15 @@
         "minagho_chivarro.trickster.committed",
         "minachiv.future_chivarro"
       ],
-      "Forbids": [],
+      "Forbids": [
+        "sacrifice"
+      ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "minagho_chivarro"
+      "Relationship": "minagho_chivarro",
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      }
     },
     {
       "Id": "minagho_chivarro.trickster.epilogue.minagho",
@@ -179659,10 +179704,15 @@
         "minagho_chivarro.trickster.committed",
         "minachiv.future_minagho"
       ],
-      "Forbids": [],
+      "Forbids": [
+        "sacrifice"
+      ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "minagho_chivarro"
+      "Relationship": "minagho_chivarro",
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      }
     },
     {
       "Id": "minagho_chivarro.trickster.epilogue.owned",
@@ -179675,7 +179725,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}Chivarro stayed in Drezen, owned, on paper, at the Commander's door, and never once let it be mistaken for anything else. She was never seen to smile at the Commander again. She was never seen to leave. Minagho visited her there, and did not speak to the Commander at all.{/n}",
+          "Text": "{n}Chivarro stayed in Drezen, owned, on paper, at the Commander's door, and never once let it be mistaken for anything else. She was never seen to smile at the Commander again. She was never seen to leave.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -179686,7 +179736,17 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "{n}Minagho visited her there, and did not speak to the Commander at all.{/n}",
+              "Requires": [
+                "minagho_chivarro.trickster.minagho_in"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -179839,7 +179899,8 @@
         "minachiv.closed",
         "minagho_chivarro.trickster.declined",
         "minagho_chivarro.trickster.kept_in_service",
-        "minagho_chivarro.trickster.chivarro_owned"
+        "minagho_chivarro.trickster.chivarro_owned",
+        "sacrifice"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -179851,7 +179912,8 @@
         ]
       ],
       "ForbidOverrides": {
-        "minagho_chivarro.trickster.chivarro_owned": "minagho_chivarro.trickster.bill_burned"
+        "minagho_chivarro.trickster.chivarro_owned": "minagho_chivarro.trickster.bill_burned",
+        "sacrifice": "trickster.commander_back"
       }
     },
     {
@@ -248992,7 +249054,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}Shyka laughed, once, at something the Commander did at the last session of the Council. Chadali said it sounded like crockery falling down a very long staircase, and that she had won the bet, and that the Commander owed her a very interesting cookie.{/n}",
+              "Text": "{n}Shyka laughed, once, at something the Commander did at the last session of the Council. Chadali said it sounded like crockery falling down a very long staircase, that the Commander had won the bet fair and square, and that she would pay up as soon as she had baked a cookie interesting enough. She was still baking it, years later.{/n}",
               "Requires": [
                 "chadali.sessions.unforeseen"
               ],
@@ -249114,7 +249176,8 @@
             {
               "Text": "{n}When the Council's members pretended that they had never met, two of them did not. Every year, on the anniversary of the first session, the Commander and Chadali ate cookies at a table with seven chairs, and remembered all of it, and made it sound much better than it was.{/n}",
               "Requires": [
-                "chadali.hours.promised_to_remember"
+                "chadali.hours.promised_to_remember",
+                "council.epilogue_ceased"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -249917,7 +249980,7 @@
         {
           "Id": "person",
           "Speaker": "Chadali",
-          "Text": "{n}The hand stops on your cheek. She takes it back, slowly, and folds it with the other in her lap.{/n}\n\"I know you bleed.\" {n}Her voice has gone quiet.{/n} \"I've seen the lists. Eritrice reads them out. I cover my ears, and she reads them louder.\"\n\"I call you lucky because if I stop calling you lucky, I'll have to think about you bleeding. And I'm not good at that. I'm good at believing. It's the only thing I'm good at.\" {n}She looks at her hands.{/n} \"Is it very rude? It feels rude, now you've said it.\"",
+          "Text": "{n}The hand stops on your cheek. She takes it back, slowly, and folds it with the other in her lap.{/n}\n\"I know you bleed.\" {n}Her voice has gone quiet.{/n} \"I've seen the lists. Eritrice reads them out. I cover my ears, and she reads them louder.\"\n\"I call you lucky because if I stop calling you lucky, I'll have to think about you bleeding. And I don't want to. I'm chance; I make the odds better, I heal what I can reach, I make people stronger, and I can't do any of it while I'm counting your wounds.\" {n}She looks at her hands.{/n} \"Is it very rude? It feels rude, now you've said it.\"",
           "Choices": [
             {
               "Text": "\"It's rude. Keep doing it anyway.\"",
@@ -251643,9 +251706,7 @@
             {
               "Text": "\"Nobody will take it from you by force. Not while I'm here.\"",
               "Next": "promise",
-              "Set": [
-                "chadali.fortunes.promised_no_force"
-              ],
+              "Set": [],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -251679,7 +251740,9 @@
             {
               "Text": "\"I'll keep it. I'll find the other way.\"",
               "Next": "keep",
-              "Set": [],
+              "Set": [
+                "chadali.fortunes.promised_no_force"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -252854,6 +252917,30 @@
             {
               "Text": "[Trickster] \"Someone had to. You're always giving it away.\"",
               "Next": "giving",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"You asked me to. In the hall, with her helmet in your hand, and you took the credit.\"",
+              "Next": "asked",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "asked",
+          "Speaker": "Chadali",
+          "Text": "\"I know.\" {n}She does not look away, which is worse.{/n} \"I asked. I wanted her to keep believing in me, and I wanted it more than I wanted to be honest with her, and you did exactly what I asked, and did it well.\"\n\"That's why I'm cross with you instead of myself. It's easier.\" {n}She unfolds the letter again.{/n} \"It's not fair. I know it's not fair. Now help me decide what to do about her roof.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "choose",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -254963,7 +255050,7 @@
         {
           "Id": "start",
           "Speaker": "Chadali",
-          "Text": "\"About whether I was planning to take someone else's essence instead of giving mine.\" {n}She says it quickly, to get it over with.{/n}\n\"You asked in front of everyone. I said no, of course not, I wouldn't do that to my friends. And then I said, 'Um, we are friends, right?'\" {n}She looks at her hands.{/n} \"I sounded so silly. Nobody answered. Alichino smirked.\"\n\"So I'm asking again. Here. Just you.\" {n}She looks up.{/n} \"Are we friends? Or am I a jar with some Elysium in it that you need?\"",
+          "Text": "\"About whether I was planning to take someone else's essence instead of giving mine.\" {n}She says it quickly, to get it over with.{/n}\n\"You asked in front of everyone. I said no, of course not, I wouldn't do that to my friends. And then I said, 'Um, we are friends, right?'\" {n}She looks at her hands.{/n} \"I sounded so silly. Socothbenoth answered, very sweetly, and told you off for asking, and I could tell he was only being kind because it was me.\"\n\"So I'm asking again. Here. Just you.\" {n}She looks up.{/n} \"Are we friends? Or am I a jar with some Elysium in it that you need?\"",
           "Choices": [
             {
               "Text": "\"You're not a jar. You never were.\"",
@@ -427373,8 +427460,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -430259,7 +430346,9 @@
       "3108154bf2ca3414e83ca4db4eb790da"
     ],
     "council.session_minuted": [
-      "55eecf755f351b147a265f40d1db09a5"
+      "55eecf755f351b147a265f40d1db09a5",
+      "979aec11b61ec9949a5c0bdfa2b552a3",
+      "fd991da9cb8bb4a4f9576adbf51de6fd"
     ],
     "council.orange_called": [
       "53e715f39ea70d249ae916610e5bf340"
