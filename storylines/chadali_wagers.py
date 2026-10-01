@@ -41,6 +41,7 @@ SEEN_CUES = {
     DEVIL_EXCUSED: ["169e409dbf64fc14cbaa4fb3ad2121a7"],
     ODIOUS: ["12bb8e9afd0788c4a864e29d4add775f"],
     FREE_SPACE: ["2889c1e9b792f2c4e95a8cc551971063"],
+    "chadali.aid_regretted": ["30f2736de45fe584f95ef461b91db9ef"],                                       # Council_2/Cue_0031
     "chadali.lexicon_found": ["805e49b56b678a145891d30f5a5b30f6", "331665d02ccb36a4ba8ad2568a333947"],   # Council_3/Cue_0005, Cue_0016
 }
 
@@ -361,14 +362,14 @@ wager(WOUND, "A free space", '"What would you do with the Worldwound, if we clos
 "A free space, through which happy vibrations flow, permeating the entirety of existence. Luck, to each and every one, for free. The most amazing thing on Golarion!"''',
       c("Continue", "challenge")),
     ch("dream", '''"A free space. Where the wound was." {n}She draws a circle on the table with one finger, in cookie dust.{/n}
-"All the planes touch it, now. That's why it hurts. But if the hurt came out, the touching would still be there, and then everybody could come and go, and good things could flow through, and luck. Luck, to each and every one, for free!"''',
+"The Abyss touches it now. That's why it hurts. But if the hurt came out, and the other planes could touch it too, then everybody could come and go, and good things could flow through, and luck. Luck, to each and every one, for free!"''',
       c("Continue", "challenge")),
     ch("challenge", '''{n}She beams at you, waiting for you to love it.{/n}''',
       c('"If everyone gets luck, nobody\'s lucky. Luck is being ahead of someone."', "ahead"),
       c('"Who decides who gets it? You?"', "who"),
       c('"It\'s beautiful. I don\'t believe it for a moment. I want it anyway."', "want")),
     ch("ahead", '''{n}The beam dims.{/n} "That's Alichino's kind of luck. That's winning. Winning isn't luck, it's just the other person losing."
-"Real luck is when something good happens and nobody had to lose for it. A coin landing on its edge. An orange in a bag." {n}She looks at you pointedly.{/n}
+"Real luck is when something good happens and nobody had to lose for it. A coin landing on its edge." {n}She looks at you pointedly.{/n}
 "You're thinking like a general. That's all right, you have to. But you asked me what I'd do. I'd make the kind of luck nobody pays for." {n}She sniffs.{/n} "And you'd tell me it can't be done, and I'd do it anyway."''',
       c("Continue", "close")),
     ch("who", '''"Me?" {n}She laughs, and then stops laughing, because you are not.{/n}
@@ -390,7 +391,7 @@ wager(GLOOMY, "So gloomy", '"Not today, Chadali."', [
     nar("open", '''{n}You did not mean to come here. The field reports were bad, and the walk from the war room to your quarters passes the door to the hall, and somehow you are standing at the end of the long table in the dark, with your gauntlets still on.{/n}''',
         c("Continue", "start")),
     ch("start", '''"Oh." {n}She has seen your face. She gets up at once, cookies forgotten.{/n}
-"How can you be so gloomy?" {n}She said it once to Cobblehoof, in the first session, as a joke. She does not say it like a joke now.{/n} "Who was it? Don't tell me the number. Tell me the name. One name."''',
+"How can you be so gloomy?" {n}It is the kind of thing she says across the Council table to tease. She does not say it like a tease now.{/n} "Who was it? Don't tell me the number. Tell me the name. One name."''',
       c("[Tell her a name.]", "name"),
       c('"There are too many names."', "many"),
       c('"I don\'t want to be cheered up."', "no_cheer")),
@@ -405,7 +406,7 @@ wager(GLOOMY, "So gloomy", '"Not today, Chadali."', [
 "I'm just going to sit here. You can be gloomy. I'll be here while you do it." {n}She sits. She does not offer a cookie. After a while, without any comment at all, she starts unbuckling your gauntlet.{/n}''',
       c("Continue", "hope")),
     ch("hope", '''{n}When your hands are bare she holds them between hers. Her palms are warm and a little floury.{/n}
-"In the first session I said we'll definitely win, I just don't know how yet. Everyone laughed." {n}Her thumbs move over your knuckles.{/n}
+"I always say we'll definitely win, I just don't know how yet. Socothbenoth rolls his eyes every time." {n}Her thumbs move over your knuckles.{/n}
 "I need you to say something hopeful. Out loud. It doesn't have to be true. It just has to be said, by you, in here. I'll hold it for you until it is."''',
       c('"We\'ll win. I don\'t know how yet."', "hoped", flags=(HOPED_ALOUD,)),
       c('"I can\'t. Not tonight."', "cant")),

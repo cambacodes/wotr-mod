@@ -102,8 +102,8 @@ hour(EARRING, "An unlucky day", '"Are you... crawling under the table?"', [
 
 hour(FIRST, "Our new friend", '"Do you remember the first session?"', [
     ch("start", '''"Of course I do! I remember everything that makes me happy, and it made me very happy." {n}She settles in, like someone about to tell a favourite story.{/n}
-"Socothbenoth brought you in, and everyone looked at you as if you were a new kind of beetle. Eritrice asked you questions. Alichino made notes. Cobblehoof said 'Phrr'."
-"And then they started being rude about you. Mortals, short lives, narrow outlook, all that." {n}Her eyes gleam.{/n} "So I said, don't be so tough on our new friend! They're our lucky charm! And everyone stopped."''',
+"Socothbenoth brought you in, and everyone looked at you as if you were a new kind of beetle. Eritrice asked you questions. Shyka laughed at something nobody else could see. Cobblehoof said 'Phrr'."
+"And I looked at you and said, just look how cute they are! They'll be our lucky charm!" {n}Her eyes gleam.{/n} "And everyone laughed. And I was right."''',
       c('"Why did you defend me? You\'d never met me."', "why"),
       c('"You decided that fast?"', "fast")),
     ch("fast", '''"Faster!" {n}She claps.{/n} "I decided before you'd sat down. You came through the door and stood there looking at all of us, a demon lord and a devil and a hippogriff and the Eldest and two empyreal lords, and you weren't frightened at all. You were counting the exits."
@@ -113,7 +113,7 @@ hour(FIRST, "Our new friend", '"Do you remember the first session?"', [
 "You looked like someone who'd been unlucky for a very long time and had decided to do something about it." {n}Softly.{/n}
 "I know that look. I see it on the faces of the people who pray to me the hardest. The ones who don't expect anything, and pray anyway." {n}She looks up.{/n} "I've never been able to help most of them. I thought, maybe this one I can. So I called you our lucky charm. It's the best thing I know how to call anyone."''',
       c('"You did help. You still do."', "helped", flags=(FIRST_SIGHT,)),
-      c('"You couldn\'t even give me votes, in the second session."', "votes")),
+      c('"You couldn\'t even give me votes, in the second session."', "votes", requires=("chadali.aid_regretted",))),
     ch("votes", '''"I know!" {n}She covers her face.{/n} "You asked for material aid and I said I'd be happy to help even without the votes, and I was sorry I couldn't. I was so sorry. I sent you good wishes instead." {n}Through her fingers:{/n} "That's a terrible thing to send an army."
 {n}She lowers her hands.{/n} "But I meant them. Every one. That's all I had that day. Now I have cookies, and you." {n}She beams.{/n} "I'm much better equipped."''',
       c("Continue", "helped", flags=(FIRST_SIGHT,))),

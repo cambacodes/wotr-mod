@@ -104,12 +104,12 @@ session(OVERHEARD, "What you said about me", '"You look like you\'ve been told s
 # --- 2. A dull future: Shyka, fate and chance. ------------------------------------------------------------------------
 
 session(FORESEEN, "A dull future", '"Does Shyka frighten you?"', [
-    ch("start", '''"Shyka?" {n}She laughs, but she glances at the Eldest's empty chair as she does it.{/n} "No. Well. A little. Not the way the needle does. The way a very long corridor does."
-"They see futures. All of them, like pages. They pick the interesting ones and throw the dull ones away. They told me once that most of my futures are dull. They said it kindly. Shyka is always kind when they're being horrible."''',
+    ch("start", '''"Shyka?" {n}She laughs, but she glances at the Eldest's empty chair as she does it.{/n} "No. Well. A little. Not the way Alichino's smile does. The way a very long corridor does."
+"They talk about futures as if they'd been to them already and found them disappointing. Some are dull, they say. They say it kindly. Shyka is always kind when they're being horrible."''',
       c('"Are they right?"', "right"),
       c('"Futures are just odds. You\'re chance. You should be the one they\'re afraid of."', "afraid")),
     ch("right", '''"Maybe!" {n}Brightly.{/n} "I bake. I send luck. I clap at meetings. It's not very exciting, if you're a thing that's seen the end of worlds."
-{n}Then she looks at you, and her head tilts.{/n} "But you're not dull. I've watched Shyka watching you. They lean forward when you talk, and Shyka never leans forward for anybody. I think you make their dull pages interesting. I think you're the only reason they still come to our meetings."''',
+{n}Then she looks at you, and her head tilts.{/n} "But you're not dull. I've watched Shyka watching you. They lean forward when you talk, and Shyka never leans forward for anybody. I think you make the dull futures interesting. I think you're the only reason they still come to our meetings."''',
       c("Continue", "bet")),
     ch("afraid", '''{n}She blinks at you. Then she sits up very straight, and her bracelets clink, and she looks, for a moment, genuinely formidable.{/n}
 "Oh. Yes. I should be, shouldn't I?" {n}She considers the empty chair with new interest.{/n} "They see a page, and then I happen, and the page is wrong. That's what I'm for. That's what I've always been for."
@@ -131,13 +131,13 @@ session(FORESEEN, "A dull future", '"Does Shyka frighten you?"', [
 # --- 3. An interesting way: the Lexicon, and the key. -------------------------------------------------------------------
 
 session(LEXICON, "Written in a very interesting way", '"Did you understand the Lexicon?"', [
-    ch("start", '''"No!" {n}Cheerfully.{/n} "I didn't really understand any of it, but it's written in a very interesting way! I said so at the table. Eritrice wrote it down with the little squiggle."
+    ch("start", '''"No!" {n}Cheerfully.{/n} "I didn't really understand any of it, but it's written in a very interesting way! If I told Eritrice so she'd write it down with the little squiggle."
 "But I clapped. When you found the way in. I said, what an amazing discovery, you really are our lucky charm." {n}She hesitates.{/n} "Will you explain it to me? Slowly? Alichino explains things to me in a voice for children, and I clap to annoy him."''',
       c('"The Worldwound needs a key. The Council thinks it could be me."', "key", requires=(PROPOSED_KEY,)),
       c('"It says how the Wound was made, and how it might be closed."', "how", forbids=(PROPOSED_KEY,))),
     ch("key", '''{n}She stops smiling. You watch her work through it, slowly, the way she asked.{/n}
-"A key. That's you. Eritrice said, 'Why, you, of course!' and everyone agreed, and then someone said, 'At worst, you'll die'." {n}Her voice has gone very small.{/n} "And I clapped. I clapped at that. I didn't understand, and I clapped anyway, because everyone was so pleased."
-{n}Her hands are shaking.{/n} "I clapped at you dying."''',
+"A key. That's you. They talked about it at the table as if it were good news, and I sat there and smiled, because everyone looked so pleased, and I didn't understand what they were pleased about." {n}Her voice has gone very small.{/n}
+{n}Her hands are shaking.{/n} "I smiled at you dying."''',
       c('"You didn\'t know."', "didnt_know", flags=(KEY_TOLD,)),
       c('"At worst. Not certainly. I\'m good at avoiding the worst."', "worst", flags=(KEY_TOLD,))),
     ch("how", '''{n}You explain it: the rift, the old experiments, what was torn and what might be sewn. She listens with enormous concentration, her lips moving occasionally as if repeating the hard words.{/n}
@@ -145,7 +145,7 @@ session(LEXICON, "Written in a very interesting way", '"Did you understand the L
 "Will it hurt you?" {n}She asks it very directly.{/n} "Don't be clever. Just say."''',
       c('"It might. I don\'t know yet."', "didnt_know", flags=(KEY_TOLD,))),
     ch("didnt_know", '''"I should have known." {n}Fiercely.{/n} "I should have asked. Instead I said 'how interesting' and ate a cookie." {n}She wipes her eyes, angrily, with the heel of her hand.{/n}
-"I'm going to listen properly now. At every session. Even the boring parts. Even Alichino's footnotes." {n}She looks at you.{/n} "And if anybody says 'at worst' again, I'm going to throw a cookie at them. A hard one. From last week."''',
+"I'm going to listen properly now. At every session. Even the boring parts. Even Alichino's footnotes." {n}She looks at you.{/n} "And if anybody talks about you like a key again, I'm going to throw a cookie at them. A hard one. From last week."''',
       c("Continue", "close")),
     ch("worst", '''"You're good at avoiding things." {n}She nods, too many times.{/n} "Yes. That's true. You'll have to avoid this one too. You'll have to be better at it than you've ever been at anything."
 {n}And then, with sudden fury, she slaps the table so hard the coin on it jumps and, somehow, lands on its edge again.{/n} "But don't make it a joke! Not this one! You can joke about everything else, I'll laugh at everything else, but not this."''',
@@ -165,7 +165,7 @@ session(SONG, "A drinking song", '"Are you... singing?"', [
       c('"Please don\'t."', "please")),
     ch("please", '''"Too late! It's already written! Well. Half." {n}She clears her throat, magnificently.{/n}''',
       c("Continue", "how")),
-    ch("how", '''{n}She sings. It is about a coin that would not fall down, and an orange that should not have been in a bag, and a Commander who "never once left a thing to chance, and never once lost a single dance". It rhymes "Drezen" with "reason" and "treason" and, at one point, "pleasin'". It has eleven verses, and she forgets the fourth and makes up a new one on the spot about Cobblehoof.{/n}
+    ch("how", '''{n}She sings. It is about a coin that would not fall down, and a Commander who "never once left a thing to chance, and never once lost a single dance". It rhymes "Drezen" with "reason" and "treason" and, at one point, "pleasin'". It has eleven verses, and she forgets the fourth and makes up a new one on the spot about Cobblehoof.{/n}
 {n}It is the worst song you have ever heard. By the ninth verse, somehow, you know the chorus.{/n}''',
       c("[Sing the chorus with her.]", "sing", flags=(SANG,)),
       c("[Listen, and laugh.]", "laugh")),
@@ -208,7 +208,7 @@ session(SHRINE, "A parcel for the shrine", '"You want me to carry something?"', 
 # --- 6. Two patrons: Eritrice. ---------------------------------------------------------------------------------------
 
 session(PATRONS, "Two beautiful ladies", '"You and Eritrice..."', [
-    ch("start", '''"Socothbenoth called us 'two beautiful ladies' when he introduced you." {n}She giggles.{/n} "Eritrice was furious. She said it was irrelevant to the agenda. She wrote it down anyway."
+    ch("start", '''"Socothbenoth calls us 'two beautiful ladies'." {n}She giggles.{/n} "It makes Eritrice furious. She says it's irrelevant to the agenda. She writes it down anyway."
 "The patron of debate and the patron of serendipity. We're opposites. She plans everything and I plan nothing. She writes everything down and I forget everything. She never lies and I..." {n}She stops.{/n} "Well. I tell very small lies. About cookies. Mostly."''',
       c('"Are you friends?"', "friends"),
       c('"She agreed with you once. In the first session."', "agreed")),
@@ -237,12 +237,12 @@ session(PATRONS, "Two beautiful ladies", '"You and Eritrice..."', [
 session(WISH, "What chance wishes for", '"What do you wish for, Chadali?"', [
     ch("start", '''"Me?" {n}She is honestly startled, a cookie halfway to her mouth.{/n} "Nobody asks me that. I'm the one people wish to. It'd be like asking a well what it wants to throw a coin into."
 {n}She puts the cookie down and thinks about it, properly, for so long that the lamp needs trimming.{/n}
-"I wish to be surprised." {n}She says it slowly, as if finding it out.{/n} "I'm chance. I know the odds of everything. Nothing surprises me any more. Except you. You keep happening sideways."''',
+"I wish to be surprised." {n}She says it slowly, as if finding it out.{/n} "I'm chance. I've seen every way a coin can land and every way this Council can argue. Very little surprises me any more. You do. You keep happening sideways."''',
       c('[Trickster] [Make a flower appear from behind her ear. One of hers, stolen earlier.]', "flower", flags=(SURPRISED_HER,)),
       c('[Tell her something you\'ve never told anyone.]', "secret", flags=(SURPRISED_HER,)),
       c('"I can\'t surprise you on purpose. That\'s not how it works."', "purpose")),
     ch("flower", '''{n}You reach behind her ear and bring back a white flower, one of her own, that you took from her hair an hour ago while she was talking about oranges.{/n}
-{n}She gasps, and snatches at her hair, and finds the gap, and bursts out laughing.{/n} "You stole it! When? I didn't feel a thing! I always feel everything!"
+{n}She gasps, and snatches at her hair, and finds the gap, and bursts out laughing.{/n} "You stole it! When? I didn't feel a thing! Nobody touches my flowers without my noticing!"
 {n}She holds the flower as if it were a jewel.{/n} "That's a good surprise. A very good one. Stealing something and giving it back. That's the nicest kind of trick."''',
       c("Continue", "close")),
     ch("secret", '''{n}You tell her. It does not matter what; it is something you have not said aloud to anyone, not to your companions, not to yourself in the dark. It is not a large thing. It is a true one.{/n}
@@ -381,7 +381,7 @@ session(LAST_EVENING, "The last evening", '"The hall feels different tonight."',
 
 EPILOGUE_PARAGRAPHS = [
     (SAID_IT_TO_USE_THEM, "{n}Alichino's little black notebook, returned to him with a lopsided flower in the margin, stayed on his shelf for the rest of his long existence. He never tore the page out. Nobody could decide whether that was spite or sentiment, and he declined to say.{/n}"),
-    (UNFORESEEN, "{n}Shyka laughed, once, at something the Commander did at the last session of the Council. Chadali said it sounded like crockery falling down a very long staircase, that the Commander had won the bet fair and square, and that she would pay up as soon as she had baked a cookie interesting enough. She was still baking it, years later.{/n}"),
+    (UNFORESEEN, "{n}Years after the war, Shyka turned up uninvited at one of Chadali's dinners and laughed, once, at something the Commander did with a cookie. Chadali said it sounded like crockery falling down a very long staircase, that the Commander had won the bet fair and square, and that she would pay up as soon as she had baked a cookie interesting enough. She was still baking it, years later.{/n}"),
     (SANG, "{n}The drinking song about the coin was sung in every tavern in Drezen for a generation. It had eleven verses, or twelve, depending on who was drunk. The Commander was obliged to stand in several of those taverns and pretend not to know the chorus.{/n}"),
     (CARRIED_PARCEL, "{n}The little shrine by the grain market kept a plaque by its cracked step: \"The Commander knocked here.\" The step never cracked any further.{/n}"),
     (FELT_IT, "{n}In the war's last campaigns the Commander won a little less often and a little more slowly, and knew the names. She said that was the luckiest thing about any army.{/n}"),

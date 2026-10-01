@@ -82,16 +82,16 @@ fortune(BAG, "Will it hurt?", '"You\'ve been quiet since the cauldron."', [
       c('"There might be another way. I\'m looking."', "looking")),
     ch("promise", '''{n}She looks up so fast the flowers shake in her hair.{/n}
 "You mean it? You can't mean it. You need them. All of them. I read the Lexicon, or Eritrice read it to me, which is the same thing but slower." {n}Her hands have stopped on the ring.{/n}
-"If I say no and you've promised, then you have to choose between me and closing the Wound." {n}A breath.{/n} "Don't promise me that. Promise me something you can keep."''',
+"If I say no and you've promised, then you have to choose between me and bringing Elysium into your crossroads." {n}A breath.{/n} "Don't promise me that. Promise me something you can keep."''',
       c('"I\'ll keep it. I\'ll find the other way."', "keep", flags=(PROMISED_SAFE,)),
       c('"Then I promise to be there, whatever happens."', "there")),
     ch("truth", '''"It will hurt." {n}She repeats it, and nods, slowly, and her chin firms.{/n}
 "Thank you. Everyone else is being nice to me, or mean to me. Alichino says it will be 'a formality'. Cobblehoof says 'Phrr'. You just said it will hurt." {n}She lets out a shaky laugh.{/n} "That's the first thing anyone's said about it that I could hold."''',
       c("Continue", "brave")),
-    ch("looking", '''"Looking." {n}She seizes the word like a cookie.{/n} "You're always looking. You found the way into the Lexicon when none of us could. You found the orange."
-{n}Then her face does something complicated.{/n} "But you put the orange there. You didn't find it." {n}A long silence.{/n} "Are you going to put another way there, too? Make it up? Because if you do, and it's a trick, and it doesn't work, I'll have hoped for nothing, and I'll never forgive you."''',
+    ch("looking", '''"Looking." {n}She seizes the word like a cookie.{/n} "You're always looking. You found the way into the Lexicon when none of us could. You found the coin's edge."
+{n}Then her face does something complicated.{/n} "But you put the coin there. It didn't stand up by itself." {n}A long silence.{/n} "Are you going to put another way there, too? Make it up? Because if you do, and it's a trick, and it doesn't work, I'll have hoped for nothing, and I'll never forgive you."''',
       c('"No tricks. If there\'s no other way, I\'ll tell you."', "brave", flags=(TOLD_IT_HURTS,))),
-    ch("keep", '''{n}She holds your eyes for a long time, measuring. She is chance; she knows odds better than anyone in the multiverse.{/n}
+    ch("keep", '''{n}She holds your eyes for a long time, measuring, the way she looks at a coin she suspects of being weighted.{/n}
 "All right," she says at last. "I'll hope. I'm very good at hoping. You be very good at finding." {n}She takes your hand and puts it on the table between you, and puts hers over it.{/n} "And if you can't, you tell me first. Before the needle. Not after."''',
       c("[Promise that too.]")),
     ch("there", '''"There." {n}She thinks about it.{/n} "Yes. That I can hold. If there's a needle, you'll be there."
@@ -159,26 +159,26 @@ fortune(BOWS, "Matching ribbons", '"You offered Nocticula ribbons."', [
 
 # --- 4. Worthless. -----------------------------------------------------------------------------------------------------
 
-fortune(MEAN, "Worthless", '"You said no one needs my essence."', [
+fortune(MEAN, "Worthless", '"About what you said to Socothbenoth."', [
     nar("open", '''{n}She is on her feet the moment she sees you, and then she does not come any closer. There is a parcel in her hands. It is not wrapped in yellow silk this time; it is wrapped in something grey, as if she had not been able to bear the yellow.{/n}''',
         c("Continue", "start")),
-    ch("start", '''"I know what I said." {n}Her voice is tight.{/n} "In front of everyone. You said we all like to talk and none of us want to act, and I said it was easy for you to say, because nobody needs your worthless essence."
-"Worthless." {n}She says it again, as if it tasted of something rotten.{/n} "I said that. To my lucky charm. To you."''',
+    ch("start", '''"I know what I said." {n}Her voice is tight.{/n} "In front of everyone. Socothbenoth said we all like to talk and none of us want to act, and I told him it was easy for him to say, because nobody needs his worthless essence."
+"Worthless." {n}She says it again, as if it tasted of something rotten.{/n} "I said that. Out loud. With my lucky charm sitting right there watching me say it."''',
       c('"You were frightened. I know."', "frightened"),
-      c('"It hurt."', "hurt"),
-      c('"You weren\'t wrong. Nobody wants mine."', "wrong")),
+      c('"It was ugly to hear."', "hurt"),
+      c('"You weren\'t wrong. Nobody needs his."', "wrong")),
     ch("frightened", '''"I was frightened." {n}She nods, too many times.{/n} "I was so frightened that I went looking for the meanest thing in the room, and it was me." {n}She holds the grey parcel out, stiffly.{/n}
 "Everybody thinks I'm only nice. I'm not. I'm nice the way a sunny day is nice: because nothing's gone wrong yet. When something goes wrong, I can be as mean as Alichino. Meaner. He at least means it on purpose."''',
       c('"Everyone has a worst moment. That was yours."', "forgive", flags=(FORGAVE_MEAN,), requires=(MORNING,)),
       c('"Then don\'t do it again."', "again"),
       c('"Everyone has a worst moment. That was yours."', "forgive_early", flags=(FORGAVE_MEAN,), forbids=(MORNING,))),
     ch("hurt", '''{n}She flinches as if you had thrown something.{/n}
-"Good," she says, and then, horrified: "No. Not good. I meant... good that you told me. Not good that it hurt." {n}She presses the grey parcel against her chest.{/n}
+"Good," she says, and then, horrified: "No. Not good. I meant... good that you told me. Not good that you had to hear it." {n}She presses the grey parcel against her chest.{/n}
 "I'm not used to hurting people. I'm used to hurting for them. I don't know what to do with this. I baked. I burnt them. They're in here."''',
       c("[Take the burnt cookies, and eat one.]", "forgive", flags=(FORGAVE_MEAN,), requires=(MORNING,)),
       c("[Take the burnt cookies, and eat one.]", "forgive_early", flags=(FORGAVE_MEAN,), forbids=(MORNING,))),
     ch("wrong", '''"Don't." {n}The flat no, the raised finger.{/n} "Don't say that. I said it to be cruel, and you're saying it to agree with me, and both of those are lies."
-"Your essence is the only one in this whole hall that isn't for sale. That's what makes it worth something." {n}Her finger trembles.{/n} "I knew that when I said it. That's what made it so mean."''',
+"The Abyss is in the Wound already; that part was even true. But I didn't say it because it was true. I said it to make him small, in front of you." {n}Her finger trembles.{/n} "I knew that when I said it. That's what made it so mean."''',
       c('"Then we\'re even. Your worst moment, and my agreeing with it."', "forgive", flags=(FORGAVE_MEAN,), requires=(MORNING,)),
       c('"Then we\'re even. Your worst moment, and my agreeing with it."', "forgive_early", flags=(FORGAVE_MEAN,), forbids=(MORNING,))),
     ch("again", '''"I won't." {n}Instantly, fiercely.{/n} "I'll try not to. I'll be frightened again, I know I will, and when I am, I'll eat a cookie and say something nice about the weather instead."
@@ -210,7 +210,7 @@ fortune(AFTER_NEEDLE, "Sharp needles", '"How are you?"', [
 "This is better than any cookie," she says into your shoulder. "Don't tell anyone I said that. It would ruin my whole reputation."
 "...Tell me a joke. A bad one."''',
       c("[Tell her a very bad joke.]", "joke")),
-    ch("grow", '''"I don't know." {n}She shrugs, and winces.{/n} "Nobody's ever taken any of me before. Shyka says it heals. Shyka also smiled when they said it would hurt, so I don't believe anything Shyka says any more."
+    ch("grow", '''"I don't know." {n}She shrugs, and winces.{/n} "Nobody's ever taken any of me before. Nobody can tell me if it heals. Shyka just smiled when they said it would hurt, so I'm not asking Shyka anything any more."
 "I'll believe it grows back. That's all I can do. And then I'll check." {n}She looks at you.{/n} "Will you check with me? Every time you're here. Just ask. 'Is it growing?' And I'll say yes, even if it isn't, and you'll know I'm lying, and that's all right."''',
       c('"Is it growing?"', "joke", flags=(HELD_AFTER,))),
     ch("sorry", '''"Sorry for what?" {n}Firmly.{/n} "You promised nobody would take it from me by force, and nobody did. Nobody held me down. I sat in the chair and held out my arm."
@@ -333,8 +333,8 @@ fortune(ELYSIUM, "The meadows", '"Tell me about home."', [
       c('"Then it\'s a promise."', "promised", flags=(ELYSIUM_PROMISED,)),
       c('"I don\'t know if I have years."', "mortal")),
     ch("mortal", '''{n}She is quiet for a long time. When she speaks, the empyreal lord is in her voice, old and very gentle.{/n}
-"I know. I know exactly how long you've got. I'm chance. I can feel the odds on everyone, like weather." {n}She takes your hand.{/n}
-"I'm not going to tell you. Don't ask. It isn't bad and it isn't good, it's just a number, and numbers aren't the point."''',
+"I know. Mortals go. I've watched a great many of them go, and I've hoped for every one." {n}She takes your hand.{/n}
+"I'm not going to count yours. Don't ask me to. Counting isn't the point."''',
       c('"What is the point?"', "point")),
     ch("point", '''"That you're here now. That the coin stood up." {n}She laces your fingers through hers.{/n}
 "And afterwards, when you're gone... I'll bet on seeing you again. Somewhere. Some sky that lines up wrong. I'll keep making the bet for as long as I exist, and I exist for a very long time, and I've never lost a bet I cared about." {n}Her thumb moves over your knuckles.{/n} "That's what I've got instead of a mortal clock. A very long bet."''',
@@ -424,7 +424,7 @@ EPILOGUE_PARAGRAPHS = [
     (PROMISED_SAFE, "{n}She kept, in the drawer where she kept her ribbons, a note in the Commander's hand from the week of the cauldron: \"Nobody takes it by force.\" She never needed to show it to anyone. She liked to read it anyway.{/n}"),
     (HELD_AFTER, "{n}Every time the Commander came to her, for the rest of their life, the first thing the Commander asked was \"Is it growing?\" and every time she said yes. By the end, it was true.{/n}"),
     (SAW_THE_FAIR, "{n}Her fair was built, in the end, at the edge of what had been the Wound: acrobats, lollipops, and a three-headed puppy that ate nobody. There was a devil's stall. It sold lollipops. Chadali watched it herself, every day, with a very big one.{/n}"),
-    (FORGAVE_MEAN, "{n}She was mean to the Commander twice more in all their years together, and both times, before the Commander could say anything, she said, \"You went first,\" and the Commander laughed, and it was over.{/n}"),
+    (FORGAVE_MEAN, "{n}She was mean twice more in all their years together, and both times she came straight to the Commander and, before the Commander could say anything, said, \"You went first,\" and the Commander laughed, and it was over.{/n}"),
     (NO_MORE_RIGGING, "{n}Her priests in Drezen had ordinary luck after that, good months and bad. The Commander mended their roof once more, openly, with a sign. She kept the sign.{/n}"),
     (KEPT_RIGGING, "{n}When her priests went hungry the Commander fed them, with the crusade's stamp on every sack, and she never once complained about it, and once she was seen kissing a sack.{/n}"),
     (ELYSIUM_PROMISED, "{n}The Commander saw the meadows, in the end, and sat in the river, and was fed cookies until they stopped looking at the horizon. It took three years. She had said it might.{/n}"),
