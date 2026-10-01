@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 994,
-  "resolved": 994,
+  "entryTargetScenes": 995,
+  "resolved": 995,
   "inlineOnlyScenes": 256,
   "inlineOnlyResolved": 256,
-  "answerListScenesWithoutContact": 580,
-  "answerListScenesWithoutContactResolved": 580,
+  "answerListScenesWithoutContact": 581,
+  "answerListScenesWithoutContactResolved": 581,
   "lists": 105,
   "listsWithReachableHost": 104
  },
@@ -19150,6 +19150,25 @@
     "dialog": "054c1b209de5c9042a02d6736cd3b2ac",
     "dialogName": "Lann_Main_dialog",
     "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "wenduag.trickster.react.irabeth_suspicion": {
+   "kind": "dialog",
+   "lists": [
+    "871af36f2ab2b1f40b5de77976c54276"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "871af36f2ab2b1f40b5de77976c54276": "RRT_entry.wenduag.trickster.react.irabeth_suspicion"
+   },
+   "resolved": true,
+   "host": {
+    "list": "871af36f2ab2b1f40b5de77976c54276",
+    "dialog": "20e94a828d4016d45a6b723765306522",
+    "dialogName": "Irabeth_Dialogue",
+    "cue": "Cue_0069",
     "clicks": 0
    }
   },

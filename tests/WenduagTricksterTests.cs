@@ -212,7 +212,7 @@ internal static class WenduagTricksterTests
         check(!Avail(bid, bought) && !Avail(bid, failedBid), "Trk_Wenduag_TraitorBid: the bid can be retried.");
 
         // Trk_Wenduag_Abyss: she falls in his house (Lann's blow); bought, the Commander claims her from Lann; she follows his smell home.
-        var fellBought = World(story, 4, "trickster", "trickster.ever", Dead, "wenduag.abyss_fell", P + "bought");
+        var fellBought = World(story, 4, "trickster", "trickster.ever", Dead, "wenduag.abyss_fell", P + "bought", P + "fall_agreed");
         check(Avail(abyssFall, fellBought) && abyssFall.TricksterDevice && abyssFall.TricksterState == "abyss"
               && !Avail(abyssFall, World(story, 4, "trickster", "trickster.ever", Dead)),
             "Trk_Wenduag_Abyss: the fall in Savamelekh's house does not play on MongrelsDefeated/Cue_0001.");
@@ -220,7 +220,7 @@ internal static class WenduagTricksterTests
         var abyssKnown = Take(abyssFall, fellBought, "cairn_known", 0, P + "abyss_cairn", P + "lann.knows");
         check(!abyssKnown.Has(P + "cost.lied_to_lann"), "Trk_Wenduag_Abyss: a Lann who saw her breathing is recorded as lied to.");
         var fellUnbought = World(story, 4, "trickster", "trickster.ever", Dead, "wenduag.abyss_fell");
-        var abyssLate = Take(abyssFall, fellUnbought, "cairn", 0, P + "abyss_cairn", P + "cost.late");
+        var abyssLate = Take(abyssFall, fellUnbought, "cairn", 0, P + "abyss_cairn", P + "cost.unplanned", P + "abyss_passage");
         var inDrezen = At(Later(abyssCairn, 48), 5);
         check(!Avail(abyssBack, At(Later(abyssCairn, 47), 5)) && Avail(abyssBack, inDrezen) && !Avail(abyssBack, Later(abyssCairn, 48)),
             "Trk_Wenduag_Abyss: the return does not wait 48 hours and Chapter 5.");
@@ -234,7 +234,7 @@ internal static class WenduagTricksterTests
               && Ch(exile, "plan", 0).Check?.DC == 22 && Ch(exile, "plan", 1).Abort,
             "Trk_Wenduag_Exile: the bid is not on the exile answers, or does not continue into the native exile.");
         var sent = Take(exile, inParty, "yes", 0, P + "bought");
-        var exiled = World(story, 4, "trickster", "trickster.ever", Kicked, P + "bought");
+        var exiled = World(story, 4, "trickster", "trickster.ever", Kicked, P + "bought", P + "exile_agreed");
         check(Avail(champion, exiled) && champion.TricksterState == "exiled" && !Avail(champion, World(story, 4, "trickster", "trickster.ever", Kicked)),
             "Trk_Wenduag_Exile: the champion's report plays without the bid.");
         var scorned = World(story, 4, "trickster", "trickster.ever", Kicked, "wenduag.kicked_out.latched", P + "exile_scorned");
@@ -243,14 +243,14 @@ internal static class WenduagTricksterTests
         var lateBought = Take(lateBid, scorned, "deal", 0, P + "bought", P + "cost.late");
 
         // Trk_Wenduag_Street: she falls in the street in Chapter 5; Brask; the catacombs; she digs.
-        var street = World(story, 5, "trickster", "trickster.ever", Kicked, Dead, "wenduag.street_confronted", P + "bought");
+        var street = World(story, 5, "trickster", "trickster.ever", Kicked, Dead, "wenduag.street_confronted", P + "bought", P + "fall_agreed");
         check(Avail(streetFall, street) && streetFall.TricksterState == "street" && !Avail(streetFall, World(story, 5, "trickster", "trickster.ever", Kicked, Dead)),
             "Trk_Wenduag_Street: the street fall does not play on the street's Cue_0025.");
         var streetCairn = Take(streetFall, street, "catacomb", 0, P + "street_cairn", "trickster.secret.wenduag_cairn");
-        var streetLann = Take(streetFall, World(story, 5, "trickster", "trickster.ever", Kicked, Dead, "wenduag.street_confronted", P + "bought", "lann.in_party"),
+        var streetLann = Take(streetFall, World(story, 5, "trickster", "trickster.ever", Kicked, Dead, "wenduag.street_confronted", P + "bought", P + "fall_agreed", "wenduag.street_lann"),
             "catacomb_lann", 0, P + "street_cairn", P + "cost.lied_to_lann");
         var streetUnbought = World(story, 5, "trickster", "trickster.ever", Kicked, Dead, "wenduag.street_confronted");
-        var brask = Take(streetFall, streetUnbought, "pull_rank_hard", 0, P + "brask_knows", P + "cost.watch", P + "cost.late");
+        var brask = Take(streetFall, streetUnbought, "pull_rank_hard", 0, P + "brask_knows", P + "cost.watch", P + "cost.unplanned");
         check(Ch(streetFall, "pull_rank_hard", 0).Crusade?.Resource == "Favors" && Ch(streetFall, "pull_rank_hard", 0).Crusade?.Amount == -150
               && Ch(streetFall, "pull_rank", 0).Crusade?.Amount == -100,
             "Trk_Wenduag_Street: the watch's bill is not the build sheet's Favors cost.");
@@ -332,12 +332,19 @@ internal static class WenduagTricksterTests
             "Trk_Wenduag_Payment: an unprepared rescue has an outcome that pays nothing.");
         var regill = S(P + "react.regill_watch");
         check(regill.Reaction && regill.Requires.Contains("regill.in_party") && regill.Forbids.Contains("regill.dead")
-              && mine.Count(s => s.Reaction) == 3,
+              && mine.Count(s => s.Reaction) == 4,
             "Trk_Wenduag_Reactors: the allocated reactors (Lann, Irabeth, Regill) are not all present and guarded.");
+        check(S(P + "react.irabeth_traitor").Requires.Contains(P + "brask_knows") && S(P + "react.irabeth_suspicion").Forbids.Contains(P + "brask_knows"),
+            "Trk_Wenduag_Reactors: Irabeth names an eyewitness the Bluff never produced.");
+        var pack = S(P + "epilogue.pack");
+        var paras = pack.Nodes[0].Paragraphs;
+        var believed = paras.Where(x => x.Requires.Contains(P + "lann.lied_again") && !x.Forbids.Contains(P + "lann.disbelieved")).ToList();
+        check(believed.Count == 0 && paras.Count(x => x.Requires.Contains(P + "lann.disbelieved")) == 1,
+            "Trk_Wenduag_Pages: Lann's believed-lie paragraph can play after he disbelieved it.");
 
         // Trk_Wenduag_PathFailed: an unprepared rescue is a live Trickster act; a bought fall still pays off after the path fails.
         check(!Avail(abyssFall, World(story, 4, "trickster.ever", Dead, "wenduag.abyss_fell"))
-              && Avail(abyssFall, World(story, 4, "trickster.ever", Dead, "wenduag.abyss_fell", P + "bought"))
+              && Avail(abyssFall, World(story, 4, "trickster.ever", Dead, "wenduag.abyss_fell", P + "bought", P + "fall_agreed"))
               && !Avail(streetFall, World(story, 5, "trickster.ever", Kicked, Dead, "wenduag.street_confronted")),
             "Trk_Wenduag_PathFailed: an unprepared rescue appears after the Trickster path failed.");
         check(Ch(abyssFall, "price", 0).Crusade?.Amount == -100 && Ch(streetFall, "yields_late", 0).Crusade?.Amount == -50,
@@ -370,7 +377,9 @@ internal static class WenduagTricksterTests
         var ep = World(story, 6, "trickster.ever", Committed, P + "claim.given", P + "lann.paid");
         check(pages.Count(pg => Avail(pg, ep)) == 1 && Avail(S(P + "epilogue.pack"), ep),
             "Trk_Wenduag_Pages: the committed ending does not show exactly its own page.");
-        check(Avail(S(P + "epilogue.dead"), World(story, 6, "trickster.ever", Closed, P + "cairn_built"))
+        check(Avail(S(P + "epilogue.dead"), World(story, 6, "trickster.ever", Closed, P + "cairn_built", P + "stay_dead_ordered"))
+              && !Avail(S(P + "epilogue.dead"), World(story, 6, "trickster.ever", Closed, P + "cairn_built", P + "court.claim_refused"))
+              && Avail(S(P + "epilogue.refused"), World(story, 6, "trickster.ever", Closed, P + "court.claim_refused"))
               && Avail(S(P + "epilogue.unclaimed"), World(story, 6, "trickster.ever", Started))
               && !pages.Any(pg => Avail(pg, World(story, 6, "trickster.ever", "wenduag.romance_finished.latched"))),
             "Trk_Wenduag_Pages: a stayed-dead or unclaimed Wenduag has no page, or the native romance gets an RRT page.");

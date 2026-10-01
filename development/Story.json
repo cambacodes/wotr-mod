@@ -210010,8 +210010,8 @@
       "RequiresAnyGroups": [
         [
           "targona.committed",
-          "targona.trickster.late_committed",
-          "targona.trickster.parent_romanced"
+          "targona.trickster.parent_romanced",
+          "targona.trickster.late_committed"
         ]
       ]
     },
@@ -422542,7 +422542,7 @@
         {
           "Id": "latrine",
           "Speaker": "conversant",
-          "Text": "{n}The whetstone stops.{/n} \"You'll fight my fights for me? In front of his men?\" {n}She shakes her head, slowly, like someone correcting a child who means well.{/n} \"Then every one of them learns that the mongrel bitch has to run to her {mf|master|mistress} when a sergeant bites her. And the next one bites harder, because now he knows I won't bite back.\" {n}She starts on the knife again.{/n} \"In the caves, if the chief settles your quarrel, everyone knows you couldn't. You might as well lie down in the tunnel and let them walk over you.\"",
+          "Text": "{n}The whetstone stops.{/n} \"You'll fight my fights for me? In front of his men?\" {n}She shakes her head, slowly, like someone correcting a child who means well.{/n} \"Then every one of them learns that the mongrel bitch has to run to her {mf|master|mistress} when a sergeant bites her. And the next one bites harder, because now he knows I won't bite back.\" {n}She starts on the knife again.{/n} \"If anybody settles my quarrel for me, everyone knows I couldn't. I might as well lie down in the road and let them walk over me.\"",
           "Choices": [
             {
               "Text": "\"Then what do you want?\"",
@@ -422686,7 +422686,7 @@
         {
           "Id": "freed",
           "Speaker": "conversant",
-          "Text": "\"Eighty years in a demon's hole, {mf|master|mistress}, and she walks out of it straighter than your knights walk out of their beds.\" {n}There is no mockery in it. It is the respect one predator gives another across a clearing.{/n} \"I'd have gnawed my own arm off in the first year. She kept it for her sword.\" {n}She rolls her shoulders.{/n} \"Your crusaders will follow a legend before they follow a living {mf|man|woman}. The legends don't make mistakes. They're dead, or they might as well be. That one's neither. I'd watch her.\"",
+          "Text": "\"Seventy years a prisoner, first on Areelu's tables and then in Minagho's Fane, {mf|master|mistress}, until they made her a husk, and she still walks out of it straighter than your knights walk out of their beds.\" {n}There is no mockery in it. It is the respect one predator gives another across a clearing.{/n} \"They say she fought them the whole first stretch of it, every guard she could reach. I'd have done the same, and lost the same.\" {n}She rolls her shoulders.{/n} \"Your crusaders will follow a legend before they follow a living {mf|man|woman}. The legends don't make mistakes. They're dead, or they might as well be. That one's neither. I'd watch her.\"",
           "Choices": [
             {
               "Text": "\"She's an ally. We need every one we can get.\"",
@@ -422728,7 +422728,7 @@
         {
           "Id": "jealous",
           "Speaker": "conversant",
-          "Text": "{n}She bares her teeth, which is not a no.{/n} \"Of a woman who spent eighty years waiting for someone to come and open a door? No. I've never waited for a door in my life. I dig.\" {n}Then, more quietly:{/n} \"Of what they'll say about her when this is over, maybe. Nobody will ever write songs about a neather. We don't last long enough to be legends.\"",
+          "Text": "{n}She bares her teeth, which is not a no.{/n} \"Of a woman a demon turned into a husk? No. Nobody ever turned me into anything I didn't choose.\" {n}Then, more quietly:{/n} \"Of what they'll say about her when this is over, maybe. Nobody will ever write songs about a neather. We don't last long enough to be legends.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -422746,7 +422746,7 @@
         {
           "Id": "killed",
           "Speaker": "conversant",
-          "Text": "\"You killed her.\" {n}She says it the way she might say you had eaten the last of the bread: an observation, filed for later.{/n} \"The legend of the crusades, eighty years in a cage, and you put her down in the doorway of it. I've been trying to work out why.\" {n}She tilts her head.{/n} \"If you were afraid of her, that's cunning. If you were bored, that's a sickness. I want to know which one I'm following.\"",
+          "Text": "\"You killed her.\" {n}She says it the way she might say you had eaten the last of the bread: an observation, filed for later.{/n} \"The legend of the crusades, seventy years a prisoner and a husk in Minagho's Fane, and you put her down there, in the Fane. I've been trying to work out why.\" {n}She tilts her head.{/n} \"If you were afraid of her, that's cunning. If you were bored, that's a sickness. I want to know which one I'm following.\"",
           "Choices": [
             {
               "Text": "\"She'd have been a rival. Better now than later.\"",
@@ -422865,7 +422865,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She is on her knees in the muck of the cave floor with one hand clamped over the hole in her side, and she is grinning at you through her own blood. Behind her the tunnel goes down into the dark. Beside you Lann has turned half away, the way a man turns from a fire he does not want to see go out. He will watch the end, because he is Lann. He will not watch closely.{/n}\n{n}You have killed enough to know how it looks. There is a place low on the left side, under the last rib, where a blade can go in to the hilt and bring out more blood than anyone should have in them, and miss everything that stops a heart. It looks like a death. It bleeds like a death. Done right, it is a very long sleep and a very bad morning.{/n}\n{n}Done wrong, it is a death. And if Lann sees the edge turn, he will ask you why, and you will have to answer him.{/n}",
+          "Text": "{n}She is on her knees in the muck of the cave floor with one hand clamped over the hole in her side, and she is grinning at you through her own blood. Behind her the tunnel goes down into the dark. Beside you Lann has turned half away, the way a man turns from a fire he does not want to see go out. He will watch the end, because he is Lann. He will not watch closely.{/n}\n{n}You have killed enough to know how it looks. There is a place low on the left side, under the last rib, where a blade can go in to the hilt and bring out more blood than anyone should have in them, and miss everything that stops a heart. It looks like a death. It bleeds like a death. Done right, it is a very long sleep and a very bad morning.{/n}\n{n}You came down these tunnels knowing how Lann's reckoning was likely to end, and you came ready for it: a field dressing and a stoppered vial of healer's draught in your belt pouch, where nobody looks.{/n}\n{n}Done wrong, it is a death. And if Lann sees the edge turn, he will ask you why, and you will have to answer him.{/n}",
           "Choices": [
             {
               "Text": "[Strike low, under the ribs, and turn the edge at the last moment.]",
@@ -423078,7 +423078,7 @@
         {
           "Id": "custom",
           "Speaker": "Narrator",
-          "Text": "{n}They are graves. Every heap has a gap at the head end, packed with smaller stones that a hand could push out, and at the foot of the newest one the hilt of a knife shows between two rocks, where the dead man's hand still holds it. Somebody buried a hunter here and sent him into the dark armed.{/n}",
+          "Text": "{n}They are graves. Every heap is the length of a body, and at the foot of the newest one the hilt of a knife shows between two rocks, where the dead man's hand still holds it. Somebody buried a hunter here and sent him into the dark armed.{/n}",
           "Choices": [
             {
               "Text": "\"Lann. Those heaps in the side tunnel. Is that how your people bury their own?\"",
@@ -423096,7 +423096,7 @@
         {
           "Id": "lann_custom",
           "Speaker": "Lann",
-          "Text": "{n}Lann looks at the side passage, and then at her, and his face does something complicated.{/n} \"Hunters, yes. Under stones, with a knife in the hand. So the dark knows who's coming.\" {n}He rubs his eyes with the heel of his hand.{/n} \"Some say it's so they can fight their way into whatever comes after. Some say it's so they'll have something to eat with. Nobody really knows. It's just what we do.\"",
+          "Text": "{n}Lann looks at the side passage, and then at her, and his face does something complicated.{/n} \"Hunters, yes. Under stones, so the rats don't get them, and armed. You don't send a hunter anywhere without a knife.\" {n}He rubs his eyes with the heel of his hand.{/n} \"She should go armed. Whatever she did. She should go armed.\"",
           "Choices": [
             {
               "Text": "\"Then I'll do it for her. Alone. She was my kill, and she'd have wanted it done by the one who beat her.\"",
@@ -423135,7 +423135,7 @@
         {
           "Id": "lann_guess",
           "Speaker": "Lann",
-          "Text": "{n}Lann follows your look to the side passage.{/n} \"Graves. Hunters' graves.\" {n}He sounds very tired.{/n} \"We put them under stones with a knife in the hand. I suppose I ought to do that for her. After everything.\" {n}He does not move.{/n} \"Or we burn her. Or we leave her for the rats. She'd have left me for the rats and been proud of it.\"",
+          "Text": "{n}Lann follows your look to the side passage.{/n} \"Graves. Hunters' graves.\" {n}He sounds very tired.{/n} \"We put our dead under stones, so the rats don't get them, and the hunters with their knives. I suppose I ought to do that for her. After everything.\" {n}He does not move.{/n} \"Or we burn her. Or we leave her for the rats. She'd have left me for the rats and been proud of it.\"",
           "Choices": [
             {
               "Text": "\"No. Stones. And I'll do it alone. She was my kill; it should be the one who beat her.\"",
@@ -423192,10 +423192,10 @@
         {
           "Id": "build",
           "Speaker": "Narrator",
-          "Text": "{n}You carry her into the side passage yourself. She is heavier than she looks, all wire and gristle, and her blood soaks your sleeves to the elbow. You lay her on her back in the space beside the newest grave, and you build.{/n}\n{n}Flat stones first, over her legs and body, set on edge against each other so that they roof her rather than press on her. Nothing she could not shift from underneath with her knees and her back. At the head end you leave a gap for air, as the old graves do, packed loosely with fist-sized rocks that one push would send rolling. It takes a long time. It is the most careful thing you have done since you came to Drezen.{/n}\n{n}Her knife is in the muck of the cave where it fell when your blade went in. You fetch it, and wipe it on your own knee, and open her right hand, and close her fingers round the grip.{/n}",
+          "Text": "{n}You carry her into the side passage yourself. She is heavier than she looks, all wire and gristle, and her blood soaks your sleeves to the elbow. You lay her on her back in the space beside the newest grave, and before anything else you open her shirt, pack the wound with the dressing from your pouch, bind it tight, and tip the healer's draught between her teeth, stroking her throat until she swallows. Then you build.{/n}\n{n}Flat stones first, over her legs and body, set on edge against each other so that they roof her rather than press on her. Nothing she could not shift from underneath with her knees and her back. At the head end, which no grave you saw had, you leave a gap for air, packed loosely with fist-sized rocks that one push would send rolling. It takes a long time. It is the most careful thing you have done since you came to Drezen.{/n}\n{n}Her knife is in the muck of the cave where it fell when your blade went in. You fetch it, and wipe it on your own knee, and open her right hand, and close her fingers round the grip.{/n}",
           "Choices": [
             {
-              "Text": "[Leave the knife and nothing else. The Mongrel way.]",
+              "Text": "[Leave the knife and nothing else.]",
               "Next": null,
               "Set": [
                 "wenduag.trickster.cairn.bare",
@@ -423225,7 +423225,7 @@
               "Abort": false
             },
             {
-              "Text": "[Leave the knife, and scratch your mark into the top stone with it first.]",
+              "Text": "[Leave the knife, and scratch your mark into the underside of the top stone with it first.]",
               "Next": null,
               "Set": [
                 "wenduag.trickster.cairn.mark",
@@ -423245,10 +423245,10 @@
         {
           "Id": "build_watched",
           "Speaker": "Narrator",
-          "Text": "{n}You carry her into the side passage, with Lann's eyes on your back the whole way. You lay her beside the newest grave and you build the way you would build if you meant it: flat stones on edge, the head end packed with loose rock. Whether the loose rock is for air or for custom, Lann does not ask. He knows the custom. He does not know you.{/n}\n{n}When you go back for her knife he says, \"Right hand,\" before you can ask, and his voice cracks on it. You close her fingers round the grip while he watches. From where he stands it is a mercy. From where you kneel you can feel her pulse knock against your thumb through the hilt.{/n}",
+          "Text": "{n}You carry her into the side passage, with Lann's eyes on your back the whole way. \"So she doesn't leak through the stones,\" you tell him, binding her side tight with the dressing from your pouch, and he looks away, because it is the kind of thing a soldier does for a corpse and he cannot bear to watch it. While he is looking away, the vial goes between her teeth.{/n}\n{n}You lay her beside the newest grave and you build the way you would build if you meant it: flat stones on edge, and at the head end loose rock. Whether the loose rock is for air or for want of better stones, Lann does not ask. He knows hunters' graves. He does not know you.{/n}\n{n}When you go back for her knife he says, \"Right hand,\" before you can ask, and his voice cracks on it. You close her fingers round the grip while he watches. From where he stands it is a mercy. From where you kneel you can feel her pulse knock against your thumb through the hilt.{/n}",
           "Choices": [
             {
-              "Text": "[Leave the knife and nothing else. The Mongrel way.]",
+              "Text": "[Leave the knife and nothing else.]",
               "Next": null,
               "Set": [
                 "wenduag.trickster.cairn.bare",
@@ -423278,7 +423278,7 @@
               "Abort": false
             },
             {
-              "Text": "[Leave the knife, and scratch your mark into the top stone with it first.]",
+              "Text": "[Leave the knife, and scratch your mark into the underside of the top stone with it first.]",
               "Next": null,
               "Set": [
                 "wenduag.trickster.cairn.mark",
@@ -423359,7 +423359,7 @@
         {
           "Id": "dark",
           "Speaker": "Wenduag",
-          "Text": "{n}She sets down the pot.{/n} \"Do you know what it's like, waking up under stones? No. Nobody does. The dead don't tell, and I'm the only one who ever came back to say.\" {n}She says it lightly. Her hand has gone to the knife.{/n} \"It's black. Blacker than Neathholm on a gongless night. There's a stone on your face, and one on your chest, and your side is full of fire, and you think: *so this is where the weak go*. And then you notice there's a knife in your hand.\"\n{n}Her fingers close round the bone grip, and open, and close, as they must have done in the dark.{/n} \"My own knife. In my right hand. Somebody wanted me to have it.\"",
+          "Text": "{n}She sets down the pot.{/n} \"Do you know what it's like, waking up under stones? No. Nobody does. The dead don't tell, and I'm the only one who ever came back to say.\" {n}She says it lightly. Her hand has gone to the knife.{/n} \"It's black. Blacker than anything in Neathholm. There's a stone on your face, and one on your chest, and your side is full of fire, and you think: *so this is where the weak go*. And then you notice there's a knife in your hand.\"\n{n}Her fingers close round the bone grip, and open, and close, as they must have done in the dark.{/n} \"My own knife. In my right hand. And a dressing on my side, tied tight, and the taste of some uplander healer's muck in my mouth. Somebody wanted me to have it all.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -423503,7 +423503,7 @@
               "Abort": false
             },
             {
-              "Text": "\"Try it. You've been in the ground three days, and I haven't.\"",
+              "Text": "\"Try it. You've been in the ground for days, and I haven't.\"",
               "Next": "try",
               "Set": [],
               "Requires": [],
@@ -423540,7 +423540,7 @@
         {
           "Id": "try",
           "Speaker": "Wenduag",
-          "Text": "{n}For a heartbeat you think she will. Her weight goes onto the balls of her feet and the point of the knife lifts a finger's width.{/n}\n{n}Then she grins, all her teeth.{/n} \"Three days. You counted.\" {n}She lowers the knife.{/n} \"Good. You're right. I'd lose, today. And I don't fight to lose.\" {n}She sheathes it without looking.{/n} \"Another day, when I'm whole. You'll know it when it comes. I won't send word.\"",
+          "Text": "{n}For a heartbeat you think she will. Her weight goes onto the balls of her feet and the point of the knife lifts a finger's width.{/n}\n{n}Then she grins, all her teeth.{/n} \"Days. You counted them.\" {n}She lowers the knife.{/n} \"Good. You're right. I'd lose, today. And I don't fight to lose.\" {n}She sheathes it without looking.{/n} \"Another day, when I'm whole. You'll know it when it comes. I won't send word.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -423556,7 +423556,7 @@
         {
           "Id": "now",
           "Speaker": "Wenduag",
-          "Text": "{n}She sits down again, on your table, and pulls the pot back into her lap.{/n}\n\"Here's how it will be. I'm dead. Lann says so, and Lann doesn't lie; that's his whole trouble. So I stay dead, up here. Down in the cellars under your citadel there are neathers from the tunnels, the ones who came up to fight your war, and they'll hide a dead hunter for a while without asking why. I've already been down there. Nobody asked.\" {n}She eats.{/n} \"When you want me, come down. Come alone. Uplanders who come with guards don't get to see where I sleep.\"",
+          "Text": "{n}She sits down again, on your table, and pulls the pot back into her lap.{/n}\n\"Here's how it will be. I'm dead. Lann says so, and Lann doesn't lie; that's his whole trouble. So I stay dead, up here. Down in the cellars under your citadel there are neathers now, some of Sull's, some strays, a few who ran from Savamelekh, and they'll hide a dead hunter for a while without asking why. I've already been down there. Nobody asked.\" {n}She eats.{/n} \"When you want me, come down. Come alone. Uplanders who come with guards don't get to see where I sleep.\"",
           "Choices": [
             {
               "Text": "\"And Lann?\"",
@@ -423591,13 +423591,14 @@
         {
           "Id": "stay_dead",
           "Speaker": "Wenduag",
-          "Text": "{n}She looks at you for a while, over the point of her knife, as if she were deciding whether to be angry. Then she laughs, softly, and puts it away.{/n}\n\"Stay dead.\" {n}She picks up the flat stone, or the waterskin, or nothing, and goes to the shutters.{/n} \"All right. The dead go where they like, {name}. You'll never know where that is. That's what you bought.\" {n}The shutters were fastened from the inside. They are still fastened when you look. She is gone anyway.{/n}",
+          "Text": "{n}She looks at you for a while, over the point of her knife, as if she were deciding whether to be angry. Then she laughs, softly, and puts it away.{/n}\n\"Stay dead.\" {n}She slides her knife into her belt and goes to the shutters.{/n} \"All right. The dead go where they like, {name}. You'll never know where that is. That's what you bought.\" {n}The shutters were fastened from the inside. They are still fastened when you look. She is gone anyway.{/n}",
           "Choices": [
             {
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "wenduag.closed"
+                "wenduag.closed",
+                "wenduag.trickster.stay_dead_ordered"
               ],
               "Requires": [],
               "Forbids": [],
@@ -423755,7 +423756,9 @@
               "Text": "\"Lann told me you'd betray me the moment I turned my back. I believe him.\"",
               "Next": "lann",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "wenduag.lann_warned"
+              ],
               "Forbids": [],
               "Abort": false
             },
@@ -423789,7 +423792,7 @@
         {
           "Id": "liar",
           "Speaker": "conversant",
-          "Text": "{n}She holds the servile face for a breath too long, and then something behind it shrugs and sets it down, the way you set down a pack at the end of a march.{/n}\n\"Better at it.\" {n}Her real voice is lower, flatter, amused.{/n} \"Maybe. You lied to the demons at the gate of Kenabres, and they believed you. I watched.\" {n}She tilts her head.{/n} \"So what do you want, liar? You didn't bring me out here to tell me I'm a bad girl.\"",
+          "Text": "{n}She holds the servile face for a breath too long, and then something behind it shrugs and sets it down, the way you set down a pack at the end of a march.{/n}\n\"Better at it.\" {n}Her real voice is lower, flatter, amused.{/n} \"Maybe. You've been watching me eat your bread and call you master for days, and you never once believed it. I could see you not believing it.\" {n}She tilts her head.{/n} \"So what do you want, liar? You didn't bring me out here to tell me I'm a bad girl.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -423841,12 +423844,14 @@
         {
           "Id": "yes",
           "Speaker": "conversant",
-          "Text": "{n}Something happens in her yellow eyes that has nothing servile in it at all. It is hunger.{/n}\n\"His death.\" {n}She says it the way other women say a lover's name.{/n} \"He fed me. In the Maze. He tore a piece off a priestess and put it in my hand and I ate it and I was grateful.\" {n}Her lip curls back from her teeth.{/n} \"Nobody feeds me and walks away. Nobody.\" {n}Then, sharp:{/n} \"How? He'll smell it on me the moment I go near him. He smells everything his poison touches.\"",
+          "Text": "{n}Something happens in her yellow eyes that has nothing servile in it at all. It is hunger.{/n}\n\"His death.\" {n}She says it the way other women say a lover's name.{/n} \"He fed me. In the Maze. He tore a piece off a priestess and put it in my hand and I ate it and I was grateful.\" {n}Her lip curls back from her teeth.{/n} \"Nobody feeds me and walks away. Nobody.\" {n}Then, sharp:{/n} \"How? He'll feel me the moment I go near him. He feels everything his poison touches.\"",
           "Choices": [
             {
               "Text": "\"He will call you. He has called every neather he ever fed, and his poison is in you. So go when he calls. Fight us, if he asks it. And when it's time, fall down in front of his gang where I can reach you, and stay down. Let them carry it home. Nobody sends for a corpse.\"",
               "Next": "plan",
-              "Set": [],
+              "Set": [
+                "wenduag.trickster.death_promised"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -423857,7 +423862,7 @@
         {
           "Id": "yes_fear",
           "Speaker": "conversant",
-          "Text": "{n}She looks at you, really looks, as she has not since Neathholm: the way she looked at you over her own blood in the cave, weighing what you are.{/n}\n\"You'd do it, too.\" {n}It is not a question, and it is not fear. It is respect, which in her is worse.{/n} \"He'd do it slower. But you'd do it first.\" {n}She wets her lips.{/n} \"All right. I'm listening. What does a {mf|master|mistress} who'd do it first want with me? He'll smell a lie on me the moment I go near him.\"",
+          "Text": "{n}She looks at you, really looks, as she has not since Neathholm: the way she looked at you over her own blood in the cave, weighing what you are.{/n}\n\"You'd do it, too.\" {n}It is not a question, and it is not fear. It is respect, which in her is worse.{/n} \"He'd do it slower. But you'd do it first.\" {n}She wets her lips.{/n} \"All right. I'm listening. What does a {mf|master|mistress} who'd do it first want with me? He'll feel me the moment I go near him; he feels all of us.\"",
           "Choices": [
             {
               "Text": "\"He will call you. He has called every neather he ever fed, and his poison is in you. So go when he calls. Fight us, if he asks it. And when it's time, fall down in front of his gang where I can reach you, and stay down. Let them carry it home. Nobody sends for a corpse.\"",
@@ -423896,7 +423901,8 @@
               "Next": null,
               "Set": [
                 "wenduag.trickster.bought",
-                "wenduag.trickster.primed"
+                "wenduag.trickster.primed",
+                "wenduag.trickster.fall_agreed"
               ],
               "Requires": [],
               "Forbids": [],
@@ -424027,7 +424033,10 @@
               "Next": null,
               "Set": [
                 "wenduag.trickster.bought",
-                "wenduag.trickster.primed"
+                "wenduag.trickster.primed",
+                "wenduag.trickster.fall_agreed",
+                "wenduag.trickster.exile_agreed",
+                "wenduag.trickster.death_promised"
               ],
               "Requires": [],
               "Forbids": [],
@@ -424150,7 +424159,10 @@
               "Next": null,
               "Set": [
                 "wenduag.trickster.bought",
-                "wenduag.trickster.primed"
+                "wenduag.trickster.primed",
+                "wenduag.trickster.fall_agreed",
+                "wenduag.trickster.exile_agreed",
+                "wenduag.trickster.death_promised"
               ],
               "Requires": [],
               "Forbids": [],
@@ -424298,7 +424310,9 @@
               "Text": "\"His stinger, in your fist. I keep my bargains.\"",
               "Next": "bargain",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "wenduag.trickster.death_promised"
+              ],
               "Forbids": [],
               "Abort": false
             },
@@ -424355,7 +424369,7 @@
       "Requires": [
         "trickster.ever",
         "wenduag.kicked_out",
-        "wenduag.trickster.bought"
+        "wenduag.trickster.exile_agreed"
       ],
       "Forbids": [
         "wenduag.trickster.exile.champion",
@@ -424476,7 +424490,9 @@
               "Set": [
                 "wenduag.trickster.bought",
                 "wenduag.trickster.primed",
-                "wenduag.trickster.cost.late"
+                "wenduag.trickster.cost.late",
+                "wenduag.trickster.fall_agreed",
+                "wenduag.trickster.exile_agreed"
               ],
               "Requires": [],
               "Forbids": [],
@@ -424649,7 +424665,8 @@
               "Next": null,
               "Set": [
                 "wenduag.trickster.bought",
-                "wenduag.trickster.crystal_done"
+                "wenduag.trickster.crystal_done",
+                "wenduag.trickster.death_promised"
               ],
               "Requires": [],
               "Forbids": [],
@@ -424755,7 +424772,7 @@
               "Next": "bought",
               "Set": [],
               "Requires": [
-                "wenduag.trickster.bought"
+                "wenduag.trickster.fall_agreed"
               ],
               "Forbids": [],
               "Abort": false
@@ -424766,7 +424783,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "wenduag.trickster.bought"
+                "wenduag.trickster.fall_agreed"
               ],
               "Abort": false
             }
@@ -424776,7 +424793,7 @@
         {
           "Id": "bought",
           "Speaker": "Narrator",
-          "Text": "{n}She dropped exactly where she had told you she would: in front of what was left of his gang, where any of them who crawled away could carry it home. You saw her turn into Lann's blow in the last instant so that it went in low on the left side instead of the middle. Nobody else did. Lann did not.{/n}\n{n}He is standing over her now with blood on his hands and his face grey under the black streaks that Savamelekh's call wrung out of him, and he is not going to move until someone moves him.{/n}",
+          "Text": "{n}She dropped exactly where she had told you she would: in front of what was left of his gang, where any of them who crawled away could carry it home. You saw her turn into Lann's blow in the last instant so that it went in low on the left side instead of the middle. Nobody else did. Lann did not. And you saw her bite down, as she fell, on the vial of healer's draught you gave her for exactly this, and swallow.{/n}\n{n}He is standing over her now with blood on his hands and his face grey under the black streaks that Savamelekh's call wrung out of him, and he is not going to move until someone moves him.{/n}",
           "Choices": [
             {
               "Text": "[Kneel beside her, and put yourself between him and her face.] \"Go and see to the others, Lann. I'll take care of her.\"",
@@ -424826,7 +424843,7 @@
               "Text": "\"She's gone, Lann. Go and see to the others. I'll take care of her.\"",
               "Next": null,
               "Set": [
-                "wenduag.trickster.cost.late"
+                "wenduag.trickster.cost.unplanned"
               ],
               "Requires": [],
               "Forbids": [],
@@ -424850,7 +424867,7 @@
               "Text": "\"That's the last of it. The body does that. Go and see to the others, Lann; I'll take care of her.\"",
               "Next": null,
               "Set": [
-                "wenduag.trickster.cost.late"
+                "wenduag.trickster.cost.unplanned"
               ],
               "Requires": [],
               "Forbids": [],
@@ -424868,7 +424885,7 @@
         {
           "Id": "alone",
           "Speaker": "Lann",
-          "Text": "{n}Lann looks down at her. His mouth works.{/n}\n\"I never wanted it to be me,\" he says, to nobody. \"Mama said one day she'd push somebody too far. I always thought it would be you.\" {n}He wipes his hands on his coat, carefully, all the way to the wrists, and goes to see to the others, and does not look back.{/n}",
+          "Text": "{n}Lann looks down at her. His mouth works.{/n}\n\"I never wanted it to be me,\" he says, to nobody. \"I always thought, if anyone, it would be you.\" {n}He wipes his hands on his coat, carefully, all the way to the wrists, and goes to see to the others, and does not look back.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -424876,7 +424893,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "wenduag.trickster.cost.late"
+                "wenduag.trickster.cost.unplanned"
               ],
               "Abort": false
             },
@@ -424885,7 +424902,7 @@
               "Next": "price",
               "Set": [],
               "Requires": [
-                "wenduag.trickster.cost.late"
+                "wenduag.trickster.cost.unplanned"
               ],
               "Forbids": [],
               "Abort": false
@@ -424925,7 +424942,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "wenduag.trickster.cost.late"
+                "wenduag.trickster.cost.unplanned"
               ],
               "Abort": false
             },
@@ -424934,7 +424951,7 @@
               "Next": "price_known",
               "Set": [],
               "Requires": [
-                "wenduag.trickster.cost.late"
+                "wenduag.trickster.cost.unplanned"
               ],
               "Forbids": [],
               "Abort": false
@@ -424966,10 +424983,10 @@
         {
           "Id": "cairn",
           "Speaker": "Narrator",
-          "Text": "{n}Savamelekh's house is falling down around you: his children's blood on the floors, his hall half open to the burning sky of the Abyss. There is rubble enough for a hundred cairns. You carry her down into what was once a cellar, where the light does not reach, and lay her on the stone floor, and build.{/n}\n{n}Flat pieces of his own walls, set on edge so that they roof her rather than press on her. The head end packed loose. Her knife from the floor of his hall, wiped on your knee, closed into her right hand. Above you somewhere, his gang's survivors are dragging themselves away to tell whoever is left that the Commander's crusaders killed his favourite daughter, and that she died fighting for him.{/n}\n{n}Let him hear it. Let him stop sending for her.{/n}",
+          "Text": "{n}Savamelekh's house is falling down around you: his children's blood on the floors, his hall half open to the burning sky of the Abyss. There is rubble enough for a hundred cairns. You carry her down into what was once a cellar, where the light does not reach, and lay her on the stone floor, and build.{/n}\n{n}Flat pieces of his own walls, set on edge so that they roof her rather than press on her. The head end packed loose. Her knife from the floor of his hall, wiped on your knee, closed into her right hand. Above you somewhere, his gang's survivors are dragging themselves away to tell whoever is left that the Commander's crusaders killed his favourite daughter, and that she died fighting for him.{/n}\n{n}Let him hear it, and stop sending for her.{/n}\n{n}Before the first stone you bind her side with the dressing from your pouch and get your own draught between her teeth. Then, when it is built, you go up into the burning street and find the one thing the Midnight Isles never run short of: someone who will carry anything anywhere for money. A tiefling with a barge and no questions takes your purse, a sketch of the cellar, and your instructions: in two nights, a woman will push her way out of a heap of stones down there. Feed her, and take her through to Drezen by whatever doors your trade uses, and there will be the same again at the other end.{/n}",
           "Choices": [
             {
-              "Text": "[Leave the knife and nothing else. The Mongrel way.]",
+              "Text": "[Leave the knife and nothing else.]",
               "Next": null,
               "Set": [
                 "wenduag.trickster.cairn.bare",
@@ -424977,6 +424994,7 @@
                 "wenduag.trickster.abyss_cairn",
                 "trickster.secret.wenduag_cairn",
                 "wenduag.trickster.primed",
+                "wenduag.trickster.abyss_passage",
                 "wenduag.trickster.cost.lied_to_lann"
               ],
               "Requires": [],
@@ -424992,6 +425010,7 @@
                 "wenduag.trickster.abyss_cairn",
                 "trickster.secret.wenduag_cairn",
                 "wenduag.trickster.primed",
+                "wenduag.trickster.abyss_passage",
                 "wenduag.trickster.cost.lied_to_lann"
               ],
               "Requires": [],
@@ -424999,7 +425018,7 @@
               "Abort": false
             },
             {
-              "Text": "[Leave the knife, and scratch your mark into the top stone with it first.]",
+              "Text": "[Leave the knife, and scratch your mark into the underside of the top stone with it first.]",
               "Next": null,
               "Set": [
                 "wenduag.trickster.cairn.mark",
@@ -425007,6 +425026,7 @@
                 "wenduag.trickster.abyss_cairn",
                 "trickster.secret.wenduag_cairn",
                 "wenduag.trickster.primed",
+                "wenduag.trickster.abyss_passage",
                 "wenduag.trickster.cost.lied_to_lann"
               ],
               "Requires": [],
@@ -425019,17 +425039,18 @@
         {
           "Id": "cairn_known",
           "Speaker": "Narrator",
-          "Text": "{n}You build it anyway, in the cellar of Savamelekh's burning house, out of the pieces of his own walls: flat stones on edge, the head end loose, her knife closed into her right hand. Lann does not come to watch. He knows what you are doing, and he knows why, and he will not help you and he will not stop you.{/n}\n{n}Above you, his gang's survivors are dragging themselves away to tell whoever is left that his favourite daughter died fighting for him. Let him hear it. Let him stop sending for her.{/n}",
+          "Text": "{n}You build it anyway, in the cellar of Savamelekh's burning house, out of the pieces of his own walls: flat stones on edge, the head end loose, her knife closed into her right hand. Lann does not come to watch. He knows what you are doing, and he knows why, and he will not help you and he will not stop you.{/n}\n{n}Above you, his gang's survivors are dragging themselves away to tell whoever is left that his favourite daughter died fighting for him. Let him hear it, and stop sending for her.{/n}\n{n}Before the first stone you bind her side with the dressing from your pouch and get your own draught between her teeth. Then, when it is built, you go up into the burning street and find the one thing the Midnight Isles never run short of: someone who will carry anything anywhere for money. A tiefling with a barge and no questions takes your purse, a sketch of the cellar, and your instructions: in two nights, a woman will push her way out of a heap of stones down there. Feed her, and take her through to Drezen by whatever doors your trade uses, and there will be the same again at the other end.{/n}",
           "Choices": [
             {
-              "Text": "[Leave the knife and nothing else. The Mongrel way.]",
+              "Text": "[Leave the knife and nothing else.]",
               "Next": null,
               "Set": [
                 "wenduag.trickster.cairn.bare",
                 "wenduag.trickster.lann.knows",
                 "wenduag.trickster.abyss_cairn",
                 "trickster.secret.wenduag_cairn",
-                "wenduag.trickster.primed"
+                "wenduag.trickster.primed",
+                "wenduag.trickster.abyss_passage"
               ],
               "Requires": [],
               "Forbids": [],
@@ -425043,21 +425064,23 @@
                 "wenduag.trickster.lann.knows",
                 "wenduag.trickster.abyss_cairn",
                 "trickster.secret.wenduag_cairn",
-                "wenduag.trickster.primed"
+                "wenduag.trickster.primed",
+                "wenduag.trickster.abyss_passage"
               ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
             },
             {
-              "Text": "[Leave the knife, and scratch your mark into the top stone with it first.]",
+              "Text": "[Leave the knife, and scratch your mark into the underside of the top stone with it first.]",
               "Next": null,
               "Set": [
                 "wenduag.trickster.cairn.mark",
                 "wenduag.trickster.lann.knows",
                 "wenduag.trickster.abyss_cairn",
                 "trickster.secret.wenduag_cairn",
-                "wenduag.trickster.primed"
+                "wenduag.trickster.primed",
+                "wenduag.trickster.abyss_passage"
               ],
               "Requires": [],
               "Forbids": [],
@@ -425086,7 +425109,7 @@
       "Kind": "event",
       "RequiresAnyGroups": [
         [
-          "wenduag.trickster.bought",
+          "wenduag.trickster.fall_agreed",
           "trickster"
         ]
       ],
@@ -425120,7 +425143,7 @@
         {
           "Id": "her",
           "Speaker": "Wenduag",
-          "Text": "\"He came here, you know.\" {n}Wenduag does not turn round.{/n} \"Savamelekh. Through his door, out of the Abyss, into your city, to call his children in your cellars. I woke up under the walls of his house with my knife in my hand and his smell still in the air, and I followed it.\" {n}She tears off a strip of hare.{/n} \"Through his door. Across his bridges. Through places I won't describe to you, because you'd have nightmares, and you have enough. His smell all the way. It led me home.\" {n}She laughs, a thin, cracked sound.{/n} \"He taught us to find him by it. He never thought about what else it could lead to.\"",
+          "Text": "\"Your tiefling earned his money.\" {n}Wenduag does not turn round.{/n} \"He was sitting on the cellar stair when I pushed the last stone off, eating an apple, with a sack of bread and a skin of wine for me and a face like a man who has seen worse things climb out of the ground. He took me through doors I won't describe to you, because you'd have nightmares, and you have enough.\" {n}She tears off a strip of hare.{/n} \"I didn't need him for the last of it. Savamelekh came here, to your city, to call his children in your cellars. I could smell him from the Drezen side of the last door. He taught us to find him by it. He never thought about what else it could lead to.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -425145,7 +425168,7 @@
               "Requires": [],
               "Forbids": [
                 "wenduag.trickster.lann.knows",
-                "wenduag.trickster.cost.late"
+                "wenduag.trickster.cost.unplanned"
               ],
               "Abort": false
             },
@@ -425154,7 +425177,7 @@
               "Next": "lann_unbought",
               "Set": [],
               "Requires": [
-                "wenduag.trickster.cost.late"
+                "wenduag.trickster.cost.unplanned"
               ],
               "Forbids": [
                 "wenduag.trickster.lann.knows"
@@ -425177,7 +425200,63 @@
         {
           "Id": "lann_unbought",
           "Speaker": "Wenduag",
-          "Text": "\"Little Lann hit me.\" {n}She says it with a kind of wonder.{/n} \"I was trying to tear his throat out, and he hit me, and I went down. No plan. No bargain. I'd turned you down; I'd gone to him because he called and you'd thrown me out.\" {n}She stares at you.{/n} \"And you knelt in his filth and found me breathing, and lied to Lann, and built me a cairn anyway. For nothing. I'd sold you.\" {n}She shakes her head slowly.{/n} \"I don't understand it. I've been trying all the way home. I hate not understanding things.\"",
+          "Text": "\"Little Lann hit me.\" {n}She says it with a kind of wonder.{/n} \"I was trying to tear his throat out, and he hit me, and I went down. No plan. No bargain.\" {n}Her mouth twists.{/n} \"I joined you to be his eyes, and when he called me in his house, I went, the way I always knew I would.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "unbought_refused",
+              "Set": [],
+              "Requires": [
+                "wenduag.trickster.bid_failed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "unbought_never",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "wenduag.trickster.bid_failed"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Wenduag"
+        },
+        {
+          "Id": "unbought_refused",
+          "Speaker": "Wenduag",
+          "Text": "\"You even made me an offer, once. I laughed at it.\" {n}She stares at you.{/n} \"And you knelt in his filth anyway and found me breathing, and lied to Lann, and built me a cairn. For a woman who had turned you down.\" {n}She shakes her head slowly.{/n} \"I don't understand it. I've been trying all the way home. I hate not understanding things.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "calls",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "savamelekh.dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "silent",
+              "Set": [],
+              "Requires": [
+                "savamelekh.dead"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Wenduag"
+        },
+        {
+          "Id": "unbought_never",
+          "Speaker": "Wenduag",
+          "Text": "\"You never even tried to buy me. You let me walk into his house with his poison in my blood and his name in my mouth.\" {n}She stares at you.{/n} \"And then you knelt in his filth and found me breathing, and lied to Lann, and built me a cairn anyway. For nothing.\" {n}She shakes her head slowly.{/n} \"I don't understand it. I've been trying all the way home. I hate not understanding things.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -425410,7 +425489,8 @@
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "wenduag.closed"
+                "wenduag.closed",
+                "wenduag.trickster.stay_dead_ordered"
               ],
               "Requires": [],
               "Forbids": [],
@@ -425423,7 +425503,8 @@
       "Requires": [
         "trickster.ever",
         "wenduag.dead_any",
-        "wenduag.trickster.abyss_cairn"
+        "wenduag.trickster.abyss_cairn",
+        "wenduag.trickster.abyss_passage"
       ],
       "Forbids": [
         "wenduag.trickster.abyss.back",
@@ -425462,7 +425543,7 @@
               "Next": "bought",
               "Set": [],
               "Requires": [
-                "wenduag.trickster.bought"
+                "wenduag.trickster.fall_agreed"
               ],
               "Forbids": [],
               "Abort": false
@@ -425473,7 +425554,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "wenduag.trickster.bought"
+                "wenduag.trickster.fall_agreed"
               ],
               "Abort": false
             }
@@ -425483,7 +425564,7 @@
         {
           "Id": "bought",
           "Speaker": "Narrator",
-          "Text": "{n}She fell where she told you she would, at the edge of the fight, in plain sight of the last of his demons as they broke and ran. You saw her take the blow on the side, low, and go down all at once, like a puppet with the strings cut. You also saw her tuck her chin as she fell, so that her head did not strike the stones.{/n}",
+          "Text": "{n}She fell where she told you she would, at the edge of the fight, in plain sight of the last of his demons as they broke and ran. You saw her take the blow on the side, low, and go down all at once, like a puppet with the strings cut. You also saw her tuck her chin as she fell, so that her head did not strike the stones, and bite down on the vial of healer's draught she had carried in her cheek since the morning.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -425505,7 +425586,7 @@
               "Text": "[Kneel beside her, and look closely.]",
               "Next": null,
               "Set": [
-                "wenduag.trickster.cost.late"
+                "wenduag.trickster.cost.unplanned"
               ],
               "Requires": [],
               "Forbids": [],
@@ -425546,7 +425627,7 @@
               "Next": "lann_there",
               "Set": [],
               "Requires": [
-                "lann.in_party"
+                "wenduag.street_lann"
               ],
               "Forbids": [],
               "Abort": false
@@ -425557,7 +425638,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "lann.in_party"
+                "wenduag.street_lann"
               ],
               "Abort": false
             }
@@ -425679,6 +425760,22 @@
               "Next": "catacomb",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "wenduag.street_lann"
+              ],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -50
+              }
+            },
+            {
+              "Text": "Continue",
+              "Next": "lann_eyes",
+              "Set": [],
+              "Requires": [
+                "wenduag.street_lann"
+              ],
               "Forbids": [],
               "Abort": false,
               "Crusade": {
@@ -425778,6 +425875,25 @@
                 "wenduag.trickster.brask_knows"
               ],
               "Requires": [],
+              "Forbids": [
+                "wenduag.street_lann"
+              ],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -150
+              }
+            },
+            {
+              "Text": "Continue",
+              "Next": "lann_eyes",
+              "Set": [
+                "wenduag.trickster.cost.watch",
+                "wenduag.trickster.brask_knows"
+              ],
+              "Requires": [
+                "wenduag.street_lann"
+              ],
               "Forbids": [],
               "Abort": false,
               "Crusade": {
@@ -425789,12 +425905,29 @@
           "Portrait": ""
         },
         {
-          "Id": "catacomb",
-          "Speaker": "Narrator",
-          "Text": "{n}There are catacombs under the citadel, old ones, from before the demons came, where Drezen's dead lay in niches until there were too many dead to bother. You carry her down yourself. The neathers who live in the cellars above them watch you go past with their yellow eyes and say nothing at all.{/n}\n{n}You build it in an empty niche at the bottom of the oldest stair, out of the fallen stones of the vault: flat pieces set on edge so that they roof her rather than press on her, the head end packed loose, her knife wiped on your knee and closed into her right hand.{/n}",
+          "Id": "lann_eyes",
+          "Speaker": "Lann",
+          "Text": "{n}Lann has been standing a few paces off with his bow still in his hand since she fell, looking at her the way you look at a house you grew up in, burning. He did not hear what Brask said to you, or he did not understand it. He walks over and closes her eyes with two fingers, gently, the way you close a book.{/n}\n\"Wendu,\" he says, very quietly, and walks away down the street without looking back.",
           "Choices": [
             {
-              "Text": "[Leave the knife and nothing else. The Mongrel way.]",
+              "Text": "Continue",
+              "Next": "catacomb_lann",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "SpeakerUnit": "cb29621d99b902e4da6f5d232352fbda"
+        },
+        {
+          "Id": "catacomb",
+          "Speaker": "Narrator",
+          "Text": "{n}There are catacombs under the citadel, old ones, from before the demons came, where Drezen's dead lay in niches until there were too many dead to bother. You carry her down yourself. The neathers who live in the cellars above them watch you go past with their yellow eyes and say nothing at all.{/n}\n{n}You build it in an empty niche at the bottom of the oldest stair, out of the fallen stones of the vault: flat pieces set on edge so that they roof her rather than press on her, the head end packed loose, her knife wiped on your knee and closed into her right hand.{/n}\n{n}Before the first stone you open her shirt, pack the wound, bind it tight, and get a healer's draught between her teeth. In the dark of the vault nobody sees you do it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Leave the knife and nothing else.]",
               "Next": null,
               "Set": [
                 "wenduag.trickster.cairn.bare",
@@ -425820,7 +425953,7 @@
               "Abort": false
             },
             {
-              "Text": "[Leave the knife, and scratch your mark into the top stone with it first.]",
+              "Text": "[Leave the knife, and scratch your mark into the underside of the top stone with it first.]",
               "Next": null,
               "Set": [
                 "wenduag.trickster.cairn.mark",
@@ -425838,10 +425971,10 @@
         {
           "Id": "catacomb_lann",
           "Speaker": "Narrator",
-          "Text": "{n}There are catacombs under the citadel, old ones, from before the demons came. You carry her down yourself. The neathers in the cellars above watch you go past with their yellow eyes and say nothing.{/n}\n{n}You build it in an empty niche at the bottom of the oldest stair: flat stones set on edge, the head end packed loose, her knife closed into her right hand. Lann does not come. Lann is somewhere up in the citadel, grieving for a woman who is breathing under your hands.{/n}",
+          "Text": "{n}There are catacombs under the citadel, old ones, from before the demons came. You carry her down yourself. The neathers in the cellars above watch you go past with their yellow eyes and say nothing.{/n}\n{n}You build it in an empty niche at the bottom of the oldest stair: flat stones set on edge, the head end packed loose, her knife closed into her right hand. Lann does not come. Lann is somewhere up in the citadel, grieving for a woman who is breathing under your hands.{/n}\n{n}Before the first stone you open her shirt, pack the wound, bind it tight, and get a healer's draught between her teeth. In the dark of the vault nobody sees you do it.{/n}",
           "Choices": [
             {
-              "Text": "[Leave the knife and nothing else. The Mongrel way.]",
+              "Text": "[Leave the knife and nothing else.]",
               "Next": null,
               "Set": [
                 "wenduag.trickster.cairn.bare",
@@ -425869,7 +426002,7 @@
               "Abort": false
             },
             {
-              "Text": "[Leave the knife, and scratch your mark into the top stone with it first.]",
+              "Text": "[Leave the knife, and scratch your mark into the underside of the top stone with it first.]",
               "Next": null,
               "Set": [
                 "wenduag.trickster.cairn.mark",
@@ -425906,7 +426039,7 @@
       "Kind": "event",
       "RequiresAnyGroups": [
         [
-          "wenduag.trickster.bought",
+          "wenduag.trickster.fall_agreed",
           "trickster"
         ]
       ],
@@ -426016,7 +426149,7 @@
               "Next": "late",
               "Set": [],
               "Requires": [
-                "wenduag.trickster.cost.late"
+                "wenduag.trickster.cost.unplanned"
               ],
               "Forbids": [],
               "Abort": false
@@ -426027,7 +426160,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "wenduag.trickster.cost.late"
+                "wenduag.trickster.cost.unplanned"
               ],
               "Abort": false
             }
@@ -426044,7 +426177,7 @@
               "Next": "late",
               "Set": [],
               "Requires": [
-                "wenduag.trickster.cost.late"
+                "wenduag.trickster.cost.unplanned"
               ],
               "Forbids": [],
               "Abort": false
@@ -426055,7 +426188,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "wenduag.trickster.cost.late"
+                "wenduag.trickster.cost.unplanned"
               ],
               "Abort": false
             }
@@ -426198,7 +426331,8 @@
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "wenduag.closed"
+                "wenduag.closed",
+                "wenduag.trickster.stay_dead_ordered"
               ],
               "Requires": [],
               "Forbids": [],
@@ -426334,8 +426468,20 @@
               "Text": "\"She turned into your blow, and I buried her with her knife and left the head end loose. She dug.\"",
               "Next": "how",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "wenduag.trickster.fall_agreed"
+              ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Your blow didn't finish her. I found her breathing, and I buried her with her knife and left the head end loose. She dug.\"",
+              "Next": "how",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "wenduag.trickster.fall_agreed"
+              ],
               "Abort": false
             }
           ],
@@ -426506,7 +426652,7 @@
         {
           "Id": "lied",
           "Speaker": "Lann",
-          "Text": "\"She's alive.\" {n}His voice is very even, which is how you know how hard he is holding it.{/n}\n\"I said the words over her. I cried, Commander. I cried in front of Sull, and I'm a grown man. I lay awake working out what I should have said to her instead, back when there was still time.\" {n}He swallows.{/n} \"And you knew. The whole time. You were standing right there and you knew.\"",
+          "Text": "\"She's alive.\" {n}His voice is very even, which is how you know how hard he is holding it.{/n}\n\"I mourned her. I lay awake working out what I should have said to her instead, back when there was still time. I'm a grown man, Commander, and I lay awake over Wendu.\" {n}He swallows.{/n} \"And you knew. The whole time. You were standing right there and you knew.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -426726,7 +426872,7 @@
         {
           "Id": "her",
           "Speaker": "Wenduag",
-          "Text": "\"Weak things die in their sleep.\" {n}Wenduag's voice is very soft, and very close. She smells of the cellars and of raw meat.{/n} \"Hosilla used to say that, in the Maze, to the ones who came to her hungry. Then she'd come round in the night and prove it. I learned to sleep with one eye open. The ones who didn't, Savamelekh ate.\" {n}The knee presses a little harder.{/n}",
+          "Text": "\"Weak things die in their sleep.\" {n}Wenduag's voice is very soft, and very close. She smells of the cellars and of raw meat.{/n} \"My rule. I learned it in the Maze, where the ones who slept soundly didn't last. I sleep with one eye open. I always have.\" {n}The knee presses a little harder.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -426770,7 +426916,7 @@
         {
           "Id": "which_kept",
           "Speaker": "Wenduag",
-          "Text": "{n}She shifts her weight, and the knife slides a finger's width along your neck without cutting.{/n} \"You kept me. You looked Savamelekh's offer in the eye and made a better one, or you stood over me when I'd earned my death and didn't give it to me. Everybody in this citadel thinks that makes you soft.\" {n}Her breath is warm on your ear.{/n} \"I want to know if they're right. Show me.\"",
+          "Text": "{n}She shifts her weight, and the knife slides a finger's width along your neck without cutting.{/n} \"You kept me at your side when everybody in this citadel told you not to. Everybody here thinks that makes you soft.\" {n}Her breath is warm on your ear.{/n} \"I want to know if they're right. Show me.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -426887,7 +427033,7 @@
         {
           "Id": "stain",
           "Speaker": "Narrator",
-          "Text": "{n}She looks.{/n}\n{n}She doesn't look. She laughs, low, delighted, right against your ear.{/n} \"The stain on the cuff. Hosilla tried that on me when I was seven. I took two of her fingers for it.\"\n{n}She is so pleased with the old trick that she leans back to grin at you, half a finger's width, and lifts the knife a hair off your throat to do it. That is all you needed. Since your first night in this citadel you have slept over these maps with your own dagger under the Worldwound, a hand's breadth from your fingers; Commanders who sleep without one do not stay Commanders long. While she laughed at the cuff, your hand found it. When her grin comes back down, the point is resting under her breastbone.{/n}",
+          "Text": "{n}She doesn't look. She laughs, low, delighted, right against your ear.{/n} \"The stain on the cuff. The oldest trick there is. I've seen it a hundred times.\"\n{n}She is so pleased with the old trick that she leans back to grin at you, half a finger's width, and lifts the knife a hair off your throat to do it. That is all you needed. Since your first night in this citadel you have slept over these maps with your own dagger under the Worldwound, a hand's breadth from your fingers; Commanders who sleep without one do not stay Commanders long. While she laughed at the cuff, your hand found it. When her grin comes back down, the point is resting under her breastbone.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -426903,7 +427049,7 @@
         {
           "Id": "stain_her",
           "Speaker": "Wenduag",
-          "Text": "\"...Cheat.\" {n}She goes very still on top of you, with her knife at your throat and yours under her heart. Her eyes are wide.{/n} \"You said the stupid thing so I'd laugh at it.\" {n}And then she is grinning, all her teeth.{/n} \"Filthy, clever cheat. You knew I'd know it. You wanted me to know it.\" {n}She laughs, and the laugh pushes her chest against your point, and she does not seem to care.{/n} \"Hosilla would say that's not a fight. Hosilla is dead. Fighting is the meaning of life, {mf|master|mistress}. Cheating is how you win it.\"",
+          "Text": "\"...Cheat.\" {n}She goes very still on top of you, with her knife at your throat and yours under her heart. Her eyes are wide.{/n} \"You said the stupid thing so I'd laugh at it.\" {n}And then she is grinning, all her teeth.{/n} \"Filthy, clever cheat. You knew I'd know it. You wanted me to know it.\" {n}She laughs, and the laugh pushes her chest against your point, and she does not seem to care.{/n} \"I'd call that cheating, if I weren't already planning to steal it. Fighting is the meaning of life, {mf|master|mistress}. Cheating is how you win it.\"",
           "Choices": [
             {
               "Text": "[Put your dagger back under the maps.]",
@@ -427122,7 +427268,7 @@
         {
           "Id": "struck",
           "Speaker": "Narrator",
-          "Text": "{n}You walk up behind Sergeant Brask and tap him on the shoulder, and when he turns round, surprised, with the grin still half on his face, you break his nose with your fist.{/n}\n{n}It makes a sound like a green stick. He sits down hard in the road in his new coat, with blood running over his mouth, and stares up at you. None of his men moves. None of them is going to.{/n}\n{n}Behind you, very softly, Wenduag laughs.{/n}",
+          "Text": "{n}You walk up behind Sergeant Brask and tap him on the shoulder, and when he turns round, surprised, you break his nose with your fist.{/n}\n{n}It makes a sound like a green stick. He sits down hard in the road in his new coat, with blood running over his mouth, and stares up at you. None of his men moves. None of them is going to.{/n}\n{n}Behind you, very softly, Wenduag laughs.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -427138,7 +427284,7 @@
         {
           "Id": "after_struck",
           "Speaker": "Wenduag",
-          "Text": "{n}She walks through the postern past the sitting sergeant, and on the far side she stops and looks at your hand, at the split knuckles.{/n}\n\"You did it yourself.\" {n}She takes your hand in both of hers and turns it over, and looks at the blood on it, his blood, and then at you.{/n} \"Not a guard. Not an order. Your own hand.\" {n}Her thumb goes over the split skin, not gently.{/n} \"In the caves, that's what a chief does when someone bites one of hers. He doesn't send somebody. He goes.\" {n}She lets go.{/n} \"His men will all be afraid of you now. And they'll hate me for it.\" {n}She grins.{/n} \"Good. I like being hated for good reasons.\"",
+          "Text": "{n}She walks through the postern past the sitting sergeant, and on the far side she stops and looks at your hand, at the split knuckles.{/n}\n\"You did it yourself.\" {n}She takes your hand in both of hers and turns it over, and looks at the blood on it, his blood, and then at you.{/n} \"Not a guard. Not an order. Your own hand.\" {n}Her thumb goes over the split skin, not gently.{/n} \"Settling my quarrel for me would have shamed me. That wasn't settling it. That was you, answering someone who bit what's yours. A chief who sends somebody else is a chief nobody fears. You went.\" {n}She lets go.{/n} \"His men will all be afraid of you now. And they'll hate me for it.\" {n}She grins.{/n} \"Good. I like being hated for good reasons.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -427157,7 +427303,7 @@
         {
           "Id": "rebuked",
           "Speaker": "Narrator",
-          "Text": "{n}Brask's grin widens. He steps aside for you with a flourish, and bows, and his men snigger.{/n}\n{n}She does not argue. She picks up her hares, and pulls the hood back down, and turns and walks back the way she came, toward the cellar stair, without a word. She does not look at you once. That is how you know how much it cost her.{/n}",
+          "Text": "{n}Brask steps aside for you, stiffly, and his men watch to see what the mongrel will do.{/n}\n{n}She does not argue. She picks up her hares, and pulls the hood back down, and turns and walks back the way she came, toward the cellar stair, without a word. She does not look at you once. That is how you know how much it cost her.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -427248,7 +427394,7 @@
               "Next": "promised",
               "Set": [],
               "Requires": [
-                "wenduag.trickster.bought"
+                "wenduag.trickster.death_promised"
               ],
               "Forbids": [],
               "Abort": false
@@ -427259,7 +427405,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "wenduag.trickster.bought"
+                "wenduag.trickster.death_promised"
               ],
               "Abort": false
             }
@@ -427293,7 +427439,7 @@
         {
           "Id": "take",
           "Speaker": "Wenduag",
-          "Text": "{n}She takes it. She holds it by the cut end, where it is safe, and turns it so the lamplight runs along it, and her face does something you have never seen it do: it goes very young, and very old, at the same time.{/n}\n\"My father ate this.\" {n}She says it to the stinger, not to you.{/n} \"Every night for years. It made him strong, and then it made him his.\" {n}She wraps it back in its sacking with great care.{/n} \"I'll keep it. When I'm old, if I'm ever old, I'll show it to the young ones and tell them what it is. That's better than killing him. Nearly.\"",
+          "Text": "{n}She takes it. She holds it by the cut end, where it is safe, and turns it so the lamplight runs along it, and her face does something you have never seen it do: it goes very young, and very old, at the same time.{/n}\n\"This kept my father alive.\" {n}She says it to the stinger, not to you.{/n} \"Alive, and strong, and serving. Years of it. Long enough that he forgot whose he'd been before.\" {n}She wraps it back in its sacking with great care.{/n} \"I'll keep it. When I'm old, if I'm ever old, I'll show it to the young ones and tell them what it is. That's better than killing him. Nearly.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -427354,7 +427500,7 @@
         {
           "Id": "burn",
           "Speaker": "Wenduag",
-          "Text": "{n}She does not stop you. She watches it go into the coals, and hiss, and blacken, and the smell that comes off it makes her gag and put her sleeve over her mouth. The black bead at the tip bursts with a small wet sound.{/n}\n{n}When it is only a curl of ash she takes her sleeve away.{/n} \"Good.\" {n}Her voice is rough.{/n} \"Nobody should have that. Not even me. Especially not me.\" {n}She wipes her eyes, which are running from the smoke.{/n} \"Don't tell anyone I said that.\"",
+          "Text": "{n}She does not stop you. She watches it go into the coals, and hiss, and blacken, and the smell that comes off it makes her gag and put her sleeve over her mouth. The black bead at the tip bursts with a small wet sound.{/n}\n{n}When it is only a curl of ash she takes her sleeve away.{/n} \"Good.\" {n}Her voice is rough.{/n} \"He doesn't get to leave anything behind with a hook in it. Not in my people. Not in me.\" {n}She wipes her eyes, which are running from the smoke.{/n} \"Don't tell anyone I said that.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -427405,7 +427551,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She does not answer. She stands, and steps aside, and there behind her in the angle of the wall, out of sight of the street, something heavy lies bound hand and foot, and grunts.{/n}\n{n}It is Sergeant Brask. His wrists are tied behind him with his own belt and his ankles with a strip torn from his own coat, and the gag in his mouth is, unless you are mistaken, also a piece of his own coat. The rest of the coat is gone. His nose is bleeding. His eyes are enormous.{/n}\n{n}Wenduag puts her foot on his back, the way a hunter rests a foot on a kill, and pushes back her hood.{/n}",
+          "Text": "{n}She does not answer. She stands, and steps aside, and there behind her in the angle of the wall, out of sight of the street, something heavy lies bound hand and foot, and grunts.{/n}\n{n}It is Sergeant Brask. His wrists are tied behind him with his own belt and his ankles with a strip torn from his own coat, and the gag in his mouth is, unless you are mistaken, also a piece of his own coat. The rest of the coat is gone. His nose is bleeding. His eyes are enormous.{/n}\n{n}Wenduag puts her foot on his back, the way a hunter rests a foot on a kill, and pushes back her hood.{/n} \"Not out here. Take his feet.\"\n{n}Between you, you carry him up the back stair of the citadel like a rolled carpet, past a sentry who finds something very interesting in the ceiling, and into your quarters, and she drops him on your floor and shuts the door with her heel.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -427465,7 +427611,7 @@
         {
           "Id": "why",
           "Speaker": "Wenduag",
-          "Text": "{n}She crouches beside him, easy on her heels, and looks up at you across his body.{/n}\n\"In the tunnels, when a hunter wants somebody, she doesn't bring them flowers. What would you do with flowers, underground? She brings them what she caught. The best thing she caught. And she puts it at their feet, and she waits to see what they do with it.\" {n}She puts a hand flat on Brask's heaving back.{/n} \"If they eat it, they're hers. If they give it back to her, they're hers. If they kick it away, well.\" {n}She shrugs.{/n} \"Then she knows.\"",
+          "Text": "{n}She crouches beside him, easy on her heels, and looks up at you across his body.{/n}\n\"I don't bring flowers. What would I do with flowers? I bring what I caught. The best thing I caught. And I put it at your feet, and I watch what you do with it.\" {n}She puts a hand flat on Brask's heaving back.{/n} \"That's how I ask. I've never asked anybody before, so it's the only way I know. If you take it, you're mine. If you kick it away, well.\" {n}She shrugs.{/n} \"Then I know.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -427481,7 +427627,7 @@
         {
           "Id": "want",
           "Speaker": "Wenduag",
-          "Text": "\"He called me mongrel bitch at your gate. He laughed at me with his men. He'd have put my head on a pole and brushed his coat under it.\" {n}Her voice is very steady.{/n} \"And he's yours. One of your soldiers, in your city, under your law.\" {n}She stands.{/n} \"So he's the best thing I could catch. Something of mine, that's also something of yours.\" {n}She folds her arms and waits.{/n} \"Well. There he is.\"",
+          "Text": "\"He called me mongrel bitch at your gate, or tried to have me taken, or both; it comes to the same thing. He laughed at me with his men. He'd have put my head on a pole and brushed his coat under it.\" {n}Her voice is very steady.{/n} \"And he's yours. One of your soldiers, in your city, under your law.\" {n}She stands.{/n} \"So he's the best thing I could catch. Something of mine, that's also something of yours.\" {n}She folds her arms and waits.{/n} \"Well. There he is.\"",
           "Choices": [
             {
               "Text": "[Nudge him toward her with your boot.] \"He's yours.\"",
@@ -427617,7 +427763,7 @@
         {
           "Id": "after_struck",
           "Speaker": "Wenduag",
-          "Text": "{n}She takes her knife back from you, and looks at the blood on it, and wipes it, slowly, on her own sleeve.{/n}\n\"You did it yourself. Again.\" {n}Her voice is thick.{/n} \"With my knife. In front of me.\" {n}She sheathes it, and puts her hand over the hilt, as if it were warm.{/n} \"In the caves, when a chief takes a hunter's kill and finishes it with the hunter's own blade, it means: *what's yours is mine, and what's mine is yours, and anybody who touches either answers to both*.\" {n}She steps close, very close, and puts her teeth, not gently, against the side of your neck, and then takes them away.{/n} \"You didn't know that. You did it anyway. You're mine now. I'm not asking.\"",
+          "Text": "{n}She takes her knife back from you, and looks at the blood on it, and wipes it, slowly, on her own sleeve.{/n}\n\"You did it yourself.\" {n}Her voice is thick.{/n} \"With my knife. In front of me.\" {n}She sheathes it, and puts her hand over the hilt, as if it were warm.{/n} \"Nobody ever finished a kill of mine with my own blade and handed it back. I'm deciding what that means, since you didn't say. It means *what's yours is mine, and what's mine is yours, and anybody who touches either answers to both*.\" {n}She steps close, very close, and puts her teeth, not gently, against the side of your neck, and then takes them away.{/n} \"You didn't ask. You did it anyway. You're mine now. I'm not asking.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -427637,13 +427783,14 @@
         {
           "Id": "no",
           "Speaker": "Wenduag",
-          "Text": "{n}Brask scrambles up, rubbing his wrists, and does not wait to be told twice. The door bangs behind him.{/n}\n{n}Wenduag has not moved. She is looking at you as if you had turned into a stranger in front of her eyes.{/n}\n\"Back to your gate.\" {n}She repeats it slowly.{/n} \"I brought you the best thing I could catch, and you let it go.\" {n}She is not angry. That is the worst of it.{/n} \"Then you're not mine. And I'm not yours. That's what it means, where I come from. That's all it means.\" {n}She pulls her hood up.{/n} \"I'll still fight your war. I'm not stupid. But don't come down the cellar stair any more, {mf|master|mistress}. The neathers won't let you through.\"",
+          "Text": "{n}Brask scrambles up, rubbing his wrists, and does not wait to be told twice. The door bangs behind him.{/n}\n{n}Wenduag has not moved. She is looking at you as if you had turned into a stranger in front of her eyes.{/n}\n\"Back to your gate.\" {n}She repeats it slowly.{/n} \"I brought you the best thing I could catch, and you let it go.\" {n}She is not angry. That is the worst of it.{/n} \"Then you're not mine. And I'm not yours. That's what it means, the way I ask. That's all it means.\" {n}She pulls her hood up.{/n} \"I'll still fight your war. I'm not stupid. But don't come down the cellar stair any more, {mf|master|mistress}. The neathers won't let you through.\"",
           "Choices": [
             {
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "wenduag.closed"
+                "wenduag.closed",
+                "wenduag.trickster.court.claim_refused"
               ],
               "Requires": [],
               "Forbids": [],
@@ -427749,7 +427896,7 @@
         {
           "Id": "why",
           "Speaker": "conversant",
-          "Text": "{n}She crouches beside him, easy on her heels, and looks up at you across his body.{/n}\n\"In the tunnels, when a hunter wants somebody, she doesn't bring them flowers. What would you do with flowers, underground? She brings them what she caught. The best thing she caught. And she puts it at their feet, and she waits to see what they do with it.\" {n}She puts a hand flat on Brask's heaving back.{/n} \"If they eat it, they're hers. If they give it back to her, they're hers. If they kick it away, well.\" {n}She shrugs.{/n} \"Then she knows.\"",
+          "Text": "{n}She crouches beside him, easy on her heels, and looks up at you across his body.{/n}\n\"I don't bring flowers. What would I do with flowers? I bring what I caught. The best thing I caught. And I put it at your feet, and I watch what you do with it.\" {n}She puts a hand flat on Brask's heaving back.{/n} \"That's how I ask. I've never asked anybody before, so it's the only way I know. If you take it, you're mine. If you kick it away, well.\" {n}She shrugs.{/n} \"Then I know.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -427765,7 +427912,7 @@
         {
           "Id": "want",
           "Speaker": "conversant",
-          "Text": "\"He called me mongrel bitch at your gate. He laughed at me with his men. He'd have put my head on a pole and brushed his coat under it.\" {n}Her voice is very steady.{/n} \"And he's yours. One of your soldiers, in your city, under your law.\" {n}She stands.{/n} \"So he's the best thing I could catch. Something of mine, that's also something of yours.\" {n}She folds her arms and waits.{/n} \"Well. There he is.\"",
+          "Text": "\"He called me mongrel bitch at your gate, or tried to have me taken, or both; it comes to the same thing. He laughed at me with his men. He'd have put my head on a pole and brushed his coat under it.\" {n}Her voice is very steady.{/n} \"And he's yours. One of your soldiers, in your city, under your law.\" {n}She stands.{/n} \"So he's the best thing I could catch. Something of mine, that's also something of yours.\" {n}She folds her arms and waits.{/n} \"Well. There he is.\"",
           "Choices": [
             {
               "Text": "[Nudge him toward her with your boot.] \"He's yours.\"",
@@ -427901,7 +428048,7 @@
         {
           "Id": "after_struck",
           "Speaker": "conversant",
-          "Text": "{n}She takes her knife back from you, and looks at the blood on it, and wipes it, slowly, on her own sleeve.{/n}\n\"You did it yourself. Again.\" {n}Her voice is thick.{/n} \"With my knife. In front of me.\" {n}She sheathes it, and puts her hand over the hilt, as if it were warm.{/n} \"In the caves, when a chief takes a hunter's kill and finishes it with the hunter's own blade, it means: *what's yours is mine, and what's mine is yours, and anybody who touches either answers to both*.\" {n}She steps close, very close, and puts her teeth, not gently, against the side of your neck, and then takes them away.{/n} \"You didn't know that. You did it anyway. You're mine now. I'm not asking.\"",
+          "Text": "{n}She takes her knife back from you, and looks at the blood on it, and wipes it, slowly, on her own sleeve.{/n}\n\"You did it yourself.\" {n}Her voice is thick.{/n} \"With my knife. In front of me.\" {n}She sheathes it, and puts her hand over the hilt, as if it were warm.{/n} \"Nobody ever finished a kill of mine with my own blade and handed it back. I'm deciding what that means, since you didn't say. It means *what's yours is mine, and what's mine is yours, and anybody who touches either answers to both*.\" {n}She steps close, very close, and puts her teeth, not gently, against the side of your neck, and then takes them away.{/n} \"You didn't ask. You did it anyway. You're mine now. I'm not asking.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -427921,13 +428068,14 @@
         {
           "Id": "no",
           "Speaker": "conversant",
-          "Text": "{n}Brask scrambles up, rubbing his wrists, and does not wait to be told twice. The door bangs behind him.{/n}\n{n}Wenduag has not moved. She is looking at you as if you had turned into a stranger in front of her eyes.{/n}\n\"Back to your gate.\" {n}She repeats it slowly.{/n} \"I brought you the best thing I could catch, and you let it go.\" {n}She is not angry. That is the worst of it.{/n} \"Then you're not mine. And I'm not yours. That's what it means, where I come from. That's all it means.\" {n}She pulls her hood up.{/n} \"I'll still fight your war. I'm not stupid. But don't come down the cellar stair any more, {mf|master|mistress}. The neathers won't let you through.\"",
+          "Text": "{n}Brask scrambles up, rubbing his wrists, and does not wait to be told twice. The door bangs behind him.{/n}\n{n}Wenduag has not moved. She is looking at you as if you had turned into a stranger in front of her eyes.{/n}\n\"Back to your gate.\" {n}She repeats it slowly.{/n} \"I brought you the best thing I could catch, and you let it go.\" {n}She is not angry. That is the worst of it.{/n} \"Then you're not mine. And I'm not yours. That's what it means, the way I ask. That's all it means.\" {n}She pulls her hood up.{/n} \"I'll still fight your war. I'm not stupid. But don't come down the cellar stair any more, {mf|master|mistress}. The neathers won't let you through.\"",
           "Choices": [
             {
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "wenduag.closed"
+                "wenduag.closed",
+                "wenduag.trickster.court.claim_refused"
               ],
               "Requires": [],
               "Forbids": [],
@@ -427955,6 +428103,9 @@
       "Relationship": "wenduag",
       "Chapters": [
         5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
       ],
       "AnswerLists": [
         "ced27e744d2dded40bbb5adf17816dbb",
@@ -427991,7 +428142,7 @@
         {
           "Id": "dark",
           "Speaker": "Wenduag",
-          "Text": "\"Uplanders need light. Neathers don't.\" {n}Her voice is right beside your ear, and then it is not; she moves without a sound on the old stone.{/n} \"Down here you're the weak one. You can't see. You can't smell. You don't know where the walls are.\" {n}Her hand closes round your wrist, hard, calloused, very warm.{/n} \"So you'll have to let me lead.\"",
+          "Text": "\"You don't know this place. I do.\" {n}Her voice is right beside your ear, and then it is not; she moves without a sound on the old stone.{/n} \"Down here you're the weak one. You don't know where the walls are, or which stones move, or where I am.\" {n}Her hand closes round your wrist, hard, calloused, very warm.{/n} \"So you'll have to let me lead.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -428079,7 +428230,7 @@
         {
           "Id": "own_kept",
           "Speaker": "Wenduag",
-          "Text": "\"Every hunter builds her own, before she needs it. So she knows where she's going, and nobody gets it wrong.\" {n}A breath of a laugh in the dark.{/n} \"I wasn't going to let an uplander get it wrong.\"",
+          "Text": "\"I built this one myself, before I needed it. So I'd know where I was going, and nobody would get it wrong.\" {n}A breath of a laugh in the dark.{/n} \"I wasn't going to let an uplander get it wrong.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -428440,7 +428591,7 @@
         {
           "Id": "promised",
           "Speaker": "Wenduag",
-          "Text": "\"The blond one.\" {n}She does not take her eyes off the window.{/n} \"The succubus from the Midnight Isles. I promised her something, the night we met. I told her I'd make her scream.\" {n}Her lips peel back.{/n} \"I keep my promises, {mf|master|mistress}. The fun ones.\"",
+          "Text": "\"The blond one.\" {n}She does not take her eyes off the window.{/n} \"The succubus from the Midnight Isles. \"I promised her something, the night we met. I told her I'd make her scream.\" {n}Her lips peel back.{/n} \"With pleasure, I said. I meant it, too, that night. Don't mistake that for liking the bitch. I keep my promises, {mf|master|mistress}. The fun ones. I'm deciding which kind this one is.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -428472,7 +428623,7 @@
         {
           "Id": "what",
           "Speaker": "Wenduag",
-          "Text": "{n}She turns her head at last and looks at you, and there is a question in her face that she is not going to ask aloud.{/n}\n\"Demons fed my father to death. Demons fed me, and made me grateful.\" {n}Her voice is flat.{/n} \"I'm not going to pretend I like a demon in your house because she's got nice manners. So tell me what she is to you, {mf|master|mistress}, and I'll tell you what I'm going to do about it.\"",
+          "Text": "{n}She turns her head at last and looks at you, and there is a question in her face that she is not going to ask aloud.{/n}\n\"A demon took my father and made him his. Demons fed me, and made me grateful.\" {n}Her voice is flat.{/n} \"I'm not going to pretend I like a demon in your house because she's got nice manners. So tell me what she is to you, {mf|master|mistress}, and I'll tell you what I'm going to do about it.\"",
           "Choices": [
             {
               "Text": "\"Leave her be. She's under my roof, and nobody in it gets hunted.\"",
@@ -428565,7 +428716,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Wenduag has heard the story at last. The neathers in the cellars tell it among themselves: the paladin who waited eighty years in a demon's cage in the Midnight Fane for somebody to open the door.{/n}",
+          "Text": "{n}Wenduag has heard the story at last. The neathers in the cellars tell it among themselves: the paladin taken when Drezen fell, who spent seventy years a prisoner, first on Areelu's tables and then in Minagho's Fane, fighting every guard she could reach until they made her a husk.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -428593,7 +428744,7 @@
         {
           "Id": "freed",
           "Speaker": "Wenduag",
-          "Text": "\"And somebody did. You did.\" {n}She sounds almost resentful.{/n} \"Eighty years. I'd have gnawed through my own arm. She kept hers for her sword.\" {n}She is quiet for a while.{/n} \"The crusaders follow a legend before they follow the living. Legends don't make mistakes. That one isn't dead, and she isn't a legend yet either. She's the one to watch, {mf|master|mistress}. Not the demons. Her.\" {n}She shrugs.{/n} \"I'm not saying do anything. I'm saying watch. Uplanders never learn the difference till the knife's already in.\"",
+          "Text": "\"And you brought her out of it.\" {n}She sounds almost resentful.{/n} \"Seventy years, and she came out of it holding a sword.\" {n}She is quiet for a while.{/n} \"The crusaders follow a legend before they follow the living. Legends don't make mistakes. That one isn't dead, and she isn't a legend yet either. She's the one to watch, {mf|master|mistress}. Not the demons. Her.\" {n}She shrugs.{/n} \"I'm not saying do anything. I'm saying watch. Uplanders never learn the difference till the knife's already in.\"",
           "Choices": [
             {
               "Text": "\"She's no threat to either of us.\"",
@@ -428635,7 +428786,7 @@
         {
           "Id": "jealous",
           "Speaker": "Wenduag",
-          "Text": "{n}She bares her teeth, which is not a no.{/n} \"Of what they'll sing about her, maybe. Nobody sings about neathers. We don't last long enough.\" {n}Then, after a while:{/n} \"They sang about me, once. In the street, when they thought I was dead. A bad song. Terrible rhymes.\" {n}She almost smiles.{/n} \"Better than nothing.\"",
+          "Text": "{n}She bares her teeth, which is not a no.{/n} \"Of what they'll sing about her, maybe. Nobody sings about neathers. We don't last long enough.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -428653,7 +428804,7 @@
         {
           "Id": "killed",
           "Speaker": "Wenduag",
-          "Text": "\"And you killed her. In the doorway of her cage.\" {n}She turns her head and looks at you, curious, careful, as if she were testing ice.{/n} \"Eighty years a trophy, and a legend of the crusades, and you put her down. I've been trying to work out why. If you were afraid of her, that's cunning. If you did it for no reason at all, that's a sickness, and I'd like to know which one I've tied myself to.\"",
+          "Text": "\"And you killed her. In the Fane.\" {n}She turns her head and looks at you, curious, careful, as if she were testing ice.{/n} \"Seventy years a prisoner and a husk, and a legend of the crusades, and you put her down. I've been trying to work out why. If you were afraid of her, that's cunning. If you did it for no reason at all, that's a sickness, and I'd like to know which one I've tied myself to.\"",
           "Choices": [
             {
               "Text": "\"She'd have been a rival. Better now than later.\"",
@@ -428793,7 +428944,7 @@
         {
           "Id": "fight",
           "Speaker": "Wenduag",
-          "Text": "\"I can fight now. I can't win.\" {n}She says it as if it were an obvious distinction, which to her it is.{/n} \"Ten days. Then I'll be what I was. More, maybe. The dark does that, if it doesn't eat you.\" {n}She lets her head fall back on the hide.{/n} \"The old ones used to say that every hunter who comes out of the ground comes out hungrier. I thought it was a story for children. It isn't.\"",
+          "Text": "\"I can fight now. I can't win.\" {n}She says it as if it were an obvious distinction, which to her it is.{/n} \"Ten days, or near it. Then I'll be what I was. More, maybe. The dark does that, if it doesn't eat you.\" {n}She lets her head fall back on the hide.{/n} \"The old ones used to say that every hunter who comes out of the ground comes out hungrier. I thought it was a story for children. It isn't.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -428825,7 +428976,7 @@
         {
           "Id": "sull",
           "Speaker": "Wenduag",
-          "Text": "{n}She jerks her chin toward the other cellars, where the neathers are.{/n}\n\"Sull knows. He knew the moment I came down the stair; he smelled it on me before I got to the bottom. He hasn't told Lann.\" {n}Her lip curls.{/n} \"He thinks he's protecting Lann. He's protecting the tribe, from Lann finding out what Lann would do. That's what old men are for.\" {n}She closes her eyes.{/n} \"Go away now, {mf|master|mistress}. I'm going to sleep, and I don't let anyone watch me do that. Not even you. Especially not you.\"",
+          "Text": "{n}She jerks her chin toward the other cellars, where the neathers are.{/n}\n\"The old ones down here know. They smelled it on me before I got to the bottom of the stair. Nobody's told Lann, and nobody will; they'd rather he didn't have to choose between me and his conscience.\" {n}Her lip curls.{/n} \"That's what old ones are for.\" {n}She closes her eyes.{/n} \"Go away now, {mf|master|mistress}. I'm going to sleep, and I don't let anyone watch me do that. Not even you. Especially not you.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -428897,7 +429048,7 @@
         {
           "Id": "tears",
           "Speaker": "conversant",
-          "Text": "{n}She touches her cheek, looks at the black on her fingertip, and wipes it off on the ground with disgust.{/n}\n\"His poison. It comes out when he's near. All the neathers who ever ate from his hand weep it, sooner or later.\" {n}Her mouth twists.{/n} \"It's the only kind of crying I've ever done. Isn't that funny?\"",
+          "Text": "{n}She touches her cheek, looks at the black on her fingertip, and wipes it off on the ground with disgust.{/n}\n\"His poison. It comes out when he's near. Any of us with his blood in us weeps it; even Lann can't hide from it.\" {n}Her mouth twists.{/n} \"Last time I cried it was salt, and it was for my father. Now he gets to make me cry tar. Isn't that funny?\"",
           "Choices": [
             {
               "Text": "\"And when he calls?\"",
@@ -429002,7 +429153,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She takes you down to the cellars in the middle of the afternoon, which she has never done, and stops at the mouth of the furthest one without going in.{/n}\n{n}There is an old neather lying on a pile of straw inside: a man with a grey muzzle and milky eyes and a cough that shakes his whole body. His ribs show. Beside him somebody has left a bowl of broth and a wooden cup of water, both untouched, and a spear with a cracked shaft that he will never throw again.{/n}",
+          "Text": "{n}She takes you down to the cellars in the middle of the afternoon and stops at the mouth of the furthest one without going in.{/n}\n{n}There is an old neather lying on a pile of straw inside: a man with a grey muzzle and milky eyes and a cough that shakes his whole body. His ribs show. Beside him somebody has left a bowl of broth and a wooden cup of water, both untouched, and a spear with a cracked shaft that he will never throw again.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -429034,7 +429185,7 @@
         {
           "Id": "ask",
           "Speaker": "Wenduag",
-          "Text": "{n}She looks at you sideways.{/n} \"These are my people now. They do what I say. But they're in your city, under your roof, and your chaplains come down here sometimes with their bread and their prayers.\" {n}Her yellow eyes are steady.{/n} \"So I'm asking. I'm asking you, because I'm yours. Tonight I walk him down the oldest stair, past my cairn, and leave him in the dark with his spear. Or I don't. Say which.\"",
+          "Text": "{n}She looks at you sideways.{/n} \"The hunters down here do what I say now. I made them; it took three fights and a bitten ear. But they're in your city, under your roof, and your chaplains come down here sometimes with their bread and their prayers.\" {n}Her yellow eyes are steady.{/n} \"So I'm asking. I'm asking you, because I'm yours. Tonight I walk him down the oldest stair, past my cairn, and leave him in the dark with his spear. Or I don't. Say which.\"",
           "Choices": [
             {
               "Text": "\"Do it. It's your tribe, and your arithmetic.\"",
@@ -429078,7 +429229,7 @@
         {
           "Id": "cull",
           "Speaker": "Wenduag",
-          "Text": "{n}She nods, as if you had confirmed a sum.{/n}\n\"Yes.\" {n}Then, lower:{/n} \"I did this once before, in the Maze, for Hosilla. Nobody said anything. I carried all of it. Nobody ever said *do it* out loud before, so that somebody else carried half.\" {n}She goes into the cellar and crouches beside him, and says something in the neather tongue that makes him stop coughing and turn his milky eyes toward her, and she puts the cracked spear in his hands, and helps him up.{/n}\n{n}You do not go down the oldest stair with them that night. In the morning the straw in the furthest cellar is gone, and the bowl and the cup are washed and put away, and nobody in the cellars says anything about it, to you or to each other.{/n}",
+          "Text": "{n}She nods, as if you had confirmed a sum.{/n}\n\"Yes.\" {n}Then, lower:{/n} \"Nobody ever said *do it* to me out loud before, so that somebody else carried half.\" {n}She goes into the cellar and crouches beside him, and says something in the neather tongue that makes him stop coughing and turn his milky eyes toward her, and she puts the cracked spear in his hands, and helps him up.{/n}\n{n}You do not go down the oldest stair with them that night. In the morning the straw in the furthest cellar is gone, and the bowl and the cup are washed and put away, and nobody in the cellars says anything about it, to you or to each other.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -429133,7 +429284,7 @@
       "Requires": [
         "trickster.ever",
         "wenduag.trickster.with_you",
-        "wenduag.trickster.proved"
+        "wenduag.committed"
       ],
       "Forbids": [
         "wenduag.trickster.court.neathers",
@@ -429412,7 +429563,7 @@
         {
           "Id": "her",
           "Speaker": "Wenduag",
-          "Text": "\"In Neathholm there's a gong. A big one, bronze. Nobody knows where it came from; the old ones say a crusader camp, before anyone was born. The gong keeper strikes it twice a day, once to start the day and once to end it, because in the tunnels there's no sun to do it for him.\" {n}She tilts her head toward the bell.{/n} \"That's the only thing I miss. Isn't that stupid? Not the tribe. Not the dark. The gong. I used to count my life in it. Thousands of gongs since my father went hunting and didn't come back.\"",
+          "Text": "\"In Neathholm there's a gong. The gong keeper strikes it twice a day, once to start the day and once to end it, because in the tunnels there's no sun to do it for him.\" {n}She tilts her head toward the bell.{/n} \"That's the only thing I miss. Isn't that stupid? Not the tribe. Not the dark. The gong. I used to count my life in it. Thousands of gongs since my father went hunting and didn't come back.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -429627,7 +429778,56 @@
         {
           "Id": "start",
           "Speaker": "Irabeth",
-          "Text": "{n}Irabeth closes the door of her office behind you before she says anything, which is how you know it is bad.{/n}\n\"The watch on the south gate is talking. A sergeant says he saw the traitor from the street breathing, and that the Commander buried her quiet. His captain laughed at him. I didn't.\" {n}She sits down.{/n} \"And now my people tell me there's a neather woman hunting hares at night outside the south postern, who comes and goes through a gate that's supposed to be shut to her kind after dark.\" {n}Her voice is very even.{/n} \"I'm the head of your security, Commander. I found a traitor in this city once before, in my own chapel. I'm not going to ask you what you've done. I'm going to tell you that if she so much as looks at one of my soldiers the wrong way, I'll hang her myself, and you can bury her properly the second time.\"",
+          "Text": "{n}Irabeth closes the door of her office behind you before she says anything, which is how you know it is bad.{/n}\n\"The watch on the south gate is talking. A sergeant says he saw the traitor from the street breathing, and that the Commander buried her quiet. His captain laughed at him. I didn't.\" {n}She sits down.{/n} \"And now my people tell me there's a neather woman hunting hares at night outside the south postern, who comes and goes through a gate that's supposed to be shut to her kind after dark.\" {n}Her voice is very even.{/n} \"I'm the head of your security, Commander. I've seen what one traitor can do to an army. I'm not going to ask you what you've done. I'm going to tell you that if she so much as looks at one of my soldiers the wrong way, I'll hang her myself, and you can bury her properly the second time.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "wenduag.trickster.returned",
+        "wenduag.trickster.street_cairn",
+        "wenduag.trickster.brask_knows"
+      ],
+      "Forbids": [
+        "irabeth_dead",
+        "wenduag.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "wenduag",
+      "Reaction": true,
+      "Chapters": [
+        5
+      ],
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      },
+      "AnswerLists": [
+        "871af36f2ab2b1f40b5de77976c54276"
+      ]
+    },
+    {
+      "Id": "wenduag.trickster.react.irabeth_suspicion",
+      "Title": "Irabeth's word",
+      "Owner": "Irabeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You wanted to see me, Irabeth?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Irabeth",
+          "Text": "{n}Irabeth closes the door of her office behind you before she says anything.{/n}\n\"The traitor from the street. You buried her yourself, the neather way, and nobody saw the body go into the ground but you.\" {n}She sits down.{/n} \"And now my people tell me there's a neather woman hunting hares outside the south postern at night, who comes and goes through a gate that's shut to her kind after dark. Nobody can tell me her name. Nobody can tell me which cellar she sleeps in.\" {n}Her voice is very even.{/n} \"I've seen what one traitor can do to an army, Commander. I'm noticing things nobody can explain. If that woman so much as looks at one of my soldiers the wrong way, I'll hang her, whoever she is.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -429648,7 +429848,8 @@
       ],
       "Forbids": [
         "irabeth_dead",
-        "wenduag.closed"
+        "wenduag.closed",
+        "wenduag.trickster.brask_knows"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -429675,7 +429876,7 @@
         {
           "Id": "start",
           "Speaker": "Regill",
-          "Text": "{n}Regill does not look up from his ledger of punishments.{/n} \"A traitor fell in your street, or in a demon's house, or in a Neathholm tunnel; I have not troubled to learn which. A traitor was buried by the Commander's own hand, without witnesses and without a tribunal. And there is now a neather in the cellars who eats raw hare, answers to no muster roll and comes and goes through gates that are shut to her kind.\" {n}He turns a page.{/n} \"I do not ask whether these facts are connected. Asking would oblige me to act. I note, Commander, that a crusade which buries its traitors privately has a Commander who has decided the law is a private matter. I will be keeping my own account of where that leads. Its entries are short.\"",
+          "Text": "{n}Regill does not look up from his ledger of punishments.{/n} \"A traitor fell in your street, or in a demon's house, or in a Neathholm tunnel; I have not troubled to learn which. A traitor was buried by the Commander's own hand, without a tribunal. And there is now a neather in the cellars who eats raw hare, answers to no muster roll and comes and goes through gates that are shut to her kind.\" {n}He turns a page.{/n} \"I do not ask whether these facts are connected. Asking would oblige me to act. I note, Commander, that a crusade which buries its traitors privately has a Commander who has decided the law is a private matter. I will be keeping my own account of where that leads. Its entries are short.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -429722,7 +429923,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}Wenduag of Neathholm was dead, as far as Drezen knew, or she was the Commander's dog, as far as Drezen said aloud. She was neither. She kept to the cellars under the citadel with the neathers who had come up out of the tunnels to fight the war, and by the end of it they were hers: not because anyone had given them to her, but because she was the strongest thing in the dark, and she let them see it.{/n}\n{n}She fought where the fighting was worst and ate what she killed and never once pretended to be sorry for anything. She did not become a crusader. She did not learn to pray. She learned the names of the Commander's enemies, all of them, and wrote them nowhere, and forgot none.{/n}\n{n}Down at the bottom of the oldest stair, in the dark, there was a cairn with the head end loose. It was hers. The Commander was the only uplander who ever knew where it was.{/n}",
+          "Text": "{n}Wenduag of Neathholm was dead, as far as the muster rolls of Drezen knew, or she was the Commander's dog, as far as Drezen said aloud. She was neither. She gathered a band of her own among the neathers in the cellars under the citadel, by three fights and a bitten ear and a great deal of raw hare, and by the end of the war they followed her because she was the strongest thing in the dark, and they had seen it.{/n}\n{n}She fought where the fighting was worst and ate what she killed and never once pretended to be sorry for anything. She did not become a crusader. She did not learn to pray. She learned the names of the Commander's enemies, all of them, and wrote them nowhere, and forgot none.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -429784,19 +429985,23 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The succubus in the citadel knew whose hare's heads were on her pillow by the second night; she could smell a neather through three walls as well as a neather could smell her. She left the heads where they were. On the night Wenduag came for her throat in a dark corridor, Vellexia was waiting, and turned, and let her get close enough to bite, and laughed in her face, and asked whether that was the best a dog could do. Neither of them ever said who won. Both of them went on playing, every night of the war, and the Commander learned not to ask about the scratches.{/n}",
+              "Text": "{n}For the rest of the war the succubus in the citadel found hare's heads on her pillow and a hunter's knife in her door, and once, in a dark corridor, teeth at her throat and a laugh. Whatever Vellexia did about it, she did it in her own way and her own time, and Wenduag never said; she said only that she had kept her promise, the fun kind.{/n}",
               "Requires": [
                 "wenduag.trickster.vellexia.hunted"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "vellexia.dead"
+              ],
               "AnyGroups": []
             },
             {
-              "Text": "{n}Wenduag left the succubus alone under the Commander's roof, as she had said she would, and passed her in the halls every day of the war without a word, and sniffed, every time, loudly.{/n}",
+              "Text": "{n}Wenduag left the succubus alone under the Commander's roof, as she had said she would, and passed her in the halls for the rest of the war without a word, and sniffed, every time, loudly.{/n}",
               "Requires": [
                 "wenduag.trickster.vellexia.left"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "vellexia.dead"
+              ],
               "AnyGroups": []
             },
             {
@@ -429811,7 +430016,7 @@
               ]
             },
             {
-              "Text": "{n}She never once used the Commander's name where anyone could hear, and she stopped saying *master* altogether. When she needed to call the Commander she whistled, the way the neathers whistle in the tunnels, one note up and one down, and the Commander came, and everybody who saw it pretended not to have.{/n}",
+              "Text": "{n}She never once used the Commander's name where anyone could hear, and she stopped saying *master* altogether. When she needed to call the Commander she whistled, her own whistle, one note up and one down, and the Commander came, and everybody who saw it pretended not to have.{/n}",
               "Requires": [],
               "Forbids": [],
               "AnyGroups": []
@@ -429840,7 +430045,11 @@
               "Requires": [
                 "wenduag.trickster.lann.paid"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "lann.dead",
+                "lann.kicked_out",
+                "lann.plot_absent"
+              ],
               "AnyGroups": []
             },
             {
@@ -429848,7 +430057,11 @@
               "Requires": [
                 "wenduag.trickster.lann.paid_late"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "lann.dead",
+                "lann.kicked_out",
+                "lann.plot_absent"
+              ],
               "AnyGroups": []
             },
             {
@@ -429856,7 +430069,11 @@
               "Requires": [
                 "wenduag.trickster.lann.owed"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "lann.dead",
+                "lann.kicked_out",
+                "lann.plot_absent"
+              ],
               "AnyGroups": []
             },
             {
@@ -429864,7 +430081,24 @@
               "Requires": [
                 "wenduag.trickster.lann.lied_again"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "wenduag.trickster.lann.disbelieved",
+                "lann.dead",
+                "lann.kicked_out",
+                "lann.plot_absent"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Lann asked the Commander once for the truth, and was lied to, and knew it, because he had stood at the top of the stair and seen her breathing. He followed the Commander to the end of the war, and never again believed a word the Commander said about anything that mattered, and said so, once, to the Commander's face, and never again.{/n}",
+              "Requires": [
+                "wenduag.trickster.lann.disbelieved"
+              ],
+              "Forbids": [
+                "lann.dead",
+                "lann.kicked_out",
+                "lann.plot_absent"
+              ],
               "AnyGroups": []
             },
             {
@@ -429897,7 +430131,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The flat stone with the Commander's mark scratched into its underside hung on a thong round her neck for the rest of the war. In the tunnels, she said, that was called a claim; up here, it was called a necklace, and uplanders were stupid.{/n}",
+              "Text": "{n}The flat stone with the Commander's mark scratched into its underside hung on a thong round her neck for the rest of the war. She called it a claim. Uplanders called it a necklace, and she said that was why uplanders were stupid.{/n}",
               "Requires": [
                 "wenduag.trickster.cairn.mark"
               ],
@@ -429921,7 +430155,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}Savamelekh's stinger went into a brazier in a Drezen cellar, and the smell of it hung about the place for a month. The neathers who lived there said afterwards that it was the first month of their lives when nothing had called them in the night.{/n}",
+              "Text": "{n}Savamelekh's stinger went into a brazier in a Drezen cellar, and the smell of it hung about the place for a month. With its owner dead, nothing called the neathers who lived there in the night any more; she said the burning was only to make sure he left nothing behind.{/n}",
               "Requires": [
                 "wenduag.trickster.stinger.burned"
               ],
@@ -429929,11 +430163,64 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}Savamelekh was still alive somewhere, when the war ended, with the smell of his poison in the wind. She went hunting for him the spring after the Threshold, alone, with a spear and a knife and the Commander's promise, and she came back in the autumn, and would not say. She did not smell of him any more. That was the only answer anyone ever had.{/n}",
-              "Requires": [],
+              "Text": "{n}Whatever had become of Savamelekh, nobody had brought her his body. She went looking the spring after the Threshold, alone, with a spear and a knife and the Commander's promise, and came back in the autumn, and would not say what she had found.{/n}",
+              "Requires": [
+                "wenduag.trickster.death_promised"
+              ],
               "Forbids": [
                 "savamelekh.dead"
               ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Whatever had become of Savamelekh, nobody had brought her his body. She went looking the spring after the Threshold, alone, with a spear and a knife, and came back in the autumn, and would not say what she had found.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "savamelekh.dead",
+                "wenduag.trickster.death_promised"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Lann did not see the end of the war at the Commander's side. Whatever had passed between them about the cairn went with him, and Wenduag never spoke of it.{/n}",
+              "Requires": [
+                "lann.dead"
+              ],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "wenduag.trickster.lann.paid",
+                  "wenduag.trickster.lann.paid_late",
+                  "wenduag.trickster.lann.owed",
+                  "wenduag.trickster.lann.lied_again",
+                  "wenduag.trickster.cost.lied_to_lann"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}Lann did not see the end of the war at the Commander's side. Whatever had passed between them about the cairn went with him, and Wenduag never spoke of it.{/n}",
+              "Requires": [
+                "lann.kicked_out"
+              ],
+              "Forbids": [
+                "lann.dead"
+              ],
+              "AnyGroups": [
+                [
+                  "wenduag.trickster.lann.paid",
+                  "wenduag.trickster.lann.paid_late",
+                  "wenduag.trickster.lann.owed",
+                  "wenduag.trickster.lann.lied_again",
+                  "wenduag.trickster.cost.lied_to_lann"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}Down at the bottom of the oldest stair, in the dark, there was a cairn with the head end loose. It was hers. The Commander was the only uplander who ever knew where it was, and the only one she ever took there.{/n}",
+              "Requires": [
+                "wenduag.trickster.court.cairn"
+              ],
+              "Forbids": [],
               "AnyGroups": []
             }
           ]
@@ -429945,7 +430232,11 @@
       ],
       "Forbids": [
         "wenduag.closed",
-        "sacrifice"
+        "sacrifice",
+        "wenduag.q3_killed",
+        "wenduag.q3_sent_away",
+        "wenduag.hello_sent_away",
+        "wenduag.hello_attacked"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -429983,7 +430274,11 @@
               "Requires": [
                 "wenduag.trickster.lann.paid"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "lann.dead",
+                "lann.kicked_out",
+                "lann.plot_absent"
+              ],
               "AnyGroups": []
             },
             {
@@ -429991,7 +430286,11 @@
               "Requires": [
                 "wenduag.trickster.lann.paid_late"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "lann.dead",
+                "lann.kicked_out",
+                "lann.plot_absent"
+              ],
               "AnyGroups": []
             },
             {
@@ -429999,7 +430298,11 @@
               "Requires": [
                 "wenduag.trickster.lann.owed"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "lann.dead",
+                "lann.kicked_out",
+                "lann.plot_absent"
+              ],
               "AnyGroups": []
             },
             {
@@ -430007,7 +430310,24 @@
               "Requires": [
                 "wenduag.trickster.lann.lied_again"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "wenduag.trickster.lann.disbelieved",
+                "lann.dead",
+                "lann.kicked_out",
+                "lann.plot_absent"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Lann asked the Commander once for the truth, and was lied to, and knew it, because he had stood at the top of the stair and seen her breathing. He followed the Commander to the end of the war, and never again believed a word the Commander said about anything that mattered, and said so, once, to the Commander's face, and never again.{/n}",
+              "Requires": [
+                "wenduag.trickster.lann.disbelieved"
+              ],
+              "Forbids": [
+                "lann.dead",
+                "lann.kicked_out",
+                "lann.plot_absent"
+              ],
               "AnyGroups": []
             },
             {
@@ -430040,7 +430360,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The flat stone with the Commander's mark scratched into its underside hung on a thong round her neck for the rest of the war. In the tunnels, she said, that was called a claim; up here, it was called a necklace, and uplanders were stupid.{/n}",
+              "Text": "{n}The flat stone with the Commander's mark scratched into its underside hung on a thong round her neck for the rest of the war. She called it a claim. Uplanders called it a necklace, and she said that was why uplanders were stupid.{/n}",
               "Requires": [
                 "wenduag.trickster.cairn.mark"
               ],
@@ -430064,7 +430384,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}Savamelekh's stinger went into a brazier in a Drezen cellar, and the smell of it hung about the place for a month. The neathers who lived there said afterwards that it was the first month of their lives when nothing had called them in the night.{/n}",
+              "Text": "{n}Savamelekh's stinger went into a brazier in a Drezen cellar, and the smell of it hung about the place for a month. With its owner dead, nothing called the neathers who lived there in the night any more; she said the burning was only to make sure he left nothing behind.{/n}",
               "Requires": [
                 "wenduag.trickster.stinger.burned"
               ],
@@ -430072,12 +430392,57 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}Savamelekh was still alive somewhere, when the war ended, with the smell of his poison in the wind. She went hunting for him the spring after the Threshold, alone, with a spear and a knife and the Commander's promise, and she came back in the autumn, and would not say. She did not smell of him any more. That was the only answer anyone ever had.{/n}",
-              "Requires": [],
+              "Text": "{n}Whatever had become of Savamelekh, nobody had brought her his body. She went looking the spring after the Threshold, alone, with a spear and a knife and the Commander's promise, and came back in the autumn, and would not say what she had found.{/n}",
+              "Requires": [
+                "wenduag.trickster.death_promised"
+              ],
               "Forbids": [
                 "savamelekh.dead"
               ],
               "AnyGroups": []
+            },
+            {
+              "Text": "{n}Whatever had become of Savamelekh, nobody had brought her his body. She went looking the spring after the Threshold, alone, with a spear and a knife, and came back in the autumn, and would not say what she had found.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "savamelekh.dead",
+                "wenduag.trickster.death_promised"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Lann did not see the end of the war at the Commander's side. Whatever had passed between them about the cairn went with him, and Wenduag never spoke of it.{/n}",
+              "Requires": [
+                "lann.dead"
+              ],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "wenduag.trickster.lann.paid",
+                  "wenduag.trickster.lann.paid_late",
+                  "wenduag.trickster.lann.owed",
+                  "wenduag.trickster.lann.lied_again",
+                  "wenduag.trickster.cost.lied_to_lann"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}Lann did not see the end of the war at the Commander's side. Whatever had passed between them about the cairn went with him, and Wenduag never spoke of it.{/n}",
+              "Requires": [
+                "lann.kicked_out"
+              ],
+              "Forbids": [
+                "lann.dead"
+              ],
+              "AnyGroups": [
+                [
+                  "wenduag.trickster.lann.paid",
+                  "wenduag.trickster.lann.paid_late",
+                  "wenduag.trickster.lann.owed",
+                  "wenduag.trickster.lann.lied_again",
+                  "wenduag.trickster.cost.lied_to_lann"
+                ]
+              ]
             }
           ]
         }
@@ -430089,7 +430454,11 @@
       "Forbids": [
         "wenduag.committed",
         "wenduag.closed",
-        "sacrifice"
+        "sacrifice",
+        "wenduag.q3_killed",
+        "wenduag.q3_sent_away",
+        "wenduag.hello_sent_away",
+        "wenduag.hello_attacked"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -430127,7 +430496,11 @@
               "Requires": [
                 "wenduag.trickster.lann.paid"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "lann.dead",
+                "lann.kicked_out",
+                "lann.plot_absent"
+              ],
               "AnyGroups": []
             },
             {
@@ -430135,7 +430508,11 @@
               "Requires": [
                 "wenduag.trickster.lann.paid_late"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "lann.dead",
+                "lann.kicked_out",
+                "lann.plot_absent"
+              ],
               "AnyGroups": []
             },
             {
@@ -430143,7 +430520,11 @@
               "Requires": [
                 "wenduag.trickster.lann.owed"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "lann.dead",
+                "lann.kicked_out",
+                "lann.plot_absent"
+              ],
               "AnyGroups": []
             },
             {
@@ -430151,7 +430532,24 @@
               "Requires": [
                 "wenduag.trickster.lann.lied_again"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "wenduag.trickster.lann.disbelieved",
+                "lann.dead",
+                "lann.kicked_out",
+                "lann.plot_absent"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Lann asked the Commander once for the truth, and was lied to, and knew it, because he had stood at the top of the stair and seen her breathing. He followed the Commander to the end of the war, and never again believed a word the Commander said about anything that mattered, and said so, once, to the Commander's face, and never again.{/n}",
+              "Requires": [
+                "wenduag.trickster.lann.disbelieved"
+              ],
+              "Forbids": [
+                "lann.dead",
+                "lann.kicked_out",
+                "lann.plot_absent"
+              ],
               "AnyGroups": []
             },
             {
@@ -430184,7 +430582,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The flat stone with the Commander's mark scratched into its underside hung on a thong round her neck for the rest of the war. In the tunnels, she said, that was called a claim; up here, it was called a necklace, and uplanders were stupid.{/n}",
+              "Text": "{n}The flat stone with the Commander's mark scratched into its underside hung on a thong round her neck for the rest of the war. She called it a claim. Uplanders called it a necklace, and she said that was why uplanders were stupid.{/n}",
               "Requires": [
                 "wenduag.trickster.cairn.mark"
               ],
@@ -430208,7 +430606,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}Savamelekh's stinger went into a brazier in a Drezen cellar, and the smell of it hung about the place for a month. The neathers who lived there said afterwards that it was the first month of their lives when nothing had called them in the night.{/n}",
+              "Text": "{n}Savamelekh's stinger went into a brazier in a Drezen cellar, and the smell of it hung about the place for a month. With its owner dead, nothing called the neathers who lived there in the night any more; she said the burning was only to make sure he left nothing behind.{/n}",
               "Requires": [
                 "wenduag.trickster.stinger.burned"
               ],
@@ -430216,19 +430614,65 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}Savamelekh was still alive somewhere, when the war ended, with the smell of his poison in the wind. She went hunting for him the spring after the Threshold, alone, with a spear and a knife and the Commander's promise, and she came back in the autumn, and would not say. She did not smell of him any more. That was the only answer anyone ever had.{/n}",
-              "Requires": [],
+              "Text": "{n}Whatever had become of Savamelekh, nobody had brought her his body. She went looking the spring after the Threshold, alone, with a spear and a knife and the Commander's promise, and came back in the autumn, and would not say what she had found.{/n}",
+              "Requires": [
+                "wenduag.trickster.death_promised"
+              ],
               "Forbids": [
                 "savamelekh.dead"
               ],
               "AnyGroups": []
+            },
+            {
+              "Text": "{n}Whatever had become of Savamelekh, nobody had brought her his body. She went looking the spring after the Threshold, alone, with a spear and a knife, and came back in the autumn, and would not say what she had found.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "savamelekh.dead",
+                "wenduag.trickster.death_promised"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Lann did not see the end of the war at the Commander's side. Whatever had passed between them about the cairn went with him, and Wenduag never spoke of it.{/n}",
+              "Requires": [
+                "lann.dead"
+              ],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "wenduag.trickster.lann.paid",
+                  "wenduag.trickster.lann.paid_late",
+                  "wenduag.trickster.lann.owed",
+                  "wenduag.trickster.lann.lied_again",
+                  "wenduag.trickster.cost.lied_to_lann"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}Lann did not see the end of the war at the Commander's side. Whatever had passed between them about the cairn went with him, and Wenduag never spoke of it.{/n}",
+              "Requires": [
+                "lann.kicked_out"
+              ],
+              "Forbids": [
+                "lann.dead"
+              ],
+              "AnyGroups": [
+                [
+                  "wenduag.trickster.lann.paid",
+                  "wenduag.trickster.lann.paid_late",
+                  "wenduag.trickster.lann.owed",
+                  "wenduag.trickster.lann.lied_again",
+                  "wenduag.trickster.cost.lied_to_lann"
+                ]
+              ]
             }
           ]
         }
       ],
       "Requires": [
         "trickster.ever",
-        "wenduag.closed"
+        "wenduag.closed",
+        "wenduag.trickster.stay_dead_ordered"
       ],
       "Forbids": [
         "wenduag.committed",
@@ -430243,6 +430687,225 @@
           "wenduag.trickster.street_cairn"
         ]
       ],
+      "Relationship": "wenduag",
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      }
+    },
+    {
+      "Id": "wenduag.trickster.epilogue.refused",
+      "Title": "",
+      "Owner": "WenduagEpilogue",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "{n}Wenduag brought the Commander the best thing she had caught, once, and the Commander set it on its feet and sent it back to its gate. She did not ask again. She had never asked anybody before; she said afterwards that she now understood why.{/n}\n{n}She fought the rest of the war where the fighting was worst, because she was not stupid, and she kept to the cellars and the dark between battles, and the neathers there learned not to say the Commander's name in her hearing. When the war ended she was gone before the banners came down, with a band of her own, east, toward the edge of the Wound, where there was still something worth hunting.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "{n}Lann never quite forgave the Commander, and never quite stopped following. He had been told the truth before he found it for himself, and he said, years later, that it was the only reason he could still stand to be in the same room. He never went down the cellar stair.{/n}",
+              "Requires": [
+                "wenduag.trickster.lann.paid"
+              ],
+              "Forbids": [
+                "lann.dead",
+                "lann.kicked_out",
+                "lann.plot_absent"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Lann had to find the truth for himself, in a cellar, by the smell of a woman he had mourned; and then he had to ask for it. He got it, late. He followed the Commander to the end of the war and after, and he listened, every time the Commander spoke, for the lie. He said he never heard another one. He never said he stopped listening.{/n}",
+              "Requires": [
+                "wenduag.trickster.lann.paid_late"
+              ],
+              "Forbids": [
+                "lann.dead",
+                "lann.kicked_out",
+                "lann.plot_absent"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Lann asked the Commander once for the truth about the cairn, and was told to leave it. He left it. He followed the Commander to the end of the war, and he fought as well as he ever had, and he never again made a joke in the Commander's hearing. Some of the soldiers thought he had grown up. The Commander knew better.{/n}",
+              "Requires": [
+                "wenduag.trickster.lann.owed"
+              ],
+              "Forbids": [
+                "lann.dead",
+                "lann.kicked_out",
+                "lann.plot_absent"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Lann asked the Commander once for the truth, and was lied to, and believed it, because he wanted to. Nobody ever told him otherwise. Wenduag, who could have, never did; she said it was the Commander's lie, and the Commander's to carry, and that she was not a porter.{/n}",
+              "Requires": [
+                "wenduag.trickster.lann.lied_again"
+              ],
+              "Forbids": [
+                "wenduag.trickster.lann.disbelieved",
+                "lann.dead",
+                "lann.kicked_out",
+                "lann.plot_absent"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Lann asked the Commander once for the truth, and was lied to, and knew it, because he had stood at the top of the stair and seen her breathing. He followed the Commander to the end of the war, and never again believed a word the Commander said about anything that mattered, and said so, once, to the Commander's face, and never again.{/n}",
+              "Requires": [
+                "wenduag.trickster.lann.disbelieved"
+              ],
+              "Forbids": [
+                "lann.dead",
+                "lann.kicked_out",
+                "lann.plot_absent"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Lann never learned that Wenduag lived. Whatever he believed about the cellar neathers' dead hunter, he kept it to himself, and did not go down to look.{/n}",
+              "Requires": [
+                "wenduag.trickster.cost.lied_to_lann"
+              ],
+              "Forbids": [
+                "wenduag.trickster.lann.paid",
+                "wenduag.trickster.lann.paid_late",
+                "wenduag.trickster.lann.owed",
+                "wenduag.trickster.lann.lied_again"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She carried the Commander's stroke in her side for the rest of her life: a long pale seam, low on the left, a finger's width from the place that would have ended her. She showed it to people she wanted to frighten. She never said who had put it there. She said she was saving the answer for the day she paid it back.{/n}",
+              "Requires": [
+                "wenduag.trickster.cost.stroke_deep"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She kept the Commander's waterskin, the one that had been under her hand in the dark. She never drank from it again, and she never threw it away, and she never explained either.{/n}",
+              "Requires": [
+                "wenduag.trickster.cairn.water"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The flat stone with the Commander's mark scratched into its underside hung on a thong round her neck for the rest of the war. She called it a claim. Uplanders called it a necklace, and she said that was why uplanders were stupid.{/n}",
+              "Requires": [
+                "wenduag.trickster.cairn.mark"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Savamelekh's stinger stayed with her, wrapped in sacking, for the rest of her life. She showed it to the young neathers of the cellars when they were old enough to understand, and told them what it was, and what it had cost, and what it had called, and that it did not call any more.{/n}",
+              "Requires": [
+                "wenduag.trickster.stinger.given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The Commander still owed her a death, a big one, as big as Savamelekh. She said she had picked it, and never said what it was. The Commander stopped asking. Some debts are better left in the dark.{/n}",
+              "Requires": [
+                "wenduag.trickster.promise.owed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Savamelekh's stinger went into a brazier in a Drezen cellar, and the smell of it hung about the place for a month. With its owner dead, nothing called the neathers who lived there in the night any more; she said the burning was only to make sure he left nothing behind.{/n}",
+              "Requires": [
+                "wenduag.trickster.stinger.burned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Whatever had become of Savamelekh, nobody had brought her his body. She went looking the spring after the Threshold, alone, with a spear and a knife and the Commander's promise, and came back in the autumn, and would not say what she had found.{/n}",
+              "Requires": [
+                "wenduag.trickster.death_promised"
+              ],
+              "Forbids": [
+                "savamelekh.dead"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Whatever had become of Savamelekh, nobody had brought her his body. She went looking the spring after the Threshold, alone, with a spear and a knife, and came back in the autumn, and would not say what she had found.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "savamelekh.dead",
+                "wenduag.trickster.death_promised"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Lann did not see the end of the war at the Commander's side. Whatever had passed between them about the cairn went with him, and Wenduag never spoke of it.{/n}",
+              "Requires": [
+                "lann.dead"
+              ],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "wenduag.trickster.lann.paid",
+                  "wenduag.trickster.lann.paid_late",
+                  "wenduag.trickster.lann.owed",
+                  "wenduag.trickster.lann.lied_again",
+                  "wenduag.trickster.cost.lied_to_lann"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}Lann did not see the end of the war at the Commander's side. Whatever had passed between them about the cairn went with him, and Wenduag never spoke of it.{/n}",
+              "Requires": [
+                "lann.kicked_out"
+              ],
+              "Forbids": [
+                "lann.dead"
+              ],
+              "AnyGroups": [
+                [
+                  "wenduag.trickster.lann.paid",
+                  "wenduag.trickster.lann.paid_late",
+                  "wenduag.trickster.lann.owed",
+                  "wenduag.trickster.lann.lied_again",
+                  "wenduag.trickster.cost.lied_to_lann"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "wenduag.closed",
+        "wenduag.trickster.court.claim_refused"
+      ],
+      "Forbids": [
+        "wenduag.committed",
+        "wenduag.trickster.stay_dead_ordered",
+        "sacrifice"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
       "Relationship": "wenduag",
       "ForbidOverrides": {
         "sacrifice": "trickster.commander_back"
@@ -434165,8 +434828,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -436983,6 +437646,10 @@
     "wenduag.hello_attacked": [
       "d84337e5fbe54c1428ac6cdf3f6603ec"
     ],
+    "wenduag.street_lann": [
+      "bfb97b63903554b4a80cc9a55384c17c",
+      "c724c5e9ac9b0e64e9b24dd77eb00523"
+    ],
     "wenduag.street_confronted": [
       "eeea5c1c81a03ba4f83abe1ab0a70df0"
     ],
@@ -436997,6 +437664,9 @@
     ],
     "wenduag.vellexia_conflict_c139": [
       "d70c17267a6713d42a71144cc4ea8f2e"
+    ],
+    "wenduag.lann_warned": [
+      "034a00e3e0c2ef64788c1d9cb6b815de"
     ],
     "vellexia.spared": [
       "58d69774dbe696e46a9232167e8d3479"
