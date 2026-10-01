@@ -242,7 +242,7 @@ met(OBITUARY, "An obituary, corrected", '"What are you writing?"', [
     cam("unfinished", '''"Unfinished." {n}She considers it, pen still raised.{/n} "Yes. Like a sentence someone else has to end." {n}She puts the pen down.{/n} "I'll keep it like that. And when I really do die one day, you can finish it. You'll know what to write. You're the only one who will."''',
         c("Continue", "done")),
     cam("done", '''{n}She folds the obituary and gives it to you. It is warm from her hands.{/n}
-"Keep it somewhere safe. Somewhere you'll find it again." {n}She stands, and her voice changes; the governess is gone and something harder is in its place.{/n} "And now leave me alone for a while. I have a price to set, and I've never set one before. I want to get it exactly right."''',
+"Keep it somewhere safe. Somewhere you'll find it again." {n}She stands, and her voice changes; the governess is gone and something harder is in its place.{/n} "And now leave me alone for a while. There are details I have yet to decide. I want to get it exactly right."''',
         c("[Take it and go]")),
 ], requires=("trickster.ever", RET, LESSON), delay=24, optional=True)
 

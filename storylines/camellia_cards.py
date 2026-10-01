@@ -218,7 +218,7 @@ met(AMULET, "The amulet", '"You haven\'t fed Mireya in weeks."', [
 "Yes. That's what I thought you'd say." {n}Very softly.{/n} "You never needed her. Only I did."''',
         c("Continue", "close")),
     cam("close", '''{n}She holds the amulet out to you, dangling from its cord.{/n}
-"Here. You have her. Put her on your shelf, next to my list. Next to your name." {n}She folds your fingers around the little bone snake.{/n} "If anyone ever asks, tell them she was a very old and very beautiful spirit, and that she was mine. It isn't true. But it's the nicest thing I ever made."''',
+"Here. You have her. Put her somewhere you'll see her every morning." {n}She folds your fingers around the little bone snake.{/n} "If anyone ever asks, tell them she was a very old and very beautiful spirit, and that she was mine. It isn't true. But it's the nicest thing I ever made."''',
         c("[Keep it]", flags=(AMULET_KEPT,))),
 ], requires=("trickster.ever", COMMITTED), delay=72, optional=True, living=())
 from storylines.camellia_trickster import city  # noqa: E402 (Q8)
