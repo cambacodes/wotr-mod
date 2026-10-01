@@ -429,8 +429,24 @@ internal static class VellexiaTricksterTests
         }
         check(!Rules.Available(story, provocation, World(story, 5, "trickster.ever", "vellexia.greeted")),
             "Trk_Vellexia_Provocation: the insult is carried without a live Trickster.");
-        check(!Rules.Available(story, provocation, World(story, 5, "trickster", "trickster.ever", "vellexia.greeted", "vellexia.prediction_known")),
-            "Trk_Vellexia_Provocation: a Commander with a living continuation is offered the insult too.");
+        // Q11 r5 Trk_Vellexia_Unpaid: the shell taken and the seller's claim read in the manor (seal_agreed, prediction_known),
+        // then the native dates abandoned: she bills the walked-out evening through the shell she gave, and comes to collect.
+        var unpaid = S(P + "reacquire.unpaid");
+        var abandoned = World(story, 5, "trickster", "trickster.ever", "vellexia.greeted", "vellexia.seal_agreed", "vellexia.prediction_known");
+        check(!Rules.Available(story, provocation, abandoned) && Rules.Available(story, unpaid, abandoned),
+            "Trk_Vellexia_Unpaid: the abandoned affair is stranded, or insulted instead of billed.");
+        var billed = Play(unpaid, abandoned).Single(r => r.Has(P + "unpaid"));
+        var collecting = Later(story, billed, 24);
+        var unpaidPages = new HashSet<string>();
+        var paidUp = Program.Walk(visit, collecting, (pg, _) => unpaidPages.Add(pg)).Where(r => r.Has(visit.Id)).ToList();
+        check(Rules.Available(story, visit, collecting) && unpaidPages.Contains("unpaid") && unpaidPages.Contains("shell_unpaid")
+              && !unpaidPages.Contains("shell_held") && !unpaidPages.Contains("provoked"), "Trk_Vellexia_Unpaid: she does not come to collect, or comes as someone else.");
+        check(Reaches(paidUp.First(r => r.Has(P + "courting")), "vellexia.committed"), "Trk_Vellexia_Unpaid: no road to the commit.");
+        foreach (var opened in new[] { new[] { "vellexia.native_finished", "vellexia.dismissed_native" }, new[] { "vellexia.case_opened" } })
+        {
+            var continuing = Program.Copy(abandoned); continuing.Flags.UnionWith(opened);
+            check(!Rules.Available(story, unpaid, continuing), "Trk_Vellexia_Unpaid: the bill opens beside a living continuation: " + string.Join(",", opened));
+        }
 
         // Q11 Trk_Vellexia_LateCommitThreshold: the late commit stages its own threshold and morning.
         var lateText = epCommit.Nodes[0].Text + string.Concat(epCommit.Nodes[0].Paragraphs.Select(pp => pp.Text));
@@ -455,6 +471,12 @@ internal static class VellexiaTricksterTests
         var lateFull = Program.Copy(lateCourted); lateFull.Flags.Remove(P + "cost.bare_walls");
         check(RoomShown(lateFull).Contains("chair that flinched") && !RoomShown(lateFull).Contains("walls with nothing on them"),
             "Trk_Vellexia_LateCommitSacrifice: the kept collection is gone from the room.");
+
+        // Q11 r5: an ascended Commander's late courtship is told once, on the ascent page.
+        var lateAscended = Program.Copy(lateCourted); lateAscended.Flags.Add("ascended"); Rules.Complete(story, lateAscended);
+        check(!Rules.Available(story, epCommit, lateAscended) && Rules.Available(story, Ending("ascent"), lateAscended)
+              && Ending("ascent").Nodes[0].Paragraphs.Any(pp => Rules.ParagraphVisible(pp, lateAscended) && pp.Text.Contains("said yes to the Commander once")),
+            "Q11 r5: the ascended late courtship plays twice, or not at all.");
 
         // Q11 r3: the freed house and the picture she sent back and bought back.
         var freedBought = World(story, 4, "trickster", "trickster.ever", "vellexia.greeted", "vellexia.final_fight", "vellexia.dead",
@@ -516,11 +538,13 @@ internal static class VellexiaTricksterTests
         var ch5Letters = story.Scenes.Where(s => s.Id.StartsWith(P, StringComparison.Ordinal) && s.Remote && !s.Reaction
                                                  && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && s.Chapters.Contains(5))
             .Select(s => s.Id).OrderBy(id => id).ToArray();
-        check(ch5Letters.SequenceEqual(new[] { P + "after.voice", P + "glass.uncovered", P + "never_visited.invitation", P + "reacquire.provocation" }),
+        check(ch5Letters.SequenceEqual(new[] { P + "after.voice", P + "glass.uncovered", P + "never_visited.invitation", P + "reacquire.provocation", P + "reacquire.unpaid" }),
             "Trk_Vellexia_Ch5LetterCap: an unexpected Chapter 5 letter: " + string.Join(", ", ch5Letters));
         check(invitation.Forbids.Contains("vellexia.greeted") && provocation.Requires.Contains("vellexia.greeted")
               && S(P + "glass.uncovered").Requires.Contains(P + "kept_as_mirror") && invitation.Forbids.Contains("vellexia.dead")
-              && provocation.Forbids.Contains("vellexia.mirrored") && voice.Forbids.Contains("vellexia.return_kept"),
+              && provocation.Forbids.Contains("vellexia.mirrored") && voice.Forbids.Contains("vellexia.return_kept")
+              && provocation.Forbids.Contains("vellexia.prediction_known") && unpaid.Requires.Contains("vellexia.prediction_known")
+              && unpaid.Forbids.Contains("vellexia.mirrored") && unpaid.Requires.Contains("vellexia.greeted"),
             "Trk_Vellexia_Ch5LetterCap: two Chapter 5 letters can share a branch.");
 
         // Trk_Vellexia_Farewell: her own farewell; nothing to defy.

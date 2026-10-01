@@ -62,6 +62,7 @@ VISITED = "vellexia.trickster.visited"
 COURTING = "vellexia.trickster.courting"
 LATE_COMMITTED = "vellexia.trickster.late_committed"
 PROVOKED = "vellexia.trickster.provoked"          # Q11: greeted, living, no continuation; Vask carried her an insult
+UNPAID = "vellexia.trickster.unpaid"              # Q11 r5: shell and prediction in hand, native affair abandoned; she bills it
 INVITED = "vellexia.invited"                        # Q11: the Commander asked her to Drezen (two_unremarkable_pleasures / the cover)
 NIGHT_KEPT = "vellexia.trickster.night_kept"
 KNOWN = "vellexia.prediction_known"
@@ -396,6 +397,24 @@ letter("vellexia.trickster.reacquire.provocation", "Bored, by report", [
     delay=0, ForbidOverrides={"vellexia.final_fight": "vellexia.fight_survived"})
 
 
+# Q11 r5: the Commander took her shell and heard the prediction seller's claim, then walked out of her entertainment for
+# good (the native dates never finished). Nothing else can open in Chapter 5; the shell she gave carries her bill.
+letter("vellexia.trickster.reacquire.unpaid", "An entertainment, unpaid for", [
+    nar("start", '''{n}The shell lights on your table in Drezen, for the first time since the Upper City. When you open it, Vellexia is sitting in her salon with an account book on her knee and a pen she is plainly longing to use on someone.{/n}''',
+      c("Continue", "bill")),
+    v("bill", '''"You left in the middle of my entertainment. Nobody leaves in the middle of my entertainment; the last guest who tried it is a hat-stand in my hall, and he was more entertaining than you, while he lasted." {n}She turns a page.{/n} "I have costed it. The musicians, the wine, the guests I had chosen to bore you with, and my disappointment, which is very expensive. You will pay. The only question is whether you pay here, through a shell, like a coward, or in person, where I can watch you count it out."''',
+      c('[Trickster] "In person. Come to Drezen and collect it, if you dare the road."', "come", mythic="Trickster"),
+      c('[Close the shell] "Put it on my account."', "refuse")),
+    v("come", '''"If I dare the road." {n}Her smile is slow and not at all kind.{/n} "Oh, sweetheart. I shall come, and you will pay me in front of whoever you love best in that miserable city, and you will thank me for the invoice." {n}The glass clouds before you can answer.{/n}''',
+      c('"I\'ll be waiting."', flags=(UNPAID, STARTED))),
+    v("refuse", '''"On your account." {n}She closes the book.{/n} "Then I shall add the interest myself, in my own time, and you will not enjoy the way I collect it." {n}The glass clouds.{/n}''',
+      c('[Let it go dark.]', flags=(DECLINED,))),
+], requires=("trickster", "trickster.ever", "vellexia.greeted", "vellexia.seal_agreed", KNOWN),
+    forbids=(DEAD, MIRROR, "vellexia.early_fight", "vellexia.final_fight", "vellexia.native_coercion", "vellexia.native_finished",
+             "vellexia.case_opened", UNPAID, PROVOKED, ENTRY, DECLINED, RETURNED, VISITED),
+    delay=0)
+
+
 # --- After any return: the test in person (R2-1, R2-3) -----------------------------------------------------------------
 # Q11: the staging is the place's own (the Storyteller's shelves, or the Commander's quarters when his anchor failed), and
 # the first question of the old first call ("What do you want from me?") is asked here, in person, before she leaves:
@@ -431,6 +450,7 @@ def shell_text(where, held, voice):
 DEAD_VOICE = "My house is a ruin and I am told I am dead, and I have decided to find both restful, for a season."
 ENTRY_VOICE = "I came a very long way to be predicted, and I intend to spend the whole journey back deciding whether I enjoyed it."
 PROVOKED_VOICE = "I came a very long way to be insulted, and I intend to spend the whole journey back deciding whether I enjoyed it."
+UNPAID_VOICE = "I came a very long way to collect on an evening you walked out of, and I shall keep collecting it for as long as it amuses me."
 
 
 def visit_nodes(place_text, where):
@@ -440,7 +460,8 @@ def visit_nodes(place_text, where):
             c("Continue", "unmirrored", requires=(UNMIRRORED,)),
             c("Continue", "diminished", requires=(DIMINISHED,), forbids=(UNMIRRORED,)),
             c("Continue", "entry", requires=(ENTRY,), forbids=(UNMIRRORED, DIMINISHED)),
-            c("Continue", "provoked", requires=(PROVOKED,), forbids=(UNMIRRORED, DIMINISHED, ENTRY))),
+            c("Continue", "provoked", requires=(PROVOKED,), forbids=(UNMIRRORED, DIMINISHED, ENTRY)),
+            c("Continue", "unpaid", requires=(UNPAID,), forbids=(UNMIRRORED, DIMINISHED, ENTRY, PROVOKED))),
         v("unmirrored", '''"Show me. Now, here, with %s." {n}%s{/n} "If you can make a woman into a thing, and then buy her house out from under her until she walks out of it, you can make %s into a stage for an hour. Everyone in the Upper City thinks I am dead. I would like one person to see me being alive."''' % (pl["watch"], pl["perch"], pl["stage"]),
           c('[Show her how the trick works] "Watch my hands. Not my face. Everyone watches the face."', "gave"),
           c('[Keep the trick] "A trick explained is a trick spent. Guess."', "kept")),
@@ -450,31 +471,36 @@ def visit_nodes(place_text, where):
           c('[Keep the trick] "A trick explained is a trick spent. Guess."', "kept")),
         v("entry", '''"So this is the prophet." {n}She looks you over the way she looks over furniture.{/n} "I came to see who predicted me. Nobody predicts me. It has put me in a very bad mood, and I have come a long way to enjoy it."
 "Predict me, sweetheart. What do I do next?"''',
-          c('[Tell her how it was done] "A wine-factor, a boast and nine days. That\'s all a prophecy is."', "gave"),
+          c('[Tell her how it was done] "A wine-factor, a boast, and a ledger boy who runs faster than gossip. That\'s all a prophecy is."', "gave"),
           c('[Keep the trick] "A trick explained is a trick spent. Guess."', "kept")),
         v("provoked", '''"Bored." {n}She says the word as if tasting a wine she means to send back.{/n} "You sent word with a wine-factor that I bore you. The whole Upper City has heard it. I have had to come to a siege to find out whether it is true, and I broke your messenger's finger on the way, which you may add to my bill."
 {n}She looks you over the way she looks over furniture she has not yet decided to keep.{/n} "Bore me, then. I dare you. Tell me how you got me here."''',
           c('[Tell her how it was done] "A wine-factor and one lie about your vanity. It brought you across three portals."', "gave"),
+          c('[Keep the trick] "A trick explained is a trick spent. Guess."', "kept")),
+        v("unpaid", '''"Here I am, and here is the bill." {n}She lays the account book open in front of you, every line in her own hand: the musicians, the wine, the guests chosen to bore you, and at the bottom, underlined twice, her disappointment.{/n} "You walked out of my house in the middle of the evening, and the Upper City laughed for a week. Pay it, or tell me how you dared. One of those I shall enjoy."''',
+          c('[Tell her how you dared] "I left because I knew you would come after me. You did."', "gave"),
           c('[Keep the trick] "A trick explained is a trick spent. Guess."', "kept")),
         nar("gave", '''{n}She watches as you explain it, and not your face. When you finish she says nothing at all, which is the most frightening thing you have seen her do.{/n}''',
             c("Continue", "gave_end")),
         v("gave_end", '''"Again. Slower."
 {n}You do it again. She mouths it with you, the way a duellist mirrors a lesson, and her eyes do not leave you once.{/n}
 "There. Now I own it too. How generous of you. Generosity is so rarely interesting; I shall have to decide what it means."''',
-          c("Continue", "shell_held", requires=("vellexia.seal_agreed",), forbids=(ENTRY, PROVOKED)),
+          c("Continue", "shell_held", requires=("vellexia.seal_agreed",), forbids=(ENTRY, PROVOKED, UNPAID)),
           c("Continue", "shell", forbids=("vellexia.seal_agreed", ENTRY, PROVOKED)),
           c("Continue", "shell_entry_held", requires=("vellexia.seal_agreed", ENTRY)),
           c("Continue", "shell_entry", requires=(ENTRY,), forbids=("vellexia.seal_agreed",)),
           c("Continue", "shell_prov_held", requires=("vellexia.seal_agreed", PROVOKED), forbids=(ENTRY,)),
-          c("Continue", "shell_prov", requires=(PROVOKED,), forbids=("vellexia.seal_agreed", ENTRY))),
+          c("Continue", "shell_prov", requires=(PROVOKED,), forbids=("vellexia.seal_agreed", ENTRY)),
+          c("Continue", "shell_unpaid", requires=(UNPAID,), forbids=(ENTRY, PROVOKED))),
         v("kept", '''"Oh, good." {n}She is delighted, and it is not a pleasant sight.{/n}
 "Keep it, then. I shall take it from you eventually. It will be so much more fun than being given it. Do you know how long it has been since anyone kept anything from me? Neither do I."''',
-          c("Continue", "kept_shell_held", requires=("vellexia.seal_agreed",), forbids=(ENTRY, PROVOKED)),
+          c("Continue", "kept_shell_held", requires=("vellexia.seal_agreed",), forbids=(ENTRY, PROVOKED, UNPAID)),
           c("Continue", "kept_shell", forbids=("vellexia.seal_agreed", ENTRY, PROVOKED)),
           c("Continue", "kept_shell_entry_held", requires=("vellexia.seal_agreed", ENTRY)),
           c("Continue", "kept_shell_entry", requires=(ENTRY,), forbids=("vellexia.seal_agreed",)),
           c("Continue", "kept_shell_prov_held", requires=("vellexia.seal_agreed", PROVOKED), forbids=(ENTRY,)),
-          c("Continue", "kept_shell_prov", requires=(PROVOKED,), forbids=("vellexia.seal_agreed", ENTRY))),
+          c("Continue", "kept_shell_prov", requires=(PROVOKED,), forbids=("vellexia.seal_agreed", ENTRY)),
+          c("Continue", "kept_shell_unpaid", requires=(UNPAID,), forbids=(ENTRY, PROVOKED))),
         nar("shell", shell_text(where, False, DEAD_VOICE), c('[Take the shell.]', "ask", flags=(VISITED, LESSON))),
         nar("shell_held", shell_text(where, True, DEAD_VOICE), c('[Let her go.]', "ask", flags=(VISITED, LESSON))),
         nar("kept_shell", shell_text(where, False, DEAD_VOICE), c('[Take the shell.]', "ask", flags=(VISITED, TRICK_KEPT))),
@@ -487,6 +513,8 @@ def visit_nodes(place_text, where):
         nar("shell_prov_held", shell_text(where, True, PROVOKED_VOICE), c('[Let her go.]', "ask", flags=(VISITED, LESSON))),
         nar("kept_shell_prov", shell_text(where, False, PROVOKED_VOICE), c('[Take the shell.]', "ask", flags=(VISITED, TRICK_KEPT))),
         nar("kept_shell_prov_held", shell_text(where, True, PROVOKED_VOICE), c('[Let her go.]', "ask", flags=(VISITED, TRICK_KEPT))),
+        nar("shell_unpaid", shell_text(where, True, UNPAID_VOICE), c('[Let her go.]', "ask", flags=(VISITED, LESSON))),
+        nar("kept_shell_unpaid", shell_text(where, True, UNPAID_VOICE), c('[Let her go.]', "ask", flags=(VISITED, TRICK_KEPT))),
         v("ask", '''"One more thing, before I go, since you have made me come all this way to ask it in person." {n}She leans in the doorway as if it belonged to her.{/n}
 "What do you want from me, Commander? Choose carefully. I remember everything anyone has ever wanted from me, and I have been bored by almost all of it."''',
           c('"You. Not a debt, not a trick. You."', "want"),
@@ -516,7 +544,7 @@ SCENES.append(scene("vellexia.trickster.after.visit", "Among the shelves", "Vell
         "shelves"),
     requires=("trickster.ever",), forbids=(*OWN, KEPT, VISITED), delay=24, last=5, optional=True, Relationship="vellexia",
     Areas=[DREZEN], Chapters=[5], ContactUnit=UNIT, InteractionHub="vellexia.presence",
-    RequiresAnyGroups=[[UNMIRRORED, DIMINISHED, ENTRY, PROVOKED]]))
+    RequiresAnyGroups=[[UNMIRRORED, DIMINISHED, ENTRY, PROVOKED, UNPAID]]))
 
 # The anchor failed (the Storyteller is dead or gone): she comes to the Commander's quarters instead, the same test in
 # person. Q11: a physical scene, entered through the quartermaster (the ledger's always-present anchor), not a letter.
@@ -525,7 +553,7 @@ stores("vellexia.trickster.after.visit_quarters", "A guest who was not invited",
 {n}The Storyteller's shelves stand empty and under dust sheets, so she has come to your quarters instead. She is sitting in your chair with her feet on your maps of the Worldwound, and she has already read them.{/n}''',
     "quarters"),
     requires=("trickster.ever", "vellexia.presence.failed"), forbids=(KEPT, VISITED, "vellexia.trickster.after.visit"),
-    delay=48, RequiresAnyGroups=[[UNMIRRORED, DIMINISHED, ENTRY, PROVOKED]])
+    delay=48, RequiresAnyGroups=[[UNMIRRORED, DIMINISHED, ENTRY, PROVOKED, UNPAID]])
 
 
 # --- The first call: her price, spoken; the registered evenings follow (return_kept) -----------------------------------
@@ -633,7 +661,13 @@ TRICKSTER_PARAGRAPHS = (
     p("She told everyone she met that the Commander was the only guest who had ever predicted her. She said it the way "
       "other women describe a scar.", requires=(PREDICTED,)),
     p("She learned the Commander's trick in the end, as she had promised, and never said how. Several footstools in the "
-      "Upper City now walk.", requires=(TRICK_KEPT,)),
+      "Upper City now walk.", requires=(TRICK_KEPT, UNMIRRORED)),
+    p("She learned the Commander's trick in the end, as she had promised, and never said how. The painter who had sold her "
+      "the portrait never worked in the Upper City again, and nobody would say why.", requires=(TRICK_KEPT, DIMINISHED),
+      forbids=(UNMIRRORED,)),
+    p("She learned the Commander's trick in the end, as she had promised, and never said how. For a year every gossip in "
+      "the Upper City found a lilac-scented card on the pillow predicting, word for word, what they would say about her "
+      "next; most of them stopped saying it.", requires=(TRICK_KEPT,), forbids=(UNMIRRORED, DIMINISHED)),
     p("She never forgot the one dull sentence the Commander said to her, and reminded the Commander of it at intervals, "
       "always in company.", requires=("vellexia.trickster.cost.bored_once",), forbids=CONTINUING_NOT),
     p("A portrait of the Commander changed hands in the Upper City three times before the war was over, each time for more. "
@@ -668,7 +702,7 @@ SCENES.append(scene("vellexia.trickster.epilogue.commit", "Kept waiting", "Epilo
                          "person, and asked whether the Commander would be needing a scarf.", forbids=DAERAN_GONE),
                        *TRICKSTER_PARAGRAPHS))],
     requires=(LATE_COMMITTED,),
-    forbids=("vellexia.committed", "vellexia.closed", DECLINED, KEPT, "vellexia.farewell_kept", "sacrifice", "inhuman"),
+    forbids=("vellexia.committed", "vellexia.closed", DECLINED, KEPT, "vellexia.farewell_kept", "sacrifice", "inhuman", "ascended"),
     # Q11 r3: a genuine sacrifice is mourned (ending_sacrifice) and nothing else; a Commander who came back keeps the romance.
     ForbidOverrides={"sacrifice": "trickster.commander_back"}, last=99, Relationship="vellexia"))
 
@@ -758,7 +792,7 @@ def integrate(payload):
     # so trickster_world would not bind it on demand.
     payload.setdefault("Derived", {})["vellexia.fight_survived"] = [["vellexia.spared"], [RETURNED]]
     # Q11: a provoked guest comes to Drezen in person, as an unmirrored, diminished or predicted one does.
-    payload["Derived"]["vellexia.trickster.in_person"] = [[UNMIRRORED], [DIMINISHED], [ENTRY], [PROVOKED]]
+    payload["Derived"]["vellexia.trickster.in_person"] = [[UNMIRRORED], [DIMINISHED], [ENTRY], [PROVOKED], [UNPAID]]
     by_id = {s["Id"]: s for s in payload["Scenes"]}
 
     # R2-2 primer: the unpainted hands, marked before any fight, on her own gallery interlude.

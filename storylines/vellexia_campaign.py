@@ -676,7 +676,7 @@ s("the_question_after_business", "What she asks without a fee", "[Open the shell
 "You could ask for one."
 "I am approaching the indignity with suitable care."
 {n}Her smile returns, but she does not let it finish the conversation for her.{/n}
-"Do you remember the perfume? I had sent it away unopened, and you told me, in front of Tessar, that I had done exactly what Ilveris predicted, and that I would have to live with being predictable or open the bottle. I nearly had you thrown down the stairs. Then I opened the bottle. It was vile, and he was wrong, and I have not enjoyed being contradicted so much in a century."
+"Do you remember the perfume entry? We sat over Tessar's columns until his little forgery showed itself: 'without opening it', written in under a seal that never said so. I watched you watch him being caught. You enjoyed it more than you have ever enjoyed me, and I have not been so jealous of a forgery in a century."
 "That sounds like another assessment."
 "It is. There is no invoice left to examine, and still I want you to open the shell. How irritating. I have had men flayed for less."
 {n}She looks directly into the glass.{/n}
@@ -1058,7 +1058,7 @@ BAD_END = ("vellexia.dead", "vellexia.mirrored", "vellexia.native_coercion", "ve
 ORDINARY_BLOCK = (*BAD_END, "vellexia.closed", "inhuman", "ascended", "sacrifice")
 ending("lovers", "A light beneath the cover", '''{n}Vellexia remained a difficult lover. She called at inconvenient hours and took offense when kept waiting, then neglected the shell herself for a week while a more promising guest amused her, and described the guest afterwards in more detail than was kind. The Commander learned to give as good as that, which she considered the finest compliment the Commander ever paid her.{/n}
 {n}The echo shell carried affection as well as complaints. Vellexia discovered that the Commander remembered details she had included carelessly: an earring that caught in her hair, a singer's disputed passage, the name of someone she had hoped would feel suitably insulted. She pretended to regret having supplied such material and continued supplying it.{/n}
-{n}Vellexia did not become gentle toward the world to enjoy any of it.{/n}''', requires=("vellexia.farewell_lovers",), forbids=ORDINARY_BLOCK,
+{n}When a Drezen lady remarked at a reception that the Commander's lover was only a demon after all, Vellexia sent her an invitation she could not refuse. The lady came home a week later with no memory of the party, a new and beautiful chair she would not sit in, and a lifelong dislike of mirrors.{/n}''', requires=("vellexia.farewell_lovers",), forbids=ORDINARY_BLOCK,
     # Q11: the lovers' ending follows what actually happened in the flesh (vellexia_trickster: after.visit, after.night).
     paragraphs=(
         p('''{n}For a long time they were lovers across a long distance, and she made the distance into a weapon: a voice at the wrong hour, a description of her evening that left out exactly the part the Commander wanted, a promise to come to Drezen that she renewed and broke with equal pleasure.{/n}''',
@@ -1090,7 +1090,10 @@ ending("changed", "Another kind of silence", '''{n}The Commander changed beyond 
 {n}The voice she had pursued was gone. Vellexia kept the shell as one more expensive curiosity whose amusement had ended, and showed it to guests as a warning about wanting things.{/n}''', requires=("inhuman",), forbids=BAD_END)
 ending("ascent", "A god is not an answer", '''{n}When the Commander ascended, Vellexia wanted to hear the account twice. Then she asked a question the messenger could not answer and dismissed him before he attempted to invent something flattering.{/n}
 {n}A god might have other ways to call than a small silver shell. She waited to see whether this one would bother, and pretended to everyone, loudly, that she was not waiting.{/n}
-{n}She kept the shell. Sometimes she resented its silence. Sometimes she was entertained by the thought of how much she would enjoy criticizing a divine entrance. No answer from the new power was recorded in the glass.{/n}''', requires=("ascended",), forbids=(*BAD_END, "inhuman", "vellexia.closed"))
+{n}She kept the shell. Sometimes she resented its silence. Sometimes she was entertained by the thought of how much she would enjoy criticizing a divine entrance. No answer from the new power was recorded in the glass.{/n}''', requires=("ascended",), forbids=(*BAD_END, "inhuman", "vellexia.closed"),
+    # Q11 r5: a late courtship said yes to before the ascent is told here, once (the late-commit page forbids ascended).
+    paragraphs=(p('''{n}She had said yes to the Commander once, before the end, on her own terms, and had meant to collect on it at her own party after the war. A god did not come to the party. She held it anyway, on the night she had chosen, and kept one chair empty at her right hand, and had anyone who looked at it too long shown out.{/n}''',
+                  requires=("vellexia.trickster.late_committed",), forbids=("vellexia.committed",)),))
 ending("sacrifice", "What she wanted back", '''{n}The Commander's sacrifice left Vellexia with news she could neither bargain against nor improve by refusing to hear. She dismissed a visitor who began praising the magnificence of the loss. Later she sent for him to finish the factual part of his account.{/n}
 {n}She wanted the Commander back, and resented every flattering account of the loss. Admiration was an intolerably poor substitute, and she said so to everyone who offered it, until they stopped.{/n}
 {n}The shell stayed closed for a long time. When she finally opened it, she heard only the small sound of her nail against its rim. She closed it again before anyone entered the room.{/n}''', requires=("sacrifice",), forbids=(*BAD_END, "inhuman", "ascended", "vellexia.closed"))
