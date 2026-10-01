@@ -279,15 +279,15 @@ session(BETTING_LIVES, "You bet with people", '"You\'ve heard about the feint."'
       c('[Say nothing. Sign it in front of her.]', "silent"),
       c('"No. We go the long way round."', "refuse")),
     ch("command", '''"Don't pretend otherwise." {n}She nods, sharply.{/n} "Good. I'd hate you if you pretended. I don't hate you."
-"But I want you to feel it. Every one of them. Not just the numbers. I don't care if it slows you down." {n}Her eyes are wet and hard.{/n} "Promise me you'll feel it, and I'll forgive you for winning. I can't forgive you for not minding."''',
-      c('"I feel it. I\'ll keep feeling it."', "felt", flags=(FELT_IT,)),
-      c('"If I felt every one, I couldn\'t do the job."', "job")),
+"But you'll know their names. Every one of them, not the number on Alichino's sheet. I don't care if it slows you down." {n}Her eyes are wet and hard.{/n} "Learn their names, and I'll forgive you for winning. I won't forgive you for not minding."''',
+      c('"I\'ll learn them. Every one."', "felt", flags=(FELT_IT,)),
+      c('"If I stopped for every name, I couldn\'t do the job."', "job")),
     ch("wanted", '''{n}That stops her. For a moment the hard face wavers.{/n}
 "That's worse," she says finally. "That's worse and better at once. You're about to do a terrible thing, and you came to me with it first, instead of to a cookie."
 {n}She pushes the parcel across the table.{/n} "Tell me their names. The company's. Some of them. Then eat one. Then I'll come round to your side of the table."''',
       c("[Tell her names.]", "felt", flags=(FELT_IT,))),
     ch("silent", '''{n}You say nothing. You do not take a cookie. You sit, on your side of the long table, and let the silence be as long as it needs to be.{/n}
-{n}After a long time she gets up and comes round, and sits down next to you, and does not touch you, and then does.{/n} "You feel it," she says. "I can tell. You feel it and you don't say. That's the worst way to feel things."''',
+{n}After a long time she gets up and comes round, and sits down next to you, and does not touch you, and then does.{/n} "Names," she says. "Tell me their names. If you're going to bet their lives, you can remember whom you're betting."''',
       c("Continue", "felt", flags=(FELT_IT,))),
     ch("job", '''"Then do it slower." {n}Instantly.{/n} "Or do it worse. I don't care. Win by a bit less. Nobody will write you a song about the feint."
 {n}She stands up.{/n} "I'm going to go and be sad about them, since you won't. That's my job, then. Somebody has to." {n}She takes the unopened parcel with her. At the door she stops.{/n} "Come back tomorrow. I'll have finished being sad. I'll need you to have started."''',
@@ -321,7 +321,7 @@ session(OLD_FELLOW_AGAIN, "The old fellow, again", '"You\'ve been watching Cobbl
 "I'm going to bake him an apology. He'll say 'Phrr'. I'll know what it means."''',
       c("[Let her go and bake.]")),
     ch("cross", '''"Be cross, then." {n}She nods, and her lip trembles, and she keeps her chin up anyway.{/n}
-"Being cross with me is allowed. I'm cross with me too." {n}She picks up the grey feather she has kept in her sleeve all this time and lays it on Cobblehoof's chair.{/n} "There. Now it's done, and you can't make me undo it, and that's the first time I've ever told you no about something that mattered."
+"Being cross with me is allowed. I'm cross with me too." {n}She picks up the grey feather she has kept in her sleeve all this time and lays it on Cobblehoof's chair.{/n} "There. Now it's done, and you can't make me undo it. I'm telling you no about this. His votes won't change it."
 "...It felt terrible. I'm going to have a cookie."''',
       c("[Watch her have a cookie.]")),
 ], requires=(COBBLE_CURSED, COMMITTED), forbids=(OLD_FELLOW_AGAIN, COBBLE_MENDED))

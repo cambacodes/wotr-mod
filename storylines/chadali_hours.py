@@ -320,7 +320,7 @@ hour(NEVER_MET, "Pretend we never met", '"You look worried."', [
 EPILOGUE_PARAGRAPHS = [
     (BLESSED, "{n}Before every battle that remained, she took the Commander's hands for a moment and closed her eyes. The swords did not always miss. The Commander always walked out feeling that everyone in the room had been glad to see them.{/n}"),
     (REFUSED_BLESSING, "{n}She never blessed the Commander. She stood very near before every battle instead, and it leaked, as she had said it would.{/n}"),
-    (EARRING_FOUND, "{n}She told the story of the lost earring to everyone, for years, and it always ended the same way: \"And then my lucky charm got down on the floor.\" She seemed to think it was the most romantic thing that had ever happened in the multiverse.{/n}"),
+    (EARRING_FOUND, "{n}She told the story of the lost earring to everyone, for years, and it always ended the same way: \"And then my lucky charm got down on the floor.\" She told it as if it were the best part of the war.{/n}"),
     (FIRST_SIGHT, "{n}She never stopped reminding the Council members who had laughed in the first session that she had been right. Eritrice minuted it every time, with the little squiggle.{/n}"),
     (PRISONER_FED, "{n}The cultist in the Drezen dungeon ate the cookie, the night before he was hanged. He never said a word about it. The white flower was found pressed in his prayer book, in the page about the Abyss.{/n}"),
     (LUCK_GIVEN_BACK, "{n}Her list of lucky numbers survived the Council. Beside her own name, crossed out and rewritten, was a small crooked one. She never let it go back to nought, and the Commander checked.{/n}"),

@@ -194,7 +194,7 @@ wager(CHARM, "Our lucky charm", '"You keep calling me your lucky charm."', [
 "I know you bleed." {n}Her voice has gone quiet.{/n} "I've seen the lists. Eritrice reads them out. I cover my ears, and she reads them louder."
 "I call you lucky because if I stop calling you lucky, I'll have to think about you bleeding. And I don't want to. I'm chance; I make the odds better, I heal what I can reach, I make people stronger, and I can't do any of it while I'm counting your wounds." {n}She looks at her hands.{/n} "Is it very rude? It feels rude, now you've said it."''',
       c('"It\'s rude. Keep doing it anyway."', "anyway", flags=(CHARMED,)),
-      c('"Think about it. The bleeding. I need you to."', "think", flags=(NOT_A_CHARM,))),
+      c('"Think about it. The bleeding. Somebody at this table has to."', "think", flags=(NOT_A_CHARM,))),
     ch("ornament", '''"An ornament!" {n}She is scandalised.{/n} "Ornaments sit on shelves! You've never sat on anything in your life except a horse and my good chair, which you didn't ask about."
 {n}Then she hears herself, and has the grace to look a little embarrassed.{/n} "...I did pat your cheek. In front of Alichino. Twice."
 "All right. Not an ornament. A charm is something you carry with you because it helps. That's different. That's much better." {n}She peers at you.{/n} "Isn't it?"''',
@@ -407,7 +407,7 @@ wager(GLOOMY, "So gloomy", '"Not today, Chadali."', [
       c("Continue", "hope")),
     ch("hope", '''{n}When your hands are bare she holds them between hers. Her palms are warm and a little floury.{/n}
 "I always say we'll definitely win, I just don't know how yet. Socothbenoth rolls his eyes every time." {n}Her thumbs move over your knuckles.{/n}
-"I need you to say something hopeful. Out loud. It doesn't have to be true. It just has to be said, by you, in here. I'll hold it for you until it is."''',
+"Say something hopeful. Out loud. It doesn't have to be true. It just has to be said, by you, in here. I'll hold it for you until it is."''',
       c('"We\'ll win. I don\'t know how yet."', "hoped", flags=(HOPED_ALOUD,)),
       c('"I can\'t. Not tonight."', "cant")),
     ch("hoped", '''{n}She closes her eyes as if she were catching it.{/n}

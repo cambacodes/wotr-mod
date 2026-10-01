@@ -296,8 +296,8 @@ fortune(MORNING, "Burnt edges", '"Is something burning?"', [
 {n}She looks at the black cookies, and at you, and her mouth twitches.{/n} "And now you know. Oh, what a morning."''',
       c("[Take one. Eat it.]", "eat")),
     ch("eat", '''{n}It is truly terrible. It crunches like a cinder and tastes, faintly, underneath the char, of honey and of something that is not like anything at all.{/n}
-{n}Chadali watches you chew with her hands pressed to her mouth. When you swallow, she bursts into tears and laughs at the same time.{/n}
-"You ate a burnt one on purpose. On the first morning. That's the most romantic thing that's ever happened to me, and I'm an empyreal lord, and I was born under three different skies at once."''',
+{n}Chadali watches you chew with her hands pressed to her mouth. When you swallow, she laughs, loudly, and takes one herself.{/n}
+"Burnt. Very unlucky for you. You're eating another one anyway." {n}She bites hers in half and points at you with the rest.{/n} "And you're not leaving yet. Last night was the best luck I've had since I was born, and I was born under three skies at once, so sit down and let me look at you."''',
       c('"They\'re awful. Make more."', "more"),
       c('"Come back to bed. The oven can wait."', "bed")),
     ch("more", '''"I will! I'll make a hundred. I'll burn all of them, and you'll eat all of them, and that's how I'll know." {n}She is still laughing and crying.{/n}
