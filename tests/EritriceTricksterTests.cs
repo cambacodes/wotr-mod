@@ -108,8 +108,8 @@ internal static class EritriceTricksterTests
             "The motion does not recognise the usurped chair of Council_3 (Cue_0045).");
         foreach (var hall in own.Where(s => !Rules.IsRemote(s)))
             check(hall.AnswerLists.SequenceEqual(new[] { List }) && hall.ContactUnit == null
-                  && hall.Chapters.All(c => c == 3 || c == 5) && hall.Forbids.Contains("eritrice.lost_at_council"),
-                "A hall scene is not on her private list in Chapters 3/5 behind the sealed-hall guard: " + hall.Id);
+                  && hall.Chapters.All(c => c >= 3 && c <= 5) && hall.Forbids.Contains("eritrice.lost_at_council"),
+                "A hall scene is not on her private list in Chapters 3-5 behind the sealed-hall guard: " + hall.Id);
         foreach (var remote in new[] { letter, late, tabled })
             check(Rules.IsRemote(remote) && remote.MinChapter == 5 && remote.MaxChapter == 5, "A sealed-hall letter is not a Chapter 5 letter: " + remote.Id);
         check(tabled.TricksterDevice && tabled.TricksterState == "eritrice.lost_at_council" && tabled.Requires.Contains("trickster")
@@ -349,6 +349,29 @@ internal static class EritriceTricksterTests
               && metParas.Where(p => p.Text.Contains("every session the Commander attended")).All(p => p.Requires.Contains("council.epilogue_convened"))
               && metParas.Where(p => p.Text.Contains("not seen at the Council for a decade")).All(p => p.Requires.Contains("council.epilogue_convened")),
             "An epilogue paragraph assumes a Crossroads or a convening Council that the ending did not produce.");
+        // PP6 (pacing): the two sittings born of the Chapter 4 session open that night in the hall (window [5] -> [4, 5]); every
+        // other hall scene keeps its Chapters 3/5 window, and the cipher (looked at "for days") stays in Chapter 5.
+        var chapterFour = World(story, 4, "trickster.ever", "eritrice.started", P + "minutes_read", M + "point_one",
+            "eritrice.proposed_key", "eritrice.council_walked_out", "eritrice.cipher_unread");
+        foreach (var id in new[] { M + "at_worst", M + "stay_in_your_seats" })
+        {
+            var sitting = S(id);
+            check(sitting.Chapters.SequenceEqual(new[] { 4, 5 }) && sitting.MinChapter == 4 && sitting.MaxChapter == 5 && !Rules.IsRemote(sitting)
+                  && sitting.AnswerLists.SequenceEqual(new[] { List }) && sitting.Forbids.Contains("eritrice.lost_at_council"),
+                "A Chapter 4 sitting lost its hall shape: " + id);
+            check(Rules.Available(story, sitting, chapterFour), "A Chapter 4 sitting does not open after the session: " + id);
+            check(!Rules.Available(story, sitting, World(story, 3, "trickster.ever", "eritrice.started", P + "minutes_read", M + "point_one")),
+                "A Chapter 4 sitting opens before the session: " + id);
+            check(!Rules.Available(story, sitting, World(story, 4, "trickster.ever", "eritrice.started", P + "minutes_read", M + "point_one",
+                    "eritrice.proposed_key", "eritrice.council_walked_out", "eritrice.lost_at_council")), "A Chapter 4 sitting ignores the sealed hall: " + id);
+        }
+        check(own.Where(s => !Rules.IsRemote(s) && s.Chapters.Contains(4)).Select(s => s.Id).OrderBy(x => x)
+                  .SequenceEqual(new[] { M + "at_worst", M + "stay_in_your_seats" }.OrderBy(x => x))
+              && S(M + "the_cipher").Chapters.SequenceEqual(new[] { 5 }), "Chapter 4 holds more of the hall than the session's own night.");
+        var keyWays = After(S(M + "at_worst"), chapterFour, "truth", 0).Concat(After(S(M + "at_worst"), chapterFour, "truth", 2)).ToList();
+        check(keyWays.Any(r => r.Has(M + "key_forgiven")) && keyWays.Any(r => r.Has(M + "key_used")), "The key's pivotal split does not play in Chapter 4.");
+        check(Program.Walk(S(M + "stay_in_your_seats"), chapterFour).Any(r => r.Has(M + "temper_warned"))
+              && Program.Walk(S(M + "stay_in_your_seats"), chapterFour).Any(r => r.Has(M + "temper_fed")), "The walk-out's outcomes do not play in Chapter 4.");
         Console.WriteLine("PASS: Eritrice Trickster (Trk_Eritrice_*): motion, minutes, second and third readings, the sealed hall's letters, the tabled grudge and the standing debate.");
     }
 }

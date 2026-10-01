@@ -111,8 +111,8 @@ internal static class ChadaliTricksterTests
             "The payoff does not let the Commander plant the orange on the page (Council_5-1/Cue_0020), or leave the bag alone.");
         foreach (var hall in own.Where(s => !Rules.IsRemote(s)))
             check(hall.AnswerLists.SequenceEqual(new[] { List }) && hall.ContactUnit == null
-                  && hall.Chapters.All(c => c == 3 || c == 5) && hall.Forbids.Contains("chadali.lost_at_council"),
-                "A hall scene is not on her private list in Chapters 3/5 behind the sealed-hall guard: " + hall.Id);
+                  && hall.Chapters.All(c => c >= 3 && c <= 5) && hall.Forbids.Contains("chadali.lost_at_council"),
+                "A hall scene is not on her private list in Chapters 3-5 behind the sealed-hall guard: " + hall.Id);
         foreach (var remote in new[] { letter, lucky })
             check(Rules.IsRemote(remote) && remote.MinChapter == 5 && remote.MaxChapter == 5, "A sealed-hall letter is not a Chapter 5 letter: " + remote.Id);
         check(own.Count(Rules.IsRemote) == 3, "Chadali has letters beyond the spec's one-per-branch budget (orange, 'Lucky you', the late wager; one per branch).");
@@ -125,8 +125,8 @@ internal static class ChadaliTricksterTests
                                                    && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null && c.Mythic == null))),
             "The epilogue pages are not three effect-free, unanchored Chapter 6 pages (appended in authored order, as Eritrice, Nocticula and Dorgelinda).");
         check(story.Derived[P + "late_committed"].Length == 2, "The late-commit derived key is missing.");
-        check(pageCommit.Nodes[0].Choices.Select(c => c.Next).SequenceEqual(new[] { "stay", "half", "coin" }),
-            "The late-commit page does not let the Commander answer her (stay, half the orange, or the coin).");
+        check(pageCommit.Nodes[0].Choices.Select(c => c.Next).SequenceEqual(new[] { "stay", "half", "coin", "penny" }),
+            "The late-commit page does not let the Commander answer her (stay, half the orange, the coin, or the posted penny; PP6).");
 
         // Trk_Chadali_Coin.
         var council = World(story, 3, "trickster", "trickster.ever", "chadali.chance_asked");
@@ -328,6 +328,83 @@ internal static class ChadaliTricksterTests
         check(motion.Forbids.Contains("chadali.lost_at_council") && motion.AnswerLists.SequenceEqual(new[] { List }),
             "Eritrice's Chadali reaction is not a hall scene behind Chadali's sealed-hall guard.");
         check(letter.Nodes.Any(n => n.Id == "postscript"), "Eritrice's postscript is missing from the orange letter.");
+        // PP6 (pacing): her book on Cobblehoof's errand, in the hall the night of the Chapter 4 session (Council_Lexicon2/Cue_0033),
+        // settled by the bag in Chapter 5 (will_it_hurt gains three answers after its own three); the Lexicon sitting may open that
+        // night too ([3, 5] -> [3, 4, 5]), where its key branch answers the session.
+        var fetch = Sc(F + "what_he_went_for");
+        check(story.SeenCues["chadali.cobblehoof_errand"].SequenceEqual(new[] { "507a2a7cccb1c26449838fbf28f2e3af" })
+              && fetch.Chapters.SequenceEqual(new[] { 4 }) && fetch.MinChapter == 4 && fetch.MaxChapter == 4 && !Rules.IsRemote(fetch)
+              && fetch.AnswerLists.SequenceEqual(new[] { List }) && fetch.Forbids.Contains("chadali.lost_at_council")
+              && fetch.Requires.Contains("chadali.started") && fetch.Requires.Contains("chadali.cobblehoof_errand"),
+            "The bag bet lost its shape (a Chapter 4 hall sitting after Cobblehoof's errand).");
+        var errand4 = World(story, 4, "trickster.ever", "chadali.started", "chadali.cobblehoof_errand");
+        check(Rules.Available(story, fetch, errand4), "The bag bet does not open the night of the session.");
+        check(!Rules.Available(story, fetch, World(story, 4, "trickster.ever", "chadali.started")), "The bag bet opens before Cobblehoof's errand.");
+        foreach (int ch in new[] { 3, 5 })
+            check(!Rules.Available(story, fetch, World(story, ch, "trickster.ever", "chadali.started", "chadali.cobblehoof_errand")),
+                "The bag bet opens outside Chapter 4: " + ch);
+        check(!Rules.Available(story, fetch, World(story, 4, "trickster.ever", "chadali.started", "chadali.cobblehoof_errand", "chadali.lost_at_council")),
+            "The bag bet ignores the sealed hall.");
+        string[] betWays = { F + "bag_bet_against", F + "bag_bet_partners", F + "bag_bet_declined" };
+        string[] betPages = { "bet_won", "bet_lost", "bet_declined" };
+        var bets = Program.Walk(fetch, errand4).Where(r => r.Has(fetch.Id)).ToList();
+        check(bets.Count == 3 && betWays.All(f => bets.Count(r => r.Has(f)) == 1) && bets.All(r => !Rules.Available(story, fetch, Later(story, r, 48))),
+            "The bag bet cannot go three ways, or is made twice.");
+        var hurtOpen = Sc(F + "will_it_hurt").Nodes.Single(n => n.Id == "start").Choices;
+        check(hurtOpen.Count == 6 && hurtOpen[0].Next == "promise" && hurtOpen[1].Next == "truth" && hurtOpen[2].Next == "looking"
+              && hurtOpen.Skip(3).Select(c => c.Requires.Single()).SequenceEqual(betWays), "The bet's settlement was not appended to will_it_hurt.");
+        foreach (var r in bets)
+        {
+            var home = Later(story, r, 0, 5); home.Flags.Add("council.cauldron_given"); Rules.Complete(story, home);
+            check(Rules.Available(story, Sc(F + "will_it_hurt"), home), "Will it hurt does not follow the bag bet.");
+            var pagesSeen = new HashSet<string>();
+            var outcomes = Program.Walk(Sc(F + "will_it_hurt"), home, (page, _) => pagesSeen.Add(page));
+            string want = betPages[Array.FindIndex(betWays, r.Has)];
+            check(pagesSeen.Contains(want) && betPages.Count(pagesSeen.Contains) == 1 && outcomes.Any(o => o.Has(F + "told_it_would_hurt"))
+                  && outcomes.Any(o => o.Has(F + "promised_no_force")), "Will it hurt settles the wrong bet, or loses its own answers: " + want);
+        }
+        var noBetPages = new HashSet<string>();
+        Program.Walk(Sc(F + "will_it_hurt"), World(story, 5, "trickster.ever", "chadali.started", "council.cauldron_given"), (page, _) => noBetPages.Add(page));
+        check(!betPages.Any(noBetPages.Contains), "A bet is settled that was never made.");
+        var lexicon = Sc(S + "an_interesting_way");
+        var lexPages = new HashSet<string>();
+        Program.Walk(lexicon, World(story, 4, "trickster.ever", "chadali.started", "chadali.lexicon_found", "eritrice.proposed_key"), (page, _) => lexPages.Add(page));
+        check(lexicon.Chapters.SequenceEqual(new[] { 3, 4, 5 }) && lexPages.Contains("key") && !lexPages.Contains("how"),
+            "The Lexicon sitting does not answer the key the night of the session.");
+        check(own.Where(s => !Rules.IsRemote(s) && s.Chapters.Contains(4)).Select(s => s.Id).OrderBy(x => x)
+                  .SequenceEqual(new[] { fetch.Id, lexicon.Id }.OrderBy(x => x)), "Chapter 4 holds more of the hall than the session's own night.");
+        // PP6 Sol r1. CAN: the feast forgot the Commander (Epilogues/Cue_0569); Socothbenoth's favours stop where he vanishes
+        // (SocotGone, Cue_0570). INT: the unprimed refusal returns no coin it never gave.
+        var nightParas = pageNight.Nodes[0].Paragraphs;
+        check(nightParas.Where(p => p.Requires.Contains("council.epilogue_feast")).All(p => !p.Text.Contains("beside the Commander") && p.Text.Contains("forgotten to invite")),
+            "The victory feast seats the Commander that Cue_0569 forgot.");
+        check(story.SeenCues["chadali.socoth_never_seen"].SequenceEqual(new[] { "fb1347793c15a9342af9eaf03060056d" }), "Cue_0570 is not bound.");
+        check(nightParas.Where(p => p.Text.Contains("Socothbenoth") && (p.Text.Contains("No hard feelings") || p.Text.Contains("for the rest of his long existence")))
+                  .All(p => p.Forbids.Contains("socot.gone") && p.Forbids.Contains("chadali.socoth_never_seen")),
+            "Socothbenoth keeps sending favours after he vanished.");
+        check(nightParas.Count(p => p.AnyGroups.Any(g => g.Contains("socot.gone") && g.Contains("chadali.socoth_never_seen"))) == 2,
+            "Socothbenoth's absence has no paragraph: " + nightParas.Count(p => p.Text.Contains("Socothbenoth")));
+        var shut = lucky.Nodes.Single(n => n.Id == "shut");
+        check(!shut.Text.Contains("coin") && shut.Choices[0].Requires.Contains(P + "primed") && shut.Choices[0].Next == "shut_coin"
+              && shut.Choices[1].Forbids.Contains(P + "primed") && shut.Choices[1].Next == null,
+            "The refusal returns a coin the unprimed Commander never gave her.");
+        check(!Sc(F + "a_great_big_fair").Nodes.Any(n => n.Text.Contains("The bleeding, and the brick")), "The fair recalls conversations the player may not have had.");
+        // PP6 Sol r2. INT: a Commander committed before the Council fight gets the lucky night only after her reconciliation; the
+        // late page's keepsake is the coin only if it was called, the penny only if it was posted. CAN: the odious questions recall
+        // only the one Cue_0017 guarantees; the hall is reached by the chamber closet.
+        foreach (var fight in new[] { "council.fought", "council.fought_nocta_allied" })
+        {
+            check(!Rules.Available(story, pageNight, World(story, 6, "trickster.ever", "chadali.committed", fight)), "The lucky night ignores an unreconciled fight: " + fight);
+            check(Rules.Available(story, pageNight, World(story, 6, "trickster.ever", "chadali.committed", fight, P + "returned")), "The lucky night stays shut after her price: " + fight);
+        }
+        check(Rules.Available(story, pageNight, World(story, 6, "trickster.ever", "chadali.committed")), "The lucky night is lost for a Commander who never fought her.");
+        var lateOpen = pageCommit.Nodes.Single(n => n.Id == "page").Choices;
+        check(lateOpen.Count == 4 && lateOpen[2].Next == "coin" && lateOpen[2].Requires.Contains(P + "primed")
+              && lateOpen[3].Next == "penny" && lateOpen[3].Requires.Contains(P + "cost.late_wager") && lateOpen[3].Forbids.Contains(P + "primed"),
+            "The late page hands back a keepsake the Commander never gave her.");
+        check(!Sc(W + "odious_questions").Nodes.Single(n => n.Id == "asked").Text.Contains("orphanage")
+              && !Sc(S + "the_last_evening").Nodes.Any(n => n.Text.Contains("long stair")) && !Sc(W + "so_gloomy").Nodes.Any(n => n.Text.Contains("passes the door to the hall")),
+            "A sitting recalls an unasked question, or walks to the hall by an invented stair.");
         Console.WriteLine("PASS: Chadali Trickster (Trk_Chadali_*): coin, orange, second cookie, the seed, the sealed hall's letters, 'Lucky you' and the wagers.");
     }
 }

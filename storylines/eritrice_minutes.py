@@ -404,7 +404,9 @@ minutes(CIPHERED, "What the truth could not read", '"You looked at the Lexicon p
 ], requires=(POINT_ONE, CIPHER), forbids=(CIPHERED,), chapters=(5,))
 
 
-# --- 9. "At worst, you'll die" (Chapter 5): the pivotal point. -----------------------------------------------------
+# --- 9. "At worst, you'll die" (Chapters 4-5): the pivotal point. --------------------------------------------------
+# PP6 (pacing, window only): she named the Commander the key at the Chapter 4 session (Council_Lexicon2/Cue_0040, Cue_0046), and
+# the hall stays open after it (the members at rest, After_Council_Lexicon2), so the sitting opens that same night: [5] -> [4, 5].
 
 KEY_CHOICES = (
     c('"You were honest. That\'s all I\'ve ever asked of you."', "forgive", flags=(KEY_FORGIVEN,)),
@@ -425,11 +427,11 @@ minutes(AT_WORST, "At worst", '"About the key. About naming me."', [
       c("Continue", "truth")),
     e("truth", '''"I will not lie to you. It is the one thing I have never done, and I will not begin now to make this easier for either of us."
 {n}She lifts her head.{/n} "Yes. I meant it. If the truth about the Worldwound had required your death, I would have minuted it, and grieved, and considered it well spent. That is what I am. I am the thing that would rather be right than kind."
-{n}Her hands are flat on the table, and she does not take them away, and she does not look down.{/n} "Now you know what I am. Tell me what you are going to do with it."''', *KEY_CHOICES),
+{n}Her hands are flat on the table, and she does not take them away, and she does not look down.{/n} "The proposal was sound. I will not withdraw it. Tell me what you are going to do about it."''', *KEY_CHOICES),
     e("forgive", '''{n}She stares at you as if you had spoken in a language she did not know she understood.{/n}
 "That is not a refutation." {n}Her voice has gone rough.{/n} "That is a pardon. I did not ask for one, and I do not need one: the proposal was sound, and I would make it again. You have pardoned me anyway, as if you had the standing to."
 {n}She writes it down, and her hand shakes so badly the line runs downhill across the scroll. She does not rewrite it.{/n}
-"I told you the worst thing about me. On the record. And you stayed at the table." {n}She looks at the crooked line as if it were a wound that had closed wrong and would have to stay that way.{/n} "I will remember it for longer than you will live. I am sorry for that. I am not sorry for anything else."''',
+"You heard the proposal, on the record, and you stayed at the table." {n}She looks at the crooked line as if it were a wound that had closed wrong and would have to stay that way.{/n} "I will remember it for longer than you will live. I am sorry for that. I am not sorry for anything else."''',
       c("[Stay at the table.]")),
     e("held", '''"Yes. You should." {n}She says it at once, and it seems to steady her, as if she had been braced for something worse.{/n}
 "Remember it every time I vote. Remember it when I am kind to you. It will make you a better judge of me than I am."
@@ -440,23 +442,25 @@ minutes(AT_WORST, "At worst", '"About the key. About naming me."', [
 {n}She writes. You can read it upside down, and she lets you: "The chair agrees to vote once as the Commander instructs. The chair records that the Commander asked it, and why."{/n}
 "There. It is minuted, Commander. Name the motion." {n}You name it on the spot: that the chair's minutes of this war record the key as a volunteer, and not as a sacrifice. She looks at the motion for a long time. Then she casts her vote where she sits, aloud, to an empty hall, "Aye", and writes it down, and her claws go through the paper beside the Commander's name.{/n} "Paid. And every time anyone opens this scroll, they will see exactly what you charged me."''',
       c("[Take the vote.]")),
-], requires=(POINT_ONE, PROPOSED_KEY), forbids=(AT_WORST,), chapters=(5,))
+], requires=(POINT_ONE, PROPOSED_KEY), forbids=(AT_WORST,), chapters=(4, 5))
 
 
-# --- 10. Stay in your seats (Chapter 5): her temper. ----------------------------------------------------------------
+# --- 10. Stay in your seats (Chapters 4-5): her temper. -------------------------------------------------------------
+# PP6 (pacing, window only): the walk-out is the end of the Chapter 4 session (Council_Lexicon2/Cue_0048; Answer_0047 is that
+# session's only way out), and the sitting reads as that session's aftermath (the chairs as they left them): [5] -> [4, 5].
 
 minutes(SEATS, "Stay in your seats", '"They walked out on you."', [
-    nar("open", '''{n}The chairs are not pushed in tonight. They are where the Council left them when it stood up and walked out over her protests: turned, scattered, one of them on its side. She has not righted it. She is sitting very straight at the head of the table, and the fur along her shoulders is standing up under her robe.{/n}''',
+    nar("open", '''{n}The chairs are not pushed in. They stand where the Council left them when it stood up and walked out over her protests: turned, scattered, one of them on its side. She has not righted it. She is sitting very straight at the head of the table, and the fur along her shoulders is standing up under her robe.{/n}''',
         c("Continue", "start")),
     e("start", '''"'Please, stay in your seats, the meeting is not...'" {n}She quotes herself, in a voice that would be steady if it were not so quiet.{/n}
 "They left. While I was speaking. Shyka was laughing. Socothbenoth did not even look back." {n}Her claws are out. She is looking at them as if they belonged to someone else.{/n}
-"I have been trying to run this Council on my own for a very long time, Commander. I did not know until tonight how angry that has made me."''',
+"I have been trying to run this Council on my own for a very long time, Commander. I did not know until they walked out how angry that has made me."''',
       c("[Right the fallen chair.]", "chair"),
       c('"Then stop running it on your own."', "alone")),
     e("chair", '''{n}You set the chair back on its legs and push it in to the table. She watches you do it, and the fur on her shoulders slowly lies down again.{/n}
 "That is Chadali's chair. She will not know it fell." {n}A breath.{/n} "Thank you. It is absurd, how much better that is."''',
       c("Continue", "alone")),
-    e("alone", '''"There is no one else." {n}Flatly.{/n} "Alichino wants to sell the result. Socothbenoth wants something he will not name. Cobblehoof wants a proof. Shyka wants a better story. Chadali wants everyone to be happy, which is not a position." {n}Her claws scrape the wood.{/n}
+    e("alone", '''"There is no one else." {n}Flatly.{/n} "Alichino wants to sell the result. Socothbenoth wants something he will not name. Cobblehoof wants whatever Abadar wants. Shyka wants a better story. Chadali wants everyone to be happy, which is not a position." {n}Her claws scrape the wood.{/n}
 "If they betray this table, Commander, I do not know what I will do. No. That is a lie, and I do not tell them. I know exactly what I will do. I have seen it in my own hands tonight."''',
       c('"The day you draw that dagger at this table, you\'ve lost the argument for good."', "warn"),
       c('"Then make them stay. You\'re an empyreal lord, not a secretary."', "feed"),
@@ -465,14 +469,14 @@ minutes(SEATS, "Stay in your seats", '"They walked out on you."', [
 "Minute it. In your hand, not mine: 'The Commander warned the chair.' If the day comes, I want to be able to read that someone did."''',
       c("[Write it.]", flags=(M + "temper_warned",))),
     e("feed", '''{n}Something moves behind her eyes that is not the chair at all. It is older, and it is a lion.{/n}
-"You should not say that to me." {n}But she is smiling, very slightly, with her teeth.{/n} "Not everything that is true should be said at a table. I learned that tonight, and you have made me forget it already." {n}She does not sheathe the claws.{/n}
+"You should not say that to me." {n}But she is smiling, very slightly, with her teeth.{/n} "Not everything that is true should be said at a table. I learned that when they walked out, and you have made me forget it already." {n}She does not sheathe the claws.{/n}
 "Go. Before I ask you to say it again."''',
       c("[Go.]", flags=(M + "temper_fed",))),
     e("hand", '''{n}Her claws close around your fingers. They do not cut. It is a near thing, and you both know it, and neither of you lets go.{/n}
 {n}At last:{/n} "Every one of them leaves after a session, and you come back. I have noticed. I notice everything; it is a fault." {n}The claws draw in, slowly, until it is only a hand.{/n}
-"I will remember that. I am not writing it down. Some things are not for the record, and I did not know until tonight that I had any."''',
+"I will remember that. I am not writing it down. Some things are not for the record, and I did not know until now that I had any."''',
       c("[Stay a while.]")),
-], requires=(POINT_ONE, WALKED_OUT), forbids=(SEATS,), chapters=(5,))
+], requires=(POINT_ONE, WALKED_OUT), forbids=(SEATS,), chapters=(4, 5))
 
 
 # --- 11. A serious matter (Chapter 5): essence extraction. ---------------------------------------------------------

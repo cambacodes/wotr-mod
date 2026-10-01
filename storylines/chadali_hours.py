@@ -200,7 +200,7 @@ hour(WAITING, "Not today", '"You\'re very quiet."', [
 "...You really think so?" {n}And then, before you can answer:{/n} "No, don't answer. If you answer I'll believe you, and then I'll want you to ask, and I've got dough under my nails."''',
       c('"Are you nervous?"', "nervous")),
     ch("nervous", '''{n}She is quiet, her floury hands gone still in the bowl.{/n}
-"I don't get nervous," she says at last. "I'm getting nervous. I don't care for it. Like knowing the odds of everything except one thing, and that one thing is the only one that matters."
+"I don't get nervous," she says at last. "I'm getting nervous. I don't care for it. I can give you the odds on an army. I can't give you the odds on this, and I'm chance. It's insulting."
 {n}She looks up at you.{/n} "I'm chance, and I don't know what I'll say. Isn't that silly? I know what I'll say. I don't know if I'll be brave enough to say it."''',
       c('"I\'ll ask when you\'re ready. Not before."', "ready"),
       c('"You\'ll be brave enough. You were born in a meteor shower."', "brave")),
@@ -320,7 +320,7 @@ hour(NEVER_MET, "Pretend we never met", '"You look worried."', [
 EPILOGUE_PARAGRAPHS = [
     (BLESSED, "{n}Before every battle that remained, she took the Commander's hands for a moment and closed her eyes. The swords did not always miss. The Commander always walked out feeling that everyone in the room had been glad to see them.{/n}"),
     (REFUSED_BLESSING, "{n}She never blessed the Commander. She stood very near before every battle instead, and it leaked, as she had said it would.{/n}"),
-    (EARRING_FOUND, "{n}She told the story of the lost earring to everyone, for years, and it always ended the same way: \"And then my lucky charm got down on the floor.\" She seemed to think it was the most romantic thing that had ever happened in the multiverse.{/n}"),
+    (EARRING_FOUND, "{n}She told the story of the lost earring to everyone, for years, and it always ended the same way: \"And then my lucky charm got down on the floor.\" She told it as if it were the best part of the war.{/n}"),
     (FIRST_SIGHT, "{n}She never stopped reminding the Council members who had laughed in the first session that she had been right. Eritrice minuted it every time, with the little squiggle.{/n}"),
     (PRISONER_FED, "{n}The cultist in the Drezen dungeon ate the cookie, the night before he was hanged. He never said a word about it. The white flower was found pressed in his prayer book, in the page about the Abyss.{/n}"),
     (LUCK_GIVEN_BACK, "{n}Her list of lucky numbers survived the Council. Beside her own name, crossed out and rewritten, was a small crooked one. She never let it go back to nought, and the Commander checked.{/n}"),
@@ -337,5 +337,15 @@ def integrate(payload):
     from story_format import p
     by_id = {s["Id"]: s for s in payload["Scenes"]}
     page = by_id["chadali.trickster.epilogue.lucky_night"]["Nodes"][0]
+    # Sol (PP6 audit): Socothbenoth's later favours only while he is still about; he vanishes in the Nocticula ending
+    # (SocotGone, Epilogues/Cue_0570), and the absent variants say so.
+    gone = ("socot.gone", "chadali.socoth_never_seen")
     page.setdefault("Paragraphs", []).extend(
-        p(text, requires=(flag, "council.epilogue_ceased") if flag == REMEMBERED else (flag,)) for flag, text in EPILOGUE_PARAGRAPHS)
+        p(text, requires=(flag, "council.epilogue_ceased") if flag == REMEMBERED else (flag,),
+          forbids=gone if flag in (SOCOTH_REFUSED, SOCOTH_OBLIGED) else ()) for flag, text in EPILOGUE_PARAGRAPHS)
+    page["Paragraphs"].extend([
+        p("{n}Socothbenoth never asked her for a favour again. Nobody saw him again at all. Chadali said she did not miss him, and baked his favourite anyway, once, and ate it herself.{/n}",
+          requires=(SOCOTH_REFUSED,), any_groups=[list(gone)]),
+        p("{n}Socothbenoth vanished still owing the Commander a favour. Chadali called it the luckiest debt anyone ever skipped out on, and kept the note of it in her cookie tin.{/n}",
+          requires=(SOCOTH_OBLIGED,), any_groups=[list(gone)]),
+    ])

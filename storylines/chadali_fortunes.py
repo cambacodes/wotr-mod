@@ -26,6 +26,7 @@ FAIR_SEEN = "chadali.fair_proposed"           # Council_5-2/Cue_0003: the great 
 BOWS_SEEN = "chadali.bows_for_nocticula"      # Council_5-2/Cue_0057: "let me tie some bows on you"
 WORTHLESS = "chadali.worthless_essence"       # Council_5-2/Cue_0032: "no one needs your worthless essence!"
 NEEDLED = "chadali.needle_hurt"               # Council_Chadali/Cue_0033: "It hurt so, so much..."
+ERRAND = "chadali.cobblehoof_errand"          # Council_Lexicon2/Cue_0033 (Chapter 4): Cobblehoof "rushes off in a flurry of feathers"
 
 SEEN_CUES = {
     FEARED: ["ea1508e9383290a4dac192b606fdd0d4"],
@@ -33,6 +34,8 @@ SEEN_CUES = {
     BOWS_SEEN: ["82431dc02fb007c4a9bd17f9bd636152"],
     WORTHLESS: ["65e5e45942cacf946b3279cdd6a67af3"],
     NEEDLED: ["86822037eac848943abe4be795037ae7"],
+    ERRAND: ["507a2a7cccb1c26449838fbf28f2e3af"],
+    "chadali.socoth_never_seen": ["fb1347793c15a9342af9eaf03060056d"],   # Epilogues/Cue_0570: "No one ever saw Socothbenoth again"
 }
 
 BAG = F + "will_it_hurt"
@@ -47,6 +50,7 @@ ELYSIUM = F + "the_meadows"
 RIBBON = F + "a_yellow_ribbon"
 SHARING = F + "sharing"
 REPAID = F + "paid_back"
+FETCH = F + "what_he_went_for"                # PP6 (Chapter 4): her book on Cobblehoof's errand, settled in will_it_hurt
 
 # Outcomes the epilogue reads.
 PROMISED_SAFE = F + "promised_no_force"
@@ -61,6 +65,9 @@ ELYSIUM_PROMISED = F + "meadows_promised"
 RIBBON_WORN = F + "ribbon_worn"
 RIBBON_POCKETED = F + "ribbon_pocketed"
 NOT_LAST = F + "not_last"
+BET_AGAINST = F + "bag_bet_against"           # the Commander took Alichino's side: something useful and nasty
+BET_PARTNERS = F + "bag_bet_partners"         # the Commander joined her side, against Alichino
+BET_DECLINED = F + "bag_bet_declined"         # no bet on a friend's errand
 
 
 def fortune(id, title, entry, nodes, requires, forbids=(), delay=24, chapters=(3, 5)):
@@ -72,6 +79,13 @@ def fortune(id, title, entry, nodes, requires, forbids=(), delay=24, chapters=(3
 
 # --- 1. Will it hurt? (the cauldron in the bag) -----------------------------------------------------------------------
 
+# PP6: after the bet is settled (bet_won / bet_lost / bet_declined) the conversation rejoins the start node's three answers.
+BAG_ANSWERS = (
+    c('"Nobody will take it from you by force. Not while I\'m here."', "promise"),
+    c('"It will hurt. I won\'t lie to you. But it won\'t be for nothing."', "truth", flags=(TOLD_IT_HURTS,)),
+    c('"There might be another way. I\'m looking."', "looking"),
+)
+
 fortune(BAG, "Will it hurt?", '"You\'ve been quiet since the cauldron."', [
     nar("open", '''{n}The bag Cobblehoof carried lies folded on the Council table, empty. Chadali is sitting as far from it as the table allows, and she has not baked. Her hands are in her lap, turning the white-gold ring round and round.{/n}''',
         c("Continue", "start")),
@@ -79,7 +93,11 @@ fortune(BAG, "Will it hurt?", '"You\'ve been quiet since the cauldron."', [
 "And then everyone looked at me. Because I'm the one who says everything will work out." {n}Her voice wobbles.{/n} "I said, is there no other way? I sounded so small. I hated it."''',
       c('"Nobody will take it from you by force. Not while I\'m here."', "promise"),
       c('"It will hurt. I won\'t lie to you. But it won\'t be for nothing."', "truth", flags=(TOLD_IT_HURTS,)),
-      c('"There might be another way. I\'m looking."', "looking")),
+      c('"There might be another way. I\'m looking."', "looking"),
+      # PP6: the bet from the Chapter 4 session (what_he_went_for) is settled by the bag on the table.
+      c('"Our bet on the bag. I said it would be something useful, and nasty."', "bet_won", requires=(BET_AGAINST,)),
+      c('"Our bet on the bag. Alichino won it, didn\'t he?"', "bet_lost", requires=(BET_PARTNERS,)),
+      c('"Who won your bet on the bag?"', "bet_declined", requires=(BET_DECLINED,))),
     ch("promise", '''{n}She looks up so fast the flowers shake in her hair.{/n}
 "You mean it? You can't mean it. You need them. All of them. I read the Lexicon, or Eritrice read it to me, which is the same thing but slower." {n}Her hands have stopped on the ring.{/n}
 "If I say no and you've promised, then you have to choose between me and bringing Elysium into your crossroads." {n}A breath.{/n} "Don't promise me that. Promise me something you can keep."''',
@@ -101,6 +119,16 @@ fortune(BAG, "Will it hurt?", '"You\'ve been quiet since the cauldron."', [
 "Then I'll be brave. I'm an empyreal lord; I know how. I just don't usually have to bother." {n}She pulls the folded bag across the table, at last, and looks at it.{/n}
 "I'll believe it'll be all right. And then I'll check the oven."''',
       c("[Stay with her.]")),
+    ch("bet_won", '''"You won." {n}She says it to the folded bag.{/n} "Useful, and nasty. A needle for taking pieces out of people."
+{n}She pushes her slate across the table. Beside your name there is a tick, and the little frowning face she drew there has been rubbed out with a thumb.{/n}
+"I owe you a tray. I tried to bake it this morning. I put in salt instead of sugar, and then I sat down, and I've been sitting down ever since."''',
+      *BAG_ANSWERS),
+    ch("bet_lost", '''"He won." {n}A small, wet laugh.{/n} "We both lost, and Alichino won, and he wants his tray by Oathday, and he wants the honey ones, and he's been explaining to everybody how he knew."
+{n}She turns the ring.{/n} "I was so sure it would be something lovely. I'm chance. I'm allowed to be right about lovely things now and then."''',
+      *BAG_ANSWERS),
+    ch("bet_declined", '''"Alichino." {n}She sounds more tired than cross.{/n} "He bet 'something unpleasant'. He always bets that. One day he'll be wrong and I'll throw a party."
+{n}She turns the ring.{/n} "You wouldn't bet on the old fellow's errand. I sulked about it for a whole afternoon. I'm glad now. It would be horrible to have won this one."''',
+      *BAG_ANSWERS),
 ], requires=(STARTED, "council.cauldron_given"), forbids=(BAG,), chapters=(5,))
 
 
@@ -113,7 +141,7 @@ fortune(FAIR, "A great big fair", '"About your fair..."', [
       c('[Flirt] "Save me a lollipop."', "lollipop")),
     ch("souls", '''{n}The light goes out of her face, and comes back, and goes out again, as if she were fighting with a lamp.{/n}
 "He said that and then he said something else very fast. I heard the something else. I prefer the something else." {n}She crosses her arms.{/n}
-"You're doing it again. You're making me look at things. The bleeding, and the brick, and now the souls." {n}Her voice rises.{/n} "Why can't I have one nice thing without you holding it up to the light and showing me the crack?"''',
+"You're doing it again. You're making me look at things. Now it's the souls." {n}Her voice rises.{/n} "Why can't I have one nice thing without you holding it up to the light and showing me the crack?"''',
       c('"Because you\'d want to know. If it were your fair and your crack."', "know", flags=(SAW_THE_FAIR,)),
       c('"You can. I\'m sorry. Have your fair."', "fair_kept")),
     ch("know", '''{n}She glares at you. It is not a very good glare; she has not had much practice.{/n}
@@ -121,7 +149,7 @@ fortune(FAIR, "A great big fair", '"About your fair..."', [
 "Then no souls. No selling. Not one. If Alichino wants a stall, he can sell lollipops." {n}She nods, fiercely.{/n} "I'll tell Eritrice to write it down. She likes rules. She'll write it in red."''',
       c("Continue", "close")),
     ch("fair_kept", '''"Thank you." {n}She sniffs, and then smiles, and then does not smile.{/n}
-"No. You were right. You're always right about the cracks. It's horrible." {n}She sighs.{/n} "No souls at my fair. I'll watch the devil's stall myself. With a very big lollipop."''',
+"And there won't be any souls at it. Not because you said so. Because it's my fair, and I decide what's sold there." {n}Her chin comes up.{/n} "I'll watch the devil's stall myself. With a very big lollipop."''',
       c("Continue", "close", flags=(SAW_THE_FAIR,))),
     ch("puppy", '''"It would not!" {n}Offended.{/n} "I'd bring it a cookie. Nothing eats you when you've brought it a cookie. It's a law."
 "...It would eat the cookie first. Then it would think about eating me. And while it was thinking I'd scratch its ears, all three pairs, and it would forget." {n}She beams.{/n} "That's how I've survived everything so far."''',
@@ -268,8 +296,8 @@ fortune(MORNING, "Burnt edges", '"Is something burning?"', [
 {n}She looks at the black cookies, and at you, and her mouth twitches.{/n} "And now you know. Oh, what a morning."''',
       c("[Take one. Eat it.]", "eat")),
     ch("eat", '''{n}It is truly terrible. It crunches like a cinder and tastes, faintly, underneath the char, of honey and of something that is not like anything at all.{/n}
-{n}Chadali watches you chew with her hands pressed to her mouth. When you swallow, she bursts into tears and laughs at the same time.{/n}
-"You ate a burnt one on purpose. On the first morning. That's the most romantic thing that's ever happened to me, and I'm an empyreal lord, and I was born under three different skies at once."''',
+{n}Chadali watches you chew with her hands pressed to her mouth. When you swallow, she laughs, loudly, and takes one herself.{/n}
+"Burnt. Very unlucky for you. You're eating another one anyway." {n}She bites hers in half and points at you with the rest.{/n} "And you're not leaving yet. Last night was the best luck I've had since I was born, and I was born under three skies at once, so sit down and let me look at you."''',
       c('"They\'re awful. Make more."', "more"),
       c('"Come back to bed. The oven can wait."', "bed")),
     ch("more", '''"I will! I'll make a hundred. I'll burn all of them, and you'll eat all of them, and that's how I'll know." {n}She is still laughing and crying.{/n}
@@ -316,7 +344,7 @@ fortune(RIGGED, "Rigged", '"Why are you looking at me like that?"', [
       c("[Promise to put up a sign.]")),
     ch("kept", '''{n}She looks at your hand, and at her own outstretched little finger, and slowly curls it back into her fist.{/n}
 "Then do it with your name on it." {n}Very quietly.{/n} "If you have to act, act. Just don't do it wearing my face. I'll never ask you not to feed them. I'm asking you not to pretend you're me while you do it."
-"That's the whole of it. That's all I've got left that's mine."''',
+"And I'll tell my priest myself who mended that roof, and he'll tell the whole shrine. I'm their patron. Not you."''',
       c('"With my name on it. I promise that much."', "stopped")),
 ], requires=(MORNING, "chadali.wagers.prayer_answered"), forbids=(RIGGED, "chadali.wagers.prayer_credited"))
 
@@ -432,6 +460,33 @@ EPILOGUE_PARAGRAPHS = [
     (RIBBON_POCKETED, "{n}The yellow ribbon never left the Commander's pocket. She knew it was there. She said that was better, really, and did not quite mean it, and did not mind.{/n}"),
     (NOT_LAST, "{n}There was always one whole cookie left at the bottom of the parcel. Always. She checked.{/n}"),
 ]
+
+
+# --- 13. What he went to fetch (Chapter 4, PP6). ------------------------------------------------------------------------
+# The hall after the Lexicon session (Council_Lexicon2): Cobblehoof "holds up a taloned claw... then rushes off in a flurry of
+# feathers" (Cue_0033), Alichino: "It appears that our talkative friend has an idea..." (Cue_0034), and the members walk out on
+# the chair (Cue_0048). The hall stays open after the session (After_Council_Lexicon2 plays; the members at rest), so her list is
+# live that night. Her guess, something lovely from Axis, is her own and anticipates her Council_5-1/Cue_0001 guess without
+# naming it. The bet is settled by the bag in will_it_hurt (Chapter 5, the cauldron).
+fortune(FETCH, "What he went to fetch", '"Are you taking bets?"', [
+    nar("open", '''{n}The chairs are still pushed back from the long table, the way the Council left them. Chadali is at her place with a slate on her knee and a stub of chalk in her fingers. One side of the slate is already full: names, sums, and small drawings of cookies.{/n}''',
+        c("Continue", "start")),
+    ch("start", '''"Of course I'm taking bets!" {n}She holds up the slate.{/n} "The old fellow went off to fetch something. You saw him. Up went the claw, 'Phrr', very pleased with himself, and off in a cloud of feathers."
+"Alichino says it'll be something unpleasant, because Alichino always says that, and he's usually right, and it's very boring of him. Shyka won't bet with me any more. They say it isn't fair on me." {n}She sniffs.{/n} "It isn't fair on them. I'm chance."
+{n}She does not look at you while she says the next part, which is not like her.{/n} "I say it'll be something lovely. Something from Axis. I like to think they grow lovely things right at the very top, where everything is tidy. A whole tray of honey cookies says so." {n}Now she looks up.{/n} "And don't make that face. I'm not talking about keys tonight. I'm taking bets. What do you say he brings back?"''',
+      c('"Something useful, and nasty. He serves Abadar. It\'ll be a tool, not a treat."', "against"),
+      c('"I\'ll back yours. Whatever it is, it\'ll be lovely."', "partners"),
+      c('"I don\'t bet on a friend\'s errand."', "declined")),
+    ch("against", '''"Useful, and nasty." {n}She writes it down with enormous disapproval, and draws a small frowning face beside your name.{/n} "That's Alichino's bet. You've gone over to Alichino."
+"Fine. One tray says you're wrong. And if you're right..." {n}The chalk hovers.{/n} "If you're right, I'll bake it anyway, and I'll be very cross the whole time, and you'll eat every cookie in front of me."''',
+      c("[Shake on it.]", flags=(BET_AGAINST,))),
+    ch("partners", '''"That's not a bet! If you're on my side there's nobody to lose to." {n}She frowns at the slate, then brightens all at once.{/n} "Oh! Unless we're both against Alichino. That's a partnership. Partners split the winnings."
+{n}She draws a ring round your name and hers and joins it to a cookie with a long, wobbly line.{/n} "The lucky charm and chance on the same side. He hasn't got a hope."''',
+      c("[Let her draw you into it.]", flags=(BET_PARTNERS,))),
+    ch("declined", '''{n}Her mouth goes small.{/n} "It isn't betting on him. It's betting on what he brings back. That's completely different."
+{n}She looks at you, and at the slate, and sighs through her nose.{/n} "Oh, all right. You're being kind about the old fellow, and I can't be cross about that, even though I'm trying very hard." {n}She rubs out the space beside your name with the side of her hand.{/n} "I'll put Alichino down against me instead. He'll be unbearable if he wins."''',
+      c("[Leave the space blank.]", flags=(BET_DECLINED,))),
+], requires=(STARTED, ERRAND), forbids=(FETCH,), chapters=(4,))
 
 
 def integrate(payload):

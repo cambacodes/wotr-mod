@@ -13,6 +13,7 @@ internal static class SoanaLateCampaignTests
         string[] oldIds = { "threshold", "water_carrier", "guardian_question", "one_account", "watch_line", "price_of_warning", "ordinary_feast", "name_between", "lower_bend", "the_thing_in_the_sack", "the_dry_offering", "the_inherited_debt", "a_voice_in_the_dark", "what_followed_home", "a_promise_still_spoken", "the_unwelcome_path", "after_the_last_visitor" };
         string[] visitIds = { "when_the_road_returns", "a_track_with_two_ends", "what_the_hollow_costs", "where_the_steps_end", "the_days_she_counted", "before_the_far_road" };
         var visits = visitIds.Select(Get).ToArray();
+        var firelight = Get("past_the_firelight");
         var endings = story.Scenes.Where(s => s.Relationship == "soana" && s.Owner == "Epilogue" && !s.Id.StartsWith("soana.trickster.", StringComparison.Ordinal)).ToArray();
         var reached = new HashSet<string>();
         var protectedFlags = story.Etudes.Keys.Concat(story.CompletedEtudes.Keys).Concat(story.CompletedQuests.Keys)
@@ -75,6 +76,15 @@ internal static class SoanaLateCampaignTests
             check(!Rules.Available(story, visits[0], state), "Late Soana return appears in Chapter 3.");
             state.Chapter = 4;
             check(!Rules.Available(story, visits[0], state), "Late Soana return invents Abyss contact.");
+            // PP6: the Chapter 4 memory (past_the_firelight), one answer per working so every tale reaches the Chapter 5 greeting.
+            string voice = working == "voice_carried" ? "abyss_voice_unanswered" : working == "voice_interrupted" ? "abyss_voice_followed" : "abyss_voice_tested";
+            var camp = Program.Copy(state); camp.Hour += firelight.DelayHours; camp.Area = "Abyss"; camp.AvailableContacts.Clear();
+            check(Rules.Available(story, firelight, camp), "The Abyss memory does not follow the seventeen scenes.");
+            var heard = Program.Walk(firelight, camp, (page, _) => reached.Add(firelight.Id + "/" + page)).Where(r => r.Has(firelight.Id)).ToList();
+            check(heard.Count == 3 && heard.All(r => new[] { "abyss_voice_unanswered", "abyss_voice_tested", "abyss_voice_followed" }.Count(f => r.Has("soana." + f)) == 1),
+                "The Abyss memory does not end in exactly one answer.");
+            state = Program.Copy(heard.Single(r => r.Has("soana." + voice))); state.Area = area; state.AvailableContacts.Add(actor);
+            check(!Rules.Available(story, firelight, state), "The Abyss memory repeats.");
             state.Chapter = 5;
             check(!endings.Any(e => Rules.Available(story, e, state)), "Unplayed late campaign earns its finale.");
             InterruptedEnding(state);
@@ -151,7 +161,23 @@ internal static class SoanaLateCampaignTests
             var elsewhere = Program.Copy(ready); elsewhere.Area = "Drezen";
             check(!Rules.Available(story, visit, elsewhere), "Soana invented capital appearance.");
         }
-        foreach (var scene in visits.Concat(endings).Concat(new[] { Get("ending_aeon") }))
+        // PP6: the Chapter 4 memory is a remote page read only on the registered route, never in Chapters 3 or 5, never after a loss.
+        check(Rules.IsRemote(firelight) && firelight.Kind == "memory" && firelight.Chapters.SequenceEqual(new[] { 4 }) && firelight.Relationship == "soana"
+              && firelight.Requires.SequenceEqual(new[] { "soana.progression_kept" }) && firelight.ContactUnit == null && firelight.AnswerLists.Length == 0,
+            "The Abyss memory lost its shape.");
+        var abyss = new Snapshot { Chapter = 4, Hour = 50000, Area = "Abyss" }; abyss.Flags.Add("soana.progression_kept");
+        check(Rules.Available(story, firelight, abyss), "The Abyss memory baseline is invalid.");
+        foreach (int chapter in new[] { 3, 5 }) { var wrong = Program.Copy(abyss); wrong.Chapter = chapter; check(!Rules.Available(story, firelight, wrong), "The Abyss memory leaves Chapter 4."); }
+        foreach (string loss in new[] { "soana.dead", "soana.killed_by_camellia", "soana.forest_dead", "soana.closed", "inhuman" })
+        { var lost = Program.Copy(abyss); lost.Flags.Add(loss); check(!Rules.Available(story, firelight, lost), "The Abyss memory ignores: " + loss); }
+        var greet = Get("when_the_road_returns");
+        foreach (string node in new[] { "welcome", "friend" })
+        {
+            var answers = greet.Nodes.Single(n => n.Id == node).Choices;
+            check(answers.Count == 4 && answers[0].Next == "nursery" && answers.Skip(1).Select(a => a.Requires.Single()).SequenceEqual(
+                new[] { "soana.abyss_voice_unanswered", "soana.abyss_voice_tested", "soana.abyss_voice_followed" }), "The Abyss tales were not appended to: " + node);
+        }
+        foreach (var scene in visits.Concat(endings).Concat(new[] { Get("ending_aeon"), firelight }))
             foreach (var page in scene.Nodes) check(reached.Contains(scene.Id + "/" + page.Id), "Unplayed late Soana page: " + scene.Id + "/" + page.Id);
         var roll = visits.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).Single(c => c.Check != null).Check!;
         check(roll.Skill == "SkillLoreNature" && roll.DC == 26 && roll.CommanderOnly, "Soana trail check contract changed.");

@@ -11,6 +11,14 @@ ACTOR = "64805abb52739e44280a758f850b300c"
 ANSWERS = "2b1776f3e398685479ff6b16290b4cc2"
 WINTERSUN = "0a5654e7dc18f074d9356009d55eb51b"
 LOSS = ("soana.dead", "soana.killed_by_camellia", "soana.forest_dead")
+VOICE_TALES = (
+    c('"Something in the Abyss used your voice. I did as you taught me and did not answer it."', "voice_silent",
+      requires=("soana.abyss_voice_unanswered",)),
+    c('"Something in the Abyss used your voice. I asked it to insult me."', "voice_tested",
+      requires=("soana.abyss_voice_tested",)),
+    c('"Something in the Abyss used your voice. I went out after it."', "voice_followed",
+      requires=("soana.abyss_voice_followed",)),
+)
 
 
 def s(id, title, entry, nodes, previous, delay=24):
@@ -22,6 +30,56 @@ def s(id, title, entry, nodes, previous, delay=24):
         RequiresAny=["soana.old_defender", "soana.bear_dead"],
         requires=("soana.after_quest", "soana.progression_kept", previous),
         forbids=(*LOSS, "soana.closed", "inhuman"), delay=delay, optional=True))
+
+
+# --- PP6 (Chapter 4): past the firelight. ---------------------------------------------------------------------------------
+# She is in Wintersun and the Commander is in the Abyss, and she sends nothing. What travels is what she taught at the
+# shrine working (soana_later_progression: the_inherited_debt/price "Do not follow them into the trees", "A stolen sound is not
+# your brother"; a_voice_in_the_dark/voice "It cannot make a conversation. It can only steal one side."). The voice at the camp's
+# edge is authored and never identified. Path-neutral (N-all): it reads only her registered route. The Commander's answer is
+# read by when_the_road_returns (Chapter 5), in the welcome or the friend greeting.
+VOICE_SILENT = "soana.abyss_voice_unanswered"
+VOICE_TESTED = "soana.abyss_voice_tested"
+VOICE_FOLLOWED = "soana.abyss_voice_followed"
+VOICE_CHOICES = (
+    c('[Do as she taught you. Keep your place, keep the fire, and do not answer.]', "silent"),
+    c('[Ask it for something only Soana would give you, and listen for the other side of the conversation.]', "tested"),
+    c('[Take a burning stick from the fire and go out to see what is wearing her voice.]', "followed"),
+)
+memory_nodes = [
+    n("start", "Narrator", '''{n}Night in the Abyss is a matter of opinion. The light goes a dull red, and the camp agrees to call it night. You have the second watch.{/n}
+{n}Out past the firelight, where the ground falls away into something that is not quite rock, a voice calls you what she calls you.{/n}
+"Hunter. You have let the fire get low. See to it, before I do it myself and burn my fingers."
+{n}It is Soana's voice. Every crack in it is where it belongs.{/n}''',
+        c("Continue", "heard", requires=("soana.rite_voice",)),
+        c("Continue", "told", forbids=("soana.rite_voice",))),
+    n("heard", "Narrator", '''{n}At the working she stood with her back to a stolen voice and would not turn round. "It cannot make a conversation," she said, with her eyes on the bowl. "It can only steal one side."{/n}
+{n}Then it had used her own voice, younger and furious, and you watched her go pale and keep speaking.{/n}
+{n}You cannot tell what is out there tonight. You remember what she taught you.{/n}''',
+        *VOICE_CHOICES),
+    n("told", "Narrator", '''{n}Before the working she told Meret what the thing would do, with you standing beside them. "If the voices come afterwards, they are scraps it has left behind. Do not follow them into the trees." And, when Meret asked whether it would keep her brother: "A stolen sound is not your brother."{/n}
+{n}You cannot tell what is out there tonight. You remember what she taught you.{/n}''',
+        *VOICE_CHOICES),
+    n("silent", "Narrator", '''{n}You put another stick on the fire. The voice tells you again that you have let it get low, in the same words and the same tone, and then a third time.{/n}
+{n}Soana would not scold you three times in the same words. She would have found a worse word by the second.{/n}
+{n}Near the end of your watch it stops in the middle of "hunter", as if whatever was using it had run out of breath and could not find more.{/n}''',
+        c("[Keep it to tell her.]", flags=(VOICE_SILENT,))),
+    n("tested", "Narrator", '''"Soana," you tell the dark. "Call me something rude. Anything. You have never once run short."
+{n}The dark tells you that you have let the fire get low. You ask again. It tells you about the fire again, word for word, and there it is, the thing she showed you: one side of a conversation, and nobody on the other.{/n}
+{n}You laugh, which you had not expected to do in the Abyss. Out past the firelight something goes quiet, and stays quiet until your watch is done.{/n}''',
+        c("[Keep it to tell her.]", flags=(VOICE_TESTED,))),
+    n("followed", "Narrator", '''{n}You take a burning stick and walk out past the light. The voice goes on ahead of you, always just over the next rise, telling you the fire is low.{/n}
+{n}You go farther than you should. When you look back, the camp is a red coin in the dark. The voice stops. There is nothing on the rise and nothing beyond it, and the ground under your boots is warm, as if something had been lying there a moment ago and had moved off without a sound.{/n}
+{n}You walk back with the stick burning down towards your fingers. The soldier you were meant to wake for the next watch is already up, blade drawn, and tells you in a furious whisper exactly what the camp thought had happened to you. She would call you a fool for this too. You find you want very much to hear her say it.{/n}''',
+        c("[Keep it to tell her.]", flags=(VOICE_FOLLOWED,))),
+]
+for page in memory_nodes:
+    page["Portrait"] = "Soana"
+SCENES.append(scene("soana.past_the_firelight", "Past the firelight", "Soana", 4, "", memory_nodes,
+    # Not soana.after_quest: SoanaAfterQuest plays only in WintersunOutdoor (area link), and this page is read in the Abyss.
+    requires=("soana.progression_kept",),
+    forbids=(*LOSS, "soana.closed", "inhuman", VOICE_SILENT, VOICE_TESTED, VOICE_FOLLOWED), delay=24, last=4, optional=True,
+    Relationship="soana", Chapters=[4], Remote=True, Kind="memory"))
 
 
 s("when_the_road_returns", "When the road returns", '"I wondered what you would say when I came back."', [
@@ -44,7 +102,9 @@ s("when_the_road_returns", "When the road returns", '"I wondered what you would 
 "I missed you."
 "Then you have one scrap of sense left. Walk with me. Tell me what you saw. Something besides blood and ruined houses."
 {n}She fetches her stick, keeping your hand until the broken ground forces her to watch her footing. Beyond it, her fingers close around yours again.{/n}
-"And speak up. I have heard quite enough wind at this cave mouth. It never brings an interesting tale, however much noise it makes."''', c('[Walk with her toward the nursery.]', "nursery")),
+"And speak up. I have heard quite enough wind at this cave mouth. It never brings an interesting tale, however much noise it makes."''', c('[Walk with her toward the nursery.]', "nursery"),
+        # PP6: what the Commander did with the voice past the firelight (past_the_firelight, Chapter 4).
+        *VOICE_TALES),
     n("friend", "Soana", '''"Still that foolish opening. Did nobody teach you a better greeting on the road?"
 "You could begin again."
 "And leave those roots to shrivel while we exchange courtesies? Walk, child."
@@ -54,7 +114,9 @@ s("when_the_road_returns", "When the road returns", '"I wondered what you would 
 "Dry grass. There was a time when you could hear water all through these woods. Even under the songs at the festival."
 {n}Her stick knocks a loose pebble out of the path.{/n}
 "You remembered to bring me something besides a wounded beast. Wonders have not quite ceased. Come. There is more to see here than my doorstep."
-{n}She turns toward the nursery. You follow beside her, stepping over the stone she dislodged.{/n}''', c('[Ask what the nursery looks like now.]', "nursery")),
+{n}She turns toward the nursery. You follow beside her, stepping over the stone she dislodged.{/n}''', c('[Ask what the nursery looks like now.]', "nursery"),
+        # PP6: what the Commander did with the voice past the firelight (past_the_firelight, Chapter 4).
+        *VOICE_TALES),
     n("nursery", "Narrator", '''{n}You turn off the path before Soana points out the loose stone. She glances at your boots.{/n}
 "The road has not shaken everything out of your head."
 {n}Between two sheltering banks she stops and raises her stick toward the nursery ground.{/n}''',
@@ -117,6 +179,22 @@ s("when_the_road_returns", "When the road returns", '"I wondered what you would 
 {n}Her hand closes briefly on your forearm.{/n}
 "Come in daylight. Wear boots you can put in mud. I have no use for someone standing on a stone admiring the shine of them."
 {n}She pushes the root basket out of your way, leaving the place beside the entrance clear.{/n}''', c('[Return in daylight to follow the trail.]', flags=("soana.late_returned",))),
+    n("voice_silent", "Soana", '''{n}You tell her about the voice past the firelight in the Abyss, and that you kept your place and did not answer it.{/n}
+"Good." {n}She says it at once, then gives you a sidelong look.{/n} "And what did it say? In my voice."
+"That I had let the fire get low."
+"Pff! Then it had that much right. You always do." {n}She walks a few steps before she speaks again.{/n} "Three times, the same words? Then it had never heard me twice. I would have found a worse word by the second."''',
+        c('[Walk on with her toward the nursery.]', "nursery")),
+    n("voice_tested", "Soana", '''{n}You tell her about the voice past the firelight in the Abyss, and that you asked it to insult you.{/n}
+"You asked it for an insult?" {n}She stops on the path.{/n}
+"It only had the one. It kept telling me about the fire."
+{n}Soana laughs, a short bark that startles something out of the bushes.{/n} "Of course it did. A stolen sound has one side and no temper. You should have asked me. I have dozens." {n}She raps your shin with her stick, not hard.{/n} "There. Now you have heard the real thing. Do not forget the difference."''',
+        c('[Walk on with her toward the nursery.]', "nursery")),
+    n("voice_followed", "Soana", '''{n}You tell her about the voice past the firelight in the Abyss, and that you took a burning stick and went after it.{/n}
+"You followed it." {n}Her stick comes down on the path between your boots.{/n} "Into the dark. In the Abyss. Because it had my voice."
+"There was nothing there."
+"There was nothing there that night." {n}She takes hold of your sleeve and does not let go.{/n} "I said it before the working, in plain words, with my own mouth. Do not follow them. And you went after a copy of my mouth instead." {n}Her grip tightens.{/n} "Fool. Bloody hunter."
+{n}Then, more quietly, still holding on:{/n} "Was it so very like me?"''',
+        c('"Like enough to follow. Not like enough to scold me."', "nursery")),
 ], "soana.progression_kept", delay=0)
 
 s("a_track_with_two_ends", "A track with two ends", '"Show me where Meret found the wire."', [
