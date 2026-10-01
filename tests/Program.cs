@@ -486,6 +486,7 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "aranka.trickster.verse.kings_tavern")) ArankaTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "gesmerha.trickster.dead.unfinished_work")) GesmerhaTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "seelah.trickster.dead.pickpocket")) SeelahTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "seelah.early.pack")) PacingPP1Tests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "dorgelinda.trickster.audit.open")) DorgelindaTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "targona.trickster.dead.setup")) TargonaTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "hepzamirah.trickster.ghost.body")) HepzamirahTricksterTests.Run(story, Check);

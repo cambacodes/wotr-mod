@@ -86,8 +86,11 @@ class ProbeIsolationTests(unittest.TestCase):
         ids = {s["Id"] for s in shipped["Scenes"]}
         self.assertFalse(ids & set(harness_probes.PROBE_IDS), "a harness probe is in development/Story.json")
         self.assertNotIn("harness_probes", (ROOT / "expansion.py").read_text(encoding="utf-8"))
-        self.assertFalse([s["Id"] for s in shipped["Scenes"] if rv.opens_in_prologue(rv.norm_scene(copy.deepcopy(s)))],
-                         "a shipped scene opens in the Prologue; review E-new 0 before shipping one")
+        # E-new 0 passed live (13 errata 2026-09-30); each shipped Prologue scene is reviewed (retcheck + replay text) and listed.
+        reviewed = {"anevia.early.watch", "seelah.early.pack"}   # PP1 (storylines/pacing_pp1.py)
+        self.assertEqual(sorted(s["Id"] for s in shipped["Scenes"] if rv.opens_in_prologue(rv.norm_scene(copy.deepcopy(s)))
+                                and s["Id"] not in reviewed), [],
+                         "a shipped scene opens in the Prologue; review it (retcheck, replay text) and list it here")
 
     def test_probe_story(self):
         sys.path.insert(0, str(ROOT / "tools"))
