@@ -569,7 +569,7 @@ yard(MARKET, "Stock that bit", '"There\'s a woman at the gate asking for you."',
 "You let her do it, clown. You stood there and let a laundress break my face, and you did not even tell her I would not strike back." {n}She picks up the paddle and weighs it, and sets it on the trough.{/n} "She meant it. Better than your priests' prayers. I will keep this, and lend it back when she grows braver."''',
        c("[Leave her with the paddle.]")),
     hz("between", '''{n}For a heartbeat she does not sit. Then she does, on the trough, with the pick across her knees, and looks past your shoulder at the woman with perfect indifference.{/n}
-"You see? He does not let me bite." {n}She says it to the woman, not to you.{/n} "That is what your crusade bought when it broke the pens. A keeper for me, and a paddle for you. Go and do your laundry."
+"You see? {mf|He|She} does not let me bite." {n}She says it to the woman, not to you.{/n} "That is what your crusade bought when it broke the pens. A keeper for me, and a paddle for you. Go and do your laundry."
 {n}The woman goes. At the gate she spits on the flagstones. Hepzamirah watches the spit, and something in her face tightens that is not quite contempt.{/n}''',
        c("Continue", "between_say")),
     hz("between_say", '''"You put yourself between us," {n}she says, when the gate has shut.{/n} "Now she knows whose beast I am, and so does every washerwoman she talks to by nightfall."
