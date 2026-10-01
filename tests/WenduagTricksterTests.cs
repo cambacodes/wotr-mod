@@ -251,6 +251,9 @@ internal static class WenduagTricksterTests
             "Trk_Wenduag_ExileCh5: the Chapter 5 exile fallback is missing, off the live path, or plays after the street.");
         var huntHome = Take(hunt, exiledCh5, "back", 0, Returned, Started);
         check(Avail(trial, Later(huntHome, 24)), "Trk_Wenduag_ExileCh5: the courtship does not open after the orchard.");
+        check(!Avail(trial, Later(huntHome, 23)), "Trk_Wenduag_ExileCh5: the trial does not wait 24 hours from her stamped return.");
+        Take(hunt, World(story, 5, "trickster", "trickster.ever", Kicked, "wenduag.kicked_out.latched", P + "bought"), "bought_before", 0);
+        Take(hunt, World(story, 5, "trickster", "trickster.ever", Kicked, "wenduag.kicked_out.latched", P + "late_bid_failed"), "laughed_before", 0);
 
         // Trk_Wenduag_Street: she falls in the street in Chapter 5; Brask; the catacombs; she digs.
         var street = World(story, 5, "trickster", "trickster.ever", Kicked, Dead, "wenduag.street_confronted", P + "bought", P + "fall_agreed");

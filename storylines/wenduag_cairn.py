@@ -92,7 +92,9 @@ visit(W + "court.trial", "Weak things die in their sleep", [
         c("Continue", "lost_her")),
     wd("lost_her", '''{n}She watches it bleed with great interest.{/n} "You bleed well." {n}Her voice is thoughtful.{/n} "Lots of uplanders don't. They go white and fall over. You just looked at it." {n}She lifts the knife away and sits back on her heels, and licks the edge, once, the way you might taste a sauce.{/n} "Not strong enough tonight. But you didn't beg, and you didn't call for your guards." {n}She slides off the table.{/n} "That's something. Fine. You'll do." {n}At the door she looks back.{/n} "Get somebody to sew that. I'd do it, but I'd enjoy it too much."''',
         c("Continue", flags=(PROVED, BLED, STARTED))),
-], forbids=(PROVED,), delay=24)
+], forbids=(PROVED,), delay=24,
+   # the delay counts from the stamped event that earned her (her return, or the bid); a native key carries no stamp
+   RequiresAnyGroups=[[RETURNED, BOUGHT, Q3_LOYAL, Q3_SPARED, REDEEMED]])
 
 
 # --- 2. The gate (the Commander's pivotal choice before the claim). -------------------------------------------------------
@@ -177,12 +179,12 @@ visit(W + "court.claim", "What she caught", [
     wd("her", '''"I caught him on the wall walk behind the south gate. Alone, for once. He was brushing his coat." {n}She pushes back her hood. She is flushed and bright-eyed and very pleased with herself, and there is a scratch down one cheek that she has not bothered to wipe.{/n} "He fought. Not well. I didn't hurt him much. I wanted him to be able to see."''',
         c("Continue", "why_knows", requires=(BRASK_KNOWS,)),
         c("Continue", "why", forbids=(BRASK_KNOWS,))),
-    wd("why_knows", '''"He's been telling people he saw me breathing in the street. The captain laughed at him. The next one might not." {n}She nudges Brask with her toe, not hard, the way you nudge a sleeping dog.{/n} "So he's your problem too. But that's not why I brought him."''',
+    wd("why_knows", '''"He tried to have me taken at your gate. He's been telling people he saw me breathing in the street. The captain laughed at him. The next one might not." {n}She nudges Brask with her toe, not hard, the way you nudge a sleeping dog.{/n} "So he's your problem too. But that's not why I brought him."''',
         c("Continue", "why")),
     wd("why", '''{n}She crouches beside him, easy on her heels, and looks up at you across his body.{/n}
 "I don't bring flowers. What would I do with flowers? I bring what I caught. The best thing I caught. And I put it at your feet, and I watch what you do with it." {n}She puts a hand flat on Brask's heaving back.{/n} "That's how I ask. I've never asked anybody before, so it's the only way I know. If you take it, you're mine. If you kick it away, well." {n}She shrugs.{/n} "Then I know."''',
         c("Continue", "want")),
-    wd("want", '''"He called me mongrel bitch at your gate, or tried to have me taken, or both; it comes to the same thing. He laughed at me with his men. He'd have put my head on a pole and brushed his coat under it." {n}Her voice is very steady.{/n} "And he's yours. One of your soldiers, in your city, under your law." {n}She stands.{/n} "So he's the best thing I could catch. Something of mine, that's also something of yours." {n}She folds her arms and waits.{/n} "Well. There he is."''',
+    wd("want", '''"He's had his mouth on me at your gate, in front of his men, more than once. He laughed while he did it. He'd have put my head on a pole and brushed his coat under it." {n}Her voice is very steady.{/n} "And he's yours. One of your soldiers, in your city, under your law." {n}She stands.{/n} "So he's the best thing I could catch. Something of mine, that's also something of yours." {n}She folds her arms and waits.{/n} "Well. There he is."''',
         c('[Nudge him toward her with your boot.] "He\'s yours."', "given", alignment=("Evil", 1)),
         c('[Pull out his gag.] "On your knees, sergeant. Ask her pardon. Use her name."', "knelt", alignment=("Chaotic", 1)),
         c('[Take her knife off her belt, and do it yourself.]', "struck"),
@@ -206,7 +208,7 @@ visit(W + "court.claim", "What she caught", [
 {n}Then you cut his bonds with the same knife, and open the door, and he goes, without a word, clutching his hand.{/n}''',
         c("Continue", "after_struck")),
     wd("after_struck", '''{n}She takes her knife back from you, and looks at the blood on it, and wipes it, slowly, on her own sleeve.{/n}
-"You did it yourself." {n}Her voice is thick.{/n} "With my knife. In front of me." {n}She sheathes it, and puts her hand over the hilt, as if it were warm.{/n} "Nobody ever finished a kill of mine with my own blade and handed it back. I'm deciding what that means, since you didn't say. It means *what's yours is mine, and what's mine is yours, and anybody who touches either answers to both*." {n}She steps close, very close, and puts her teeth, not gently, against the side of your neck, and then takes them away.{/n} "You didn't ask. You did it anyway. You're mine now. I'm not asking."''',
+"You did it yourself." {n}Her voice is thick.{/n} "With my knife. In front of me." {n}She sheathes it, and puts her hand over the hilt, as if it were warm.{/n} "Nobody ever marked my enemy for me with my own blade and handed it back. I'm deciding what that means, since you didn't say. It means *what's yours is mine, and what's mine is yours, and anybody who touches either answers to both*." {n}She steps close, very close, and puts her teeth, not gently, against the side of your neck, and then takes them away.{/n} "You didn't ask. You did it anyway. You're mine now. I'm not asking."''',
         c("Continue", flags=YES + (STRUCK,))),
     wd("no", '''{n}Brask scrambles up, rubbing his wrists, and does not wait to be told twice. The door bangs behind him.{/n}
 {n}Wenduag has not moved. She is looking at you as if you had turned into a stranger in front of her eyes.{/n}

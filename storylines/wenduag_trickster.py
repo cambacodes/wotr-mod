@@ -161,7 +161,9 @@ BINDINGS = {
     "CompletedQuests": {SAVA_DEAD + ".w": "5ba83bd1a6b1c884794fbb4858480e7f",   # Q3_TraitorsBlood (her Q3)
                         SAVA_DEAD + ".l": "df19bef39c8aa6a4b9dcaf40450b94dc"},  # Q3TheLastResort (Lann's Q3)
 }
-LATCHES = {FINISHED_LATCH: [FINISHED]}
+FELL_LATCH = FELL + ".latched"
+STREET_LATCH = "wenduag.street.latched"     # trickster_world LATCHES: <- wenduag.street_confronted
+LATCHES = {FINISHED_LATCH: [FINISHED], FELL_LATCH: [FELL]}
 DERIVED = {
     NATIVE: [[ROMANCE], [FINISHED_LATCH]],
     WITH_YOU: [[RETURNED], [IN_PARTY, BOUGHT], [IN_PARTY, Q3_LOYAL], [IN_PARTY, Q3_SPARED], [IN_PARTY, REDEEMED]],
@@ -657,7 +659,17 @@ page(W + "exile.ch5_hunt", "Outside the walls", [
         c("Continue", "her")),
     nar("found_you", '''{n}You walk the dark orchards for an hour, and then the dark walks into you: a weight on your back, a forearm across your throat, and the cold of a knife under your ear before you hear a thing. It cuts as she settles it, a short shallow line, so that you will remember it.{/n}''',
         c("Continue", "her", flags=(W + "cost.bled_outside",))),
-    wd("her", '''"Look who came out of {mf|his|her} walls." {n}Wenduag\'s voice is flat and bright at once.{/n} "You threw me out. In front of everybody. And now you come out alone, at night, into my orchards, where the strong one decides." {n}She tilts her head.{/n} "Savamelekh never sent for me, after. Nobody did. I waited for somebody to come and make me an offer, and nobody came, and I hated you for that more than for the throwing out." {n}Her teeth show.{/n} "So. You came. What are you offering?"''',
+    wd("her", '''"Look who came out of {mf|his|her} walls." {n}Wenduag\'s voice is flat and bright at once.{/n} "You threw me out. In front of everybody. And now you come out alone, at night, into my orchards, where the strong one decides." {n}She tilts her head.{/n} "Savamelekh never sent for me, after. Nobody did." {n}Her teeth show.{/n} "So. You came."''',
+        c("Continue", "bought_before", requires=(BOUGHT,)),
+        c("Continue", "laughed_before", requires=(LATE_FAILED,), forbids=(BOUGHT,)),
+        c("Continue", "nobody", forbids=(BOUGHT, LATE_FAILED))),
+    wd("bought_before", '''"You bought me once. Remember? Better than his offer, you said. And then you threw me out anyway, like a dog that bit the wrong hand." {n}Her eyes glint.{/n} "So I know what your offers are worth. Make me a new one. Make it better."''',
+        c("Continue", "offer")),
+    wd("laughed_before", '''"You came to me once already, in the Abyss, with an offer. I laughed at it. I went back to him." {n}Her teeth show.{/n} "He never sent for me again after that. Not once. So here I am in your orchards, laughing at nobody. Make me another offer. Make it better than the last."''',
+        c("Continue", "offer")),
+    wd("nobody", '''"I waited for somebody to come and make me an offer, and nobody came, and I hated you for that more than for the throwing out." {n}Her teeth show.{/n} "So. You came. What are you offering?"''',
+        c("Continue", "offer")),
+    nar("offer", '''{n}She waits on the wall with the spear across her knees, and the orchards wait with her.{/n}''',
         c('"Nothing. I came because I want you back. On your terms."', "terms"),
         c('"Savamelekh is still alive. Come back and hunt him with me."', "sava", forbids=(SAVA_DEAD,)),
         c('"I came to tell you that you were right, and I was wrong to throw you out."', "wrong"),
@@ -673,7 +685,7 @@ page(W + "exile.ch5_hunt", "Outside the walls", [
         c("Continue", flags=(RETURNED, STARTED, PRIMED, LATE))),
     wd("stay_dead", '''{n}She looks at you over the spear for a while.{/n} "Then why did you come out?" {n}She does not wait for the answer. She is gone into the orchards, and you walk back to your walls alone, and nobody at the postern asks where you have been.{/n}''',
         c("Continue", flags=(CLOSED,))),
-], requires=("trickster", KICKED, KICKED_LATCH), forbids=(DEAD, STREET, RETURNED, BOUGHT, LATE_FAILED), delay=24, chapters=(5,),
+], requires=("trickster", KICKED, KICKED_LATCH), forbids=(DEAD, STREET, RETURNED), delay=24, chapters=(5,),
    kind="event", **device("exiled"))
 
 
@@ -722,7 +734,7 @@ page(W + "abyss.fall", "The best of his daughters", [
 {n}Above you, his gang's survivors are dragging themselves away to tell whoever is left that his favourite daughter died fighting for him. Let him hear it, and stop sending for her.{/n}
 {n}Before the first stone you bind her side with the dressing from your pouch and get your own draught between her teeth. Then, when it is built, you go up into the burning street and find the one thing the Midnight Isles never run short of: someone who will carry anything anywhere for money. A tiefling with a barge and no questions takes a purse from the war chest, a sketch of the cellar, and your instructions: in two nights, a woman will push her way out of a heap of stones down there. Feed her, and take her through to Drezen by whatever doors your trade uses, and there will be the same again at the other end.{/n}''',
         *cairn_close((LANN_KNOWS,))),
-], requires=("trickster.ever", DEAD, FELL), forbids=(ABYSS_CAIRN,), delay=2, chapters=(4,), kind="event", areas=(),
+], requires=("trickster.ever", DEAD, FELL, FELL_LATCH), forbids=(ABYSS_CAIRN,), delay=2, chapters=(4,), kind="event", areas=(),
     RequiresAnyGroups=[[FALL_AGREED, "trickster"]],   # an unprepared rescue is a live Trickster act (ledger R2-2)
     **device("abyss"))
 
@@ -781,8 +793,8 @@ page(W + "abyss.back", "She followed his smell home", [
         c("Continue", "stay")),
     wd("spit", '''{n}That surprises a laugh out of her.{/n} "Spit where they burned him." {n}She lowers the knife.{/n} "Yes. I'd like that. I'd like to stand on whatever's left of him and spit, and know he never got me back." {n}She sheathes it.{/n} "All right. That's a reason."''',
         c("Continue", "stay")),
-    wd("stay", '''"I'll stay down here. I'm dead; the neathers in your cellars know how to keep a dead woman quiet, and they don't ask questions a hunter doesn't want answered." {n}She picks the hare back up.{/n} "When you want me, come down. Alone. And bring food. The dead get hungry."''',
-        c("Continue", flags=RETURN_SET)),
+    wd("stay", '''"I'll stay down here. I'm dead; the neathers in your cellars know how to keep a dead woman quiet, and they don't ask questions a hunter doesn't want answered." {n}She picks the hare back up.{/n} "When you want me, come down. Alone. And bring food. The dead get hungry." {n}She jerks her chin at the stair.{/n} "Your tiefling is waiting up there for the rest of his money. I told him you keep your bargains. Don't make a liar of me."''',
+        c("[Pay the smuggler his balance.]", flags=RETURN_SET, crusade=("Finances", -150))),
     wd("stay_dead", '''{n}She looks at you over the point of her knife for a long time.{/n}
 "Stay dead." {n}She almost smiles.{/n} "All right. I've practised." {n}She drops backwards into the dark of the cistern. You hear her land, far down, and then nothing, not even footsteps. The boy with the spear takes you back up the stair, and when you ask the neathers about her afterwards, they look at you as if you had asked about a ghost.{/n}''',
         c("Continue", flags=(CLOSED, STAY_DEAD))),
@@ -856,7 +868,7 @@ page(W + "street.fall", "The traitor in the street", [
 {n}You build it in an empty niche at the bottom of the oldest stair: flat stones set on edge, the head end packed loose, her knife closed into her right hand. Lann does not come. Lann is somewhere up in the citadel, grieving for a woman who is breathing under your hands.{/n}
 {n}Before the first stone you open her shirt, pack the wound, bind it tight, and get a healer's draught between her teeth. In the dark of the vault nobody sees you do it.{/n}''',
         *cairn_close((LIED,))),
-], requires=("trickster.ever", KICKED, DEAD, STREET), forbids=(STREET_CAIRN,), delay=2, chapters=(5,), kind="event",
+], requires=("trickster.ever", KICKED, DEAD, STREET, STREET_LATCH), forbids=(STREET_CAIRN,), delay=2, chapters=(5,), kind="event",
     RequiresAnyGroups=[[FALL_AGREED, "trickster"]],   # an unprepared rescue is a live Trickster act (ledger R2-2)
     areas=(), **device("street"))
 
@@ -1017,7 +1029,7 @@ def integrate(payload):
             raise ValueError("Conflicting derived key: " + key)
         payload["Derived"][key] = [list(g) for g in groups]
     from storylines import trickster_world
-    wanted = {KILLED, DEAD, KICKED, KICKED_LATCH, TRAITOR, IN_PARTY, ROMANCE, STREET, YANIEL_FREED, YANIEL_KILLED, YANIEL_ASKED,
+    wanted = {KILLED, DEAD, KICKED, KICKED_LATCH, STREET_LATCH, TRAITOR, IN_PARTY, ROMANCE, STREET, YANIEL_FREED, YANIEL_KILLED, YANIEL_ASKED,
               LANN_IN, *LANN_GONE, "irabeth_dead"}
     for key in sorted(wanted):
         if key in trickster_world.BINDINGS and not trickster_world._bound(payload, key):

@@ -424837,7 +424837,96 @@
         {
           "Id": "her",
           "Speaker": "Wenduag",
-          "Text": "\"Look who came out of {mf|his|her} walls.\" {n}Wenduag's voice is flat and bright at once.{/n} \"You threw me out. In front of everybody. And now you come out alone, at night, into my orchards, where the strong one decides.\" {n}She tilts her head.{/n} \"Savamelekh never sent for me, after. Nobody did. I waited for somebody to come and make me an offer, and nobody came, and I hated you for that more than for the throwing out.\" {n}Her teeth show.{/n} \"So. You came. What are you offering?\"",
+          "Text": "\"Look who came out of {mf|his|her} walls.\" {n}Wenduag's voice is flat and bright at once.{/n} \"You threw me out. In front of everybody. And now you come out alone, at night, into my orchards, where the strong one decides.\" {n}She tilts her head.{/n} \"Savamelekh never sent for me, after. Nobody did.\" {n}Her teeth show.{/n} \"So. You came.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "bought_before",
+              "Set": [],
+              "Requires": [
+                "wenduag.trickster.bought"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "laughed_before",
+              "Set": [],
+              "Requires": [
+                "wenduag.trickster.late_bid_failed"
+              ],
+              "Forbids": [
+                "wenduag.trickster.bought"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "nobody",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "wenduag.trickster.bought",
+                "wenduag.trickster.late_bid_failed"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Wenduag"
+        },
+        {
+          "Id": "bought_before",
+          "Speaker": "Wenduag",
+          "Text": "\"You bought me once. Remember? Better than his offer, you said. And then you threw me out anyway, like a dog that bit the wrong hand.\" {n}Her eyes glint.{/n} \"So I know what your offers are worth. Make me a new one. Make it better.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "offer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Wenduag"
+        },
+        {
+          "Id": "laughed_before",
+          "Speaker": "Wenduag",
+          "Text": "\"You came to me once already, in the Abyss, with an offer. I laughed at it. I went back to him.\" {n}Her teeth show.{/n} \"He never sent for me again after that. Not once. So here I am in your orchards, laughing at nobody. Make me another offer. Make it better than the last.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "offer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Wenduag"
+        },
+        {
+          "Id": "nobody",
+          "Speaker": "Wenduag",
+          "Text": "\"I waited for somebody to come and make me an offer, and nobody came, and I hated you for that more than for the throwing out.\" {n}Her teeth show.{/n} \"So. You came. What are you offering?\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "offer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Wenduag"
+        },
+        {
+          "Id": "offer",
+          "Speaker": "Narrator",
+          "Text": "{n}She waits on the wall with the spear across her knees, and the orchards wait with her.{/n}",
           "Choices": [
             {
               "Text": "\"Nothing. I came because I want you back. On your terms.\"",
@@ -424874,7 +424963,7 @@
               "Abort": false
             }
           ],
-          "Portrait": "Wenduag"
+          "Portrait": ""
         },
         {
           "Id": "terms",
@@ -424975,9 +425064,7 @@
         "wenduag.trickster.exile.ch5_hunt",
         "wenduag.dead_any",
         "wenduag.street_confronted",
-        "wenduag.trickster.returned",
-        "wenduag.trickster.bought",
-        "wenduag.trickster.late_bid_failed"
+        "wenduag.trickster.returned"
       ],
       "DelayHours": 24,
       "Optional": false,
@@ -425356,7 +425443,8 @@
       "Requires": [
         "trickster.ever",
         "wenduag.dead_any",
-        "wenduag.abyss_fell"
+        "wenduag.abyss_fell",
+        "wenduag.abyss_fell.latched"
       ],
       "Forbids": [
         "wenduag.trickster.abyss.fall",
@@ -425727,10 +425815,10 @@
         {
           "Id": "stay",
           "Speaker": "Wenduag",
-          "Text": "\"I'll stay down here. I'm dead; the neathers in your cellars know how to keep a dead woman quiet, and they don't ask questions a hunter doesn't want answered.\" {n}She picks the hare back up.{/n} \"When you want me, come down. Alone. And bring food. The dead get hungry.\"",
+          "Text": "\"I'll stay down here. I'm dead; the neathers in your cellars know how to keep a dead woman quiet, and they don't ask questions a hunter doesn't want answered.\" {n}She picks the hare back up.{/n} \"When you want me, come down. Alone. And bring food. The dead get hungry.\" {n}She jerks her chin at the stair.{/n} \"Your tiefling is waiting up there for the rest of his money. I told him you keep your bargains. Don't make a liar of me.\"",
           "Choices": [
             {
-              "Text": "Continue",
+              "Text": "[Pay the smuggler his balance.]",
               "Next": null,
               "Set": [
                 "wenduag.trickster.returned",
@@ -425738,7 +425826,11 @@
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -150
+              }
             }
           ],
           "Portrait": "Wenduag"
@@ -426286,7 +426378,8 @@
         "trickster.ever",
         "wenduag.kicked_out",
         "wenduag.dead_any",
-        "wenduag.street_confronted"
+        "wenduag.street_confronted",
+        "wenduag.street.latched"
       ],
       "Forbids": [
         "wenduag.trickster.street.fall",
@@ -427384,6 +427477,15 @@
       ],
       "Remote": true,
       "Kind": "visit",
+      "RequiresAnyGroups": [
+        [
+          "wenduag.trickster.returned",
+          "wenduag.trickster.bought",
+          "wenduag.q3_turned_on_him",
+          "wenduag.q3_spared",
+          "wenduag.redeemed"
+        ]
+      ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
@@ -427858,7 +427960,7 @@
         {
           "Id": "why_knows",
           "Speaker": "Wenduag",
-          "Text": "\"He's been telling people he saw me breathing in the street. The captain laughed at him. The next one might not.\" {n}She nudges Brask with her toe, not hard, the way you nudge a sleeping dog.{/n} \"So he's your problem too. But that's not why I brought him.\"",
+          "Text": "\"He tried to have me taken at your gate. He's been telling people he saw me breathing in the street. The captain laughed at him. The next one might not.\" {n}She nudges Brask with her toe, not hard, the way you nudge a sleeping dog.{/n} \"So he's your problem too. But that's not why I brought him.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -427890,7 +427992,7 @@
         {
           "Id": "want",
           "Speaker": "Wenduag",
-          "Text": "\"He called me mongrel bitch at your gate, or tried to have me taken, or both; it comes to the same thing. He laughed at me with his men. He'd have put my head on a pole and brushed his coat under it.\" {n}Her voice is very steady.{/n} \"And he's yours. One of your soldiers, in your city, under your law.\" {n}She stands.{/n} \"So he's the best thing I could catch. Something of mine, that's also something of yours.\" {n}She folds her arms and waits.{/n} \"Well. There he is.\"",
+          "Text": "\"He's had his mouth on me at your gate, in front of his men, more than once. He laughed while he did it. He'd have put my head on a pole and brushed his coat under it.\" {n}Her voice is very steady.{/n} \"And he's yours. One of your soldiers, in your city, under your law.\" {n}She stands.{/n} \"So he's the best thing I could catch. Something of mine, that's also something of yours.\" {n}She folds her arms and waits.{/n} \"Well. There he is.\"",
           "Choices": [
             {
               "Text": "[Nudge him toward her with your boot.] \"He's yours.\"",
@@ -428026,7 +428128,7 @@
         {
           "Id": "after_struck",
           "Speaker": "Wenduag",
-          "Text": "{n}She takes her knife back from you, and looks at the blood on it, and wipes it, slowly, on her own sleeve.{/n}\n\"You did it yourself.\" {n}Her voice is thick.{/n} \"With my knife. In front of me.\" {n}She sheathes it, and puts her hand over the hilt, as if it were warm.{/n} \"Nobody ever finished a kill of mine with my own blade and handed it back. I'm deciding what that means, since you didn't say. It means *what's yours is mine, and what's mine is yours, and anybody who touches either answers to both*.\" {n}She steps close, very close, and puts her teeth, not gently, against the side of your neck, and then takes them away.{/n} \"You didn't ask. You did it anyway. You're mine now. I'm not asking.\"",
+          "Text": "{n}She takes her knife back from you, and looks at the blood on it, and wipes it, slowly, on her own sleeve.{/n}\n\"You did it yourself.\" {n}Her voice is thick.{/n} \"With my knife. In front of me.\" {n}She sheathes it, and puts her hand over the hilt, as if it were warm.{/n} \"Nobody ever marked my enemy for me with my own blade and handed it back. I'm deciding what that means, since you didn't say. It means *what's yours is mine, and what's mine is yours, and anybody who touches either answers to both*.\" {n}She steps close, very close, and puts her teeth, not gently, against the side of your neck, and then takes them away.{/n} \"You didn't ask. You did it anyway. You're mine now. I'm not asking.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -428143,7 +428245,7 @@
         {
           "Id": "why_knows",
           "Speaker": "conversant",
-          "Text": "\"He's been telling people he saw me breathing in the street. The captain laughed at him. The next one might not.\" {n}She nudges Brask with her toe, not hard, the way you nudge a sleeping dog.{/n} \"So he's your problem too. But that's not why I brought him.\"",
+          "Text": "\"He tried to have me taken at your gate. He's been telling people he saw me breathing in the street. The captain laughed at him. The next one might not.\" {n}She nudges Brask with her toe, not hard, the way you nudge a sleeping dog.{/n} \"So he's your problem too. But that's not why I brought him.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -428175,7 +428277,7 @@
         {
           "Id": "want",
           "Speaker": "conversant",
-          "Text": "\"He called me mongrel bitch at your gate, or tried to have me taken, or both; it comes to the same thing. He laughed at me with his men. He'd have put my head on a pole and brushed his coat under it.\" {n}Her voice is very steady.{/n} \"And he's yours. One of your soldiers, in your city, under your law.\" {n}She stands.{/n} \"So he's the best thing I could catch. Something of mine, that's also something of yours.\" {n}She folds her arms and waits.{/n} \"Well. There he is.\"",
+          "Text": "\"He's had his mouth on me at your gate, in front of his men, more than once. He laughed while he did it. He'd have put my head on a pole and brushed his coat under it.\" {n}Her voice is very steady.{/n} \"And he's yours. One of your soldiers, in your city, under your law.\" {n}She stands.{/n} \"So he's the best thing I could catch. Something of mine, that's also something of yours.\" {n}She folds her arms and waits.{/n} \"Well. There he is.\"",
           "Choices": [
             {
               "Text": "[Nudge him toward her with your boot.] \"He's yours.\"",
@@ -428311,7 +428413,7 @@
         {
           "Id": "after_struck",
           "Speaker": "conversant",
-          "Text": "{n}She takes her knife back from you, and looks at the blood on it, and wipes it, slowly, on her own sleeve.{/n}\n\"You did it yourself.\" {n}Her voice is thick.{/n} \"With my knife. In front of me.\" {n}She sheathes it, and puts her hand over the hilt, as if it were warm.{/n} \"Nobody ever finished a kill of mine with my own blade and handed it back. I'm deciding what that means, since you didn't say. It means *what's yours is mine, and what's mine is yours, and anybody who touches either answers to both*.\" {n}She steps close, very close, and puts her teeth, not gently, against the side of your neck, and then takes them away.{/n} \"You didn't ask. You did it anyway. You're mine now. I'm not asking.\"",
+          "Text": "{n}She takes her knife back from you, and looks at the blood on it, and wipes it, slowly, on her own sleeve.{/n}\n\"You did it yourself.\" {n}Her voice is thick.{/n} \"With my knife. In front of me.\" {n}She sheathes it, and puts her hand over the hilt, as if it were warm.{/n} \"Nobody ever marked my enemy for me with my own blade and handed it back. I'm deciding what that means, since you didn't say. It means *what's yours is mine, and what's mine is yours, and anybody who touches either answers to both*.\" {n}She steps close, very close, and puts her teeth, not gently, against the side of your neck, and then takes them away.{/n} \"You didn't ask. You did it anyway. You're mine now. I'm not asking.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -435091,8 +435193,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -441635,9 +441737,15 @@
     "wenduag.romance_finished.latched": [
       "wenduag.romance_finished"
     ],
+    "wenduag.abyss_fell.latched": [
+      "wenduag.abyss_fell"
+    ],
     "trickster.ever": [
       "trickster",
       "trickster.was"
+    ],
+    "wenduag.street.latched": [
+      "wenduag.street_confronted"
     ],
     "wenduag.kicked_out.latched": [
       "wenduag.kicked_out"
