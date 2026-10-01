@@ -855,7 +855,13 @@ epilogue("widow", "Kitrane, after", '''{n}Queen Galfrey of Mendev died at Iz and
 
 epilogue("alive", "The Queen and the knight", '''{n}Queen Galfrey of Mendev did not die at Iz. She came home from the Worldwound with her crown on her head, and ruled, and was severe and exact with the world, and trusted the Commander of the Fifth Crusade as a queen trusts her general, and no further; she had said so, and she was a woman who meant what she said.{/n}
 {n}On certain nights, a knight of the Green Crows with loose hair and an old sword was seen going into the Commander's quarters after the ninth bell, and coming out before first light, and nobody in Drezen or Nerosyan ever put a name to her. Kitrane had no lands, no crown and no enemies. She had one plan kept, and then another, and in time she stopped counting.{/n}''',
-         requires=(FINAL, COMMITTED), forbids=(DEAD, RETURNED, CLOSED))
+         requires=(FINAL, COMMITTED), forbids=(DEAD, RETURNED, CLOSED, "iomedae.trickster.buried_alive"))
+
+# R6 (iomedae_trickster): in the world where the Commander walked out of the Wound and stayed buried, the Queen's general is
+# a grave; the knight finds the stranger instead. Appended sibling of "alive" (which Forbids that world).
+epilogue("alive_buried", "The Queen and the stranger", '''{n}Queen Galfrey of Mendev did not die at Iz. She came home from the Worldwound with her crown on her head, and ruled, and was severe and exact with the world. The Commander of the Fifth Crusade did not come home at all. Drezen buried an empty coffin, and the Queen stood at the graveside as a queen stands at the grave of her best general, and said the words herself, and did not weep where anyone could see.{/n}
+{n}On certain nights a knight of the Green Crows with loose hair and an old sword rode out of Nerosyan alone and came back before first light, and nobody asked where. Wherever the stranger was that year, on a road, at a waystation, behind somebody else's barricade, Kitrane found it. She said it was the one place in the world where neither of them had to be anybody.{/n}''',
+         requires=(FINAL, COMMITTED, "iomedae.trickster.buried_alive"), forbids=(DEAD, RETURNED, CLOSED))
 
 epilogue("native", "The Queen and the Trickster", '''{n}Queen Galfrey of Mendev did not die at Iz. Shortly after the war she laid down the crown, as the chronicles record, and left Nerosyan to spend the rest of her long life with the one who had shown her there was more to life than duty; and Mendev, which had expected to bury her, did not quite know what to do with her alive and uncrowned.{/n}
 {n}What she and the Commander were to each other was her own affair, and she made sure everyone understood it. She was severe and exact with the world to the end of her days, and with one person she was neither.{/n}''',

@@ -546,6 +546,7 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
                               ['sacrifice', 'trickster.ever', 'ending.trickster_allplanes_fw'],
                               # Iomedae's bridge world (ledger row 16; R6: her banner, answered).
                               ['iomedae.appointment_kept'],
+                              ['iomedae.trickster.rescued'],
                               ['trickster.lastcall.taken',
                                'ending.wound_closed',
                                'sacrifice',

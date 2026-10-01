@@ -292,7 +292,7 @@ internal static class IomedaeTricksterTests
 
         // Trk_Iomedae_Threshold: the device act beside the native sacrifice (E14b); committed carries; after a refusal the truth
         // concedes at the Wound (the reachable yes, no price) and a joke closes; never argued, the argument is made there.
-        var t6 = new[] { "trickster", "trickster.ever", Started, Latch, Held };
+        var t6 = new[] { "trickster", "trickster.ever", Started, Latch, Held, P + "first_spoken" };
         var tc = World(story, 6, t6.Concat(new[] { Committed }).ToArray());
         var td = World(story, 6, t6.Concat(new[] { Declined, P + "cost.boasted", P + "disputed" }).ToArray());
         var tn = World(story, 6, t6);
@@ -307,6 +307,9 @@ internal static class IomedaeTricksterTests
         var late = Take(wound, tn, "decide", 0, Committed, P + "conceded_at_wound");
         check(truth.Has(P + "cost.buried_to_the_world") && joke.Has(Closed) && !joke.Has(Committed) && late.Has(Carried)
               && Take(wound, tn, "refused", 0, Declined).Has(Carried)
+              && Take(wound, World(story, 6, "trickster", "trickster.ever", Started, Latch, Held), "rescue", 0, P + "rescue_only").Has(Carried)
+              && !Paths(wound, World(story, 6, "trickster", "trickster.ever", Started, Latch, Held)).Any(o => o.state.Has(Committed))
+              && Take(wound, tn, "rescue", 0, P + "rescue_only").Has(P + "cost.buried_to_the_world")
               && wound.Nodes.SelectMany(n => n.Choices).All(c => c.Crusade == null && c.Alignment == null && c.NativeNext == null)
               && Ch(wound, "plant", 2).Abort,
             "Trk_Iomedae_Threshold: after her refusal the truth does not concede at the Wound (or the joke does not close), or the act has a fee.");
@@ -347,9 +350,13 @@ internal static class IomedaeTricksterTests
               && Pg("unanswered").Forbids.Contains(Active),
             "Trk_Iomedae_Worlds: a Commander she did not answer is not mourned by her page (or it plays beside Last Call's flask).");
         var watched = World(story, 6, "trickster.ever", Started, Declined);
-        check(Avail(Pg("respect"), watched) && !Avail(Pg("respect"), World(story, 6, "trickster.ever", Started, Committed)),
+        // Epilogue pages ignore the ClosedFlag (Rules.Available returns before the relationship check), so a closed route's
+        // refusal paragraphs do render: the Commander's own no is told.
+        var closedW = World(story, 6, "trickster.ever", Started, Closed, P + "sent_away");
+        check(Avail(Pg("respect"), closedW) && Render(Pg("respect"), closedW).Contains("moved your bed")
+              && Avail(Pg("respect"), watched) && !Avail(Pg("respect"), World(story, 6, "trickster.ever", Started, Committed)),
             "Trk_Iomedae_Worlds: an uncommitted Commander who lived has no page.");
-        check(pages.All(pg => pg.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0))) && pages.Length == 7
+        check(pages.All(pg => pg.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0))) && pages.Length == 8
               && Avail(Pg("gate"), bridgeW) && !Avail(Pg("gate"), livedW),
             "Trk_Iomedae_Pages: a page sets a flag, or a page is missing.");
         var h2 = World(story, 6, "trickster.ever", Started, Committed, Carried, "sacrifice", "ending.wound_closed", Held,
@@ -360,6 +367,18 @@ internal static class IomedaeTricksterTests
         var orderW = World(story, 6, "trickster.ever", Started, Committed, Carried, "sacrifice", "ending.wound_closed", Order);
         check(Reachable(Pg("bridge"), orderW).Any(x => x.Contains("burned to the bone")) && !Reachable(Pg("bridge"), bridgeW).Any(x => x.Contains("burned to the bone")),
             "Trk_Iomedae_Worlds: the cathedral's banner does not cost the banner hand at the bridge.");
+
+        // Trk_Iomedae_Rescued: the argument conceded without the other thing: she answers, and there is no romance.
+        var rescuedW = World(story, 6, "trickster.ever", Started, Carried, P + "rescue_only", "sacrifice", "ending.wound_closed", Held);
+        check(rescuedW.Has(P + "rescued") && rescuedW.Has("trickster.commander_back") && rescuedW.Has(P + "buried_alive") && !rescuedW.Has(Kept)
+              && Avail(Pg("rescued"), rescuedW) && !Avail(Pg("platform"), rescuedW) && !Avail(Pg("respect"), rescuedW) && !Avail(Pg("unanswered"), rescuedW)
+              && !Avail(Pg("bridge"), rescuedW),
+            "Trk_Iomedae_Rescued: a rescue without the personal concession plays the romance, or nothing.");
+        // Galfrey's continuing public life yields to the buried Commander (audit r2, COX).
+        var galfreyW = World(story, 6, "trickster.ever", Started, Committed, Carried, "sacrifice", "ending.wound_closed", Held, "galfrey.final", "galfrey.committed");
+        check(!Avail(S("galfrey.trickster.epilogue.alive"), galfreyW) && Avail(S("galfrey.trickster.epilogue.alive_buried"), galfreyW)
+              && Avail(S("galfrey.trickster.epilogue.alive"), World(story, 6, "trickster.ever", "galfrey.final", "galfrey.committed")),
+            "Trk_Iomedae_Coexist: Galfrey's queen-and-general ending plays beside a Commander who is a grave.");
 
         // Trk_Iomedae_Intimacy: on the bare platform, after Threshold, she in plain steel; the cut at the first motion astride.
         var plat = Pg("platform");

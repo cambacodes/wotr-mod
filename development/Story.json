@@ -393463,6 +393463,51 @@
         "galfrey.dead",
         "galfrey.trickster.returned",
         "galfrey.closed",
+        "iomedae.trickster.buried_alive",
+        "sacrifice"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "galfrey",
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      }
+    },
+    {
+      "Id": "galfrey.trickster.epilogue.alive_buried",
+      "Title": "The Queen and the stranger",
+      "Owner": "GalfreyEpilogue",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "{n}Queen Galfrey of Mendev did not die at Iz. She came home from the Worldwound with her crown on her head, and ruled, and was severe and exact with the world. The Commander of the Fifth Crusade did not come home at all. Drezen buried an empty coffin, and the Queen stood at the graveside as a queen stands at the grave of her best general, and said the words herself, and did not weep where anyone could see.{/n}\n{n}On certain nights a knight of the Green Crows with loose hair and an old sword rode out of Nerosyan alone and came back before first light, and nobody asked where. Wherever the stranger was that year, on a road, at a waystation, behind somebody else's barricade, Kitrane found it. She said it was the one place in the world where neither of them had to be anybody.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Galfrey"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "galfrey.final",
+        "galfrey.committed",
+        "iomedae.trickster.buried_alive"
+      ],
+      "Forbids": [
+        "galfrey.dead",
+        "galfrey.trickster.returned",
+        "galfrey.closed",
         "sacrifice"
       ],
       "DelayHours": 0,
@@ -425146,7 +425191,7 @@
         {
           "Id": "conceded",
           "Speaker": "Narrator",
-          "Text": "{n}Iomedae looks at you for one breath of the Wound's hot wind.{/n} \"Then the Inheritor concedes. Aloud, at the edge, where anyone may hear.\" {n}Her voice does not change, but her hand comes to rest on the staff of her banner, beside yours.{/n} \"And the world keeps its grave.\"",
+          "Text": "{n}Iomedae looks at you for one breath of the Wound's hot wind.{/n} \"Then the Inheritor concedes the argument. Aloud, at the edge, where anyone may hear.\" {n}Her voice does not change, but her hand comes to rest on the staff of her banner, beside yours.{/n} \"And the world keeps its grave.\"",
           "Choices": [
             {
               "Text": "\"It keeps it.\"",
@@ -425160,12 +425205,100 @@
             },
             {
               "Text": "\"It keeps it.\"",
-              "Next": "decide",
+              "Next": "other_q",
               "Set": [],
               "Requires": [],
               "Forbids": [
                 "iomedae.trickster.cost.boasted"
               ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "other_q",
+          "Speaker": "Narrator",
+          "Text": "\"That is the argument,\" {n}says Iomedae.{/n} \"It is all I have conceded.\"",
+          "Choices": [
+            {
+              "Text": "\"And the other thing? The one we never argued.\"",
+              "Next": "other_yes",
+              "Set": [],
+              "Requires": [
+                "iomedae.trickster.first_spoken"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"And the other thing? The one we never argued.\"",
+              "Next": "other_no",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "iomedae.trickster.first_spoken"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"That's all I need.\"",
+              "Next": "rescue",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "other_yes",
+          "Speaker": "Narrator",
+          "Text": "{n}She does not answer at once. The fire leans at the two of you and she does not lean away from it.{/n}\n\"I have spoken to you in the dark more often than I have spoken to my own priests,\" {n}says the goddess of valour, quietly, as if the Wound were not listening.{/n} \"It was not for the crusade. There. That is conceded too, and at a worse place than a roof.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "decide",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "other_no",
+          "Speaker": "Narrator",
+          "Text": "\"I do not know you well enough to concede that.\" {n}She says it without unkindness, the way she said the lock would destroy the key.{/n} \"I have watched you. I have not yet spoken with you. Ask me afterward, if there is an afterward.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "rescue",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "rescue",
+          "Speaker": "Narrator",
+          "Text": "\"I have not decided whether I will answer. I will decide when you are in the fire, and not before.\" {n}She steps back half a pace, beside her banner, and waits.{/n}",
+          "Choices": [
+            {
+              "Text": "[Turn to the Wound.]",
+              "Next": null,
+              "Set": [
+                "iomedae.trickster.banner_carried",
+                "iomedae.trickster.rescue_only",
+                "iomedae.trickster.cost.buried_to_the_world"
+              ],
+              "Requires": [],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -425178,7 +425311,7 @@
           "Choices": [
             {
               "Text": "Continue",
-              "Next": "decide",
+              "Next": "other_q",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -425345,7 +425478,8 @@
       ],
       "Requires": [
         "trickster.ever",
-        "iomedae.committed"
+        "iomedae.committed",
+        "iomedae.trickster.disputed"
       ],
       "Forbids": [
         "sosiel.dead",
@@ -425386,7 +425520,8 @@
       ],
       "Requires": [
         "trickster.ever",
-        "iomedae.committed"
+        "iomedae.committed",
+        "iomedae.trickster.disputed"
       ],
       "Forbids": [
         "daeran.dead",
@@ -425571,7 +425706,7 @@
         {
           "Id": "name",
           "Speaker": "Narrator",
-          "Text": "{n}You say it into the fire, or you think you do; there is no air in here to carry it. It is not a prayer. You have never prayed to her in your life, and you are not going to start in the middle of a lock. It is the name of someone you argued with on a roof, said the way you would say it across a crowded room, to make her turn round.{/n}",
+          "Text": "{n}You say it into the fire, or you think you do; there is no air in here to carry it. Whatever you have prayed in your life, this is not a prayer. It is the name of someone you argued with on a roof, said the way you would say it across a crowded room, to make her turn round.{/n}",
           "Choices": [
             {
               "Text": "[Let the banner go.]",
@@ -425953,13 +426088,13 @@
               "AnyGroups": []
             },
             {
-              "Text": "Somewhere between the seam and the stones there was a grey place where a voice asked you questions, and what was left of your power gave you the right to answer them. When you woke you could not remember a word of it. Iomedae could. She said only that the Lady of Graves had heard you out, and had nothing to collect, because nobody had died who came back over, and that she had gone to tell her so herself.",
+              "Text": "Somewhere between the seam and the stones there was a grey place where a voice asked you questions, and what was left of your power gave you the right to answer them. When you woke you could not remember a word of it. Iomedae could. The Lady of Graves had heard the case: yours, made on a roof, and hers, made in that grey place. She was not persuaded that nobody had died. She ruled anyway. Your death stands in her book, and the world keeps its grave. At the next appointment there is no appeal. And the Inheritor answers to her for this one. On those terms she let you go back over. She did not say she had been persuaded, and Iomedae did not pretend she had.",
               "Requires": [],
               "Forbids": [],
               "AnyGroups": []
             },
             {
-              "Text": "Drezen woke to find the Sword of Valor gone from the world with its Commander. The chaplains said the Commander had carried it into the Wound as the Inheritor once carried it into battle, and they were right, and never knew how right. No demon ever again stepped out of the air into the city, because there was no longer a Wound to send them.",
+              "Text": "Drezen woke to find the Sword of Valor gone from the world with its Commander. The chaplains said the Commander had carried it into the Wound as the Inheritor once carried it into battle, and they were right, and never knew how right. The invasions ended with the Wound, but the city's walls had to be watched the old way again, with wards and patrols and a priest at every gate, because every demon lord in the Abyss knew that the banner was gone.",
               "Requires": [
                 "iomedae.banner_in_hand"
               ],
@@ -427118,7 +427253,7 @@
         {
           "Id": "graves",
           "Speaker": "Narrator",
-          "Text": "\"That she had noticed.\" {n}Iomedae is quiet for a moment.{/n} \"She does not waste words. Nor do I, usually. I told her that nobody had died who came back over, and that she had lost nothing, and that I had broken no rule of hers. She agreed with all three. Then she told me that the next time, there will be nothing to cross back over, and that she will be waiting at the other end of it herself.\"\n{n}She looks at the road.{/n} \"I told her I knew. I have known since the gorge. Everything I have ever carried across something, I have had to leave something on the other side.\"",
+          "Text": "\"That she had noticed.\" {n}Iomedae is quiet for a moment.{/n} \"She does not waste words. Nor do I, usually. I put your argument to her, and then mine. She agreed with neither. A soul that stands on a goddess's banner is on nobody's road, she said, and she would not have it argued over twice. She let you go on her terms: you are dead in her book, there is no appeal at the next appointment, and I answer to her for this one. I do. Then she told me that next time there will be nothing to cross back over, and that she will be waiting at the other end of it herself.\"\n{n}She looks at the road.{/n} \"I told her I knew. I have known since the gorge. Everything I have ever carried across something, I have had to leave something on the other side.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -427240,7 +427375,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She named the miracle in the ninth year. A knight of hers lay dying in a hospice in Mendev and would not let go until someone told him that his company had held the ford. It had not held. She could not tell him so; she does not lie. \"You can,\" she said. The stranger went, and sat with him through a night, and told him that the ford had held and that the Inheritor herself had said so, and he died believing it. She did not thank the stranger. She said the debt was paid, and that a lie told in her name was hers to carry, and she carried it. It was the only time the stranger ever saw her ashamed, and the only time she let anyone see it.",
+              "Text": "She named the miracle in the ninth year. A knight of hers lay dying in a hospice in Mendev and would not let go until someone told him whether his company had held the ford. It had not held. She could not go to him herself; a goddess at a deathbed is a miracle, and she had spent hers. And she would not send a priest to soften it. \"You can tell him the truth so that he can carry it,\" she said. \"I have watched you do it to me.\" The stranger went, and sat with him through a night, and told him: the ford fell, but it fell an hour late, and in that hour the village behind it emptied onto the road, every soul, and that hour was his. He died knowing it. The stranger had never told anyone so hard a truth so carefully. She said the debt was paid, and did not say thank you, and stayed that night much longer than she meant to.",
               "Requires": [
                 "iomedae.appointment_kept"
               ],
@@ -427687,7 +427822,8 @@
       ],
       "Forbids": [
         "iomedae.committed",
-        "sacrifice"
+        "sacrifice",
+        "iomedae.trickster.rescued"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -427695,6 +427831,59 @@
       "ForbidOverrides": {
         "sacrifice": "trickster.commander_back"
       }
+    },
+    {
+      "Id": "iomedae.trickster.epilogue.rescued",
+      "Title": "Answered",
+      "Owner": "IomedaeEpilogue",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "{n}She answered the banner. You walked back out of the closing Wound across it, as she once walked a gorge, and the world buried the Commander of the Fifth Crusade in an empty coffin, and you let it.{/n}\n{n}She had conceded the argument at the edge, and nothing else. She came once, afterwards, to a road in Mendev, in plain steel, and walked beside the stranger for an hour without saying why.{/n}\n\"You asked me for a bridge, and I gave you one,\" {n}she said at the end of the hour.{/n} \"You did not ask me for anything else. Perhaps you should have. Perhaps I would have said no.\" {n}She stopped where the road forked.{/n} \"I will be owed a miracle, and I will collect it. The rest is a question nobody has asked. It can stay unasked a while longer.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "Some years later she came back, unannounced, and asked it herself.",
+              "Requires": [
+                "iomedae.trickster.first_spoken"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Lady of Graves had let the stranger go back over on her own terms: the death stands in her book, and there is no appeal at the next appointment. Iomedae answers to her for it.",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "iomedae.trickster.rescued"
+      ],
+      "Forbids": [
+        "iomedae.closed",
+        "iomedae.committed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "iomedae"
     },
     {
       "Id": "iomedae.lastcall.page",
@@ -439657,9 +439846,29 @@
         "iomedae.committed"
       ]
     ],
+    "iomedae.trickster.rescued": [
+      [
+        "sacrifice",
+        "ending.wound_closed",
+        "trickster.ever",
+        "iomedae.trickster.banner_carried",
+        "iomedae.trickster.rescue_only"
+      ]
+    ],
+    "iomedae.trickster.buried_alive": [
+      [
+        "iomedae.appointment_kept"
+      ],
+      [
+        "iomedae.trickster.rescued"
+      ]
+    ],
     "iomedae.trickster.cost.miracle_owed": [
       [
         "iomedae.appointment_kept"
+      ],
+      [
+        "iomedae.trickster.rescued"
       ]
     ],
     "iomedae.trickster.late_committed": [
@@ -439943,6 +440152,9 @@
       ],
       [
         "iomedae.appointment_kept"
+      ],
+      [
+        "iomedae.trickster.rescued"
       ],
       [
         "trickster.lastcall.taken",
