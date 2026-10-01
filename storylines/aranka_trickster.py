@@ -226,17 +226,17 @@ def her_letter_choices(*extra):
 
 letter("aranka.trickster.verse.any_tavern", "Every mug in the house", [
     nar("start", '''{n}There is no King left to sing to, and no tavern of his to sing in. So you climb onto a table in the worst camp tavern in Drezen instead, pay for every mug in the house, and teach a room full of sappers and quartermasters Starward Gaze with a second verse of your own. Nobody in the room has heard of Thaberdine. You rhyme him with 'tambourine' anyway.{/n}
-{n}The beer buys you the room. It takes all night and most of the camp's beer. In the grey of the morning somebody has chalked your verse under the Desnan broadsheet the refugees nailed by the door last spring, 'tambourine' and all, and underlined it twice. By the following week the song has walked out of Drezen on its own, in the packs of every courier and carter on the north road, and nobody who learned it that way believes it ever went without the verse.{/n}''',
+{n}The beer buys you the room. It takes all night and most of the camp's beer. In the grey of the morning somebody has chalked your verse under the Desnan broadsheet the refugees nailed by the door last spring, 'tambourine' and all, and underlined it twice. By noon the carters on the north road have it, and most of the people who learn it from them never knew it without the verse.{/n}''',
         c(JOKE, "reply", mythic="Trickster", crusade=("Finances", -150)),
         c('"...On second thought, buy them one round and let them sing what they like."', abort=True)),
-    nar("reply", '''{n}Nine days later a letter arrives, in a round, flourishing hand that has pressed hard enough to tear the paper in two places.{/n}''',
+    nar("reply", '''{n}That evening a letter comes back down the north road with a returning carter, in a round, flourishing hand that has pressed hard enough to tear the paper in two places.{/n}''',
         c("Continue", "reply_known", requires=(GAVE_SONG,)),
         c("Continue", "reply_unknown", forbids=(GAVE_SONG,))),
-    a("reply_known", '''"Somebody has changed my song! Every camp from here to the Worldwound is singing Starward Gaze with a verse I never wrote, and they all swear it was always sung that way, and it wasn't, and it's better, which is the worst part!"
+    a("reply_known", '''"Somebody has changed my song! The carters came into our camp this noon singing Starward Gaze with a verse I never wrote, and they all swear it was always sung that way, and it wasn't, and it's better, which is the worst part!"
 "It came to us from the true servants of Desna, from her domain in Elysium, and I carried it out of Kenabres in one piece. I gave it to you in one piece, Commander, to remember, not to improve. The carters say it started in Drezen. I am coming to Drezen to find the thief."''',
       *her_letter_choices(PRIMED, LATE)),
     a("reply_unknown", '''"To the Knight-Commander of Drezen, from Aranka, who sings for Desna and would like a word."
-"Somebody has changed my song! Every camp from here to the Worldwound is singing Starward Gaze with a verse I never wrote, and they all swear it was always sung that way, and it wasn't, and it's better, which is the worst part! The carters say it started in your city, in a tavern, with somebody paying for the beer. I am coming to Drezen to find the thief. Please have them ready."''',
+"Somebody has changed my song! The carters came into our camp this noon singing Starward Gaze with a verse I never wrote, and they all swear it was always sung that way, and it wasn't, and it's better, which is the worst part! The carters say it started in your city, in a tavern, with somebody paying for the beer. I am coming to Drezen to find the thief. Please have them ready."''',
       *her_letter_choices(PRIMED, LATE)),
 ], requires=("trickster",), forbids=(PRIMED, ROMANCE, FAILURE, CROWNED), delay=0, **NO_KING_GATE)
 # The act is performed on the page now, and dearer than the King's round; her reply is folded in so the route spends
@@ -387,8 +387,8 @@ letter("aranka.trickster.failure.mocking_verse_any", "Louder on the rhyme", [
 {n}There is no King's tavern left to lead it in. So you walk into the worst camp tavern in Drezen, pay for every mug in the house, and climb onto a table.{/n}''',
         c(FAILURE_JOKE, "reply", mythic="Trickster", crusade=("Finances", -150)),
         c('[Walk out again.]', abort=True)),
-    nar("reply", '''{n}You lead it until dawn, and trip over an imaginary banner on every rhyme. By the next week the song has changed its meaning on every road out of Drezen.{/n}
-{n}Nine days later a letter comes, in a round hand you know, with a blot in the middle as if the writer stopped for a long while.{/n}''',
+    nar("reply", '''{n}You lead it until dawn, and trip over an imaginary banner on every rhyme. By noon the carters have taken it up the north road, and it means something else now.{/n}
+{n}That evening a letter comes back down the north road, in a round hand you know, with a blot in the middle as if the writer stopped for a long while.{/n}''',
         c("Continue", "her_reply")),
     a("her_reply", '''"You sang the verse where you lose. Out loud, on purpose, and made them sing it louder. Nobody has ever done that with one of my songs. I wrote it to hurt you. You made it yours. I am coming to Drezen, and I haven't decided yet whether to slap you."''',
         c('[Answer her] "Come and decide."', flags=(PRIMED, LATE, MOCKING, RETURNED, ANSWERED, STARTED))),
@@ -411,12 +411,12 @@ letter("aranka.trickster.touring.boast", "Court poet", [
         c(TOURING_JOKE, "posters", mythic="Trickster", crusade=("Finances", -100)),
         c('[Let her keep her road.]', abort=True)),
     nar("posters", '''{n}By morning every wall in Drezen carries a poster: STARWARD GAZE, SUNG BY THE KNIGHT-COMMANDER'S COURT POET, TONIGHT. The paste is still wet. The printers spelled her name right on the first try, because you stood over them.{/n}
-{n}Aranka is three camps away and has agreed to nothing. The posters travel faster than she does.{/n}''',
+{n}Aranka was three camps away and had agreed to nothing. The posters travel faster than she does, and she travels faster than the posters: by nightfall a woman in Desnan blue is sitting in the market reading one, and she will not say a word to anyone from the citadel.{/n}''',
         c('"Put one up at the ford, too."', flags=(PRIMED, ANNOUNCED))),
 ], requires=("trickster", ROMANCE, QUEST), forbids=(PRIMED, "azata", FAILURE), delay=0)
 
 counter("aranka.trickster.touring.arrives", "Court poet", '"You came."', [
-    a("start", '''{n}She is standing under one of the posters with it half torn off the wall in her fist.{/n}
+    a("start", '''{n}She is standing under one of the posters with it half torn off the wall in her fist. She has been in the market two days, reading every poster in the city, and has not let anyone fetch you.{/n}
 "Court poet. I have never been anybody's court anything. I came here to shout at you in person, because a letter wouldn't be loud enough, and because I wanted to see your face when I did it."''',
       c('"Then shout."', "shout"),
       c('"You spelled it right. I checked."', "shout")),
