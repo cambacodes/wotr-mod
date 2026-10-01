@@ -372,7 +372,10 @@ partner("gesmerha", "gesmerha", "gesmerha.committed", "gesmerha.closed", "Work o
         page_p('''The face she had cut from memory before Threshold stood on the shelf over her bench, eyes and all. She had called it a grave-post. When the Commander walked into the yard in the spring, loudly, she took it down, turned it to the wall, and never turned it back.''',
                requires=(G + "cost.likeness_cut",)),
         page_p('''The face she had begun on the morning after the night in the yard was still on her bench, a little further along each season. It was not a commission, she said, so it could take as long as it liked, and so could its owner.''',
-               requires=(G + "cost.ancestor_debt",), forbids=(G + "cost.likeness_owed", G + "cost.likeness_cut")),
+               requires=(G + "cost.ancestor_debt", G + "night_yard"), forbids=(G + "cost.likeness_owed", G + "cost.likeness_cut")),
+        # PP7 (Sol INT): the epilogue commit without a night in the yard begins the face after the postwar door, not the yard.
+        page_p('''The face she had begun the spring she came to the Commander's door was still on her bench, a little further along each season. It was not a commission, she said, so it could take as long as it liked, and so could its owner.''',
+               requires=(G + "cost.ancestor_debt",), forbids=(G + "night_yard", G + "cost.likeness_owed", G + "cost.likeness_cut")),
         page_p('''The commission paid for in Wintersun, before Marhevok's ambush, was still on her bench at Threshold: the pale birch with the Commander's coin standing proud of the grain. The Commander had called it in at the rift. She took that the way she took every order, which is to say she took her time. A commission is a commission, she said, not a summons.''',
                requires=(G + "cost.advance_paid", called("gesmerha")), forbids=(G + "cost.ancestor_debt",)),
         page_p('''The commission paid for in Wintersun, before Marhevok's ambush, was still on her bench at Threshold: the pale birch with the Commander's coin standing proud of the grain. Nobody asked her for it, and she did not hurry. A commission is a commission, she said; it would be finished when the wood agreed.''',

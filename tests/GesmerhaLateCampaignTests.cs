@@ -14,6 +14,7 @@ internal static class GesmerhaLateCampaignTests
         Scene Find(string id) => story.Scenes.Single(s => s.Id == "gesmerha." + id);
         var late = lateIds.Select(Find).ToArray();
         var oldReunion = Find("the_voice_at_court");
+        var song = Find("the_road_home");   // PP7: the Chapter 4 song, played in every walked history here (optional; GesmerhaCampaignTests walks it unplayed too)
         var endings = story.Scenes.Where(s => s.Relationship == "gesmerha" && s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToArray();
         var reached = new HashSet<string>();
         var outputs = new HashSet<string>();
@@ -29,7 +30,7 @@ internal static class GesmerhaLateCampaignTests
         foreach (bool reunion in new[] { false, true })
         {
             if (chiefRemains && reunion) continue; // Native KTC chooses Marhevok, not Gesmerha, in this history.
-            var chain = earlyIds.Select(Find).Concat(reunion ? new[] { oldReunion } : Array.Empty<Scene>()).Concat(late).ToArray();
+            var chain = earlyIds.Select(Find).Append(song).Concat(reunion ? new[] { oldReunion } : Array.Empty<Scene>()).Concat(late).ToArray();
             var initial = new Snapshot { Chapter = 3, Hour = 1000, Area = late[0].Areas.Single() };
             initial.AvailableContacts.Add(actor);
             initial.Flags.UnionWith(new[] { "gesmerha.wintersun_resolved", "seelah.committed", "jerribeth.committed" });
@@ -43,6 +44,7 @@ internal static class GesmerhaLateCampaignTests
                 foreach (var input in states)
                 {
                     var ready = Program.Copy(input); ready.Hour += scene.DelayHours + 24;
+                    if (scene == song) ready.Chapter = 4;
                     if (scene == oldReunion)
                     {
                         ready.Chapter = 5; ready.Area = capital;
@@ -83,6 +85,7 @@ internal static class GesmerhaLateCampaignTests
                         if (page == "marhevok") check(chiefRemains, "Gesmerha invents retained Marhevok authority.");
                         if (page == "after_court") check(reunion && state.Has("gesmerha.reunion_kept"), "Gesmerha remembers an unplayed private reunion.");
                         if (page == "without_court") check(!state.Has("gesmerha.reunion_kept"), "Gesmerha repeats first private return after actual reunion.");
+                        if (page == "abyss_song") check(state.Has("gesmerha.abyss_song") && !state.Has("gesmerha.reunion_kept"), "Gesmerha hears of an Abyss song that was not carried, or hears it twice.");
                         if (scene == late.Last())
                         {
                             if (page == "migration") check(state.Has("gesmerha.heard_migration"), "Gesmerha invents an observed migration report.");

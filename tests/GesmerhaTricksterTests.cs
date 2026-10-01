@@ -238,7 +238,7 @@ internal static class GesmerhaTricksterTests
             check(S(loss).Forbids.Contains(P + "returned"), "A returned Gesmerha is mourned: " + loss);
         var lifted = story.Scenes.Where(s => s.Relationship == "gesmerha" && !s.Id.StartsWith(P, StringComparison.Ordinal)
                                              && s.Forbids.Contains("gesmerha.dead")).ToArray();
-        check(lifted.Length == 34 && lifted.All(s => s.ForbidOverrides.TryGetValue("gesmerha.dead", out var f) && f == P + "returned"),
+        check(lifted.Length == 35 /* 35: PP7 added gesmerha.the_road_home */ && lifted.All(s => s.ForbidOverrides.TryGetValue("gesmerha.dead", out var f) && f == P + "returned"),
             "G6: the registered scenes that Forbid her death are not all lifted by her return (" + lifted.Length + ").");
         foreach (var name in new[] { "gesmerha.ending_living_reunion", "gesmerha.late_ending_lovers" })
             check(S(name).Nodes.SelectMany(n => n.Paragraphs).Count(x => x.Requires.Contains(P + "commissioned")) == 1,
@@ -442,8 +442,17 @@ internal static class GesmerhaTricksterTests
         // trick shifts the alignment and marks the trick; both leave an unresolved courtship the late chain reads.
         foreach (var footstepsScene in new[] { home, capital })
         {
-            var gameChoice = footstepsScene.Nodes.Single(x => x.Id == "game").Choices.Single();
-            var honestChoice = footstepsScene.Nodes.Single(x => x.Id == "honest").Choices.Single();
+            // PP7 (Sol BEL): choice 0 is the courtship history; an appended twin keeps a named friendship a friendship.
+            var gameChoice = footstepsScene.Nodes.Single(x => x.Id == "game").Choices[0];
+            var honestChoice = footstepsScene.Nodes.Single(x => x.Id == "honest").Choices[0];
+            foreach (var node in new[] { "game", "honest" })
+            {
+                var pay = footstepsScene.Nodes.Single(x => x.Id == node).Choices;
+                check(pay.Count == 2 && pay[0].Forbids.Contains("gesmerha.friendship") && pay[1].Requires.Contains("gesmerha.friendship")
+                      && pay[1].Set.Contains("gesmerha.campaign_friends") && !pay[1].Set.Contains("gesmerha.campaign_slow")
+                      && pay[1].Crusade?.Amount == pay[0].Crusade?.Amount && pay[1].Alignment?.Direction == pay[0].Alignment?.Direction,
+                    "The footsteps turn a named friendship into a courtship: " + footstepsScene.Id + "/" + node);
+            }
             check(gameChoice.Crusade?.Resource == "Finances" && gameChoice.Crusade.Amount == -50
                   && honestChoice.Crusade?.Resource == "Finances" && honestChoice.Crusade.Amount == -50,
                 "A footsteps branch does not pay for the pieces: " + footstepsScene.Id);

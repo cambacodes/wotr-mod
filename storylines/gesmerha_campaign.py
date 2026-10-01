@@ -374,7 +374,57 @@ s("what_she_asks", "The question without a chorus", '"You wanted an afternoon wi
       c('"Then today is ours."', flags=("gesmerha.campaign_kept", "gesmerha.lover", "gesmerha.committed", "gesmerha.afternoon_shared"))),
 ], "gesmerha.singing_kept")
 
-s("the_voice_at_court", "The voice that came back", '"Before you go, may we speak about something of our own?"', [
+# PP7 (Chapter 4): she stays in Wintersun and the Commander is in the Abyss; nothing crosses the planes. What travels is
+# the travelers' song settled at her bench in the_unfinished_verse / the_evening_answer (Vesk's brother's farewell song:
+# the shared version, "the travelers know the road home", or Runa's song with Dera's answer). Path: N-fit (it carries the
+# chain's own blockers, no trickster gate). Read in Chapter 5 by the_voice_at_court (songs) and the_things_still_here
+# (without_court). Authored: the march, the humming, the Commander's verse.
+ABYSS_SONG = "gesmerha.abyss_song"
+SONG_SUNG = "gesmerha.abyss_song.sung"
+SONG_VERSE = "gesmerha.abyss_song.verse"
+SONG_HUSHED = "gesmerha.abyss_song.hushed"
+SONG_CHOICES = (
+    c('[Sing it through to the end, the way they agreed it at her bench, so you do not lose it down here.]', "sung"),
+    c('[Add a verse of your own about this road.]', "verse"),
+    c('[Stop humming. It is Wintersun\'s song, and this is no place to carry it.]', "hushed"),
+)
+SCENES.append(scene("gesmerha.the_road_home", "The road home", "Gesmerha", 4, "", [
+    n("start", "Narrator", '''{n}Somewhere in the Abyss, on a march that began before the light last changed, you realise you have been humming for some time. Nobody in the column has complained. It takes you a dozen paces more to know the tune: the travelers' song from Wintersun, the one Vesk needed by the second evening, the one three families could not agree how to end.{/n}''',
+      c("Continue", "shared", requires=("gesmerha.song_shared",)),
+      c("Continue", "answer", requires=("gesmerha.song_answer",), forbids=("gesmerha.song_shared",)), portrait="Gesmerha"),
+    n("shared", "Narrator", '''{n}You have the version they settled on: Runa's verses, cut short, and Dera's changed line. The travelers know the road home. Gesmerha tested that line against the rhythm and gave it back to Dera on the right note, and told you afterwards that she missed the old one already. "I wanted them to sing with me," she said. "I have discovered the expense."{/n}
+{n}Down here the line sounds different. Nobody in this column is sure of the road home.{/n}''', *SONG_CHOICES, portrait="Gesmerha"),
+    n("answer", "Narrator", '''{n}You have both of them: Runa's old song, held to its last note, and then Dera's answer, the traveler who stayed beyond the second ford, with a landlord who asked too much and a roof that leaked. "I could not make the roof rhyme," Dera said. "Roofs seldom cooperate," Gesmerha told her. "Keep it."{/n}
+{n}Down here you find you know Dera's verse better than the old one.{/n}''', *SONG_CHOICES, portrait="Gesmerha"),
+    n("sung", "Narrator", '''{n}You sing it through under your breath to its ending, the way it was settled on a bench in Wintersun while a man mended his cart straps and Runa told him it was a discourtesy. Somebody behind you in the column picks up the tune without the words. You do not teach them the words. They are not yours to teach.{/n}''',
+      c('[Walk on.]', flags=(ABYSS_SONG, SONG_SUNG)), portrait="Gesmerha"),
+    n("verse", "Narrator", '''{n}It is not a good verse. It has no marvels in it, only what the road is like: a sky the wrong colour, water you boil twice before you trust it, a camp where nobody sleeps on the side nearest the dark. You cannot make the sky rhyme. You keep it anyway, and sing it twice so you will still have it in Drezen.{/n}''',
+      c('[Keep the verse.]', flags=(ABYSS_SONG, SONG_VERSE)), portrait="Gesmerha"),
+    n("hushed", "Narrator", '''{n}You stop. It seems wrong to carry Wintersun's song through a place like this, as if the tune might come home with something on it. The march goes on in silence. Some miles later you notice you are still keeping its time with your feet.{/n}''',
+      c('[Walk on.]', flags=(ABYSS_SONG, SONG_HUSHED)), portrait="Gesmerha"),
+], requires=("gesmerha.campaign_kept", "gesmerha.verse_kept"),
+    forbids=("gesmerha.dead", "gesmerha.closed", "inhuman", "demon", "devil", ABYSS_SONG), delay=24, last=4, optional=True,
+    Relationship="gesmerha", Chapters=[4], Remote=True, Kind="memory"))
+
+
+def abyss_song_nodes():
+    """PP7: the_voice_at_court's answers to the Chapter 4 song (appended after songs' own choices), each back to the bundle."""
+    back = (c('[Remember the two trays made after the wood split.]', "trays", requires=("gesmerha.grain_missed",)),
+            c('[Remember the narrow board and the names of its rows.]', "board", forbids=("gesmerha.grain_missed",)))
+    return [
+        n("abyss_sung", "Gesmerha", '''"You sang it." {n}Her hand stops on the knot of the bundle.{/n} "Down there. Which ending?"
+{n}You tell her, and hum the line. Her mouth moves with it before she can stop it.{/n}
+"And someone in your column took the tune without the words? Then it has travelled further than Vesk's brother, and in worse company." {n}She laughs once, and it catches.{/n} "Runa would have been insufferable about it. She would have said a song that goes into the Abyss and comes back has earned its old ending. I shall tell Dera instead, and let her be insufferable."''', *back),
+        n("abyss_verse", "Gesmerha", '''"A verse of your own." {n}She turns her face toward you, the whole of her attention in it.{/n} "Sing it."
+{n}You do, badly, sky and all. She does not interrupt once, and it visibly costs her.{/n}
+"The sky does not scan," she says when you finish. "We can mend the rhythm. Keep it." {n}She is quiet a moment.{/n} "Dera will want it. She will change two words and call it hers. Let her. That is how a song is carried, and I would rather it went on in her mouth than sat in mine."''', *back),
+        n("abyss_hushed", "Gesmerha", '''"You stopped." {n}She considers it with her head a little to one side.{/n} "To keep it clean of the place."
+"It felt wrong to carry it there."
+"We sang it over a man mending his cart straps, with Runa scolding him between verses. It was never a clean song." {n}Her thumb rubs once over the bundle's knot.{/n} "But I understand you. I have kept things back from bad places myself. Next time, sing. If it comes home with something on it, we will wash it."''', *back),
+    ]
+
+
+s("the_voice_at_court","The voice that came back", '"Before you go, may we speak about something of our own?"', [
     n("start", "Gesmerha", '''{n}Gesmerha has come to court with the road still on her clothes. You have heard what she intends for her people. At your question she turns toward you, and the careful formality of her voice gives way.{/n}
 "Yes. I hoped you would ask. There are a great many people in this room who appear to be waiting for permission to make you useful again."
 {n}You ask the nearest attendants for a little space. They withdraw far enough to leave the conversation to you. Gesmerha stays where she gave her report.{/n}
@@ -425,8 +475,12 @@ s("the_voice_at_court", "The voice that came back", '"Before you go, may we spea
 {n}She shifts the bundle away from her foot.{/n}
 "I am keeping the game. That much I have decided."''',
       c('[Remember the two trays made after the wood split.]', "trays", requires=("gesmerha.grain_missed",)),
-      c('[Remember the narrow board and the names of its rows.]', "board", forbids=("gesmerha.grain_missed",))),
-    n("trays", "Gesmerha", '''"Two awkward pieces to pack," she says. "I wrapped them separately. Dera asked why I had not made something that folded. I told her I had entertained that ambition once."
+      c('[Remember the narrow board and the names of its rows.]', "board", forbids=("gesmerha.grain_missed",)),
+      # PP7: the Chapter 4 song (the_road_home), appended.
+      c('[Tell her you sang the travelers\' song in the Abyss.]', "abyss_sung", requires=(SONG_SUNG,)),
+      c('[Tell her you made the travelers\' song a verse of your own in the Abyss.]', "abyss_verse", requires=(SONG_VERSE,)),
+      c('[Tell her you stopped yourself singing it in the Abyss.]', "abyss_hushed", requires=(SONG_HUSHED,))),
+    n("trays", "Gesmerha",'''"Two awkward pieces to pack," she says. "I wrapped them separately. Dera asked why I had not made something that folded. I told her I had entertained that ambition once."
 {n}Her mouth curves into a brief smile.{/n}
 "We played on a cloth beneath one of them. It still needs folding twice where the ground is uneven. I considered carving new feet. Then we had to move. The cloth was faster."
 "Does Dera defend the outer row?"
@@ -489,6 +543,7 @@ s("the_voice_at_court", "The voice that came back", '"Before you go, may we spea
 "Good. Now let me finish what I came to say. The people waiting on me should not have to guess which silence is theirs."
 {n}You tell her where the attendants are. She turns toward them with her bundle in hand.{/n}''',
       c('[Respect her request and return to the audience.]', flags=("gesmerha.reunion_kept", "gesmerha.closed", "gesmerha.parted"))),
+    *abyss_song_nodes(),
 ], "gesmerha.campaign_kept", chapter=5)
 
 

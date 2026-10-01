@@ -15,6 +15,15 @@ internal static class GesmerhaCampaignTests
         var opening = openingIds.Select(Find).ToArray();
         var next = nextIds.Select(Find).ToArray();
         var reunion = Find("the_voice_at_court");
+        // PP7 (Chapter 4): the travelers' song carried in the Abyss (a remote memory; nothing crosses the planes).
+        var song = Find("the_road_home");
+        var songPages = new HashSet<string>();
+        string[] songVariants = { "gesmerha.abyss_song.sung", "gesmerha.abyss_song.verse", "gesmerha.abyss_song.hushed" };
+        check(song.Remote && song.Kind == "memory" && song.Chapters.SequenceEqual(new[] { 4 }) && song.MinChapter == 4 && song.MaxChapter == 4
+              && song.Relationship == "gesmerha" && !song.Requires.Any(f => f.StartsWith("trickster", StringComparison.Ordinal))
+              && song.Requires.SequenceEqual(new[] { "gesmerha.campaign_kept", "gesmerha.verse_kept" })
+              && new[] { "gesmerha.dead", "gesmerha.closed", "gesmerha.abyss_song" }.All(song.Forbids.Contains),
+            "Gesmerha's Abyss song lost its shape (remote memory, Chapter 4, path-neutral, after the kept chain).");
         var endings = story.Scenes.Where(s => s.Id.StartsWith("gesmerha.ending_", StringComparison.Ordinal)).ToArray();
         var reached = new HashSet<string>();
         var outcomesSeen = new HashSet<string>();
@@ -93,9 +102,30 @@ internal static class GesmerhaCampaignTests
                 check(!result.Has("gesmerha.lover") || !result.Has("gesmerha.friendship"), "Established friendship forcibly becomes romance.");
             }
             earned.AddRange(states);
+            // PP7: the song is optional, so both the sung and the unplayed histories reach Chapter 5.
+            var carried = new List<Snapshot>(states);
+            foreach (var kept in states)
+            {
+                check(!Rules.Available(story, song, kept), "Gesmerha's Abyss song opens before the Abyss.");
+                var abyss = Program.Copy(kept); abyss.Chapter = 4; abyss.Hour += song.DelayHours;
+                check(Rules.Available(story, song, abyss), "Gesmerha's Abyss song does not follow the kept chain.");
+                foreach (var blocker in song.Forbids)
+                {
+                    var blocked = Program.Copy(abyss); blocked.Flags.Add(blocker);
+                    check(!Rules.Available(story, song, blocked), "Gesmerha's Abyss song ignores blocker " + blocker);
+                }
+                var pages = new HashSet<string>();
+                var sung = Program.Walk(song, abyss, (page, _) => { songPages.Add(page); pages.Add(page); }).Where(r => r.Has(song.Id)).ToList();
+                check(pages.Contains("shared") == kept.Has("gesmerha.song_shared") && pages.Contains("answer") == !kept.Has("gesmerha.song_shared"),
+                    "Gesmerha's Abyss song remembers a version of the song that was not settled.");
+                check(sung.Count == 3 && sung.All(r => r.Has("gesmerha.abyss_song") && songVariants.Count(r.Has) == 1 && !Rules.Available(story, song, r))
+                      && songVariants.All(v => sung.Any(r => r.Has(v))),
+                    "Gesmerha's Abyss song loses a variant, overlaps, or replays.");
+                carried.AddRange(sung);
+            }
 
             // Native fixture: the actual C5 guest has begun and her future answer was heard.
-            var visitors = states.Select(s =>
+            var visitors = carried.Select(s =>
             {
                 var v = Program.Copy(s);
                 v.Chapter = 5; v.Area = capital;
@@ -135,6 +165,15 @@ internal static class GesmerhaCampaignTests
                 check(!Rules.Available(story, scene, blocked), "Gesmerha physical scene leaks into chapter " + chapter);
             }
         }
+        check(songPages.SetEquals(song.Nodes.Select(n => n.Id)), "Unreached page of Gesmerha's Abyss song.");
+        // Each variant is answered only by its own line at court, appended after the original two.
+        var songs = reunion.Nodes.Single(n => n.Id == "songs").Choices;
+        check(songs.Count == 5 && songs[0].Next == "trays" && songs[1].Next == "board"
+              && songs.Skip(2).Select(c => c.Requires.Single()).SequenceEqual(songVariants)
+              && songs.Skip(2).Select(c => c.Next).SequenceEqual(new[] { "abyss_sung", "abyss_verse", "abyss_hushed" }),
+            "Gesmerha's Abyss song answers were not appended, or read the wrong flag.");
+        check(reunion.Nodes.TakeLast(3).Select(n => n.Id).SequenceEqual(new[] { "abyss_sung", "abyss_verse", "abyss_hushed" }),
+            "Gesmerha's Abyss song pages were not appended at the end of the audience.");
         check(reunion.DelayHours == 0 && reunion.AnswerLists.SequenceEqual(new[] { "fb3a88e8ed751214c9136f87891ec07b" }), "Gesmerha transient audience requires impossible return or unrelated entry.");
         foreach (var flag in new[] { "gesmerha.lover", "gesmerha.campaign_slow", "gesmerha.campaign_friends", "gesmerha.reunion_lovers", "gesmerha.reunion_quiet", "gesmerha.closed" })
             check(outcomesSeen.Contains(flag), "Missing played Gesmerha outcome: " + flag);
