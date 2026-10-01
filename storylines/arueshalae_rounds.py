@@ -49,19 +49,19 @@ def session(id, title, chapter, entry, nodes, requires, forbids=(), delay=0, las
 # --- The cat on the smithy roof ---------------------------------------------------------------------------------
 
 session(CAT, "Field observations", 3, '"You look pleased with yourself."', [
-    a("start", '''{n}She has straw in her hair and a long red scratch across the back of one hand, and she is so happy she is almost vibrating.{/n}
+    a("start", '''{n}She has straw in her hair and a long red scratch across the back of one hand, and she is trying very hard not to look pleased about either.{/n}
 "The cat. The one on the smithy roof. It came to me." {n}She says it the way you would announce the fall of a fortress.{/n} "I've been trying for weeks. I've been sitting under that roof every morning, being very still and very uninteresting, and it just looked at me. They know, you see. Animals always know what we are."''',
         c("Continue", "want", requires=(RX_WANT,)),
         c("Continue", "watch", forbids=(RX_WANT,))),
-    a("want", '''"It was on my list. Day two. I want the cat to like me. I told you, and I was ashamed of it, because it's such a small, stupid thing to want." {n}She turns the scratched hand over, admiring the scratch.{/n} "And then this morning I stopped trying. I just sat there and thought about the bakery on Tanner's Row, and the refugees, and your burnt onions, and it came down and sat on my knee as if I were furniture."''',
+    a("want", '''"It was on my list. Number two. I want the cat to like me. I told you, and I was ashamed of it, because it's such a small, stupid thing to want." {n}She turns the scratched hand over, admiring the scratch.{/n} "And then this morning I stopped trying. I just sat there and thought about the bakery on Tanner's Row, and the refugees, and it came down and sat on my knee as if I were furniture."''',
         c("Continue", "science")),
     a("watch", '''"I only noticed it because of your prescription. I was watching the smiths eat their bread at the forge door, and there it was on the roof, watching them too. Two of us, taking notes." {n}She turns the scratched hand over, admiring the scratch.{/n} "And this morning it came down and sat on my knee as if I were furniture. I didn't do anything. I think that's why."''',
         c("Continue", "science")),
     a("science", '''{n}She lowers her voice, very serious, as if sharing a scientific discovery.{/n} "Then it scratched me and ran off. I think that means it likes me. I asked the smith's apprentice and she said that's how cats say it. Mortals love cats, you know. I've been studying it. It's one of the few things I'm sure of."
-{n}She holds the scratch up for you to see.{/n} "It bled. It healed. Nothing was taken. It's the first time something has hurt me for a reason that wasn't hunger."''',
+{n}She holds the scratch up for you to see.{/n} "It bled. It healed. Nothing was taken. It wasn't afraid of me. It scratched me, and it wasn't afraid."''',
         c('"Congratulations. The patient has a pet."', "pet"),
         c('"I\'m going to need to examine that scratch. Very thoroughly."', "examine")),
-    a("pet", '''"It isn't mine. Nobody owns a cat. That's the other thing I've learned about mortals: they love the things they can't own, and they're very happy about it, and they complain about it all the time." {n}She beams.{/n} "I'm going to buy it a fish."''',
+    a("pet", '''"It isn't mine. Nobody owns a cat, the apprentice says. It took my fish, and scratched me, and came back this morning anyway, and she says that means it likes me." {n}She frowns at the scratch, and then beams.{/n} "I'm going to buy it a fish."''',
         c("[Let her go and buy it a fish.]", flags=(CAT,))),
     a("examine", '''{n}She laughs and hides the hand behind her back.{/n} "You are the worst thing that ever happened to a demon. The scratch is fine. The scratch is perfect. I'm keeping it until it scars." {n}She pauses.{/n} "Do succubi scar? I don't know. I'll find out. That can go in the notes too."''',
         c("[Let her go and buy it a fish.]", flags=(CAT,))),
@@ -97,16 +97,16 @@ session(PRIESTESS, "The last one", 3, '"You\'ve been reading the Desnan prayer b
     a("start", '''{n}She has, and she closes it when she sees you, and then, with an effort, opens it again.{/n}
 "I want to tell you about her. The priestess. I told you once, when you asked about the goddess, but I told it like a story, the way I tell everything. I want to tell it the way you'd tell a priest, if priests didn't flinch. With the parts that matter." {n}She takes a breath she does not need.{/n} "May I?"''',
         c('"Tell me."', "tell")),
-    a("tell", '''"She was a priestess of Desna in a little shrine above a river. I don't remember the town. I never knew her name. I never once asked it; it wasn't a thing I needed." {n}Her voice is very steady.{/n}
+    a("tell", '''"She was a priestess of Desna. I can't remember the town, only the road out of it. I can't remember her name. I remember what I did." {n}Her voice is very steady.{/n}
 "I went to her the way we went to all of them, and made her love me, and it didn't take long; it never did. That was how we all did it. She lay in my arms, and she died of my kiss. I remember every smallest detail. The cold sweat. Her weak whisper. And while she was dying I went into her mind, to find out what mortal dreams were like, and the goddess was waiting there."''',
         c("Continue", "question")),
     a("question", '''"Everything since has been because of her. The mercy. The memories of the ones I was made from. The years as a spy. This." {n}She gestures at herself, at the crusade, at you.{/n}
-"So I want to ask you something. Your treatment, the watching, the list, the hand. Does any of it make up for her? Is that what it's for? Because if it is, I'll do it forever. And if it isn't, I need to know what it's for."''',
+"So I want to ask you something. Your treatment, the watching, the list, the hand. I keep doing it with her watching. I remember her whisper. I wish I had listened."''',
         c('"No. Nothing makes up for her. You carry her. That\'s all."', "carry", flags=(PRIESTESS, CARRY)),
         c('"No. But she had a name. Somebody could write to her shrine and ask it."',
           "write", flags=(PRIESTESS, WRITE))),
     a("carry", '''{n}She closes her eyes, and you think you have done her harm. Then she nods.{/n}
-"Thank you. Everyone else says something kind. The priests say the goddess has forgiven me, and I think, then the goddess is wrong, and I'm not allowed to think that." {n}She puts her hand flat on the prayer book.{/n} "You carry her. Yes. That's right. I'll carry her, and I'll carry the watching and the list and your terrible onions, all at once. They don't cancel. They just have to fit."''', c()),
+"Thank you. Everyone else says something kind. The priests say the goddess has forgiven me, and I think, then the goddess is wrong, and I'm not allowed to think that." {n}She puts her hand flat on the prayer book.{/n} "You carry her. Yes." {n}She looks at the book under her hand.{/n} "I won't forget her. Not even on a day when I laugh."''', c()),
     a("write", '''{n}She stares at you as if you had suggested she fly to the moon.{/n} "Write to them. To the Desnans. And say what? 'Dear Mother of the shrine, I am the succubus who killed your priestess, please tell me her name so I can...'" {n}She stops.{/n} "So I can what?"
 {n}You tell her: so she can stop calling her "the priestess". So the one person in the world who remembers every smallest detail of her death can remember the one detail that was hers.{/n}
 "That's insane," she whispers. "That's the most insane thing anyone has asked of me, and I have been asked for things in Alushinyrra that would curl your hair. I'm going to do it."''', c()),
@@ -114,10 +114,10 @@ session(PRIESTESS, "The last one", 3, '"You\'ve been reading the Desnan prayer b
 
 session(TEMPLE_LETTER, "Reply from the river", 5, '"They wrote back."', [
     a("start", '''{n}She has the letter in both hands. It is short, and she has read it enough times that the fold has gone soft.{/n}
-"The Mother of the shrine wrote back." {n}Her voice is careful, as if the words might break.{/n} "They never knew what killed her. They found her in her bed without a mark on her and buried her as a fever. I told them. I wrote it plainly, the way you said." {n}She holds the letter out, and then pulls it back, as if it might hurt you to read.{/n} "Her name was Ilvanne. Ilvanne. She's buried under the shrine's apple tree." {n}She reads on, and her voice catches.{/n} "The Mother says Ilvanne always wanted to see the sea. She never went. There was always someone who needed her at the shrine."''',
+"The Mother of the shrine wrote back." {n}Her voice is careful, as if the words might break.{/n} "I told them what I did, and where I buried her, outside Greengates. I wrote it plainly, the way you said." {n}She holds the letter out, and then pulls it back, as if it might hurt you to read.{/n} "The Mother thinks she knows who it was. A priestess of theirs called Ilvanne went north on the Greengates road the year I describe, and never wrote again. She thinks. She isn't sure. Neither am I." {n}She reads on, and her voice catches.{/n} "She says Ilvanne used to talk about the sea. There was always someone who needed her first."''',
         c("Continue", "sea")),
     a("sea", '''"And she sent this." {n}From the fold of the letter she takes a small flat river stone, grey, with a white band round it.{/n}
-"She says: 'This is from the river below the shrine, where Ilvanne used to stand in the shallows and call it the nearest she would get. If you are what you say you are, take her to the sea. Then do not write to us again. I will pray for her. I will not pray for you.'" {n}Arueshalae turns the stone over and over.{/n} "She hates me. Good. Somebody should, who knew her." {n}Her hand closes on it until the knuckles go pale.{/n} "And she still sent it. Commander, I know what to do with hate. I don't know what to do with a stone."''',
+"She says: 'This is from the river below our shrine. Ilvanne used to stand in the shallows and call it the nearest she would get, if it was Ilvanne. If you are what you say you are, take her to the sea. Then do not write to us again. I will pray for her. I will not pray for you.'" {n}Arueshalae turns the stone over and over.{/n} "She hates me. Good. Somebody should, who knew her." {n}Her hand closes on it until the knuckles go pale.{/n} "And she still sent it. Commander, I know what to do with hate. I don't know what to do with a stone."''',
         c('"I don\'t know. But when the Wound is closed, we\'re going to the sea."', "promise", flags=(TEMPLE_LETTER,)),
         c('"Maybe that\'s what dreaming is."', "dream", flags=(TEMPLE_LETTER,))),
     a("promise", '''"We." {n}She presses the stone to her lips, very lightly, as if it were a person she might drain.{/n} "Yes. When the Wound is closed. I'm going to hold you to that. I'm going to hold you to it so hard."''', c()),
@@ -129,7 +129,7 @@ session(TEMPLE_LETTER, "Reply from the river", 5, '"They wrote back."', [
 
 session(OLD_NAME, "What they called me", 5, '"The woman in the Alushinyrra market. Who was she?"', [
     a("start", '''{n}She is sitting with her back to the fire, which she never does, and her wings are wrapped round her like a cloak.{/n}
-"Somebody I knew. Somebody from the Ten Thousand Delights. She recognised me across the whole market and she called me by my old name, loud, so everyone would turn, and they all did." {n}She is holding herself very still.{/n} "It isn't Arueshalae. You don't need to know what it is. It's a name that means something you'd do to a person, and it was mine for a very long time."''',
+"Somebody I knew. Somebody from the Ten Thousand Delights. She recognised me across the whole market and she called me by my old name, loud, so everyone would turn, and they all did." {n}She is holding herself very still.{/n} "She called me what she used to call all of us. A word for what we did to people." {n}Her mouth twists.{/n} "It isn't my name. It never was. It was only true."''',
         c("Continue", "offer")),
     a("offer", '''"She asked if I was hungry. She said there was a party in the Upper City and plenty of mortals at it who'd paid to be eaten, and she'd get me in, for old times' sake. She said it kindly. That's the worst of it. In the Delights they say those things kindly."
 {n}Her hands are clenched in the fabric of her wings.{/n} "And I was hungry. I am. The Abyss made it worse, Commander. It was like trying not to drink when you're standing in the sea. Some nights it still is, even here. I stood there with her hand on my arm and I thought about saying yes for as long as it takes to say it."''',
@@ -152,7 +152,7 @@ session(OLD_NAME, "What they called me", 5, '"The woman in the Alushinyrra marke
 session(WOUND, "The doctor is out", 5, '"You\'re sitting up. Good."', [
     nar("start", '''{n}The wound is not serious, the chaplains say, which is what they say about wounds that nearly were. You are propped up in the field hospital with your side strapped and a taste of healing potion in your mouth like old pennies, and she is sitting on the stool beside the cot where she has been sitting, the orderlies tell you, for eleven hours.{/n}''',
         c("Continue", "helpless")),
-    a("helpless", '''"I couldn't do anything." {n}She is holding her own hands in her lap, as if they were a pair of animals that might get loose.{/n} "They carried you in and there was so much of you on the stretcher, and every healer in the tent went to work, and I just stood there. I know a thousand ways to take a life out of someone and not one to put it back."
+    a("helpless", '''"I couldn't do anything." {n}She is holding her own hands in her lap, as if they were a pair of animals that might get loose.{/n} "They carried you in and there was so much of you on the stretcher, and every healer in the tent went to work, and I just stood there. I knew exactly where it would hurt you, and not one thing to do about it."
 "Sosiel had to ask me to move. Twice. The second time he took my arm and walked me out, and he was very kind about it, and I wanted to kill him for being able to help."''',
         c("Continue", "stitch")),
     a("stitch", '''{n}She picks up a needle and a reel of gut from the orderly's tray, holding them as if they were contraband.{/n}
@@ -172,7 +172,7 @@ session(WOUND, "The doctor is out", 5, '"You\'re sitting up. Good."', [
 
 session(DANCE, "Recommended exercise", 5, '"There\'s music in the square."', [
     a("start", '''{n}There is. Someone has won something, or thinks they have, and the Drezen square is full of lanterns and bad fiddlers and soldiers dancing with anybody who will have them.{/n}
-"I've been watching them from the steps. I've watched mortals dance for years. At weddings, in taverns, in the camps at Kenabres before..." {n}She stops.{/n} "In the Upper City we danced, of course. It was a kind of hunting. Here it seems to be a kind of falling over while holding on to someone."''',
+"I've been watching them from the steps. I've watched mortals dance for years, at weddings, in taverns, wherever I could stand at the back and not be noticed." {n}She stops.{/n} "In the Upper City we danced, of course. It was a kind of hunting. Here it seems to be a kind of falling over while holding on to someone."''',
         c('[Hold out your hand] "Recommended exercise. Twice a week."', "dance")),
     nar("dance", '''{n}She takes it before she can think better of it, and you pull her down the steps into the crowd, and for a moment she is rigid with terror in the middle of the square, a demon in a crowd of mortals with her hand in a mortal's hand, everyone within reach.{/n}
 {n}Then a fiddler hits a wrong note, and a sergeant treads on your foot, and somebody's child runs between your legs, and she laughs, and the rigidity goes out of her.{/n}''',
@@ -196,11 +196,11 @@ session(AFTER_WAR, "Prognosis", 5, '"What will you do, after?"', [
 "A kitchen. I want a kitchen. Not a big one. With a window, and a table that's too small, and a place on the shelf for the cat's fish. I want to learn to cook, badly, like you, and burn things for somebody, and have them eat it anyway." {n}She stops for breath.{/n} "And the song. I want to know every verse by then. And the stone, the sea. I told you all of it, didn't I? I tell you everything now. It's very inconvenient."''',
         c("Continue", "you")),
     a("you", '''"And you. I want you there, when you're there. I'm not a fool, I know what you are. You'll be off doing impossible things for the rest of your life, and I'll be the one at the window, waiting to find out which ones." {n}She says it lightly, and means it lightly, and her eyes are very steady.{/n}
-"I've been in a house with a thousand guests at the table, Commander. The table was never the problem. The empty chair was. So come back to the kitchen. That's all. That's the whole prognosis.''',
+"I remember Lady Vellexia's guests, Commander. The table was never the problem. The empty chair was. So come back to the kitchen. That's all. That's the whole prognosis.''',
         c('"I\'ll come back to the kitchen. Burn something for me."', "burn", flags=(AFTER_WAR,)),
         c('"The prognosis is excellent. Doctor\'s verdict."', "verdict", flags=(AFTER_WAR,))),
     a("burn", '''"Oh, I will." {n}She grins, all teeth, and for a moment she looks exactly like what she is, and it is wonderful.{/n} "I'm going to burn things for you that nobody has ever burned before. I've got centuries of practice at making mortals suffer. It's time it was good for something."''', c()),
-    a("verdict", '''"Excellent." {n}She tastes the word.{/n} "Nobody has ever said that about my future. They said 'damned', and 'doomed', and once, in the Delights, 'profitable'." {n}She laughs.{/n} "Excellent. I'll write that in the notes. On the front page. In red."''', c()),
+    a("verdict", '''"Excellent." {n}She tastes the word.{/n} "Nobody has ever said that about my future. They said 'damned', and 'doomed', and in the Delights they would have said 'profitable'." {n}She laughs.{/n} "Excellent. I'll write that in the notes. On the front page. In red."''', c()),
 ], (MORNING,), delay=24, chapters=(5,))
 
 session(RACE, "A race over the roofs", 5, '"I challenge you."', [
@@ -223,12 +223,12 @@ session(RACE, "A race over the roofs", 5, '"I challenge you."', [
 session(NIGHTMARE, "The other kind of dream", 5, '"I\'m sorry I woke you."', [
     nar("start", '''{n}She has woken you by screaming, which she has never done, not once in all the months of the crusade. When you get to her she is sitting bolt upright on her bedroll with her wings half open and her nails dug into her own arms.{/n}''',
         c("Continue", "dream")),
-    a("dream", '''"I dreamed. I don't dream, Commander. Demons don't. I was so proud, when it started, when the goddess showed me how... and now it's this." {n}She is shaking.{/n}
+    a("dream", '''"I dreamed. I was so proud, when it started, when the goddess showed me how... and now it's this." {n}She is shaking.{/n}
 "It was the priestess. And the sergeant. And everyone. A table, a long table, like Lady Vellexia's, and all of them sitting at it, and me at the head, and they were all very polite and very grey, and nobody would eat." {n}She presses her palms against her eyes.{/n} "They were waiting for me to eat first."''',
-        c('"You cannot have dreams without nightmares. They\'re the price of being a person."', "price", flags=(NIGHTMARE,)),
+        c('"I heard you. I\'m here."', "price", flags=(NIGHTMARE,)),
         c('[Sit with her till dawn, and say nothing.]', "sit", flags=(NIGHTMARE,))),
     a("price", '''{n}She lowers her hands and looks at you, and something in her face shifts, as if you had said a word in a language she had been trying to remember.{/n}
-"The price of being a person." {n}She breathes out.{/n} "Then I'll pay it. I'll pay it every night. Only... will you be there some of the nights? Not all. I know you can't be there all. Some."''', c()),
+"You're here." {n}She breathes out.{/n} "I wanted dreams so badly. I didn't know they could hurt like this." {n}She takes a fistful of your shirt and does not let go.{/n} "Stay till it's light. Not every night. This one."''', c()),
     nar("sit", '''{n}You sit on the end of the bedroll with your back against the tent pole, and after a while she leans against your shoulder, not touching skin, only cloth, and after a longer while she falls asleep again. You stay until the window goes grey. She doesn't dream again, or if she does, she doesn't scream.{/n}''', c()),
 ], (MORNING,), delay=48, chapters=(5,))
 
@@ -236,7 +236,7 @@ session(EVE, "Before Threshold", 5, '"Tomorrow, then."', [
     a("start", '''{n}The camp before the last march is very quiet. Everybody who has anything to say is saying it, in low voices, in the dark, and she has found you on the edge of the lines with a lantern and the daybook, which is nearly full now.{/n}
 "I've been reading it back. From the beginning. 'Watch people eat. Three times a day.'" {n}She laughs softly.{/n} "It seems a very long time ago. I was so sure it was a joke."''',
         c("Continue", "fear")),
-    a("fear", '''"I'm afraid of tomorrow." {n}She says it simply, the way she used to name a mark's weakness to her sisters: a fact, laid on the table.{/n} "Not of dying. I've died. Of what's at the bottom of the Wound. Of the Abyss seeing me come back and remembering what I am, and calling, and me answering." {n}She closes the book.{/n}
+    a("fear", '''"I'm afraid of tomorrow." {n}She says it simply, the way she used to name a mark's weakness to her sisters: a fact, laid on the table.{/n} "Not only of dying. Of what's at the bottom of the Wound. Of the Abyss seeing me come back and remembering what I am, and calling, and me answering." {n}She closes the book.{/n}
 "So I want to ask you something, and not as your patient. If it calls me, tomorrow, and I start to go, what's the treatment?"''',
         c('"Look for me. I\'ll be the one making a bad joke."', "joke", flags=(EVE,)),
         c('"Burnt onions. A cat. A song about a lake. A stone that wants to see the sea."', "list", flags=(EVE,))),
@@ -257,19 +257,22 @@ SCENES.append(scene(T + "epilogue.together", "", "ArueshalaeEpilogue", 6, "", [
               requires=(SONG,)),
             p('''{n}She kept a kitchen with a window and a table too small for it, and burned things in it for the Commander, and nobody who sat at it was ever the one being eaten.{/n}''',
               requires=(AFTER_WAR,)),
-            p('''{n}She kept the wanting out of the Commander's sight, as she had promised. She was very good at it. Only the cat on the smithy roof ever saw all of her at once, and the cat did not care.{/n}''',
+            p('''{n}The Commander had once asked her for only the good days, and she had refused, and she never let {mf|him|her} forget it. Only the cat on the smithy roof ever saw all of her at once without being asked to, and the cat did not care.{/n}''',
               requires=(SAINT_ONLY,)),
             p('''{n}The Commander never quite stopped being a quack, and she never quite stopped being a patient, and the treatment was never completed, because, as she told anyone who asked, the best treatments never are.{/n}''',
-              forbids=(SAINT_ONLY,)),
+              forbids=(SAINT_ONLY, ELYSIUM)),
+            p('''{n}The treatment ended the day the flowers came, and she discharged herself, loudly, in front of witnesses. The Commander kept the title of quack anyway. She said it was the only diagnosis {mf|he|she} had ever got right.{/n}''',
+              requires=(ELYSIUM,), forbids=(SAINT_ONLY,)),
         ))],
-    requires=("trickster.ever", COMMITTED, INTAKE), forbids=(CLOSED, EVIL_DEAD), last=6, Relationship="arueshalae"))
+    requires=("trickster.ever", COMMITTED, INTAKE), forbids=(CLOSED, EVIL_DEAD, RECRUITED, "sacrifice"), last=6, Relationship="arueshalae",
+    ForbidOverrides={"sacrifice": "trickster.commander_back"}))
 
 
 # --- Companion lines for the treatment (exactly Sosiel and Lann, each behind its reactor's guard) ---------------
 
 SCENES.extend([
     reaction("Sosiel", T + "react.sosiel_hand", (TOUCHED,),
-             '''"I saw her holding your hand in the mess tent." {n}Sosiel smiles, and then doesn't.{/n} "In all the time I've known her, she's never touched anyone. She flinches from the healers. She flinches from me. Whatever you're doing, Commander, don't stop, and don't be careless about it. You're holding something that has never once been held."''',
+             '''"I saw her holding your hand in the mess tent." {n}Sosiel smiles, and then doesn't.{/n} "In all the time I've known her, she's never touched anyone. She flinches from the healers. She flinches from me. Whatever you're doing, Commander, don't be careless about it. She looked happy. I was glad to see it."''',
              answer_list=SOSIEL_HUB, forbids=("sosiel.dead", "sosiel.kicked_out"), chapter=3, last=5,
              entry='"About Arueshalae..."'),
     reaction("Sosiel", T + "react.sosiel_morning", (MORNING,),
@@ -281,6 +284,12 @@ SCENES.extend([
              answer_list=LANN_HUB, forbids=("lann.dead", "lann.kicked_out"), chapter=5, last=5,
              entry='"About Arueshalae..."'),
 ])
+
+
+# Q11: after the native Elysium ending (BestEnding; her touch no longer drains) the sessions that stage a drain close.
+for _scene in SCENES:
+    if _scene["Id"] in (OLD_NAME, DANCE, WOUND, T + "react.sosiel_morning") and ELYSIUM not in _scene["Forbids"]:
+        _scene["Forbids"].append(ELYSIUM)
 
 
 def integrate(payload):

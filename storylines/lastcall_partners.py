@@ -256,15 +256,24 @@ V = "vellexia.trickster."
 partner("vellexia", "vellexia", "vellexia.committed", "vellexia.closed", "Never Bored",
     '''Lady Vellexia gave a party the month after Threshold, in Alushinyrra, to celebrate the Commander's survival, or funeral; the invitations were deliberately unclear. It was the event of the decade. The Commander arrived late, in a borrowed face, and she recognized {mf|him|her} across the room and did not give the game away for three hours, which she said afterwards was the most fun she had had in a century.''',
     (
-        page_p('''She billed the Commander for the furniture. She had been hung on a wall as a looking-glass, and the bill came to exactly the value of a very good mirror, with interest, payable in visits. The Commander paid in instalments and never once missed one.''', requires=(called("vellexia"),)),
-        page_p('''She had come back from the glass a little less than she went in, and she never pretended otherwise. She simply chose, every evening, which part of herself to spend on the Commander, and she was never mean with it.''', requires=(V + "cost.diminished",)),
+        # Q11 r4: each bill names what the Commander actually did to her.
+        page_p('''She billed the Commander for the furniture. She had been hung on a wall as a looking-glass, and the bill came to exactly the value of a very good mirror, with interest, payable in visits. The Commander paid in instalments and never once missed one.''', requires=(called("vellexia"), V + "unmirrored")),
+        page_p('''She billed the Commander for her hands: a painter's fee for every year they stayed unfinished, payable in visits, with a surcharge whenever she caught the Commander looking at them. The Commander paid in instalments and never once missed one.''', requires=(called("vellexia"), V + "cost.diminished"), forbids=(V + "unmirrored",)),
+        page_p('''She billed the Commander for the prophecy: the price of being predicted, which nobody had ever charged before, so she invented the figure and doubled it, payable in visits. The Commander paid in instalments and never once missed one.''', requires=(called("vellexia"), V + "cost.predicted"), forbids=(V + "unmirrored", V + "cost.diminished")),
+        page_p('''She billed the Commander for the insult: one evening of attention for every footman who had repeated it, and she had made sure there were a great many footmen. The Commander paid in instalments and never once missed one.''', requires=(called("vellexia"), V + "provoked"), forbids=(V + "unmirrored", V + "cost.diminished", V + "cost.predicted")),
+        page_p('''She had come back from the canvas a little less than she went into it, and she never pretended otherwise. She decided, every evening, which part of herself to spend on the Commander, and she was mean with it whenever it amused her, which was often.''', requires=(V + "cost.diminished",)),
         page_p('''The Commander had bored her once. She never let {mf|him|her} forget that, and she let {mf|him|her} make up for it for years, at the far end of her table, until it amused her to move {mf|him|her} closer.''', requires=(V + "cost.bored_once",)),
-    ), declined=V + "declined", page_forbids=("vellexia.farewell_friends", "vellexia.farewell_slow", V + "kept_as_mirror"),
+    ), declined=V + "declined",
+    # Q11 r4: an ended correspondence (vellexia.parted, set with every closing answer) is never continued here (G5: not her closed flag).
+    page_forbids=("vellexia.farewell_friends", "vellexia.farewell_slow", V + "kept_as_mirror", "vellexia.parted"),
     deal=[[V + "returned"], [V + "cost.predicted"], [V + "cost.trick_kept"]],
-    call=call('''[Call in the furniture bill] "Vellexia, I owe you for the furniture. I'll pay in instalments. Mind you're there to collect them."''',
-        '''{n}Across a great distance, and a great many mirrors, a lady who is never bored sits up and pays attention.{/n}''',
+    call=call('''[Call in her bill] "Vellexia, I owe you, and you never let a debt go. I'll pay in instalments. Mind you're there to collect them."''',
+        '''{n}Across a great distance, a lady who is never bored sits up and pays attention, and reaches for her account book.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
-    ledger=("Vellexia: the furniture", "I owe Lady Vellexia for a season she spent on my wall. She keeps a very precise account of things nobody else would think to bill."))
+    ledger=("Vellexia: an account kept", "I owe Lady Vellexia for what I did to her, and for what I made her do. She keeps a very precise account of things nobody else would think to bill."),
+    # Q11: the late commit (vellexia.trickster.late_committed = the courting answer of the first call after a return) is a
+    # romance said yes to; friendship, the slow answer and the kept mirror stay excluded by page_forbids.
+    page_commit_groups=[["vellexia.committed"], ["vellexia.trickster.late_committed"]])
 
 NU = "nurah.trickster."
 partner("nurah", "nurah", "nurah.complete", "nurah.closed", "The Last Chapter",
@@ -537,10 +546,10 @@ partner("arueshalae", "arueshalae", "arueshalae.committed", "arueshalae.closed",
         page_p('''She renewed her vows at the altar rail every spring, and the Commander stood at the back with the second company and announced nothing at all, as promised.''', requires=(AU + "cost.no_staging",)),
         page_p('''She served as chaplain until the second company was disbanded, and she never resigned; nobody had ever given her the chance, and she did not intend to take it now.''', requires=(AU + "cost.chaplain",)),
         page_p('''The Commander had promised her no more doctoring in her sleep, and she held {mf|him|her} to it by never once dying again, which she said was the only reliable way to keep a Trickster honest.''', requires=(AU + "cost.no_second_joke",)),
-        page_p('''The Commander had asked only for the good days, and on the good days she came to supper. On the others she ate alone, at the far end of the table, where the Commander had put her, and was very polite about it for a very long time. It was a price, and she paid it at the table, apart, until the Commander finally went and sat at that end too.''', requires=(AU + "cost.saint_only",)),
+        page_p('''The Commander had once asked her for only the good days, and she had refused. She made the Commander pay for asking at the table: for a month {mf|he|she} ate at the far end, apart, while she was very polite about it, until she finally went and sat at that end too.''', requires=(AU + "cost.saint_only",)),
         page_p('''The world buried the Commander. Arueshalae sat through the funeral with her hands behind her back and did not cry, because she had taken the Commander's pulse that morning and knew exactly how the joke ended.''', requires=(ON_RECORD,)),
         page_p('''When the flask was opened in Drezen, she was the one who took the first pulse, and she held the wrist long after she had counted it.''', requires=(H2,)),
-    ), declined=AU + "declined",
+    ), declined=AU + "declined", page_forbid_overrides={"arueshalae_dead": AU + "returned"},
     deal=[[AU + "cost.nocticula_debt"], [AU + "cost.nocticula_favour"]],
     call=call('''[Call in the second opinion] "Your Majesty, you sent her back on credit. Collect your summons tonight. I'll be here to be collected from."''',
         '''{n}A long way off, a black pearl on a string goes warm against a succubus's throat. She puts her hand over it and does not look at you, and does not take it away.{/n}''',
@@ -572,7 +581,8 @@ partner("nidalynn", "nidalynn", "nidalynn.committed", "nidalynn.closed", "Of Her
         page_p('''At the rift the Commander called across the broken ground with a long rising herding-shout, the kind that brings mares home over a great distance, with her name at the end of it, and far off to the south something silver came up out of the clouds over Drezen and answered it, and came. She landed on the lip of the world with a young red-black dragon screaming at her heels, and took one look at what was left of the Commander, and said that the soup was getting cold.''', requires=(called("nidalynn"),)),
         page_p('''The Commander never found out what she would have done if the flask had not held. She would not say. She said a silver does not tell a trickster what she would have done if the trick had failed, because the trickster would only use it next time.''', requires=(ON_RECORD,)),
         page_p('''When the flask was opened in Drezen she was standing at the back with a loaf under her arm, because somebody would be hungry after, and she was right.''', requires=(H2,)),
-        page_p('''The young dragon flew up the north ridge that summer, alone, to the grey tower, and came back three days later and would not say where she had been. The grey one's bill still stood. Nidalynn said it was only manners to leave it standing, and that she would be there when it was called.''', requires=("devarra.trickster.cost.egg_withheld",)),
+        page_p('''The young dragon flew up the north ridge that summer, alone, to the grey tower, and came back three days later and would not say where she had been. The grey one's bill still stood. Nidalynn said it was only manners to leave it standing, and that she would be there when it was called.''', requires=("devarra.trickster.cost.egg_withheld",), forbids=("devarra.lastcall.called",)),
+        page_p('''The young dragon flew up the north ridge that summer, alone, to the grey tower, and came back three days later and would not say where she had been. The grey one had named her bill at the rift, and it was not the hatchling. Nidalynn said that was only manners, and kept the kiln banked high all that winter anyway.''', requires=("devarra.trickster.cost.egg_withheld", "devarra.lastcall.called")),
         # Q9 (Sol INT): the late history (her own face shown, the war over before the salt) plays this coda too.
         page_p('''The salt was still unbroken when the war ended. She brought it up the citadel stair the spring after, with a loaf under her arm, and put both on the Commander's table, and sat down to wait. She was not in any hurry.''', requires=(NI + "late_committed",), forbids=("nidalynn.committed", NI + "bread_kept")),
         page_p('''The heel of the loaf was still on the kiln shelf when the war ended, wrapped in its cloth, where the Commander had asked her to keep it. She kept it.''', requires=(NI + "bread_kept",), forbids=("nidalynn.committed",)),
@@ -797,6 +807,25 @@ partner("mielarah", "mielarah", "mielarah.committed", "mielarah.closed", "The Ne
         page_p('''Somewhere a spade went on digging for the Commander, slow and patient, the way it had since Vazglar. Mielarah listened for it on every night watch. She said it was further off than it had been, and she wrote down by how much.''', requires=(MI + "cost.noticed",), forbids=(MI + "cost.herald_debt",)),
     ), declined=MI + "declined")
 
+# Devarra (Q11): the bill for the smallest egg (devarra_tower "The smallest egg", ledger 05 row 5) is collected here, at the
+# edge of the world, where she said she would name it. Villain's terms: a life, the Commander's, paid a month at a time.
+DV = "devarra.trickster."
+partner("devarra", "devarra", "devarra.committed", "devarra.closed", "The Grey Tariff",
+    '''Devarra did not come to Threshold. She lay on the north ridge all that night with her chin on the sill of the watchtower and the brush around it unlit, watching the sky over the Wound, and the north watch said afterwards that she did not eat, which frightened them more than anything she had ever eaten.''',
+    (
+        page_p('''She came out of the north before dawn, grey as the ash, and landed on the lip of the world where the Commander had shouted the bill up into the dark, and named her price for the smallest egg. A life, as she had said; and she had chosen whose. Not the silver's, and not the hatchling's. The Commander's: every year of it that was left, one month in twelve, on her ridge, at her call, eating what she killed and going where she flew, and coming down thinner. The Commander paid the first month that winter. Nobody in Drezen asked where {mf|he|she} had been. The burns told them.''', requires=(called("devarra"), DV + "cost.egg_withheld")),
+        page_p('''The tariff was collected every year on the same night, in a ring of fire, where she chose. By the end the Commander's forearm was a grey ladder of crescents from wrist to elbow, and she could tell anyone who asked exactly how many rungs it had.''', requires=(DV + "cost.bitten",)),
+        page_p('''The world buried the Commander. She flew over the funeral very low and very slowly, and looked at each mourner in turn, and went back to her ridge without eating any of them. The city took it as an omen. She said it was manners: she did not eat at other people's funerals, only at her own.''', requires=(ON_RECORD,)),
+        page_p('''When the flask was opened in Drezen she came down off the ridge, landed on the citadel roof in front of the whole garrison, and stayed there until the Commander came up to her. The north wall never ran a book on her again.''', requires=(H2,)),
+    ), declined=DV + "declined", page_forbids=(DV + "refused",),
+    page_forbid_overrides={DV + "left_hungry": "devarra.committed"},
+    page_commit_groups=[["devarra.committed"], [DV + "late_committed"]],
+    deal=[[DV + "cost.egg_withheld"]],
+    call=call('''[Call up the north ridge] "Devarra! You said you'd name your price at the edge of the world. This is the edge. Name it."''',
+        '''{n}You shout it into the roar the way she says you climb: loudly, as if the mountain owed you the path. Nothing answers. Then, very far behind you, over a city you cannot see, something grey lifts off a ridge and does not hurry.{/n}''',
+        (PLAIN_CHOICE, (), (), (DV + "refused",))),
+    ledger=("Devarra: the smallest egg", "I took a life out of a woundwyrm's clutch and paid her nothing for it. She has billed me a life. She has not said whose, or when. She says a bill that has not been collected is worth more than one that has, because it can still be called."))
+
 # Existing pages that must yield to Last Call (doc 04 backlog): Nocticula's favour page is called in on her Last Call page instead.
 FORBID_ACTIVE = ("nocticula.trickster.defeated.epilogue.favour",)
 
@@ -840,7 +869,9 @@ def pages():
         extra = dict(Relationship="lastcall")
         if part["declined"]:
             extra["ForbidOverrides"] = {part["declined"]: part["commit"]}
-        if part.get("page_forbid_overrides"):   # Q8: a forbid lifted by the partner's own return flag (never a closed flag)
+        if part.get("page_forbid_overrides"):
+            # Q11: a partner who stayed dead (no earned return) gets no living coda; her own return lifts the forbid.
+            forbids = forbids + tuple(k for k in part["page_forbid_overrides"] if k not in forbids)
             extra.setdefault("ForbidOverrides", {}).update(part["page_forbid_overrides"])
         if part.get("page_commit_groups"):
             extra["RequiresAnyGroups"] = [sorted({k for g in part["page_commit_groups"] for k in g}, key=lambda k: k != part["commit"])]

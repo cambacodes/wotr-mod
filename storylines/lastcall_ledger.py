@@ -81,10 +81,15 @@ def early(entry):
     EARLY.append(entry)
 
 
+# Route-owned Ledger entries (Q11): a route appends dict(Id, Section, Portrait, Title, Text, Lines, Requires, Forbids,
+# AnyGroups, Tooltip) at import; book() shows them after the debts.
+EXTRA_ENTRIES = []
+
+
 def book():
     """payload["Books"]["trickster.ledger"] per 09-RRT-BOOK-UI.md §3."""
     return dict(Title="The Trickster's Ledger", Opening=OPENING, Portrait="", Sections=list(SECTIONS),
-                Entries=_debt_entries() + [dict(e) for e in EARLY])
+                Entries=_debt_entries() + [dict(e) for e in EARLY] + [dict(e) for e in EXTRA_ENTRIES])
 
 
 def journal_entries():

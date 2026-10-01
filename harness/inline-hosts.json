@@ -4,14 +4,14 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1056,
-  "resolved": 1056,
-  "inlineOnlyScenes": 275,
-  "inlineOnlyResolved": 275,
-  "answerListScenesWithoutContact": 634,
-  "answerListScenesWithoutContactResolved": 634,
-  "lists": 115,
-  "listsWithReachableHost": 114
+  "entryTargetScenes": 1067,
+  "resolved": 1067,
+  "inlineOnlyScenes": 276,
+  "inlineOnlyResolved": 276,
+  "answerListScenesWithoutContact": 640,
+  "answerListScenesWithoutContactResolved": 640,
+  "lists": 116,
+  "listsWithReachableHost": 115
  },
  "scenes": {
   "a_crossing": {
@@ -2391,6 +2391,25 @@
     "clicks": 0
    }
   },
+  "arueshalae.treatment.alushinyrra_drezen": {
+   "kind": "dialog",
+   "lists": [
+    "03ebad9587cbea0438d901a0f8df44f1"
+   ],
+   "explicit": true,
+   "contact": "a352873d37ec6c54c9fa8f6da3a6b3e1",
+   "entry": {
+    "03ebad9587cbea0438d901a0f8df44f1": "RRT_entry.arueshalae.treatment.alushinyrra_drezen"
+   },
+   "resolved": true,
+   "host": {
+    "list": "03ebad9587cbea0438d901a0f8df44f1",
+    "dialog": "a718e45e4ea8f8a45acde516d72b6584",
+    "dialogName": "Dialogue_Arueshalae_Main",
+    "cue": "Cue_0004",
+    "clicks": 0
+   }
+  },
   "arueshalae.treatment.bad_day": {
    "kind": "dialog",
    "lists": [
@@ -2419,6 +2438,25 @@
    "contact": "a352873d37ec6c54c9fa8f6da3a6b3e1",
    "entry": {
     "03ebad9587cbea0438d901a0f8df44f1": "RRT_entry.arueshalae.treatment.day_forty"
+   },
+   "resolved": true,
+   "host": {
+    "list": "03ebad9587cbea0438d901a0f8df44f1",
+    "dialog": "a718e45e4ea8f8a45acde516d72b6584",
+    "dialogName": "Dialogue_Arueshalae_Main",
+    "cue": "Cue_0004",
+    "clicks": 0
+   }
+  },
+  "arueshalae.treatment.discharged": {
+   "kind": "dialog",
+   "lists": [
+    "03ebad9587cbea0438d901a0f8df44f1"
+   ],
+   "explicit": true,
+   "contact": "a352873d37ec6c54c9fa8f6da3a6b3e1",
+   "entry": {
+    "03ebad9587cbea0438d901a0f8df44f1": "RRT_entry.arueshalae.treatment.discharged"
    },
    "resolved": true,
    "host": {
@@ -3262,6 +3300,63 @@
     "dialog": "a718e45e4ea8f8a45acde516d72b6584",
     "dialogName": "Dialogue_Arueshalae_Main",
     "cue": "Cue_0004",
+    "clicks": 0
+   }
+  },
+  "arueshalae.trickster.fallen.house_call": {
+   "kind": "dialog",
+   "lists": [
+    "7d6ad178bd7a1ef4ca737ab167570c79"
+   ],
+   "explicit": true,
+   "contact": "e3bc95db7e2181d41847b3a1d858258d",
+   "entry": {
+    "7d6ad178bd7a1ef4ca737ab167570c79": "RRT_entry.arueshalae.trickster.fallen.house_call"
+   },
+   "resolved": true,
+   "host": {
+    "list": "7d6ad178bd7a1ef4ca737ab167570c79",
+    "dialog": "a4f8b9bbb4c55a84b8f8de91a6905b34",
+    "dialogName": "EvilArueshalaeCompanion_Dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "arueshalae.trickster.fallen.lock": {
+   "kind": "dialog",
+   "lists": [
+    "7d6ad178bd7a1ef4ca737ab167570c79"
+   ],
+   "explicit": true,
+   "contact": "e3bc95db7e2181d41847b3a1d858258d",
+   "entry": {
+    "7d6ad178bd7a1ef4ca737ab167570c79": "RRT_entry.arueshalae.trickster.fallen.lock"
+   },
+   "resolved": true,
+   "host": {
+    "list": "7d6ad178bd7a1ef4ca737ab167570c79",
+    "dialog": "a4f8b9bbb4c55a84b8f8de91a6905b34",
+    "dialogName": "EvilArueshalaeCompanion_Dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "arueshalae.trickster.fallen.roof": {
+   "kind": "dialog",
+   "lists": [
+    "7d6ad178bd7a1ef4ca737ab167570c79"
+   ],
+   "explicit": true,
+   "contact": "e3bc95db7e2181d41847b3a1d858258d",
+   "entry": {
+    "7d6ad178bd7a1ef4ca737ab167570c79": "RRT_entry.arueshalae.trickster.fallen.roof"
+   },
+   "resolved": true,
+   "host": {
+    "list": "7d6ad178bd7a1ef4ca737ab167570c79",
+    "dialog": "a4f8b9bbb4c55a84b8f8de91a6905b34",
+    "dialogName": "EvilArueshalaeCompanion_Dialogue",
+    "cue": "Cue_0001",
     "clicks": 0
    }
   },
@@ -5872,6 +5967,33 @@
     "dialog": "de4cc2dd71694b842be37b75d1705b83",
     "dialogName": "Dialogue_AneviaMain",
     "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "devarra.lastcall.call": {
+   "kind": "return-to-list",
+   "lists": [
+    "294126e3264796e488ce19bfb1851355",
+    "16994192cfa484744bd10852b8dc806f",
+    "b6bc1d5fb28e115499b8bcbbc0d541f9",
+    "3d3357c0474ce5a4bb13d68730faecb8",
+    "e77c405d6dde5804bb1f873f971958b8"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "294126e3264796e488ce19bfb1851355": "RRT_entry.devarra.lastcall.call.294126e3264796e488ce19bfb1851355",
+    "16994192cfa484744bd10852b8dc806f": "RRT_entry.devarra.lastcall.call.16994192cfa484744bd10852b8dc806f",
+    "b6bc1d5fb28e115499b8bcbbc0d541f9": "RRT_entry.devarra.lastcall.call.b6bc1d5fb28e115499b8bcbbc0d541f9",
+    "3d3357c0474ce5a4bb13d68730faecb8": "RRT_entry.devarra.lastcall.call.3d3357c0474ce5a4bb13d68730faecb8",
+    "e77c405d6dde5804bb1f873f971958b8": "RRT_entry.devarra.lastcall.call.e77c405d6dde5804bb1f873f971958b8"
+   },
+   "resolved": true,
+   "host": {
+    "list": "294126e3264796e488ce19bfb1851355",
+    "dialog": "f125dc501dc6e984385332e67f324f01",
+    "dialogName": "GrandFinal_dialog",
+    "cue": "Cue_0002",
     "clicks": 0
    }
   },
@@ -19685,6 +19807,63 @@
     "clicks": 0
    }
   },
+  "vellexia.trickster.after.night": {
+   "kind": "dialog",
+   "lists": [
+    "3c58e83a970a0f643a88e15f2323c805"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "3c58e83a970a0f643a88e15f2323c805": "RRT_entry.vellexia.trickster.after.night"
+   },
+   "resolved": true,
+   "host": {
+    "list": "3c58e83a970a0f643a88e15f2323c805",
+    "dialog": "f77aadad8ee7d7446973d2e03d6d730b",
+    "dialogName": "Vendor_Quartermaster_Dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "vellexia.trickster.after.visit_quarters": {
+   "kind": "dialog",
+   "lists": [
+    "3c58e83a970a0f643a88e15f2323c805"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "3c58e83a970a0f643a88e15f2323c805": "RRT_entry.vellexia.trickster.after.visit_quarters"
+   },
+   "resolved": true,
+   "host": {
+    "list": "3c58e83a970a0f643a88e15f2323c805",
+    "dialog": "f77aadad8ee7d7446973d2e03d6d730b",
+    "dialogName": "Vendor_Quartermaster_Dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "vellexia.trickster.mirrored.fetch": {
+   "kind": "dialog",
+   "lists": [
+    "3c58e83a970a0f643a88e15f2323c805"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "3c58e83a970a0f643a88e15f2323c805": "RRT_entry.vellexia.trickster.mirrored.fetch"
+   },
+   "resolved": true,
+   "host": {
+    "list": "3c58e83a970a0f643a88e15f2323c805",
+    "dialog": "f77aadad8ee7d7446973d2e03d6d730b",
+    "dialogName": "Vendor_Quartermaster_Dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
   "vellexia.trickster.mirrored.unmirror": {
    "kind": "return-cue",
    "lists": [
@@ -19770,6 +19949,25 @@
    "contact": null,
    "entry": {
     "4d978cbd2aa780d46874255282039f3f": "RRT_entry.vellexia.trickster.reaction.daeran_likeness"
+   },
+   "resolved": true,
+   "host": {
+    "list": "4d978cbd2aa780d46874255282039f3f",
+    "dialog": "14aa0461f8564b042aee1f68c88de61b",
+    "dialogName": "Daeran_Main_dialog",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "vellexia.trickster.reaction.daeran_night": {
+   "kind": "dialog",
+   "lists": [
+    "4d978cbd2aa780d46874255282039f3f"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "4d978cbd2aa780d46874255282039f3f": "RRT_entry.vellexia.trickster.reaction.daeran_night"
    },
    "resolved": true,
    "host": {
@@ -19872,6 +20070,25 @@
     "dialog": "bf328bcec67a5014f9a56ee6220f3bcc",
     "dialogName": "StoryTeller_MainDialogue",
     "cue": "Cue_0593",
+    "clicks": 0
+   }
+  },
+  "vellexia.trickster.sword.late_portrait": {
+   "kind": "dialog",
+   "lists": [
+    "3c58e83a970a0f643a88e15f2323c805"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "3c58e83a970a0f643a88e15f2323c805": "RRT_entry.vellexia.trickster.sword.late_portrait"
+   },
+   "resolved": true,
+   "host": {
+    "list": "3c58e83a970a0f643a88e15f2323c805",
+    "dialog": "f77aadad8ee7d7446973d2e03d6d730b",
+    "dialogName": "Vendor_Quartermaster_Dialogue",
+    "cue": "Cue_0001",
     "clicks": 0
    }
   },
@@ -25356,6 +25573,68 @@
       "f6474d6f04c5e924aa600da702e6d83e": 2,
       "f81c4e689a5e48c4683ed13a0e55fbb7": 3,
       "fb0846d8b46469b43998dcd1b569fa5d": 1
+     }
+    }
+   ]
+  },
+  "7d6ad178bd7a1ef4ca737ab167570c79": {
+   "list": "7d6ad178bd7a1ef4ca737ab167570c79",
+   "listName": "AnswersList_0003",
+   "hosts": [
+    {
+     "dialog": "a4f8b9bbb4c55a84b8f8de91a6905b34",
+     "dialogName": "EvilArueshalaeCompanion_Dialogue",
+     "cues": [
+      "193b93151562d934e8011efc3b4b72ef",
+      "5cca448b27a87734db8bab578ca9d709",
+      "9ec68b1154d41124298a92c1d029bc78",
+      "4bbc23aacf023404abc7d6b96bdede21",
+      "d43d49ed94ff13c4f99e4577fd0e87d0",
+      "a79b80907250e1540ae4aa37cb9412a8",
+      "8affae04217ac5741891f2985d25edc5",
+      "1fb57e71ecd89f646a1edba0d1f81e1a",
+      "223f908d1252b9a488af58b2b8e70b08",
+      "a5ad8db53413368409ef735077936ab6",
+      "326df9df9f7811740a7ea3eef290ab91",
+      "7c0b689c11d72134ab4b97d43a9016a4"
+     ],
+     "cueNames": [
+      "Cue_0001",
+      "Cue_0002",
+      "Cue_0007",
+      "Cue_0012",
+      "Cue_0013",
+      "Cue_0031",
+      "Cue_0034",
+      "Cue_0044",
+      "Cue_0045",
+      "Cue_0047",
+      "Cue_0048",
+      "Cue_0056"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "046da1a2b54a265459c17a2f08708dc5": 1,
+      "1302734db3ca1c44eaae95d2fc9eeeaa": 1,
+      "4c1349c2ee1e3c94aab05a3d0a991d9f": 2,
+      "596b4abe1a946c5478f50676641154c8": 1,
+      "6d20d9cd7d155b84784172324bda2f25": 2,
+      "826a9c223ce7dc0488b20218bf760b48": 3,
+      "94428ad1884e75743b51b60626d6c98b": 2,
+      "9c222717eaffb3a4bb142e8bb6b4deeb": 1,
+      "a0dc64a90885e55468a067d7a6662064": 2,
+      "a708938575eca154e9bd37d480c9ec72": 1,
+      "cae1c7d2971dfd74597702c16458dc91": 2,
+      "d7b06912d863b8d41b273f88c6d1c381": 1,
+      "db5b50159b2d39e44b51258465389244": 2,
+      "e3b27f8d1718c87409b2dba93ddcdf5c": 1,
+      "e76373d6dba93d74d93c7ac8f2705746": 1,
+      "f39ce7af6e9946f4dbc10e1ed42eea28": 2,
+      "f5b788eeda1d7ff4fbd398dcaf713152": 3,
+      "f92e2887ffa29034abb67972e13ee3d4": 2
      }
     }
    ]

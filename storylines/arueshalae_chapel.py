@@ -12,7 +12,7 @@ from storylines.arueshalae_trickster import (AFTERTASTE, CHAPLAIN, CLOSED, COMMI
                                              FED_ON_PRISONER, FED_ON_YOU, HUB, HUNGRY, P, RECRUITED, RETURNED, REUNITED,
                                              TAVERN_FAILED, DREZEN_PLACES, TAVERN_PRESENCE, UNIT, YARD_PRESENCE, ALLY, IF_ASKED,
                                              EVERY_TIME)
-from storylines.arueshalae_treatment import INTAKE, KITCHEN, TOUCHED
+from storylines.arueshalae_treatment import ELYSIUM, INTAKE, KITCHEN, TOUCHED
 
 SCENES = []
 CENSER = P + "chaplain.censer"
@@ -54,17 +54,17 @@ def tavern(id, title, entry, nodes, requires, forbids=(), delay=0):
 
 # --- The chaplain ----------------------------------------------------------------------------------------------
 
-hub(CENSER, "Which end of the censer", 3, '"How was your first week, Chaplain?"', [
+hub(CENSER, "Which end of the censer", 3, '"How is the shrine, Chaplain?"', [
     a("start", '''{n}She winces at the title, and then, you notice, straightens a little under it.{/n}
 "I set fire to the altar cloth on the first morning. Not badly. The censer. Nobody tells you it has a draught hole, and I held it upside down, and an acolyte of Iomedae put it out with his cloak and then was very polite about it for the rest of the day, which was worse." {n}She rubs soot off her knuckle that has been there for days.{/n}
 "The second company don't care. They just want their swords blessed and someone to talk to after. I'm very good at the talking after. I've heard every kind of confession there is. Usually I was the thing being confessed."''',
         c("Continue", "confession")),
-    a("confession", '''"A boy came to me on the third night. He'd run, at Kenabres. Left his post, hid in a cellar while the demons went past. His whole company died and he didn't, and he's never told anyone." {n}She is looking at her hands.{/n}
+    a("confession", '''"A boy came to me. He'd run, at Kenabres. Left his post, hid in a cellar while the demons went past. His whole company died and he didn't, and he's never told anyone." {n}She is looking at her hands.{/n}
 "And I understood him. That's the terrible part. I didn't have to pretend. I know exactly what it's like to want the wrong thing so badly you do it before you've decided. I told him so. I didn't tell him why I knew."
 "He slept that night. The first whole night in months. He came back to tell me. And I've been wondering ever since whether that's a blessing, or whether I just fed on him in a new way."''',
         c('"It\'s a blessing. You gave him something and took nothing."', "blessing", flags=(CENSER,)),
         c('"Maybe both. Maybe that\'s what chaplains do."', "both", flags=(CENSER,))),
-    a("blessing", '''"Gave and took nothing." {n}She turns it over, testing it the way she tests your prescriptions for the trick.{/n} "I didn't know I could do that. I've never once in my life given something without taking." {n}She almost smiles.{/n} "Don't tell the Iomedaeans. They'll want me to do the sermons."''', c()),
+    a("blessing", '''"Gave and took nothing." {n}She turns it over, testing it the way she tests your prescriptions for the trick.{/n} "He came back smiling. He slept because I spoke to him, and I didn't take anything for it. I keep wondering how that can be enough." {n}She almost smiles.{/n} "Don't tell the Iomedaeans. They'll want me to do the sermons."''', c()),
     a("both", '''{n}She laughs, startled.{/n} "That's what the acolyte said. The one with the cloak. He said all chaplains live on other people's sins; it's only a question of what you do with them afterwards." {n}She looks at the soot on her knuckle.{/n} "I'm going to learn which end of the censer is which. And then I'm going to do this properly."''', c()),
 ], (CHAPLAIN,), delay=24, chapters=(3, 5))
 
@@ -99,7 +99,7 @@ hub(COMPLAINT, "A formal complaint", 3, '"I hear you\'ve been sent for."', [
 
 hub(COUNTING, "The count", 3, '"How many days?"', [
     a("start", '''{n}She knows what you mean. She always knows. She holds up her hand and counts on it, although she doesn't need to.{/n}
-"Eleven. Eleven days since I ate." {n}She says it the way a sailor says how long since land.{/n} "Before, I counted the other way. Days since I fed. Now I count days since I was fed, which is different, because I didn't choose it. You chose it. I just swallowed."''',
+"I've started counting again. Days since I ate. One more every morning." {n}She says it the way a sailor says how long since land.{/n} "Before, I counted the other way. Days since I fed. Now I count days since I was fed, which is different, because I didn't choose it. You chose it. I just swallowed."''',
         c("Continue", "you", requires=(FED_ON_YOU,)),
         c("Continue", "him", forbids=(FED_ON_YOU,))),
     a("you", '''"And every day it's you I taste. Not a stranger. You." {n}She rubs her lips with the back of her hand, the gesture of a woman trying to wipe off a kiss, and failing.{/n}
@@ -122,7 +122,7 @@ hub(COUNTING, "The count", 3, '"How many days?"', [
 
 tavern(SERGEANT, "A patrol sergeant", '"The third company is one man short."', [
     a("start", '''"Is it? How careless of them." {n}She is sitting with her boots on the table and a cup of wine from a bottle she has plainly stolen from the jeweller's back room, and she does not trouble to look innocent.{/n}
-"You sent me away hungry, darling. I told you what I'd do. I always tell people what I'll do. It's the one courtesy I kept from the old days." {n}She swirls the wine.{/n} "He was very sweet. He had a sweetheart in Nerosyan, and he told me about her the whole time. I let him."''',
+"You sent me away hungry, darling. I told you what I'd do." {n}She swirls the wine.{/n} "He was very sweet. He had a sweetheart in Nerosyan, and he told me about her the whole time. I let him."''',
         c("Continue", "choice")),
     a("choice", '''{n}She tips her head, watching you.{/n} "Well? This is where the Commander of the crusade draws a sword on me. I've been looking forward to it. You're so pretty when you're righteous."''',
         c('"He was one of mine. You don\'t get to do that in my city."', "mine", flags=(SERGEANT,)),
@@ -130,7 +130,7 @@ tavern(SERGEANT, "A patrol sergeant", '"The third company is one man short."', [
     a("mine", '''"Yours." {n}She laughs, delighted.{/n} "Everything is somebody's, darling. He was yours, and I'm hers, and you're..." {n}She leans in.{/n} "Well. That's what we're here to find out, isn't it."
 "I'll be good in your city. For a while. Because it amuses me, and because you asked with that face. Don't mistake it for anything else."''', c()),
     a("me", '''{n}For one moment something crosses her face that is not a smile at all. Then it is gone.{/n}
-"You'd do that. You'd put yourself on the menu to keep a sergeant's sweetheart from weeping." {n}She takes the cup back and drinks.{/n} "That's either the most mortal thing I've ever heard, or the stupidest. I've never been able to tell the difference. It's why I left you, you know. The first time."''', c()),
+"You'd do that. You'd put yourself on the menu to keep a sergeant's sweetheart from weeping." {n}She takes the cup back and drinks.{/n} "That's either the most mortal thing I've ever heard, or the stupidest. You were always wasting kindness on me."''', c()),
 ], (HUNGRY,), delay=24)
 
 tavern(DAYBOOK, "The daybook", '"You kept something of hers?"', [
@@ -143,9 +143,15 @@ tavern(DAYBOOK, "The daybook", '"You kept something of hers?"', [
     a("feather", '''"No, you're right, it's not a book. It's nothing. A page of prayers to a goddess who lied to me." {n}She holds it to the candle, and does not quite let it catch.{/n}
 "I read them sometimes. To laugh. 'And what do you dream of?' She asked me that. As if a demon dreams. As if I'd ever want anything as soft as a dream when I can have what I want, when I want it."''',
         c("Continue", "end")),
-    a("end", '''{n}She puts it away again, very carefully, next to her skin.{/n} "Buy me another drink, and don't ask me anything else tonight. You have a way of asking things that makes me answer, and I don't like it." {n}A thin smile.{/n} "It's how I know I'm not entirely cured."''',
+    a("end", '''{n}She puts it away again, very carefully, next to her skin.{/n} "Buy me another drink, and don't ask me anything else tonight. You have a way of asking things that makes me answer, and I don't like it." {n}A thin smile.{/n} "Ask me again and I'll find somebody less tedious to drink with."''',
         c("[Buy her another drink.]", flags=(DAYBOOK,))),
 ], (), delay=24)
+
+
+# Q11: after the native Elysium ending the returned count of hungry days is not restaged.
+for _scene in SCENES:
+    if _scene["Id"] in (COUNTING, DYING) and ELYSIUM not in _scene["Forbids"]:
+        _scene["Forbids"].append(ELYSIUM)
 
 
 def integrate(payload):

@@ -13,7 +13,7 @@ from storylines.arueshalae_trickster import (AFTERTASTE, ALLY, CHAPLAIN, CLOSED,
                                              EVIL_UNIT, FAVOUR, HUB, P, RECRUITED, RETURNED, REUNITED, TAVERN_FAILED, DREZEN_PLACES,
                                              TAVERN_PRESENCE, UNANSWERED, UNIT, YARD_PRESENCE)
 from storylines.arueshalae_chapel import CENSER, COUNTING
-from storylines.arueshalae_treatment import CURE, CURED, INTAKE, MORNING, RELAPSE, RX_WANT, T, TOUCHED
+from storylines.arueshalae_treatment import CURE, CURED, ELYSIUM, INTAKE, MORNING, RELAPSE, RX_WANT, T, TOUCHED
 
 SCENES = []
 BAKERY = T + "the_bakery"
@@ -57,7 +57,7 @@ def tavern(id, title, entry, nodes, requires, forbids=(), delay=0):
 
 hub(BAKERY, "Tanner's Row, at dawn", 3, '"You smell of flour."', [
     a("start", '''"I've been at the bakery on Tanner's Row. Since before dawn." {n}She has flour on her cheek and in her hair and on one wing, and she has no idea.{/n}
-"I told you it was on my list. The smell. Not the bread, the smell. So I went and stood outside every morning for a week, in the dark, where the ovens vent into the alley. And on the eighth morning the baker's daughter came out with the ash bucket and saw me standing there, and asked if I was hungry."''',
+"I told you it was on my list. The smell. Not the bread, the smell. So I went and stood outside in the dark, where the ovens vent into the alley, morning after morning. And this morning the baker's daughter came out with the ash bucket and saw me standing there, and asked if I was hungry."''',
         c("Continue", "hungry")),
     a("hungry", '''"Imagine it. A girl of twelve, with an ash bucket, asking a succubus if she's hungry." {n}She laughs, shakily.{/n} "I said yes, because it was true, and because I have stopped lying about that one thing. And she said, 'Well, come in, then,' and she took me into the bakery and gave me a job."
 "I knead. I'm very good at it. It's all in the wrists, and my wrists are very strong, and I never get tired. The baker says I'm the best kneader he's had in twenty years. He pays me in rolls. I give them to the refugees."''',
@@ -67,7 +67,7 @@ hub(BAKERY, "Tanner's Row, at dawn", 3, '"You smell of flour."', [
         c('"You stepped away. That\'s the whole treatment. Go back."', "back", flags=(BAKERY,)),
         c('"Go back, but wear gloves, and knead at the other end of the trough."', "gloves", flags=(BAKERY,)),
         c('"You\'re right. Leave it. Some things you can only want from a distance."', "leave", flags=(BAKERY,))),
-    a("back", '''"That's the whole treatment." {n}She repeats it, the way she repeats everything you say that she means to keep.{/n} "Stepping away. Not not wanting. Stepping away." {n}She wipes her face, spreading the flour further.{/n} "All right. Tomorrow before dawn. If I knock the trough over every morning, the baker's going to stop paying me in rolls."''', c()),
+    a("back", '''"That's the whole treatment." {n}She repeats it, the way she repeats everything you say that she means to keep.{/n} {n}She wipes her face, spreading the flour further.{/n} "I'll go back. With gloves, this time. I promised her I'd help with the trough. Tomorrow before dawn. If I knock the trough over every morning, the baker's going to stop paying me in rolls."''', c()),
     a("gloves", '''"Gloves and the other end of the trough." {n}She nods, too quickly, relieved.{/n} "That's sensible. That's what a real doctor would say. You keep surprising me by being one." {n}She hesitates.{/n} "She'll ask why. She asks why about everything."
 "Tell her you're allergic to children," you suggest. She laughs so hard she has to sit down.''', c()),
     a("leave", '''{n}She is quiet for a long time.{/n} "Some things you can only want from a distance." {n}She nods slowly.{/n} "Yes. I know that one. I've known it longer than anything." {n}She brushes flour from her sleeve, and looks at it, and doesn't brush any more.{/n} "I'll still go and stand in the alley. For the smell. Nobody can take a smell."''', c()),
@@ -110,7 +110,7 @@ hub(BAD_DAY, "Symptoms", 3, '"Arueshalae?"', [
         c('[Snap back] "Then stop. Go on. Nobody\'s holding you here. Not me, not the goddess."', "snap", flags=(BAD_DAY, SNAPPED_BACK)),
         c('[Sit down on the floor, out of reach, and wait.]', "wait", flags=(BAD_DAY,))),
     a("snap", '''{n}For a moment you think she will take you at your word. Her wings open fully, filling the tent. Then she laughs, a horrible, broken laugh, and folds them again.{/n}
-"You'd let me. You'd actually let me go." {n}She slides down the pole until she is sitting.{/n} "That's what I can't bear about you. Everyone else tries to keep me or kill me. You just stand there and let me choose. Every time." {n}She wipes her eyes with the back of a clawed hand.{/n} "I'm not going. I'm just... I'm having a bad day. Can demons have bad days? I'm having one."''', c()),
+"You'd let me. You'd actually let me go." {n}She slides down the pole until she is sitting.{/n} "That's what I can't bear about you. Everyone else tries to keep me or kill me. You just stand there with the door open, as if it were mine." {n}She wipes her eyes with the back of a clawed hand.{/n} "I'm not going. I'm just... I'm having a bad day. Can demons have bad days? I'm having one."''', c()),
     nar("wait", '''{n}You sit down on the floor of the tent, just out of her reach, and say nothing at all. It takes a long time. The nails go first; then, slowly, the wings; last of all, the second voice under her breath.{/n}
 {n}When she speaks again it is only her own voice, small and hoarse.{/n} "I watched them flog him. The deserter. Twelve strokes, and I counted every one, and I was sorry when they stopped." {n}She sits down opposite you, knees to her chest.{/n} "Desna sent me back to learn what dreams were, and I spent this morning wanting a man's back opened. Put it in the notes. 'Patient had a bad day. Doctor sat on the floor.' Don't you dare write down that it helped."''', c()),
 ], (RELAPSE,), delay=48, chapters=(3, 4, 5))
@@ -137,7 +137,7 @@ hub(WEDDING, "Under the stars", 3, '"Somebody asked me to marry them."', [
     a("start", '''{n}She is pink to the tips of her ears.{/n} "Not like that. To perform it. A corporal from the second company and a laundress from the camp. They want a Desnan wedding, under the stars, and I'm the only Desnan in the crusade who'll do it without asking for a donation first."
 "I tried to say no. I said I didn't know the words. So the laundress brought me a book with the words in. I said I'm not a priest. The corporal said I'm the chaplain, the Commander said so, out loud, in the shrine, everybody heard." {n}She glares at you.{/n} "This is your fault."''',
         c("Continue", "fear")),
-    a("fear", '''"I'm afraid. I've been at a thousand weddings, Commander. In the Upper City a wedding is a contract of ownership with music, and I was usually the entertainment. I don't know what a real one looks like. What if I get it wrong? What if I stand there with my hand over theirs and the old hunger..." {n}She doesn't finish.{/n}
+    a("fear", '''"I'm afraid. I know what a bargain sounds like in the Upper City, with music over it. I don't know what a real wedding looks like. What if I get it wrong? What if I stand there with my hand over theirs and the old hunger..." {n}She doesn't finish.{/n}
 "The words say I have to bind their hands with a ribbon. Touch both of them. At once. In front of everyone."''',
         c('"Use a long ribbon."', "ribbon", flags=(WEDDING,)),
         c('"I\'ll stand beside you. If you falter, look at me, and I\'ll make a face."', "face", flags=(WEDDING,))),
@@ -149,14 +149,14 @@ hub(WEDDING, "Under the stars", 3, '"Somebody asked me to marry them."', [
 # --- The returned: a hundred days --------------------------------------------------------------------------
 
 hub(HUNDRED, "One hundred", 5, '"You look like you\'ve been counting."', [
-    a("start", '''"A hundred." {n}She holds up both hands, all ten fingers, and then does it nine more times in the air, very fast, grinning.{/n} "A hundred days since I was fed. A hundred mornings. And I didn't die just to be fed again, not once, though I thought about it on the forty-first." {n}She sobers.{/n} "I'm sorry. That's a terrible thing to tell you. It's true, though. I've promised to tell you true things."''',
+    a("start", '''"A hundred." {n}She holds up both hands, all ten fingers, and then does it nine more times in the air, very fast, grinning.{/n} "A hundred times since the chapel I've wanted to be fed, and counted it, and not asked you. A hundred. The forty-first was very close." {n}She sobers.{/n} "I'm sorry. That's a terrible thing to tell you. It's true, though. I've promised to tell you true things."''',
         c("Continue", "reason")),
     a("reason", '''"You said to ask again at a hundred. Whether there's a reason in the world that isn't me being hungry." {n}She takes a breath.{/n}
 "There is. There are several. The kitchen boy who saves me the burnt crusts because he thinks I like them. The refugees who leave me a seat at the soup kettle now. The old woman in the chapel who calls me 'dear' and doesn't know why she's afraid of me." {n}She looks at you.{/n} "And you. Mostly you. Not the taste of you. The fact of you, walking into a room and making a bad joke, so I know where you are."''',
         c('"A hundred and one, tomorrow."', "tomorrow", flags=(HUNDRED,)),
         c('"Then you can ask me whatever you like. That was the deal."', "deal", flags=(HUNDRED,))),
     a("tomorrow", '''"A hundred and one." {n}She laughs.{/n} "Yes. That's the right answer. Not 'well done'. Just the next number." {n}She tucks her hands behind her back, not out of fear, now; out of habit, and pleasure in the habit.{/n} "I'll ask you my question soon. On the chapel steps. Wear something nice. I'm going to."''', c()),
-    a("deal", '''"I'll ask you on the chapel steps." {n}She says it very seriously, as if booking an appointment.{/n} "Soon. When I've decided exactly what to ask. I've waited a hundred days; I can wait for the right words." {n}A pause.{/n} "They're going to be the most frightening words I've ever said. Make sure you're there."''', c()),
+    a("deal", '''"I'll ask you on the chapel steps." {n}She says it very seriously, as if booking an appointment.{/n} "Soon. When I've decided exactly what to ask. I've counted a hundred of them; I can wait for the right words." {n}A pause.{/n} "They're going to be the most frightening words I've ever said. Make sure you're there."''', c()),
 ], (COUNTING, AFTERTASTE), delay=72, chapters=(5,))
 
 
@@ -166,11 +166,14 @@ tavern(TOKEN, "The queen's token", '"What\'s that round your neck?"', [
     a("start", '''{n}She lifts it out on its string: a small black pearl, the size of a fingernail, cold even on a warm night.{/n}
 "This? My receipt. It was round my neck when I sat up, and nobody in that house would say whose hand had tied it. It means I'm hers, on loan. When she wants me, it'll get warm." {n}She rolls it between finger and thumb.{/n}''',
         c("Continue", "debt", requires=(DEBT,)),
-        c("Continue", "favour", forbids=(DEBT,))),
+        c("Continue", "favour", forbids=(DEBT, "nocticula.trickster.favour_called.arueshalae")),
+        c("Continue", "favour_paid", requires=("nocticula.trickster.favour_called.arueshalae",), forbids=(DEBT,))),
+    a("favour_paid", '''"Your favour. She came for it in her own court, and I watched you pay it, and the pearl went cold the moment you had." {n}She taps it.{/n} "I keep it anyway. A receipt is a receipt. And I like remembering your face."''',
+        c("Continue", "end")),
     a("debt", '''"One summons. Once. That's what you bought me with, darling. My one summons." {n}She laughs.{/n} "Do you know what she's likely to want? Nothing much. A dance. A conversation. A night. She'll pick the hour that hurts you most, not me. That's the art of it."''',
         c("Continue", "hiding", requires=(UNANSWERED,)),
         c("Continue", "end", forbids=(UNANSWERED,))),
-    a("favour", '''"Your favour. Not mine. You put it in your own name, you gallant idiot." {n}She taps the pearl.{/n} "She gave me this so I'd feel it when she comes to collect from you. She wants me to be there. She wants me to watch you pay." {n}Her smile is all teeth.{/n} "I will. I wouldn't miss it."''',
+    a("favour", '''"Your favour. Not mine. You put it in your own name, you gallant idiot." {n}She taps the pearl.{/n} "I think it was given me so I'd feel it when she comes to collect from you. I think she wants me to be there. She wants me to watch you pay." {n}Her smile is all teeth.{/n} "I will. I wouldn't miss it."''',
         c("Continue", "hiding", requires=(UNANSWERED,)),
         c("Continue", "end", forbids=(UNANSWERED,))),
     a("hiding", '''"It's been cold since she went into hiding. Cold as a stone at the bottom of a well." {n}She tucks it away.{/n} "It'll warm up one day. Queens always come back. Remember: the worst mistake anyone can make is to underestimate her. I told you that once, when I was the other one. It's still true."''',
@@ -182,8 +185,8 @@ for s in SCENES[-2:]:
     s["RequiresAnyGroups"] = [[DEBT, FAVOUR]]
 
 tavern(BOYS, "The boys", '"Your gang. At the lair."', [
-    a("start", '''"Dead. All of them. You saw to that." {n}She says it lightly, and her fingers stop moving on the cup.{/n}
-"Do you know what they were? Three dozen of the worst things in the Worldwound, and they followed me because I was cleverer than they were, and I let them because they were useful, and they worshipped me because demons will worship anything that hurts them well." {n}She drinks.{/n} "I'm not sad. Demons don't get sad. I'm annoyed. It took me a year to train them to wipe their feet."''',
+    a("start", '''"Gone. You ruined my gang." {n}She says it lightly, and her fingers stop moving on the cup.{/n}
+"Do you know what they were? Some of the worst things in the Worldwound, and they followed me because I was cleverer than they were, and I let them because they were useful, and they worshipped me because demons will worship anything that hurts them well." {n}She drinks.{/n} "I'm not sad. Demons don't get sad. I'm annoyed. I had almost taught them to wipe their feet."''',
         c("Continue", "choice")),
     a("choice", '''{n}She looks at you across the table, and for once there is no smile at all.{/n} "The balor, Rakkoth, the big one. He used to sit outside my door at night so nobody would disturb my sleep. I don't sleep. He knew that. He sat there anyway." {n}She shrugs, one shoulder.{/n} "Don't you dare feel sorry for him. He ate babies. Say something cruel so I can hate you properly."''',
         c('"He ate babies. I\'m not sorry."', "cruel", flags=(BOYS,)),
@@ -192,6 +195,12 @@ tavern(BOYS, "The boys", '"Your gang. At the lair."', [
     a("toast", '''{n}She stares at your raised cup. Then she lifts her own and touches it to yours, very softly.{/n}
 "To Rakkoth. Who ate babies and sat outside the door." {n}She drinks it all.{/n} "That's the most demonic thing you've ever done, darling. Toasting a monster because it was loyal. You'd have fitted right in, in the Upper City." {n}She doesn't say anything else for a while.{/n}''', c()),
 ], (), delay=24)
+
+
+# Q11: after the native Elysium ending (BestEnding; her touch no longer drains) the sessions that stage a drain close.
+for _scene in SCENES:
+    if _scene["Id"] in (BAKERY, ABYSS_TOUCH, HUNDRED, WEDDING) and ELYSIUM not in _scene["Forbids"]:
+        _scene["Forbids"].append(ELYSIUM)
 
 
 def integrate(payload):

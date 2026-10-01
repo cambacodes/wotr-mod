@@ -122,7 +122,10 @@ internal static class ArueshalaeTricksterTests
               && Ch(starving, "plea", 0).Revive == "arueshalae"
               && Ch(starving, "plea", 1).Revive == "arueshalae" && Ch(starving, "plea", 0).Next == null && Ch(starving, "plea", 1).Next == null,
             "'Starving, not dead' is not a terminal Trickster recovery.");
-        var dead = World(story, 3, "", "trickster", "trickster.ever", "arueshalae_dead", "arueshalae_dead.latched", "revive.arueshalae.available");
+        // Q11: the unprepared wager is retired; without the gift tied in life, the diagnosis returns nobody.
+        var unprepared = Later(story, World(story, 3, "", "trickster", "trickster.ever", "trickster.religion_tier1", "arueshalae_dead", "arueshalae_dead.latched", "revive.arueshalae.available"), 30);
+        check(Program.Walk(starving, unprepared).All(r => !r.Has(P + "returned")), "An unprepared Commander still revives her by touch.");
+        var dead = World(story, 3, "", "trickster", "trickster.ever", P + "gift_held", "arueshalae_dead", "arueshalae_dead.latched", "revive.arueshalae.available");
         dead = Later(story, dead, 30);
         check(Avail(starving, dead), "Trk_Arueshalae_Dead: the diagnosis is not available.");
         var fed = First(starving, dead, "plea", 0);
@@ -139,10 +142,13 @@ internal static class ArueshalaeTricksterTests
             "Trk_Arueshalae_DeadDeclined: the vow is not a soft decline that ends the diagnosis.");
 
         // --- Polish batch 9: no mythic power lifts the death. The lore lowers a DC; the gift is prepared in life ------
-        check(Ch(starving, "treat", 0).Next == "work" && Ch(starving, "treat", 1).Next == "work"
-              && Ch(starving, "work", 0).Check?.Skill == "SkillLoreReligion" && Ch(starving, "work", 0).Check!.DC < 22
-              && Ch(starving, "wake", 0).Check!.DC == 22,
-            "Trk_Arueshalae_NoPowerLift: the lore path revives without a check, or does not lower the DC.");
+        // Q11 ruling: the unprepared wager is retired (earned outcome); its entry answers can never be selected.
+        check(new[] { 0, 2 }.All(i => Ch(starving, "start", i).Requires.Contains(P + "gift_held") && Ch(starving, "start", i).Forbids.Contains(P + "gift_held")),
+            "Trk_Arueshalae_NoPowerLift: an unprepared revival answer is still selectable.");
+        var lostPage = S("arueshalae.lastcall.page");
+        check(lostPage.Forbids.Contains("arueshalae_dead") && lostPage.ForbidOverrides["arueshalae_dead"] == P + "returned"
+              && story.Books["trickster.ledger"].Entries.Any(e => e.Id == "lost.arueshalae" && e.Forbids.Contains(P + "returned") && e.Forbids.Contains(P + "gift_held")),
+            "An unprepared death keeps a living Last Call coda, or the Ledger does not record what was lost.");
         check(!starving.Nodes.Any(n => n.Text.Contains("negative condition")), "Trk_Arueshalae_NoPowerLift: death is still read as a negative condition.");
         var insurance = S(P + "insurance");
         var aliveGift = Later(story, World(story, 3, "", "trickster", "trickster.ever"), 30);
@@ -242,7 +248,8 @@ internal static class ArueshalaeTricksterTests
         check(appointed.Has(P + "cost.chaplain") && appointed.Has("arueshalae.started"), "Trk_Arueshalae_Failed: the job does not stick.");
         var ch5Chaplain = Later(story, World(story, 5, "", "trickster.ever", P + "cost.chaplain"), 100);
         check(First(terms, ch5Chaplain, "question", 3).Has("arueshalae.closed"), "Trk_Arueshalae_FailedTermsNeither: 'Neither' does not close.");
-        check(First(terms, ch5Chaplain, "question", 1).Has("arueshalae.committed"), "Trk_Arueshalae_FailedTermsCommit: 'the saint' does not commit.");
+        check(!First(terms, ch5Chaplain, "question", 1).Has("arueshalae.committed") && First(terms, ch5Chaplain, "question", 1).Has(P + "declined"),
+            "Trk_Arueshalae_FailedTermsCommit: 'only the good days' commits her to an answer she refuses (R2-1).");
 
         // --- The treatment: the living courtship -----------------------------------------------------------------
         var intake = S(T + "intake");
@@ -321,6 +328,56 @@ internal static class ArueshalaeTricksterTests
             check(s.Nodes.SelectMany(n => n.Choices).All(c => c.Crusade == null), "A crusade fee in her route: " + s.Id);
         }
 
+        // Q11 witnesses: a failed reading can be retried; the living, recruited fallen Arueshalae has a romance; the
+        // Elysium morning drains nothing; elapsed-time claims are enforced; the torn gift costs something the game counts.
+        var studied = S(T + "studied");
+        var reading = World(story, 3, Drezen, "trickster", "trickster.ever");
+        var failedReading = Program.WalkVia(studied, reading, "not_yet", 0);
+        check(failedReading.Count > 0 && failedReading.All(r => !r.Has(T + "studied"))
+              && Rules.Available(story, studied, Later(story, failedReading[0], 24))
+              && !Rules.Available(story, S(T + "intake"), Later(story, failedReading[0], 24)),
+            "A failed night reading records the rite as learned, or forbids the promised retry.");
+        var learned = Program.WalkVia(studied, reading, "fit", 0);
+        check(learned.Count > 0 && learned.All(r => r.Has(T + "studied")) && Rules.Available(story, S(T + "intake"), Later(story, learned[0], 24)),
+            "A successful night reading does not open the intake.");
+        var houseCall = S(P + "fallen.house_call");
+        var recruited = World(story, 5, Drezen, "trickster", "trickster.ever", "arueshalae.evil_recruited");
+        check(Rules.Available(story, houseCall, recruited) && !recruited.Has("arueshalae.evil_dead")
+              && !Rules.Available(story, houseCall, World(story, 5, Drezen, "trickster", "trickster.ever")),
+            "The living recruited fallen Arueshalae has no courtship, or it opens without her recruitment.");
+        var doorOpen = Program.WalkVia(houseCall, recruited, "ask", 0);
+        check(doorOpen.Count > 0 && doorOpen.All(r => r.Has("arueshalae.committed") && r.Has(P + "cost.open_door")),
+            "The recruited fallen commit does not commit.");
+        check(Rules.Available(story, S(P + "fallen.roof"), Later(story, doorOpen[0], 30))
+              && Program.Walk(S(P + "fallen.roof"), Later(story, doorOpen[0], 30)).All(r => r.Has(P + "evil.dawn")),
+            "The recruited fallen night is unreachable after the open door.");
+        var notTonight = Program.WalkVia(houseCall, recruited, "ask", 1);
+        check(notTonight.Count > 0 && Rules.Available(story, S(P + "fallen.lock"), Later(story, notTonight[0], 80))
+              && !Rules.Available(story, S(P + "fallen.lock"), Later(story, notTonight[0], 10)),
+            "'Not tonight' does not keep a reachable yes.");
+        check(Rules.Available(story, S(P + "epilogue.fallen"), Later(story, doorOpen[0], 100, 6))
+              && !Rules.Available(story, S(T + "epilogue.together"), Later(story, World(story, 6, Drezen, "trickster.ever", "arueshalae.committed", T + "intake", "arueshalae.evil_recruited"), 1)),
+            "The recruited fallen commit has no ending, or reads the redeemed daybook ending.");
+        var morning = S(T + "morning");
+        var elysium = Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", "arueshalae.committed", T + "night", "arueshalae.elysium"), 10);
+        check(Rules.Available(story, morning, elysium) && Program.WalkVia(morning, elysium, "start", 0).Count == 0
+              && Program.WalkVia(morning, elysium, "start", 1).Count > 0,
+            "After the native Elysium ending, the morning still counts a drain.");
+        check(S(T + "prescription").DelayHours >= 168, "The proposal opens before the fast's seven days have passed.");
+        // Ledger row 2: native Nocticula keys reach her route only through Derived aliases, never a choice or scene gate.
+        foreach (var s in story.Scenes.Where(s => s.Relationship == "arueshalae"))
+            check(s.Requires.Concat(s.Forbids).Concat(s.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Requires.Concat(c.Forbids)))
+                      .All(k => !k.StartsWith("noct.", StringComparison.Ordinal)),
+                "An Arueshalae scene gates on a native Nocticula key: " + s.Id);
+        // A soft 'not yet' at the proposal, then the native Elysium ending: the discharge still offers the yes.
+        var deferred = World(story, 5, Drezen, "trickster", "trickster.ever", T + "intake", P + "declined", "arueshalae.elysium");
+        check(Rules.Available(story, S(T + "discharged"), deferred) && !Rules.Available(story, S(T + "prescription_again"), deferred)
+              && Program.WalkVia(S(T + "discharged"), deferred, "ask", 0).All(r => r.Has("arueshalae.committed")),
+            "A deferred proposal followed by Elysium locks the treatment out of every commit.");
+        // The failed-presence letter serves the late referral as well.
+        check(Rules.Available(story, S(P + "evil.reunion_letter"), Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", P + "returned",
+                  "arueshalae.evil_dead", P + "cost.late", P + "cost.nocticula_debt", "arueshalae.presence.evil.failed"), 130)),
+            "The late referral has no reunion when the lair presence fails.");
         Console.WriteLine("PASS: Arueshalae Trickster (Trk_Arueshalae_*): the diagnosis, the second opinion, the chaplain, the treatment and her proposal, the arcade, and the queen's favour.");
     }
 }

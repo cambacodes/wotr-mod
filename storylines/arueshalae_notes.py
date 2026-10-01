@@ -11,7 +11,7 @@ from storylines.arueshalae_trickster import (AFTERTASTE, ALLY, CHAPLAIN, CLOSED,
                                              TAVERN_PRESENCE, UNIT, YARD_PRESENCE)
 from storylines.arueshalae_rounds import CAT, TEMPLE_LETTER
 from storylines.arueshalae_chapel import CENSER
-from storylines.arueshalae_treatment import (CURED, DRAINED, KITCHEN, MEALTIMES, MORNING, RX_WANT, RX_WATCH, T, TOUCHED)
+from storylines.arueshalae_treatment import (CURED, DRAINED, ELYSIUM, KITCHEN, MEALTIMES, MORNING, RX_WANT, RX_WATCH, T, TOUCHED)
 
 SCENES = []
 FORTY = T + "day_forty"
@@ -49,17 +49,17 @@ def hub(id, title, chapter, entry, nodes, requires, forbids=(), delay=0, last=5,
 
 # --- The list, day forty -------------------------------------------------------------------------------------
 
-hub(FORTY, "Day forty", 3, '"How\'s the list?"', [
+hub(FORTY, "Number forty", 3, '"How\'s the list?"', [
     a("start", '''{n}She produces it at once, as if she had been carrying it in her hand in case you asked. It is several pages now, the early ones creased soft from being unfolded and folded again.{/n}
-"Day thirty-one: I want it to rain on a day when I don't have to go anywhere. Day thirty-three: I want to know what the novice who sweeps the chapel is humming. Day thirty-six, and I'm very proud of this one: I want to be bored."
+"Number thirty-one: I want it to rain on a day when I don't have to go anywhere. Number thirty-three: I want to know what the novice who sweeps the chapel is humming. Number thirty-six, and I'm very proud of this one: I want to be bored."
 {n}She looks up.{/n} "Do you understand? Bored. Nothing happening, and nobody wanting anything, and no danger, and no hunger, just a long afternoon with nothing in it. Mortals complain about it constantly. I've never once had it."''',
         c("Continue", "forty")),
-    a("forty", '''"And day forty." {n}She hesitates, and turns the page so you can't see it.{/n} "Day forty I'm not going to read to you. It's about you. It's not a person-want, I checked, I was very careful. It's a thing-about-you want. But I'm not ready to say it out loud."
-"Is that allowed? In the treatment? To keep one item back?"''',
+    a("forty", '''"And number forty." {n}She hesitates, and turns the page so you can't see it.{/n} "Number forty I'm not going to read to you. It's about you. It's not a person-want, I checked, I was very careful. It's a thing-about-you want. But I'm not ready to say it out loud."
+"No. I'm keeping that page. Don't look at me like that."''',
         c('"Of course. Every patient\'s allowed one secret from their doctor."', "secret", flags=(FORTY,)),
         c('[Straight-faced] "Absolutely not. Hand it over. Medical necessity."', "tease", flags=(FORTY,))),
-    a("secret", '''"One secret." {n}She folds the list up very small and tucks it inside her bodice, against her skin.{/n} "I haven't had a secret that was mine in centuries. They were always somebody else's secrets, that I was keeping, or selling." {n}She pats the place where the paper is.{/n} "Thank you. I'll tell you on day four hundred. Maybe."''', c()),
-    a("tease", '''{n}She snatches the list out of reach and holds it behind her back, laughing.{/n} "No! Absolutely not! Medical necessity, the doctor says." {n}She backs away, still laughing.{/n} "You'll hear day forty when I'm good and ready, doctor, and not a moment before. That's my prescription for you. It's called patience. You've never taken it."''', c()),
+    a("secret", '''"One secret." {n}She folds the list up very small and tucks it inside her bodice, against her skin.{/n} "I've kept a great many secrets for other people, and sold some. This one isn't intelligence for anyone. It's mine." {n}She pats the place where the paper is.{/n} "Thank you. I'll tell you on number four hundred. Maybe."''', c()),
+    a("tease", '''{n}She snatches the list out of reach and holds it behind her back, laughing.{/n} "No! Absolutely not! Medical necessity, the doctor says." {n}She backs away, still laughing.{/n} "You'll hear number forty when I'm good and ready, doctor, and not a moment before. That's my prescription for you. It's called patience. You've never taken it."''', c()),
 ], (MEALTIMES, RX_WANT), delay=48, chapters=(3, 4, 5))
 
 
@@ -67,13 +67,13 @@ hub(FORTY, "Day forty", 3, '"How\'s the list?"', [
 
 hub(WATCHED, "Observations of a Commander eating", 3, '"You\'ve been watching me at meals."', [
     a("start", '''"Of course I have. You told me to watch people eat three times a day. You eat three times a day. Sometimes." {n}She has the daybook open, and she is completely unrepentant.{/n}
-"You're my most interesting subject. Everyone else eats as if they're at a meal. You eat as if you expect to be ambushed in the next four minutes. You keep your back to the wall. You never finish. You give your bread away, every time, to whoever's next to you, and you don't notice you've done it."''',
+"You're my most interesting subject. Everyone else eats as if they're at a meal. You eat as if you expect to be ambushed in the next four minutes. You keep your back to the wall. You never finish. Last night you gave half your bread to whoever was next to you, and didn't look to see who it was."''',
         c("Continue", "notes")),
     a("notes", '''{n}She turns a page, reading aloud in a clinical voice.{/n} "'Subject laughed with mouth full, twice. Subject told the quartermaster a joke about a goat that was not funny. Quartermaster laughed anyway. Conclusion: subject is loved.'" {n}She looks up, suddenly shy.{/n}
-"I didn't understand that, at first. Why the quartermaster laughed. And then I understood it, and I had to stop watching for a day." {n}She closes the book.{/n} "That's the thing about watching mortals properly. Eventually you see something you want, and you have to decide what to do about it."''',
+"I didn't understand that, at first. Why the quartermaster laughed. And then I understood it, and I had to stop watching for a day." {n}She closes the book.{/n} "I watched you hand that bread away, and I wanted to be the one sitting next to you. That's all. That's the whole entry."''',
         c('"And what are you going to do about it?"', "do", flags=(WATCHED,)),
         c('"Tell the quartermaster the goat joke was very funny."', "goat", flags=(WATCHED,))),
-    a("do", '''"Keep watching." {n}She smiles, very small.{/n} "For now. Watching is what I do instead of taking. You know that. The day I stop watching you and do something else instead, you'll know it's not hunger any more. You'll know it's me." {n}She tucks the book into her belt.{/n} "I'll let you know. Probably by accident."''', c()),
+    a("do", '''"Keep watching." {n}She smiles, very small.{/n} "For now. Watching is what I do instead of taking. One day I'll put the book down and sit beside you at the mess table instead. I almost did today." {n}She tucks the book into her belt.{/n} "I'll let you know. Probably by accident."''', c()),
     a("goat", '''{n}She laughs so suddenly she snorts, and claps her hand over her face, horrified.{/n} "That was undignified. You made me undignified." {n}She peeks over her fingers.{/n} "It wasn't funny. It was a terrible joke. I laughed at it for an hour afterwards, alone, on the wall, and I don't know why."''', c()),
 ], (MEALTIMES, RX_WATCH), delay=48, chapters=(3, 4, 5))
 
@@ -81,17 +81,17 @@ hub(WATCHED, "Observations of a Commander eating", 3, '"You\'ve been watching me
 # --- "Teach me the trick" --------------------------------------------------------------------------------------
 
 hub(TEACH, "The one trick", 5, '"Teach me how you do it."', [
-    a("start", '''"The cure. The thing with your hand. Where you lift it off, as fast as it comes." {n}She is standing very straight, as she does when she has rehearsed something.{/n}
-"If I could learn it, I could do it for myself. I could touch anyone, not just you. The baker's girl, the pikeman in the hospital, the Kenabres women on the bench. I could touch them and lift it off them as I took it." {n}Her voice wavers.{/n} "Teach me. Please. I'm a very quick learner. I learned to kill in an afternoon."''',
+    a("start", '''"The cure. The candle. The way you name the first cold and give it somewhere to go." {n}She is standing very straight, as she does when she has rehearsed something.{/n}
+"If I could learn it, I could do it for myself. I could touch anyone, not just you. The baker's girl, the pikeman in the hospital, the Kenabres women on the bench. I could touch them and lift it off them as I took it." {n}Her voice wavers.{/n} "Teach me. Please. I learned so many cruel things so easily. Why should this be the one that's hard?"''',
         c("Continue", "try")),
     nar("try", '''{n}You try. You explain it as well as you can: the Trickster's lore, the naming of a condition, the treating of it. She listens as if her life depended on it. She takes your hand and tries to feel what you do, and turn it round, and do it herself.{/n}
 {n}Nothing happens. The cold goes out of you and into her, and you lift it off, and she feels you do it, and when she tries to do the same, there is nothing there to try with. It is like asking a fire to learn to be wet.{/n}''',
         c("Continue", "cant")),
-    a("cant", '''"I can't." {n}She lets go.{/n} "I can feel how you do it, and I can't, because I'm the condition. It's like asking the poison to be the cure." {n}She laughs, and it is not a good laugh.{/n}
-"Of course. Of course that's the joke. I thought for a moment there might be a way I didn't need anyone. That I could hold hands with the world without a doctor holding mine."''',
-        c('"You\'ll always need someone. So does everyone. That isn\'t the disease."', "need", flags=(TEACH,)),
+    a("cant", '''"I can't." {n}She lets go.{/n} "I could feel you weaken. I tried to stop it, and I could not." {n}She laughs, and it is not a good laugh.{/n}
+"Of course. Of course that's the joke. For one moment I thought I could take the baker's girl by the hand, and the pikeman, and walk out of here with nobody holding mine."''',
+        c('"Good. A cure you could work alone, you\'d spend on the baker\'s girl."', "need", flags=(TEACH,)),
         c('"Then I\'ll hold the hands you can\'t. You point, I hold."', "point", flags=(TEACH,))),
-    a("need", '''{n}She is quiet for a long time.{/n} "Everyone needs someone." {n}She tests it for the trick.{/n} "In the Abyss, needing someone is how they get you. Here..." {n}She looks out at the city.{/n} "Here it seems to be how they keep each other. I'm going to have to think about that for a very long time. You've given me a lot of things to think about for a very long time."''', c()),
+    a("need", '''{n}She stares at you, and then she hears the joke, and then the thing under it that you did not make a joke of.{/n} "You're jealous. Of the baker's girl. Of a pikeman with one leg." {n}Her mouth twists.{/n} "Lady Vellexia kept the good wine locked in a cabinet only she could open, so the guests would come back for it. Every one of them came back. I poured." {n}She looks down at your hand, which she has not let go of.{/n} "And here's the doctor, keeping the only key in {mf|his|her} own pocket. I ought to hate that. Tender of Dreams forgive me, I'm going to come back for it every night."''', c()),
     a("point", '''"I point, and you hold." {n}Her mouth twitches.{/n} "The Commander of the crusade, going round the field hospital holding the hands of everyone a succubus points at." {n}Then she stops smiling.{/n} "You'd do it, wouldn't you. You'd actually do it." {n}She takes your hand, and doesn't try anything, and just holds it.{/n} "All right. I'll point. Carefully."''', c()),
 ], (KITCHEN, CURED), delay=48, chapters=(5,))
 
@@ -132,9 +132,9 @@ hub(SERMON, "On temptation", 3, '"You\'re preaching on Sunday?"', [
 
 hub(CHAIR, "The second chair", 5, '"You bought furniture?"', [
     a("start", '''{n}She has. There is a chair in her room by the chapel that was not there yesterday: a plain Drezen kitchen chair, ash wood, with a rush seat, standing across the little table from her own. She is standing behind it with both hands on its back, as if introducing it.{/n}
-"I told you, in the Abyss, about Lady Vellexia's table. A thousand chairs and nobody eating." {n}She pats the chair.{/n} "I've never owned a chair before. I've never owned anything someone else was meant to sit in. So I bought one, from the joiner on Coppersmith Lane. It's for you. It's yours. Nobody else sits in it unless you bring them."''',
+"You've heard me on the subject of Lady Vellexia's table. All those chairs, and nobody eating." {n}She pats the chair.{/n} "So I bought one, from the joiner on Coppersmith Lane, with my own coin, for one particular person to sit in. It's for you. It's yours. Nobody else sits in it unless you bring them."''',
         c("Continue", "why")),
-    a("why", '''"In the Upper City a chair at the table meant you might be dinner." {n}She runs her thumb along the rush seat, where the joiner's chalk mark still shows.{/n} "Here I want it to mean you're expected. Whenever you come. However long you've been gone. I'm not asking you to sit in it every night. I'm asking you to know it's there." {n}She lets go of it.{/n} "Sit down. Let's see if it works."''',
+    a("why", '''"In the Upper City a chair at the table meant you might be dinner." {n}She runs her thumb along the rush seat, where the joiner's chalk mark still shows.{/n} "Here it means you're expected. I bought it for you, and I'm already sorry I showed it to you." {n}She lets go of it.{/n} "Sit down. Let's see if it works."''',
         c("[Sit in the chair.]", "sit", flags=(CHAIR,)),
         c("[Turn the chair round and sit astride it, arms on the back, like a soldier in a mess tent.]", "astride", flags=(CHAIR,))),
     nar("sit", '''{n}You sit. The rush seat creaks. She sits down opposite you in her own chair, very carefully, and puts her hands flat on the table, and looks at you across it the way you have seen her look at the net-menders' bench, and the bakery, and the cat.{/n}
@@ -146,8 +146,8 @@ hub(CHAIR, "The second chair", 5, '"You bought furniture?"', [
 # --- The novice's hymn (day thirty-three on her list) -----------------------------------------------------------
 
 hub(NOVICE, "What the novice hums", 3, '"You were in the chapel before dawn again."', [
-    a("start", '''"Sweeping. With the novice. He hums while he sweeps, the same four bars, over and over, and I put it on my list on day thirty-three, and this morning I asked him what it was." {n}She is still holding a broom, and does not seem to have noticed.{/n}
-"He didn't know. His grandmother hummed it. He doesn't know the words or where it comes from or what it's for. He just hums it while he sweeps, because she did." {n}She looks at the broom.{/n} "So now I hum it too. I don't know what it's for either. Is that allowed? To keep something without knowing what it's for?"''',
+    a("start", '''"Sweeping. With the novice. He hums while he sweeps, the same four bars, over and over, and I put it on my list as number thirty-three, and this morning I asked him what it was." {n}She is still holding a broom, and does not seem to have noticed.{/n}
+"He didn't know. His grandmother hummed it. He doesn't know the words or where it comes from or what it's for. He just hums it while he sweeps, because she did." {n}She looks at the broom.{/n} "So now I hum it too. I don't know the words. I don't know what it's for either, and I can't stop."''',
         c("Continue", "hum")),
     a("hum", '''{n}She hums it for you, the four bars, badly, twice through. It is nothing: a scrap of a lullaby, or a work song, or a hymn that lost its words somewhere between a grandmother and a boy.{/n}
 "In the Abyss, nothing is kept unless it's useful. You keep a slave for his hands, a spy for her tongue, a song for what it makes people do." {n}She leans on the broom.{/n} "This isn't useful. It doesn't make anyone do anything. He hums it because she did. That's all. I think that might be the most mortal thing I've found yet."''',
@@ -162,15 +162,15 @@ hub(NOVICE, "What the novice hums", 3, '"You were in the chapel before dawn agai
 
 hub(RAIN, "Nothing happening", 5, '"It\'s raining."', [
     a("start", '''"It is." {n}She says it with deep satisfaction. She is lying on her cot with her boots off and her wings spread across the blankets like a second cloak, watching the rain run down the shutters.{/n}
-"Day thirty-six. I want to be bored. And today there's no march, no council, no drill, the second company's confined to barracks, and it's raining." {n}She turns her head on the pillow to look at you.{/n} "I've been lying here for three hours doing nothing, and nobody wants anything, and I'm not hungry, and I'm not afraid. Is this it? Is this boredom?"''',
+"Number thirty-six. I want to be bored. And today there's no march, no council, no drill, the second company's confined to barracks, and it's raining." {n}She turns her head on the pillow to look at you.{/n} "I've been lying here for three hours doing nothing, and nobody wants anything, and I'm not hungry, and I'm not afraid. Is this it? Is this boredom?"''',
         c("Continue", "stay")),
-    a("stay", '''"It's wonderful." {n}She sounds almost frightened by how wonderful it is.{/n} "Do you know, in all my life, nothing has ever not happened? In the Abyss, every moment is a move in a game. In the crusade, every moment is a war. This is the first moment that isn't anything." {n}She pats the edge of the cot.{/n} "Stay. Be bored with me. Doctor's orders. Mine, this time."''',
+    a("stay", '''"It's wonderful." {n}She sounds almost frightened by how wonderful it is.{/n} "I keep expecting someone to call for me, and nobody does. In the Abyss, every moment is a move in a game. In the crusade, every moment is a war. This is the first moment that isn't anything." {n}She pats the edge of the cot.{/n} "Stay. Be bored with me. Doctor's orders. Mine, this time."''',
         c("[Lie down beside her and watch the rain.]", "lie", flags=(RAIN,)),
         c("[Sit on the floor with your back to the cot, and report on the rain.]", "floor", flags=(RAIN,))),
-    nar("lie", '''{n}You lie down beside her, on top of the blankets, careful of the wings. Neither of you says anything for a very long time. The rain goes on. Somewhere a bell rings the hour, and then the next hour. At some point she takes your hand, or you take hers, and it costs what it costs, and neither of you mentions it.{/n}
+    nar("lie", '''{n}You lie down beside her, on top of the blankets, careful of the wings. Neither of you says anything for a very long time. The rain goes on. Somewhere a bell rings the hour, and then the next hour. At some point she takes your hand through a fold of the blanket, the way she has learned to, and neither of you lets go.{/n}
 "This," she says eventually, drowsily, "is the best thing I have ever been prescribed."''', c()),
     nar("floor", '''{n}You sit on the floor with your back against the cot and read the rain aloud in the voice of a staff officer delivering a situation report. "Rain, ongoing. Strength, moderate. Enemy intentions, unknown." She laughs into the pillow until she has to wipe her eyes, and then goes quiet, and then, to her own astonishment, falls asleep.{/n}
-{n}Demons do not sleep. You sit very still, so as not to wake her, until the rain stops.{/n}''', c()),
+{n}She does not sleep, as a rule. You sit very still, so as not to wake her, until the rain stops.{/n}''', c()),
 ], (FORTY, MORNING), delay=24, chapters=(5,))
 
 
@@ -178,7 +178,7 @@ hub(RAIN, "Nothing happening", 5, '"It\'s raining."', [
 
 hub(SEA_MAP, "Coastlines", 5, '"What are you reading?"', [
     a("start", '''{n}A map, spread across her camp table and held down at the corners with the daybook, a candle, the river stone and one of her boots. It is a chandler's chart of the rivers south out of Mendev, down through Lake Encarthan to the sea, and she has marked it all over in charcoal.{/n}
-"I'm planning. For after. When the Wound is closed." {n}She traces a line with her finger.{/n} "Down the river, then the lake, then the long portage, then the river again, all the way down. Four months, the chandler said, if the weather's kind. I've never planned anything that took four months. I've never planned anything for after anything."''',
+"I'm planning. For after. When the Wound is closed." {n}She traces a line with her finger.{/n} "Down the river, then the lake, then the long portage, then the river again, all the way down. Four months, the chandler said, if the weather's kind. This is the first journey I've planned simply because I want to go."''',
         c("Continue", "stone")),
     a("stone", '''{n}She picks up the stone and holds it up to the candle, so the white band glows.{/n} "Ilvanne wanted to see the sea. The Mother said to take her there, and never to write again. I've been thinking: she told me to stop writing. She didn't tell me to stop asking. I think asking might be the thing I do now instead of taking."
 "But I want to take her. And I want..." {n}She stops, and starts again.{/n} "I want company. On the river. Four months is a long time to be alone with a stone and a list."''',
@@ -200,7 +200,7 @@ hub(SOSIEL_OFFER, "A kinder man's offer", 3, '"I went to see Sosiel."', [
         c('"Keep your sentence. I\'ll be insufferable at you until you find it."', "hard", flags=(SOSIEL_OFFER,)),
         c('"Go back and thank him properly. He\'d want to know you chose."', "thank", flags=(SOSIEL_OFFER,))),
     a("hard", '''{n}She laughs, and it breaks something in her shoulders loose.{/n} "Insufferable. Yes. Everybody says so. The quartermaster keeps a list." {n}She stands.{/n} "Be insufferable at me, then. For a long time. And when I go back to Sosiel, it'll be to learn the lute, not to eat."''', c()),
-    a("thank", '''"He'd want to know I chose." {n}She nods slowly.{/n} "Yes. He would. That's the difference, isn't it? He'd rather I chose no than yes because I couldn't help it." {n}She stands.{/n} "I'll go back tomorrow. With a set of strings for his lute; I've heard the third one buzz. I know six ways to buy a man's cooperation, and I have never once bought a friend a present."''', c()),
+    a("thank", '''"He'd want to know I chose." {n}She nods slowly.{/n} "Yes. He would. He'd rather I walked away from him on my own feet than came crawling to his tent too hungry to say anything at all." {n}She stands.{/n} "I'll go back tomorrow. With a set of strings for his lute; I've heard the third one buzz. I know how to buy a man's cooperation. This isn't that."''', c()),
 ], (AFTERTASTE,), delay=48, chapters=(3, 5))
 
 
@@ -208,13 +208,13 @@ hub(SOSIEL_OFFER, "A kinder man's offer", 3, '"I went to see Sosiel."', [
 
 OTHER_NODES = [
     a("start", '''"I'm thinking. Don't tease; it happens." {n}She is turning her cup round and round on the table, and she has not drunk from it.{/n}
-"Your crusade. Your soldiers, your chapel, your ridiculous city with its bakeries and its cats. I was part of it, once. The other one of me." {n}She says 'the other one' as if it were someone she had met at a party and disliked.{/n} "I've been laughing at her for months. At her little vows and her little prayers and her counting of days."''',
+"Your crusade. Your soldiers, your chapel, your ridiculous city with its bakeries and its cats. I was part of it, once. The other one of me." {n}She says 'the other one' as if it were someone she had met at a party and disliked.{/n} "I've been laughing at her. At her little vows and her little prayers and her counting of days."''',
         c("Continue", "question")),
     a("question", '''{n}She stops turning the cup.{/n} "Tell me one thing, and don't lie, because I'll know, I always know." {n}Her voice is flat and careful.{/n} "Was she happy? The other one. The one who said no to everything. At the end, before she fell. Was she ever, once, happy?"''',
         c('"Yes. Sometimes. It was hard, and she was, sometimes."', "yes", flags=(OTHER_ONE,)),
         c('"No. She was starving the whole time."', "no", flags=(OTHER_ONE,))),
     a("yes", '''{n}Something moves in her face, and is gone.{/n} "Sometimes." {n}She drinks, finally, the whole cup.{/n} "Then she was a fool. Being happy sometimes, when you could be satisfied always." {n}She sets the cup down, very precisely.{/n} "Don't ever tell me that again. I'll think about it for a hundred years."''', c()),
-    a("no", '''"Good." {n}She says it too quickly.{/n} "Good. Then I did the right thing. I chose to be fed instead of pure, and pure was never going to make me happy anyway." {n}She pours another cup.{/n} "You're lying, of course. I know you are. It's the kindest lie anyone has ever told me, and I hate you for it."''', c()),
+    a("no", '''"Good." {n}She says it too quickly.{/n} "Good. Then I did the right thing. I chose to be fed instead of pure, and pure was never going to make me happy anyway." {n}She pours another cup.{/n} "You're lying, of course. You lie prettily. Keep doing it; it amuses me."''', c()),
 ]
 for hub_key, suffix, extra, unit in DREZEN_PLACES:
     SCENES.append(scene(OTHER_ONE + suffix, "The other one", "Arueshalae", 5, '"You\'re quiet tonight."',
@@ -229,12 +229,15 @@ for hub_key, suffix, extra, unit in DREZEN_PLACES:
 
 hub(SCAR, "Do succubi scar?", 3, '"Let me see your hand."', [
     a("start", '''{n}She holds it out at once, back uppermost, as if she had been waiting for weeks for someone to ask. Across the knuckles, where the smithy cat caught her, there is a thin white line.{/n}
-"It scarred." {n}She says it the way another woman might say she was with child.{/n} "I asked, remember, whether succubi scar. I didn't know. We heal. We always heal, perfectly, it's part of the... it's so that we stay beautiful, so that we stay useful. Nothing that happens to us is allowed to leave a mark."''',
+"It scarred." {n}She says it the way another woman might say she was with child.{/n} "I asked, remember, whether succubi scar. I didn't know. I expected it to be gone in a day, the way everything else has gone."''',
         c("Continue", "mark")),
-    a("mark", '''"And this did." {n}She runs her thumb along it.{/n} "A cat did this, because it liked me, and it stayed. I've had swords through me, Commander. I've had a paladin's lance through my wing. Nothing stayed. And a smithy cat that I bought a fish for leaves a mark on me for good."
-{n}She looks at you, her eyes very bright.{/n} "I think it's because I wanted it. I think I didn't heal it because some part of me decided to keep it. Is that mad? Tell me if that's mad."''',
+    a("mark", '''"And this did." {n}She runs her thumb along it.{/n} "A cat did this, because it liked me, and it stayed. A smithy cat that I bought a fish for, and it leaves a mark on me that I can still find with my thumb a month later."
+{n}She looks at you, her eyes very bright.{/n} "I wanted it to stay. Desna help me, I still do."''',
         c('"It isn\'t mad. It\'s the first thing you\'ve kept that nobody gave you a use for."', "keep", flags=(SCAR,)),
-        c('[Kiss the scar, lightly, and take what it costs]', "kiss", flags=(SCAR,))),
+        c('[Kiss the scar, lightly, and take what it costs]', "kiss", flags=(SCAR,), forbids=(ELYSIUM,)),
+        c('[Kiss the scar, lightly]', "kiss_e", flags=(SCAR,), requires=(ELYSIUM,))),
+    nar("kiss_e", '''{n}You lift her hand and kiss the white line, lightly, once. Nothing comes out of you. Nothing at all. She stares at the place your mouth was as if she had expected to see frost on it.{/n}
+"Now it's got two things in it," she says, unsteadily. "The cat, and you. And it didn't cost you anything. I'll never get used to that. I'm not going to try."''', c()),
     a("keep", '''"The first thing I've kept that nobody gave me a use for." {n}She holds the hand against her chest.{/n} "The novice's song is like that. And the stone. And the list. I'm collecting them, aren't I? Useless things. I'm going to be the most cluttered demon in the history of the Abyss." {n}She laughs.{/n} "Good."''', c()),
     nar("kiss", '''{n}You lift her hand and kiss the white line, lightly, once. The cold comes, and you let it come, because a scar is a thing you kiss without bargaining. She goes very still, and then she takes her hand back, slowly, and looks at the scar as if it had changed colour.{/n}
 "Now it's got two things in it," she says, unsteadily. "The cat, and you. It'll never heal now. I won't let it."''', c()),
@@ -244,7 +247,7 @@ hub(SCAR, "Do succubi scar?", 3, '"Let me see your hand."', [
 # --- The chaplain prays -------------------------------------------------------------------------------------
 
 hub(PRAYER, "Asking", 5, '"You were at the altar a long time."', [
-    a("start", '''"I prayed." {n}She says it as if confessing to a theft.{/n} "To Desna. Not once since she sent me back, until tonight. I told you once that I try not to trouble her. That she'd done more for me than I deserved and asking more would be impudent."
+    a("start", '''"I prayed." {n}She says it as if confessing to a theft.{/n} "To Desna. For myself, this time, not for anyone at the rail. I told you once that I try not to trouble her. That she'd done more for me than I deserved and asking more would be impudent."
 "But I'm the chaplain now. The second company asks me to pray for them every day. And it seemed very rude to keep asking her for things on their behalf when I'd never once asked her anything on my own."''',
         c("Continue", "what")),
     a("what", '''"So I knelt, and I told her about the censer, and the boy who ran at Kenabres, and the pikeman in the hospital. And then I told her about you." {n}Her mouth twists.{/n} "I said, 'Tender of Dreams, the Commander has made me into a chaplain as a joke, and I have been doing it properly, and I think the joke is on both of us.'"
@@ -275,6 +278,12 @@ for hub_key, suffix, extra, unit in DREZEN_PLACES:
                         forbids=(CLOSED, ALLY, COMMITTED, BET, BET + "_yard"), delay=24, last=5, optional=True,
                         Relationship="arueshalae", Areas=[DREZEN], Chapters=[5], ContactUnit=unit,
                         InteractionHub=hub_key))
+
+
+# Q11: after the native Elysium ending (BestEnding; her touch no longer drains) the sessions that stage a drain close.
+for _scene in SCENES:
+    if _scene["Id"] in (TEACH, GLOVES, SOSIEL_OFFER) and ELYSIUM not in _scene["Forbids"]:
+        _scene["Forbids"].append(ELYSIUM)
 
 
 def integrate(payload):
